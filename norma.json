@@ -1,0 +1,67 @@
+{
+  "name": "core",
+  "tasks": {
+    "javascript": {
+      "endpoint": "NewSpring/norma-javascript",
+      "src": "raw/**/*",
+      "dest": "out/packages"
+    },
+    "markup": {
+      "endpoint": "NewSpring/norma-markup",
+      "src": "raw/**/*",
+      "dest": "out/packages",
+      "minify": false
+    },
+    "copy": {
+      "endpoint": "NewSpring/norma-copy",
+      "src": "out/packages/newspring:core/**/*",
+      "out": "/",
+      "dest": "./",
+      "order": "post"
+    },
+    "meteor-load": {
+      "endpoint": "NewSpring/norma-meteor-load",
+      "src": "out/packages/newspring:core/**/*",
+      "dest": "out/packages/newspring:core",
+      "version": "0.1.0",
+      "org": "newspring",
+      "package": {
+        "versionsFrom": "1.0.3.1",
+        "use": {
+          "http": "both"
+        },
+        "export": {
+          "Rock": "both",
+          "NewSpring": "both"
+        }
+      },
+      "test": {
+        "casperjs": "both"
+      }
+    },
+    "meteor": {
+      "endpoint": "NewSpring/norma-meteor",
+      "src": "out",
+      "build": {
+        "dest": "build",
+        "server": "localhost:3000"
+      },
+      "packages": [
+        "meteor-platform",
+        "newspring:core"
+      ],
+      "platforms": [
+        "server",
+        "browser",
+        "ios"
+      ]
+    },
+    "mocha-casperjs": {
+      "endpoint": "NewSpring/norma-mocha-casperjs",
+      "src": "out/packages/tests/**/*"
+    }
+  },
+  "scripts": {
+    "postinstall": "./norma-ignore/postinstall.coffee"
+  }
+}
