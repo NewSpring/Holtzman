@@ -2,18 +2,15 @@
   "name": "core",
   "tasks": {
     "javascript": {
-      "endpoint": "NewSpring/norma-javascript",
       "src": "raw/**/*",
       "dest": "out/packages"
     },
     "markup": {
-      "endpoint": "NewSpring/norma-markup",
       "src": "raw/**/*",
       "dest": "out/packages",
       "minify": false
     },
     "copy": {
-      "endpoint": "NewSpring/norma-copy",
       "src": "out/packages/newspring:core/**/*",
       "out": "/",
       "dest": "./",
@@ -28,19 +25,25 @@
       "package": {
         "versionsFrom": "1.0.3.1",
         "use": {
-          "http": "both"
+          "meteor-platform": "both",
+          "http": "both",
+          "iron:router": "both",
+          "accounts-password": "both",
+          "bjwiley2:api-tokens": "both",
+          "cfs:http-methods": "both",
+          "bjwiley2:server-watch": "both",
+          "aldeed:collection2": "both"
         },
         "export": {
           "Rock": "both",
-          "NewSpring": "both"
+          "Apollos": "both"
         }
       },
       "test": {
-        "casperjs": "both"
+        "mocha-casperjs": "both"
       }
     },
     "meteor": {
-      "endpoint": "NewSpring/norma-meteor",
       "src": "out",
       "build": {
         "dest": "build",
@@ -57,7 +60,6 @@
       ]
     },
     "mocha-casperjs": {
-      "endpoint": "NewSpring/norma-mocha-casperjs",
       "src": "out/packages/tests/**/*"
     }
   },
