@@ -31,4 +31,5 @@ node_modules
 package.json
 build
 out
-package.js
+bower.json
+settings.json

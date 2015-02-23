@@ -3,11 +3,13 @@
   @abstract Holds the table schemas used by Apollos
 ####
 
+schemas = {}
+
 ###
  * @property [Campus] All the fields for a campus
  * Mapped to Rock:Campus
 ###
-@Campus = new SimpleSchema(
+schemas.campus = new SimpleSchema(
   campusId:
     type: Number
   name:
@@ -25,11 +27,12 @@
     type: [Number]
 )
 
+
 ###
  * @property [Fund] All the fields for a giving fund
  * Mapped to Rock:FinancialAccount
 ###
-@Fund = new SimpleSchema(
+schemas.fund = new SimpleSchema(
   fundId:
     type: Number
   campusId:
@@ -50,11 +53,12 @@
     type: Boolean
 )
 
+
 ###
  * @property [GeoJSON] A MapBox object's defined coordinates
  * @see http://geojson.org/geojson-spec.html for official spec
 ###
-@GeoJSON = new SimpleSchema(
+schemas.geoJSON = new SimpleSchema(
   "type":
     type: String
     optional: true
@@ -71,6 +75,7 @@
     defaultValue: true
 )
 
+
 ###
  * @property [Location] All the fields for a location
  * Mapped to Rock:Location
@@ -78,7 +83,7 @@
  *     Person - Work, Home, Temporary
  *     Campus - Fuse, Service, Office, Mailing
  ###
-@Location = new SimpleSchema(
+schemas.location = new SimpleSchema(
   locationId:
     type: Number
   campusId:
@@ -123,7 +128,7 @@
  * @property [Person] All the fields for a person
  * Mapped to Rock:Person
 ###
-@Person = new SimpleSchema(
+schemas.person = new SimpleSchema(
   personId:
     type: Number
     optional: true
@@ -180,7 +185,7 @@
  * Credit Types: Visa, MasterCard, AmEx, Discover, Diner's, JCB
  *
 ###
-@SavedAccount = new SimpleSchema(
+schemas.savedAccount = new SimpleSchema(
   savedAccountId:
     type: Number
   personAliasId:
@@ -213,6 +218,7 @@
       return new Date
 )
 
+
 ###
  * @property [Transaction] All the fields for a single transaction
  * Mapped to Rock:FinancialTransaction, Rock:FinancialTransactionDetail
@@ -222,7 +228,7 @@
  * Source: Website, Kiosk, Mobile, Onsite
  *
 ###
-@Transaction = new SimpleSchema(
+schemas.transaction = new SimpleSchema(
   transactionId:
     type: Number
   scheduledTransactionId:
@@ -268,13 +274,14 @@
       return new Date
 )
 
+
 ###
  * @property [ScheduledTransaction] All the fields for a scheduled/recurring transaction
  * Mapped to Rock:ScheduledTransaction, Rock:ScheduledTransactionDetail
  * Frequency Types: Once, Weekly, Biweekly, Twice Monthly, Monthly, Quarterly, Yearly
  * Future Transaction: Holds transaction information for the next scheduled occurrence
 ###
-@ScheduledTransaction = new SimpleSchema(
+schemas.scheduledTransaction = new SimpleSchema(
   scheduledTransactionId:
     type: Number
   personAliasId:
@@ -309,3 +316,13 @@
     autoValue: ->
       return new Date
 )
+
+
+# Enforce data schemas for Apollos tables
+Campuses.attachSchema schemas.campus
+Funds.attachSchema schemas.fund
+Locations.attachSchema schemas.location
+People.attachSchema schemas.person
+SavedAccounts.attachSchema schemas.savedAccount
+ScheduledTransactions.attachSchema schemas.scheduledTransaction
+Transactions.attachSchema schemas.transaction
