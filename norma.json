@@ -11,7 +11,7 @@
       "minify": false
     },
     "copy": {
-      "src": "out/packages/newspring:core/**/*",
+      "src": "out/packages/",
       "out": "/",
       "dest": "./",
       "order": "post"

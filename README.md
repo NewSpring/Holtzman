@@ -1,2 +1,2 @@
-# norma-meteor-package
-Norma Scaffold for working on Meteor packages
+# newspring:core
+The main NewSpring namespace and utilities for all newspring packages.
