@@ -1,5 +1,4 @@
 Rock.name = "Rock"
-Rock.username = Meteor.settings.rock.username
 
 
 Rock.isAlive = ->
@@ -11,6 +10,7 @@ if not Meteor.isServer
 
 
 rockToken = null
+Rock.username = Meteor.settings.rock.username
 Rock.baseURL = Meteor.settings.rock.baseURL
 Rock.password = Meteor.settings.rock.password
 
