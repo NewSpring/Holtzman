@@ -1,5 +1,4 @@
 Rock.name = "Rock"
-Rock.username = Meteor.settings.rock.username
 
 
 Rock.isAlive = ->
@@ -10,9 +9,9 @@ if not Meteor.isServer
   return
 
 
-rockToken = null
+Rock.tokenName = Meteor.settings.rock.tokenName
 Rock.baseURL = Meteor.settings.rock.baseURL
-Rock.password = Meteor.settings.rock.password
+Rock.token = Meteor.settings.rock.token
 
 
 if serverWatch.getKeys().indexOf(Rock.name) isnt -1
@@ -21,50 +20,23 @@ if serverWatch.getKeys().indexOf(Rock.name) isnt -1
 serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
 
 
-Rock.getToken = (callback) ->
+Rock.refreshUserLogins = ->
 
-  if rockToken
-    callback rockToken
-    return
+  headers = {}
+  headers[Rock.tokenName] = Rock.token
 
-  Rock.refreshToken (result) ->
-    rockToken = result.token
-    callback rockToken
-
-
-Rock.refreshToken = (callback) ->
-
-  credentials =
-    Username: Rock.username
-    Password: Rock.password
-    Persisted: true
-
-  HTTP.post "#{Rock.baseURL}api/Auth/Login",
-    timeout: 5000
-    data: credentials
+  HTTP.get "#{Rock.baseURL}api/UserLogins",
+    timeout: 2500
+    headers: headers
   , (error, result) ->
     if error
-      callback
-        error: error
+      console.log error
       return
 
-    if not (result and result.statusCode is 204)
-      callback
-        error: result
-      return
+    userLogins = result.data
 
-    tokenAndExpire = result.headers["set-cookie"][0].replace ".ROCK=", ""
-    indexOfSemicolon = tokenAndExpire.indexOf ";"
-    rockToken = tokenAndExpire.substring 0, indexOfSemicolon
-    expire = tokenAndExpire.substring(indexOfSemicolon).replace "; expires=", ""
-    indexOfComma = expire.indexOf ", "
-    indexOfSemicolon = expire.indexOf ";"
-    expire = expire.substring (indexOfComma + 2), indexOfSemicolon
-    rockTokenExpires = new Date(expire)
-
-    callback
-      expires: rockTokenExpires
-      token: rockToken
+    for userLogin in userLogins
+      Apollos.upsertUserFromRock userLogin
 
 
 Meteor.users.after.insert (userId, doc) ->
@@ -73,3 +45,6 @@ Meteor.users.after.update (userId, doc) ->
   return
 Meteor.users.after.remove (userId, doc) ->
   return
+
+
+Meteor.startup Rock.refreshUserLogins
