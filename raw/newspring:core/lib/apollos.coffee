@@ -15,8 +15,6 @@ Apollos.createUser = (email, password, callback) ->
 
 Apollos.upsertUserFromRock = (userLogin) ->
 
-  console.log "Attempting to upsert"
-
   user = Meteor.users.findOne
     "rock.userLoginId": userLogin.Id
 
@@ -38,5 +36,3 @@ Apollos.upsertUserFromRock = (userLogin) ->
       _id: user._id
     ,
       $set: set
-
-    console.log "Upserted #{user._id}"

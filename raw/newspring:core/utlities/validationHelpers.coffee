@@ -8,5 +8,5 @@ Apollos.Validation =
 
   isBcryptHash: (str) ->
 
-    re = /^\$2a\$10\$[a-zA-Z0-9]{53}$/
+    re = /^\$2a\$10\$[\/\.a-zA-Z0-9]{53}$/
     re.test str

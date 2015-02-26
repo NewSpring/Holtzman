@@ -1,6 +1,5 @@
 baseURL = "api/v1/"
 userURL = "#{baseURL}userlogins/"
-authURL = "#{baseURL}auth/"
 
 
 jsonContentType = "application/JSON"
@@ -24,11 +23,9 @@ authenticate = ->
   return sentToken is token
 
 
-api["#{userURL}"] =
+api[userURL] =
 
   post: (data) ->
-
-    console.log "API"
 
     this.setContentType jsonContentType
 
