@@ -3,7 +3,8 @@ Apollos.name = "Apollos"
 
 Apollos.createUser = (email, password, callback) ->
 
-  if not Meteor.isClient
+  __utils__.echo "create user"
+  if !Meteor.isClient
     callback = undefined
 
   Accounts.createUser
@@ -11,3 +12,6 @@ Apollos.createUser = (email, password, callback) ->
     password: password
   ,
     callback
+
+  __utils__.echo Meteor.users.find().count()
+  return
