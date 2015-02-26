@@ -31,43 +31,42 @@ describe 'Rock/Apollos User Sync Testing', ->
       return
 
     it 'should create an Apollos user', (done) ->
-      casper.then ->
-        @.timeout = 10000
-        @.evaluate ->
-          # Apollos.createUser("richard.dubay@newspring.cc", "password", ->
-          #   __utils__.echo JSON.stringify Meteor.users.find().count()
-          #   # done()
-          # )
-          # Apollos.createUser("richard.dubay@newspring.cc", "password")
-          __utils__.echo JSON.stringify Meteor.users.find().count()
-          __utils__.echo "HI"
-          Accounts.createUser
-            email: "richard.dubay@newspring.cc"
-            password: "password"
-          __utils__.echo JSON.stringify Meteor.release
-          done()
-      return
 
-      # casper.then ->
-      #   @.evaluate ->
-      #     __utils__.echo Meteor.users.find().count()
-      # casper.waitFor ->
-      #   @.evaluate ->
-      #     email = "richard.dubay@newspring.cc"
-      #     password = "password"
-      #     Apollos.createUser(email, password)
-      # casper.then ->
-      #   userAccount = @.evaluate ->
-      #     email = "richard.dubay@newspring.cc"
-      #     password = "password"
-      #     thisUser = null
-      #     Apollos.createUser(email, password, ->
-      #       __utils__.echo Meteor.users.find().count()
-      #       thisUser = Meteor.users.findOne( { "emails.address" : email } )
+      casper.waitFor (->
+        @.evaluate ->
+          Apollos.createUser("richard.dubay@newspring.cc", "password", (err) ->
+            false.should.be.true
+            done()
+          )
+        return true
+      ), ->
+        @.echo "then"
+      # casper.waitFor (->
+      #
+      #   test = @.evaluate ->
+      #
+      #     Apollos.createUser("richard.dubay@newspring.cc", "password", (err) ->
+      #       if err
+      #         __utils__.echo err
+      #       else
+      #         __utils__.echo "success"
+      #       __utils__.echo "callback"
+      #       done()
       #     )
       #
-      #     return thisUser
-      #   @.echo userAccount
-      #   createdUser.should.be.true
-      # return
+      #     return true
+      #
+      #   return test
+      #
+      # ), ->
+      #
+      #   count = @.evaluate ->
+      #     return Meteor.users.find().count()
+      #
+      #   @.echo count
+      #   @.echo "second callback"
+      #   false.should.be.true
+      return
+
+
   return
