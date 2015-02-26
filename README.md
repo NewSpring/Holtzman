@@ -8,7 +8,7 @@ redundancy. In order to push changes to both remotes, issue the following
 in your local developer console:
 
 ```bash
-git remote set-url origin --add https://[USERNAME_HERE]@bitbucket.org/NewSpring-Apollos/newspring-core.git
+git remote set-url origin --add https://[USERNAME_HERE]@bitbucket.org/NewSpringChurch/newspring-core.git
 ```
 
 Be sure that you put your own username in that URL! Now that Bitbucket has been
