@@ -16,6 +16,7 @@ Apollos.createUser = (email, password, callback) ->
   __utils__.echo Meteor.users.find().count()
   return
 
+
 Apollos.upsertUserFromRock = (userLogin) ->
 
   user = Meteor.users.findOne

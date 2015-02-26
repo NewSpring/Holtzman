@@ -20,15 +20,22 @@ if serverWatch.getKeys().indexOf(Rock.name) isnt -1
 serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
 
 
-Rock.refreshUserLogins = ->
+Rock.apiRequest = (method, resource, callback) ->
 
   headers = {}
-  headers[Rock.tokenName] = Rock.token
 
-  HTTP.get "#{Rock.baseURL}api/UserLogins",
+  if Rock.tokenName and Rock.token
+    headers[Rock.tokenName] = Rock.token
+
+  HTTP.call method, "#{Rock.baseURL}#{resource}",
     timeout: 2500
     headers: headers
-  , (error, result) ->
+  , callback
+
+
+Rock.refreshUserLogins = ->
+
+  Rock.apiRequest "GET", "api/UserLogins", (error, result) ->
     if error
       console.log error
       return
