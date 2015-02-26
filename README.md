@@ -1,6 +1,19 @@
 # newspring:core
 The main NewSpring namespace and utilities for all newspring packages.
 
+## Mirrored repositories
+
+Apollos code is stored on GitHub and Bitbucket for the added security found in
+redundancy. In order to push changes to both remotes, issue the following
+in your local developer console:
+
+```bash
+git remote set-url origin --add https://[USERNAME_HERE]@bitbucket.org/NewSpring-Apollos/view-newspring.git
+```
+
+Be sure that you put your own username in that URL! Now that Bitbucket has been
+added, commit and push as normal.
+
 ## Developer Interface
 
 ### Rock
@@ -14,7 +27,7 @@ This package exposes a Rock object to the client and server:
 #### Client and Server
 
 * Rock.name - A string to identify the server endpoint by name like "Rock"
-* Rick.isAlive() - A function that returns true if the server at baseUrl has
+* Rock.isAlive() - A function that returns true if the server at baseUrl has
 responded to the most recent ping (30 second intervals).
 
 ### Apollos
@@ -28,6 +41,8 @@ This package exposes an Apollos object to the client and server:
   Accounts.createUser
 </a>
 functionality, but only allows email identifiers (no usernames)
+* Apollos.Validation.isEmail(str) - A function that returns true if the str is a
+valid email formatted string
 
 ## API
 
