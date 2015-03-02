@@ -152,13 +152,17 @@ Rock.refreshUserLogins = (throwErrors) ->
 
 
 Meteor.users.after.insert (userId, doc) ->
-  Rock.createUserLogin doc
+  if doc.updatedBy isnt "Rock"
+    Rock.createUserLogin doc
 
 Meteor.users.after.update (userId, doc) ->
-  Rock.updateUserLogin doc
+
+  if doc.updatedBy isnt "Rock"
+    Rock.updateUserLogin doc
 
 Meteor.users.after.remove (userId, doc) ->
-  Rock.deleteUserLogin doc
+  if doc.updatedBy isnt "Rock"
+    Rock.deleteUserLogin doc
 
 
 Meteor.startup ->

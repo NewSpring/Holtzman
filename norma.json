@@ -29,7 +29,6 @@
       "endpoint": "NewSpring/norma-meteor-load",
       "src": "out/packages/newspring:core/**/*",
       "dest": "out/packages/newspring:core",
-      "version": "0.1.0",
       "org": "newspring",
       "name": "core",
       "package": {
@@ -72,7 +71,8 @@
       },
       "packages": [
         "meteor-platform",
-        "newspring:core"
+        "newspring:core",
+        "msavin:mongol"
       ],
       "platforms": [
         "server",

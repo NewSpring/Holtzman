@@ -67,6 +67,8 @@ Apollos.upsertUserFromRock = (userLogin) ->
   else
     user = users[0]
 
+  mappedDoc.updatedBy = "Rock"
+
   if user
     Meteor.users.update
       _id: user._id
