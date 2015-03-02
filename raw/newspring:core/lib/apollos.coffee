@@ -1,9 +1,20 @@
+###
+
+  The theme of this file is to provide methods that make Apollos (the core
+  part since we're within the core package) do something
+
+###
+
+
+###
+  Client and Server Code Starts Here
+###
+
 Apollos.name = "Apollos"
 
 
 Apollos.createUser = (email, password, callback) ->
 
-  __utils__.echo "create user"
   if !Meteor.isClient
     callback = undefined
 
@@ -13,30 +24,51 @@ Apollos.createUser = (email, password, callback) ->
   ,
     callback
 
-  __utils__.echo Meteor.users.find().count()
+  return
+
+
+###
+  Server Only Code Starts Here
+###
+
+if not Meteor.isServer
   return
 
 
 Apollos.upsertUserFromRock = (userLogin) ->
 
-  user = Meteor.users.findOne
-    "rock.userLoginId": userLogin.Id
+  mappedDoc = Rock.mapUserLoginToUser userLogin
+  query =
+    $or: [
+      "rock.userLoginId": mappedDoc.rock.userLoginId
+    ]
 
-  if not user and Apollos.Validation.isEmail userLogin.UserName
+  if mappedDoc.emails and mappedDoc.emails[0] and mappedDoc.emails[0].address
+    hasEmail = true
+    query["$or"].push
+      "emails.address": mappedDoc.emails[0].address
+
+  users = Meteor.users.find(query).fetch()
+
+  if users.length > 1
+    ids = []
+
+    users.forEach (user) ->
+      ids.push user._id
+
+    throw new Meteor.Error "Rock sync issue", "User doc ids #{ids.join ", "}
+      need investigated because they seem to be duplicates"
+
+  else if users.length is 0 and hasEmail
     tempPassword = String(Date.now() * Math.random())
-    userId = Apollos.createUser userLogin.UserName, tempPassword
+    userId = Apollos.createUser mappedDoc.emails[0].address, tempPassword
     user = Meteor.users.findOne userId
 
+  else
+    user = users[0]
+
   if user
-    set =
-      "rock.personId": userLogin.PersonId
-      "rock.guid": userLogin.Guid
-      "rock.userLoginId": userLogin.Id
-
-    if Apollos.Validation.isBcryptHash userLogin.ApollosHash
-      set["services.password.bcrypt"] = userLogin.ApollosHash
-
     Meteor.users.update
       _id: user._id
     ,
-      $set: set
+      $set: mappedDoc
