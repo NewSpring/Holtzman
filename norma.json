@@ -2,20 +2,24 @@
   "name": "core",
   "tasks": {
     "bower": {
+      "endpoint": "NewSpring/norma-bower",
       "/out": {
         "settings": "https://github.com/NewSpring/settings.git"
       }
     },
     "javascript": {
+      "endpoint": "NewSpring/norma-javascript",
       "src": "raw/**/*",
       "dest": "out/packages"
     },
     "markup": {
+      "endpoint": "NewSpring/norma-markup",
       "src": "raw/**/*",
       "dest": "out/packages",
       "minify": false
     },
     "copy": {
+      "endpoint": "NewSpring/norma-copy",
       "src": "out/packages/",
       "out": "/",
       "dest": "./",
@@ -58,6 +62,7 @@
       }
     },
     "meteor": {
+      "endpoint": "NewSpring/norma-meteor",
       "src": "out",
       "settings": "out/settings/settings.json",
       "build": {
@@ -75,6 +80,7 @@
       ]
     },
     "mocha-casperjs": {
+      "endpoint": "NewSpring/norma-mocha-casperjs",
       "src": "out/packages/newspring:core/tests/**/*"
     }
   },
