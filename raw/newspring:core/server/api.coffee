@@ -44,4 +44,11 @@ api[userURL] =
     return
 
 
+api["#{userURL}:id"] =
+
+  post: (data) ->
+
+  delete: ->
+
+
 HTTP.methods api

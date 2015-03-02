@@ -102,20 +102,46 @@ Rock.apiRequest = (method, resource, data, callback) ->
   , callback
 
 
+Rock.deleteUserLogin = (userDoc) ->
+
+  userLogin = Rock.mapUserToUserLogin userDoc
+
+  Rock.apiRequest "DELETE", "api/UserLogins/#{userLogin.Id}", (error) ->
+    if error
+      console.log "Rock delete failed:"
+      console.log error
+      return
+
+
+Rock.updateUserLogin = (userDoc) ->
+
+  userLogin = Rock.mapUserToUserLogin userDoc
+
+  Rock.apiRequest "POST", "api/UserLogins/#{userLogin.Id}", userLogin, (error) ->
+    if error
+      console.log "Rock update failed:"
+      console.log error
+      return
+
+
 Rock.createUserLogin = (userDoc) ->
 
   userLogin = Rock.mapUserToUserLogin userDoc
 
   Rock.apiRequest "POST", "api/UserLogins", userLogin, (error) ->
     if error
+      console.log "Rock create failed:"
       console.log error
       return
 
 
-Rock.refreshUserLogins = ->
+Rock.refreshUserLogins = (throwErrors) ->
 
   Rock.apiRequest "GET", "api/UserLogins", (error, result) ->
-    if error
+    if error and throwErrors
+      throw new Meteor.Error "Rock sync issue", error
+    else if error
+      console.log "Rock sync failed:"
       console.log error
       return
 
@@ -129,10 +155,12 @@ Meteor.users.after.insert (userId, doc) ->
   Rock.createUserLogin doc
 
 Meteor.users.after.update (userId, doc) ->
-  return
+  Rock.updateUserLogin doc
 
 Meteor.users.after.remove (userId, doc) ->
-  return
+  Rock.deleteUserLogin doc
 
 
-Meteor.startup Rock.refreshUserLogins
+Meteor.startup ->
+  console.log "Attempting to sync data from Rock"
+  Rock.refreshUserLogins true
