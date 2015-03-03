@@ -82,7 +82,7 @@
     },
     "mocha-casperjs": {
       "endpoint": "NewSpring/norma-mocha-casperjs",
-      "src": "out/packages/newspring:core/tests/**/*"
+      "src": "tests/**/*"
     }
   },
   "scripts": {
