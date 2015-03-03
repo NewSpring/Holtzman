@@ -64,6 +64,44 @@ if serverWatch.getKeys().indexOf(Rock.name) isnt -1
 serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
 
 
+
+###
+
+  Rock.apiRequest
+
+  @example make an API call to Rock
+
+    Rock.apiRequest "DELETE", "api/UserLogins/#{user.Id}", (error, data) ->
+      throw err if err
+
+      console.log data
+
+  @param method [String] CRUD Method desired
+  @param resource [String] Url to hit on rock
+  @param data [Object, String, Array] data to send to Rock
+  @param callback [Function] callback to run on response
+
+###
+Rock.apiRequest = (method, resource, data, callback) ->
+
+  if typeof data is "function"
+    callback = data
+    data = undefined
+
+  headers = {}
+
+  if Rock.tokenName and Rock.token
+    headers[Rock.tokenName] = Rock.token
+
+  HTTP.call method, "#{Rock.baseURL}#{resource}",
+    timeout: 2500
+    headers: headers
+    data: data
+  , callback
+
+
+
+
 ###
 
   Rock.user
@@ -145,24 +183,25 @@ Rock.user.checkAccount = (user) ->
     return false
 
 
-Rock.apiRequest = (method, resource, data, callback) ->
-
-  if typeof data is "function"
-    callback = data
-    data = undefined
-
-  headers = {}
-
-  if Rock.tokenName and Rock.token
-    headers[Rock.tokenName] = Rock.token
-
-  HTTP.call method, "#{Rock.baseURL}#{resource}",
-    timeout: 2500
-    headers: headers
-    data: data
-  , callback
 
 
+###
+
+  Rock.apiRequest
+
+  @example make an API call to Rock
+
+    Rock.apiRequest "DELETE", "api/UserLogins/#{user.Id}", (error, data) ->
+      throw err if err
+
+      console.log data
+
+  @param method [String] CRUD Method desired
+  @param resource [String] Url to hit on rock
+  @param data [Object, String, Array] data to send to Rock
+  @param callback [Function] callback to run on response
+
+###
 Rock.user.delete = (user) ->
 
 
@@ -175,6 +214,18 @@ Rock.user.delete = (user) ->
       return
 
 
+
+###
+
+  Rock.user.update
+
+  @example update a user on Rock
+
+    Rock.user.update()
+
+  @param user [Object] User to update
+
+###
 Rock.user.update = (user) ->
 
   user = Rock.user.translate(user)
@@ -186,6 +237,19 @@ Rock.user.update = (user) ->
       return
 
 
+
+
+###
+
+  Rock.user.create
+
+  @example create a user on Rock
+
+    Rock.user.update()
+
+  @param user [Object] User to create
+
+###
 Rock.user.create = (user) ->
 
   user = Rock.user.translate(user)
@@ -197,10 +261,34 @@ Rock.user.create = (user) ->
       return
 
 
+
+###
+
+  Rock.users
+
+  @example return all users synced to Rock
+
+    Rock.users()
+
+  @todo write lookup
+
+###
 Rock.users = ->
   # Apollos.users.find([])
   return
 
+
+###
+
+  Rock.users.refresh
+
+  @example refesh all users from Rock
+
+    Rock.user.refresh()
+
+  @param throwErrors [Boolean] switch to silence error throwing
+
+###
 Rock.users.refresh = (throwErrors) ->
 
   Rock.apiRequest "GET", "api/UserLogins", (error, result) ->
@@ -215,22 +303,3 @@ Rock.users.refresh = (throwErrors) ->
 
     for user in users
       Apollos.user.update user
-
-
-Apollos.users.after.insert (userId, doc) ->
-  if doc.updatedBy isnt "Rock"
-    Rock.user.create doc
-
-Apollos.users.after.update (userId, doc) ->
-
-  if doc.updatedBy isnt "Rock"
-    Rock.user.update doc
-
-Apollos.users.after.remove (userId, doc) ->
-  if doc.updatedBy isnt "Rock"
-    Rock.user.delete doc
-
-
-Meteor.startup ->
-  debug "Attempting to sync data from Rock"
-  Rock.users.refresh true

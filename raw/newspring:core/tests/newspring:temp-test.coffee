@@ -26,7 +26,7 @@ describe 'Rock/Apollos User Sync Testing', ->
     it 'should verify Apollos.createUser is a function', ->
       casper.then ->
         createUserIsAFunction = @.evaluate ->
-          return typeof Apollos.createUser is "function"
+          return typeof Apollos.user.create is "function"
         createUserIsAFunction.should.be.true
       return
 
@@ -34,7 +34,7 @@ describe 'Rock/Apollos User Sync Testing', ->
 
       casper.waitFor (->
         @.evaluate ->
-          Apollos.createUser("richard.dubay@newspring.cc", "password", (err) ->
+          Apollos.user.create("richard.dubay@newspring.cc", "password", (err) ->
             false.should.be.true
             done()
           )

@@ -111,6 +111,7 @@ Apollos.user.translate = (user, platform) ->
       return existingUser
 
 
+
 Apollos.user.update = (user) ->
 
   user = Apollos.user.translate(user)
@@ -156,3 +157,27 @@ Apollos.user.update = (user) ->
       _id: usr._id
     ,
       $set: user
+
+
+
+###
+
+  Update bindings
+
+###
+
+# created
+Apollos.users.after.insert (userId, doc) ->
+  if doc.updatedBy isnt "Rock"
+    Rock.user.create doc
+
+# updated
+Apollos.users.after.update (userId, doc) ->
+
+  if doc.updatedBy isnt "Rock"
+    Rock.user.update doc
+
+# deleted
+Apollos.users.after.remove (userId, doc) ->
+  if doc.updatedBy isnt "Rock"
+    Rock.user.delete doc
