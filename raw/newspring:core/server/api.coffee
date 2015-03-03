@@ -46,9 +46,15 @@ api[userURL] =
 
 api["#{userURL}:id"] =
 
-  post: (data) ->
+  post: (user) ->
 
-  delete: ->
+    user = Rock.user.translate(user, "apollos")
+    
+    # Apollos.user.create
+
+
+  delete: (user) ->
+
 
 
 HTTP.methods api

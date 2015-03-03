@@ -112,7 +112,23 @@ Apollos.user.translate = (user, platform) ->
 
 
 
-Apollos.user.update = (user) ->
+###
+
+  Apollos.user.update
+
+  @example update a usr in apollos with data from Rock
+
+    Apollos.user.translate([obj, platform])
+
+  @param user [Object] existing user from other service to be updated
+  @param platform [String] platform to be update from
+
+###
+Apollos.user.update = (user, platform) ->
+
+  # platform doesn't do anything right now
+  # eventually this will contain hooks for updating
+  # Apollos from different services
 
   user = Apollos.user.translate(user)
 
@@ -168,16 +184,16 @@ Apollos.user.update = (user) ->
 
 # created
 Apollos.users.after.insert (userId, doc) ->
-  if doc.updatedBy isnt "Rock"
+  if doc.updatedBy isnt "Rock" and Rock.isAlive()
     Rock.user.create doc
 
 # updated
 Apollos.users.after.update (userId, doc) ->
 
-  if doc.updatedBy isnt "Rock"
+  if doc.updatedBy isnt "Rock" and Rock.isAlive()
     Rock.user.update doc
 
 # deleted
 Apollos.users.after.remove (userId, doc) ->
-  if doc.updatedBy isnt "Rock"
+  if doc.updatedBy isnt "Rock" and Rock.isAlive()
     Rock.user.delete doc
