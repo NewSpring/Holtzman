@@ -1,6 +1,15 @@
 Rock = {};
 Apollos = {};
-debug = console.log
+debug = function(){
+  var log = console.log
+
+  if (Meteor.isClient) {
+    log = __utils__.echo || console.log
+  }
+
+  log.apply(null, arguments);
+
+}
 
 Campuses = new Mongo.Collection("campuses");
 Funds = new Mongo.Collection("funds");

@@ -5,6 +5,14 @@ describe 'Rock/Apollos User Sync Testing', ->
     casper.start 'http://localhost:3000'
     return
 
+  beforeEach (done) ->
+    casper.then ->
+      @.evaluate ->
+        # Need to write a delete method using a a testing shim
+        Meteor.logout()
+
+    done()
+
   describe 'Verify Meteor', ->
 
     it 'we should have a Meteor object', ->
@@ -30,18 +38,25 @@ describe 'Rock/Apollos User Sync Testing', ->
         userDotCreateIsAFunction.should.be.true
       return
 
+
     it 'should create an Apollos user', (done) ->
 
-      casper.waitFor (->
+      casper.then ->
+
         @.evaluate ->
-          Apollos.user.create("richard.dubay@newspring.cc", "password", (err) ->
-            false.should.be.true
-            done()
+          Apollos.user.create(
+            "web@newspring.cc"
+            "testPassword"
+            (err, data) ->
+              if err
+                __utils__.echo err
+
+              window.userCreated = true
+
           )
-        return true
+
+      casper.waitFor (->
+        return @.getGlobal("userCreated") is true
       ), ->
-        @.echo "then"
-      return
-
-
-  return
+        true.should.be.true
+        done()

@@ -22,16 +22,26 @@ Apollos.user = ->
   return user
 
 
+Meteor.methods({
+  "foobar": () ->
+    return Meteor.users.find().count()
+})
+
 Apollos.user.create = (email, password, callback) ->
 
+  debug email
+
   if !Meteor.isClient
-    callback = undefined
+    cb = undefined
+  else
+    cb = (err) ->
+      callback(err)
 
   Accounts.createUser
     email: email
     password: password
   ,
-    callback
+    cb
 
   return
 
