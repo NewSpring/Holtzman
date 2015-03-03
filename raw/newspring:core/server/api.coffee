@@ -40,7 +40,7 @@ api[userURL] =
       return handleAuthenticationError.call this
 
     userLogin = parseRequestData data, this.requestHeaders["content-type"]
-    Apollos.upsertUserFromRock userLogin
+    Apollos.user.update userLogin
     return
 
 

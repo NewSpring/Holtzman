@@ -1,5 +1,6 @@
 Rock = {};
 Apollos = {};
+debug = console.log
 
 Campuses = new Mongo.Collection("campuses");
 Funds = new Mongo.Collection("funds");

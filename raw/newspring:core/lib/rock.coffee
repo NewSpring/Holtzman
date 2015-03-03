@@ -13,75 +13,136 @@
 Rock.name = "Rock"
 
 
-Rock.isAlive = ->
+###
 
-  serverWatch.isAlive Rock.name
+  Rock.isAlive
+
+  @example See if Rock is online
+    if (Rock.isAlive())
+      debug "its alive!"
 
 
 ###
+Rock.isAlive = ->
+
+  serverWatch.isAlive(Rock.name)
+
+
+###
+
+  Client Only
+
+###
+
+if Meteor.isClient
+
+  Template.registerHelper("Rock", Rock)
+
+
+
+
+###
+
   Server Only Code Starts Here
+
 ###
 
 if not Meteor.isServer
   return
 
 
+# Bind variabls to Rock
 Rock.tokenName = Meteor.settings.rock.tokenName
 Rock.baseURL = Meteor.settings.rock.baseURL
 Rock.token = Meteor.settings.rock.token
 
-
+# If Rock is being watched (aka old states), remove watching
 if serverWatch.getKeys().indexOf(Rock.name) isnt -1
   serverWatch.stopWatching Rock.name
 
+# Start watching again
 serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
 
 
-Rock.mapUserToUserLogin = (userDoc, userLogin) ->
+###
 
-  userLogin = userLogin or {}
+  Rock.user
 
-  userLogin.PersonId = userDoc.rock.personId
-  userLogin.Guid = userDoc.rock.guid
-  userLogin.Id = userDoc.rock.userLoginId
-  userLogin.UserName = userDoc.emails[0].address
-  userLogin.ApollosHash = userDoc.services.password.bcrypt
+  @example return current logged in user in Rock format
 
-  return userLogin
+    rockUser = Rock.user()
 
 
-Rock.mapUserLoginToUser = (userLogin, userDoc) ->
+###
+Rock.user = ->
 
-  userDoc = userDoc or {}
-  userDoc.rock = userDoc.rock or {}
-
-  userDoc.rock.personId = userLogin.PersonId
-  userDoc.rock.guid = userLogin.Guid
-  userDoc.rock.userLoginId = userLogin.Id
-
-  if Apollos.Validation.isEmail userLogin.UserName
-    userDoc.emails = userDoc.emails or []
-    userDoc.emails[0] = userDoc.emails[0] or {}
-    userDoc.emails[0].address = userLogin.UserName
-
-  if Apollos.Validation.isBcryptHash userLogin.ApollosHash
-    userDoc.services = userDoc.services or {}
-    userDoc.services.password = userDoc.services.password or {}
-    userDoc.services.password.bcrypt = userLogin.ApollosHash
-
-  return userDoc
+  Rock.user.translate()
 
 
-Rock.checkUserLogin = (userLogin) ->
 
-  check userLogin,
-    PersonId: Number
-    Guid: String
-    Id: Number
-    UserName: String
-    ApollosHash: String
 
-  return true
+###
+
+  Rock.user.translate
+
+  @example take data from a service and format it for Rock
+
+    Rock.user.translate([obj, platform])
+
+  @param user [Object] existing object to be translated
+  @param platform [String] platform to be translated to
+
+###
+Rock.user.translate = (user, platform) ->
+
+  if !platform
+    platform = "Apollos"
+
+  # forced uppercase to make case insensitive strings
+  switch platform.toUpperCase()
+    when "APOLLOS"
+      if !user
+        user = Apollos.user()
+
+      rockUser =
+        PersonId: user.rock.personId
+        Guid: user.rock.guid
+        Id: user.rock.userLoginId
+        UserName: user.emails[0].address
+        ApollosHash: user.services.password.bcrypt
+
+      return rockUser
+
+
+
+
+###
+
+  Rock.user.checkAccount
+
+  @example verify account information is correct
+
+    Rock.user.checkAccount([obj])
+
+  @param user [Object] existing object to be validated
+
+###
+Rock.user.checkAccount = (user) ->
+
+  if !user
+    user = Rock.user.translate()
+
+  try
+    check user,
+      PersonId: Number
+      Guid: String
+      Id: Number
+      UserName: String
+      ApollosHash: String
+
+    return true
+  catch e
+    return false
 
 
 Rock.apiRequest = (method, resource, data, callback) ->
@@ -102,69 +163,74 @@ Rock.apiRequest = (method, resource, data, callback) ->
   , callback
 
 
-Rock.deleteUserLogin = (userDoc) ->
+Rock.user.delete = (user) ->
 
-  userLogin = Rock.mapUserToUserLogin userDoc
 
-  Rock.apiRequest "DELETE", "api/UserLogins/#{userLogin.Id}", (error) ->
+  user = Rock.user.translate(user)
+
+  Rock.apiRequest "DELETE", "api/UserLogins/#{user.Id}", (error) ->
     if error
-      console.log "Rock delete failed:"
-      console.log error
+      debug "Rock delete failed:"
+      debug error
       return
 
 
-Rock.updateUserLogin = (userDoc) ->
+Rock.user.update = (user) ->
 
-  userLogin = Rock.mapUserToUserLogin userDoc
+  user = Rock.user.translate(user)
 
-  Rock.apiRequest "POST", "api/UserLogins/#{userLogin.Id}", userLogin, (error) ->
+  Rock.apiRequest "POST", "api/UserLogins/#{user.Id}", userLogin, (error) ->
     if error
-      console.log "Rock update failed:"
-      console.log error
+      debug "Rock update failed:"
+      debug error
       return
 
 
-Rock.createUserLogin = (userDoc) ->
+Rock.user.create = (user) ->
 
-  userLogin = Rock.mapUserToUserLogin userDoc
+  user = Rock.user.translate(user)
 
-  Rock.apiRequest "POST", "api/UserLogins", userLogin, (error) ->
+  Rock.apiRequest "POST", "api/UserLogins", user, (error) ->
     if error
-      console.log "Rock create failed:"
-      console.log error
+      debug "Rock create failed:"
+      debug error
       return
 
 
-Rock.refreshUserLogins = (throwErrors) ->
+Rock.users = ->
+  # Apollos.users.find([])
+  return
+
+Rock.users.refresh = (throwErrors) ->
 
   Rock.apiRequest "GET", "api/UserLogins", (error, result) ->
     if error and throwErrors
       throw new Meteor.Error "Rock sync issue", error
     else if error
-      console.log "Rock sync failed:"
-      console.log error
+      debug "Rock sync failed:"
+      debug error
       return
 
-    userLogins = result.data
+    users = result.data
 
-    for userLogin in userLogins
-      Apollos.upsertUserFromRock userLogin
+    for user in users
+      Apollos.user.update user
 
 
-Meteor.users.after.insert (userId, doc) ->
+Apollos.users.after.insert (userId, doc) ->
   if doc.updatedBy isnt "Rock"
-    Rock.createUserLogin doc
+    Rock.user.create doc
 
-Meteor.users.after.update (userId, doc) ->
+Apollos.users.after.update (userId, doc) ->
 
   if doc.updatedBy isnt "Rock"
-    Rock.updateUserLogin doc
+    Rock.user.update doc
 
-Meteor.users.after.remove (userId, doc) ->
+Apollos.users.after.remove (userId, doc) ->
   if doc.updatedBy isnt "Rock"
-    Rock.deleteUserLogin doc
+    Rock.user.delete doc
 
 
 Meteor.startup ->
-  console.log "Attempting to sync data from Rock"
-  Rock.refreshUserLogins true
+  debug "Attempting to sync data from Rock"
+  Rock.users.refresh true

@@ -1,4 +1,4 @@
-Apollos.Validation =
+Apollos.validate =
 
   isEmail: (str) ->
 

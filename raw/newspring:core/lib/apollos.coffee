@@ -13,7 +13,16 @@
 Apollos.name = "Apollos"
 
 
-Apollos.createUser = (email, password, callback) ->
+Apollos.user = ->
+  user = Meteor.user()
+
+  if !user
+    user = {}
+
+  return user
+
+
+Apollos.user.create = (email, password, callback) ->
 
   if !Meteor.isClient
     callback = undefined
@@ -27,50 +36,123 @@ Apollos.createUser = (email, password, callback) ->
   return
 
 
+
+
+Apollos.users = Meteor.users
+
 ###
+
   Server Only Code Starts Here
+
 ###
 
 if not Meteor.isServer
   return
 
 
-Apollos.upsertUserFromRock = (userLogin) ->
+###
 
-  mappedDoc = Rock.mapUserLoginToUser userLogin
+  Apollos.user.translate
+
+  @example take data from a service and format it for Apollos
+
+    Apollos.user.translate([obj, platform])
+
+  @param user [Object] existing object to be translated
+  @param platform [String] platform to be translated to
+
+###
+Apollos.user.translate = (user, platform) ->
+
+  # Default to Rock
+  if !platform
+    platform = "Rock"
+
+
+
+  # forced uppercase to make case insensitive strings
+  switch platform.toUpperCase()
+    when "ROCK"
+      # Grab existing user for merging if
+      if user
+        query =
+          $or: [
+            "rock.userLoginId": user.Id
+          ]
+
+        existingUser = Meteor.users.findOne(query)
+
+        if !existingUser then existingUser = {}
+      else
+        existingUser = Apollos.user()
+        user = Rock.user()
+
+
+      # add rock property
+      existingUser.rock = existingUser.rock or {}
+
+      # map properties from Rock to Apollos
+      existingUser.rock.personId = user.PersonId
+      existingUser.rock.guid = user.Guid
+      existingUser.rock.userLoginId = user.Id
+
+      # If we are forcing usernames
+      if Apollos.validate.isEmail user.UserName
+        existingUser.emails = existingUser.emails or []
+        existingUser.emails[0] = existingUser.emails[0] or {}
+        existingUser.emails[0].address = user.UserName
+
+      # forcing bcrypt hashing
+      if Apollos.validate.isBcryptHash user.ApollosHash
+        existingUser.services = existingUser.services or {}
+        existingUser.services.password = existingUser.services.password or {}
+        existingUser.services.password.bcrypt = user.ApollosHash
+
+      return existingUser
+
+
+Apollos.user.update = (user) ->
+
+  user = Apollos.user.translate(user)
+
   query =
     $or: [
-      "rock.userLoginId": mappedDoc.rock.userLoginId
+      "rock.userLoginId": user.rock.userLoginId
     ]
 
-  if mappedDoc.emails and mappedDoc.emails[0] and mappedDoc.emails[0].address
+  if user.emails and user.emails[0] and user.emails[0].address
     hasEmail = true
     query["$or"].push
-      "emails.address": mappedDoc.emails[0].address
+      "emails.address": user.emails[0].address
 
   users = Meteor.users.find(query).fetch()
+
 
   if users.length > 1
     ids = []
 
-    users.forEach (user) ->
-      ids.push user._id
+    users.forEach (usr) ->
+      ids.push usr._id
 
     throw new Meteor.Error "Rock sync issue", "User doc ids #{ids.join ", "}
       need investigated because they seem to be duplicates"
 
   else if users.length is 0 and hasEmail
     tempPassword = String(Date.now() * Math.random())
-    userId = Apollos.createUser mappedDoc.emails[0].address, tempPassword
-    user = Meteor.users.findOne userId
+    userId = Apollos.user.create user.emails[0].address, tempPassword
+    usr = Meteor.users.findOne userId
 
   else
-    user = users[0]
+    usr = users[0]
 
-  mappedDoc.updatedBy = "Rock"
+  user.updatedBy = "Rock"
 
-  if user
+  # can't upsert with _id present
+  delete user._id
+
+  if usr
+
     Meteor.users.update
-      _id: user._id
+      _id: usr._id
     ,
-      $set: mappedDoc
+      $set: user

@@ -33,3 +33,5 @@ build
 out
 bower.json
 settings.json
+
+.DS_Store
