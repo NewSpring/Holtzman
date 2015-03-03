@@ -23,11 +23,11 @@ describe 'Rock/Apollos User Sync Testing', ->
         apollosIsAnObject.should.be.true
       return
 
-    it 'should verify Apollos.createUser is a function', ->
+    it 'should verify Apollos.user.create is a function', ->
       casper.then ->
-        createUserIsAFunction = @.evaluate ->
+        userDotCreateIsAFunction = @.evaluate ->
           return typeof Apollos.user.create is "function"
-        createUserIsAFunction.should.be.true
+        userDotCreateIsAFunction.should.be.true
       return
 
     it 'should create an Apollos user', (done) ->
@@ -41,31 +41,6 @@ describe 'Rock/Apollos User Sync Testing', ->
         return true
       ), ->
         @.echo "then"
-      # casper.waitFor (->
-      #
-      #   test = @.evaluate ->
-      #
-      #     Apollos.createUser("richard.dubay@newspring.cc", "password", (err) ->
-      #       if err
-      #         __utils__.echo err
-      #       else
-      #         __utils__.echo "success"
-      #       __utils__.echo "callback"
-      #       done()
-      #     )
-      #
-      #     return true
-      #
-      #   return test
-      #
-      # ), ->
-      #
-      #   count = @.evaluate ->
-      #     return Meteor.users.find().count()
-      #
-      #   @.echo count
-      #   @.echo "second callback"
-      #   false.should.be.true
       return
 
 
