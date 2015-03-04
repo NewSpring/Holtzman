@@ -49,11 +49,22 @@ api["#{userURL}:id"] =
   post: (user) ->
 
     user = Rock.user.translate(user, "apollos")
-
-    # Apollos.user.create
+    Apollos.user.create user
 
 
   delete: (user) ->
+
+    ###
+
+      @question
+        Should this simply disable the user? Do we ever want to
+        have a delete option? I guess it could delete the login portion
+        which is what it is doing now. Food for thought
+    
+    ###
+
+    user = Rock.user.translate(user, "apollos")
+    Apollos.user.delete user
 
 
 
