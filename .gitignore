@@ -28,7 +28,6 @@ node_modules
 .lock-wscript
 
 .norma
-package.json
 build
 out
 bower.json
