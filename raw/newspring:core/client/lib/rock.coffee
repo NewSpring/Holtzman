@@ -4,6 +4,5 @@
 
 ###
 
-if Meteor.isClient
 
-  Template.registerHelper("Rock", Rock)
+Template.registerHelper("Rock", Rock)

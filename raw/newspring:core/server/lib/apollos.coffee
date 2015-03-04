@@ -16,7 +16,7 @@ Apollos.user.translate = (user, platform) ->
 
   # Default to Rock
   if !platform
-    platform = "Rock"
+    platform = Rock.name
 
 
 
@@ -25,10 +25,7 @@ Apollos.user.translate = (user, platform) ->
     when "ROCK"
       # Grab existing user for merging if
       if user
-        query =
-          $or: [
-            "rock.userLoginId": user.Id
-          ]
+        query = "rock.userLoginId": user.Id
 
         existingUser = Meteor.users.findOne(query)
 
@@ -46,13 +43,13 @@ Apollos.user.translate = (user, platform) ->
       existingUser.rock.guid = user.Guid
       existingUser.rock.userLoginId = user.Id
 
-      # If we are forcing usernames
+      # If we have a vaildated email
       if Apollos.validate.isEmail user.UserName
         existingUser.emails = existingUser.emails or []
         existingUser.emails[0] = existingUser.emails[0] or {}
         existingUser.emails[0].address = user.UserName
 
-      # forcing bcrypt hashing
+      # if the password is a hashed thing
       if Apollos.validate.isBcryptHash user.ApollosHash
         existingUser.services = existingUser.services or {}
         existingUser.services.password = existingUser.services.password or {}
@@ -112,7 +109,7 @@ Apollos.user.update = (user, platform) ->
   else
     usr = users[0]
 
-  user.updatedBy = "Rock"
+  user.updatedBy = Rock.name
 
   # can't upsert with _id present
   delete user._id
@@ -134,16 +131,16 @@ Apollos.user.update = (user, platform) ->
 
 # created
 Apollos.users.after.insert (userId, doc) ->
-  if doc.updatedBy isnt "Rock" and Rock.isAlive()
+  if doc.updatedBy isnt "Rock"
     Rock.user.create doc
 
 # updated
 Apollos.users.after.update (userId, doc) ->
 
-  if doc.updatedBy isnt "Rock" and Rock.isAlive()
+  if doc.updatedBy isnt "Rock"
     Rock.user.update doc
 
 # deleted
 Apollos.users.after.remove (userId, doc) ->
-  if doc.updatedBy isnt "Rock" and Rock.isAlive()
+  if doc.updatedBy isnt "Rock"
     Rock.user.delete doc

@@ -33,6 +33,10 @@ serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
 ###
 Rock.apiRequest = (method, resource, data, callback) ->
 
+  if !Rock.isAlive()
+    # build queue system here!
+    return
+
   if typeof data is "function"
     callback = data
     data = undefined
@@ -83,7 +87,7 @@ Rock.user = ->
 Rock.user.translate = (user, platform) ->
 
   if !platform
-    platform = "Apollos"
+    platform = Apollos.name
 
   # forced uppercase to make case insensitive strings
   switch platform.toUpperCase()
@@ -131,6 +135,7 @@ Rock.user.checkAccount = (user) ->
 
     return true
   catch e
+    debug e
     return false
 
 
@@ -138,7 +143,7 @@ Rock.user.checkAccount = (user) ->
 
 ###
 
-  Rock.apiRequest
+  Rock.user.delete
 
   @example make an API call to Rock
 
@@ -225,6 +230,7 @@ Rock.user.create = (user) ->
 
 ###
 Rock.users = ->
+
   # Apollos.users.find([])
   return
 

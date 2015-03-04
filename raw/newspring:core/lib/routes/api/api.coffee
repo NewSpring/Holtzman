@@ -4,6 +4,8 @@
 
 ###
 
+if !Meteor.server
+  return
 
 baseURL = "api/v1/"
 userURL = "#{baseURL}userlogins/"
@@ -30,7 +32,13 @@ authenticate = ->
   return sentToken is token
 
 
-api[userURL] =
+# api[userURL] =
+#
+#
+
+
+api["#{userURL}:id"] =
+
 
   post: (data) ->
 
@@ -44,23 +52,21 @@ api[userURL] =
     return
 
 
-api["#{userURL}:id"] =
+  delete: (data) ->
 
-  post: (user) ->
+    this.setContentType jsonContentType
 
-    user = Rock.user.translate(user, "apollos")
-    Apollos.user.create user
+    if not authenticate.call this
+      return handleAuthenticationError.call this
 
-
-  delete: (user) ->
-
+    user = parseRequestData data, this.requestHeaders["content-type"]
     ###
 
       @question
         Should this simply disable the user? Do we ever want to
         have a delete option? I guess it could delete the login portion
         which is what it is doing now. Food for thought
-    
+
     ###
 
     user = Rock.user.translate(user, "apollos")
@@ -68,4 +74,4 @@ api["#{userURL}:id"] =
 
 
 
-# HTTP.methods api
+HTTP.methods api
