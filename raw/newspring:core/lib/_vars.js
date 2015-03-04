@@ -1,5 +1,25 @@
+/*
+
+  Exported Variables to be used by other apps/packages
+
+*/
+
 Rock = {};
 Apollos = {};
+Campuses = {};
+Fund = {};
+Locations = {};
+People = {};
+SavedAccounts = {};
+ScheduledTransactions = {};
+Transactions = {};
+
+/*
+
+  Local Variables to be used across files in this app
+
+*/
+GeoJSON = {};
 debug = function(){
   var log = console.log
 
@@ -10,11 +30,3 @@ debug = function(){
   log.apply(null, arguments);
 
 }
-
-Campuses = new Mongo.Collection("campuses");
-Funds = new Mongo.Collection("funds");
-Locations = new Mongo.Collection("locations");
-People = new Mongo.Collection("people");
-SavedAccounts = new Mongo.Collection("savedAccounts");
-ScheduledTransactions = new Mongo.Collection("scheduledTransactions");
-Transactions = new Mongo.Collection("transactions");

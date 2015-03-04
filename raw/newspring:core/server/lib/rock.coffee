@@ -143,11 +143,13 @@ Rock.user.translate = (user, platform) ->
         user = Apollos.user()
 
       rockUser =
-        PersonId: user.rock.personId
-        Guid: user.rock.guid
-        Id: user.rock.userLoginId
         UserName: user.emails[0].address
         ApollosHash: user.services.password.bcrypt
+
+      if user.rock
+        rockUser.PersonId = user.rock.personId
+        rockUser.Guid = user.rock.guid
+        rockUser.Id = user.rock.userLoginId
 
       return rockUser
 

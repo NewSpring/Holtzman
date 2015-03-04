@@ -49,7 +49,7 @@ api["#{userURL}:id"] =
   post: (user) ->
 
     user = Rock.user.translate(user, "apollos")
-    
+
     # Apollos.user.create
 
 
@@ -57,4 +57,4 @@ api["#{userURL}:id"] =
 
 
 
-HTTP.methods api
+# HTTP.methods api
