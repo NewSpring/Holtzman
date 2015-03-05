@@ -28,7 +28,7 @@ and is set in the settings.json
 the name by which the token is referred to in API requests to Rock
 * Rock.token - A string with the value from the settings.json representing
 the token by which API requests to Rock can authenticate
-* Rock.refreshUserLogins() - A function that queries Rock for userlogins at
+* Rock.users.refresh() - A function that queries Rock for userlogins at
 api/UserLogin and upserts users based on the result. This is run at Meteor
 startup.
 * Rock.apiRequest(method, resource, callback) - A function that makes an API
@@ -47,19 +47,19 @@ This package exposes an Apollos object to the client and server:
 
 #### Client and Server
 
-* Apollos.createUser(email, password) - A function that simply exposes
+* Apollos.user.create(email, password) - A function that simply exposes
 <a href="http://docs.meteor.com/#/full/accounts_oncreateuser">
   Accounts.createUser
 </a>
 functionality, but only allows email identifiers (no usernames)
-* Apollos.upsertUserFromRock(userLogin) - A function that upserts a user based
+* Apollos.user.update(userLogin, platform) - A function that upserts a user based
 on the userLogin.Id
 
-### Apollos.Validation
+### Apollos.validation
 
-* Apollos.Validation.isEmail(str) - A function that returns true if the str is a
+* Apollos.validation.isEmail(str) - A function that returns true if the str is a
 valid email formatted string
-* Apollos.Validation.isBcryptHash(str) - A function that returns true if the str
+* Apollos.validation.isBcryptHash(str) - A function that returns true if the str
 is a valid Bcrypt hash
 
 ## API
