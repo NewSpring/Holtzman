@@ -23,10 +23,10 @@ GeoJSON = {};
 debug = function(){
   var log = console.log
 
-  if (Meteor.isClient) {
-    log = __utils__.echo || console.log
-  }
+  // if (Meteor.isClient) {
+  //   log = __utils__ ? __utils__.echo : console.log
+  // }
 
-  log.apply(null, arguments);
+  log.apply(console, Array.prototype.slice.call(arguments));
 
 }

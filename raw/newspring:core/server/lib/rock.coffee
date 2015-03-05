@@ -111,16 +111,16 @@ Rock.user.translate = (user, platform) ->
 
 ###
 
-  Rock.user.checkAccount
+  Rock.user.check
 
   @example verify account information is correct
 
-    Rock.user.checkAccount([obj])
+    Rock.user.check([obj])
 
   @param user [Object] existing object to be validated
 
 ###
-Rock.user.checkAccount = (user) ->
+Rock.user.check = (user) ->
 
   if !user
     user = Rock.user.translate()
@@ -184,9 +184,15 @@ Rock.user.delete = (user) ->
 ###
 Rock.user.update = (user) ->
 
-  user = Rock.user.translate(user)
+  rockUser = Rock.user.translate(user)
 
-  Rock.apiRequest "POST", "api/UserLogins/#{user.Id}", userLogin, (error) ->
+  if !rockUser.PersonId or !rockUser.Guid or !rockUser.Id
+    Rock.user.create user
+    return
+
+  rockUser = Rock.user.check user
+
+  Rock.apiRequest "POST", "api/UserLogins/#{rockUser.Id}", rockUser, (error) ->
     if error
       debug "Rock update failed:"
       debug error
@@ -207,6 +213,7 @@ Rock.user.update = (user) ->
 
 ###
 Rock.user.create = (user) ->
+
 
   user = Rock.user.translate(user)
 

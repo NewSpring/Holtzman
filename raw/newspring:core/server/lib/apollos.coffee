@@ -91,7 +91,6 @@ Apollos.user.update = (user, platform) ->
 
   users = Meteor.users.find(query).fetch()
 
-
   if users.length > 1
     ids = []
 
@@ -103,7 +102,7 @@ Apollos.user.update = (user, platform) ->
 
   else if users.length is 0 and hasEmail
     tempPassword = String(Date.now() * Math.random())
-    userId = Apollos.user.create user.emails[0].address, tempPassword
+    userId = Apollos.user.create(user.emails[0].address, tempPassword)
     usr = Meteor.users.findOne userId
 
   else
@@ -113,6 +112,7 @@ Apollos.user.update = (user, platform) ->
 
   # can't upsert with _id present
   delete user._id
+
 
   if usr
 
@@ -130,9 +130,12 @@ Apollos.user.update = (user, platform) ->
 ###
 
 # created
-Apollos.users.after.insert (userId, doc) ->
-  if doc.updatedBy isnt "Rock"
-    Rock.user.create doc
+# Apollos.users.after.insert (userId, doc) ->
+#
+#   console.log doc, "insert"
+#   # if doc.updatedBy isnt "Rock"
+#   #   Rock.user.create doc
+
 
 # updated
 Apollos.users.after.update (userId, doc) ->

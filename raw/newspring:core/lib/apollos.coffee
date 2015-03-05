@@ -22,13 +22,11 @@ Apollos.user.create = (email, password, callback) ->
 
   debug email
 
-  Accounts.createUser
+  return Accounts.createUser
     email: email
     password: password
   ,
     callback
-
-  return
 
 
 
