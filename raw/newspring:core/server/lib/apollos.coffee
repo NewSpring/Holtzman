@@ -41,9 +41,17 @@ Apollos.user.translate = (user, platform) ->
       existingUser.rock = existingUser.rock or {}
 
       # map properties from Rock to Apollos
-      existingUser.rock.personId = Number(user.PersonId)
+      if user.PersonId
+        existingUser.rock.personId = Number(user.PersonId)
+      else
+        existingUser.rock.personId = null
+
       existingUser.rock.guid = user.Guid
-      existingUser.rock.userLoginId = Number(user.Id)
+
+      if user.Id
+        existingUser.rock.userLoginId = Number(user.Id)
+      else
+        existingUser.rock.userLoginId = null
 
       # If we have a vaildated email
       if Apollos.validate.isEmail user.UserName
@@ -145,6 +153,8 @@ Apollos.user.update = (user, platform) ->
       _id: usr._id
     ,
       $set: user
+
+    return usr._id
 
 
 

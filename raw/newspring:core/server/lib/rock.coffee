@@ -289,6 +289,17 @@ Rock.users.refresh = (throwErrors) ->
       return
 
     users = result.data
+    userIdsSynced = []
 
     for user in users
-      Apollos.user.update user, Rock.name
+      userDocId = Apollos.user.update user, Rock.name
+
+      if userDocId
+        userIdsSynced.push userDocId
+
+    usersRockDoesNotHave = Apollos.users.find
+      _id:
+        $nin: userIdsSynced
+
+    for userDoc in usersRockDoesNotHave.fetch()
+      Rock.user.create userDoc
