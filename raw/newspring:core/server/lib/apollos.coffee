@@ -41,9 +41,9 @@ Apollos.user.translate = (user, platform) ->
       existingUser.rock = existingUser.rock or {}
 
       # map properties from Rock to Apollos
-      existingUser.rock.personId = user.PersonId
+      existingUser.rock.personId = Number(user.PersonId)
       existingUser.rock.guid = user.Guid
-      existingUser.rock.userLoginId = user.Id
+      existingUser.rock.userLoginId = Number(user.Id)
 
       # If we have a vaildated email
       if Apollos.validate.isEmail user.UserName
@@ -63,15 +63,23 @@ Apollos.user.translate = (user, platform) ->
 
 Apollos.user.delete = (user, platform) ->
 
+  # Apollos.users.update user, platform
+  if platform and platform.toUpperCase() is Rock.name.toUpperCase()
+    user.updatedBy = Rock.name
+  else
+    user.updatedBy = Apollos.name
 
-  Apollos.users.remove(
-    {
-      _id: user._id
-    },
-    {
-      justOne: true
-    }
-  )
+
+  Meteor.users.update
+    _id: user._id
+  ,
+    $set:
+      "updatedBy": user.updatedBy
+
+
+  console.log "trying to remove #{user._id} with a platform of #{user.updatedBy}"
+
+  Apollos.users.remove(user._id)
 
 ###
 
@@ -163,7 +171,8 @@ Apollos.users.find().observe({
 
   removed: (doc) ->
 
-    Rock.user.delete doc
+    if doc.updatedBy isnt "Rock"
+      Rock.user.delete doc, Rock.name
 
     return
 

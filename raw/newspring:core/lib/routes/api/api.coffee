@@ -55,8 +55,6 @@ api["#{userURL}:id"] =
 
   delete: (data) ->
 
-    console.log @.params.id
-
     @.setContentType jsonContentType
 
     if not authenticate.call @

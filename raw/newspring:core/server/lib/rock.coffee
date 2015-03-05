@@ -93,7 +93,16 @@ Rock.user.translate = (user, platform) ->
   switch platform.toUpperCase()
     when "APOLLOS"
       if !user
-        user = Apollos.user()
+        # user = Apollos.user()
+        user = {
+          emails: [
+            address: null
+          ]
+          services:
+            password:
+              bcrypt: null
+        }
+
 
       rockUser =
         UserName: user.emails[0].address
@@ -127,7 +136,7 @@ Rock.user.check = (user) ->
 
   try
     check user,
-      # PersonId: Number
+      # PersonId: Number || null
       Guid: String
       Id: Number
       UserName: String
@@ -165,7 +174,9 @@ Rock.user.delete = (user) ->
   if !user.Id
     return
 
-  user = Rock.user.check user
+  # user = Rock.user.check user
+
+  debug user, "id for delete is #{user.Id}"
 
   Rock.apiRequest "DELETE", "api/UserLogins/#{user.Id}", (error, result) ->
     if error
