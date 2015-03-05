@@ -127,7 +127,7 @@ Rock.user.check = (user) ->
 
   try
     check user,
-      PersonId: Number
+      # PersonId: Number
       Guid: String
       Id: Number
       UserName: String
@@ -160,15 +160,21 @@ Rock.user.check = (user) ->
 ###
 Rock.user.delete = (user) ->
 
-
   user = Rock.user.translate(user)
 
-  Rock.apiRequest "DELETE", "api/UserLogins/#{user.Id}", (error) ->
+  if !user.Id
+    return
+
+  user = Rock.user.check user
+
+  Rock.apiRequest "DELETE", "api/UserLogins/#{user.Id}", (error, result) ->
     if error
       debug "Rock delete failed:"
       debug error
       return
 
+    # console.log result.data
+    # Apollos.user.update result.data
 
 
 ###
@@ -186,17 +192,23 @@ Rock.user.update = (user) ->
 
   rockUser = Rock.user.translate(user)
 
-  if !rockUser.PersonId or !rockUser.Guid or !rockUser.Id
+  if !rockUser.Id or !rockUser.Guid
     Rock.user.create user
     return
 
-  rockUser = Rock.user.check user
 
-  Rock.apiRequest "POST", "api/UserLogins/#{rockUser.Id}", rockUser, (error) ->
-    if error
-      debug "Rock update failed:"
-      debug error
-      return
+  Rock.apiRequest(
+    "POST",
+    "api/UserLogins/#{rockUser.Id}",
+    rockUser,
+    (error, result) ->
+      if error
+        debug "Rock update failed:"
+        debug error
+        return
+
+      Apollos.user.update result.data
+  )
 
 
 
@@ -217,11 +229,13 @@ Rock.user.create = (user) ->
 
   user = Rock.user.translate(user)
 
-  Rock.apiRequest "POST", "api/UserLogins", user, (error) ->
+  Rock.apiRequest "POST", "api/UserLogins", user, (error, result) ->
     if error
       debug "Rock create failed:"
       debug error
       return
+
+    Apollos.user.update result.data
 
 
 
@@ -266,4 +280,4 @@ Rock.users.refresh = (throwErrors) ->
     users = result.data
 
     for user in users
-      Apollos.user.update user
+      Apollos.user.update user, Rock.name

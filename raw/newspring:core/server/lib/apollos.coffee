@@ -108,7 +108,10 @@ Apollos.user.update = (user, platform) ->
   else
     usr = users[0]
 
-  user.updatedBy = Rock.name
+  if platform and platform.toUpperCase() is Rock.name.toUpperCase()
+    user.updatedBy = Rock.name
+  else
+    user.updatedBy = Apollos.name
 
   # can't upsert with _id present
   delete user._id
@@ -128,22 +131,27 @@ Apollos.user.update = (user, platform) ->
   Update bindings
 
 ###
+initializing = true
+Apollos.users.find().observe({
 
-# created
-# Apollos.users.after.insert (userId, doc) ->
-#
-#   console.log doc, "insert"
-#   # if doc.updatedBy isnt "Rock"
-#   #   Rock.user.create doc
+  added: (doc) ->
+    if initializing
+      return
+    if doc.updatedBy isnt "Rock" and doc.updatedBy
+        Rock.user.create doc
 
 
-# updated
-Apollos.users.after.update (userId, doc) ->
+  changed: (newDoc, oldDoc) ->
 
-  if doc.updatedBy isnt "Rock"
-    Rock.user.update doc
+    if newDoc.updatedBy isnt "Rock"
+      Rock.user.update newDoc
 
-# deleted
-Apollos.users.after.remove (userId, doc) ->
-  if doc.updatedBy isnt "Rock"
+
+  removed: (doc) ->
+
     Rock.user.delete doc
+
+    return
+
+})
+initializing = false
