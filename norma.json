@@ -1,0 +1,91 @@
+{
+  "name": "core",
+  "tasks": {
+    "bower": {
+      "endpoint": "NewSpring/norma-bower",
+      "/out": {
+        "settings": "https://github.com/NewSpring/settings.git"
+      }
+    },
+    "javascript": {
+      "endpoint": "NewSpring/norma-javascript",
+      "src": "raw/**/*",
+      "dest": "out/packages"
+    },
+    "markup": {
+      "endpoint": "NewSpring/norma-markup",
+      "src": "raw/**/*",
+      "dest": "out/packages",
+      "minify": false
+    },
+    "copy": {
+      "endpoint": "NewSpring/norma-copy",
+      "src": "out/packages/",
+      "out": "/",
+      "dest": "./",
+      "order": "post"
+    },
+    "meteor-load": {
+      "endpoint": "NewSpring/norma-meteor-load",
+      "src": "out/packages/newspring:core/**/*",
+      "dest": "out/packages/newspring:core",
+      "org": "newspring",
+      "name": "core",
+      "package": {
+        "versionsFrom": "1.0.3.1",
+        "use": {
+          "meteor-platform@1.2.1": "both",
+          "http@1.0.10": "both",
+          "iron:router@1.0.7": "both",
+          "accounts-password@1.0.6": "both",
+          "bjwiley2:api-tokens@0.0.3": "both",
+          "cfs:http-methods@0.0.27": "both",
+          "bjwiley2:server-watch@0.0.3": "both",
+          "aldeed:collection2@2.3.2": "both",
+          "matb33:collection-hooks@0.7.9": "both",
+          "bjwiley2:request-data@0.0.3": "both"
+        },
+        "export": {
+          "Rock": "both",
+          "Apollos": "both",
+          "Campuses": "both",
+          "Funds": "both",
+          "Locations": "both",
+          "People": "both",
+          "SavedAccounts": "both",
+          "ScheduledTransactions": "both",
+          "Transactions": "both"
+        }
+      },
+      "test": {
+        "mocha-casperjs": "both"
+      }
+    },
+    "meteor": {
+      "endpoint": "NewSpring/norma-meteor",
+      "src": "out",
+      "settings": "out/settings/settings.json",
+      "build": {
+        "dest": "build",
+        "server": "localhost:3000"
+      },
+      "packages": [
+        "meteor-platform",
+        "newspring:core",
+        "msavin:mongol"
+      ],
+      "platforms": [
+        "server",
+        "browser",
+        "ios"
+      ]
+    },
+    "mocha-casperjs": {
+      "endpoint": "NewSpring/norma-mocha-casperjs",
+      "src": "tests/**/*"
+    }
+  },
+  "scripts": {
+    "postinstall": "./norma-ignore/postinstall.coffee"
+  }
+}
