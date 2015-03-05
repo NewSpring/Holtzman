@@ -31,7 +31,9 @@ Apollos.user.translate = (user, platform) ->
 
         if !existingUser then existingUser = {}
       else
-        existingUser = Apollos.user()
+        # throws an error on the server
+        # existingUser = Apollos.user()
+        existingUser = {}
         user = Rock.user()
 
 
@@ -58,6 +60,18 @@ Apollos.user.translate = (user, platform) ->
       return existingUser
 
 
+
+Apollos.user.delete = (user, platform) ->
+
+
+  Apollos.users.remove(
+    {
+      _id: user._id
+    },
+    {
+      justOne: true
+    }
+  )
 
 ###
 

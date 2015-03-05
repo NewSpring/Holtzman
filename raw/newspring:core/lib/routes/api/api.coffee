@@ -37,27 +37,32 @@ api["#{userURL}:id"] =
 
 
   post: (data) ->
-    console.log data, "id"
-    this.setContentType jsonContentType
 
-    if not authenticate.call this
-      return handleAuthenticationError.call this
+    @.setContentType jsonContentType
 
-    userLogin = parseRequestData data, this.requestHeaders["content-type"]
+    if not authenticate.call @
+      return handleAuthenticationError.call @
+
+    userLogin = parseRequestData data, @.requestHeaders["content-type"]
+
+    if !userLogin
+      userLogin =
+        Id: @.params.id
+
     Apollos.user.update userLogin, Rock.name
     return
 
 
   delete: (data) ->
 
-    console.log data, "delete :id"
+    console.log @.params.id
 
-    this.setContentType jsonContentType
+    @.setContentType jsonContentType
 
-    if not authenticate.call this
-      return handleAuthenticationError.call this
+    if not authenticate.call @
+      return handleAuthenticationError.call @
 
-    user = parseRequestData data, this.requestHeaders["content-type"]
+    user = parseRequestData data, @.requestHeaders["content-type"]
     ###
 
       @question
@@ -67,7 +72,9 @@ api["#{userURL}:id"] =
 
     ###
 
-    user = Rock.user.translate(user, "apollos")
+    user = Apollos.users.findOne("rock.userLoginId": Number(@.params.id) )
+
+    # user = Rock.user.translate(user, Apollos.name)
     Apollos.user.delete user, Rock.name
 
 
