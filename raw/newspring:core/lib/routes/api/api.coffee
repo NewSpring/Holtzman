@@ -9,6 +9,7 @@ if !Meteor.server
 
 baseURL = "api/v1/"
 userURL = "#{baseURL}userlogins/"
+personURL = "#{baseURL}people/"
 
 
 jsonContentType = "application/JSON"
@@ -32,35 +33,41 @@ authenticate = ->
   return sentToken is token
 
 
+deleteResource = (handlerFunc, platform) ->
+
+  @.setContentType jsonContentType
+
+  if not authenticate.call @
+    return handleAuthenticationError.call @
+
+  id = Number @.params.id
+  handlerFunc id, platform
+
+
+upsertResource = (data, handlerFunc, platform) ->
+
+  @.setContentType jsonContentType
+
+  if not authenticate.call @
+    return handleAuthenticationError.call @
+
+  resource = parseRequestData data, @.requestHeaders["content-type"]
+
+  if !resource
+    resource = {}
+
+  resource.Id = Number @.params.id
+  handlerFunc resource, platform
+  return
+
 
 api["#{userURL}:id"] =
 
-
   post: (data) ->
-
-    @.setContentType jsonContentType
-
-    if not authenticate.call @
-      return handleAuthenticationError.call @
-
-    userLogin = parseRequestData data, @.requestHeaders["content-type"]
-
-    if !userLogin
-      userLogin =
-        Id: @.params.id
-
-    Apollos.user.update userLogin, Rock.name
-    return
-
+    return upsertResource.call @, data, Apollos.user.update, Rock.name
 
   delete: (data) ->
 
-    @.setContentType jsonContentType
-
-    if not authenticate.call @
-      return handleAuthenticationError.call @
-
-    user = parseRequestData data, @.requestHeaders["content-type"]
     ###
 
       @question
@@ -70,11 +77,18 @@ api["#{userURL}:id"] =
 
     ###
 
-    user = Apollos.users.findOne("rock.userLoginId": Number(@.params.id) )
+    return deleteResource.call @, Apollos.user.delete, Rock.name
 
-    # user = Rock.user.translate(user, Apollos.name)
-    Apollos.user.delete user, Rock.name
 
+###
+api["#{personURL}:id"] =
+
+  post: (data) ->
+    return upsertResource.call @, data, Apollos.person.update, Rock.name
+
+  delete: (data) ->
+    return deleteResource.call @, Apollos.person.delete, Rock.name
+###
 
 
 HTTP.methods api

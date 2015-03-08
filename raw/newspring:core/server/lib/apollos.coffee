@@ -71,6 +71,13 @@ Apollos.user.translate = (user, platform) ->
 
 Apollos.user.delete = (user, platform) ->
 
+  if typeof user is "number"
+    user = Apollos.users.findOne
+      "rock.userLoginId": user
+
+  else if typeof user is "string"
+    user = Apollos.users.findOne user
+
   # Apollos.users.update user, platform
   if platform and platform.toUpperCase() is Rock.name.toUpperCase()
     user.updatedBy = Rock.name
