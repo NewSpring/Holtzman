@@ -1,5 +1,4 @@
-
-@.Campuses = new Mongo.Collection("campuses");
+Apollos.campuses = new Mongo.Collection "campuses"
 
 ###
 
@@ -26,4 +25,4 @@ campus = new SimpleSchema(
     type: [Number]
 )
 
-@.Campuses.attachSchema campus
+Apollos.campuses.attachSchema campus

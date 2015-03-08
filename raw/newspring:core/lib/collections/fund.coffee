@@ -1,5 +1,5 @@
 
-@.Funds = new Mongo.Collection("funds");
+Apollos.funds = new Mongo.Collection "funds"
 
 
 ###
@@ -29,4 +29,4 @@ fund = new SimpleSchema(
     type: Boolean
 )
 
-@.Funds.attachSchema fund
+Apollos.funds.attachSchema fund

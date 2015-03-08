@@ -1,6 +1,4 @@
-@.ScheduledTransactions = new Mongo.Collection(
-  "scheduledTransactions"
-)
+Apollos.scheduledTransactions = new Mongo.Collection "scheduledTransactions"
 
 
 ###
@@ -52,4 +50,4 @@ scheduledTransaction = new SimpleSchema(
 )
 
 
-@.ScheduledTransactions.attachSchema scheduledTransaction
+Apollos.scheduledTransactions.attachSchema scheduledTransaction

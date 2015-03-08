@@ -1,4 +1,5 @@
-@.People = new Mongo.Collection("people");
+Apollos.people = new Mongo.Collection "people"
+phoneRegex = /^[1-9]([0-9]{6}|[0-9]{9})$/
 
 ###
 
@@ -23,13 +24,13 @@ person = new SimpleSchema(
     type: String
     optional: true
   homePhone:
-    type: Number
-    max: 10
+    type: String
     optional: true
+    regEx: phoneRegex
   cellPhone:
-    type: Number
-    max: 10
+    type: String
     optional: true
+    regEx: phoneRegex
   campusId:
     type: Number
   familyGroupId:
@@ -56,4 +57,4 @@ person = new SimpleSchema(
 )
 
 
-@.People.attachSchema person
+Apollos.people.attachSchema person

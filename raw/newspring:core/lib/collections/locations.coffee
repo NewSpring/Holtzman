@@ -1,4 +1,4 @@
-@.Locations = new Mongo.Collection("locations");
+Apollos.locations = new Mongo.Collection "locations"
 
 ###
 
@@ -50,4 +50,4 @@ location = new SimpleSchema(
       return new Date
 )
 
-@.Locations.attachSchema location
+Apollos.locations.attachSchema location

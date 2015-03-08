@@ -9,13 +9,23 @@ Apollos.name = "Apollos"
 
 
 Apollos.user = ->
+
   user = Meteor.user()
+  return user or {}
 
-  if !user
-    user = {}
 
-  return user
+Apollos.person = ->
 
+  userDoc = Apollos.user()
+
+  if userDoc and userDoc.rock
+    personId = userDoc.rock.personId
+
+  if personId
+    person = Apollos.people.findOne
+      personId: personId
+
+  return person or {}
 
 
 Apollos.user.create = (email, password, callback) ->
@@ -27,8 +37,3 @@ Apollos.user.create = (email, password, callback) ->
     password: password
   ,
     callback
-
-
-
-
-Apollos.users = Meteor.users

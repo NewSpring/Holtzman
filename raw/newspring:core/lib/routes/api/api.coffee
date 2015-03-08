@@ -80,7 +80,6 @@ api["#{userURL}:id"] =
     return deleteResource.call @, Apollos.user.delete, Rock.name
 
 
-###
 api["#{personURL}:id"] =
 
   post: (data) ->
@@ -88,7 +87,6 @@ api["#{personURL}:id"] =
 
   delete: (data) ->
     return deleteResource.call @, Apollos.person.delete, Rock.name
-###
 
 
 HTTP.methods api

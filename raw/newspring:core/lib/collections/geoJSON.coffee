@@ -1,5 +1,3 @@
-
-
 ###
 
   @property [GeoJSON] A MapBox object's defined coordinates

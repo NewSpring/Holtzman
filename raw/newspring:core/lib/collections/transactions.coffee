@@ -1,5 +1,4 @@
-
-@.Transactions = new Mongo.Collection("transactions");
+Apollos.transactions = new Mongo.Collection "transactions"
 
 
 ###
@@ -60,4 +59,4 @@ transaction = new SimpleSchema(
 )
 
 
-@.Transactions.attachSchema transaction
+Apollos.transactions.attachSchema transaction

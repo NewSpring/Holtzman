@@ -1,4 +1,4 @@
-@.SavedAccounts = new Mongo.Collection("savedAccounts");
+Apollos.savedAccounts = new Mongo.Collection "savedAccounts"
 
 
 ###
@@ -43,4 +43,4 @@ savedAccount = new SimpleSchema(
 )
 
 
-@.SavedAccounts.attachSchema savedAccount
+Apollos.savedAccounts.attachSchema savedAccount

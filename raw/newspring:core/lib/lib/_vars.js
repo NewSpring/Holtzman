@@ -6,13 +6,7 @@
 
 Rock = {};
 Apollos = {};
-Campuses = {};
-Fund = {};
-Locations = {};
-People = {};
-SavedAccounts = {};
-ScheduledTransactions = {};
-Transactions = {};
+
 
 /*
 

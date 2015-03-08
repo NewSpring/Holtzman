@@ -18,24 +18,19 @@ Apollos.user.translate = (user, platform) ->
   if !platform
     platform = Rock.name
 
-
-
   # forced uppercase to make case insensitive strings
   switch platform.toUpperCase()
-    when "ROCK"
+    when Rock.name.toUpperCase()
       # Grab existing user for merging if
       if user
         query = "rock.userLoginId": user.Id
 
-        existingUser = Meteor.users.findOne(query)
+        existingUser = Apollos.users.findOne(query)
 
         if !existingUser then existingUser = {}
       else
-        # throws an error on the server
-        # existingUser = Apollos.user()
         existingUser = {}
         user = Rock.user()
-
 
       # add rock property
       existingUser.rock = existingUser.rock or {}
@@ -85,14 +80,14 @@ Apollos.user.delete = (user, platform) ->
     user.updatedBy = Apollos.name
 
 
-  Meteor.users.update
+  Apollos.users.update
     _id: user._id
   ,
     $set:
       "updatedBy": user.updatedBy
 
 
-  console.log "trying to remove #{user._id} with a platform of #{user.updatedBy}"
+  debug "trying to remove #{user._id} with a platform of #{user.updatedBy}"
 
   Apollos.users.remove(user._id)
 
@@ -102,7 +97,7 @@ Apollos.user.delete = (user, platform) ->
 
   @example update a usr in apollos with data from Rock
 
-    Apollos.user.translate([obj, platform])
+    Apollos.user.update([obj, platform])
 
   @param user [Object] existing user from other service to be updated
   @param platform [String] platform to be update from
@@ -126,7 +121,7 @@ Apollos.user.update = (user, platform) ->
     query["$or"].push
       "emails.address": user.emails[0].address
 
-  users = Meteor.users.find(query).fetch()
+  users = Apollos.users.find(query).fetch()
 
   if users.length > 1
     ids = []
@@ -140,7 +135,7 @@ Apollos.user.update = (user, platform) ->
   else if users.length is 0 and hasEmail
     tempPassword = String(Date.now() * Math.random())
     userId = Apollos.user.create(user.emails[0].address, tempPassword)
-    usr = Meteor.users.findOne userId
+    usr = Apollos.users.findOne userId
 
   else
     usr = users[0]
@@ -156,7 +151,7 @@ Apollos.user.update = (user, platform) ->
 
   if usr
 
-    Meteor.users.update
+    Apollos.users.update
       _id: usr._id
     ,
       $set: user

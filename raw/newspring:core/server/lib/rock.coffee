@@ -13,7 +13,6 @@ if serverWatch.getKeys().indexOf(Rock.name) isnt -1
 serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
 
 
-
 ###
 
   Rock.apiRequest
@@ -266,6 +265,9 @@ Rock.users = ->
   # Apollos.users.find([])
   return
 
+Rock.people = ->
+
+  return
 
 ###
 
@@ -303,3 +305,101 @@ Rock.users.refresh = (throwErrors) ->
 
     for userDoc in usersRockDoesNotHave.fetch()
       Rock.user.create userDoc
+
+
+Rock.people.refresh = (throwErrors) ->
+
+  aliasQuery = "api/PersonAlias
+    ?$select=
+      PersonId,
+      AliasPersonId"
+
+  Rock.apiRequest "GET", aliasQuery, (error, result) ->
+    if error and throwErrors
+      throw new Meteor.Error "Rock sync issue", error
+    else if error
+      debug "Rock sync failed:"
+      debug error
+      return
+
+    grouped = _.groupBy result.data, "PersonId"
+    people = []
+
+    for personId of grouped
+      people.push
+        personId: Number personId
+        personAliasIds: _.map grouped[personId], (alias) ->
+          return alias.AliasPersonId
+
+    for person in people
+      Rock.people.refreshDetails person, throwErrors
+
+
+Rock.people.refreshDetails = (person, throwErrors) ->
+
+  if typeof person is "number"
+    person =
+      personId: personId
+
+  if typeof person.personId isnt "number"
+    return
+
+  familyQuery = "api/Groups/GetFamilies/#{person.personId}
+    ?$expand=
+      GroupLocations,
+      Members,
+      Members/GroupRole,
+      Members/Person,
+      Members/Person/PhoneNumbers,
+      Members/Person/PhoneNumbers/NumberTypeValue
+    &$select=
+      CampusId,
+      Id,
+      GroupLocations/LocationId,
+      Members/GroupRole/Name,
+      Members/Person/PhoneNumbers/Number,
+      Members/Person/PhoneNumbers/NumberTypeValue/Value,
+      Members/Person/Id,
+      Members/Person/FirstName,
+      Members/Person/LastName,
+      Members/Person/NickName,
+      Members/Person/Email"
+
+  Rock.apiRequest "GET", familyQuery, (error, result) ->
+    if error and throwErrors
+      throw new Meteor.Error "Rock sync issue", error
+    else if error
+      debug "Rock sync failed:"
+      debug error
+      return
+
+    families = result.data
+
+    if families.length
+      family = families[0]
+
+      person.familyGroupId = family.Id
+      person.campusId = family.CampusId
+      person.locationIds = []
+
+      for location in family.GroupLocations
+        person.locationIds.push location.LocationId
+
+      for member in family.Members
+
+        if member.Person.Id is person.personId
+          person.groupRole = member.GroupRole.Name
+          person.firstName = member.Person.FirstName
+          person.nickName = member.Person.NickName
+          person.lastName = member.Person.LastName
+          person.email = member.Person.Email
+
+          for phone in member.Person.PhoneNumbers
+
+            if phone.NumberTypeValue.Value is "Home"
+              person.homePhone = Number(phone.Number).toFixed 0
+
+            else if phone.NumberTypeValue.Value is "Mobile"
+              person.cellPhone = Number(phone.Number).toFixed 0
+
+      Apollos.person.update person, Rock.name
