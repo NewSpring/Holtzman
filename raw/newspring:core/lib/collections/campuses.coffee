@@ -1,12 +1,5 @@
 Apollos.campuses = new Mongo.Collection "campuses"
 
-###
-
-  @property [Campus] All the fields for a campus
-  Mapped to Rock:Campus
-
-###
-
 campus = new SimpleSchema(
   campusId:
     type: Number

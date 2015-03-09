@@ -1,12 +1,6 @@
 Apollos.people = new Mongo.Collection "people"
 phoneRegex = /^[1-9]([0-9]{6}|[0-9]{9})$/
 
-###
-
-  @property [Person] All the fields for a person
-  Mapped to Rock:Person
-
-###
 person = new SimpleSchema(
   personId:
     type: Number
@@ -37,6 +31,7 @@ person = new SimpleSchema(
     type: Number
   groupRole:
     type: String
+    regEx: /^(Adult|Child)$/
   personAliasIds:
     type: [Number]
   locationIds:
@@ -55,6 +50,5 @@ person = new SimpleSchema(
     autoValue: ->
       return new Date
 )
-
 
 Apollos.people.attachSchema person

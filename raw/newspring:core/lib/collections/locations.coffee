@@ -1,15 +1,5 @@
 Apollos.locations = new Mongo.Collection "locations"
 
-###
-
-  @property [Location] All the fields for a location
-  Mapped to Rock:Location
-  LocationType:
-      Person - Work, Home, Temporary
-      Campus - Fuse, Service, Office, Mailing
-
- ###
-
 location = new SimpleSchema(
   locationId:
     type: Number
@@ -17,6 +7,7 @@ location = new SimpleSchema(
     type: Number
   locationType:
     type: String
+    regEx: /^(Work|Home|Temporary|Fuse|Service|Office|Mailing)$/
   shortCode:
     type: String
     max: 3
@@ -28,10 +19,10 @@ location = new SimpleSchema(
     type: String
   state:
     type: String
-    regEx: /^A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]$/
+    regEx: /^(A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])$/
   zip:
     type: String
-    regEx: /^$|\d{5}(-\d{4})?$/
+    regEx: /^(\d{5}(-\d{4})?)$/
     optional: true
   geometry:
     type: GeoJSON

@@ -1,6 +1,3 @@
-
-
-# Bind variabls to Rock
 Rock.tokenName = Meteor.settings.rock.tokenName
 Rock.baseURL = Meteor.settings.rock.baseURL
 Rock.token = Meteor.settings.rock.token
@@ -11,7 +8,6 @@ if serverWatch.getKeys().indexOf(Rock.name) isnt -1
 
 # Start watching again
 serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
-
 
 ###
 
@@ -32,8 +28,8 @@ serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
 ###
 Rock.apiRequest = (method, resource, data, callback) ->
 
-  if !Rock.isAlive()
-    # build queue system here!
+  if not Rock.isAlive()
+    # build queue system herenot
     return
 
   if typeof data is "function"
@@ -51,9 +47,6 @@ Rock.apiRequest = (method, resource, data, callback) ->
     data: data
   , callback
 
-
-
-
 ###
 
   Rock.user
@@ -62,14 +55,10 @@ Rock.apiRequest = (method, resource, data, callback) ->
 
     rockUser = Rock.user()
 
-
 ###
 Rock.user = ->
 
   Rock.user.translate()
-
-
-
 
 ###
 
@@ -85,14 +74,13 @@ Rock.user = ->
 ###
 Rock.user.translate = (user, platform) ->
 
-  if !platform
+  if not platform
     platform = Apollos.name
 
   # forced uppercase to make case insensitive strings
   switch platform.toUpperCase()
-    when "APOLLOS"
-      if !user
-        # user = Apollos.user()
+    when Apollos.name.toUpperCase()
+      if not user
         user = {
           emails: [
             address: null
@@ -101,7 +89,6 @@ Rock.user.translate = (user, platform) ->
             password:
               bcrypt: null
         }
-
 
       rockUser =
         UserName: user.emails[0].address
@@ -114,66 +101,23 @@ Rock.user.translate = (user, platform) ->
 
       return rockUser
 
-
-
-
-###
-
-  Rock.user.check
-
-  @example verify account information is correct
-
-    Rock.user.check([obj])
-
-  @param user [Object] existing object to be validated
-
-###
-Rock.user.check = (user) ->
-
-  if !user
-    user = Rock.user.translate()
-
-  try
-    check user,
-      # PersonId: Number || null
-      Guid: String
-      Id: Number
-      UserName: String
-      ApollosHash: String
-
-    return true
-  catch e
-    debug e
-    return false
-
-
-
-
 ###
 
   Rock.user.delete
 
-  @example make an API call to Rock
+  @example delete a user from Rock
 
-    Rock.apiRequest "DELETE", "api/UserLogins/#{user.Id}", (error, data) ->
-      throw err if err
+    Rock.user.delete Apollos.users.findOne()
 
-      console.log data
-
-  @param method [String] CRUD Method desired
-  @param resource [String] Url to hit on rock
-  @param data [Object, String, Array] data to send to Rock
-  @param callback [Function] callback to run on response
+  @param user [Object] an existing user document to be deleted
 
 ###
 Rock.user.delete = (user) ->
 
   user = Rock.user.translate(user)
 
-  if !user.Id
+  if not user.Id
     return
-
-  # user = Rock.user.check user
 
   debug user, "id for delete is #{user.Id}"
 
@@ -183,17 +127,13 @@ Rock.user.delete = (user) ->
       debug error
       return
 
-    # console.log result.data
-    # Apollos.user.update result.data
-
-
 ###
 
   Rock.user.update
 
   @example update a user on Rock
 
-    Rock.user.update()
+    Rock.user.update(userDoc)
 
   @param user [Object] User to update
 
@@ -202,15 +142,11 @@ Rock.user.update = (user) ->
 
   rockUser = Rock.user.translate(user)
 
-  if !rockUser.Id or !rockUser.Guid
+  if not rockUser.Id or not rockUser.Guid
     Rock.user.create user
     return
 
-
-  Rock.apiRequest(
-    "POST",
-    "api/UserLogins/#{rockUser.Id}",
-    rockUser,
+  Rock.apiRequest "POST", "api/UserLogins/#{rockUser.Id}", rockUser,
     (error, result) ->
       if error
         debug "Rock update failed:"
@@ -218,10 +154,6 @@ Rock.user.update = (user) ->
         return
 
       Apollos.user.update result.data
-  )
-
-
-
 
 ###
 
@@ -236,8 +168,7 @@ Rock.user.update = (user) ->
 ###
 Rock.user.create = (user) ->
 
-
-  user = Rock.user.translate(user)
+  user = Rock.user.translate user
 
   Rock.apiRequest "POST", "api/UserLogins", user, (error, result) ->
     if error
@@ -246,8 +177,6 @@ Rock.user.create = (user) ->
       return
 
     Apollos.user.update result.data
-
-
 
 ###
 
@@ -262,12 +191,22 @@ Rock.user.create = (user) ->
 ###
 Rock.users = ->
 
-  # Apollos.users.find([])
-  return
+  throw new Meteor.Error "Unimplemented", "This method is unimplemented!"
 
+###
+
+  Rock.people
+
+  @example return all people synced to Rock
+
+    Rock.people()
+
+  @todo write lookup
+
+###
 Rock.people = ->
 
-  return
+  throw new Meteor.Error "Unimplemented", "This method is unimplemented!"
 
 ###
 
@@ -306,7 +245,17 @@ Rock.users.refresh = (throwErrors) ->
     for userDoc in usersRockDoesNotHave.fetch()
       Rock.user.create userDoc
 
+###
 
+  Rock.people.refresh
+
+  @example refesh all people from Rock
+
+    Rock.people.refresh()
+
+  @param throwErrors [Boolean] switch to silence error throwing
+
+###
 Rock.people.refresh = (throwErrors) ->
 
   aliasQuery = "api/PersonAlias
@@ -334,7 +283,19 @@ Rock.people.refresh = (throwErrors) ->
     for person in people
       Rock.people.refreshDetails person, throwErrors
 
+###
 
+  Rock.people.refreshDetails
+
+  @example refesh a person's details from Rock
+
+    Rock.people.refreshDetails person, throwErrors
+
+  @param person [Object|Number|String] exisiting person document, rock.personId,
+    or person._id
+  @param throwErrors [Boolean] switch to silence error throwing
+
+###
 Rock.people.refreshDetails = (person, throwErrors) ->
 
   if typeof person is "number"

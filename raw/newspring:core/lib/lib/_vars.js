@@ -1,20 +1,11 @@
-/*
-
-  Exported Variables to be used by other apps/packages
-
-*/
-
+//Exported Variables to be used by other apps/packages
 Rock = {};
 Apollos = {};
 
-
-/*
-
-  Local Variables to be used across files in this app
-
-*/
+// Local Variables to be used across files in this app
 GeoJSON = {};
-debug = function(){
+
+debug = function() {
   var log = console.log
 
   // if (Meteor.isClient) {
@@ -22,5 +13,4 @@ debug = function(){
   // }
 
   log.apply(console, Array.prototype.slice.call(arguments));
-
-}
+};

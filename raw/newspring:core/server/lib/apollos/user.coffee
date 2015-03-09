@@ -1,5 +1,3 @@
-
-
 ###
 
   Apollos.user.translate
@@ -15,7 +13,7 @@
 Apollos.user.translate = (user, platform) ->
 
   # Default to Rock
-  if !platform
+  if not platform
     platform = Rock.name
 
   # forced uppercase to make case insensitive strings
@@ -23,28 +21,28 @@ Apollos.user.translate = (user, platform) ->
     when Rock.name.toUpperCase()
       # Grab existing user for merging if
       if user
-        query = "rock.userLoginId": user.Id
+        existingUser = Apollos.users.findOne
+          "rock.userLoginId": user.Id
 
-        existingUser = Apollos.users.findOne(query)
-
-        if !existingUser then existingUser = {}
+        if not existingUser then existingUser = {}
       else
         existingUser = {}
         user = Rock.user()
 
       # add rock property
-      existingUser.rock = existingUser.rock or {}
+      if not existingUser.rock
+        existingUser.rock = {}
 
       # map properties from Rock to Apollos
       if user.PersonId
-        existingUser.rock.personId = Number(user.PersonId)
+        existingUser.rock.personId = Number user.PersonId
       else
         existingUser.rock.personId = null
 
       existingUser.rock.guid = user.Guid
 
       if user.Id
-        existingUser.rock.userLoginId = Number(user.Id)
+        existingUser.rock.userLoginId = Number user.Id
       else
         existingUser.rock.userLoginId = null
 
@@ -62,8 +60,18 @@ Apollos.user.translate = (user, platform) ->
 
       return existingUser
 
+###
 
+  Apollos.user.delete
 
+  @example take a user and delete it
+
+    Apollos.user.delete(user, [platform])
+
+  @param user [Object|String|Number] existing document, _id, or rock.userLoginId
+  @param platform [String] platform initiating the delete
+
+###
 Apollos.user.delete = (user, platform) ->
 
   if typeof user is "number"
@@ -79,17 +87,16 @@ Apollos.user.delete = (user, platform) ->
   else
     user.updatedBy = Apollos.name
 
-
+  # We have to update this first so the collection hooks know what to do
   Apollos.users.update
     _id: user._id
   ,
     $set:
       "updatedBy": user.updatedBy
 
-
   debug "trying to remove #{user._id} with a platform of #{user.updatedBy}"
 
-  Apollos.users.remove(user._id)
+  Apollos.users.remove user._id
 
 ###
 
@@ -104,10 +111,6 @@ Apollos.user.delete = (user, platform) ->
 
 ###
 Apollos.user.update = (user, platform) ->
-
-  # platform doesn't do anything right now
-  # eventually this will contain hooks for updating
-  # Apollos from different services
 
   user = Apollos.user.translate(user)
 
@@ -148,7 +151,6 @@ Apollos.user.update = (user, platform) ->
   # can't upsert with _id present
   delete user._id
 
-
   if usr
 
     Apollos.users.update
@@ -158,17 +160,12 @@ Apollos.user.update = (user, platform) ->
 
     return usr._id
 
-
-
-###
-
-  Update bindings
-
-###
 initializing = true
-Apollos.users.find().observe({
+
+Apollos.users.find().observe
 
   added: (doc) ->
+
     if initializing
       return
     if doc.updatedBy isnt "Rock" and doc.updatedBy
@@ -180,13 +177,10 @@ Apollos.users.find().observe({
     if newDoc.updatedBy isnt "Rock"
       Rock.user.update newDoc
 
-
   removed: (doc) ->
 
     if doc.updatedBy isnt "Rock"
       Rock.user.delete doc, Rock.name
-
     return
 
-})
 initializing = false
