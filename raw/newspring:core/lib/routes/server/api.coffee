@@ -123,10 +123,12 @@ api["#{usersURL}:id"] =
 
   post: (data) ->
 
+    debug "POST to #{usersURL}#{@.params.id}"
     return upsertResource.call @, data, Apollos.user.update, Rock.name
 
   delete: (data) ->
 
+    debug "DELETE to #{usersURL}#{@.params.id}"
     ###
 
       @question
@@ -142,10 +144,12 @@ api["#{peopleURL}:id"] =
 
   post: (data) ->
 
+    debug "POST to #{peopleURL}#{@.params.id}"
     return upsertResource.call @, data, Apollos.person.update, Rock.name
 
   delete: (data) ->
 
+    debug "DELETE to #{peopleURL}#{@.params.id}"
     return deleteResource.call @, Apollos.person.delete, Rock.name
 
 HTTP.methods api

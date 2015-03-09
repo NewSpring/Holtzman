@@ -223,7 +223,7 @@ Rock.users.refresh = (throwErrors) ->
 
   Rock.apiRequest "GET", "api/UserLogins", (error, result) ->
     if error and throwErrors
-      throw new Meteor.Error "Rock sync issue", error
+      throw new Meteor.Error "Rock sync issue", "api/UserLogins: #{error}"
     else if error
       debug "Rock sync failed:"
       debug error
@@ -234,6 +234,7 @@ Rock.users.refresh = (throwErrors) ->
 
     for user in users
       userDocId = Apollos.user.update user, Rock.name
+      debug "Synced user from Rock: #{user.Id}"
 
       if userDocId
         userIdsSynced.push userDocId
@@ -364,3 +365,4 @@ Rock.people.refreshDetails = (person, throwErrors) ->
               person.cellPhone = Number(phone.Number).toFixed 0
 
       Apollos.person.update person, Rock.name
+      debug "Synced person from Rock: #{person.personId}"
