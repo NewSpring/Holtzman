@@ -1,9 +1,9 @@
 
 
 # Bind variabls to Rock
-Rock.tokenName = Meteor.settings.rock.tokenName
-Rock.baseURL = Meteor.settings.rock.baseURL
-Rock.token = Meteor.settings.rock.token
+Rock.tokenName = Settings.rock.tokenName
+Rock.baseURL = Settings.rock.baseURL
+Rock.token = Settings.rock.token
 
 # If Rock is being watched (aka old states), remove watching
 if serverWatch.getKeys().indexOf(Rock.name) isnt -1

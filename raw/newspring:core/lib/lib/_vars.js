@@ -30,3 +30,13 @@ debug = function(){
   log.apply(console, Array.prototype.slice.call(arguments));
 
 }
+
+
+
+var env = process.env.NODE_ENV
+
+if (process.env.CI){
+  env = "ci"
+}
+
+Settings = Meteor.settings[env]

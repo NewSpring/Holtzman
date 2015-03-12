@@ -16,13 +16,15 @@
     "url": "https://github.com/NewSpring/newspring-core/issues"
   },
   "homepage": "https://github.com/NewSpring/newspring-core",
+  "devDependencies": {
+    "norma-mocha-casperjs": "^0.1.10"
+  },
   "dependencies": {
-    "norma-bower": "git://github.com/NewSpring/norma-bower",
-    "norma-copy": "git://github.com/NewSpring/norma-copy",
-    "norma-javascript": "git://github.com/NewSpring/norma-javascript",
-    "norma-markup": "git://github.com/NewSpring/norma-markup",
-    "norma-meteor": "git://github.com/NewSpring/norma-meteor",
-    "norma-meteor-load": "git://github.com/NewSpring/norma-meteor-load",
-    "norma-mocha-casperjs": "git://github.com/NewSpring/norma-mocha-casperjs"
+    "norma-bower": "^0.3.2",
+    "norma-copy": "^0.4.0",
+    "norma-javascript": "^0.4.1",
+    "norma-markup": "^0.5.1",
+    "norma-meteor": "^0.3.6",
+    "norma-meteor-load": "^0.1.8"
   }
 }
