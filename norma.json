@@ -77,9 +77,7 @@
   },
   "test": {
     "before": "meteor run",
-    "mocha-casperjs": {
-      "src": "out/tests/**/*"
-    },
+    "main": "whoami",
     "after": "meteor close"
   },
   "scripts": {
