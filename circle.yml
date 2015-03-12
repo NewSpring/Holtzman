@@ -8,7 +8,7 @@ test:
   pre:
     - norma build
   override:
-    - norma test # use PHPunit for testing
+    - norma test # use Norma for testing
 
 ## Customize deployment commands
 deployment:
