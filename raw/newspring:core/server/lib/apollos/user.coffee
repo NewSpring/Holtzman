@@ -19,15 +19,15 @@ Apollos.user.translate = (user, platform) ->
   # forced uppercase to make case insensitive strings
   switch platform.toUpperCase()
     when Rock.name.toUpperCase()
+
       # Grab existing user for merging if
       if user
         existingUser = Apollos.users.findOne
           "rock.userLoginId": user.Id
-
-        if not existingUser then existingUser = {}
       else
-        existingUser = {}
         user = Rock.user()
+
+      existingUser or= {}
 
       # add rock property
       if not existingUser.rock
@@ -94,7 +94,7 @@ Apollos.user.delete = (user, platform) ->
     $set:
       "updatedBy": user.updatedBy
 
-  debug "trying to remove #{user._id} with a platform of #{user.updatedBy}"
+  debug "Trying to remove user #{user._id} with a platform of #{user.updatedBy}"
 
   Apollos.users.remove user._id
 
@@ -112,7 +112,7 @@ Apollos.user.delete = (user, platform) ->
 ###
 Apollos.user.update = (user, platform) ->
 
-  user = Apollos.user.translate(user)
+  user = Apollos.user.translate user
 
   query =
     $or: [
@@ -168,18 +168,18 @@ Apollos.users.find().observe
 
     if initializing
       return
-    if doc.updatedBy isnt "Rock" and doc.updatedBy
+    if doc.updatedBy isnt Rock.name and doc.updatedBy
         Rock.user.create doc
 
 
   changed: (newDoc, oldDoc) ->
 
-    if newDoc.updatedBy isnt "Rock"
+    if newDoc.updatedBy isnt Rock.name
       Rock.user.update newDoc
 
   removed: (doc) ->
 
-    if doc.updatedBy isnt "Rock"
+    if doc.updatedBy isnt Rock.name
       Rock.user.delete doc, Rock.name
     return
 

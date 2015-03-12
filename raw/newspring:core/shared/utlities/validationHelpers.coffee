@@ -2,11 +2,8 @@ Apollos.validate =
 
   isEmail: (str) ->
 
-    re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    re.test str
-
+    Apollos.regex.email.test str
 
   isBcryptHash: (str) ->
 
-    re = /^\$2a\$10\$[\/\.a-zA-Z0-9]{53}$/
-    re.test str
+    Apollos.regex.bcrypt.test str
