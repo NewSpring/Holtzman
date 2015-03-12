@@ -76,7 +76,11 @@
     }
   },
   "test": {
-    "main": "whoami"
+    "before": "meteor run",
+    "mocha-casperjs": {
+      "src": "out/tests/**/*"
+    },
+    "after": "meteor close"
   },
   "scripts": {
     "postinstall": "./norma-ignore/postinstall.coffee"

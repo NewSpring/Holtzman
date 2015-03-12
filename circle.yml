@@ -6,8 +6,8 @@ dependencies:
 
 ## Customize test commands
 test:
-  # pre:
-  #   - norma build
+  pre:
+    - norma build
   override:
     - norma test # use Norma for testing
 
