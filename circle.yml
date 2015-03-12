@@ -2,6 +2,7 @@
 dependencies:
   pre:
     - npm install normajs -g
+    - curl https://install.meteor.com/ | sh
 
 ## Customize test commands
 test:
