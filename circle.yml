@@ -16,5 +16,4 @@ deployment:
   staging:
     branch: feature-ci
     commands:
-      - cd out
-      - meteor deploy beta-rock.meteor.com --settings ./settings/settings.json
+      - norma meteor deploy beta-rock.meteor.com

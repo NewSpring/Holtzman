@@ -24,7 +24,7 @@
     "norma-copy": "^0.4.0",
     "norma-javascript": "^0.4.1",
     "norma-markup": "^0.5.1",
-    "norma-meteor": "^0.3.7",
+    "norma-meteor": "^0.3.8",
     "norma-meteor-load": "^0.1.8"
   }
 }
