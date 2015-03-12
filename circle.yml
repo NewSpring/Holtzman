@@ -1,7 +1,7 @@
 ## Customize dependencies
 dependencies:
   pre:
-    - npm install normajs
+    - npm install normajs -g
 
 ## Customize test commands
 test:
