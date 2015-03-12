@@ -1,0 +1,18 @@
+## Customize dependencies
+dependencies:
+  pre:
+    - npm install normajs
+
+## Customize test commands
+test:
+  pre:
+    - norma build
+  override:
+    - norma test # use PHPunit for testing
+
+## Customize deployment commands
+deployment:
+  staging:
+    branch: feature-ci
+    commands:
+      - meteor deploy beta-rock.meteor.com --settings ./out/settings/settings.json
