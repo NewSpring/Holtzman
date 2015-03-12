@@ -33,10 +33,12 @@ debug = function(){
 
 
 
-var env = process.env.NODE_ENV
+if (Meteor.isServer){
+  var env = process.env.NODE_ENV
 
-if (process.env.CI){
-  env = "ci"
+  if (process.env.CI){
+    env = "ci"
+  }
+
+  Meteor.settings = Meteor.settings[env]
 }
-
-Settings = Meteor.settings[env]

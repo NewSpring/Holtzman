@@ -12,8 +12,8 @@ userURL = "#{baseURL}userlogins/"
 
 
 jsonContentType = "application/JSON"
-tokenName = Settings.api.tokenName
-token = Settings.api.token
+tokenName = Meteor.settings.api.tokenName
+token = Meteor.settings.api.token
 api = {}
 
 
