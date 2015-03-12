@@ -76,9 +76,7 @@
     }
   },
   "test": {
-    "before": "meteor run",
-    "main": "whoami",
-    "after": "meteor close"
+    "main": "whoami"
   },
   "scripts": {
     "postinstall": "./norma-ignore/postinstall.coffee"
