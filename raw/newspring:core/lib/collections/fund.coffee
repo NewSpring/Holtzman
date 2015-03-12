@@ -1,13 +1,5 @@
+Apollos.funds = new Mongo.Collection "funds"
 
-@.Funds = new Mongo.Collection("funds");
-
-
-###
-
-  @property [Fund] All the fields for a giving fund
-  Mapped to Rock:FinancialAccount
-
-###
 fund = new SimpleSchema(
   fundId:
     type: Number
@@ -19,7 +11,7 @@ fund = new SimpleSchema(
     type: String
   description:
     type: String
-  "type":
+  type:
     type: String
   startDate:
     type: Date
@@ -29,4 +21,4 @@ fund = new SimpleSchema(
     type: Boolean
 )
 
-@.Funds.attachSchema fund
+Apollos.funds.attachSchema fund

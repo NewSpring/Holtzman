@@ -1,20 +1,6 @@
-@.ScheduledTransactions = new Mongo.Collection(
-  "scheduledTransactions"
-)
+Apollos.scheduledTransactions = new Mongo.Collection "scheduledTransactions"
 
-
-###
-
-  @property [ScheduledTransaction] All the fields for
-    a scheduled/recurring transaction
-  Mapped to Rock:ScheduledTransaction,
-    Rock:ScheduledTransactionDetail
-  Frequency Types: Once, Weekly, Biweekly, Twice Monthly,
-    Monthly, Quarterly, Yearly
-  Future Transaction: Holds transaction information for
-    the next scheduled occurrence
-
-###
+# Maps to Rock:ScheduledTransaction, Rock:ScheduledTransactionDetail
 scheduledTransaction = new SimpleSchema(
   scheduledTransactionId:
     type: Number
@@ -24,8 +10,10 @@ scheduledTransaction = new SimpleSchema(
     type: Number
   frequencyType:
     type: String
+    regEx: /^(Once|Weekly|Biweekly|Twice Monthly|Monthly|Quarterly|Yearly)$/
   futureTransaction:
     type: @Transaction
+    label: "Information for the next scheduled occurrence"
   isEnabled:
     type: Boolean
   startDate:
@@ -51,5 +39,4 @@ scheduledTransaction = new SimpleSchema(
       return new Date
 )
 
-
-@.ScheduledTransactions.attachSchema scheduledTransaction
+Apollos.scheduledTransactions.attachSchema scheduledTransaction

@@ -1,18 +1,6 @@
+Apollos.transactions = new Mongo.Collection "transactions"
 
-@.Transactions = new Mongo.Collection("transactions");
-
-
-###
-
-  @property [Transaction] All the fields for a single transaction
-  Mapped to Rock:FinancialTransaction, Rock:FinancialTransactionDetail
-  Currency Types: Credit Card, ACH, Cash, Check
-  Credit Types: Visa, MasterCard, AmEx, Discover, Diner's, JCB
-  Name: Usually a summary of the transaction passed from Rock
-  Source: Website, Kiosk, Mobile, Onsite
-
-
-###
+# Maps to Rock:FinancialTransaction, Rock:FinancialTransactionDetail
 transaction = new SimpleSchema(
   transactionId:
     type: Number
@@ -32,14 +20,18 @@ transaction = new SimpleSchema(
     type: Number
   name:
     type: String
+    label: "Summary of the transaction passed from Rock"
   source:
     type: String
+    regEx: /^(Website|Kiosk|Mobile|Onsite)$/
   accountMask:
     type: String
   currencyType:
     type: String
+    regEx: /^(Credit Card|ACH|Cash|Check)$/
   creditCardType:
     type: String
+    regEx: /^(Visa|MasterCard|AmEx|Discover|Diner's|JCB)$/
   submittedDate:
     type: Date
   processedDate:
@@ -60,4 +52,4 @@ transaction = new SimpleSchema(
 )
 
 
-@.Transactions.attachSchema transaction
+Apollos.transactions.attachSchema transaction

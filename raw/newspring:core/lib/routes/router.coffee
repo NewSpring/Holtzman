@@ -1,3 +1,3 @@
 Router.route '/', ->
-  @render 'Home'
+  @render 'home'
   return

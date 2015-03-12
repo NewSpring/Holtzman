@@ -1,14 +1,6 @@
-@.SavedAccounts = new Mongo.Collection("savedAccounts");
+Apollos.savedAccounts = new Mongo.Collection "savedAccounts"
 
-
-###
-
-  @property [SavedAccount] All the fields for a saved account
-  Mapped to Rock:FinancialPersonBankAccount, Rock:FinancialPersonSavedAccount
-  Currency Types: Credit Card, ACH
-  Credit Types: Visa, MasterCard, AmEx, Discover, Diner's, JCB
-
-###
+# Maps to Rock:FinancialPersonBankAccount, Rock:FinancialPersonSavedAccount
 savedAccount = new SimpleSchema(
   savedAccountId:
     type: Number
@@ -20,8 +12,10 @@ savedAccount = new SimpleSchema(
     type: String
   currencyType:
     type: String
+    regEx: /^(Credit Card|ACH)$/
   creditCardType:
     type: String
+    regEx: /^(Visa|MasterCard|AmEx|Discover|Diner's|JCB)$/
   isEnabled:
     type: Boolean
     defaultValue: true
@@ -42,5 +36,4 @@ savedAccount = new SimpleSchema(
       return new Date
 )
 
-
-@.SavedAccounts.attachSchema savedAccount
+Apollos.savedAccounts.attachSchema savedAccount

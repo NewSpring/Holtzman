@@ -1,6 +1,3 @@
-
-
-# Bind variabls to Rock
 Rock.tokenName = Meteor.settings.rock.tokenName
 Rock.baseURL = Meteor.settings.rock.baseURL
 Rock.token = Meteor.settings.rock.token
@@ -11,8 +8,6 @@ if serverWatch.getKeys().indexOf(Rock.name) isnt -1
 
 # Start watching again
 serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
-
-
 
 ###
 
@@ -33,8 +28,8 @@ serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
 ###
 Rock.apiRequest = (method, resource, data, callback) ->
 
-  if !Rock.isAlive()
-    # build queue system here!
+  if not Rock.isAlive()
+    # build queue system herenot
     return
 
   if typeof data is "function"
@@ -52,9 +47,6 @@ Rock.apiRequest = (method, resource, data, callback) ->
     data: data
   , callback
 
-
-
-
 ###
 
   Rock.user
@@ -63,14 +55,10 @@ Rock.apiRequest = (method, resource, data, callback) ->
 
     rockUser = Rock.user()
 
-
 ###
 Rock.user = ->
 
   Rock.user.translate()
-
-
-
 
 ###
 
@@ -86,14 +74,13 @@ Rock.user = ->
 ###
 Rock.user.translate = (user, platform) ->
 
-  if !platform
+  if not platform
     platform = Apollos.name
 
   # forced uppercase to make case insensitive strings
   switch platform.toUpperCase()
-    when "APOLLOS"
-      if !user
-        # user = Apollos.user()
+    when Apollos.name.toUpperCase()
+      if not user
         user = {
           emails: [
             address: null
@@ -102,7 +89,6 @@ Rock.user.translate = (user, platform) ->
             password:
               bcrypt: null
         }
-
 
       rockUser =
         UserName: user.emails[0].address
@@ -115,66 +101,23 @@ Rock.user.translate = (user, platform) ->
 
       return rockUser
 
-
-
-
-###
-
-  Rock.user.check
-
-  @example verify account information is correct
-
-    Rock.user.check([obj])
-
-  @param user [Object] existing object to be validated
-
-###
-Rock.user.check = (user) ->
-
-  if !user
-    user = Rock.user.translate()
-
-  try
-    check user,
-      # PersonId: Number || null
-      Guid: String
-      Id: Number
-      UserName: String
-      ApollosHash: String
-
-    return true
-  catch e
-    debug e
-    return false
-
-
-
-
 ###
 
   Rock.user.delete
 
-  @example make an API call to Rock
+  @example delete a user from Rock
 
-    Rock.apiRequest "DELETE", "api/UserLogins/#{user.Id}", (error, data) ->
-      throw err if err
+    Rock.user.delete Apollos.users.findOne()
 
-      console.log data
-
-  @param method [String] CRUD Method desired
-  @param resource [String] Url to hit on rock
-  @param data [Object, String, Array] data to send to Rock
-  @param callback [Function] callback to run on response
+  @param user [Object] an existing user document to be deleted
 
 ###
 Rock.user.delete = (user) ->
 
   user = Rock.user.translate(user)
 
-  if !user.Id
+  if not user.Id
     return
-
-  # user = Rock.user.check user
 
   debug user, "id for delete is #{user.Id}"
 
@@ -184,17 +127,13 @@ Rock.user.delete = (user) ->
       debug error
       return
 
-    # console.log result.data
-    # Apollos.user.update result.data
-
-
 ###
 
   Rock.user.update
 
   @example update a user on Rock
 
-    Rock.user.update()
+    Rock.user.update(userDoc)
 
   @param user [Object] User to update
 
@@ -203,15 +142,11 @@ Rock.user.update = (user) ->
 
   rockUser = Rock.user.translate(user)
 
-  if !rockUser.Id or !rockUser.Guid
+  if not rockUser.Id or not rockUser.Guid
     Rock.user.create user
     return
 
-
-  Rock.apiRequest(
-    "POST",
-    "api/UserLogins/#{rockUser.Id}",
-    rockUser,
+  Rock.apiRequest "POST", "api/UserLogins/#{rockUser.Id}", rockUser,
     (error, result) ->
       if error
         debug "Rock update failed:"
@@ -219,10 +154,6 @@ Rock.user.update = (user) ->
         return
 
       Apollos.user.update result.data
-  )
-
-
-
 
 ###
 
@@ -237,8 +168,7 @@ Rock.user.update = (user) ->
 ###
 Rock.user.create = (user) ->
 
-
-  user = Rock.user.translate(user)
+  user = Rock.user.translate user
 
   Rock.apiRequest "POST", "api/UserLogins", user, (error, result) ->
     if error
@@ -247,8 +177,6 @@ Rock.user.create = (user) ->
       return
 
     Apollos.user.update result.data
-
-
 
 ###
 
@@ -263,9 +191,22 @@ Rock.user.create = (user) ->
 ###
 Rock.users = ->
 
-  # Apollos.users.find([])
-  return
+  throw new Meteor.Error "Unimplemented", "This method is unimplemented!"
 
+###
+
+  Rock.people
+
+  @example return all people synced to Rock
+
+    Rock.people()
+
+  @todo write lookup
+
+###
+Rock.people = ->
+
+  throw new Meteor.Error "Unimplemented", "This method is unimplemented!"
 
 ###
 
@@ -282,7 +223,7 @@ Rock.users.refresh = (throwErrors) ->
 
   Rock.apiRequest "GET", "api/UserLogins", (error, result) ->
     if error and throwErrors
-      throw new Meteor.Error "Rock sync issue", error
+      throw new Meteor.Error "Rock sync issue", "api/UserLogins: #{error}"
     else if error
       debug "Rock sync failed:"
       debug error
@@ -293,6 +234,7 @@ Rock.users.refresh = (throwErrors) ->
 
     for user in users
       userDocId = Apollos.user.update user, Rock.name
+      debug "Synced user from Rock: #{user.Id}"
 
       if userDocId
         userIdsSynced.push userDocId
@@ -303,3 +245,124 @@ Rock.users.refresh = (throwErrors) ->
 
     for userDoc in usersRockDoesNotHave.fetch()
       Rock.user.create userDoc
+
+###
+
+  Rock.people.refresh
+
+  @example refesh all people from Rock
+
+    Rock.people.refresh()
+
+  @param throwErrors [Boolean] switch to silence error throwing
+
+###
+Rock.people.refresh = (throwErrors) ->
+
+  aliasQuery = "api/PersonAlias
+    ?$select=
+      PersonId,
+      AliasPersonId"
+
+  Rock.apiRequest "GET", aliasQuery, (error, result) ->
+    if error and throwErrors
+      throw new Meteor.Error "Rock sync issue", error
+    else if error
+      debug "Rock sync failed:"
+      debug error
+      return
+
+    grouped = _.groupBy result.data, "PersonId"
+    people = []
+
+    for personId of grouped
+      people.push
+        personId: Number personId
+        personAliasIds: _.map grouped[personId], (alias) ->
+          return alias.AliasPersonId
+
+    for person in people
+      Rock.people.refreshDetails person, throwErrors
+
+###
+
+  Rock.people.refreshDetails
+
+  @example refesh a person's details from Rock
+
+    Rock.people.refreshDetails person, throwErrors
+
+  @param person [Object|Number|String] exisiting person document, rock.personId,
+    or person._id
+  @param throwErrors [Boolean] switch to silence error throwing
+
+###
+Rock.people.refreshDetails = (person, throwErrors) ->
+
+  if typeof person is "number"
+    person =
+      personId: personId
+
+  if typeof person.personId isnt "number"
+    return
+
+  familyQuery = "api/Groups/GetFamilies/#{person.personId}
+    ?$expand=
+      GroupLocations,
+      Members,
+      Members/GroupRole,
+      Members/Person,
+      Members/Person/PhoneNumbers,
+      Members/Person/PhoneNumbers/NumberTypeValue
+    &$select=
+      CampusId,
+      Id,
+      GroupLocations/LocationId,
+      Members/GroupRole/Name,
+      Members/Person/PhoneNumbers/Number,
+      Members/Person/PhoneNumbers/NumberTypeValue/Value,
+      Members/Person/Id,
+      Members/Person/FirstName,
+      Members/Person/LastName,
+      Members/Person/NickName,
+      Members/Person/Email"
+
+  Rock.apiRequest "GET", familyQuery, (error, result) ->
+    if error and throwErrors
+      throw new Meteor.Error "Rock sync issue", error
+    else if error
+      debug "Rock sync failed:"
+      debug error
+      return
+
+    families = result.data
+
+    if families.length
+      family = families[0]
+
+      person.familyGroupId = family.Id
+      person.campusId = family.CampusId
+      person.locationIds = []
+
+      for location in family.GroupLocations
+        person.locationIds.push location.LocationId
+
+      for member in family.Members
+
+        if member.Person.Id is person.personId
+          person.groupRole = member.GroupRole.Name
+          person.firstName = member.Person.FirstName
+          person.nickName = member.Person.NickName
+          person.lastName = member.Person.LastName
+          person.email = member.Person.Email
+
+          for phone in member.Person.PhoneNumbers
+
+            if phone.NumberTypeValue.Value is "Home"
+              person.homePhone = Number(phone.Number).toFixed 0
+
+            else if phone.NumberTypeValue.Value is "Mobile"
+              person.cellPhone = Number(phone.Number).toFixed 0
+
+      Apollos.person.update person, Rock.name
+      debug "Synced person from Rock: #{person.personId}"
