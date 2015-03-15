@@ -1,7 +1,7 @@
 ## Machine
 machine:
   environment:
-    some_branch: $CIRCLE_BRANCH + "meteor.com"
+    some_branch: $CIRCLE_BRANCH.meteor.com
 
 ## Customize dependencies
 dependencies:
