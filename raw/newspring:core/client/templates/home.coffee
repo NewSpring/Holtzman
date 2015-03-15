@@ -41,19 +41,6 @@ Template.home.helpers
         firstName: 1
 
 
-  isMale: ->
-    return @.gender is 1
-
-
-  isCurrentUser: ->
-    user = Meteor.user()
-
-    if user and user.rock
-      return @.personId is user.rock.personId
-    else
-      return false
-
-
   currentPerson: ->
     user = Meteor.user()
 

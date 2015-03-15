@@ -82,7 +82,7 @@ Rock.person.translate = (person, platform) ->
         BirthDay: person.birthDay or null
         BirthMonth: person.birthMonth or null
         BirthYear: person.birthYear or null
-        Gender: person.gender or null
+        Gender: person.gender or 0
         MaritalStatusValueId: person.maritalStatusValueId or null
         AnniversaryDate: anniversary or null
         GraduationYear: null
@@ -90,7 +90,7 @@ Rock.person.translate = (person, platform) ->
         Email: person.preferredEmail or null
         IsEmailActive: true
         EmailNote: null
-        EmailPreference: person.emailPreference or null
+        EmailPreference: person.emailPreference or 0
         ReviewReasonNote: null
         InactiveReasonNote: null
         SystemNote: null
@@ -126,7 +126,7 @@ Rock.person.update = (person) ->
     # TODO: What here??!?
     return
 
-  Rock.apiRequest "POST", "api/People/#{rockPerson.Id}", rockPerson,
+  Rock.apiRequest "PUT", "api/People/#{rockPerson.Id}", rockPerson,
     (error, result) ->
       if error
         debug "Rock update failed:"

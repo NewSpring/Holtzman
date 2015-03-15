@@ -25,31 +25,3 @@
       {{> person}}
     {{/each}}
 </template>
-
-
-<template name="person">
-  <div>
-    <form>
-      <h2>
-        {{#if isCurrentUser}}
-          YOU ->
-        {{/if}}
-        <input name="first" type="text" value="{{firstName}}" placeholder="First" />
-        (<input name="nick" type="text" value="{{nickName}}" placeholder="Nick" />)
-        <input name="middle" type="text" value="{{middleName}}" placeholder="Middle" />
-        <input name="last" type="text" value="{{lastName}}" placeholder="Last" />
-        <input type="submit" value="Save" />
-        <button class="delete">Delete</button>
-      </h2>
-      {{#if photoURL}}
-        <img src="http://vsdev:50345/{{photoURL}}" height="100px" />
-      {{else}}
-        {{#if isMale}}
-          <img src="http://vsdev:50345/Assets/Images/person-no-photo-male.svg?" height="100px" />
-        {{else}}
-          <img src="http://vsdev:50345/Assets/Images/person-no-photo-female.svg?" height="100px" />
-        {{/if}}
-      {{/if}}
-    </form>
-  </div>
-</template>
