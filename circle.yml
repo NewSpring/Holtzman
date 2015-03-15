@@ -16,7 +16,6 @@ deployment:
   staging:
     branch: feature-ci
     commands:
-      - echo some nonsense
       - echo $CIRCLE_BRANCH
       - echo {$CIRCLE_BRANCH}
-      - norma meteor deploy beta-rock.meteor.com
+      - norma meteor deploy {$CIRCLE_BRANCH}.meteor.com
