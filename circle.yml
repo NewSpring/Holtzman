@@ -17,5 +17,6 @@ deployment:
     branch: feature-ci
     commands:
       - echo some nonsense
-      - echo {$BRANCH}
+      - echo $CIRCLE_BRANCH
+      - echo {$CIRCLE_BRANCH}
       - norma meteor deploy beta-rock.meteor.com
