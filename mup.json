@@ -31,7 +31,7 @@
   // Configure environment
   "env": {
     "PORT": 80,
-    "ROOT_URL": "http://www.jamesbaxley.com",
+    "ROOT_URL": "http://54.69.68.14",
     "CLUSTER_SERVICE": "web",
     "CLUSTER_DISCOVERY_URL": "mongodb://127.0.0.1/out"
   },
