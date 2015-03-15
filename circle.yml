@@ -1,7 +1,7 @@
 ## Machine
 machine:
   environment:
-    var: $CIRCLE_BRANCH + "meteor.com"
+    some_branch: $CIRCLE_BRANCH + "meteor.com"
 
 ## Customize dependencies
 dependencies:
@@ -22,5 +22,5 @@ deployment:
     branch: feature-ci
     commands:
       - echo $CIRCLE_BRANCH
-      - echo var
+      - echo $some_branch
       - norma meteor deploy $CIRCLE_BRANCH.meteor.com
