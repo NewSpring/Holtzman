@@ -1,0 +1,55 @@
+<template name="home">
+  <div>
+    <h1>About Rock:</h1>
+    <p>
+      Rock is
+      {{#if Rock.isAlive}}
+        online!
+      {{else}}
+        offline... uh oh!
+      {{/if}}
+    </p>
+  </div>
+  <div>
+    <h1>About you:</h1>
+    <p>
+      You are {{userIdentifier}}
+      {{#with currentPerson}}
+        {{> person}}
+      {{/with}}
+    </p>
+  </div>
+    <h1>Other people:</h1>
+    {{#each people}}
+      <hr />
+      {{> person}}
+    {{/each}}
+</template>
+
+
+<template name="person">
+  <div>
+    <form>
+      <h2>
+        {{#if isCurrentUser}}
+          YOU ->
+        {{/if}}
+        <input name="first" type="text" value="{{firstName}}" placeholder="First" />
+        (<input name="nick" type="text" value="{{nickName}}" placeholder="Nick" />)
+        <input name="middle" type="text" value="{{middleName}}" placeholder="Middle" />
+        <input name="last" type="text" value="{{lastName}}" placeholder="Last" />
+        <input type="submit" value="Save" />
+        <button class="delete">Delete</button>
+      </h2>
+      {{#if photoURL}}
+        <img src="http://vsdev:50345/{{photoURL}}" height="100px" />
+      {{else}}
+        {{#if isMale}}
+          <img src="http://vsdev:50345/Assets/Images/person-no-photo-male.svg?" height="100px" />
+        {{else}}
+          <img src="http://vsdev:50345/Assets/Images/person-no-photo-female.svg?" height="100px" />
+        {{/if}}
+      {{/if}}
+    </form>
+  </div>
+</template>

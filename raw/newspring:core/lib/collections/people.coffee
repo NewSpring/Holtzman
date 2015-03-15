@@ -1,8 +1,25 @@
 Apollos.people = new Mongo.Collection "people"
 
+# TODO: Make this secure
+Apollos.people.allow
+  insert: (userId, doc) ->
+    return true
+  update: (userId, doc) ->
+    return true
+  remove: (userId, doc) ->
+    return false # No one gets removed
+
 person = new SimpleSchema
+  updatedBy:
+    type: String
+    optional: true
   personId:
     type: Number
+    decimal: false
+    optional: true
+  givingGroupId:
+    type: Number
+    decimal: false
     optional: true
   guid:
     type: String
@@ -11,24 +28,28 @@ person = new SimpleSchema
   photoURL:
     type: String
     optional: true
-  maritalStatus:
-    type: String
+  photoId:
+    type: Number
     optional: true
-    allowedValues: Rock.constants.maritalStatuses
+    decimal: false
+  maritalStatusValueId:
+    type: Number
+    optional: true
+    decimal: false
   firstName:
     type: String
     optional: true
   nickName:
     type: String
     optional: true
-  suffix:
-    type: String
+  suffixValueId:
+    type: Number
     optional: true
-    allowedValues: Rock.constants.suffixes
-  title:
-    type: String
+    decimal: false
+  titleValueId:
+    type: Number
     optional: true
-    allowedValues: Rock.constants.titles
+    decimal: false
   lastName:
     type: String
     optional: true
@@ -36,17 +57,17 @@ person = new SimpleSchema
     type: String
     optional: true
   gender:
-    type: String
+    type: Number
+    decimal: false
     optional: true
-    allowedValues: Rock.constants.genders
   preferredEmail:
     type: String
     optional: true
     regEx: Apollos.regex.email
   emailPreference:
-    type: String
+    type: Number
     optional: true
-    allowedValues: Rock.constants.emailPreferences
+    decimal: false
   homePhone:
     type: String
     optional: true
@@ -97,12 +118,13 @@ person = new SimpleSchema
     optional: true
   personAliasIds:
     type: [Number]
-  status:
-    type: String
-    allowedValues: Rock.constants.statuses
+  recordStatusValueId:
+    type: Number
+    decimal: false
+    allowedValues: Object.keys(Rock.constants.statuses).map (k) -> Number k
     optional: true
   communicationPreference:
-    type: String
+    type: Number
     allowedValues: Rock.constants.communicationPreferences
     optional: true
 

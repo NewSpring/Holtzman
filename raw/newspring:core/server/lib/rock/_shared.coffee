@@ -41,6 +41,8 @@ Rock.apiRequest = (method, resource, data, callback) ->
   if Rock.tokenName and Rock.token
     headers[Rock.tokenName] = Rock.token
 
+  console.log "Sending #{method} to #{Rock.baseURL}#{resource.substring(0, 25)}..."
+
   HTTP.call method, "#{Rock.baseURL}#{resource}",
     timeout: 3000
     headers: headers
@@ -67,7 +69,7 @@ Rock.refreshEntity = (endpoint, entityName, apollosCollection, throwErrors) ->
 
   Rock.apiRequest "GET", endpoint, (error, result) ->
     if error
-      message = "#{endpoint.substring(0, 10)}: #{error}"
+      message = "#{endpoint.substring(0, 25)}...: #{error}"
       errorType = "Rock sync issue"
 
       if throwErrors

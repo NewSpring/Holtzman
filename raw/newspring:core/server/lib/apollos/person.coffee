@@ -38,27 +38,17 @@ Apollos.person.translate = (person, platform) ->
       existingPerson.birthDay = person.BirthDay
       existingPerson.birthMonth = person.BirthMonth
       existingPerson.birthYear = person.BirthYear
-      existingPerson.gender = Rock.constants.genders[person.Gender]
-      existingPerson.emailPreference =
-        Rock.constants.emailPreferences[person.EmailPreference]
-
-      if person.RecordStatusValue
-        existingPerson.status = person.RecordStatusValue.Value
-      else
-        existingPerson.status = null
-
-      if person.TitleValue
-        existingPerson.title = person.TitleValue.Value
-      else
-        existingPerson.title = null
-
-      if person.SuffixValue
-        existingPerson.suffix = person.SuffixValue.Value
-      else
-        existingPerson.suffix = null
+      existingPerson.gender = person.Gender
+      existingPerson.recordStatusValueId = person.RecordStatusValueId
+      existingPerson.titleValueId = person.TitleValueId
+      existingPerson.suffixValueId = person.SuffixValueId
+      existingPerson.maritalStatusValueId = person.MaritalStatusValueId
+      existingPerson.givingGroupId = person.GivingGroupId
+      existingPerson.emailPreference = person.EmailPreference
 
       if person.Photo
         photoPath = person.Photo.Path
+        existingPerson.photoId = person.Photo.Id
 
         if photoPath.indexOf "~/" is 0
           photoPath = photoPath.substring 2
@@ -66,11 +56,7 @@ Apollos.person.translate = (person, platform) ->
         existingPerson.photoURL = photoPath
       else
         existingPerson.photoURL = null
-
-      if person.MaritalStatusValue
-        existingPerson.maritalStatus = person.MaritalStatusValue.Value
-      else
-        existingPerson.maritalStatus = null
+        existingPerson.photoId = null
 
       if person.AnniversaryDate
         # parse date parts from something like "2015-03-10T00:00:00"
@@ -200,7 +186,7 @@ Apollos.person.delete = (person, platform) ->
 
   Update bindings
 
-##
+###
 initializing = true
 
 Apollos.people.find().observe
@@ -226,4 +212,3 @@ Apollos.people.find().observe
 
 
 initializing = false
-###

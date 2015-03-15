@@ -31,15 +31,11 @@ Rock.user.translate = (user, platform) ->
   # forced uppercase to make case insensitive strings
   switch platform.toUpperCase()
     when Apollos.name.toUpperCase()
-      if not user
-        user = {
-          emails: [
-            address: null
-          ]
-          services:
-            password:
-              bcrypt: null
-        }
+      user or=
+        emails: [ address: null ]
+        services:
+          password:
+            bcrypt: null
 
       rockUser =
         UserName: user.emails[0].address
@@ -104,7 +100,8 @@ Rock.user.update = (user) ->
         debug error
         return
 
-      Apollos.user.update result.data
+      # TODO: There shouldn't be any data from this call, right?
+      #Apollos.user.update result.data
 
 ###
 

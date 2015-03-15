@@ -46,11 +46,9 @@ Rock.constants =
     "Female"
   ]
 
-  statuses: [
-    "Active",
-    "Inactive",
-    "Prospect"
-  ]
+  statuses:
+    "3": "Active"
+    "4": "Inactive"
 
   communicationPreferences: [
     "Phone",

@@ -33,8 +33,9 @@ group = new SimpleSchema
   members:
     type: [member]
   status:
-    type: String
-    allowedValues: Rock.constants.statuses
+    type: Number
+    decimal: false
+    allowedValues: Object.keys(Rock.constants.statuses).map (k) -> Number k
     optional: true
 
   createdDate:

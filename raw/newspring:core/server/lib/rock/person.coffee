@@ -13,6 +13,127 @@ Rock.people = ->
 
   throw new Meteor.Error "Unimplemented", "This method is unimplemented!"
 
+
+###
+
+  Rock.person
+
+  @example return empty person
+
+    rockPerson = Rock.person()
+
+###
+Rock.person = ->
+
+  Rock.person.translate()
+
+
+###
+
+  Rock.person.translate
+
+  @example take data from a service and format it for Rock
+
+    Rock.person.translate([obj, platform])
+
+  @param person [Object] existing object to be translated
+  @param platform [String] platform to be translated to
+
+###
+Rock.person.translate = (person, platform) ->
+
+  if not platform
+    platform = Apollos.name
+
+  # forced uppercase to make case insensitive strings
+  switch platform.toUpperCase()
+    when Apollos.name.toUpperCase()
+      person or=
+        recordStatusValueId: 3
+
+      if person.weddingYear and person.weddingMonth and person.weddingDay
+        twoDigitMonth = "#{person.weddingMonth}"
+
+        if twoDigitMonth.length is 1
+          twoDigitMonth = "0#{twoDigitMonth}"
+
+        twoDigitDay = "#{person.weddingDay}"
+
+        if twoDigitDay.length is 1
+          twoDigitDay = "0#{twoDigitDay}"
+
+        anniversary = "#{person.weddingYear}-#{twoDigitMonth}-#{twoDigitDay}T00:00:00"
+
+      rockPerson =
+        IsSystem: false
+        RecordTypeValueId: 1
+        RecordStatusValueId: person.recordStatusValueId or 3
+        RecordStatusReasonValueId: null
+        ConnectionStatusValueId: 65
+        ReviewReasonValueId: null
+        IsDeceased: false
+        TitleValueId: person.titleValueId or null
+        FirstName: person.firstName or null
+        NickName: person.nickName or null
+        MiddleName: person.middleName or null
+        LastName: person.lastName or null
+        SuffixValueId: person.suffixValueId or null
+        PhotoId: person.photoId or null
+        BirthDay: person.birthDay or null
+        BirthMonth: person.birthMonth or null
+        BirthYear: person.birthYear or null
+        Gender: person.gender or null
+        MaritalStatusValueId: person.maritalStatusValueId or null
+        AnniversaryDate: anniversary or null
+        GraduationYear: null
+        GivingGroupId: person.givingGroupId or null
+        Email: person.preferredEmail or null
+        IsEmailActive: true
+        EmailNote: null
+        EmailPreference: person.emailPreference or null
+        ReviewReasonNote: null
+        InactiveReasonNote: null
+        SystemNote: null
+        ViewedCount: null
+        PrimaryAliasId: null
+        Id: person.personId or null
+        Guid: person.guid or null
+        ForeignId: null
+
+      return rockPerson
+
+
+###
+
+  Rock.person.update
+
+  @example update a person on Rock
+
+    Rock.person.update(personDoc)
+
+  @param person [Object] person to update
+
+###
+Rock.person.update = (person) ->
+
+  rockPerson = Rock.person.translate person
+
+  if not rockPerson.Id or not rockPerson.Guid
+    Rock.user.create user
+    return
+
+  else if not rockPerson.Id
+    # TODO: What here??!?
+    return
+
+  Rock.apiRequest "POST", "api/People/#{rockPerson.Id}", rockPerson,
+    (error, result) ->
+      if error
+        debug "Rock update failed:"
+        debug error
+        return
+
+
 ###
 
   Rock.people.refreshAliases
@@ -93,10 +214,6 @@ Rock.people.refresh = (throwErrors) ->
     ?$expand=
       PhoneNumbers,
       PhoneNumbers/NumberTypeValue,
-      RecordStatusValue,
-      SuffixValue,
-      TitleValue,
-      MaritalStatusValue,
       Photo,
       RecordTypeValue
     &$select=
@@ -106,14 +223,16 @@ Rock.people.refresh = (throwErrors) ->
       BirthDay,
       BirthMonth,
       BirthYear,
-      RecordStatusValue/Value,
+      RecordStatusValueId,
       EmailPreference,
       Email,
-      SuffixValue/Value,
-      TitleValue/Value,
-      MaritalStatusValue/Value,
+      SuffixValueId,
+      TitleValueId,
+      MaritalStatusValueId,
       Gender,
       Photo/Path,
+      Photo/Id,
+      GivingGroupId,
       Id,
       FirstName,
       LastName,
