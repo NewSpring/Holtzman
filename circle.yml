@@ -18,4 +18,4 @@ deployment:
     commands:
       - echo $CIRCLE_BRANCH
       - echo {$CIRCLE_BRANCH}
-      - norma meteor deploy {$CIRCLE_BRANCH}.meteor.com
+      - norma meteor deploy $CIRCLE_BRANCH.meteor.com
