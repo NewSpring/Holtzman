@@ -16,5 +16,6 @@ deployment:
   staging:
     branch: feature-ci
     commands:
+      - echo some nonsense
       - echo $BRANCH
       - norma meteor deploy beta-rock.meteor.com
