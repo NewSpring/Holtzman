@@ -21,6 +21,8 @@ deployment:
   staging:
     branch: feature-ci
     commands:
-      - echo $CIRCLE_BRANCH
-      - echo $some_branch
-      - norma meteor deploy $some_branch
+      - cp ./out/settings/settings.json ./
+      # temporary hack to write to file
+      - echo $PEM > james_uswesto.pem
+      - mup deploy
+      # - norma meteor deploy $some_branch
