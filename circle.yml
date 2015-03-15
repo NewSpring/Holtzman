@@ -23,4 +23,5 @@ deployment:
     commands:
       - echo $CIRCLE_BRANCH
       - echo $some_branch
+      - cd ./out
       - norma meteor deploy $some_branch
