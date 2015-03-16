@@ -6,7 +6,7 @@
       "username": "ubuntu",
       // "password": "password"
       // or pem file (ssh based authentication)
-      "pem": "./james_uswesto.pem"
+      // "pem": "./james_uswesto.pem"
     }
   ],
 
