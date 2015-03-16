@@ -39,24 +39,24 @@ describe 'Rock/Apollos User Sync Testing', ->
       return
 
 
-    it 'should create an Apollos user', (done) ->
-
-      casper.then ->
-
-        @.evaluate ->
-          Apollos.user.create(
-            "web@newspring.cc"
-            "testPassword"
-            (err, data) ->
-              if err
-                __utils__.echo err
-
-              window.userCreated = true
-
-          )
-
-      casper.waitFor (->
-        return @.getGlobal("userCreated") is true
-      ), ->
-        true.should.be.true
-        done()
+  #   it 'should create an Apollos user', (done) ->
+  #
+  #     casper.then ->
+  #
+  #       @.evaluate ->
+  #         Apollos.user.create(
+  #           "web@newspring.cc"
+  #           "testPassword"
+  #           (err, data) ->
+  #             if err
+  #               __utils__.echo err
+  #
+  #             window.userCreated = true
+  #
+  #         )
+  #
+  #     casper.waitFor (->
+  #       return @.getGlobal("userCreated") is true
+  #     ), ->
+  #       true.should.be.true
+  #       done()
