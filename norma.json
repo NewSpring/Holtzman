@@ -16,10 +16,10 @@
       "minify": false
     },
     "copy": {
-      "src": "out/packages/",
-      "out": "/",
+      "src": "out/settings/settings",
       "dest": "./",
-      "order": "post"
+      "order": "post",
+      "ext": ["json"]
     },
     "meteor-load": {
       "src": "out/packages/newspring:core/**/*",
@@ -76,11 +76,9 @@
     }
   },
   "test": {
-    "before": "meteor run",
     "mocha-casperjs": {
       "src": "out/tests/**/*"
-    },
-    "after": "meteor close"
+    }
   },
   "scripts": {
     "postinstall": "./norma-ignore/postinstall.coffee"
