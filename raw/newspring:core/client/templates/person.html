@@ -15,10 +15,10 @@
       {{#if photoURL}}
         <img src="http://vsdev:50345/{{photoURL}}" height="100px" />
       {{else}}
-        {{#if isMale}}
-          <img src="http://vsdev:50345/Assets/Images/person-no-photo-male.svg?" height="100px" />
-        {{else}}
+        {{#if isFemale}}
           <img src="http://vsdev:50345/Assets/Images/person-no-photo-female.svg?" height="100px" />
+        {{else}}
+          <img src="http://vsdev:50345/Assets/Images/person-no-photo-male.svg?" height="100px" />
         {{/if}}
       {{/if}}
     </form>

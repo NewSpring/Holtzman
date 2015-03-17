@@ -1,4 +1,4 @@
 Template.person.helpers
 
-  isMale: ->
-    return @.gender is 1
+  isFemale: ->
+    return @.gender is 2

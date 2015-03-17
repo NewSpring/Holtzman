@@ -22,7 +22,11 @@ Apollos.person.translate = (person, platform) ->
       # Grab existing person for merging if
       if person
         existingPerson = Apollos.people.findOne
-          "personId": person.Id
+          $or: [
+            guid: RegExp(person.Guid, "i")
+          ,
+            personId: person.Id
+          ]
       else
         person = Rock.person()
 
@@ -109,8 +113,15 @@ Apollos.person.update = (person, platform) ->
   else
     person.updatedBy = Apollos.name
 
+  query =
+    $or: [
+      personId: person.personId
+    ,
+      guid: RegExp(person.guid, "i")
+    ]
+
   people = Apollos.people.find(
-    personId: person.personId
+    query
   ,
     sort:
       updatedDate: 1
@@ -129,20 +140,20 @@ Apollos.person.update = (person, platform) ->
       _id:
         $in: ids
 
-    people = Apollos.people.find(personId: person.personId).fetch()
+    people = Apollos.people.find(query).fetch()
 
   if people.length is 1
-    personId = people[0]._id
+    mongoId = people[0]._id
 
     Apollos.people.update
-      _id: personId
+      _id: mongoId
     ,
       $set: person
 
   else
-    personId = Apollos.people.insert person
+    mongoId = Apollos.people.insert person
 
-  return personId
+  return mongoId
 
 ###
 
@@ -195,7 +206,7 @@ Apollos.people.find().observe
     if initializing
       return
 
-    if doc.updatedBy isnt Rock.name and doc.updatedBy
+    if doc.updatedBy isnt Rock.name
         Rock.person.create doc
 
 
@@ -206,9 +217,7 @@ Apollos.people.find().observe
 
 
   removed: (doc) ->
-
-    if doc.updatedBy isnt Rock.name
-      Rock.person.delete doc, Rock.name
+    # This should not happen
 
 
 initializing = false

@@ -30,6 +30,60 @@ Rock.person = ->
 
 ###
 
+  Rock.person.create
+
+  @example create a person on Rock
+
+    Rock.person.update()
+
+  @param person [Object] Person to create
+
+###
+Rock.person.create = (person) ->
+
+  mongoId = person._id
+  person = Rock.person.translate person
+
+  delete person.Id
+  person.Guid or= Rock.utilities.makeNewGuid()
+
+  Apollos.people.update
+    _id: mongoId
+  ,
+    $set:
+      guid: person.Guid
+      updatedBy: Rock.name
+
+  Rock.apiRequest "POST", "api/People", person, (error, result) ->
+    if error
+      debug "Rock create failed:"
+      debug error
+      return
+
+    # Need to get the Id - hopefully this can be avoided by using immediate post
+    # save triggers in Rock
+    query = "api/People?$filter=Guid eq guid'#{person.Guid}'&$select=Id"
+
+    Meteor.setTimeout ->
+      Rock.apiRequest "GET", query, (error, result) ->
+        if error
+          debug "Rock get failed:"
+          debug error
+          return
+
+        if result.data and result.data.length
+
+          Apollos.people.update
+            _id: mongoId
+          ,
+            $set:
+              personId: result.data[0].Id
+              updatedBy: Rock.name
+    , 250
+
+
+###
+
   Rock.person.translate
 
   @example take data from a service and format it for Rock
@@ -186,7 +240,7 @@ Rock.people.refreshAliases = (throwErrors, wait) ->
         element.AliasPersonId
 
       Apollos.people.update
-        guid: guid
+        guid: RegExp(guid, "i")
       ,
         $set:
           personId: id

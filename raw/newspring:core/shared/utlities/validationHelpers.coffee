@@ -7,3 +7,7 @@ Apollos.validate =
   isBcryptHash: (str) ->
 
     Apollos.regex.bcrypt.test str
+
+  isGuid: (str) ->
+
+    Apollos.regex.guid.test str

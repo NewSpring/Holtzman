@@ -145,8 +145,6 @@ api["#{peopleURL}:id"] =
   post: (data) ->
 
     debug "POST to #{peopleURL}#{@.params.id}"
-    if Number(@.params.id) is 0
-      Rock.people.refreshAliases true, true
     return upsertResource.call @, data, Apollos.person.update, Rock.name
 
   delete: (data) ->
