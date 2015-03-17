@@ -62,7 +62,12 @@ Rock.person.create = (person) ->
 
     # Need to get the Id - hopefully this can be avoided by using immediate post
     # save triggers in Rock
-    query = "api/People?$filter=Guid eq guid'#{person.Guid}'&$select=Id"
+    query = "api/PersonAlias
+      ?$filter=
+        AliasPersonGuid eq guid'#{person.Guid}'
+      &$select=
+        PersonId,
+        AliasPersonId"
 
     Meteor.setTimeout ->
       Rock.apiRequest "GET", query, (error, result) ->
@@ -73,11 +78,15 @@ Rock.person.create = (person) ->
 
         if result.data and result.data.length
 
+          aliasIds = result.data.map (a) ->
+            a.AliasPersonId
+
           Apollos.people.update
             _id: mongoId
           ,
             $set:
-              personId: result.data[0].Id
+              personId: result.data[0].PersonId
+              personAliasIds: aliasIds
               updatedBy: Rock.name
     , 250
 
