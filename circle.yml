@@ -20,7 +20,7 @@ test:
 ## Customize deployment commands
 deployment:
   staging:
-    branch: feature-ci
+    branch: master
     commands:
       - cp ./out/settings/settings.json ./
       # temporary hack to write to file
