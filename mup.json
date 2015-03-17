@@ -2,7 +2,7 @@
   // Server authentication info
   "servers": [
     {
-      "host": "54.69.68.14",
+      "host": "54.148.149.234",
       "username": "ubuntu",
       // "password": "password"
       // or pem file (ssh based authentication)
@@ -31,7 +31,7 @@
   // Configure environment
   "env": {
     "PORT": 80,
-    "ROOT_URL": "http://54.69.68.14",
+    "ROOT_URL": "http://54.148.149.234",
     "CLUSTER_SERVICE": "web",
     "CLUSTER_DISCOVERY_URL": "mongodb://127.0.0.1/out"
   },
