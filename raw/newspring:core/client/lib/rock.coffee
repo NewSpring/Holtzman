@@ -1,3 +1,5 @@
 Template.registerHelper "Rock", Rock
 
-Rock.baseURL = Meteor.call("rock-url")
+Meteor.call("rock-url", (err, name) ->
+  Rock.baseURL = name
+)

@@ -19,7 +19,9 @@
       "src": "out/settings/settings",
       "dest": "./",
       "order": "post",
-      "ext": ["json"]
+      "ext": [
+        "json"
+      ]
     },
     "meteor-load": {
       "src": "out/packages/newspring:core/**/*",
