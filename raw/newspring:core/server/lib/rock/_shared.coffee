@@ -1,5 +1,4 @@
 Rock.tokenName = Meteor.settings.rock.tokenName
-Rock.baseURL = Meteor.settings.rock.baseURL
 Rock.token = Meteor.settings.rock.token
 
 # If Rock is being watched (aka old states), remove watching

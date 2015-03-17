@@ -8,7 +8,7 @@
 
 ###
 Rock.name = "Rock"
-
+Rock.baseURL = Meteor.settings.rock.baseURL
 
 ###
 
