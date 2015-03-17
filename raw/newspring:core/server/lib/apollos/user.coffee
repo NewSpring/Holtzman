@@ -1,5 +1,3 @@
-
-
 ###
 
   Apollos.user.translate
@@ -15,41 +13,36 @@
 Apollos.user.translate = (user, platform) ->
 
   # Default to Rock
-  if !platform
+  if not platform
     platform = Rock.name
-
-
 
   # forced uppercase to make case insensitive strings
   switch platform.toUpperCase()
-    when "ROCK"
+    when Rock.name.toUpperCase()
+
       # Grab existing user for merging if
       if user
-        query = "rock.userLoginId": user.Id
-
-        existingUser = Meteor.users.findOne(query)
-
-        if !existingUser then existingUser = {}
+        existingUser = Apollos.users.findOne
+          "rock.userLoginId": user.Id
       else
-        # throws an error on the server
-        # existingUser = Apollos.user()
-        existingUser = {}
         user = Rock.user()
 
+      existingUser or= {}
 
       # add rock property
-      existingUser.rock = existingUser.rock or {}
+      if not existingUser.rock
+        existingUser.rock = {}
 
       # map properties from Rock to Apollos
       if user.PersonId
-        existingUser.rock.personId = Number(user.PersonId)
+        existingUser.rock.personId = Number user.PersonId
       else
         existingUser.rock.personId = null
 
       existingUser.rock.guid = user.Guid
 
       if user.Id
-        existingUser.rock.userLoginId = Number(user.Id)
+        existingUser.rock.userLoginId = Number user.Id
       else
         existingUser.rock.userLoginId = null
 
@@ -67,9 +60,26 @@ Apollos.user.translate = (user, platform) ->
 
       return existingUser
 
+###
 
+  Apollos.user.delete
 
+  @example take a user and delete it
+
+    Apollos.user.delete(user, [platform])
+
+  @param user [Object|String|Number] existing document, _id, or rock.userLoginId
+  @param platform [String] platform initiating the delete
+
+###
 Apollos.user.delete = (user, platform) ->
+
+  if typeof user is "number"
+    user = Apollos.users.findOne
+      "rock.userLoginId": user
+
+  else if typeof user is "string"
+    user = Apollos.users.findOne user
 
   # Apollos.users.update user, platform
   if platform and platform.toUpperCase() is Rock.name.toUpperCase()
@@ -77,17 +87,16 @@ Apollos.user.delete = (user, platform) ->
   else
     user.updatedBy = Apollos.name
 
-
-  Meteor.users.update
+  # We have to update this first so the collection hooks know what to do
+  Apollos.users.update
     _id: user._id
   ,
     $set:
       "updatedBy": user.updatedBy
 
+  debug "Trying to remove user #{user._id} with a platform of #{user.updatedBy}"
 
-  console.log "trying to remove #{user._id} with a platform of #{user.updatedBy}"
-
-  Apollos.users.remove(user._id)
+  Apollos.users.remove user._id
 
 ###
 
@@ -95,7 +104,7 @@ Apollos.user.delete = (user, platform) ->
 
   @example update a usr in apollos with data from Rock
 
-    Apollos.user.translate([obj, platform])
+    Apollos.user.update([obj, platform])
 
   @param user [Object] existing user from other service to be updated
   @param platform [String] platform to be update from
@@ -103,11 +112,7 @@ Apollos.user.delete = (user, platform) ->
 ###
 Apollos.user.update = (user, platform) ->
 
-  # platform doesn't do anything right now
-  # eventually this will contain hooks for updating
-  # Apollos from different services
-
-  user = Apollos.user.translate(user)
+  user = Apollos.user.translate user
 
   query =
     $or: [
@@ -119,7 +124,7 @@ Apollos.user.update = (user, platform) ->
     query["$or"].push
       "emails.address": user.emails[0].address
 
-  users = Meteor.users.find(query).fetch()
+  users = Apollos.users.find(query).fetch()
 
   if users.length > 1
     ids = []
@@ -133,7 +138,7 @@ Apollos.user.update = (user, platform) ->
   else if users.length is 0 and hasEmail
     tempPassword = String(Date.now() * Math.random())
     userId = Apollos.user.create(user.emails[0].address, tempPassword)
-    usr = Meteor.users.findOne userId
+    usr = Apollos.users.findOne userId
 
   else
     usr = users[0]
@@ -146,45 +151,36 @@ Apollos.user.update = (user, platform) ->
   # can't upsert with _id present
   delete user._id
 
-
   if usr
 
-    Meteor.users.update
+    Apollos.users.update
       _id: usr._id
     ,
       $set: user
 
     return usr._id
 
-
-
-###
-
-  Update bindings
-
-###
 initializing = true
-Apollos.users.find().observe({
+
+Apollos.users.find().observe
 
   added: (doc) ->
+
     if initializing
       return
-    if doc.updatedBy isnt "Rock" and doc.updatedBy
+    if doc.updatedBy isnt Rock.name and doc.updatedBy
         Rock.user.create doc
 
 
   changed: (newDoc, oldDoc) ->
 
-    if newDoc.updatedBy isnt "Rock"
+    if newDoc.updatedBy isnt Rock.name
       Rock.user.update newDoc
-
 
   removed: (doc) ->
 
-    if doc.updatedBy isnt "Rock"
+    if doc.updatedBy isnt Rock.name
       Rock.user.delete doc, Rock.name
-
     return
 
-})
 initializing = false

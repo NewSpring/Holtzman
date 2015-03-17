@@ -1,0 +1,27 @@
+<template name="home">
+  <div>
+    <h1>About Rock:</h1>
+    <p>
+      Rock is
+      {{#if Rock.isAlive}}
+        online!
+      {{else}}
+        offline... uh oh!
+      {{/if}}
+    </p>
+  </div>
+  <div>
+    <h1>About you:</h1>
+    <p>
+      You are {{userIdentifier}}
+      {{#with currentPerson}}
+        {{> person}}
+      {{/with}}
+    </p>
+  </div>
+    <h1>Other people:</h1>
+    {{#each people}}
+      <hr />
+      {{> person}}
+    {{/each}}
+</template>

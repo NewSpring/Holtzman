@@ -1,8 +1,1 @@
-###
-
-  Client Only
-
-###
-
-
-Template.registerHelper("Rock", Rock)
+Template.registerHelper "Rock", Rock

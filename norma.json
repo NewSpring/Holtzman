@@ -42,14 +42,7 @@
         },
         "export": {
           "Rock": "both",
-          "Apollos": "both",
-          "Campuses": "both",
-          "Funds": "both",
-          "Locations": "both",
-          "People": "both",
-          "SavedAccounts": "both",
-          "ScheduledTransactions": "both",
-          "Transactions": "both"
+          "Apollos": "both"
         }
       },
       "test": {
@@ -76,9 +69,11 @@
     }
   },
   "test": {
+    "before": "meteor run",
     "mocha-casperjs": {
       "src": "out/tests/**/*"
-    }
+    },
+    "after": "meteor close"
   },
   "scripts": {
     "postinstall": "./norma-ignore/postinstall.coffee"

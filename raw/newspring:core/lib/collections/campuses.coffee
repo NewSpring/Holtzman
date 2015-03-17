@@ -1,12 +1,4 @@
-
-@.Campuses = new Mongo.Collection("campuses");
-
-###
-
-  @property [Campus] All the fields for a campus
-  Mapped to Rock:Campus
-
-###
+Apollos.campuses = new Mongo.Collection "campuses"
 
 campus = new SimpleSchema(
   campusId:
@@ -26,4 +18,4 @@ campus = new SimpleSchema(
     type: [Number]
 )
 
-@.Campuses.attachSchema campus
+Apollos.campuses.attachSchema campus
