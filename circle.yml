@@ -1,14 +1,10 @@
-## Machine
-machine:
-  environment:
-    some_branch: $CIRCLE_BRANCH.meteor.com
 
 ## Customize dependencies
 dependencies:
   pre:
     - npm install normajs -g
     - curl https://install.meteor.com/ | sh
-    - npm install mup -g
+    - npm install NewSpring/meteor-up -g
 
 ## Customize test commands
 test:
