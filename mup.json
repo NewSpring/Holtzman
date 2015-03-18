@@ -17,13 +17,13 @@
   "setupNode": true,
 
   // WARNING: If nodeVersion omitted will setup 0.10.33 by default. Do not use v, only version number.
-  "nodeVersion": "0.10.33",
+  "nodeVersion": "0.10.36",
 
   // Install PhantomJS in the server
   "setupPhantom": true,
 
   // Application name (No spaces)
-  "appName": "EVAL:$ process.env.CIRCLE_BRANCH || newspring-core",
+  "appName": "EVAL:$ process.env.CIRCLE_BRANCH || 'master'",
 
   // Location of app (local directory)
   "app": "./out",
