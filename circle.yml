@@ -21,5 +21,6 @@ deployment:
       - cp ./out/settings/settings.json ./
       # temporary hack to write to file
       - echo $PEM > james_uswesto.pem
+      - mup setup
       - mup deploy
       # - norma meteor deploy $some_branch
