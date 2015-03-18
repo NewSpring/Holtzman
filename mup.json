@@ -30,6 +30,7 @@
 
   // Configure environment
   "env": {
+    "PORT": "EVAL:$ process.env.PORT || 8000",
     "ROOT_URL": "http://54.148.149.234",
     "CLUSTER_SERVICE": "web",
     "CLUSTER_DISCOVERY_URL": "mongodb://127.0.0.1/out",
