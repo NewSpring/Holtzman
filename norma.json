@@ -61,7 +61,8 @@
       "packages": [
         "meteor-platform",
         "newspring:core",
-        "msavin:mongol"
+        "msavin:mongol",
+        "mike:mocha"
       ],
       "platforms": [
         "server",
