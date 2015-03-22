@@ -1,5 +1,10 @@
-Meteor.publish "people", ->
+Meteor.publish "definedValues", ->
+
+  Apollos.definedValues.find()
   
+
+Meteor.publish "people", ->
+
   Apollos.people.find
     recordStatusValueId: 3
 

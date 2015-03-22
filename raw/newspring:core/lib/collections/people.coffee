@@ -121,11 +121,9 @@ person = new SimpleSchema
   recordStatusValueId:
     type: Number
     decimal: false
-    allowedValues: Object.keys(Rock.constants.statuses).map (k) -> Number k
     optional: true
   communicationPreference:
     type: Number
-    allowedValues: Rock.constants.communicationPreferences
     optional: true
 
   createdDate:
