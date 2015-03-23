@@ -1,5 +1,7 @@
 Meteor.startup ->
-  
-  debug "Attempting to sync data from Rock"
+
+  debug "*** STARTING ROCK SYNC ***"
+
+  Rock.definedValues.refresh true
   Rock.users.refresh true
   Rock.people.refresh true

@@ -5,4 +5,5 @@ Router.route "/",
     [
       Meteor.subscribe("userData")
       Meteor.subscribe("people")
+      Meteor.subscribe("definedValues")
     ]

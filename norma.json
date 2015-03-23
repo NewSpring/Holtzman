@@ -39,7 +39,6 @@
           "cfs:http-methods@0.0.27": "both",
           "bjwiley2:server-watch@0.0.3": "both",
           "aldeed:collection2@2.3.2": "both",
-          "matb33:collection-hooks@0.7.9": "both",
           "bjwiley2:request-data@0.0.3": "both"
         },
         "export": {

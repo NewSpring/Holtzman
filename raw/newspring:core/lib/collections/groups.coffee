@@ -5,7 +5,6 @@ member = new SimpleSchema
     type: Number
   role:
     type: String
-    allowedValues: Rock.constants.groupRoles
 
 group = new SimpleSchema
   groupId:
@@ -20,7 +19,6 @@ group = new SimpleSchema
   type:
     type: String
     optional: true
-    allowedValues: Rock.constants.groupTypes
   guid:
     type: String
     optional: true
@@ -35,7 +33,6 @@ group = new SimpleSchema
   status:
     type: Number
     decimal: false
-    allowedValues: Object.keys(Rock.constants.statuses).map (k) -> Number k
     optional: true
 
   createdDate:
