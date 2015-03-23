@@ -17,12 +17,13 @@
   },
   "homepage": "https://github.com/NewSpring/newspring-core",
   "devDependencies": {
-    "norma-mocha-casperjs": "^0.1.10"
+    "mocha": "^2.2.1",
+    "chai": "^2.1.2"
   },
   "dependencies": {
     "norma-bower": "^0.3.2",
     "norma-copy": "^0.4.0",
-    "norma-javascript": "^0.4.1",
+    "norma-javascript": "^0.4.2",
     "norma-markup": "^0.5.1",
     "norma-meteor": "^0.3.8",
     "norma-meteor-load": "^0.1.8"
