@@ -40,7 +40,8 @@
         },
         "export": {
           "Rock": "both",
-          "Apollos": "both"
+          "Apollos": "both",
+          "HTTP": "server"
         }
       },
       "test": {
