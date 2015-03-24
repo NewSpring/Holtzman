@@ -1,6 +1,7 @@
 MochaWeb?.testOnly ->
   describe "Test", ->
-    chai.assert.equal 5, 5
+    it "is frickin true", ->
+      chai.assert.equal 5, 5
 
 # describe 'Rock/Apollos User Sync Testing', ->
 
