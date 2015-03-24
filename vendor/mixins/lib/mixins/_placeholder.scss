@@ -1,0 +1,22 @@
+
+$use-placeholder: true!default;
+
+@if $use-placeholder == true {
+  // This mixin allows for vendor prefixed placeholder
+  // values to be outputted all at once
+
+  @mixin placeholder {
+    &::-webkit-input-placeholder {
+      @content
+    };
+    &:-moz-placeholder {
+      @content
+    };
+    &::-moz-placeholder {
+      @content
+    };
+    &:-ms-input-placeholder {
+      @content
+    };
+  }
+}

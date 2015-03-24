@@ -1,0 +1,11 @@
+
+$use-links: true !default;
+
+@if $use-links == true {
+  a {
+    position: relative;
+
+    text-decoration: underline;
+    word-wrap: break-word;
+  }
+}

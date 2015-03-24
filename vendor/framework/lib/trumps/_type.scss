@@ -1,0 +1,16 @@
+
+$use-typography: true !default;
+
+@if $use-typography == true {
+  .capitalize {
+    text-transform: capitalize !important;
+  }
+
+  .lowercase {
+    text-transform: lowercase !important;
+  }
+
+  .uppercase {
+    text-transform: uppercase !important;
+  }
+}

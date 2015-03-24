@@ -1,0 +1,20 @@
+
+$use-iframes: true !default;
+
+@if $use-iframes == true {
+  // ============================================================
+  //
+  //   Fix for responsive iframe videos (specifically YouTube)
+  //
+  // ============================================================
+
+  iframe,
+  object,
+  embed {
+    position: relative;
+
+    overflow: hidden;
+
+    max-width: 100%;
+  }
+}

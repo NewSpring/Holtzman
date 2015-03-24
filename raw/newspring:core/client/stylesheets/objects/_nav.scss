@@ -1,0 +1,18 @@
+
+.newspring--icon {
+  @include newspring--icon($base-icon-size);
+  @include fixed(bottom $base-spacing-unit right $base-spacing-unit);
+  cursor: pointer;
+  box-shadow: 1px 2px 5px map-get($colors, medium);
+}
+
+
+// temporary
+.font--white {
+  color: white;
+}
+
+.background--fill {
+  background-position: center;
+  background-size: cover;
+}

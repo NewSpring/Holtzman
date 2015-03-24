@@ -1,0 +1,21 @@
+
+$use-vendor: true!default;
+
+@if $use-vendor == true {
+
+  // The vendor mixin prefixes a value with vendor
+  // prefixes of the four majorb browser types.
+  // If you are using Norma or any form of auto-prefixer,
+  // This should be unncessary.
+
+
+  @mixin vendor($property, $value...) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    -ms-#{$property}: $value;
+    -o-#{$property}: $value;
+    #{$property}: $value;
+  }
+
+
+}

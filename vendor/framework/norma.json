@@ -1,0 +1,23 @@
+{
+  "name": "junction-framework",
+  "tasks":{
+    "bower": {
+      "packages": {
+        "mixins": "NewSpring/junction-mixins",
+        "normalize.sass": "~2.0.0"
+      }
+    },
+    "sass": {
+      "src": "lib/**/*",
+      "dest": "out/",
+      "comb": true,
+      "lint": true
+    },
+    "copy": {
+      "src": "out/framework",
+      "dest": "./",
+      "order": "post",
+      "ext": ["css"]
+    }
+  }
+}

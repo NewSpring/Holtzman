@@ -1,0 +1,106 @@
+
+$fonts: extend($fonts, (
+  colfax: (
+    h1: (
+      font-family: "Colfax-Black",
+      font-size: 3.625em,
+      line-height: 1.35,
+      text-transform: uppercase,
+      margin-bottom: $base-spacing-unit,
+      media-query: (
+        "palm": (
+          font-size: 2em,
+          line-height: 1.15,
+          margin-bottom: $half-spacing-unit
+        ),
+        "lap": (
+          font-size: 2.5em,
+          line-height: 1.125
+        )
+      )
+    ),
+    h2: (
+      font-family: "Colfax-Bold",
+      font-size: 2.25em,
+      line-height: 1.25,
+      media-query: (
+        "palm": (
+          font-size: 1.625em,
+          line-height: 1.15
+        ),
+        "lap": (
+          font-size: 2em,
+          line-height: 1.25
+        )
+      )
+    ),
+    h3: (
+      font-family: "Colfax-Bold",
+      font-size: 1.75em,
+      line-height: 1.25,
+      media-query: (
+        "palm": (
+          font-size: 1.375em,
+          line-height: 1.13
+        ),
+        "lap": (
+          font-size: 1.5em,
+          line-height: 1.25
+        )
+      )
+    ),
+    h4: (
+      font-family: "Colfax-Medium",
+      font-size: 1.375em,
+      line-height: 1.2222222,
+      margin-bottom: $half-spacing-unit,
+      media-query: (
+        "palm": (
+          font-size: 1.125em,
+          line-height: 1.22
+        ),
+        "lap": (
+          font-size: 1.125em,
+          line-height: 1.1111
+        )
+      )
+    ),
+    h5: (
+      font-family: "Colfax-Bold",
+      font-size: 1em,
+      line-height: 1.25
+    )
+  ),
+  meta-serif: (
+    p: (
+      font-family: "MetaSerifOT-Book",
+      font-size: 1.25em,
+      line-height: 1.25,
+      margin-bottom: $base-spacing-unit,
+      media-query: (
+        "palm": (
+          font-size: 1.1em,
+          line-height: 1.15
+        ),
+        "lap": (
+          font-size: 1.15em,
+          line-height: 1.15
+        )
+      )
+    ),
+    a: (
+      color: $brand-color
+    )
+  )
+));
+
+// type sets
+$typography: extend($typography, (
+  h1: colfax,
+  h2: colfax,
+  h3: colfax,
+  h4: colfax,
+  h5: colfax,
+  p: meta-serif,
+  a: meta-serif
+));

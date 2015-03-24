@@ -1,0 +1,19 @@
+
+$use-base: true !default;
+
+@if $use-base == true {
+  html {
+    -webkit-font-smoothing: antialiased;
+
+    overflow-y: scroll;
+
+    min-height: 100%;
+
+    font-size: 100%;
+    color: map-get($font-colors, 'base');
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}

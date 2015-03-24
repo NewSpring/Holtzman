@@ -1,0 +1,29 @@
+
+$use-rotate: true!default;
+
+@if $use-rotate == true {
+  // ============================================================
+  //
+  //     $ROTATE
+  //
+  //     Used to rotate an element with multiple browser support
+  //
+  //     @param degree         :  0deg
+  //
+  //     Used in sass:
+  //
+  //     .className {
+  //         @include rotate(45deg)
+  //     }
+  //
+  // ============================================================
+  @mixin rotate($degree) {
+    // Safari and Chrome
+    -webkit-transform: rotate($degree);
+    // IE 9
+    -ms-transform: rotate($degree);
+    // Opera
+    -o-transform: rotate($degree);
+    transform: rotate($degree);
+  }
+}

@@ -1,0 +1,27 @@
+
+$use-namespace: true!default;
+
+@if $use-namespace == true {
+  @if $use-breakpoints == true {
+    @mixin namespace($name, $_breakpoints: $breakpoints) {
+      .#{$name} {
+        @content
+      };
+
+      @each $breakpoint in $_breakpoints {
+        // Grab the alias and the condition from their respective locations in
+        // the list.
+        $alias: nth($breakpoint, 1);
+        //Map to all known breakpoints
+
+        @include media-query(#{$alias}) {
+          .#{$alias}-#{$name} {
+            @content
+          };
+        }
+      }
+    }
+  } @else {
+    @warn '@namespace depends on @breakpoints';
+  }
+}

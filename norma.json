@@ -4,6 +4,11 @@
     "bower": {
       "/out": {
         "settings": "https://github.com/NewSpring/settings.git"
+      },
+      "/vendor": {
+        "mixins": "NewSpring/junction-mixins",
+        "framework": "NewSpring/junction-framework",
+        "fonts": "NewSpring/newspring-fonts"
       }
     },
     "javascript": {
@@ -14,6 +19,10 @@
       "src": "raw/**/*",
       "dest": "out/packages",
       "minify": false
+    },
+    "sass": {
+      "src": "raw/**/*",
+      "dest": "out/packages"
     },
     "copy": {
       "src": "out/settings/settings",
@@ -61,12 +70,14 @@
         "meteor-platform",
         "newspring:core",
         "msavin:mongol",
-        "mike:mocha"
+        "mike:mocha",
+        "browser-policy"
       ],
       "platforms": [
         "server",
         "browser",
-        "ios"
+        "ios",
+        "android"
       ]
     }
   },
