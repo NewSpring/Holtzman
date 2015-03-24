@@ -30,6 +30,7 @@ Rock.apiRequest = (method, resource, data, callback) ->
 
   if not Rock.isAlive()
     # build queue system herenot
+    debug "Rock is OFFLINE - canceling request #{resource.substring(0, 25)}"
     return
 
   if typeof data is "function"

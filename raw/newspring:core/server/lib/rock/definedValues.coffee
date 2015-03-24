@@ -13,9 +13,6 @@ Rock.definedValues = {}
 ###
 Rock.definedValues.refresh = (throwErrors) ->
 
-  oldCount = Apollos.definedValues.find().count()
-  debug "Removing #{oldCount} defined values in anticipation of sync"
-  Apollos.definedValues.remove {}
   filters = []
 
   for typeName, typeGuid of Rock.constants.definedTypeGuids
@@ -47,6 +44,10 @@ Rock.definedValues.refresh = (throwErrors) ->
       return
 
     definedTypes = result.data
+
+    oldCount = Apollos.definedValues.find().count()
+    debug "Removing #{oldCount} defined values in anticipation of sync"
+    Apollos.definedValues.remove {}
 
     for definedType in definedTypes
       for definedValue in definedType.DefinedValues

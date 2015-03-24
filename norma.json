@@ -52,7 +52,7 @@
     },
     "meteor": {
       "src": "out",
-      "settings": "out/settings/settings.json",
+      "settings": "out/settings/development.json",
       "build": {
         "dest": "build",
         "server": "localhost:3000"
