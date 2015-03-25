@@ -182,7 +182,7 @@ Rock.person.update = (person) ->
   rockPerson = Rock.person.translate person
 
   if not rockPerson.Id or not rockPerson.Guid
-    Rock.user.create user
+    Rock.person.create person
     return
 
   else if not rockPerson.Id
