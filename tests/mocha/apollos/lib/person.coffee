@@ -6,8 +6,16 @@ MochaWeb?.testOnly ->
     describe 'person', ->
 
       beforeEach ->
-        Meteor.logout() if Meteor.isClient
         Meteor.flush()
+
+      before (done) ->
+        if Meteor.isClient
+          Meteor.logout()
+          Meteor.autorun ->
+            user = Apollos.user()
+            done() if Object.keys(user).length is 0
+        else
+          done()
 
       it 'should be defined', ->
         assert typeof Apollos.person is 'function'
@@ -33,3 +41,7 @@ MochaWeb?.testOnly ->
 
             it 'should have no keys', ->
               assert.equal Object.keys(Apollos.person()).length, 0
+
+          describe 'when rock association', ->
+
+            it 'should have some keys'
