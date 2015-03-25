@@ -39,51 +39,51 @@ MochaWeb?.testOnly ->
       chai.assert.isTrue Apollos.validate.isGuid updatedPerson.guid
 
     it "should make two chained API requests", (done) ->
+      # Sometimes it passes, sometimes it fails, the delay seems to help
+      Meteor.setTimeout ->
+        firstName = "#{Date.now()}"
+        _id = Apollos.people.insert
+          personAliasIds: []
+          firstName: firstName
 
-      firstName = "#{Date.now()}"
-      _id = Apollos.people.insert
-        personAliasIds: []
-        firstName: firstName
+        realApiRequest = Rock.apiRequest
 
-      realApiRequest = Rock.apiRequest
-
-      Rock.apiRequest = (method, url, person, callback) ->
-        chai.assert.equal method, "POST"
-        chai.assert.equal url, "api/People"
-        chai.assert.equal person.FirstName, firstName
-        chai.assert.isFunction callback
-
-        updatedPerson = Apollos.people.findOne _id
-        guid = updatedPerson.guid
-
-        Rock.apiRequest = (method2, url2, callback2) ->
-          chai.assert.equal method2, "GET"
-          chai.assert.equal url2, "api/PersonAlias
-            ?$filter=
-              AliasPersonGuid eq guid'#{guid}'
-            &$select=
-              PersonId,
-              AliasPersonId"
-          chai.assert.isFunction callback2
-          chai.assert.equal updatedPerson.personAliasIds.length, 0
-
-          callback2 false,
-            data: [
-              { AliasPersonId: 1, PersonId: 50 }
-              { AliasPersonId: 2, PersonId: 50 }
-            ]
+        Rock.apiRequest = (method, url, person, callback) ->
+          chai.assert.equal method, "POST"
+          chai.assert.equal url, "api/People"
+          chai.assert.equal person.FirstName, firstName
+          chai.assert.isFunction callback
 
           updatedPerson = Apollos.people.findOne _id
-          chai.assert.equal updatedPerson.updatedBy, "Rock"
-          chai.assert.equal updatedPerson.personId, 50
-          chai.assert.equal updatedPerson.personAliasIds.length, 2
-          chai.assert.notEqual updatedPerson.personAliasIds.indexOf(1), -1
-          chai.assert.notEqual updatedPerson.personAliasIds.indexOf(2), -1
+          guid = updatedPerson.guid
 
-          Rock.apiRequest = realApiRequest
-          done()
+          Rock.apiRequest = (method2, url2, callback2) ->
+            chai.assert.equal method2, "GET"
+            chai.assert.equal url2, "api/PersonAlias
+              ?$filter=
+                AliasPersonGuid eq guid'#{guid}'
+              &$select=
+                PersonId,
+                AliasPersonId"
+            chai.assert.isFunction callback2
+            chai.assert.equal updatedPerson.personAliasIds.length, 0
 
-        callback()
+            callback2 false,
+              data: [
+                { AliasPersonId: 1, PersonId: 50 }
+                { AliasPersonId: 2, PersonId: 50 }
+              ]
 
-      rawPerson = Apollos.people.findOne _id
-      Rock.person.create rawPerson
+            updatedPerson = Apollos.people.findOne _id
+            chai.assert.equal updatedPerson.updatedBy, "Rock"
+            chai.assert.equal updatedPerson.personId, 50
+            chai.assert.deepEqual updatedPerson.personAliasIds, [1, 2]
+
+            Rock.apiRequest = realApiRequest
+            done()
+
+          callback()
+
+        rawPerson = Apollos.people.findOne _id
+        Rock.person.create rawPerson
+      , 1000

@@ -1,17 +1,9 @@
 ###
 
-  Rock.people
-
-  @example return all people synced to Rock
-
-    Rock.people()
-
-  @todo write lookup
+  Do we need this do anything besides exist?
 
 ###
-Rock.people = ->
-
-  throw new Meteor.Error "Unimplemented", "This method is unimplemented!"
+Rock.people = {}
 
 
 ###
@@ -217,7 +209,7 @@ Rock.people.refreshAliases = (throwErrors, wait) ->
     ###
     Meteor.setTimeout ->
       Rock.people.refreshAliases throwErrors
-    , 2500
+    , 1500
     return
 
   aliasQuery = "api/PersonAlias
