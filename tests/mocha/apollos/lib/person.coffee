@@ -24,18 +24,13 @@ MochaWeb?.testOnly ->
 
       describe 'when not signed in', ->
 
-        if Meteor.isclient
+        if Meteor.isClient
           it 'should have no keys', ->
             assert.equal Object.keys(Apollos.person()).length, 0
 
       describe 'when signed in', ->
 
         if Meteor.isClient
-          before (done) ->
-            Apollos.user.create 'apollos.person@newspring.cc', 'testPassword'
-            Meteor.autorun ->
-              user = Apollos.users.findOne('emails.address': 'apollos.person@newspring.cc')
-              done() if user
 
           describe 'when no rock association', ->
 
@@ -44,4 +39,65 @@ MochaWeb?.testOnly ->
 
           describe 'when rock association', ->
 
-            it 'should have some keys'
+            before (done) ->
+              Meteor.loginWithPassword 'apollos.person.keys@newspring.cc', 'testPassword'
+              Meteor.autorun ->
+                person = Apollos.person()
+                done() if Object.keys(Apollos.person()).length > 0
+
+            it 'should have updatedBy', ->
+              assert typeof Apollos.person().updatedBy is 'string'
+            it 'should have personId', ->
+              assert typeof Apollos.person().personId is 'number'
+            it 'should have givingGroupId', ->
+              assert typeof Apollos.person().givingGroupId is 'number'
+            it 'should have guid', ->
+              assert typeof Apollos.person().guid is 'string'
+            it 'should have photoURL', ->
+              assert typeof Apollos.person().photoURL is 'string'
+            it 'should have photoId', ->
+              assert typeof Apollos.person().photoId is 'number'
+            it 'should have maritalStatusValueId', ->
+              assert typeof Apollos.person().maritalStatusValueId is 'number'
+            it 'should have firstName', ->
+              assert typeof Apollos.person().firstName is 'string'
+            it 'should have suffixValueId', ->
+              assert typeof Apollos.person().suffixValueId is 'number'
+            it 'should have titleValueId', ->
+              assert typeof Apollos.person().titleValueId is 'number'
+            it 'should have lastName', ->
+              assert typeof Apollos.person().lastName is 'string'
+            it 'should have middleName', ->
+              assert typeof Apollos.person().middleName is 'string'
+            it 'should have gender', ->
+              assert typeof Apollos.person().gender is 'number'
+            it 'should have preferredEmail', ->
+              assert typeof Apollos.person().preferredEmail is 'string'
+            it 'should have emailPreference', ->
+              assert typeof Apollos.person().emailPreference is 'number'
+            it 'should have homePhone', ->
+              assert typeof Apollos.person().homePhone is 'string'
+            it 'should have workPhone', ->
+              assert typeof Apollos.person().workPhone is 'string'
+            it 'should have cellPhone', ->
+              assert typeof Apollos.person().cellPhone is 'string'
+            it 'should have birthDay', ->
+              assert typeof Apollos.person().birthDay is 'number'
+            it 'should have birthMonth', ->
+              assert typeof Apollos.person().birthMonth is 'number'
+            it 'should have birthYear', ->
+              assert typeof Apollos.person().birthYear is 'number'
+            it 'should have weddingDay', ->
+              assert typeof Apollos.person().weddingDay is 'number'
+            it 'should have weddingMonth', ->
+              assert typeof Apollos.person().weddingMonth is 'number'
+            it 'should have weddingYear', ->
+              assert typeof Apollos.person().weddingYear is 'number'
+            it 'should have personAliasIds', ->
+              assert typeof Apollos.person().personAliasIds is 'array'
+            it 'should have recordStatusValueId', ->
+              assert typeof Apollos.person().recordStatusValueId is 'number'
+            it 'should have communicationPreference', ->
+              assert typeof Apollos.person().communicationPreference is 'number'
+
+
