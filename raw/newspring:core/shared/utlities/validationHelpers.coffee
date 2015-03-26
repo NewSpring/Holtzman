@@ -11,3 +11,7 @@ Apollos.validate =
   isGuid: (str) ->
 
     Apollos.regex.guid.test str
+
+  isPhoneNumber: (str) ->
+
+    Apollos.regex.phoneNumber.test str

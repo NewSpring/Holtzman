@@ -67,7 +67,7 @@
       ]
     }
   },
-  "test": "meteor --test",
+  "test": "meteor --test --settings settings/development.json",
   "scripts": {
     "postinstall": "./norma-ignore/postinstall.coffee"
   }
