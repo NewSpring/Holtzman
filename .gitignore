@@ -30,6 +30,7 @@ node_modules
 .norma
 build
 out
+newspring
 bower.json
 settings.json
 

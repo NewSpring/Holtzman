@@ -2,7 +2,7 @@
   "name": "core",
   "tasks": {
     "bower": {
-      "/out": {
+      "/newspring": {
         "settings": "https://github.com/NewSpring/settings.git"
       },
       "/vendor": {
@@ -13,16 +13,16 @@
     },
     "javascript": {
       "src": "raw/**/*",
-      "dest": "out/packages"
+      "dest": "newspring/"
     },
     "markup": {
       "src": "raw/**/*",
-      "dest": "out/packages",
+      "dest": "newspring/",
       "minify": false
     },
     "sass": {
       "src": "raw/**/*",
-      "dest": "out/packages"
+      "dest": "newspring/"
     },
     "copy": {
       "src": "out/settings/settings",
@@ -35,11 +35,11 @@
     "compile-test": {
       "@extend": "javascript",
       "src": "tests/**/*",
-      "dest": "out/tests"
+      "dest": "newspring/tests"
     },
     "meteor-load": {
-      "src": "out/packages/newspring:core/**/*",
-      "dest": "out/packages/newspring:core",
+      "src": "newspring/packages/newspring:core/**/*",
+      "dest": "newspring/packages/newspring:core",
       "org": "newspring",
       "name": "core",
       "package": {
@@ -66,8 +66,8 @@
       }
     },
     "meteor": {
-      "src": "out",
-      "settings": "out/settings/development.json",
+      "src": "newspring",
+      "settings": "newspring/settings/development.json",
       "build": {
         "dest": "build",
         "server": "localhost:3000"
@@ -76,7 +76,6 @@
         "meteor-platform",
         "newspring:core",
         "mike:mocha",
-        "browser-policy",
         "cordova:io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d"
       ],
       "platforms": [
