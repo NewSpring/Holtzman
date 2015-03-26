@@ -7,7 +7,7 @@ MochaWeb?.testOnly ->
       return
 
     it "should exist", ->
-      chai.assert.isDefined Rock.personnnnnnnnnnnnnnn
+      chai.assert.isDefined Rock.person
     it "should be a function", ->
       chai.assert.isFunction Rock.person
     it "should return an object", ->
