@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "norma-bower": "^0.3.2",
+    "norma-browser-sync": "^0.4.1",
     "norma-copy": "^0.4.0",
     "norma-javascript": "^0.4.1",
     "norma-markup": "^0.5.1",

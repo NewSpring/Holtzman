@@ -69,15 +69,14 @@
       "packages": [
         "meteor-platform",
         "newspring:core",
-        "msavin:mongol",
         "mike:mocha",
-        "browser-policy"
+        "browser-policy",
+        "cordova:io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d"
       ],
       "platforms": [
         "server",
         "browser",
-        "ios",
-        "android"
+        "ios"
       ]
     }
   },

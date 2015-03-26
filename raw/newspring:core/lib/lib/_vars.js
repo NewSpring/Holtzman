@@ -17,8 +17,15 @@ debug = function() {
 }
 
 
+if (Meteor.isServer) {
+  Meteor.startup(function(){
+    BrowserPolicy.content.allowOriginForAll("*.cloudfront.net");
+  })
+
+}
 
 if (Meteor.isServer){
+
   var env = process.env.NODE_ENV
 
   if (process.env.CI){

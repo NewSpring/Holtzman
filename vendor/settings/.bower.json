@@ -1,0 +1,13 @@
+{
+  "name": "settings",
+  "homepage": "https://github.com/NewSpring/settings",
+  "_release": "80b80f84d1",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "80b80f84d11c7ba4c5b50c965a383c429055806d"
+  },
+  "_source": "https://github.com/NewSpring/settings.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/NewSpring/settings.git"
+}

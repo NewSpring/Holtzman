@@ -2,7 +2,8 @@
 $fonts: extend($fonts, (
   colfax: (
     h1: (
-      font-family: "Colfax-Black",
+      font-family: "colfax-web",
+      font-weight: 800,
       font-size: 3.625em,
       line-height: 1.35,
       text-transform: uppercase,
@@ -20,7 +21,8 @@ $fonts: extend($fonts, (
       )
     ),
     h2: (
-      font-family: "Colfax-Bold",
+      font-family: "colfax-web",
+      font-weight: 700,
       font-size: 2.25em,
       line-height: 1.25,
       media-query: (
@@ -35,7 +37,8 @@ $fonts: extend($fonts, (
       )
     ),
     h3: (
-      font-family: "Colfax-Bold",
+      font-family: "colfax-web",
+      font-weight: 700,
       font-size: 1.75em,
       line-height: 1.25,
       media-query: (
@@ -50,10 +53,11 @@ $fonts: extend($fonts, (
       )
     ),
     h4: (
-      font-family: "Colfax-Medium",
+      font-family: "colfax-web",
+      font-weight: 500,
       font-size: 1.375em,
       line-height: 1.2222222,
-      margin-bottom: $half-spacing-unit,
+      margin-bottom: $half-spacing-unit!important,
       media-query: (
         "palm": (
           font-size: 1.125em,
@@ -66,7 +70,8 @@ $fonts: extend($fonts, (
       )
     ),
     h5: (
-      font-family: "Colfax-Bold",
+      font-family: "colfax-web",
+      font-weight: 700,
       font-size: 1em,
       line-height: 1.25
     )
@@ -76,7 +81,7 @@ $fonts: extend($fonts, (
       font-family: "MetaSerifOT-Book",
       font-size: 1.25em,
       line-height: 1.25,
-      margin-bottom: $base-spacing-unit,
+      margin-bottom: $base-spacing-unit!important,
       media-query: (
         "palm": (
           font-size: 1.1em,
@@ -104,3 +109,6 @@ $typography: extend($typography, (
   p: meta-serif,
   a: meta-serif
 ));
+
+
+$base-font-size: 65px;

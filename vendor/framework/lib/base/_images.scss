@@ -13,4 +13,32 @@ $use-images: true !default;
   img[height] {
     max-width: none;
   }
+
+  // base background element
+  %_background {
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative; // is this needed?
+    overflow: hidden;
+  }
+
+  .background {
+    @extend %_background;
+  }
+
+  .background--fill {
+    @extend %_background;
+    background-size: cover;
+  }
+
+  .background--right {
+    @extend %_background;
+    background-position: center right;
+  }
+
+  .background--left {
+    @extend %_background;
+    background-position: center left;
+  }
+
 }
