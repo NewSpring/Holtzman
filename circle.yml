@@ -10,25 +10,27 @@ dependencies:
 test:
   pre:
     - norma build
+    - meteor update
+    - meteor reset
   override:
     - norma test # use Norma for testing
 
 ## Customize deployment commands
-deployment:
-  qa:
-    branch: qa
-    commands:
-      - cp ./out/settings/settings.json ./
-      # temporary hack to write to file
-      - echo $PEM > james_uswesto.pem
-      - mup setup
-      - mup deploy
-      # - norma meteor deploy $some_branch
-  feature:
-    branch: /feature_.*/
-    commands:
-      - cp ./out/settings/settings.json ./
-      # temporary hack to write to file
-      - echo $PEM > james_uswesto.pem
-      - mup setup
-      - mup deploy
+# deployment:
+#   qa:
+#     branch: qa
+#     commands:
+#       - cp ./out/settings/settings.json ./
+#       # temporary hack to write to file
+#       - echo $PEM > james_uswesto.pem
+#       - mup setup
+#       - mup deploy
+#       # - norma meteor deploy $some_branch
+#   feature:
+#     branch: /feature_.*/
+#     commands:
+#       - cp ./out/settings/settings.json ./
+#       # temporary hack to write to file
+#       - echo $PEM > james_uswesto.pem
+#       - mup setup
+#       - mup deploy
