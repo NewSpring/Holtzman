@@ -12,16 +12,16 @@
       }
     },
     "javascript": {
-      "src": "raw/**/*",
+      "src": "_source/**/*",
       "dest": "newspring/"
     },
     "markup": {
-      "src": "raw/**/*",
+      "src": "_source/**/*",
       "dest": "newspring/",
       "minify": false
     },
     "sass": {
-      "src": "raw/**/*",
+      "src": "_source/**/*",
       "dest": "newspring/"
     },
     "copy": {
