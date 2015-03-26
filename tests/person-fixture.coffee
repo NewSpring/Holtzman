@@ -14,7 +14,7 @@ addPerson = ->
 
 
     person =
-      updatedBy: 'Apollos'
+      updatedBy: 'Rock'
       personId: 12345
       givingGroupId: 1
       guid: '12345678-1234-1234-1234-123456789012'
@@ -39,7 +39,7 @@ addPerson = ->
       weddingMonth: 1
       weddingYear: 2000
       personAliasIds: [1,2]
-      recordStatusValueId: 1
+      recordStatusValueId: 3
       communicationPreference: 1
 
     Apollos.people.insert person
