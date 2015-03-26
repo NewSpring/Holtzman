@@ -1,4 +1,4 @@
-addPerson = ->
+addPersonWithKeys = ->
 
   return false if !process.env.IS_MIRROR
 
@@ -14,7 +14,7 @@ addPerson = ->
 
 
     person =
-      updatedBy: 'Rock'
+      updatedBy: 'Apollos'
       personId: 12345
       givingGroupId: 1
       guid: '12345678-1234-1234-1234-123456789012'
@@ -44,5 +44,14 @@ addPerson = ->
 
     Apollos.people.insert person
 
+addPersonWithoutKeys = ->
+
+  return false if !process.env.IS_MIRROR
+
+  if Meteor.isServer
+
+    Apollos.user.create 'apollos.person.nokeys@newspring.cc', 'testPassword'
+
 if process.env.IS_MIRROR
-  addPerson()
+  addPersonWithKeys()
+  addPersonWithoutKeys()
