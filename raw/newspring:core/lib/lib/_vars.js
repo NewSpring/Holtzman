@@ -19,11 +19,18 @@ debug = function() {
 
 if (Meteor.isServer){
 
+  if(!Meteor.settings || Object.keys(Meteor.settings).length === 0) {
+    throw new Meteor.Error(
+      "No settings",
+      "Did you forget to specify --settings"
+    );
+  }
+
   var env = process.env.NODE_ENV
 
   if (process.env.CI){
     env = "ci"
   }
 
-  Meteor.settings = Meteor.settings[env]
+  //Meteor.settings = Meteor.settings[env]
 };

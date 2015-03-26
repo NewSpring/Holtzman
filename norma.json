@@ -32,6 +32,11 @@
         "json"
       ]
     },
+    "compile-test": {
+      "@extend": "javascript",
+      "src": "tests/**/*",
+      "dest": "out/tests"
+    },
     "meteor-load": {
       "src": "out/packages/newspring:core/**/*",
       "dest": "out/packages/newspring:core",
@@ -52,16 +57,17 @@
         },
         "export": {
           "Rock": "both",
-          "Apollos": "both"
+          "Apollos": "both",
+          "HTTP": "server"
         }
       },
       "test": {
-        "mocha-casperjs": "both"
+        "mocha": "both"
       }
     },
     "meteor": {
       "src": "out",
-      "settings": "out/settings/settings.json",
+      "settings": "out/settings/development.json",
       "build": {
         "dest": "build",
         "server": "localhost:3000"
@@ -80,13 +86,7 @@
       ]
     }
   },
-  "test": {
-    "before": "meteor run",
-    "mocha-casperjs": {
-      "src": "out/tests/**/*"
-    },
-    "after": "meteor close"
-  },
+  "test": "meteor --test --settings settings/development.json",
   "scripts": {
     "postinstall": "./norma-ignore/postinstall.coffee"
   }
