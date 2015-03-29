@@ -11,7 +11,7 @@ addPersonWithKeys = ->
     ,
       $set:
         'rock.personId': 12345
-
+        'rock.userLoginId': 23456
 
     person =
       updatedBy: 'Apollos'
