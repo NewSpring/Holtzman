@@ -5,35 +5,28 @@ MochaWeb?.testOnly ->
   describe 'Apollos', ->
     describe 'user', ->
 
-      beforeEach ->
-        Meteor.flush()
+      if Meteor.isClient
 
-      before (done) ->
-        if Meteor.isClient
-          Meteor.logout()
-          Meteor.autorun ->
-            user = Apollos.user()
-            done() if Object.keys(user).length is 0
-        else
-          done()
+        beforeEach ->
+          Meteor.flush()
 
+        before (done) ->
+          SessionHelper.logout(done)
 
-      it 'should be defined', ->
-        assert typeof Apollos.user is 'function'
-      it 'should return object', ->
-        assert typeof Apollos.user() is 'object'
+        it 'should be defined', ->
+          assert typeof Apollos.user is 'function'
+        it 'should return object', ->
+          assert typeof Apollos.user() is 'object'
 
-      describe 'when not signed in', ->
+        describe 'when not signed in', ->
 
-        if Meteor.isClient
           it 'should have no id', ->
             assert.isUndefined Apollos.user()._id
           it 'should have no emails', ->
             assert.isUndefined Apollos.user().emails
 
-      describe 'when signed in', ->
+        describe 'when signed in', ->
 
-        if Meteor.isClient
           before (done) ->
             Apollos.user.create 'apollos.user@newspring.cc', 'testPassword'
             Meteor.autorun ->
