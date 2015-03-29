@@ -8,6 +8,7 @@ MochaWeb?.testOnly ->
 
         if Meteor.isServer
 
+          # unknown person
           getPersonProps = ->
             Id: 34567
             PersonId: 34567
