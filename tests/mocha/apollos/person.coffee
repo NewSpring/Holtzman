@@ -2,40 +2,24 @@ MochaWeb?.testOnly ->
 
   assert = chai.assert
 
-  logout = (done) ->
-    if Meteor.isClient
-      Meteor.logout()
-      Meteor.autorun ->
-        user = Apollos.user()
-        done() if Object.keys(user).length is 0
-    else
-      done()
-
-  login = (user, password, done) ->
-    Meteor.loginWithPassword user, password, (err) ->
-      assert.isUndefined err
-    Meteor.autorun ->
-      person = Apollos.user()
-      done() if Object.keys(person).length > 0
-
-
   describe 'Apollos', ->
     describe 'person', ->
 
-      beforeEach ->
-        Meteor.flush()
+      if Meteor.isClient
 
-      before (done) ->
-        logout(done)
+        beforeEach ->
+          Meteor.flush()
 
-      it 'should be defined', ->
-        assert typeof Apollos.person is 'function'
-      it 'should return object', ->
-        assert typeof Apollos.person() is 'object'
+        before (done) ->
+          SessionHelper.logout(done)
 
-      describe 'when not signed in', ->
+        it 'should be defined', ->
+          assert typeof Apollos.person is 'function'
+        it 'should return object', ->
+          assert typeof Apollos.person() is 'object'
 
-        if Meteor.isClient
+        describe 'when not signed in', ->
+
           it 'should have no keys', ->
             assert.equal Object.keys(Apollos.person()).length, 0
 
@@ -44,12 +28,12 @@ MochaWeb?.testOnly ->
         if Meteor.isClient
 
           before (done) ->
-            logout(done)
+            SessionHelper.logout(done)
 
           describe 'when no rock association', ->
 
             before (done) ->
-              login('apollos.person.nokeys@newspring.cc', 'testPassword', done)
+              SessionHelper.login('apollos.person.nokeys@newspring.cc', 'testPassword', done)
 
             it 'should have no keys', ->
               assert.equal Object.keys(Apollos.person()).length, 0
@@ -57,12 +41,12 @@ MochaWeb?.testOnly ->
           describe 'when rock association', ->
 
             before (done) ->
-              logout(done)
+              SessionHelper.logout(done)
 
             describe 'when active', ->
 
               before (done) ->
-                login('apollos.person.keys@newspring.cc', 'testPassword', done)
+                SessionHelper.login('apollos.person.keys@newspring.cc', 'testPassword', done)
 
               it 'should have updatedBy', ->
                 assert typeof Apollos.person().updatedBy is 'string'
