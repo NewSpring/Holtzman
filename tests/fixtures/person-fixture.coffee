@@ -51,9 +51,37 @@ addPersonWithKeys = ->
       recordStatusValueId: 3
       communicationPreference: 1
 
+    person2 =
+      updatedBy: 'Apollos'
+      personId: 12349
+      givingGroupId: 1
+      guid: '12345678-1234-1234-1234-123456789123'
+      photoURL: 'http://newspring.cc'
+      photoId: 1
+      maritalStatusValueId: 1
+      firstName: 'Slim'
+      suffixValueId: 1
+      titleValueId: 1
+      lastName: 'Ro'
+      middleName: 'Titus'
+      gender: 1
+      preferredEmail: 'slim@titus.ro'
+      emailPreference: 1
+      homePhone: '1123456789'
+      workPhone: '1123456789'
+      cellPhone: '1123456789'
+      birthDay: 1
+      birthMonth: 1
+      birthYear: 2000
+      weddingDay: 1
+      weddingMonth: 1
+      weddingYear: 2000
+      personAliasIds: [1,2]
+      recordStatusValueId: 3
+      communicationPreference: 1
+
     Apollos.people.insert person
-    person.personId = 12349
-    Apollos.people.insert person
+    Apollos.people.insert person2
 
 addPersonWithoutKeys = ->
 

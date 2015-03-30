@@ -11,7 +11,10 @@ MochaWeb?.testOnly ->
           Meteor.flush()
 
         before (done) ->
-          SessionHelper.logout(done)
+          Meteor.logout()
+          Meteor.autorun ->
+            user = Apollos.user()
+            done() if Object.keys(user).length is 0
 
         it 'should be defined', ->
           assert typeof Apollos.person is 'function'
@@ -52,13 +55,13 @@ MochaWeb?.testOnly ->
                 assert.equal Apollos.person().updatedBy, 'Rock'
               it 'should have personId', ->
                 assert typeof Apollos.person().personId is 'number'
-                assert.equal Apollos.person().personId, 12345
+                assert.equal Apollos.person().personId, 12349
               it 'should have givingGroupId', ->
                 assert typeof Apollos.person().givingGroupId is 'number'
                 assert.equal Apollos.person().givingGroupId, 1
               it 'should have guid', ->
                 assert typeof Apollos.person().guid is 'string'
-                assert.equal Apollos.person().guid, '12345678-1234-1234-1234-123456789012'
+                assert.equal Apollos.person().guid, '12345678-1234-1234-1234-123456789123'
               it 'should have photoURL', ->
                 assert typeof Apollos.person().photoURL is 'string'
                 assert.equal Apollos.person().photoURL, 'http://newspring.cc'
@@ -70,7 +73,7 @@ MochaWeb?.testOnly ->
                 assert.equal Apollos.person().maritalStatusValueId, 1
               it 'should have firstName', ->
                 assert typeof Apollos.person().firstName is 'string'
-                assert.equal Apollos.person().firstName, 'Jim'
+                assert.equal Apollos.person().firstName, 'Slim'
               it 'should have suffixValueId', ->
                 assert typeof Apollos.person().suffixValueId is 'number'
                 assert.equal Apollos.person().suffixValueId, 1
@@ -79,16 +82,16 @@ MochaWeb?.testOnly ->
                 assert.equal Apollos.person().titleValueId, 1
               it 'should have lastName', ->
                 assert typeof Apollos.person().lastName is 'string'
-                assert.equal Apollos.person().lastName, 'Bo'
+                assert.equal Apollos.person().lastName, 'Ro'
               it 'should have middleName', ->
                 assert typeof Apollos.person().middleName is 'string'
-                assert.equal Apollos.person().middleName, 'Tiberius'
+                assert.equal Apollos.person().middleName, 'Titus'
               it 'should have gender', ->
                 assert typeof Apollos.person().gender is 'number'
                 assert.equal Apollos.person().gender, 1
               it 'should have preferredEmail', ->
                 assert typeof Apollos.person().preferredEmail is 'string'
-                assert.equal Apollos.person().preferredEmail, 'jim@tiberius.bo'
+                assert.equal Apollos.person().preferredEmail, 'slim@titus.ro'
               it 'should have emailPreference', ->
                 assert typeof Apollos.person().emailPreference is 'number'
                 assert.equal Apollos.person().emailPreference, 1
