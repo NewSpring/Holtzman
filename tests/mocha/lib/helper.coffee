@@ -1,11 +1,10 @@
 @SessionHelper =
 
   logout: (done) ->
-    if Meteor.isClient
-      Meteor.logout()
-      Meteor.autorun ->
-        user = Apollos.user()
-        done() if Object.keys(user).length is 0
+    Meteor.logout()
+    Meteor.autorun ->
+      user = Apollos.user()
+      done() if Object.keys(user).length is 0
 
   login: (user, password, done) ->
     Meteor.loginWithPassword user, password, (err) ->

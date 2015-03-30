@@ -23,9 +23,7 @@ MochaWeb?.testOnly ->
           it 'should have no keys', ->
             assert.equal Object.keys(Apollos.person()).length, 0
 
-      describe 'when signed in', ->
-
-        if Meteor.isClient
+        describe 'when signed in', ->
 
           before (done) ->
             SessionHelper.logout(done)
@@ -46,7 +44,8 @@ MochaWeb?.testOnly ->
             describe 'when active', ->
 
               before (done) ->
-                SessionHelper.login('apollos.person.keys@newspring.cc', 'testPassword', done)
+                SessionHelper.login('apollos.person.keys.test@newspring.cc', 'testPassword', done)
+                console.log "PERSON", Apollos.user()
 
               it 'should have updatedBy', ->
                 assert typeof Apollos.person().updatedBy is 'string'

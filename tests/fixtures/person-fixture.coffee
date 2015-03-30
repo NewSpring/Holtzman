@@ -13,6 +13,15 @@ addPersonWithKeys = ->
         'rock.personId': 12345
         'rock.userLoginId': 23456
 
+    Apollos.user.create 'apollos.person.keys.test@newspring.cc', 'testPassword'
+    user = Apollos.users.findOne 'emails.address': 'apollos.person.keys.test@newspring.cc'
+    Apollos.users.update
+      _id: user._id
+    ,
+      $set:
+        'rock.personId': 12349
+        'rock.userLoginId': 12349
+
     person =
       updatedBy: 'Apollos'
       personId: 12345
@@ -42,6 +51,8 @@ addPersonWithKeys = ->
       recordStatusValueId: 3
       communicationPreference: 1
 
+    Apollos.people.insert person
+    person.personId = 12349
     Apollos.people.insert person
 
 addPersonWithoutKeys = ->
