@@ -65,8 +65,8 @@ Apollos.person.translate = (person, platform) ->
       if person.AnniversaryDate
         # parse date parts from something like "2015-03-10T00:00:00"
         yearPart = person.AnniversaryDate.substring 0, 4
-        monthPart = person.AnniversaryDate.substring 6, 7
-        dayPart = person.AnniversaryDate.substring 9, 10
+        monthPart = person.AnniversaryDate.substring 5, 7
+        dayPart = person.AnniversaryDate.substring 8, 10
 
         existingPerson.weddingYear = Number yearPart
         existingPerson.weddingMonth = Number monthPart

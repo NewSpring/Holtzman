@@ -35,10 +35,11 @@ resetDatabase = ->
 
 loadDefaultFixtures = ->
   console.log 'Loading default fixtures'
-  # TODO: Insert your data into the database here
   console.log 'Finished loading default fixtures'
   return
+
 
 if process.env.IS_MIRROR
   resetDatabase()
   loadDefaultFixtures()
+
