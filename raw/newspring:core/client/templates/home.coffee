@@ -1,4 +1,21 @@
+Template.home.rendered = ->
+
+  Session.set "f1LoginSuccess", undefined
+
+
 Template.home.events
+
+  "submit #f1-signin-form": ->
+    username = $("#f1-username").val()
+    password = $("#f1-password").val()
+
+    Apollos.checkF1Credentials username, password, (error, result) ->
+      if error
+        console.log error
+        return
+      Session.set "f1LoginSuccess", result
+
+    return false
 
   "click .delete": ->
 
@@ -10,7 +27,7 @@ Template.home.events
         updatedBy: Apollos.name
 
 
-  "submit form": (event) ->
+  "submit .person-form": (event) ->
 
     Apollos.people.update
       _id: @._id
@@ -26,6 +43,32 @@ Template.home.events
 
 
 Template.home.helpers
+
+  f1LoginStatus: ->
+    success = Session.get "f1LoginSuccess"
+
+    if success? and success
+      color = "#5bb75b"
+      message = "Success"
+    else if success?
+      color = "#da4f49"
+      message = "Fail..."
+    else
+      color = "#49afcd"
+      message = "Please enter your F1 credentials"
+
+    html = "
+      <div style=\"
+        margin: 5px;
+        color: #fff;
+        background-color: #{color};
+        padding: 5px;
+        display: inline-block;
+      \">
+        #{message}
+      </div>"
+
+    return html
 
   people: ->
     query = {}

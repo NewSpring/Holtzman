@@ -38,6 +38,9 @@
           "aldeed:collection2@2.3.2": "both",
           "bjwiley2:request-data@0.0.3": "both"
         },
+        "npm": {
+          "oauth@0.9.12": "server"
+        },
         "export": {
           "Rock": "both",
           "Apollos": "both",
