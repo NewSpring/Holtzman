@@ -15,6 +15,9 @@ Future = Npm.require "fibers/future"
   @param callback [Function] a function to be called with a single parameter of
     isSuccess. Omit to run synchronously.
 
+  See F1 API documentation followed here:
+  https://developer.fellowshipone.com/docs/v1/Util/AuthDocs.help#2creds
+
 ###
 Apollos.checkF1Credentials = (username, password, callback) ->
 
