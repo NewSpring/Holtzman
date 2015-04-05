@@ -25,7 +25,7 @@ Apollos.user = ->
 
 ###
 
-  Apollos.user
+  Apollos.person
 
   @example get the currently logged in user's person document
 
