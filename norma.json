@@ -25,7 +25,7 @@
       "dest": "newspring/"
     },
     "copy": {
-      "src": "out/settings/settings",
+      "src": "newspring/settings/settings",
       "dest": "./",
       "order": "post",
       "ext": [
