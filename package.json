@@ -24,8 +24,10 @@
     "norma-bower": "^0.3.2",
     "norma-copy": "^0.4.0",
     "norma-javascript": "^0.4.2",
-    "norma-markup": "^0.5.1",
-    "norma-meteor": "^0.3.8",
-    "norma-meteor-load": "^0.1.8"
+    "norma-markup": "^0.5.2",
+    "norma-meteor": "^0.3.12",
+    "norma-meteor-load": "^0.1.8",
+    "norma-sass": "^0.4.6",
+    "oauth": "^0.9.12"
   }
 }

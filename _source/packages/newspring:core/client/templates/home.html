@@ -11,6 +11,19 @@
     </p>
   </div>
   <div>
+    <h1>Try signing in to F1:</h1>
+    <div>
+      <form id="f1-signin-form">
+        <input type="text" id="f1-username" placeholder="Username" />
+        <input type="password" id="f1-password" placeholder="Password" />
+        <input type="submit" value="MiM Me!" />
+      </form>
+    </div>
+    <div>
+      {{{f1LoginStatus}}}
+    </div>
+  </div>
+  <div>
     <h1>About you:</h1>
     <p>
       You are {{userIdentifier}}
@@ -19,9 +32,11 @@
       {{/with}}
     </p>
   </div>
+  <div>
     <h1>Other people:</h1>
     {{#each people}}
       <hr />
       {{> person}}
     {{/each}}
+  </div>
 </template>

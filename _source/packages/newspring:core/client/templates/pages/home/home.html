@@ -1,0 +1,77 @@
+<head>
+  <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="user-scalable=1, width=device-width, initial-scale=1.0, maximum-scale=2.0" name="viewport">
+</head>
+
+<template name="home">
+
+  <section>
+    <div class="ratio--square">
+      <div class="ratio__item background--fill floating--bottom" style="background-image: url(https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/editorial/articles/newspring.blog.hero.travel.cliff_1700_850_90_c1.jpg);">{{!--
+        --}}<div class="floating__item push--bottom push--left">
+          <h1 class="text--left font--white">
+            3 Dangerous Prayers
+          </h1>
+          <h5 class="text--left font--white">
+            By: Perry Noble
+          </h5>
+        </div>{{!--
+    --}}</div>
+    </div>
+
+  </section>
+
+  <section>
+    <h1>Try signing in to F1:</h1>
+    <div>
+      <form id="f1-signin-form">
+        <input type="text" id="f1-username" placeholder="Username" />
+        <input type="password" id="f1-password" placeholder="Password" />
+        <input type="submit" value="MiM Me!" />
+      </form>
+    </div>
+    <div>
+      {{{f1LoginStatus}}}
+    </div>
+
+  </section>
+
+
+
+  {{> nav}}
+
+
+  {{!--
+    https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/editorial/articles/newspring.blog.hero.travel.cliff_1700_850_90_c1.jpg
+
+  <div>
+    <h1>About Rock:</h1>
+    <p>
+      Rock is
+      {{#if Rock.isAlive}}
+        online!
+      {{else}}
+        offline... uh oh!
+      {{/if}}
+    </p>
+  </div>
+  <div>
+    <h1>About you:</h1>
+    <p>
+      You are {{userIdentifier}}
+      {{#with currentPerson}}
+        {{> person}}
+      {{/with}}
+    </p>
+  </div>
+    <h1>Other people:</h1>
+    {{#each people}}
+      <hr />
+      {{> person}}
+    {{/each}}
+
+  --}}
+</template>

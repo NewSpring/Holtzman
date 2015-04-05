@@ -2,27 +2,44 @@
   "name": "core",
   "tasks": {
     "bower": {
-      "/out": {
+      "/newspring": {
         "settings": "https://github.com/NewSpring/settings.git"
+      },
+      "/vendor": {
+        "mixins": "NewSpring/junction-mixins",
+        "framework": "NewSpring/junction-framework",
+        "fonts": "NewSpring/newspring-fonts"
       }
     },
     "javascript": {
-      "src": "raw/**/*",
-      "dest": "out/packages"
+      "src": "_source/**/*",
+      "dest": "newspring/"
     },
     "markup": {
-      "src": "raw/**/*",
-      "dest": "out/packages",
+      "src": "_source/**/*",
+      "dest": "newspring/",
       "minify": false
     },
-    "copy-test": {
+    "sass": {
+      "src": "_source/**/*",
+      "dest": "newspring/"
+    },
+    "copy": {
+      "src": "newspring/settings/settings",
+      "dest": "./",
+      "order": "post",
+      "ext": [
+        "json"
+      ]
+    },
+    "compile-test": {
       "@extend": "javascript",
       "src": "tests/**/*",
-      "dest": "out/tests"
+      "dest": "newspring/tests"
     },
     "meteor-load": {
-      "src": "out/packages/newspring:core/**/*",
-      "dest": "out/packages/newspring:core",
+      "src": "newspring/packages/newspring:core/**/*",
+      "dest": "newspring/packages/newspring:core",
       "org": "newspring",
       "name": "core",
       "package": {
@@ -38,6 +55,9 @@
           "aldeed:collection2@2.3.2": "both",
           "bjwiley2:request-data@0.0.3": "both"
         },
+        "npm": {
+          "oauth@0.9.12": "server"
+        },
         "export": {
           "Rock": "both",
           "Apollos": "both",
@@ -49,8 +69,8 @@
       }
     },
     "meteor": {
-      "src": "out",
-      "settings": "out/settings/development.json",
+      "src": "newspring",
+      "settings": "newspring/settings/development.json",
       "build": {
         "dest": "build",
         "server": "localhost:3000"
@@ -58,8 +78,8 @@
       "packages": [
         "meteor-platform",
         "newspring:core",
-        "msavin:mongol",
-        "mike:mocha"
+        "mike:mocha",
+        "cordova:io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d"
       ],
       "platforms": [
         "server",
