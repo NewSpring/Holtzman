@@ -4,14 +4,6 @@
     <meta content="width=device-width" name="viewport">
     <meta content="telephone=no" name="format-detection">
     <meta content="user-scalable=1, width=device-width, initial-scale=1.0, maximum-scale=2.0" name="viewport">
-    <style>
-      @font-face{
-      	font-family:'Colfax-Regular';
-      	src:url('data://d2cv5sdpfu57sc.cloudfront.net/fonts/colfax/regular.eot');
-      	src:url('data://d2cv5sdpfu57sc.cloudfront.net/fonts/colfax/regular.eot?#iefix') format('embedded-opentype'),
-      		url('data://d2cv5sdpfu57sc.cloudfront.net/fonts/colfax/regular.woff') format('woff');
-      	}
-    </style>
 </head>
 
 <template name="home">
@@ -33,43 +25,21 @@
   </section>
 
   <section>
-    <div class="push">
-      <h4>1. “Lord, Use Me!”</h4>
-
-      <p>Warning: God doesn’t take this one lightly. And, this prayer usually doesn’t come about through casual church attendance but rather an intense understanding of who Jesus is, what He has done and allowing Him to break our hearts.</p>
-
-      <p>Many people do not have a problem praying, “Lord, use others,” or even, “Lord use me on MY terms.”</p>
-
-      <p>But He doesn’t want anything less from us than complete surrender.</p>
-
-      <p>What are you willing to do for God? &nbsp;How far is too far? &nbsp;Are there any limitations that you would place on your life?</p>
-
-      <p><a class="scripturizer" target="_blank" href="http://www.bible.com/bible/Romans.12.1.niv" title="You Version">Romans 12:1</a> is what we are called to be — a living sacrifice. The problem with a “living sacrifice” is that it has the tendency to crawl off of the altar. That is why DAILY surrender is essential for us to truly follow Christ.</p>
-
-      <h4>2. “Lord, Disturb Me!”</h4>
-
-      <p>One of our prayers needs to be for Jesus to allow us to see things the way He sees them. Because when that begins to take place, we will NOT be able to accept things the way they are.</p>
-
-      <p>I believe the problem with a lot of churches is that they are not disturbed. They are comfortable, and they do not wish to be disturbed. We want to ignore that there are real people who will really go to hell if we don’t do something. We want to ignore that there are problems in the world that can be solved if we would only be willing to part with some time and money!</p>
-
-      <p>Asking God to give you His heart is never a bad thing. BUT when we pray for God to do this then we are automatically taken out of our comfort zones, and outside of our comfort zones &nbsp;is where the best/most impactful ministry takes place!</p>
-
-      <h4>3. “Lord, Break Me!”</h4>
-
-      <p>Question: Is there anything in your life that God wants out of your life?</p>
-
-      <p>Another question: Is there anything NOT in your life that God is trying to put there?</p>
-
-      <p>When we begin to ask God to break us, He will begin to reveal things to us that we perhaps thought wasn’t a big deal in the past. Or, He will call us to greater things and, in doing so, cause us to have to make hard decisions to leave things behind.</p>
-
-      <p>God works through broken things (<a class="scripturizer" target="_blank" href="http://www.bible.com/bible/1co.1.26-31.niv" title="You Version">1 Corinthians 1:26-31</a> and <a class="scripturizer" target="_blank" href="http://www.bible.com/bible/1co.6.9-11.niv" title="You Version">1 Corinthians 6:9-11</a>)! He used unschooled, ordinary men to turn the world upside down (<a class="scripturizer" target="_blank" href="http://www.bible.com/bible/Acts.4.13.niv" title="You Version">Acts 4:13</a>)! God is not looking for people who have a pedigree, but people with a passion for allowing God to work in them so that He can then work through them!</p>
-
-      <p>&nbsp;</p>
-
-      <p><em>Read more of Senior Pastor Perry Noble's thoughts on leadership, church, ministry, relationships, and current events at&nbsp;<a href="http://www.perrynoble.com" target="_blank">www.perrynoble.com</a></em></p>
-
+    <h1>Try signing in to F1:</h1>
+    <div>
+      <form id="f1-signin-form">
+        <input type="text" id="f1-username" placeholder="Username" />
+        <input type="password" id="f1-password" placeholder="Password" />
+        <input type="submit" value="MiM Me!" />
+      </form>
     </div>
+    <div>
+      {{{f1LoginStatus}}}
+    </div>
+
   </section>
+
+
 
   {{> nav}}
 
