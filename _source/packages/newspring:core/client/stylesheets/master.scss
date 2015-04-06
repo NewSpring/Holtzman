@@ -1,22 +1,12 @@
 
 // load mixin libary
-@import "../../../../../vendor/mixins/lib/mixins";
-
-// bring in framework defaults
-@import "../../../../../vendor/framework/lib/defaults";
+@import "../../../../../vendor/framework/lib/mixins";
 
 // do any overwritting
 @import "defaults";
 
 // load framework
 @import "../../../../../vendor/framework/lib/framework";
-
-// load fonts
-@import "../../../../../vendor/fonts/colfax-hinted/light";
-@import "../../../../../vendor/fonts/colfax-hinted/regular";
-@import "../../../../../vendor/fonts/colfax-hinted/medium";
-@import "../../../../../vendor/fonts/colfax-hinted/bold";
-@import "../../../../../vendor/fonts/colfax-hinted/black";
 
 // add on
 @import "objects/nav";

@@ -6,7 +6,6 @@
         "settings": "https://github.com/NewSpring/settings.git"
       },
       "/vendor": {
-        "mixins": "NewSpring/junction-mixins",
         "framework": "NewSpring/junction-framework",
         "fonts": "NewSpring/newspring-fonts"
       }
