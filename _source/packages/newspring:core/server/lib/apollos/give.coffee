@@ -1,7 +1,7 @@
 ###
 public string Email
 public string AccountType { get; set; } "checking" or "savings" or "credit"
-public decimal Amount { get; set; }
+public array AmountDetails { get; set; } targetAccountId amount
 public string AccountNumber { get; set; }
 public string RoutingNumber { get; set; }
 public string CCV { get; set; }
@@ -20,66 +20,75 @@ public string Country { get; set; }
 public string PhoneNumber { get; set; }
 ###
 giveTransactionSchema = new SimpleSchema(
-  email:
+  Email:
     type: String
     regEx: Apollos.regex.email
-  accountType:
+  AccountType:
     type: String
     regEx: /^(checking|savings|credit)$/
-  amount:
+  'AmountDetails.TargetAccountId':
     type: Number
-  accountNumber:
-    type: String
-  routingNumber:
-    type: String
-    optional: true
-    custom: ->
-      'required' if @.field('accountType') in ['checking', 'savings']
-  ccv:
-    type: String
-    optional: true
-    custom: ->
-      'required' if @.field('accountType') == 'credit'
-  expirationMonth:
+  'AmountDetails.Amount':
     type: Number
+  AccountNumber:
+    type: String
+  RoutingNumber:
+    type: String
     optional: true
-    custom: ->
-      'required' if @.field('accountType') == 'credit'
-  expirationYear:
+    # custom: ->
+    #   'required' if @.field('accountType').value in ['checking', 'savings']
+  CCV:
+    type: String
+    optional: true
+    # custom: ->
+    #   'required' if @field('accountType').value == 'credit'
+  ExpirationMonth:
     type: Number
     optional: true
-    custom: ->
-      'required' if @.field('accountType') == 'credit'
-  accountId:
+  #   custom: ->
+  #     'required' if @.field('accountType').value == 'credit'
+  ExpirationYear:
     type: Number
     optional: true
-  personId:
+  #   custom: ->
+  #     'required' if @.field('accountType').value == 'credit'
+  AccountId:
     type: Number
     optional: true
-  firstName:
+  PersonId:
+    type: Number
+    optional: true
+  FirstName:
     type: String
-  lastName:
+  LastName:
     type: String
-  street1:
+  Street1:
     type: String
-  street2:
+  Street2:
     type: String
-  city:
+  City:
     type: String
-  state:
+  State:
     type: String
-  postalCode:
+  PostalCode:
     type: String
-  country:
+  Country:
     type: String
-  phoneNumber:
+  PhoneNumber:
     type: String
 )
 
 Apollos.giveTransaction = (data) ->
 
   giveContext = giveTransactionSchema.newContext()
-  unless giveContext.validate(data)
-    return false
 
-  return true
+  return false unless giveContext.validate(data)
+
+  Rock.apiRequest "POST", "api/Give", data, (error, data) ->
+    if error
+      debug "Apollos give transaction failed:"
+      debug error
+      return false
+
+    return true
+
