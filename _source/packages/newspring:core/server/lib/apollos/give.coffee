@@ -30,12 +30,26 @@ giveTransactionSchema = new SimpleSchema(
     type: Number
   accountNumber:
     type: String
+  routingNumber:
+    type: String
+    optional: true
+    custom: ->
+      'required' if @.field('accountType') in ['checking', 'savings']
   ccv:
     type: String
+    optional: true
+    custom: ->
+      'required' if @.field('accountType') == 'credit'
   expirationMonth:
     type: Number
+    optional: true
+    custom: ->
+      'required' if @.field('accountType') == 'credit'
   expirationYear:
     type: Number
+    optional: true
+    custom: ->
+      'required' if @.field('accountType') == 'credit'
   accountId:
     type: Number
     optional: true
@@ -62,26 +76,10 @@ giveTransactionSchema = new SimpleSchema(
     type: String
 )
 
-Apollos.giveTransaction = () ->
-  data =
-    email: 'jim@bo.com'
-    accountType: 'checking'
-    amount: 20.00
-    accountNumber: '4111111111111111'
-    ccv: '111'
-    expirationMonth: 1
-    expirationYear: 2020
-    accountId: 1
-    personId: 1
-    firstName: 'Jim'
-    lastName: 'Bo'
-    street1: '117 Cool St.'
-    street2: 'Apt. 24'
-    city: 'Coolville'
-    state: 'SC'
-    postalCode: '29681'
-    country: 'USA'
-    phoneNumber: '1123456789'
+Apollos.giveTransaction = (data) ->
 
   giveContext = giveTransactionSchema.newContext()
-  return giveContext.validate(data)
+  unless giveContext.validate(data)
+    return false
+
+  return true
