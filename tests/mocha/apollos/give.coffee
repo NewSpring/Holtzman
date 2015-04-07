@@ -9,8 +9,7 @@ MochaWeb?.testOnly ->
       AmountDetails:
         TargetAccountId: 1
         Amount: 1.00
-      AccountId: 1
-      PersonId: 1
+      PersonId: 119203
       FirstName: 'Jim'
       LastName: 'Bo'
       Street1: '117 Cool St.'
@@ -26,15 +25,15 @@ MochaWeb?.testOnly ->
       data.AccountNumber = '4111111111111111'
       data.CCV = '111'
       data.ExpirationMonth = 1
-      data.ExpirationYear = 202
+      data.ExpirationYear = 2020
     else if type in ['checking', 'savings']
       if type is 'checking'
         data.AccountType = 'checking'
       else if type is 'savings'
         data.AccountType = 'savings'
 
-      data.AccountNumber = '12345678912345'
-      data.RoutingNumber = '123456789'
+      data.AccountNumber = '12345678'
+      data.RoutingNumber = '112200439'
 
     data
 
@@ -68,8 +67,7 @@ MochaWeb?.testOnly ->
                 assert.equal data.Email, 'jim@bo.com'
                 assert.equal data.AmountDetails.TargetAccountId, 1
                 assert.equal data.AmountDetails.Amount, 1.00
-                assert.equal data.AccountId, 1
-                assert.equal data.PersonId, 1
+                assert.equal data.PersonId, 119203
                 assert.equal data.FirstName, 'Jim'
                 assert.equal data.LastName, 'Bo'
                 assert.equal data.Street1, '117 Cool St.'
@@ -83,7 +81,7 @@ MochaWeb?.testOnly ->
                 assert.equal data.AccountNumber, '4111111111111111'
                 assert.equal data.CCV, '111'
                 assert.equal data.ExpirationMonth, 1
-                assert.equal data.ExpirationYear, 202
+                assert.equal data.ExpirationYear, 2020
 
                 Rock.apiRequest = originalApiRequest
                 done()
