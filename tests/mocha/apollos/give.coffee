@@ -19,6 +19,7 @@ MochaWeb?.testOnly ->
       PostalCode: '29681'
       Country: 'USA'
       PhoneNumber: '1123456789'
+      CampusId: 2
 
     if type is 'credit'
       data.AccountType = 'credit'
@@ -82,6 +83,7 @@ MochaWeb?.testOnly ->
                 assert.equal data.CCV, '111'
                 assert.equal data.ExpirationMonth, 1
                 assert.equal data.ExpirationYear, 2020
+                assert.equal data.CampusId, 2
 
                 Rock.apiRequest = originalApiRequest
                 done()
@@ -106,8 +108,15 @@ MochaWeb?.testOnly ->
 
         describe 'when using invalid data', ->
 
-          it 'should not complete transaction', ->
+          it 'should not complete when data is wrong type', ->
             stubRockApiRequest()
             data = giveData 'credit'
             data.expirationMonth = '1'
             assert.equal Apollos.giveTransaction(data), false
+
+          # it 'should not complete when credit but no ccv', ->
+          #   stubRockApiRequest()
+          #   data = giveData 'credit'
+          #   delete data.CCV
+          #   assert.equal data.CCV, null
+          #   assert.equal Apollos.giveTransaction(data), false
