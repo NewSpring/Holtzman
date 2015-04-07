@@ -8,82 +8,28 @@
 
 <template name="home">
   <div class="panel">
-  <section class="panel__item--left five-twelfths background--fill floating" style="background-image: url(https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/editorial/articles/newspring.blog.hero.travel.cliff_1700_850_90_c1.jpg);">{{!--
-    --}}<div class="floating__item">
-      <div class="push-bottom push-left" >
-            <h1 class="text--left font--white">
-              Welcome to NewSpring
-            </h1>
-            <h5 class="text--left font--white">
-              We track everything you do
-            </h5>
+    <section class="handheld-flush panel__item--left lap-and-up-five-twelfths background--fill floating" style="background-image: url(https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/editorial/articles/newspring.blog.hero.travel.cliff_1700_850_90_c1.jpg);">
+      <div class="floating__item">
+        <div class="handheld-flush push-bottom push-left" >
+          <h1 class="text--left font--white">
+            Welcome to NewSpring
+          </h1>
+          <h5 class="text--left font--white">
+            We track everything you do
+          </h5>
         </div>
-</div>{{!--
-  --}}</section>
+      </div>
+    </section>
 
-  <section class="panel__item--right seven-twelfths floating">
-    <div class="floating__item">
-    <form>
-        <fieldset>
-          <legend>
-            Sign In
-          </legend>
+    <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating">
+      <div class="floating__item">
+      {{> signin}}
+      </div>
 
-          <div class="input">
-            <label for="email">Email</label>
-            <input name="email" data-value="" placeholder="name@address.com"/>
-          </div>
+    </section>
 
-          <div class="input">
-            <label for="password">Password</label>
-            <input name="password" data-value="" type="password" placeholder="Password"/>
-          </div>
-
-          <div class="input">
-            <label for="gender">Gender</label>
-            <input type="radio" name="gender" value="male">
-          </div>
-
-        </fieldset>
-        <button class="fa fa-rebel icon--filled" type="submit"></button>
-      </form>
-    </div>
-
-  </section>
 </div>
-
 
   {{> nav}}
 
-
-  {{!--
-    https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/editorial/articles/newspring.blog.hero.travel.cliff_1700_850_90_c1.jpg
-
-  <div>
-    <h1>About Rock:</h1>
-    <p>
-      Rock is
-      {{#if Rock.isAlive}}
-        online!
-      {{else}}
-        offline... uh oh!
-      {{/if}}
-    </p>
-  </div>
-  <div>
-    <h1>About you:</h1>
-    <p>
-      You are {{userIdentifier}}
-      {{#with currentPerson}}
-        {{> person}}
-      {{/with}}
-    </p>
-  </div>
-    <h1>Other people:</h1>
-    {{#each people}}
-      <hr />
-      {{> person}}
-    {{/each}}
-
-  --}}
 </template>

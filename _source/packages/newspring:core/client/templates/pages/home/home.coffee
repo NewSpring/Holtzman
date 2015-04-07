@@ -5,6 +5,8 @@ Template.home.rendered = ->
 
 Template.home.events
 
+
+
   "submit #f1-signin-form": ->
     username = $("#f1-username").val()
     password = $("#f1-password").val()

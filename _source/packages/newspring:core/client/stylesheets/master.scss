@@ -8,6 +8,12 @@
 // load framework
 @import "../../../../../vendor/framework/lib/framework";
 
+
 // add on
+@import "base/base";
+@import "base/inputs";
+@import "base/checkbox";
+
+// nav
 @import "objects/nav";
-@import "base/checkmark";
+@import "objects/icons";
