@@ -1,3 +1,15 @@
+###
+
+  isAccountType
+
+  @example check to see if schema is of a certain AccountType
+
+    isAccountType(schema, type)
+
+  @param schema [SimpleSchema] generally passed as @ or this
+  @param type [String] the type of account compared to the schema's AccountType
+
+###
 isAccountType = (schema, type) ->
   isCredit = schema.field('AccountType').value == type
   if isCredit and !schema.isSet and (!schema.operator or schemavalue == null or schema.value == '')
@@ -71,7 +83,7 @@ giveTransactionSchema = new SimpleSchema(
 
   Apollos.giveTransaction
 
-  @example validate and pass transaction data to Rcok
+  @example validate and pass transaction data to Rock
 
     Apollos.giveTransation(data)
 
