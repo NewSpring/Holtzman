@@ -17,23 +17,23 @@ giveTransactionSchema = new SimpleSchema(
   RoutingNumber:
     type: String
     optional: true
-    # custom: ->
-    #   'required' if @.field('accountType').value in ['checking', 'savings']
+    custom: ->
+      'required' if @.field('accountType').value in ['checking', 'savings']
   CCV:
     type: String
     optional: true
-    # custom: ->
-    #   'required' if @field('accountType').value == 'credit'
+    custom: ->
+      'required' if @field('accountType').value == 'credit'
   ExpirationMonth:
     type: Number
     optional: true
-  #   custom: ->
-  #     'required' if @.field('accountType').value == 'credit'
+    custom: ->
+      'required' if @.field('accountType').value == 'credit'
   ExpirationYear:
     type: Number
     optional: true
-  #   custom: ->
-  #     'required' if @.field('accountType').value == 'credit'
+    custom: ->
+      'required' if @.field('accountType').value == 'credit'
   AccountId:
     type: Number
     optional: true
