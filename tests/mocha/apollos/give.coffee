@@ -114,9 +114,37 @@ MochaWeb?.testOnly ->
             data.expirationMonth = '1'
             assert.equal Apollos.giveTransaction(data), false
 
-          # it 'should not complete when credit but no ccv', ->
-          #   stubRockApiRequest()
-          #   data = giveData 'credit'
-          #   delete data.CCV
-          #   assert.equal data.CCV, null
-          #   assert.equal Apollos.giveTransaction(data), false
+          it 'should not complete when credit but no ccv', ->
+            stubRockApiRequest()
+            data = giveData 'credit'
+            delete data.CCV
+            assert.equal data.CCV, null
+            assert.equal Apollos.giveTransaction(data), false
+
+          it 'should not complete when credit but no expiration month', ->
+            stubRockApiRequest()
+            data = giveData 'credit'
+            delete data.ExpirationMonth
+            assert.equal data.ExpirationMonth, null
+            assert.equal Apollos.giveTransaction(data), false
+
+          it 'should not complete when credit but no expiration year', ->
+            stubRockApiRequest()
+            data = giveData 'credit'
+            delete data.ExpirationYear
+            assert.equal data.ExpirationYear, null
+            assert.equal Apollos.giveTransaction(data), false
+
+          it 'should not complete when checking but no routing number', ->
+            stubRockApiRequest()
+            data = giveData 'checking'
+            delete data.RoutingNumber
+            assert.equal data.RoutingNumber, null
+            assert.equal Apollos.giveTransaction(data), false
+
+          it 'should not complete when routing but no routing number', ->
+            stubRockApiRequest()
+            data = giveData 'routing'
+            delete data.RoutingNumber
+            assert.equal data.RoutingNumber, null
+            assert.equal Apollos.giveTransaction(data), false

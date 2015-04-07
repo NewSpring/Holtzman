@@ -1,3 +1,8 @@
+isAccountType = (schema, type) ->
+  isCredit = schema.field('AccountType').value == type
+  if isCredit and !schema.isSet and (!schema.operator or schemavalue == null or schema.value == '')
+    'required'
+
 ###
   Schema used for validating give transaction data
 ###
@@ -17,23 +22,23 @@ giveTransactionSchema = new SimpleSchema(
   RoutingNumber:
     type: String
     optional: true
-  #   custom: ->
-  #     'required' if @.field('accountType').value == 'checking'
+    custom: ->
+      'required' if isAccountType(@, 'checking') or isAccountType(@, 'savings')
   CCV:
     type: String
     optional: true
-    # custom: ->
-    #   'required' if @.field('accountType').value == 'credit'
+    custom: ->
+      'required' if isAccountType(@, 'credit')
   ExpirationMonth:
     type: Number
     optional: true
-    # custom: ->
-    #   'required' if @.field('accountType').value == 'credit'
+    custom: ->
+      'required' if isAccountType(@, 'credit')
   ExpirationYear:
     type: Number
     optional: true
-    # custom: ->
-    #   'required' if @.field('accountType').value == 'credit'
+    custom: ->
+      'required' if isAccountType(@, 'credit')
   AccountId:
     type: Number
     optional: true
