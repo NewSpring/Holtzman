@@ -1,23 +1,5 @@
 ###
-public string Email
-public string AccountType { get; set; } "checking" or "savings" or "credit"
-public array AmountDetails { get; set; } targetAccountId amount
-public string AccountNumber { get; set; }
-public string RoutingNumber { get; set; }
-public string CCV { get; set; }
-public int ExpirationMonth { get; set; }
-public int ExpirationYear { get; set; }
-public int? AccountId { get; set; }
-public int? PersonId { get; set; }
-public string FirstName { get; set; }
-public string LastName { get; set; }
-public string Street1 { get; set; }
-public string Street2 { get; set; }
-public string City { get; set; }
-public string State { get; set; }
-public string PostalCode { get; set; }
-public string Country { get; set; }
-public string PhoneNumber { get; set; }
+  Schema used for validating give transaction data
 ###
 giveTransactionSchema = new SimpleSchema(
   Email:
@@ -77,6 +59,18 @@ giveTransactionSchema = new SimpleSchema(
   PhoneNumber:
     type: String
 )
+
+###
+
+  Apollos.giveTransaction
+
+  @example validate and pass transaction data to Rcok
+
+    Apollos.giveTransation(data)
+
+  @param data [Object] give transaction info. see schema
+
+###
 
 Apollos.giveTransaction = (data) ->
 
