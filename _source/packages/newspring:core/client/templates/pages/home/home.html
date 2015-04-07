@@ -12,26 +12,41 @@
     --}}<div class="floating__item">
       <div class="push-bottom push-left" >
             <h1 class="text--left font--white">
-              3 Dangerous Prayers
+              Welcome to NewSpring
             </h1>
             <h5 class="text--left font--white">
-              By: Perry Noble
+              We track everything you do
             </h5>
         </div>
 </div>{{!--
   --}}</section>
 
-  <section class="panel__item--right seven-twelfths">
-    <h1>Try signing in to F1:</h1>
-    <div>
-      <form id="f1-signin-form">
-        <input type="text" id="f1-username" placeholder="Username" />
-        <input type="password" id="f1-password" placeholder="Password" />
-        <input type="submit" value="MiM Me!" />
+  <section class="panel__item--right seven-twelfths floating">
+    <div class="floating__item">
+    <form>
+        <fieldset>
+          <legend>
+            Sign In
+          </legend>
+
+          <div class="input">
+            <label for="email">Email</label>
+            <input name="email" data-value="" placeholder="name@address.com"/>
+          </div>
+
+          <div class="input">
+            <label for="password">Password</label>
+            <input name="password" data-value="" type="password" placeholder="Password"/>
+          </div>
+
+          <div class="input">
+            <label for="gender">Gender</label>
+            <input type="radio" name="gender" value="male">
+          </div>
+
+        </fieldset>
+        <button class="fa fa-rebel icon--filled" type="submit"></button>
       </form>
-    </div>
-    <div>
-      {{{f1LoginStatus}}}
     </div>
 
   </section>
