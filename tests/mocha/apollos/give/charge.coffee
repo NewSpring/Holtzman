@@ -1,3 +1,10 @@
+
+###
+
+  SCHEDULED FOR ABSTRACTION TO apollos:give
+
+###
+
 MochaWeb?.testOnly ->
 
   assert = chai.assert
@@ -48,8 +55,9 @@ MochaWeb?.testOnly ->
       Rock.apiRequest = originalApiRequest
       true
 
-  describe 'Apollos', ->
-    describe 'giveTransaction', ->
+  describe 'Apollos.give', ->
+    describe 'charge', ->
+
 
       if Meteor.isServer
 
@@ -60,7 +68,7 @@ MochaWeb?.testOnly ->
             it 'should complete transaction', ->
               stubRockApiRequest()
               data = giveData 'credit'
-              assert.equal Apollos.giveTransaction(data), true
+              assert.equal Apollos.give.charge(data), true
 
             it 'should make api request', (done) ->
               originalApiRequest = Rock.apiRequest
@@ -92,7 +100,7 @@ MochaWeb?.testOnly ->
                 done()
 
               data = giveData 'credit'
-              Apollos.giveTransaction(data)
+              Apollos.give.charge(data)
 
 
           describe 'when using checking', ->
@@ -100,21 +108,21 @@ MochaWeb?.testOnly ->
             it 'should complete transaction', ->
               stubRockApiRequest()
               data = giveData 'checking'
-              assert.equal Apollos.giveTransaction(data), true
+              assert.equal Apollos.give.charge(data), true
 
           describe 'when using savings', ->
 
             it 'should complete transaction', ->
               stubRockApiRequest()
               data = giveData 'savings'
-              assert.equal Apollos.giveTransaction(data), true
+              assert.equal Apollos.give.charge(data), true
 
           describe 'when saved account', ->
 
             it 'should complete transaction', ->
               stubRockApiRequest()
               data = giveData 'saved'
-              assert.equal Apollos.giveTransaction(data), true
+              assert.equal Apollos.give.charge(data), true
 
         describe 'when using invalid data', ->
 
@@ -124,40 +132,40 @@ MochaWeb?.testOnly ->
           it 'should not complete when data is wrong type', ->
             data = giveData 'credit'
             data.expirationMonth = '1'
-            assert.equal Apollos.giveTransaction(data), false
+            assert.equal Apollos.give.charge(data), false
 
           it 'should not complete when credit but no ccv', ->
             data = giveData 'credit'
             delete data.CCV
             assert.equal data.CCV, null
-            assert.equal Apollos.giveTransaction(data), false
+            assert.equal Apollos.give.charge(data), false
 
           it 'should not complete when credit but no expiration month', ->
             data = giveData 'credit'
             delete data.ExpirationMonth
             assert.equal data.ExpirationMonth, null
-            assert.equal Apollos.giveTransaction(data), false
+            assert.equal Apollos.give.charge(data), false
 
           it 'should not complete when credit but no expiration year', ->
             data = giveData 'credit'
             delete data.ExpirationYear
             assert.equal data.ExpirationYear, null
-            assert.equal Apollos.giveTransaction(data), false
+            assert.equal Apollos.give.charge(data), false
 
           it 'should not complete when checking but no routing number', ->
             data = giveData 'checking'
             delete data.RoutingNumber
             assert.equal data.RoutingNumber, null
-            assert.equal Apollos.giveTransaction(data), false
+            assert.equal Apollos.give.charge(data), false
 
           it 'should not complete when routing but no routing number', ->
             data = giveData 'routing'
             delete data.RoutingNumber
             assert.equal data.RoutingNumber, null
-            assert.equal Apollos.giveTransaction(data), false
+            assert.equal Apollos.give.charge(data), false
 
           it 'should not complete when no source account id', ->
             data = giveData 'saved'
             delete data.SourceAccountId
             assert.equal data.SourceAccountId, null
-            assert.equal Apollos.giveTransaction(data), false
+            assert.equal Apollos.give.charge(data), false

@@ -1,10 +1,20 @@
+
 ###
 
-  requiredIfNotFieldSet
+  SCHEDULED FOR ABSTRACTION TO apollos:give
+
+###
+
+# Attach give object to Apollos
+Apollos.give = {}
+
+###
+
+  _requiredIfNotFieldSet
 
   @example check to see if schema is representing the given state
 
-    requiredIfNotFieldSet(schema, fieldName, value)
+    _requiredIfNotFieldSet(schema, fieldName, value)
 
   @param schema [SimpleSchema] generally passed as @ or this
   @param fieldName [String] the name of a field within the schema
@@ -12,13 +22,20 @@
   if ommitted, indicates that the field should simply be falsey
 
 ###
-requiredIfNotFieldSet = (schema, fieldName, value) ->
+###
+
+  @note
+    @pinky and @ben I changed this to lead with an underscore
+    since it is a private function, this hasn't been set as law to do and isn"t documented anywhere so no worries about it. I"d like private functions to be set with a leading _ that way we can quickly know what is private or public (attached to outside this file)
+
+###
+_requiredIfNotFieldSet = (schema, fieldName, value) ->
   if value?
-    isOfType = schema.field(fieldName).value == value
+    isOfType = schema.field(fieldName).value is value
   else
     isOfType = not schema.field(fieldName).value?
 
-  if isOfType and !schema.isSet and (!schema.operator or schemavalue == null or schema.value == '')
+  if isOfType and !schema.isSet and (!schema.operator or schemavalue is null or schema.value is "")
     return "required"
 
 
@@ -45,34 +62,34 @@ giveTransactionSchema = new SimpleSchema(
     optional: true
     regEx: /^(checking|savings|credit)$/
     custom: ->
-      requiredIfNotFieldSet @, "SourceAccountId"
+      _requiredIfNotFieldSet @, "SourceAccountId"
   AmountDetails:
     type: [amountDetail]
   AccountNumber:
     type: String
     optional: true
     custom: ->
-      requiredIfNotFieldSet @, "SourceAccountId"
+      _requiredIfNotFieldSet @, "SourceAccountId"
   RoutingNumber:
     type: String
     optional: true
     custom: ->
-      requiredIfNotFieldSet(@, "AccountType", "checking") or requiredIfNotFieldSet @, "AccountType", "savings"
+      _requiredIfNotFieldSet(@, "AccountType", "checking") or _requiredIfNotFieldSet @, "AccountType", "savings"
   CCV:
     type: String
     optional: true
     custom: ->
-      requiredIfNotFieldSet @, "AccountType", "credit"
+      _requiredIfNotFieldSet @, "AccountType", "credit"
   ExpirationMonth:
     type: Number
     optional: true
     custom: ->
-      requiredIfNotFieldSet @, "AccountType", "credit"
+      _requiredIfNotFieldSet @, "AccountType", "credit"
   ExpirationYear:
     type: Number
     optional: true
     custom: ->
-      requiredIfNotFieldSet @, "AccountType", "credit"
+      _requiredIfNotFieldSet @, "AccountType", "credit"
   PersonId:
     type: Number
     decimal: false
@@ -102,22 +119,31 @@ giveTransactionSchema = new SimpleSchema(
 
 ###
 
-  Apollos.giveTransaction
+  Apollos.give.charge
 
   @example validate and pass transaction data to Rock
 
-    Apollos.giveTransation(data)
+    Apollos.give.charge(data)
 
   @param data [Object] give transaction info. see schema
 
 ###
 
-Apollos.giveTransaction = (data) ->
+###
+
+  @note
+
+    How do we feel about adding methods onto the base object of give?
+
+###
+
+Apollos.give.charge = (data) ->
 
   giveContext = giveTransactionSchema.newContext()
 
-  return false unless giveContext.validate(data)
-  
+  if not giveContext.validate(data)
+    return false
+
   Rock.apiRequest "POST", "api/Give", data, (error, data) ->
     if error
       debug "Apollos give transaction failed:"
