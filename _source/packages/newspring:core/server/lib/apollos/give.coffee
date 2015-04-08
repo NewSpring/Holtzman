@@ -1,10 +1,3 @@
-
-###
-
-  SCHEDULED FOR ABSTRACTION TO apollos:give
-
-###
-
 # Attach give object to Apollos
 Apollos.give = {}
 
@@ -20,13 +13,6 @@ Apollos.give = {}
   @param fieldName [String] the name of a field within the schema
   @param value [String|Number] the value to check that the field is set to or,
   if ommitted, indicates that the field should simply be falsey
-
-###
-###
-
-  @note
-    @pinky and @ben I changed this to lead with an underscore
-    since it is a private function, this hasn't been set as law to do and isn"t documented anywhere so no worries about it. I"d like private functions to be set with a leading _ that way we can quickly know what is private or public (attached to outside this file)
 
 ###
 _requiredIfNotFieldSet = (schema, fieldName, value) ->
@@ -128,15 +114,6 @@ giveTransactionSchema = new SimpleSchema(
   @param data [Object] give transaction info. see schema
 
 ###
-
-###
-
-  @note
-
-    How do we feel about adding methods onto the base object of give?
-
-###
-
 Apollos.give.charge = (data) ->
 
   giveContext = giveTransactionSchema.newContext()

@@ -1,10 +1,3 @@
-
-###
-
-  SCHEDULED FOR ABSTRACTION TO apollos:give
-
-###
-
 MochaWeb?.testOnly ->
 
   assert = chai.assert
