@@ -6,9 +6,10 @@ MochaWeb?.testOnly ->
 
     data =
       Email: 'jim@bo.com'
-      AmountDetails:
+      AmountDetails: [
         TargetAccountId: 1
         Amount: 1.00
+      ]
       PersonId: 119203
       FirstName: 'Jim'
       LastName: 'Bo'
@@ -35,6 +36,8 @@ MochaWeb?.testOnly ->
 
       data.AccountNumber = '12345678'
       data.RoutingNumber = '112200439'
+    else if type is 'saved'
+      data.SourceAccountId = 1
 
     data
 
@@ -66,8 +69,8 @@ MochaWeb?.testOnly ->
                 assert.equal method, "POST"
                 assert.equal url, "api/Give"
                 assert.equal data.Email, 'jim@bo.com'
-                assert.equal data.AmountDetails.TargetAccountId, 1
-                assert.equal data.AmountDetails.Amount, 1.00
+                assert.equal data.AmountDetails[0].TargetAccountId, 1
+                assert.equal data.AmountDetails[0].Amount, 1.00
                 assert.equal data.PersonId, 119203
                 assert.equal data.FirstName, 'Jim'
                 assert.equal data.LastName, 'Bo'
@@ -104,6 +107,13 @@ MochaWeb?.testOnly ->
             it 'should complete transaction', ->
               stubRockApiRequest()
               data = giveData 'savings'
+              assert.equal Apollos.giveTransaction(data), true
+
+          describe 'when saved account', ->
+
+            it 'should complete transaction', ->
+              stubRockApiRequest()
+              data = giveData 'saved'
               assert.equal Apollos.giveTransaction(data), true
 
         describe 'when using invalid data', ->
@@ -144,4 +154,10 @@ MochaWeb?.testOnly ->
             data = giveData 'routing'
             delete data.RoutingNumber
             assert.equal data.RoutingNumber, null
+            assert.equal Apollos.giveTransaction(data), false
+
+          it 'should not complete when no source account id', ->
+            data = giveData 'saved'
+            delete data.SourceAccountId
+            assert.equal data.SourceAccountId, null
             assert.equal Apollos.giveTransaction(data), false
