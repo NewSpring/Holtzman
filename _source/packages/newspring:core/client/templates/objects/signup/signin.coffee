@@ -5,7 +5,6 @@ Template.signin.onCreated ->
 
   self.subscribe "apollos-users"
 
-  # need to get rid of session use here
   self.hasAccount = new ReactiveVar(true)
   self.hasErrors = new ReactiveVar(false)
 
@@ -27,150 +26,132 @@ Template.signin.helpers
   "email": ->
     return Template.instance().email.get()
 
+###
+  put email field in error state
+###
+_emailError = (template) ->
+  _email = template.email.get()
+  _email.status = "Please enter a valid email"
+  template.email.set _email
+  template.hasErrors.set true
+
+###
+  put password field in error state
+###
+_passwordError = (template) ->
+  _password = template.password.get()
+  if _password.value is ''
+    _password.status = "Password may not be empty"
+  else
+    _password.status = "Password incorrect"
+  template.password.set _password
+  template.hasErrors.set true
+
+###
+  put terms in error state
+###
+_termsError = (template) ->
+  template.hasErrors.set = true
+
+###
+  keep reactive vars in sync
+###
+_refreshVariable = (variable, value) ->
+  _var = variable.get()
+  _var.value = value
+  _var.status = false
+  variable.set _var
+
 
 Template.signin.events
 
 
   "focus input": (e, t) ->
-    template = Template.instance()
 
-    # if e.target.value
-    #   validEmail = Apollos.validate.isEmail template.email.value
-
-    if template.hasErrors.get()
-      template.hasErrors.set false
+    if t.hasErrors.get()
+      t.hasErrors.set false
 
     $(e.target.parentNode).addClass("input--active")
 
 
   "blur input": (e, t) ->
 
-    template = Template.instance()
-    if template.hasErrors.get()
-      template.hasErrors.set false
+    if t.hasErrors.get()
+      t.hasErrors.set false
 
     if not e.target.value
 
       $(e.target.parentNode).removeClass("input--active")
 
 
-
-  "keyup input[name=email]": (e, t) ->
-    if not e.target.value
-      return
-
-    email = Apollos.users.findOne({
-      "emails.address": e.target.value
-    })
-
-    if email
-      Session.set "hasAccount", true
-
-
   "focus input[name=email], keyup input[name=email], blur input[name=email]": (e, t) ->
-
-
-    template = Template.instance()
-
-    _email = template.email.get()
-    _email.value = e.target.value
-
-    _email.status = false
-
-    template.email.set _email
+    _refreshVariable(t.email, e.target.value)
 
 
   "focus input[name=password], keyup input[name=password], blur input[name=password]": (e, t) ->
-
-
-    template = Template.instance()
-
-    _password = template.password.get()
-    _password.value = e.target.value
-
-    _password.status = false
-
-    template.password.set _password
-
+    _refreshVariable(t.password, e.target.value)
 
 
   "blur input[name=email]": (e, t) ->
 
-    template = Template.instance()
-
     _input = e.target
 
     if not _input.value
-      template.hasAccount.set true
+      t.hasAccount.set true
       return
 
     if not Apollos.validate.isEmail _input.value
-      _email = template.email.get()
-      _email.status = "Please enter a valid email"
-      template.email.set _email
-      template.hasErrors.set true
+      _emailError(t)
       return
-
 
     email = Apollos.users.findOne({
       "emails.address": _input.value
     })
 
     if email
-      template.hasAccount.set true
+      t.hasAccount.set true
     else
-      template.hasAccount.set false
+      t.hasAccount.set false
+
 
 
   "submit #signin": (e, t) ->
     e.preventDefault()
 
-    template = Template.instance()
-
-    email = template.find("input[name=email]").value
-    password = template.find("input[name=password]").value
+    email = t.find("input[name=email]").value
+    password = t.find("input[name=password]").value
 
     if not Apollos.validate.isEmail email
-      _email = template.email.get()
-      _email.status = "Please enter a valid email"
-      template.email.set _email
-      template.hasErrors.set true
+      _emailError(t)
       return
 
-    Meteor.loginWithPassword email, password, (e) ->
-      if not e
+    Meteor.loginWithPassword email, password, (err) ->
+      if not err
         return
 
-      template.hasErrors.set true
       # wrong password
-      if e.error is 403
-        _password = template.password.get()
-        _password.status = "Incorrect Password"
-        template.password.set _password
+      if err.error is 403
+        _passwordError(t)
 
       # no email
-      if e.error is 400
-        _email = template.email.get()
-        _email.status = "Please include your email address"
-        template.password.set _email
+      if err.error is 400
+        _emailError(t)
 
 
   "submit #signup": (e, t) ->
     e.preventDefault()
 
-    template = Template.instance()
+    email = t.find("input[name=email]").value
+    password = t.find("input[name=password]").value
+    terms = t.find("input[name=terms]").checked
 
-    email = template.find("input[name=email]").value
-    password = template.find("input[name=password]").value
-    terms = template.find("input[name=terms]").value
+    if terms == false
+      _termsError(t)
+      return
 
-    Apollos.user.create(email, password, (error) ->
-
-      if not error
+    Apollos.user.create(email, password, (err) ->
+      if not err
         return
 
-      template.hasErrors.set true
-
-      console.log e
-
+      _passwordError(t)
     )
