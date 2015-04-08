@@ -1,6 +1,6 @@
 <template name="signin">
   {{#unless currentUser}}
-  <form id="{{#if hasAccount}}signin{{else}}signup{{/if}}">
+    <form id="{{#if hasAccount}}signin{{else}}signup{{/if}}">
       <fieldset>
         <legend class="push-half-bottom">
             Sign In
@@ -29,14 +29,19 @@
 
 
         {{#unless hasAccount}}
-        <div class="input">
+        <div class="input {{#if terms.status}}input--alert{{/if}}">
           <input id="terms" name="terms" data-value="" checked="true" type="checkbox"/>
           <label for="terms"></label>
           <h7 class="soft-left">
             <small>
-              By siging up you agree to our <a href="#">terms and conditions</a>
+              By signing up you agree to our <a href="#">terms and conditions</a>
             </small>
           </h7>
+          {{#if terms.status}}
+            <span class="input__status">
+              {{terms.status}}
+            </span>
+          {{/if}}
         </div>
         {{/unless}}
 
@@ -47,6 +52,8 @@
       <button class="icon--alert fa fa-minus" type="submit"></button>
       {{/unless}}
     </form>
+  {{else}}
+    <img src="http://i.ytimg.com/vi/LM3WiTLJKhg/maxresdefault.jpg" />
   {{/unless}}
 
 </template>

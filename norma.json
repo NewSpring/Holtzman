@@ -95,4 +95,3 @@
     "postinstall": "./norma-ignore/postinstall.coffee"
   }
 }
-
