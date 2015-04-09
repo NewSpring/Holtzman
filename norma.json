@@ -58,7 +58,7 @@
           "bjwiley2:request-data@0.0.3": "both"
         },
         "npm": {
-          "oauth@0.9.12": "server"
+          "oauth": "0.9.12"
         },
         "export": {
           "Rock": "both",
