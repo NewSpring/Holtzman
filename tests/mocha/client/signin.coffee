@@ -12,15 +12,24 @@ MochaWeb?.testOnly ->
 
   _submitSignIn = (email, password, callback) ->
     _assertSignInVisible()
-    _getEmailInput().val email
-    _getPasswordInput().val password
+    _getEmailInput()
+      .val email
+      .blur()
+    _getPasswordInput()
+      .val password
+      .blur()
     _getSubmitButton().click()
     _wait callback
 
   _submitSignUp = (email, password, accepted, callback) ->
     _goToSignUp ->
-      _getEmailInput().val email
-      _getPasswordInput().val password
+      _getEmailInput()
+        .val email
+        .blur()
+      _getPasswordInput()
+        .val password
+        .blur()
+
       _getTermsInput().prop "checked", accepted
       _getSubmitButton().click()
       _wait callback
@@ -111,24 +120,24 @@ MochaWeb?.testOnly ->
       assert.equal _getEmailInput().attr("name"), "email"
       assert.equal _getPasswordInput().attr("name"), "password"
 
-    it "should deny signin submit if email is malformed", ->
+    it "should deny signin submit if email is malformed", (done) ->
       console.log "XXXXXXXXXXXXXXXXXXX   3"
       _submitSignIn "joe@joe", "password123", ->
         error = _getErrorMessage "email"
         assert.equal "Please enter a valid email", error
         done()
 
-    it "should deny signin submit if password is empty", ->
-      console.log "XXXXXXXXXXXXXXXXXXX   4"
-      _submitSignIn "joe@joe.com", "", ->
-        error = _getErrorMessage "email"
-        assert.equal "Please enter a password", error
-        done()
-
-    # it "should detect new email and present signup form", (done) ->
-    #   console.log "XXXXXXXXXXXXXXXXXXX   5"
-    #   _goToSignUp ->
+    # it "should deny signin submit if password is empty", (done) ->
+    #   console.log "XXXXXXXXXXXXXXXXXXX   4"
+    #   _submitSignIn "joe@joe.com", "", ->
+    #     error = _getErrorMessage "password"
+    #     assert.equal "Password may not be empty", error
     #     done()
+
+    it "should detect new email and present signup form", (done) ->
+      console.log "XXXXXXXXXXXXXXXXXXX   5"
+      _goToSignUp ->
+        done()
 
     it "should show the terms checkbox on the signup form", (done) ->
       console.log "XXXXXXXXXXXXXXXXXXX   6"
@@ -148,27 +157,31 @@ MochaWeb?.testOnly ->
 
     it "should deny signup submit if password is empty", (done) ->
       console.log "XXXXXXXXXXXXXXXXXXX   8"
-      _submitSignUp "joe@joe.com", "", true, ->
-        error = _getErrorMessage "password"
-        assert.equal "Password incorrect", error
-        done()
+      _goToSignUp ->
+        _submitSignUp "joe@joe.com", "", true, ->
+          error = _getErrorMessage "password"
+          assert.equal "Password may not be empty", error
+          done()
 
     it "should deny signup submit if terms are not accepted", (done) ->
       console.log "XXXXXXXXXXXXXXXXXXX   9"
-      _submitSignUp "joe@joe.com", "password123", false, ->
-        error = _getErrorMessage "terms"
-        assert.equal "You must accept the terms and conditions", error
-        done()
+      _goToSignUp ->
+        _submitSignUp "joe@joe.com", "password123", false, ->
+          error = _getErrorMessage "terms"
+          assert.equal "You must accept the terms and conditions", error
+          done()
 
     it "should create a new user from the signup form", (done) ->
       console.log "XXXXXXXXXXXXXXXXXXX  10"
-      _createdUserEmail = _generateRandomEmail()
-      _submitSignUp _createdUserEmail, "password123", true, ->
-        assert.equal Meteor.user().emails[0].address, _createdUserEmail
-        done()
+      _goToSignUp ->
+        _createdUserEmail = _generateRandomEmail()
+        _submitSignUp _createdUserEmail, "password123", true, ->
+          assert.equal Meteor.user().emails[0].address, _createdUserEmail
+          done()
 
-    it "should allow sign in of created user", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX  11"
-      _submitSignIn _createdUserEmail, "password123", ->
-        assert.equal Meteor.user().emails[0].address, _createdUserEmail
-        done()
+    # it "should allow sign in of created user", (done) ->
+    #   console.log "XXXXXXXXXXXXXXXXXXX  11"
+    #
+    #   _submitSignIn _createdUserEmail, "password123", ->
+    #     assert.equal Meteor.user().emails[0].address, _createdUserEmail
+    #     done()
