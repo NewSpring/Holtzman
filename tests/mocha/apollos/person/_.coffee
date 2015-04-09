@@ -28,6 +28,8 @@ MochaWeb?.testOnly ->
 
         describe 'when signed in', ->
 
+          @.timeout 10000
+
           before (done) ->
             SessionHelper.logout(done)
 

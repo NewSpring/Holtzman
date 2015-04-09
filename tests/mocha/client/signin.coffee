@@ -86,7 +86,7 @@ MochaWeb?.testOnly ->
         callback()
 
   _waitForVisibleForm = (callback) ->
-    console.log $("form:visible").length
+
     try
       if $ and $("form:visible").length
         _getEmailInput().val null
@@ -100,7 +100,7 @@ MochaWeb?.testOnly ->
 
   describe "Signin", ->
 
-    @.timeout 1000000
+    @.timeout 10000
 
     beforeEach (done) ->
       _logout ->
@@ -110,37 +110,33 @@ MochaWeb?.testOnly ->
     #   _logout done
 
     it "should start with the signin form", ->
-      console.log "XXXXXXXXXXXXXXXXXXX   1"
       _assertSignInVisible()
 
     it "should have two inputs", ->
-      console.log "XXXXXXXXXXXXXXXXXXX   2"
       _assertSignInVisible()
       assert.equal _getVisibleForm().find("input").length, 2
       assert.equal _getEmailInput().attr("name"), "email"
       assert.equal _getPasswordInput().attr("name"), "password"
 
     it "should deny signin submit if email is malformed", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   3"
       _submitSignIn "joe@joe", "password123", ->
         error = _getErrorMessage "email"
         assert.equal "Please enter a valid email", error
         done()
 
-    # it "should deny signin submit if password is empty", (done) ->
-    #   console.log "XXXXXXXXXXXXXXXXXXX   4"
-    #   _submitSignIn "joe@joe.com", "", ->
-    #     error = _getErrorMessage "password"
-    #     assert.equal "Password may not be empty", error
-    #     done()
+    it "should deny signin submit if password is empty", (done) ->
+      console.log "XXXXXXXXXXXXXXXXXXX   4"
+      _submitSignIn "joe@joe.com", "", ->
+        error = _getErrorMessage "password"
+        assert.equal "Password may not be empty", error
+        done()
 
     it "should detect new email and present signup form", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   5"
       _goToSignUp ->
         done()
 
     it "should show the terms checkbox on the signup form", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   6"
+
       _goToSignUp ->
         assert.equal _getVisibleForm().find("input").length, 3
         assert.equal _getEmailInput().attr("name"), "email"
@@ -156,7 +152,6 @@ MochaWeb?.testOnly ->
     #     done()
 
     it "should deny signup submit if password is empty", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   8"
       _goToSignUp ->
         _submitSignUp "joe@joe.com", "", true, ->
           error = _getErrorMessage "password"
@@ -164,7 +159,6 @@ MochaWeb?.testOnly ->
           done()
 
     it "should deny signup submit if terms are not accepted", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   9"
       _goToSignUp ->
         _submitSignUp "joe@joe.com", "password123", false, ->
           error = _getErrorMessage "terms"
@@ -172,7 +166,6 @@ MochaWeb?.testOnly ->
           done()
 
     it "should create a new user from the signup form", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX  10"
       _goToSignUp ->
         _createdUserEmail = _generateRandomEmail()
         _submitSignUp _createdUserEmail, "password123", true, ->
