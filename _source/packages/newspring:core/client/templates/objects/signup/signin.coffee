@@ -10,6 +10,7 @@ Template.signin.onCreated ->
 
   self.password = new ReactiveVar({})
   self.email = new ReactiveVar({})
+  self.terms = new ReactiveVar({})
 
 
 Template.signin.helpers
@@ -25,6 +26,10 @@ Template.signin.helpers
 
   "email": ->
     return Template.instance().email.get()
+
+  "terms": ->
+    return Template.instance().terms.get()
+
 
 ###
   put email field in error state
@@ -51,7 +56,17 @@ _passwordError = (template) ->
   put terms in error state
 ###
 _termsError = (template) ->
-  template.hasErrors.set = true
+  _terms = template.terms.get()
+  _terms.status = "You must accept the terms and conditions"
+  template.terms.set _terms
+  template.hasErrors.set true
+
+###
+  reset errors
+###
+_resetErrors = (template) ->
+  if template.hasErrors.get()
+    template.hasErrors.set false
 
 ###
   keep reactive vars in sync
@@ -68,16 +83,14 @@ Template.signin.events
 
   "focus input": (e, t) ->
 
-    if t.hasErrors.get()
-      t.hasErrors.set false
+    _resetErrors(t)
 
     $(e.target.parentNode).addClass("input--active")
 
 
   "blur input": (e, t) ->
 
-    if t.hasErrors.get()
-      t.hasErrors.set false
+    _resetErrors(t)
 
     if not e.target.value
 
@@ -87,9 +100,12 @@ Template.signin.events
   "focus input[name=email], keyup input[name=email], blur input[name=email]": (e, t) ->
     _refreshVariable(t.email, e.target.value)
 
-
   "focus input[name=password], keyup input[name=password], blur input[name=password]": (e, t) ->
     _refreshVariable(t.password, e.target.value)
+
+  "click input[name=terms]": (e, t) ->
+    _refreshVariable(t.terms, e.target.value)
+    _resetErrors(t)
 
 
   "blur input[name=email]": (e, t) ->
