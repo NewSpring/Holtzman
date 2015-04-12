@@ -59,5 +59,37 @@ Apollos.checkF1Credentials = (username, password, callback) ->
     return future.wait()
 
 
+###
+
+  Apollos.hasF1Account
+
+  @example returns true if the given email previously was associated with a F1
+    account
+
+    hasF1Account = Apollos.hasF1Account "bob@example.com"
+
+  @param email [String] an email used on F1
+  @param callback [Function] a function to be called with a single parameter of
+    hasF1Account. Omit to run synchronously.
+
+###
+Apollos.hasF1Account = (email, callback) ->
+  # TODO - This method needs to do something other than return true!!!
+
+  future = new Future()
+
+  Meteor.setTimeout ->
+    hasAccount = true
+    if not callback
+      future.return hasAccount
+    else
+      callback hasAccount
+  , 250
+
+  if not callback
+    return future.wait()
+
+
 Meteor.methods
   "Apollos.checkF1Credentials": Apollos.checkF1Credentials
+  "Apollos.hasF1Account": Apollos.hasF1Account
