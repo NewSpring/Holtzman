@@ -7,3 +7,7 @@ Router.route "/",
       Meteor.subscribe("people")
       Meteor.subscribe("definedValues")
     ]
+
+Router.route "/forgot-password",
+  name: "forgotPassword"
+  template: "forgotPassword"
