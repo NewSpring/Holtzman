@@ -1,3 +1,7 @@
+Accounts.onResetPasswordLink (token, done) ->
+  Router.go 'resetPassword'
+  done()
+
 Template.forgotPassword.events
 
   "submit #forgot-password": ->
