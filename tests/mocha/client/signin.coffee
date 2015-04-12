@@ -114,92 +114,70 @@ MochaWeb?.testOnly ->
         _waitForVisibleForm done
 
     it "should start with the signin form", ->
-      console.log "XXXXXXXXXXXXXXXXXXX   1"
       _assertSignInVisible()
-      console.log "XXXXXXXXXXXXXXXXXXX   END 1"
 
     it "should have two inputs", ->
-      console.log "XXXXXXXXXXXXXXXXXXX   2"
       _assertSignInVisible()
       assert.equal _getVisibleForm().find("input").length, 2
       assert.equal _getEmailInput().attr("name"), "email"
       assert.equal _getPasswordInput().attr("name"), "password"
-      console.log "XXXXXXXXXXXXXXXXXXX   END 2"
 
     it "should deny signin submit if email is malformed", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   3"
       _submitSignIn "joe@joe", "password123", ->
         error = _getErrorMessage "email"
         assert.equal "Please enter a valid email", error
-        console.log "XXXXXXXXXXXXXXXXXXX   END 3"
         done()
 
     it "should deny signin submit if password is empty", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   4"
       _submitSignIn "joe@joe.com", "", ->
         _wait ->
           error = _getErrorMessage "password"
           assert.equal "Password may not be empty", error
-          console.log "XXXXXXXXXXXXXXXXXXX   END 4"
           done()
 
     it "should detect new email and present signup form", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   5"
       _goToSignUp ->
-        console.log "XXXXXXXXXXXXXXXXXXX   END 5"
         done()
 
     it "should show the terms checkbox on the signup form", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   6"
       _goToSignUp ->
         assert.equal _getVisibleForm().find("input").length, 3
         assert.equal _getEmailInput().attr("name"), "email"
         assert.equal _getPasswordInput().attr("name"), "password"
         assert.equal _getTermsInput().attr("id"), "terms"
-        console.log "XXXXXXXXXXXXXXXXXXX   END 6"
         done()
 
     it "should deny signup submit if email is malformed", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   7"
       _submitSignUp "joe@joe", "password123", true, ->
         _wait ->
           _wait ->
             _wait ->
               error = _getErrorMessage "email"
               assert.equal "Please enter a valid email", error
-              console.log "XXXXXXXXXXXXXXXXXXX   END 7"
               done()
 
     it "should deny signup submit if password is empty", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   8"
       _goToSignUp ->
         _submitSignUp "joe@joe.com", "", true, ->
           error = _getErrorMessage "password"
           assert.equal "Password may not be empty", error
-          console.log "XXXXXXXXXXXXXXXXXXX   END 8"
           done()
 
     it "should deny signup submit if terms are not accepted", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   9"
       _goToSignUp ->
         _submitSignUp "joe@joe.com", "password123", false, ->
           error = _getErrorMessage "terms"
           assert.equal "You must accept the terms and conditions", error
-          console.log "XXXXXXXXXXXXXXXXXXX   END 9"
           done()
 
     it "should create a new user from the signup form", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   10"
       _goToSignUp ->
         _createdUserEmail = _generateRandomEmail()
         _submitSignUp _createdUserEmail, "password123", true, ->
           assert.equal Meteor.user().emails[0].address, _createdUserEmail
-          console.log "XXXXXXXXXXXXXXXXXXX   END 10"
           done()
 
     it "should allow sign in of created user", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX  11"
       _submitSignIn _createdUserEmail, "password123", ->
         assert.equal Meteor.user().emails[0].address, _createdUserEmail
-        console.log "XXXXXXXXXXXXXXXXXXX   END 11"
         done()
