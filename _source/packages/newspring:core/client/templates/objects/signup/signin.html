@@ -1,0 +1,64 @@
+<template name="signin">
+  {{#unless currentUser}}
+    <form id="{{#if hasAccount}}signin{{else}}signup{{/if}}">
+      <fieldset>
+        <legend class="push-half-bottom">
+            Sign In
+        </legend>
+        <h5 class="push-double-bottom">or create an Account</h5>
+
+        <div class="input {{#if email.status}}input--alert{{/if}}">
+          <label for="email">Email</label>
+          <input name="email" data-value="" placeholder="name@address.com"/>
+          {{#if email.status}}
+            <span class="input__status">
+              {{email.status}}
+            </span>
+          {{/if}}
+        </div>
+
+        <div class="input {{#if password.status}}input--alert{{/if}}">
+          <label for="password">Password</label>
+          <input name="password" data-value="" type="password" placeholder="Password"/>
+          {{#if password.status}}
+            <span class="input__status">
+              {{password.status}}
+            </span>
+          {{/if}}
+        </div>
+
+
+        {{#unless hasAccount}}
+        <div class="input {{#if terms.status}}input--alert{{/if}}">
+          <input id="terms" name="terms" data-value="" checked="true" type="checkbox"/>
+          <label for="terms"></label>
+          <h7 class="soft-left">
+            <small>
+              By signing up you agree to our <a href="#">terms and conditions</a>
+            </small>
+          </h7>
+          {{#if terms.status}}
+            <span class="input__status">
+              {{terms.status}}
+            </span>
+          {{/if}}
+        </div>
+        {{#if terms.status}}
+          <span class="input__status">
+            {{terms.status}}
+          </span>
+        {{/if}}
+        {{/unless}}
+
+      </fieldset>
+      {{#unless hasErrors}}
+      <button class="icon--filled background--fill" style="background-image:url(https://s3.amazonaws.com/uploads.hipchat.com/21097/1894791/uRyBvEK6wEqWU1B/next-steps.png); background-size: 40%;" type="submit"></button>
+      {{else}}
+      <button class="icon--alert fa fa-minus" type="submit"></button>
+      {{/unless}}
+    </form>
+  {{else}}
+    <img src="http://i.ytimg.com/vi/LM3WiTLJKhg/maxresdefault.jpg" />
+  {{/unless}}
+
+</template>

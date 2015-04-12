@@ -17,11 +17,13 @@
     "markup": {
       "src": "_source/**/*",
       "dest": "newspring/",
-      "minify": false
+      "minify": true
     },
     "sass": {
       "src": "_source/**/*",
-      "dest": "newspring/"
+      "dest": "newspring/",
+      "comb": true,
+      "lint": true
     },
     "copy": {
       "src": "newspring/settings/settings",
@@ -46,6 +48,7 @@
         "use": {
           "meteor-platform@1.2.1": "both",
           "http@1.0.10": "both",
+          "reactive-var@1.0.5": "both",
           "iron:router@1.0.7": "both",
           "accounts-password@1.0.6": "both",
           "bjwiley2:api-tokens@0.0.3": "both",
@@ -55,7 +58,7 @@
           "bjwiley2:request-data@0.0.3": "both"
         },
         "npm": {
-          "oauth@0.9.12": "server"
+          "oauth": "0.9.12"
         },
         "export": {
           "Rock": "both",
@@ -92,4 +95,3 @@
     "postinstall": "./norma-ignore/postinstall.coffee"
   }
 }
-
