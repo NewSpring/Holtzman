@@ -28,6 +28,8 @@ MochaWeb?.testOnly ->
 
         describe 'when signed in', ->
 
+          @.timeout 10000
+
           before (done) ->
             SessionHelper.logout(done)
 
@@ -48,7 +50,6 @@ MochaWeb?.testOnly ->
 
               before (done) ->
                 SessionHelper.login('apollos.person.keys.test@newspring.cc', 'testPassword', done)
-                console.log "PERSON", Apollos.user()
 
               it 'should have updatedBy', ->
                 assert typeof Apollos.person().updatedBy is 'string'
@@ -132,5 +133,3 @@ MochaWeb?.testOnly ->
               it 'should have communicationPreference', ->
                 assert typeof Apollos.person().communicationPreference is 'number'
                 assert.equal Apollos.person().communicationPreference, 1
-
-
