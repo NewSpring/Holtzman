@@ -12,8 +12,8 @@
     "token": "f865fc80302d5fbccd0cf9f92057f461fdbe622a04f1269419faae25a2ac4629"
   },
   "f1": {
-    "baseURL": "https://newspring.fellowshiponeapi.com/",
-    "consumerKey": "295",
-    "consumerSecret": "3be50503-af54-4830-906b-f230f693bd52"
+    "baseURL": "https://newspring.staging.fellowshiponeapi.com/",
+    "consumerKey": "356",
+    "consumerSecret": "5ec3654f-495a-4364-a2ac-f80bda738ecc"
   }
 }

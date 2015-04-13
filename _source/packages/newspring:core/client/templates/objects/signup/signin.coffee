@@ -9,6 +9,7 @@ Template.signin.onCreated ->
 
   self.password = new ReactiveVar({})
   self.email = new ReactiveVar({})
+  self.name = new ReactiveVar({})
   self.terms = new ReactiveVar({})
 
 
@@ -26,6 +27,10 @@ Template.signin.helpers
   "email": ->
     return Template.instance().email.get()
 
+
+  "name": ->
+    return Template.instance().name.get()
+
   "terms": ->
     return Template.instance().terms.get()
 
@@ -37,6 +42,16 @@ _emailError = (template) ->
   _email = template.email.get()
   _email.status = "Please enter a valid email"
   template.email.set _email
+  template.hasErrors.set true
+
+
+###
+  put email field in error state
+###
+_nameError = (template) ->
+  _name = template.name.get()
+  _name.status = "Please enter your name"
+  template.name.set _name
   template.hasErrors.set true
 
 ###
@@ -104,6 +119,9 @@ Template.signin.events
   "focus input[name=email], keyup input[name=email], blur input[name=email]": (e, t) ->
     _refreshVariable(t.email, e.target.value)
 
+  "focus input[name=name], keyup input[name=name], blur input[name=name]": (e, t) ->
+    _refreshVariable(t.name, e.target.value)
+
   "focus input[name=password], keyup input[name=password], blur input[name=password]": (e, t) ->
     _refreshVariable(t.password, e.target.value)
 
@@ -135,8 +153,11 @@ Template.signin.events
       switch accountType
         when types.apollos, types.f1, types.ldap
           t.hasAccount.set true
+          t.find("input[name=name]").focus()
+          debug "here I am "
         else
           t.hasAccount.set false
+
 
 
   "submit #signin": (event, template) ->
@@ -175,11 +196,16 @@ Template.signin.events
     event.preventDefault()
 
     email = template.find("input[name=email]").value
+    name = template.find("input[name=name]").value
     password = template.find("input[name=password]").value
     terms = template.find("input[name=terms]").checked
 
     if not Apollos.validate.isEmail email
       _emailError template
+      return
+
+    if not name
+      _nameError template
       return
 
     if not password
