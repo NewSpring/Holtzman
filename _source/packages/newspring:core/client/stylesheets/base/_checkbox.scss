@@ -6,3 +6,10 @@ label + h7 {
 
   text-align: left;
 }
+
+.input--alert {
+  h7 + .input__status {
+    top: $base-spacing-unit * 2.5;
+    left: $base-spacing-unit * 2;
+  }
+}

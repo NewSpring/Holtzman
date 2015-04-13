@@ -51,7 +51,7 @@
         </div>
 
 
-        <div class="input {{#if terms.status}}input--alert{{/if}}">
+        <div class="input {{#if terms.status}}input--alert push-double-bottom{{/if}}">
           <input id="terms" name="terms" data-value="" checked="true" type="checkbox"/>
           <label for="terms"></label>
           <h7 class="soft-left">
@@ -65,11 +65,6 @@
             </span>
           {{/if}}
         </div>
-        {{#if terms.status}}
-          <span class="input__status">
-            {{terms.status}}
-          </span>
-        {{/if}}
         {{/unless}}
 
       </fieldset>
