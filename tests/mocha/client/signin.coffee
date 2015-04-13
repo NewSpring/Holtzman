@@ -160,11 +160,9 @@ MochaWeb?.testOnly ->
       _goToSignUp ->
         _submitSignUp "joe@joe.com", "", true, ->
           _wait ->
-            _wait ->
-              _wait ->
-                error = _getErrorMessage "password"
-                assert.equal "Password may not be empty", error
-                done()
+            error = _getErrorMessage "password"
+            assert.equal "Password may not be empty", error
+            done()
 
     it "should deny signup submit if terms are not accepted", (done) ->
       _goToSignUp ->
