@@ -26,7 +26,7 @@
       "lint": true
     },
     "copy": {
-      "src": "newspring/settings/settings",
+      "src": "newspring/settings/development",
       "dest": "./",
       "order": "post",
       "ext": [

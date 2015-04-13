@@ -81,6 +81,9 @@ _refreshVariable = (variable, value) ->
 
 Template.signin.events
 
+  "click #logout": (e, t) ->
+    Meteor.logout()
+    return
 
   "focus input": (e, t) ->
 
