@@ -22,11 +22,9 @@ MochaWeb?.testOnly ->
       Meteor.setTimeout func, 250
 
     _logout = (callback) ->
-      Tracker.autorun (handle) ->
-        if not Meteor.userId()
-          callback()
-          handle.stop()
-      Meteor.logout()
+      _waitForEvent ->
+        return not Meteor.userId()
+      , callback
 
     describe "Apollos", ->
       describe "create on the client", ->
@@ -42,10 +40,8 @@ MochaWeb?.testOnly ->
           it "should create user and login", (done) ->
             email = "apolloscreateclient@newspring.cc"
             Apollos.user.create email, "testPassword", (error) ->
-              console.log "Error #{error}"
               assert.isUndefined error
               _waitForLogin ->
-                console.log "Email #{Meteor.user().emails[0].address}"
                 assert.equal Meteor.user().emails[0].address, email
                 done()
 
