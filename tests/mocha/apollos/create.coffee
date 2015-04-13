@@ -42,8 +42,10 @@ MochaWeb?.testOnly ->
           it "should create user and login", (done) ->
             email = "apolloscreateclient@newspring.cc"
             Apollos.user.create email, "testPassword", (error) ->
+              console.log "Error #{error}"
               assert.isUndefined error
               _waitForLogin ->
+                console.log "Email #{Meteor.user().emails[0].address}"
                 assert.equal Meteor.user().emails[0].address, email
                 done()
 
