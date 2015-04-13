@@ -1,35 +1,37 @@
-input[type=checkbox] {
-  visibility: hidden;
 
-  width: 0;
-  margin: 0;
-  padding-right: $base-spacing-unit;
-}
-
-input[type=checkbox] + label {
-  @include absolute(top $base-border-size left $base-border-size);
-  @include radius(50%);
-  @extend %visible;
-
-  width: $half-spacing-unit;
-  height: $half-spacing-unit;
-  margin-top: $base-border-size;
-  margin-left: $base-border-size;
-  padding: 0;
-
-  background-color: transparent;
-
-  &:before {
-    @include circle($half-spacing-unit + ($base-border-size * 2));
-    @include radius(50%);
-    position: absolute;
-    top: -$base-border-size;
-    left: -$base-border-size;
-
-    border: ($base-border-size - 1) solid $brand-color;
-  }
-}
-
-input[type=checkbox]:checked + label {
-  background-color: $brand-color;
-}
+// input[type=checkbox] {
+//   visibility: hidden;
+//
+//   width: 0;
+//   margin: 0;
+//   padding-right: $base-spacing-unit;
+// }
+//
+// input[type=checkbox] + label {
+//   @include absolute(top $base-border-size left $base-border-size);
+//   @include radius(50%);
+//   @extend %visible;
+//
+//
+//   width: $half-spacing-unit;
+//   height: $half-spacing-unit;
+//   margin-top: $base-border-size;
+//   margin-left: $base-border-size;
+//   padding: 0;
+//
+//   background-color: transparent;
+//
+//   &:before {
+//     @include circle($half-spacing-unit + ($base-border-size * 2));
+//     @include radius(50%);
+//     position: absolute;
+//     top: -$base-border-size;
+//     left: -$base-border-size;
+//
+//     border: ($base-border-size - 1) solid $brand-color;
+//   }
+// }
+//
+// input[type=checkbox]:checked + label {
+//   background-color: $brand-color;
+// }

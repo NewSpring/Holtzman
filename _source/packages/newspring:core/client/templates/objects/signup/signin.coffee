@@ -44,10 +44,12 @@ _emailError = (template) ->
 ###
 _passwordError = (template) ->
   _password = template.password.get()
-  if _password.value is ''
+
+  if not _password.value
     _password.status = "Password may not be empty"
   else
     _password.status = "Password incorrect"
+
   template.password.set _password
   template.hasErrors.set true
 
@@ -120,7 +122,7 @@ Template.signin.events
       _emailError(t)
       return
 
-    Apollos.getAccountType email, (error, accountType) ->
+    Apollos.user.getAccountType email, (error, accountType) ->
       if error
         # Uh oh... what do we do here?
         debug "ERROR: #{error}"
@@ -128,9 +130,10 @@ Template.signin.events
       types = Apollos.enums.accountType
 
       switch accountType
-        when types.apollos then t.hasAccount.set true
-        when types.f1 then t.hasAccount.set true
-        else t.hasAccount.set false
+        when types.apollos, types.f1, types.ldap
+          t.hasAccount.set true
+        else
+          t.hasAccount.set false
 
 
   "submit #signin": (event, template) ->
@@ -143,7 +146,11 @@ Template.signin.events
       _emailError template
       return
 
-    Apollos.getAccountType email, (error, accountType) ->
+    if not password
+      _passwordError template
+      return
+
+    Apollos.user.getAccountType email, (error, accountType) ->
       if error
         # Uh oh... what do we do here?
         debug "ERROR: #{error}"
@@ -151,9 +158,14 @@ Template.signin.events
       types = Apollos.enums.accountType
 
       switch accountType
-        when types.apollos then loginToApollos email, password, template
-        when types.f1 then createAccountFromF1 email, password, template
-        else template.hasAccount.set false
+        when types.apollos, types.ldap
+          loginToApollos email, password, template
+          # when types.ldap
+          #   loginWithLDAP email, password, template
+        when types.f1
+          createAccountFromF1 email, password, template
+        else
+          template.hasAccount.set false
 
 
   "submit #signup": (event, template) ->
@@ -177,18 +189,42 @@ Template.signin.events
     createApollosAccount email, password, template
 
 
-createAccountFromF1 = (email, password, template) ->
-  Apollos.checkF1Credentials email, password, (error, success) ->
+loginWithLDAP = (email, password, template) ->
+
+  Apollos.user.login.ldap email, password, (error, success) ->
+
     if error
       # Uh oh... what do we do here?
       debug "ERROR: #{error}"
       _passwordError template
 
-    else if success
-      createApollosAccount email, password, template
+    if success is `undefined`
+      debug "this wasnt an ldap account?"
+      return
 
-    else
+    if success
+      # need to bypass user login to use Accounts.validateLogin
+      debug "you should be logged in from here"
+      return
+
+    _passwordError(template)
+
+
+
+createAccountFromF1 = (email, password, template) ->
+
+  Apollos.user.login.f1 email, password, (error, success) ->
+    if error
+      # Uh oh... what do we do here?
+      debug "ERROR: #{error}"
       _passwordError template
+      return
+
+    if success
+      createApollosAccount email, password, template
+      return
+
+    _passwordError template
 
 
 createApollosAccount = (email, password, template) ->
