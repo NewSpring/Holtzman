@@ -22,6 +22,7 @@ MochaWeb?.testOnly ->
       Meteor.setTimeout func, 250
 
     _logout = (callback) ->
+      Meteor.logout()
       _waitForEvent ->
         return not Meteor.userId()
       , callback
