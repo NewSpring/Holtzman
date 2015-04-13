@@ -58,7 +58,8 @@
           "bjwiley2:request-data@0.0.3": "both"
         },
         "npm": {
-          "oauth": "0.9.12"
+          "oauth": "0.9.12",
+          "ldapjs": "0.7.0"
         },
         "export": {
           "Rock": "both",
@@ -80,7 +81,6 @@
       "packages": [
         "meteor-platform",
         "newspring:core",
-        "mike:mocha",
         "cordova:io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d"
       ],
       "platforms": [

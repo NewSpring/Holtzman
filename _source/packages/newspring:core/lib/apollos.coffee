@@ -23,6 +23,9 @@ Apollos.user = ->
   user = Meteor.user()
   return user or {}
 
+
+Apollos.user.login = {}
+
 ###
 
   Apollos.person
