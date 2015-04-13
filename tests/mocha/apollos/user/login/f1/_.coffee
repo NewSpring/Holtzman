@@ -4,8 +4,7 @@ MochaWeb?.testOnly ->
 
   describe "Apollos.user.login.f1 function", ->
 
-    if Meteor.isClient
-      @.timeout 10000
+    @.timeout 10000
 
     it "should exist as a function on the client and server", ->
       assert typeof Apollos.user.login.f1 is "function"
@@ -40,9 +39,7 @@ MochaWeb?.testOnly ->
           assert.isBoolean success
           done()
 
-      return
-
-    if Meteor.isServer
+    else
       it "should make an OAuth request syncronously", ->
         success = Apollos.user.login.f1 "bob@example.org", "password123"
         assert.isBoolean success

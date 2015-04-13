@@ -2,35 +2,83 @@ MochaWeb?.testOnly ->
 
   assert = chai.assert
 
-  describe 'Apollos', ->
-    describe 'create', ->
+  if Meteor.isClient
 
-      beforeEach ->
-        Meteor.flush()
+    _waitForEvent = (eventFunc, callback) ->
+      success = eventFunc()
 
-      before (done) ->
-        if Meteor.isClient
-          Meteor.logout()
-          Meteor.autorun ->
-            user = Apollos.user()
-            done() if Object.keys(user).length is 0
-        else
-          done()
+      if success
+        callback()
+      else
+        _wait ->
+          _waitForEvent eventFunc, callback
 
-      describe 'when email does not exist in system', ->
+    _waitForLogin = (callback) ->
+      _waitForEvent ->
+        return Meteor.userId()
+      , callback
 
-        it 'should create user', ->
-          userCount = Apollos.users.find().count()
-          Apollos.user.create 'apollos.create@newspring.cc', 'testPassword'
-          Meteor.setTimeout ->
-            assert.equal Apollos.users.find().count(), userCount + 1
-          , 100
+    _wait = (func) ->
+      Meteor.setTimeout func, 250
 
-      describe 'when email is in system', ->
+    _logout = (callback) ->
+      Meteor.logout()
+      _waitForEvent ->
+        return not Meteor.userId()
+      , callback
 
-        it 'should not create user', ->
-          userCount = Apollos.users.find().count()
-          Apollos.user.create 'apollos.create@newspring.cc', 'testPassword'
-          Meteor.setTimeout ->
-            assert.equal Apollos.users.find().count(), userCount
-          , 100
+    describe "Apollos", ->
+      describe "create on the client", ->
+
+        beforeEach (done) ->
+          @.timeout 10000
+          _logout done
+
+        describe "when email does not exist in system", ->
+
+          @.timeout 10000
+
+          it "should create user and login", (done) ->
+            email = "apolloscreateclient@newspring.cc"
+            Apollos.user.create email, "testPassword", (error) ->
+              assert.isUndefined error
+              _waitForLogin ->
+                assert.equal Meteor.user().emails[0].address, email
+                done()
+
+        describe "when email is in system", ->
+
+          @.timeout 10000
+
+          it "should not create user", (done) ->
+            email = "apolloscreateclient@newspring.cc"
+            Apollos.user.create email, "testPassword", (error) ->
+              assert.isDefined error
+              done()
+
+  else
+
+    describe "Apollos", ->
+      describe "create on the server", ->
+
+        beforeEach ->
+          Meteor.flush()
+
+        describe "when email does not exist in system", ->
+
+          it "should create user", ->
+            userCount = Apollos.users.find().count()
+            userId = Apollos.user.create "apolloscreateserver@newspring.cc", "testPassword"
+            assert.isString userId
+            assert.isTrue userId.length > 0
+
+        describe "when email is in system", ->
+
+          it "should not create user", (done) ->
+            userCount = Apollos.users.find().count()
+            try
+              Apollos.user.create "apolloscreateserver@newspring.cc", "testPassword"
+              assert.isFalse true # Shouldn"t get here because an error should be thrown
+            catch error
+              assert.equal error.reason, "Email already exists."
+              done()

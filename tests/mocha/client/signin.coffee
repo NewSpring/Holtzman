@@ -5,27 +5,38 @@ MochaWeb?.testOnly ->
 
   assert = chai.assert
   assert.equals = assert.equal
-
   _createdUserEmail = null
 
   _waitForEvent = (eventFunc, callback) ->
     success = eventFunc()
+
     if success
       callback()
     else
       _wait ->
         _waitForEvent eventFunc, callback
 
+  _waitForLogin = (callback) ->
+    _waitForEvent ->
+      return Meteor.userId()
+    , callback
+
+  _waitForError = (inputName, message, callback) ->
+    _waitForEvent ->
+      error = _getErrorMessage inputName
+      return error is message
+    , callback
+
   _submitSignIn = (email, password, callback) ->
-    _assertSignInVisible()
-    _getEmailInput()
-      .val email
-      .blur()
-    _getPasswordInput()
-      .val password
-      .blur()
-    _getSubmitButton().click()
-    _wait callback
+    _waitForSignInVisible ->
+      _getEmailInput()
+        .val email
+        .blur()
+      _getPasswordInput()
+        .val password
+        .blur()
+      _getSubmitButton().click()
+      callback()
 
   _submitSignUp = (email, password, accepted, callback) ->
     _goToSignUp ->
@@ -38,16 +49,16 @@ MochaWeb?.testOnly ->
 
       _getTermsInput().prop "checked", accepted
       _getSubmitButton().click()
-      _wait callback
+      callback()
 
   _goToSignUp = (callback) ->
-    # _assertSignInVisible()
-    email = _generateRandomEmail()
-    _getEmailInput().val email
-    _getEmailInput().blur()
-    _wait ->
-      _assertSignUpVisible()
-      callback email
+    _waitForSignInVisible ->
+      email = _generateRandomEmail()
+      _getEmailInput()
+        .val email
+        .blur()
+      _waitForSignUpVisible ->
+        callback email
 
   _getVisibleForm = ->
     return $("form:visible")
@@ -64,14 +75,18 @@ MochaWeb?.testOnly ->
   _getSubmitButton = ->
     return _getVisibleForm().find "button"
 
-  _assertSignInVisible = ->
-    assert.equal _getVisibleForm().attr("id"), "signin"
+  _waitForSignInVisible = (callback) ->
+    _waitForEvent ->
+      return _getVisibleForm().attr("id") is "signin"
+    , callback
 
-  _assertSignUpVisible = ->
-    assert.equal _getVisibleForm().attr("id"), "signup"
+  _waitForSignUpVisible = (callback) ->
+    _waitForEvent ->
+      return _getVisibleForm().attr("id") is "signup"
+    , callback
 
   _wait = (func) ->
-    Meteor.setTimeout func, 1000
+    Meteor.setTimeout func, 250
 
   _getRandomNumber = ->
     return Math.floor((Math.random() * 100000) + 1)
@@ -113,27 +128,19 @@ MochaWeb?.testOnly ->
       _logout ->
         _waitForVisibleForm done
 
-    it "should start with the signin form", ->
-      _assertSignInVisible()
+    it "should start with the signin form", (done) ->
+      _waitForSignInVisible done
 
-    it "should have two inputs", ->
-      _assertSignInVisible()
-      assert.equal _getVisibleForm().find("input").length, 2
-      assert.equal _getEmailInput().attr("name"), "email"
-      assert.equal _getPasswordInput().attr("name"), "password"
+    it "should have two inputs", (done) ->
+      _waitForSignInVisible ->
+        assert.equal _getVisibleForm().find("input").length, 2
+        assert.equal _getEmailInput().attr("name"), "email"
+        assert.equal _getPasswordInput().attr("name"), "password"
+        done()
 
     it "should deny signin submit if email is malformed", (done) ->
       _submitSignIn "joe@joe", "password123", ->
-        error = _getErrorMessage "email"
-        assert.equal "Please enter a valid email", error
-        done()
-
-    it "should deny signin submit if password is empty", (done) ->
-      _submitSignIn "joe@joe.com", "", ->
-        _wait ->
-          error = _getErrorMessage "password"
-          assert.equal "Password may not be empty", error
-          done()
+        _waitForError "email", "Please enter a valid email", done
 
     it "should detect new email and present signup form", (done) ->
       _goToSignUp ->
@@ -149,36 +156,29 @@ MochaWeb?.testOnly ->
 
     it "should deny signup submit if email is malformed", (done) ->
       _submitSignUp "joe@joe", "password123", true, ->
-        # _wait ->
-        #   _wait ->
-        #     _wait ->
-        error = _getErrorMessage "email"
-        assert.equal "Please enter a valid email", error
-        done()
+        _waitForError "email", "Please enter a valid email", done
 
     it "should deny signup submit if password is empty", (done) ->
-      _goToSignUp ->
-        _submitSignUp "joe@joe.com", "", true, ->
-          _wait ->
-            error = _getErrorMessage "password"
-            assert.equal "Password may not be empty", error
-            done()
+      _submitSignUp _generateRandomEmail(), "", true, ->
+        _waitForError "password", "Password may not be empty", done
 
     it "should deny signup submit if terms are not accepted", (done) ->
-      _goToSignUp ->
-        _submitSignUp "joe@joe.com", "password123", false, ->
-          error = _getErrorMessage "terms"
-          assert.equal "You must accept the terms and conditions", error
-          done()
+      _submitSignUp "joe@joe.com", "password123", false, ->
+        _waitForError "terms", "You must accept the terms and conditions", done
 
     it "should create a new user from the signup form", (done) ->
-      _goToSignUp ->
-        _createdUserEmail = _generateRandomEmail()
-        _submitSignUp _createdUserEmail, "password123", true, ->
+      _createdUserEmail = _generateRandomEmail()
+      _submitSignUp _createdUserEmail, "password123", true, ->
+        _waitForLogin ->
           assert.equal Meteor.user().emails[0].address, _createdUserEmail
           done()
 
+    it "should deny signin submit if password is empty", (done) ->
+      _submitSignIn _createdUserEmail, "", ->
+        _waitForError "password", "Password may not be empty", done
+
     it "should allow sign in of created user", (done) ->
       _submitSignIn _createdUserEmail, "password123", ->
-        assert.equal Meteor.user().emails[0].address, _createdUserEmail
-        done()
+        _waitForLogin ->
+          assert.equal Meteor.user().emails[0].address, _createdUserEmail
+          done()

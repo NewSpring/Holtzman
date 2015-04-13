@@ -182,10 +182,10 @@ Template.signin.events
       types = Apollos.enums.accountType
 
       switch accountType
-        when types.apollos, types.ldap # temp until AD account sync
+        when types.apollos, types.ldap
           loginToApollos email, password, template
-        # when types.ldap
-        #   loginWithLDAP email, password, template
+          # when types.ldap
+          #   loginWithLDAP email, password, template
         when types.f1
           createAccountFromF1 email, password, template
         else
@@ -208,11 +208,10 @@ Template.signin.events
       _nameError template
       return
 
-    if not password
+    if password.length is 0
       _passwordError template
-      return
 
-    if terms is false
+    if not terms
       _termsError template
       return
 
@@ -270,8 +269,8 @@ loginToApollos = (email, password, template) ->
 
     # wrong password
     if err.error is 403
-      _passwordError(template)
+      _passwordError template
 
     # no email
     if err.error is 400
-      _emailError(template)
+      _emailError template

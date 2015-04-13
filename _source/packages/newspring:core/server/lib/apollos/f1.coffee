@@ -105,12 +105,11 @@ Apollos.user.login.f1 = (username, password) ->
 ###
 Apollos.user.login.f1.hasAccount = (email, callback) ->
   # TODO - This method needs to do something other than return true!!!
-  # TODO - Can we refactor this to be synchronously tested and return a boolean?
 
   future = new Future()
 
   Meteor.setTimeout ->
-    hasAccount = true
+    hasAccount = false
     if not callback
       future.return hasAccount
     else
