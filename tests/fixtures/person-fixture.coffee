@@ -12,6 +12,9 @@ addPersonWithKeys = ->
       $set:
         'rock.personId': 12345
         'rock.userLoginId': 23456
+        'services.password.reset.token': 'meowmeow'
+        'services.password.reset.email': 'apollos.person.keys@newspring.cc'
+        'services.password.reset.when': new Date
 
     Apollos.user.create 'apollos.person.keys.test@newspring.cc', 'testPassword'
     user = Apollos.users.findOne 'emails.address': 'apollos.person.keys.test@newspring.cc'
