@@ -7,29 +7,33 @@
 </head>
 
 <template name="home">
+
   <div class="panel">
-    <section class="handheld-flush panel__item--left lap-and-up-five-twelfths background--fill floating" style="background-image: url(https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/editorial/articles/newspring.blog.hero.travel.cliff_1700_850_90_c1.jpg);">
-      <div class="floating__item">
+    <section class="handheld-flush panel__item--left lap-and-up-five-twelfths background--fill floating lap-and-up-ratio--none ratio--square overlay--solid-light" style="background-image: url(https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/series_newspring/sex.hero.1x1_1700_1700_90_c1.jpg);">
+      <div class="ratio__item floating__item overlay__item">
         <div class="handheld-flush push-bottom push-left" >
-          <h1 class="text--left font--white">
+          {{!-- <h1 class="text-white">
             Welcome to NewSpring
           </h1>
-          <h5 class="text--left font--white">
-            We track everything you do
-          </h5>
+          --}}
         </div>
       </div>
+
     </section>
 
-    <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating">
-      <div class="floating__item">
-      {{> signin}}
-      </div>
+    <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating scrollable">
+
+        <div class="floating__item">
+
+            {{> signin}}
+
+        </div>
 
     </section>
 
 </div>
 
-  {{> nav}}
-
+  {{!--
+    {{> nav}}
+  --}}
 </template>

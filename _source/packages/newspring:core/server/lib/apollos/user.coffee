@@ -12,8 +12,6 @@
 ###
 Apollos.user.getAccountType = (email) ->
 
-  debug email
-
   # this will need to be a different check because non newspring emails can be in ldap
   if email.match /@newspring.cc/
     return Apollos.enums.accountType.ldap

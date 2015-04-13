@@ -44,7 +44,7 @@ class _F1Session
 
     @.oauthClient.post url, null, null, body, "application/json", (error) ->
       if error
-        future.return error
+        future.return false
         return
       # if error
       #   throw new Meteor.Error error
@@ -82,17 +82,11 @@ Apollos.user.login.f1 = (username, password) ->
   try
     authenticated = f1.authenticate username, password
 
-    if authenticated is true
-      return true
-
-    else
-      throw new Meteor.Error(authenticated, false)
-      return
+    return authenticated
 
   catch error
     debug error
-    throw new Meteor.Error(error, false)
-    return
+    throw new Meteor.Error(error)
 
 
 ###

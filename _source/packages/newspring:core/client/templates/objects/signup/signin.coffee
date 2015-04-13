@@ -44,10 +44,12 @@ _emailError = (template) ->
 ###
 _passwordError = (template) ->
   _password = template.password.get()
-  if _password.value is ''
+
+  if not _password.value
     _password.status = "Password may not be empty"
   else
     _password.status = "Password incorrect"
+
   template.password.set _password
   template.hasErrors.set true
 
@@ -120,13 +122,10 @@ Template.signin.events
       _emailError(t)
       return
 
-    console.log "getting account Type"
     Apollos.user.getAccountType email, (error, accountType) ->
       if error
         # Uh oh... what do we do here?
         debug "ERROR: #{error}"
-
-      debug accountType
 
       types = Apollos.enums.accountType
 
@@ -147,6 +146,10 @@ Template.signin.events
       _emailError template
       return
 
+    if not password
+      _passwordError template
+      return
+
     Apollos.user.getAccountType email, (error, accountType) ->
       if error
         # Uh oh... what do we do here?
@@ -154,13 +157,11 @@ Template.signin.events
 
       types = Apollos.enums.accountType
 
-      debug accountType, types
-
       switch accountType
-        when types.apollos
-          loginToApollos email, password
-        when types.ldap
-          loginWithLDAP email, password, template
+        when types.apollos, types.ldap # temp until AD account sync
+          loginToApollos email, password, template
+        # when types.ldap
+        #   loginWithLDAP email, password, template
         when types.f1
           createAccountFromF1 email, password, template
         else
@@ -174,6 +175,14 @@ Template.signin.events
     password = template.find("input[name=password]").value
     terms = template.find("input[name=terms]").checked
 
+    if not Apollos.validate.isEmail email
+      _emailError template
+      return
+
+    if not password
+      _passwordError template
+      return
+
     if terms is false
       _termsError template
       return
@@ -183,20 +192,6 @@ Template.signin.events
 
 loginWithLDAP = (email, password, template) ->
 
-  # authenticated = Apollos.user.login.ldap email, password, (error, success) ->
-  #   if error
-  #     # Uh oh... what do we do here?
-  #     debug "ERROR: #{error}"
-  #     _passwordError template
-  #     return
-  #
-  #   if success is `undefined`
-  #     return
-  #
-  #   if success
-  #     createApollosAccount email, password, template
-  #   else
-  #     _passwordError template
   Apollos.user.login.ldap email, password, (error, success) ->
 
     if error
@@ -224,12 +219,13 @@ createAccountFromF1 = (email, password, template) ->
       # Uh oh... what do we do here?
       debug "ERROR: #{error}"
       _passwordError template
+      return
 
-    else if success
+    if success
       createApollosAccount email, password, template
+      return
 
-    else
-      _passwordError template
+    _passwordError template
 
 
 createApollosAccount = (email, password, template) ->
@@ -238,15 +234,15 @@ createApollosAccount = (email, password, template) ->
       _passwordError template
 
 
-loginToApollos = (email, password) ->
+loginToApollos = (email, password, template) ->
   Meteor.loginWithPassword email, password, (err) ->
     if not err
       return
 
     # wrong password
     if err.error is 403
-      _passwordError(t)
+      _passwordError(template)
 
     # no email
     if err.error is 400
-      _emailError(t)
+      _emailError(template)

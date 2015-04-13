@@ -149,19 +149,22 @@ MochaWeb?.testOnly ->
 
     it "should deny signup submit if email is malformed", (done) ->
       _submitSignUp "joe@joe", "password123", true, ->
-        _wait ->
-          _wait ->
-            _wait ->
-              error = _getErrorMessage "email"
-              assert.equal "Please enter a valid email", error
-              done()
+        # _wait ->
+        #   _wait ->
+        #     _wait ->
+        error = _getErrorMessage "email"
+        assert.equal "Please enter a valid email", error
+        done()
 
     it "should deny signup submit if password is empty", (done) ->
       _goToSignUp ->
         _submitSignUp "joe@joe.com", "", true, ->
-          error = _getErrorMessage "password"
-          assert.equal "Password may not be empty", error
-          done()
+          _wait ->
+            _wait ->
+              _wait ->
+                error = _getErrorMessage "password"
+                assert.equal "Password may not be empty", error
+                done()
 
     it "should deny signup submit if terms are not accepted", (done) ->
       _goToSignUp ->

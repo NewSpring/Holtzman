@@ -2,10 +2,17 @@
   {{#unless currentUser}}
     <form id="{{#if hasAccount}}signin{{else}}signup{{/if}}">
       <fieldset>
-        <legend class="push-half-bottom">
-            Sign In
-        </legend>
-        <h5 class="push-double-bottom">or create an Account</h5>
+        {{#if hasAccount}}
+          <legend class="push-half-bottom">
+              Sign In
+          </legend>
+          <h5 class="push-double-bottom">or create an Account</h5>
+        {{else}}
+          <legend class="push-half-bottom">
+            Create an Account
+          </legend>
+          <h5 class="push-double-bottom">or sign in</h5>
+        {{/if}}
 
         <div class="input {{#if email.status}}input--alert{{/if}}">
           <label for="email">Email</label>
