@@ -21,18 +21,20 @@ MochaWeb?.testOnly ->
 
         describe 'when email does not exist in system', ->
 
-          it 'should create user', (done) ->
-            userCount = Apollos.users.find().count()
-            Apollos.user.create 'apollos.create.client@newspring.cc', 'testPassword', (error) ->
+          @.timeout 5000
+
+          it 'should create user and login', (done) ->
+            email = "apolloscreateclient@newspring.cc"
+            Apollos.user.create email, 'testPassword', (error) ->
               assert.isUndefined error
-              assert.equal Apollos.users.find().count(), userCount + 1
+              assert.equal Meteor.user().emails[0].address, email
               done()
 
         describe 'when email is in system', ->
 
           it 'should not create user', (done) ->
             userCount = Apollos.users.find().count()
-            Apollos.user.create 'apollos.create.client@newspring.cc', 'testPassword', (error) ->
+            Apollos.user.create 'apolloscreateclient@newspring.cc', 'testPassword', (error) ->
               assert.isDefined error
               assert.equal Apollos.users.find().count(), userCount
               done()
@@ -49,7 +51,7 @@ MochaWeb?.testOnly ->
 
           it 'should create user', ->
             userCount = Apollos.users.find().count()
-            userId = Apollos.user.create 'apollos.create.server@newspring.cc', 'testPassword'
+            userId = Apollos.user.create 'apolloscreateserver@newspring.cc', 'testPassword'
             assert.isString userId
             assert.isTrue userId.length > 0
 
@@ -58,7 +60,7 @@ MochaWeb?.testOnly ->
           it 'should not create user', (done) ->
             userCount = Apollos.users.find().count()
             try
-              Apollos.user.create 'apollos.create.server@newspring.cc', 'testPassword'
+              Apollos.user.create 'apolloscreateserver@newspring.cc', 'testPassword'
               assert.isFalse true # Shouldn't get here because an error should be thrown
             catch error
               assert.equal error.reason, "Email already exists."
