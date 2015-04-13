@@ -26,7 +26,7 @@
   "appName": "EVAL:$ process.env.CIRCLE_BRANCH || 'master'",
 
   // Location of app (local directory)
-  "app": "./out",
+  "app": "./newspring",
 
   // Configure environment
   "env": {
