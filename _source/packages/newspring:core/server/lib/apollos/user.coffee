@@ -13,8 +13,8 @@
 Apollos.user.getAccountType = (email) ->
 
   # this will need to be a different check because non newspring emails can be in ldap
-  if email.match /@newspring.cc/
-    return Apollos.enums.accountType.ldap
+  # if email.match /@newspring.cc/
+  #   return Apollos.enums.accountType.ldap
 
   localAccount = Meteor.users.findOne
     "emails.address": email
