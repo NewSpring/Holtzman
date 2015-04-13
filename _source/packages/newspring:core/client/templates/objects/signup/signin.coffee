@@ -151,7 +151,7 @@ Template.signin.events
       types = Apollos.enums.accountType
 
       switch accountType
-        when types.apollos then loginToApollos email, password
+        when types.apollos then loginToApollos email, password, template
         when types.f1 then createAccountFromF1 email, password, template
         else template.hasAccount.set false
 
@@ -163,7 +163,14 @@ Template.signin.events
     password = template.find("input[name=password]").value
     terms = template.find("input[name=terms]").checked
 
-    if terms == false
+    if not Apollos.validate.isEmail email
+      _emailError template
+      return
+
+    if password.length is 0
+      _passwordError template
+
+    if not terms
       _termsError template
       return
 
@@ -190,15 +197,15 @@ createApollosAccount = (email, password, template) ->
       _passwordError template
 
 
-loginToApollos = (email, password) ->
+loginToApollos = (email, password, template) ->
   Meteor.loginWithPassword email, password, (err) ->
     if not err
       return
 
     # wrong password
     if err.error is 403
-      _passwordError(t)
+      _passwordError template
 
     # no email
     if err.error is 400
-      _emailError(t)
+      _emailError template

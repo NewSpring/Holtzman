@@ -79,7 +79,7 @@ Apollos.hasF1Account = (email, callback) ->
   future = new Future()
 
   Meteor.setTimeout ->
-    hasAccount = true
+    hasAccount = false
     if not callback
       future.return hasAccount
     else
