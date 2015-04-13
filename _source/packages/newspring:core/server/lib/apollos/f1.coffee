@@ -1,63 +1,133 @@
 OAuth = Npm.require("oauth").OAuth
 Future = Npm.require "fibers/future"
 
+
+oAuthCreated = false
+f1 = -> return
+
+class _F1Session
+
+  constructor: ->
+
+    oAuthCreated = true
+
+
+    consumerKey = Meteor.settings.f1.consumerKey
+    consumerSecret = Meteor.settings.f1.consumerSecret
+    version = "1.0A"
+    signatureMethod = "HMAC-SHA1"
+    headers =
+      Accept: "application/json"
+      "Content-type": "application/json"
+
+
+    @.oauthClient = new OAuth(
+      null
+      null
+      consumerKey
+      consumerSecret
+      version
+      null
+      signatureMethod
+      null
+      headers
+    )
+
+  authenticate: (username, password) =>
+
+    future = new Future()
+
+    baseUrl = Meteor.settings.f1.baseURL
+    url = "#{baseUrl}v1/WeblinkUser/AccessToken"
+    body = Rock.utilities.base64Encode("#{username} #{password}")
+
+
+    @.oauthClient.post url, null, null, body, "application/json", (error) ->
+      if error
+        future.return error
+        return
+      # if error
+      #   throw new Meteor.Error error
+      #   return
+
+      future.return true
+
+    return future.wait()
+
+
+
+
 ###
 
-  Apollos.checkF1Credentials
+  Apollos.user.login.f1
 
   @example returns true if the given username and password authenticate
     successfully on the FellowshipOne API, false otherwise
 
-    isSuccess = Apollos.checkF1Credentials "bob@example.com", "password123"
+    isSuccess = Apollos.user.login.f1 "bob@example.com", "password123"
 
   @param username [String] an email or other user identifier used on F1
   @param password [String] the password used to authenticate the given user
-  @param callback [Function] a function to be called with a single parameter of
-    isSuccess. Omit to run synchronously.
 
   See F1 API documentation followed here:
   https://developer.fellowshipone.com/docs/v1/Util/AuthDocs.help#2creds
 
 ###
-Apollos.checkF1Credentials = (username, password, callback) ->
 
-  baseUrl = Meteor.settings.f1.baseURL
-  json = "application/json"
+Apollos.user.login.f1 = (username, password) ->
+
+  if not oAuthCreated
+    f1 = new _F1Session()
+
+  try
+    authenticated = f1.authenticate username, password
+
+    if authenticated is true
+      return true
+
+    else
+      throw new Meteor.Error(authenticated, false)
+      return
+
+  catch error
+    debug error
+    throw new Meteor.Error(error, false)
+    return
+
+
+###
+
+  Apollos.user.login.f1.hasAccount
+
+  @example returns true if the given email previously was associated with a F1
+    account
+
+    hasF1Account = Apollos.user.login.f1.hasAccount "bob@example.com"
+
+  @param email [String] an email used on F1
+  @param callback [Function] a function to be called with a single parameter of
+    hasF1Account. Omit to run synchronously.
+
+###
+Apollos.user.login.f1.hasAccount = (email, callback) ->
+  # TODO - This method needs to do something other than return true!!!
+  # TODO - Can we refactor this to be synchronously tested and return a boolean?
+
   future = new Future()
 
-  # Create an OAuth client
-  requestUrl = null
-  accessUrl = null
-  consumerKey = Meteor.settings.f1.consumerKey
-  consumerSecret = Meteor.settings.f1.consumerSecret
-  version = "1.0A"
-  authorizeCallback = null
-  signatureMethod = "HMAC-SHA1"
-  nonceSize = null
-  headers =
-    Accept: json
-    "Content-type": json
-
-  oauthClient = new OAuth requestUrl, accessUrl, consumerKey, consumerSecret,
-    version, authorizeCallback, signatureMethod, nonceSize, headers
-
-  # Make the request using the client
-  url = "#{baseUrl}v1/WeblinkUser/AccessToken"
-  token = null
-  tokenSecret = null
-  body = Rock.utilities.base64Encode("#{username} #{password}")
-  contentType = json
-
-  oauthClient.post url, token, tokenSecret, body, contentType, (error) ->
-    isSuccess = not error?
+  Meteor.setTimeout ->
+    hasAccount = true
     if not callback
-      future.return isSuccess
+      future.return hasAccount
     else
-      callback isSuccess
+      callback hasAccount
+  , 250
 
   if not callback
     return future.wait()
 
 
+
+
 Meteor.methods
-  "Apollos.checkF1Credentials": Apollos.checkF1Credentials
+  "Apollos.user.login.f1": Apollos.user.login.f1

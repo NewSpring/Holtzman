@@ -4,11 +4,17 @@ if not Meteor.isClient
 MochaWeb?.testOnly ->
 
   assert = chai.assert
-
-  # Because I keep typing equals
   assert.equals = assert.equal
 
   _createdUserEmail = null
+
+  _waitForEvent = (eventFunc, callback) ->
+    success = eventFunc()
+    if success
+      callback()
+    else
+      _wait ->
+        _waitForEvent eventFunc, callback
 
   _submitSignIn = (email, password, callback) ->
     _assertSignInVisible()
@@ -65,7 +71,7 @@ MochaWeb?.testOnly ->
     assert.equal _getVisibleForm().attr("id"), "signup"
 
   _wait = (func) ->
-    Meteor.setTimeout func, 250
+    Meteor.setTimeout func, 1000
 
   _getRandomNumber = ->
     return Math.floor((Math.random() * 100000) + 1)
@@ -80,18 +86,18 @@ MochaWeb?.testOnly ->
     return $("input[name=#{name}] ~ .input__status").text()
 
   _logout = (callback) ->
-    Meteor.logout()
-    Meteor.autorun ->
+    Tracker.autorun (handle) ->
       if not Meteor.userId()
         callback()
+        handle.stop()
+    Meteor.logout()
 
   _waitForVisibleForm = (callback) ->
-
     try
       if $ and $("form:visible").length
-        _getEmailInput().val null
-        _getPasswordInput().val null
-        callback()
+        _getEmailInput().val(null).blur()
+        _getPasswordInput().val(null).blur()
+        _wait callback
       else
         _wait ->
           _waitForVisibleForm callback
@@ -103,11 +109,9 @@ MochaWeb?.testOnly ->
     @.timeout 10000
 
     beforeEach (done) ->
+      @.timeout 10000
       _logout ->
         _waitForVisibleForm done
-
-    # afterEach (done) ->
-    #   _logout done
 
     it "should start with the signin form", ->
       _assertSignInVisible()
@@ -125,18 +129,17 @@ MochaWeb?.testOnly ->
         done()
 
     it "should deny signin submit if password is empty", (done) ->
-      console.log "XXXXXXXXXXXXXXXXXXX   4"
       _submitSignIn "joe@joe.com", "", ->
-        error = _getErrorMessage "password"
-        assert.equal "Password may not be empty", error
-        done()
+        _wait ->
+          error = _getErrorMessage "password"
+          assert.equal "Password may not be empty", error
+          done()
 
     it "should detect new email and present signup form", (done) ->
       _goToSignUp ->
         done()
 
     it "should show the terms checkbox on the signup form", (done) ->
-
       _goToSignUp ->
         assert.equal _getVisibleForm().find("input").length, 3
         assert.equal _getEmailInput().attr("name"), "email"
@@ -144,12 +147,14 @@ MochaWeb?.testOnly ->
         assert.equal _getTermsInput().attr("id"), "terms"
         done()
 
-    # it "should deny signup submit if email is malformed", (done) ->
-    #   console.log "XXXXXXXXXXXXXXXXXXX   7"
-    #   _submitSignUp "joe@joe", "password123", true, ->
-    #     error = _getErrorMessage "email"
-    #     assert.equal "Please enter a valid email", error
-    #     done()
+    it "should deny signup submit if email is malformed", (done) ->
+      _submitSignUp "joe@joe", "password123", true, ->
+        _wait ->
+          _wait ->
+            _wait ->
+              error = _getErrorMessage "email"
+              assert.equal "Please enter a valid email", error
+              done()
 
     it "should deny signup submit if password is empty", (done) ->
       _goToSignUp ->
@@ -172,9 +177,7 @@ MochaWeb?.testOnly ->
           assert.equal Meteor.user().emails[0].address, _createdUserEmail
           done()
 
-    # it "should allow sign in of created user", (done) ->
-    #   console.log "XXXXXXXXXXXXXXXXXXX  11"
-    #
-    #   _submitSignIn _createdUserEmail, "password123", ->
-    #     assert.equal Meteor.user().emails[0].address, _createdUserEmail
-    #     done()
+    it "should allow sign in of created user", (done) ->
+      _submitSignIn _createdUserEmail, "password123", ->
+        assert.equal Meteor.user().emails[0].address, _createdUserEmail
+        done()

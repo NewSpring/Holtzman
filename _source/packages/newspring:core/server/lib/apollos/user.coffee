@@ -1,5 +1,38 @@
 ###
 
+  Apollos.user.getAccountType
+
+  @example indicates if the given email has a local account. If not, indicates
+    if the email belongs to an old F1 account?
+
+    Apollos.user.getAccountType([string])
+
+  @param email [String] the email to evaluate
+
+###
+Apollos.user.getAccountType = (email) ->
+
+  debug email
+
+  # this will need to be a different check because non newspring emails can be in ldap
+  if email.match /@newspring.cc/
+    return Apollos.enums.accountType.ldap
+
+  localAccount = Meteor.users.findOne
+    "emails.address": email
+
+  if localAccount
+    return Apollos.enums.accountType.apollos
+
+  # f1Account = Apollos.user.login.f1.hasAccount email
+  #
+  # if f1Account
+  #   return Apollos.enums.accountType.f1
+
+  return Apollos.enums.accountType.none
+
+###
+
   Apollos.user.translate
 
   @example take data from a service and format it for Apollos

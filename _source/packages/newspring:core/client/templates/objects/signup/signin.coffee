@@ -1,4 +1,3 @@
-
 Template.signin.onCreated ->
 
   self = @
@@ -111,63 +110,143 @@ Template.signin.events
   "blur input[name=email]": (e, t) ->
 
     _input = e.target
+    email = _input.value
 
-    if not _input.value
+    if not email
       t.hasAccount.set true
       return
-
-    if not Apollos.validate.isEmail _input.value
-      _emailError(t)
-      return
-
-    email = Apollos.users.findOne({
-      "emails.address": _input.value
-    })
-
-    if email
-      t.hasAccount.set true
-    else
-      t.hasAccount.set false
-
-
-
-  "submit #signin": (e, t) ->
-    e.preventDefault()
-
-    email = t.find("input[name=email]").value
-    password = t.find("input[name=password]").value
 
     if not Apollos.validate.isEmail email
       _emailError(t)
       return
 
-    Meteor.loginWithPassword email, password, (err) ->
-      if not err
-        return
+    console.log "getting account Type"
+    Apollos.user.getAccountType email, (error, accountType) ->
+      if error
+        # Uh oh... what do we do here?
+        debug "ERROR: #{error}"
 
-      # wrong password
-      if err.error is 403
-        _passwordError(t)
+      debug accountType
 
-      # no email
-      if err.error is 400
-        _emailError(t)
+      types = Apollos.enums.accountType
+
+      switch accountType
+        when types.apollos, types.f1, types.ldap
+          t.hasAccount.set true
+        else
+          t.hasAccount.set false
 
 
-  "submit #signup": (e, t) ->
-    e.preventDefault()
+  "submit #signin": (event, template) ->
+    event.preventDefault()
 
-    email = t.find("input[name=email]").value
-    password = t.find("input[name=password]").value
-    terms = t.find("input[name=terms]").checked
+    email = template.find("input[name=email]").value
+    password = template.find("input[name=password]").value
 
-    if terms == false
-      _termsError(t)
+    if not Apollos.validate.isEmail email
+      _emailError template
       return
 
-    Apollos.user.create(email, password, (err) ->
-      if not err
-        return
+    Apollos.user.getAccountType email, (error, accountType) ->
+      if error
+        # Uh oh... what do we do here?
+        debug "ERROR: #{error}"
 
+      types = Apollos.enums.accountType
+
+      debug accountType, types
+
+      switch accountType
+        when types.apollos
+          loginToApollos email, password
+        when types.ldap
+          loginWithLDAP email, password, template
+        when types.f1
+          createAccountFromF1 email, password, template
+        else
+          template.hasAccount.set false
+
+
+  "submit #signup": (event, template) ->
+    event.preventDefault()
+
+    email = template.find("input[name=email]").value
+    password = template.find("input[name=password]").value
+    terms = template.find("input[name=terms]").checked
+
+    if terms is false
+      _termsError template
+      return
+
+    createApollosAccount email, password, template
+
+
+loginWithLDAP = (email, password, template) ->
+
+  # authenticated = Apollos.user.login.ldap email, password, (error, success) ->
+  #   if error
+  #     # Uh oh... what do we do here?
+  #     debug "ERROR: #{error}"
+  #     _passwordError template
+  #     return
+  #
+  #   if success is `undefined`
+  #     return
+  #
+  #   if success
+  #     createApollosAccount email, password, template
+  #   else
+  #     _passwordError template
+  Apollos.user.login.ldap email, password, (error, success) ->
+
+    if error
+      # Uh oh... what do we do here?
+      debug "ERROR: #{error}"
+      _passwordError template
+
+    if success is `undefined`
+      debug "this wasnt an ldap account?"
+      return
+
+    if success
+      # need to bypass user login to use Accounts.validateLogin
+      debug "you should be logged in from here"
+      return
+
+    _passwordError(template)
+
+
+
+createAccountFromF1 = (email, password, template) ->
+
+  Apollos.user.login.f1 email, password, (error, success) ->
+    if error
+      # Uh oh... what do we do here?
+      debug "ERROR: #{error}"
+      _passwordError template
+
+    else if success
+      createApollosAccount email, password, template
+
+    else
+      _passwordError template
+
+
+createApollosAccount = (email, password, template) ->
+  Apollos.user.create email, password, (error) ->
+    if error
+      _passwordError template
+
+
+loginToApollos = (email, password) ->
+  Meteor.loginWithPassword email, password, (err) ->
+    if not err
+      return
+
+    # wrong password
+    if err.error is 403
       _passwordError(t)
-    )
+
+    # no email
+    if err.error is 400
+      _emailError(t)
