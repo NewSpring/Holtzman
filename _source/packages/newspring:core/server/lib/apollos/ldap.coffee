@@ -1,13 +1,14 @@
+Ldapjs = Npm.require("ldapjs")
+
+ldapCreated = false
+ldap = -> return
 
 
+class _LDAPclient
+
+  constructor: ->
 
 
-class _LDAPsession
-
-  constructor: (username, password) ->
-
-    # ensure no email
-    username = username.split("@")[0]
 
     @.opts =
       "url": "ldap://cen-dc001.ad.newspring.cc:389"
@@ -16,13 +17,16 @@ class _LDAPsession
       "connectTimeout": 10000
       "nameAttribute": "samaccountname"
 
-    @.ldapClient = Npm.require("ldapjs").createClient(
+    @.ldapClient = Ldapjs.createClient(
       url: @.opts.url
       timeout: @.opts.timeout
     )
 
 
   authenticate: (username, password) =>
+
+    # ensure no email
+    username = username.split("@")[0]
 
     username = "ns\\#{username}"
 
@@ -53,14 +57,17 @@ class _LDAPsession
 ###
 Apollos.user.login.ldap = (username, password) ->
 
+  if not ldapCreated
+    ldap = new _LDAPclient()
+
   # this will need to be a different check because non newspring emails can be in ldap
   if not username.match /@newspring.cc/
     return
 
   try
-    authenticated = new _LDAPsession(username, password)
+    authenticated = ldap.authenticate username, password
 
-    authenticated.ldapClient.unbind( (err) ->
+    ldap.ldapClient.unbind( (err) ->
 
       if err
         console.log err
@@ -71,7 +78,8 @@ Apollos.user.login.ldap = (username, password) ->
 
   catch error
     debug error
-    throw new Meteor.Error(JSON.stringify(error), false)
+    return false
+    # throw new Meteor.Error(JSON.stringify(error), false)
     return
 
 
