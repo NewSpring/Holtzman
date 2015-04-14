@@ -35,8 +35,9 @@ MochaWeb?.testOnly ->
       _getPasswordInput()
         .val password
         .blur()
-      _getSubmitButton().click()
-      callback()
+      _wait ->
+        _getSubmitButton().click()
+        callback()
 
   _submitSignUp = (email, password, accepted, callback) ->
     _goToSignUp ->
@@ -77,12 +78,12 @@ MochaWeb?.testOnly ->
 
   _waitForSignInVisible = (callback) ->
     _waitForEvent ->
-      return _getVisibleForm().attr("id") is "signin"
+      return $("form#signin:visible").length is 1
     , callback
 
   _waitForSignUpVisible = (callback) ->
     _waitForEvent ->
-      return _getVisibleForm().attr("id") is "signup"
+      return $("form#signup:visible").length is 1
     , callback
 
   _wait = (func) ->
@@ -101,32 +102,33 @@ MochaWeb?.testOnly ->
     return $("input[name=#{name}] ~ .input__status").text()
 
   _logout = (callback) ->
-    Tracker.autorun (handle) ->
-      if not Meteor.userId()
-        callback()
-        handle.stop()
     Meteor.logout()
+    _waitForEvent ->
+      return not Meteor.userId()
+    , callback
 
   _waitForVisibleForm = (callback) ->
-    try
-      if $ and $("form:visible").length
-        _getEmailInput().val(null).blur()
-        _getPasswordInput().val(null).blur()
-        _wait callback
-      else
-        _wait ->
-          _waitForVisibleForm callback
-    catch error
-      callback error
+    _waitForEvent ->
+      return $ and $("form:visible").length is 1
+    , callback
 
   describe "Signin", ->
 
     @.timeout 10000
 
+    before ->
+      Router.go "/"
+
     beforeEach (done) ->
       @.timeout 10000
+      Meteor.flush()
       _logout ->
-        _waitForVisibleForm done
+        _waitForVisibleForm ->
+          _getPasswordInput().val(null).blur()
+          _getEmailInput().val(null).blur()
+          _wait ->
+            $("[data-form=signin]").click()
+            _waitForSignInVisible done
 
     it "should start with the signin form", (done) ->
       _waitForSignInVisible done
@@ -160,7 +162,7 @@ MochaWeb?.testOnly ->
 
     it "should deny signup submit if password is empty", (done) ->
       _submitSignUp _generateRandomEmail(), "", true, ->
-        _waitForError "password", "Password may not be empty", done
+        _waitForError "password", "Password cannot be empty", done
 
     it "should deny signup submit if terms are not accepted", (done) ->
       _submitSignUp "joe@joe.com", "password123", false, ->
@@ -175,7 +177,7 @@ MochaWeb?.testOnly ->
 
     it "should deny signin submit if password is empty", (done) ->
       _submitSignIn _createdUserEmail, "", ->
-        _waitForError "password", "Password may not be empty", done
+        _waitForError "password", "Password cannot be empty", done
 
     it "should allow sign in of created user", (done) ->
       _submitSignIn _createdUserEmail, "password123", ->

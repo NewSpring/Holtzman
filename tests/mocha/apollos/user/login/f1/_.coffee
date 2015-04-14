@@ -29,6 +29,7 @@ MochaWeb?.testOnly ->
       it "should make this functionality available via Meteor method", (done) ->
         name = "Apollos.user.login.f1"
         Meteor.call name, "bob@example.org", "password123", (error, success) ->
+          assert.isUndefined error
           assert.isBoolean success
           done()
 

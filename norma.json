@@ -64,7 +64,8 @@
         "export": {
           "Rock": "both",
           "Apollos": "both",
-          "HTTP": "server"
+          "HTTP": "server",
+          "Router": "both"
         }
       },
       "test": {
