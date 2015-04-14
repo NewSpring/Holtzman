@@ -1,1 +1,30 @@
 
+
+//
+// @name .icon--base
+// @class .icon--base
+// @description icon with background primary and light text
+//
+// @block .icon
+// @modifier .icon--base
+//
+// @extends %icon
+//
+// @object true
+//
+// @markup
+// <div class="icon--base fa fa-close"></div>
+//
+.icon--base {
+  @extend %icon;
+
+  color: map-get($colors, base);
+  border: $base-border-size solid map-get($colors, base);
+
+  // font-size: 40px;
+  // line-height: 1.2;
+
+  &:before {
+    color: map-get($colors, base);
+  }
+}

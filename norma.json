@@ -26,7 +26,7 @@
       "lint": true
     },
     "copy": {
-      "src": "newspring/settings/settings",
+      "src": "newspring/settings/development",
       "dest": "./",
       "order": "post",
       "ext": [
@@ -58,7 +58,8 @@
           "bjwiley2:request-data@0.0.3": "both"
         },
         "npm": {
-          "oauth": "0.9.12"
+          "oauth": "0.9.12",
+          "ldapjs": "0.7.0"
         },
         "export": {
           "Rock": "both",

@@ -8,7 +8,7 @@
 
   login: (user, password, done) ->
     Meteor.loginWithPassword user, password, (err) ->
-      assert.isUndefined err
+      chai.assert.isUndefined err
     Meteor.autorun ->
       person = Apollos.user()
       done() if Object.keys(person).length > 0

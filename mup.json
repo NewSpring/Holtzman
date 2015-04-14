@@ -2,7 +2,7 @@
   // Server authentication info
   "servers": [
     {
-      "host": "54.148.149.234",
+      "host": "54.69.59.63",
       "username": "ubuntu",
       // "password": "password"
       // or pem file (ssh based authentication)
@@ -23,17 +23,19 @@
   "setupPhantom": true,
 
   // Application name (No spaces)
-  "appName": "EVAL:$ process.env.CIRCLE_BRANCH || 'master'",
+  // "appName": "EVAL:$ process.env.CIRCLE_BRANCH || 'master'",
+  "appName": "newspring",
 
   // Location of app (local directory)
-  "app": "./out",
+  "app": "./newspring",
 
   // Configure environment
   "env": {
-    "PORT": "EVAL:$ process.env.PORT || 8000",
-    "ROOT_URL": "http://54.148.149.234",
+    //"PORT": "EVAL:$ process.env.PORT || 8000",
+    "PORT": 80,
+    "ROOT_URL": "http://54.69.59.63",
     "CLUSTER_SERVICE": "web",
-    "CLUSTER_DISCOVERY_URL": "mongodb://127.0.0.1/out",
+    "CLUSTER_DISCOVERY_URL": "mongodb://127.0.0.1/newspring",
     "NODE_ENV": "staging"
   },
 

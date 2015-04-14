@@ -1,0 +1,30 @@
+<template name="input">
+
+  <div class="input {{#if error}}input--alert{{/if}}">
+
+    <label for="{{name}}">
+      {{#if label}}
+        {{label}}
+      {{else}}
+        {{name}}
+      {{/if}}
+    </label>
+
+    <input
+      name="{{name}}"
+      type="{{name}}"
+      placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
+    >
+
+    {{#if status}}
+
+      <span class="input__status">
+        {{status}}
+      </span>
+
+    {{/if}}
+
+  </div>
+
+
+</template>

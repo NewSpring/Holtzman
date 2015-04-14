@@ -1,66 +1,66 @@
 <template name="signin">
-  {{#unless currentUser}}
-    <form id="{{#if hasAccount}}signin{{else}}signup{{/if}}">
-      <fieldset>
-        <legend class="push-half-bottom">
-            Sign In
-        </legend>
-        <h5 class="push-double-bottom">or create an Account</h5>
 
-        <div class="input {{#if email.status}}input--alert{{/if}}">
-          <label for="email">Email</label>
-          <input name="email" data-value="" placeholder="name@address.com"/>
-          {{#if email.status}}
-            <span class="input__status">
-              {{email.status}}
-            </span>
-          {{/if}}
+  <form id="{{#if hasAccount}}signin{{else}}signup{{/if}}">
+    <fieldset>
+      <div class="toggle push-double-bottom">
+        <div data-form="signup" class="transition one-half text-center toggle__item {{#unless hasAccount}}toggle__item--active{{/unless}}">
+          Register
         </div>
-
-        <div class="input {{#if password.status}}input--alert{{/if}}">
-          <label for="password">Password</label>
-          <input name="password" data-value="" type="password" placeholder="Password"/>
-          {{#if password.status}}
-            <span class="input__status">
-              {{password.status}}
-            </span>
-          {{/if}}
+        <div data-form="signin" class="transition one-half text-center toggle__item {{#if hasAccount}}toggle__item--active{{/if}}">
+          Sign In
         </div>
+      </div>
 
 
-        {{#unless hasAccount}}
-        <div class="input {{#if terms.status}}input--alert{{/if}}">
-          <input id="terms" name="terms" data-value="" checked="true" type="checkbox"/>
-          <label for="terms"></label>
-          <h7 class="soft-left">
-            <small>
-              By signing up you agree to our <a href="#">terms and conditions</a>
-            </small>
-          </h7>
-          {{#if terms.status}}
-            <span class="input__status">
-              {{terms.status}}
-            </span>
-          {{/if}}
-        </div>
-        {{#if terms.status}}
-          <span class="input__status">
-            {{terms.status}}
-          </span>
-        {{/if}}
-        {{/unless}}
+      {{> input
+        name="email"
+        placeholder="user@email.com"
+        label="Email"
+        validate="isEmail"
+        errorText="Please enter a valid email"
+        bind=email
+      }}
 
-      </fieldset>
-      {{#unless hasErrors}}
-      <button class="icon--filled background--fill" style="background-image:url(https://s3.amazonaws.com/uploads.hipchat.com/21097/1894791/uRyBvEK6wEqWU1B/next-steps.png); background-size: 40%;" type="submit"></button>
-      {{else}}
-      <button class="icon--alert fa fa-minus" type="submit"></button>
+      {{> input
+        name="password"
+        placeholder="password"
+        label="Password"
+        errorText="Password may not be empty"
+        bind=password
+      }}
+
+      {{#unless hasAccount}}
+
+        {{#checkbox
+          name="terms"
+          checked="true"
+          bind=terms
+        }}
+          By signing up you agree to our <a href="#">terms and conditions</a>
+        {{/checkbox}}
+
       {{/unless}}
-    </form>
-  {{else}}
-    <img src="http://i.ytimg.com/vi/LM3WiTLJKhg/maxresdefault.jpg" />
-  {{/unless}}
 
-  <a href="{{pathFor 'forgotPassword'}}">Forgot Password?</a>
+      {{#if showForgotPassword }}
+      <h7 class="push-bottom">
+        <small>
+        <a href="#" data-forgot-password="true">Forgot Password?</a>
+      </small>
+      </h7>
+      {{/if}}
+
+    </fieldset>
+    {{#unless hasErrors}}
+
+      <button class="icon--filled background--fill" style="background-image:url(https://s3.amazonaws.com/uploads.hipchat.com/21097/1894791/uRyBvEK6wEqWU1B/next-steps.png); background-size: 40%;" type="submit"></button>
+
+    {{else}}
+
+      <button class="icon--alert fa fa-minus" type="submit"></button>
+
+    {{/unless}}
+
+  </form>
+
 
 </template>
