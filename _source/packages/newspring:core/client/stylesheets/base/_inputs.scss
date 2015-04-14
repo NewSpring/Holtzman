@@ -4,3 +4,65 @@
     font-family: map-fetch($fonts, colfax, h1, font-family);
   }
 }
+
+
+// <div class="toggle">
+//   <a href="#" class="toggle__item ">
+//     Register
+//   </a>
+//   <a href="#" class="toggle__item--active">
+//     Sign In
+//   </a>
+// </div>
+%toggle {
+  @include radius(1000px);
+
+  position: relative;
+
+  display: inline-block;
+  overflow: hidden;
+
+  width: 100%;
+
+  vertical-align: middle;
+
+  border: $base-border-size solid map-get($colors, base);
+}
+
+%toggle__item {
+  @extend %h6;
+  @extend %_grid__item;
+
+  margin-bottom: 0;
+  padding-top: ($button-height * .25) + 1;
+  padding-bottom: ($button-height * .25) - 1;
+  padding-left: 0;
+
+  cursor: pointer;
+
+  color: darken(map-get($colors, base), 25);
+}
+
+.toggle {
+  @extend %toggle;
+}
+
+.toggle__item {
+  @extend %toggle__item;
+
+  background-color: map-get($colors, base);
+
+  &:hover {
+    color: $base-font-color;
+  }
+}
+
+
+.toggle__item--active {
+  @extend %toggle__item;
+
+  cursor: inherit;
+
+  color: $base-font-color;
+  background-color: transparent;
+}

@@ -118,10 +118,16 @@ Template.signin.helpers
 
 Template.signin.events
 
-  "click #logout": (event) ->
-    event.preventDefault()
-    Meteor.logout()
-    return
+  # toggle binding
+  "click [data-form]": (event, template) ->
+
+    if event.target.dataset?.form is "signin"
+      template.hasAccount.set true
+
+    if event.target.dataset?.form is "signup"
+      template.hasAccount.set false
+
+
 
   # remove showing password if they have retyped it
   "blur input[name=password]": (event, template) ->
@@ -131,7 +137,6 @@ Template.signin.events
   "blur input[name=email]": (event, template) ->
 
     email = event.target.value
-    console.log template
 
     if not email
       template.hasAccount.set true
