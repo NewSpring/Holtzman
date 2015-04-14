@@ -8,9 +8,7 @@ Router.route "/",
       Meteor.subscribe("definedValues")
     ]
 
-Router.route "/forgot-password",
-  name: "forgotPassword"
-  template: "forgotPassword"
+
 
 Router.route "/reset-password",
   name: "resetPassword"

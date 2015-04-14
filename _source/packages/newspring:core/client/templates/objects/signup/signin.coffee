@@ -78,13 +78,30 @@ Template.signin.onCreated ->
   # self.subscribe "apollos-users"
   self._ = new Signin self
 
+  if self.data?.bind
+    parentLink = self.data.bind.get()
+    parentLink.methods = self._
+    self.data.bind.set parentLink
+
+
   self.hasAccount = new ReactiveVar(true)
   self.hasErrors = new ReactiveVar(false)
   self.showForgotPassword = new ReactiveVar(false)
 
-  self.email = new ReactiveVar({methods: null})
-  self.password = new ReactiveVar({methods: null})
-  self.terms = new ReactiveVar({methods: null})
+  self.email = new ReactiveVar({
+    methods: null
+    parent: self
+  })
+
+  self.password = new ReactiveVar({
+    methods: null
+    parent: self
+  })
+
+  self.terms = new ReactiveVar({
+    methods: null
+    parent: self
+  })
 
 
 
@@ -133,6 +150,8 @@ Template.signin.events
   "blur input[name=password]": (event, template) ->
     template.showForgotPassword.set false
 
+
+
   # on the fly email validation to determine if they have an account
   "blur input[name=email]": (event, template) ->
 
@@ -153,6 +172,7 @@ Template.signin.events
           template.hasAccount.set true
         else
           template.hasAccount.set false
+
 
 
   # signin form handler
@@ -188,6 +208,7 @@ Template.signin.events
           template._.createAccountFromF1 email, password, template
         else
           template.hasAccount.set false
+
 
 
   # signup form handler
@@ -231,7 +252,16 @@ Template.signin.events
         else
           template._.createAccount email, password
 
+  "click [data-forgot-password]": (event, template) ->
 
+    if event.target.dataset?.forgotPassword
+      templateLink = template.data.bind.get()
+
+      email = template.email.get()
+      email = email.methods.getValue()
+
+      templateLink.parent.email.set email
+      templateLink.parent.passwordForget.set true
 
 
 #

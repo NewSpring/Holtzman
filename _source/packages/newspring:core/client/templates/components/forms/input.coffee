@@ -22,6 +22,18 @@ class Input
     @.template.status.set status
     @.template.error.set isError
 
+  getValue: =>
+
+    return @.template.value.get()
+
+  setValue: (value) =>
+    @.template.value.set value
+    if value
+      @.template.find("input").value = value
+      return
+
+
+
 
 
 Template.input.onCreated ->

@@ -6,6 +6,14 @@
 }
 
 
+legend {
+  margin: 0 auto;
+}
+
+button:focus {
+  outline: none;
+}
+
 // <div class="toggle">
 //   <a href="#" class="toggle__item ">
 //     Register

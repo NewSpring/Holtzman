@@ -1,0 +1,13 @@
+<template name="onboard">
+
+  {{#if passwordForget}}
+    {{> forgotPassword
+      bind=passwordForgetLink
+    }}
+  {{else}}
+    {{> signin
+      bind=signinLink
+    }}
+  {{/if}}
+
+</template>

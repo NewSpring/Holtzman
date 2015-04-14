@@ -1,39 +1,71 @@
+
 doneCallback = null
 
+# Stub for right now
 Accounts.onResetPasswordLink (token, done) ->
   Session.set "resetPasswordToken", token
   Router.go "resetPassword"
   doneCallback = done
 
-Template.forgotPassword.events
 
-  "submit #forgot-password": ->
-    email = $("input[name=email]").val()
-    if Apollos.validate.isEmail email
-      Apollos.user.forgotPassword email
-    return false
+
+Template.resetPassword.onCreated ->
+
+  self = @
+
+  self.hasErrors = new ReactiveVar(false)
+
+  self.password = new ReactiveVar({
+    methods: null
+    parent: self
+  })
+
+
 
 Template.resetPassword.helpers
 
-  resetPasswordToken: ->
+  "hasErrors": ->
+    return Template.instance().hasErrors.get()
+
+  "resetPasswordToken": ->
     return Session.get "resetPasswordToken"
 
-Template.resetPassword.rendered = ->
+  "password": ->
+    return Template.instance().password
+
+
+
+Template.resetPassword.onRendered ->
 
   # use if navigating away from reset password page
   sessionReset = ->
+    return
+
 
 Template.resetPassword.events
 
-  "submit #reset-password": (e) ->
-    e.preventDefault()
+  "submit #reset-password": (event, template) ->
+    event.preventDefault()
 
     token = Session.get "resetPasswordToken"
-    newPassword = $('input[name=new-password]').val()
+    password = template.find("input[name=password]").value
 
-    Apollos.user.resetPassword token, newPassword, (error) ->
+    if not password
+      template.hasErrors.set true
+      passwordTemplate = template.password.get()
+      passwordTemplate.methods.setStatus "Password cannot be empty", true
+      return
+
+    Apollos.user.resetPassword token, password, (error) ->
       if error
-        console.log(error)
+
+        template.hasErrors.set true
+
+        # token expired
+        if error.error is 403
+          passwordTemplate = template.password.get()
+          passwordTemplate.methods.setStatus "This reset link has expired", true
+
       else
         Session.set "resetPasswordToken", ""
         doneCallback()
