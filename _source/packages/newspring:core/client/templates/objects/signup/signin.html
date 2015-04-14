@@ -2,79 +2,73 @@
   {{#unless currentUser}}
     <form id="{{#if hasAccount}}signin{{else}}signup{{/if}}">
       <fieldset>
-        {{#if hasAccount}}
-          <legend class="push-half-bottom">
-              Sign In
-          </legend>
-          {{!-- <h5 class="push-double-bottom">or create an Account</h5>--}}
-        {{else}}
-          <legend class="push-half-bottom">
-            Create an Account
-          </legend>
-        {{!-- <h5 class="push-double-bottom">or sign in</h5> --}}
-        {{/if}}
+        {{!--
+        <a href="#" class="{{#unless hasAccount}}btn--filled{{/unless}}">Register</a>
+        <a href="#" class="{{#if hasAccount}}btn--filled{{/if}}">Sign In</a>
+        --}}
+        {{!--
+          {{#if hasAccount}}
+            <legend class="push-half-bottom">
+                Sign In
+            </legend>
 
-        <div class="input {{#if email.status}}input--alert{{/if}}">
-          <label for="email">Email</label>
-          <input name="email" data-value="" placeholder="name@address.com"/>
-          {{#if email.status}}
-            <span class="input__status">
-              {{email.status}}
-            </span>
+          {{else}}
+            <legend class="push-half-bottom">
+              Create an Account
+            </legend>
           {{/if}}
-        </div>
+        --}}
 
+        {{> input
+          name="email"
+          placeholder="user@email.com"
+          label="Email"
+          validate="isEmail"
+          errorText="Please enter a valid email"
+          bind=email
+        }}
 
-
-
-        <div class="input {{#if password.status}}input--alert{{/if}}">
-          <label for="password">Password</label>
-          <input name="password" data-value="" type="password" placeholder="Password"/>
-          {{#if password.status}}
-            <span class="input__status">
-              {{password.status}}
-            </span>
-          {{/if}}
-        </div>
-
+        {{> input
+          name="password"
+          placeholder="password"
+          label="Password"
+          errorText="Password may not be empty"
+          bind=password
+        }}
 
         {{#unless hasAccount}}
 
-        <div class="input {{#if name.status}}input--alert{{/if}}">
-          <label for="name">First Name</label>
-          <input name="name" data-value="" type="name" placeholder="First Name"/>
-          {{#if name.status}}
-            <span class="input__status">
-              {{name.status}}
-            </span>
-          {{/if}}
-        </div>
+          {{#checkbox
+            name="terms"
+            checked="true"
+            bind=terms
+          }}
+            By signing up you agree to our <a href="#">terms and conditions</a>
+          {{/checkbox}}
 
-
-        <div class="input {{#if terms.status}}input--alert push-double-bottom{{/if}}">
-          <input id="terms" name="terms" data-value="" checked="true" type="checkbox"/>
-          <label for="terms"></label>
-          <h7 class="soft-left">
-            <small>
-              By signing up you agree to our <a href="#">terms and conditions</a>
-            </small>
-          </h7>
-          {{#if terms.status}}
-            <span class="input__status">
-              {{terms.status}}
-            </span>
-          {{/if}}
-        </div>
         {{/unless}}
+
+        {{#if showForgotPassword }}
+        <h7 class="push-bottom">
+          <small>
+          <a href="{{pathFor 'forgotPassword'}}">Forgot Password?</a>
+        </small>
+        </h7>
+        {{/if}}
 
       </fieldset>
       {{#unless hasErrors}}
 
-      <button class="icon--filled background--fill" style="background-image:url(https://s3.amazonaws.com/uploads.hipchat.com/21097/1894791/uRyBvEK6wEqWU1B/next-steps.png); background-size: 40%;" type="submit"></button>
+        <button class="icon--filled background--fill" style="background-image:url(https://s3.amazonaws.com/uploads.hipchat.com/21097/1894791/uRyBvEK6wEqWU1B/next-steps.png); background-size: 40%;" type="submit"></button>
+
       {{else}}
-      <button class="icon--alert fa fa-minus" type="submit"></button>
+
+        <button class="icon--alert fa fa-minus" type="submit"></button>
+
       {{/unless}}
+
     </form>
+
   {{else}}
     {{!-- <img src="http://i.ytimg.com/vi/LM3WiTLJKhg/maxresdefault.jpg" /> --}}
     <div class="push">
@@ -82,7 +76,5 @@
       <a href="#" id="logout" class="btn--filled">Sign out</a>
     </div>
   {{/unless}}
-
-  <a href="{{pathFor 'forgotPassword'}}">Forgot Password?</a>
 
 </template>

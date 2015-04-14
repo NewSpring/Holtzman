@@ -1,147 +1,140 @@
+
+class Signin
+
+  constructor: (template) ->
+
+    @.template = template
+
+
+  login: (email, password) =>
+
+    self = @
+    template = self.template
+
+    Meteor.loginWithPassword email, password, (err) ->
+      if not err
+        return
+
+      # wrong password
+      if err.error is 403
+        passwordTemplate = template.password.get()
+        passwordTemplate.methods.setStatus "Password incorrect", true
+
+        template.showForgotPassword.set true
+
+      # no email
+      if err.error is 400
+        emailTemplate = template.email.get()
+        emailTemplate.methods.setStatus "That email is already taken", true
+
+    return
+
+  createAccount: (email, password) =>
+
+    self = @
+    template = self.template
+
+    Apollos.user.create email, password, (error) ->
+
+      if not error
+        return
+
+
+      debug error
+
+      # we need to test these debug codes
+      passwordTemplate = template.password.get()
+      passwordTemplate.methods.setStatus "Password incorrect", true
+
+      template.showForgotPassword.set true
+
+      return
+
+  createAccountFromF1 = (email, password) =>
+
+    self = @
+    template = self.template
+
+    Apollos.user.login.f1 email, password, (error, success) ->
+      if error
+        # Uh oh... what do we do here?
+        debug "ERROR: #{error}"
+        passwordTemplate = template.password.get()
+        passwordTemplate.methods.setStatus "Password incorrect", true
+        template.showForgotPassword.set true
+        return
+
+      if success
+        self.createAccount email, password
+        return
+
+
+
+
 Template.signin.onCreated ->
 
   self = @
 
-  self.subscribe "apollos-users"
+  # self.subscribe "apollos-users"
+  self._ = new Signin self
 
   self.hasAccount = new ReactiveVar(true)
   self.hasErrors = new ReactiveVar(false)
+  self.showForgotPassword = new ReactiveVar(false)
 
-  self.password = new ReactiveVar({})
-  self.email = new ReactiveVar({})
-  self.name = new ReactiveVar({})
-  self.terms = new ReactiveVar({})
+  self.email = new ReactiveVar({methods: null})
+  self.password = new ReactiveVar({methods: null})
+  self.terms = new ReactiveVar({methods: null})
+
 
 
 Template.signin.helpers
 
+  # states
   "hasAccount": ->
     return Template.instance().hasAccount.get()
 
   "hasErrors": ->
     return Template.instance().hasErrors.get()
 
-  "password": ->
-    return Template.instance().password.get()
+  "showForgotPassword": ->
+    return Template.instance().showForgotPassword.get()
 
+
+  # children templates
   "email": ->
-    return Template.instance().email.get()
+    return Template.instance().email
 
-
-  "name": ->
-    return Template.instance().name.get()
+  "password": ->
+    return Template.instance().password
 
   "terms": ->
-    return Template.instance().terms.get()
+    return Template.instance().terms
 
 
-###
-  put email field in error state
-###
-_emailError = (template) ->
-  _email = template.email.get()
-  _email.status = "Please enter a valid email"
-  template.email.set _email
-  template.hasErrors.set true
 
 
-###
-  put email field in error state
-###
-_nameError = (template) ->
-  _name = template.name.get()
-  _name.status = "Please enter your name"
-  template.name.set _name
-  template.hasErrors.set true
-
-###
-  put password field in error state
-###
-_passwordError = (template) ->
-  _password = template.password.get()
-
-  if not _password.value
-    _password.status = "Password may not be empty"
-  else
-    _password.status = "Password incorrect"
-
-  template.password.set _password
-  template.hasErrors.set true
-
-###
-  put terms in error state
-###
-_termsError = (template) ->
-  _terms = template.terms.get()
-  _terms.status = "You must accept the terms and conditions"
-  template.terms.set _terms
-  template.hasErrors.set true
-
-###
-  reset errors
-###
-_resetErrors = (template) ->
-  if template.hasErrors.get()
-    template.hasErrors.set false
-
-###
-  keep reactive vars in sync
-###
-_refreshVariable = (variable, value) ->
-  _var = variable.get()
-  _var.value = value
-  _var.status = false
-  variable.set _var
 
 
 Template.signin.events
 
-  "click #logout": (e, t) ->
+  "click #logout": (event) ->
+    event.preventDefault()
     Meteor.logout()
     return
 
-  "focus input": (e, t) ->
+  # remove showing password if they have retyped it
+  "blur input[name=password]": (event, template) ->
+    template.showForgotPassword.set false
 
-    _resetErrors(t)
+  # on the fly email validation to determine if they have an account
+  "blur input[name=email]": (event, template) ->
 
-    $(e.target.parentNode).addClass("input--active")
-
-
-  "blur input": (e, t) ->
-
-    _resetErrors(t)
-
-    if not e.target.value
-
-      $(e.target.parentNode).removeClass("input--active")
-
-
-  "focus input[name=email], keyup input[name=email], blur input[name=email]": (e, t) ->
-    _refreshVariable(t.email, e.target.value)
-
-  "focus input[name=name], keyup input[name=name], blur input[name=name]": (e, t) ->
-    _refreshVariable(t.name, e.target.value)
-
-  "focus input[name=password], keyup input[name=password], blur input[name=password]": (e, t) ->
-    _refreshVariable(t.password, e.target.value)
-
-  "click input[name=terms]": (e, t) ->
-    _refreshVariable(t.terms, e.target.value)
-    _resetErrors(t)
-
-
-  "blur input[name=email]": (e, t) ->
-
-    _input = e.target
-    email = _input.value
+    email = event.target.value
+    console.log template
 
     if not email
-      t.hasAccount.set true
-      return
-
-    if not Apollos.validate.isEmail email
-      _emailError(t)
-      return
+      template.hasAccount.set true
 
     Apollos.user.getAccountType email, (error, accountType) ->
       if error
@@ -152,14 +145,12 @@ Template.signin.events
 
       switch accountType
         when types.apollos, types.f1, types.ldap
-          t.hasAccount.set true
-          t.find("input[name=name]").focus()
-          debug "here I am "
+          template.hasAccount.set true
         else
-          t.hasAccount.set false
+          template.hasAccount.set false
 
 
-
+  # signin form handler
   "submit #signin": (event, template) ->
     event.preventDefault()
 
@@ -167,11 +158,13 @@ Template.signin.events
     password = template.find("input[name=password]").value
 
     if not Apollos.validate.isEmail email
-      _emailError template
+      emailTemplate = template.email.get()
+      emailTemplate.methods.setStatus true
       return
 
     if not password
-      _passwordError template
+      passwordTemplate = template.password.get()
+      passwordTemplate.methods.setStatus "Password cannot be empty", true
       return
 
     Apollos.user.getAccountType email, (error, accountType) ->
@@ -183,20 +176,20 @@ Template.signin.events
 
       switch accountType
         when types.apollos, types.ldap
-          loginToApollos email, password, template
+          template._.login email, password
           # when types.ldap
           #   loginWithLDAP email, password, template
         when types.f1
-          createAccountFromF1 email, password, template
+          template._.createAccountFromF1 email, password, template
         else
           template.hasAccount.set false
 
 
+  # signup form handler
   "submit #signup": (event, template) ->
     event.preventDefault()
 
     email = template.find("input[name=email]").value
-    name = template.find("input[name=name]").value
     password = template.find("input[name=password]").value
     terms = template.find("input[name=terms]").checked
 
@@ -204,73 +197,45 @@ Template.signin.events
       _emailError template
       return
 
-    if not name
-      _nameError template
+    if not Apollos.validate.isEmail email
+      emailTemplate = template.email.get()
+      emailTemplate.methods.setStatus true
       return
 
-    if password.length is 0
-      _passwordError template
+    if not password
+      passwordTemplate = template.password.get()
+      passwordTemplate.methods.setStatus "Password cannot be empty", true
+      return
 
     if not terms
-      _termsError template
+      termsTemplate = template.terms.get()
+      termsTemplate.methods.setStatus "You must accept the terms and conditions", true
       return
 
-    createApollosAccount email, password, template
+    template._.createAccount email, password
 
 
-loginWithLDAP = (email, password, template) ->
-
-  Apollos.user.login.ldap email, password, (error, success) ->
-
-    if error
-      # Uh oh... what do we do here?
-      debug "ERROR: #{error}"
-      _passwordError template
-
-    if success is `undefined`
-      debug "this wasnt an ldap account?"
-      return
-
-    if success
-      # need to bypass user login to use Accounts.validateLogin
-      debug "you should be logged in from here"
-      return
-
-    _passwordError(template)
-
-
-
-createAccountFromF1 = (email, password, template) ->
-
-  Apollos.user.login.f1 email, password, (error, success) ->
-    if error
-      # Uh oh... what do we do here?
-      debug "ERROR: #{error}"
-      _passwordError template
-      return
-
-    if success
-      createApollosAccount email, password, template
-      return
-
-    _passwordError template
-
-
-createApollosAccount = (email, password, template) ->
-  Apollos.user.create email, password, (error) ->
-    if error
-      _passwordError template
-
-
-loginToApollos = (email, password, template) ->
-  Meteor.loginWithPassword email, password, (err) ->
-    if not err
-      return
-
-    # wrong password
-    if err.error is 403
-      _passwordError template
-
-    # no email
-    if err.error is 400
-      _emailError template
+#
+#
+# loginWithLDAP = (email, password, template) ->
+#
+#   Apollos.user.login.ldap email, password, (error, success) ->
+#
+#     if error
+#       # Uh oh... what do we do here?
+#       debug "ERROR: #{error}"
+#       _passwordError template
+#
+#     if success is `undefined`
+#       debug "this wasnt an ldap account?"
+#       return
+#
+#     if success
+#       # need to bypass user login to use Accounts.validateLogin
+#       debug "you should be logged in from here"
+#       return
+#
+#     _passwordError(template)
+#
+#
+#
