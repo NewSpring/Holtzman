@@ -219,7 +219,8 @@ Template.signin.events
     terms = template.find("input[name=terms]").checked
 
     if not Apollos.validate.isEmail email
-      _emailError template
+      emailTemplate = template.email.get()
+      emailTemplate.methods.setStatus true
       return
 
     if not Apollos.validate.isEmail email
