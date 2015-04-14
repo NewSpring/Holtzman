@@ -31,12 +31,9 @@ MochaWeb?.testOnly ->
       describe "create on the client", ->
 
         beforeEach (done) ->
-          @.timeout 10000
           _logout done
 
         describe "when email does not exist in system", ->
-
-          @.timeout 10000
 
           it "should create user and login", (done) ->
             email = "apolloscreateclient@newspring.cc"
@@ -47,8 +44,6 @@ MochaWeb?.testOnly ->
                 done()
 
         describe "when email is in system", ->
-
-          @.timeout 10000
 
           it "should not create user", (done) ->
             email = "apolloscreateclient@newspring.cc"
