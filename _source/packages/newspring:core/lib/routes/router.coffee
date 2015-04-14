@@ -12,9 +12,3 @@ Router.route "/",
       Meteor.subscribe("people")
       Meteor.subscribe("definedValues")
     ]
-
-
-
-Router.route "/reset-password",
-  name: "resetPassword"
-  template: "resetPassword"

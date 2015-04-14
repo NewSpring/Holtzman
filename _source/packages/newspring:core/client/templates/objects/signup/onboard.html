@@ -1,13 +1,18 @@
 <template name="onboard">
 
-  {{#if passwordForget}}
-    {{> forgotPassword
-      bind=passwordForgetLink
-    }}
+  {{!-- Spacebars does not have else if statements :( --}}
+  {{#if resetPasswordToken}}
+    {{> resetPassword}}
   {{else}}
-    {{> signin
-      bind=signinLink
-    }}
+    {{#if passwordForget}}
+      {{> forgotPassword
+        bind=passwordForgetLink
+      }}
+    {{else}}
+      {{> signin
+        bind=signinLink
+      }}
+    {{/if}}
   {{/if}}
 
 </template>

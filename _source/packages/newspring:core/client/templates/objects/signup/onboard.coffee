@@ -33,6 +33,9 @@ Template.onboard.helpers
   "passwordForget": ->
     return Template.instance().passwordForget.get()
 
+  "resetPasswordToken": ->
+    return Session.get "resetPasswordToken"
+
   # children templates
   "signinLink": ->
     return Template.instance().signin
