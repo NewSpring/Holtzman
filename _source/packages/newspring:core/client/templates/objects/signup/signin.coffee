@@ -75,7 +75,6 @@ Template.signin.onCreated ->
 
   self = @
 
-  # self.subscribe "apollos-users"
   self._ = new Signin self
 
   if self.data?.bind
