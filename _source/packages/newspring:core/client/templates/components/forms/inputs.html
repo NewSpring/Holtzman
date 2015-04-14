@@ -12,7 +12,7 @@
 
     <input
       name="{{name}}"
-      type="{{name}}"
+      type="{{#if type}}{{type}}{{else}}{{name}}{{/if}}"
       placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
     >
 
