@@ -136,7 +136,7 @@ Template.signin.events
   # on the fly email validation to determine if they have an account
   "blur input[name=email]": (event, template) ->
 
-    email = event.target.value
+    email = event.target.value.toLowerCase()
 
     if not email
       template.hasAccount.set true
@@ -159,7 +159,7 @@ Template.signin.events
   "submit #signin": (event, template) ->
     event.preventDefault()
 
-    email = template.find("input[name=email]").value
+    email = template.find("input[name=email]").value.toLowerCase()
     password = template.find("input[name=password]").value
 
     if not Apollos.validate.isEmail email
@@ -194,7 +194,7 @@ Template.signin.events
   "submit #signup": (event, template) ->
     event.preventDefault()
 
-    email = template.find("input[name=email]").value
+    email = template.find("input[name=email]").value.toLowerCase()
     password = template.find("input[name=password]").value
     terms = template.find("input[name=terms]").checked
 
@@ -217,7 +217,21 @@ Template.signin.events
       termsTemplate.methods.setStatus "You must accept the terms and conditions", true
       return
 
-    template._.createAccount email, password
+    Apollos.user.getAccountType email, (error, accountType) ->
+      if error
+        # Uh oh... what do we do here?
+        debug "ERROR: #{error}"
+
+      types = Apollos.enums.accountType
+
+      switch accountType
+        when types.apollos, types.f1, types.ldap
+          template._.login email, password
+          template.hasAccount.set true
+        else
+          template._.createAccount email, password
+
+
 
 
 #
