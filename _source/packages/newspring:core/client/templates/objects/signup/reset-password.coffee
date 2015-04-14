@@ -4,7 +4,6 @@ doneCallback = null
 # Stub for right now
 Accounts.onResetPasswordLink (token, done) ->
   Session.set "resetPasswordToken", token
-  Router.go "resetPassword"
   doneCallback = done
 
 
