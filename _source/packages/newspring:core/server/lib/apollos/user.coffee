@@ -22,9 +22,8 @@ Apollos.user.getAccountType = (email) ->
   if localAccount
     return Apollos.enums.accountType.apollos
 
-  # f1Account = Apollos.user.login.f1.hasAccount email
+  f1Account = Apollos.user.login.f1.hasAccount email
 
-  f1Account = true
   if f1Account
     return Apollos.enums.accountType.f1
 
