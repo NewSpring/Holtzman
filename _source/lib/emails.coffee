@@ -1,6 +1,25 @@
 Apollos.emailTemplates.siteName = "Newspring"
+Apollos.emailTemplates.from = "noreply@newspring.cc"
 Apollos.emailTemplates.resetPassword.subject = (user) ->
   return "Reset your password"
+
+Apollos.emailTemplates.resetPassword.text = (user, url) ->
+  return '
+Hi, jpinkerton88@gmail.com
+
+You told us you forgot your password. If you really did, use this link to choose a new one:
+
+http://localhost:3000/#/reset-password/oPZiC7tpbIiDVyXXFrwfnGjlqXcyIvLXM2elHDRE8pd
+
+If you didn\'t mean to reset your password, then you can just ignore this email; your password will not change.
+
+
+Our mailing address is:
+NewSpring Church
+PO Box 1407
+Anderson, SC 29622
+'
+
 Apollos.emailTemplates.resetPassword.html = (user, url) ->
   return '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
