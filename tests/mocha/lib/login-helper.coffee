@@ -20,6 +20,18 @@
       return error is message
     , callback
 
+  waitForForgotPasswordLink: (callback) ->
+    LoginHelper.waitForEvent ->
+      forgot = LoginHelper.getForgotPasswordLink()
+      return forgot
+    , callback
+
+  waitForPasswordResetConfirmation: (email, callback) ->
+    LoginHelper.waitForEvent ->
+      confirmation = $('div.constrain-copy.push p').text().indexOf "Your password has been reset."
+      return confirmation > -1
+    , callback
+
   submitSignIn: (email, password, callback) ->
     LoginHelper.waitForSignInVisible ->
       LoginHelper.getEmailInput()
@@ -44,6 +56,17 @@
       LoginHelper.getSubmitButton().click()
       callback()
 
+  submitForgotPassword: (email, callback) ->
+    LoginHelper.goToForgotPassword ->
+      form = $('#forgot-password')
+      input = $(form).find 'input[name=email]'
+      submit = $(form).find 'button'
+      $(input)
+        .val email
+        .blur()
+      $(form).click()
+      callback()
+
   goToSignUp: (callback) ->
     LoginHelper.waitForSignInVisible ->
       email = LoginHelper.generateRandomEmail()
@@ -52,6 +75,13 @@
         .blur()
       LoginHelper.waitForSignUpVisible ->
         callback email
+
+  goToForgotPassword: (callback) ->
+    LoginHelper.waitForSignInVisible ->
+      LoginHelper.submitSignIn "apollos.person.keys@newspring.cc", "wrongPassword", ->
+        LoginHelper.waitForForgotPasswordLink ->
+          LoginHelper.waitForForgotPasswordVisible ->
+            callback()
 
   getVisibleForm: ->
     return $("form:visible")
@@ -68,6 +98,12 @@
   getSubmitButton: ->
     return LoginHelper.getVisibleForm().find "button"
 
+  getForgotPasswordLink: ->
+    return LoginHelper.getVisibleForm().find "[data-forgot-password=true]"
+
+  getForgotPasswordBackButton: ->
+    return LoginHelper.getVisibleForm().find "[data-forgot-password=true]"
+
   waitForSignInVisible: (callback) ->
     LoginHelper.waitForEvent ->
       $('[data-form=signin]').click()
@@ -78,6 +114,12 @@
     LoginHelper.waitForEvent ->
       $('[data-form=signup]').click()
       return LoginHelper.getVisibleForm().attr("id") is "signup"
+    , callback
+
+  waitForForgotPasswordVisible: (callback) ->
+    LoginHelper.waitForEvent ->
+      LoginHelper.getForgotPasswordLink().click()
+      return LoginHelper.getVisibleForm().attr("id") is "forgot-password"
     , callback
 
   wait: (func) ->
