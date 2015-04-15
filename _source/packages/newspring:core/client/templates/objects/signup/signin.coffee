@@ -50,7 +50,7 @@ class Signin
 
       return
 
-  createAccountFromF1 = (email, password) =>
+  createAccountFromF1: (email, password) =>
 
     self = @
     template = self.template
