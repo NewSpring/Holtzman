@@ -34,6 +34,7 @@ MochaWeb?.testOnly ->
           done()
 
       it "should make an OAuth request asyncronously", (done) ->
+        @.timeout 10000
         Apollos.user.login.f1 "bob@example.org", "password123", (error, success) ->
           assert.isBoolean success
           done()
