@@ -45,7 +45,7 @@ Rock.apiRequest = (method, resource, data, callback) ->
   debug "Sending #{method} to #{Rock.baseURL}#{resource.substring(0, 25)}..."
 
   HTTP.call method, "#{Rock.baseURL}#{resource}",
-    timeout: 3000
+    timeout: 5000
     headers: headers
     data: data
   , callback
@@ -66,7 +66,7 @@ Rock.apiRequest = (method, resource, data, callback) ->
   @param throwErrors [Boolean] switch to silence error throwing
 
 ###
-Rock.refreshEntity = (endpoint, entityName, apollosCollection, throwErrors) ->
+Rock.refreshEntity = (endpoint, entityName, apollosCollection, throwErrors, oneWaySync) ->
 
   Rock.apiRequest "GET", endpoint, (error, result) ->
     if error
@@ -91,9 +91,10 @@ Rock.refreshEntity = (endpoint, entityName, apollosCollection, throwErrors) ->
       if docId
         docIdsSynced.push docId
 
-    docsRockDoesNotHave = Apollos[apollosCollection].find
-      _id:
-        $nin: docIdsSynced
+    if not oneWaySync
+      docsRockDoesNotHave = Apollos[apollosCollection].find
+        _id:
+          $nin: docIdsSynced
 
-    for doc in docsRockDoesNotHave.fetch()
-      Rock[entityName].create doc
+      for doc in docsRockDoesNotHave.fetch()
+        Rock[entityName].create doc

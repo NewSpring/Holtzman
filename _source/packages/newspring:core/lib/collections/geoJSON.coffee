@@ -4,7 +4,7 @@
   @see http://geojson.org/geojson-spec.html for official spec
 
 ###
-@.GeoJSON = new SimpleSchema(
+@.GeoJSON = new SimpleSchema
   "type":
     type: String
     optional: true
@@ -19,4 +19,3 @@
     type: Boolean
     optional: true
     defaultValue: true
-)

@@ -104,30 +104,7 @@ Apollos.user.translate = (user, platform) ->
 
 ###
 Apollos.user.delete = (user, platform) ->
-
-  if typeof user is "number"
-    user = Apollos.users.findOne
-      "rock.userLoginId": user
-
-  else if typeof user is "string"
-    user = Apollos.users.findOne user
-
-  # Apollos.users.update user, platform
-  if platform and platform.toUpperCase() is Rock.name.toUpperCase()
-    user.updatedBy = Rock.name
-  else
-    user.updatedBy = Apollos.name
-
-  # We have to update this first so the collection hooks know what to do
-  Apollos.users.update
-    _id: user._id
-  ,
-    $set:
-      "updatedBy": user.updatedBy
-
-  debug "Trying to remove user #{user._id} with a platform of #{user.updatedBy}"
-
-  Apollos.users.remove user._id
+  Apollos.entityHelpers.delete "user", "users", user, platform
 
 ###
 

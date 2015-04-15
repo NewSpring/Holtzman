@@ -1,6 +1,7 @@
+###
 Apollos.campuses = new Mongo.Collection "campuses"
 
-campus = new SimpleSchema(
+campus = Apollos.generateSchema
   campusId:
     type: Number
   name:
@@ -16,6 +17,7 @@ campus = new SimpleSchema(
     type: Date
   locationIds:
     type: [Number]
-)
+
 
 Apollos.campuses.attachSchema campus
+###

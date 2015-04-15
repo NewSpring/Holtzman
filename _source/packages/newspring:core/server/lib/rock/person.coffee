@@ -107,17 +107,8 @@ Rock.person.translate = (person, platform) ->
         recordStatusValueId: 3
 
       if person.weddingYear and person.weddingMonth and person.weddingDay
-        twoDigitMonth = "#{person.weddingMonth}"
-
-        if twoDigitMonth.length is 1
-          twoDigitMonth = "0#{twoDigitMonth}"
-
-        twoDigitDay = "#{person.weddingDay}"
-
-        if twoDigitDay.length is 1
-          twoDigitDay = "0#{twoDigitDay}"
-
-        anniversary = "#{person.weddingYear}-#{twoDigitMonth}-#{twoDigitDay}T00:00:00"
+        anniversary = new Date person.weddingYear, person.weddingMonth, person.weddingDay
+        anniversary = Rock.utlities.getRockDate anniversary
 
       rockPerson =
         IsSystem: false

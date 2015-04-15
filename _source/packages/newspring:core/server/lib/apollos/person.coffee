@@ -63,14 +63,11 @@ Apollos.person.translate = (person, platform) ->
         existingPerson.photoId = null
 
       if person.AnniversaryDate
-        # parse date parts from something like "2015-03-10T00:00:00"
-        yearPart = person.AnniversaryDate.substring 0, 4
-        monthPart = person.AnniversaryDate.substring 5, 7
-        dayPart = person.AnniversaryDate.substring 8, 10
+        date = Rock.utilities.getJavaScriptDate person.AnniversaryDate
 
-        existingPerson.weddingYear = Number yearPart
-        existingPerson.weddingMonth = Number monthPart
-        existingPerson.weddingDay = Number dayPart
+        existingPerson.weddingYear = date.getFullYear()
+        existingPerson.weddingMonth = date.getMonth() + 1
+        existingPerson.weddingDay = date.getDate()
       else
         existingPerson.weddingYear = null
         existingPerson.weddingMonth = null
@@ -105,55 +102,7 @@ Apollos.person.translate = (person, platform) ->
 
 ###
 Apollos.person.update = (person, platform) ->
-
-  person = Apollos.person.translate person
-
-  if platform and platform.toUpperCase() is Rock.name.toUpperCase()
-    person.updatedBy = Rock.name
-  else
-    person.updatedBy = Apollos.name
-
-  query =
-    $or: [
-      personId: person.personId
-    ,
-      guid: RegExp(person.guid, "i")
-    ]
-
-  people = Apollos.people.find(
-    query
-  ,
-    sort:
-      updatedDate: 1
-  ).fetch()
-
-  if people.length > 1
-    # Delete older documents, which are the first ones since they are sorted
-    ids = []
-
-    people.forEach (p) ->
-      ids.push p._id
-
-    ids.pop()
-
-    Apollos.people.remove
-      _id:
-        $in: ids
-
-    people = Apollos.people.find(query).fetch()
-
-  if people.length is 1
-    mongoId = people[0]._id
-
-    Apollos.people.update
-      _id: mongoId
-    ,
-      $set: person
-
-  else
-    mongoId = Apollos.people.insert person
-
-  return mongoId
+  return Apollos.entityHelpers.update "person", "people", person, platform
 
 ###
 
@@ -168,30 +117,7 @@ Apollos.person.update = (person, platform) ->
 
 ###
 Apollos.person.delete = (person, platform) ->
-
-  if typeof person is "number"
-    person = Apollos.people.findOne
-      "personId": person
-
-  else if typeof person is "string"
-    person = Apollos.people.findOne person
-
-  if platform and platform.toUpperCase() is Rock.name.toUpperCase()
-    person.updatedBy = Rock.name
-  else
-    person.updatedBy = Apollos.name
-
-  # We have to update this first so the collection hooks know what to do
-  Apollos.people.update
-    _id: person._id
-  ,
-    $set:
-      "updatedBy": person.updatedBy
-
-  debug "Trying to remove person #{person._id} with a platform of
-    #{person.updatedBy}"
-
-  Apollos.people.remove person._id
+  Apollos.entityHelpers.delete "person", "people", person, platform
 
 ###
 

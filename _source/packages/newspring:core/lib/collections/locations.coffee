@@ -1,6 +1,7 @@
+###
 Apollos.locations = new Mongo.Collection "locations"
 
-location = new SimpleSchema(
+location = Apollos.generateSchema
   locationId:
     type: Number
   campusId:
@@ -26,19 +27,6 @@ location = new SimpleSchema(
     optional: true
   geometry:
     type: GeoJSON
-  createdDate:
-    type: Date
-    autoValue: ->
-      if @.isInsert
-        return new Date
-      else if @.isUpsert
-        return $setOnInsert: new Date
-      else
-        @.unset()
-  updatedDate:
-    type: Date
-    autoValue: ->
-      return new Date
-)
 
 Apollos.locations.attachSchema location
+###
