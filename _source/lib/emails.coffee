@@ -5,7 +5,7 @@ Apollos.emailTemplates.resetPassword.subject = (user) ->
 
 Apollos.emailTemplates.resetPassword.text = (user, url) ->
   return '
-Hi, jpinkerton88@gmail.com
+Hi, ' + user.emails[0].address + '
 
 You told us you forgot your password. If you really did, use this link to choose a new one:
 
