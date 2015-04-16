@@ -81,9 +81,9 @@ Apollos.entityHelpers =
   ###
   delete: (singular, plural, identifier, platform) ->
 
-    singularIdKeyValue["#{singular}Id"] = entity["#{singular}Id"]
-
     if typeof identifier is "number"
+      singularIdKeyValue = {}
+      singularIdKeyValue["#{singular}Id"] = identifier
       entity = Apollos[plural].findOne singularIdKeyValue
 
     else if typeof identifier is "string"
@@ -107,8 +107,5 @@ Apollos.entityHelpers =
     ,
       $set:
         "updatedBy": entity.updatedBy
-
-    debug "Trying to remove #{singular} #{entity._id} with a platform of
-      #{entity.updatedBy}"
 
     Apollos[plural].remove entity._id

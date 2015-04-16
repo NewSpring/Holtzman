@@ -29,5 +29,6 @@ account = Apollos.generateSchema
     type: String
   description:
     type: String
+    optional: true
 
 Apollos.accounts.attachSchema account

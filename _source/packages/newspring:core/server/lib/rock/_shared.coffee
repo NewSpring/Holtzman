@@ -91,10 +91,20 @@ Rock.refreshEntity = (endpoint, entityName, apollosCollection, throwErrors, oneW
       if docId
         docIdsSynced.push docId
 
-    if not oneWaySync
-      docsRockDoesNotHave = Apollos[apollosCollection].find
-        _id:
-          $nin: docIdsSynced
+    query = _id: $nin: docIdsSynced
+    docsRockDoesNotHave = Apollos[apollosCollection].find query
+    docsRockDoesNotHaveIds = docsRockDoesNotHave.map (d) -> d._id
+    numDocsRockDoesNotHave = docsRockDoesNotHave.count()
 
+    if numDocsRockDoesNotHave is 0
+      return
+
+    if oneWaySync
+      debug "One way sync, so deleting #{docsRockDoesNotHaveIds.join(", ")}
+        #{entityName}"
+      Apollos[apollosCollection].remove query
+    else
+      debug "Two way sync, so sending #{docsRockDoesNotHaveIds.join(", ")}
+        #{entityName}"
       for doc in docsRockDoesNotHave.fetch()
         Rock[entityName].create doc

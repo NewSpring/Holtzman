@@ -11,6 +11,9 @@ Rock.utilities =
 
 
   getRockDate: (jsDate) ->
+    if typeof jsDate isnt "date"
+      return null
+
     year = @.pad jsDate.getFullYear()
     month = @.pad(jsDate.getMonth() + 1)
     day = @.pad jsDate.getDate()
@@ -18,6 +21,9 @@ Rock.utilities =
 
 
   getJavaScriptDate: (rockDate) ->
+    if typeof rockDate isnt "string"
+      return null
+
     # parse date parts from something like "2015-04-01T01:00:00"
     year = Number(rockDate.substring 0, 4)
     month = Number(rockDate.substring 5, 7) - 1

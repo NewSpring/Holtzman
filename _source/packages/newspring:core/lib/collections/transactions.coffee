@@ -17,7 +17,9 @@ transaction = Apollos.generateSchema
   currencyTypeValueId:
     type: Number
     decimal: false
+    optional: true
   transactionDateTime:
     type: Date
+    optional: true
 
 Apollos.transactions.attachSchema transaction
