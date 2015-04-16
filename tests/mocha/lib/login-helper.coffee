@@ -29,7 +29,6 @@
   waitForPasswordResetConfirmation: (email, callback) ->
     LoginHelper.waitForEvent ->
       confirmation = $('div.constrain-copy.push p').text().indexOf "Your password has been reset."
-      console.log $('div.constrain-copy.push p')
       return confirmation > -1
     , callback
 
