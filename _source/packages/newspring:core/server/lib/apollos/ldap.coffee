@@ -13,8 +13,8 @@ class _LDAPclient
     @.opts =
       "url": "ldap://cen-dc001.ad.newspring.cc:389"
       "base": "dc=ad, dc=newspring, dc=cc"
-      "timeout": 10000
-      "connectTimeout": 10000
+      "timeout": 2000
+      "connectTimeout": 2000
       "nameAttribute": "samaccountname"
 
     @.ldapClient = Ldapjs.createClient(
