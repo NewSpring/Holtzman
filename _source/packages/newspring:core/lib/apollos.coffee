@@ -110,3 +110,6 @@ Apollos.user.forgotPassword = (email, callback) ->
 Apollos.user.resetPassword = (token, newPassword, callback) ->
 
   return Accounts.resetPassword token, newPassword, callback
+
+# TODO this is not secure
+Apollos.emailTemplates = Accounts.emailTemplates

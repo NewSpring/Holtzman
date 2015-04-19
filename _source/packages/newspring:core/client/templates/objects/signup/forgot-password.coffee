@@ -77,6 +77,7 @@ Template.forgotPassword.events
   "submit #forgot-password": (event, template) ->
     event.preventDefault()
 
+    console.log "meowmeowmeowmeowmeowmeow"
     email = template.find("input[name=email]").value.toLowerCase()
 
     if not Apollos.validate.isEmail email
@@ -86,6 +87,7 @@ Template.forgotPassword.events
       return
 
 
+    console.log "meowmeowmeowmeowmeowmeow"
     Apollos.user.forgotPassword email
     template.reset.set true
     return

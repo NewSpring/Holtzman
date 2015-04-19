@@ -14,6 +14,7 @@ MochaWeb?.testOnly ->
         if Meteor.isClient
 
           before (done) ->
+            @.timeout 10000
             Apollos.user.create "forgottest@newspring.cc", "password"
             Meteor.autorun ->
               user = Apollos.users.findOne 'emails.address': 'forgottest@newspring.cc'
