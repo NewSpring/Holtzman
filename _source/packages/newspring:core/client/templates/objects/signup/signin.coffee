@@ -50,7 +50,7 @@ class Signin
 
       return
 
-  createAccountFromF1 = (email, password) =>
+  createAccountFromF1: (email, password) =>
 
     self = @
     template = self.template
@@ -156,8 +156,8 @@ Template.signin.events
 
     email = event.target.value.toLowerCase()
 
-    if not email
-      template.hasAccount.set true
+    if not Apollos.validate.isEmail email
+      template.hasErrors.set true
 
     Apollos.user.getAccountType email, (error, accountType) ->
       if error
@@ -219,21 +219,25 @@ Template.signin.events
     terms = template.find("input[name=terms]").checked
 
     if not Apollos.validate.isEmail email
+      template.hasErrors.set true
       emailTemplate = template.email.get()
       emailTemplate.methods.setStatus true
       return
 
     if not Apollos.validate.isEmail email
+      template.hasErrors.set true
       emailTemplate = template.email.get()
       emailTemplate.methods.setStatus true
       return
 
     if not password
+      template.hasErrors.set true
       passwordTemplate = template.password.get()
       passwordTemplate.methods.setStatus "Password cannot be empty", true
       return
 
     if not terms
+      template.hasErrors.set true
       termsTemplate = template.terms.get()
       termsTemplate.methods.setStatus "You must accept the terms and conditions", true
       return
@@ -252,6 +256,7 @@ Template.signin.events
         else
           template._.createAccount email, password
 
+  # TODO fix link not working when using enter to submit form
   "click [data-forgot-password]": (event, template) ->
 
     if event.target.dataset?.forgotPassword

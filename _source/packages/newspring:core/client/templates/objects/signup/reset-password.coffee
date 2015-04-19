@@ -51,6 +51,9 @@ Template.resetPassword.onRendered ->
 
 Template.resetPassword.events
 
+  "focus input": (event, template) ->
+    template.hasErrors.set false
+
   "submit #reset-password": (event, template) ->
     event.preventDefault()
 

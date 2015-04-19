@@ -22,10 +22,10 @@ Apollos.user.getAccountType = (email) ->
   if localAccount
     return Apollos.enums.accountType.apollos
 
-  # f1Account = Apollos.user.login.f1.hasAccount email
-  #
-  # if f1Account
-  #   return Apollos.enums.accountType.f1
+  f1Account = Apollos.user.login.f1.hasAccount email
+
+  if f1Account
+    return Apollos.enums.accountType.f1
 
   return Apollos.enums.accountType.none
 

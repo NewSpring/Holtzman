@@ -29,6 +29,8 @@ MochaWeb?.testOnly ->
 
     if Meteor.isClient
 
+      @.timeout 10000
+
       beforeEach (done) ->
         Meteor.flush()
         console.log "HERE"
