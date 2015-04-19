@@ -49,16 +49,16 @@
       "package": {
         "versionsFrom": "1.0.3.1",
         "use": {
-          "meteor-platform@1.2.1": "both",
-          "http@1.0.10": "both",
-          "reactive-var@1.0.5": "both",
-          "iron:router@1.0.7": "both",
-          "accounts-password@1.0.6": "both",
-          "bjwiley2:api-tokens@0.0.3": "both",
-          "cfs:http-methods@0.0.27": "both",
+          "meteor-platform@=1.2.2": "both",
+          "http@=1.1.0": "both",
+          "reactive-var@=1.0.5": "both",
+          "iron:router@=1.0.7": "both",
+          "accounts-password@=1.1.1": "both",
+          "bjwiley2:api-tokens@=0.0.3": "both",
+          "cfs:http-methods@=0.0.28": "both",
           "bjwiley2:server-watch@=0.0.5": "both",
-          "aldeed:collection2@2.3.2": "both",
-          "bjwiley2:request-data@0.0.3": "both"
+          "aldeed:collection2@=2.3.3": "both",
+          "bjwiley2:request-data@=0.0.3": "both"
         },
         "npm": {
           "oauth": "0.9.12",
