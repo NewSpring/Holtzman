@@ -5,6 +5,9 @@
       "/newspring": {
         "settings": "https://github.com/NewSpring/settings.git"
       },
+      "/newspring/packages": {
+        "mike": "NewSpring/meteor-mocha-web"
+      },
       "/vendor": {
         "framework": "NewSpring/junction-framework",
         "fonts": "NewSpring/newspring-fonts"
@@ -82,7 +85,7 @@
       "packages": [
         "meteor-platform",
         "newspring:core",
-        "velocity:core@=0.4.5",
+        "velocity:core@=0.6.0",
         "mike:mocha",
         "cordova:io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d"
       ],
