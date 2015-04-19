@@ -48,6 +48,7 @@ MochaWeb?.testOnly ->
       return
 
     if Meteor.isServer
+      @.timeout 10000
       it "should make an LDAP request syncronously", ->
         success = Apollos.user.login.ldap "bob@newspring.cc", "password123"
         assert.isBoolean success
