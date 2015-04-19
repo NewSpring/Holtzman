@@ -6,7 +6,7 @@
         "settings": "https://github.com/NewSpring/settings.git"
       },
       "/newspring/packages": {
-        "mike": "NewSpring/meteor-mocha-web"
+        "mikemocha": "https://github.com/NewSpring/meteor-mocha-web/tarball/5cb884fffc597d7fd51552643aedcf5af9ad1353"
       },
       "/vendor": {
         "framework": "NewSpring/junction-framework",
