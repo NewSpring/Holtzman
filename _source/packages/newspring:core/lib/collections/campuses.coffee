@@ -1,4 +1,3 @@
-###
 Apollos.campuses = new Mongo.Collection "campuses"
 
 campus = Apollos.generateSchema
@@ -20,4 +19,3 @@ campus = Apollos.generateSchema
 
 
 Apollos.campuses.attachSchema campus
-###

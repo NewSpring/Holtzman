@@ -1,4 +1,3 @@
-###
 Apollos.locations = new Mongo.Collection "locations"
 
 location = Apollos.generateSchema
@@ -29,4 +28,3 @@ location = Apollos.generateSchema
     type: GeoJSON
 
 Apollos.locations.attachSchema location
-###

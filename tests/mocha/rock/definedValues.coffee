@@ -21,6 +21,9 @@ MochaWeb?.testOnly ->
         maritalStatus: "B4B92C3F-A935-40E1-A00B-BA484EAD613B"
         status: "8522BADD-2871-45A5-81DD-C76DA07E2E7E"
         phoneType: "8345DD45-73C6-4F5E-BEBD-B77FC83F18FD"
+        transactionSource: "4F02B41E-AB7D-4345-8A97-3904DDD89B01"
+        creditCardTypes: "2BD4FFB0-6C7F-4890-8D08-00F0BB7B43E9"
+        currencyType: "1D1304DE-E83A-44AF-B11D-0C66DD600B81"
 
       guidNames = Object.keys guids
       existingNames = Object.keys Rock.definedValues.definedTypeGuids

@@ -1,4 +1,3 @@
-###
 Apollos.savedAccounts = new Mongo.Collection "savedAccounts"
 
 savedAccount = Apollos.generateSchema
@@ -23,4 +22,3 @@ savedAccount = Apollos.generateSchema
     type: Date
 
 Apollos.savedAccounts.attachSchema savedAccount
-###

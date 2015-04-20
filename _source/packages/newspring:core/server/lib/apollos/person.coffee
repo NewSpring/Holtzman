@@ -124,26 +124,27 @@ Apollos.person.delete = (person, platform) ->
   Update bindings
 
 ###
-initializing = true
+Meteor.startup ->
+  initializing = true
 
-Apollos.people.find().observe
+  Apollos.people.find().observe
 
-  added: (doc) ->
-    if initializing
-      return
+    added: (doc) ->
+      if initializing
+        return
 
-    if doc.updatedBy isnt Rock.name
-        Rock.person.create doc
-
-
-  changed: (newDoc, oldDoc) ->
-
-    if newDoc.updatedBy isnt Rock.name
-      Rock.person.update newDoc
+      if doc.updatedBy isnt Rock.name
+          Rock.person.create doc
 
 
-  removed: (doc) ->
-    # This should not happen
+    changed: (newDoc, oldDoc) ->
+
+      if newDoc.updatedBy isnt Rock.name
+        Rock.person.update newDoc
 
 
-initializing = false
+    removed: (doc) ->
+      # This should not happen
+
+
+  initializing = false

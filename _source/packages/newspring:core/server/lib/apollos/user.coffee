@@ -104,7 +104,15 @@ Apollos.user.translate = (user, platform) ->
 
 ###
 Apollos.user.delete = (user, platform) ->
+  if typeof user is "number"
+    entity = Apollos.users.findOne
+      "rock.userLoginId": user
+
+    if entity
+      user = entity
+
   Apollos.entityHelpers.delete "user", "users", user, platform
+
 
 ###
 
@@ -168,27 +176,28 @@ Apollos.user.update = (user, platform) ->
 
     return usr._id
 
-initializing = true
+Meteor.startup ->
+  initializing = true
 
-Apollos.users.find().observe
+  Apollos.users.find().observe
 
-  added: (doc) ->
+    added: (doc) ->
 
-    if initializing
+      if initializing
+        return
+      if doc.updatedBy isnt Rock.name and doc.updatedBy
+          Rock.user.create doc
+
+
+    changed: (newDoc, oldDoc) ->
+
+      if newDoc.updatedBy isnt Rock.name
+        Rock.user.update newDoc
+
+    removed: (doc) ->
+
+      if doc.updatedBy isnt Rock.name
+        Rock.user.delete doc, Rock.name
       return
-    if doc.updatedBy isnt Rock.name and doc.updatedBy
-        Rock.user.create doc
 
-
-  changed: (newDoc, oldDoc) ->
-
-    if newDoc.updatedBy isnt Rock.name
-      Rock.user.update newDoc
-
-  removed: (doc) ->
-
-    if doc.updatedBy isnt Rock.name
-      Rock.user.delete doc, Rock.name
-    return
-
-initializing = false
+  initializing = false

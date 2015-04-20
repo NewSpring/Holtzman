@@ -1,4 +1,3 @@
-###
 Apollos.groups = new Mongo.Collection "groups"
 
 member = new SimpleSchema
@@ -37,4 +36,3 @@ group = Apollos.generateSchema
     optional: true
 
 Apollos.groups.attachSchema group
-###

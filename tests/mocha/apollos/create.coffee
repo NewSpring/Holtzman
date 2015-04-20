@@ -33,7 +33,6 @@ MochaWeb?.testOnly ->
 
       beforeEach (done) ->
         Meteor.flush()
-        console.log "HERE"
         _logout done
 
       it "client should create user and login", (done) ->

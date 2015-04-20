@@ -1,4 +1,3 @@
-###
 Apollos.scheduledTransactions = new Mongo.Collection "scheduledTransactions"
 
 scheduledTransaction = Apollos.generateSchema
@@ -26,4 +25,3 @@ scheduledTransaction = Apollos.generateSchema
     type: Date
 
 Apollos.scheduledTransactions.attachSchema scheduledTransaction
-###

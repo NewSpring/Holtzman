@@ -30,4 +30,5 @@ syncAllWhenRockIsReady = ->
 
 
 Meteor.startup ->
-  serverWatch.refresh Rock.name, syncAllWhenRockIsReady
+  if not process.env.IS_MIRROR
+    serverWatch.refresh Rock.name, syncAllWhenRockIsReady
