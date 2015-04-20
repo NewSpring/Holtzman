@@ -8,7 +8,8 @@ sync = (entityType, msTime) ->
 syncAllWhenRockIsReady = ->
 
   if not Rock.isAlive()
-    Meteor.setTimeout syncAllWhenRockIsReady, 1000
+    debug "Waiting to sync because Rock is not responding"
+    Meteor.setTimeout syncAllWhenRockIsReady, 15000
     return
 
   entities = [
@@ -29,4 +30,4 @@ syncAllWhenRockIsReady = ->
 
 
 Meteor.startup ->
-  Meteor.setTimeout syncAllWhenRockIsReady, 1000
+  serverWatch.refresh Rock.name, syncAllWhenRockIsReady

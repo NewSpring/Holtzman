@@ -46,19 +46,16 @@ Rock.person.create = (person) ->
       guid: person.Guid
       updatedBy: Rock.name
 
-  Rock.apiRequest "POST", "api/People", person, (error, result) ->
+  Rock.apiRequest "POST", "api/People", person, (error, newId) ->
     if error
       debug "Rock create failed:"
       debug error
       return
 
-    # Need to get the Id - hopefully this can be avoided by using immediate post
-    # save triggers in Rock
     query = "api/PersonAlias
       ?$filter=
         AliasPersonGuid eq guid'#{person.Guid}'
       &$select=
-        PersonId,
         AliasPersonId"
 
     Meteor.setTimeout ->
@@ -77,7 +74,7 @@ Rock.person.create = (person) ->
             _id: mongoId
           ,
             $set:
-              personId: result.data[0].PersonId
+              personId: newId
               personAliasIds: aliasIds
               updatedBy: Rock.name
     , 250
@@ -103,8 +100,7 @@ Rock.person.translate = (person, platform) ->
   # forced uppercase to make case insensitive strings
   switch platform.toUpperCase()
     when Apollos.name.toUpperCase()
-      person or=
-        recordStatusValueId: 3
+      person or= {}
 
       if person.weddingYear and person.weddingMonth and person.weddingDay
         anniversary = new Date person.weddingYear, person.weddingMonth, person.weddingDay
@@ -112,12 +108,7 @@ Rock.person.translate = (person, platform) ->
 
       rockPerson =
         IsSystem: false
-        RecordTypeValueId: 1
         RecordStatusValueId: person.recordStatusValueId or 3
-        RecordStatusReasonValueId: null
-        ConnectionStatusValueId: 65
-        ReviewReasonValueId: null
-        IsDeceased: false
         TitleValueId: person.titleValueId or null
         FirstName: person.firstName or null
         NickName: person.nickName or null
@@ -131,20 +122,11 @@ Rock.person.translate = (person, platform) ->
         Gender: person.gender or 0
         MaritalStatusValueId: person.maritalStatusValueId or null
         AnniversaryDate: anniversary or null
-        GraduationYear: null
         GivingGroupId: person.givingGroupId or null
         Email: person.preferredEmail or null
-        IsEmailActive: true
-        EmailNote: null
         EmailPreference: person.emailPreference or 0
-        ReviewReasonNote: null
-        InactiveReasonNote: null
-        SystemNote: null
-        ViewedCount: null
-        PrimaryAliasId: null
         Id: person.personId or null
         Guid: person.guid or null
-        ForeignId: null
 
       return rockPerson
 
@@ -172,7 +154,13 @@ Rock.person.update = (person) ->
     # TODO: What here??!?
     return
 
-  Rock.apiRequest "PUT", "api/People/#{rockPerson.Id}", rockPerson,
+  id = rockPerson.Id
+
+  # These fields should not or cannot change
+  delete rockPerson.Id
+  delete rockPerson.Guid
+
+  Rock.apiRequest "PATCH", "api/People/#{id}", rockPerson,
     (error, result) ->
       if error
         debug "Rock update failed:"

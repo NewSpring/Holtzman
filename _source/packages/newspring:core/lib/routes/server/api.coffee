@@ -116,7 +116,7 @@ upsertResource = (data, handlerFunc, platform) ->
     return handleAuthenticationError.call @
 
   resource = parseRequestData data, @.requestHeaders["content-type"]
-
+  console.log resource
   if not resource
     resource = {}
 

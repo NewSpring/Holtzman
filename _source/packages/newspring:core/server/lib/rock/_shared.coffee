@@ -28,11 +28,6 @@ serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
 ###
 Rock.apiRequest = (method, resource, data, callback) ->
 
-  if not Rock.isAlive()
-    # build queue system herenot
-    debug "Rock is OFFLINE - canceling request #{resource.substring(0, 25)}"
-    return
-
   if typeof data is "function"
     callback = data
     data = undefined
@@ -43,6 +38,16 @@ Rock.apiRequest = (method, resource, data, callback) ->
     headers[Rock.tokenName] = Rock.token
 
   debug "Sending #{method} to #{Rock.baseURL}#{resource.substring(0, 25)}..."
+
+  if process.env.IS_MIRROR
+    callback or= () -> return
+    Meteor.setTimeout callback, 250
+    return
+
+  if not Rock.isAlive()
+    # build queue system herenot
+    debug "Rock is OFFLINE - canceling request #{resource.substring(0, 25)}"
+    return
 
   HTTP.call method, "#{Rock.baseURL}#{resource}",
     timeout: 5000
