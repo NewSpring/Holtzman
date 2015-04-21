@@ -104,30 +104,15 @@ Apollos.user.translate = (user, platform) ->
 
 ###
 Apollos.user.delete = (user, platform) ->
-
   if typeof user is "number"
-    user = Apollos.users.findOne
+    entity = Apollos.users.findOne
       "rock.userLoginId": user
 
-  else if typeof user is "string"
-    user = Apollos.users.findOne user
+    if entity
+      user = entity
 
-  # Apollos.users.update user, platform
-  if platform and platform.toUpperCase() is Rock.name.toUpperCase()
-    user.updatedBy = Rock.name
-  else
-    user.updatedBy = Apollos.name
+  Apollos.entityHelpers.delete "user", "users", user, platform
 
-  # We have to update this first so the collection hooks know what to do
-  Apollos.users.update
-    _id: user._id
-  ,
-    $set:
-      "updatedBy": user.updatedBy
-
-  debug "Trying to remove user #{user._id} with a platform of #{user.updatedBy}"
-
-  Apollos.users.remove user._id
 
 ###
 
@@ -191,27 +176,28 @@ Apollos.user.update = (user, platform) ->
 
     return usr._id
 
-initializing = true
+Meteor.startup ->
+  initializing = true
 
-Apollos.users.find().observe
+  Apollos.users.find().observe
 
-  added: (doc) ->
+    added: (doc) ->
 
-    if initializing
+      if initializing
+        return
+      if doc.updatedBy isnt Rock.name and doc.updatedBy
+          Rock.user.create doc
+
+
+    changed: (newDoc, oldDoc) ->
+
+      if newDoc.updatedBy isnt Rock.name
+        Rock.user.update newDoc
+
+    removed: (doc) ->
+
+      if doc.updatedBy isnt Rock.name
+        Rock.user.delete doc, Rock.name
       return
-    if doc.updatedBy isnt Rock.name and doc.updatedBy
-        Rock.user.create doc
 
-
-  changed: (newDoc, oldDoc) ->
-
-    if newDoc.updatedBy isnt Rock.name
-      Rock.user.update newDoc
-
-  removed: (doc) ->
-
-    if doc.updatedBy isnt Rock.name
-      Rock.user.delete doc, Rock.name
-    return
-
-initializing = false
+  initializing = false

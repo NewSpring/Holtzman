@@ -1,14 +1,6 @@
 Apollos.definedValues = new Mongo.Collection "definedValues"
 
-Apollos.definedValues.allow
-  insert: (userId, doc) ->
-    return false
-  update: (userId, doc) ->
-    return false
-  remove: (userId, doc) ->
-    return false
-
-definedValue = new SimpleSchema
+definedValue = Apollos.generateSchema
   definedTypeGuid:
     type: String
     optional: false

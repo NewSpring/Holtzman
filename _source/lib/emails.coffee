@@ -1,3 +1,6 @@
+if not Meteor.isServer
+  return
+
 Apollos.emailTemplates.siteName = "Newspring"
 Apollos.emailTemplates.from = "noreply@newspring.cc"
 Apollos.emailTemplates.resetPassword.subject = (user) ->
@@ -941,6 +944,3 @@ body.outlook p {
         </table>
 </body>
 </html>'
-
-
-

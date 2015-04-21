@@ -1,18 +1,6 @@
 Apollos.people = new Mongo.Collection "people"
 
-# TODO: Make this secure
-Apollos.people.allow
-  insert: (userId, doc) ->
-    return true
-  update: (userId, doc) ->
-    return true
-  remove: (userId, doc) ->
-    return false # No one gets removed
-
-person = new SimpleSchema
-  updatedBy:
-    type: String
-    optional: true
+person = Apollos.generateSchema
   personId:
     type: Number
     decimal: false
@@ -125,20 +113,5 @@ person = new SimpleSchema
   communicationPreference:
     type: Number
     optional: true
-
-  createdDate:
-    type: Date
-    autoValue: ->
-      if @.isInsert
-        return new Date
-      else if @.isUpsert
-        return $setOnInsert: new Date
-      else
-        @.unset()
-
-  updatedDate:
-    type: Date
-    autoValue: ->
-      return new Date
 
 Apollos.people.attachSchema person

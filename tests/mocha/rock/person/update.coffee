@@ -57,9 +57,10 @@ MochaWeb?.testOnly ->
     it "should make an API request", (done) ->
 
       person = "THEPERSON"
+      id = 1000
       rockPerson =
         Guid: "GUID"
-        Id: 1000
+        Id: id
 
       originalTranslate = Rock.person.translate
       originalApiRequest = Rock.apiRequest
@@ -69,11 +70,11 @@ MochaWeb?.testOnly ->
         return rockPerson
 
       Rock.apiRequest = (method, url, param2, callback) ->
-        chai.assert.equal method, "PUT"
-        chai.assert.equal url, "api/People/#{rockPerson.Id}"
+        chai.assert.equal method, "PATCH"
+        chai.assert.equal url, "api/People/#{id}"
         chai.assert.equal param2, rockPerson
         chai.assert.isFunction callback
-        
+
         Rock.person.translate = originalTranslate
         Rock.apiRequest = originalApiRequest
         done()

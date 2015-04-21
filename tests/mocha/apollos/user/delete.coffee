@@ -29,4 +29,3 @@ MochaWeb?.testOnly ->
             userId = Apollos.user.create 'apollos.user.delete.string@newspring.cc', 'testPassword'
 
             assert.equal Apollos.user.delete(userId, 'ROCK'), 1
-

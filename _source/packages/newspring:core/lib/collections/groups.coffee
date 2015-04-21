@@ -6,7 +6,7 @@ member = new SimpleSchema
   role:
     type: String
 
-group = new SimpleSchema
+group = Apollos.generateSchema
   groupId:
     type: Number
     optional: true
@@ -34,20 +34,5 @@ group = new SimpleSchema
     type: Number
     decimal: false
     optional: true
-
-  createdDate:
-    type: Date
-    autoValue: ->
-      if @.isInsert
-        return new Date
-      else if @.isUpsert
-        return $setOnInsert: new Date
-      else
-        @.unset()
-
-  updatedDate:
-    type: Date
-    autoValue: ->
-      return new Date
 
 Apollos.groups.attachSchema group

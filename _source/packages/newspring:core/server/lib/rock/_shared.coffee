@@ -28,11 +28,6 @@ serverWatch.watch Rock.name, Rock.baseURL, 30 * 1000
 ###
 Rock.apiRequest = (method, resource, data, callback) ->
 
-  if not Rock.isAlive()
-    # build queue system herenot
-    debug "Rock is OFFLINE - canceling request #{resource.substring(0, 25)}"
-    return
-
   if typeof data is "function"
     callback = data
     data = undefined
@@ -44,8 +39,18 @@ Rock.apiRequest = (method, resource, data, callback) ->
 
   debug "Sending #{method} to #{Rock.baseURL}#{resource.substring(0, 25)}..."
 
+  if process.env.IS_MIRROR
+    callback or= () -> return
+    Meteor.setTimeout callback, 250
+    return
+
+  if not Rock.isAlive()
+    # build queue system herenot
+    debug "Rock is OFFLINE - canceling request #{resource.substring(0, 25)}"
+    return
+
   HTTP.call method, "#{Rock.baseURL}#{resource}",
-    timeout: 3000
+    timeout: 5000
     headers: headers
     data: data
   , callback
@@ -66,7 +71,7 @@ Rock.apiRequest = (method, resource, data, callback) ->
   @param throwErrors [Boolean] switch to silence error throwing
 
 ###
-Rock.refreshEntity = (endpoint, entityName, apollosCollection, throwErrors) ->
+Rock.refreshEntity = (endpoint, entityName, apollosCollection, throwErrors, oneWaySync) ->
 
   Rock.apiRequest "GET", endpoint, (error, result) ->
     if error
@@ -91,9 +96,20 @@ Rock.refreshEntity = (endpoint, entityName, apollosCollection, throwErrors) ->
       if docId
         docIdsSynced.push docId
 
-    docsRockDoesNotHave = Apollos[apollosCollection].find
-      _id:
-        $nin: docIdsSynced
+    query = _id: $nin: docIdsSynced
+    docsRockDoesNotHave = Apollos[apollosCollection].find query
+    docsRockDoesNotHaveIds = docsRockDoesNotHave.map (d) -> d._id
+    numDocsRockDoesNotHave = docsRockDoesNotHave.count()
 
-    for doc in docsRockDoesNotHave.fetch()
-      Rock[entityName].create doc
+    if numDocsRockDoesNotHave is 0
+      return
+
+    if oneWaySync
+      debug "One way sync, so deleting #{docsRockDoesNotHaveIds.join(", ")}
+        #{entityName}"
+      Apollos[apollosCollection].remove query
+    else
+      debug "Two way sync, so sending #{docsRockDoesNotHaveIds.join(", ")}
+        #{entityName}"
+      for doc in docsRockDoesNotHave.fetch()
+        Rock[entityName].create doc

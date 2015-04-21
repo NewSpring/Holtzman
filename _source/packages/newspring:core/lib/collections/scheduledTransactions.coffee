@@ -1,7 +1,6 @@
 Apollos.scheduledTransactions = new Mongo.Collection "scheduledTransactions"
 
-# Maps to Rock:ScheduledTransaction, Rock:ScheduledTransactionDetail
-scheduledTransaction = new SimpleSchema(
+scheduledTransaction = Apollos.generateSchema
   scheduledTransactionId:
     type: Number
   personAliasId:
@@ -24,19 +23,5 @@ scheduledTransaction = new SimpleSchema(
     type: Date
   paymentExpiration:
     type: Date
-  createdDate:
-    type: Date
-    autoValue: ->
-      if @.isInsert
-        return new Date
-      else if @.isUpsert
-        return $setOnInsert: new Date
-      else
-        @.unset()
-  updatedDate:
-    type: Date
-    autoValue: ->
-      return new Date
-)
 
 Apollos.scheduledTransactions.attachSchema scheduledTransaction

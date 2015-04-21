@@ -1,6 +1,11 @@
 baseURL = "api/v1/"
-usersURL = "#{baseURL}userlogins/"
-peopleURL = "#{baseURL}people/"
+
+endpoints =
+  user: "#{baseURL}users/"
+  person: "#{baseURL}people/"
+  transaction: "#{baseURL}transactions/"
+  transactionDetail: "#{baseURL}transactionDetails/"
+  account: "#{baseURL}accounts/"
 
 jsonContentType = "application/JSON"
 tokenName = Meteor.settings.api.tokenName
@@ -111,7 +116,7 @@ upsertResource = (data, handlerFunc, platform) ->
     return handleAuthenticationError.call @
 
   resource = parseRequestData data, @.requestHeaders["content-type"]
-
+  console.log resource
   if not resource
     resource = {}
 
@@ -119,37 +124,34 @@ upsertResource = (data, handlerFunc, platform) ->
   handlerFunc resource, platform
   return
 
-api["#{usersURL}:id"] =
+###
 
-  post: (data) ->
+  createStandardEndpoint
 
-    debug "POST to #{usersURL}#{@.params.id}"
-    return upsertResource.call @, data, Apollos.user.update, Rock.name
+  @example creartes a standard API endpoint at the given URL for the given
+    entity
 
-  delete: (data) ->
+    createStandardEndpoint "api/v1/people/", "person"
 
-    debug "DELETE to #{usersURL}#{@.params.id}"
-    ###
+  @param url [String] the endpoint for the API to operate at
+  @param entityType [String] is the name of the Apollos type that this endpoint
+    is associated with
 
-      @question
-        Should this simply disable the user? Do we ever want to
-        have a delete option? I guess it could delete the login portion
-        which is what it is doing now. Food for thought
+###
+createStandardEndpoint = (url, entityType) ->
+  api["#{url}:id"] =
 
-    ###
+    post: (data) ->
 
-    return deleteResource.call @, Apollos.user.delete, Rock.name
+      debug "Got POST for #{url}#{@.params.id}"
+      return upsertResource.call @, data, Apollos[entityType].update, Rock.name
 
-api["#{peopleURL}:id"] =
+    delete: (data) ->
 
-  post: (data) ->
+      debug "Got DELETE for #{url}#{@.params.id}"
+      return deleteResource.call @, Apollos[entityType].delete, Rock.name
 
-    debug "POST to #{peopleURL}#{@.params.id}"
-    return upsertResource.call @, data, Apollos.person.update, Rock.name
-
-  delete: (data) ->
-
-    debug "DELETE to #{peopleURL}#{@.params.id}"
-    return deleteResource.call @, Apollos.person.delete, Rock.name
+for typeName, url of endpoints
+  createStandardEndpoint url, typeName
 
 HTTP.methods api
