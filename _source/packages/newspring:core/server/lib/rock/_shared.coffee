@@ -37,23 +37,41 @@ Rock.apiRequest = (method, resource, data, callback) ->
   if Rock.tokenName and Rock.token
     headers[Rock.tokenName] = Rock.token
 
-  debug "Sending #{method} to #{Rock.baseURL}#{resource.substring(0, 25)}..."
-
   if process.env.IS_MIRROR
-    callback or= () -> return
-    Meteor.setTimeout callback, 250
+    if callback
+      Meteor.setTimeout callback, 250
     return
 
-  if not Rock.isAlive()
-    # build queue system herenot
-    debug "Rock is OFFLINE - canceling request #{resource.substring(0, 25)}"
-    return
+  debug "Queueing request #{resource.substring(0, 25)}"
+  queueId = Apollos.queuedApiRequests.insert
+    method: method
+    date: new Date()
+    url: "#{Rock.baseURL}#{resource}"
+    headers: JSON.stringify headers
+    data: JSON.stringify data
 
-  HTTP.call method, "#{Rock.baseURL}#{resource}",
-    timeout: 5000
-    headers: headers
-    data: data
-  , callback
+  cursor = Apollos.queuedApiRequests.find _id: queueId
+
+  handle = cursor.observe
+    changed: (response) ->
+      if not response.responseReceived
+        return
+
+      debug "Received response from #{resource.substring(0, 25)}"
+
+      if callback
+        jsonError = response.responseError
+        jsonData = response.responseData
+
+        if jsonError
+          error = JSON.parse jsonError
+        if jsonData
+          data = JSON.parse jsonData
+
+        callback error, data
+
+      handle.stop()
+      Apollos.queuedApiRequests.remove queueId
 
 
 ###
