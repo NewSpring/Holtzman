@@ -21,12 +21,7 @@ MochaWeb?.testOnly ->
         chai.assert.equal rockPerson[key], value
 
       checkEqual "IsSystem", false
-      checkEqual "RecordTypeValueId", 1
       checkEqual "RecordStatusValueId", 3
-      checkEqual "RecordStatusReasonValueId", null
-      checkEqual "ConnectionStatusValueId", 65
-      checkEqual "ReviewReasonValueId", null
-      checkEqual "IsDeceased", false
       checkEqual "TitleValueId", null
       checkEqual "FirstName", null
       checkEqual "NickName", null
@@ -40,20 +35,11 @@ MochaWeb?.testOnly ->
       checkEqual "Gender", 0
       checkEqual "MaritalStatusValueId", null
       checkEqual "AnniversaryDate", null
-      checkEqual "GraduationYear", null
       checkEqual "GivingGroupId", null
       checkEqual "Email", null
-      checkEqual "IsEmailActive", true
-      checkEqual "EmailNote", null
       checkEqual "EmailPreference", 0
-      checkEqual "ReviewReasonNote", null
-      checkEqual "InactiveReasonNote", null
-      checkEqual "SystemNote", null
-      checkEqual "ViewedCount", null
-      checkEqual "PrimaryAliasId", null
       checkEqual "Id", null
       checkEqual "Guid", null
-      checkEqual "ForeignId", null
 
     it "should translate an Apollos person into a person", ->
       apollosPerson =
@@ -85,12 +71,7 @@ MochaWeb?.testOnly ->
         chai.assert.equal rockPerson[key], value
 
       checkEqual "IsSystem", false
-      checkEqual "RecordTypeValueId", 1
       checkEqual "RecordStatusValueId", apollosPerson.recordStatusValueId
-      checkEqual "RecordStatusReasonValueId", null
-      checkEqual "ConnectionStatusValueId", 65
-      checkEqual "ReviewReasonValueId", null
-      checkEqual "IsDeceased", false
       checkEqual "TitleValueId", apollosPerson.titleValueId
       checkEqual "FirstName", apollosPerson.firstName
       checkEqual "NickName", apollosPerson.nickName
@@ -104,17 +85,7 @@ MochaWeb?.testOnly ->
       checkEqual "Gender", apollosPerson.gender
       checkEqual "MaritalStatusValueId", apollosPerson.maritalStatusValueId
       checkEqual "AnniversaryDate", "1900-09-08T00:00:00"
-      checkEqual "GraduationYear", null
-      checkEqual "GivingGroupId", apollosPerson.givingGroupId
       checkEqual "Email", apollosPerson.preferredEmail
-      checkEqual "IsEmailActive", true
-      checkEqual "EmailNote", null
       checkEqual "EmailPreference", apollosPerson.emailPreference
-      checkEqual "ReviewReasonNote", null
-      checkEqual "InactiveReasonNote", null
-      checkEqual "SystemNote", null
-      checkEqual "ViewedCount", null
-      checkEqual "PrimaryAliasId", null
       checkEqual "Id", apollosPerson.personId
       checkEqual "Guid", apollosPerson.guid
-      checkEqual "ForeignId", null

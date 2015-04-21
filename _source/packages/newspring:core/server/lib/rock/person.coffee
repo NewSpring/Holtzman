@@ -103,8 +103,8 @@ Rock.person.translate = (person, platform) ->
       person or= {}
 
       if person.weddingYear and person.weddingMonth and person.weddingDay
-        anniversary = new Date person.weddingYear, person.weddingMonth, person.weddingDay
-        anniversary = Rock.utlities.getRockDate anniversary
+        anniversary = new Date person.weddingYear, person.weddingMonth - 1, person.weddingDay
+        anniversary = Rock.utilities.getRockDate anniversary
 
       rockPerson =
         IsSystem: false

@@ -2,16 +2,16 @@
    resetDatabase: true,
    loadDefaultFixtures: true,
 ###
+if not (Meteor.isServer and process.env.IS_MIRROR)
+  return
 
-Future = Npm.require('fibers/future')
-
-resetDatabase = ->
+resetDatabase = (callback) ->
   console.log 'Resetting database'
   # safety check
   if !process.env.IS_MIRROR
     console.error 'velocityReset is not allowed outside of a mirror. Something has gone wrong.'
     return false
-  fut = new Future
+
   collectionsRemoved = 0
   db = Meteor.users.find()._mongo.db
   db.collections (err, collections) ->
@@ -22,16 +22,15 @@ resetDatabase = ->
       appCollection.remove (e) ->
         if e
           console.error 'Failed removing collection', e
-          fut.return 'fail: ' + e
+          callback()
         collectionsRemoved++
         console.log 'Removed collection'
         if appCollections.length == collectionsRemoved
           console.log 'Finished resetting database'
-          fut['return'] 'success'
+          callback()
         return
       return
     return
-  fut.wait()
 
 loadDefaultFixtures = ->
   console.log 'Loading default fixtures'
@@ -39,7 +38,5 @@ loadDefaultFixtures = ->
   return
 
 
-if process.env.IS_MIRROR
-  resetDatabase()
+resetDatabase ->
   loadDefaultFixtures()
-

@@ -1,5 +1,7 @@
 MochaWeb?.testOnly ->
   describe "Rock person.create function", ->
+
+    @.timeout 10000
     _id = null
     rawPerson = null
 
@@ -61,15 +63,14 @@ MochaWeb?.testOnly ->
             ?$filter=
               AliasPersonGuid eq guid'#{guid}'
             &$select=
-              PersonId,
               AliasPersonId"
           chai.assert.isFunction callback2
           chai.assert.equal updatedPerson.personAliasIds.length, 0
 
           callback2 false,
             data: [
-              { AliasPersonId: 1, PersonId: 50 }
-              { AliasPersonId: 2, PersonId: 50 }
+              { AliasPersonId: 1 }
+              { AliasPersonId: 2 }
             ]
 
           updatedPerson2 = Apollos.people.findOne _id
@@ -80,7 +81,7 @@ MochaWeb?.testOnly ->
           Rock.apiRequest = realApiRequest
           done()
 
-        callback()
+        callback false, 50
 
       rawPerson = Apollos.people.findOne _id
       Rock.person.create rawPerson

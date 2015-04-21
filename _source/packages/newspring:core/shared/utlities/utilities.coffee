@@ -11,12 +11,12 @@ Rock.utilities =
 
 
   getRockDate: (jsDate) ->
-    if typeof jsDate isnt "date"
+    if not (jsDate instanceof Date)
       return null
 
-    year = @.pad jsDate.getFullYear()
-    month = @.pad(jsDate.getMonth() + 1)
-    day = @.pad jsDate.getDate()
+    year = jsDate.getFullYear()
+    month = @.pad(jsDate.getMonth() + 1, 2)
+    day = @.pad jsDate.getDate(), 2
     return "#{year}-#{month}-#{day}T00:00:00"
 
 
