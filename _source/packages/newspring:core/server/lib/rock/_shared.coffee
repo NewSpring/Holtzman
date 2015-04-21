@@ -37,18 +37,15 @@ Rock.apiRequest = (method, resource, data, callback) ->
   if Rock.tokenName and Rock.token
     headers[Rock.tokenName] = Rock.token
 
-  if process.env.IS_MIRROR
-    if callback
-      Meteor.setTimeout callback, 250
-    return
-
   debug "Queueing request #{resource.substring(0, 25)}"
+  
   queueId = Apollos.queuedApiRequests.insert
     method: method
     date: new Date()
     url: "#{Rock.baseURL}#{resource}"
     headers: JSON.stringify headers
     data: JSON.stringify data
+    isTest: Boolean process.env.IS_MIRROR
 
   cursor = Apollos.queuedApiRequests.find _id: queueId
 

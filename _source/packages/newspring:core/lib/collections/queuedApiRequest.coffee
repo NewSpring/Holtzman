@@ -27,5 +27,8 @@ queuedApiRequest = Apollos.generateSchema
   responseData:
     type: String
     optional: true
+  isTest:
+    type: Boolean
+    defaultValue: false
 
 Apollos.queuedApiRequests.attachSchema queuedApiRequest
