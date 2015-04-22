@@ -38,7 +38,7 @@ Rock.apiRequest = (method, resource, data, callback) ->
     headers[Rock.tokenName] = Rock.token
 
   debug "Queueing request #{resource.substring(0, 25)}"
-  
+
   queueId = Apollos.queuedApiRequests.insert
     method: method
     date: new Date()
@@ -46,26 +46,40 @@ Rock.apiRequest = (method, resource, data, callback) ->
     headers: JSON.stringify headers
     data: JSON.stringify data
     isTest: Boolean process.env.IS_MIRROR
+    workerShouldDelete: not callback
 
-  cursor = Apollos.queuedApiRequests.find _id: queueId
+  if not callback
+    return
 
-  handle = cursor.observe
-    changed: (response) ->
-      if not response.responseReceived
+  cursor = Apollos.queuedApiRequests.find
+    _id: queueId
+  ,
+    fields: responseReceived: 1
+    limit: 1
+
+  ###
+    This observeChanges (and all other observers for that matter) can be more
+    efficient if we set the MONGO_OPLOG_URL environment variable.
+
+    http://projectricochet.com/blog/magic-meteor-oplog-tailing#.VTenxq1VhBd
+  ###
+  handle = cursor.observeChanges
+    changed: (id, changedFields) ->
+      if not changedFields.responseReceived
         return
 
       debug "Received response from #{resource.substring(0, 25)}"
 
-      if callback
-        jsonError = response.responseError
-        jsonData = response.responseData
+      response = Apollos.queuedApiRequests.findOne queueId
+      jsonError = response.responseError
+      jsonData = response.responseData
 
-        if jsonError
-          error = JSON.parse jsonError
-        if jsonData
-          data = JSON.parse jsonData
+      if jsonError
+        error = JSON.parse jsonError
+      if jsonData
+        data = JSON.parse jsonData
 
-        callback error, data
+      callback error, data
 
       handle.stop()
       Apollos.queuedApiRequests.remove queueId

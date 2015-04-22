@@ -18,9 +18,11 @@ queuedApiRequest = Apollos.generateSchema
   requestSent:
     type: Boolean
     defaultValue: false
+    index: 1
   responseReceived:
     type: Boolean
     defaultValue: false
+    index: 1
   responseError:
     type: String
     optional: true
@@ -30,5 +32,7 @@ queuedApiRequest = Apollos.generateSchema
   isTest:
     type: Boolean
     defaultValue: false
+  workerShouldDelete:
+    type: Boolean
 
 Apollos.queuedApiRequests.attachSchema queuedApiRequest
