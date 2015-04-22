@@ -79,6 +79,7 @@
     "meteor": {
       "src": "newspring",
       "settings": "newspring/settings/development.json",
+      "mongoUrl": "mongodb://localhost/newspring-core",
       "build": {
         "dest": "build",
         "server": "localhost:3000"
@@ -88,6 +89,7 @@
         "newspring:core",
         "velocity:core@=0.6.0",
         "mike:mocha",
+        "meteorhacks:cluster",
         "cordova:io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d"
       ],
       "platforms": [
