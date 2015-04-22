@@ -22,3 +22,19 @@ Rock.name = "Rock"
 Rock.isAlive = ->
 
   serverWatch.isAlive Rock.name
+
+
+###
+
+  Rock.isAlive.onChange
+
+  @example Calls the callback function immediately and then everytime Rock's
+    status changes with a single boolean param of isAlive
+
+    Rock.isAlive.onChange (isAlive) ->
+      console.log isAlive
+
+###
+Rock.isAlive.onChange = (callback) ->
+
+  serverWatch.onChange Rock.name, callback

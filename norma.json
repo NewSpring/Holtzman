@@ -56,7 +56,7 @@
           "accounts-password@=1.1.1": "both",
           "bjwiley2:api-tokens@=0.0.3": "both",
           "cfs:http-methods@=0.0.28": "both",
-          "bjwiley2:server-watch@=0.0.5": "both",
+          "bjwiley2:server-watch@=0.0.6": "both",
           "aldeed:collection2@=2.3.3": "both",
           "bjwiley2:request-data@=0.0.3": "both"
         },
