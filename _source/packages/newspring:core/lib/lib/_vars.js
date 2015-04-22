@@ -1,4 +1,8 @@
 //Exported Variables to be used by other apps/packages
+if(Meteor.isClient) {
+  junction = window.junction;
+}
+
 Rock = {};
 Apollos = {};
 

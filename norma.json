@@ -58,7 +58,8 @@
           "cfs:http-methods@=0.0.28": "both",
           "bjwiley2:server-watch@=0.0.5": "both",
           "aldeed:collection2@=2.3.3": "both",
-          "bjwiley2:request-data@=0.0.3": "both"
+          "bjwiley2:request-data@=0.0.3": "both",
+          "newspring:junction@=1.0.0": "client"
         },
         "npm": {
           "oauth": "0.9.12",
@@ -69,7 +70,8 @@
           "Apollos": "both",
           "HTTP": "server",
           "Router": "both",
-          "serverWatch": "both"
+          "serverWatch": "both",
+          "junction": "client"
         }
       },
       "test": {
