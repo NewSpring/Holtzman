@@ -5,8 +5,10 @@ Meteor.startup ->
 
     query = Apollos.queuedApiRequests.find(requestSent: false)
 
-    query.observe
-      added: (request) ->
-        console.log 'processing', request._id
-        normanConn.call "processRockApiRequest", request
+    Rock.isAlive.onChange ->
+      if Rock.isAlive()
+        query.observe
+          added: (request) ->
+            console.log 'processing', request._id
+            normanConn.call "processRockApiRequest", request
 
