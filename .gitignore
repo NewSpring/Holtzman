@@ -39,5 +39,5 @@ development.json
 .DS_Store
 james_uswesto.pem
 workbench
-./lib/
-./package.js
+lib/
+package.js
