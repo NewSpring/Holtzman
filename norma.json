@@ -68,7 +68,8 @@
           "accounts-password@=1.1.1": "both",
           "cfs:http-methods@=0.0.28": "both",
           "bjwiley2:server-watch@=0.0.6": "both",
-          "aldeed:collection2@=2.3.3": "both"
+          "aldeed:collection2@=2.3.3": "both",
+          "newspring:components@=0.1.1": "client"
         },
         "npm": {
           "oauth": "0.9.12",
@@ -92,8 +93,6 @@
       "packages": [
         "meteor-platform",
         "newspring:apollos-core",
-        "velocity:core@=0.6.0",
-        "mike:mocha",
         "iron:router",
         "meteorhacks:cluster",
         "cordova:io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d"

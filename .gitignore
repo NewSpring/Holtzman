@@ -29,8 +29,6 @@ node_modules
 
 .norma
 build
-out
-newspring
 vendor
 bower.json
 settings.json
