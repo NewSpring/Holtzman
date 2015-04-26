@@ -1,12 +1,9 @@
 {
-  "name": "core",
+  "name": "apollos-core",
   "tasks": {
     "bower": {
-      "/newspring": {
+      "/workbench": {
         "settings": "https://github.com/NewSpring/settings.git"
-      },
-      "/newspring/packages": {
-        "mikemocha": "https://github.com/NewSpring/meteor-mocha-web/tarball/5cb884fffc597d7fd51552643aedcf5af9ad1353"
       },
       "/vendor": {
         "framework": "NewSpring/junction-framework",
@@ -15,51 +12,63 @@
     },
     "javascript": {
       "src": "_source/**/*",
-      "dest": "newspring/"
+      "dest": "lib/"
     },
-    "markup": {
-      "src": "_source/**/*",
-      "dest": "newspring/",
-      "minify": true
-    },
-    "sass": {
-      "src": "_source/**/*",
-      "dest": "newspring/",
-      "comb": true,
-      "lint": true
-    },
-    "copy": {
-      "src": "newspring/settings/development",
-      "dest": "./",
-      "order": "post",
-      "ext": [
-        "json"
-      ]
+    "app-javascript": {
+      "@extend": "javascript",
+      "src": "sample-app/**/*",
+      "dest": "./workbench/"
     },
     "compile-test": {
       "@extend": "javascript",
       "src": "tests/**/*",
-      "dest": "newspring/tests"
+      "dest": "workbench/tests"
+    },
+    "markup": {
+      "src": "_source/**/*",
+      "dest": "lib/",
+      "minify": true
+    },
+    "app-markup": {
+      "@extend": "markup",
+      "src": "sample-app/**/*",
+      "dest": "./workbench/"
+    },
+    "sass": {
+      "src": "sample-app/**/*",
+      "dest": "./workbench/",
+      "comb": true,
+      "lint": true
+    },
+    "copy": {
+      "src": "lib/**/*",
+      "dest": "./workbench/packages/apollos-core/lib/",
+      "order": "post"
+    },
+    "copy-package": {
+      "@extend": "copy",
+      "src": "package",
+      "dest": "./workbench/packages/apollos-core/",
+      "order": "post",
+      "ext": [
+        "js"
+      ]
     },
     "meteor-load": {
-      "src": "newspring/packages/newspring:core/**/*",
-      "dest": "newspring/packages/newspring:core",
+      "src": "lib/**/*",
+      "dest": "./",
       "org": "newspring",
-      "name": "core",
+      "name": "apollos-core",
       "package": {
         "versionsFrom": "1.0.3.1",
         "use": {
           "meteor-platform@=1.2.2": "both",
           "http@=1.1.0": "both",
           "reactive-var@=1.0.5": "both",
-          "iron:router@=1.0.7": "both",
           "accounts-password@=1.1.1": "both",
-          "bjwiley2:api-tokens@=0.0.3": "both",
           "cfs:http-methods@=0.0.28": "both",
           "bjwiley2:server-watch@=0.0.6": "both",
-          "aldeed:collection2@=2.3.3": "both",
-          "bjwiley2:request-data@=0.0.3": "both",
-          "newspring:junction@=1.0.0": "client"
+          "aldeed:collection2@=2.3.3": "both"
         },
         "npm": {
           "oauth": "0.9.12",
@@ -69,9 +78,7 @@
           "Rock": "both",
           "Apollos": "both",
           "HTTP": "server",
-          "Router": "both",
-          "serverWatch": "both",
-          "junction": "client"
+          "serverWatch": "both"
         }
       },
       "test": {
@@ -79,18 +86,15 @@
       }
     },
     "meteor": {
-      "src": "newspring",
-      "settings": "newspring/settings/development.json",
-      "mongoUrl": "mongodb://localhost/newspring-core",
-      "build": {
-        "dest": "build",
-        "server": "localhost:3000"
-      },
+      "dev": true,
+      "src": "workbench",
+      "settings": "workbench/settings/development.json",
       "packages": [
         "meteor-platform",
-        "newspring:core",
+        "newspring:apollos-core",
         "velocity:core@=0.6.0",
         "mike:mocha",
+        "iron:router",
         "meteorhacks:cluster",
         "cordova:io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d"
       ],
@@ -101,8 +105,5 @@
       ]
     }
   },
-  "test": "meteor --test --settings settings/development.json",
-  "scripts": {
-    "postinstall": "./norma-ignore/postinstall.coffee"
-  }
+  "test": "meteor --test --settings settings/development.json"
 }

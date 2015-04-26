@@ -1,5 +1,5 @@
-# newspring:core
-The main NewSpring namespace and utilities for all newspring packages.
+# Apollos:core
+The main Apollos namespace and utilities for all apollos packages.
 
 ## Mirrored repositories
 
