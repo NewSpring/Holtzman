@@ -5,9 +5,6 @@
       "/newspring": {
         "settings": "https://github.com/NewSpring/settings.git"
       },
-      "/newspring/packages": {
-        "mikemocha": "https://github.com/NewSpring/meteor-mocha-web/tarball/5cb884fffc597d7fd51552643aedcf5af9ad1353"
-      },
       "/vendor": {
         "framework": "NewSpring/junction-framework",
         "fonts": "NewSpring/newspring-fonts"
@@ -90,7 +87,7 @@
         "meteor-platform",
         "newspring:core",
         "velocity:core@=0.6.0",
-        "mike:mocha",
+        "mike:mocha@=0.5.4",
         "meteorhacks:cluster",
         "cordova:io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d"
       ],
