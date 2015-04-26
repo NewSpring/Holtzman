@@ -1,4 +1,4 @@
-Ldapjs = Npm.require("ldapjs")
+Ldapjs = MeteorWrapperLdapjs
 
 ldapCreated = false
 ldap = -> return

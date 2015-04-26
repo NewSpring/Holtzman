@@ -1,4 +1,4 @@
-OAuth = Npm.require("oauth").OAuth
+
 Future = Npm.require "fibers/future"
 
 

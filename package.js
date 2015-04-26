@@ -2,7 +2,7 @@
 
 Package.describe({
   'name': 'newspring:apollos-core',
-  'version': '0.1.0',
+  'version': '0.1.3',
   'summary': 'The main NewSpring namespace and utilities for all newspring packages.',
   'git': 'https://github.com/NewSpring/newspring-core.git'
 });
@@ -20,6 +20,8 @@ Package.onUse(function(api) {
   api.use('bjwiley2:server-watch@=0.0.6');
   api.use('aldeed:collection2@=2.3.3');
   api.use('newspring:components@=0.1.1', 'client');
+  api.use('typ:ldapjs@=0.7.3', 'server');
+  api.use('oauth@=1.1.4', 'server');
 
 
   api.addFiles('lib/lib/lib/_vars.js');
@@ -77,19 +79,9 @@ Package.onUse(function(api) {
   api.export('Rock');
   api.export('Apollos');
   api.export('HTTP', 'server');
-  api.export('serverWatch');
 });
 
 
 Package.onTest(function(api) {
-
-
-  api.use('mocha');
   api.use('apollos-core');
 });
-
-
-Npm.depends({
-  'oauth': '0.9.12',
-  'ldapjs': '0.7.0'
-})

@@ -1,8 +1,16 @@
-sync = (entityType, msTime) ->
+
+Rock.sync = (entityType, msTime) ->
   Meteor.setTimeout ->
     debug "\n*** STARTING ROCK SYNC: #{entityType} ***\n"
     Rock[entityType].refresh true
   , msTime
+
+
+Rock.sync.entities = [
+  "definedValues"
+  "users"
+  "people"
+]
 
 
 syncAllWhenRockIsReady = ->
@@ -12,17 +20,12 @@ syncAllWhenRockIsReady = ->
     Meteor.setTimeout syncAllWhenRockIsReady, 15000
     return
 
-  entities = [
-    "definedValues"
-    "users"
-    "people"
-  ]
 
   msTime = 0
   msSpacing = 1000
 
-  for entity in entities
-    sync entity, msTime
+  for entity in Rock.sync.entities
+    Rock.sync entity, msTime
     msTime += msSpacing
 
 
