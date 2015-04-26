@@ -37,23 +37,52 @@ Rock.apiRequest = (method, resource, data, callback) ->
   if Rock.tokenName and Rock.token
     headers[Rock.tokenName] = Rock.token
 
-  debug "Sending #{method} to #{Rock.baseURL}#{resource.substring(0, 25)}..."
+  debug "Queueing request #{resource.substring(0, 25)}"
 
-  if process.env.IS_MIRROR
-    callback or= () -> return
-    Meteor.setTimeout callback, 250
+  queueId = Apollos.queuedApiRequests.insert
+    method: method
+    date: new Date()
+    url: "#{Rock.baseURL}#{resource}"
+    headers: JSON.stringify headers
+    data: JSON.stringify data
+    isTest: Boolean process.env.IS_MIRROR
+    workerShouldDelete: not callback
+
+  if not callback
     return
 
-  if not Rock.isAlive()
-    # build queue system herenot
-    debug "Rock is OFFLINE - canceling request #{resource.substring(0, 25)}"
-    return
+  cursor = Apollos.queuedApiRequests.find
+    _id: queueId
+  ,
+    fields: responseReceived: 1
+    limit: 1
 
-  HTTP.call method, "#{Rock.baseURL}#{resource}",
-    timeout: 5000
-    headers: headers
-    data: data
-  , callback
+  ###
+    This observeChanges (and all other observers for that matter) can be more
+    efficient if we set the MONGO_OPLOG_URL environment variable.
+
+    http://projectricochet.com/blog/magic-meteor-oplog-tailing#.VTenxq1VhBd
+  ###
+  handle = cursor.observeChanges
+    changed: (id, changedFields) ->
+      if not changedFields.responseReceived
+        return
+
+      debug "Received response from #{resource.substring(0, 25)}"
+
+      response = Apollos.queuedApiRequests.findOne queueId
+      jsonError = response.responseError
+      jsonData = response.responseData
+
+      if jsonError
+        error = JSON.parse jsonError
+      if jsonData
+        data = JSON.parse jsonData
+
+      callback error, data
+
+      handle.stop()
+      Apollos.queuedApiRequests.remove queueId
 
 
 ###
