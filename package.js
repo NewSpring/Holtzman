@@ -26,7 +26,6 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/lib/regex.js');
   api.addFiles('lib/lib/lib/rockEnums.js');
   api.addFiles('lib/lib/collections/_helpers.js');
-  api.addFiles('lib/lib/collections/accounts.js');
   api.addFiles('lib/lib/collections/campuses.js');
   api.addFiles('lib/lib/collections/definedValues.js');
   api.addFiles('lib/lib/collections/geoJSON.js');
@@ -34,10 +33,6 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/collections/locations.js');
   api.addFiles('lib/lib/collections/people.js');
   api.addFiles('lib/lib/collections/queuedApiRequest.js');
-  api.addFiles('lib/lib/collections/savedAccounts.js');
-  api.addFiles('lib/lib/collections/scheduledTransactions.js');
-  api.addFiles('lib/lib/collections/transactionDetails.js');
-  api.addFiles('lib/lib/collections/transactions.js');
   api.addFiles('lib/lib/collections/user.js');
   api.addFiles('lib/lib/apollos.js');
   api.addFiles('lib/lib/rock.js');
@@ -63,26 +58,15 @@ Package.onUse(function(api) {
 
   api.addFiles('lib/lib/routes/server/api.js', 'server');
   api.addFiles('lib/server/lib/apollos/_entityHelpers.js', 'server');
-  api.addFiles('lib/server/lib/apollos/account.js', 'server');
   api.addFiles('lib/server/lib/apollos/f1.js', 'server');
-  api.addFiles('lib/server/lib/apollos/give.js', 'server');
   api.addFiles('lib/server/lib/apollos/ldap.js', 'server');
   api.addFiles('lib/server/lib/apollos/person.js', 'server');
-  api.addFiles('lib/server/lib/apollos/transaction.js', 'server');
-  api.addFiles('lib/server/lib/apollos/transactionDetail.js', 'server');
   api.addFiles('lib/server/lib/apollos/user.js', 'server');
   api.addFiles('lib/server/lib/rock/_shared.js', 'server');
-  api.addFiles('lib/server/lib/rock/account.js', 'server');
   api.addFiles('lib/server/lib/rock/definedValues.js', 'server');
   api.addFiles('lib/server/lib/rock/person.js', 'server');
-  api.addFiles('lib/server/lib/rock/transaction.js', 'server');
-  api.addFiles('lib/server/lib/rock/transactionDetail.js', 'server');
   api.addFiles('lib/server/lib/rock/user.js', 'server');
-  api.addFiles('lib/server/methods/apollos.js', 'server');
-  api.addFiles('lib/server/methods/rock.js', 'server');
-  api.addFiles('lib/server/publications/user.js', 'server');
   api.addFiles('lib/server/startup/sync.js', 'server');
-  api.addFiles('lib/server/publications.js', 'server');
 
 
   api.addFiles('lib/shared/utlities/utilities.js');

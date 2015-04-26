@@ -16,9 +16,6 @@ syncAllWhenRockIsReady = ->
     "definedValues"
     "users"
     "people"
-    "transactions"
-    "transactionDetails"
-    "accounts"
   ]
 
   msTime = 0
