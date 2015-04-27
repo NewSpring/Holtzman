@@ -106,6 +106,7 @@ person = Apollos.generateSchema
     optional: true
   personAliasIds:
     type: [Number]
+    optional: true
   recordStatusValueId:
     type: Number
     decimal: false

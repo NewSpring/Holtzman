@@ -1,96 +1,70 @@
 
-class Input
+class input extends Apollos.Component
 
-  constructor: (name, template) ->
-    @.template = template
-    @.name = name
+  @register "input"
 
-  validate: (validateFunction) ->
-    console.log validateFunction
+  template: "input"
 
-  setStatus: (status, isError) =>
+  vars: -> [
 
-    if not isError and typeof status is "boolean"
-      isError = status
+    error: null
+    status: null
+    value: null
 
-      if isError
-        status = @.template.data.errorText
-      else
-        status = @.template.data.statusText
+  ]
 
+  events: -> [
 
-    @.template.status.set status
-    @.template.error.set isError
-
-  getValue: =>
-
-    return @.template.value.get()
-
-  setValue: (value) =>
-    @.template.value.set value
-    if value
-      @.template.find("input").value = value
-      return
+    "focus input": @.focused
 
 
+    "blur input": @.blurred
+
+    # can this be a change event?
+    "focus input, keyup input, blur input": @.changed
 
 
+    "focus input, keyup input": @.active
 
-Template.input.onCreated ->
+  ]
 
-  # reassign this for ease of use
-  self = @
+  focused: (event) ->
 
-  self._ = new Input self.data.name, self
-
-  if self.data.bind
-    parentLink = self.data.bind.get()
-    parentLink.methods = self._
-    self.data.bind.set parentLink
-
-  # Needed states for rendering
-  self.error = new ReactiveVar()
-  self.status = new ReactiveVar()
-  self.value = new ReactiveVar()
-
-
-
-Template.input.helpers
-
-  "error": ->
-    return Template.instance().error.get()
-
-  "status": ->
-    return Template.instance().status.get()
-
-  "value": ->
-    return Template.instance().value.get()
-
-
-
-Template.input.events
-
-
-  "focus input": (event, template) ->
+    self = @
 
     # switch to junction when ready
     $(event.target.parentNode)
       .addClass "input--active"
 
+    parent = self.parent()
+    if parent.find("form")
+      parent.hasErrors.set false
 
-  "blur input": (event, template) ->
 
-    if event.target.value and template.data.validate
-      validateFunction = template.data.validate
+  blurred: (event) ->
+
+    self = @
+    parent = self.parent()
+    isForm = parent.find("form")
+    data = self.data()
+
+    if event.target.value and data.validate
+      validateFunction = data.validate
       valid = Apollos.validate[validateFunction] event.target.value
 
       if not valid
-        template.error.set true
-        template.status.set template.data.errorText
+        self.error.set true
+        self.status.set data.errorText
+        if isForm
+          parent.hasErrors.set true
 
+      return
 
     # reset parent errors
     # code for reset parent errors
+    if isForm
+      parent.hasErrors.set false
+
 
     # if the input is empty, remove the input--active class
     if not event.target.value
@@ -100,16 +74,45 @@ Template.input.events
         .removeClass "input--active"
 
 
-
-  # can this be a change event?
-  "focus input, keyup input, blur input": (event, template) ->
-
+  changed: (event) ->
+    self = @
     # bind the value to the template
-    template.value.set event.target.value
+    self.value.set event.target.value
 
 
-  "focus input, keyup input": (event, template) ->
-
+  active: (event) ->
+    self = @
     # remove the error becuase they are doing something
-    template.error.set false
-    template.status.set false
+    self.error.set false
+    self.status.set false
+
+
+  setStatus: (status, isError) ->
+
+    self = @
+
+    if not isError and typeof status is "boolean"
+      isError = status
+
+      data = self.data()
+      if isError
+        status = data.errorText
+      else
+        status = data.statusText
+
+    self.status.set status
+    self.error.set isError
+
+
+  getValue: ->
+
+    return @.value.get()
+
+
+  setValue: (value) ->
+
+    @.value.set value
+
+    if value
+      @.find("input").value = value
+      return

@@ -39,7 +39,8 @@ Rock.user.translate = (user, platform) ->
 
       rockUser =
         UserName: user.emails[0].address
-        ApollosHash: user.services.password.bcrypt
+        # user may not have password if pulling from exterior service
+        ApollosHash: user.services?.password?.bcrypt
 
       if user.rock
         rockUser.PersonId = user.rock.personId

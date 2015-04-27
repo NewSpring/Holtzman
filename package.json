@@ -1,10 +1,11 @@
 {
   "name": "apollos-core",
-  "version": "0.1.3",
-  "description": "The main NewSpring namespace and utilities for all newspring packages.",
+  "version": "0.1.4",
+  "description": "The main Apollos namespace and utilities for all apollos packages.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "meteor publish"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "norma-bower": "^0.3.2",
+    "norma-copy": "^0.4.2",
     "norma-javascript": "^0.4.2",
     "norma-markup": "^0.5.4",
     "norma-meteor": "^0.3.14",

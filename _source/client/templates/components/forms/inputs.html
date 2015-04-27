@@ -1,6 +1,6 @@
 <template name="input">
 
-  <div class="input {{#if error}}input--alert{{/if}}">
+  <div class="input {{#if error.get}}input--alert{{/if}}">
 
     <label for="{{name}}">
       {{#if label}}
@@ -14,12 +14,13 @@
       name="{{name}}"
       type="{{#if type}}{{type}}{{else}}{{name}}{{/if}}"
       placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
+      value="{{#if preFill}}{{preFill}}{{/if}}"
     >
 
-    {{#if status}}
+    {{#if status.get}}
 
       <span class="input__status">
-        {{status}}
+        {{status.get}}
       </span>
 
     {{/if}}

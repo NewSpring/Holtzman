@@ -65,7 +65,7 @@ Apollos.person = ->
 ###
 Apollos.user.create = (email, password, callback) ->
 
-  return Accounts.createUser
+  Accounts.createUser
     email: email
     password: password
   ,

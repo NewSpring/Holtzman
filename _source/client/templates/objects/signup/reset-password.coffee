@@ -7,87 +7,70 @@ Accounts.onResetPasswordLink (token, done) ->
   doneCallback = done
 
 
+class resetPassword extends Apollos.Component
 
-Template.resetPassword.onCreated ->
+  @register "resetPassword"
 
-  self = @
+  template: "resetPassword"
 
-  self.hasErrors = new ReactiveVar(false)
+  vars: -> [
 
-  self.password = new ReactiveVar({
-    methods: null
-    parent: self
-  })
+    hasErrors: false
 
-  self.confirmPassword = new ReactiveVar({
-    methods: null
-    parent: self
-  })
-
-
-
-Template.resetPassword.helpers
-
-  "hasErrors": ->
-    return Template.instance().hasErrors.get()
+  ]
 
   "resetPasswordToken": ->
     return Session.get "resetPasswordToken"
 
-  "password": ->
-    return Template.instance().password
 
-  "confirmPassword": ->
-    return Template.instance().confirmPassword
+  onRendered: ->
 
-
-
-Template.resetPassword.onRendered ->
-
-  # use if navigating away from reset password page
-  sessionReset = ->
-    return
-
-
-Template.resetPassword.events
-
-  "focus input": (event, template) ->
-    template.hasErrors.set false
-
-  "submit #reset-password": (event, template) ->
-    event.preventDefault()
-
-    token = Session.get "resetPasswordToken"
-    password = template.find("input[name=password]").value
-    confirmPassword = template.find("input[name=confirmPassword]").value
-
-    if not password
-      template.hasErrors.set true
-      passwordTemplate = template.password.get()
-      passwordTemplate.methods.setStatus "Password cannot be empty", true
-      return
-    else if not confirmPassword
-      template.hasErrors.set true
-      confirmPasswordTemplate = template.confirmPassword.get()
-      confirmPasswordTemplate.methods.setStatus "Password cannot be empty", true
-      return
-    else if password != confirmPassword
-      template.hasErrors.set true
-      confirmPasswordTemplate = template.confirmPassword.get()
-      confirmPasswordTemplate.methods.setStatus "Passwords must match", true
+    # use if navigating away from reset password page
+    sessionReset = ->
       return
 
-    Apollos.user.resetPassword token, password, (error) ->
-      if error
 
-        template.hasErrors.set true
+  events: -> [
 
-        # token expired
-        if error.error is 403
-          passwordTemplate = template.password.get()
-          passwordTemplate.methods.setStatus "This reset link has expired", true
+    "submit #reset-password": (event) ->
 
-      else
-        Session.set "resetPasswordToken", ""
-        doneCallback()
-        Router.go "home"
+      self = @
+      event.preventDefault()
+      children = {}
+      for child in self.children("input")
+        children[child.data().name] = child
+
+
+      token = Session.get "resetPasswordToken"
+      password = self.find("input[name=password]").value
+      confirmPassword = self.find("input[name=confirmPassword]").value
+
+      if not password
+        self.hasErrors.set true
+        children["password"].setStatus "Password cannot be empty", true
+        return
+
+      if not confirmPassword
+        self.hasErrors.set true
+        children["confirmPassword"].setStatus "Password cannot be empty", true
+        return
+
+      if password isnt confirmPassword
+        self.hasErrors.set true
+        children["confirmPassword"].setStatus "Passwords must match", true
+        return
+
+      Apollos.user.resetPassword token, password, (error) ->
+        if error
+
+          self.hasErrors.set true
+
+          # token expired
+          if error.error is 403
+            children["password"].setStatus "This reset link has expired", true
+
+        else
+          Session.set "resetPasswordToken", ""
+          doneCallback()
+          Router.go "home"
+  ]

@@ -1,106 +1,49 @@
-class ForgotPassword
+class forgotPassword extends Apollos.Component
 
-  constructor: (template) ->
+  @register "forgotPassword"
 
-    @.template = template
-
-
-Template.forgotPassword.onCreated ->
-
-  self = @
-
-  # self.subscribe "apollos-users"
-  self._ = new ForgotPassword self
-
-  self.email = new ReactiveVar()
-
-  if self.data?.bind
-    parentLink = self.data.bind.get()
-    parentLink.methods = self._
-    self.data.bind.set parentLink
-
-    if parentLink.parent.email
-      self.email = parentLink.parent.email.get()
-
-  self.reset = new ReactiveVar(false)
-  self.hasErrors = new ReactiveVar(false)
-
-  self.email = new ReactiveVar({
-    methods: null
-    parent: self
-  })
+  template: "forgotPassword"
 
 
-Template.forgotPassword.helpers
+  vars: -> [
 
-  "hasErrors": ->
-    return Template.instance().hasErrors.get()
+    hasErrors: false
+    sentEmail: ""
+    reset: false
 
+  ]
 
-  "email": ->
-    return Template.instance().email
+  events: -> [
 
-  "sentEmail": ->
+    "click [data-forgot-password]": (event) ->
 
-    emailTemplate = Template.instance().email.get()
+      self = @
+      parent = @.parent()
 
-    if emailTemplate?.methods
-      email = emailTemplate.methods.getValue()
-
-      return email
-
-    return
-
-
-  "reset": ->
-    return Template.instance().reset.get()
+      parent.passwordForget.set false
 
 
 
-Template.forgotPassword.events
+    "submit #forgot-password": (event) ->
 
-  "click [data-forgot-password]": (event, template) ->
+      event.preventDefault()
+      self = @
+      children = {}
+      for child in self.children("input")
+        children[child.data().name] = child
 
-    if event.target.dataset?.forgotPassword
-      templateLink = template.data.bind.get()
+      email = self.find("input[name=email]").value.toLowerCase()
 
-      email = template.email.get()
-      if email?.methods
-        email = email.methods.getValue()
+      if not Apollos.validate.isEmail email
+        children["email"].setStatus true
+        return
 
-        templateLink.parent.email.set email
-
-      templateLink.parent.passwordForget.set false
+      self.parent().email.set email
 
 
-
-  "submit #forgot-password": (event, template) ->
-    event.preventDefault()
-
-    console.log "meowmeowmeowmeowmeowmeow"
-    email = template.find("input[name=email]").value.toLowerCase()
-
-    if not Apollos.validate.isEmail email
-      template.hasErrors.set true
-      emailTemplate = template.email.get()
-      emailTemplate.methods.setStatus true
+      Apollos.user.forgotPassword email
+      self.reset.set true
       return
 
 
-    console.log "meowmeowmeowmeowmeowmeow"
-    Apollos.user.forgotPassword email
-    template.reset.set true
-    return
-
-
-Template.forgotPassword.onRendered ->
-
-  self = @
-
-  templateLink = @.data.bind.get()
-  if email
-    email = templateLink.parent.email.get()
-
-  if emailTemplate
-    emailTemplate = self.email.get()
-    emailTemplate.methods.setValue email
+  ]

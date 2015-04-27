@@ -1,6 +1,6 @@
 <template name="checkbox">
 
-  <div class="input {{#if error}}input--alert{{/if}} {{#if status}}push-double-bottom{{/if}}">
+  <div class="input {{#if error.get}}input--alert{{/if}} {{#if status.get}}push-double-bottom{{/if}}">
 
     <input
       id="{{name}}"
@@ -25,10 +25,10 @@
 
 
 
-    {{#if status}}
+    {{#if status.get}}
 
       <span class="input__status">
-        {{status}}
+        {{status.get}}
       </span>
 
     {{/if}}

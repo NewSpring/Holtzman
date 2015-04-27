@@ -2,8 +2,8 @@
 
 Package.describe({
   'name': 'newspring:apollos-core',
-  'version': '0.1.3',
-  'summary': 'The main NewSpring namespace and utilities for all newspring packages.',
+  'version': '0.1.4',
+  'summary': 'The main Apollos namespace and utilities for all apollos packages.',
   'git': 'https://github.com/NewSpring/newspring-core.git'
 });
 
@@ -19,13 +19,13 @@ Package.onUse(function(api) {
   api.use('cfs:http-methods@=0.0.28');
   api.use('bjwiley2:server-watch@=0.0.6');
   api.use('aldeed:collection2@=2.3.3');
-  api.use('newspring:components@=0.1.1', 'client');
+  api.use('newspring:components@=0.1.8', 'client');
   api.use('typ:ldapjs@=0.7.3', 'server');
   api.use('oauth@=1.1.4', 'server');
 
 
   api.addFiles('lib/lib/lib/_vars.js');
-  api.addFiles('lib/lib/lib/apollosEnums.js');
+  api.addFiles('lib/lib/lib/accounts.js');
   api.addFiles('lib/lib/lib/regex.js');
   api.addFiles('lib/lib/lib/rockEnums.js');
   api.addFiles('lib/lib/collections/_helpers.js');
@@ -62,7 +62,6 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/routes/server/api.js', 'server');
   api.addFiles('lib/server/lib/apollos/_entityHelpers.js', 'server');
   api.addFiles('lib/server/lib/apollos/f1.js', 'server');
-  api.addFiles('lib/server/lib/apollos/ldap.js', 'server');
   api.addFiles('lib/server/lib/apollos/person.js', 'server');
   api.addFiles('lib/server/lib/apollos/user.js', 'server');
   api.addFiles('lib/server/lib/rock/_shared.js', 'server');
@@ -79,9 +78,4 @@ Package.onUse(function(api) {
   api.export('Rock');
   api.export('Apollos');
   api.export('HTTP', 'server');
-});
-
-
-Package.onTest(function(api) {
-  api.use('apollos-core');
 });

@@ -1,16 +1,19 @@
 <template name="onboard">
 
   {{!-- Spacebars does not have else if statements :( --}}
+  {{! Need to extend so we can have else if statements}}
   {{#if resetPasswordToken}}
-    {{> resetPassword}}
+    {{> resetPassword
+      email=email.get
+    }}
   {{else}}
-    {{#if passwordForget}}
+    {{#if passwordForget.get}}
       {{> forgotPassword
-        bind=passwordForgetLink
+        email=email.get
       }}
     {{else}}
       {{> signin
-        bind=signinLink
+        email=email.get
       }}
     {{/if}}
   {{/if}}

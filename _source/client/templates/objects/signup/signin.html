@@ -1,12 +1,12 @@
 <template name="signin">
 
-  <form id="{{#if hasAccount}}signin{{else}}signup{{/if}}">
+  <form id="{{#if hasAccount.get}}signin{{else}}signup{{/if}}">
     <fieldset>
       <div class="toggle push-double-bottom">
-        <div data-form="signup" class="transition one-half text-center toggle__item {{#unless hasAccount}}toggle__item--active{{/unless}}">
+        <div data-form="signup" class="transition one-half text-center toggle__item {{#unless hasAccount.get}}toggle__item--active{{/unless}}">
           Register
         </div>
-        <div data-form="signin" class="transition one-half text-center toggle__item {{#if hasAccount}}toggle__item--active{{/if}}">
+        <div data-form="signin" class="transition one-half text-center toggle__item {{#if hasAccount.get}}toggle__item--active{{/if}}">
           Sign In
         </div>
       </div>
@@ -18,7 +18,7 @@
         label="Email"
         validate="isEmail"
         errorText="Please enter a valid email"
-        bind=email
+        preFill=email
       }}
 
       {{> input
@@ -26,22 +26,20 @@
         placeholder="password"
         label="Password"
         errorText="Password may not be empty"
-        bind=password
       }}
 
-      {{#unless hasAccount}}
+      {{#unless hasAccount.get}}
 
         {{#checkbox
           name="terms"
           checked="true"
-          bind=terms
         }}
           By signing up you agree to our <a href="#">terms and conditions</a>
         {{/checkbox}}
 
       {{/unless}}
 
-      {{#if showForgotPassword }}
+      {{#if showForgotPassword.get }}
       <h7 class="push-bottom">
         <small>
         <a href="#" data-forgot-password="true">Forgot Password?</a>
@@ -50,7 +48,7 @@
       {{/if}}
 
     </fieldset>
-    {{#unless hasErrors}}
+    {{#unless hasErrors.get}}
 
       <button class="icon--filled background--fill" style="background-image:url(https://s3.amazonaws.com/uploads.hipchat.com/21097/1894791/uRyBvEK6wEqWU1B/next-steps.png); background-size: 40%;" type="submit"></button>
 
