@@ -35,7 +35,7 @@ added, commit and push as normal.
 
 ## Developer Interface
 
-### Rock
+<!-- ### Rock
 
 This package exposes a Rock object to the client and server:
 
@@ -58,7 +58,7 @@ error and result
 
 * Rock.name - A string to identify the server endpoint by name like "Rock"
 * Rock.isAlive() - A function that returns true if the server at baseUrl has
-responded to the most recent ping (30 second intervals).
+responded to the most recent ping (30 second intervals). -->
 
 ### Apollos
 
