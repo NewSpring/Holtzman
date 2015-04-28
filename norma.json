@@ -69,9 +69,7 @@
           "cfs:http-methods@=0.0.28": "both",
           "bjwiley2:server-watch@=0.0.6": "both",
           "aldeed:collection2@=2.3.3": "both",
-          "newspring:components@=0.1.8": "client",
-          "typ:ldapjs@=0.7.3": "server",
-          "oauth@=1.1.4": "server"
+          "newspring:components@=0.1.8": "client"
         },
         "export": {
           "Rock": "both",
