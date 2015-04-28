@@ -1,10 +1,10 @@
 baseURL = "api/v1/"
 
-endpoints =
+Apollos.api.endpoints =
   user: "#{baseURL}users/"
   person: "#{baseURL}people/"
-  transaction: "#{baseURL}transactions/"
-  transactionDetail: "#{baseURL}transactionDetails/"
+  # transaction: "#{baseURL}transactions/"
+  # transactionDetail: "#{baseURL}transactionDetails/"
   account: "#{baseURL}accounts/"
 
 jsonContentType = "application/JSON"
@@ -76,7 +76,7 @@ authenticate = ->
 
   @example authenticates and then calls the delete handler
 
-    return deleteResource.call @, Apollos.person.delete, Rock.name
+    return deleteResource.call @, Apollos.person.delete, plaform
 
   @param context should be the HTTP.methods handler function
   @param handlerFunc is the function that will delete the resource
@@ -100,7 +100,7 @@ deleteResource = (handlerFunc, platform) ->
 
   @example authenticates and then calls the upsert handler
 
-    return upsertResource.call @, data, Apollos.person.update, Rock.name
+    return upsertResource.call @, data, Apollos.person.update, plaform
 
   @param context should be the HTTP.methods handler function
   @param data is the javascript object with the request data
@@ -116,7 +116,8 @@ upsertResource = (data, handlerFunc, platform) ->
     return handleAuthenticationError.call @
 
   resource = parseRequestData data, @.requestHeaders["content-type"]
-  console.log resource
+
+
   if not resource
     resource = {}
 
@@ -138,20 +139,23 @@ upsertResource = (data, handlerFunc, platform) ->
     is associated with
 
 ###
+
+# TODO build registration service for plaforms (how do we know who is calling?)
 createStandardEndpoint = (url, entityType) ->
   api["#{url}:id"] =
 
     post: (data) ->
 
       debug "Got POST for #{url}#{@.params.id}"
-      return upsertResource.call @, data, Apollos[entityType].update, Rock.name
+      return upsertResource.call @, data, Apollos[entityType].update, platform
 
     delete: (data) ->
 
       debug "Got DELETE for #{url}#{@.params.id}"
-      return deleteResource.call @, Apollos[entityType].delete, Rock.name
+      return deleteResource.call @, Apollos[entityType].delete, platform
 
-for typeName, url of endpoints
+
+for typeName, url of Apollos.api.endpoints
   createStandardEndpoint url, typeName
 
 HTTP.methods api

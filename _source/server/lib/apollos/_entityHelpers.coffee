@@ -1,12 +1,26 @@
 Apollos.entityHelpers =
 
+
+  translate: (doc, data, platform) ->
+
+    if not platform
+      debug "must specify platform to translate to"
+
+    if not Apollos[doc]._dictionary[platform]
+      debug "no translation found for #{platform} in #{doc}"
+      return
+
+    # translate
+    return Apollos[doc]._dictionary[platform] data
+
+
   ###
 
     Apollos.entityHelpers.update
 
     @example update an entity in apollos with data from a platform
 
-      pollos.entityHelpers.update "person", "people", person, "Rock"
+      Apollos.entityHelpers.update "person", "people", person, platform
 
     @param singular [String] The singular form of the entities name
     @param plural [String] The plural form of the entities name
@@ -20,8 +34,8 @@ Apollos.entityHelpers =
     singularIdKeyValue = {}
     singularIdKeyValue["#{singular}Id"] = entity["#{singular}Id"]
 
-    if platform and platform.toUpperCase() is Rock.name.toUpperCase()
-      entity.updatedBy = Rock.name
+    if platform
+      entity.updatedBy = platform.toUpperCase()
     else
       entity.updatedBy = Apollos.name
 
@@ -70,12 +84,11 @@ Apollos.entityHelpers =
 
     @example take an entity and delete it
 
-      Apollos.entityHelpers.delete("person", "people", 3, "Rock")
+      Apollos.entityHelpers.delete("person", "people", 3, plaform)
 
     @param singular [String] The singular form of the entities name
     @param plural [String] The plural form of the entities name
-    @param transaction [Object|String|Number] existing document, _id, or
-      rock.entityId
+    @param identifier [Object|String|Number] existing document, _id
     @param platform [String] platform initiating the delete
 
   ###
@@ -96,8 +109,8 @@ Apollos.entityHelpers =
       throw new Meteor.Error "Delete Error", "Could not delete #{singular}
         identified by #{identifier}"
 
-    if platform and platform.toUpperCase() is Rock.name.toUpperCase()
-      entity.updatedBy = Rock.name
+    if platform
+      entity.updatedBy = platform.toUpperCase()
     else
       entity.updatedBy = Apollos.name
 

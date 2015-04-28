@@ -23,9 +23,7 @@ Package.onUse(function(api) {
 
 
   api.addFiles('lib/lib/lib/_vars.js');
-  api.addFiles('lib/lib/lib/accounts.js');
   api.addFiles('lib/lib/lib/regex.js');
-  api.addFiles('lib/lib/lib/rockEnums.js');
   api.addFiles('lib/lib/collections/_helpers.js');
   api.addFiles('lib/lib/collections/campuses.js');
   api.addFiles('lib/lib/collections/definedValues.js');
@@ -35,12 +33,14 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/collections/people.js');
   api.addFiles('lib/lib/collections/queuedApiRequest.js');
   api.addFiles('lib/lib/collections/user.js');
+  api.addFiles('lib/lib/routes/lib/api.js');
+  api.addFiles('lib/lib/utlities/utilities.js');
+  api.addFiles('lib/lib/utlities/validationHelpers.js');
+  api.addFiles('lib/lib/accounts.js');
   api.addFiles('lib/lib/apollos.js');
-  api.addFiles('lib/lib/rock.js');
 
 
   api.addFiles('lib/client/lib/apollos.js', 'client');
-  api.addFiles('lib/client/lib/rock.js', 'client');
   api.addFiles('lib/client/templates/components/forms/checkbox.html', 'client');
   api.addFiles('lib/client/templates/components/forms/inputs.html', 'client');
   api.addFiles('lib/client/templates/components/forms/checkbox.js', 'client');
@@ -59,21 +59,18 @@ Package.onUse(function(api) {
 
   api.addFiles('lib/lib/routes/server/api.js', 'server');
   api.addFiles('lib/server/lib/apollos/_entityHelpers.js', 'server');
-  api.addFiles('lib/server/lib/apollos/f1.js', 'server');
+  api.addFiles('lib/server/lib/apollos/observe.js', 'server');
   api.addFiles('lib/server/lib/apollos/person.js', 'server');
+  api.addFiles('lib/server/lib/apollos/translate.js', 'server');
   api.addFiles('lib/server/lib/apollos/user.js', 'server');
-  api.addFiles('lib/server/lib/rock/_shared.js', 'server');
-  api.addFiles('lib/server/lib/rock/definedValues.js', 'server');
-  api.addFiles('lib/server/lib/rock/person.js', 'server');
-  api.addFiles('lib/server/lib/rock/user.js', 'server');
-  api.addFiles('lib/server/startup/sync.js', 'server');
-
-
-  api.addFiles('lib/shared/utlities/utilities.js');
-  api.addFiles('lib/shared/utlities/validationHelpers.js');
 
 
   api.export('Rock');
   api.export('Apollos');
   api.export('HTTP', 'server');
+});
+
+
+Package.onTest(function(api) {
+  api.use('apollos-core');
 });

@@ -8,6 +8,7 @@ Apollos.user.hasAccount = (email) ->
 
   return false
 
+
 Meteor.methods(
   "Apollos.user.hasAccount": Apollos.user.hasAccount
 )
@@ -26,53 +27,9 @@ Meteor.methods(
 ###
 Apollos.user.translate = (user, platform) ->
 
-  # Default to Rock
-  if not platform
-    platform = Rock.name
+  return Apollos.entityHelpers.translate "person", person, platform
 
-  # forced uppercase to make case insensitive strings
-  switch platform.toUpperCase()
-    when Rock.name.toUpperCase()
 
-      # Grab existing user for merging if
-      if user
-        existingUser = Apollos.users.findOne
-          "rock.userLoginId": user.Id
-      else
-        user = Rock.user()
-
-      existingUser or= {}
-
-      # add rock property
-      if not existingUser.rock
-        existingUser.rock = {}
-
-      # map properties from Rock to Apollos
-      if user.PersonId
-        existingUser.rock.personId = Number user.PersonId
-      else
-        existingUser.rock.personId = null
-
-      existingUser.rock.guid = user.Guid
-
-      if user.Id
-        existingUser.rock.userLoginId = Number user.Id
-      else
-        existingUser.rock.userLoginId = null
-
-      # If we have a vaildated email
-      if Apollos.validate.isEmail user.UserName
-        existingUser.emails = existingUser.emails or []
-        existingUser.emails[0] = existingUser.emails[0] or {}
-        existingUser.emails[0].address = user.UserName
-
-      # if the password is a hashed thing
-      if Apollos.validate.isBcryptHash user.ApollosHash
-        existingUser.services = existingUser.services or {}
-        existingUser.services.password = existingUser.services.password or {}
-        existingUser.services.password.bcrypt = user.ApollosHash
-
-      return existingUser
 
 ###
 
@@ -142,8 +99,8 @@ Apollos.user.update = (user, platform) ->
   else
     usr = users[0]
 
-  if platform and platform.toUpperCase() is Rock.name.toUpperCase()
-    user.updatedBy = Rock.name
+  if platform
+    user.updatedBy = platform.toUpperCase()
   else
     user.updatedBy = Apollos.name
 
@@ -159,28 +116,7 @@ Apollos.user.update = (user, platform) ->
 
     return usr._id
 
+
 Meteor.startup ->
-  initializing = true
 
-  Apollos.users.find().observe
-
-    added: (doc) ->
-
-      if initializing
-        return
-      if doc.updatedBy isnt Rock.name and doc.updatedBy
-          Rock.user.create doc
-
-
-    changed: (newDoc, oldDoc) ->
-
-      if newDoc.updatedBy isnt Rock.name
-        Rock.user.update newDoc
-
-    removed: (doc) ->
-
-      if doc.updatedBy isnt Rock.name
-        Rock.user.delete doc, Rock.name
-      return
-
-  initializing = false
+  Apollos.observe "users"

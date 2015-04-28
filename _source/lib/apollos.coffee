@@ -39,6 +39,7 @@ Apollos.person = ->
 
   userDoc = Apollos.user()
 
+  # can we abstract this?
   if userDoc and userDoc.rock
     personId = userDoc.rock.personId
 
