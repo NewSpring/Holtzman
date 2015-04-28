@@ -2,7 +2,7 @@
 
 Package.describe({
   'name': 'newspring:apollos-core',
-  'version': '0.1.5',
+  'version': '0.1.7',
   'summary': 'The main Apollos namespace and utilities for all apollos packages.',
   'git': 'https://github.com/NewSpring/newspring-core.git'
 });
@@ -20,8 +20,6 @@ Package.onUse(function(api) {
   api.use('bjwiley2:server-watch@=0.0.6');
   api.use('aldeed:collection2@=2.3.3');
   api.use('newspring:components@=0.1.8', 'client');
-  api.use('typ:ldapjs@=0.7.3', 'server');
-  api.use('oauth@=1.1.4', 'server');
 
 
   api.addFiles('lib/lib/lib/_vars.js');

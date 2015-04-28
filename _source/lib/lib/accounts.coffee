@@ -26,8 +26,8 @@ if Meteor.isClient
 
       if authenticated is false
         isAuthenticated = true
-        throw new Meteor.Error("login", "Wrong username or password")
-        break
+        # throw new Meteor.Error("login", "Wrong username or password")
+        continue
 
       # Each service should save username and password
       # after verifying third party
