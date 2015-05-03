@@ -27,7 +27,7 @@
     "norma-javascript": "^0.4.2",
     "norma-markup": "^0.5.4",
     "norma-meteor": "^0.3.14",
-    "norma-meteor-load": "^0.2.1",
+    "norma-meteor-load": "^0.2.2",
     "norma-sass": "^0.4.7"
   }
 }

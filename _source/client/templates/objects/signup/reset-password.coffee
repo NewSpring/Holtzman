@@ -11,8 +11,6 @@ class resetPassword extends Apollos.Component
 
   @register "resetPassword"
 
-  template: "resetPassword"
-
   vars: -> [
 
     hasErrors: false
@@ -37,7 +35,7 @@ class resetPassword extends Apollos.Component
       self = @
       event.preventDefault()
       children = {}
-      for child in self.children("input")
+      for child in self.children("Apollos.Forms.Input")
         children[child.data().name] = child
 
 

@@ -1,9 +1,8 @@
 
+
 class signin extends Apollos.Component
 
   @register "signin"
-
-  template: "signin"
 
   vars: -> [
 
@@ -51,7 +50,7 @@ class signin extends Apollos.Component
 
         if email
           parent.email.set email
-      
+
         parent.passwordForget.set true
 
 
@@ -87,7 +86,7 @@ class signin extends Apollos.Component
 
       if error
         # Uh oh... what do we do here?
-        debug "ERROR: #{error}"
+        Apollos.debug "ERROR: #{error}"
 
       self.hasAccount.set hasAccount
 
@@ -97,7 +96,7 @@ class signin extends Apollos.Component
 
     self = @
     children = {}
-    for child in self.children("input")
+    for child in self.children("Apollos.Forms.Input")
       children[child.data().name] = child
 
 
@@ -125,7 +124,7 @@ class signin extends Apollos.Component
 
     # get children inputs and map to object
     children = {}
-    for child in self.children("input")
+    for child in self.children("Apollos.Forms.Input")
       children[child.data().name] = child
 
     email = self.find("input[name=email]").value.toLowerCase()
@@ -146,7 +145,7 @@ class signin extends Apollos.Component
 
     self = @
     children = {}
-    for child in self.children("input")
+    for child in self.children("Apollos.Forms.Input")
       children[child.data().name] = child
 
     Apollos.user.create email, password, (error) ->
@@ -154,7 +153,7 @@ class signin extends Apollos.Component
       if not error
         return
 
-      # we need to test these debug codes
+      # we need to test these Apollos.debug codes
       children["password"].setStatus "Password incorrect", true
 
       self.showForgotPassword.set true
@@ -198,7 +197,7 @@ class signin extends Apollos.Component
     Apollos.user.hasAccount email, (error, hasAccount) ->
       if error
         # Uh oh... what do we do here?
-        debug "ERROR: #{error}"
+        Apollos.debug "ERROR: #{error}"
 
       if hasAccount
         self.login email, password

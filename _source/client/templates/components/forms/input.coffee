@@ -1,9 +1,8 @@
+console.log Apollos.Forms
+class Apollos.Forms.Input extends Apollos.Component
 
-class input extends Apollos.Component
+  @register "Apollos.Forms.Input"
 
-  @register "input"
-
-  template: "input"
 
   vars: -> [
 
@@ -116,3 +115,5 @@ class input extends Apollos.Component
     if value
       @.find("input").value = value
       return
+
+console.log Apollos.Forms

@@ -12,6 +12,9 @@ tokenName = Meteor.settings.api.tokenName
 token = Meteor.settings.api.token
 api = {}
 
+if not tokenName or token
+  return
+
 ###
 
   handleBadRequestError
@@ -146,12 +149,12 @@ createStandardEndpoint = (url, entityType) ->
 
     post: (data) ->
 
-      debug "Got POST for #{url}#{@.params.id}"
+      Apollos.debug "Got POST for #{url}#{@.params.id}"
       return upsertResource.call @, data, Apollos[entityType].update, platform
 
     delete: (data) ->
 
-      debug "Got DELETE for #{url}#{@.params.id}"
+      Apollos.debug "Got DELETE for #{url}#{@.params.id}"
       return deleteResource.call @, Apollos[entityType].delete, platform
 
 

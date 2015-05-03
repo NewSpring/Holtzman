@@ -2,9 +2,6 @@ class forgotPassword extends Apollos.Component
 
   @register "forgotPassword"
 
-  template: "forgotPassword"
-
-
   vars: -> [
 
     hasErrors: false
@@ -29,7 +26,7 @@ class forgotPassword extends Apollos.Component
       event.preventDefault()
       self = @
       children = {}
-      for child in self.children("input")
+      for child in self.children("Apollos.Forms.Input")
         children[child.data().name] = child
 
       email = self.find("input[name=email]").value.toLowerCase()

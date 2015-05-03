@@ -12,7 +12,7 @@
 ###
 Apollos.person.translate = (person, platform) ->
 
-  return Apollos.entityHelpers.translate "person", person, platform
+  return Apollos.documentHelpers.translate "person", person, platform
 
 
 
@@ -30,7 +30,7 @@ Apollos.person.translate = (person, platform) ->
 
 ###
 Apollos.person.update = (person, platform) ->
-  return Apollos.entityHelpers.update "person", "people", person, platform
+  return Apollos.documentHelpers.update "person", "people", person, platform
 
 ###
 
@@ -45,7 +45,7 @@ Apollos.person.update = (person, platform) ->
 
 ###
 Apollos.person.delete = (person, platform) ->
-  Apollos.entityHelpers.delete "person", "people", person, platform
+  Apollos.documentHelpers.delete "person", "people", person, platform
 
 ###
 

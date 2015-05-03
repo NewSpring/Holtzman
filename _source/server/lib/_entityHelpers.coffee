@@ -1,13 +1,13 @@
-Apollos.entityHelpers =
+Apollos.documentHelpers =
 
 
   translate: (doc, data, platform) ->
 
     if not platform
-      debug "must specify platform to translate to"
+      Apollos.debug "must specify platform to translate to"
 
     if not Apollos[doc]._dictionary[platform]
-      debug "no translation found for #{platform} in #{doc}"
+      Apollos.debug "no translation found for #{platform} in #{doc}"
       return
 
     # translate
@@ -16,34 +16,34 @@ Apollos.entityHelpers =
 
   ###
 
-    Apollos.entityHelpers.update
+    Apollos.documentHelpers.update
 
-    @example update an entity in apollos with data from a platform
+    @example update a doc in apollos with data from a platform
 
-      Apollos.entityHelpers.update "person", "people", person, platform
+      Apollos.documentHelpers.update "person", "people", person, platform
 
     @param singular [String] The singular form of the entities name
     @param plural [String] The plural form of the entities name
-    @param entity [Object] existing entity from other service to be updated
+    @param doc [Object] existing doc from other service to be updated
     @param platform [String] platform to be updated from
 
   ###
-  update: (singular, plural, entity, platform) ->
+  update: (singular, plural, doc, platform) ->
 
-    entity = Apollos[singular].translate entity, platform
+    doc = Apollos[singular].translate doc, platform
     singularIdKeyValue = {}
-    singularIdKeyValue["#{singular}Id"] = entity["#{singular}Id"]
+    singularIdKeyValue["#{singular}Id"] = doc["#{singular}Id"]
 
     if platform
-      entity.updatedBy = platform.toUpperCase()
+      doc.updatedBy = platform.toUpperCase()
     else
-      entity.updatedBy = Apollos.name
+      doc.updatedBy = Apollos.name
 
     query =
       $or: [
         singularIdKeyValue
       ,
-        guid: RegExp(entity.guid, "i")
+        guid: RegExp(doc.guid, "i")
       ]
 
     matches = Apollos[plural].find query,
@@ -70,21 +70,21 @@ Apollos.entityHelpers =
       Apollos[plural].update
         _id: mongoId
       ,
-        $set: entity
+        $set: doc
 
     else
-      mongoId = Apollos[plural].insert entity
+      mongoId = Apollos[plural].insert doc
 
     return mongoId
 
 
   ###
 
-    Apollos.entityHelpers.delete
+    Apollos.documentHelpers.delete
 
-    @example take an entity and delete it
+    @example take an colection and delete it
 
-      Apollos.entityHelpers.delete("person", "people", 3, plaform)
+      Apollos.documentHelpers.delete("person", "people", 3, plaform)
 
     @param singular [String] The singular form of the entities name
     @param plural [String] The plural form of the entities name
@@ -97,28 +97,28 @@ Apollos.entityHelpers =
     if typeof identifier is "number"
       singularIdKeyValue = {}
       singularIdKeyValue["#{singular}Id"] = identifier
-      entity = Apollos[plural].findOne singularIdKeyValue
+      doc = Apollos[plural].findOne singularIdKeyValue
 
     else if typeof identifier is "string"
-      entity = Apollos[plural].findOne identifier
+      doc = Apollos[plural].findOne identifier
 
     else
-      entity = identifier
+      doc = identifier
 
-    if typeof entity isnt "object"
+    if typeof doc isnt "object"
       throw new Meteor.Error "Delete Error", "Could not delete #{singular}
         identified by #{identifier}"
 
     if platform
-      entity.updatedBy = platform.toUpperCase()
+      doc.updatedBy = platform.toUpperCase()
     else
-      entity.updatedBy = Apollos.name
+      doc.updatedBy = Apollos.name
 
     # We have to update this first so the collection hooks know what to do
     Apollos[plural].update
-      _id: entity._id
+      _id: doc._id
     ,
       $set:
-        "updatedBy": entity.updatedBy
+        "updatedBy": doc.updatedBy
 
-    Apollos[plural].remove entity._id
+    Apollos[plural].remove doc._id

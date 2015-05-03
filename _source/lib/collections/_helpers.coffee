@@ -1,4 +1,12 @@
-Apollos.generateSchema = (schema) ->
+
+Apollos.schemas = {}
+
+Apollos.generateSchema = (name, schema) ->
+
+  if not schema and typeof name isnt "string"
+    schema = name
+    name = false
+
 
   schema.createdDate or=
     type: Date
@@ -18,5 +26,9 @@ Apollos.generateSchema = (schema) ->
   schema.updatedBy or=
     type: String
     optional: true
+
+
+  if name and not Apollos.schemas[name]
+    Apollos.schemas[name] = schema
 
   return new SimpleSchema schema

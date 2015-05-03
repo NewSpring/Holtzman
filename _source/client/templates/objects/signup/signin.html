@@ -2,17 +2,15 @@
 
   <form id="{{#if hasAccount.get}}signin{{else}}signup{{/if}}">
     <fieldset>
-      <div class="toggle push-double-bottom">
-        <div data-form="signup" class="transition one-half text-center toggle__item {{#unless hasAccount.get}}toggle__item--active{{/unless}}">
-          Register
-        </div>
-        <div data-form="signin" class="transition one-half text-center toggle__item {{#if hasAccount.get}}toggle__item--active{{/if}}">
-          Sign In
-        </div>
-      </div>
+
+      {{> Apollos.Controls.Toggle
+        active=hasAccount
+        item1="Sign In"
+        item2="Register"
+      }}
 
 
-      {{> input
+      {{> Apollos.Forms.Input
         name="email"
         placeholder="user@email.com"
         label="Email"
@@ -21,21 +19,22 @@
         preFill=email
       }}
 
-      {{> input
+      {{> Apollos.Forms.Input
         name="password"
         placeholder="password"
         label="Password"
         errorText="Password may not be empty"
       }}
 
+
       {{#unless hasAccount.get}}
 
-        {{#checkbox
+        {{#Apollos.Forms.Checkbox
           name="terms"
           checked="true"
         }}
           By signing up you agree to our <a href="#">terms and conditions</a>
-        {{/checkbox}}
+        {{/Apollos.Forms.Checkbox}}
 
       {{/unless}}
 

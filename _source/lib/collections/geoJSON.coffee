@@ -4,7 +4,7 @@
   @see http://geojson.org/geojson-spec.html for official spec
 
 ###
-@.GeoJSON = new SimpleSchema
+Apollos.generateSchema "geoJson",
   "type":
     type: String
     optional: true

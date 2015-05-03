@@ -69,7 +69,7 @@
           "cfs:http-methods@=0.0.28": "both",
           "bjwiley2:server-watch@=0.0.6": "both",
           "aldeed:collection2@=2.3.3": "both",
-          "newspring:components@=0.1.8": "client"
+          "newspring:components@=0.1.12": "client"
         },
         "export": {
           "Rock": "both",
@@ -87,9 +87,7 @@
         "newspring:apollos-core",
         "iron:router",
         "velocity:core@=0.6.0",
-        "mike:mocha@=0.5.4",
-        "meteorhacks:cluster",
-        "cordova:io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d"
+        "mike:mocha@=0.5.4"
       ],
       "platforms": [
         "server",

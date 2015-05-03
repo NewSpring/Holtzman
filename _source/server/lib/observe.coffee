@@ -38,11 +38,11 @@ Apollos.observe = (collection) ->
 Apollos.observe.remove = (doc, platform, methods) ->
 
   if not Apollos[doc]
-    debug "Cannot remove observe methods for #{doc} becuase it doesn't exist"
+    Apollos.debug "Cannot remove observe methods for #{doc} becuase it doesn't exist"
     return
 
   if not platform
-    debug "Must specify platform"
+    Apollos.debug "Must specify platform"
     return
 
   if not methods
@@ -55,11 +55,11 @@ Apollos.observe.remove = (doc, platform, methods) ->
 Apollos.observe.add = (doc, platform, methods) ->
 
   if not Apollos[doc]
-    debug "Cannot set observe methods for #{doc} becuase it doesn't exist"
+    Apollos.debug "Cannot set observe methods for #{doc} becuase it doesn't exist"
     return
 
   if not platform
-    debug "Must specify platform"
+    Apollos.debug "Must specify platform"
     return
 
 
@@ -68,7 +68,7 @@ Apollos.observe.add = (doc, platform, methods) ->
     Apollos[doc][method] or= {}
 
     if Apollos[doc][method][platform]
-      debug "The #{method} observe handler for #{doc} from #{platform} has already been set"
+      Apollos.debug "The #{method} observe handler for #{doc} from #{platform} has already been set"
       return
     Apollos[doc][method][platform] = handle
 

@@ -69,7 +69,7 @@ Apollos.registerLogin = (name, loginMethod) ->
   self = @
 
   # should we allow overwriting here or force unique?
-  # for debugging it would be a pain if we allowed overwriting
+  # for Apollos.debugging it would be a pain if we allowed overwriting
   if Apollos._loginMethods[name]
 
     throw new Meteor.Error("registerLogin", "This method for logging in is already established")

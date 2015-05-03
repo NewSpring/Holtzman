@@ -1,0 +1,2 @@
+
+Apollos.Forms = {}
