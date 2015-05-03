@@ -44,6 +44,7 @@ Apollos.user.translate = (user, platform) ->
 
 ###
 Apollos.user.delete = (user, platform) ->
+
   if typeof user is "number"
     entity = Apollos.users.findOne
       "rock.userLoginId": user
