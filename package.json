@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "meteor publish"
+    "publish": " npm version patch; norma build; meteor publish"
   },
   "repository": {
     "type": "git",
