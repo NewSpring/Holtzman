@@ -69,7 +69,8 @@
           "cfs:http-methods@=0.0.28": "both",
           "bjwiley2:server-watch@=0.0.6": "both",
           "aldeed:collection2@=2.3.3": "both",
-          "newspring:components@=0.1.12": "client"
+          "newspring:components@=0.1.12": "client",
+          "meteorhacks:cluster@1.6.4": "both"
         },
         "export": {
           "Rock": "both",
@@ -82,6 +83,7 @@
       "dev": true,
       "src": "workbench",
       "settings": "workbench/settings/development.json",
+      "mongoUrl": "mongodb://localhost/newspring-core",
       "packages": [
         "meteor-platform",
         "newspring:apollos-core",

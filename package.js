@@ -2,7 +2,7 @@
 
 Package.describe({
   'name': 'newspring:apollos-core',
-  'version': '0.1.8',
+  'version': '0.1.9',
   'summary': 'The main Apollos namespace and utilities for all apollos packages.',
   'git': 'https://github.com/NewSpring/newspring-core.git'
 });
@@ -20,6 +20,7 @@ Package.onUse(function(api) {
   api.use('bjwiley2:server-watch@=0.0.6');
   api.use('aldeed:collection2@=2.3.3');
   api.use('newspring:components@=0.1.12', 'client');
+  api.use('meteorhacks:cluster@1.6.4');
 
 
   api.addFiles('lib/lib/lib/_vars.js');
@@ -33,6 +34,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/collections/_helpers.js');
   api.addFiles('lib/lib/collections/geoJSON.js');
   api.addFiles('lib/lib/collections/people.js');
+  api.addFiles('lib/lib/collections/queuedApiRequest.js');
   api.addFiles('lib/lib/collections/user.js');
   api.addFiles('lib/lib/routes/lib/api.js');
   api.addFiles('lib/lib/utlities/utilities.js');
@@ -64,12 +66,14 @@ Package.onUse(function(api) {
   api.addFiles('lib/client/templates/objects/signup/test.js', 'client');
 
 
+  api.addFiles('lib/lib/routes/server/_vars.js', 'server');
   api.addFiles('lib/lib/routes/server/api.js', 'server');
   api.addFiles('lib/server/lib/_entityHelpers.js', 'server');
   api.addFiles('lib/server/lib/observe.js', 'server');
   api.addFiles('lib/server/lib/person.js', 'server');
   api.addFiles('lib/server/lib/translate.js', 'server');
   api.addFiles('lib/server/lib/user.js', 'server');
+  api.addFiles('lib/server/lib/worker.js', 'server');
 
 
   api.export('Rock');
