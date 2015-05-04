@@ -27,7 +27,7 @@ Meteor.methods(
 ###
 Apollos.user.translate = (user, platform) ->
 
-  return Apollos.entityHelpers.translate "user", user, platform
+  return Apollos.documentHelpers.translate "user", user, platform
 
 
 
@@ -52,7 +52,7 @@ Apollos.user.delete = (user, platform) ->
     if entity
       user = entity
 
-  Apollos.entityHelpers.delete "user", "users", user, platform
+  Apollos.documentHelpers.delete "user", "users", user, platform
 
 
 ###
