@@ -7,8 +7,3 @@
 
   box-shadow: 0 0 3px map-get($colors, medium);
 }
-
-.panel,
-.scrollable {
-  -webkit-overflow-scrolling: touch;
-}
