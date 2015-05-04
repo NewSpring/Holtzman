@@ -6,8 +6,7 @@
         "settings": "https://github.com/NewSpring/settings.git"
       },
       "/vendor": {
-        "framework": "NewSpring/junction-framework",
-        "fonts": "NewSpring/newspring-fonts"
+        "framework": "NewSpring/junction-framework"
       }
     },
     "javascript": {
