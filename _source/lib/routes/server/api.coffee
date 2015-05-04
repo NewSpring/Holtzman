@@ -1,19 +1,6 @@
-baseURL = "api/v1/"
-
-Apollos.api.endpoints =
-  user: "#{baseURL}users/"
-  person: "#{baseURL}people/"
-  # transaction: "#{baseURL}transactions/"
-  # transactionDetail: "#{baseURL}transactionDetails/"
-  account: "#{baseURL}accounts/"
 
 jsonContentType = "application/JSON"
-tokenName = Meteor.settings.api.tokenName
-token = Meteor.settings.api.token
-api = {}
-
-if not tokenName or token
-  return
+URL = Npm.require "url"
 
 ###
 
@@ -70,8 +57,8 @@ handleAuthenticationError = ->
 ###
 authenticate = ->
 
-  sentToken = @.requestHeaders[tokenName]
-  return sentToken is token
+  sentToken = @.requestHeaders[Apollos.api.tokenName]
+  return sentToken is Apollos.api.token
 
 ###
 
@@ -79,7 +66,7 @@ authenticate = ->
 
   @example authenticates and then calls the delete handler
 
-    return deleteResource.call @, Apollos.person.delete, plaform
+    return deleteResource.call @, Apollos.person.delete, platform
 
   @param context should be the HTTP.methods handler function
   @param handlerFunc is the function that will delete the resource
@@ -103,7 +90,7 @@ deleteResource = (handlerFunc, platform) ->
 
   @example authenticates and then calls the upsert handler
 
-    return upsertResource.call @, data, Apollos.person.update, plaform
+    return upsertResource.call @, data, Apollos.person.update, platform
 
   @param context should be the HTTP.methods handler function
   @param data is the javascript object with the request data
@@ -128,14 +115,41 @@ upsertResource = (data, handlerFunc, platform) ->
   handlerFunc resource, platform
   return
 
+
+getPlatform = (host, collection) ->
+  host = URL.parse(host)
+
+  if not Apollos.api.endpoints[collection]?.platforms or Apollos.api.allEndpoints.length is 0
+    return false
+
+  foundPlatform = false
+
+  allEndpoints = _.union(
+    Apollos.api.endpoints[collection].platforms,
+    Apollos.api.allEndpoints
+  )
+
+  for platform in allEndpoints
+    platformHost = URL.parse(platform.url)
+
+    if not host.href.match platformHost.href
+      continue
+
+    foundPlatform = platform.platform
+    break
+
+
+
+  return foundPlatform
+
 ###
 
-  createStandardEndpoint
+  createEndpoint
 
   @example creartes a standard API endpoint at the given URL for the given
     entity
 
-    createStandardEndpoint "api/v1/people/", "person"
+    createEndpoint "api/v1/people/", "person"
 
   @param url [String] the endpoint for the API to operate at
   @param entityType [String] is the name of the Apollos type that this endpoint
@@ -143,22 +157,48 @@ upsertResource = (data, handlerFunc, platform) ->
 
 ###
 
-# TODO build registration service for plaforms (how do we know who is calling?)
-createStandardEndpoint = (url, entityType) ->
-  api["#{url}:id"] =
+# TODO build registration service for platforms (how do we know who is calling?)
+createEndpoint = (url, collection, obj) ->
+  obj["#{Apollos.api.base}/#{url}:id"] =
 
     post: (data) ->
+      platform = getPlatform @.requestHeaders.host, collection
+
+      if not platform
+        return
 
       Apollos.debug "Got POST for #{url}#{@.params.id}"
-      return upsertResource.call @, data, Apollos[entityType].update, platform
+      return upsertResource.call @, data, Apollos[collection].update, platform
 
     delete: (data) ->
+      platform = getPlatform @.requestHeaders.host, collection
+
+      if not platform
+        return
 
       Apollos.debug "Got DELETE for #{url}#{@.params.id}"
-      return deleteResource.call @, Apollos[entityType].delete, platform
+      return deleteResource.call @, Apollos[collection].delete, platform
+
+
+
+
+Apollos.api.addEndpoint = (collection, endpoint) ->
+
+  obj = {}
+
+  if Apollos.api.endpoints[collection]
+    Apollos.debug "There is already an endpoint for #{collection}"
+    return
+
+  Apollos.api.endpoints[collection] =
+    url: "#{Apollos.api.base}/#{endpoint}"
+
+  createEndpoint collection, endpoint, obj
+
+  HTTP.methods obj
+
+  return
 
 
 for typeName, url of Apollos.api.endpoints
-  createStandardEndpoint url, typeName
-
-HTTP.methods api
+  Apollos.api.addEndpoint url.url, typeName
