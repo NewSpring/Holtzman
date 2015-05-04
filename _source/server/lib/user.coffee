@@ -69,7 +69,7 @@ Apollos.user.delete = (user, platform) ->
 ###
 Apollos.user.update = (user, platform) ->
 
-  user = Apollos.user.translate user
+  user = Apollos.user.translate user, platform
 
   query =
     $or: [
