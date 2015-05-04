@@ -16,6 +16,9 @@ queuedApiRequest = Apollos.generateSchema
   data:
     type: String
     optional: true
+  platform:
+    type: String
+    optional: true
   requestSent:
     type: Boolean
     defaultValue: false

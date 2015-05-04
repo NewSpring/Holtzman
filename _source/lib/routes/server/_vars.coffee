@@ -2,6 +2,7 @@
 Apollos.api or= {}
 Apollos.api.base = "api/v1"
 Apollos.api.allEndpoints = []
+
 Apollos.api.endpoints =
   user:
     url: "users/"
@@ -47,7 +48,7 @@ Apollos.api.register = (collections, platform) ->
   return
 
 
-Apollos.api.register("all", {platform: "FOO", url: "localhost:3000"})
-
-Apollos.api.register(["person"], {platform: "FOO", url: "localhost:3000"})
-Apollos.api.register(["person"], {platform: "FOOBAR", url: "localhost:4000"})
+# Apollos.api.register("all", {platform: "FOO", url: "localhost:3000"})
+#
+# Apollos.api.register(["person"], {platform: "FOO", url: "localhost:3000"})
+# Apollos.api.register(["person"], {platform: "FOOBAR", url: "localhost:4000"})
