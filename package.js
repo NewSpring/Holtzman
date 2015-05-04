@@ -2,7 +2,7 @@
 
 Package.describe({
   'name': 'newspring:apollos-core',
-  'version': '0.1.12',
+  'version': '0.1.13',
   'summary': 'The main Apollos namespace and utilities for all apollos packages.',
   'git': 'https://github.com/NewSpring/newspring-core.git'
 });
@@ -26,10 +26,8 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/lib/debug.js');
   api.addFiles('lib/lib/lib/regex.js');
   api.addFiles('lib/lib/__abstract/campuses.js');
-  api.addFiles('lib/lib/__abstract/definedValues.js');
   api.addFiles('lib/lib/__abstract/groups.js');
   api.addFiles('lib/lib/__abstract/locations.js');
-  api.addFiles('lib/lib/__abstract/queuedApiRequest.js');
   api.addFiles('lib/lib/collections/_helpers.js');
   api.addFiles('lib/lib/collections/geoJSON.js');
   api.addFiles('lib/lib/collections/people.js');
@@ -57,12 +55,10 @@ Package.onUse(function(api) {
   api.addFiles('lib/client/templates/objects/signup/onboard.html', 'client');
   api.addFiles('lib/client/templates/objects/signup/reset-password.html', 'client');
   api.addFiles('lib/client/templates/objects/signup/signin.html', 'client');
-  api.addFiles('lib/client/templates/objects/signup/test.html', 'client');
   api.addFiles('lib/client/templates/objects/signup/forgot-password.js', 'client');
   api.addFiles('lib/client/templates/objects/signup/onboard.js', 'client');
   api.addFiles('lib/client/templates/objects/signup/reset-password.js', 'client');
   api.addFiles('lib/client/templates/objects/signup/signin.js', 'client');
-  api.addFiles('lib/client/templates/objects/signup/test.js', 'client');
 
 
   api.addFiles('lib/lib/routes/server/_vars.js', 'server');
@@ -72,7 +68,6 @@ Package.onUse(function(api) {
   api.addFiles('lib/server/lib/person.js', 'server');
   api.addFiles('lib/server/lib/translate.js', 'server');
   api.addFiles('lib/server/lib/user.js', 'server');
-  api.addFiles('lib/server/lib/worker.js', 'server');
 
 
   api.export('Rock');
