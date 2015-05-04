@@ -27,7 +27,7 @@ Meteor.methods(
 ###
 Apollos.user.translate = (user, platform) ->
 
-  return Apollos.entityHelpers.translate "person", person, platform
+  return Apollos.entityHelpers.translate "user", user, platform
 
 
 
