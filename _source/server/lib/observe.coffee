@@ -21,7 +21,7 @@ Apollos.observe = (collection) ->
       Apollos[collection].changed or= {}
 
       for platform, handle of Apollos[collection].changed
-        handle doc
+        handle newDoc, oldDoc
 
     removed: (doc) ->
 
