@@ -59,15 +59,15 @@ person = Apollos.generateSchema
   homePhone:
     type: String
     optional: true
-    regEx: Apollos.regex.phoneNumber
+    # regEx: Apollos.regex.phoneNumber
   workPhone:
     type: String
     optional: true
-    regEx: Apollos.regex.phoneNumber
+    # regEx: Apollos.regex.phoneNumber
   cellPhone:
     type: String
     optional: true
-    regEx: Apollos.regex.phoneNumber
+    # regEx: Apollos.regex.phoneNumber
   birthDay:
     type: Number
     decimal: false
