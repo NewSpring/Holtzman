@@ -84,7 +84,7 @@ person = Apollos.generateSchema
     type: Number
     decimal: false
     min: 1900
-    max: 2050
+    # max: 2050
     optional: true
   weddingDay:
     type: Number

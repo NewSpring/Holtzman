@@ -1,0 +1,24 @@
+<template name="Apollos.Controls.NumberKeyboard">
+  <section class="keyboard section--grey section--condensed">
+
+    <div class="shell soft-half--ends">
+
+      <div class="grid grid--enclosed text-center">
+
+        {{#each keys}}
+
+        <div class="grid__item one-third soft-half-top" data-key="{{value}}">
+
+          <div class="{{css}} soft-half-bottom">
+            <h3 class="flush-bottom">{{{display}}}</h3>
+          </div>
+
+        </div>
+
+        {{/each}}
+      </div>
+
+    </div>
+
+  </section>
+</template>
