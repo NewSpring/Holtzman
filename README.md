@@ -1,5 +1,24 @@
-# newspring:core
-The main NewSpring namespace and utilities for all newspring packages.
+<p align="center" >
+  <a href="http://newspring.cc">
+    <img src="https://s3.amazonaws.com/ns.images/newspring/icons/newspring-church-logo-black.png" alt="NewSpring Church" title="NewSpring Church" />
+  </a>
+</p>
+
+# Apollos - Give
+
+The generous side of Apollos.
+
+## Who was Apollos?
+
+* <a href="https://www.biblegateway.com/passage/?search=Acts%2018:24-28&version=NIV">Acts 18:24-28</a>
+* <a href="https://www.biblegateway.com/passage/?search=Acts+19:1&version=NIV">Acts 19:1</a>
+* <a href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:12-13&version=NIV">1 Corinthians 1:12-13</a>
+* <a href="https://www.biblegateway.com/passage/?search=1%20Corinthians%203:6&version=NIV">1 Corinthians 3:6</a>
+* <a href="https://www.biblegateway.com/passage/?search=Titus%203:13&version=NIV">Titus 3:13</a>
+
+
+# Apollos:core
+The main Apollos namespace and utilities for all apollos packages.
 
 ## Mirrored repositories
 
@@ -16,7 +35,7 @@ added, commit and push as normal.
 
 ## Developer Interface
 
-### Rock
+<!-- ### Rock
 
 This package exposes a Rock object to the client and server:
 
@@ -39,7 +58,7 @@ error and result
 
 * Rock.name - A string to identify the server endpoint by name like "Rock"
 * Rock.isAlive() - A function that returns true if the server at baseUrl has
-responded to the most recent ping (30 second intervals).
+responded to the most recent ping (30 second intervals). -->
 
 ### Apollos
 

@@ -29,8 +29,6 @@ node_modules
 
 .norma
 build
-out
-newspring
 vendor
 bower.json
 settings.json
@@ -38,3 +36,6 @@ development.json
 
 .DS_Store
 james_uswesto.pem
+workbench
+/lib/
+.versions

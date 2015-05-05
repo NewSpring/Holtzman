@@ -1,0 +1,9 @@
+
+.newspring--icon {
+  @include newspring--icon();
+  @include fixed(bottom $base-spacing-unit right $base-spacing-unit);
+
+  cursor: pointer;
+
+  box-shadow: 0 0 3px map-get($colors, medium);
+}
