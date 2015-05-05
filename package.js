@@ -19,7 +19,8 @@ Package.onUse(function(api) {
   api.use('cfs:http-methods@=0.0.28');
   api.use('bjwiley2:server-watch@=0.0.6');
   api.use('aldeed:collection2@=2.3.3');
-  api.use('newspring:components@=0.1.12', 'client');
+  api.use('newspring:components@=0.1.13', 'client');
+  api.use('velocityjs:velocityjs', 'client');
 
 
   api.addFiles('lib/lib/lib/_vars.js');
@@ -40,6 +41,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/apollos.js');
 
 
+  api.addFiles('lib/client/lib/animations.js', 'client');
   api.addFiles('lib/client/lib/apollos.js', 'client');
   api.addFiles('lib/client/templates/components/controls/number-keyboard.html', 'client');
   api.addFiles('lib/client/templates/components/controls/toggle.html', 'client');
