@@ -4,9 +4,9 @@
   </a>
 </p>
 
-# Apollos - Give
+# Apollos - Core
 
-The generous side of Apollos.
+The internal core of Apollos applications
 
 ## Who was Apollos?
 
