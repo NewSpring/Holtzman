@@ -17,8 +17,6 @@ The internal core of Apollos applications
 * <a href="https://www.biblegateway.com/passage/?search=Titus%203:13&version=NIV">Titus 3:13</a>
 
 
-# Apollos:core
-The main Apollos namespace and utilities for all apollos packages.
 
 ## Mirrored repositories
 
