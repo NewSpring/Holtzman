@@ -41,8 +41,10 @@ Package.onUse(function(api) {
 
 
   api.addFiles('lib/client/lib/apollos.js', 'client');
+  api.addFiles('lib/client/templates/components/controls/number-keyboard.html', 'client');
   api.addFiles('lib/client/templates/components/controls/toggle.html', 'client');
   api.addFiles('lib/client/templates/components/controls/_vars.js', 'client');
+  api.addFiles('lib/client/templates/components/controls/number-keyboard.js', 'client');
   api.addFiles('lib/client/templates/components/controls/toggle.js', 'client');
   api.addFiles('lib/client/templates/components/forms/checkbox.html', 'client');
   api.addFiles('lib/client/templates/components/forms/inputs.html', 'client');
