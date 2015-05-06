@@ -2,7 +2,7 @@
 
 Package.describe({
   'name': 'newspring:apollos-core',
-  'version': '0.1.19',
+  'version': '0.1.21',
   'summary': 'The main Apollos namespace and utilities for all apollos packages.',
   'git': 'https://github.com/NewSpring/newspring-core.git'
 });
@@ -59,6 +59,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/client/templates/objects/signup/onboard.html', 'client');
   api.addFiles('lib/client/templates/objects/signup/reset-password.html', 'client');
   api.addFiles('lib/client/templates/objects/signup/signin.html', 'client');
+  api.addFiles('lib/client/templates/objects/signup/_vars.js', 'client');
   api.addFiles('lib/client/templates/objects/signup/forgot-password.js', 'client');
   api.addFiles('lib/client/templates/objects/signup/onboard.js', 'client');
   api.addFiles('lib/client/templates/objects/signup/reset-password.js', 'client');

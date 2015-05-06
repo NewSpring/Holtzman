@@ -1,4 +1,4 @@
-<template name="onboard">
+<template name="Apollos.Profile.OnBoard">
 
 
   {{!-- Spacebars does not have else if statements :( --}}
@@ -13,9 +13,23 @@
         email=email.get
       }}
     {{else}}
-      {{> signin
-        email=email.get
-      }}
+
+      {{#if Template.contentBlock}}
+
+        {{#signin
+          email=email.get
+        }}
+          {{> Template.contentBlock}}
+
+        {{/signin}}
+
+      {{else}}
+
+        {{>signin
+          email=email.get
+        }}
+
+      {{/if}}
     {{/if}}
   {{/if}}
 

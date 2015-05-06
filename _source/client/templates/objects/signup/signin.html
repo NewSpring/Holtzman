@@ -46,6 +46,10 @@
       </h7>
       {{/if}}
 
+      {{#if Template.contentBlock}}
+        {{> Template.contentBlock}}
+      {{/if}}
+
     </fieldset>
     {{#unless hasErrors.get}}
 

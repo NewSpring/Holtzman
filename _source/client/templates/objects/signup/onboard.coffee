@@ -1,6 +1,6 @@
-class onboard extends Apollos.Component
+class Apollos.Profile.OnBoard extends Apollos.Component
 
-  @register "onboard"
+  @register "Apollos.Profile.OnBoard"
 
   vars: -> [
     passwordForget: false
