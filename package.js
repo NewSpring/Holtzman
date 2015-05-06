@@ -2,7 +2,7 @@
 
 Package.describe({
   'name': 'newspring:apollos-core',
-  'version': '0.1.18',
+  'version': '0.1.19',
   'summary': 'The main Apollos namespace and utilities for all apollos packages.',
   'git': 'https://github.com/NewSpring/newspring-core.git'
 });
