@@ -27,6 +27,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/lib/_vars.js');
   api.addFiles('lib/lib/lib/debug.js');
   api.addFiles('lib/lib/lib/regex.js');
+  api.addFiles('lib/lib/lib/utilities.js');
   api.addFiles('lib/lib/__abstract/campuses.js');
   api.addFiles('lib/lib/__abstract/groups.js');
   api.addFiles('lib/lib/__abstract/locations.js');
@@ -36,10 +37,6 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/collections/queuedApiRequest.js');
   api.addFiles('lib/lib/collections/user.js');
   api.addFiles('lib/lib/routes/lib/api.js');
-  api.addFiles('lib/lib/utilities/regex.js');
-  api.addFiles('lib/lib/utilities/utilities.js');
-  api.addFiles('lib/lib/utlities/utilities.js');
-  api.addFiles('lib/lib/utlities/validationHelpers.js');
   api.addFiles('lib/lib/accounts.js');
   api.addFiles('lib/lib/apollos.js');
 
