@@ -69,7 +69,8 @@
           "bjwiley2:server-watch@=0.0.6": "both",
           "aldeed:collection2@=2.3.3": "both",
           "newspring:components@=0.1.13": "client",
-          "velocityjs:velocityjs": "client"
+          "velocityjs:velocityjs@=1.2.1": "client",
+          "raix:handlebar-helpers@0.2.4": "client"
         },
         "export": {
           "Rock": "both",
