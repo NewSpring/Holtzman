@@ -1,9 +1,15 @@
 
+class home extends Apollos.Component
+  @register "home"
 
-Template.home.events
+  vars: -> [
+    step: 1
+    steps: 4
+  ]
 
-
-  "click #logout": (event) ->
-    event.preventDefault()
-    Meteor.logout()
-    return
+  events: -> [
+    "click #logout": (event) ->
+      event.preventDefault()
+      Meteor.logout()
+      return
+  ]

@@ -1,3 +1,9 @@
+Apollos.utilities =
+
+  base64Encode: (theString) ->
+    return new Buffer(theString).toString "base64"
+
+
 Apollos.validate =
 
   isEmail: (str) ->

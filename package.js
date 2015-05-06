@@ -20,7 +20,8 @@ Package.onUse(function(api) {
   api.use('bjwiley2:server-watch@=0.0.6');
   api.use('aldeed:collection2@=2.3.3');
   api.use('newspring:components@=0.1.13', 'client');
-  api.use('velocityjs:velocityjs', 'client');
+  api.use('velocityjs:velocityjs@=1.2.1', 'client');
+  api.use('raix:handlebar-helpers@0.2.4', 'client');
 
 
   api.addFiles('lib/lib/lib/_vars.js');
@@ -35,6 +36,8 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/collections/queuedApiRequest.js');
   api.addFiles('lib/lib/collections/user.js');
   api.addFiles('lib/lib/routes/lib/api.js');
+  api.addFiles('lib/lib/utilities/regex.js');
+  api.addFiles('lib/lib/utilities/utilities.js');
   api.addFiles('lib/lib/utlities/utilities.js');
   api.addFiles('lib/lib/utlities/validationHelpers.js');
   api.addFiles('lib/lib/accounts.js');
@@ -43,10 +46,10 @@ Package.onUse(function(api) {
 
   api.addFiles('lib/client/lib/animations.js', 'client');
   api.addFiles('lib/client/lib/apollos.js', 'client');
-  api.addFiles('lib/client/templates/components/controls/number-keyboard.html', 'client');
+  api.addFiles('lib/client/templates/components/controls/progress.html', 'client');
   api.addFiles('lib/client/templates/components/controls/toggle.html', 'client');
   api.addFiles('lib/client/templates/components/controls/_vars.js', 'client');
-  api.addFiles('lib/client/templates/components/controls/number-keyboard.js', 'client');
+  api.addFiles('lib/client/templates/components/controls/progress.js', 'client');
   api.addFiles('lib/client/templates/components/controls/toggle.js', 'client');
   api.addFiles('lib/client/templates/components/forms/checkbox.html', 'client');
   api.addFiles('lib/client/templates/components/forms/inputs.html', 'client');

@@ -1,0 +1,77 @@
+
+$use-progress: true !default;
+
+@if $use-progress == true {
+  %_progress {
+    position: relative;
+
+    display: inline-block;
+    display: flex;
+    overflow: hidden;
+
+    width: 100%;
+    min-width: 308px;
+
+    justify-content: space-between;
+
+    &:after {
+      @include absolute(left 0 right 0);
+
+      z-index: map-get($zindex, base);
+
+      height: $base-border-size * 2;
+      margin-top: $half-spacing-unit - $base-border-size;
+
+      content: "";
+
+      background-color: map-get($colors, light-tertiary);
+    }
+  }
+
+  %_progress__item {
+    @include circle($base-spacing-unit);
+
+    position: relative;
+    z-index: map-get($zindex, base) + 2;
+
+    display: inline-block;
+
+    cursor: pointer;
+
+    background-color: map-get($colors, light-tertiary);
+  }
+
+
+  .progress {
+    @extend %_progress;
+  }
+
+  .progress__item {
+    @extend %_progress__item;
+  }
+
+  .progress__item--active {
+    @extend %_progress__item;
+
+    background-color: $brand-color;
+
+    & + & {
+      &:before {
+        position: absolute;
+        z-index: map-get($zindex, base) + 1;
+        right: $base-spacing-unit;
+        // HACK to back fill over line to the left
+
+        width: 100000px;
+        height: 0;
+        margin-top: $half-spacing-unit - $base-border-size;
+
+        content: "";
+
+        border-bottom: $base-border-size * 2 solid $brand-color;
+
+        // background-color: $brand-color;;
+      }
+    }
+  }
+}
