@@ -32,7 +32,7 @@ class Apollos.Forms.Input extends Apollos.Component
 
     self = @
 
-    if self.data().preFill
+    if self.data()?.preFill
       self.value.set self.data().preFill
 
 
