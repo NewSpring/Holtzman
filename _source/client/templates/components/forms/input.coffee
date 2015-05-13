@@ -27,6 +27,15 @@ class Apollos.Forms.Input extends Apollos.Component
 
   ]
 
+
+  onRendered: ->
+
+    self = @
+
+    if self.data().preFill
+      self.value.set self.data().preFill
+
+
   focused: (event) ->
 
     self = @
