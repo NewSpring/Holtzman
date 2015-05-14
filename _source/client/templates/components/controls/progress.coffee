@@ -5,16 +5,15 @@ class Apollos.Controls.Progress extends Apollos.Component
   steps: ->
     self = @
 
-    steps = self.currentData().total?.get()
+    steps = self.data().total?.get()
 
-    console.log steps
     if typeof steps isnt "number"
       return
 
     steps = [1..steps].map (value) ->
       return {
         count: value
-        active: self.currentData().active
+        active: self.data().active
       }
 
     return steps
@@ -29,4 +28,12 @@ class Apollos.Controls.Progress extends Apollos.Component
 
     step = event.currentTarget.dataset.step
 
-    self.currentData().active.set Number(step)
+    self.data().active.set Number(step)
+
+  getLayer: (count) ->
+
+    self = @
+
+    steps = self.data().total?.get()
+
+    return Number(steps) + 2 - Number(count)
