@@ -1,6 +1,9 @@
 Apollos.people = new Mongo.Collection "people"
 
 person = Apollos.generateSchema
+  userId:
+    type: String
+    optional: true
   personId:
     type: Number
     decimal: false
