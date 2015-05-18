@@ -39,13 +39,8 @@ Apollos.person = ->
 
   userDoc = Apollos.user()
 
-  # can we abstract this?
-  if userDoc and userDoc.rock
-    personId = userDoc.rock.personId
-
-  if personId
-    person = Apollos.people.findOne
-      personId: personId
+  person = Apollos.people.findOne
+    userId: userDoc._id
 
   return person or {}
 
