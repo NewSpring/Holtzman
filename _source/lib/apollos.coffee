@@ -39,9 +39,9 @@ Apollos.person = ->
 
   user = Apollos.user()
 
-  if user.rock?.guid
+  if user.guid
     person = Apollos.people.findOne
-      guid: user.rock.guid
+      guid: user.guid
 
   return person or {}
 
