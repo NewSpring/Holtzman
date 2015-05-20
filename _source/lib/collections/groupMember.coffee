@@ -8,7 +8,7 @@ groupMember = Apollos.generateSchema
   guid:
     type: String
     optional: true
-    regex: Apollos.regex.guid
+    regEx: Apollos.regex.guid
   groupId:
     type: Number
     decimal: false

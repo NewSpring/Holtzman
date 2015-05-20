@@ -8,7 +8,7 @@ groupLocation = Apollos.generateSchema
   guid:
     type: String
     optional: true
-    regex: Apollos.regex.guid
+    regEx: Apollos.regex.guid
   foreignId:
     type: String
     optional: true
