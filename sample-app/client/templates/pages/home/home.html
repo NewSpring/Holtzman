@@ -16,6 +16,17 @@
     <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating scrollable handheld-push-double-top">
 
         <div class="floating__item">
+          {{#if MediaQuery "portable"}}
+            portable!
+          {{/if}}
+
+          {{#if MediaQuery "handheld"}}
+            handheld!
+          {{/if}}
+          
+          {{#if MediaQuery "anchored"}}
+            anchored!
+          {{/if}}
 
           {{#unless currentUser}}
             {{> Apollos.Profile.OnBoard}}

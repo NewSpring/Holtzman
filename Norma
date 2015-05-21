@@ -1,0 +1,112 @@
+name: "apollos-core"
+
+tasks:
+
+  bower:
+    "/workbench":
+      settings: "https://github.com/NewSpring/settings.git"
+    "/vendor":
+      framework: "NewSpring/junction-framework"
+
+  ###
+
+    Application files (tracked)
+
+  ###
+  # compiliation of coffeescript -> javascript
+  javascript:
+    src: "_source/**/*"
+    dest: "lib/"
+  "compile-test":
+    "@extend": "javascript"
+    src: "tests/**/*"
+    dest: "workbench/tests"
+
+  # minify markup
+  markup:
+    src: "_source/**/*"
+    dest: "lib/"
+    minify: true
+
+  # compile sass
+  sass:
+    src: "sample-app/**/*"
+    dest: "./workbench/"
+    comb: true
+    lint: true
+
+
+  ###
+
+    Package tasks (include built package in sample-app)
+
+  ###
+  copy:
+    src: "lib/**/*"
+    dest: "./workbench/packages/apollos-core/lib/"
+    order: "post"
+  "copy-package":
+    "@extend": "copy"
+    src: "package" # package.js
+    dest: "./workbench/packages/apollos-core/"
+    order: "post"
+    ext: [ "js" ]
+
+  # create package.js
+  "meteor-load":
+    src: "lib/**/*"
+    dest: "./"
+    org: "newspring"
+    name: "apollos-core"
+    package:
+      versionsFrom: "1.0.3.1"
+      use:
+        "meteor-platform@=1.2.2": "both"
+        "http@=1.1.0": "both"
+        "reactive-var@=1.0.5": "both"
+        "accounts-password@=1.1.1": "both"
+        "cfs:http-methods@=0.0.28": "both"
+        "bjwiley2:server-watch@=0.0.6": "both"
+        "aldeed:collection2@=2.3.3": "both"
+        "newspring:components@=0.1.13": "client"
+        "velocityjs:velocityjs@=1.2.1": "client"
+        "raix:handlebar-helpers@0.2.4": "client"
+      export:
+        "Rock": "both"
+        "Apollos": "both"
+        "HTTP": "server"
+
+
+  ###
+
+    Sample application to test and use package in
+
+  ###
+  "app-javascript":
+    "@extend": "javascript"
+    src: "sample-app/**/*"
+    dest: "./workbench/"
+  "app-markup":
+    "@extend": "markup"
+    src: "sample-app/**/*"
+    dest: "./workbench/"
+  meteor:
+    dev: true
+    src: "workbench"
+    settings: "workbench/settings/development.json"
+    mongoUrl: "mongodb://localhost/newspring-core"
+    packages: [
+      "meteor-platform"
+      "newspring:apollos-core"
+      "iron:router"
+      "velocity:core@=0.6.0"
+      "mike:mocha@=0.5.4"
+    ]
+    platforms: [
+      "server"
+      "browser"
+      "ios"
+    ]
+
+# Testing
+test: "meteor --test --settings settings/development.json --release velocity:METEOR@1.1.0.2_2"
