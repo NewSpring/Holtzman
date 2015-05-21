@@ -37,6 +37,9 @@ Apollos.validate =
     return @.isVisa(str) or @.isMastercard(str) or
       @.isAmericanExpress(str) or @.isDiscover(str)
 
+  isBcryptHash: (str) ->
+    return @.isBcrypt(str)
+
 
 for regex of Apollos.regex
   _addRegexTestFunction regex
