@@ -50,6 +50,7 @@ Meteor.startup ->
 
     # update size on resize event
     getSize = ->
+      console.log "here"
       trackingElement = document.getElementsByClassName("media-query")[0]
 
       if trackingElement.currentStyle
@@ -71,6 +72,7 @@ Meteor.startup ->
 
     # fire once for on load checking
     getSize()
+
 
 
 

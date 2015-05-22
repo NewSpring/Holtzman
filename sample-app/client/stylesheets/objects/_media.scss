@@ -1,5 +1,5 @@
 
-$list: "handheld", "portable", "anchored";
+ tret$list: "handheld", "portable", "anchored";
 @each $alias in $list {
   //Map to all known breakpoints
   @include media-query(#{$alias}) {
