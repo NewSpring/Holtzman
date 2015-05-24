@@ -37,10 +37,11 @@ Apollos.user.login = {}
 ###
 Apollos.person = ->
 
-  userDoc = Apollos.user()
+  user = Apollos.user()
 
-  person = Apollos.people.findOne
-    userId: userDoc._id
+  if user.guid
+    person = Apollos.people.findOne
+      guid: user.guid
 
   return person or {}
 

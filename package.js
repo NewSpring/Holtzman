@@ -33,6 +33,10 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/__abstract/locations.js');
   api.addFiles('lib/lib/collections/_helpers.js');
   api.addFiles('lib/lib/collections/geoJSON.js');
+  api.addFiles('lib/lib/collections/group.js');
+  api.addFiles('lib/lib/collections/groupLocation.js');
+  api.addFiles('lib/lib/collections/groupMember.js');
+  api.addFiles('lib/lib/collections/location.js');
   api.addFiles('lib/lib/collections/people.js');
   api.addFiles('lib/lib/collections/queuedApiRequest.js');
   api.addFiles('lib/lib/collections/user.js');
@@ -69,6 +73,10 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/routes/server/_vars.js', 'server');
   api.addFiles('lib/lib/routes/server/api.js', 'server');
   api.addFiles('lib/server/lib/_entityHelpers.js', 'server');
+  api.addFiles('lib/server/lib/group.js', 'server');
+  api.addFiles('lib/server/lib/groupLocation.js', 'server');
+  api.addFiles('lib/server/lib/groupMember.js', 'server');
+  api.addFiles('lib/server/lib/location.js', 'server');
   api.addFiles('lib/server/lib/observe.js', 'server');
   api.addFiles('lib/server/lib/person.js', 'server');
   api.addFiles('lib/server/lib/translate.js', 'server');
