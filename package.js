@@ -2,7 +2,7 @@
 
 Package.describe({
   'name': 'newspring:apollos-core',
-  'version': '0.1.23',
+  'version': '0.1.22',
   'summary': 'The main Apollos namespace and utilities for all apollos packages.',
   'git': 'https://github.com/NewSpring/newspring-core.git'
 });
@@ -19,7 +19,7 @@ Package.onUse(function(api) {
   api.use('cfs:http-methods@=0.0.28');
   api.use('bjwiley2:server-watch@=0.0.6');
   api.use('aldeed:collection2@=2.3.3');
-  api.use('newspring:components@=0.1.13', 'client');
+  api.use('newspring:components@=0.1.14', 'client');
   api.use('velocityjs:velocityjs@=1.2.1', 'client');
   api.use('raix:handlebar-helpers@0.2.4', 'client');
 
@@ -79,3 +79,4 @@ Package.onUse(function(api) {
   api.export('Apollos');
   api.export('HTTP', 'server');
 });
+
