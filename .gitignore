@@ -37,5 +37,4 @@ development.json
 .DS_Store
 james_uswesto.pem
 workbench
-/lib/
 .versions
