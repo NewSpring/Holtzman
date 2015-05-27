@@ -2,7 +2,7 @@
 
 Package.describe({
   'name': 'newspring:apollos-core',
-  'version': '0.1.24',
+  'version': '0.1.23',
   'summary': 'The main Apollos namespace and utilities for all apollos packages.',
   'git': 'https://github.com/NewSpring/newspring-core.git'
 });
@@ -47,6 +47,7 @@ Package.onUse(function(api) {
 
   api.addFiles('lib/client/lib/animations.js', 'client');
   api.addFiles('lib/client/lib/apollos.js', 'client');
+  api.addFiles('lib/client/helpers/media-query.js', 'client');
   api.addFiles('lib/client/templates/components/controls/progress.html', 'client');
   api.addFiles('lib/client/templates/components/controls/toggle.html', 'client');
   api.addFiles('lib/client/templates/components/controls/_vars.js', 'client');
@@ -58,6 +59,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/client/templates/components/forms/checkbox.js', 'client');
   api.addFiles('lib/client/templates/components/forms/input.js', 'client');
   api.addFiles('lib/client/templates/objects/nav/nav.html', 'client');
+  api.addFiles('lib/client/templates/objects/nav/_vars.js', 'client');
   api.addFiles('lib/client/templates/objects/nav/nav.js', 'client');
   api.addFiles('lib/client/templates/objects/signup/forgot-password.html', 'client');
   api.addFiles('lib/client/templates/objects/signup/onboard.html', 'client');
@@ -87,3 +89,4 @@ Package.onUse(function(api) {
   api.export('Apollos');
   api.export('HTTP', 'server');
 });
+

@@ -1,6 +1,6 @@
 <template name="Apollos.Forms.Input">
 
-  <div class="input {{#if error.get}}input--alert{{/if}}">
+  <div class="input {{#if error.get}}input--alert{{/if}} {{#if preFill}}input--active{{/if}}">
 
     <label for="{{name}}">
       {{#if label}}
