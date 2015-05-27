@@ -40,7 +40,7 @@ Meteor.startup ->
 
     # create marker element
     marker = document.createElement("DIV")
-    marker.className = "media-query"
+    marker.id = "media-query"
 
     # hide it
     marker.style.display = "none !important"
@@ -50,20 +50,8 @@ Meteor.startup ->
 
     # update size on resize event
     getSize = ->
-      console.log "here"
-      trackingElement = document.getElementsByClassName("media-query")[0]
-
-      if trackingElement.currentStyle
-        currentSize = trackingElement.currentStyle["content"]
-
-      else if window.getComputedStyle
-
-        currentSize = document.defaultView.getComputedStyle(
-          trackingElement, null # no pseudo support in IE 9, 10 :(
-        ).getPropertyValue("content")
-
+      currentSize = $("#media-query").css("content").replace /'/g, ""
       currentSizeDep.changed()
-
       return
 
     # debounce (can move this to junction once stable)
