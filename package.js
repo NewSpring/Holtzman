@@ -19,6 +19,8 @@ Package.onUse(function(api) {
   api.use('cfs:http-methods@=0.0.28');
   api.use('bjwiley2:server-watch@=0.0.6');
   api.use('aldeed:collection2@=2.3.3');
+  api.use('meteorhacks:flow-router@1.9.0');
+  api.use('meteorhacks:flow-layout@1.3.0', 'client');
   api.use('newspring:components@=0.1.14', 'client');
   api.use('velocityjs:velocityjs@=1.2.1', 'client');
   api.use('raix:handlebar-helpers@0.2.4', 'client');
