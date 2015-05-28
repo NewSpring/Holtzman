@@ -35,15 +35,40 @@ Apollos.user.login = {}
     console.log "Hello, #{Apollos.person().firstName}"
 
 ###
-Apollos.person = ->
+Apollos.person = (user) ->
 
-  user = Apollos.user()
+  user or= Apollos.user()
 
   if user.guid
     person = Apollos.people.findOne
       guid: user.guid
 
   return person or {}
+
+
+
+
+if Meteor.server
+  Accounts.onCreateUser (options, user) ->
+    if options.profile
+      user.profile = options.profile
+
+    if user.profile?.guest isnt true
+
+      user.guid = Apollos.utilities.makeNewGuid()
+
+      person = Apollos.person user
+      # # no existing user so create one
+      if not Object.keys(person).length
+        Apollos.people.upsert({guid: user.guid}, {
+          $set:
+            preferredEmail: user.emails[0].address
+        })
+
+
+
+
+    return user
 
 ###
 

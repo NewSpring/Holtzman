@@ -1,9 +1,9 @@
-$list: "handheld", "portable", "anchored";
 
+$list: "handheld", "portable", "anchored";
 @each $alias in $list {
   //Map to all known breakpoints
   @include media-query(#{$alias}) {
-    #media-query {
+    .media-query {
       display: none !important;
 
       content: "#{$alias}";

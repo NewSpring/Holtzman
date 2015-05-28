@@ -1,1 +1,21 @@
-<template name="Apollos.Controls.Progress"><div class="progress">{{#each steps}}<div data-step="{{count}}" class="{{#if $gt count active.get 1}}progress__item{{else}}progress__item--active{{/if}}" style="z-index: {{getLayer count}}"></div>{{/each}}</div>{{!-- Things to know 1. How many total steps? (Reactive?) 2. What step you are on? ---- 3. What step to go to? (click on step to go back (only if active)) API: {{> Apollos.Controls.Progress active=ReactiveVar(Number) total=ReactiveVar(Number)/Number }} --}}</template>
+<template name="Apollos.Controls.Progress"><style>
+    .progress {
+      min-width: 0;
+      width: 50%;
+      margin: 0 auto;
+    }
+    .progress:after {
+      height: 4px;
+      margin-top: 3px;
+    }
+    .progress__item, .progress__item--active {
+      width: 10px;
+      height: 10px;
+    }
+
+    .progress__item--active + .progress__item--active:before {
+      right: 5px;
+      margin-top: 2px;
+      border-bottom-width: 4px;
+    }
+  </style><div class="progress-bar text-center"><div class="progress">{{#each steps}}<div data-step="{{count}}" class="{{#if $gt count active.get 1}}progress__item{{else}}progress__item--active{{/if}}" style="z-index: {{getLayer count}}"></div>{{/each}}</div><p><small class="italic display-inline-block push-half-top">Step {{active.get}} of {{total.get}}</small></p></div>{{!-- Things to know 1. How many total steps? (Reactive?) 2. What step you are on? ---- 3. What step to go to? (click on step to go back (only if active)) API: {{> Apollos.Controls.Progress active=ReactiveVar(Number) total=ReactiveVar(Number)/Number }} --}}</template>

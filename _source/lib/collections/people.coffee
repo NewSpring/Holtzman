@@ -117,5 +117,14 @@ person = Apollos.generateSchema
   communicationPreference:
     type: Number
     optional: true
+  locations:
+    type: [Object]
+    optional: true
+  "locations.$":
+    blackbox: true
+    optional: true
+  campusId:
+    type: Number
+    optional: true
 
 Apollos.people.attachSchema person

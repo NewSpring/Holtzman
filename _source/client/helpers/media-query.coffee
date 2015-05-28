@@ -32,7 +32,7 @@ Meteor.startup ->
   # comparator function
   test = (size) ->
     currentSizeDep.depend()
-    return currentSize is size
+    return currentSize.match size
 
 
   # lock Dom events in nonreactive so we never rebind events
@@ -40,7 +40,7 @@ Meteor.startup ->
 
     # create marker element
     marker = document.createElement("DIV")
-    marker.id = "media-query"
+    marker.className = "media-query"
 
     # hide it
     marker.style.display = "none !important"
@@ -50,8 +50,19 @@ Meteor.startup ->
 
     # update size on resize event
     getSize = ->
-      currentSize = $("#media-query").css("content").replace /'/g, ""
+      trackingElement = document.getElementsByClassName("media-query")[0]
+
+      if trackingElement.currentStyle
+        currentSize = trackingElement.currentStyle["content"]
+
+      else if window.getComputedStyle
+
+        currentSize = document.defaultView.getComputedStyle(
+          trackingElement, null # no pseudo support in IE 9, 10 :(
+        ).getPropertyValue("content")
+
       currentSizeDep.changed()
+
       return
 
     # debounce (can move this to junction once stable)

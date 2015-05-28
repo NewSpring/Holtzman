@@ -1,10 +1,11 @@
 
-Apollos.locations = new Mongo.Collection "locations"
+# Apollos.locations = new Mongo.Collection "locations"
 
-location = Apollos.generateSchema
+Apollos.generateSchema "location",
   locationId:
     type: Number
     decimal: false
+    optional: true
   guid:
     type: String
     optional: true

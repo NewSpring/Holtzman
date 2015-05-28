@@ -207,69 +207,69 @@ class signin extends Apollos.Component
         self.createAccount email, password
 
   signinAnimation: ->
-
-    $container = $('form').closest "section"
-    $container.css overflow: "hidden"
-    $('html').css overflow: "hidden"
-
-    $button = $('form button')
-
-    yPos = $button.offset().top + ($button.height() / 2)
-
-    $backgroundDiv = $('<div class="signin-animation" />')
-    $signinMessage = $('<h2 class="signin-message">You\'ve Signed In Successfully</h2>')
-
-    $backgroundDiv.css
-      position: "absolute"
-      left: "50%"
-      top: yPos
-      background: "#6BAC43"
-      zIndex: 100
-      borderRadius: "50%"
-
-    $signinMessage.css
-      position: "absolute"
-      display: "none"
-      width: "50%"
-      textAlign: "center"
-      padding: "20px"
-      top: "40%"
-      left: "25%"
-      color: "#fff"
-      zIndex: 200
-
-    $backgroundDiv.append $signinMessage
-    $container.append $backgroundDiv
-
-    buttonTwirl =
-      e: $button
-      p:
-        rotateZ: "315deg"
-
-    fillScreen =
-      e: $backgroundDiv
-      p: "transition.fillScreen"
-
-    fadeInMessage =
-      e: $signinMessage
-      p: "transition.fadeIn"
-
-    fadeOutAndDestroy =
-      e: $backgroundDiv
-      p: "transition.fadeOut"
-      o:
-        delay: 1500
-
-        complete: ->
-          $container.css overflow: ""
-          $('html').css overflow: ""
-          $backgroundDiv.remove()
-
-    signinSequence = [
-      buttonTwirl
-      fillScreen
-      fadeInMessage
-      fadeOutAndDestroy
-    ]
-
-    $.Velocity.RunSequence(signinSequence)
+    return
+    # $container = $('form').closest "section"
+    # $container.css overflow: "hidden"
+    # $('html').css overflow: "hidden"
+    #
+    # $button = $('form button')
+    #
+    # yPos = $button.offset().top + ($button.height() / 2)
+    #
+    # $backgroundDiv = $('<div class="signin-animation" />')
+    # $signinMessage = $('<h2 class="signin-message">You\'ve Signed In Successfully</h2>')
+    #
+    # $backgroundDiv.css
+    #   position: "absolute"
+    #   left: "50%"
+    #   top: yPos
+    #   background: "#6BAC43"
+    #   zIndex: 100
+    #   borderRadius: "50%"
+    #
+    # $signinMessage.css
+    #   position: "absolute"
+    #   display: "none"
+    #   width: "50%"
+    #   textAlign: "center"
+    #   padding: "20px"
+    #   top: "40%"
+    #   left: "25%"
+    #   color: "#fff"
+    #   zIndex: 200
+    #
+    # $backgroundDiv.append $signinMessage
+    # $container.append $backgroundDiv
+    #
+    # buttonTwirl =
+    #   e: $button
+    #   p:
+    #     rotateZ: "315deg"
+    #
+    # fillScreen =
+    #   e: $backgroundDiv
+    #   p: "transition.fillScreen"
+    #
+    # fadeInMessage =
+    #   e: $signinMessage
+    #   p: "transition.fadeIn"
+    #
+    # fadeOutAndDestroy =
+    #   e: $backgroundDiv
+    #   p: "transition.fadeOut"
+    #   o:
+    #     delay: 1500
+    #
+    #     complete: ->
+    #       $container.css overflow: ""
+    #       $('html').css overflow: ""
+    #       $backgroundDiv.remove()
+    #
+    # signinSequence = [
+    #   buttonTwirl
+    #   fillScreen
+    #   fadeInMessage
+    #   fadeOutAndDestroy
+    # ]
+    #
+    # $.Velocity.RunSequence(signinSequence)
