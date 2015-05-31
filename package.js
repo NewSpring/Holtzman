@@ -24,6 +24,7 @@ Package.onUse(function(api) {
   api.use('newspring:components@=0.1.14', 'client');
   api.use('velocityjs:velocityjs@=1.2.1', 'client');
   api.use('raix:handlebar-helpers@0.2.4', 'client');
+  api.use('arillo:flow-router-helpers@0.1.6', 'client');
 
 
   api.addFiles('lib/lib/lib/_vars.js');
