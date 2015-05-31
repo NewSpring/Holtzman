@@ -55,6 +55,7 @@ tasks:
   # create package.js
   "meteor-load":
     src: "lib/**/*"
+    version: "0.1.25"
     dest: "./"
     org: "newspring"
     name: "apollos-core"
