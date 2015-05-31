@@ -21,7 +21,6 @@ Package.onUse(function(api) {
   api.use('aldeed:collection2@=2.3.3');
   api.use('meteorhacks:flow-router@1.9.0');
   api.use('meteorhacks:flow-layout@1.3.0', 'client');
-  api.use('newspring:components@=0.1.14', 'client');
   api.use('velocityjs:velocityjs@=1.2.1', 'client');
   api.use('raix:handlebar-helpers@0.2.4', 'client');
   api.use('arillo:flow-router-helpers@0.1.6', 'client');
@@ -44,16 +43,31 @@ Package.onUse(function(api) {
   api.addFiles('lib/lib/collections/queuedApiRequest.js');
   api.addFiles('lib/lib/collections/user.js');
   api.addFiles('lib/lib/routes/lib/api.js');
+  api.addFiles('lib/lib/routes/lib/states.js');
   api.addFiles('lib/lib/accounts.js');
   api.addFiles('lib/lib/apollos.js');
 
 
-  api.addFiles('lib/client/lib/animations.js', 'client');
+  api.addFiles('lib/client/lib/components/lib/_lookup.js', 'client');
+  api.addFiles('lib/client/lib/components/lib/helpers.js', 'client');
+  api.addFiles('lib/client/lib/components/_vars.js', 'client');
+  api.addFiles('lib/client/lib/components/base.js', 'client');
+  api.addFiles('lib/client/lib/components/component.js', 'client');
   api.addFiles('lib/client/lib/apollos.js', 'client');
   api.addFiles('lib/client/helpers/isMobile.js', 'client');
   api.addFiles('lib/client/helpers/media-query.js', 'client');
-  api.addFiles('lib/client/stylesheets/keyboard.css', 'client');
-  api.addFiles('lib/client/templates/components/controls/number-keyboard.html', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/components/profile.forgot-password.html', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/components/profile.reset-password.html', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/components/profile.signin.html', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/components/profile.signup.html', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/components/_vars.js', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/components/profile.forgot-password.js', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/components/profile.reset-password.js', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/components/profile.signUp.js', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/components/profile.signin.js', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/apollos.profile.onboard.html', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/_vars.js', 'client');
+  api.addFiles('lib/client/templates/cards/on-board/apollos.profile.onBoard.js', 'client');
   api.addFiles('lib/client/templates/components/controls/progress.html', 'client');
   api.addFiles('lib/client/templates/components/controls/toggle.html', 'client');
   api.addFiles('lib/client/templates/components/controls/_vars.js', 'client');
@@ -68,15 +82,6 @@ Package.onUse(function(api) {
   api.addFiles('lib/client/templates/objects/nav/nav.html', 'client');
   api.addFiles('lib/client/templates/objects/nav/_vars.js', 'client');
   api.addFiles('lib/client/templates/objects/nav/nav.js', 'client');
-  api.addFiles('lib/client/templates/objects/signup/forgot-password.html', 'client');
-  api.addFiles('lib/client/templates/objects/signup/onboard.html', 'client');
-  api.addFiles('lib/client/templates/objects/signup/reset-password.html', 'client');
-  api.addFiles('lib/client/templates/objects/signup/signin.html', 'client');
-  api.addFiles('lib/client/templates/objects/signup/_vars.js', 'client');
-  api.addFiles('lib/client/templates/objects/signup/forgot-password.js', 'client');
-  api.addFiles('lib/client/templates/objects/signup/onboard.js', 'client');
-  api.addFiles('lib/client/templates/objects/signup/reset-password.js', 'client');
-  api.addFiles('lib/client/templates/objects/signup/signin.js', 'client');
 
 
   api.addFiles('lib/lib/routes/server/_vars.js', 'server');
@@ -92,8 +97,5 @@ Package.onUse(function(api) {
   api.addFiles('lib/server/lib/user.js', 'server');
 
 
-  api.export('Rock');
   api.export('Apollos');
-  api.export('HTTP', 'server');
 });
-

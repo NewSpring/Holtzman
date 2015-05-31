@@ -1,3 +1,7 @@
+<body>
+  {{> home}}
+</body>
+
 <template name="home">
 
   <div class="panel">
@@ -9,22 +13,9 @@
     <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating scrollable handheld-push-double-top">
 
         <div class="floating__item">
-          {{#if MediaQuery "portable"}}
-            portable!
-          {{else}}
-            not portable
-          {{/if}}
-
-          {{#if MediaQuery "handheld"}}
-            handheld!
-          {{/if}}
-
-          {{#if MediaQuery "anchored"}}
-            anchored!
-          {{/if}}
 
           {{#unless currentUser}}
-            {{> Apollos.Profile.OnBoard}}
+            {{> Apollos.profile.onBoard}}
           {{else}}
             <div class="push">
               <h3>Signed in!</h3>

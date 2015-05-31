@@ -1,9 +1,11 @@
 
 # remove for junction.debounce once stable
-class _debounce
+class Debounce
 
   constructor: (@data) ->
-    window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
+    window.requestAnimationFrame = window.requestAnimationFrame or
+      window.webkitRequestAnimationFrame or
+      window.mozRequestAnimationFrame;
 
     @.callback = @data
     @.ticking = false
@@ -14,7 +16,9 @@ class _debounce
 
   requestTick: =>
     unless @.ticking
-      requestAnimationFrame(this.rafCallback || (this.rafCallback = this.update.bind(this)))
+      requestAnimationFrame(this.rafCallback or (
+        this.rafCallback = this.update.bind(this)
+      ))
       @.ticking = true
 
   handleEvent: =>
@@ -81,7 +85,7 @@ Meteor.startup ->
       return
 
     # debounce (can move this to junction once stable)
-    deouncedGetSize = new _debounce getSize
+    deouncedGetSize = new Debounce getSize
     window.addEventListener "resize", deouncedGetSize, false
 
     # fire once for on load checking

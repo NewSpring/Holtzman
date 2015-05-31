@@ -1,0 +1,40 @@
+<template name="Apollos.profile.onBoard">
+
+
+  {{!-- Spacebars does not have else if statements :(
+  {{! Need to extend so we can have else if statements}}
+  {{#if resetPasswordToken}}
+    {{> resetPassword
+      email=email.get
+    }}
+  {{else}}
+    {{#if passwordForget.get}}
+      {{> forgotPassword
+        email=email.get
+      }}
+    {{else}}
+
+      {{#if Template.contentBlock}}
+
+        {{#signin
+          email=email.get
+        }}
+          {{> Template.contentBlock}}
+
+        {{/signin}}
+
+      {{else}}
+
+        {{>signin
+          email=email.get
+        }}
+
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+  --}}
+
+  {{> Template.dynamic template=state.get data=currentData}}
+
+</template>

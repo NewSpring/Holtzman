@@ -72,14 +72,11 @@ tasks:
         "aldeed:collection2@=2.3.3": "both"
         "meteorhacks:flow-router@1.9.0": "both"
         "meteorhacks:flow-layout@1.3.0": "client"
-        "newspring:components@=0.1.14": "client"
         "velocityjs:velocityjs@=1.2.1": "client"
         "raix:handlebar-helpers@0.2.4": "client"
         "arillo:flow-router-helpers@0.1.6": "client"
       export:
-        "Rock": "both"
         "Apollos": "both"
-        "HTTP": "server"
 
 
   ###
@@ -103,9 +100,6 @@ tasks:
     packages: [
       "meteor-platform"
       "newspring:apollos-core"
-      "iron:router"
-      "velocity:core@=0.6.0"
-      "mike:mocha@=0.5.4"
     ]
     platforms: [
       "server"
