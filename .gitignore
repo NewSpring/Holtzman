@@ -38,3 +38,5 @@ development.json
 james_uswesto.pem
 workbench
 .versions
+/lib/
+/package.js
