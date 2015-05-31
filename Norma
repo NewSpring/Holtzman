@@ -55,6 +55,7 @@ tasks:
   # create package.js
   "meteor-load":
     src: "lib/**/*"
+    version: "0.1.25"
     dest: "./"
     org: "newspring"
     name: "apollos-core"
@@ -73,6 +74,7 @@ tasks:
         "newspring:components@=0.1.14": "client"
         "velocityjs:velocityjs@=1.2.1": "client"
         "raix:handlebar-helpers@0.2.4": "client"
+        "arillo:flow-router-helpers@0.1.6": "client"
       export:
         "Rock": "both"
         "Apollos": "both"

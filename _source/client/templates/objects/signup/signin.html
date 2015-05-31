@@ -9,6 +9,9 @@
         item2="Register"
       }}
 
+      {{#if Template.contentBlock}}
+        {{> Template.contentBlock}}
+      {{/if}}
 
       {{> Apollos.Forms.Input
         name="email"
@@ -44,10 +47,6 @@
         <a href="#" data-forgot-password="true">Forgot Password?</a>
       </small>
       </h7>
-      {{/if}}
-
-      {{#if Template.contentBlock}}
-        {{> Template.contentBlock}}
       {{/if}}
 
     </fieldset>
