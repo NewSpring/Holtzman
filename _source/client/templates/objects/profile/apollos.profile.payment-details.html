@@ -1,22 +1,17 @@
 <template name="Apollos.Profile.PaymentDetails">
 
-
-  <form id="{{#if bank.get}}payment-bank{{else}}payment-credit{{/if}}" class="hard-ends">
-    {{> Apollos.Controls.Toggle
-      active=bank
-      item1="Bank"
-      item2="Credit"
-    }}
-    <fieldset class="flush-bottom">
-      {{#if bank.get}}
-        {{> bankFields}}
-      {{else}}
-        {{> cardFields}}
-      {{/if}}
-    </fieldset>
-  </form>
-
-
+  {{#Apollos.Forms.Form
+    title="Payment Details"
+    toggle=toggleState
+    toggle1="Bank"
+    toggle2="Credit"
+  }}
+    {{#if toggleState}}
+      {{> bankFields}}
+    {{else}}
+      {{> cardFields}}
+    {{/if}}
+  {{/Apollos.Forms.Form}}
 
 </template>
 
