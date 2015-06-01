@@ -957,6 +957,31 @@ class Component extends _components.base
             @component._internals.isDestroyed ?= new ReactiveVar true
             @component._internals.isDestroyed.set true
 
+            ###
+
+              In order to support the resuse of cards in other places with
+              different urls, when a card is destroyed we need to remove
+              any routes they have established in Apollos.Router
+
+              @TODO - add delete method to Apollos.Router
+
+            ###
+            if component.isCard()
+              card = component.getCard(component.componentName())
+
+              card.states or= {}
+
+              # nested loops stink, thoughts @team?
+              for route, index in Apollos.Router._routes by -1
+                for name, state of card.states
+                  if not state.url
+                    continue
+
+                  if route.name is name
+                    Apollos.Router._routes.splice(index, 1)
+                    # remove element from array
+                    continue
+
 
             # We need to run the onDestroyed of the child component
             @.component.onDestroyed()
