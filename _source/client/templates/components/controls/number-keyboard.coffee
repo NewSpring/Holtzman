@@ -32,18 +32,21 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
 
   vars: -> [
     typedText: ""
+    cancelClick: false
   ]
 
   events: -> [
-    "touchstart [data-key]": @.touchstartedDataKey
-
+    "touchstart [data-key]": @.clickedDataKey
     "click [data-key]": @.clickedDataKey
   ]
 
-  touchstartedDataKey: (event, template) ->
-    @.doPressAnimation event.currentTarget
-
   clickedDataKey: (event, template) ->
+    if event.type is "touchstart"
+      @.cancelClick.set true
+    else if @.cancelClick.get()
+      @.cancelClick.set false
+      return
+
     @.doPressAnimation event.currentTarget
     keyPressed = event.currentTarget.getAttribute "data-key"
     @.processTypedText keyPressed

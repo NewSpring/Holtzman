@@ -1,0 +1,58 @@
+.keyboard {
+  h3 {
+    color: #858585;
+  }
+
+  .key {
+    border-bottom: solid 3px #ddd;
+  }
+
+  .icon-backspace {
+    display: inline-block;
+
+    width: 28px;
+    height: 28px;
+
+    background-size: 28px 28px;
+  }
+}
+
+[data-key] {
+  h3 {
+    height: 45px;
+  }
+
+  &.touched {
+    color: #505050;
+
+    h3 {
+      height: 55px;
+      margin-top: -10px;
+
+      background-size: 100%;
+
+      font-size: 2.625em;
+    }
+
+    span {
+      width: 35px;
+      height: 35px;
+
+      background-size: 35px 35px;
+    }
+
+    .key {
+      border-bottom: solid 3px #505050;
+    }
+  }
+}
+
+@media screen and (max-height: 565px) {
+  [data-key] h3 {
+    height: 40px;
+  }
+
+  [data-key].touched h3 {
+    height: 50px;
+  }
+}

@@ -17,6 +17,7 @@ tasks:
   javascript:
     src: "_source/**/*"
     dest: "lib/"
+
   "compile-test":
     "@extend": "javascript"
     src: "tests/**/*"
@@ -28,13 +29,18 @@ tasks:
     dest: "lib/"
     minify: true
 
-  # compile sass
+  # Once this sass stuff is working, remove the keyboard sass from give
   sass:
-    src: "sample-app/**/*"
-    dest: "./workbench/"
+    src: "_source/**/*"
+    dest: "./client/"
     comb: true
     lint: true
 
+  "copy-sass":
+    "@extend": "copy"
+    src: "client/**/*"
+    dest: "./workbench/packages/apollos-core/client/"
+    order: "post"
 
   ###
 
@@ -45,6 +51,7 @@ tasks:
     src: "lib/**/*"
     dest: "./workbench/packages/apollos-core/lib/"
     order: "post"
+
   "copy-package":
     "@extend": "copy"
     src: "package" # package.js
