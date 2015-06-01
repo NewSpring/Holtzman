@@ -1,13 +1,41 @@
-class Apollos.Profile.BillingAddress extends Apollos.Component
-  @register "Apollos.Profile.BillingAddress"
+class Apollos.Forms.Form extends Apollos.Component
+  @register "Apollos.Forms.Form"
 
   vars: -> [
     hasErrors: false
   ]
 
   onRendered: ->
-    @.parent().title?.set "Billing Address"
-    @.parent().checkForValidated()
+
+    @.parent().title?.set @.data().title
+    @.parent().disabled?.set true
+    @.parent().checkForValidated?()
+
+  paramaterize: (string) ->
+    string = string.trim()
+    string = string.replace /[^a-zA-Z0-9-\s]/g, ''
+    string = string.replace /[^a-zA-Z0-9-]/g, '-'
+    string = string.toLowerCase()
+    return string
+
+  campuses: -> [
+    {
+      name: "Greenville"
+      val: 8
+    }
+    {
+      name: "Anderson"
+      val: 7
+    }
+    {
+      name: "Greenwood"
+      val: 9
+    }
+    {
+      name: "Florence"
+      val: 10
+    }
+  ]
 
   states: -> [
     {
