@@ -34,31 +34,36 @@ class profile.signIn extends Apollos.Component
     "submit #signup": @.signup
 
     # TODO fix link not working when using enter to submit form
-    "click [data-forgot-password]": (event) ->
-
-      self = @
-      children = {}
-      for child in self.children()
-        data = child.data()
-        if not data.name
-          continue
-
-        children[data.name] = child
-
-
-      if event.target.dataset?.forgotPassword
-
-        email = children["email"].getValue()
-
-        parent = self.parent()
-
-        if email
-          parent.email.set email
-
-        console.log parent.state.get()
-        parent.state.set "profile.forgotPassword"
+    "click [data-forgot-password]": @.forgotPassword
 
   ]
+
+  forgotPassword: (event) ->
+    
+    event.preventDefault()
+
+    self = @
+    children = {}
+    for child in self.children()
+      data = child.data()
+      if not data.name
+        continue
+
+      children[data.name] = child
+
+
+    if event.target.dataset?.forgotPassword
+
+      email = children["email"].getValue()
+
+      parent = self.parent()
+
+      if email
+        parent.email.set email
+
+      parent.state.set "profile.forgotPassword"
+      console.log parent.state.get()
+
 
 
   toggleForm: (event) ->

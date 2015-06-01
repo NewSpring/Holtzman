@@ -626,16 +626,75 @@ class Component extends _components.base
 
             component["state"] = new ReactiveVar _default
 
-            current = window.location.pathname
-            if current[current.length - 1] is "/"
-              current = current.substring(0, current.length - 1)
 
+            ###
+
+              Here we parse the url on creation of the card.
+              1. We split the pathname into segments
+              2. We remove and save any querystring at the end of route
+              3. We remove any #
+              4. If the state.url is already in the pathname we set the
+                route to include all previous segments and the url
+              5. If not we push the state.url to the end of the array
+              6. We then rebuild the array and define a route for it with
+                the name of our card
+
+            ###
+            current = window.location.pathname
+
+            neededUrls = []
+            # loop through all cards states to see if they have urls
+            # that we need to setup
             for name, state of card.states
-              noPath = Apollos.Router.path("#{name}").indexOf("/") is -1
-              if state.url and noPath
-                Apollos.Router.route("#{current}/#{state.url}/", {
-                  name: "#{name}"
-                })
+
+              if state.url
+                neededUrls.push {name: name, url: state.url}
+
+
+            paths = current.split("/")
+
+            paths = paths.filter Boolean
+
+            isAtState = false
+            for state in neededUrls
+              if paths.indexOf(state.url) > -1
+                isAtState = paths.indexOf(state.url)
+
+
+            # if the user is visiting the page that the state should be
+            # active then we need to pick up the route prior and including
+            # the state.url to form our route path
+            if typeof isAtState is "number"
+
+              if isAtState is 0
+                paths = []
+              else
+                paths = paths.splice(0, isAtState)
+
+            # build each route
+            for state in neededUrls
+
+              route = paths.slice()
+              route.push state.url
+
+              # rebuild the path array
+              route = route.join("/")
+
+              # here we see if the route has been defined previously
+              # @TODO - adjust router.path to return false if it doesn't
+              # exist
+              hasPath = Apollos.Router.path("#{state.name}").indexOf("/") > -1
+
+
+              # if there is not already a path for this url lets make one
+              if hasPath
+                continue
+
+
+              # make the route
+              Apollos.Router.route("/#{route}", {
+                name: "#{state.name}"
+              })
 
 
 
@@ -787,6 +846,8 @@ class Component extends _components.base
           return
 
         onRendered: ->
+
+
           if component.isCard()
             card = component.getCard(component.componentName())
 
@@ -801,13 +862,71 @@ class Component extends _components.base
                 component.state.set name
                 break
 
+
             self = @
+
+            # track the current state prior to doing state
+            # calculations
+            oldState = ""
+            oldRoute = Apollos.Router.current()
+            Tracker.nonreactive ->
+              oldState = self.component.state.get()
+
+
             Tracker.autorun ->
+
+              # register reactive dependency
+              Apollos.Router.watchPathChange()
+
+              # current route
+              currentRoute = Apollos.Router.current()
+              # current state of the app
               currentState = self.component.state.get()
-              if card.states[currentState]
-                path = Apollos.Router.path("#{currentState}")
-                if path.indexOf("/") isnt -1
-                  Apollos.Router.go(path)
+
+              # state has been updated so all we need to do is update
+              # the route
+              if currentState isnt oldState
+                oldState = currentState
+                shouldBePath = Apollos.Router.path(currentState)
+                hasRoute = shouldBePath.indexOf("/") > -1
+
+                if hasRoute
+                  if window.location.search
+                    shouldBePath += window.location.search
+
+                  Apollos.Router.go shouldBePath
+
+                return
+
+              # path is what changed
+              if currentRoute.path isnt oldRoute.path
+                oldRoute = currentRoute
+
+                # we are already at the right place
+                if currentRoute.route?.name is currentState
+                  return
+
+                # there is no route name
+                if not currentRoute.route?.name
+                  shouldBePath = Apollos.Router.path(currentState)
+
+                  hasRoute = shouldBePath.indexOf("/") > -1
+                  if hasRoute and currentRoute.path isnt shouldBePath
+                    if window.location.search
+                      shouldBePath += window.location.search
+                    Apollos.Router.go shouldBePath
+
+                  return
+
+                # update the state of the card if it is a correct state
+                if card.states[currentRoute.route.name]
+                  oldState = currentRoute.route.name
+                  self.component.state.set(
+                    currentRoute.route.name
+                  )
+
+                return
+
 
           # @ is a template instance.
 
