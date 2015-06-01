@@ -46,12 +46,15 @@ tasks:
     dest: "./workbench/packages/apollos-core/lib/"
     order: "post"
 
+
   "copy-package":
     "@extend": "copy"
     src: "package" # package.js
     dest: "./workbench/packages/apollos-core/"
     order: "post"
     ext: [ "js" ]
+    type: "sync"
+
 
   # create package.js
   "meteor-load":
@@ -78,6 +81,11 @@ tasks:
       export:
         "Apollos": "both"
 
+  "copy-package":
+    "@extend": "copy"
+    src: "package" # package.js
+    dest: "./workbench/packages/apollos-core/"
+    ext: [ "js" ]
 
   ###
 

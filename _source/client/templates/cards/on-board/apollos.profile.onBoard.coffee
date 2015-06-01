@@ -3,16 +3,12 @@
 class Apollos.profile.onBoard extends Apollos.Component
 
   @register "Apollos.profile.onBoard"
-  @card true
+  @card true, "profile.signIn"
 
   vars: -> [
-    state: "profile.signIn"
     email: ""
   ]
 
-  resetPasswordToken: ->
-    Session.get "resetPasswordToken"
-
-
-  onCreated: ->
-    console.log "foobar"
+  onRendered: ->
+    if Session.get "resetPasswordToken"
+      @.state.set "profile.resetPassword"

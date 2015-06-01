@@ -591,6 +591,54 @@ class Component extends _components.base
 
 
         onCreated: ->
+          if component.isCard()
+            ###
+
+              1. register a computation around cards states
+              2. set state variable default (✓)
+              3. lookup url routes if any children have them (✓)
+              4. setup binding of url routes to trigger card states (✓)
+              5. setup binding of url routes on card state change
+
+            ###
+            card = component.getCard(component.componentName())
+
+            card.states or= {}
+            # Tracker.autorun ->
+            #   console.log card
+
+            ###
+
+              Here we lookup and see if the card has established a default
+              template to render. If it hasn't, we take the first template
+              that registered it as a state on the card. This creates
+              a state reactive var helper that can be used in templates
+              as {{state.get}} and updated by children templates using
+              `@.parent()?.state.set("new template")`
+
+            ###
+            if card.default
+              _default = card.default
+            else
+              for name of card.states
+                _default = name
+                break
+
+            component["state"] = new ReactiveVar _default
+
+            current = window.location.pathname
+            if current[current.length - 1] is "/"
+              current = current.substring(0, current.length - 1)
+
+            for name, state of card.states
+              noPath = Apollos.Router.path("#{name}").indexOf("/") is -1
+              if state.url and noPath
+                Apollos.Router.route("#{current}/#{state.url}/", {
+                  name: "#{name}"
+                })
+
+
+
           # @ is a template instance.
 
           if componentParent
@@ -621,7 +669,7 @@ class Component extends _components.base
               componentParent.addChild component
 
 
-        # Blaze rendered callback
+          # Blaze rendered callback
           @.view._onViewRendered =>
 
             # Attach events the first time template instance renders.
@@ -724,29 +772,50 @@ class Component extends _components.base
           @.component.onCreated()
 
 
-          @.component._internals.isCreated ?= new ReactiveVar true
+          @.component._internals.isCreated or= new ReactiveVar true
           @.component._internals.isCreated.set true
 
           # Maybe we are re-rendering the component. So let's
           # initialize variables just to be sure.
 
-          @.component._internals.isRendered ?= new ReactiveVar false
+          @.component._internals.isRendered or= new ReactiveVar false
           @.component._internals.isRendered.set false
 
-          @.component._internals.isDestroyed ?= new ReactiveVar false
+          @.component._internals.isDestroyed or= new ReactiveVar false
           @.component._internals.isDestroyed.set false
 
           return
 
         onRendered: ->
+          if component.isCard()
+            card = component.getCard(component.componentName())
+
+            card.states or= {}
+
+            routeAtRender = Apollos.Router.current()
+            for name, state of card.states
+              if not state.url
+                continue
+
+              if routeAtRender.path?.match state.url
+                component.state.set name
+                break
+
+            self = @
+            Tracker.autorun ->
+              currentState = self.component.state.get()
+              if card.states[currentState]
+                path = Apollos.Router.path("#{currentState}")
+                if path.indexOf("/") isnt -1
+                  Apollos.Router.go(path)
 
           # @ is a template instance.
 
           # We need to run the onRendered of the child component
           @.component.onRendered()
 
-          @component._internals.isRendered ?= new ReactiveVar true
-          @component._internals.isRendered.set true
+          @.component._internals.isRendered ?= new ReactiveVar true
+          @.component._internals.isRendered.set true
 
 
         onDestroyed: ->

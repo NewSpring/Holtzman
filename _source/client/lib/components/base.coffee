@@ -145,48 +145,53 @@ class ComponentNamespace
 
 
 # Apollos.state
-cards = {}
 
 
-addCardState = (component, card) ->
 
+addCardState = (storage, component, card) ->
+
+  name = component.componentName()
   obj = {}
-  obj[component.componentName()] =
-    component: component
+  obj[name] = new component()
 
-  if not cards[card]
-    cards[card] =
-      component: component
+  if not storage[card]
+    storage[card] =
+      component: new component()
       states: obj
 
     return
 
-  if cards[card] and not cards[card].states
+  if storage[card] and not storage[card].states
 
-    cards[card].states = obj
+    storage[card].states = obj
 
     return
 
-  if cards[card].states[component.componentName()]
+  if storage[card].states[name]
     return
 
-  cards[card].states[component.componentName()] =
-    component: component
+
+  storage[card].states[name] = new component()
 
   return
 
 
-addCard = (component) ->
+addCard = (storage, component, _default) ->
+  name = component.componentName()
+  if storage[name] and not storage[name]?.states
 
-  if cards[component.componentName()] and not cards[component.componentName()].states
     console.log "Card #{component.componentName()} is already registed"
     return
 
-  if cards[component.componentName()]
+  if storage[name]
+    if not storage[name].default and _default
+      storage[name].default = _default
     return
 
-  cards[component.componentName()] =
-    component: component
+  storage[name] =
+    component: new component()
+    default: _default
+
 
 
 
@@ -195,6 +200,7 @@ class Base
 
   @components: new ComponentNamespace()
 
+  @cards: {}
 
   @register: (componentName, componentClass) ->
 
@@ -254,26 +260,50 @@ class Base
     4. Map states to card for use
 
   ###
-  @card: (cardName, cardClass) ->
+
+  @card: (cardName, _default) ->
 
     if not cardName
       debug "Card name or `true` is required for registration."
       return
 
     # To allow calling @card 'name' from inside a class body.
-    cardClass or= @
+    cardClass = @
 
     isCard = typeof cardName is "boolean"
 
     if isCard
-      addCard cardClass
+      @isCard true
+      addCard @cards, cardClass, _default
       return @
 
-    addCardState(cardClass, cardName)
 
-    console.log cards
+    addCardState(@cards, cardClass, cardName)
 
     return @
+
+
+  @isCard: (card) ->
+
+    # setter
+    if card
+      @._isCard = true
+
+      # chain chain chain
+      return @
+
+    # getter
+    return @._isCard or false
+
+
+  isCard: ->
+
+    @.constructor.isCard()
+
+
+  getCard: (name) ->
+
+    return @.constructor.cards[name] or null
 
 
   @getComponent: (componentsNamespace, componentName) ->

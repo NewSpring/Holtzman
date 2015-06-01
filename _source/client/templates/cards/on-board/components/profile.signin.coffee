@@ -4,6 +4,7 @@ class profile.signIn extends Apollos.Component
 
   @register "profile.signIn"
   @card "Apollos.profile.onBoard"
+
   url: "sign-in"
 
 
@@ -54,9 +55,8 @@ class profile.signIn extends Apollos.Component
         if email
           parent.email.set email
 
-        parent.passwordForget.set true
-
-
+        console.log parent.state.get()
+        parent.state.set "profile.forgotPassword"
 
   ]
 

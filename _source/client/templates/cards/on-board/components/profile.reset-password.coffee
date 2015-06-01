@@ -11,7 +11,7 @@ class profile.resetPassword extends Apollos.Component
 
   @register "profile.resetPassword"
   @card "Apollos.profile.onBoard"
-  url: "reset-password"
+  url:  "reset-password"
 
   vars: -> [
 
@@ -72,5 +72,5 @@ class profile.resetPassword extends Apollos.Component
         else
           Session.set "resetPasswordToken", ""
           doneCallback()
-          Router.go "home"
+          Apollos.Router.go "/"
   ]
