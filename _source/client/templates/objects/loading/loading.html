@@ -1,0 +1,15 @@
+<template name="Apollos.Loading">
+
+  <section class="loading text-center background--colored">
+    <div class="loading-inner">
+      {{#if Template.contentBlock}}
+        {{> Template.contentBlock}}
+      {{else}}
+        <h3 class="text-white one-whole">Loading...</h3>
+      {{/if}}
+
+      <div class="loader"></div>
+    </div>
+  </section>
+
+</template>

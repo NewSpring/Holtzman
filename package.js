@@ -61,6 +61,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/client/templates/components/forms/_vars.js', 'client');
   api.addFiles('lib/client/templates/components/forms/checkbox.js', 'client');
   api.addFiles('lib/client/templates/components/forms/input.js', 'client');
+  api.addFiles('lib/client/templates/objects/loading/loading.html', 'client');
   api.addFiles('lib/client/templates/objects/nav/nav.html', 'client');
   api.addFiles('lib/client/templates/objects/nav/_vars.js', 'client');
   api.addFiles('lib/client/templates/objects/nav/nav.js', 'client');
