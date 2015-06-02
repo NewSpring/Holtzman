@@ -51,6 +51,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/client/lib/animations.js', 'client');
   api.addFiles('lib/client/lib/apollos.js', 'client');
   api.addFiles('lib/client/helpers/media-query.js', 'client');
+  api.addFiles('lib/client/stylesheets/keyboard.css', 'client');
   api.addFiles('lib/client/templates/components/controls/number-keyboard.html', 'client');
   api.addFiles('lib/client/templates/components/controls/progress.html', 'client');
   api.addFiles('lib/client/templates/components/controls/toggle.html', 'client');

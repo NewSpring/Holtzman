@@ -32,15 +32,9 @@ tasks:
   # Once this sass stuff is working, remove the keyboard sass from give
   sass:
     src: "_source/**/*"
-    dest: "./client/"
+    dest: "lib/"
     comb: true
     lint: true
-
-  "copy-sass":
-    "@extend": "copy"
-    src: "client/**/*"
-    dest: "./workbench/packages/apollos-core/client/"
-    order: "post"
 
   ###
 
