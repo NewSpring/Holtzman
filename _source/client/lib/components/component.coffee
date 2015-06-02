@@ -727,7 +727,7 @@ class Component extends _components.base
 
 
 
-                
+
             ###
 
               component.parent is reactive, so we use
@@ -925,33 +925,34 @@ class Component extends _components.base
                 return
 
               # path is what changed
-              if currentRoute.path isnt oldRoute.path
-                oldRoute = currentRoute
 
-                # we are already at the right place
-                if currentRoute.route?.name is currentState
-                  return
+              oldRoute = currentRoute
 
-                # there is no route name
-                if not currentRoute.route?.name
-                  shouldBePath = Apollos.Router.path(currentState)
+              # we are already at the right place
+              if currentRoute.route?.name is currentState
+                return
 
-                  hasRoute = shouldBePath.indexOf("/") > -1
-                  if hasRoute and currentRoute.path isnt shouldBePath
-                    if window.location.search
-                      shouldBePath += window.location.search
-                    Apollos.Router.go shouldBePath
+              # there is no route name
+              if not currentRoute.route?.name
+                shouldBePath = Apollos.Router.path(currentState)
 
-                  return
-
-                # update the state of the card if it is a correct state
-                if card.states[currentRoute.route.name]
-                  oldState = currentRoute.route.name
-                  self.component.state.set(
-                    currentRoute.route.name
-                  )
+                hasRoute = shouldBePath.indexOf("/") > -1
+                if hasRoute and currentRoute.path isnt shouldBePath
+                  if window.location.search
+                    shouldBePath += window.location.search
+                  Apollos.Router.go shouldBePath
 
                 return
+
+              # update the state of the card if it is a correct state
+              if card.states[currentRoute.route.name]
+                oldState = currentRoute.route.name
+                self.component.state.set(
+                  currentRoute.route.name
+                )
+
+              return
+              
 
 
           # @ is a template instance.
