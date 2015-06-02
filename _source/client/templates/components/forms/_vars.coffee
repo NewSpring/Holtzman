@@ -1,2 +1,2 @@
 
-Apollos.Forms = {}
+Apollos.forms = {}

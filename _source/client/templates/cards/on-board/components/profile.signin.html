@@ -3,7 +3,7 @@
   <form id="{{#if hasAccount.get}}signin{{else}}signup{{/if}}" autocomplete="off">
     <fieldset>
 
-      {{> Apollos.Controls.Toggle
+      {{> Apollos.controls.toggle
         active=hasAccount
         item1="Sign In"
         item2="Register"
@@ -13,7 +13,7 @@
         {{> Template.contentBlock}}
       {{/if}}
 
-      {{> Apollos.Forms.Input
+      {{> Apollos.forms.input
         name="email"
         placeholder="user@email.com"
         label="Email"
@@ -22,7 +22,7 @@
         preFill=email.get
       }}
 
-      {{> Apollos.Forms.Input
+      {{> Apollos.forms.input
         name="password"
         placeholder="password"
         label="Password"
@@ -32,12 +32,12 @@
 
       {{#unless hasAccount.get}}
 
-        {{#Apollos.Forms.Checkbox
+        {{#Apollos.forms.checkbox
           name="terms"
           checked="true"
         }}
           By signing up you agree to our <a href="#">terms and conditions</a>
-        {{/Apollos.Forms.Checkbox}}
+        {{/Apollos.forms.checkbox}}
 
       {{/unless}}
 

@@ -1,7 +1,7 @@
 
-class Apollos.Forms.Input extends Apollos.Component
+class Apollos.forms.input extends Apollos.Component
 
-  @register "Apollos.Forms.Input"
+  @register "Apollos.forms.input"
 
 
   vars: -> [

@@ -1,1 +1,1 @@
-Apollos.Controls = {}
+Apollos.controls = {}

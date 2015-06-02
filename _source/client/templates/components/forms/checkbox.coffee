@@ -1,8 +1,8 @@
 
 
-class Apollos.Forms.Checkbox extends Apollos.Component
+class Apollos.forms.checkbox extends Apollos.Component
 
-  @register "Apollos.Forms.Checkbox"
+  @register "Apollos.forms.checkbox"
 
 
   vars: -> [

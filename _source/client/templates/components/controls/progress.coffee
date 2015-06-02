@@ -1,6 +1,6 @@
 
-class Apollos.Controls.Progress extends Apollos.Component
-  @register "Apollos.Controls.Progress"
+class Apollos.controls.progress extends Apollos.Component
+  @register "Apollos.controls.progress"
 
   steps: ->
     self = @

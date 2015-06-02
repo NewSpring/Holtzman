@@ -1,7 +1,7 @@
 Apollos.Controls or= {}
 
-class Apollos.Controls.NumberKeyboard extends Apollos.Component
-  @register "Apollos.Controls.NumberKeyboard"
+class Apollos.controls.numberKeyboard extends Apollos.Component
+  @register "Apollos.controls.numberKeyboard"
 
 
   onRendered: ->

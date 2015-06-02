@@ -24,7 +24,7 @@ class profile.forgotPassword extends Apollos.Component
       event.preventDefault()
       self = @
       children = {}
-      for child in self.children("Apollos.Forms.Input")
+      for child in self.children("Apollos.forms.input")
         children[child.data().name] = child
 
       email = self.find("input[name=email]").value.toLowerCase()
