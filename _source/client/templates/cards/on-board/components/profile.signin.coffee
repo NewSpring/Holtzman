@@ -1,5 +1,4 @@
 
-
 class profile.signIn extends Apollos.Component
 
   @register "profile.signIn"

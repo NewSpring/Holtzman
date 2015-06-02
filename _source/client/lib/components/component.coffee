@@ -361,7 +361,6 @@ registerFirstCreatedHook = (template, onCreated) ->
 
 
 
-
 # Apollos.Component
 #
 # - reactive vars (✓)
@@ -1108,7 +1107,7 @@ class Component extends _components.base
       parent.removeChild node
 
     return
-  
+
 
   url: false
 

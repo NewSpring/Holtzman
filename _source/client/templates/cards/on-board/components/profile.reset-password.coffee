@@ -21,6 +21,10 @@ class profile.resetPassword extends Apollos.Component
     (path, next) ->
       console.log "watching path:", path
       next()
+
+    (path, next) ->
+      console.log "I see you -->:", path
+      next()
   ]
 
   vars: -> [
