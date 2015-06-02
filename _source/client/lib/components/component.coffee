@@ -595,6 +595,8 @@ class Component extends _components.base
         onCreated: ->
 
           if component.isCard()
+            # attach created component to Apollos.state
+            Apollos.states[component.componentName()].component = component
             ###
 
               1. register a computation around cards states
@@ -631,85 +633,85 @@ class Component extends _components.base
             if @.data?.state
               component["state"].set @.data.state
 
+            if not @.data?.noUrls
+              ###
 
-            ###
+                Here we parse the url on creation of the card.
+                1. We split the pathname into segments
+                2. We remove and save any querystring at the end of route
+                3. We remove any #
+                4. If the state.url is already in the pathname we set the
+                  route to include all previous segments and the url
+                5. If not we push the state.url to the end of the array
+                6. We then rebuild the array and define a route for it with
+                  the name of our card
 
-              Here we parse the url on creation of the card.
-              1. We split the pathname into segments
-              2. We remove and save any querystring at the end of route
-              3. We remove any #
-              4. If the state.url is already in the pathname we set the
-                route to include all previous segments and the url
-              5. If not we push the state.url to the end of the array
-              6. We then rebuild the array and define a route for it with
-                the name of our card
+              ###
+              current = window.location.pathname
 
-            ###
-            current = window.location.pathname
+              neededUrls = []
+              # loop through all cards states to see if they have urls
+              # that we need to setup
+              for name, state of card.states
 
-            neededUrls = []
-            # loop through all cards states to see if they have urls
-            # that we need to setup
-            for name, state of card.states
+                if state.url
+                  obj =
+                    name: name
+                    url: state.url
 
-              if state.url
-                obj =
-                  name: name
-                  url: state.url
+                  if state.middlewares
+                    obj.middlewares = state.middlewares()
+
+                  neededUrls.push obj
+
+
+              paths = current.split("/")
+
+              paths = paths.filter Boolean
+
+              isAtState = false
+              for state in neededUrls
+                if paths.indexOf(state.url) > -1
+                  isAtState = paths.indexOf(state.url)
+
+
+              # if the user is visiting the page that the state should be
+              # active then we need to pick up the route prior and including
+              # the state.url to form our route path
+              if typeof isAtState is "number"
+
+                if isAtState is 0
+                  paths = []
+                else
+                  paths = paths.splice(0, isAtState)
+
+              # build each route
+              for state in neededUrls
+
+                route = paths.slice()
+                route.push state.url
+
+                # rebuild the path array
+                route = route.join("/")
+
+                # here we see if the route has been defined previously
+                # @TODO - adjust router.path to return false if it doesn't
+                # exist
+                hasPath = Apollos.Router.path("#{state.name}").indexOf("/") > -1
+
+
+                # if there is not already a path for this url lets make one
+                if hasPath
+                  continue
+
+                routeObj =
+                  name: "#{state.name}"
 
                 if state.middlewares
-                  obj.middlewares = state.middlewares()
+                  routeObj.middlewares = state.middlewares
 
-                neededUrls.push obj
-
-
-            paths = current.split("/")
-
-            paths = paths.filter Boolean
-
-            isAtState = false
-            for state in neededUrls
-              if paths.indexOf(state.url) > -1
-                isAtState = paths.indexOf(state.url)
-
-
-            # if the user is visiting the page that the state should be
-            # active then we need to pick up the route prior and including
-            # the state.url to form our route path
-            if typeof isAtState is "number"
-
-              if isAtState is 0
-                paths = []
-              else
-                paths = paths.splice(0, isAtState)
-
-            # build each route
-            for state in neededUrls
-
-              route = paths.slice()
-              route.push state.url
-
-              # rebuild the path array
-              route = route.join("/")
-
-              # here we see if the route has been defined previously
-              # @TODO - adjust router.path to return false if it doesn't
-              # exist
-              hasPath = Apollos.Router.path("#{state.name}").indexOf("/") > -1
-
-
-              # if there is not already a path for this url lets make one
-              if hasPath
-                continue
-
-              routeObj =
-                name: "#{state.name}"
-
-              if state.middlewares
-                routeObj.middlewares = state.middlewares
-
-              # make the route
-              Apollos.Router.route("/#{route}", routeObj)
+                # make the route
+                Apollos.Router.route("/#{route}", routeObj)
 
 
 
@@ -885,8 +887,7 @@ class Component extends _components.base
 
         onRendered: ->
 
-
-          if component.isCard()
+          if component.isCard() and not @.data?.noUrls
             card = component.getCard(component.componentName())
 
             card.states or= {}
@@ -1021,6 +1022,8 @@ class Component extends _components.base
                     # remove element from array
                     continue
 
+              delete Apollos.states[component.componentName()]
+
 
             # We need to run the onDestroyed of the child component
             @.component.onDestroyed()
@@ -1051,6 +1054,12 @@ class Component extends _components.base
       return
 
     return template
+
+  getState: (state) ->
+
+    console.log @._internals
+
+    return true
 
   onCreated: ->
 

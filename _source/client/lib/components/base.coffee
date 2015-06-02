@@ -152,11 +152,10 @@ addCardState = (storage, component, card) ->
 
   name = component.componentName()
   obj = {}
-  obj[name] = new component()
+  obj[name] = component
 
   if not storage[card]
     storage[card] =
-      component: new component()
       states: obj
 
     return
@@ -171,13 +170,14 @@ addCardState = (storage, component, card) ->
     return
 
 
-  storage[card].states[name] = new component()
+  storage[card].states[name] = component
 
   return
 
 
 addCard = (storage, component, _default) ->
   name = component.componentName()
+
   if storage[name] and not storage[name]?.states
 
     console.log "Card #{component.componentName()} is already registed"
@@ -186,10 +186,13 @@ addCard = (storage, component, _default) ->
   if storage[name]
     if not storage[name].default and _default
       storage[name].default = _default
+
+    storage[name].component or= component
+
     return
 
   storage[name] =
-    component: new component()
+    component: component
     default: _default
 
 

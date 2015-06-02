@@ -13,10 +13,10 @@
     <section class="handheld-hard panel__item--right lap-and-up-seven-twelfths floating scrollable handheld-push-double-top">
 
         <div class="floating__item">
-
+          <a href="{{pathForState 'profile.resetPassword'}}">Foo</a>
           {{#unless currentUser}}
 
-            {{> Apollos.profile.onBoard}}
+            {{> Apollos.profile.onBoard noUrls=true}}
 
           {{else}}
             <div class="push">
