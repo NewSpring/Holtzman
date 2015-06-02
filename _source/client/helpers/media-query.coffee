@@ -26,6 +26,7 @@ Meteor.startup ->
 
   # set up var and dependency for tracking
   currentSize = ""
+  currentHeight = ""
   currentSizeDep = new Tracker.Dependency
   stylesApplied = []
 
@@ -34,6 +35,9 @@ Meteor.startup ->
     currentSizeDep.depend()
     return currentSize.match size
 
+  testHeight = (size) ->
+    currentSizeDep.depend()
+    return currentHeight.match size
 
   # lock Dom events in nonreactive so we never rebind events
   Tracker.nonreactive ->
@@ -42,23 +46,34 @@ Meteor.startup ->
     marker = document.createElement("DIV")
     marker.className = "media-query"
 
+    heightMarker = document.createElement("DIV")
+    heightMarker.className = "media-query-height"
+
     # hide it
     marker.style.display = "none !important"
+    heightMarker.style.display = "none !important"
 
     # add it to the Dom
     document.body.appendChild marker
+    document.body.appendChild heightMarker
 
     # update size on resize event
     getSize = ->
       trackingElement = document.getElementsByClassName("media-query")[0]
+      heightTrackingElement = document.getElementsByClassName("media-query-height")[0]
 
       if trackingElement.currentStyle
         currentSize = trackingElement.currentStyle["content"]
+        currentHeight = heightTrackingElement.currentStyle["content"]
 
       else if window.getComputedStyle
 
         currentSize = document.defaultView.getComputedStyle(
           trackingElement, null # no pseudo support in IE 9, 10 :(
+        ).getPropertyValue("content")
+
+        currentHeight = document.defaultView.getComputedStyle(
+          heightTrackingElement, null # no pseudo support in IE 9, 10 :(
         ).getPropertyValue("content")
 
       currentSizeDep.changed()
@@ -72,10 +87,9 @@ Meteor.startup ->
     # fire once for on load checking
     getSize()
 
-
-
-
   # register global helper for media queries
   Template.registerHelper "MediaQuery", (size) ->
-
     return test(size)
+
+  Template.registerHelper "MediaQueryHeight", (size) ->
+    return testHeight(size)
