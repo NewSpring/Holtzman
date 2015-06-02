@@ -594,6 +594,7 @@ class Component extends _components.base
 
 
         onCreated: ->
+
           if component.isCard()
             ###
 
@@ -628,6 +629,8 @@ class Component extends _components.base
                 break
 
             component["state"] = new ReactiveVar _default
+            if @.data?.state
+              component["state"].set @.data.state
 
 
             ###
@@ -952,7 +955,7 @@ class Component extends _components.base
                 )
 
               return
-              
+
 
 
           # @ is a template instance.
