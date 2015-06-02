@@ -17,6 +17,18 @@ var bindDataContext = function(x) {
     return x;
 };
 
+
+Template.__dynamicWithDataContext.helpers({
+  chooseTemplate: function (name) {
+    return Blaze._getTemplate(name, function () {
+      return Template.instance();
+    });
+  }
+});
+
+
+
+
 Blaze._getTemplateHelper = function(template, name, templateInstance) {
     // XXX COMPAT WITH 0.9.3
     var isKnownOldStyleHelper = false;

@@ -193,14 +193,14 @@ addCard = (storage, component, _default) ->
     default: _default
 
 
-
+Apollos.states = {}
 
 
 class Base
 
   @components: new ComponentNamespace()
 
-  @cards: {}
+  @cards: Apollos.states
 
   @register: (componentName, componentClass) ->
 
@@ -274,11 +274,11 @@ class Base
 
     if isCard
       @isCard true
-      addCard @cards, cardClass, _default
+      addCard Apollos.states, cardClass, _default
       return @
 
 
-    addCardState(@cards, cardClass, cardName)
+    addCardState(Apollos.states, cardClass, cardName)
 
     return @
 

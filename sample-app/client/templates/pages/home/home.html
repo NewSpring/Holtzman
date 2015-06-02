@@ -15,7 +15,9 @@
         <div class="floating__item">
 
           {{#unless currentUser}}
-            {{> Apollos.profile.onBoard}}
+            {{#Apollos.profile.onBoard}}
+              Hello good sir
+            {{/Apollos.profile.onBoard}}
           {{else}}
             <div class="push">
               <h3>Signed in!</h3>

@@ -13,6 +13,9 @@ class profile.forgotPassword extends Apollos.Component
 
   ]
 
+
+  email: -> @.parent()?.email
+
   events: -> [
 
     "click [data-forgot-password]": (event) ->

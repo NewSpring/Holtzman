@@ -109,7 +109,6 @@ Blaze._getTemplateHelper = (template, name, templateInstance) ->
     its templates, but it does not, so we have a special case here for it.
 
   ###
-
   if template.viewName in [
     "Template.__dynamicWithDataContext", "Template.__dynamic"
   ]
@@ -206,6 +205,9 @@ viewToTemplateInstance = (view) ->
   ###
   isContent = view.name is "(contentBlock)"
   isElse = view.name is "(elseBlock)"
+
+  if isContent
+    console.log view
 
   while view and (not view.template or isContent or isElse)
     view = view.originalParentView or view.parentView
@@ -369,6 +371,8 @@ registerFirstCreatedHook = (template, onCreated) ->
 # - events (✓)
 # - animations
 #
+# - routing (✓)
+#
 # - onCreated (✓)
 # - onRendered (✓)
 # - onDestroyed (✓)
@@ -377,8 +381,6 @@ registerFirstCreatedHook = (template, onCreated) ->
 #
 # - parent (✓)
 # - children (✓)
-
-Apollos.components = {}
 
 
 class Component extends _components.base
@@ -582,6 +584,7 @@ class Component extends _components.base
         templateBase.renderFunction
       )
 
+
       # We on purpose do not reuse helpers, events, and hooks.
       # Templates are used only for HTML rendering.
 
@@ -702,6 +705,29 @@ class Component extends _components.base
 
           if componentParent
 
+            ###
+
+              This is a temporary solution for inheriting content blocks
+              from dynamic templates. It relies on a hardcoded level up
+              to find "Template.__dynamicWithDataContext" as a trigger
+              to map contentBlock and elseBlock
+
+            ###
+            abbrParent = @.view.parentView?.parentView?.parentView?.parentView
+            abbrParent = abbrParent?.parentView?.parentView
+            if abbrParent?.name is "Template.__dynamicWithDataContext"
+
+              view = componentParent._internals?.templateInstance?.view
+
+              if view?.templateContentBlock
+                @.view.templateContentBlock = view.templateContentBlock
+
+              if view?.templateElseBlock
+                @.view.templateElseBlock = view.templateElseBlock
+
+
+
+                
             ###
 
               component.parent is reactive, so we use
@@ -1159,29 +1185,6 @@ Template.registerHelper "args", ->
   obj._arguments = arguments
   return obj
 
-
-###
-
-  We make Template.dynamic resolve to the component if component name is
-  specified as a template name, and not to the non-component template which
-  is probably used only for the content. We simply reuse Blaze._getTemplate.
-
-  TODO:
-    - How to pass args?
-    - Maybe simply by using Spacebars nested expressions
-      (https://github.com/meteor/meteor/pull/4101)?
-    - Template.dynamic template="..." data=(args ...)?
-    - But this exposes the fact that args are passed as data context.
-    - Maybe we should simply override Template.dynamic and add "args" argument?
-
-  TODO:
-    - This can be removed once https://github.com/meteor/meteor/pull/4036
-    is merged in.
-
-###
-Template.__dynamicWithDataContext.__helpers.set "chooseTemplate", (name) ->
-  Blaze._getTemplate name, =>
-    Template.instance()
 
 
 Apollos.Component = Component
