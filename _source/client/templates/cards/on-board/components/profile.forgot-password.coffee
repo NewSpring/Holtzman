@@ -18,14 +18,6 @@ class profile.forgotPassword extends Apollos.Component
 
   events: -> [
 
-    "click [data-forgot-password]": (event) ->
-
-      self = @
-      parent = @.parent()
-
-      parent.passwordForget.set false
-
-
 
     "submit #forgot-password": (event) ->
 
@@ -41,8 +33,8 @@ class profile.forgotPassword extends Apollos.Component
         children["email"].setStatus true
         return
 
-      self.parent().email.set email
-
+      if email
+        self.parent().email.set email
 
       Apollos.user.forgotPassword email
       self.reset.set true

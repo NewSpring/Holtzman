@@ -654,7 +654,14 @@ class Component extends _components.base
             for name, state of card.states
 
               if state.url
-                neededUrls.push {name: name, url: state.url}
+                obj =
+                  name: name
+                  url: state.url
+
+                if state.middlewares
+                  obj.middlewares = state.middlewares()
+
+                neededUrls.push obj
 
 
             paths = current.split("/")
@@ -696,11 +703,14 @@ class Component extends _components.base
               if hasPath
                 continue
 
+              routeObj =
+                name: "#{state.name}"
+
+              if state.middlewares
+                routeObj.middlewares = state.middlewares
 
               # make the route
-              Apollos.Router.route("/#{route}", {
-                name: "#{state.name}"
-              })
+              Apollos.Router.route("/#{route}", routeObj)
 
 
 
@@ -1098,6 +1108,12 @@ class Component extends _components.base
       parent.removeChild node
 
     return
+  
+
+  url: false
+
+  middlewares: ->
+    return []
 
   events: ->
     return []

@@ -1,6 +1,6 @@
 <template name="profile.signIn">
 
-  <form id="{{#if hasAccount.get}}signin{{else}}signup{{/if}}">
+  <form id="{{#if hasAccount.get}}signin{{else}}signup{{/if}}" autocomplete="off">
     <fieldset>
 
       {{> Apollos.Controls.Toggle
@@ -19,7 +19,7 @@
         label="Email"
         validate="isEmail"
         errorText="Please enter a valid email"
-        preFill=email
+        preFill=email.get
       }}
 
       {{> Apollos.Forms.Input

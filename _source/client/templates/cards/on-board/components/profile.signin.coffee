@@ -16,6 +16,7 @@ class profile.signIn extends Apollos.Component
 
   ]
 
+  email: -> @.parent()?.email
 
   events: -> [
 
