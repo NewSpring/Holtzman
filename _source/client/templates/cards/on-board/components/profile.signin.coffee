@@ -96,7 +96,7 @@ class profile.signIn extends Apollos.Component
 
     self = @
     children = {}
-    for child in self.children("Apollos.forms.input")
+    for child in self.children("Apollos.Forms.Input")
       children[child.data().name] = child
 
 
@@ -125,7 +125,7 @@ class profile.signIn extends Apollos.Component
 
     # get children inputs and map to object
     children = {}
-    for child in self.children("Apollos.forms.input")
+    for child in self.children("Apollos.Forms.Input")
       children[child.data().name] = child
 
     email = self.find("input[name=email]").value.toLowerCase()
@@ -146,7 +146,7 @@ class profile.signIn extends Apollos.Component
 
     self = @
     children = {}
-    for child in self.children("Apollos.forms.input")
+    for child in self.children("Apollos.Forms.Input")
       children[child.data().name] = child
 
     Apollos.user.create email, password, (error) ->

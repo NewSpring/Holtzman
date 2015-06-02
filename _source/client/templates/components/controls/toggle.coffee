@@ -1,7 +1,7 @@
 
-class Apollos.controls.toggle extends Apollos.Component
+class Apollos.Controls.Toggle extends Apollos.Component
 
-  @register "Apollos.controls.toggle"
+  @register "Apollos.Controls.Toggle"
 
 
   events: -> [

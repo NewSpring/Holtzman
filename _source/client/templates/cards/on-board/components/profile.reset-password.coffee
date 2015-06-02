@@ -51,7 +51,7 @@ class profile.resetPassword extends Apollos.Component
       self = @
       event.preventDefault()
       children = {}
-      for child in self.children("Apollos.forms.input")
+      for child in self.children("Apollos.Forms.Input")
         children[child.data().name] = child
 
 
