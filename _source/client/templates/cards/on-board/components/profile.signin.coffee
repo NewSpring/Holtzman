@@ -35,14 +35,6 @@ class profile.signIn extends Apollos.Component
 
   ]
 
-  contentBlock: ->
-    parent = @.parent()
-    parent._internals.templateInstance.view.templateContentBlock
-
-  elseBlock: ->
-    parent = @.parent()
-    parent._internals.templateInstance.view.templateElseBlock
-
 
   onRendered: ->
 

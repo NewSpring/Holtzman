@@ -9,9 +9,6 @@ class Apollos.profile.onBoard extends Apollos.Component
     email: ""
   ]
 
-  contentBlock: -> @._internals.templateInstance.view.templateContentBlock
-  elseBlock: -> @._internals.templateInstance.view.templateElseBlock
-
   onRendered: ->
 
     if Session.get "resetPasswordToken"
