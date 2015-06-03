@@ -47,7 +47,11 @@ class Apollos.Forms.Input extends Apollos.Component
 
     parent = self.parent()
     if parent.find("form")
-      parent.hasErrors.set false
+      # account for form being child
+      if parent.constructor.name is "Form"
+        parent.hasErrors.set false
+      else
+        parent.children()[0].hasErrors.set false
 
 
   blurred: (event) ->
@@ -65,14 +69,22 @@ class Apollos.Forms.Input extends Apollos.Component
         self.error.set true
         self.status.set data.errorText
         if isForm
-          parent.hasErrors.set true
+          # account for form being child
+          if parent.constructor.name is "Form"
+            parent.hasErrors.set true
+          else
+            parent.children()[0].hasErrors.set true
 
       return
 
     # reset parent errors
     # code for reset parent errors
     if isForm
-      parent.hasErrors.set false
+      # account for form being child
+      if parent.constructor.name is "Form"
+        parent.hasErrors.set false
+      else
+        parent.children()[0].hasErrors.set false
 
 
     # if the input is empty, remove the input--active class
