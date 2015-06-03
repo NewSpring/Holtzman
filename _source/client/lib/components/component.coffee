@@ -633,7 +633,9 @@ class Component extends _components.base
             if @.data?.state
               component["state"].set @.data.state
 
+
             if not @.data?.noUrls
+
               ###
 
                 Here we parse the url on creation of the card.
@@ -653,7 +655,7 @@ class Component extends _components.base
               # loop through all cards states to see if they have urls
               # that we need to setup
               for name, state of card.states
-
+                console.log state.url()
                 if state.url?()
                   obj =
                     name: name
@@ -710,6 +712,7 @@ class Component extends _components.base
                 if state.middlewares
                   routeObj.middlewares = state.middlewares
 
+                console.log routeObj
                 # make the route
                 Apollos.Router.route("/#{route}", routeObj)
 
@@ -925,6 +928,7 @@ class Component extends _components.base
               # state has been updated so all we need to do is update
               # the route
               if currentState isnt oldState
+
                 oldState = currentState
                 shouldBePath = Apollos.Router.path(currentState)
                 hasRoute = shouldBePath.indexOf("/") > -1
@@ -941,12 +945,14 @@ class Component extends _components.base
 
               oldRoute = currentRoute
 
+
               # we are already at the right place
               if currentRoute.route?.name is currentState
                 return
 
+
               # there is no route name
-              if not currentRoute.route?.name
+              if not currentRoute.route?.name isnt currentState
                 shouldBePath = Apollos.Router.path(currentState)
 
                 hasRoute = shouldBePath.indexOf("/") > -1
