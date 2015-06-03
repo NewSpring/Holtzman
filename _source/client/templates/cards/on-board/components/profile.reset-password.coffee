@@ -11,7 +11,7 @@ class profile.resetPassword extends Apollos.Component
 
   @register "profile.resetPassword"
   @card "Apollos.profile.onBoard"
-  url:  "reset-password"
+  url: -> "reset-password"
 
   middlewares: -> [
     (path, next) ->

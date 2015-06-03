@@ -654,10 +654,10 @@ class Component extends _components.base
               # that we need to setup
               for name, state of card.states
 
-                if state.url
+                if state.url?()
                   obj =
                     name: name
-                    url: state.url
+                    url: state.url()
 
                   if state.middlewares
                     obj.middlewares = state.middlewares()
@@ -894,10 +894,10 @@ class Component extends _components.base
 
             routeAtRender = Apollos.Router.current()
             for name, state of card.states
-              if not state.url
+              if not state.url?()
                 continue
 
-              if routeAtRender.path?.match state.url
+              if routeAtRender.path?.match state.url()
                 component.state.set name
                 break
 

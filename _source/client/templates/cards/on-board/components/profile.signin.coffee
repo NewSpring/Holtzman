@@ -4,7 +4,7 @@ class profile.signIn extends Apollos.Component
   @register "profile.signIn"
   @card "Apollos.profile.onBoard"
 
-  url: "sign-in"
+  url: -> "sign-in"
 
 
   vars: -> [

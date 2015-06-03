@@ -2,7 +2,9 @@ class profile.forgotPassword extends Apollos.Component
 
   @register "profile.forgotPassword"
   @card "Apollos.profile.onBoard"
-  url: "forgot-password"
+
+  url: ->
+    return "forgot-password"
 
 
   vars: -> [

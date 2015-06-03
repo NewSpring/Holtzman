@@ -152,7 +152,7 @@ addCardState = (storage, component, card) ->
 
   name = component.componentName()
   obj = {}
-  obj[name] = component
+  obj[name] = new component()
 
   if not storage[card]
     storage[card] =
@@ -170,7 +170,7 @@ addCardState = (storage, component, card) ->
     return
 
 
-  storage[card].states[name] = component
+  storage[card].states[name] = new component()
 
   return
 
@@ -187,12 +187,12 @@ addCard = (storage, component, _default) ->
     if not storage[name].default and _default
       storage[name].default = _default
 
-    storage[name].component or= component
+    storage[name].component or= new component()
 
     return
 
   storage[name] =
-    component: component
+    component: new component()
     default: _default
 
 
