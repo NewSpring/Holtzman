@@ -1055,11 +1055,6 @@ class Component extends _components.base
 
     return template
 
-  getState: (state) ->
-
-    console.log @._internals
-
-    return true
 
   onCreated: ->
 
@@ -1118,7 +1113,7 @@ class Component extends _components.base
     return
 
 
-  url: false
+  url: -> ""
 
   middlewares: ->
     return []
