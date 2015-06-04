@@ -93,6 +93,18 @@ if Meteor.isClient
     return false
 
 
+  FlowRouter.Router::redirect = (path, bubble) ->
+
+    if bubble
+      @._page.redirect path
+    else
+      @._page.replace(path, null, null, false)
+
+
+
+
+
+
 
 
 
@@ -139,29 +151,24 @@ if Meteor.isClient
             path = localSegments.join "/"
           else path = "/"
 
-          console.log path, route.path
+
           if route.path is path
 
-            console.log tail
+            # rebuild full string with hash to go to to render component
             if tailingSegments.length is 1
-
               tail = tailingSegments.join("/")
-
               tail = "#{lastSegment}/#{tail}"
-
             else if tailingSegments.length > 1
-
               reversed = reverse(tailingSegments.slice())
               tail = reversed.join("/")
             else
-
               tail = lastSegment
+
 
             if context.querystring
               tail += "?#{context.querystring}"
 
-            console.log "#{route.path}#/#{tail}"
-            FlowRouter.redirect "#{route.path}#/#{tail}"
+            FlowRouter.redirect "#{route.path}#!/#{tail}", true
 
             return
 
