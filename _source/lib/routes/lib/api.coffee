@@ -139,21 +139,31 @@ if Meteor.isClient
             path = localSegments.join "/"
           else path = "/"
 
+          console.log path, route.path
           if route.path is path
 
-            if tailingSegments.length
+            console.log tail
+            if tailingSegments.length is 1
+
+              tail = tailingSegments.join("/")
+
+              tail = "#{lastSegment}/#{tail}"
+
+            else if tailingSegments.length > 1
+
               reversed = reverse(tailingSegments.slice())
               tail = reversed.join("/")
-              tail += "/#{lastSegment}"
             else
+
               tail = lastSegment
 
             if context.querystring
               tail += "?#{context.querystring}"
 
-            FlowRouter.go "#{route.path}#/#{tail}"
+            console.log "#{route.path}#/#{tail}"
+            FlowRouter.redirect "#{route.path}#/#{tail}"
 
-            break
+            return
 
         tailingSegments.push lastSegment
 

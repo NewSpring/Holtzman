@@ -651,9 +651,24 @@ class Component extends _components.base
               for name, state of card.states
 
                 if state.url?()
+
+                  parentUrls = []
+
+                  ###
+
+                    @TODO - need to climb the inheriting
+                      tree to build long url stucture
+
+                  ###
+                  parentUrl = componentParent.url?()
+                  if parentUrl and not current.match(parentUrl)
+                      url = "#{parentUrl}/#{state.url()}"
+                  else
+                    url = state.url()
+
                   obj =
                     name: name
-                    url: state.url()
+                    url: url
 
                   if state.middlewares
                     obj.middlewares = state.middlewares()
@@ -662,7 +677,6 @@ class Component extends _components.base
 
 
               paths = current.split("/")
-
               paths = paths.filter Boolean
 
               isAtState = false
@@ -675,7 +689,6 @@ class Component extends _components.base
               # active then we need to pick up the route prior and including
               # the state.url to form our route path
               if typeof isAtState is "number"
-
                 if isAtState is 0
                   paths = []
                 else
@@ -717,10 +730,14 @@ class Component extends _components.base
                 if window.location.hash?.indexOf("#/") > -1
                   hash = window.location.hash.replace("#/", "")
 
+                  if hash[hash.length - 1] is "/"
+                    hash = hash.substring(0, hash.length - 1)
+
                   if hash.indexOf("?") > -1
                     hash = hash.split("?")
                     querystring = hash[1]
                     hash = hash[0]
+
 
                   if state.url is hash
                     component["state"].set state.name
@@ -728,7 +745,7 @@ class Component extends _components.base
                     if querystring
                       route += "?#{querystring}"
 
-                    Apollos.Router.go("/#{route}")
+                    Apollos.Router.redirect("/#{route}")
 
 
 
@@ -901,107 +918,134 @@ class Component extends _components.base
 
           return
 
+
         onRendered: ->
 
-          if component.isCard() and not @.data?.noUrls
-            card = component.getCard(component.componentName())
-
-            card.states or= {}
-
-            routeAtRender = Apollos.Router.current()
-            for name, state of card.states
-              if not state.url?()
-                continue
-
-              if routeAtRender.path?.match encodeURI(state.url())
-                component.state.set name
-                break
-
-
-            self = @
-
-            # track the current state prior to doing state
-            # calculations
-            oldState = ""
-            oldRoute = Apollos.Router.current()
-            Tracker.nonreactive ->
-              oldState = self.component.state.get()
-
-
-            Tracker.autorun ->
-
-              # register reactive dependency
-              Apollos.Router.watchPathChange()
-
-              # current route
-              currentRoute = Apollos.Router.current()
-              # current state of the app
-              currentState = self.component.state.get()
-
-              # state has been updated so all we need to do is update
-              # the route
-              if currentState isnt oldState
-
-                oldState = currentState
-                shouldBePath = Apollos.Router.path(currentState)
-
-                if Apollos.Router.isPath(currentState)
-                  if window.location.search
-                    shouldBePath += window.location.search
-                  Apollos.Router.go encodeURI(shouldBePath)
-
-                return
-
-              # path is what changed
-              oldRoute = currentRoute
-
-              # we are already at the right place
-              if currentRoute.route?.name is currentState
-                return
-
-
-              # there is no route name
-              if currentRoute.route?.name isnt currentState
-                shouldBePath = Apollos.Router.path(currentState)
-
-                isPath = Apollos.Router.isPath currentState
-
-                if isPath and currentRoute.path isnt shouldBePath
-                  if window.location.search
-                    shouldBePath += window.location.search
-
-                  # coming from component routing
-                  if window.location.hash?.indexOf("#/") > -1
-                    hash = window.location.hash.replace("#", "")
-
-
-                    if not Apollos.Router.isPath(hash)
-                      cleanedPath = window.location.href.replace("#/", "")
-                      cleanedPath = cleanedPath.replace(
-                        window.location.host,
-                        ""
-                      )
-                      cleanedPath = cleanedPath.split("//")[1]
-                      console.error(
-                        "404:",
-                        cleanedPath
-                      )
-
-                      # Apollos.Router.go cleanedPath
-                      return
-
-                  Apollos.Router.go encodeURI(shouldBePath)
-
-
-
-              # update the state of the card if it is a correct state
-              if card.states[currentRoute.route.name]
-                oldState = currentRoute.route.name
-                self.component.state.set(
-                  currentRoute.route.name
-                )
-
-              return
+          # if component.isCard() and not @.data?.noUrls
+          #
+          #   # @TODO - break out of class and call as method
+          #   card = component.getCard(component.componentName())
+          #
+          #   # card.states or= {}
+          #   #
+          #   # routeAtRender = Apollos.Router.current()
+          #   # for name, state of card.states
+          #   #   if not state.url()
+          #   #     continue
+          #   #
+          #   #   if routeAtRender.path?.match encodeURI(state.url())
+          #   #     component.state.set name
+          #   #     break
+          #
+          #
+          #   self = @
+          #
+          #   # track the current state prior to doing state
+          #   # calculations
+          #   oldState = ""
+          #   oldRoute = Apollos.Router.current()
+          #   Tracker.nonreactive ->
+          #     oldState = self.component.state.get()
+          #
+          #
+          #   Tracker.autorun ->
+          #
+          #     # register reactive dependency
+          #     Apollos.Router.watchPathChange()
+          #
+          #     # current route
+          #     currentRoute = Apollos.Router.current()
+          #
+          #     # current state of the app
+          #     currentState = self.component.state.get()
+          #
+          #
+          #     ###
+          #
+          #       The STATE has changed
+          #
+          #     ###
+          #     # state has been updated so all we need to do is update
+          #     # the route
+          #     if currentState isnt oldState
+          #
+          #       oldState = currentState
+          #       shouldBePath = Apollos.Router.path(currentState)
+          #
+          #       if Apollos.Router.isPath(currentState)
+          #         if window.location.search
+          #           shouldBePath += window.location.search
+          #
+          #         console.log 1
+          #         Apollos.Router.go encodeURI(shouldBePath)
+          #
+          #       return
+          #
+          #
+          #
+          #     ###
+          #
+          #       The URL has changed
+          #
+          #     ###
+          #     # path is what changed
+          #     oldRoute = currentRoute
+          #
+          #     # we are already at the right place
+          #     if currentRoute.route?.name is currentState
+          #       return
+          #
+          #
+          #     # update the state of the card if route is correct
+          #     if card.states[currentRoute.route.name]
+          #       oldState = currentRoute.route.name
+          #       self.component.state.set(
+          #         currentRoute.route.name
+          #       )
+          #
+          #       return
+          #
+          #
+          #     # we aren't at the right url for the right state
+          #     if currentRoute.route?.name isnt currentState
+          #       shouldBePath = Apollos.Router.path(currentState)
+          #
+          #       isPath = Apollos.Router.isPath currentState
+          #
+          #       if isPath and (currentRoute.path isnt shouldBePath)
+          #
+          #         # if this is parent component of an already rendered path
+          #         if window.location.pathname.indexOf(shouldBePath) > -1
+          #           return
+          #
+          #         if window.location.search
+          #           shouldBePath += window.location.search
+          #
+          #         # coming from component routing
+          #         if window.location.hash?.indexOf("#/") > -1
+          #           hash = window.location.hash.replace("#", "")
+          #
+          #
+          #           if not Apollos.Router.isPath(hash)
+          #             cleanedPath = window.location.href.replace("#/", "")
+          #             cleanedPath = cleanedPath.replace(
+          #               window.location.host,
+          #               ""
+          #             )
+          #             cleanedPath = cleanedPath.split("//")[1]
+          #             console.error(
+          #               "404:",
+          #               cleanedPath
+          #             )
+          #
+          #             console.log 3
+          #             Apollos.Router.go cleanedPath
+          #             return
+          #
+          #         console.log 2
+          #         Apollos.Router.go encodeURI(shouldBePath)
+          #
+          #         return
 
 
 
