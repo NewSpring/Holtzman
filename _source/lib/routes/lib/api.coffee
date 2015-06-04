@@ -1,6 +1,24 @@
 
 Apollos.Router = FlowRouter
 
+# Fastest method to reverse array
+# http://jsperf.com/js-array-reverse-vs-while-loop/5
+reverse = (array) ->
+
+  left = null
+  right = null
+  length = array.length
+  left = 0
+
+  while left < length / 2
+    right = length - 1 - left
+    temporary = array[left]
+    array[left] = array[right]
+    array[right] = temporary
+    left += 1
+
+  return array
+
 if Meteor.isClient
   ###
 
@@ -51,6 +69,32 @@ if Meteor.isClient
     path
 
 
+  # See if route has been registered
+  FlowRouter.Router::isPath = (path) ->
+
+    routes = FlowRouter._routes.slice()
+
+    index = routes.length
+
+    path = FlowRouter.path(path)
+
+    if not path
+      return false
+    # remove trailing slash if it is the last character
+    if (path.length > 1) and (path[path.length - 1] is "/")
+      path = path.substring(0, path.length - 1)
+
+    while index--
+      route = routes[index]
+
+      if route.path is path
+        return true
+
+    return false
+
+
+
+
 
   FlowRouter.Router::_notfoundRoute = (context) ->
 
@@ -68,12 +112,15 @@ if Meteor.isClient
       # make a copy to reduce resources and not setup a handler if we modify
       existingRoutes = Apollos.Router._routes.slice()
 
-      checkSegments = (segments) ->
+      tailingSegments = []
+
+      checkSegments = (segments, last) ->
 
         if not segments?.length
           return
 
         localSegments = segments.slice()
+
         ###
 
           We can assume the last route was incorrect for the first lookup
@@ -82,27 +129,36 @@ if Meteor.isClient
 
         ###
         lastSegment = localSegments.pop()
-
         index = existingRoutes.length
-
 
         while index--
           route = existingRoutes[index]
 
           # build out url including rare root level case
-          if localSegments[0]
+          if localSegments.length > 1
             path = localSegments.join "/"
           else path = "/"
 
-
-
           if route.path is path
 
+            if tailingSegments.length
+              reversed = reverse(tailingSegments.slice())
+              tail = reversed.join("/")
+              tail += "/#{lastSegment}"
+            else
+              tail = lastSegment
+
             if context.querystring
-              lastSegment += "?#{context.querystring}"
-            FlowRouter.go "#{route.path}#/#{lastSegment}"
+              tail += "?#{context.querystring}"
+
+            FlowRouter.go "#{route.path}#/#{tail}"
 
             break
+
+        tailingSegments.push lastSegment
+
+        checkSegments localSegments
+
 
 
       checkSegments context.pathname.split("/")

@@ -180,7 +180,7 @@ addCard = (storage, component, _default) ->
 
   if storage[name] and not storage[name]?.states
 
-    console.log "Card #{component.componentName()} is already registed"
+    console.error "Card #{component.componentName()} is already registed"
     return
 
   if storage[name]
@@ -208,14 +208,14 @@ class Base
   @register: (componentName, componentClass) ->
 
     if not componentName
-      console.log "Component name is required for registration."
+      console.error "Component name is required for registration."
       return
 
     # To allow calling @register 'name' from inside a class body.
     componentClass ?= @
 
     if getComponent @components, componentName
-      console.log "Component '#{ componentName }' already registered."
+      console.error "Component '#{ componentName }' already registered."
       return
 
 
@@ -233,7 +233,7 @@ class Base
     getComponent(@components, componentClass.componentName()) is componentClass
 
 
-      console.log "Component '#{ componentName }' already registered under
+      console.error "Component '#{ componentName }' already registered under
         the name '#{ componentClass.componentName() }'."
       return
 

@@ -222,7 +222,7 @@ addEvents = (view, component) ->
   eventsList = component.events()
 
   if not _.isArray eventsList
-    console.log(
+    console.error(
       "`events` methods from the component
       `#{ component.componentName() or 'unnamed' }`
       did not return an array of event maps"
@@ -390,7 +390,7 @@ class Component extends _components.base
     # This uses the same check if the argument is a DOM element
     # that Blaze._DOMRange.forElement does.
     if domElement.nodeType isnt Node.ELEMENT_NODE
-      console.log "Expected DOM element."
+      console.error "Expected DOM element."
       return
 
     template = Blaze.getView(domElement)?.templateInstance()
@@ -552,7 +552,7 @@ class Component extends _components.base
       if _.isString componentTemplate
         templateBase = Template[componentTemplate]
         if not templateBase
-          console.log "Template '#{componentTemplate}' cannot be found."
+          console.error "Template '#{componentTemplate}' cannot be found."
           return
       else
         # we have an actual template
@@ -606,8 +606,6 @@ class Component extends _components.base
             card = component.getCard(component.componentName())
 
             card.states or= {}
-            # Tracker.autorun ->
-            #   console.log card
 
             ###
 
@@ -692,12 +690,9 @@ class Component extends _components.base
                 # rebuild the path array
                 route = encodeURI(route.join("/"))
 
-                # here we see if the route has been defined previously
-                hasPath = Apollos.Router.path("#{state.name}")
-
 
                 # if there is not already a path for this url lets make one
-                if hasPath
+                if Apollos.Router.isPath("#{state.name}")
                   continue
 
 
@@ -817,7 +812,7 @@ class Component extends _components.base
               for _var, _default of vars
 
                 if component[_var]
-                  console.log(
+                  console.error(
                     "#{_var} is already a method
                     on #{component.componentName()}"
                   )
@@ -950,10 +945,9 @@ class Component extends _components.base
                 oldState = currentState
                 shouldBePath = Apollos.Router.path(currentState)
 
-                if shouldBePath
+                if Apollos.Router.isPath(currentState)
                   if window.location.search
                     shouldBePath += window.location.search
-
                   Apollos.Router.go encodeURI(shouldBePath)
 
                 return
@@ -970,9 +964,31 @@ class Component extends _components.base
               if currentRoute.route?.name isnt currentState
                 shouldBePath = Apollos.Router.path(currentState)
 
-                if shouldBePath and currentRoute.path isnt shouldBePath
+                isPath = Apollos.Router.isPath currentState
+
+                if isPath and currentRoute.path isnt shouldBePath
                   if window.location.search
                     shouldBePath += window.location.search
+
+                  # coming from component routing
+                  if window.location.hash?.indexOf("#/") > -1
+                    hash = window.location.hash.replace("#", "")
+
+
+                    if not Apollos.Router.isPath(hash)
+                      cleanedPath = window.location.href.replace("#/", "")
+                      cleanedPath = cleanedPath.replace(
+                        window.location.host,
+                        ""
+                      )
+                      cleanedPath = cleanedPath.split("//")[1]
+                      console.error(
+                        "404:",
+                        cleanedPath
+                      )
+
+                      # Apollos.Router.go cleanedPath
+                      return
 
                   Apollos.Router.go encodeURI(shouldBePath)
 
@@ -1069,7 +1085,7 @@ class Component extends _components.base
 
 
     if not template
-      console.log("Component is missing a name and component's
+      console.error("Component is missing a name and component's
         'template' method is not overridden."
       )
       return
