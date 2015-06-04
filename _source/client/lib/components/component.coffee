@@ -654,7 +654,7 @@ class Component extends _components.base
                       tree to build long url stucture
 
                   ###
-                  parentUrl = componentParent.url?()
+                  parentUrl = componentParent?.url?()
                   if parentUrl and not current.match(parentUrl)
                       url = "#{parentUrl}/#{state.url()}"
                   else
