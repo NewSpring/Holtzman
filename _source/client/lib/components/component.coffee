@@ -206,9 +206,6 @@ viewToTemplateInstance = (view) ->
   isContent = view.name is "(contentBlock)"
   isElse = view.name is "(elseBlock)"
 
-  if isContent
-    console.log view
-
   while view and (not view.template or isContent or isElse)
     view = view.originalParentView or view.parentView
 
@@ -633,7 +630,6 @@ class Component extends _components.base
             if @.data?.state
               component["state"].set @.data.state
 
-
             if not @.data?.noUrls
 
               ###
@@ -655,7 +651,7 @@ class Component extends _components.base
               # loop through all cards states to see if they have urls
               # that we need to setup
               for name, state of card.states
-                console.log state.url()
+
                 if state.url?()
                   obj =
                     name: name
@@ -694,17 +690,16 @@ class Component extends _components.base
                 route.push state.url
 
                 # rebuild the path array
-                route = route.join("/")
+                route = encodeURI(route.join("/"))
 
                 # here we see if the route has been defined previously
-                # @TODO - adjust router.path to return false if it doesn't
-                # exist
-                hasPath = Apollos.Router.path("#{state.name}").indexOf("/") > -1
+                hasPath = Apollos.Router.path("#{state.name}")
 
 
                 # if there is not already a path for this url lets make one
                 if hasPath
                   continue
+
 
                 routeObj =
                   name: "#{state.name}"
@@ -712,14 +707,37 @@ class Component extends _components.base
                 if state.middlewares
                   routeObj.middlewares = state.middlewares
 
-                console.log routeObj
+
                 # make the route
                 Apollos.Router.route("/#{route}", routeObj)
+
+                ###
+
+                  when we roll back to a known route we reapply the
+                  url segments and query string with <known-route>/#/<component>
+                  that get stored in the window.location.hash so we can
+                  read from it to grab the state and update the router
+
+                ###
+                if window.location.hash?.indexOf("#/") > -1
+                  hash = window.location.hash.replace("#/", "")
+
+                  if hash.indexOf("?") > -1
+                    hash = hash.split("?")
+                    querystring = hash[1]
+                    hash = hash[0]
+
+                  if state.url is hash
+                    component["state"].set state.name
+
+                    if querystring
+                      route += "?#{querystring}"
+
+                    Apollos.Router.go("/#{route}")
 
 
 
           # @ is a template instance.
-
           if componentParent
 
             ###
@@ -900,7 +918,7 @@ class Component extends _components.base
               if not state.url?()
                 continue
 
-              if routeAtRender.path?.match state.url()
+              if routeAtRender.path?.match encodeURI(state.url())
                 component.state.set name
                 break
 
@@ -931,20 +949,17 @@ class Component extends _components.base
 
                 oldState = currentState
                 shouldBePath = Apollos.Router.path(currentState)
-                hasRoute = shouldBePath.indexOf("/") > -1
 
-                if hasRoute
+                if shouldBePath
                   if window.location.search
                     shouldBePath += window.location.search
 
-                  Apollos.Router.go shouldBePath
+                  Apollos.Router.go encodeURI(shouldBePath)
 
                 return
 
               # path is what changed
-
               oldRoute = currentRoute
-
 
               # we are already at the right place
               if currentRoute.route?.name is currentState
@@ -952,16 +967,16 @@ class Component extends _components.base
 
 
               # there is no route name
-              if not currentRoute.route?.name isnt currentState
+              if currentRoute.route?.name isnt currentState
                 shouldBePath = Apollos.Router.path(currentState)
 
-                hasRoute = shouldBePath.indexOf("/") > -1
-                if hasRoute and currentRoute.path isnt shouldBePath
+                if shouldBePath and currentRoute.path isnt shouldBePath
                   if window.location.search
                     shouldBePath += window.location.search
-                  Apollos.Router.go shouldBePath
 
-                return
+                  Apollos.Router.go encodeURI(shouldBePath)
+
+
 
               # update the state of the card if it is a correct state
               if card.states[currentRoute.route.name]
@@ -1137,7 +1152,7 @@ class Component extends _components.base
   # top-level data context used to render the component.
   # Same as Template.currentData
   data: ->
-    return Blaze.getData(@._internals.templateInstance.view) or null
+    return Blaze.getData(@._internals?.templateInstance?.view) or null
 
   ###
 
