@@ -740,7 +740,7 @@ class Component extends _components.base
                     if querystring
                       route += "?#{querystring}"
 
-                    Apollos.Router.redirect("/#{route}")
+                    Apollos.Router.redirect("/#{route}", true)
 
 
 
@@ -966,10 +966,10 @@ class Component extends _components.base
                       )
 
 
-                      Apollos.Router.redirect cleanedPath
+                      Apollos.Router.redirect cleanedPath, true
                       return
 
-                  Apollos.Router.redirect encodeURI(_stateUrl)
+                  Apollos.Router.redirect encodeURI(_stateUrl), true
                   oldRoute = Apollos.Router.current()
 
                   return
@@ -1001,7 +1001,7 @@ class Component extends _components.base
                   if window.location.search
                     stateUrl += window.location.search
 
-                  Apollos.Router.redirect encodeURI(stateUrl)
+                  Apollos.Router.redirect encodeURI(stateUrl), true
 
                   return
 

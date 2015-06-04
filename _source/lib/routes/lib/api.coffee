@@ -80,25 +80,27 @@ if Meteor.isClient
 
     if not path
       return false
+
     # remove trailing slash if it is the last character
     if (path.length > 1) and (path[path.length - 1] is "/")
       path = path.substring(0, path.length - 1)
 
     while index--
-      route = routes[index]
 
+      route = routes[index]
       if route.path is path
         return true
 
     return false
 
 
-  FlowRouter.Router::redirect = (path, bubble) ->
 
-    if bubble
-      @._page.redirect path
-    else
+  FlowRouter.Router::redirect = (path, silent) ->
+
+    if silent
       @._page.replace(path, null, null, false)
+    else
+      @._page.redirect path
 
 
 
@@ -168,7 +170,7 @@ if Meteor.isClient
             if context.querystring
               tail += "?#{context.querystring}"
 
-            FlowRouter.redirect "#{route.path}#!/#{tail}", true
+            FlowRouter.redirect "#{route.path}#!/#{tail}"
 
             return
 
