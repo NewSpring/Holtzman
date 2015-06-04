@@ -1,0 +1,18 @@
+<template name="Apollos.Forms.Form">
+  <form id="{{paramaterize title}}" class="hard-ends">
+
+    {{#if toggle}}
+      {{> Apollos.Controls.Toggle
+        active=toggle
+        item1=toggle1
+        item2=toggle2
+      }}
+    {{/if}}
+
+    <fieldset class="flush-bottom">
+      {{#if Template.contentBlock}}
+        {{> Template.contentBlock}}
+      {{/if}}
+    </fieldset>
+  </form>
+</template>
