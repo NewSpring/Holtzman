@@ -1,4 +1,4 @@
-console.log Apollos.Forms
+
 class Apollos.Forms.Input extends Apollos.Component
 
   @register "Apollos.Forms.Input"
@@ -31,7 +31,7 @@ class Apollos.Forms.Input extends Apollos.Component
   onRendered: ->
 
     self = @
-    
+
     self.autorun ->
       if self.data()?.preFill
         self.value.set self.data().preFill
@@ -125,5 +125,3 @@ class Apollos.Forms.Input extends Apollos.Component
     if value
       @.find("input").value = value
       return
-
-console.log Apollos.Forms

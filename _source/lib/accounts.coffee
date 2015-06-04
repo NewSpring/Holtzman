@@ -72,7 +72,10 @@ Apollos.registerLogin = (name, loginMethod) ->
   # for Apollos.debugging it would be a pain if we allowed overwriting
   if Apollos._loginMethods[name]
 
-    throw new Meteor.Error("registerLogin", "This method for logging in is already established")
+    throw new Meteor.Error(
+      "registerLogin",
+      "This method for logging in is already established"
+    )
 
   if Meteor.isServer
     Meteor.methods {"Apollos.login.#{name}": loginMethod}
@@ -89,6 +92,5 @@ Apollos.registerLogin = (name, loginMethod) ->
       Meteor.call.apply Meteor.call, call
 
 
-  console.log Apollos._loginMethods
 
   return
