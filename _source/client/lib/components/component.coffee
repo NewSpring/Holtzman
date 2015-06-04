@@ -670,6 +670,7 @@ class Component extends _components.base
                   neededUrls.push obj
 
 
+
               paths = current.split("/")
               paths = paths.filter Boolean
 
@@ -688,6 +689,7 @@ class Component extends _components.base
                 else
                   paths = paths.splice(0, isAtState)
 
+
               # build each route
               for state in neededUrls
 
@@ -696,7 +698,6 @@ class Component extends _components.base
 
                 # rebuild the path array
                 route = encodeURI(route.join("/"))
-
 
                 # if there is not already a path for this url lets make one
                 if Apollos.Router.isPath("#{state.name}")
@@ -923,10 +924,8 @@ class Component extends _components.base
 
               # @TODO - break out of class and call as method
               card = component.getCard(component.componentName())
-
-
-
               card.states or= {}
+
 
               # track the current state prior to doing state
               # calculations
@@ -970,7 +969,6 @@ class Component extends _components.base
                       Apollos.Router.redirect cleanedPath
                       return
 
-
                   Apollos.Router.redirect encodeURI(_stateUrl)
                   oldRoute = Apollos.Router.current()
 
@@ -989,10 +987,10 @@ class Component extends _components.base
               ###
               Tracker.autorun ->
 
+
                 # current state of the app
                 currentState = self.component.state.get()
                 stateUrl = Apollos.Router.path(currentState)
-
 
                 # state has been updated so all we need to do is update
                 # the route
@@ -1003,7 +1001,7 @@ class Component extends _components.base
                   if window.location.search
                     stateUrl += window.location.search
 
-                  # Apollos.Router.redirect encodeURI(stateUrl)
+                  Apollos.Router.redirect encodeURI(stateUrl)
 
                   return
 
@@ -1020,7 +1018,6 @@ class Component extends _components.base
 
                 # current route
                 currentRoute = Apollos.Router.current()
-
 
                 # no change in path
                 if currentRoute.path is oldRoute.path
