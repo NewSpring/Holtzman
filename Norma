@@ -8,11 +8,7 @@ tasks:
     "/vendor":
       framework: "NewSpring/junction-framework"
 
-  ###
 
-    Application files (tracked)
-
-  ###
   # compiliation of coffeescript -> javascript
   javascript:
     src: "_source/**/*"
@@ -36,24 +32,20 @@ tasks:
     comb: true
     lint: true
 
-  ###
 
-    Package tasks (include built package in sample-app)
-
-  ###
-  copy:
-    src: "lib/**/*"
-    dest: "./workbench/packages/apollos-core/lib/"
-    order: "post"
+  # copy:
+  #   src: "lib/**/*"
+  #   dest: "./workbench/packages/apollos-core/lib/"
+  #   order: "post"
 
 
-  "copy-package":
-    "@extend": "copy"
-    src: "package" # package.js
-    dest: "./workbench/packages/apollos-core/"
-    order: "post"
-    ext: [ "js" ]
-    type: "sync"
+  # "copy-package":
+  #   "@extend": "copy"
+  #   src: "package" # package.js
+  #   dest: "./workbench/packages/apollos-core/"
+  #   order: "post"
+  #   ext: [ "js" ]
+  #   type: "sync"
 
 
   # create package.js
@@ -81,39 +73,35 @@ tasks:
       export:
         "Apollos": "both"
 
-  "copy-package":
-    "@extend": "copy"
-    src: "package" # package.js
-    dest: "./workbench/packages/apollos-core/"
-    ext: [ "js" ]
+  # "copy-package":
+  #   "@extend": "copy"
+  #   src: "package" # package.js
+  #   dest: "./workbench/packages/apollos-core/"
+  #   ext: [ "js" ]
 
-  ###
 
-    Sample application to test and use package in
-
-  ###
-  "app-javascript":
-    "@extend": "javascript"
-    src: "sample-app/**/*"
-    dest: "./workbench/"
-  "app-markup":
-    "@extend": "markup"
-    src: "sample-app/**/*"
-    dest: "./workbench/"
-  meteor:
-    dev: true
-    src: "workbench"
-    settings: "workbench/settings/development.json"
-    mongoUrl: "mongodb://localhost/newspring-core"
-    packages: [
-      "meteor-platform"
-      "newspring:apollos-core"
-    ]
-    platforms: [
-      "server"
-      "browser"
-      "ios"
-    ]
+  # "app-javascript":
+  #   "@extend": "javascript"
+  #   src: "sample-app/**/*"
+  #   dest: "./workbench/"
+  # "app-markup":
+  #   "@extend": "markup"
+  #   src: "sample-app/**/*"
+  #   dest: "./workbench/"
+  # meteor:
+  #   dev: true
+  #   src: "workbench"
+  #   settings: "workbench/settings/development.json"
+  #   mongoUrl: "mongodb://localhost/newspring-core"
+  #   packages: [
+  #     "meteor-platform"
+  #     "newspring:apollos-core"
+  #   ]
+  #   platforms: [
+  #     "server"
+  #     "browser"
+  #     "ios"
+  #   ]
 
 # Testing
-test: "meteor --test --settings settings/development.json --release velocity:METEOR@1.1.0.2_2"
+# test: "meteor --test --settings settings/development.json --release velocity:METEOR@1.1.0.2_2"

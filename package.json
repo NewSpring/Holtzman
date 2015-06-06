@@ -17,15 +17,9 @@
     "url": "https://github.com/NewSpring/newspring-core/issues"
   },
   "homepage": "https://github.com/NewSpring/newspring-core",
-  "devDependencies": {
-    "chai": "^2.1.2",
-    "mocha": "^2.2.1",
-    "norma-meteor": "^0.3.16"
-  },
   "dependencies": {
     "norma-bower": "^0.3.2",
-    "norma-copy": "^0.4.2",
-    "norma-javascript": "^0.4.3",
+    "norma-javascript": "^0.4.7",
     "norma-markup": "^0.5.5",
     "norma-meteor-load": "^0.2.2",
     "norma-sass": "^0.4.9"

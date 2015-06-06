@@ -7,10 +7,14 @@ class Apollos.Forms.Form extends Apollos.Component
 
   onRendered: ->
 
-    grandparent = @.parent().parent()
+    grandparent = @.parent()?.parent?()
+    if not grandparent
+      return
+
     grandparent.title?.set @.data().title
     grandparent.disabled?.set true
     grandparent.checkForValidated?()
+
 
   paramaterize: (string) ->
     string = string.trim()
@@ -18,4 +22,3 @@ class Apollos.Forms.Form extends Apollos.Component
     string = string.replace /[^a-zA-Z0-9-]/g, '-'
     string = string.toLowerCase()
     return string
-

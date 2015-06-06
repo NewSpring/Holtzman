@@ -1,20 +1,25 @@
 <template name="Apollos.Forms.Input">
 
-  <div class="input {{#if error.get}}input--alert{{/if}} {{#if preFill}}input--active{{/if}}">
+  <div class="input {{#if error.get}}input--alert{{/if}} {{#if preFill}}input--active{{/if}} {{component.data.class}}">
 
-    <label for="{{name}}">
-      {{#if label}}
-        {{label}}
-      {{else}}
-        {{name}}
-      {{/if}}
-    </label>
+    {{#unless component.data.hideLabel}}
+
+      <label for="{{name}}">
+        {{#if label}}
+          {{label}}
+        {{else}}
+          {{name}}
+        {{/if}}
+      </label>
+
+    {{/unless}}
 
     <input
       name="{{name}}"
       type="{{#if type}}{{type}}{{else}}{{name}}{{/if}}"
       placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
       value="{{#if preFill}}{{preFill}}{{/if}}"
+      class="{{component.data.inputClass}}"
     >
 
     {{#if status.get}}

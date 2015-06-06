@@ -73,9 +73,7 @@ if Meteor.isClient
   FlowRouter.Router::isPath = (path) ->
 
     routes = FlowRouter._routes.slice()
-
     index = routes.length
-
     path = FlowRouter.path(path)
 
     if not path
@@ -105,11 +103,6 @@ if Meteor.isClient
 
 
 
-
-
-
-
-
   FlowRouter.Router::_notfoundRoute = (context) ->
 
     self = @
@@ -125,7 +118,6 @@ if Meteor.isClient
 
       # make a copy to reduce resources and not setup a handler if we modify
       existingRoutes = Apollos.Router._routes.slice()
-
       tailingSegments = []
 
       checkSegments = (segments, last) ->
@@ -134,6 +126,7 @@ if Meteor.isClient
           return
 
         localSegments = segments.slice()
+        localSegments = localSegments.filter Boolean
 
         ###
 
@@ -145,13 +138,20 @@ if Meteor.isClient
         lastSegment = localSegments.pop()
         index = existingRoutes.length
 
+
         while index--
           route = existingRoutes[index]
 
           # build out url including rare root level case
-          if localSegments.length > 1
+          if localSegments.length >= 1
             path = localSegments.join "/"
+            path = "/#{path}"
           else path = "/"
+
+          # remove the last slash for more accurate checking within
+          # grouped routes
+          if route.path[route.path.length - 1] is "/"
+            route.path = route.path.substring(0, route.path.length - 1)
 
 
           if route.path is path
@@ -170,7 +170,7 @@ if Meteor.isClient
             if context.querystring
               tail += "?#{context.querystring}"
 
-            FlowRouter.redirect "#{route.path}#!/#{tail}"
+            FlowRouter.redirect "#{route.path}/#!/#{tail}"
 
             return
 

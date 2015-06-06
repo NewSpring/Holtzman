@@ -46,6 +46,10 @@ class Apollos.Forms.Input extends Apollos.Component
       .addClass "input--active"
 
     parent = self.parent()
+
+    if not parent
+      return
+
     if parent.find("form")
       # account for form being child
       if parent.constructor.name is "Form"
@@ -58,7 +62,7 @@ class Apollos.Forms.Input extends Apollos.Component
 
     self = @
     parent = self.parent()
-    isForm = parent.find("form")
+    isForm = parent?.find("form")
     data = self.data()
 
     if event.target.value and data.validate
