@@ -699,7 +699,6 @@ class Component extends _components.base
 
               # build each route
               for state in neededUrls
-
                 route = paths.slice()
                 route.push state.url
 
@@ -743,7 +742,6 @@ class Component extends _components.base
                   querystring = hash[1]
                   hash = hash[0]
 
-
                 if state.url is hash
                   component["state"].set state.name
 
@@ -751,27 +749,12 @@ class Component extends _components.base
                     route += "?#{querystring}"
 
                   # console.log route
-                  Apollos.Router.redirect("/#{route}", true)
+                  Apollos.Router.redirect("/#{route}")
+                  is404 = false
 
                   continue
 
-                # ensure valid uri
-                joinedRoute = window.location.pathname + encodeURI(hash)
 
-                if not Apollos.Router.isPath(joinedRoute)
-                  cleanedPath = window.location.href.replace("#!/", "")
-                  cleanedPath = cleanedPath.replace(
-                    window.location.host,
-                    ""
-                  )
-                  cleanedPath = cleanedPath.split("//")[1]
-                  console.error(
-                    "404:",
-                    cleanedPath
-                  )
-
-                  Apollos.Router.redirect cleanedPath, true
-                  continue
 
 
 
@@ -1028,67 +1011,6 @@ class Component extends _components.base
 
                 return _id
 
-              # Apollos.Router.path(routeId()
-
-
-              # updateRoute = (newState) ->
-              #
-              #   if (getState(oldRoute.route?.name) isnt _state) and (
-              #     oldRoute.path isnt _stateUrl
-              #   )
-              #
-              #     # if this is parent component of an already rendered path
-              #     if window.location.pathname.indexOf(_stateUrl) > -1
-              #       return
-              #
-              #     if window.location.search
-              #       _stateUrl += window.location.search
-              #
-              #
-                  # # coming from component routing
-                  # if window.location.hash?.indexOf("#!/") > -1
-                  #   hash = window.location.hash.replace("#!/", "")
-                  #
-                  #   if hash isnt id
-                  #     return
-                  #
-                  #   # ensure valid uri
-                  #   joinedRoute = window.location.pathname + encodeURI(hash)
-                  #
-                  #   if not Apollos.Router.isPath(joinedRoute)
-                  #     cleanedPath = window.location.href.replace("#!/", "")
-                  #     cleanedPath = cleanedPath.replace(
-                  #       window.location.host,
-                  #       ""
-                  #     )
-                  #     cleanedPath = cleanedPath.split("//")[1]
-                  #     console.error(
-                  #       "404:",
-                  #       cleanedPath
-                  #     )
-                  #
-                  #     Apollos.Router.redirect cleanedPath, true
-                  #     return
-              #
-              #
-              #     if not _stateUrl
-              #       return
-              #
-              #     Apollos.Router.redirect _stateUrl, true
-              #     oldRoute = Apollos.Router.current()
-              #
-              #     return
-
-
-              ###
-
-                When a card is first rendered
-
-              ###
-              # on render update the url if it needs it
-              # updateRoute state
-
-
 
               ###
 
@@ -1151,7 +1073,6 @@ class Component extends _components.base
                 # current route
                 currentRoute = Apollos.Router.current()
 
-
                 ###
 
                   In order to support the same card being rendered
@@ -1178,9 +1099,7 @@ class Component extends _components.base
                   return
 
 
-                # if there is no name for this route we need to 404 somehow
-                if not currentRoute.route.name
-                  return
+
 
                 # map the state from the route to currentState for usage
                 currentState = getState currentRoute.route.name
