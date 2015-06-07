@@ -34,6 +34,9 @@ if Meteor.isClient
       pathDef = self._routesMap[pathDef].path
 
 
+    # remove trailing slash(es)
+    pathDef = pathDef.replace(/\/+$/, "")
+
     fields or= {}
 
     regExp = /(:[\w\(\)\\\+\*\.\?]+)+/g
@@ -79,14 +82,17 @@ if Meteor.isClient
     if not path
       return false
 
-    # remove trailing slash if it is the last character
-    if (path.length > 1) and (path[path.length - 1] is "/")
-      path = path.substring(0, path.length - 1)
 
     while index--
 
       route = routes[index]
-      if route.path is path
+      _path = route.path
+
+      # remove trailing slash if it is the last character
+      if (_path.length > 1) and (_path[_path.length - 1] is "/")
+        _path = _path.substring(0, _path.length - 1)
+
+      if _path is path
         return true
 
     return false

@@ -748,9 +748,7 @@ class Component extends _components.base
                   if querystring
                     route += "?#{querystring}"
 
-                  # console.log route
                   Apollos.Router.redirect("/#{route}")
-                  is404 = false
 
                   continue
 
@@ -989,7 +987,6 @@ class Component extends _components.base
               id = self.component.id()
               oldRoute = Apollos.Router.current()
 
-
               getState = (name) ->
 
                 if not name
@@ -1029,10 +1026,6 @@ class Component extends _components.base
 
                 # current state of the app
                 currentState = self.component.state.get()
-
-                # no change is the state, false alaram
-                if currentState is state
-                  return
 
                 # update local var
                 state = currentState
@@ -1088,7 +1081,7 @@ class Component extends _components.base
 
                 ###
                 routeId = getId(currentRoute.route.name)
-                if id isnt routeId
+                if id isnt routeId and currentRoute.route.name
                   ###
 
                     If the new route id doesn' match this card. We need to
@@ -1097,7 +1090,6 @@ class Component extends _components.base
                   ###
                   self.component.state.set defaultState
                   return
-
 
 
 
@@ -1112,7 +1104,6 @@ class Component extends _components.base
                 # we are already at the right place
                 if currentRoute.route?.name is "#{id}-#{state}"
                   return
-
 
                 # update the state of the card if route is correct
                 if card.states[currentState]
@@ -1245,7 +1236,12 @@ class Component extends _components.base
 
   url: -> ""
 
-  id: -> Math.random()
+  id: ->
+
+    if not @_id
+      @_id = "#{Math.random()}"
+
+    @_id
 
   middlewares: ->
     return []
