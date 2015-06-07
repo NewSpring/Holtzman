@@ -36,6 +36,11 @@ class Apollos.Forms.Input extends Apollos.Component
       if self.data()?.preFill
         self.value.set self.data().preFill
 
+      value = self.value.get()
+
+      if self.data()?.bind
+        self.data().bind.set value
+
 
   focused: (event) ->
 
@@ -138,6 +143,4 @@ class Apollos.Forms.Input extends Apollos.Component
 
     @.value.set value
 
-    if value
-      @.find("input").value = value
-      return
+    @.find("input").value = value

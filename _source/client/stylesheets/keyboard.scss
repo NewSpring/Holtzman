@@ -1,4 +1,13 @@
 .keyboard {
+  position: relative;
+  position: fixed;
+  z-index: 10000;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  backface-visibility: hidden;
+
   h3 {
     color: #858585;
   }

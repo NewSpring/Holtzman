@@ -1,26 +1,36 @@
 <template name="Apollos.Controls.NumberKeyboard">
-  <section class="keyboard section--grey section--condensed border-top {{#if MediaQueryHeight 'tall'}}soft-half hard-bottom{{else}}hard-ends soft-half-sides{{/if}}">
 
-    <div class="shell">
+  <section class="
+    keyboard
+    background--light-secondary
+    section--condensed
+    outlined--top
+    outlined--light
+    {{#if MediaQueryHeight 'tall'}}
+      soft-half hard-bottom
+    {{else}}
+      hard-ends soft-half-side
+    {{/if}}
+  ">
+    {{> Template.contentBlock}}
 
-      <div class="grid grid--enclosed text-center">
+    <div class="grid text-center">
 
-        {{#each keys}}
+      {{#each keys}}
 
-        <div class="grid__item one-third soft-half-top" data-key="{{value}}">
+      <div class="grid__item one-third soft-half-top" data-key="{{value}}">
 
-          <div class="{{css}} {{#if MediaQueryHeight 'tall'}}soft-half-bottom{{/if}}">
-            <h3 class="flush-bottom {{#unless MediaQueryHeight 'tall'}}text-condensed{{/unless}}">
-              {{{display}}}
-            </h3>
-          </div>
-
+        <div class="{{css}} {{#if MediaQueryHeight 'tall'}}soft-half-bottom{{/if}}">
+          <h3 class="flush-bottom {{#unless MediaQueryHeight 'tall'}}text-condensed{{/unless}}">
+            {{{display}}}
+          </h3>
         </div>
 
-        {{/each}}
       </div>
 
+      {{/each}}
     </div>
 
   </section>
+
 </template>
