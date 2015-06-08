@@ -1088,7 +1088,7 @@ class Component extends _components.base
                     set this card back to its default state
 
                   ###
-                  self.component.state.set defaultState
+                  # self.component.state.set defaultState
                   return
 
 

@@ -99,4 +99,4 @@ class Apollos.Forms.Select extends Apollos.Component
       return
 
   selected: (val) ->
-    return val == @.data().preFill
+    return val is @.data().preFill

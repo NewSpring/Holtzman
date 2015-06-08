@@ -66,17 +66,13 @@ Meteor.startup ->
       trackingElement = document.getElementsByClassName("media-query")[0]
       heightTrackingElement = document.getElementsByClassName("media-query-height")[0]
 
-      if trackingElement.currentStyle
-        currentSize = trackingElement.currentStyle["content"]
-        currentHeight = heightTrackingElement.currentStyle["content"]
+      if window.getComputedStyle
 
-      else if window.getComputedStyle
-
-        currentSize = document.defaultView.getComputedStyle(
+        currentSize = window.getComputedStyle(
           trackingElement, null # no pseudo support in IE 9, 10 :(
         ).getPropertyValue("content")
-
-        currentHeight = document.defaultView.getComputedStyle(
+        # alert currentSize
+        currentHeight = window.getComputedStyle(
           heightTrackingElement, null # no pseudo support in IE 9, 10 :(
         ).getPropertyValue("content")
 

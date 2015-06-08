@@ -2,6 +2,7 @@
 
   <div class="input fa fa-caret-down one-whole {{#if error.get}}input--alert{{/if}} {{#if preFill}}input--active{{/if}} {{component.data.class}}">
 
+    {{#unless component.data.hideLabel}}
     <label for="{{name}}">
       {{#if label}}
         {{label}}
@@ -9,6 +10,7 @@
         {{name}}
       {{/if}}
     </label>
+    {{/unless}}
 
     <select name="{{name}}" class="{{component.data.selectClass}}">
       {{#if includeBlank}}
