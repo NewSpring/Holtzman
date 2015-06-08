@@ -198,6 +198,8 @@ if Meteor.isClient
 
   Apollos.Layout = FlowLayout
 
+  Apollos.Layout.setRoot "body"
+
 
 if Meteor.isServer
   Apollos.Layout = -> return

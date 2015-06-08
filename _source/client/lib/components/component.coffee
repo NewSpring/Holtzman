@@ -393,7 +393,7 @@ class Component extends _components.base
       console.error "Expected DOM element."
       return
 
-    template = Blaze.getView(domElement)?.templateInstance()
+    template = Blaze.getView(domElement)?.templateInstance?()
 
     return template?.get('component') or null
 

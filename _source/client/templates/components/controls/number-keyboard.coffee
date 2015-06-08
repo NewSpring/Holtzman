@@ -9,9 +9,25 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
   ]
 
   events: -> [
+
+    "click": @.stop
+
     "touchstart [data-key]": @.clickedDataKey
     "click [data-key]": @.clickedDataKey
+
+    "click [data-close]": (event) ->
+
+      Blaze.remove @._internals.templateInstance.view
+      return
+
   ]
+
+  stop: (event) ->
+
+    event.stopPropagation()
+    event.preventDefault()
+
+
 
   onCreated: ->
 
@@ -45,10 +61,28 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
         # self.parent().updateFund self.typedText.get()
 
 
+
   onDestroyed: ->
     $(document).off("keyup")
 
 
+  insertDOMElement: (parent, node, before) ->
+    $(node)
+      .appendTo(parent)
+      # .velocity("transition.slideUpIn", { duration: 500 })
+      .velocity({translateY: [0, 200], translateZ: 0}, {duration: 250})
+    super
+
+  removeDOMElement: (parent, node) ->
+    self = @
+
+    $(node).velocity({
+      translateY: 250, translateZ: 0
+    }, {
+      duration: 250
+      complete: (elements) ->
+        $(node).remove()
+    })
 
   clickedDataKey: (event, template) ->
 
