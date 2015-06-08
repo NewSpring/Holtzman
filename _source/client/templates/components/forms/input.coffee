@@ -64,6 +64,22 @@ class Apollos.Forms.Input extends Apollos.Component
       else
         parent.children()[0].hasErrors.set false
 
+  validate: (value) ->
+
+    self = @
+    data = self.data()
+
+    if value and data.validate
+      validateFunction = data.validate
+
+    valid = true
+    if typeof validateFunction is "function"
+      valid = validateFunction value
+    else if validateFunction
+      valid = Apollos.validate[validateFunction] value
+
+
+    return valid
 
   blurred: (event) ->
 
@@ -72,9 +88,9 @@ class Apollos.Forms.Input extends Apollos.Component
     isForm = parent?.find("form")
     data = self.data()
 
-    if event.target.value and data.validate
-      validateFunction = data.validate
-      valid = Apollos.validate[validateFunction] event.target.value
+    if event.target.value
+
+      valid = self.validate event.target.value
 
       if not valid
         self.error.set true

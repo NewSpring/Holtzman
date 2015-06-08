@@ -33,9 +33,6 @@ Apollos.addRegex = (obj) ->
 
 Apollos.validate =
 
-  isCreditCard: (str) ->
-    return @.isVisa(str) or @.isMastercard(str) or
-      @.isAmericanExpress(str) or @.isDiscover(str)
 
   isBcryptHash: (str) ->
     return @.isBcrypt(str)
