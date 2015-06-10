@@ -102,7 +102,6 @@ tasks:
     src: "sample-app/**/*"
     dest: "./workbench/"
   meteor:
-    dev: true
     src: "workbench"
     settings: "workbench/settings/development.json"
     mongoUrl: "mongodb://localhost/newspring-core"
