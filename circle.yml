@@ -11,9 +11,9 @@ test:
   pre:
     - norma build
     - meteor update
-    - cd workbench; meteor reset; cd ../
+    - cd workbench; meteor reset
   override:
-    - norma test # use Norma for testing
+    - meteor --test --settings settings/development.json --release velocity:METEOR@1.1.0.2_2
 
 ## Customize deployment commands
 # deployment:
