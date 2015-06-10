@@ -78,6 +78,7 @@ tasks:
         "velocityjs:velocityjs@=1.2.1": "client"
         "raix:handlebar-helpers@0.2.4": "client"
         "arillo:flow-router-helpers@0.1.6": "client"
+        "mike:mocha@0.6.0": "both"
       export:
         "Apollos": "both"
 
