@@ -13,7 +13,7 @@ test:
     - meteor update
     - cd workbench; meteor reset
   override:
-    - meteor --test --settings settings/development.json --release velocity:METEOR@1.1.0.2_2
+    - cd workbench; meteor --test --settings settings/development.json --release velocity:METEOR@1.1.0.2_2
 
 ## Customize deployment commands
 # deployment:
