@@ -11,7 +11,7 @@ test:
   pre:
     - norma build
     - meteor update
-    - cd newspring; meteor reset; cd ../
+    - cd workbench; meteor reset; cd ../
   override:
     - norma test # use Norma for testing
 
