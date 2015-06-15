@@ -1,7 +1,7 @@
 
-# Apollos.locations = new Mongo.Collection "locations"
+Apollos.locations = new Mongo.Collection "locations"
 
-Apollos.generateSchema "location",
+location = Apollos.generateSchema
   locationId:
     type: Number
     decimal: false
@@ -38,3 +38,5 @@ Apollos.generateSchema "location",
   postalCode:
     type: String
     optional: true
+
+Apollos.locations.attachSchema location
