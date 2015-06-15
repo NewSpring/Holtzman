@@ -62,7 +62,7 @@ class Apollos.Forms.Input extends Apollos.Component
       if parent.constructor.name is "Form"
         parent.hasErrors.set false
       else
-        parent.children()[0].hasErrors.set false
+        parent.children()[0]?.hasErrors?.set false
 
   validate: (value) ->
 
@@ -100,7 +100,7 @@ class Apollos.Forms.Input extends Apollos.Component
           if parent.constructor.name is "Form"
             parent.hasErrors.set true
           else
-            parent.children()[0].hasErrors.set true
+            parent.children()[0]?.hasErrors?.set true
 
       return
 
@@ -111,7 +111,7 @@ class Apollos.Forms.Input extends Apollos.Component
       if parent.constructor.name is "Form"
         parent.hasErrors.set false
       else
-        parent.children()[0].hasErrors.set false
+        parent.children()[0]?.hasErrors?.set false
 
 
     # if the input is empty, remove the input--active class

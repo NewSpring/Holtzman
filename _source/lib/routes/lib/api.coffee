@@ -33,7 +33,6 @@ if Meteor.isClient
     if self._routesMap[pathDef]
       pathDef = self._routesMap[pathDef].path
 
-
     # remove trailing slash(es)
     pathDef = pathDef.replace(/\/+$/, "")
 

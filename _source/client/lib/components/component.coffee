@@ -670,8 +670,12 @@ class Component extends _components.base
                     name: name
                     url: url
 
-                  if state.middlewares
-                    obj.middlewares = state.middlewares()
+                  if state.triggersEnter
+                    obj.triggersEnter = state.triggersEnter()
+
+
+                  if state.triggersExit
+                    obj.triggersExit = state.triggersExit()
 
                   neededUrls.push obj
 
@@ -714,9 +718,12 @@ class Component extends _components.base
                 routeObj =
                   name: "#{id + '-'}#{state.name}"
 
-                if state.middlewares
-                  routeObj.middlewares = state.middlewares
+                if state.triggersEnter
+                  routeObj.triggersEnter = state.triggersEnter
 
+
+                if state.triggersExit
+                  routeObj.triggersExit = state.triggersExit
 
                 # make the route
                 Apollos.Router.route("/#{route}", routeObj)
@@ -1023,7 +1030,6 @@ class Component extends _components.base
               ###
               Tracker.autorun ->
 
-
                 # current state of the app
                 currentState = self.component.state.get()
 
@@ -1243,7 +1249,10 @@ class Component extends _components.base
 
     @_id
 
-  middlewares: ->
+  triggersEnter: ->
+    return []
+
+  triggersExit: ->
     return []
 
   events: ->
