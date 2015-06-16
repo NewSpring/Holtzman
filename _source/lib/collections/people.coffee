@@ -86,7 +86,7 @@ person = Apollos.generateSchema
   birthYear:
     type: Number
     decimal: false
-    min: 1900
+    # min: 1900
     # max: 2050
     optional: true
   weddingDay:
