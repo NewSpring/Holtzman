@@ -6,7 +6,6 @@ class profile.signIn extends Apollos.Component
 
   url: -> "sign-in"
 
-
   vars: -> [
 
     hasAccount: true
@@ -40,6 +39,11 @@ class profile.signIn extends Apollos.Component
 
     # bind email field changes to update parent if valid
     self = @
+
+    showRegister = Apollos.Router._current.queryParams.register is "true"
+
+    if showRegister
+      self.hasAccount.set false
 
     self.autorun ->
       children = {}
