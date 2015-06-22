@@ -40,7 +40,7 @@ class profile.signIn extends Apollos.Component
     # bind email field changes to update parent if valid
     self = @
 
-    showRegister = Apollos.Router._current.queryParams.register is "true"
+    showRegister = Apollos.Router.getQueryParam("register") is "true"
 
     if showRegister
       self.hasAccount.set false
