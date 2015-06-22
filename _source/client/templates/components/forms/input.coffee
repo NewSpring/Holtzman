@@ -32,7 +32,6 @@ class Apollos.Forms.Input extends Apollos.Component
 
     self = @
 
-
     if not self.value.get() and self.data()?.preFill
       self.setValue self.data().preFill
 
@@ -159,6 +158,6 @@ class Apollos.Forms.Input extends Apollos.Component
 
   setValue: (value) ->
 
+    value or= ""
     @.value.set value
-
     @.find("input").value = value
