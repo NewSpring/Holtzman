@@ -45,6 +45,8 @@ Apollos.validate =
 
   guessCardType: (number) ->
 
+    number = number.replace /-/g, ''
+
     for cardType in Apollos.validate.acceptedCardTypes
 
       if Apollos.validate["isStartOf#{cardType}"] number
@@ -54,6 +56,8 @@ Apollos.validate =
 
 
   getCardType: (number) ->
+
+    number = number.replace /-/g, ''
 
     for cardType in Apollos.validate.acceptedCardTypes
 
