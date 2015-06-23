@@ -1,5 +1,5 @@
 
-# Apollos.locations = new Mongo.Collection "locations"
+Apollos.locations = new Mongo.Collection "locations"
 
 Apollos.generateSchema "location",
   locationId:
