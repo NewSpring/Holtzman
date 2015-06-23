@@ -15,7 +15,7 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     "touchstart [data-key]": @.clickedDataKey
     "click [data-key]": @.clickedDataKey
 
-    "click [data-close]": (event) ->
+    "click [data-close], touchstart [data-close]": (event) ->
 
       Blaze.remove @._internals.templateInstance.view
       return
