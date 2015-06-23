@@ -17,6 +17,8 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
 
     "click [data-close], touchstart [data-close]": (event) ->
 
+      @.parent.keyboardInstance = null
+
       Blaze.remove @._internals.templateInstance.view
       return
 
@@ -33,6 +35,7 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
 
     self = @
     typedText = @.data().amount
+    @.parent = @.data().parent
 
     if not typedText
       console.error "you must pass a reactive var in to store the amount"

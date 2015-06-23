@@ -65,7 +65,7 @@ class Apollos.Forms.NumberInput extends Apollos.Forms.Input
   renderKeyboard: ->
     self = @
 
-    if Apollos.isMobile()
+    if Apollos.isMobile() and not self.keyboardInstance
       self.find("input").readonly = true
 
       template = Apollos.Component.getComponent("Apollos.Controls.NumberKeyboard")
@@ -73,7 +73,7 @@ class Apollos.Forms.NumberInput extends Apollos.Forms.Input
 
       template = Blaze.renderWithData(
         template
-        {amount: self.keyboardAmount}
+        {amount: self.keyboardAmount, parent: self}
         document.body
       )
 
