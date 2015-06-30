@@ -19,6 +19,7 @@
       type="{{#if type}}{{type}}{{else}}{{name}}{{/if}}"
       placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
       class="{{component.data.inputClass}}"
+      disabled="{{#if disabled}}disabled{{/if}}"
     >
 
     {{#if status.get}}
