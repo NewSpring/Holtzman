@@ -22,6 +22,17 @@
       disabled="{{#if disabled}}disabled{{/if}}"
     >
 
+    {{#if icon}}
+      <div class="push-half-right" style="position: absolute; top: 20px; right: 0px;">
+        <style>
+        svg {
+          width: 30px;
+        }
+        </style>
+        {{> Template.dynamic template=icon data=svgData.get}}
+      </div>
+    {{/if}}
+
     {{#if status.get}}
 
       <span class="input__status">

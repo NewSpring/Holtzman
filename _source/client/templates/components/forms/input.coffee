@@ -9,6 +9,9 @@ class Apollos.Forms.Input extends Apollos.Component
     error: null
     status: null
     value: null
+    svgData:
+      height: 40
+      width: 54
 
   ]
 
