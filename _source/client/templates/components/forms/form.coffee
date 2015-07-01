@@ -7,15 +7,19 @@ class Apollos.Forms.Form extends Apollos.Component
 
   onRendered: ->
 
-    grandparent = @.parent().parent()
+    grandparent = @.parent()?.parent?()
+    if not grandparent
+      return
+
     grandparent.title?.set @.data().title
     grandparent.disabled?.set true
     grandparent.checkForValidated?()
 
-  paramaterize: (string) ->
-    string = string.trim()
-    string = string.replace /[^a-zA-Z0-9-\s]/g, ''
-    string = string.replace /[^a-zA-Z0-9-]/g, '-'
-    string = string.toLowerCase()
-    return string
 
+  paramaterize: (string) ->
+    if not string is undefined
+      string = string.trim()
+      string = string.replace /[^a-zA-Z0-9-\s]/g, ''
+      string = string.replace /[^a-zA-Z0-9-]/g, '-'
+      string = string.toLowerCase()
+      return string

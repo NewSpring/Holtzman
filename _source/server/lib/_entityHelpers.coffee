@@ -1,17 +1,17 @@
 Apollos.documentHelpers =
 
 
-  translate: (doc, data, platform) ->
+  translate: (singular, data, platform) ->
 
     if not platform
       Apollos.debug "must specify platform to translate to"
 
-    if not Apollos[doc]._dictionary[platform]
-      Apollos.debug "no translation found for #{platform} in #{doc}"
+    if not Apollos[singular]._dictionary[platform]
+      Apollos.debug "no translation found for #{platform} in #{singular}"
       return
 
     # translate
-    return Apollos[doc]._dictionary[platform] data
+    return Apollos[singular]._dictionary[platform] data
 
 
   ###

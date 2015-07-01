@@ -1,21 +1,37 @@
 <template name="Apollos.Forms.Input">
 
-  <div class="input {{#if error.get}}input--alert{{/if}} {{#if preFill}}input--active{{/if}}">
+  <div class="input {{#if error.get}}input--alert{{/if}} {{#if preFill}}input--active{{/if}} {{component.data.class}}">
 
-    <label for="{{name}}">
-      {{#if label}}
-        {{label}}
-      {{else}}
-        {{name}}
-      {{/if}}
-    </label>
+    {{#unless component.data.hideLabel}}
+
+      <label for="{{name}}">
+        {{#if label}}
+          {{label}}
+        {{else}}
+          {{name}}
+        {{/if}}
+      </label>
+
+    {{/unless}}
 
     <input
       name="{{name}}"
       type="{{#if type}}{{type}}{{else}}{{name}}{{/if}}"
       placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
-      value="{{#if preFill}}{{preFill}}{{/if}}"
+      class="{{component.data.inputClass}}"
+      disabled="{{#if disabled}}disabled{{/if}}"
     >
+
+    {{#if icon}}
+      <div class="push-half-right" style="position: absolute; top: 20px; right: 0px;">
+        <style>
+        svg {
+          width: 30px;
+        }
+        </style>
+        {{> Template.dynamic template=icon data=svgData.get}}
+      </div>
+    {{/if}}
 
     {{#if status.get}}
 

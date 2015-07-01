@@ -81,6 +81,7 @@ tasks:
         "mike:mocha@0.6.0": "both"
       export:
         "Apollos": "both"
+        "HTTP": "server"
 
   "copy-package":
     "@extend": "copy"

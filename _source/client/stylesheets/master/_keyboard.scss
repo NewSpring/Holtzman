@@ -1,0 +1,83 @@
+.keyboard {
+  position: relative;
+  position: fixed;
+  z-index: 10000;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  backface-visibility: hidden;
+
+  h3 {
+    color: #858585;
+  }
+
+  .key {
+    border-bottom: solid 3px #ddd;
+  }
+
+  .icon-backspace {
+    display: inline-block;
+
+    width: 28px;
+    height: 28px;
+
+    background-size: 28px 28px;
+  }
+  .icon-down {
+    width: $base-icon-size - $half-spacing-unit;
+    height: $base-spacing-unit;
+
+    background-size: 100%;
+  }
+}
+
+.icon-backspace {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2250px%22%20height%3D%2238px%22%20viewBox%3D%220%200%2050%2038%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20xmlns%3Asketch%3D%22http%3A//www.bohemiancoding.com/sketch/ns%22%3E%0A%20%20%20%20%3C%21--%20Generator%3A%20bin/sketchtool%201.4%20%28305%29%20-%20http%3A//www.bohemiancoding.com/sketch%20--%3E%0A%20%20%20%20%3Ctitle%3Ebackspace%3C/title%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20bin/sketchtool.%3C/desc%3E%0A%20%20%20%20%3Cdefs%3E%3C/defs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20sketch%3Atype%3D%22MSPage%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22card-amount%22%20sketch%3Atype%3D%22MSArtboardGroup%22%20transform%3D%22translate%28-580.000000%2C%20-1092.000000%29%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22keyboard%22%20sketch%3Atype%3D%22MSLayerGroup%22%20transform%3D%22translate%280.000000%2C%20717.000000%29%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22backspace%22%20transform%3D%22translate%28580.000000%2C%20369.000000%29%22%20sketch%3Atype%3D%22MSShapeGroup%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22bounds%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2250%22%20height%3D%2250%22%3E%3C/rect%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M45.8333333%2C6%20L14.5833333%2C6%20C13.125%2C6%2012.0833333%2C6.63333333%2011.25%2C7.9%20L0%2C25%20L11.25%2C42.1%20C12.0833333%2C43.1555556%2013.125%2C44%2014.5833333%2C44%20L45.8333333%2C44%20C48.125%2C44%2050%2C42.1%2050%2C39.7777778%20L50%2C10.2222222%20C50%2C7.9%2048.125%2C6%2045.8333333%2C6%20L45.8333333%2C6%20Z%20M39.5833333%2C32.6%20L36.6666667%2C35.5555556%20L29.1666667%2C27.9555556%20L21.6666667%2C35.5555556%20L18.75%2C32.6%20L26.25%2C25%20L18.75%2C17.4%20L21.6666667%2C14.4444444%20L29.1666667%2C22.0444444%20L36.6666667%2C14.4444444%20L39.5833333%2C17.4%20L32.0833333%2C25%20L39.5833333%2C32.6%20L39.5833333%2C32.6%20Z%22%20id%3D%22Shape%22%20fill%3D%22%23858585%22%3E%3C/path%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%3C/g%3E%0A%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
+.icon-down {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2270px%22%20height%3D%2222px%22%20viewBox%3D%220%200%2070%2022%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20xmlns%3Asketch%3D%22http%3A//www.bohemiancoding.com/sketch/ns%22%3E%0A%20%20%20%20%3C%21--%20Generator%3A%20Sketch%203.3.2%20%2812043%29%20-%20http%3A//www.bohemiancoding.com/sketch%20--%3E%0A%20%20%20%20%3Ctitle%3EClose%3C/title%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C/desc%3E%0A%20%20%20%20%3Cdefs%3E%3C/defs%3E%0A%20%20%20%20%3Cg%20id%3D%22Give%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20sketch%3Atype%3D%22MSPage%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22give-feed-copy-6%22%20sketch%3Atype%3D%22MSArtboardGroup%22%20transform%3D%22translate%28-340.000000%2C%20-1205.000000%29%22%20fill%3D%22%23858585%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22keyboard-copy%22%20sketch%3Atype%3D%22MSLayerGroup%22%20transform%3D%22translate%280.000000%2C%201175.000000%29%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M401.367221%2C51.825%20L375.002221%2C44.919%20L348.636221%2C51.825%20C344.855221%2C52.732%20341.071221%2C50.324%20340.186221%2C46.444%20C339.302221%2C42.565%20341.650221%2C38.683%20345.433221%2C37.776%20L374.913221%2C30.047%20L375.091221%2C30%20L404.571221%2C37.776%20C408.353221%2C38.683%20410.702221%2C42.565%20409.818221%2C46.444%20C408.933221%2C50.324%20405.150221%2C52.733%20401.367221%2C51.825%20Z%22%20id%3D%22Close%22%20sketch%3Atype%3D%22MSShapeGroup%22%20transform%3D%22translate%28375.002194%2C%2041.008222%29%20scale%281%2C%20-1%29%20translate%28-375.002194%2C%20-41.008222%29%20%22%3E%3C/path%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%3C/g%3E%0A%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
+[data-key] {
+  h3 {
+    height: 45px;
+  }
+
+  &.touched {
+    color: #505050;
+
+    h3 {
+      height: 55px;
+      margin-top: -10px;
+
+      background-size: 100%;
+
+      font-size: 2.625em;
+    }
+
+    span {
+      width: 35px;
+      height: 35px;
+
+      background-size: 35px 35px;
+    }
+
+    .key {
+      border-bottom: solid 3px #505050;
+    }
+  }
+}
+
+@media screen and (max-height: 565px) {
+  [data-key] h3 {
+    height: 40px;
+  }
+
+  [data-key].touched h3 {
+    height: 50px;
+  }
+}

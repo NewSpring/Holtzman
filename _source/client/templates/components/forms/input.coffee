@@ -9,6 +9,9 @@ class Apollos.Forms.Input extends Apollos.Component
     error: null
     status: null
     value: null
+    svgData:
+      height: 40
+      width: 54
 
   ]
 
@@ -32,9 +35,15 @@ class Apollos.Forms.Input extends Apollos.Component
 
     self = @
 
+    if not self.value.get() and self.data()?.preFill
+      self.setValue self.data().preFill
+
+
     self.autorun ->
-      if self.data()?.preFill
-        self.value.set self.data().preFill
+      value = self.value.get()
+
+      if self.data()?.bind
+        self.data().bind.set value
 
 
   focused: (event) ->
@@ -46,24 +55,44 @@ class Apollos.Forms.Input extends Apollos.Component
       .addClass "input--active"
 
     parent = self.parent()
+
+    if not parent
+      return
+
     if parent.find("form")
       # account for form being child
       if parent.constructor.name is "Form"
         parent.hasErrors.set false
       else
-        parent.children()[0].hasErrors.set false
+        parent.children()[0]?.hasErrors?.set false
 
+  validate: (value) ->
+
+    self = @
+    data = self.data()
+
+    if value and data.validate
+      validateFunction = data.validate
+
+    valid = true
+    if typeof validateFunction is "function"
+      valid = validateFunction value
+    else if validateFunction
+      valid = Apollos.validate[validateFunction] value
+
+
+    return valid
 
   blurred: (event) ->
 
     self = @
     parent = self.parent()
-    isForm = parent.find("form")
+    isForm = parent?.find("form")
     data = self.data()
 
-    if event.target.value and data.validate
-      validateFunction = data.validate
-      valid = Apollos.validate[validateFunction] event.target.value
+    if event.target.value
+
+      valid = self.validate event.target.value
 
       if not valid
         self.error.set true
@@ -73,7 +102,7 @@ class Apollos.Forms.Input extends Apollos.Component
           if parent.constructor.name is "Form"
             parent.hasErrors.set true
           else
-            parent.children()[0].hasErrors.set true
+            parent.children()[0]?.hasErrors?.set true
 
       return
 
@@ -84,7 +113,7 @@ class Apollos.Forms.Input extends Apollos.Component
       if parent.constructor.name is "Form"
         parent.hasErrors.set false
       else
-        parent.children()[0].hasErrors.set false
+        parent.children()[0]?.hasErrors?.set false
 
 
     # if the input is empty, remove the input--active class
@@ -132,8 +161,6 @@ class Apollos.Forms.Input extends Apollos.Component
 
   setValue: (value) ->
 
+    value or= ""
     @.value.set value
-
-    if value
-      @.find("input").value = value
-      return
+    @.find("input").value = value

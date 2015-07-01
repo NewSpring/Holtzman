@@ -156,6 +156,7 @@ addCardState = (storage, component, card) ->
 
   if not storage[card]
     storage[card] =
+      components: {}
       states: obj
 
     return
@@ -193,6 +194,7 @@ addCard = (storage, component, _default) ->
 
   storage[name] =
     component: new component()
+    components: {}
     default: _default
 
 

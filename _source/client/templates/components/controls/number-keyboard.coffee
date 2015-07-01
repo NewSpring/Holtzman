@@ -1,7 +1,45 @@
-Apollos.Controls or= {}
+
 
 class Apollos.Controls.NumberKeyboard extends Apollos.Component
   @register "Apollos.Controls.NumberKeyboard"
+
+
+  vars: -> [
+    cancelClick: false
+  ]
+
+  events: -> [
+
+    "click": @.stop
+
+    "touchstart [data-key]": @.clickedDataKey
+    "click [data-key]": @.clickedDataKey
+
+    "click [data-close], touchstart [data-close]": (event) ->
+
+      @.parent.keyboardInstance = null
+
+      Blaze.remove @._internals.templateInstance.view
+      return
+
+  ]
+
+  stop: (event) ->
+
+    event.stopPropagation()
+    event.preventDefault()
+
+
+
+  onCreated: ->
+
+    self = @
+    typedText = @.data().amount
+    @.parent = @.data().parent
+
+    if not typedText
+      console.error "you must pass a reactive var in to store the amount"
+      return
 
 
   onRendered: ->
@@ -23,24 +61,34 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
       if typeof numPressed isnt "undefined"
         self.doPressAnimation $("[data-key=\"#{numPressed}\"]")
         self.processTypedText numPressed
-        self.parent().updateFund self.typedText.get()
+        # self.parent().updateFund self.typedText.get()
+
 
 
   onDestroyed: ->
     $(document).off("keyup")
 
 
-  vars: -> [
-    typedText: ""
-    cancelClick: false
-  ]
+  insertDOMElement: (parent, node, before) ->
+    $(node)
+      .appendTo(parent)
+      # .velocity("transition.slideUpIn", { duration: 500 })
+      .velocity({translateY: [0, 200], translateZ: 0}, {duration: 250})
+    super
 
-  events: -> [
-    "touchstart [data-key]": @.clickedDataKey
-    "click [data-key]": @.clickedDataKey
-  ]
+  removeDOMElement: (parent, node) ->
+    self = @
+
+    $(node).velocity({
+      translateY: 250, translateZ: 0
+    }, {
+      duration: 250
+      complete: (elements) ->
+        $(node).remove()
+    })
 
   clickedDataKey: (event, template) ->
+
     if event.type is "touchstart"
       @.cancelClick.set true
     else if @.cancelClick.get()
@@ -50,36 +98,39 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     @.doPressAnimation event.currentTarget
     keyPressed = event.currentTarget.getAttribute "data-key"
     @.processTypedText keyPressed
-    @.parent().updateFund @.typedText.get()
 
-  onCreated: ->
+    # @.parent().updateFund @.typedText.get()
 
-    self = @
 
-    self.autorun ->
-      fundAmount = self.parent().getFundAmount()
-      if fundAmount and fundAmount.amount isnt "0"
-        self.typedText.set fundAmount.amount
-      else
-        self.typedText.set ""
 
   doPressAnimation: (element) ->
+
+    # can we do this with css?
     jQueryElement = $ element
     jQueryElement.addClass "touched"
+
     Meteor.setTimeout ->
       jQueryElement.removeClass "touched"
     , 150
 
+
   processTypedText: (keyValue) ->
+
     keyValue = String keyValue
-    currentText = @.typedText.get()
+    typedText = @.data().amount
+    currentText = typedText.get()
+
+    if not currentText
+      currentText = ""
+
     isEmpty = currentText.length is 0
     decimalIndex = currentText.indexOf "."
     hasDecimal = decimalIndex isnt -1
 
     if keyValue is "-1"
-      @.parent().checkForIncrease()
-      @.typedText.set(currentText.slice 0, -1)
+      # what is this for?
+      # @.parent()?.checkForIncrease()
+      typedText.set(currentText.slice 0, -1)
       return
 
     if keyValue is "." and (hasDecimal or isEmpty)
@@ -91,11 +142,13 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     if hasDecimal and currentText.length - decimalIndex > 2
       return
 
-    @.typedText.set(currentText + keyValue)
+    typedText.set(currentText + keyValue)
+
 
   output: ->
-    typedText = @.typedText.get()
+    typedText = @.data().amount.get()
     return typedText.replace /\B(?=(\d{3})+(?!\d))/g, ","
+
 
   keys: ->
     keys = [1..9].map (v) ->

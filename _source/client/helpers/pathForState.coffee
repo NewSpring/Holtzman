@@ -40,7 +40,7 @@ setUpClickEvent = (path) ->
 
 
 
-Template.registerHelper "pathForState", (state) ->
+Template.registerHelper "pathForState", (state, id) ->
 
   # always return something that is clickable
   path = "#"
@@ -49,9 +49,20 @@ Template.registerHelper "pathForState", (state) ->
     if not internals.states
       continue
 
+    if id and internals.components[id]
+
+      if not internals.components[id].states[state]
+        continue
+
+      if Apollos.Router.isPath("#{id}-#{state}")
+        path = Apollos.Router.path("#{id}-#{state}")
+        break
+
+
+
     if internals.states[state]
-      hasPath = Apollos.Router.path(state).indexOf("/") > -1
-      if hasPath
+
+      if Apollos.Router.isPath(state)
         path = Apollos.Router.path(state)
         break
       else

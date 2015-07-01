@@ -13,20 +13,6 @@ class profile.resetPassword extends Apollos.Component
   @card "Apollos.profile.onBoard"
   url: -> "reset-password"
 
-  middlewares: -> [
-    (path, next) ->
-      console.log "tracking path:", path
-      next()
-
-    (path, next) ->
-      console.log "watching path:", path
-      next()
-
-    (path, next) ->
-      console.log "I see you -->:", path
-      next()
-  ]
-
   vars: -> [
 
     hasErrors: false

@@ -33,6 +33,8 @@ if Meteor.isClient
     if self._routesMap[pathDef]
       pathDef = self._routesMap[pathDef].path
 
+    # remove trailing slash(es)
+    pathDef = pathDef.replace(/\/+$/, "")
 
     fields or= {}
 
@@ -73,22 +75,23 @@ if Meteor.isClient
   FlowRouter.Router::isPath = (path) ->
 
     routes = FlowRouter._routes.slice()
-
     index = routes.length
-
     path = FlowRouter.path(path)
 
     if not path
       return false
 
-    # remove trailing slash if it is the last character
-    if (path.length > 1) and (path[path.length - 1] is "/")
-      path = path.substring(0, path.length - 1)
 
     while index--
 
       route = routes[index]
-      if route.path is path
+      _path = route.path
+
+      # remove trailing slash if it is the last character
+      if (_path.length > 1) and (_path[_path.length - 1] is "/")
+        _path = _path.substring(0, _path.length - 1)
+
+      if _path is path
         return true
 
     return false
@@ -101,11 +104,6 @@ if Meteor.isClient
       @._page.replace(path, null, null, false)
     else
       @._page.redirect path
-
-
-
-
-
 
 
 
@@ -125,7 +123,6 @@ if Meteor.isClient
 
       # make a copy to reduce resources and not setup a handler if we modify
       existingRoutes = Apollos.Router._routes.slice()
-
       tailingSegments = []
 
       checkSegments = (segments, last) ->
@@ -134,6 +131,7 @@ if Meteor.isClient
           return
 
         localSegments = segments.slice()
+        localSegments = localSegments.filter Boolean
 
         ###
 
@@ -145,13 +143,20 @@ if Meteor.isClient
         lastSegment = localSegments.pop()
         index = existingRoutes.length
 
+
         while index--
           route = existingRoutes[index]
 
           # build out url including rare root level case
-          if localSegments.length > 1
+          if localSegments.length >= 1
             path = localSegments.join "/"
+            path = "/#{path}"
           else path = "/"
+
+          # remove the last slash for more accurate checking within
+          # grouped routes
+          if route.path[route.path.length - 1] is "/"
+            route.path = route.path.substring(0, route.path.length - 1)
 
 
           if route.path is path
@@ -170,7 +175,7 @@ if Meteor.isClient
             if context.querystring
               tail += "?#{context.querystring}"
 
-            FlowRouter.redirect "#{route.path}#!/#{tail}"
+            FlowRouter.redirect "#{route.path}/#!/#{tail}"
 
             return
 
@@ -191,6 +196,8 @@ if Meteor.isClient
 
 
   Apollos.Layout = FlowLayout
+
+  Apollos.Layout.setRoot "body"
 
 
 if Meteor.isServer
