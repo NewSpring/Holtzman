@@ -12,14 +12,12 @@ Apollos.api.endpoints =
   # transactionDetail: "#{baseURL}transactionDetails/"
   # account: "#{baseURL}accounts/"
 
-Apollos.api.tokenName = Meteor.settings.api.tokenName
-Apollos.api.token = Meteor.settings.api.token
 
-
-if not Apollos.api.tokenName or not Apollos.api.token
+if not Meteor.settings.api?.tokenName or not Meteor.settings.api?.token
   return
 
-
+Apollos.api.tokenName = Meteor.settings.api.tokenName
+Apollos.api.token = Meteor.settings.api.token
 
 Apollos.api.register = (collections, platform) ->
 
