@@ -100,3 +100,20 @@ class Apollos.Forms.Select extends Apollos.Component
 
   selected: (val) ->
     return val is @.data().preFill
+
+  validate: (value) ->
+
+    self = @
+    data = self.data()
+
+    if value and data.validate
+      validateFunction = data.validate
+
+    valid = true
+    if typeof validateFunction is "function"
+      valid = validateFunction value
+    else if validateFunction
+      valid = Apollos.validate[validateFunction] value
+
+
+    return valid
