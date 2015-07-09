@@ -105,9 +105,7 @@ class Apollos.Forms.Select extends Apollos.Component
 
     self = @
     data = self.data()
-
-    if value and data.validate
-      validateFunction = data.validate
+    validateFunction = data.validate
 
     valid = true
     if typeof validateFunction is "function"
