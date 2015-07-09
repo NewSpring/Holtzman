@@ -9,44 +9,74 @@
 ###
 Apollos.name = "Apollos"
 
-###
+if Meteor.isClient
+  ###
 
-  Apollos.user
+    Apollos.user
 
-  @example get the currently logged in user
+    @example get the currently logged in user
 
-    console.log Apollos.user()._id
+      console.log Apollos.user()._id
 
-###
-Apollos.user = ->
+  ###
+  Apollos.user = ->
 
-  user = Meteor.user()
-  return user or {}
-
+    user = Meteor.user()
+    return user or {}
+else
+  Apollos.user = -> "DO NOT USE THIS VALUE"
 
 Apollos.user.login = {}
 
-###
+if Meteor.isClient
+  Meteor.subscribe "currentUserPerson"
+else
+  Meteor.publish "currentUserPerson", ->
+    user = Apollos.users.findOne @.userId
+    query = {}
+    queryOk = false
 
-  Apollos.person
+    if not user
+      return
 
-  @example get the currently logged in user's person document
+    if user.personGuid
+      query.guid = user.personGuid
+      queryOk = true
 
-    console.log "Hello, #{Apollos.person().firstName}"
+    if user.rock and user.rock.personId
+      query.personId = user.rock.personId
+      queryOk = true
 
-###
-Apollos.person = (user) ->
+    if not queryOk
+      return
 
-  user or= Apollos.user()
+    return Apollos.people.find query
 
-  if user.guid
-    person = Apollos.people.findOne
-      guid: user.guid
+if Meteor.isClient
+  ###
 
-  return person or {}
+    Apollos.person
 
+    @example get the currently logged in user's person document
 
+      console.log "Hello, #{Apollos.person().firstName}"
 
+  ###
+  Apollos.person = (user) ->
+
+    user or= Apollos.user()
+
+    if user.personGuid
+      person = Apollos.people.findOne
+        guid: user.personGuid
+
+    if not person and user.rock and user.rock.personId
+      person = Apollos.people.findOne
+        personId: user.rock.personId
+
+    return person or {}
+else
+  Apollos.person = -> "DO NOT USE THIS VALUE"
 
 if Meteor.server
   Accounts.onCreateUser (options, user) ->
@@ -55,18 +85,15 @@ if Meteor.server
 
     if user.profile?.guest isnt true
 
-      user.guid = Apollos.utilities.makeNewGuid()
+      user.personGuid = Apollos.utilities.makeNewGuid()
 
       person = Apollos.person user
       # # no existing user so create one
       if not Object.keys(person).length
-        Apollos.people.upsert({guid: user.guid}, {
+        Apollos.people.upsert({guid: user.personGuid}, {
           $set:
             preferredEmail: user.emails[0].address
         })
-
-
-
 
     return user
 
