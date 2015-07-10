@@ -7,15 +7,32 @@
 
     width: 375px;
     height: 100%;
-    padding-top: 160px;
     margin-left: 56px;
+    padding-top: 160px;
 
     background: #fff;
 
-    h4 {
-      display: table-cell;
+    header {
+      height: 75px;
+    }
 
-      color: #c64f55;
+    .state-image,
+    h4 {
+      display: inline-block;
+
+      vertical-align: middle;
+    }
+
+    h4 {
+      max-width: 250px;
+
+      &.error {
+        color: #c64f55;
+      }
+
+      &.success {
+        color: #6bac43;
+      }
     }
 
     .error-icon {
