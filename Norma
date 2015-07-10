@@ -61,70 +61,70 @@ tasks:
 
 
   # sample-app
-  settings:
-    "dev": true
-    group: "sample-app"
-    "@extend": "bower"
-    "/workbench":
-      settings: "https://github.com/NewSpring/settings.git"
-
-  "app-javascript":
-    "dev": true
-    group: "sample-app"
-    "@extend": "javascript"
-    src: "sample-app/**/*"
-    dest: "workbench/"
-
-
-  "app-markup":
-    "dev": true
-    group: "sample-app"
-    "@extend": "markup"
-    "src": "sample-app/**/*"
-    "dest": "./workbench/"
-
-
-  "app-sass":
-    group: "sample-app"
-    "@extend": "sass"
-    src: "sample-app/**/*"
-    dest: "workbench/"
-
-
-  copy:
-    dev: true
-    group: "sample-app"
-    src: "lib/**/*"
-    dest: "./workbench/packages/apollos-core/lib/"
-
-  "copy-package":
-    dev: true
-    group: "sample-app"
-    "@extend": "copy"
-    src: "package"
-    dest: "./workbench/packages/apollos-core/"
-    order: "post"
-    ext: [ "js" ]
-
-
-  "meteor":
-    group: "sample-app"
-    "dev": true
-    "src": "workbench"
-    "settings": "workbench/settings/development.json"
-    "port": 3050
-    "mongoUrl": "mongodb://localhost/newspring-core"
-    "packages": [
-      "meteor-platform"
-      "newspring:apollos-core"
-      "velocity:core@=0.6.0"
-      "mike:mocha"
-    ]
-    "platforms": [
-      "server"
-      "browser"
-
-    ]
-
+#   settings:
+#     "dev": true
+#     group: "sample-app"
+#     "@extend": "bower"
+#     "/workbench":
+#       settings: "https://github.com/NewSpring/settings.git"
+#
+#   "app-javascript":
+#     "dev": true
+#     group: "sample-app"
+#     "@extend": "javascript"
+#     src: "sample-app/**/*"
+#     dest: "workbench/"
+#
+#
+#   "app-markup":
+#     "dev": true
+#     group: "sample-app"
+#     "@extend": "markup"
+#     "src": "sample-app/**/*"
+#     "dest": "./workbench/"
+#
+#
+#   "app-sass":
+#     group: "sample-app"
+#     "@extend": "sass"
+#     src: "sample-app/**/*"
+#     dest: "workbench/"
+#
+#
+#   copy:
+#     dev: true
+#     group: "sample-app"
+#     src: "lib/**/*"
+#     dest: "./workbench/packages/apollos-core/lib/"
+#
+#   "copy-package":
+#     dev: true
+#     group: "sample-app"
+#     "@extend": "copy"
+#     src: "package"
+#     dest: "./workbench/packages/apollos-core/"
+#     order: "post"
+#     ext: [ "js" ]
+#
+#
+#   "meteor":
+#     group: "sample-app"
+#     "dev": true
+#     "src": "workbench"
+#     "settings": "workbench/settings/development.json"
+#     "port": 3050
+#     "mongoUrl": "mongodb://localhost/newspring-core"
+#     "packages": [
+#       "meteor-platform"
+#       "newspring:apollos-core"
+#       "velocity:core@=0.6.0"
+#       "mike:mocha"
+#     ]
+#     "platforms": [
+#       "server"
+#       "browser"
+#
+#     ]
+#
 # Testing
 test: "meteor --test --settings settings/development.json --release velocity:METEOR@1.1.0.2_2"
