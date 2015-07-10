@@ -1,0 +1,42 @@
+.panel-modal {
+  overflow: hidden;
+
+  .side-panel {
+    position: fixed;
+    z-index: 2;
+
+    width: 375px;
+    height: 100%;
+    margin-left: 56px;
+    padding-top: 160px;
+
+    background: #fff;
+
+    header {
+      height: 75px;
+    }
+
+    .state-image,
+    h4 {
+      display: inline-block;
+
+      vertical-align: middle;
+    }
+
+    h4 {
+      max-width: 250px;
+
+      &.error {
+        color: #c64f55;
+      }
+
+      &.success {
+        color: #6bac43;
+      }
+    }
+
+    .error-icon {
+      float: left;
+    }
+  }
+}
