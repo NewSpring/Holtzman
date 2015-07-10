@@ -3,61 +3,33 @@ name: "apollos-core"
 tasks:
 
   bower:
-    "/workbench":
-      settings: "https://github.com/NewSpring/settings.git"
+    group: "package"
     "/vendor":
       framework: "NewSpring/junction-framework"
+      junction: "NewSpring/junction"
+      "junction-plugins": "NewSpring/junction-plugins"
 
-  ###
-
-    Application files (tracked)
-
-  ###
-  # compiliation of coffeescript -> javascript
   javascript:
+    group: "package"
     src: "_source/**/*"
     dest: "lib/"
 
-  "compile-test":
-    "@extend": "javascript"
-    src: "tests/**/*"
-    dest: "workbench/tests"
-
-  # minify markup
   markup:
+    group: "package"
     src: "_source/**/*"
     dest: "lib/"
     minify: true
 
-  # Once this sass stuff is working, remove the keyboard sass from give
   sass:
+    group: "package"
     src: "_source/**/*"
     dest: "lib/"
     comb: true
     lint: true
 
-  ###
-
-    Package tasks (include built package in sample-app)
-
-  ###
-  copy:
-    src: "lib/**/*"
-    dest: "./workbench/packages/apollos-core/lib/"
-    order: "post"
-
-
-  "copy-package":
-    "@extend": "copy"
-    src: "package" # package.js
-    dest: "./workbench/packages/apollos-core/"
-    order: "post"
-    ext: [ "js" ]
-    type: "sync"
-
-
   # create package.js
   "meteor-load":
+    group: "package"
     src: "lib/**/*"
     version: "0.1.25"
     dest: "./"
@@ -78,42 +50,80 @@ tasks:
         "velocityjs:velocityjs@=1.2.1": "client"
         "raix:handlebar-helpers@0.2.4": "client"
         "arillo:flow-router-helpers@0.1.6": "client"
-        "mike:mocha@0.6.0": "both"
       export:
         "Apollos": "both"
         "HTTP": "server"
 
-  "copy-package":
-    "@extend": "copy"
-    src: "package" # package.js
-    dest: "./workbench/packages/apollos-core/"
-    ext: [ "js" ]
+  # "compile-test":
+  #   "@extend": "javascript"
+  #   src: "tests/**/*"
+  #   dest: "workbench/tests"
 
-  ###
 
-    Sample application to test and use package in
+  # sample-app
+  settings:
+    "dev": true
+    group: "sample-app"
+    "@extend": "bower"
+    "/workbench":
+      settings: "https://github.com/NewSpring/settings.git"
 
-  ###
   "app-javascript":
+    "dev": true
+    group: "sample-app"
     "@extend": "javascript"
     src: "sample-app/**/*"
-    dest: "./workbench/"
+    dest: "workbench/"
+
+
   "app-markup":
+    "dev": true
+    group: "sample-app"
     "@extend": "markup"
+    "src": "sample-app/**/*"
+    "dest": "./workbench/"
+
+
+  "app-sass":
+    group: "sample-app"
+    "@extend": "sass"
     src: "sample-app/**/*"
-    dest: "./workbench/"
-  meteor:
-    src: "workbench"
-    settings: "workbench/settings/development.json"
-    mongoUrl: "mongodb://localhost/newspring-core"
-    packages: [
+    dest: "workbench/"
+
+
+  copy:
+    dev: true
+    group: "sample-app"
+    src: "lib/**/*"
+    dest: "./workbench/packages/apollos-core/lib/"
+
+  "copy-package":
+    dev: true
+    group: "sample-app"
+    "@extend": "copy"
+    src: "package"
+    dest: "./workbench/packages/apollos-core/"
+    order: "post"
+    ext: [ "js" ]
+
+
+  "meteor":
+    group: "sample-app"
+    "dev": true
+    "src": "workbench"
+    "settings": "workbench/settings/development.json"
+    "port": 3050
+    "mongoUrl": "mongodb://localhost/newspring-core"
+    "packages": [
       "meteor-platform"
       "newspring:apollos-core"
+      "velocity:core@=0.6.0"
+      "mike:mocha"
     ]
-    platforms: [
+    "platforms": [
       "server"
       "browser"
-      "ios"
+
     ]
 
 # Testing
