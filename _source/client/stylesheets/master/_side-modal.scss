@@ -1,0 +1,25 @@
+.panel-modal {
+  overflow: hidden;
+
+  .side-panel {
+    position: fixed;
+    z-index: 2;
+
+    width: 375px;
+    height: 100%;
+    padding-top: 160px;
+    margin-left: 56px;
+
+    background: #fff;
+
+    h4 {
+      display: table-cell;
+
+      color: #c64f55;
+    }
+
+    .error-icon {
+      float: left;
+    }
+  }
+}

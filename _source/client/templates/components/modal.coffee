@@ -17,39 +17,33 @@ class Apollos.modal extends Apollos.Component
       null
 
   insertDOMElement: (parent, node, before) ->
-    startingPoint = $(window).height() / 2
 
     # fade in background
-    $(node)
-      .appendTo(parent)
+    $(node).appendTo(parent)
       .velocity "fadeIn",
-        duration: 500
+        duration: 250
 
-    # slide down from top
-    $(node).find('section').first()
+    # slide in panel
+    $(node).children('.side-panel')
       .velocity
-        translateY: [0, -startingPoint]
-        translateZ: 0
+        translateX: [0, -500]
+        opacity: 1
       ,
-        display: "block"
-        delay: 500
         duration: 250
     super
 
   removeDOMElement: (parent, node) ->
-    endingPoint = $(window).height()
 
-    # slide out to bottom
-    $(node).find('section').first()
+    # slide out panel
+    $(node).children('.side-panel')
       .velocity
-        translateY: -endingPoint
-        translateZ: 0
+        translateX: -500
+        opacity: 1
       ,
         duration: 250
 
     # fade out background
     $(node).velocity "fadeOut",
-      delay: 250
       duration: 250
       complete: (elements) ->
         $(node).remove()
