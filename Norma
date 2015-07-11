@@ -6,8 +6,6 @@ tasks:
     group: "package"
     "/vendor":
       framework: "NewSpring/junction-framework"
-      junction: "NewSpring/junction"
-      "junction-plugins": "NewSpring/junction-plugins"
 
   javascript:
     group: "package"
