@@ -88,6 +88,10 @@ if Meteor.server
       user.personGuid = Apollos.utilities.makeNewGuid()
 
       person = Apollos.person user
+
+      if typeof(person) isnt 'object'
+        person = {}
+
       # # no existing user so create one
       if not Object.keys(person).length
         Apollos.people.upsert({guid: user.personGuid}, {
