@@ -13,7 +13,6 @@ campus = Apollos.generateSchema
     type: String
   shortCode:
     type: String
-    max: 3
   locationId:
     type: Number
     decimal: false
