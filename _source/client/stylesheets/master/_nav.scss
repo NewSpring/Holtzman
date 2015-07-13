@@ -15,6 +15,9 @@ html {
   @include media-query(lap-and-up) {
     @include absolute(left 56px bottom 0);
   }
+  @include media-query(handheld) {
+    overflow: scroll;
+  }
 }
 
 
