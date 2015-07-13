@@ -16,7 +16,10 @@ html {
     @include absolute(left 56px bottom 0);
   }
   @include media-query(handheld) {
-    overflow: scroll;
+    position: relative;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
   }
 }
