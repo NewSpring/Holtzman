@@ -25,13 +25,13 @@
     }
 
     .state-image,
-    h4 {
+    .state-message {
       display: inline-block;
 
       vertical-align: middle;
     }
 
-    h4 {
+    .state-message {
       max-width: 250px;
 
       @media (max-width: 349px) {
