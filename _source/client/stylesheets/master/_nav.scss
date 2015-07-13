@@ -18,10 +18,20 @@
 
 
 .global-watermark {
+  @include media-query(handheld) {
+    position: relative;
+
+    width: 100%;
+
+    text-align: center;
+
+    background: map-get($colors, primary);
+  }
   @include media-query(lap-and-up) {
     @include rotate(270deg);
 
     position: fixed;
+    z-index: 10;
     top: auto;
     right: $base-spacing-unit;
     bottom: $base-spacing-unit;
@@ -37,8 +47,13 @@
 
     font-weight: 900;
   }
+}
 
-  display: none;
+.watermark {
+  letter-spacing: 1.7px;
+
+  font-size: 24px;
+  font-weight: 800;
 }
 
 
