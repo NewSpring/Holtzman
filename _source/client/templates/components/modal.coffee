@@ -2,19 +2,8 @@ class Apollos.modal extends Apollos.Component
 
   @register "Apollos.modal"
 
-  vars: -> [
-    disabled: @.data().disabled or false
-  ]
-
-  events: -> [
-    "click": @.destroy
-  ]
-
   destroy: ->
     self = @
-
-    if self.disabled.get()
-      return
 
     Blaze.remove @._internals.templateInstance.view
 
