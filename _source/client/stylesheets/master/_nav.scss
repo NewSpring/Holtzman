@@ -17,6 +17,7 @@ html {
   }
   @include media-query(handheld) {
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
