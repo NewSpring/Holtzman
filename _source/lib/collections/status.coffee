@@ -3,13 +3,13 @@ Apollos.status = new Mongo.Collection "status"
 status = Apollos.generateSchema
   name:
     type: String
-    required: true
+    optional: false
   status:
     type: Boolean
-    required: true
+    optional: false
   message:
     type: String
-    required: false
+    optional: true
 
 
 Apollos.people.attachSchema status
