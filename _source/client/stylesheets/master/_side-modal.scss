@@ -3,14 +3,18 @@
 
   .side-panel {
     position: fixed;
+    top: 0;
     z-index: 2;
 
     width: 375px;
     height: 100%;
-    margin-left: 56px;
     padding-top: 160px;
 
     background: #fff;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
 
     header {
       height: 75px;
