@@ -16,6 +16,10 @@
       width: 100%;
     }
 
+    @media (max-height: 666px) {
+      padding-top: 40px;
+    }
+
     header {
       height: 75px;
     }
@@ -30,6 +34,10 @@
     h4 {
       max-width: 250px;
 
+      @media (max-width: 349px) {
+        max-width: 220px;
+      }
+
       &.error {
         color: #c64f55;
       }
@@ -37,10 +45,6 @@
       &.success {
         color: #6bac43;
       }
-    }
-
-    .error-icon {
-      float: left;
     }
   }
 }
