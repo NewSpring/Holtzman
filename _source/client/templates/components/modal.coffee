@@ -2,6 +2,10 @@ class Apollos.modal extends Apollos.Component
 
   @register "Apollos.modal"
 
+  events: -> [
+    "click [data-dismiss]": @.destroy
+  ]
+
   destroy: ->
     self = @
 
