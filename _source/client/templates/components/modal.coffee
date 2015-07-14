@@ -78,6 +78,5 @@ class Apollos.modal extends Apollos.Component
           opacity: 1
         ,
           duration: 250
-
-      # just remove background
-      $(node).remove()
+          complete: (elements) ->
+            $(node).remove()
