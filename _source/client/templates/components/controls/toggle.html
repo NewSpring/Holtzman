@@ -1,7 +1,7 @@
 
 <template name="Apollos.Controls.Toggle">
 
-  <div class="toggle push-bottom">
+  <div class="toggle push-bottom soft-sides">
     <div data-toggle="item1" class="transition one-half text-center toggle__item {{#if active.get}}toggle__item--active{{/if}}">
       {{item1}}
     </div>
@@ -15,7 +15,7 @@
       that we can inflate when needed to push the arrow over
 
     --}}
-    <div class="grid flush text-left toggle-arrow">
+    <div class="grid text-left toggle-arrow soft-sides">
 
       <div class="transition grid__item hard one-half toggle-arrow__item" style="{{#unless active.get}}margin-left: 50%{{/unless}}">
       </div>
