@@ -8,8 +8,6 @@ class Apollos.modal extends Apollos.Component
 
   destroy: (event) ->
     event?.preventDefault()
-    self = @
-
     Blaze.remove @._internals.templateInstance.view
 
   renderContent: ->
