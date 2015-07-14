@@ -116,31 +116,16 @@ upsertResource = (data, handlerFunc, platform) ->
   return
 
 
+# Check if the source of the request came from a registered platform
 getPlatform = (host, collection) ->
   host = URL.parse(host)
+  href = host.href
 
-  if not Apollos.api.endpoints[collection]?.platforms or Apollos.api.allEndpoints.length is 0
-    return false
+  for name, details of Apollos.api.platforms
+    if details.href is href
+      return name
 
-  foundPlatform = false
-
-  allEndpoints = _.union(
-    Apollos.api.endpoints[collection].platforms,
-    Apollos.api.allEndpoints
-  )
-
-  for platform in allEndpoints
-    platformHost = URL.parse(platform.url)
-
-    if not host.href.match platformHost.href
-      continue
-
-    foundPlatform = platform.platform
-    break
-
-
-
-  return foundPlatform
+  return false
 
 ###
 
@@ -156,33 +141,42 @@ getPlatform = (host, collection) ->
     is associated with
 
 ###
+createEndpoint = (collection) ->
+  url = "#{Apollos.api.base}/#{collection}/:id"
 
-# TODO build registration service for platforms (how do we know who is calling?)
-createEndpoint = (url, collection, obj) ->
-  obj["#{Apollos.api.base}/#{url}:id"] =
+  method = {}
+  method[url] =
 
     post: (data) ->
-      platform = getPlatform @.requestHeaders.host, collection
+      Apollos.debug "Got POST for #{url} id=#{@.params.id}"
+      requestSource = @.request.headers["x-forwarded-for"]
+      platform = getPlatform requestSource, collection
 
       if not platform
+        handleAuthenticationError.call @
+        Apollos.debug "Dropping request from #{requestSource}"
         return
 
-      Apollos.debug "Got POST for #{url}#{@.params.id}"
       return upsertResource.call @, data, Apollos[collection].update, platform
 
     delete: (data) ->
-      platform = getPlatform @.requestHeaders.host, collection
+      Apollos.debug "Got DELETE for #{url} id=#{@.params.id}"
+      requestSource = @.request.headers["x-forwarded-for"]
+      platform = getPlatform requestSource, collection
 
       if not platform
+        handleAuthenticationError.call @
+        Apollos.debug "Dropping request from #{requestSource}"
         return
 
-      Apollos.debug "Got DELETE for #{url}#{@.params.id}"
       return deleteResource.call @, Apollos[collection].delete, platform
 
+  HTTP.methods method
+  return url
 
 
-
-Apollos.api.addEndpoint = (collection, endpoint) ->
+# Register a collection's endpoint
+Apollos.api.addEndpoint = (collection) ->
 
   obj = {}
 
@@ -190,15 +184,21 @@ Apollos.api.addEndpoint = (collection, endpoint) ->
     Apollos.debug "There is already an endpoint for #{collection}"
     return
 
-  Apollos.api.endpoints[collection] =
-    url: "#{Apollos.api.base}/#{endpoint}"
-
-  createEndpoint collection, endpoint, obj
-
-  HTTP.methods obj
+  url = createEndpoint collection, obj
+  Apollos.api.endpoints[collection] = url: url
 
   return
 
 
-for typeName, url of Apollos.api.endpoints
-  Apollos.api.addEndpoint url.url, typeName
+# Register a platform
+Apollos.api.addPlatform = (name, href, collections) ->
+
+  name = name.toUpperCase()
+
+  if Apollos.api.platforms[name]
+    Apollos.debug "There is already a platform for #{name}"
+    return
+
+  Apollos.api.platforms[name] =
+    href: href
+    collections: collections
