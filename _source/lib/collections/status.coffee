@@ -12,4 +12,4 @@ status = Apollos.generateSchema
     optional: true
 
 
-Apollos.people.attachSchema status
+Apollos.status.attachSchema status

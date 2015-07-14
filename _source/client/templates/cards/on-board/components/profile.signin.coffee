@@ -85,6 +85,8 @@ class profile.signIn extends Apollos.Component
 
     if not Apollos.validate.isEmail email
       self.hasErrors.set true
+    else
+      self.hasErrors.set false
 
     Apollos.user.hasAccount email, (error, hasAccount) ->
 
@@ -107,6 +109,7 @@ class profile.signIn extends Apollos.Component
     Apollos.loginWithPassword email, password, (err) ->
       if not err
         self.signinAnimation()
+        self.parent()?.dismiss()
         return
 
       # wrong password
@@ -157,6 +160,7 @@ class profile.signIn extends Apollos.Component
 
       if not error
         self.signinAnimation()
+        self.parent()?.dismiss()
         return
 
       # we need to test these Apollos.debug codes

@@ -9,22 +9,25 @@
 ###
 Apollos.name = "Apollos"
 
-if Meteor.isClient
-  ###
 
-    Apollos.user
+###
 
-    @example get the currently logged in user
+  Apollos.user
 
-      console.log Apollos.user()._id
+  @example get the currently logged in user
 
-  ###
-  Apollos.user = ->
+    console.log Apollos.user()._id
 
-    user = Meteor.user()
-    return user or {}
-else
-  Apollos.user = -> "DO NOT USE THIS VALUE"
+###
+Apollos.user = (id) ->
+
+  if Meteor.isServer and not id
+    return {}
+
+  user = Meteor.user()
+
+  return user or {}
+
 
 Apollos.user.login = {}
 
@@ -52,52 +55,65 @@ else
 
     return Apollos.people.find query
 
-if Meteor.isClient
-  ###
 
-    Apollos.person
+###
 
-    @example get the currently logged in user's person document
+  Apollos.person
 
-      console.log "Hello, #{Apollos.person().firstName}"
+  @example get the currently logged in user's person document
 
-  ###
-  Apollos.person = (user) ->
+    console.log "Hello, #{Apollos.person().firstName}"
 
+###
+Apollos.person = (user) ->
+
+  if Meteor.isServer
+    if not user?._id
+      throw new Meteor.Error ("user is requried for server lookup")
+      return
+
+  else if Meteor.isClient
     user or= Apollos.user()
 
-    if user.personGuid
-      person = Apollos.people.findOne
-        guid: user.personGuid
+  if user.personGuid
+    person = Apollos.people.findOne
+      guid: user.personGuid
 
-    if not person and user.rock and user.rock.personId
-      person = Apollos.people.findOne
-        personId: user.rock.personId
 
-    return person or {}
-else
-  Apollos.person = -> "DO NOT USE THIS VALUE"
+  # we shouldnt have any code for rock in the core package
+  # this will probably need to adjust the rock package
+
+  # if not person and user.rock and user.rock.personId
+  #   person = Apollos.people.findOne
+  #     personId: user.rock.personId
+
+  return person or {}
+
+
+
+
+
 
 if Meteor.server
   Accounts.onCreateUser (options, user) ->
+
     if options.profile
       user.profile = options.profile
 
-    if user.profile?.guest isnt true
+    if user.profile?.guest is true
+      return user
 
-      user.personGuid = Apollos.utilities.makeNewGuid()
+    person = Apollos.person user
 
-      person = Apollos.person user
+    # # no existing user so create one
+    if not Object.keys(person).length
+      if not user.personGuid
+        user.personGuid = Apollos.utilities.makeNewGuid()
 
-      if typeof(person) isnt 'object'
-        person = {}
-
-      # # no existing user so create one
-      if not Object.keys(person).length
-        Apollos.people.upsert({guid: user.personGuid}, {
-          $set:
-            preferredEmail: user.emails[0].address
-        })
+      Apollos.people.upsert({guid: user.personGuid}, {
+        $set:
+          preferredEmail: user.emails[0].address
+      })
 
     return user
 
