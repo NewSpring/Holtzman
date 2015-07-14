@@ -85,6 +85,8 @@ class profile.signIn extends Apollos.Component
 
     if not Apollos.validate.isEmail email
       self.hasErrors.set true
+    else
+      self.hasErrors.set false
 
     Apollos.user.hasAccount email, (error, hasAccount) ->
 
