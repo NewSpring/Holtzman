@@ -122,7 +122,13 @@ getPlatform = (host, collection) ->
   href = host.href
 
   for name, details of Apollos.api.platforms
-    if details.href is href
+    hrefMatches = details.href is href
+    collectionAuthorized = details.collections is "all"
+
+    if not collectionAuthorized
+      collectionAuthorized = details.collections.indexOf(collection) isnt -1
+
+    if hrefMatches and collectionAuthorized
       return name
 
   return false
