@@ -6,14 +6,8 @@
     item2="Register"
   }}
 
-  <form id="{{#if hasAccount.get}}signin{{else}}signup{{/if}}" autocomplete="off">
-    <fieldset>
-
-
-
-      {{#if Template.contentBlock}}
-        {{> Template.contentBlock}}
-      {{/if}}
+  <form id="{{#if hasAccount.get}}signin{{else}}signup{{/if}}" autocomplete="off" class="push-sides">
+    <fieldset class="flush soft-top">
 
       {{> Apollos.Forms.Input
         name="email"
@@ -54,7 +48,7 @@
     </fieldset>
     {{#unless hasErrors.get}}
 
-      <button class="btn" type="submit">Enter</button>
+      <button class="btn one-whole" type="submit">Enter</button>
 
     {{else}}
 
@@ -64,5 +58,12 @@
 
   </form>
 
+  {{!--
+
+  {{#if Template.contentBlock}}
+    {{> Template.contentBlock}}
+  {{/if}}
+
+  --}}
 
 </template>
