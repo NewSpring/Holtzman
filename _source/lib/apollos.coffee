@@ -21,10 +21,11 @@ Apollos.name = "Apollos"
 ###
 Apollos.user = (id) ->
 
-  if Meteor.isServer and not id
+  if Meteor.isServer
     return {}
 
-  user = Meteor.user()
+  if Meteor.isClient
+    user = Meteor.user()
 
   return user or {}
 
@@ -46,6 +47,7 @@ else
       query.guid = user.personGuid
       queryOk = true
 
+    # we need to move the rock stuff out of this package
     if user.rock and user.rock.personId
       query.personId = user.rock.personId
       queryOk = true
@@ -72,7 +74,7 @@ Apollos.person = (user) ->
       throw new Meteor.Error ("user is requried for server lookup")
       return
 
-  else if Meteor.isClient
+  if Meteor.isClient
     user or= Apollos.user()
 
   if user.personGuid

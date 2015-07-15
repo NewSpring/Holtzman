@@ -1,5 +1,4 @@
 .panel-modal {
-
   .side-panel {
     position: fixed;
     z-index: 2;
@@ -14,8 +13,9 @@
       width: 100%;
 
       .floating__item {
-        height: 100%;
         overflow-y: scroll;
+
+        height: 100%;
         padding-bottom: 56px;
       }
     }
