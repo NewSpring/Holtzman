@@ -327,7 +327,7 @@ Blaze._DOMRange::attach = (parentElement, nextNode, _isMove, _isReplace) ->
       parentElement._uihooks = createUIHooks component, parentElement
       return originalDOMRangeAttach.apply @, arguments
 
-    finally
+    catch
 
       parentElement._uihooks = oldUIHooks if oldUIHooks
 
