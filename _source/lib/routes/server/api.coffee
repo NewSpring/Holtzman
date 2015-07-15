@@ -1,6 +1,4 @@
-
-jsonContentType = "application/JSON"
-URL = Npm.require "url"
+_jsonContentType = "application/JSON"
 
 ###
 
@@ -75,7 +73,7 @@ authenticate = ->
 ###
 deleteResource = (handlerFunc, platform) ->
 
-  @.setContentType jsonContentType
+  @.setContentType _jsonContentType
 
   if not authenticate.call @
     return handleAuthenticationError.call @
@@ -99,14 +97,13 @@ deleteResource = (handlerFunc, platform) ->
 
 ###
 upsertResource = (data, handlerFunc, platform) ->
-
-  @.setContentType jsonContentType
+  @.setContentType _jsonContentType
 
   if not authenticate.call @
+    console.log "authentication error"
     return handleAuthenticationError.call @
 
   resource = parseRequestData data, @.requestHeaders["content-type"]
-
 
   if not resource
     resource = {}
@@ -117,18 +114,18 @@ upsertResource = (data, handlerFunc, platform) ->
 
 
 # Check if the source of the request came from a registered platform
-getPlatform = (host, collection) ->
-  host = URL.parse(host)
-  href = host.href
-
+getPlatform = (ip, collection) ->
   for name, details of Apollos.api.platforms
-    hrefMatches = details.href is href
+    ipAllowed = details.ipAddresses is "*"
     collectionAuthorized = details.collections is "all"
+
+    if not ipAllowed
+      ipAllowed = details.ipAddresses.indexOf(ip) isnt -1
 
     if not collectionAuthorized
       collectionAuthorized = details.collections.indexOf(collection) isnt -1
 
-    if hrefMatches and collectionAuthorized
+    if ipAllowed and collectionAuthorized
       return name
 
   return false
@@ -154,25 +151,25 @@ createEndpoint = (collection) ->
   method[url] =
 
     post: (data) ->
-      Apollos.debug "Got POST for #{url} id=#{@.params.id}"
-      requestSource = @.request.headers["x-forwarded-for"]
-      platform = getPlatform requestSource, collection
+      Apollos.debug "Got POST #{url} id=#{@.params.id}"
+      ip = @.request.headers["x-forwarded-for"]
+      platform = getPlatform ip, collection
 
       if not platform
+        Apollos.debug "Dropping request from #{ip}"
         handleAuthenticationError.call @
-        Apollos.debug "Dropping request from #{requestSource}"
         return
 
       return upsertResource.call @, data, Apollos[collection].update, platform
 
     delete: (data) ->
       Apollos.debug "Got DELETE for #{url} id=#{@.params.id}"
-      requestSource = @.request.headers["x-forwarded-for"]
-      platform = getPlatform requestSource, collection
+      ip = @.request.headers["x-forwarded-for"]
+      platform = getPlatform ip, collection
 
       if not platform
+        Apollos.debug "Dropping request from #{ip}"
         handleAuthenticationError.call @
-        Apollos.debug "Dropping request from #{requestSource}"
         return
 
       return deleteResource.call @, Apollos[collection].delete, platform
@@ -197,7 +194,10 @@ Apollos.api.addEndpoint = (collection) ->
 
 
 # Register a platform
-Apollos.api.addPlatform = (name, href, collections) ->
+Apollos.api.addPlatform = (name, ipAddresses, collections) ->
+
+  if not Array.isArray(ipAddresses) and ipAddresses isnt "*"
+    ipAddresses = [ipAddresses]
 
   name = name.toUpperCase()
 
@@ -206,5 +206,5 @@ Apollos.api.addPlatform = (name, href, collections) ->
     return
 
   Apollos.api.platforms[name] =
-    href: href
+    ipAddresses: ipAddresses
     collections: collections
