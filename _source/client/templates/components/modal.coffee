@@ -4,11 +4,16 @@ class Apollos.modal extends Apollos.Component
 
   events: -> [
     "click [data-dismiss]": @.destroy
+    "click": @.closeIfOverlay
   ]
 
   destroy: (event) ->
     event?.preventDefault()
     Blaze.remove @._internals.templateInstance.view
+
+  closeIfOverlay: (event) ->
+    if $(event.currentTarget).hasClass("overlay--solid-dark")
+      @.destroy(event)
 
   renderContent: ->
     if @.data()?.template
