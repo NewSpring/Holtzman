@@ -1,1 +1,1 @@
-_components = {}
+// _components = {}

@@ -1,0 +1,37 @@
+name: "apollos-components"
+tasks:
+
+  javascript:
+    src: "_source/**/*"
+    dest: "lib/"
+
+  markup:
+    src: "_source/**/*"
+    dest: "lib/"
+    minify: true
+
+  sass:
+    src: "_source/**/*"
+    dest: "lib/"
+    comb: true
+    lint: true
+
+  "meteor-load":
+    src: "lib/**/*"
+    dest: "./"
+    org: "newspring"
+    package:
+      versionsFrom: "1.1.0.2"
+      use:
+        "blaze": "client"
+        "spacebars": "client"
+        "templating": "client"
+        "underscore": "both"
+        "tracker": "client",
+        "ejson": "client",
+        "reactive-var": "client"
+        "newspring:apollos-namespace": "both"
+        "newspring:apollos-namespace": "both"
+        "newspring:apollos-router": "client"
+        # Need to implement
+        # "reactive-dict": "client"
