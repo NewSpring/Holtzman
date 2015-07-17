@@ -1,1 +1,0 @@
-Apollos.users = Meteor.users

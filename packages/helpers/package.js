@@ -1,22 +1,31 @@
+
+
 Package.describe({
-  name: 'newspring:apollos-helpers',
-  version: '0.0.1',
-  // Brief, one-line summary of the package.
-  summary: '',
-  // URL to the Git repository containing the source code for this package.
-  git: '',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
-  documentation: 'README.md'
+  'name': 'newspring:apollos-helpers',
+  'version': '0.1.0',
+  'summary': ''
+
 });
+
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.2');
-  api.addFiles('apollos-helpers.js');
-});
 
-Package.onTest(function(api) {
-  api.use('tinytest');
-  api.use('newspring:apollos-helpers');
-  api.addFiles('apollos-helpers-tests.js');
+
+  api.versionsFrom('1.1.0.2');
+  api.use('templating');
+  api.use('newspring:apollos-namespace');
+  api.use('newspring:apollos-components', 'client');
+  api.use('raix:handlebar-helpers@0.2.4', 'client');
+  api.use('arillo:flow-router-helpers@0.1.6', 'client');
+
+
+  api.imply('newspring:apollos-router', 'client');
+
+
+  api.addFiles('lib/lib/helper.js');
+
+
+  api.addFiles('lib/client/isMobile.js', 'client');
+  api.addFiles('lib/client/media-query.js', 'client');
+  api.addFiles('lib/client/pathForState.js', 'client');
 });

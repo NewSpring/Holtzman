@@ -1,4 +1,4 @@
-name: "apollos-components"
+name: "apollos-standard-templates"
 tasks:
 
   javascript:
@@ -26,13 +26,6 @@ tasks:
         "blaze": "client"
         "spacebars": "client"
         "templating": "client"
-        "underscore": "both"
-        "tracker": "client",
-        "ejson": "client",
-        "reactive-var": "client"
         "newspring:apollos-namespace": "both"
-        "newspring:apollos-namespace": "both"
-        "newspring:apollos-router": "client"
-        "velocityjs:velocityjs@=1.2.1": "client"
-        # Need to implement
-        # "reactive-dict": "client"
+        "newspring:apollos-components": "client"
+        "newspring:apollos-helpers": "client"

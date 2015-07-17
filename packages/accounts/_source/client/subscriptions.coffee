@@ -1,0 +1,2 @@
+
+Meteor.subscribe "person"

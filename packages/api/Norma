@@ -1,0 +1,28 @@
+name: "apollos-api"
+tasks:
+
+  javascript:
+    src: "_source/**/*"
+    dest: "lib/"
+
+  markup:
+    src: "_source/**/*"
+    dest: "lib/"
+    minify: true
+
+  sass:
+    src: "_source/**/*"
+    dest: "lib/"
+    comb: true
+    lint: true
+
+  "meteor-load":
+    src: "lib/**/*"
+    dest: "./"
+    org: "newspring"
+    package:
+      versionsFrom: "1.1.0.2"
+      use:
+        "newspring:apollos-namespace": "both"
+        "http@=1.1.0": "both"
+        "cfs:http-methods@=0.0.28": "both"

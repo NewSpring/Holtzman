@@ -1,4 +1,4 @@
-name: "apollos-components"
+name: "apollos-helpers"
 tasks:
 
   javascript:
@@ -22,17 +22,11 @@ tasks:
     org: "newspring"
     package:
       versionsFrom: "1.1.0.2"
-      use:
-        "blaze": "client"
-        "spacebars": "client"
-        "templating": "client"
-        "underscore": "both"
-        "tracker": "client",
-        "ejson": "client",
-        "reactive-var": "client"
-        "newspring:apollos-namespace": "both"
-        "newspring:apollos-namespace": "both"
+      imply:
         "newspring:apollos-router": "client"
-        "velocityjs:velocityjs@=1.2.1": "client"
-        # Need to implement
-        # "reactive-dict": "client"
+      use:
+        "templating": "client"
+        "newspring:apollos-namespace": "both"
+        "newspring:apollos-components": "client"
+        "raix:handlebar-helpers@0.2.4": "client"
+        "arillo:flow-router-helpers@0.1.6": "client"
