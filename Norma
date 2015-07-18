@@ -3,15 +3,16 @@ name: "apollos-core"
 tasks:
 
   link:
-    group: "package"
+    group: ["package", "sample-app"]
     "workbench/packages":
       build: true
       watch: true
-      root: "packages"
+      root: "./"
       "accounts": "accounts"
       "api": "api"
       "collection-helpers": "collection-helpers"
       "components": "components"
+      "core": "core"
       "helpers": "helpers"
       "layout": "layout"
       "models": "models"
@@ -19,108 +20,32 @@ tasks:
       "router": "router"
       "standard-templates": "standard-templates"
 
-  bower:
-    group: "package"
-    "/vendor":
-      framework: "NewSpring/junction-framework"
-
-  javascript:
-    group: "package"
-    src: "_source/**/*"
-    dest: "lib/"
-
-  markup:
-    group: "package"
-    src: "_source/**/*"
-    dest: "lib/"
-    minify: true
-
-  sass:
-    group: "package"
-    src: "_source/**/*"
-    dest: "lib/"
-    comb: true
-    lint: true
-
-
-
-  # create package.js
-  "meteor-load":
-    group: "package"
-    src: "lib/**/*"
-    dest: "./"
-    org: "newspring"
-    package:
-      versionsFrom: "1.0.3.1"
-      use:
-        "meteor-platform@=1.2.2": "both"
-        "newspring:apollos-namespace": "both"
-        "newspring:apollos-collection-helpers": "both"
-        "newspring:apollos-api": "both"
-        "newspring:apollos-models": "both"
-        "newspring:apollos-router": "both"
-        "newspring:apollos-components": "client"
-        "newspring:apollos-helpers": "both"
-        "newspring:apollos-layout": "client"
-        "newspring:apollos-accounts": "both"
-        "newspring:apollos-standard-templates": "client"
-
-      export:
-        "Apollos": "both"
-
-
-  # "compile-test":
-  #   "@extend": "javascript"
-  #   src: "tests/**/*"
-  #   dest: "workbench/tests"
-
 
   # sample-app
-#   settings:
-#     "dev": true
-#     group: "sample-app"
-#     "@extend": "bower"
-#     "/workbench":
-#       settings: "https://github.com/NewSpring/settings.git"
-#
-#   "app-javascript":
-#     "dev": true
-#     group: "sample-app"
-#     "@extend": "javascript"
-#     src: "sample-app/**/*"
-#     dest: "workbench/"
-#
-#
-#   "app-markup":
-#     "dev": true
-#     group: "sample-app"
-#     "@extend": "markup"
-#     "src": "sample-app/**/*"
-#     "dest": "./workbench/"
-#
-#
-#   "app-sass":
-#     group: "sample-app"
-#     "@extend": "sass"
-#     src: "sample-app/**/*"
-#     dest: "workbench/"
-#
-#
-  copy:
-    dev: true
+  bower:
+    "dev": true
     group: "sample-app"
-    src: "lib/**/*"
-    dest: "./workbench/packages/apollos-core/lib/"
+    "/workbench":
+      settings: "https://github.com/NewSpring/settings.git"
 
-  "copy-package":
-    dev: true
+  javascript:
+    "dev": true
     group: "sample-app"
-    "@extend": "copy"
-    src: "package"
-    dest: "./workbench/packages/apollos-core/"
-    order: "post"
-    ext: [ "js" ]
+    src: "sample-app/**/*"
+    dest: "workbench/"
 
+
+  markup:
+    "dev": true
+    group: "sample-app"
+    "src": "sample-app/**/*"
+    "dest": "./workbench/"
+
+
+  sass:
+    group: "sample-app"
+    src: "sample-app/**/*"
+    dest: "workbench/"
 
   meteor:
     group: "sample-app"
@@ -138,6 +63,6 @@ tasks:
       "browser"
 
     ]
-#
+
 # Testing
 test: "meteor --test --settings settings/development.json --release velocity:METEOR@1.1.0.2_2"

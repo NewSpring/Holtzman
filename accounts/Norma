@@ -1,0 +1,35 @@
+name: "apollos-accounts"
+tasks:
+
+  javascript:
+    src: "_source/**/*"
+    dest: "lib/"
+
+  markup:
+    src: "_source/**/*"
+    dest: "lib/"
+    minify: true
+
+  sass:
+    src: "_source/**/*"
+    dest: "lib/"
+    comb: true
+    lint: true
+
+  "meteor-load":
+    src: "lib/**/*"
+    dest: "./"
+    org: "newspring"
+    package:
+      versionsFrom: "1.1.0.2"
+      use:
+        "templating": "client"
+        "newspring:apollos-namespace": "both"
+        "newspring:apollos-collection-helpers": "both"
+        "newspring:apollos-router": "both"
+        "newspring:apollos-components": "both"
+        "newspring:apollos-layout": "both"
+        "newspring:apollos-helpers": "client"
+        "newspring:apollos-standard-templates": "client"
+        "newspring:apollos-api": "server"
+        "accounts-password@=1.1.1": "both"
