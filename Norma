@@ -51,7 +51,7 @@ tasks:
     group: "sample-app"
     "dev": true
     "src": "workbench"
-    # "settings": "workbench/settings/development.json"
+    "settings": "workbench/settings/development.json"
     # "port": 3000
     # "mongoUrl": "mongodb://localhost/newspring-core"
     "packages": [

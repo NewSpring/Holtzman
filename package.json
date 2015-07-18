@@ -1,6 +1,6 @@
 {
   "name": "apollos-core",
-  "version": "0.1.23",
+  "version": "0.1.0",
   "description": "The main Apollos namespace and utilities for all apollos packages.",
   "main": "index.js",
   "scripts": {
