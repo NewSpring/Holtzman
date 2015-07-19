@@ -415,7 +415,7 @@ is to use a library like [Velocity](http://julian.com/research/velocity/).
 use these hooks to animate DOM elements.*
 
 
-Namespaces ** Coming Soon **
+Namespaces
 ----------
 
 As your project grows and you are using more and more components, especially from 3rd party packages, flat
