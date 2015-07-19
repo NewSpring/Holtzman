@@ -33,3 +33,6 @@ Apollos.fs.upload = (fsName, event, callback) ->
     Apollos.fs[fsName].insert(newFile, callback)
 
   )
+
+
+Apollos.uploadQueue = FS.HTTP.uploadQueue

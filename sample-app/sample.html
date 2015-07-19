@@ -31,8 +31,11 @@
   <div id="dropzone" class="soft-double one-whole background--primary">
     <div>
       <h4 class="text-white">Drop file(s) here to upload</h4>
+      <h6 class="text-white">Uploading: {{ FS.UploadProgress }}%</h6>
     </div>
   </div>
+
+  {{> Apollos.Controls.UploadProgress}}
 
 </template>
 

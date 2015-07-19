@@ -1,0 +1,38 @@
+
+<template name="Apollos.Controls.UploadProgress">
+  {{!--
+
+    Template usage:
+
+      Default:
+      {{> Apollos.Controls.UploadProgress file=fileObj}}
+
+      Custom Classes
+      {{> Apollos.Controls.UploadProgress file=fileObj class="class-string"}}
+
+      Custom Template
+      {{#Apollos.Controls.UploadProgress file=fileObj}}
+
+        {{! {{progress}} is an available variable }}
+
+      {{/Apollos.Controls.UploadProgress}}
+
+
+      Or it can be used as a helper for a single file
+      {{ FS.UploadProgress file=file}}
+
+      Or global upload status
+      {{ FS.UploadProgress }}
+  --}}
+
+  {{#if Template.contentBlock}}
+    {{> Template.contentBlock progress=progress}}
+  {{else}}
+
+    <div class="upload-bar {{class}}">
+      <div class="upload-bar__item" style="width: {{progress}}%"></div>
+    </div>
+
+  {{/if}}
+
+</template>
