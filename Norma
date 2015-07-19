@@ -13,6 +13,7 @@ tasks:
       "collection-helpers": "collection-helpers"
       "components": "components"
       "core": "core"
+      "file-system": "file-system"
       "helpers": "helpers"
       "layout": "layout"
       "models": "models"
@@ -51,7 +52,7 @@ tasks:
     group: "sample-app"
     "dev": true
     "src": "workbench"
-    "settings": "workbench/settings/development.json"
+    "settings": "workbench/settings/local.json"
     # "port": 3000
     # "mongoUrl": "mongodb://localhost/newspring-core"
     "packages": [

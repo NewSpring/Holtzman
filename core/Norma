@@ -39,6 +39,7 @@ tasks:
         "newspring:apollos-helpers": "both"
         "newspring:apollos-layout": "client"
         "newspring:apollos-accounts": "both"
+        "newspring:apollos-file-system": "both"
         "newspring:apollos-standard-templates": "client"
       export:
         "Apollos": "both"

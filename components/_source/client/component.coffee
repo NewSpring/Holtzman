@@ -238,10 +238,10 @@ addEvents = (view, component) ->
       do (event, action) ->
 
         eventMap[event] = (args...) ->
-
+  
           _event = args[0]
 
-          currentView = Blaze.getView event.currentTarget
+          currentView = Blaze.getView _event.currentTarget
           templateInstance = viewToTemplateInstance currentView
 
           withTemplateInstanceFunc = Template._withTemplateInstanceFunc

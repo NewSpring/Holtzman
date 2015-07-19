@@ -1,0 +1,33 @@
+name: "apollos-file-system"
+tasks:
+
+  javascript:
+    src: "_source/**/*"
+    dest: "lib/"
+
+  markup:
+    src: "_source/**/*"
+    dest: "lib/"
+    minify: true
+
+  sass:
+    src: "_source/**/*"
+    dest: "lib/"
+    comb: true
+    lint: true
+
+  "meteor-load":
+    src: "lib/**/*"
+    dest: "./"
+    org: "newspring"
+    package:
+      versionsFrom: "1.1.0.2"
+      use:
+        "templating": "client"
+        "cfs:standard-packages": "both"
+        "cfs:filesystem@0.1.2": "both"
+        "cfs:s3@0.1.3": "both"
+        # "cfs:graphicsmagick@0.0.18": "server"
+        "newspring:apollos-namespace": "both"
+        "newspring:apollos-components": "both"
+        "newspring:apollos-collection-helpers": "both"
