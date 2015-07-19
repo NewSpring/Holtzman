@@ -23,5 +23,6 @@ tasks:
     package:
       versionsFrom: "1.1.0.2"
       use:
+        "templating": "client"
         "meteorhacks:flow-router@1.11.0": "both"
         "newspring:apollos-namespace": "both"

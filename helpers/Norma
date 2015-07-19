@@ -29,4 +29,3 @@ tasks:
         "newspring:apollos-namespace": "both"
         "newspring:apollos-components": "client"
         "raix:handlebar-helpers@0.2.4": "client"
-        "arillo:flow-router-helpers@0.1.6": "client"
