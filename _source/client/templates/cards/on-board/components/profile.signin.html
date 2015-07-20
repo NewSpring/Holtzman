@@ -43,22 +43,23 @@
 
       {{/unless}}
 
-      {{#if showForgotPassword.get }}
-      <h7 class="push-bottom">
-        <small>
-        <a href="{{pathForState 'profile.forgotPassword'}}">Forgot Password?</a>
-      </small>
-      </h7>
-      {{/if}}
-
     </fieldset>
+
+    {{#if showForgotPassword.get }}
+    <h7 class="push-bottom">
+      <small>
+      <a href="{{pathForState 'profile.forgotPassword'}}">Forgot Password?</a>
+    </small>
+    </h7>
+    {{/if}}
+    
     {{#unless hasErrors.get}}
 
-      <button class="btn one-whole" type="submit">Enter</button>
+      <button class="btn one-whole push-top" type="submit">Enter</button>
 
     {{else}}
 
-      <button class="icon--alert fa fa-minus" type="submit"></button>
+      <button class="btn--disabled one-whole" type="submit">Enter</button>
 
     {{/unless}}
 
