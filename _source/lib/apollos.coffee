@@ -182,6 +182,26 @@ Apollos.user.resetPassword = (token, newPassword, callback) ->
 
   return Accounts.resetPassword token, newPassword, callback
 
+
+###
+
+  Apollos.user.changePassword
+
+  @example changes password using old password
+
+    Apollos.user.changePassword oldPassword, newPassword, (error) ->
+      if error
+        console.log error
+
+  @param oldPassword is the user's current password
+  @param newPassword is what to change the password to
+  @param callback is the function that will be called with an error if so
+
+###
+Apollos.user.changePassword = (oldPassword, newPassword, callback) ->
+
+  return Accounts.changePassword oldPassword, newPassword, callback
+
 if Meteor.isServer
   # TODO this is not secure
   Apollos.emailTemplates = Accounts.emailTemplates
