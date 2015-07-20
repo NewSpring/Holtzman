@@ -35,4 +35,4 @@ Apollos.fs.upload = (fsName, event, callback) ->
   )
 
 
-Apollos.uploadQueue = FS.HTTP.uploadQueue
+Apollos.fs.uploadQueue = FS.HTTP.uploadQueue

@@ -32,7 +32,7 @@ class Apollos.Controls.UploadProgress extends Apollos.Component
         file.uploadProgress()
     else
       progressFunc = ->
-        Apollos.uploadQueue.progress()
+        Apollos.fs.uploadQueue.progress()
 
 
     return progressFunc()
