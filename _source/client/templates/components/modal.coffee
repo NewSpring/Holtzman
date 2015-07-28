@@ -87,5 +87,9 @@ class Apollos.modal extends Apollos.Component
           opacity: 1
         ,
           duration: 250
-          complete: (elements) ->
-            $(node).remove()
+
+      # fade out background
+      $(node).velocity "fadeOut",
+        duration: 250
+        complete: (elements) ->
+          $(node).remove()
