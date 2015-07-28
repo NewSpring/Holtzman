@@ -7,6 +7,10 @@ class Apollos.modal extends Apollos.Component
     "click": @.closeIfOverlay
   ]
 
+  alignTop: ->
+    self = @
+    self.data().verticalAlign is "top"
+
   destroy: (event) ->
     event?.preventDefault()
     Blaze.remove @._internals.templateInstance.view

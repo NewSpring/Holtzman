@@ -32,6 +32,7 @@ class Apollos.nav.fixed extends Apollos.Component
     data =
       contextMenuTemplate: "giveContextMenu"
       template: "Apollos.menu"
+      verticalAlign: "top"
 
     container = document.body.getElementsByClassName('global-nav-offset')[0]
     Blaze.renderWithData modal, data, container
