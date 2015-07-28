@@ -4,16 +4,21 @@
 
     <section class="
       side-panel
-
       hard
       flush
-
       floating
-
       background--light"
     >
 
-      <div class="floating__item one-whole hard">
+      <div class="
+        {{#if alignTop}}
+          inline-block
+          top
+        {{else}}
+          floating__item
+        {{/if}}
+        one-whole
+        hard">
         {{> renderContent}}
       </div>
 
