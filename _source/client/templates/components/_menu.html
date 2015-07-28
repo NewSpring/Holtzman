@@ -1,0 +1,22 @@
+<template name="Apollos.menu">
+
+  <div id="the-menu" class="floating__item soft-double text-left">
+    {{> Template.dynamic template=contextMenuTemplate}}
+
+    {{#if signedIn}}
+      {{> Apollos.menu.item text="My Profile" href="/profile/edit" iconTemplate="accountCircle"}}
+    {{else}}
+      {{> Apollos.menu.item text="Sign In" href="/profile/edit" iconTemplate="accountCircle"}}
+    {{/if}}
+
+    <div class="float-on-bottom">
+      <a href="https://newspring.cc/" class="text-half-dark no-underline">
+        <h5>
+          &lt;
+          Back to NewSpring home
+        </h5>
+      </a>
+    </div>
+  </div>
+
+</template>
