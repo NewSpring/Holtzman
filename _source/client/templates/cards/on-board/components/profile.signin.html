@@ -52,14 +52,16 @@
     </small>
     </h7>
     {{/if}}
-    
+
+    <a href="#" data-dismiss class="btn--small btn--dark-tertiary display-inline-block">Back</a>
+
     {{#unless hasErrors.get}}
 
-      <button class="btn one-whole push-top" type="submit">Enter</button>
+      <button class="btn push-left" type="submit">Enter</button>
 
     {{else}}
 
-      <button class="btn--disabled one-whole" type="submit">Enter</button>
+      <button class="btn--disabled push-left" type="submit">Enter</button>
 
     {{/unless}}
 
