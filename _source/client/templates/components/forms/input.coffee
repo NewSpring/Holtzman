@@ -52,7 +52,7 @@ class Apollos.Forms.Input extends Apollos.Component
 
     # switch to junction when ready
     $(event.target.parentNode)
-      .addClass "input--active"
+      .addClass "input--focused input--active"
 
     parent = self.parent()
 
@@ -88,6 +88,10 @@ class Apollos.Forms.Input extends Apollos.Component
     isForm = parent?.find("form")
     data = self.data()
 
+    # switch to junction when ready
+    $(event.target.parentNode)
+      .removeClass "input--focused"
+
     if event.target.value
 
       valid = self.validate event.target.value
@@ -112,7 +116,6 @@ class Apollos.Forms.Input extends Apollos.Component
         parent.hasErrors.set false
       else
         parent.children()[0]?.hasErrors?.set false
-
 
     # if the input is empty, remove the input--active class
     if not event.target.value

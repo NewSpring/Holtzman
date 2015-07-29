@@ -3,9 +3,9 @@ class Apollos.Forms.Select extends Apollos.Component
 
   vars: -> [
 
-    error: ""
-    status: ""
-    value: ""
+    error: null
+    status: null
+    value: null
 
   ]
 

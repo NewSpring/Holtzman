@@ -1,17 +1,19 @@
 <template name="profile.signIn">
 
-  <form id="{{#if hasAccount.get}}signin{{else}}signup{{/if}}" autocomplete="off">
-    <fieldset>
+  <div class="push-double">
+    <h4>
+      Sign in or create your NewSpring profile
+    </h4>
+  </div>
 
-      {{> Apollos.Controls.Toggle
-        active=hasAccount
-        item1="Sign In"
-        item2="Register"
-      }}
+  {{> Apollos.Controls.Toggle
+    active=hasAccount
+    item1="Sign In"
+    item2="Register"
+  }}
 
-      {{#if Template.contentBlock}}
-        {{> Template.contentBlock}}
-      {{/if}}
+  <form id="{{#if hasAccount.get}}signin{{else}}signup{{/if}}" autocomplete="off" class="push-sides">
+    <fieldset class="flush soft-top">
 
       {{> Apollos.Forms.Input
         name="email"
@@ -41,26 +43,36 @@
 
       {{/unless}}
 
-      {{#if showForgotPassword.get }}
-      <h7 class="push-bottom">
-        <small>
-        <a href="{{pathForState 'profile.forgotPassword'}}">Forgot Password?</a>
-      </small>
-      </h7>
-      {{/if}}
-
     </fieldset>
+
+    {{#if showForgotPassword.get }}
+    <h7 class="push-bottom">
+      <small>
+      <a href="{{pathForState 'profile.forgotPassword'}}">Forgot Password?</a>
+    </small>
+    </h7>
+    {{/if}}
+
+    <a href="#" data-dismiss class="btn--small btn--dark-tertiary display-inline-block">Back</a>
+
     {{#unless hasErrors.get}}
 
-      <button class="btn" type="submit">Enter</button>
+      <button class="btn push-left" type="submit">Enter</button>
 
     {{else}}
 
-      <button class="icon--alert fa fa-minus" type="submit"></button>
+      <button class="btn--disabled push-left" type="submit">Enter</button>
 
     {{/unless}}
 
   </form>
 
+  {{!--
+
+  {{#if Template.contentBlock}}
+    {{> Template.contentBlock}}
+  {{/if}}
+
+  --}}
 
 </template>

@@ -5,6 +5,10 @@ class Apollos.Forms.Form extends Apollos.Component
     hasErrors: false
   ]
 
+  events: -> [
+    "submit form": @.preventSubmit
+  ]
+
   onRendered: ->
 
     grandparent = @.parent()?.parent?()
@@ -23,3 +27,6 @@ class Apollos.Forms.Form extends Apollos.Component
       string = string.replace /[^a-zA-Z0-9-]/g, '-'
       string = string.toLowerCase()
       return string
+
+  preventSubmit: (event) ->
+    event.preventDefault()

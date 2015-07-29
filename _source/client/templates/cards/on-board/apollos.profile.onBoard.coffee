@@ -14,3 +14,8 @@ class Apollos.profile.onBoard extends Apollos.Component
 
     if Session.get "resetPasswordToken"
       @.state.set "profile.resetPassword"
+
+  dismiss: ->
+    self = @
+
+    self.parent().destroy()

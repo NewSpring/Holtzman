@@ -1,16 +1,6 @@
 <template name="Apollos.Forms.Select">
 
-  <div class="input fa fa-caret-down one-whole {{#if error.get}}input--alert{{/if}} {{#if preFill}}input--active{{/if}} {{component.data.class}}">
-
-    {{#unless component.data.hideLabel}}
-    <label for="{{name}}">
-      {{#if label}}
-        {{label}}
-      {{else}}
-        {{name}}
-      {{/if}}
-    </label>
-    {{/unless}}
+  <div class="input fa fa-caret-down one-whole {{#if error.get}}input--alert{{/if}} {{#if value.get}}input--active{{/if}} {{component.data.class}}">
 
     <select name="{{name}}" class="{{component.data.selectClass}}">
       {{#if includeBlank}}
@@ -28,6 +18,16 @@
         {{/if}}
       {{/each}}
     </select>
+
+    {{#unless component.data.hideLabel}}
+    <label for="{{name}}">
+      {{#if label}}
+        {{label}}
+      {{else}}
+        {{name}}
+      {{/if}}
+    </label>
+    {{/unless}}
 
     {{#if status.get}}
 

@@ -2,9 +2,27 @@
 
   <div class="panel overlay--solid-dark panel-modal">
 
-    <div class="side-panel soft-sides">
+    <section class="
+      side-panel
+      hard
+      flush
+      floating
+      background--light"
+    >
+
+      <div class="
+        {{#if alignTop}}
+          inline-block
+          top
+        {{else}}
+          floating__item
+        {{/if}}
+        one-whole
+        hard">
         {{> renderContent}}
-    </div>
+      </div>
+
+    </section>
 
   </div>
 
