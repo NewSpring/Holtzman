@@ -16,7 +16,7 @@ Apollos.documentHelpers =
 
   ###
 
-    Apollos.documentHelpers.updaten
+    Apollos.documentHelpers.update
 
     @example update a doc in apollos with data from a platform
 
