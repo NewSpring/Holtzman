@@ -15,12 +15,7 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     "touchstart [data-key]": @.clickedDataKey
     "click [data-key]": @.clickedDataKey
 
-    "click [data-close], touchstart [data-close]": (event) ->
-
-      @.parent.keyboardInstance = null
-
-      Blaze.remove @._internals.templateInstance.view
-      return
+    "click [data-close], touchstart [data-close]": @.dismiss
 
   ]
 
@@ -68,6 +63,12 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
   onDestroyed: ->
     $(document).off("keyup")
 
+
+  dismiss: (event) ->
+    @.parent?.keyboardInstance = null
+
+    Blaze.remove @._internals.templateInstance.view
+    return
 
   insertDOMElement: (parent, node, before) ->
     $(node)

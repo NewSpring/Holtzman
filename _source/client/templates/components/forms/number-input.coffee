@@ -86,7 +86,8 @@ class Apollos.Forms.NumberInput extends Apollos.Forms.Input
     view = self.keyboardInstance
     self.find("input").readonly = false
     if view
-      Blaze.remove view
+      keyboardComponent = Apollos.Component.getComponentForElement($('section.keyboard')[0])
+      keyboardComponent.dismiss()
 
 
   onDestroyed: ->
