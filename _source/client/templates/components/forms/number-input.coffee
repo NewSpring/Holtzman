@@ -66,6 +66,13 @@ class Apollos.Forms.NumberInput extends Apollos.Forms.Input
     self = @
 
     if Apollos.isMobile() and not self.keyboardInstance
+
+      existingKeyboard = $('section.keyboard')[0]
+
+      if existingKeyboard
+        keyboardComponent = Apollos.Component.getComponentForElement(existingKeyboard)
+        keyboardComponent.dismiss()
+
       self.find("input").readonly = true
 
       template = Apollos.Component.getComponent("Apollos.Controls.NumberKeyboard")

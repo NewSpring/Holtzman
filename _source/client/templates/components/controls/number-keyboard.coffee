@@ -65,7 +65,7 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
 
     Blaze.remove @._internals.templateInstance.view
 
-    @.stop(event)
+    @.stop(event) if event
 
     return
 
@@ -101,7 +101,7 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
 
     # @.parent().updateFund @.typedText.get()
 
-    @.stop(event)
+    @.stop(event) if event
 
 
 
