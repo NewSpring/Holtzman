@@ -1,11 +1,11 @@
 # Register core collections
-Apollos.api.addEndpoint "users"
-Apollos.api.addEndpoint "people"
-Apollos.api.addEndpoint "campuses"
-Apollos.api.addEndpoint "groups"
-Apollos.api.addEndpoint "groupLocations"
-Apollos.api.addEndpoint "groupMembers"
-Apollos.api.addEndpoint "locations"
+Apollos.api.addEndpoint "users", "user"
+Apollos.api.addEndpoint "people", "person"
+Apollos.api.addEndpoint "campuses", "campus"
+Apollos.api.addEndpoint "groups", "group"
+Apollos.api.addEndpoint "groupLocations", "groupLocation"
+Apollos.api.addEndpoint "groupMembers", "groupMember"
+Apollos.api.addEndpoint "locations", "location"
 
 # Register platforms
 Apollos.api.addPlatform "localhost", "127.0.0.1", "all"

@@ -144,7 +144,7 @@ getPlatform = (ip, collection) ->
     is associated with
 
 ###
-createEndpoint = (collection) ->
+createEndpoint = (collection, singular) ->
   url = "#{Apollos.api.base}/#{collection}/:id"
 
   method = {}
@@ -160,7 +160,7 @@ createEndpoint = (collection) ->
         handleAuthenticationError.call @
         return
 
-      return upsertResource.call @, data, Apollos[collection].update, platform
+      return upsertResource.call @, data, Apollos[singular].update, platform
 
     delete: (data) ->
       Apollos.debug "Got DELETE for #{url} id=#{@.params.id}"
@@ -172,14 +172,14 @@ createEndpoint = (collection) ->
         handleAuthenticationError.call @
         return
 
-      return deleteResource.call @, Apollos[collection].delete, platform
+      return deleteResource.call @, Apollos[singular].delete, platform
 
   HTTP.methods method
   return url
 
 
 # Register a collection's endpoint
-Apollos.api.addEndpoint = (collection) ->
+Apollos.api.addEndpoint = (collection, singular) ->
 
   obj = {}
 
@@ -187,7 +187,7 @@ Apollos.api.addEndpoint = (collection) ->
     Apollos.debug "There is already an endpoint for #{collection}"
     return
 
-  url = createEndpoint collection, obj
+  url = createEndpoint collection, singular
   Apollos.api.endpoints[collection] = url: url
 
   return

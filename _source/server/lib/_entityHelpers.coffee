@@ -16,7 +16,7 @@ Apollos.documentHelpers =
 
   ###
 
-    Apollos.documentHelpers.update
+    Apollos.documentHelpers.updaten
 
     @example update a doc in apollos with data from a platform
 
@@ -31,6 +31,10 @@ Apollos.documentHelpers =
   update: (singular, plural, doc, platform) ->
 
     doc = Apollos[singular].translate doc, platform
+
+    if not doc
+      return
+
     singularIdKeyValue = {}
     singularIdKeyValue["#{singular}Id"] = doc["#{singular}Id"]
 
