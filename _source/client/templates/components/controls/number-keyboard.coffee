@@ -10,10 +10,7 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
 
   events: -> [
 
-    "click": @.stop
-
-    "touchstart [data-key]": @.clickedDataKey
-    "click [data-key]": @.clickedDataKey
+    "click [data-key], touchstart [data-key]": @.clickedDataKey
 
     "click [data-close], touchstart [data-close]": @.dismiss
 
@@ -23,7 +20,6 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
 
     event.stopPropagation()
     event.preventDefault()
-
 
 
   onCreated: ->
@@ -68,6 +64,9 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     @.parent?.keyboardInstance = null
 
     Blaze.remove @._internals.templateInstance.view
+
+    @.stop(event)
+
     return
 
   insertDOMElement: (parent, node, before) ->
@@ -101,6 +100,8 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     @.processTypedText keyPressed
 
     # @.parent().updateFund @.typedText.get()
+
+    @.stop(event)
 
 
 
