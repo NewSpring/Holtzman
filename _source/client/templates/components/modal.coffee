@@ -44,6 +44,8 @@ class Apollos.modal extends Apollos.Component
           opacity: 1
         ,
           duration: 250
+          complete: (elements) ->
+            $('html').addClass 'modal--opened'
       super
 
     else
@@ -57,6 +59,8 @@ class Apollos.modal extends Apollos.Component
           opacity: 1
         ,
           duration: 250
+          complete: (elements) ->
+            $('html').addClass 'modal--opened'
 
 
   removeDOMElement: (parent, node) ->
@@ -78,6 +82,7 @@ class Apollos.modal extends Apollos.Component
         duration: 250
         complete: (elements) ->
           $(node).remove()
+          $('html').removeClass 'modal--opened'
 
     else
       # slide out panel to the bottom
@@ -93,3 +98,4 @@ class Apollos.modal extends Apollos.Component
         duration: 250
         complete: (elements) ->
           $(node).remove()
+          $('html').removeClass 'modal--opened'
