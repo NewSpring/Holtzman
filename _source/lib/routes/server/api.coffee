@@ -1,6 +1,4 @@
-
-jsonContentType = "application/JSON"
-URL = Npm.require "url"
+_jsonContentType = "application/JSON"
 
 ###
 
@@ -75,7 +73,7 @@ authenticate = ->
 ###
 deleteResource = (handlerFunc, platform) ->
 
-  @.setContentType jsonContentType
+  @.setContentType _jsonContentType
 
   if not authenticate.call @
     return handleAuthenticationError.call @
@@ -99,14 +97,13 @@ deleteResource = (handlerFunc, platform) ->
 
 ###
 upsertResource = (data, handlerFunc, platform) ->
-
-  @.setContentType jsonContentType
+  @.setContentType _jsonContentType
 
   if not authenticate.call @
+    console.log "authentication error"
     return handleAuthenticationError.call @
 
   resource = parseRequestData data, @.requestHeaders["content-type"]
-
 
   if not resource
     resource = {}
@@ -116,31 +113,22 @@ upsertResource = (data, handlerFunc, platform) ->
   return
 
 
-getPlatform = (host, collection) ->
-  host = URL.parse(host)
+# Check if the source of the request came from a registered platform
+getPlatform = (ip, collection) ->
+  for name, details of Apollos.api.platforms
+    ipAllowed = details.ipAddresses is "*"
+    collectionAuthorized = details.collections is "all"
 
-  if not Apollos.api.endpoints[collection]?.platforms or Apollos.api.allEndpoints.length is 0
-    return false
+    if not ipAllowed
+      ipAllowed = details.ipAddresses.indexOf(ip) isnt -1
 
-  foundPlatform = false
+    if not collectionAuthorized
+      collectionAuthorized = details.collections.indexOf(collection) isnt -1
 
-  allEndpoints = _.union(
-    Apollos.api.endpoints[collection].platforms,
-    Apollos.api.allEndpoints
-  )
+    if ipAllowed and collectionAuthorized
+      return name
 
-  for platform in allEndpoints
-    platformHost = URL.parse(platform.url)
-
-    if not host.href.match platformHost.href
-      continue
-
-    foundPlatform = platform.platform
-    break
-
-
-
-  return foundPlatform
+  return false
 
 ###
 
@@ -156,33 +144,42 @@ getPlatform = (host, collection) ->
     is associated with
 
 ###
+createEndpoint = (collection, singular) ->
+  url = "#{Apollos.api.base}/#{collection}/:id"
 
-# TODO build registration service for platforms (how do we know who is calling?)
-createEndpoint = (url, collection, obj) ->
-  obj["#{Apollos.api.base}/#{url}:id"] =
+  method = {}
+  method[url] =
 
     post: (data) ->
-      platform = getPlatform @.requestHeaders.host, collection
+      Apollos.debug "Got POST #{url} id=#{@.params.id}"
+      ip = @.request.headers["x-forwarded-for"]
+      platform = getPlatform ip, collection
 
       if not platform
+        Apollos.debug "Dropping request from #{ip}"
+        handleAuthenticationError.call @
         return
 
-      Apollos.debug "Got POST for #{url}#{@.params.id}"
-      return upsertResource.call @, data, Apollos[collection].update, platform
+      return upsertResource.call @, data, Apollos[singular].update, platform
 
     delete: (data) ->
-      platform = getPlatform @.requestHeaders.host, collection
+      Apollos.debug "Got DELETE for #{url} id=#{@.params.id}"
+      ip = @.request.headers["x-forwarded-for"]
+      platform = getPlatform ip, collection
 
       if not platform
+        Apollos.debug "Dropping request from #{ip}"
+        handleAuthenticationError.call @
         return
 
-      Apollos.debug "Got DELETE for #{url}#{@.params.id}"
-      return deleteResource.call @, Apollos[collection].delete, platform
+      return deleteResource.call @, Apollos[singular].delete, platform
+
+  HTTP.methods method
+  return url
 
 
-
-
-Apollos.api.addEndpoint = (collection, endpoint) ->
+# Register a collection's endpoint
+Apollos.api.addEndpoint = (collection, singular) ->
 
   obj = {}
 
@@ -190,15 +187,24 @@ Apollos.api.addEndpoint = (collection, endpoint) ->
     Apollos.debug "There is already an endpoint for #{collection}"
     return
 
-  Apollos.api.endpoints[collection] =
-    url: "#{Apollos.api.base}/#{endpoint}"
-
-  createEndpoint collection, endpoint, obj
-
-  HTTP.methods obj
+  url = createEndpoint collection, singular
+  Apollos.api.endpoints[collection] = url: url
 
   return
 
 
-for typeName, url of Apollos.api.endpoints
-  Apollos.api.addEndpoint url.url, typeName
+# Register a platform
+Apollos.api.addPlatform = (name, ipAddresses, collections) ->
+
+  if not Array.isArray(ipAddresses) and ipAddresses isnt "*"
+    ipAddresses = [ipAddresses]
+
+  name = name.toUpperCase()
+
+  if Apollos.api.platforms[name]
+    Apollos.debug "There is already a platform for #{name}"
+    return
+
+  Apollos.api.platforms[name] =
+    ipAddresses: ipAddresses
+    collections: collections
