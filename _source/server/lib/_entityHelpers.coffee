@@ -6,6 +6,8 @@ Apollos.documentHelpers =
     if not platform
       Apollos.debug "must specify platform to translate to"
 
+    platform = platform.toUpperCase()
+
     if not Apollos[singular]._dictionary[platform]
       Apollos.debug "no translation found for #{platform} in #{singular}"
       return
