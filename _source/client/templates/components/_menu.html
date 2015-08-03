@@ -6,7 +6,10 @@
     {{#if signedIn}}
       {{> Apollos.menu.item text="My Profile" href="/profile/edit" iconTemplate="accountCircle"}}
     {{else}}
-      {{> Apollos.menu.item text="Sign In" href="/profile/edit" iconTemplate="accountCircle"}}
+      {{> Apollos.menu.item
+        text="Sign In"
+        iconTemplate="accountCircle"
+        modal="Apollos.profile.onBoard"}}
     {{/if}}
 
     <div class="float-on-bottom">
