@@ -4,6 +4,7 @@ class Apollos.menu extends Apollos.Component
 
   events: -> [
     "click .menu-item": @.close
+    "click [data-modal]": @.renderModal
   ]
 
   onCreated: ->
@@ -22,3 +23,19 @@ class Apollos.menu extends Apollos.Component
   close: ->
     self = @
     self.parent().destroy()
+
+  renderModal: (event) ->
+    self = @
+    event.preventDefault()
+
+    template = $(event.target).closest("[data-modal]").data "modal"
+    modal = Apollos.Component.getComponent("Apollos.modal")
+    modal = modal.renderComponent()
+
+    @.close()
+
+    modal = Blaze.renderWithData(
+      modal
+      { template: template }
+      document.body.getElementsByClassName('global-nav-offset')[0]
+    )
