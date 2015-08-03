@@ -11,7 +11,9 @@
       </h4>
     </div>
 
-    {{> Template.dynamic template=main data=currentData}}
+    <div class="{{#if MediaQuery 'handheld'}}soft-triple-bottom{{/if}}">
+      {{> Template.dynamic template=main data=currentData}}
+    </div>
   </div>
 
 
