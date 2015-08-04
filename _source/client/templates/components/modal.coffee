@@ -2,6 +2,11 @@ class Apollos.modal extends Apollos.Component
 
   @register "Apollos.modal"
 
+  vars: -> [
+    desktopDuration: 250
+    mobileDuration: 400
+  ]
+
   events: -> [
     "click [data-dismiss]": @.destroy
     "click": @.closeIfOverlay
@@ -27,15 +32,16 @@ class Apollos.modal extends Apollos.Component
       null
 
   insertDOMElement: (parent, node, before) ->
+    self = @
 
     width = $(window).width()
     height = $(window).height()
 
-    if width >= 767
+    if width > 767
       # fade in background
       $(node).appendTo(parent)
         .velocity "fadeIn",
-          duration: 250
+          duration: self.desktopDuration.get()
 
       # slide in panel from left
       $(node).children('.side-panel')
@@ -43,27 +49,30 @@ class Apollos.modal extends Apollos.Component
           translateX: [0, -500]
           opacity: 1
         ,
-          duration: 250
+          duration: self.desktopDuration.get()
           complete: (elements) ->
             $('html').addClass 'modal--opened'
       super
 
     else
       # just add background
-      $(node).appendTo(parent)
+      # $(node).appendTo(parent).css(bottom: 0)
 
       # slide in panel from bottom
-      $(node).children('.side-panel')
+      $(node).appendTo(parent).children('.side-panel')
+        .css
+          transform: "translateY(#{height}px)"
         .velocity
           translateY: [0, height]
           opacity: 1
         ,
-          duration: 250
+          duration: self.mobileDuration.get()
           complete: (elements) ->
             $('html').addClass 'modal--opened'
 
 
   removeDOMElement: (parent, node) ->
+    self = @
 
     width = $(window).width()
     height = $(window).height()
@@ -75,11 +84,11 @@ class Apollos.modal extends Apollos.Component
           translateX: -500
           opacity: 1
         ,
-          duration: 250
+          duration: self.desktopDuration.get()
 
       # fade out background
       $(node).velocity "fadeOut",
-        duration: 250
+        duration: self.desktopDuration.get()
         complete: (elements) ->
           $(node).remove()
           $('html').removeClass 'modal--opened'
@@ -91,11 +100,7 @@ class Apollos.modal extends Apollos.Component
           translateY: height
           opacity: 1
         ,
-          duration: 250
-
-      # fade out background
-      $(node).velocity "fadeOut",
-        duration: 250
-        complete: (elements) ->
-          $(node).remove()
-          $('html').removeClass 'modal--opened'
+          duration: self.mobileDuration.get()
+          complete: (elements) ->
+            $(node).remove()
+            $('html').removeClass 'modal--opened'
