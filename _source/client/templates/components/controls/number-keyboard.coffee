@@ -70,10 +70,12 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     return
 
   insertDOMElement: (parent, node, before) ->
+    height = $(window).height()
     $(node)
       .appendTo(parent)
-      # .velocity("transition.slideUpIn", { duration: 500 })
-      .velocity({translateY: [0, 200], translateZ: 0}, {duration: 250})
+      .css
+        transform: "translateY(#{height}px)"
+      .velocity({translateY: [0, 200], translateZ: 0}, {duration: 300})
     super
 
   removeDOMElement: (parent, node) ->
@@ -82,7 +84,7 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     $(node).velocity({
       translateY: 250, translateZ: 0
     }, {
-      duration: 250
+      duration: 300
       complete: (elements) ->
         $(node).remove()
     })
