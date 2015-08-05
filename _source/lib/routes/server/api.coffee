@@ -73,9 +73,12 @@ deleteResource = (handlerFunc, platform) ->
 upsertResource = (data, handlerFunc, platform) ->
 
   @.setContentType _jsonContentType
+  console.log "upserting resource:"
   resource = parseRequestData data, @.requestHeaders["content-type"]
+  console.log resource
   resource or= {}
   resource.Id = Number @.params.id
+  console.log "calling handler func"
   handlerFunc resource, platform
   return
 
@@ -102,6 +105,9 @@ createEndpoint = (collection, singular) ->
     post: (data) ->
       Apollos.debug "Got POST #{url} id=#{@.params.id}"
       platform = authenticatePlatform.call @, collection
+
+      if platform
+        Apollos.debug "POST authenticated from #{platform.name}"
 
       if not platform
         Apollos.debug "Dropping request because of unknown platform"
