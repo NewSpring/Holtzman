@@ -68,9 +68,11 @@ Meteor.startup ->
 
       if window.getComputedStyle
 
-        currentSize = window.getComputedStyle(
-          trackingElement, ":before" # no pseudo support in IE 9, 10 :(
-        ).getPropertyValue("content")
+        loop
+          currentSize = window.getComputedStyle(
+            trackingElement, ":before" # no pseudo support in IE 9, 10 :(
+          ).getPropertyValue("content")
+          break if currentSize
 
         currentHeight = window.getComputedStyle(
           heightTrackingElement, ":before" # no pseudo support in IE 9, 10 :(
