@@ -1,42 +1,5 @@
 _jsonContentType = "application/JSON"
-
-###
-
-  handleBadRequestError
-
-  @example set the status code of an API request indicated it was a bad request
-
-    HTTP.methods
-      "api/v1/stuff":
-        get: ->
-          return handleBadRequestError.call this
-
-  @param context should be the HTTP.methods handler function
-
-###
-handleBadRequestError = ->
-
-  @.setStatusCode(400)
-  return
-
-###
-
-  handleAuthenticationError
-
-  @example set the status code of an API request indicated it was unauthorized
-
-    HTTP.methods
-      "api/v1/stuff":
-        get: ->
-          return handleAuthenticationError.call this
-
-  @param context should be the HTTP.methods handler function
-
-###
-handleAuthenticationError = ->
-
-  @.setStatusCode(401)
-  return
+_authenticationError = 401
 
 ###
 
@@ -53,10 +16,25 @@ handleAuthenticationError = ->
   @param context should be the HTTP.methods handler function
 
 ###
-authenticate = ->
+authenticatePlatform = (collection) ->
 
   sentToken = @.requestHeaders[Apollos.api.tokenName]
-  return sentToken is Apollos.api.token
+
+  for name, details of Apollos.api.platforms
+    token = details.token
+    collections = details.collections
+
+    tokenMatch = token is sentToken
+    collectionMatch = collections is "all"
+
+    if not collectionMatch
+      collectionMatch = collections.indexOf(collection) isnt -1
+
+    if tokenMatch and collectionMatch
+      return details
+
+  @.setStatusCode _authenticationError
+  return false
 
 ###
 
@@ -74,10 +52,6 @@ authenticate = ->
 deleteResource = (handlerFunc, platform) ->
 
   @.setContentType _jsonContentType
-
-  if not authenticate.call @
-    return handleAuthenticationError.call @
-
   id = Number @.params.id
   handlerFunc id, platform
   return
@@ -97,38 +71,13 @@ deleteResource = (handlerFunc, platform) ->
 
 ###
 upsertResource = (data, handlerFunc, platform) ->
+
   @.setContentType _jsonContentType
-
-  if not authenticate.call @
-    console.log "authentication error"
-    return handleAuthenticationError.call @
-
   resource = parseRequestData data, @.requestHeaders["content-type"]
-
-  if not resource
-    resource = {}
-
+  resource or= {}
   resource.Id = Number @.params.id
   handlerFunc resource, platform
   return
-
-
-# Check if the source of the request came from a registered platform
-getPlatform = (ip, collection) ->
-  for name, details of Apollos.api.platforms
-    ipAllowed = details.ipAddresses is "*"
-    collectionAuthorized = details.collections is "all"
-
-    if not ipAllowed
-      ipAllowed = details.ipAddresses.indexOf(ip) isnt -1
-
-    if not collectionAuthorized
-      collectionAuthorized = details.collections.indexOf(collection) isnt -1
-
-    if ipAllowed and collectionAuthorized
-      return name
-
-  return false
 
 ###
 
@@ -152,27 +101,23 @@ createEndpoint = (collection, singular) ->
 
     post: (data) ->
       Apollos.debug "Got POST #{url} id=#{@.params.id}"
-      ip = @.request.headers["x-forwarded-for"]
-      platform = getPlatform ip, collection
+      platform = authenticatePlatform.call @, collection
 
       if not platform
-        Apollos.debug "Dropping request from #{ip}"
-        handleAuthenticationError.call @
+        Apollos.debug "Dropping request because of unknown platform"
         return
 
-      return upsertResource.call @, data, Apollos[singular].update, platform
+      return upsertResource.call @, data, Apollos[singular].update, platform.name
 
     delete: (data) ->
       Apollos.debug "Got DELETE for #{url} id=#{@.params.id}"
-      ip = @.request.headers["x-forwarded-for"]
-      platform = getPlatform ip, collection
+      platform = authenticatePlatform.call @, collection
 
       if not platform
-        Apollos.debug "Dropping request from #{ip}"
-        handleAuthenticationError.call @
+        Apollos.debug "Dropping request because of unknown platform"
         return
 
-      return deleteResource.call @, Apollos[singular].delete, platform
+      return deleteResource.call @, Apollos[singular].delete, platform.name
 
   HTTP.methods method
   return url
@@ -194,10 +139,7 @@ Apollos.api.addEndpoint = (collection, singular) ->
 
 
 # Register a platform
-Apollos.api.addPlatform = (name, ipAddresses, collections) ->
-
-  if not Array.isArray(ipAddresses) and ipAddresses isnt "*"
-    ipAddresses = [ipAddresses]
+Apollos.api.addPlatform = (name, collections) ->
 
   name = name.toUpperCase()
 
@@ -205,6 +147,13 @@ Apollos.api.addPlatform = (name, ipAddresses, collections) ->
     Apollos.debug "There is already a platform for #{name}"
     return
 
+  token = Meteor.settings.api[name.toLowerCase()]
+
+  if not token
+    Apollos.debug "Cannot add #{name} to API as platform because there is no
+      token assigned in the Meteor settings"
+
   Apollos.api.platforms[name] =
-    ipAddresses: ipAddresses
+    token: token
     collections: collections
+    name: name
