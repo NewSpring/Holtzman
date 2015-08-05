@@ -1,5 +1,6 @@
 _jsonContentType = "application/JSON"
 _authenticationError = 401
+_unexpectedError = 500
 
 ###
 
@@ -21,6 +22,8 @@ authenticatePlatform = (collection) ->
   sentToken = @.requestHeaders[Apollos.api.tokenName]
 
   for name, details of Apollos.api.platforms
+    console.log "Testing request against registered platform:", details
+
     token = details.token
     collections = details.collections
 
@@ -103,27 +106,43 @@ createEndpoint = (collection, singular) ->
   method[url] =
 
     post: (data) ->
-      Apollos.debug "Got POST #{url} id=#{@.params.id}"
-      platform = authenticatePlatform.call @, collection
+      try
+        Apollos.debug "Got POST #{url} id=#{@.params.id}"
+        platform = authenticatePlatform.call @, collection
 
-      if platform
-        Apollos.debug "POST authenticated from #{platform.name}"
+        if platform
+          Apollos.debug "POST authenticated from #{platform.name}"
 
-      if not platform
-        Apollos.debug "Dropping request because of unknown platform"
-        return
+        if not platform
+          Apollos.debug "Dropping request because of unknown platform"
+          return
 
-      return upsertResource.call @, data, Apollos[singular].update, platform.name
+        handler = Apollos[singular].update
+        return upsertResource.call @, data, handler, platform.name
+
+      catch error
+        @.setStatusCode _unexpectedError
+        Apollos.debug "EXCEPTION from POST handling:"
+        Apollos.debug error
+        return error
 
     delete: (data) ->
-      Apollos.debug "Got DELETE for #{url} id=#{@.params.id}"
-      platform = authenticatePlatform.call @, collection
+      try
+        Apollos.debug "Got DELETE for #{url} id=#{@.params.id}"
+        platform = authenticatePlatform.call @, collection
 
-      if not platform
-        Apollos.debug "Dropping request because of unknown platform"
-        return
+        if not platform
+          Apollos.debug "Dropping request because of unknown platform"
+          return
 
-      return deleteResource.call @, Apollos[singular].delete, platform.name
+        handler = Apollos[singular].delete
+        return deleteResource.call @, handler, platform.name
+
+      catch error
+        @.setStatusCode _unexpectedError
+        Apollos.debug "EXCEPTION from DELETE handling:"
+        Apollos.debug error
+        return error
 
   HTTP.methods method
   return url
@@ -158,6 +177,7 @@ Apollos.api.addPlatform = (name, collections) ->
   if not token
     Apollos.debug "Cannot add #{name} to API as platform because there is no
       token assigned in the Meteor settings"
+    return
 
   Apollos.api.platforms[name] =
     token: token
