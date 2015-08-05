@@ -68,9 +68,14 @@ Meteor.startup ->
 
       if window.getComputedStyle
 
-        currentSize = window.getComputedStyle(
-          trackingElement, ":before" # no pseudo support in IE 9, 10 :(
-        ).getPropertyValue("content")
+        loop
+          currentSize = window.getComputedStyle(
+            trackingElement, ":before" # no pseudo support in IE 9, 10 :(
+          ).getPropertyValue("content")
+          break if currentSize
+          setTimeout ->
+            {}
+          , 200
 
         currentHeight = window.getComputedStyle(
           heightTrackingElement, ":before" # no pseudo support in IE 9, 10 :(
@@ -81,8 +86,8 @@ Meteor.startup ->
       return
 
     # debounce (can move this to junction once stable)
-    deouncedGetSize = new Debounce getSize
-    window.addEventListener "resize", deouncedGetSize, false
+    debouncedGetSize = new Debounce getSize
+    window.addEventListener "resize", debouncedGetSize, false
 
     # fire once for on load checking
     getSize()
