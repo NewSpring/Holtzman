@@ -32,7 +32,9 @@ Apollos.documentHelpers =
   ###
   update: (singular, plural, doc, platform) ->
 
+    console.log "Document helper update method"
     doc = Apollos[singular].translate doc, platform
+    console.log "Translated doc as", doc
 
     if not doc
       return
@@ -73,12 +75,14 @@ Apollos.documentHelpers =
       existing = matches.fetch()[0]
       mongoId = existing._id
 
+      console.log "UPDATING:", doc
       Apollos[plural].update
         _id: mongoId
       ,
         $set: doc
 
     else
+      console.log "INSERTING:", doc
       mongoId = Apollos[plural].insert doc
 
     return mongoId
