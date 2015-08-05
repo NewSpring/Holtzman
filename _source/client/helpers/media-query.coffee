@@ -81,8 +81,8 @@ Meteor.startup ->
       return
 
     # debounce (can move this to junction once stable)
-    deouncedGetSize = new Debounce getSize
-    window.addEventListener "resize", deouncedGetSize, false
+    debouncedGetSize = new Debounce getSize
+    window.addEventListener "resize", debouncedGetSize, false
 
     # fire once for on load checking
     getSize()
