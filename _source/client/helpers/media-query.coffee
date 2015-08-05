@@ -73,6 +73,9 @@ Meteor.startup ->
             trackingElement, ":before" # no pseudo support in IE 9, 10 :(
           ).getPropertyValue("content")
           break if currentSize
+          setTimeout ->
+            {}
+          , 200
 
         currentHeight = window.getComputedStyle(
           heightTrackingElement, ":before" # no pseudo support in IE 9, 10 :(
