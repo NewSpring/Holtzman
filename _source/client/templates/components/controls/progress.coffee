@@ -18,10 +18,6 @@ class Apollos.Controls.Progress extends Apollos.Component
 
     return steps
 
-  events: -> [
-    "click [data-step]" : @.changeStep
-  ]
-
   changeStep: (event) ->
 
     self = @
