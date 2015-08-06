@@ -17,8 +17,11 @@ class Apollos.modal extends Apollos.Component
     self.data().verticalAlign is "top"
 
   destroy: (event) ->
-    event?.preventDefault()
-    Blaze.remove @._internals.templateInstance.view
+    self = @
+
+    unless Session.get("Apollos.modal.disabled")
+      event?.preventDefault()
+      Blaze.remove @._internals.templateInstance.view
 
   closeIfOverlay: (event) ->
     if $(event.currentTarget).hasClass("overlay--solid-dark")
