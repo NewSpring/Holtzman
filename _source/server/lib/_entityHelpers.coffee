@@ -77,9 +77,8 @@ Apollos.documentHelpers =
       existing = matches.fetch()[0]
       mongoId = existing._id
 
-      Apollos[plural].update({
-        _id: mongoId
-      ,
+      Apollos[plural].update(mongoId,
+      {
         $set: doc
       }, (err) ->
         if err
