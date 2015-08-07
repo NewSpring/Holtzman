@@ -24,8 +24,6 @@ authenticatePlatform = (collection) ->
   console.log sentToken
 
   for name, details of Apollos.api.platforms
-    console.log "Testing request against registered platform:", details
-
     token = details.token
     collections = details.collections
 
@@ -78,12 +76,9 @@ deleteResource = (handlerFunc, platform) ->
 upsertResource = (data, handlerFunc, platform) ->
 
   @.setContentType _jsonContentType
-  console.log "upserting resource:"
   resource = parseRequestData data, @.requestHeaders["content-type"]
-  console.log resource
   resource or= {}
   resource.Id = Number @.params.id
-  console.log "calling handler func"
   handlerFunc resource, platform
   return
 
