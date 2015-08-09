@@ -64,9 +64,13 @@ Apollos.documentHelpers =
 
       ids.pop()
 
-      Apollos[plural].remove
+      Apollos[plural].remove({
         _id:
           $in: ids
+      }, (err) ->
+        if err
+          throw new Meteor.Error err
+      )
 
       matches = Apollos[plural].find(query)
 
@@ -74,15 +78,22 @@ Apollos.documentHelpers =
       existing = matches.fetch()[0]
       mongoId = existing._id
 
-      Apollos[plural].update
-        _id: mongoId
-      ,
+      Apollos[plural].update(mongoId,
+      {
         $set: doc
+      }, (err) ->
+        if err
+          throw new Meteor.Error err
+      )
 
     else
-      mongoId = Apollos[plural].insert doc
 
-    return mongoId
+      # do we need to return this directly? Can we async this?
+      Apollos[plural].insert(doc, (err) ->
+        if err
+          throw new Meteor.Error err
+      )
+
 
 
   ###
@@ -122,10 +133,15 @@ Apollos.documentHelpers =
       doc.updatedBy = Apollos.name
 
     # We have to update this first so the collection hooks know what to do
-    Apollos[plural].update
-      _id: doc._id
-    ,
+    Apollos[plural].update(doc._id, {
       $set:
         "updatedBy": doc.updatedBy
+    }, (err, count) ->
+      if err
+        throw new Meteor.Error err
+    )
 
-    Apollos[plural].remove doc._id
+    Apollos[plural].remove(doc._id, (err, count) ->
+      if err
+        throw new Meteor.Error err
+    )
