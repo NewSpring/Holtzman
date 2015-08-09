@@ -66,6 +66,13 @@ class Apollos.Forms.NumberInput extends Apollos.Forms.Input
     self = @
 
     if Apollos.isMobile() and not self.keyboardInstance
+
+      existingKeyboard = $('section.keyboard')[0]
+
+      if existingKeyboard
+        keyboardComponent = Apollos.Component.getComponentForElement(existingKeyboard)
+        keyboardComponent.dismiss()
+
       self.find("input").readonly = true
 
       template = Apollos.Component.getComponent("Apollos.Controls.NumberKeyboard")
@@ -79,6 +86,23 @@ class Apollos.Forms.NumberInput extends Apollos.Forms.Input
 
       self.keyboardInstance = template
 
+      self.scrollToInput()
+
+  scrollToInput: ->
+    self = @
+
+    input = self.find("input")
+    inputBottom = $(input).offset().top + $(input).height()
+    keyboard = $("section.keyboard")[0]
+    keyboardHeight = $(keyboard).height()
+    windowHeight = $(window).height()
+
+    distanceToKeyboard = windowHeight - keyboardHeight
+
+    if inputBottom > distanceToKeyboard
+      $('html, body').animate
+        scrollTop: inputBottom - distanceToKeyboard + 20
+      , 500
 
   destroyKeyboard: (event) ->
 
@@ -86,7 +110,8 @@ class Apollos.Forms.NumberInput extends Apollos.Forms.Input
     view = self.keyboardInstance
     self.find("input").readonly = false
     if view
-      Blaze.remove view
+      keyboardComponent = Apollos.Component.getComponentForElement($('section.keyboard')[0])
+      keyboardComponent.dismiss()
 
 
   onDestroyed: ->

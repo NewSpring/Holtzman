@@ -31,4 +31,4 @@ group = Apollos._generateSchema
 Apollos.groups.attachSchema group
 
 if Meteor.isServer
-  Apollos.api.addEndpoint "groups"
+  Apollos.api.addEndpoint "groups", "group"

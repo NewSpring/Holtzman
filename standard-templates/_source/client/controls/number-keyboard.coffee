@@ -10,17 +10,9 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
 
   events: -> [
 
-    "click": @.stop
+    "click [data-key], touchstart [data-key]": @.clickedDataKey
 
-    "touchstart [data-key]": @.clickedDataKey
-    "click [data-key]": @.clickedDataKey
-
-    "click [data-close], touchstart [data-close]": (event) ->
-
-      @.parent.keyboardInstance = null
-
-      Blaze.remove @._internals.templateInstance.view
-      return
+    "click [data-close], touchstart [data-close]": @.dismiss
 
   ]
 
@@ -28,7 +20,6 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
 
     event.stopPropagation()
     event.preventDefault()
-
 
 
   onCreated: ->
@@ -69,11 +60,22 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     $(document).off("keyup")
 
 
+  dismiss: (event) ->
+    @.parent?.keyboardInstance = null
+
+    Blaze.remove @._internals.templateInstance.view
+
+    @.stop(event) if event
+
+    return
+
   insertDOMElement: (parent, node, before) ->
+    height = $(window).height()
     $(node)
       .appendTo(parent)
-      # .velocity("transition.slideUpIn", { duration: 500 })
-      .velocity({translateY: [0, 200], translateZ: 0}, {duration: 250})
+      .css
+        transform: "translateY(#{height}px)"
+      .velocity({translateY: [0, 200], translateZ: 0}, {duration: 300})
     super
 
   removeDOMElement: (parent, node) ->
@@ -82,7 +84,7 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     $(node).velocity({
       translateY: 250, translateZ: 0
     }, {
-      duration: 250
+      duration: 300
       complete: (elements) ->
         $(node).remove()
     })
@@ -100,6 +102,8 @@ class Apollos.Controls.NumberKeyboard extends Apollos.Component
     @.processTypedText keyPressed
 
     # @.parent().updateFund @.typedText.get()
+
+    @.stop(event) if event
 
 
 

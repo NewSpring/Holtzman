@@ -2,14 +2,26 @@ class Apollos.modal extends Apollos.Component
 
   @register "Apollos.modal"
 
+  vars: -> [
+    desktopDuration: 250
+    mobileDuration: 400
+  ]
+
   events: -> [
     "click [data-dismiss]": @.destroy
     "click": @.closeIfOverlay
   ]
 
+  alignTop: ->
+    self = @
+    self.data().verticalAlign is "top"
+
   destroy: (event) ->
-    event?.preventDefault()
-    Blaze.remove @._internals.templateInstance.view
+    self = @
+
+    unless Session.get("Apollos.modal.disabled")
+      event?.preventDefault()
+      Blaze.remove @._internals.templateInstance.view
 
   closeIfOverlay: (event) ->
     if $(event.currentTarget).hasClass("overlay--solid-dark")
@@ -23,15 +35,16 @@ class Apollos.modal extends Apollos.Component
       null
 
   insertDOMElement: (parent, node, before) ->
+    self = @
 
     width = $(window).width()
     height = $(window).height()
 
-    if width >= 767
+    if width > 767
       # fade in background
       $(node).appendTo(parent)
         .velocity "fadeIn",
-          duration: 250
+          duration: self.desktopDuration.get()
 
       # slide in panel from left
       $(node).children('.side-panel')
@@ -39,23 +52,30 @@ class Apollos.modal extends Apollos.Component
           translateX: [0, -500]
           opacity: 1
         ,
-          duration: 250
+          duration: self.desktopDuration.get()
+          complete: (elements) ->
+            $('html').addClass 'modal--opened'
       super
 
     else
       # just add background
-      $(node).appendTo(parent)
+      # $(node).appendTo(parent).css(bottom: 0)
 
       # slide in panel from bottom
-      $(node).children('.side-panel')
+      $(node).appendTo(parent).children('.side-panel')
+        .css
+          transform: "translateY(#{height}px)"
         .velocity
           translateY: [0, height]
           opacity: 1
         ,
-          duration: 250
+          duration: self.mobileDuration.get()
+          complete: (elements) ->
+            $('html').addClass 'modal--opened'
 
 
   removeDOMElement: (parent, node) ->
+    self = @
 
     width = $(window).width()
     height = $(window).height()
@@ -67,13 +87,14 @@ class Apollos.modal extends Apollos.Component
           translateX: -500
           opacity: 1
         ,
-          duration: 250
+          duration: self.desktopDuration.get()
 
       # fade out background
       $(node).velocity "fadeOut",
-        duration: 250
+        duration: self.desktopDuration.get()
         complete: (elements) ->
           $(node).remove()
+          $('html').removeClass 'modal--opened'
 
     else
       # slide out panel to the bottom
@@ -82,6 +103,7 @@ class Apollos.modal extends Apollos.Component
           translateY: height
           opacity: 1
         ,
-          duration: 250
+          duration: self.mobileDuration.get()
           complete: (elements) ->
             $(node).remove()
+            $('html').removeClass 'modal--opened'

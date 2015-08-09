@@ -43,7 +43,7 @@ defaultRegex =
   discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/
   startOfVisa: /^4[0-9]{0,15}$/
   startOfMastercard: /^5$|^5[1-5][0-9]{0,14}$/
-  startOfAmericanExpress: /^3$|^3[47][0-9]{0,13}$/
+  startOfAmEx: /^3$|^3[47][0-9]{0,13}$/
   startOfDiscover: d
 
 

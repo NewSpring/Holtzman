@@ -13,7 +13,6 @@
 
 ###
 Apollos.person.translate = (person, platform) ->
-
   return Apollos.documentHelpers.translate "person", person, platform
 
 

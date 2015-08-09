@@ -41,3 +41,8 @@ helpers =
   queryParam: queryParam
 
 Template.registerHelper name, func for own name, func of helpers
+
+# really simple page to page middleware
+Apollos.router.middleware (path, next) ->
+  window.scrollTo 0,0
+  next()

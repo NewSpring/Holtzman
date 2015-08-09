@@ -42,4 +42,4 @@ location = Apollos._generateSchema
 Apollos.locations.attachSchema location
 
 if Meteor.isServer
-  Apollos.api.addEndpoint "locations"
+  Apollos.api.addEndpoint "locations", "location"

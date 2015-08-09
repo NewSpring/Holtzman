@@ -22,6 +22,12 @@ Apollos._generateSchema = (name, schema, schemaOnly) ->
 
 
   if not schemaOnly
+
+    schema.observationHash or=
+      type: Number
+      optional: true
+
+
     schema.createdDate or=
       type: Date
       autoValue: ->

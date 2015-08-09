@@ -5,6 +5,9 @@ Apollos.documentHelpers =
 
     if not platform
       Apollos.debug "must specify platform to translate to"
+      return
+
+    platform = platform.toUpperCase()
 
     if not Apollos[singular]._dictionary[platform]
       Apollos.debug "no translation found for #{platform} in #{singular}"
@@ -31,6 +34,10 @@ Apollos.documentHelpers =
   update: (singular, plural, doc, platform) ->
 
     doc = Apollos[singular].translate doc, platform
+
+    if not doc
+      return
+
     singularIdKeyValue = {}
     singularIdKeyValue["#{singular}Id"] = doc["#{singular}Id"]
 

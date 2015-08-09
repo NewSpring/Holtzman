@@ -1,0 +1,25 @@
+<template name="Apollos.menu.item">
+  <div class="push-top">
+    {{#if modal}}
+      <a
+        href="#"
+        class="no-underline"
+        data-modal="{{modal}}">
+        {{> Apollos.menu.item.linkContents}}
+      </a>
+    {{else}}
+      <a
+        href="{{href}}"
+        class="no-underline menu-item">
+        {{> Apollos.menu.item.linkContents}}
+      </a>
+    {{/if}}
+  </div>
+</template>
+
+<template name="Apollos.menu.item.linkContents">
+  {{> Template.dynamic template=iconTemplate data=svgData}}
+  <h4 class="inline-block text-dark push-half-left flush-bottom middle">
+    {{text}}
+  </h4>
+</template>

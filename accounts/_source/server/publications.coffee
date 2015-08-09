@@ -15,4 +15,7 @@ Meteor.publish "person", ->
   if not user?.personGuid
     return
 
-  return Apollos.people.find({guid: user.personGuid})
+  # case insentative
+  guid = new RegExp(user.personGuid, "i")
+
+  return Apollos.people.find({ guid: guid })

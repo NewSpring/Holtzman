@@ -20,7 +20,7 @@ Apollos.person = (user) ->
 
   if user.personGuid
     person = Apollos.people.findOne
-      guid: user.personGuid
+      guid: new RegExp(user.personGuid, "i")
 
 
   # we shouldnt have any code for rock in the core package
