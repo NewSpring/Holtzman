@@ -1,34 +1,89 @@
+changeWasAlreadyHandled = (doc, collection) ->
+
+  if not doc.observationHash
+    return false
+
+  hash = hashObject doc
+
+  if doc.observationHash is hash
+    return true
+
+  Apollos[collection].update doc._id, $set: observationHash: hash
+  doc.observationHash = hash
+  return false
+
+hashObject = (obj) ->
+
+  json = JSON.stringify obj
+  hash = 0
+  i = 0
+  len = json.length
+
+  if len is 0
+    return hash
+
+  while i < len
+    chr = json.charCodeAt(i)
+    hash  = ((hash << 5) - hash) + chr
+    hash |= 0
+    i++
+
+  return hash
 
 Apollos.observe = (collection) ->
 
   initializing = true
 
-  Apollos[collection].find().observe
+  Apollos[collection].find({},
+    fields:
+      observationHash: 0
+      createdDate: 0
+      updatedDate: 0
+      updatedBy: 0
+  ).observe
 
-    added: (doc) ->
+    added: (newDoc) ->
+
+      id = newDoc._id
 
       if initializing
         return
 
+      doc = Apollos[collection].findOne id
+      if changeWasAlreadyHandled doc, collection
+        Apollos.debug "#{collection} #{id} add already handled"
+        return
+
+      Apollos.debug "Handling add in #{collection} #{id}"
       Apollos[collection].added or= {}
+      platformAddedBy = doc.updatedBy?.toUpperCase()
 
       for platform, handle of Apollos[collection].added
-        handle doc
-
+        if platformAddedBy isnt platform.toUpperCase()
+          handle doc
 
     changed: (newDoc, oldDoc) ->
 
+      id = newDoc._id
+      doc = Apollos[collection].findOne id
+      if changeWasAlreadyHandled doc, collection
+        Apollos.debug "#{collection} #{id} change already handled"
+        return
+
+      Apollos.debug "Handling change in #{collection} #{id}"
       Apollos[collection].changed or= {}
+      platformChangedBy = doc.updatedBy?.toUpperCase()
 
       for platform, handle of Apollos[collection].changed
-        handle newDoc, oldDoc
+        if platformChangedBy isnt platform.toUpperCase()
+          handle doc, oldDoc
 
-    removed: (doc) ->
+    removed: (oldDoc) ->
 
       Apollos[collection].deleted or= {}
 
       for platform, handle of Apollos[collection].deleted
-        handle doc
+        handle oldDoc
 
 
   initializing = false

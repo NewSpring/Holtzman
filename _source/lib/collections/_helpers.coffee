@@ -7,6 +7,9 @@ Apollos.generateSchema = (name, schema) ->
     schema = name
     name = false
 
+  schema.observationHash or=
+    type: Number
+    optional: true
 
   schema.createdDate or=
     type: Date

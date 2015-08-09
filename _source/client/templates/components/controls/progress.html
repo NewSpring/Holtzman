@@ -6,7 +6,7 @@
     <div class="progress">
 
       {{#each steps}}
-        <div data-step={{count}} class="{{#if $gt count active.get 1}}progress__item{{else}}progress__item--active{{/if}}" style="z-index: {{getLayer count}}">
+        <div class="{{#if $gt count active.get 1}}progress__item{{else}}progress__item--active{{/if}}" style="z-index: {{getLayer count}}">
         </div>
 
       {{/each}}

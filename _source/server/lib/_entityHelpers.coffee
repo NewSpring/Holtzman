@@ -5,6 +5,7 @@ Apollos.documentHelpers =
 
     if not platform
       Apollos.debug "must specify platform to translate to"
+      return
 
     platform = platform.toUpperCase()
 
