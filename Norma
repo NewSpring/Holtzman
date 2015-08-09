@@ -3,6 +3,7 @@ name: "apollos-core"
 tasks:
 
   link:
+    endpoint: "NewSpring/norma-link"
     group: ["package", "sample-app"]
     "workbench/packages":
       build: true
