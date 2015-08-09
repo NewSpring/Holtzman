@@ -132,10 +132,15 @@ Apollos.documentHelpers =
       doc.updatedBy = Apollos.name
 
     # We have to update this first so the collection hooks know what to do
-    Apollos[plural].update
-      _id: doc._id
-    ,
+    Apollos[plural].update(doc._id, {
       $set:
         "updatedBy": doc.updatedBy
+    }, (err, count) ->
+      if err
+        throw new Meteor.Error err
+    )
 
-    Apollos[plural].remove doc._id
+    Apollos[plural].remove(doc._id, (err, count) ->
+      if err
+        throw new Meteor.Error err
+    )

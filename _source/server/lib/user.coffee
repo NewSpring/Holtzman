@@ -71,53 +71,16 @@ Apollos.user.update = (user, platform) ->
 
   user = Apollos.user.translate user, platform
 
-  query =
-    $or: [
-      "rock.userLoginId": user.rock.userLoginId
-    ]
-
-  if user.emails and user.emails[0] and user.emails[0].address
-    hasEmail = true
-    query["$or"].push
-      "emails.address": user.emails[0].address
-
-  users = Apollos.users.find(query).fetch()
-
-  if users.length > 1
-    ids = []
-
-    users.forEach (usr) ->
-      ids.push usr._id
-
-    throw new Meteor.Error "Rock sync issue", "User doc ids #{ids.join ", "}
-      need investigated because they seem to be duplicates"
-
-  else if users.length is 0 and hasEmail
-    tempPassword = String(Date.now() * Math.random())
-    userId = Apollos.user.create(user.emails[0].address, tempPassword)
-    usr = Apollos.users.findOne userId
-
-  else
-    usr = users[0]
+  if not user
+    return
 
   if platform
     user.updatedBy = platform.toUpperCase()
   else
     user.updatedBy = Apollos.name
 
-  # can't upsert with _id present
-  delete user._id
 
-  if usr
-
-    Apollos.users.update
-      _id: usr._id
-    ,
-      $set: user
-
-    return usr._id
-
-
-Meteor.startup ->
-
-  Apollos.observe "users"
+  Apollos.users.update(user._id, $set: user, (err, count) ->
+    if err
+      throw new Meteor.Error err
+  )
