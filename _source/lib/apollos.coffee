@@ -44,7 +44,7 @@ else
       return
 
     if user.personGuid
-      query.guid = user.personGuid
+      query.guid = new RegExp(user.personGuid, "i")
       queryOk = true
 
     # we need to move the rock stuff out of this package
@@ -79,7 +79,7 @@ Apollos.person = (user) ->
 
   if user.personGuid
     person = Apollos.people.findOne
-      guid: user.personGuid
+      guid: new RegExp(user.personGuid, "i")
 
 
   # we shouldnt have any code for rock in the core package
