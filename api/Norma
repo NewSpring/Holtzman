@@ -23,6 +23,7 @@ tasks:
     package:
       versionsFrom: "1.1.0.2"
       use:
-        "newspring:apollos-namespace": "both"
-        "http@=1.1.0": "both"
-        "cfs:http-methods@=0.0.28": "both"
+        "newspring:apollos-namespace": "server"
+        "http@=1.1.0": "server"
+        "cfs:http-methods@=0.0.28": "server"
+        "bjwiley2:request-data@0.0.3": "server"

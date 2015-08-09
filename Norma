@@ -44,40 +44,14 @@ tasks:
     "dest": "./workbench/"
 
 
-<<<<<<< HEAD
   sass:
     group: "sample-app"
     src: "sample-app/**/*"
     dest: "workbench/"
-=======
-  # create package.js
-  "meteor-load":
-    group: "package"
-    src: "lib/**/*"
-    version: "0.1.25"
-    dest: "./"
-    org: "newspring"
-    name: "apollos-core"
-    package:
-      versionsFrom: "1.0.3.1"
-      use:
-        "meteor-platform@=1.2.2": "both"
-        "http@=1.1.0": "both"
-        "reactive-var@=1.0.5": "both"
-        "accounts-password@=1.1.1": "both"
-        "cfs:http-methods@=0.0.28": "both"
-        "bjwiley2:server-watch@=0.0.6": "both"
-        "aldeed:collection2@=2.3.3": "both"
-        "meteorhacks:flow-router@1.9.0": "both"
-        "meteorhacks:flow-layout@1.3.0": "client"
-        "velocityjs:velocityjs@=1.2.1": "client"
-        "raix:handlebar-helpers@0.2.4": "client"
-        "arillo:flow-router-helpers@0.1.6": "client"
-        "bjwiley2:request-data@0.0.3": "server"
-      export:
-        "Apollos": "both"
-        "HTTP": "server"
->>>>>>> bd380cb41a54068c0e39e37f1404c43e67c0555b
+    lint: true
+    comb: true
+
+
 
   meteor:
     group: "sample-app"
