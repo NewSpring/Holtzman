@@ -40,9 +40,11 @@ Apollos.observe = (collection) ->
       createdDate: 0
       updatedDate: 0
       updatedBy: 0
-  ).observeChanges
+  ).observe
 
-    added: (id) ->
+    added: (newDoc) ->
+
+      id = newDoc._id
 
       if initializing
         return
@@ -57,11 +59,12 @@ Apollos.observe = (collection) ->
       platformAddedBy = doc.updatedBy?.toUpperCase()
 
       for platform, handle of Apollos[collection].added
-        if platformAddedBy and (platformAddedBy isnt platform.toUpperCase())
+        if platformAddedBy isnt platform.toUpperCase()
           handle doc
 
-    changed: (id) ->
+    changed: (newDoc, oldDoc) ->
 
+      id = newDoc._id
       doc = Apollos[collection].findOne id
       if changeWasAlreadyHandled doc, collection
         Apollos.debug "#{collection} #{id} change already handled"
@@ -72,15 +75,15 @@ Apollos.observe = (collection) ->
       platformChangedBy = doc.updatedBy?.toUpperCase()
 
       for platform, handle of Apollos[collection].changed
-        if platformChangedBy and (platformChangedBy isnt platform.toUpperCase())
-          handle doc
+        if platformChangedBy isnt platform.toUpperCase()
+          handle doc, oldDoc
 
-    removed: (id) ->
+    removed: (oldDoc) ->
 
       Apollos[collection].deleted or= {}
 
       for platform, handle of Apollos[collection].deleted
-        handle id
+        handle oldDoc
 
 
   initializing = false
