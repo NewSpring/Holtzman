@@ -17,8 +17,14 @@ class Apollos.Forms.Select extends Apollos.Component
 
     self = @
 
-    if self.data().preFill and self.data().preFill > 0
+    if not self.value.get() and self.data()?.preFill
       self.value.set self.data().preFill
+
+    self.autorun ->
+      value = self.value.get()
+
+      if self.data()?.bind
+        self.data().bind.set value
 
     # if Apollos.isMobile()
     return
