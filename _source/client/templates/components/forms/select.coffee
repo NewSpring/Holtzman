@@ -6,7 +6,7 @@ class Apollos.Forms.Select extends Apollos.Component
     error: null
     status: null
     value: null
-    disabled: @.data()?.disabled or false
+    inactive: @.data()?.inactive or false
 
   ]
 
@@ -82,7 +82,7 @@ class Apollos.Forms.Select extends Apollos.Component
   makeActive: (event) ->
     self = @
 
-    unless self.disabled.get()
+    unless self.inactive.get()
       select = self.find("select")
       $(select.parentNode)
         .addClass "input--active"
