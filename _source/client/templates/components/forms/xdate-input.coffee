@@ -68,7 +68,7 @@ class Apollos.Forms.DateInput extends Apollos.Forms.Input
 
       template = Blaze.renderWithData(
         template
-        {parent: self}
+        {parent: self, frequency: "Biweekly"}
         input.parentNode
       )
 

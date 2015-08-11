@@ -2,11 +2,31 @@
   position: absolute;
   top: -140px;
   z-index: 10000;
+  width: 334px;
 
-  background: green;
-  width: 400px;
-  height: 500px;
+  .day {
+    width: 42px;
+    height: 40px;
+    line-height: 1.4;
+    cursor: pointer;
+  }
 
-  color: red;
-
+  .controls {
+    position: relative;
+    .fa {
+      position: absolute;
+      top: -2px;
+      font-size: 25px;
+    }
+    .fa-angle-left {
+      left: 20px;
+    }
+    .fa-angle-right {
+      right: 20px;
+    }
+    a {
+      text-decoration: none;
+      display: block;
+    }
+  }
 }
