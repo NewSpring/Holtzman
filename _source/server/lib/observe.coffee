@@ -1,3 +1,5 @@
+collectionsObserved = {}
+
 changeWasAlreadyHandled = (doc, collection) ->
 
   if not doc.observationHash
@@ -30,8 +32,12 @@ hashObject = (obj) ->
 
   return hash
 
-Apollos.observe = (collection) ->
+startObserveIfNeeded = (collection) ->
 
+  if collectionsObserved[collection]
+    return
+
+  collectionsObserved[collection] = true
   initializing = true
 
   Apollos[collection].find({},
@@ -85,7 +91,7 @@ Apollos.observe = (collection) ->
 
   initializing = false
 
-
+Apollos.observe = {}
 
 Apollos.observe.remove = (doc, platform, methods) ->
 
@@ -103,7 +109,6 @@ Apollos.observe.remove = (doc, platform, methods) ->
   for method in methods
     delete Apollos[doc][method]
 
-
 Apollos.observe.add = (doc, platform, methods) ->
 
   if not Apollos[doc]
@@ -114,7 +119,6 @@ Apollos.observe.add = (doc, platform, methods) ->
     Apollos.debug "Must specify platform"
     return
 
-
   for method, handle of methods
 
     Apollos[doc][method] or= {}
@@ -122,7 +126,6 @@ Apollos.observe.add = (doc, platform, methods) ->
     if Apollos[doc][method][platform]
       Apollos.debug "The #{method} observe handler for #{doc} from #{platform} has already been set"
       return
+
     Apollos[doc][method][platform] = handle
-
-
-  return
+    startObserveIfNeeded doc

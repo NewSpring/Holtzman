@@ -94,8 +94,9 @@ upsertResource = (data, handlerFunc, platform) ->
     is associated with
 
 ###
-createEndpoint = (collection, singular) ->
-  url = "#{Apollos.api.base}/#{collection}/:id"
+createEndpoint = (collection, singular, nameForUrl, options) ->
+  options or= {}
+  url = "#{Apollos.api.base}/#{nameForUrl}/:id"
 
   method = {}
   method[url] =
@@ -113,6 +114,9 @@ createEndpoint = (collection, singular) ->
           return
 
         handler = Apollos[singular].update
+        if options.subDocName
+          handler = handler[options.subDocName]
+
         return upsertResource.call @, data, handler, platform.name
 
       catch error
@@ -130,7 +134,10 @@ createEndpoint = (collection, singular) ->
           Apollos.debug "Dropping request because of unknown platform"
           return
 
-        handler = Apollos[singular].delete
+        handler = Apollos[singular].update
+        if options.subDocName
+          handler = handler[options.subDocName]
+
         return deleteResource.call @, handler, platform.name
 
       catch error
@@ -142,21 +149,21 @@ createEndpoint = (collection, singular) ->
   HTTP.methods method
   return url
 
-
 # Register a collection's endpoint
-Apollos.api.addEndpoint = (collection, singular) ->
+Apollos.api.addEndpoint = (collection, singular, options) ->
 
   obj = {}
+  options or= {}
 
-  if Apollos.api.endpoints[collection]
-    Apollos.debug "There is already an endpoint for #{collection}"
+  options.nameForUrl or= collection
+  if Apollos.api.endpoints[options.nameForUrl]
+    Apollos.debug "There is already an endpoint for #{nameForUrl}"
     return
 
-  url = createEndpoint collection, singular
-  Apollos.api.endpoints[collection] = url: url
+  url = createEndpoint collection, singular, options.nameForUrl, options
+  Apollos.api.endpoints[options.nameForUrl] = url: url
 
   return
-
 
 # Register a platform
 Apollos.api.addPlatform = (name, collections) ->
