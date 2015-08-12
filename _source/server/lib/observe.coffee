@@ -10,10 +10,13 @@ changeWasAlreadyHandled = (doc, collection) ->
   if doc.observationHash is hash
     return true
 
+  # can we make this async?
   Apollos[collection].update doc._id, $set: observationHash: hash
   doc.observationHash = hash
   return false
 
+
+# @benwiley can we just use Random.id()?
 hashObject = (obj) ->
 
   json = JSON.stringify obj
@@ -93,6 +96,8 @@ startObserveIfNeeded = (collection) ->
 
 Apollos.observe = {}
 
+
+# this method should probably also remove the handler?
 Apollos.observe.remove = (doc, platform, methods) ->
 
   if not Apollos[doc]
@@ -125,6 +130,7 @@ Apollos.observe.add = (doc, platform, methods) ->
 
     if Apollos[doc][method][platform]
       Apollos.debug "The #{method} observe handler for #{doc} from #{platform} has already been set"
+      # make this a continue?
       return
 
     Apollos[doc][method][platform] = handle
