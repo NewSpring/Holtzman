@@ -26,3 +26,5 @@ tasks:
         "mongo": "both"
         "aldeed:collection2@=2.3.3": "both"
         "newspring:apollos-namespace": "both"
+      export:
+        "Apollos": "both"

@@ -22,6 +22,8 @@ tasks:
     org: "newspring"
     package:
       versionsFrom: "1.1.0.2"
+      export:
+        "Apollos": "client"
       use:
-        "newspring:apollos-namespace": "both"
+        "newspring:apollos-namespace": "client"
         "meteorhacks:flow-layout@1.4.2": "client"

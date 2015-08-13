@@ -22,6 +22,8 @@ tasks:
     org: "newspring"
     package:
       versionsFrom: "1.1.0.2"
+      export:
+        "Apollos": "both"
       use:
         "templating": "client"
         "cfs:standard-packages": "both"

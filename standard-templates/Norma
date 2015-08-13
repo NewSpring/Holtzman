@@ -22,10 +22,12 @@ tasks:
     org: "newspring"
     package:
       versionsFrom: "1.1.0.2"
+      export:
+        "Apollos": "client"
       use:
         "blaze": "client"
         "spacebars": "client"
         "templating": "client"
-        "newspring:apollos-namespace": "both"
+        "newspring:apollos-namespace": "client"
         "newspring:apollos-components": "client"
         "newspring:apollos-helpers": "client"

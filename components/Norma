@@ -22,11 +22,13 @@ tasks:
     org: "newspring"
     package:
       versionsFrom: "1.1.0.2"
+      export:
+        "Apollos": "client"
       use:
         "blaze": "client"
         "spacebars": "client"
         "templating": "client"
-        "underscore": "both"
+        "underscore": "client"
         "tracker": "client",
         "ejson": "client",
         "reactive-var": "client"

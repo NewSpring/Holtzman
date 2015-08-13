@@ -33,3 +33,5 @@ tasks:
         "newspring:apollos-standard-templates": "client"
         "newspring:apollos-api": "server"
         "accounts-password@=1.1.1": "both"
+      export:
+        "Apollos": "both"
