@@ -5,6 +5,10 @@ class Apollos.Forms.DateInput extends Apollos.Forms.Input
 
   template: -> "Apollos.Forms.Input"
 
+  vars: -> super.concat [
+    calendarDate: null
+  ]
+
   onRendered: ->
 
     self = @
@@ -27,6 +31,16 @@ class Apollos.Forms.DateInput extends Apollos.Forms.Input
 
     input.parentNode.appendChild newInput
 
+    $(newInput).on("click [data-input]", (event) ->
+      self.renderCalendar()
+    )
+
+    Tracker.autorun ->
+      currentDate = self.calendarDate.get()
+
+      self.setValue currentDate
+
+
     $(document).on("click", (event) ->
 
       target = event.target
@@ -37,10 +51,6 @@ class Apollos.Forms.DateInput extends Apollos.Forms.Input
 
       self.destroyCalendar()
 
-    )
-
-    $(newInput).on("click [data-input]", (event) ->
-      self.renderCalendar()
     )
 
     super
@@ -68,7 +78,7 @@ class Apollos.Forms.DateInput extends Apollos.Forms.Input
 
       template = Blaze.renderWithData(
         template
-        {parent: self, frequency: "Biweekly"}
+        {calendarDate: self.calendarDate, parent: self}
         input.parentNode
       )
 

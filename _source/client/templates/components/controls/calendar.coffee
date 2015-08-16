@@ -20,12 +20,24 @@ class Apollos.Controls.Calendar extends Apollos.Component
     self = @
     self.parent = self.data().parent
 
-    self.today.set moment().startOf("day")
+    if self.data().calendarDate?.get()
+      date = self.data().calendarDate.get()
+      self.today.set moment(date, "MM/DD/YYYY").startOf("day")
+    else
+      self.today.set moment().startOf("day")
 
     self.autorun ->
       today = self.today.get()
       self.firstDay.set moment(today).startOf("month").startOf("week").startOf("day")
       self.lastDay.set moment(today).endOf("month").endOf("week").startOf("day")
+      self.data().calendarDate?.set today.format("MM/DD/YYYY")
+
+  onRendered: ->
+    self = @
+
+    self.autorun ->
+      today = self.today.get()
+
 
   stop: (event) ->
 
