@@ -34,6 +34,8 @@ class Apollos.Controls.Calendar extends Apollos.Component
   onRendered: ->
     self = @
 
+    self.adjustPosition()
+
     self.autorun ->
       today = self.today.get()
 
@@ -120,6 +122,8 @@ class Apollos.Controls.Calendar extends Apollos.Component
 
     self.today.set today
 
+    self.adjustPosition()
+
   changeDay: (event) ->
     self = @
 
@@ -152,3 +156,16 @@ class Apollos.Controls.Calendar extends Apollos.Component
         return moment(today).recur().every(3).months()
       when "Yearly"
         return moment(today).recur().every(1).years()
+
+  adjustPosition: ->
+    self = @
+
+    setTimeout(->
+      console.log "adjusting"
+
+      container = self.data().container
+      if container?.scrollHeight > container.offsetHeight
+        difference = container.scrollHeight - container.offsetHeight
+        $('section.calendar').css top: "-=#{difference}px"
+    , 100)
+
