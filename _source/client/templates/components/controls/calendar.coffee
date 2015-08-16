@@ -104,6 +104,9 @@ class Apollos.Controls.Calendar extends Apollos.Component
     else
       today.add(1, 'month')
 
+    if today < moment().startOf("day")
+      today = moment().startOf("day")
+
     self.today.set today
 
   changeDay: (event) ->
@@ -114,7 +117,8 @@ class Apollos.Controls.Calendar extends Apollos.Component
     unix = event.target.dataset.day
     today = moment.unix(unix)
 
-    self.today.set today
+    unless today < moment().startOf("day")
+      self.today.set today
 
   getSchedule: ->
     self = @
