@@ -139,7 +139,7 @@ class Apollos.Controls.Calendar extends Apollos.Component
 
     switch frequency
       when "Once"
-        return null
+        return moment(today).recur(today)
       when "Weekly"
         return moment(today).recur().every(1).weeks()
       when "Biweekly"
