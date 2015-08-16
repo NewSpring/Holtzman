@@ -18,7 +18,6 @@ class Apollos.Controls.Calendar extends Apollos.Component
   onCreated: ->
 
     self = @
-    self.parent = self.data().parent
 
     if self.data().calendarDate?.get()
       date = self.data().calendarDate.get()
@@ -45,7 +44,7 @@ class Apollos.Controls.Calendar extends Apollos.Component
     event.preventDefault()
 
   dismiss: (event) ->
-    @.parent.calendarInstance = null
+    @.parent().calendarInstance = null
 
     Blaze.remove @._internals.templateInstance.view
 
@@ -135,7 +134,7 @@ class Apollos.Controls.Calendar extends Apollos.Component
   getSchedule: ->
     self = @
 
-    frequency = self.parent.parent().frequencyType.get()
+    frequency = self.parent().parent().frequencyType.get()
     today = self.today.get()
 
     switch frequency

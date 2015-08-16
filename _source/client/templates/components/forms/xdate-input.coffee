@@ -74,11 +74,11 @@ class Apollos.Forms.DateInput extends Apollos.Forms.Input
       input.readonly = true
 
       template = Apollos.Component.getComponent("Apollos.Controls.Calendar")
-      template = template.renderComponent()
+      template = template.renderComponent(self)
 
       template = Blaze.renderWithData(
         template
-        {calendarDate: self.calendarDate, parent: self}
+        {calendarDate: self.calendarDate}
         input.parentNode
       )
 
