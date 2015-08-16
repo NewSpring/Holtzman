@@ -9,6 +9,9 @@
     height: 40px;
     line-height: 1.4;
     cursor: pointer;
+    &.in-schedule {
+      margin-top: 3px !important;
+    }
   }
 
   .controls {
