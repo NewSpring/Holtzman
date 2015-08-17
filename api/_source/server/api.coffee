@@ -17,7 +17,7 @@ _unexpectedError = 500
   @param context should be the HTTP.methods handler function
 
 ###
-authenticatePlatform = (collection) ->
+_authenticatePlatform = (collection) ->
 
   sentToken = @.requestHeaders[Apollos.api.tokenName]
 
@@ -39,18 +39,18 @@ authenticatePlatform = (collection) ->
 
 ###
 
-  deleteResource
+  _deleteResource
 
   @example authenticates and then calls the delete handler
 
-    return deleteResource.call @, Apollos.person.delete, platform
+    return _deleteResource.call @, Apollos.person.delete, platform
 
   @param context should be the HTTP.methods handler function
   @param handlerFunc is the function that will delete the resource
   @param platform is the source of the request to delete the resource
 
 ###
-deleteResource = (handlerFunc, platform) ->
+_deleteResource = (handlerFunc, platform) ->
 
   @.setContentType _jsonContentType
   id = Number @.params.id
@@ -59,11 +59,11 @@ deleteResource = (handlerFunc, platform) ->
 
 ###
 
-  upsertResource
+  _upsertResource
 
   @example authenticates and then calls the upsert handler
 
-    return upsertResource.call @, data, Apollos.person.update, platform
+    return _upsertResource.call @, data, Apollos.person.update, platform
 
   @param context should be the HTTP.methods handler function
   @param data is the javascript object with the request data
@@ -71,7 +71,7 @@ deleteResource = (handlerFunc, platform) ->
   @param platform is the source of the request to upsert the resource
 
 ###
-upsertResource = (data, handlerFunc, platform) ->
+_upsertResource = (data, handlerFunc, platform) ->
 
   @.setContentType _jsonContentType
   resource = parseRequestData data, @.requestHeaders["content-type"]
@@ -82,20 +82,21 @@ upsertResource = (data, handlerFunc, platform) ->
 
 ###
 
-  createEndpoint
+  _createEndpoint
 
   @example creartes a standard API endpoint at the given URL for the given
     entity
 
-    createEndpoint "api/v1/people/", "person"
+    _createEndpoint "api/v1/people/", "person"
 
   @param url [String] the endpoint for the API to operate at
   @param entityType [String] is the name of the Apollos type that this endpoint
     is associated with
 
 ###
-createEndpoint = (collection, singular) ->
-  url = "#{Apollos.api.base}/#{collection}/:id"
+_createEndpoint = (collection, singular, nameForUrl, options) ->
+  options or= {}
+  url = "#{Apollos.api.base}/#{nameForUrl}/:id"
 
   method = {}
   method[url] =
@@ -103,7 +104,7 @@ createEndpoint = (collection, singular) ->
     post: (data) ->
       try
         Apollos.debug "Got POST #{url} id=#{@.params.id}"
-        platform = authenticatePlatform.call @, collection
+        platform = _authenticatePlatform.call @, collection
 
         if platform
           Apollos.debug "POST authenticated from #{platform.name}"
@@ -112,8 +113,12 @@ createEndpoint = (collection, singular) ->
           Apollos.debug "Dropping request because of unknown platform"
           return
 
-        handler = Apollos[singular].update
-        return upsertResource.call @, data, handler, platform.name
+        if options.subDocName
+          handler = Apollos[singular][options.subDocName].update
+        else
+          handler = Apollos[singular].update
+
+        return _upsertResource.call @, data, handler, platform.name
 
       catch error
         @.setStatusCode _unexpectedError
@@ -124,14 +129,18 @@ createEndpoint = (collection, singular) ->
     delete: (data) ->
       try
         Apollos.debug "Got DELETE for #{url} id=#{@.params.id}"
-        platform = authenticatePlatform.call @, collection
+        platform = _authenticatePlatform.call @, collection
 
         if not platform
           Apollos.debug "Dropping request because of unknown platform"
           return
 
-        handler = Apollos[singular].delete
-        return deleteResource.call @, handler, platform.name
+        if options.subDocName
+          handler = Apollos[singular][options.subDocName].delete
+        else
+          handler = Apollos[singular].delete
+
+        return _deleteResource.call @, handler, platform.name
 
       catch error
         @.setStatusCode _unexpectedError
@@ -142,21 +151,20 @@ createEndpoint = (collection, singular) ->
   HTTP.methods method
   return url
 
-
 # Register a collection's endpoint
-Apollos.api.addEndpoint = (collection, singular) ->
+Apollos.api.addEndpoint = (collection, singular, options) ->
 
-  obj = {}
+  options or= {}
 
-  if Apollos.api.endpoints[collection]
-    Apollos.debug "There is already an endpoint for #{collection}"
+  options.nameForUrl or= collection
+  if Apollos.api.endpoints[options.nameForUrl]
+    Apollos.debug "There is already an endpoint for #{nameForUrl}"
     return
 
-  url = createEndpoint collection, singular
-  Apollos.api.endpoints[collection] = url: url
+  url = _createEndpoint collection, singular, options.nameForUrl, options
+  Apollos.api.endpoints[options.nameForUrl] = url: url
 
   return
-
 
 # Register a platform
 Apollos.api.addPlatform = (name, collections) ->

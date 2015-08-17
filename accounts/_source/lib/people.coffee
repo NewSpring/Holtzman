@@ -129,5 +129,5 @@ person = Apollos._generateSchema
 
 Apollos.people.attachSchema person
 
-if Meteor.isServer
+if Meteor.isServer and Apollos.api
   Apollos.api.addEndpoint "people", "person"

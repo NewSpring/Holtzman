@@ -22,5 +22,5 @@ groupLocation = Apollos._generateSchema
 
 Apollos.groupLocations.attachSchema groupLocation
 
-if Meteor.isServer
+if Meteor.isServer and Apollos.api
   Apollos.api.addEndpoint "groupLocations", "groupLocation"

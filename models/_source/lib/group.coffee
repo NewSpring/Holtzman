@@ -30,5 +30,5 @@ group = Apollos._generateSchema
 
 Apollos.groups.attachSchema group
 
-if Meteor.isServer
+if Meteor.isServer and Apollos.api
   Apollos.api.addEndpoint "groups", "group"

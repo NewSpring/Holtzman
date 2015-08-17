@@ -6,6 +6,7 @@ class Apollos.Forms.Select extends Apollos.Component
     error: null
     status: null
     value: null
+    inactive: @.data()?.inactive or false
 
   ]
 
@@ -17,8 +18,14 @@ class Apollos.Forms.Select extends Apollos.Component
 
     self = @
 
-    if self.data().preFill and self.data().preFill > 0
+    if not self.value.get() and self.data()?.preFill
       self.value.set self.data().preFill
+
+    self.autorun ->
+      value = self.value.get()
+
+      if self.data()?.bind
+        self.data().bind.set value
 
     # if Apollos.isMobile()
     return
@@ -62,8 +69,7 @@ class Apollos.Forms.Select extends Apollos.Component
     self.error.set false
     self.status.set false
 
-    $(event.target.parentNode)
-      .addClass "input--active"
+    self.makeActive(event)
 
     parent = self.parent()
     if parent.find("form")
@@ -72,6 +78,14 @@ class Apollos.Forms.Select extends Apollos.Component
 
     self.error.set false
     self.status.set false
+
+  makeActive: (event) ->
+    self = @
+
+    unless self.inactive.get()
+      select = self.find("select")
+      $(select.parentNode)
+        .addClass "input--active"
 
   setStatus: (status, isError) ->
     self = @

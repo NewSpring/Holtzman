@@ -23,5 +23,5 @@ campus = Apollos._generateSchema
 
 Apollos.campuses.attachSchema campus
 
-if Meteor.isServer
+if Meteor.isServer and Apollos.api
   Apollos.api.addEndpoint "campuses", "campus"

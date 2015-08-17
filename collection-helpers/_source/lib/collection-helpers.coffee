@@ -1,7 +1,7 @@
 Apollos.documentHelpers =
 
 
-  translate: (singular, data, platform) ->
+  translate: (singular, data, platform, subName) ->
 
     if not platform
       Apollos.debug "must specify platform to translate to"
@@ -14,8 +14,7 @@ Apollos.documentHelpers =
       return
 
     # translate
-    return Apollos[singular]._dictionary[platform] data
-
+    return Apollos[singular]._dictionary[platform] data, subName
 
   ###
 
@@ -31,9 +30,9 @@ Apollos.documentHelpers =
     @param platform [String] platform to be updated from
 
   ###
-  update: (singular, plural, doc, platform) ->
+  update: (singular, plural, doc, platform, subName) ->
 
-    doc = Apollos[singular].translate doc, platform
+    doc = Apollos[singular].translate doc, platform, subName
 
     if not doc
       return
@@ -112,7 +111,7 @@ Apollos.documentHelpers =
     @param platform [String] platform initiating the delete
 
   ###
-  delete: (singular, plural, identifier, platform) ->
+  delete: (singular, plural, identifier, platform, subName) ->
 
     if typeof identifier is "number"
       singularIdKeyValue = {}
@@ -134,6 +133,7 @@ Apollos.documentHelpers =
     else
       doc.updatedBy = Apollos.name
 
+    # Can we async this?
     # We have to update this first so the collection hooks know what to do
     Apollos[plural].update(doc._id, {
       $set:
