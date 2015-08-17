@@ -74,6 +74,18 @@ Apollos.user.update = (user, platform) ->
   if not user
     return
 
+  query =
+    $or: [
+      "emails.address": user.emails[0].address
+    ]
+
+  exitingUser = Apollos.users.findOne(query)
+
+  if not exitingUser
+    tempPassword = String(Date.now() * Math.random())
+    userId = Apollos.user.create(user.emails[0].address, tempPassword)
+    user._id = userId
+
   if platform
     user.updatedBy = platform.toUpperCase()
   else

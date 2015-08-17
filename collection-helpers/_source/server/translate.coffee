@@ -10,6 +10,7 @@ Apollos.translate = (collection, platform, handler) ->
     return
 
   platform = platform.toUpperCase()
+
   Apollos[collection]._dictionary or= {}
 
   if Apollos[collection]._dictionary[platform]

@@ -9,7 +9,7 @@ Apollos.documentHelpers =
 
     platform = platform.toUpperCase()
 
-    if not Apollos[singular]._dictionary[platform]
+    if not Apollos[singular]._dictionary?[platform]
       Apollos.debug "no translation found for #{platform} in #{singular}"
       return
 
@@ -46,53 +46,55 @@ Apollos.documentHelpers =
     else
       doc.updatedBy = Apollos.name
 
-    query =
-      $or: [
-        singularIdKeyValue
-      ,
-        guid: RegExp(doc.guid, "i")
-      ]
+    # query =
+    #   $or: [
+    #     singularIdKeyValue
+    #   ,
+    #     guid: RegExp(doc.guid, "i")
+    #   ]
+    #
+    # matches = Apollos[plural].find query,
+    #   sort:
+    #     updatedDate: 1
+    #
+    # if matches.count() > 1
+    #   # Delete older documents, which are the first ones since they are sorted
+    #   ids = matches.map (m) ->
+    #     return m._id
+    #
+    #   ids.pop()
+    #
+    #   Apollos[plural].remove({
+    #     _id:
+    #       $in: ids
+    #   }, (err) ->
+    #     if err
+    #       throw new Meteor.Error err
+    #   )
+    #
+    #   matches = Apollos[plural].find(query)
+    #
+    # if matches.count() is 1
+    # existing = matches.fetch()[0]
+    # mongoId = existing._id
+    # console.log mongoId
+    Apollos[plural].upsert({
+      guid: RegExp(doc.guid, "i")
+    },
+    {
+      $set: doc
+    }, (err) ->
+      if err
+        throw new Meteor.Error err
+    )
 
-    matches = Apollos[plural].find query,
-      sort:
-        updatedDate: 1
-
-    if matches.count() > 1
-      # Delete older documents, which are the first ones since they are sorted
-      ids = matches.map (m) ->
-        return m._id
-
-      ids.pop()
-
-      Apollos[plural].remove({
-        _id:
-          $in: ids
-      }, (err) ->
-        if err
-          throw new Meteor.Error err
-      )
-
-      matches = Apollos[plural].find(query)
-
-    if matches.count() is 1
-      existing = matches.fetch()[0]
-      mongoId = existing._id
-
-      Apollos[plural].update(mongoId,
-      {
-        $set: doc
-      }, (err) ->
-        if err
-          throw new Meteor.Error err
-      )
-
-    else
-
-      # do we need to return this directly? Can we async this?
-      Apollos[plural].insert(doc, (err) ->
-        if err
-          throw new Meteor.Error err
-      )
+    # else
+    #
+    #   # do we need to return this directly? Can we async this?
+    #   Apollos[plural].insert(doc, (err) ->
+    #     if err
+    #       throw new Meteor.Error err
+    #   )
 
 
 
