@@ -79,7 +79,7 @@ class Apollos.Forms.DateInput extends Apollos.Forms.Input
       template = Blaze.renderWithData(
         template
         {calendarDate: self.calendarDate, container: self.data().container}
-        input.parentNode
+        input.parentNode.parentNode
       )
 
       self.calendarInstance = template
