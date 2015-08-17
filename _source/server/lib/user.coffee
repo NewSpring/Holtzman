@@ -116,8 +116,3 @@ Apollos.user.update = (user, platform) ->
       $set: user
 
     return usr._id
-
-
-Meteor.startup ->
-
-  Apollos.observe "users"

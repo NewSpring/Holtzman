@@ -47,12 +47,3 @@ Apollos.person.update = (person, platform) ->
 ###
 Apollos.person.delete = (person, platform) ->
   Apollos.documentHelpers.delete "person", "people", person, platform
-
-###
-
-  Update bindings
-
-###
-Meteor.startup ->
-
-  Apollos.observe "people"
