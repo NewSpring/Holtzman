@@ -1,0 +1,33 @@
+<template name="Apollos.Forms.ExpiryInput">
+
+  <div class="input {{#if error.get}}input--alert{{/if}}">
+
+    <label for="{{name}}">
+      {{#if label}}
+        {{label}}
+      {{else}}
+        {{name}}
+      {{/if}}
+    </label>
+
+    <input
+      name="{{name}}"
+      type="{{#if type}}{{type}}{{else}}{{name}}{{/if}}"
+      placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
+      value="{{#if preFill}}{{preFill}}{{/if}}"
+      id="{{name}}"
+      data-expiry-input
+    >
+
+    {{#if status.get}}
+
+      <span class="input__status">
+        {{status.get}}
+      </span>
+
+    {{/if}}
+
+  </div>
+
+
+</template>
