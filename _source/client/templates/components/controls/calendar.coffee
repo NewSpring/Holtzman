@@ -160,9 +160,8 @@ class Apollos.Controls.Calendar extends Apollos.Component
   adjustPosition: ->
     self = @
 
+    # @TODO: better way to do this?
     setTimeout(->
-      console.log "adjusting"
-
       container = self.data().container
       if container?.scrollHeight > container.offsetHeight
         difference = container.scrollHeight - container.offsetHeight
