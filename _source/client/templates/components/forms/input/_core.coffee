@@ -1,7 +1,9 @@
 
+Apollos.Forms or= {}
+
 class Apollos.Forms.Input extends Apollos.Component
 
-  @register "Apollos.Forms.Input"
+  @register "Apollos.Forms.InputCore"
 
 
   vars: -> [

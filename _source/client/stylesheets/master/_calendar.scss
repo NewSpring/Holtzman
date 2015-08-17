@@ -1,0 +1,37 @@
+.calendar {
+  position: absolute;
+  top: -140px;
+  left: 50%;
+  margin-left: -167px;
+  z-index: 50;
+  width: 334px;
+
+  .day {
+    width: 42px;
+    height: 40px;
+    line-height: 1.4;
+    cursor: pointer;
+    &.in-schedule {
+      margin-top: 3px !important;
+    }
+  }
+
+  .controls {
+    position: relative;
+    .fa {
+      position: absolute;
+      top: -2px;
+      font-size: 25px;
+    }
+    .fa-angle-left {
+      left: 20px;
+    }
+    .fa-angle-right {
+      right: 20px;
+    }
+    a {
+      text-decoration: none;
+      display: block;
+    }
+  }
+}

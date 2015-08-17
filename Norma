@@ -49,6 +49,8 @@ tasks:
         "raix:handlebar-helpers@0.2.4": "client"
         "arillo:flow-router-helpers@0.1.6": "client"
         "bjwiley2:request-data@0.0.3": "server"
+        "momentjs:moment@2.10.6": "both"
+        "gilbertwat:moment-recur@1.0.4": "both"
       export:
         "Apollos": "both"
         "HTTP": "server"
