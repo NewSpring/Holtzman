@@ -162,7 +162,7 @@ class Apollos.Controls.Calendar extends Apollos.Component
 
     # @TODO: better way to do this?
     setTimeout(->
-      container = self.data().container
+      container = $(self.data().container)[0]
       if container?.scrollHeight > container.offsetHeight
         difference = container.scrollHeight - container.offsetHeight
         $('section.calendar').css top: "-=#{difference}px"
