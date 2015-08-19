@@ -1,7 +1,9 @@
 
+Apollos.Forms or= {}
+
 class Apollos.Forms.Input extends Apollos.Component
 
-  @register "Apollos.Forms.Input"
+  @register "Apollos.Forms.InputCore"
 
 
   vars: -> [
@@ -12,6 +14,7 @@ class Apollos.Forms.Input extends Apollos.Component
     svgData:
       height: 40
       width: 54
+    inactive: @.data()?.inactive or false
 
   ]
 
@@ -51,8 +54,7 @@ class Apollos.Forms.Input extends Apollos.Component
     self = @
 
     # switch to junction when ready
-    $(event.target.parentNode)
-      .addClass "input--focused input--active"
+    self.makeActive()
 
     parent = self.parent()
 
@@ -65,6 +67,13 @@ class Apollos.Forms.Input extends Apollos.Component
         parent.hasErrors.set false
       else
         parent.children()[0]?.hasErrors?.set false
+
+  makeActive: ->
+    self = @
+
+    unless self.inactive.get()
+      $(event.target.parentNode)
+        .addClass "input--focused input--active"
 
   validate: (value) ->
 
