@@ -54,7 +54,7 @@ class profile.signIn extends Apollos.Component
 
         children[data.name] = child
 
-      email = children["email"].getValue()
+      email = children["email"]?.getValue()
       parent = self.parent()
 
       if email
