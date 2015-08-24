@@ -200,8 +200,19 @@ Apollos.user.resetPassword = (token, newPassword, callback) ->
 ###
 Apollos.user.changePassword = (oldPassword, newPassword, callback) ->
 
-  return Accounts.changePassword oldPassword, newPassword, callback
+  if Meteor.isServer
+    Apollos.users.update
+      _id: @.userId
+    ,
+      $set:
+        updatedBy: Apollos.name
+  else
+    Meteor.call "Apollos.user.changePassword", oldPassword, newPassword, ->
+      Accounts.changePassword oldPassword, newPassword, callback
 
 if Meteor.isServer
+  Meteor.methods
+    "Apollos.user.changePassword": Apollos.user.changePassword
+
   # TODO this is not secure
   Apollos.emailTemplates = Accounts.emailTemplates
