@@ -54,7 +54,7 @@ class Apollos.Forms.Input extends Apollos.Component
     self = @
 
     # switch to junction when ready
-    self.makeActive()
+    self.makeActive true
 
     parent = self.parent()
 
@@ -68,11 +68,15 @@ class Apollos.Forms.Input extends Apollos.Component
       else
         parent.children()[0]?.hasErrors?.set false
 
-  makeActive: ->
+  makeActive: (focused) ->
     self = @
 
     unless self.inactive.get()
-      $(self.find(".input")).addClass "input--focused input--active"
+      element = $(self.find(".input"))
+      element.addClass "input--active"
+
+      if focused
+        element.addClass "input--focused"
 
   validate: (value) ->
 
@@ -176,4 +180,4 @@ class Apollos.Forms.Input extends Apollos.Component
     self.find("input").value = value
 
     if value
-      self.makeActive()
+      self.makeActive false
