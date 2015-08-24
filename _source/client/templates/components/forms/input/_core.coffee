@@ -72,8 +72,7 @@ class Apollos.Forms.Input extends Apollos.Component
     self = @
 
     unless self.inactive.get()
-      $(event.target.parentNode)
-        .addClass "input--focused input--active"
+      $(self.find(".input")).addClass "input--focused input--active"
 
   validate: (value) ->
 
@@ -170,7 +169,11 @@ class Apollos.Forms.Input extends Apollos.Component
 
 
   setValue: (value) ->
+    self = @
 
     value or= ""
-    @.value.set value
-    @.find("input").value = value
+    self.value.set value
+    self.find("input").value = value
+
+    if value
+      self.makeActive()
