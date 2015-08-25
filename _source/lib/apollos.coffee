@@ -112,10 +112,35 @@ if Meteor.server
       if not user.personGuid
         user.personGuid = Apollos.utilities.makeNewGuid()
 
-      Apollos.people.upsert({guid: user.personGuid}, {
-        $set:
+      queryOrArray = []
+
+      if user.rock?.personId
+        queryOrArray.push
+          personId: user.rock.personId
+
+      if user.personGuid
+        queryOrArray.push
+          guid: RegExp(user.personGuid, "i")
+
+      if not queryOrArray.length
+        return user
+
+      existing = Apollos.people.find
+        $or: queryOrArray
+
+      if existing
+        Apollos.people.update existing._id,
+          $set:
+            guid: user.personGuid
+            personId: user.rock?.personId
+            preferredEmail: user.emails[0].address
+            updatedBy: user.updatedBy
+      else
+        Apollos.people.insert
+          guid: user.personGuid
+          personId: user.rock?.personId
           preferredEmail: user.emails[0].address
-      })
+          updatedBy: user.updatedBy
 
     return user
 
