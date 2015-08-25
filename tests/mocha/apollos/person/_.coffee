@@ -123,10 +123,10 @@ MochaWeb?.testOnly ->
               it "should have weddingYear", ->
                 assert typeof Apollos.person().weddingYear is "number"
                 assert.equal Apollos.person().weddingYear, 2000
-              it "should have personAliasIds", ->
-                assert.isArray Apollos.person().personAliasIds
-                assert.equal Apollos.person().personAliasIds[0], 1
-                assert.equal Apollos.person().personAliasIds[1], 2
+              it "should have aliases", ->
+                assert.isArray Apollos.person().aliases
+                assert.equal Apollos.person().aliases[0], 1
+                assert.equal Apollos.person().aliases[1], 2
               it "should have recordStatusValueId", ->
                 assert typeof Apollos.person().recordStatusValueId is "number"
                 assert.equal Apollos.person().recordStatusValueId, 3

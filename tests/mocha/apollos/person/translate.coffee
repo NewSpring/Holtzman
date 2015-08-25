@@ -83,7 +83,7 @@ MochaWeb?.testOnly ->
               assert.equal translate.cellPhone, '1123456789'
               assert.equal translate.homePhone, '1123456789'
               assert.equal translate.workPhone, '1123456789'
-              assert.equal translate.personAliasIds.length, 0
+              assert.equal translate.aliases.length, 0
 
           describe 'when person does exist', ->
 
@@ -116,7 +116,7 @@ MochaWeb?.testOnly ->
               assert.equal translate.cellPhone, '1123456789'
               assert.equal translate.homePhone, '1123456789'
               assert.equal translate.workPhone, '1123456789'
-              assert.equal translate.personAliasIds.length, 2
+              assert.equal translate.aliases.length, 2
 
             it 'should lookup by personId', ->
               person = getPersonProps()
@@ -147,7 +147,7 @@ MochaWeb?.testOnly ->
               assert.equal translate.cellPhone, '1123456789'
               assert.equal translate.homePhone, '1123456789'
               assert.equal translate.workPhone, '1123456789'
-              assert.equal translate.personAliasIds.length, 2
+              assert.equal translate.aliases.length, 2
 
 
 
