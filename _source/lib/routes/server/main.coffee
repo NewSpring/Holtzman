@@ -4,7 +4,7 @@ Apollos.api.addEndpoint "users", "user"
 Apollos.api.addEndpoint "people", "person"
 Apollos.api.addEndpoint "people", "person",
   nameForUrl: "aliases"
-  subDocName: "aliases"
+  subDocName: "alias"
 Apollos.api.addEndpoint "campuses", "campus"
 Apollos.api.addEndpoint "groups", "group"
 Apollos.api.addEndpoint "groupLocations", "groupLocation"
