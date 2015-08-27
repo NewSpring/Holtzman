@@ -81,7 +81,6 @@ Apollos.person = (user) ->
     person = Apollos.people.findOne
       guid: new RegExp(user.personGuid, "i")
 
-
   # we shouldnt have any code for rock in the core package
   # this will probably need to adjust the rock package
 
@@ -99,48 +98,62 @@ Apollos.person = (user) ->
 if Meteor.server
   Accounts.onCreateUser (options, user) ->
 
+    user.updatedBy or= Apollos.name
+
     if options.profile
       user.profile = options.profile
 
     if user.profile?.guest is true
       return user
 
-    person = Apollos.person user
+    email = user.emails[0].address
+    console.log email
+    Meteor.setTimeout ->
+      console.log email
+      user = Apollos.users.findOne "emails.address": email
+      console.log user
+      person = Apollos.person user
 
-    # # no existing user so create one
-    if not Object.keys(person).length
-      if not user.personGuid
-        user.personGuid = Apollos.utilities.makeNewGuid()
+      # # no existing user so create one
+      if not Object.keys(person).length
+        if not user.personGuid
+          personGuid = Apollos.utilities.makeNewGuid()
+          console.log personGuid
+          Apollos.users.update user._id,
+            $set:
+              personGuid: personGuid
+              updatedBy: Apollos.name
 
-      queryOrArray = []
+        queryOrArray = []
 
-      if user.rock?.personId
-        queryOrArray.push
-          personId: user.rock.personId
+        if user.rock?.personId
+          queryOrArray.push
+            personId: user.rock.personId
 
-      if user.personGuid
-        queryOrArray.push
-          guid: RegExp(user.personGuid, "i")
+        if personGuid
+          queryOrArray.push
+            guid: RegExp(personGuid, "i")
 
-      if not queryOrArray.length
-        return user
+        if not queryOrArray.length
+          return user
 
-      existing = Apollos.people.find
-        $or: queryOrArray
+        existing = Apollos.people.findOne
+          $or: queryOrArray
 
-      if existing
-        Apollos.people.update existing._id,
-          $set:
-            guid: user.personGuid
+        if existing
+          Apollos.people.update existing._id,
+            $set:
+              guid: personGuid
+              personId: user.rock?.personId
+              preferredEmail: user.emails[0].address
+              updatedBy: Apollos.name
+        else
+          Apollos.people.insert
+            guid: personGuid
             personId: user.rock?.personId
             preferredEmail: user.emails[0].address
-            updatedBy: user.updatedBy
-      else
-        Apollos.people.insert
-          guid: user.personGuid
-          personId: user.rock?.personId
-          preferredEmail: user.emails[0].address
-          updatedBy: user.updatedBy
+            updatedBy: Apollos.name
+    , 1000
 
     return user
 
