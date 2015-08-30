@@ -1,0 +1,54 @@
+<template name="Apollos.Controls.Calendar">
+
+  <section class="calendar background--light hard outlined--light">
+    <div class="background--light-secondary">
+      <div class="controls">
+        <a data-month="prev" href="#" class="fa fa-angle-left text-dark"></a>
+        <h5 class="text-center text-primary push-top">{{month}}</h5>
+        <a data-month="next" href="#" class="fa fa-angle-right text-dark"></a>
+      </div>
+
+      {{#each headerDays}}
+        <span class="day soft-half text-center display-inline-block h7 flush-bottom">{{day}}</span>
+      {{/each}}
+
+    </div>
+
+    {{#each days}}
+
+      <span data-day="{{unix}}" class="
+        day
+        soft-half
+        text-center
+        display-inline-block
+        h6
+        push-quarter-ends
+        {{#if notThisMonth}}text-light-tertiary{{/if}}
+        {{#if inSchedule}}
+          {{#if selected}}
+            icon--filled
+          {{else}}
+            {{#unless notThisMonth}}
+              text-primary
+              icon--outlined-primary-half
+              in-schedule
+            {{/unless}}
+          {{/if}}
+        {{/if}}
+      ">
+        {{day}}
+      </span>
+
+      {{#if endRow index}}
+        <br>
+      {{/if}}
+
+    {{/each}}
+
+    <div class="background--light-secondary text-center">
+      <a href="#" data-dismiss class="btn display-inline-block push-ends">Done</a>
+    </div>
+
+  </section>
+
+</template>
