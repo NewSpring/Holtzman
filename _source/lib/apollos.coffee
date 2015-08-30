@@ -107,18 +107,15 @@ if Meteor.server
       return user
 
     email = user.emails[0].address
-    console.log email
+
     Meteor.setTimeout ->
-      console.log email
       user = Apollos.users.findOne "emails.address": email
-      console.log user
       person = Apollos.person user
 
       # # no existing user so create one
       if not Object.keys(person).length
         if not user.personGuid
           personGuid = Apollos.utilities.makeNewGuid()
-          console.log personGuid
           Apollos.users.update user._id,
             $set:
               personGuid: personGuid

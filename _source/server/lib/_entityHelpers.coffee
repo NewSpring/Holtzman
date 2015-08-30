@@ -38,40 +38,45 @@ Apollos.documentHelpers =
       return
 
     singularIdKeyValue = {}
-    singularIdKeyValue["#{singular}Id"] = doc["#{singular}Id"]
+    singularId = doc["#{singular}Id"]
+    singularIdKeyValue["#{singular}Id"] = singularId
 
     if platform
       doc.updatedBy = platform.toUpperCase()
     else
       doc.updatedBy = Apollos.name
 
-    query =
-      $or: [
-        singularIdKeyValue
-      ,
-        guid: RegExp(doc.guid, "i")
-      ]
+    orArray = []
 
-    matches = Apollos[plural].find query,
-      sort:
-        updatedDate: 1
+    if singularId
+      orArray.push singularIdKeyValue
 
-    if matches.count() > 1
-      # Delete older documents, which are the first ones since they are sorted
-      ids = matches.map (m) ->
-        return m._id
+    if doc.guid
+      orArray.push guid: RegExp(doc.guid, "i")
 
-      ids.pop()
+    if orArray.length
+      query = $or: orArray
+      matches = Apollos[plural].find query,
+        sort:
+          updatedDate: 1
 
+      if matches.count() > 1
+        # Delete older documents, which are the first ones since they are sorted
+        ids = matches.map (m) ->
+          return m._id
 
-      # can we make this async?
-      Apollos[plural].remove
-        _id:
-          $in: ids
+        ids.pop()
+        Apollos.debug "Removing #{ids.length} duplicate(s) from #{plural}",
+          query
 
-      matches = Apollos[plural].find(query)
+        # can we make this async?
+        Apollos[plural].remove
+          _id:
+            $in: ids
 
-    if matches.count() is 1
+        matches = Apollos[plural].find(query)
+
+    if matches and matches.count() is 1
       existing = matches.fetch()[0]
       mongoId = existing._id
 

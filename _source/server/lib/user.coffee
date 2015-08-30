@@ -70,35 +70,37 @@ Apollos.user.delete = (user, platform) ->
 Apollos.user.update = (user, platform) ->
 
   user = Apollos.user.translate user, platform
+  orArray = []
 
-  query =
-    $or: [
-      "rock.userLoginId": user.rock.userLoginId
-    ]
-
-  if user.emails and user.emails[0] and user.emails[0].address
+  if user.rock?.userLoginId
+    orArray.push "rock.userLoginId": user.rock.userLoginId
+  if user.rock?.guid
+    orArray.push "rock.guid": new RegExp(user.rock.guid, "i")
+  if user.emails?[0]?.address
     hasEmail = true
-    query["$or"].push
-      "emails.address": user.emails[0].address
+    orArray.push "emails.address": user.emails[0].address
 
-  users = Apollos.users.find(query).fetch()
+  if not orArray.length
+    Apollos.debug "Discarding unidentifiable user document intended for update",
+      user
+    return
 
-  if users.length > 1
-    ids = []
+  query = $or: orArray
+  users = Apollos.users.find query
 
-    users.forEach (usr) ->
-      ids.push usr._id
+  if users.count() > 1
+    ids = users.map (u) -> u._id
 
     throw new Meteor.Error "Rock sync issue", "User doc ids #{ids.join ", "}
       need investigated because they seem to be duplicates"
 
-  else if users.length is 0 and hasEmail
+  else if users.count() is 0 and hasEmail
     tempPassword = String(Date.now() * Math.random())
     userId = Apollos.user.create(user.emails[0].address, tempPassword)
     usr = Apollos.users.findOne userId
 
   else
-    usr = users[0]
+    usr = users.fetch()[0]
 
   if platform
     user.updatedBy = platform.toUpperCase()
