@@ -123,8 +123,5 @@ person = Apollos.generateSchema
   "locations.$":
     blackbox: true
     optional: true
-  campusId:
-    type: Number
-    optional: true
 
 Apollos.people.attachSchema person

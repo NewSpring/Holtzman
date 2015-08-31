@@ -5,4 +5,4 @@ Accounts.onLogin ->
   if personHandle
     personHandle.stop()
 
-  personHandle = Meteor.subscribe "person"
+  personHandle = Meteor.subscribe "personAndFamilyGroup"
