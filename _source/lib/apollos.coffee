@@ -81,19 +81,18 @@ Apollos.person = (user) ->
     person = Apollos.people.findOne
       guid: new RegExp(user.personGuid, "i")
 
-  # we shouldnt have any code for rock in the core package
+  # TODO we shouldnt have any code for rock in the core package
   # this will probably need to adjust the rock package
 
-  # if not person and user.rock and user.rock.personId
-  #   person = Apollos.people.findOne
-  #     personId: user.rock.personId
+  # PersonGuid would fall into the same category.  The only difference is that
+  # it doesn't live under the rock object, though it should.
+  # In fact, all relationships are made through Rock Ids and guids, which means
+  # all relationships need to be resolved within apollos-rock
+  if not person and user.rock?.personId
+    person = Apollos.people.findOne
+      personId: user.rock.personId
 
   return person or {}
-
-
-
-
-
 
 if Meteor.server
   Accounts.onCreateUser (options, user) ->
