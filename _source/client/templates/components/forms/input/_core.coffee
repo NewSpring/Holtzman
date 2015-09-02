@@ -38,9 +38,11 @@ class Apollos.Forms.Input extends Apollos.Component
 
     self = @
 
-    if not self.value.get() and self.data()?.preFill
-      self.setValue self.data().preFill
-
+    if not self.value.get()
+      self.autorun (handle) ->
+        if not self.value.get() and self.data()?.preFill
+          self.setValue self.data().preFill
+          handle.stop()
 
     self.autorun ->
       value = self.value.get()
