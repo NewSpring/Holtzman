@@ -22,7 +22,7 @@ Apollos.name = "Apollos"
 Apollos.user = (id) ->
 
   if Meteor.isServer
-    return {}
+    user = Meteor.users.findOne id
 
   if Meteor.isClient
     user = Meteor.user()
