@@ -1,4 +1,3 @@
-
 Apollos.groupLocations = new Mongo.Collection "groupLocations"
 
 groupLocation = Apollos.generateSchema
@@ -18,3 +17,5 @@ groupLocation = Apollos.generateSchema
   locationId:
     type: Number
     decimal: false
+
+Apollos.groupLocations.attachSchema groupLocation
