@@ -1,0 +1,26 @@
+name: "apollos-namespace"
+tasks:
+
+  javascript:
+    src: "_source/**/*"
+    dest: "lib/"
+
+  markup:
+    src: "_source/**/*"
+    dest: "lib/"
+    minify: true
+
+  sass:
+    src: "_source/**/*"
+    dest: "lib/"
+    comb: true
+    lint: true
+
+  "meteor-load":
+    src: "lib/**/*"
+    dest: "./"
+    org: "newspring"
+    package:
+      versionsFrom: "1.1.0.2"
+      export:
+        "Apollos": "both"

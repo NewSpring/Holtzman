@@ -1,0 +1,48 @@
+<head>
+  <title>Page Title</title>
+  <link href="//dg0ddngxdz549.cloudfront.net/newspring/icons/favicon.ico?v=4" rel="shortcut icon" type="image/x-icon">
+  <link href="//dg0ddngxdz549.cloudfront.net/newspring/icons/apple.touch.png" rel="apple-touch-icon" type="image/x-icon">
+  <link href="//dg0ddngxdz549.cloudfront.net/newspring/icons/apple.touch.small.png" rel="apple-touch-icon" sizes="72x72" type="image/x-icon">
+  <link href="//dg0ddngxdz549.cloudfront.net/newspring/icons/apple.touch.medium.png" rel="apple-touch-icon" sizes="114x114" type="image/x-icon">
+  <link href="//dg0ddngxdz549.cloudfront.net/newspring/icons/apple.touch.large.png" rel="apple-touch-icon" sizes="196x196" type="image/x-icon">
+  <link href="//dg0ddngxdz549.cloudfront.net/newspring/icons/apple.touch.large.png" rel="shortcut icon" sizes="196x196">
+
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width" name="viewport">
+  <meta content="telephone=no" name="format-detection">
+  <meta content="user-scalable=1, width=device-width, initial-scale=1.0, maximum-scale=2.0" name="viewport">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+  <link rel="stylesheet" href="//s3.amazonaws.com/cdn.newspring.cc/newspring/master.css">
+</head>
+
+<body>
+
+  {{> Dropzone}}
+
+  {{> Images}}
+
+</body>
+
+
+<template name="Dropzone">
+
+  <div id="dropzone" class="soft-double one-whole background--primary">
+    <div>
+      <h4 class="text-white">Drop file(s) here to upload</h4>
+      <h6 class="text-white">Uploading: {{ FS.UploadProgress }}%</h6>
+    </div>
+  </div>
+
+  {{> Apollos.Controls.UploadProgress}}
+
+</template>
+
+
+<template name="Images">
+  {{#each images}}
+    <img src="{{this.url}}" />
+  {{/each}}
+
+</template>

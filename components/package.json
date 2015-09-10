@@ -1,0 +1,11 @@
+{
+  "name": "apollos-components",
+  "version": "0.1.0",
+  "description": "Blaze based component library for Apollos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
