@@ -1,20 +1,15 @@
 Apollos.schemas = {}
 
-Apollos.generateSchema = (name, excludeTrackingFields, schema) ->
+Apollos.generateSchema = (name, schema, excludeTrackingFields) ->
 
-  if typeof(name) is "object"
+  if not excludeTrackingFields and typeof schema is "boolean"
+    excludeTrackingFields = schema
     schema = name
     name = false
-    excludeTrackingFields = false
 
-  else if typeof(name) is "boolean"
-    schema = excludeTrackingFields
-    excludeTrackingFields = name
+  else if not schema and typeof name isnt "string"
+    schema = name
     name = false
-
-  else if typeof(excludeTrackingFields) is "object"
-    schema = excludeTrackingFields
-    excludeTrackingFields = false
 
   if not excludeTrackingFields
 
