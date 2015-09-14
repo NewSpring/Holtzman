@@ -95,6 +95,11 @@ Apollos.person = (user) ->
   return person or {}
 
 if Meteor.server
+  Apollos.user.onCreate = (func) ->
+    Apollos.user.onCreate.functions.push func
+
+  Apollos.user.onCreate.functions = []
+
   Accounts.onCreateUser (options, user) ->
 
     user.updatedBy or= Apollos.name
@@ -102,54 +107,8 @@ if Meteor.server
     if options.profile
       user.profile = options.profile
 
-    if user.profile?.guest is true
-      return user
-
-    email = user.emails[0].address
-
-    Meteor.setTimeout ->
-      user = Apollos.users.findOne "emails.address": email
-      person = Apollos.person user
-
-      # # no existing user so create one
-      if not Object.keys(person).length
-        if not user.personGuid
-          personGuid = Apollos.utilities.makeNewGuid()
-          Apollos.users.update user._id,
-            $set:
-              personGuid: personGuid
-              updatedBy: Apollos.name
-
-        queryOrArray = []
-
-        if user.rock?.personId
-          queryOrArray.push
-            personId: user.rock.personId
-
-        if personGuid
-          queryOrArray.push
-            guid: RegExp(personGuid, "i")
-
-        if not queryOrArray.length
-          return user
-
-        existing = Apollos.people.findOne
-          $or: queryOrArray
-
-        if existing
-          Apollos.people.update existing._id,
-            $set:
-              guid: personGuid
-              personId: user.rock?.personId
-              preferredEmail: user.emails[0].address
-              updatedBy: Apollos.name
-        else
-          Apollos.people.insert
-            guid: personGuid
-            personId: user.rock?.personId
-            preferredEmail: user.emails[0].address
-            updatedBy: Apollos.name
-    , 1000
+    for func in Apollos.user.onCreate.functions
+      func options, user
 
     return user
 
@@ -240,6 +199,13 @@ Apollos.user.changePassword = (oldPassword, newPassword, callback) ->
     ,
       $set:
         updatedBy: Apollos.name
+    , (error) ->
+      if error
+        Apollos.debug error
+
+      if callback
+        callback()
+
   else
     Meteor.call "Apollos.user.changePassword", oldPassword, newPassword, ->
       Accounts.changePassword oldPassword, newPassword, callback
