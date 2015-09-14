@@ -1,5 +1,17 @@
 Apollos.helpers or= {}
 
+Apollos.helpers.frequencies = ->
+  [
+    "Once"
+    "Week"
+    "2 weeks"
+    "1st & 15th"
+    "Month"
+    "Quarter"
+    "6 months"
+    "Year"
+  ]
+
 Apollos.helpers.getInterval = (frequency, start) ->
 
   if frequency and Apollos.validate.isGuid frequency
