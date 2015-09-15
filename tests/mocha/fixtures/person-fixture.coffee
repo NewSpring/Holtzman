@@ -49,7 +49,7 @@ addPersonWithKeys = ->
     weddingDay: 1
     weddingMonth: 1
     weddingYear: 2000
-    personAliasIds: [1,2]
+    aliases: [1,2]
     recordStatusValueId: 3
     communicationPreference: 1
 
@@ -78,7 +78,7 @@ addPersonWithKeys = ->
     weddingDay: 1
     weddingMonth: 1
     weddingYear: 2000
-    personAliasIds: [1,2]
+    aliases: [1,2]
     recordStatusValueId: 3
     communicationPreference: 1
 

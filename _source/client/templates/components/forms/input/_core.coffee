@@ -3,7 +3,7 @@ Apollos.Forms or= {}
 
 class Apollos.Forms.Input extends Apollos.Component
 
-  @register "Apollos.Forms.InputCore"
+  @register "Apollos.Forms.Input"
 
 
   vars: -> [
@@ -38,9 +38,11 @@ class Apollos.Forms.Input extends Apollos.Component
 
     self = @
 
-    if not self.value.get() and self.data()?.preFill
-      self.setValue self.data().preFill
-
+    if not self.value.get()
+      self.autorun (handle) ->
+        if not self.value.get() and self.data()?.preFill
+          self.setValue self.data().preFill
+          handle.stop()
 
     self.autorun ->
       value = self.value.get()
@@ -54,7 +56,7 @@ class Apollos.Forms.Input extends Apollos.Component
     self = @
 
     # switch to junction when ready
-    self.makeActive()
+    self.makeActive true
 
     parent = self.parent()
 
@@ -68,12 +70,15 @@ class Apollos.Forms.Input extends Apollos.Component
       else
         parent.children()[0]?.hasErrors?.set false
 
-  makeActive: ->
+  makeActive: (focused) ->
     self = @
 
     unless self.inactive.get()
-      $(event.target.parentNode)
-        .addClass "input--focused input--active"
+      element = $(self.find(".input"))
+      element.addClass "input--active"
+
+      if focused
+        element.addClass "input--focused"
 
   validate: (value) ->
 
@@ -170,7 +175,11 @@ class Apollos.Forms.Input extends Apollos.Component
 
 
   setValue: (value) ->
+    self = @
 
     value or= ""
-    @.value.set value
-    @.find("input").value = value
+    self.value.set value
+    self.find("input").value = value
+
+    if value
+      self.makeActive false

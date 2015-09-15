@@ -69,7 +69,7 @@ class Apollos.Forms.Select extends Apollos.Component
     self.error.set false
     self.status.set false
 
-    self.makeActive(event)
+    self.makeActive()
 
     parent = self.parent()
     if parent.find("form")
@@ -79,7 +79,7 @@ class Apollos.Forms.Select extends Apollos.Component
     self.error.set false
     self.status.set false
 
-  makeActive: (event) ->
+  makeActive: ->
     self = @
 
     unless self.inactive.get()
@@ -105,11 +105,12 @@ class Apollos.Forms.Select extends Apollos.Component
     return @.value.get()
 
   setValue: (value) ->
-
-    @.value.set value
+    self = @
+    self.value.set value
 
     if value
-      @.find("select").value = value
+      self.find("select").value = value
+      self.makeActive()
       return
 
   selected: (val) ->

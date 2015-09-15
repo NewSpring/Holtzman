@@ -22,7 +22,7 @@ Apollos.name = "Apollos"
 Apollos.user = (id) ->
 
   if Meteor.isServer
-    return {}
+    user = Meteor.users.findOne id
 
   if Meteor.isClient
     user = Meteor.user()
@@ -81,41 +81,34 @@ Apollos.person = (user) ->
     person = Apollos.people.findOne
       guid: new RegExp(user.personGuid, "i")
 
-
-  # we shouldnt have any code for rock in the core package
+  # TODO we shouldnt have any code for rock in the core package
   # this will probably need to adjust the rock package
 
-  # if not person and user.rock and user.rock.personId
-  #   person = Apollos.people.findOne
-  #     personId: user.rock.personId
+  # PersonGuid would fall into the same category.  The only difference is that
+  # it doesn't live under the rock object, though it should.
+  # In fact, all relationships are made through Rock Ids and guids, which means
+  # all relationships need to be resolved within apollos-rock
+  if not person and user.rock?.personId
+    person = Apollos.people.findOne
+      personId: user.rock.personId
 
   return person or {}
 
-
-
-
-
-
 if Meteor.server
+  Apollos.user.onCreate = (func) ->
+    Apollos.user.onCreate.functions.push func
+
+  Apollos.user.onCreate.functions = []
+
   Accounts.onCreateUser (options, user) ->
+
+    user.updatedBy or= Apollos.name
 
     if options.profile
       user.profile = options.profile
 
-    if user.profile?.guest is true
-      return user
-
-    person = Apollos.person user
-
-    # # no existing user so create one
-    if not Object.keys(person).length
-      if not user.personGuid
-        user.personGuid = Apollos.utilities.makeNewGuid()
-
-      Apollos.people.upsert({guid: user.personGuid}, {
-        $set:
-          preferredEmail: user.emails[0].address
-      })
+    for func in Apollos.user.onCreate.functions
+      func options, user
 
     return user
 
@@ -200,8 +193,26 @@ Apollos.user.resetPassword = (token, newPassword, callback) ->
 ###
 Apollos.user.changePassword = (oldPassword, newPassword, callback) ->
 
-  return Accounts.changePassword oldPassword, newPassword, callback
+  if Meteor.isServer
+    Apollos.users.update
+      _id: @.userId
+    ,
+      $set:
+        updatedBy: Apollos.name
+    , (error) ->
+      if error
+        Apollos.debug error
+
+      if callback
+        callback()
+
+  else
+    Meteor.call "Apollos.user.changePassword", oldPassword, newPassword, ->
+      Accounts.changePassword oldPassword, newPassword, callback
 
 if Meteor.isServer
+  Meteor.methods
+    "Apollos.user.changePassword": Apollos.user.changePassword
+
   # TODO this is not secure
   Apollos.emailTemplates = Accounts.emailTemplates

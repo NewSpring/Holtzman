@@ -21,7 +21,7 @@ class Apollos.Forms.Form extends Apollos.Component
 
 
   paramaterize: (string) ->
-    if string isnt undefined
+    if string
       string = string.trim()
       string = string.replace /[^a-zA-Z0-9-\s]/g, ''
       string = string.replace /[^a-zA-Z0-9-]/g, '-'
