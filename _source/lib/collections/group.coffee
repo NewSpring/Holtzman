@@ -27,3 +27,5 @@ group = Apollos.generateSchema
   name:
     type: String
     optional: true
+
+Apollos.groups.attachSchema group

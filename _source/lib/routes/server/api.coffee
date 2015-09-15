@@ -20,8 +20,6 @@ _unexpectedError = 500
 _authenticatePlatform = (collection) ->
 
   sentToken = @.requestHeaders[Apollos.api.tokenName]
-  console.log @.requestHeaders
-  console.log sentToken
 
   for name, details of Apollos.api.platforms
     token = details.token

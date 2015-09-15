@@ -17,5 +17,4 @@ class Apollos.profile.onBoard extends Apollos.Component
 
   dismiss: ->
     self = @
-
-    self.parent().destroy()
+    self.parent().destroy?()

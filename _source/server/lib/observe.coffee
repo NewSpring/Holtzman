@@ -89,9 +89,9 @@ startObserveIfNeeded = (collection) ->
 
     removed: (oldDoc) ->
 
-      Apollos[collection].deleted or= {}
+      Apollos[collection].removed or= {}
 
-      for platform, handle of Apollos[collection].deleted
+      for platform, handle of Apollos[collection].removed
         handle oldDoc
 
 

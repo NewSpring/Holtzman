@@ -107,7 +107,7 @@ person = Apollos.generateSchema
     min: 1900
     max: 2050
     optional: true
-  personAliasIds:
+  aliases:
     type: [Number]
     optional: true
   recordStatusValueId:
@@ -122,9 +122,6 @@ person = Apollos.generateSchema
     optional: true
   "locations.$":
     blackbox: true
-    optional: true
-  campusId:
-    type: Number
     optional: true
 
 Apollos.people.attachSchema person

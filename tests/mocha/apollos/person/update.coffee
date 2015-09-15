@@ -84,7 +84,7 @@ MochaWeb?.testOnly ->
               assert.equal update.cellPhone, '1123456789'
               assert.equal update.homePhone, '1123456789'
               assert.equal update.workPhone, '1123456789'
-              assert.equal update.personAliasIds.length, 0
+              assert.equal update.aliases.length, 0
               assert.equal update.updatedBy, 'Rock'
 
           describe 'when known person', ->
@@ -120,7 +120,7 @@ MochaWeb?.testOnly ->
               assert.equal update.cellPhone, '1123456789'
               assert.equal update.homePhone, '1123456789'
               assert.equal update.workPhone, '1123456789'
-              assert.equal update.personAliasIds.length, 2
+              assert.equal update.aliases.length, 2
               assert.equal update.updatedBy, 'Rock'
 
             it 'should update by personId', ->
@@ -154,6 +154,6 @@ MochaWeb?.testOnly ->
               assert.equal update.cellPhone, '1123456789'
               assert.equal update.homePhone, '1123456789'
               assert.equal update.workPhone, '1123456789'
-              assert.equal update.personAliasIds.length, 2
+              assert.equal update.aliases.length, 2
               assert.equal update.updatedBy, 'Rock'
 

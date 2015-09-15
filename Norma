@@ -54,6 +54,7 @@ tasks:
       export:
         "Apollos": "both"
         "HTTP": "server"
+        "moment": "both"
 
   # "compile-test":
   #   "@extend": "javascript"

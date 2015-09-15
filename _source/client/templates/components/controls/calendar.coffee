@@ -137,25 +137,10 @@ class Apollos.Controls.Calendar extends Apollos.Component
 
   getSchedule: ->
     self = @
-
     frequency = self.parent().parent().frequencyType.get()
     today = self.today.get()
-
-    switch frequency
-      when "Once"
-        return moment(today).recur(today)
-      when "Weekly"
-        return moment(today).recur().every(1).weeks()
-      when "Biweekly"
-        return moment(today).recur().every(2).weeks()
-      when "Twice Monthly"
-        return moment(today).recur().every([1,15]).daysOfMonth()
-      when "Monthly"
-        return moment(today).recur().every(1).months()
-      when "Quarterly"
-        return moment(today).recur().every(3).months()
-      when "Yearly"
-        return moment(today).recur().every(1).years()
+    interval = Apollos.helpers.getInterval frequency, today
+    return interval
 
   adjustPosition: ->
     self = @
@@ -167,4 +152,3 @@ class Apollos.Controls.Calendar extends Apollos.Component
         difference = container.scrollHeight - container.offsetHeight
         $('section.calendar').css top: "-=#{difference}px"
     , 100)
-

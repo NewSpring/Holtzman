@@ -1,4 +1,4 @@
-
+Apollos.person.alias = {}
 
 ###
 
@@ -12,8 +12,8 @@
   @param platform [String] platform to be translated to
 
 ###
-Apollos.person.translate = (person, platform) ->
-  return Apollos.documentHelpers.translate "person", person, platform
+Apollos.person.translate = (person, platform, subName) ->
+  return Apollos.documentHelpers.translate "person", person, platform, subName
 
 
 
@@ -35,6 +35,22 @@ Apollos.person.update = (person, platform) ->
 
 ###
 
+  Apollos.person.alias.update
+
+  @example update a person alias in apollos with data from another service
+
+    Apollos.person.alias.update([obj, platform])
+
+  @param person [Object] existing person from other service to be updated
+  @param platform [String] platform to be update from
+
+###
+Apollos.person.alias.update = (person, platform) ->
+  return Apollos.documentHelpers.update "person", "people", person, platform,
+    "alias"
+
+###
+
   Apollos.person.delete
 
   @example take a person and delete it
@@ -47,3 +63,18 @@ Apollos.person.update = (person, platform) ->
 ###
 Apollos.person.delete = (person, platform) ->
   Apollos.documentHelpers.delete "person", "people", person, platform
+
+###
+
+  Apollos.person.alias.delete
+
+  @example take a person alias and delete it
+
+    Apollos.person.alias.delete(user, [platform])
+
+  @param person [Object|String|Number] existing document, _id
+  @param platform [String] platform initiating the delete
+
+###
+Apollos.person.alias.delete = (person, platform) ->
+  Apollos.documentHelpers.delete "person", "people", person, platform, "alias"
