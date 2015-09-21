@@ -1,0 +1,10 @@
+<template name="Apollos.waitForSubscriptions">
+  {{#if parent.subscriptionsReady}}
+    {{> UI.contentBlock}}
+  {{else}}
+    <h4 class="text-center push-ends">
+      Loading...
+    </h4>
+    {{> Apollos.Loading.Spinner}}
+  {{/if}}
+</template>
