@@ -1,6 +1,9 @@
 Apollos.people = new Mongo.Collection "people"
 
 person = Apollos.generateSchema
+  campusId:
+    type: Number
+    optional: true
   userId:
     type: String
     optional: true
