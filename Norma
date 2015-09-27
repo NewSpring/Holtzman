@@ -70,6 +70,7 @@ tasks:
         "$": "client"
         "Tracker": "both"
         "Session": "client"
+        "FlowRouter": "both"
 
   # "compile-test":
   #   "@extend": "javascript"
