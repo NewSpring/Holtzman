@@ -1,4 +1,2 @@
-
-Apollos.Router.middleware (path, next) ->
+Apollos.Router.triggers.enter (context, redirect) ->
   window.scrollTo 0,0
-  next()
