@@ -68,14 +68,13 @@ Meteor.startup ->
 
       if window.getComputedStyle
 
-        loop
+        handle = Meteor.setInterval ->
           currentSize = window.getComputedStyle(
             trackingElement, ":before" # no pseudo support in IE 9, 10 :(
           ).getPropertyValue("content")
-          break if currentSize
-          setTimeout ->
-            {}
-          , 200
+          if currentSize
+            Meteor.clearInterval handle
+        , 200
 
         currentHeight = window.getComputedStyle(
           heightTrackingElement, ":before" # no pseudo support in IE 9, 10 :(
@@ -90,7 +89,7 @@ Meteor.startup ->
     window.addEventListener "resize", debouncedGetSize, false
 
     # fire once for on load checking
-    getSize()
+    Meteor.defer getSize
 
   # register global helper for media queries
   Template.registerHelper "MediaQuery", (size) ->

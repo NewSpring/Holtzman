@@ -74,7 +74,7 @@ class Apollos.Forms.Select extends Apollos.Component
     parent = self.parent()
     if parent.find("form")
       # account for from being child
-      parent.children()[0].hasErrors.set false
+      parent.children()[0].hasErrors?.set false
 
     self.error.set false
     self.status.set false

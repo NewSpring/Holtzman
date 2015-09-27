@@ -78,7 +78,9 @@ Apollos.registerLogin = (name, loginMethod) ->
     )
 
   if Meteor.isServer
-    Meteor.methods {"Apollos.login.#{name}": loginMethod}
+    method = {}
+    method["Apollos.login.#{name}"] = loginMethod
+    Meteor.methods method
     return
 
   if Meteor.isClient

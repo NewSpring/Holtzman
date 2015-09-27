@@ -1,6 +1,10 @@
 <template name="Apollos.Forms.Select">
 
-  <div class="input fa fa-caret-down one-whole {{#if error.get}}input--alert{{/if}} {{component.data.class}}">
+  <div class="
+    input fa fa-caret-down one-whole
+    {{#if error.get}}input--alert{{/if}}
+    {{component.data.class}}
+    {{#if preFill}}input--active{{/if}}">
 
     <select name="{{name}}" class="{{component.data.selectClass}}">
       {{#if includeBlank}}
