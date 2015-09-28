@@ -1,3 +1,4 @@
+###
 name: "apollos-core"
 
 tasks:
@@ -142,3 +143,4 @@ tasks:
 #
 # Testing
 test: "meteor --test --settings settings/development.json --release velocity:METEOR@1.1.0.2_2"
+###
