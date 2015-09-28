@@ -65,11 +65,6 @@ tasks:
       export:
         "Apollos": "both"
         "HTTP": "server"
-        "moment": "both"
-        "Mongo": "both"
-        "$": "client"
-        "Tracker": "both"
-        "Session": "client"
         "FlowRouter": "both"
 
   # "compile-test":
