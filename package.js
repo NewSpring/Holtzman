@@ -22,7 +22,6 @@ Package.onUse(function(api) {
   api.use("session@1.1.1");
   api.use("tracker@1.0.8");
   api.use("reload@1.1.4");
-  api.use("spacebars@1.0.7");
   api.use("mongo@1.1.1");
   api.use("http@1.1.0");
   api.use("reactive-var@1.0.5");
@@ -38,7 +37,6 @@ Package.onUse(function(api) {
   api.use("bjwiley2:request-data@0.0.3", "server");
   api.use("momentjs:moment@2.10.6");
   api.use("gilbertwat:moment-recur@1.0.4");
-
 
   api.addFiles("lib/lib/_vars.js");
   api.addFiles("lib/lib/debug.coffee");
