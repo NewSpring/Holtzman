@@ -11,7 +11,7 @@ Package.describe({
 Package.onUse(function(api) {
 
 
-  api.versionsFrom("1.2.0.1");
+  api.versionsFrom("1.2.0.2");
   api.use('fourseven:scss@3.2.0');
   api.use('coffeescript@1.0.9');
   api.use("jquery", "client");
