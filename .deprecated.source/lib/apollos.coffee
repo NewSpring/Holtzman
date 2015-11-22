@@ -7,7 +7,7 @@
     console.log Apollos.name
 
 ###
-Apollos.name = "Apollos"
+# Apollos.name = "Apollos"
 
 
 ###
