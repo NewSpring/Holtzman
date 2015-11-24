@@ -1,6 +1,7 @@
 
-import Lib from "./lib/index"
-import Client from "./client/index"
-import Server from "./server/index"
+import Core from "./core"
+const Apollos = {
+  Core
+};
 
-export { Lib, Client, Server }
+export default Apollos
