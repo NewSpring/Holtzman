@@ -1,32 +1,28 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-const Label = React.createClass({
+import Label from "./components/label"
 
-  render() {
-    return (
-      <label htmlFor={this.props.labelFor}>
-        {this.props.labelName}
-      </label>
-    )
-  }
-});
+class Input extends React.Component {
 
+  constructor(props) {
+    super(props);
 
-const Input = React.createClass({
-
-  getInitialState: function(){
-    return {
+    this.state = {
       active: false,
       focused: false,
       error: false,
-      value: '',
-      status: '',
-      liveFormat: ''
+      value: "",
+      status: "",
+      liveFormat: ""
     }
-  },
 
-  format: function format() {
+    if (props.defaultValue) {
+      this.state.active = true
+    }
+  }
+
+  format = () => {
 
 
     let value = "";
@@ -49,9 +45,9 @@ const Input = React.createClass({
       }
 
     }
-  },
+  }
 
-  validate: function validate(event) {
+  validate = (event) => {
     const value = event.target.value;
 
     if (!value) {
@@ -71,27 +67,27 @@ const Input = React.createClass({
       });
 
     }
-  },
+  }
 
-  focus: function(event){
+  focus = (event) => {
     this.setState({
       active: true,
       error: false,
       focused: true
     })
-  },
+  }
 
-  setStatus: function(message) {
+  setStatus = (message) => {
     this.props.status = message;
-  },
+  }
 
-  disabled: function disabled() {
+  disabled = () => {
     if (this.props.disabled) {
       return disabled;
     }
-  },
+  }
 
-  renderHelpText(message) {
+  renderHelpText = (message) => {
 
     if ((this.state.error && this.props.errorText) || this.state.status) {
 
@@ -102,16 +98,21 @@ const Input = React.createClass({
       );
     }
 
-  },
+  }
 
   render() {
     let inputclasses = [
       "input"
     ];
+
+    // theme overwrite
+    if (this.props.theme) { inputclasses = this.props.theme }
+    // state mangaged classes
     if (this.state.active) { inputclasses.push("input--active") }
     if (this.state.focused) { inputclasses.push("input--focused") }
     if (this.state.error) { inputclasses.push("input--alert") }
-    if (this.props.classes) { inputclasses.push(this.props.classes) }
+    // custom added classes
+    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
 
     return (
       <div className={inputclasses.join(" ")}>
@@ -137,7 +138,7 @@ const Input = React.createClass({
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }
-          className={this.props.inputClass}
+          className={this.props.inputClasses}
           disabled={this.disabled()}
           onBlur={this.validate}
           onFocus={this.focus}
@@ -152,7 +153,7 @@ const Input = React.createClass({
 
   }
 
-})
+}
 
 
 export default Input

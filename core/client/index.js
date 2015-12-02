@@ -1,6 +1,9 @@
 
-import Templates from "./templates/index"
+import Blocks from "./blocks"
+import Templates from "./templates"
+
 const Apollos = {
+  Blocks,
   Templates
 };
 

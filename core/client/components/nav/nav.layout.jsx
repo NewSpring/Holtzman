@@ -2,7 +2,7 @@ import React, { PropTypes } from "react"
 import NavLink from "./nav.link"
 import styles from "./nav.css";
 
-
+// this is a comment
 class NavLayout extends React.Component {
 
 
@@ -18,8 +18,9 @@ class NavLayout extends React.Component {
       "soft-half-top@lap-and-up"
     ];
 
-    if (this.props.theme) {
-      classes.push(this.props.theme);
+
+    if (this.props.classes) {
+      classes.concat(this.props.classes);
     } else {
       classes.push(styles["nav-bar"]);
     }
@@ -31,7 +32,7 @@ class NavLayout extends React.Component {
 
 
     return (
-      <section className={ this.props.classes || this.layoutClasses() }>
+      <section className={ this.props.theme || this.layoutClasses() }>
         {this.props.links.map(function(item, i) {
           return (
             <NavLink navItem={item} key={i} />
