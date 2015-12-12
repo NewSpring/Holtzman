@@ -4,8 +4,7 @@
   "description": "A reactive framework for incredible applications",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "rm -rf ./lib; npm version patch; norma build; meteor publish"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
