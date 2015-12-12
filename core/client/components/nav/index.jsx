@@ -1,8 +1,8 @@
-import React, { PropTypes } from "react"
+import { Component, PropTypes } from "react"
 
 import NavLayout from "./nav.layout"
 
-class NavContainer extends React.Component {
+export default class NavContainer extends Component {
 
   links = [
     { label:"Home", link:"/", icon:"icon-logo" },
@@ -18,5 +18,3 @@ class NavContainer extends React.Component {
 
   }
 }
-
-export default NavContainer;

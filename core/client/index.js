@@ -4,12 +4,8 @@ import Components from "./components"
 // import Decorators from "./decorators"
 import Layouts from "./layouts"
 
-const Client = {
+export default {
   Blocks,
   Components,
   Layouts
-};
-
-
-
-export default Client
+}

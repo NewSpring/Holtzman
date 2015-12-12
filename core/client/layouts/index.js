@@ -1,7 +1,6 @@
 
 import Global from "./global"
-const Templates = {
+
+export default {
   Global
 }
-
-export default Templates
