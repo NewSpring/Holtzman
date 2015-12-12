@@ -2,8 +2,7 @@ import React, { PropTypes } from "react"
 import NavLink from "./nav.link"
 import styles from "./nav.css";
 
-// this is a comment
-class NavLayout extends React.Component {
+export default class NavLayout extends React.Component {
 
 
   layoutClasses = () => {
@@ -42,5 +41,3 @@ class NavLayout extends React.Component {
     )
   }
 }
-
-export default NavLayout;

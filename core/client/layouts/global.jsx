@@ -1,9 +1,9 @@
 
 import React, { PropTypes } from "react"
 import { Nav } from "../components"
-import { OnBoard } from "../blocks"
 
-class Global extends React.Component {
+
+export default class Global extends React.Component {
   render () {
     return (
       <div className="push-double-bottom soft-bottom">
@@ -13,5 +13,3 @@ class Global extends React.Component {
     )
   }
 }
-
-export default Global;

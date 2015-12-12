@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react"
-import { Link } from "react-router"
+import { Link, IndexLink } from "react-router"
 
-class NavLink extends React.Component {
+export default class NavLink extends React.Component {
 
   static propTypes = {
     navItem: PropTypes.object.isRequired
@@ -21,8 +21,15 @@ class NavLink extends React.Component {
 
   render () {
     const iconClasses = `${this.props.navItem.icon} display-block`;
+
+    let Wrapper = Link
+
+    if (this.props.navItem.link === "/") {
+      Wrapper = IndexLink
+    }
+
     return (
-      <Link
+      <Wrapper
         to={this.props.navItem.link}
         className={this.linkClasses(this.props.navItem.link)}
         activeClassName="text-brand">
@@ -32,10 +39,7 @@ class NavLink extends React.Component {
             <small className="text-center">{this.props.navItem.label}</small>
           </h7>
         </div>
-      </Link>
+      </Wrapper>
     )
   }
 }
-
-
-export default NavLink
