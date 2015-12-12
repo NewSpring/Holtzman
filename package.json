@@ -1,10 +1,11 @@
 {
   "name": "apollos",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A reactive framework for incredible applications",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/eslint ./core",
+    "lintfix": "./node_modules/.bin/eslint ./core --fix"
   },
   "repository": {
     "type": "git",
@@ -16,10 +17,6 @@
     "url": "https://github.com/NewSpring/newspring-core/issues"
   },
   "homepage": "https://github.com/NewSpring/newspring-core",
-  "scripts": {
-    "lint": "./node_modules/.bin/eslint ./core",
-    "lintfix": "./node_modules/.bin/eslint ./core --fix"
-  },
   "devDependencies": {},
   "dependencies": {
     "history": "^1.13.1",
