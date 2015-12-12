@@ -6,9 +6,8 @@ import { OnBoard } from "../blocks"
 class Global extends React.Component {
   render () {
     return (
-      <div>
+      <div className="push-double-bottom soft-bottom">
         {this.props.children}
-        <OnBoard/>
         <Nav />
       </div>
     )

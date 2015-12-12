@@ -1,10 +1,13 @@
 
 import Blocks from "./blocks"
-import Templates from "./templates"
+import Components from "./components"
+// import Decorators from "./decorators"
+import Layouts from "./layouts"
 
 const Client = {
   Blocks,
-  Templates
+  Components,
+  Layouts
 };
 
 

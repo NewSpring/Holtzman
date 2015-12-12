@@ -1,6 +1,5 @@
-const Methods = "Apollos Core"
+
 const Apollos = {
-  Methods
 };
 
 
