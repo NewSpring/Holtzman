@@ -10,6 +10,7 @@ class SignIn extends React.Component {
 
     this.email = "";
     this.password = "";
+    this.terms = false;
 
     this.state = {
       hasAccount: true,
@@ -69,6 +70,10 @@ class SignIn extends React.Component {
     return isValid
   }
 
+  saveTerms = (event) => {
+    this.terms = event.target.value === "on" ? true : false;
+  }
+
 
   signin = () => {
     const form = ReactDOM.findDOMNode(this);
@@ -84,6 +89,21 @@ class SignIn extends React.Component {
     console.log(email, password)
 
 
+  }
+
+  signup = () => {
+    const form = ReactDOM.findDOMNode(this);
+
+    const password = this.password;
+    const email = this.email;
+    const terms = this.terms;
+
+    if (!password || !email || !terms) {
+      this.setState({hasErrors: true});
+      return;
+    }
+
+    console.log(email, password, terms)
   }
 
   submit = (event) => {
@@ -140,6 +160,7 @@ class SignIn extends React.Component {
               <Forms.Checkbox
                 name="terms"
                 checked="true"
+                clicked={this.saveTerms}
               >
                 By signing up you agree to our <a href="#">terms and conditions</a>
               </Forms.Checkbox>

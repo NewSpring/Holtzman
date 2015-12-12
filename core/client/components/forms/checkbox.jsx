@@ -87,6 +87,7 @@ class Checkbox extends React.Component {
           className={this.props.inputClasses}
           disabled={this.disabled()}
           defaultValue={this.props.defaultValue}
+          onClick={this.props.clicked}
         />
 
         {(() => {

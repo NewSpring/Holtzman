@@ -2,11 +2,11 @@
 import Blocks from "./blocks"
 import Templates from "./templates"
 
-const Apollos = {
+const Client = {
   Blocks,
   Templates
 };
 
 
 
-export default Apollos
+export default Client

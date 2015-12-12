@@ -28,7 +28,7 @@ class Toggle extends React.Component {
       "toggle__item"
     ]
 
-    if ((this.state.active && main) || (!this.state.active && !main)) {
+    if (this.state.active === main) {
       classes.push("toggle__item--active")
     }
     return classes.join(" ")
