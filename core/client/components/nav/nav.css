@@ -7,6 +7,10 @@
   flex-grow:1;
 }
 
+:local(.nav-bar button) {
+  flex-grow:1;
+}
+
 :local(.nav-bar i) {
   font-size: 1.4em;
   position: relative;

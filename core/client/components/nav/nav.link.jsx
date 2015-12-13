@@ -1,7 +1,11 @@
-import React, { PropTypes } from "react"
+import { Component, PropTypes } from "react"
+import ReactDom from "react-dom"
 import { Link, IndexLink } from "react-router"
+import { connect } from "react-redux"
 
-export default class NavLink extends React.Component {
+
+@connect()
+export default class NavLink extends Component {
 
   static propTypes = {
     navItem: PropTypes.object.isRequired
@@ -19,24 +23,49 @@ export default class NavLink extends React.Component {
     return classes.join(" ")
   }
 
+  handleAction = (e) => {
+    const { navItem } = this.props
+
+    if (navItem.action) {
+      e.preventDefault();
+
+
+      this.props.dispatch(navItem.action())
+    }
+  }
+
   render () {
     const iconClasses = `${this.props.navItem.icon} display-block`;
-
+    const { navItem } = this.props
     let Wrapper = Link
 
-    if (this.props.navItem.link === "/") {
+    if (navItem.link === "/") {
       Wrapper = IndexLink
     }
 
+    if (!navItem.link) {
+      Wrapper = class ALink extends Component {
+        render() {
+          return (
+            <button {...this.props}>
+              {this.props.children}
+            </button>
+          )
+        }
+      }
+    }
+
+
     return (
       <Wrapper
-        to={this.props.navItem.link}
-        className={this.linkClasses(this.props.navItem.link)}
+        to={navItem.link}
+        className={this.linkClasses(navItem.link)}
+        onClick={this.handleAction}
         activeClassName="text-brand">
         <div className="floating__item">
           <i className={iconClasses}></i>
           <h7>
-            <small className="text-center">{this.props.navItem.label}</small>
+            <small className="text-center">{navItem.label}</small>
           </h7>
         </div>
       </Wrapper>
