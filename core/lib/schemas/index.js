@@ -6,7 +6,7 @@ import Error from "../error"
 
 Schemas.addSchema = (name, schema) => {
 
-  if (Schema[name]) {
+  if (Schemas[name]) {
     throw new Error(
       "Schema assigned",
       `Schema ${name} is already registered`
@@ -20,7 +20,7 @@ Schemas.addSchema = (name, schema) => {
     )
   }
 
-  Schema[name] = schema;
+  Schemas[name] = schema;
   return;
 
 }
