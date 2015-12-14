@@ -18,6 +18,7 @@ export default class NavLink extends Component {
       "text-light-primary",
       "soft-sides@handheld",
       "soft-half-ends@lap-and-up",
+      "one-whole@lap-and-up",
       "plain"
     ];
     return classes.join(" ")
@@ -54,7 +55,6 @@ export default class NavLink extends Component {
         }
       }
     }
-
 
     return (
       <Wrapper

@@ -1,8 +1,17 @@
 
 import { Component, PropTypes } from "react"
-import { createStore, combineReducers, compose } from "redux"
+import { createStore, combineReducers, compose, applyMiddleware } from "redux"
 import { reduxReactRouter, routerStateReducer } from "redux-router"
-import { createHistory } from "history"
+
+let createHistory;
+if (Meteor.isClient) {
+  createHistory = require("history/lib/createBrowserHistory");
+}
+
+if (Meteor.isServer) {
+  createHistory = require("history/lib/createMemoryHistory");
+}
+
 import { Provider } from 'react-redux'
 
 
@@ -32,14 +41,21 @@ export default class Global extends Component {
 
     const routes = getRoutes()
 
+    let composeArgs
+
+    if (Meteor.isClient) {
+
+    }
+
     this.store = compose(
       // applyMiddleware(m1, m2, m3),
       reduxReactRouter({
         routes,
         createHistory
-      }),
+      })
     )(createStore)(combineReducers(reducers))
   }
+
 
   render () {
     return (
