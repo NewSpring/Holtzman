@@ -57,12 +57,20 @@ export default class NavLink extends Component {
         className={this.linkClasses(navItem.link)}
         onClick={this.handleAction}
         activeClassName="text-brand"
+        style={{minHeight: "40px"}}
       >
-        <div className="floating__item">
+        <div className="floating__item" >
           <i className={iconClasses}></i>
-          <h7>
-            <small className="text-center">{navItem.label}</small>
-          </h7>
+          {() => {
+            if (navItem.label) {
+              return (
+                <h7>
+                  <small className="text-center">{navItem.label}</small>
+                </h7>
+              )
+            }
+          }()}
+
         </div>
       </Wrapper>
     )

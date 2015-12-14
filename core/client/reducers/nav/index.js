@@ -19,9 +19,9 @@ const links = {
     { id: 4, label:"Profile", link:"/profile", icon:"icon-profile" }
   ],
   CONTENT: [
-    { id: 1, label:"Back", action: goBack, icon:"icon-arrow-back" },
-    { id: 2, label:"Like", action: "", icon:"icon-like" },
-    { id: 3, label:"Share", action: "", icon:"icon-share" }
+    { id: 1, action: goBack, icon:"icon-arrow-back" },
+    { id: 2, action: "", icon:"icon-like" },
+    { id: 3, action: "", icon:"icon-share" }
   ],
   MODAL: [
     { id: 1, label:"Down", action: "", icon:"icon-arrow-down" },
