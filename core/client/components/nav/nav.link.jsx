@@ -26,7 +26,7 @@ export default class NavLink extends Component {
 
     if (navItem.action) {
       e.preventDefault();
-      this.props.handleAction(navItem.action())
+      this.props.handleAction(navItem.action)
     }
   }
 
