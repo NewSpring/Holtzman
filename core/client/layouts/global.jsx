@@ -41,12 +41,6 @@ export default class Global extends Component {
 
     const routes = getRoutes()
 
-    let composeArgs
-
-    if (Meteor.isClient) {
-
-    }
-
     this.store = compose(
       // applyMiddleware(m1, m2, m3),
       reduxReactRouter({

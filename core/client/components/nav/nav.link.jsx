@@ -1,10 +1,7 @@
 import { Component, PropTypes } from "react"
 import ReactDom from "react-dom"
 import { Link, IndexLink } from "react-router"
-import { connect } from "react-redux"
 
-
-@connect()
 export default class NavLink extends Component {
 
   static propTypes = {
@@ -29,9 +26,7 @@ export default class NavLink extends Component {
 
     if (navItem.action) {
       e.preventDefault();
-
-
-      this.props.dispatch(navItem.action())
+      this.props.handleAction(navItem.action())
     }
   }
 
@@ -61,7 +56,8 @@ export default class NavLink extends Component {
         to={navItem.link}
         className={this.linkClasses(navItem.link)}
         onClick={this.handleAction}
-        activeClassName="text-brand">
+        activeClassName="text-brand"
+      >
         <div className="floating__item">
           <i className={iconClasses}></i>
           <h7>

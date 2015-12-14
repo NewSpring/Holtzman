@@ -12,10 +12,19 @@ function mapStateToProps(state) {
   }
 }
 
-@connect(mapStateToProps, nav)
+
+// https://github.com/rackt/react-redux/blob/v4.0.0/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux
+@connect(mapStateToProps, nav, null, {
+  pure: false
+})
 export default class NavContainer extends Component {
 
+  handleAction = (action) => {
+    this.dispatch(action())
+  }
+
   render () {
+
     const { state } = this.props
 
     if (!state.visible) {
@@ -23,7 +32,7 @@ export default class NavContainer extends Component {
     }
 
     return (
-      <NavLayout links={ state.links }/>
+      <NavLayout links={ state.links } handleAction={this.handleAction}/>
     )
 
   }
