@@ -24,7 +24,7 @@ export default class NavLink extends Component {
   handleAction = (e) => {
     const { navItem } = this.props
 
-    if (navItem.action) {
+    if (navItem.action && typeof navItem.action === "function") {
       e.preventDefault();
       this.props.handleAction(navItem.action)
     }
@@ -32,7 +32,7 @@ export default class NavLink extends Component {
 
   render () {
     const iconClasses = `${this.props.navItem.icon} display-block`;
-    const { navItem } = this.props
+    let { navItem } = this.props
     let Wrapper = Link
 
     if (navItem.link === "/") {
@@ -50,6 +50,8 @@ export default class NavLink extends Component {
         }
       }
     }
+
+
 
     return (
       <Wrapper

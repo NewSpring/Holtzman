@@ -29,12 +29,16 @@ export default class NavLayout extends React.Component {
 
   render () {
 
-    const { handleAction } = this.props
+    const { handleAction, back } = this.props
     return (
       <section className={ this.props.theme || this.layoutClasses() }>
         {this.props.links.map(function(item, i) {
           return (
-            <NavLink navItem={item} key={i} handleAction={handleAction}/>
+            <NavLink
+              navItem={item}
+              key={i}
+              handleAction={handleAction}
+            />
           );
         })}
       </section>

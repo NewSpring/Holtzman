@@ -24,6 +24,19 @@ const addReducer = (name, handler) => {
   return
 }
 
+const createReducer = (initialState, handlers) => {
+
+  return (state = initialState, action) => {
+    // better than switch statement
+    if (handlers.hasOwnProperty(action.type)) {
+      return handlers[action.type](state, action)
+    } else {
+      return state
+    }
+  }
+
+}
+
 
 import nav from "./nav"
 
@@ -33,5 +46,6 @@ addReducer("nav", nav)
 
 export default {
   addReducer,
+  createReducer,
   reducers
 }

@@ -5,7 +5,7 @@ import { reduxReactRouter, routerStateReducer } from "redux-router"
 
 let createHistory;
 if (Meteor.isClient) {
-  createHistory = require("history/lib/createBrowserHistory");
+  createHistory = require("history/lib/createBrowserHistory")
 }
 
 if (Meteor.isServer) {
@@ -41,13 +41,20 @@ export default class Global extends Component {
 
     const routes = getRoutes()
 
+    console.log(reducers)
+
+    const joinedReducers = {...reducers, ...{
+      router: routerStateReducer,
+    }}
+
     this.store = compose(
       // applyMiddleware(m1, m2, m3),
       reduxReactRouter({
         routes,
         createHistory
       })
-    )(createStore)(combineReducers(reducers))
+    )(createStore)(combineReducers(joinedReducers))
+
   }
 
 

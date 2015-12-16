@@ -3,10 +3,9 @@
   Navigation store
 
 */
-import { pushState } from 'redux-router'
 import { goBack } from "redux-router"
 
-const back = () => {
+const back = (props) => {
   return goBack()
 }
 
@@ -19,9 +18,9 @@ const links = {
     { id: 4, label:"Profile", link:"/profile", icon:"icon-profile" }
   ],
   CONTENT: [
-    { id: 1, action: goBack, icon:"icon-arrow-back" },
-    { id: 2, action: "", icon:"icon-like" },
-    { id: 3, action: "", icon:"icon-share" }
+    { id: 1, action: back, icon:"icon-arrow-back" },
+    { id: 2, action: false, icon:"icon-like" },
+    { id: 3, action: false, icon:"icon-share" }
   ],
   MODAL: [
     { id: 1, label:"Down", action: "", icon:"icon-arrow-down" },
