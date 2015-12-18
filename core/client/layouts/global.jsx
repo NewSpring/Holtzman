@@ -40,9 +40,6 @@ export default class Global extends Component {
   componentWillMount() {
 
     const routes = getRoutes()
-
-    console.log(reducers)
-
     const joinedReducers = {...reducers, ...{
       router: routerStateReducer,
     }}
