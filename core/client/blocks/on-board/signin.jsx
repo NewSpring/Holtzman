@@ -15,19 +15,14 @@ class SignIn extends React.Component {
   static propTypes = {
     save: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
-    errors: PropTypes.object,
-    account: PropTypes.bool,
-    state: PropTypes.string,
-    success: PropTypes.bool,
+    back: PropTypes.func.isRequired,
+    forgot: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired,
+    account: PropTypes.bool.isRequired,
+    state: PropTypes.string.isRequired,
+    success: PropTypes.bool.isRequired,
     header: PropTypes.object,
     toggles: PropTypes.array
-  }
-
-  id = () => {
-    if (this.props.account) {
-      return "signin"
-    }
-    return "signup"
   }
 
   header = () => {
@@ -38,15 +33,16 @@ class SignIn extends React.Component {
     )
   }
 
-  toggle = (bool) => {
-    // this.setState({hasAccount: bool});
-    this.props.dispatch(onBoardActions.setAccount(bool))
-  }
 
   toggles = [
     { label: "Sign In" },
     { label: "Register" }
   ]
+
+  toggle = (bool) => {
+    this.props.dispatch(onBoardActions.setAccount(bool))
+  }
+
 
   isEmail = (value) => {
     const isValid = Validate.isEmail(value)
@@ -84,53 +80,15 @@ class SignIn extends React.Component {
     return isValid
   }
 
-
   saveTerms = (event) => {
     this.props.save({ terms: event.target.checked })
   }
 
 
-  // signin = () => {
-  //   const form = ReactDOM.findDOMNode(this);
-  //
-  //   const password = this.password;
-  //   const email = this.email;
-  //
-  //   if (!password || !email) {
-  //     this.setState({hasErrors: true});
-  //     return;
-  //   }
-  //
-  //   console.log(email, password)
-  //
-  //
-  // }
-
-  // signup = () => {
-  //   const form = ReactDOM.findDOMNode(this);
-  //
-  //   const password = this.password;
-  //   const email = this.email;
-  //   const terms = this.terms;
-  //
-  //   if (!password || !email || !terms) {
-  //     this.setState({hasErrors: true});
-  //     return;
-  //   }
-  //
-  //   console.log(email, password, terms)
-  // }
-
   submit = (event) => {
     event.preventDefault();
-    const form = event.target
-    console.log("submit")
-    // if (form.id === "signin") {
-    //   this.signin();
-    //   return;
-    // }
-    //
-    // this.signup();
+    this.props.submit();
+
     return;
   }
 
@@ -147,7 +105,7 @@ class SignIn extends React.Component {
         />
 
         <Forms.Form
-          id={this.id()}
+          id="onboard"
           fieldsetTheme="flush soft-top"
           submit={this.submit}
         >
@@ -190,7 +148,7 @@ class SignIn extends React.Component {
                   <small>
                     <button
                       className="text-primary"
-                      onClick={this.props.back}
+                      onClick={this.props.forgot}
                     >
                       Forgot Password?
                     </button>

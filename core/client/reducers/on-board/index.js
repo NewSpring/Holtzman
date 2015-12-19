@@ -11,6 +11,7 @@ import { types } from "../../actions/on-board"
 const initial = {
 
   account: true,
+  forgot: false,
 
   data: {
     email: null, // String
@@ -32,6 +33,17 @@ const initial = {
 }
 
 export default createReducer(initial, {
+
+  [types.SET_FORGOT](state, action) {
+
+    if (typeof action.forgot != "boolean") {
+      return state
+    }
+
+    return {...state, ...{
+      forgot: action.forgot
+    }}
+  },
 
   [types.SET_ACCOUNT_STATUS](state, action) {
 
@@ -55,7 +67,7 @@ export default createReducer(initial, {
 
   [types.SET_STATE](state, action) {
 
-    const stateName = action.stateName.trim()
+    const stateName = action.state.trim()
     const stateTypes = [ "default", "loading", "submit" ]
 
     if (stateTypes.indexOf(stateName) === -1) {

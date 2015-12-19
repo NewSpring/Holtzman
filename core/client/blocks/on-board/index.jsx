@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
+import { goBack } from "redux-router"
 
 import { onBoard as onBoardActions } from "../../actions"
 
@@ -25,25 +26,26 @@ function mapStateToProps(state) {
 @connect(mapStateToProps, onBoardActions)
 class OnBoard extends Component {
 
-  state = {
-    showForgotPassword: false
-  }
-
-  goPassword = (e) => {
+  goBack = (e) => {
     e.preventDefault();
-    this.setState({showForgotPassword: true})
+    goBack()
   }
 
   goSignIn = (e) => {
     e.preventDefault();
-    this.setState({showForgotPassword: false})
+    this.props.remember()
+  }
+
+  goForgotPassword = (e) => {
+    e.preventDefault();
+    this.props.forgot()
   }
 
   render () {
 
-    const { data, errors, account, state, success } = this.props.onboard
+    const { data, errors, account, state, success, forgot } = this.props.onboard
 
-    if (this.state.showForgotPassword) {
+    if (forgot) {
       return (
         <ForgotPassword
           save={this.props.save}
@@ -51,6 +53,7 @@ class OnBoard extends Component {
           errors={errors}
           account={account}
           back={this.goSignIn}
+          submit={this.props.submit}
         />
       )
     }
@@ -62,8 +65,10 @@ class OnBoard extends Component {
         errors={errors}
         account={account}
         state={state}
+        submit={this.props.submit}
         success={success}
-        back={this.goPassword}
+        back={this.goBack}
+        forgot={this.goForgotPassword}
       />
     )
   }

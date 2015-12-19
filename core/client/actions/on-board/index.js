@@ -17,6 +17,7 @@
 const types = {
   SET_ACCOUNT_STATUS: "ONBOARD.SET_ACCOUNT_STATUS",
   SET_DATA: "ONBOARD.SET_DATA",
+  SET_FORGOT: "ONBOARD.SET_FORGOT",
   SET_STATE: "ONBOARD.SET_STATE",
   SET_ERROR: "ONBOARD.SET_ERROR",
   REMOVE_ERROR: "ONBOARD.REMOVE_ERROR",
@@ -43,6 +44,9 @@ export default {
 
   success: () => ({ type: types.SET_SUCCESS, success: true }),
   fail: () => ({ type: types.SET_SUCCESS, success: false }),
+
+  forgot: () => ({ type: types.SET_FORGOT, forgot: true }),
+  remember: () => ({ type: types.SET_FORGOT, forgot: false }),
 
 
 }
