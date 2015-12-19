@@ -8,12 +8,20 @@ if (Meteor.isServer) { ch = require("history/lib/createMemoryHistory") }
 import persistState from "redux-localstorage"
 import createLogger from "redux-logger"
 import { Provider } from "react-redux"
+import thunk from "redux-thunk"
 
+/*
+
+  This force loads the UI pack for every app...
+
+*/
+require("velocity-animate")
+require("velocity-animate/velocity.ui")
 
 import { reducers } from "../reducers"
 import { getRoutes } from "../../lib/store"
+import { middlewares } from "../middlewares"
 import { Nav } from "../components"
-
 
 class App extends Component {
 
@@ -21,7 +29,7 @@ class App extends Component {
     return (
       <div className="
         push-double-bottom@handheld soft-bottom@handheld
-        push-double-left@lap-and-up
+        push-double-left@lap-and-up soft-double-left@lap-and-up
         "
       >
         {this.props.children}
@@ -44,7 +52,9 @@ export default class Global extends Component {
 
     const logger = createLogger()
 
-    let sharedMiddlewares = []
+    let sharedMiddlewares = [...[
+      thunk
+    ], ...middlewares]
 
     // setup dev middlewares
     if (process.env.NODE_ENV != "production") {

@@ -1,11 +1,13 @@
 
-import { Component, PropTypes} from "react"
 
-export default class Loading extends Component {
-  render () {
-    return (
-      <div>Loading</div>
-    )
+import ParentLoading from "./loading.ParentLoading"
+import WindowLoading from "./loading.WindowLoading"
 
-  }
+export {
+  ParentLoading,
+  WindowLoading
+}
+
+export default {
+  Loading: ParentLoading
 }

@@ -4,8 +4,9 @@ import { goBack } from "redux-router"
 
 import { onBoard as onBoardActions } from "../../actions"
 
-import SignIn from "./signin"
-import ForgotPassword from "./forgot-password"
+import Loading from "./on-board.Loading"
+import SignIn from "./on-board.Signin"
+import ForgotPassword from "./on-board.ForgotPassword"
 
 
 /*
@@ -44,6 +45,15 @@ class OnBoard extends Component {
   render () {
 
     const { data, errors, account, state, success, forgot } = this.props.onboard
+
+    if (state === "loading") {
+      return (
+        <Loading
+          account={account}
+          forgot={forgot}
+        />
+      )
+    }
 
     if (forgot) {
       return (
