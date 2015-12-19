@@ -10,14 +10,6 @@ import createLogger from "redux-logger"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 
-/*
-
-  This force loads the UI pack for every app...
-
-*/
-require("velocity-animate")
-require("velocity-animate/velocity.ui")
-
 import { reducers } from "../reducers"
 import { getRoutes } from "../../lib/store"
 import { middlewares } from "../middlewares"

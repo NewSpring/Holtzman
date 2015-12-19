@@ -65,6 +65,21 @@ export default createReducer(initial, {
     }}
   },
 
+  [types.REMOVE_DATA](state, action) {
+
+    if (!action.feild || state.data[action.field]) {
+      return state
+    }
+
+
+
+    return {...state, ...{
+      data: {...state.data, ...{
+        [data[action.field]]: null
+      }}
+    }}
+  },
+
   [types.SET_STATE](state, action) {
 
     const stateName = action.state.trim()

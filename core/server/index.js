@@ -1,7 +1,2 @@
 
-const Apollos = {
-};
-
-
-
-export default Apollos
+import "./startup"

@@ -1,29 +1,7 @@
 
 import { onBoard } from "../../../../core/client/actions"
+import { auth } from "../../../client/methods"
 
-// const initial = {
-//
-//   account: true,
-//   forgot: false,
-//
-//   data: {
-//     email: null, // String
-//     password: null, // String (encrypted before launch)
-//     terms: true, // String
-//   },
-//
-//   state: "default", // "submit", "loading"
-//
-//   attempts: 0,
-//   errors: {
-//     // <id>: {
-//     //   message: "Email is required"
-//     // }
-//   },
-//
-//   success: false
-//
-// }
 
 const onboard = store => next => action => {
 
@@ -40,6 +18,7 @@ const onboard = store => next => action => {
       if (state.onBoard.state === "default" && action.state === "submit") {
         dispatch(onBoard.loading())
 
+        // const fetch = api.get()
         let timeoutId = setTimeout(() => {
           dispatch(onBoard.success())
           action.state = "default"
@@ -56,6 +35,18 @@ const onboard = store => next => action => {
 
 
       break;
+    case "ONBOARD.SET_DATA":
+
+      // don't hold everything up
+      next(action)
+
+      // set state based on is email is already in system
+      auth.available(action.data.email, (err, isAvailable) => {
+        dispatch(onBoard.setAccount(!isAvailable))
+      })
+
+      return
+
     default:
       return next(action)
   }

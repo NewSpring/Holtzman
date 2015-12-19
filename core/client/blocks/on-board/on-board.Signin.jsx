@@ -48,17 +48,12 @@ class SignIn extends React.Component {
     const isValid = Validate.isEmail(value)
     const noError = !this.props.errors["email"]
 
-    if (!isValid && noError) {
-
-      this.props.dispatch(onBoardActions.error({ email: {} }))
-
-    } else if (isValid && !noError) {
-
-      this.props.dispatch(onBoardActions.fix("email"))
-
+    if (!isValid ) {
+      this.props.dispatch(onBoardActions.clear("email"))
+    } else {
+      this.props.save({ email: value })
     }
 
-    if (isValid) { this.props.save({ email: value }) }
     return isValid;
   }
 
@@ -66,17 +61,12 @@ class SignIn extends React.Component {
     const isValid = value.length ? true : false
     const noError = !this.props.errors["password"]
 
-    if (!isValid && noError) {
-
-      this.props.dispatch(onBoardActions.error({ password: {} }))
-
-    } else if (isValid && !noError) {
-
-      this.props.dispatch(onBoardActions.fix("password"))
-
+    if (!isValid ) {
+      this.props.dispatch(onBoardActions.clear("password"))
+    } else {
+      this.props.save({ password: value })
     }
 
-    if (isValid) { this.props.save({ password: value }) }
     return isValid
   }
 
@@ -102,6 +92,7 @@ class SignIn extends React.Component {
         <Controls.Toggle
           items={this.props.toggles || this.toggles}
           toggle={this.toggle}
+          state={this.props.account}
         />
 
         <Forms.Form
@@ -168,8 +159,10 @@ class SignIn extends React.Component {
           </button>
 
           {() => {
+            const { data } = this.props
             let btnClasses = ["push-left"];
-            if (Object.keys(this.props.errors).length){
+
+            if (data.email === null || data.password === null && !data.terms){
               btnClasses.push("btn--disabled");
             } else {
               btnClasses.push("btn");

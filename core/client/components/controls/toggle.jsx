@@ -1,11 +1,21 @@
-import React, { PropTypes } from 'react'
+import { Component, PropTypes } from 'react'
 
-class Toggle extends React.Component {
+class Toggle extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: true
+  state = {
+    active: true
+  }
+
+  componentWillMount() {
+    if (this.props.state != null || this.props.state != undefined) {
+      this.setState({active: this.props.state})
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+    if (nextProps.state != null || this.props.state != undefined) {
+      this.setState({active: nextProps.state})
     }
   }
 
@@ -45,6 +55,7 @@ class Toggle extends React.Component {
   }
 
   render () {
+
     return (
       <div className="toggle push-bottom soft-sides">
         <div data-toggle="true" className={this.toggleClasses(true)} onClick={this.toggle}>

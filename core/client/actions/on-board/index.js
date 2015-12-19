@@ -17,6 +17,7 @@
 const types = {
   SET_ACCOUNT_STATUS: "ONBOARD.SET_ACCOUNT_STATUS",
   SET_DATA: "ONBOARD.SET_DATA",
+  REMOVE_DATA: "ONBOARD.REMOVE_DATA",
   SET_FORGOT: "ONBOARD.SET_FORGOT",
   SET_STATE: "ONBOARD.SET_STATE",
   SET_ERROR: "ONBOARD.SET_ERROR",
@@ -31,6 +32,7 @@ export default {
   setAccount: (account) => ({ type: types.SET_ACCOUNT_STATUS, account}),
 
   save: (data) => ({ type: types.SET_DATA, data }),
+  clear: (field) => ({ type: types.REMOVE_DATA, field }),
 
   setState: (state) => ({ type: types.SET_STATE, state }),
   submit: () => ({ type: types.SET_STATE, state: "submit" }),

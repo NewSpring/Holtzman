@@ -1,4 +1,5 @@
 
+import "./startup"
 
 import Actions from "./actions"
 import Blocks from "./blocks"
