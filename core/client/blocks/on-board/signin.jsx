@@ -1,25 +1,30 @@
 import React, { PropTypes } from "react"
-import ReactDom from "react-dom";
+import ReactDom from "react-dom"
+import { connect } from "react-redux"
+import { goBack } from "redux-router"
+
+import { onBoard as onBoardActions } from "../../actions"
+
 import { Controls, Forms } from "../../components"
 import { Validate } from "../../../lib"
 
+
+@connect()
 class SignIn extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.email = "";
-    this.password = "";
-    this.terms = false;
-
-    this.state = {
-      hasAccount: true,
-      hasErrors: false
-    };
+  static propTypes = {
+    save: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+    errors: PropTypes.object,
+    account: PropTypes.bool,
+    state: PropTypes.string,
+    success: PropTypes.bool,
+    header: PropTypes.object,
+    toggles: PropTypes.array
   }
 
   id = () => {
-    if (this.state.hasAccount) {
+    if (this.props.account) {
       return "signin"
     }
     return "signup"
@@ -34,7 +39,8 @@ class SignIn extends React.Component {
   }
 
   toggle = (bool) => {
-    this.setState({hasAccount: bool});
+    // this.setState({hasAccount: bool});
+    this.props.dispatch(onBoardActions.setAccount(bool))
   }
 
   toggles = [
@@ -43,78 +49,88 @@ class SignIn extends React.Component {
   ]
 
   isEmail = (value) => {
-    const isValid = Validate.isEmail(value);
-    if (!isValid && !this.state.hasErrors) {
-      this.setState({hasErrors: true})
-    } else if (isValid && this.state.hasErrors) {
-      this.setState({hasErrors: false})
+    const isValid = Validate.isEmail(value)
+    const noError = !this.props.errors["email"]
+
+    if (!isValid && noError) {
+
+      this.props.dispatch(onBoardActions.error({ email: {} }))
+
+    } else if (isValid && !noError) {
+
+      this.props.dispatch(onBoardActions.fix("email"))
+
     }
 
-    if (isValid && this.props.saveEmail) {
-      this.email = value;
-      this.props.saveEmail(value);
-    }
-
+    if (isValid) { this.props.save({ email: value }) }
     return isValid;
   }
 
   savePassword = (value) => {
-    this.password = value;
-    const isValid = value.length ? true : false;
-    if (!isValid && !this.state.hasErrors) {
-      this.setState({hasErrors: true})
-    } else if (isValid && this.state.hasErrors) {
-      this.setState({hasErrors: false})
+    const isValid = value.length ? true : false
+    const noError = !this.props.errors["password"]
+
+    if (!isValid && noError) {
+
+      this.props.dispatch(onBoardActions.error({ password: {} }))
+
+    } else if (isValid && !noError) {
+
+      this.props.dispatch(onBoardActions.fix("password"))
+
     }
 
+    if (isValid) { this.props.save({ password: value }) }
     return isValid
   }
 
+
   saveTerms = (event) => {
-    this.terms = event.target.value === "on" ? true : false;
+    this.props.save({ terms: event.target.checked })
   }
 
 
-  signin = () => {
-    const form = ReactDOM.findDOMNode(this);
+  // signin = () => {
+  //   const form = ReactDOM.findDOMNode(this);
+  //
+  //   const password = this.password;
+  //   const email = this.email;
+  //
+  //   if (!password || !email) {
+  //     this.setState({hasErrors: true});
+  //     return;
+  //   }
+  //
+  //   console.log(email, password)
+  //
+  //
+  // }
 
-    const password = this.password;
-    const email = this.email;
-
-    if (!password || !email) {
-      this.setState({hasErrors: true});
-      return;
-    }
-
-    console.log(email, password)
-
-
-  }
-
-  signup = () => {
-    const form = ReactDOM.findDOMNode(this);
-
-    const password = this.password;
-    const email = this.email;
-    const terms = this.terms;
-
-    if (!password || !email || !terms) {
-      this.setState({hasErrors: true});
-      return;
-    }
-
-    console.log(email, password, terms)
-  }
+  // signup = () => {
+  //   const form = ReactDOM.findDOMNode(this);
+  //
+  //   const password = this.password;
+  //   const email = this.email;
+  //   const terms = this.terms;
+  //
+  //   if (!password || !email || !terms) {
+  //     this.setState({hasErrors: true});
+  //     return;
+  //   }
+  //
+  //   console.log(email, password, terms)
+  // }
 
   submit = (event) => {
     event.preventDefault();
     const form = event.target
-    if (form.id === "signin") {
-      this.signin();
-      return;
-    }
-
-    this.signup();
+    console.log("submit")
+    // if (form.id === "signin") {
+    //   this.signin();
+    //   return;
+    // }
+    //
+    // this.signup();
     return;
   }
 
@@ -124,6 +140,7 @@ class SignIn extends React.Component {
         <div className="push-double">
           {this.props.header || this.header()}
         </div>
+
         <Controls.Toggle
           items={this.props.toggles || this.toggles}
           toggle={this.toggle}
@@ -134,13 +151,14 @@ class SignIn extends React.Component {
           fieldsetTheme="flush soft-top"
           submit={this.submit}
         >
+
           <Forms.Input
             name="email"
             placeholder="user@email.com"
             label="Email"
             errorText="Please enter a valid email"
             validation={this.isEmail}
-            defaultValue={this.props.email}
+            defaultValue={this.props.data.email}
           />
 
           <Forms.Input
@@ -154,12 +172,12 @@ class SignIn extends React.Component {
 
 
         {() => {
-          if (!this.state.hasAccount) {
+          if (!this.props.account) {
 
             return (
               <Forms.Checkbox
                 name="terms"
-                checked="true"
+                defaultValue={this.props.data.terms}
                 clicked={this.saveTerms}
               >
                 By signing up you agree to our <a href="#">terms and conditions</a>
@@ -170,7 +188,12 @@ class SignIn extends React.Component {
               <div className="push-bottom">
                 <h7 >
                   <small>
-                    <button className="text-primary" onClick={this.props.back}>Forgot Password?</button>
+                    <button
+                      className="text-primary"
+                      onClick={this.props.back}
+                    >
+                      Forgot Password?
+                    </button>
                   </small>
                 </h7>
               </div>
@@ -182,14 +205,13 @@ class SignIn extends React.Component {
 
 
         <div>
-
-          <a href="#" className="btn--small btn--dark-tertiary display-inline-block">
+          <button onClick={goBack} className="btn--small btn--dark-tertiary display-inline-block">
             Back
-          </a>
+          </button>
 
           {() => {
             let btnClasses = ["push-left"];
-            if (this.state.hasErrors){
+            if (Object.keys(this.props.errors).length){
               btnClasses.push("btn--disabled");
             } else {
               btnClasses.push("btn");

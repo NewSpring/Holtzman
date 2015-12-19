@@ -5,13 +5,9 @@ import Label from "./components/label"
 
 class Checkbox extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      status: false,
-      error: false
-    }
+  state = {
+    status: false,
+    error: false
   }
 
   validate = (event) => {
@@ -86,7 +82,7 @@ class Checkbox extends React.Component {
           name={this.props.name || this.props.label }
           className={this.props.inputClasses}
           disabled={this.disabled()}
-          defaultValue={this.props.defaultValue}
+          defaultChecked={this.props.defaultValue ? "checked": ""}
           onClick={this.props.clicked}
         />
 

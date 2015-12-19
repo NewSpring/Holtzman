@@ -1,7 +1,11 @@
-import React, { PropTypes } from "react"
+import { Component, PropTypes } from "react"
+import { connect } from "react-redux"
+
+import { onBoard as onBoardActions } from "../../actions"
 
 import SignIn from "./signin"
 import ForgotPassword from "./forgot-password"
+
 
 /*
 
@@ -11,14 +15,18 @@ import ForgotPassword from "./forgot-password"
   2. Forgot Password
 
 */
-class OnBoard extends React.Component {
+// We only care about the navigation state
+function mapStateToProps(state) {
+  return {
+    onboard: state.onBoard
+  }
+}
 
-  constructor(props) {
-    super(props);
-    this.email = "";
-    this.state = {
-      showForgotPassword: false
-    }
+@connect(mapStateToProps, onBoardActions)
+class OnBoard extends Component {
+
+  state = {
+    showForgotPassword: false
   }
 
   goPassword = (e) => {
@@ -31,25 +39,30 @@ class OnBoard extends React.Component {
     this.setState({showForgotPassword: false})
   }
 
-  saveEmail = (email) => {
-    this.email = email;
-  }
-
   render () {
+
+    const { data, errors, account, state, success } = this.props.onboard
 
     if (this.state.showForgotPassword) {
       return (
         <ForgotPassword
-          saveEmail={this.saveEmail}
-          email={this.email} back={this.goSignIn}
+          save={this.props.save}
+          email={data.email}
+          errors={errors}
+          account={account}
+          back={this.goSignIn}
         />
       )
     }
 
     return (
       <SignIn
-        saveEmail={this.saveEmail}
-        email={this.email}
+        save={this.props.save}
+        data={data}
+        errors={errors}
+        account={account}
+        state={state}
+        success={success}
         back={this.goPassword}
       />
     )

@@ -4,29 +4,25 @@ import { Validate } from "../../../lib"
 
 
 class ForgotPassword extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      hasAccount: true,
-      hasErrors: false
-    };
-  }
 
   isEmail = (value) => {
-    const isValid = Validate.isEmail(value);
-    if (!isValid && !this.state.hasErrors) {
-      this.setState({hasErrors: true})
-    } else if (isValid && this.state.hasErrors) {
-      this.setState({hasErrors: false})
+    const isValid = Validate.isEmail(value)
+    const noError = !this.props.errors["email"]
+
+    if (!isValid && noError) {
+
+      this.props.dispatch(onBoardActions.error({ email: {} }))
+
+    } else if (isValid && !noError) {
+
+      this.props.dispatch(onBoardActions.fix("email"))
+
     }
 
-    if (isValid && this.props.saveEmail) {
-      this.props.saveEmail(value);
-    }
-
+    if (isValid) { this.props.save({ email: value }) }
     return isValid;
   }
+
 
   render () {
     return (
@@ -61,7 +57,7 @@ class ForgotPassword extends React.Component {
 
         {() => {
           let btnClasses = ["push-left"];
-          if (this.state.hasErrors){
+          if (Object.keys(this.props.errors).length){
             btnClasses.push("btn--disabled");
           } else {
             btnClasses.push("btn");
