@@ -37,18 +37,17 @@ class Input extends React.Component {
 
       const newValue = this.props.liveFormatting(value);
 
-      // this needs to be better
-      for (let ref in this.refs) {
-        let node = ReactDOM.findDOMNode(this.refs[ref]);
-        node.value = newValue;
-        break;
-      }
+      let node = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+      node.value = newValue;
 
     }
   }
 
-  validate = (event) => {
-    const value = event.target.value;
+  validate = () => {
+
+    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const value = target.value
+
 
     if (!value) {
       this.setState({
@@ -77,6 +76,8 @@ class Input extends React.Component {
     })
   }
 
+
+
   setStatus = (message) => {
     this.props.status = message;
   }
@@ -99,6 +100,8 @@ class Input extends React.Component {
     }
 
   }
+
+
 
   render() {
     let inputclasses = [
@@ -133,7 +136,7 @@ class Input extends React.Component {
 
 
         <input
-          ref={this.props.id || this.props.label || this.props.name}
+          ref="apollos-input"
           id={this.props.id || this.props.label || this.props.name}
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}

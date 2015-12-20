@@ -13,7 +13,6 @@ class Toggle extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
     if (nextProps.state != null || this.props.state != undefined) {
       this.setState({active: nextProps.state})
     }
