@@ -13,7 +13,7 @@ import thunk from "redux-thunk"
 import { reducers } from "../reducers"
 import { getRoutes } from "../../lib/store"
 import { middlewares } from "../middlewares"
-import { Nav } from "../components"
+import { Nav } from "../blocks"
 
 
 class App extends Component {
