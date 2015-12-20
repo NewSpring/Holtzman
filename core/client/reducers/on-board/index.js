@@ -11,7 +11,9 @@ import { types } from "../../actions/on-board"
 const initial = {
 
   account: true,
+  authorized: false,
   forgot: false,
+  success: false,
 
   data: {
     email: null, // String
@@ -26,9 +28,9 @@ const initial = {
     // <id>: {
     //   message: "Email is required"
     // }
-  },
+  }
 
-  success: false
+
 
 }
 
@@ -140,6 +142,18 @@ export default createReducer(initial, {
 
     return {...state, ...{
       success: action.success
+    }}
+
+  },
+
+  [types.IS_AUTHORIZED](state, action) {
+
+    if (typeof action.authorized != "boolean") {
+      return state
+    }
+
+    return {...state, ...{
+      authorized: action.authorized
     }}
 
   }
