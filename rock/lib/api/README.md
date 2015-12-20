@@ -7,6 +7,8 @@
 Rock API Library
 =======================
 
-Methods for interacting with the Rock API. Currently only supported on the server, the ideal is to have two keys, a client (for non sensitive actions), and a server key for sensitive actions. The [utility](./utilities.js) file contains an isomorphic wrapper around calling the Rock Api. As methods and shorthands are added, they will be documented 
+> Stability: **Medium**
+
+Methods for interacting with the Rock API. Currently only supported on the server, the ideal is to have two keys, a client (for non sensitive actions), and a server key for sensitive actions. The [utility](./utilities.js) file contains an isomorphic wrapper around calling the Rock Api. As methods and shorthands are added, they will be documented
 
 > develping...
