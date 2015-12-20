@@ -19,3 +19,11 @@ Apollos is a reactive application framework for building high speed, web + nativ
 
 
 ## Requirements
+
+Meteor packages:
+
+```
+meteor add timbrandin:fetch promise accounts-password accounts-base check
+```
+
+> these will be migrated to a `newspring:apollos` package before launch
