@@ -15,6 +15,7 @@ import { getRoutes } from "../../lib/store"
 import { middlewares } from "../middlewares"
 import { Nav } from "../components"
 
+
 class App extends Component {
 
   render() {
@@ -74,6 +75,8 @@ export default class Global extends Component {
     this.store = compose(...sharedCompose)(createStore)(combineReducers(joinedReducers))
 
   }
+
+
 
   render () {
     return (
