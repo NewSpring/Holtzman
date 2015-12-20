@@ -12,7 +12,7 @@ On Board Actions
 The on-boarding actions are used to update and change the state of the on-boarding process. This API is unstable and may eventually merge with `Account` actions.
 
 It currently supports the following actions:
-- [setAccount](#setAccount)
+- [setAccount](#setaccount)
 - [save](#save)
 - [clear](#clear)
 - [setState](#setState)
@@ -75,3 +75,5 @@ Sample dispatch event:
   "account": true
 }
 ```
+
+> developing...

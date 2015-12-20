@@ -36,7 +36,7 @@ dispatch(navActions.setLevel("TOP"))
 The on-boarding actions are used to update and change the state of the on-boarding process. This API is unstable and may eventually merge with `Account` actions.
 
 It currently supports the following actions:
-- [setAccount](./on-board/README.md#setAccount)
+- [setAccount](./on-board/README.md#setaccount)
 - [save](./on-board/README.md#save)
 - [clear](./on-board/README.md#clear)
 - [setState](./on-board/README.md#setState)
