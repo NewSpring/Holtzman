@@ -1,0 +1,17 @@
+:local(.side-panel){
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+
+  overflow: hidden;
+
+  width: 375px;
+
+}
+
+@media (max-width: 767px) {
+  :local(.side-panel) {
+    width: 100%;
+  }
+}

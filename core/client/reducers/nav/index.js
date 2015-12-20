@@ -4,10 +4,12 @@
 
 */
 import { goBack } from "redux-router"
+import { modal as modalActions } from "../../actions/"
 
 const back = (props) => {
   return goBack()
 }
+
 
 const links = {
   TOP:[
@@ -22,9 +24,7 @@ const links = {
     { id: 3, action: false, icon:"icon-share" }
   ],
   MODAL: [
-    { id: 1, label:"Down", action: "", icon:"icon-arrow-down" },
-    { id: 2, label:"Like", action: "", icon:"icon-like" },
-    { id: 3, label:"Share", action: "", icon:"icon-share" }
+    { id: 1, action: modalActions.hide, icon:"icon-close" },
   ]
 }
 

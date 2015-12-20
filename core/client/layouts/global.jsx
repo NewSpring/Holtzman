@@ -13,7 +13,7 @@ import thunk from "redux-thunk"
 import { reducers } from "../reducers"
 import { getRoutes } from "../../lib/store"
 import { middlewares } from "../middlewares"
-import { Nav } from "../blocks"
+import { Nav, Modal } from "../blocks"
 
 
 class App extends Component {
@@ -27,6 +27,7 @@ class App extends Component {
       >
         {this.props.children}
         <Nav />
+        <Modal/>
       </div>
     )
 

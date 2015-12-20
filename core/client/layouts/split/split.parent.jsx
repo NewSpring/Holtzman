@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
-import styles from "./split.parent.css"
+import styles from "../../blocks/nav/nav.offset.css"
 
 function map(state) {
   return {

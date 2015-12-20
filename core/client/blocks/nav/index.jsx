@@ -25,11 +25,7 @@ export default class NavContainer extends Component {
   render () {
     const { state, router } = this.props
     if (!state.visible) {
-      return (
-        <div>
-          <p>BWAHH</p>
-        </div>
-      )
+      return null
     }
 
     return (

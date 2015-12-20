@@ -33,7 +33,7 @@ export default class Right extends Component {
     }
 
     if (this.props.classes) {
-      classes.concat(this.props.classes);
+      classes = classes.concat(this.props.classes);
     }
 
     return classes.join(" ");
