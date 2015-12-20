@@ -24,6 +24,7 @@ const types = {
   REMOVE_ERROR: "ONBOARD.REMOVE_ERROR",
   SET_ERRORS: "ONBOARD.SET_ERRORS",
   SET_SUCCESS: "ONBOARD.SET_SUCCESS",
+  IS_AUTHORIZED: "ONBOARD.IS_AUTHORIZED"
 }
 
 export default {
@@ -49,6 +50,8 @@ export default {
 
   forgot: () => ({ type: types.SET_FORGOT, forgot: true }),
   remember: () => ({ type: types.SET_FORGOT, forgot: false }),
+
+  authorize: (authorized) => ({ type: types.IS_AUTHORIZED, authorized})
 
 
 }
