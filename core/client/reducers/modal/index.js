@@ -10,7 +10,7 @@ const initial = {
   content: null, // component to render within nav
   props: {
     classes: [], // classes to be added to modal
-    theme: null, // string of classes to overwrite theme
+    theme: false, // string of classes to overwrite theme
     styles: {}, // styles to be set on modal component
   }
 }

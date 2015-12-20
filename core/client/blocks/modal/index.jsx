@@ -18,24 +18,50 @@ function map(state) {
 @connect(map)
 export default class SideModal extends Component {
 
-  static propTypes = {
-    classes: PropTypes.array,
-    theme: PropTypes.string,
-    styles: PropTypes.object
+  childClasses = () => {
+
+    const { props } = this.props.modal
+
+    let classes = [
+      "hard",
+      "one-whole",
+    ];
+
+    if (props.childClasses) {
+      classes.concat(props.childClasses);
+    }
+
+    if (props.float) {
+      classes.push("floating__item")
+    } else {
+      classes = classes.concat([
+        "inline-block",
+        "locked-top"
+      ])
+    }
+
+    return classes.join(" ");
+
   }
 
   layoutClasses = () => {
+
+    const { props } = this.props.modal
+
     let classes = [
       "hard",
       "flush",
-      "floating",
       "background--light-primary",
     ];
 
-    if (this.props.classes) {
-      classes.concat(this.props.classes);
+    if (props.classes.length) {
+      classes.concat(props.classes);
     } else {
       classes.push(styles["side-panel"])
+    }
+
+    if (props.float) {
+      classes.push("floating")
     }
 
     if (this.props.navigation.visible) {
@@ -105,12 +131,8 @@ export default class SideModal extends Component {
                   className={ this.props.theme || this.layoutClasses() }
                   style={ this.props.styles || this.styles() }
                 >
-                  <div className="
-                    floating__item
-                    one-whole
-                    hard"
-                  >
-                    {this.props.children}
+                  <div className={this.props.childClasses || this.childClasses()}>
+                    <this.props.modal.content/>
                   </div>
 
                 </section>
