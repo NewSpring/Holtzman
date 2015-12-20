@@ -30,9 +30,10 @@ api.call = function(method, endpoint, data, callback) {
     if (response.status >= 200 && response.status < 300) {
       return response
     } else {
-      var error = new Error(response.statusText)
-      error.response = response
-      throw error
+      return {
+        status: response.status,
+        statusText: response.statusText
+      }
     }
   }
 
@@ -61,16 +62,18 @@ api.call = function(method, endpoint, data, callback) {
     credentials: "same-origin"
   };
 
-  if (method != "PUT" || method != "POST") {
-    delete options.body
-  }
-
   endpoint = this._.baseURL + "api/" + endpoint;
 
   return fetch(endpoint, options)
     .then(checkStatus)
     .then((response) => {
+
+      if (response.status === 204) {
+        return true
+      }
+
       return response.json()
+
     })
     .then((data) => {
       callback(null, data)
