@@ -7,11 +7,11 @@
 On Board Block
 =======================
 
-The on boarding block is used to handle the workflow of data for on-boarding a user. This includes [signing in]("#sign-in"), [signing up]("#sign-up"), [sending a password reset]("#forgot-password"), and [resetting a password]("#reset-password"). This block is used in conjunction with the [on board actions]("../../actions/on-board/README.md") and the [on board reducer]("../../reducers/on-board/README.md").
+The on boarding block is used to handle the workflow of data for on-boarding a user. This includes [signing in](#sign-in), [signing up](#sign-up), [sending a password reset](#forgot-password), and [resetting a password](#reset-password). This block is used in conjunction with the [on board actions](../../actions/on-board/README.md) and the [on board reducer](../../reducers/on-board/README.md).
 
 ## Entry point
 
-When using the on board component, it is best to include the entire block. [The index file]("./index.jsx") contains the state handling of the sub components as well as integration with redux. Usage:
+When using the on board component, it is best to include the entire block. [The index file](./index.jsx) contains the state handling of the sub components as well as integration with redux. Usage:
 
 ```javascript
 import { Component, PropTypes} from "react"
@@ -34,7 +34,7 @@ The block does not take or support any props currently
 
 ## Sign-in
 
-The [sign-in component]("./on-board.Signin.jsx") is used to handle both sign-in and sign-up states. It renders the toggle switch between sign-in and sign-up, the form for taking data, and handles validation using [inputs]("../../components/forms/README.md#inputs").
+The [sign-in component](./on-board.Signin.jsx) is used to handle both sign-in and sign-up states. It renders the toggle switch between sign-in and sign-up, the form for taking data, and handles validation using [inputs](../../components/forms/README.md#inputs).
 
 #### Props
 * **save**: `Function` | method to save value on valid input blur | **required**
