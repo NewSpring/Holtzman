@@ -6,6 +6,7 @@ import { onBoard as onBoardActions } from "../../actions"
 
 import Loading from "./on-board.Loading"
 import SignIn from "./on-board.Signin"
+import SignOut from "./on-board.SignOut"
 import ForgotPassword from "./on-board.ForgotPassword"
 
 
@@ -27,6 +28,7 @@ function mapStateToProps(state) {
 @connect(mapStateToProps, onBoardActions)
 class OnBoard extends Component {
 
+
   goBack = (e) => {
     e.preventDefault();
     goBack()
@@ -42,9 +44,17 @@ class OnBoard extends Component {
     this.props.forgot()
   }
 
+  signout = (e) => {
+    e.preventDefault()
+    Meteor.logout()
+
+    this.props.authorize(false)
+
+  }
+
   render () {
 
-    const { data, errors, account, state, success, forgot } = this.props.onboard
+    const { data, errors, account, state, success, forgot, authorized } = this.props.onboard
 
     if (state === "loading") {
       return (
@@ -64,6 +74,14 @@ class OnBoard extends Component {
           account={account}
           back={this.goSignIn}
           submit={this.props.submit}
+        />
+      )
+    }
+
+    if (authorized) {
+      return (
+        <SignOut
+          signout={this.signout}
         />
       )
     }

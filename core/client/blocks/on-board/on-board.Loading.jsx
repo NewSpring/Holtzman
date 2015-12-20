@@ -16,12 +16,12 @@ export default class  extends Component {
               {() => {
                 if (this.props.account) {
                   return (
-                    <h4 className="text-light-primary">Signing You In...</h4>
+                    <h4 className="text-light-primary">Signing you in...</h4>
                   )
                 }
 
                 return (
-                  <h4 className="text-light-primary">Creating you account</h4>
+                  <h4 className="text-light-primary">Creating your account</h4>
                 )
               }()}
 

@@ -77,6 +77,15 @@ class SignIn extends React.Component {
 
   submit = (event) => {
     event.preventDefault();
+    const { refs } = this
+    for (let input in refs) {
+      const component = refs[input]
+
+      if (component.validate) {
+        component.validate()
+      }
+    }
+
     this.props.submit();
 
     return;
@@ -108,6 +117,7 @@ class SignIn extends React.Component {
             errorText="Please enter a valid email"
             validation={this.isEmail}
             defaultValue={this.props.data.email}
+            ref="email"
           />
 
           <Forms.Input
@@ -117,6 +127,7 @@ class SignIn extends React.Component {
             type="password"
             errorText="Password may not be empty"
             validation={this.savePassword}
+            ref="password"
           />
 
 
@@ -137,12 +148,12 @@ class SignIn extends React.Component {
               <div className="push-bottom">
                 <h7 >
                   <small>
-                    <button
+                    <a href="/profile/forgot-password"
                       className="text-primary"
                       onClick={this.props.forgot}
                     >
                       Forgot Password?
-                    </button>
+                    </a>
                   </small>
                 </h7>
               </div>
@@ -154,9 +165,9 @@ class SignIn extends React.Component {
 
 
         <div>
-          <button onClick={goBack} className="btn--small btn--dark-tertiary display-inline-block">
+          <a href="#" tabIndex={-1} onClick={goBack} className="btn--small btn--dark-tertiary display-inline-block">
             Back
-          </button>
+          </a>
 
           {() => {
             const { data } = this.props
