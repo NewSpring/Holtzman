@@ -26,6 +26,6 @@ export default {
 
   update: (props) => ({ type: "MODAL.SET_PROPS", props }),
 
-  changeTo: (type) => ({ type: "MODAL.SET_TYPE", type })
+  changeTo: (state) => ({ type: "MODAL.SET_TYPE", state })
 
 }
