@@ -18,6 +18,10 @@ export default class Right extends Component {
       "flush"
     ];
 
+    if (this.props.mobile) {
+      classes.push("ratio--landscape@handheld")
+    }
+
     if (this.props.scroll) {
       classes.push("scrollable")
     }
@@ -40,6 +44,12 @@ export default class Right extends Component {
   }
 
   styles = () => {
+    if (this.props.background) {
+      return {
+        backgroundImage: `url(${this.props.background})`
+      }
+    }
+
     return {}
   }
 
@@ -49,7 +59,10 @@ export default class Right extends Component {
         className={ this.props.theme || this.layoutClasses() }
         style={ this.props.styles || this.styles() }
       >
+      <div className="ratio__item">
         {this.props.children}
+      </div>
+
       </section>
     )
   }

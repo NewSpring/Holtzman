@@ -40,6 +40,12 @@ export default class Left extends Component {
   }
 
   styles = () => {
+    if (this.props.background) {
+      return {
+        backgroundImage: `url($this.props.image)`
+      }
+    }
+
     return {}
   }
 

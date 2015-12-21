@@ -6,7 +6,7 @@
 
 const initial = {
   visible: false,
-  type: "default", // "full"
+  state: "default", // "full"
   content: null, // component to render within nav
   props: {
     classes: [], // classes to be added to modal
@@ -31,7 +31,7 @@ export default function modal(state = initial, action) {
       }}
     case "MODAL.SET_TYPE":
       return {...state, ...{
-        type: action.type || state.type
+        state: action.state || state.state
       }}
     default:
       return state

@@ -5,7 +5,7 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux"
 import { reduxReactRouter, routerStateReducer } from "redux-router"
 if (Meteor.isClient) { ch = require("history/lib/createBrowserHistory") }
 if (Meteor.isServer) { ch = require("history/lib/createMemoryHistory") }
-import persistState from "redux-localstorage"
+// import persistState from "redux-localstorage"
 import createLogger from "redux-logger"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
@@ -68,9 +68,9 @@ export default class Global extends Component {
       ]]
 
     } else {
-      sharedCompose = [...sharedCompose, ...[
-        persistState()
-      ]]
+      // sharedCompose = [...sharedCompose, ...[
+      //   persistState()
+      // ]]
     }
 
     this.store = compose(...sharedCompose)(createStore)(combineReducers(joinedReducers))

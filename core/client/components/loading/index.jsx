@@ -8,6 +8,4 @@ export {
   WindowLoading
 }
 
-export default {
-  Loading: ParentLoading
-}
+export default ParentLoading
