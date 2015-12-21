@@ -93,7 +93,7 @@ export default class SideModal extends Component {
     let exit = "fadeOut"
     let slide = "transition.slideLeftIn"
 
-    if (window != null && window != undefined) {
+    if (typeof window != "undefined" || window != null) {
       const width = window.innerWidth
       if (width < 768) {
         enter = "transition.slideUpIn"
