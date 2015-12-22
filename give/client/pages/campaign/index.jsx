@@ -8,7 +8,7 @@ import { Loading } from "../../../../core/client/components"
 import { nav as navActions } from "../../../../core/client/actions"
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
 
-import { Accounts } from "../../../lib/collections"
+import { Accounts as Acc } from "../../../lib/collections"
 
 @connect()
 @ReactMixin.decorate(ReactMeteorData)
@@ -25,7 +25,7 @@ export default class Template extends Component {
   getMeteorData() {
     Meteor.subscribe("accounts")
     const Name = decodeURI(this.props.params.name);
-    const account = Accounts.findOne({ Name });
+    const account = Acc.findOne({ Name });
 
     console.log(account)
 

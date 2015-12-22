@@ -4,7 +4,7 @@ import ReactMixin from "react-mixin"
 
 import { Link } from "react-router"
 
-import { Accounts } from "../../../lib/collections"
+import { Accounts as Acc } from "../../../lib/collections"
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
 
 import { Card } from "../../../../core/client/components"
@@ -15,7 +15,7 @@ export default class Home extends Component {
 
   getMeteorData() {
     Meteor.subscribe("accounts")
-    const accounts = Accounts.find().fetch()
+    const accounts = Acc.find().fetch()
     return {
       accounts
     }
