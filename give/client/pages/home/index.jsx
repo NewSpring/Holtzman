@@ -37,6 +37,7 @@ export default class Home extends Component {
         <Left scroll={true} >
           <div className="soft soft-double@lap-and-up push-double@lap-wide-and-up">
 
+
             <div className="soft-double-ends@lap-and-up">
              <div className="outlined--light outlined--top push-double-ends"></div>
            </div>
@@ -49,7 +50,7 @@ export default class Home extends Component {
                 }
 
                 return (
-                  <div key={i} className="grid__item one-whole one-half@lap-and-up">
+                  <div key={i} className="grid__item one-whole one-half@lap-wide-and-up">
                     <Card
                       link={`/give/campaign/${encodeURI(account.Name)}`}
                       image={{

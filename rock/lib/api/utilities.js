@@ -72,7 +72,11 @@ api.call = function(method, endpoint, data, callback) {
         return true
       }
 
-      return response.json()
+      if (response.json) {
+        return response.json()
+      }
+
+      return response
 
     })
     .then((data) => {
@@ -119,6 +123,17 @@ api.patch = function() {
   return api.call.apply(this, args);
 
 };
+
+api.parseEndpoint = (str) => {
+  return str.split("\n").map((x) => {
+    let trimmed = x.trim()
+    if ( trimmed.slice(-3) === "and" ||  trimmed.slice(-2) === "or") {
+      trimmed += " "
+    }
+
+    return trimmed
+  }).join("")
+}
 
 
 // for (const meth in api) {

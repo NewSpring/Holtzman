@@ -1,5 +1,5 @@
 
-let Accounts
+let Accounts = {}
 
 if (Meteor.isClient) {
   Accounts = new Mongo.Collection("accounts")
