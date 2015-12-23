@@ -20,6 +20,7 @@ const links = {
   ],
   CONTENT: [
     { id: 1, action: back, icon:"icon-arrow-back" },
+    { id: 2, action: false, icon:"icon-sections" },
     { id: 2, action: false, icon:"icon-like" },
     { id: 3, action: false, icon:"icon-share" }
   ],

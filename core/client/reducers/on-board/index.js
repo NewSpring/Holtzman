@@ -18,7 +18,9 @@ const initial = {
   data: {
     email: null, // String
     password: null, // String (encrypted before launch)
-    terms: true, // String
+    terms: true, // String,
+    firstName: null, // String
+    lastName: null // String
   },
 
   state: "default", // "submit", "loading"

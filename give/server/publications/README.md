@@ -45,4 +45,12 @@ const funds = Query(`
 `)
 
 
+const schedules = `https://stock-rock.newspring.cc/api/FinancialScheduledTransactions?$top=100&$expand=ScheduledTransactionDetails,TransactionFrequencyValue,FinancialPaymentDetail,FinancialPaymentDetail/CreditCardTypeValue,FinancialPaymentDetail/BillingLocation`
+
+const savedAccounts = `https://stock-rock.newspring.cc/api/FinancialPersonSavedAccounts?$top=100&$expand=FinancialPaymentDetail,FinancialPaymentDetail/CreditCardTypeValue,FinancialPaymentDetail/CurrencyTypeValue`
+
+
+const home = `https://stock-rock.newspring.cc/api/Groups/GetFamilies/90818?$expand=GroupLocations,GroupLocations/Location,GroupLocations/GroupLocationTypeValue,Campus`
+
+
 ```

@@ -8,26 +8,6 @@ const transactions = () => {
     //   FinancialTransactions/GetContributionTransactions/237198/232269
     // `)
 
-    let query =  api.parseEndpoint(`
-      FinancialTransactions?
-        $filter=
-          AuthorizedPersonAliasId eq 232169
-        &$expand=
-          TransactionDetails,
-          FinancialPaymentDetail,
-          FinancialPaymentDetail/CurrencyTypeValue
-        &$select=
-          Id,
-          CreatedDateTime,
-          Summary,
-          AuthorizedPersonAliasId,
-          TransactionDetails/Amount,
-          TransactionDetails/AccountId,
-          TransactionDetails/CreatedDateTime,
-          FinancialPaymentDetail/CurrencyTypeValue/Description,
-          FinancialPaymentDetail/CurrencyTypeValue/Value
-    `)
-
     let allAccounts = api.parseEndpoint(`
       FinancialAccounts?
         $expand=
@@ -45,8 +25,33 @@ const transactions = () => {
     `)
 
 
-    const mergeTransactions = (callback) => {
+    const mergeTransactions = function(callback) {
 
+      const user = Meteor.users.findOne(this.userId)
+
+      if (!user) {
+        return []
+      }
+
+      let query =  api.parseEndpoint(`
+        FinancialTransactions?
+          $filter=
+            AuthorizedPersonAliasId eq ${user.services.rock.PrimaryAliasId}
+          &$expand=
+            TransactionDetails,
+            FinancialPaymentDetail,
+            FinancialPaymentDetail/CurrencyTypeValue
+          &$select=
+            Id,
+            CreatedDateTime,
+            Summary,
+            AuthorizedPersonAliasId,
+            TransactionDetails/Amount,
+            TransactionDetails/AccountId,
+            TransactionDetails/CreatedDateTime,
+            FinancialPaymentDetail/CurrencyTypeValue/Description,
+            FinancialPaymentDetail/CurrencyTypeValue/Value
+      `)
 
       api.get(query, (err, data) => {
         if (err) { callback(err) }

@@ -14,6 +14,8 @@ const signup = (store, next, action) => {
     action.state === "submit" &&
     data.email &&
     data.password &&
+    data.firstName &&
+    data.lastName &&
     data.terms
   ) {
 
@@ -38,19 +40,19 @@ const signup = (store, next, action) => {
       dispatch(onBoard.authorize(true))
     }
 
-    auth.signup(data.email, data.password, (err, success) => {
+    auth.signup(data, (err, success) => {
 
-      if (!err && success) {
-        Accounts.createUser({
-          email: data.email,
-          password: data.password
-        }, loggedIn)
-      } else {
-        failure(err)
-      }
+      if (err) { failure(err) }
 
-      action.state = "default"
-      return next(action)
+      Meteor.loginWithPassword(data.email, data.password, (err, id) => {
+
+        if (err) { failure(err) }
+        loggedIn()
+        action.state = "default"
+        return next(action)
+      })
+
+
     })
 
     return function cancel() {

@@ -4,27 +4,35 @@ import ReactMixin from "react-mixin"
 
 import { Link } from "react-router"
 
-import { Accounts as Acc } from "../../../lib/collections"
+import { api, endpoints } from "../../../../rock/lib/api"
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
-
 import { Card } from "../../../../core/client/components"
+
+import { Accounts as Acc } from "../../../lib/collections"
+import { GiveNow } from "../../blocks"
 
 @connect()
 @ReactMixin.decorate(ReactMeteorData)
 export default class Home extends Component {
 
   getMeteorData() {
-    Meteor.subscribe("accounts")
-    const accounts = Acc.find().fetch()
+    let accounts
+    let paymentDetails
+
+    if (Meteor.isClient) {
+      Meteor.subscribe("accounts")
+      accounts = Acc.find().fetch()
+    }
+
+    if (Meteor.isServer) {
+      accounts = api.get.sync(endpoints.accounts)
+    }
+
     return {
       accounts
     }
   }
 
-  showModal = () => {
-    this.props.dispatch(modal.render(OnBoard))
-    this.props.dispatch(modal.show())
-  }
 
   render () {
     return (
@@ -37,6 +45,9 @@ export default class Home extends Component {
         <Left scroll={true} >
           <div className="soft soft-double@lap-and-up push-double@lap-wide-and-up">
 
+            <div className="text-center">
+              <GiveNow/>
+            </div>
 
             <div className="soft-double-ends@lap-and-up">
              <div className="outlined--light outlined--top push-double-ends"></div>
@@ -50,7 +61,7 @@ export default class Home extends Component {
                 }
 
                 return (
-                  <div key={i} className="grid__item one-whole one-half@lap-wide-and-up">
+                  <div key={i} className="grid__item one-whole one-half@anchored">
                     <Card
                       link={`/give/campaign/${encodeURI(account.Name)}`}
                       image={{

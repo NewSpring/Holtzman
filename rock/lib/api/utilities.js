@@ -124,7 +124,7 @@ api.patch = function() {
 
 };
 
-api.parseEndpoint = (str) => {
+const parseEndpoint = (str) => {
   return str.split("\n").map((x) => {
     let trimmed = x.trim()
     if ( trimmed.slice(-3) === "and" ||  trimmed.slice(-2) === "or") {
@@ -135,12 +135,16 @@ api.parseEndpoint = (str) => {
   }).join("")
 }
 
+api.parseEndpoint = parseEndpoint
 
-// for (const meth in api) {
-//   api[meth].sync =
-//   // apiSync[meth] = Meteor.wrapAsync(api.[meth], Rock.api);
-// }
+if (Meteor.isServer) {
+  for (const meth in api) {
+    api[meth].sync = Meteor.wrapAsync(api[meth], api)
+  }
+}
+
 
 export default {
-  api
+  api,
+  parseEndpoint
 }

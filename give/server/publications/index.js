@@ -1,10 +1,12 @@
 
 import accounts from "./accounts"
 import transactions from "./transactions"
+import paymentDetails from "./paymentDetails"
 
 const publications = {
   accounts,
-  transactions
+  transactions,
+  paymentDetails
 }
 
 const publish = () => {
@@ -16,5 +18,6 @@ const publish = () => {
 export default {
   accounts,
   transactions,
+  paymentDetails,
   publish
 }

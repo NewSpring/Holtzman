@@ -14,11 +14,9 @@ function makeGUID () {
   return guid.toUpperCase()
 }
 
+console.log("here I am, prepping the codes")
 Meteor.methods({
   "Rock.auth.available": (email) => {
-    if (!email) {
-      return false
-    }
     check(email, String)
 
     // special case for AD lookup
@@ -26,12 +24,12 @@ Meteor.methods({
       email = email.replace(/@newspring.cc/, "")
     }
 
-    const SyncCall = Meteor.wrapAsync(api.get, api)
-
     let isAvailable = false
     try {
-      isAvailable = SyncCall(`userlogins/available/${email}`)
+      console.log("making the call for ", email)
+      isAvailable = api.get.sync(`userlogins/available/${email}`)
     } catch (e) {
+      console.log(e, "DANGER WILL ROBINSON")
       console.log("lookup in users account in meteor")
     }
 
@@ -41,84 +39,141 @@ Meteor.methods({
     check(Username, String)
     check(password, String)
 
+    const email = Username
+
     // special case for AD lookup
     if (Username.indexOf("@newspring.cc") > -1) {
       Username = Username.replace(/@newspring.cc/, "")
     }
 
-    const SyncCall = Meteor.wrapAsync(api.post, api)
     let isAuthorized = false
 
     try {
-      SyncCall(`Auth/login`, { Username, Password: password })
-      isAuthorized = true
+      isAuthorized = api.post.sync(`Auth/login`, { Username, Password: password })
     } catch (e) {
       isAuthorized = false
     }
 
+    let userAccount = Accounts.findUserByEmail(email)
+
+    // ensure the users exists if they tried to login
+    if (isAuthorized && !userAccount) {
+      userAccount =  Accounts.createUser({
+        email: email,
+        password: password
+      })
+    }
+
+
+    api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`, (err, user) => {
+      const { PersonId } = user[0]
+
+      api.get(`People/${PersonId}`, (err, person) => {
+        const { PrimaryAliasId } = person
+
+        if (userAccount) {
+          Meteor.users.update(userAccount._id || userAccount, {
+            $set: {
+              "services.rock" : {
+                PersonId,
+                PrimaryAliasId
+              }
+            }
+          })
+        }
+      })
+
+    })
+
 
     return isAuthorized
   },
-  "Rock.auth.signup": (Username, password) => {
-    check(Username, String)
-    check(password, String)
+  "Rock.auth.signup": (account) => {
+    check(account.email, String)
+    check(account.firstName, String)
+    check(account.lastName, String)
+    check(account.password, String)
 
-    console.log("Creating a new signup")
+    // return variable
+    let success = false
 
     // special case for AD lookup
-    if (Username.indexOf("@newspring.cc") > -1) {
-      Username = Username.replace(/@newspring.cc/, "")
-
+    if (account.email.indexOf("@newspring.cc") > -1) {
       return false
     }
 
-    let success = false
-    const SyncPost = Meteor.wrapAsync(api.post, api)
-    const SyncGet = Meteor.wrapAsync(api.get, api)
+    // see if they already have a meteor account (they shouldn't)
+    let userAccount = Accounts.findUserByEmail(account.email)
+
+    // if they do, kill it with fire
+    if (userAccount) {
+      Meteor.users.remove(userAccount._id)
+    }
+
+    let meteorUserId = null
+    // try to create new meteor account
+    try {
+      meteorUserId = Accounts.createUser({
+        email: account.email,
+        password: account.password
+      })
+      success = true
+    } catch (e) {
+      return false
+    }
+
+
+    /*
+
+      Create person in Rock
+
+      Async
+
+    */
 
     // Create person
     const Person = {
-      Email: Username
+      Email: account.email,
+      Guid: makeGUID(),
+      FirstName: account.firstName,
+      LastName: account.lastName,
+      IsSystem: false,
+      Gender: 0,
+      SystemNote: "Created from NewSpring Apollos",
     }
 
-    let Guid = makeGUID();
-    Person.IsSystem = false;
-    Person.Gender = 0
-    Person.SystemNote = "Created from NewSpring Apollos"
-    Person.Guid = Guid;
 
-    try {
-      const PersonId = SyncPost(`People`, Person)
-      console.log("NEW PERSON", PersonId)
+    let PersonId = null
+    api.post(`People`, Person, (err, PersonId) => {
       // create user
       const user = {
         PersonId,
         EntityTypeId: 27,
-        UserName: Username,
-        PlainTextPassword: password
+        UserName: account.email,
+        PlainTextPassword: account.password
       }
-      const userId = SyncPost("UserLogins", user)
-      console.log("NEW USER", userId)
-      if (userId) {
-        success = true
-      }
-    } catch (e) {
-      success = false
-    }
+
+      api.post("UserLogins", user, (err, userId) => {
+        api.get(`People/${PersonId}`, (err, createdPerson) => {
+          const { PrimaryAliasId } = createdPerson
+          Meteor.users.update(meteorUserId, {
+            $set: {
+              "services.rock" : {
+                PersonId,
+                PrimaryAliasId
+              }
+            }
+          }, (err, id) => {
+
+          })
+        })
+      })
+
+    })
+
+
 
     return success
 
   }
 })
-
-// 305454
-// {
-//     "Email": "jbaxley@me.com",
-//     "IsSystem": false,
-//     "Gender": 0,
-//     "SystemNote": "Create from NewSpring Apollos",
-//     "Guid": "4CF25121-F759-B48F-F37E-45D0225D452B"
-// }
-
-// 90818 james.baxley PersonId
-// "37add244-710a-4548-aeaf-2ff0e47207ef" // james.baxley GUID
