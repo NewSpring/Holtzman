@@ -70,6 +70,34 @@ class SignIn extends React.Component {
     return isValid
   }
 
+  firstName = (value) => {
+    const isValid = value.length ? true : false
+    const noError = !this.props.errors["firstName"]
+
+    if (!isValid ) {
+      this.props.dispatch(onBoardActions.clear("firstName"))
+    } else {
+      this.props.save({ firstName: value })
+    }
+
+    return isValid
+  }
+
+  lastName = (value) => {
+    const isValid = value.length ? true : false
+    const noError = !this.props.errors["lastName"]
+
+    if (!isValid ) {
+      this.props.dispatch(onBoardActions.clear("lastName"))
+    } else {
+      this.props.save({ lastName: value })
+    }
+
+    return isValid
+  }
+
+
+
   saveTerms = (event) => {
     this.props.save({ terms: event.target.checked })
   }
@@ -129,6 +157,34 @@ class SignIn extends React.Component {
             validation={this.savePassword}
             ref="password"
           />
+
+          {() => {
+            if (!this.props.account) {
+              return (
+                <div>
+                  <Forms.Input
+                    name="firstName"
+                    label="First Name"
+                    errorText="Please enter your first name"
+                    validation={this.firstName}
+                    defaultValue={this.props.data.firstName}
+                    ref="firstName"
+                  />
+
+                  <Forms.Input
+                    name="lastName"
+                    label="Last Name"
+                    errorText="Please enter your last name"
+                    validation={this.lastName}
+                    defaultValue={this.props.data.lastName}
+                    ref="lastName"
+                  />
+                </div>
+
+              )
+
+            }
+          }()}
 
 
         {() => {
