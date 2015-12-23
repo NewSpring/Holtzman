@@ -22,7 +22,7 @@ export default {
   hide: () => ({type: "MODAL.SET_VISIBILITY", visible: false}),
   show: () => ({type: "MODAL.SET_VISIBILITY", visible: true}),
 
-  render: (content) => ({type: "MODAL.SET_CONTENT", content}),
+  render: (content, props) => ({type: "MODAL.SET_CONTENT", content, visible: true, props}),
 
   update: (props) => ({ type: "MODAL.SET_PROPS", props }),
 

@@ -93,23 +93,23 @@ export default class SideModal extends Component {
     let exit = "fadeOut"
     let slide = "transition.slideLeftIn"
 
-    if (typeof window != "undefined" || window != null) {
-      const width = window.innerWidth
-      if (width < 768) {
-        enter = "transition.slideUpIn"
-        exit = "slideDown"
-        slide = "slideUp"
-      }
-    }
+    // if (typeof window != "undefined" || window != null) {
+    //   const width = window.innerWidth
+    //   if (width < 768) {
+    //     enter = "transition.slideUpIn"
+    //     exit = "slideDown"
+    //     slide = "slideUp"
+    //   }
+    // }
 
     return (
 
       <VelocityTransitionGroup
         enter={{
-          animation: enter, duration: 300
+          animation: enter, duration: 250
         }}
         leave={{
-          animation: exit, duration: 300
+          animation: exit, duration: 250
         }}
       >
 
@@ -132,7 +132,7 @@ export default class SideModal extends Component {
                   style={ this.props.styles || this.styles() }
                 >
                   <div className={this.props.childClasses || this.childClasses()}>
-                    <this.props.modal.content/>
+                    <this.props.modal.content {...this.props.modal.props}/>
                   </div>
 
                 </section>
