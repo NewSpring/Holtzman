@@ -19,7 +19,7 @@
   "homepage": "https://github.com/NewSpring/newspring-core",
   "devDependencies": {},
   "dependencies": {
-    "history": "^1.13.1",
+    "history": "^1.17.0",
     "moment": "^2.10.6",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
