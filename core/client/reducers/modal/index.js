@@ -19,11 +19,13 @@ export default function modal(state = initial, action) {
   switch (action.type) {
     case "MODAL.SET_PROPS":
       return {...state, ...{
-        props: {...state.props, ...action.props},
+        props: {...state.props, ...action.props}
       }}
     case "MODAL.SET_CONTENT":
       return {...state, ...{
-        content: action.content || state.content
+        content: action.content || state.content,
+        visible: action.visible || state.visible,
+        props: {...state.props, ...action.props}
       }}
     case "MODAL.SET_VISIBILITY":
       return {...state, ...{

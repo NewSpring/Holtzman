@@ -20,6 +20,8 @@ export default class Right extends Component {
 
     if (this.props.mobile) {
       classes.push("ratio--landscape@handheld")
+    } else {
+      classes.push("visuallyhidden@handheld")
     }
 
     if (this.props.scroll) {
