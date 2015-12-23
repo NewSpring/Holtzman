@@ -9,7 +9,8 @@ const paymentDetails = () => {
       const user = Meteor.users.findOne(this.userId)
 
       if (!user || !user.services || !user.services.rock || !user.services.rock.PrimaryAliasId) {
-        return []
+        callback(null, [])
+        return
       }
 
       let query =  api.parseEndpoint(`
@@ -35,7 +36,7 @@ const paymentDetails = () => {
     }
 
 
-    REST2DDP.publish("paymentDetails", {
+    return REST2DDP.publish("paymentDetails", {
       collectionName: "paymentDetails",
       method: getPaymentDetails,
       jsonPath: "*",

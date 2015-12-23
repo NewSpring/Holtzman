@@ -28,11 +28,9 @@ const onboard = store => next => action => {
       // don't hold everything up
       next(action)
 
-      console.log(action.data.email, "HERE")
       if (action.data.email){
         // set state based on is email is already in system
         auth.available(action.data.email, (err, isAvailable) => {
-          console.log(err, isAvailable, "NO HERE")
           dispatch(onBoard.setAccount(!isAvailable))
         })
       }

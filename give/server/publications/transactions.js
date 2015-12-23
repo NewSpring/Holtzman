@@ -30,7 +30,7 @@ const transactions = () => {
       const user = Meteor.users.findOne(this.userId)
 
       if (!user) {
-        return []
+        callback(null, [])
       }
 
       let query =  api.parseEndpoint(`
