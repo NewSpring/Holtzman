@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 
 import { OnBoard } from "../../../../core/client/blocks"
-import { modal, onBoard as onBoardActions } from "../../../../core/client/actions"
+import { modal, onBoard as onBoardActions, nav as navActions } from "../../../../core/client/actions"
 
 import Give from "../give"
 import { AccountType } from "../../components"
@@ -56,11 +56,16 @@ export default class GiveNow extends Component {
       this.props.dispatch(onBoardActions.setAccount(true))
     }
 
+    this.props.dispatch(navActions.setLevel("MODAL"))
+
+
   }
 
   register = () => {
     this.props.dispatch(modal.render(OnBoard))
     this.props.dispatch(onBoardActions.setAccount(false))
+    this.props.dispatch(navActions.setLevel("MODAL"))
+
   }
 
   buttonText = () => {
@@ -116,6 +121,11 @@ export default class GiveNow extends Component {
         </button>
       )
     }
+  }
+
+  // used for testing give
+  componentWillMount() {
+    this.click()
   }
 
   render () {

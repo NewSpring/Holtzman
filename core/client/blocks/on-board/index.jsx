@@ -18,7 +18,7 @@ import ForgotPassword from "./on-board.ForgotPassword"
   2. Forgot Password
 
 */
-// We only care about the navigation state
+// We only care about the onboard state
 function mapStateToProps(state) {
   return {
     onboard: state.onBoard

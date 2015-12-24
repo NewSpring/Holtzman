@@ -20,7 +20,13 @@ class Layout extends Component {
   getMeteorData() {
 
     const user = Meteor.user()
-    this.setLoggedIn(user)
+
+    if (user && (this.data.user && user._id != this.data.user._id) || (!this.data.user)) {
+      Meteor.subscribe("people")
+      this.setLoggedIn(user)
+    } else if (!user) {
+      this.setLoggedIn(null)
+    }
 
     return {
       user

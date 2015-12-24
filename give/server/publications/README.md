@@ -50,7 +50,7 @@ const schedules = `https://stock-rock.newspring.cc/api/FinancialScheduledTransac
 const savedAccounts = `https://stock-rock.newspring.cc/api/FinancialPersonSavedAccounts?$top=100&$expand=FinancialPaymentDetail,FinancialPaymentDetail/CreditCardTypeValue,FinancialPaymentDetail/CurrencyTypeValue`
 
 
-const home = `https://stock-rock.newspring.cc/api/Groups/GetFamilies/90818?$expand=GroupLocations,GroupLocations/Location,GroupLocations/GroupLocationTypeValue,Campus`
+const home = `https://stock-rock.newspring.cc/api/Groups/GetFamilies/90818?$expand=GroupLocations,GroupLocations/Location,GroupLocations/GroupLocationTypeValue,Campus&$select=Campus/Name,Campus/ShortCode,GroupLocations/Location/Street1,GroupLocations/Location/Street2,GroupLocations/Location/City,GroupLocations/Location/State,GroupLocations/Location/Country,GroupLocations/Location/PostalCode,GroupLocations/Location/Id,GroupLocations/GroupLocationTypeValue/Value`
 
 
 ```

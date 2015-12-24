@@ -6,7 +6,7 @@ import { reduxReactRouter, routerStateReducer } from "redux-router"
 if (Meteor.isClient) { ch = require("history/lib/createBrowserHistory") }
 if (Meteor.isServer) { ch = require("history/lib/createMemoryHistory") }
 // import persistState from "redux-localstorage"
-import createLogger from "redux-logger"
+// import createLogger from "redux-logger"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 
@@ -44,7 +44,7 @@ export default class Global extends Component {
       router: routerStateReducer
     }}
 
-    const logger = createLogger()
+    // const logger = createLogger()
 
     let sharedMiddlewares = [...[
       thunk
@@ -52,9 +52,9 @@ export default class Global extends Component {
 
     // setup dev middlewares
     if (process.env.NODE_ENV != "production") {
-      sharedMiddlewares = [...sharedMiddlewares, ...[
-        logger
-      ]]
+      // sharedMiddlewares = [...sharedMiddlewares, ...[
+      //   logger
+      // ]]
     }
 
     let sharedCompose = [

@@ -24,6 +24,8 @@ const addReducer = (obj) => {
     reducers[name] = handler
   }
 
+  return obj
+
 }
 
 const createReducer = (initialState, handlers) => {

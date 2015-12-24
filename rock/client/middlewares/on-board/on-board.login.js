@@ -43,16 +43,19 @@ const login = (store, next, action) => {
           //     password: data.password
           //   }, loggedIn)
           // }
+          loggedIn()
 
+          action.state = "default"
+          return next(action)
 
         })
 
       } else {
         failure(err)
+        return next(action)
       }
 
-      action.state = "default"
-      return next(action)
+
 
     })
 

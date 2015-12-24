@@ -48,7 +48,6 @@ class Input extends React.Component {
     const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
     const value = target.value
 
-
     if (!value) {
       this.setState({
         active: false,
@@ -76,6 +75,12 @@ class Input extends React.Component {
     })
   }
 
+  setValue = (value) => {
+    let node = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    node.value = value;
+    this.focus()
+    this.validate()
+  }
 
 
   setStatus = (message) => {

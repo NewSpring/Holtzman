@@ -71,7 +71,7 @@ export default createReducer(initial, {
 
   [types.REMOVE_DATA](state, action) {
 
-    if (!action.feild || state.data[action.field]) {
+    if (!action.field || state.data[action.field]) {
       return state
     }
 

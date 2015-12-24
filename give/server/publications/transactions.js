@@ -29,8 +29,9 @@ const transactions = () => {
 
       const user = Meteor.users.findOne(this.userId)
 
-      if (!user) {
+      if (!user || !user.services || !user.services.rock || !user.services.rock.PrimaryAliasId) {
         callback(null, [])
+        return
       }
 
       let query =  api.parseEndpoint(`
