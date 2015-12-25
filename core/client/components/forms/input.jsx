@@ -33,9 +33,9 @@ class Input extends React.Component {
       break;
     }
 
-    if (this.props.liveFormatting && typeof(this.props.liveFormatting) === "function") {
+    if (this.props.format && typeof(this.props.format) === "function") {
 
-      const newValue = this.props.liveFormatting(value);
+      const newValue = this.props.format(value);
 
       let node = ReactDOM.findDOMNode(this.refs["apollos-input"]);
       node.value = newValue;

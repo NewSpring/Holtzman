@@ -14,7 +14,6 @@ function makeGUID () {
   return guid.toUpperCase()
 }
 
-console.log("here I am, prepping the codes")
 Meteor.methods({
   "Rock.auth.available": (email) => {
     check(email, String)

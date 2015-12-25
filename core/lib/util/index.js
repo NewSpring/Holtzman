@@ -33,5 +33,8 @@ Util.addUtil("base64Encode", base64Encode);
 import { makeNewGuid } from "./guid"
 Util.addUtil("makeNewGuid", makeNewGuid);
 
+import XML from "./xml"
+Util.addUtil("parseXML", XML.parse)
+
 
 export default Util

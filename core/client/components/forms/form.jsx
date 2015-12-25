@@ -22,6 +22,8 @@ class Form extends React.Component {
         id={this.props.id}
         onSubmit={this.props.submit}
         className={ this.props.theme || this.layoutClasses() }
+        action={this.props.action}
+        method={this.props.method}
       >
         <Fieldset
           theme={this.props.fieldsetTheme}

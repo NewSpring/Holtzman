@@ -1,4 +1,5 @@
 import { Component, PropTypes} from "react"
+import ReactDom from "react-dom";
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 
@@ -24,6 +25,9 @@ function mapStateToProps(state) {
 @ReactMixin.decorate(ReactMeteorData)
 export default class Give extends Component {
 
+  state = {
+    postUrl: null
+  }
   setData = false
 
   getMeteorData(){
@@ -35,14 +39,10 @@ export default class Give extends Component {
       person = People.findOne()
     }
 
-    console.log(person)
-
     if (person && (this.setData === false)) {
-      this.updateInputs(person)
       this.setData = true
+      this.updateInputs(person)
     }
-
-
 
     return {
       person
@@ -68,15 +68,15 @@ export default class Give extends Component {
       zip: Home.PostalCode
     }
 
-    const { form } = this.refs
+    const { inputs } = this.refs
 
-    if (form) {
+    if (inputs) {
 
-      for (let ref in form.refs) {
+      for (let ref in inputs.refs) {
 
-        if (form.refs[ref].setValue && person[ref]) {
-          form.refs[ref].setValue(person[ref])
-          form.refs[ref].validate()
+        if (inputs.refs[ref].setValue && person[ref]) {
+          inputs.refs[ref].setValue(person[ref])
+          inputs.refs[ref].validate()
         }
 
       }
@@ -88,12 +88,11 @@ export default class Give extends Component {
   componentDidUpdate(prevProps) {
 
     // temp testing place
-    if (this.props.give.step === 3) {
-      console.log("fire test post")
+    if (this.props.give.step === 3 && !this.state.postUrl) {
       const { data, transaction } = this.props.give
 
       let joinedData = {
-        amount: transaction.total + 1, // for test
+        amount: transaction.total + (Math.floor((Math.random() * 100) + 1)), // for test
         billing: {
           "first-name": data.personal.firstName,
           "last-name": data.personal.lastName,
@@ -106,8 +105,10 @@ export default class Give extends Component {
         }
       }
 
-      Meteor.call("Give.NMI.Step1", joinedData, (err, url) => {
-        console.log(err, url)
+      Meteor.call("Give.order", joinedData, (err, url) => {
+        if (!err) {
+          this.setState({ postUrl: url})
+        }
       })
     }
 
@@ -133,6 +134,36 @@ export default class Give extends Component {
     this.props.previous()
   }
 
+  submit = (e) => {
+    e.preventDefault()
+
+    const { postUrl } = this.state
+    const form = ReactDOM.findDOMNode(this.refs["form"])
+
+    const next = this.props.next
+    fetch(postUrl, {
+      method: "POST",
+      body: new FormData(form),
+      mode: "no-cors"
+    })
+    .then((response) => {
+      next()
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+
+  }
+
+  completePurchase = (e) => {
+    e.preventDefault()
+    let segments = this.state.postUrl.split("/")
+    const token = segments.pop()
+    Meteor.call("Give.charge", token, (err, response) => {
+      console.log(err, response)
+    })
+  }
+
   render () {
     const {
       data,
@@ -144,16 +175,25 @@ export default class Give extends Component {
       save, clear
     } = this.props
 
-
     return (
 
       <Forms.Form
         id="give"
         theme="hard"
         fieldsetTheme="flush soft-top"
+        ref="form"
+        method="POST"
+        action={this.state.postUrl}
+        submit={this.submit}
       >
       {() => {
         switch (step) {
+          case 4:
+            return (
+              <div>
+                <button onClick={this.completePurchase}>Complete Purchase</button>
+              </div>
+            )
           case 3:
             return (
               <Payment
@@ -163,7 +203,7 @@ export default class Give extends Component {
                 clear={clear}
                 next={this.next}
                 back={this.back}
-                ref="form"
+                ref="inputs"
               />
             )
             break;
@@ -176,7 +216,7 @@ export default class Give extends Component {
                 clear={clear}
                 next={this.next}
                 back={this.back}
-                ref="form"
+                ref="inputs"
               />
             )
             break;
@@ -190,7 +230,7 @@ export default class Give extends Component {
                 clear={clear}
                 next={this.next}
                 back={this.back}
-                ref="form"
+                ref="inputs"
               />
             )
             break;

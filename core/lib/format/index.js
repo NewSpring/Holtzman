@@ -1,5 +1,5 @@
 
-const Format = {};
+let Format = {};
 import Error from "../error"
 
 
@@ -20,7 +20,7 @@ Format.addFormat = (name, handler) => {
   }
 
   Format[name] = handler;
-  return;
+  return {[name]: handler}
 
 }
 
@@ -32,6 +32,9 @@ Format.addFormat("toCurrency", toCurrency);
 
 import { toDateString } from "./dates"
 Format.addFormat("toDateString", toDateString);
+
+import { creditCard } from "./credit-card"
+Format.addFormat("creditCard", creditCard)
 
 
 export default Format

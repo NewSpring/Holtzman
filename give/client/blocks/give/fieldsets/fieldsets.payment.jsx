@@ -6,6 +6,7 @@ import { goBack } from "redux-router"
 
 import { Controls, Forms } from "../../../../../core/client/components"
 import { Validate } from "../../../../../core/lib"
+import { Format } from "../../../../../core/lib"
 
 
 export default class Payment extends Component {
@@ -30,14 +31,22 @@ export default class Payment extends Component {
     return (
       <div>
         <Forms.Input
-          name="accountNumber"
+          name="billing-account-name"
+          type="hidden"
+          classes="visuallyhidden"
+          defaultValue="checking"
+          ref="accountName"
+        />
+
+        <Forms.Input
+          name="billing-account-number"
           label="Account Number"
           errorText="Please enter your account number"
           defaultValue={payment.accountNumber}
           ref="accountNumber"
         />
         <Forms.Input
-          name="routingNumber"
+          name="billing-routing-number"
           label="Routing Number"
           errorText="Please enter your routing number"
           defaultValue={payment.accountNumber}
@@ -53,16 +62,18 @@ export default class Payment extends Component {
     return (
       <div>
         <Forms.Input
-          name="cardNumber"
+          name="billing-cc-number"
           label="Card Number"
           errorText="Please enter your card number"
           defaultValue={payment.cardNumber}
+          format={Format.creditCard}
+          validation={Validate.isCreditCard}
           ref="cardNumber"
         />
         <div className="grid">
           <div className="grid__item one-half">
             <Forms.Input
-              name="expiration"
+              name="billing-cc-exp"
               label="Expiration Number"
               errorText="Please enter a valid expiration number"
               defaultValue={payment.expiration}
@@ -71,7 +82,7 @@ export default class Payment extends Component {
           </div>
           <div className="grid__item one-half">
             <Forms.Input
-              name="ccv"
+              name="cvv"
               label="CCV"
               errorText="Please enter a valid ccv number"
               defaultValue={payment.ccv}
@@ -100,11 +111,11 @@ export default class Payment extends Component {
 
         <div className="soft">
           {() => {
-            if (payment.type === "ach") {
-              return this.bankFields()
-            } else {
+            // if (payment.type === "ach") {
+            //   return this.bankFields()
+            // } else {
               return this.cardFields()
-            }
+            // }
           }()}
 
         </div>
@@ -126,7 +137,7 @@ export default class Payment extends Component {
             }
 
             return (
-              <button className={btnClasses.join(" ")} type="submit">
+              <button className={btnClasses.join(" ")} type="submit" onClick={this.props.submit}>
                 Enter
               </button>
             )

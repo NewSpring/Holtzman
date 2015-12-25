@@ -20,9 +20,13 @@ Validate.addValidator = (name, handler) => {
   }
 
   Validate[name] = handler;
-  return;
-
+  return {[name]: handler}
 }
 
+
+import { creditCVV, creditCard, creditExpiry} from "./credit-card"
+Validate.addValidator("isCCV", creditCVV)
+Validate.addValidator("isCreditCard", creditCard)
+Validate.addValidator("isExpiry", creditExpiry)
 
 export default Validate
