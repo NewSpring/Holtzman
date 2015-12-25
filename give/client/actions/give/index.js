@@ -40,7 +40,7 @@ export default {
   clearTransactions: () => ({ type: types.CLEAR_TRANSACTIONS }),
 
   save: (data) => ({ type: types.SAVE_DATA, data }),
-  clear: (field) => ({ type: types.REMOVE_DATA, field }),
+  clear: (level, field) => ({ type: types.REMOVE_DATA, level, field }),
   clearData: () => ({ type: types.CLEAR_DATA }),
 
   setState: (state) => ({ type: types.SET_STATE, state }),

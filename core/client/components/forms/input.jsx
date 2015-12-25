@@ -61,7 +61,7 @@ class Input extends React.Component {
 
     if (this.props.validation && typeof(this.props.validation) === "function") {
       this.setState({
-        error: !this.props.validation(value)
+        error: !this.props.validation(value, target)
       });
 
     }
@@ -142,7 +142,7 @@ class Input extends React.Component {
 
         <input
           ref="apollos-input"
-          id={this.props.id || this.props.label || this.props.name}
+          id={this.props.id || this.props.ref || this.props.label || this.props.name}
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }

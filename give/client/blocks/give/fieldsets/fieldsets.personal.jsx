@@ -92,7 +92,7 @@ export default class Personal extends Component {
         <div className="push-double">
           {this.props.header || this.header()}
         </div>
-
+        {this.props.children}
         <div className="soft">
 
 

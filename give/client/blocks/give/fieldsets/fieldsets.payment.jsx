@@ -34,27 +34,55 @@ export default class Payment extends Component {
           name="billing-account-name"
           type="hidden"
           classes="visuallyhidden"
-          defaultValue="checking"
           ref="accountName"
         />
 
         <Forms.Input
+          id="accountNumber"
           name="billing-account-number"
           label="Account Number"
           errorText="Please enter your account number"
           defaultValue={payment.accountNumber}
+          validation={this.saveData}
           ref="accountNumber"
         />
         <Forms.Input
+          id="routingNumber"
           name="billing-routing-number"
           label="Routing Number"
           errorText="Please enter your routing number"
           defaultValue={payment.accountNumber}
+          validation={this.saveData}
           ref="routingNumber"
         />
       </div>
 
     )
+  }
+
+  saveData = (value, target) => {
+    const { id } = target
+
+    let isValid = false
+    const validationMap = {
+      accountNumber: (value) => (value.length > 0),
+      routingNumber: (value) => (value.length > 0),
+      cardNumber: Validate.isCreditCard,
+      expiration: Validate.isExpiry,
+      ccv: Validate.isCCV
+    }
+
+    console.log(validationMap, id)
+    isValid = validationMap[id](value)
+
+    if (isValid) {
+      this.props.save({ payment: { [id]: value }})
+    } else {
+      this.props.clear("payment", id)
+    }
+
+    return isValid
+
   }
 
   cardFields = () => {
@@ -63,29 +91,34 @@ export default class Payment extends Component {
       <div>
         <Forms.Input
           name="billing-cc-number"
+          id="cardNumber"
           label="Card Number"
           errorText="Please enter your card number"
           defaultValue={payment.cardNumber}
           format={Format.creditCard}
-          validation={Validate.isCreditCard}
+          validation={this.saveData}
           ref="cardNumber"
         />
         <div className="grid">
           <div className="grid__item one-half">
             <Forms.Input
+              id="expiration"
               name="billing-cc-exp"
               label="Expiration Number"
               errorText="Please enter a valid expiration number"
               defaultValue={payment.expiration}
+              validation={this.saveData}
               ref="expiration"
             />
           </div>
           <div className="grid__item one-half">
             <Forms.Input
+              id="ccv"
               name="cvv"
               label="CCV"
               errorText="Please enter a valid ccv number"
               defaultValue={payment.ccv}
+              validation={this.saveData}
               ref="ccv"
             />
           </div>
@@ -93,6 +126,15 @@ export default class Payment extends Component {
       </div>
 
     )
+  }
+
+  toggle = () => {
+    let type = "ach"
+    if (this.props.data.payment.type === type) {
+      type = "cc"
+    }
+
+    this.props.save({ payment: { type } })
   }
 
   render () {
@@ -103,19 +145,22 @@ export default class Payment extends Component {
           {this.props.header || this.header()}
         </div>
 
+        {this.props.children}
+
         <Controls.Toggle
           items={this.props.toggles || this.toggles}
-          state={payment.type}
+          state={payment.type === "ach"}
+          toggle={this.toggle}
         />
 
 
         <div className="soft">
           {() => {
-            // if (payment.type === "ach") {
-            //   return this.bankFields()
-            // } else {
+            if (payment.type === "ach") {
+              return this.bankFields()
+            } else {
               return this.cardFields()
-            // }
+            }
           }()}
 
         </div>
@@ -130,14 +175,21 @@ export default class Payment extends Component {
             const { billing } = this.props.data
             let btnClasses = ["push-left"];
 
-            if (!billing.streetAddress || !billing.city || !billing.state || !billing.zip){
-              btnClasses.push("btn--disabled");
+            const ach = (payment.type === "ach" && payment.account && payment.routing)
+            const cc = (payment.type === "cc" && payment.cardNumber && payment.expiration && payment.ccv)
+
+
+            let submit = this.props.sumbit
+            if (ach || cc){
+              btnClasses.push("btn")
+              submit = this.props.sumbit
             } else {
-              btnClasses.push("btn");
+              btnClasses.push("btn--disabled");
+              submit = (e) => (e.preventDefault())
             }
 
             return (
-              <button className={btnClasses.join(" ")} type="submit" onClick={this.props.submit}>
+              <button  className={btnClasses.join(" ")} type="submit" onClick={submit}>
                 Enter
               </button>
             )

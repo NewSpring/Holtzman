@@ -42,7 +42,7 @@ const initial = {
     },
     payment: {
       type: "ach", // String ach or cc
-      cardNumer: null, // Number
+      cardNumber: null, // Number
       expiration: null, // String
       ccv: null, // Number
       account: null, // String (for safety with international numbers)
@@ -88,13 +88,15 @@ export default createReducer(initial, {
 
   [types.REMOVE_DATA](state, action) {
 
-    if (!action.field || state.data[action.field]) {
+    if (!action.field || !state.data[action.level] || !state.data[action.level][action.field]) {
       return state
     }
 
     return {...state, ...{
       data: {...state.data, ...{
-        [state.data[action.field]]: null
+        [state.data[action.level]]: {...state.data[action.level], ...{
+          [state.data[action.level][action.feild]]: null
+        }}
       }}
     }}
   },

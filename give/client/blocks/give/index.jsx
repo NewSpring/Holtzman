@@ -9,7 +9,7 @@ import { Controls, Forms } from "../../../../core/client/components"
 import { People } from "../../../../rock/lib/collections"
 
 import { give as giveActions } from "../../actions"
-import { Personal, Payment, Billing } from "./fieldsets"
+import { Personal, Payment, Billing, Confirm} from "./fieldsets"
 
 
 // We only care about the give state
@@ -175,6 +175,22 @@ export default class Give extends Component {
       save, clear
     } = this.props
 
+    let Step;
+
+    switch (step) {
+      case 4:
+        Step = Confirm
+        break;
+      case 3:
+        Step = Payment
+        break;
+      case 2:
+        Step = Billing
+        break;
+      default:
+        Step = Personal
+    }
+
     return (
 
       <Forms.Form
@@ -186,58 +202,22 @@ export default class Give extends Component {
         action={this.state.postUrl}
         submit={this.submit}
       >
-      {() => {
-        switch (step) {
-          case 4:
-            return (
-              <div>
-                <button onClick={this.completePurchase}>Complete Purchase</button>
-              </div>
-            )
-          case 3:
-            return (
-              <Payment
-                data={data}
-                save={save}
-                errors={errors}
-                clear={clear}
-                next={this.next}
-                back={this.back}
-                ref="inputs"
-              />
-            )
-            break;
-          case 2:
-            return (
-              <Billing
-                data={data}
-                save={save}
-                errors={errors}
-                clear={clear}
-                next={this.next}
-                back={this.back}
-                ref="inputs"
-              />
-            )
-            break;
-          case 1:
-          default:
-            return (
-              <Personal
-                data={data}
-                save={save}
-                errors={errors}
-                clear={clear}
-                next={this.next}
-                back={this.back}
-                ref="inputs"
-              />
-            )
-            break;
 
-        }
+        <Step
+          data={data}
+          save={save}
+          errors={errors}
+          clear={clear}
+          next={this.next}
+          back={this.back}
+          ref="inputs"
+        >
+          <Controls.Progress
+            steps={4}
+            active={step}
+          />
+        </Step>
 
-      }()}
 
       </Forms.Form>
     )

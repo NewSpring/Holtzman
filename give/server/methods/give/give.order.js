@@ -7,7 +7,7 @@ const order = (orderData) => {
   let user = Meteor.user()
 
   if (user && user.services.nmi) {
-    orderData.sale["customer-id"] = user.services.nmi.customerId
+    orderData["customer-id"] = user.services.nmi.customerId
   }
 
   const response = Meteor.wrapAsync(gatewayOrder)(orderData)
