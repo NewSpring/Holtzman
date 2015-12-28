@@ -46,9 +46,11 @@ export default class Home extends Component {
           <div className="soft soft-double@lap-and-up push-double@lap-wide-and-up">
 
             <div className="text-left">
+
               <AddToCart
                 accounts={this.data.accounts}
               />
+            
             </div>
 
             <div className="soft-double-ends@lap-and-up">

@@ -13,15 +13,9 @@ import { Personal, Payment, Billing, Confirm} from "./fieldsets"
 
 
 // We only care about the give state
-function mapStateToProps(state) {
-  return {
-    give: state.give
-  }
-}
+const map = (state) => ({ give: state.give })
 
-
-
-@connect(mapStateToProps, giveActions)
+@connect(map, giveActions)
 @ReactMixin.decorate(ReactMeteorData)
 export default class Give extends Component {
 

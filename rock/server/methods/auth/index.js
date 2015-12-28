@@ -25,7 +25,6 @@ Meteor.methods({
 
     let isAvailable = false
     try {
-      console.log("making the call for ", email)
       isAvailable = api.get.sync(`userlogins/available/${email}`)
     } catch (e) {
       console.log(e, "DANGER WILL ROBINSON")
@@ -46,13 +45,11 @@ Meteor.methods({
     }
 
     let isAuthorized = false
-    console.log("making the call")
     try {
       isAuthorized = api.post.sync(`Auth/login`, { Username, Password: password })
     } catch (e) {
       isAuthorized = false
     }
-    console.log("made the first call")
 
     let userAccount = Accounts.findUserByEmail(email)
 

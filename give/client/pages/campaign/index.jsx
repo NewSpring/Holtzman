@@ -9,6 +9,8 @@ import { nav as navActions } from "../../../../core/client/actions"
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
 
 import { Accounts as Acc } from "../../../lib/collections"
+import { AddToCart } from "../../blocks"
+
 
 @connect()
 @ReactMixin.decorate(ReactMeteorData)
@@ -68,6 +70,9 @@ export default class Template extends Component {
           <div className="background--light-secondary">
             <div className="constrain-copy soft-double@lap-and-up">
               <div className="soft soft-double-bottom soft-double-top@lap-and-up">
+                <AddToCart
+                  accounts={[account]}
+                />
               </div>
             </div>
           </div>

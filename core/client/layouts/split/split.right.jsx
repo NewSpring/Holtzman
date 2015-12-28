@@ -55,13 +55,23 @@ export default class Right extends Component {
     return {}
   }
 
+  ratioClasses = () => {
+    let classes = ["ratio__item"]
+
+    if (this.props.ratioClasses) {
+      classes = classes.concat(this.props.ratioClasses)
+    }
+
+    return classes.join(" ")
+  }
+
   render () {
     return (
       <section
         className={ this.props.theme || this.layoutClasses() }
         style={ this.props.styles || this.styles() }
       >
-      <div className="ratio__item">
+      <div className={ this.props.ratioTheme || this.ratioClasses()}>
         {this.props.children}
       </div>
 

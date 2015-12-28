@@ -36,6 +36,8 @@ const initial = {
 
 }
 
+
+
 export default createReducer(initial, {
 
   [types.SET_FORGOT](state, action) {

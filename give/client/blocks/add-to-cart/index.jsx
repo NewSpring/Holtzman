@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
-import { Forms } from "../../../../core/client/components"
+import { Forms, Loading } from "../../../../core/client/components"
 
 import GiveNow from "./../action-buttons"
 
@@ -91,6 +91,8 @@ export default class CartContainer extends Component {
       }
     }
 
+    let mulitpleAccounts = (this.props.accounts && this.props.accounts.length > 1)
+
     return (
       <div className="push-top@handheld soft-half-top@lap-and-up">
         <Forms.Form
@@ -99,7 +101,13 @@ export default class CartContainer extends Component {
           id="add-to-cart"
         >
           <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-            I'd like to tithe
+            I'd like to {() => {
+              if (this.props.accounts.length > 1) {
+                return "tithe"
+              }
+
+              return `give`
+            }()}
           </h3>
 
           <Forms.Input
@@ -114,12 +122,38 @@ export default class CartContainer extends Component {
             format={this.format}
           />
 
-          <div className="clearfix"></div>
-
-          <SubFund accounts={otherAccounts}/>
 
           <div className="clearfix"></div>
           <div className="display-inline-block">
+            {() => {
+              if (mulitpleAccounts || !this.props.accounts.length) {
+
+                return (
+                  <div>
+                    {() => {
+                      console.log(this.props.give.transactions)
+                      for (let transaction in this.props.give.transactions) {
+                        return (
+                          <SubFund
+                            accounts={otherAccounts}
+                            transaction={this.props.give.transactions[transaction]}
+                          />
+                        )
+                      }
+                    }()}
+                    <SubFund accounts={otherAccounts}/>
+                    <div className="clearfix"></div>
+                  </div>
+
+                )
+              }
+              return (
+                <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
+                  {`to ${this.props.accounts[0].PublicName || this.props.accounts[0].Name} `}&nbsp;
+                </h3>
+              )
+            }()}
+
             <h3 className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">so my gift total is</h3>
             <h3 className="display-inline-block text-brand push-half-bottom">{this.monentize(total, true)}</h3>
           </div>
