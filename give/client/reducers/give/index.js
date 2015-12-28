@@ -17,12 +17,15 @@ const initial = {
   step: 1, // Number (step along in progress bar to show)
   savedAccount: null, // Id of saved account to charge
 
+  total: 0, // Number > 0 for allowing to move forward (calculated)
+
+  accounts: {
+    // <accountId>: Name
+  },
+
   // transaction data
-  transaction: {
-    total: 0, // Number > 0 for allowing to move forward
-    funds: {
-      // <accountId>: Number // <accountId>: $ of gift
-    }
+  transactions: {
+    // <accountId>: Number // <accountId>: $ of gift
   },
 
   // form data

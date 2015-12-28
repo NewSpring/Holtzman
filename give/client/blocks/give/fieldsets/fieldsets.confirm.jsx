@@ -25,7 +25,6 @@ export default class Confirm extends Component {
     const { payment } = this.props.data
 
     let text = "Give Now"
-    console.log(payment, this.props.data)
     if (payment.accountNumber || payment.cardNumber) {
 
       const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
@@ -59,21 +58,44 @@ export default class Confirm extends Component {
 
   }
 
-  listItem = (transaction) => {
+  monentize = (value, fixed) => {
+
+    if (typeof value === "number") {
+      value = `${value}`
+    }
+
+    if (!value.length) {
+      return `$0.00`
+    }
+
+    value = value.replace(/[^\d.-]/g, "")
+
+    let decimals = value.split(".")[1]
+    if ((decimals && decimals.length >= 2) || fixed) {
+      value = Number(value).toFixed(2)
+      value = String(value)
+    }
+
+    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    return `$${value}`
+  }
+
+  listItem = (transaction, key) => {
+    console.log(transaction)
     return (
-      <div className="soft-ends hard-sides outlined--light outlined--bottom">
+      <div key={key} className="soft-ends hard-sides outlined--light outlined--bottom">
 
         <div className="grid" style={{verticalAlign: "middle"}}>
 
           <div className="grid__item five-eighths" style={{verticalAlign: "middle"}}>
             <h5 className="text-dark-tertiary flush text-left">
-              Tithe
+              {transaction.label}
             </h5>
           </div>
 
           <div className="grid__item three-eighths text-right" style={{verticalAlign: "middle"}}>
             <h4 className="text-dark-tertiary flush">
-              $567.98
+              {this.monentize(transaction.value)}
             </h4>
           </div>
 
@@ -83,6 +105,13 @@ export default class Confirm extends Component {
   }
 
   render () {
+
+    let transactions = []
+
+    for (let transaction in this.props.transactions) {
+      transactions.push(this.props.transactions[transaction])
+    }
+
     return (
       <div>
         <div className="push-double">
@@ -90,7 +119,9 @@ export default class Confirm extends Component {
         </div>
 
         <div className="soft">
-          {this.listItem()}
+          {transactions.map((transaction, key) => {
+            return this.listItem(transaction, key)
+          })}
 
           <button className="btn one-whole push-double-top">
             {this.buttonText()} {this.icon()}

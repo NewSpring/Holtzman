@@ -72,7 +72,6 @@ export default class Payment extends Component {
       ccv: Validate.isCCV
     }
 
-    console.log(validationMap, id)
     isValid = validationMap[id](value)
 
     if (isValid) {

@@ -79,7 +79,7 @@ export default createReducer(initial, {
 
     return {...state, ...{
       data: {...state.data, ...{
-        [data[action.field]]: null
+        [state.data[action.field]]: null
       }}
     }}
   },

@@ -40,6 +40,9 @@ export default class GiveNow extends Component {
       classes.push("has-card")
     }
 
+    if (this.props.disabled) {
+      classes.push("btn--disabled")
+    }
     if (this.props.classes) {
       classes = classes.concat(this.props.classes)
     }
@@ -116,17 +119,13 @@ export default class GiveNow extends Component {
   secondaryButton = () => {
     if (!this.data.authorized) {
       return (
-        <button className="btn--thin btn--dark-tertiary btn--small display-inline-block push-left" onClick={this.register}>
+        <button className="btn--thin btn--dark-tertiary btn--small display-inline-block push-left@lap-and-up push-half-left@handheld" onClick={this.register}>
           Register
         </button>
       )
     }
   }
 
-  // used for testing give
-  componentWillMount() {
-    this.click()
-  }
 
   render () {
     return (
@@ -136,6 +135,7 @@ export default class GiveNow extends Component {
           className={this.props.theme || this.buttonClasses()}
           styles={this.props.styles || {}}
           onClick={this.click}
+          disabled={this.props.disabled}
         >
           {this.buttonText()} {this.icon()}
         </button>

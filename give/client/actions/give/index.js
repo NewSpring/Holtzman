@@ -11,6 +11,7 @@ const types = {
   SET_SAVED_ACCOUNT: "GIVE.SET_SAVED_ACCOUNT",
 
   ADD_TRANSACTION: "GIVE.ADD_TRANSACTION",
+  CLEAR_TRANSACTION: "GIVE.CLEAR_TRANSACTION",
   CLEAR_TRANSACTIONS: "GIVE.CLEAR_TRANSACTIONS",
 
   SAVE_DATA: "GIVE.SAVE_DATA",
@@ -36,7 +37,8 @@ export default {
   setAccount: (savedAccount) => ({ type: types.SET_SAVED_ACCOUNT, savedAccount }),
   clearAccount: () => ({ type: types.SET_SAVED_ACCOUNT, savedAccount: null }),
 
-  addTransaction: (transaction) => ({ type: types.ADD_TRANSACTION, transaction}),
+  addTransactions: (transactions) => ({ type: types.ADD_TRANSACTION, transactions}),
+  clearTransaction: (transactionId) => ({ type: types.CLEAR_TRANSACTION, transactionId}),
   clearTransactions: () => ({ type: types.CLEAR_TRANSACTIONS }),
 
   save: (data) => ({ type: types.SAVE_DATA, data }),

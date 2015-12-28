@@ -28,6 +28,8 @@ export default class Give extends Component {
   state = {
     postUrl: null
   }
+
+
   setData = false
 
   getMeteorData(){
@@ -50,13 +52,14 @@ export default class Give extends Component {
   }
 
   updateInputs = (person) => {
+
     person || (person = this.data.person)
 
     let { Campus, Home } = person
     Campus || (Campus = {})
     Home || (Home = {})
 
-    person = {
+    const mappedPerson = {
       firstName: person.FirstName,
       lastName: person.LastName,
       email: person.Email,
@@ -68,18 +71,21 @@ export default class Give extends Component {
       zip: Home.PostalCode
     }
 
-    const { inputs } = this.refs
-
+    const inputs = this.refs.inputs
     if (inputs) {
 
       for (let ref in inputs.refs) {
-
-        if (inputs.refs[ref].setValue && person[ref]) {
-          inputs.refs[ref].setValue(person[ref])
+        if (inputs.refs[ref].setValue && mappedPerson[ref]) {
+          inputs.refs[ref].setValue(mappedPerson[ref])
           inputs.refs[ref].validate()
         }
 
       }
+
+    } else {
+      setTimeout(() => {
+        this.updateInputs(person)
+      }, 100)
     }
 
 
@@ -89,10 +95,10 @@ export default class Give extends Component {
 
     // temp testing place
     if (this.props.give.step === 3 && !this.state.postUrl) {
-      const { data, transaction } = this.props.give
+      const { data, transaction, total } = this.props.give
 
       let joinedData = {
-        amount: transaction.total + (Math.floor((Math.random() * 100) + 1)), // for test
+        amount: total,
         billing: {
           "first-name": data.personal.firstName,
           "last-name": data.personal.lastName,
@@ -168,7 +174,8 @@ export default class Give extends Component {
     const {
       data,
       errors,
-      step
+      step,
+      transactions
     } = this.props.give
 
     const {
@@ -205,6 +212,7 @@ export default class Give extends Component {
 
         <Step
           data={data}
+          transactions={transactions}
           save={save}
           errors={errors}
           clear={clear}

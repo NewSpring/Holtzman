@@ -1,11 +1,14 @@
 import { Component, PropTypes } from "react"
 import ReactDom from "react-dom"
 import { connect } from "react-redux"
+import ReactMixin from "react-mixin"
 
 import { Controls, Forms } from "../../../../../core/client/components"
 import { Validate } from "../../../../../core/lib"
+import { Campuses } from "../../../../../rock/lib/collections"
 
 
+@ReactMixin.decorate(ReactMeteorData)
 export default class Personal extends Component {
 
   static propTypes = {
@@ -14,6 +17,13 @@ export default class Personal extends Component {
     errors: PropTypes.object.isRequired,
     clear: PropTypes.func.isRequired,
     next: PropTypes.func.isRequired
+  }
+
+  getMeteorData() {
+    Meteor.subscribe("campuses")
+    return {
+      campuses: Campuses.find().fetch()
+    }
   }
 
   header = () => {
@@ -70,22 +80,22 @@ export default class Personal extends Component {
   }
 
   campus = (value) => {
-    const isValid = value.length ? true : false
-    const noError = !this.props.errors["campus"]
 
-    if (!isValid ) {
-      this.props.clear("campus")
-    } else {
-      this.props.save({ personal: { campus: value }})
-    }
+    this.props.save({ personal: { campus: value }})
 
-    return isValid
+    return true
   }
 
 
 
   render () {
     const { personal } = this.props.data
+    let { campuses } = this.data
+
+    campuses || (campuses = [])
+    campuses = campuses.map((campus) => {
+      return { label: campus.Name, value: campus.Name }
+    })
 
     return (
       <div>
@@ -130,15 +140,15 @@ export default class Personal extends Component {
             ref="email"
           />
 
-          <Forms.Input
+          <Forms.Select
             name="campus"
-            placeholder="campus"
             label="Campus"
             type="campus"
             errorText="Please choose a campus"
             validation={this.campus}
             defaultValue={personal.campus}
             ref="campus"
+            items={campuses}
           />
         </div>
 

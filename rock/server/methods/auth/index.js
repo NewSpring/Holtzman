@@ -46,12 +46,13 @@ Meteor.methods({
     }
 
     let isAuthorized = false
-
+    console.log("making the call")
     try {
       isAuthorized = api.post.sync(`Auth/login`, { Username, Password: password })
     } catch (e) {
       isAuthorized = false
     }
+    console.log("made the first call")
 
     let userAccount = Accounts.findUserByEmail(email)
 
@@ -64,7 +65,7 @@ Meteor.methods({
     }
 
 
-    api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`, (err, user) => {
+    api.get(`UserLogins?$filter=UserName eq '${Username}'`, (err, user) => {
       const { PersonId } = user[0]
 
       api.get(`People/${PersonId}`, (err, person) => {

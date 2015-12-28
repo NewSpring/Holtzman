@@ -9,7 +9,7 @@ import { Split, Left, Right } from "../../../../core/client/layouts/split"
 import { Card } from "../../../../core/client/components"
 
 import { Accounts as Acc } from "../../../lib/collections"
-import { GiveNow } from "../../blocks"
+import { AddToCart } from "../../blocks"
 
 @connect()
 @ReactMixin.decorate(ReactMeteorData)
@@ -45,8 +45,10 @@ export default class Home extends Component {
         <Left scroll={true} >
           <div className="soft soft-double@lap-and-up push-double@lap-wide-and-up">
 
-            <div className="text-center">
-              <GiveNow/>
+            <div className="text-left">
+              <AddToCart
+                accounts={this.data.accounts}
+              />
             </div>
 
             <div className="soft-double-ends@lap-and-up">

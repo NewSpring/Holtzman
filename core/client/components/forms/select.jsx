@@ -3,8 +3,7 @@ import ReactDom from "react-dom";
 
 import Label from "./components/label"
 
-export default class Input extends Component {
-
+export default class Select extends Component {
 
   state = {
     active: false,
@@ -19,44 +18,6 @@ export default class Input extends Component {
     }
   }
 
-
-  format = () => {
-
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    let value = this.refs["apollos-input"].value
-
-    if (this.props.format && typeof(this.props.format) === "function") {
-
-      const newValue = this.props.format(value, target);
-      target.value = newValue;
-
-    }
-  }
-
-  validate = () => {
-
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    const value = target.value
-
-    if (!value) {
-      this.setState({
-        active: false,
-        error: false
-      })
-    }
-
-    this.setState({
-      focused: false
-    })
-
-    if (this.props.validation && typeof(this.props.validation) === "function") {
-      this.setState({
-        error: !this.props.validation(value, target)
-      });
-
-    }
-  }
-
   focus = (event) => {
     this.setState({
       active: true,
@@ -66,10 +27,10 @@ export default class Input extends Component {
   }
 
   setValue = (value) => {
-    let node = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    let node = ReactDOM.findDOMNode(this.refs["apollos-select"]);
     node.value = value;
     this.focus()
-    this.validate()
+    // this.change()
   }
 
 
@@ -94,6 +55,43 @@ export default class Input extends Component {
       );
     }
 
+  }
+
+  change = (e) => {
+
+    const { id, value } = e.target
+
+    if (this.props.onChange) {
+      this.props.onChange(value, e.target)
+    }
+
+    if (this.props.validation) {
+      this.props.validation(value, e.target)
+    }
+
+  }
+
+  validate = () => {
+    const target = ReactDOM.findDOMNode(this.refs["apollos-select"]);
+    const value = target.value
+
+    if (!value) {
+      this.setState({
+        active: false,
+        error: false
+      })
+    }
+
+    this.setState({
+      focused: false
+    })
+
+    if (this.props.validation && typeof(this.props.validation) === "function") {
+      this.setState({
+        error: !this.props.validation(value, target)
+      });
+
+    }
   }
 
 
@@ -130,19 +128,42 @@ export default class Input extends Component {
         })()}
 
 
-        <input
-          ref="apollos-input"
+        <select
+          ref="apollos-select"
           id={this.props.id || this.props.ref || this.props.label || this.props.name}
-          type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }
           className={this.props.inputClasses}
           disabled={this.disabled()}
-          onBlur={this.validate}
           onFocus={this.focus}
-          onChange={this.format}
+          onChange={this.change}
           defaultValue={this.props.defaultValue}
-        />
+        >
+          {() => {
+            if (this.props.placeholder) {
+              return (
+                <option
+                  className={this.props.optionClasses}
+                  value=""
+                  disabled={true}
+                >
+                  {this.props.placeholder}
+                </option>
+              )
+            }
+          }()}
+          {this.props.items.map((option, key) => {
+            return (
+              <option
+                className={this.props.optionClasses}
+                value={option.value || option.label}
+                key={key}
+              >
+                {option.label || option.value}
+              </option>
+            )
+          })}
+        </select>
 
         {this.renderHelpText()}
 
