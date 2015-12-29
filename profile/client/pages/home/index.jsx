@@ -5,54 +5,28 @@ import ReactMixin from "react-mixin"
 import { Link } from "react-router"
 
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
-import { OnBoard } from "../../../../core/client/blocks"
-import { modal } from "../../../../core/client/actions"
 
-import { People } from "../../../../rock/lib/collections"
 
-const map = (state) => ({auth: state.onBoard.authorized})
+const map = (state) => ({ auth: state.onBoard.authorized, person: state.onBoard.person })
 
 @connect(map)
-@ReactMixin.decorate(ReactMeteorData)
 export default class Home extends Component {
 
-  componentWillMount(){
-    console.log(this.props.auth)
-    if (!this.props.auth) {
-      this.props.dispatch(modal.render(OnBoard))
-    }
-  }
 
-  getMeteorData() {
-    let person = null
-    const user = Meteor.user()
-    if (user) {
-      Meteor.subscribe("people")
-      person = People.findOne()
-    }
-
-    return {
-      person
-    }
+  settings = () => {
+    return (
+      <Link to="/profile/settings" className="text-light-primary plain soft overlay__item locked-top locked-right">
+        <i className="icon-settings h4"></i>
+      </Link>
+    )
   }
 
   render () {
 
-    let person = {
-      Campus: {},
-      Home: {}
-    }
-
-    if (this.data.person) {
-      person = this.data.person
-    }
-    console.log(person)
+    const { person } = this.props
     const { PhotoUrl } = person
 
-
     let photo = PhotoUrl ? `//stock-rock.newspring.cc/${PhotoUrl}` : null
-
-
     return (
       <Split nav={true}>
 
@@ -61,15 +35,17 @@ export default class Home extends Component {
           classes={["floating", "overlay--solid-dark"]}
           ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
           background={photo}
+          blur={true}
+          outsideRatio={this.settings}
         >
           <div className="soft one-whole">
             <div
               className="background--fill ratio--square round two-fifths display-inline-block"
               style={{ backgroundImage: `url(${photo})`}}
             ></div>
-          <h3 className="text-light-primary soft-half-top hard-bottom">{person.FirstName} {person.LastName}</h3>
-          <h5 className="text-light-primary italic">{person.Home.City}</h5>
-        </div>
+            <h4 className="text-light-primary soft-half-top flush-bottom">{person.FirstName} {person.LastName}</h4>
+            <p className="text-light-primary flush"><em>{person.Home.City}</em></p>
+          </div>
 
         </Right>
 

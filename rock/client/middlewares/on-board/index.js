@@ -17,11 +17,16 @@ const onboard = store => next => action => {
   switch (action.type) {
     case "ONBOARD.SET_STATE":
       const state = getState()
-      if (state.onBoard.account) {
-        return login(store, next, action)
+
+      if (action.state === "submit") {
+        if (state.onBoard.account) {
+          return login(store, next, action)
+        }
+
+        return signup(store, next, action)
       }
 
-      return signup(store, next, action)
+      return next(action)
 
       break;
     case "ONBOARD.SET_DATA":

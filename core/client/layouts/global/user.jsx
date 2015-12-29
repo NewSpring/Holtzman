@@ -3,11 +3,11 @@ import ReactMixin from "react-mixin"
 import { connect } from "react-redux"
 
 import Global from "./global"
-import { storeRoutes } from "../../lib/store"
-import { onBoard as onBoardActions } from "../actions"
+import { storeRoutes } from "../../../lib/store"
+import { onBoard as onBoardActions } from "../../actions"
 
-import { onBoard } from "../../../rock/client/middlewares"
-import { addMiddleware } from "../middlewares"
+import { onBoard } from "../../../../rock/client/middlewares"
+import { addMiddleware } from "../../middlewares"
 
 addMiddleware(
   onBoard

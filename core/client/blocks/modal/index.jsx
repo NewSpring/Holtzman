@@ -87,6 +87,10 @@ export default class SideModal extends Component {
     }
   }
 
+  componentWillMount(){
+    this.props.dispatch(navActions.setLevel("MODAL"))
+  }
+
 
   render () {
     let enter = "fadeIn"

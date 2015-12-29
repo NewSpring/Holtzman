@@ -7,12 +7,12 @@ export default storeRoutes({
     if (Meteor.isClient) {
       // Split the code on a different file when on a client
       require.ensure([], require => {
-        cb(null, require("./../core/client/layouts/global-user"))
+        cb(null, require("./../core/client/layouts/global/user"))
       }, "give");
     } else {
       // Save the chunk for server-rendering
       global.__CHUNK_COLLECTOR__.push("give");
-      cb(null, require("./../core/client/layouts/global-user"));
+      cb(null, require("./../core/client/layouts/global/user"));
     }
   },
 

@@ -24,7 +24,8 @@ const types = {
   REMOVE_ERROR: "ONBOARD.REMOVE_ERROR",
   SET_ERRORS: "ONBOARD.SET_ERRORS",
   SET_SUCCESS: "ONBOARD.SET_SUCCESS",
-  IS_AUTHORIZED: "ONBOARD.IS_AUTHORIZED"
+  IS_AUTHORIZED: "ONBOARD.IS_AUTHORIZED",
+  SET_PERSON: "ONBOARD.SET_PERSON"
 }
 
 export default {
@@ -37,7 +38,9 @@ export default {
 
   setState: (state) => ({ type: types.SET_STATE, state }),
   submit: () => ({ type: types.SET_STATE, state: "submit" }),
+  signin: () => ({ type: types.SET_STATE, state: "signin" }),
   loading: () => ({ type: types.SET_STATE, state: "loading" }),
+  signout: () => ({ type: types.SET_STATE, state: "signout" }),
 
   error: (error) => ({ type: types.SET_ERROR, error }),
   fix: (error) => ({ type: types.REMOVE_ERROR, error }),
@@ -51,7 +54,8 @@ export default {
   forgot: () => ({ type: types.SET_FORGOT, forgot: true }),
   remember: () => ({ type: types.SET_FORGOT, forgot: false }),
 
-  authorize: (authorized) => ({ type: types.IS_AUTHORIZED, authorized})
+  authorize: (authorized) => ({ type: types.IS_AUTHORIZED, authorized}),
 
+  person: (person) => ({ type: types.SET_PERSON, person })
 
 }

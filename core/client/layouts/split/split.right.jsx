@@ -66,6 +66,9 @@ export default class Right extends Component {
   }
 
   render () {
+
+    const { blur } = this.props
+
     return (
       <section
         className={ this.props.theme || this.layoutClasses() }
@@ -74,6 +77,26 @@ export default class Right extends Component {
       <div className={ this.props.ratioTheme || this.ratioClasses()}>
         {this.props.children}
       </div>
+
+      {() => {
+        if (this.props.outsideRatio) {
+          return this.props.outsideRatio()
+        }
+      }()}
+      {() => {
+        let styles = this.styles()
+
+        styles = {...styles, ...{
+            WebkitFilter: "blur(10px)",
+            filter: "blur(10px)"
+        }}
+
+        if (blur) {
+          return (
+            <div className="locked-sides locked-ends background--fill" style={styles}></div>
+          )
+        }
+      }()}
 
       </section>
     )

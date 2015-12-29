@@ -15,6 +15,29 @@ const initial = {
   forgot: false,
   success: false,
 
+  person: {
+    Age: null, // Number
+    BirthDate: null, // Date
+    Campus: {
+      Name: null, // String
+      ShortCode: null, // String
+    },
+    Email: null, // String
+    Home: {
+      City: null, // String
+      Country: null, // String
+      Id: null, // Number
+      PostalCode: null, // String
+      State: null, // String
+      Street1: null, // String
+      Street2: null, // String
+    },
+    LastName: null, // String
+    NickName: null, // String
+    PhoneNumber: [],
+    PhotoUrl: null // String
+  },
+
   data: {
     email: null, // String
     password: null, // String (encrypted before launch)
@@ -23,7 +46,7 @@ const initial = {
     lastName: null // String
   },
 
-  state: "default", // "submit", "loading"
+  state: "default", // "submit", "loading", "signout"
 
   attempts: 0,
   errors: {
@@ -88,11 +111,17 @@ export default createReducer(initial, {
 
   [types.SET_STATE](state, action) {
 
-    const stateName = action.state.trim()
-    const stateTypes = [ "default", "loading", "submit" ]
+    let stateName = action.state.trim()
+    const stateTypes = [ "default", "loading", "submit", "signout" ]
 
     if (stateTypes.indexOf(stateName) === -1) {
       return state
+    }
+
+    if (stateName === "signout") {
+      state.authorized = false
+      stateName = "default"
+      state.person = initial.person
     }
 
     return {...state, ...{
@@ -158,6 +187,19 @@ export default createReducer(initial, {
 
     return {...state, ...{
       authorized: action.authorized
+    }}
+
+  },
+
+  [types.SET_PERSON](state, action) {
+
+    if (!action.person) {
+      return state
+    }
+
+    return {...state, ...{
+      person: action.person,
+      authorized: true
     }}
 
   }

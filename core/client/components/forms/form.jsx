@@ -24,6 +24,7 @@ class Form extends React.Component {
         className={ this.props.theme || this.layoutClasses() }
         action={this.props.action}
         method={this.props.method}
+        style={this.props.style}
       >
         <Fieldset
           theme={this.props.fieldsetTheme}
