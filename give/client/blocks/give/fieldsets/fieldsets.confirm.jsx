@@ -123,7 +123,7 @@ export default class Confirm extends Component {
             return this.listItem(transaction, key)
           })}
 
-          <button className="btn one-whole push-double-top">
+          <button className="btn one-whole push-double-top" type="submit">
             {this.buttonText()} {this.icon()}
           </button>
         </div>

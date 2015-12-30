@@ -197,6 +197,14 @@ export default createReducer(initial, {
       return state
     }
 
+    if (!action.person.Home) {
+      action.person.Home = initial.person.Home
+    }
+
+    if (!action.person.Campus) {
+      action.person.Campus = initial.person.Campus
+    }
+
     return {...state, ...{
       person: action.person,
       authorized: true

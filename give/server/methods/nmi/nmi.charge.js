@@ -6,7 +6,7 @@ const step1 = (token, callback) => {
 
   const complete = {
     "complete-action": {
-      "api-key": "8TM3Za26db2t9tpgJw7GY39fM4TJW2YF", // replace with settings file
+      "api-key": Meteor.settings.nmi, // replace with settings file
       "token-id": token
     }
   }

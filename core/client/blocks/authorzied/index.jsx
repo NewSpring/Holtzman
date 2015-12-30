@@ -18,10 +18,11 @@ const bindMeteorPerson = (props) => {
     handle = computation
 
     const user = Meteor.user()
+    Meteor.subscribe("people")
+    dispatch(onBoardActions.person(People.find().fetch()[0]))
+    
     if (user) {
-      Meteor.subscribe("people")
       authorized = true
-      dispatch(onBoardActions.person(People.findOne()))
     } else {
       authorized = false
       dispatch(onBoardActions.signout())

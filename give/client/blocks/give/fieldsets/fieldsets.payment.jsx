@@ -178,10 +178,10 @@ export default class Payment extends Component {
             const cc = (payment.type === "cc" && payment.cardNumber && payment.expiration && payment.ccv)
 
 
-            let submit = this.props.sumbit
+            let submit = this.props.next
             if (ach || cc){
               btnClasses.push("btn")
-              submit = this.props.sumbit
+              submit = this.props.next
             } else {
               btnClasses.push("btn--disabled");
               submit = (e) => (e.preventDefault())

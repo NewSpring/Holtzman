@@ -29,20 +29,11 @@ const login = (store, next, action) => {
         Meteor.loginWithPassword(data.email, data.password, (err, id) => {
 
           const loggedIn = (err, account) => {
-            console.log(account)
-            console.log(err, account)
+
             dispatch(onBoard.success())
             dispatch(onBoard.authorize(true))
           }
 
-          // if (err && err.error === 403) {
-          //   console.log("creating a user")
-          //   // need to create a user
-          //   Accounts.createUser({
-          //     email: data.email,
-          //     password: data.password
-          //   }, loggedIn)
-          // }
           loggedIn()
 
           action.state = "default"

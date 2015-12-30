@@ -6,6 +6,7 @@ import Moment from "moment"
 
 // loading state
 import { Loading } from "../../../../core/client/components"
+import { Authorized } from "../../../../core/client/blocks"
 import { nav as navActions } from "../../../../core/client/actions"
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
 
@@ -42,7 +43,6 @@ export default class Template extends Component {
 
 
   render () {
-    // console.log(Moment)
 
     return (
 
@@ -129,7 +129,7 @@ export default class Template extends Component {
 
 
 const Routes = [
-  { path: "history", component: Template }
+  { path: "history", component: Authorized, indexRoute: { component: Template } }
 ]
 
 export default {

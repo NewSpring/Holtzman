@@ -77,20 +77,39 @@ export default class SideModal extends Component {
 
   componentWillReceiveProps(nextProps) {
 
-    if (nextProps.modal.visible && nextProps.navigation.level != "MODAL") {
+    if (nextProps.modal.visible && nextProps.navigation.level != "MODAL" && nextProps.modal.props.keepNav != true) {
       this.props.dispatch(navActions.setLevel("MODAL"))
     }
 
-    if (!nextProps.modal.visible && nextProps.navigation.level === "MODAL") {
+    if (!nextProps.modal.visible && nextProps.navigation.level === "MODAL" && !this.props.modal.props.keepNav) {
       // this will need to be expanded...
       this.props.dispatch(navActions.setLevel("TOP"))
     }
   }
 
-  componentWillMount(){
-    this.props.dispatch(navActions.setLevel("MODAL"))
+  componentWillUpdate(nextProps){
+    let root = document.documentElement
+
+    if (this.props.modal.visible && !nextProps.modal.visible) {
+      root.className = root.className.split(" ").filter((className) => {
+        return className != "modal--opened"
+      }).join(" ")
+
+    } else if (!this.props.modal.visible && nextProps.modal.visible) {
+      root.className += "modal--opened"
+    }
+
   }
 
+  close = (e) => {
+    const { target } = e
+
+    if (target.className != "panel overlay--solid-dark") {
+      return
+    }
+
+    this.props.dispatch(modalActions.hide())
+  }
 
   render () {
     let enter = "fadeIn"
@@ -124,7 +143,7 @@ export default class SideModal extends Component {
           }
 
           return (
-            <div className="panel overlay--solid-dark">
+            <div className="panel overlay--solid-dark" onClick={this.close}>
 
               <VelocityComponent
                 animation={slide}

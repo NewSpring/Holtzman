@@ -87,32 +87,6 @@ export default class Give extends Component {
 
   componentDidUpdate(prevProps) {
 
-    // temp testing place
-    if (this.props.give.step === 3 && !this.state.postUrl) {
-      const { data, transaction, total } = this.props.give
-
-      let joinedData = {
-        amount: total,
-        billing: {
-          "first-name": data.personal.firstName,
-          "last-name": data.personal.lastName,
-          email: data.personal.email,
-          address1: data.billing.streetAddress,
-          address2: data.billing.streetAddress2 || "",
-          city: data.billing.city,
-          state: data.billing.state,
-          postal: data.billing.zip
-        }
-      }
-
-      Meteor.call("Give.order", joinedData, (err, url) => {
-        if (!err) {
-          this.setState({ postUrl: url})
-        }
-      })
-    }
-
-
     if (this.props.give.step > prevProps.give.step) {
       this.updateInputs()
     }
@@ -125,6 +99,15 @@ export default class Give extends Component {
 
   next = (e) => {
     e.preventDefault()
+
+    if (this.props.give.step === 2) {
+      this.submitPersonalDetails()
+    }
+
+    if (this.props.give.step === 3) {
+      this.submitPaymentDetails()
+    }
+
     this.props.next()
   }
 
@@ -134,20 +117,46 @@ export default class Give extends Component {
     this.props.previous()
   }
 
-  submit = (e) => {
-    e.preventDefault()
+  submitPersonalDetails = () => {
+    const { data, transaction, total } = this.props.give
+
+    let joinedData = {
+      amount: total,
+      billing: {
+        "first-name": data.personal.firstName,
+        "last-name": data.personal.lastName,
+        email: data.personal.email,
+        address1: data.billing.streetAddress,
+        address2: data.billing.streetAddress2 || "",
+        city: data.billing.city,
+        state: data.billing.state,
+        postal: data.billing.zip
+      }
+    }
+
+    Meteor.call("Give.order", joinedData, (err, url) => {
+      if (!err) {
+        this.setState({ postUrl: url})
+      }
+
+      console.log(err, url)
+    })
+
+  }
+
+  submitPaymentDetails = () => {
 
     const { postUrl } = this.state
     const form = ReactDOM.findDOMNode(this.refs["form"])
 
-    const next = this.props.next
+    // const next = this.props.next
     fetch(postUrl, {
       method: "POST",
       body: new FormData(form),
       mode: "no-cors"
     })
     .then((response) => {
-      next()
+      // next()
     })
     .catch((e) => {
       console.log(e)
@@ -201,7 +210,7 @@ export default class Give extends Component {
         ref="form"
         method="POST"
         action={this.state.postUrl}
-        submit={this.submit}
+        submit={this.completePurchase}
       >
 
         <Step

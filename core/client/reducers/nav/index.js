@@ -5,22 +5,26 @@
 */
 import { goBack } from "redux-router"
 import { modal as modalActions } from "../../actions/"
+import { Sections } from "../../blocks"
 
 const back = (props) => {
   return goBack()
 }
 
+const showSections = (props) => {
+  return modalActions.render(Sections, { keepNav: true })
+}
 
 const links = {
   TOP:[
     { id: 1, label:"Home", link:"/", icon:"icon-logo" },
-    { id: 2, label:"Sections", link:"/sections", icon:"icon-sections" },
+    { id: 2, label:"Sections", action: showSections, icon:"icon-sections" },
     { id: 3, label:"Discover", link:"/discover", icon:"icon-search" },
     { id: 4, label:"Profile", link:"/profile", icon:"icon-profile" }
   ],
   CONTENT: [
     { id: 1, action: back, icon:"icon-arrow-back" },
-    { id: 2, action: false, icon:"icon-sections" },
+    { id: 2, action: showSections, icon:"icon-sections" },
     { id: 2, action: false, icon:"icon-like" },
     { id: 3, action: false, icon:"icon-share" }
   ],
