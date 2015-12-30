@@ -41,7 +41,8 @@ const transactions = () => {
           &$expand=
             TransactionDetails,
             FinancialPaymentDetail,
-            FinancialPaymentDetail/CurrencyTypeValue
+            FinancialPaymentDetail/CurrencyTypeValue,
+            FinancialPaymentDetail/CreditCardTypeValue
           &$select=
             Id,
             CreatedDateTime,
@@ -51,7 +52,12 @@ const transactions = () => {
             TransactionDetails/AccountId,
             TransactionDetails/CreatedDateTime,
             FinancialPaymentDetail/CurrencyTypeValue/Description,
-            FinancialPaymentDetail/CurrencyTypeValue/Value
+            FinancialPaymentDetail/CurrencyTypeValue/Value,
+            FinancialPaymentDetail/CreditCardTypeValue/Description,
+            FinancialPaymentDetail/CreditCardTypeValue/Value,
+            FinancialPaymentDetail/AccountNumberMasked
+
+
       `)
 
       api.get(query, (err, data) => {
