@@ -45,7 +45,7 @@ const funds = Query(`
 `)
 
 
-const schedules = `https://stock-rock.newspring.cc/api/FinancialScheduledTransactions?$top=100&$expand=ScheduledTransactionDetails,TransactionFrequencyValue,FinancialPaymentDetail,FinancialPaymentDetail/CreditCardTypeValue,FinancialPaymentDetail/BillingLocation`
+const schedules = `https://stock-rock.newspring.cc/api/FinancialScheduledTransactions?$filter=AuthorizedPersonAliasId eq 90818,IsActive eq true&$expand=ScheduledTransactionDetails,TransactionFrequencyValue,FinancialPaymentDetail,FinancialPaymentDetail/CreditCardTypeValue,FinancialPaymentDetail/BillingLocation&$select=CardReminderDate, ScheduledTransactionDetails/Amount,ScheduledTransactionDetails/AccountId,EndDate,StartDate,NextPaymentDate,TransactionFrequencyValue/Value,TransactionFrequencyValue/Description,FinancialPaymentDetail/CreditCardTypeValue/Value,FinancialPaymentDetail/CreditCardTypeValue/Description,FinancialPaymentDetail/BillingLocation/Street1,FinancialPaymentDetail/BillingLocation/Street2,FinancialPaymentDetail/BillingLocation/City,FinancialPaymentDetail/BillingLocation/County,FinancialPaymentDetail/BillingLocation/State,FinancialPaymentDetail/BillingLocation/Country,FinancialPaymentDetail/BillingLocation/PostalCode,FinancialPaymentDetail/AccountNumberMasked`
 
 const savedAccounts = `https://stock-rock.newspring.cc/api/FinancialPersonSavedAccounts?$top=100&$expand=FinancialPaymentDetail,FinancialPaymentDetail/CreditCardTypeValue,FinancialPaymentDetail/CurrencyTypeValue`
 

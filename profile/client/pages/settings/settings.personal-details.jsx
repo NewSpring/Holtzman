@@ -21,7 +21,7 @@ export default class PersonalDetails extends Component {
   componentWillUnmount(){
     this.props.dispatch(nav.setLevel("TOP"))
   }
-  
+
   getMeteorData() {
     Meteor.subscribe("campuses")
     return {
@@ -81,11 +81,11 @@ export default class PersonalDetails extends Component {
           />
 
           <Forms.Select
-            name="campus"
+            name="Campus"
             label="Campus"
-            type="campus"
+            type="Campus"
             defaultValue={Campus.Name}
-            ref="campus"
+            ref="Campus"
             items={campuses}
           />
 
