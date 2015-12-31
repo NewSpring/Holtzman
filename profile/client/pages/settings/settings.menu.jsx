@@ -25,12 +25,18 @@ export default class Menu extends Component {
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
-            <a href="#" className="plain text-dark-secondary">
+            <Link to="/profile/settings/home-address" className="plain text-dark-secondary">
+              <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
+                <h6 className="soft-half-left flush display-inline-block">My Address</h6>
+                <i className="float-right icon-arrow-next"></i>
+              </div>
+            </Link>
+            <Link to="/profile/settings/payment-accounts" className="plain text-dark-secondary">
               <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
                 <h6 className="soft-half-left flush display-inline-block">Payment Accounts</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
-            </a>
+            </Link>
             <Link to="/profile/settings/change-password" className="plain text-dark-secondary">
               <div className="push-left soft-ends soft-right text-left">
                 <h6 className="soft-half-left flush display-inline-block">Change Password</h6>

@@ -90,7 +90,7 @@ export default class SideModal extends Component {
   componentWillUpdate(nextProps){
     let root = document.documentElement
 
-    if (this.props.modal.visible && !nextProps.modal.visible) {
+    if (!nextProps.modal.visible) {
       root.className = root.className.split(" ").filter((className) => {
         return className != "modal--opened"
       }).join(" ")

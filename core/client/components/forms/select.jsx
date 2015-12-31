@@ -140,14 +140,14 @@ export default class Select extends Component {
           defaultValue={this.props.defaultValue}
         >
           {() => {
-            if (this.props.placeholder) {
+            if (this.props.placeholder || this.props.includeBlank) {
               return (
                 <option
                   className={this.props.optionClasses}
                   value=""
                   disabled={true}
                 >
-                  {this.props.placeholder}
+                  {this.props.placeholder || ""}
                 </option>
               )
             }

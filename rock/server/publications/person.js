@@ -60,7 +60,9 @@ const people = () => {
 
           const keysToKeep = [
             "Age",
-            "BirthDate",
+            "BirthDay",
+            "BirthMonth",
+            "BirthYear",
             "Campus",
             "Email",
             "FirstName",

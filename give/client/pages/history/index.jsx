@@ -126,21 +126,14 @@ export default class Template extends Component {
         </Right>
 
         <Left scroll={true} ref="container">
-          <div className="constrain-copy soft-double@lap-and-up">
-            <div className="soft soft-double-top@lap-and-up">
+          <div className="constrain-copy soft-double-sides@lap-and-up soft-double-top@lap-and-up">
+            <div className="soft soft-double-top hard-left@lap-and-up soft-half-bottom">
               <h2 className="flush hard">Giving History</h2>
             </div>
           </div>
 
 
-          <div className="background--light-secondary">
-            <div className="constrain-copy soft@lap-and-up">
-              <div className="soft">
-              </div>
-            </div>
-          </div>
-
-          <div className="constrain-copy soft soft-double-sides@lap-and-up" ref="history">
+          <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top" ref="history">
             {() => {
               const { transactions } = this.data
 

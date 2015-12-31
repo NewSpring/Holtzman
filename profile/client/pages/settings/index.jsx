@@ -8,6 +8,8 @@ import { onBoard as onBoardActions } from "../../../../core/client/actions"
 import Menu from "./settings.menu"
 import ChangePassword from "./settings.change-password"
 import PersonalDetails from "./settings.personal-details"
+import HomeAddress from "./settings.home-address"
+import PaymentDetails from "./settings.payments"
 import PP from "./settings.privacy-policy"
 
 
@@ -74,6 +76,8 @@ const Routes = [
     childRoutes: [
       { path: "change-password", component: ChangePassword },
       { path: "personal-details", component: PersonalDetails },
+      { path: "home-address", component: HomeAddress },
+      { path: "payment-accounts", component: PaymentDetails },
       { path: "privacy-policy", component: PP },
     ]
   }
