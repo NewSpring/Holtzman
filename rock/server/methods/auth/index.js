@@ -61,18 +61,16 @@ Meteor.methods({
       throw new Meteor.Error("Existing password is incorrect")
     }
 
-    // need to ask core about changing passwords
-    // const user = {
-    //   EntityTypeId: 27,
-    //   UserName: account.email,
-    //   PlainTextPassword: account.password
-    // }
-    //
-    // try {
-    //   api.patch.sync(`UserLogins`, user)
-    // } catch (e) {
-    //   throw new Meteor.Error(e)
-    // }
+    let RockUser = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`)
+
+    RockUser.PlainTextPassword = newPassword
+
+    try {
+      api.put.sync(`UserLogins/${RockUser.Id}`, RockUser)
+    } catch (e) {
+      throw new Meteor.Error(e)
+    }
+
 
     Accounts.setPassword(this.userId, newPassword, { logout: false })
 
