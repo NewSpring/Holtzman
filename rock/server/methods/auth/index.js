@@ -33,6 +33,54 @@ Meteor.methods({
 
     return isAvailable
   },
+  "Rock.auth.reset": function(current, newPassword){
+    check(current, String)
+    check(newPassword, String)
+
+    if (!this.userId) {
+      throw new Meteor.Error("You must be logged in to change your password")
+    }
+
+    let user = Meteor.users.findOne(this.userId)
+    let email = user.emails[0].address
+    const Username = email // this will need to be adjusted long term
+
+    // special case for AD lookup
+    if (email.indexOf("@newspring.cc") > -1) {
+      throw new Meteor.Error("NewSpring staff accounts are managed by IT")
+    }
+
+    let isAuthorized = false
+    try {
+      isAuthorized = api.post.sync(`Auth/login`, { Username, Password: current })
+    } catch (e) {
+      isAuthorized = false
+    }
+
+    if (!isAuthorized) {
+      throw new Meteor.Error("Existing password is incorrect")
+    }
+
+    // need to ask core about changing passwords
+    // const user = {
+    //   EntityTypeId: 27,
+    //   UserName: account.email,
+    //   PlainTextPassword: account.password
+    // }
+    //
+    // try {
+    //   api.patch.sync(`UserLogins`, user)
+    // } catch (e) {
+    //   throw new Meteor.Error(e)
+    // }
+
+    Accounts.setPassword(this.userId, newPassword, { logout: false })
+
+
+    return true
+
+
+  },
   "Rock.auth.login": (Username, password) => {
     check(Username, String)
     check(password, String)

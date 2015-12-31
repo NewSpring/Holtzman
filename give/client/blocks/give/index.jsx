@@ -178,7 +178,8 @@ export default class Give extends Component {
       data,
       errors,
       step,
-      transactions
+      transactions,
+      total
     } = this.props.give
 
     const {
@@ -222,6 +223,7 @@ export default class Give extends Component {
           next={this.next}
           back={this.back}
           ref="inputs"
+          total={total}
         >
           <Controls.Progress
             steps={4}

@@ -94,9 +94,9 @@ export default class Confirm extends Component {
           </div>
 
           <div className="grid__item three-eighths text-right" style={{verticalAlign: "middle"}}>
-            <h4 className="text-dark-tertiary flush">
+            <h3 className="text-dark-secondary flush">
               {this.monentize(transaction.value)}
-            </h4>
+            </h3>
           </div>
 
         </div>
@@ -123,7 +123,26 @@ export default class Confirm extends Component {
             return this.listItem(transaction, key)
           })}
 
-          <button className="btn one-whole push-double-top" type="submit">
+          <div className="soft-ends hard-sides">
+
+            <div className="grid" style={{verticalAlign: "middle"}}>
+
+              <div className="grid__item five-eighths" style={{verticalAlign: "middle"}}>
+                <h5 className="text-dark-tertiary flush text-left">
+                  Total
+                </h5>
+              </div>
+
+              <div className="grid__item three-eighths text-right" style={{verticalAlign: "middle"}}>
+                <h3 className="text-primary flush">
+                  {this.monentize(this.props.total)}
+                </h3>
+              </div>
+
+            </div>
+          </div>
+
+          <button className="btn one-whole push-top" type="submit">
             {this.buttonText()} {this.icon()}
           </button>
         </div>

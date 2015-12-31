@@ -72,6 +72,10 @@ export default class Input extends Component {
     this.validate()
   }
 
+  getValue = () => {
+    return ReactDOM.findDOMNode(this.refs["apollos-input"]).value
+  }
+
 
   setStatus = (message) => {
     this.props.status = message;
@@ -119,7 +123,7 @@ export default class Input extends Component {
             return (
               <Label
                 labelFor={
-                  this.props.id || this.props.label || this.props.name
+                  this.props.id || this.props.name || this.props.label
                 }
                 labelName={
                   this.props.label || this.props.name
@@ -132,7 +136,7 @@ export default class Input extends Component {
 
         <input
           ref="apollos-input"
-          id={this.props.id || this.props.ref || this.props.label || this.props.name}
+          id={this.props.id || this.props.ref || this.props.name || this.props.label}
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }
