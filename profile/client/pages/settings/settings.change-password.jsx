@@ -17,7 +17,7 @@ export default class ChangePassword extends Component {
     current: null,
     newP: null,
     newPDup: null,
-    state: "default",
+    state: "default"
   }
 
   componentWillMount(){

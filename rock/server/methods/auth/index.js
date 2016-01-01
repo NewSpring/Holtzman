@@ -167,9 +167,8 @@ Meteor.methods({
       isActive: true
     }, ...data}
 
-    console.log(Location)
     let LocationId = api.post.sync(`Locations`, Location)
-    console.log(LocationId)
+
     if (!LocationId) {
       throw new Meteor.Error("Location could not be created", Location)
     }
@@ -183,10 +182,8 @@ Meteor.methods({
       CreatedByPersonAliasId: user.services.rock.PrimaryAliasId
     }
 
-    console.log(GroupLocation)
-
     let result = api.post.sync(`GroupLocations`, GroupLocation)
-    
+
     if (result.state === 400) {
       throw new Meteor.Error(result)
     }

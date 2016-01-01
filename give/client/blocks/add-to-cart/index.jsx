@@ -73,10 +73,11 @@ export default class CartContainer extends Component {
 
   render () {
 
-    const { total } = this.props.give
+    const { total, transactions } = this.props.give
 
 
     let primaryAccount = {}
+    let remainingAccounts = []
     let otherAccounts = []
 
     if (this.props.accounts.length) {
@@ -88,6 +89,12 @@ export default class CartContainer extends Component {
         }
 
         otherAccounts.push(account)
+
+        if (transactions[account.Id]) {
+          continue
+        }
+
+        remainingAccounts.push(account)
       }
     }
 
@@ -126,12 +133,19 @@ export default class CartContainer extends Component {
           <div className="clearfix"></div>
           <div className="display-inline-block">
             {() => {
+
               if (mulitpleAccounts || !this.props.accounts.length) {
+                let transactions = {...this.props.give.transactions}
+                if (primaryAccount.Id) {
+                  delete transactions[primaryAccount.Id]
+                } else {
+                  delete transactions[-1]
+                }
 
                 return (
                   <div>
                     {() => {
-                      console.log(this.props.give.transactions)
+
                       for (let transaction in this.props.give.transactions) {
                         return (
                           <SubFund
@@ -141,7 +155,8 @@ export default class CartContainer extends Component {
                         )
                       }
                     }()}
-                    <SubFund accounts={otherAccounts}/>
+
+                    
                     <div className="clearfix"></div>
                   </div>
 

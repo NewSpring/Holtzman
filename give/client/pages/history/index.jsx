@@ -6,7 +6,7 @@ import ReactMixin from "react-mixin"
 import Moment from "moment"
 
 // loading state
-import { Loading } from "../../../../core/client/components"
+import { Spinner } from "../../../../core/client/components/loading"
 import { Authorized } from "../../../../core/client/blocks"
 import { nav as navActions } from "../../../../core/client/actions"
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
@@ -140,9 +140,10 @@ export default class Template extends Component {
               if (!transactions || !transactions.length) {
                 // loading
                 return (
-                  <div>
-                    Loading...
+                  <div className="text-center soft">
+                    <Spinner styles={{width: "40px", height: "40px"}}/>
                   </div>
+
                 )
               }
 

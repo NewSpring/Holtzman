@@ -18,11 +18,13 @@ export default class Loading extends Component {
 
   }
 
-  classes = () => {
+  getClasses = () => {
     let classes = []
 
-    classes = [...classes, ...this.props.classes]
-
+    if (this.props.classes) {
+      classes = [...classes, ...this.props.classes]
+    }
+    
     return classes.join(" ")
   }
 
@@ -30,7 +32,7 @@ export default class Loading extends Component {
   render () {
     return (
       <div
-        className={this.props.theme || this.classes()}
+        className={this.props.theme || this.getClasses()}
         style={this.styles()}>
         {this.props.children}
       </div>
