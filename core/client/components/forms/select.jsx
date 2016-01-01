@@ -21,6 +21,7 @@ export default class Select extends Component {
   componentWillUpdate(nextProps){
     if (this.props.defaultValue != nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue)
+      this.setState({focused: false})
     }
   }
 

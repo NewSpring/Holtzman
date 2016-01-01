@@ -48,7 +48,7 @@ class Template extends Component {
               className="background--fill ratio--square round two-fifths display-inline-block"
               style={{ backgroundImage: `url(${photo})`}}
             ></div>
-            <h4 className="text-light-primary soft-half-top flush-bottom">{person.FirstName} {person.LastName}</h4>
+          <h4 className="text-light-primary soft-half-top flush-bottom">{person.NickName || person.FirstName} {person.LastName}</h4>
             <p className="text-light-primary flush"><em>{person.Home.City}</em></p>
           </div>
 
