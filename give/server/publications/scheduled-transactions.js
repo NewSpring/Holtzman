@@ -95,7 +95,6 @@ const scheduledTransactions = () => {
             }
           }
 
-          console.log(data)
           callback(null, data)
         })
 

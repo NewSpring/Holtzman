@@ -6,7 +6,7 @@ import ReactMixin from "react-mixin"
 import Moment from "moment"
 
 // loading state
-import { Loading } from "../../../../core/client/components"
+import { Spinner } from "../../../../core/client/components/loading"
 import { Authorized } from "../../../../core/client/blocks"
 import { nav as navActions } from "../../../../core/client/actions"
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
@@ -131,7 +131,7 @@ export default class Template extends Component {
         <Left scroll={true} ref="container">
           <div className="constrain-copy soft-double-sides@lap-and-up soft-double-top@lap-and-up">
             <div className="soft soft-double-top hard-left@lap-and-up soft-half-bottom">
-              <h2 className="flush hard">Giving Schedules</h2>
+              <h2 className="flush hard">Recurring Gifts</h2>
             </div>
           </div>
 
@@ -143,8 +143,8 @@ export default class Template extends Component {
               if (!schedules || !schedules.length) {
                 // loading
                 return (
-                  <div>
-                    Loading...
+                  <div className="text-center soft">
+                    <Spinner styles={{width: "40px", height: "40px"}}/>
                   </div>
                 )
               }
@@ -164,7 +164,7 @@ export default class Template extends Component {
                           <span className="text-dark-secondary">{this.capitalizeFirstLetter(schedule.TransactionFrequencyValue.Description.toLowerCase())}</span>, I give <span className="text-dark-secondary">{this.monentize(schedule.ScheduledTransactionDetails[0].Amount)}</span> to <span className="text-primary">{schedule.ScheduledTransactionDetails[0].Account.PublicName}</span>. This began on <span className="text-dark-secondary">{this.formatDate(schedule.StartDate)}</span> using my <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.CreditCardTypeValue.Description.toLowerCase()}</span> ending in <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.AccountNumberMasked.replace(/\*/g, "")}</span>
                         </h3>
 
-                        <Link to={`/give/schedule/${schedule.Id}`} className="btn--thin btn--dark-tertiary btn--small">
+                        <Link to={`/give/schedules/${schedule.Id}`} className="btn--thin btn--dark-tertiary btn--small">
                           Edit Recurring Gift
                         </Link>
 

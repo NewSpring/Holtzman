@@ -146,27 +146,33 @@ export default class CartContainer extends Component {
                   <div>
                     {() => {
 
-                      for (let transaction in this.props.give.transactions) {
-                        return (
-                          <SubFund
-                            accounts={otherAccounts}
-                            transaction={this.props.give.transactions[transaction]}
-                          />
-                        )
-                      }
+                      // for (let transaction in this.props.give.transactions) {
+                      //   return (
+                      //     <SubFund
+                      //       accounts={otherAccounts}
+                      //       transaction={this.props.give.transactions[transaction]}
+                      //     />
+                      //   )
+                      // }
+                      return (
+                        <SubFund
+                          accounts={otherAccounts}
+                        />
+                      )
                     }()}
 
-                    
                     <div className="clearfix"></div>
                   </div>
 
                 )
               }
+
               return (
                 <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
                   {`to ${this.props.accounts[0].PublicName || this.props.accounts[0].Name} `}&nbsp;
                 </h3>
               )
+
             }()}
 
             <h3 className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">so my gift total is</h3>
