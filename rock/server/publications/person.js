@@ -33,6 +33,7 @@ const people = () => {
             &$select=
               Campus/Name,
               Campus/ShortCode,
+              Campus/Id,
               GroupLocations/Location/Street1,
               GroupLocations/Location/Street2,
               GroupLocations/Location/City,

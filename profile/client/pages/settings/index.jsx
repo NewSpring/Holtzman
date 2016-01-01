@@ -77,7 +77,7 @@ const Routes = [
       { path: "change-password", component: ChangePassword },
       { path: "personal-details", component: PersonalDetails },
       { path: "home-address", component: HomeAddress },
-      { path: "payment-accounts", component: PaymentDetails },
+      { path: "saved-accounts", component: PaymentDetails },
       { path: "privacy-policy", component: PP },
     ]
   }

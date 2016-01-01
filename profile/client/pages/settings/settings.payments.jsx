@@ -51,7 +51,7 @@ export default class GiveNow extends Component {
     return (
       <div className="text-center push-double-top soft-double-top@lap-and-up">
         <div className="one-whole two-thirds@anchored display-inline-block">
-          <h3>Payment Accounts</h3>
+          <h3>Saved Accounts</h3>
           <div className="soft-sides soft-double-sides@lap-and-up">
             {this.data.paymentDetails.map((account, key) => {
               return (
@@ -65,7 +65,7 @@ export default class GiveNow extends Component {
             })}
 
             <p className="soft-ends text-left">
-              To add a saved payment, click the option to save payment on your next gift!
+              To add a saved account, click the option to save account on your next gift!
             </p>
           </div>
 

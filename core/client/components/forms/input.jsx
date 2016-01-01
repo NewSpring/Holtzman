@@ -19,6 +19,12 @@ export default class Input extends Component {
     }
   }
 
+  componentWillUpdate(nextProps){
+    if (this.props.defaultValue != nextProps.defaultValue) {
+      this.setValue(nextProps.defaultValue)
+    }
+  }
+
 
   format = () => {
 

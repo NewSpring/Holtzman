@@ -18,6 +18,12 @@ export default class Select extends Component {
     }
   }
 
+  componentWillUpdate(nextProps){
+    if (this.props.defaultValue != nextProps.defaultValue) {
+      this.setValue(nextProps.defaultValue)
+    }
+  }
+
   focus = (event) => {
     this.setState({
       active: true,
@@ -31,6 +37,10 @@ export default class Select extends Component {
     node.value = value;
     this.focus()
     // this.change()
+  }
+
+  getValue = () => {
+    return ReactDOM.findDOMNode(this.refs["apollos-select"]).value
   }
 
 

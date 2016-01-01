@@ -1,6 +1,6 @@
-// login = args => Meteor.apply("Rock.login", args)
-const login = (currentPassword, newPassword, callback) => {
+
+const reset = (currentPassword, newPassword, callback) => {
   Meteor.call("Rock.auth.reset", currentPassword, newPassword, callback)
 }
 
-export default login
+export default reset

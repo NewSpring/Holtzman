@@ -31,9 +31,9 @@ export default class Menu extends Component {
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
-            <Link to="/profile/settings/payment-accounts" className="plain text-dark-secondary">
+            <Link to="/profile/settings/saved-accounts" className="plain text-dark-secondary">
               <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
-                <h6 className="soft-half-left flush display-inline-block">Payment Accounts</h6>
+                <h6 className="soft-half-left flush display-inline-block">Saved Accounts</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
