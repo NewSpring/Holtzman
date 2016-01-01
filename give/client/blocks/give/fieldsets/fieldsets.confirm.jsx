@@ -39,6 +39,7 @@ export default class Confirm extends Component {
   icon = () => {
 
     const { payment } = this.props.data
+    const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
 
     if (payment.type === "ach") {
       return (
@@ -48,11 +49,30 @@ export default class Confirm extends Component {
 
     if (payment.type === "cc") {
 
-      let type = "Visa"
+      const getCardType = (card) => {
 
+        const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi
+
+        const defaultRegex = {
+          Visa: /^4[0-9]{0,15}$/gmi,
+          MasterCard: /^5$|^5[1-5][0-9]{0,14}$/gmi,
+          AmEx: /^3$|^3[47][0-9]{0,13}$/gmi,
+          Discover: d
+        }
+
+        for (let regex in defaultRegex) {
+          if (defaultRegex[regex].test(card.replace(/-/gmi, ""))) {
+            return regex
+          }
+        }
+
+        return null
+
+      }
+      
       return (
         // replace with SVG
-        <AccountType width="30px" height="20px" type={type}/>
+        <AccountType width="30px" height="20px" type={getCardType(masked)}/>
       )
     }
 
@@ -81,7 +101,6 @@ export default class Confirm extends Component {
   }
 
   listItem = (transaction, key) => {
-    console.log(transaction)
     return (
       <div key={key} className="soft-ends hard-sides outlined--light outlined--bottom">
 

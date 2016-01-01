@@ -290,7 +290,7 @@ Meteor.methods({
     // Create person
     const Person = {
       Email: account.email,
-      Guid: makeGUID(),
+      Guid: api.makeGUID(),
       FirstName: account.firstName,
       LastName: account.lastName,
       IsSystem: false,

@@ -5,7 +5,7 @@ import Moment from "moment"
 import { Link } from "react-router"
 
 // loading state
-import { Loading } from "../../../../core/client/components"
+import { Spinner } from "../../../../core/client/components/loading"
 import { nav as navActions } from "../../../../core/client/actions"
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
 import { Card } from "../../../../core/client/components"
@@ -31,8 +31,24 @@ export default class Details extends Component {
 
   getMeteorData() {
     Meteor.subscribe("transactions")
-    const { id } = this.props.params
+    const { id, account } = this.props.params
     const transaction = Transactions.findOne({Id: Number(id)});
+
+    if (transaction) {
+      let { TransactionDetails } = transaction
+
+      if (TransactionDetails.length) {
+        for (let detail of TransactionDetails) {
+
+          if (detail.AccountId === Number(account)) {
+            TransactionDetails = [detail]
+            break
+          }
+        }
+      }
+      transaction.TransactionDetails = TransactionDetails
+
+    }
 
     return {
       transaction
@@ -83,12 +99,12 @@ export default class Details extends Component {
             {() => {
               const { transaction } = this.data
               const { person } = this.props
-              console.log(transaction)
+
               if (!transaction) {
                 // loading
                 return (
-                  <div>
-                    Loading...
+                  <div className="text-center soft">
+                    <Spinner styles={{width: "40px", height: "40px"}}/>
                   </div>
                 )
               }
@@ -107,8 +123,15 @@ export default class Details extends Component {
                     if (detail.AccountNumberMasked) {
                       return (
                         <h4 className="text-dark-secondary">
-                          {detail.AccountNumberMasked.replace(/\*/g, "")}
-                          <AccountType width="30px" height="20px" type={detail.CreditCardTypeValue.Value}/>
+                          {detail.AccountNumberMasked.slice(-4)}
+                          {() => {
+                            if (detail.CreditCardTypeValue && detail.CreditCardTypeValue.Value) {
+                              return (
+                                <AccountType width="30px" height="20px" type={detail.CreditCardTypeValue.Value}/>
+                              )
+                            }
+                          }()}
+
                         </h4>
                       )
                     }

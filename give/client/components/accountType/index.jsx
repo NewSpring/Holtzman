@@ -70,7 +70,7 @@ export default class AccountType extends Component {
     )
   }
 
-  Mastercard = (width, height) => {
+  MasterCard = (width, height) => {
     return (
       <svg
         width={width}
@@ -109,6 +109,10 @@ export default class AccountType extends Component {
 
     let { width, height, type } = this.props
 
+    if (type === "American Express") {
+      type = "AmEx"
+    }
+    
     width || (width = 54)
     height || (height = 40)
 

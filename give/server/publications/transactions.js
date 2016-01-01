@@ -56,15 +56,13 @@ const transactions = () => {
             FinancialPaymentDetail/CreditCardTypeValue/Description,
             FinancialPaymentDetail/CreditCardTypeValue/Value,
             FinancialPaymentDetail/AccountNumberMasked
-
-
       `)
 
       api.get(query, (err, data) => {
-        if (err) { callback(err) }
+        if (err) { callback(err); return }
 
         api.get(allAccounts, (err, accounts) => {
-          if (err) { callback(err) }
+          if (err) { callback(err); return }
 
           let accountObj = {}
 

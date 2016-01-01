@@ -134,8 +134,22 @@ const parseEndpoint = (str) => {
     return trimmed
   }).join("")
 }
-
 api.parseEndpoint = parseEndpoint
+
+
+const makeGUID = () => {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+
+
+  const guid = `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
+  return guid.toUpperCase()
+}
+
+api.makeGUID = makeGUID
 
 if (Meteor.isServer) {
   for (const meth in api) {
@@ -146,5 +160,6 @@ if (Meteor.isServer) {
 
 export default {
   api,
-  parseEndpoint
+  parseEndpoint,
+  makeGUID
 }

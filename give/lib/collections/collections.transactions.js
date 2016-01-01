@@ -1,12 +1,6 @@
 
 let Transactions = {}
 
-if (Meteor.isClient) {
-  Transactions = new Mongo.Collection("transactions")
-}
-
-if (Meteor.isServer) {
-  Transactions = new Mongo.Collection(null)
-}
+Transactions = new Mongo.Collection("transactions")
 
 export default Transactions

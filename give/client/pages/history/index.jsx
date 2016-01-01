@@ -147,52 +147,54 @@ export default class Template extends Component {
                 )
               }
 
-              return (
-                <div>
-                  {this.data.transactions.map((transaction, i) => {
-                    if (!transaction.TransactionDetails[0].Account) {
-                      return null
-                    }
-                    return (
-                      <div key={i} className="soft-ends push-half-ends hard-sides outlined--light outlined--bottom constrain-mobile">
+              return this.data.transactions.map((transaction, i) => {
+                if (!transaction.TransactionDetails.length) {
+                  return null
+                }
 
-                        <Link to={`/give/history/${transaction.Id}`}>
+                return transaction.TransactionDetails.map((transactionDetail, i) => {
+                  if (!transactionDetail.Account) {
+                    return null
+                  }
 
-                          <div className="grid" style={{verticalAlign: "middle"}}>
+                  return (
+                    <div key={i} className="soft-ends push-half-ends hard-sides outlined--light outlined--bottom constrain-mobile">
 
-                            <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
-                              <h5 className="text-dark-tertiary flush">
-                                {transaction.TransactionDetails[0].Account.PublicName}
-                              </h5>
-                              <p className="flush soft-half-top italic small text-dark-tertiary">
-                                {this.formatDate(transaction.CreatedDateTime)}
-                              </p>
-                            </div>
+                      <Link to={`/give/history/${transaction.Id}/${transactionDetail.Account.Id}`}>
 
-                            <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
-                              <div className="soft-half-right">
-                                <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
-                                  {this.monentize(transaction.TransactionDetails[0].Amount)}
-                                  <span className="text-primary icon-arrow-next locked" style={{
-                                      right: "-5px",
-                                      top: "1px"
-                                    }}></span>
-                                </h4>
-                              </div>
+                        <div className="grid" style={{verticalAlign: "middle"}} key={i}>
 
+                          <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
+                            <h5 className="text-dark-tertiary flush">
+                              {transactionDetail.Account.PublicName}
+                            </h5>
+                            <p className="flush soft-half-top italic small text-dark-tertiary">
+                              {this.formatDate(transaction.CreatedDateTime)}
+                            </p>
+                          </div>
+
+                          <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
+                            <div className="soft-half-right">
+                              <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
+                                {this.monentize(transactionDetail.Amount)}
+                                <span className="text-primary icon-arrow-next locked" style={{
+                                    right: "-5px",
+                                    top: "1px"
+                                  }}></span>
+                              </h4>
                             </div>
 
                           </div>
 
-                        </Link>
+                        </div>
+                      </Link>
 
-                      </div>
+                    </div>
+                  )
 
-                    )
-                  })}
+                })
+              })
 
-                </div>
-              )
             }()}
           </div>
 
@@ -211,7 +213,7 @@ const Routes = [
     indexRoute: { component: Template },
     childRoutes: [
       {
-        path: ":id",
+        path: ":id/:account",
         component: Details
       }
     ]

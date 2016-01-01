@@ -26,9 +26,22 @@ const step1 = (token, callback) => {
   })
   .then((data) => {
 
+    // clean all tags to make sure they are parseable
+    let matches = data.match(/<([^>]+)>/gmi)
+
+    for (let match of matches) {
+      if (match.indexOf(",") > -1) {
+        console.log("INVALID", match)
+        let matchRegex = new RegExp(match, "gmi")
+        data = data.replace(matchRegex, match.replace(/,/gmi, ""))
+      }
+    }
+
+
     try {
       data = parseXML(data)
     } catch (e) {
+      console.log("PARSE ERROR", e, data)
       callback(e)
       return
     }
