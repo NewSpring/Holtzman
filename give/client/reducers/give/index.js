@@ -106,13 +106,7 @@ export default createReducer(initial, {
 
   [types.CLEAR_DATA](state, action) {
 
-    if (!action.field || state.data[action.field]) {
-      return state
-    }
-
-    return {...state, ...{
-      data: initial.data
-    }}
+    return initial
   },
 
   [types.SET_STATE](state, action) {

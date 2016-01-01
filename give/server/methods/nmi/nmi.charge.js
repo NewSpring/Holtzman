@@ -14,7 +14,7 @@ const step1 = (token, callback) => {
   const builder = new Builder()
   const xml = builder.buildObject(complete)
 
-  return fetch("https://secure.networkmerchants.com/api/v2/three-step", {
+  fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",
     body: `${xml}`,
     headers: {
@@ -38,7 +38,7 @@ const step1 = (token, callback) => {
       return
     }
 
-    callback(data)
+    callback(data["result-text"])
 
   })
   .catch(callback)

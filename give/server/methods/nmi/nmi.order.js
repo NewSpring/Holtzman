@@ -32,6 +32,7 @@ const step2 = (purchaseData, callback) => {
     try {
       data = parseXML(data)
     } catch (e) {
+      console.log("PARSE ERROR", e, data)
       callback(e)
       return
     }
@@ -41,7 +42,7 @@ const step2 = (purchaseData, callback) => {
       return
     }
 
-    callback(data)
+    callback(data["result-text"])
 
   })
   .catch(callback)

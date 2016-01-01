@@ -4,7 +4,15 @@ import { charge as gatewayCharge } from "../nmi"
 
 const charge = (token) => {
 
-  const response = Meteor.wrapAsync(gatewayCharge)(token)
+  let response = {}
+
+  try {
+    response = Meteor.wrapAsync(gatewayCharge)(token)
+  } catch (e) {
+    console.log(e.Error)
+    throw new Meteor.Error(e)
+  }
+
 
   const user = Meteor.user()
 
@@ -13,7 +21,7 @@ const charge = (token) => {
       $set: {
         "services.nmi": {
           customerId: response["customer-id"],
-          customerVaultId: response["customer-vault-id"],
+          // customerVaultId: response["customer-vault-id"],
         }
       }
     }, (err, data) => {
