@@ -30,12 +30,6 @@ export default class Payment extends Component {
     const { payment } = this.props.data
     return (
       <div>
-        <Forms.Input
-          name="billing-account-name"
-          type="hidden"
-          classes="visuallyhidden"
-          ref="accountName"
-        />
 
         <Forms.Input
           id="accountNumber"
@@ -55,6 +49,37 @@ export default class Payment extends Component {
           validation={this.saveData}
           ref="routingNumber"
         />
+
+        <div className="grid">
+          <div className="grid__item one-half">
+            <Forms.Input
+              name="billing-account-name"
+              ref="accountName"
+              id="accountName"
+              label="Bank Name"
+              validation={this.saveData}
+              defaultValue={payment.accountName}
+              errorText="Please enter your bank number"
+            />
+          </div>
+          <div className="grid__item one-half">
+            <Forms.Select
+              name="billing-account-type"
+              ref="accountType"
+              id="accountType"
+              label="Account Type"
+              validation={this.saveData}
+              defaultValue={payment.accountType}
+              errorText="Please choose your account type"
+              includeBlank={true}
+              items={[
+                { value: "checking", label: "Checking" },
+                { value: "savings", label: "Savings" },
+              ]}
+            />
+          </div>
+        </div>
+
       </div>
 
     )
@@ -64,9 +89,12 @@ export default class Payment extends Component {
     const { id } = target
 
     let isValid = false
+    let notEmpty = (value) => (value.length > 0)
     const validationMap = {
-      accountNumber: (value) => (value.length > 0),
-      routingNumber: (value) => (value.length > 0),
+      accountNumber: notEmpty,
+      routingNumber: notEmpty,
+      accountType: notEmpty,
+      accountName: notEmpty,
       cardNumber: Validate.isCreditCard,
       expiration: Validate.isExpiry,
       ccv: Validate.isCCV
@@ -174,7 +202,7 @@ export default class Payment extends Component {
             const { billing } = this.props.data
             let btnClasses = ["push-left"];
 
-            const ach = (payment.type === "ach" && payment.account && payment.routing)
+            const ach = (payment.type === "ach" && payment.accountNumber && payment.routingNumber)
             const cc = (payment.type === "cc" && payment.cardNumber && payment.expiration && payment.ccv)
 
 

@@ -92,7 +92,7 @@ export default class AccountType extends Component {
         style={this.props.style || this.style()}
       >
         <title>bank-icon</title>
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g id="payment-accounts" transform="translate(-636.000000, -867.000000)">
             <g id="Textarea-6-Copy-2" transform="translate(60.000000, 813.000000)">
               <g id="bank-icon" transform="translate(576.000000, 54.000000)">
@@ -112,7 +112,7 @@ export default class AccountType extends Component {
     if (type === "American Express") {
       type = "AmEx"
     }
-    
+
     width || (width = 54)
     height || (height = 40)
 

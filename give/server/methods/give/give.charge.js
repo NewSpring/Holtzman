@@ -11,7 +11,7 @@ const charge = (token) => {
   try {
     response = Meteor.wrapAsync(gatewayCharge)(token)
   } catch (e) {
-    console.log(e.Error, "ERROR IS HERE")
+    console.log(e, "ERROR IS HERE")
     throw new Meteor.Error(e)
   }
 
@@ -58,17 +58,25 @@ const charge = (token) => {
     if (!user.services || !user.services.rock) {
       user = { services: { rock: {} } }
     }
+
+    let CC = {
+      AccountNumberMasked: response.billing["cc-number"],
+      CurrencyTypeValueId: 156,
+      CreditCardTypeValueId: card
+    }
+
+    let Check = {
+      AccountNumberMasked: response.billing["account-number"],
+      CurrencyTypeValueId: 157
+    }
+
     let formatedTransaction = {
       ForeignKey: response["transaction-id"],
       TransactionTypeValueId: 53,
       FinancialGatewayId: 2,
       Summary: `Reference Number: ${response["transaction-id"]}`,
       TransactionDetails: [],
-      FinancialPaymentDetail: {
-        AccountNumberMasked: response.billing["cc-number"],
-        CurrencyTypeValueId: 156,
-        CreditCardTypeValueId: card
-      },
+      FinancialPaymentDetail: {},
       meta: {
         Person: {
           PrimaryAliasId: user.services.rock.PrimaryAliasId,
@@ -85,6 +93,13 @@ const charge = (token) => {
           Postal: response.billing.postal
         }
       }
+    }
+
+    if (response.billing["cc-number"]) {
+      formatedTransaction.FinancialPaymentDetail = CC
+    } else {
+      formatedTransaction.FinancialPaymentDetail = Check
+
     }
 
     if (!Array.isArray(response.product)) {
