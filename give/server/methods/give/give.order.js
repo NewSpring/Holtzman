@@ -12,7 +12,10 @@ const order = (orderData) => {
 
   const response = Meteor.wrapAsync(gatewayOrder)(orderData)
 
-  return response["form-url"]
+  return {
+    url: response["form-url"],
+    transactionId: response["transaction-id"]
+  }
 
 }
 

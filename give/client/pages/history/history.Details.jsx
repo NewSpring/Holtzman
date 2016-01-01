@@ -124,10 +124,16 @@ export default class Details extends Component {
                       return (
                         <h4 className="text-dark-secondary">
                           {detail.AccountNumberMasked.slice(-4)}
+
                           {() => {
+                            console.log(detail)
                             if (detail.CreditCardTypeValue && detail.CreditCardTypeValue.Value) {
                               return (
                                 <AccountType width="30px" height="20px" type={detail.CreditCardTypeValue.Value}/>
+                              )
+                            } else if (detail.CurrencyTypeValue && detail.CurrencyTypeValue.Value === "ACH") {
+                              return (
+                                <AccountType width="30px" height="20px" type="Bank"/>
                               )
                             }
                           }()}

@@ -23,6 +23,7 @@ export default class Give extends Component {
 
   state = {
     postUrl: null,
+    transactionId: null,
     state: "default"
   }
 
@@ -30,6 +31,11 @@ export default class Give extends Component {
   componentWillUnmount(){
     if (this.state != "default") {
       this.props.clearData()
+      // if (this.state.transactionId) {
+      //   Meteor.call("Give.void", this.state.transactionId, (err, response) => {
+      //     console.log(err, reponse)
+      //   })
+      // }
     }
   }
 
@@ -156,12 +162,12 @@ export default class Give extends Component {
     }
 
 
-    Meteor.call("Give.order", joinedData, (err, url) => {
+    Meteor.call("Give.order", joinedData, (err, data) => {
       if (!err) {
-        this.setState({ postUrl: url})
+        this.setState({ postUrl: data.url, transactionId: data.transactionId})
       }
 
-      console.log(err, url)
+      console.log(err, data)
     })
 
   }
