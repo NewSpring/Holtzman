@@ -31,15 +31,30 @@ export default class Menu extends Component {
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
+            <Link to="/profile/settings/change-password" className="plain text-dark-secondary">
+              <div className="push-left soft-ends soft-right text-left">
+                <h6 className="soft-half-left flush display-inline-block">Change Password</h6>
+                <i className="float-right icon-arrow-next"></i>
+              </div>
+            </Link>
+          </div>
+          <div className="outlined--light outlined--top one-whole push-top"></div>
+          <div className="background--light-primary outlined--light outlined--bottom text-dark-secondary">
             <Link to="/profile/settings/saved-accounts" className="plain text-dark-secondary">
               <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
                 <h6 className="soft-half-left flush display-inline-block">Saved Accounts</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
-            <Link to="/profile/settings/change-password" className="plain text-dark-secondary">
+            <Link to="/give/recurring" className="plain text-dark-secondary">
+              <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
+                <h6 className="soft-half-left flush display-inline-block">Recurring Gifts</h6>
+                <i className="float-right icon-arrow-next"></i>
+              </div>
+            </Link>
+            <Link to="/give/history" className="plain text-dark-secondary">
               <div className="push-left soft-ends soft-right text-left">
-                <h6 className="soft-half-left flush display-inline-block">Change Password</h6>
+                <h6 className="soft-half-left flush display-inline-block">Giving History</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
