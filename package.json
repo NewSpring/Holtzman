@@ -21,7 +21,7 @@
   "dependencies": {
     "data2xml": "^1.2.2",
     "fetch-jsonp": "^1.0.0",
-    "history": "^1.13.1",
+    "history": "^1.17.0",
     "moment": "^2.10.6",
     "pixl-xml": "^1.0.4",
     "react": "^0.14.3",
