@@ -1,6 +1,6 @@
 
 import { api } from "../../../../rock/lib/api"
-import { order as gatewayOrder } from "../nmi"
+import { order as gatewayOrder, schedule as gatewaySchedule } from "../nmi"
 
 const order = (orderData) => {
 
@@ -19,6 +19,20 @@ const order = (orderData) => {
 
 }
 
+const schedule = (scheduleData) => {
+
+  let user = Meteor.user()
+
+  const response = Meteor.wrapAsync(gatewaySchedule)(scheduleData)
+
+  return {
+    url: response["form-url"],
+    transactionId: response["transaction-id"]
+  }
+
+}
+
 Meteor.methods({ "Give.order": order })
+Meteor.methods({ "Give.schedule": schedule })
 
 export default order

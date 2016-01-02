@@ -4,10 +4,6 @@ import { types } from "../../actions/give"
 
 const progress = (state, action) => {
 
-  if (typeof action.forgot != "number") {
-    return state
-  }
-
   return {...state, ...{
     step: action.step
   }}

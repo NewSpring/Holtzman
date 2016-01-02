@@ -28,6 +28,13 @@ const initial = {
     // <accountId>: Number // <accountId>: $ of gift
   },
 
+  // schedule data
+  schedule: {
+    start: null, // Date (YYYYMMDD),
+    payments: null, // future feature for pledges
+    frequency: null // String of value from Rock
+  },
+
   // form data
   data: {
     personal: {
@@ -44,6 +51,7 @@ const initial = {
       zip: null // Number
     },
     payment: {
+      name: null,
       type: "ach", // String ach or cc
       cardNumber: null, // Number
       expiration: null, // String
@@ -107,6 +115,27 @@ export default createReducer(initial, {
   [types.CLEAR_DATA](state, action) {
 
     return initial
+  },
+
+  [types.SAVE_SCHEDULE_DATA](state, action) {
+
+    // @TODO validation on new data
+    return {...state, ...{
+      schedule: {...state.schedule, ...action.schedule}
+    }}
+  },
+
+  [types.REMOVE_SCHEDULE_DATA](state, action) {
+
+    if (!action.field) {
+      return state
+    }
+
+    return {...state, ...{
+      schedule: {...state.schedule, ...{
+        [state.schedule[field]]: initial.schedule[field]
+      }}
+    }}
   },
 
   [types.SET_STATE](state, action) {

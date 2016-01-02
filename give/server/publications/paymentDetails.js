@@ -22,8 +22,10 @@ const paymentDetails = () => {
             FinancialPaymentDetail/CreditCardTypeValue,
             FinancialPaymentDetail/CurrencyTypeValue
           &$select=
+            Id,
             Name,
             ModifiedDateTime,
+            TransactionCode,
             FinancialPaymentDetail/AccountNumberMasked,
             FinancialPaymentDetail/CurrencyTypeValue/Value,
             FinancialPaymentDetail/CurrencyTypeValue/Description,

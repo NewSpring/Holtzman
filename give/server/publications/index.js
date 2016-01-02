@@ -5,14 +5,18 @@ import scheduledTransactions from "./scheduled-transactions"
 import paymentDetails from "./paymentDetails"
 
 // observers
-import { transactions as transactionsObserver } from "../observers"
+import {
+  transactions as transactionsObserver,
+  schedules as scheduledTransactionsObserver
+} from "../observers"
 
 const publications = {
   accounts,
   transactions,
   scheduledTransactions,
   paymentDetails,
-  transactionsObserver
+  transactionsObserver,
+  scheduledTransactionsObserver
 }
 
 const publish = () => {

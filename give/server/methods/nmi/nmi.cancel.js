@@ -2,24 +2,17 @@
 import { Builder } from "xml2js"
 import { parseXML } from "../../../../core/lib/util"
 
-const step2 = (purchaseData, callback) => {
+const cancelTransaction = (transactionId, callback) => {
 
-  const sale = {
-    "sale": {...{
+  const cancelTransactionObj = {
+    "delete-subscription": {
       "api-key": Meteor.settings.nmi,
-      "redirect-url": "http://localhost:3000/give",
-      "order-description": "Online gift from Apollos",
-      "order-id": `apollos_${Date.now()}_${Math.ceil(Math.random() * 100000)}` || purchaseData.orderId,
-    }, ...purchaseData}
+      "subscription-id": transactionId
+    }
   }
 
-  if (!purchaseData["customer-vault-id"] && !purchaseData["customer-id"]) {
-    sale.sale["add-customer"] = ""
-  }
-
-  console.log(sale)
   const builder = new Builder()
-  const xml = builder.buildObject(sale)
+  const xml = builder.buildObject(cancelTransactionObj)
 
   return fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",
@@ -54,4 +47,4 @@ const step2 = (purchaseData, callback) => {
 
 }
 
-export default step2
+export default cancelTransaction

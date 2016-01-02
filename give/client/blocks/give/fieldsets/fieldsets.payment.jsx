@@ -141,7 +141,7 @@ export default class Payment extends Component {
           <div className="grid__item one-half">
             <Forms.Input
               id="ccv"
-              name="cvv"
+              name="billing-cvv"
               label="CCV"
               errorText="Please enter a valid ccv number"
               defaultValue={payment.ccv}

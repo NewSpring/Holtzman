@@ -90,7 +90,7 @@ export default class Input extends Component {
 
   disabled = () => {
     if (this.props.disabled) {
-      return disabled;
+      return this.props.disabled;
     }
   }
 
@@ -124,7 +124,7 @@ export default class Input extends Component {
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
 
     return (
-      <div className={inputclasses.join(" ")}>
+      <div className={inputclasses.join(" ")} style={this.props.style || {}}>
         {(() => {
           if (!this.props.hideLabel){
             return (

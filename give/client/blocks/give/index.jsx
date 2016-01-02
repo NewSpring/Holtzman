@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 import { VelocityComponent } from "velocity-react"
 import { goBack } from "redux-router"
+import Moment from "moment"
 
 import { Controls, Forms, Icons } from "../../../../core/client/components"
 import { WindowLoading, Spinner } from "../../../../core/client/components/loading"
@@ -27,6 +28,33 @@ export default class Give extends Component {
     state: "default"
   }
 
+  componentWillMount() {
+    const { savedAccount } = this.props.give
+    if (!savedAccount) {
+      return
+    }
+
+    this.props.setProgress(4)
+
+    submitPersonalDetails((err, data) => {
+      if (!err) {
+        this.setState({ postUrl: data.url, transactionId: data.transactionId})
+        fetch(data.url, {
+          method: "POST",
+          body: new FormData(),
+          mode: "no-cors"
+        })
+        .then((response) => {
+          // next()
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+      }
+
+    })
+
+  }
 
   componentWillUnmount(){
     if (this.state != "default") {
@@ -132,8 +160,9 @@ export default class Give extends Component {
     this.props.previous()
   }
 
-  submitPersonalDetails = () => {
-    const { data, transactions, total } = this.props.give
+  submitPersonalDetails = (callback) => {
+    const { data, transactions, total, schedule, savedAccount } = this.props.give
+    let method = "Give.order"
 
     let joinedData = {
       amount: total,
@@ -146,29 +175,71 @@ export default class Give extends Component {
         city: data.billing.city,
         state: data.billing.state,
         postal: data.billing.zip
-      },
-      product: [
+      }
 
-      ]
     }
 
-    for (let transaction in transactions) {
-      joinedData.product.push({
-        "quantity": 1,
-        "product-code": transaction,
-        description: transactions[transaction].label,
-        "total-amount": transactions[transaction].value
-      })
+    if (schedule.frequency) {
+      method = "Give.schedule"
+      joinedData["start-date"] = schedule.start || Moment().add(1, 'days').format("YYYYMMDD")
+      joinedData.plan = {
+        payments: schedule.payments || 0,
+        amount: total
+      }
+      delete joinedData.amount
+      console.log(schedule.frequency, schedule)
+      switch (schedule.frequency) {
+        case "One Time":
+          joinedData.plan["day-of-month"] = schedule.start ? schedule.start : Moment().date()
+          break;
+        case "Weekly":
+          joinedData.plan["day-frequency"] = 7
+          break;
+        case "Bi-Weekly":
+          joinedData.plan["day-frequency"] = 14
+          break;
+        // case "Twice a Month":
+        //   joinedData.plan["month-frequency"] =
+        //   break;
+        case "Monthly":
+          joinedData.plan["month-frequency"] = 1
+          joinedData.plan["day-of-month"] = schedule.start ? schedule.start : Moment().date()
+          break;
+      }
+
+      for (let transaction in transactions) {
+        joinedData["merchant-defined-field-1"] = transaction
+        break
+      }
+
+    } else {
+
+      joinedData.product = []
+
+      for (let transaction in transactions) {
+        joinedData.product.push({
+          "quantity": 1,
+          "product-code": transaction,
+          description: transactions[transaction].label,
+          "total-amount": transactions[transaction].value
+        })
+      }
+    }
+
+    if (savedAccount) {
+      joinedData["customer-vault-id"] = savedAccount
     }
 
 
-    Meteor.call("Give.order", joinedData, (err, data) => {
+    callback || (callback = (err, data) => {
       if (!err) {
         this.setState({ postUrl: data.url, transactionId: data.transactionId})
       }
 
-      console.log(err, data)
     })
+
+
+    Meteor.call(method, joinedData, callback)
 
   }
 
@@ -176,8 +247,8 @@ export default class Give extends Component {
 
     const { postUrl } = this.state
     const form = ReactDOM.findDOMNode(this.refs["form"])
+    console.log(form)
 
-    // const next = this.props.next
     fetch(postUrl, {
       method: "POST",
       body: new FormData(form),
@@ -220,7 +291,13 @@ export default class Give extends Component {
     let segments = this.state.postUrl.split("/")
     const token = segments.pop()
     this.setState({state: "loading"})
-    Meteor.call("Give.charge", token, (err, response) => {
+    let method = "Give.charge"
+
+    if (this.props.give.schedule.frequency) {
+      method = "Give.schedule.charge"
+    }
+
+    Meteor.call(method, token, this.props.give.data.payment.name, (err, response) => {
       console.log(err, response)
       if (err) {
         this.setState({state: "error", err: err})
@@ -237,7 +314,8 @@ export default class Give extends Component {
       errors,
       step,
       transactions,
-      total
+      total,
+      savedAccount
     } = this.props.give
 
     const {
@@ -332,6 +410,7 @@ export default class Give extends Component {
 
         <Step
           data={data}
+          savedAccount={savedAccount}
           transactions={transactions}
           save={save}
           errors={errors}

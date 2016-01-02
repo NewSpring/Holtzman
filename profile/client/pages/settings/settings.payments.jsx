@@ -39,6 +39,15 @@ export default class GiveNow extends Component {
     }
   }
 
+  remove = (e) => {
+    e.preventDefault()
+
+    const { id } = e.target
+
+    Meteor.call("PaymentAccounts.remove", id, (err, response) => {
+      console.log(err, response)
+    })
+  }
 
   render () {
 
@@ -58,7 +67,15 @@ export default class GiveNow extends Component {
                 <div key={key} className="soft-ends text-left hard-sides outlined--light outlined--bottom constrain-mobile">
                   <h6 className="soft-half-bottom flush-bottom">{account.Name}</h6>
 
-                  <h5 className="hard one-whole">{account.FinancialPaymentDetail.AccountNumberMasked} <span className="float-right soft-half-right"><AccountType width="30px" height="20px" type={account.FinancialPaymentDetail.CreditCardTypeValue.Value}/></span></h5>
+                  <h5 className="hard one-whole flush-bottom">
+                    {account.FinancialPaymentDetail.AccountNumberMasked}
+                    <span className="float-right ">
+                      <AccountType width="30px" height="20px" type={account.FinancialPaymentDetail.CreditCardTypeValue.Value}/>
+                      <button className="soft-left icon-close text-alert" id={account.Id} onClick={this.remove}></button>
+                    </span>
+
+                  </h5>
+
 
                 </div>
               )

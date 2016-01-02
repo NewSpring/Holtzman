@@ -3,11 +3,19 @@ import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 
 import { OnBoard } from "../../../../core/client/blocks"
-import { modal, onBoard as onBoardActions, nav as navActions } from "../../../../core/client/actions"
+
+import {
+  modal,
+  onBoard as onBoardActions,
+  nav as navActions
+} from "../../../../core/client/actions"
+
 
 import Give from "../give"
 import { AccountType } from "../../components"
 import { PaymentDetails } from "../../../lib/collections"
+
+import { give as giveActions } from "../../actions"
 
 /*
 
@@ -26,9 +34,9 @@ export default class GiveNow extends Component {
     let paymentDetails
 
     Meteor.subscribe("paymentDetails")
-
+    let details = PaymentDetails.find().fetch()
     return {
-      paymentDetails: PaymentDetails.findOne(),
+      paymentDetails: details[0],
       authorized: Meteor.user()
     }
   }
@@ -61,6 +69,12 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(navActions.setLevel("MODAL"))
 
+    console.log(this.data.paymentDetails, giveActions)
+    if (this.data.paymentDetails) {
+      this.props.dispatch(giveActions.setAccount(
+        this.data.paymentDetails.TransactionCode
+      ))
+    }
 
   }
 
@@ -78,7 +92,7 @@ export default class GiveNow extends Component {
     if (this.data.paymentDetails) {
       const details = this.data.paymentDetails
       let { AccountNumberMasked } = details.FinancialPaymentDetail
-      AccountNumberMasked = AccountNumberMasked.replace(/\*/g, "").trim()
+      AccountNumberMasked = AccountNumberMasked.slice(-4).trim()
 
       text += ` using ${AccountNumberMasked}`
 

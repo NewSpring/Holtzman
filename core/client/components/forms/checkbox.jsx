@@ -84,6 +84,7 @@ class Checkbox extends React.Component {
           disabled={this.disabled()}
           defaultChecked={this.props.defaultValue ? "checked": ""}
           onClick={this.props.clicked}
+          style={{width: 0}}
         />
 
         {(() => {
@@ -98,11 +99,11 @@ class Checkbox extends React.Component {
           }
         })()}
 
-        <h7 className="soft-left">
+        <h6 className="soft-double-left flush-bottom text-left float-left" style={{marginTop:"2px"}}>
           <small>
             {this.props.children}
           </small>
-        </h7>
+        </h6>
 
         {this.renderHelpText()}
       </div>

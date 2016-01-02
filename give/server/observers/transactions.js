@@ -1,11 +1,11 @@
 
 import { api } from "../../../rock/lib/api"
-import { Transactions } from "../../lib/collections"
+import { TransactionReciepts } from "../../lib/collections/collections.transactions"
 
 const transactions = () => {
   if (api._ && api._.baseURL) {
-    console.log(api._)
-    Transactions.find().observe({
+
+    TransactionReciepts.find().observe({
       added: function(Transaction) {
 
         /*
@@ -14,7 +14,8 @@ const transactions = () => {
           2. Create FinancialPaymentDetail
           3. Create Transaction
           4. Create TransactionDetails
-          5. Create location for person
+          5a. Create FinancialPersonSavedAccounts
+          5b. Create location for person?
           6. Remove record
 
         */
@@ -25,7 +26,7 @@ const transactions = () => {
         delete Transaction.TransactionDetails
         delete Transaction._id
 
-        let { Person, Location } = meta
+        let { Person, Location, FinancialPersonSavedAccounts } = meta
 
         let { PrimaryAliasId, PersonId } = {...Person}
         delete Person.PersonId
@@ -79,9 +80,25 @@ const transactions = () => {
           let TransactionDetailId = api.post.sync(`FinancialTransactionDetails`, TransactionDetail)
         }
 
+
+        if (FinancialPersonSavedAccounts) {
+          // Create FinancialPersonSavedAccounts
+          FinancialPersonSavedAccounts = {...FinancialPersonSavedAccounts, ...{
+            Guid: api.makeGUID(),
+            PersonAliasId: PrimaryAliasId,
+            FinancialPaymentDetailId,
+            CreatedByPersonAliasId: PrimaryAliasId,
+            ModifiedByPersonAliasId: PrimaryAliasId,
+          }}
+
+          let FinancialPersonSavedAccountsId = api.post.sync(`FinancialPersonSavedAccounts`, FinancialPersonSavedAccounts)
+          console.log(FinancialPersonSavedAccountsId)
+        }
+
+
         if (TransactionId && !TransactionId.statusText ) {
           // remove record
-          Transactions.remove(_id)
+          TransactionReciepts.remove(_id)
         }
 
       }

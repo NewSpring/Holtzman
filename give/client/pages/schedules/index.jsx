@@ -11,9 +11,10 @@ import { Authorized } from "../../../../core/client/blocks"
 import { nav as navActions } from "../../../../core/client/actions"
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
 
-import { ScheduledTransactions } from "../../../lib/collections"
+import { ScheduledTransactions, Accounts as Acc } from "../../../lib/collections"
+import { AddSchedule } from "../../blocks"
 
-// import Details from "./history.Details"
+import Details from "./schedule.Details"
 
 @connect()
 @ReactMixin.decorate(ReactMeteorData)
@@ -77,14 +78,29 @@ export default class Template extends Component {
 }
 
   getMeteorData() {
-    Meteor.subscribe("scheduledTransactions")
+    let subscription = Meteor.subscribe("scheduledTransactions")
     const schedules = ScheduledTransactions.find({}, {
       limit: this.state.page * this.state.pageSize,
       sort: { CreatedDateTime: -1 }
     }).fetch();
 
+    let accounts
+
+    if (Meteor.isClient) {
+      Meteor.subscribe("accounts")
+      accounts = Acc.find().fetch()
+    }
+
+    if (Meteor.isServer) {
+      accounts = api.get.sync(endpoints.accounts)
+    }
+
+    let ready = subscription.ready()
+
     return {
-      schedules
+      schedules,
+      accounts,
+      ready
     };
 
   }
@@ -124,8 +140,9 @@ export default class Template extends Component {
     return (
 
       <Split nav={true} >
-        <Right background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg"
- mobile={false}>
+        <Right
+          background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"
+          mobile={false}>
         </Right>
 
         <Left scroll={true} ref="container">
@@ -136,11 +153,22 @@ export default class Template extends Component {
           </div>
 
 
-          <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top" ref="history">
-            {() => {
-              const { schedules } = this.data
+          <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top">
 
-              if (!schedules || !schedules.length) {
+
+              <div className="outlined--light outlined--bottom soft-ends soft-double-bottom">
+                <AddSchedule accounts={this.data.accounts}/>
+              </div>
+
+          </div>
+
+
+          <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top" ref="history">
+            <h4 className="soft-double-top text-center">My Active Gifts</h4>
+            {() => {
+              const { schedules, ready } = this.data
+
+              if (!schedules.length && !ready) {
                 // loading
                 return (
                   <div className="text-center soft">
@@ -149,10 +177,21 @@ export default class Template extends Component {
                 )
               }
 
+              if (!schedules.length && ready) {
+                return (
+                  <div className="text-center soft">
+                    <p><em>You don't have any active recurring gifts</em></p>
+                  </div>
+                )
+
+              }
+
+
+
               return (
                 <div>
                   {this.data.schedules.map((schedule, i) => {
-                    console.log(schedule)
+
                     if (!schedule.ScheduledTransactionDetails[0].Account) {
                       return null
                     }
@@ -161,11 +200,11 @@ export default class Template extends Component {
 
 
                         <h3 className="text-dark-tertiary" style={{lineHeight: "1.75"}}>
-                          <span className="text-dark-secondary">{this.capitalizeFirstLetter(schedule.TransactionFrequencyValue.Description.toLowerCase())}</span>, I give <span className="text-dark-secondary">{this.monentize(schedule.ScheduledTransactionDetails[0].Amount)}</span> to <span className="text-primary">{schedule.ScheduledTransactionDetails[0].Account.PublicName}</span>. This began on <span className="text-dark-secondary">{this.formatDate(schedule.StartDate)}</span> using my <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.CreditCardTypeValue.Description.toLowerCase()}</span> ending in <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.AccountNumberMasked.replace(/\*/g, "")}</span>
+                          <span className="text-dark-secondary">{this.capitalizeFirstLetter(schedule.TransactionFrequencyValue.Description.toLowerCase())}</span>, I give <span className="text-dark-secondary">{this.monentize(schedule.ScheduledTransactionDetails[0].Amount)}</span> to <span className="text-primary">{schedule.ScheduledTransactionDetails[0].Account.PublicName}</span>. This began on <span className="text-dark-secondary">{this.formatDate(schedule.StartDate)}</span> using my <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.CreditCardTypeValue.Description.toLowerCase()}</span> ending in <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.AccountNumberMasked.slice(-4)}</span>
                         </h3>
 
-                        <Link to={`/give/schedules/${schedule.Id}`} className="btn--thin btn--dark-tertiary btn--small">
-                          Edit Recurring Gift
+                        <Link to={`/give/recurring/${schedule.Id}`} className="btn">
+                          View Details
                         </Link>
 
                       </div>
@@ -188,15 +227,15 @@ export default class Template extends Component {
 
 const Routes = [
   {
-    path: "schedules",
+    path: "recurring",
     component: Authorized,
     indexRoute: { component: Template },
-    // childRoutes: [
-    //   {
-    //     path: ":id",
-    //     component: Details
-    //   }
-    // ]
+    childRoutes: [
+      {
+        path: ":id",
+        component: Details
+      }
+    ]
   }
 ]
 

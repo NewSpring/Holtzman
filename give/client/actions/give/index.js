@@ -18,6 +18,9 @@ const types = {
   REMOVE_DATA: "GIVE.REMOVE_DATA",
   CLEAR_DATA: "GIVE.CLEAR_DATA",
 
+  SAVE_SCHEDULE_DATA: "GIVE.SAVE_SCHEDULE_DATA",
+  REMOVE_SCHEDULE_DATA: "GIVE.REMOVE_SCHEDULE_DATA",
+
   SET_STATE: "GIVE.SET_STATE",
   SET_ERROR: "GIVE.SET_ERROR",
 
@@ -30,7 +33,7 @@ const types = {
 export default {
   types,
 
-  setProgess: (step) => ({ type: types.SET_PROGRESS, step }),
+  setProgress: (step) => ({ type: types.SET_PROGRESS, step }),
   next: () => ({ type: types.STEP_PROGRESS, increment: 1 }),
   previous: () => ({ type: types.STEP_PROGRESS, increment: -1 }),
 
@@ -44,6 +47,9 @@ export default {
   save: (data) => ({ type: types.SAVE_DATA, data }),
   clear: (level, field) => ({ type: types.REMOVE_DATA, level, field }),
   clearData: () => ({ type: types.CLEAR_DATA }),
+
+  saveSchedule: (schedule) => ({ type: types.SAVE_SCHEDULE_DATA, schedule }),
+  clearSchedule: (field) => ({ type: types.REMOVE_SCHEDULE_DATA, field }),
 
   setState: (state) => ({ type: types.SET_STATE, state }),
   submit: () => ({ type: types.SET_STATE, state: "submit" }),

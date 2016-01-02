@@ -43,7 +43,8 @@ const scheduledTransactions = () => {
             ScheduledTransactionDetails,
             TransactionFrequencyValue,
             FinancialPaymentDetail,
-            FinancialPaymentDetail/CreditCardTypeValue
+            FinancialPaymentDetail/CreditCardTypeValue,
+            FinancialPaymentDetail/CurrencyTypeValue
           &$select=
             Id,
             CardReminderDate,
@@ -56,7 +57,16 @@ const scheduledTransactions = () => {
             TransactionFrequencyValue/Description,
             FinancialPaymentDetail/CreditCardTypeValue/Value,
             FinancialPaymentDetail/CreditCardTypeValue/Description,
-            FinancialPaymentDetail/AccountNumberMasked
+            FinancialPaymentDetail/AccountNumberMasked,
+            TransactionCode,
+            GatewayScheduleId,
+            NumberOfPayments,
+            FinancialPaymentDetail/CurrencyTypeValueId,
+            FinancialPaymentDetail/Id,
+            ScheduledTransactionDetails/Summary,
+            ScheduledTransactionDetails/AccountId,
+            ScheduledTransactionDetails/ScheduledTransactionId,
+            ScheduledTransactionDetails/Summary
       `)
 
 

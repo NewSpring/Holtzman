@@ -1,6 +1,7 @@
 import { Component, PropTypes} from "react"
 import { AccountType } from "../../../components"
 
+import { Forms } from "../../../../../core/client/components"
 
 export default class Confirm extends Component {
 
@@ -10,6 +11,11 @@ export default class Confirm extends Component {
     errors: PropTypes.object.isRequired,
     clear: PropTypes.func.isRequired,
     next: PropTypes.func.isRequired
+  }
+
+
+  state = {
+    save: false
   }
 
   header = () => {
@@ -69,7 +75,7 @@ export default class Confirm extends Component {
         return null
 
       }
-      
+
       return (
         // replace with SVG
         <AccountType width="30px" height="20px" type={getCardType(masked)}/>
@@ -123,6 +129,23 @@ export default class Confirm extends Component {
     )
   }
 
+  savePayment = () => {
+    this.setState({save: !this.state.save})
+
+    if (this.state.save) {
+      this.props.save({ payment: { name: null }})
+    }
+  }
+
+  saveName = (value) => {
+    if (value.length > 0) {
+      this.props.save({ payment: { name: value }})
+    }
+
+    return (value.length > 0)
+
+  }
+
   render () {
 
     let transactions = []
@@ -160,6 +183,34 @@ export default class Confirm extends Component {
 
             </div>
           </div>
+          {() => {
+            if (!this.props.savedAccount) {
+              return (
+                <Forms.Checkbox
+                  name="savePayment"
+                  defaultValue={false}
+                  clicked={this.savePayment}
+                >
+                  Save this payment for future gifts
+                </Forms.Checkbox>
+              )
+            }
+          }()}
+
+
+          {() => {
+            if (this.state.save) {
+              return (
+                <Forms.Input
+                  name="accountName"
+                  label="Saved Account Name"
+                  errorText="Please enter a name for the account"
+                  validation={this.saveName}
+                  ref="accountName"
+                />
+              )
+            }
+          }()}
 
           <button className="btn one-whole push-top" type="submit">
             {this.buttonText()} {this.icon()}

@@ -1,10 +1,10 @@
 
 import { api } from "../../../../rock/lib/api"
-import { Transactions } from "../../../lib/collections"
+import { TransactionReciepts } from "../../../lib/collections/collections.transactions"
 
 import { charge as gatewayCharge } from "../nmi"
 
-const charge = (token) => {
+const charge = (token, accountName) => {
 
   let response = {}
 
@@ -14,6 +14,8 @@ const charge = (token) => {
     console.log(e, "ERROR IS HERE")
     throw new Meteor.Error(e)
   }
+
+  console.log(response)
 
   let user = Meteor.user()
 
@@ -71,7 +73,7 @@ const charge = (token) => {
     }
 
     let formatedTransaction = {
-      ForeignKey: response["transaction-id"],
+      TransactionCode: response["transaction-id"],
       TransactionTypeValueId: 53,
       FinancialGatewayId: 2,
       Summary: `Reference Number: ${response["transaction-id"]}`,
@@ -95,6 +97,13 @@ const charge = (token) => {
       }
     }
 
+    if (accountName) {
+      formatedTransaction.meta.FinancialPersonSavedAccounts = {
+        Name: accountName,
+        TransactionCode: response["customer-vault-id"]
+      }
+    }
+
     if (response.billing["cc-number"]) {
       formatedTransaction.FinancialPaymentDetail = CC
     } else {
@@ -113,7 +122,7 @@ const charge = (token) => {
     }
 
 
-    Transactions.insert(formatedTransaction, (err, id) => {
+    TransactionReciepts.insert(formatedTransaction, (err, id) => {
 
     })
   }
