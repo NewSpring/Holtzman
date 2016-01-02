@@ -69,7 +69,6 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(navActions.setLevel("MODAL"))
 
-    console.log(this.data.paymentDetails, giveActions)
     if (this.data.paymentDetails) {
       this.props.dispatch(giveActions.setAccount(
         this.data.paymentDetails.TransactionCode

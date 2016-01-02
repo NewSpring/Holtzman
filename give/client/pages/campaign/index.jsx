@@ -29,8 +29,6 @@ export default class Template extends Component {
     const Name = decodeURI(this.props.params.name);
     const account = Acc.findOne({ Name });
 
-    console.log(account)
-
     return {
       account
     };

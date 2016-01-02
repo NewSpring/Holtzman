@@ -328,7 +328,7 @@ Meteor.methods({
     })
 
 
-
+    console.log(success)
     return success
 
   }

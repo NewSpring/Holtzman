@@ -32,22 +32,18 @@ const signup = (store, next, action) => {
       dispatch(onBoard.fail())
     }
 
-    const loggedIn = (err, account) => {
-      if (err.error === 403) {
-        // we need to do something if they are already in mongo?
-      }
-      dispatch(onBoard.success())
-      dispatch(onBoard.authorize(true))
-    }
-
     auth.signup(data, (err, success) => {
 
-      if (err) { failure(err) }
-
+      if (err) { failure(err); return  }
       Meteor.loginWithPassword(data.email, data.password, (err, id) => {
+        const loggedIn = (err, account) => {
 
-        if (err) { failure(err) }
+          dispatch(onBoard.success())
+          dispatch(onBoard.authorize(true))
+        }
+
         loggedIn()
+
         action.state = "default"
         return next(action)
       })

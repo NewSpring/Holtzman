@@ -35,7 +35,6 @@ export default class Details extends Component {
     Meteor.subscribe("scheduledTransactions")
     const { id } = this.props.params
     const schedule = ScheduledTransactions.findOne({Id: Number(id)});
-    console.log(schedule)
     return {
       schedule
     };
@@ -46,7 +45,7 @@ export default class Details extends Component {
     e.preventDefault()
 
     const { Id, GatewayScheduleId } = this.data.schedule
-    console.log(Id, GatewayScheduleId)
+
     this.setState({isActive: false})
     Meteor.call("Give.schedule.cancel", {Id, GatewayScheduleId }, (err, response) => {
 

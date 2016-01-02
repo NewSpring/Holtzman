@@ -226,16 +226,11 @@ export default class Template extends Component {
 
 
 const Routes = [
+  { path: "recurring", component: Template },
   {
-    path: "recurring",
+    path: "recurring/:id",
     component: Authorized,
-    indexRoute: { component: Template },
-    childRoutes: [
-      {
-        path: ":id",
-        component: Details
-      }
-    ]
+    indexRoute: { component: Details }
   }
 ]
 

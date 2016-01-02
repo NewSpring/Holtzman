@@ -12,6 +12,7 @@ const initial = {
     classes: [], // classes to be added to modal
     theme: false, // string of classes to overwrite theme
     styles: {}, // styles to be set on modal component
+    keepNav: false
   }
 }
 

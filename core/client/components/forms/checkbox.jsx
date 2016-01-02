@@ -99,7 +99,7 @@ class Checkbox extends React.Component {
           }
         })()}
 
-        <h6 className="soft-double-left flush-bottom text-left float-left" style={{marginTop:"2px"}}>
+        <h6 className="soft-double-left flush-bottom text-left float-left locked-top">
           <small>
             {this.props.children}
           </small>

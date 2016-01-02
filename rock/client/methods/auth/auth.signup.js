@@ -1,6 +1,6 @@
 
-const signup = (email, password, callback) => {
-  Meteor.call("Rock.auth.signup", email, password, callback)
+const signup = (data, callback) => {
+  Meteor.call("Rock.auth.signup", data, callback)
 }
 
 export default signup

@@ -126,7 +126,6 @@ export default class Details extends Component {
                           {detail.AccountNumberMasked.slice(-4)}
 
                           {() => {
-                            console.log(detail)
                             if (detail.CreditCardTypeValue && detail.CreditCardTypeValue.Value) {
                               return (
                                 <AccountType width="30px" height="20px" type={detail.CreditCardTypeValue.Value}/>

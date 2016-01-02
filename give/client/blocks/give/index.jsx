@@ -187,7 +187,7 @@ export default class Give extends Component {
         amount: total
       }
       delete joinedData.amount
-      console.log(schedule.frequency, schedule)
+
       switch (schedule.frequency) {
         case "One Time":
           joinedData.plan["day-of-month"] = schedule.start ? schedule.start : Moment().date()
@@ -247,7 +247,6 @@ export default class Give extends Component {
 
     const { postUrl } = this.state
     const form = ReactDOM.findDOMNode(this.refs["form"])
-    console.log(form)
 
     fetch(postUrl, {
       method: "POST",
