@@ -4,7 +4,10 @@ import Campaign from "./campaign"
 import History from "./history"
 import Schedules from "./schedules"
 
-Meteor.subscribe("accounts")
+if (Meteor.isClient) {
+  Meteor.subscribe("accounts")
+}
+
 
 const Routes = [].concat(
   Campaign.Routes,

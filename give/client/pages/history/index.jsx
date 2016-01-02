@@ -37,13 +37,19 @@ export default class Template extends Component {
   componentDidMount() {
     const container = ReactDom.findDOMNode(this.refs["container"])
     container.addEventListener("scroll", this.pageOnScroll);
-    window.addEventListener("scroll", this.pageOnScroll);
+     if (typeof window != "undefined" && window != null) {
+       window.addEventListener("scroll", this.pageOnScroll);
+     }
+
   }
 
   componentWillUnmount() {
     const container = ReactDom.findDOMNode(this.refs["container"])
     container.removeEventListener("scroll", this.pageOnScroll);
-    window.removeEventListener("scroll", this.pageOnScroll);
+
+    if (typeof window != "undefined" && window != null) {
+      window.removeEventListener("scroll", this.pageOnScroll);
+    }
   }
 
   pageOnScroll = (e) => {

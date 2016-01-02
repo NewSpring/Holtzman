@@ -5,6 +5,8 @@ import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 import Moment from "moment"
 
+import { api, endpoints } from "../../../../rock/lib/api"
+
 // loading state
 import { Spinner } from "../../../../core/client/components/loading"
 import { Authorized } from "../../../../core/client/blocks"
@@ -38,13 +40,17 @@ export default class Template extends Component {
   componentDidMount() {
     const container = ReactDom.findDOMNode(this.refs["container"])
     container.addEventListener("scroll", this.pageOnScroll);
-    window.addEventListener("scroll", this.pageOnScroll);
+    if (typeof window != "undefined" && window != null) {
+      window.addEventListener("scroll", this.pageOnScroll);
+    }
   }
 
   componentWillUnmount() {
     const container = ReactDom.findDOMNode(this.refs["container"])
     container.removeEventListener("scroll", this.pageOnScroll);
-    window.removeEventListener("scroll", this.pageOnScroll);
+    if (typeof window != "undefined" && window != null) {
+      window.addEventListener("scroll", this.pageOnScroll);
+    }
   }
 
   pageOnScroll = (e) => {
