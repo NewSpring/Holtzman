@@ -1,6 +1,6 @@
 {
   "name": "apollos",
-  "version": "0.1.9-0",
+  "version": "0.2.0",
   "description": "A reactive framework for incredible applications",
   "main": "index.js",
   "scripts": {
