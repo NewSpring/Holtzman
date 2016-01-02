@@ -6,7 +6,7 @@ import { onBoard as onBoardActions } from "../../actions"
 
 import Loading from "./on-board.Loading"
 import SignIn from "./on-board.Signin"
-import SignOut from "./on-board.SignOut"
+import SignOut from "./on-board.Signout"
 import ForgotPassword from "./on-board.ForgotPassword"
 
 
