@@ -54,7 +54,7 @@ export default class Item extends Component {
 
     return (
       <div className="one-half grid__item push-bottom" key={i}>
-        <Link to={section.path || section.external} className="plain" onClick={this.expandOrGo}>
+        <Link to={section.path || section.offsite} className="plain" onClick={this.expandOrGo}>
           <div
             id={section._id}
             className="overlay--gradient background--fill background--dark-tertiary rounded ratio--square floating--bottom floating--left"
