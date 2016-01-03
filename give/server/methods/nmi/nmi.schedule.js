@@ -20,7 +20,6 @@ const schedule = (purchaseData, callback) => {
   // }
 
 
-  console.log(subscription)
   const builder = new Builder()
   const xml = builder.buildObject(subscription)
 

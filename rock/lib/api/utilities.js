@@ -27,6 +27,7 @@ api.registerEndpoint = (obj) => {
 api.call = function(method, endpoint, data, callback) {
 
   function checkStatus(response) {
+
     if (response.status >= 200 && response.status < 300) {
       return response
     } else {
@@ -63,11 +64,9 @@ api.call = function(method, endpoint, data, callback) {
   };
 
   endpoint = this._.baseURL + "api/" + endpoint;
-
   return fetch(endpoint, options)
     .then(checkStatus)
     .then((response) => {
-
       if (response.status === 204) {
         return true
       }

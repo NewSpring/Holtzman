@@ -55,8 +55,13 @@ const ScheduledTransactions = () => {
         FinancialPaymentDetail = {...FinancialPaymentDetail, ...{
           Guid: api.makeGUID()
         }}
-
+        console.log(FinancialPaymentDetail, api._)
         const FinancialPaymentDetailId = api.post.sync(`FinancialPaymentDetails`, FinancialPaymentDetail)
+        console.log(FinancialPaymentDetailId)
+
+        if (FinancialPaymentDetailId.status) {
+          return
+        }
 
         // Create ScheduledTransaction
         ScheduledTransaction = {...ScheduledTransaction, ...{
@@ -67,8 +72,12 @@ const ScheduledTransactions = () => {
           FinancialPaymentDetailId: FinancialPaymentDetailId
         }}
 
+        console.log(ScheduledTransaction)
         const ScheduledTransactionId = api.post.sync(`FinancialScheduledTransactions`, ScheduledTransaction)
-
+        console.log("ScheduledTransactionId", ScheduledTransactionId)
+        if (ScheduledTransactionId.status) {
+          return
+        }
         // Create ScheduledTransactionDetails
         for (let ScheduledTransactionDetail of ScheduledTransactionDetails) {
           ScheduledTransactionDetail = {...ScheduledTransactionDetail, ...{
@@ -81,6 +90,7 @@ const ScheduledTransactions = () => {
           }}
 
           let ScheduledTransactionDetailId = api.post.sync(`FinancialScheduledTransactionDetails`, ScheduledTransactionDetail)
+          console.log("ScheduledTransactionDetailId", ScheduledTransactionDetailId)
         }
 
 

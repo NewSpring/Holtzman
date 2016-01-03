@@ -18,7 +18,6 @@ const step2 = (purchaseData, callback) => {
     sale.sale["add-customer"] = ""
   }
 
-  console.log(sale)
   const builder = new Builder()
   const xml = builder.buildObject(sale)
 

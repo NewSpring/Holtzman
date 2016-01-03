@@ -50,8 +50,12 @@ const transactions = () => {
           Guid: api.makeGUID()
         }}
 
+        console.log(FinancialPaymentDetail)
         const FinancialPaymentDetailId = api.post.sync(`FinancialPaymentDetails`, FinancialPaymentDetail)
-
+        console.log("FinancialPaymentDetailId", FinancialPaymentDetailId)
+        if (FinancialPaymentDetailId.status) {
+          return
+        }
         // Create Transaction
         Transaction = {...Transaction, ...{
           Guid: api.makeGUID(),
@@ -64,7 +68,10 @@ const transactions = () => {
         }}
 
         const TransactionId = api.post.sync(`FinancialTransactions`, Transaction)
-
+        console.log("TransactionId", TransactionId)
+        if (TransactionId.status) {
+          return
+        }
 
         // Create TransactionDetails
         for (let TransactionDetail of TransactionDetails) {
