@@ -120,6 +120,7 @@ export default class CartContainer extends Component {
           <Forms.Input
             id={primaryAccount.Id || -1}
             name={primaryAccount.Name || "primary-account"}
+            type="tel"
             hideLabel={true}
             ref="primary-account"
             classes={["soft-bottom", "input--active", "display-inline-block"]}

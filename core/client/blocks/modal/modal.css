@@ -14,4 +14,9 @@
   :local(.side-panel) {
     width: 100%;
   }
+
+  :local(.interior) {
+    padding-bottom: 120px;
+  }
+
 }

@@ -1,6 +1,5 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
-import { goBack } from "redux-router"
 
 import { onBoard as onBoardActions } from "../../actions"
 
@@ -31,7 +30,7 @@ class OnBoard extends Component {
 
   goBack = (e) => {
     e.preventDefault();
-    goBack()
+    window.history.back()
   }
 
   goSignIn = (e) => {

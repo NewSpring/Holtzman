@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react"
 import ReactDom from "react-dom"
 import { connect } from "react-redux"
-import { goBack } from "redux-router"
+// import { goBack } from "redux-router"
 
 import { onBoard as onBoardActions } from "../../actions"
 
@@ -221,7 +221,7 @@ class SignIn extends React.Component {
 
 
         <div>
-          <a href="#" tabIndex={-1} onClick={goBack} className="btn--small btn--dark-tertiary display-inline-block">
+          <a href="#" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">
             Back
           </a>
 

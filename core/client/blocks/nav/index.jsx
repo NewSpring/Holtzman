@@ -5,17 +5,12 @@ import {NavActions} from "../../actions/nav"
 import NavLayout from "./nav.layout"
 
 // We only care about the navigation state
-function mapStateToProps(state) {
-  return {
-    state: state.nav,
-    router: state.router
-  }
-}
-
-// https://github.com/rackt/react-redux/blob/v4.0.0/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux
-@connect(mapStateToProps, null, null, {
-  pure: false
+const map = (state) => ({
+  state: state.nav,
+  // router: state.routing
 })
+
+@connect(map)
 export default class NavContainer extends Component {
 
   handleAction = (action) => {
@@ -27,6 +22,8 @@ export default class NavContainer extends Component {
     if (!state.visible) {
       return null
     }
+
+    // console.log(this.props.router)
 
     return (
       <NavLayout

@@ -2,6 +2,8 @@ import { Component, PropTypes } from "react"
 import ReactDom from "react-dom"
 import { Link, IndexLink } from "react-router"
 
+import Styles from "./nav.css"
+
 export default class NavLink extends Component {
 
   static propTypes = {
@@ -22,6 +24,7 @@ export default class NavLink extends Component {
   }
 
   handleAction = (e) => {
+
     const { navItem } = this.props
 
     if (navItem.action && typeof navItem.action === "function") {
@@ -43,9 +46,9 @@ export default class NavLink extends Component {
       Wrapper = class ALink extends Component {
         render() {
           return (
-            <button {...this.props}>
+            <a href="#" {...this.props}>
               {this.props.children}
-            </button>
+            </a>
           )
         }
       }
@@ -61,17 +64,20 @@ export default class NavLink extends Component {
         activeClassName="text-brand"
         style={{minHeight: "40px"}}
       >
-        <div className="floating__item" >
-          <i className={iconClasses}></i>
-          {() => {
-            if (navItem.label) {
-              return (
-                <h7>
-                  <small className="text-center">{navItem.label}</small>
-                </h7>
-              )
-            }
-          }()}
+        <div className={`floating ${Styles["locked"]}`} >
+          <div className="floating__item">
+            <i className={iconClasses}></i>
+            {() => {
+              if (navItem.label) {
+                return (
+                  <h7>
+                    <small className="text-center">{navItem.label}</small>
+                  </h7>
+                )
+              }
+            }()}
+
+          </div>
 
         </div>
       </Wrapper>

@@ -8,12 +8,11 @@ import offset from "../../blocks/nav/nav.offset.css"
 import styles from "./modal.css"
 
 
-function map(state) {
-  return {
-    navigation: state.nav,
-    modal: state.modal
-  }
-}
+const map = (state) => ({
+  navigation: state.nav,
+  modal: state.modal,
+  router: state.routing
+})
 
 @connect(map)
 export default class SideModal extends Component {
@@ -25,6 +24,7 @@ export default class SideModal extends Component {
     let classes = [
       "hard",
       "one-whole",
+      styles["interior"]
     ];
 
     if (props.childClasses) {
@@ -85,6 +85,10 @@ export default class SideModal extends Component {
       // this will need to be expanded...
       this.props.dispatch(navActions.setLevel("TOP"))
     }
+
+    // if (this.props.router.path === nextProps.router.path && nextProps.router.replace) {
+    //   this.props.dispatch(modalActions.hide())
+    // }
   }
 
   componentWillUpdate(nextProps){

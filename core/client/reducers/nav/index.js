@@ -3,13 +3,36 @@
   Navigation store
 
 */
-import { goBack } from "redux-router"
-import { modal as modalActions } from "../../actions/"
+import { pushPath } from "redux-simple-router"
+import { modal as modalActions, nav as navActions } from "../../actions/"
 import { Sections } from "../../blocks"
 
 const back = (props) => {
-  return goBack()
+  // return goBack()
+  // console.log(pushPath("/"))
+  // return pushPath("/")
+  // return {
+  //   type: "@@router/TRANSITION",
+  //   payload: {
+  //     method: "goBack",
+  //     arg: undefined
+  //   }
+  // }
+  window.history.back()
+  return {
+    type: "FALSY",
+    payload: {}
+  }
 }
+
+// const goHome = (props) => {
+//   // return go("/")
+//
+//   const { dispatch } = props
+//   dispatch(modalActions.hide())
+//   // return {}
+//   return pushPath("/")
+// }
 
 const showSections = (props) => {
   return modalActions.render(Sections, { keepNav: true })

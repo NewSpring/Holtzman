@@ -156,7 +156,7 @@ export default class Confirm extends Component {
 
     return (
       <div>
-        <div className="push-double">
+        <div className="push-double@lap-and-up push">
           {this.props.header || this.header()}
         </div>
 

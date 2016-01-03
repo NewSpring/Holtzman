@@ -3,10 +3,10 @@ import { Link } from "react-router"
 import { connect } from "react-redux"
 import ReactDom from "react-dom"
 import {VelocityComponent, VelocityTransitionGroup } from "velocity-react"
+import { pushPath } from 'redux-simple-router'
 
 
 import { modal } from "../../actions"
-
 
 @connect()
 export default class Item extends Component {
@@ -16,7 +16,6 @@ export default class Item extends Component {
   }
 
   expandOrGo = (e) => {
-
     const { id } = e.target
 
     for (let section of this.props.sections) {
@@ -33,7 +32,7 @@ export default class Item extends Component {
 
       }
     }
-
+    // this.props.dispatch(pushPath())
     this.props.dispatch(modal.hide())
 
   }

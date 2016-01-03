@@ -17,23 +17,20 @@
     "url": "https://github.com/NewSpring/newspring-core/issues"
   },
   "homepage": "https://github.com/NewSpring/newspring-core",
-  "devDependencies": {},
+  "devDependencies": {
+    "redux-logger": "^2.3.1"
+  },
   "dependencies": {
     "data2xml": "^1.2.2",
     "fetch-jsonp": "^1.0.0",
-    "history": "^1.17.0",
     "moment": "^2.10.6",
     "pixl-xml": "^1.0.4",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
     "react-router": "^1.0.2",
-    "react-select": "^0.9.1",
     "redux": "^3.0.4",
-    "redux-devtools": "^2.1.5",
-    "redux-localstorage": "^0.4.0",
-    "redux-logger": "^2.3.1",
-    "redux-router": "^1.0.0-beta5",
+    "redux-simple-router": "^1.0.2",
     "redux-thunk": "^1.0.2",
     "velocity-animate": "^1.2.3",
     "velocity-react": "^1.1.1",

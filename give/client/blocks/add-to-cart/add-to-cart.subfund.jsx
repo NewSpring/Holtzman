@@ -143,6 +143,7 @@ export default class SubFund extends Component {
                   id={this.state.id}
                   name={this.state.fund || "secondary-account"}
                   hideLabel={true}
+                  type="tel"
                   ref="secondary-account"
                   classes={["soft-bottom", "input--active", "display-inline-block"]}
                   inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}

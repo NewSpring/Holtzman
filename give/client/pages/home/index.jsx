@@ -16,6 +16,7 @@ import { AddToCart } from "../../blocks"
 @ReactMixin.decorate(ReactMeteorData)
 export default class Home extends Component {
 
+
   getMeteorData() {
     let accounts
     let paymentDetails
@@ -75,7 +76,7 @@ export default class Home extends Component {
                 }
 
                 return (
-                  <div key={i} className="grid__item one-whole one-half@anchored">
+                  <div key={i} className="grid__item one-whole one-half@anchored push-bottom">
                     <Card
                       link={`/give/campaign/${encodeURI(account.Name)}`}
                       image={{

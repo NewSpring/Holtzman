@@ -3,7 +3,6 @@ import ReactDom from "react-dom";
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 import { VelocityComponent } from "velocity-react"
-import { goBack } from "redux-router"
 import Moment from "moment"
 
 import { Controls, Forms, Icons } from "../../../../core/client/components"
@@ -137,7 +136,7 @@ export default class Give extends Component {
 
   goBack = (e) => {
     e.preventDefault();
-    goBack()
+    window.history.back()
   }
 
   next = (e) => {

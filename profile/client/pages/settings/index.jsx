@@ -54,7 +54,7 @@ class Template extends Component {
 
         </Right>
 
-        <Left scroll={true}>
+        <Left scroll={true} classes={["locked-ends locked-sides"]}>
           {this.props.children}
         </Left>
 

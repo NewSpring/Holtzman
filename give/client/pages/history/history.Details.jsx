@@ -151,7 +151,7 @@ export default class Details extends Component {
             </p>
             <h3>Read Some Recent Stories</h3>
             <div className="grid">
-              <div className="grid__item one-whole one-half@anchored">
+              <div className="grid__item one-whole one-half@anchored push-bottom">
                 <Card
                   link="https://newspring.cc/stories/jen-feagles"
                   image={{
@@ -171,7 +171,7 @@ export default class Details extends Component {
 
                 </Card>
               </div>
-              <div className="grid__item one-whole one-half@anchored">
+              <div className="grid__item one-whole one-half@anchored push-bottom">
                 <Card
                   link="https://newspring.cc/stories/brooke-brissey"
                   image={{

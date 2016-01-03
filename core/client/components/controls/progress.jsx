@@ -54,7 +54,7 @@ export default class Progress extends Component {
           })}
 
         </div>
-        <p>
+        <p className="flush-bottom">
           <small className="italic display-inline-block push-half-top">
             Step {this.props.active} of {this.props.steps}
           </small>

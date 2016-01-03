@@ -39,7 +39,7 @@ const onboard = store => next => action => {
           dispatch(onBoard.setAccount(!isAvailable))
         })
       }
-
+      break
     default:
       return next(action)
   }

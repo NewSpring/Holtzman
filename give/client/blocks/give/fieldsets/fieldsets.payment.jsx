@@ -1,7 +1,6 @@
 import { Component, PropTypes } from "react"
 import ReactDom from "react-dom"
 import { connect } from "react-redux"
-import { goBack } from "redux-router"
 
 
 import { Controls, Forms } from "../../../../../core/client/components"
@@ -35,6 +34,7 @@ export default class Payment extends Component {
           id="accountNumber"
           name="billing-account-number"
           label="Account Number"
+          type="tel"
           errorText="Please enter your account number"
           defaultValue={payment.accountNumber}
           validation={this.saveData}
@@ -44,6 +44,7 @@ export default class Payment extends Component {
           id="routingNumber"
           name="billing-routing-number"
           label="Routing Number"
+          type="tel"
           errorText="Please enter your routing number"
           defaultValue={payment.accountNumber}
           validation={this.saveData}
@@ -120,6 +121,7 @@ export default class Payment extends Component {
           name="billing-cc-number"
           id="cardNumber"
           label="Card Number"
+          type="tel"
           errorText="Please enter your card number"
           defaultValue={payment.cardNumber}
           format={Format.creditCard}
@@ -132,6 +134,7 @@ export default class Payment extends Component {
               id="expiration"
               name="billing-cc-exp"
               label="Expiration Number"
+              type="tel"
               errorText="Please enter a valid expiration number"
               defaultValue={payment.expiration}
               validation={this.saveData}
@@ -143,6 +146,7 @@ export default class Payment extends Component {
               id="ccv"
               name="billing-cvv"
               label="CCV"
+              type="number"
               errorText="Please enter a valid ccv number"
               defaultValue={payment.ccv}
               validation={this.saveData}
@@ -168,7 +172,7 @@ export default class Payment extends Component {
     const { payment } = this.props.data
     return (
       <div>
-        <div className="push-double">
+        <div className="push-double@lap-and-up push">
           {this.props.header || this.header()}
         </div>
 
