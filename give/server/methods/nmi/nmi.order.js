@@ -3,11 +3,11 @@ import { Builder } from "xml2js"
 import { parseXML } from "../../../../core/lib/util"
 
 const step2 = (purchaseData, callback) => {
-
+  let url = process.env.ROOT_URL ? `process.env.ROOT_URL/give` : "http://localhost:3000/give"
   const sale = {
     "sale": {...{
       "api-key": Meteor.settings.nmi,
-      "redirect-url": "http://localhost:3000/give",
+      "redirect-url": url,
       "order-description": "Online gift from Apollos",
       "order-id": `apollos_${Date.now()}_${Math.ceil(Math.random() * 100000)}` || purchaseData.orderId,
     }, ...purchaseData}

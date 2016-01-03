@@ -1,4 +1,4 @@
-
+import { Component, PropTypes} from "react"
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
 import { syncReduxAndRouter, routeReducer } from "redux-simple-router"
 import { Provider } from "react-redux"
@@ -38,7 +38,21 @@ const createReduxStore = (initialState, history) => {
 }
 
 
+class Wrapper extends Component {
+  componentWillMount() {
+    this.store = createReduxStore()
+  }
+
+  render () {
+    return (
+      <Provider store={this.store}>{this.props.children}</Provider>
+    )
+  }
+}
+
+
+
 export {
-  Provider as wrapper,
+  Wrapper,
   createReduxStore
 }
