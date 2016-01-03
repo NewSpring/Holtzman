@@ -53,34 +53,34 @@ export default class Template extends Component {
   }
 
   pageOnScroll = (e) => {
-  if (this.state.done) return
+    if (this.state.done) return
 
-  const { scrollHeight, clientHeight, scrollTop, offsetTop } = e.target
+    const { scrollHeight, clientHeight, scrollTop, offsetTop } = e.target
 
-  let percentage;
+    let percentage;
 
-  if (scrollTop && scrollHeight) {
-    percentage = scrollTop / scrollHeight
-  } else if (window.scrollY && document.body.clientHeight) {
-    percentage = window.scrollY, document.body.clientHeight
+    if (scrollTop && scrollHeight) {
+      percentage = scrollTop / scrollHeight
+    } else if (window.scrollY && document.body.clientHeight) {
+      percentage = window.scrollY, document.body.clientHeight
+    }
+
+    if ( percentage > 0.5 && this.state.shouldUpdate) {
+      this.setState({
+        page: this.state.page + 1,
+        shouldUpdate: false
+      });
+
+      // wait a bit to prevent paging multiple times
+      setTimeout(() => {
+        if (this.state.page * this.state.pageSize > this.data.transactions.length) {
+          this.setState({ done: true, shouldUpdate: false });
+        } else {
+          this.setState({ shouldUpdate: true });
+        }
+      }, 1000);
+    }
   }
-
-  if ( percentage > 0.5 && this.state.shouldUpdate) {
-    this.setState({
-      page: this.state.page + 1,
-      shouldUpdate: false
-    });
-
-    // wait a bit to prevent paging multiple times
-    setTimeout(() => {
-      if (this.state.page * this.state.pageSize > this.data.transactions.length) {
-        this.setState({ done: true, shouldUpdate: false });
-      } else {
-        this.setState({ shouldUpdate: true });
-      }
-    }, 1000);
-  }
-}
 
   getMeteorData() {
     Meteor.subscribe("transactions")

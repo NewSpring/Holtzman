@@ -92,16 +92,19 @@ export default class SideModal extends Component {
   }
 
   componentWillUpdate(nextProps){
-    let root = document.documentElement
+    if (typeof document != "undefined" && document != null ) {
+      let root = document.documentElement
 
-    if (!nextProps.modal.visible) {
-      root.className = root.className.split(" ").filter((className) => {
-        return className != "modal--opened"
-      }).join(" ")
+      if (!nextProps.modal.visible) {
+        root.className = root.className.split(" ").filter((className) => {
+          return className != "modal--opened"
+        }).join(" ")
 
-    } else if (!this.props.modal.visible && nextProps.modal.visible) {
-      root.className += "modal--opened"
+      } else if (!this.props.modal.visible && nextProps.modal.visible) {
+        root.className += "modal--opened"
+      }
     }
+
 
   }
 
@@ -120,7 +123,7 @@ export default class SideModal extends Component {
     let exit = "fadeOut"
     let slide = "transition.slideLeftIn"
 
-    // if (typeof window != "undefined" || window != null) {
+    // if (typeof window != "undefined" && window != null) {
     //   const width = window.innerWidth
     //   if (width < 768) {
     //     enter = "transition.slideUpIn"
