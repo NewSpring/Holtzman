@@ -3,7 +3,8 @@ import { Builder } from "xml2js"
 import { parseXML } from "../../../../core/lib/util"
 
 const schedule = (purchaseData, callback) => {
-  let url = process.env.ROOT_URL ? `process.env.ROOT_URL/give` : "http://localhost:3000/give"
+  // let url = process.env.ROOT_URL ? `process.env.ROOT_URL/give` : "http://localhost:3000/give"
+  let url = "https://alpha.newspring.io/give"
 
   const subscription = {
     "add-subscription": {...{
