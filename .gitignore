@@ -32,3 +32,13 @@ node_modules
 .norma
 
 .DS_Store
+dist
+lib
+coverage
+_book
+index.js
+
+core
+give
+profile
+rock
