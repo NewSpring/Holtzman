@@ -1,0 +1,13 @@
+@media screen and (min-width: 768px) {
+  :local(.offset) {
+    margin-left: 80px;
+  }
+
+}
+/*
+@media screen and (max-width: 767px) {
+  :local(.offset) {
+    margin-bottom: 80px;
+  }
+
+}*/

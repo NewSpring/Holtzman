@@ -2,8 +2,4 @@
 **/node_modules/*
 **/server.js
 **/webpack.config*.js
-**/src/core/lib/util/xml.js
-**/core/*
-**/give/*
-**/rock/*
-**/profile/*
+**/core/lib/util/xml.js
