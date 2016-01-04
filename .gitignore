@@ -33,6 +33,5 @@ node_modules
 
 .DS_Store
 dist
-lib
 coverage
 _book
