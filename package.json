@@ -10,19 +10,14 @@
   ],
   "scripts": {
     "clean": "rimraf core give rock profile coverage",
-    "lint": "eslint src test",
-    "fix": "eslint --fix src test",
+    "lint": "eslint .src test",
+    "fix": "eslint --fix .src test",
     "check": "npm run lint && npm run test",
-    "build": "babel src --out-dir ./",
+    "build": "babel .src --out-dir ./",
     "preversion": "npm run clean && npm run check",
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm run clean && npm run docs:publish",
-    "prepublish": "npm run clean && npm run build",
-    "docs:clean": "rimraf _book",
-    "docs:prepare": "gitbook install",
-    "docs:build": "npm run docs:prepare && gitbook build -g newspring/apollos",
-    "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:rackt/redux gh-pages --force"
+    "prepublish": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
