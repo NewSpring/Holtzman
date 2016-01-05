@@ -110,8 +110,18 @@ export default createReducer(initial, {
     } }
   },
 
-  [types.CLEAR_DATA]() {
-    return initial
+  [types.CLEAR_DATA](state) {
+    
+    return {...state, ...{
+      step: initial.step,
+      total: initial.total,
+      transactions: initial.transactions,
+      schedule: initial.schedule,
+      data: initial.data,
+      success: initial.success,
+      state: initial.state,
+      errors: initial.errors
+    } }
   },
 
   [types.SAVE_SCHEDULE_DATA](state, action) {
