@@ -17,7 +17,7 @@
 }
 
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   :local(.nav-bar) {
     position: fixed;
     max-width: 80px;
@@ -30,7 +30,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   :local(.nav-bar) {
     position: fixed;
     max-height: 60px;

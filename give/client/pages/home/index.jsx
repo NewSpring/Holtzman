@@ -9,34 +9,77 @@ import { Split, Left, Right } from "../../../../core/client/layouts/split"
 import { Card } from "../../../../core/client/components"
 import { Spinner } from "../../../../core/client/components/loading"
 
+import { give as giveActions } from "../../actions"
 import { Accounts as Acc } from "../../../lib/collections"
 import { AddToCart } from "../../blocks"
 
-@connect()
-@ReactMixin.decorate(ReactMeteorData)
+const mapArrayToObj = (array) => {
+  let obj = {}
+
+  for (let item of array) {
+    obj[item.Id] = item
+  }
+
+  return obj
+}
+
+const bindAccounts = (props) => {
+  const { dispatch } = props
+
+  let handle = {}
+  Tracker.autorun((computation) => {
+    // return computation for dismount
+    handle = computation
+
+    // subscribe to sections
+    Meteor.subscribe("accounts")
+    let accounts = Acc.find().fetch()
+
+    // persist in the store
+    dispatch(giveActions.setAccounts(mapArrayToObj(accounts)))
+
+  })
+
+  return { handle }
+
+}
+
+const map = (state) => ({ accounts: state.give.accounts })
+
+@connect(map)
 export default class Home extends Component {
 
+  componentWillMount(){
 
-  getMeteorData() {
-    let accounts
-    let paymentDetails
+    // if (Meteor.isServer) {
+    //   let accounts = api.get.sync(endpoints.accounts)
+    //   this.props.dispatch(giveActions.setAccounts(mapArrayToObj(accounts)))
+    // }
 
     if (Meteor.isClient) {
-      Meteor.subscribe("accounts")
-      accounts = Acc.find().fetch()
+      let { handle } = bindAccounts(this.props)
+      this.handle = handle
     }
 
-    if (Meteor.isServer) {
-      accounts = api.get.sync(endpoints.accounts)
+  }
+
+  componentWillUnmount(){
+    if (this.handle) {
+      this.handle.stop()
     }
 
-    return {
-      accounts
-    }
   }
 
 
+
   render () {
+    let accounts = []
+    for (let account in this.props.accounts) {
+      accounts.push(this.props.accounts[account])
+    }
+
+
+
     return (
       <Split nav={true}>
 
@@ -50,7 +93,7 @@ export default class Home extends Component {
             <div className="text-left">
 
               <AddToCart
-                accounts={this.data.accounts}
+                accounts={accounts}
               />
 
             </div>
@@ -62,7 +105,7 @@ export default class Home extends Component {
             <h4 className="push-bottom@lap-and-up">Or, give to one of our campaigns...</h4>
             <div className="grid">
               {() => {
-                if (!this.data.accounts.length) {
+                if (!accounts.length) {
                   return (
                     <div className="one-whole text-center soft-ends">
                       <Spinner styles={{width: "40px", height: "40px"}}/>
@@ -70,7 +113,7 @@ export default class Home extends Component {
                   )
                 }
               }()}
-              {this.data.accounts.map((account, i) => {
+              {accounts.map((account, i) => {
                 if (!account.Url || !account.Description) {
                   return null
                 }

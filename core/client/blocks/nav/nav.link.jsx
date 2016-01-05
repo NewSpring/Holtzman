@@ -13,8 +13,8 @@ export default class NavLink extends Component {
 
   linkClasses(link) {
     let classes = [
-      "floating__item",
       "text-light-primary",
+      "floating__item",
       "soft-sides@handheld",
       "soft-half-ends@lap-and-up",
       "one-whole@lap-and-up",

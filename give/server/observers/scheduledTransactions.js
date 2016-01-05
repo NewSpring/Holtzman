@@ -93,11 +93,22 @@ const ScheduledTransactions = () => {
 
 
         if (FinancialPersonSavedAccounts) {
+          // Create FinancialPaymentDetail
+          SecondFinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
+            Guid: api.makeGUID()
+          } }
+
+          let SecondFinancialPaymentDetailId = api.post.sync(`FinancialPaymentDetails`, SecondFinancialPaymentDetail)
+
+          if (SecondFinancialPaymentDetailId.status) {
+            return
+          }
+
           // Create FinancialPersonSavedAccounts
           FinancialPersonSavedAccounts = { ...FinancialPersonSavedAccounts, ...{
             Guid: api.makeGUID(),
             PersonAliasId: PrimaryAliasId,
-            FinancialPaymentDetailId,
+            FinancialPaymentDetailId: SecondFinancialPaymentDetailId,
             CreatedByPersonAliasId: PrimaryAliasId,
             ModifiedByPersonAliasId: PrimaryAliasId
           } }

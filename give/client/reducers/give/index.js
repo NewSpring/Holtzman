@@ -197,6 +197,13 @@ export default createReducer(initial, {
       success: action.success
     } }
 
+  },
+
+  [types.SET_ACCOUNTS](state, action) {
+
+    return { ...state, ... {
+      accounts: {...state.accounts, ...action.accounts}
+    }}
   }
 
 

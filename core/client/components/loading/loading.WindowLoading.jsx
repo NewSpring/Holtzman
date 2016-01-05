@@ -24,7 +24,7 @@ export default class Loading extends Component {
     if (this.props.classes) {
       classes = [...classes, ...this.props.classes]
     }
-    
+
     return classes.join(" ")
   }
 
