@@ -52,8 +52,11 @@ class OnBoard extends Component {
   }
 
   render () {
+    let { data, errors, account, state, success, forgot, authorized } = this.props.onboard
 
-    const { data, errors, account, state, success, forgot, authorized } = this.props.onboard
+    if (this.props.account != undefined) {
+      account = this.props.account
+    }
 
     if (state === "loading") {
       return (
@@ -88,7 +91,7 @@ class OnBoard extends Component {
     return (
       <SignIn
         save={this.props.save}
-        data={data}
+        data={this.props.data || data}
         errors={errors}
         account={account}
         state={state}

@@ -6,7 +6,9 @@ import { VelocityComponent } from "velocity-react"
 import Moment from "moment"
 
 import { Controls, Forms, Icons } from "../../../../core/client/components"
+import { OnBoard } from "../../../../core/client/blocks"
 import { WindowLoading, Spinner } from "../../../../core/client/components/loading"
+import { modal } from "../../../../core/client/actions"
 
 import { People } from "../../../../rock/lib/collections"
 
@@ -15,10 +17,9 @@ import { Personal, Payment, Billing, Confirm} from "./fieldsets"
 
 
 // We only care about the give state
-const map = (state) => ({ give: state.give })
+const map = (state) => ({ give: state.give, person: state.onBoard.person })
 
-@connect(map, giveActions)
-@ReactMixin.decorate(ReactMeteorData)
+@connect(map)
 export default class Give extends Component {
 
   state = {
@@ -33,7 +34,7 @@ export default class Give extends Component {
       return
     }
 
-    this.props.setProgress(4)
+    this.props.dispatch(giveActions.setProgress(4))
 
     this.submitPersonalDetails((err, data) => {
       if (!err || !data.url) {
@@ -60,7 +61,7 @@ export default class Give extends Component {
 
   componentWillUnmount(){
     if (this.state != "default") {
-      this.props.clearData()
+      this.props.dispatch(giveActions.clearData())
       // if (this.state.transactionId) {
       //   Meteor.call("Give.void", this.state.transactionId, (err, response) => {
       //     console.log(err, reponse)
@@ -69,30 +70,10 @@ export default class Give extends Component {
     }
   }
 
-  setData = false
-
-  getMeteorData(){
-
-    let person = null
-    const user = Meteor.user()
-    if (user) {
-      Meteor.subscribe("people")
-      person = People.findOne()
-    }
-
-    if (person && (this.setData === false)) {
-      this.setData = true
-      this.updateInputs(person)
-    }
-
-    return {
-      person
-    }
-  }
 
   updateInputs = (person) => {
 
-    person || (person = this.data.person)
+    person || (person = this.props.person)
 
     let { Campus, Home } = person
     Campus || (Campus = {})
@@ -146,7 +127,7 @@ export default class Give extends Component {
     e.preventDefault()
 
     let next = () => {
-      this.props.next()
+      this.props.dispatch(giveActions.next())
     }
 
     if (this.props.give.step === 2) {
@@ -167,7 +148,7 @@ export default class Give extends Component {
   back = (e) => {
     e.preventDefault()
 
-    this.props.previous()
+    this.props.dispatch(giveActions.previous())
   }
 
   submitPersonalDetails = (callback) => {
@@ -310,7 +291,7 @@ export default class Give extends Component {
     }
 
     Meteor.call(method, token, this.props.give.data.payment.name, (err, response) => {
-      console.log(err, response)
+
       if (err) {
         this.setState({state: "error", err: err})
         return
@@ -320,6 +301,22 @@ export default class Give extends Component {
     })
   }
 
+  goToOnboard = () => {
+    const { data } = this.props.give
+
+    let props = {
+      account: false,
+      data: {
+        email: data.personal.email,
+        firstName: data.personal.firstName,
+        lastName: data.personal.lastName,
+        terms: true
+      }
+    }
+
+    this.props.dispatch(modal.render(OnBoard, props))
+  }
+
   render () {
     const {
       data,
@@ -327,12 +324,14 @@ export default class Give extends Component {
       step,
       transactions,
       total,
-      savedAccount
+      savedAccount,
+      transactionType
     } = this.props.give
 
-    const {
-      save, clear
-    } = this.props
+
+    let save = (...args) => { this.props.dispatch(giveActions.save(...args)) }
+    let clear = (...args) => { this.props.dispatch(giveActions.clear(...args)) }
+
 
     let Step;
 
@@ -390,7 +389,7 @@ export default class Give extends Component {
     }
 
 
-    if (this.state.state === "success") {
+    if (this.state.state === "success" && transactionType != "guest") {
       return (
         <div className="soft soft-double-ends push-double-top one-whole text-center">
           <div className="push-double-top">
@@ -408,6 +407,30 @@ export default class Give extends Component {
       )
     }
 
+    if (this.state.state === "success" && transactionType === "guest") {
+      return (
+        <div className="soft soft-double-ends push-double-top one-whole text-center">
+          <div className="push-double-top">
+            <Icons.Success/>
+            <h3 className="text-primary push-ends">Success!</h3>
+            <p className="text-left">
+              Thank you for your gift of {this.monentize(total)} to NewSpring Church. We will email a reciept to {data.personal.email}
+            </p>
+            <p className="text-left">
+              If you would like to view your giving history, make it easier to give, and more, create a NewSpring Account!
+
+            </p>
+            <button className="btn one-whole push-bottom" onClick={this.goToOnboard}>Create Account</button>
+            <p className="test-dark-tertiary text-left"><em>
+              If you have any questions please call our Finance Team at 864-965-9000 or email us at <a href="mailto:finance@newspring.cc">finance@newspring.cc</a> and someone will be happy to assist you.
+            </em></p>
+
+          </div>
+        </div>
+      )
+    }
+
+
     return (
 
       <Forms.Form
@@ -424,6 +447,7 @@ export default class Give extends Component {
           data={data}
           savedAccount={savedAccount}
           transactions={transactions}
+          transactionType={transactionType}
           save={save}
           errors={errors}
           clear={clear}

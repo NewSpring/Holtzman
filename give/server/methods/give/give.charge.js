@@ -50,9 +50,7 @@ const charge = (token, accountName) => {
 
   if (response.result === "1") {
 
-    if (!user.services || !user.services.rock) {
-      user = { services: { rock: {} } }
-    }
+    user || (user = { services: { rock: {} } })
 
     let CC = {
       AccountNumberMasked: response.billing["cc-number"],

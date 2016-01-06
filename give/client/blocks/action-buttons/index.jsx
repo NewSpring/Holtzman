@@ -59,6 +59,12 @@ export default class GiveNow extends Component {
   }
 
   click = () => {
+    if (this.props.disabled) {
+      return
+    }
+
+    this.props.dispatch(giveActions.setTransactionType("default"))
+
     if (this.data.authorized) {
       this.props.dispatch(modal.render(Give))
     } else {
@@ -75,6 +81,15 @@ export default class GiveNow extends Component {
       ))
     }
 
+  }
+
+  giveAsGuest = () => {
+    if (this.props.disabled) {
+      return
+    }
+    this.props.dispatch(giveActions.setTransactionType("guest"))
+    this.props.dispatch(modal.render(Give))
+    this.props.dispatch(navActions.setLevel("MODAL"))
   }
 
   register = () => {
@@ -130,9 +145,31 @@ export default class GiveNow extends Component {
   }
 
   secondaryButton = () => {
+
+    let classes = [
+      "btn--thin",
+      "btn--small",
+      "display-inline-block",
+      "push-left@lap-and-up",
+      "push-half-left@handheld"
+    ]
+    let style = {}
+
+    if (this.props.disabled) {
+      classes.push("btn--disabled")
+      // this should be fixed in junction
+      style = {
+        backgroundColor: "transparent !important" // handle hover :(
+      }
+    } else {
+      classes.push("btn--dark-tertiary")
+    }
+
+
+
     if (!this.data.authorized) {
       return (
-        <button className="btn--thin btn--dark-tertiary btn--small display-inline-block push-left@lap-and-up push-half-left@handheld" onClick={this.register}>
+        <button style={style} disabled={this.props.disabled} className={classes.join(" ")} onClick={this.register}>
           Register
         </button>
       )
@@ -154,6 +191,36 @@ export default class GiveNow extends Component {
         </button>
 
         {this.secondaryButton()}
+
+        {() => {
+          let classes = [
+            "outlined--bottom",
+            "outlined--light"
+          ]
+
+          let style = {
+            display: "inline"
+          }
+
+          if (this.props.disabled) {
+            classes.push("text-light-tertiary")
+            style = {...style, ...{ cursor: "text" } }
+          } else {
+            classes.push("text-dark-tertiary")
+            style = {...style, ...{ cursor: "pointer" } }
+          }
+
+          if (!this.data.authorized){
+            return (
+              <div className="display-block soft-half-top">
+                <h6 className={classes.join(" ")} style={style} onClick={this.giveAsGuest}>
+                  Give as Guest
+                </h6>
+              </div>
+
+            )
+          }
+        }()}
       </div>
 
     )

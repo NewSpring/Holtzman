@@ -38,7 +38,7 @@ export default class Billing extends Component {
   }
 
   streetAddress2 = (value) => {
-    this.props.save({ billing: { streetAddress: value }})
+    this.props.save({ billing: { streetAddress2: value }})
     return true
   }
 

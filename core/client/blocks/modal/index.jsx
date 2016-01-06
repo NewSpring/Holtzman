@@ -148,8 +148,8 @@ export default class SideModal extends Component {
           if (!this.props.modal.visible) {
             return null
           }
-
           return (
+
             <div className="panel overlay--solid-dark" onClick={this.close}>
 
               <VelocityComponent

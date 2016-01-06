@@ -29,7 +29,9 @@ const types = {
 
   SET_SUCCESS: "GIVE.SET_SUCCESS",
 
-  SET_ACCOUNTS: "GIVE.SET_ACCOUNTS"
+  SET_ACCOUNTS: "GIVE.SET_ACCOUNTS",
+
+  SET_TRANSACTION_TYPE: "GIVE.SET_TRANSACTION_TYPE"
 }
 
 export default {
@@ -43,6 +45,8 @@ export default {
   clearAccount: () => ({ type: types.SET_SAVED_ACCOUNT, savedAccount: null }),
 
   setAccounts: (accounts) => ({ type: types.SET_ACCOUNTS, accounts }),
+
+  setTransactionType: (transactionType) => ({ type: types.SET_TRANSACTION_TYPE, transactionType }),
 
   addTransactions: (transactions) => ({ type: types.ADD_TRANSACTION, transactions }),
   clearTransaction: (transactionId) => ({ type: types.CLEAR_TRANSACTION, transactionId }),

@@ -16,6 +16,7 @@ const initial = {
 
   step: 1, // Number (step along in progress bar to show)
   savedAccount: null, // Id of saved account to charge
+  transactionType: "default", // "default", "guest", "recurring"
 
   total: 0, // Number > 0 for allowing to move forward (calculated)
 
@@ -111,7 +112,7 @@ export default createReducer(initial, {
   },
 
   [types.CLEAR_DATA](state) {
-    
+
     return {...state, ...{
       step: initial.step,
       total: initial.total,
@@ -213,6 +214,13 @@ export default createReducer(initial, {
 
     return { ...state, ... {
       accounts: {...state.accounts, ...action.accounts}
+    }}
+  },
+
+  [types.SET_TRANSACTION_TYPE](state, action) {
+
+    return { ...state, ... {
+      transactionType: action.transactionType
     }}
   }
 
