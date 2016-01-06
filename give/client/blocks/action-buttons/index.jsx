@@ -210,7 +210,7 @@ export default class GiveNow extends Component {
             style = {...style, ...{ cursor: "pointer" } }
           }
 
-          if (!this.data.authorized){
+          if (!this.data.authorized && !this.props.disabledGuest){
             return (
               <div className="display-block soft-half-top">
                 <h6 className={classes.join(" ")} style={style} onClick={this.giveAsGuest}>

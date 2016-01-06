@@ -210,6 +210,7 @@ export default class CartContainer extends Component {
           <div className="push-top">
             <GiveNow
               disabled={total <= 0}
+              disabledGuest={true}
             />
           </div>
 
