@@ -91,7 +91,7 @@ const transactions = () => {
         if (FinancialPersonSavedAccounts) {
 
           // Create FinancialPaymentDetail
-          SecondFinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
+          let SecondFinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
             Guid: api.makeGUID()
           } }
 
@@ -110,7 +110,9 @@ const transactions = () => {
             ModifiedByPersonAliasId: PrimaryAliasId
           } }
 
-          api.post.sync(`FinancialPersonSavedAccounts`, FinancialPersonSavedAccounts)
+          if (FinancialPersonSavedAccounts.TransactionCode) {
+            api.post.sync(`FinancialPersonSavedAccounts`, FinancialPersonSavedAccounts)
+          }
         }
 
 

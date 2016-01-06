@@ -35,8 +35,8 @@ export default class Give extends Component {
 
     this.props.setProgress(4)
 
-    submitPersonalDetails((err, data) => {
-      if (!err) {
+    this.submitPersonalDetails((err, data) => {
+      if (!err || !data.url) {
         this.setState({ postUrl: data.url, transactionId: data.transactionId})
         fetch(data.url, {
           method: "POST",
@@ -49,6 +49,9 @@ export default class Give extends Component {
         .catch((e) => {
           console.log(e)
         })
+      } else {
+        err || (err = "Saved payment declined")
+        this.setState({state: "error", err: err})
       }
 
     })
@@ -142,15 +145,23 @@ export default class Give extends Component {
   next = (e) => {
     e.preventDefault()
 
+    let next = () => {
+      this.props.next()
+    }
+
     if (this.props.give.step === 2) {
       this.submitPersonalDetails()
+      next()
+      return
     }
 
     if (this.props.give.step === 3) {
-      this.submitPaymentDetails()
+      this.submitPaymentDetails(next)
+      return
     }
 
-    this.props.next()
+    next()
+
   }
 
   back = (e) => {
@@ -179,7 +190,6 @@ export default class Give extends Component {
     }
 
     if (schedule.frequency) {
-      method = "Give.schedule"
       joinedData["start-date"] = schedule.start || Moment().add(1, 'days').format("YYYYMMDD")
       joinedData.plan = {
         payments: schedule.payments || 0,
@@ -226,7 +236,7 @@ export default class Give extends Component {
     }
 
     if (savedAccount) {
-      joinedData["customer-vault-id"] = savedAccount
+      joinedData.savedAccount = savedAccount
     }
 
 

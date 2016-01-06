@@ -75,6 +75,12 @@ class Checkbox extends React.Component {
     return (
       <div className={inputclasses.join(" ")}>
 
+        <h6 className="soft-double-left flush-bottom text-left float-left locked-top">
+          <small>
+            {this.props.children}
+          </small>
+        </h6>
+        
         <input
           ref={this.props.id || this.props.label || this.props.name}
           id={this.props.id || this.props.label || this.props.name}
@@ -99,11 +105,7 @@ class Checkbox extends React.Component {
           }
         })()}
 
-        <h6 className="soft-double-left flush-bottom text-left float-left locked-top">
-          <small>
-            {this.props.children}
-          </small>
-        </h6>
+
 
         {this.renderHelpText()}
       </div>

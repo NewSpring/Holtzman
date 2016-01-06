@@ -94,7 +94,7 @@ const ScheduledTransactions = () => {
 
         if (FinancialPersonSavedAccounts) {
           // Create FinancialPaymentDetail
-          SecondFinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
+          let SecondFinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
             Guid: api.makeGUID()
           } }
 

@@ -31,6 +31,5 @@ const schedule = (scheduleData) => {
 }
 
 Meteor.methods({ "Give.order": order })
-Meteor.methods({ "Give.schedule": schedule })
 
 export default order

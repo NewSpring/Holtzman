@@ -106,7 +106,7 @@ const schedule = (token, accountName) => {
       GatewayScheduleId: response["subscription-id"],
       TransactionFrequencyValueId: frequency,
       IsActive: true,
-      StartDate: `${Moment(response.billing["start-date"], "YYYYMMDD").toISOString()}`,
+      StartDate: `${Moment().toISOString()}`,
       FinancialGatewayId: 2, // (need to update to NMI gateway)
       // Summary: `Reference Number: ${response["transaction-id"]}`,
       ScheduledTransactionDetails: [],

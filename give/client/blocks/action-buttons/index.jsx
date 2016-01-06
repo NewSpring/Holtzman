@@ -71,7 +71,7 @@ export default class GiveNow extends Component {
 
     if (this.data.paymentDetails) {
       this.props.dispatch(giveActions.setAccount(
-        this.data.paymentDetails.TransactionCode
+        this.data.paymentDetails.Id
       ))
     }
 
