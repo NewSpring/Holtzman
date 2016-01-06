@@ -184,7 +184,7 @@ export default class Confirm extends Component {
             </div>
           </div>
           {() => {
-            if (!this.props.savedAccount) {
+            if (this.props.savedAccount === null) {
               return (
                 <Forms.Checkbox
                   name="savePayment"

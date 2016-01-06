@@ -1,28 +1,38 @@
 /*global Meteor */
+import { api } from "../../../../rock/lib/api"
 
-import { order as gatewayOrder, schedule as gatewaySchedule } from "../nmi"
+import { order as gatewayOrder } from "../nmi"
 
 const order = (orderData) => {
 
   let user = Meteor.user()
+  // default to sale
+  let method = "sale"
+
+  // offline order using saved account
+  if (orderData.savedAccount) {
+    method = "sale"
+  }
+
+  // subscription creation
+  if (orderData["start-date"]) {
+    method = "add-subscription"
+  }
 
   if (user && user.services.nmi) {
     orderData["customer-id"] = user.services.nmi.customerId
   }
 
-  const response = Meteor.wrapAsync(gatewayOrder)(orderData)
-
-  return {
-    url: response["form-url"],
-    transactionId: response["transaction-id"]
+  if (orderData.savedAccount) {
+    let accountDetails = api.get.sync(`FinancialPersonSavedAccounts/${orderData.savedAccount}`)
+    delete orderData.savedAccount
+    if (accountDetails.TransactionCode && accountDetails.ForeignKey) {
+      orderData["customer-vault-id"] = accountDetails.TransactionCode
+      // orderData["authorization-code"] = accountDetails.ForeignKey
+    }
   }
 
-}
-
-const schedule = (scheduleData) => {
-
-  const response = Meteor.wrapAsync(gatewaySchedule)(scheduleData)
-
+  const response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
   return {
     url: response["form-url"],
     transactionId: response["transaction-id"]

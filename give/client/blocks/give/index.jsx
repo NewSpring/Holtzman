@@ -252,7 +252,7 @@ export default class Give extends Component {
 
   }
 
-  submitPaymentDetails = () => {
+  submitPaymentDetails = (callback) => {
 
     const { postUrl } = this.state
     const form = ReactDOM.findDOMNode(this.refs["form"])
@@ -264,11 +264,15 @@ export default class Give extends Component {
     })
     .then((response) => {
       // next()
+
     })
     .catch((e) => {
-      console.log(e)
+      // @TODO error handling
     })
 
+    if (callback) {
+      callback()
+    }
   }
 
   monentize = (value, fixed) => {
