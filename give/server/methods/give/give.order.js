@@ -19,15 +19,15 @@ const order = (orderData) => {
     method = "add-subscription"
   }
 
-  if (user && user.services.nmi) {
-    orderData["customer-id"] = user.services.nmi.customerId
+  if (user && user.services.rock) {
+    orderData["customer-id"] = user.services.rock.PersonAliasId
   }
 
   if (orderData.savedAccount) {
     let accountDetails = api.get.sync(`FinancialPersonSavedAccounts/${orderData.savedAccount}`)
     delete orderData.savedAccount
-    if (accountDetails.TransactionCode && accountDetails.ForeignKey) {
-      orderData["customer-vault-id"] = accountDetails.TransactionCode
+    if (accountDetails.ReferenceNumber) {
+      orderData["customer-vault-id"] = accountDetails.ReferenceNumber
       // orderData["authorization-code"] = accountDetails.ForeignKey
     }
   }

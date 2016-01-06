@@ -148,6 +148,7 @@ export default class Personal extends Component {
             validation={this.campus}
             defaultValue={personal.campus}
             ref="campus"
+            includeBlank={true}
             items={campuses}
           />
         </div>

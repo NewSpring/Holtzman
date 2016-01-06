@@ -130,6 +130,7 @@ export default class SubFund extends Component {
           inputClasses={`${this.statusClass()} outlined--dotted outlined--light h3 hard-top flush-bottom`}
           placeholder="select fund here"
           onChange={this.showInputs}
+          includeBlank={true}
         />
 
         {() => {

@@ -149,17 +149,12 @@ export default class Select extends Component {
           onFocus={this.focus}
           onChange={this.change}
           defaultValue={this.props.defaultValue}
+
         >
           {() => {
             if (this.props.placeholder || this.props.includeBlank) {
               return (
-                <option
-                  className={this.props.optionClasses}
-                  value=""
-                  disabled={true}
-                >
-                  {this.props.placeholder || ""}
-                </option>
+                <option style={{display:"none"}}>{this.props.placeholder || ""}</option>
               )
             }
           }()}

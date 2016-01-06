@@ -132,7 +132,8 @@ const schedule = (token, accountName) => {
     if (accountName) {
       formatedFinancialScheduledTransaction.meta.FinancialPersonSavedAccounts = {
         Name: accountName,
-        TransactionCode: response["customer-vault-id"]
+        ReferenceNumber: response["customer-vault-id"],
+        TransactionCode: response["transaction-id"]
       }
     }
 

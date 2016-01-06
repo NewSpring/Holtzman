@@ -91,7 +91,8 @@ const charge = (token, accountName) => {
     if (accountName) {
       formatedTransaction.meta.FinancialPersonSavedAccounts = {
         Name: accountName,
-        TransactionCode: response["customer-vault-id"]
+        ReferenceNumber: response["customer-vault-id"],
+        TransactionCode: response["transaction-id"]
       }
     }
 
