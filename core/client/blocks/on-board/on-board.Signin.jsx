@@ -46,7 +46,6 @@ class SignIn extends React.Component {
 
   isEmail = (value) => {
     const isValid = Validate.isEmail(value)
-    const noError = !this.props.errors["email"]
 
     if (!isValid ) {
       this.props.dispatch(onBoardActions.clear("email"))
@@ -59,7 +58,6 @@ class SignIn extends React.Component {
 
   savePassword = (value) => {
     const isValid = value.length ? true : false
-    const noError = !this.props.errors["password"]
 
     if (!isValid ) {
       this.props.dispatch(onBoardActions.clear("password"))
@@ -72,7 +70,6 @@ class SignIn extends React.Component {
 
   firstName = (value) => {
     const isValid = value.length ? true : false
-    const noError = !this.props.errors["firstName"]
 
     if (!isValid ) {
       this.props.dispatch(onBoardActions.clear("firstName"))
@@ -85,7 +82,6 @@ class SignIn extends React.Component {
 
   lastName = (value) => {
     const isValid = value.length ? true : false
-    const noError = !this.props.errors["lastName"]
 
     if (!isValid ) {
       this.props.dispatch(onBoardActions.clear("lastName"))

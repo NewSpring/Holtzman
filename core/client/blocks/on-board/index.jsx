@@ -58,6 +58,13 @@ class OnBoard extends Component {
       account = this.props.account
     }
 
+    errors = {
+      unauthorized: {
+        message: "Foobar"
+      }
+    }
+
+
     if (state === "loading") {
       return (
         <Loading

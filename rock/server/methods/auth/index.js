@@ -190,12 +190,13 @@ Meteor.methods({
       Username = Username.replace(/@newspring.cc/, "")
     }
 
-    let isAuthorized = false
-    try {
-      isAuthorized = api.post.sync(`Auth/login`, { Username, Password: password })
-    } catch (e) {
-      isAuthorized = false
+    isAuthorized = api.post.sync(`Auth/login`, { Username, Password: password })
+
+    if (isAuthorized.statusText) {
+      console.log(isAuthorized)
+      throw new Metoer.Error("Your password is incorrect")
     }
+
 
     let userAccount = Accounts.findUserByEmail(email)
 
