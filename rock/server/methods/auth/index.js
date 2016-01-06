@@ -190,7 +190,7 @@ Meteor.methods({
       Username = Username.replace(/@newspring.cc/, "")
     }
 
-    isAuthorized = api.post.sync(`Auth/login`, { Username, Password: password })
+    let isAuthorized = api.post.sync(`Auth/login`, { Username, Password: password })
 
     if (isAuthorized.statusText) {
       console.log(isAuthorized)

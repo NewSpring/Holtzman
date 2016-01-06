@@ -30,6 +30,9 @@ export default class Give extends Component {
 
   componentWillMount() {
     const { savedAccount } = this.props.give
+
+    this.updateData()
+
     if (!savedAccount) {
       return
     }
@@ -71,52 +74,34 @@ export default class Give extends Component {
   }
 
 
-  updateInputs = (person) => {
+  updateData= () => {
 
-    person || (person = this.props.person)
+    const { person } = this.props
 
     let { Campus, Home } = person
     Campus || (Campus = {})
     Home || (Home = {})
 
     const mappedPerson = {
-      firstName: person.FirstName,
-      lastName: person.LastName,
-      email: person.Email,
-      campus: Campus.Name,
-      streetAddress: Home.Street1,
-      streetAddress2: Home.Street2,
-      city: Home.City,
-      state: Home.State,
-      zip: Home.PostalCode
-    }
-
-    const inputs = this.refs.inputs
-    if (inputs) {
-
-      for (let ref in inputs.refs) {
-        if (inputs.refs[ref].setValue && mappedPerson[ref]) {
-          inputs.refs[ref].setValue(mappedPerson[ref])
-          inputs.refs[ref].validate()
-        }
-
+      personal: {
+        firstName: person.FirstName,
+        lastName: person.LastName,
+        email: person.Email,
+        campus: Campus.Name
+      },
+      billing: {
+        streetAddress: Home.Street1,
+        streetAddress2: Home.Street2,
+        city: Home.City,
+        state: Home.State,
+        zip: Home.PostalCode
       }
-
-    } else {
-      setTimeout(() => {
-        this.updateInputs(person)
-      }, 100)
     }
-
+    console.log(mappedPerson)
+    this.props.dispatch(giveActions.save(mappedPerson))
 
   }
 
-  componentDidUpdate(prevProps) {
-
-    if (this.props.give.step > prevProps.give.step) {
-      this.updateInputs()
-    }
-  }
 
   goBack = (e) => {
     e.preventDefault();
@@ -429,7 +414,6 @@ export default class Give extends Component {
         </div>
       )
     }
-
 
     return (
 
