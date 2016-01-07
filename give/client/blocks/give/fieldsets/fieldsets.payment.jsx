@@ -97,7 +97,7 @@ export default class Payment extends Component {
       accountType: notEmpty,
       accountName: notEmpty,
       cardNumber: Validate.isCreditCard,
-      expiration: Validate.isExpiry,
+      expiration: notEmpty,
       ccv: Validate.isCCV
     }
 
@@ -110,6 +110,41 @@ export default class Payment extends Component {
     }
 
     return isValid
+
+  }
+
+  formatExp = (str, target, event) => {
+
+    let save = (adjusted) => {
+      this.saveData(adjusted, target)
+      return adjusted
+    }
+
+    let current = this.props.data.payment.expiration
+    current || (current = "")
+    str = `${str}`
+
+    if (str.length > 7) {
+      return save(str.slice(0, 7))
+    }
+
+    let copy = str
+    const lastNumber = copy.slice(-1)
+    const currentLastNumber = current.slice(-1)
+
+    if (lastNumber === "/" && str.length === 1) {
+      return save(`0${str}/20`)
+    }
+
+    if (lastNumber === "/" && str.length === 2 && currentLastNumber != "/") {
+      return save(`${str}/20`)
+    }
+
+    if (str.length === 2 && lastNumber != "/" && currentLastNumber != "/") {
+      return save(`${str}/20`)
+    }
+
+    return save(str)
 
   }
 
@@ -133,12 +168,14 @@ export default class Payment extends Component {
             <Forms.Input
               id="expiration"
               name="billing-cc-exp"
-              label="Expiration Number"
+              label="Exp (MM/YYYY)"
               type="tel"
               errorText="Please enter a valid expiration number"
               defaultValue={payment.expiration}
-              validation={this.saveData}
+              format={this.formatExp}
+              validation={(value) => (value.length > 0)}
               ref="expiration"
+              data-expiry-input={true}
             />
           </div>
           <div className="grid__item one-half">

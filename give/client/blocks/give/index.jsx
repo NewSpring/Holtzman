@@ -277,6 +277,7 @@ export default class Give extends Component {
 
     Meteor.call(method, token, this.props.give.data.payment.name, (err, response) => {
 
+      console.log(err)
       if (err) {
         this.setState({state: "error", err: err})
         return

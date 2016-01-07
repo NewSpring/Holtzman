@@ -27,14 +27,14 @@ export default class Input extends Component {
   }
 
 
-  format = () => {
+  format = (e) => {
 
     const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
     let value = this.refs["apollos-input"].value
 
     if (this.props.format && typeof(this.props.format) === "function") {
 
-      const newValue = this.props.format(value, target);
+      const newValue = this.props.format(value, target, e);
       target.value = newValue;
 
     }
@@ -153,6 +153,7 @@ export default class Input extends Component {
           onFocus={this.focus}
           onChange={this.format}
           defaultValue={this.props.defaultValue}
+          {...this.props}
         />
 
         {this.renderHelpText()}
