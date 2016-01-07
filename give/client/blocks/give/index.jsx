@@ -268,10 +268,8 @@ export default class Give extends Component {
     e.preventDefault()
 
     let token
-    if (this.state.postUrl.length) {
-      let segments = this.state.postUrl.split("/")
-      token = segments.pop()
-    }
+    let segments = this.state.postUrl.split("/")
+    token = segments.pop()
 
 
     this.setState({state: "loading"})
@@ -281,6 +279,7 @@ export default class Give extends Component {
       method = "Give.schedule.charge"
     }
 
+    console.log(method)
     Meteor.call(method, token, this.props.give.data.payment.name, (err, response) => {
 
       console.log(err)

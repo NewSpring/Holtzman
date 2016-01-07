@@ -31,7 +31,7 @@ const order = (orderData) => {
       // orderData["authorization-code"] = accountDetails.ForeignKey
     }
   }
-
+  console.log(orderData)
   const response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
   return {
     url: response["form-url"],
