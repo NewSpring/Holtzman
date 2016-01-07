@@ -19,7 +19,7 @@ const order = (orderData) => {
     method = "add-subscription"
   }
 
-  if (user && user.services.rock) {
+  if (user && user.services.rock && method != "add-subscription") {
     orderData["customer-id"] = user.services.rock.PersonAliasId
   }
 

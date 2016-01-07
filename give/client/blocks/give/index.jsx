@@ -266,8 +266,14 @@ export default class Give extends Component {
 
   completePurchase = (e) => {
     e.preventDefault()
-    let segments = this.state.postUrl.split("/")
-    const token = segments.pop()
+
+    let token
+    if (this.state.postUrl.length) {
+      let segments = this.state.postUrl.split("/")
+      token = segments.pop()
+    }
+
+
     this.setState({state: "loading"})
     let method = "Give.charge"
 

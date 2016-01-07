@@ -164,6 +164,7 @@ export default class CartContainer extends Component {
             classes={["soft-bottom", "display-inline-block"]}
             inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom`}
             includeBlank={true}
+            placeholder="Choose frequency"
             onChange={this.setFrequency}
           />
 
