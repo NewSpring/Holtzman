@@ -21,6 +21,16 @@ export default function modal(state = initial, action) {
         props: { ...state.props, ...action.props }
       } }
     case "SECTIONS.SET_CONTENT":
+
+      //deep merge
+
+      for (let section in action.content) {
+        if (state.content[section]) {
+          action.content[section] = {...state.content[section], ...action.content[section]}
+        }
+      }
+
+
       return { ...state, ...{
         content: { ...state.content, ...action.content }
       } }

@@ -1,12 +1,13 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 
-import {NavActions} from "../../actions/nav"
+import { nav as navActions, modal as modalActions } from "../../actions"
 import NavLayout from "./nav.layout"
 
 // We only care about the navigation state
 const map = (state) => ({
   state: state.nav,
+  modal: state.modal
   // router: state.routing
 })
 
@@ -17,19 +18,23 @@ export default class NavContainer extends Component {
     this.props.dispatch(action(this.props))
   }
 
+  reset = () => {
+    // always hide modal on change
+    this.props.dispatch(modalActions.hide())
+  }
+
   render () {
-    const { state, router } = this.props
+    const { state } = this.props
     if (!state.visible) {
       return null
     }
-
-    // console.log(this.props.router)
 
     return (
       <NavLayout
         links={ state.links }
         handleAction={this.handleAction}
         back={this.getBackLink}
+        reset={this.reset}
       />
     )
 

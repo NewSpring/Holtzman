@@ -18,11 +18,15 @@ export default class Right extends Component {
       "flush"
     ];
 
-    if (this.props.mobile) {
+    if (this.props.mobile && !this.props.aspect) {
       classes.push("ratio--landscape@handheld")
+    } else if (this.props.mobile && this.props.aspect) {
+      classes.push(`ratio--${this.props.aspect}@handheld`)
     } else {
       classes.push("visuallyhidden@handheld")
     }
+
+
 
     if (this.props.scroll) {
       classes.push("scrollable")

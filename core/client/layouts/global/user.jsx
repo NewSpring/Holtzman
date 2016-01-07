@@ -49,26 +49,6 @@ class Layout extends Component {
     this.handle.stop()
   }
 
-  // getMeteorData() {
-  //
-  //   const user = Meteor.user()
-  //
-  //   if (user && (this.data.user && user._id != this.data.user._id) || (!this.data.user)) {
-  //     Meteor.subscribe("people")
-  //     this.setLoggedIn(user)
-  //   } else if (!user) {
-  //     this.setLoggedIn(null)
-  //   }
-  //
-  //   return {
-  //     user
-  //   }
-  // }
-  //
-  // setLoggedIn = (user) => {
-  //   this.props.dispatch(onBoardActions.authorize(user != null))
-  // }
-
   render() { return this.props.children }
 
 }

@@ -28,8 +28,8 @@ const login = (store, next, action) => {
       }
 
       if (authorized) {
-        Meteor.loginWithPassword(data.email, data.password, () => {
-
+        Meteor.loginWithPassword(data.email, data.password, (err, response) => {
+          console.log(err, response)
 
           dispatch(onBoard.success())
           dispatch(onBoard.authorize(true))

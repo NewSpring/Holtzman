@@ -15,7 +15,13 @@ const back = () => {
 }
 
 
-const showSections = () => {
+const showSections = (props) => {
+  const { modal, dispatch } = props
+
+  if (modal.visible && modal.props.keepNav) {
+    return modalActions.hide()
+  }
+
   return modalActions.render(Sections, { keepNav: true })
 }
 
