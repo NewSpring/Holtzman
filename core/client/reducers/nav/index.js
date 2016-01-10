@@ -14,29 +14,58 @@ const back = () => {
   }
 }
 
-
+let sectionsVisible = false
 const showSections = (props) => {
   const { modal, dispatch } = props
 
-  if (modal.visible && modal.props.keepNav) {
+  if (modal.visible) {
+    sectionsVisible = false
     return modalActions.hide()
   }
 
+  console.log("rendering nav...")
+  sectionsVisible = true
   return modalActions.render(Sections, { keepNav: true })
 }
 
+
+
 const links = {
   TOP:[
-    { id: 1, label:"Home", link:"/", icon:"icon-logo" },
-    { id: 2, label:"Sections", action: showSections, icon:"icon-sections" },
-    { id: 3, label:"Discover", link:"/discover", icon:"icon-search" },
-    { id: 4, label:"Profile", link:"/profile", icon:"icon-profile" }
+    {
+      id: 1,
+      label: "Home",
+      link: "/",
+      icon: "icon-logo",
+      isActive: (props) => (window.location.pathname === "/" && !props.modal.visible)
+    },
+    {
+      id: 2,
+      label: "Sections",
+      action: showSections,
+      icon: "icon-sections",
+      isActive: (props) => (sectionsVisible && props.modal.visible)
+    },
+    {
+      id: 3,
+      label:"Discover",
+      link:"/discover",
+      icon:"icon-search",
+      isActive: (props) => (window.location.pathname === "/discover" && !props.modal.visible)
+    },
+    {
+      id: 4,
+      label: "Profile",
+      link: "/profile",
+      icon: "icon-profile",
+      isActive: (props) => (window.location.pathname === "/profile" && !props.modal.visible)
+    }
   ],
   CONTENT: [
     { id: 1, action: back, icon:"icon-arrow-back" },
     { id: 2, action: showSections, icon:"icon-sections" },
-    { id: 2, action: false, icon:"icon-like" },
-    { id: 3, action: false, icon:"icon-share" }
+    { id: 3, action: false, icon:"icon-like" },
+    { id: 4, action: false, icon:"icon-share" }
   ],
   MODAL: [
     { id: 1, action: modalActions.hide, icon:"icon-close" }

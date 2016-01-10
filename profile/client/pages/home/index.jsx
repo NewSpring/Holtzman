@@ -29,7 +29,7 @@ export default class Home extends Component {
     const { person } = this.props
     const { PhotoUrl } = person
 
-    let photo = PhotoUrl ? `//stock-rock.newspring.cc/${PhotoUrl}` : null
+    let photo = PhotoUrl ? `//core-rock.newspring.cc/${PhotoUrl}` : null
     return (
       <Split nav={true}>
 

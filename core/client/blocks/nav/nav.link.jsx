@@ -11,7 +11,10 @@ export default class NavLink extends Component {
   }
 
 
-  linkClasses(link) {
+  linkClasses = () => {
+
+    const { navItem } = this.props
+
     let classes = [
       "text-light-primary",
       "floating__item",
@@ -20,12 +23,20 @@ export default class NavLink extends Component {
       "one-whole@lap-and-up",
       "plain"
     ];
+
+    if (navItem.isActive && navItem.isActive(this.props)) {
+      classes.push("text-brand")
+    }
+
+
     return classes.join(" ")
   }
 
   handleAction = (e) => {
 
     const { navItem } = this.props
+
+    this.props.reset()
 
     if (navItem.action && typeof navItem.action === "function") {
       e.preventDefault();
@@ -59,9 +70,8 @@ export default class NavLink extends Component {
     return (
       <Wrapper
         to={navItem.link}
-        className={this.linkClasses(navItem.link)}
+        className={this.linkClasses()}
         onClick={this.handleAction}
-        activeClassName="text-brand"
         style={{minHeight: "40px"}}
       >
         <div className={`floating ${Styles["locked"]}`} >

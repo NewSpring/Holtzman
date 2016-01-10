@@ -7,17 +7,29 @@ export default class Card extends Component {
     classes: PropTypes.array,
     theme: PropTypes.string,
     link: PropTypes.string,
-    background: PropTypes.object,
+    image: PropTypes.object,
     styles: PropTypes.object
   }
 
-  layoutClasses = () => {
+  itemClasses = () => {
     let classes = [
       "card__item",
       "outlined--light",
       "soft",
       "rounded-bottom",
       "text-center"
+    ];
+
+    if (this.props.itemClasses) {
+      classes = classes.concat(this.props.itemClasses);
+    }
+
+    return classes.join(" ");
+  }
+
+  cardClasses = () => {
+    let classes = [
+      "card",
     ];
 
     if (this.props.classes) {
@@ -28,27 +40,43 @@ export default class Card extends Component {
   }
 
   styles = () => {
-    return {}
+    let defaultStyles = {
+      overflow: "hidden"
+    }
+
+    if (this.props.image && this.props.image.full) {
+      defaultStyles.backgroundImage = `url(${this.props.image.url})`
+    }
+
+    return defaultStyles
   }
 
   createImage = () => {
 
     const { image } = this.props
 
-    if (image && image.url) {
+    if (image) {
       let imageclasses = [
         "rounded-top",
         "background--fill",
         "card__image"
       ]
+
       if (image.ratio) {
-        imageclasses.push(image.ratio)
+        imageclasses.push(`ratio--${image.ratio}`)
       } else {
         imageclasses.push("ratio--landscape")
       }
 
+      let style
+      if (image.full != true) {
+        style = {
+          backgroundImage: `url(${image.url})`
+        }
+      }
+
       return (
-        <div className={imageclasses.join(" ")} style={{backgroundImage: `url(${image.url})` }}>
+        <div className={imageclasses.join(" ")} style={style}>
           <div className="ratio__item"></div>
         </div>
       )
@@ -57,7 +85,7 @@ export default class Card extends Component {
 
   render () {
 
-    const { link, image, theme, styles } = this.props
+    const { link, image, theme, styles, itemTheme, itemStyles } = this.props
 
     let Wrapper = Link
 
@@ -74,14 +102,17 @@ export default class Card extends Component {
     }
 
     return (
-      <div className="card">
+      <div
+        className={theme || this.cardClasses()}
+        style={styles || this.styles() }
+        >
 
         <Wrapper className="plain" to={link}>
           {this.createImage()}
         </Wrapper>
         <div
-          className={ theme || this.layoutClasses() }
-          style={ styles || this.styles() }
+          className={ itemTheme || this.itemClasses() }
+          style={itemStyles}
         >
           {this.props.children}
         </div>

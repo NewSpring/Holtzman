@@ -35,6 +35,7 @@ export default class NavContainer extends Component {
         handleAction={this.handleAction}
         back={this.getBackLink}
         reset={this.reset}
+        modal={this.props.modal}
       />
     )
 

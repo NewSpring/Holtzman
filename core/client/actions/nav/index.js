@@ -14,6 +14,9 @@
   NAV.SET_VISIBILITY
     hide or show the nav from the page
 
+  NAV.SET_ACTIVE
+    set the active link
+
 
 */
 

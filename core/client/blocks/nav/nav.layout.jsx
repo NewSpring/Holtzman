@@ -7,7 +7,7 @@ export default class NavLayout extends React.Component {
 
   layoutClasses = () => {
     let classes = [
-      "background--dark-primary",
+      // "background--dark-primary",
       "one-whole",
       "floating",
       "soft-half",
@@ -31,14 +31,15 @@ export default class NavLayout extends React.Component {
 
     const { handleAction, back, reset } = this.props
     return (
-      <section className={ this.props.theme || this.layoutClasses() }>
-        {this.props.links.map(function(item, i) {
+      <section className={ this.props.theme || this.layoutClasses() } style={{backgroundColor: "#202020"}}>
+        {this.props.links.map((item, i) => {
           return (
             <NavLink
               navItem={item}
               key={i}
               handleAction={handleAction}
               reset={reset}
+              modal={this.props.modal}
             />
           );
         })}

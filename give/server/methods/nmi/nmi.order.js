@@ -6,8 +6,8 @@ import { parseXML } from "../../../../core/lib/util"
 const step2 = (purchaseData, method, callback) => {
 
   method || (method = "sale")
-  let url = process.env.ROOT_URL ? `${process.env.ROOT_URL}/give` : "http://localhost:3000/give"
-  // let url = "https://alpha.newspring.io/give"
+  // let url = process.env.ROOT_URL ? `${process.env.ROOT_URL}/give` : "http://localhost:3000/give"
+  let url = "https://alpha.newspring.io/give"
 
   const sale = {
     [method]: { ...{

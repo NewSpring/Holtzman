@@ -10,8 +10,7 @@ import styles from "./modal.css"
 
 const map = (state) => ({
   navigation: state.nav,
-  modal: state.modal,
-  router: state.routing
+  modal: state.modal
 })
 
 @connect(map)
@@ -119,6 +118,7 @@ export default class SideModal extends Component {
   }
 
   render () {
+
     let enter = "fadeIn"
     let exit = "fadeOut"
     let slide = "transition.slideLeftIn"
@@ -148,6 +148,7 @@ export default class SideModal extends Component {
           if (!this.props.modal.visible) {
             return null
           }
+          
           return (
 
             <div className="panel overlay--solid-dark" onClick={this.close}>
