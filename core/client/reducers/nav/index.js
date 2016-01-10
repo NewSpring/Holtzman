@@ -3,7 +3,7 @@
   Navigation store
 
 */
-import { modal as modalActions } from "../../actions/"
+import { modal as modalActions, liked as likedActions } from "../../actions/"
 import { Sections } from "../../blocks"
 
 const back = () => {
@@ -64,7 +64,7 @@ const links = {
   CONTENT: [
     { id: 1, action: back, icon:"icon-arrow-back" },
     { id: 2, action: showSections, icon:"icon-sections" },
-    { id: 3, action: false, icon:"icon-like" },
+    { id: 3, action: false, icon:"icon-like", isActive: (props) => false },
     { id: 4, action: false, icon:"icon-share" }
   ],
   MODAL: [
