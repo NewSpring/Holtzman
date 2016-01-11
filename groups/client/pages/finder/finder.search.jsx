@@ -4,10 +4,12 @@ import { Link } from "react-router"
 import ReactMixin from "react-mixin"
 import Moment from "moment"
 import { VelocityComponent } from "velocity-react"
+import { pushPath } from "redux-simple-router"
+
 
 
 import { Forms } from "../../../../core/client/components"
-import { WindowLoading } from "../../../../core/client/components/loading"
+import { WindowLoading, Spinner } from "../../../../core/client/components/loading"
 
 import { GroupTopics } from "../../../lib/collections"
 import { Campuses } from "../../../../rock/lib/collections"
@@ -38,8 +40,6 @@ export default class HomeAddress extends Component {
       }
     })
 
-    console.log(topics)
-
     return {
       topics
     }
@@ -64,6 +64,11 @@ export default class HomeAddress extends Component {
 
     let refs = this.refs
     console.log(data)
+    setTimeout(() => {
+      this.setState({ state: "default" })
+      this.props.history.pushState({}, "/groups/finder/list/10")
+    }, 3000)
+
     // updateHome(data, (err, result) => {
     //
     //   if (err) {
@@ -137,6 +142,7 @@ export default class HomeAddress extends Component {
           <WindowLoading classes={["background--primary"]} styles={{position: "absolute"}}>
             <div className="locked-top locked-bottom one-whole floating">
               <div className="floating__item">
+                <Spinner styles={{borderColor: "#fff #6BAC43 #fff #fff", borderWidth: "7px"}}/>
                 <h4 className="text-light-primary">Finding a group for you...</h4>
               </div>
             </div>

@@ -26,7 +26,10 @@
   },
   "dependencies": {
     "fetch-jsonp": "^1.0.0",
+    "google-map-react": "^0.9.3",
     "moment": "^2.10.6",
+    "react-controllables": "^0.6.0",
+    "react-pure-render": "^1.0.2",
     "react-redux": "^4.0.0",
     "redux": "^3.0.4",
     "redux-simple-router": "^1.0.2",
