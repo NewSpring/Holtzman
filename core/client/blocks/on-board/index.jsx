@@ -30,7 +30,9 @@ class OnBoard extends Component {
 
   goBack = (e) => {
     e.preventDefault();
-    window.history.back()
+    if (typeof window != undefined && window != null) {
+      window.history.back()
+    }
   }
 
   goSignIn = (e) => {

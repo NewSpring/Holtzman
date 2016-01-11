@@ -47,6 +47,7 @@ const bindAccounts = (props) => {
 const map = (state) => ({ accounts: state.give.accounts })
 
 @connect(map)
+@ReactMixin.decorate(ReactMeteorData)
 export default class Home extends Component {
 
   componentWillMount(){
@@ -70,7 +71,17 @@ export default class Home extends Component {
 
   }
 
+  getMeteorData() {
+    let alive = true;
 
+    try {
+      alive = serverWatch.isAlive("ROCK")
+    } catch (e) {}
+
+    return {
+      alive
+    }
+  }
 
   render () {
     let accounts = []
@@ -93,6 +104,29 @@ export default class Home extends Component {
             <div className="text-left">
 
               {() => {
+
+                if (!this.data.alive) {
+                  return (
+                    <div className="soft ">
+                      <h3 className="text-dark-tertiary">
+                        Unfortunatley our giving service is offline.
+                      </h3>
+                      <p>
+                        We are working to resolve this as fast as possible. We are sorry for any inconvience this may have caused.
+                      </p>
+                      <p>
+                        <em>
+                          We appreciate your patience. If you have any questions
+                          please contact us at <a href="mailto:finance@newspring.cc">
+                            finance@newspring.cc
+                          </a>
+                        </em>
+                      </p>
+                    </div>
+                  )
+
+                }
+
                 if (!accounts.length) {
                   return (
                     <div className="one-whole text-center soft-ends">
@@ -100,6 +134,7 @@ export default class Home extends Component {
                     </div>
                   )
                 }
+
 
                 return (
                   <AddToCart
@@ -112,12 +147,15 @@ export default class Home extends Component {
             </div>
 
             <div className="soft-double-ends@lap-and-up">
-             <div className="outlined--light outlined--top push-double-ends"></div>
-           </div>
+              <div className="outlined--light outlined--top push-double-ends"></div>
+            </div>
 
             <h4 className="push-bottom@lap-and-up">Or, give to one of our campaigns...</h4>
             <div className="grid">
               {() => {
+
+                if (!this.data.alive) { return null }
+
                 if (!accounts.length) {
                   return (
                     <div className="one-whole text-center soft-ends">

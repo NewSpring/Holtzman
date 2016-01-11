@@ -1,10 +1,13 @@
 
 import person from "./person"
 import campuses from "./campuses"
+import alive from "./alive"
+
 
 const publications = {
   person,
-  campuses
+  campuses,
+  alive
 }
 
 const publish = () => {
@@ -16,5 +19,6 @@ const publish = () => {
 export default {
   person,
   campuses,
+  alive,
   publish
 }

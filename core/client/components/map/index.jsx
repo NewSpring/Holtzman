@@ -1,7 +1,11 @@
 import { Component, PropTypes} from "react"
 import controllable from "react-controllables"
 import shouldPureComponentUpdate from "react-pure-render/function"
-import GoogleMap from "google-map-react"
+
+let GoogleMap
+if (Meteor.isClient) {
+  GoogleMap = require("google-map-react")
+}
 
 // import {getScale, getRealFromTo} from "./components/calc_markers_visibility"
 import Marker from "./components/Marker"
@@ -100,31 +104,36 @@ export default class Map extends Component {
 
   render () {
 
-    return (
-      <GoogleMap
-        center={this.props.center}
-        zoom={this.props.zoom}
-        onBoundsChange={this._onBoundsChange}
-        onChildClick={this._onChildClick}
-        onChildMouseEnter={this._onChildMouseEnter}
-        onChildMouseLeave={this._onChildMouseLeave}
-        distanceToMouse={this._distanceToMouse}
-        margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
-        hoverDistance={K_HOVER_DISTANCE}
-      >
-        {this.props.markers.map((marker) => {
-          let loc = marker.GroupLocations[0].Location
+    if (typeof window != undefined && window != null ) {
+      return (
+        <GoogleMap
+          center={this.props.center}
+          zoom={this.props.zoom}
+          onBoundsChange={this._onBoundsChange}
+          onChildClick={this._onChildClick}
+          onChildMouseEnter={this._onChildMouseEnter}
+          onChildMouseLeave={this._onChildMouseLeave}
+          distanceToMouse={this._distanceToMouse}
+          margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
+          hoverDistance={K_HOVER_DISTANCE}
+        >
+          {this.props.markers.map((marker) => {
+            let loc = marker.GroupLocations[0].Location
 
-          return <Marker
-            lat={loc.Latitude}
-            lng={loc.Longitude}
-            key={marker.Id}
-            active={this.props.active === marker.Id}
-            hover={this.props.hover === marker.Id}
-          />
+            return <Marker
+              lat={loc.Latitude}
+              lng={loc.Longitude}
+              key={marker.Id}
+              active={this.props.active === marker.Id}
+              hover={this.props.hover === marker.Id}
+            />
 
-        })}
-      </GoogleMap>
-    )
+          })}
+        </GoogleMap>
+      )
+    }
+
+    return null
   }
+
 }

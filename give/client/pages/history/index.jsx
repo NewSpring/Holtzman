@@ -90,9 +90,16 @@ export default class Template extends Component {
     }).fetch();
 
     let ready = subscription.ready()
+    let alive = true;
+
+    try {
+      alive = serverWatch.isAlive("ROCK")
+    } catch (e) {}
+
     return {
       transactions,
-      ready
+      ready,
+      alive
     };
 
   }
@@ -144,6 +151,28 @@ export default class Template extends Component {
           <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top" ref="history">
             {() => {
               const { transactions, ready } = this.data
+
+              if (!this.data.alive) {
+                return (
+                  <div className="soft ">
+                    <h3 className="text-dark-tertiary">
+                      Unfortunatley our giving service is offline.
+                    </h3>
+                    <p>
+                      We are working to resolve this as fast as possible. We are sorry for any inconvience this may have caused.
+                    </p>
+                    <p>
+                      <em>
+                        We appreciate your patience. If you have any questions
+                        please contact us at <a href="mailto:finance@newspring.cc">
+                          finance@newspring.cc
+                        </a>
+                      </em>
+                    </p>
+                  </div>
+                )
+
+              }
 
               if (!transactions || !transactions.length && !ready) {
                 // loading

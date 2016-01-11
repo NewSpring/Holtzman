@@ -7,7 +7,9 @@ import { modal as modalActions } from "../../actions/"
 import { Sections } from "../../blocks"
 
 const back = () => {
-  window.history.back()
+  if (typeof window != undefined && window != null) {
+    window.history.back()
+  }
   return {
     type: "FALSY",
     payload: {}

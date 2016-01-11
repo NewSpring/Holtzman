@@ -1,3 +1,4 @@
+/*global serverWatch */
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
@@ -67,29 +68,33 @@ export default class CartContainer extends Component {
   }
 
   componentWillMount() {
-    let match,
-        pl     = /\+/g,  // Regex for replacing addition symbol with a space
-        search = /([^&=]+)=?([^&]*)/g,
-        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-        query  = window.location.search.substring(1);
 
-    let urlParams = {};
-    while (match = search.exec(query))
-       urlParams[decode(match[1])] = decode(match[2]);
+    if (typeof window != undefined && window != null) {
+      let match,
+          pl     = /\+/g,  // Regex for replacing addition symbol with a space
+          search = /([^&=]+)=?([^&]*)/g,
+          decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+          query  = window.location.search.substring(1);
 
-    for (let account of this.props.accounts) {
-      if (urlParams[account.Name]) {
-        let value = urlParams[account.Name]
-        let id = account.Id
+      let urlParams = {};
+      while (match = search.exec(query))
+         urlParams[decode(match[1])] = decode(match[2]);
 
-        value = this.monentize(value)
+      for (let account of this.props.accounts) {
+        if (urlParams[account.Name]) {
+          let value = urlParams[account.Name]
+          let id = account.Id
 
-        this.props.addTransactions({ [id]: {
-          value: Number(value.replace(/[^0-9\.]+/g, '')),
-          label: account.Name
-        }})
+          value = this.monentize(value)
+
+          this.props.addTransactions({ [id]: {
+            value: Number(value.replace(/[^0-9\.]+/g, '')),
+            label: account.Name
+          }})
+        }
       }
     }
+
 
   }
 
@@ -131,6 +136,7 @@ export default class CartContainer extends Component {
     }
 
     let mulitpleAccounts = (this.props.accounts && this.props.accounts.length > 1)
+
 
     return (
       <div className="push-top@handheld soft-half-top@lap-and-up">
