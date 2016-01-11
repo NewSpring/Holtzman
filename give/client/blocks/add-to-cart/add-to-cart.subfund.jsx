@@ -150,6 +150,7 @@ export default class SubFund extends Component {
                   inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
                   placeholder="$0.00"
                   format={this.format}
+                  defaultValue={this.props.preFillValue(this.state.id)}
                 />
               </div>
             )

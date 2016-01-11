@@ -12,13 +12,9 @@ import { give as giveActions } from "../../actions"
 
 
 // We only care about the give state
-function mapStateToProps(state) {
-  return {
-    give: state.give
-  }
-}
+const map = (state) => ({ give: state.give })
 
-@connect(mapStateToProps, giveActions)
+@connect(map, giveActions)
 export default class CartContainer extends Component {
 
   monentize = (value, fixed) => {
@@ -70,11 +66,47 @@ export default class CartContainer extends Component {
 
   }
 
+  componentWillMount() {
+    let match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    let urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+
+    for (let account of this.props.accounts) {
+      if (urlParams[account.Name]) {
+        let value = urlParams[account.Name]
+        let id = account.Id
+
+        value = this.monentize(value)
+
+        this.props.addTransactions({ [id]: {
+          value: Number(value.replace(/[^0-9\.]+/g, '')),
+          label: account.Name
+        }})
+      }
+    }
+
+  }
+
+  preFillValue = (id) => {
+    const { total, transactions } = this.props.give
+
+    if (transactions[id] && transactions[id].value) {
+      return transactions[id].value
+    }
+
+    return null
+  }
+
 
   render () {
 
     const { total, transactions } = this.props.give
-
 
     let primaryAccount = {}
     let remainingAccounts = []
@@ -118,8 +150,8 @@ export default class CartContainer extends Component {
           </h3>
 
           <Forms.Input
-            id={primaryAccount.Id || -1}
-            name={primaryAccount.Name || "primary-account"}
+            id={primaryAccount.Id}
+            name={primaryAccount.Name}
             type="tel"
             hideLabel={true}
             ref="primary-account"
@@ -128,6 +160,7 @@ export default class CartContainer extends Component {
             placeholder="$0.00"
             validate={this.saveData}
             format={this.format}
+            defaultValue={this.preFillValue(primaryAccount.Id)}
           />
 
 
@@ -158,6 +191,7 @@ export default class CartContainer extends Component {
                       return (
                         <SubFund
                           accounts={otherAccounts}
+                          preFillValue={this.preFillValue}
                         />
                       )
                     }()}

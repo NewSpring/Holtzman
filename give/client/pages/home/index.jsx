@@ -92,9 +92,22 @@ export default class Home extends Component {
 
             <div className="text-left">
 
-              <AddToCart
-                accounts={accounts}
-              />
+              {() => {
+                if (!accounts.length) {
+                  return (
+                    <div className="one-whole text-center soft-ends">
+                      <Spinner styles={{width: "40px", height: "40px"}}/>
+                    </div>
+                  )
+                }
+
+                return (
+                  <AddToCart
+                    accounts={accounts}
+                  />
+                )
+              }()}
+
 
             </div>
 
