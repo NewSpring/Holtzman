@@ -1,5 +1,6 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
+import ReactMixin from "react-mixin"
 
 import { Forms, Loading } from "../../../../core/client/components"
 
@@ -10,19 +11,28 @@ import { give as giveActions } from "../../actions"
 
 
 // We only care about the give state
-function mapStateToProps(state) {
-  return {
-    give: state.give
-  }
-}
+const map = (state) => ({ give: state.give })
 
-@connect(mapStateToProps, giveActions)
+@connect(map, giveActions)
+@ReactMixin.decorate(ReactMeteorData)
 export default class CartContainer extends Component {
 
   state = {
     fundId: false,
     fundLabel: null,
     frequency: null
+  }
+
+  getMeteorData(){
+    let alive = true;
+
+    try {
+      alive = serverWatch.isAlive("ROCK")
+    } catch (e) {}
+
+    return {
+      alive
+    }
   }
 
   monentize = (value, fixed) => {
@@ -92,6 +102,29 @@ export default class CartContainer extends Component {
   }
 
   render () {
+
+    if (!this.data.alive) {
+      return (
+        <div>
+          <h3 className="text-dark-tertiary">
+            Unfortunatley our giving service is offline.
+          </h3>
+          <p>
+            We are working to resolve this as fast as possible. We are sorry for any inconvience this may have caused.
+          </p>
+          <p>
+            <em>
+              We appreciate your patience. If you have any questions
+              please contact us at <a href="mailto:finance@newspring.cc">
+                finance@newspring.cc
+              </a>
+            </em>
+          </p>
+        </div>
+      )
+
+    }
+
 
     const { total, transactions } = this.props.give
 

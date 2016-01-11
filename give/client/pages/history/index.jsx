@@ -154,7 +154,7 @@ export default class Template extends Component {
 
               if (!this.data.alive) {
                 return (
-                  <div className="soft ">
+                  <div className="push-top">
                     <h3 className="text-dark-tertiary">
                       Unfortunatley our giving service is offline.
                     </h3>

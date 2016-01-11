@@ -29,8 +29,15 @@ export default class Template extends Component {
     const Name = decodeURI(this.props.params.name);
     const account = Acc.findOne({ Name });
 
+    let alive = true;
+
+    try {
+      alive = serverWatch.isAlive("ROCK")
+    } catch (e) {}
+
     return {
-      account
+      account,
+      alive
     };
 
   }
