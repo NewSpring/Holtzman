@@ -12,12 +12,15 @@ const initial = {
 
 export default createReducer(initial, {
 
-  ["LIKED.TOGGLE_LIKE"](state, action) {
+  ["LIKED.TOGGLE"](state, action) {
+    const entryId = action.props.entryId;
+    const previousLikes = state.likes;
+    const nextLikes = _.contains(previousLikes, entryId) ?
+      _.without(previousLikes, entryId) :
+      _.union(previousLikes, [entryId]);
+
     return {...state,
-      likes: [
-        ...state.likes,
-        action.props
-      ]
+      likes: nextLikes
     }
   }
 

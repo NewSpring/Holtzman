@@ -3,13 +3,13 @@
 
   Liked action types
 
-  LIKED.TOGGLE_LIKE
+  LIKED.TOGGLE
     hide or show the modal on the page
 
 */
 
 export default {
 
-  toggleLike: (props) => ({ type: "LIKED.TOGGLE_LIKE", props })
+  toggle: (props) => ({ type: "LIKED.TOGGLE", props })
 
 }

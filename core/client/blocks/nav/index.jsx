@@ -7,7 +7,8 @@ import NavLayout from "./nav.layout"
 // We only care about the navigation state
 const map = (state) => ({
   state: state.nav,
-  modal: state.modal
+  modal: state.modal,
+  liked: state.liked
   // router: state.routing
 })
 
@@ -36,6 +37,7 @@ export default class NavContainer extends Component {
         back={this.getBackLink}
         reset={this.reset}
         modal={this.props.modal}
+        liked={this.props.liked}
       />
     )
 
