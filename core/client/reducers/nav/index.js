@@ -86,6 +86,17 @@ export default function nav(state = initial, action) {
       return { ...state, ...{
         links: [ ...state.links, ...action.links ]
       } }
+    case "NAV.SET_ACTION":
+      return { ...state, ...{
+        links: [
+          ...state.links.slice(0,action.props.id-1),
+          {
+            ...state.links[action.props.id-1],
+            action: action.props.action,
+          },
+          ...state.links.slice(action.props.id)
+        ]
+      } }
     case "NAV.SET_VISIBILITY":
       return { ...state, ...{
         visible: action.visible }

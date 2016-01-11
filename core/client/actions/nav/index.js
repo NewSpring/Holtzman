@@ -11,6 +11,12 @@
   NAV.SET_LINKS
     // experimental
 
+  NAV.SET_ACTION
+    props: {
+      id: id of link
+      action: function
+    }
+
   NAV.SET_VISIBILITY
     hide or show the nav from the page
 
@@ -26,6 +32,7 @@ export default {
   reset: () => ({ type: "NAV.SET_LEVEL", level: "TOP" }),
 
   setLinks: (links) => ({ type: "NAV.SET_LINKS", links }),
+  setAction: (props) => ({ type: "NAV.SET_ACTION", props }),
 
   hide: () => ({ type: "NAV.SET_VISIBILITY", visible: false }),
   show: () => ({ type: "NAV.SET_VISIBILITY", visible: true })
