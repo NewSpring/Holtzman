@@ -6,9 +6,9 @@ Meteor.publish("sections", () => {
   return Sections.find()
 })
 
-Meteor.publish("likes", () => {
-  console.log("userrssssssssssssss", Meteor.userId());
+// must use function because arrow version doesn't like 'this'
+Meteor.publish("likes", function() {
   return Likes.find({
-    userId: Meteor.userId()
+    userId: this.userId
   })
 })

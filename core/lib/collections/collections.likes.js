@@ -18,10 +18,10 @@ const Likes = new Mongo.Collection("likes");
 
 Likes.allow({
   "insert": (userId, doc) => {
-    return true
+    return userId === doc.userId
   },
   "remove": (userId, doc) => {
-    return true
+    return userId === doc.userId
   }
 })
 
