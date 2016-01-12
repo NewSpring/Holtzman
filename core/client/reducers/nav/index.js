@@ -7,7 +7,7 @@ import { modal as modalActions } from "../../actions/"
 import { Sections } from "../../blocks"
 
 const back = () => {
-  if (typeof window != undefined && window != null) {
+  if (typeof window != "undefined" && window != null) {
     window.history.back()
   }
   return {
@@ -25,11 +25,17 @@ const showSections = (props) => {
     return modalActions.hide()
   }
 
-  console.log("rendering nav...")
   sectionsVisible = true
   return modalActions.render(Sections, { keepNav: true })
 }
 
+const isEqual = (path) => {
+  if (typeof window != "undefined" && window != null) {
+    return window.location.pathname === path
+  }
+
+  return false
+}
 
 
 const links = {
@@ -39,7 +45,7 @@ const links = {
       label: "Home",
       link: "/",
       icon: "icon-logo",
-      isActive: (props) => (window.location.pathname === "/" && !props.modal.visible)
+      isActive: (props) => (isEqual("/") && !props.modal.visible)
     },
     {
       id: 2,
@@ -53,14 +59,14 @@ const links = {
       label:"Discover",
       link:"/discover",
       icon:"icon-search",
-      isActive: (props) => (window.location.pathname === "/discover" && !props.modal.visible)
+      isActive: (props) => (isEqual("/discover") && !props.modal.visible)
     },
     {
       id: 4,
       label: "Profile",
       link: "/profile",
       icon: "icon-profile",
-      isActive: (props) => (window.location.pathname === "/profile" && !props.modal.visible)
+      isActive: (props) => (isEqual("/profile") && !props.modal.visible)
     }
   ],
   CONTENT: [

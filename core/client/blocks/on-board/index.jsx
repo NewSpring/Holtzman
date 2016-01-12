@@ -30,7 +30,7 @@ class OnBoard extends Component {
 
   goBack = (e) => {
     e.preventDefault();
-    if (typeof window != undefined && window != null) {
+    if (typeof window != "undefined" && window != null) {
       window.history.back()
     }
   }

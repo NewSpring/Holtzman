@@ -104,7 +104,7 @@ export default class Map extends Component {
 
   render () {
 
-    if (typeof window != undefined && window != null ) {
+    if (typeof window != "undefined" && window != null ) {
       return (
         <GoogleMap
           center={this.props.center}
