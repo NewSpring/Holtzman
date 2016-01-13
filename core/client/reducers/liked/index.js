@@ -22,6 +22,12 @@ export default createReducer(initial, {
     return {...state,
       likes: nextLikes
     }
+  },
+
+  ["LIKED.SET"](state, action) {
+    return {...state,
+      likes: action.content
+    }
   }
 
 });
