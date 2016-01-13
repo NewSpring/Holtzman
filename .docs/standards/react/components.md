@@ -80,4 +80,4 @@ export default class NavLayout extends Component {
 
 ## Connect / Redux
 
-Components can connect to the redux store but should shy away from mapping props which will cause re-renders outside of the knowledge of the container component. Connections to the store should be used to gain access to dispatch to trigger store changes.
+Components should not interact with the store, that is the containers job
