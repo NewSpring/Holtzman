@@ -28,9 +28,14 @@ export default class NavLayout extends React.Component {
   }
 
   isLiked = () => {
-    const urlParts = window.location.pathname.split("/");
-    const entryId = urlParts[urlParts.length-1];
-    return _.contains(this.props.liked.likes, String(entryId))
+    if (typeof window != "undefined" && window != null) {
+      const urlParts = window.location.pathname.split("/");
+      const entryId = urlParts[urlParts.length-1];
+      return _.contains(this.props.liked.likes, String(entryId))
+    }
+
+    return false
+
   }
 
   render () {
