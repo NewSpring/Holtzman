@@ -3,7 +3,7 @@
   Navigation store
 
 */
-import { modal as modalActions } from "../../actions/"
+import { modal as modalActions, liked as likedActions } from "../../actions/"
 import { Sections } from "../../blocks"
 
 const back = () => {
@@ -72,7 +72,7 @@ const links = {
   CONTENT: [
     { id: 1, action: back, icon:"icon-arrow-back" },
     { id: 2, action: showSections, icon:"icon-sections" },
-    { id: 3, action: false, icon:"icon-like" },
+    { id: 3, action: false, icon:"icon-like", isActive: (props) => props.liked },
     { id: 4, action: false, icon:"icon-share" }
   ],
   MODAL: [
@@ -93,6 +93,17 @@ export default function nav(state = initial, action) {
     case "NAV.SET_LINKS":
       return { ...state, ...{
         links: [ ...state.links, ...action.links ]
+      } }
+    case "NAV.SET_ACTION":
+      return { ...state, ...{
+        links: [
+          ...state.links.slice(0,action.props.id-1),
+          {
+            ...state.links[action.props.id-1],
+            action: action.props.action,
+          },
+          ...state.links.slice(action.props.id)
+        ]
       } }
     case "NAV.SET_VISIBILITY":
       return { ...state, ...{

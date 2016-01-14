@@ -6,6 +6,8 @@ import { Link } from "react-router"
 
 import { Split, Left, Right } from "../../../../core/client/layouts/split"
 
+import LikesList from "./home.likesList"
+
 
 const map = (state) => ({ auth: state.onBoard.authorized, person: state.onBoard.person })
 
@@ -55,6 +57,7 @@ export default class Home extends Component {
         <Left scroll={true} >
           <div className="soft soft-double@lap-and-up push-double@lap-wide-and-up">
 
+            <LikesList />
 
           </div>
         </Left>

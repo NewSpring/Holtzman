@@ -4,8 +4,12 @@ import { connect } from "react-redux"
 
 import Global from "./global"
 import { storeRoutes } from "../../../lib/store"
-import { onBoard as onBoardActions } from "../../actions"
+import {
+  onBoard as onBoardActions,
+  liked as likedActions
+} from "../../actions"
 import { People } from "../../../../rock/lib/collections"
+import { Likes } from "../../../lib/collections"
 
 import { onBoard } from "../../../../rock/client/middlewares"
 import { addMiddleware } from "../../middlewares"
@@ -25,6 +29,11 @@ const bindMeteorPerson = (props) => {
     if (user) {
       Meteor.subscribe("people")
       dispatch(onBoardActions.person(People.find().fetch()[0]))
+
+      Meteor.subscribe("likes")
+      let likes = Likes.find().fetch().map((like) => like.entryId);
+
+      dispatch(likedActions.set(likes));
 
     }
 
