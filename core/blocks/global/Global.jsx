@@ -37,6 +37,18 @@ const bindMeteorPerson = (props) => {
 
 }
 
+const App = ({ children }) => (
+  <div className="
+    push-double-bottom@handheld soft-bottom@handheld
+    push-double-left@lap-and-up soft-double-left@lap-and-up
+    "
+  >
+    {children}
+    <Nav />
+    <Modal/>
+  </div>
+)
+
 @connect()
 export default class Global extends Component {
 
@@ -50,18 +62,6 @@ export default class Global extends Component {
     this.handle.stop()
   }
 
-  render() {
-    return (
-      <div className="
-        push-double-bottom@handheld soft-bottom@handheld
-        push-double-left@lap-and-up soft-double-left@lap-and-up
-        "
-      >
-        {this.props.children}
-        <Nav />
-        <Modal/>
-      </div>
-    )
-  }
+  render() { return <App {...this.props} /> }
 
 }
