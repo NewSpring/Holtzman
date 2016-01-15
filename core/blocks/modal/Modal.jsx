@@ -77,7 +77,6 @@ export default class SideModal extends Component {
     return classes.join(" ");
   }
 
-
   render () {
     const { close, component, props } = this.props
 
@@ -95,7 +94,6 @@ export default class SideModal extends Component {
             <div className={ this.childClasses() }>
               <component {...props} />
             </div>
-
           </section>
         </VelocityComponent>
       </div>
