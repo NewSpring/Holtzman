@@ -78,6 +78,9 @@ export default class SideModal extends Component {
   }
 
   render () {
+    
+    let slide = "transition.slideLeftIn"
+
     const { close, component, props } = this.props
 
     return (
