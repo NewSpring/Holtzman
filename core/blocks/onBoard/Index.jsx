@@ -9,23 +9,10 @@ import SignOut from "./Signout"
 import ForgotPassword from "./ForgotPassword"
 
 
-/*
-
-  States of the OnBoard component
-
-  1. SignIn / SignUp
-  2. Forgot Password
-
-*/
 // We only care about the onboard state
-function mapStateToProps(state) {
-  return {
-    onboard: state.onBoard
-  }
-}
-
-@connect(mapStateToProps, onBoardActions)
-class OnBoard extends Component {
+const map = (state) => ({ onboard: state.onBoard })
+@connect(map, onBoardActions)
+class OnBoardContainer extends Component {
 
   goBack = (e) => {
     e.preventDefault();
