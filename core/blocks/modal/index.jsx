@@ -61,7 +61,6 @@ export default class SideModalContainer extends Component {
 
     let enter = "fadeIn"
     let exit = "fadeOut"
-    let slide = "transition.slideLeftIn"
 
     const { visible, content, props } = this.props.modal
 
