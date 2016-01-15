@@ -5,6 +5,7 @@ import Forms from "./forms"
 import Loading from "./loading"
 import Map from "./map"
 import Icons from "./icons"
+import States from "./states"
 
 export default {
   Card,
@@ -12,5 +13,6 @@ export default {
   Forms,
   Loading,
   Map,
-  Icons
+  Icons,
+  States
 }
