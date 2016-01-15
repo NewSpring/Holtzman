@@ -1,7 +1,17 @@
 
-import Lib from "./lib/index"
-import Client from "./client/index"
-import Server from "./server/index"
-import ReduxBindings from "./redux-bindings"
+/*
 
-export { Lib, Client, Server, ReduxBindings }
+  Apollos Core
+
+*/
+import "./startup"
+
+import publish from "./publications"
+import { Wrapper, createReduxStore } from "./store"
+
+export default {
+  name: "Apollos",
+  publish,
+  Wrapper,
+  createReduxStore,
+}
