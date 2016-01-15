@@ -1,13 +1,19 @@
 
+import { addReducer, addMiddleware } from "../utilities"
+
 import types from "./types"
 import reducer from "./reducer"
 import middleware from "./middleware"
 
 
+addReducer({
+  onBoard: reducer
+})
+
+addMiddleware(middleware)
+
 export default {
   types,
-  reducer,
-  middleware,
 
   setAccount: (account) => ({ type: types.SET_ACCOUNT_STATUS, account }),
 
@@ -34,6 +40,6 @@ export default {
 
   authorize: (authorized) => ({ type: types.IS_AUTHORIZED, authorized }),
 
-  person: (person) => ({ type: types.SET_PERSON, person })
+  person: (person) => ({ type: types.SET_PERSON, person }),
 
 }

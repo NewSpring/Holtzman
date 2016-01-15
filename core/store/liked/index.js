@@ -10,12 +10,14 @@
     used for loading likes from db
 
 */
-
 import reducer from "./reducer"
+import { addReducer } from "../utilities"
+
+addReducer({
+  liked: reducer
+})
 
 export default {
-  reducer,
-
   toggle: (props) => ({ type: "LIKED.TOGGLE", props }),
 
   set: (content) => ({ type: "LIKED.SET", content })

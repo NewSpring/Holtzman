@@ -26,6 +26,11 @@
 
 */
 import reducer from "./reducer"
+import { addReducer } from "../utilities"
+
+addReducer({
+  nav: reducer
+})
 
 export default {
   reducer,

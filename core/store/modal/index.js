@@ -17,10 +17,15 @@
 
 */
 import reducer from "./reducer"
+import { addReducer } from "../utilities"
+
+addReducer({
+  modal: reducer
+})
 
 export default {
   reducer,
-  
+
   hide: () => ({ type: "MODAL.SET_VISIBILITY", visible: false }),
   show: () => ({ type: "MODAL.SET_VISIBILITY", visible: true }),
 
