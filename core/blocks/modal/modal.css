@@ -1,0 +1,22 @@
+:local(.side-panel){
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+
+  width: 375px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 767px) {
+  :local(.side-panel) {
+    width: 100%;
+  }
+
+  :local(.interior) {
+    padding-bottom: 120px;
+  }
+
+}
