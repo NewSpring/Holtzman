@@ -1,8 +1,7 @@
 
-import { storeRoutes } from "../core/lib/store"
 
-import { Auth } from "../core/client/layouts/global"
-import { Home, Routes } from "./client/pages"
+import { Auth } from "../core/blocks/"
+import { Home, Routes } from "./pages"
 
 export default storeRoutes({
   path: "profile",

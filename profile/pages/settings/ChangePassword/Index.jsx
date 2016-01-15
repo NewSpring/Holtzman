@@ -6,7 +6,7 @@ import { nav } from "../../../core/store"
 import { reset } from "../../../core/methods/auth/client"
 
 import { Error, Loading } from "../../../core/components/states"
-import Success from "./Success"
+import Success from "../Success"
 import Layout from "./Layout"
 
 @connect()
@@ -78,7 +78,7 @@ export default class ChangePassword extends Component {
       case "loading":
         return <Loading msg="Updating your password..." />
       case "success":
-        return <Success />
+        return <Success msg="Your password has been updated!" />
       default:
         return  (
           <Layout
