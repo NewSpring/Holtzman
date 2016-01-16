@@ -2,7 +2,7 @@ import React, { PropTypes } from "react"
 import ReactDom from "react-dom"
 
 import { Controls, Forms } from "../../components"
-import { Validate } from "../../util"
+import Validate from "../../util/validate"
 
 
 class SignIn extends React.Component {

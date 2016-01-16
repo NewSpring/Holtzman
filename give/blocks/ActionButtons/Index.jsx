@@ -159,12 +159,17 @@ export default class GiveNow extends Component {
           text={this.buttonText()}
           onClick={this.onClick}
         />
-        <SecondaryButton
-          disabled={this.props.disabled}
-          authorized={this.data.authorized}
-          onClick={this.register}
-        />
+        {() => {
+          if (!this.data.authorized) {
+            return (
+              <SecondaryButton
+                disabled={this.props.disabled}
+                onClick={this.register}
+              />
+            )
+          }
 
+        }()}
         {() => {
           if (!this.data.authorized && !this.props.disabledGuest) {
             return (

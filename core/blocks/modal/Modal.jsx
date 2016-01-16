@@ -13,7 +13,7 @@ export default class SideModal extends Component {
     offset: PropTypes.bool,
     styles: PropTypes.object,
     close: PropTypes.func.isRequired,
-    component: PropTypes.func.isRequired,
+    component: PropTypes.func,
     props: PropTypes.object.isRequired
   }
 
@@ -85,9 +85,14 @@ export default class SideModal extends Component {
 
     let slide = "transition.slideLeftIn"
 
-    const { close, component, props } = this.props
+    const { close, component, props, visible } = this.props
 
     let ChildComponent = component
+
+    if (!visible || !component) {
+      return <div></div>
+    }
+
     return (
       <div className="panel overlay--solid-dark" onClick={close}>
         <VelocityComponent

@@ -107,7 +107,7 @@ export default class Give extends Component {
         zip: Home.PostalCode
       }
     }
-    console.log(mappedPerson)
+
     this.props.dispatch(giveActions.save(mappedPerson))
 
   }
@@ -292,7 +292,6 @@ export default class Give extends Component {
       method = "Give.schedule.charge"
     }
 
-    console.log(method)
     Meteor.call(method, token, this.props.give.data.payment.name, (err, response) => {
 
       console.log(err)

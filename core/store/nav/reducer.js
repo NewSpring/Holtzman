@@ -27,7 +27,6 @@ const showSections = (props) => {
   }
 
   sectionsVisible = true
-  console.log("rendering sections...", Sections)
   return modalActions.render(Sections, { keepNav: true })
 }
 

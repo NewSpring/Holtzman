@@ -64,27 +64,19 @@ export default class SideModalContainer extends Component {
 
     const { visible, content, props } = this.props.modal
 
-    console.log(visible,content, props)
-
     return (
       <VelocityTransitionGroup
         enter={{ animation: enter, duration: 250 }}
         leave={{ animation: exit, duration: 250 }}
       >
-      {() => {
-        if (!visible || !content) {
-          return null
-        }
 
-        return (
-          <Modal
-            close={this.close}
-            component={content}
-            props={props}
-            {...this.props}
-          />
-        )
-      }()}
+        <Modal
+          close={this.close}
+          component={content}
+          props={props}
+          visible={visible}
+          {...this.props}
+        />
 
       </VelocityTransitionGroup>
     )

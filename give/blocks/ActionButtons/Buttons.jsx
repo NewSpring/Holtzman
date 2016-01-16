@@ -7,7 +7,7 @@ const PrimaryButton = ({ disabled, classes, onClick, text, icon }) => (
 
 )
 
-const SecondaryButton = ({ disabled, authorized, onClick }) => {
+const SecondaryButton = ({ disabled, onClick }) => {
 
   let classes = [
     "btn--thin",
@@ -28,21 +28,16 @@ const SecondaryButton = ({ disabled, authorized, onClick }) => {
     classes.push("btn--dark-tertiary")
   }
 
-
-  if (!authorized) {
-    return (
-      <button
-        style={style}
-        disabled={disabled}
-        className={classes.join(" ")}
-        onClick={onClick}
-      >
-        Register
-      </button>
-    )
-  }
-
-  return null
+  return (
+    <button
+      style={style}
+      disabled={disabled}
+      className={classes.join(" ")}
+      onClick={onClick}
+    >
+      Register
+    </button>
+  )
 }
 
 const Guest = ({ disabled, onClick }) => {
