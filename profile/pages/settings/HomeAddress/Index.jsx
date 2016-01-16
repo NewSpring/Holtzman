@@ -6,6 +6,7 @@ import { updateHome } from "../../../../core/auth/client"
 import { Error, Loading } from "../../../core/components/states"
 
 import Success from "../Success"
+import Layout from "./Layout"
 
 const map = (state) => ({ person: state.onBoard.person })
 @connect(map)

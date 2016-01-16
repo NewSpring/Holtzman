@@ -3,9 +3,12 @@ import { connect } from "react-redux"
 
 import Moment from "moment"
 
-import { Campuses } from "../../../../core/collections"
+import { Campuses, States } from "../../../../core/collections"
 import { nav } from "../../../../core/store"
 import { update } from "../../../../core/methods/auth/client/"
+
+import Success from "../Success"
+import Layout from "./Layout"
 
 const map = (state) => ({ person: state.onBoard.person })
 @connect(map)
@@ -122,9 +125,9 @@ export default class PersonalDetails extends Component {
 
     switch (state) {
       case "error":
-        return <Err msg="Looks like there was a problem" error={error} />
+        return <States.Err msg="Looks like there was a problem" error={error} />
       case "loading":
-        return <Loading msg="Updating your information..." />
+        return <States.Loading msg="Updating your information..." />
       case "success":
         return <Success msg="Your information has been updated!" />
       default:

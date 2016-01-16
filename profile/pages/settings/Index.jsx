@@ -3,6 +3,8 @@ import { connect } from "react-redux"
 
 import { onBoard as onBoardActions } from "../../../core/store"
 
+import Layout from "./Layout"
+
 import Menu from "./Menu"
 import ChangePassword from "./ChangePassword"
 import PersonalDetails from "./PersonalDetails"
