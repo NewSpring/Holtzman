@@ -48,6 +48,15 @@ const addMiddleware = (...newWares) => {
   for (let middleware of newWares) { middlewares.push(middleware) }
 }
 
+// stored sagas for use with other packages
+const sagas = []
+
+const addSaga = (...newSagas) => {
+  for (let sagas of newSagas) { sagass.push(sagas) }
+}
+
+
+
 export default {
   addMiddleware,
   middlewares,
@@ -55,4 +64,7 @@ export default {
   addReducer,
   createReducer,
   reducers,
+
+  sagas,
+  addSaga
 }
