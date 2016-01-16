@@ -2,13 +2,14 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
-import { Forms, Loading } from "../../../../core/client/components"
+import { Forms, Loading } from "../../../core/components"
 
-import { give as giveActions } from "../../actions"
+import { give as giveActions } from "../../store"
 
-import GiveNow from "../action-buttons"
+import GiveNow from "../ActionButtons"
 
-import Styles from "./styles.css"
+import Layout from "./Layout"
+
 
 // We only care about the give state
 const map = (state) => ({ give: state.give })
@@ -139,6 +140,7 @@ export default class CartContainer extends Component {
         accounts={this.props.accounts}
         primary={primaryAccount}
         save={this.saveData}
+        monentize={this.monentize}
         format={this.format}
         preFill={this.preFillValue}
         total={total}

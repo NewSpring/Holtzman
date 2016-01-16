@@ -3,7 +3,8 @@
   Navigation store
 
 */
-import { modal as modalActions, liked as likedActions } from "../../actions/"
+import modalActions from "../modal"
+import likedActions from "../liked"
 import { Sections } from "../../blocks"
 
 const back = () => {

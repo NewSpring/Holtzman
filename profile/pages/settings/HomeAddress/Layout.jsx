@@ -1,110 +1,110 @@
-import { PropTypes } from "react"
+import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 
 import { Forms } from "../../../../core/components"
 
-const Layout = ({ home, update }) => {
+export default class Layout extends Component {
+  static propTypes = {
+    home: PropTypes.object,
+    update: PropTypes.func
+  }
 
-  let {
-    City,
-    Country,
-    PostalCode,
-    State,
-    Street1,
-    Street2
-  } = home
+  render () {
+    const { update, home } = this.props
 
-  return (
-    <div className="one-whole text-center push-double-top@lap-and-up">
-      <Forms.Form
-        id="reset-password"
-        classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
-        submit={update}
-      >
-        <div className="push-double">
-          <h4 className="text-center">
-            My Home Address
-          </h4>
-        </div>
+    let {
+      City,
+      Country,
+      PostalCode,
+      State,
+      Street1,
+      Street2
+    } = home
 
-        <Forms.Input
-          name="Street1"
-          label="Street"
-          ref="Street1"
-          type="text"
-          defaultValue={Street1}
-        />
-        <Forms.Input
-          name="Street2"
-          label="Street 2 (Optional)"
-          ref="Street2"
-          type="text"
-          defaultValue={Street2}
-        />
-        <div className="grid">
-
-          <div className="grid__item two-fifths">
-            <Forms.Input
-              name="City"
-              label="City"
-              defaultValue={City}
-              ref="City"
-            />
+    return (
+      <div className="one-whole text-center push-double-top@lap-and-up">
+        <Forms.Form
+          id="reset-password"
+          classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
+          submit={update}
+        >
+          <div className="push-double">
+            <h4 className="text-center">
+              My Home Address
+            </h4>
           </div>
 
-          <div className="grid__item three-fifths">
+          <Forms.Input
+            name="Street1"
+            label="Street"
+            ref="Street1"
+            type="text"
+            defaultValue={Street1}
+          />
+          <Forms.Input
+            name="Street2"
+            label="Street 2 (Optional)"
+            ref="Street2"
+            type="text"
+            defaultValue={Street2}
+          />
+          <div className="grid">
 
-            <div className="grid">
+            <div className="grid__item two-fifths">
+              <Forms.Input
+                name="City"
+                label="City"
+                defaultValue={City}
+                ref="City"
+              />
+            </div>
 
-              <div className="grid__item one-half">
-                <Forms.Input
-                  name="State"
-                  label="State"
-                  defaultValue={State}
-                  ref="State"
-                />
+            <div className="grid__item three-fifths">
 
-              </div>
-              <div className="grid__item one-half">
-                <Forms.Input
-                  name="PostalCode"
-                  label="Zip"
-                  defaultValue={PostalCode}
-                  ref="PostalCode"
-                />
+              <div className="grid">
+
+                <div className="grid__item one-half">
+                  <Forms.Input
+                    name="State"
+                    label="State"
+                    defaultValue={State}
+                    ref="State"
+                  />
+
+                </div>
+                <div className="grid__item one-half">
+                  <Forms.Input
+                    name="PostalCode"
+                    label="Zip"
+                    defaultValue={PostalCode}
+                    ref="PostalCode"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <Link to="/profile/settings" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">
-          Back
-        </Link>
+          <Link to="/profile/settings" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">
+            Back
+          </Link>
 
-        {() => {
-          let btnClasses = ["push-left"];
-          let ready = true
-          if (!ready){
-            btnClasses.push("btn--disabled");
-          } else {
-            btnClasses.push("btn");
-          }
+          {() => {
+            let btnClasses = ["push-left"];
+            let ready = true
+            if (!ready){
+              btnClasses.push("btn--disabled");
+            } else {
+              btnClasses.push("btn");
+            }
 
-          return (
-            <button className={btnClasses.join(" ")}>
-              Update
-            </button>
-          )
-        }()}
-      </Forms.Form>
-    </div>
-  )
+            return (
+              <button className={btnClasses.join(" ")}>
+                Update
+              </button>
+            )
+          }()}
+        </Forms.Form>
+      </div>
+    )
+  }
 }
-
-Layout.propTypes = {
-  home: PropTypes.obj,
-  update: PropTypes.func
-}
-
-
-export default Layout

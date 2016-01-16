@@ -147,7 +147,7 @@ const PP = () => (
 )
 
 @connect()
-export default class PP extends Component {
+export default class PrivacyPolicy extends Component {
 
   componentWillMount(){
     this.props.dispatch(nav.setLevel("CONTENT"))

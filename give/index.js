@@ -1,15 +1,13 @@
 
-import { storeRoutes } from "../core/lib/store"
+import { Global } from "../core/blocks"
+import { Home, Routes } from "./pages"
 
-import { User } from "../core/client/layouts/global"
-import { Home, Routes } from "./client/pages"
-
-export default storeRoutes({
+export default {
   path: "give",
-  component: User,
+  component: Global,
   indexRoute: { component: Home },
   childRoutes: Routes
-})
+}
 // export default storeRoutes({
 //   path: "give",
 //   getComponent(location, cb) {

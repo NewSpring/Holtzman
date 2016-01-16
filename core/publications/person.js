@@ -1,9 +1,9 @@
 /*global REST2DDP, Meteor */
 
-import { api } from "../../lib/api"
+import { api } from "../util/rock"
 
 const people = () => {
-  if (api._ && api._.baseURL && REST2DDP) {
+  if (api._ && api._.baseURL && typeof REST2DDP != "undefined") {
 
 
     const getPerson = function (callback) {

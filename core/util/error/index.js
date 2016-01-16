@@ -1,5 +1,5 @@
 
-import { inherit } from "../util/inherit"
+import { inherit } from "../inherit"
 
 
 // Makes an error subclass which properly contains a stack trace in most

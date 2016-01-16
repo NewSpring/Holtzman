@@ -1,10 +1,10 @@
 
-import { Success } from "../../../core/components/icons"
+import { Success as SuccessIcon } from "../../../core/components/icons"
 
 const Success = ({ total, email, guest, onClick }) => (
   <div className="soft soft-double-ends push-double-top one-whole text-center">
     <div className="push-double-top">
-      <Success />
+      <SuccessIcon />
       <h3 className="text-primary push-ends">Success!</h3>
       <p className="text-left">
         Thank you for your gift of {total} to NewSpring Church. We will email a reciept to {email}

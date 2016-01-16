@@ -8,6 +8,7 @@ import { nav as navActions } from "../../../core/store"
 import { ScheduledTransactions, Accounts as Acc } from "../../collections"
 
 import Details from "./Details"
+import Layout from "./Layout"
 
 @connect()
 @ReactMixin.decorate(ReactMeteorData)

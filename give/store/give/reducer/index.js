@@ -6,10 +6,10 @@
 
 */
 import { createReducer } from "../../../../core/store"
-import { types } from "../types"
+import types from "../types"
 
 import { progress, step } from "./progress"
-import { savedAccount } from "./savedAccount"
+import { savedAccount } from "./savedAccounts"
 import { addTransaction, clearTransactions } from "./transactions"
 
 const initial = {

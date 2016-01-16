@@ -1,6 +1,6 @@
 /*global serverWatch */
 
-import { api } from "../../util/rock"
+import { api } from "../util/rock"
 
 const alive = () => {
   if (api._ && api._.baseURL && typeof serverWatch != "undefined") {

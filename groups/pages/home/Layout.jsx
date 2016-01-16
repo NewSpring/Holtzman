@@ -41,7 +41,7 @@ const Layout = ({ photo, person }) => (
 
 Layout.propTypes = {
   photo: PropTypes.string,
-  person: PropTypes.obj
+  person: PropTypes.object
 }
 
 export default Layout

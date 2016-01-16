@@ -1,6 +1,6 @@
 import { Component, PropTypes} from "react"
 
-import Styles from "./loading.spinner.css"
+import Styles from "./spinner.css"
 
 function getClasses(mergeClasses) {
   let classes = [

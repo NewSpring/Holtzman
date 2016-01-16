@@ -1,3 +1,4 @@
+import { PropTypes } from "react"
 import { Link } from "react-router"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
@@ -8,7 +9,7 @@ const Close = () => (
   </Link>
 )
 
-const Layout = ({ photo, person }) => (
+const Layout = ({ photo, person, children }) => (
   <Split nav={true}>
 
     <Right
@@ -17,7 +18,7 @@ const Layout = ({ photo, person }) => (
       ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
       background={photo}
       blur={true}
-      outsideRatio={this.close}
+      outsideRatio={Close}
     >
       <div className="soft one-whole">
         <div
@@ -31,7 +32,7 @@ const Layout = ({ photo, person }) => (
     </Right>
 
     <Left scroll={true} classes={["locked-ends locked-sides"]}>
-      {this.props.children}
+      {children}
     </Left>
 
   </Split>
@@ -39,7 +40,7 @@ const Layout = ({ photo, person }) => (
 
 Layout.propTypes = {
   photo: PropTypes.string,
-  person: PropTypes.obj
+  person: PropTypes.object
 }
 
 export default Layout

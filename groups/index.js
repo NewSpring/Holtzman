@@ -1,7 +1,7 @@
 
 
 import { Global } from "../core/blocks"
-import { Home, Routes } from "./client/pages"
+import { Home, Routes } from "./pages"
 
 export default {
   path: "groups",

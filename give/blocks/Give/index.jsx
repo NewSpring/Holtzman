@@ -342,7 +342,7 @@ export default class Give extends Component {
       case "loading":
         return <Loading msg="We're Processing Your Gift" />
       case "error":
-        return <Err error={} />
+        return <Err />
       case "success":
         return <Success
           total={this.monentize(total)}

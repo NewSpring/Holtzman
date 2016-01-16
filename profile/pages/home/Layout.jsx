@@ -2,7 +2,7 @@ import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
-import Likes from "../../blocks"
+import { Likes } from "../../blocks"
 
 const SettingsLink = () => (
   <Link to="/profile/settings" className="text-light-primary plain soft overlay__item locked-top locked-right">

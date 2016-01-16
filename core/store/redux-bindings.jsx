@@ -4,6 +4,7 @@ import { syncReduxAndRouter, routeReducer } from "redux-simple-router"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 
+import { Global } from "../blocks"
 import { reducers, middlewares } from "./utilities"
 
 const createReduxStore = (initialState, history) => {
@@ -42,7 +43,9 @@ class Wrapper extends Component {
 
   render () {
     return (
-      <Provider store={this.store}>{this.props.children}</Provider>
+      <Provider store={this.store}>
+        {this.props.children}
+      </Provider>
     )
   }
 }

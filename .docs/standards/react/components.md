@@ -29,7 +29,7 @@ export default class NavLayout extends Component {
   static propTypes = {
     classes: PropTypes.array,
     theme: PropTypes.string,
-    style: PropTypes.obj,
+    style: PropTypes.object,
     links: PropTypes.array.isRequired
   }
 

@@ -4,8 +4,8 @@ import Campaign from "./campaign"
 import History from "./history"
 import Schedules from "./schedules"
 
-import { Accounts } from "../../lib/collections"
-import { api, endpoints } from "../../../rock/lib/api/"
+import { Accounts } from "../collections"
+import { api, endpoints } from "../../core/util/rock"
 
 /*global Meteor*/
 if (Meteor.isClient) {

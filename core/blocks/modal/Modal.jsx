@@ -1,6 +1,9 @@
 import { Component, PropTypes} from "react";
 import {VelocityComponent } from "velocity-react";
 
+import styles from "./modal.css"
+import offsetStyles from "../nav/offset.css"
+
 export default class SideModal extends Component {
 
   static propTypes = {
@@ -8,17 +11,17 @@ export default class SideModal extends Component {
     float: PropTypes.bool,
     classes: PropTypes.array,
     offset: PropTypes.bool,
-    styles: PropTypes.obj,
+    styles: PropTypes.object,
     close: PropTypes.func.isRequired,
     component: PropTypes.func.isRequired,
-    props: PropTypes.obj.isRequired
+    props: PropTypes.object.isRequired
   }
 
   static defaultProps = {
     childClasses: [],
     float: false,
     classes: [],
-    offset: false,
+    offset: true,
     styles: {},
     props: {}
   }
@@ -52,37 +55,39 @@ export default class SideModal extends Component {
 
   layoutClasses = () => {
 
-    const { classes, float, offset } = this.props.modal
+    const { float, offset } = this.props
+    const { classes } = this.props.modal.props
 
-    let classes = [
+    let classList = [
       "hard",
       "flush",
       "background--light-primary",
     ];
 
-    if (classes.length) {
-      classes.concat(classes);
+    if (classes && classes.length) {
+      classList.concat(classes);
     } else {
-      classes.push(styles["side-panel"])
+      classList.push(styles["side-panel"])
     }
 
     if (float) {
-      classes.push("floating")
+      classList.push("floating")
     }
 
     if (offset) {
-      classes.push(offset["offset"])
+      classList.push(offsetStyles["offset"])
     }
 
-    return classes.join(" ");
+    return classList.join(" ");
   }
 
   render () {
-    
+
     let slide = "transition.slideLeftIn"
 
     const { close, component, props } = this.props
 
+    let ChildComponent = component
     return (
       <div className="panel overlay--solid-dark" onClick={close}>
         <VelocityComponent
@@ -95,7 +100,7 @@ export default class SideModal extends Component {
             style={ this.props.styles || this.props.style }
           >
             <div className={ this.childClasses() }>
-              <component {...props} />
+              <ChildComponent {...props} />
             </div>
           </section>
         </VelocityComponent>

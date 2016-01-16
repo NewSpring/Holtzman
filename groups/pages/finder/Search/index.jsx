@@ -6,16 +6,12 @@ import Moment from "moment"
 import { VelocityComponent } from "velocity-react"
 import { pushPath } from "redux-simple-router"
 
+import { Forms } from "../../../../core/components"
+import { WindowLoading, Spinner } from "../../../../core/components/loading"
+import { Campuses } from "../../../../core/collections"
+import { nav } from "../../../../core/store"
 
-
-import { Forms } from "../../../../core/client/components"
-import { WindowLoading, Spinner } from "../../../../core/client/components/loading"
-
-import { GroupTopics } from "../../../lib/collections"
-import { Campuses } from "../../../../rock/lib/collections"
-
-import { nav } from "../../../../core/client/actions"
-
+import { GroupTopics } from "../../../collections"
 
 const map = (state) => ({ person: state.onBoard.person })
 

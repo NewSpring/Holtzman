@@ -6,7 +6,7 @@ import { VelocityTransitionGroup } from "velocity-react"
 import { modal as modalActions, nav as navActions } from "../../store"
 
 import Modal from "./Modal.jsx"
-import offset from "../../blocks/nav/nav.offset.css"
+import offset from "../../blocks/nav/offset.css"
 import styles from "./modal.css"
 
 
@@ -64,21 +64,27 @@ export default class SideModalContainer extends Component {
 
     const { visible, content, props } = this.props.modal
 
-    if (!visible || !content) {
-      Modal = null
-    }
 
     return (
       <VelocityTransitionGroup
         enter={{ animation: enter, duration: 250 }}
         leave={{ animation: exit, duration: 250 }}
       >
-        <Modal
-          close={this.close}
-          component={content}
-          props={props}
-          {...this.props}
-        />
+      {() => {
+        if (!visible || !content) {
+          return null
+        }
+
+        return (
+          <Modal
+            close={this.close}
+            component={content}
+            props={props}
+            {...this.props}
+          />
+        )
+      }()}
+
       </VelocityTransitionGroup>
     )
   }

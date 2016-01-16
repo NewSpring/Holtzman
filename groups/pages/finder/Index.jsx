@@ -157,7 +157,7 @@ class Template extends Component {
         photo={photo}
         hash={hash}
         markers={markers}
-      />
+      >
         <Child />
       </Layout>
     )

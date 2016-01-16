@@ -14,7 +14,7 @@ const publish = () => {
   }
 
   for (let pub in rockPublications) {
-    pub()
+    rockPublications[pub]()
   }
 }
 

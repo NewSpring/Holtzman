@@ -9,7 +9,7 @@ function getStyles(style) {
     zIndex: 9999
   }
 
-  return {...defaults, ....style}
+  return {...defaults, ...style}
 
 }
 

@@ -1,7 +1,9 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
-import { give as giveActions } from "../../actions"
+import { give as giveActions } from "../../../store"
+
+import Layout from "./Layout"
 
 @connect(null, giveActions)
 export default class SubFund extends Component {

@@ -1,14 +1,23 @@
 
 
-import { Auth } from "../core/blocks/"
+import { Global, Authorized } from "../core/blocks"
 import { Home, Routes } from "./pages"
 
-export default storeRoutes({
+
+const Root = ({ children }) => (
+  <Global>
+    <Authorized>
+      {children}
+    </Authorized>
+  </Global>
+)
+
+export default {
   path: "profile",
-  component: Auth,
+  component: Root,
   indexRoute: { component: Home },
   childRoutes: Routes
-})
+}
 // export default storeRoutes({
 //   path: "profile",
 //   getComponent(location, cb) {

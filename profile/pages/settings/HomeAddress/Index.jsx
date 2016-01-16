@@ -2,8 +2,8 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
 import { nav } from "../../../../core/store"
-import { updateHome } from "../../../../core/auth/client"
-import { Error, Loading } from "../../../core/components/states"
+import { updateHome } from "../../../../core/methods/auth/client"
+import { Error, Loading } from "../../../../core/components/states"
 
 import Success from "../Success"
 import Layout from "./Layout"
@@ -66,7 +66,7 @@ export default class HomeAddress extends Component {
   render () {
 
     const { Home } = this.props.person
-    const { state } = this.props.state
+    const { state } = this.state
 
     switch (state) {
       case "error":

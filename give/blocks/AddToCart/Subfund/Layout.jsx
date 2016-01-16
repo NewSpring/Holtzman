@@ -14,7 +14,6 @@ const Layout = ({ classes, accounts, state, preFill, showInputs }) => (
       name="select-account"
       id={`${state.id}_select`}
       hideLabel={true}
-      ref="select-account"
       classes={["soft-bottom", "display-inline-block"]}
       inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
       placeholder="select fund here"
@@ -34,7 +33,6 @@ const Layout = ({ classes, accounts, state, preFill, showInputs }) => (
               name={state.fund || "secondary-account"}
               hideLabel={true}
               type="tel"
-              ref="secondary-account"
               classes={["soft-bottom", "input--active", "display-inline-block"]}
               inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
               placeholder="$0.00"

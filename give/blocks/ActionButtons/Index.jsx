@@ -12,7 +12,7 @@ import {
 } from "../../../core/store"
 
 
-import Give from "../give"
+import Give from "../Give"
 import { AccountType } from "../../components"
 import { PaymentDetails } from "../../collections"
 

@@ -1,7 +1,8 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
-import { Nav, Modal } from "../../blocks"
+import Nav from "../nav"
+import Modal from "../modal"
 import { People, Likes } from "../../collections"
 
 import {
@@ -48,6 +49,8 @@ const App = ({ children }) => (
     <Modal/>
   </div>
 )
+
+
 
 @connect()
 export default class Global extends Component {

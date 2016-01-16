@@ -1,6 +1,6 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
-
+import ReactMixin from "react-mixin"
 import Moment from "moment"
 
 import { Campuses, States } from "../../../../core/collections"

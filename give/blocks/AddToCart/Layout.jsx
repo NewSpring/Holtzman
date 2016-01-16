@@ -1,6 +1,11 @@
 import { Component, PropTypes} from "react"
 
+import { Forms } from "../../../core/components"
+
+import GiveNow from "../ActionButtons"
+
 import SubFund from "./Subfund"
+import Styles from "./styles.css"
 
 const Layout = ({
     accounts,
@@ -10,7 +15,8 @@ const Layout = ({
     preFill,
     total,
     transactions,
-    otherAccounts
+    otherAccounts,
+    monentize,
   }) => (
     <div className="push-top@handheld soft-half-top@lap-and-up">
       <Forms.Form
@@ -33,12 +39,11 @@ const Layout = ({
           name={primary.Name}
           type="tel"
           hideLabel={true}
-          ref="primary-account"
           classes={["soft-bottom", "input--active", "display-inline-block"]}
           inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
           placeholder="$0.00"
           validate={save}
-          format={}
+          format={format}
           defaultValue={preFill(primary.Id)}
         />
 
@@ -72,7 +77,7 @@ const Layout = ({
           }()}
 
           <h3 className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">so my gift total is</h3>
-          <h3 className="display-inline-block text-brand push-half-bottom">{this.monentize(total, true)}</h3>
+          <h3 className="display-inline-block text-brand push-half-bottom">{monentize(total, true)}</h3>
         </div>
 
         <div className="push-top">

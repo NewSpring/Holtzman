@@ -5,7 +5,7 @@
 */
 import types from "./types"
 import reducer from "./reducer"
-import { addReducer } from "../utilities"
+import { addReducer } from "../../../core/store"
 
 addReducer({
   give: reducer

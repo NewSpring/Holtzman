@@ -23,7 +23,11 @@ class Template extends Component {
     const { PhotoUrl } = person
     let photo = PhotoUrl ? `//core-rock.newspring.cc/${PhotoUrl}` : null
 
-    return <Layout photo={photo} person={person} />
+    return (
+      <Layout photo={photo} person={person} >
+        {this.props.children}
+      </Layout>
+    )
   }
 }
 

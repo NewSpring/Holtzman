@@ -74,7 +74,7 @@ Layout.propTypes = {
   onHover: PropTypes.func,
   onClick: PropTypes.func,
   hover: PropTypes.bool,
-  active PropTypes.bool
+  active: PropTypes.bool
 }
 
 export default Layout

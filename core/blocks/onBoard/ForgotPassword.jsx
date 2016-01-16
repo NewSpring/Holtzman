@@ -10,7 +10,7 @@ class ForgotPassword extends React.Component {
     save: PropTypes.func.isRequired,
     clear: PropTypes.func.isRequired,
     email: PropTypes.string,
-    errors: PropTypes.obj.isRequired,
+    errors: PropTypes.object.isRequired,
     back: PropTypes.func.isRequired,
     submit: PropTypes.func.isRequired,
   }

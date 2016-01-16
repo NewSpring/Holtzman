@@ -8,7 +8,7 @@ import { Validate } from "../../util"
 class SignIn extends React.Component {
 
   static propTypes = {
-    setAccount: PropTypes.func.isRequired
+    setAccount: PropTypes.func.isRequired,
     save: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
     back: PropTypes.func.isRequired,

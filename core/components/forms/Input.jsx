@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 import ReactDom from "react-dom";
 
-import Label from "./components/label"
+import Label from "./components/Label"
 
 export default class Input extends Component {
 

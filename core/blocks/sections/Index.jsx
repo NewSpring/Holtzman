@@ -6,7 +6,7 @@ import { Sections } from "../../collections"
 import { sections as sectionActions, modal } from "../../store"
 import OnBoard from "../onBoard"
 
-import Groups from "./Groups."
+import Groups from "./Groups"
 
 const map = (state) => ({ sections: state.sections })
 
@@ -69,4 +69,5 @@ export default class SectionsContainer extends Component {
     }
 
     return <Groups items={chunkedItems} hide={this.hide}/>
+  }
 }

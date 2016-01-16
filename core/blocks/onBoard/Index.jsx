@@ -12,7 +12,7 @@ import ForgotPassword from "./ForgotPassword"
 // We only care about the onboard state
 const map = (state) => ({ onboard: state.onBoard })
 @connect(map, onBoardActions)
-class OnBoardContainer extends Component {
+export default class OnBoardContainer extends Component {
 
   goBack = (e) => {
     e.preventDefault();
@@ -44,12 +44,13 @@ class OnBoardContainer extends Component {
     const {
       data,
       errors,
-      account,
       state,
       success,
       forgot,
       authorized
     } = this.props.onboard
+
+    let account = this.props.onboard.account
 
     if (typeof this.props.account != "undefined") {
       account = this.props.account
@@ -102,5 +103,3 @@ class OnBoardContainer extends Component {
     )
   }
 }
-
-export default OnBoard;

@@ -2,10 +2,10 @@ import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import { connect } from "react-redux"
 
-import { nav } from "../../../core/store"
-import { reset } from "../../../core/methods/auth/client"
+import { nav } from "../../../../core/store"
+import { reset } from "../../../../core/methods/auth/client"
 
-import { Error, Loading } from "../../../core/components/states"
+import { Error, Loading } from "../../../../core/components/states"
 import Success from "../Success"
 import Layout from "./Layout"
 

@@ -1,6 +1,6 @@
 /*global REST2DDP */
 
-import { api } from "../../util/rock"
+import { api } from "../util/rock"
 
 const campuses = () => {
   if (api._ && api._.baseURL && typeof REST2DDP != "undefined") {
