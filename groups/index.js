@@ -1,16 +1,15 @@
 
-import { storeRoutes } from "../core/lib/store"
 
-import { User } from "../core/client/layouts/global"
+import { Global } from "../core/blocks"
 import { Home, Routes } from "./client/pages"
 
-export default storeRoutes({
+export default {
   path: "groups",
-  component: User,
+  component: Global,
   // indexRoute: { component: Home },
   childRoutes: Routes,
   // onEnter: (_, replaceState) => replaceState(null, "/groups/finder")
-})
+}
 // export default storeRoutes({
 //   path: "profile",
 //   getComponent(location, cb) {

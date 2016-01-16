@@ -1,14 +1,8 @@
 import { Component, PropTypes, Children, cloneElement} from "react"
 import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
 
-import { Link } from "react-router"
-
-import { Split, Left, Right } from "../../../../core/client/layouts/split"
-import { Map } from "../../../../core/client/components"
-
-import Search from "./finder.search"
-import List from "./finder.list"
+import Search from "./Search"
+import List from "./List"
 
 const map = (state) => ({ person: state.onBoard.person })
 
@@ -132,7 +126,7 @@ class Template extends Component {
       onHover: this.onMarkerHover
     }}
 
-    let childrenWithProps = Children.map(this.props.children, (child) => {
+    let Child = Children.map(this.props.children, (child) => {
         return cloneElement(child, passedProps);
     })
 
@@ -144,7 +138,6 @@ class Template extends Component {
 
     let overlayClasses = ["floating"]
     let overlayChildClasses = []
-    let bool = true
 
     const { hash } = this.props.params
 
@@ -158,46 +151,15 @@ class Template extends Component {
     }
 
     return (
-      <Split nav={true}>
-
-
-        <Right
-          mobile={true}
-          classes={overlayClasses}
-          ratioClasses={overlayChildClasses}
-          background={photo}
-        >
-          {() => {
-            if (hash) {
-              return (
-                <Map
-                  markers={markers}
-                  onMarkerHover={this.onMarkerHover}
-                  onChildClick={this.onChildClick}
-                  active={this.state.active}
-                  hover={this.state.hover}
-                />
-              )
-            }
-
-            return (
-              <div className="soft one-whole">
-               <h4 className="text-light-primary soft-half-top flush-bottom">Group Finder</h4>
-               <p className="text-light-primary flush"><em>Find a community</em></p>
-             </div>
-            )
-
-
-          }()}
-
-        </Right>
-
-        <Left scroll={true} >
-          {childrenWithProps}
-        </Left>
-
-      </Split>
-
+      <Layout
+        classes={overlayClasses}
+        childClasses={overlayChildClasses}
+        photo={photo}
+        hash={hash}
+        markers={markers}
+      />
+        <Child />
+      </Layout>
     )
   }
 }
@@ -211,11 +173,7 @@ const Routes = [
       component: Search
     },
     childRoutes: [
-      { path: "list/:hash", component: List },
-      // { path: "personal-details", component: PersonalDetails },
-      // { path: "home-address", component: HomeAddress },
-      // { path: "saved-accounts", component: PaymentDetails },
-      // { path: "privacy-policy", component: PP },
+      { path: "list/:hash", component: List }
     ]
   }
 ]

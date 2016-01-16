@@ -1,9 +1,9 @@
 /*global REST2DDP */
 
-import { api } from "../../../rock/lib/api"
+import { api } from "../../core/util/rock"
 
 const groupTopics = () => {
-  if (api._ && api._.baseURL && REST2DDP) {
+  if (api._ && api._.baseURL && typeof REST2DDP !="undefined") {
 
 
     const getGroupTopics = function (callback) {
