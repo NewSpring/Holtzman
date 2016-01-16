@@ -4,7 +4,7 @@ const AmEx = ({ width, height }) => (
     width={width}
     height={height}
     viewBox="0 0 54 40"
-    style={this.props.style || this.style()}
+
   >
     <title>amex-icon</title>
     <g fill="none" fill-rule="evenodd">
@@ -19,7 +19,7 @@ const Visa = ({ width, height }) => (
     width={width}
     height={height}
     viewBox="0 0 54 40"
-    style={this.props.style || this.style()}
+
   >
     <title>visa-icon</title>
       <g fill="none" fill-rule="evenodd">
@@ -33,7 +33,7 @@ const Discover = ({ width, height }) => (
     width={width}
     height={height}
     viewBox="0 0 54 40"
-    style={this.props.style || this.style()}
+
   >
     <title>discover-icon</title>
       <defs>
@@ -57,7 +57,7 @@ const MasterCard = ({ width, height }) => (
     width={width}
     height={height}
     viewBox="0 0 54 40"
-    style={this.props.style || this.style()}
+
   >
     <title>mastercard-icon</title><defs><path d="M4.636 18.874c2.51-2.317 4.085-5.66 4.085-9.377 0-3.716-1.574-7.06-4.084-9.376C2.126 2.44.55 5.78.55 9.498c0 3.717 1.577 7.06 4.086 9.377z" id="a"/></defs><g fill="none" fill-rule="evenodd"><rect fill="#01009E" width="53.333" height="40" rx="6"/><ellipse fill="#FF0016" cx="18.82" cy="20.328" rx="12.459" ry="12.663"/><ellipse fill="#FFA918" cx="35.568" cy="20.328" rx="12.459" ry="12.663"/><g transform="translate(22.557 10.83)"><mask id="b" fill="#fff"></mask><use fill="#FF0016" /><path fill="#FFA918" mask="url(#b)" d="M-7.715-.317h25.54v1.9h-25.54zM-1.282 3.482h12.46v1.9h-12.46zM-1.282 7.28h12.46v1.9h-12.46zM-1.282 11.08h12.46v1.9h-12.46zM-1.282 14.88h12.46v1.898h-12.46z"/></g></g>
   </svg>
@@ -68,7 +68,7 @@ const Bank = ({ width, height }) => (
     width={width}
     height={height}
     viewBox="0 0 54 40"
-    style={this.props.style || this.style()}
+
   >
     <title>bank-icon</title>
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

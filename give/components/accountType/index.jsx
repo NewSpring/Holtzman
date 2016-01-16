@@ -1,9 +1,11 @@
 
 import { PropTypes} from "react"
 
-import Accounts from "../Icons"
+import { Accounts } from "../Icons"
+console.log(Accounts)
 
 const AccountType = ({ width, height, type }) => {
+
   let style = {
     marginBottom: "-3px",
     marginRight: "-6px",
@@ -22,12 +24,13 @@ const AccountType = ({ width, height, type }) => {
   height || (height = 40)
 
   let Icon = Accounts[type]
+  console.log(Icon, type)
   return <Icon width={width} height={height} />
 }
 
 AccountType.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
+  width: PropTypes.string,
+  height: PropTypes.string,
   type: PropTypes.string.isRequired,
 }
 

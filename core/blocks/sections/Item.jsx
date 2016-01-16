@@ -87,7 +87,7 @@ export default class SectionItem extends Component {
         <div className="grid ">
 
           {children.map((sectionItem, i) => (
-            <Item section={sectionItem} key={i} />
+            <Item section={sectionItem} key={i} go={this.expandOrGo} />
           ))}
 
         </div>
@@ -108,7 +108,7 @@ export default class SectionItem extends Component {
             <div className="grid__item one-whole" >
               <div className="grid">
                 {sections.map((sectionItem, i) => (
-                  <Item section={sectionItem} key={i} />
+                  <Item section={sectionItem} key={i} go={this.expandOrGo} />
                 ))}
               </div>
 

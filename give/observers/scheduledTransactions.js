@@ -1,5 +1,6 @@
 
 import { api } from "../../core/util/rock"
+import { makeNewGuid } from "../../core/util/guid"
 import { ScheduledTransactionReciepts } from "../collections/scheduledTransactions"
 
 const ScheduledTransactions = () => {
@@ -40,7 +41,7 @@ const ScheduledTransactions = () => {
 
         // Create Person
         Person = { ...Person, ...{
-          Guid: api.makeGUID(),
+          Guid: makeNewGuid(),
           IsSystem: false,
           Gender: 0,
           SystemNote: "Created from NewSpring Apollos"
@@ -53,7 +54,7 @@ const ScheduledTransactions = () => {
 
         // Create FinancialPaymentDetail
         FinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
-          Guid: api.makeGUID()
+          Guid: makeNewGuid()
         } }
 
         const FinancialPaymentDetailId = api.post.sync(`FinancialPaymentDetails`, FinancialPaymentDetail)
@@ -64,7 +65,7 @@ const ScheduledTransactions = () => {
 
         // Create ScheduledTransaction
         ScheduledTransaction = { ...ScheduledTransaction, ...{
-          Guid: api.makeGUID(),
+          Guid: makeNewGuid(),
           AuthorizedPersonAliasId: PrimaryAliasId,
           CreatedByPersonAliasId: PrimaryAliasId,
           ModifiedByPersonAliasId: PrimaryAliasId,
@@ -82,7 +83,7 @@ const ScheduledTransactions = () => {
           ScheduledTransactionDetail = { ...ScheduledTransactionDetail, ...{
             AccountId: ScheduledTransactionDetail.AccountId,
             Amount: ScheduledTransactionDetail.Amount,
-            Guid: api.makeGUID(),
+            Guid: makeNewGuid(),
             ScheduledTransactionId,
             CreatedByPersonAliasId: PrimaryAliasId,
             ModifiedByPersonAliasId: PrimaryAliasId
@@ -95,7 +96,7 @@ const ScheduledTransactions = () => {
         if (FinancialPersonSavedAccounts) {
           // Create FinancialPaymentDetail
           let SecondFinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
-            Guid: api.makeGUID()
+            Guid: makeNewGuid()
           } }
 
           let SecondFinancialPaymentDetailId = api.post.sync(`FinancialPaymentDetails`, SecondFinancialPaymentDetail)
@@ -106,7 +107,7 @@ const ScheduledTransactions = () => {
 
           // Create FinancialPersonSavedAccounts
           FinancialPersonSavedAccounts = { ...FinancialPersonSavedAccounts, ...{
-            Guid: api.makeGUID(),
+            Guid: makeNewGuid(),
             PersonAliasId: PrimaryAliasId,
             FinancialPaymentDetailId: SecondFinancialPaymentDetailId,
             CreatedByPersonAliasId: PrimaryAliasId,

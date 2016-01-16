@@ -3,9 +3,8 @@ import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 
 import { Sections } from "../../collections"
-import { sections as sectionActions, modal } from "../../store"
-import OnBoard from "../onBoard"
-
+import modal from "../../store/modal"
+import sectionActions from "../../store/sections"
 import Groups from "./Groups"
 
 const map = (state) => ({ sections: state.sections })
@@ -68,6 +67,6 @@ export default class SectionsContainer extends Component {
       chunkedItems.push(items.splice(0, 2))
     }
 
-    return <Groups items={chunkedItems} hide={this.hide}/>
+    return <Groups items={chunkedItems} hide={this.hide} />
   }
 }

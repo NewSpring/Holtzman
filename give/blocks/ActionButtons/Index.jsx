@@ -164,11 +164,18 @@ export default class GiveNow extends Component {
           authorized={this.data.authorized}
           onClick={this.register}
         />
-        <Guest
-          authorized={(this.data.authorized || this.props.disabledGuest)}
-          disabled={this.props.disabled}
-          onClick={this.giveAsGuest}
-        />
+
+        {() => {
+          if (!this.data.authorized && !this.props.disabledGuest) {
+            return (
+              <Guest
+                disabled={this.props.disabled}
+                onClick={this.giveAsGuest}
+              />
+            )
+          }
+        }()}
+
       </div>
 
     )

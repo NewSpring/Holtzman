@@ -45,7 +45,7 @@ const SecondaryButton = ({ disabled, authorized, onClick }) => {
   return null
 }
 
-const Guest = ({ authorized, disabled, onClick }) => {
+const Guest = ({ disabled, onClick }) => {
   let classes = [
     "outlined--bottom",
     "outlined--light"
@@ -63,18 +63,14 @@ const Guest = ({ authorized, disabled, onClick }) => {
     style = {...style, ...{ cursor: "pointer" } }
   }
 
-  if (!authorized){
-    return (
-      <div className="display-block soft-half-top">
-        <h6 className={classes.join(" ")} style={style} onClick={onClick}>
-          Give as Guest
-        </h6>
-      </div>
+  return (
+    <div className="display-block soft-half-top">
+      <h6 className={classes.join(" ")} style={style} onClick={onClick}>
+        Give as Guest
+      </h6>
+    </div>
+  )
 
-    )
-  }
-
-  return null
 }
 
 export default {

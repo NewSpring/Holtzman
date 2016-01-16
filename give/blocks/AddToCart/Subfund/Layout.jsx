@@ -3,7 +3,7 @@ import { PropTypes } from "react"
 import { Forms } from "../../../../core/components"
 import Styles from "../styles.css"
 
-const Layout = ({ classes, accounts, state, preFill, showInputs }) => (
+const Layout = ({ classes, accounts, state, preFill, showInputs, format }) => (
   <div>
     <div
       className={`display-inline-block push-half-bottom h3 push-half-right ${classes}`}>

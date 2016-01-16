@@ -1,8 +1,12 @@
 import { Component, PropTypes, Children, cloneElement} from "react"
 import { connect } from "react-redux"
 
+import { Map } from "../../../core/components"
+
 import Search from "./Search"
 import List from "./List"
+
+import Layout from "./Layout"
 
 const map = (state) => ({ person: state.onBoard.person })
 
@@ -117,6 +121,32 @@ class Template extends Component {
     this.setState({active: marker.Id})
   }
 
+  renderRightPanel = () => {
+
+    const markers = this.props.markers.filter((marker) => {
+      return marker.GroupLocations.length
+    })
+
+    if (this.props.params.hash) {
+      return (
+        <Map
+          markers={markers}
+          onMarkerHover={this.onMarkerHover}
+          onChildClick={this.onChildClick}
+          active={this.state.active}
+          hover={this.state.hover}
+        />
+      )
+    }
+
+    return (
+      <div className="soft one-whole">
+       <h4 className="text-light-primary soft-half-top flush-bottom">Group Finder</h4>
+       <p className="text-light-primary flush"><em>Find a community</em></p>
+     </div>
+    )
+
+  }
 
   render () {
     let passedProps = {...this.props, ...{
@@ -157,8 +187,9 @@ class Template extends Component {
         photo={photo}
         hash={hash}
         markers={markers}
+        children={Child}
+        right={this.renderRightPanel}
       >
-        <Child />
       </Layout>
     )
   }

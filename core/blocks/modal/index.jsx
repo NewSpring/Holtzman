@@ -64,6 +64,7 @@ export default class SideModalContainer extends Component {
 
     const { visible, content, props } = this.props.modal
 
+    console.log(visible,content, props)
 
     return (
       <VelocityTransitionGroup

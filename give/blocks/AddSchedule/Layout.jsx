@@ -3,6 +3,8 @@ import { Component, PropTypes} from "react"
 import GiveNow from "../ActionButtons"
 import { Forms, Loading } from "../../../core/components"
 
+
+import Styles from "./styles.css"
 // <div className="display-inline-block">
 //
 //
@@ -25,7 +27,7 @@ import { Forms, Loading } from "../../../core/components"
 
 export default class Layout extends Component {
   render () {
-    
+
     const {
       schedules,
       setFrequency,

@@ -1,7 +1,8 @@
 import { Component, PropTypes } from "react"
 
 import { Controls, Forms } from "../../../../core/components"
-import { Validate, Format } from "../../../../core/util"
+import Validate from "../../../../core/util/validate"
+import Format from "../../../../core/util/format"
 
 export default class Payment extends Component {
 

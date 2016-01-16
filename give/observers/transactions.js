@@ -1,5 +1,6 @@
 
 import { api } from "../../core/util/rock"
+import { makeNewGuid } from "../../core/util/guid"
 import { TransactionReciepts } from "../collections/transactions"
 
 const transactions = () => {
@@ -34,7 +35,7 @@ const transactions = () => {
 
         // Create Person
         Person = { ...Person, ...{
-          Guid: api.makeGUID(),
+          Guid: makeNewGuid(),
           IsSystem: false,
           Gender: 0,
           SystemNote: "Created from NewSpring Apollos"
@@ -47,7 +48,7 @@ const transactions = () => {
 
         // Create FinancialPaymentDetail
         FinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
-          Guid: api.makeGUID()
+          Guid: makeNewGuid()
         } }
 
         const FinancialPaymentDetailId = api.post.sync(`FinancialPaymentDetails`, FinancialPaymentDetail)
@@ -58,7 +59,7 @@ const transactions = () => {
 
         // Create Transaction
         Transaction = { ...Transaction, ...{
-          Guid: api.makeGUID(),
+          Guid: makeNewGuid(),
           AuthorizedPersonAliasId: PrimaryAliasId,
           CreatedByPersonAliasId: PrimaryAliasId,
           ModifiedByPersonAliasId: PrimaryAliasId,
@@ -78,7 +79,7 @@ const transactions = () => {
           TransactionDetail = { ...TransactionDetail, ...{
             AccountId: TransactionDetail.AccountId,
             Amount: TransactionDetail.Amount,
-            Guid: api.makeGUID(),
+            Guid: makeNewGuid(),
             TransactionId,
             CreatedByPersonAliasId: PrimaryAliasId,
             ModifiedByPersonAliasId: PrimaryAliasId
@@ -92,7 +93,7 @@ const transactions = () => {
 
           // Create FinancialPaymentDetail
           let SecondFinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
-            Guid: api.makeGUID()
+            Guid: makeNewGuid()
           } }
 
           let SecondFinancialPaymentDetailId = api.post.sync(`FinancialPaymentDetails`, SecondFinancialPaymentDetail)
@@ -103,7 +104,7 @@ const transactions = () => {
 
           // Create FinancialPersonSavedAccounts
           FinancialPersonSavedAccounts = { ...FinancialPersonSavedAccounts, ...{
-            Guid: api.makeGUID(),
+            Guid: makeNewGuid(),
             PersonAliasId: PrimaryAliasId,
             FinancialPaymentDetailId: SecondFinancialPaymentDetailId,
             CreatedByPersonAliasId: PrimaryAliasId,

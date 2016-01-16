@@ -1,9 +1,8 @@
 import { PropTypes } from "react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
-import { Map } from "../../../core/components"
 
-const Layout = ({ classes, childClasses, photo, hash, markers, children }) => (
+const Layout = ({ classes, childClasses, photo, markers, children, right }) => (
   <Split nav={true}>
 
     <Right
@@ -12,28 +11,7 @@ const Layout = ({ classes, childClasses, photo, hash, markers, children }) => (
       ratioClasses={childClasses}
       background={photo}
     >
-      {() => {
-        if (hash) {
-          return (
-            <Map
-              markers={markers}
-              onMarkerHover={this.onMarkerHover}
-              onChildClick={this.onChildClick}
-              active={this.state.active}
-              hover={this.state.hover}
-            />
-          )
-        }
-
-        return (
-          <div className="soft one-whole">
-           <h4 className="text-light-primary soft-half-top flush-bottom">Group Finder</h4>
-           <p className="text-light-primary flush"><em>Find a community</em></p>
-         </div>
-        )
-
-
-      }()}
+      {right()}
 
     </Right>
 
@@ -45,12 +23,11 @@ const Layout = ({ classes, childClasses, photo, hash, markers, children }) => (
 )
 
 Layout.propTypes = {
-  classes: PropTypes,
-  childClasses: PropTypes,
-  photo: PropTypes,
-  hash: PropTypes,
-  markers: PropTypes,
-  children: PropTypes,
+  classes: PropTypes.array,
+  childClasses: PropTypes.array,
+  photo: PropTypes.string,
+  hash: PropTypes.string,
+  markers: PropTypes.array,
 }
 
 export default Layout

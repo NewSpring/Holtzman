@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react"
 
 
 import { Controls, Forms } from "../../../../core/components"
-import { Validate } from "../../../../core/util"
+import Validate from "../../../../core/util/validate"
 
 export default class Personal extends Component {
 

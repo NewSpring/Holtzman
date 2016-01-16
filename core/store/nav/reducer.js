@@ -5,7 +5,7 @@
 */
 import modalActions from "../modal"
 import likedActions from "../liked"
-import { Sections } from "../../blocks"
+import Sections from "../../blocks/sections"
 
 const back = () => {
   if (typeof window != "undefined" && window != null) {
@@ -27,6 +27,7 @@ const showSections = (props) => {
   }
 
   sectionsVisible = true
+  console.log("rendering sections...", Sections)
   return modalActions.render(Sections, { keepNav: true })
 }
 

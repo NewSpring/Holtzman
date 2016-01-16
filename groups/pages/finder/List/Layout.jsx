@@ -73,8 +73,8 @@ Layout.propTypes = {
   markers: PropTypes.array,
   onHover: PropTypes.func,
   onClick: PropTypes.func,
-  hover: PropTypes.bool,
-  active: PropTypes.bool
+  hover: PropTypes.number,
+  active: PropTypes.number
 }
 
 export default Layout

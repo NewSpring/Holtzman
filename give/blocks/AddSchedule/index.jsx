@@ -5,7 +5,6 @@ import ReactMixin from "react-mixin"
 import { give as giveActions } from "../../store"
 import { Offline } from "../../components/Status"
 
-import Styles from "./add-schedule.styles.css"
 import Layout from "./Layout"
 
 // We only care about the give state

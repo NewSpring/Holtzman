@@ -1,6 +1,6 @@
 /*global Meteor */
 import { api } from "../../../../core/util/rock"
-import { charge as gatewayCharge } from "./nmi"
+import { order as gatewayOrder } from "./nmi"
 
 const order = (orderData) => {
 
@@ -30,8 +30,9 @@ const order = (orderData) => {
       // orderData["authorization-code"] = accountDetails.ForeignKey
     }
   }
-  console.log(orderData)
+
   const response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
+  console.log(response)
   return {
     url: response["form-url"],
     transactionId: response["transaction-id"]
