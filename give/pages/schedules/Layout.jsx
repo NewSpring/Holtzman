@@ -1,114 +1,30 @@
+
 import { Component, PropTypes} from "react"
-import { Link } from "react-router"
 import ReactDom from "react-dom"
-import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
+
 import Moment from "moment"
+import { Link } from "react-router"
 
-import { api, endpoints } from "../../../../rock/lib/api"
-
-// loading state
-import { Spinner } from "../../../../core/client/components/loading"
-import { Authorized } from "../../../../core/client/blocks"
-import { nav as navActions } from "../../../../core/client/actions"
-import { Split, Left, Right } from "../../../../core/client/layouts/split"
-
-import { ScheduledTransactions, Accounts as Acc } from "../../../lib/collections"
+import { Spinner } from "../../../core/components/loading"
 import { AddSchedule } from "../../blocks"
+import Split, { Left, Right } from "../../../core/blocks/split"
 
-import Details from "./schedule.Details"
+export default class Layout extends Component {
 
-@connect()
-@ReactMixin.decorate(ReactMeteorData)
-export default class Template extends Component {
-
-  state = {
-    page: 1,
-    pageSize: 20,
-    shouldUpdate: true,
-    done: false
-  }
-
-  // componentWillMount() {
-  //   this.props.dispatch(navActions.setLevel("CONTENT"))
-  //
-  // }
-  //
-  // componentWillUnmount() {
-  //   this.props.dispatch(navActions.setLevel("TOP"))
-  // }
   componentDidMount() {
     const container = ReactDom.findDOMNode(this.refs["container"])
-    container.addEventListener("scroll", this.pageOnScroll);
+    container.addEventListener("scroll", this.props.onScroll);
     if (typeof window != "undefined" && window != null) {
-      window.addEventListener("scroll", this.pageOnScroll);
+      window.addEventListener("scroll", this.props.onScroll);
     }
   }
 
   componentWillUnmount() {
     const container = ReactDom.findDOMNode(this.refs["container"])
-    container.removeEventListener("scroll", this.pageOnScroll);
+    container.removeEventListener("scroll", this.props.onScroll);
     if (typeof window != "undefined" && window != null) {
-      window.addEventListener("scroll", this.pageOnScroll);
+      window.addEventListener("scroll", this.props.onScroll);
     }
-  }
-
-  pageOnScroll = (e) => {
-  if (this.state.done) return
-
-  const { scrollHeight, clientHeight, scrollTop, offsetTop } = e.target
-
-  let percentage;
-
-  if (scrollTop && scrollHeight) {
-    percentage = scrollTop / scrollHeight
-  } else if (window.scrollY && document.body.clientHeight) {
-    percentage = window.scrollY, document.body.clientHeight
-  }
-
-  if ( percentage > 0.5 && this.state.shouldUpdate) {
-    this.setState({
-      page: this.state.page + 1,
-      shouldUpdate: false
-    });
-
-    // wait a bit to prevent paging multiple times
-    setTimeout(() => {
-      if (this.state.page * this.state.pageSize > this.data.schedules.length) {
-        this.setState({ done: true, shouldUpdate: false });
-      } else {
-        this.setState({ shouldUpdate: true });
-      }
-    }, 1000);
-  }
-}
-
-  getMeteorData() {
-    let subscription = Meteor.subscribe("scheduledTransactions")
-    const schedules = ScheduledTransactions.find({}, {
-      limit: this.state.page * this.state.pageSize,
-      sort: { CreatedDateTime: -1 }
-    }).fetch();
-
-    let accounts
-
-    if (Meteor.isClient) {
-      Meteor.subscribe("accounts")
-      accounts = Acc.find().fetch()
-    }
-
-    if (Meteor.isServer) {
-      accounts = api.get.sync(endpoints.accounts)
-    }
-
-    let ready = subscription.ready()
-
-    return {
-      schedules,
-      accounts,
-      ready
-    };
-
   }
 
   formatDate = (date) => {
@@ -143,6 +59,8 @@ export default class Template extends Component {
 
   render () {
 
+    const { data } = this.props
+
     return (
 
       <Split nav={true} >
@@ -163,7 +81,7 @@ export default class Template extends Component {
 
 
               <div className="outlined--light outlined--bottom soft-ends soft-double-bottom">
-                <AddSchedule accounts={this.data.accounts}/>
+                <AddSchedule accounts={data.accounts}/>
               </div>
 
           </div>
@@ -172,7 +90,7 @@ export default class Template extends Component {
           <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top" ref="history">
             <h4 className="soft-double-top text-center">My Active Gifts</h4>
             {() => {
-              const { schedules, ready } = this.data
+              const { schedules, ready } = data
 
               if (!schedules.length && !ready) {
                 // loading
@@ -196,7 +114,7 @@ export default class Template extends Component {
 
               return (
                 <div>
-                  {this.data.schedules.map((schedule, i) => {
+                  {data.schedules.map((schedule, i) => {
 
                     if (!schedule.ScheduledTransactionDetails[0].Account) {
                       return null
@@ -228,19 +146,4 @@ export default class Template extends Component {
       </Split>
     );
   }
-}
-
-
-const Routes = [
-  { path: "recurring", component: Template },
-  {
-    path: "recurring/:id",
-    component: Authorized,
-    indexRoute: { component: Details }
-  }
-]
-
-export default {
-  Template,
-  Routes
 }
