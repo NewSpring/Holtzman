@@ -2,7 +2,7 @@
   "name": "apollos",
   "version": "0.2.1-12",
   "description": "A reactive framework for incredible applications",
-  "main": "index.js",
+  "main": "core/index.js",
   "scripts": {
     "lint": "eslint core give profile rock test",
     "fix": "eslint --fix core give profile rock test",

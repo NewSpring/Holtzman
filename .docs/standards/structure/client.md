@@ -11,18 +11,17 @@ The client folder is a tricky thing in some ways with Apollos. In traditional me
 
 ## Structure
 
-- [actions](#actions)
+- [layouts](#layouts)
 - [blocks](#blocks)
 - [components](#components)
-- [layouts](#layouts)
-- [middlewares](#middlewares)
-- [reducers](#reducers)
+- [methods](#methods)
+- [store](#store)
+  - [actions](#actions)
+  - [middlewares](#middlewares)
+  - [reducers](#reducers)
 - [index.js](#index)
 - [startup.js](#startup)
 
-## Actions
-
-The actions folder is used to store action creators for the redux store. Each folder should take the name of the key in the store it will become, and expose `types` as well as all of the methods for manipulating the store.
 
 ## Blocks
 
@@ -34,15 +33,34 @@ Components make up stateful and stateless components but not container component
 
 ## Layouts
 
+> @TODO: depreciate layouts?
+
 Layouts are structural oriented components that are used to construct applications. They can be used for just structural or can include blocks to create structure + guaranteed data. One example is the `Auth` layout which ensures child routes require a login.
 
+
+## Store
+
+The store folder contains all actions related to the redux store. Party time.
+
+## Actions
+
+> export from ./store
+
+The actions folder is used to store action creators for the redux store. Each folder should take the name of the key in the store it will become, and expose `types` as well as all of the methods for manipulating the store.
+
+
 ## Middlewares
+
+> don't export from ./store
 
 Middlewares asynchronously interact with the store to do external actions and update the store. If you need to manipulate data, submit a form, or setup a logging service, you are probably looking at a middleware. Like actions and reducers, this should try to have a 1:1 store key => folder
 
 ## Reducers
 
+> don't export from ./store
+
 Reducers are the powerhouse of the application. They makeup the store and allow us to create a seamless applications between all devices. Reducers should have a 1:1 store key => folder mapping and should have corresponding actions in the action folder.
+
 
 ## index.js
 

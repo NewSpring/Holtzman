@@ -9,7 +9,7 @@ const Loading = ({msg}) => (
     <WindowLoading classes={["background--primary"]}>
       <div className="locked-top locked-bottom one-whole floating">
         <div className="floating__item">
-          <Spinner />
+          <Spinner styles={{borderColor: "#fff #6BAC43 #fff #fff", borderWidth: "7px"}}/>
           <h4 className="text-light-primary">{msg}</h4>
         </div>
       </div>

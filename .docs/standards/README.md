@@ -31,6 +31,7 @@ Development Guidelines For Apollos
 - [Redux](./redux/README.md)
   - [Actions](./redux/actions.md)
   - [Reducers](./redux/reducers.md)
+  - [Middlewares](./redux/middlewares.md)
   - [Data](./redux/data.md)
 - [Methods](./methods/README.md)
   - [Client](./methods/client.md)
