@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "eslint core give profile groups",
     "fix": "eslint --fix core give profile groups",
-    "check": "npm run lint && npm run test"
+    "check": "npm run lint && npm run test",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
+    "test:watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,9 @@
     "babel-eslint": "^4.1.6",
     "eslint": "^1.7.1",
     "eslint-config-rackt": "1.0.0",
-    "eslint-plugin-react": "^3.6.3"
+    "eslint-plugin-react": "^3.6.3",
+    "expect": "^1.13.4",
+    "mocha": "^2.3.4"
   },
   "dependencies": {
     "fetch-jsonp": "^1.0.0",

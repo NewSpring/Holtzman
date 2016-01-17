@@ -19,7 +19,6 @@ const Layout = ({ alive, accounts }) => (
       <div className="soft soft-double@lap-and-up push-double@lap-wide-and-up">
 
         <div className="text-left">
-
           {() => {
 
             if (!alive) {

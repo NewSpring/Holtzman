@@ -8,7 +8,6 @@ import SignIn from "./Signin"
 import SignOut from "./Signout"
 import ForgotPassword from "./ForgotPassword"
 
-
 // We only care about the onboard state
 const map = (state) => ({ onboard: state.onBoard })
 @connect(map, onBoardActions)
