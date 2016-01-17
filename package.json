@@ -8,7 +8,12 @@
     "fix": "eslint --fix core give profile groups test",
     "check": "npm run lint && npm run test",
     "test": "mocha --compilers js:babel-core/register --recursive",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "docs:clean": "rimraf _book",
+    "docs:prepare": "gitbook install",
+    "docs:build": "npm run docs:prepare && gitbook build -g NewSpring/Apollos",
+    "docs:watch": "npm run docs:prepare && gitbook serve",
+    "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:NewSpring/Apollos gh-pages --force"
   },
   "xo": {},
   "repository": {
@@ -29,6 +34,7 @@
     "eslint-config-rackt": "1.0.0",
     "eslint-plugin-react": "^3.6.3",
     "expect": "^1.13.4",
+    "gitbook-cli": "^0.3.4",
     "mocha": "^2.3.4"
   },
   "dependencies": {
