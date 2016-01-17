@@ -1,7 +1,7 @@
+import { creditCVV, creditCard, creditExpiry } from "./credit-card"
 
 const Validate = {}
 import Error from "../error"
-
 
 Validate.addValidator = (name, handler) => {
 
@@ -24,7 +24,6 @@ Validate.addValidator = (name, handler) => {
 }
 
 
-import { creditCVV, creditCard, creditExpiry } from "./credit-card"
 Validate.addValidator("isCCV", creditCVV)
 Validate.addValidator("isCreditCard", creditCard)
 Validate.addValidator("isExpiry", creditExpiry)

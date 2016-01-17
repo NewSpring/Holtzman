@@ -1,4 +1,4 @@
-import { defaultRegex } from "../regex"
+import defaultRegex from "../regex/defaults"
 
 const creditCard = (value) => {
 
@@ -47,7 +47,7 @@ const creditCVV = (value) => {
 
 }
 
-export default {
+export {
   creditCard,
   creditExpiry,
   creditCVV
