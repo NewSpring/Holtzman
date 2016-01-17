@@ -1,6 +1,6 @@
 // stored state for use with other packages
 const reducers = {}
-import { Error } from "../util"
+import Error from "../util/error"
 
 const addReducer = (obj) => {
 

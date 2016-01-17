@@ -8,7 +8,7 @@ import sections from "./sections"
 import { Wrapper, createReduxStore } from "./redux-bindings"
 import { addMiddleware, addReducer, createReducer } from "./utilities"
 
-export default {
+export {
   liked,
   modal,
   nav,
