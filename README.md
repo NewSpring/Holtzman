@@ -4,7 +4,9 @@
   </a>
 </p>
 
-# Apollos
+Apollos
+=======================
+[![Circle CI](https://circleci.com/gh/NewSpring/Apollos/tree/master.svg?style=svg)](https://circleci.com/gh/NewSpring/Apollos/tree/master)
 
 Apollos is a reactive application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
 
@@ -23,7 +25,7 @@ Apollos is a reactive application framework for building high speed, web + nativ
 Meteor packages:
 
 ```
-meteor add timbrandin:fetch promise accounts-password accounts-base check
+meteor add timbrandin:fetch promise accounts-password accounts-base check bjwiley2:server-watch
 ```
 
 > these will be migrated to a `newspring:apollos` package before launch
