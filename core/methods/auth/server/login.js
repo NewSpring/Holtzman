@@ -29,6 +29,10 @@ Meteor.methods({
         password: password
       })
     }
+    // ensure meteor password is same as rock's
+    else {
+      Accounts.setPassword(userAccount._id, password)
+    }
 
 
     api.get(`UserLogins?$filter=UserName eq '${Username}'`, (err, user) => {
