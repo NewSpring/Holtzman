@@ -1,7 +1,7 @@
 
-import AccountType from "./AccountType"
-import Icons from "./Icons"
-import Status from "./Status"
+import AccountType from "./accountType"
+import Icons from "./icons"
+import Status from "./status"
 
 export default {
   AccountType,
