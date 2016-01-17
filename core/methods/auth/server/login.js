@@ -16,7 +16,7 @@ Meteor.methods({
     let isAuthorized = api.post.sync(`Auth/login`, { Username, Password: password })
 
     if (isAuthorized.statusText) {
-      throw new Metoer.Error("Your password is incorrect")
+      throw new Meteor.Error("Your password is incorrect")
     }
 
 

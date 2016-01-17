@@ -38,6 +38,7 @@
     "mocha": "^2.3.4"
   },
   "dependencies": {
+    "babel-polyfill": "^6.3.14",
     "fetch-jsonp": "^1.0.0",
     "google-map-react": "^0.9.3",
     "moment": "^2.10.6",
