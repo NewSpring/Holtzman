@@ -4,6 +4,7 @@
   "description": "A reactive framework for incredible applications",
   "main": "core/index.js",
   "scripts": {
+    "postinstall": "node ./scripts/meteor.js",
     "lint": "eslint core give profile groups test",
     "fix": "eslint --fix core give profile groups test",
     "check": "npm run lint && npm run test",
