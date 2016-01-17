@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 
-import { onBoard as onBoardActions } from "../../store"
+import onBoardActions from "../../store/onBoard"
 
 import Loading from "./Loading"
 import SignIn from "./Signin"

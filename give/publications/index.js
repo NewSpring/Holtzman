@@ -25,6 +25,6 @@ const publish = () => {
   }
 }
 
-export default {
+export {
   publish
 }
