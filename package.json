@@ -4,8 +4,8 @@
   "description": "A reactive framework for incredible applications",
   "main": "core/index.js",
   "scripts": {
-    "lint": "eslint core give profile groups",
-    "fix": "eslint --fix core give profile groups",
+    "lint": "eslint core give profile groups test",
+    "fix": "eslint --fix core give profile groups test",
     "check": "npm run lint && npm run test",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm test -- --watch"
