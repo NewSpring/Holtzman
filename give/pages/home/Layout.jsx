@@ -5,7 +5,7 @@ import Split, { Left, Right } from "../../../core/blocks/split"
 import { Card } from "../../../core/components"
 import { Spinner } from "../../../core/components/loading"
 
-import { Offline } from "../../components/Status"
+import { Offline } from "../../components/status"
 import { AddToCart } from "../../blocks"
 
 const Layout = ({ alive, accounts }) => (

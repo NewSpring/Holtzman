@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 
 import { give as giveActions } from "../../store"
-import { Offline } from "../../components/Status"
+import { Offline } from "../../components/status"
 
 import Layout from "./Layout"
 

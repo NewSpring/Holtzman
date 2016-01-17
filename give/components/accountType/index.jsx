@@ -1,7 +1,7 @@
 
 import { PropTypes} from "react"
 
-import { Accounts } from "../Icons"
+import { Accounts } from "../icons"
 
 const AccountType = ({ width, height, type }) => {
 
