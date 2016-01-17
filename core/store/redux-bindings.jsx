@@ -3,14 +3,14 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux"
 import { syncReduxAndRouter, routeReducer } from "redux-simple-router"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
-import sagaMiddleware from "redux-saga"
+// import sagaMiddleware from "redux-saga"
 
 /*
 
   Saga
 
 */
-import { take, put } from "redux-saga"
+// import { take, put } from "redux-saga"
 import { addSaga } from "./utilities"
 
 // function* testSaga(getState) {
@@ -39,8 +39,9 @@ const createReduxStore = (initialState, history) => {
   ], ...middlewares]
 
   let sharedCompose = [
-    applyMiddleware(...sharedMiddlewares, ...sagaMiddleware(...sagas)),
+    applyMiddleware(...sharedMiddlewares),
   ]
+  // ...sagaMiddleware(...sagas)
 
   if (process.env.NODE_ENV != "production") {
     sharedCompose = [...sharedCompose, ...[
