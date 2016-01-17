@@ -108,25 +108,20 @@ Apollos React/JSX Style Guide
 
 ## Quotes
 
-  - Always use double quotes (`"`) for JSX attributes, and all other JS.
+  - Always use double quotes (`""`) for JSX attributes, and all other JS.
 
   > Why? JSX attributes [can't contain escaped quotes](http://eslint.org/docs/rules/jsx-quotes), so double quotes make conjunctions like `"don't"` easier to type.
   > Regular HTML attributes also typically use double quotes instead of single, so JSX attributes mirror this convention.
 
   eslint rules: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes).
 
-    ```javascript
+    ```js
     // bad
     <Foo bar='bar' />
 
     // good
     <Foo bar="bar" />
 
-    // bad
-    <Foo style={{ left: '20px' }} />
-
-    // good
-    <Foo style={{ left: "20px" }} />
     ```
 
 ## Spacing
@@ -247,19 +242,19 @@ Apollos React/JSX Style Guide
 
   - Ordering for `class extends React.Component`:
 
-  1. `constructor`
-  1. optional `static` methods
-  1. `componentWillMount`
-  1. `componentDidMount`
-  1. `componentWillReceiveProps`
-  1. `shouldComponentUpdate`
-  1. `componentWillUpdate`
-  1. `componentDidUpdate`
-  1. `componentWillUnmount`
-  1. *clickHandlers or eventHandlers* like `onClickSubmit()` or `onChangeDescription()`
-  1. *getter methods for `render`* like `getSelectReason()` or `getFooterContent()`
-  1. *Optional render methods* like `renderNavigation()` or `renderProfilePicture()`
-  1. `render`
+  * `constructor`
+  * optional `static` methods
+  * `componentWillMount`
+  * `componentDidMount`
+  * `componentWillReceiveProps`
+  * `shouldComponentUpdate`
+  * `componentWillUpdate`
+  * `componentDidUpdate`
+  * `componentWillUnmount`
+  * *clickHandlers or eventHandlers* like `onClickSubmit()` or `onChangeDescription()`
+  * *getter methods for `render`* like `getSelectReason()` or `getFooterContent()`
+  * *Optional render methods* like `renderNavigation()` or `renderProfilePicture()`
+  * `render`
 
   - How to define `propTypes`, `defaultProps`, `contextTypes`, etc...
 
