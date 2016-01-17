@@ -8,7 +8,9 @@ const map = (state) => ({ person: state.onBoard.person })
 export default class Home extends Component {
 
   componentWillMount() {
-    Meteor.subscribe("people")
+    if (Meteor.isClient) {
+      Meteor.subscribe("people")
+    }
   }
 
   render () {
