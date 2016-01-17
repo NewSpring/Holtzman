@@ -106,7 +106,10 @@ class Template extends Component {
   }
 
   componentWillMount() {
-    Meteor.subscribe("groups")
+    if (Meteor.isClient) {
+      Meteor.subscribe("groups")
+    }
+
   }
 
   onMarkerHover = (marker) => {
