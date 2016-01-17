@@ -4,8 +4,8 @@
   "description": "A reactive framework for incredible applications",
   "main": "core/index.js",
   "scripts": {
-    "lint": "eslint core give profile rock test",
-    "fix": "eslint --fix core give profile rock test",
+    "lint": "eslint core give profile groups",
+    "fix": "eslint --fix core give profile groups",
     "check": "npm run lint && npm run test"
   },
   "repository": {
