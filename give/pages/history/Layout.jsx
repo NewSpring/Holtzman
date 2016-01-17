@@ -7,7 +7,7 @@ import Moment from "moment"
 import { Spinner } from "../../../core/components/loading"
 import Split, { Left, Right } from "../../../core/blocks/split"
 
-import { Offline } from "../../components/Status"
+import { Offline } from "../../components/status"
 
 export default class Layout extends Component {
 
