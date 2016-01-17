@@ -38,15 +38,18 @@ const bindMeteorPerson = (props) => {
 
 }
 
-const App = ({ children }) => (
+const App = ({ children, className }) => (
   <div className="
     push-double-bottom@handheld soft-bottom@handheld
     push-double-left@lap-and-up soft-double-left@lap-and-up
     "
   >
-    {children}
-    <Nav />
-    <Modal/>
+    <div className={className}>
+      {children}
+      <Nav />
+      <Modal/>
+    </div>
+
   </div>
 )
 
