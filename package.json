@@ -1,11 +1,12 @@
 {
-  "name": "apollos-core",
-  "version": "0.1.23",
-  "description": "The main Apollos namespace and utilities for all apollos packages.",
-  "main": "index.js",
+  "name": "apollos",
+  "version": "0.2.1-12",
+  "description": "A reactive framework for incredible applications",
+  "main": "core/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "rm -rf ./lib; npm version patch; norma build; meteor publish"
+    "lint": "eslint core give profile rock test",
+    "fix": "eslint --fix core give profile rock test",
+    "check": "npm run lint && npm run test"
   },
   "repository": {
     "type": "git",
@@ -18,16 +19,24 @@
   },
   "homepage": "https://github.com/NewSpring/newspring-core",
   "devDependencies": {
-    "chai": "^2.1.2",
-    "mocha": "^2.2.1",
-    "norma-meteor": "^0.3.16"
+    "babel-eslint": "^4.1.6",
+    "eslint": "^1.7.1",
+    "eslint-config-rackt": "1.0.0",
+    "eslint-plugin-react": "^3.6.3"
   },
   "dependencies": {
-    "norma-bower": "^0.3.4",
-    "norma-copy": "^0.4.2",
-    "norma-javascript": "^0.4.7",
-    "norma-markup": "^0.5.5",
-    "norma-meteor-load": "^0.2.2",
-    "norma-sass": "^0.4.9"
+    "fetch-jsonp": "^1.0.0",
+    "google-map-react": "^0.9.3",
+    "moment": "^2.10.6",
+    "react-controllables": "^0.6.0",
+    "react-pure-render": "^1.0.2",
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.4",
+    "redux-saga": "^0.4.1",
+    "redux-simple-router": "^1.0.2",
+    "redux-thunk": "^1.0.2",
+    "velocity-animate": "^1.2.3",
+    "velocity-react": "^1.1.1",
+    "xml2js": "^0.4.15"
   }
 }

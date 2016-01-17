@@ -28,16 +28,10 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
+# Norma development assistant
 .norma
-build
-vendor
-bower.json
-settings.json
-development.json
 
 .DS_Store
-james_uswesto.pem
-workbench
-.versions
-/package.js
-/lib/
+dist
+coverage
+_book

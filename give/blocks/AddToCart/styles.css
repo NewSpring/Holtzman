@@ -1,0 +1,4 @@
+
+:local(.show-placeholder::-webkit-input-placeholder) {
+  color: #ddd!important;
+}
