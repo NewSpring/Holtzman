@@ -27,7 +27,7 @@ export default class Toggle extends Component {
     const active = event.target.dataset.toggle;
     if (active != this.state.active) {
       if (typeof(this.props.toggle) === "function") {
-        this.props.toggle(!this.state.active);
+        this.props.toggle(active);
       }
 
       this.setState({active: active});
