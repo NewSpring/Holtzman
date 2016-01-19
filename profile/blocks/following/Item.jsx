@@ -13,7 +13,7 @@ export default class FollowingItem extends Component {
     return (
       <div className="push-left soft-ends soft-right text-left floating outlined--light outlined--bottom">
         <h6 className="soft-half-left three-quarters flush floating__item">{this.props.item.name}</h6>
-        <Switch id={this.props.item.id} containerClasses="float-right" containerStyle={ { marginTop: "-30px" } } />
+        <Switch id={`switch-${this.props.switchId}`} containerClasses="float-right" containerStyle={ { marginTop: "-30px" } } />
       </div>
     );
 

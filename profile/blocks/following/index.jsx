@@ -6,28 +6,22 @@ import FollowingItem from "./Item"
 export default class FollowingContainer extends Component {
   contentItems = [
     {
-      name:"Articles",
-      id:"c-1"
+      name:"Articles"
     },
     {
-      name:"Devotions",
-      id:"c-2"
+      name:"Devotions"
     },
     {
-      name:"Stories",
-      id:"c-3"
+      name:"Stories"
     },
     {
-      name:"Series",
-      id:"c-4"
+      name:"Series"
     },
     {
-      name:"Sermons",
-      id:"c-5"
+      name:"Sermons"
     },
     {
-      name:"Music",
-      id:"c-6"
+      name:"Music"
     }
   ]
 
@@ -47,7 +41,7 @@ export default class FollowingContainer extends Component {
         <div className={this.containerClasses}>
 
           {this.contentItems.map((contentItem, i) => {
-            return <FollowingItem item={contentItem} key={i} />
+            return <FollowingItem item={contentItem} switchId={i} key={i} />
           })}
 
         </div>
