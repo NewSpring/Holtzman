@@ -2,6 +2,7 @@ import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
+import { Toggle } from "../../../core/components/controls"
 import { Likes } from "../../blocks"
 
 const SettingsLink = () => (
@@ -9,6 +10,10 @@ const SettingsLink = () => (
     <i className="icon-settings h4"></i>
   </Link>
 )
+
+const onToggle = () => {
+  console.log("toggling")
+}
 
 const Layout = ({ photo, person }) => (
   <Split nav={true}>
@@ -34,6 +39,8 @@ const Layout = ({ photo, person }) => (
 
     <Left scroll={true} >
       <div className="soft soft-double@lap-and-up push-double@lap-wide-and-up">
+
+        <Toggle items={["Likes", "Following"]} toggle={onToggle} />
 
         <Likes />
 
