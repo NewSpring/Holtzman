@@ -71,9 +71,7 @@ export default class Toggle extends Component {
               style={this.toggleStyle}
               onClick={this.toggle}
               key={i}
-              >
-              {item}
-            </div>
+              >{item}</div>
           );
         })}
 

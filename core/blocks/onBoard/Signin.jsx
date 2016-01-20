@@ -22,10 +22,7 @@ class SignIn extends React.Component {
   }
 
   static defaultProps = {
-    toggles: [
-      { label: "Sign In" },
-      { label: "Register" }
-    ]
+    toggles: ["Sign In", "Register"]
   }
 
   header = () => {

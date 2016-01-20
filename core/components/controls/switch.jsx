@@ -5,7 +5,8 @@ import Styles from "./switch.css"
 export default class Switch extends Component {
 
   static propTypes = {
-    id: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired,
+    changed: PropTypes.func.isRequired
   }
 
   layoutClasses = () => {
@@ -20,10 +21,13 @@ export default class Switch extends Component {
     return classes.join(" ");
   }
 
+  changed = () => {
+    this.props.changed(this.props.id);
+  }
 
   render() {
 
-    const id = this.props.id;
+    const switchId = `switch-${this.props.id}`;
 
     return (
       <div className={this.props.containerClasses} style={this.props.containerStyle}>
@@ -31,10 +35,11 @@ export default class Switch extends Component {
           className={ this.props.theme || this.layoutClasses()}
           styles={this.props.styles || {}}
           type="checkbox"
-          name={this.props.name || id || "toggle-switch"}
-          id={id}
+          name={this.props.name || switchId || "toggle-switch"}
+          id={switchId}
+          onChange={this.changed}
         />
-        <label htmlFor={id}></label>
+        <label htmlFor={switchId}></label>
       </div>
     );
 
