@@ -24,7 +24,9 @@ export default class FollowingContainer extends Component {
   containerClasses = `cell-wrapper push-half-bottom background--light-primary outlined--light outlined--bottom text-dark-secondary`
 
   changed = (id) => {
-    this.props.dispatch(topicActions.toggle({ topic: this.topics[id] }));
+    const topic = this.topics[id];
+    this.props.dispatch(topicActions.toggle({ topic: topic }));
+    Meteor.call("toggleTopic", topic);
   }
 
   active = (item) => {
