@@ -1,33 +1,31 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
+import { connect } from "react-redux"
 
 import FollowingItem from "./Item"
 
+import { topics as topicActions } from "../../../core/store"
+
+const map = (state) => ({ topics: state.topics })
+
+@connect(map)
 export default class FollowingContainer extends Component {
-  contentItems = [
-    {
-      name:"Articles"
-    },
-    {
-      name:"Devotions"
-    },
-    {
-      name:"Stories"
-    },
-    {
-      name:"Series"
-    },
-    {
-      name:"Sermons"
-    },
-    {
-      name:"Music"
-    }
+  topics = [
+    "Articles",
+    "Devotions",
+    "Stories",
+    "Series",
+    "Sermons",
+    "Music"
   ]
 
   h7Classes = `flush outlined--light outlined--bottom display-block soft-sides soft-half-top soft-bottom`
 
   containerClasses = `cell-wrapper push-half-bottom background--light-primary outlined--light outlined--bottom text-dark-secondary`
+
+  changed = (id) => {
+    this.props.dispatch(topicActions.toggle({ topic: this.topics[id] }));
+  }
 
   render() {
 
@@ -40,8 +38,8 @@ export default class FollowingContainer extends Component {
 
         <div className={this.containerClasses}>
 
-          {this.contentItems.map((contentItem, i) => {
-            return <FollowingItem item={contentItem} switchId={i} key={i} />
+          {this.topics.map((contentItem, i) => {
+            return <FollowingItem item={contentItem} switchId={i} key={i} changed={this.changed} />
           })}
 
         </div>
