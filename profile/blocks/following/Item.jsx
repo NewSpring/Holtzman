@@ -6,7 +6,9 @@ export default class FollowingItem extends Component {
 
   static propTypes = {
     item: PropTypes.string.isRequired,
-    changed: PropTypes.func.isRequired
+    changed: PropTypes.func.isRequired,
+    switchId: PropTypes.number.isRequired,
+    active: PropTypes.bool.isRequired
   }
 
   render() {
@@ -19,6 +21,7 @@ export default class FollowingItem extends Component {
           containerClasses="float-right"
           containerStyle={ { marginTop: "-30px" } }
           changed={this.props.changed}
+          active={this.props.active}
         />
       </div>
     );

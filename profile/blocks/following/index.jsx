@@ -6,7 +6,7 @@ import FollowingItem from "./Item"
 
 import { topics as topicActions } from "../../../core/store"
 
-const map = (state) => ({ topics: state.topics })
+const map = (state) => ({ state: state.topics })
 
 @connect(map)
 export default class FollowingContainer extends Component {
@@ -27,6 +27,10 @@ export default class FollowingContainer extends Component {
     this.props.dispatch(topicActions.toggle({ topic: this.topics[id] }));
   }
 
+  active = (item) => {
+    return this.props.state.topics.indexOf(item) > -1
+  }
+
   render() {
 
     return (
@@ -39,7 +43,7 @@ export default class FollowingContainer extends Component {
         <div className={this.containerClasses}>
 
           {this.topics.map((contentItem, i) => {
-            return <FollowingItem item={contentItem} switchId={i} key={i} changed={this.changed} />
+            return <FollowingItem item={contentItem} switchId={i} key={i} changed={this.changed} active={this.active(contentItem)} />
           })}
 
         </div>

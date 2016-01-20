@@ -38,6 +38,7 @@ export default class Switch extends Component {
           name={this.props.name || switchId || "toggle-switch"}
           id={switchId}
           onChange={this.changed}
+          checked={this.props.active}
         />
         <label htmlFor={switchId}></label>
       </div>
