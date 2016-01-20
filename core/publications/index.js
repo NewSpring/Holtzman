@@ -5,6 +5,7 @@ import campuses from "./campuses"
 import likes from "./likes"
 import person from "./person"
 import sections from "./sections"
+import users from "./users"
 
 const publish = () => {
   let rockPublications = {
