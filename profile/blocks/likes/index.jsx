@@ -27,11 +27,11 @@ export default class LikesContainer extends Component {
     const likes = this.data.likes
 
     return(
-      <div>
+      <section className="background--light-secondary soft soft-double@lap-and-up push-double@lap-wide-and-up" style={ {marginTop: "-20px"} }>
         {likes.map((like, i) => {
           return <LikesItem like={like} key={i} />
         })}
-      </div>
+      </section>
     );
 
   }

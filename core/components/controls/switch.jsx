@@ -2,40 +2,45 @@ import { Component, PropTypes } from "react";
 
 import Styles from "./switch.css"
 
-export default class Swtich extends Component {
+export default class Switch extends Component {
 
   static propTypes = {
-    id: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired,
+    changed: PropTypes.func.isRequired
   }
 
   layoutClasses = () => {
     let classes = [
-      Styles[".toggle-switch"]
+      Styles["toggle-switch"]
     ];
 
-
     if (this.props.classes) {
-      classes.concat(this.props.classes);
+      classes = classes.concat(this.props.classes);
     }
 
     return classes.join(" ");
   }
 
+  changed = () => {
+    this.props.changed(this.props.id);
+  }
 
   render() {
 
-    const id = this.props.id;
+    const switchId = `switch-${this.props.id}`;
 
     return (
-      <div>
+      <div className={this.props.containerClasses} style={this.props.containerStyle}>
         <input
           className={ this.props.theme || this.layoutClasses()}
           styles={this.props.styles || {}}
           type="checkbox"
-          name={this.props.name || id || "toggle-switch"}
-          id={id}
+          name={this.props.name || switchId || "toggle-switch"}
+          id={switchId}
+          onChange={this.changed}
+          checked={this.props.active}
         />
-        <label htmlFor={id}></label>
+        <label htmlFor={switchId} className="float-right"></label>
       </div>
     );
 
