@@ -18,8 +18,8 @@ export default class FollowingItem extends Component {
         <h6 className="soft-half-left three-quarters flush floating__item">{this.props.item}</h6>
         <Switch
           id={this.props.switchId}
-          containerClasses="float-right"
-          containerStyle={ { marginTop: "-30px" } }
+          containerClasses="one-quarter floating__item"
+          containerStyle={ { marginTop: "-12px" } }
           changed={this.props.changed}
           active={this.props.active}
         />

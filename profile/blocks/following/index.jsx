@@ -36,7 +36,7 @@ export default class FollowingContainer extends Component {
   render() {
 
     return (
-      <section className="hard background--light-secondary">
+      <section className="background--light-secondary soft-double@lap-and-up push-double@lap-wide-and-up hard-sides" style={ {marginTop: "-20px"} }>
 
         <h7 className={this.h7Classes}>
           Personalize your NewSpring Home and follow the types of content you care about.
