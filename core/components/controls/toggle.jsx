@@ -2,8 +2,13 @@ import { Component, PropTypes } from "react"
 
 export default class Toggle extends Component {
 
+  static propTypes = {
+    items: PropTypes.array.isRequired,
+    toggle: PropTypes.func.isRequired
+  }
+
   state = {
-    active: true
+    active: 0
   }
 
   componentWillMount() {
@@ -22,17 +27,16 @@ export default class Toggle extends Component {
     const active = event.target.dataset.toggle;
     if (active != this.state.active) {
       if (typeof(this.props.toggle) === "function") {
-        this.props.toggle(!this.state.active);
+        this.props.toggle(active);
       }
 
-      this.setState({active: !this.state.active});
+      this.setState({active: active});
     }
   }
 
   toggleClasses = (main) => {
     let classes = [
       "transition",
-      "one-half",
       "text-center",
       "toggle__item"
     ]
@@ -43,27 +47,33 @@ export default class Toggle extends Component {
     return classes.join(" ")
   }
 
-  arrowStyle = () => {
-    if (!this.state.active) {
-      return {
-        marginLeft: "50%"
-      }
-    }
+  toggleWidth = () => {
+    return 100 / this.props.items.length
+  }
 
-    return {}
+  toggleStyle = { width: `${this.toggleWidth()}%` }
+
+  arrowStyle = () => {
+    return {
+      marginLeft: `${this.toggleWidth() * this.state.active}%`
+    }
   }
 
   render () {
 
     return (
       <div className="toggle push-bottom soft-sides">
-        <div data-toggle="true" className={this.toggleClasses(true)} onClick={this.toggle}>
-          {this.props.items[0].label}
-        </div>
-
-        <div data-toggle="false" className={this.toggleClasses(false)} onClick={this.toggle}>
-          {this.props.items[1].label}
-        </div>
+        {this.props.items.map((item, i) => {
+          return(
+            <div
+              data-toggle={i}
+              className={this.toggleClasses(i)}
+              style={this.toggleStyle}
+              onClick={this.toggle}
+              key={i}
+              >{item}</div>
+          );
+        })}
 
         <div className="grid text-left toggle-arrow soft-sides">
 

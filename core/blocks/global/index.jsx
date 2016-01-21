@@ -7,7 +7,8 @@ import { People, Likes } from "../../collections"
 
 import {
   onBoard as onBoardActions,
-  liked as likedActions
+  liked as likedActions,
+  topics as topicActions
 } from "../../store"
 
 
@@ -27,6 +28,10 @@ const bindMeteorPerson = (props) => {
       let likes = Likes.find().fetch().map((like) => like.entryId);
 
       dispatch(likedActions.set(likes));
+
+      Meteor.subscribe("userData");
+      let topics = Meteor.user().topics;
+      dispatch(topicActions.set(topics));
 
     }
 

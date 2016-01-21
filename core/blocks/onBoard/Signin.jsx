@@ -22,10 +22,7 @@ class SignIn extends React.Component {
   }
 
   static defaultProps = {
-    toggles: [
-      { label: "Sign In" },
-      { label: "Register" }
-    ]
+    toggles: ["Sign In", "Register"]
   }
 
   header = () => {
@@ -36,8 +33,8 @@ class SignIn extends React.Component {
     )
   }
 
-  toggle = (bool) => {
-    this.props.setAccount(bool)
+  toggle = (num) => {
+    this.props.setAccount(num == 0)
   }
 
   isEmail = (value) => {
@@ -118,7 +115,7 @@ class SignIn extends React.Component {
         <Controls.Toggle
           items={this.props.toggles}
           toggle={this.toggle}
-          state={this.props.account}
+          state={this.props.account ? 0 : 1 }
         />
 
         <Forms.Form

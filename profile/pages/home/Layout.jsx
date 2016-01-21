@@ -2,7 +2,7 @@ import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
-import { Likes } from "../../blocks"
+import { Toggle } from "../../../core/components/controls"
 
 const SettingsLink = () => (
   <Link to="/profile/settings" className="text-light-primary plain soft overlay__item locked-top locked-right">
@@ -10,7 +10,7 @@ const SettingsLink = () => (
   </Link>
 )
 
-const Layout = ({ photo, person }) => (
+const Layout = ({ photo, person, onToggle, content }) => (
   <Split nav={true}>
 
     <Right
@@ -32,10 +32,12 @@ const Layout = ({ photo, person }) => (
 
     </Right>
 
-    <Left scroll={true} >
-      <div className="soft soft-double@lap-and-up push-double@lap-wide-and-up">
+    <Left scroll={true}>
+      <Toggle items={["Likes", "Following"]} toggle={onToggle} />
 
-        <Likes />
+      <div>
+
+        {content}
 
       </div>
     </Left>
