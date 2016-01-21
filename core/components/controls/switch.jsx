@@ -40,7 +40,7 @@ export default class Switch extends Component {
           onChange={this.changed}
           checked={this.props.active}
         />
-        <label htmlFor={switchId}></label>
+        <label htmlFor={switchId} className="float-right"></label>
       </div>
     );
 

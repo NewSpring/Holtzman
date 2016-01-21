@@ -35,7 +35,7 @@ const Layout = ({ photo, person, onToggle, content }) => (
     <Left scroll={true}>
       <Toggle items={["Likes", "Following"]} toggle={onToggle} />
 
-      <div className="soft soft-double@lap-and-up push-double@lap-wide-and-up">
+      <div>
 
         {content}
 
