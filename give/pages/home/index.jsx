@@ -86,6 +86,7 @@ export default class Home extends Component {
       accounts.push(this.props.accounts[account])
     }
 
+
     return <Layout accounts={accounts} alive={this.data.alive} />
   }
 }

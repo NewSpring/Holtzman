@@ -20,7 +20,7 @@ import {
 } from "redux-saga"
 
 
-// addSaga(function* dataSync(getState) {
+// addSaga(() => function* dataSync(getState) {
 //
 //   console.log(take, put, getState())
 //   yield setTimeout(() => (console.log("done")), 1000)

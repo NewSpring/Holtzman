@@ -17,7 +17,13 @@ const createReduxStore = (initialState, history) => {
     routing: routeReducer
   }}
 
-  let convertedSagas = sagas.map((saga) => (saga()))
+  let convertedSagas = sagas.map((saga) => {
+    console.log(saga)
+    if (typeof saga === "function") {
+      let s = saga()
+      return s
+    }
+  })
 
   let sharedMiddlewares = [...[
     thunk
