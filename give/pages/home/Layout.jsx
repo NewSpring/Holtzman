@@ -58,7 +58,8 @@ const Layout = ({ alive, accounts }) => (
             }
           }()}
           {accounts.map((account, i) => {
-            if (!account.Url || !account.Description) {
+
+            if (!account.image || !account.description) {
               return null
             }
 
@@ -67,15 +68,15 @@ const Layout = ({ alive, accounts }) => (
                 <Card
                   link={`/give/campaign/${encodeURI(account.Name)}`}
                   image={{
-                    url: account.Url
+                    url: account.image
                   }}
                 >
-                  <h4>{account.PublicName || account.Name}</h4>
+                  <h4>{account.name}</h4>
                   <p>
-                    {account.Description}
+                    {account.summary}
                   </p>
                   <Link
-                    to={`/give/campaign/${encodeURI(account.Name)}`}
+                    to={`/give/campaign/${encodeURI(account.name)}`}
                     className="h6 btn--small btn--dark-tertiary soft-sides@portable"
                   >
                     Learn more
