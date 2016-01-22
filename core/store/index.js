@@ -24,7 +24,7 @@ import {
 //
 // })
 
-import { Wrapper, createReduxStore } from "./redux-bindings"
+import { wrapper, createReduxStore } from "./redux-bindings"
 import { addMiddleware, addReducer, createReducer, addSaga } from "./utilities"
 
 export {
@@ -33,15 +33,15 @@ export {
   nav,
   onBoard,
   sections,
-  
-  Wrapper,
+
+  wrapper,
   createReduxStore,
-  
+
   addMiddleware,
-  
+
   addReducer,
   createReducer,
-  
+
   addSaga,
   take,
   put,
