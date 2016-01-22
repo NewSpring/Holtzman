@@ -18,7 +18,6 @@ const createReduxStore = (initialState, history) => {
   }}
 
   let convertedSagas = sagas.map((saga) => {
-    console.log(saga)
     if (typeof saga === "function") {
       let s = saga()
       return s
@@ -42,30 +41,16 @@ const createReduxStore = (initialState, history) => {
   }
 
   const store = compose(...sharedCompose)(createStore)(combineReducers(joinedReducers), initialState)
-  // syncReduxAndRouter(history, store)
+  syncReduxAndRouter(history, store)
 
+  console.log(store)
   return store
 
 }
 
-// @TODO: Remove wrapper for Provider when SSR support is fixed
-class Wrapper extends Component {
-  componentWillMount() {
-    this.store = createReduxStore()
-  }
 
-  render () {
-    return (
-      <Provider store={this.store}>
-        {this.props.children}
-      </Provider>
-    )
-  }
-}
-
-
-
+const wrapper = Provider
 export {
-  Wrapper,
+  wrapper,
   createReduxStore
 }
