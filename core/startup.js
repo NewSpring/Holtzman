@@ -7,3 +7,7 @@ if (Meteor.isClient) {
   Meteor.subscribe("person")
   Meteor.subscribe("campuses")
 }
+
+if (Meteor.isServer) {
+  require("./graphql/server")
+}
