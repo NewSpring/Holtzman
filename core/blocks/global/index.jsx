@@ -102,7 +102,6 @@ function getUser(id, dispatch) {
       }
     }
   `
-
   return GraphQL.query(personQuery)
     .then(({ person }) => {
       if (person) {
@@ -117,6 +116,7 @@ function bindLogout(dispatch) {
   let handle = {}
 
   Tracker.autorun((computation) => {
+    console.log("here")
     handle = computation
     const user = Meteor.userId()
 
@@ -140,8 +140,9 @@ export default class Global extends Component {
     const { dispatch } = this.props
     const user = Meteor.userId()
 
-    if (!this.handle) {
-      this.handle = bindLogout(dispatch)
+    if (user) {
+      dispatch(onBoardActions.authorize(true))
+      return getUser(user, dispatch)
     }
 
     let query = `
