@@ -35,8 +35,8 @@ const Layout = ({
         </h3>
 
         <Forms.Input
-          id={primary.Id}
-          name={primary.Name}
+          id={primary.id}
+          name={primary.name}
           type="tel"
           hideLabel={true}
           classes={["soft-bottom", "input--active", "display-inline-block"]}
@@ -44,7 +44,7 @@ const Layout = ({
           placeholder="$0.00"
           validate={save}
           format={format}
-          defaultValue={preFill(primary.Id)}
+          defaultValue={preFill(primary.id)}
         />
 
 
@@ -53,8 +53,8 @@ const Layout = ({
           {() => {
 
             if ((accounts && accounts.length > 1) || !accounts.length) {
-              if (primary.Id) {
-                delete transactions[primary.Id]
+              if (primary.id) {
+                delete transactions[primary.id]
               } else {
                 delete transactions[-1]
               }

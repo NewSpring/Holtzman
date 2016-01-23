@@ -1,18 +1,50 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
 import Moment from "moment"
 
+import { GraphQL } from "../../../../core/graphql"
+
 import { Campuses, States } from "../../../../core/collections"
-import { nav } from "../../../../core/store"
+import { nav, campuses as campusActions } from "../../../../core/store"
 import { update } from "../../../../core/methods/auth/client/"
+
 
 import Success from "../Success"
 import Layout from "./Layout"
 
-const map = (state) => ({ person: state.onBoard.person })
+
+function getCampuses(dispatch) {
+  let query = `
+    {
+      campuses: allCampuses {
+        name
+        shortCode
+        id
+        locationId
+      }
+    }
+  `
+
+  return GraphQL.query(query)
+    .then(({ campuses }) => {
+
+      let mappedObj = {}
+      for (let campus of campuses) {
+        mappedObj[campus.id] = campus
+      }
+
+      dispatch(campusActions.add(mappedObj))
+
+    })
+
+}
+
+const map = (state) => ({
+  person: state.onBoard.person,
+  campuses: state.campuses.campuses
+})
+
 @connect(map)
-@ReactMixin.decorate(ReactMeteorData)
 export default class PersonalDetails extends Component {
 
   state = {
@@ -20,20 +52,23 @@ export default class PersonalDetails extends Component {
     state: "default"
   }
 
+  static fetchData(getStore, dispatch){
+    return getCampuses(dispatch)
+  }
+
   componentWillMount(){
     this.props.dispatch(nav.setLevel("CONTENT"))
+  }
+
+  componentDidMount(){
+    const { dispatch } = this.props
+    return getCampuses(dispatch)
   }
 
   componentWillUnmount(){
     this.props.dispatch(nav.setLevel("TOP"))
   }
 
-  getMeteorData() {
-    Meteor.subscribe("campuses")
-    return {
-      campuses: Campuses.find().fetch()
-    }
-  }
 
   getDays = () => {
 
@@ -114,11 +149,14 @@ export default class PersonalDetails extends Component {
 
   render () {
 
-    let { campuses } = this.data
+    let campuses = []
+    for (let campus in this.props.campuses) {
+      campuses.push(this.props.campuses[campus])
+    }
 
     campuses || (campuses = [])
     campuses = campuses.map((campus) => {
-      return { label: campus.Name, value: campus.Id }
+      return { label: campus.name, value: campus.id }
     })
 
     const { state } = this.state

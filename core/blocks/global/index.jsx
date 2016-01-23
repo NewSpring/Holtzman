@@ -58,12 +58,88 @@ const App = ({ children, className }) => (
   </div>
 )
 
+
+function getUser(id, dispatch) {
+
+  // this is probably to heavy of a universal call?
+  let personQuery = `
+    {
+      person(mongoId: "${id}", cache: false) {
+        age
+        birthdate
+        birthDay
+        birthMonth
+        birthYear
+        campus {
+          name
+          shortCode
+          id
+        }
+        home {
+          city
+          country
+          id
+          zip
+          state
+          street1
+          street2
+        }
+        firstName
+        lastName
+        nickName
+        email
+        phoneNumbers {
+          number
+          formated
+        }
+        photo
+      }
+    }
+  `
+  return GraphQL.query(personQuery)
+    .then(({ person }) => {
+      if (person) {
+        dispatch(onBoardActions.person(person))
+      }
+
+    })
+
+}
+
+function bindLogout(dispatch) {
+  let handle = {}
+
+  Tracker.autorun((computation) => {
+    console.log("here")
+    handle = computation
+    const user = Meteor.userId()
+
+    if (user) {
+      return getUser(user, dispatch)
+    }
+
+    dispatch(onBoardActions.signout())
+
+  })
+
+  return handle
+}
+
+
 @connect()
 export default class Global extends Component {
 
-  componentWillMount(){
-    let { handle, authorized } = bindMeteorPerson(this.props)
-    this.handle = handle
+
+  componentDidMount() {
+    const { dispatch } = this.props
+    const user = Meteor.userId()
+
+    if (user) {
+      dispatch(onBoardActions.authorize(true))
+      return getUser(user, dispatch)
+    }
+
+    this.handle = bindLogout(dispatch)
   }
 
   componentWillUnmount(){

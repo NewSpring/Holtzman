@@ -42,7 +42,7 @@ export default class Layout extends Component {
 
   render () {
 
-    const { data, stop, state } = this.props
+    const { schedule, stop, state } = this.props
 
     return (
       <Split nav={true} >
@@ -56,7 +56,6 @@ export default class Layout extends Component {
           <div className="constrain-copy soft soft-double@lap-and-up push-double@lap-and-up" >
 
             {() => {
-              const { schedule } = data
 
               if (!schedule) {
                 // loading
@@ -73,7 +72,19 @@ export default class Layout extends Component {
 
 
                   <h3 className="text-dark-tertiary" style={{lineHeight: "1.75"}}>
-                    <span className="text-dark-secondary">{this.capitalizeFirstLetter(schedule.TransactionFrequencyValue.Description.toLowerCase())}</span>, I give <span className="text-dark-secondary">{this.monentize(schedule.ScheduledTransactionDetails[0].Amount)}</span> to <span className="text-primary">{schedule.ScheduledTransactionDetails[0].Account.PublicName}</span>. This began on <span className="text-dark-secondary">{this.formatDate(schedule.StartDate)}</span> using my <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.CreditCardTypeValue.Description.toLowerCase()}</span> ending in <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.AccountNumberMasked.slice(-4)}</span>
+                    <span className="text-dark-secondary">
+                      {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
+                    </span>, I give <span className="text-dark-secondary">
+                      {this.monentize(schedule.details[0].amount)}
+                    </span> to <span className="text-primary">
+                      {schedule.details[0].account.name}
+                    </span>. This began on <span className="text-dark-secondary">
+                      {this.formatDate(schedule.start)}
+                    </span> using my <span className="text-dark-secondary">
+                      {schedule.payment.paymentType.toLowerCase()}
+                    </span> ending in <span className="text-dark-secondary">
+                      {schedule.payment.accountNumber.slice(-4)}
+                    </span>
                   </h3>
                   {() => {
                     if (state.isActive) {
