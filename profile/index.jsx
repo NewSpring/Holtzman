@@ -14,7 +14,7 @@ const Root = ({ children }) => (
 
 export default {
   path: "profile",
-  component: Authorized,
+  component: Root,
   indexRoute: { component: Home },
   childRoutes: Routes
 }

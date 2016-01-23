@@ -48,7 +48,7 @@ export default class Layout extends Component {
 
           <div className="constrain-copy soft soft-double@lap-and-up push-double@lap-and-up" >
             {() => {
-              const { person, transaction } = this.props
+              const { person, transaction, account } = this.props
 
               if (!transaction) {
                 // loading
@@ -61,28 +61,28 @@ export default class Layout extends Component {
 
               return (
                 <div className="text-center push-bottom@lap-and-up">
-                  <p className="push-half-bottom"><em>{this.formatDate(transaction.CreatedDateTime)}</em></p>
-                  <h3 className="text-dark-secondary">{transaction.TransactionDetails[0].Account.PublicName}</h3>
+                  <p className="push-half-bottom"><em>{this.formatDate(transaction.date)}</em></p>
+                  <h3 className="text-dark-secondary">{account.name}</h3>
 
-                  <h1 className="text-dark-primary">{this.monentize(transaction.TransactionDetails[0].Amount)}</h1>
+                  <h1 className="text-dark-primary">{this.monentize(transaction.details[0].amount)}</h1>
 
-                  <h6 className="push-bottom text-dark-tertiary">{person.FirstName} {person.LastName}</h6>
+                  <h6 className="push-bottom text-dark-tertiary">{person.firstName} {person.lastName}</h6>
 
                   {() => {
-                    const detail = transaction.FinancialPaymentDetail
-                    if (detail.AccountNumberMasked) {
+                    const detail = transaction.payment
+                    if (detail && detail.accountNumber) {
                       return (
                         <h4 className="text-dark-secondary">
-                          {detail.AccountNumberMasked.slice(-4)}
+                          {detail.accountNumber.slice(-4)}
 
                           {() => {
-                            if (detail.CreditCardTypeValue && detail.CreditCardTypeValue.Value) {
-                              return (
-                                <AccountType width="30px" height="20px" type={detail.CreditCardTypeValue.Value}/>
-                              )
-                            } else if (detail.CurrencyTypeValue && detail.CurrencyTypeValue.Value === "ACH") {
+                            if (detail.paymentType && detail.paymentType === "ACH") {
                               return (
                                 <AccountType width="30px" height="20px" type="Bank"/>
+                              )
+                            } else if (detail.paymentType) {
+                              return (
+                                <AccountType width="30px" height="20px" type={detail.paymentType} />
                               )
                             }
                           }()}

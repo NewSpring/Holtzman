@@ -10,8 +10,11 @@ import publish from "./publications"
 import { wrapper, createReduxStore } from "./store"
 import { GraphQL } from "./graphql"
 
-export default {
-  name: "Apollos",
+if (Meteor.isServer) {
+  require("./graphql/server");
+}
+
+export {
   publish,
   wrapper,
   createReduxStore,

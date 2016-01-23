@@ -16,26 +16,27 @@ const initial = {
   success: false,
 
   person: {
-    Age: null, // Number
-    BirthDate: null, // Date
-    Campus: {
-      Name: null, // String
-      ShortCode: null // String
+    age: null, // Number
+    birthdate: null, // Date
+    campus: {
+      name: null, // String
+      shortcode: null // String
     },
-    Email: null, // String
-    Home: {
-      City: null, // String
-      Country: null, // String
-      Id: null, // Number
-      PostalCode: null, // String
-      State: null, // String
-      Street1: null, // String
-      Street2: null // String
+    email: null, // String
+    home: {
+      city: null, // String
+      country: null, // String
+      id: null, // Number
+      zip: null, // String
+      state: null, // String
+      street1: null, // String
+      street2: null // String
     },
-    LastName: null, // String
-    NickName: null, // String
-    PhoneNumber: [],
-    PhotoUrl: null // String
+    firstName: null, // String
+    lastName: null, // String
+    nickName: null, // String
+    phoneNumbers: [],
+    photo: null // String
   },
 
   data: {

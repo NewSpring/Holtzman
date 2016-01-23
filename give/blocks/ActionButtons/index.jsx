@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
 
+import { GraphQL } from "../../../core/graphql"
 import { OnBoard } from "../../../core/blocks"
 
 // @TODO refactor once giving is converted to sagas
@@ -14,12 +14,30 @@ import {
 
 import Give from "../Give"
 import { AccountType } from "../../components"
-import { PaymentDetails } from "../../collections"
 
 import { give as giveActions } from "../../store"
 
-
 import { PrimaryButton, SecondaryButton, Guest } from "./Buttons"
+
+
+function getPaymentDetails(id, dispatch) {
+
+  let query = `
+    {
+      paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${id}") {
+        name
+        id
+        date
+        payment {
+          accountNumber
+          paymentType
+        }
+      }
+    }
+  `
+  return GraphQL.query(query)
+    .then(({ paymentDetails }) => (paymentDetails[0]))
+}
 
 /*
 
@@ -30,25 +48,33 @@ import { PrimaryButton, SecondaryButton, Guest } from "./Buttons"
   3. Give as guest (in small text) if not signed in
 
 */
-@connect()
-@ReactMixin.decorate(ReactMeteorData)
+const map = (store) => ({ authorized: store.onBoard.authorized })
+@connect(map)
 export default class GiveNow extends Component {
 
-  getMeteorData() {
-    let paymentDetails
-
-    Meteor.subscribe("paymentDetails")
-    let details = PaymentDetails.find().fetch()
-    return {
-      paymentDetails: details[0],
-      authorized: Meteor.user()
-    }
+  state = {
+    paymentDetails: false,
   }
+
+  componentDidMount(){
+
+    const id = Meteor.userId()
+    const { dispatch } = this.props
+
+    if (id) {
+      getPaymentDetails(id, dispatch)
+        .then(paymentDetails => {
+          this.setState({ paymentDetails })
+        })
+    }
+
+  }
+
 
   buttonClasses = () => {
     let classes = ["btn"]
 
-    if (this.data.paymentDetails) {
+    if (this.state.paymentDetails) {
       classes.push("has-card")
     }
 
@@ -69,7 +95,7 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(giveActions.setTransactionType("default"))
 
-    if (this.data.authorized) {
+    if (this.props.authorized) {
       this.props.dispatch(modal.render(Give))
     } else {
       this.props.dispatch(modal.render(OnBoard))
@@ -79,9 +105,9 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(navActions.setLevel("MODAL"))
 
-    if (this.data.paymentDetails) {
+    if (this.state.paymentDetails) {
       this.props.dispatch(giveActions.setAccount(
-        this.data.paymentDetails.Id
+        this.state.paymentDetails.id
       ))
     }
 
@@ -107,16 +133,16 @@ export default class GiveNow extends Component {
 
     let text = "Give Now"
 
-    if (this.data.paymentDetails) {
-      const details = this.data.paymentDetails
-      let { AccountNumberMasked } = details.FinancialPaymentDetail
-      AccountNumberMasked = AccountNumberMasked.slice(-4).trim()
+    if (this.state.paymentDetails) {
+      const details = this.state.paymentDetails
+      let { accountNumber } = details.payment
+      accountNumber = accountNumber.slice(-4).trim()
 
-      text += ` using ${AccountNumberMasked}`
+      text += ` using ${accountNumber}`
 
     }
 
-    if (!this.data.authorized) {
+    if (!this.props.authorized) {
       text = "Sign In"
     }
 
@@ -126,30 +152,26 @@ export default class GiveNow extends Component {
 
   icon = () => {
 
-    if (this.data.paymentDetails) {
-      const details = this.data.paymentDetails
+    if (this.state.paymentDetails) {
+      const detail = this.state.paymentDetails.payment
 
-      if (details.FinancialPaymentDetail.CurrencyTypeValue &&
-        details.FinancialPaymentDetail.CurrencyTypeValue.Description === "Credit Card"
-      ) {
+      if (detail.paymentType && detail.paymentType === "ACH") {
         return (
-          // replace with SVG
-          <AccountType width="30px" height="20px" type={details.FinancialPaymentDetail.CreditCardTypeValue.Value}/>
-        )
-      } else {
-
-        return (
-          // replace with SVG
           <AccountType width="30px" height="20px" type="Bank"/>
         )
-
+      } else if (detail.paymentType) {
+        return (
+          <AccountType width="30px" height="20px" type={detail.paymentType} />
+        )
       }
+
     }
 
   }
 
 
   render () {
+    console.log(this.props)
     return (
       <div>
         <PrimaryButton
@@ -160,7 +182,7 @@ export default class GiveNow extends Component {
           onClick={this.onClick}
         />
         {() => {
-          if (!this.data.authorized) {
+          if (!this.props.authorized) {
             return (
               <SecondaryButton
                 disabled={this.props.disabled}
@@ -171,7 +193,7 @@ export default class GiveNow extends Component {
 
         }()}
         {() => {
-          if (!this.data.authorized && !this.props.disabledGuest) {
+          if (!this.props.authorized && !this.props.disabledGuest) {
             return (
               <Guest
                 disabled={this.props.disabled}

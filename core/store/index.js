@@ -5,6 +5,7 @@ import modal from "./modal"
 import nav from "./nav"
 import onBoard from "./onBoard"
 import sections from "./sections"
+import topics from "./topics"
 
 import {
   join,
@@ -33,6 +34,7 @@ export {
   nav,
   onBoard,
   sections,
+  topics,
 
   wrapper,
   createReduxStore,

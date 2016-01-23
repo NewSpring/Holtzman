@@ -1,42 +1,17 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
+import { GraphQL } from "../../graphql"
 import Nav from "../nav"
 import Modal from "../modal"
 import { People, Likes } from "../../collections"
 
 import {
   onBoard as onBoardActions,
-  liked as likedActions
+  liked as likedActions,
+  topics as topicActions
 } from "../../store"
 
-
-const bindMeteorPerson = (props) => {
-  const { dispatch } = props
-
-  let handle = {}
-  Tracker.autorun((computation) => {
-    handle = computation
-
-    const user = Meteor.user()
-    if (user) {
-      Meteor.subscribe("people")
-      dispatch(onBoardActions.person(People.find().fetch()[0]))
-
-      Meteor.subscribe("likes")
-      let likes = Likes.find().fetch().map((like) => like.entryId);
-
-      dispatch(likedActions.set(likes));
-
-    }
-
-    props.dispatch(onBoardActions.authorize(user != null))
-
-  })
-
-  return { handle }
-
-}
 
 const App = ({ children, className }) => (
   <div className="
@@ -55,17 +30,87 @@ const App = ({ children, className }) => (
 
 
 
+function getUser(id, dispatch) {
+
+  // this is probably to heavy of a universal call?
+  let personQuery = `
+    {
+      person(mongoId: "${id}") {
+        age
+        birthdate
+        campus {
+          name
+          shortCode
+        }
+        home {
+          city
+          country
+          id
+          zip
+          state
+          street1
+          street2
+        }
+        firstName
+        lastName
+        nickName
+        email
+        phoneNumbers {
+          number
+          formated
+        }
+        photo
+      }
+    }
+  `
+
+  return GraphQL.query(personQuery)
+    .then(({ person }) => {
+      dispatch(onBoardActions.person(person))
+    })
+
+}
+
+function bindLogout(dispatch) {
+  let handle = {}
+
+  Tracker.autorun((computation) => {
+    handle = computation
+    const user = Meteor.userId()
+
+    if (user) {
+      return getUser(user, dispatch)
+    }
+
+    dispatch(onBoardActions.signout())
+
+  })
+
+  return handle
+}
+
+
 @connect()
 export default class Global extends Component {
 
-  componentWillMount(){
-    let { handle, authorized } = bindMeteorPerson(this.props)
-    this.handle = handle
 
+  componentWillMount() {
+    const { dispatch } = this.props
+
+    const user = Meteor.userId()
+
+    if (user) {
+      return getUser(user, dispatch)
+    }
+
+    this.handle = bindLogout(dispatch)
   }
 
+
   componentWillUnmount(){
-    this.handle.stop()
+    if (this.handle) {
+      this.handle.stop()
+    }
   }
 
   render() { return <App {...this.props} /> }
