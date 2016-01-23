@@ -35,12 +35,16 @@ function getUser(id, dispatch) {
   // this is probably to heavy of a universal call?
   let personQuery = `
     {
-      person(mongoId: "${id}") {
+      person(mongoId: "${id}", cache: false) {
         age
         birthdate
+        birthDay
+        birthMonth
+        birthYear
         campus {
           name
           shortCode
+          id
         }
         home {
           city
@@ -63,10 +67,12 @@ function getUser(id, dispatch) {
       }
     }
   `
-
   return GraphQL.query(personQuery)
     .then(({ person }) => {
-      dispatch(onBoardActions.person(person))
+      if (person) {
+        dispatch(onBoardActions.person(person))
+      }
+
     })
 
 }
@@ -75,6 +81,7 @@ function bindLogout(dispatch) {
   let handle = {}
 
   Tracker.autorun((computation) => {
+    console.log("here")
     handle = computation
     const user = Meteor.userId()
 
@@ -94,12 +101,12 @@ function bindLogout(dispatch) {
 export default class Global extends Component {
 
 
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch } = this.props
-
     const user = Meteor.userId()
 
     if (user) {
+      dispatch(onBoardActions.authorize(true))
       return getUser(user, dispatch)
     }
 

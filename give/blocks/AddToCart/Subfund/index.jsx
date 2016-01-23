@@ -66,7 +66,7 @@ export default class SubFund extends Component {
   showInputs = (id) => {
 
     let selectedFund = this.props.accounts.filter((fund) => {
-      return fund.Id === Number(id)
+      return fund.id === Number(id)
     })
 
     const { PublicName, Name } = selectedFund[0]
@@ -95,8 +95,8 @@ export default class SubFund extends Component {
 
     let mappedAccounts = this.props.accounts.map((account) => {
       return {
-        value: account.Id,
-        label: account.PublicName || account.Name
+        value: account.id,
+        label: account.name
       }
     })
 

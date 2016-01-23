@@ -62,8 +62,8 @@ export default class Template extends Component {
 
   static fetchData(getStore, dispatch) {
     let mongoId = Meteor.userId(),
-        size = this.state.pageSize,
-        skip = this.state.page * size;
+        size = 20,
+        skip = 0 * size;
 
     if (mongoId) {
       return getTransactions({ mongoId, skip, size }, dispatch)

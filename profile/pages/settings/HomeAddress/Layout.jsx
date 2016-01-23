@@ -13,12 +13,12 @@ export default class Layout extends Component {
     const { update, home } = this.props
 
     let {
-      City,
-      Country,
-      PostalCode,
-      State,
-      Street1,
-      Street2
+      city,
+      country,
+      zip,
+      state,
+      street1,
+      street2
     } = home
 
     return (
@@ -39,14 +39,14 @@ export default class Layout extends Component {
             label="Street"
             ref="Street1"
             type="text"
-            defaultValue={Street1}
+            defaultValue={street1}
           />
           <Forms.Input
             name="Street2"
             label="Street 2 (Optional)"
             ref="Street2"
             type="text"
-            defaultValue={Street2}
+            defaultValue={street2}
           />
           <div className="grid">
 
@@ -54,7 +54,7 @@ export default class Layout extends Component {
               <Forms.Input
                 name="City"
                 label="City"
-                defaultValue={City}
+                defaultValue={city}
                 ref="City"
               />
             </div>
@@ -67,7 +67,7 @@ export default class Layout extends Component {
                   <Forms.Input
                     name="State"
                     label="State"
-                    defaultValue={State}
+                    defaultValue={state}
                     ref="State"
                   />
 
@@ -76,7 +76,7 @@ export default class Layout extends Component {
                   <Forms.Input
                     name="PostalCode"
                     label="Zip"
-                    defaultValue={PostalCode}
+                    defaultValue={zip}
                     ref="PostalCode"
                   />
                 </div>

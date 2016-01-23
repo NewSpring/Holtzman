@@ -3,7 +3,8 @@ import { addReducer, createReducer } from "../../../core/store/utilities"
 
 
 const initial = {
-  transactions: {}
+  transactions: {},
+  scheduledTransactions: {}
 }
 
 const reducer = createReducer(initial, {
@@ -11,6 +12,12 @@ const reducer = createReducer(initial, {
 
     return {...state, ...{
       transactions: {...state.transactions, ...action.transactions}
+    }}
+  },
+  ["TRANSACTIONS.ADD_SCHEDULE"](state, action) {
+
+    return {...state, ...{
+      scheduledTransactions: {...state.scheduledTransactions, ...action.scheduledTransactions}
     }}
   }
 });
@@ -21,5 +28,7 @@ addReducer({
 
 
 export default {
-  add: (transactions) => ({ type: "TRANSACTIONS.ADD", transactions })
+  add: (transactions) => ({ type: "TRANSACTIONS.ADD", transactions }),
+  addSchedule: (scheduledTransactions) => ({ type: "TRANSACTIONS.ADD_SCHEDULE", scheduledTransactions })
+
 }
