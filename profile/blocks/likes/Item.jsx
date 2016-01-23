@@ -31,7 +31,7 @@ export default class LikesItem extends Component {
     const like = this.props.like;
 
     return (
-      <section className="soft-half-sides hard-ends background--light-secondary">
+      <section className="hard">
         <div className="grid">
           <div className="one-whole grid__item">
             <div className="card">

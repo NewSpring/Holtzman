@@ -58,7 +58,7 @@ export default class Layout extends Component {
 
   render () {
 
-    const { transactions, ready, alive } = this.props.data
+    const { transactions, ready } = this.props
 
 
     return (
@@ -78,11 +78,11 @@ export default class Layout extends Component {
           <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top" ref="history">
             {() => {
 
-              if (!alive) {
-                return <Offline />
-              }
+              // if (!alive) {
+              //   return <Offline />
+              // }
 
-              if (!transactions || !transactions.length && !ready) {
+              if (!transactions.length && !ready) {
                 // loading
                 return (
                   <div className="text-center soft">
@@ -90,7 +90,7 @@ export default class Layout extends Component {
                   </div>
 
                 )
-              } else if (!transactions || !transactions.length && ready) {
+              } else if (!transactions.length && ready) {
                 return (
                   <div className="text-left soft-ends">
                     <p>
@@ -104,35 +104,35 @@ export default class Layout extends Component {
 
 
               return transactions.map((transaction, i) => {
-                if (!transaction.TransactionDetails.length) {
+                if (!transaction.details.length) {
                   return null
                 }
 
-                return transaction.TransactionDetails.map((transactionDetail, i) => {
-                  if (!transactionDetail.Account) {
+                return transaction.details.map((transactionDetail, i) => {
+                  if (!transactionDetail.account) {
                     return null
                   }
 
                   return (
                     <div key={i} className="soft-ends push-half-ends hard-sides outlined--light outlined--bottom constrain-mobile">
 
-                      <Link to={`/give/history/${transaction.Id}/${transactionDetail.Account.Id}`}>
+                      <Link to={`/give/history/${transaction.id}/${transactionDetail.account.id}`}>
 
                         <div className="grid" style={{verticalAlign: "middle"}} key={i}>
 
                           <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
                             <h5 className="text-dark-tertiary flush">
-                              {transactionDetail.Account.PublicName}
+                              {transactionDetail.account.name}
                             </h5>
                             <p className="flush soft-half-top italic small text-dark-tertiary">
-                              {this.formatDate(transaction.CreatedDateTime)}
+                              {this.formatDate(transaction.date)}
                             </p>
                           </div>
 
                           <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
                             <div className="soft-half-right">
                               <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
-                                {this.monentize(transactionDetail.Amount)}
+                                {this.monentize(transactionDetail.amount)}
                                 <span className="text-primary icon-arrow-next locked" style={{
                                     right: "-5px",
                                     top: "1px"

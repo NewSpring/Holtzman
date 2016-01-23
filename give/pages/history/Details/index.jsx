@@ -1,55 +1,95 @@
 import { Component, PropTypes} from "react"
-import ReactMixin from "react-mixin"
 import { connect } from "react-redux"
 
+import { GraphQL } from "../../../../core/graphql"
 import { nav as navActions } from "../../../../core/store"
-import { Transactions } from "../../../collections"
+import { transactions as transactionActions } from "../../../store"
 
 import Layout from "./Layout"
 
-const map = (state) => ({ person: state.onBoard.person })
+
+function getTransaction(id, account, dispatch){
+  let query = `
+    {
+      transaction: finanicalTransaction(id: ${id}) {
+        id
+        date
+        summary
+        details {
+          id
+          amount
+          date
+        }
+        payment {
+         id
+         paymentType
+         accountNumber
+       }
+      }
+      account: financialAccount(id: ${account}) {
+        id
+        name
+        description
+        summary
+        image
+        end
+        start
+      }
+    }
+  `
+
+  return GraphQL.query(query)
+    .then(({transaction, account}) => {
+      transaction.account = account
+      const obj = {
+        [transaction.id]: transaction
+      }
+      dispatch(transactionActions.add(obj))
+    })
+}
+
+
+const map = (state) => ({
+  person: state.onBoard.person,
+  transactions: state.transactions.transactions
+})
+
 @connect(map)
-@ReactMixin.decorate(ReactMeteorData)
 export default class Details extends Component {
+
+  static fetchData(getStore, dispatch, props) {
+    const { id, account } = props.params
+    return getTransaction(id, account, dispatch)
+  }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("CONTENT"))
+  }
+
+  componentDidMount(){
+    const { id, account } = this.props.params
+    const { dispatch } = this.props
+    getTransaction(id, account, dispatch)
   }
 
   componentWillUnmount() {
     this.props.dispatch(navActions.setLevel("TOP"))
   }
 
-  getMeteorData() {
-    Meteor.subscribe("transactions")
-    const { id, account } = this.props.params
-    const transaction = Transactions.findOne({Id: Number(id)});
-
-    if (transaction) {
-      let { TransactionDetails } = transaction
-
-      if (TransactionDetails.length) {
-        for (let detail of TransactionDetails) {
-
-          if (detail.AccountId === Number(account)) {
-            TransactionDetails = [detail]
-            break
-          }
-        }
-      }
-      transaction.TransactionDetails = TransactionDetails
-
-    }
-
-    return {
-      transaction
-    };
-
-  }
-
 
   render () {
+    const id = Number(this.props.params.id)
+    let transaction = this.props.transactions[id]
+    transaction || (transaction = false)
+    let account = transaction.account
+    account || (account = {})
 
-    return <Layout transaction={this.data.transaction} person={this.props.person} />
+    return (
+      <Layout
+        transaction={transaction}
+        person={this.props.person}
+        account={account}
+      />
+    )
   }
 }

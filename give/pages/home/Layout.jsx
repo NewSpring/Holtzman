@@ -35,8 +35,6 @@ const Layout = ({ alive, accounts }) => (
 
             return <AddToCart accounts={accounts} />
           }()}
-
-
         </div>
 
         <div className="soft-double-ends@lap-and-up">
@@ -45,7 +43,8 @@ const Layout = ({ alive, accounts }) => (
 
         <h4 className="push-bottom@lap-and-up">Or, give to one of our campaigns...</h4>
         <div className="grid">
-          {() => {
+
+          {(() => {
 
             if (!alive) { return null }
 
@@ -56,7 +55,8 @@ const Layout = ({ alive, accounts }) => (
                 </div>
               )
             }
-          }()}
+          })()}
+
           {accounts.map((account, i) => {
 
             if (!account.image || !account.description) {
@@ -66,7 +66,7 @@ const Layout = ({ alive, accounts }) => (
             return (
               <div key={i} className="grid__item one-whole one-half@anchored push-bottom">
                 <Card
-                  link={`/give/campaign/${encodeURI(account.Name)}`}
+                  link={`/give/campaign/${encodeURI(account.name)}`}
                   image={{
                     url: account.image
                   }}

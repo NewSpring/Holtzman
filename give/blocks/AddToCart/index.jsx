@@ -68,7 +68,7 @@ export default class CartContainer extends Component {
 
   componentWillMount() {
 
-    if (typeof window != undefined && window != null) {
+    if (typeof window != "undefined" && window != null) {
       let match,
           pl     = /\+/g,  // Regex for replacing addition symbol with a space
           search = /([^&=]+)=?([^&]*)/g,
