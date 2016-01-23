@@ -5,7 +5,6 @@ import ReactMixin from "react-mixin"
 import { GraphQL } from "./../../../core"
 
 import { give as giveActions } from "../../store"
-import { Accounts as Acc } from "../../collections"
 
 import Layout from "./Layout"
 

@@ -10,8 +10,7 @@ import publish from "./publications"
 import { wrapper, createReduxStore } from "./store"
 import { GraphQL } from "./graphql"
 
-export default {
-  name: "Apollos",
+export {
   publish,
   wrapper,
   createReduxStore,

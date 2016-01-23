@@ -19,7 +19,66 @@ export default class Template extends Component {
     page: 1,
     pageSize: 20,
     shouldUpdate: true,
-    done: false
+    done: false,
+    loaded: false
+  }
+
+  static fetchData(getStore, dispatch) {
+    let mongoId = Meteor.userId(),
+        size = 20,
+        skip = 0 * size;
+
+    if (mongoId) {
+      return getTransactions({ mongoId, skip, size }, dispatch)
+    }
+  }
+
+  getData = () => {
+
+    const { dispatch } = this.props
+
+    let mongoId = Meteor.userId(),
+        size = this.state.pageSize,
+        skip = this.state.page * size;
+
+    if (this.state.done) {
+      return
+    }
+
+    if (Object.keys(this.props.transactions).length === ((size + 1) * this.state.pageSize)) {
+      return
+    }
+
+    console.log("fetching...")
+    if (mongoId) {
+      getTransactions({ mongoId, skip, size }, dispatch)
+        .then((transactions) => {
+          let done = false
+          if (transactions.length < size) {
+            done = true
+          }
+          this.setState({ done, loaded: true })
+        })
+    }
+  }
+
+  // its probably safter to not SSR giving data right?
+  componentDidMount(){
+    const { dispatch } = this.props
+
+    this.getData()
+
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    console.log(prevState, this.state)
+    const { page, shouldUpdate } = this.state
+
+    if (prevState.page === page || prevState.shouldUpdate === shouldUpdate) {
+      return
+    }
+
+    this.getData()
   }
 
   onScroll = (e) => {

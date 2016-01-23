@@ -6,6 +6,7 @@ import nav from "./nav"
 import onBoard from "./onBoard"
 import sections from "./sections"
 import topics from "./topics"
+import campuses from "./campuses"
 
 import {
   join,
@@ -29,6 +30,7 @@ import { wrapper, createReduxStore } from "./redux-bindings"
 import { addMiddleware, addReducer, createReducer, addSaga } from "./utilities"
 
 export {
+  campuses,
   liked,
   modal,
   nav,

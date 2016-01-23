@@ -1,44 +1,49 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
 
+import { GraphQL } from "../../../../core/graphql"
 import { nav } from "../../../../core/store"
 import { Loading } from "../../../../core/components"
 
-import { PaymentDetails } from "../../../../give/collections"
-
 import Layout from "./Layout"
 
-/*
-
-  The give now button is presented in the following order:
-
-  1. Give with existing account if found
-  2. Give now (if signed in)
-  3. Give as guest (in small text) if not signed in
-
-*/
 @connect()
-@ReactMixin.decorate(ReactMeteorData)
 export default class GiveNow extends Component {
+
+  state = {
+    accounts: [],
+    loaded: false
+  }
 
   componentWillMount(){
     this.props.dispatch(nav.setLevel("CONTENT"))
+  }
+
+  componentDidMount(){
+    let query = `
+      query PaymentDetails($mongoId: String){
+        accounts: allSavedPaymentAccounts(mongoId: $mongoId){
+          id
+          name
+          payment {
+            id
+            accountNumber
+            paymentType
+          }
+        }
+      }
+    `
+
+    return GraphQL.query(query)
+      .then(({ accounts }) => {
+        this.setState({ accounts, loaded: true })
+      })
   }
 
   componentWillUnmount(){
     this.props.dispatch(nav.setLevel("TOP"))
   }
 
-  getMeteorData() {
-    let paymentDetails
-
-    Meteor.subscribe("paymentDetails")
-
-    return {
-      paymentDetails: PaymentDetails.find().fetch()
-    }
-  }
 
   remove = (e) => {
     e.preventDefault()
@@ -52,10 +57,10 @@ export default class GiveNow extends Component {
 
   render () {
 
-    if (!this.data.paymentDetails) {
+    if (!this.state.loaded) {
       return <Loading/>
     }
 
-    return <Layout details={this.data.paymentDetails} remove={this.remove} />
+    return <Layout details={this.state.accounts} remove={this.remove} />
   }
 }

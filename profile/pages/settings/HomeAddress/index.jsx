@@ -65,7 +65,7 @@ export default class HomeAddress extends Component {
 
   render () {
 
-    const { Home } = this.props.person
+    const { home } = this.props.person
     const { state } = this.state
 
     switch (state) {
@@ -76,7 +76,7 @@ export default class HomeAddress extends Component {
       case "success":
         return <Success msg="Your information has been updated!" />
       default:
-        return <Layout home={Home} update={this.updateAddress} />
+        return <Layout home={home} update={this.updateAddress} />
     }
 
   }
