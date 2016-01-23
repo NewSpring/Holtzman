@@ -10,6 +10,19 @@ const api = {
 api.registerEndpoint = (obj) => {
   if (obj.tokenName && obj.token && obj.baseURL) {
     api._ = obj
+
+    if (Meteor.isServer) {
+      if (typeof serverWatch != "undefined") {
+        // If Rock is being watched (aka old states), remove watching
+        if (serverWatch.getKeys().indexOf("ROCK") != -1) {
+          serverWatch.stopWatching("ROCK")
+        }
+
+        // Start watching again
+        serverWatch.watch("ROCK", api._.baseURL, 30 * 1000)
+
+      }
+    }
   }
 }
 

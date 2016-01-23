@@ -10,9 +10,11 @@ Meteor.methods({
     check(variables, Match.OneOf(Object, undefined, null));
     check(operationName, Match.OneOf(String, undefined, null));
 
-    const payload = { query, variables, operationName };
+    variables = {...variables, ...{
+      mongoId: this.userId
+    }}
 
-    // const rootValue = { userId: this.userId };
+    const payload = { query, variables, operationName };
     const f = new Future();
 
     fetch("http://192.168.99.100/", {

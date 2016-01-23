@@ -21,13 +21,13 @@ export default class Layout extends Component {
     const { submit, person, months, saveMonth, days, years, campuses } = this.props
 
     const {
-      Campus,
-      FirstName,
-      LastName,
-      NickName,
-      BirthDay,
-      BirthMonth,
-      BirthYear
+      campus,
+      firstName,
+      lastName,
+      nickName,
+      birthDay,
+      birthMonth,
+      birthYear
     } = person
 
     return (
@@ -49,21 +49,21 @@ export default class Layout extends Component {
             label="Nickname"
             ref="NickName"
             type="text"
-            defaultValue={NickName}
+            defaultValue={nickName}
           />
           <Forms.Input
             name="FirstName"
             label="First Name"
             ref="FirstName"
             type="text"
-            defaultValue={FirstName}
+            defaultValue={firstName}
           />
           <Forms.Input
             name="LastName"
             label="Last Name"
             ref="LastName"
             type="text"
-            defaultValue={LastName}
+            defaultValue={lastName}
           />
 
 
@@ -77,7 +77,7 @@ export default class Layout extends Component {
                   label="Month"
                   ref="BirthMonth"
                   type="text"
-                  defaultValue={BirthMonth}
+                  defaultValue={birthMonth}
                   includeBlank={true}
                   items={months}
                   validation={saveMonth}
@@ -89,7 +89,7 @@ export default class Layout extends Component {
                   label="Day"
                   ref="BirthDay"
                   type="text"
-                  defaultValue={BirthDay}
+                  defaultValue={birthDay}
                   includeBlank={true}
                   items={days}
                 />
@@ -104,7 +104,7 @@ export default class Layout extends Component {
               label="Year"
               ref="BirthYear"
               type="text"
-              defaultValue={BirthYear}
+              defaultValue={birthYear}
               includeBlank={true}
               items={years}
             />
@@ -116,7 +116,7 @@ export default class Layout extends Component {
             name="Campus"
             label="Campus"
             type="Campus"
-            defaultValue={Campus.Id || false}
+            defaultValue={campus.id || false}
             ref="Campus"
             includeBlank={true}
             items={campuses}

@@ -129,6 +129,7 @@ export default class CartContainer extends Component {
       }
     ]
 
+    console.log(this.props.accounts)
     let mappedAccounts = this.props.accounts.map((account) => {
       return {
         value: account.Id,

@@ -80,9 +80,9 @@ export default class CartContainer extends Component {
          urlParams[decode(match[1])] = decode(match[2]);
 
       for (let account of this.props.accounts) {
-        if (urlParams[account.Name]) {
-          let value = urlParams[account.Name]
-          let id = account.Id
+        if (urlParams[account.name]) {
+          let value = urlParams[account.name]
+          let id = account.id
 
           value = this.monentize(value)
 

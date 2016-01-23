@@ -1,51 +1,103 @@
 import { Component, PropTypes} from "react"
-import ReactMixin from "react-mixin"
 import { connect } from "react-redux"
 
+import { GraphQL } from "../../../../core/graphql"
 import { nav as navActions } from "../../../../core/store"
-import { ScheduledTransactions } from "../../../collections"
+import { transactions as transactionActions } from "../../../store"
 
 import Layout from "./Layout"
 
-const map = (state) => ({ person: state.onBoard.person })
+function getTransaction(id, dispatch){
+  let query = `
+  {
+    transaction: scheduledFinanicalTransaction(id: ${id}) {
+      numberOfPayments
+      next
+      end
+      id
+      reminderDate
+      code
+      gateway
+      start
+      date
+      details {
+        amount
+        account {
+          name
+          description
+        }
+      }
+      payment {
+        paymentType
+        accountNumber
+        id
+      }
+      schedule {
+        value
+        description
+      }
+    }
+  }
+  `
+
+  return GraphQL.query(query)
+    .then(({transaction}) => {
+      const obj = {
+        [transaction.id]: transaction
+      }
+      dispatch(transactionActions.addSchedule(obj))
+    })
+}
+
+
+const map = (state) => ({
+  person: state.onBoard.person,
+  transactions: state.transactions.scheduledTransactions
+
+})
+
 @connect(map)
-@ReactMixin.decorate(ReactMeteorData)
 export default class Details extends Component {
 
   state = {
     isActive: true
   }
 
+  static fetchData(getStore, dispatch, props) {
+    const { id } = props.params
+    return getTransaction(id, dispatch)
+  }
+
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("CONTENT"))
+  }
+
+  componentDidMount(){
+    const { id } = this.props.params
+    const { dispatch } = this.props
+    getTransaction(id, dispatch)
   }
 
   componentWillUnmount() {
     this.props.dispatch(navActions.setLevel("TOP"))
   }
 
-  getMeteorData() {
-    Meteor.subscribe("scheduledTransactions")
-    const { id } = this.props.params
-    const schedule = ScheduledTransactions.findOne({Id: Number(id)});
-    return {
-      schedule
-    };
-
-  }
 
   stop = (e) => {
     e.preventDefault()
-
-    const { Id, GatewayScheduleId } = this.data.schedule
+    
+    const { id, gateway } = this.props.transactions[Number(this.props.params.id)]
 
     this.setState({isActive: false})
-    Meteor.call("Give.schedule.cancel", {Id, GatewayScheduleId }, (err, response) => {
+    Meteor.call("Give.schedule.cancel", {id, gateway }, (err, response) => {
 
     })
   }
 
   render () {
-    return <Layout stop={this.stop} data={this.data} state={this.state} />
+    const id = Number(this.props.params.id)
+    let transaction = this.props.transactions[id]
+
+    return <Layout stop={this.stop} schedule={transaction} state={this.state} />
   }
 }
