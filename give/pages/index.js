@@ -1,11 +1,11 @@
 
+
 import Home from "./home"
 import Campaign from "./campaign"
 import History from "./history"
 import Schedules from "./schedules"
 
-import { Accounts } from "../collections"
-import { api, endpoints } from "../../core/util/rock"
+import { GraphQL } from "../../core/graphql"
 
 /*global Meteor*/
 if (Meteor.isClient) {
@@ -35,14 +35,14 @@ Routes.push({
 
     let compare = (accounts) => {
       for (let account of accounts) {
-        let smallname = account.Name
+        let smallname = account.name
           .replace(/\s+/g, "")
           .toLowerCase()
 
-        let dest = `/give/campaign/${account.Name}`
+        let dest = `/give/campaign/${account.name}`
 
         if (amount) {
-          dest += `?${account.Name}=${amount}`
+          dest += `?${account.name}=${amount}`
         }
 
         if (smallname === fund) {
@@ -52,20 +52,21 @@ Routes.push({
       }
     }
 
-    if (Meteor.isClient) {
-      Tracker.autorun((computation) => {
-        let accounts = Accounts.find().fetch()
+    GraphQL.query(`
+      {
+        accounts: allFinancialAccounts(limit: 100, ttl: 8640) {
+          description
+          name
+          id
+          summary
+          image
+          order
+        }
+      }`).then(({ accounts }) => {
         if (accounts.length) {
           compare(accounts)
-          computation.stop()
         }
       })
-    }
-
-    if (Meteor.isServer) {
-      let accounts = api.get.sync(endpoints.accounts)
-      compare(accounts)
-    }
 
   }
 })
