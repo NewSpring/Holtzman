@@ -116,10 +116,9 @@ function bindLogout(dispatch) {
   let handle = {}
 
   Tracker.autorun((computation) => {
-    console.log("here")
     handle = computation
     const user = Meteor.userId()
-
+    console.log(user)
     if (user) {
       return getUser(user, dispatch)
     }
@@ -136,7 +135,7 @@ function bindLogout(dispatch) {
 export default class Global extends Component {
 
 
-  componentDidMount() {
+  componentWillMount() {
     const { dispatch } = this.props
     const user = Meteor.userId()
 
