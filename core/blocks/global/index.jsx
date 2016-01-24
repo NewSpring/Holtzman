@@ -1,6 +1,8 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
+import RouteTransition from "./routeTransition"
+
 import Nav from "../nav"
 import Modal from "../modal"
 import { People, Likes } from "../../collections"
@@ -50,7 +52,9 @@ const App = ({ children, className }) => (
     "
   >
     <div className={className}>
-      {children}
+      <RouteTransition pathname={window.location.pathname}>
+        {children}
+      </RouteTransition>
       <Nav />
       <Modal/>
     </div>
@@ -58,21 +62,18 @@ const App = ({ children, className }) => (
   </div>
 )
 
-
-
 @connect()
 export default class Global extends Component {
 
   componentWillMount(){
     let { handle, authorized } = bindMeteorPerson(this.props)
     this.handle = handle
-
   }
 
   componentWillUnmount(){
     this.handle.stop()
   }
 
-  render() { return <App {...this.props} /> }
+  render() { console.log(this.props.state); return <App {...this.props} /> }
 
 }
