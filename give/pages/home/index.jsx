@@ -17,13 +17,23 @@ export default class Home extends Component {
 
   componentWillMount(){
 
-    const { dispatch } = this.props
-
-    function mapArrayToObj(array){
-      let obj = {}
-      for (let item of array) { obj[item.id] = item }
-      return obj
-    }
+  static fetchData(getState, dispatch){
+    return GraphQL.query(`
+      {
+       	accounts: allFinancialAccounts(limit: 100, ttl: 8640) {
+          description
+          name
+          id
+          summary
+          image
+          order
+        }
+      }
+    `).then(result => {
+      const obj = mapArrayToObj(result.accounts.filter((x) => (x.summary)))
+      dispatch(giveActions.setAccounts(obj))
+    })
+  }
 
     let start = new Date()
 
@@ -35,6 +45,7 @@ export default class Home extends Component {
           id
           summary
           image
+          order
         }
       }
     `).then(result => {

@@ -83,14 +83,11 @@ export default class CartContainer extends Component {
 
   setFund = (id) => {
     let selectedFund = this.props.accounts.filter((fund) => {
-      return fund.Id === Number(id)
+      return fund.id === Number(id)
     })
 
-    const { PublicName, Name } = selectedFund[0]
-
-    let fund = PublicName ? PublicName : Name
-
-    this.setState({fundId: id, fundLabel: fund})
+    const { name } = selectedFund[0]
+    this.setState({fundId: id, fundLabel: name})
   }
 
   setFrequency = (value) => {
@@ -129,11 +126,10 @@ export default class CartContainer extends Component {
       }
     ]
 
-    console.log(this.props.accounts)
     let mappedAccounts = this.props.accounts.map((account) => {
       return {
-        value: account.Id,
-        label: account.PublicName || account.Name
+        value: account.id,
+        label: account.name
       }
     })
 
