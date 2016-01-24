@@ -1,13 +1,11 @@
 import { Component, PropTypes} from "react"
 import ReactDom from "react-dom"
 import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
 import Moment from "moment"
 
 import { Controls, Forms } from "../../../core/components"
 import { OnBoard } from "../../../core/blocks"
-import { modal } from "../../../core/store"
-import { Campuses } from "../../../core/collections"
+import { modal, campuses as campusActions } from "../../../core/store"
 
 
 import { give as giveActions } from "../../store"
@@ -19,10 +17,13 @@ import Success from "./Success"
 
 
 // We only care about the give state
-const map = (state) => ({ give: state.give, person: state.onBoard.person })
+const map = (state) => ({
+  give: state.give,
+  person: state.onBoard.person,
+  campuses: state.campuses.campuses
+})
 
 @connect(map)
-@ReactMixin.decorate(ReactMeteorData)
 export default class Give extends Component {
 
   state = {
@@ -65,12 +66,31 @@ export default class Give extends Component {
 
   }
 
-  getMeteorData() {
-    Meteor.subscribe("campuses")
-    return {
-      campuses: Campuses.find().fetch()
-    }
+  componenDidMount(){
+    let query = `
+      {
+        campuses: allCampuses {
+          name
+          shortCode
+          id
+          locationId
+        }
+      }
+    `
+
+    return GraphQL.query(query)
+      .then(({ campuses }) => {
+
+        let mappedObj = {}
+        for (let campus of campuses) {
+          mappedObj[campus.id] = campus
+        }
+
+        dispatch(campusActions.add(mappedObj))
+
+      })
   }
+
 
   componentWillUnmount(){
     if (this.state != "default") {
@@ -88,23 +108,23 @@ export default class Give extends Component {
 
     const { person } = this.props
 
-    let { Campus, Home } = person
-    Campus || (Campus = {})
-    Home || (Home = {})
+    let { campus, home } = person
+    campus || (campus = {})
+    home || (home = {})
 
     const mappedPerson = {
       personal: {
-        firstName: person.FirstName,
-        lastName: person.LastName,
-        email: person.Email,
-        campus: Campus.Name
+        firstName: person.firstName,
+        lastName: person.lastName,
+        email: person.email,
+        campus: campus.name
       },
       billing: {
-        streetAddress: Home.Street1,
-        streetAddress2: Home.Street2,
-        city: Home.City,
-        state: Home.State,
-        zip: Home.PostalCode
+        streetAddress: home.street1,
+        streetAddress2: home.street2,
+        city: home.city,
+        state: home.state,
+        zip: home.zip
       }
     }
 
@@ -331,6 +351,11 @@ export default class Give extends Component {
       transactionType
     } = this.props.give
 
+    let campuses = []
+    for (let campus in this.props.campuses) {
+      campuses.push(this.props.campuses[campus])
+    }
+
 
     let save = (...args) => { this.props.dispatch(giveActions.save(...args)) }
     let clear = (...args) => { this.props.dispatch(giveActions.clear(...args)) }
@@ -388,7 +413,7 @@ export default class Give extends Component {
               back={this.back}
               ref="inputs"
               total={total}
-              campuses={this.data.campuses}
+              campuses={campuses}
             >
               <Controls.Progress
                 steps={4}
