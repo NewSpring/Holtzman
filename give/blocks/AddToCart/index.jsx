@@ -119,14 +119,14 @@ export default class CartContainer extends Component {
     if (this.props.accounts.length) {
 
       for (let account of this.props.accounts) {
-        if (account.Order === 0 && !Object.keys(primaryAccount).length){
+        if (account.order === 0 && !Object.keys(primaryAccount).length){
           primaryAccount = account
           continue
         }
 
         otherAccounts.push(account)
 
-        if (transactions[account.Id]) {
+        if (transactions[account.id]) {
           continue
         }
 

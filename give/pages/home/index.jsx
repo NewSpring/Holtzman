@@ -31,6 +31,7 @@ export default class Home extends Component {
           id
           summary
           image
+          order
         }
       }
     `).then(result => {
@@ -50,6 +51,7 @@ export default class Home extends Component {
           id
           summary
           image
+          order
         }
       }
     `).then(result => {
