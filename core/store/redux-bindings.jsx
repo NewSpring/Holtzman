@@ -17,13 +17,7 @@ const createReduxStore = (initialState, history) => {
     routing: routeReducer
   }}
 
-  let convertedSagas = sagas.map((saga) => {
-    if (typeof saga === "function") {
-      let s = saga()
-      console.log(s, saga)
-      return s
-    }
-  })
+  let convertedSagas = sagas.map((saga) => (saga()))
 
   let sharedMiddlewares = [...[
     thunk
@@ -44,7 +38,6 @@ const createReduxStore = (initialState, history) => {
   const store = compose(...sharedCompose)(createStore)(combineReducers(joinedReducers), initialState)
   syncReduxAndRouter(history, store)
 
-  console.log(store)
   return store
 
 }

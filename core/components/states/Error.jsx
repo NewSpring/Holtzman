@@ -1,4 +1,5 @@
 import { VelocityComponent } from "velocity-react"
+import { WindowLoading } from "../loading"
 
 const Err = ({msg, error}) => (
   <VelocityComponent
@@ -9,7 +10,7 @@ const Err = ({msg, error}) => (
       <div className="locked-top locked-bottom one-whole floating">
         <div className="floating__item">
           <h4 className="text-light-primary">{msg}</h4>
-          <p className="text-light-primary">{error}</p>
+          <p className="text-light-primary hard">{error}</p>
         </div>
       </div>
     </WindowLoading>
