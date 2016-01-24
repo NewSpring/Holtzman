@@ -163,6 +163,14 @@ export default createReducer(initial, {
 
   },
 
+  [types.REMOVE_ERRORS](state, action) {
+
+    return { ...state, ...{
+      errors: {}
+    } }
+
+  },
+
   [types.SET_SUCCESS](state, action) {
 
     if (typeof action.success != "boolean") {

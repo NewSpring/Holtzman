@@ -1,9 +1,10 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 
+import { Loading, Error } from "../../components/states"
 import onBoardActions from "../../store/onBoard"
 
-import Loading from "./Loading"
+// import Loading from "./Loading"
 import SignIn from "./Signin"
 import SignOut from "./Signout"
 import ForgotPassword from "./ForgotPassword"
@@ -12,6 +13,17 @@ import ForgotPassword from "./ForgotPassword"
 const map = (state) => ({ onboard: state.onBoard })
 @connect(map, onBoardActions)
 export default class OnBoardContainer extends Component {
+
+  componentDidUpdate(prevProps, prevState){
+    const { reset } = this.props
+
+    if (Object.keys(this.props.onboard.errors).length) {
+      setTimeout(() => {
+        reset()
+      }, 2000)
+    }
+
+  }
 
   goBack = (e) => {
     e.preventDefault();
@@ -56,12 +68,18 @@ export default class OnBoardContainer extends Component {
     }
 
     if (state === "loading") {
-      return (
-        <Loading
-          account={account}
-          forgot={forgot}
-        />
-      )
+      let msg = account ? "Signing you in..." : "Creating your account..."
+      return <Loading msg={msg} />
+    }
+
+    if (Object.keys(errors).length) {
+      let primaryError;
+      for (let error in errors) {
+        primaryError = errors[error]
+        break
+      }
+
+      return <Error msg={primaryError} />
     }
 
     if (forgot) {
