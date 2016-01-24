@@ -1,5 +1,5 @@
 import { VelocityComponent } from "velocity-react"
-import { WindowLoading } from "../loading"
+import { WindowLoading, Spinner } from "../loading"
 
 const Loading = ({msg}) => (
   <VelocityComponent
