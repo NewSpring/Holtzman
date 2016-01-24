@@ -45,6 +45,7 @@ export default class Give extends Component {
   }
 
 
+
   componentWillUnmount(){
     if (this.props.give.state != "default") {
       this.props.dispatch(giveActions.clearData())

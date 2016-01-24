@@ -20,6 +20,7 @@ const createReduxStore = (initialState, history) => {
   let convertedSagas = sagas.map((saga) => {
     if (typeof saga === "function") {
       let s = saga()
+      console.log(s, saga)
       return s
     }
   })
