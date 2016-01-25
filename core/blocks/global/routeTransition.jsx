@@ -44,8 +44,9 @@ export default function RouteTransition({children, pathname}) {
             <div
               key={`${key}-transition`}
               style={{
-                position: 'absolute',
-                width: '100%',
+                position: "absolute",
+                width: "100%",
+                height: "100%",
                 opacity: interpolated[key].opacity,
                 transform: `translate(${interpolated[key].translate}%)`
               }}
