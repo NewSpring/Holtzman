@@ -74,6 +74,6 @@ export default class Global extends Component {
     this.handle.stop()
   }
 
-  render() { console.log(this.props.state); return <App {...this.props} /> }
+  render() { return <App {...this.props} /> }
 
 }
