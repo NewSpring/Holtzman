@@ -46,7 +46,8 @@ export default function RouteTransition({children, pathname}) {
               style={{
                 position: "absolute",
                 width: "100%",
-                height: "100%",
+                minHeight: "100%",
+                paddingBottom: "60px",
                 opacity: interpolated[key].opacity,
                 transform: `translate(${interpolated[key].translate}%)`
               }}
