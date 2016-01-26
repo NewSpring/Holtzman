@@ -1,0 +1,38 @@
+.load-item,
+.fake-text {
+  background: linear-gradient(270deg, #dddddd, #bcbcbc, #dddddd);
+  -webkit-animation: ColorAnimation 1.25s linear infinite;
+  animation: ColorAnimation 1.25s linear infinite;
+  -ms-animation: ColorAnimation 1.25s linear infinite;
+  background-size: 200%;
+
+}
+
+@keyframes ColorAnimation {
+    0%{background-position:100%}
+
+    100%{background-position:-100%}
+}
+
+@-webkit-keyframes ColorAnimation {
+    0%{background-position:100%}
+
+    100%{background-position:-100%}
+}
+
+@-ms-keyframes ColorAnimation {
+    0%{background-position:100%}
+
+    100%{background-position:-100%}
+}
+
+.fake-text {
+  height: 15px;
+}
+
+.fake-text-small {
+  height: 8px;
+}
+.fake-text, .fake-text-small{
+  border-radius: 2px;
+}
