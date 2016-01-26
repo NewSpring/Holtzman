@@ -15,10 +15,27 @@ import { addTransaction, clearTransactions } from "./transactions"
 const initial = {
 
   step: 1, // Number (step along in progress bar to show)
-  savedAccount: null, // Id of saved account to charge
   transactionType: "default", // "default", "guest", "recurring"
 
   total: 0, // Number > 0 for allowing to move forward (calculated)
+
+  success: false,
+
+  state: "default", // "submit", "loading"
+
+  attempts: 0,
+
+  errors: {
+    // <id>: {
+    //   message: "Card is declined"
+    // }
+  },
+
+  savedAccount: {
+    id: null, // Id of saved account to charge
+    accountNumber: null, // accountNumber to be shown (full, not just last four)
+    type: null, // CC or Bank type to show icon
+  },
 
   accounts: {
     // <accountId>: Name
@@ -29,11 +46,13 @@ const initial = {
     // <accountId>: Number // <accountId>: $ of gift
   },
 
-  // schedule data
-  schedule: {
-    start: null, // Date (YYYYMMDD),
-    payments: null, // future feature for pledges
-    frequency: null // String of value from Rock
+  // schedules to create
+  schedules: {
+    // <id> : {
+    //   start: null,  Date (YYYYMMDD),
+    //   payments: null,  future feature for pledges
+    //   frequency: null  String of value from Rock
+    // }
   },
 
   // form data
@@ -61,16 +80,6 @@ const initial = {
       routing: null // String (for safety with international numbers)
     }
   },
-
-  // action data
-  success: false,
-  state: "default", // "submit", "loading"
-  attempts: 0,
-  errors: {
-    // <id>: {
-    //   message: "Card is declined"
-    // }
-  }
 
 }
 
