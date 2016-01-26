@@ -1,8 +1,6 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
-import RouteTransition from "./routeTransition"
-
 import Nav from "../nav"
 import Modal from "../modal"
 import { People, Likes } from "../../collections"
@@ -52,9 +50,7 @@ const App = ({ children, className }) => (
     "
   >
     <div className={className}>
-      <RouteTransition pathname={window.location.pathname}>
-        {children}
-      </RouteTransition>
+      {children}
       <Nav />
       <Modal/>
     </div>
