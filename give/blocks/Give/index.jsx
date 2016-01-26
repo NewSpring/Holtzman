@@ -247,7 +247,7 @@ export default class Give extends Component {
 
             <Step
               data={data}
-              savedAccount={savedAccount}
+              savedAccount={savedAccount.id}
               transactions={transactions}
               transactionType={transactionType}
               save={save}

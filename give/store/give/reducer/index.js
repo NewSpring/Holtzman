@@ -38,6 +38,24 @@ const initial = {
     name: null, // name of card
   },
 
+  success: false,
+
+  state: "default", // "submit", "loading"
+
+  attempts: 0,
+
+  errors: {
+    // <id>: {
+    //   message: "Card is declined"
+    // }
+  },
+
+  savedAccount: {
+    id: null, // Id of saved account to charge
+    accountNumber: null, // accountNumber to be shown (full, not just last four)
+    type: null, // CC or Bank type to show icon
+  },
+
   accounts: {
     // <accountId>: Name
   },
