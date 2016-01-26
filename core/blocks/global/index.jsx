@@ -33,6 +33,8 @@ const App = ({ children, className }) => (
 function getUser(id, dispatch) {
 
   // this is probably to heavy of a universal call?
+
+  // @TODO figure out caching issues?
   let personQuery = `
     {
       person(mongoId: "${id}", cache: false) {
@@ -83,7 +85,7 @@ function bindLogout(dispatch) {
   Tracker.autorun((computation) => {
     handle = computation
     const user = Meteor.userId()
-    console.log(user)
+
     if (user) {
       return getUser(user, dispatch)
     }
@@ -100,11 +102,13 @@ function bindLogout(dispatch) {
 export default class Global extends Component {
 
 
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch } = this.props
     const user = Meteor.userId()
 
-    this.handle = bindLogout(dispatch)
+    if (!this.handle) {
+      this.handle = bindLogout(dispatch)
+    }
 
   }
 
