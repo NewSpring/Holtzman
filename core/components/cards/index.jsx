@@ -59,7 +59,9 @@ export default class Card extends Component {
       let imageclasses = [
         "rounded-top",
         "background--fill",
-        "card__image"
+        "card__image",
+        "background-light-tertiary"
+
       ]
 
       if (image.ratio) {
