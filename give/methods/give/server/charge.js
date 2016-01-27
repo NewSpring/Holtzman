@@ -14,6 +14,8 @@ const charge = (token, accountName) => {
     throw new Meteor.Error(e.message)
   }
 
+  console.log(response)
+
   let user = Meteor.user()
 
   const getCardType = (card) => {

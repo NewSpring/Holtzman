@@ -22,6 +22,11 @@ const step2 = (purchaseData, method, callback) => {
   if (!purchaseData["customer-vault-id"] && method === "sale") {
     sale.sale["add-customer"] = ""
   }
+  // if (!purchaseData["customer-vault-id"] && purchaseData["customer-id"] && method === "sale") {
+  //   sale.sale["update-customer"] = purchaseData["customer-id"]
+  //   delete sale.sale["customer-id"]
+  // }
+
 
   let instant = false
   // if we are using a customer vault, no need for a redirect-url

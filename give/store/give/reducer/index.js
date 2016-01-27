@@ -38,9 +38,7 @@ const initial = {
     name: null, // name of card
   },
 
-  success: false,
-
-  state: "default", // "submit", "loading"
+  state: "default", // "default", "loading", "submit", "error", "success"
 
   attempts: 0,
 
@@ -52,8 +50,11 @@ const initial = {
 
   savedAccount: {
     id: null, // Id of saved account to charge
-    accountNumber: null, // accountNumber to be shown (full, not just last four)
-    type: null, // CC or Bank type to show icon
+    payment: {
+      accountNumber: null, // accountNumber to be shown (full, not just last four)
+      paymentType: null, // type of card
+    },
+    name: null, // name of card
   },
 
   accounts: {
@@ -121,6 +122,7 @@ export default createReducer(initial, {
 
   [types.SAVE_DATA](state, action) {
 
+    console.log(action, state)
     // @TODO validation on new data
     return { ...state, ...{
       data: {
