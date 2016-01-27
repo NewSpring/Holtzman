@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { GraphQL } from "../../../core/graphql"
 import { OnBoard } from "../../../core/blocks"
 
+
 // @TODO refactor once giving is converted to sagas
 import {
   modal,
@@ -48,7 +49,10 @@ function getPaymentDetails(id, dispatch) {
   3. Give as guest (in small text) if not signed in
 
 */
-const map = (store) => ({ authorized: store.onBoard.authorized })
+const map = (store) => ({
+  authorized: store.onBoard.authorized,
+  savedAccount: store.give.savedAccount
+})
 @connect(map)
 export default class GiveNow extends Component {
 
@@ -59,12 +63,12 @@ export default class GiveNow extends Component {
   componentDidMount(){
 
     const id = Meteor.userId()
-    const { dispatch } = this.props
+    const { dispatch, savedAccount } = this.props
 
-    if (id) {
+    if (id && !savedAccount.id) {
       getPaymentDetails(id, dispatch)
         .then(paymentDetails => {
-          this.setState({ paymentDetails })
+          dispatch(giveActions.setAccount(paymentDetails))
         })
     }
 
@@ -74,7 +78,7 @@ export default class GiveNow extends Component {
   buttonClasses = () => {
     let classes = ["btn"]
 
-    if (this.state.paymentDetails) {
+    if (this.props.savedAccount.id) {
       classes.push("has-card")
     }
 
@@ -105,12 +109,6 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(navActions.setLevel("MODAL"))
 
-    if (this.state.paymentDetails) {
-      this.props.dispatch(giveActions.setAccount(
-        this.state.paymentDetails.id
-      ))
-    }
-
   }
 
   giveAsGuest = () => {
@@ -133,8 +131,8 @@ export default class GiveNow extends Component {
 
     let text = "Give Now"
 
-    if (this.state.paymentDetails) {
-      const details = this.state.paymentDetails
+    if (this.props.savedAccount.id) {
+      const details = this.props.savedAccount
       let { accountNumber } = details.payment
       accountNumber = accountNumber.slice(-4).trim()
 
@@ -152,8 +150,8 @@ export default class GiveNow extends Component {
 
   icon = () => {
 
-    if (this.state.paymentDetails) {
-      const detail = this.state.paymentDetails.payment
+    if (this.props.savedAccount) {
+      const detail = this.props.savedAccount.payment
 
       if (detail.paymentType && detail.paymentType === "ACH") {
         return (
@@ -171,7 +169,7 @@ export default class GiveNow extends Component {
 
 
   render () {
-    console.log(this.props)
+
     return (
       <div>
         <PrimaryButton

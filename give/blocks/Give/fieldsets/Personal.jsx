@@ -81,9 +81,13 @@ export default class Personal extends Component {
     let { campuses } = this.props
 
     campuses || (campuses = [])
-    campuses = campuses.map((campus) => {
-      return { label: campus.Name, value: campus.Name }
-    })
+
+    console.log(personal)
+    if (campuses.length === 0) {
+      delete personal.campus
+    }
+
+    console.log(campuses, personal.campus)
 
     return (
       <div>

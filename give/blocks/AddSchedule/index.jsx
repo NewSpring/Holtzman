@@ -87,12 +87,22 @@ export default class CartContainer extends Component {
     })
 
     const { name } = selectedFund[0]
+
+    if (this.state.fundId != id) {
+      this.props.removeSchedule(this.state.fundId)
+    }
+
     this.setState({fundId: id, fundLabel: name})
+    this.props.saveSchedule(id, { label: name, frequency: this.state.frequency })
+    this.props.setTransactionType("recurring")
   }
 
   setFrequency = (value) => {
     this.setState({frequency: value})
-    this.props.saveSchedule({frequency: value})
+    if (this.state.fundId) {
+      this.props.saveSchedule(this.state.fundId, { frequency: value })
+    }
+
   }
 
   render () {

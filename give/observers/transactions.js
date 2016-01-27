@@ -111,7 +111,8 @@ const transactions = () => {
             ModifiedByPersonAliasId: PrimaryAliasId
           } }
 
-          if (FinancialPersonSavedAccounts.TransactionCode) {
+          console.log(FinancialPersonSavedAccounts)
+          if (FinancialPersonSavedAccounts.ReferenceNumber) {
             api.post.sync(`FinancialPersonSavedAccounts`, FinancialPersonSavedAccounts)
           }
         }

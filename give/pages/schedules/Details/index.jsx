@@ -16,7 +16,6 @@ function getTransaction(id, dispatch){
       end
       id
       reminderDate
-      code
       gateway
       start
       date
@@ -85,11 +84,11 @@ export default class Details extends Component {
 
   stop = (e) => {
     e.preventDefault()
-    
+
     const { id, gateway } = this.props.transactions[Number(this.props.params.id)]
 
     this.setState({isActive: false})
-    Meteor.call("Give.schedule.cancel", {id, gateway }, (err, response) => {
+    Meteor.call("give/schedule/cancel", {id, gateway}, (err, response) => {
 
     })
   }
