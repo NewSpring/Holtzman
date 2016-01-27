@@ -4,6 +4,7 @@ import ReactMixin from "react-mixin"
 
 import { OnBoard } from "../../../core/blocks"
 
+
 // @TODO refactor once giving is converted to sagas
 import {
   modal,
@@ -30,25 +31,31 @@ import { PrimaryButton, SecondaryButton, Guest } from "./Buttons"
   3. Give as guest (in small text) if not signed in
 
 */
-@connect()
-@ReactMixin.decorate(ReactMeteorData)
+const map = (store) => ({
+  authorized: store.onBoard.authorized,
+  savedAccount: store.give.savedAccount
+})
+@connect(map)
 export default class GiveNow extends Component {
 
   getMeteorData() {
     let paymentDetails
 
-    Meteor.subscribe("paymentDetails")
-    let details = PaymentDetails.find().fetch()
-    return {
-      paymentDetails: details[0],
-      authorized: Meteor.user()
+    const id = Meteor.userId()
+    const { dispatch, savedAccount } = this.props
+
+    if (id && !savedAccount.id) {
+      getPaymentDetails(id, dispatch)
+        .then(paymentDetails => {
+          dispatch(giveActions.setAccount(paymentDetails))
+        })
     }
   }
 
   buttonClasses = () => {
     let classes = ["btn"]
 
-    if (this.data.paymentDetails) {
+    if (this.props.savedAccount.id) {
       classes.push("has-card")
     }
 
@@ -79,12 +86,6 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(navActions.setLevel("MODAL"))
 
-    if (this.data.paymentDetails) {
-      this.props.dispatch(giveActions.setAccount(
-        this.data.paymentDetails.Id
-      ))
-    }
-
   }
 
   giveAsGuest = () => {
@@ -107,10 +108,10 @@ export default class GiveNow extends Component {
 
     let text = "Give Now"
 
-    if (this.data.paymentDetails) {
-      const details = this.data.paymentDetails
-      let { AccountNumberMasked } = details.FinancialPaymentDetail
-      AccountNumberMasked = AccountNumberMasked.slice(-4).trim()
+    if (this.props.savedAccount.id) {
+      const details = this.props.savedAccount
+      let { accountNumber } = details.payment
+      accountNumber = accountNumber.slice(-4).trim()
 
       text += ` using ${AccountNumberMasked}`
 
@@ -126,8 +127,8 @@ export default class GiveNow extends Component {
 
   icon = () => {
 
-    if (this.data.paymentDetails) {
-      const details = this.data.paymentDetails
+    if (this.props.savedAccount) {
+      const detail = this.props.savedAccount.payment
 
       if (details.FinancialPaymentDetail.CurrencyTypeValue &&
         details.FinancialPaymentDetail.CurrencyTypeValue.Description === "Credit Card"
@@ -150,6 +151,7 @@ export default class GiveNow extends Component {
 
 
   render () {
+
     return (
       <div>
         <PrimaryButton

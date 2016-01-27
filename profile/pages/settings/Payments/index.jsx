@@ -5,6 +5,8 @@ import { GraphQL } from "../../../../core/graphql"
 import { nav } from "../../../../core/store"
 import { Loading } from "../../../../core/components"
 
+import { give as giveActions } from "../../../../give/store"
+
 import Layout from "./Layout"
 
 @connect()
@@ -22,7 +24,7 @@ export default class GiveNow extends Component {
   componentDidMount(){
     let query = `
       query PaymentDetails($mongoId: String){
-        accounts: allSavedPaymentAccounts(mongoId: $mongoId){
+        accounts: allSavedPaymentAccounts(mongoId: $mongoId, cache: false){
           id
           name
           payment {
@@ -50,6 +52,12 @@ export default class GiveNow extends Component {
 
     const { id } = e.target
 
+    let accounts = this.state.accounts.filter((x) => (
+      x.id != id
+    ))
+
+    this.setState({ accounts: accounts })
+    this.dispatch(giveActions.clearAccount())
     Meteor.call("PaymentAccounts.remove", id, (err, response) => {
       console.log(err, response)
     })
