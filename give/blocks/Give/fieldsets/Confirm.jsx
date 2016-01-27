@@ -28,7 +28,12 @@ export default class Confirm extends Component {
 
   buttonText = () => {
 
-    const { payment } = this.props.data
+    let { payment } = this.props.data
+
+    if (!payment.accountNumber && !payment.cardNumber) {
+      payment = {...this.props.savedAccount.payment}
+      payment.type = "ach"
+    }
 
     let text = "Give Now"
     if (payment.accountNumber || payment.cardNumber) {
@@ -184,7 +189,7 @@ export default class Confirm extends Component {
             </div>
           </div>
           {() => {
-            if (this.props.savedAccount === null && this.props.transactionType != "guest" ) {
+            if (this.props.savedAccount.id === null && this.props.transactionType != "guest" ) {
               return (
                 <Forms.Checkbox
                   name="savePayment"

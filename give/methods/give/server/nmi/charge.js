@@ -2,6 +2,7 @@
 
 import { Builder } from "xml2js"
 import { parseXML } from "../../../../../core/util"
+import ErrorCodes from "./language"
 
 const step1 = (token, callback) => {
 
@@ -49,8 +50,15 @@ const step1 = (token, callback) => {
       callback(null, data)
       return
     }
+    let number = Number(data["result-code"])
+    let err;
+    if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
+      err = ErrorCodes[number]
+    } else if (ErrorCodes[number] === "result-text")  {
+      err = data["result-text"]
+    }
 
-    callback(data["result-text"])
+    callback(err)
 
   })
   .catch(callback)
