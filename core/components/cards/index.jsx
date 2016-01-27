@@ -3,6 +3,8 @@ import { Link } from "react-router"
 
 import { ImageLoader } from "../loading"
 
+import Styles from "../loading/FeedItemSkeleton.css"
+
 export default class Card extends Component {
 
   static propTypes = {
@@ -56,7 +58,7 @@ export default class Card extends Component {
   // context from ImageLoader
   preloader() {
     return (
-      <div className={this.imageclasses.join(" ")} style={{background: "#f00"}}>
+      <div className={`${this.imageclasses.join(" ")} ${Styles["load-item"]}`}>
         <div className="ratio__item"></div>
       </div>
     );
