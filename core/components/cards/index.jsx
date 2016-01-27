@@ -1,6 +1,8 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 
+import { ImageLoader } from "../loading"
+
 export default class Card extends Component {
 
   static propTypes = {
@@ -51,6 +53,24 @@ export default class Card extends Component {
     return defaultStyles
   }
 
+  // context from ImageLoader
+  preloader() {
+    return (
+      <div className={this.imageclasses.join(" ")} style={{background: "#f00"}}>
+        <div className="ratio__item"></div>
+      </div>
+    );
+  }
+
+  // context from ImageLoader
+  renderElement() {
+    return (
+      <div className={this.imageclasses.join(" ")} style={this.style}>
+        <div className="ratio__item"></div>
+      </div>
+    );
+  }
+
   createImage = () => {
 
     const { image } = this.props
@@ -78,9 +98,13 @@ export default class Card extends Component {
       }
 
       return (
-        <div className={imageclasses.join(" ")} style={style}>
-          <div className="ratio__item"></div>
-        </div>
+        <ImageLoader
+          src={image.url}
+          preloader={this.preloader}
+          renderElement={this.renderElement}
+          imageclasses={imageclasses}
+          style={style}
+        />
       )
     }
   }
