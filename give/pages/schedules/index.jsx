@@ -100,9 +100,11 @@ export default class Template extends Component {
 
     return getAccounts(dispatch)
       .then((accounts) => {
-        this.setState({loaded: true})
         if (mongoId) {
           return getSchedules(dispatch)
+            .then(() => {
+              this.setState({loaded: true})
+            })
         }
       })
   }
@@ -114,9 +116,12 @@ export default class Template extends Component {
 
     return getAccounts(dispatch)
       .then((accounts) => {
-        this.setState({loaded: true})
+
         if (mongoId) {
           return getSchedules(dispatch)
+            .then(() => {
+              this.setState({loaded: true})
+            })
         }
       })
 

@@ -7,7 +7,8 @@ const step2 = (purchaseData, method, callback) => {
 
   method || (method = "sale")
   // let url = process.env.ROOT_URL ? `${process.env.ROOT_URL}/give` : "http://localhost:3000/give"
-  let url = "https://alpha.newspring.io/give"
+  // let url = "https://alpha.newspring.io/give"
+  let url = "http://localhost:3000/give"
 
   const sale = {
     [method]: { ...{
@@ -21,6 +22,11 @@ const step2 = (purchaseData, method, callback) => {
   if (!purchaseData["customer-vault-id"] && !purchaseData["customer-id"] && method === "sale") {
     sale.sale["add-customer"] = ""
   }
+  // if (!purchaseData["customer-vault-id"] && purchaseData["customer-id"] && method === "sale") {
+  //   sale.sale["update-customer"] = purchaseData["customer-id"]
+  //   delete sale.sale["customer-id"]
+  // }
+
 
   const builder = new Builder()
   const xml = builder.buildObject(sale)

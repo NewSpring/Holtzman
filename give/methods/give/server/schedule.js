@@ -173,19 +173,20 @@ const schedule = (token, accountName) => {
 
 }
 
-Meteor.methods({ "Give.schedule.charge": schedule })
+Meteor.methods({ "give/schedule": schedule })
 
 
-const cancel = ({ Id, GatewayScheduleId }) => {
+const cancel = ({ id, gateway }) => {
   let response = {}
 
   try {
-    response = Meteor.wrapAsync(gatewayCancel)(GatewayScheduleId)
+    response = Meteor.wrapAsync(gatewayCancel)(gateway)
   } catch (e) {
     throw new Meteor.Error(e)
   }
 
-  response = api.patch.sync(`FinancialScheduledTransactions/${Id}`, { IsActive: false })
+  // response = api.patch.sync(`FinancialScheduledTransactions/${Id}`, { IsActive: false })
+  response = api.delete.sync(`FinancialScheduledTransactions/${id}`)
 
   if (response.status) {
     throw new Meteor.Error(response)
@@ -194,7 +195,7 @@ const cancel = ({ Id, GatewayScheduleId }) => {
   return true
 }
 
-Meteor.methods({ "Give.schedule.cancel": cancel })
+Meteor.methods({ "give/schedule/cancel": cancel })
 
 
 export default schedule

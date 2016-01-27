@@ -9,11 +9,9 @@ const observers = {
 }
 
 const observe = () => {
-  for (let publication in observers) {
-    publications[publication]()
+  for (let observer in observers) {
+    observers[observer]()
   }
 }
 
-export {
-  observe
-}
+export default observe
