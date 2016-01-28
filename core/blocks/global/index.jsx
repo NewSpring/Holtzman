@@ -58,15 +58,12 @@ const App = ({ children, className }) => (
   </div>
 )
 
-
-
 @connect()
 export default class Global extends Component {
 
   componentWillMount(){
     let { handle, authorized } = bindMeteorPerson(this.props)
     this.handle = handle
-
   }
 
   componentWillUnmount(){
