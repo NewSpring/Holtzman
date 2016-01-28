@@ -1,5 +1,6 @@
 .load-item,
-.fake-text {
+.fake-text,
+.fake-text-small {
   background: linear-gradient(270deg, #dddddd, #bcbcbc, #dddddd);
   -webkit-animation: ColorAnimation 1.25s linear infinite;
   animation: ColorAnimation 1.25s linear infinite;
