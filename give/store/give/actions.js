@@ -23,6 +23,7 @@ export default {
   clearData: () => ({ type: types.CLEAR_DATA }),
 
   saveSchedule: (id, schedule) => ({ type: types.SAVE_SCHEDULE_DATA, id, schedule }),
+  saveSchedules: (schedules) => ({ type: types.SAVE_SCHEDULES, schedules }),
   removeSchedule: (id) => ({ type: types.REMOVE_SCHEDULE, id }),
   clearSchedule: (id, field) => ({ type: types.REMOVE_SCHEDULE_DATA, id, field }),
 
@@ -36,7 +37,9 @@ export default {
   reset: () => ({ type: types.SET_ERRORS, errors: {} }),
   setErrors: (errors) => ({ type: types.SET_ERRORS, errors }),
 
-  setDetails: (url) => ({ type: types.SET_TRANSACTION_DETAILS, url })
+  setDetails: (url) => ({ type: types.SET_TRANSACTION_DETAILS, url }),
+
+  setReminder: (reminderDate) => ({ type: types.SET_REMINDER_DATE, reminderDate }),
 
 
 }

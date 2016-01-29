@@ -14,6 +14,7 @@ const initial = {
   authorized: false,
   forgot: false,
   success: false,
+  showWelcome: false,
 
   person: {
     Age: null, // Number
@@ -214,7 +215,15 @@ export default createReducer(initial, {
       authorized: true
     } }
 
-  }
+  },
+
+  [types.SHOW_WELCOME](state, action) {
+
+    return { ...state, ...{
+      showWelcome: true
+    } }
+
+  },
 
 
 })

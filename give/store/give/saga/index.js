@@ -1,9 +1,11 @@
 import "regenerator/runtime"
 import ReactDOM from "react-dom"
+import Moment from "moment"
 import { take, put, cps } from "redux-saga"
 
 import { GraphQL } from "../../../../core/graphql"
 import { addSaga } from "../../../../core/store/utilities"
+import modalActions from "../../../../core/store/modal"
 
 import types from "./../types"
 import actions from "../actions"
@@ -12,6 +14,7 @@ import { CreditCardForm, AchForm } from "./paymentForm"
 import formatPersonDetails from "./formatPersonDetails"
 
 import { order, schedule, charge } from "../../../methods/give/client"
+import RecoverSchedules from "../../../blocks/RecoverSchedules"
 
 // handle the transactions
 addSaga(function* chargeTransaction(getStore) {
@@ -98,11 +101,28 @@ function* submitPersonDetails(give, autoSubmit) {
   const { url } = yield cps(order, formattedData)
 
   if (autoSubmit) {
-    const response = yield fetch(give.url, {
+
+    /*
+
+      @NOTE
+        This is a hacky way to get around the submission required
+        by transnational gateway. We do a POST into the dark web of
+        NMI servers
+
+      @NOTE
+        This will always throw an error but we just catch it and ignore
+
+      @NOTE
+        DO NOT REMOVE THIS
+
+    */
+    const response = yield fetch(url, {
       method: "POST",
       body: new FormData(),
       mode: "no-cors"
     })
+      .then((response) => {})
+      .catch((e) => {})
 
   }
 
@@ -203,15 +223,102 @@ addSaga(function* createOrder(getStore) {
 
 })
 
-
 // recover transactions
-addSaga(function* recoverTransactions(){
+function* recoverTransactions(getStore) {
+  let user = Meteor.userId()
 
-  console.log("here", Meteor.userId())
-  while (true) {
+  if (!user) {
     const { authorized } = yield take("ONBOARD.IS_AUTHORIZED")
-    console.log(authorized, "here again")
+  }
+
+  let query = `
+    query ScheduledTransactions($mongoId: String) {
+      schedules: allScheduledFinanicalTransactions(mongoId: $mongoId, active: false, cache: false) {
+        id
+        gateway
+        details {
+          amount
+          account {
+            name
+            description
+          }
+        }
+        schedule {
+          value
+          description
+        }
+      }
+    }
+  `
+
+  const { schedules } = yield GraphQL.query(query)
+
+  let bulkUpdate = {}
+  if (schedules.length) {
+    for (let schedule of schedules) {
+     bulkUpdate[schedule.id] = {...{
+       start: Moment(schedule.start).format("YYYYMMDD"),
+       frequency: schedule.schedule.value
+     }, ...schedule }
+
+     yield put(actions.addTransactions({
+       [schedule.id]: {
+         value: Number(schedule.details[0].amount.replace(/[^0-9\.]+/g, '')),
+         label: schedule.details[0].account.name
+       }
+     }))
+
+    }
+
+    yield put(actions.saveSchedules(bulkUpdate))
+
+    let store = getStore()
+
+    if (store.give.reminderDate) {
+      let now = new Date()
+      if (now > store.give.reminderDate) {
+        // yield put(modalActions.render(RecoverSchedules))
+      }
+    } else {
+      // yield put(modalActions.render(RecoverSchedules))
+    }
 
   }
+
+}
+
+// ensure we are on a /give route
+addSaga(function* watchRoute(getStore){
+
+  while (true) {
+
+
+    let initRoute = yield take("@@router/INIT_PATH"),
+        recovered;
+
+    initRoute = initRoute.payload.path
+
+    function isGive(path) {
+      return path.split("/")[1] === "give"
+    }
+
+    if (!isGive(initRoute)) {
+      const { payload } = yield take("@@router/UPDATE_PATH")
+
+      if (isGive(payload.path)) {
+        recovered = yield* recoverTransactions(getStore)
+        break
+      }
+
+    } else {
+      recovered = yield* recoverTransactions(getStore)
+      break
+    }
+
+
+
+  }
+
+
 
 })

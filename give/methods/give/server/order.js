@@ -25,14 +25,16 @@ const order = (orderData) => {
   if (orderData.savedAccount) {
     let accountDetails = api.get.sync(`FinancialPersonSavedAccounts/${orderData.savedAccount}`)
     delete orderData.savedAccount
-    console.log(accountDetails)
     if (accountDetails.ReferenceNumber) {
+      // orderData["update-customer"] = {
+      //   "customer-vault-id": accountDetails.ReferenceNumber
+      // }
+      delete orderData["customer-id"]
       orderData["customer-vault-id"] = accountDetails.ReferenceNumber
       // orderData["authorization-code"] = accountDetails.ForeignKey
     }
   }
 
-  console.log(orderData)
   const response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
   return {
     url: response["form-url"],

@@ -16,7 +16,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format }) => (
       hideLabel={true}
       classes={["soft-bottom", "display-inline-block"]}
       inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
-      placeholder="select fund here"
+      placeholder="select campaign"
       onChange={showInputs}
       includeBlank={true}
     />

@@ -30,4 +30,6 @@ export default {
 
   person: (person) => ({ type: types.SET_PERSON, person }),
 
+  showWelcome: () => ({ type: types.SHOW_WELCOME }),
+
 }

@@ -14,7 +14,7 @@ Meteor.methods({
     const payload = { query, variables, operationName };
     const f = new Future();
 
-    fetch("http://192.168.99.100/", {
+    fetch("http://localhost:8080/", {
         method: "POST",
         headers: {
           'Accept': 'application/json',
