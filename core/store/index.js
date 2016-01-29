@@ -7,6 +7,7 @@ import onBoard from "./onBoard"
 import sections from "./sections"
 import topics from "./topics"
 import campuses from "./campuses"
+import collections from "./collections"
 
 import {
   join,
@@ -36,6 +37,8 @@ export {
   nav,
   onBoard,
   sections,
+  topics,
+  collections,
 
   wrapper,
   createReduxStore,

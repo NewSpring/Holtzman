@@ -107,6 +107,9 @@ export default class GiveNow extends Component {
   buttonText = () => {
 
     let text = "Give Now"
+    if (this.props.text) {
+      text = this.props.text
+    }
 
     if (this.props.savedAccount.id) {
       const details = this.props.savedAccount
@@ -127,7 +130,7 @@ export default class GiveNow extends Component {
 
   icon = () => {
 
-    if (this.props.savedAccount) {
+    if (this.props.savedAccount && this.props.authorized) {
       const detail = this.props.savedAccount.payment
 
       if (details.FinancialPaymentDetail.CurrencyTypeValue &&

@@ -107,6 +107,16 @@ export default class Input extends Component {
 
   }
 
+  style = () => {
+    if (this.props.disabled) {
+      return {
+        cursor: "inherit"
+      }
+    }
+
+    return {}
+  }
+
 
 
   render() {
@@ -135,6 +145,7 @@ export default class Input extends Component {
                 labelName={
                   this.props.label || this.props.name
                 }
+                disabed={this.disabled()}
               />
             )
           }
@@ -153,6 +164,7 @@ export default class Input extends Component {
           onFocus={this.focus}
           onChange={this.format}
           defaultValue={this.props.defaultValue}
+          style={this.style()}
           {...this.props}
         />
 

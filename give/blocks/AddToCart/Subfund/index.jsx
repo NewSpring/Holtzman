@@ -69,9 +69,9 @@ export default class SubFund extends Component {
       return fund.id === Number(id)
     })
 
-    const { PublicName, Name } = selectedFund[0]
+    const { name } = selectedFund[0]
 
-    let fund = PublicName ? PublicName : Name
+    let fund = name
 
     let updatedState = { fund }
 
