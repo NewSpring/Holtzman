@@ -96,8 +96,17 @@ export default class GiveNow extends Component {
     this.props.dispatch(modal.render(Give))
   }
 
-  onClick = () => {
+  onClick = (e) => {
     if (this.props.disabled) {
+      return
+    }
+
+    let keepGoing = true
+    if (this.props.onClick) {
+      keepGoing = this.props.onClick(e)
+    }
+
+    if (!keepGoing) {
       return
     }
 
@@ -189,6 +198,7 @@ export default class GiveNow extends Component {
           icon={this.icon()}
           text={this.buttonText()}
           onClick={this.onClick}
+          value={this.props.value}
         />
         {() => {
           if (!this.props.authorized) {

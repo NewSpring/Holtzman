@@ -9,6 +9,8 @@ import { Spinner } from "../../../core/components/loading"
 import { AddSchedule } from "../../blocks"
 import Split, { Left, Right } from "../../../core/blocks/split"
 
+import Confirm from "../../blocks/ActionButtons"
+
 export default class Layout extends Component {
 
 
@@ -44,7 +46,14 @@ export default class Layout extends Component {
 
   render () {
 
-    const { schedules, accounts, ready } = this.props
+    const {
+      schedules,
+      accounts,
+      ready,
+      recoverableSchedules,
+      cancelSchedule,
+      confirm,
+    } = this.props
 
     return (
 
@@ -65,14 +74,74 @@ export default class Layout extends Component {
           <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top">
 
 
-              <div className="outlined--light outlined--bottom soft-ends soft-double-bottom">
+              <div className="soft-ends soft-double-bottom">
                 <AddSchedule accounts={accounts}/>
               </div>
 
           </div>
 
+          {(() => {
+            let count = 0
+            if (recoverableSchedules.length) {
+              return (
+                <div className="background--light-secondary">
+                  <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top" ref="history">
+                    <h4 className="soft-double-top text-center">Gifts to Recover</h4>
 
-          <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top" ref="history">
+                      {recoverableSchedules.map((schedule, i) => {
+                        count ++
+                        if (!schedule.details[0].account) {
+                          return null
+                        }
+
+                        let classes = "soft-ends push-half-ends hard-sides constrain-mobile"
+                        if (count != recoverableSchedules.length) {
+                          classes += " outlined--light outlined--bottom"
+                        }
+                        return (
+                          <div key={i} className={classes}>
+
+
+                            <h4 className="text-dark-tertiary" style={{lineHeight: "1.75"}}>
+                              <span className="text-dark-secondary">
+                                {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
+                              </span>, I give <span className="text-dark-secondary">
+                                {this.monentize(schedule.details[0].amount)}
+                              </span> to <span className="text-primary">
+                                {schedule.details[0].account.name}
+                              </span>. This began on <span className="text-dark-secondary">
+                                {this.formatDate(schedule.start)}.
+                              </span>
+                            </h4>
+
+                            <Confirm
+                              text="Confirm"
+                              classes={["one-whole@handheld push-half-top"]}
+                              onClick={confirm}
+                              value={schedule.id}
+                            />
+
+                            <button
+                              className="btn btn-alert btn--small text-alert one-whole@handheld push-half-top@handheld"
+                              data-id={schedule.id}
+                              onClick={cancelSchedule}
+                            >
+                              Cancel Schedule
+                            </button>
+
+                          </div>
+
+                        )
+                      })}
+
+
+                  </div>
+                </div>
+              )
+            }
+          }())}
+
+          <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top outlined--light outlined--top" ref="history">
             <h4 className="soft-double-top text-center">My Active Gifts</h4>
             {() => {
 
@@ -106,7 +175,7 @@ export default class Layout extends Component {
                       <div key={i} className="soft-ends push-half-ends hard-sides outlined--light outlined--bottom constrain-mobile">
 
 
-                        <h3 className="text-dark-tertiary" style={{lineHeight: "1.75"}}>
+                        <h4 className="text-dark-tertiary" style={{lineHeight: "1.75"}}>
                           <span className="text-dark-secondary">
                             {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
                           </span>, I give <span className="text-dark-secondary">
@@ -120,7 +189,7 @@ export default class Layout extends Component {
                           </span> ending in <span className="text-dark-secondary">
                             {schedule.payment.accountNumber.slice(-4)}
                           </span>
-                        </h3>
+                        </h4>
 
                         <Link to={`/give/recurring/${schedule.id}`} className="btn">
                           View Details
