@@ -179,11 +179,14 @@ Meteor.methods({ "give/schedule": schedule })
 const cancel = ({ id, gateway }) => {
   let response = {}
 
-  try {
-    response = Meteor.wrapAsync(gatewayCancel)(gateway)
-  } catch (e) {
-    throw new Meteor.Error(e)
+  if (gateway) {
+    try {
+      response = Meteor.wrapAsync(gatewayCancel)(gateway)
+    } catch (e) {
+      throw new Meteor.Error(e)
+    }
   }
+
 
   // response = api.patch.sync(`FinancialScheduledTransactions/${Id}`, { IsActive: false })
   response = api.delete.sync(`FinancialScheduledTransactions/${id}`)

@@ -1,8 +1,5 @@
 const Future = Npm.require("fibers/future");
 
-Meteor.publish("userData", function() {
-  return Meteor.users.find(this.userId, { fields: { "services.rock": 1 } })
-})
 
 Meteor.methods({
   'graphql.transport': function(query, variables, operationName) {
