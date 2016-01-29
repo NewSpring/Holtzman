@@ -27,9 +27,9 @@ export default class Authorized extends Component {
       this.props.dispatch(modal.render(OnBoard))
     }
 
-    if (!this.props.auth && nextProps.auth) {
-      this.props.dispatch(modal.hide())
-    }
+    // if (!this.props.auth && nextProps.auth) {
+    //   this.props.dispatch(modal.hide())
+    // }
   }
 
 

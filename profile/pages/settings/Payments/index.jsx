@@ -57,7 +57,7 @@ export default class GiveNow extends Component {
     ))
 
     this.setState({ accounts: accounts })
-    this.dispatch(giveActions.clearAccount())
+    this.props.dispatch(giveActions.clearAccount())
     Meteor.call("PaymentAccounts.remove", id, (err, response) => {
       console.log(err, response)
     })

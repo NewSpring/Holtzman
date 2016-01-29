@@ -25,13 +25,7 @@ const Layout = ({
         id="add-to-cart"
       >
         <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-          I'd like to {() => {
-            if (accounts.length > 1) {
-              return "tithe"
-            }
-
-            return `give`
-          }()}
+          I'd like to give
         </h3>
 
         <Forms.Input
@@ -70,7 +64,7 @@ const Layout = ({
 
             return (
               <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
-                {`to ${accounts[0].PublicName || accounts[0].Name} `}&nbsp;
+                {`to ${accounts[0].name}`}&nbsp;
               </h3>
             )
 
