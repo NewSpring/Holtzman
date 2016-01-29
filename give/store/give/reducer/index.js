@@ -42,6 +42,8 @@ const initial = {
 
   attempts: 0,
 
+  reminderDate: null, // Date string for the next reminder
+
   errors: {
     // <id>: {
     //   message: "Card is declined"
@@ -122,7 +124,6 @@ export default createReducer(initial, {
 
   [types.SAVE_DATA](state, action) {
 
-    console.log(action, state)
     // @TODO validation on new data
     return { ...state, ...{
       data: {
