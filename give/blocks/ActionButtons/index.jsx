@@ -69,6 +69,10 @@ export default class GiveNow extends Component {
     return classes.join(" ")
   }
 
+  renderAfterLogin = () => {
+    this.props.dispatch(modal.render(Give))
+  }
+
   onClick = () => {
     if (this.props.disabled) {
       return
@@ -79,7 +83,9 @@ export default class GiveNow extends Component {
     if (this.data.authorized) {
       this.props.dispatch(modal.render(Give))
     } else {
-      this.props.dispatch(modal.render(OnBoard))
+      this.props.dispatch(modal.render(OnBoard, {
+        onFinished: this.renderAfterLogin
+      }))
 
       this.props.dispatch(onBoardActions.setAccount(true))
     }
@@ -94,13 +100,15 @@ export default class GiveNow extends Component {
     }
     this.props.dispatch(giveActions.setTransactionType("guest"))
     this.props.dispatch(modal.render(Give))
-    this.props.dispatch(navActions.setLevel("MODAL"))
+    // this.props.dispatch(navActions.setLevel("MODAL"))
   }
 
   register = () => {
-    this.props.dispatch(modal.render(OnBoard))
     this.props.dispatch(onBoardActions.setAccount(false))
-    this.props.dispatch(navActions.setLevel("MODAL"))
+    this.props.dispatch(modal.render(OnBoard, {
+      onFinished: this.renderAfterLogin
+    }))
+    // this.props.dispatch(navActions.setLevel("MODAL"))
 
   }
 
