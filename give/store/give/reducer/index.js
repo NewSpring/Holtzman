@@ -39,9 +39,7 @@ const initial = {
   },
 
   state: "default", // "default", "loading", "submit", "error", "success"
-
-  attempts: 0,
-
+  attempts: 0, // spam protection (auto calculated)
   reminderDate: null, // Date string for the next reminder
 
   errors: {

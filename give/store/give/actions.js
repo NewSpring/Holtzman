@@ -26,7 +26,6 @@ export default {
   deleteSchedule: (id) => ({ type: types.DELETE_RECOVERABLE_SCHEDULE, id }),
 
   saveSchedule: (id, schedule) => ({ type: types.SAVE_SCHEDULE_DATA, id, schedule }),
-  saveSchedules: (schedules) => ({ type: types.SAVE_SCHEDULES, schedules }),
   removeSchedule: (id) => ({ type: types.REMOVE_SCHEDULE, id }),
   clearSchedule: (id, field) => ({ type: types.REMOVE_SCHEDULE_DATA, id, field }),
 

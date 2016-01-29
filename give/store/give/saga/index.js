@@ -372,6 +372,9 @@ addSaga(function* bindGiveAuth(geStore){
       yield put(actions.clearData())
     }
 
+    yield put(actions.saveSchedules(bulkUpdate))
+    yield put(modalActions.render(RecoverSchedules))
+
   }
 
 }
