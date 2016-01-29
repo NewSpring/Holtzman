@@ -24,6 +24,8 @@ const initial = {
 
   attempts: 0,
 
+  reminderDate: null, // Date string for the next reminder
+
   errors: {
     // <id>: {
     //   message: "Card is declined"
@@ -96,7 +98,6 @@ export default createReducer(initial, {
 
   [types.SAVE_DATA](state, action) {
 
-    console.log(action, state)
     // @TODO validation on new data
     return { ...state, ...{
       data: {
@@ -136,6 +137,14 @@ export default createReducer(initial, {
       errors: initial.errors
 
     } }
+  },
+
+  [types.SAVE_SCHEDULES](state, action) {
+
+    return {...state, ...{
+      schedules: action.schedules
+    }}
+
   },
 
   [types.SAVE_SCHEDULE_DATA](state, action) {
@@ -257,7 +266,14 @@ export default createReducer(initial, {
     return { ...state, ... {
       url: action.url
     }}
-  }
+  },
+
+  [types.SET_REMINDER_DATE](state, action) {
+
+    return { ...state, ... {
+      reminderDate: action.reminderDate
+    }}
+  },
 
 
 })

@@ -45,7 +45,7 @@ const step1 = (token, callback) => {
       callback(e)
       return
     }
-
+    console.log(data)
     if (data["result-code"] === "100") {
       callback(null, data)
       return

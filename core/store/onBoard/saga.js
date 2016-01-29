@@ -134,8 +134,22 @@ addSaga(function* onBoard(getState) {
         // succeed the form
         yield put(actions.success())
 
+        let user = Meteor.user()
+
+        // if this is the first login, show welcome
+        if (!user.profile || !user.profile.lastLogin) {
+          yield put(actions.showWelcome())
+        }
+
         // reset the UI
         yield put(actions.setState("default"))
+
+        // update login time
+        Meteor.users.update(Meteor.userId(), {
+          $set: {
+            "profile.lastLogin": new Date()
+          }
+        })
 
       }
 

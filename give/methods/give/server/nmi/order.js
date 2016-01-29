@@ -6,9 +6,8 @@ import { parseXML } from "../../../../../core/util"
 const step2 = (purchaseData, method, callback) => {
 
   method || (method = "sale")
-  // let url = process.env.ROOT_URL ? `${process.env.ROOT_URL}/give` : "http://localhost:3000/give"
-  // let url = "https://alpha.newspring.io/give"
-  let url = "http://localhost:3000/give"
+  const { ROOT_URL } = __meteor_runtime_config__
+  let url = `${ROOT_URL}/give`
 
   const sale = {
     [method]: { ...{
@@ -19,7 +18,7 @@ const step2 = (purchaseData, method, callback) => {
     }, ...purchaseData }
   }
 
-  if (!purchaseData["customer-vault-id"] && !purchaseData["customer-id"] && method === "sale") {
+  if (!purchaseData["customer-vault-id"] && method === "sale") {
     sale.sale["add-customer"] = ""
   }
   // if (!purchaseData["customer-vault-id"] && purchaseData["customer-id"] && method === "sale") {
