@@ -1,6 +1,6 @@
 
 import { Forms } from "../../../core/components"
-import ConfirmNow from "../ActionButtons"
+import { Link } from "react-router"
 
 const RecoverableSchedule = ({id, account, amount, frequency, removeOnClick}) => (
   <div>
@@ -33,7 +33,7 @@ const RecoverableSchedule = ({id, account, amount, frequency, removeOnClick}) =>
   </div>
 )
 
-const Layout = ({ schedules, reminderDate, onClick }) => (
+const Layout = ({ schedules, reminderDate, onClick, hide }) => (
   <div className="soft soft-double-ends one-whole text-center">
     <h4 className="text-center push-ends">
       Continue Your Gift
@@ -53,8 +53,9 @@ const Layout = ({ schedules, reminderDate, onClick }) => (
       />
     ))}
 
-    <ConfirmNow classes={["one-whole push-ends"]} text="Confirm" />
-
+    <Link className="btn one-whole push-ends" to="/give/recurring" onClick={hide}>
+      Comfirm Schedules
+    </Link>
 
     <button className="btn--thin btn--small btn--dark-tertiary one-whole" onClick={onClick}>
       Remind Me Later

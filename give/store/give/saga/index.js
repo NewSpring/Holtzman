@@ -6,6 +6,7 @@ import { take, put, cps } from "redux-saga"
 import { GraphQL } from "../../../../core/graphql"
 import { addSaga } from "../../../../core/store/utilities"
 import modalActions from "../../../../core/store/modal"
+import { api } from "../../../../core/util/rock"
 
 import types from "./../types"
 import actions from "../actions"
@@ -61,6 +62,16 @@ addSaga(function* chargeTransaction(getStore) {
 
         // remove loading state
         yield put(actions.setState("success"))
+
+        // if we activated an inactive schedule, remove it
+        for (let schedule in give.schedules) {
+          if (give.recoverableSchedules[schedule]) {
+            // remove the schedule from rock because a new one has been added
+            // @TODO should we reactivate and update this schedule?
+            yield cps(Meteor.call, "give/schedule/cancel", schedule)
+            yield put(actions.deleteSchedule(schedule))
+          }
+        }
 
         // if this was a named card (as in creating a saved account)
         // lets force and update of the payment cards and set it in the store
@@ -236,10 +247,12 @@ function* recoverTransactions(getStore) {
       schedules: allScheduledFinanicalTransactions(mongoId: $mongoId, active: false, cache: false) {
         id
         gateway
+        start
         details {
           amount
           account {
             name
+            id
             description
           }
         }
@@ -261,27 +274,18 @@ function* recoverTransactions(getStore) {
        frequency: schedule.schedule.value
      }, ...schedule }
 
-     yield put(actions.addTransactions({
-       [schedule.id]: {
-         value: Number(schedule.details[0].amount.replace(/[^0-9\.]+/g, '')),
-         label: schedule.details[0].account.name
-       }
-     }))
+    }
 
+    let store = getStore()
+    let now = new Date()
+
+    // only update the store if it is past the reminder date
+    if (store.give.reminderDate && (now < store.give.reminderDate)) {
+      return
     }
 
     yield put(actions.saveSchedules(bulkUpdate))
-
-    let store = getStore()
-
-    if (store.give.reminderDate) {
-      let now = new Date()
-      if (now > store.give.reminderDate) {
-        // yield put(modalActions.render(RecoverSchedules))
-      }
-    } else {
-      // yield put(modalActions.render(RecoverSchedules))
-    }
+    yield put(modalActions.render(RecoverSchedules))
 
   }
 
