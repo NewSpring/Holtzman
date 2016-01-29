@@ -11,19 +11,16 @@ import types from "../types"
 import { progress } from "./progress"
 import { savedAccount } from "./savedAccounts"
 import { addTransaction, clearTransactions } from "./transactions"
+import { setRecoverableSchedules, deleteRecoverableSchedule } from "./scheduledTransactions"
 
 const initial = {
 
   step: 1, // Number (step along in progress bar to show)
   transactionType: "default", // "default", "guest", "recurring"
   url: "", // String representing the endpoint with NMI to submit to
-
   total: 0, // Number > 0 for allowing to move forward (calculated)
-
   state: "default", // "default", "loading", "submit", "error", "success"
-
-  attempts: 0,
-
+  attempts: 0, // spam protection (auto calculated)
   reminderDate: null, // Date string for the next reminder
 
   errors: {
@@ -57,6 +54,10 @@ const initial = {
     //   payments: null,  future feature for pledges
     //   frequency: null  String of value from Rock
     // }
+  },
+
+  recoverableSchedules: {
+
   },
 
   // form data
@@ -95,6 +96,9 @@ export default createReducer(initial, {
 
   [types.ADD_TRANSACTION]: addTransaction,
   [types.CLEAR_TRANSACTIONS]: clearTransactions,
+
+  [types.SET_RECOVERABLE_SCHEDULES]: setRecoverableSchedules,
+  [types.DELETE_RECOVERABLE_SCHEDULE]: deleteRecoverableSchedule,
 
   [types.SAVE_DATA](state, action) {
 
@@ -139,13 +143,6 @@ export default createReducer(initial, {
     } }
   },
 
-  [types.SAVE_SCHEDULES](state, action) {
-
-    return {...state, ...{
-      schedules: action.schedules
-    }}
-
-  },
 
   [types.SAVE_SCHEDULE_DATA](state, action) {
 

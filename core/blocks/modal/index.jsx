@@ -12,7 +12,8 @@ import styles from "./modal.css"
 
 const map = (state) => ({
   navigation: state.nav,
-  modal: state.modal
+  modal: state.modal,
+  path: state.routing.path,
 })
 
 @connect(map)
@@ -26,6 +27,10 @@ export default class SideModalContainer extends Component {
 
     if (!nextProps.modal.visible && nextProps.navigation.level === "MODAL" && !this.props.modal.props.keepNav) {
       this.props.dispatch(navActions.setLevel("TOP"))
+    }
+
+    if (!nextProps.modal.visible && (this.props.path != nextProps.path)) {
+      this.props.dispatch(modalActions.hide())
     }
 
   }

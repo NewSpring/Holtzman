@@ -89,11 +89,12 @@ export default class Layout extends Component {
                   {() => {
                     if (state.isActive) {
                       return (
-                        <button className="btn--alert btn--thin btn--small" onClick={stop}>Stop gift</button>
+                        <button className="btn--alert btn--thin btn--small" onClick={stop}>
+                          Cancel gift
+                        </button>
                       )
                     }
                   }()}
-
                 </div>
 
               )

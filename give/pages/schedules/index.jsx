@@ -85,7 +85,7 @@ function getAccounts(dispatch) {
 
 const map = (store) => ({
   schedules: store.transactions.scheduledTransactions,
-  accounts: store.give.accounts
+  give: store.give
 })
 
 @connect(map)
@@ -127,9 +127,51 @@ export default class Template extends Component {
 
   }
 
-  render () {
-    const { schedules, accounts } = this.props
+  confirm = (e) => {
+    let { value } = e.currentTarget
+    const { dispatch } = this.props
+    const { recoverableSchedules } = this.props.give
 
+    if (recoverableSchedules[value]) {
+
+      let schedule = recoverableSchedules[value]
+      const { details } = schedule
+
+      for (let fund of details) {
+        const { id, name } = fund.account
+
+        dispatch(giveActions.addTransactions({ [id]: {
+          value: Number(fund.amount.replace(/[^0-9\.]+/g, '')),
+          label: name
+        }}))
+      }
+
+      dispatch(giveActions.saveSchedule(schedule.id, {
+        // label: name,
+        frequency: schedule.frequency
+      }))
+
+    }
+
+    return true
+  }
+
+  cancel = (e) => {
+    const { dataset } = e.target
+    const { id } = dataset
+    const { dispatch } = this.props
+
+    dispatch(giveActions.deleteSchedule(id))
+
+    Meteor.call("give/schedule/cancel", { id }, (err, response) => {
+      console.log(err, response)
+    })
+  }
+
+
+  render () {
+    const { schedules, give } = this.props
+    const { accounts, recoverableSchedules } = give
     let transactions = []
     for (const transaction in schedules) {
       transactions.push(schedules[transaction])
@@ -140,8 +182,21 @@ export default class Template extends Component {
       mappedAccounts.push(accounts[account])
     }
 
-    console.log(transactions)
-    return <Layout ready={this.state.loaded} schedules={transactions} accounts={mappedAccounts} />
+    let recovers = []
+    for (const recover in recoverableSchedules) {
+      recovers.push(recoverableSchedules[recover])
+    }
+
+    return (
+      <Layout
+        ready={this.state.loaded}
+        schedules={transactions}
+        accounts={mappedAccounts}
+        cancelSchedule={this.cancel}
+        recoverableSchedules={recovers}
+        confirm={this.confirm}
+      />
+    )
   }
 }
 

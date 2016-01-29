@@ -55,10 +55,10 @@ export default class RecoverSchedules extends Component {
     const { state } = this.state
 
     let arr = []
-    const { schedules, reminderDate } = this.props.give
-    for (let schedule in schedules) {
-      arr.push(schedules[schedule])
-    }
+    const { recoverableSchedules, reminderDate } = this.props.give
+    // for (let schedule in recoverableSchedules) {
+    //   arr.push(recoverableSchedules[schedule])
+    // }
 
     if (state === "later") {
       return <Later date={reminderDate} onClick={this.close} />
@@ -77,6 +77,7 @@ export default class RecoverSchedules extends Component {
     return (
       <Recover
         schedules={arr}
+        hide={this.close}
         onClick={() => {this.setState({state: "remind"})}}
       />
     )
