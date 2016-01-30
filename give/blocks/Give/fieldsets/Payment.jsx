@@ -159,6 +159,7 @@ export default class Payment extends Component {
           format={Format.creditCard}
           validation={this.saveData}
           ref="cardNumber"
+          autofocus={true}
         />
         <div className="grid">
           <div className="grid__item one-half">

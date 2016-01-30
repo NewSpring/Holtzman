@@ -102,6 +102,7 @@ function getUser(id, dispatch) {
       }
     }
   `
+
   return GraphQL.query(personQuery)
     .then(({ person }) => {
       if (person) {
