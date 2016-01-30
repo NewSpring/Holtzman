@@ -8,7 +8,8 @@ import { People, Likes } from "../../collections"
 import {
   onBoard as onBoardActions,
   liked as likedActions,
-  topics as topicActions
+  topics as topicActions,
+  campuses as campusActions,
 } from "../../store"
 
 
@@ -99,6 +100,7 @@ function getUser(id, dispatch) {
       }
     }
   `
+
   return GraphQL.query(personQuery)
     .then(({ person }) => {
       if (person) {
@@ -139,6 +141,29 @@ export default class Global extends Component {
     if (!this.handle) {
       this.handle = bindLogout(dispatch)
     }
+
+    let query = `
+      {
+        campuses: allCampuses {
+          name
+          shortCode
+          id
+          locationId
+        }
+      }
+    `
+
+    GraphQL.query(query)
+      .then(({ campuses }) => {
+
+        let mappedObj = {}
+        for (let campus of campuses) {
+          mappedObj[campus.id] = campus
+        }
+
+        dispatch(campusActions.add(mappedObj))
+
+      })
 
   }
 

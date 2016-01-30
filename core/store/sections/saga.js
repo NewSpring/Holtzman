@@ -43,6 +43,11 @@ addSaga(function* sectionsSaga(getState) {
           ...${images}
         }
       }
+      music: allContent(limit: 1, channel: "albums") {
+        content {
+          ...${images}
+        }
+      }
     }
   `
 
@@ -59,6 +64,9 @@ addSaga(function* sectionsSaga(getState) {
       }
 
       finalImage = image.cloudfront ? image.cloudfront : image.s3
+      if (finalImage) {
+        break
+      }
 
     }
 

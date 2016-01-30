@@ -22,32 +22,48 @@ addSaga(function* chargeTransaction(getStore) {
 
   while (true) {
     let { state } = yield take(types.SET_STATE)
-    let { give } = getStore()
+    let { give } = getStore(),
+        name = give.data.payment.name,
+        action = charge,
+        error = false,
+        id;
 
     if (state === "submit") {
 
       // set loading state
       yield put(actions.loading())
 
-      // wait until we have the transaction url
-      if (!give.url) {
-        let { url } = yield take(types.SET_TRANSACTION_DETAILS)
-        give.url = url
+      // personal info is ready to be submitted
+      const formattedData = formatPersonDetails(give)
+
+      if (formattedData.savedAccount && Object.keys(give.schedules).length) {
+        // wrap the function for the same api
+        action = (token, name, id, callback) => {
+          Meteor.call("give/order", formattedData, true, callback)
+        }
+
+      } else {
+        // wait until we have the transaction url
+        if (!give.url) {
+          let { url } = yield take(types.SET_TRANSACTION_DETAILS)
+          give.url = url
+        }
       }
 
       // get the token and name of the saved account
-      let token = give.url.split("/").pop(),
-          name = give.data.payment.name,
-          action = charge,
-          error = false;
+      let token = give.url.split("/").pop();
 
-      if (Object.keys(give.schedules).length) {
+      if (Object.keys(give.schedules).length && !formattedData.savedAccount) {
         action = schedule
+        for (let schedule in give.schedules) {
+          id = schedule
+          break
+        }
       }
 
       // submit transaction
       try {
-        yield cps(action, token, name)
+        yield cps(action, token, name, id)
       } catch (e) { error = e }
 
       // set error states
@@ -66,9 +82,6 @@ addSaga(function* chargeTransaction(getStore) {
         // if we activated an inactive schedule, remove it
         for (let schedule in give.schedules) {
           if (give.recoverableSchedules[schedule]) {
-            // remove the schedule from rock because a new one has been added
-            // @TODO should we reactivate and update this schedule?
-            yield cps(Meteor.call, "give/schedule/cancel", schedule)
             yield put(actions.deleteSchedule(schedule))
           }
         }
@@ -107,6 +120,17 @@ addSaga(function* chargeTransaction(getStore) {
 function* submitPersonDetails(give, autoSubmit) {
   // personal info is ready to be submitted
   const formattedData = formatPersonDetails(give)
+
+  /*
+
+    Oddity with NMI, when using a saved account for a subscription,
+    you only submit the order, not the charge, etc
+
+  */
+  if (formattedData.savedAccount && Object.keys(give.schedules).length) {
+    return
+  }
+
 
   // call the Meteor method to submit data to NMI
   const { url } = yield cps(order, formattedData)
@@ -242,6 +266,12 @@ function* recoverTransactions(getStore) {
     const { authorized } = yield take("ONBOARD.IS_AUTHORIZED")
   }
 
+  user = Meteor.user()
+
+  if (user.profile && user.profile.reminderDate) {
+    yield put(actions.setReminder(user.profile.reminderDate))
+  }
+
   let query = `
     query ScheduledTransactions($mongoId: String) {
       schedules: allScheduledFinanicalTransactions(mongoId: $mongoId, active: false, cache: false) {
@@ -279,12 +309,13 @@ function* recoverTransactions(getStore) {
     let store = getStore()
     let now = new Date()
 
+    yield put(actions.saveSchedules(bulkUpdate))
+
     // only update the store if it is past the reminder date
     if (store.give.reminderDate && (now < store.give.reminderDate)) {
       return
     }
-
-    yield put(actions.saveSchedules(bulkUpdate))
+    
     yield put(modalActions.render(RecoverSchedules))
 
   }
