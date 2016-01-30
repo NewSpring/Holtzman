@@ -11,7 +11,13 @@ export default class Billing extends Component {
     save: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     clear: PropTypes.func.isRequired,
-    next: PropTypes.func.isRequired
+    next: PropTypes.func.isRequired,
+    states: PropTypes.array,
+  }
+
+  componentDidMount(){
+    console.log(this.refs)
+
   }
 
   header = () => {
@@ -77,6 +83,7 @@ export default class Billing extends Component {
 
   render () {
     const { billing } = this.props.data
+    const { states } = this.props
     return (
       <div>
         <div className="push-double@lap-and-up push">
@@ -95,6 +102,7 @@ export default class Billing extends Component {
             validation={this.streetAddress}
             defaultValue={billing.streetAddress}
             ref="streetAddress"
+            autofocus={true}
           />
           <Forms.Input
             name="streetAddress2"
@@ -104,48 +112,44 @@ export default class Billing extends Component {
             ref="streetAddress2"
           />
 
+
+          <Forms.Input
+            name="city"
+            label="City"
+            errorText="Please enter your city"
+            defaultValue={billing.city}
+            validation={this.city}
+            ref="city"
+          />
+
           <div className="grid">
 
-            <div className="grid__item two-fifths">
+            <div className="grid__item one-half">
+              <Forms.Select
+                name="state"
+                label="State/Territory"
+                errorText="Please enter your state"
+                defaultValue={billing.state}
+                items={states}
+                validation={this.saveState}
+                ref="state"
+                includeBlank={true}
+              />
+
+            </div>
+            <div className="grid__item one-half">
               <Forms.Input
-                name="city"
-                label="City"
-                errorText="Please enter your city"
-                defaultValue={billing.city}
-                validation={this.city}
-                ref="city"
+                name="zip"
+                label="Zip"
+                type="tel"
+                errorText="Please enter your zip"
+                defaultValue={billing.zip}
+                validation={this.zip}
+                ref="zip"
               />
             </div>
-
-            <div className="grid__item three-fifths">
-
-              <div className="grid">
-
-                <div className="grid__item one-half">
-                  <Forms.Input
-                    name="state"
-                    label="State"
-                    errorText="Please enter your state"
-                    defaultValue={billing.state}
-                    validation={this.saveState}
-                    ref="state"
-                  />
-
-                </div>
-                <div className="grid__item one-half">
-                  <Forms.Input
-                    name="zip"
-                    label="Zip"
-                    type="tel"
-                    errorText="Please enter your zip"
-                    defaultValue={billing.zip}
-                    validation={this.zip}
-                    ref="zip"
-                  />
-                </div>
-              </div>
-            </div>
           </div>
+
         </div>
 
 
