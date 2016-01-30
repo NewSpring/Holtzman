@@ -1,10 +1,21 @@
 
+import Meta from "react-helmet"
+
 import Split, { Left, Right } from "../../../core/blocks/split"
 import { AddToCart } from "../../blocks"
 
 const Layout = ({ account }) => (
+
   <Split nav={true}>
-    <Right background={account.Url} mobile={true}>
+    <Meta
+      title={account.name}
+      titleTemplate="%s | NewSpring Church"
+      meta={[
+          {"name": "description", "content": account.summary},
+          {"property": "og:type", "content": "article"}
+      ]}
+    />
+    <Right background={account.image} mobile={true}>
     </Right>
 
     <Left scroll={true} >
