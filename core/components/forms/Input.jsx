@@ -71,6 +71,11 @@ export default class Input extends Component {
   }
 
   focus = (event) => {
+    console.log(this.props)
+    if (this.props.onClick) {
+      this.props.onClick(event)
+    }
+
     this.setState({
       active: true,
       error: false,
