@@ -1,8 +1,8 @@
 import { Component, PropTypes} from "react"
+import Moment from "moment"
 
 import GiveNow from "../ActionButtons"
 import { Forms, Loading } from "../../../core/components"
-
 
 import Styles from "./styles.css"
 // <div className="display-inline-block">
@@ -74,28 +74,41 @@ export default class Layout extends Component {
             onChange={setFund}
           />
 
-          <div className="display-inline-block">
 
+          <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
+            with&nbsp;
+          </h3>
 
-            <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
-              with&nbsp;
-            </h3>
+          <Forms.Input
+            id={state.fundId || -1}
+            name={state.fundLabel || "primary-account"}
+            hideLabel={true}
+            ref="primary-account"
+            classes={["soft-bottom", "input--active", "display-inline-block"]}
+            inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
+            placeholder="$0.00"
+            validate={save}
+            format={format}
+            style={{width: "200px"}}
+            disabled={!state.fundId}
+          />
 
-            <Forms.Input
-              id={state.fundId || -1}
-              name={state.fundLabel || "primary-account"}
-              hideLabel={true}
-              ref="primary-account"
-              classes={["soft-bottom", "input--active", "display-inline-block"]}
-              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
-              placeholder="$0.00"
-              validate={save}
-              format={format}
-              style={{width: "200px"}}
-              disabled={!state.fundId}
-            />
+          <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
+            I want this to begin on &nbsp;
+          </h3>
 
-          </div>
+          <Forms.Date
+            id="start-date"
+            name="start-date"
+            hideLabel={true}
+            ref="start-date"
+            classes={["soft-bottom", "input--active", "display-inline-block"]}
+            inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
+            placeholder="select date"
+            defaultValue={Moment().format("MMM D, YYYY")}
+            format={(value) => (Moment(value).format("MMM D, YYYY"))}
+          />
+
 
 
 
