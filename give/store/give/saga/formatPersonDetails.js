@@ -77,6 +77,7 @@ const formatPersonDetails = (give) => {
 
   if (savedAccount.id) {
     joinedData.savedAccount = savedAccount.id
+    joinedData.savedAccountName = savedAccount.name
   }
 
   return joinedData

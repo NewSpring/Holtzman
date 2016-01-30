@@ -49,7 +49,7 @@ const initial = {
 
   // schedules to create
   schedules: {
-    // <id> : {
+    // <id> : { (in Rock if it exists), otherwise fund id
     //   start: null,  Date (YYYYMMDD),
     //   payments: null,  future feature for pledges
     //   frequency: null  String of value from Rock

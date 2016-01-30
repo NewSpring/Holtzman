@@ -82,12 +82,9 @@ export default class Personal extends Component {
 
     campuses || (campuses = [])
 
-    console.log(personal)
     if (campuses.length === 0) {
       delete personal.campus
     }
-
-    console.log(campuses, personal.campus)
 
     return (
       <div>
@@ -107,6 +104,7 @@ export default class Personal extends Component {
                 validation={this.firstName}
                 defaultValue={personal.firstName}
                 ref="firstName"
+                autofocus={true}
               />
             </div>
             <div className="grid__item one-half">
