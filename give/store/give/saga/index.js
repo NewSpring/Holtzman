@@ -268,7 +268,7 @@ function* recoverTransactions(getStore) {
 
   user = Meteor.user()
 
-  if (user.profile && user.profile.reminderDate) {
+  if (user && user.profile && user.profile.reminderDate) {
     yield put(actions.setReminder(user.profile.reminderDate))
   }
 
@@ -315,7 +315,7 @@ function* recoverTransactions(getStore) {
     if (store.give.reminderDate && (now < store.give.reminderDate)) {
       return
     }
-    
+
     yield put(modalActions.render(RecoverSchedules))
 
   }

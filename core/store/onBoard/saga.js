@@ -137,7 +137,7 @@ addSaga(function* onBoard(getState) {
         let user = Meteor.user()
 
         // if this is the first login, show welcome
-        if (!user.profile || !user.profile.lastLogin) {
+        if (!user || !user.profile || !user.profile.lastLogin) {
           yield put(actions.showWelcome())
         }
 
