@@ -108,7 +108,6 @@ export default class Template extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    console.log(prevState, this.state)
     const { page, shouldUpdate } = this.state
 
     if (prevState.page === page || prevState.shouldUpdate === shouldUpdate) {
@@ -122,14 +121,13 @@ export default class Template extends Component {
   onScroll = (e) => {
     if (this.state.done) return
 
-    const { scrollHeight, clientHeight, scrollTop, offsetTop } = e.target
+    const { scrollHeight, clientHeight, scrollTop, offsetTop } = e.currentTarget
 
     let percentage;
-
     if (scrollTop && scrollHeight) {
       percentage = scrollTop / scrollHeight
     } else if (window.scrollY && document.body.clientHeight) {
-      percentage = window.scrollY, document.body.clientHeight
+      percentage = window.scrollY / document.body.clientHeight
     }
 
     if ( percentage > 0.5 && this.state.shouldUpdate) {

@@ -1,16 +1,13 @@
 import { addReducer, createReducer } from "../utilities"
+import types from "./types"
 
 const reducer = createReducer({}, {
 
-  ["@@collections/INSERT"](state, action) {
+  [types.INSERT](state, action) {
 
     return {...state, ...{
       [action.collection]: {...state[action.collection], ...action.data}
     }}
-
-  },
-
-  ["@@collections/REMOVE"](state, action) {
 
   }
 

@@ -19,6 +19,12 @@ export default class Input extends Component {
     }
   }
 
+  componentDidMount(){
+    if (this.props.autofocus) {
+      this.refs["apollos-input"].focus()
+    }
+  }
+
   componentWillUpdate(nextProps){
     if (this.props.defaultValue != nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue)

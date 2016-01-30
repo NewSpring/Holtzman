@@ -6,7 +6,11 @@ import Moment from "moment"
 import { GraphQL } from "../../../core/graphql"
 import { Controls, Forms } from "../../../core/components"
 import { OnBoard } from "../../../core/blocks"
-import { modal, campuses as campusActions } from "../../../core/store"
+import {
+  modal,
+  campuses as campusActions,
+  collections as collectionActions
+ } from "../../../core/store"
 
 
 import { give as giveActions } from "../../store"
@@ -21,7 +25,8 @@ import Success from "./Success"
 const map = (state) => ({
   give: state.give,
   person: state.onBoard.person,
-  campuses: state.campuses.campuses
+  campuses: state.campuses.campuses,
+  states: state.collections.states
 })
 
 @connect(map)
@@ -39,36 +44,38 @@ export default class Give extends Component {
     this.props.dispatch(giveActions.setProgress(4))
   }
 
-  componentDidMount(){
-    const { dispatch } = this.props
-    let query = `
-      {
-        campuses: allCampuses {
-          name
-          shortCode
-          id
-          locationId
-        }
-      }
-    `
-
-    return GraphQL.query(query)
-      .then(({ campuses }) => {
-
-        let mappedObj = {}
-        for (let campus of campuses) {
-          mappedObj[campus.id] = campus
-        }
-
-        dispatch(campusActions.add(mappedObj))
-
-      })
-  }
 
   componentWillUnmount(){
     if (this.props.give.state != "default") {
       this.props.dispatch(giveActions.clearData())
     }
+  }
+
+  componentDidMount() {
+
+    const { dispatch } = this.props
+
+    let query = `
+      {
+        states: allDefinedValues(id: 28) {
+          name: description
+          value
+          id
+        }
+      }
+    `
+
+    GraphQL.query(query)
+      .then(({ states }) => {
+        let stateObj = {}
+
+        for (let state of states) {
+          stateObj[state.id] = state
+        }
+
+        dispatch(collectionActions.insert("states", stateObj))
+
+      })
   }
 
   updateData = () => {
@@ -184,6 +191,17 @@ export default class Give extends Component {
       value: x.name
     }))
 
+    let states = []
+    for (let state in this.props.states) {
+      states.push(this.props.states[state])
+    }
+
+    states = states.map((x) => ({
+      label: x.name,
+      value: x.value
+    }))
+
+
     let save = (...args) => { this.props.dispatch(giveActions.save(...args)) }
     let clear = (...args) => { this.props.dispatch(giveActions.clear(...args)) }
 
@@ -239,6 +257,7 @@ export default class Give extends Component {
               ref="inputs"
               total={total}
               campuses={campuses}
+              states={states}
             >
               <Controls.Progress
                 steps={4}

@@ -2,6 +2,7 @@
 
 import { Builder } from "xml2js"
 import { parseXML } from "../../../../../core/util"
+import ErrorCodes from "./language"
 
 const step2 = (purchaseData, method, callback) => {
 
@@ -21,14 +22,18 @@ const step2 = (purchaseData, method, callback) => {
   if (!purchaseData["customer-vault-id"] && method === "sale") {
     sale.sale["add-customer"] = ""
   }
-  // if (!purchaseData["customer-vault-id"] && purchaseData["customer-id"] && method === "sale") {
-  //   sale.sale["update-customer"] = purchaseData["customer-id"]
-  //   delete sale.sale["customer-id"]
-  // }
+
+  let instant = false
+  // if we are using a customer vault, no need for a redirect-url
+  if (purchaseData["customer-vault-id"] && method === "add-subscription") {
+    delete sale[method]["redirect-url"]
+    instant = true
+  }
 
 
   const builder = new Builder()
   const xml = builder.buildObject(sale)
+  console.log(xml)
 
   return fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",
@@ -49,8 +54,33 @@ const step2 = (purchaseData, method, callback) => {
       return
     }
 
+    console.log(data)
+    // instant transaction
+    if (instant) {
+
+      if (data["result-code"] === "100") {
+        callback(null, data)
+        return
+      }
+
+      let number = Number(data["result-code"])
+      let err;
+      if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
+        err = ErrorCodes[number]
+      } else if (ErrorCodes[number] === "result-text")  {
+        err = data["result-text"]
+      }
+
+      callback(err)
+      return
+    }
+
     if (data["result-code"] === "100") {
-      callback(null, data)
+      let response = {
+        url: data["form-url"],
+        transactionId: data["transaction-id"]
+      }
+      callback(null, response)
       return
     }
 
