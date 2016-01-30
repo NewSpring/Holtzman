@@ -38,13 +38,22 @@ export default class Date extends Component {
 
     const { selectedDay } = this.state
 
-    let WEEKDAYS_SHORT = {
+    const WEEKDAYS_LONG = {
+      "en": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    }
+    const MONTHS = {
+      "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    }
+    const WEEKDAYS_SHORT = {
       "en": ["S", "M", "T", "W", "T", "F", "S"]
     }
 
 
     const localUtils = {
+      formatMonthTitle: (d, locale) => `${MONTHS[locale][d.getMonth()]} ${d.getFullYear()}`,
       formatWeekdayShort: (i, locale) => WEEKDAYS_SHORT[locale][i],
+      formatWeekdayLong: (i, locale) => WEEKDAYS_LONG[locale][i],
+      getFirstDayOfWeek: (locale) => 0
     }
 
     return (
@@ -65,7 +74,7 @@ export default class Date extends Component {
               <div>
                 <DayPicker
                   locale="en"
-                  localUtils={localUtils}
+                  localeUtils={localUtils}
                   modifiers={{
                     selected: day => DateUtils.isSameDay(selectedDay, day),
                     disabled: DateUtils.isPastDay,
