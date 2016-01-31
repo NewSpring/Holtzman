@@ -159,7 +159,6 @@ export default class Payment extends Component {
           format={Format.creditCard}
           validation={this.saveData}
           ref="cardNumber"
-          autofocus={true}
         />
         <div className="grid">
           <div className="grid__item one-half">
@@ -256,7 +255,7 @@ export default class Payment extends Component {
 
             return (
               <button  className={btnClasses.join(" ")} type="submit" onClick={submit}>
-                Enter
+                Next
               </button>
             )
           }()}

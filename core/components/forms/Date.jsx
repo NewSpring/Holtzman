@@ -7,7 +7,6 @@ import ReactDOM from "react-dom"
 import Input from "./Input"
 import Styles from "./date.css"
 
-console.log(Styles)
 
 export default class Date extends Component {
 
@@ -31,6 +30,7 @@ export default class Date extends Component {
     this.setState({
       selectedDay: modifiers.indexOf("selected") > -1 ? null : day
     });
+
   }
 
 
@@ -56,11 +56,17 @@ export default class Date extends Component {
       getFirstDayOfWeek: (locale) => 0
     }
 
+    let formattedDay = selectedDay && selectedDay.toLocaleDateString()
+    if (this.props.format && selectedDay) {
+      formattedDay = this.props.format(selectedDay)
+    }
+
+
     return (
-      <span>
+      <div className="display-inline-block" style={{position: "relative"}}>
         <div style={{position: "relative"}}>
           <Input
-            defaultValue={selectedDay && selectedDay.toLocaleDateString()}
+            defaultValue={formattedDay}
             {...this.props}
             ref="input"
           />
@@ -71,38 +77,51 @@ export default class Date extends Component {
         {(()=>{
           if (this.state.showDatePicker) {
             return (
-              <div>
-                <DayPicker
-                  locale="en"
-                  localeUtils={localUtils}
-                  modifiers={{
-                    selected: day => DateUtils.isSameDay(selectedDay, day),
-                    disabled: DateUtils.isPastDay,
-                  }}
-                  onDayClick={this.onDayClick}
+              <div >
+                <div style={{
+                  position: "absolute",
+                  top: 0,
+                  zIndex: 999,
+                  margin: "0 auto",
+                  left: 0,
+                  right: 0,
+                  maxWidth: "300px",
+                  border: "1px solid #ddd",
+                  borderRadius: "4px",
+                  marginTop: "-50%"
+                }}>
+                  <DayPicker
+                    locale="en"
+                    localeUtils={localUtils}
+                    modifiers={{
+                      selected: day => DateUtils.isSameDay(selectedDay, day),
+                      disabled: DateUtils.isPastDay,
+                    }}
+                    onDayClick={this.onDayClick}
+                  />
+                <div className="background--light-secondary soft text-center">
+                    <button className="btn flush btn--small" onClick={this.toggle}>Done</button>
+                  </div>
+                </div>
+
+                <div
                   style={{
-                    position: "absolute",
-                    top: "30%",
-                    zIndex: 999,
-                    margin: "0 auto",
+                    position: "fixed",
+                    top: 0,
+                    bottom: 0,
+                    zIndex: 998,
+                    backgroundColor: "rgba(0,0,0,.75)",
                     left: 0,
                     right: 0
                   }}
-                />
-                <div style={{
-                  position: "fixed",
-                  top: 0,
-                  zIndex: 998,
-                  backgroundColor: "rgba(0,0,0,.75)",
-                  left: 0,
-                  right: 0
-                }}></div>
+                  onClick={this.toggle}
+                ></div>
               </div>
 
             )
           }
         })()}
-      </span>
+      </div>
     )
   }
 }

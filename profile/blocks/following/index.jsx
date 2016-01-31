@@ -19,7 +19,7 @@ export default class FollowingContainer extends Component {
     "Music"
   ]
 
-  h7Classes = `flush outlined--light outlined--bottom display-block soft-sides soft-half-top soft-bottom`
+  h7Classes = `flush outlined--light outlined--bottom display-block soft-sides soft-half-top soft-bottom text-center soft-double-sides@lap-and-up soft-double-bottom@lap-and-up`
 
   containerClasses = `cell-wrapper push-half-bottom background--light-primary outlined--light outlined--bottom text-dark-secondary`
 
@@ -41,7 +41,7 @@ export default class FollowingContainer extends Component {
   render() {
 
     return (
-      <section className="background--light-secondary soft-double@lap-and-up push-double@lap-wide-and-up hard-sides" style={ {marginTop: "-20px"} }>
+      <section className="background--light-secondary hard-sides" style={ {marginTop: "-20px"} }>
 
         <h7 className={this.h7Classes}>
           Personalize your NewSpring Home and follow the types of content you care about.

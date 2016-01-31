@@ -1,6 +1,7 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
+import Moment from "moment"
 
 import { give as giveActions } from "../../store"
 import { Offline } from "../../components/status"
@@ -17,7 +18,8 @@ export default class CartContainer extends Component {
   state = {
     fundId: false,
     fundLabel: null,
-    frequency: null
+    frequency: null,
+    startDate: null
   }
 
   getMeteorData(){
@@ -81,6 +83,21 @@ export default class CartContainer extends Component {
 
   }
 
+  saveDate = (value, target) => {
+
+    const { fundId, fundLabel, frequency } = this.state
+
+    let date = Moment(new Date(value)).format("YYYYMMDD")
+
+    this.setState({ startDate: date })
+
+    if (fundId ) {
+      this.props.saveSchedule(fundId, { start: date })
+    }
+
+    return true
+  }
+
   setFund = (id) => {
     let selectedFund = this.props.accounts.filter((fund) => {
       return fund.id === Number(id)
@@ -93,7 +110,12 @@ export default class CartContainer extends Component {
     }
 
     this.setState({fundId: id, fundLabel: name})
-    this.props.saveSchedule(id, { label: name, frequency: this.state.frequency })
+    this.props.saveSchedule(id, {
+      label: name,
+      frequency: this.state.frequency,
+      start: this.state.start
+    })
+
     this.props.setTransactionType("recurring")
   }
 
@@ -156,6 +178,8 @@ export default class CartContainer extends Component {
         state={this.state}
         format={this.format}
         save={this.saveData}
+        saveDate={this.saveDate}
+        total={total}
       />
     )
   }

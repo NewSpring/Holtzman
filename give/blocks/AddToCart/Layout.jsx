@@ -39,13 +39,13 @@ const Layout = ({
           validate={save}
           format={format}
           defaultValue={preFill(primary.id)}
+          style={{maxWidth: "200px"}}
         />
 
 
         <div className="clearfix"></div>
         <div className="display-inline-block">
           {() => {
-
             if ((accounts && accounts.length > 1) || !accounts.length) {
               if (primary.id) {
                 delete transactions[primary.id]
@@ -70,7 +70,7 @@ const Layout = ({
 
           }()}
 
-          <h3 className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">so my gift total is</h3>
+          <h3 className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">so my total is</h3>
           <h3 className="display-inline-block text-brand push-half-bottom">{monentize(total, true)}</h3>
         </div>
 
