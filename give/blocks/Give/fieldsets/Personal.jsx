@@ -161,7 +161,7 @@ export default class Personal extends Component {
 
             return (
               <button className={btnClasses.join(" ")} onClick={this.props.next}>
-                Enter
+                Next
               </button>
             )
           }()}
