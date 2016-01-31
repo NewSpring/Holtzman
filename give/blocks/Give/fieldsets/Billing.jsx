@@ -171,7 +171,7 @@ export default class Billing extends Component {
 
             return (
               <button className={btnClasses.join(" ")} type="submit" onClick={this.props.next}>
-                Enter
+                Next
               </button>
             )
           }()}

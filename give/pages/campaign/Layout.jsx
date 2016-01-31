@@ -19,7 +19,7 @@ const Layout = ({ account }) => (
     </Right>
 
     <Left scroll={true} >
-      <div className="constrain-copy soft-double@lap-and-up">
+      <div className="constrain-copy soft@lap-and-up">
         <div className="soft soft-double-bottom soft-double-top@lap-and-up">
 
           <h2>{account.PublicName}</h2>

@@ -28,7 +28,7 @@ import Styles from "./styles.css"
 export default class Layout extends Component {
   render () {
 
-    const {
+    let {
       schedules,
       setFrequency,
       accounts,
@@ -36,8 +36,11 @@ export default class Layout extends Component {
       state,
       save,
       format,
-      total
+      total,
+      saveDate
     } = this.props
+
+    total || (total = 0)
 
     return (
       <div className="push-top@handheld soft-half-top@lap-and-up">
@@ -53,7 +56,7 @@ export default class Layout extends Component {
             hideLabel={true}
             ref="schedules"
             classes={["soft-bottom", "display-inline-block"]}
-            inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom`}
+            inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary`}
             includeBlank={true}
             placeholder="Choose frequency"
             onChange={setFrequency}
@@ -69,7 +72,7 @@ export default class Layout extends Component {
             hideLabel={true}
             ref="select-account"
             classes={["soft-bottom", "display-inline-block"]}
-            inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom`}
+            inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary`}
             placeholder="select fund here"
             onChange={setFund}
           />
@@ -105,8 +108,8 @@ export default class Layout extends Component {
             classes={["soft-bottom", "input--active", "display-inline-block"]}
             inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
             placeholder="select date"
-            defaultValue={Moment().format("MMM D, YYYY")}
             format={(value) => (Moment(value).format("MMM D, YYYY"))}
+            validation={saveDate}
           />
 
 
@@ -116,6 +119,7 @@ export default class Layout extends Component {
             <GiveNow
               disabled={total <= 0}
               disabledGuest={true}
+              text="Schedule Gift"
             />
           </div>
 
