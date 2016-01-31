@@ -64,17 +64,11 @@ export default class Layout extends Component {
         </Right>
 
         <Left scroll={true} ref="container">
-          <div className="constrain-copy soft-double-sides@lap-and-up soft-double-top@lap-and-up">
-            <div className="soft soft-double-top hard-left@lap-and-up soft-half-bottom">
-              <h2 className="flush hard">Recurring Gifts</h2>
-            </div>
-          </div>
 
 
-          <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top">
+          <div className="constrain-copy soft-double-sides@lap-and-up soft-double@lap-and-up soft">
 
-
-              <div className="soft-ends soft-double-bottom">
+            <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom">
                 <AddSchedule accounts={accounts}/>
               </div>
 

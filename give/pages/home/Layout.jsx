@@ -16,9 +16,9 @@ const Layout = ({ alive, accounts }) => (
     </Right>
 
     <Left scroll={true} >
-      <div className="soft soft-double@lap-and-up push-double@lap-wide-and-up">
+      <div className="constrain-copy soft-double-sides@lap-and-up soft-double-top@lap-and-up soft">
 
-        <div className="text-left">
+        <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom">
           {() => {
 
             if (!alive) {
@@ -64,7 +64,7 @@ const Layout = ({ alive, accounts }) => (
             }
 
             return (
-              <div key={i} className="grid__item one-whole one-half@anchored push-bottom">
+              <div key={i} className="grid__item one-whole one-half@lap-and-up push-bottom">
                 <Card
                   link={`/give/campaign/${encodeURI(account.name)}`}
                   image={{
@@ -72,8 +72,10 @@ const Layout = ({ alive, accounts }) => (
                   }}
                 >
                   <h4>{account.name}</h4>
-                  <p>
-                    {account.summary}
+                  <p >
+                    <small>
+                      {account.summary}
+                    </small>
                   </p>
                   <Link
                     to={`/give/campaign/${encodeURI(account.name)}`}

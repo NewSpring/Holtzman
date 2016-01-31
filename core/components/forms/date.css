@@ -13,14 +13,11 @@
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  max-width: 300px;
   background-color: #f7f7f7;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  border: 1px solid #ddd;
-  border-radius: 4px;
 }
 
 :global(.DayPicker:focus) {
@@ -35,6 +32,7 @@
   width: 100%;
   display: table;
   border-collapse: collapse;
+  border-spacing: 10px;
   border-spacing: 0;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -130,10 +128,8 @@
 /* Default modifiers */
 
 :global(.DayPicker-Day--today) {
-  color: #fff;
   font-weight: 500;
-  background-color: #1c683e;
-  border-radius: 50%;
+  color: #6bac43;
 }
 
 :global(.DayPicker-Day--disabled) {
@@ -156,5 +152,4 @@
 :global(.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside)) {
   color: #fff;
   background-color: #6bac43;
-  border-radius: 50%;
 }
