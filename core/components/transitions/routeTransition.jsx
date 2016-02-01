@@ -1,10 +1,10 @@
 import React from 'react';
-import { TransitionMotion, spring } from 'react-motion';
+import { TransitionMotion, spring, presets } from 'react-motion';
 
 export default function RouteTransition({children, pathname}) {
 
-  const farLeft = -100
-  const farRight = 100
+  const farLeft = -50
+  const farRight = 50
 
   const lastPart = () => {
     const pathParts = pathname.split("/");
@@ -21,15 +21,15 @@ export default function RouteTransition({children, pathname}) {
     const isNum = Number(lastPart()) > 0;
 
     if (action === "enter") {
-      return isNum ? spring(farRight) : spring(farLeft)
+      return isNum ? spring(farRight, presets.stiff) : spring(farLeft, presets.stiff)
     }
     else if (action === "leave") {
-      return isNum ? spring(farLeft) : spring(farRight)
+      return isNum ? spring(farLeft, presets.stiff) : spring(farRight, presets.stiff)
     }
   }
 
-  const willEnter = children => ({children, opacity: spring(0), translate: getDirection("enter", pathname)})
-  const willLeave = (key, {children}) => ({children, opacity: spring(0), translate: getDirection("leave", pathname)})
+  const willEnter = children => ({children, opacity: spring(1), translate: getDirection("enter", pathname)})
+  const willLeave = (key, {children}) => ({children, opacity: spring(0, presets.stiff), translate: getDirection("leave", pathname)})
   const getStyles = (children, pathname) => ({[pathname]: {children, opacity: spring(1), translate: spring(0)}})
 
   return (
@@ -44,12 +44,14 @@ export default function RouteTransition({children, pathname}) {
             <div
               key={`${key}-transition`}
               style={{
+                "-webkit-backface-visibility": "hidden",
+                "-webkit-perspective": 1000,
                 position: "absolute",
                 width: "100%",
                 minHeight: "100%",
                 paddingBottom: "60px",
                 opacity: interpolated[key].opacity,
-                transform: `translate(${interpolated[key].translate}%)`
+                transform: `translate3d(${interpolated[key].translate}%, 0, 0)`
               }}
             >
               {interpolated[key].children}
