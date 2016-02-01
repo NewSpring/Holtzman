@@ -28,8 +28,8 @@ export default function RouteTransition({children, pathname}) {
     }
   }
 
-  const willEnter = children => ({children, opacity: spring(1), translate: getDirection("enter", pathname)})
-  const willLeave = (key, {children}) => ({children, opacity: spring(0, presets.stiff), translate: getDirection("leave", pathname)})
+  const willEnter = children => ({children, opacity: spring(0), translate: getDirection("enter", pathname)})
+  const willLeave = (key, {children}) => ({children, opacity: spring(0), translate: getDirection("leave", pathname)})
   const getStyles = (children, pathname) => ({[pathname]: {children, opacity: spring(1), translate: spring(0)}})
 
   return (
