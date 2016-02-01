@@ -128,7 +128,7 @@ export default class GiveNow extends Component {
       text = this.props.text
     }
 
-    if (this.props.savedAccount.id) {
+    if (this.props.savedAccount.id && !this.props.hideCard) {
       const details = this.props.savedAccount
       let { accountNumber } = details.payment
       accountNumber = accountNumber.slice(-4).trim()
@@ -147,7 +147,7 @@ export default class GiveNow extends Component {
 
   icon = () => {
 
-    if (this.props.savedAccount && this.props.authorized) {
+    if (this.props.savedAccount && this.props.authorized && !this.props.hideCard) {
       const detail = this.props.savedAccount.payment
 
       if (details.FinancialPaymentDetail.CurrencyTypeValue &&
@@ -173,7 +173,7 @@ export default class GiveNow extends Component {
   render () {
 
     return (
-      <div>
+      <span>
         <PrimaryButton
           disabled={this.props.disabled}
           classes={this.props.theme || this.buttonClasses()}
@@ -181,6 +181,7 @@ export default class GiveNow extends Component {
           text={this.buttonText()}
           onClick={this.onClick}
           value={this.props.value}
+          style={this.props.style || {}}
         />
         {() => {
           if (!this.data.authorized) {
@@ -204,7 +205,7 @@ export default class GiveNow extends Component {
           }
         }()}
 
-      </div>
+      </span>
 
     )
   }

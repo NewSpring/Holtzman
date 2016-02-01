@@ -67,15 +67,17 @@ export default class Layout extends Component {
     mobile={false}>
         </Right>
 
-        <Left scroll={true} ref="container">
-          <div className="constrain-copy soft-double-sides@lap-and-up soft-double-top@lap-and-up">
-            <div className="soft soft-double-top hard-left@lap-and-up soft-half-bottom">
+        <Left scroll={true} ref="container" classes={["background--light-secondary"]}>
+
+
+          <div className="soft-double-sides@lap-and-up soft-ends@lap-and-up background--light-primary">
+            <div className="soft soft-double-ends hard-left@lap-and-up">
               <h2 className="flush hard">Giving History</h2>
             </div>
           </div>
 
 
-          <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top" ref="history">
+          <div className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable" ref="history">
             {() => {
 
               if (!alive) {
@@ -114,7 +116,7 @@ export default class Layout extends Component {
                   }
 
                   return (
-                    <div key={i} className="soft-ends push-half-ends hard-sides outlined--light outlined--bottom constrain-mobile">
+                    <div key={i} className="soft card">
 
                       <Link to={`/give/history/${transaction.Id}/${transactionDetail.Account.Id}`}>
 
