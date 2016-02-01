@@ -97,6 +97,13 @@ export default class Details extends Component {
     const id = Number(this.props.params.id)
     let transaction = this.props.transactions[id]
 
-    return <Layout stop={this.stop} schedule={transaction} state={this.state} />
+    return (
+      <Layout
+        stop={this.stop}
+        schedule={transaction}
+        state={this.state}
+        person={this.props.person}
+      />
+    )
   }
 }
