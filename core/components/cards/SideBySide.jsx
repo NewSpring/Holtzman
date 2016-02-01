@@ -1,10 +1,6 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 
-import { ImageLoader } from "../loading"
-
-import Styles from "../loading/FeedItemSkeleton.css"
-
 export default class Card extends Component {
 
   static propTypes = {
@@ -19,8 +15,12 @@ export default class Card extends Component {
     let classes = [
       "card__item",
       "soft",
-      "text-center",
-      "soft-double-ends"
+      "text-left",
+      "soft-double-ends@handheld",
+      "soft-double@anchored",
+      "one-whole",
+      "three-fifths@lap-wide",
+      "one-half@anchored",
     ];
 
     if (this.props.itemClasses) {
@@ -54,24 +54,6 @@ export default class Card extends Component {
     return defaultStyles
   }
 
-  // context from ImageLoader
-  preloader() {
-    return (
-      <div className={`${this.imageclasses.join(" ")} ${Styles["load-item"]}`}>
-        <div className="ratio__item"></div>
-      </div>
-    );
-  }
-
-  // context from ImageLoader
-  renderElement() {
-    return (
-      <div className={this.imageclasses.join(" ")} style={this.style}>
-        <div className="ratio__item"></div>
-      </div>
-    );
-  }
-
   createImage = () => {
 
     const { image } = this.props
@@ -80,8 +62,8 @@ export default class Card extends Component {
       let imageclasses = [
         "background--fill",
         "card__image",
-        "background-light-tertiary"
-
+        "locked-ends",
+        "locked-sides"
       ]
 
       if (image.ratio) {
@@ -98,13 +80,9 @@ export default class Card extends Component {
       }
 
       return (
-        <ImageLoader
-          src={image.url}
-          preloader={this.preloader}
-          renderElement={this.renderElement}
-          imageclasses={imageclasses}
-          style={style}
-        />
+        <div className={imageclasses.join(" ")} style={style}>
+          <div className="ratio__item"></div>
+        </div>
       )
     }
   }
@@ -127,7 +105,7 @@ export default class Card extends Component {
       }
     }
 
-    let wrapperClasses = "plain"
+    let wrapperClasses = "plain visuallyhidden@handheld visuallyhidden@lap locked-ends locked-right one-whole@handheld two-fifths@lap-wide one-half@anchored"
     if (this.props.mobile ===  false) {
       wrapperClasses += " visuallyhidden@handheld"
     }
@@ -136,7 +114,6 @@ export default class Card extends Component {
         className={theme || this.cardClasses()}
         style={styles || this.styles() }
         >
-
         <Wrapper className={wrapperClasses} to={link}>
           {this.createImage()}
         </Wrapper>
