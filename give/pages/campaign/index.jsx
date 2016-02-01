@@ -16,7 +16,7 @@ function getAccounts(name, dispatch){
 
   let query = `
     {
-      account: financialAccount(name: "${name}") {
+      account: financialAccount(id: "${name}", cache: false) {
         description
         name
         id

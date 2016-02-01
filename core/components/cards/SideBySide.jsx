@@ -15,8 +15,12 @@ export default class Card extends Component {
     let classes = [
       "card__item",
       "soft",
-      "text-center",
-      "soft-double-ends"
+      "text-left",
+      "soft-double-ends@handheld",
+      "soft-double@anchored",
+      "one-whole",
+      "three-fifths@lap-wide",
+      "one-half@anchored",
     ];
 
     if (this.props.itemClasses) {
@@ -57,7 +61,9 @@ export default class Card extends Component {
     if (image) {
       let imageclasses = [
         "background--fill",
-        "card__image"
+        "card__image",
+        "locked-ends",
+        "locked-sides"
       ]
 
       if (image.ratio) {
@@ -99,7 +105,7 @@ export default class Card extends Component {
       }
     }
 
-    let wrapperClasses = "plain"
+    let wrapperClasses = "plain visuallyhidden@handheld visuallyhidden@lap locked-ends locked-right one-whole@handheld two-fifths@lap-wide one-half@anchored"
     if (this.props.mobile ===  false) {
       wrapperClasses += " visuallyhidden@handheld"
     }
@@ -108,7 +114,6 @@ export default class Card extends Component {
         className={theme || this.cardClasses()}
         style={styles || this.styles() }
         >
-
         <Wrapper className={wrapperClasses} to={link}>
           {this.createImage()}
         </Wrapper>
