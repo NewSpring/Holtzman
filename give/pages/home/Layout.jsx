@@ -73,7 +73,9 @@ const Layout = ({ alive, accounts }) => (
                   }}
                   mobile={false}
                 >
-                  <h4 className="push-half-top@portable push-top@anchored">{account.name}</h4>
+                  <h4 className="push-half-top@portable push-top@anchored">
+                    {account.name}
+                  </h4>
                   <p>
                     <small>
                       {account.summary}
