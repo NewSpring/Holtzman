@@ -5,8 +5,9 @@ import { Accounts } from "../icons"
 
 const AccountType = ({ width, height, type }) => {
 
+  let bottom = Number(height) / 10
   let style = {
-    marginBottom: "-3px",
+    marginBottom: `-${bottom}px`,
     marginRight: "-6px",
     marginLeft: "6px"
   }
@@ -23,7 +24,7 @@ const AccountType = ({ width, height, type }) => {
   height || (height = 40)
 
   let Icon = Accounts[type]
-  return <Icon width={width} height={height} />
+  return <Icon width={width} height={height} style={style} />
 }
 
 AccountType.propTypes = {
