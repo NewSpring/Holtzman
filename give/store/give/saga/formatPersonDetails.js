@@ -22,7 +22,7 @@ const formatPersonDetails = (give) => {
 
   if (Object.keys(schedules).length) {
     // @TODO allow custom start dates
-    joinedData["start-date"] = Moment().add(1, 'days').format("YYYYMMDD")
+    joinedData["start-date"] = Moment().add(1, "days").format("YYYYMMDD")
     // @TODO allow number of payments
     joinedData.plan = {
       payments: 0,
