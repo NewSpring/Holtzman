@@ -53,6 +53,6 @@
     "velocity-animate": "^1.2.3",
     "velocity-react": "^1.1.1",
     "xml2js": "^0.4.15",
-    "react-motion": "^0.3.1"
+    "react-motion": "^0.4.2"
   }
 }
