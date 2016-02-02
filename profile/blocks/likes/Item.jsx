@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react"
-
+import Moment from "moment"
 import { Link } from "react-router"
 
 export default class LikesItem extends Component {
@@ -15,13 +15,13 @@ export default class LikesItem extends Component {
   getDate(entry) {
     let date = entry.date;
 
-    let time = moment(new Date(date));
+    let time = Moment(new Date(date));
     let currentTime = new Date();
 
     if (date.getUTCFullYear() === currentTime.getUTCFullYear())
-      return moment(time).format("MMM D")
+      return Moment(time).format("MMM D")
     else
-      return moment(time).format("MMM D, YYYY")
+      return Moment(time).format("MMM D, YYYY")
   }
 
   iconClasses = `${this.props.like.icon} soft-half-right`
