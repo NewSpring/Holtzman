@@ -3,18 +3,13 @@ import { TransitionMotion, spring, presets } from 'react-motion';
 
 export default function RouteTransition({children, pathname}) {
 
-  const farLeft = -50
-  const farRight = 50
+  const farLeft = -20
+  const farRight = 20
 
   const lastPart = () => {
     const pathParts = pathname.split("/");
     return pathParts[pathParts.length - 1];
   }
-
-  // const noAnimate = () => {
-  //   const noAnimate = ["", "series", "articles", "devotions", "stories", "music", "profile"]
-  //   return noAnimate.indexOf(lastPart())
-  // }
 
   const getDirection = (action, pathname) => {
 
@@ -28,9 +23,31 @@ export default function RouteTransition({children, pathname}) {
     }
   }
 
-  const willEnter = children => ({children, opacity: spring(0), translate: getDirection("enter", pathname)})
-  const willLeave = (key, {children}) => ({children, opacity: spring(0), translate: getDirection("leave", pathname)})
-  const getStyles = (children, pathname) => ({[pathname]: {children, opacity: spring(1), translate: spring(0)}})
+  const willEnter = children => {
+    return {
+      children,
+      opacity: spring(0),
+      translate: getDirection("enter", pathname)
+    }
+  };
+
+  const willLeave = (key, {children}) => {
+    return {
+      children,
+      opacity: spring(0),
+      translate: getDirection("leave", pathname)
+    }
+  };
+
+  const getStyles = (children, pathname) => {
+    return {
+      [pathname]: {
+        children,
+        opacity: spring(1),
+        translate: spring(0)
+      }
+    }
+  };
 
   return (
     <TransitionMotion
@@ -44,8 +61,8 @@ export default function RouteTransition({children, pathname}) {
             <div
               key={`${key}-transition`}
               style={{
-                "-webkit-backface-visibility": "hidden",
-                "-webkit-perspective": 1000,
+                WebkitBackfaceVisibility: "hidden",
+                WebkitPerspective: 1000,
                 position: "absolute",
                 width: "100%",
                 minHeight: "100%",
