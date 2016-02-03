@@ -307,12 +307,16 @@ function* recoverTransactions(getStore) {
     }
 
     let store = getStore()
+    let time = new Date()
+    if (user && user.profile && user.profile.reminderDate) {
+      time = user.profile.reminderDate
+    }
     let now = new Date()
 
     yield put(actions.saveSchedules(bulkUpdate))
 
     // only update the store if it is past the reminder date
-    if (store.give.reminderDate && (now < store.give.reminderDate)) {
+    if (now < time) {
       return
     }
 
