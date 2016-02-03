@@ -19,6 +19,12 @@ export default class RecoverSchedules extends Component {
     state: "default", // default, remind, later
   }
 
+  back = (e) => {
+    e.preventDefault()
+
+    this.setState({state: "default"})
+  }
+
   onRemind = (e) => {
     e.preventDefault()
 
@@ -75,6 +81,7 @@ export default class RecoverSchedules extends Component {
         <Remind
           onSubmit={this.onRemind}
           onChange={this.onFrequencyChange}
+          back={this.back}
         />
       )
     }
