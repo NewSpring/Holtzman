@@ -1,5 +1,6 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
+import Meta from "react-helmet"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import { Toggle } from "../../../core/components/controls"
@@ -12,6 +13,11 @@ const SettingsLink = () => (
 
 const Layout = ({ photo, person, onToggle, content }) => (
   <Split nav={true}>
+
+    <Meta
+      title={`${person.nickName} ${person.lastName}`}
+      titleTemplate="%s | NewSpring Church"
+    />
 
     <Right
       mobile={true}
