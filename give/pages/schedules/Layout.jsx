@@ -1,7 +1,7 @@
 
 import { Component, PropTypes} from "react"
 import ReactDom from "react-dom"
-
+import Meta from "react-helmet"
 import Moment from "moment"
 import { Link } from "react-router"
 
@@ -60,6 +60,12 @@ export default class Layout extends Component {
     return (
 
       <Split nav={true} >
+
+        <Meta
+          title="Reccuring Giving"
+          titleTemplate="%s | NewSpring Church"
+        />
+
         <Right
           background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"
           mobile={false}>
