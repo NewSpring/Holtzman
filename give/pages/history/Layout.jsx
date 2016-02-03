@@ -2,6 +2,7 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import ReactDom from "react-dom"
+import Meta from "react-helmet"
 import Moment from "moment"
 
 import { Spinner } from "../../../core/components/loading"
@@ -63,6 +64,11 @@ export default class Layout extends Component {
 
     return (
       <Split nav={true} >
+        <Meta
+          title="Giving History"
+          titleTemplate="%s | NewSpring Church"
+        />
+
         <Right background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg"
     mobile={false}>
         </Right>

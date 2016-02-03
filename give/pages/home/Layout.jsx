@@ -1,5 +1,6 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
+import Meta from "react-helmet"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import SideBySide from "../../../core/components/cards/SideBySide"
@@ -10,6 +11,11 @@ import { AddToCart } from "../../blocks"
 
 const Layout = ({ alive, accounts }) => (
   <Split nav={true}>
+
+    <Meta
+      title="Give"
+      titleTemplate="%s | NewSpring Church"
+    />
 
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg">
