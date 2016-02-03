@@ -157,7 +157,7 @@ export default class Template extends Component {
   }
 
   cancel = (e) => {
-    const { dataset } = e.target
+    const { dataset } = e.currentTarget
     const { id } = dataset
     const { dispatch } = this.props
 
