@@ -6,6 +6,7 @@ import Loading from "./loading"
 import Map from "./map"
 import Icons from "./icons"
 import States from "./states"
+import Transitions from "./transitions"
 
 export default {
   Card,
@@ -14,5 +15,6 @@ export default {
   Loading,
   Map,
   Icons,
-  States
+  States,
+  Transitions
 }
