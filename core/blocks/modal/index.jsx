@@ -68,6 +68,8 @@ export default class SideModalContainer extends Component {
 
     const { visible, content, props } = this.props.modal
 
+    if (typeof window != "undefined")
+
     return (
       <Motion defaultStyle={{opacity: 0}} style={{opacity: spring(1, presets.wobbly)}}>
         {interpolatingStyle => (
