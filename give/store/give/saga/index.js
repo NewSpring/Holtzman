@@ -358,6 +358,20 @@ addSaga(function* watchRoute(getStore){
 
   }
 
+})
 
+
+// clear out data on user change
+addSaga(function* bindGiveAuth(geStore){
+
+  while (true) {
+
+    const { authorized } = yield take("ONBOARD.IS_AUTHORIZED")
+
+    if (!authorized) {
+      yield put(actions.clearData())
+    }
+
+  }
 
 })

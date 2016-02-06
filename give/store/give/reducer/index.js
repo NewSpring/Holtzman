@@ -10,7 +10,7 @@ import types from "../types"
 
 import { progress } from "./progress"
 import { savedAccount } from "./savedAccounts"
-import { addTransaction, clearTransactions } from "./transactions"
+import { addTransaction, clearTransaction, clearTransactions } from "./transactions"
 import { setRecoverableSchedules, deleteRecoverableSchedule } from "./scheduledTransactions"
 
 const initial = {
@@ -95,6 +95,7 @@ export default createReducer(initial, {
   [types.SET_SAVED_ACCOUNT]: savedAccount,
 
   [types.ADD_TRANSACTION]: addTransaction,
+  [types.CLEAR_TRANSACTION]: clearTransaction,
   [types.CLEAR_TRANSACTIONS]: clearTransactions,
 
   [types.SET_RECOVERABLE_SCHEDULES]: setRecoverableSchedules,

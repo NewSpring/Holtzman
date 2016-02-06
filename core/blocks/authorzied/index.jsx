@@ -1,6 +1,7 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
+import { routeActions } from "react-router-redux"
 
 import { GraphQL } from "./../../graphql"
 
@@ -22,6 +23,10 @@ export default class Authorized extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+
+    if (this.props.modal.visible && !nextProps.modal.visible && !nextProps.auth) {
+      this.props.dispatch(routeActions.push("/"))
+    }
 
     if (this.props.auth && !nextProps.auth) {
       this.props.dispatch(modal.render(OnBoard))

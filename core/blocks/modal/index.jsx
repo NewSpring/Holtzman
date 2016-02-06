@@ -1,7 +1,6 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
-
-import { VelocityTransitionGroup } from "velocity-react"
+import { Motion, spring, presets } from "react-motion";
 
 import { modal as modalActions, nav as navActions } from "../../store"
 
@@ -69,21 +68,22 @@ export default class SideModalContainer extends Component {
 
     const { visible, content, props } = this.props.modal
 
+    if (typeof window != "undefined")
+
     return (
-      <VelocityTransitionGroup
-        enter={{ animation: enter, duration: 250 }}
-        leave={{ animation: exit, duration: 250 }}
-      >
+      <Motion defaultStyle={{opacity: 0}} style={{opacity: spring(1, presets.wobbly)}}>
+        {interpolatingStyle => (
+          <Modal
+            close={this.close}
+            component={content}
+            props={props}
+            visible={visible}
+            style={interpolatingStyle}
+            {...this.props}
+          />
+        )}
+      </Motion>
 
-        <Modal
-          close={this.close}
-          component={content}
-          props={props}
-          visible={visible}
-          {...this.props}
-        />
-
-      </VelocityTransitionGroup>
     )
   }
 }
