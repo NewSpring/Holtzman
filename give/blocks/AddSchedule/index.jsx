@@ -158,7 +158,10 @@ export default class CartContainer extends Component {
       }
     ]
 
-    let mappedAccounts = this.props.accounts.map((x) => ({
+    let mappedAccounts = this.props.accounts.filter((x) => {
+      return x.description && x.image
+      // return true
+    }).map((x) => ({
       value: x.id,
       label: x.name
     }))
@@ -166,8 +169,6 @@ export default class CartContainer extends Component {
     if (!mappedAccounts.length) {
       return null
     }
-
-    console.log(mappedAccounts)
 
     return (
       <Layout
