@@ -4,7 +4,7 @@ import { Link } from "react-router"
 import ReactMixin from "react-mixin"
 import Moment from "moment"
 import { VelocityComponent } from "velocity-react"
-import { pushPath } from "redux-simple-router"
+// import { pushPath } from "redux-simple-router"
 
 import { Forms } from "../../../../core/components"
 import { WindowLoading, Spinner } from "../../../../core/components/loading"
