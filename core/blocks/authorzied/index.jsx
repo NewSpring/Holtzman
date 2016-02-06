@@ -1,6 +1,7 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
+import { routeActions } from "react-router-redux"
 
 import { onBoard as onBoardActions, modal } from "../../store"
 import OnBoard from "../onBoard"
@@ -47,7 +48,12 @@ export default class Authorized extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.auth) {
+
+    if (this.props.modal.visible && !nextProps.modal.visible && !nextProps.auth) {
+      this.props.dispatch(routeActions.push("/"))
+    }
+
+    if (this.props.auth && !nextProps.auth) {
       this.props.dispatch(modal.render(OnBoard))
     }
 

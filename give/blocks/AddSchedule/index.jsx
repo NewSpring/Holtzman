@@ -158,16 +158,16 @@ export default class CartContainer extends Component {
       }
     ]
 
-    let mappedAccounts = this.props.accounts.map((account) => {
-      return {
-        value: account.id,
-        label: account.name
-      }
-    })
+    let mappedAccounts = this.props.accounts.map((x) => ({
+      value: x.id,
+      label: x.name
+    }))
 
     if (!mappedAccounts.length) {
       return null
     }
+
+    console.log(mappedAccounts)
 
     return (
       <Layout

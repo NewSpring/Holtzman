@@ -21,8 +21,8 @@ const Layout = ({ alive, accounts }) => (
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg">
     </Right>
 
-    <Left scroll={true} classes={["background--light-secondary"]}>
-      <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+    <Left scroll={true} classes={["background--light-secondary"]} >
+      <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{overflow: "visible"}}>
 
         <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
           <div className="soft-double-ends@anchored">

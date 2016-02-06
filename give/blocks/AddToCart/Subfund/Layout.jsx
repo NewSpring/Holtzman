@@ -16,7 +16,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format }) => (
       hideLabel={true}
       classes={["soft-bottom", "display-inline-block"]}
       inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
-      placeholder="select campaign"
+      placeholder="select fund"
       onChange={showInputs}
       includeBlank={true}
     />
@@ -38,6 +38,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format }) => (
               placeholder="$0.00"
               format={format}
               defaultValue={preFill(state.id)}
+              style={{maxWidth: "150px"}}
             />
           </div>
         )
