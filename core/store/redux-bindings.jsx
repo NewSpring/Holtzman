@@ -2,7 +2,7 @@ import "regenerator/runtime"
 
 import { Component, PropTypes} from "react"
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
-import { syncReduxAndRouter, routeReducer } from "redux-simple-router"
+import { syncHistory, routeReducer } from "react-router-redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 import sagaMiddleware from "redux-saga"
@@ -23,8 +23,9 @@ const createReduxStore = (initialState, history) => {
     thunk
   ], ...middlewares]
 
+  const reduxRouterMiddleware = syncHistory(history)
   let sharedCompose = [
-    applyMiddleware(...sharedMiddlewares, sagaMiddleware(...convertedSagas)),
+    applyMiddleware(...sharedMiddlewares, sagaMiddleware(...convertedSagas), reduxRouterMiddleware),
   ]
 
 
@@ -36,7 +37,7 @@ const createReduxStore = (initialState, history) => {
   }
 
   const store = compose(...sharedCompose)(createStore)(combineReducers(joinedReducers), initialState)
-  syncReduxAndRouter(history, store)
+
 
   return store
 

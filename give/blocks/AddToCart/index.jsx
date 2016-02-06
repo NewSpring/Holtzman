@@ -6,9 +6,9 @@ import { Forms, Loading } from "../../../core/components"
 
 import { give as giveActions } from "../../store"
 
-import GiveNow from "../ActionButtons"
 
 import Layout from "./Layout"
+import Square from "./Square"
 
 
 // We only care about the give state
@@ -101,7 +101,7 @@ export default class CartContainer extends Component {
     const { total, transactions } = this.props.give
 
     if (transactions[id] && transactions[id].value) {
-      return transactions[id].value
+      return `$${transactions[id].value}`
     }
 
     return null
@@ -112,40 +112,30 @@ export default class CartContainer extends Component {
 
     const { total, transactions } = this.props.give
 
-    let primaryAccount = {}
-    let remainingAccounts = []
-    let otherAccounts = []
+    let accounts = this.props.accounts.filter((x) => {
+      // return x.description && x.image
+      return true
+    }).map((x) => ({
+      label: x.name,
+      value: x.id
+    }))
 
-    if (this.props.accounts.length) {
+    /*
 
-      for (let account of this.props.accounts) {
-        if (account.order === 0 && !Object.keys(primaryAccount).length){
-          primaryAccount = account
-          continue
-        }
+      The primary instance of the subfund selector gets an overall copy of
+      the entire accounts list. Then each new instance gets a copy of the
+      previous list minus the selected account.
 
-        otherAccounts.push(account)
-
-        if (transactions[account.id]) {
-          continue
-        }
-
-        remainingAccounts.push(account)
-      }
-    }
-
-
+    */
     return (
       <Layout
-        accounts={this.props.accounts}
-        primary={primaryAccount}
+        accounts={accounts}
         save={this.saveData}
         monentize={this.monentize}
         format={this.format}
         preFill={this.preFillValue}
         total={total}
         transactions={{...this.props.give.transactions}}
-        otherAccounts={otherAccounts}
       />
 
     )
