@@ -9,6 +9,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format }) => (
       className={`display-inline-block push-half-bottom h3 push-half-right ${classes}`}>
       and give to
     </div>
+
     <Forms.Select
       items={accounts}
       name="select-account"

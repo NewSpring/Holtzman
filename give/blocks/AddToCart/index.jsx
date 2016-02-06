@@ -68,7 +68,9 @@ export default class CartContainer extends Component {
 
   componentWillMount() {
 
-    if (typeof window != undefined && window != null) {
+    this.props.clearTransactions()
+
+    if (typeof window != "undefined" && window != null) {
       let match,
           pl     = /\+/g,  // Regex for replacing addition symbol with a space
           search = /([^&=]+)=?([^&]*)/g,
@@ -113,8 +115,8 @@ export default class CartContainer extends Component {
     const { total, transactions } = this.props.give
 
     let accounts = this.props.accounts.filter((x) => {
-      // return x.description && x.image
-      return true
+      return x.description && x.image
+      // return true
     }).map((x) => ({
       label: x.name,
       value: x.id

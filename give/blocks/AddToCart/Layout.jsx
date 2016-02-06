@@ -98,7 +98,7 @@ export default class Layout extends Component {
 
           <div className="display-inline-block">
             {accountsCount.map((key) => {
-              console.table(this.state)
+
               let instanceAccounts = this.state.instances.map((x) => {
                 return x.accountId
               })
@@ -129,7 +129,6 @@ export default class Layout extends Component {
                   />
                 )
               }
-
 
               return (
                 <SubFund

@@ -26,17 +26,30 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format }) => (
       to
     </h3>
 
-    <Forms.Select
-      items={accounts}
-      name="select-account"
-      id={`${state.id}_select`}
-      hideLabel={true}
-      classes={["soft-bottom", "display-inline-block"]}
-      inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
-      placeholder="select fund"
-      onChange={saveFund}
-      defaultValue={accounts[0].value}
-    />
+    {(() => {
+      if (accounts.length > 1) {
+        return (
+          <Forms.Select
+            items={accounts}
+            name="select-account"
+            id={`${state.id}_select`}
+            hideLabel={true}
+            classes={["soft-bottom", "display-inline-block"]}
+            inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
+            placeholder="select fund"
+            onChange={saveFund}
+            defaultValue={accounts[0].value}
+          />
+        )
+      }
+
+      return (
+        <h3 className="text-dark-primary display-inline-block push-half-bottom push-half-right">
+          {accounts[0].label}
+        </h3>
+      )
+    })()}
+
 
   </div>
 )
