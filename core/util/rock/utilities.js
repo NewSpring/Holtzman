@@ -1,6 +1,7 @@
 /*global _, Meteor */
 
 import Error from "../error"
+import { makeNewGuid } from "./../guid"
 
 const api = {
   _: {}
@@ -12,6 +13,28 @@ api.registerEndpoint = (obj) => {
     api._ = obj
 
     if (Meteor.isServer) {
+
+      let { ROOT_URL } = __meteor_runtime_config__
+      let current = api.get.sync(`DefinedValues?$filter=Value eq '${ROOT_URL}'`)
+
+      if (!current.length) {
+        let DefinedValue = {
+          IsSystem: true,
+          Order: 0,
+          DefinedTypeId: 12,
+          Value: ROOT_URL,
+          Description: `Application at ${ROOT_URL}`,
+          Guid: makeNewGuid()
+        }
+        current = api.post.sync("DefinedValues", DefinedValue)
+        current = [{
+          Id: current
+        }]
+      }
+
+      api._.rockId = current[0].Id
+      console.log(api._)
+
       if (typeof serverWatch != "undefined") {
         // If Rock is being watched (aka old states), remove watching
         if (serverWatch.getKeys().indexOf("ROCK") != -1) {
