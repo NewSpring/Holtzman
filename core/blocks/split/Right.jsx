@@ -77,6 +77,7 @@ export default class Right extends Component {
   preloader() {
     return (
       <section className={`${this.imageclasses.join(" ")} ${Styles["load-item"]}`}>
+        {this.children}
       </section>
     );
   }
@@ -85,6 +86,7 @@ export default class Right extends Component {
   renderElement() {
     return (
       <section className={this.imageclasses.join(" ")} style={this.style}>
+        {this.children}
       </section>
     );
   }
