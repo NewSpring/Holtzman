@@ -27,7 +27,7 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format }) => (
     </h3>
 
     {(() => {
-      if (accounts.length > 1) {
+      // if (accounts.length > 1) {
         return (
           <Forms.Select
             items={accounts}
@@ -41,7 +41,7 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format }) => (
             defaultValue={accounts[0].value}
           />
         )
-      }
+      // }
 
       return (
         <h3 className="text-dark-primary display-inline-block push-half-bottom push-half-right">
