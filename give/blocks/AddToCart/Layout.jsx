@@ -62,14 +62,14 @@ export default class Layout extends Component {
   }
 
   remove = (key, value) => {
-
+    // console.log(key, value, this.state.instances)
     let newInstances = this.state.instances.filter((x) => {
       return x.id != key
     })
-
-    this.setState({
-      instances: newInstances
-    })
+    // console.log(newInstances)
+    // this.setState({
+    //   instances: newInstances
+    // })
   }
 
   render () {
@@ -87,6 +87,8 @@ export default class Layout extends Component {
     for (let i = 0; i < this.state.SubFundInstances; i++) {
       accountsCount.push(i)
     }
+
+    // console.log(this.state.instances.length, accountsCount.length)
 
     return (
       <div className="push-top@handheld soft-half-top@lap-and-up">
