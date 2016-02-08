@@ -2,9 +2,9 @@ const Future = Npm.require("fibers/future");
 
 
 Meteor.methods({
-  'graphql.transport': function(query, vars, operationName) {
+  'graphql.transport': function(query, variables, operationName) {
     check(query, String);
-    check(vars, Match.OneOf(Object, undefined, null));
+    check(variables, Match.OneOf(Object, undefined, null));
     check(operationName, Match.OneOf(String, undefined, null));
 
     variables = {...variables, ...{
