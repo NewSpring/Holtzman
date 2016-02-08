@@ -12,6 +12,8 @@ import {
   campuses as campusActions,
 } from "../../store"
 
+import { GraphQL } from "../../graphql"
+
 
 const bindMeteorPerson = (props) => {
   const { dispatch } = props
