@@ -1,5 +1,6 @@
 import { PropTypes } from "react"
 import { Link } from "react-router"
+import Meta from "react-helmet"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 
@@ -12,6 +13,11 @@ const Close = () => (
 const Layout = ({ photo, person, children }) => (
   <Split nav={true}>
 
+    <Meta
+      title={`${person.nickName} ${person.lastName}`}
+      titleTemplate="%s | NewSpring Church"
+    />
+  
     <Right
       mobile={false}
       classes={["floating", "overlay--solid-dark"]}
@@ -25,8 +31,8 @@ const Layout = ({ photo, person, children }) => (
           className="background--fill ratio--square round two-fifths display-inline-block"
           style={{ backgroundImage: `url(${photo})`}}
         ></div>
-      <h4 className="text-light-primary soft-half-top flush-bottom">{person.NickName || person.FirstName} {person.LastName}</h4>
-        <p className="text-light-primary flush"><em>{person.Home.City}</em></p>
+      <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName || person.firstName} {person.lastName}</h4>
+        <p className="text-light-primary flush"><em>{person.home.city}</em></p>
       </div>
 
     </Right>

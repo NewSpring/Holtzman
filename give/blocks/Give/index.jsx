@@ -1,13 +1,16 @@
 import { Component, PropTypes} from "react"
 import ReactDom from "react-dom"
 import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
 import Moment from "moment"
 
+import { GraphQL } from "../../../core/graphql"
 import { Controls, Forms } from "../../../core/components"
 import { OnBoard } from "../../../core/blocks"
-import { modal } from "../../../core/store"
-import { Campuses } from "../../../core/collections"
+import {
+  modal,
+  campuses as campusActions,
+  collections as collectionActions
+ } from "../../../core/store"
 
 
 import { give as giveActions } from "../../store"
@@ -19,92 +22,83 @@ import Success from "./Success"
 
 
 // We only care about the give state
-const map = (state) => ({ give: state.give, person: state.onBoard.person })
+const map = (state) => ({
+  give: state.give,
+  person: state.onBoard.person,
+  campuses: state.campuses.campuses,
+  states: state.collections.states
+})
 
 @connect(map)
-@ReactMixin.decorate(ReactMeteorData)
 export default class Give extends Component {
-
-  state = {
-    postUrl: null,
-    transactionId: null,
-    state: "default"
-  }
 
   componentWillMount() {
     const { savedAccount } = this.props.give
 
     this.updateData()
 
-    if (!savedAccount) {
+    if (!savedAccount.id) {
       return
     }
 
     this.props.dispatch(giveActions.setProgress(4))
-
-    this.submitPersonalDetails((err, data) => {
-      if (!err || !data.url) {
-        this.setState({ postUrl: data.url, transactionId: data.transactionId})
-        fetch(data.url, {
-          method: "POST",
-          body: new FormData(),
-          mode: "no-cors"
-        })
-        .then((response) => {
-          // next()
-        })
-        .catch((e) => {
-          console.log(e)
-        })
-      } else {
-        err || (err = "Saved payment declined")
-        this.setState({state: "error", err: err})
-      }
-
-    })
-
   }
 
-  getMeteorData() {
-    Meteor.subscribe("campuses")
-    return {
-      campuses: Campuses.find().fetch()
-    }
-  }
 
   componentWillUnmount(){
-    if (this.state != "default") {
+    if (this.props.give.state != "default") {
       this.props.dispatch(giveActions.clearData())
-      // if (this.state.transactionId) {
-      //   Meteor.call("Give.void", this.state.transactionId, (err, response) => {
-      //     console.log(err, reponse)
-      //   })
-      // }
     }
   }
 
+  componentDidMount() {
 
-  updateData= () => {
+    const { dispatch } = this.props
+
+    let query = `
+      {
+        states: allDefinedValues(id: 28) {
+          name: description
+          value
+          id
+        }
+      }
+    `
+
+    GraphQL.query(query)
+      .then(({ states }) => {
+        let stateObj = {}
+
+        for (let state of states) {
+          stateObj[state.id] = state
+        }
+
+        dispatch(collectionActions.insert("states", stateObj))
+
+      })
+  }
+
+  updateData = () => {
 
     const { person } = this.props
 
-    let { Campus, Home } = person
-    Campus || (Campus = {})
-    Home || (Home = {})
+    let { campus, home } = person
+    campus || (campus = {})
+    home || (home = {})
 
     const mappedPerson = {
       personal: {
-        firstName: person.FirstName,
-        lastName: person.LastName,
-        email: person.Email,
-        campus: Campus.Name
+        firstName: person.firstName,
+        lastName: person.lastName,
+        email: person.email,
+        campus: campus.name
       },
       billing: {
-        streetAddress: Home.Street1,
-        streetAddress2: Home.Street2,
-        city: Home.City,
-        state: Home.State,
-        zip: Home.PostalCode
+        streetAddress: home.street1,
+        streetAddress2: home.street2,
+        city: home.city,
+        state: home.state,
+        zip: home.zip
       }
     }
 
@@ -112,6 +106,12 @@ export default class Give extends Component {
 
   }
 
+  onSubmit = (e) => {
+    e.preventDefault()
+    const { dispatch } = this.props
+
+    dispatch(giveActions.submit())
+  }
 
   goBack = (e) => {
     e.preventDefault();
@@ -123,135 +123,12 @@ export default class Give extends Component {
 
   next = (e) => {
     e.preventDefault()
-
-    let next = () => {
-      this.props.dispatch(giveActions.next())
-    }
-
-    if (this.props.give.step === 2) {
-      this.submitPersonalDetails()
-      next()
-      return
-    }
-
-    if (this.props.give.step === 3) {
-      this.submitPaymentDetails(next)
-      return
-    }
-
-    next()
-
+    this.props.dispatch(giveActions.next())
   }
 
   back = (e) => {
     e.preventDefault()
-
     this.props.dispatch(giveActions.previous())
-  }
-
-  submitPersonalDetails = (callback) => {
-    const { data, transactions, total, schedule, savedAccount } = this.props.give
-    let method = "Give.order"
-
-    let joinedData = {
-      amount: total,
-      billing: {
-        "first-name": data.personal.firstName,
-        "last-name": data.personal.lastName,
-        email: data.personal.email,
-        address1: data.billing.streetAddress,
-        address2: data.billing.streetAddress2 || "",
-        city: data.billing.city,
-        state: data.billing.state,
-        postal: data.billing.zip
-      }
-
-    }
-
-    if (schedule.frequency) {
-      joinedData["start-date"] = schedule.start || Moment().add(1, 'days').format("YYYYMMDD")
-      joinedData.plan = {
-        payments: schedule.payments || 0,
-        amount: total
-      }
-      delete joinedData.amount
-
-      switch (schedule.frequency) {
-        case "One Time":
-          joinedData.plan["day-of-month"] = schedule.start ? schedule.start : Moment().date()
-          break;
-        case "Weekly":
-          joinedData.plan["day-frequency"] = 7
-          break;
-        case "Bi-Weekly":
-          joinedData.plan["day-frequency"] = 14
-          break;
-        // case "Twice a Month":
-        //   joinedData.plan["month-frequency"] =
-        //   break;
-        case "Monthly":
-          joinedData.plan["month-frequency"] = 1
-          joinedData.plan["day-of-month"] = schedule.start ? schedule.start : Moment().date()
-          break;
-      }
-
-      for (let transaction in transactions) {
-        joinedData["merchant-defined-field-1"] = transaction
-        break
-      }
-
-    } else {
-
-      joinedData.product = []
-
-      for (let transaction in transactions) {
-        joinedData.product.push({
-          "quantity": 1,
-          "product-code": transaction,
-          description: transactions[transaction].label,
-          "total-amount": transactions[transaction].value
-        })
-      }
-    }
-
-    if (savedAccount) {
-      joinedData.savedAccount = savedAccount
-    }
-
-
-    callback || (callback = (err, data) => {
-      if (!err) {
-        this.setState({ postUrl: data.url, transactionId: data.transactionId})
-      }
-
-    })
-
-
-    Meteor.call(method, joinedData, callback)
-
-  }
-
-  submitPaymentDetails = (callback) => {
-
-    const { postUrl } = this.state
-    const form = ReactDOM.findDOMNode(this.refs["form"])
-
-    fetch(postUrl, {
-      method: "POST",
-      body: new FormData(form),
-      mode: "no-cors"
-    })
-    .then((response) => {
-      // next()
-
-    })
-    .catch((e) => {
-      // @TODO error handling
-    })
-
-    if (callback) {
-      callback()
-    }
   }
 
   monentize = (value, fixed) => {
@@ -274,34 +151,6 @@ export default class Give extends Component {
 
     value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     return `$${value}`
-  }
-
-
-  completePurchase = (e) => {
-    e.preventDefault()
-
-    let token
-    let segments = this.state.postUrl.split("/")
-    token = segments.pop()
-
-
-    this.setState({state: "loading"})
-    let method = "Give.charge"
-
-    if (this.props.give.schedule.frequency) {
-      method = "Give.schedule.charge"
-    }
-
-    Meteor.call(method, token, this.props.give.data.payment.name, (err, response) => {
-
-      console.log(err)
-      if (err) {
-        this.setState({state: "error", err: err})
-        return
-      }
-
-      this.setState({state: "success"})
-    })
   }
 
   goToOnboard = () => {
@@ -328,20 +177,39 @@ export default class Give extends Component {
       transactions,
       total,
       savedAccount,
+      state,
       transactionType
     } = this.props.give
+
+    let campuses = []
+    for (let campus in this.props.campuses) {
+      campuses.push(this.props.campuses[campus])
+    }
+
+    campuses = campuses.map((x) => ({
+      label: x.name,
+      value: x.name
+    }))
+
+    let states = []
+    for (let state in this.props.states) {
+      states.push(this.props.states[state])
+    }
+
+    states = states.map((x) => ({
+      label: x.name,
+      value: x.value
+    }))
 
 
     let save = (...args) => { this.props.dispatch(giveActions.save(...args)) }
     let clear = (...args) => { this.props.dispatch(giveActions.clear(...args)) }
 
-    const { state } = this.state
-
     switch (state) {
       case "loading":
         return <Loading msg="We're Processing Your Gift" />
       case "error":
-        return <Err />
+        return <Err msg={errors[Object.keys(errors)[0]].error} />
       case "success":
         return <Success
           total={this.monentize(total)}
@@ -365,6 +233,7 @@ export default class Give extends Component {
           default:
             Step = Personal
         }
+
         return (
           <Forms.Form
             id="give"
@@ -372,8 +241,7 @@ export default class Give extends Component {
             fieldsetTheme="flush soft-top"
             ref="form"
             method="POST"
-            action={this.state.postUrl}
-            submit={this.completePurchase}
+            submit={this.onSubmit}
           >
 
             <Step
@@ -388,7 +256,8 @@ export default class Give extends Component {
               back={this.back}
               ref="inputs"
               total={total}
-              campuses={this.data.campuses}
+              campuses={campuses}
+              states={states}
             >
               <Controls.Progress
                 steps={4}

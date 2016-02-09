@@ -14,6 +14,7 @@ const initial = {
   authorized: false,
   forgot: false,
   success: false,
+  showWelcome: false,
 
   person: {
     Age: null, // Number
@@ -163,6 +164,14 @@ export default createReducer(initial, {
 
   },
 
+  [types.REMOVE_ERRORS](state, action) {
+
+    return { ...state, ...{
+      errors: {}
+    } }
+
+  },
+
   [types.SET_SUCCESS](state, action) {
 
     if (typeof action.success != "boolean") {
@@ -206,7 +215,15 @@ export default createReducer(initial, {
       authorized: true
     } }
 
-  }
+  },
+
+  [types.SHOW_WELCOME](state, action) {
+
+    return { ...state, ...{
+      showWelcome: true
+    } }
+
+  },
 
 
 })

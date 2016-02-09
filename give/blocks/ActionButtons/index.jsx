@@ -4,6 +4,7 @@ import ReactMixin from "react-mixin"
 
 import { OnBoard } from "../../../core/blocks"
 
+
 // @TODO refactor once giving is converted to sagas
 import {
   modal,
@@ -30,25 +31,31 @@ import { PrimaryButton, SecondaryButton, Guest } from "./Buttons"
   3. Give as guest (in small text) if not signed in
 
 */
-@connect()
-@ReactMixin.decorate(ReactMeteorData)
+const map = (store) => ({
+  authorized: store.onBoard.authorized,
+  savedAccount: store.give.savedAccount
+})
+@connect(map)
 export default class GiveNow extends Component {
 
   getMeteorData() {
     let paymentDetails
 
-    Meteor.subscribe("paymentDetails")
-    let details = PaymentDetails.find().fetch()
-    return {
-      paymentDetails: details[0],
-      authorized: Meteor.user()
+    const id = Meteor.userId()
+    const { dispatch, savedAccount } = this.props
+
+    if (id && !savedAccount.id) {
+      getPaymentDetails(id, dispatch)
+        .then(paymentDetails => {
+          dispatch(giveActions.setAccount(paymentDetails))
+        })
     }
   }
 
   buttonClasses = () => {
     let classes = ["btn"]
 
-    if (this.data.paymentDetails) {
+    if (this.props.savedAccount.id) {
       classes.push("has-card")
     }
 
@@ -62,8 +69,21 @@ export default class GiveNow extends Component {
     return classes.join(" ")
   }
 
-  onClick = () => {
+  renderAfterLogin = () => {
+    this.props.dispatch(modal.render(Give))
+  }
+
+  onClick = (e) => {
     if (this.props.disabled) {
+      return
+    }
+
+    let keepGoing = true
+    if (this.props.onClick) {
+      keepGoing = this.props.onClick(e)
+    }
+
+    if (!keepGoing) {
       return
     }
 
@@ -72,18 +92,14 @@ export default class GiveNow extends Component {
     if (this.data.authorized) {
       this.props.dispatch(modal.render(Give))
     } else {
-      this.props.dispatch(modal.render(OnBoard))
+      this.props.dispatch(modal.render(OnBoard, {
+        onFinished: this.renderAfterLogin
+      }))
 
       this.props.dispatch(onBoardActions.setAccount(true))
     }
 
     this.props.dispatch(navActions.setLevel("MODAL"))
-
-    if (this.data.paymentDetails) {
-      this.props.dispatch(giveActions.setAccount(
-        this.data.paymentDetails.Id
-      ))
-    }
 
   }
 
@@ -93,24 +109,29 @@ export default class GiveNow extends Component {
     }
     this.props.dispatch(giveActions.setTransactionType("guest"))
     this.props.dispatch(modal.render(Give))
-    this.props.dispatch(navActions.setLevel("MODAL"))
+    // this.props.dispatch(navActions.setLevel("MODAL"))
   }
 
   register = () => {
-    this.props.dispatch(modal.render(OnBoard))
     this.props.dispatch(onBoardActions.setAccount(false))
-    this.props.dispatch(navActions.setLevel("MODAL"))
+    this.props.dispatch(modal.render(OnBoard, {
+      onFinished: this.renderAfterLogin
+    }))
+    // this.props.dispatch(navActions.setLevel("MODAL"))
 
   }
 
   buttonText = () => {
 
     let text = "Give Now"
+    if (this.props.text) {
+      text = this.props.text
+    }
 
-    if (this.data.paymentDetails) {
-      const details = this.data.paymentDetails
-      let { AccountNumberMasked } = details.FinancialPaymentDetail
-      AccountNumberMasked = AccountNumberMasked.slice(-4).trim()
+    if (this.props.savedAccount.id && !this.props.hideCard) {
+      const details = this.props.savedAccount
+      let { accountNumber } = details.payment
+      accountNumber = accountNumber.slice(-4).trim()
 
       text += ` using ${AccountNumberMasked}`
 
@@ -126,8 +147,8 @@ export default class GiveNow extends Component {
 
   icon = () => {
 
-    if (this.data.paymentDetails) {
-      const details = this.data.paymentDetails
+    if (this.props.savedAccount && this.props.authorized && !this.props.hideCard) {
+      const detail = this.props.savedAccount.payment
 
       if (details.FinancialPaymentDetail.CurrencyTypeValue &&
         details.FinancialPaymentDetail.CurrencyTypeValue.Description === "Credit Card"
@@ -150,14 +171,17 @@ export default class GiveNow extends Component {
 
 
   render () {
+
     return (
-      <div>
+      <span>
         <PrimaryButton
           disabled={this.props.disabled}
           classes={this.props.theme || this.buttonClasses()}
           icon={this.icon()}
           text={this.buttonText()}
           onClick={this.onClick}
+          value={this.props.value}
+          style={this.props.style || {}}
         />
         {() => {
           if (!this.data.authorized) {
@@ -181,7 +205,7 @@ export default class GiveNow extends Component {
           }
         }()}
 
-      </div>
+      </span>
 
     )
   }

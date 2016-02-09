@@ -1,17 +1,53 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 
+import { Loading, Error } from "../../components/states"
 import onBoardActions from "../../store/onBoard"
+import modalActions from "../../store/modal"
 
-import Loading from "./Loading"
+// import Loading from "./Loading"
 import SignIn from "./Signin"
-import SignOut from "./Signout"
+import Success from "./Success"
 import ForgotPassword from "./ForgotPassword"
 
 // We only care about the onboard state
 const map = (state) => ({ onboard: state.onBoard })
-@connect(map, onBoardActions)
+@connect(map, {...onBoardActions, ...modalActions})
 export default class OnBoardContainer extends Component {
+
+  static propTypes = {
+    back: PropTypes.func,
+    onFinished: PropTypes.func
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // if logged in, go to the next action
+    if (!this.props.onboard.authorized && nextProps.onboard.authorized) {
+      // let the UI show the welcome
+      if (nextProps.onboard.showWelcome) {
+        return
+      }
+
+      // follow up action
+      if (this.props.onFinished) {
+        return this.props.onFinished()
+      }
+
+      // close the modal
+      this.props.hide()
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    const { reset } = this.props
+
+    if (Object.keys(this.props.onboard.errors).length) {
+      setTimeout(() => {
+        reset()
+      }, 2000)
+    }
+
+  }
 
   goBack = (e) => {
     e.preventDefault();
@@ -35,8 +71,8 @@ export default class OnBoardContainer extends Component {
     Meteor.logout()
 
     this.props.authorize(false)
-
   }
+
 
   render () {
 
@@ -46,7 +82,9 @@ export default class OnBoardContainer extends Component {
       state,
       success,
       forgot,
-      authorized
+      authorized,
+      person,
+      showWelcome
     } = this.props.onboard
 
     let account = this.props.onboard.account
@@ -56,12 +94,18 @@ export default class OnBoardContainer extends Component {
     }
 
     if (state === "loading") {
-      return (
-        <Loading
-          account={account}
-          forgot={forgot}
-        />
-      )
+      let msg = account ? "Signing you in..." : "Creating your account..."
+      return <Loading msg={msg} />
+    }
+
+    if (Object.keys(errors).length) {
+      let primaryError;
+      for (let error in errors) {
+        primaryError = errors[error]
+        break
+      }
+
+      return <Error msg={primaryError} />
     }
 
     if (forgot) {
@@ -77,10 +121,11 @@ export default class OnBoardContainer extends Component {
       )
     }
 
-    if (authorized) {
+    if (authorized && showWelcome) {
       return (
-        <SignOut
-          signout={this.signout}
+        <Success
+          person={person}
+          onExit={this.props.hide}
         />
       )
     }

@@ -1,3 +1,4 @@
+
 // stored state for use with other packages
 const reducers = {}
 import Error from "../util/error"
@@ -52,8 +53,9 @@ const addMiddleware = (...newWares) => {
 const sagas = []
 
 const addSaga = (...newSagas) => {
-  for (let sagas of newSagas) { sagass.push(sagas) }
+  for (let saga of newSagas) { sagas.push(() => saga) }
 }
+
 
 
 
@@ -66,5 +68,7 @@ export default {
   reducers,
 
   sagas,
-  addSaga
+  addSaga,
+
+
 }

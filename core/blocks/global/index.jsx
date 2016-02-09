@@ -8,8 +8,11 @@ import { People, Likes } from "../../collections"
 import {
   onBoard as onBoardActions,
   liked as likedActions,
-  topics as topicActions
+  topics as topicActions,
+  campuses as campusActions,
 } from "../../store"
+
+import { GraphQL } from "../../graphql"
 
 
 const bindMeteorPerson = (props) => {
@@ -58,12 +61,112 @@ const App = ({ children, className }) => (
   </div>
 )
 
+
+// @TODO move to saga?
+function getUser(id, dispatch) {
+
+  // this is probably to heavy of a universal call?
+
+  // @TODO figure out caching issues?
+  let personQuery = `
+    {
+      person(mongoId: "${id}", cache: false) {
+        age
+        birthdate
+        birthDay
+        birthMonth
+        birthYear
+        campus {
+          name
+          shortCode
+          id
+        }
+        home {
+          city
+          country
+          id
+          zip
+          state
+          street1
+          street2
+        }
+        firstName
+        lastName
+        nickName
+        email
+        phoneNumbers {
+          number
+          formated
+        }
+        photo
+      }
+    }
+  `
+
+  return GraphQL.query(personQuery)
+    .then(({ person }) => {
+      if (person) {
+        dispatch(onBoardActions.person(person))
+      }
+
+    })
+
+}
+
+function bindLogout(dispatch) {
+  let handle = {}
+
+  Tracker.autorun((computation) => {
+    handle = computation
+    const user = Meteor.userId()
+
+    if (user) {
+      return getUser(user, dispatch)
+    }
+
+    dispatch(onBoardActions.signout())
+
+  })
+
+  return handle
+}
+
+
 @connect()
 export default class Global extends Component {
 
-  componentWillMount(){
-    let { handle, authorized } = bindMeteorPerson(this.props)
-    this.handle = handle
+
+  componentDidMount() {
+    const { dispatch } = this.props
+    const user = Meteor.userId()
+
+    if (!this.handle) {
+      this.handle = bindLogout(dispatch)
+    }
+
+    let query = `
+      {
+        campuses: allCampuses {
+          name
+          shortCode
+          id
+          locationId
+        }
+      }
+    `
+
+    GraphQL.query(query)
+      .then(({ campuses }) => {
+
+        let mappedObj = {}
+        for (let campus of campuses) {
+          mappedObj[campus.id] = campus
+        }
+
+        dispatch(campusActions.add(mappedObj))
+
+      })
+
   }
 
   componentWillUnmount(){

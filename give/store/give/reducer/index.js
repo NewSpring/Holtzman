@@ -8,17 +8,35 @@
 import { createReducer } from "../../../../core/store"
 import types from "../types"
 
-import { progress, step } from "./progress"
+import { progress } from "./progress"
 import { savedAccount } from "./savedAccounts"
-import { addTransaction, clearTransactions } from "./transactions"
+import { addTransaction, clearTransaction, clearTransactions } from "./transactions"
+import { setRecoverableSchedules, deleteRecoverableSchedule } from "./scheduledTransactions"
 
 const initial = {
 
   step: 1, // Number (step along in progress bar to show)
-  savedAccount: null, // Id of saved account to charge
   transactionType: "default", // "default", "guest", "recurring"
-
+  url: "", // String representing the endpoint with NMI to submit to
   total: 0, // Number > 0 for allowing to move forward (calculated)
+  state: "default", // "default", "loading", "submit", "error", "success"
+  attempts: 0, // spam protection (auto calculated)
+  reminderDate: null, // Date string for the next reminder
+
+  errors: {
+    // <id>: {
+    //   message: "Card is declined"
+    // }
+  },
+
+  savedAccount: {
+    id: null, // Id of saved account to charge
+    payment: {
+      accountNumber: null, // accountNumber to be shown (full, not just last four)
+      paymentType: null, // type of card
+    },
+    name: null, // name of card
+  },
 
   accounts: {
     // <accountId>: Name
@@ -29,11 +47,17 @@ const initial = {
     // <accountId>: Number // <accountId>: $ of gift
   },
 
-  // schedule data
-  schedule: {
-    start: null, // Date (YYYYMMDD),
-    payments: null, // future feature for pledges
-    frequency: null // String of value from Rock
+  // schedules to create
+  schedules: {
+    // <id> : { (in Rock if it exists), otherwise fund id
+    //   start: null,  Date (YYYYMMDD),
+    //   payments: null,  future feature for pledges
+    //   frequency: null  String of value from Rock
+    // }
+  },
+
+  recoverableSchedules: {
+
   },
 
   // form data
@@ -42,7 +66,7 @@ const initial = {
       firstName: null, // String
       lastName: null, // String
       email: null, // String
-      campus: null // String
+      campus: null, // String
     },
     billing: {
       streetAddress: null, // String
@@ -62,27 +86,20 @@ const initial = {
     }
   },
 
-  // action data
-  success: false,
-  state: "default", // "submit", "loading"
-  attempts: 0,
-  errors: {
-    // <id>: {
-    //   message: "Card is declined"
-    // }
-  }
-
 }
 
 export default createReducer(initial, {
 
   [types.SET_PROGRESS]: progress,
-  [types.STEP_PROGRESS]: step,
 
   [types.SET_SAVED_ACCOUNT]: savedAccount,
 
   [types.ADD_TRANSACTION]: addTransaction,
+  [types.CLEAR_TRANSACTION]: clearTransaction,
   [types.CLEAR_TRANSACTIONS]: clearTransactions,
+
+  [types.SET_RECOVERABLE_SCHEDULES]: setRecoverableSchedules,
+  [types.DELETE_RECOVERABLE_SCHEDULE]: deleteRecoverableSchedule,
 
   [types.SAVE_DATA](state, action) {
 
@@ -117,31 +134,61 @@ export default createReducer(initial, {
       step: initial.step,
       total: initial.total,
       transactions: initial.transactions,
-      schedule: initial.schedule,
+      schedules: initial.schedules,
+      url: initial.url,
       data: initial.data,
       success: initial.success,
       state: initial.state,
       errors: initial.errors
+
     } }
   },
 
+
   [types.SAVE_SCHEDULE_DATA](state, action) {
 
+    if (!action.id) {
+      return state
+    }
+
+    let newState = {...state}
+
+    if (newState.schedules[action.id]) {
+      newState.schedules[action.id] = {...newState.schedules[action.id], ...action.schedule}
+    } else {
+      newState.schedules[action.id] = action.schedule
+    }
+
     // @TODO validation on new data
-    return { ...state, ...{
-      schedule: { ...state.schedule, ...action.schedule }
-    } }
+    return newState
+  },
+
+
+  [types.REMOVE_SCHEDULE](state, action) {
+
+    if (!action.id) {
+      return state
+    }
+
+    let newState = {...state}
+
+    delete newState.schedules[action.id]
+
+    // @TODO validation on new data
+    return { ...state, ...newState }
   },
 
   [types.REMOVE_SCHEDULE_DATA](state, action) {
 
-    if (!action.field) {
+    if (!action.field || !action.id) {
       return state
     }
 
     return { ...state, ...{
-      schedule: { ...state.schedule, ...{
-        [state.schedule[action.field]]: initial.schedule[action.field]
+      schedules: { ...state.schedules, ...{
+        [action.id]: {...state.schedules[action.id], ...{
+          [state.schedule[action.field]]: null
+        } }
       } }
     } }
   },
@@ -149,7 +196,7 @@ export default createReducer(initial, {
   [types.SET_STATE](state, action) {
 
     const stateName = action.state.trim()
-    const stateTypes = [ "default", "loading", "submit" ]
+    const stateTypes = [ "default", "loading", "submit", "error", "success"]
 
     if (stateTypes.indexOf(stateName) === -1) {
       return state
@@ -198,18 +245,6 @@ export default createReducer(initial, {
 
   },
 
-  [types.SET_SUCCESS](state, action) {
-
-    if (typeof action.success != "boolean") {
-      return state
-    }
-
-    return { ...state, ...{
-      success: action.success
-    } }
-
-  },
-
   [types.SET_ACCOUNTS](state, action) {
 
     return { ...state, ... {
@@ -222,7 +257,21 @@ export default createReducer(initial, {
     return { ...state, ... {
       transactionType: action.transactionType
     }}
-  }
+  },
+
+  [types.SET_TRANSACTION_DETAILS](state, action) {
+
+    return { ...state, ... {
+      url: action.url
+    }}
+  },
+
+  [types.SET_REMINDER_DATE](state, action) {
+
+    return { ...state, ... {
+      reminderDate: action.reminderDate
+    }}
+  },
 
 
 })

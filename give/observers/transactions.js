@@ -63,7 +63,7 @@ const transactions = () => {
           AuthorizedPersonAliasId: PrimaryAliasId,
           CreatedByPersonAliasId: PrimaryAliasId,
           ModifiedByPersonAliasId: PrimaryAliasId,
-          SourceTypeValueId: 10,
+          SourceTypeValueId: api._.rockId ? api._.rockId : 10,
           FinancialPaymentDetailId: FinancialPaymentDetailId,
           TransactionDateTime: new Date()
         } }
@@ -111,7 +111,8 @@ const transactions = () => {
             ModifiedByPersonAliasId: PrimaryAliasId
           } }
 
-          if (FinancialPersonSavedAccounts.TransactionCode) {
+          console.log(FinancialPersonSavedAccounts)
+          if (FinancialPersonSavedAccounts.ReferenceNumber) {
             api.post.sync(`FinancialPersonSavedAccounts`, FinancialPersonSavedAccounts)
           }
         }

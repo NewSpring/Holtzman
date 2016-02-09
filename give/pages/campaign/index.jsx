@@ -9,8 +9,45 @@ import { Accounts as Acc } from "../../collections"
 
 import Layout from "./Layout"
 
-@connect()
-@ReactMixin.decorate(ReactMeteorData)
+const map = (state) => ({ accounts: state.give.accounts })
+
+
+function getAccounts(name, dispatch){
+
+  let query = `
+    {
+      account: financialAccount(name: "${name}", cache: false) {
+        description
+        name
+        id
+        summary
+        image
+      }
+    }
+  `
+
+  return GraphQL.query(query)
+    .then(result => {
+
+      let obj = { [result.account.id]: result.account }
+
+      dispatch(giveActions.setAccounts(obj))
+    })
+}
+
+function getAccount(name, accounts){
+  for (let account in accounts) {
+
+    if (accounts[account].name === name) {
+      return accounts[account]
+    }
+  }
+
+  return false
+}
+
+
+@connect(map)
 export default class Template extends Component {
 
   componentWillMount() {

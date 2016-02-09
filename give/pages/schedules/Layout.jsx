@@ -1,7 +1,7 @@
 
 import { Component, PropTypes} from "react"
 import ReactDom from "react-dom"
-
+import Meta from "react-helmet"
 import Moment from "moment"
 import { Link } from "react-router"
 
@@ -9,23 +9,12 @@ import { Spinner } from "../../../core/components/loading"
 import { AddSchedule } from "../../blocks"
 import Split, { Left, Right } from "../../../core/blocks/split"
 
+import Confirm from "../../blocks/ActionButtons"
+import { AccountType } from "../../components"
+
+
 export default class Layout extends Component {
 
-  componentDidMount() {
-    const container = ReactDom.findDOMNode(this.refs["container"])
-    container.addEventListener("scroll", this.props.onScroll);
-    if (typeof window != "undefined" && window != null) {
-      window.addEventListener("scroll", this.props.onScroll);
-    }
-  }
-
-  componentWillUnmount() {
-    const container = ReactDom.findDOMNode(this.refs["container"])
-    container.removeEventListener("scroll", this.props.onScroll);
-    if (typeof window != "undefined" && window != null) {
-      window.addEventListener("scroll", this.props.onScroll);
-    }
-  }
 
   formatDate = (date) => {
     return Moment(date).format("MMM D, YYYY")
@@ -59,38 +48,123 @@ export default class Layout extends Component {
 
   render () {
 
-    const { data } = this.props
+    const {
+      schedules,
+      accounts,
+      ready,
+      recoverableSchedules,
+      cancelSchedule,
+      confirm,
+    } = this.props
 
     return (
 
       <Split nav={true} >
+
+        <Meta
+          title="Reccuring Giving"
+          titleTemplate="%s | NewSpring Church"
+        />
+
         <Right
           background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"
           mobile={false}>
         </Right>
 
-        <Left scroll={true} ref="container">
-          <div className="constrain-copy soft-double-sides@lap-and-up soft-double-top@lap-and-up">
-            <div className="soft soft-double-top hard-left@lap-and-up soft-half-bottom">
-              <h2 className="flush hard">Recurring Gifts</h2>
+        <Left scroll={true} classes={["background--light-secondary"]} ref="container">
+
+
+          <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+
+            <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
+              <div className="soft-double-ends@anchored">
+                <AddSchedule accounts={accounts}/>
+              </div>
             </div>
           </div>
 
+          <div className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
+            <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+              My Gifts
+            </h4>
 
-          <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top">
+            {(() => {
+              let count = 0
+              if (recoverableSchedules.length) {
+                return (
+                  <div>
+                    {recoverableSchedules.map((schedule, i) => {
+                      count ++
+                      if (!schedule.details[0].account) {
+                        return null
+                      }
+
+                      return (
+                        <div key={i} className="card">
+                          <div className="soft">
+                            <div className="grid " style={{verticalAlign: "middle"}} key={i}>
+
+                              <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
+                                <h6 className="text-dark-tertiary push-half-bottom">
+                                  {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
+                                </h6>
+                                <h5 className="flush text-primary">
+                                  {schedule.details[0].account.name}
+                                </h5>
+                                <p className="flush soft-half-top text-dark-tertiary">
+                                  <small>
+                                    <em>
+                                      This began on {this.formatDate(schedule.start)}
+                                    </em>
+                                  </small>
+                                </p>
+
+                              </div>
+
+                              <div className="grid__item one-third text-right" style={{verticalAlign: "middle"}}>
+                                <div className="soft-half-right">
+                                  <h4 className="text-dark-tertiary flush">
+                                    {this.monentize(schedule.details[0].amount)}
+                                  </h4>
+                                </div>
+
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div className="grid flush one-whole">
+                            <Confirm
+                              theme="soft h6 grid__item one-half background--primary text-light-primary"
+                              onClick={confirm}
+                              value={schedule.id}
+                              text="Recover"
+                              hideCard={true}
+                              style={{margin: 0}}
+                            />
+                            <button className="hard grid__item one-half background--alert" onClick={cancelSchedule} data-id={schedule.id}>
+                              <h6 className="soft flush text-light-primary">Cancel</h6>
+                            </button>
+                          </div>
 
 
-              <div className="outlined--light outlined--bottom soft-ends soft-double-bottom">
-                <AddSchedule accounts={data.accounts}/>
-              </div>
+                        </div>
+                      )
+                    })}
+                    <p className="soft text-center">
+                      <small>
+                        <em>
+                          The gifts above need recovering to continue. This may be because of a payment exipration, or this gift has not been reactived since we moved giving platforms.
+                        </em>
+                      </small>
+                    </p>
+                  </div>
 
-          </div>
+                )
+              }
+            }())}
 
-
-          <div className="constrain-copy soft soft-double-sides@lap-and-up hard-top" ref="history">
-            <h4 className="soft-double-top text-center">My Active Gifts</h4>
             {() => {
-              const { schedules, ready } = data
 
               if (!schedules.length && !ready) {
                 // loading
@@ -111,29 +185,58 @@ export default class Layout extends Component {
               }
 
 
-
               return (
                 <div>
-                  {data.schedules.map((schedule, i) => {
+                  {schedules.map((schedule, i) => {
 
-                    if (!schedule.ScheduledTransactionDetails[0].Account) {
+                    if (!schedule.details[0].account) {
                       return null
                     }
+
                     return (
-                      <div key={i} className="soft-ends push-half-ends hard-sides outlined--light outlined--bottom constrain-mobile">
+                      <div key={i} className="soft card">
+
+                        <Link to={`/give/recurring/${schedule.id}`}>
+
+                          <div className="grid" style={{verticalAlign: "middle"}} key={i}>
+
+                            <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
+                              <h6 className="text-dark-tertiary push-half-bottom">
+                                {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
+                              </h6>
+                              <h5 className="flush">
+                                {schedule.details[0].account.name}
+                              </h5>
+                              <p className="flush soft-half-top text-dark-tertiary">
+                                <small>
+                                  <em>
+                                    This started on {this.formatDate(schedule.start)}
+                                  </em>
+                                </small>
+                              </p>
+
+                            </div>
 
 
-                        <h3 className="text-dark-tertiary" style={{lineHeight: "1.75"}}>
-                          <span className="text-dark-secondary">{this.capitalizeFirstLetter(schedule.TransactionFrequencyValue.Description.toLowerCase())}</span>, I give <span className="text-dark-secondary">{this.monentize(schedule.ScheduledTransactionDetails[0].Amount)}</span> to <span className="text-primary">{schedule.ScheduledTransactionDetails[0].Account.PublicName}</span>. This began on <span className="text-dark-secondary">{this.formatDate(schedule.StartDate)}</span> using my <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.CreditCardTypeValue.Description.toLowerCase()}</span> ending in <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.AccountNumberMasked.slice(-4)}</span>
-                        </h3>
+                            <div className="grid__item one-third text-right" style={{verticalAlign: "middle"}}>
+                              <div className="soft-half-right">
+                                <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
+                                  {this.monentize(schedule.details[0].amount)}
+                                  <span className="text-primary icon-arrow-next locked" style={{
+                                      right: "-5px",
+                                      top: "1px"
+                                    }}></span>
+                                </h4>
+                              </div>
 
-                        <Link to={`/give/recurring/${schedule.Id}`} className="btn">
-                          View Details
+                            </div>
+
+                          </div>
                         </Link>
 
                       </div>
-
                     )
+
                   })}
 
                 </div>

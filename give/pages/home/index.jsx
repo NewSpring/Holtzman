@@ -2,40 +2,17 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 
+import { GraphQL } from "./../../../core"
+
 import { give as giveActions } from "../../store"
-import { Accounts as Acc } from "../../collections"
 
 import Layout from "./Layout"
 
-const mapArrayToObj = (array) => {
+
+function mapArrayToObj(array){
   let obj = {}
-
-  for (let item of array) {
-    obj[item.Id] = item
-  }
-
+  for (let item of array) { obj[item.id] = item }
   return obj
-}
-
-const bindAccounts = (props) => {
-  const { dispatch } = props
-
-  let handle = {}
-  Tracker.autorun((computation) => {
-    // return computation for dismount
-    handle = computation
-
-    // subscribe to sections
-    Meteor.subscribe("accounts")
-    let accounts = Acc.find().fetch()
-
-    // persist in the store
-    dispatch(giveActions.setAccounts(mapArrayToObj(accounts)))
-
-  })
-
-  return { handle }
-
 }
 
 const map = (state) => ({ accounts: state.give.accounts })
@@ -44,12 +21,43 @@ const map = (state) => ({ accounts: state.give.accounts })
 @ReactMixin.decorate(ReactMeteorData)
 export default class Home extends Component {
 
-  componentWillMount(){
 
-    if (Meteor.isClient) {
-      let { handle } = bindAccounts(this.props)
-      this.handle = handle
-    }
+  static fetchData(getState, dispatch){
+    return GraphQL.query(`
+      {
+        accounts: allFinancialAccounts(limit: 100, ttl: 8640) {
+          description
+          name
+          id
+          summary
+          image
+          order
+        }
+      }
+    `).then(result => {
+      const obj = mapArrayToObj(result.accounts.filter((x) => (x.summary)))
+      dispatch(giveActions.setAccounts(obj))
+    })
+  }
+
+  componentDidMount(){
+
+    const { dispatch } = this.props
+    GraphQL.query(`
+      {
+        accounts: allFinancialAccounts(limit: 100, ttl: 8640) {
+          description
+          name
+          id
+          summary
+          image
+          order
+        }
+      }
+    `).then(result => {
+      const obj = mapArrayToObj(result.accounts.filter((x) => (x.summary)))
+      dispatch(giveActions.setAccounts(obj))
+    })
 
   }
 
