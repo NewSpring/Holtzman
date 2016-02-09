@@ -25,7 +25,7 @@ export default class Home extends Component {
   static fetchData(getState, dispatch){
     return GraphQL.query(`
       {
-       	accounts: allFinancialAccounts(limit: 100, ttl: 8640) {
+       	accounts: allFinancialAccounts(limit: 100, ttl: 86400) {
           description
           name
           id
@@ -35,6 +35,9 @@ export default class Home extends Component {
         }
       }
     `).then(result => {
+
+      result = result.sort((a, b) => (a - b))
+
       const obj = mapArrayToObj(result.accounts.filter((x) => (x.summary)))
       dispatch(giveActions.setAccounts(obj))
     })
@@ -54,8 +57,8 @@ export default class Home extends Component {
           order
         }
       }
-    `).then(result => {
-      const obj = mapArrayToObj(result.accounts.filter((x) => (x.summary)))
+    `).then(({accounts}) => {
+      const obj = mapArrayToObj(accounts.filter((x) => (x.summary)))
       dispatch(giveActions.setAccounts(obj))
     })
 
@@ -85,6 +88,12 @@ export default class Home extends Component {
     for (let account in this.props.accounts) {
       accounts.push(this.props.accounts[account])
     }
+    
+    accounts = accounts.sort((a, b) => {
+      a = a.order
+      b = b.order
+      return a < b ? -1 : a > b ? 1 : 0;
+    })
 
     return <Layout accounts={accounts} alive={this.data.alive} />
   }

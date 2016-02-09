@@ -177,7 +177,7 @@ export default class Layout extends Component {
 
               if (!schedules.length && ready) {
                 return (
-                  <div className="text-center soft">
+                  <div className="text-center soft-sides">
                     <p><em>You don't have any active recurring gifts</em></p>
                   </div>
                 )

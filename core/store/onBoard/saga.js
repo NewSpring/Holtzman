@@ -15,6 +15,7 @@ addSaga(function* checkAccount(getState) {
 
     // wait for the email field to be blurred
     const { data } = yield take("ONBOARD.SET_DATA")
+
     const { email } = data
 
     // if the event was triggered by email check to see if it available
