@@ -8,6 +8,7 @@ import sections from "./sections"
 import topics from "./topics"
 import campuses from "./campuses"
 import collections from "./collections"
+import routing from "./routing"
 
 import {
   join,

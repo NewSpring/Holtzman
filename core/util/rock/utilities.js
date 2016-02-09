@@ -33,7 +33,27 @@ api.registerEndpoint = (obj) => {
       }
 
       api._.rockId = current[0].Id
-      console.log(api._)
+
+      let site = api.get.sync(`Sites?$filter=Name eq '${ROOT_URL}'`)
+
+      if (!site.length) {
+        let Site = {
+          IsSystem: false,
+          Name: ROOT_URL,
+          Description: `Application at ${ROOT_URL}`,
+          Theme: "Rock",
+          AllowIndexing: false,
+          Guid: makeNewGuid(),
+        }
+
+        site = api.post.sync("Sites", Site)
+        site = [{
+          Id: site
+        }]
+
+      }
+
+      api._.siteId = site[0].Id
 
       if (typeof serverWatch != "undefined") {
         // If Rock is being watched (aka old states), remove watching
@@ -87,6 +107,7 @@ api.call = function (method, endpoint, data, callback) {
 
 
   const body = JSON.stringify(data)
+
   const headers = {
     [this._.tokenName]: this._.token,
     "Content-Type": "application/json"
