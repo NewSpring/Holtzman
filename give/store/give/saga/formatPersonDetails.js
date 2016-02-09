@@ -1,6 +1,6 @@
 import Moment from "moment"
 
-const formatPersonDetails = (give) => {
+const formatPersonDetails = (give, { campuses }) => {
   const { data, transactions, total, schedules, savedAccount } = give
 
   // here we format data for the NMI processing
@@ -15,10 +15,18 @@ const formatPersonDetails = (give) => {
       city: data.billing.city,
       state: data.billing.state,
       postal: data.billing.zip
-    }
-
+    },
   }
 
+  let campusId;
+  for (let campus in campuses) {
+    if (campuses[campus].name === data.personal.campus) {
+      campusId = campuses[campus].id
+      break;
+    }
+  }
+
+  joinedData["merchant-defined-field-2"] = campusId
 
   if (Object.keys(schedules).length) {
     // @TODO allow custom start dates
