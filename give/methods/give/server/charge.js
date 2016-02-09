@@ -1,6 +1,8 @@
 
 /*global Meteor */
 
+import { api, parseEndpoint } from "../../../../core/util/rock"
+
 import { TransactionReciepts } from "../../../collections/transactions"
 import { charge as gatewayCharge } from "./nmi"
 
@@ -106,8 +108,22 @@ const charge = (token, accountName) => {
       response.product = [ response.product ]
     }
     for (let product of response.product) {
+      let endpoint = parseEndpoint(`
+        FinancialAccounts?
+          $filter=ParentAccountId eq ${Number(product["product-code"])} and
+          CampusId eq ${Number(response["merchant-defined-field-2"])}
+      `)
+
+      let AccountId = api.get.sync(endpoint)
+
+      if (AccountId.length) {
+        AccountId = AccountId[0].Id
+      } else {
+        AccountId = Number(product["product-code"])
+      }
+
       formatedTransaction.TransactionDetails.push({
-        AccountId: Number(product["product-code"]),
+        AccountId,
         Amount: Number(product["total-amount"])
       })
     }
