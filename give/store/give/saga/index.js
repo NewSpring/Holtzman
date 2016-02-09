@@ -343,6 +343,7 @@ addSaga(function* watchRoute(getStore){
       const { payload } = yield take("@@router/UPDATE_LOCATION")
 
       if (isGive(payload.pathname)) {
+
         recovered = yield* recoverTransactions(getStore)
         break
       }
