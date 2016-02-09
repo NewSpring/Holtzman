@@ -22,7 +22,7 @@ addSaga(function* chargeTransaction(getStore) {
 
   while (true) {
     let { state } = yield take(types.SET_STATE)
-    let { give } = getStore(),
+    let { give, campuses } = getStore(),
         name = give.data.payment.name,
         action = charge,
         error = false,
@@ -34,7 +34,7 @@ addSaga(function* chargeTransaction(getStore) {
       yield put(actions.loading())
 
       // personal info is ready to be submitted
-      const formattedData = formatPersonDetails(give)
+      const formattedData = formatPersonDetails(give, campuses)
 
       if (formattedData.savedAccount && Object.keys(give.schedules).length) {
         // wrap the function for the same api
@@ -117,9 +117,11 @@ addSaga(function* chargeTransaction(getStore) {
 })
 
 
-function* submitPersonDetails(give, autoSubmit) {
+function* submitPersonDetails(give, campuses, autoSubmit) {
+
+
   // personal info is ready to be submitted
-  const formattedData = formatPersonDetails(give)
+  const formattedData = formatPersonDetails(give, campuses)
 
   /*
 
@@ -192,13 +194,13 @@ addSaga(function* createOrder(getStore) {
 
     */
     const { step } = yield take(types.SET_PROGRESS)
-    let { give } = getStore()
+    let { give, campuses } = getStore()
 
 
     if (step === 4 || (give.step - 1) === 2) {
 
       // set people data and store transaction id
-      yield* submitPersonDetails(give, step === 4)
+      yield* submitPersonDetails(give, campuses, step === 4)
 
 
     } else if ((give.step - 1) === 3) {
