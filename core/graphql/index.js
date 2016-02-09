@@ -33,7 +33,10 @@ const LokkaTransport = class {
 
 const GraphQL = new Lokka({ transport: new LokkaTransport() })
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 277ad2915467ce53f88e16196d84ca0534c3e61f
 export {
   GraphQL
 }

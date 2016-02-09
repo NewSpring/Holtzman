@@ -3,8 +3,6 @@ import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 import { routeActions } from "react-router-redux"
 
-import { GraphQL } from "./../../graphql"
-
 import { onBoard as onBoardActions, modal } from "../../store"
 import OnBoard from "../onBoard"
 

@@ -55,6 +55,7 @@ api.registerEndpoint = (obj) => {
 
       api._.siteId = site[0].Id
 
+
       if (typeof serverWatch != "undefined") {
         // If Rock is being watched (aka old states), remove watching
         if (serverWatch.getKeys().indexOf("ROCK") != -1) {

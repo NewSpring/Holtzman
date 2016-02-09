@@ -35,9 +35,6 @@ export default class Home extends Component {
         }
       }
     `).then(result => {
-
-      result = result.sort((a, b) => (a - b))
-
       const obj = mapArrayToObj(result.accounts.filter((x) => (x.summary)))
       dispatch(giveActions.setAccounts(obj))
     })
@@ -48,7 +45,7 @@ export default class Home extends Component {
     const { dispatch } = this.props
     GraphQL.query(`
       {
-       	accounts: allFinancialAccounts(limit: 100, ttl: 8640) {
+       	accounts: allFinancialAccounts(limit: 100, ttl: 86400) {
           description
           name
           id
@@ -88,7 +85,7 @@ export default class Home extends Component {
     for (let account in this.props.accounts) {
       accounts.push(this.props.accounts[account])
     }
-    
+
     accounts = accounts.sort((a, b) => {
       a = a.order
       b = b.order
