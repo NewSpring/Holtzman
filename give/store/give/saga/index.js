@@ -331,18 +331,34 @@ addSaga(function* watchRoute(getStore){
 
   while (true) {
 
+<<<<<<< HEAD
     let state = getStore();
     let { pathname } = state.routing.location,
         recovered;
 
+=======
+
+    let initRoute = yield take("@@router/INIT_PATH"),
+        recovered;
+
+    initRoute = initRoute.payload.path
+
+>>>>>>> 277ad2915467ce53f88e16196d84ca0534c3e61f
     function isGive(path) {
       return path.split("/")[1] === "give"
     }
 
+<<<<<<< HEAD
     if (!isGive(pathname)) {
       const { payload } = yield take("@@router/UPDATE_LOCATION")
 
       if (isGive(payload.pathname)) {
+=======
+    if (!isGive(initRoute)) {
+      const { payload } = yield take("@@router/UPDATE_PATH")
+
+      if (isGive(payload.path)) {
+>>>>>>> 277ad2915467ce53f88e16196d84ca0534c3e61f
         recovered = yield* recoverTransactions(getStore)
         break
       }

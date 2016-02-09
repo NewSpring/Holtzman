@@ -13,6 +13,8 @@ import {
   campuses as campusActions,
 } from "../../store"
 
+import { GraphQL } from "../../graphql"
+
 
 const App = ({ children, className }) => (
   <div className="
