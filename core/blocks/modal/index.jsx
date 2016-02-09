@@ -1,7 +1,6 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
-
-import { VelocityTransitionGroup } from "velocity-react"
+import { Motion, spring, presets } from "react-motion";
 
 import { modal as modalActions, nav as navActions } from "../../store"
 
@@ -12,7 +11,8 @@ import styles from "./modal.css"
 
 const map = (state) => ({
   navigation: state.nav,
-  modal: state.modal
+  modal: state.modal,
+  path: state.routing.path,
 })
 
 @connect(map)
@@ -26,6 +26,10 @@ export default class SideModalContainer extends Component {
 
     if (!nextProps.modal.visible && nextProps.navigation.level === "MODAL" && !this.props.modal.props.keepNav) {
       this.props.dispatch(navActions.setLevel("TOP"))
+    }
+
+    if (!nextProps.modal.visible && (this.props.path != nextProps.path)) {
+      this.props.dispatch(modalActions.hide())
     }
 
   }
@@ -65,20 +69,19 @@ export default class SideModalContainer extends Component {
     const { visible, content, props } = this.props.modal
 
     return (
-      <VelocityTransitionGroup
-        enter={{ animation: enter, duration: 250 }}
-        leave={{ animation: exit, duration: 250 }}
-      >
+      <Motion defaultStyle={{opacity: 0}} style={{opacity: spring(1, presets.wobbly)}}>
+        {interpolatingStyle => (
+          <Modal
+            close={this.close}
+            component={content}
+            props={props}
+            visible={visible}
+            style={interpolatingStyle}
+            {...this.props}
+          />
+        )}
+      </Motion>
 
-        <Modal
-          close={this.close}
-          component={content}
-          props={props}
-          visible={visible}
-          {...this.props}
-        />
-
-      </VelocityTransitionGroup>
     )
   }
 }

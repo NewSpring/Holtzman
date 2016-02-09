@@ -18,10 +18,9 @@ export default class Card extends Component {
   itemClasses = () => {
     let classes = [
       "card__item",
-      "outlined--light",
       "soft",
-      "rounded-bottom",
-      "text-center"
+      "text-center",
+      "soft-double-ends"
     ];
 
     if (this.props.itemClasses) {
@@ -79,7 +78,6 @@ export default class Card extends Component {
 
     if (image) {
       let imageclasses = [
-        "rounded-top",
         "background--fill",
         "card__image",
         "background-light-tertiary"
@@ -129,13 +127,17 @@ export default class Card extends Component {
       }
     }
 
+    let wrapperClasses = "plain"
+    if (this.props.mobile ===  false) {
+      wrapperClasses += " visuallyhidden@handheld"
+    }
     return (
       <div
         className={theme || this.cardClasses()}
         style={styles || this.styles() }
         >
 
-        <Wrapper className="plain" to={link}>
+        <Wrapper className={wrapperClasses} to={link}>
           {this.createImage()}
         </Wrapper>
         <div

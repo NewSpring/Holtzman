@@ -1,10 +1,11 @@
 import { Component, PropTypes} from "react"
 import Moment from "moment"
 import { Link } from "react-router"
+import Meta from "react-helmet"
 
 import { Spinner } from "../../../../core/components/loading"
 import Split, { Left, Right } from "../../../../core/blocks/split"
-import { Card } from "../../../../core/components"
+import SideBySide from "../../../../core/components/cards/SideBySide"
 
 import { AccountType } from "../../../components"
 
@@ -42,62 +43,171 @@ export default class Layout extends Component {
 
   render () {
 
-    const { data, stop, state } = this.props
+    const { schedule, stop, state, person } = this.props
 
     return (
       <Split nav={true} >
+
+        <Meta
+          title="Reccuring Gift"
+          titleTemplate="%s | NewSpring Church"
+        />
+
         <Right background="https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/series_newspring/v4.sermonseries.graphics.1to1.more_1700_1700_90_c1_1700_1700_90_c1.jpg"
  mobile={false}>
 
         </Right>
 
-        <Left scroll={true} ref="container">
+        <Left scroll={true} classes={["background--light-secondary"]} ref="container">
 
-          <div className="constrain-copy soft soft-double@lap-and-up push-double@lap-and-up" >
+          <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
 
-            {() => {
-              const { schedule } = data
+            <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
+              <div className="soft-double-ends@anchored">
+                {() => {
 
-              if (!schedule) {
-                // loading
-                return (
-                  <div className="text-center soft">
-                    <Spinner styles={{width: "40px", height: "40px"}}/>
-                  </div>
-                )
-              }
+                  if (!schedule) {
+                    // loading
+                    return (
+                      <div className="text-center soft">
+                        <Spinner styles={{width: "40px", height: "40px"}}/>
+                      </div>
+                    )
+                  }
 
-              return (
+                  return (
+                    <div className="text-center">
+                      <p className="push-half-bottom"><em>Started on {this.formatDate(schedule.start)}</em></p>
 
-                <div className="soft-ends push-half-ends hard-sides constrain-mobile">
+                      <h4 className="text-dark-secondary flush-bottom">{this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}</h4>
+                      <h3 className="text-primary">{schedule.details[0].account.name}</h3>
+
+                      <h1 className="text-dark-primary">{this.monentize(schedule.details[0].amount)}</h1>
 
 
-                  <h3 className="text-dark-tertiary" style={{lineHeight: "1.75"}}>
-                    <span className="text-dark-secondary">{this.capitalizeFirstLetter(schedule.TransactionFrequencyValue.Description.toLowerCase())}</span>, I give <span className="text-dark-secondary">{this.monentize(schedule.ScheduledTransactionDetails[0].Amount)}</span> to <span className="text-primary">{schedule.ScheduledTransactionDetails[0].Account.PublicName}</span>. This began on <span className="text-dark-secondary">{this.formatDate(schedule.StartDate)}</span> using my <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.CreditCardTypeValue.Description.toLowerCase()}</span> ending in <span className="text-dark-secondary">{schedule.FinancialPaymentDetail.AccountNumberMasked.slice(-4)}</span>
-                  </h3>
-                  {() => {
-                    if (state.isActive) {
-                      return (
-                        <button className="btn--alert btn--thin btn--small" onClick={stop}>Stop gift</button>
-                      )
-                    }
-                  }()}
+                      {() => {
+                        const detail = schedule.payment
+                        if (detail && detail.accountNumber) {
+                          return (
+                            <h4 className="text-dark-secondary soft-half-top">
+                              {detail.accountNumber.slice(-4)}&nbsp;
 
-                </div>
+                              {() => {
+                                if (detail.paymentType && detail.paymentType === "ACH") {
+                                  return (
+                                    <AccountType width="30px" height="20px" type="Bank"/>
+                                  )
+                                } else if (detail.paymentType) {
+                                  return (
+                                    <AccountType width="30px" height="20px" type={detail.paymentType} />
+                                  )
+                                }
+                              }()}
 
-              )
-            }()}
-            <div className="outlined--light outlined--top push-double-ends"></div>
-            <p>
-              Thank you so much for your gifts! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
-            </p>
+                            </h4>
+                          )
+                        }
+                      }()}
 
+                      <h6 className="text-alert" onClick={stop} style={{cursor: "pointer"}}>
+                        Stop Gift
+                      </h6>
+
+                      <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
+                        Thank you so much for your gift! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
+                      </p>
+                    </div>
+                  )
+
+                }()}
+
+              </div>
+            </div>
           </div>
 
+          <div className="soft-half soft-sides@portable soft-double-sides@anchored">
 
+            <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+              Read Some Recent Stories
+            </h4>
+            <div className="grid">
+              <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+                <SideBySide
+                  link="https://newspring.cc/stories/jen-feagles"
+                  image={{
+                    url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/JenFeagles.hero_1700_723_90_c1.jpg"
+                  }}
+                >
+                  <h4 className="push-half-top@portable push-top@anchored">
+                    Jennifer Feagles Story
+                  </h4>
+                  <p>
+                    Jennifer Feagles shares about how Jesus gave her more than she could have imagined when she put him first in her…
+                  </p>
+                  <Link
+                    to="https://newspring.cc/stories/jen-feagles"
+                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                  >
+                    Watch Story
+                  </Link>
+
+                </SideBySide>
+              </div>
+              <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+                <SideBySide
+                  link="https://newspring.cc/stories/brooke-brissey"
+                  image={{
+                    url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/BrookeBrissey_Hero_1700_723_90_c1.jpg"
+                  }}
+                >
+                  <h4 className="push-half-top@portable push-top@anchored">
+                    Brooke Brissey's Story
+                  </h4>
+                  <p>
+                    Brooke Brissey discovered the power of a financial plan to obey God's call on her life. This is her story in her own…                  </p>
+                  <Link
+                    to="https://newspring.cc/stories/brooke-brissey"
+                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                  >
+                    Read Story
+                  </Link>
+
+                </SideBySide>
+              </div>
+            </div>
+          </div>
 
         </Left>
       </Split>
     )
   }
 }
+
+  // <div className="soft-ends push-half-ends hard-sides constrain-mobile">
+  //
+  //
+  //   <h3 className="text-dark-tertiary" style={{lineHeight: "1.75"}}>
+  //     <span className="text-dark-secondary">
+  //       {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
+  //
+  //
+  //     </span> using my <span className="text-dark-secondary">
+  //       {schedule.payment.paymentType.toLowerCase()}
+  //     </span> ending in <span className="text-dark-secondary">
+  //       {schedule.payment.accountNumber.slice(-4)}
+  //     </span>
+  //   </h3>
+  //   {() => {
+  //     if (state.isActive) {
+  //       return (
+  //         <button className="btn--alert btn--thin btn--small" onClick={stop}>
+  //           Cancel gift
+  //         </button>
+  //       )
+  //     }
+  //   }()}
+  // </div>
+  //
+  // <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
+  //   Thank you so much for your gift! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
+  // </p>

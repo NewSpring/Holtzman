@@ -15,11 +15,7 @@ export default class Payment extends Component {
     )
   }
 
-  toggles = [
-    { label: "Bank Account" },
-    { label: "Credit Card" }
-  ]
-
+  toggles = ["Credit Card", "Bank Account"]
 
   bankFields = () => {
     const { payment } = this.props.data
@@ -35,6 +31,7 @@ export default class Payment extends Component {
           defaultValue={payment.accountNumber}
           validation={this.saveData}
           ref="accountNumber"
+          autofocus={true}
         />
         <Forms.Input
           id="routingNumber"
@@ -120,8 +117,8 @@ export default class Payment extends Component {
     current || (current = "")
     str = `${str}`
 
-    if (str.length > 7) {
-      return save(str.slice(0, 7))
+    if (str.length > 5) {
+      return save(str.slice(0, 5))
     }
 
     let copy = str
@@ -129,15 +126,19 @@ export default class Payment extends Component {
     const currentLastNumber = current.slice(-1)
 
     if (lastNumber === "/" && str.length === 1) {
-      return save(`0${str}/20`)
+      return save(`0${str}/`)
     }
 
     if (lastNumber === "/" && str.length === 2 && currentLastNumber != "/") {
-      return save(`${str}/20`)
+      return save(`${str}/`)
     }
 
     if (str.length === 2 && lastNumber != "/" && currentLastNumber != "/") {
-      return save(`${str}/20`)
+      return save(`${str}/`)
+    }
+
+    if (str.length === 4 && (lastNumber === "2" || lastNumber === "/")) {
+      return save(str.slice(0, 3))
     }
 
     return save(str)
@@ -164,7 +165,7 @@ export default class Payment extends Component {
             <Forms.Input
               id="expiration"
               name="billing-cc-exp"
-              label="Exp (MM/YYYY)"
+              label="Exp (MM/YY)"
               type="tel"
               errorText="Please enter a valid expiration number"
               defaultValue={payment.expiration}
@@ -254,7 +255,7 @@ export default class Payment extends Component {
 
             return (
               <button  className={btnClasses.join(" ")} type="submit" onClick={submit}>
-                Enter
+                Next
               </button>
             )
           }()}

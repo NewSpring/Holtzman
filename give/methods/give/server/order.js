@@ -1,8 +1,10 @@
 /*global Meteor */
 import { api } from "../../../../core/util/rock"
 import { order as gatewayOrder } from "./nmi"
+import createSchedule from "./createSchedule"
 
-const order = (orderData) => {
+
+const order = (orderData, instant) => {
 
   let user = Meteor.user()
   // default to sale
@@ -19,27 +21,32 @@ const order = (orderData) => {
   }
 
   if (user && user.services.rock && method != "add-subscription") {
-    orderData["customer-id"] = user.services.rock.PersonAliasId
+    orderData["customer-id"] = user.services.rock.PrimaryAliasId
   }
+
 
   if (orderData.savedAccount) {
     let accountDetails = api.get.sync(`FinancialPersonSavedAccounts/${orderData.savedAccount}`)
+
     delete orderData.savedAccount
+    delete orderData.savedAccountName
     if (accountDetails.ReferenceNumber) {
+      delete orderData["customer-id"]
       orderData["customer-vault-id"] = accountDetails.ReferenceNumber
-      // orderData["authorization-code"] = accountDetails.ForeignKey
     }
   }
 
-  const response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
-  console.log(response)
-  return {
-    url: response["form-url"],
-    transactionId: response["transaction-id"]
+
+  let response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
+
+  if (instant) {
+    response = createSchedule(response)
   }
+
+  return response
 
 }
 
-Meteor.methods({ "Give.order": order })
+Meteor.methods({ "give/order": order })
 
 export default order

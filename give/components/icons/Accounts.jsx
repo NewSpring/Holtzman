@@ -1,10 +1,10 @@
 
-const AmEx = ({ width, height }) => (
+const AmEx = ({ width, height, style }) => (
   <svg
     width={width}
     height={height}
     viewBox="0 0 54 40"
-
+    style={style}
   >
     <title>amex-icon</title>
     <g fill="none" fill-rule="evenodd">
@@ -14,10 +14,11 @@ const AmEx = ({ width, height }) => (
   </svg>
 )
 
-const Visa = ({ width, height }) => (
+const Visa = ({ width, height, style }) => (
   <svg
     width={width}
     height={height}
+    style={style}
     viewBox="0 0 54 40"
 
   >
@@ -28,10 +29,11 @@ const Visa = ({ width, height }) => (
   </svg>
 )
 
-const Discover = ({ width, height }) => (
+const Discover = ({ width, height, style }) => (
   <svg
     width={width}
     height={height}
+    style={style}
     viewBox="0 0 54 40"
 
   >
@@ -52,10 +54,11 @@ const Discover = ({ width, height }) => (
   </svg>
 )
 
-const MasterCard = ({ width, height }) => (
+const MasterCard = ({ width, height, style }) => (
   <svg
     width={width}
     height={height}
+    style={style}
     viewBox="0 0 54 40"
 
   >
@@ -63,10 +66,11 @@ const MasterCard = ({ width, height }) => (
   </svg>
 )
 
-const Bank = ({ width, height }) => (
+const Bank = ({ width, height, style }) => (
   <svg
     width={width}
     height={height}
+    style={style}
     viewBox="0 0 54 40"
 
   >

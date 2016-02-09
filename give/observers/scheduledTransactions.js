@@ -52,12 +52,14 @@ const ScheduledTransactions = () => {
           PrimaryAliasId = api.get.sync(`People/${PersonId}`).PrimaryAliasId
         }
 
+
         // Create FinancialPaymentDetail
         FinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
           Guid: makeNewGuid()
         } }
 
         const FinancialPaymentDetailId = api.post.sync(`FinancialPaymentDetails`, FinancialPaymentDetail)
+
 
         if (FinancialPaymentDetailId.status) {
           return
@@ -72,8 +74,26 @@ const ScheduledTransactions = () => {
           FinancialPaymentDetailId: FinancialPaymentDetailId
         } }
 
-        const ScheduledTransactionId = api.post.sync(`FinancialScheduledTransactions`, ScheduledTransaction)
 
+        let ScheduledTransactionId;
+        // either mark is active or create schedule
+        if (ScheduledTransaction.Id) {
+
+          ScheduledTransactionId = ScheduledTransaction.Id
+          delete ScheduledTransaction.Id
+          delete ScheduledTransaction.Guid
+
+          let response = api.patch.sync(`FinancialScheduledTransactions/${ScheduledTransactionId}`, ScheduledTransaction)
+
+          if (response.statusText) {
+            ScheduledTransactionId = response
+          }
+
+        } else {
+          ScheduledTransactionId = api.post.sync(`FinancialScheduledTransactions`, ScheduledTransaction)
+        }
+
+        console.log(ScheduledTransactionId)
         if (ScheduledTransactionId.status) {
           return
         }
@@ -93,7 +113,7 @@ const ScheduledTransactions = () => {
         }
 
 
-        if (FinancialPersonSavedAccounts) {
+        if (FinancialPersonSavedAccounts && FinancialPersonSavedAccounts.ReferenceNumber) {
           // Create FinancialPaymentDetail
           let SecondFinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
             Guid: makeNewGuid()

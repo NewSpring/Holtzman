@@ -111,6 +111,5 @@ export default class SideModal extends Component {
         </VelocityComponent>
       </div>
     )
-
   }
 }

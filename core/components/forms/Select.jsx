@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
 import ReactDom from "react-dom";
+import ReactSelect from "react-select";
 
 import Label from "./components/Label"
 
@@ -69,15 +70,15 @@ export default class Select extends Component {
   }
 
   change = (e) => {
-
-    const { id, value } = e.target
-
+    const { id, value } = e.currentTarget
+    const target = ReactDOM.findDOMNode(this.refs["apollos-select"])
+    // console.log(target)
     if (this.props.onChange) {
-      this.props.onChange(value, e.target)
+      this.props.onChange(value, e.currentTarget)
     }
 
     if (this.props.validation) {
-      this.props.validation(value, e.target)
+      this.props.validation(value, e.currentTarget)
     }
 
   }
@@ -108,6 +109,7 @@ export default class Select extends Component {
 
 
   render() {
+
     let inputclasses = [
       "input"
     ];
@@ -137,7 +139,6 @@ export default class Select extends Component {
             )
           }
         })()}
-
 
         <select
           ref="apollos-select"
@@ -171,6 +172,8 @@ export default class Select extends Component {
           })}
         </select>
 
+
+
         {this.renderHelpText()}
 
       </div>
@@ -179,3 +182,19 @@ export default class Select extends Component {
   }
 
 }
+
+// <ReactSelect
+//   ref="apollos-select"
+//   id={this.props.id || this.props.ref || this.props.label || this.props.name}
+//   placeholder={this.props.placeholder}
+//   name={this.props.name || this.props.label }
+//   className={this.props.inputClasses}
+//   disabled={this.disabled()}
+//   onFocus={this.focus}
+//   onChange={this.change}
+//   value={this.props.defaultValue}
+//   options={this.props.items}
+//   multi={false}
+//   searchable={false}
+//   clearable={false}
+// />

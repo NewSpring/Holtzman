@@ -1,6 +1,7 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
+import Moment from "moment"
 
 import { give as giveActions } from "../../store"
 import { Offline } from "../../components/status"
@@ -17,7 +18,8 @@ export default class CartContainer extends Component {
   state = {
     fundId: false,
     fundLabel: null,
-    frequency: null
+    frequency: null,
+    startDate: null
   }
 
   getMeteorData(){
@@ -81,21 +83,48 @@ export default class CartContainer extends Component {
 
   }
 
+  saveDate = (value, target) => {
+
+    const { fundId, fundLabel, frequency } = this.state
+
+    let date = Moment(new Date(value)).format("YYYYMMDD")
+
+    this.setState({ startDate: date })
+
+    if (fundId ) {
+      this.props.saveSchedule(fundId, { start: date })
+    }
+
+    return true
+  }
+
   setFund = (id) => {
     let selectedFund = this.props.accounts.filter((fund) => {
-      return fund.Id === Number(id)
+      return fund.id === Number(id)
     })
 
-    const { PublicName, Name } = selectedFund[0]
+    const { name } = selectedFund[0]
 
-    let fund = PublicName ? PublicName : Name
+    if (this.state.fundId != id) {
+      this.props.removeSchedule(this.state.fundId)
+    }
 
-    this.setState({fundId: id, fundLabel: fund})
+    this.setState({fundId: id, fundLabel: name})
+    this.props.saveSchedule(id, {
+      label: name,
+      frequency: this.state.frequency,
+      start: this.state.start
+    })
+
+    this.props.setTransactionType("recurring")
   }
 
   setFrequency = (value) => {
     this.setState({frequency: value})
-    this.props.saveSchedule({frequency: value})
+    if (this.state.fundId) {
+      this.props.saveSchedule(this.state.fundId, { frequency: value })
+    }
+
   }
 
   render () {
@@ -129,16 +158,16 @@ export default class CartContainer extends Component {
       }
     ]
 
-    let mappedAccounts = this.props.accounts.map((account) => {
-      return {
-        value: account.Id,
-        label: account.PublicName || account.Name
-      }
-    })
+    let mappedAccounts = this.props.accounts.map((x) => ({
+      value: x.id,
+      label: x.name
+    }))
 
     if (!mappedAccounts.length) {
       return null
     }
+
+    console.log(mappedAccounts)
 
     return (
       <Layout
@@ -149,6 +178,8 @@ export default class CartContainer extends Component {
         state={this.state}
         format={this.format}
         save={this.saveData}
+        saveDate={this.saveDate}
+        total={total}
       />
     )
   }

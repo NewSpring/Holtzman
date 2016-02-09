@@ -117,6 +117,8 @@ export default class ImageLoader extends React.Component {
 
     let wrapperArgs = [wrapperProps];
 
+
+
     switch (this.state.status) {
       case Status.LOADED:
         if (this.props.renderElement) {

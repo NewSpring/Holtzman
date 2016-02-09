@@ -81,9 +81,10 @@ export default class Personal extends Component {
     let { campuses } = this.props
 
     campuses || (campuses = [])
-    campuses = campuses.map((campus) => {
-      return { label: campus.Name, value: campus.Name }
-    })
+
+    if (campuses.length === 0) {
+      delete personal.campus
+    }
 
     return (
       <div>
@@ -103,6 +104,7 @@ export default class Personal extends Component {
                 validation={this.firstName}
                 defaultValue={personal.firstName}
                 ref="firstName"
+                autofocus={true}
               />
             </div>
             <div className="grid__item one-half">
@@ -159,7 +161,7 @@ export default class Personal extends Component {
 
             return (
               <button className={btnClasses.join(" ")} onClick={this.props.next}>
-                Enter
+                Next
               </button>
             )
           }()}

@@ -1,29 +1,11 @@
+import "regenerator/runtime"
 
 import { Component, PropTypes} from "react"
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
-import { syncReduxAndRouter, routeReducer } from "redux-simple-router"
+import { syncHistory, routeReducer } from "react-router-redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
-// import sagaMiddleware from "redux-saga"
-
-/*
-
-  Saga
-
-*/
-// import { take, put } from "redux-saga"
-import { addSaga } from "./utilities"
-
-// function* testSaga(getState) {
-//
-//   console.log(take, put, getState())
-//   yield setTimeout(() => (console.log("done")), 1000)
-//
-// }
-//
-// addSaga([
-//   testSaga
-// ])
+import sagaMiddleware from "redux-saga"
 
 
 import { Global } from "../blocks"
@@ -35,14 +17,17 @@ const createReduxStore = (initialState, history) => {
     routing: routeReducer
   }}
 
+  let convertedSagas = sagas.map((saga) => (saga()))
+
   let sharedMiddlewares = [...[
     thunk
   ], ...middlewares]
 
+  const reduxRouterMiddleware = syncHistory(history)
   let sharedCompose = [
-    applyMiddleware(...sharedMiddlewares),
+    applyMiddleware(...sharedMiddlewares, sagaMiddleware(...convertedSagas), reduxRouterMiddleware),
   ]
-  // ...sagaMiddleware(...sagas)
+
 
   if (process.env.NODE_ENV != "production") {
     sharedCompose = [...sharedCompose, ...[
@@ -52,30 +37,15 @@ const createReduxStore = (initialState, history) => {
   }
 
   const store = compose(...sharedCompose)(createStore)(combineReducers(joinedReducers), initialState)
-  // syncReduxAndRouter(history, store)
+
 
   return store
 
 }
 
-// @TODO: Remove wrapper for Provider when SSR support is fixed
-class Wrapper extends Component {
-  componentWillMount() {
-    this.store = createReduxStore()
-  }
 
-  render () {
-    return (
-      <Provider store={this.store}>
-        {this.props.children}
-      </Provider>
-    )
-  }
-}
-
-
-
+const wrapper = Provider
 export {
-  Wrapper,
+  wrapper,
   createReduxStore
 }

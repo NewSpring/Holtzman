@@ -1,78 +1,202 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
 
+import { GraphQL } from "../../../core/graphql"
 import { Authorized } from "../../../core/blocks"
 import { nav as navActions } from "../../../core/store"
 
-import { ScheduledTransactions, Accounts as Acc } from "../../collections"
+import {
+  transactions as transactionActions,
+  give as giveActions
+} from "../../store"
 
 import Details from "./Details"
 import Layout from "./Layout"
 
-@connect()
-@ReactMixin.decorate(ReactMeteorData)
+function mapArrayToObj(array){
+  let obj = {}
+  for (let item of array) { obj[item.id] = item }
+  return obj
+}
+
+function getSchedules(dispatch) {
+  let query = `
+    query ScheduledTransactions($mongoId: String) {
+      transactions: allScheduledFinanicalTransactions(mongoId: $mongoId) {
+        numberOfPayments
+        next
+        end
+        id
+        reminderDate
+        code
+        gateway
+        start
+        date
+        details {
+          amount
+          account {
+            name
+            description
+          }
+        }
+        payment {
+          paymentType
+          accountNumber
+          id
+        }
+        schedule {
+          value
+          description
+        }
+      }
+    }
+  `
+  return GraphQL.query(query)
+    .then(({ transactions }) => {
+      let mappedObj = {}
+
+      for (const transaction of transactions) {
+        mappedObj[transaction.id] = transaction
+      }
+
+      dispatch(transactionActions.addSchedule(mappedObj))
+
+      return transactions
+    })
+}
+
+function getAccounts(dispatch) {
+  return GraphQL.query(`
+      {
+        accounts: allFinancialAccounts(limit: 100, ttl: 86400) {
+          description
+          name
+          id
+          summary
+          image
+        }
+      }
+    `).then(result => {
+      const obj = mapArrayToObj(result.accounts.filter((x) => (x.summary)))
+      dispatch(giveActions.setAccounts(obj))
+      return result
+    })
+}
+
+const map = (store) => ({
+  schedules: store.transactions.scheduledTransactions,
+  give: store.give
+})
+
+@connect(map)
 export default class Template extends Component {
 
   state = {
-    page: 1,
-    pageSize: 20,
-    shouldUpdate: true,
-    done: false
+    loaded: false
   }
 
-  pageOnScroll = (e) => {
-    if (this.state.done) return
+  static fetchData(getStore, dispatch) {
+    let mongoId = Meteor.userId();
 
-    const { scrollHeight, clientHeight, scrollTop, offsetTop } = e.target
-
-    let percentage;
-
-    if (scrollTop && scrollHeight) {
-      percentage = scrollTop / scrollHeight
-    } else if (window.scrollY && document.body.clientHeight) {
-      percentage = window.scrollY, document.body.clientHeight
-    }
-
-    if ( percentage > 0.5 && this.state.shouldUpdate) {
-      this.setState({
-        page: this.state.page + 1,
-        shouldUpdate: false
-      });
-
-      // wait a bit to prevent paging multiple times
-      setTimeout(() => {
-        if (this.state.page * this.state.pageSize > this.data.schedules.length) {
-          this.setState({ done: true, shouldUpdate: false });
-        } else {
-          this.setState({ shouldUpdate: true });
+    return getAccounts(dispatch)
+      .then((accounts) => {
+        if (mongoId) {
+          return getSchedules(dispatch)
+            .then(() => {
+              this.setState({loaded: true})
+            })
         }
-      }, 1000);
+      })
+  }
+
+  componentDidMount(){
+    const { dispatch } = this.props
+
+    let mongoId = Meteor.userId();
+
+    return getAccounts(dispatch)
+      .then((accounts) => {
+
+        if (mongoId) {
+          return getSchedules(dispatch)
+            .then(() => {
+              this.setState({loaded: true})
+            })
+        }
+      })
+
+  }
+
+  confirm = (e) => {
+    let { value } = e.currentTarget
+    const { dispatch } = this.props
+    const { recoverableSchedules } = this.props.give
+
+    if (recoverableSchedules[value]) {
+
+      let schedule = recoverableSchedules[value]
+      const { details } = schedule
+
+      for (let fund of details) {
+        const { id, name } = fund.account
+
+        dispatch(giveActions.addTransactions({ [id]: {
+          value: Number(fund.amount.replace(/[^0-9\.]+/g, '')),
+          label: name
+        }}))
+      }
+
+      dispatch(giveActions.saveSchedule(schedule.id, {
+        // label: name,
+        frequency: schedule.frequency
+      }))
+
     }
+
+    return true
   }
 
-  getMeteorData() {
-    let subscription = Meteor.subscribe("scheduledTransactions")
-    const schedules = ScheduledTransactions.find({}, {
-      limit: this.state.page * this.state.pageSize,
-      sort: { CreatedDateTime: -1 }
-    }).fetch();
+  cancel = (e) => {
+    const { dataset } = e.currentTarget
+    const { id } = dataset
+    const { dispatch } = this.props
 
-    Meteor.subscribe("accounts")
-    let accounts = Acc.find().fetch()
+    dispatch(giveActions.deleteSchedule(id))
 
-    let ready = subscription.ready()
-
-    return {
-      schedules,
-      accounts,
-      ready
-    };
-
+    Meteor.call("give/schedule/cancel", { id }, (err, response) => {
+      console.log(err, response)
+    })
   }
+
 
   render () {
-    return <Layout data={this.data} onScroll={this.pageOnScroll} />
+    const { schedules, give } = this.props
+    const { accounts, recoverableSchedules } = give
+    let transactions = []
+    for (const transaction in schedules) {
+      transactions.push(schedules[transaction])
+    }
+
+    let mappedAccounts = []
+    for (const account in accounts) {
+      mappedAccounts.push(accounts[account])
+    }
+
+    let recovers = []
+    for (const recover in recoverableSchedules) {
+      recovers.push(recoverableSchedules[recover])
+    }
+
+    return (
+      <Layout
+        ready={this.state.loaded}
+        schedules={transactions}
+        accounts={mappedAccounts}
+        cancelSchedule={this.cancel}
+        recoverableSchedules={recovers}
+        confirm={this.confirm}
+      />
+    )
   }
 }
 

@@ -1,5 +1,9 @@
 import { Component, PropTypes} from "react"
 
+import { ImageLoader } from "../../components/loading"
+import Styles from "../../components/loading/FeedItemSkeleton.css"
+
+
 export default class Right extends Component {
 
   static propTypes = {
@@ -46,7 +50,7 @@ export default class Right extends Component {
       classes = classes.concat(this.props.classes);
     }
 
-    return classes.join(" ");
+    return classes
   }
 
   styles = () => {
@@ -69,40 +73,71 @@ export default class Right extends Component {
     return classes.join(" ")
   }
 
+  // context from ImageLoader
+  preloader() {
+    return (
+      <section className={`${this.imageclasses.join(" ")} ${Styles["load-item"]}`}>
+        {this.children}
+      </section>
+    );
+  }
+
+  // context from ImageLoader
+  renderElement() {
+    return (
+      <section className={this.imageclasses.join(" ")} style={this.style}>
+        {this.children}
+      </section>
+    );
+  }
+
   render () {
 
     const { blur } = this.props
 
+    let Wrapper = (props) => (
+      <section {...props}>{props.children}</section>
+    )
+
+    if (this.props.background) {
+      Wrapper = ImageLoader
+    }
+
     return (
-      <section
-        className={ this.props.theme || this.layoutClasses() }
-        style={ this.props.styles || this.styles() }
+
+      <Wrapper
+        src={this.props.background}
+        preloader={this.preloader}
+        renderElement={this.renderElement}
+        imageclasses={this.props.theme && this.props.theme.split(" ") || this.layoutClasses()}
+        style={this.props.styles || this.styles()}
       >
-      <div className={ this.props.ratioTheme || this.ratioClasses()}>
-        {this.props.children}
-      </div>
 
-      {() => {
-        if (this.props.outsideRatio) {
-          return this.props.outsideRatio()
-        }
-      }()}
-      {() => {
-        let styles = this.styles()
+        <div className={ this.props.ratioTheme || this.ratioClasses()}>
+          {this.props.children}
+        </div>
 
-        styles = {...styles, ...{
-            WebkitFilter: "blur(10px)",
-            filter: "blur(10px)"
-        }}
+        {() => {
+          if (this.props.outsideRatio) {
+            return this.props.outsideRatio()
+          }
+        }()}
+        {() => {
+          let styles = this.styles()
 
-        if (blur) {
-          return (
-            <div className="locked-sides locked-ends background--fill" style={styles}></div>
-          )
-        }
-      }()}
+          styles = {...styles, ...{
+              WebkitFilter: "blur(10px)",
+              filter: "blur(10px)"
+          }}
 
-      </section>
+          if (blur) {
+            return (
+              <div className="locked-sides locked-ends background--fill" style={styles}></div>
+            )
+          }
+        }()}
+
+      </Wrapper>
     )
   }
 

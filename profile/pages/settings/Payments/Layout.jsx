@@ -10,13 +10,17 @@ const Layout = ({ details, remove }) => (
         {details.map((account, key) => {
           return (
             <div key={key} className="soft-ends text-left hard-sides outlined--light outlined--bottom constrain-mobile">
-              <h6 className="soft-half-bottom flush-bottom">{account.Name}</h6>
+              <div className="display-inline-block soft-half-ends one-whole">
+                <h6 className="flush-bottom float-left">{account.name}</h6>
+                <button className="h6 flush-bottom float-right text-alert" id={account.id} onClick={remove}>Remove</button>
+              </div>
+
 
               <h5 className="hard one-whole flush-bottom">
-                {account.FinancialPaymentDetail.AccountNumberMasked}
+                {account.payment.accountNumber}
                 <span className="float-right ">
-                  <AccountType width="30px" height="20px" type={account.FinancialPaymentDetail.CreditCardTypeValue.Value}/>
-                  <button className="soft-left icon-close text-alert" id={account.Id} onClick={remove}></button>
+                  <AccountType width="30px" height="20px" type={account.payment.paymentType}/>
+
                 </span>
 
               </h5>

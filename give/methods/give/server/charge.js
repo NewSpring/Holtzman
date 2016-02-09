@@ -11,7 +11,7 @@ const charge = (token, accountName) => {
   try {
     response = Meteor.wrapAsync(gatewayCharge)(token)
   } catch (e) {
-    throw new Meteor.Error(e)
+    throw new Meteor.Error(e.message)
   }
 
   let user = Meteor.user()
@@ -136,6 +136,6 @@ const charge = (token, accountName) => {
 
 }
 
-Meteor.methods({ "Give.charge": charge })
+Meteor.methods({ "give/charge": charge })
 
 export default charge
