@@ -62,7 +62,6 @@ const step2 = (purchaseData, method, callback) => {
       return
     }
 
-    console.log(data)
     // instant transaction
     if (instant) {
 
