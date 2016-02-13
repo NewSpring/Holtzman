@@ -33,7 +33,6 @@ const step2 = (purchaseData, method, callback) => {
 
   const builder = new Builder()
   const xml = builder.buildObject(sale)
-  console.log(xml)
 
   return fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",

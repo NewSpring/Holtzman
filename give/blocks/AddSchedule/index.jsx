@@ -22,6 +22,10 @@ export default class CartContainer extends Component {
     startDate: null
   }
 
+  componentWillMount(){
+    this.props.clearTransactions()
+  }
+
   getMeteorData(){
     let alive = true;
 

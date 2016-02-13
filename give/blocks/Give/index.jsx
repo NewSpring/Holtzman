@@ -128,6 +128,11 @@ export default class Give extends Component {
 
   back = (e) => {
     e.preventDefault()
+    if (this.props.give.step === 1) {
+      this.props.dispatch(modal.hide())
+      return
+    }
+
     this.props.dispatch(giveActions.previous())
   }
 
