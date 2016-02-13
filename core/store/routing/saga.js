@@ -22,6 +22,21 @@ addSaga(function* logInitRoute() {
 
 })
 
+addSaga(function* scrollToTop(getStore) {
+
+  while (true) {
+
+    const { payload } = yield take("@@router/UPDATE_LOCATION")
+
+    console.log(payload.action)
+    if (payload.action === "PUSH") {
+      window.scrollTo(0, 0)
+    }
+
+  }
+
+})
+
 
 addSaga(function* logRoutes(getStore) {
 
