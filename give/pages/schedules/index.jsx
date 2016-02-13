@@ -106,6 +106,7 @@ export default class Template extends Component {
               this.setState({loaded: true})
             })
         }
+        this.setState({loaded: true})
       })
   }
 
@@ -123,6 +124,7 @@ export default class Template extends Component {
               this.setState({loaded: true})
             })
         }
+        this.setState({loaded: true})
       })
 
   }
