@@ -124,6 +124,7 @@ const charge = (token, accountName) => {
 
       formatedTransaction.TransactionDetails.push({
         AccountId,
+        AccountName: product.description,
         Amount: Number(product["total-amount"])
       })
     }
@@ -148,7 +149,10 @@ const charge = (token, accountName) => {
     })
   }
 
-  return response
+  const returnReponse = _.pick(response,
+    "avs-result", "order-id", "cvv-result", "result-code"
+  )
+  return returnReponse
 
 }
 
