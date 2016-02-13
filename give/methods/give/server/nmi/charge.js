@@ -46,10 +46,14 @@ const step1 = (token, callback) => {
       return
     }
 
+    console.log(data)
+
+
     if (data["result-code"] === "100") {
       callback(null, data)
       return
     }
+
     let number = Number(data["result-code"])
     let err;
     if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
