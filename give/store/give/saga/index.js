@@ -61,9 +61,10 @@ addSaga(function* chargeTransaction(getStore) {
         }
       }
 
+      let transactionResponse = {}
       // submit transaction
       try {
-        yield cps(action, token, name, id)
+        transactionResponse = yield cps(action, token, name, id)
       } catch (e) { error = e }
 
       // set error states
@@ -75,7 +76,7 @@ addSaga(function* chargeTransaction(getStore) {
         yield put(actions.setState("error"))
 
       } else {
-
+        
         // remove loading state
         yield put(actions.setState("success"))
 
@@ -88,7 +89,7 @@ addSaga(function* chargeTransaction(getStore) {
 
         // if this was a named card (as in creating a saved account)
         // lets force and update of the payment cards and set it in the store
-        if (name) {
+        if (name && transactionResponse["cvv-match"] === "M") {
           let query = `
             {
               paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${Meteor.userId()}") {
@@ -102,6 +103,7 @@ addSaga(function* chargeTransaction(getStore) {
               }
             }
           `
+
           let details = yield GraphQL.query(query)
 
           if (details && details[0]) {
