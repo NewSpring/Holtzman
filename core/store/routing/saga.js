@@ -28,7 +28,6 @@ addSaga(function* scrollToTop(getStore) {
 
     const { payload } = yield take("@@router/UPDATE_LOCATION")
 
-    console.log(payload.action)
     if (payload.action === "PUSH") {
       window.scrollTo(0, 0)
     }
