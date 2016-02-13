@@ -10,7 +10,8 @@ export default class Input extends Component {
     active: false,
     focused: false,
     error: false,
-    status: ""
+    status: "",
+    value: null
   }
 
   componentWillMount(){
