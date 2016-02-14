@@ -37,6 +37,10 @@ export default class Authorized extends Component {
 
 
   render () {
-    return this.props.children
+    if (this.props.auth) {
+      return this.props.children
+    }
+
+    return null
   }
 }
