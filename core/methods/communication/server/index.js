@@ -1,6 +1,9 @@
 
 import email from "./email"
+import slack from "./slack"
+
 
 export {
-  email
+  email,
+  slack
 }
