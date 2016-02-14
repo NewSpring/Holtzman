@@ -61,6 +61,18 @@ class SignIn extends React.Component {
     return isValid
   }
 
+  liveSavePassword = (value) => {
+    const isValid = value.length ? true : false
+
+    if (!isValid ) {
+      this.props.clear("password")
+    } else {
+      this.props.save({ password: value })
+    }
+
+    return value
+  }
+
   firstName = (value) => {
     const isValid = value.length ? true : false
 
@@ -94,13 +106,15 @@ class SignIn extends React.Component {
     const { refs } = this
     for (let input in refs) {
       const component = refs[input]
-
+      console.log(component)
       if (component.validate) {
         component.validate()
       }
     }
 
-    this.props.submit();
+    if (this.props.data.email && this.props.data.password) {
+      this.props.submit();
+    }
 
     return;
   }
@@ -141,6 +155,7 @@ class SignIn extends React.Component {
             type="password"
             errorText="Password may not be empty"
             validation={this.savePassword}
+            format={this.liveSavePassword}
             ref="password"
           />
 
