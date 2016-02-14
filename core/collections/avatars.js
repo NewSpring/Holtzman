@@ -22,7 +22,7 @@ if (typeof FS != "undefined" && FS != null) {
     // var baseUrl = 'https://' + bucket + '.s3.amazonaws.com/';
     var baseUrl = `https://s3.amazonaws.com/${bucket}`
     // Make sure the file object is mounted in a cfs
-    var fileKey = storeFolder + '/' + self.collectionName + '/' + self._id + '-' + self.name();
+    var fileKey = storeFolder + "/" + self.collectionName + "/" + self._id + "-" + self.name();
     return baseUrl + fileKey;
   };
 
@@ -37,7 +37,7 @@ if (typeof FS != "undefined" && FS != null) {
       stores: [avatarStoreLarge],
       filter: {
         allow: {
-          contentTypes: ['image/*']
+          contentTypes: ["image/*"]
         }
       }
     })
@@ -75,7 +75,7 @@ if (typeof FS != "undefined" && FS != null) {
       stores: [avatarStoreLarge],
       filter: {
         allow: {
-          contentTypes: ['image/*']
+          contentTypes: ["image/*"]
         }
       }
     }).allow({
