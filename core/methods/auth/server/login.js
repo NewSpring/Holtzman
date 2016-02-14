@@ -46,6 +46,24 @@ Meteor.methods({
         })
       }
 
+      if (process.env.NODE_ENV === "production") {
+
+        Meteor.setTimeout(() => {
+
+          let currentCount = Meteor.users.find().count()
+          let missing = `${50000 - currentCount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+          let text = `Another user signed up for a NewSpring Account! Only ${missing} to go!`
+
+
+          Meteor.call("communication/slack/send", text, "#web")
+
+        }, 10)
+        
+      }
+
+      // slack hook here
+
     }
     // ensure meteor password is same as rock's
     else {
