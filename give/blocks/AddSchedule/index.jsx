@@ -174,8 +174,6 @@ export default class CartContainer extends Component {
       return null
     }
 
-    console.log(mappedAccounts)
-
     return (
       <Layout
         schedules={schedules}
