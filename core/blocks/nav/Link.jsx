@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react"
 import ReactDom from "react-dom"
-import { Link, IndexLink } from "react-router"
+import { routeActions } from "react-router-redux"
 
 import Styles from "./nav.css"
 
@@ -33,43 +33,32 @@ export default class NavLink extends Component {
   }
 
   handleAction = (e) => {
-
+    e.preventDefault();
     const { navItem } = this.props
 
     this.props.reset()
 
     if (navItem.action && typeof navItem.action === "function") {
-      e.preventDefault();
+
       this.props.handleAction(navItem.action)
+      return
+    }
+
+    if (navItem.link) {
+      function navigate() {
+        return routeActions.push(navItem.link)
+      }
+      this.props.handleAction(navigate)
     }
   }
 
   render () {
     const iconClasses = `${this.props.navItem.icon} display-block`;
     let { navItem } = this.props
-    let Wrapper = Link
-
-    if (navItem.link === "/") {
-      Wrapper = IndexLink
-    }
-
-    if (!navItem.link) {
-      Wrapper = class ALink extends Component {
-        render() {
-          return (
-            <a href="#" {...this.props}>
-              {this.props.children}
-            </a>
-          )
-        }
-      }
-    }
-
 
 
     return (
-      <Wrapper
-        to={navItem.link}
+      <button
         className={this.linkClasses()}
         onClick={this.handleAction}
         style={{minHeight: "40px"}}
@@ -90,7 +79,7 @@ export default class NavLink extends Component {
           </div>
 
         </div>
-      </Wrapper>
+      </button>
     )
   }
 }

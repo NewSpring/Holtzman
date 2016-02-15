@@ -3,6 +3,7 @@
   Navigation store
 
 */
+
 import modalActions from "../modal"
 import likedActions from "../liked"
 import Sections from "../../blocks/sections"
@@ -72,9 +73,9 @@ const links = {
   ],
   CONTENT: [
     { id: 1, action: back, icon:"icon-arrow-back" },
-    { id: 2, action: showSections, icon:"icon-sections" },
-    { id: 3, action: false, icon:"icon-like", isActive: (props) => props.liked },
-    { id: 4, action: false, icon:"icon-share" }
+    // { id: 2, action: showSections, icon:"icon-sections" },
+    { id: 2, action: false, icon:"icon-like", isActive: (props) => props.liked },
+    { id: 3, action: false, icon:"icon-share" }
   ],
   MODAL: [
     { id: 1, action: modalActions.hide, icon:"icon-close" }
