@@ -1,5 +1,5 @@
 import "regenerator/runtime"
-import { take, put, cps } from "redux-saga"
+import { take, put, cps } from "redux-saga/effects"
 
 import { GraphQL } from "../../graphql"
 import { auth } from "../../methods"
