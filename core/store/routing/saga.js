@@ -1,6 +1,6 @@
 
 import "regenerator/runtime"
-import { take, put, cps } from "redux-saga"
+import { take, put, cps } from "redux-saga/effects"
 
 import { routing as log } from "../../methods"
 import { addSaga } from "../utilities"
