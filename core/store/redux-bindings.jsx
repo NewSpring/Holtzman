@@ -2,14 +2,14 @@ import "regenerator/runtime"
 
 import { Component, PropTypes} from "react"
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
-import { syncHistory, routeReducer } from "react-router-redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 import sagaMiddleware from "redux-saga"
 
-
 import { Global } from "../blocks"
 import { reducers, middlewares, sagas } from "./utilities"
+import { syncHistory, routeReducer } from "../store/routing"
+
 
 const createReduxStore = (initialState, history) => {
 
