@@ -375,41 +375,6 @@ addSaga(function* bindGiveAuth(geStore){
       yield put(actions.clearData())
     }
 
-    yield put(actions.saveSchedules(bulkUpdate))
-    yield put(modalActions.render(RecoverSchedules))
-
-  }
-
-}
-
-// ensure we are on a /give route
-addSaga(function* watchRoute(getStore){
-
-  while (true) {
-
-
-    let initRoute = yield take("@@router/INIT_PATH"),
-        recovered;
-
-    initRoute = initRoute.payload.path
-
-    function isGive(path) {
-      return path.split("/")[1] === "give"
-    }
-
-    if (!isGive(initRoute)) {
-      const { payload } = yield take("@@router/UPDATE_PATH")
-
-      if (isGive(payload.path)) {
-        recovered = yield* recoverTransactions(getStore)
-        break
-      }
-
-    } else {
-      recovered = yield* recoverTransactions(getStore)
-      break
-    }
-
   }
 
 })
