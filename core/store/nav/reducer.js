@@ -8,14 +8,10 @@ import modalActions from "../modal"
 import likedActions from "../liked"
 import Sections from "../../blocks/sections"
 
+import { routeActions } from "../routing"
+
 const back = () => {
-  if (typeof window != "undefined" && window != null) {
-    window.history.back()
-  }
-  return {
-    type: "FALSY",
-    payload: {}
-  }
+  return routeActions.goBack()
 }
 
 let sectionsVisible = false
