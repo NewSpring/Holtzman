@@ -83,7 +83,10 @@ export default class SideModal extends Component {
 
   render () {
 
-    let slide = "transition.slideLeftIn"
+    let slide = {
+      opacity: [1, 0],
+      translateZ: 0
+    }
 
     const { close, component, props, visible } = this.props
 
@@ -92,6 +95,15 @@ export default class SideModal extends Component {
     if (!visible || !component) {
       return <div></div>
     }
+
+    if (typeof window != "undefined" && window != null) {
+      if (window.matchMedia("(max-width: 480px)").matches) {
+        slide.translateY = [0, 80]
+      } else {
+        slide.translateX = [0, -20]
+      }
+    }
+
 
     return (
       <div className="panel overlay--solid-dark" onClick={close}>
