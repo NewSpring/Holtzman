@@ -172,6 +172,7 @@ export default class SubFund extends Component {
           saveFund={this.saveFund}
           format={this.saveAmount}
           preFill={this.props.preFill}
+          donate={this.props.donate}
         />
       )
     }
