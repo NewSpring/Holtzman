@@ -17,8 +17,7 @@ import {
   take,
   put,
   cancel,
-  SagaCancellationException
-} from "redux-saga"
+} from "redux-saga/effects"
 
 
 // addSaga(function* dataSync(getState) {
@@ -56,5 +55,4 @@ export {
   call,
   join,
   cancel,
-  SagaCancellationException
 }
