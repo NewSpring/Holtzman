@@ -136,10 +136,18 @@ api.call = function (method, endpoint, data, callback) {
 
     })
     .then((data) => {
-      callback(null, data)
+      if (callback) {
+        callback(null, data)
+      }
+
+      return data
+
     })
     .catch((er) => {
-      callback(er)
+      if (callback) {
+        callback(er)
+      }
+      return er
     })
 }
 
