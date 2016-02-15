@@ -3,8 +3,8 @@ import "./saga"
 
 // Constants
 // taken from https://github.com/reactjs/react-router-redux/blob/master/src/index.js
-const TRANSITION = '@@router/TRANSITION'
-const UPDATE_LOCATION = '@@router/UPDATE_LOCATION'
+const TRANSITION = "@@router/TRANSITION"
+const UPDATE_LOCATION = "@@router/UPDATE_LOCATION"
 
 const SELECT_LOCATION = state => state.routing.location
 
@@ -15,11 +15,11 @@ function transition(method) {
   })
 }
 
-export const push = transition('push')
-export const replace = transition('replace')
-export const go = transition('go')
-export const goBack = transition('goBack')
-export const goForward = transition('goForward')
+export const push = transition("push")
+export const replace = transition("replace")
+export const go = transition("go")
+export const goBack = transition("goBack")
+export const goForward = transition("goForward")
 
 export const routeActions = { push, replace, go, goBack, goForward }
 
