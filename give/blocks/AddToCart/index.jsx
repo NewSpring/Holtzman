@@ -138,6 +138,7 @@ export default class CartContainer extends Component {
         preFill={this.preFillValue}
         total={total}
         transactions={{...this.props.give.transactions}}
+        donate={this.props.donate}
       />
 
     )
