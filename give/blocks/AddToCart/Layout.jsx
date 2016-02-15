@@ -81,6 +81,7 @@ export default class Layout extends Component {
       total,
       transactions,
       monentize,
+      donate,
     } = this.props
 
     let accountsCount = []
@@ -128,6 +129,7 @@ export default class Layout extends Component {
                     update={this.update}
                     remove={this.remove}
                     instance={key}
+                    donate={donate}
                   />
                 )
               }

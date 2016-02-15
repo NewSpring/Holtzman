@@ -51,7 +51,9 @@ function getAccount(name, accounts){
 export default class Template extends Component {
 
   componentWillMount() {
+
     this.props.dispatch(navActions.setLevel("CONTENT"))
+
   }
 
   componentWillUnmount() {
@@ -72,7 +74,7 @@ export default class Template extends Component {
   render () {
 
     const account = getAccount(decodeURI(this.props.params.name), this.props.accounts)
-    
+
     if (!account) {
       return <Loading/>
     }
