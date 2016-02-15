@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react"
 import ReactDom from "react-dom"
-import { routeActions } from "react-router-redux"
+import { routeActions } from "../../store/routing"
 
 import Styles from "./nav.css"
 
