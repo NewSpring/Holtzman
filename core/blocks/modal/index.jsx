@@ -18,8 +18,13 @@ const map = (state) => ({
 @connect(map)
 export default class SideModalContainer extends Component {
 
-  componentWillReceiveProps(nextProps) {
+  componentDidMount(){
+    if (!this.props.modal.props.keepNav) {
+      this.props.dispatch(navActions.setLevel("MODAL"))
+    }
+  }
 
+  componentWillReceiveProps(nextProps) {
     if (nextProps.modal.visible && nextProps.navigation.level != "MODAL" && nextProps.modal.props.keepNav != true) {
       this.props.dispatch(navActions.setLevel("MODAL"))
     }
