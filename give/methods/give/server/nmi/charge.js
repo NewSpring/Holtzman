@@ -60,6 +60,12 @@ const step1 = (token, callback) => {
 
     let number = Number(data["result-code"])
     let err;
+    
+    // special mapping to ensure duplicates
+    if (data["result-text"].indexOf("Duplicate") > -1) {
+      number = 430
+    }
+
     if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
       err = ErrorCodes[number]
     } else if (ErrorCodes[number] === "result-text")  {
