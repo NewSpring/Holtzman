@@ -44,7 +44,7 @@ export default class SideModalContainer extends Component {
         }).join(" ")
 
       } else if (!this.props.modal.visible && nextProps.modal.visible) {
-        root.className += "modal--opened"
+        root.className += " modal--opened"
       }
     }
 

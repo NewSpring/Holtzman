@@ -3,12 +3,13 @@
   z-index: 100;
 }
 
-:local(.nav-bar a) {
+:local(.nav-bar button) {
   flex-grow:1;
 }
 
 :local(.nav-bar button) {
   flex-grow:1;
+  position: relative;
 }
 
 :local(.nav-bar i) {

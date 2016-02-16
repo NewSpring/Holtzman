@@ -4,7 +4,8 @@ import { order as gatewayOrder } from "./nmi"
 import createSchedule from "./createSchedule"
 
 
-const order = (orderData, instant) => {
+function order(orderData, instant){
+
 
   let user = Meteor.user()
   // default to sale
@@ -36,6 +37,15 @@ const order = (orderData, instant) => {
     }
   }
 
+  // add in IP address
+  let { connection } = this
+  let ip = connection.clientAddress
+
+  if (connection.httpHeaders && connection.httpHeaders["x-forwarded-for"]) {
+    ip = connection.httpHeaders["x-forwarded-for"]
+  }
+
+  orderData["ip-address"] = ip
 
   let response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
 

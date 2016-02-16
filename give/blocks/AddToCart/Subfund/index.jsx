@@ -119,7 +119,7 @@ export default class SubFund extends Component {
       // remove transaction
       if (this.state.fund) {
         this.props.clearTransaction(this.state.id)
-        this.props.remove(this.props.instance, id)
+        this.props.remove(this.props.instance, this.state.id)
       }
 
       // this.setState({
@@ -172,6 +172,7 @@ export default class SubFund extends Component {
           saveFund={this.saveFund}
           format={this.saveAmount}
           preFill={this.props.preFill}
+          donate={this.props.donate}
         />
       )
     }

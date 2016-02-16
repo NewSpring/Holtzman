@@ -22,8 +22,8 @@ const Layout = ({ account }) => (
       <div className="constrain-copy soft@lap-and-up">
         <div className="soft soft-double-bottom soft-double-top@lap-and-up">
 
-          <h2>{account.PublicName}</h2>
-          <div dangerouslySetInnerHTML={{__html: account.PublicDescription}}>
+          <h2>{account.name}</h2>
+          <div dangerouslySetInnerHTML={{__html: account.description}}>
 
           </div>
         </div>
@@ -32,7 +32,7 @@ const Layout = ({ account }) => (
       <div className="background--light-secondary">
         <div className="constrain-copy soft-double@lap-and-up">
           <div className="soft soft-double-bottom soft-double-top@lap-and-up">
-            <AddToCart accounts={[account]} />
+            <AddToCart accounts={[account]} donate={true} />
           </div>
         </div>
       </div>

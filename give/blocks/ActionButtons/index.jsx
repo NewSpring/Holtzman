@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
 
+import { GraphQL } from "../../../core/graphql"
 import { OnBoard } from "../../../core/blocks"
 
 
@@ -15,12 +15,30 @@ import {
 
 import Give from "../Give"
 import { AccountType } from "../../components"
-import { PaymentDetails } from "../../collections"
 
 import { give as giveActions } from "../../store"
 
-
 import { PrimaryButton, SecondaryButton, Guest } from "./Buttons"
+
+
+function getPaymentDetails(id, dispatch) {
+
+  let query = `
+    {
+      paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${id}") {
+        name
+        id
+        date
+        payment {
+          accountNumber
+          paymentType
+        }
+      }
+    }
+  `
+  return GraphQL.query(query)
+    .then(({ paymentDetails }) => (paymentDetails[0]))
+}
 
 /*
 
@@ -38,8 +56,11 @@ const map = (store) => ({
 @connect(map)
 export default class GiveNow extends Component {
 
-  getMeteorData() {
-    let paymentDetails
+  state = {
+    paymentDetails: false,
+  }
+
+  componentDidMount(){
 
     const id = Meteor.userId()
     const { dispatch, savedAccount } = this.props
@@ -50,7 +71,9 @@ export default class GiveNow extends Component {
           dispatch(giveActions.setAccount(paymentDetails))
         })
     }
+
   }
+
 
   buttonClasses = () => {
     let classes = ["btn"]
@@ -89,7 +112,7 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(giveActions.setTransactionType("default"))
 
-    if (this.data.authorized) {
+    if (this.props.authorized) {
       this.props.dispatch(modal.render(Give))
     } else {
       this.props.dispatch(modal.render(OnBoard, {
@@ -133,11 +156,11 @@ export default class GiveNow extends Component {
       let { accountNumber } = details.payment
       accountNumber = accountNumber.slice(-4).trim()
 
-      text += ` using ${AccountNumberMasked}`
+      text += ` using ${accountNumber}`
 
     }
 
-    if (!this.data.authorized) {
+    if (!this.props.authorized) {
       text = "Sign In"
     }
 
@@ -150,21 +173,16 @@ export default class GiveNow extends Component {
     if (this.props.savedAccount && this.props.authorized && !this.props.hideCard) {
       const detail = this.props.savedAccount.payment
 
-      if (details.FinancialPaymentDetail.CurrencyTypeValue &&
-        details.FinancialPaymentDetail.CurrencyTypeValue.Description === "Credit Card"
-      ) {
+      if (detail.paymentType && detail.paymentType === "ACH") {
         return (
-          // replace with SVG
-          <AccountType width="30px" height="20px" type={details.FinancialPaymentDetail.CreditCardTypeValue.Value}/>
-        )
-      } else {
-
-        return (
-          // replace with SVG
           <AccountType width="30px" height="20px" type="Bank"/>
         )
-
+      } else if (detail.paymentType) {
+        return (
+          <AccountType width="30px" height="20px" type={detail.paymentType} />
+        )
       }
+
     }
 
   }
@@ -184,7 +202,7 @@ export default class GiveNow extends Component {
           style={this.props.style || {}}
         />
         {() => {
-          if (!this.data.authorized) {
+          if (!this.props.authorized) {
             return (
               <SecondaryButton
                 disabled={this.props.disabled}
@@ -195,7 +213,7 @@ export default class GiveNow extends Component {
 
         }()}
         {() => {
-          if (!this.data.authorized && !this.props.disabledGuest) {
+          if (!this.props.authorized && !this.props.disabledGuest) {
             return (
               <Guest
                 disabled={this.props.disabled}

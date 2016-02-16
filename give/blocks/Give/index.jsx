@@ -115,7 +115,7 @@ export default class Give extends Component {
 
   goBack = (e) => {
     e.preventDefault();
-    if (typeof window != undefined && window != null) {
+    if (typeof window != "undefined" && window != null) {
       window.history.back()
     }
 
@@ -128,6 +128,11 @@ export default class Give extends Component {
 
   back = (e) => {
     e.preventDefault()
+    if (this.props.give.step === 1) {
+      this.props.dispatch(modal.hide())
+      return
+    }
+
     this.props.dispatch(giveActions.previous())
   }
 
@@ -175,6 +180,7 @@ export default class Give extends Component {
       errors,
       step,
       transactions,
+      schedules,
       total,
       savedAccount,
       state,
@@ -258,6 +264,7 @@ export default class Give extends Component {
               total={total}
               campuses={campuses}
               states={states}
+              schedules={schedules}
             >
               <Controls.Progress
                 steps={4}

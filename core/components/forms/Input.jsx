@@ -10,7 +10,8 @@ export default class Input extends Component {
     active: false,
     focused: false,
     error: false,
-    status: ""
+    status: "",
+    value: null
   }
 
   componentWillMount(){
@@ -23,12 +24,37 @@ export default class Input extends Component {
     if (this.props.autofocus) {
       this.refs["apollos-input"].focus()
     }
+
+
+    // one day, I dream of a universal browser auto-fill event
+    // until then. I'll keep on checking
+    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    this.interval = setInterval(() => {
+
+      if (this._previousValue === target.value || !target.value) {
+        return
+      }
+
+      if (!this._previousValue && target.value && !this.state.focused) {
+        this.setValue(target.value)
+      }
+
+      this._previousValue = target.value;
+
+    }, 20)
+
   }
 
   componentWillUpdate(nextProps){
     if (this.props.defaultValue != nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue)
       this.setState({focused: false})
+    }
+  }
+
+  componentWillUnmount(){
+    if (this.interval) {
+      clearInterval(this.interval)
     }
   }
 

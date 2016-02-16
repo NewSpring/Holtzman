@@ -8,6 +8,8 @@ import sections from "./sections"
 import topics from "./topics"
 import campuses from "./campuses"
 import collections from "./collections"
+import routing from "./routing"
+
 
 import {
   join,
@@ -16,8 +18,7 @@ import {
   take,
   put,
   cancel,
-  SagaCancellationException
-} from "redux-saga"
+} from "redux-saga/effects"
 
 
 // addSaga(function* dataSync(getState) {
@@ -55,5 +56,4 @@ export {
   call,
   join,
   cancel,
-  SagaCancellationException
 }

@@ -38,6 +38,7 @@ export default class NavContainer extends Component {
         reset={this.reset}
         modal={this.props.modal}
         liked={this.props.liked}
+        key="navigation"
       />
     )
 

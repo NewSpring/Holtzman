@@ -98,7 +98,7 @@ export default class Layout extends Component {
 
   render () {
 
-    const { transactions, ready, alive } = this.props.data
+    const { transactions, ready } = this.props
 
 
     return (
@@ -125,11 +125,11 @@ export default class Layout extends Component {
           <div className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable" ref="history">
             {() => {
 
-              if (!alive) {
-                return <Offline />
-              }
+              // if (!alive) {
+              //   return <Offline />
+              // }
 
-              if (!transactions || !transactions.length && !ready) {
+              if (!transactions.length && !ready) {
                 // loading
                 return (
                   <div className="text-center soft">
@@ -137,7 +137,7 @@ export default class Layout extends Component {
                   </div>
 
                 )
-              } else if (!transactions || !transactions.length && ready) {
+              } else if (!transactions.length && ready) {
                 return (
                   <div className="text-left soft-ends">
                     <p>

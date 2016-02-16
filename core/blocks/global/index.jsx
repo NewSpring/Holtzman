@@ -1,6 +1,7 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
+import { GraphQL } from "../../graphql"
 import Nav from "../nav"
 import Modal from "../modal"
 import { People, Likes } from "../../collections"
@@ -12,39 +13,6 @@ import {
   campuses as campusActions,
 } from "../../store"
 
-import { GraphQL } from "../../graphql"
-
-
-const bindMeteorPerson = (props) => {
-  const { dispatch } = props
-
-  let handle = {}
-  Tracker.autorun((computation) => {
-    handle = computation
-
-    const user = Meteor.user()
-    if (user) {
-      Meteor.subscribe("people")
-      dispatch(onBoardActions.person(People.find().fetch()[0]))
-
-      Meteor.subscribe("likes")
-      let likes = Likes.find().fetch().map((like) => like.entryId);
-
-      dispatch(likedActions.set(likes));
-
-      Meteor.subscribe("userData");
-      let topics = Meteor.user().topics;
-      dispatch(topicActions.set(topics));
-
-    }
-
-    props.dispatch(onBoardActions.authorize(user != null))
-
-  })
-
-  return { handle }
-
-}
 
 const App = ({ children, className }) => (
   <div className="
@@ -169,8 +137,11 @@ export default class Global extends Component {
 
   }
 
+
   componentWillUnmount(){
-    this.handle.stop()
+    if (this.handle) {
+      this.handle.stop()
+    }
   }
 
   render() { return <App {...this.props} /> }
