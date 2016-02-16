@@ -27,6 +27,10 @@ export default class Card extends Component {
       classes = classes.concat(this.props.itemClasses);
     }
 
+    if (this.props.linkAll) {
+      classes.push("background--light-primary")
+    }
+
     return classes.join(" ");
   }
 
@@ -49,6 +53,11 @@ export default class Card extends Component {
 
     if (this.props.image && this.props.image.full) {
       defaultStyles.backgroundImage = `url(${this.props.image.url})`
+    }
+
+    if (this.props.linkAll) {
+      defaultStyles.color = "inherit"
+      defaultStyles.textDecoration = "none"
     }
 
     return defaultStyles
@@ -131,6 +140,27 @@ export default class Card extends Component {
     if (this.props.mobile ===  false) {
       wrapperClasses += " visuallyhidden@handheld"
     }
+
+    if (this.props.linkAll) {
+      return (
+        <Wrapper
+          className={theme || this.cardClasses()}
+          style={styles || this.styles() }
+          to={link}
+        >
+          <div className={wrapperClasses} >
+            {this.createImage()}
+          </div>
+          <div
+            className={ itemTheme || this.itemClasses() }
+            style={itemStyles}
+          >
+            {this.props.children}
+          </div>
+        </Wrapper>
+      )
+    }
+
     return (
       <div
         className={theme || this.cardClasses()}

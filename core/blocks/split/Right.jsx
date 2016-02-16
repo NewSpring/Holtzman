@@ -1,5 +1,5 @@
 import { Component, PropTypes} from "react"
-
+import { Link } from "react-router"
 import { ImageLoader } from "../../components/loading"
 import Styles from "../../components/loading/FeedItemSkeleton.css"
 
@@ -101,6 +101,23 @@ export default class Right extends Component {
 
     if (this.props.background) {
       Wrapper = ImageLoader
+    }
+
+    if (this.props.link) {
+      let OldWrapper = Wrapper
+      Wrapper = (props) => (
+        <Link
+          to={this.props.link}
+          className={this.props.theme || this.layoutClasses().join(" ")}
+        >
+          <OldWrapper {...props} imageclasses={[
+            "background--fill",
+            "locked-ends",
+            "locked-sides",
+            "hard"
+          ]} />
+        </Link>
+      )
     }
 
     return (
