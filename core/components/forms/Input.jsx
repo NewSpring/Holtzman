@@ -70,9 +70,14 @@ export default class Input extends Component {
       target.value = newValue;
 
     }
+
+    if (this.props.onChange && typeof(this.props.onChange) === "function" ) {
+      this.props.onChange(target.value, target, e)
+    }
+
   }
 
-  validate = () => {
+  validate = (e) => {
 
     const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
     const value = target.value
@@ -90,10 +95,14 @@ export default class Input extends Component {
 
     if (this.props.validation && typeof(this.props.validation) === "function") {
       this.setState({
-        error: !this.props.validation(value, target)
+        error: !this.props.validation(value, target, e)
       });
-
     }
+
+    if (this.props.onBlur && typeof(this.props.onBlur) === "function") {
+      this.props.onBlur(value, target, e)
+    }
+
   }
 
   focus = (event) => {
@@ -197,7 +206,6 @@ export default class Input extends Component {
           onChange={this.format}
           defaultValue={this.props.defaultValue}
           style={this.style()}
-          {...this.props}
         />
 
         {this.renderHelpText()}

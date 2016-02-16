@@ -29,7 +29,8 @@ export default class Payment extends Component {
           type="tel"
           errorText="Please enter your account number"
           defaultValue={payment.accountNumber}
-          validation={this.saveData}
+          onChange={this.saveData}
+          validation={this.validate}
           ref="accountNumber"
           autofocus={true}
         />
@@ -40,7 +41,8 @@ export default class Payment extends Component {
           type="tel"
           errorText="Please enter your routing number"
           defaultValue={payment.accountNumber}
-          validation={this.saveData}
+          onChange={this.saveData}
+          validation={this.validate}
           ref="routingNumber"
         />
 
@@ -51,7 +53,8 @@ export default class Payment extends Component {
               ref="accountName"
               id="accountName"
               label="Bank Name"
-              validation={this.saveData}
+              onChange={this.saveData}
+              validation={this.validate}
               defaultValue={payment.accountName}
               errorText="Please enter your bank number"
             />
@@ -62,7 +65,8 @@ export default class Payment extends Component {
               ref="accountType"
               id="accountType"
               label="Account Type"
-              validation={this.saveData}
+              onChange={this.saveData}
+              validation={this.validate}
               defaultValue={payment.accountType}
               errorText="Please choose your account type"
               includeBlank={true}
@@ -79,7 +83,7 @@ export default class Payment extends Component {
     )
   }
 
-  saveData = (value, target) => {
+  validate = (value, target) => {
     const { id } = target
 
     let isValid = false
@@ -96,13 +100,19 @@ export default class Payment extends Component {
 
     isValid = validationMap[id](value)
 
+    return isValid
+  }
+
+  saveData = (value, target) => {
+    const { id } = target
+
+    let isValid = this.validate(value, target)
+
     if (isValid) {
       this.props.save({ payment: { [id]: value }})
     } else {
       this.props.clear("payment", id)
     }
-
-    return isValid
 
   }
 
@@ -157,7 +167,8 @@ export default class Payment extends Component {
           errorText="Please enter your card number"
           defaultValue={payment.cardNumber}
           format={Format.creditCard}
-          validation={this.saveData}
+          onChange={this.saveData}
+          validation={this.validate}
           ref="cardNumber"
         />
         <div className="grid">
@@ -170,6 +181,7 @@ export default class Payment extends Component {
               errorText="Please enter a valid expiration number"
               defaultValue={payment.expiration}
               format={this.formatExp}
+              onChange={this.saveData}
               validation={(value) => (value.length > 0)}
               ref="expiration"
               data-expiry-input={true}
@@ -183,7 +195,8 @@ export default class Payment extends Component {
               type="number"
               errorText="Please enter a valid ccv number"
               defaultValue={payment.ccv}
-              validation={this.saveData}
+              onChange={this.saveData}
+              validation={this.validate}
               ref="ccv"
             />
           </div>

@@ -2,7 +2,8 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 
-import { onBoard as onBoardActions, modal, routing as routeActions } from "../../store"
+import { onBoard as onBoardActions, modal } from "../../store"
+import { routeActions } from "../../store/routing"
 import OnBoard from "../onBoard"
 
 import { People } from "../../collections"
