@@ -146,6 +146,7 @@ class SignIn extends React.Component {
             validation={this.isEmail}
             defaultValue={this.props.data.email}
             ref="email"
+            autofocus={true}
           />
 
           <Forms.Input
