@@ -38,6 +38,25 @@ const initial = {
     name: null, // name of card
   },
 
+  state: "default", // "default", "loading", "submit", "error", "success"
+  attempts: 0, // spam protection (auto calculated)
+  reminderDate: null, // Date string for the next reminder
+
+  errors: {
+    // <id>: {
+    //   message: "Card is declined"
+    // }
+  },
+
+  savedAccount: {
+    id: null, // Id of saved account to charge
+    payment: {
+      accountNumber: null, // accountNumber to be shown (full, not just last four)
+      paymentType: null, // type of card
+    },
+    name: null, // name of card
+  },
+
   accounts: {
     // <accountId>: Name
   },

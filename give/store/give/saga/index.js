@@ -1,7 +1,7 @@
 import "regenerator/runtime"
 import ReactDOM from "react-dom"
 import Moment from "moment"
-import { take, put, cps } from "redux-saga"
+import { take, put, cps } from "redux-saga/effects"
 
 import { GraphQL } from "../../../../core/graphql"
 import { addSaga } from "../../../../core/store/utilities"
@@ -22,7 +22,7 @@ addSaga(function* chargeTransaction(getStore) {
 
   while (true) {
     let { state } = yield take(types.SET_STATE)
-    let { give } = getStore(),
+    let { give, campuses } = getStore(),
         name = give.data.payment.name,
         action = charge,
         error = false,
@@ -34,7 +34,7 @@ addSaga(function* chargeTransaction(getStore) {
       yield put(actions.loading())
 
       // personal info is ready to be submitted
-      const formattedData = formatPersonDetails(give)
+      const formattedData = formatPersonDetails(give, campuses)
 
       if (formattedData.savedAccount && Object.keys(give.schedules).length) {
         // wrap the function for the same api
@@ -61,9 +61,10 @@ addSaga(function* chargeTransaction(getStore) {
         }
       }
 
+      let transactionResponse = {}
       // submit transaction
       try {
-        yield cps(action, token, name, id)
+        transactionResponse = yield cps(action, token, name, id)
       } catch (e) { error = e }
 
       // set error states
@@ -88,7 +89,7 @@ addSaga(function* chargeTransaction(getStore) {
 
         // if this was a named card (as in creating a saved account)
         // lets force and update of the payment cards and set it in the store
-        if (name) {
+        if (name && transactionResponse["cvv-match"] === "M") {
           let query = `
             {
               paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${Meteor.userId()}") {
@@ -102,6 +103,7 @@ addSaga(function* chargeTransaction(getStore) {
               }
             }
           `
+
           let details = yield GraphQL.query(query)
 
           if (details && details[0]) {
@@ -117,9 +119,11 @@ addSaga(function* chargeTransaction(getStore) {
 })
 
 
-function* submitPersonDetails(give, autoSubmit) {
+function* submitPersonDetails(give, campuses, autoSubmit) {
+
+
   // personal info is ready to be submitted
-  const formattedData = formatPersonDetails(give)
+  const formattedData = formatPersonDetails(give, campuses)
 
   /*
 
@@ -192,13 +196,13 @@ addSaga(function* createOrder(getStore) {
 
     */
     const { step } = yield take(types.SET_PROGRESS)
-    let { give } = getStore()
+    let { give, campuses } = getStore()
 
 
     if (step === 4 || (give.step - 1) === 2) {
 
       // set people data and store transaction id
-      yield* submitPersonDetails(give, step === 4)
+      yield* submitPersonDetails(give, campuses, step === 4)
 
 
     } else if ((give.step - 1) === 3) {
@@ -331,20 +335,19 @@ addSaga(function* watchRoute(getStore){
 
   while (true) {
 
-
-    let initRoute = yield take("@@router/INIT_PATH"),
+    let state = getStore();
+    let { pathname } = state.routing.location,
         recovered;
-
-    initRoute = initRoute.payload.path
 
     function isGive(path) {
       return path.split("/")[1] === "give"
     }
 
-    if (!isGive(initRoute)) {
-      const { payload } = yield take("@@router/UPDATE_PATH")
+    if (!isGive(pathname)) {
+      const { payload } = yield take("@@router/UPDATE_LOCATION")
 
-      if (isGive(payload.path)) {
+      if (isGive(payload.pathname)) {
+
         recovered = yield* recoverTransactions(getStore)
         break
       }

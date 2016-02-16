@@ -3,10 +3,10 @@ import { PropTypes } from "react"
 import { Forms } from "../../../../core/components"
 import Styles from "../styles.css"
 
-const Primary = ({ classes, accounts, state, preFill, saveFund, format }) => (
+const Primary = ({ classes, accounts, state, preFill, saveFund, format, donate }) => (
   <div>
     <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-      I'd like to give
+      I'd like to { donate ? "donate" : "give" }
     </h3>
 
     <Forms.Input

@@ -80,6 +80,19 @@ Meteor.methods({
             }
           }, () => {
 
+            // @TODO Account creation email
+            // Meteor.call("")
+
+            if (process.env.NODE_ENV === "production") {
+              let currentCount = Meteor.users.find().count()
+              let missing = `${50000 - currentCount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+              let text = `Another user signed up for a NewSpring Account! Only ${missing} to go!`
+
+
+              Meteor.call("communication/slack/send", text, "#web")
+            }
+
           })
         })
       })

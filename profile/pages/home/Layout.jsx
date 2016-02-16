@@ -11,7 +11,7 @@ const SettingsLink = () => (
   </Link>
 )
 
-const Layout = ({ photo, person, onToggle, content }) => (
+const Layout = ({ photo, person, onToggle, content, onUpload }) => (
   <Split nav={true}>
 
     <Meta
@@ -28,7 +28,7 @@ const Layout = ({ photo, person, onToggle, content }) => (
       outsideRatio={SettingsLink}
     >
       <div className="soft one-whole">
-        <div
+        <label htmlFor="file"
           className="background--fill ratio--square round two-fifths display-inline-block"
           style={{ backgroundImage: `url(${photo})`}}
         ></div>

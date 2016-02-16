@@ -2,9 +2,9 @@ const Future = Npm.require("fibers/future");
 
 
 Meteor.methods({
-  'graphql.transport': function(query, variables, operationName) {
+  'graphql.transport': function(query, vars, operationName) {
     check(query, String);
-    check(variables, Match.OneOf(Object, undefined, null));
+    check(vars, Match.OneOf(Object, undefined, null));
     check(operationName, Match.OneOf(String, undefined, null));
 
     variables = {...variables, ...{
@@ -14,8 +14,8 @@ Meteor.methods({
     const payload = { query, variables, operationName };
     const f = new Future();
 
-    // let url = process.env.NODE_ENV === "production" ? "http://api.newspring.cc" : "http://localhost:8080"
-    let url = "http://api.newspring.cc"
+    let url = process.env.NODE_ENV === "production" ? "http://api.newspring.cc" : "http://localhost:8888"
+    // let url = "http://api.newspring.cc"
     fetch(url, {
         method: "POST",
         headers: {

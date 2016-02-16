@@ -31,9 +31,16 @@ const step2 = (purchaseData, method, callback) => {
   }
 
 
+  let instant = false
+  // if we are using a customer vault, no need for a redirect-url
+  if (purchaseData["customer-vault-id"] && method === "add-subscription") {
+    delete sale[method]["redirect-url"]
+    instant = true
+  }
+
+
   const builder = new Builder()
   const xml = builder.buildObject(sale)
-  console.log(xml)
 
   return fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",
@@ -54,7 +61,6 @@ const step2 = (purchaseData, method, callback) => {
       return
     }
 
-    console.log(data)
     // instant transaction
     if (instant) {
 

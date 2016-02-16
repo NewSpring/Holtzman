@@ -25,7 +25,11 @@ const createReduxStore = (initialState, history) => {
 
   const reduxRouterMiddleware = syncHistory(history)
   let sharedCompose = [
-    applyMiddleware(...sharedMiddlewares, sagaMiddleware(...convertedSagas), reduxRouterMiddleware),
+    applyMiddleware(
+      ...sharedMiddlewares,
+      sagaMiddleware(...convertedSagas),
+      reduxRouterMiddleware
+    ),
   ]
 
 
@@ -37,7 +41,6 @@ const createReduxStore = (initialState, history) => {
   }
 
   const store = compose(...sharedCompose)(createStore)(combineReducers(joinedReducers), initialState)
-
 
   return store
 

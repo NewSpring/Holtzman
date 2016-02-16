@@ -45,6 +45,7 @@ export default class Give extends Component {
   }
 
 
+
   componentWillUnmount(){
     if (this.props.give.state != "default") {
       this.props.dispatch(giveActions.clearData())
@@ -128,6 +129,11 @@ export default class Give extends Component {
 
   back = (e) => {
     e.preventDefault()
+    if (this.props.give.step === 1) {
+      this.props.dispatch(modal.hide())
+      return
+    }
+
     this.props.dispatch(giveActions.previous())
   }
 
@@ -175,6 +181,7 @@ export default class Give extends Component {
       errors,
       step,
       transactions,
+      schedules,
       total,
       savedAccount,
       state,
@@ -258,6 +265,7 @@ export default class Give extends Component {
               total={total}
               campuses={campuses}
               states={states}
+              schedules={schedules}
             >
               <Controls.Progress
                 steps={4}

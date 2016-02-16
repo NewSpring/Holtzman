@@ -21,7 +21,7 @@ class Template extends Component {
   render() {
     const { person } = this.props
     let { photo } = person
-    photo = photo ? `//core-rock.newspring.cc/${photo}` : null
+    // photo = photo ? `//core-rock.newspring.cc/${photo}` : null
 
     return (
       <Layout photo={photo} person={person} >

@@ -49,7 +49,7 @@ const Layout = ({ alive, accounts }) => (
       <div className="soft-half soft-sides@portable soft-double-sides@anchored">
 
         <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
-          Or, give to one of our campaigns...
+          Learn more about our campaigns...
         </h4>
         <div className="grid">
           {() => {

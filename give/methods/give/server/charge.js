@@ -1,6 +1,8 @@
 
 /*global Meteor */
 
+import { api, parseEndpoint } from "../../../../core/util/rock"
+
 import { TransactionReciepts } from "../../../collections/transactions"
 import { charge as gatewayCharge } from "./nmi"
 
@@ -87,13 +89,20 @@ const charge = (token, accountName) => {
       }
     }
 
-    if (accountName) {
+    // handle CVV failures (CVV is requried for saved accounts)
+    // if a user tried to save the card, but the CVV is wrong, we need to
+    // update the UI to let the user know it failed,
+    // and make sure we don't save the card
+    if (response["cvv-result"] === "M" && accountName) {
+
       formatedTransaction.meta.FinancialPersonSavedAccounts = {
         Name: accountName,
         ReferenceNumber: response["customer-vault-id"],
         TransactionCode: response["transaction-id"]
       }
+
     }
+
 
     if (response.billing["cc-number"]) {
       formatedTransaction.FinancialPaymentDetail = CC
@@ -106,8 +115,23 @@ const charge = (token, accountName) => {
       response.product = [ response.product ]
     }
     for (let product of response.product) {
+      let endpoint = parseEndpoint(`
+        FinancialAccounts?
+          $filter=ParentAccountId eq ${Number(product["product-code"])} and
+          CampusId eq ${Number(response["merchant-defined-field-2"])}
+      `)
+
+      let AccountId = api.get.sync(endpoint)
+
+      if (AccountId.length) {
+        AccountId = AccountId[0].Id
+      } else {
+        AccountId = Number(product["product-code"])
+      }
+
       formatedTransaction.TransactionDetails.push({
-        AccountId: Number(product["product-code"]),
+        AccountId,
+        AccountName: product.description,
         Amount: Number(product["total-amount"])
       })
     }
@@ -132,7 +156,10 @@ const charge = (token, accountName) => {
     })
   }
 
-  return response
+  const returnReponse = _.pick(response,
+    "avs-result", "order-id", "cvv-result", "result-code"
+  )
+  return returnReponse
 
 }
 

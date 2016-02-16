@@ -12,8 +12,6 @@ import {
   campuses as campusActions,
 } from "../../store"
 
-import { GraphQL } from "../../graphql"
-
 
 const bindMeteorPerson = (props) => {
   const { dispatch } = props
@@ -140,8 +138,9 @@ export default class Global extends Component {
     const { dispatch } = this.props
     const user = Meteor.userId()
 
-    if (!this.handle) {
-      this.handle = bindLogout(dispatch)
+    if (user) {
+      dispatch(onBoardActions.authorize(true))
+      return getUser(user, dispatch)
     }
 
     let query = `
