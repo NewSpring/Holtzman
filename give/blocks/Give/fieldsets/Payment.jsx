@@ -137,7 +137,7 @@ export default class Payment extends Component {
       return save(`${str}/`)
     }
 
-    if (str.length === 4 && (lastNumber === "2" || lastNumber === "/")) {
+    if (str.length === 4 && (lastNumber === "/")) {
       return save(str.slice(0, 3))
     }
 
