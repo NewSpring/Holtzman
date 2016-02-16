@@ -18,7 +18,9 @@ const Layout = ({ alive, accounts }) => (
     />
 
     <Right
-      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg">
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"
+      link="/give/recurring"
+    >
     </Right>
 
     <Left scroll={true} classes={["background--light-secondary"]} >
