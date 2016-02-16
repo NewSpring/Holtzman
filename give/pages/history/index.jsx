@@ -1,22 +1,59 @@
 import { Component, PropTypes} from "react"
-
 import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
 
+import { GraphQL } from "../../../core/graphql"
 import { Authorized } from "../../../core/blocks"
 import { nav as navActions } from "../../../core/store"
 
-import { Transactions } from "../../collections"
+import { transactions as transactionActions } from "../../store"
 
 import Layout from "./Layout"
 import Details from "./Details"
 
-@connect()
-@ReactMixin.decorate(ReactMeteorData)
+
+function getTransactions(data, dispatch) {
+  const { mongoId, size, skip } = data
+  let query = `
+    {
+      transactions: allFinanicalTransactions(cache: false, mongoId: "${mongoId}", limit: ${size}, skip: ${skip}) {
+        id
+        date
+        summary
+        details {
+          id
+          amount
+          account {
+            id
+            name
+          }
+          date
+        }
+      }
+    }
+  `
+  return GraphQL.query(query)
+    .then(({ transactions }) => {
+      let mappedObj = {}
+
+      for (const transaction of transactions) {
+        mappedObj[transaction.id] = transaction
+      }
+
+      dispatch(transactionActions.add(mappedObj))
+
+      return transactions
+    })
+}
+
+const map = (state) => ({
+  transactions: state.transactions.transactions
+})
+
+@connect(map)
 export default class Template extends Component {
 
   state = {
-    page: 1,
+    page: 0,
     pageSize: 20,
     shouldUpdate: true,
     done: false,
@@ -80,6 +117,7 @@ export default class Template extends Component {
     this.getData()
   }
 
+  // @TODO fix scroll loading
   onScroll = (e) => {
     if (this.state.done) return
 
@@ -93,14 +131,21 @@ export default class Template extends Component {
     }
 
     if ( percentage > 0.5 && this.state.shouldUpdate) {
+      let nextPage = this.state.page + 1
+
+      // //
+      if (Object.keys(this.props.transactions).length === ((nextPage + 1) * this.state.pageSize)) {
+        return
+      }
+
       this.setState({
-        page: this.state.page + 1,
+        page: nextPage,
         shouldUpdate: false
       });
 
       // wait a bit to prevent paging multiple times
       setTimeout(() => {
-        if (this.state.page * this.state.pageSize > this.data.transactions.length) {
+        if (nextPage * this.state.pageSize > Object.keys(this.props.transactions).length) {
           this.setState({ done: true, shouldUpdate: false });
         } else {
           this.setState({ shouldUpdate: true });
@@ -109,36 +154,28 @@ export default class Template extends Component {
     }
   }
 
-  getMeteorData() {
-    let subscription = Meteor.subscribe("transactions")
-    const transactions = Transactions.find({}, {
-      limit: this.state.page * this.state.pageSize,
-      sort: { CreatedDateTime: -1 }
-    }).fetch();
-
-    let ready = subscription.ready()
-    let alive = true;
-
-    try {
-      alive = serverWatch.isAlive("ROCK")
-    } catch (e) {}
-
-    return {
-      transactions,
-      ready,
-      alive
-    };
-
-  }
-
 
   render () {
+
+    let transactions = []
+
+    for (const transaction in this.props.transactions){
+      transactions.push(this.props.transactions[transaction])
+    }
+
+    transactions = transactions.sort((a, b) => {
+      a = new Date(a.date);
+      b = new Date(b.date);
+      return a>b ? -1 : a<b ? 1 : 0;
+    })
 
     return (
       <Layout
         onScroll={this.onScroll}
         state={this.state}
-        data={this.data}
+        transactions={transactions}
+        alive={true}
+        ready={this.state.loaded}
       />
     )
   }

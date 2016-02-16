@@ -1,5 +1,5 @@
 import "regenerator/runtime"
-import { take, put, cps } from "redux-saga"
+import { take, put, cps } from "redux-saga/effects"
 
 import { GraphQL } from "../../graphql"
 import { auth } from "../../methods"
@@ -49,8 +49,9 @@ function* login(getState) {
       if (isAuthorized) {
         // return Meteor login to parent saga
         const result = yield cps(Meteor.loginWithPassword, email, password)
-
-        return { result }
+        if (result) {
+          return { result }
+        }
       }
 
     } catch (error) {
@@ -83,7 +84,10 @@ function* signup(getState) {
         // return Meteor login to parent saga
         const result = yield cps(Meteor.loginWithPassword, email, password)
 
-        return { result }
+        if (result) {
+          return { result }
+        }
+
       }
 
     } catch (error) {
@@ -103,7 +107,7 @@ addSaga(function* onBoard(getState) {
 
     if (state === "submit") {
       let currentState = getState(),
-          returnValue;
+          returnValue = false;
 
       if (currentState.onBoard.account) {
         returnValue = yield* login(getState)
@@ -111,47 +115,50 @@ addSaga(function* onBoard(getState) {
         returnValue = yield* signup(getState)
       }
 
-      let { result, error } = returnValue
+      if (returnValue) {
+        let { result, error } = returnValue
 
-      if (error) {
-        // add error to store
-        yield put(actions.error({ "password": error.error }))
+        if (error) {
+          // add error to store
+          yield put(actions.error({ "password": error.error }))
 
-        // set not logged in status
-        yield put(actions.authorize(false))
+          // set not logged in status
+          yield put(actions.authorize(false))
 
-        // fail the form
-        yield put(actions.fail())
+          // fail the form
+          yield put(actions.fail())
 
-        // reset the UI
-        yield put(actions.setState("default"))
+          // reset the UI
+          yield put(actions.setState("default"))
 
-      } else {
+        } else {
 
-        // set the logged in status
-        yield put(actions.authorize(true))
+          // set the logged in status
+          yield put(actions.authorize(true))
 
-        // succeed the form
-        yield put(actions.success())
+          // succeed the form
+          yield put(actions.success())
 
-        let user = Meteor.user()
+          let user = Meteor.user()
 
-        // if this is the first login, show welcome
-        if (!user || !user.profile || !user.profile.lastLogin) {
-          yield put(actions.showWelcome())
-        }
-
-        // reset the UI
-        yield put(actions.setState("default"))
-
-        // update login time
-        Meteor.users.update(Meteor.userId(), {
-          $set: {
-            "profile.lastLogin": new Date()
+          // if this is the first login, show welcome
+          if (!user || !user.profile || !user.profile.lastLogin) {
+            yield put(actions.showWelcome())
           }
-        })
 
+          // reset the UI
+          yield put(actions.setState("default"))
+
+          // update login time
+          Meteor.users.update(Meteor.userId(), {
+            $set: {
+              "profile.lastLogin": new Date()
+            }
+          })
+
+        }
       }
+
 
     }
 

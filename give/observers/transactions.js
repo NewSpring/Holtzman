@@ -41,6 +41,7 @@ const transactions = () => {
           SystemNote: "Created from NewSpring Apollos"
         } }
 
+        const isGuest = PersonId ? false : true
         if (!PersonId) {
           PersonId = api.post.sync(`People`, Person)
           PrimaryAliasId = api.get.sync(`People/${PersonId}`).PrimaryAliasId
@@ -76,7 +77,7 @@ const transactions = () => {
 
         // Create TransactionDetails
         for (let TransactionDetail of TransactionDetails) {
-          TransactionDetail = { ...TransactionDetail, ...{
+          TransactionDetail = { ...{}, ...{
             AccountId: TransactionDetail.AccountId,
             Amount: TransactionDetail.Amount,
             Guid: makeNewGuid(),
@@ -111,7 +112,6 @@ const transactions = () => {
             ModifiedByPersonAliasId: PrimaryAliasId
           } }
 
-          console.log(FinancialPersonSavedAccounts)
           if (FinancialPersonSavedAccounts.ReferenceNumber) {
             api.post.sync(`FinancialPersonSavedAccounts`, FinancialPersonSavedAccounts)
           }
@@ -119,8 +119,54 @@ const transactions = () => {
 
 
         if (TransactionId && !TransactionId.statusText ) {
+
+          // taken from https://github.com/SparkDevNetwork/Rock/blob/cb8cb69aff36cf182b5d35c6e14c8a344b035a90/Rock/Transactions/SendPaymentReciepts.cs
+          // setup merge fields
+          const mergeFields = {
+            Person,
+          }
+
+          let totalAmount = 0
+          let accountAmounts = []
+          for (const detail of TransactionDetails) {
+            if (detail.Amount === 0 || !detail.AccountId) {
+              continue
+            }
+
+            const accountAmount = {
+              AccountId: detail.AccountId,
+              AccountName: detail.AccountName,
+              Amount: detail.Amount,
+            }
+
+            accountAmounts.push(accountAmount)
+            totalAmount += detail.Amount
+          }
+
+
+          mergeFields["TotalAmount"] = totalAmount
+          mergeFields["GaveAnonymous"] = isGuest
+          mergeFields["ReceiptEmail"] = Person.Email
+          mergeFields["ReceiptEmailed"] = true
+          mergeFields["LastName"] = Person.LastName
+          mergeFields["FirstNames"] = Person.NickName || Person.FirstName
+          mergeFields["TransactionCode"] = Transaction.TransactionCode
+          mergeFields["Amounts"] = accountAmounts
+
           // remove record
-          TransactionReciepts.remove(_id)
+          TransactionReciepts.remove(_id, (err) => {
+            if (!err) {
+              Meteor.call(
+                "communication/email/send",
+                14, // Default giving system email
+                PrimaryAliasId,
+                mergeFields,
+                (err, response) => {
+                  // async stub
+                }
+              )
+            }
+          })
         }
 
       }

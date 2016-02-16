@@ -28,32 +28,71 @@ Meteor.methods({
         email: email,
         password: password
       })
+
+
+
+      let user = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`)
+      const { PersonId } = user[0]
+
+      let person = api.get.sync(`People/${PersonId}`)
+      const { PrimaryAliasId } = person
+
+      if (userAccount) {
+        Meteor.users.update(userAccount._id || userAccount, {
+          $set: {
+            "services.rock" : {
+              PersonId,
+              PrimaryAliasId
+            }
+          }
+        })
+      }
+
+      if (process.env.NODE_ENV === "production") {
+
+        Meteor.setTimeout(() => {
+
+          let currentCount = Meteor.users.find().count()
+          let missing = `${50000 - currentCount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+          let text = `Another user signed up for a NewSpring Account! Only ${missing} to go!`
+
+
+          Meteor.call("communication/slack/send", text, "#web")
+
+        }, 10)
+        
+      }
+
+      // slack hook here
+
     }
     // ensure meteor password is same as rock's
     else {
       Accounts.setPassword(userAccount._id, password)
+      api.get(`UserLogins?$filter=UserName eq '${Username}'`, (err, user) => {
+        const { PersonId } = user[0]
+
+        api.get(`People/${PersonId}`, (err, person) => {
+          const { PrimaryAliasId } = person
+
+          if (userAccount) {
+            Meteor.users.update(userAccount._id || userAccount, {
+              $set: {
+                "services.rock" : {
+                  PersonId,
+                  PrimaryAliasId
+                }
+              }
+            })
+          }
+        })
+
+      })
+
     }
 
 
-    api.get(`UserLogins?$filter=UserName eq '${Username}'`, (err, user) => {
-      const { PersonId } = user[0]
-
-      api.get(`People/${PersonId}`, (err, person) => {
-        const { PrimaryAliasId } = person
-
-        if (userAccount) {
-          Meteor.users.update(userAccount._id || userAccount, {
-            $set: {
-              "services.rock" : {
-                PersonId,
-                PrimaryAliasId
-              }
-            }
-          })
-        }
-      })
-
-    })
 
 
     return isAuthorized

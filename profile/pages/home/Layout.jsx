@@ -11,7 +11,7 @@ const SettingsLink = () => (
   </Link>
 )
 
-const Layout = ({ photo, person, onToggle, content }) => (
+const Layout = ({ photo, person, onToggle, content, onUpload }) => (
   <Split nav={true}>
 
     <Meta
@@ -28,12 +28,14 @@ const Layout = ({ photo, person, onToggle, content }) => (
       outsideRatio={SettingsLink}
     >
       <div className="soft one-whole">
-        <div
+        <label htmlFor="file"
           className="background--fill ratio--square round two-fifths display-inline-block"
-          style={{ backgroundImage: `url(${photo})`}}
-        ></div>
-        <h4 className="text-light-primary soft-half-top flush-bottom">{person.FirstName} {person.LastName}</h4>
-        <p className="text-light-primary flush"><em>{person.Home.City}</em></p>
+          style={{ backgroundImage: `url(${photo})`, position: "relative"}}
+        >
+          <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
+        </label>
+      <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName} {person.lastName}</h4>
+        <p className="text-light-primary flush"><em>{person.home.city}</em></p>
       </div>
 
     </Right>
