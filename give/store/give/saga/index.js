@@ -221,9 +221,9 @@ addSaga(function* createOrder(getStore) {
       // format data and select component
       if (payment.type === "ach") {
         obj = {
-          name: payment.name,
-          account: payment.account,
-          routing: payment.routing,
+          name: payment.accountName,
+          account: payment.accountNumber,
+          routing: payment.routingNumber,
           type: payment.accountType
         }
 
