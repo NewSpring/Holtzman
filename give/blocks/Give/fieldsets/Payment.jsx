@@ -100,6 +100,12 @@ export default class Payment extends Component {
 
     isValid = validationMap[id](value)
 
+    // special case for intial repaint
+    if ((id === "cardNumber" || id === "accountNumber") && !value) {
+      return true
+    }
+
+
     return isValid
   }
 
