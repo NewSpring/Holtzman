@@ -96,7 +96,7 @@ export default class CartContainer extends Component {
     this.setState({ startDate: date })
 
     if (fundId ) {
-      this.props.saveSchedule(fundId, { start: date })
+      this.props.saveSchedule(fundId, { start: Moment(new Date(value)).date() })
     }
 
     return true

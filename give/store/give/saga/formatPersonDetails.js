@@ -38,11 +38,12 @@ const formatPersonDetails = (give, { campuses }) => {
     }
 
     delete joinedData.amount
-
     for (let key in schedules) {
       let schedule = schedules[key]
       switch (schedule.frequency) {
-        case "One Time":
+        case "One-Time":
+          joinedData.plan.payments = 1
+          joinedData.plan["month-frequency"] = 12
           joinedData.plan["day-of-month"] = schedule.start ? schedule.start : Moment().date()
           break;
         case "Weekly":

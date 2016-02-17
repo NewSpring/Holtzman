@@ -37,23 +37,35 @@ function order(orderData, instant){
     }
   }
 
-  // add in IP address
-  let { connection } = this
-  let ip = connection.clientAddress
+  if (method != "add-subscription") {
+    // add in IP address
+    let { connection } = this
+    let ip = connection.clientAddress
 
-  if (connection.httpHeaders && connection.httpHeaders["x-forwarded-for"]) {
-    ip = connection.httpHeaders["x-forwarded-for"]
+    if (connection.httpHeaders && connection.httpHeaders["x-forwarded-for"]) {
+      ip = connection.httpHeaders["x-forwarded-for"]
+    }
+
+    orderData["ip-address"] = ip
+
   }
 
-  orderData["ip-address"] = ip
+  try {
 
-  let response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
+    let response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
 
-  if (instant) {
-    response = createSchedule(response)
+    if (instant) {
+      response = createSchedule(response)
+    }
+    return response
+
+
+  } catch (e) {
+    throw new Meteor.Error(e.message)
   }
 
-  return response
+
+
 
 }
 

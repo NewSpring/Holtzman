@@ -43,7 +43,7 @@ export default class Layout extends Component {
 
   render () {
 
-    const { schedule, stop, state, person } = this.props
+    const { schedule, stop, state, person, active } = this.props
 
     return (
       <Split nav={true} >
@@ -109,9 +109,23 @@ export default class Layout extends Component {
                         }
                       }()}
 
-                      <h6 className="text-alert" onClick={stop} style={{cursor: "pointer"}}>
-                        Stop Gift
-                      </h6>
+                      {(() => {
+                        if (active) {
+                          return (
+                            <h6 className="text-alert" onClick={stop} style={{cursor: "pointer"}}>
+                              Stop Gift
+                            </h6>
+                          )
+
+                        }
+
+                        return (
+                          <h6 className="text-brand">
+                            Gift Stopped
+                          </h6>
+                        )
+
+                      }())}
 
                       <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
                         Thank you so much for your gift! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.

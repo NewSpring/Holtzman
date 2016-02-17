@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import { GraphQL } from "../../../../core/graphql"
 import { nav as navActions } from "../../../../core/store"
-import { transactions as transactionActions } from "../../../store"
+import { transactions as transactionActions, give as giveActions } from "../../../store"
 
 import Layout from "./Layout"
 
@@ -59,7 +59,8 @@ const map = (state) => ({
 export default class Details extends Component {
 
   state = {
-    isActive: true
+    isActive: true,
+    removed: null
   }
 
   static fetchData(getStore, dispatch, props) {
@@ -79,6 +80,11 @@ export default class Details extends Component {
 
   componentWillUnmount() {
     this.props.dispatch(navActions.setLevel("TOP"))
+    if (this.state.removed) {
+      // WUT, need to clean up after launch
+      this.props.dispatch(giveActions.deleteSchedule(this.state.removed))
+      this.props.dispatch(transactionActions.removeSchedule(this.state.removed))
+    }
   }
 
 
@@ -87,7 +93,7 @@ export default class Details extends Component {
 
     const { id, gateway } = this.props.transactions[Number(this.props.params.id)]
 
-    this.setState({isActive: false})
+    this.setState({isActive: false, removed: id})
     Meteor.call("give/schedule/cancel", {id, gateway}, (err, response) => {
 
     })
@@ -103,6 +109,7 @@ export default class Details extends Component {
         schedule={transaction}
         state={this.state}
         person={this.props.person}
+        active={this.state.isActive}
       />
     )
   }
