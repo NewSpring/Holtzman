@@ -1,4 +1,6 @@
 
+import { makeNewGuid } from "../guid"
+
 export default function startup(api) {
 
   if (Meteor.isServer) {
