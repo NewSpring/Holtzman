@@ -48,7 +48,8 @@ export default class Card extends Component {
 
   styles = () => {
     let defaultStyles = {
-      overflow: "hidden"
+      overflow: "hidden",
+      display: "block"
     }
 
     if (this.props.image && this.props.image.full) {
