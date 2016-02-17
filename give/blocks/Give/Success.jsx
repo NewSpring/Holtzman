@@ -7,7 +7,7 @@ const Success = ({ total, email, guest, onClick }) => (
       <SuccessIcon />
       <h3 className="text-primary push-ends">Success!</h3>
       <p className="text-left">
-        Thank you for your gift of {total} to NewSpring Church. We will email a reciept to {email}
+        Thank you for your gift of {total} to NewSpring Church. We will email a receipt to {email}
       </p>
       {() => {
         if (guest) {
