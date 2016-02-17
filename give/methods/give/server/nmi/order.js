@@ -82,7 +82,15 @@ const step2 = (purchaseData, method, callback) => {
       return
     }
 
-    callback(data["result-text"])
+    let number = Number(data["result-code"])
+    let err;
+    if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
+      err = ErrorCodes[number]
+    } else if (ErrorCodes[number] === "result-text")  {
+      err = data["result-text"]
+    }
+
+    callback(err)
 
   })
   .catch(callback)

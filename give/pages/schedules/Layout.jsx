@@ -81,7 +81,7 @@ export default class Layout extends Component {
           </div>
 
           <div className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
-            <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+            <h4 className="soft soft-double-ends text-center flush-bottom">
               My Gifts
             </h4>
 
@@ -92,7 +92,7 @@ export default class Layout extends Component {
                   <div>
                     {recoverableSchedules.map((schedule, i) => {
                       count ++
-                      if (!schedule.details[0].account) {
+                      if (!schedule.details || !schedule.details[0].account) {
                         return null
                       }
 
@@ -175,7 +175,7 @@ export default class Layout extends Component {
               if (!schedules.length && ready) {
                 return (
                   <div className="text-center soft-sides">
-                    <p><em>You don't have any active recurring gifts</em></p>
+                    <p><em>You don't have any active recurring gifts. If you created a new schedule, it may take a few minutes to be reflected here</em></p>
                   </div>
                 )
 
@@ -186,7 +186,7 @@ export default class Layout extends Component {
                 <div>
                   {schedules.map((schedule, i) => {
 
-                    if (!schedule.details[0].account) {
+                    if (!schedule.details || !schedule.details[0].account) {
                       return null
                     }
 
@@ -235,7 +235,13 @@ export default class Layout extends Component {
                     )
 
                   })}
-
+                  <p className="soft text-center">
+                    <small>
+                      <em>
+                        Changes to schedules may take a few minutes to show changed here
+                      </em>
+                    </small>
+                  </p>
                 </div>
               )
             }()}

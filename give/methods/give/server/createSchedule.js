@@ -9,6 +9,11 @@ const createSchedule = (response, accountName, id) => {
   let user = Meteor.user()
 
   const getCardType = (card) => {
+
+    const { paymentTypes } = api._.give
+    let ids = {}
+    for (let f of paymentTypes) { ids[f.Value] = f }
+
     const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9\*]{0,12}$/gmi
 
     const defaultRegex = {
@@ -19,11 +24,11 @@ const createSchedule = (response, accountName, id) => {
     }
 
     let definedTypeMapping = {
-      visa: 7,
-      masterCard: 8,
+      visa: ids["Visa"].Id,
+      masterCard: ids["MasterCard"].Id,
       // check: 9,
-      discover: 160,
-      amEx: 159
+      discover: ids["Discover"].Id,
+      amEx: ids["American Express"].Id
     }
 
     for (let regex in defaultRegex) {
@@ -39,31 +44,31 @@ const createSchedule = (response, accountName, id) => {
   let card = getCardType(response.billing["cc-number"])
 
   const getFreqencyId = (plan) => {
+    const { frequencies } = api._.give
+
+    let ids = {}
+    for (let f of frequencies) { ids[f.Value] = f }
 
     if (plan["day-frequency"]) {
       switch (plan["day-frequency"]) {
         case "7":
-          return 132 // Every Week (Rock)
+          return ids["Weekly"].Id // Every Week (Rock)
         case "14":
-          return 133 // Every Two Weeks (Rock)
-        default:
-          return null
+          return ids["Bi-Weekly"].Id // Every Two Weeks (Rock)
       }
     }
 
     if (plan["month-frequency"]) {
       switch (plan["month-frequency"]) {
         case "2":
-          return 134 // Twice A Month (Rock)
+          return ids["Twice a Month"].Id // Twice A Month (Rock)
         case "1":
-          return 135 // Once A Month (Rock)
-        default:
-          return null
+          return ids["Monthly"].Id // Once A Month (Rock)
       }
     }
 
     if (plan["day-of-month"]) {
-      return 103 // One Time (Rock)
+      return ids["One-Time"].Id // One Time (Rock)
     }
 
     return null
@@ -95,7 +100,7 @@ const createSchedule = (response, accountName, id) => {
       TransactionFrequencyValueId: frequency,
       IsActive: true,
       StartDate: `${Moment().toISOString()}`,
-      FinancialGatewayId: 2, // (need to update to NMI gateway)
+      FinancialGatewayId: api._.give.gateway.id, // (need to update to NMI gateway)
       // Summary: `Reference Number: ${response["transaction-id"]}`,
       ScheduledTransactionDetails: [],
       FinancialPaymentDetail: {},
@@ -116,8 +121,6 @@ const createSchedule = (response, accountName, id) => {
         }
       }
     }
-
-    console.log(id)
 
     if (id) {
       formatedFinancialScheduledTransaction.Id = id

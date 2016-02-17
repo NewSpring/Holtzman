@@ -22,7 +22,7 @@ function mapArrayToObj(array){
 function getSchedules(dispatch) {
   let query = `
     query ScheduledTransactions($mongoId: String) {
-      transactions: allScheduledFinanicalTransactions(mongoId: $mongoId) {
+      transactions: allScheduledFinanicalTransactions(mongoId: $mongoId, cache: false) {
         numberOfPayments
         next
         end
