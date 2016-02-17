@@ -55,11 +55,11 @@ export default function startup(api) {
     if (!NMI.statusText && NMI.length) {
       // Meteor.settings.nmi = NMI
       let { Id } = NMI[0]
-      NMI = api.get.sync(`AttributeValues?$filter=EntityId eq ${Id} and Attribute/Key eq 'SecurityKey'&$expand=Attribute&$select=Value`)
+      NMI = api.get.sync(`AttributeValues?$filter=EntityId eq ${Id} and Attribute/Key eq 'SecurityKey'&$expand=Attribute&$select=Value,Id`)
       if (!NMI.statusText && NMI.length) {
         Meteor.settings.nmi = NMI[0].Value
         api._.give.gateway = {
-          id: NMI[0].Id,
+          id: Id,
           api: NMI[0].Value
         }
       }
