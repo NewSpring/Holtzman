@@ -99,6 +99,10 @@ export default class Card extends Component {
         imageclasses.push("ratio--landscape")
       }
 
+      if (this.props.imageclasses) {
+        imageclasses = [...imageclasses, ...this.props.imageclasses]
+      }
+
       let style
       if (image.full != true) {
         style = {
