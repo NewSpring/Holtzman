@@ -55,10 +55,14 @@ addSaga(function* chargeTransaction(getStore) {
 
       if (Object.keys(give.schedules).length && !formattedData.savedAccount) {
         action = schedule
-        for (let schedule in give.schedules) {
-          id = schedule
-          break
+
+        if (Object.keys(give.recoverableSchedules).length) {
+          for (let schedule in give.recoverableSchedules) {
+            id = schedule
+            break
+          }
         }
+
       }
 
       let transactionResponse = {}
