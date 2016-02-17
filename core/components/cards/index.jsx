@@ -48,7 +48,8 @@ export default class Card extends Component {
 
   styles = () => {
     let defaultStyles = {
-      overflow: "hidden"
+      overflow: "hidden",
+      display: "block"
     }
 
     if (this.props.image && this.props.image.full) {
@@ -97,6 +98,10 @@ export default class Card extends Component {
         imageclasses.push(`ratio--${image.ratio}`)
       } else {
         imageclasses.push("ratio--landscape")
+      }
+
+      if (this.props.imageclasses) {
+        imageclasses = [...imageclasses, ...this.props.imageclasses]
       }
 
       let style
