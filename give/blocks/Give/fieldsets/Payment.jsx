@@ -40,7 +40,7 @@ export default class Payment extends Component {
           label="Routing Number"
           type="tel"
           errorText="Please enter your routing number"
-          defaultValue={payment.accountNumber}
+          defaultValue={payment.routingNumber}
           onChange={this.saveData}
           validation={this.validate}
           ref="routingNumber"

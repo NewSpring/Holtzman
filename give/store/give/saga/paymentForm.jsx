@@ -14,6 +14,7 @@ const AchForm = ({ account, routing, name, type }) => (
     <input readOnly={true} name="billing-routing-number" value={routing} />
     <input readOnly={true} name="billing-account-name" value={name} />
     <input readOnly={true} name="billing-account-type" value={type} />
+    <input readOnly={true} name="billing-entity-type" value="personal" />
   </fieldset>
 )
 
