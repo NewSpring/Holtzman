@@ -9,7 +9,7 @@ import topics from "./topics"
 import campuses from "./campuses"
 import collections from "./collections"
 import routing from "./routing"
-
+import share from "./share"
 
 import {
   join,
@@ -40,6 +40,7 @@ export {
   sections,
   topics,
   collections,
+  share,
 
   wrapper,
   createReduxStore,
