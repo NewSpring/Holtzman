@@ -93,7 +93,6 @@ const ScheduledTransactions = () => {
           ScheduledTransactionId = api.post.sync(`FinancialScheduledTransactions`, ScheduledTransaction)
         }
 
-        console.log(ScheduledTransactionId)
         if (ScheduledTransactionId.status) {
           return
         }

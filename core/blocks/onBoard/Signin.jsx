@@ -140,13 +140,13 @@ class SignIn extends React.Component {
 
           <Forms.Input
             name="email"
+            type="email"
             placeholder="user@email.com"
             label="Email"
             errorText="Please enter a valid email"
             validation={this.isEmail}
             defaultValue={this.props.data.email}
             ref="email"
-            autofocus={true}
           />
 
           <Forms.Input

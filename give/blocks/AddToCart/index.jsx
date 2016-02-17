@@ -90,7 +90,7 @@ export default class CartContainer extends Component {
 
           this.props.addTransactions({ [id]: {
             value: Number(value.replace(/[^0-9\.]+/g, '')),
-            label: account.Name
+            label: account.name
           }})
         }
       }

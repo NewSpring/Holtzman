@@ -8,7 +8,7 @@ export default {
   previous: () => ({ type: types.SET_PROGRESS, increment: -1 }),
 
   setAccount: (savedAccount) => ({ type: types.SET_SAVED_ACCOUNT, savedAccount }),
-  clearAccount: () => ({ type: types.SET_SAVED_ACCOUNT, savedAccount: null }),
+  clearAccount: () => ({ type: types.SET_SAVED_ACCOUNT, savedAccount: "clear" }),
 
   setAccounts: (accounts) => ({ type: types.SET_ACCOUNTS, accounts }),
 
