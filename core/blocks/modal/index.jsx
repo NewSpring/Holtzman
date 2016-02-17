@@ -18,6 +18,10 @@ const map = (state) => ({
 @connect(map)
 export default class SideModalContainer extends Component {
 
+  state = {
+    previous: null
+  }
+
   componentDidMount(){
     if (!this.props.modal.props.keepNav) {
       this.props.dispatch(navActions.setLevel("MODAL"))
@@ -27,10 +31,11 @@ export default class SideModalContainer extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.modal.visible && nextProps.navigation.level != "MODAL" && nextProps.modal.props.keepNav != true) {
       this.props.dispatch(navActions.setLevel("MODAL"))
+      this.setState({ previous: this.props.navigation.level })
     }
 
     if (!nextProps.modal.visible && nextProps.navigation.level === "MODAL" && !this.props.modal.props.keepNav) {
-      this.props.dispatch(navActions.setLevel("TOP"))
+      this.props.dispatch(navActions.setLevel(this.state.previous || "TOP"))
     }
 
     if (!nextProps.modal.visible && (this.props.path != nextProps.path)) {

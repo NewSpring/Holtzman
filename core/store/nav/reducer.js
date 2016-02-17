@@ -6,6 +6,7 @@
 
 import modalActions from "../modal"
 import likedActions from "../liked"
+import shareActions from "../share"
 import Sections from "../../blocks/sections"
 
 import { routeActions } from "../routing"
@@ -71,7 +72,7 @@ const links = {
     { id: 1, action: back, icon:"icon-arrow-back" },
     // { id: 2, action: showSections, icon:"icon-sections" },
     { id: 2, action: false, icon:"icon-like", isActive: (props) => props.liked },
-    { id: 3, action: false, icon:"icon-share" }
+    { id: 3, action: shareActions.share, icon:"icon-share" }
   ],
   MODAL: [
     { id: 1, action: modalActions.hide, icon:"icon-close" }
@@ -93,15 +94,22 @@ export default function nav(state = initial, action) {
         links: [ ...state.links, ...action.links ]
       } }
     case "NAV.SET_ACTION":
+
+      let newLinks = [
+        ...state.links.slice(0, action.props.id - 1),
+        {
+          ...state.links[action.props.id - 1],
+          action: action.props.action,
+        },
+        ...state.links.slice(action.props.id)
+      ]
+
+      if (links[action.level]) {
+        links[action.level] = newLinks
+      }
+
       return { ...state, ...{
-        links: [
-          ...state.links.slice(0,action.props.id-1),
-          {
-            ...state.links[action.props.id-1],
-            action: action.props.action,
-          },
-          ...state.links.slice(action.props.id)
-        ]
+        links: newLinks
       } }
     case "NAV.SET_VISIBILITY":
       return { ...state, ...{

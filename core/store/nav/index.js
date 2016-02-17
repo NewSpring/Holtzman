@@ -39,7 +39,7 @@ export default {
   reset: () => ({ type: "NAV.SET_LEVEL", level: "TOP" }),
 
   setLinks: (links) => ({ type: "NAV.SET_LINKS", links }),
-  setAction: (props) => ({ type: "NAV.SET_ACTION", props }),
+  setAction: (level, props) => ({ type: "NAV.SET_ACTION", level, props }),
 
   hide: () => ({ type: "NAV.SET_VISIBILITY", visible: false }),
   show: () => ({ type: "NAV.SET_VISIBILITY", visible: true })

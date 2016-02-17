@@ -103,22 +103,22 @@ export default class Right extends Component {
       Wrapper = ImageLoader
     }
 
-    if (this.props.link) {
-      let OldWrapper = Wrapper
-      Wrapper = (props) => (
-        <Link
-          to={this.props.link}
-          className={this.props.theme || this.layoutClasses().join(" ")}
-        >
-          <OldWrapper {...props} imageclasses={[
-            "background--fill",
-            "locked-ends",
-            "locked-sides",
-            "hard"
-          ]} />
-        </Link>
-      )
-    }
+    // if (this.props.link) {
+    //   let OldWrapper = Wrapper
+    //   Wrapper = (props) => (
+    //     <Link
+    //       to={this.props.link}
+    //       className={this.props.theme || this.layoutClasses().join(" ")}
+    //     >
+    //       <OldWrapper {...props} imageclasses={[
+    //         "background--fill",
+    //         "locked-ends",
+    //         "locked-sides",
+    //         "hard"
+    //       ]} />
+    //     </Link>
+    //   )
+    // }
 
     return (
 
