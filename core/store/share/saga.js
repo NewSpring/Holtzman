@@ -18,12 +18,18 @@ addSaga(function* share(getStore) {
       }
 
     }
+
     if (
       typeof window != "undefined" &&
       window != null &&
       window.socialmessage &&
-      Object.keys.length(msg)
+      Object.keys(msg).length
     ) {
+
+      if (msg.image && msg.image[0] === "/") {
+        msg.image = "http:" + msg.image
+      }
+
       window.socialmessage.send(msg)
     }
 
