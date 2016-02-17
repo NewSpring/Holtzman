@@ -29,6 +29,11 @@
   :local(.nav-bar:before) {
     content: none;
   }
+
+  :local(.nav-bar button) {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width: 768px) {
