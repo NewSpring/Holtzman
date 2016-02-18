@@ -77,14 +77,17 @@ Meteor.methods({
           const { PrimaryAliasId } = person
 
           if (userAccount) {
-            Meteor.users.update(userAccount._id || userAccount, {
-              $set: {
-                "services.rock" : {
-                  PersonId,
-                  PrimaryAliasId
+            const userRock = userAccount.services.rock;
+            if (userRock.PersonId != PersonId || userRock.PrimaryAliasId != PrimaryAliasId) {
+              Meteor.users.update(userAccount._id || userAccount, {
+                $set: {
+                  "services.rock" : {
+                    PersonId,
+                    PrimaryAliasId
+                  }
                 }
-              }
-            })
+              })
+            }
           }
         })
 
