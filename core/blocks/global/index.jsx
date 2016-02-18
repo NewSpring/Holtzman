@@ -89,14 +89,32 @@ function bindLogout(dispatch) {
     const user = Meteor.userId()
 
     if (user) {
+
       return getUser(user, dispatch)
     }
 
     dispatch(onBoardActions.signout())
 
+
   })
 
   return handle
+}
+
+function prefillRedux(dispatch) {
+  Tracker.autorun((computation) => {
+
+    if (Meteor.userId()) {
+      Meteor.subscribe("userData");
+      let topics = Meteor.user().topics;
+      dispatch(topicActions.set(topics));
+
+      Meteor.subscribe("likes")
+      let likes = Likes.find().fetch().map((like) => like.entryId);
+      dispatch(likedActions.set(likes));
+    }
+
+  });
 }
 
 
@@ -111,6 +129,8 @@ export default class Global extends Component {
     if (!this.handle) {
       this.handle = bindLogout(dispatch)
     }
+
+    prefillRedux(dispatch);
 
     let query = `
       {
