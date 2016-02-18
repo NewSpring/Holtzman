@@ -30,6 +30,10 @@ addSaga(function* share(getStore) {
         msg.image = "http:" + msg.image
       }
 
+      if (msg.url) {
+        msg.text = `${msg.text}\n${msg.url}`
+      }
+
       window.socialmessage.send(msg)
     }
 
