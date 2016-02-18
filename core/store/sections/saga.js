@@ -15,6 +15,7 @@ addSaga(function* sectionsSaga(getState) {
   const images = GraphQL.createFragment(`
     fragment on Content {
       images {
+        s3
         cloudfront
         fileLabel
       }
