@@ -11,7 +11,7 @@ export default class Menu extends Component {
 
   render() {
     return (
-      <div className="locked-ends locked-sides background--light-secondary scrollable">
+      <div className="locked-ends@lap-and-up locked-sides@lap-and-up background--light-secondary scrollable">
         <section className="hard ">
           <div className="soft text-center background--light-primary outlined--light outlined--bottom">
             <h5 className="soft-left display-inline-block flush">Settings</h5>
