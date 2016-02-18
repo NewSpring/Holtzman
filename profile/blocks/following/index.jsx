@@ -31,7 +31,7 @@ export default class FollowingContainer extends Component {
 
   active = (item) => {
     if (this.props.state.topics) {
-      return this.props.state.topics.indexOf(item) > -1
+      return this.props.state.topics.indexOf(item) === -1
     }
     else {
       return false
