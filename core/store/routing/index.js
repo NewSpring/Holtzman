@@ -60,7 +60,17 @@ export function syncHistory(history) {
         return
       }
       let { routing } = store.getState()
-      location.previous = routing.location.pathname
+      location.previous || (location.previous = [])
+      routing.location.previous || (routing.location.previous = [])
+
+      if (routing.location.previous[routing.location.previous.length - 1] === location.pathname) {
+        routing.location.previous.splice(-1)
+        location.previous = routing.location.previous
+      } else {
+        location.previous = [...routing.location.previous, ...[routing.location.pathname]]
+      }
+
+
       store.dispatch(updateLocation(location))
     })
 
@@ -76,9 +86,10 @@ export function syncHistory(history) {
       let { payload: { method, args } } = action
       if (method === "goBack") {
         method = "push"
-        args = [routing.location.previous]
+        length  = routing.location.previous.length
+        args = [routing.location.previous[length - 1]]
       }
-      
+
       history[method](...args)
     }
   }
