@@ -37,7 +37,7 @@ const Layout = ({ photo, person, children }) => (
 
     </Right>
 
-    <Left scroll={true} classes={["locked-ends locked-sides"]}>
+    <Left scroll={true} classes={["locked-ends@lap-and-up locked-sides@lap-and-up"]}>
       {children}
     </Left>
 
