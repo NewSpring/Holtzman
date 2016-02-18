@@ -89,10 +89,14 @@ function bindLogout(dispatch) {
     const user = Meteor.userId()
 
     if (user) {
+      Meteor.subscribe("userData");
+      let topics = Meteor.user().topics;
+      dispatch(topicActions.set(topics));
       return getUser(user, dispatch)
     }
 
     dispatch(onBoardActions.signout())
+
 
   })
 
