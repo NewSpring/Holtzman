@@ -41,6 +41,32 @@ export default class Authorized extends Component {
       return this.props.children
     }
 
+    /*
+
+      This is a temporary work around to a bug with webkit on iOS
+      If there is not relative DOM behind a fixed DOM container with inputs
+      inside of it, the inputs will not show a focused state, or show as you type
+
+      I'm not sure of a good solution yet, hence the hackery
+
+    */
+    if (Meteor.isCordova) {
+      return (
+        <section className="push-double-ends">
+          <section className="push-double-ends">
+            <section className="push-double-ends">
+              <section className="push-double-ends">
+                <section className="push-double-ends">
+                  <section className="push-double-ends">
+
+                  </section>
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+      )
+    }
     return null
   }
 }
