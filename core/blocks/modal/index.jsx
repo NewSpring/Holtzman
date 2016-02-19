@@ -79,19 +79,13 @@ export default class SideModalContainer extends Component {
     const { visible, content, props } = this.props.modal
 
     return (
-      <Motion defaultStyle={{opacity: 0}} style={{opacity: spring(1, presets.wobbly)}}>
-        {interpolatingStyle => (
-          <Modal
-            close={this.close}
-            component={content}
-            props={props}
-            visible={visible}
-            style={interpolatingStyle}
-            {...this.props}
-          />
-        )}
-      </Motion>
-
+      <Modal
+        close={this.close}
+        component={content}
+        props={props}
+        visible={visible}
+        {...this.props}
+      />
     )
   }
 }
