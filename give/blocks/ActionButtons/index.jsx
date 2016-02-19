@@ -2,7 +2,7 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
 import { GraphQL } from "../../../core/graphql"
-import { OnBoard } from "../../../core/blocks"
+import OnBoard from "../../../core/blocks/onBoard"
 
 
 // @TODO refactor once giving is converted to sagas

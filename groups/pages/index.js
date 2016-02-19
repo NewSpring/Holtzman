@@ -1,4 +1,4 @@
-import Home from "./home"
+// import Home from "./home"
 import Finder from "./finder"
 
 const Routes = [].concat(
@@ -6,7 +6,7 @@ const Routes = [].concat(
 )
 
 export default {
-  Home,
+  // Home,
   Finder,
 
   // combined export of app routes
