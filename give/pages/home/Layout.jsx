@@ -7,7 +7,7 @@ import SideBySide from "../../../core/components/cards/SideBySide"
 import { Spinner } from "../../../core/components/loading"
 
 import { Offline } from "../../components/status"
-import { AddToCart } from "../../blocks"
+import AddToCart from "../../blocks/AddToCart"
 
 const Layout = ({ alive, accounts }) => (
   <Split nav={true} classes={["background--light-primary"]}>

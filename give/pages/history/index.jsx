@@ -2,7 +2,7 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
 import { GraphQL } from "../../../core/graphql"
-import { Authorized } from "../../../core/blocks"
+import Authorized from "../../../core/blocks/authorzied"
 import { nav as navActions } from "../../../core/store"
 
 import { transactions as transactionActions } from "../../store"
