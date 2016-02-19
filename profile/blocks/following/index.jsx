@@ -34,11 +34,12 @@ export default class FollowingContainer extends Component {
       return this.props.state.topics.indexOf(item) === -1
     }
     else {
-      return false
+      return true
     }
   }
 
   render() {
+
 
     return (
       <section className="background--light-secondary hard-sides" style={ {marginTop: "-20px"} }>
