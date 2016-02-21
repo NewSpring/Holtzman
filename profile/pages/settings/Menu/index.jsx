@@ -9,6 +9,15 @@ export default class Menu extends Component {
     Meteor.logout()
   }
 
+  onClick = (e) => {
+    if (Meteor.isCordova) {
+      if (cordova.InAppBrowser && cordova.InAppBrowser.open) {
+        e.preventDefault()
+        cordova.InAppBrowser.open(e.currentTarget.href, "_blank")
+      }
+    }
+  }
+
   render() {
     return (
       <div className="locked-ends@lap-and-up locked-sides@lap-and-up background--light-secondary scrollable">
@@ -65,7 +74,7 @@ export default class Menu extends Component {
           </div>
           <div className="outlined--light outlined--top one-whole push-top"></div>
           <div className="background--light-primary outlined--light outlined--bottom text-dark-secondary">
-            <a href="//newspring.cc/about" target="_blank" className="plain text-dark-secondary">
+            <a onClick={this.onClick} href="//newspring.cc/about" target="_blank" className="plain text-dark-secondary">
               <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
                 <h6 className="soft-half-left flush display-inline-block">About Us</h6>
                 <i className="float-right icon-arrow-next"></i>
