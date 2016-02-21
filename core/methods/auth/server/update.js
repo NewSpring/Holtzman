@@ -22,7 +22,7 @@ Meteor.methods({
       let group = api.get.sync(`Groups/GetFamilies/${user.services.rock.PersonId}?$select=Id`)
       result = api.patch.sync(`Groups/${group[0].Id}`, { CampusId: Campus })
     } catch (e) {
-      throw new Meteor.Error(e)
+      throw new Meteor.Error(e.message)
     }
 
     if (result.status === 400) {

@@ -70,11 +70,11 @@ export default class ChangePassword extends Component {
 
 
   render () {
-    const { state, error } = this.state
+    const { state, err } = this.state
 
     switch (state) {
       case "error":
-        return <Err msg="Looks like there was a problem" error={error} />
+        return <Error msg="Looks like there was a problem" error={err && err.message ? err.message : " "} />
       case "loading":
         return <Loading msg="Updating your password..." />
       case "success":
