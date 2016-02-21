@@ -19,10 +19,10 @@ let sectionsVisible = false
 const showSections = (props) => {
   const { modal, dispatch } = props
 
-  if (modal.visible) {
-    sectionsVisible = false
-    return modalActions.hide()
-  }
+  // if (modal.visible) {
+  //   sectionsVisible = false
+  //   return modalActions.hide()
+  // }
 
   sectionsVisible = true
   return modalActions.render(Sections, { keepNav: true })
