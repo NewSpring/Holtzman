@@ -49,8 +49,8 @@ function* login(getState) {
       if (isAuthorized) {
         // return Meteor login to parent saga
         const result = yield cps(Meteor.loginWithPassword, email, password)
-        if (result) {
-          return { result }
+        if (isAuthorized) {
+          return { result: isAuthorized }
         } else {
           return { error: new Meteor.Error("An unkown error occured") }
         }
@@ -86,8 +86,8 @@ function* signup(getState) {
         // return Meteor login to parent saga
         const result = yield cps(Meteor.loginWithPassword, email, password)
 
-        if (result) {
-          return { result }
+        if (isAuthorized) {
+          return { result: isAuthorized }
         } else {
           return { error: new Meteor.Error("An unkown error occured") }
         }
