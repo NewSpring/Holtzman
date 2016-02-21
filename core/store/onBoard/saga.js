@@ -51,6 +51,8 @@ function* login(getState) {
         const result = yield cps(Meteor.loginWithPassword, email, password)
         if (result) {
           return { result }
+        } else {
+          return { error: new Meteor.Error("An unkown error occured") }
         }
       }
 
@@ -86,8 +88,9 @@ function* signup(getState) {
 
         if (result) {
           return { result }
+        } else {
+          return { error: new Meteor.Error("An unkown error occured") }
         }
-
       }
 
     } catch (error) {
