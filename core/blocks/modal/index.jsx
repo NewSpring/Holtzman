@@ -23,7 +23,7 @@ export default class SideModalContainer extends Component {
   }
 
   componentDidMount(){
-    if (!this.props.modal.props.keepNav) {
+    if (!this.props.modal.props.keepNav && this.props.modal.visible) {
       this.props.dispatch(navActions.setLevel("MODAL"))
     }
   }

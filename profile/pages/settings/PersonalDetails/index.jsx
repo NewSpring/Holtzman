@@ -49,6 +49,7 @@ function getUser(id, dispatch) {
   let personQuery = `
     {
       person(mongoId: "${id}", cache: false) {
+        age
         birthdate
         birthDay
         birthMonth
@@ -58,9 +59,24 @@ function getUser(id, dispatch) {
           shortCode
           id
         }
+        home {
+          city
+          country
+          id
+          zip
+          state
+          street1
+          street2
+        }
         firstName
         lastName
         nickName
+        email
+        phoneNumbers {
+          number
+          formated
+        }
+        photo
       }
     }
   `
