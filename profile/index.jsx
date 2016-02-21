@@ -5,11 +5,9 @@ import { Home, Routes } from "./pages"
 
 
 const Root = ({ children }) => (
-  <Global>
-    <Authorized>
-      {children}
-    </Authorized>
-  </Global>
+  <Authorized>
+    {children}
+  </Authorized>
 )
 
 export default {
