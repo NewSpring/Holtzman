@@ -5,7 +5,7 @@ import { GraphQL } from "../../../core/graphql"
 
 import Layout from "./Layout"
 import { Likes, Following } from "../../blocks"
-import { onBoard as onBoardActions } from "../../../core/store"
+import { onBoard as onBoardActions, nav as navActions } from "../../../core/store"
 import { avatar } from "../../../core/methods/files/client"
 // import Avatars from "../../../core/collections/avatars"
 
@@ -48,6 +48,11 @@ export default class Home extends Component {
 
   content = [<Likes />, <Following />]
 
+  componentDidMount(){
+    this.props.dispatch(navActions.setLevel("TOP"))
+
+  }
+
   getContent = () => {
     return this.content[this.state.content]
   }
@@ -60,7 +65,7 @@ export default class Home extends Component {
 
   onUpload = (e) => {
     let files = e.target.files
-    
+
     avatar(files[0], (err, response) => {
       console.log(err, response)
     })
