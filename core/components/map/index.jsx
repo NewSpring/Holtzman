@@ -40,7 +40,14 @@ export default class Map extends Component {
     zoom: 10,
     visibleRowFirst: -1,
     visibleRowLast: -1,
-    hoveredRowIndex: -1
+    hoveredRowIndex: -1,
+    options: {
+      minZoom: 4,
+      maxZoom: 18,
+      panControl: false,
+      mapTypeControl: false,
+      scrollwheel: false,
+    }
   }
 
   shouldComponentUpdate = shouldPureComponentUpdate;
@@ -60,7 +67,7 @@ export default class Map extends Component {
 
     let marker;
     for (let _marker of markers) {
-      if (`${_marker.Id}` === `${key}`) {
+      if (`${_marker.id}` === `${key}`) {
         marker = _marker
         break
       }
@@ -76,7 +83,7 @@ export default class Map extends Component {
 
     let marker;
     for (let _marker of markers) {
-      if (`${_marker.Id}` === `${key}`) {
+      if (`${_marker.id}` === `${key}`) {
         marker = _marker
         break
       }
@@ -102,13 +109,13 @@ export default class Map extends Component {
 
 
   render () {
-
     if (typeof window != "undefined" && window != null ) {
       return (
         <GoogleMap
           center={this.props.center}
           zoom={this.props.zoom}
-          onBoundsChange={this._onBoundsChange}
+          options={this.props.options}
+          onChange={this._onBoundsChange}
           onChildClick={this._onChildClick}
           onChildMouseEnter={this._onChildMouseEnter}
           onChildMouseLeave={this._onChildMouseLeave}
@@ -117,14 +124,14 @@ export default class Map extends Component {
           hoverDistance={K_HOVER_DISTANCE}
         >
           {this.props.markers.map((marker) => {
-            let loc = marker.GroupLocations[0].Location
 
             return <Marker
-              lat={loc.Latitude}
-              lng={loc.Longitude}
-              key={marker.Id}
-              active={this.props.active === marker.Id}
-              hover={this.props.hover === marker.Id}
+              lat={marker.latitude}
+              lng={marker.longitude}
+              key={marker.id}
+              active={this.props.active === marker.id}
+              hover={this.props.hover === marker.id}
+              popUp={this.props.popUp}
             />
 
           })}

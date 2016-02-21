@@ -1,8 +1,8 @@
 
 
-import Global from "../core/blocks/onBoard"
-import Authorized from "../core/blocks/authorzied"
-// import "./store"
+import { Global, Authorized } from "../core/blocks"
+import { Home, Routes } from "./pages"
+
 
 const Root = ({ children }) => (
   <Authorized>
@@ -12,46 +12,53 @@ const Root = ({ children }) => (
 
 export default {
   path: "profile",
-  getComponent(location, cb) {
-    if (Meteor.isClient) {
-      // Split the code on a different file when on a client
-      require.ensure([], require => {
-        cb(null, Root)
-      }, "profile");
-    } else {
-      // Save the chunk for server-rendering
-      global.__CHUNK_COLLECTOR__.push("profile");
-      cb(null, Root);
-    }
-  },
-
-  getIndexRoute(location, cb) {
-    if (Meteor.isClient) {
-      // Split the code on a different file when on a client
-      require.ensure([], require => {
-        cb(null, {
-          component: require("./pages/home")
-        })
-      }, "profile");
-    } else {
-      // Save the chunk for server-rendering
-      global.__CHUNK_COLLECTOR__.push("profile");
-      cb(null, {
-        component: require("./pages/home")
-      });
-    }
-  },
-
-  getChildRoutes(location, cb) {
-    if (Meteor.isClient) {
-      // Split the code on a different file when on a client
-      require.ensure([], require => {
-        cb(null, require("./routes"))
-      }, "profile");
-    } else {
-      // Save the chunk for server-rendering
-      global.__CHUNK_COLLECTOR__.push("profile");
-      cb(null, require("./routes"));
-    }
-  }
+  component: Root,
+  indexRoute: { component: Home },
+  childRoutes: Routes
 }
+
+// export default {
+//   path: "profile",
+//   getComponent(location, cb) {
+//     if (Meteor.isClient) {
+//       // Split the code on a different file when on a client
+//       require.ensure([], require => {
+//         cb(null, Root)
+//       }, "profile");
+//     } else {
+//       // Save the chunk for server-rendering
+//       global.__CHUNK_COLLECTOR__.push("profile");
+//       cb(null, Root);
+//     }
+//   },
+//
+//   getIndexRoute(location, cb) {
+//     if (Meteor.isClient) {
+//       // Split the code on a different file when on a client
+//       require.ensure([], require => {
+//         cb(null, {
+//           component: require("./pages/home")
+//         })
+//       }, "profile");
+//     } else {
+//       // Save the chunk for server-rendering
+//       global.__CHUNK_COLLECTOR__.push("profile");
+//       cb(null, {
+//         component: require("./pages/home")
+//       });
+//     }
+//   },
+//
+//   getChildRoutes(location, cb) {
+//     if (Meteor.isClient) {
+//       // Split the code on a different file when on a client
+//       require.ensure([], require => {
+//         cb(null, require("./routes"))
+//       }, "profile");
+//     } else {
+//       // Save the chunk for server-rendering
+//       global.__CHUNK_COLLECTOR__.push("profile");
+//       cb(null, require("./routes"));
+//     }
+//   }
+// }

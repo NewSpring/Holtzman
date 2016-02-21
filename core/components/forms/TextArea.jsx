@@ -3,7 +3,7 @@ import ReactDom from "react-dom";
 
 import Label from "./components/Label"
 
-export default class Input extends Component {
+export default class TextArea extends Component {
 
 
   state = {
@@ -25,6 +25,9 @@ export default class Input extends Component {
       this.refs["apollos-input"].focus()
     }
 
+    // if (this.props.defaultValue) {
+    //   this.refs["apollos-input"].value = `${this.props.defaultValue}`
+    // }
 
     // one day, I dream of a universal browser auto-fill event
     // until then. I'll keep on checking
@@ -148,6 +151,7 @@ export default class Input extends Component {
 
   }
 
+
   style = () => {
 
     let style = {}
@@ -164,6 +168,7 @@ export default class Input extends Component {
 
     return style
   }
+
 
 
 
@@ -200,7 +205,7 @@ export default class Input extends Component {
         })()}
 
 
-        <input
+        <textarea
           ref="apollos-input"
           id={this.props.id || this.props.ref || this.props.name || this.props.label}
           type={this.props.type}
@@ -211,8 +216,9 @@ export default class Input extends Component {
           onBlur={this.validate}
           onFocus={this.focus}
           onChange={this.format}
-          defaultValue={this.props.defaultValue}
           style={this.style()}
+          rows={this.props.rows || 8}
+          defaultValue={this.props.defaultValue}
         />
 
         {this.renderHelpText()}

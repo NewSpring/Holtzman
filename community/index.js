@@ -15,16 +15,16 @@
 import "./store"
 
 export default {
-  path: "groups",
+  path: "community",
   getComponent(location, cb) {
     if (Meteor.isClient) {
       // Split the code on a different file when on a client
       require.ensure([], require => {
         cb(null, require("./../core/blocks/global"))
-      }, "groups");
+      }, "community");
     } else {
       // Save the chunk for server-rendering
-      global.__CHUNK_COLLECTOR__.push("groups");
+      global.__CHUNK_COLLECTOR__.push("community");
       cb(null, require("./../core/blocks/global"));
     }
   },
@@ -51,10 +51,10 @@ export default {
       // Split the code on a different file when on a client
       require.ensure([], require => {
         cb(null, require("./routes"))
-      }, "groups");
+      }, "community");
     } else {
       // Save the chunk for server-rendering
-      global.__CHUNK_COLLECTOR__.push("groups");
+      global.__CHUNK_COLLECTOR__.push("community");
       cb(null, require("./routes"));
     }
   }
