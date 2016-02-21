@@ -4,7 +4,8 @@ import { connect } from "react-redux"
 import { GraphQL } from "../../../../core/graphql"
 import {
   campuses as campusActions,
-  collections as collectionActions
+  collections as collectionActions,
+  nav as navActions,
 } from "../../../../core/store"
 
 import Layout from "./Layout"
@@ -26,6 +27,10 @@ export default class Search extends Component {
     zip: null,
     state: null,
     status: "default"
+  }
+
+  componentWillMount() {
+    this.props.dispatch(navActions.setLevel("TOP"))
   }
 
   componentDidMount() {
@@ -69,10 +74,11 @@ export default class Search extends Component {
 
     this.props.onLoaded((maps) => {
       const { service, geocoder } = this.props
-
+      this.setState({ status: "default" })
       geocoder.geocode({
         address: `${streetAddress}${' ' + streetAddress2}, ${city}, ${state}, ${zip}`
       }, (results, status) => {
+
         if (status === "OK") {
 
           const loc = {
@@ -82,6 +88,12 @@ export default class Search extends Component {
 
           this.props.search(loc)
 
+        }
+
+        if (status === "ZERO_RESULTS") {
+          this.setState({
+            status: "error"
+          })
         }
 
       })
@@ -121,26 +133,27 @@ export default class Search extends Component {
       value: x.value
     }))
 
-    let ready = true
-    for (let key in this.state) {
-      if (key === "streetAddress2" || key === "status") {
-        continue
-      }
-      if (!this.state[key]) {
-        ready = false
-        break
-      }
-
-    }
+    // let ready = true
+    // for (let key in this.state) {
+    //   if (key === "streetAddress2" || key === "status") {
+    //     continue
+    //   }
+    //   if (!this.state[key]) {
+    //     ready = false
+    //     break
+    //   }
+    //
+    // }
 
     return (
       <Layout
         geocode={this.geocodeAddress}
         home={this.props.person.home}
-        ready={ready}
+        ready={true}
         campuses={campuses}
         states={states}
         save={this.save}
+        showError={this.state.status === "error"}
       />
     )
   }

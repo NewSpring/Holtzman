@@ -5,7 +5,7 @@ import Moment from "moment"
 import Split, { Left, Right } from "../../../../core/blocks/split"
 import { Forms } from "../../../../core/components"
 
-const Layout = ({ geocode, home, ready, save, states }) => (
+const Layout = ({ geocode, home, ready, save, states, showError }) => (
   <Split nav={true}>
 
     <Right
@@ -88,6 +88,18 @@ const Layout = ({ geocode, home, ready, save, states }) => (
             </div>
           </div>
 
+          {() => {
+
+            if (showError) {
+              return (
+                <h6 className="text-alert soft-bottom">
+                  <em>
+                    We were not able to find your location. Please try adding more information or a different address
+                  </em>
+                </h6>
+              )
+            }
+          }()}
 
           {() => {
 
