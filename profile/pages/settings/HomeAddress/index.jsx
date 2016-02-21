@@ -81,10 +81,8 @@ export default class HomeAddress extends Component {
 
   updateAddress = (data) => {
 
-
     this.setState({ state: "loading" })
 
-    let refs = this.refs
     updateHome(data, (err, result) => {
 
       if (err) {
