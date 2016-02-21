@@ -17,7 +17,7 @@ const Layout = ({ photo, person, children }) => (
       title={`${person.nickName} ${person.lastName}`}
       titleTemplate="%s | NewSpring Church"
     />
-  
+
     <Right
       mobile={false}
       classes={["floating", "overlay--solid-dark"]}
