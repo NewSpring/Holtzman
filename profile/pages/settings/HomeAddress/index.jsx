@@ -1,12 +1,67 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
-import { nav } from "../../../../core/store"
+import { GraphQL } from "../../../../core/graphql"
+
+import { nav, onBoard as onBoardActions } from "../../../../core/store"
 import { updateHome } from "../../../../core/methods/auth/client"
 import { Error, Loading } from "../../../../core/components/states"
 
 import Success from "../Success"
 import Layout from "./Layout"
+
+
+// @TODO move to saga?
+function getUser(id, dispatch) {
+
+  // this is probably to heavy of a universal call?
+
+  // @TODO figure out caching issues?
+  let personQuery = `
+    {
+      person(mongoId: "${id}", cache: false) {
+        age
+        birthdate
+        birthDay
+        birthMonth
+        birthYear
+        campus {
+          name
+          shortCode
+          id
+        }
+        home {
+          city
+          country
+          id
+          zip
+          state
+          street1
+          street2
+        }
+        firstName
+        lastName
+        nickName
+        email
+        phoneNumbers {
+          number
+          formated
+        }
+        photo
+      }
+    }
+  `
+
+  return GraphQL.query(personQuery)
+    .then(({ person }) => {
+      if (person) {
+        dispatch(onBoardActions.person(person))
+      }
+
+    })
+
+}
+
 
 const map = (state) => ({ person: state.onBoard.person })
 @connect(map)
@@ -24,23 +79,10 @@ export default class HomeAddress extends Component {
     this.props.dispatch(nav.setLevel("TOP"))
   }
 
-  updateAddress = (e) => {
-    e.preventDefault()
-
-    let data = {}
-    for (let ref in this.refs) {
-      let value = this.refs[ref].getValue()
-      let number = Number(value)
-      if (number) {
-        value = number
-      }
-
-      data[ref] = value
-    }
+  updateAddress = (data) => {
 
     this.setState({ state: "loading" })
 
-    let refs = this.refs
     updateHome(data, (err, result) => {
 
       if (err) {
@@ -53,10 +95,10 @@ export default class HomeAddress extends Component {
 
 
       this.setState({ state: "success" })
-
-      setTimeout(() => {
-        this.setState({ state: "default"})
-      }, 3000)
+      getUser(Meteor.userId(), this.props.dispatch)
+        .then(() => {
+          this.setState({ state: "default"})
+        })
 
     })
 

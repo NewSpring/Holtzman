@@ -15,6 +15,22 @@ export default class Layout extends Component {
     campuses: PropTypes.array.isRequired
   }
 
+  submit = (e) => {
+    e.preventDefault()
+
+    let data = {}
+    for (let ref in this.refs) {
+      let value = this.refs[ref].getValue()
+      let number = Number(value)
+      if (number) {
+        value = number
+      }
+
+      data[ref] = value
+    }
+
+    this.props.submit(data)
+  }
 
   render () {
 
@@ -31,11 +47,11 @@ export default class Layout extends Component {
     } = person
 
     return (
-      <div className="one-whole text-center push-double-top@lap-and-up">
+      <div className="one-whole text-center push-double-top@lap-and-up soft-double-bottom">
         <Forms.Form
           id="reset-password"
           classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
-          submit={submit}
+          submit={this.submit}
         >
           <div className="push-double">
             <h4 className="text-center">

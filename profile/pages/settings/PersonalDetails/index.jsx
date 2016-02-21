@@ -5,9 +5,10 @@ import Moment from "moment"
 import { GraphQL } from "../../../../core/graphql"
 
 import { Campuses, States } from "../../../../core/collections"
-import { nav, campuses as campusActions } from "../../../../core/store"
+import { nav, campuses as campusActions, onBoard as onBoardActions } from "../../../../core/store"
 import { update } from "../../../../core/methods/auth/client/"
 
+import { Loading, Error } from "../../../../core/components/states"
 
 import Success from "../Success"
 import Layout from "./Layout"
@@ -34,6 +35,41 @@ function getCampuses(dispatch) {
       }
 
       dispatch(campusActions.add(mappedObj))
+
+    })
+
+}
+
+// @TODO move to saga?
+function getUser(id, dispatch) {
+
+  // this is probably to heavy of a universal call?
+
+  // @TODO figure out caching issues?
+  let personQuery = `
+    {
+      person(mongoId: "${id}", cache: false) {
+        birthdate
+        birthDay
+        birthMonth
+        birthYear
+        campus {
+          name
+          shortCode
+          id
+        }
+        firstName
+        lastName
+        nickName
+      }
+    }
+  `
+
+  return GraphQL.query(personQuery)
+    .then(({ person }) => {
+      if (person) {
+        dispatch(onBoardActions.person(person))
+      }
 
     })
 
@@ -108,19 +144,7 @@ export default class PersonalDetails extends Component {
     return true
   }
 
-  updatePerson = (e) => {
-    e.preventDefault()
-
-    let data = {}
-    for (let ref in this.refs) {
-      let value = this.refs[ref].getValue()
-      let number = Number(value)
-      if (number) {
-        value = number
-      }
-
-      data[ref] = value
-    }
+  updatePerson = (data) => {
 
     this.setState({ state: "loading" })
 
@@ -137,10 +161,10 @@ export default class PersonalDetails extends Component {
 
 
       this.setState({ state: "success" })
-
-      setTimeout(() => {
-        this.setState({ state: "default"})
-      }, 3000)
+      getUser(Meteor.userId(), this.props.dispatch)
+        .then(() => {
+          this.setState({ state: "default"})
+        })
 
     })
 
@@ -160,12 +184,11 @@ export default class PersonalDetails extends Component {
     })
 
     const { state } = this.state
-
     switch (state) {
       case "error":
-        return <States.Err msg="Looks like there was a problem" error={error} />
+        return <Error msg="Looks like there was a problem" />
       case "loading":
-        return <States.Loading msg="Updating your information..." />
+        return <Loading msg="Updating your information..." />
       case "success":
         return <Success msg="Your information has been updated!" />
       default:

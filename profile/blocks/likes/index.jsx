@@ -11,7 +11,7 @@ export default class LikesContainer extends Component {
 
   getMeteorData() {
     Meteor.subscribe("likes")
-    const likes = Likes.find().fetch()
+    const likes = Likes.find({}, {sort: {dateLiked: -1}}).fetch()
 
     return {
       likes
