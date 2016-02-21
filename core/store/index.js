@@ -10,6 +10,7 @@ import campuses from "./campuses"
 import collections from "./collections"
 import routing from "./routing"
 import share from "./share"
+import comingsoon from "./comingsoon"
 
 import {
   join,
@@ -41,6 +42,7 @@ export {
   topics,
   collections,
   share,
+  comingsoon,
 
   wrapper,
   createReduxStore,
