@@ -34,7 +34,7 @@ addSaga(function* sectionsSaga(getState) {
           ...${images}
         }
       }
-      devotions: allContent(limit: 1, channel: "devotionals") {
+      devotionals: allContent(limit: 1, channel: "devotionals") {
         content {
           ...${images}
         }
