@@ -7,9 +7,9 @@ const Layout = ({ group, join }) => {
   return (
     <section className="background--light-primary hard@handheld hard@lap">
 
-      <div className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--solid-dark push-double-bottom" style={{
+      <div className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--gradient push-double-bottom" style={{
           overflow: "visible",
-          backgroundImage: "url(//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/fpo/fpo.groups-flipped_1700_850_90_c1.jpg)"
+          backgroundImage: `url(${group.photo})`
         }}>
         <div className="ratio__item one-whole floating--bottom">
           <div className="floating__item text-left one-whole soft-double-sides@lap-wide-and-up soft-sides soft-double-bottom">
@@ -102,7 +102,7 @@ const Layout = ({ group, join }) => {
                     let loc = group.locations[0]
                     return (
                       <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
-                        <h7 className="text-dark-tertiary">Address</h7>
+                        <h7 className="text-dark-tertiary">Address                             {loc.location.distance ? `- ${loc.location.distance.toFixed(2)} miles away`: ""}</h7>
                           <h5 className="text-dark-tertiary soft-half-top flush-bottom">
                             {loc.location.city}, {loc.location.state}
                           </h5>

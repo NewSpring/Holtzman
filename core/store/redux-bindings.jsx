@@ -49,7 +49,14 @@ const createReduxStore = (initialState, history) => {
 }
 
 
-const wrapper = Provider
+const wrapper = (props) => (
+  <Provider {...props}>
+    <Global>
+      {props.children}
+    </Global>
+  </Provider>
+)
+
 export {
   wrapper,
   createReduxStore

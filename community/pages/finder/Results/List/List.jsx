@@ -32,7 +32,7 @@ const List = ({ groups, onHover, onClick, hover, active, showFilters, children, 
             style={{position:"relative"}}
           >
             <SideBySide
-              image={group.photo ? { url: group.photo } : { url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/fpo/fpo.groups-flipped_1700_850_90_c1.jpg"}}
+              image={{ url: group.photo }}
               left={["one-whole", "two-thirds@lap-and-up"]}
               right={["one-whole", "one-third@lap-and-up"]}
             >
@@ -55,7 +55,7 @@ const List = ({ groups, onHover, onClick, hover, active, showFilters, children, 
               </h6>
               <h6 className="text-dark-tertiary">
                 <em>
-                  {group.schedule.scheduleText}
+                  {group.schedule.scheduleText} {group.locations.length && group.locations[0].location.distance ? `- ${group.locations[0].location.distance.toFixed(2)} miles away`: ""}
                 </em>
               </h6>
               <p className="flush-bottom">
