@@ -33,7 +33,6 @@ Meteor.methods({
       ForeignKey: _id
     }
 
-    console.log(Session)
 
     // this may not be possible yet :(
     return

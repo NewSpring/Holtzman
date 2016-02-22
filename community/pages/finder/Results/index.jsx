@@ -29,6 +29,7 @@ function getGroups({ lat, lng }, dispatch ) {
         id
         name
         description
+        photo
         campus {
           id
           name
@@ -45,6 +46,7 @@ function getGroups({ lat, lng }, dispatch ) {
             longitude
             city
             state
+            distance
           }
         }
         schedule {
@@ -72,7 +74,6 @@ function getGroups({ lat, lng }, dispatch ) {
     .then(({ groups, topics }) => {
       for (let group in groups) {
         group = groups[group]
-
         dispatch(collectionActions.insert("groups", {
           [group.id]: group
         }))
@@ -240,12 +241,14 @@ export default class ListContainer extends Component {
         }
       }
 
+      console.log(group)
       let filter = (
-        convert(filters.childCare) === group.childCare &&
+        convert(filters.childCare) === (group.childCare ? group.childCare : true) &&
         (Number(filters.topic) === -1 || filters.topic === group.demographic) &&
         filters.days.indexOf(Number(group.schedule.day)) > -1
       )
 
+      console.log(filter)
       if (!filter) {
         continue
       }
