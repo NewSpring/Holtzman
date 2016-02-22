@@ -49,7 +49,7 @@ export default class FeedItemSkeleton extends Component {
 
   render () {
     return (
-      <div className="push-left push-half-bottom">
+      <div className="card">
         <div className={this.backgroundStyles()}></div>
         <div className="outlined--light soft card__item rounded-bottom">
           <div className={this.titleStyles()}></div>
