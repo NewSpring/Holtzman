@@ -35,7 +35,8 @@
     "eslint-plugin-react": "^3.6.3",
     "expect": "^1.13.4",
     "gitbook-cli": "^0.3.4",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "redux-logger": "^2.5.2"
   },
   "dependencies": {
     "google-map-react": "^0.9.3",

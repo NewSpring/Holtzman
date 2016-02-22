@@ -10,6 +10,11 @@ import { Global } from "../blocks"
 import { reducers, middlewares, sagas } from "./utilities"
 import { syncHistory, routeReducer } from "../store/routing"
 
+let logger;
+if (process.env.NODE_ENV === "development") {
+  const createLogger = require("redux-logger")
+  logger = createLogger()
+}
 
 const createReduxStore = (initialState, history) => {
 
