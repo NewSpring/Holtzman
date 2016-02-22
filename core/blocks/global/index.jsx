@@ -107,11 +107,16 @@ function prefillRedux(dispatch) {
     if (Meteor.userId()) {
       Meteor.subscribe("userData");
       let topics = Meteor.user().topics;
-      dispatch(topicActions.set(topics));
+      if (topics && topics.length) {
+        dispatch(topicActions.set(topics));
+      }
 
       Meteor.subscribe("likes")
       let likes = Likes.find().fetch().map((like) => like.entryId);
-      dispatch(likedActions.set(likes));
+      if (likes.length){
+        dispatch(likedActions.set(likes));
+      }
+
     }
 
   });

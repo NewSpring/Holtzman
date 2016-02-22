@@ -3,7 +3,6 @@ import { Link } from "react-router"
 import { ImageLoader } from "../../components/loading"
 import Styles from "../../components/loading/FeedItemSkeleton.css"
 
-
 export default class Right extends Component {
 
   static propTypes = {
@@ -13,6 +12,10 @@ export default class Right extends Component {
     width: PropTypes.string,
     background: PropTypes.string,
     styles: PropTypes.object
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return !nextProps.keep
   }
 
   layoutClasses = () => {
@@ -29,8 +32,6 @@ export default class Right extends Component {
     } else {
       classes.push("visuallyhidden@handheld")
     }
-
-
 
     if (this.props.scroll) {
       classes.push("scrollable")

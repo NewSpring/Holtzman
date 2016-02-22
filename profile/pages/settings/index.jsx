@@ -1,7 +1,7 @@
 import { Component } from "react"
 import { connect } from "react-redux"
 
-import { onBoard as onBoardActions } from "../../../core/store"
+import { onBoard as onBoardActions, nav as navActions } from "../../../core/store"
 
 import Layout from "./Layout"
 
@@ -17,6 +17,10 @@ const map = (state) => ({ person: state.onBoard.person })
 
 @connect(map)
 class Template extends Component {
+
+  componentWillMount(){
+    this.props.dispatch(navActions.setLevel("TOP"))
+  }
 
   render() {
     const { person } = this.props

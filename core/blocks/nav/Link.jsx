@@ -44,7 +44,7 @@ export default class NavLink extends Component {
       return
     }
 
-    if (navItem.link) {
+    if (navItem.link && (navItem.link != window.location.pathname)) {
       function navigate() {
         return routeActions.push(navItem.link)
       }
@@ -56,7 +56,12 @@ export default class NavLink extends Component {
     const iconClasses = `${this.props.navItem.icon} display-block`;
     let { navItem } = this.props
 
-
+    let itemStyle = {}
+    if (Meteor.isCordova) {
+      itemStyle = {
+        marginTop: "-3px"
+      }
+    }
     return (
       <button
         className={this.linkClasses()}
@@ -65,11 +70,11 @@ export default class NavLink extends Component {
       >
         <div className={`floating ${Styles["locked"]}`} >
           <div className="floating__item">
-            <i className={iconClasses}></i>
+            <i className={iconClasses} style={itemStyle}></i>
             {() => {
               if (navItem.label) {
                 return (
-                  <h7>
+                  <h7 className="display-block">
                     <small className="text-center">{navItem.label}</small>
                   </h7>
                 )

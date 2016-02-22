@@ -21,7 +21,7 @@ const bindSections = (props) => {
     Meteor.subscribe("sections")
 
     // pull all the sections data
-    let sections = Sections.find().fetch()
+    let sections = Sections.find({}, { sort: { order: 1 }}).fetch()
 
     let _sections = {}
     for (let _item of sections) { _sections[_item._id] = _item }
