@@ -84,11 +84,6 @@ export function syncHistory(history) {
       let { routing } = store.getState()
 
       let { payload: { method, args } } = action
-      if (method === "goBack") {
-        method = "push"
-        length  = routing.location.previous.length
-        args = [routing.location.previous[length - 1]]
-      }
 
       history[method](...args)
     }
