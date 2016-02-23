@@ -28,19 +28,10 @@ export default class Card extends Component {
       "text-left",
       "soft-double-ends@handheld",
       "soft-double@anchored",
-    ];
-
-    let defaultWidths = [
       "one-whole",
       "three-fifths@lap-wide",
       "one-half@anchored",
-    ]
-
-    if (this.props.left) {
-      classes = classes.concat(this.props.left)
-    } else {
-      classes = classes.concat(defaultWidths)
-    }
+    ];
 
     if (this.props.itemClasses) {
       classes = classes.concat(this.props.itemClasses);
@@ -95,7 +86,7 @@ export default class Card extends Component {
 
     const { image } = this.props
 
-    if (image && image.url) {
+    if (image) {
       let imageclasses = [
         "background--fill",
         "card__image",
@@ -134,26 +125,7 @@ export default class Card extends Component {
     const { link, image, theme, styles, itemTheme, itemStyles } = this.props
 
 
-    let wrapperClasses = [
-      "relative@handheld",
-      "plain",
-      "locked-ends@lap-and-up",
-      "locked-right@lap-and-up",
-    ]
-
-    let defaultWidths = [
-      "one-whole@handheld",
-      "two-fifths@lap-wide",
-      "one-half@anchored"
-    ]
-
-    if (this.props.right) {
-      wrapperClasses = wrapperClasses.concat(this.props.right)
-    } else {
-      wrapperClasses = wrapperClasses.concat(defaultWidths)
-    }
-
-    wrapperClasses = wrapperClasses.join(" ")
+    let wrapperClasses = "relative@handheld plain locked-ends@lap-and-up locked-right@lap-and-up one-whole@handheld two-fifths@lap-wide one-half@anchored"
     if (this.props.mobile === false) {
       wrapperClasses += " visuallyhidden@handheld visuallyhidden@lap"
     }
@@ -176,7 +148,6 @@ export default class Card extends Component {
 
         </div>
       )
-
     }
 
     return (
@@ -185,7 +156,6 @@ export default class Card extends Component {
         style={styles || this.styles() }
         >
         <div className={wrapperClasses}>
-
           {this.createImage()}
         </div>
         <div
