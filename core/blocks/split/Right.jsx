@@ -96,13 +96,18 @@ export default class Right extends Component {
     );
   }
 
-  renderChildren(){
+  renderInsideRatio(){
+
+    return (
+      <div className={ this.props.ratioTheme || this.ratioClasses()}>
+        {this.props.children}
+      </div>
+    )
+
+  }
+  renderOutSideRatio(){
     return (
       <div>
-        <div className={ this.props.ratioTheme || this.ratioClasses()}>
-          {this.props.children}
-        </div>
-
         {() => {
           if (this.props.outsideRatio) {
             return this.props.outsideRatio()
@@ -153,7 +158,8 @@ export default class Right extends Component {
               "floating"
             ]}
           >
-            {this.renderChildren()}
+            {this.renderInsideRatio()}
+            {this.renderOutSideRatio()}
           </Wrapper>
         </Link>
       )
@@ -168,7 +174,8 @@ export default class Right extends Component {
         imageclasses={this.props.theme && this.props.theme.split(" ") || this.layoutClasses()}
         style={this.props.styles || this.styles()}
       >
-        {this.renderChildren()}
+        {this.renderInsideRatio()}
+        {this.renderOutSideRatio()}
       </Wrapper>
     )
   }
