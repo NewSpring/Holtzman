@@ -77,7 +77,7 @@ class Template extends Component {
   }
 
   render() {
-    
+
     let sugaredChildren = React.Children.map(this.props.children, (x) => {
       return React.cloneElement(x, {
         onLoaded: this.onGoogleLoaded,

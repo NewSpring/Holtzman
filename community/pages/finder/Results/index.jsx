@@ -151,14 +151,6 @@ export default class ListContainer extends Component {
 
   }
 
-  componentDidMount(){
-    setInterval(() => {
-      this.setState({
-        active: null
-      })
-    }, 1000)
-  }
-
   onClick = (e) => {
     e.preventDefault()
     const { id } = e.currentTarget
@@ -236,9 +228,6 @@ export default class ListContainer extends Component {
 
   render () {
 
-
-
-    console.log("rendering...")
     const groups = []
     const markers = []
     for (let group in this.props.groups) {
@@ -252,12 +241,14 @@ export default class ListContainer extends Component {
         }
       }
 
+      console.log(group)
       let filter = (
         convert(filters.childCare) === (group.childCare ? group.childCare : true) &&
         (Number(filters.topic) === -1 || filters.topic === group.demographic) &&
         filters.days.indexOf(Number(group.schedule.day)) > -1
       )
 
+      console.log(filter)
       if (!filter) {
         continue
       }
@@ -301,7 +292,6 @@ export default class ListContainer extends Component {
         hash: this.props.params.hash
       })
     });
-
 
     return (
       <Split nav={true}>
