@@ -1,6 +1,7 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import { Forms } from "../../../../core/components"
+import { VelocityComponent } from "velocity-react"
 
 //
 export default class Layout extends Component {
@@ -47,7 +48,12 @@ export default class Layout extends Component {
     } = person
 
     return (
-      <div className="one-whole text-center push-double-top@lap-and-up soft-double-bottom">
+    <VelocityComponent
+      animation={"transition.fadeIn"}
+      duration={500}
+      runOnMount={true}
+    >
+    <div className="background--light-primary one-whole text-center push-double-top@lap-and-up soft-double-bottom push-double-bottom locked-ends locked-sides scrollable">
         <Forms.Form
           id="reset-password"
           classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
@@ -160,6 +166,7 @@ export default class Layout extends Component {
           }()}
         </Forms.Form>
       </div>
+    </VelocityComponent>
     )
   }
 }

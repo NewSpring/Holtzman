@@ -1,9 +1,15 @@
 import { PropTypes } from "react"
 
 import { AccountType } from "../../../../give/components"
+import { VelocityComponent } from "velocity-react"
 
 const Layout = ({ details, remove }) => (
-  <div className="text-center push-double-top soft-double-top@lap-and-up">
+  <VelocityComponent
+    animation={"transition.fadeIn"}
+    duration={500}
+    runOnMount={true}
+  >
+  <div className="background--light-primary text-center soft-double-top locked-ends locked-sides scrollable push-double-bottom">
     <div className="one-whole two-thirds@anchored display-inline-block">
       <h3>Saved Accounts</h3>
       <div className="soft-sides soft-double-sides@lap-and-up">
@@ -38,6 +44,7 @@ const Layout = ({ details, remove }) => (
     </div>
 
   </div>
+</VelocityComponent>
 )
 
 Layout.propTypes = {
