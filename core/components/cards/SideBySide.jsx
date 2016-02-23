@@ -176,6 +176,7 @@ export default class Card extends Component {
 
         </div>
       )
+
     }
 
     return (
@@ -184,6 +185,7 @@ export default class Card extends Component {
         style={styles || this.styles() }
         >
         <div className={wrapperClasses}>
+
           {this.createImage()}
         </div>
         <div
