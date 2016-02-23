@@ -8,9 +8,7 @@ const Layout = ({ submit, save, state }) => (
     duration={500}
     runOnMount={true}
   >
-    <div className="background--light-primary one-whole text-center push-double-top@lap-and-up">
-      { //<div style={{ position: "fixed", height: "100%", width: "100%", top: "0", left: "0", backgroundColor: "#ffffff" }}></div>
-      }
+  <div className="background--light-primary one-whole text-center push-double-top@lap-and-up locked-ends locked-sides">
       <Forms.Form
         id="reset-password"
         classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
