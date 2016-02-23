@@ -46,7 +46,7 @@ export default class Layout extends Component {
       duration={500}
       runOnMount={true}
     >
-      <div className="one-whole text-center push-double-top@lap-and-up">
+      <div className="background--light-primary one-whole text-center push-double-top@lap-and-up locked-ends locked-sides">
         <Forms.Form
           id="reset-password"
           classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
