@@ -3,6 +3,10 @@ import { Link } from "react-router"
 import { ImageLoader } from "../../components/loading"
 import Styles from "../../components/loading/FeedItemSkeleton.css"
 
+
+let Wrapper = (props) => (
+  <section {...props} className={props.imageclasses.join(" ")}>{props.children}</section>
+)
 export default class Right extends Component {
 
   static propTypes = {
@@ -92,46 +96,9 @@ export default class Right extends Component {
     );
   }
 
-  render () {
-
-    const { blur } = this.props
-
-    let Wrapper = (props) => (
-      <section {...props}>{props.children}</section>
-    )
-
-    if (this.props.background) {
-      Wrapper = ImageLoader
-    }
-
-    if (this.props.link) {
-      let OldWrapper = Wrapper
-      Wrapper = (props) => (
-        <Link
-          to={this.props.link}
-          className={this.props.theme || this.layoutClasses().join(" ")}
-        >
-          <OldWrapper {...props} imageclasses={[
-            "background--fill",
-            "locked-ends",
-            "locked-sides",
-            "hard",
-            "floating"
-          ]} />
-        </Link>
-      )
-    }
-
+  renderChildren(){
     return (
-
-      <Wrapper
-        src={this.props.background}
-        preloader={this.preloader}
-        renderElement={this.renderElement}
-        imageclasses={this.props.theme && this.props.theme.split(" ") || this.layoutClasses()}
-        style={this.props.styles || this.styles()}
-      >
-
+      <div>
         <div className={ this.props.ratioTheme || this.ratioClasses()}>
           {this.props.children}
         </div>
@@ -149,13 +116,59 @@ export default class Right extends Component {
               filter: "blur(10px)"
           }}
 
-          if (blur) {
+          if (this.props.blur) {
             return (
               <div className="locked-sides locked-ends background--fill" style={styles}></div>
             )
           }
         }()}
+      </div>
+    )
+  }
 
+  render () {
+
+    const { blur } = this.props
+
+    if (this.props.background) {
+      Wrapper = ImageLoader
+    }
+
+    if (this.props.link) {
+      return (
+        <Link
+          to={this.props.link}
+          className={this.props.theme || this.layoutClasses().join(" ")}
+        >
+          <Wrapper
+            src={this.props.background}
+            preloader={this.preloader}
+            renderElement={this.renderElement}
+            style={this.props.styles || this.styles()}
+            imageclasses={[
+              "background--fill",
+              "locked-ends",
+              "locked-sides",
+              "hard",
+              "floating"
+            ]}
+          >
+            {this.renderChildren()}
+          </Wrapper>
+        </Link>
+      )
+    }
+
+    return (
+
+      <Wrapper
+        src={this.props.background}
+        preloader={this.preloader}
+        renderElement={this.renderElement}
+        imageclasses={this.props.theme && this.props.theme.split(" ") || this.layoutClasses()}
+        style={this.props.styles || this.styles()}
+      >
+        {this.renderChildren()}
       </Wrapper>
     )
   }
