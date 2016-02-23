@@ -35,7 +35,11 @@ export default class SideModalContainer extends Component {
     }
 
     if (!nextProps.modal.visible && nextProps.navigation.level === "MODAL" && !this.props.modal.props.keepNav) {
-      this.props.dispatch(navActions.setLevel(this.state.previous || "TOP"))
+      let previous = this.state.previous
+      if (previous === "MODAL") {
+        previous = "TOP"
+      }
+      this.props.dispatch(navActions.setLevel(previous))
     }
 
     if (!nextProps.modal.visible && (this.props.path != nextProps.path)) {
