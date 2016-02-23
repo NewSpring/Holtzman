@@ -2,8 +2,14 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
 import { nav } from "../../../../core/store"
+import { VelocityComponent } from "velocity-react"
 
 const PP = () => (
+  <VelocityComponent
+    animation={"transition.fadeIn"}
+    duration={500}
+    runOnMount={true}
+  >
   <div className="soft soft-double@lap-and-up push@lap-and-up">
     <h1>
       Privacy Policy
@@ -144,6 +150,7 @@ const PP = () => (
     </p>
 
   </div>
+</VelocityComponent>
 )
 
 @connect()
