@@ -3,7 +3,7 @@ import { Link } from "react-router"
 
 import SideBySide from "../../../../../core/components/cards/SideBySide"
 
-const List = ({ groups, onHover, onClick, hover, active, showFilters, children, filter }) => (
+const List = ({ groups, onHover, onClick, hover, active, showFilters, children, filter, count }) => (
   <div>
     <section className="background--light-secondary soft-double-sides@lap-and-up hard-bottom">
 
@@ -30,6 +30,7 @@ const List = ({ groups, onHover, onClick, hover, active, showFilters, children, 
             onClick={onClick}
             key={key}
             style={{position:"relative"}}
+            className="one-whole"
           >
             <SideBySide
               image={{ url: group.photo }}
@@ -69,12 +70,38 @@ const List = ({ groups, onHover, onClick, hover, active, showFilters, children, 
 
         )
       })}
+
+      {/*
+      <div className="one-whole text-center soft-double-top soft-bottom">
+        <button style={{ width: "130px"}} className="btn--small btn--dark-tertiary display-inline-block">
+          Previous
+        </button>
+
+        {() => {
+          let btnClasses = ["push-left", "btn"];
+
+          // if (data.email === null || data.password === null && !data.terms){
+          //   btnClasses.push("btn--disabled");
+          // } else {
+          //   btnClasses.push("btn");
+          // }
+
+          return (
+            <button className={btnClasses.join(" ")} style={{ width: "130px"}}>
+              Next
+            </button>
+          )
+        }()}
+      </div>
+
+    </section>
+    <section className="background--light-primary hard">
+    */}
       <div className="one-whole text-center soft-double-top soft-bottom">
         <Link to="/community/finder" className="btn">
           Search Again
         </Link>
       </div>
-
     </section>
   </div>
 )

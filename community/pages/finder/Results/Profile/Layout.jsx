@@ -14,35 +14,43 @@ const Layout = ({ group, join }) => {
         <div className="ratio__item one-whole floating--bottom">
           <div className="floating__item text-left one-whole soft-double-sides@lap-wide-and-up soft-sides soft-double-bottom">
             <h3 className="text-light-primary push-half-bottom">{group.name}</h3>
-            <h7 className="text-light-primary">
-              <small>Group Leaders</small>
-            </h7>
-            <h6 className="text-light-primary">{
-              leaders
-                .map((x, i) => {
-                  let string = `${x.person.nickName || x.person.firstName} ${x.person.lastName}`
-
-                  if (leaders.length - 1 != i) {
-                    string += ", "
-                  }
-
-                  return <span key={i}>{string}</span>
-                })
-            }</h6>
-
-            <div className="locked">
-              {leaders.map((leader, i) => {
+            {() => {
+              if (leaders.length) {
                 return (
-                  <div className="ratio--square round display-inline-block push-right background--fill" key={i} style={{
-                    backgroundImage: `url(${leader.person.photo})`,
-                    width: "80px",
-                    height: "80px"
-                  }}>
-                    <div className="ratio__item"></div>
+                  <div>
+                    <h7 className="text-light-primary">
+                      <small>Group Leaders</small>
+                    </h7>
+                    <h6 className="text-light-primary">{
+                      leaders
+                        .map((x, i) => {
+                          let string = `${x.person.nickName || x.person.firstName} ${x.person.lastName}`
+
+                          if (leaders.length - 1 != i) {
+                            string += ", "
+                          }
+
+                          return <span key={i}>{string}</span>
+                        })
+                    }</h6>
+
+                    <div className="locked">
+                      {leaders.map((leader, i) => {
+                        return (
+                          <div className="ratio--square round display-inline-block push-right background--fill" key={i} style={{
+                            backgroundImage: `url(${leader.person.photo})`,
+                            width: "80px",
+                            height: "80px"
+                          }}>
+                            <div className="ratio__item"></div>
+                          </div>
+                        )
+                      })}
+                    </div>
                   </div>
                 )
-              })}
-            </div>
+              }
+            }()}
           </div>
         </div>
       </div>
