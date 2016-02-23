@@ -16,7 +16,7 @@ import {
 } from "../../../../core/store"
 
 
-function getGroups({ lat, lng }, dispatch ) {
+function getGroups({ lat, lng, offset }, dispatch ) {
   let query = `
     {
       topics: allDefinedValues(id: 52) {
@@ -30,11 +30,6 @@ function getGroups({ lat, lng }, dispatch ) {
         name
         description
         photo
-        campus {
-          id
-          name
-          shortCode
-        }
         childCare
         ageRange
         demographic
@@ -70,22 +65,12 @@ function getGroups({ lat, lng }, dispatch ) {
     }
   `
 
+
   return GraphQL.query(query)
     .then(({ groups, topics }) => {
-      for (let group in groups) {
-        group = groups[group]
-        dispatch(collectionActions.insert("groups", {
-          [group.id]: group
-        }))
-      }
 
-      for (let topic in topics) {
-        topic = topics[topic]
-
-        dispatch(collectionActions.insert("topics", {
-          [topic.id]: topic
-        }))
-      }
+      dispatch(collectionActions.upsertBatch("groups", groups, "id"))
+      dispatch(collectionActions.upsertBatch("topics", topics, "id"))
 
       return { groups, topics }
 
@@ -112,22 +97,22 @@ export default class ListContainer extends Component {
     }
   }
 
-  static fetchData(getState, dispatch, location) {
-    const { pathname } = location
-
-    let loc = pathname.split("/").splice(-1)[0]
-    loc = base64Decode(decodeURI(loc))
-
-    try {
-      loc = JSON.parse(loc)
-    } catch (e) {}
-
-    if (loc && loc.lat && loc.lng) {
-      return getGroups(loc, dispatch)
-    }
-
-    return
-  }
+  // static fetchData(getState, dispatch, location) {
+  //   const { pathname } = location
+  //
+  //   let loc = pathname.split("/").splice(-1)[0]
+  //   loc = base64Decode(decodeURI(loc))
+  //
+  //   try {
+  //     loc = JSON.parse(loc)
+  //   } catch (e) {}
+  //
+  //   if (loc && loc.lat && loc.lng) {
+  //     return getGroups(loc, dispatch)
+  //   }
+  //
+  //   return
+  // }
 
   componentWillMount(){
 
@@ -145,7 +130,10 @@ export default class ListContainer extends Component {
       this.setState({status: "loading"})
       return getGroups(loc, dispatch)
         .then(() => {
-          this.setState({status: "default", home: [loc.lat, loc.lng]})
+          this.setState({
+            status: "default",
+            home: [loc.lat, loc.lng]
+          })
         })
     }
 
@@ -230,8 +218,12 @@ export default class ListContainer extends Component {
 
     const groups = []
     const markers = []
-    for (let group in this.props.groups) {
-      group = this.props.groups[group]
+    let groupData = []
+    if (this.props.groups && this.props.groups.collection) {
+      groupData = this.props.groups.collection.find().fetch()
+    }
+
+    for (let group of groupData) {
 
       const { filters } = this.state
 
@@ -241,14 +233,12 @@ export default class ListContainer extends Component {
         }
       }
 
-      console.log(group)
       let filter = (
         convert(filters.childCare) === (group.childCare ? group.childCare : true) &&
         (Number(filters.topic) === -1 || filters.topic === group.demographic) &&
         filters.days.indexOf(Number(group.schedule.day)) > -1
       )
 
-      console.log(filter)
       if (!filter) {
         continue
       }
@@ -274,11 +264,14 @@ export default class ListContainer extends Component {
       label: "All Topics"
     }]
 
-    for (let topic in this.props.topics) {
-      topics.push({
-        label: this.props.topics[topic].value
-      })
+    if (this.props.topics && this.props.topics.__raw) {
+      for (let topic in this.props.topics.__raw) {
+        topics.push({
+          label: this.props.topics.__raw[topic].value
+        })
+      }
     }
+
 
     let children = React.Children.map(this.props.children, (x) => {
       return React.cloneElement(x, {
