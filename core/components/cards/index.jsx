@@ -177,7 +177,7 @@ export default class Card extends Component {
             </Wrapper>
           )
         }()}
-        
+
         <div
           className={ itemTheme || this.itemClasses() }
           style={itemStyles}

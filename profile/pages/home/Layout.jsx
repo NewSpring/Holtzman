@@ -1,6 +1,7 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import Meta from "react-helmet"
+import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import { Toggle } from "../../../core/components/controls"
@@ -12,45 +13,51 @@ const SettingsLink = () => (
 )
 
 const Layout = ({ photo, person, onToggle, content, onUpload }) => (
-  <Split nav={true}>
+  <VelocityComponent
+    animation={"transition.fadeIn"}
+    duration={500}
+    runOnMount={true}
+  >
+    <Split nav={true}>
 
-    <Meta
-      title={`${person.nickName} ${person.lastName}`}
-      titleTemplate="%s | NewSpring Church"
-    />
+      <Meta
+        title={`${person.nickName} ${person.lastName}`}
+        titleTemplate="%s | NewSpring Church"
+      />
 
-    <Right
-      mobile={true}
-      classes={["floating", "overlay--solid-dark"]}
-      ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
-      background={photo}
-      blur={true}
-      outsideRatio={SettingsLink}
-    >
-      <div className="soft one-whole">
-        <label htmlFor="file"
-          className="background--fill ratio--square round two-fifths display-inline-block"
-          style={{ backgroundImage: `url(${photo})`, position: "relative"}}
-        >
-          {/* <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} /> */}
-        </label>
-      <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName} {person.lastName}</h4>
-        <p className="text-light-primary flush"><em>{person.home.city}</em></p>
-      </div>
+      <Right
+        mobile={true}
+        classes={["floating", "overlay--solid-dark"]}
+        ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
+        background={photo}
+        blur={true}
+        outsideRatio={SettingsLink}
+      >
+        <div className="soft one-whole">
+          <label htmlFor="file"
+            className="background--fill ratio--square round two-fifths display-inline-block"
+            style={{ backgroundImage: `url(${photo})`, position: "relative"}}
+          >
+            {/* <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} /> */}
+          </label>
+        <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName} {person.lastName}</h4>
+          <p className="text-light-primary flush"><em>{person.home.city}</em></p>
+        </div>
 
-    </Right>
+      </Right>
 
-    <Left scroll={true}>
-      <Toggle items={["Likes", "Following"]} toggle={onToggle} />
+      <Left scroll={true}>
+        <Toggle items={["Likes", "Following"]} toggle={onToggle} />
 
-      <div>
+        <div>
 
-        {content}
+          {content}
 
-      </div>
-    </Left>
+        </div>
+      </Left>
 
-  </Split>
+    </Split>
+  </VelocityComponent>
 )
 
 
