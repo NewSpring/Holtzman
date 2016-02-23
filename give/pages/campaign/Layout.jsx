@@ -6,7 +6,7 @@ import { AddToCart } from "../../blocks"
 
 const Layout = ({ account }) => (
 
-  <Split nav={true}>
+  <Split nav={true} classes={["background--light-primary"]}>
     <Meta
       title={account.name}
       titleTemplate="%s | NewSpring Church"

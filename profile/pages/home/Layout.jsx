@@ -18,7 +18,7 @@ const Layout = ({ photo, person, onToggle, content, onUpload }) => (
     duration={500}
     runOnMount={true}
   >
-    <Split nav={true}>
+    <Split nav={true} classes={["background--light-primary"]}>
 
       <Meta
         title={`${person.nickName} ${person.lastName}`}
