@@ -46,7 +46,7 @@ export default class Layout extends Component {
     const { schedule, stop, state, person, active } = this.props
 
     return (
-      <Split nav={true} >
+      <Split nav={true} classes={["background--light-primary"]}>
 
         <Meta
           title="Reccuring Gift"

@@ -39,7 +39,7 @@ export default class Layout extends Component {
 
   render () {
     return (
-      <Split nav={true} >
+      <Split nav={true} classes={["background--light-primary"]}>
 
         <Meta
           title="Giving History"

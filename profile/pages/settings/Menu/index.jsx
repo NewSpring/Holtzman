@@ -1,5 +1,6 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
+import { VelocityComponent } from "velocity-react"
 
 export default class Menu extends Component {
 
@@ -20,6 +21,11 @@ export default class Menu extends Component {
 
   render() {
     return (
+    <VelocityComponent
+      animation={"transition.fadeIn"}
+      duration={500}
+      runOnMount={true}
+    >
       <div className="locked-ends@lap-and-up locked-sides@lap-and-up background--light-secondary scrollable">
         <section className="hard ">
           <div className="soft text-center background--light-primary outlined--light outlined--bottom" style={{position: "relative"}}>
@@ -92,6 +98,7 @@ export default class Menu extends Component {
           </div>
         </section>
       </div>
+    </VelocityComponent>
 
     )
   }

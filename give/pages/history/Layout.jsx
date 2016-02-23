@@ -102,7 +102,7 @@ export default class Layout extends Component {
 
 
     return (
-      <Split nav={true} >
+      <Split nav={true} classes={["background--light-primary"]}>
         <Meta
           title="Giving History"
           titleTemplate="%s | NewSpring Church"

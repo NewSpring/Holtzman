@@ -10,7 +10,7 @@ import { Offline } from "../../components/status"
 import { AddToCart } from "../../blocks"
 
 const Layout = ({ alive, accounts }) => (
-  <Split nav={true}>
+  <Split nav={true} classes={["background--light-primary"]}>
 
     <Meta
       title="Give"
