@@ -81,7 +81,12 @@ addSaga(function* sectionsSaga(getState) {
 
   // parse the results and only get a single usable image
   for (let item in recentItems) {
-    filteredItems[item] = extractImage(recentItems[item][0])
+    let image = extractImage(recentItems[item][0])
+    filteredItems[item] = image
+    if (typeof window != "undefined" && window != null) {
+      let img = document.createElement("img")
+      img.src = image
+    }
   }
 
   // wait on the sections panel to be expanded
