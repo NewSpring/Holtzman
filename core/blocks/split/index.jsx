@@ -33,7 +33,7 @@ export default class SplitContainer extends Component {
     ];
 
     if (this.props.classes) {
-      classes.concat(this.props.classes);
+      classes = classes.concat(this.props.classes);
     }
 
     if (this.props.navigation.visible && this.props.nav) {
