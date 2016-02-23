@@ -5,6 +5,12 @@ import { ImageLoader } from "../loading"
 
 import Styles from "../loading/FeedItemSkeleton.css"
 
+let Wrapper = (props) => (
+  <div {...props}>
+    {props.children}
+  </div>
+)
+
 export default class Card extends Component {
 
   static propTypes = {
@@ -127,20 +133,6 @@ export default class Card extends Component {
 
     const { link, image, theme, styles, itemTheme, itemStyles } = this.props
 
-    let Wrapper = Link
-
-    if (!link) {
-      Wrapper = class ALink extends Component {
-        render() {
-          return (
-            <div {...this.props}>
-              {this.props.children}
-            </div>
-          )
-        }
-      }
-    }
-
     let wrapperClasses = "plain"
     if (this.props.mobile ===  false) {
       wrapperClasses += " visuallyhidden@handheld"
@@ -148,7 +140,7 @@ export default class Card extends Component {
 
     if (this.props.linkAll) {
       return (
-        <Wrapper
+        <Link
           className={theme || this.cardClasses()}
           style={styles || this.styles() }
           to={link}
@@ -162,7 +154,7 @@ export default class Card extends Component {
           >
             {this.props.children}
           </div>
-        </Wrapper>
+        </Link>
       )
     }
 
@@ -171,10 +163,21 @@ export default class Card extends Component {
         className={theme || this.cardClasses()}
         style={styles || this.styles() }
         >
-
-        <Wrapper className={wrapperClasses} to={link}>
-          {this.createImage()}
-        </Wrapper>
+        {() => {
+          if (link) {
+            return (
+              <Link className={wrapperClasses} to={link}>
+                {this.createImage()}
+              </Link>
+            )
+          }
+          return (
+            <Wrapper className={wrapperClasses}>
+              {this.createImage()}
+            </Wrapper>
+          )
+        }()}
+        
         <div
           className={ itemTheme || this.itemClasses() }
           style={itemStyles}
