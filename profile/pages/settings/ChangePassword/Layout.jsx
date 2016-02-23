@@ -8,7 +8,7 @@ const Layout = ({ submit, save, state }) => (
     duration={500}
     runOnMount={true}
   >
-  <div className="background--light-primary one-whole text-center push-double-top@lap-and-up locked-ends locked-sides">
+  <div className="background--light-primary one-whole text-center push-double-top@lap-and-up locked-ends locked-sides scrollable push-double-bottom">
       <Forms.Form
         id="reset-password"
         classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
