@@ -55,13 +55,20 @@ const links = {
     },
     {
       id: 3,
+      label: "Community",
+      link: "/community/finder",
+      icon: "icon-sections",
+      isActive: (props) => (isEqual("/community/finder") && !props.modal.visible)
+    },
+    {
+      id: 4,
       label:"Discover",
       link:"/discover",
       icon:"icon-search",
       isActive: (props) => (isEqual("/discover") && !props.modal.visible)
     },
     {
-      id: 4,
+      id: 5,
       label: "Profile",
       link: "/profile",
       icon: "icon-profile",
