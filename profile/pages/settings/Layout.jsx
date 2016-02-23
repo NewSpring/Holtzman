@@ -1,6 +1,7 @@
 import { PropTypes } from "react"
 import { Link } from "react-router"
 import Meta from "react-helmet"
+import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 
@@ -11,37 +12,43 @@ const Close = () => (
 )
 
 const Layout = ({ photo, person, children }) => (
-  <Split nav={true}>
+  <VelocityComponent
+    animation={"transition.fadeIn"}
+    duration={500}
+    runOnMount={true}
+  >
+    <Split nav={true}>
 
-    <Meta
-      title={`${person.nickName} ${person.lastName}`}
-      titleTemplate="%s | NewSpring Church"
-    />
+      <Meta
+        title={`${person.nickName} ${person.lastName}`}
+        titleTemplate="%s | NewSpring Church"
+      />
 
-    <Right
-      mobile={false}
-      classes={["floating", "overlay--solid-dark"]}
-      ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
-      background={photo}
-      blur={true}
-      outsideRatio={Close}
-    >
-      <div className="soft one-whole">
-        <div
-          className="background--fill ratio--square round two-fifths display-inline-block"
-          style={{ backgroundImage: `url(${photo})`}}
-        ></div>
-      <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName || person.firstName} {person.lastName}</h4>
-        <p className="text-light-primary flush"><em>{person.home.city}</em></p>
-      </div>
+      <Right
+        mobile={false}
+        classes={["floating", "overlay--solid-dark"]}
+        ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
+        background={photo}
+        blur={true}
+        outsideRatio={Close}
+      >
+        <div className="soft one-whole">
+          <div
+            className="background--fill ratio--square round two-fifths display-inline-block"
+            style={{ backgroundImage: `url(${photo})`}}
+          ></div>
+        <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName || person.firstName} {person.lastName}</h4>
+          <p className="text-light-primary flush"><em>{person.home.city}</em></p>
+        </div>
 
-    </Right>
+      </Right>
 
-    <Left scroll={true} classes={["locked-ends@lap-and-up locked-sides@lap-and-up"]}>
-      {children}
-    </Left>
+      <Left scroll={true} classes={["locked-ends@lap-and-up locked-sides@lap-and-up"]}>
+        {children}
+      </Left>
 
-  </Split>
+    </Split>
+  </VelocityComponent>
 )
 
 Layout.propTypes = {
