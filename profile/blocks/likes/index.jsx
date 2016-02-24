@@ -11,10 +11,19 @@ export default class LikesContainer extends Component {
 
   getMeteorData() {
     Meteor.subscribe("likes")
-    const likes = Likes.find({}, {sort: {dateLiked: -1}}).fetch()
+    const likes = Likes.find({
+      userId: Meteor.userId()
+    }, { sort: { dateLiked: -1 }}).fetch()
+
+    const recentLikes = Likes.find({
+      userId: {
+        $not: Meteor.userId()
+      }
+    }, { sort: { dateLiked: -1 }}).fetch()
 
     return {
-      likes
+      likes,
+      recentLikes
     }
   }
 
@@ -24,13 +33,42 @@ export default class LikesContainer extends Component {
       <Loading />
     }
 
-    const likes = this.data.likes
+    const { likes, recentLikes } = this.data
 
+    let ids = []
     return(
       <section className="background--light-secondary soft soft-double@lap-and-up " style={ {marginTop: "-20px"} }>
         {likes.map((like, i) => {
           return <LikesItem like={like} key={i} />
         })}
+        {() => {
+
+          if (!likes.length) {
+            return (
+              <div>
+                <p className="soft-ends text-center">
+                  <em>
+                    <small>
+                      Check out some of the latest things from NewSpring
+                    </small>
+                  </em>
+                </p>
+
+                {recentLikes.map((like, i) => {
+
+                  if (ids.indexOf(like.entryId) > -1) {
+                    return
+                  }
+
+                  ids.push(like.entryId)
+                  return <LikesItem like={like} key={i} />
+                })}
+              </div>
+
+            )
+          }
+
+        }()}
       </section>
     );
 
