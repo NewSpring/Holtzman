@@ -19,6 +19,9 @@ addSaga(function* share(getStore) {
 
     }
 
+    // this is a temporary speed bump
+    if (msg.image) { delete msg.image }
+
     if (
       typeof window != "undefined" &&
       window != null &&
