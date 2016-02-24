@@ -15,4 +15,22 @@ if (Meteor.isServer) {
     )
   })
 
+  Meteor.publish("recently-liked", function(){
+
+    return Likes.find(
+      {
+        // userId: {
+        //   $not: this.userId
+        // }
+      },
+      {
+        sort: {
+          dateLiked: -1
+        },
+        limit: 15
+      }
+    )
+
+  })
+
 }
