@@ -48,12 +48,7 @@ export default class Layout extends Component {
     } = person
 
     return (
-    <VelocityComponent
-      animation={"transition.fadeIn"}
-      duration={500}
-      runOnMount={true}
-    >
-    <div className="background--light-primary one-whole text-center push-double-top@lap-and-up soft-double-bottom push-double-bottom locked-ends locked-sides scrollable">
+    <div className="background--light-primary one-whole text-center push-double-top@lap-and-up soft-double-bottom push-double-bottom">
         <Forms.Form
           id="reset-password"
           classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
@@ -166,7 +161,6 @@ export default class Layout extends Component {
           }()}
         </Forms.Form>
       </div>
-    </VelocityComponent>
     )
   }
 }

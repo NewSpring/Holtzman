@@ -3,12 +3,7 @@ import { Forms } from "../../../../core/components"
 import { VelocityComponent } from "velocity-react"
 
 const Layout = ({ submit, save, state }) => (
-  <VelocityComponent
-    animation={"transition.fadeIn"}
-    duration={500}
-    runOnMount={true}
-  >
-  <div className="background--light-primary one-whole text-center push-double-top@lap-and-up locked-ends locked-sides scrollable push-double-bottom">
+  <div className="background--light-primary one-whole text-center push-double-top@lap-and-up locked-ends locked-sides push-double-bottom" style={{overflow: "visible"}}>
       <Forms.Form
         id="reset-password"
         classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
@@ -64,7 +59,6 @@ const Layout = ({ submit, save, state }) => (
         }()}
       </Forms.Form>
     </div>
-  </VelocityComponent>
 )
 
 export default Layout

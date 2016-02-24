@@ -10,7 +10,7 @@ const PP = () => (
     duration={500}
     runOnMount={true}
   >
-  <div className="background--light-primary soft soft-double@lap-and-up push@lap-and-up locked-ends locked-sides scrollable push-double-bottom">
+  <div className="background--light-primary soft soft-double@lap-and-up push@lap-and-up push-double-bottom">
     <h1>
       Privacy Policy
     </h1>
