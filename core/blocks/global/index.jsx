@@ -104,15 +104,19 @@ function bindLogout(dispatch) {
 function prefillRedux(dispatch) {
   Tracker.autorun((computation) => {
 
+    Meteor.subscribe("recently-liked")
+
     if (Meteor.userId()) {
       Meteor.subscribe("userData");
-      let topics = Meteor.user().topics;
+      let topics = Meteor.user() ? Meteor.user().topics : [];
       if (topics && topics.length) {
         dispatch(topicActions.set(topics));
       }
 
       Meteor.subscribe("likes")
-      let likes = Likes.find().fetch().map((like) => like.entryId);
+      let likes = Likes.find({
+        userId: Meteor.userId()
+      }).fetch().map((like) => like.entryId);
       if (likes.length){
         dispatch(likedActions.set(likes));
       }
