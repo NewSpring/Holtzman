@@ -1,15 +1,44 @@
 import "regenerator/runtime"
 
-import { take, put } from "redux-saga/effects"
+import { take, put, cps } from "redux-saga/effects"
 
-
+import { Sections } from "../../collections"
 import { GraphQL } from "../../graphql"
 import { addSaga } from "../utilities"
 
 // @TODO abstract action creators to file that isn't index
 const set = (content) => ({ type: "SECTIONS.SET_CONTENT", content })
 
-addSaga(function* sectionsSaga(getState) {
+const bindSections = (callback) => {
+  Tracker.autorun((computation) => {
+
+    // subscribe to sections
+    Meteor.subscribe("sections")
+
+    // pull all the sections data
+    let sections = Sections.find({}, { sort: { order: 1 }}).fetch()
+
+    if (sections.length) {
+      let _sections = {}
+      for (let _item of sections) { _sections[_item._id] = _item }
+
+      // persist in the store
+      callback(null, _sections)
+      computation.stop()
+    }
+
+  })
+
+}
+
+addSaga(function* sectionPreLoader(getState) {
+
+  let sections = yield cps(bindSections)
+  yield put(set(sections))
+
+})
+
+addSaga(function* sectionImageDownload(getState) {
 
   // Query to preload the most recent images of the nav type
   const images = GraphQL.createFragment(`
@@ -89,8 +118,10 @@ addSaga(function* sectionsSaga(getState) {
     }
   }
 
-  // wait on the sections panel to be expanded
-  let sections = yield take("SECTIONS.SET_CONTENT")
+  let { sections } = getState()
+  if (!sections.content || !Object.keys(sections.content).length) {
+    sections = yield take("SECTIONS.SET_CONTENT")
+  }
   sections = sections.content
 
   // remap the images of the section panel
