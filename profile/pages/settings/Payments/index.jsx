@@ -66,7 +66,13 @@ export default class GiveNow extends Component {
   render () {
 
     if (!this.state.loaded) {
-      return <Loading/>
+      return (
+        <div className="locked-ends locked-sides floating">
+          <div className="floating__item">
+            <Loading/>
+          </div>
+        </div>
+      )
     }
 
     return <Layout details={this.state.accounts} remove={this.remove} />
