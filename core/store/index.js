@@ -11,6 +11,7 @@ import collections from "./collections"
 import routing from "./routing"
 import share from "./share"
 import comingsoon from "./comingsoon"
+import search from "./search"
 
 import {
   join,
@@ -44,6 +45,7 @@ export {
   share,
   comingsoon,
   routing,
+  search,
 
   wrapper,
   createReduxStore,

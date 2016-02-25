@@ -8,6 +8,7 @@ import modalActions from "../modal"
 import likedActions from "../liked"
 import shareActions from "../share"
 import Sections from "../../blocks/sections"
+import Search from "../../blocks/search"
 
 import { routeActions } from "../routing"
 
@@ -16,6 +17,15 @@ const back = () => {
 }
 
 let sectionsVisible = false
+
+let discoverVisible = false
+const showDiscover = (props) => {
+  const { modal, dispatch } = props
+
+  discoverVisible = true
+  return modalActions.render(Search, { keepNav: true })
+
+}
 
 const isEqual = (path) => {
   if (typeof window != "undefined" && window != null) {
@@ -48,7 +58,7 @@ const links = {
     {
       id: 3,
       label:"Discover",
-      link:"/discover",
+      action: showDiscover,
       icon:"icon-search",
       isActive: (props) => (isEqual("/discover") && !props.modal.visible)
     },
