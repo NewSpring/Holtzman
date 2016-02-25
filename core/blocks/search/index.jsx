@@ -7,6 +7,8 @@ import modal from "../../store/modal"
 
 import { search as searchActions } from "../../store"
 
+import Item from "./Item"
+
 const map = (state) => ({ search: state.search })
 @connect(map)
 export default class SearchContainer extends Component {
@@ -59,12 +61,20 @@ export default class SearchContainer extends Component {
   render(){
     return (
       <section className="hard-sides soft-ends">
-        <form onSubmit={this.searchSubmit}>
-          <input type="text" id="search" />
-        </form>
-        {this.props.search.items.map((item) => {
-          return <p>{item.title}</p>
-        })}
+        <section className="push-bottom">
+          <button onClick={this.hide} className="locked-right push-right push-half-top"><small>Cancel</small></button>
+          <form onSubmit={this.searchSubmit} className="hard push-double-right">
+            <div className="input hard-bottom push-right">
+              <i className="icon-search locked-left push-half-top"></i>
+              <input id="search" type="text" placeholder="Search coming soon..." className="h5 text-dark-primary soft-double-left" />
+            </div>
+          </form>
+        </section>
+        <section className="background--light-secondary soft-half">
+          {this.props.search.items.map((item, i) => {
+            return <Item item={item} key={i} />
+          })}
+        </section>
       </section>
     )
   }
