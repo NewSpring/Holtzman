@@ -152,6 +152,7 @@ const transactions = () => {
           mergeFields["FirstNames"] = Person.NickName || Person.FirstName
           mergeFields["TransactionCode"] = Transaction.TransactionCode
           mergeFields["Amounts"] = accountAmounts
+          mergeFields["AccountNumberMasked"] = FinancialPaymentDetail.AccountNumberMasked.slice(-4)
 
           // remove record
           TransactionReciepts.remove(_id, (err) => {
