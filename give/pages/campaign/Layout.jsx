@@ -2,7 +2,7 @@
 import Meta from "react-helmet"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
-import { AddToCart } from "../../blocks"
+import AddToCart from "../../blocks/AddToCart"
 
 const Layout = ({ account }) => (
 

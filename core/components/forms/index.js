@@ -5,6 +5,7 @@ import Select from "./Select"
 import Form from "./Form"
 import Fieldset from "./Fieldset"
 import Date from "./Date"
+import TextArea from "./TextArea"
 
 import Label from "./components/Label"
 
@@ -16,5 +17,6 @@ export default {
   Form,
   Fieldset,
   Label,
-  Date
+  Date,
+  TextArea
 }

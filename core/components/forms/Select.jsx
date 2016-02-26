@@ -21,8 +21,15 @@ export default class Select extends Component {
 
   componentWillUpdate(nextProps){
     if (this.props.defaultValue != nextProps.defaultValue) {
+      // console.log("HERE", nextProps.defaultValue)
       this.setValue(nextProps.defaultValue)
       this.setState({focused: false})
+      const target = ReactDOM.findDOMNode(this.refs["apollos-select"])
+      this.change({
+        value: nextProps.defaultValue,
+        id: target.id,
+        currentTarget: target
+      })
     }
   }
 
@@ -163,7 +170,7 @@ export default class Select extends Component {
             return (
               <option
                 className={this.props.optionClasses}
-                value={option.value || option.label}
+                value={option.value  || option.label}
                 key={key}
               >
                 {option.label || option.value}

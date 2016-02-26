@@ -3,7 +3,7 @@ import Card from "./cards"
 import Controls from "./controls"
 import Forms from "./forms"
 import Loading from "./loading"
-import Map from "./map"
+// import Map from "./map"
 import Icons from "./icons"
 import States from "./states"
 import Transitions from "./transitions"
@@ -13,7 +13,7 @@ export default {
   Controls,
   Forms,
   Loading,
-  Map,
+  // Map,
   Icons,
   States,
   Transitions

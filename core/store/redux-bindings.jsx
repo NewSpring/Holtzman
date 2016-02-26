@@ -6,7 +6,7 @@ import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 import sagaMiddleware from "redux-saga"
 
-import { Global } from "../blocks"
+import Global from "../blocks/global"
 import { reducers, middlewares, sagas } from "./utilities"
 import { syncHistory, routeReducer } from "../store/routing"
 
@@ -49,7 +49,14 @@ const createReduxStore = (initialState, history) => {
 }
 
 
-const wrapper = Provider
+const wrapper = (props) => (
+  <Provider {...props}>
+    <Global>
+      {props.children}
+    </Global>
+  </Provider>
+)
+
 export {
   wrapper,
   createReduxStore

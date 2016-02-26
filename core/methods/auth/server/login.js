@@ -61,7 +61,7 @@ Meteor.methods({
           Meteor.call("communication/slack/send", text, "#web")
 
         }, 10)
-        
+
       }
 
       // slack hook here
@@ -97,7 +97,7 @@ Meteor.methods({
 
 
 
-
+    console.log(isAuthorized)
     return isAuthorized
   },
 })

@@ -43,6 +43,7 @@ export {
   collections,
   share,
   comingsoon,
+  routing,
 
   wrapper,
   createReduxStore,

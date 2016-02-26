@@ -5,7 +5,7 @@ import Moment from "moment"
 
 import { GraphQL } from "../../../core/graphql"
 import { Controls, Forms } from "../../../core/components"
-import { OnBoard } from "../../../core/blocks"
+import OnBoard from "../../../core/blocks/onBoard"
 import {
   modal,
   campuses as campusActions,

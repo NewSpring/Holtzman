@@ -6,7 +6,7 @@ import Moment from "moment"
 import { Link } from "react-router"
 
 import { Spinner } from "../../../core/components/loading"
-import { AddSchedule } from "../../blocks"
+import AddSchedule from "../../blocks/AddSchedule"
 import Split, { Left, Right } from "../../../core/blocks/split"
 
 import Confirm from "../../blocks/ActionButtons"
