@@ -93,7 +93,11 @@ addSaga(function* chargeTransaction(getStore) {
 
         // if this was a named card (as in creating a saved account)
         // lets force and update of the payment cards and set it in the store
-        if (name && transactionResponse["cvv-match"] === "M") {
+        // @TODO this is a race condition against updates in Rock
+        // we don't have a way to optimistcally update this without it being a
+        // hacky work around. I think this can wait until Apollo is closer
+        // to revist
+        if (name) {
           let query = `
             {
               paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${Meteor.userId()}") {
