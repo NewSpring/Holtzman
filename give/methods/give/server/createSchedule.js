@@ -1,7 +1,7 @@
 
 import { ScheduledTransactionReciepts } from "../../../collections/scheduledTransactions"
 import Moment from "moment"
-import { api } from "../../../../core/util/rock"
+import { api, parseEndpoint } from "../../../../core/util/rock"
 
 
 const createSchedule = (response, accountName, id) => {

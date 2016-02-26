@@ -108,6 +108,8 @@ export default class Layout extends Component {
             classes={["soft-bottom", "input--active", "display-inline-block"]}
             inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
             placeholder="select date"
+            past={false}
+            today={false}
             format={(value) => (Moment(value).format("MMM D, YYYY"))}
             validation={saveDate}
           />
