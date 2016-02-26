@@ -1,9 +1,11 @@
 
 import Error from "./Error"
 import Loading from "./Loading"
+import Success from "./Success"
 
 
-export default {
+export {
   Error,
-  Loading
+  Loading,
+  Success
 }
