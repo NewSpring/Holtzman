@@ -16,7 +16,7 @@ import {
 } from "../../../../core/store"
 
 
-function getGroups({ lat, lng, offset }, dispatch ) {
+function getGroups({ lat, lng, offset = 0 }, dispatch ) {
   let query = `
     {
       topics: allDefinedValues(id: 52) {
@@ -25,7 +25,7 @@ function getGroups({ lat, lng, offset }, dispatch ) {
         value
       }
 
-      groups: allGroups(lat: ${lat}, lng: ${lng}) {
+      groups: allGroups(lat: ${lat}, lng: ${lng}, first: 10, after: ${offset}) {
         id
         name
         description

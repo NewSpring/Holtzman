@@ -30,7 +30,7 @@ const List = ({ groups, onHover, onClick, hover, active, showFilters, children, 
             onClick={onClick}
             key={key}
             style={{position:"relative"}}
-            className="one-whole"
+            className="one-whole push-bottom"
           >
             <SideBySide
               image={{ url: group.photo }}
