@@ -88,7 +88,7 @@ export default class Date extends Component {
                   maxWidth: "300px",
                   border: "1px solid #ddd",
                   borderRadius: "4px",
-                  marginTop: "-50%"
+                  marginTop: "-75%"
                 }}>
                   <DayPicker
                     locale="en"

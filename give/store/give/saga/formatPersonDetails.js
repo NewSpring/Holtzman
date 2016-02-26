@@ -29,8 +29,8 @@ const formatPersonDetails = (give, { campuses }) => {
   joinedData["merchant-defined-field-2"] = campusId
 
   if (Object.keys(schedules).length) {
-    // @TODO allow custom start dates
-    joinedData["start-date"] = Moment().add(1, "days").format("YYYYMMDD")
+    // // @TODO allow custom start dates
+    // joinedData["start-date"] = Moment().format("YYYYMMDD")
     // @TODO allow number of payments
     joinedData.plan = {
       payments: 0,
@@ -44,7 +44,7 @@ const formatPersonDetails = (give, { campuses }) => {
         case "One-Time":
           joinedData.plan.payments = 1
           joinedData.plan["month-frequency"] = 12
-          joinedData.plan["day-of-month"] = schedule.start ? schedule.start : Moment().date()
+          joinedData.plan["day-of-month"] = schedule.start ? Moment(schedule.start).date() : Moment().date()
           break;
         case "Weekly":
           joinedData.plan["day-frequency"] = 7
@@ -57,10 +57,11 @@ const formatPersonDetails = (give, { campuses }) => {
         //   break;
         case "Monthly":
           joinedData.plan["month-frequency"] = 1
-          joinedData.plan["day-of-month"] = schedule.start ? schedule.start : Moment().date()
+          joinedData.plan["day-of-month"] = schedule.start ? Moment(schedule.start).date() : Moment().date()
           break;
       }
 
+      joinedData["start-date"] = schedule.start ? Moment(schedule.start).format("YYYYMMDD") : Moment().format("YYYYMMDD")
       for (let transaction in transactions) {
         joinedData["merchant-defined-field-1"] = transaction
         break
