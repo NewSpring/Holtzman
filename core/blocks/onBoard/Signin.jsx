@@ -106,7 +106,6 @@ class SignIn extends React.Component {
     const { refs } = this
     for (let input in refs) {
       const component = refs[input]
-      console.log(component)
       if (component.validate) {
         component.validate()
       }

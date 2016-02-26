@@ -1,7 +1,7 @@
 
 
 import { inherit } from "./inherit"
-import { base64Encode } from "./encode"
+import { base64Encode, base64Decode } from "./encode"
 import { makeNewGuid } from "./guid"
 import XML from "./xml"
 
@@ -14,11 +14,12 @@ import validate from "./validate"
 export default {
   inherit,
   base64Encode,
+  base64Decode,
   makeNewGuid,
   parseXML: XML.parse,
   Error,
   format,
   regex,
   rock,
-  validate
+  validate,
 }

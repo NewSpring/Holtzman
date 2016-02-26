@@ -8,5 +8,6 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   auth = require("./server")
 }
+console.log("HERE")
 
 export default auth

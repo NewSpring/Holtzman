@@ -15,10 +15,6 @@ export default class Billing extends Component {
     states: PropTypes.array,
   }
 
-  componentDidMount(){
-    console.log(this.refs)
-
-  }
 
   header = () => {
     return (

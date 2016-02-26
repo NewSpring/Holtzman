@@ -15,7 +15,7 @@ When using the on board component, it is best to include the entire block. [The 
 
 ```javascript
 import { Component, PropTypes} from "react"
-import { OnBoard } from "apollos/core/blocks"
+import OnBoard from "apollos/core/blocks/onBoard"
 
 
 export default class AccountPage extends Component {

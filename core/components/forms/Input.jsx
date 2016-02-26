@@ -149,13 +149,20 @@ export default class Input extends Component {
   }
 
   style = () => {
-    if (this.props.disabled) {
-      return {
-        cursor: "inherit"
-      }
+
+    let style = {}
+
+    if (this.props.style) {
+      style = {...style, ...this.props.style}
     }
 
-    return {}
+    if (this.props.disabled) {
+      style = {...style, ...{
+        cursor: "inherit"
+      }}
+    }
+
+    return style
   }
 
 
