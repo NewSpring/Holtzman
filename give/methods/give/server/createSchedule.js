@@ -143,10 +143,27 @@ const createSchedule = (response, accountName, id) => {
     }
 
 
-    formatedFinancialScheduledTransaction.ScheduledTransactionDetails.push({
-      AccountId: Number(response["merchant-defined-field-1"]),
-      Amount: Number(response.plan["amount"])
-    })
+    if (response["merchant-defined-field-1"]) {
+      let endpoint = parseEndpoint(`
+        FinancialAccounts?
+          $filter=ParentAccountId eq ${Number(response["merchant-defined-field-1"])} and
+          CampusId eq ${Number(response["merchant-defined-field-2"])}
+      `)
+
+      let AccountId = api.get.sync(endpoint)
+
+      if (AccountId.length) {
+        AccountId = AccountId[0].Id
+      } else {
+        AccountId = Number(response["merchant-defined-field-1"])
+      }
+
+      formatedFinancialScheduledTransaction.ScheduledTransactionDetails.push({
+        AccountId,
+        Amount: Number(response.plan["amount"])
+      })
+    }
+
 
 
     ScheduledTransactionReciepts.insert(formatedFinancialScheduledTransaction, () => {
