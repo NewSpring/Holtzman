@@ -89,11 +89,8 @@ const charge = (token, accountName) => {
       }
     }
 
-    // handle CVV failures (CVV is requried for saved accounts)
-    // if a user tried to save the card, but the CVV is wrong, we need to
-    // update the UI to let the user know it failed,
-    // and make sure we don't save the card
-    if (response["cvv-result"] === "M" && accountName) {
+
+    if (accountName) {
 
       formatedTransaction.meta.FinancialPersonSavedAccounts = {
         Name: accountName,
