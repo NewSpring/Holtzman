@@ -36,7 +36,7 @@ export default class SideModalContainer extends Component {
 
     if (!nextProps.modal.visible && nextProps.navigation.level === "MODAL" && !this.props.modal.props.keepNav) {
       let previous = this.state.previous
-      if (previous === "MODAL") {
+      if (previous === "MODAL" || !previous) {
         previous = "TOP"
       }
       this.props.dispatch(navActions.setLevel(previous))
