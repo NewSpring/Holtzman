@@ -139,9 +139,19 @@ function* submitPersonDetails(give, campuses, autoSubmit) {
     return
   }
 
+  let error, url;
+  try {
+    // call the Meteor method to submit data to NMI
+    const response = yield cps(order, formattedData)
+    url = response.url
 
-  // call the Meteor method to submit data to NMI
-  const { url } = yield cps(order, formattedData)
+  } catch (e) { error = e }
+
+  // @TODO show an error state here?
+  // because the transaction will fail anyway, it probably makes
+  // more sense to let the action procede. If we error here, which
+  // is before people *submit*, they may feel like we tried to charge
+  // them without asking
 
   if (autoSubmit) {
 
