@@ -94,13 +94,16 @@ const createSchedule = (response, accountName, id) => {
       CurrencyTypeValueId: 157
     }
 
+
     let formatedFinancialScheduledTransaction = {
       // TransactionCode: response["transaction-id"],
       GatewayScheduleId: response["subscription-id"],
       TransactionFrequencyValueId: frequency,
       IsActive: true,
       StartDate: `${Moment().toISOString()}`,
-      FinancialGatewayId: api._.give.gateway.id, // (need to update to NMI gateway)
+      FinancialGatewayId: api._.give.gateway.id,
+      NextPaymentDate: `${Moment(response["merchant-defined-field-3"], "YYYYMMDD").toISOString()}`,
+      // "NextPaymentDate": "2016-03-04T00:00:00",
       // Summary: `Reference Number: ${response["transaction-id"]}`,
       ScheduledTransactionDetails: [],
       FinancialPaymentDetail: {},

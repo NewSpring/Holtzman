@@ -62,6 +62,7 @@ const formatPersonDetails = (give, { campuses }) => {
       }
 
       joinedData["start-date"] = schedule.start ? Moment(schedule.start).format("YYYYMMDD") : Moment().format("YYYYMMDD")
+      joinedData["merchant-defined-field-3"] = joinedData["start-date"]
       for (let transaction in transactions) {
         joinedData["merchant-defined-field-1"] = transaction
         break
