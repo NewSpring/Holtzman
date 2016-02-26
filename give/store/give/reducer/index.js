@@ -77,7 +77,7 @@ const initial = {
     },
     payment: {
       name: null,
-      type: "ach", // String ach or cc
+      type: "cc", // String ach or cc
       cardNumber: null, // Number
       expiration: null, // String
       ccv: null, // Number
