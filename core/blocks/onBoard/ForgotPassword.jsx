@@ -1,7 +1,9 @@
 import React, { PropTypes } from "react"
 
 import { Controls, Forms } from "../../components"
-import { Validate } from "../../util"
+import { Error, Loading, Success } from "../../components/states"
+
+import Validate from "../../util/validate"
 
 
 class ForgotPassword extends React.Component {
@@ -19,6 +21,10 @@ class ForgotPassword extends React.Component {
     errors: {},
   }
 
+  state = {
+    state: "default"
+  }
+
   isEmail = (value) => {
     const isValid = Validate.isEmail(value)
 
@@ -31,7 +37,45 @@ class ForgotPassword extends React.Component {
     return isValid;
   }
 
+  submit = (e) => {
+    e.preventDefault()
+
+    this.setState({
+      state: "loading"
+    })
+
+    Accounts.forgotPassword({
+      email: this.props.email
+    }, (err, response) => {
+      if (err) {
+        this.setState({ state: "error", err: err })
+        setTimeout(() => {
+          this.setState({ state: "default"})
+        }, 5000)
+        return
+      }
+
+      this.setState({ state: "success" })
+
+      setTimeout(() => {
+        this.setState({ state: "default"})
+      }, 5000)
+
+    })
+
+  }
+
   render () {
+
+    switch (this.state.state) {
+      case "error":
+        return <Error msg="Looks like there was a problem" error={err && err.message ? err.message : " "} />
+      case "loading":
+        return <Loading msg="Resetting your password" />
+      case "success":
+        return <Success msg={`An email has been sent to ${this.props.email} with instructions on how to reset your password!`} />
+    }
+
     return (
       <Forms.Form
         id="forgot-password"
