@@ -1,7 +1,7 @@
 
 import { ScheduledTransactionReciepts } from "../../../collections/scheduledTransactions"
 import Moment from "moment"
-import { api } from "../../../../core/util/rock"
+import { api, parseEndpoint } from "../../../../core/util/rock"
 
 
 const createSchedule = (response, accountName, id) => {
@@ -94,13 +94,16 @@ const createSchedule = (response, accountName, id) => {
       CurrencyTypeValueId: 157
     }
 
+
     let formatedFinancialScheduledTransaction = {
       // TransactionCode: response["transaction-id"],
       GatewayScheduleId: response["subscription-id"],
       TransactionFrequencyValueId: frequency,
       IsActive: true,
       StartDate: `${Moment().toISOString()}`,
-      FinancialGatewayId: api._.give.gateway.id, // (need to update to NMI gateway)
+      FinancialGatewayId: api._.give.gateway.id,
+      NextPaymentDate: `${Moment(response["merchant-defined-field-3"], "YYYYMMDD").toISOString()}`,
+      // "NextPaymentDate": "2016-03-04T00:00:00",
       // Summary: `Reference Number: ${response["transaction-id"]}`,
       ScheduledTransactionDetails: [],
       FinancialPaymentDetail: {},
@@ -143,10 +146,27 @@ const createSchedule = (response, accountName, id) => {
     }
 
 
-    formatedFinancialScheduledTransaction.ScheduledTransactionDetails.push({
-      AccountId: Number(response["merchant-defined-field-1"]),
-      Amount: Number(response.plan["amount"])
-    })
+    if (response["merchant-defined-field-1"]) {
+      let endpoint = parseEndpoint(`
+        FinancialAccounts?
+          $filter=ParentAccountId eq ${Number(response["merchant-defined-field-1"])} and
+          CampusId eq ${Number(response["merchant-defined-field-2"])}
+      `)
+
+      let AccountId = api.get.sync(endpoint)
+
+      if (AccountId.length) {
+        AccountId = AccountId[0].Id
+      } else {
+        AccountId = Number(response["merchant-defined-field-1"])
+      }
+
+      formatedFinancialScheduledTransaction.ScheduledTransactionDetails.push({
+        AccountId,
+        Amount: Number(response.plan["amount"])
+      })
+    }
+
 
 
     ScheduledTransactionReciepts.insert(formatedFinancialScheduledTransaction, () => {
