@@ -1,6 +1,7 @@
 /*global Meteor, check */
 import { api } from "../../../util/rock"
 
+let RESET_EMAIL_ID = false;
 if (typeof Accounts != "undefined") {
   Accounts.emailTemplates.resetPassword.text = (user, token) => {
 
@@ -10,11 +11,16 @@ if (typeof Accounts != "undefined") {
 
     let Person = api.get.sync(`People/${PersonId}`)
 
+    if (!RESET_EMAIL_ID) {
+      RESET_EMAIL_ID = api.get.sync(`SystemEmails?$filter=Title eq 'Reset Password'`)
+      RESET_EMAIL_ID = RESET_EMAIL_ID[0].Id
+    }
+
     token = token.split("/")
     token = token[token.length - 1]
     Meteor.call(
       "communication/email/send",
-      21,
+      RESET_EMAIL_ID,
       Number(Person.PrimaryAliasId),
       {
         ResetPasswordUrl: `${ROOT_URL}_/reset-password/${token}`,
