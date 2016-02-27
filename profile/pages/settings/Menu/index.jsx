@@ -1,13 +1,110 @@
 import { Component, PropTypes} from "react"
+import { connect } from "react-redux"
 import { Link } from "react-router"
 import { VelocityComponent } from "velocity-react"
 
+import { GraphQL } from "../../../../core/graphql"
+import { onBoard as onBoardActions } from "../../../../core/store"
+
+import { avatar } from "../../../../core/methods/files/client"
+
+function updateUser(id, dispatch) {
+  let personQuery = `
+    {
+      person(mongoId: "${id}", cache: false) {
+        age
+        birthdate
+        birthDay
+        birthMonth
+        birthYear
+        campus {
+          name
+          shortCode
+          id
+        }
+        home {
+          city
+          country
+          id
+          zip
+          state
+          street1
+          street2
+        }
+        firstName
+        lastName
+        nickName
+        email
+        phoneNumbers {
+          number
+          formated
+        }
+        photo
+      }
+    }
+  `
+
+  return GraphQL.query(personQuery)
+    .then((person) => {
+      dispatch(onBoardActions.person(person.person))
+    })
+}
+
+@connect()
 export default class Menu extends Component {
+
+  state = {
+    upload: "default"
+  }
 
   signout = (e) => {
     e.preventDefault()
 
     Meteor.logout()
+  }
+
+  upload = (e) => {
+    e.preventDefault()
+
+    let files = e.target.files
+
+    if (!Meteor.settings.public.rock) {
+      return
+    }
+
+    this.setState({
+      upload: "loading"
+    })
+    var data = new FormData()
+    data.append('file', files[0])
+
+    const { baseURL, token, tokenName } = Meteor.settings.public.rock
+
+    fetch(`${baseURL}api/BinaryFiles/Upload?binaryFileTypeId=5`, {
+      method: 'POST',
+      headers: { [tokenName]: token },
+      body: data
+    })
+      .then((response) => {
+        return response.json()
+       })
+      .then((id) => {
+        avatar(id, (err, response) => {
+          updateUser(Meteor.userId(), this.props.dispatch)
+            .then((result) => {
+              this.setState({
+                upload: "uploaded"
+              })
+
+              setTimeout(() => {
+                this.setState({
+                  upload: "default"
+                })
+              }, 2000)
+            })
+        })
+      })
+
   }
 
   onClick = (e) => {
@@ -48,6 +145,31 @@ export default class Menu extends Component {
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
+            <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
+              <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
+                <h6 className="soft-half-left flush display-inline-block">Change Profile Photo</h6>
+                {() => {
+                  let icon = "icon-arrow-next"
+                  switch (this.state.upload) {
+                    case "default":
+                      icon = "icon-arrow-next"
+                      break;
+                    case "loading":
+                      // @TODO replace with loading icon
+                      icon = "icon-leaf-outline"
+                      break;
+                    case "uploaded":
+                      // @TODO replace with loading icon
+                      icon = "icon-check-mark text-primary"
+                      break;
+                  }
+
+                  return <i className={`float-right ${icon}`}></i>
+
+                }()}
+              </div>
+              <input onChange={this.upload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
+            </button>
             <Link to="/profile/settings/change-password" className="plain text-dark-secondary">
               <div className="push-left soft-ends soft-right text-left">
                 <h6 className="soft-half-left flush display-inline-block">Change Password</h6>
