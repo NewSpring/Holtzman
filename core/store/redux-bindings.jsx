@@ -49,13 +49,25 @@ const createReduxStore = (initialState, history) => {
 }
 
 
-const wrapper = (props) => (
-  <Provider {...props}>
-    <Global>
-      {props.children}
-    </Global>
-  </Provider>
-)
+// const wrapper = (props) => (
+//   <Provider {...props}>
+//     <Global>
+//       {props.children}
+//     </Global>
+//   </Provider>
+// )
+// class wrapper extends Component {
+//   render() {
+//     return (
+//       <Provider {...this.props}>
+//         <Global>
+//           {this.props.children}
+//         </Global>
+//       </Provider>
+//     )
+//   }
+// }
+const wrapper = Provider
 
 export {
   wrapper,
