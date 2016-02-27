@@ -31,10 +31,10 @@ export default class Err extends Component {
           <Error />
           <h3 className="text-alert push-ends">Are you sure?</h3>
           <p className="text-left">
-            Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor.
+            Want to stop your scheduled gift? You can always create another when you're ready.
           </p>
           <button className="one-whole btn push-ends btn--alert" onClick={this.onClick}>
-            Cancel Gift
+            Cancel Schedule
           </button>
 
           <button
