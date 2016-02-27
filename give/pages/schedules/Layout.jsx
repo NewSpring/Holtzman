@@ -135,7 +135,7 @@ export default class Layout extends Component {
                               theme="soft h6 grid__item one-half background--primary text-light-primary"
                               onClick={confirm}
                               value={schedule.id}
-                              text="Recover"
+                              text="Transfer"
                               hideCard={true}
                               style={{margin: 0}}
                             />

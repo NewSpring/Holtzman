@@ -222,6 +222,7 @@ export default class Give extends Component {
           email={data.personal.email}
           guest={transactionType === "guest"}
           onClick={this.goToOnboard}
+          schedules={schedules}
         />
       default:
         let Step;
