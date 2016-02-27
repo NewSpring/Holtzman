@@ -133,6 +133,15 @@ const Layout = ({ group, join }) => {
             </div>
           </div>
         </div>
+        <div className="one-whole text-center">
+          <p>
+            <em>
+              <small>
+                If you are the leader of this group, you can manage it <a href={`${Meteor.settings.public.rock.baseURL}/groups/leader?groupId=${group.id}`}>here</a>
+              </small>
+            </em>
+          </p>
+        </div>
 
       </section>
 
