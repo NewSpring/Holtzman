@@ -1,5 +1,6 @@
 import { Component, PropTypes} from "react"
 import { AccountType } from "../../../components"
+import Moment from "moment"
 
 import { Forms } from "../../../../core/components"
 
@@ -26,6 +27,14 @@ export default class Confirm extends Component {
     )
   }
 
+  scheduleHeader = () => {
+    return (
+      <h4 className="text-center">
+        Review Your Schedule
+      </h4>
+    )
+  }
+
   buttonText = () => {
 
     let { payment } = this.props.data
@@ -36,6 +45,11 @@ export default class Confirm extends Component {
     }
 
     let text = "Give Now"
+
+    if (Object.keys(this.props.schedules).length) {
+      text = "Schedule Now"
+    }
+
     if (payment.accountNumber || payment.cardNumber) {
 
       const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
@@ -134,6 +148,22 @@ export default class Confirm extends Component {
     )
   }
 
+  scheduleItem = (schedule, key) => {
+
+    return (
+      <div className="display-inline-block one-whole" key={key}>
+
+        <p>
+          Starting on {Moment(schedule.start).format("MMM D, YYYY")}, I will give <span clasName="text-primary">{this.monentize(this.props.total)}</span> to {schedule.label}. This will occur {schedule.frequency}.
+        </p>
+
+      </div>
+
+    )
+
+
+  }
+
   savePayment = () => {
     this.setState({save: !this.state.save})
 
@@ -151,12 +181,44 @@ export default class Confirm extends Component {
 
   }
 
+  renderScheduleConfirm = () => {
+    let schedules = []
+
+    for (let schedule in this.props.schedules) {
+      schedules.push(this.props.schedules[schedule])
+    }
+
+    return (
+      <div>
+        <div className="push-double@lap-and-up push">
+          {this.props.header || this.scheduleHeader()}
+        </div>
+
+        <div className="soft">
+          {schedules.map((schedule, key) => {
+            return this.scheduleItem(schedule, key)
+          })}
+
+          <button className="btn one-whole push-top" type="submit">
+            {this.buttonText()} {this.icon()}
+          </button>
+        </div>
+
+
+      </div>
+    )
+  }
+
   render () {
 
     let transactions = []
 
     for (let transaction in this.props.transactions) {
       transactions.push(this.props.transactions[transaction])
+    }
+
+    if (Object.keys(this.props.schedules).length) {
+      return this.renderScheduleConfirm()
     }
 
     return (

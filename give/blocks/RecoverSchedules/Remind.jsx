@@ -23,9 +23,11 @@ const Remind = ({ onSubmit, back }) => {
       <h4 className="text-center push-ends">
         Remind Me Later
       </h4>
-      <p className="push-double-bottom text-left">
-        We know life is busy!
-        We would be happy to remind you about restarting your schedules at a later date.
+      <p className="text-left">
+         We know life is busy! We would be happy to remind you about transferring your schedules at a later date.
+      </p>
+      <p className="text-left push-double-bottom">
+        Please be aware that your existing schedule will continue to charge the account on file until you transfer it for editing in our new system.
       </p>
 
       <Forms.Form
