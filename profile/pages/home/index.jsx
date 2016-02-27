@@ -7,7 +7,49 @@ import Layout from "./Layout"
 import { Likes, Following } from "../../blocks"
 import { onBoard as onBoardActions, nav as navActions } from "../../../core/store"
 import { avatar } from "../../../core/methods/files/client"
-// import Avatars from "../../../core/collections/avatars"
+
+
+function updateUser(id, dispatch) {
+  let personQuery = `
+    {
+      person(mongoId: "${id}", cache: false) {
+        age
+        birthdate
+        birthDay
+        birthMonth
+        birthYear
+        campus {
+          name
+          shortCode
+          id
+        }
+        home {
+          city
+          country
+          id
+          zip
+          state
+          street1
+          street2
+        }
+        firstName
+        lastName
+        nickName
+        email
+        phoneNumbers {
+          number
+          formated
+        }
+        photo
+      }
+    }
+  `
+
+  return GraphQL.query(personQuery)
+    .then((person) => {
+      dispatch(onBoardActions.person(person.person))
+    })
+}
 
 const map = (state) => ({ person: state.onBoard.person })
 @connect(map)
@@ -25,23 +67,7 @@ export default class Home extends Component {
     let id = Meteor.userId()
 
     if (id) {
-      let personQuery = `
-        {
-          person(mongoId: "${id}") {
-            firstName
-            lastName
-            nickName
-            home {
-              city
-            }
-          }
-        }
-      `
-
-      return GraphQL.query(personQuery)
-        .then((person) => {
-          dispatch(onBoardActions.person(person.person))
-        })
+      return updateUser(id, dispatch)
     }
 
   }
@@ -66,10 +92,28 @@ export default class Home extends Component {
   onUpload = (e) => {
     let files = e.target.files
 
+    if (!Meteor.settings.public.rock) {
+      return
+    }
 
-    // avatar(files[0], (err, response) => {
-    //   console.log(err, response)
-    // })
+    var data = new FormData()
+    data.append('file', files[0])
+
+    const { baseURL, token, tokenName } = Meteor.settings.public.rock
+
+    fetch(`${baseURL}api/BinaryFiles/Upload?binaryFileTypeId=5`, {
+      method: 'POST',
+      headers: { [tokenName]: token },
+      body: data
+    })
+      .then((response) => {
+        return response.json()
+       })
+      .then((id) => {
+        avatar(id, (err, response) => {
+          updateUser(Meteor.userId(), this.props.dispatch)
+        })
+      })
 
     const save = (url) => {
       this.setState({
