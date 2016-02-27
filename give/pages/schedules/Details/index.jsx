@@ -2,9 +2,9 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
 import { GraphQL } from "../../../../core/graphql"
-import { nav as navActions } from "../../../../core/store"
+import { nav as navActions, modal as modalActions } from "../../../../core/store"
 import { transactions as transactionActions, give as giveActions } from "../../../store"
-
+import Confirm from "./Confirm"
 import Layout from "./Layout"
 
 function getTransaction(id, dispatch){
@@ -91,12 +91,17 @@ export default class Details extends Component {
   stop = (e) => {
     e.preventDefault()
 
-    const { id, gateway } = this.props.transactions[Number(this.props.params.id)]
+    this.props.dispatch(modalActions.render(Confirm, {
+      onFinished: () => {
+        const { id, gateway } = this.props.transactions[Number(this.props.params.id)]
 
-    this.setState({isActive: false, removed: id})
-    Meteor.call("give/schedule/cancel", {id, gateway}, (err, response) => {
+        this.setState({isActive: false, removed: id})
+        Meteor.call("give/schedule/cancel", {id, gateway}, (err, response) => {
 
-    })
+        })
+      }
+    }))
+
   }
 
   render () {
