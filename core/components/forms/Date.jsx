@@ -8,7 +8,7 @@ import Input from "./Input"
 import Styles from "./date.css"
 
 
-export default class Date extends Component {
+export default class DateComponent extends Component {
 
   state = {
     showDatePicker: false,
@@ -88,14 +88,19 @@ export default class Date extends Component {
                   maxWidth: "300px",
                   border: "1px solid #ddd",
                   borderRadius: "4px",
-                  marginTop: "-50%"
+                  marginTop: "-75%"
                 }}>
                   <DayPicker
                     locale="en"
                     localeUtils={localUtils}
                     modifiers={{
                       selected: day => DateUtils.isSameDay(selectedDay, day),
-                      disabled: DateUtils.isPastDay,
+                      disabled: day => {
+                        return (
+                          (this.props.past === false && DateUtils.isPastDay(day)) ||
+                          (this.props.today === false && DateUtils.isSameDay(day, new Date()))
+                        )
+                      },
                     }}
                     onDayClick={this.onDayClick}
                   />

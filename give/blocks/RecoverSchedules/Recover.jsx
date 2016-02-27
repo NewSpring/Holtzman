@@ -36,11 +36,10 @@ const RecoverableSchedule = ({id, account, amount, frequency, removeOnClick}) =>
 const Layout = ({ schedules, reminderDate, onClick, hide }) => (
   <div className="soft soft-double-ends one-whole text-center">
     <h4 className="text-center push-ends">
-      Continue Your Gift
+      Transfer Your Schedule
     </h4>
     <p className="push-bottom text-left">
-      Our records indicate you have existing reccuring gifts with us that are no longer active.
-      This may be because of a payment exipration, or this gift has not been reactived since we moved giving platforms.
+      Our records show that you have active giving schedules in our previous system. To access your schedule within our new system, simply review your schedule and re-enter your payment details. If you're not ready to do this, your schedule will continue in our previous system until you transfer it.
     </p>
 
     {schedules.map((schedule) => (
