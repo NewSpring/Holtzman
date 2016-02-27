@@ -21,7 +21,6 @@ export default class Select extends Component {
 
   componentWillUpdate(nextProps){
     if (this.props.defaultValue != nextProps.defaultValue) {
-      // console.log("HERE", nextProps.defaultValue)
       this.setValue(nextProps.defaultValue)
       this.setState({focused: false})
       const target = ReactDOM.findDOMNode(this.refs["apollos-select"])
