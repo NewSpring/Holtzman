@@ -16,7 +16,13 @@ import {
 } from "../../../../core/store"
 
 
-function getGroups({ lat, lng, offset = 0 }, dispatch ) {
+function getGroups({ lat, lng, offset = 0, include }, dispatch ) {
+
+  let groupId = ""
+  if (include) {
+    groupId = `, includeGroup: ${include}`
+  }
+
   let query = `
     {
       topics: allDefinedValues(id: 52) {
@@ -25,7 +31,7 @@ function getGroups({ lat, lng, offset = 0 }, dispatch ) {
         value
       }
 
-      groups: allGroups(lat: ${lat}, lng: ${lng}, after: ${offset}) {
+      groups: allGroups(lat: ${lat}, lng: ${lng}, after: ${offset} ${groupId}) {
         count
         items {
           id
@@ -120,7 +126,7 @@ export default class ListContainer extends Component {
   componentWillMount(){
 
     const { dispatch } = this.props
-    const { hash } = this.props.params
+    const { hash, groupId } = this.props.params
 
     let loc = hash
     loc = base64Decode(decodeURI(loc))
@@ -130,6 +136,9 @@ export default class ListContainer extends Component {
     } catch (e) {}
 
     if (loc && loc.lat && loc.lng) {
+      if (groupId) {
+        loc.include = groupId
+      }
       this.setState({status: "loading"})
       return getGroups(loc, dispatch)
         .then(({ groups, topics }) => {
