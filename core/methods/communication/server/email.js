@@ -95,23 +95,35 @@ Meteor.methods({
         })
 
 
-        let CommunicationRecipient = {
-          PersonAliasId,
-          CommunicationId,
-          Status: 0, // Pending
-          Guid: makeNewGuid()
+        if (typeof PersonAliasId === "number") {
+          PersonAliasId = [PersonAliasId]
         }
 
-        return api.post("CommunicationRecipients", CommunicationRecipient)
+
+        let promises = []
+        for (let id of PersonAliasId) {
+          let CommunicationRecipient = {
+            PersonAliasId: id,
+            CommunicationId,
+            Status: 0, // Pending
+            Guid: makeNewGuid()
+          }
+          promises.push(api.post("CommunicationRecipients", CommunicationRecipient))
+
+        }
+
+        return Promise.all(promises)
 
       })
-      .then((CommunicationRecipientId) => {
-
-        if (CommunicationRecipientId.statusText) {
-          throw new Meteor.Error(CommunicationRecipientId)
+      .then((communications) => {
+        for (let CommunicationRecipientId of communications) {
+          if (CommunicationRecipientId.statusText) {
+            throw new Meteor.Error(CommunicationRecipientId)
+          }
         }
 
-        return CommunicationRecipientId
+
+        return communications
       })
       .catch((e) => {
         throw e

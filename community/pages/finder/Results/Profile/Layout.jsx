@@ -123,15 +123,25 @@ const Layout = ({ group, join }) => {
                 <button className="one-whole btn" onClick={join}>
                   Join Group
                 </button>
-
+                {/*
                 <button className="underlined h7 text-dark-tertiary text-center one-whole soft-half-top">
                   Contact for more details
                 </button>
+                */}
               </div>
 
 
             </div>
           </div>
+        </div>
+        <div className="one-whole text-center soft@handheld soft-sides">
+          <p>
+            <em>
+              <small>
+                If you are the leader of this group, you can manage it <a target="_blank" href={`${Meteor.settings.public.rock.baseURL}groups/leader?groupId=${group.id}`}>here</a>
+              </small>
+            </em>
+          </p>
         </div>
 
       </section>
