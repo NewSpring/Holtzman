@@ -25,7 +25,6 @@ Regex.addRegex = (name, test, validate) => {
 
   if (validate) {
     const funcName = `is${Format.capitalize(name)}`
-
     Validate.addValidator(funcName, (str) => { return test.test(str) })
   }
   return
@@ -39,10 +38,8 @@ Regex.addRegex = (name, test, validate) => {
 */
 // such a long regex
 
-
 for (let name in defaultRegex) {
   const _regex = defaultRegex[name]
-
   Regex.addRegex(name, _regex, true)
 }
 

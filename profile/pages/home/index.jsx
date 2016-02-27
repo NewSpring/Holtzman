@@ -66,9 +66,10 @@ export default class Home extends Component {
   onUpload = (e) => {
     let files = e.target.files
 
-    avatar(files[0], (err, response) => {
-      console.log(err, response)
-    })
+
+    // avatar(files[0], (err, response) => {
+    //   console.log(err, response)
+    // })
 
     const save = (url) => {
       this.setState({
