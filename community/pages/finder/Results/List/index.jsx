@@ -27,7 +27,17 @@ export default class ListView extends Component {
 
 
   render () {
-    const { topics, filter, onClick, groups, hash } = this.props
+    const {
+      topics,
+      filter,
+      onClick,
+      groups,
+      hash,
+      count,
+      showMore,
+      status,
+      done,
+    } = this.props
 
     return (
       <div>
@@ -38,6 +48,10 @@ export default class ListView extends Component {
           hash={hash}
           showFilters={this.toggleFilters}
           filter={this.state.showFilters}
+          count={count}
+          showMore={showMore}
+          status={status}
+          done={done}
         >
         {() => {
           if (this.state.showFilters) {

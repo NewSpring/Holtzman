@@ -3,13 +3,27 @@ import { Link } from "react-router"
 
 import SideBySide from "../../../../../core/components/cards/SideBySide"
 
-const List = ({ groups, onHover, onClick, hover, active, showFilters, children, filter, count }) => (
+const List = ({
+  groups,
+  onHover,
+  onClick,
+  hover,
+  active,
+  showFilters,
+  children,
+  filter,
+  count,
+  showMore,
+  status,
+  done
+}) => (
   <div>
     <section className="background--light-secondary soft-double-sides@lap-and-up hard-bottom">
 
       <div className="display-inline-block soft-ends one-whole">
         <h5 className="text-dark-tertiary display-inline-block">
-          {groups.length} Result{groups.length != 1 ? "s" : ""} near your address
+          {/*{groups.length} Result{groups.length != 1 ? "s" : ""} near your address */}
+          {count} Result{count != 1 ? "s" : ""} near your address
         </h5>
         <button className="display-inline-block h7 text-dark-tertiary float-right" onClick={showFilters} style={{
             textDecoration: "underline",
@@ -71,24 +85,32 @@ const List = ({ groups, onHover, onClick, hover, active, showFilters, children, 
         )
       })}
 
-      {/*
       <div className="one-whole text-center soft-double-top soft-bottom">
-        <button style={{ width: "130px"}} className="btn--small btn--dark-tertiary display-inline-block">
-          Previous
-        </button>
-
         {() => {
-          let btnClasses = ["push-left", "btn"];
+          let btnClasses = ["btn", "one-whole", "push-bottom"];
 
           // if (data.email === null || data.password === null && !data.terms){
           //   btnClasses.push("btn--disabled");
           // } else {
           //   btnClasses.push("btn");
           // }
-
+          if (done) {
+            return (
+              <button className="disabled one-whole btn" disabled>
+                No more groups
+              </button>
+            )
+          }
+          if (status === "partial-load") {
+            return (
+              <button className="disabled one-whole btn" disabled>
+                Loading...
+              </button>
+            )
+          }
           return (
-            <button className={btnClasses.join(" ")} style={{ width: "130px"}}>
-              Next
+            <button className={btnClasses.join(" ")} onClick={showMore}>
+              Show More
             </button>
           )
         }()}
@@ -96,9 +118,8 @@ const List = ({ groups, onHover, onClick, hover, active, showFilters, children, 
 
     </section>
     <section className="background--light-primary hard">
-    */}
       <div className="one-whole text-center soft-double-top soft-bottom">
-        <Link to="/community/finder" className="btn">
+        <Link to="/community/finder" className="btn--small btn--dark-tertiary display-inline-block">
           Search Again
         </Link>
       </div>
