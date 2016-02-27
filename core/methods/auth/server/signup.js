@@ -2,6 +2,7 @@
 import { api } from "../../../util/rock"
 import { makeNewGuid } from "../../../util"
 
+let NEW_USER_EMAL_ID = false;
 Meteor.methods({
 
   "Rock.auth.signup": (account) => {
@@ -68,9 +69,9 @@ Meteor.methods({
         PlainTextPassword: account.password
       }
 
-      api.post("UserLogins", user, () => {
-        api.get(`People/${PersonId}`, (err, createdPerson) => {
-          const { PrimaryAliasId } = createdPerson
+      api.post("UserLogins", user, (err, createdUser) => {
+        api.get(`People/${PersonId}`, (err, Person) => {
+          const { PrimaryAliasId } = Person
           Meteor.users.update(meteorUserId, {
             $set: {
               "services.rock" : {
@@ -80,8 +81,25 @@ Meteor.methods({
             }
           }, () => {
 
-            // @TODO Account creation email
-            // Meteor.call("")
+            if (!NEW_USER_EMAL_ID) {
+              NEW_USER_EMAL_ID = api.get.sync(`SystemEmails?$filter=Title eq 'Account Created'`)
+              NEW_USER_EMAL_ID = NEW_USER_EMAL_ID[0].Id
+            }
+
+            let UserLogin = api.get.sync(`UserLogins/${createdUser}`)
+            // @TODO setup methods for deleting account and confirming - ConfirmAccountUrl
+
+            Meteor.call(
+              "communication/email/send",
+              NEW_USER_EMAL_ID,
+              Number(Person.PrimaryAliasId),
+              {
+                Person,
+                User: UserLogin,
+
+              }
+              , (err, response) => {}
+            )
 
             if (process.env.NODE_ENV === "production") {
               let currentCount = Meteor.users.find().count()

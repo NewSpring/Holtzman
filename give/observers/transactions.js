@@ -3,6 +3,8 @@ import { api } from "../../core/util/rock"
 import { makeNewGuid } from "../../core/util/guid"
 import { TransactionReciepts } from "../collections/transactions"
 
+
+let GIVING_EMAIL_ID = false;
 const transactions = () => {
   if (api._ && api._.baseURL) {
 
@@ -152,13 +154,20 @@ const transactions = () => {
           mergeFields["FirstNames"] = Person.NickName || Person.FirstName
           mergeFields["TransactionCode"] = Transaction.TransactionCode
           mergeFields["Amounts"] = accountAmounts
+          mergeFields["AccountNumberMasked"] = FinancialPaymentDetail.AccountNumberMasked.slice(-4)
 
           // remove record
           TransactionReciepts.remove(_id, (err) => {
             if (!err) {
+
+              if (!GIVING_EMAIL_ID) {
+                GIVING_EMAIL_ID = api.get.sync(`SystemEmails?$filter=Title eq 'Giving Receipt'`)
+                GIVING_EMAIL_ID = GIVING_EMAIL_ID[0].Id
+              }
+
               Meteor.call(
                 "communication/email/send",
-                14, // Default giving system email
+                GIVING_EMAIL_ID, // Default giving system email
                 PrimaryAliasId,
                 mergeFields,
                 (err, response) => {

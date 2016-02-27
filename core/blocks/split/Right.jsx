@@ -47,7 +47,7 @@ export default class Right extends Component {
       classes.push("five-twelfths@lap-and-up")
     }
 
-    if (this.props.background) {
+    if (this.props.background && this.props.backgroundFill != false) {
       classes.push("background--fill")
     }
 

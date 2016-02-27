@@ -49,7 +49,7 @@ Meteor.methods({
 
       Get global attributes from Rock and map to JSON
 
-      @TODO abstract
+      @TODO depreciate for MergeFieldsJson
 
     */
     const GlobalAttribute = {}
@@ -59,7 +59,6 @@ Meteor.methods({
     for (let d of Defaults) { GlobalAttribute[d.Key] = d.DefaultValue }
     for (let g of Globals) { GlobalAttribute[g.Attribute.Key] = g.Value }
     mergeFields = {...mergeFields, ...{ GlobalAttribute }}
-
 
     return Promise.all([
       Parser.parseAndRender(Email.Subject, mergeFields),
