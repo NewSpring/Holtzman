@@ -197,18 +197,24 @@ export default class ListContainer extends Component {
 
   }
 
+  onChildClick = (marker) => {
+    this.setState({ active: marker.id })
+    this.props.dispatch(routeActions.push(
+      `/community/finder/list/${this.props.params.hash}/${marker.id}`
+    ))
+  }
+
+  onMarkerHover = (marker) => {
+    this.setState({ hover: marker.id })
+  }
+
   onHover = (e) => {
     const { id } = e.currentTarget
     const { groups } = this.props
-    //
-    // for (let group in groups) {
-    //   group = groups[group]
-    //
-    //   if (`${group.id}` === `${id}`) {
-    //     this.setState({ hover: id })
-    //     break
-    //   }
-    // }
+
+    if (groups[Number(id)]) {
+      this.setState({ hover: id })
+    }
 
   }
 
