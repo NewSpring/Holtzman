@@ -21,7 +21,7 @@ const Layout = ({ photo, person, onToggle, content, onUpload }) => (
     <Split nav={true} classes={["background--light-primary"]}>
 
       <Meta
-        title={`${person.nickName} ${person.lastName}`}
+        title={person ? `${person.nickName} ${person.lastName}` : "Sign In"}
         titleTemplate="%s | NewSpring Church"
       />
 

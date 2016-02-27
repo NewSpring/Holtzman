@@ -48,7 +48,7 @@ class ForgotPassword extends React.Component {
       email: this.props.email
     }, (err, response) => {
       if (err) {
-        this.setState({ state: "error", err: err })
+        this.setState({ state: "error", err: err.message })
         setTimeout(() => {
           this.setState({ state: "default"})
         }, 5000)
@@ -66,10 +66,11 @@ class ForgotPassword extends React.Component {
   }
 
   render () {
+    const { err } = this.state
 
     switch (this.state.state) {
       case "error":
-        return <Error msg="Looks like there was a problem" error={err && err.message ? err.message : " "} />
+        return <Error msg="Looks like there was a problem" error={err ? err : " "} />
       case "loading":
         return <Loading msg="Resetting your password" />
       case "success":
@@ -102,6 +103,7 @@ class ForgotPassword extends React.Component {
       <div>
         <button
           onClick={this.props.back}
+          tabIndex={-1}
           className="btn--small btn--dark-tertiary display-inline-block"
         >
           Back
