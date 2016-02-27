@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { nav as navActions, modal, collections as collectionActions } from "../../../../../core/store"
 import OnBoard from "../../../../../core/blocks/onBoard"
 import { GraphQL } from "../../../../../core/graphql"
+import { join } from "../../../../methods/join"
 
 import Layout from "./Layout"
 import Join from "./Join"
@@ -44,12 +45,12 @@ export default class Profile extends Component {
     this.props.dispatch(modal.hide())
   }
 
-  sendRequest = (e) => {
+  sendRequest = (e, callback) => {
     e.preventDefault()
 
     const { currentTarget } = e
-    console.log(currentTarget)
-
+    let message = currentTarget.querySelectorAll("textarea")[0].value
+    join(Number(this.props.params.groupId), message, callback)
   }
 
   join = () => {
