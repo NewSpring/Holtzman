@@ -84,9 +84,15 @@ const ScheduledTransactions = () => {
           delete ScheduledTransaction.Guid
 
           let response = api.patch.sync(`FinancialScheduledTransactions/${ScheduledTransactionId}`, ScheduledTransaction)
-
           if (response.statusText) {
             ScheduledTransactionId = response
+          } else {
+            // Delete all schedule transaction details associated with this account
+            // since new deatils were generated
+            let details = api.get.sync(`FinancialScheduledTransactionDetails?$filter=ScheduledTransactionId eq ${ScheduledTransactionId}`)
+            for (let oldSchedule of details) {
+              let success = api.delete.sync(`FinancialScheduledTransactionDetails/${oldSchedule.Id}`)
+            }
           }
 
         } else {
@@ -150,3 +156,38 @@ const ScheduledTransactions = () => {
 }
 
 export default ScheduledTransactions
+
+// "_id" : "ZGjdHYiaJi7xDT6NA",
+// "GatewayScheduleId" : "3011999604",
+// "TransactionFrequencyValueId" : 132,
+// "IsActive" : true,
+// "StartDate" : "2016-02-26T05:58:07.080Z",
+// "FinancialGatewayId" : 4,
+// "ScheduledTransactionDetails" : [
+//     {
+//         "AccountId" : 1779,
+//         "Amount" : 345
+//     }
+// ],
+// "FinancialPaymentDetail" : {
+//     "AccountNumberMasked" : "411111******1111",
+//     "CurrencyTypeValueId" : 156,
+//     "CreditCardTypeValueId" : 7
+// },
+// "meta" : {
+//     "Person" : {
+//         "PrimaryAliasId" : 117948,
+//         "PersonId" : 117948,
+//         "FirstName" : "James",
+//         "LastName" : "Baxley",
+//         "Email" : "james.baxley@newspring.cc"
+//     },
+//     "Location" : {
+//         "Street1" : "808 Pebble Ln",
+//         "Street2" : null,
+//         "City" : "Anderson",
+//         "State" : "SC",
+//         "Postal" : "29621-3452"
+//     }
+// },
+// "Id" : "2385"

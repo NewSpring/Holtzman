@@ -4,7 +4,7 @@ import { order as gatewayOrder } from "./nmi"
 import createSchedule from "./createSchedule"
 
 
-function order(orderData, instant){
+function order(orderData, instant, id){
 
 
   let user = Meteor.user()
@@ -55,7 +55,7 @@ function order(orderData, instant){
     let response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
 
     if (instant) {
-      response = createSchedule(response)
+      response = createSchedule(response, null, id)
     }
     return response
 
