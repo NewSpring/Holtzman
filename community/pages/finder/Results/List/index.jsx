@@ -36,6 +36,7 @@ export default class ListView extends Component {
       count,
       showMore,
       status,
+      onHover,
       done,
     } = this.props
 
@@ -52,6 +53,7 @@ export default class ListView extends Component {
           showMore={showMore}
           status={status}
           done={done}
+          onHover={onHover}
         >
         {() => {
           if (this.state.showFilters) {

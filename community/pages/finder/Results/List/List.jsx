@@ -45,6 +45,7 @@ const List = ({
             key={key}
             style={{position:"relative"}}
             className="one-whole push-bottom"
+            onMouseOver={onHover}
           >
             <SideBySide
               image={{ url: group.photo }}

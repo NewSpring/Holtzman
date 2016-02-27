@@ -129,8 +129,8 @@ export default class Map extends Component {
               lat={marker.latitude}
               lng={marker.longitude}
               key={marker.id}
-              active={this.props.active === marker.id}
-              hover={this.props.hover === marker.id}
+              // active={Number(this.props.active) === Number(marker.id)}
+              hover={Number(this.props.hover) === Number(marker.id)}
               popUp={this.props.popUp}
             />
 
