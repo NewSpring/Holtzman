@@ -87,23 +87,18 @@ const List = ({
 
       <div className="one-whole text-center soft-double-top soft-bottom">
         {() => {
-          let btnClasses = ["btn", "one-whole", "push-bottom"];
+          let btnClasses = ["btn", "one-whole@handheld", "push-bottom"];
 
-          // if (data.email === null || data.password === null && !data.terms){
-          //   btnClasses.push("btn--disabled");
-          // } else {
-          //   btnClasses.push("btn");
-          // }
           if (done) {
             return (
-              <button className="disabled one-whole btn" disabled>
+              <button className="disabled one-whole@handheld btn" disabled>
                 No more groups
               </button>
             )
           }
           if (status === "partial-load") {
             return (
-              <button className="disabled one-whole btn" disabled>
+              <button className="disabled one-whole@handheld btn" disabled>
                 Loading...
               </button>
             )
