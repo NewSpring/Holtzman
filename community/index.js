@@ -16,18 +16,18 @@ import "./store"
 
 export default {
   path: "community",
-  // getComponent(location, cb) {
-  //   if (Meteor.isClient) {
-  //     // Split the code on a different file when on a client
-  //     require.ensure([], require => {
-  //       cb(null, require("./../core/blocks/global"))
-  //     }, "community");
-  //   } else {
-  //     // Save the chunk for server-rendering
-  //     global.__CHUNK_COLLECTOR__.push("community");
-  //     cb(null, require("./../core/blocks/global"));
-  //   }
-  // },
+  getComponent(location, cb) {
+    if (Meteor.isClient) {
+      // Split the code on a different file when on a client
+      require.ensure([], require => {
+        cb(null, require("./../core/blocks/global"))
+      }, "community");
+    } else {
+      // Save the chunk for server-rendering
+      global.__CHUNK_COLLECTOR__.push("community");
+      cb(null, require("./../core/blocks/global"));
+    }
+  },
 
   // getIndexRoute(location, cb) {
   //   if (Meteor.isClient) {
