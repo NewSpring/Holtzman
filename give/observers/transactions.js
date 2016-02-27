@@ -115,6 +115,9 @@ const transactions = () => {
           } }
 
           if (FinancialPersonSavedAccounts.ReferenceNumber) {
+            // @TODO we need a way to let the UI know if this worked or not
+            // if we start getting reports of people not being able to save accounts
+            // look here first
             api.post.sync(`FinancialPersonSavedAccounts`, FinancialPersonSavedAccounts)
           }
         }

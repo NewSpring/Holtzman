@@ -36,10 +36,12 @@ addSaga(function* chargeTransaction(getStore) {
       // personal info is ready to be submitted
       const formattedData = formatPersonDetails(give, campuses)
 
+      // if you have a saved account, NMI lets you "order" a schedule
+      // instead of order + charge
       if (formattedData.savedAccount && Object.keys(give.schedules).length) {
         // wrap the function for the same api
         action = (token, name, id, callback) => {
-          Meteor.call("give/order", formattedData, true, callback)
+          Meteor.call("give/order", formattedData, true, id, callback)
         }
 
       } else {
@@ -53,8 +55,12 @@ addSaga(function* chargeTransaction(getStore) {
       // get the token and name of the saved account
       let token = give.url.split("/").pop();
 
-      if (Object.keys(give.schedules).length && !formattedData.savedAccount) {
-        action = schedule
+      if (Object.keys(give.schedules).length) {
+
+        // if there is not a saved account, charge the order
+        if (!formattedData.savedAccount) {
+          action = schedule
+        }
 
         if (Object.keys(give.recoverableSchedules).length) {
           for (let schedule in give.recoverableSchedules) {
@@ -64,6 +70,7 @@ addSaga(function* chargeTransaction(getStore) {
         }
 
       }
+
 
       let transactionResponse = {}
       // submit transaction
@@ -93,7 +100,11 @@ addSaga(function* chargeTransaction(getStore) {
 
         // if this was a named card (as in creating a saved account)
         // lets force and update of the payment cards and set it in the store
-        if (name && transactionResponse["cvv-match"] === "M") {
+        // @TODO this is a race condition against updates in Rock
+        // we don't have a way to optimistcally update this without it being a
+        // hacky work around. I think this can wait until Apollo is closer
+        // to revist
+        if (name) {
           let query = `
             {
               paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${Meteor.userId()}") {
