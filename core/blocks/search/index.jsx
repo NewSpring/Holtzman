@@ -60,7 +60,7 @@ export default class SearchContainer extends Component {
 
   render(){
     return (
-      <section className="hard-sides soft-ends">
+      <section className="hard-sides hard-bottom soft-top">
         <section className="push-bottom">
           <button onClick={this.hide} className="locked-right push-right push-half-top"><small>Cancel</small></button>
           <form onSubmit={this.searchSubmit} className="hard push-double-right">
@@ -70,11 +70,17 @@ export default class SearchContainer extends Component {
             </div>
           </form>
         </section>
-        <section className="background--light-secondary soft-half">
-          {this.props.search.items.map((item, i) => {
-            return <Item item={item} key={i} />
-          })}
-        </section>
+        {() => {
+          if (this.props.search.items.length > 0) {
+            return (
+              <section className="background--light-secondary soft-half">
+                {this.props.search.items.map((item, i) => {
+                  return <Item item={item} key={i} />
+                })}
+              </section>
+            );
+          }
+        }()}
       </section>
     )
   }

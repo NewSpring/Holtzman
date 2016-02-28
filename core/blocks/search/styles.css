@@ -1,0 +1,25 @@
+
+:local(.card) {
+  height: 144px;
+-webkit-transition: all 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+   -moz-transition: all 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+     -o-transition: all 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+        transition: all 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+}
+
+:local(.card:hover) {
+  opacity: 0.8;
+}
+
+:local(.height-100) {
+  height: 100%;
+}
+
+:local(.ellipsis-p) {
+  height: 1.75em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  white-space: nowrap;
+  margin-bottom: 0;
+}
