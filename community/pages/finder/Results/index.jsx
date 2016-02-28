@@ -16,12 +16,17 @@ import {
 } from "../../../../core/store"
 
 
-function getGroups({ lat, lng, offset = 0, include }, dispatch ) {
+function getGroups(param, dispatch ) {
 
-  let groupId = ""
-  if (include) {
-    groupId = `, includeGroup: ${include}`
+  let params = ""
+  if (Object.keys(param).length) {
+    params += "("
+    for (let key in param) {
+      params += ` ${key}: ${param[key]},`
+    }
+    params += ")"
   }
+
 
   let query = `
     {
@@ -31,7 +36,7 @@ function getGroups({ lat, lng, offset = 0, include }, dispatch ) {
         value
       }
 
-      groups: allGroups(lat: ${lat}, lng: ${lng}, after: ${offset} ${groupId}) {
+      groups: allGroups${params} {
         count
         items {
           id
@@ -42,6 +47,7 @@ function getGroups({ lat, lng, offset = 0, include }, dispatch ) {
           ageRange
           demographic
           maritalStatus
+          campusId
           locations {
             id
             location {
@@ -73,6 +79,7 @@ function getGroups({ lat, lng, offset = 0, include }, dispatch ) {
       }
     }
   `
+
   return GraphQL.query(query)
     .then(({ groups, topics }) => {
 
@@ -102,63 +109,55 @@ export default class ListContainer extends Component {
     filters: {
       topic: -1,
       days: [1, 2, 3, 4, 5, 6, 7],
-      childCare: 1
+      childCare: 1,
+      campus: -1,
     }
   }
 
-  // static fetchData(getState, dispatch, location) {
-  //   const { pathname } = location
-  //
-  //   let loc = pathname.split("/").splice(-1)[0]
-  //   loc = base64Decode(decodeURI(loc))
-  //
-  //   try {
-  //     loc = JSON.parse(loc)
-  //   } catch (e) {}
-  //
-  //   if (loc && loc.lat && loc.lng) {
-  //     return getGroups(loc, dispatch)
-  //   }
-  //
-  //   return
-  // }
 
   componentWillMount(){
 
     const { dispatch } = this.props
     const { hash, groupId } = this.props.params
 
-    let loc = hash
+    let loc = hash ? hash : ""
+
+    if (loc === "all") {
+      loc = ""
+    }
+
     loc = base64Decode(decodeURI(loc))
 
     try {
       loc = JSON.parse(loc)
     } catch (e) {}
 
-    if (loc && loc.lat && loc.lng) {
-      if (groupId) {
-        loc.include = groupId
-      }
-      this.setState({status: "loading"})
-      return getGroups(loc, dispatch)
-        .then(({ groups, topics }) => {
-          this.setState({
-            status: "default",
-            home: [loc.lat, loc.lng],
-            count: groups.count
-          })
-        })
+    if (typeof loc === "string"){
+      loc = {}
     }
+    
+    if (groupId) {
+      loc.includeGroup = groupId
+    }
+
+    this.setState({status: "loading"})
+    return getGroups(loc, dispatch)
+      .then(({ groups, topics }) => {
+        this.setState({
+          status: "default",
+          home: [loc.lat, loc.lng],
+          query: loc,
+          count: groups.count
+        })
+      })
 
   }
 
   onShowMore = (e) => {
     e.preventDefault()
-    let loc = {
-      lat: this.state.home[0],
-      lng: this.state.home[1],
-      offset: Object.keys(this.props.groups).length
-    }
+    let loc = {...this.state.query, ...{
+      after: Object.keys(this.props.groups).length
+    }}
 
     if (this.state.count === Object.keys(this.props.groups).length) {
       this.setState({
@@ -182,9 +181,10 @@ export default class ListContainer extends Component {
     e.preventDefault()
     const { id } = e.currentTarget
     // const { groups } = this.props
+    let hash = this.props.params.hash ? this.props.params.hash : "all"
 
     this.props.dispatch(routeActions.push(
-      `/community/finder/list/${this.props.params.hash}/${id}`
+      `/community/finder/list/${hash}/${id}`
     ))
     // for (let group in groups) {
     //   group = groups[group]
@@ -199,8 +199,9 @@ export default class ListContainer extends Component {
 
   onChildClick = (marker) => {
     this.setState({ active: marker.id })
+    let hash = this.props.params.hash ? this.props.params.hash : "all"
     this.props.dispatch(routeActions.push(
-      `/community/finder/list/${this.props.params.hash}/${marker.id}`
+      `/community/finder/list/${hash}/${marker.id}`
     ))
   }
 
@@ -271,7 +272,7 @@ export default class ListContainer extends Component {
     }
 
     groupData = _.sortBy(groupData, (group) => {
-      return group.locations[0].location.distance
+      return group.locations ? group.locations[0].location.distance : -1
     })
 
     for (let group of groupData) {
@@ -287,6 +288,7 @@ export default class ListContainer extends Component {
       let filter = (
         convert(filters.childCare) === (group.childCare ? group.childCare : true) &&
         (Number(filters.topic) === -1 || filters.topic === group.demographic) &&
+        (Number(filters.campus) === -1 || Number(filters.campus) === Number(group.campusId)) &&
         filters.days.indexOf(Number(group.schedule.day)) > -1
       )
 
@@ -296,7 +298,7 @@ export default class ListContainer extends Component {
 
       groups.push(group)
 
-      if (group.locations.length){
+      if (group.locations && group.locations.length){
         for (let loc in group.locations) {
           loc = group.locations[loc]
           const { latitude, longitude } = loc.location
@@ -364,7 +366,7 @@ export default class ListContainer extends Component {
                   active={this.state.active}
                   hover={this.state.hover}
                   popUp={PopUp}
-                  center={this.state.home}
+                  autoCenter={true}
                 />
               )
             }()}

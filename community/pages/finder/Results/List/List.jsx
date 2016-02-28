@@ -71,7 +71,7 @@ const List = ({
               </h6>
               <h6 className="text-dark-tertiary">
                 <em>
-                  {group.schedule.scheduleText} {group.locations.length && group.locations[0].location.distance ? `- ${group.locations[0].location.distance.toFixed(2)} miles away`: ""}
+                  {group.schedule.scheduleText} {group.locations && group.locations.length && group.locations[0].location.distance ? `- ${group.locations[0].location.distance.toFixed(2)} miles away`: ""}
                 </em>
               </h6>
               <p className="flush-bottom">

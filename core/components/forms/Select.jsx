@@ -165,6 +165,13 @@ export default class Select extends Component {
               )
             }
           }()}
+          {() => {
+            if (this.props.deselect) {
+              return (
+                <option></option>
+              )
+            }
+          }()}
           {this.props.items.map((option, key) => {
             return (
               <option

@@ -26,7 +26,8 @@ export default class Search extends Component {
     city: null,
     zip: null,
     state: null,
-    status: "default"
+    status: "default",
+    campus: null
   }
 
   componentWillMount() {
@@ -64,39 +65,59 @@ export default class Search extends Component {
     e.preventDefault()
 
     const { currentTarget } = e
-    const {
+    let {
       streetAddress,
       streetAddress2,
       city,
       zip,
-      state
+      state,
+      campus,
     } = this.state
+
+    // the select component doesn't fire a blur when prefilled from start
+    // so we mannualy check to see if it has a value
+    state || (state = document.querySelectorAll("[name=\"state\"]")[0].value)
 
     this.props.onLoaded((maps) => {
       const { service, geocoder } = this.props
       this.setState({ status: "default" })
-      geocoder.geocode({
-        address: `${streetAddress}${' ' + streetAddress2}, ${city}, ${state}, ${zip}`
-      }, (results, status) => {
 
-        if (status === "OK") {
+      if (streetAddress || streetAddress2 || city || zip || state ) {
+        geocoder.geocode({
+          address: `${streetAddress}${' ' + streetAddress2}, ${city}, ${state}, ${zip}`
+        }, (results, status) => {
 
-          const loc = {
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng()
+          let query = {}
+          if (status === "OK") {
+
+            query.lat = results[0].geometry.location.lat(),
+            query.lng = results[0].geometry.location.lng()
+
           }
 
-          this.props.search(loc)
 
+          if (campus) {
+            query.campus = campus
+          }
+
+          // clean our previous search results
+          this.props.dispatch(collectionActions.clear("groups"))
+          this.props.search(query)
+
+        })
+      } else {
+
+        let query = {}
+        if (campus) {
+          query.campus = campus
         }
 
-        if (status === "ZERO_RESULTS") {
-          this.setState({
-            status: "error"
-          })
-        }
+        // clean our previous search results
+        this.props.dispatch(collectionActions.clear("groups"))
 
-      })
+        this.props.search(query)
+      }
+
 
     })
 
@@ -120,7 +141,7 @@ export default class Search extends Component {
 
     campuses = campuses.map((x) => ({
       label: x.name,
-      value: x.name
+      value: x.id
     }))
 
     let states = []

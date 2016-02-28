@@ -5,7 +5,7 @@ import Moment from "moment"
 import Split, { Left, Right } from "../../../../core/blocks/split"
 import { Forms } from "../../../../core/components"
 
-const Layout = ({ geocode, home, ready, save, states, showError }) => (
+const Layout = ({ geocode, home, ready, save, states, showError, campuses }) => (
   <Split nav={true}>
 
     <Right
@@ -73,6 +73,7 @@ const Layout = ({ geocode, home, ready, save, states, showError }) => (
                 onChange={save}
                 items={states}
                 includeBlank={true}
+                deselect={true}
               />
 
             </div>
@@ -87,6 +88,15 @@ const Layout = ({ geocode, home, ready, save, states, showError }) => (
               />
             </div>
           </div>
+
+          <Forms.Select
+            name="campus"
+            label="Campus"
+            onChange={save}
+            items={campuses}
+            includeBlank={true}
+            deselect={true}
+          />
 
           {() => {
 

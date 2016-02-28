@@ -106,11 +106,11 @@ const Layout = ({ group, join }) => {
                 </div>
 
                 {() => {
-                  if (group.locations.length) {
+                  if (group.locations && group.locations.length) {
                     let loc = group.locations[0]
                     return (
                       <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
-                        <h7 className="text-dark-tertiary">Address                             {loc.location.distance ? `- ${loc.location.distance.toFixed(2)} miles away`: ""}</h7>
+                        <h7 className="text-dark-tertiary">Address {loc.location.distance ? `- ${loc.location.distance.toFixed(2)} miles away`: ""}</h7>
                           <h5 className="text-dark-tertiary soft-half-top flush-bottom">
                             {loc.location.city}, {loc.location.state}
                           </h5>
@@ -138,7 +138,7 @@ const Layout = ({ group, join }) => {
           <p>
             <em>
               <small>
-                If you are the leader of this group, you can manage it <a target="_blank" href={`${Meteor.settings.public.rock.baseURL}groups/leader?groupId=${group.id}`}>here</a>
+                If you are the leader of this group, you can manage it <a target="_blank" href={`${Meteor.settings.public.rock.baseURL}groups/leader?GroupId=${group.id}`}>here</a>
               </small>
             </em>
           </p>
