@@ -64,6 +64,15 @@ export default class Confirm extends Component {
   icon = () => {
 
     const { payment } = this.props.data
+    const { savedAccount } = this.props
+
+    if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
+      return (
+        // replace with SVG
+        <AccountType width="30px" height="20px" type={savedAccount.payment.paymentType}/>
+      )
+    }
+
     const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
 
     if (payment.type === "ach") {
@@ -283,9 +292,40 @@ export default class Confirm extends Component {
             }
           }()}
 
-          <button className="btn one-whole push-top" type="submit">
+          <button className="btn one-whole" type="submit">
             {this.buttonText()} {this.icon()}
           </button>
+
+          {() => {
+            if (this.props.savedAccount.id === null) {
+              let classes = [
+                "outlined--bottom",
+                "outlined--light"
+              ]
+
+              let style = {
+                display: "inline"
+              }
+
+              // if (disabled) {
+              //   classes.push("text-light-tertiary")
+              //   style = {...style, ...{ cursor: "text" } }
+              // } else {
+                classes.push("text-dark-tertiary")
+                style = {...style, ...{ cursor: "pointer" } }
+              // }
+
+              return (
+                <div className="display-block soft-top text-left">
+                  <h6 className={classes.join(" ")} style={style} onClick={this.props.back}>
+                    Edit Gift Details
+                  </h6>
+                </div>
+              )
+            }
+          }()}
+
+
         </div>
 
 
