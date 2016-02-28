@@ -13,18 +13,32 @@ const map = (state) => ({ search: state.search })
 @connect(map)
 export default class SearchContainer extends Component {
 
+  state = {
+    page: 0,
+    pageSize: 10,
+    loading: false,
+    done: false
+  }
+
   componentWillUnmount() {
     this.props.dispatch(modal.update({keepNav: false}))
   }
 
-  getSearch(term) {
+  getSearch(term, options = { clear: false }) {
     const { dispatch } = this.props
+    let { page, pageSize } = this.state
 
-    dispatch(searchActions.clear());
+    if (options.clear) {
+      page = 0;
+      this.setState({ page: 0 });
+      dispatch(searchActions.clear());
+    }
 
+    // + 1 even though it's strange
     let query = `
       {
-        search(query: "${term}", first: 10, site: "https://newspring.cc") {
+        search(query: "${term}", first: ${pageSize}, after: ${page * pageSize}, site: "https://newspring.cc") {
+          total
           items {
             id
             title
@@ -43,7 +57,11 @@ export default class SearchContainer extends Component {
 
     GraphQL.query(query)
       .then(({ search }) => {
+        this.setState({ page: page + 1, loading: false });
         dispatch(searchActions.add(search.items));
+        if (this.props.search.items.length >= search.total) {
+          this.setState({ done: true });
+        }
       })
 
   }
@@ -55,6 +73,16 @@ export default class SearchContainer extends Component {
   searchSubmit = (event) => {
     event.preventDefault();
     let term = document.getElementById("search").value;
+    this.props.dispatch(searchActions.clear());
+    this.setState({ loading: true, done: false });
+    // couldn't get term to update state before searching
+    this.getSearch(term, { clear: true });
+  }
+
+  loadMore = (event) => {
+    event.preventDefault();
+    let term = document.getElementById("search").value;
+    this.setState({ loading: true });
     this.getSearch(term);
   }
 
@@ -77,6 +105,26 @@ export default class SearchContainer extends Component {
                 {this.props.search.items.map((item, i) => {
                   return <Item item={item} key={i} />
                 })}
+                {() => {
+                  if (!this.state.done) {
+                    return (
+                      <div className="text-center push-double-top">
+                        <button
+                          className="btn--dark-tertiary"
+                          onClick={this.loadMore}
+                        >
+                        {() => {
+                          if (this.state.loading) {
+                            return "Loading..."
+                          } else {
+                            return "Load More Results"
+                          }
+                        }()}
+                        </button>
+                      </div>
+                    )
+                  }
+                }()}
               </section>
             );
           }
