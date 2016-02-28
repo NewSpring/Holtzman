@@ -86,6 +86,9 @@ export default class Search extends Component {
             lng: results[0].geometry.location.lng()
           }
 
+          // clean our previous search results
+          this.props.dispatch(collectionActions.clear("groups"))
+
           this.props.search(loc)
 
         }

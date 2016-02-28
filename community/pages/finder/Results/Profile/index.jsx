@@ -49,7 +49,7 @@ export default class Profile extends Component {
     e.preventDefault()
 
     const { currentTarget } = e
-    let message = currentTarget.querySelectorAll("textarea")[0].value
+    let message = currentTarget.querySelectorAll("textarea")[0].value.replace(new RegExp("\\n", "gmi"), "<br/>")
     join(Number(this.props.params.groupId), message, callback)
   }
 

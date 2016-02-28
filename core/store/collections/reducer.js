@@ -10,7 +10,7 @@ const reducer = createReducer({}, {
     }}
 
   },
-  [types.MONGO_INSERT_BATCH](state, action) {
+  [types.INSERT_BATCH](state, action) {
 
     let __raw = {}
     for (let entry of action.data) {
@@ -21,7 +21,14 @@ const reducer = createReducer({}, {
       [action.collection]: {...state[action.collection], ...__raw}
     }}
 
-  }
+  },
+  [types.CLEAR](state, action) {
+
+    return {...state, ...{
+      [action.collection]: {}
+    }}
+
+  },
 
 
 })
