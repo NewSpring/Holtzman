@@ -1,7 +1,7 @@
 import { VelocityComponent } from "velocity-react"
 import { WindowLoading } from "../loading"
 
-const Err = ({msg, error}) => {
+const Err = ({msg, error, style}) => {
 
   if (typeof error != "string") {
     if (error.message) {
@@ -18,7 +18,7 @@ const Err = ({msg, error}) => {
       animation={"transition.fadeIn"}
       runOnMount={true}
     >
-      <WindowLoading classes={["background--alert"]}>
+      <WindowLoading classes={["background--alert"]} styles={style}>
         <div className="locked-top locked-bottom one-whole floating">
           <div className="floating__item">
             <h4 className="text-light-primary">{msg}</h4>
