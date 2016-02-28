@@ -30,7 +30,7 @@ addSaga(function* sectionsSaga(getState) {
 
   let query = `
     {
-      navigation(nav: '${site}') {
+      navigation(nav: "${site}") {
         id
         link
         text
