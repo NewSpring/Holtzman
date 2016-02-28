@@ -19,7 +19,7 @@ const map = (state) => ({ accounts: state.give.accounts })
 
 @connect(map)
 @ReactMixin.decorate(ReactMeteorData)
-export default class Home extends Component {
+class Template extends Component {
 
 
   static fetchData(getState, dispatch){
@@ -94,4 +94,13 @@ export default class Home extends Component {
 
     return <Layout accounts={accounts} alive={this.data.alive} />
   }
+}
+
+const Routes = [
+  { path: "now", component: Template }
+]
+
+export default {
+  Template,
+  Routes
 }

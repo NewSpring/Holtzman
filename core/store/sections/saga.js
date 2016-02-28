@@ -11,7 +11,8 @@ const set = (content) => ({ type: "SECTIONS.SET_CONTENT", content })
 
 addSaga(function* sectionsSaga(getState) {
 
-  // Query to preload the most recent images of the nav type
+  // Query to preload all of the menu items and a
+  // query to preload the most recent images of the nav type
   const images = GraphQL.createFragment(`
     fragment on Content {
       images {
@@ -22,9 +23,29 @@ addSaga(function* sectionsSaga(getState) {
     }
   `)
 
+  let site = "newspring-main"
+  if (Meteor.isCordova) {
+    site = "newspring-app"
+  }
+
   let query = `
     {
-      series: allContent(limit: 1, channel: "series_newspring") {
+      navigation(nav: '${site}') {
+        id
+        link
+        text
+        image
+        sort
+        children {
+          id
+          link
+          text
+          image
+          sort
+        }
+      }
+
+      sermons: allContent(limit: 1, channel: "series_newspring") {
         content {
           ...${images}
         }
@@ -40,6 +61,16 @@ addSaga(function* sectionsSaga(getState) {
         }
       }
       stories: allContent(limit: 1, channel: "stories") {
+        content {
+          ...${images}
+        }
+      }
+      studies: allContent(limit: 1, channel: "studies") {
+        content {
+          ...${images}
+        }
+      }
+      news: allContent(limit: 1, channel: "news") {
         content {
           ...${images}
         }
@@ -77,31 +108,45 @@ addSaga(function* sectionsSaga(getState) {
 
   // go ahead and make the query on load (this will be cached on heighliner)
   let recentItems = yield GraphQL.query(query)
+  let navigation = recentItems.navigation
+  delete recentItems.navigation
   let filteredItems = {}
 
   // parse the results and only get a single usable image
   for (let item in recentItems) {
     let image = extractImage(recentItems[item][0])
     filteredItems[item] = image
-    if (typeof window != "undefined" && window != null) {
-      let img = document.createElement("img")
-      img.src = image
-    }
   }
 
   // wait on the sections panel to be expanded
-  let sections = yield take("SECTIONS.SET_CONTENT")
-  sections = sections.content
+  // let sections = yield take("SECTIONS.SET_CONTENT")
+  // sections = sections.content
+  function bindForeignImages(sections) {
+    // remap the images of the section panel
+    for (let section in sections) {
 
-  // remap the images of the section panel
-  for (let section in sections) {
-    let name = sections[section].name.toLowerCase()
-    if (filteredItems[name]) {
-      sections[section].image = filteredItems[name]
+      let name = sections[section].text.toLowerCase()
+      if (filteredItems[name]) {
+        sections[section].image = filteredItems[name]
+      }
+
+      // pre download images for super speed
+      if (sections[section].image) {
+
+        if (typeof window != "undefined" && window != null) {
+          let img = document.createElement("img")
+          img.src = sections[section].image
+        }
+      }
+
+      bindForeignImages(sections[section].children)
     }
+
   }
 
+  bindForeignImages(navigation)
+
   // update the content and end the saga (not a daemon)
-  yield put(set(sections))
+  yield put(set(navigation))
 
 })
