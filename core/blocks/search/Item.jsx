@@ -89,15 +89,27 @@ export default class SearchItem extends Component {
             </div>
           </div>
 
-          <ImageLoader
-            src={this.props.item.image}
-            preloader={this.preloader}
-            renderElement={this.renderElement}
-            imageclasses={this.bgClasses()}
-            style={{
-              backgroundImage: `url(${this.props.item.image})`
-            }}
-          />
+          {() => {
+            if (this.props.item.image === "null") {
+              let classes = this.bgClasses();
+              classes.push(Styles["placeholder-img"]);
+              return (
+                <div className={classes.join(" ")}></div>
+              );
+            } else {
+              return (
+                <ImageLoader
+                  src={this.props.item.image}
+                  preloader={this.preloader}
+                  renderElement={this.renderElement}
+                  imageclasses={this.bgClasses()}
+                  style={{
+                    backgroundImage: `url(${this.props.item.image})`
+                  }}
+                />
+              );
+            }
+          }()}
 
         </div>
       </Link>
