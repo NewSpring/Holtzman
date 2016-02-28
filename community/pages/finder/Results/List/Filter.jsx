@@ -12,10 +12,21 @@ let days = [
   { label: "Sunday", value: 7},
 ]
 
-const Filter = ({ topics, filter }) => (
+const Filter = ({ topics, filter, campuses }) => (
   <section className="background--light-primary soft-double@lap-and-up soft-double-top">
     <div className="grid">
-      <div className="grid__item one-half@lap-and-up">
+      <div className="grid__item one-third@lap-and-up">
+        <Forms.Select
+          name="campus"
+          label="Campus"
+          classes={["hard-bottom@lap-and-up"]}
+          items={campuses}
+          includeBlank={true}
+          defaultValue={-1}
+          onChange={filter}
+        />
+      </div>
+      <div className="grid__item one-third@lap-and-up">
         <Forms.Select
           name="topic"
           label="Topic"
@@ -26,10 +37,10 @@ const Filter = ({ topics, filter }) => (
           onChange={filter}
         />
       </div>
-      <div className="grid__item one-half@lap-and-up">
+      <div className="grid__item one-third@lap-and-up">
         <Forms.Select
           name="childCare"
-          label="Child Care Provided"
+          label="Children"
           classes={["hard-bottom@lap-and-up"]}
           items={[{value: "1", label: "Yes" },{ value: "0", label: "No" }]}
           defaultValue={true}
