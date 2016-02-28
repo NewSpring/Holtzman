@@ -7,7 +7,11 @@ import { nav as navActions } from "../../../../../core/store"
 import List from "./List"
 import Filter from "./Filter"
 
-@connect()
+const map = (state) => ({
+  campuses: state.campuses.campuses,
+})
+
+@connect(map)
 export default class ListView extends Component {
 
   state = {
@@ -40,6 +44,20 @@ export default class ListView extends Component {
       done,
     } = this.props
 
+    let campuses = [{
+      id: -1,
+      name: "All Campuses"
+    }]
+
+    for (let campus in this.props.campuses) {
+      campuses.push(this.props.campuses[campus])
+    }
+
+    campuses = campuses.map((x) => ({
+      label: x.name,
+      value: x.id
+    }))
+
     return (
       <div>
 
@@ -61,6 +79,7 @@ export default class ListView extends Component {
               <Filter
                 topics={topics}
                 filter={filter}
+                campuses={campuses}
               />
             )
           }

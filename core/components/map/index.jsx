@@ -7,6 +7,9 @@ if (Meteor.isClient) {
   GoogleMap = require("google-map-react")
 }
 
+import { fitBounds } from "google-map-react/utils";
+
+
 import Marker from "./components/Marker"
 
 const K_MARGIN_TOP = 30;
@@ -54,12 +57,12 @@ export default class Map extends Component {
 
 
   _onBoundsChange = (center, zoom, bounds, marginBounds) => {
-    // if (this.props.onBoundsChange) {
-    //   this.props.onBoundsChange({center, zoom, bounds, marginBounds});
-    // } else {
-    //   this.props.onCenterChange(center);
-    //   this.props.onZoomChange(zoom);
-    // }
+    if (this.props.onBoundsChange) {
+      this.props.onBoundsChange({center, zoom, bounds, marginBounds});
+    } else {
+      this.props.onCenterChange(center);
+      this.props.onZoomChange(zoom);
+    }
   }
 
   _onChildClick = (key, childProps) => {
@@ -106,14 +109,43 @@ export default class Map extends Component {
     }
   }
 
+  componentWillUpdate(nextProps){
+
+    if (this.props.active === nextProps.active && this.props.hover === nextProps.hover ) {
+      if (nextProps.autoCenter && this.map) {
+
+        let markers = this.props.markers.filter((x) => {
+          return x.latitude && x.longitude
+        }).map((marker) => (
+          new google.maps.LatLng(marker.latitude,marker.longitude)
+        ))
+
+        if (markers.length) {
+          this.map.fitBounds(markers.reduce(function(bounds, marker) {
+            return bounds.extend(marker);
+          }, new google.maps.LatLngBounds()));
+        }
+
+      }
+    }
+
+  }
 
 
   render () {
+    let center = [34.595413, -82.6241234],
+        zoom = this.props.zoom;
+
+    // console.log(center)
+    // if (!center[0]) {
+    //   center = [34.595413, -82.6241234]
+    // }
+
     if (typeof window != "undefined" && window != null ) {
       return (
         <GoogleMap
-          center={this.props.center}
-          zoom={this.props.zoom}
+          defaultCenter={center}
+          zoom={zoom}
           options={this.props.options}
           onChange={this._onBoundsChange}
           onChildClick={this._onChildClick}
@@ -122,6 +154,19 @@ export default class Map extends Component {
           distanceToMouse={this._distanceToMouse}
           margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
           hoverDistance={K_HOVER_DISTANCE}
+          yesIWantToUseGoogleMapApiInternals={true}
+          onGoogleApiLoaded={({map, maps}) => {
+            this.map = map
+            let markers = this.props.markers.filter((x) => {
+              return x.latitude && x.longitude
+            }).map((marker) => (
+              new google.maps.LatLng(marker.latitude,marker.longitude)
+            ))
+
+            this.map.fitBounds(markers.reduce(function(bounds, marker) {
+              return bounds.extend(marker);
+            }, new google.maps.LatLngBounds()));
+          }}
         >
           {this.props.markers.map((marker) => {
 

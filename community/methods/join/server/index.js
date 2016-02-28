@@ -62,7 +62,6 @@ Meteor.methods({
       @TODO
 
     */
-
     if (EMAIL_EXISTS) {
       Meteor.setTimeout(() => {
         const Person = api.get.sync(`People/${PersonId}`)

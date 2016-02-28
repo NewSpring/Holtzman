@@ -69,9 +69,9 @@ class Template extends Component {
 
   }
 
-  search = ({ lat, lng }) => {
+  search = (query) => {
 
-    let hash = encodeURI(base64Encode(JSON.stringify({ lat, lng })))
+    let hash = encodeURI(base64Encode(JSON.stringify(query)))
     this.props.dispatch(routeActions.push(`/community/finder/list/${hash}`))
 
   }
@@ -102,16 +102,16 @@ const Routes = [
     },
     childRoutes: [
       {
-        path: "list/:hash",
+        path: "list",
         component: Results,
         indexRoute: {
           component: List
         },
         childRoutes: [
-          { path: ":groupId", component: Profile }
+          { path: ":hash", component: List },
+          { path: ":hash/:groupId", component: Profile }
         ]
       },
-
     ]
   }
 ]
