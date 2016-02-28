@@ -357,18 +357,25 @@ export default class ListContainer extends Component {
               // if (!markers.length) {
               //   return null
               // }
+              if (typeof window != "undefined" && window != null) {
+                if (window.matchMedia("(min-width: 480px)").matches) {
+                  return (
+                    <Map
+                      markers={markers}
+                      onMarkerHover={this.onMarkerHover}
+                      onChildClick={this.onChildClick}
+                      active={this.state.active}
+                      hover={this.state.hover}
+                      popUp={PopUp}
+                      autoCenter={true}
+                    />
+                  )
+                }
 
-              return (
-                <Map
-                  markers={markers}
-                  onMarkerHover={this.onMarkerHover}
-                  onChildClick={this.onChildClick}
-                  active={this.state.active}
-                  hover={this.state.hover}
-                  popUp={PopUp}
-                  autoCenter={true}
-                />
-              )
+              }
+
+              return null
+
             }()}
 
           </div>
