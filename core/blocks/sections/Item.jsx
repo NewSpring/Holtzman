@@ -17,17 +17,17 @@ const Item = ({ section, go }) => {
   return (
     <div className="one-half grid__item push-bottom">
       <Link
-        to={section.path || section.offsite}
+        to={section.link}
         className="plain"
         onClick={go}
       >
         <div
-          id={section._id}
+          id={section.id}
           className="overlay--gradient background--fill background--dark-tertiary rounded ratio--square floating--bottom floating--left"
           style={{backgroundImage: `url(${section.image})`}}
           >
           <div className="overlay__item floating__item ratio__item">
-            <h6 className="text-light-primary soft-left">{section.name}</h6>
+            <h6 className="text-light-primary soft-left">{section.text}</h6>
           </div>
         </div>
       </Link>
@@ -50,10 +50,9 @@ export default class SectionItem extends Component {
     const { id } = e.target
 
     for (let section of this.props.sections) {
-      if (section._id === id && section.children) {
-
+      if (Number(section.id) === Number(id) && section.children.length) {
         e.preventDefault()
-        if (this.state.section != null && this.state.section._id === id) {
+        if (this.state.section != null && Number(section.id) === Number(id)) {
           this.setState({ section: null })
         } else {
           this.setState({ section: section })
@@ -83,7 +82,7 @@ export default class SectionItem extends Component {
 
     return (
       <div className="soft-sides soft-top background--dark-primary push-bottom">
-        <h4 className="text-light-primary text-center">{section.name}</h4>
+        <h4 className="text-light-primary text-center">{section.text}</h4>
         <div className="grid ">
 
           {children.map((sectionItem, i) => (

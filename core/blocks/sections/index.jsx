@@ -38,15 +38,15 @@ const bindSections = (props) => {
 @connect(map)
 export default class SectionsContainer extends Component {
 
-  componentWillMount(){
-    let { handle } = bindSections(this.props)
-    this.handle = handle
-  }
-
-  componentWillUnmount(){
-    this.handle.stop()
-    this.props.dispatch(modal.update({keepNav: false}))
-  }
+  // componentWillMount(){
+  //   let { handle } = bindSections(this.props)
+  //   this.handle = handle
+  // }
+  //
+  // componentWillUnmount(){
+  //   this.handle.stop()
+  //   this.props.dispatch(modal.update({keepNav: false}))
+  // }
 
   hide = () => {
     return this.props.dispatch(modal.hide())
