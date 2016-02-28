@@ -106,11 +106,11 @@ const Layout = ({ group, join }) => {
                 </div>
 
                 {() => {
-                  if (group.locations.length) {
+                  if (group.locations && group.locations.length) {
                     let loc = group.locations[0]
                     return (
                       <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
-                        <h7 className="text-dark-tertiary">Address                             {loc.location.distance ? `- ${loc.location.distance.toFixed(2)} miles away`: ""}</h7>
+                        <h7 className="text-dark-tertiary">Address {loc.location.distance ? `- ${loc.location.distance.toFixed(2)} miles away`: ""}</h7>
                           <h5 className="text-dark-tertiary soft-half-top flush-bottom">
                             {loc.location.city}, {loc.location.state}
                           </h5>
