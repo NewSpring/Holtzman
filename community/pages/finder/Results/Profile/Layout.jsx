@@ -138,7 +138,7 @@ const Layout = ({ group, join }) => {
           <p>
             <em>
               <small>
-                If you are the leader of this group, you can manage it <a target="_blank" href={`${Meteor.settings.public.rock.baseURL}groups/leader?groupId=${group.id}`}>here</a>
+                If you are the leader of this group, you can manage it <a target="_blank" href={`${Meteor.settings.public.rock.baseURL}groups/leader?GroupId=${group.id}`}>here</a>
               </small>
             </em>
           </p>

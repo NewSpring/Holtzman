@@ -2,6 +2,7 @@
 
 export default {
   INSERT: "@@collections/INSERT",
-  MONGO_INSERT_BATCH: "@@collections/MONGO_INSERT_BATCH",
+  INSERT_BATCH: "@@collections/INSERT_BATCH",
   REMOVE: "@@collections/REMOVE",
+  CLEAR: "@@collections/CLEAR",
 }
