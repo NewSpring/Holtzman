@@ -37,7 +37,7 @@ Parser.registerFilters({
 Meteor.methods({
   "communication/email/send": function(emailId, PersonAliasId, mergeFields){
     check(emailId, Number)
-    check(PersonAliasId, Number)
+    // check(PersonAliasId, Number)
 
     let Email = api.get.sync(`SystemEmails/${emailId}`)
 
@@ -100,7 +100,7 @@ Meteor.methods({
         }
 
 
-        let promises = []
+        let ids = []
         for (let id of PersonAliasId) {
           let CommunicationRecipient = {
             PersonAliasId: id,
@@ -108,24 +108,27 @@ Meteor.methods({
             Status: 0, // Pending
             Guid: makeNewGuid()
           }
-          promises.push(api.post("CommunicationRecipients", CommunicationRecipient))
 
+          let CommunicationRecipientId = api.post.sync("CommunicationRecipients", CommunicationRecipient)
+
+          ids.push(CommunicationRecipientId)
         }
 
-        return Promise.all(promises)
+        return ids
 
       })
       .then((communications) => {
+
         for (let CommunicationRecipientId of communications) {
           if (CommunicationRecipientId.statusText) {
             throw new Meteor.Error(CommunicationRecipientId)
           }
         }
 
-
         return communications
       })
       .catch((e) => {
+        console.log(e)
         throw e
       })
 
