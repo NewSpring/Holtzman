@@ -1,6 +1,9 @@
 import { Component, PropTypes } from "react"
 import { Link } from "react-router"
 
+import { ImageLoader } from "../../components/loading"
+import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
+
 import Styles from "./styles"
 
 export default class SearchItem extends Component {
@@ -48,7 +51,27 @@ export default class SearchItem extends Component {
       "soft-half-left",
       "background--cover",
       Styles["height-100"]
-    ].join(" ")
+    ]
+  }
+
+  // context from ImageLoader
+  preloader() {
+    return (
+      <div className={`${this.imageclasses.join(" ")} ${LoadingStyles["load-item"]}`}>
+        <div className="ratio--square"></div>
+      </div>
+    );
+  }
+
+  // context from ImageLoader
+  renderElement() {
+    return (
+      <div
+        className={this.imageclasses.join(" ")}
+        style={this.style}
+        >
+      </div>
+    );
   }
 
   render() {
@@ -66,13 +89,15 @@ export default class SearchItem extends Component {
             </div>
           </div>
 
-          <div
-            className={this.bgClasses()}
+          <ImageLoader
+            src={this.props.item.image}
+            preloader={this.preloader}
+            renderElement={this.renderElement}
+            imageclasses={this.bgClasses()}
             style={{
               backgroundImage: `url(${this.props.item.image})`
             }}
-            >
-          </div>
+          />
 
         </div>
       </Link>
