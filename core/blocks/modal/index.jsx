@@ -81,7 +81,6 @@ export default class SideModalContainer extends Component {
     let exit = "fadeOut"
 
     const { visible, content, props } = this.props.modal
-
     return (
       <Modal
         close={this.close}
