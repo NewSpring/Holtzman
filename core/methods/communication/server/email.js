@@ -37,7 +37,7 @@ Parser.registerFilters({
 Meteor.methods({
   "communication/email/send": function(emailId, PersonAliasId, mergeFields){
     check(emailId, Number)
-    check(PersonAliasId, Number)
+    // check(PersonAliasId, Number)
 
     let Email = api.get.sync(`SystemEmails/${emailId}`)
 
@@ -100,7 +100,7 @@ Meteor.methods({
         }
 
 
-        let promises = []
+        let ids = []
         for (let id of PersonAliasId) {
           let CommunicationRecipient = {
             PersonAliasId: id,
