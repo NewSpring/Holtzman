@@ -1,5 +1,6 @@
 import { Component, PropTypes} from "react"
 
+import { GraphQL } from "../../graphql"
 import Split, { Left, Right } from "../../blocks/split"
 
 import ResetPassword from "./reset-password"
@@ -37,6 +38,53 @@ const Routes = [
       // { path: "saved-accounts", component: PaymentDetails },
       // { path: "privacy-policy", component: PP },
     ]
+  },
+  {
+    path: "/$*",
+    onEnter: (location, replaceState, callback) => {
+
+      let url = location.params.splat
+        .replace(/\s+/g, "")
+        .toLowerCase()
+
+      let [fund, amount] = url.split("/")
+
+      let compare = (accounts) => {
+        for (let account of accounts) {
+          let smallname = account.name
+            .replace(/\s+/g, "")
+            .toLowerCase()
+
+          let dest = `/give/campaign/${account.name}`
+
+          if (amount) {
+            dest += `?${account.name}=${amount}`
+          }
+
+          if (smallname === fund) {
+            replaceState(null, dest)
+            callback()
+          }
+        }
+      }
+
+      GraphQL.query(`
+        {
+          accounts: allFinancialAccounts(limit: 100, ttl: 8640) {
+            description
+            name
+            id
+            summary
+            image
+            order
+          }
+        }`).then(({ accounts }) => {
+          if (accounts.length) {
+            compare(accounts)
+          }
+        })
+
+    }
   }
 ]
 
