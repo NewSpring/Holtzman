@@ -135,7 +135,7 @@ export default class ListContainer extends Component {
     if (typeof loc === "string"){
       loc = {}
     }
-    
+
     if (groupId) {
       loc.includeGroup = groupId
     }
@@ -376,12 +376,14 @@ export default class ListContainer extends Component {
         </Right>
 
         <Left scroll={true}>
+
           {() => {
             switch (this.state.status) {
               case "error":
-                return <Err msg="Looks like there was a problem finding a group" />
+                return <Err msg="Looks like there was a problem finding a group" style={{position: "absolute"}} />
               case "loading":
-                return <Loading msg="Searching for nearby groups..." />
+                return <Loading msg="Searching for nearby groups..." style={{position: "absolute"}} />
+
             }
 
             return (
