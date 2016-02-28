@@ -17,7 +17,8 @@ export default class SearchContainer extends Component {
     page: 0,
     pageSize: 10,
     loading: false,
-    done: false
+    done: false,
+    none: false
   }
 
   componentWillUnmount() {
@@ -59,6 +60,9 @@ export default class SearchContainer extends Component {
       .then(({ search }) => {
         this.setState({ page: page + 1, loading: false });
         dispatch(searchActions.add(search.items));
+        if (search.total === 0) {
+          this.setState({ none: true });
+        }
         if (this.props.search.items.length >= search.total) {
           this.setState({ done: true });
         }
@@ -74,7 +78,7 @@ export default class SearchContainer extends Component {
     event.preventDefault();
     let term = document.getElementById("search").value;
     this.props.dispatch(searchActions.clear());
-    this.setState({ loading: true, done: false });
+    this.setState({ loading: true, done: false, none: false });
     // couldn't get term to update state before searching
     this.getSearch(term, { clear: true });
   }
@@ -99,6 +103,9 @@ export default class SearchContainer extends Component {
           </form>
         </section>
         {() => {
+          if (this.state.none) {
+            return <h6 className="soft-sides">No results for {document.getElementById("search").value}!</h6>
+          }
           if (this.props.search.items.length > 0) {
             return (
               <section className="background--light-secondary soft-half">
