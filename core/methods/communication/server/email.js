@@ -108,24 +108,27 @@ Meteor.methods({
             Status: 0, // Pending
             Guid: makeNewGuid()
           }
-          promises.push(api.post("CommunicationRecipients", CommunicationRecipient))
 
+          let CommunicationRecipientId = api.post.sync("CommunicationRecipients", CommunicationRecipient)
+
+          ids.push(CommunicationRecipientId)
         }
 
-        return Promise.all(promises)
+        return ids
 
       })
       .then((communications) => {
+
         for (let CommunicationRecipientId of communications) {
           if (CommunicationRecipientId.statusText) {
             throw new Meteor.Error(CommunicationRecipientId)
           }
         }
 
-
         return communications
       })
       .catch((e) => {
+        console.log(e)
         throw e
       })
 
