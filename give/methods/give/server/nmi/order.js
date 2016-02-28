@@ -8,7 +8,7 @@ const step2 = (purchaseData, method, callback) => {
 
   method || (method = "sale")
   const { ROOT_URL } = __meteor_runtime_config__
-  let url = `${ROOT_URL}/give`
+  let url = `${ROOT_URL}/give/now`
 
   const sale = {
     [method]: { ...{
