@@ -57,7 +57,7 @@ export default class ListView extends Component {
       label: x.name,
       value: x.id
     }))
-    console.log("render")
+
     return (
       <div>
 
