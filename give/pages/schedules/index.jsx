@@ -92,7 +92,7 @@ const map = (store) => ({
 export default class Template extends Component {
 
   state = {
-    loaded: false
+    loaded: true
   }
 
   static fetchData(getStore, dispatch) {
@@ -102,17 +102,23 @@ export default class Template extends Component {
       .then((accounts) => {
         if (mongoId) {
           return getSchedules(dispatch)
-            .then(() => {
-              this.setState({loaded: true})
-            })
+            // .then(() => {
+            //   this.setState({loaded: true})
+            // })
         }
-        this.setState({loaded: true})
+        // this.setState({loaded: true})
       })
   }
+
+
 
   componentDidMount(){
     const { dispatch } = this.props
 
+    this.setState({
+      loaded: false
+    })
+    
     let mongoId = Meteor.userId();
 
     return getAccounts(dispatch)
