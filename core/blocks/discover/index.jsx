@@ -27,7 +27,7 @@ export default class SearchContainer extends Component {
   }
 
   componentWillUnmount() {
-    this.props.dispatch(modal.update({keepNav: false}))
+    this.props.dispatch(modal.update({keepNav: false, layoutOverride: []}))
   }
 
   hide = () => {
