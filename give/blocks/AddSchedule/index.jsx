@@ -45,11 +45,6 @@ export default class CartContainer extends Component {
     }
   }
 
-  reset() {
-    let form = document.getElementById("add-to-cart");
-    if (form) form.reset();
-  }
-
   getMeteorData(){
     let alive = true;
 
@@ -199,8 +194,6 @@ export default class CartContainer extends Component {
     }
 
     return (
-      <div>
-        <p onClick={this.reset}>reset me</p>
       <Layout
         schedules={schedules}
         setFrequency={this.setFrequency}
@@ -212,7 +205,6 @@ export default class CartContainer extends Component {
         saveDate={this.saveDate}
         total={total}
       />
-    </div>
     )
   }
 }
