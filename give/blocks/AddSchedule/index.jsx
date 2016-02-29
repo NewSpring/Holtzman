@@ -30,6 +30,26 @@ export default class CartContainer extends Component {
     this.props.clearSchedules()
   }
 
+  componentWillReceiveProps(nextProps) {
+    let { transactions, schedules } = nextProps.give;
+
+    if (Object.keys(transactions).length === 0 && Object.keys(schedules).length === 0) {
+      let form = document.getElementById("add-to-cart");
+      if (form) form.reset();
+
+      // this works, but the input--active never comes back
+      // let inputs = document.getElementsByClassName("input");
+      // for (let i = 0; i < inputs.length; i++) {
+      //   inputs[i].className = inputs[i].className.replace(/\binput--active\b/gmi,'');
+      // }
+    }
+  }
+
+  reset() {
+    let form = document.getElementById("add-to-cart");
+    if (form) form.reset();
+  }
+
   getMeteorData(){
     let alive = true;
 
@@ -179,6 +199,8 @@ export default class CartContainer extends Component {
     }
 
     return (
+      <div>
+        <p onClick={this.reset}>reset me</p>
       <Layout
         schedules={schedules}
         setFrequency={this.setFrequency}
@@ -190,6 +212,7 @@ export default class CartContainer extends Component {
         saveDate={this.saveDate}
         total={total}
       />
+    </div>
     )
   }
 }
