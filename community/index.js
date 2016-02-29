@@ -1,18 +1,15 @@
 
-
+// import Global from "../core/blocks/global"
 // import { Routes } from "./pages"
+import "./store"
 
 // export default {
-//   path: "groups",
+//   path: "community",
 //   component: Global,
 //   // indexRoute: { component: Home },
-//   childRoutes: Routes,
-//   onEnter: (_, replaceState) => {
-//     console.log(_)
-//   }
+//   childRoutes: Routes
 // }
 
-import "./store"
 
 export default {
   path: "community",

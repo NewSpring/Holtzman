@@ -18,6 +18,12 @@ import { syncHistory, routeReducer } from "../store/routing"
 
 const createReduxStore = (initialState, history) => {
 
+  if (initialState) {
+    // bug with SSR
+    delete initialState.nav
+  }
+
+
   const joinedReducers = {...reducers, ...{
     routing: routeReducer
   }}
