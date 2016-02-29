@@ -20,7 +20,7 @@ export default class SearchContainer extends Component {
   }
 
   componentWillUnmount() {
-    this.props.dispatch(modal.update({keepNav: false}))
+    this.props.dispatch(modal.update({keepNav: true}))
   }
 
   getSearch() {
@@ -75,9 +75,6 @@ export default class SearchContainer extends Component {
       dispatch(searchActions.clear()),
       dispatch(searchActions.term(term)),
       dispatch(searchActions.toggleLoading()),
-
-      dispatch(searchActions.done(false)),
-      dispatch(searchActions.none(false))
     ]).then(() => {
       this.getSearch({ clear: true });
     });
@@ -99,7 +96,12 @@ export default class SearchContainer extends Component {
           <form onSubmit={this.searchSubmit} className="hard push-double-right">
             <div className="input hard-bottom push-right">
               <i className="icon-search locked-left push-half-top"></i>
-              <input id="search" type="text" placeholder="Search coming soon..." className="h5 text-dark-primary soft-double-left" />
+              <input
+                id="search"
+                type="text"
+                className="h5 text-dark-primary soft-double-left"
+                autoComplete="off"
+              />
             </div>
           </form>
         </section>
