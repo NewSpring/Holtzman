@@ -76,7 +76,7 @@ export default class SearchContainer extends Component {
       dispatch(searchActions.term(term)),
       dispatch(searchActions.toggleLoading()),
     ]).then(() => {
-      this.getSearch({ clear: true });
+      this.getSearch();
     });
   }
 
