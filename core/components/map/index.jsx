@@ -120,7 +120,7 @@ export default class Map extends Component {
           new google.maps.LatLng(marker.latitude,marker.longitude)
         ))
 
-        if (markers.length) {
+        if (markers.length && markers.length > 1) {
           this.map.fitBounds(markers.reduce(function(bounds, marker) {
             return bounds.extend(marker);
           }, new google.maps.LatLngBounds()));
@@ -133,58 +133,67 @@ export default class Map extends Component {
 
 
   render () {
-    let center = [34.595413, -82.6241234],
-        zoom = this.props.zoom;
+    try {
+      let dynamicProps = {}
 
-    // console.log(center)
-    // if (!center[0]) {
-    //   center = [34.595413, -82.6241234]
-    // }
+      if (this.props.markers && this.props.markers.length === 1) {
+        let center = this.props.markers[0]
+        dynamicProps.center = [center.latitude, center.longitude]
+      } else {
+        dynamicProps.defaultCenter = [34.595413, -82.6241234]
+      }
 
-    if (typeof window != "undefined" && window != null ) {
-      return (
-        <GoogleMap
-          defaultCenter={center}
-          zoom={zoom}
-          options={this.props.options}
-          onChange={this._onBoundsChange}
-          onChildClick={this._onChildClick}
-          onChildMouseEnter={this._onChildMouseEnter}
-          onChildMouseLeave={this._onChildMouseLeave}
-          distanceToMouse={this._distanceToMouse}
-          margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
-          hoverDistance={K_HOVER_DISTANCE}
-          yesIWantToUseGoogleMapApiInternals={true}
-          onGoogleApiLoaded={({map, maps}) => {
-            this.map = map
-            let markers = this.props.markers.filter((x) => {
-              return x.latitude && x.longitude
-            }).map((marker) => (
-              new google.maps.LatLng(marker.latitude,marker.longitude)
-            ))
 
-            this.map.fitBounds(markers.reduce(function(bounds, marker) {
-              return bounds.extend(marker);
-            }, new google.maps.LatLngBounds()));
-          }}
-        >
-          {this.props.markers.map((marker) => {
+      if (typeof window != "undefined" && window != null ) {
+        return (
+          <GoogleMap
+            {...dynamicProps}
+            zoom={this.props.zoom}
+            options={this.props.options}
+            onChange={this._onBoundsChange}
+            onChildClick={this._onChildClick}
+            onChildMouseEnter={this._onChildMouseEnter}
+            onChildMouseLeave={this._onChildMouseLeave}
+            distanceToMouse={this._distanceToMouse}
+            margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
+            hoverDistance={K_HOVER_DISTANCE}
+            yesIWantToUseGoogleMapApiInternals={true}
+            onGoogleApiLoaded={({map, maps}) => {
+              this.map = map
+              let markers = this.props.markers.filter((x) => {
+                return x.latitude && x.longitude
+              }).map((marker) => (
+                new google.maps.LatLng(marker.latitude,marker.longitude)
+              ))
 
-            return <Marker
-              lat={marker.latitude}
-              lng={marker.longitude}
-              key={marker.id}
-              // active={Number(this.props.active) === Number(marker.id)}
-              hover={Number(this.props.hover) === Number(marker.id)}
-              popUp={this.props.popUp}
-            />
+              if (markers.length > 1) {
+                this.map.fitBounds(markers.reduce(function(bounds, marker) {
+                  return bounds.extend(marker);
+                }, new google.maps.LatLngBounds()));
+              }
 
-          })}
-        </GoogleMap>
-      )
+            }}
+          >
+            {this.props.markers.map((marker) => {
+
+              return <Marker
+                lat={marker.latitude}
+                lng={marker.longitude}
+                key={marker.id}
+                // active={Number(this.props.active) === Number(marker.id)}
+                hover={Number(this.props.hover) === Number(marker.id)}
+                popUp={this.props.popUp}
+              />
+
+            })}
+          </GoogleMap>
+        )
+      }
+    } catch (e) {
+      console.log(e)
+      return null
     }
 
-    return null
   }
 
 }
