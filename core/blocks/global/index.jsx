@@ -13,6 +13,16 @@ import {
   campuses as campusActions,
 } from "../../store"
 
+import Styles from "./Styles"
+
+const Watermark = () => (
+  <div className={Styles["global-watermark"]}>
+    <h4 className={`soft-half flush text-light-primary uppercase watermark ${Styles["watermark"]}`}>
+      NewSpring
+    </h4>
+  </div>
+)
+
 
 const App = ({ children, className }) => (
   <div className="
@@ -24,6 +34,7 @@ const App = ({ children, className }) => (
       {children}
       <Nav />
       <Modal/>
+      <Watermark />
     </div>
 
   </div>
