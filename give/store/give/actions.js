@@ -28,6 +28,7 @@ export default {
   saveSchedule: (id, schedule) => ({ type: types.SAVE_SCHEDULE_DATA, id, schedule }),
   removeSchedule: (id) => ({ type: types.REMOVE_SCHEDULE, id }),
   clearSchedule: (id, field) => ({ type: types.REMOVE_SCHEDULE_DATA, id, field }),
+  clearSchedules: () => ({ type: types.CLEAR_SCHEDULES }),
 
   setState: (state) => ({ type: types.SET_STATE, state }),
   submit: () => ({ type: types.SET_STATE, state: "submit" }),

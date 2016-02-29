@@ -26,6 +26,10 @@ export default class CartContainer extends Component {
     this.props.clearTransactions()
   }
 
+  componentWillUnmount() {
+    this.props.clearSchedules()
+  }
+
   getMeteorData(){
     let alive = true;
 
