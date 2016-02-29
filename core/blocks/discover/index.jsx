@@ -13,10 +13,14 @@ const map = (state) => ({ search: state.search })
 @connect(map)
 export default class SearchContainer extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"))
     this.props.dispatch(modal.update({keepNav: true}))
 
+
+  }
+
+  componentDidMount(){
     let term = this.props.search.term;
 
     document.getElementById("search").value = term
