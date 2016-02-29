@@ -33,7 +33,10 @@ export default createReducer(initial, {
   ["SEARCH.CLEAR"](state, action) {
     return {...state,
       items: [],
-      page: 0
+      page: 0,
+      done: false,
+      none: false,
+      loading: false
     }
   },
 
