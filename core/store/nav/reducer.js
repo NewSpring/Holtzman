@@ -19,28 +19,6 @@ const back = () => {
   return routeActions.goBack()
 }
 
-const showSections = (props) => {
-  const { modal, dispatch } = props
-
-  // if (modal.visible) {
-  //   sectionsVisible = false
-  //   return modalActions.hide()
-  // }
-
-  discoverVisible = false
-  sectionsVisible = true
-  return modalActions.render(Sections, { keepNav: true })
-}
-
-const showDiscover = (props) => {
-  const { modal, dispatch } = props
-
-  sectionsVisible = false
-  discoverVisible = true
-  return modalActions.render(Search, { keepNav: true, layoutOverride: ["background--light-secondary"] })
-
-}
-
 const isEqual = (path) => {
   if (typeof window != "undefined" && window != null) {
     return window.location.pathname === path
@@ -63,6 +41,7 @@ const links = {
       label: "Sections",
       action: (props) => {
         const { modal, dispatch } = props
+        discoverVisible = false
         sectionsVisible = true
         return modalActions.render(Sections, { keepNav: true })
       },
@@ -72,7 +51,12 @@ const links = {
     {
       id: 3,
       label:"Discover",
-      action: showDiscover,
+      action: (props) => {
+        const { modal, dispatch } = props
+        sectionsVisible = false
+        discoverVisible = true
+        return modalActions.render(Search, { keepNav: true })
+      },
       icon:"icon-search",
       isActive: (props) => (discoverVisible && props.modal.visible)
     },
