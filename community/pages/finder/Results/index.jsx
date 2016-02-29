@@ -83,6 +83,7 @@ function getGroups(param, dispatch ) {
       }
     }
   `
+
   return GraphQL.query(query)
     .then(({ groups, topics }) => {
 
@@ -357,7 +358,6 @@ export default class ListContainer extends Component {
                   return null
               }
 
-              console.log("HERE")
 
               if (!markers.length) {
                 return null
