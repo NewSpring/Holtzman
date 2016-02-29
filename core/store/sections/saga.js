@@ -131,13 +131,13 @@ addSaga(function* sectionsSaga(getState) {
       }
 
       // pre download images for super speed
-      if (sections[section].image) {
-
-        if (typeof window != "undefined" && window != null) {
-          let img = document.createElement("img")
-          img.src = sections[section].image
-        }
-      }
+      // if (sections[section].image) {
+      //
+      //   if (typeof window != "undefined" && window != null) {
+      //     let img = document.createElement("img")
+      //     img.src = sections[section].image
+      //   }
+      // }
 
       bindForeignImages(sections[section].children)
     }

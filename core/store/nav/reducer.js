@@ -16,17 +16,6 @@ const back = () => {
 }
 
 let sectionsVisible = false
-const showSections = (props) => {
-  const { modal, dispatch } = props
-
-  // if (modal.visible) {
-  //   sectionsVisible = false
-  //   return modalActions.hide()
-  // }
-
-  sectionsVisible = true
-  return modalActions.render(Sections, { keepNav: true })
-}
 
 const isEqual = (path) => {
   if (typeof window != "undefined" && window != null) {
@@ -35,7 +24,6 @@ const isEqual = (path) => {
 
   return false
 }
-
 
 const links = {
   TOP:[
@@ -49,7 +37,11 @@ const links = {
     {
       id: 2,
       label: "Sections",
-      action: showSections,
+      action: (props) => {
+        const { modal, dispatch } = props
+        sectionsVisible = true
+        return modalActions.render(Sections, { keepNav: true })
+      },
       icon: "icon-sections",
       isActive: (props) => (sectionsVisible && props.modal.visible)
     },
@@ -80,9 +72,10 @@ const links = {
 }
 
 
-const initial = { level: "TOP", visible: true, links: links.TOP }
+const initial = { level: "TOP", visible: true, links: links.TOP}
 
 export default function nav(state = initial, action) {
+
   switch (action.type) {
     case "NAV.SET_LEVEL":
       return { ...state, ...{
