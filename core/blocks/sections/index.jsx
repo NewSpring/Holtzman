@@ -4,7 +4,8 @@ import ReactMixin from "react-mixin"
 
 import { Sections } from "../../collections"
 import modal from "../../store/modal"
-import sectionActions from "../../store/sections"
+import { sections as sectionActions, nav as navActions } from "../../store"
+
 import Groups from "./Groups"
 
 const map = (state) => ({ sections: state.sections })
@@ -12,6 +13,10 @@ const map = (state) => ({ sections: state.sections })
 @connect(map)
 export default class SectionsContainer extends Component {
 
+  componentDidMount() {
+    this.props.dispatch(navActions.setLevel("TOP"))
+    this.props.dispatch(modal.update({keepNav: true}))
+  }
 
   componentWillUnmount(){
     this.props.dispatch(modal.update({keepNav: false}))
