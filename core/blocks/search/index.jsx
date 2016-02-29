@@ -13,29 +13,20 @@ const map = (state) => ({ search: state.search })
 @connect(map)
 export default class SearchContainer extends Component {
 
-  state = {
-    page: 0,
-    pageSize: 10,
-    loading: false,
-    done: false,
-    none: false
+  componentDidMount() {
+    let term = this.props.search.term;
+
+    document.getElementById("search").value = term
   }
 
   componentWillUnmount() {
     this.props.dispatch(modal.update({keepNav: false}))
   }
 
-  getSearch(term, options = { clear: false }) {
+  getSearch() {
     const { dispatch } = this.props
-    let { page, pageSize } = this.state
+    let { page, pageSize, term } = this.props.search
 
-    if (options.clear) {
-      page = 0;
-      this.setState({ page: 0 });
-      dispatch(searchActions.clear());
-    }
-
-    // + 1 even though it's strange
     let query = `
       {
         search(query: "${term}", first: ${pageSize}, after: ${page * pageSize}, site: "https://newspring.cc") {
@@ -58,13 +49,14 @@ export default class SearchContainer extends Component {
 
     GraphQL.query(query)
       .then(({ search }) => {
-        this.setState({ page: page + 1, loading: false });
+        dispatch(searchActions.toggleLoading());
+        dispatch(searchActions.incrementPage());
         dispatch(searchActions.add(search.items));
         if (search.total === 0) {
-          this.setState({ none: true });
+          dispatch(searchActions.none(true));
         }
         if (this.props.search.items.length >= search.total) {
-          this.setState({ done: true });
+          dispatch(searchActions.done(true));
         }
       })
 
@@ -76,18 +68,27 @@ export default class SearchContainer extends Component {
 
   searchSubmit = (event) => {
     event.preventDefault();
+    const { dispatch } = this.props
     let term = document.getElementById("search").value;
-    this.props.dispatch(searchActions.clear());
-    this.setState({ loading: true, done: false, none: false });
-    // couldn't get term to update state before searching
-    this.getSearch(term, { clear: true });
+
+    Promise.all([
+      dispatch(searchActions.clear()),
+      dispatch(searchActions.term(term)),
+      dispatch(searchActions.toggleLoading()),
+
+      dispatch(searchActions.done(false)),
+      dispatch(searchActions.none(false))
+    ]).then(() => {
+      this.getSearch({ clear: true });
+    });
   }
 
   loadMore = (event) => {
     event.preventDefault();
-    let term = document.getElementById("search").value;
-    this.setState({ loading: true });
-    this.getSearch(term);
+    const { dispatch } = this.props
+
+    dispatch(searchActions.toggleLoading());
+    this.getSearch();
   }
 
   render(){
@@ -103,8 +104,8 @@ export default class SearchContainer extends Component {
           </form>
         </section>
         {() => {
-          if (this.state.none) {
-            return <h6 className="soft-sides">No results for {document.getElementById("search").value}!</h6>
+          if (this.props.search.none) {
+            return <h6 className="soft-sides">No results for {this.props.search.term}!</h6>
           }
           if (this.props.search.items.length > 0) {
             return (
@@ -113,7 +114,7 @@ export default class SearchContainer extends Component {
                   return <Item item={item} key={i} />
                 })}
                 {() => {
-                  if (!this.state.done) {
+                  if (!this.props.search.done) {
                     return (
                       <div className="text-center push-double-top">
                         <button
@@ -121,7 +122,7 @@ export default class SearchContainer extends Component {
                           onClick={this.loadMore}
                         >
                         {() => {
-                          if (this.state.loading) {
+                          if (this.props.search.loading) {
                             return "Loading..."
                           } else {
                             return "Load More Results"

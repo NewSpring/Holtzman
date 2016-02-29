@@ -7,10 +7,22 @@
 import { createReducer } from "../utilities"
 
 const initial = {
-  items: []
+  term: null,
+  items: [],
+  page: 0,
+  pageSize: 10,
+  loading: false,
+  done: false,
+  none: false
 }
 
 export default createReducer(initial, {
+
+  ["SEARCH.SET_TERM"](state, action) {
+    return {...state,
+      term: action.term
+    }
+  },
 
   ["SEARCH.ADD"](state, action) {
     return {...state,
@@ -20,7 +32,32 @@ export default createReducer(initial, {
 
   ["SEARCH.CLEAR"](state, action) {
     return {...state,
-      items: []
+      items: [],
+      page: 0
+    }
+  },
+
+  ["SEARCH.INCREMENT_PAGE"](state, action) {
+    return {...state,
+      page: state.page + 1
+    }
+  },
+
+  ["SEARCH.TOGGLE_LOADING"](state, action) {
+    return {...state,
+      loading: !state.loading
+    }
+  },
+
+  ["SEARCH.DONE"](state, action) {
+    return {...state,
+      done: action.done
+    }
+  },
+
+  ["SEARCH.NONE"](state, action) {
+    return {...state,
+      none: action.none
     }
   }
 
