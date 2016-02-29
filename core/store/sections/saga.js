@@ -130,6 +130,9 @@ addSaga(function* sectionsSaga(getState) {
         sections[section].image = filteredItems[name]
       }
 
+      // ensure protocol relative
+      sections[section].image = sections[section].image.replace(/^http:|^https:/i, "");
+
       // pre download images for super speed
       // if (sections[section].image) {
       //
