@@ -213,6 +213,7 @@ export default class Input extends Component {
           onChange={this.format}
           defaultValue={this.props.defaultValue}
           style={this.style()}
+          maxLength={this.props.maxLength || ""}
         />
 
         {this.renderHelpText()}
