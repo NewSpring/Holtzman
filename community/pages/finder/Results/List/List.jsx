@@ -29,7 +29,7 @@ const List = ({
             textDecoration: "underline",
             marginTop: "6px"
         }}>
-          {!filter ? "Filter" : "Close Filter"}
+          {!filter ? "Filter Results" : "Close Filter"}
         </button>
       </div>
     </section>

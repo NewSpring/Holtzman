@@ -152,6 +152,7 @@ export default class Search extends Component {
       [name]: value
     })
 
+    return true
   }
 
   render() {
