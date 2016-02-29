@@ -35,8 +35,7 @@ export default createReducer(initial, {
       items: [],
       page: 0,
       done: false,
-      none: false,
-      loading: false
+      none: false
     }
   },
 
