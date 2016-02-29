@@ -44,6 +44,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }) => 
             name="name"
             label="Group Name"
             onChange={save}
+            onBlur={save}
             autofocus={true}
           />
 
@@ -54,6 +55,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }) => 
             errorText="Please enter your address"
             defaultValue={home.street1}
             onChange={save}
+            onBlur={save}
           />
 
           <div className="grid">
@@ -65,6 +67,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }) => 
                 errorText="Please enter your city"
                 defaultValue={home.city}
                 onChange={save}
+                onBlur={save}
               />
 
             </div>
@@ -90,6 +93,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }) => 
                     errorText="Please enter your zip"
                     defaultValue={home.zip}
                     onChange={save}
+                    onBlur={save}
                   />
                 </div>
               </div>
