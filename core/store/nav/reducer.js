@@ -12,16 +12,30 @@ import Search from "../../blocks/search"
 
 import { routeActions } from "../routing"
 
+let sectionsVisible = false
+let discoverVisible = false
+
 const back = () => {
   return routeActions.goBack()
 }
 
-let sectionsVisible = false
+const showSections = (props) => {
+  const { modal, dispatch } = props
 
-let discoverVisible = false
+  // if (modal.visible) {
+  //   sectionsVisible = false
+  //   return modalActions.hide()
+  // }
+
+  discoverVisible = false
+  sectionsVisible = true
+  return modalActions.render(Sections, { keepNav: true })
+}
+
 const showDiscover = (props) => {
   const { modal, dispatch } = props
 
+  sectionsVisible = false
   discoverVisible = true
   return modalActions.render(Search, { keepNav: true })
 
@@ -60,7 +74,7 @@ const links = {
       label:"Discover",
       action: showDiscover,
       icon:"icon-search",
-      isActive: (props) => (isEqual("/discover") && !props.modal.visible)
+      isActive: (props) => (discoverVisible && props.modal.visible)
     },
     {
       id: 4,
