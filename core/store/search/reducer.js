@@ -13,7 +13,8 @@ const initial = {
   pageSize: 10,
   loading: false,
   done: false,
-  none: false
+  none: false,
+  searching: false
 }
 
 export default createReducer(initial, {
@@ -60,6 +61,13 @@ export default createReducer(initial, {
   ["SEARCH.NONE"](state, action) {
     return {...state,
       none: action.none
+    }
+  },
+
+  ["SEARCH.SEARCHING"](state, action) {
+    return {...state,
+      searching: action.searching,
+      term: null
     }
   }
 

@@ -24,6 +24,9 @@
   SEARCH.NONE
     set status to no items
 
+  SEARCHING.SEARCHING
+    toggle between discover topics and search results
+
 */
 import reducer from "./reducer"
 import { addReducer } from "../utilities"
@@ -43,5 +46,7 @@ export default {
   toggleLoading: () => ({ type: "SEARCH.TOGGLE_LOADING" }),
 
   done: (done) => ({ type: "SEARCH.DONE", done }),
-  none: (none) => ({ type: "SEARCH.NONE", none })
+  none: (none) => ({ type: "SEARCH.NONE", none }),
+
+  searching: (searching) => ({ type: "SEARCH.SEARCHING", searching })
 }
