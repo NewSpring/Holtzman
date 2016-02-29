@@ -3,10 +3,10 @@ import { Component, PropTypes } from "react";
 export default class DiscoverHero extends Component {
 
   static propTypes = {
-    link: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    topicName: PropTypes.string.isRequired,
-    tags: PropTypes.array.isRequired
+    link: PropTypes.string,
+    image: PropTypes.string,
+    topicName: PropTypes.string,
+    tags: PropTypes.array
   }
 
   backgroundStyles = {
@@ -24,9 +24,11 @@ export default class DiscoverHero extends Component {
         >
           <div className="overlay__item floating__item soft-left soft-bottom text-light-primary">
             <h4 className="flush">{this.props.topicName}</h4>
+              {/*
               <h7 className="soft-top">
                 {this.props.tags.join(", ")}
               </h7>
+              */}
           </div>
         </a>
       </div>

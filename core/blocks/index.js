@@ -5,7 +5,7 @@ import OnBoard from "./onBoard"
 import Nav from "./nav"
 import Modal from "./modal"
 import Sections from "./sections"
-import Search from "./search"
+import Discover from "./discover"
 
 export default {
   Authorized,
@@ -14,5 +14,5 @@ export default {
   OnBoard,
   Modal,
   Sections,
-  Search
+  Discover
 }
