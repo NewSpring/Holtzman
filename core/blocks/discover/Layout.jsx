@@ -1,14 +1,14 @@
 
 import Input from "./Input"
 import Results from "./Results"
-import Discover from "./Discover"
+import Feed from "./feed"
 
 const Content = ({ loadMore, search }) => {
 
   if (search.searching) {
     return <Results loadMore={loadMore} search={search} />
   } else {
-    return <Discover />
+    return <Feed />
   }
 
 }
