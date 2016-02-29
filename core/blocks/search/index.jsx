@@ -5,7 +5,7 @@ import ReactMixin from "react-mixin"
 import { GraphQL } from "../../../core/graphql"
 import modal from "../../store/modal"
 
-import { search as searchActions } from "../../store"
+import { search as searchActions, nav as navActions } from "../../store"
 
 import Layout from "./Layout"
 
@@ -14,13 +14,16 @@ const map = (state) => ({ search: state.search })
 export default class SearchContainer extends Component {
 
   componentDidMount() {
+    this.props.dispatch(navActions.setLevel("TOP"))
+    this.props.dispatch(modal.update({keepNav: true}))
+
     let term = this.props.search.term;
 
     document.getElementById("search").value = term
   }
 
   componentWillUnmount() {
-    this.props.dispatch(modal.update({keepNav: true}))
+    this.props.dispatch(modal.update({keepNav: false}))
   }
 
   hide = () => {
