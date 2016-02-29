@@ -82,6 +82,6 @@ export default class Profile extends Component {
       return null
     }
 
-    return <Layout group={profile} join={this.join} />
+    return <Layout group={profile} join={this.join} hash={this.props.params.hash} />
   }
 }
