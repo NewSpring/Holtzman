@@ -55,7 +55,7 @@ const links = {
         const { modal, dispatch } = props
         sectionsVisible = false
         discoverVisible = true
-        return modalActions.render(Search, { keepNav: true })
+        return modalActions.render(Search, { keepNav: true, layoutOverride: ["background--light-secondary"] })
       },
       icon:"icon-search",
       isActive: (props) => (discoverVisible && props.modal.visible)
