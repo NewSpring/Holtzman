@@ -77,7 +77,7 @@ export default class SearchItem extends Component {
   render() {
 
     return (
-      <Link to={this.props.item.link} target="_blank" className={this.cardClasses()}>
+      <Link to={this.props.item.link} className={this.cardClasses()}>
         <div className={this.gridClasses()}>
 
           <div className={this.gridItemClasses()}>
