@@ -5,7 +5,7 @@ const Routes = [].concat(
   Finder.Routes
 )
 
-export default {
+export {
   // Home,
   Finder,
 
