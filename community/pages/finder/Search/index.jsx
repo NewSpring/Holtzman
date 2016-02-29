@@ -27,7 +27,8 @@ export default class Search extends Component {
     zip: null,
     state: null,
     status: "default",
-    campus: null
+    campus: null,
+    name: null,
   }
 
   componentWillMount() {
@@ -67,11 +68,11 @@ export default class Search extends Component {
     const { currentTarget } = e
     let {
       streetAddress,
-      streetAddress2,
       city,
       zip,
       state,
       campus,
+      name,
     } = this.state
 
     // the select component doesn't fire a blur when prefilled from start
@@ -82,10 +83,23 @@ export default class Search extends Component {
       const { service, geocoder } = this.props
       this.setState({ status: "default" })
 
-      if (streetAddress || streetAddress2 || city || zip || state ) {
-        geocoder.geocode({
-          address: `${streetAddress}${' ' + streetAddress2}, ${city}, ${state}, ${zip}`
-        }, (results, status) => {
+      if (streetAddress || city || zip || state ) {
+
+        let address = ""
+        if (streetAddress) {
+          address += `${streetAddress},`
+        }
+        if (city) {
+          address += ` ${city},`
+        }
+        if (state) {
+          address += ` ${state},`
+        }
+        if (zip) {
+          address += ` ${zip},`
+        }
+
+        geocoder.geocode({ address }, (results, status) => {
 
           let query = {}
           if (status === "OK") {
@@ -100,6 +114,10 @@ export default class Search extends Component {
             query.campus = campus
           }
 
+          if (name) {
+            query.name = name
+          }
+
           // clean our previous search results
           this.props.dispatch(collectionActions.clear("groups"))
           this.props.search(query)
@@ -110,6 +128,10 @@ export default class Search extends Component {
         let query = {}
         if (campus) {
           query.campus = campus
+        }
+
+        if (name) {
+          query.name = name
         }
 
         // clean our previous search results
@@ -150,7 +172,7 @@ export default class Search extends Component {
     }
 
     states = states.map((x) => ({
-      label: x.name,
+      label: x.value,
       value: x.value
     }))
 

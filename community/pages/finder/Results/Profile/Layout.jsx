@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
+import { Link } from "react-router"
 
-
-const Layout = ({ group, join }) => {
+const Layout = ({ group, join, hash }) => {
 
   let leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"))
   return (
@@ -138,10 +138,16 @@ const Layout = ({ group, join }) => {
           <p>
             <em>
               <small>
-                If you are the leader of this group, you can manage it <a target="_blank" href={`${Meteor.settings.public.rock.baseURL}groups/leader?GroupId=${group.id}`}>here</a>
+                If you are the leader of this group, you can manage it <a target="_blank" href={`${Meteor.settings.public.rock.baseURL}groups/leader?GroupId=${group.id}`}>here.</a>
               </small>
             </em>
           </p>
+        </div>
+
+        <div className="one-whole text-center soft@handheld soft-sides">
+          <Link to={`/community/finder/list/${hash}`} className="btn--small btn--dark-tertiary display-inline-block">
+            Back to List
+          </Link>
         </div>
 
       </section>

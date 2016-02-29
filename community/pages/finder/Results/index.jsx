@@ -22,11 +22,15 @@ function getGroups(param, dispatch ) {
   if (Object.keys(param).length) {
     params += "("
     for (let key in param) {
-      params += ` ${key}: ${param[key]},`
+      if (isNaN(Number(param[key]))) {
+        params += ` ${key}: "${param[key]}",`
+      } else {
+        params += ` ${key}: ${param[key]},`
+      }
+
     }
     params += ")"
   }
-
 
   let query = `
     {
@@ -79,7 +83,6 @@ function getGroups(param, dispatch ) {
       }
     }
   `
-
   return GraphQL.query(query)
     .then(({ groups, topics }) => {
 
@@ -354,9 +357,11 @@ export default class ListContainer extends Component {
                   return null
               }
 
-              // if (!markers.length) {
-              //   return null
-              // }
+              console.log("HERE")
+
+              if (!markers.length) {
+                return null
+              }
               if (typeof window != "undefined" && window != null) {
                 if (window.matchMedia("(min-width: 769px)").matches) {
                   return (

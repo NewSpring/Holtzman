@@ -70,7 +70,6 @@ class Template extends Component {
   }
 
   search = (query) => {
-
     let hash = encodeURI(base64Encode(JSON.stringify(query)))
     this.props.dispatch(routeActions.push(`/community/finder/list/${hash}`))
 

@@ -39,56 +39,65 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }) => 
             </p>
           </div>
 
+          <h6 className="soft-bottom">Find by Name</h6>
+          <Forms.Input
+            name="name"
+            label="Group Name"
+            onChange={save}
+            autofocus={true}
+          />
+
+          <h6 className="soft-bottom">Find by Location</h6>
           <Forms.Input
             name="streetAddress"
             label="Street Address"
             errorText="Please enter your address"
             defaultValue={home.street1}
-            onBlur={save}
-            autofocus={true}
-          />
-          <Forms.Input
-            name="streetAddress2"
-            label="Street Address (optional)"
-            defaultValue={home.street2}
-            onBlur={save}
-          />
-
-          <Forms.Input
-            name="city"
-            label="City"
-            errorText="Please enter your city"
-            defaultValue={home.city}
-            onBlur={save}
+            onChange={save}
           />
 
           <div className="grid">
 
-            <div className="grid__item one-half">
-              <Forms.Select
-                name="state"
-                label="State/Territory"
-                errorText="Please enter your state"
-                defaultValue={home.state}
+            <div className="grid__item two-fifths">
+              <Forms.Input
+                name="city"
+                label="City"
+                errorText="Please enter your city"
+                defaultValue={home.city}
                 onChange={save}
-                items={states}
-                includeBlank={true}
-                deselect={true}
               />
 
             </div>
-            <div className="grid__item one-half">
-              <Forms.Input
-                name="zip"
-                label="Zip"
-                type="tel"
-                errorText="Please enter your zip"
-                defaultValue={home.zip}
-                onBlur={save}
-              />
+            <div className="grid__item three-fifths">
+              <div className="grid">
+                <div className="grid__item one-half">
+                  <Forms.Select
+                    name="state"
+                    label="State"
+                    errorText="Please enter your state"
+                    defaultValue={home.state}
+                    onChange={save}
+                    items={states}
+                    includeBlank={true}
+                    deselect={true}
+                  />
+                </div>
+                <div className="grid__item one-half">
+                  <Forms.Input
+                    name="zip"
+                    label="Zip"
+                    type="tel"
+                    errorText="Please enter your zip"
+                    defaultValue={home.zip}
+                    onChange={save}
+                  />
+                </div>
+              </div>
+
             </div>
           </div>
 
+          <h6 className="soft-bottom">Find by Campus</h6>
           <Forms.Select
             name="campus"
             label="Campus"
