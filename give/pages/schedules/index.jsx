@@ -118,7 +118,7 @@ export default class Template extends Component {
     this.setState({
       loaded: false
     })
-    
+
     let mongoId = Meteor.userId();
 
     return getAccounts(dispatch)
