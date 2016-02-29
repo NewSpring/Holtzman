@@ -8,7 +8,7 @@ import modalActions from "../modal"
 import likedActions from "../liked"
 import shareActions from "../share"
 import Sections from "../../blocks/sections"
-import Search from "../../blocks/search"
+import Discover from "../../blocks/discover"
 
 import { routeActions } from "../routing"
 
@@ -55,7 +55,7 @@ const links = {
         const { modal, dispatch } = props
         sectionsVisible = false
         discoverVisible = true
-        return modalActions.render(Search, { keepNav: true, layoutOverride: ["background--light-secondary"] })
+        return modalActions.render(Discover, { keepNav: true, layoutOverride: ["background--light-secondary"] })
       },
       icon:"icon-search",
       isActive: (props) => (discoverVisible && props.modal.visible)

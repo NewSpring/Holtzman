@@ -16,7 +16,6 @@ if (Meteor.isServer) {
   })
 
   Meteor.publish("recently-liked", function(){
-
     return Likes.find(
       {
         // userId: {
