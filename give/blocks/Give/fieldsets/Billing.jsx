@@ -66,7 +66,7 @@ export default class Billing extends Component {
   }
 
   zip = (value) => {
-    let isValid = value.length ? true : false
+    let isValid = value.length === 5 ? true : false
 
     if (!isValid ) {
       this.props.clear("zip")
@@ -140,8 +140,10 @@ export default class Billing extends Component {
                 type="tel"
                 errorText="Please enter your zip"
                 defaultValue={billing.zip}
+                onChange={this.zip}
                 validation={this.zip}
                 ref="zip"
+                maxLength="5"
               />
             </div>
           </div>
