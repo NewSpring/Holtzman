@@ -15,7 +15,7 @@ const Item = ({ section, go }) => {
   }
 
   return (
-    <div className="one-half grid__item push-bottom">
+    <div className="one-half soft-half-left grid__item push-half-bottom">
       <Link
         to={section.link}
         className="plain"
@@ -81,8 +81,8 @@ export default class SectionItem extends Component {
     }
 
     return (
-      <div className="soft-sides soft-top background--dark-primary push-bottom">
-        <h4 className="text-light-primary text-center">{section.text}</h4>
+      <div className="soft-half-right soft-left soft-top background--dark-primary push-bottom">
+        <h4 className="soft-half-bottom text-light-primary text-center">{section.text}</h4>
         <div className="grid ">
 
           {children.map((sectionItem, i) => (
@@ -102,7 +102,7 @@ export default class SectionItem extends Component {
 
     return (
       <div>
-        <div className="soft-sides">
+        <div className="soft-half-right soft-left">
           <div className="grid">
             <div className="grid__item one-whole" >
               <div className="grid">
