@@ -56,7 +56,7 @@ export default class SideModal extends Component {
   layoutClasses = () => {
 
     const { float, offset } = this.props
-    const { classes } = this.props.modal.props
+    const { classes, layoutOverride } = this.props.modal.props
 
     let classList = [
       "hard",
@@ -68,6 +68,10 @@ export default class SideModal extends Component {
       classList.concat(classes);
     } else {
       classList.push(styles["side-panel"])
+    }
+
+    if (layoutOverride && layoutOverride.length) {
+      classList.push(layoutOverride);
     }
 
     if (float) {
