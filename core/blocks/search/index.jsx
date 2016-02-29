@@ -72,6 +72,7 @@ export default class SearchContainer extends Component {
     let term = document.getElementById("search").value;
 
     Promise.all([
+      dispatch(searchActions.searching(true)),
       dispatch(searchActions.clear()),
       dispatch(searchActions.term(term)),
       dispatch(searchActions.toggleLoading()),
@@ -88,6 +89,14 @@ export default class SearchContainer extends Component {
     this.getSearch();
   }
 
+  cancel = (event) => {
+    event.preventDefault();
+    const { dispatch } = this.props
+
+    dispatch(searchActions.searching(false));
+    document.getElementById("search").value = ""
+  }
+
   render() {
     const search = this.props.search
 
@@ -95,6 +104,7 @@ export default class SearchContainer extends Component {
       <Layout
         searchSubmit={this.searchSubmit}
         loadMore={this.loadMore}
+        cancel={this.cancel}
         search={search}
         hide={this.hide}
       />
