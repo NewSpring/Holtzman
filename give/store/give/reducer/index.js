@@ -193,6 +193,13 @@ export default createReducer(initial, {
     } }
   },
 
+  [types.CLEAR_SCHEDULES](state, action) {
+
+    return { ...state, ...{
+      schedules: { }
+    } }
+  },
+
   [types.SET_STATE](state, action) {
 
     const stateName = action.state.trim()
