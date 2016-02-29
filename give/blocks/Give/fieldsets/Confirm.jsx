@@ -208,7 +208,7 @@ export default class Confirm extends Component {
             return this.scheduleItem(schedule, key)
           })}
 
-          <button className="btn one-whole push-top" type="submit">
+          <button className="btn one-whole push-top soft-sides" type="submit">
             {this.buttonText()} {this.icon()}
           </button>
         </div>
