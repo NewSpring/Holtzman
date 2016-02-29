@@ -15,7 +15,7 @@ const Content = ({ loadMore, search }) => {
 
 const SearchLayout = ({ searchSubmit, loadMore, cancel, search, hide }) => (
 
-  <section className="hard-sides hard-bottom soft-top">
+  <section className="hard">
 
     <Input searchSubmit={searchSubmit} cancel={cancel} />
 
