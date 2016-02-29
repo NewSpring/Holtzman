@@ -30,7 +30,7 @@ const LoadMore = ({ loadMore, search }) => {
 const Results = ({ loadMore, search }) => {
 
   if (search.none) {
-    return <h6 className="soft-sides">No results for {search.term}!</h6>
+    return <h6 className="soft">No results for {search.term}!</h6>
   }
   if (search.items.length > 0) {
     return (

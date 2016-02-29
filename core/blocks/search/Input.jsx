@@ -1,6 +1,6 @@
 
 const Input = ({ searchSubmit, cancel }) => (
-  <section className="push-bottom">
+  <section className="soft-double-ends background--light-primary">
     <button onClick={cancel} className="locked-right push-right push-half-top"><small>Cancel</small></button>
     <form onSubmit={searchSubmit} className="hard push-double-right">
       <div className="input hard-bottom push-right">
