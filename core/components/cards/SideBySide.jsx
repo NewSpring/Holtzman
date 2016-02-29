@@ -26,7 +26,7 @@ export default class Card extends Component {
       "card__item",
       "soft",
       "text-left",
-      "soft-double-ends@handheld",
+      "soft-double-ends@lap",
       "soft-double@anchored",
       "one-whole",
       "three-fifths@lap-wide",
@@ -90,9 +90,9 @@ export default class Card extends Component {
       let imageclasses = [
         "background--fill",
         "card__image",
-        "locked-ends@lap-and-up",
-        "locked-sides@lap-and-up",
-        "relative@handheld"
+        "locked-ends@lap-wide-and-up",
+        "locked-sides@lap-wide-and-up",
+        "relative@lap"
       ]
 
       if (image.ratio) {
@@ -125,10 +125,7 @@ export default class Card extends Component {
     const { link, image, theme, styles, itemTheme, itemStyles } = this.props
 
 
-    let wrapperClasses = "relative@handheld plain locked-ends@lap-and-up locked-right@lap-and-up one-whole@handheld two-fifths@lap-wide one-half@anchored"
-    if (this.props.mobile === false) {
-      wrapperClasses += " visuallyhidden@handheld visuallyhidden@lap"
-    }
+    let wrapperClasses = "relative@lap plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up one-whole@lap two-fifths@lap-wide one-half@anchored"
 
     if (link) {
       return (
