@@ -1,19 +1,17 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
-import { GraphQL } from "../../../core/graphql"
-import Authorized from "../../../core/blocks/authorzied"
-import { nav as navActions, modal as modalActions } from "../../../core/store"
+import { GraphQL } from "../../../../core/graphql"
+import Authorized from "../../../../core/blocks/authorzied"
+import { nav as navActions, modal as modalActions } from "../../../../core/store"
 
 import {
   transactions as transactionActions,
   give as giveActions
-} from "../../store"
+} from "../../../store"
 
-import Details from "./Details"
 import Layout from "./Layout"
-import Confirm from "./Details/Confirm"
-import Recover from "./Recover"
+import Confirm from "./../Details/Confirm"
 
 
 function mapArrayToObj(array){
@@ -198,24 +196,4 @@ export default class Template extends Component {
       />
     )
   }
-}
-
-
-const Routes = [
-  { path: "schedules", component: Template },
-  {
-    path: "schedules/recover",
-    component: Authorized,
-    indexRoute: { component: Recover }
-  },
-  {
-    path: "schedules/:id",
-    component: Authorized,
-    indexRoute: { component: Details }
-  }
-]
-
-export default {
-  Template,
-  Routes
 }

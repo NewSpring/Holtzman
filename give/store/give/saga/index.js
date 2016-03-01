@@ -380,6 +380,13 @@ function* recoverTransactions(getStore) {
       return
     }
 
+    let state = getStore();
+    let { pathname } = state.routing.location
+
+    if (pathname.split("/").length === 4 && pathname.split("/")[3] === "recover" ) {
+      return
+    }
+
     yield put(modalActions.render(RecoverSchedules))
 
   }

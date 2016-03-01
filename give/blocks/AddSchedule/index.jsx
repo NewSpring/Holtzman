@@ -202,15 +202,15 @@ export default class CartContainer extends Component {
 
     let schedules = [
       {
-        label: "One Time",
+        label: "one time",
         value: "One-Time"
       },
       {
-        label: "Every Week",
+        label: "every week",
         value: "Weekly"
       },
       {
-        label: "Every Two Weeks",
+        label: "every two weeks",
         value: "Bi-Weekly"
       },
       // {
@@ -218,7 +218,7 @@ export default class CartContainer extends Component {
       //   value: "Twice a Month"
       // },
       {
-        label: "Once a Month",
+        label: "once a month",
         value: "Monthly"
       }
     ]
