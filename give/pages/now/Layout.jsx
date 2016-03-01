@@ -1,6 +1,7 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import Meta from "react-helmet"
+import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import SideBySide from "../../../core/components/cards/SideBySide"
@@ -10,29 +11,60 @@ import { Offline } from "../../components/status"
 import AddToCart from "../../blocks/AddToCart"
 
 const Layout = ({ alive, accounts }) => (
-  <Split nav={true} classes={["background--light-primary"]}>
 
-    <Meta
-      title="Give"
-      titleTemplate="%s | NewSpring Church"
-    />
+  <VelocityComponent
+    animation={"transition.fadeIn"}
+    duration={1000}
+    runOnMount={true}
+  >
+    <Split nav={true} classes={["background--light-primary"]}>
 
-    <Right
-      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"
-      link="/give/recurring"
-    >
-    </Right>
+      <Meta
+        title="Give"
+        titleTemplate="%s | NewSpring Church"
+      />
 
-    <Left scroll={true} classes={["background--light-secondary"]} >
-      <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{overflow: "visible"}}>
+      <Right
+        background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"
+        link="/give/recurring"
+      >
+      </Right>
 
-        <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
-          <div className="soft-double-ends@anchored">
-            {() => {
+      <Left scroll={true} classes={["background--light-secondary"]} >
+        <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{overflow: "visible"}}>
 
-              if (!alive) {
-                return <Offline />
-              }
+          <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
+            <div className="soft-double-ends@anchored">
+              {() => {
+
+                if (!alive) {
+                  return <Offline />
+                }
+
+                if (!accounts.length) {
+                  return (
+                    <div className="one-whole text-center soft-ends">
+                      <Spinner styles={{width: "40px", height: "40px"}}/>
+                    </div>
+                  )
+                }
+
+                return <AddToCart accounts={accounts} />
+              }()}
+            </div>
+          </div>
+        </div>
+
+        <div className="soft-half soft-sides@portable soft-double-sides@anchored">
+
+          <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+            Learn more about our campaigns...
+          </h4>
+          <div className="grid">
+
+            {(() => {
+
+              if (!alive) { return null }
 
               if (!accounts.length) {
                 return (
@@ -41,73 +73,49 @@ const Layout = ({ alive, accounts }) => (
                   </div>
                 )
               }
+            })()}
 
-              return <AddToCart accounts={accounts} />
-            }()}
-          </div>
-        </div>
-      </div>
+            {accounts.map((account, i) => {
 
-      <div className="soft-half soft-sides@portable soft-double-sides@anchored">
+              if (!account.image || !account.description) {
+                return null
+              }
 
-        <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
-          Learn more about our campaigns...
-        </h4>
-        <div className="grid">
-
-          {(() => {
-
-            if (!alive) { return null }
-
-            if (!accounts.length) {
               return (
-                <div className="one-whole text-center soft-ends">
-                  <Spinner styles={{width: "40px", height: "40px"}}/>
+                <div key={i} className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+                  <SideBySide
+                    link={`/give/campaign/${encodeURI(account.name)}`}
+                    image={{
+                      url: account.image
+                    }}
+                    mobile={false}
+                  >
+                    <h4 className="push-half-top@portable push-top@anchored">
+                      {account.name}
+                    </h4>
+                    <p>
+                      <small>
+                        {account.summary}
+                      </small>
+                    </p>
+                    <Link
+                      to={`/give/campaign/${encodeURI(account.name)}`}
+                      className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                    >
+                      Learn more
+                    </Link>
+
+                  </SideBySide>
                 </div>
               )
-            }
-          })()}
+            })}
+          </div>
 
-          {accounts.map((account, i) => {
-
-            if (!account.image || !account.description) {
-              return null
-            }
-
-            return (
-              <div key={i} className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
-                <SideBySide
-                  link={`/give/campaign/${encodeURI(account.name)}`}
-                  image={{
-                    url: account.image
-                  }}
-                  mobile={false}
-                >
-                  <h4 className="push-half-top@portable push-top@anchored">
-                    {account.name}
-                  </h4>
-                  <p>
-                    <small>
-                      {account.summary}
-                    </small>
-                  </p>
-                  <Link
-                    to={`/give/campaign/${encodeURI(account.name)}`}
-                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
-                  >
-                    Learn more
-                  </Link>
-
-                </SideBySide>
-              </div>
-            )
-          })}
         </div>
+      </Left>
 
-      </div>
-    </Left>
-
-  </Split>
+    </Split>
+  </VelocityComponent>
 )
 
 export default Layout
