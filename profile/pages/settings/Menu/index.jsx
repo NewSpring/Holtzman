@@ -187,7 +187,7 @@ export default class Menu extends Component {
             </Link>
             <Link to="/give/schedules" className="plain text-dark-secondary">
               <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
-                <h6 className="soft-half-left flush display-inline-block">Recurring Gifts</h6>
+                <h6 className="soft-half-left flush display-inline-block">Scheduled Gifts</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>

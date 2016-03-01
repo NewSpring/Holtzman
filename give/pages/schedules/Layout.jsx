@@ -114,7 +114,7 @@ export default class Layout extends Component {
                       <div className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
                         <h4 className="text-light-primary soft-half-sides soft-half-bottom">Hey { person.nickName || person.firstName }!</h4>
                         <h5 className="text-light-primary soft-half-sides soft-bottom">
-                           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below and enter your payment details.
+                           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
                         </h5>
 
                         <Link to="/give/schedules/recover" className="btn--light">Transfer Schedules</Link>
