@@ -1,10 +1,10 @@
 import React, { PropTypes } from "react"
-
 import { Controls, Forms } from "../../components"
 import { Error, Loading, Success } from "../../components/states"
 
 import Validate from "../../util/validate"
 
+import { routeActions } from "../../store/routing"
 
 class ForgotPassword extends React.Component {
 
@@ -51,7 +51,7 @@ class ForgotPassword extends React.Component {
         this.setState({ state: "error", err: err.message })
         setTimeout(() => {
           this.setState({ state: "default"})
-        }, 5000)
+        }, 3000)
         return
       }
 
@@ -59,7 +59,9 @@ class ForgotPassword extends React.Component {
 
       setTimeout(() => {
         this.setState({ state: "default"})
-      }, 5000)
+        this.props.back()
+
+      }, 3000)
 
     })
 
