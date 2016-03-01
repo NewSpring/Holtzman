@@ -147,9 +147,6 @@ export default class Layout extends Component {
                 })
 
                 if (alreadySelectedByThisInstance.length && Number(alreadySelectedByThisInstance[0].accountId) === x.value) {
-                  console.log(key);
-                  console.log("already selected by this instance", x.value);
-                  console.log(selectVal, inputVal);
                   return true
                 }
 
