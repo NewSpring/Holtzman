@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 
-import { Loading, Error } from "../../components/states"
+import { Loading, Error as Err } from "../../components/states"
 import onBoardActions from "../../store/onBoard"
 import modalActions from "../../store/modal"
 
@@ -57,7 +57,10 @@ export default class OnBoardContainer extends Component {
   }
 
   goSignIn = (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
+
     this.props.remember()
   }
 
@@ -87,16 +90,13 @@ export default class OnBoardContainer extends Component {
       showWelcome
     } = this.props.onboard
 
+
     let account = this.props.onboard.account
 
     if (typeof this.props.account != "undefined") {
       account = this.props.account
     }
 
-    if (state === "loading") {
-      let msg = account ? "Signing you in..." : "Creating your account..."
-      return <Loading msg={msg} />
-    }
 
     if (Object.keys(errors).length) {
       let primaryError;
@@ -104,9 +104,17 @@ export default class OnBoardContainer extends Component {
         primaryError = errors[error]
         break
       }
-
-      return <Error msg={primaryError} />
+      return <Err msg="There was an error" error={primaryError} />
     }
+
+
+
+
+    if (state === "loading") {
+      let msg = account ? "Signing you in..." : "Creating your account..."
+      return <Loading msg={msg} />
+    }
+
 
     if (forgot) {
       return (
