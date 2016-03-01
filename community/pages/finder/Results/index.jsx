@@ -387,7 +387,7 @@ export default class ListContainer extends Component {
 
         </Right>
 
-        <Left scroll={true}>
+        <Left scroll={true} classes={["background--light-primary"]}>
 
           {() => {
             switch (this.state.status) {

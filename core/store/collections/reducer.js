@@ -29,6 +29,15 @@ const reducer = createReducer({}, {
     }}
 
   },
+  [types.delete](state, action) {
+    let removedState = {...state}
+    
+    delete removedState[action.collection][action.id]
+
+    return removedState
+
+  },
+
 
 
 })

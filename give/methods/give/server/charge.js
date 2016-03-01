@@ -67,7 +67,7 @@ const charge = (token, accountName) => {
     let formatedTransaction = {
       TransactionCode: response["transaction-id"],
       TransactionTypeValueId: 53,
-      FinancialGatewayId: 2,
+      FinancialGatewayId: api._.give.gateway.id,
       Summary: `Reference Number: ${response["transaction-id"]}`,
       TransactionDetails: [],
       FinancialPaymentDetail: {},
@@ -95,7 +95,8 @@ const charge = (token, accountName) => {
       formatedTransaction.meta.FinancialPersonSavedAccounts = {
         Name: accountName,
         ReferenceNumber: response["customer-vault-id"],
-        TransactionCode: response["transaction-id"]
+        TransactionCode: response["transaction-id"],
+        FinancialGatewayId: api._.give.gateway.id
       }
 
     }

@@ -25,7 +25,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }) => 
           <p className="text-light-primary flush"><em>#TheseAreMyPeople</em></p>
         </div>
       </Right>
-      <Left scroll={true}>
+      <Left scroll={true} classes={["background--light-primary"]}>
         <div className="one-whole text-center push-double-top@lap-and-up push-double-bottom">
           <Forms.Form
             id="reset-password"

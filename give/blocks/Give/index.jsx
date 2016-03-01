@@ -26,7 +26,8 @@ const map = (state) => ({
   give: state.give,
   person: state.onBoard.person,
   campuses: state.campuses.campuses,
-  states: state.collections.states
+  states: state.collections.states,
+  savedAccounts: state.collections.savedAccounts
 })
 
 @connect(map)
@@ -127,6 +128,17 @@ export default class Give extends Component {
     this.props.dispatch(giveActions.next())
   }
 
+  goToStepOne = (e) => {
+    e.preventDefault()
+    this.props.dispatch(giveActions.clearAccount())
+    this.props.dispatch(giveActions.setState("default"))
+    this.props.dispatch(giveActions.setProgress(1))
+  }
+
+  changeSavedAccount = (account) => {
+    this.props.dispatch(giveActions.setAccount(account))
+  }
+
   back = (e) => {
     e.preventDefault()
     if (this.props.give.step === 1) {
@@ -188,6 +200,11 @@ export default class Give extends Component {
       transactionType
     } = this.props.give
 
+    let savedAccounts = []
+    for (let account in this.props.savedAccounts) {
+      savedAccounts.push(this.props.savedAccounts[account])
+    }
+
     let campuses = []
     for (let campus in this.props.campuses) {
       campuses.push(this.props.campuses[campus])
@@ -216,7 +233,7 @@ export default class Give extends Component {
       case "loading":
         return <Loading msg="We're Processing Your Gift" />
       case "error":
-        return <Err msg={errors[Object.keys(errors)[0]].error} />
+        return <Err msg={errors[Object.keys(errors)[0]].error} goToStepOne={this.goToStepOne} />
       case "success":
         return <Success
           total={this.monentize(total)}
@@ -267,6 +284,9 @@ export default class Give extends Component {
               campuses={campuses}
               states={states}
               schedules={schedules}
+              goToStepOne={this.goToStepOne}
+              savedAccounts={savedAccounts}
+              changeSavedAccount={this.changeSavedAccount}
             >
               <Controls.Progress
                 steps={4}

@@ -16,6 +16,21 @@ export default class Select extends Component {
   componentWillMount(){
     if (this.props.defaultValue) {
       this.setState({ active: true })
+
+    }
+  }
+
+  componentDidMount(){
+    if (this.props.defaultValue) {
+      const target = ReactDOM.findDOMNode(this.refs["apollos-select"])
+
+      if (this.props.onChange) {
+        this.props.onChange(this.props.defaultValue, target)
+      }
+
+      if (this.props.validation) {
+        this.props.validation(this.props.defaultValue, target)
+      }
     }
   }
 
