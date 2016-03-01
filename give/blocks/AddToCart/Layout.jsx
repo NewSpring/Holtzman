@@ -48,6 +48,7 @@ export default class Layout extends Component {
       })
 
       this.setState({
+        SubFundInstances: updated.length + 1,
         instances: updated
       })
 
