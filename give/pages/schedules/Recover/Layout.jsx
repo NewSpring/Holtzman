@@ -201,7 +201,6 @@ export default class Layout extends Component {
                                     <h6
                                       className="outlined--light outlined--bottom display-inline-block text-dark-tertiary push-top"
                                       style={{cursor: "pointer"}}
-                                      onClick={this.changeAccounts}
                                       onClick={cancelSchedule}
                                       data-id={schedule.id}
                                     >
