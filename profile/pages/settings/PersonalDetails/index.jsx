@@ -109,7 +109,7 @@ export default class PersonalDetails extends Component {
   }
 
   componentWillMount(){
-    this.props.dispatch(nav.setLevel("CONTENT"))
+    this.props.dispatch(nav.setLevel("BASIC_CONTENT"))
   }
 
   componentDidMount(){

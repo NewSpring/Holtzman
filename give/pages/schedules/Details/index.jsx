@@ -69,7 +69,7 @@ export default class Details extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("CONTENT"))
+    this.props.dispatch(navActions.setLevel("BASIC_CONTENT"))
   }
 
   componentDidMount(){
