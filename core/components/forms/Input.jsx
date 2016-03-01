@@ -214,6 +214,7 @@ export default class Input extends Component {
           defaultValue={this.props.defaultValue}
           style={this.style()}
           maxLength={this.props.maxLength || ""}
+          value={this.props.value}
         />
 
         {this.renderHelpText()}

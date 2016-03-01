@@ -24,7 +24,14 @@ export default class SubFund extends Component {
         id: this.props.accounts[0].value
       })
 
-      this.props.update(this.props.instance, this.props.accounts[0].value)
+      this.props.update(this.props.instance, this.props.accounts[0].value, this.state.amount)
+    }
+
+    if (this.props.selectVal) {
+      this.setState({ fund: true });
+    }
+    if (this.props.inputVal) {
+      this.setState({ amount: this.props.inputVal });
     }
   }
 
@@ -69,6 +76,16 @@ export default class SubFund extends Component {
     this.props.remove(this.props.instance, this.state.id)
 
     let fund = this.getFund(id)
+
+    if (!fund) {
+      this.setState({
+        id: null,
+        fund: false,
+        amount: null
+      })
+      return
+    }
+
     this.setState({
       id: fund.value,
       fund: true
@@ -82,7 +99,7 @@ export default class SubFund extends Component {
         label: fund.label
       }})
 
-      this.props.update(this.props.instance, id)
+      this.props.update(this.props.instance, id, this.state.amount)
 
     }
 
@@ -110,7 +127,7 @@ export default class SubFund extends Component {
           label: fund.label
         }})
 
-        this.props.update(this.props.instance, id)
+        this.props.update(this.props.instance, id, numberValue)
       }
 
 
@@ -198,6 +215,8 @@ export default class SubFund extends Component {
         showInputs={this.saveFund}
         format={this.saveAmount}
         preFill={this.props.preFill}
+        selectVal={this.props.selectVal}
+        inputVal={this.props.inputVal}
       />
     )
   }

@@ -20,7 +20,7 @@ export default class Layout extends Component {
     ]
   }
 
-  update = (key, value) => {
+  update = (key, value, amount) => {
 
     const getInstance = (id) => {
       let instance = this.state.instances.filter((x) => {
@@ -39,7 +39,8 @@ export default class Layout extends Component {
         if (x.id === key) {
           return {
             id: key,
-            accountId: Number(value)
+            accountId: Number(value),
+            amount: amount
           }
         }
 
@@ -47,6 +48,7 @@ export default class Layout extends Component {
       })
 
       this.setState({
+        SubFundInstances: updated.length + 1,
         instances: updated
       })
 
@@ -54,7 +56,7 @@ export default class Layout extends Component {
       this.setState({
         SubFundInstances: this.state.SubFundInstances + 1,
         instances: [...this.state.instances, ...[
-          { id: key, accountId: Number(value) }
+          { id: key, accountId: Number(value), amount: amount }
         ]]
       })
     }
@@ -62,14 +64,38 @@ export default class Layout extends Component {
   }
 
   remove = (key, value) => {
-    // console.log(key, value, this.state.instances)
     let newInstances = this.state.instances.filter((x) => {
       return x.id != key
     })
-    // console.log(newInstances)
-    // this.setState({
-    //   instances: newInstances
-    // })
+
+    // if an instance is removed and that instance is not at the end
+    if (this.state.instances.length > newInstances.length &&
+        this.state.instances.length !== key + 1)
+      {
+        // currently no good way to reorder sub funds
+        // so, force re-render and fill the data back in
+        this.setState({ SubFundInstances: 1 });
+
+        // remap ids
+        newInstances = newInstances.map((newInstance, i) => {
+          newInstance.id = i
+          return newInstance
+        });
+
+        console.log("new",newInstances);
+        setTimeout(() => {
+          this.setState({
+            SubFundInstances: newInstances.length + 1,
+            instances: newInstances
+          })
+        }, 100);
+        return
+    }
+
+    this.setState({
+      SubFundInstances: newInstances.length + 1,
+      instances: newInstances
+    })
   }
 
   render () {
@@ -101,6 +127,14 @@ export default class Layout extends Component {
 
           <div className="display-inline-block">
             {accountsCount.map((key) => {
+
+              // collect data for re-render on reorder
+              let selectVal, inputVal;
+              let existingInstance = this.state.instances[key];
+              if (existingInstance) {
+                selectVal = existingInstance.accountId;
+                inputVal = existingInstance.amount;
+              }
 
               let instanceAccounts = this.state.instances.map((x) => {
                 return x.accountId
@@ -142,6 +176,8 @@ export default class Layout extends Component {
                   update={this.update}
                   remove={this.remove}
                   instance={key}
+                  selectVal={selectVal}
+                  inputVal={inputVal}
                 />
               )
 
