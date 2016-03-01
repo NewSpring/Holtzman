@@ -3,7 +3,7 @@ import { PropTypes } from "react"
 import { Forms } from "../../../../core/components"
 import Styles from "../styles.css"
 
-const Layout = ({ classes, accounts, state, preFill, showInputs, format }) => (
+const Layout = ({ classes, accounts, state, preFill, showInputs, format, selectVal, inputVal }) => (
   <div>
     <div
       className={`display-inline-block push-half-bottom h3 push-half-right ${classes}`}>
@@ -21,6 +21,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format }) => (
       onChange={showInputs}
       includeBlank={true}
       deselect={true}
+      selected={selectVal}
     />
 
     {() => {
@@ -41,6 +42,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format }) => (
               format={format}
               defaultValue={preFill(state.id)}
               style={{maxWidth: "150px"}}
+              value={inputVal}
             />
           </div>
         )
