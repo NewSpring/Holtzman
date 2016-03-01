@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import { GraphQL } from "../../../core/graphql"
 import Authorized from "../../../core/blocks/authorzied"
-import { nav as navActions } from "../../../core/store"
+import { nav as navActions, modal as modalActions } from "../../../core/store"
 
 import {
   transactions as transactionActions,
@@ -12,6 +12,8 @@ import {
 
 import Details from "./Details"
 import Layout from "./Layout"
+import Confirm from "./Details/Confirm"
+
 
 function mapArrayToObj(array){
   let obj = {}
@@ -74,6 +76,7 @@ function getAccounts(dispatch) {
           id
           summary
           image
+          order
         }
       }
     `).then(result => {
@@ -136,30 +139,9 @@ export default class Template extends Component {
   }
 
   confirm = (e) => {
-    let { value } = e.currentTarget
-    const { dispatch } = this.props
-    const { recoverableSchedules } = this.props.give
-
-    if (recoverableSchedules[value]) {
-
-      let schedule = recoverableSchedules[value]
-      const { details } = schedule
-
-      for (let fund of details) {
-        const { id, name } = fund.account
-
-        dispatch(giveActions.addTransactions({ [id]: {
-          value: Number(fund.amount.replace(/[^0-9\.]+/g, '')),
-          label: name
-        }}))
-      }
-
-      dispatch(giveActions.saveSchedule(schedule.id, {
-        // label: name,
-        frequency: schedule.frequency
-      }))
-
-    }
+    const { dataset } = e.currentTarget
+    const { id } = dataset
+    this.props.dispatch(giveActions.setRecoverableSchedule(Number(id)))
 
     return true
   }
@@ -169,11 +151,16 @@ export default class Template extends Component {
     const { id } = dataset
     const { dispatch } = this.props
 
-    dispatch(giveActions.deleteSchedule(id))
+    this.props.dispatch(modalActions.render(Confirm, {
+      onFinished: () => {
+        dispatch(giveActions.deleteSchedule(id))
 
-    Meteor.call("give/schedule/cancel", { id }, (err, response) => {
-      console.log(err, response)
-    })
+        Meteor.call("give/schedule/cancel", { id }, (err, response) => {
+          console.log(err, response)
+        })
+      }
+    }))
+
   }
 
 
@@ -189,6 +176,8 @@ export default class Template extends Component {
     for (const account in accounts) {
       mappedAccounts.push(accounts[account])
     }
+
+    mappedAccounts = _.sortBy(mappedAccounts, "order")
 
     let recovers = []
     for (const recover in recoverableSchedules) {

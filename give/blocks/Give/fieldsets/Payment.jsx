@@ -6,6 +6,26 @@ import Format from "../../../../core/util/format"
 
 export default class Payment extends Component {
 
+  state = {
+    save: true
+  }
+
+  savePayment = () => {
+    this.setState({save: !this.state.save})
+
+    if (this.state.save) {
+      this.props.save({ payment: { name: null }})
+    }
+  }
+
+  saveName = (value) => {
+    if (value.length > 0) {
+      this.props.save({ payment: { name: value }})
+    }
+
+    return (value.length > 0)
+
+  }
 
   header = () => {
     return (
@@ -247,7 +267,44 @@ export default class Payment extends Component {
             }
           }()}
 
+          {() => {
+            if (
+              this.props.savedAccount.id === null &&
+              this.props.transactionType != "guest" &&
+              Object.keys(this.props.schedules).length === 0
+            ) {
+              return (
+                <Forms.Checkbox
+                  name="savePayment"
+                  defaultValue={this.state.save}
+                  clicked={this.savePayment}
+                >
+                  Save this payment for future gifts
+                </Forms.Checkbox>
+              )
+            }
+          }()}
+
+
+          {() => {
+            if (this.state.save) {
+              return (
+                <Forms.Input
+                  name="accountName"
+                  label="Saved Account Name"
+                  classes={["soft-bottom", "flush-bttom"]}
+                  errorText="Please enter a name for the account"
+                  validation={this.saveName}
+                  defaultValue={payment.type === "ach" ? "Bank Account" : "Credit Card"}
+                  ref="accountName"
+                />
+              )
+            }
+          }()}
+
         </div>
+
+
 
 
         <div>

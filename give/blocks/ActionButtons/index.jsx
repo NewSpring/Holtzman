@@ -131,7 +131,7 @@ export default class GiveNow extends Component {
       }))
 
       this.props.dispatch(onBoardActions.setAccount(true))
-      
+
     }
 
     this.props.dispatch(navActions.setLevel("MODAL"))
@@ -213,6 +213,7 @@ export default class GiveNow extends Component {
             onClick={this.onClick}
             value={this.props.value}
             style={this.props.style || {}}
+            dataId={this.props.dataId}
           />
           {() => {
             if (!this.props.authorized) {

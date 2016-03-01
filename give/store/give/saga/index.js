@@ -101,10 +101,9 @@ addSaga(function* chargeTransaction(getStore) {
         yield put(actions.setState("success"))
 
         // if we activated an inactive schedule, remove it
-        for (let schedule in give.schedules) {
-          if (give.recoverableSchedules[schedule]) {
-            yield put(actions.deleteSchedule(schedule))
-          }
+        if (give.scheduleToRecover && give.recoverableSchedules[give.scheduleToRecover]) {
+          yield put(actions.deleteSchedule(give.scheduleToRecover))
+          yield put(actions.deleteRecoverableSchedules(give.scheduleToRecover))
         }
 
         // if this was a named card (as in creating a saved account)
@@ -295,6 +294,25 @@ addSaga(function* createOrder(getStore) {
 
 })
 
+
+/*
+
+
+  During the transition from F1 to Rock, we have schedules that need
+  to be recovered from our imported data
+
+  The criteria for a `recoverable schedule` is the following:
+    IsActive (active: false on GQL query) === false
+    GatewayCode (gateway on GQL) === null
+
+  When the schedule is reactivated, the GatewayCode is set and it is set back
+  to active.
+
+  If the schedule is canceled permantly, and it doesn't have a GatewayCode,
+  it is safe to delete it as no auditable information exists.
+
+*/
+
 // recover transactions
 function* recoverTransactions(getStore) {
   let user = Meteor.userId()
@@ -331,9 +349,11 @@ function* recoverTransactions(getStore) {
     }
   `
 
-  const { schedules } = yield GraphQL.query(query)
+  let { schedules } = yield GraphQL.query(query)
 
   let bulkUpdate = {}
+  schedules = schedules.filter(x => !x.gateway)
+
   if (schedules.length) {
     for (let schedule of schedules) {
       // only recover schedules that are missing info (i.e. not turned off in Rock)
