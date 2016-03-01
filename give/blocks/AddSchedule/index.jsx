@@ -24,6 +24,25 @@ export default class CartContainer extends Component {
 
   componentWillMount(){
     this.props.clearTransactions()
+
+    if (this.props.existing) {
+      const { existing } = this.props
+      if (existing.details && existing.details.length && existing.details[0].account) {
+        this.setState({
+          fundId: Number(existing.details[0].account.id),
+          fundLabel: existing.details[0].account.name,
+          frequency: existing.frequency
+        })
+
+        if (existing.details[0].amount) {
+          this.props.addTransactions({ [Number(existing.details[0].account.id)]: {
+            value: Number(existing.details[0].amount.replace(/[^0-9\.]+/g, '')),
+            label: existing.details[0].account.name
+          }})
+        }
+
+      }
+    }
   }
 
   componentWillUnmount() {
@@ -150,6 +169,29 @@ export default class CartContainer extends Component {
 
   }
 
+  onClick = (e) => {
+    e.preventDefault()
+
+    let keepGoing = true
+    if (this.state.fundId) {
+      this.props.clearAllSchedulesExcept(Number(this.state.fundId))
+
+      this.props.saveSchedule(this.state.fundId, {
+        label: this.state.fundLabel,
+        frequency: this.state.frequency,
+        start: this.state.startDate
+      })
+
+    }
+
+    if (this.props.onClick) {
+      keepGoing = this.props.onClick(e)
+    }
+
+    return keepGoing
+
+  }
+
   render () {
 
     if (!this.data.alive) {
@@ -193,6 +235,8 @@ export default class CartContainer extends Component {
       return null
     }
 
+    const { fundId, fundLabel, startDate, frequency} = this.state
+
     return (
       <Layout
         schedules={schedules}
@@ -204,6 +248,12 @@ export default class CartContainer extends Component {
         save={this.saveData}
         saveDate={this.saveDate}
         total={total}
+        existing={this.props.existing}
+        date={this.state.startDate}
+        text={this.props.text}
+        onSubmitSchedule={this.onClick}
+        ready={fundId && fundLabel && startDate && frequency}
+        dataId={this.props.dataId}
       />
     )
   }

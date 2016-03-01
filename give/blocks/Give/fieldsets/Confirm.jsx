@@ -17,7 +17,6 @@ export default class Confirm extends Component {
 
 
   state = {
-    save: false,
     changePayments: false,
   }
 
@@ -180,23 +179,6 @@ export default class Confirm extends Component {
 
     )
 
-
-  }
-
-  savePayment = () => {
-    this.setState({save: !this.state.save})
-
-    if (this.state.save) {
-      this.props.save({ payment: { name: null }})
-    }
-  }
-
-  saveName = (value) => {
-    if (value.length > 0) {
-      this.props.save({ payment: { name: value }})
-    }
-
-    return (value.length > 0)
 
   }
 
@@ -402,38 +384,7 @@ export default class Confirm extends Component {
 
             </div>
           </div>
-          {() => {
-            if (
-              this.props.savedAccount.id === null &&
-              this.props.transactionType != "guest" &&
-              Object.keys(this.props.schedules).length === 0
-            ) {
-              return (
-                <Forms.Checkbox
-                  name="savePayment"
-                  defaultValue={false}
-                  clicked={this.savePayment}
-                >
-                  Save this payment for future gifts
-                </Forms.Checkbox>
-              )
-            }
-          }()}
 
-
-          {() => {
-            if (this.state.save) {
-              return (
-                <Forms.Input
-                  name="accountName"
-                  label="Saved Account Name"
-                  errorText="Please enter a name for the account"
-                  validation={this.saveName}
-                  ref="accountName"
-                />
-              )
-            }
-          }()}
 
           <button className="btn one-whole" type="submit">
             {this.buttonText()} {this.icon()}

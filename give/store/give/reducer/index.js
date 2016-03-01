@@ -209,6 +209,22 @@ export default createReducer(initial, {
     } }
   },
 
+  [types.CLEAR_SCHEDULES_EXCEPT](state, action) {
+    let newState = {...state}
+
+    if (newState.schedules[action.id]) {
+      for (let schedule in newState.schedules){
+        if (Number(newState.schedules[schedule].id) === Number(action.id)) {
+          continue
+        }
+
+        delete newState.schedules[schedule]
+      }
+    }
+
+    return newState
+  },
+
   [types.SET_STATE](state, action) {
 
     const stateName = action.state.trim()

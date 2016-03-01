@@ -24,7 +24,6 @@ export default class DateComponent extends Component {
   }
 
   fixPickerPosition = () => {
-    console.log("fixing...");
     const picker = document.getElementById("datepicker");
     if (picker) {
       const child = picker.children[0];
@@ -87,13 +86,17 @@ export default class DateComponent extends Component {
       formattedDay = this.props.format(selectedDay)
     }
 
+    if (!selectedDay && this.props.defaultValue) {
+      formattedDay = this.props.format(this.props.defaultValue)
+    }
+
 
     return (
       <div className="display-inline-block" style={{position: "relative"}}>
         <div style={{position: "relative"}}>
           <Input
-            defaultValue={formattedDay}
             {...this.props}
+            defaultValue={formattedDay}
             ref="input"
           />
         <div className="locked-ends locked-sides" onClick={this.toggle}></div>

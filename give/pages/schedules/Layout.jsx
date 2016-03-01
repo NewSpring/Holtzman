@@ -16,6 +16,31 @@ import { AccountType } from "../../components"
 
 export default class Layout extends Component {
 
+  state = {
+    expandedSchedule: null
+  }
+
+  expandSchedule = (e) => {
+    e.preventDefault()
+
+    const { dataset } = e.currentTarget
+    const { id } = dataset
+
+    if (this.state.expandedSchedule === Number(id)) {
+      this.collapseSchedule()
+      return
+    }
+
+    this.setState({
+      expandedSchedule: Number(id)
+    })
+  }
+
+  collapseSchedule = () => {
+    this.setState({
+      expandedSchedule: null
+    })
+  }
 
   formatDate = (date) => {
     return Moment(date).format("MMM D, YYYY")
@@ -101,9 +126,13 @@ export default class Layout extends Component {
                           return null
                         }
 
+                        let arrow = "icon-arrow-down"
+                        if (Number(schedule.id) === this.state.expandedSchedule) {
+                          arrow = "icon-arrow-up"
+                        }
                         return (
-                          <div key={i} className="card">
-                            <div className="soft">
+                          <div key={i} className="card" >
+                            <div className="soft" onClick={this.expandSchedule} data-id={schedule.id} style={{cursor: "pointer"}}>
                               <div className="grid " style={{verticalAlign: "middle"}} key={i}>
 
                                 <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
@@ -125,8 +154,12 @@ export default class Layout extends Component {
 
                                 <div className="grid__item one-third text-right" style={{verticalAlign: "middle"}}>
                                   <div className="soft-half-right">
-                                    <h4 className="text-dark-tertiary flush">
+                                    <h4 className="text-dark-tertiary flush" style={{paddingRight: "25px"}}>
                                       {this.monentize(schedule.details[0].amount)}
+                                      <span className={`text-dark-tertiary ${arrow} locked`} style={{
+                                          right: "-3px",
+                                          top: "1px"
+                                        }}></span>
                                     </h4>
                                   </div>
 
@@ -135,19 +168,25 @@ export default class Layout extends Component {
                               </div>
                             </div>
 
-                            <div className="grid flush one-whole">
-                              <Confirm
-                                theme="soft h6 grid__item one-half background--primary text-light-primary"
-                                onClick={confirm}
-                                value={schedule.id}
-                                text="Transfer"
-                                hideCard={true}
-                                style={{margin: 0}}
-                              />
-                              <button className="hard grid__item one-half background--alert" onClick={cancelSchedule} data-id={schedule.id}>
-                                <h6 className="soft flush text-light-primary">Cancel</h6>
-                              </button>
-                            </div>
+
+                            {() => {
+                              if (Number(schedule.id) === this.state.expandedSchedule) {
+                                return (
+                                  <div className="text-light-primary soft outlined--light outlined--top flush one-whole">
+                                    <AddSchedule accounts={accounts} existing={schedule} text="Transfer" onClick={confirm} dataId={schedule.id}/>
+                                    <h6
+                                      className="outlined--light outlined--bottom display-inline-block text-dark-tertiary push-top"
+                                      style={{cursor: "pointer"}}
+                                      onClick={this.changeAccounts}
+                                      onClick={cancelSchedule}
+                                      data-id={schedule.id}
+                                    >
+                                      Stop Gift
+                                    </h6>
+                                  </div>
+                                )
+                              }
+                            }()}
 
 
                           </div>
