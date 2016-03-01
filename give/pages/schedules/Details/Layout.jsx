@@ -2,6 +2,7 @@ import { Component, PropTypes} from "react"
 import Moment from "moment"
 import { Link } from "react-router"
 import Meta from "react-helmet"
+import { VelocityComponent } from "velocity-react"
 
 import { Spinner } from "../../../../core/components/loading"
 import Split, { Left, Right } from "../../../../core/blocks/split"
@@ -46,153 +47,159 @@ export default class Layout extends Component {
     const { schedule, stop, state, person, active } = this.props
 
     return (
-      <Split nav={true} classes={["background--light-primary"]}>
+      <VelocityComponent
+        animation={"transition.fadeIn"}
+        duration={500}
+        runOnMount={true}
+      >
+        <Split nav={true} classes={["background--light-primary"]}>
 
-        <Meta
-          title="Reccuring Gift"
-          titleTemplate="%s | NewSpring Church"
-        />
+          <Meta
+            title="Reccuring Gift"
+            titleTemplate="%s | NewSpring Church"
+          />
 
-        <Right background="https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/series_newspring/v4.sermonseries.graphics.1to1.more_1700_1700_90_c1_1700_1700_90_c1.jpg"
- mobile={false}>
+          <Right background="https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/series_newspring/v4.sermonseries.graphics.1to1.more_1700_1700_90_c1_1700_1700_90_c1.jpg"
+   mobile={false}>
 
-        </Right>
+          </Right>
 
-        <Left scroll={true} classes={["background--light-secondary"]} ref="container">
+          <Left scroll={true} classes={["background--light-secondary"]} ref="container">
 
-          <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+            <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
 
-            <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
-              <div className="soft-double-ends@anchored">
-                {() => {
+              <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
+                <div className="soft-double-ends@anchored">
+                  {() => {
 
-                  if (!schedule) {
-                    // loading
+                    if (!schedule) {
+                      // loading
+                      return (
+                        <div className="text-center soft">
+                          <Spinner styles={{width: "40px", height: "40px"}}/>
+                        </div>
+                      )
+                    }
+
                     return (
-                      <div className="text-center soft">
-                        <Spinner styles={{width: "40px", height: "40px"}}/>
-                      </div>
-                    )
-                  }
+                      <div className="text-center">
+                        <p className="push-half-bottom"><em>Started on {this.formatDate(schedule.start)}</em></p>
 
-                  return (
-                    <div className="text-center">
-                      <p className="push-half-bottom"><em>Started on {this.formatDate(schedule.start)}</em></p>
+                        <h4 className="text-dark-secondary flush-bottom">{this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}</h4>
+                        <h3 className="text-primary">{schedule.details[0].account.name}</h3>
 
-                      <h4 className="text-dark-secondary flush-bottom">{this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}</h4>
-                      <h3 className="text-primary">{schedule.details[0].account.name}</h3>
-
-                      <h1 className="text-dark-primary">{this.monentize(schedule.details[0].amount)}</h1>
+                        <h1 className="text-dark-primary">{this.monentize(schedule.details[0].amount)}</h1>
 
 
-                      {() => {
-                        const detail = schedule.payment
-                        if (detail && detail.accountNumber) {
+                        {() => {
+                          const detail = schedule.payment
+                          if (detail && detail.accountNumber) {
+                            return (
+                              <h4 className="text-dark-secondary soft-half-top">
+                                {detail.accountNumber.slice(-4)}&nbsp;
+
+                                {() => {
+                                  if (detail.paymentType && detail.paymentType === "ACH") {
+                                    return (
+                                      <AccountType width="30px" height="20px" type="Bank"/>
+                                    )
+                                  } else if (detail.paymentType) {
+                                    return (
+                                      <AccountType width="30px" height="20px" type={detail.paymentType} />
+                                    )
+                                  }
+                                }()}
+
+                              </h4>
+                            )
+                          }
+                        }()}
+
+                        {(() => {
+                          if (active) {
+                            return (
+                              <h6 className="text-alert" onClick={stop} style={{cursor: "pointer"}}>
+                                Stop Gift
+                              </h6>
+                            )
+
+                          }
+
                           return (
-                            <h4 className="text-dark-secondary soft-half-top">
-                              {detail.accountNumber.slice(-4)}&nbsp;
-
-                              {() => {
-                                if (detail.paymentType && detail.paymentType === "ACH") {
-                                  return (
-                                    <AccountType width="30px" height="20px" type="Bank"/>
-                                  )
-                                } else if (detail.paymentType) {
-                                  return (
-                                    <AccountType width="30px" height="20px" type={detail.paymentType} />
-                                  )
-                                }
-                              }()}
-
-                            </h4>
-                          )
-                        }
-                      }()}
-
-                      {(() => {
-                        if (active) {
-                          return (
-                            <h6 className="text-alert" onClick={stop} style={{cursor: "pointer"}}>
-                              Stop Gift
+                            <h6 className="text-brand">
+                              Gift Stopped
                             </h6>
                           )
 
-                        }
+                        }())}
 
-                        return (
-                          <h6 className="text-brand">
-                            Gift Stopped
-                          </h6>
-                        )
+                        <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
+                          Thank you so much for your gift! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
+                        </p>
+                      </div>
+                    )
 
-                      }())}
+                  }()}
 
-                      <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-                        Thank you so much for your gift! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
-                      </p>
-                    </div>
-                  )
-
-                }()}
-
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="soft-half soft-sides@portable soft-double-sides@anchored">
+            <div className="soft-half soft-sides@portable soft-double-sides@anchored">
 
-            <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
-              Read Some Recent Stories
-            </h4>
-            <div className="grid">
-              <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
-                <SideBySide
-                  link="https://newspring.cc/stories/jen-feagles"
-                  image={{
-                    url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/JenFeagles.hero_1700_723_90_c1.jpg"
-                  }}
-                >
-                  <h4 className="push-half-top@portable push-top@anchored">
-                    Jennifer Feagles Story
-                  </h4>
-                  <p>
-                    Jennifer Feagles shares about how Jesus gave her more than she could have imagined when she put him first in her…
-                  </p>
-                  <Link
-                    to="https://newspring.cc/stories/jen-feagles"
-                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+              <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
+                Read Some Recent Stories
+              </h4>
+              <div className="grid">
+                <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+                  <SideBySide
+                    link="https://newspring.cc/stories/jen-feagles"
+                    image={{
+                      url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/JenFeagles.hero_1700_723_90_c1.jpg"
+                    }}
                   >
-                    Watch Story
-                  </Link>
+                    <h4 className="push-half-top@portable push-top@anchored">
+                      Jennifer Feagles Story
+                    </h4>
+                    <p>
+                      Jennifer Feagles shares about how Jesus gave her more than she could have imagined when she put him first in her…
+                    </p>
+                    <Link
+                      to="https://newspring.cc/stories/jen-feagles"
+                      className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                    >
+                      Watch Story
+                    </Link>
 
-                </SideBySide>
-              </div>
-              <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
-                <SideBySide
-                  link="https://newspring.cc/stories/brooke-brissey"
-                  image={{
-                    url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/BrookeBrissey_Hero_1700_723_90_c1.jpg"
-                  }}
-                >
-                  <h4 className="push-half-top@portable push-top@anchored">
-                    Brooke Brissey's Story
-                  </h4>
-                  <p>
-                    Brooke Brissey discovered the power of a financial plan to obey God's call on her life. This is her story in her own…                  </p>
-                  <Link
-                    to="https://newspring.cc/stories/brooke-brissey"
-                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                  </SideBySide>
+                </div>
+                <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+                  <SideBySide
+                    link="https://newspring.cc/stories/brooke-brissey"
+                    image={{
+                      url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/BrookeBrissey_Hero_1700_723_90_c1.jpg"
+                    }}
                   >
-                    Read Story
-                  </Link>
+                    <h4 className="push-half-top@portable push-top@anchored">
+                      Brooke Brissey's Story
+                    </h4>
+                    <p>
+                      Brooke Brissey discovered the power of a financial plan to obey God's call on her life. This is her story in her own…                  </p>
+                    <Link
+                      to="https://newspring.cc/stories/brooke-brissey"
+                      className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                    >
+                      Read Story
+                    </Link>
 
-                </SideBySide>
+                  </SideBySide>
+                </div>
               </div>
             </div>
-          </div>
 
-        </Left>
-      </Split>
+          </Left>
+        </Split>
+      </VelocityComponent>
     )
   }
 }

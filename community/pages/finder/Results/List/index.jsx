@@ -1,6 +1,7 @@
 
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
+import { VelocityComponent } from "velocity-react"
 
 import { nav as navActions } from "../../../../../core/store"
 
@@ -59,34 +60,40 @@ export default class ListView extends Component {
     }))
 
     return (
-      <div>
+      <VelocityComponent
+        animation={"transition.fadeIn"}
+        duration={500}
+        runOnMount={true}
+      >
+        <div>
 
-        <List
-          groups={groups}
-          onClick={onClick}
-          hash={hash}
-          showFilters={this.toggleFilters}
-          filter={this.state.showFilters}
-          count={count}
-          showMore={showMore}
-          status={status}
-          done={done}
-          onHover={onHover}
-        >
-        {() => {
-          if (this.state.showFilters) {
-            return(
-              <Filter
-                topics={topics}
-                filter={filter}
-                campuses={campuses}
-              />
-            )
-          }
-        }()}
-        </List>
+          <List
+            groups={groups}
+            onClick={onClick}
+            hash={hash}
+            showFilters={this.toggleFilters}
+            filter={this.state.showFilters}
+            count={count}
+            showMore={showMore}
+            status={status}
+            done={done}
+            onHover={onHover}
+          >
+          {() => {
+            if (this.state.showFilters) {
+              return(
+                <Filter
+                  topics={topics}
+                  filter={filter}
+                  campuses={campuses}
+                />
+              )
+            }
+          }()}
+          </List>
 
-      </div>
+        </div>
+      </VelocityComponent>
     )
   }
 }
