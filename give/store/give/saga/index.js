@@ -339,6 +339,7 @@ function* recoverTransactions(getStore) {
       // only recover schedules that are missing info (i.e. not turned off in Rock)
       if (schedule.gateway) { continue; }
 
+
       bulkUpdate[schedule.id] = {...{
         start: Moment(schedule.start).format("YYYYMMDD"),
         frequency: schedule.schedule.value
