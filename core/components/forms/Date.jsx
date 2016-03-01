@@ -15,10 +15,36 @@ export default class DateComponent extends Component {
     selectedDay: null
   }
 
+  componentDidMount() {
+    window.addEventListener("resize", this.fixPickerPosition);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.fixPickerPosition);
+  }
+
+  fixPickerPosition = () => {
+    console.log("fixing...");
+    const picker = document.getElementById("datepicker");
+    if (picker) {
+      const child = picker.children[0];
+      const globalTop = Number(child.getBoundingClientRect().top);
+      if (globalTop < 0) {
+        const marginTop = Number(child.style.marginTop.slice(0, -2));
+        child.style.marginTop = `${marginTop + Math.abs(globalTop)}px`
+      } else {
+        child.style.marginTop = "-250px"
+      }
+    }
+  }
+
   toggle = (e) => {
     this.setState({
       showDatePicker: !this.state.showDatePicker
     })
+    setTimeout(() => {
+      this.fixPickerPosition();
+    }, 200);
   }
 
   onDayClick = (e, day, modifiers) => {
@@ -77,7 +103,7 @@ export default class DateComponent extends Component {
         {(()=>{
           if (this.state.showDatePicker) {
             return (
-              <div >
+              <div id="datepicker">
                 <div style={{
                   position: "absolute",
                   top: 0,
@@ -88,7 +114,7 @@ export default class DateComponent extends Component {
                   maxWidth: "300px",
                   border: "1px solid #ddd",
                   borderRadius: "4px",
-                  marginTop: "-75%"
+                  marginTop: "-250px"
                 }}>
                   <DayPicker
                     locale="en"
