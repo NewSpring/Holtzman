@@ -20,6 +20,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format }) => (
       placeholder="select fund"
       onChange={showInputs}
       includeBlank={true}
+      deselect={true}
     />
 
     {() => {
