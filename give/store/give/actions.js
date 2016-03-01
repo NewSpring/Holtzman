@@ -22,6 +22,9 @@ export default {
   clear: (level, field) => ({ type: types.REMOVE_DATA, level, field }),
   clearData: () => ({ type: types.CLEAR_DATA }),
 
+  setRecoverableSchedule: (recoverableSchedule) => ({ type: types.SET_RECOVERABLE_SCHEDULE, recoverableSchedule }),
+  deleteRecoverableSchedule: () => ({ type: types.SET_RECOVERABLE_SCHEDULE }),
+
   saveSchedules: (recoverableSchedules) => ({ type: types.SET_RECOVERABLE_SCHEDULES, recoverableSchedules }),
   deleteSchedule: (id) => ({ type: types.DELETE_RECOVERABLE_SCHEDULE, id }),
 

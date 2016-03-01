@@ -54,13 +54,6 @@ export default class RecoverSchedules extends Component {
     this.props.dispatch(modalActions.hide())
   }
 
-  removeSchedule = (id) => {
-
-    Meteor.call("give/schedule/cancel", {id, gateway}, (err, response) => {
-
-    })
-
-  }
 
   render() {
 
