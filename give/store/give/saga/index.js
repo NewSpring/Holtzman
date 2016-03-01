@@ -45,29 +45,38 @@ addSaga(function* chargeTransaction(getStore) {
         }
 
       } else {
+
+
+        let store = getStore()
+        give = store.give
+
+        if (formattedData.savedAccount) {
+          // set people data and store transaction id
+          yield* submitPersonDetails(give, campuses, true)
+        }
+
+        store = getStore()
+        give = store.give
+
         // wait until we have the transaction url
         if (!give.url) {
           let { url } = yield take(types.SET_TRANSACTION_DETAILS)
           give.url = url
         }
+
       }
 
       // get the token and name of the saved account
       let token = give.url.split("/").pop();
 
-      if (Object.keys(give.schedules).length) {
+      if (give.scheduleToRecover && Object.keys(give.schedules).length) {
 
         // if there is not a saved account, charge the order
         if (!formattedData.savedAccount) {
           action = schedule
         }
 
-        if (Object.keys(give.recoverableSchedules).length) {
-          for (let schedule in give.recoverableSchedules) {
-            id = schedule
-            break
-          }
-        }
+        id = give.scheduleToRecover
 
       }
 
@@ -135,7 +144,6 @@ addSaga(function* chargeTransaction(getStore) {
 
 
 function* submitPersonDetails(give, campuses, autoSubmit) {
-
 
   // personal info is ready to be submitted
   const formattedData = formatPersonDetails(give, campuses)
@@ -224,10 +232,10 @@ addSaga(function* createOrder(getStore) {
     let { give, campuses } = getStore()
 
 
-    if (step === 4 || (give.step - 1) === 2) {
+    if ((give.step - 1) === 2) {
 
       // set people data and store transaction id
-      yield* submitPersonDetails(give, campuses, step === 4)
+      yield* submitPersonDetails(give, campuses, false)
 
 
     } else if ((give.step - 1) === 3) {
@@ -328,10 +336,13 @@ function* recoverTransactions(getStore) {
   let bulkUpdate = {}
   if (schedules.length) {
     for (let schedule of schedules) {
-     bulkUpdate[schedule.id] = {...{
-       start: Moment(schedule.start).format("YYYYMMDD"),
-       frequency: schedule.schedule.value
-     }, ...schedule }
+      // only recover schedules that are missing info (i.e. not turned off in Rock)
+      if (schedule.gateway) { continue; }
+      
+      bulkUpdate[schedule.id] = {...{
+        start: Moment(schedule.start).format("YYYYMMDD"),
+        frequency: schedule.schedule.value
+      }, ...schedule }
 
     }
 

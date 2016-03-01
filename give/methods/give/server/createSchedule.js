@@ -100,7 +100,7 @@ const createSchedule = (response, accountName, id) => {
       GatewayScheduleId: response["subscription-id"],
       TransactionFrequencyValueId: frequency,
       IsActive: true,
-      StartDate: `${Moment().toISOString()}`,
+      StartDate: `${Moment(response["merchant-defined-field-3"], "YYYYMMDD").toISOString()}`,
       FinancialGatewayId: api._.give.gateway.id,
       NextPaymentDate: `${Moment(response["merchant-defined-field-3"], "YYYYMMDD").toISOString()}`,
       // "NextPaymentDate": "2016-03-04T00:00:00",

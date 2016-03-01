@@ -6,7 +6,6 @@ import createSchedule from "./createSchedule"
 
 function order(orderData, instant, id){
 
-
   let user = Meteor.user()
   // default to sale
   let method = "sale"

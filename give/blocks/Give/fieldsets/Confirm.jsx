@@ -1,6 +1,7 @@
 import { Component, PropTypes} from "react"
 import { AccountType } from "../../../components"
 import Moment from "moment"
+import { connect } from "react-redux"
 
 import { Forms } from "../../../../core/components"
 
@@ -16,7 +17,8 @@ export default class Confirm extends Component {
 
 
   state = {
-    save: false
+    save: false,
+    changePayments: false,
   }
 
   header = () => {
@@ -31,6 +33,14 @@ export default class Confirm extends Component {
     return (
       <h4 className="text-center">
         Review Your Schedule
+      </h4>
+    )
+  }
+
+  changePaymentHeader = () => {
+    return (
+      <h4 className="text-center flush-bottom">
+        Change Payment Account
       </h4>
     )
   }
@@ -211,6 +221,135 @@ export default class Confirm extends Component {
           <button className="btn one-whole push-top soft-sides" type="submit">
             {this.buttonText()} {this.icon()}
           </button>
+
+          {this.renderPaymentOptions()}
+        </div>
+
+
+      </div>
+    )
+  }
+
+  changeAccounts = (e) => {
+    e.preventDefault()
+
+    this.setState({
+      changePayments: !this.state.changePayments
+    })
+
+  }
+
+  choose = (e) => {
+    e.preventDefault()
+
+    const { id } = e.currentTarget
+    let act = {}
+    for (let account of this.props.savedAccounts) {
+      if (Number(account.id) === Number(id)) {
+        act = account
+        break
+      }
+    }
+
+    this.props.changeSavedAccount(act)
+  }
+
+  renderPaymentOptions = () => {
+    return (
+      <div>
+        {() => {
+          if (this.props.savedAccount.id === null) {
+            return (
+              <div className="display-block soft-top text-left">
+                <h6
+                  className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+                  style={{cursor: "pointer"}}
+                  onClick={this.props.back}
+                >
+                  Edit Gift Details
+                </h6>
+              </div>
+            )
+          } else {
+            return (
+              <div className="display-block soft-top text-left">
+                <h6
+                  className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+                  style={{cursor: "pointer"}}
+                  onClick={this.changeAccounts}
+                >
+                  Change payment accounts
+                </h6>
+              </div>
+            )
+          }
+        }()}
+      </div>
+    )
+  }
+
+  renderPaymentOptionsSelect = () => {
+    return (
+      <div>
+        <div className="soft-sides flush-bottom push-double-top@lap-and-up">
+          {this.changePaymentHeader()}
+        </div>
+
+        <div className="soft">
+          {this.props.savedAccounts.map((account, key) => {
+            return (
+              <div key={key} style={{position: "relative", cursor: "pointer"}} id={account.id} onClick={this.choose}>
+                <div  className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative">
+
+                  <div className="display-inline-block soft-half-ends one-whole">
+                    <h6 className="flush-bottom float-left text-dark-tertiary">{account.name}</h6>
+                    {/*<button className="h6 flush-bottom float-right text-primary" id={account.id} onClick={this.choose}>Choose</button>*/}
+                  </div>
+
+
+                  <h5 className="hard one-whole flush-bottom text-dark-tertiary">
+                    {account.payment.accountNumber.slice(0, account.payment.accountNumber.length - 5).replace(/./gmi, "*")}{account.payment.accountNumber.slice(-4)}
+                    <span className="float-right soft-half-left">
+                      <AccountType width="40px" height="25px" type={account.payment.paymentType}/>
+
+                    </span>
+
+                  </h5>
+
+
+                </div>
+                <div className="locked-ends locked-sides">
+                  <input
+                    type="checkbox"
+                    id={"label" + account.id}
+                    readOnly={true}
+                    checked={Number(account.id) === Number(this.props.savedAccount.id)}
+                    style={{
+                      opacity: 0,
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      padding: "50px"
+                    }}
+                  />
+                <label htmlFor={"label" + account.id} style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: 0
+                  }}/>
+                </div>
+              </div>
+            )
+          })}
+
+          <button className="btn one-whole push-double-top soft-sides push-half-bottom" onClick={this.changeAccounts}>
+            Save and Continue
+          </button>
+
+          <button className="btn--small btn--dark-tertiary one-whole soft-sides push-half-ends" onClick={this.props.goToStepOne}>
+            Enter New Payment
+          </button>
+
         </div>
 
 
@@ -224,6 +363,10 @@ export default class Confirm extends Component {
 
     for (let transaction in this.props.transactions) {
       transactions.push(this.props.transactions[transaction])
+    }
+
+    if (this.state.changePayments) {
+      return this.renderPaymentOptionsSelect()
     }
 
     if (Object.keys(this.props.schedules).length) {
@@ -296,34 +439,7 @@ export default class Confirm extends Component {
             {this.buttonText()} {this.icon()}
           </button>
 
-          {() => {
-            if (this.props.savedAccount.id === null) {
-              let classes = [
-                "outlined--bottom",
-                "outlined--light"
-              ]
-
-              let style = {
-                display: "inline"
-              }
-
-              // if (disabled) {
-              //   classes.push("text-light-tertiary")
-              //   style = {...style, ...{ cursor: "text" } }
-              // } else {
-                classes.push("text-dark-tertiary")
-                style = {...style, ...{ cursor: "pointer" } }
-              // }
-
-              return (
-                <div className="display-block soft-top text-left">
-                  <h6 className={classes.join(" ")} style={style} onClick={this.props.back}>
-                    Edit Gift Details
-                  </h6>
-                </div>
-              )
-            }
-          }()}
+          {this.renderPaymentOptions()}
 
 
         </div>

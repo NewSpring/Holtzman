@@ -12,11 +12,11 @@ const schedule = (token, accountName, id) => {
 
   try {
     response = Meteor.wrapAsync(gatewaySchedule)(token)
+    response = createSchedule(response, accountName, id)
   } catch (e) {
     throw new Meteor.Error(e.message)
   }
 
-  response = createSchedule(response, accountName, id)
 
   return response
 
@@ -37,8 +37,8 @@ const cancel = ({ id, gateway }) => {
   }
 
 
-  // response = api.patch.sync(`FinancialScheduledTransactions/${Id}`, { IsActive: false })
-  response = api.delete.sync(`FinancialScheduledTransactions/${id}`)
+  response = api.patch.sync(`FinancialScheduledTransactions/${Id}`, { IsActive: false })
+  // response = api.delete.sync(`FinancialScheduledTransactions/${id}`)
 
   if (response.status) {
     throw new Meteor.Error(response)
