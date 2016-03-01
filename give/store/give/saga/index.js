@@ -113,27 +113,27 @@ addSaga(function* chargeTransaction(getStore) {
         // we don't have a way to optimistcally update this without it being a
         // hacky work around. I think this can wait until Apollo is closer
         // to revist
-        if (name) {
-          let query = `
-            {
-              paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${Meteor.userId()}") {
-                name
-                id
-                date
-                payment {
-                  accountNumber
-                  paymentType
-                }
-              }
-            }
-          `
-
-          let details = yield GraphQL.query(query)
-
-          if (details && details[0]) {
-            yield put(actions.setAccount(details[0]))
-          }
-        }
+        // if (name) {
+        //   let query = `
+        //     {
+        //       paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${Meteor.userId()}") {
+        //         name
+        //         id
+        //         date
+        //         payment {
+        //           accountNumber
+        //           paymentType
+        //         }
+        //       }
+        //     }
+        //   `
+        //
+        //   let details = yield GraphQL.query(query)
+        //
+        //   if (details && details[0]) {
+        //     yield put(actions.setAccount(details[0]))
+        //   }
+        // }
 
       }
 
@@ -338,7 +338,7 @@ function* recoverTransactions(getStore) {
     for (let schedule of schedules) {
       // only recover schedules that are missing info (i.e. not turned off in Rock)
       if (schedule.gateway) { continue; }
-      
+
       bulkUpdate[schedule.id] = {...{
         start: Moment(schedule.start).format("YYYYMMDD"),
         frequency: schedule.schedule.value

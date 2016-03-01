@@ -18,7 +18,7 @@ const Layout = ({ details, remove }) => (
 
 
               <h5 className="hard one-whole flush-bottom">
-                {account.payment.accountNumber}
+                {account.payment.accountNumber.slice(0, account.payment.accountNumber.length - 5).replace(/./gmi, "*")}{account.payment.accountNumber.slice(-4)}
                 <span className="float-right ">
                   <AccountType width="30px" height="20px" type={account.payment.paymentType}/>
 
