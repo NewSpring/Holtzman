@@ -129,6 +129,8 @@ export default class Select extends Component {
     // custom added classes
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
 
+    if (this.props.selected) { inputclasses.push("input--active") }
+
     return (
       <div className={inputclasses.join(" ")}>
         {(() => {
@@ -155,7 +157,7 @@ export default class Select extends Component {
           disabled={this.disabled()}
           onFocus={this.focus}
           onChange={this.change}
-          defaultValue={this.props.defaultValue}
+          defaultValue={this.props.defaultValue || this.props.selected}
 
         >
           {() => {
