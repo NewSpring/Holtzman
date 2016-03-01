@@ -69,6 +69,16 @@ export default class SubFund extends Component {
     this.props.remove(this.props.instance, this.state.id)
 
     let fund = this.getFund(id)
+
+    if (!fund) {
+      this.setState({
+        id: null,
+        fund: false,
+        amount: null
+      })
+      return
+    }
+
     this.setState({
       id: fund.value,
       fund: true
