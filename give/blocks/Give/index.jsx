@@ -231,6 +231,7 @@ export default class Give extends Component {
 
     switch (state) {
       case "loading":
+        this.copiedSchedules = {...schedules}
         return <Loading msg="We're Processing Your Gift" />
       case "error":
         return <Err msg={errors[Object.keys(errors)[0]].error} goToStepOne={this.goToStepOne} />
@@ -240,7 +241,7 @@ export default class Give extends Component {
           email={data.personal.email}
           guest={transactionType === "guest"}
           onClick={this.goToOnboard}
-          schedules={schedules}
+          schedules={this.copiedSchedules}
         />
       default:
         let Step;
