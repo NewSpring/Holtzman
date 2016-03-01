@@ -62,14 +62,13 @@ export default class Layout extends Component {
   }
 
   remove = (key, value) => {
-    // console.log(key, value, this.state.instances)
     let newInstances = this.state.instances.filter((x) => {
       return x.id != key
     })
-    // console.log(newInstances)
-    // this.setState({
-    //   instances: newInstances
-    // })
+    this.setState({
+      SubFundInstances: newInstances.length + 1,
+      instances: newInstances
+    })
   }
 
   render () {
