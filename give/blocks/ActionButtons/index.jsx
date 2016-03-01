@@ -9,7 +9,8 @@ import OnBoard from "../../../core/blocks/onBoard"
 import {
   modal,
   onBoard as onBoardActions,
-  nav as navActions
+  nav as navActions,
+  collections as collectionActions
 } from "../../../core/store"
 
 
@@ -37,7 +38,7 @@ function getPaymentDetails(id, dispatch) {
     }
   `
   return GraphQL.query(query)
-    .then(({ paymentDetails }) => (paymentDetails[0]))
+    .then(({ paymentDetails }) => (paymentDetails))
 }
 
 /*
@@ -51,7 +52,7 @@ function getPaymentDetails(id, dispatch) {
 */
 const map = (store) => ({
   authorized: store.onBoard.authorized,
-  savedAccount: store.give.savedAccount
+  savedAccount: store.collections.savedAccounts
 })
 @connect(map)
 export default class GiveNow extends Component {
@@ -65,10 +66,14 @@ export default class GiveNow extends Component {
     const id = Meteor.userId()
     const { dispatch, savedAccount } = this.props
 
-    if (id && !savedAccount.id) {
+    if (id && (!savedAccount || !Object.keys(savedAccount).length)) {
       getPaymentDetails(id, dispatch)
         .then(paymentDetails => {
-          dispatch(giveActions.setAccount(paymentDetails))
+
+          dispatch(collectionActions.upsertBatch(
+            "savedAccounts", paymentDetails, "id"
+          ))
+
         })
     }
 
@@ -78,7 +83,7 @@ export default class GiveNow extends Component {
   buttonClasses = () => {
     let classes = ["btn"]
 
-    if (this.props.savedAccount.id) {
+    if (this.props.savedAccount && Object.keys(this.props.savedAccount).length) {
       classes.push("has-card")
     }
 
@@ -112,14 +117,21 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(giveActions.setTransactionType("default"))
 
+    if (this.props.savedAccount && Object.keys(this.props.savedAccount).length) {
+      const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
+      this.props.dispatch(giveActions.setAccount(details))
+    }
+
     if (this.props.authorized) {
       this.props.dispatch(modal.render(Give))
     } else {
+
       this.props.dispatch(modal.render(OnBoard, {
         onFinished: this.renderAfterLogin
       }))
 
       this.props.dispatch(onBoardActions.setAccount(true))
+
     }
 
     this.props.dispatch(navActions.setLevel("MODAL"))
@@ -151,8 +163,9 @@ export default class GiveNow extends Component {
       text = this.props.text
     }
 
-    if (this.props.savedAccount.id && !this.props.hideCard) {
-      const details = this.props.savedAccount
+    if (this.props.savedAccount && Object.keys(this.props.savedAccount).length && !this.props.hideCard) {
+
+      const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       let { accountNumber } = details.payment
       accountNumber = accountNumber.slice(-4).trim()
 
@@ -170,16 +183,15 @@ export default class GiveNow extends Component {
 
   icon = () => {
 
-    if (this.props.savedAccount && this.props.authorized && !this.props.hideCard) {
-      const detail = this.props.savedAccount.payment
-
-      if (detail.paymentType && detail.paymentType === "ACH") {
+    if (this.props.savedAccount && Object.keys(this.props.savedAccount).length && this.props.authorized && !this.props.hideCard) {
+      const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
+      if (detail.paymentType && detail.payment.paymentType === "ACH") {
         return (
           <AccountType width="30px" height="20px" type="Bank"/>
         )
-      } else if (detail.paymentType) {
+      } else if (detail.payment.paymentType) {
         return (
-          <AccountType width="30px" height="20px" type={detail.paymentType} />
+          <AccountType width="30px" height="20px" type={detail.payment.paymentType} />
         )
       }
 
@@ -190,41 +202,47 @@ export default class GiveNow extends Component {
 
   render () {
 
-    return (
-      <span>
-        <PrimaryButton
-          disabled={this.props.disabled}
-          classes={this.props.theme || this.buttonClasses()}
-          icon={this.icon()}
-          text={this.buttonText()}
-          onClick={this.onClick}
-          value={this.props.value}
-          style={this.props.style || {}}
-        />
-        {() => {
-          if (!this.props.authorized) {
-            return (
-              <SecondaryButton
-                disabled={this.props.disabled}
-                onClick={this.register}
-              />
-            )
-          }
+    try {
+      return (
+        <span>
+          <PrimaryButton
+            disabled={this.props.disabled}
+            classes={this.props.theme || this.buttonClasses()}
+            icon={this.icon()}
+            text={this.buttonText()}
+            onClick={this.onClick}
+            value={this.props.value}
+            style={this.props.style || {}}
+            dataId={this.props.dataId}
+          />
+          {() => {
+            if (!this.props.authorized) {
+              return (
+                <SecondaryButton
+                  disabled={this.props.disabled}
+                  onClick={this.register}
+                />
+              )
+            }
 
-        }()}
-        {() => {
-          if (!this.props.authorized && !this.props.disabledGuest) {
-            return (
-              <Guest
-                disabled={this.props.disabled}
-                onClick={this.giveAsGuest}
-              />
-            )
-          }
-        }()}
+          }()}
+          {() => {
+            if (!this.props.authorized && !this.props.disabledGuest) {
+              return (
+                <Guest
+                  disabled={this.props.disabled}
+                  onClick={this.giveAsGuest}
+                />
+              )
+            }
+          }()}
 
-      </span>
+        </span>
 
-    )
+      )
+    } catch (e) {
+      console.log(e)
+    }
+
   }
 }

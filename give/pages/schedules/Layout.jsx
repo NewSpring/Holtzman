@@ -7,6 +7,7 @@ import { VelocityComponent } from "velocity-react"
 import { Link } from "react-router"
 
 import { Spinner } from "../../../core/components/loading"
+import { Error as ErrIcon } from "../../../core/components/icons"
 import AddSchedule from "../../blocks/AddSchedule"
 import Split, { Left, Right } from "../../../core/blocks/split"
 
@@ -16,6 +17,31 @@ import { AccountType } from "../../components"
 
 export default class Layout extends Component {
 
+  state = {
+    expandedSchedule: null
+  }
+
+  expandSchedule = (e) => {
+    e.preventDefault()
+
+    const { dataset } = e.currentTarget
+    const { id } = dataset
+
+    if (this.state.expandedSchedule === Number(id)) {
+      this.collapseSchedule()
+      return
+    }
+
+    this.setState({
+      expandedSchedule: Number(id)
+    })
+  }
+
+  collapseSchedule = () => {
+    this.setState({
+      expandedSchedule: null
+    })
+  }
 
   formatDate = (date) => {
     return Moment(date).format("MMM D, YYYY")
@@ -56,6 +82,7 @@ export default class Layout extends Component {
       recoverableSchedules,
       cancelSchedule,
       confirm,
+      person
     } = this.props
 
     return (
@@ -77,6 +104,28 @@ export default class Layout extends Component {
           </Right>
 
           <Left scroll={true} classes={["background--light-secondary"]} ref="container">
+
+
+              {(() => {
+                if (recoverableSchedules.length) {
+                  return (
+                    <div className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
+
+                      <div className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+                        <h4 className="text-light-primary soft-half-sides soft-half-bottom">Hey { person.nickName || person.firstName }!</h4>
+                        <h5 className="text-light-primary soft-half-sides soft-bottom">
+                           We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
+                        </h5>
+
+                        <Link to="/give/schedules/recover" className="btn--light">Transfer Schedules</Link>
+                      </div>
+
+                    </div>
+
+                  )
+                }
+              }())}
+
             <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
               <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
                 <div className="soft-double-ends@anchored">
@@ -87,84 +136,9 @@ export default class Layout extends Component {
 
             <div className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
               <h4 className="soft soft-double-ends text-center flush-bottom">
-                My Gifts
+                My Active Schedules
               </h4>
 
-              {(() => {
-                let count = 0
-                if (recoverableSchedules.length) {
-                  return (
-                    <div>
-                      {recoverableSchedules.map((schedule, i) => {
-                        count ++
-                        if (!schedule.details || !schedule.details[0].account) {
-                          return null
-                        }
-
-                        return (
-                          <div key={i} className="card">
-                            <div className="soft">
-                              <div className="grid " style={{verticalAlign: "middle"}} key={i}>
-
-                                <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
-                                  <h6 className="text-dark-tertiary push-half-bottom">
-                                    {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
-                                  </h6>
-                                  <h5 className="flush text-primary">
-                                    {schedule.details[0].account.name}
-                                  </h5>
-                                  <p className="flush soft-half-top text-dark-tertiary">
-                                    <small>
-                                      <em>
-                                        This began on {this.formatDate(schedule.start)}
-                                      </em>
-                                    </small>
-                                  </p>
-
-                                </div>
-
-                                <div className="grid__item one-third text-right" style={{verticalAlign: "middle"}}>
-                                  <div className="soft-half-right">
-                                    <h4 className="text-dark-tertiary flush">
-                                      {this.monentize(schedule.details[0].amount)}
-                                    </h4>
-                                  </div>
-
-                                </div>
-
-                              </div>
-                            </div>
-
-                            <div className="grid flush one-whole">
-                              <Confirm
-                                theme="soft h6 grid__item one-half background--primary text-light-primary"
-                                onClick={confirm}
-                                value={schedule.id}
-                                text="Transfer"
-                                hideCard={true}
-                                style={{margin: 0}}
-                              />
-                              <button className="hard grid__item one-half background--alert" onClick={cancelSchedule} data-id={schedule.id}>
-                                <h6 className="soft flush text-light-primary">Cancel</h6>
-                              </button>
-                            </div>
-
-
-                          </div>
-                        )
-                      })}
-                      <p className="soft text-center">
-                        <small>
-                          <em>
-                            The gifts above need recovering to continue. This may be because of a payment exipration, or this gift has not been reactived since we moved giving platforms.
-                          </em>
-                        </small>
-                      </p>
-                    </div>
-
-                  )
-                }
-              }())}
 
               {() => {
 
@@ -198,7 +172,7 @@ export default class Layout extends Component {
                       return (
                         <div key={i} className="soft card">
 
-                          <Link to={`/give/recurring/${schedule.id}`}>
+                          <Link to={`/give/schedules/${schedule.id}`}>
 
                             <div className="grid" style={{verticalAlign: "middle"}} key={i}>
 
@@ -243,7 +217,7 @@ export default class Layout extends Component {
                     <p className="soft text-center">
                       <small>
                         <em>
-                          Changes to schedules may take a few minutes to show changed here
+                          Changes to schedules may take a few minutes to be reflected here.
                         </em>
                       </small>
                     </p>

@@ -5,6 +5,7 @@ import { GraphQL } from "../../../../core/graphql"
 import { nav } from "../../../../core/store"
 import { Loading } from "../../../../core/components"
 
+import { collections as collectionActions } from "../../../../core/store"
 import { give as giveActions } from "../../../../give/store"
 
 import Layout from "./Layout"
@@ -57,7 +58,7 @@ export default class GiveNow extends Component {
     ))
 
     this.setState({ accounts: accounts })
-    this.props.dispatch(giveActions.clearAccount())
+    this.props.dispatch(collectionActions.delete("savedAccounts", Number(id)))
     Meteor.call("PaymentAccounts.remove", id, (err, response) => {
       console.log(err, response)
     })

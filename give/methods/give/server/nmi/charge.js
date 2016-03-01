@@ -51,7 +51,7 @@ const step1 = (token, callback) => {
     // will keep holds on peoples accounts even if the transacton failed.
     // Here we send a void for  any transactions with an AVS
     // mismatch IF there was a failure
-    console.log(data)
+    // console.log(data)
 
     if (data["result-code"] === "100") {
       callback(null, data)
@@ -60,7 +60,7 @@ const step1 = (token, callback) => {
 
     let number = Number(data["result-code"])
     let err;
-    
+
     // special mapping to ensure duplicates
     if (data["result-text"].indexOf("Duplicate") > -1) {
       number = 430

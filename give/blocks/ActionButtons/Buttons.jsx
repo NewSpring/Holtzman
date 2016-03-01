@@ -1,7 +1,7 @@
 
-const PrimaryButton = ({ disabled, classes, onClick, text, icon, value, style }) => (
+const PrimaryButton = ({ disabled, classes, onClick, text, icon, value, style, dataId }) => (
 
-  <button className={classes} onClick={onClick} disabled={disabled} value={value} style={style}>
+  <button className={classes} onClick={onClick} disabled={disabled} value={value} data-id={dataId} style={style}>
     {text} {icon}
   </button>
 
