@@ -39,7 +39,8 @@ export default class Layout extends Component {
         if (x.id === key) {
           return {
             id: key,
-            accountId: Number(value)
+            accountId: Number(value),
+            amount: amount
           }
         }
 
