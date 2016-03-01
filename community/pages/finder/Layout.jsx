@@ -21,7 +21,7 @@ const Layout = ({ classes, childClasses, photo, markers, children, right }) => (
 
       </Right>
 
-      <Left scroll={true} >
+      <Left scroll={true} classes={["background--light-primary"]}>
         {children}
       </Left>
 
