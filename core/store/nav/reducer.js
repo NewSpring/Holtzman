@@ -74,6 +74,9 @@ const links = {
     { id: 2, action: false, icon:"icon-like", isActive: (props) => props.liked },
     { id: 3, action: shareActions.share, icon:"icon-share" }
   ],
+  BASIC_CONTENT: [
+    { id: 1, action: back, icon:"icon-arrow-back" }
+  ],
   MODAL: [
     { id: 1, action: modalActions.hide, icon:"icon-close" }
   ]

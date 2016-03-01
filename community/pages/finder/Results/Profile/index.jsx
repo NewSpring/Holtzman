@@ -21,7 +21,7 @@ export default class Profile extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(navActions.setLevel("CONTENT"))
+    this.props.dispatch(navActions.setLevel("BASIC_CONTENT"))
   }
 
   getProfile = () => {
