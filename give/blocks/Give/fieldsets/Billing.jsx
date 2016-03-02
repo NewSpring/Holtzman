@@ -66,7 +66,7 @@ export default class Billing extends Component {
   }
 
   zip = (value) => {
-    let isValid = value.length === 5 ? true : false
+    let isValid = value.length >= 5 ? true : false
 
     if (!isValid ) {
       this.props.clear("zip")
