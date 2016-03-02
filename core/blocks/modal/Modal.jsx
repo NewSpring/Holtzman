@@ -6,6 +6,10 @@ import offsetStyles from "../nav/offset.css"
 
 export default class SideModal extends Component {
 
+  static contextTypes = {
+    shouldAnimate: PropTypes.bool
+  }
+
   static propTypes = {
     childClasses: PropTypes.array,
     float: PropTypes.bool,
@@ -128,7 +132,7 @@ export default class SideModal extends Component {
         <VelocityComponent
           animation={slide}
           duration={300}
-          runOnMount={true}
+          runOnMount={this.context.shouldAnimate}
         >
           <section
             className={ this.props.theme || this.layoutClasses() }
