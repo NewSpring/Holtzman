@@ -62,9 +62,9 @@ const Layout = ({ group, join, hash }, context) => {
         </div>
 
         <section className="grid hard flush">
-          <div className="grid__item push-double-top three-fifths@lap-wide-and-up one-whole">
-            <div className="push-double-top">
-              <div className="soft-left@lap-wide-and-up soft-left soft-double-bottom">
+          <div className="hard grid__item push-double-top three-fifths@lap-wide-and-up one-whole">
+            <div className="push-double-top push-half-top@handheld">
+              <div className="soft-left@lap-wide-and-up soft soft-double-bottom soft-half-bottom@handheld">
                 <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
                   <h7 className="text-dark-tertiary">Information</h7>
                   <h5 className="text-dark-tertiary soft-half-top flush-bottom">
