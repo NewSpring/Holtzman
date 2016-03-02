@@ -14,9 +14,9 @@ Meteor.methods({
     const payload = { query, variables, operationName };
     const f = new Future();
 
-    // let url = process.env.NODE_ENV === "production" ? "http://api.newspring.cc" : "http://localhost:8888"
+    let url = process.env.NODE_ENV === "production" ? "http://api.newspring.cc" : "http://localhost:8888"
     // let url = "http://api.newspring.cc"
-    let url = "http://localhost:8888"
+    // let url = "http://localhost:8888"
     fetch(url, {
         method: "POST",
         headers: {
