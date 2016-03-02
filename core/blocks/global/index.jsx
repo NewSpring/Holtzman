@@ -141,8 +141,22 @@ function prefillRedux(dispatch) {
 @connect()
 export default class Global extends Component {
 
+  state = {
+    shouldAnimate: false
+  }
+
+  static childContextTypes = {
+    shouldAnimate: PropTypes.bool
+  }
+
+  getChildContext() {
+    return {
+      shouldAnimate: this.state.shouldAnimate
+    }
+  }
 
   componentDidMount() {
+    this.setState({ shouldAnimate: true });
     const { dispatch } = this.props
     const user = Meteor.userId()
 
@@ -176,7 +190,6 @@ export default class Global extends Component {
       })
 
   }
-
 
   componentWillUnmount(){
     if (this.handle) {

@@ -14,6 +14,10 @@ import { Offline } from "../../components/status"
 
 export default class Layout extends Component {
 
+  static contextTypes = {
+    shouldAnimate: PropTypes.bool
+  }
+
   componentDidMount() {
     const container = ReactDom.findDOMNode(this.refs["container"])
     container.addEventListener("scroll", this.props.onScroll);
@@ -106,7 +110,7 @@ export default class Layout extends Component {
       <VelocityComponent
         animation={"transition.fadeIn"}
         duration={1000}
-        runOnMount={true}
+        runOnMount={this.context.shouldAnimate}
       >
         <Split nav={true} classes={["background--light-primary"]}>
           <Meta

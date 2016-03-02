@@ -12,6 +12,10 @@ import { AccountType } from "../../../components"
 
 export default class Layout extends Component {
 
+  static contextTypes = {
+    shouldAnimate: PropTypes.bool
+  }
+
   formatDate = (date) => {
     return Moment(date).format("MMM D, YYYY")
   }
@@ -50,7 +54,7 @@ export default class Layout extends Component {
       <VelocityComponent
         animation={"transition.fadeIn"}
         duration={500}
-        runOnMount={true}
+        runOnMount={this.context.shouldAnimate}
       >
         <Split nav={true} classes={["background--light-primary"]}>
 

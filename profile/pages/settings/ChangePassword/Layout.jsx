@@ -1,8 +1,7 @@
 import { Link } from "react-router"
 import { Forms } from "../../../../core/components"
-import { VelocityComponent } from "velocity-react"
 
-const Layout = ({ submit, save, state }) => (
+const Layout = ({ submit, save, state }, context) => (
   <div className="background--light-primary one-whole text-center push-double-top@lap-and-up locked-ends locked-sides push-double-bottom" style={{overflow: "visible"}}>
       <Forms.Form
         id="reset-password"

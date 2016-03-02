@@ -3,8 +3,6 @@ import { Link } from "react-router"
 
 import { Forms } from "../../../../core/components"
 
-import { VelocityComponent } from "velocity-react"
-
 export default class Layout extends Component {
   static propTypes = {
     home: PropTypes.object,

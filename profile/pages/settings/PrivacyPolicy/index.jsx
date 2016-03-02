@@ -4,11 +4,11 @@ import { connect } from "react-redux"
 import { nav } from "../../../../core/store"
 import { VelocityComponent } from "velocity-react"
 
-const PP = () => (
+const PP = (context) => (
   <VelocityComponent
     animation={"transition.fadeIn"}
     duration={500}
-    runOnMount={true}
+    runOnMount={context.shouldAnimate}
   >
   <div className="background--light-primary soft soft-double@lap-and-up push@lap-and-up push-double-bottom">
     <h1>
@@ -152,6 +152,8 @@ const PP = () => (
   </div>
 </VelocityComponent>
 )
+
+PP.contextTypes = { shouldAnimate: PropTypes.bool };
 
 @connect()
 export default class PrivacyPolicy extends Component {

@@ -27,6 +27,11 @@ import Styles from "./styles.css"
 
 
 export default class Layout extends Component {
+
+  static contextTypes = {
+    shouldAnimate: PropTypes.bool
+  }
+
   render () {
 
     let {
@@ -60,7 +65,7 @@ export default class Layout extends Component {
       <VelocityComponent
         animation={"transition.fadeIn"}
         duration={1000}
-        runOnMount={true}
+        runOnMount={this.context.shouldAnimate}
       >
         <div className="push-top@handheld soft-half-top@lap-and-up">
           <Forms.Form

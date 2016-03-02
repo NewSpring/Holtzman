@@ -5,7 +5,6 @@ import "./store"
 
 export default {
   path: "community",
-  component: Global,
   // indexRoute: { component: Home },
   childRoutes: Routes
 }
