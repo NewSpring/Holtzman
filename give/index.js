@@ -5,7 +5,6 @@ import "./store"
 
 export default {
   path: "give",
-  component: Global,
   onEnter: (_, replaceState) => {
     // @TODO turn offf once all of newspring.cc is moved over
     if (_.location.pathname === "/give") {

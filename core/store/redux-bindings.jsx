@@ -20,7 +20,7 @@ const createReduxStore = (initialState, history) => {
 
   if (initialState) {
     // bug with SSR
-    delete initialState.nav
+    // delete initialState.nav
   }
 
 

@@ -15,6 +15,10 @@ const map = (state) => ({
 @connect(map)
 export default class ListView extends Component {
 
+  static contextTypes = {
+    shouldAnimate: PropTypes.bool
+  }
+
   state = {
     showFilters: false
   }
@@ -63,7 +67,7 @@ export default class ListView extends Component {
       <VelocityComponent
         animation={"transition.fadeIn"}
         duration={500}
-        runOnMount={true}
+        runOnMount={this.context.shouldAnimate}
       >
         <div>
 

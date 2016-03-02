@@ -11,11 +11,11 @@ const Close = () => (
   </Link>
 )
 
-const Layout = ({ photo, person, children }) => (
+const Layout = ({ photo, person, children }, context) => (
   <VelocityComponent
     animation={"transition.fadeIn"}
     duration={500}
-    runOnMount={true}
+    runOnMount={context.shouldAnimate}
   >
     <Split nav={true} classes={["background--light-primary"]}>
 
@@ -55,5 +55,7 @@ Layout.propTypes = {
   photo: PropTypes.string,
   person: PropTypes.object
 }
+
+Layout.contextTypes = { shouldAnimate: PropTypes.bool };
 
 export default Layout

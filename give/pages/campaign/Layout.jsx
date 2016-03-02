@@ -1,16 +1,16 @@
-
+import { PropTypes } from "react"
 import Meta from "react-helmet"
 import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import AddToCart from "../../blocks/AddToCart"
 
-const Layout = ({ account }) => (
+const Layout = ({ account }, context) => (
 
   <VelocityComponent
     animation={"transition.fadeIn"}
     duration={1000}
-    runOnMount={true}
+    runOnMount={context.shouldAnimate}
   >
     <Split nav={true} classes={["background--light-primary"]}>
       <Meta
@@ -47,5 +47,7 @@ const Layout = ({ account }) => (
     </Split>
   </VelocityComponent>
 )
+
+Layout.contextTypes = { shouldAnimate: PropTypes.bool };
 
 export default Layout
