@@ -40,7 +40,6 @@ const NotFound = [
 ]
 
 const Routes = {
-  component: Global,
   childRoutes: [].concat(
     Util.Routes,
     // NotFound

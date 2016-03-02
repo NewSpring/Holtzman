@@ -12,11 +12,11 @@ const SettingsLink = () => (
   </Link>
 )
 
-const Layout = ({ photo, person, onToggle, content, onUpload }) => (
+const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
   <VelocityComponent
     animation={"transition.fadeIn"}
     duration={500}
-    runOnMount={true}
+    runOnMount={context.shouldAnimate}
   >
     <Split nav={true} classes={["background--light-primary"]}>
 
@@ -47,6 +47,7 @@ const Layout = ({ photo, person, onToggle, content, onUpload }) => (
       </Right>
 
       <Left scroll={true}>
+
         <Toggle items={["Likes", "Following"]} toggle={onToggle} />
 
         <div>
@@ -60,5 +61,6 @@ const Layout = ({ photo, person, onToggle, content, onUpload }) => (
   </VelocityComponent>
 )
 
+Layout.contextTypes = { shouldAnimate: PropTypes.bool };
 
 export default Layout

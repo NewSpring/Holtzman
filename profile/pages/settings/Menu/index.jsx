@@ -53,6 +53,10 @@ function updateUser(id, dispatch) {
 @connect()
 export default class Menu extends Component {
 
+  static contextTypes = {
+    shouldAnimate: PropTypes.bool
+  }
+
   state = {
     upload: "default"
   }
@@ -121,7 +125,7 @@ export default class Menu extends Component {
     <VelocityComponent
       animation={"transition.fadeIn"}
       duration={500}
-      runOnMount={true}
+      runOnMount={this.context.shouldAnimate}
     >
       <div className="locked-ends@lap-and-up locked-sides@lap-and-up background--light-secondary scrollable">
         <section className="hard ">

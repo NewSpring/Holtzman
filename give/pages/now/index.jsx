@@ -21,7 +21,6 @@ const map = (state) => ({ accounts: state.give.accounts })
 @ReactMixin.decorate(ReactMeteorData)
 class Template extends Component {
 
-
   static fetchData(getState, dispatch){
     return GraphQL.query(`
       {
