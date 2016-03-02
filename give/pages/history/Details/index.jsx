@@ -9,9 +9,10 @@ import Layout from "./Layout"
 
 
 function getTransaction(id, account, dispatch){
+  let mongoId = Meteor.userId()
   let query = `
     {
-      transaction: finanicalTransaction(id: ${id}) {
+      transaction: finanicalTransaction(id: ${id}, mongoId: "${mongoId}") {
         id
         date
         summary
