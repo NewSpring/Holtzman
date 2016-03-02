@@ -145,7 +145,6 @@ const createSchedule = (response, accountName, id) => {
 
     }
 
-
     if (response["merchant-defined-field-1"]) {
       let endpoint = parseEndpoint(`
         FinancialAccounts?

@@ -287,7 +287,12 @@ export default class Payment extends Component {
 
 
           {() => {
-            if (this.state.save) {
+            if (
+              this.state.save &&
+              this.props.savedAccount.id === null &&
+              this.props.transactionType != "guest" &&
+              Object.keys(this.props.schedules).length === 0
+            ) {
               return (
                 <Forms.Input
                   name="accountName"
