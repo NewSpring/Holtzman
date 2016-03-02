@@ -231,6 +231,30 @@ export default class Layout extends Component {
 
                 )
               }
+
+              return (
+                <div>
+                  <div className="background--light-primary soft-half soft-sides@portable soft-double-sides@anchored">
+                    <div className="soft-ends soft-double-ends@lap-and-up">
+                      <h4 className="soft-half-sides soft-half-bottom">Hey { person.nickName || person.firstName }!</h4>
+                      <h5 className="soft-half-sides">
+                         It doesn't look like you have any schedules to transfer from our previous system. Thats great! Scheduling your giving is a great way to making giving easy! To schedule a gift, click below.
+                      </h5>
+
+                      <Link to="/give/schedules" className="btn push-top">Create a Schedule</Link>
+
+                    </div>
+                  </div>
+                  <p className="soft-double-ends soft-sides soft-double-sides@lap-and-up text-center">
+                    <small>
+                      <em>
+                        If you think you should have a schedule that needs to be transferred, and don't see it here, please email us at <a href="mailto:finance@newspring.cc">finance@newspring.cc</a>
+                      </em>
+                    </small>
+                  </p>
+                </div>
+
+              )
             }())}
 
           </Left>

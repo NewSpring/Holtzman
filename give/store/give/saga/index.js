@@ -388,7 +388,10 @@ function* recoverTransactions(getStore) {
       return
     }
 
-    yield put(modalActions.render(RecoverSchedules))
+    if (Meteor.isClient) {
+      yield put(modalActions.render(RecoverSchedules))
+    }
+
 
   }
 
