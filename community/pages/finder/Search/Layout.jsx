@@ -6,11 +6,11 @@ import { VelocityComponent } from "velocity-react"
 import Split, { Left, Right } from "../../../../core/blocks/split"
 import { Forms } from "../../../../core/components"
 
-const Layout = ({ geocode, home, ready, save, states, showError, campuses }) => (
+const Layout = ({ geocode, home, ready, save, states, showError, campuses }, context) => (
   <VelocityComponent
     animation={"transition.fadeIn"}
     duration={500}
-    runOnMount={true}
+    runOnMount={context.shouldAnimate}
   >
     <Split nav={true}>
 
@@ -153,5 +153,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }) => 
   </VelocityComponent>
 
 )
+
+Layout.contextTypes = { shouldAnimate: PropTypes.bool };
 
 export default Layout

@@ -2,14 +2,14 @@ import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import { VelocityComponent } from "velocity-react"
 
-const Layout = ({ group, join, hash }) => {
+const Layout = ({ group, join, hash }, context) => {
 
   let leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"))
   return (
     <VelocityComponent
       animation={"transition.fadeIn"}
       duration={500}
-      runOnMount={true}
+      runOnMount={context.shouldAnimate}
     >
       <section className="background--light-primary hard@handheld hard@lap">
 
@@ -163,5 +163,6 @@ const Layout = ({ group, join, hash }) => {
   )
 }
 
+Layout.contextTypes = { shouldAnimate: PropTypes.bool };
 
 export default Layout

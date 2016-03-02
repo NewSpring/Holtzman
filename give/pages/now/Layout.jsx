@@ -10,12 +10,12 @@ import { Spinner } from "../../../core/components/loading"
 import { Offline } from "../../components/status"
 import AddToCart from "../../blocks/AddToCart"
 
-const Layout = ({ alive, accounts }) => (
+const Layout = ({ alive, accounts }, context) => (
 
   <VelocityComponent
     animation={"transition.fadeIn"}
     duration={1000}
-    runOnMount={true}
+    runOnMount={context.shouldAnimate}
   >
     <Split nav={true} classes={["background--light-primary"]}>
 
@@ -117,5 +117,7 @@ const Layout = ({ alive, accounts }) => (
     </Split>
   </VelocityComponent>
 )
+
+Layout.contextTypes = { shouldAnimate: PropTypes.bool };
 
 export default Layout

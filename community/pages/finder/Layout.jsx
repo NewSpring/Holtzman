@@ -3,11 +3,11 @@ import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 
-const Layout = ({ classes, childClasses, photo, markers, children, right }) => (
+const Layout = ({ classes, childClasses, photo, markers, children, right }, context) => (
   <VelocityComponent
     animation={"transition.fadeIn"}
     duration={500}
-    runOnMount={true}
+    runOnMount={context.shouldAnimate}
   >
     <Split nav={true}>
 
@@ -36,5 +36,7 @@ Layout.propTypes = {
   hash: PropTypes.string,
   markers: PropTypes.array,
 }
+
+Layout.contextTypes = { shouldAnimate: PropTypes.bool };
 
 export default Layout
