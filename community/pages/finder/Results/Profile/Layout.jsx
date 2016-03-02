@@ -11,9 +11,9 @@ const Layout = ({ group, join, hash }, context) => {
       duration={500}
       runOnMount={context.shouldAnimate}
     >
-      <section className="background--light-primary hard@handheld hard@lap">
+      <section className="background--light-primary hard">
 
-        <div className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--gradient push-double-bottom" style={{
+        <div className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--gradient" style={{
             overflow: "visible",
             backgroundImage: `url(${group.photo})`
           }}>
@@ -61,10 +61,10 @@ const Layout = ({ group, join, hash }, context) => {
           </div>
         </div>
 
-        <section className="hard-sides soft-double-ends">
-          <div className="grid">
-            <div className="grid__item three-fifths@lap-wide-and-up one-whole">
-              <div className="soft-double-left@lap-wide-and-up soft-left soft-double-bottom">
+        <section className="grid hard flush">
+          <div className="grid__item push-double-top three-fifths@lap-wide-and-up one-whole">
+            <div className="push-double-top">
+              <div className="soft-left@lap-wide-and-up soft-left soft-double-bottom">
                 <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
                   <h7 className="text-dark-tertiary">Information</h7>
                   <h5 className="text-dark-tertiary soft-half-top flush-bottom">
@@ -97,13 +97,22 @@ const Layout = ({ group, join, hash }, context) => {
                   </div>
 
                 </div>
+                <div className="one-whole text-center soft@handheld soft-sides">
+                  <Link to={`/community/finder/list/${hash}`} className="btn--small btn--dark-tertiary display-inline-block">
+                    View All Results
+                  </Link>
+                </div>
               </div>
 
             </div>
-            <div className="grid__item two-fifths@lap-wide-and-up one-whole">
+
+          </div>
+
+          <div className="grid__item soft-ends soft-right two-fifths@lap-wide-and-up one-whole background--light-secondary">
+            <div className="grid__item push-half-bottom hard">
 
               <div className="card outlined outlined--light">
-                <div className="card__item soft background--light-secondary">
+                <div className="card__item soft ">
                   <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
                     <h7 className="text-dark-tertiary">Time</h7>
                     <h5 className="text-dark-tertiary soft-half-top flush-bottom">
@@ -139,24 +148,29 @@ const Layout = ({ group, join, hash }, context) => {
 
               </div>
             </div>
-          </div>
-          <div className="one-whole text-center soft@handheld soft-sides">
-            <p>
-              <em>
-                <small>
-                  If you are the leader of this group, you can manage it <a target="_blank" href={`${Meteor.settings.public.rock.baseURL}groups/leader?GroupId=${group.id}`}>here.</a>
-                </small>
-              </em>
-            </p>
-          </div>
+            <div className="grid__item hard">
 
-          <div className="one-whole text-center soft@handheld soft-sides">
-            <Link to={`/community/finder/list/${hash}`} className="btn--small btn--dark-tertiary display-inline-block">
-              Back to List
-            </Link>
-          </div>
+              <div className="card outlined outlined--light">
+                <div className="card__item soft">
+                  <div className="one-whole text-center soft@handheld soft-sides">
+                    <p>
+                      <em>
+                        <small>
+                          If you are the leader of this group, you can manage it <a target="_blank" href={`${Meteor.settings.public.rock.baseURL}groups/leader?GroupId=${group.id}`}>here.</a>
+                        </small>
+                      </em>
+                    </p>
+                  </div>
 
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
         </section>
+
 
       </section>
     </VelocityComponent>
