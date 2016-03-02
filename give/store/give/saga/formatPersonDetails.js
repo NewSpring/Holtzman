@@ -63,6 +63,7 @@ const formatPersonDetails = (give, { campuses }) => {
 
       joinedData["start-date"] = schedule.start ? Moment(schedule.start).format("YYYYMMDD") : Moment().add(1, "days").format("YYYYMMDD")
       joinedData["merchant-defined-field-3"] = joinedData["start-date"]
+
       for (let transaction in transactions) {
         joinedData["merchant-defined-field-1"] = transaction
         break
@@ -90,7 +91,6 @@ const formatPersonDetails = (give, { campuses }) => {
     joinedData.savedAccount = savedAccount.id
     joinedData.savedAccountName = savedAccount.name
   }
-
 
   return joinedData
 }

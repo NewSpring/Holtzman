@@ -19,7 +19,8 @@ export default class CartContainer extends Component {
     fundId: false,
     fundLabel: null,
     frequency: null,
-    startDate: null
+    startDate: null,
+    amount: null,
   }
 
   componentWillMount(){
@@ -31,15 +32,16 @@ export default class CartContainer extends Component {
         this.setState({
           fundId: Number(existing.details[0].account.id),
           fundLabel: existing.details[0].account.name,
-          frequency: existing.frequency
+          frequency: existing.frequency,
+          amount:   Number(existing.details[0].amount.replace(/[^0-9\.]+/g, ''))
         })
 
-        if (existing.details[0].amount) {
-          this.props.addTransactions({ [Number(existing.details[0].account.id)]: {
-            value: Number(existing.details[0].amount.replace(/[^0-9\.]+/g, '')),
-            label: existing.details[0].account.name
-          }})
-        }
+        // if (existing.details[0].amount) {
+        //   this.props.addTransactions({ [Number(existing.details[0].account.id)]: {
+        //     value: Number(existing.details[0].amount.replace(/[^0-9\.]+/g, '')),
+        //     label: existing.details[0].account.name
+        //   }})
+        // }
 
       }
     }
@@ -103,10 +105,15 @@ export default class CartContainer extends Component {
 
     value = this.monentize(value)
 
-    this.props.addTransactions({ [id]: {
-      value: Number(value.replace(/[^0-9\.]+/g, '')),
-      label: name
-    }})
+    this.setState({
+      fundId: id,
+      fundLabel: name,
+      amount: Number(value.replace(/[^0-9\.]+/g, ''))
+    })
+    // this.props.addTransactions({ [id]: {
+    //   value: Number(value.replace(/[^0-9\.]+/g, '')),
+    //   label: name
+    // }})
 
     return value
   }
@@ -115,11 +122,17 @@ export default class CartContainer extends Component {
     const { id, name } = target
 
     value = this.monentize(value)
+    this.setState({
+      fundId: id,
+      fundLabel: name,
+      amount: Number(value.replace(/[^0-9\.]+/g, ''))
+    })
+    // console.log(id, target)
+    // this.props.addTransactions({ [id]: {
+    //   value: Number(value.replace(/[^0-9\.]+/g, '')),
+    //   label: name
+    // }})
 
-    this.props.addTransactions({ [id]: {
-      value: Number(value.replace(/[^0-9\.]+/g, '')),
-      label: name
-    }})
 
     return true
 
@@ -182,6 +195,12 @@ export default class CartContainer extends Component {
         start: this.state.startDate
       })
 
+      this.props.clearTransactions()
+      this.props.addTransactions({ [this.state.fundId]: {
+        value: Number(this.state.amount),
+        label: this.state.fundLabel,
+      }})
+
     }
 
     if (this.props.onClick) {
@@ -198,7 +217,7 @@ export default class CartContainer extends Component {
       return <Offline />
     }
 
-    const { total, transactions } = this.props.give
+    const { transactions } = this.props.give
 
     let schedules = [
       {
@@ -235,7 +254,7 @@ export default class CartContainer extends Component {
       return null
     }
 
-    const { fundId, fundLabel, startDate, frequency} = this.state
+    const { fundId, fundLabel, startDate, frequency } = this.state
 
     return (
       <Layout
@@ -247,7 +266,7 @@ export default class CartContainer extends Component {
         format={this.format}
         save={this.saveData}
         saveDate={this.saveDate}
-        total={total}
+        total={this.state.amount}
         existing={this.props.existing}
         date={this.state.startDate}
         text={this.props.text}
