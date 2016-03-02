@@ -140,20 +140,6 @@ const charge = (token, accountName) => {
     })
   }
 
-
-  if (user) {
-    Meteor.users.upsert(user._id,{
-      $set: {
-        "services.nmi": {
-          customerId: response["customer-id"]
-          // customerVaultId: response["customer-vault-id"],
-        }
-      }
-    }, () => {
-
-    })
-  }
-
   const returnReponse = _.pick(response,
     "avs-result", "order-id", "cvv-result", "result-code"
   )

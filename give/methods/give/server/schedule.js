@@ -47,7 +47,6 @@ import createSchedule from "./createSchedule"
 const schedule = (token, accountName, id) => {
 
   let response = {}
-  console.log(id)
   try {
     response = Meteor.wrapAsync(gatewaySchedule)(token)
     response = createSchedule(response, accountName, id)
@@ -73,7 +72,6 @@ const cancel = ({ id, gateway }) => {
     try {
       response = Meteor.wrapAsync(gatewayCancel)(gateway)
     } catch (e) {
-      console.log(e)
       throw new Meteor.Error(e.message ? e.message : e)
     }
   }
