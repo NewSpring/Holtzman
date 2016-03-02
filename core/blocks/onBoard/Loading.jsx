@@ -3,10 +3,10 @@ import { VelocityComponent } from "velocity-react"
 
 import { WindowLoading, Spinner } from "../../components/loading"
 
-const Loading = ({ account }) => (
+const Loading = ({ account }, context) => (
   <VelocityComponent
     animation={"transition.fadeIn"}
-    runOnMount={true}
+    runOnMount={context.shouldAnimate}
   >
     <WindowLoading classes={["background--primary"]}>
       <div className="locked-top locked-bottom one-whole floating">
@@ -37,6 +37,10 @@ Loading.propTypes = {
 
 Loading.defaultProps = {
   account: false
+}
+
+Loading.contextTypes = {
+  shouldAnimate: PropTypes.bool
 }
 
 export default Loading
