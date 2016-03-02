@@ -42,7 +42,7 @@ const NotFound = [
 const Routes = {
   childRoutes: [].concat(
     Util.Routes,
-    // NotFound
+    NotFound
   )
 }
 
