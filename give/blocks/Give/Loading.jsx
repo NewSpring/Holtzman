@@ -1,11 +1,11 @@
-
+import { PropTypes } from "react"
 import { VelocityComponent } from "velocity-react"
 import { WindowLoading, Spinner } from "../../../core/components/loading"
 
-const Loading = () => (
+const Loading = (context) => (
   <VelocityComponent
     animation={"transition.fadeIn"}
-    runOnMount={true}
+    runOnMount={context.shouldAnimate}
   >
     <WindowLoading classes={["background--primary"]}>
       <div className="soft soft-double-ends push-double-top one-whole text-center">
@@ -17,5 +17,9 @@ const Loading = () => (
     </WindowLoading>
   </VelocityComponent>
 )
+
+Loading.contextTypes = {
+  shouldAnimate: PropTypes.bool
+}
 
 export default Loading

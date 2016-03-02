@@ -1,7 +1,8 @@
+import { PropTypes } from "react"
 import { VelocityComponent } from "velocity-react"
 import { WindowLoading } from "../loading"
 
-const Err = ({msg, error, style}) => {
+const Err = ({msg, error, style}, context) => {
 
   if (typeof error != "string") {
     if (error.message) {
@@ -16,7 +17,7 @@ const Err = ({msg, error, style}) => {
   return (
     <VelocityComponent
       animation={"transition.fadeIn"}
-      runOnMount={true}
+      runOnMount={context.shouldAnimate}
     >
       <WindowLoading classes={["background--alert"]} styles={style}>
         <div className="locked-top locked-bottom one-whole floating">
@@ -29,6 +30,10 @@ const Err = ({msg, error, style}) => {
     </VelocityComponent>
   )
 
+}
+
+Err.contextTypes = {
+  shouldAnimate: PropTypes.bool
 }
 
 export default Err
