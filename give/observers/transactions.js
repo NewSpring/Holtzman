@@ -13,6 +13,25 @@ const transactions = () => {
 
         /*
 
+          This is a crude (but hopefully successful) way to
+          prevent a load balanced env from creating duplicated transactions
+
+        */
+        if (Transaction.__processing) {
+          return
+        }
+
+        TransactionReciepts.update(Transaction._id, {
+          $set: {
+            __processing: true
+          }
+        })
+
+        delete Transaction.__processing
+
+
+        /*
+
           1. Create person if they dont exist
           2. Create FinancialPaymentDetail
           3. Create Transaction

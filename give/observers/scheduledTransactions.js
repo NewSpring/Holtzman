@@ -11,6 +11,24 @@ const ScheduledTransactions = () => {
 
         /*
 
+          This is a crude (but hopefully successful) way to
+          prevent a load balanced env from creating duplicated transactions
+
+        */
+        if (ScheduledTransaction.__processing) {
+          return
+        }
+
+        ScheduledTransactionReciepts.update(ScheduledTransaction._id, {
+          $set: {
+            __processing: true
+          }
+        })
+
+        delete ScheduledTransaction.__processing
+
+        /*
+
           1. Create person if they dont exist
           2. Create FinancialPaymentDetail
           3. Create ScheduledTransaction
