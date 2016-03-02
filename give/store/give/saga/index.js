@@ -69,15 +69,16 @@ addSaga(function* chargeTransaction(getStore) {
       // get the token and name of the saved account
       let token = give.url.split("/").pop();
 
-      if (give.scheduleToRecover && Object.keys(give.schedules).length) {
-
+      if (Object.keys(give.schedules).length) {
         // if there is not a saved account, charge the order
         if (!formattedData.savedAccount) {
           action = schedule
         }
+      }
 
+
+      if (give.scheduleToRecover && Object.keys(give.schedules).length) {
         id = give.scheduleToRecover
-
       }
 
 
