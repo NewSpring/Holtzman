@@ -25,12 +25,11 @@ const Layout = ({ photo, person, children }, context) => (
       />
 
       <Right
-        mobile={false}
+        mobile={true}
         classes={["floating", "overlay--solid-dark"]}
         ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
         background={photo}
         blur={true}
-        outsideRatio={Close}
       >
         <div className="soft one-whole">
           <div
