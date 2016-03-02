@@ -12,6 +12,11 @@ const Root = ({ children }) => (
 
 export default {
   path: "profile",
+  onEnter: (_, replaceState) => {
+    if (_.location.pathname === "/profile" || _.location.pathname === "/profile/") {
+      window.location = "/profile/settings"
+    }
+  },
   component: Root,
   indexRoute: { component: Home },
   childRoutes: Routes

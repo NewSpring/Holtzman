@@ -63,9 +63,9 @@ const links = {
     {
       id: 4,
       label: "Profile",
-      link: "/profile",
+      link: "/profile/settings",
       icon: "icon-profile",
-      isActive: (props) => (isEqual("/profile") && !props.modal.visible)
+      isActive: (props) => (isEqual("/profile/settings") && !props.modal.visible)
     }
   ],
   CONTENT: [
