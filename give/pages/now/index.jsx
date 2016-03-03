@@ -31,10 +31,30 @@ class Template extends Component {
           summary
           image
           order
+          images {
+            fileName
+            fileType
+            fileLabel
+            s3
+            cloudfront
+          }
         }
       }
-    `).then(result => {
-      const obj = mapArrayToObj(result.accounts.filter((x) => (x.summary)))
+    `).then(({accounts}) => {
+      let accts = []
+      for (let account of accounts) {
+        account.formatedImage = {}
+        if (account.images && account.images.length) {
+          for (let image of account.images) {
+            let img = image.cloudfront ? image.cloudfront : image.s3
+            img || (img = account.image)
+            account.formatedImage[image.fileLabel] = img
+          }
+        }
+        accts.push(account)
+      }
+
+      const obj = mapArrayToObj(accts.filter((x) => (x.summary)))
       dispatch(giveActions.setAccounts(obj))
     })
   }
@@ -51,10 +71,30 @@ class Template extends Component {
           summary
           image
           order
+          images {
+            fileName
+            fileType
+            fileLabel
+            s3
+            cloudfront
+          }
         }
       }
     `).then(({accounts}) => {
-      const obj = mapArrayToObj(accounts.filter((x) => (x.summary)))
+      let accts = []
+      for (let account of accounts) {
+        account.formatedImage = {}
+        if (account.images && account.images.length) {
+          for (let image of account.images) {
+            let img = image.cloudfront ? image.cloudfront : image.s3
+            img || (img = account.image)
+            account.formatedImage[image.fileLabel] = img
+          }
+        }
+        accts.push(account)
+      }
+
+      const obj = mapArrayToObj(accts.filter((x) => (x.summary)))
       dispatch(giveActions.setAccounts(obj))
     })
 
@@ -84,7 +124,6 @@ class Template extends Component {
     for (let account in this.props.accounts) {
       accounts.push(this.props.accounts[account])
     }
-
     accounts = accounts.sort((a, b) => {
       a = a.order
       b = b.order
