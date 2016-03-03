@@ -14,7 +14,7 @@ export default {
   path: "profile",
   onEnter: (_, replaceState) => {
     if (_.location.pathname === "/profile" || _.location.pathname === "/profile/") {
-      window.location = "/profile/settings"
+      replaceState(null, "/profile/settings")
     }
   },
   component: Root,
