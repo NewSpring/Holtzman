@@ -23,7 +23,7 @@ if (typeof Accounts != "undefined") {
       RESET_EMAIL_ID,
       Number(Person.PrimaryAliasId),
       {
-        ResetPasswordUrl: `${ROOT_URL}_/reset-password/${token}`,
+        ResetPasswordUrl: `${ROOT_URL}/_/reset-password/${token}`,
         Person
       }
       , (err, response) => {}

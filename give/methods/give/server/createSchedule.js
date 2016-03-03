@@ -79,7 +79,7 @@ const createSchedule = (response, accountName, id) => {
 
   if (response.result === "1") {
 
-    if (!user.services || !user.services.rock) {
+    if (!user || !user.services || !user.services.rock) {
       user = { services: { rock: {} } }
     }
 
