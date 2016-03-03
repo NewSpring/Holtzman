@@ -5,6 +5,7 @@ import { GraphQL } from "../../graphql"
 import Nav from "../nav"
 import Modal from "../modal"
 import { People, Likes } from "../../collections"
+import Meta from "../../components/meta"
 
 import {
   onBoard as onBoardActions,
@@ -31,7 +32,9 @@ const App = ({ children, className }) => (
     "
   >
     <div className={className}>
+      <Meta />
       {children}
+
       <Nav />
       <Modal/>
       <Watermark />

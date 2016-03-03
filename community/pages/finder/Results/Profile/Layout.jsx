@@ -2,20 +2,25 @@ import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import { VelocityComponent } from "velocity-react"
 
+import Meta from "../../../../../core/components/meta"
+
 const Layout = ({ group, join, hash }, context) => {
 
   let leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"))
+  let photo = group.photo ? group.photo : "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png"
   return (
     <VelocityComponent
       animation={"transition.fadeIn"}
       duration={500}
       runOnMount={context.shouldAnimate}
     >
+      <Meta title={group.name} image={photo} description={group.description} />
+      
       <section className="background--light-secondary hard">
 
         <div className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--gradient" style={{
             overflow: "visible",
-            backgroundImage: `url(${group.photo ? group.photo : "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png"})`
+            backgroundImage: `url(${photo})`
           }}>
           <div className="ratio__item one-whole floating--bottom">
             <div className="floating__item text-left one-whole soft-double-sides soft-double-bottom">

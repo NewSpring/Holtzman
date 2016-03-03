@@ -5,6 +5,7 @@ import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../../core/blocks/split"
 import { Forms } from "../../../../core/components"
+import Meta from "../../../../core/components/meta"
 
 const Layout = ({ geocode, home, ready, save, states, showError, campuses }, context) => (
   <VelocityComponent
@@ -13,7 +14,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }, con
     runOnMount={context.shouldAnimate}
   >
     <Split nav={true}>
-
+      <Meta title="Group Finder" />
       <Right
         mobile={true}
         classes={["floating", "overlay--solid-dark"]}

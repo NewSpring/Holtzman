@@ -1,11 +1,11 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
-import Meta from "react-helmet"
 import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import SideBySide from "../../../core/components/cards/SideBySide"
 import { Spinner } from "../../../core/components/loading"
+import Meta from "../../../core/components/meta"
 
 import { Offline } from "../../components/status"
 import AddToCart from "../../blocks/AddToCart"
@@ -19,13 +19,10 @@ const Layout = ({ alive, accounts }, context) => (
   >
     <Split nav={true} classes={["background--light-primary"]}>
 
-      <Meta
-        title="Give"
-        titleTemplate="%s | NewSpring Church"
-      />
+      <Meta title="Give" image="//s3.amazonaws.com/ns.images/all/heroes/schedulegivingad_1x2.jpg" />
 
       <Right
-        background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"
+        background="//s3.amazonaws.com/ns.images/all/heroes/schedulegivingad_1x2.jpg"
         link="/give/schedules"
       >
       </Right>
