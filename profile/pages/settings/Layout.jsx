@@ -11,7 +11,7 @@ const Close = () => (
   </Link>
 )
 
-const Layout = ({ photo, person, children }, context) => (
+const Layout = ({ photo, person, children, mobile }, context) => (
   <VelocityComponent
     animation={"transition.fadeIn"}
     duration={500}
@@ -25,7 +25,7 @@ const Layout = ({ photo, person, children }, context) => (
       />
 
       <Right
-        mobile={true}
+        mobile={mobile}
         classes={["floating", "overlay--solid-dark"]}
         ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
         background={photo}
