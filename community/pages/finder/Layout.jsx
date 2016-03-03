@@ -2,6 +2,7 @@ import { PropTypes } from "react"
 import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
+import Meta from "../../../core/components/meta"
 
 const Layout = ({ classes, childClasses, photo, markers, children, right }, context) => (
   <VelocityComponent
@@ -10,7 +11,7 @@ const Layout = ({ classes, childClasses, photo, markers, children, right }, cont
     runOnMount={context.shouldAnimate}
   >
     <Split nav={true}>
-
+      <Meta title="Group Finder" />
       <Right
         mobile={true}
         classes={classes}

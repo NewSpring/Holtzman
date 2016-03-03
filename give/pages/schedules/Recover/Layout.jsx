@@ -1,7 +1,6 @@
 
 import { Component, PropTypes} from "react"
 import ReactDom from "react-dom"
-import Meta from "react-helmet"
 import Moment from "moment"
 import { VelocityComponent } from "velocity-react"
 import { Link } from "react-router"
@@ -10,6 +9,7 @@ import { Spinner } from "../../../../core/components/loading"
 import { Error as ErrIcon } from "../../../../core/components/icons"
 import AddSchedule from "../../../blocks/AddSchedule"
 import Split, { Left, Right } from "../../../../core/blocks/split"
+import Meta from "../../../../core/components/meta"
 
 import Confirm from "../../../blocks/ActionButtons"
 import { AccountType } from "../../../components"
@@ -106,10 +106,7 @@ export default class Layout extends Component {
       >
         <Split nav={true} classes={["background--light-primary"]}>
 
-          <Meta
-            title="Reccuring Giving"
-            titleTemplate="%s | NewSpring Church"
-          />
+          <Meta title="Transfer Your Gift" />
 
           <Right
             background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"

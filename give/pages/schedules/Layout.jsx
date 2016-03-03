@@ -1,13 +1,13 @@
 
 import { Component, PropTypes} from "react"
 import ReactDom from "react-dom"
-import Meta from "react-helmet"
 import Moment from "moment"
 import { VelocityComponent } from "velocity-react"
 import { Link } from "react-router"
 
 import { Spinner } from "../../../core/components/loading"
 import { Error as ErrIcon } from "../../../core/components/icons"
+import Meta from "../../../core/components"
 import AddSchedule from "../../blocks/AddSchedule"
 import Split, { Left, Right } from "../../../core/blocks/split"
 
@@ -89,6 +89,7 @@ export default class Layout extends Component {
       person
     } = this.props
 
+    let photo = "//s3.amazonaws.com/ns.images/all/heroes/schedulegivingad_1x2.jpg"
     return (
       <VelocityComponent
         animation={"transition.fadeIn"}
@@ -97,13 +98,10 @@ export default class Layout extends Component {
       >
         <Split nav={true} classes={["background--light-primary"]}>
 
-          <Meta
-            title="Reccuring Giving"
-            titleTemplate="%s | NewSpring Church"
-          />
+          <Meta title="Reccuring Giving" image={photo} />
 
           <Right
-            background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"
+            background={photo}
             mobile={false}>
           </Right>
 

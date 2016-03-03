@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { VelocityComponent } from "velocity-react"
 
 import { nav as navActions } from "../../../../../core/store"
+import Meta from "../../../../../core/components/meta"
 
 import List from "./List"
 import Filter from "./Filter"
@@ -69,6 +70,7 @@ export default class ListView extends Component {
         duration={500}
         runOnMount={this.context.shouldAnimate}
       >
+        <Meta title="Group Results" />
         <div>
 
           <List
