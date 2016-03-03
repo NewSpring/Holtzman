@@ -17,7 +17,7 @@ const Layout = ({ group, join, hash }, context) => {
             overflow: "visible",
             backgroundImage: `url(${group.photo ? group.photo : "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png"})`
           }}>
-          <div className="ratio__item one-whole floating--bottom">
+          <div className="soft-sides@anchored ratio__item one-whole floating--bottom">
             <div className="floating__item text-left one-whole soft-double-sides soft-double-bottom">
               <h3 className="text-light-primary push-half-bottom">{group.name}</h3>
               {() => {
@@ -45,7 +45,7 @@ const Layout = ({ group, join, hash }, context) => {
           </div>
         </div>
 
-        <div className="push-sides soft-double-top flush-top push-half-bottom card outlined outlined--light">
+        <div className="push-double-sides@anchored push-sides soft-double-top flush-ends card outlined outlined--light">
           <div className="card__item soft">
             <h7 className="text-dark-tertiary">
               <small>Group Leaders</small>
@@ -65,19 +65,18 @@ const Layout = ({ group, join, hash }, context) => {
           </div>
         </div>
 
-
-        <div className="push-sides flush-ends card outlined outlined--light">
-          <div className="grid card__item soft ">
-            <h5 className="flush-bottom push-half-bottom@handheld push-half-top grid__item one-half one-whole@handheld text-center@handheld text-dark-secondary">#TheseAreMyPeople</h5>
-            <div className="grid__item text-right@lap-and-up text-center one-whole one-half@lap-and-up">
-              <button className="flush-bottom push-half-bottom@handheld btn" onClick={join}>
-              Join Group
-              </button>
+        <section className="soft-double-sides@anchored soft-half-ends flush-sides">
+          <div className="card outlined outlined--light">
+            <div className="grid card__item soft ">
+              <h5 className="flush-bottom push-half-bottom@handheld push-half-top grid__item one-half one-whole@handheld text-center@handheld text-dark-secondary">#TheseAreMyPeople</h5>
+              <div className="grid__item text-right@lap-and-up text-center one-whole one-half@lap-and-up">
+                <button className="flush-bottom push-half-bottom@handheld btn" onClick={join}>
+                Join Group
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <section className="soft-half-ends flush-sides">
           <div className="card outlined outlined--light hard one-whole">
             <div className="card__item push-half-top@handheld">
               <div className="soft-left@lap-wide-and-up soft soft-double-bottom soft-half-bottom@handheld">
