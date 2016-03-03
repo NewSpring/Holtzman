@@ -127,31 +127,24 @@ export default class Menu extends Component {
       duration={500}
       runOnMount={this.context.shouldAnimate}
     >
-      <div className="locked-ends@lap-and-up locked-sides@lap-and-up background--light-secondary scrollable">
-        <section className="hard ">
-          <div className="soft text-center background--light-primary outlined--light outlined--bottom" style={{position: "relative"}}>
-            <h5 className="soft-left display-inline-block flush">Settings</h5>
-            <Link to="/profile" className="visuallyhidden@lap-and-up soft locked-top locked-right floating">
-              <h6 className="plain floating__item flush">Done</h6>
-            </Link>
-          </div>
-          <div className="outlined--light outlined--top one-whole push-top"></div>
-          <div className="background--light-primary outlined--light outlined--bottom text-dark-secondary">
+      <div className="background--light-secondary">
+        <section>
+          <div className="push-double-ends">
             <Link to="/profile/settings/personal-details" className="plain text-dark-secondary">
-              <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
-                <h6 className="soft-half-left flush display-inline-block">Personal Details</h6>
+              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+                <h6 className="soft-left flush display-inline-block">Personal Details</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
             <Link to="/profile/settings/home-address" className="plain text-dark-secondary">
-              <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
-                <h6 className="soft-half-left flush display-inline-block">My Address</h6>
+              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+                <h6 className="soft-left flush display-inline-block">My Address</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
             <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
-              <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
-                <h6 className="soft-half-left flush display-inline-block">Change Profile Photo</h6>
+              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+                <h6 className="soft-left flush display-inline-block">Change Profile Photo</h6>
                 {() => {
                   let icon = "icon-arrow-next"
                   switch (this.state.upload) {
@@ -175,50 +168,52 @@ export default class Menu extends Component {
               <input onChange={this.upload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
             </button>
             <Link to="/profile/settings/change-password" className="plain text-dark-secondary">
-              <div className="push-left soft-ends soft-right text-left">
-                <h6 className="soft-half-left flush display-inline-block">Change Password</h6>
+              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+                <h6 className="soft-left flush display-inline-block">Change Password</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
           </div>
-          <div className="outlined--light outlined--top one-whole push-top"></div>
-          <div className="background--light-primary outlined--light outlined--bottom text-dark-secondary">
+
+
+          <div className="push-double-ends">
             <Link to="/profile/settings/saved-accounts" className="plain text-dark-secondary">
-              <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
-                <h6 className="soft-half-left flush display-inline-block">Saved Accounts</h6>
+              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+                <h6 className="soft-left flush display-inline-block">Saved Accounts</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
             <Link to="/give/schedules" className="plain text-dark-secondary">
-              <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
-                <h6 className="soft-half-left flush display-inline-block">Scheduled Gifts</h6>
+              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+                <h6 className="soft-left flush display-inline-block">Scheduled Gifts</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
             <Link to="/give/history" className="plain text-dark-secondary">
-              <div className="push-left soft-ends soft-right text-left">
-                <h6 className="soft-half-left flush display-inline-block">Giving History</h6>
+              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+                <h6 className="soft-left flush display-inline-block">Giving History</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
           </div>
-          <div className="outlined--light outlined--top one-whole push-top"></div>
-          <div className="background--light-primary outlined--light outlined--bottom text-dark-secondary">
+
+          <div className="push-double-ends">
             <a onClick={this.onClick} href="//newspring.cc/about" target="_blank" className="plain text-dark-secondary">
-              <div className="push-left soft-ends soft-right text-left outlined--light outlined--bottom">
-                <h6 className="soft-half-left flush display-inline-block">About Us</h6>
+              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+                <h6 className="soft-left flush display-inline-block">About Us</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </a>
             <Link to="/profile/settings/privacy-policy" className="plain text-dark-secondary">
-              <div className="push-left soft-ends soft-right text-left">
-                <h6 className="soft-half-left flush display-inline-block">Privacy Policy</h6>
+              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+                <h6 className="soft-left flush display-inline-block">Privacy Policy</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
           </div>
-          <div className="one-whole ratio--landscape floating">
-            <button onClick={this.signout} className="h6 plain text-dark-secondary floating__item">Sign Out</button>
+
+          <div className="one-whole text-center">
+            <button onClick={this.signout} className="btn--dark-tertiary push-top soft-half-ends">Sign Out</button>
           </div>
         </section>
       </div>
@@ -227,3 +222,15 @@ export default class Menu extends Component {
     )
   }
 }
+
+
+// settings header
+// removed for now
+//
+// <div className="soft text-center background--light-primary outlined--light outlined--bottom" style={{position: "relative"}}>
+//   <h5 className="soft-left display-inline-block flush">Settings</h5>
+//   <Link to="/profile" className="visuallyhidden@lap-and-up soft locked-top locked-right floating">
+//     <h6 className="plain floating__item flush">Done</h6>
+//   </Link>
+// </div>
+// <div className="outlined--light outlined--top one-whole push-top"></div>
