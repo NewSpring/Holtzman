@@ -4,23 +4,23 @@ import { Routes } from "./pages"
 import "./store"
 
 export default {
-  path: "community",
+  path: "groups",
   // indexRoute: { component: Home },
   childRoutes: Routes
 }
 
 
 // export default {
-//   path: "community",
+//   path: "group",
 //   getComponent(location, cb) {
 //     if (Meteor.isClient) {
 //       // Split the code on a different file when on a client
 //       require.ensure([], require => {
 //         cb(null, require("./../core/blocks/global"))
-//       }, "community");
+//       }, "group");
 //     } else {
 //       // Save the chunk for server-rendering
-//       global.__CHUNK_COLLECTOR__.push("community");
+//       global.__CHUNK_COLLECTOR__.push("group");
 //       cb(null, require("./../core/blocks/global"));
 //     }
 //   },
@@ -47,10 +47,10 @@ export default {
 //       // Split the code on a different file when on a client
 //       require.ensure([], require => {
 //         cb(null, require("./routes"))
-//       }, "community");
+//       }, "group");
 //     } else {
 //       // Save the chunk for server-rendering
-//       global.__CHUNK_COLLECTOR__.push("community");
+//       global.__CHUNK_COLLECTOR__.push("group");
 //       cb(null, require("./routes"));
 //     }
 //   }
