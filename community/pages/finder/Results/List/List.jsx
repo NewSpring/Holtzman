@@ -48,7 +48,7 @@ const List = ({
             onMouseOver={onHover}
           >
             <SideBySide
-              image={{ url: group.photo }}
+              image={{ url: group.photo ? group.photo : "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png" }}
               left={["one-whole", "two-thirds@lap-and-up"]}
               right={["one-whole", "one-third@lap-and-up"]}
             >
