@@ -70,9 +70,9 @@ export default class ListView extends Component {
         duration={500}
         runOnMount={this.context.shouldAnimate}
       >
-        <Meta title="Group Results" />
-        <div>
 
+        <div>
+          <Meta title="Group Results" />
           <List
             groups={groups}
             onClick={onClick}
