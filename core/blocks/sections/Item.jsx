@@ -70,7 +70,7 @@ const Item = ({ section, go }) => {
 
 export default class SectionItem extends Component {
 
-  static PropTypes = {
+  static propTypes = {
     sections: PropTypes.array,
     hide: PropTypes.func.isRequired
   }
@@ -85,9 +85,25 @@ export default class SectionItem extends Component {
     for (let section of this.props.sections) {
       if (Number(section.id) === Number(id) && section.children.length) {
         e.preventDefault()
-        if (this.state.section != null && Number(section.id) === Number(id)) {
+
+        // if a section is open and a different section is clicked
+        // then change the opened section to the one clicked
+        if (this.state.section != null && Number(this.state.section.id) !== Number(id)) {
+          this.setState({ section: null });
+          setTimeout(() => {
+            this.setState({ section: section });
+          },400);
+        }
+
+        // if a section is open and that section is clicked
+        // then close the section clicked
+        else if (this.state.section != null && Number(section.id) === Number(id)) {
           this.setState({ section: null })
-        } else {
+        }
+
+        // else nothing is open
+        // and open the section clicked
+        else {
           this.setState({ section: section })
         }
 
