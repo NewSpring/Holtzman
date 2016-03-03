@@ -11,35 +11,19 @@ const Layout = ({ group, join, hash }, context) => {
       duration={500}
       runOnMount={context.shouldAnimate}
     >
-      <section className="background--light-primary hard">
+      <section className="background--light-secondary hard">
 
         <div className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--gradient" style={{
             overflow: "visible",
             backgroundImage: `url(${group.photo})`
           }}>
           <div className="ratio__item one-whole floating--bottom">
-            <div className="floating__item text-left one-whole soft-double-sides@lap-wide-and-up soft-sides soft-double-bottom">
+            <div className="floating__item text-left one-whole soft-double-sides soft-double-bottom">
               <h3 className="text-light-primary push-half-bottom">{group.name}</h3>
               {() => {
                 if (leaders.length) {
                   return (
                     <div>
-                      <h7 className="text-light-primary">
-                        <small>Group Leaders</small>
-                      </h7>
-                      <h6 className="text-light-primary">{
-                        leaders
-                          .map((x, i) => {
-                            let string = `${x.person.nickName || x.person.firstName} ${x.person.lastName}`
-
-                            if (leaders.length - 1 != i) {
-                              string += ", "
-                            }
-
-                            return <span key={i}>{string}</span>
-                          })
-                      }</h6>
-
                       <div className="locked">
                         {leaders.map((leader, i) => {
                           return (
@@ -61,10 +45,63 @@ const Layout = ({ group, join, hash }, context) => {
           </div>
         </div>
 
-        <section className="grid hard flush">
-          <div className="hard grid__item push-double-top three-fifths@lap-wide-and-up one-whole">
-            <div className="push-double-top push-half-top@handheld">
+        <div className="push-sides soft-double-top flush-top push-half-bottom card outlined outlined--light">
+          <div className="card__item soft">
+            <h7 className="text-dark-tertiary">
+              <small>Group Leaders</small>
+            </h7>
+            <h5 className="text-dark-tertiary soft-half-top">{
+              leaders
+                .map((x, i) => {
+                  let string = `${x.person.nickName || x.person.firstName} ${x.person.lastName}`
+
+                  if (leaders.length - 1 != i) {
+                    string += ", "
+                  }
+
+                  return <span key={i}>{string}</span>
+                })
+            }</h5>
+          </div>
+        </div>
+
+
+        <div className="push-sides flush-ends card outlined outlined--light">
+          <div className="grid card__item soft ">
+            <h5 className="flush-bottom push-half-bottom@handheld push-half-top grid__item one-half one-whole@handheld text-center@handheld text-dark-secondary">#TheseAreMyPeople</h5>
+            <div className="grid__item text-right@lap-and-up text-center one-whole one-half@lap-and-up">
+              <button className="flush-bottom push-half-bottom@handheld btn" onClick={join}>
+              Join Group
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <section className="soft-half-ends flush-sides">
+          <div className="card outlined outlined--light hard one-whole">
+            <div className="card__item push-half-top@handheld">
               <div className="soft-left@lap-wide-and-up soft soft-double-bottom soft-half-bottom@handheld">
+                <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
+                  <h7 className="text-dark-tertiary">Time</h7>
+                  <h5 className="text-dark-tertiary soft-half-top flush-bottom">
+                    {group.schedule.scheduleText}
+                  </h5>
+                </div>
+
+                {() => {
+                  if (group.locations && group.locations.length) {
+                    let loc = group.locations[0]
+                    return (
+                      <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
+                        <h7 className="text-dark-tertiary">Address {loc.location.distance ? `- ${loc.location.distance.toFixed(2)} miles away`: ""}</h7>
+                          <h5 className="text-dark-tertiary soft-half-top flush-bottom">
+                            {loc.location.city}, {loc.location.state}
+                          </h5>
+                      </div>
+                    )
+                  }
+                }()}
+
                 <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
                   <h7 className="text-dark-tertiary">Information</h7>
                   <h5 className="text-dark-tertiary soft-half-top flush-bottom">
@@ -97,61 +134,21 @@ const Layout = ({ group, join, hash }, context) => {
                   </div>
 
                 </div>
-                <div className="one-whole text-center soft@handheld soft-sides">
-                  <Link to={`/community/finder/list/${hash}`} className="btn--small btn--dark-tertiary display-inline-block">
-                    View All Results
-                  </Link>
-                </div>
+
               </div>
 
             </div>
 
           </div>
 
-          <div className="grid__item soft-ends soft-right two-fifths@lap-wide-and-up one-whole background--light-secondary">
-            <div className="grid__item push-half-bottom hard">
 
+
+
+
+
+            <div className="push-bottom hard">
               <div className="card outlined outlined--light">
-                <div className="card__item soft ">
-                  <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
-                    <h7 className="text-dark-tertiary">Time</h7>
-                    <h5 className="text-dark-tertiary soft-half-top flush-bottom">
-                      {group.schedule.scheduleText}
-                    </h5>
-                  </div>
-
-                  {() => {
-                    if (group.locations && group.locations.length) {
-                      let loc = group.locations[0]
-                      return (
-                        <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
-                          <h7 className="text-dark-tertiary">Address {loc.location.distance ? `- ${loc.location.distance.toFixed(2)} miles away`: ""}</h7>
-                            <h5 className="text-dark-tertiary soft-half-top flush-bottom">
-                              {loc.location.city}, {loc.location.state}
-                            </h5>
-                        </div>
-                      )
-                    }
-                  }()}
-
-
-                  <button className="one-whole btn" onClick={join}>
-                    Join Group
-                  </button>
-                  {/*
-                  <button className="underlined h7 text-dark-tertiary text-center one-whole soft-half-top">
-                    Contact for more details
-                  </button>
-                  */}
-                </div>
-
-
-              </div>
-            </div>
-            <div className="grid__item hard">
-
-              <div className="card outlined outlined--light">
-                <div className="card__item soft">
+                <div className="card__item soft soft-half-bottom">
                   <div className="one-whole text-center soft@handheld soft-sides">
                     <p>
                       <em>
@@ -163,12 +160,13 @@ const Layout = ({ group, join, hash }, context) => {
                   </div>
 
                 </div>
-
-
-
               </div>
             </div>
-          </div>
+            <div className="one-whole text-center soft@handheld soft-sides">
+              <Link to={`/community/finder/list/${hash}`} className="btn--small btn--dark-tertiary display-inline-block">
+                View All Results
+              </Link>
+            </div>
         </section>
 
 
