@@ -78,7 +78,7 @@ export default class Confirm extends Component {
     if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
       return (
         // replace with SVG
-        <AccountType width="30px" height="20px" type={savedAccount.payment.paymentType}/>
+        <AccountType width="30px" height="21px" type={savedAccount.payment.paymentType}/>
       )
     }
 
@@ -86,7 +86,7 @@ export default class Confirm extends Component {
 
     if (payment.type === "ach") {
       return (
-        <AccountType width="30px" height="20px" type="Bank"/>
+        <AccountType width="30px" height="21px" type="Bank"/>
       )
     }
 
@@ -115,7 +115,7 @@ export default class Confirm extends Component {
 
       return (
         // replace with SVG
-        <AccountType width="30px" height="20px" type={getCardType(masked)}/>
+        <AccountType width="30px" height="21px" type={getCardType(masked)}/>
       )
     }
 
@@ -386,7 +386,7 @@ export default class Confirm extends Component {
           </div>
 
 
-          <button className="btn one-whole" type="submit">
+          <button className="btn soft-half-top one-whole" type="submit">
             {this.buttonText()} {this.icon()}
           </button>
 
