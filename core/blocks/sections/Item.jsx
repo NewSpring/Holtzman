@@ -3,6 +3,39 @@ import { Link } from "react-router"
 
 import { VelocityTransitionGroup } from "velocity-react"
 
+
+const ChildItem = ({ section, go }) => {
+  if (!section) {
+    return (
+      <div className="one-whole grid__item">
+        <div className="rounded ratio--landscape">
+          <div className="ratio__item"></div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="one-whole soft-half-left grid__item push-half-bottom">
+      <Link
+        to={section.link}
+        className="plain"
+        onClick={go}
+      >
+        <div
+          id={section.id}
+          className="overlay--solid-medium background--fill background--dark-tertiary rounded ratio--thin floating--bottom floating--left"
+          style={{backgroundImage: `url(${section.image})`}}
+          >
+          <div className="overlay__item floating__item ratio__item">
+            <h6 className="text-light-primary soft-left">{section.text}</h6>
+          </div>
+        </div>
+      </Link>
+    </div>
+  )
+}
+
 const Item = ({ section, go }) => {
   if (!section) {
     return (
@@ -82,11 +115,11 @@ export default class SectionItem extends Component {
 
     return (
       <div className="soft-half-right soft-left soft-top background--dark-primary push-bottom">
-        <h4 className="soft-half-bottom text-light-primary text-center">{section.text}</h4>
+        {/* <h4 className="soft-half-bottom text-light-primary text-center">{section.text}</h4>*/}
         <div className="grid ">
 
           {children.map((sectionItem, i) => (
-            <Item section={sectionItem} key={i} go={this.expandOrGo} />
+            <ChildItem section={sectionItem} key={i} go={this.expandOrGo} />
           ))}
 
         </div>

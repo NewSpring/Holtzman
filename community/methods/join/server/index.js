@@ -17,7 +17,6 @@ Meteor.methods({
     let user = Meteor.user()
     user || (user = { services: { rock: {} }})
     const { PersonId, PrimaryAliasId } = user.services.rock
-    // 2300289
 
     // first time this is used, try to load the email in memory
     if (!GROUP_MEMBER_REQUEST_EMAIL && EMAIL_EXISTS) {
@@ -41,7 +40,7 @@ Meteor.methods({
 
 
     let GroupMemberId = api.post.sync(`GroupMembers`, GroupMember)
-
+    console.log(GroupMemberId, GroupMember)
     if (GroupMemberId.statusText) {
       // it could be that you are already a member of this group
       // lets check that
@@ -50,7 +49,7 @@ Meteor.methods({
         throw new Meteor.Error("You are already a member of this group")
       }
 
-      throw new Meteor.Error(GroupMemberId.statusText)
+      throw new Meteor.Error("There was an error joining this group")
     }
 
     /*
