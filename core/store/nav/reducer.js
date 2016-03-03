@@ -27,7 +27,7 @@ const isEqual = (path) => {
   return false
 }
 
-const links = {
+let links = {
   TOP:[
     {
       id: 1,
@@ -80,6 +80,16 @@ const links = {
   MODAL: [
     { id: 1, action: modalActions.hide, icon:"icon-close" }
   ]
+}
+
+// use basic nav for web right now
+if (!Meteor.isCordova) {
+  links = {
+    TOP: links.TOP,
+    CONTENT: links.TOP,
+    BASIC_CONTENT :links.TOP,
+    MODAL: links.MODAL
+  }
 }
 
 
