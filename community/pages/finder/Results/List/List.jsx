@@ -115,7 +115,7 @@ const List = ({
     </section>
     <section className="background--light-primary hard">
       <div className="one-whole text-center soft-double-top soft-bottom">
-        <Link to="/community/finder" className="btn--small btn--dark-tertiary display-inline-block">
+        <Link to="/groups/finder" className="btn--small btn--dark-tertiary display-inline-block">
           Search Again
         </Link>
       </div>

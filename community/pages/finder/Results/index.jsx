@@ -188,7 +188,7 @@ export default class ListContainer extends Component {
     let hash = this.props.params.hash ? this.props.params.hash : "all"
 
     this.props.dispatch(routeActions.push(
-      `/community/finder/list/${hash}/${id}`
+      `/groups/finder/list/${hash}/${id}`
     ))
     // for (let group in groups) {
     //   group = groups[group]
@@ -205,7 +205,7 @@ export default class ListContainer extends Component {
     this.setState({ active: marker.id })
     let hash = this.props.params.hash ? this.props.params.hash : "all"
     this.props.dispatch(routeActions.push(
-      `/community/finder/list/${hash}/${marker.id}`
+      `/groups/finder/list/${hash}/${marker.id}`
     ))
   }
 
