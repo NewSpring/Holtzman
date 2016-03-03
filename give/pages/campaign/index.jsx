@@ -22,12 +22,28 @@ function getAccounts(name, dispatch){
         id
         summary
         image
+        images {
+          fileName
+          fileType
+          fileLabel
+          s3
+          cloudfront
+        }
       }
     }
   `
 
   return GraphQL.query(query)
     .then(result => {
+
+      result.account.formatedImage = {}
+      if (account.images.length) {
+        for (let image of result.account.images) {
+          let img = image.cloudfront ? image.cloudfront : image.s3
+          img || (img = result.account.image)
+          result.account.formatedImage[image.fileLabel] = img
+        }
+      }
 
       let obj = { [result.account.id]: result.account }
 
@@ -71,7 +87,6 @@ export default class Template extends Component {
   componentDidMount(){
 
     const { dispatch } = this.props
-    const name =  decodeURI(this.props.params.name)
 
     return this.accounts(dispatch)
 
@@ -88,23 +103,49 @@ export default class Template extends Component {
     if (!account) {
       let query = `
         {
-          account: financialAccount(name: "${name}") {
+          act: financialAccount(name: "${name}") {
             description
             name
             id
             summary
             image
+            images {
+              fileName
+              fileType
+              fileLabel
+              s3
+              cloudfront
+            }
           }
         }
       `
 
       return GraphQL.query(query)
-        .then(result => {
+        .then(({ act }) => {
+          let accounts = [act]
+          let accts = []
+          for (let account of accounts) {
+            account.formatedImage = {}
+            if (account.images && account.images.length) {
+              for (let image of account.images) {
+                let img = image.cloudfront ? image.cloudfront : image.s3
+                img || (img = account.image)
+                account.formatedImage[image.fileLabel] = img
+              }
+            }
+            accts.push(account)
+          }
 
-          let obj = { [result.account.id]: result.account }
-
-          dispatch(giveActions.setAccounts(obj))
+          accts = accts.filter((x) => (x.summary))
+          const obj = accts[0]
+          dispatch(giveActions.setAccounts({
+            [obj.id]: obj
+          }))
         })
+        // .then(result => {
+        //   let obj = { [result.account.id]: result.account }
+        //   dispatch(giveActions.setAccounts(obj))
+        // })
     }
 
   }
@@ -113,7 +154,6 @@ export default class Template extends Component {
   render () {
 
     const account = getAccount(decodeURI(this.props.params.name), this.props.accounts)
-
     if (!account) {
       return <Loading/>
     }

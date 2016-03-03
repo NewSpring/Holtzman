@@ -21,8 +21,9 @@ const Layout = ({ account }, context) => (
           {"property": "og:type", "content": "article"}
         ]}
       />
-      <Right background={account.image} mobile={true}>
-      </Right>
+    
+      <Right background={account.formatedImage["2:1"] ? account.formatedImage["2:1"] : account.image } mobile={true} />
+      <Right background={account.formatedImage["1:2"] ? account.formatedImage["1:2"] : account.image } mobile={false} />
 
       <Left scroll={true} >
         <div className="constrain-copy soft@lap-and-up">

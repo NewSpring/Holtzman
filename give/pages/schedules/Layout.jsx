@@ -7,7 +7,7 @@ import { Link } from "react-router"
 
 import { Spinner } from "../../../core/components/loading"
 import { Error as ErrIcon } from "../../../core/components/icons"
-import Meta from "../../../core/components"
+import Meta from "../../../core/components/meta"
 import AddSchedule from "../../blocks/AddSchedule"
 import Split, { Left, Right } from "../../../core/blocks/split"
 
