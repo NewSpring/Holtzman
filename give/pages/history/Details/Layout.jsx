@@ -1,12 +1,12 @@
 import { Component, PropTypes} from "react"
 import Moment from "moment"
 import { Link } from "react-router"
-import Meta from "react-helmet"
 import { VelocityComponent } from "velocity-react"
 
 import { Spinner } from "../../../../core/components/loading"
 import Split, { Left, Right } from "../../../../core/blocks/split"
 import SideBySide from "../../../../core/components/cards/SideBySide"
+import Meta from "../../../../core/components/meta"
 
 import { AccountType } from "../../../components"
 
@@ -51,10 +51,7 @@ export default class Layout extends Component {
       >
         <Split nav={true} classes={["background--light-primary"]}>
 
-          <Meta
-            title="Giving History"
-            titleTemplate="%s | NewSpring Church"
-          />
+          <Meta title="Giving History" />
 
           <Right background="http://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
    mobile={false}>

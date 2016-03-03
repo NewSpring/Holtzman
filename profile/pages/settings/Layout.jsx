@@ -1,9 +1,9 @@
 import { PropTypes } from "react"
 import { Link } from "react-router"
-import Meta from "react-helmet"
 import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
+import Meta from "../../../core/components/meta"
 
 const Close = () => (
   <Link to="/profile" className="text-light-primary plain soft overlay__item locked-top locked-right">
@@ -20,8 +20,8 @@ const Layout = ({ photo, person, children }, context) => (
     <Split nav={true} classes={["background--light-primary"]}>
 
       <Meta
-        title={`${person.nickName} ${person.lastName}`}
-        titleTemplate="%s | NewSpring Church"
+        title={person ? `${person.nickName} ${person.lastName}` : "Profile"}
+        image={photo ? photo : null}
       />
 
       <Right

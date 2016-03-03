@@ -7,6 +7,7 @@ import Loading from "./loading"
 import Icons from "./icons"
 import States from "./states"
 import Transitions from "./transitions"
+import Meta from "./meta"
 
 export default {
   Card,
@@ -14,6 +15,7 @@ export default {
   Forms,
   Loading,
   // Map,
+  Meta,
   Icons,
   States,
   Transitions
