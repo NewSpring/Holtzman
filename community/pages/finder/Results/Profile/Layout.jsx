@@ -15,7 +15,7 @@ const Layout = ({ group, join, hash }, context) => {
 
         <div className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--gradient" style={{
             overflow: "visible",
-            backgroundImage: `url(${group.photo})`
+            backgroundImage: `url(${group.photo ? group.photo : "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png"})`
           }}>
           <div className="ratio__item one-whole floating--bottom">
             <div className="floating__item text-left one-whole soft-double-sides soft-double-bottom">
