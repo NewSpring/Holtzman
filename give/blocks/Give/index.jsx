@@ -264,7 +264,7 @@ export default class Give extends Component {
           <Forms.Form
             id="give"
             theme="hard"
-            fieldsetTheme="flush soft-top"
+            fieldsetTheme="flush soft-top scrollable soft-double-bottom"
             ref="form"
             method="POST"
             submit={this.onSubmit}
