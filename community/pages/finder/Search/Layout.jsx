@@ -21,7 +21,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }, con
         background="https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/fpo/fpo.groups-flipped_1700_850_90_c1.jpg"
       >
         <div className="soft one-whole">
-          <h4 className="text-light-primary soft-half-top flush-bottom">Community Finder</h4>
+          <h4 className="text-light-primary soft-half-top flush-bottom">Group Finder</h4>
           <p className="text-light-primary flush"><em>#TheseAreMyPeople</em></p>
         </div>
       </Right>
@@ -39,7 +39,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }, con
               <p>
                 <em>
                   <small>
-                    Search for communities near you
+                    Search for groups near you
                   </small>
                 </em>
               </p>

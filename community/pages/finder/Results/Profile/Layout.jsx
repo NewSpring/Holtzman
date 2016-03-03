@@ -163,7 +163,7 @@ const Layout = ({ group, join, hash }, context) => {
               </div>
             </div>
             <div className="one-whole text-center soft@handheld soft-sides">
-              <Link to={`/community/finder/list/${hash}`} className="btn--small btn--dark-tertiary display-inline-block">
+              <Link to={`/groups/finder/list/${hash}`} className="btn--small btn--dark-tertiary display-inline-block">
                 View All Results
               </Link>
             </div>
