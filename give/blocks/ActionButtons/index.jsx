@@ -187,11 +187,11 @@ export default class GiveNow extends Component {
       const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       if (detail.paymentType && detail.payment.paymentType === "ACH") {
         return (
-          <AccountType width="30px" height="20px" type="Bank"/>
+          <AccountType width="30px" height="21px" type="Bank"/>
         )
       } else if (detail.payment.paymentType) {
         return (
-          <AccountType width="30px" height="20px" type={detail.payment.paymentType} />
+          <AccountType width="30px" height="21px" type={detail.payment.paymentType} />
         )
       }
 
