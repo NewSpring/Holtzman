@@ -1,8 +1,8 @@
 import { PropTypes } from "react"
-import Meta from "react-helmet"
 import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
+import Meta from "../../../core/components/meta"
 import AddToCart from "../../blocks/AddToCart"
 
 const Layout = ({ account }, context) => (
@@ -15,10 +15,10 @@ const Layout = ({ account }, context) => (
     <Split nav={true} classes={["background--light-primary"]}>
       <Meta
         title={account.name}
-        titleTemplate="%s | NewSpring Church"
+        description={account.summary}
+        image={account.image}
         meta={[
-            {"name": "description", "content": account.summary},
-            {"property": "og:type", "content": "article"}
+          {"property": "og:type", "content": "article"}
         ]}
       />
       <Right background={account.image} mobile={true}>
