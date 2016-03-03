@@ -21,17 +21,27 @@ const List = ({
     <section className="background--light-secondary soft-double-sides@lap-and-up hard-bottom">
 
       <div className="display-inline-block soft-ends one-whole">
-        <h5 className="text-dark-tertiary display-inline-block">
-          {/*{groups.length} Result{groups.length != 1 ? "s" : ""} near your address */}
-          {count} Result{count != 1 ? "s" : ""} near your address
-        </h5>
+        <div className="display-inline-block soft-bottom">
+          <Link to="/groups/finder" className="h7 text-dark-tertiary display-inline-block" style={{
+              textDecoration: "underline"
+            }}>
+            Search Again
+          </Link>
+        </div>
+
         <button className="display-inline-block h7 text-dark-tertiary float-right" onClick={showFilters} style={{
             textDecoration: "underline",
             marginTop: "6px"
         }}>
           {!filter ? "Filter Results" : "Close Filter"}
         </button>
+
+        <h5 className="text-dark-tertiary">
+          {/*{groups.length} Result{groups.length != 1 ? "s" : ""} near your address */}
+          {count} Result{count != 1 ? "s" : ""} near your address
+        </h5>
       </div>
+
     </section>
     {children}
     <section className="background--light-secondary soft-double-sides@lap-and-up">
@@ -88,7 +98,7 @@ const List = ({
 
       <div className="one-whole text-center soft-double-top soft-bottom">
         {() => {
-          let btnClasses = ["btn", "one-whole@handheld", "push-bottom"];
+          let btnClasses = ["btn--dark-tertiary", "one-whole@handheld", "push-bottom"];
 
           if (done) {
             return (
@@ -106,20 +116,13 @@ const List = ({
           }
           return (
             <button className={btnClasses.join(" ")} onClick={showMore}>
-              Show More
+              Load More Results
             </button>
           )
         }()}
       </div>
+    </section>
 
-    </section>
-    <section className="background--light-primary hard">
-      <div className="one-whole text-center soft-double-top soft-bottom">
-        <Link to="/groups/finder" className="btn--small btn--dark-tertiary display-inline-block">
-          Search Again
-        </Link>
-      </div>
-    </section>
   </div>
 )
 
