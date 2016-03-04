@@ -54,7 +54,7 @@ function getUser(id, dispatch) {
         birthDay
         birthMonth
         birthYear
-        campus {
+        campus(cache: false) {
           name
           shortCode
           id
