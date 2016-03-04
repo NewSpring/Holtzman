@@ -100,6 +100,7 @@ export default class CartContainer extends Component {
   }
 
   preFillValue = (id) => {
+    return
     const { total, transactions } = this.props.give
 
     if (transactions[id] && transactions[id].value) {

@@ -22,6 +22,9 @@ export default class Layout extends Component {
 
   update = (key, value, amount) => {
 
+    console.log("instances", this.state.instances);
+    console.log(key, value, amount);
+
     const getInstance = (id) => {
       let instance = this.state.instances.filter((x) => {
         return x.id === key
@@ -33,7 +36,7 @@ export default class Layout extends Component {
     let instance = getInstance()
 
     if (instance) {
-
+      console.log("found instance");
       let current = [...this.state.instances]
       let updated = current.map((x) => {
         if (x.id === key) {
@@ -53,12 +56,20 @@ export default class Layout extends Component {
       })
 
     } else {
+      console.log("did not find instance", key);
+      console.log({
+        SubFundInstances: this.state.SubFundInstances + 1,
+        instances: [...this.state.instances, ...[
+          { id: key, accountId: Number(value), amount: amount }
+        ]]
+      });
       this.setState({
         SubFundInstances: this.state.SubFundInstances + 1,
         instances: [...this.state.instances, ...[
           { id: key, accountId: Number(value), amount: amount }
         ]]
       })
+      console.log(this.state);
     }
 
   }
@@ -116,6 +127,8 @@ export default class Layout extends Component {
     }
 
     // console.log(this.state.instances.length, accountsCount.length)
+    const j = this.state.instances;
+    console.log("rendering", j)
 
     return (
       <div className="push-top@handheld soft-half-top@lap-and-up">
@@ -134,6 +147,8 @@ export default class Layout extends Component {
               if (existingInstance) {
                 selectVal = existingInstance.accountId;
                 inputVal = existingInstance.amount;
+
+                console.log(selectVal, inputVal);
               }
 
               let instanceAccounts = this.state.instances.map((x) => {
@@ -153,6 +168,8 @@ export default class Layout extends Component {
                 return instanceAccounts.indexOf(x.value) === -1
               })
 
+              console.log(copiedAccounts);
+
               if (key === 0) {
                 return (
                   <SubFund
@@ -164,6 +181,8 @@ export default class Layout extends Component {
                     remove={this.remove}
                     instance={key}
                     donate={donate}
+                    selectVal={selectVal}
+                    inputVal={inputVal}
                   />
                 )
               }
