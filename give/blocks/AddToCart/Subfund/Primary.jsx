@@ -38,7 +38,6 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format, donate, 
             inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
             placeholder="select fund"
             onChange={saveFund}
-            defaultValue={accounts[0].value}
             selected={selectVal}
           />
         )
