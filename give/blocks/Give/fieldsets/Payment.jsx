@@ -136,8 +136,6 @@ export default class Payment extends Component {
 
     if (isValid) {
       this.props.save({ payment: { [id]: value }})
-    } else {
-      this.props.clear("payment", id)
     }
 
   }

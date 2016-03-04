@@ -27,6 +27,7 @@ const map = (state) => ({
   person: state.onBoard.person,
   campuses: state.campuses.campuses,
   states: state.collections.states,
+  countries: state.collections.countries,
   savedAccounts: state.collections.savedAccounts
 })
 
@@ -64,19 +65,18 @@ export default class Give extends Component {
           value
           id
         }
+        countries: allDefinedValues(id: 45) {
+          name: description
+          value
+          id
+        }
       }
     `
 
     GraphQL.query(query)
-      .then(({ states }) => {
-        let stateObj = {}
-
-        for (let state of states) {
-          stateObj[state.id] = state
-        }
-
-        dispatch(collectionActions.insert("states", stateObj))
-
+      .then(({ states, countries }) => {
+        dispatch(collectionActions.insert("states", states, "id"))
+        dispatch(collectionActions.upsertBatch("countries", countries, "id"))
       })
   }
 
@@ -100,7 +100,8 @@ export default class Give extends Component {
         streetAddress2: home.street2,
         city: home.city,
         state: home.state,
-        zip: home.zip
+        zip: home.zip,
+        country: home.country
       }
     }
 
@@ -226,6 +227,17 @@ export default class Give extends Component {
     }))
 
 
+    let countries = []
+    for (let country in this.props.countries) {
+      countries.push(this.props.countries[country])
+    }
+
+    countries = countries.map((x) => ({
+      label: x.name,
+      value: x.value
+    }))
+
+
     let save = (...args) => { this.props.dispatch(giveActions.save(...args)) }
     let clear = (...args) => { this.props.dispatch(giveActions.clear(...args)) }
 
@@ -284,6 +296,7 @@ export default class Give extends Component {
               total={total}
               campuses={campuses}
               states={states}
+              countries={countries}
               schedules={schedules}
               goToStepOne={this.goToStepOne}
               savedAccounts={savedAccounts}
