@@ -14,9 +14,10 @@ const Layout = ({ group, join, hash }, context) => {
       duration={500}
       runOnMount={context.shouldAnimate}
     >
-      <Meta title={group.name} image={photo} description={group.description} />
-      
+
+
       <section className="background--light-secondary hard">
+        <Meta title={group.name} image={photo} description={group.description} />
 
         <div className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--gradient" style={{
             overflow: "visible",
