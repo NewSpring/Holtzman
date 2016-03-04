@@ -172,7 +172,8 @@ export default class Select extends Component {
           disabled={this.disabled()}
           onFocus={this.focus}
           onChange={this.change}
-          defaultValue={this.props.defaultValue || this.props.selected}
+          defaultValue={this.props.defaultValue}
+          value={this.props.selected}
 
         >
           {() => {
