@@ -79,7 +79,8 @@ const initial = {
       streetAddress2: null, // String
       city: null, // String
       state: null, // String
-      zip: null // Number
+      zip: null, // Number
+      country: null, // String
     },
     payment: {
       name: null,
@@ -130,8 +131,8 @@ export default createReducer(initial, {
 
     return { ...state, ...{
       data: { ...state.data, ...{
-        [state.data[action.level]]: { ...state.data[action.level], ...{
-          [state.data[action.level][action.feild]]: null
+        [action.level]: { ...state.data[action.level], ...{
+          [action.field]: null
         } }
       } }
     } }
