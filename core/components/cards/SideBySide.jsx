@@ -26,7 +26,6 @@ export default class Card extends Component {
       "card__item",
       "soft",
       "text-left",
-      "soft-double-ends@lap",
       "soft-double@anchored",
       "one-whole",
       "three-fifths@lap-wide",
