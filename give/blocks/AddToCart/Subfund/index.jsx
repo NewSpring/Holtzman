@@ -181,6 +181,7 @@ export default class SubFund extends Component {
 
       */
 
+     console.log("selectVal", this.props.selectVal);
       return (
         <Primary
           classes={this.statusClass()}
