@@ -6,6 +6,7 @@ import signup from "./signup"
 import reset from "./resetPassword"
 import update from "./update"
 import updateHome from "./updateHome"
+import forceReset from "./forceReset"
 
 export default {
   available,
@@ -13,5 +14,6 @@ export default {
   signup,
   reset,
   update,
-  updateHome
+  updateHome,
+  forceReset,
 }

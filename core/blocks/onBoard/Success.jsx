@@ -10,13 +10,12 @@ const Success = ({ person, onExit }) => (
     </h4>
 
     <p className="text-left">
-      <strong>@TODO MARKETING TEXT NEEDED</strong><br/>
       Congratulations on setting up your NewSpring account!
       This account will help us to serve you better in your walk with Jesus.
-      To help us make sure the information we have is accurate and up to date, we would love it if you would complete your profile.
+      To help us make sure the information we have is accurate and up to date, we would love if you could complete your profile.
     </p>
 
-    <Link to="/profile/settings/" className="one-whole btn push-ends" >
+    <Link to="/profile/settings/personal-details" className="one-whole btn push-ends" >
       Complete Profile Now
     </Link>
 
