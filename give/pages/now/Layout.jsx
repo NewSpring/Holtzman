@@ -83,7 +83,7 @@ const Layout = ({ alive, accounts }, context) => (
                   <SideBySide
                     link={`/give/campaign/${encodeURI(account.name)}`}
                     image={{
-                      url: account.formatedImage["1:1"] ? account.formatedImage["1:1"] : account.image
+                      url: account.formatedImage && account.formatedImage["1:1"] ? account.formatedImage["1:1"] : account.image
                     }}
                     mobile={false}
                   >
