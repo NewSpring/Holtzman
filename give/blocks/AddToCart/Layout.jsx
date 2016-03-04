@@ -22,6 +22,8 @@ export default class Layout extends Component {
 
   update = (key, value, amount) => {
 
+    console.log("update", key, value, amount);
+
     const getInstance = (id) => {
       let instance = this.state.instances.filter((x) => {
         return x.id === key
