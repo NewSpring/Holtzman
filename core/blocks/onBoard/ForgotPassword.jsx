@@ -3,7 +3,7 @@ import { Controls, Forms } from "../../components"
 import { Error, Loading, Success } from "../../components/states"
 
 import Validate from "../../util/validate"
-
+import { forceReset } from "../../methods/auth/client"
 import { routeActions } from "../../store/routing"
 
 class ForgotPassword extends React.Component {
@@ -48,6 +48,31 @@ class ForgotPassword extends React.Component {
       email: this.props.email
     }, (err, response) => {
       if (err) {
+        if (err.error === 403) {
+          // this user may exist in Rock but not in Apollos
+          // we fire a server side check with Rock then on the server
+          // we create a user (if they exist in Rock) and email them the reciept
+          forceReset(this.props.email, (err, response) => {
+
+            if (err) {
+              this.setState({ state: "error", err: err.message })
+              setTimeout(() => {
+                this.setState({ state: "default"})
+              }, 3000)
+              return
+            }
+            
+            this.setState({ state: "success" })
+
+            setTimeout(() => {
+              this.setState({ state: "default"})
+              this.props.back()
+
+            }, 3000)
+          })
+
+          return
+        }
         this.setState({ state: "error", err: err.message })
         setTimeout(() => {
           this.setState({ state: "default"})
