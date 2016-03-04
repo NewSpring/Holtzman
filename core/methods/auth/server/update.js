@@ -24,7 +24,6 @@ Meteor.methods({
     }
 
     let result;
-    for
     try {
       result = api.patch.sync(`People/${user.services.rock.PersonId}`, Person)
       let group = api.get.sync(`Groups/GetFamilies/${user.services.rock.PersonId}?$select=Id`)
