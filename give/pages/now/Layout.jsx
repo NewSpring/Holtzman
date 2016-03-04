@@ -19,10 +19,10 @@ const Layout = ({ alive, accounts }, context) => (
   >
     <Split nav={true} classes={["background--light-primary"]}>
 
-      <Meta title="Give" image="//s3.amazonaws.com/ns.images/all/heroes/schedulegivingad_1x2.jpg" />
+      <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/schedulegivingad_1x2.jpg" />
 
       <Right
-        background="//s3.amazonaws.com/ns.images/all/heroes/schedulegivingad_1x2.jpg"
+        background="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
         link="/give/schedules"
       >
       </Right>

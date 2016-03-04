@@ -89,7 +89,7 @@ export default class Layout extends Component {
       person
     } = this.props
 
-    let photo = "//s3.amazonaws.com/ns.images/all/heroes/schedulegivingad_1x2.jpg"
+    let photo = "//s3.amazonaws.com/ns.assets/apollos/schedulegivingad_1x2.jpg"
     return (
       <VelocityComponent
         animation={"transition.fadeIn"}
