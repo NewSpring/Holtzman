@@ -28,7 +28,7 @@ Meteor.methods({
       result = api.patch.sync(`People/${user.services.rock.PersonId}`, Person)
       let group = api.get.sync(`Groups/GetFamilies/${user.services.rock.PersonId}?$select=Id`)
 
-      if (group && group.length && group.length[0] && group.length[0].Id) {
+      if (group && group.length && group[0] && group[0].Id) {
         result = api.patch.sync(`Groups/${group[0].Id}`, { CampusId: Campus })
       }
 
