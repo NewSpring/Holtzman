@@ -28,7 +28,7 @@ export default class Billing extends Component {
     const isValid = value.length ? true : false
 
     if (!isValid ) {
-      this.props.clear("streetAddress")
+      this.props.clear("billing", "streetAddress")
     } else {
       this.props.save({ billing: { streetAddress: value }})
     }
@@ -42,44 +42,55 @@ export default class Billing extends Component {
   }
 
   saveState = (value) => {
+    // we can't require city for international giving
+
+    if (!value.length) {
+      this.props.clear("billing", "state")
+    } else {
+      this.props.save({ billing: { state: value }})
+    }
+
+    return true
+  }
+
+  saveCountry = (value) => {
     const isValid = value.length ? true : false
 
     if (!isValid ) {
-      this.props.clear("state")
+      this.props.clear("billing", "country")
     } else {
-      this.props.save({ billing: { state: value }})
+      this.props.save({ billing: { country: value }})
     }
 
     return isValid
   }
 
   city = (value) => {
-    const isValid = value.length ? true : false
 
-    if (!isValid ) {
-      this.props.clear("city")
+    if (!value.length) {
+      this.props.clear("billing", "city")
     } else {
       this.props.save({ billing: { city: value }})
     }
 
-    return isValid
+    return value.length ? true : false
   }
 
   zip = (value) => {
-    let isValid = value.length >= 5 ? true : false
 
-    if (!isValid ) {
-      this.props.clear("zip")
+    // we can't require zip for international giving
+    if (!value.length ) {
+      this.props.clear("billing", "zip")
     } else {
       this.props.save({ billing: { zip: value }})
     }
 
-    return isValid
+    return true
   }
 
   render () {
     const { billing } = this.props.data
-    const { states } = this.props
+    const { states, countries } = this.props
     return (
       <div>
         <div className="push-double@lap-and-up push">
@@ -108,6 +119,16 @@ export default class Billing extends Component {
             ref="streetAddress2"
           />
 
+          <Forms.Select
+            name="country"
+            label="Country"
+            errorText="Please enter your country"
+            defaultValue={billing.country ? billing.country : "US"}
+            items={countries}
+            validation={this.saveCountry}
+            ref="country"
+            includeBlank={true}
+          />
 
           <Forms.Input
             name="city"
@@ -121,16 +142,35 @@ export default class Billing extends Component {
           <div className="grid">
 
             <div className="grid__item one-half">
-              <Forms.Select
-                name="state"
-                label="State/Territory"
-                errorText="Please enter your state"
-                defaultValue={billing.state}
-                items={states}
-                validation={this.saveState}
-                ref="state"
-                includeBlank={true}
-              />
+              {() => {
+                if (!billing.country || billing.country === "US" || billing.country === "CA") {
+                  return (
+                    <Forms.Select
+                      name="state"
+                      label="State/Territory"
+                      errorText="Please enter your state"
+                      defaultValue={billing.state ? billing.state : "SC"}
+                      items={states}
+                      validation={this.saveState}
+                      ref="state"
+                      includeBlank={true}
+                    />
+                  )
+                }
+
+                return (
+                  <Forms.Input
+                    name="state"
+                    label="State/Territory"
+                    errorText="Please enter your state"
+                    defaultValue={billing.state}
+                    validation={this.saveState}
+                    ref="state"
+                  />
+                )
+
+              }()}
+
 
             </div>
             <div className="grid__item one-half">
@@ -161,7 +201,7 @@ export default class Billing extends Component {
             const { billing } = this.props.data
             let btnClasses = ["push-left"];
 
-            if (!billing.streetAddress || !billing.city || !billing.state || !billing.zip){
+            if (!billing.streetAddress || !billing.city ){
               btnClasses.push("btn--disabled");
             } else {
               btnClasses.push("btn");
