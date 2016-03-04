@@ -43,6 +43,12 @@ export default class Input extends Component {
 
     }, 20)
 
+    // set value on re-render
+    if (this.props.value) {
+      console.log("did mount", this.props.value);
+      this.setValue(this.props.value);
+    }
+
   }
 
   componentWillUpdate(nextProps){
@@ -69,9 +75,13 @@ export default class Input extends Component {
       const newValue = this.props.format(value, target, e);
       target.value = newValue;
 
+      console.log(target);
+      console.log(target.value);
+
     }
 
     if (this.props.onChange && typeof(this.props.onChange) === "function" ) {
+      console.log("on change");
       this.props.onChange(target.value, target, e)
     }
 
@@ -214,7 +224,6 @@ export default class Input extends Component {
           defaultValue={this.props.defaultValue}
           style={this.style()}
           maxLength={this.props.maxLength || ""}
-          value={this.props.value}
         />
 
         {this.renderHelpText()}
