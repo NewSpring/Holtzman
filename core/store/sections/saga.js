@@ -10,12 +10,6 @@ import { addSaga } from "../utilities"
 const set = (content) => ({ type: "SECTIONS.SET_CONTENT", content })
 
 addSaga(function* sectionsSaga(getState) {
-  let { sections } = getState()
-
-  // only make this query once. This could be preloaded from SSR
-  if (Object.keys(sections.content).length) {
-    return
-  }
 
   // Query to preload all of the menu items and a
   // query to preload the most recent images of the nav type
