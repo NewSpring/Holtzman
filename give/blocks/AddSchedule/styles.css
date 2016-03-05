@@ -2,3 +2,7 @@
 :local(.show-placeholder::-webkit-input-placeholder) {
   color: #ddd!important;
 }
+
+:local(.select:after){
+  top: 15px !important;
+}
