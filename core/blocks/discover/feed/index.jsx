@@ -101,7 +101,6 @@ export default class Discover extends Component {
       popularItems.push(item)
     }
 
-    console.log(featuredItem)
     return (
       <Layout
         featuredItem={featuredItem}
