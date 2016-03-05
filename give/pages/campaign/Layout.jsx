@@ -23,7 +23,7 @@ const Layout = ({ account }, context) => (
 
 
     </Split>
-    <Left scroll={true} >
+    <Left scroll={true} classes={["background--light-primary"]}>
       <div className="constrain-copy soft@lap-and-up">
         <div className="soft soft-double-bottom soft-double-top@lap-and-up">
 
