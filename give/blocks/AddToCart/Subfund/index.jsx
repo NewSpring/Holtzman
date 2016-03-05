@@ -108,7 +108,6 @@ export default class SubFund extends Component {
   saveAmount = (value) => {
 
     value = this.monentize(value)
-    console.log("save amount", value);
 
     let numberValue = Number(value.replace(/[^\d.-]/g, ""))
 

@@ -45,7 +45,6 @@ export default class Input extends Component {
 
     // set value on re-render
     if (this.props.value) {
-      console.log("did mount", this.props.value);
       this.setValue(`$${this.props.value}`);
     }
 
@@ -75,13 +74,9 @@ export default class Input extends Component {
       const newValue = this.props.format(value, target, e);
       target.value = newValue;
 
-      console.log(target);
-      console.log(target.value);
-
     }
 
     if (this.props.onChange && typeof(this.props.onChange) === "function" ) {
-      console.log("on change");
       this.props.onChange(target.value, target, e)
     }
 
