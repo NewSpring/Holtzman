@@ -2,7 +2,7 @@
 import { Component, PropTypes} from "react"
 import ReactDom from "react-dom"
 import Moment from "moment"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 import { Link } from "react-router"
 
 import { Spinner } from "../../../core/components/loading"
@@ -89,13 +89,8 @@ export default class Layout extends Component {
       person
     } = this.props
 
-    let photo = "//s3.amazonaws.com/ns.assets/apollos/schedulegivingad_1x2.jpg"
+    let photo = "//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
     return (
-      <VelocityComponent
-        animation={"transition.fadeIn"}
-        duration={500}
-        runOnMount={this.context.shouldAnimate}
-      >
         <div>
           <Split nav={true} classes={["background--light-primary"]}>
 
@@ -234,7 +229,6 @@ export default class Layout extends Component {
 
           </Left>
         </div>
-      </VelocityComponent>
     );
   }
 }

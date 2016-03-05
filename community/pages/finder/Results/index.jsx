@@ -349,10 +349,10 @@ export default class ListContainer extends Component {
 
     return (
       <div>
-        <Split nav={true}>
+        <Split nav={true} classes={["background--light-primary"]}>
 
           <Right mobile={false}>
-            <div className="locked-ends locked-sides">
+            <div className="locked-ends locked-sides" style={{zIndex: 5}}>
               {() => {
                 switch (this.state.status) {
                   case "loading":

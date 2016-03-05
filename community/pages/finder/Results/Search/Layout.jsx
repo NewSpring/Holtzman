@@ -1,18 +1,14 @@
 import { Component, PropTypes } from "react"
 import { Link } from "react-router"
 import Moment from "moment"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../../core/blocks/split"
 import { Forms } from "../../../../core/components"
 import Meta from "../../../../core/components/meta"
 
 const Layout = ({ geocode, home, ready, save, states, showError, campuses }, context) => (
-  <VelocityComponent
-    animation={"transition.fadeIn"}
-    duration={500}
-    runOnMount={context.shouldAnimate}
-  >
+
   <div>
     <Split nav={true}>
       <Meta title="Group Finder" />
@@ -154,8 +150,6 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }, con
       </div>
     </Left>
   </div>
-
-  </VelocityComponent>
 
 )
 

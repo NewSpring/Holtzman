@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import Moment from "moment"
 import { Link } from "react-router"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import { Spinner } from "../../../../core/components/loading"
 import Split, { Left, Right } from "../../../../core/blocks/split"
@@ -51,11 +51,7 @@ export default class Layout extends Component {
     const { schedule, stop, state, person, active } = this.props
 
     return (
-      <VelocityComponent
-        animation={"transition.fadeIn"}
-        duration={500}
-        runOnMount={this.context.shouldAnimate}
-      >
+
         <div>
           <Split nav={true} classes={["background--light-primary"]}>
 
@@ -201,7 +197,6 @@ export default class Layout extends Component {
 
           </Left>
         </div>
-      </VelocityComponent>
     )
   }
 }
