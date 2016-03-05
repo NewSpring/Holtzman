@@ -13,9 +13,9 @@ export default class LikesItem extends Component {
   }
 
   getDate(entry) {
-    let date = entry.date;
+    let date = new Date(entry.date);
 
-    let time = Moment(new Date(date));
+    let time = Moment(date);
     let currentTime = new Date();
 
     if (date.getUTCFullYear() === currentTime.getUTCFullYear())
@@ -37,13 +37,13 @@ export default class LikesItem extends Component {
             <div className="card">
               <Link to={like.link} className="plain">
                 <div
-                  className="background--fill card__image rounded-top ratio--landscape"
+                  className="background--fill card__image ratio--landscape"
                   style={this.backgroundStyles}
                   ></div>
-                <div className="card__item outlined--light soft rounded-bottom text-dark-tertiary">
+                <div className="card__item soft text-dark-tertiary">
                   <h4 className="text-dark">{like.title}</h4>
-                  <i className={this.iconClasses}></i>
-                  <h7>{like.category}</h7>
+                    <i className={this.iconClasses}></i>
+                    <h7>{like.category}</h7>
                   <h7 className="text-right float-right">{this.getDate(like)}</h7>
                 </div>
               </Link>
