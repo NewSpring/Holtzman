@@ -1,4 +1,5 @@
 import { Component, PropTypes} from "react"
+import { Link } from "react-router"
 
 import DiscoverHero from "./Hero"
 import PopularItem from "./../../../../profile/blocks/likes/Item"
@@ -20,8 +21,8 @@ function getImage(images, label = "2:1") {
 
 }
 
-
-const Layout = ({ featuredItem, popularItems, recommendedItems }) => {
+let textItemCount = 0
+const Layout = ({ featuredItem, popularItems, recommendedItems, textItems }) => {
   return (
     <div style={{ overflowY: "hidden", height:"100%"}} className="background--light-primary">
 
@@ -34,7 +35,7 @@ const Layout = ({ featuredItem, popularItems, recommendedItems }) => {
           return (
             <DiscoverHero
               link={featuredItem.meta.urlTitle}
-              image={getImage(featuredItem.content.images)}
+              image={getImage(featuredItem.content.images, "1:1")}
               topicName={featuredItem.title}
             />
           )
@@ -48,13 +49,53 @@ const Layout = ({ featuredItem, popularItems, recommendedItems }) => {
             let formatedObj = {
               link: item.meta.urlTitle,
               image: getImage(item.content.images),
-              topicName: item.title
+              title: item.title,
+              date: item.meta.date,
+              category: "Need to know",
+              icon: "icon-leaf-outline"
             }
-            return <DiscoverItem item={formatedObj} key={i} />
+
+            return (
+              <div className="grid__item one-whole" key={i} >
+                <PopularItem like={formatedObj} />
+              </div>
+            )
+
           })}
         </div>
       </section>
 
+      <div className="soft-half background--light-secondary">
+        <div className="card soft one-whole">
+          <div className="card__item">
+            <p className="flush">
+              <small>
+                <em>
+                  Are you looking for&nbsp;
+                  {textItems.map((x, i) => {
+                    let delimeter = ", "
+                    if (textItems[i].id == textItems[textItems.length - 1].id) {
+                      delimeter = ""
+                    } else if (textItems[i].id == textItems[textItems.length - 2].id) {
+                      delimeter = " or "
+                    }
+
+                    return (
+                      <span key={i}>
+                        <Link to={x.meta.urlTitle} >{x.title}</Link>
+                        {delimeter}
+                      </span>
+                    )
+                  })}?
+                </em>
+              </small>
+
+            </p>
+
+          </div>
+        </div>
+      </div>
+      {/*
       <section className="hard background--light-secondary">
         <h6 className="push-left soft-half-bottom soft-top">Popular Content</h6>
       </section>
@@ -70,6 +111,7 @@ const Layout = ({ featuredItem, popularItems, recommendedItems }) => {
           })}
         </div>
       </section>
+      */}
     </div>
   )
 }
