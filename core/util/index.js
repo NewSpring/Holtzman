@@ -10,6 +10,7 @@ import format from "./format"
 import regex from "./regex"
 import rock from "./rock"
 import validate from "./validate"
+import Debouncer from "./debounce"
 
 export default {
   inherit,
@@ -21,5 +22,6 @@ export default {
   format,
   regex,
   rock,
+  Debouncer,
   validate,
 }

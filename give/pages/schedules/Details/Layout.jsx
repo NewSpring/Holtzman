@@ -56,15 +56,16 @@ export default class Layout extends Component {
         duration={500}
         runOnMount={this.context.shouldAnimate}
       >
-        <Split nav={true} classes={["background--light-primary"]}>
+        <div>
+          <Split nav={true} classes={["background--light-primary"]}>
 
-          <Meta title="Giving Schedule" />
+            <Meta title="Giving Schedule" />
 
-          <Right background="http://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-   mobile={false}>
+            <Right background="http://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
+     mobile={false}>
 
-          </Right>
-
+            </Right>
+          </Split>
           <Left scroll={true} classes={["background--light-secondary"]} ref="container">
 
             <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
@@ -199,7 +200,7 @@ export default class Layout extends Component {
             </div>
 
           </Left>
-        </Split>
+        </div>
       </VelocityComponent>
     )
   }

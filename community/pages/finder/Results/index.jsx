@@ -348,45 +348,47 @@ export default class ListContainer extends Component {
     });
 
     return (
-      <Split nav={true}>
+      <div>
+        <Split nav={true}>
 
-        <Right mobile={false}>
-          <div className="locked-ends locked-sides">
-            {() => {
-              switch (this.state.status) {
-                case "loading":
-                  return null
-              }
-
-
-              if (!markers.length) {
-                return null
-              }
-              if (typeof window != "undefined" && window != null) {
-                if (window.matchMedia("(min-width: 769px)").matches) {
-                  return (
-                    <Map
-                      markers={markers}
-                      onMarkerHover={this.onMarkerHover}
-                      onChildClick={this.onChildClick}
-                      active={this.state.active}
-                      hover={this.state.hover}
-                      popUp={PopUp}
-                      autoCenter={true}
-                    />
-                  )
+          <Right mobile={false}>
+            <div className="locked-ends locked-sides">
+              {() => {
+                switch (this.state.status) {
+                  case "loading":
+                    return null
                 }
 
-              }
 
-              return null
+                if (!markers.length) {
+                  return null
+                }
+                if (typeof window != "undefined" && window != null) {
+                  if (window.matchMedia("(min-width: 769px)").matches) {
+                    return (
+                      <Map
+                        markers={markers}
+                        onMarkerHover={this.onMarkerHover}
+                        onChildClick={this.onChildClick}
+                        active={this.state.active}
+                        hover={this.state.hover}
+                        popUp={PopUp}
+                        autoCenter={true}
+                      />
+                    )
+                  }
 
-            }()}
+                }
 
-          </div>
+                return null
 
-        </Right>
+              }()}
 
+            </div>
+
+          </Right>
+
+        </Split>
         <Left scroll={true} classes={["background--light-primary"]}>
 
           {() => {
@@ -405,7 +407,8 @@ export default class ListContainer extends Component {
 
         </Left>
 
-      </Split>
+      </div>
+
 
     )
   }

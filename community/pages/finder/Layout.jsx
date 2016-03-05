@@ -10,23 +10,27 @@ const Layout = ({ classes, childClasses, photo, markers, children, right }, cont
     duration={500}
     runOnMount={context.shouldAnimate}
   >
-    <Split nav={true}>
-      <Meta title="Group Finder" />
-      <Right
-        mobile={true}
-        classes={classes}
-        ratioClasses={childClasses}
-        background={photo}
-      >
-        {right()}
+    <div>
+      <Split nav={true}>
+        <Meta title="Group Finder" />
+        <Right
+          mobile={true}
+          classes={classes}
+          ratioClasses={childClasses}
+          background={photo}
+        >
+          {right()}
 
-      </Right>
+        </Right>
 
+
+
+      </Split>
       <Left scroll={true} classes={["background--light-primary"]}>
         {children}
       </Left>
+    </div>
 
-    </Split>
   </VelocityComponent>
 )
 

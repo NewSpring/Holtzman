@@ -13,7 +13,8 @@ export default class Left extends Component {
 
   layoutClasses = () => {
     let classes = [
-      "panel__item--left",
+      // "panel__item--left",
+      "relative",
       "hard",
       "flush"
     ];
@@ -40,13 +41,16 @@ export default class Left extends Component {
   }
 
   styles = () => {
+    let defaults = {
+      // position: "relative"
+    }
     if (this.props.background) {
-      return {
+      return {...defaults, ...{
         backgroundImage: `url($this.props.image)`
-      }
+      }}
     }
 
-    return {}
+    return defaults
   }
 
   render () {

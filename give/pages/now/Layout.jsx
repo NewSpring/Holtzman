@@ -17,15 +17,19 @@ const Layout = ({ alive, accounts }, context) => (
     duration={1000}
     runOnMount={context.shouldAnimate}
   >
-    <Split nav={true} classes={["background--light-primary"]}>
+    <div>
 
       <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/schedulegivingad_1x2.jpg" />
 
-      <Right
-        background="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
-        link="/give/schedules"
-      >
-      </Right>
+      <Split nav={true} classes={["background--light-primary"]}>
+
+        <Right
+          background="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
+          link="/give/schedules"
+        >
+        </Right>
+
+      </Split>
 
       <Left scroll={true} classes={["background--light-secondary"]} >
         <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{overflow: "visible"}}>
@@ -112,8 +116,7 @@ const Layout = ({ alive, accounts }, context) => (
 
         </div>
       </Left>
-
-    </Split>
+    </div>
   </VelocityComponent>
 )
 

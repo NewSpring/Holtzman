@@ -96,15 +96,18 @@ export default class Layout extends Component {
         duration={500}
         runOnMount={this.context.shouldAnimate}
       >
-        <Split nav={true} classes={["background--light-primary"]}>
+        <div>
+          <Split nav={true} classes={["background--light-primary"]}>
 
-          <Meta title="Reccuring Giving" image={photo} />
+            <Meta title="Reccuring Giving" image={photo} />
 
-          <Right
-            background={photo}
-            mobile={false}>
-          </Right>
+            <Right
+              background={photo}
+              mobile={false}>
+            </Right>
 
+
+          </Split>
           <Left scroll={true} classes={["background--light-secondary"]} ref="container">
 
 
@@ -230,7 +233,7 @@ export default class Layout extends Component {
 
 
           </Left>
-        </Split>
+        </div>
       </VelocityComponent>
     );
   }
