@@ -154,7 +154,10 @@ export default class Template extends Component {
     this.props.dispatch(modalActions.render(Confirm, {
       onFinished: () => {
         dispatch(giveActions.deleteSchedule(id))
-
+        // WUT, need to clean up after launch
+        this.props.dispatch(giveActions.deleteSchedule(Number(id)))
+        // this.props.dispatch(transactionActions.removeSchedule(Number(id)))
+        this.props.dispatch(giveActions.deleteRecoverableSchedules(Number(id)))
         Meteor.call("give/schedule/cancel", { id }, (err, response) => {
           console.log(err, response)
         })
