@@ -79,13 +79,15 @@ const Layout = ({ alive, accounts }, context) => (
               }
 
               return (
-                <div key={i} className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+                <div key={i} className="grid__item one-whole push-half-bottom flush-bottom@handheld hard-bottom">
                   <SideBySide
                     link={`/give/campaign/${encodeURI(account.name)}`}
                     image={{
-                      url: account.formatedImage && account.formatedImage["1:1"] ? account.formatedImage["1:1"] : account.image
+                      "1:1": account.formatedImage && account.formatedImage["1:1"] ? account.formatedImage["1:1"] : account.image,
+                      "2:1": account.formatedImage && account.formatedImage["2:1"] ? account.formatedImage["2:1"] : account.image,
+                      "1:2": account.formatedImage && account.formatedImage["1:2"] ? account.formatedImage["1:2"] : account.image,
+                      defaultImage: account.image
                     }}
-                    mobile={false}
                   >
                     <h4 className="push-half-top@portable push-top@anchored">
                       {account.name}
