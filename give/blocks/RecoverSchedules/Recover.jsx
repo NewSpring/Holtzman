@@ -63,7 +63,7 @@ const Layout = ({ schedules, reminderDate, onClick, hide }) => (
     <p className="push-top text-left">
       <em>
         <small>
-          You can cancel your schedule at any time from the Scheduled Giving page. If you have any questions please call our Finance Team at 864-965-9990 or email us at <a href="mailto:finance@newspring.cc">finance@newspring.cc</a> and someone will be happy to assist you.
+          You can cancel your schedule at any time from the Scheduled Giving page. If you have any questions please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a> and someone will be happy to assist you.
         </small>
       </em>
     </p>
