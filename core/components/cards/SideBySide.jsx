@@ -118,7 +118,6 @@ export default class Card extends Component {
            }
          }
 
-         console.log(image)
         return (
           <ImageLoader
             src={src}
