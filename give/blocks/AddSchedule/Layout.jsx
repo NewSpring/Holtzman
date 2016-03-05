@@ -64,7 +64,7 @@ export default class Layout extends Component {
     return (
       <VelocityComponent
         animation={"transition.fadeIn"}
-        duration={1000}
+        duration={750}
         runOnMount={this.context.shouldAnimate}
       >
         <div className="push-top@handheld soft-half-top@lap-and-up">

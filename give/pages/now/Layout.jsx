@@ -1,6 +1,6 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import SideBySide from "../../../core/components/cards/SideBySide"
@@ -12,20 +12,19 @@ import AddToCart from "../../blocks/AddToCart"
 
 const Layout = ({ alive, accounts }, context) => (
 
-  <VelocityComponent
-    animation={"transition.fadeIn"}
-    duration={1000}
-    runOnMount={context.shouldAnimate}
-  >
-    <Split nav={true} classes={["background--light-primary"]}>
 
-      <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/schedulegivingad_1x2.jpg" />
+    <div>
 
-      <Right
-        background="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
-        link="/give/schedules"
-      >
-      </Right>
+      <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg" />
+
+      <Split nav={true} classes={["background--light-primary"]}>
+
+        <Right
+          background="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
+          link="/give/schedules"
+        />
+
+      </Split>
 
       <Left scroll={true} classes={["background--light-secondary"]} >
         <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{overflow: "visible"}}>
@@ -112,9 +111,7 @@ const Layout = ({ alive, accounts }, context) => (
 
         </div>
       </Left>
-
-    </Split>
-  </VelocityComponent>
+    </div>
 )
 
 Layout.contextTypes = { shouldAnimate: PropTypes.bool };

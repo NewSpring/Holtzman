@@ -1,7 +1,9 @@
-import React from 'react';
+import { Component, PropTypes} from "react"
+import ReactDom from "react-dom"
+const { span } = React.DOM
 
-const {PropTypes} = React;
-const {span} = React.DOM;
+
+import Debouncer from "./../../util/debounce"
 
 const Status = {
   PENDING: 'pending',
@@ -11,7 +13,7 @@ const Status = {
 };
 
 
-export default class ImageLoader extends React.Component {
+export default class ImageLoader extends Component {
   static propTypes = {
     wrapper: PropTypes.func,
     className: PropTypes.string,
@@ -65,10 +67,68 @@ export default class ImageLoader extends React.Component {
   createLoader() {
     this.destroyLoader();  // We can only have one loader at a time.
 
-    this.img = new Image();
-    this.img.onload = ::this.handleLoad;
-    this.img.onerror = ::this.handleError;
-    this.img.src = this.props.src;
+    const makeImage = () => {
+      this.img = new Image();
+      this.img.onload = ::this.handleLoad;
+      this.img.onerror = ::this.handleError;
+      this.img.src = this.props.src;
+    }
+
+    if (Meteor.isServer) {
+      makeImage()
+      return
+    }
+
+
+    // lazy load only if in view on client
+    let el = ReactDOM.findDOMNode(this.refs["loader"])
+    el = el.children[0]
+
+    const isElementInView = (e) => {
+      let coords = e.getBoundingClientRect()
+      return (Math.abs(coords.left) >= 0 && Math.abs(coords.top)) <= (window.innerHeight || document.documentElement.clientHeight)
+    }
+
+    const seeIfInView = () => {
+
+      if (isElementInView(el)) {
+
+        // callback to make sure user really intends to view content
+        // prevents accidental firing on scrolling past
+        const callback = () => {
+
+          if (isElementInView(el)) {
+            window.removeEventListener("scroll", this.debounce, false)
+            makeImage()
+            return
+          }
+
+          // remove related event listener and add a new one back
+          window.removeEventListener("scroll", this.debounce, false)
+          window.addEventListener("scroll", this.debounce, false)
+          return
+
+        }
+
+        // SetTimeout to prevent false calls on scrolling
+        setTimeout(callback, 300)
+
+        // remove inital eventlistener to scope a new one inside the timeout function
+        window.removeEventListener("scroll", this.debounce, false)
+
+        return
+      }
+
+    }
+
+    if (isElementInView(el)) {
+      makeImage()
+      return
+    }
+
+    this.debounce = new Debouncer(seeIfInView)
+    window.addEventListener("scroll", this.debounce, false)
+
   }
 
   destroyLoader() {
@@ -112,7 +172,13 @@ export default class ImageLoader extends React.Component {
     };
 
     if (this.props.style) {
-      wrapperProps.style = this.props.style;
+      let style = {...this.props.style}
+      delete style.backgroundImage
+      wrapperProps.style = style
+
+      if (this.state.status === Status.LOADED) {
+        wrapperProps.style.backgroundImage = this.props.style.backgroundImage
+      }
     }
 
     let wrapperArgs = [wrapperProps];
@@ -137,6 +203,6 @@ export default class ImageLoader extends React.Component {
         break;
     }
 
-    return this.props.wrapper(...wrapperArgs);
+    return <span ref="loader">{this.props.wrapper(...wrapperArgs)}</span>
   }
 }

@@ -1,7 +1,7 @@
 
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import { nav as navActions } from "../../../../../core/store"
 import Meta from "../../../../../core/components/meta"
@@ -65,11 +65,6 @@ export default class ListView extends Component {
     }))
 
     return (
-      <VelocityComponent
-        animation={"transition.fadeIn"}
-        duration={500}
-        runOnMount={this.context.shouldAnimate}
-      >
 
         <div>
           <Meta title="Group Results" />
@@ -99,7 +94,6 @@ export default class ListView extends Component {
           </List>
 
         </div>
-      </VelocityComponent>
     )
   }
 }
