@@ -36,7 +36,7 @@ const ChildItem = ({ section, go }) => {
   )
 }
 
-const Item = ({ section, go }) => {
+const Item = ({ section, go, children }) => {
   if (!section) {
     return (
       <div className="one-half grid__item">
@@ -64,6 +64,7 @@ const Item = ({ section, go }) => {
           </div>
         </div>
       </Link>
+      {children}
     </div>
   )
 }
@@ -145,6 +146,33 @@ export default class SectionItem extends Component {
 
   }
 
+  renderArrow = (sectionItem) => {
+    const { section } = this.state
+
+    if (!section) {
+      return null
+    }
+
+    if (section.id != sectionItem.id) {
+      return null
+    }
+
+    return (
+      <div className="locked background--dark-primary" style={{
+        height: 0,
+        width: 0,
+        background: "transparent",
+        borderWidth: "0 15px 10px 15px",
+        borderColor: "transparent transparent #303030 transparent",
+        borderStyle: "solid",
+        marginBottom: "-10px",
+        left: "50%",
+        marginLeft: "-10px"
+        }}>
+      </div>
+    )
+  }
+
   render () {
 
     const { sections } = this.props
@@ -156,7 +184,9 @@ export default class SectionItem extends Component {
             <div className="grid__item one-whole" >
               <div className="grid">
                 {sections.map((sectionItem, i) => (
-                  <Item section={sectionItem} key={i} go={this.expandOrGo} />
+                  <Item section={sectionItem} key={i} go={this.expandOrGo}>
+                    {this.renderArrow(sectionItem)}
+                  </Item>
                 ))}
               </div>
 

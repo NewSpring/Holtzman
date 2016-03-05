@@ -18,13 +18,13 @@ export default class DiscoverHero extends Component {
       <div>
         <a
           href={this.props.link}
-          className="overlay--gradient background--fill ratio--landscape
+          className="background--fill ratio--square
                      floating--bottom floating--left"
           style={this.backgroundStyles}
         >
-          <div className="overlay__item floating__item soft-left soft-bottom text-light-primary">
-            <h4 className="flush">{this.props.topicName}</h4>
-              {/*
+          <div className="floating__item soft-left soft-bottom text-light-primary">
+            {/*<h4 className="flush">{this.props.topicName}</h4>
+
               <h7 className="soft-top">
                 {this.props.tags.join(", ")}
               </h7>
