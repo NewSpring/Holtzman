@@ -243,7 +243,7 @@ export default class Layout extends Component {
                   <p className="soft-double-ends soft-sides soft-double-sides@lap-and-up text-center">
                     <small>
                       <em>
-                        If you think you should have a schedule that needs to be transferred, and don't see it here, please email us at <a href="mailto:finance@newspring.cc">finance@newspring.cc</a>
+                        If you think you should have a schedule that needs to be transferred, and don't see it here, please <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a>
                       </em>
                     </small>
                   </p>

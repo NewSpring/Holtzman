@@ -113,7 +113,7 @@ export default class Layout extends Component {
                     <p>
                       We didn't find any gifts associated with your account. If you would like to start giving, click <Link to="/give/now">here</Link>
                     </p>
-                    <p><em>If you have any questions, please call our Finance Team at 864-965-9000 or email us at <a href="mailto:finance@newspring.cc">finance@newspring.cc</a> and someone will be happy to assist you.</em></p>
+                    <p><em>If you have any questions, please call our Finance Team at 864-965-9000 or <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a> and someone will be happy to assist you.</em></p>
                   </div>
                 )
               }
