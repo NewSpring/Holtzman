@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import Meta from "react-helmet"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import { Toggle } from "../../../core/components/controls"
@@ -13,11 +13,7 @@ const SettingsLink = () => (
 )
 
 const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
-  <VelocityComponent
-    animation={"transition.fadeIn"}
-    duration={500}
-    runOnMount={context.shouldAnimate}
-  >
+  <div>
     <Split nav={true} classes={["background--light-primary"]}>
 
       <Meta
@@ -46,19 +42,21 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
 
       </Right>
 
-      <Left scroll={true}>
 
-        <Toggle items={["Likes", "Following"]} toggle={onToggle} />
-
-        <div>
-
-          {content}
-
-        </div>
-      </Left>
 
     </Split>
-  </VelocityComponent>
+    <Left scroll={true}>
+
+      <Toggle items={["Likes", "Following"]} toggle={onToggle} />
+
+      <div>
+
+        {content}
+
+      </div>
+    </Left>
+  </div>
+
 )
 
 Layout.contextTypes = { shouldAnimate: PropTypes.bool };

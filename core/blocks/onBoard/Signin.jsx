@@ -197,7 +197,7 @@ class SignIn extends React.Component {
                 defaultValue={this.props.data.terms}
                 clicked={this.saveTerms}
               >
-                By signing up you agree to our <a href="#">terms and conditions</a>
+                By signing up you agree to our <a href="//newspring.cc/terms" target="_blank">terms and conditions</a>
               </Forms.Checkbox>
             )
           } else {

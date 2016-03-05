@@ -9,20 +9,24 @@ const Template = (props) => {
 
   let photo = "https://s3.amazonaws.com/ns.assets/apollos/leaves.png"
   return (
-    <Split nav={true} classes={["background--light-primary"]}>
+    <div>
+      <Split nav={true} classes={["background--light-primary"]}>
 
-      <Right
-        mobile={false}
-        background={photo}
-        backgroundFill={false}
-        classes={["background--right", "background--bottom"]}
-      />
+        <Right
+          mobile={false}
+          background={photo}
+          backgroundFill={false}
+          classes={["background--right", "background--bottom"]}
+        />
 
+
+
+      </Split>
       <Left scroll={true}>
         {props.children}
       </Left>
+    </div>
 
-    </Split>
   )
 
 }

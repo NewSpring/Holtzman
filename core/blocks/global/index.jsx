@@ -35,8 +35,9 @@ const App = ({ children, className }) => (
       <Meta />
       {children}
 
-      <Nav />
+
       <Modal/>
+      <Nav />
       <Watermark />
     </div>
 

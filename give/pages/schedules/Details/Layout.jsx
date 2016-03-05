@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import Moment from "moment"
 import { Link } from "react-router"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import { Spinner } from "../../../../core/components/loading"
 import Split, { Left, Right } from "../../../../core/blocks/split"
@@ -51,20 +51,17 @@ export default class Layout extends Component {
     const { schedule, stop, state, person, active } = this.props
 
     return (
-      <VelocityComponent
-        animation={"transition.fadeIn"}
-        duration={500}
-        runOnMount={this.context.shouldAnimate}
-      >
-        <Split nav={true} classes={["background--light-primary"]}>
 
-          <Meta title="Giving Schedule" />
+        <div>
+          <Split nav={true} classes={["background--light-primary"]}>
 
-          <Right background="http://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-   mobile={false}>
+            <Meta title="Giving Schedule" />
 
-          </Right>
+            <Right background="http://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
+     mobile={false}>
 
+            </Right>
+          </Split>
           <Left scroll={true} classes={["background--light-secondary"]} ref="container">
 
             <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
@@ -199,8 +196,7 @@ export default class Layout extends Component {
             </div>
 
           </Left>
-        </Split>
-      </VelocityComponent>
+        </div>
     )
   }
 }

@@ -1,10 +1,10 @@
 import { PropTypes } from "react"
 
 import { AccountType } from "../../../../give/components"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 const Layout = ({ details, remove }) => (
-  <div className="background--light-primary text-center soft-double-top locked-ends locked-sides push-double-bottom" style={{overflow: "visible"}}>
+  <div className="background--light-primary text-center soft-double-top push-double-bottom" style={{overflow: "visible"}}>
     <div className="one-whole two-thirds@anchored display-inline-block">
       <h3>Saved Accounts</h3>
       <div className="soft-sides soft-double-sides@lap-and-up">

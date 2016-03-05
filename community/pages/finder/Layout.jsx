@@ -1,33 +1,32 @@
 import { PropTypes } from "react"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import Meta from "../../../core/components/meta"
 
 const Layout = ({ classes, childClasses, photo, markers, children, right }, context) => (
-  <VelocityComponent
-    animation={"transition.fadeIn"}
-    duration={500}
-    runOnMount={context.shouldAnimate}
-  >
-    <Split nav={true}>
-      <Meta title="Group Finder" />
-      <Right
-        mobile={true}
-        classes={classes}
-        ratioClasses={childClasses}
-        background={photo}
-      >
-        {right()}
 
-      </Right>
+    <div>
+      <Split nav={true} classes={["background--light-primary"]}>
+        <Meta title="Group Finder" />
+        <Right
+          mobile={true}
+          classes={classes}
+          ratioClasses={childClasses}
+          background={photo}
+        >
+          {right()}
 
+        </Right>
+
+
+
+      </Split>
       <Left scroll={true} classes={["background--light-primary"]}>
         {children}
       </Left>
+    </div>
 
-    </Split>
-  </VelocityComponent>
 )
 
 Layout.propTypes = {
