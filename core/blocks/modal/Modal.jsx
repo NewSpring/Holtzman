@@ -128,7 +128,7 @@ export default class SideModal extends Component {
 
 
     return (
-      <div className="panel overlay--solid-dark" onClick={close} style={{zIndex: 100}}>
+      <div className="panel overlay--solid-dark fixed" onClick={close} style={{zIndex: 100}}>
         <VelocityComponent
           animation={slide}
           duration={300}
