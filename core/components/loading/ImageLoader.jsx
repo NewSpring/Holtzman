@@ -137,6 +137,10 @@ export default class ImageLoader extends Component {
       this.img.onerror = null;
       this.img = null;
     }
+
+    if (this.debounce) {
+      window.removeEventListener("scroll", this.debounce, false)
+    }
   }
 
   handleLoad(event) {

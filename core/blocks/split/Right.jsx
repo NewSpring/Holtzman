@@ -4,9 +4,10 @@ import { ImageLoader } from "../../components/loading"
 import Styles from "../../components/loading/FeedItemSkeleton.css"
 
 
-let Wrapper = (props) => (
+const DefaultWrapper = (props) => (
   <section {...props} className={props.imageclasses.join(" ")}>{props.children}</section>
 )
+
 export default class Right extends Component {
 
   static propTypes = {
@@ -134,7 +135,7 @@ export default class Right extends Component {
   render () {
 
     const { blur } = this.props
-
+    let Wrapper = DefaultWrapper
     if (this.props.background) {
       Wrapper = ImageLoader
     }
