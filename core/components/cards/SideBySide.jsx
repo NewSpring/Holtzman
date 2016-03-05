@@ -83,41 +83,55 @@ export default class Card extends Component {
 
   createImage = () => {
 
-    const { image } = this.props
+      const { image } = this.props
 
-    if (image) {
-      let imageclasses = [
-        "background--fill",
-        "card__image",
-        "locked-ends@lap-wide-and-up",
-        "locked-sides@lap-wide-and-up",
-        "relative@lap"
-      ]
+      if (image) {
+        let imageclasses = [
+          "background--fill",
+          "card__image",
+          "locked-ends@lap-wide-and-up",
+          "locked-sides@lap-wide-and-up",
+          "relative@lap"
+        ]
 
-      if (image.ratio) {
-        imageclasses.push(`ratio--${image.ratio}`)
-      } else {
-        imageclasses.push("ratio--landscape")
-      }
-
-      let style
-      if (image.full != true) {
-        style = {
-          backgroundImage: `url(${image.url})`,
+        if (image.ratio) {
+          imageclasses.push(`ratio--${image.ratio}`)
+        } else {
+          imageclasses.push("ratio--landscape")
         }
-      }
 
-      return (
-        <ImageLoader
-          src={image.url}
-          preloader={this.preloader}
-          renderElement={this.renderElement}
-          imageclasses={imageclasses}
-          style={style}
-        />
-      )
+
+        let src = image.url
+        if (typeof window != "undefined" && window != null) {
+           if (window.matchMedia("(max-width: 768px)").matches) {
+             src = image["2:1"]
+           } else if (window.matchMedia("(max-width: 1024px)").matches) {
+             src = image["1:2"]
+           } else if (window.matchMedia("(max-width: 1280px)").matches) {
+             src = image["1:1"]
+         }
+
+         let style
+         if (image.full != true) {
+           style = {
+             backgroundImage: `url(${src})`,
+           }
+         }
+
+         console.log(image)
+        return (
+          <ImageLoader
+            src={src}
+            preloader={this.preloader}
+            renderElement={this.renderElement}
+            imageclasses={imageclasses}
+            style={style}
+          />
+        )
+      }
     }
   }
+
 
   render () {
 
