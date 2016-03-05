@@ -46,7 +46,7 @@ export default class Input extends Component {
     // set value on re-render
     if (this.props.value) {
       console.log("did mount", this.props.value);
-      this.setValue(this.props.value);
+      this.setValue(`$${this.props.value}`);
     }
 
   }
