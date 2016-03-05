@@ -1,6 +1,6 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import Meta from "../../../../../core/components/meta"
 
@@ -9,19 +9,14 @@ const Layout = ({ group, join, hash }, context) => {
   let leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"))
   let photo = group.photo ? group.photo : "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png"
   return (
-    <VelocityComponent
-      animation={"transition.fadeIn"}
-      duration={500}
-      runOnMount={context.shouldAnimate}
-    >
 
-
-      <section className="background--light-secondary hard">
+      <section className="background--light-secondary hard" >
         <Meta title={group.name} image={photo} description={group.description} />
 
         <div className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--gradient" style={{
             overflow: "visible",
-            backgroundImage: `url(${photo})`
+            backgroundImage: `url(${photo})`,
+            zIndex:10
           }}>
           <div className="soft-sides@anchored ratio__item one-whole floating--bottom">
             <div className="floating__item text-left one-whole soft-double-sides soft-double-bottom">
@@ -176,7 +171,6 @@ const Layout = ({ group, join, hash }, context) => {
 
 
       </section>
-    </VelocityComponent>
   )
 }
 

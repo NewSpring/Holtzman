@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import { GraphQL } from "../../../../core/graphql"
 import { onBoard as onBoardActions } from "../../../../core/store"
@@ -122,28 +122,23 @@ export default class Menu extends Component {
 
   render() {
     return (
-    <VelocityComponent
-      animation={"transition.fadeIn"}
-      duration={500}
-      runOnMount={this.context.shouldAnimate}
-    >
       <div className="background--light-secondary">
         <section>
           <div className="push-double-ends">
             <Link to="/profile/settings/personal-details" className="plain text-dark-secondary">
-              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+              <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">Personal Details</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
             <Link to="/profile/settings/home-address" className="plain text-dark-secondary">
-              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+              <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">My Address</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
             <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
-              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+              <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">Change Profile Photo</h6>
                 {() => {
                   let icon = "icon-arrow-next"
@@ -165,10 +160,10 @@ export default class Menu extends Component {
 
                 }()}
               </div>
-              <input onChange={this.upload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
+              <input onChange={this.upload} type="file" className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
             </button>
             <Link to="/profile/settings/change-password" className="plain text-dark-secondary">
-              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+              <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">Change Password</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
@@ -178,19 +173,19 @@ export default class Menu extends Component {
 
           <div className="push-double-ends">
             <Link to="/profile/settings/saved-accounts" className="plain text-dark-secondary">
-              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+              <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">Saved Accounts</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
             <Link to="/give/schedules" className="plain text-dark-secondary">
-              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+              <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">Scheduled Gifts</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </Link>
             <Link to="/give/history" className="plain text-dark-secondary">
-              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+              <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">Giving History</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
@@ -198,14 +193,16 @@ export default class Menu extends Component {
           </div>
 
           <div className="push-double-ends">
+            {/*
             <a onClick={this.onClick} href="//newspring.cc/about" target="_blank" className="plain text-dark-secondary">
-              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+              <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">About Us</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </a>
-            <Link to="/profile/settings/privacy-policy" className="plain text-dark-secondary">
-              <div className="card push-left@lap-and-up soft-ends soft-right text-left outlined--light">
+            */}
+            <Link to="//newspring.cc/privacypolicy" className="plain text-dark-secondary">
+              <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">Privacy Policy</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
@@ -217,7 +214,6 @@ export default class Menu extends Component {
           </div>
         </section>
       </div>
-    </VelocityComponent>
 
     )
   }

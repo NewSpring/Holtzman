@@ -1,6 +1,6 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import SideBySide from "../../../core/components/cards/SideBySide"
@@ -12,22 +12,17 @@ import AddToCart from "../../blocks/AddToCart"
 
 const Layout = ({ alive, accounts }, context) => (
 
-  <VelocityComponent
-    animation={"transition.fadeIn"}
-    duration={1000}
-    runOnMount={context.shouldAnimate}
-  >
+
     <div>
 
-      <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/schedulegivingad_1x2.jpg" />
+      <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg" />
 
       <Split nav={true} classes={["background--light-primary"]}>
 
         <Right
           background="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
           link="/give/schedules"
-        >
-        </Right>
+        />
 
       </Split>
 
@@ -117,7 +112,6 @@ const Layout = ({ alive, accounts }, context) => (
         </div>
       </Left>
     </div>
-  </VelocityComponent>
 )
 
 Layout.contextTypes = { shouldAnimate: PropTypes.bool };

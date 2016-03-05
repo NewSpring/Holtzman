@@ -1,5 +1,5 @@
 import { PropTypes } from "react"
-import { VelocityComponent } from "velocity-react"
+// import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import Meta from "../../../core/components/meta"
@@ -7,11 +7,6 @@ import AddToCart from "../../blocks/AddToCart"
 
 const Layout = ({ account }, context) => (
 
-  <VelocityComponent
-    animation={"transition.fadeIn"}
-    duration={1000}
-    runOnMount={context.shouldAnimate}
-  >
   <div>
     <Split nav={true} classes={["background--light-primary"]}>
       <Meta
@@ -50,7 +45,6 @@ const Layout = ({ account }, context) => (
     </Left>
   </div>
 
-  </VelocityComponent>
 )
 
 Layout.contextTypes = { shouldAnimate: PropTypes.bool };

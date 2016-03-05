@@ -39,7 +39,7 @@ export default class Layout extends Component {
     } = home
 
     return (
-    <div className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom locked-ends locked-sides background--light-primary">
+    <div className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom background--light-primary">
         <Forms.Form
           id="reset-password"
           classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
