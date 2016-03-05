@@ -68,7 +68,8 @@ export default class Layout extends Component {
     })
 
     // if an instance is removed and that instance is not at the end
-    if (this.state.instances.length > newInstances.length &&
+    if (key !== 0 &&
+        this.state.instances.length > newInstances.length &&
         this.state.instances.length !== key + 1)
       {
         // currently no good way to reorder sub funds
