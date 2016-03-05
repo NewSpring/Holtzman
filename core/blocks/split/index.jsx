@@ -29,7 +29,8 @@ export default class SplitContainer extends Component {
 
   layoutClasses = () => {
     let classes = [
-      "panel"
+      "panel",
+      "fixed@lap-and-up"
     ];
 
     if (this.props.classes) {

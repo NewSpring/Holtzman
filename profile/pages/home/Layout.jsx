@@ -18,6 +18,7 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
     duration={500}
     runOnMount={context.shouldAnimate}
   >
+  <div>
     <Split nav={true} classes={["background--light-primary"]}>
 
       <Meta
@@ -46,18 +47,21 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
 
       </Right>
 
-      <Left scroll={true}>
 
-        <Toggle items={["Likes", "Following"]} toggle={onToggle} />
-
-        <div>
-
-          {content}
-
-        </div>
-      </Left>
 
     </Split>
+    <Left scroll={true}>
+
+      <Toggle items={["Likes", "Following"]} toggle={onToggle} />
+
+      <div>
+
+        {content}
+
+      </div>
+    </Left>
+  </div>
+
   </VelocityComponent>
 )
 

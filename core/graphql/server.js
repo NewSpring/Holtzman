@@ -14,7 +14,6 @@ Meteor.methods({
     const payload = { query, variables, operationName };
     const f = new Future();
 
-    console.log(`Making request to ${Meteor.settings.heighliner}`, query, variables)
     fetch(Meteor.settings.heighliner, {
         method: "POST",
         headers: {

@@ -104,15 +104,17 @@ export default class Layout extends Component {
         duration={500}
         runOnMount={this.context.shouldAnimate}
       >
-        <Split nav={true} classes={["background--light-primary"]}>
+        <div>
+          <Split nav={true} classes={["background--light-primary"]}>
 
-          <Meta title="Transfer Your Gift" />
+            <Meta title="Transfer Your Gift" />
 
-          <Right
-            background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"
-            mobile={false}>
-          </Right>
+            <Right
+              background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/give/giveyourbrainabreak2_1000_1000_90.jpg"
+              mobile={false}>
+            </Right>
 
+          </Split>
           <Left scroll={true} classes={["background--light-secondary"]} ref="container">
 
 
@@ -255,7 +257,7 @@ export default class Layout extends Component {
             }())}
 
           </Left>
-        </Split>
+        </div>
       </VelocityComponent>
     );
   }

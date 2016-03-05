@@ -2,9 +2,9 @@
 .fake-text,
 .fake-text-small {
   background: linear-gradient(270deg, #dddddd, #bcbcbc, #dddddd);
-  -webkit-animation: ColorAnimation 1.25s linear infinite;
-  animation: ColorAnimation 1.25s linear infinite;
-  -ms-animation: ColorAnimation 1.25s linear infinite;
+  -webkit-animation: ColorAnimation 5s cubic-bezier(0.66, 0.21, 0.49, 0.88) infinite;
+  animation: ColorAnimation 5s cubic-bezier(0.66, 0.21, 0.49, 0.88) infinite;
+  -ms-animation: ColorAnimation 5s cubic-bezier(0.66, 0.21, 0.49, 0.88) infinite;
   background-size: 200%;
 
 }
@@ -36,4 +36,15 @@
 }
 .fake-text, .fake-text-small{
   border-radius: 2px;
+}
+
+:global(.imageloader) {
+  opacity: 0.5;
+}
+
+:global(.imageloader.loaded) {
+  opacity: 1;
+  transition: opacity .5s ease-in-out;
+ -moz-transition: opacity .5s ease-in-out;
+ -webkit-transition: opacity .5s ease-in-out;
 }

@@ -17,6 +17,7 @@ const Layout = ({ photo, person, children, mobile }, context) => (
     duration={500}
     runOnMount={context.shouldAnimate}
   >
+  <div>
     <Split nav={true} classes={["background--light-primary"]}>
 
       <Meta
@@ -42,11 +43,14 @@ const Layout = ({ photo, person, children, mobile }, context) => (
 
       </Right>
 
-      <Left scroll={true} classes={["locked-ends@lap-and-up locked-sides@lap-and-up"]}>
-        {children}
-      </Left>
+
 
     </Split>
+    <Left scroll={true} classes={["locked-ends@lap-and-up locked-sides@lap-and-up"]}>
+      {children}
+    </Left>
+  </div>
+
   </VelocityComponent>
 )
 
