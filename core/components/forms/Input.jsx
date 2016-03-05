@@ -43,6 +43,11 @@ export default class Input extends Component {
 
     }, 20)
 
+    // set value on re-render
+    if (this.props.value) {
+      this.setValue(`$${this.props.value}`);
+    }
+
   }
 
   componentWillUpdate(nextProps){
@@ -214,7 +219,6 @@ export default class Input extends Component {
           defaultValue={this.props.defaultValue}
           style={this.style()}
           maxLength={this.props.maxLength || ""}
-          value={this.props.value}
         />
 
         {this.renderHelpText()}

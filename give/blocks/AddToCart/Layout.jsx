@@ -33,7 +33,6 @@ export default class Layout extends Component {
     let instance = getInstance()
 
     if (instance) {
-
       let current = [...this.state.instances]
       let updated = current.map((x) => {
         if (x.id === key) {
@@ -69,7 +68,8 @@ export default class Layout extends Component {
     })
 
     // if an instance is removed and that instance is not at the end
-    if (this.state.instances.length > newInstances.length &&
+    if (key !== 0 &&
+        this.state.instances.length > newInstances.length &&
         this.state.instances.length !== key + 1)
       {
         // currently no good way to reorder sub funds
@@ -82,7 +82,6 @@ export default class Layout extends Component {
           return newInstance
         });
 
-        console.log("new",newInstances);
         setTimeout(() => {
           this.setState({
             SubFundInstances: newInstances.length + 1,
@@ -164,6 +163,8 @@ export default class Layout extends Component {
                     remove={this.remove}
                     instance={key}
                     donate={donate}
+                    selectVal={selectVal}
+                    inputVal={inputVal}
                   />
                 )
               }

@@ -28,7 +28,7 @@ export default class SubFund extends Component {
     }
 
     if (this.props.selectVal) {
-      this.setState({ fund: true });
+      this.setState({ fund: true, id: this.props.selectVal });
     }
     if (this.props.inputVal) {
       this.setState({ amount: this.props.inputVal });
@@ -190,6 +190,7 @@ export default class SubFund extends Component {
           format={this.saveAmount}
           preFill={this.props.preFill}
           donate={this.props.donate}
+          selectVal={this.props.selectVal}
         />
       )
     }

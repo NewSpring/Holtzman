@@ -3,7 +3,7 @@ import { PropTypes } from "react"
 import { Forms } from "../../../../core/components"
 import Styles from "../styles.css"
 
-const Primary = ({ classes, accounts, state, preFill, saveFund, format, donate }) => (
+const Primary = ({ classes, accounts, state, preFill, saveFund, format, donate, selectVal }) => (
   <div>
     <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
       I'd like to { donate ? "donate" : "give" }
@@ -38,7 +38,7 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format, donate }
             inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
             placeholder="select fund"
             onChange={saveFund}
-            defaultValue={accounts[0].value}
+            selected={selectVal}
           />
         )
       // }
