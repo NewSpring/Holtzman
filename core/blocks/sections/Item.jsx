@@ -167,7 +167,8 @@ export default class SectionItem extends Component {
         borderStyle: "solid",
         marginBottom: "-10px",
         left: "50%",
-        marginLeft: "-10px"
+        marginLeft: "-10px",
+        marginTop:"2px"
         }}>
       </div>
     )
