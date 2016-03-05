@@ -25,12 +25,13 @@ export default class Discover extends Component {
 
     let query = `
       {
-        discover: allLowReorderSets(setName: "promotions_newspring") {
+        discover: allLowReorderSets(setName: "promotions_newspring", ttl: 3600) {
           title
           id
           status
           meta {
             urlTitle
+            date
           }
           content {
             images {
@@ -100,11 +101,13 @@ export default class Discover extends Component {
       popularItems.push(item)
     }
 
+    console.log(featuredItem)
     return (
       <Layout
         featuredItem={featuredItem}
         popularItems={popularItems.slice(0, 5)}
         recommendedItems={recommendedItems}
+        textItems={open}
       />
     )
 

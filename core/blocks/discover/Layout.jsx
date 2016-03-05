@@ -17,7 +17,7 @@ const SearchLayout = ({ searchSubmit, loadMore, cancel, search, hide }) => (
 
   <section className="hard">
 
-    <Input searchSubmit={searchSubmit} cancel={cancel} />
+    <Input searchSubmit={searchSubmit} cancel={cancel} showCancel={search.searching} />
 
     <Content loadMore={loadMore} search={search} />
 
