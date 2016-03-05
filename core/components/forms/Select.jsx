@@ -1,8 +1,10 @@
 import { Component, PropTypes } from "react";
 import ReactDom from "react-dom";
-import ReactSelect from "react-select";
+// import ReactSelect from "react-select";
 
 import Label from "./components/Label"
+
+import SelectClasses from "./select.css"
 
 export default class Select extends Component {
 
@@ -147,7 +149,7 @@ export default class Select extends Component {
     if (this.props.selected) { inputclasses.push("input--active") }
 
     return (
-      <div className={inputclasses.join(" ")}>
+      <div className={inputclasses.join(" ") + ` ${SelectClasses.select}`}>
         {(() => {
           if (!this.props.hideLabel){
             return (

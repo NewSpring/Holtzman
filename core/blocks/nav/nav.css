@@ -18,7 +18,7 @@
 }
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   :local(.nav-bar) {
     position: fixed;
     max-width: 80px;

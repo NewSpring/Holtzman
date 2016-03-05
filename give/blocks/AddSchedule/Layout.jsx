@@ -100,7 +100,7 @@ export default class Layout extends Component {
               id={`select`}
               hideLabel={true}
               ref="select-account"
-              classes={["soft-bottom", "display-inline-block"]}
+              classes={["soft-bottom", "display-inline-block", Styles.select]}
               inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary`}
               placeholder="select fund here"
               onChange={setFund}
@@ -120,7 +120,7 @@ export default class Layout extends Component {
               id={`schedules`}
               hideLabel={true}
               ref="schedules"
-              classes={["soft-bottom", "display-inline-block"]}
+              classes={["soft-bottom", "display-inline-block", Styles.select]}
               inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary`}
               includeBlank={true}
               placeholder="choose frequency"
