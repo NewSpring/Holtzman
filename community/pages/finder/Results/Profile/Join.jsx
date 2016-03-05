@@ -43,7 +43,11 @@ export default class Join extends Component {
 
   render () {
     const { group, onExit,  person } = this.props
-    console.log(this.state)
+    let leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"))
+    let firstNames = leaders.map((x, i) => (x.person.nickName || x.person.firstName)).join(", ")
+
+    let message = `\nHey${" " + firstNames},\n\nI'm interested in joining your group and looking forward to hearing from you soon!\n\nThanks!`
+
     switch (this.state.state) {
       case "loading":
         return <Loading msg="We're sending your request!" />
@@ -87,8 +91,8 @@ export default class Join extends Component {
             classes={["hard-bottom", "push-half-ends"]}
             style={{border: "none"}}
             inputClasses="text-dark-secondary"
-            rows={16}
-            defaultValue={"\nHi there,\n\nPraesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam quis risus eget urna mollis ornare vel eu leo. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam.\n\nThanks!"}
+            rows={10}
+            defaultValue={message}
           />
 
           <div className="grid">
