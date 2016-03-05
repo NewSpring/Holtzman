@@ -101,15 +101,15 @@ export default class Card extends Component {
         }
 
 
-        let src = image.url
-        if (typeof window != "undefined" && window != null) {
-           if (window.matchMedia("(max-width: 768px)").matches) {
-             src = image["2:1"]
-           } else if (window.matchMedia("(max-width: 1024px)").matches) {
-             src = image["1:2"]
-           } else if (window.matchMedia("(max-width: 1280px)").matches) {
-             src = image["1:1"]
-         }
+        let src = image.defaultImage
+          if (typeof window != "undefined" && window != null) {
+             if (window.matchMedia("(max-width: 768px)").matches) {
+               src = image["2:1"] ? image["2:1"] : image.url
+             } else if (window.matchMedia("(max-width: 1281px)").matches) {
+               src = image["1:2"] ? image["1:2"] : image.url
+             } else {
+               src = image["1:1"] ? image["1:1"] : image.url
+           }
 
          let style
          if (image.full != true) {
