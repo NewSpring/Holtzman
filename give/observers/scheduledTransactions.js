@@ -68,6 +68,9 @@ const ScheduledTransactions = () => {
         if (!PersonId) {
           PersonId = api.post.sync(`People`, Person)
           PrimaryAliasId = api.get.sync(`People/${PersonId}`).PrimaryAliasId
+        } else {
+          Person = api.get.sync(`People/${PersonId}`)
+          let { PersonId, PrimaryAliasId } = Person
         }
 
 
