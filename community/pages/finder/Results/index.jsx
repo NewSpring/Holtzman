@@ -394,9 +394,9 @@ export default class ListContainer extends Component {
           {() => {
             switch (this.state.status) {
               case "error":
-                return <Err msg="Looks like there was a problem finding a group" style={{position: "absolute"}} />
+                return <Err msg="Looks like there was a problem finding a group" />
               case "loading":
-                return <Loading msg="Searching for nearby groups..." style={{position: "absolute"}} />
+                return <Loading msg="Searching for nearby groups..." />
 
             }
 
