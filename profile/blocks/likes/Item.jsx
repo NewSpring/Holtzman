@@ -2,6 +2,9 @@ import { Component, PropTypes } from "react"
 import Moment from "moment"
 import { Link } from "react-router"
 
+import { ImageLoader } from "../../../core/components/loading"
+import LoadingStyles from "../../../core/components/loading/FeedItemSkeleton.css"
+
 export default class LikesItem extends Component {
 
   static propTypes = {
@@ -10,6 +13,35 @@ export default class LikesItem extends Component {
 
   backgroundStyles = {
     backgroundImage: `url('${this.props.like.image}')`
+  }
+
+  imageclasses = [
+    "background--fill",
+    "card__image",
+    "ratio--landscape"
+  ];
+
+  // context from ImageLoader
+  preloader = () => {
+    return (
+      <div
+        className={`${this.imageclasses.join(" ")} ${LoadingStyles["load-item"]}`}
+        >
+        {this.children}
+      </div>
+    );
+  }
+
+  // context from ImageLoader
+  renderElement = () => {
+    return (
+      <div
+        className={this.imageclasses.join(" ")}
+        style={this.backgroundStyles}
+        >
+        {this.children}
+      </div>
+    );
   }
 
   getDate(entry) {
@@ -36,10 +68,12 @@ export default class LikesItem extends Component {
           <div className="one-whole grid__item">
             <div className="card">
               <Link to={like.link} className="plain">
-                <div
-                  className="background--fill card__image ratio--landscape"
-                  style={this.backgroundStyles}
-                  ></div>
+                <ImageLoader
+                  src={this.props.like.image}
+                  preloader={this.preloader}
+                  renderElement={this.renderElement}
+                  imageclasses={this.iamgeclasses}
+                  ></ImageLoader>
                 <div className="card__item soft text-dark-tertiary">
                   <h4 className="text-dark">{like.title}</h4>
                     <i className={this.iconClasses}></i>
