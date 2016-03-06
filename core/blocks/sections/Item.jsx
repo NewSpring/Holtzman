@@ -3,6 +3,8 @@ import { Link } from "react-router"
 
 import { VelocityTransitionGroup } from "velocity-react"
 
+import { ImageLoader } from "../../components/loading"
+import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
 
 const ChildItem = ({ section, go }) => {
   if (!section) {
@@ -36,6 +38,31 @@ const ChildItem = ({ section, go }) => {
   )
 }
 
+// context from ImageLoader
+function itemPreloader() {
+  return (
+    <div
+      id={this.id}
+      className={`${this.imageclasses.join(" ")} ${LoadingStyles["load-item"]}`}
+      >
+      {this.children}
+    </div>
+  );
+}
+
+// context from ImageLoader
+function itemRenderElement() {
+  return (
+    <div
+      id={this.id}
+      className={this.imageclasses.join(" ")}
+      style={this.style}
+      >
+      {this.children}
+    </div>
+  );
+}
+
 const Item = ({ section, go, children }) => {
   if (!section) {
     return (
@@ -47,6 +74,16 @@ const Item = ({ section, go, children }) => {
     )
   }
 
+  const imageclasses = [
+    "overlay--gradient",
+    "background--fill",
+    "background--dark-tertiary",
+    "rounded",
+    "ratio--square",
+    "floating--bottom",
+    "floating--left"
+  ];
+
   return (
     <div className="one-half soft-half-left grid__item push-half-bottom">
       <Link
@@ -54,15 +91,18 @@ const Item = ({ section, go, children }) => {
         className="plain"
         onClick={go}
       >
-        <div
+        <ImageLoader
+          src={section.image}
+          preloader={itemPreloader}
+          renderElement={itemRenderElement}
           id={section.id}
-          className="overlay--gradient background--fill background--dark-tertiary rounded ratio--square floating--bottom floating--left"
+          imageclasses={imageclasses}
           style={{backgroundImage: `url(${section.image})`}}
           >
           <div className="overlay__item floating__item ratio__item">
             <h6 className="text-light-primary soft-left">{section.text}</h6>
           </div>
-        </div>
+        </ImageLoader>
       </Link>
       {children}
     </div>
