@@ -3,6 +3,33 @@ import { Link } from "react-router"
 
 import { VelocityTransitionGroup } from "velocity-react"
 
+import { ImageLoader } from "../../components/loading"
+import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
+
+// context from ImageLoader
+function preloader() {
+  return (
+    <div
+      id={this.id}
+      className={`${this.imageclasses.join(" ")} ${LoadingStyles["load-item"]}`}
+      >
+      {this.children}
+    </div>
+  );
+}
+
+// context from ImageLoader
+function renderElement() {
+  return (
+    <div
+      id={this.id}
+      className={this.imageclasses.join(" ")}
+      style={this.style}
+      >
+      {this.children}
+    </div>
+  );
+}
 
 const ChildItem = ({ section, go }) => {
   if (!section) {
@@ -15,6 +42,16 @@ const ChildItem = ({ section, go }) => {
     )
   }
 
+  const imageclasses = [
+    "overlay--solid-medium",
+    "background--fill",
+    "background--dark-tertiary",
+    "rounded",
+    "ratio--thin",
+    "floating--bottom",
+    "floating--left"
+  ];
+
   return (
     <div className="one-whole soft-half-left grid__item push-half-bottom">
       <Link
@@ -22,19 +59,23 @@ const ChildItem = ({ section, go }) => {
         className="plain"
         onClick={go}
       >
-        <div
+        <ImageLoader
+          src={section.image}
+          preloader={preloader}
+          renderElement={renderElement}
           id={section.id}
-          className="overlay--solid-medium background--fill background--dark-tertiary rounded ratio--thin floating--bottom floating--left"
+          imageclasses={imageclasses}
           style={{backgroundImage: `url(${section.image})`}}
           >
           <div className="overlay__item floating__item ratio__item">
             <h6 className="text-light-primary soft-left">{section.text}</h6>
           </div>
-        </div>
+        </ImageLoader>
       </Link>
     </div>
   )
 }
+
 
 const Item = ({ section, go, children }) => {
   if (!section) {
@@ -47,6 +88,16 @@ const Item = ({ section, go, children }) => {
     )
   }
 
+  const imageclasses = [
+    "overlay--gradient",
+    "background--fill",
+    "background--dark-tertiary",
+    "rounded",
+    "ratio--square",
+    "floating--bottom",
+    "floating--left"
+  ];
+
   return (
     <div className="one-half soft-half-left grid__item push-half-bottom">
       <Link
@@ -54,15 +105,18 @@ const Item = ({ section, go, children }) => {
         className="plain"
         onClick={go}
       >
-        <div
+        <ImageLoader
+          src={section.image}
+          preloader={preloader}
+          renderElement={renderElement}
           id={section.id}
-          className="overlay--gradient background--fill background--dark-tertiary rounded ratio--square floating--bottom floating--left"
+          imageclasses={imageclasses}
           style={{backgroundImage: `url(${section.image})`}}
           >
           <div className="overlay__item floating__item ratio__item">
             <h6 className="text-light-primary soft-left">{section.text}</h6>
           </div>
-        </div>
+        </ImageLoader>
       </Link>
       {children}
     </div>

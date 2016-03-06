@@ -38,11 +38,11 @@
   border-radius: 2px;
 }
 
-:global(.imageloader) {
+:global(.imageloader > :first-child) {
   opacity: 0.5;
 }
 
-:global(.imageloader.loaded) {
+:global(.imageloader.loaded > :first-child) {
   opacity: 1;
   transition: opacity .5s ease-in-out;
  -moz-transition: opacity .5s ease-in-out;
