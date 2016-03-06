@@ -65,9 +65,16 @@ const ScheduledTransactions = () => {
           SystemNote: "Created from NewSpring Apollos"
         } }
 
+        const isGuest = PersonId ? false : true
+        // This scope issue is bizzare to me, but this works
+        let ScopedId = PersonId
         if (!PersonId) {
           PersonId = api.post.sync(`People`, Person)
           PrimaryAliasId = api.get.sync(`People/${PersonId}`).PrimaryAliasId
+        } else {
+          let RockPerson = api.get.sync(`People/${ScopedId}`)
+          Person = {...Person, ...RockPerson}
+          let { PersonId, PrimaryAliasId } = Person
         }
 
 
