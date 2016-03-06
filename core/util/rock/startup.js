@@ -5,7 +5,7 @@ export default function startup(api) {
 
   if (Meteor.isServer) {
 
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === "production" && !process.env.CI) {
       let { ROOT_URL } = __meteor_runtime_config__
       let current = api.get.sync(`DefinedValues?$filter=Value eq '${ROOT_URL}'`)
 
