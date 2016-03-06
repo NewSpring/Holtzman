@@ -53,7 +53,7 @@ const Layout = ({ schedules, reminderDate, onClick, hide }) => (
     ))}
 
     <Link className="btn one-whole push-ends" to="/give/schedules/recover" onClick={hide}>
-      Comfirm Schedules
+      Confirm Schedules
     </Link>
 
     <button className="btn--thin btn--small btn--dark-tertiary one-whole" onClick={onClick}>
