@@ -66,9 +66,9 @@ export default class SideModalContainer extends Component {
   }
 
   close = (e) => {
-    const { target } = e
-
-    if (target.className != "panel overlay--solid-dark") {
+    const { currentTarget } = e
+    const { id } = currentTarget
+    if (id != "@@modal") {
       return
     }
 
