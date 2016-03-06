@@ -13,7 +13,6 @@ const NotFound = [
   {
     path: "*",
     onEnter: function (nextState, replaceState) {
-      console.log(this, nextState, replaceState)
       let link = `${nextState.location.pathname}${nextState.location.search}${nextState.location.hash}`
 
       if (Meteor.isCordova) {
@@ -33,7 +32,7 @@ const NotFound = [
         return
       }
 
-      replaceState(null, `//newspring.cc${link}`)
+      // replaceState(null, `//newspring.cc${link}`)
 
     }
   }
