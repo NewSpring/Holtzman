@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 
 import { onBoard as onBoardActions, nav as navActions } from "../../../core/store"
 import { avatar } from "../../../core/methods/files/client"
+import { GraphQL } from "../../../core/graphql"
 
 import Layout from "./Layout"
 
@@ -13,10 +14,74 @@ import HomeAddress from "./HomeAddress"
 import PaymentDetails from "./Payments"
 
 
+function updateUser(id, dispatch) {
+  let personQuery = `
+    {
+      person(mongoId: "${id}", cache: false) {
+        age
+        birthdate
+        birthDay
+        birthMonth
+        birthYear
+        campus {
+          name
+          shortCode
+          id
+        }
+        home {
+          city
+          country
+          id
+          zip
+          state
+          street1
+          street2
+        }
+        firstName
+        lastName
+        nickName
+        email
+        phoneNumbers {
+          number
+          formated
+        }
+        photo
+      }
+    }
+  `
+
+  return GraphQL.query(personQuery)
+    .then((person) => {
+      dispatch(onBoardActions.person(person.person))
+    })
+}
+
 const map = (state) => ({ person: state.onBoard.person })
 
 @connect(map)
 class Template extends Component {
+
+  // we need to fork react-router-ssr to allow cascading
+  // fetch datas
+  static fetchData(getStore, dispatch) {
+
+    let id = Meteor.userId()
+
+    if (id) {
+      return updateUser(id, dispatch)
+    }
+
+  }
+
+  componentDidMount(){
+    const { dispatch } = this.props
+    let id = Meteor.userId()
+
+    if (id) {
+      return updateUser(id, dispatch)
+    }
+    
+  }
 
   componentWillMount(){
     this.props.dispatch(navActions.setLevel("TOP"))

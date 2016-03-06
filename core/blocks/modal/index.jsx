@@ -66,8 +66,8 @@ export default class SideModalContainer extends Component {
   }
 
   close = (e) => {
-    const { currentTarget } = e
-    const { id } = currentTarget
+    const { target } = e
+    const { id } = target
     if (id != "@@modal") {
       return
     }
