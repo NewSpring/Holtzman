@@ -6,40 +6,8 @@ import { VelocityTransitionGroup } from "velocity-react"
 import { ImageLoader } from "../../components/loading"
 import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
 
-const ChildItem = ({ section, go }) => {
-  if (!section) {
-    return (
-      <div className="one-whole grid__item">
-        <div className="rounded ratio--landscape">
-          <div className="ratio__item"></div>
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="one-whole soft-half-left grid__item push-half-bottom">
-      <Link
-        to={section.link}
-        className="plain"
-        onClick={go}
-      >
-        <div
-          id={section.id}
-          className="overlay--solid-medium background--fill background--dark-tertiary rounded ratio--thin floating--bottom floating--left"
-          style={{backgroundImage: `url(${section.image})`}}
-          >
-          <div className="overlay__item floating__item ratio__item">
-            <h6 className="text-light-primary soft-left">{section.text}</h6>
-          </div>
-        </div>
-      </Link>
-    </div>
-  )
-}
-
 // context from ImageLoader
-function itemPreloader() {
+function preloader() {
   return (
     <div
       id={this.id}
@@ -51,7 +19,7 @@ function itemPreloader() {
 }
 
 // context from ImageLoader
-function itemRenderElement() {
+function renderElement() {
   return (
     <div
       id={this.id}
@@ -62,6 +30,52 @@ function itemRenderElement() {
     </div>
   );
 }
+
+const ChildItem = ({ section, go }) => {
+  if (!section) {
+    return (
+      <div className="one-whole grid__item">
+        <div className="rounded ratio--landscape">
+          <div className="ratio__item"></div>
+        </div>
+      </div>
+    )
+  }
+
+  const imageclasses = [
+    "overlay--solid-medium",
+    "background--fill",
+    "background--dark-tertiary",
+    "rounded",
+    "ratio--thin",
+    "floating--bottom",
+    "floating--left"
+  ];
+
+  return (
+    <div className="one-whole soft-half-left grid__item push-half-bottom">
+      <Link
+        to={section.link}
+        className="plain"
+        onClick={go}
+      >
+        <ImageLoader
+          src={section.image}
+          preloader={preloader}
+          renderElement={renderElement}
+          id={section.id}
+          imageclasses={imageclasses}
+          style={{backgroundImage: `url(${section.image})`}}
+          >
+          <div className="overlay__item floating__item ratio__item">
+            <h6 className="text-light-primary soft-left">{section.text}</h6>
+          </div>
+        </ImageLoader>
+      </Link>
+    </div>
+  )
+}
+
 
 const Item = ({ section, go, children }) => {
   if (!section) {
@@ -93,8 +107,8 @@ const Item = ({ section, go, children }) => {
       >
         <ImageLoader
           src={section.image}
-          preloader={itemPreloader}
-          renderElement={itemRenderElement}
+          preloader={preloader}
+          renderElement={renderElement}
           id={section.id}
           imageclasses={imageclasses}
           style={{backgroundImage: `url(${section.image})`}}
