@@ -221,6 +221,8 @@ export default class Input extends Component {
           maxLength={this.props.maxLength || ""}
         />
 
+        {this.props.children}
+
         {this.renderHelpText()}
 
       </div>

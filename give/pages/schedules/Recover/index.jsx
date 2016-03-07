@@ -159,7 +159,7 @@ export default class Template extends Component {
         // this.props.dispatch(transactionActions.removeSchedule(Number(id)))
         this.props.dispatch(giveActions.deleteRecoverableSchedules(Number(id)))
         Meteor.call("give/schedule/cancel", { id }, (err, response) => {
-          console.log(err, response)
+          // console.log(err, response)
         })
       }
     }))
