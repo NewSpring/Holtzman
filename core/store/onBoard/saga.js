@@ -1,5 +1,5 @@
 import "regenerator/runtime"
-import { take, put, cps } from "redux-saga/effects"
+import { take, put, cps, call } from "redux-saga/effects"
 
 import { GraphQL } from "../../graphql"
 import { auth } from "../../methods"
@@ -136,6 +136,49 @@ addSaga(function* onBoard(getState) {
 
         } else {
 
+          // force fetch info
+          // @TODO figure out caching issues?
+          let personQuery = `
+            {
+              person(mongoId: "${Meteor.userId()}", cache: false) {
+                age
+                birthdate
+                birthDay
+                birthMonth
+                birthYear
+                campus {
+                  name
+                  shortCode
+                  id
+                }
+                home {
+                  city
+                  country
+                  id
+                  zip
+                  state
+                  street1
+                  street2
+                }
+                firstName
+                lastName
+                nickName
+                email
+                phoneNumbers {
+                  number
+                  formated
+                }
+                photo
+              }
+            }
+          `
+          const lookup = () => (GraphQL.query(personQuery))
+          const { person } = yield call(lookup)
+
+          if (person) {
+            yield put(actions.person(person))
+          }
+          
           // set the logged in status
           yield put(actions.authorize(true))
 
