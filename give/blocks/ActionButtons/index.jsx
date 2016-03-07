@@ -204,7 +204,7 @@ export default class GiveNow extends Component {
 
     }
 
-    if (!this.props.authorized) {
+    if (!this.props.authorized && !Meteor.userId()) {
       text = "Sign In"
     }
 
@@ -247,7 +247,7 @@ export default class GiveNow extends Component {
             dataId={this.props.dataId}
           />
           {() => {
-            if (!this.props.authorized) {
+            if (!this.props.authorized && !Meteor.userId()) {
               return (
                 <SecondaryButton
 
@@ -258,7 +258,7 @@ export default class GiveNow extends Component {
 
           }()}
           {() => {
-            if (!this.props.authorized && !this.props.disabledGuest) {
+            if (!this.props.authorized && !this.props.disabledGuest && !Meteor.userId()) {
               return (
                 <Guest
 
