@@ -18,7 +18,8 @@ Meteor.methods({
         method: "POST",
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': "basic " + new Buffer(`apollos:${Meteor.settings.rock.token}`).toString("base64")
         },
         body: JSON.stringify(payload)
       })
