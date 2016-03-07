@@ -77,7 +77,7 @@ const cancel = ({ id, gateway }) => {
   }
 
   // created via Rock / NMI / Apollos
-  if (existing.GatewayCode) {
+  if (existing.GatewayScheduleId) {
     response = api.patch.sync(`FinancialScheduledTransactions/${id}`, { IsActive: false })
   } else {
     // infellowhsip move over
