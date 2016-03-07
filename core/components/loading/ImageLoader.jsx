@@ -121,7 +121,7 @@ export default class ImageLoader extends Component {
 
     }
 
-    if (isElementInView(el)) {
+    if (isElementInView(el) || this.props.force) {
       makeImage()
       return
     }
