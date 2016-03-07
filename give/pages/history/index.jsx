@@ -86,7 +86,6 @@ export default class Template extends Component {
       return
     }
 
-    console.log("fetching...")
     if (mongoId) {
       getTransactions({ mongoId, skip, size }, dispatch)
         .then((transactions) => {
@@ -163,11 +162,13 @@ export default class Template extends Component {
       transactions.push(this.props.transactions[transaction])
     }
 
-    transactions = transactions.sort((a, b) => {
-      a = new Date(a.date);
-      b = new Date(b.date);
-      return a>b ? -1 : a<b ? 1 : 0;
-    })
+    // transactions = transactions.sort((a, b) => {
+    //   a = new Date(a.date);
+    //   b = new Date(b.date);
+    //   return a>b ? -1 : a<b ? 1 : 0;
+    // })
+    transactions = _.sortBy(transactions, "date").reverse()
+
 
     return (
       <Layout
