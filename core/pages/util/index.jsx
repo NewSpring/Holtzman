@@ -22,7 +22,7 @@ const Template = (props) => {
 
 
       </Split>
-      <Left scroll={true}>
+      <Left scroll={true} classes={["background--light-primary"]}>
         {props.children}
       </Left>
     </div>

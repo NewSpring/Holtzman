@@ -41,6 +41,20 @@ function getPaymentDetails(id, dispatch) {
     .then(({ paymentDetails }) => (paymentDetails))
 }
 
+
+function prefillRedux(dispatch) {
+  Tracker.autorun((computation) => {
+
+    Meteor.subscribe("recently-liked")
+
+    if (Meteor.userId()) {
+      getPaymentDetails(Meteor.userId(), dispatch)
+      computation.stop()
+    }
+
+  });
+}
+
 /*
 
   The give now button is presented in the following order:
@@ -75,10 +89,24 @@ export default class GiveNow extends Component {
           ))
 
         })
+    } else {
+      prefillRedux(dispatch)
     }
 
   }
 
+  getAccount = () => {
+    let account = {}
+    if (this.props.savedAccount && Object.keys(this.props.savedAccount).length) {
+      let accounts = []
+      for (let acc in this.props.savedAccount) {
+        accounts.push(this.props.savedAccount[acc])
+      }
+      account = _.sortBy(accounts, "date")[accounts.length - 1]
+    }
+
+    return account
+  }
 
   buttonClasses = () => {
     let classes = ["btn"]
@@ -119,7 +147,8 @@ export default class GiveNow extends Component {
     this.props.dispatch(giveActions.setTransactionType("default"))
 
     if (this.props.savedAccount && Object.keys(this.props.savedAccount).length) {
-      const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
+      // const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
+      const details = this.getAccount()
       this.props.dispatch(giveActions.setAccount(details))
     }
 
@@ -166,7 +195,8 @@ export default class GiveNow extends Component {
 
     if (this.props.savedAccount && Object.keys(this.props.savedAccount).length && !this.props.hideCard) {
 
-      const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
+      // const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
+      const details = this.getAccount()
       let { accountNumber } = details.payment
       accountNumber = accountNumber.slice(-4).trim()
 
@@ -185,7 +215,8 @@ export default class GiveNow extends Component {
   icon = () => {
 
     if (this.props.savedAccount && Object.keys(this.props.savedAccount).length && this.props.authorized && !this.props.hideCard) {
-      const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
+      // const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
+      const detail = this.getAccount()
       if (detail.paymentType && detail.payment.paymentType === "ACH") {
         return (
           <AccountType width="30px" height="21px" type="Bank"/>
