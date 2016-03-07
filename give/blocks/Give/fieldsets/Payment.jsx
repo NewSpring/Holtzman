@@ -1,4 +1,5 @@
 import { Component, PropTypes } from "react"
+import { AccountType } from "../../../components"
 
 import { Controls, Forms } from "../../../../core/components"
 import Validate from "../../../../core/util/validate"
@@ -34,6 +35,62 @@ export default class Payment extends Component {
       </h4>
     )
   }
+
+  icon = () => {
+
+    const { payment } = this.props.data
+    const { savedAccount } = this.props
+
+    if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
+      return (
+        // replace with SVG
+        <AccountType width="30px" height="21px" type={savedAccount.payment.paymentType}/>
+      )
+    }
+
+    const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
+
+    if (!masked) {
+      return null
+    }
+
+    if (payment.type === "ach") {
+      return (
+        <AccountType width="30px" height="21px" type="Bank"/>
+      )
+    }
+
+    if (payment.type === "cc") {
+
+      const getCardType = (card) => {
+
+        const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi
+
+        const defaultRegex = {
+          Visa: /^4[0-9]{0,15}$/gmi,
+          MasterCard: /^5$|^5[1-5][0-9]{0,14}$/gmi,
+          AmEx: /^3$|^3[47][0-9]{0,13}$/gmi,
+          Discover: d
+        }
+
+        for (let regex in defaultRegex) {
+          if (defaultRegex[regex].test(card.replace(/-/gmi, ""))) {
+            return regex
+          }
+        }
+
+        return null
+
+      }
+
+      return (
+        // replace with SVG
+        <AccountType width="30px" height="21px" type={getCardType(masked)}/>
+      )
+    }
+
+  }
+
 
   toggles = ["Credit Card", "Bank Account"]
 
@@ -194,7 +251,11 @@ export default class Payment extends Component {
           onChange={this.saveData}
           validation={this.validate}
           ref="cardNumber"
-        />
+        >
+          <div className="locked locked-right soft-double-right locked-top" style={{top: "-3px"}}>
+            {this.icon()}
+          </div>
+        </Forms.Input>
         <div className="grid">
           <div className="grid__item one-half">
             <Forms.Input
