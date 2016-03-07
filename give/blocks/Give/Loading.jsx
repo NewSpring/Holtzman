@@ -12,6 +12,9 @@ const Loading = (context) => (
         <div className="push-double-top">
           <Spinner styles={{borderColor: "#fff #6BAC43 #fff #fff", borderWidth: "7px"}}/>
           <h3 className="text-light-primary push-top">We're Processing Your Gift</h3>
+          <p className="text-light-primary">
+            Please to don't close this window while your gift is being processed.
+          </p>
         </div>
       </div>
     </WindowLoading>
