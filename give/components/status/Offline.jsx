@@ -3,7 +3,7 @@ import { PropTypes } from "react"
 const Offline = () => (
   <div>
     <h3 className="text-dark-tertiary">
-      Unfortunatley our giving service is offline.
+      Unfortunately our giving service is offline.
     </h3>
     <p>
       We are working to resolve this as fast as possible. We are sorry for any inconvience this may have caused.

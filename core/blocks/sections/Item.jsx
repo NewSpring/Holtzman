@@ -58,12 +58,13 @@ const ChildItem = ({ section, go }) => {
         to={section.link}
         className="plain"
         onClick={go}
+        id={section.id}
       >
         <ImageLoader
           src={section.image}
           preloader={preloader}
           renderElement={renderElement}
-          id={section.id}
+
           imageclasses={imageclasses}
           style={{backgroundImage: `url(${section.image})`}}
           >
@@ -104,12 +105,13 @@ const Item = ({ section, go, children }) => {
         to={section.link}
         className="plain"
         onClick={go}
+        id={section.id}
       >
         <ImageLoader
           src={section.image}
           preloader={preloader}
           renderElement={renderElement}
-          id={section.id}
+
           imageclasses={imageclasses}
           style={{backgroundImage: `url(${section.image})`}}
           >
@@ -135,7 +137,7 @@ export default class SectionItem extends Component {
   }
 
   expandOrGo = (e) => {
-    const { id } = e.target
+    const { id } = e.currentTarget
 
     for (let section of this.props.sections) {
       if (Number(section.id) === Number(id) && section.children.length) {
