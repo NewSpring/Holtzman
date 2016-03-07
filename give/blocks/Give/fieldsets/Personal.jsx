@@ -38,7 +38,7 @@ export default class Personal extends Component {
       })
     }
 
-    return isValid
+    return true
   }
 
   isEmail = (value) => {
@@ -64,7 +64,7 @@ export default class Personal extends Component {
       this.props.save({ personal: { lastName: value }})
     }
 
-    return isValid
+    return true
   }
 
   campus = (value) => {
@@ -152,15 +152,16 @@ export default class Personal extends Component {
 
           {() => {
             let btnClasses = ["push-left"];
-
+            let disabled = false
             if (personal.email === null || personal.firstName === null || personal.email === null || personal.campus === null){
               btnClasses.push("btn--disabled");
+              disabled = true
             } else {
               btnClasses.push("btn");
             }
 
             return (
-              <button className={btnClasses.join(" ")} onClick={this.props.next}>
+              <button className={btnClasses.join(" ")} disabled={disabled} onClick={this.props.next}>
                 Next
               </button>
             )

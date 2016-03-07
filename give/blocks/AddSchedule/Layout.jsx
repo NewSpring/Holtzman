@@ -88,7 +88,7 @@ export default class Layout extends Component {
               validate={save}
               format={format}
               style={{width: "200px"}}
-              defaultValue={existing && existing.details && existing.details.length && existing.details[0].amount ? existing.details[0].amount : null}
+              defaultValue={existing && existing.details && existing.details.length && existing.details[0].amount ? "$" + existing.details[0].amount : null}
 
             />
             <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
@@ -128,7 +128,7 @@ export default class Layout extends Component {
               defaultValue={existing ? existing.frequency : null}
             />
             <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
-              starting &nbsp;
+              &nbsp; starting &nbsp;
             </h3>
 
             <Forms.Date

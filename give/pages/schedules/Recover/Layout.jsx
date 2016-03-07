@@ -214,13 +214,18 @@ export default class Layout extends Component {
                           </div>
                         )
                       })}
-                      <p className="soft text-center">
-                        <small>
-                          <em>
-                            Please be aware that your existing schedule will continue to charge the account on file until you transfer it to our new system.
-                          </em>
-                        </small>
-                      </p>
+                      <div className="card">
+                        <div className="card__item">
+                          <p className="soft text-center soft-double-sides@lap-and-up">
+                            <small>
+                              <em>
+                                Please be aware that your existing schedule will continue to charge the account on file until you transfer it to our new system.
+                              </em>
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
 
