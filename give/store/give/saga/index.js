@@ -384,6 +384,7 @@ function* recoverTransactions(getStore) {
 
     yield put(actions.saveSchedules(bulkUpdate))
 
+    console.log(now, time, user)
     // only update the store if it is past the reminder date
     if (now < time) {
       return
