@@ -1,11 +1,13 @@
 import "regenerator/runtime"
 import ReactDOM from "react-dom"
 import Moment from "moment"
-import { take, put, cps } from "redux-saga/effects"
+import { take, put, cps, call } from "redux-saga/effects"
 
 import { GraphQL } from "../../../../core/graphql"
 import { addSaga } from "../../../../core/store/utilities"
 import modalActions from "../../../../core/store/modal"
+import collectionActions from "../../../../core/store/collections"
+
 import { api } from "../../../../core/util/rock"
 
 import types from "./../types"
@@ -113,27 +115,33 @@ addSaga(function* chargeTransaction(getStore) {
         // we don't have a way to optimistcally update this without it being a
         // hacky work around. I think this can wait until Apollo is closer
         // to revist
-        // if (name) {
-        //   let query = `
-        //     {
-        //       paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${Meteor.userId()}") {
-        //         name
-        //         id
-        //         date
-        //         payment {
-        //           accountNumber
-        //           paymentType
-        //         }
-        //       }
-        //     }
-        //   `
-        //
-        //   let details = yield GraphQL.query(query)
-        //
-        //   if (details && details[0]) {
-        //     yield put(actions.setAccount(details[0]))
-        //   }
-        // }
+        if (name) {
+          const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+          let query = `
+            {
+              paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${Meteor.userId()}") {
+                name
+                id
+                date
+                payment {
+                  accountNumber
+                  paymentType
+                }
+              }
+            }
+          `
+
+          // wait one second before calling this
+          yield call(delay, 1000)
+          let { paymentDetails } = yield GraphQL.query(query)
+
+          if (paymentDetails && paymentDetails.length) {
+            yield put(collectionActions.upsertBatch(
+              "savedAccounts", paymentDetails, "id"
+            ))
+          }
+
+        }
 
       }
 

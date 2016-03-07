@@ -2,7 +2,7 @@ import { Link } from "react-router"
 import { Forms } from "../../../components"
 
 const Layout = ({ submit, save, state }, context) => (
-  <div className="background--light-primary one-whole text-center push-double-top@lap-and-up locked-ends locked-sides push-double-bottom" style={{overflow: "visible"}}>
+  <div className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom" style={{overflow: "visible"}}>
       <Forms.Form
         id="reset-password"
         classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
