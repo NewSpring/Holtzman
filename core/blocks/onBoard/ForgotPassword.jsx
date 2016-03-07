@@ -61,7 +61,7 @@ class ForgotPassword extends React.Component {
               }, 3000)
               return
             }
-            
+
             this.setState({ state: "success" })
 
             setTimeout(() => {
@@ -128,13 +128,14 @@ class ForgotPassword extends React.Component {
         />
 
       <div>
-        <button
+        <a
+          href="#"
           onClick={this.props.back}
           tabIndex={-1}
           className="btn--small btn--dark-tertiary display-inline-block"
         >
           Back
-        </button>
+        </a>
 
         {() => {
           let btnClasses = ["push-left"];
