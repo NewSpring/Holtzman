@@ -193,6 +193,8 @@ export default class Template extends Component {
       transactions.push(schedules[transaction])
     }
 
+    transactions = _.sortBy(transactions, "start").reverse()
+
     let mappedAccounts = []
     for (const account in accounts) {
       mappedAccounts.push(accounts[account])
