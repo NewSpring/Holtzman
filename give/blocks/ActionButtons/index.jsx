@@ -87,9 +87,9 @@ export default class GiveNow extends Component {
       classes.push("has-card")
     }
 
-    if (this.props.disabled) {
-      classes.push("btn--disabled")
-    }
+    // if (this.props.disabled) {
+    //   classes.push("btn--disabled")
+    // }
     if (this.props.classes) {
       classes = classes.concat(this.props.classes)
     }
@@ -98,13 +98,14 @@ export default class GiveNow extends Component {
   }
 
   renderAfterLogin = () => {
+    if (this.props.disabled) {
+      return this.props.dispatch(modal.hide())
+    }
+
     this.props.dispatch(modal.render(Give))
   }
 
   onClick = (e) => {
-    if (this.props.disabled) {
-      return
-    }
 
     let keepGoing = true
     if (this.props.onClick) {
@@ -206,7 +207,6 @@ export default class GiveNow extends Component {
       return (
         <span>
           <PrimaryButton
-            disabled={this.props.disabled}
             classes={this.props.theme || this.buttonClasses()}
             icon={this.icon()}
             text={this.buttonText()}
@@ -219,7 +219,7 @@ export default class GiveNow extends Component {
             if (!this.props.authorized) {
               return (
                 <SecondaryButton
-                  disabled={this.props.disabled}
+
                   onClick={this.register}
                 />
               )
@@ -230,7 +230,7 @@ export default class GiveNow extends Component {
             if (!this.props.authorized && !this.props.disabledGuest) {
               return (
                 <Guest
-                  disabled={this.props.disabled}
+
                   onClick={this.giveAsGuest}
                 />
               )
