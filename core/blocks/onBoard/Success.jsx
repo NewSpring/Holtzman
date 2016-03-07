@@ -6,7 +6,7 @@ const Success = ({ person, onExit }) => (
   <div className="soft soft-double-ends one-whole text-center">
 
     <h4 className="text-center push-ends">
-      Welcome{" " + (person.nickName || person.firstName)}!
+      Welcome{person.nickName ? " " + (person.nickName || person.firstName) : ""}!
     </h4>
 
     <p className="text-left">

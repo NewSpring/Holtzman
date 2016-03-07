@@ -24,7 +24,10 @@ export default class OnBoardContainer extends Component {
     // if logged in, go to the next action
     if (!this.props.onboard.authorized && nextProps.onboard.authorized) {
       // let the UI show the welcome
-      if (nextProps.onboard.showWelcome) {
+      let user = Meteor.user()
+      let isOld = user && user.profile && user.profile.lastLogin < new Date()
+
+      if (nextProps.onboard.showWelcome  && !isOld) {
         return
       }
 
