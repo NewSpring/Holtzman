@@ -324,16 +324,18 @@ export default class Payment extends Component {
 
 
             let submit = this.props.next
+            let disabled = false
             if (ach || cc){
               btnClasses.push("btn")
               submit = this.props.next
             } else {
               btnClasses.push("btn--disabled");
+              disabled = true
               submit = (e) => (e.preventDefault())
             }
 
             return (
-              <button  className={btnClasses.join(" ")} type="submit" onClick={submit}>
+              <button  className={btnClasses.join(" ")} disabled={disabled} type="submit" onClick={submit}>
                 Next
               </button>
             )

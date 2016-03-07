@@ -33,7 +33,7 @@ export default class Billing extends Component {
       this.props.save({ billing: { streetAddress: value }})
     }
 
-    return isValid
+    return true
   }
 
   streetAddress2 = (value) => {
@@ -62,7 +62,7 @@ export default class Billing extends Component {
       this.props.save({ billing: { country: value }})
     }
 
-    return isValid
+    return true
   }
 
   city = (value) => {
@@ -73,7 +73,7 @@ export default class Billing extends Component {
       this.props.save({ billing: { city: value }})
     }
 
-    return value.length ? true : false
+    return true
   }
 
   zip = (value) => {
@@ -140,11 +140,10 @@ export default class Billing extends Component {
           />
 
           <div className="grid">
-
-            <div className="grid__item one-half">
-              {() => {
-                if (!billing.country || billing.country === "US" || billing.country === "CA") {
-                  return (
+            {() => {
+              if (!billing.country || billing.country === "US" || billing.country === "CA") {
+                return (
+                  <div className="grid__item one-half">
                     <Forms.Select
                       name="state"
                       label="State/Territory"
@@ -155,37 +154,33 @@ export default class Billing extends Component {
                       ref="state"
                       includeBlank={true}
                     />
-                  )
-                }
-
-                return (
-                  <Forms.Input
-                    name="state"
-                    label="State/Territory"
-                    errorText="Please enter your state"
-                    defaultValue={billing.state}
-                    validation={this.saveState}
-                    ref="state"
-                  />
+                  </div>
                 )
+              }
+            }()}
+            {() => {
+              let length = "one-whole"
+              if (!billing.country || billing.country === "US" || billing.country === "CA") {
+                length = "one-half"
+              }
+              return (
+                <div className={`grid__item ${length}`}>
+                  <Forms.Input
+                    name="zip"
+                    label="Zip/Postal"
+                    type="tel"
+                    errorText="Please enter your zip"
+                    defaultValue={billing.zip}
+                    onChange={this.zip}
+                    validation={this.zip}
+                    ref="zip"
+                    maxLength="5"
+                  />
+                </div>
+              )
+            }()}
 
-              }()}
 
-
-            </div>
-            <div className="grid__item one-half">
-              <Forms.Input
-                name="zip"
-                label="Zip"
-                type="tel"
-                errorText="Please enter your zip"
-                defaultValue={billing.zip}
-                onChange={this.zip}
-                validation={this.zip}
-                ref="zip"
-                maxLength="5"
-              />
-            </div>
           </div>
 
         </div>
@@ -200,15 +195,16 @@ export default class Billing extends Component {
           {() => {
             const { billing } = this.props.data
             let btnClasses = ["push-left"];
-
+            let disabled = false
             if (!billing.streetAddress || !billing.city ){
               btnClasses.push("btn--disabled");
+              disabled = true
             } else {
               btnClasses.push("btn");
             }
 
             return (
-              <button className={btnClasses.join(" ")} type="submit" onClick={this.props.next}>
+              <button className={btnClasses.join(" ")} disabled={disabled} type="submit" onClick={this.props.next}>
                 Next
               </button>
             )

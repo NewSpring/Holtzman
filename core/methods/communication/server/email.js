@@ -1,6 +1,8 @@
 /*global Meteor, check */
 
-
+import toPascalCase from "to-pascal-case"
+import toSnakeCase from "to-snake-case"
+import Moment from "moment"
 
 import { api, Lava } from "../../../util/rock"
 import { makeNewGuid } from "../../../util"
@@ -10,7 +12,46 @@ import { makeNewGuid } from "../../../util"
 import Liquid from "liquid-node"
 const Parser = new Liquid.Engine
 
-Parser.registerFilters({
+let StandardFilters = {...Liquid.StandardFilters}
+let caseChangedFilter = {}
+for (let filter in StandardFilters) {
+  let newFilter = toPascalCase(filter)
+
+
+  caseChangedFilter[newFilter] = (input, format) => {
+    input = toSnakeCase(input)
+
+    return StandardFilters[filter](input, format)
+  }
+
+}
+
+
+function toDate(input) {
+  if (input == null) {
+    return;
+  }
+  if (input instanceof Date) {
+    return input;
+  }
+  if (input === 'now' || input === "Now") {
+    return new Date();
+  }
+  if (isNumber(input)) {
+    input = parseInt(input);
+  } else {
+    input = toString(input);
+    if (input.length === 0) {
+      return;
+    }
+    input = Date.parse(input);
+  }
+  if (input != null) {
+    return new Date(input);
+  }
+};
+
+Parser.registerFilters({...caseChangedFilter, ...{
   Attribute: function(variable, key){
 
     if (variable === "Global") {
@@ -29,8 +70,23 @@ Parser.registerFilters({
 
       return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     }
+  },
+  Date: function(input, format) {
+    // console.log(this)
+    input = toDate(input)
+
+    if (input == null) {
+      return "";
+    } else if (toString(format).length === 0) {
+      return input.toUTCString();
+    } else {
+      format = format.replace(/y/gmi, "Y")
+      return Moment(input).format(format);
+    }
+
+    // return Liquid.StandardFilters.date(input, format.toLowerCase())
   }
-})
+}})
 
 
 
@@ -61,10 +117,18 @@ Meteor.methods({
     mergeFields = {...mergeFields, ...{ GlobalAttribute }}
 
     return Promise.all([
+      // Parser.parse(Email.Subject)
+      //   .then((template) => {
+      //     // console.log(template)
+      //     return template.render(mergeFields)
+      //   }),
+      // Parser.parse(Email.Body)
+      //   .then((template) => {
+      //     console.log(template.root.nodelist)
+      //     return template.render(mergeFields)
+      //   }),
       Parser.parseAndRender(Email.Subject, mergeFields),
       Parser.parseAndRender(Email.Body, mergeFields)
-      // Lava.render(Email.subect, mergeFields),
-      // Lava.render(Email.Body, mergeFields)
     ])
       .then(([subject, body]) => {
 
