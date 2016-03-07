@@ -115,9 +115,9 @@ export default class GiveNow extends Component {
       classes.push("has-card")
     }
 
-    // if (this.props.disabled) {
-    //   classes.push("btn--disabled")
-    // }
+    if (this.props.disabled && this.props.authorized && Meteor.userId()) {
+      classes.push("btn--disabled")
+    }
     if (this.props.classes) {
       classes = classes.concat(this.props.classes)
     }
@@ -152,9 +152,9 @@ export default class GiveNow extends Component {
       this.props.dispatch(giveActions.setAccount(details))
     }
 
-    if (this.props.authorized) {
+    if (this.props.authorized && Meteor.userId() && !this.props.disabled) {
       this.props.dispatch(modal.render(Give))
-    } else {
+    } else if (!this.props.authorized && !Meteor.userId()){
 
       this.props.dispatch(modal.render(OnBoard, {
         onFinished: this.renderAfterLogin
