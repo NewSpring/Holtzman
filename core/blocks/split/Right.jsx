@@ -4,7 +4,7 @@ import { ImageLoader } from "../../components/loading"
 import Styles from "../../components/loading/FeedItemSkeleton.css"
 
 import Hover from "./right.css"
-console.log(Hover)
+
 const DefaultWrapper = (props) => (
   <section {...props} className={props.imageclasses.join(" ")}>{props.children}</section>
 )

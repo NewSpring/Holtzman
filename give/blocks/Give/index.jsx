@@ -250,7 +250,7 @@ export default class Give extends Component {
         return <Err msg={errors[Object.keys(errors)[0]].error} goToStepOne={this.goToStepOne} />
       case "success":
         return <Success
-          total={this.monentize(total)}
+          total={this.monentize(total.toFixed(2))}
           email={data.personal.email}
           guest={transactionType === "guest"}
           onClick={this.goToOnboard}
