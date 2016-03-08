@@ -15,7 +15,7 @@ const Layout = ({ alive, accounts }, context) => (
 
     <div>
 
-      <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg" />
+      <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/you_cant_outgive_god2x1.jpg" />
 
       <Split nav={true} classes={["background--light-primary"]}>
 
