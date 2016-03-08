@@ -22,9 +22,28 @@ export default class SideModalContainer extends Component {
     previous: null
   }
 
+  bindEsc = (e) => {
+    // if key hit is `esc` or template is closed is clicked
+    if (event.keyCode === 27) {
+      this.props.dispatch(modalActions.hide())
+    }
+
+  }
+
   componentDidMount(){
     if (!this.props.modal.props.keepNav && this.props.modal.visible) {
       this.props.dispatch(navActions.setLevel("MODAL"))
+    }
+
+    if (Meteor.isClient) {
+      document.addEventListener("keyup", this.bindEsc, false)
+    }
+
+  }
+
+  componentWillUnmount() {
+    if (Meteor.isClient) {
+      document.removeEventListener("keyup", this.bindEsc, false)
     }
   }
 
