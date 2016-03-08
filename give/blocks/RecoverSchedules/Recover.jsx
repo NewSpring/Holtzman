@@ -5,16 +5,15 @@ import { Link } from "react-router"
 const RecoverableSchedule = ({id, account, amount, frequency, removeOnClick}) => (
   <div>
     <div className="display-inline-block soft-half-ends one-whole">
-      <h6 className="flush-bottom float-left">{account}</h6>
-      <button className="h6 flush-bottom float-right text-alert" data-id={id} onClick={removeOnClick}>Remove</button>
+      <h5 className="flush-bottom float-left">{account}</h5>
     </div>
 
-    <div className="grid push-top">
+    <div className="grid push-top soft-bottom">
 
       <div className="grid__item one-half">
         <Forms.Input
           label="Amount"
-          defaultValue={amount}
+          defaultValue={"$" + amount}
           disabled={true}
           classes={["soft-half-bottom"]}
         />
@@ -52,7 +51,7 @@ const Layout = ({ schedules, reminderDate, onClick, hide }) => (
       />
     ))}
 
-    <Link className="btn one-whole push-ends" to="/give/schedules/recover" onClick={hide}>
+    <Link className="btn one-whole push-ends" to="/give/schedules/transfer" onClick={hide}>
       Confirm Schedules
     </Link>
 

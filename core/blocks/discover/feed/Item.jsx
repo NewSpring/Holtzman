@@ -19,7 +19,8 @@ export default class DiscoverItem extends Component {
     "background--fill",
     "ratio--landscape",
     "floating--bottom",
-    "floating--left"
+    "floating--left",
+    "card__image"
   ];
 
   // context from ImageLoader
@@ -47,15 +48,16 @@ export default class DiscoverItem extends Component {
 
   render() {
     return (
-      <div className="one-whole grid__item push-half-bottom">
+      <div className="one-whole grid__item push-half-bottom card">
         <a href={this.props.item.link}>
           <ImageLoader
             src={this.props.item.image}
             preloader={this.preloader}
             renderElement={this.renderElement}
             imageclasses={this.imageclasses}
+            force={true}
             >
-            <div className="overlay__item floating__item soft-left soft-bottom text-light-primary">
+            <div className="overlay__item floating__item soft-left soft-bottom text-light-primary card__item">
               <h5 className="flush">{this.props.item.topicName}</h5>
               {/* <h7 className="soft-top">{this.props.item.tags.join(", ")}</h7> */}
             </div>

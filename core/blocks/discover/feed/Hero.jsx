@@ -55,6 +55,7 @@ export default class DiscoverHero extends Component {
         <ImageLoader
           src={this.props.image}
           preloader={this.preloader}
+          force={true}
           renderElement={this.renderElement}
           imageclasses={this.imageclasses}>
 

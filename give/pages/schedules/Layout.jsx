@@ -94,7 +94,7 @@ export default class Layout extends Component {
         <div>
           <Split nav={true} classes={["background--light-primary"]}>
 
-            <Meta title="Reccuring Giving" image={photo} />
+            <Meta title="Schedule Your Giving" image={photo} />
 
             <Right
               background={photo}
@@ -117,7 +117,7 @@ export default class Layout extends Component {
                            We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
                         </h5>
 
-                        <Link to="/give/schedules/recover" className="btn--light">Transfer Schedules</Link>
+                        <Link to="/give/schedules/transfer" className="btn--light">Transfer Schedules</Link>
                       </div>
 
                     </div>
