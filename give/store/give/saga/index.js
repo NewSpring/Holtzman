@@ -37,7 +37,7 @@ addSaga(function* chargeTransaction(getStore) {
 
       // personal info is ready to be submitted
       const formattedData = formatPersonDetails(give, campuses)
-      console.log(formattedData)
+
       // if you have a saved account, NMI lets you "order" a schedule
       // instead of order + charge
       if (formattedData.savedAccount && Object.keys(give.schedules).length) {
@@ -89,7 +89,7 @@ addSaga(function* chargeTransaction(getStore) {
       try {
         transactionResponse = yield cps(action, token, name, id)
       } catch (e) { error = e }
-      console.log(transactionResponse)
+
       // set error states
       if (error) {
 
