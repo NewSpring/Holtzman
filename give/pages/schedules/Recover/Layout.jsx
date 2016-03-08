@@ -241,17 +241,17 @@ export default class Layout extends Component {
                     <div className="soft soft-double@lap-and-up push-top@lap-and-up">
                       <h2 className="soft-half-bottom">Thank you!</h2>
                       <p>
-
-                        Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui.
-
-
+                        <strong>Your gift matters!</strong>
                       </p>
                       <p>
-                        Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui.
+                        The number of kids we can help by putting shoes on their feet and a backpack full of school supplies on their back matter. The number of people that visited the care room and had their lives changed because of one conversation matter. The number of people that met Jesus in a service, online, or at the Gauntlet matter.
                       </p>
                       <p>
-                        Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui.
+                        When you give, you make a difference in someone’s life.
                       </p>
+                      <p><em>
+                        “Every number has a name, every name has a story, and every story matters to God.”
+                      </em></p>
 
                     </div>
                   </div>
