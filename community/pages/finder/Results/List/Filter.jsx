@@ -21,7 +21,7 @@ const Filter = ({ topics, filter, campuses }) => (
           label="Campus"
           classes={["hard-bottom@lap-and-up"]}
           items={campuses}
-          includeBlank={true}
+          includeBlank={false}
           defaultValue={-1}
           onChange={filter}
         />
@@ -32,7 +32,7 @@ const Filter = ({ topics, filter, campuses }) => (
           label="Topic"
           classes={["hard-bottom@lap-and-up"]}
           items={topics}
-          includeBlank={true}
+          includeBlank={false}
           defaultValue={-1}
           onChange={filter}
         />
@@ -42,8 +42,9 @@ const Filter = ({ topics, filter, campuses }) => (
           name="childCare"
           label="Children"
           classes={["hard-bottom@lap-and-up"]}
-          items={[{value: "1", label: "Yes" },{ value: "0", label: "No" }]}
+          items={[{value: "-1", label: "Either" }, {value: "1", label: "Yes" },{ value: "0", label: "No" }]}
           defaultValue={true}
+          includeBlank={false}
           onChange={filter}
         />
       </div>
