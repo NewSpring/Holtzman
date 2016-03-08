@@ -69,8 +69,8 @@ const Layout = ({ group, join, hash }, context) => {
         <section className="soft-double-sides@anchored soft-half-ends flush-sides">
           <div className="card outlined outlined--light">
             <div className="grid card__item soft ">
-              <h5 className="flush-bottom push-half-bottom@handheld push-half-top grid__item one-half one-whole@handheld text-center@handheld text-dark-secondary">#TheseAreMyPeople</h5>
-              <div className="grid__item text-right@lap-and-up text-center one-whole one-half@lap-and-up">
+              <h5 className="flush-bottom push-half-bottom@handheld push-half-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-secondary">#TheseAreMyPeople</h5>
+              <div className="grid__item text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
                 <button className="flush-bottom push-half-bottom@handheld btn" onClick={join}>
                 Join Group
                 </button>
@@ -145,7 +145,7 @@ const Layout = ({ group, join, hash }, context) => {
 
 
 
-
+          {/*
             <div className="push-bottom hard">
               <div className="card outlined outlined--light">
                 <div className="card__item soft soft-half-bottom">
@@ -162,7 +162,8 @@ const Layout = ({ group, join, hash }, context) => {
                 </div>
               </div>
             </div>
-            <div className="one-whole text-center soft@handheld soft-sides">
+            */}
+            <div className="one-whole push-top text-center soft@handheld soft-sides">
               <Link to={`/groups/finder/list/${hash}`} className="btn--small btn--dark-tertiary display-inline-block">
                 View All Results
               </Link>

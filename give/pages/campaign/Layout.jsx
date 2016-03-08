@@ -13,7 +13,7 @@ const Layout = ({ account }, context) => (
       <Meta
         title={account.name}
         description={account.summary}
-        image={account.image}
+        image={account.formatedImage["2:1"] ? account.formatedImage["2:1"] : account.image}
         meta={[
           {"property": "og:type", "content": "article"}
         ]}

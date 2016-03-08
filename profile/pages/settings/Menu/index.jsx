@@ -201,13 +201,13 @@ export default class Menu extends Component {
               </div>
             </a>
             */}
-            <a href="//newspring.cc/privacy" className="plain text-dark-secondary">
+            <a href="//newspring.cc/privacy" target="_blank" className="plain text-dark-secondary">
               <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">Privacy Policy</h6>
                 <i className="float-right icon-arrow-next"></i>
               </div>
             </a>
-            <a href="//newspring.cc/terms" className="plain text-dark-secondary">
+            <a href="//newspring.cc/terms" target="_blank" className="plain text-dark-secondary">
               <div className="card soft-ends soft-right text-left outlined--light">
                 <h6 className="soft-left flush display-inline-block">Terms of Use</h6>
                 <i className="float-right icon-arrow-next"></i>

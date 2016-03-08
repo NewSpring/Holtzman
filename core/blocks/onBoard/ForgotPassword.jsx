@@ -99,7 +99,7 @@ class ForgotPassword extends React.Component {
       case "error":
         return <Error msg="Looks like there was a problem" error={err ? err : " "} />
       case "loading":
-        return <Loading msg="Resetting your password" />
+        return <Loading msg="Sending email to reset your password..." />
       case "success":
         return <Success msg={`An email has been sent to ${this.props.email} with instructions on how to reset your password!`} />
     }

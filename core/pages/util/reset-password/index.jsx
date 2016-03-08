@@ -77,7 +77,7 @@ export default class ChangePassword extends Component {
       case "error":
         return <Error msg="Looks like there was a problem" error={err && err.message ? err.message : " "} />
       case "loading":
-        return <Loading msg="Sending email to reset your password..." />
+        return <Loading msg="Updating your password..." />
       case "success":
         return <Success msg="Your password has been updated!" />
       default:
