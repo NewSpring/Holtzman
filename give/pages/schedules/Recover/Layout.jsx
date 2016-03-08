@@ -101,26 +101,29 @@ export default class Layout extends Component {
     return (
 
         <div>
-          <Split nav={true} classes={["background--light-primary"]}>
+          <Split nav={true} classes={recoverableSchedules.length ? ["background--light-secondary"] : ["background--light-primary"]} >
 
-            <Meta title="Transfer Your Gift" />
+            <Meta title="Transfer Your Giving Schedule" />
 
             <Right
-              background="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
+              background="//s3.amazonaws.com/ns.assets/apollos/thank_you-img1x2.jpg"
               mobile={false}>
             </Right>
 
           </Split>
-          <Left scroll={true} classes={["background--light-secondary"]} ref="container">
-
+          <Left scroll={true} classes={recoverableSchedules.length ? ["background--light-secondary"] : ["background--light-primary"]} ref="container">
+            <Link to="/give/schedules" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
+              <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
+              <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
+            </Link>
 
             {(() => {
               let count = 0
               if (recoverableSchedules.length) {
                 return (
                   <div>
-                    <div className="background--light-primary soft-half soft-sides@portable soft-double-sides@anchored">
-                      <div className="soft-ends soft-double-ends@lap-and-up">
+                    <div className="background--light-primary soft-half soft-sides@portable soft-double-sides@anchored soft-double-top">
+                      <div className="soft-ends soft-double-ends@lap-and-up push-top">
                         <h4 className="soft-half-sides soft-half-bottom">Hey { person.nickName || person.firstName }!</h4>
                         <h5 className="soft-half-sides">
                            We have found giving schedules from our previous giving system that need to be transferred! To transfer a schedule, click below and enter your payment details.
@@ -234,24 +237,24 @@ export default class Layout extends Component {
 
               return (
                 <div>
-                  <div className="background--light-primary soft-half soft-sides@portable soft-double-sides@anchored">
-                    <div className="soft-ends soft-double-ends@lap-and-up">
-                      <h4 className="soft-half-sides soft-half-bottom">Hey { person.nickName || person.firstName }!</h4>
-                      <h5 className="soft-half-sides">
-                         It doesn't look like you have any schedules to transfer from our previous system. Thats great! Scheduling your giving is a great way to making giving easy! To schedule a gift, click below.
-                      </h5>
+                  <div className="background--light-primary soft-half soft-sides@portable soft-double-sides@anchored soft-double-ends">
+                    <div className="soft soft-double@lap-and-up push-top@lap-and-up">
+                      <h2 className="soft-half-bottom">Thank you!</h2>
+                      <p>
 
-                      <Link to="/give/schedules" className="btn push-top">Create a Schedule</Link>
+                        Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui.
+
+
+                      </p>
+                      <p>
+                        Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui.
+                      </p>
+                      <p>
+                        Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui.
+                      </p>
 
                     </div>
                   </div>
-                  <p className="soft-double-ends soft-sides soft-double-sides@lap-and-up text-center">
-                    <small>
-                      <em>
-                        If you think you should have a schedule that needs to be transferred, and don't see it here, please <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a>
-                      </em>
-                    </small>
-                  </p>
                 </div>
 
               )

@@ -146,12 +146,16 @@ export default class Personal extends Component {
 
 
         <div>
+          {/*
           <a href="#" tabIndex={-1} onClick={this.props.back} className="btn--small btn--dark-tertiary display-inline-block">
             Back
           </a>
+          */}
 
           {() => {
-            let btnClasses = ["push-left"];
+            let btnClasses = [
+              // "push-left"
+            ];
             let disabled = false
             if (personal.email === null || personal.firstName === null || personal.email === null || personal.campus === null){
               btnClasses.push("btn--disabled");

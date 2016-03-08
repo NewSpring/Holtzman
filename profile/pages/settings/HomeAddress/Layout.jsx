@@ -1,5 +1,6 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
+import Meta from "../../../../core/components/meta"
 
 import { Forms } from "../../../../core/components"
 
@@ -40,6 +41,11 @@ export default class Layout extends Component {
 
     return (
     <div className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom background--light-primary">
+      <Meta title="Change your password" />
+        <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
+          <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
+          <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
+        </Link>
         <Forms.Form
           id="reset-password"
           classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
@@ -101,12 +107,13 @@ export default class Layout extends Component {
             </div>
           </div>
 
+          {/*
           <Link to="/profile/settings" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">
             Back
           </Link>
-
+          */}
           {() => {
-            let btnClasses = ["push-left"];
+            let btnClasses = [];
             let ready = true
             if (!ready){
               btnClasses.push("btn--disabled");

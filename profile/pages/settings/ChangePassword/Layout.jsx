@@ -1,8 +1,14 @@
 import { Link } from "react-router"
 import { Forms } from "../../../../core/components"
+import Meta from "../../../../core/components/meta"
 
 const Layout = ({ submit, save, state }, context) => (
   <div className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom " style={{overflow: "visible"}}>
+    <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
+      <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
+      <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
+    </Link>
+    <Meta title="Change your password" />
       <Forms.Form
         id="reset-password"
         classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
@@ -36,13 +42,13 @@ const Layout = ({ submit, save, state }, context) => (
           errorText="New password does not match"
           type="password"
         />
-
+      {/*
         <Link to="/profile/settings" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">
           Back
         </Link>
-
+         */}
         {() => {
-          let btnClasses = ["push-left"];
+          let btnClasses = [];
           const { current, newP, newPDup } = state
           if (!current || !newP || !newPDup){
             btnClasses.push("btn--disabled");

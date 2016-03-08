@@ -66,16 +66,23 @@ export default class GiveNow extends Component {
 
   render () {
 
-    if (!this.state.loaded) {
-      return (
-        <div className="locked-ends locked-sides floating">
-          <div className="floating__item">
-            <Loading/>
-          </div>
-        </div>
-      )
-    }
-
     return <Layout details={this.state.accounts} remove={this.remove} />
+
+    // if (!this.state.loaded) {
+    //   return (
+    //     <div className="locked-ends locked-sides floating">
+    //       <div className="floating__item">
+    //         <Loading/>
+    //       </div>
+    //     </div>
+    //   )
+    // }
+    // console.log(this.state)
+    // try {
+    //   return <Layout details={this.state.accounts} remove={this.remove} />
+    // } catch (e) {
+    //   console.log(e)
+    // }
+
   }
 }

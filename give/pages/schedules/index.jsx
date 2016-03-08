@@ -225,7 +225,7 @@ export default class Template extends Component {
 const Routes = [
   { path: "schedules", component: Template },
   {
-    path: "schedules/recover",
+    path: "schedules/transfer",
     component: Authorized,
     indexRoute: { component: Recover }
   },

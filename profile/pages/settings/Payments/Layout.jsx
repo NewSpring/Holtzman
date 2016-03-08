@@ -1,10 +1,17 @@
 import { PropTypes } from "react"
+import Meta from "../../../../core/components/meta"
+import { Link } from "react-router"
 
 import { AccountType } from "../../../../give/components"
 // import { VelocityComponent } from "velocity-react"
 
 const Layout = ({ details, remove }) => (
-  <div className="background--light-primary text-center soft-double-top push-double-bottom" style={{overflow: "visible"}}>
+  <div className="background--light-primary text-center soft-double-top push-double-bottom push-double-top" style={{overflow: "visible"}}>
+    <Meta title="Saved Payments" />
+      <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
+        <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
+        <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
+      </Link>
     <div className="one-whole two-thirds@anchored display-inline-block">
       <h3>Saved Accounts</h3>
       <div className="soft-sides soft-double-sides@lap-and-up">

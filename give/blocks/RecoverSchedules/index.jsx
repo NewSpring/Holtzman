@@ -64,9 +64,9 @@ export default class RecoverSchedules extends Component {
 
     let arr = []
     const { recoverableSchedules, reminderDate } = this.props.give
-    // for (let schedule in recoverableSchedules) {
-    //   arr.push(recoverableSchedules[schedule])
-    // }
+    for (let schedule in recoverableSchedules) {
+      arr.push(recoverableSchedules[schedule])
+    }
 
     if (state === "later") {
       return <Later date={reminderDate} onClick={this.close} />
