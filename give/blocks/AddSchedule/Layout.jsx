@@ -220,7 +220,7 @@ export default class Layout extends Component {
               <GiveNow
                 disabled={total <= 0 || !ready}
                 disabledGuest={true}
-                text={this.props.text || "Schedule Contribution"}
+                text={this.props.text || "Schedule Now"}
                 onClick={this.props.onSubmitSchedule}
                 dataId={this.props.dataId}
               />

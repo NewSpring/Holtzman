@@ -177,6 +177,7 @@ export default class Global extends Component {
           shortCode
           id
           locationId
+          guid
         }
       }
     `
