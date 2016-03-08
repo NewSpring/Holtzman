@@ -34,7 +34,7 @@ function toDate(input) {
   if (input instanceof Date) {
     return input;
   }
-  if (input === 'now' || input === "Now") {
+  if (input === "now" || input === "Now") {
     return new Date();
   }
   if (isNumber(input)) {
