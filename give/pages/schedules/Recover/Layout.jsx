@@ -106,7 +106,7 @@ export default class Layout extends Component {
             <Meta title="Transfer Your Giving Schedule" />
 
             <Right
-              background="//s3.amazonaws.com/ns.assets/apollos/thank_you-img1x2.jpg"
+              background={recoverableSchedules.length ? "//s3.amazonaws.com/ns.assets/apollos/transfer-img1x2.jpg ": "//s3.amazonaws.com/ns.assets/apollos/thank_you-img1x2.jpg"}
               mobile={false}>
             </Right>
 
@@ -206,7 +206,7 @@ export default class Layout extends Component {
                                       onClick={cancelSchedule}
                                       data-id={schedule.id}
                                     >
-                                      Stop Gift
+                                      Stop Contribution
                                     </h6>
                                   </div>
                                 )

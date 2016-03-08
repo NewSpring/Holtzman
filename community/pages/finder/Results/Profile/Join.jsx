@@ -89,7 +89,6 @@ export default class Join extends Component {
             label="Your Message"
             name="message"
             classes={["hard-bottom", "push-half-ends"]}
-            style={{border: "none"}}
             inputClasses="text-dark-secondary"
             rows={10}
             defaultValue={message}

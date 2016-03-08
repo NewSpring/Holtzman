@@ -198,7 +198,8 @@ export default class Give extends Component {
       total,
       savedAccount,
       state,
-      transactionType
+      transactionType,
+      scheduleToRecover
     } = this.props.give
 
     let savedAccounts = []
@@ -244,7 +245,7 @@ export default class Give extends Component {
     switch (state) {
       case "loading":
         this.copiedSchedules = {...schedules}
-        return <Loading msg="We're Processing Your Gift" />
+        return <Loading msg="We're Processing Your Contribution" />
       case "error":
         return <Err msg={errors[Object.keys(errors)[0]].error} goToStepOne={this.goToStepOne} />
       case "success":
@@ -301,6 +302,7 @@ export default class Give extends Component {
               goToStepOne={this.goToStepOne}
               savedAccounts={savedAccounts}
               changeSavedAccount={this.changeSavedAccount}
+              scheduleToRecover={scheduleToRecover}
             >
               <Controls.Progress
                 steps={4}

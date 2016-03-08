@@ -23,12 +23,19 @@ export default class Confirm extends Component {
   header = () => {
     return (
       <h4 className="text-center">
-        Review And Complete Your Gift
+        Review And Complete Your Contribution
       </h4>
     )
   }
 
   scheduleHeader = () => {
+    if (this.props.scheduleToRecover) {
+      return (
+        <h4 className="text-center">
+          Transfer Your Schedule
+        </h4>
+      )
+    }
     return (
       <h4 className="text-center">
         Review Your Schedule
@@ -57,6 +64,10 @@ export default class Confirm extends Component {
 
     if (Object.keys(this.props.schedules).length) {
       text = "Schedule Now"
+    }
+
+    if (this.props.scheduleToRecover) {
+      text = "Transfer Now"
     }
 
     if (payment.accountNumber || payment.cardNumber) {
@@ -134,7 +145,7 @@ export default class Confirm extends Component {
     value = value.replace(/[^\d.-]/g, "")
 
     let decimals = value.split(".")[1]
-    if ((decimals && decimals.length >= 2) || fixed) {
+    if ((decimals && decimals.length >= 1) || fixed) {
       value = Number(value).toFixed(2)
       value = String(value)
     }
@@ -149,13 +160,13 @@ export default class Confirm extends Component {
 
         <div className="grid" style={{verticalAlign: "middle"}}>
 
-          <div className="grid__item five-eighths" style={{verticalAlign: "middle"}}>
+          <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
             <h5 className="text-dark-tertiary flush text-left">
               {transaction.label}
             </h5>
           </div>
 
-          <div className="grid__item three-eighths text-right" style={{verticalAlign: "middle"}}>
+          <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
             <h3 className="text-dark-secondary flush">
               {this.monentize(transaction.value)}
             </h3>
@@ -248,7 +259,7 @@ export default class Confirm extends Component {
                   style={{cursor: "pointer"}}
                   onClick={this.props.back}
                 >
-                  Edit Gift Details
+                  Edit Contribution Details
                 </h6>
               </div>
             )
@@ -370,13 +381,13 @@ export default class Confirm extends Component {
 
             <div className="grid" style={{verticalAlign: "middle"}}>
 
-              <div className="grid__item five-eighths" style={{verticalAlign: "middle"}}>
+              <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
                 <h5 className="text-dark-tertiary flush text-left">
                   Total
                 </h5>
               </div>
 
-              <div className="grid__item three-eighths text-right" style={{verticalAlign: "middle"}}>
+              <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
                 <h3 className="text-primary flush">
                   {this.monentize(this.props.total)}
                 </h3>

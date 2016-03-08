@@ -99,6 +99,13 @@ export default class CartContainer extends Component {
 
   }
 
+  componentWillReceiveProps(nextProps){
+    if (nextProps.give.state === "success" && this.props.give.state === "success") {
+      this.props.clearTransactions()
+    }
+
+  }
+
   preFillValue = (id) => {
     const { total, transactions } = this.props.give
 

@@ -109,7 +109,7 @@ export default class Layout extends Component {
                         }
                       }()}
                       <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-                        Thank you so much for your gift! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
+                        Thank you so much for your contributions! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
                       </p>
                     </div>
                   )

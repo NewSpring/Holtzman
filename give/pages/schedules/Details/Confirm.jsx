@@ -31,7 +31,7 @@ export default class Err extends Component {
           <Error />
           <h3 className="text-alert push-ends">Are you sure?</h3>
           <p className="text-left">
-            Want to stop your scheduled gift? You can always create another when you're ready.
+            Want to stop your scheduled contributions? You can always create another when you're ready.
           </p>
           <button className="one-whole btn push-ends btn--alert" onClick={this.onClick}>
             Cancel Schedule
@@ -41,12 +41,12 @@ export default class Err extends Component {
             className="btn--thin btn--small btn--dark-tertiary one-whole"
             onClick={this.back}
           >
-            Back to Gifts
+            Back to Contributions
           </button>
 
           <p className="test-dark-tertiary text-left">
             <em>
-              If you would like a member of our customer support team to follow up with you regarding this gift, click <a href="#">here</a>
+              If you would like a member of our customer support team to follow up with you regarding this contributions, click <a href="#">here</a>
             </em>
           </p>
         </div>

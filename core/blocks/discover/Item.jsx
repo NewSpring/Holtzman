@@ -100,6 +100,7 @@ export default class SearchItem extends Component {
               return (
                 <ImageLoader
                   src={this.props.item.image}
+                  force={true}
                   preloader={this.preloader}
                   renderElement={this.renderElement}
                   imageclasses={this.bgClasses()}

@@ -111,13 +111,14 @@ export default class Layout extends Component {
                 return (
                   <div className="text-left soft-ends">
                     <p>
-                      We didn't find any gifts associated with your account. If you would like to start giving, click <Link to="/give/now">here</Link>
+                      We didn't find any contributions associated with your account. If you would like to start giving, click <Link to="/give/now">here</Link>
                     </p>
                     <p><em>If you have any questions, please call our Finance Team at 864-965-9000 or <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a> and someone will be happy to assist you.</em></p>
                   </div>
                 )
               }
 
+              let lastYear = null
               return (
                 <div>
                 {transactions.map((transaction, key) => {
@@ -130,7 +131,53 @@ export default class Layout extends Component {
                           return null
                         }
 
+                        let year = Moment(transaction.date).year()
+                        if (year != lastYear) {
+                          lastYear = year
+                          return (
+                            <div key={i}>
+                              <div className="soft text-left">
+                                <h5>{year}</h5>
+                              </div>
+                              <div  className="soft card">
+
+                                <Link to={`/give/history/${transaction.id}/${transactionDetail.account.id}`}>
+
+                                  <div className="grid" style={{verticalAlign: "middle"}} key={i}>
+
+                                    <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
+                                      <h5 className="text-dark-tertiary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
+                                        {transactionDetail.account.name}
+                                      </h5>
+                                      <p className="flush soft-half-top italic small text-dark-tertiary">
+                                        {this.formatDate(transaction.date)}
+                                      </p>
+                                    </div>
+
+                                    <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
+                                      <div className="soft-half-right">
+                                        <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
+                                          {this.monentize(transactionDetail.amount)}
+                                          <span className="text-primary icon-arrow-next locked" style={{
+                                              right: "-5px",
+                                              top: "1px"
+                                            }}></span>
+                                        </h4>
+                                      </div>
+
+                                    </div>
+
+                                  </div>
+                                </Link>
+
+                              </div>
+                            </div>
+                          )
+
+                        }
+
                         return (
+
                           <div key={i} className="soft card">
 
                             <Link to={`/give/history/${transaction.id}/${transactionDetail.account.id}`}>
