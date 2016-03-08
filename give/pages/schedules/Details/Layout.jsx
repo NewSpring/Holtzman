@@ -65,9 +65,9 @@ export default class Layout extends Component {
           <Left scroll={true} classes={["background--light-secondary"]} ref="container">
 
             <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
-              <Link to="/give/schedules" className="locked-top locked-left soft-double@lap-and-up soft h5 text-dark-secondary plain" >
+              <Link to="/give/schedules" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
                 <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
-                <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "4px"}}>Back</span>
+                <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
               </Link>
               <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
                 <div className="soft-double-ends@anchored">
