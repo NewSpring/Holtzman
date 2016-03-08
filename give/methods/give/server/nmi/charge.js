@@ -58,6 +58,8 @@ const step1 = (token, callback) => {
       return
     }
 
+    console.log(data)
+
     let number = Number(data["result-code"])
     let err;
 
