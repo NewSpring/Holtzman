@@ -46,7 +46,7 @@ export default class Err extends Component {
 
           <p className="test-dark-tertiary text-left">
             <em>
-              If you would like a member of our customer support team to follow up with you regarding this contributions, click <a href="//rock.newspring.cc/workflows/177">here</a>
+              If you would like a member of our customer support team to follow up with you regarding this contributions, click <a target="_blank" href="//rock.newspring.cc/workflows/177">here</a>
             </em>
           </p>
         </div>
