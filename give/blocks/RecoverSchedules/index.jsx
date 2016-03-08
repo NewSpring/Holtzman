@@ -37,11 +37,12 @@ export default class RecoverSchedules extends Component {
       twoWeeks: Moment().add(14, "days").toDate()
     }
 
-    Meteor.users.update(Meteor.userId(), {
+    Meteor.users.update({ _id: Meteor.userId() }, {
       $set: {
         "profile.reminderDate": time[value]
       }
     }, (err, result) => {
+      console.log(err, result)
     })
 
     this.props.dispatch(giveActions.setReminder(time[value]))
