@@ -14,7 +14,7 @@ const step2 = (purchaseData, method, callback) => {
     [method]: { ...{
       "api-key": Meteor.settings.nmi,
       "redirect-url": url,
-      "order-description": "Online gift from Apollos",
+      "order-description": "Online contributions from Apollos",
       "order-id": `apollos_${Date.now()}_${Math.ceil(Math.random() * 100000)}` || purchaseData.orderId,
     }, ...purchaseData }
   }

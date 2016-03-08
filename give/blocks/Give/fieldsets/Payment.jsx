@@ -338,7 +338,7 @@ export default class Payment extends Component {
                   defaultValue={this.state.save}
                   clicked={this.savePayment}
                 >
-                  Save this payment for future gifts
+                  Save this payment for future contributions
                 </Forms.Checkbox>
               )
             }

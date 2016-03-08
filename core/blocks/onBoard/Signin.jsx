@@ -222,13 +222,12 @@ class SignIn extends React.Component {
 
 
         <div>
-          <a href="#" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">
-            Back
-          </a>
+
+
 
           {() => {
             const { data } = this.props
-            let btnClasses = ["push-left"];
+            let btnClasses = [];
 
             if (data.email === null || data.password === null && !data.terms){
               btnClasses.push("btn--disabled");

@@ -58,7 +58,7 @@ const Remind = ({ onSubmit, back }) => {
           className="btn--thin btn--small btn--dark-tertiary one-whole"
           onClick={back}
         >
-          Back to Gifts
+          Back to Contributions
         </button>
 
       </Forms.Form>

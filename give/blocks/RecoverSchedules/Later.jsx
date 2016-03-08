@@ -9,7 +9,7 @@ const Later = ({ date, onClick }) => (
     </h4>
 
     <p className="text-left">
-      We will remind you about your gifts on <strong>
+      We will remind you about your contributions on <strong>
       {Moment(date).format("dddd, MMMM Do")}
       </strong>!
       If you would like to reset your schedules before then, please contact our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a>

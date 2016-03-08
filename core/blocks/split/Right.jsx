@@ -3,7 +3,8 @@ import { Link } from "react-router"
 import { ImageLoader } from "../../components/loading"
 import Styles from "../../components/loading/FeedItemSkeleton.css"
 
-
+import Hover from "./right.css"
+console.log(Hover)
 const DefaultWrapper = (props) => (
   <section {...props} className={props.imageclasses.join(" ")}>{props.children}</section>
 )
@@ -27,7 +28,9 @@ export default class Right extends Component {
     let classes = [
       "panel__item--right",
       "hard",
-      "flush"
+      "flush",
+      Hover.right,
+      "transition"
     ];
 
     if (this.props.mobile && !this.props.aspect) {

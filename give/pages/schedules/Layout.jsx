@@ -154,7 +154,7 @@ export default class Layout extends Component {
                 if (!schedules.length && ready) {
                   return (
                     <div className="text-center soft-sides">
-                      <p><em>You don't have any active recurring gifts. If you created a new schedule, it may take a few minutes to be reflected here</em></p>
+                      <p><em>You don't have any active scheduled contributions. If you created a new schedule, it may take a few minutes to be reflected here</em></p>
                     </div>
                   )
 

@@ -18,14 +18,14 @@ const Success = ({ total, email, guest, onClick, schedules }) => {
           if (schedule) {
             return (
               <p className="text-left">
-                Thank you for your gift of {total} starting on {Moment(schedule.start).format("MMM D, YYYY")} to NewSpring Church.
+                Thank you for your contribution of {total} starting on {Moment(schedule.start).format("MMM D, YYYY")} to NewSpring Church.
               </p>
             )
           }
 
           return (
             <p className="text-left">
-              Thank you for your gift of {total} to NewSpring Church. We will email a receipt to {email}
+              Thank you for your contribution of {total} to NewSpring Church. We will email a receipt to {email}
             </p>
           )
         }()}
@@ -49,7 +49,7 @@ const Success = ({ total, email, guest, onClick, schedules }) => {
           }
         }()}
         <p className="test-dark-tertiary text-left"><em>
-          If you have any questions please call our Finance Team at 864-965-9000 or <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a> and someone will be happy to assist you.
+          If you have any questions please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a> and someone will be happy to assist you.
         </em></p>
 
       </div>

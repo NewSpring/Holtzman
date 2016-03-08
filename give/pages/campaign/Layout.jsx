@@ -1,5 +1,6 @@
 import { PropTypes } from "react"
 // import { VelocityComponent } from "velocity-react"
+import { Link } from "react-router"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import Meta from "../../../core/components/meta"
@@ -24,7 +25,11 @@ const Layout = ({ account }, context) => (
 
     </Split>
     <Left scroll={true} classes={["background--light-primary"]}>
-      <div className="constrain-copy soft@lap-and-up">
+      <Link to="/give/now" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain visuallyhidden@handheld" >
+        <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
+        <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
+      </Link>
+      <div className="soft@lap-and-up soft-double-top@lap-and-up">
         <div className="soft soft-double-bottom soft-double-top@lap-and-up">
 
           <h2>{account.name}</h2>
