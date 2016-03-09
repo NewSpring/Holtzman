@@ -124,6 +124,7 @@ export default class Personal extends Component {
             name="email"
             placeholder="user@email.com"
             label="Email"
+            type="email"
             errorText="Please enter a valid email"
             validation={this.isEmail}
             defaultValue={personal.email}
