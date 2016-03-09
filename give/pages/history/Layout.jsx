@@ -88,6 +88,9 @@ export default class Layout extends Component {
           <div className="soft-double-sides@lap-and-up soft-ends@lap-and-up background--light-primary">
             <div className="soft soft-double-ends hard-left@lap-and-up">
               <h2 className="flush hard">Giving History</h2>
+              <p className="flush-bottom soft-top"><small><em>
+                Currently we only support viewing your personal giving history, and not the history of your family. We are working hard to bring this ability, but in the meantime, if you sign into the site using the email of the family member you would like to see, you can view their history and schedules there. If you have any questions please <a href="//rock.newspring.cc/workflows/177" target="_blank">let us know!</a>
+              </em></small></p>
             </div>
           </div>
 
