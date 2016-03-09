@@ -2,6 +2,7 @@ import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import { Forms } from "../../../../core/components"
 import Meta from "../../../../core/components/meta"
+import Validate from "../../../../core/util/validate"
 
 // import { VelocityComponent } from "velocity-react"
 
@@ -24,6 +25,10 @@ export default class Layout extends Component {
     let data = {}
     for (let ref in this.refs) {
       let value = this.refs[ref].getValue()
+      if (ref === "Email" && !Validate.isEmail(value)) {
+        continue
+      }
+
       let number = Number(value)
       if (number) {
         value = number
@@ -44,6 +49,7 @@ export default class Layout extends Component {
       firstName,
       lastName,
       nickName,
+      email,
       birthDay,
       birthMonth,
       birthYear
@@ -90,6 +96,17 @@ export default class Layout extends Component {
             defaultValue={lastName}
           />
 
+        <h6 className="soft-bottom">Contact</h6>
+          <Forms.Input
+            name="Email"
+            placeholder="user@email.com"
+            label="Email"
+            type="email"
+            ref="Email"
+            errorText="Please enter a valid email"
+            validation={Validate.isEmail}
+            defaultValue={email}
+          />
 
         <h6 className="soft-bottom">Birthday</h6>
         <div className="grid">
