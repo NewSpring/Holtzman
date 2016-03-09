@@ -44,22 +44,26 @@ import createSchedule from "./createSchedule"
 
 */
 
-const schedule = (token, accountName, id) => {
+Meteor.methods({
+  "give/schedule": function(token, accountName, id) {
+    let user = null
+    if (this.userId) {
+      user = Meteor.users.findOne({ _id: this.userId })
+    }
 
-  let response = {}
-  try {
-    response = Meteor.wrapAsync(gatewaySchedule)(token)
-    response = createSchedule(response, accountName, id)
-  } catch (e) {
-    throw new Meteor.Error(e.message)
+    let response = {}
+    try {
+      response = Meteor.wrapAsync(gatewaySchedule)(token)
+      response = createSchedule(response, accountName, id, user)
+    } catch (e) {
+      throw new Meteor.Error(e.message)
+    }
+
+
+    return response
+
   }
-
-
-  return response
-
-}
-
-Meteor.methods({ "give/schedule": schedule })
+})
 
 
 const cancel = ({ id, gateway }) => {
@@ -92,6 +96,3 @@ const cancel = ({ id, gateway }) => {
 }
 
 Meteor.methods({ "give/schedule/cancel": cancel })
-
-
-export default schedule

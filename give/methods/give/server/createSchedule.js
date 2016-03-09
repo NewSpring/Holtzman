@@ -4,9 +4,7 @@ import Moment from "moment"
 import { api, parseEndpoint } from "../../../../core/util/rock"
 
 
-const createSchedule = (response, accountName, id) => {
-
-  let user = Meteor.user()
+const createSchedule = (response, accountName, id, user) => {
 
   const getCardType = (card) => {
 

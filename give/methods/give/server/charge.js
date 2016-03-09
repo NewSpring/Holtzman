@@ -6,7 +6,7 @@ import { api, parseEndpoint } from "../../../../core/util/rock"
 import { TransactionReciepts } from "../../../collections/transactions"
 import { charge as gatewayCharge } from "./nmi"
 
-const charge = (token, accountName) => {
+function charge(token, accountName) {
 
   let response = {}
 
@@ -16,7 +16,11 @@ const charge = (token, accountName) => {
     throw new Meteor.Error(e.message)
   }
 
-  let user = Meteor.user()
+  let user = null
+  if (this.userId) {
+    user = Meteor.users.findOne({ _id: this.userId })
+  }
+
 
   const getCardType = (card) => {
     const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9\*]{0,12}$/gmi
