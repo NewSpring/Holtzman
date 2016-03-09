@@ -111,7 +111,7 @@ Meteor.methods({
         let text = `Another user signed up for a NewSpring Account! Only ${missing} to go!`
 
 
-        Meteor.call("communication/slack/send", text, "#web")
+        Meteor.call("communication/slack/send", text, "#users")
       }
     }, 100)
 
