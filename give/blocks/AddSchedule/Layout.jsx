@@ -57,8 +57,8 @@ export default class Layout extends Component {
     }
 
     let defaultDate = Moment().add(1, "days")
-    if (existing && existing.start && new Date(existing.start) > new Date()) {
-      defaultDate = new Date(existing.start)
+    if (existing && existing.next && new Date(existing.next) > new Date()) {
+      defaultDate = new Date(existing.next)
     }
 
     return (

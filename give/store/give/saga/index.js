@@ -342,6 +342,7 @@ function* recoverTransactions(getStore) {
         id
         gateway
         start
+        next
         details {
           amount
           account {
