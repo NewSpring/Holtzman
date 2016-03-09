@@ -134,7 +134,7 @@ export default class Layout extends Component {
               </div>
             </div>
 
-            <div className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
+            <div  id="active-schedules" className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
               <h4 className="soft soft-double-ends text-center flush-bottom">
                 My Active Schedules
               </h4>
