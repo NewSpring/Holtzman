@@ -104,7 +104,6 @@ export default class Personal extends Component {
                 validation={this.firstName}
                 defaultValue={personal.firstName}
                 ref="firstName"
-                autofocus={true}
               />
             </div>
             <div className="grid__item one-half">
