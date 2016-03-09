@@ -157,6 +157,8 @@ addSaga(function* sectionsSaga(getState) {
         if (url[0] != "/") {
           url = "/" + url
         }
+      } else {
+        url = "//newspring.cc" + url
       }
 
       sections[section].link = url

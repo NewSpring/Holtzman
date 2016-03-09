@@ -15,7 +15,7 @@ const Success = ({ person, onExit }) => (
       To help us make sure the information we have is accurate and up to date, we would love if you could complete your profile.
     </p>
 
-    <Link to="/profile/settings/personal-details" className="one-whole btn push-ends" >
+    <Link to="/profile/settings" className="one-whole btn push-ends" >
       Complete Profile Now
     </Link>
 
