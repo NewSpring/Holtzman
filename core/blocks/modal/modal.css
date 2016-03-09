@@ -20,3 +20,7 @@
   }
 
 }
+
+:local(.interior) {
+  overflow-y: auto !important;
+}
