@@ -98,6 +98,18 @@ export default class Payment extends Component {
     const { payment } = this.props.data
     return (
       <div>
+        <Forms.Input
+          id="routingNumber"
+          name="billing-routing-number"
+          label="Routing Number"
+          type="tel"
+          errorText="Please enter your routing number"
+          defaultValue={payment.routingNumber}
+          onChange={this.saveData}
+          validation={this.validate}
+          autofocus={true}
+          ref="routingNumber"
+        />
 
         <Forms.Input
           id="accountNumber"
@@ -109,19 +121,9 @@ export default class Payment extends Component {
           onChange={this.saveData}
           validation={this.validate}
           ref="accountNumber"
-          autofocus={true}
+
         />
-        <Forms.Input
-          id="routingNumber"
-          name="billing-routing-number"
-          label="Routing Number"
-          type="tel"
-          errorText="Please enter your routing number"
-          defaultValue={payment.routingNumber}
-          onChange={this.saveData}
-          validation={this.validate}
-          ref="routingNumber"
-        />
+
 
         <div className="grid">
           <div className="grid__item one-half">
@@ -178,7 +180,7 @@ export default class Payment extends Component {
     isValid = validationMap[id](value)
 
     // special case for intial repaint
-    if ((id === "cardNumber" || id === "accountNumber") && !value) {
+    if ((id === "cardNumber" || id === "routingNumber") && !value) {
       return true
     }
 
