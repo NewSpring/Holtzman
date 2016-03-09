@@ -261,7 +261,7 @@ export default class GiveNow extends Component {
             if (!this.props.authorized && !this.props.disabledGuest && !Meteor.userId()) {
               return (
                 <Guest
-
+                  disabled={this.props.disabled}
                   onClick={this.giveAsGuest}
                 />
               )
