@@ -153,10 +153,11 @@ addSaga(function* sectionsSaga(getState) {
       let url = sections[section].link
       let regex = new RegExp(__meteor_runtime_config__.ROOT_URL, "gmi")
       if (url.match(regex)) {
-        url = url.replace(regex, "/")
+        url = url.replace(regex, "")
         if (url[0] != "/") {
           url = "/" + url
         }
+
       } else {
         url = "//newspring.cc" + url
       }

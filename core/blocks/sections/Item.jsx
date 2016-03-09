@@ -6,6 +6,32 @@ import { VelocityTransitionGroup } from "velocity-react"
 import { ImageLoader } from "../../components/loading"
 import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
 
+
+const ExternalLinkWrapper = (props) => {
+
+  let url = props.to
+  if (props.to.match("//") === null) {
+    return (
+      <Link {...props} to={url} >
+        {props.children}
+      </Link>
+    )
+  }
+
+  if (url[0] != "/") {
+    url = "/" + url
+  }
+  return (
+    <a
+      {...props}
+      href={url}
+    >
+      {props.children}
+    </a>
+  )
+
+}
+
 // context from ImageLoader
 function preloader() {
   return (
@@ -54,7 +80,7 @@ const ChildItem = ({ section, go }) => {
 
   return (
     <div className="one-whole soft-half-left grid__item push-half-bottom">
-      <Link
+      <ExternalLinkWrapper
         to={section.link}
         className="plain"
         onClick={go}
@@ -72,7 +98,7 @@ const ChildItem = ({ section, go }) => {
             <h6 className="text-light-primary soft-left">{section.text}</h6>
           </div>
         </ImageLoader>
-      </Link>
+      </ExternalLinkWrapper>
     </div>
   )
 }
@@ -101,7 +127,7 @@ const Item = ({ section, go, children }) => {
 
   return (
     <div className="one-half soft-half-left grid__item push-half-bottom">
-      <Link
+      <ExternalLinkWrapper
         to={section.link}
         className="plain"
         onClick={go}
@@ -120,7 +146,7 @@ const Item = ({ section, go, children }) => {
             <h6 className="text-light-primary soft-left">{section.text}</h6>
           </div>
         </ImageLoader>
-      </Link>
+      </ExternalLinkWrapper>
       {children}
     </div>
   )
