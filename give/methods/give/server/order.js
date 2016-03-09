@@ -6,7 +6,11 @@ import createSchedule from "./createSchedule"
 
 function order(orderData, instant, id){
 
-  let user = Meteor.user()
+  let user = null
+  if (this.userId) {
+    user = Meteor.users.findOne({_id: this.userId})
+  }
+
   // default to sale
   let method = "sale"
 
@@ -54,7 +58,7 @@ function order(orderData, instant, id){
     let response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
 
     if (instant) {
-      response = createSchedule(response, null, id)
+      response = createSchedule(response, null, id, user)
     }
     return response
 
