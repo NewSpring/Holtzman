@@ -112,7 +112,7 @@ export default class ListContainer extends Component {
     done: false,
     filters: {
       topic: -1,
-      days: [0, 1, 2, 3, 4, 5, 6, 7],
+      days: [0, 1, 2, 3, 4, 5, 6],
       childCare: -1,
       campus: -1,
     }
