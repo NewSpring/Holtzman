@@ -38,6 +38,7 @@ export default class SideModal extends Component {
       "hard",
       "one-whole",
       styles["interior"],
+      "scrollable"
     ];
 
     if (childClasses.length) {
@@ -129,6 +130,11 @@ export default class SideModal extends Component {
 
     return (
       <div className="panel overlay--solid-dark fixed" id="@@modal" onClick={close} style={{zIndex: 100, position: "fixed"}}>
+        <style type="text/css">{`
+          html.modal--opened .scrollable {
+            overflow: auto;
+          }
+        `}</style>
         <VelocityComponent
           animation={slide}
           duration={300}
@@ -138,7 +144,7 @@ export default class SideModal extends Component {
             className={ this.props.theme || this.layoutClasses() }
             style={ this.props.styles || this.props.style }
           >
-            <div className={ this.childClasses() }>
+            <div className={ this.childClasses() } style={{ height: "100%" }}>
               <ChildComponent {...props} />
             </div>
           </section>
