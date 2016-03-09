@@ -147,7 +147,27 @@ addSaga(function* sectionsSaga(getState) {
 
   }
 
+  function fixInternaLinks(sections) {
+
+    for (let section in sections) {
+      let url = sections[section].link
+      let regex = new RegExp(__meteor_runtim_config.ROOT_URL, "gmi")
+      if (url.match(regex)) {
+        url = url.replace(regex, "/")
+        if (url[0] != "/") {
+          url = "/" + url
+        }
+      }
+
+      sections[section].link = url
+
+      fixInternaLinks(sections[section].children)
+    }
+
+  }
+
   bindForeignImages(navigation)
+  fixInternaLinks(navigation)
 
   // update the content and end the saga (not a daemon)
   yield put(set(navigation))
