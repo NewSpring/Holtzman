@@ -17,6 +17,7 @@
 
   :local(.interior) {
     padding-bottom: 120px;
+    overflow-y: auto !important;
   }
 
 }
