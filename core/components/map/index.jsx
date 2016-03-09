@@ -50,6 +50,7 @@ export default class Map extends Component {
       panControl: false,
       mapTypeControl: false,
       scrollwheel: false,
+      disableDefaultUI: true
     }
   }
 
