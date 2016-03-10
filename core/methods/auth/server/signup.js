@@ -64,6 +64,7 @@ Meteor.methods({
       LastName: account.lastName,
       IsSystem: false,
       Gender: 0,
+      ConnectionStatusValueId: 67, // Web Prospect
       SystemNote: `Created from NewSpring Apollos on ${__meteor_runtime_config__.ROOT_URL}`
     }
 
@@ -74,6 +75,7 @@ Meteor.methods({
       PersonId,
       EntityTypeId: 27,
       UserName: account.email,
+      IsConfirmed: true,
       PlainTextPassword: account.password
     }
 
