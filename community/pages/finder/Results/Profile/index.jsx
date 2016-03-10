@@ -11,7 +11,8 @@ import Join from "./Join"
 
 const map = (state) => ({
   person: state.onBoard.person,
-  authorized: state.onBoard.authorized
+  authorized: state.onBoard.authorized,
+  previousLocations: state.routing.location.previous
 })
 @connect(map)
 export default class Profile extends Component {
@@ -75,6 +76,17 @@ export default class Profile extends Component {
 
   }
 
+  // override view all results link if can go back
+  // this preserves scroll state
+  handleBack = (event) => {
+    const lastLocation = this.props.previousLocations[this.props.previousLocations.length-1];
+
+    if (lastLocation === `/groups/finder/list/${this.props.params.hash}`) {
+      event.preventDefault();
+      window.history.back();
+    }
+  }
+
   render () {
     let profile = this.getProfile()
 
@@ -82,6 +94,6 @@ export default class Profile extends Component {
       return null
     }
 
-    return <Layout group={profile} join={this.join} hash={this.props.params.hash} />
+    return <Layout group={profile} join={this.join} hash={this.props.params.hash} handleBack={this.handleBack} />
   }
 }
