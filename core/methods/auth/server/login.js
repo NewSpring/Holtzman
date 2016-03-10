@@ -96,8 +96,6 @@ Meteor.methods({
     }
 
 
-
-    console.log(isAuthorized)
     return isAuthorized
   },
 })

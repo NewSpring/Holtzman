@@ -28,7 +28,7 @@ export default class Layout extends Component {
   }
 
   render () {
-    const { update, home } = this.props
+    const { update, home, campuses, campus } = this.props
 
     let {
       city,
@@ -36,13 +36,13 @@ export default class Layout extends Component {
       zip,
       state,
       street1,
-      street2
+      street2,
     } = home
 
     return (
     <div className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom background--light-primary">
-      <Meta title="Change your password" />
-        <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
+      <Meta title="Change your address" />
+        <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" style={{zIndex: 1}}>
           <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
           <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
         </Link>
@@ -107,6 +107,16 @@ export default class Layout extends Component {
             </div>
           </div>
 
+          <h6 className="soft-bottom">Campus</h6>
+          <Forms.Select
+            name="Campus"
+            label="Campus"
+            type="Campus"
+            defaultValue={campus.id || false}
+            ref="Campus"
+            includeBlank={true}
+            items={campuses}
+          />
           {/*
           <Link to="/profile/settings" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">
             Back

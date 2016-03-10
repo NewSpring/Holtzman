@@ -16,7 +16,6 @@ export default class Layout extends Component {
     saveMonth: PropTypes.func.isRequired,
     days: PropTypes.array.isRequired,
     years: PropTypes.array.isRequired,
-    campuses: PropTypes.array.isRequired
   }
 
   submit = (e) => {
@@ -58,7 +57,7 @@ export default class Layout extends Component {
     return (
     <div className="background--light-primary one-whole text-center push-double-top@lap-and-up soft-double-bottom push-double-bottom">
       <Meta title="Update your details" />
-        <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
+        <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" style={{zIndex: 1}}>
           <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
           <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
         </Link>
@@ -151,17 +150,6 @@ export default class Layout extends Component {
             />
           </div>
         </div>
-
-          <h6 className="soft-bottom">Campus</h6>
-          <Forms.Select
-            name="Campus"
-            label="Campus"
-            type="Campus"
-            defaultValue={campus.id || false}
-            ref="Campus"
-            includeBlank={true}
-            items={campuses}
-          />
 
         {/*
           <Link to="/profile/settings" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">

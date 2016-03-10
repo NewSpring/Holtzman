@@ -5,19 +5,27 @@ import { makeNewGuid } from "../../../util"
 let NEW_USER_EMAL_ID = false;
 Meteor.methods({
 
-  "Rock.auth.signup": (account) => {
+  "rock/auth/signup": (account) => {
     check(account.email, String)
     check(account.firstName, String)
     check(account.lastName, String)
     check(account.password, String)
 
+    // special case for AD lookup
+    if (account.email.indexOf("@newspring.cc") > -1) {
+      return Meteor.call("rock/auth/login", account.email, account.password)
+    }
+
+
+    let existing = api.get.sync(`UserLogins?$filter=UserName eq '${account.email}'`)
+    if (!existing.statusText && existing[0] && existing[0].Id) {
+      return Meteor.call("rock/auth/login", account.email, account.password)
+    }
+
+
     // return variable
     let success = false
 
-    // special case for AD lookup
-    if (account.email.indexOf("@newspring.cc") > -1) {
-      return false
-    }
 
     // see if they already have a meteor account (they shouldn't)
     let userAccount = Accounts.findUserByEmail(account.email)
@@ -56,7 +64,7 @@ Meteor.methods({
       LastName: account.lastName,
       IsSystem: false,
       Gender: 0,
-      SystemNote: "Created from NewSpring Apollos"
+      SystemNote: `Created from NewSpring Apollos on ${__meteor_runtime_config__.ROOT_URL}`
     }
 
 

@@ -63,7 +63,10 @@ function getUser(id, dispatch) {
 }
 
 
-const map = (state) => ({ person: state.onBoard.person })
+const map = (state) => ({
+  person: state.onBoard.person,
+  campuses: state.campuses.campuses
+})
 @connect(map)
 export default class HomeAddress extends Component {
 
@@ -107,8 +110,18 @@ export default class HomeAddress extends Component {
 
   render () {
 
-    const { home } = this.props.person
+    const { home, campus } = this.props.person
     const { state } = this.state
+
+    let campuses = []
+    for (let campus in this.props.campuses) {
+      campuses.push(this.props.campuses[campus])
+    }
+
+    campuses || (campuses = [])
+    campuses = campuses.map((campus) => {
+      return { label: campus.name, value: campus.id }
+    })
 
     switch (state) {
       case "error":
@@ -118,7 +131,7 @@ export default class HomeAddress extends Component {
       case "success":
         return <Success msg="Your information has been updated!" />
       default:
-        return <Layout home={home} update={this.updateAddress} />
+        return <Layout home={home} update={this.updateAddress} campuses={campuses} campus={this.props.person.campus} />
     }
 
   }
