@@ -12,7 +12,7 @@ let days = [
   { label: "Saturday", value: 6},
 ]
 
-const Filter = ({ topics, filter, campuses }) => (
+const Filter = ({ topics, filter, campuses, defaultFilters }) => (
   <section className="background--light-primary soft-double@lap-and-up soft-double-top">
     <div className="grid">
       <div className="grid__item one-third@lap-and-up">
@@ -22,7 +22,7 @@ const Filter = ({ topics, filter, campuses }) => (
           classes={["hard-bottom@lap-and-up"]}
           items={campuses}
           includeBlank={false}
-          defaultValue={-1}
+          defaultValue={defaultFilters.campus || -1}
           onChange={filter}
         />
       </div>
