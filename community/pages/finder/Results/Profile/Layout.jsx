@@ -4,7 +4,7 @@ import { Link } from "react-router"
 
 import Meta from "../../../../../core/components/meta"
 
-const Layout = ({ group, join, hash }, context) => {
+const Layout = ({ group, join, hash, handleBack }, context) => {
 
   let leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"))
   let photo = group.photo ? group.photo : "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png"
@@ -164,7 +164,7 @@ const Layout = ({ group, join, hash }, context) => {
             </div>
             */}
             <div className="one-whole push-top text-center soft@handheld soft-sides">
-              <Link to={`/groups/finder/list/${hash}`} className="btn--small btn--dark-tertiary display-inline-block">
+              <Link to={`/groups/finder/list/${hash}`} onClick={handleBack} className="btn--small btn--dark-tertiary display-inline-block">
                 View All Results
               </Link>
             </div>

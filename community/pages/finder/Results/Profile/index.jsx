@@ -6,12 +6,15 @@ import OnBoard from "../../../../../core/blocks/onBoard"
 import { GraphQL } from "../../../../../core/graphql"
 import { join } from "../../../../methods/join"
 
+import { routeActions } from "../../../../../core/store/routing"
+
 import Layout from "./Layout"
 import Join from "./Join"
 
 const map = (state) => ({
   person: state.onBoard.person,
-  authorized: state.onBoard.authorized
+  authorized: state.onBoard.authorized,
+  previousLocations: state.routing.location.previous
 })
 @connect(map)
 export default class Profile extends Component {
@@ -75,6 +78,17 @@ export default class Profile extends Component {
 
   }
 
+  // override view all results link if can go back
+  // this preserves scroll state
+  handleBack = (event) => {
+    const lastLocation = this.props.previousLocations[this.props.previousLocations.length-1];
+
+    if (lastLocation === `/groups/finder/list/${this.props.params.hash}`) {
+      event.preventDefault();
+      this.props.dispatch(routeActions.goBack());
+    }
+  }
+
   render () {
     let profile = this.getProfile()
 
@@ -82,6 +96,6 @@ export default class Profile extends Component {
       return null
     }
 
-    return <Layout group={profile} join={this.join} hash={this.props.params.hash} />
+    return <Layout group={profile} join={this.join} hash={this.props.params.hash} handleBack={this.handleBack} />
   }
 }
