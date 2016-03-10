@@ -136,7 +136,7 @@ export default class Layout extends Component {
 
             <div  id="active-schedules" className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
               <h4 className="soft soft-double-ends text-center flush-bottom">
-                My Active Schedules
+                My Schedules
               </h4>
 
 
@@ -160,13 +160,17 @@ export default class Layout extends Component {
 
                 }
 
-
                 return (
                   <div>
                     {schedules.map((schedule, i) => {
 
                       if (!schedule.details || !schedule.details[0].account) {
                         return null
+                      }
+
+                      let complete = false
+                      if (new Date(schedule.next) < new Date() && schedule.schedule.value === "One-Time") {
+                        complete = true
                       }
 
                       return (
@@ -179,6 +183,7 @@ export default class Layout extends Component {
                               <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
                                 <h6 className="text-dark-tertiary push-half-bottom">
                                   {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
+                                  <span className="text-dark-secondary">{complete ? " - Complete" : ""}</span>
                                 </h6>
                                 <h5 className="flush">
                                   {schedule.details[0].account.name}
