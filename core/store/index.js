@@ -12,6 +12,7 @@ import routing from "./routing"
 import share from "./share"
 import comingsoon from "./comingsoon"
 import search from "./search"
+import filters from "./filters"
 
 import {
   join,
@@ -46,6 +47,7 @@ export {
   comingsoon,
   routing,
   search,
+  filters,
 
   wrapper,
   createReduxStore,
