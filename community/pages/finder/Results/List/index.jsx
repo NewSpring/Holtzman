@@ -11,6 +11,7 @@ import Filter from "./Filter"
 
 const map = (state) => ({
   campuses: state.campuses.campuses,
+  defaultFilters: state.filters
 })
 
 @connect(map)
@@ -87,6 +88,7 @@ export default class ListView extends Component {
                   topics={topics}
                   filter={filter}
                   campuses={campuses}
+                  defaultFilters={this.props.defaultFilters}
                 />
               )
             }

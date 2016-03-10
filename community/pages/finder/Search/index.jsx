@@ -6,6 +6,7 @@ import {
   campuses as campusActions,
   collections as collectionActions,
   nav as navActions,
+  filters as filterActions
 } from "../../../../core/store"
 
 import Layout from "./Layout"
@@ -111,6 +112,7 @@ export default class Search extends Component {
 
 
           if (campus) {
+            this.props.dispatch(filterActions.set({ filter: "campus", value: campus }));
             query.campus = campus
           }
 
@@ -127,6 +129,7 @@ export default class Search extends Component {
 
         let query = {}
         if (campus) {
+          this.props.dispatch(filterActions.set({ filter: "campus", value: campus }));
           query.campus = campus
         }
 
