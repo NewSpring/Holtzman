@@ -6,6 +6,8 @@ import OnBoard from "../../../../../core/blocks/onBoard"
 import { GraphQL } from "../../../../../core/graphql"
 import { join } from "../../../../methods/join"
 
+import { routeActions } from "../../../../../core/store/routing"
+
 import Layout from "./Layout"
 import Join from "./Join"
 
@@ -83,7 +85,7 @@ export default class Profile extends Component {
 
     if (lastLocation === `/groups/finder/list/${this.props.params.hash}`) {
       event.preventDefault();
-      window.history.back();
+      this.props.dispatch(routeActions.goBack());
     }
   }
 
