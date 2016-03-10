@@ -8,7 +8,7 @@ import { AccountType } from "../../../../give/components"
 const Layout = ({ details, remove }) => (
   <div className="background--light-primary text-center soft-double-top push-double-bottom push-double-top" style={{overflow: "visible"}}>
     <Meta title="Saved Payments" />
-      <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
+      <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" style={{zIndex: 1}}>
         <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
         <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
       </Link>
