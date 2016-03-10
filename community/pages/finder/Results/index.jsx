@@ -98,7 +98,8 @@ function getGroups(param, dispatch ) {
 
 const map = (state) => ({
   groups: state.collections.groups,
-  topics: state.collections.topics
+  topics: state.collections.topics,
+  filters: state.filters
 })
 @connect(map)
 export default class ListContainer extends Component {
@@ -114,7 +115,7 @@ export default class ListContainer extends Component {
       topic: -1,
       days: [0, 1, 2, 3, 4, 5, 6],
       childCare: -1,
-      campus: -1,
+      campus: this.props.filters.campus || -1,
     }
   }
 
