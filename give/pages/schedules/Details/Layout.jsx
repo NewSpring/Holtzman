@@ -48,7 +48,7 @@ export default class Layout extends Component {
 
   render () {
 
-    const { schedule, stop, state, person, active } = this.props
+    const { schedule, stop, state, person, active, complete } = this.props
 
     return (
 
@@ -117,6 +117,17 @@ export default class Layout extends Component {
                         }()}
 
                         {(() => {
+
+                          if (complete) {
+                            return (
+                              <h6 className="text-brand">
+                                Schedule Completed
+                              </h6>
+                            )
+                          }
+
+
+
                           if (active) {
                             return (
                               <h6 className="text-alert" onClick={stop} style={{cursor: "pointer"}}>
@@ -125,6 +136,7 @@ export default class Layout extends Component {
                             )
 
                           }
+
 
                           return (
                             <h6 className="text-brand">

@@ -108,6 +108,11 @@ export default class Details extends Component {
   render () {
     const id = Number(this.props.params.id)
     let transaction = this.props.transactions[id]
+    let complete = false
+
+    if (new Date(transaction.next) < new Date() && transaction.schedule.value === "One-Time") {
+      complete = true
+    }
 
     return (
       <Layout
@@ -116,6 +121,7 @@ export default class Details extends Component {
         state={this.state}
         person={this.props.person}
         active={this.state.isActive}
+        complete={complete}
       />
     )
   }
