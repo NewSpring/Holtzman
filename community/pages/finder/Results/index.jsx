@@ -359,12 +359,13 @@ export default class ListContainer extends Component {
                     return null
                 }
 
-
-                if (!markers.length) {
-                  return null
-                }
                 if (typeof window != "undefined" && window != null) {
                   if (window.matchMedia("(min-width: 769px)").matches) {
+
+                    if (!markers.length) {
+                      <Map />
+                    }
+
                     return (
                       <Map
                         markers={markers}
