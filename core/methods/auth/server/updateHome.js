@@ -36,6 +36,14 @@ Meteor.methods({
       }
     }
 
+    // move campus to another call
+    const Campus = data.Campus
+    delete data.Campus
+
+    if (GroupId) {
+      let result = api.patch.sync(`Groups/${GroupId}`, { CampusId: Campus })
+    }
+
     if (home) {
       let success = api.patch.sync(`Locations/${home}`, data)
       if (success) {

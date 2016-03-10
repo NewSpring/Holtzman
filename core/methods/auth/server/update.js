@@ -12,10 +12,6 @@ Meteor.methods({
 
     const Person = { ...data }
 
-    // move campus to another call
-    const Campus = Person.Campus
-    delete Person.Campus
-
     // clean up data
     for (let key in Person) {
       if (!Person[key]) {
@@ -26,11 +22,6 @@ Meteor.methods({
     let result;
     try {
       result = api.patch.sync(`People/${user.services.rock.PersonId}`, Person)
-      let group = api.get.sync(`Groups/GetFamilies/${user.services.rock.PersonId}?$select=Id`)
-
-      if (group && group.length && group[0] && group[0].Id) {
-        result = api.patch.sync(`Groups/${group[0].Id}`, { CampusId: Campus })
-      }
 
     } catch (e) {
       throw new Meteor.Error(e.message)

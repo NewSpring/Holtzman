@@ -34,7 +34,16 @@ const step2 = (purchaseData, method, callback) => {
   const builder = new Builder()
   const xml = builder.buildObject(sale)
 
-  return fetch("https://secure.networkmerchants.com/api/v2/three-step", {
+  function timeout(ms, promise) {
+    return new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        reject(new Error("The request to our payment process took longer than expected. For your saftey we have cancelled this action. You were not charged and should be able to try again!"))
+      }, ms)
+      promise.then(resolve, reject)
+    })
+  }
+
+  return timeout(60000, fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",
     body: `${xml}`,
     headers: {
@@ -93,7 +102,7 @@ const step2 = (purchaseData, method, callback) => {
     callback(err)
 
   })
-  .catch(callback)
+  .catch(callback))
 
 
 }

@@ -178,7 +178,7 @@ addSaga(function* onBoard(getState) {
           if (person) {
             yield put(actions.person(person))
           }
-          
+
           // set the logged in status
           yield put(actions.authorize(true))
 
