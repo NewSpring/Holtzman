@@ -33,6 +33,11 @@ Meteor.methods({
 
       let user = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`)
       const { PersonId } = user[0]
+      if (!user[0].IsConfirmed) {
+        api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, (err, response) => {
+          console.log(err, response)
+        })
+      }
 
       let person = api.get.sync(`People/${PersonId}`)
       const { PrimaryAliasId } = person
@@ -72,6 +77,12 @@ Meteor.methods({
       Accounts.setPassword(userAccount._id, password)
       api.get(`UserLogins?$filter=UserName eq '${Username}'`, (err, user) => {
         const { PersonId } = user[0]
+
+        if (!user[0].IsConfirmed) {
+          api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, (err, response) => {
+            console.log(err, response)
+          })
+        }
 
         api.get(`People/${PersonId}`, (err, person) => {
           const { PrimaryAliasId } = person

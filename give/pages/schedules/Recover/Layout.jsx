@@ -106,7 +106,7 @@ export default class Layout extends Component {
             <Meta title="Transfer Your Giving Schedule" />
 
             <Right
-              background={recoverableSchedules.length ? "//s3.amazonaws.com/ns.assets/apollos/transfer-img1x2.jpg ": "//s3.amazonaws.com/ns.assets/apollos/thank_you-img1x2.jpg"}
+              background={recoverableSchedules.length ? "//s3.amazonaws.com/ns.assets/apollos/transfer-img1x2.jpg": "//s3.amazonaws.com/ns.assets/apollos/thank_you-img1x2.jpg"}
               mobile={false}>
             </Right>
 
@@ -244,14 +244,14 @@ export default class Layout extends Component {
                         <strong>Your gift matters!</strong>
                       </p>
                       <p>
-                        The number of kids we can help by putting shoes on their feet and a backpack full of school supplies on their back matter. The number of people that visited the care room and had their lives changed because of one conversation matter. The number of people that met Jesus in a service, online, or at the Gauntlet matter.
-                      </p>
+                        We believe that every number has a name, every name has a story, and every story matters to God. Because you give, we are able to see thousands of life change stories every year at NewSpring Church. There is no organization with more potential to change the world than the local church. Thank you for being a difference maker!                      </p>
+
                       <p>
-                        When you give, you make a difference in someone’s life.
-                      </p>
-                      <p><em>
+                        <em>
                         “Every number has a name, every name has a story, and every story matters to God.”
-                      </em></p>
+                        </em>
+
+                        </p>
 
                     </div>
                   </div>
