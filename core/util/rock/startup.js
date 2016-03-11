@@ -1,10 +1,11 @@
 
 import { makeNewGuid } from "../guid"
+import Moment from "moment"
 
 export default function startup(api) {
 
   if (Meteor.isServer) {
-
+    console.log( new Date(), Moment() )
     if (process.env.NODE_ENV === "production" && __meteor_runtime_config__.ROOT_URL.match("localhost") === null) {
       let { ROOT_URL } = __meteor_runtime_config__
       let current = api.get.sync(`DefinedValues?$filter=Value eq '${ROOT_URL}' and DefinedTypeId eq 12`)
