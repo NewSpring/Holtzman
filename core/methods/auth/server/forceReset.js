@@ -11,7 +11,7 @@ Meteor.methods({
     }
 
     let RockUser = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`)
-    if (RockUser.statusText) {
+    if (RockUser.statusText || !RockUser.length) {
       // we don't tell people there account doesn't exist
       return true
     }
