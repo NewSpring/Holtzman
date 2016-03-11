@@ -369,6 +369,9 @@ function* recoverTransactions(getStore) {
       // only recover schedules that are missing info (i.e. not turned off in Rock)
       if (schedule.gateway) { continue; }
 
+      if (schedule.schedule.value === "Twice a Month") {
+        schedule.schedule.value = null
+      }
       bulkUpdate[schedule.id] = {...{
         start: Moment(schedule.start).format("YYYYMMDD"),
         frequency: schedule.schedule.value

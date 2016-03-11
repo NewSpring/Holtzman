@@ -43,6 +43,7 @@ const step2 = (purchaseData, method, callback) => {
     })
   }
 
+
   return timeout(60000, fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",
     body: `${xml}`,
