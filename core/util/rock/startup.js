@@ -7,7 +7,7 @@ export default function startup(api) {
 
     if (process.env.NODE_ENV === "production" && __meteor_runtime_config__.ROOT_URL.match("localhost") === null) {
       let { ROOT_URL } = __meteor_runtime_config__
-      let current = api.get.sync(`DefinedValues?$filter=Value eq '${ROOT_URL}'`)
+      let current = api.get.sync(`DefinedValues?$filter=Value eq '${ROOT_URL}' and DefinedTypeId eq 12`)
 
       if (!current.length) {
         let DefinedValue = {

@@ -1,6 +1,7 @@
 /*global Meteor, check */
 import { api } from "../../../util/rock"
 import { makeNewGuid } from "../../../util"
+import Moment from "moment"
 
 let NEW_USER_EMAL_ID = false;
 Meteor.methods({
@@ -76,7 +77,8 @@ Meteor.methods({
       EntityTypeId: 27,
       UserName: account.email,
       IsConfirmed: true,
-      PlainTextPassword: account.password
+      PlainTextPassword: account.password,
+      LastLoginDateTime: `${Moment().toISOString()}`
     }
 
     let createdUser = api.post.sync("UserLogins", user)

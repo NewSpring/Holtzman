@@ -1,5 +1,6 @@
 /*global Meteor, check */
 import { api } from "../../../util/rock"
+import Moment from "moment"
 
 Meteor.methods({
   "rock/auth/login": (Username, password) => {
@@ -38,6 +39,10 @@ Meteor.methods({
           console.log(err, response)
         })
       }
+
+      api.patch(`UserLogins/${user[0].Id}`, {
+        LastLoginDateTime: `${Moment().toISOString()}`
+      })
 
       let person = api.get.sync(`People/${PersonId}`)
       const { PrimaryAliasId } = person
@@ -83,6 +88,10 @@ Meteor.methods({
             console.log(err, response)
           })
         }
+
+        api.patch(`UserLogins/${user[0].Id}`, {
+          LastLoginDateTime: `${Moment().toISOString()}`
+        })
 
         api.get(`People/${PersonId}`, (err, person) => {
           const { PrimaryAliasId } = person
