@@ -174,7 +174,6 @@ export default class Billing extends Component {
                     onChange={this.zip}
                     validation={this.zip}
                     ref="zip"
-                    maxLength="5"
                   />
                 </div>
               )
