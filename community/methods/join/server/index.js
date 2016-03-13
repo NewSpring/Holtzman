@@ -11,11 +11,17 @@ Meteor.methods({
   "community/actions/join": function(GroupId, message) {
 
     if (!this.userId) {
-      throw new Meteor.Error("Must be logged in to upload an avatar")
+      throw new Meteor.Error("You must be signed in to join a group")
     }
 
-    let user = Meteor.user()
-    user || (user = { services: { rock: {} }})
+    let user = Meteor.users.findOne({ _id: this.userId })
+    console.log(user)
+    
+    if (!user || !user.services || !user.services.rock || !user.services.rock.PersonId) {
+      throw new Meteor.Error("There was a problem joining this group")
+    }
+
+    // user || (user = { services: { rock: {} }})
     const { PersonId, PrimaryAliasId } = user.services.rock
 
     // first time this is used, try to load the email in memory
