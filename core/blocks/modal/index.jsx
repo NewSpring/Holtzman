@@ -22,7 +22,7 @@ export default class SideModalContainer extends Component {
     previous: null
   }
 
-  bindEsc = (e) => {
+  bindEsc = (event) => {
     // if key hit is `esc` or template is closed is clicked
     if (event.keyCode === 27) {
       this.props.dispatch(modalActions.hide())
