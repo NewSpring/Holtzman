@@ -83,7 +83,6 @@ function getGroups(param, dispatch ) {
       }
     }
   `
-
   return GraphQL.query(query)
     .then(({ groups, topics }) => {
 
