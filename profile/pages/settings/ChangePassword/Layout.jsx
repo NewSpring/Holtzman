@@ -1,13 +1,11 @@
-import { Link } from "react-router"
 import { Forms } from "../../../../core/components"
 import Meta from "../../../../core/components/meta"
 
+import Back from "../Back"
+
 const Layout = ({ submit, save, state }, context) => (
   <div className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom " style={{overflow: "visible", zIndex: 1}}>
-    <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
-      <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
-      <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
-    </Link>
+    <Back />
     <Meta title="Change your password" />
       <Forms.Form
         id="reset-password"
