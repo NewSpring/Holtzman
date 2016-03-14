@@ -24,7 +24,7 @@ export default class Toggle extends Component {
   }
 
   toggle = (event) => {
-    const active = event.target.dataset.toggle;
+    const active = Number(event.target.dataset.toggle);
     if (active != this.state.active) {
       if (typeof(this.props.toggle) === "function") {
         this.props.toggle(active);
@@ -62,7 +62,7 @@ export default class Toggle extends Component {
   render () {
 
     return (
-      <div className="toggle push-bottom soft-sides">
+      <div className="toggle push-bottom soft-sides" style={{ backgroundColor: "#fff" }}>
         {this.props.items.map((item, i) => {
           return(
             <div
