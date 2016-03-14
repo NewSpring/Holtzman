@@ -27,6 +27,8 @@ const isEqual = (path) => {
   return false
 }
 
+const profileLink = Meteor.isCordova ? "/profile" : "/profile/settings"
+
 let links = {
   TOP:[
     {
@@ -63,9 +65,9 @@ let links = {
     {
       id: 4,
       label: "Profile",
-      link: "/profile/settings",
+      link: profileLink,
       icon: "icon-profile",
-      isActive: (props) => (isEqual("/profile/settings") && !props.modal.visible)
+      isActive: (props) => (isEqual(profileLink) && !props.modal.visible)
     }
   ],
   CONTENT: [
