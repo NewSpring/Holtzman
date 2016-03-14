@@ -145,7 +145,7 @@ class Template extends Component {
     const { person } = this.props
     let { photo } = person
     // photo = photo ? `//core-rock.newspring.cc/${photo}` : null
-    let mobile = true
+    let mobile = !Meteor.isCordova
 
     if (this.props.location.pathname.split("/").length > 3) {
       mobile = false

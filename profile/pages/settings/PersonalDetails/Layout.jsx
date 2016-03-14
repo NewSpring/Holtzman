@@ -1,8 +1,9 @@
 import { Component, PropTypes} from "react"
-import { Link } from "react-router"
 import { Forms } from "../../../../core/components"
 import Meta from "../../../../core/components/meta"
 import Validate from "../../../../core/util/validate"
+
+import Back from "../Back"
 
 // import { VelocityComponent } from "velocity-react"
 
@@ -57,10 +58,7 @@ export default class Layout extends Component {
     return (
     <div className="background--light-primary one-whole text-center push-double-top@lap-and-up soft-double-bottom push-double-bottom">
       <Meta title="Update your details" />
-        <Link to="/profile/settings" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" style={{zIndex: 1}}>
-          <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
-          <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
-        </Link>
+        <Back />
         <Forms.Form
           id="reset-password"
           classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
