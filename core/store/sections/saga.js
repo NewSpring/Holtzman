@@ -170,7 +170,9 @@ addSaga(function* sectionsSaga(getState) {
   }
 
   bindForeignImages(navigation)
-  fixInternaLinks(navigation)
+  if (!Meteor.isCordova) {
+    fixInternaLinks(navigation)
+  }
 
   // update the content and end the saga (not a daemon)
   yield put(set(navigation))
