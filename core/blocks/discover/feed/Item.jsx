@@ -50,7 +50,7 @@ export default class DiscoverItem extends Component {
 
   render() {
     return (
-      <div className="one-whole grid__item push-half-bottom card">
+      <div className="push-half-bottom card">
         <a href={this.props.item.link} onClick={inAppLink}>
           <ImageLoader
             src={this.props.item.image}

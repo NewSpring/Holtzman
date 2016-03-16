@@ -73,27 +73,23 @@ export default class LikesItem extends Component {
     const like = this.props.like;
 
     return (
-      <section className="hard">
-        <div className="grid">
-          <div className="one-whole grid__item">
-            <div className="card">
-              <Link to={like.link} onClick={this.onClick} className="plain">
-                <ImageLoader
-                  src={this.props.like.image}
-                  preloader={this.preloader}
-                  renderElement={this.renderElement}
-                  imageclasses={this.iamgeclasses}
-                  ></ImageLoader>
-                <div className="card__item soft text-dark-tertiary">
-                  <h4 className="text-dark">{like.title}</h4>
-                    <h7>{like.category}</h7>
-                  <h7 className="text-right float-right">{this.getDate(like)}</h7>
-                </div>
-              </Link>
-            </div>
-          </div>
+      <div className="grid__item one-whole">
+        <div className="card">
+          <Link to={like.link} onClick={this.onClick} className="plain">
+              <ImageLoader
+                src={this.props.like.image}
+                preloader={this.preloader}
+                renderElement={this.renderElement}
+                imageclasses={this.iamgeclasses}
+                ></ImageLoader>
+              <div className="card__item soft text-dark-tertiary">
+                <h4 className="text-dark">{like.title}</h4>
+                  <h7>{like.category}</h7>
+                <h7 className="text-right float-right">{this.getDate(like)}</h7>
+              </div>
+          </Link>
         </div>
-      </section>
+      </div>
     );
   }
 
