@@ -61,7 +61,9 @@ export default class LikesItem extends Component {
   iconClasses = `${this.props.like.icon} soft-half-right`
 
   onClick = (e) => {
-    if (e.currentTarget.href.match(/^https|http/).length > 0) {
+    const targetLink = e.currentTarget.href;
+    // direct to in app helper unless it's an internal link
+    if (targetLink.match(/^(http|https):\/\/localhost.*/) === null) {
       inAppLink(e)
     }
   }
