@@ -241,10 +241,10 @@ export default class Menu extends Component {
                 </div>
               </a>
               */}
-              <a href="//newspring.cc/privacy" target="_blank" className="plain text-dark-secondary">
+              <a href="//newspring.cc/privacy" onClick={this.onClick} target="_blank" className="plain text-dark-secondary">
                 <RenderCell name="Privacy Policy" />
               </a>
-              <a href="//newspring.cc/terms" target="_blank" className="plain text-dark-secondary">
+              <a href="//newspring.cc/terms" onClick={this.onClick} target="_blank" className="plain text-dark-secondary">
                 <RenderCell name="Terms of Use" last={true} />
               </a>
             </div>
