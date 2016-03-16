@@ -8,6 +8,8 @@ import { onBoard as onBoardActions } from "../../../../core/store"
 
 import { avatar } from "../../../../core/methods/files/client"
 
+import inAppLink from "../../../../core/util/inAppLink"
+
 function updateUser(id, dispatch) {
   let personQuery = `
     {
@@ -146,15 +148,6 @@ export default class Menu extends Component {
 
   }
 
-  onClick = (e) => {
-    if (Meteor.isCordova) {
-      if (cordova.InAppBrowser && cordova.InAppBrowser.open) {
-        e.preventDefault()
-        cordova.InAppBrowser.open(e.currentTarget.href, "_blank")
-      }
-    }
-  }
-
   uploadIcon = () => {
     switch (this.state.upload) {
       case "default":
@@ -234,17 +227,17 @@ export default class Menu extends Component {
           <div className={this.dividerClasses()}>
             <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
               {/*
-              <a onClick={this.onClick} href="//newspring.cc/about" target="_blank" className="plain text-dark-secondary">
+              <a onClick={inAppLink} href="//newspring.cc/about" target="_blank" className="plain text-dark-secondary">
                 <div className="card soft-ends soft-right text-left outlined--light">
                   <h6 className="soft-left flush display-inline-block">About Us</h6>
                   <i className="float-right icon-arrow-next"></i>
                 </div>
               </a>
               */}
-              <a href="//newspring.cc/privacy" onClick={this.onClick} target="_blank" className="plain text-dark-secondary">
+              <a href="//newspring.cc/privacy" onClick={inAppLink} target="_blank" className="plain text-dark-secondary">
                 <RenderCell name="Privacy Policy" />
               </a>
-              <a href="//newspring.cc/terms" onClick={this.onClick} target="_blank" className="plain text-dark-secondary">
+              <a href="//newspring.cc/terms" onClick={inAppLink} target="_blank" className="plain text-dark-secondary">
                 <RenderCell name="Terms of Use" last={true} />
               </a>
             </div>
