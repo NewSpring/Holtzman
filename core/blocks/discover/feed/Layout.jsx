@@ -56,9 +56,7 @@ const Layout = ({ featuredItem, popularItems, recommendedItems, textItems }) => 
             }
 
             return (
-              <div className="grid__item one-whole" key={i} >
-                <PopularItem like={formatedObj} />
-              </div>
+                <PopularItem like={formatedObj} key={i}/>
             )
 
           })}
