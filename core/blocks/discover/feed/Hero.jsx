@@ -3,6 +3,8 @@ import { Component, PropTypes } from "react";
 import { ImageLoader } from "../../../components/loading"
 import LoadingStyles from "../../../components/loading/FeedItemSkeleton.css"
 
+import inAppLink from "../../../util/inAppLink"
+
 export default class DiscoverHero extends Component {
 
   static propTypes = {
@@ -51,6 +53,7 @@ export default class DiscoverHero extends Component {
       <div>
         <a
           href={this.props.link}
+          onClick={inAppLink}
         >
         <ImageLoader
           src={this.props.image}
