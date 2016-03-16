@@ -5,6 +5,8 @@ import { Link } from "react-router"
 import { ImageLoader } from "../../../core/components/loading"
 import LoadingStyles from "../../../core/components/loading/FeedItemSkeleton.css"
 
+import inAppLink from "../../../core/util/inAppLink"
+
 export default class LikesItem extends Component {
 
   static propTypes = {
@@ -58,6 +60,12 @@ export default class LikesItem extends Component {
 
   iconClasses = `${this.props.like.icon} soft-half-right`
 
+  onClick = (e) => {
+    if (e.currentTarget.href.match(/^https|http/).length > 0) {
+      inAppLink(e)
+    }
+  }
+
   render() {
 
     const like = this.props.like;
@@ -67,7 +75,7 @@ export default class LikesItem extends Component {
         <div className="grid">
           <div className="one-whole grid__item">
             <div className="card">
-              <Link to={like.link} className="plain">
+              <Link to={like.link} onClick={this.onClick} className="plain">
                 <ImageLoader
                   src={this.props.like.image}
                   preloader={this.preloader}

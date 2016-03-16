@@ -3,6 +3,8 @@ import { Component, PropTypes } from "react";
 import { ImageLoader } from "../../../components/loading"
 import LoadingStyles from "../../../components/loading/FeedItemSkeleton.css"
 
+import inAppLink from "../../../util/inAppLink"
+
 export default class DiscoverItem extends Component {
 
   static propTypes = {
@@ -49,7 +51,7 @@ export default class DiscoverItem extends Component {
   render() {
     return (
       <div className="one-whole grid__item push-half-bottom card">
-        <a href={this.props.item.link}>
+        <a href={this.props.item.link} onClick={inAppLink}>
           <ImageLoader
             src={this.props.item.image}
             preloader={this.preloader}
