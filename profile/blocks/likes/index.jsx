@@ -37,7 +37,7 @@ export default class LikesContainer extends Component {
 
     let ids = []
     return(
-      <section className="background--light-secondary soft soft-double@lap-and-up " style={ {marginTop: "-20px"} }>
+      <div className="grid soft-top background--light-secondary soft-half-sides soft-double@lap-and-up " style={ {marginTop: "-20px"} }>
         {likes.map((like, i) => {
           return <LikesItem like={like} key={i} />
         })}
@@ -69,7 +69,7 @@ export default class LikesContainer extends Component {
           }
 
         }()}
-      </section>
+      </div>
     );
 
   }
