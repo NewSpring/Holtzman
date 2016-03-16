@@ -4,6 +4,8 @@ import { Link } from "react-router"
 import { ImageLoader } from "../../components/loading"
 import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
 
+import inAppLink from "../../util/inAppLink"
+
 import Styles from "./styles"
 
 export default class SearchItem extends Component {
@@ -77,7 +79,7 @@ export default class SearchItem extends Component {
   render() {
 
     return (
-      <Link to={this.props.item.link} className={this.cardClasses()}>
+      <Link to={this.props.item.link} className={this.cardClasses()} onClick={inAppLink}>
         <div className={this.gridClasses()}>
 
           <div className={this.gridItemClasses()}>
