@@ -32,7 +32,7 @@ function openUrl(url) {
 
 const inAppLink = (e) => {
   if (Meteor.isCordova) {
-    if (cordova.InAppBrowser && cordova.InAppBrowser.open) {
+    if (SafariViewController || (cordova.InAppBrowser && cordova.InAppBrowser.open)) {
       e.preventDefault()
       e.stopPropagation();
       openUrl(e.currentTarget.href);
