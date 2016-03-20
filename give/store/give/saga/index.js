@@ -253,12 +253,12 @@ addSaga(function* createOrder(getStore) {
       let Component,
           obj;
 
-      const { payment } = give.data
+      const { payment, personal } = give.data
 
       // format data and select component
       if (payment.type === "ach") {
         obj = {
-          name: payment.accountName,
+          name: `${personal.firstName} ${personal.lastName}`,
           account: payment.accountNumber,
           routing: payment.routingNumber,
           type: payment.accountType
