@@ -126,19 +126,8 @@ export default class Payment extends Component {
 
 
         <div className="grid">
-          <div className="grid__item one-half">
-            <Forms.Input
-              name="billing-account-name"
-              ref="accountName"
-              id="accountName"
-              label="Bank Name"
-              onChange={this.saveData}
-              validation={this.validate}
-              defaultValue={payment.accountName}
-              errorText="Please enter your bank number"
-            />
-          </div>
-          <div className="grid__item one-half">
+
+          <div className="grid__item one-whole">
             <Forms.Select
               name="billing-account-type"
               ref="accountType"
@@ -384,7 +373,6 @@ export default class Payment extends Component {
 
             const ach = (payment.type === "ach" && payment.accountNumber && payment.routingNumber)
             const cc = (payment.type === "cc" && payment.cardNumber && payment.expiration && payment.ccv)
-
 
             let submit = this.props.next
             let disabled = false
