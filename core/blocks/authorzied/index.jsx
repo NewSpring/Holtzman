@@ -18,6 +18,12 @@ export default class Authorized extends Component {
     if (!authorized) {
       this.props.dispatch(modal.render(OnBoard))
     }
+
+    // fail safe if for some reason we are logged in but not authorized in
+    // the application
+    if (authorized && !this.props.auth) {
+      this.props.dispatch(onBoardActions.authorize(true))
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,7 +43,7 @@ export default class Authorized extends Component {
 
 
   render () {
-    if (this.props.auth) {
+    if (this.props.auth || Meteor.userId()) {
       return this.props.children
     }
 
