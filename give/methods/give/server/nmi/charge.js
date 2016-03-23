@@ -55,13 +55,10 @@ const step1 = (token, callback) => {
       return
     }
 
-
     // AVS mismatch can be sucessful transactions but some merchants
     // will keep holds on peoples accounts even if the transacton failed.
     // Here we send a void for  any transactions with an AVS
     // mismatch IF there was a failure
-    // console.log(data)
-
     if (data["result-code"] === "100") {
       callback(null, data)
       return
@@ -81,6 +78,7 @@ const step1 = (token, callback) => {
       err = data["result-text"]
     }
 
+    console.error(data)
     callback(err)
 
   })
