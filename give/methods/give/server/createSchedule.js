@@ -165,7 +165,6 @@ const createSchedule = (response, accountName, id, user) => {
     }
 
 
-
     ScheduledTransactionReciepts.insert(formatedFinancialScheduledTransaction, () => {
 
     })
