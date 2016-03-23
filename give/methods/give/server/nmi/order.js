@@ -33,7 +33,6 @@ const step2 = (purchaseData, method, callback) => {
 
   const builder = new Builder()
   const xml = builder.buildObject(sale)
-
   function timeout(ms, promise) {
     return new Promise(function(resolve, reject) {
       setTimeout(function() {

@@ -18,7 +18,6 @@ const cancelBilling = (customer, callback) => {
 
   const builder = new Builder()
   const xml = builder.buildObject(cancelBillingObj)
-  console.log(xml)
   return fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",
     body: `${xml}`,
@@ -30,7 +29,6 @@ const cancelBilling = (customer, callback) => {
     return response.text()
   })
   .then((data) => {
-    console.log(data)
     try {
       data = parseXML(data)
     } catch (e) {

@@ -285,12 +285,13 @@ export default class ListContainer extends Component {
 
       function convert(num) {
         if (Number(num)) {
-          return true
+          return Number(num) === 1
         }
+        return false
       }
 
       let filter = (
-        convert(filters.childCare) === (group.childCare ? group.childCare : true) &&
+        (Number(filters.childCare) === -1 || (convert(filters.childCare) === group.childCare)) &&
         (Number(filters.topic) === -1 || filters.topic === group.demographic) &&
         (Number(filters.campus) === -1 || Number(filters.campus) === Number(group.campusId)) &&
         filters.days.indexOf(Number(group.schedule.day)) > -1
