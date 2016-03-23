@@ -2,6 +2,7 @@
 import { api } from "../../core/util/rock"
 import { makeNewGuid } from "../../core/util/guid"
 import { ScheduledTransactionReciepts } from "../collections/scheduledTransactions"
+import { upsertLocations } from "./upsertLocations"
 
 const ScheduledTransactions = () => {
   if (api._ && api._.baseURL) {
@@ -51,7 +52,7 @@ const ScheduledTransactions = () => {
         delete ScheduledTransaction.ScheduledTransactionDetails
         delete ScheduledTransaction._id
 
-        let { Person, FinancialPersonSavedAccounts } = meta
+        let { Person, FinancialPersonSavedAccounts, Location } = meta
 
         let { PrimaryAliasId, PersonId } = { ...Person }
         delete Person.PersonId
@@ -65,11 +66,16 @@ const ScheduledTransactions = () => {
           SystemNote: "Created from NewSpring Apollos"
         } }
 
+        // this should never be isGuest, but is a saftey net
         const isGuest = PersonId ? false : true
         if (!PersonId) {
           PersonId = api.post.sync(`People`, Person)
           PrimaryAliasId = api.get.sync(`People/${PersonId}`).PrimaryAliasId
         }
+
+        // add locatin data to person
+        upsertLocations(PersonId, Location)
+
 
         // Create FinancialPaymentDetail
         FinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
