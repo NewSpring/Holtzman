@@ -106,7 +106,7 @@ export default class Layout extends Component {
             <Meta title="Transfer Your Giving Schedule" />
 
             <Right
-              background={recoverableSchedules.length ? "//s3.amazonaws.com/ns.assets/apollos/transfer-img1x2.jpg": "//s3.amazonaws.com/ns.assets/apollos/thank_you-img1x2.jpg"}
+              background="//s3.amazonaws.com/ns.assets/apollos/29516.marketing.cen.webad.thebestisyettocome_1x2.png"
               mobile={false}>
             </Right>
 
@@ -239,7 +239,7 @@ export default class Layout extends Component {
                 <div>
                   <div className="background--light-primary soft-half soft-sides@portable soft-double-sides@anchored soft-double-ends">
                     <div className="soft soft-double@lap-and-up push-top@lap-and-up">
-                      <h2 className="soft-half-bottom">Thank you!</h2>
+                      <h2 className="soft-half-bottom">Thank you { person.nickName || person.firstName || "so much" }!</h2>
                       <p>
                         <strong>Your gift matters!</strong>
                       </p>
