@@ -6,7 +6,7 @@ import Styles from "../styles.css"
 const Primary = ({ classes, accounts, state, preFill, saveFund, format, donate, selectVal }) => (
   <div>
     <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-      I'd like to { donate ? "donate" : "give" }
+      I'd like to give
     </h3>
 
     <Forms.Input
