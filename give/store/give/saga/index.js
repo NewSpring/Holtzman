@@ -19,6 +19,70 @@ import formatPersonDetails from "./formatPersonDetails"
 import { order, schedule, charge } from "../../../methods/give/client"
 import RecoverSchedules from "../../../blocks/RecoverSchedules"
 
+
+// at this point in time we have to do steps 1 - 3 of the
+// three step process to create a validation response
+// this validation process is required to ensure that the account
+// that is being used to make payments, is actually valid
+// see https://github.com/NewSpring/Apollos/issues/439 for discussion
+function* validate(getStore) {
+
+  const { give, campuses } = getStore(),
+    name = give.data.payment.name;
+
+  let success = true,
+    validationError = false,
+    transactionResponse;
+
+  // we strip all product and schedule data so the validation is
+  // just of the personal details + billing address
+  const modifiedGive = {...give}
+  delete modifiedGive.transactions
+  delete modifiedGive.schedules
+
+
+
+  // step 1 (sumbit personal details)
+  // personal info is ready to be submitted
+  const formattedData = formatPersonDetails(modifiedGive, campuses)
+
+  // in order to make this a validation call, we need to set the amount
+  // to be 9
+  formattedData.amount = 0
+
+  let error, url;
+  try {
+    // call the Meteor method to submit data to NMI
+    const response = yield cps(order, formattedData)
+    url = response.url
+
+  } catch (e) { error = e }
+
+  // step 2 (sumbit payment details)
+  yield submitPaymentDetails(modifiedGive.data, url)
+
+  if (url) {
+    // step 3 (trigger validation)
+    let token = url.split("/").pop();
+    try {
+      transactionResponse = yield cps(charge, token, name, null)
+    } catch (e) {
+      validationError = e
+      success = false
+    }
+  } else {
+    success = false
+    validationError = error
+  }
+
+  return {
+    success,
+    validationError,
+  }
+
+
+}
+
 // handle the transactions
 addSaga(function* chargeTransaction(getStore) {
 
@@ -48,7 +112,6 @@ addSaga(function* chargeTransaction(getStore) {
 
       } else {
 
-
         let store = getStore()
         give = store.give
 
@@ -75,7 +138,17 @@ addSaga(function* chargeTransaction(getStore) {
         // if there is not a saved account, charge the order
         if (!formattedData.savedAccount) {
           action = schedule
+
+          // saved accounts don't validate the payment by default
+          // so we make 3 blocking requests to validate the card :(
+          let { success, validationError } = yield* validate(getStore)
+
+          if (validationError) {
+            error = validationError
+          }
+
         }
+
       }
 
 
@@ -87,7 +160,9 @@ addSaga(function* chargeTransaction(getStore) {
       let transactionResponse = {}
       // submit transaction
       try {
-        transactionResponse = yield cps(action, token, name, id)
+        if (!error) {
+          transactionResponse = yield cps(action, token, name, id)
+        }
       } catch (e) { error = e }
 
       // set error states
@@ -150,6 +225,56 @@ addSaga(function* chargeTransaction(getStore) {
 
 })
 
+function* submitPaymentDetails(data, url) {
+
+  const form = document.createElement("FORM")
+
+  let Component,
+      obj;
+
+  const { payment, personal } = data
+
+  // format data and select component
+  if (payment.type === "ach") {
+    obj = {
+      name: `${personal.firstName} ${personal.lastName}`,
+      account: payment.accountNumber,
+      routing: payment.routingNumber,
+      type: payment.accountType
+    }
+
+    Component = AchForm
+  } else {
+    obj = {
+      number: payment.cardNumber,
+      exp: payment.expiration,
+      ccv: payment.ccv,
+    }
+
+    Component = CreditCardForm
+  }
+
+  // create the fieldset
+  const FieldSet = React.createElement(Component, {...obj});
+  // add fieldset to non rendered form
+  ReactDOM.render(FieldSet, form)
+
+  // @TODO test on older browsers
+  // store data in NMI's system
+  return fetch(url, {
+      method: "POST",
+      body: new FormData(form),
+      mode: "no-cors"
+    })
+    .then((response) => {
+      // next()
+
+    })
+    .catch((e) => {
+      // @TODO error handling
+    })
+
+}
 
 function* submitPersonDetails(give, campuses, autoSubmit) {
 
@@ -248,52 +373,7 @@ addSaga(function* createOrder(getStore) {
 
     } else if ((give.step - 1) === 3) {
 
-      const form = document.createElement("FORM")
-
-      let Component,
-          obj;
-
-      const { payment, personal } = give.data
-
-      // format data and select component
-      if (payment.type === "ach") {
-        obj = {
-          name: `${personal.firstName} ${personal.lastName}`,
-          account: payment.accountNumber,
-          routing: payment.routingNumber,
-          type: payment.accountType
-        }
-
-        Component = AchForm
-      } else {
-        obj = {
-          number: payment.cardNumber,
-          exp: payment.expiration,
-          ccv: payment.ccv,
-        }
-
-        Component = CreditCardForm
-      }
-
-      // create the fieldset
-      const FieldSet = React.createElement(Component, {...obj});
-      // add fieldset to non rendered form
-      ReactDOM.render(FieldSet, form)
-
-      // @TODO test on older browsers
-      // store data in NMI's system
-      fetch(give.url, {
-          method: "POST",
-          body: new FormData(form),
-          mode: "no-cors"
-        })
-        .then((response) => {
-          // next()
-
-        })
-        .catch((e) => {
-          // @TODO error handling
-        })
+      yield submitPaymentDetails(give.data, give.url)
 
     }
 
@@ -388,7 +468,6 @@ function* recoverTransactions(getStore) {
 
     yield put(actions.saveSchedules(bulkUpdate))
 
-    // console.log(now, time, user)
     // only update the store if it is past the reminder date
     if (now < time) {
       return
