@@ -2,7 +2,7 @@
 import { api } from "../../core/util/rock"
 import { makeNewGuid } from "../../core/util/guid"
 import { TransactionReciepts } from "../collections/transactions"
-
+import { upsertLocations } from "./upsertLocations"
 
 let GIVING_EMAIL_ID = false;
 const transactions = () => {
@@ -48,7 +48,7 @@ const transactions = () => {
         delete Transaction.TransactionDetails
         delete Transaction._id
 
-        let { Person, FinancialPersonSavedAccounts } = meta
+        let { Person, FinancialPersonSavedAccounts, Location } = meta
 
         let { PrimaryAliasId, PersonId } = { ...Person }
         delete Person.PersonId
@@ -73,6 +73,9 @@ const transactions = () => {
           Person = {...Person, ...RockPerson}
           let { PersonId, PrimaryAliasId } = Person
         }
+
+        // add locatin data to person
+        upsertLocations(PersonId, Location)
 
         // Create FinancialPaymentDetail
         FinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
