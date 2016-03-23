@@ -81,7 +81,6 @@ Parser.registerFilters({...caseChangedFilter, ...{
       return input.toUTCString();
     } else {
       format = format.replace(/y/gmi, "Y")
-      console.log(Moment(input).format(format))
       return Moment(input).format(format);
     }
 
