@@ -16,6 +16,17 @@ function charge(token, accountName) {
     throw new Meteor.Error(e.message)
   }
 
+  // this was a validation action, we can save the card but that is all
+  // we should do. We shoud only do this if there is an account name present
+  // see https://github.com/NewSpring/Apollos/issues/439 for more details
+  if (response["action-type"] === "validate") {
+    const returnReponse = _.pick(response,
+      "avs-result", "order-id", "cvv-result", "result-code"
+    )
+    return returnReponse
+  }
+
+
   let user = null
   if (this.userId) {
     user = Meteor.users.findOne({ _id: this.userId })
@@ -116,6 +127,7 @@ function charge(token, accountName) {
     if (!Array.isArray(response.product)) {
       response.product = [ response.product ]
     }
+
     for (let product of response.product) {
       let endpoint = parseEndpoint(`
         FinancialAccounts?

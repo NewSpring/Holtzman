@@ -42,8 +42,8 @@ const Filter = ({ topics, filter, campuses, defaultFilters }) => (
           name="childCare"
           label="Children"
           classes={["hard-bottom@lap-and-up"]}
-          items={[{value: "-1", label: "Either" }, {value: "1", label: "Yes" },{ value: "0", label: "No" }]}
-          defaultValue={true}
+          items={[{value: -1, label: "Either" }, {value: 1, label: "Yes" },{ value: 0, label: "No" }]}
+          defaultValue={-1}
           includeBlank={false}
           onChange={filter}
         />

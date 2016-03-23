@@ -19,9 +19,12 @@ function order(orderData, instant, id){
     method = "sale"
   }
 
-  // subscription creation
   if (orderData["start-date"]) {
     method = "add-subscription"
+  }
+
+  if (orderData.amount === 0) {
+    method = "validate"
   }
 
   if (user && user.services.rock && method != "add-subscription") {
@@ -51,12 +54,15 @@ function order(orderData, instant, id){
 
     orderData["ip-address"] = ip
 
+    // strongly force CVV on acctions that aren't a saved account
+    if (!orderData["customer-vault-id"]) {
+      orderData["cvv-reject"] = "P|N|S|U"
+    }
   }
 
   try {
 
     let response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
-
     if (instant) {
       response = createSchedule(response, null, id, user)
     }

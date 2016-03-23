@@ -268,7 +268,7 @@ export default class Payment extends Component {
               id="ccv"
               name="billing-cvv"
               label="CCV"
-              type="number"
+              type="tel"
               errorText="Please enter a valid ccv number"
               defaultValue={payment.ccv}
               onChange={this.saveData}

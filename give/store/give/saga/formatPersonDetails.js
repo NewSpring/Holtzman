@@ -28,7 +28,7 @@ const formatPersonDetails = (give, { campuses }) => {
 
   joinedData["merchant-defined-field-2"] = campusId
 
-  if (Object.keys(schedules).length) {
+  if (schedules && Object.keys(schedules).length) {
     // // @TODO allow custom start dates
     // joinedData["start-date"] = Moment().format("YYYYMMDD")
     // @TODO allow number of payments
@@ -74,7 +74,7 @@ const formatPersonDetails = (give, { campuses }) => {
     }
 
 
-  } else {
+  } else if (transactions && Object.keys(transactions).length) {
 
     joinedData.product = []
     for (let transaction in transactions) {
