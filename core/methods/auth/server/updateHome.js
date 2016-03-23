@@ -62,7 +62,7 @@ Meteor.methods({
 
     const Location = { ...{
       Guid: makeNewGuid(),
-      isActive: true
+      IsActive: true
     }, ...data }
 
     let LocationId = api.post.sync(`Locations`, Location)
