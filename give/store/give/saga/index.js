@@ -139,12 +139,14 @@ addSaga(function* chargeTransaction(getStore) {
         if (!formattedData.savedAccount) {
           action = schedule
 
-          // saved accounts don't validate the payment by default
-          // so we make 3 blocking requests to validate the card :(
-          let { success, validationError } = yield* validate(getStore)
+          if (give.data.payment.type === "cc") {
+            // saved accounts don't validate the payment by default
+            // so we make 3 blocking requests to validate the card :(
+            let { success, validationError } = yield* validate(getStore)
 
-          if (validationError) {
-            error = validationError
+            if (validationError) {
+              error = validationError
+            }
           }
 
         }
