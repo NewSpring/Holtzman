@@ -168,7 +168,6 @@ export default class Billing extends Component {
                   <Forms.Input
                     name="zip"
                     label="Zip/Postal"
-                    type="tel"
                     errorText="Please enter your zip"
                     defaultValue={billing.zip}
                     onChange={this.zip}
