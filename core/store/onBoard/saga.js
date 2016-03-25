@@ -20,10 +20,17 @@ addSaga(function* checkAccount(getState) {
     // if the event was triggered by email check to see if it available
     if (email) {
       // make call to Rock to check if account is open
-      let isAvailable = yield cps(auth.available, email)
+      let {
+        isAvailable,
+        alternateAccounts,
+        peopleWithoutAccountEmails,
+      } = yield cps(auth.available, email)
 
       // end the run of this saga iteration by setting account
       yield put(actions.setAccount(!isAvailable))
+      yield put(actions.setAlternateAccounts(alternateAccounts))
+      yield put(actions.peopleWithoutAccountEmails(peopleWithoutAccountEmails))
+
     }
 
   }

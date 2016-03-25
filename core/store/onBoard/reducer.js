@@ -10,11 +10,19 @@ import types from "./types"
 
 const initial = {
 
-  account: true,
-  authorized: false,
-  forgot: false,
-  success: false,
-  showWelcome: false,
+  account: true, // has an account
+  authorized: false, // is logged in
+  forgot: false, // ui state change (should move to component?)
+  success: false, // form action result
+  showWelcome: false, // show a welcome to your account message
+  alternateAccounts: [], // used to let a user know they might have an account
+  peopleWithoutAccountEmails: [
+    // {
+    //   email // String
+    //   id // Number
+    // }
+  ],
+  hasPerson: false, // used to recommend account recovery to avoid duplicates
 
   person: {
     age: null, // Number
@@ -224,6 +232,24 @@ export default createReducer(initial, {
       showWelcome: true
     } }
 
+  },
+
+  [types.SET_ALTERNATE_ACCOUNTS](state, action) {
+
+    // @TODO validation on new data
+
+    return { ...state, ...{
+      alternateAccounts: action.alternateAccounts
+    } }
+  },
+
+  [types.SET_PEOPLE_WITHOUT_ACCOUNTS](state, action) {
+
+    // @TODO validation on new data
+
+    return { ...state, ...{
+      peopleWithoutAccountEmails: action.peopleWithoutAccountEmails
+    } }
   },
 
 
