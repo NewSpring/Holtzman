@@ -32,4 +32,14 @@ export default {
 
   showWelcome: () => ({ type: types.SHOW_WELCOME }),
 
+  setAlternateAccounts: (alternateAccounts) => ({
+    type: types.SET_ALTERNATE_ACCOUNTS,
+    alternateAccounts
+  }),
+  
+  peopleWithoutAccountEmails: (peopleWithoutAccountEmails) => ({
+    type: types.SET_PEOPLE_WITHOUT_ACCOUNTS,
+    peopleWithoutAccountEmails
+  }),
+
 }

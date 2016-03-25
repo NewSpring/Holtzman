@@ -90,7 +90,9 @@ export default class OnBoardContainer extends Component {
       forgot,
       authorized,
       person,
-      showWelcome
+      showWelcome,
+      alternateAccounts,
+      peopleWithoutAccountEmails,
     } = this.props.onboard
 
 
@@ -154,6 +156,8 @@ export default class OnBoardContainer extends Component {
         back={this.goBack}
         forgot={this.goForgotPassword}
         setAccount={this.props.setAccount}
+        alternateAccounts={alternateAccounts}
+        peopleWithoutAccountEmails={peopleWithoutAccountEmails}
       />
     )
   }
