@@ -50,15 +50,8 @@ class SignIn extends React.Component {
   }
 
   savePassword = (value) => {
-    const isValid = value.length ? true : false
-
-    if (!isValid ) {
-      this.props.clear("password")
-    } else {
-      this.props.save({ password: value })
-    }
-
-    return isValid
+    this.props.save({ password: value })
+    return true
   }
 
   liveSavePassword = (value) => {
@@ -101,6 +94,16 @@ class SignIn extends React.Component {
     this.props.save({ terms: event.target.checked })
   }
 
+  changeEmails = (event) => {
+    const { dataset } = event.currentTarget
+    const { email } = dataset
+
+    this.isEmail(email);
+    this.props.setAccount(true)
+
+    event.preventDefault()
+  }
+
   submit = (event) => {
     event.preventDefault();
     const { refs } = this
@@ -136,6 +139,60 @@ class SignIn extends React.Component {
           fieldsetTheme="flush soft-top"
           submit={this.submit}
         >
+
+        {() => {
+          if (!this.props.account && this.props.alternateAccounts.length) {
+
+            return (
+              <div className="soft-sides push-back-half-top soft-double-bottom">
+                <h6 className="flush-bottom">
+                  It looks like you may have a NewSpring account already!
+                  {() => {
+                    if (this.props.alternateAccounts.length === 1) {
+
+                      return (
+                        <span>
+                          &nbsp; Is this your email&nbsp;
+                          <a
+                            href="#"
+                            onClick={this.changeEmails}
+                            data-email={this.props.alternateAccounts[0]}
+                          >
+                            {this.props.alternateAccounts[0]}
+                          </a>?
+                        </span>
+                      )
+                    }
+
+                    let count = 0
+                    return (
+                      <span>
+                        &nbsp; Is one of these your email&nbsp;
+
+                        {this.props.alternateAccounts.map((x) => {
+                          count ++
+                          return (
+                            <a
+                              href="#"
+                              onClick={this.changeEmails}
+                              data-email={x}
+                            >
+                              {x}{count != this.props.alternateAccounts.length ? ", " : ""}
+                            </a>
+                          )
+
+                        })}
+                        ?
+                      </span>
+                    )
+
+                  }()}
+                </h6>
+              </div>
+            )
+
+          }
+        }()}
 
           <Forms.Input
             name="email"
