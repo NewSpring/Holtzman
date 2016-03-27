@@ -1,19 +1,19 @@
 import { creditCVV, creditCard, creditExpiry } from "./credit-card"
 
-const Validate = {}
+const Validate : any = {}
 import Error from "../error"
 
-Validate.addValidator = (name, handler) => {
+Validate.addValidator = (name : string, handler : Function) : Object => {
 
   if (Validate[name]) {
-    throw new Error(
+    throw Error(
       "Validator assigned",
       `Validate function ${name} is already registered`
     )
   }
 
   if (!handler || typeof(handler) != "function") {
-    throw new Error(
+    throw Error(
       "Validator TypeError",
       `Validator ${name} requires a function`
     )

@@ -1,11 +1,11 @@
 
-const Regex = {}
+const Regex : any = {}
 import Format from "../format"
 import Validate from "../validate"
 import Error from "../error"
 import defaultRegex from "./defaults"
 
-Regex.addRegex = (name, test, validate) => {
+Regex.addRegex = (name : string, test : RegExpConstructor, validate : boolean) => {
 
   if (Regex[name]) {
     throw new Error(
@@ -14,7 +14,7 @@ Regex.addRegex = (name, test, validate) => {
     )
   }
 
-  if (!test || !test instanceof RegExp) {
+  if (!test) {
     throw new Error(
       "Regex TypeError",
       `Regexter ${name} requires a regex`

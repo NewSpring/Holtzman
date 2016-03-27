@@ -1,6 +1,6 @@
 /*global Meteor, check */
 import { api, parseEndpoint } from "../../../../core/util/rock"
-import { makeNewGuid } from "../../../../core/util/guid"
+import { Guid } from "../../../../core/util/guid"
 import Moment from "moment"
 
 
@@ -41,7 +41,7 @@ Meteor.methods({
       GroupMemberStatus: 2, // pending
       IsNotified: EMAIL_EXISTS, // see below
       GroupRoleId: 23,// member (need to verify this isn't dyanmic in Rock)
-      Guid: makeNewGuid()
+      Guid: Guid.newGuid()
     }
 
 

@@ -1,6 +1,6 @@
 /*global Meteor, check */
 import { api } from "../../../util/rock"
-import { makeNewGuid } from "../../../util"
+import { Guid } from "../../../util"
 import Moment from "moment"
 
 let NEW_USER_EMAL_ID = false;
@@ -60,7 +60,7 @@ Meteor.methods({
     // Create person
     let Person = {
       Email: account.email,
-      Guid: makeNewGuid(),
+      Guid: Guid.newGuid(),
       FirstName: account.firstName,
       LastName: account.lastName,
       IsSystem: false,

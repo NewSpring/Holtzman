@@ -6,7 +6,7 @@ import { inherit } from "../inherit"
 // environments. constructor can set fields on `this` (and should probably set
 // `message`, which is what gets displayed at the top of a stack trace).
 //
-function makeErrorType(name, constructor) {
+function makeErrorType(name : string, constructor : Function) : Function {
   let errorClass = function (/*arguments*/) {
     let self = this
 
@@ -54,7 +54,7 @@ function makeErrorType(name, constructor) {
 
 const ApollosError = makeErrorType(
   "Apollos.Error",
-  function (error, reason, details) {
+  function (error : string, reason : string, details : string) {
 
     // String code uniquely identifying this kind of error.
     this.error = error

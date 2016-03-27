@@ -1,6 +1,6 @@
 import defaultRegex from "../regex/defaults"
 
-const creditCard = (value) => {
+const creditCard = (value : string) : boolean => {
 
   value = value.replace(/-/g, "")
 
@@ -33,14 +33,14 @@ const creditCard = (value) => {
 
 }
 
-const creditExpiry = (value) => {
+const creditExpiry = (value : string) : boolean => {
 
   const regex = /^((0[1-9])|(1[0-2]))\/((2009)|(20[1-2][0-9]))$/
   return regex.test(value)
 
 }
 
-const creditCVV = (value) => {
+const creditCVV = (value : string) : boolean => {
 
   const regex = /^[0-9]{3,4}$/
   return regex.test(value)
