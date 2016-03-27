@@ -19,7 +19,7 @@ let months = [
   "December"
 ]
 
-function toDateString(dateObj, abbreviated) {
+function toDateString(dateObj : Date, abbreviated : boolean) : String {
   const year = dateObj.getFullYear()
   const date = dateObj.getDate()
   const month = dateObj.getMonth()

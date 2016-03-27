@@ -1,4 +1,4 @@
-const creditCard = (value) => {
+const creditCard = (value : string) => {
 
   if (value) {
 
@@ -9,10 +9,10 @@ const creditCard = (value) => {
     newValue = newValue.substring(0, 16)
 
     // break apart the value every four numbers
-    newValue = newValue.match(/.{1,4}/g)
+    let regexResult = newValue.match(/.{1,4}/g)
 
     // format the new value
-    newValue = newValue.join("-")
+    newValue = regexResult.join("-")
 
     return newValue
   }
