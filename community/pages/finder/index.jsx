@@ -12,7 +12,7 @@ import List from "./Results/List"
 import Profile from "./Results/Profile"
 
 
-// const map = (state) => ({ person: state.onBoard.person })
+// const map = (state) => ({ person: state.accounts.person })
 @connect()
 class Template extends Component {
 
