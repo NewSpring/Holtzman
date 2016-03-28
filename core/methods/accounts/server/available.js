@@ -76,7 +76,7 @@ Meteor.methods({
           to create an account based on that person record
 
         */
-        People = api.get.sync(`People?$filter=${ids}&expand=Photo`);
+        People = api.get.sync(`People?$filter=${ids}&$expand=Photo`);
 
       }
 
@@ -94,7 +94,7 @@ Meteor.methods({
           });
 
           if (person.Users) {
-            
+
             alternateAccounts = alternateAccounts
               .concat(person.Users.map(x => (x.UserName)))
               .filter(Validate.isEmail)
