@@ -310,7 +310,7 @@ class SignIn extends Component {
                         }}>
 
                         <h5 className="flush-bottom">{person.firstName} {person.lastName}</h5>
-                        {/* <h7 className="flush-bottom">{person.email}</h7>*/}
+                        <h7 className="flush-bottom">{person.email}</h7>
                         </div>
                       </div>
                     </div>

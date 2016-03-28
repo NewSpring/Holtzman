@@ -72,10 +72,12 @@ Meteor.methods({
     try {
       let response = api.put.sync(`UserLogins/${RockUser.Id}`, RockUser)
       if (response.statusText) {
-        throw new Error(response.statusText)
+        console.error(RockUser, response)
+        throw new Meteor.Error("It looks like we had an unexpected issue! We are so sorry! Please try again")
       }
     } catch (e) {
-      throw new Meteor.Error(e.message)
+      console.error(e, e.message)
+      throw new Meteor.Error("It looks like we had an unexpected issue! We are so sorry! Please try again")
     }
 
     Accounts.setPassword(this.userId, newPassword, { logout: false })
