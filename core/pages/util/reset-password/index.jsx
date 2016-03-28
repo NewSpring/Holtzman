@@ -2,7 +2,7 @@ import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import { connect } from "react-redux"
 
-import { reset } from "../../../methods/auth/client"
+import { reset } from "../../../methods/accounts/client"
 import { routeActions } from "../../../store/routing"
 import { Error, Loading } from "../../../components/states"
 import Success from "./Success"

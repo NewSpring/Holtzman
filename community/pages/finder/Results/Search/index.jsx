@@ -11,7 +11,7 @@ import {
 import Layout from "./Layout"
 
 const map = (state) => ({
-  person: state.onBoard.person,
+  person: state.accounts.person,
   campuses: state.campuses.campuses,
   states: state.collections.states,
   map: state.map,

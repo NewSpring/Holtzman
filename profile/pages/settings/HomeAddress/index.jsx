@@ -3,8 +3,8 @@ import { connect } from "react-redux"
 
 import { GraphQL } from "../../../../core/graphql"
 
-import { nav, onBoard as onBoardActions } from "../../../../core/store"
-import { updateHome } from "../../../../core/methods/auth/client"
+import { nav, accounts as accountsActions } from "../../../../core/store"
+import { updateHome } from "../../../../core/methods/accounts/client"
 import { Error, Loading } from "../../../../core/components/states"
 
 import Success from "../Success"
@@ -55,7 +55,7 @@ function getUser(id, dispatch) {
   return GraphQL.query(personQuery)
     .then(({ person }) => {
       if (person) {
-        dispatch(onBoardActions.person(person))
+        dispatch(accountsActions.person(person))
       }
 
     })
@@ -64,7 +64,7 @@ function getUser(id, dispatch) {
 
 
 const map = (state) => ({
-  person: state.onBoard.person,
+  person: state.accounts.person,
   campuses: state.campuses.campuses
 })
 @connect(map)
