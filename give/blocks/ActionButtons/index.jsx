@@ -125,7 +125,7 @@ export default class GiveNow extends Component {
     return classes.join(" ")
   }
 
-  AfterLogin = () => {
+  renderAfterLogin = () => {
     if (this.props.disabled) {
       return this.props.dispatch(modal.hide())
     }

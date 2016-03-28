@@ -2,7 +2,7 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
 import { nav as navActions, modal, collections as collectionActions } from "../../../../../core/store"
-import accounts from "../../../../../core/blocks/accounts"
+import OnBoard from "../../../../../core/blocks/accounts"
 import { GraphQL } from "../../../../../core/graphql"
 import { join } from "../../../../methods/join"
 
@@ -71,7 +71,7 @@ export default class Profile extends Component {
     if (this.props.authorized) {
       join()
     } else {
-      this.props.dispatch(modal.render(accounts, {
+      this.props.dispatch(modal.render(OnBoard, {
         onFinished: join
       }))
     }

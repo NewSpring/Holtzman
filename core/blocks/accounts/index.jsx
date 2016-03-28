@@ -14,7 +14,7 @@ import SuccessCreate from "./SuccessCreate"
 // We only care about the accounts state
 const map = (state) => ({ accounts: state.accounts })
 @connect(map, {...accountsActions, ...modalActions})
-export default class accountsContainer extends Component {
+export default class AccountsContainer extends Component {
 
   static propTypes = {
     back: PropTypes.func,

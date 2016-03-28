@@ -1,11 +1,11 @@
-import React, { PropTypes } from "react"
+import { Component, PropTypes } from "react"
 import ReactDom from "react-dom"
 
 import { Controls, Forms } from "../../components"
 import Validate from "../../util/validate"
 
 
-class SignIn extends React.Component {
+class SignIn extends Component {
 
   static propTypes = {
     setAccount: PropTypes.func.isRequired,
