@@ -1,4 +1,6 @@
 
+import Meteor from "../../../definitions/Meteor.d"
+
 let join;
 
 if (Meteor.isClient) {

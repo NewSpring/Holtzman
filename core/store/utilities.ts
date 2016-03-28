@@ -3,20 +3,20 @@
 const reducers = {}
 import Error from "../util/error"
 
-const addReducer = (obj) => {
+const addReducer = (obj : Object) : Object => {
 
   for (let name in obj) {
     let handler = obj[name]
 
     if (reducers[name]) {
-      throw new Error(
+      throw Error(
         "Reducer assigned",
         `reducers function ${name} is already registered`
       )
     }
 
     if (!handler || typeof(handler) != "function") {
-      throw new Error(
+      throw Error(
         "Reducer TypeError",
         `Reducer ${name} requires a function`
       )
@@ -59,7 +59,7 @@ const addSaga = (...newSagas) => {
 
 
 
-export default {
+export {
   addMiddleware,
   middlewares,
 
