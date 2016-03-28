@@ -24,17 +24,16 @@
   This version is for Node.JS, converted in 2012.
 */
 
-
 var indent_string = "\t"
 var xml_header = "<?xml version=\"1.0\"?>"
 var sort_args = null
 var re_valid_tag_name  = /^\w[\w\-\:]*$/
 
-var XML = exports.XML = function XML(args) {
+var XML = function XML(args) {
   // class constructor for XML parser class
   // pass in args hash or text to parse
           if (!args) args = ""
-          if (isa_hash(args)) {
+          if (isaHash(args)) {
             for (var key in args) this[key] = args[key]
   }
   else this.text = args || ""
@@ -100,7 +99,7 @@ XML.prototype.parse = function (branch, name) {
     // text leading up to tag = content of parent node
             if (before.match(/\S/)) {
               if (typeof(branch[this.dataKey]) != "undefined") branch[this.dataKey] += " "; else branch[this.dataKey] = ""
-              branch[this.dataKey] += trim(decode_entities(before))
+              branch[this.dataKey] += trim(decodeEntities(before))
     }
 
     // parse based on tag type
@@ -112,7 +111,7 @@ XML.prototype.parse = function (branch, name) {
       else if (tag.match(this.patCDATATag)) {
                 tag = this.parseCDATANode(tag)
                 if (typeof(branch[this.dataKey]) != "undefined") branch[this.dataKey] += " "; else branch[this.dataKey] = ""
-                branch[this.dataKey] += trim(decode_entities(tag))
+                branch[this.dataKey] += trim(decodeEntities(tag))
       } // cdata
       else {
                 this.throwParseError( "Malformed special tag", tag )
@@ -137,7 +136,7 @@ XML.prototype.parse = function (branch, name) {
       // If this is a closing tag, make sure it matches its opening tag
               if (closing) {
                 if (nodeName == (name || "")) {
-                  foundClosing = 1
+                  foundClosing = true
                   break
         }
         else {
@@ -163,11 +162,11 @@ XML.prototype.parse = function (branch, name) {
                 this.patAttrib.lastIndex = 0
                 while ( matches = this.patAttrib.exec(attribsRaw) ) {
                   var key = this.lowerCase ? matches[1].toLowerCase() : matches[1]
-                  attribs[ key ] = decode_entities( matches[3] )
+                  attribs[ key ] = decodeEntities( matches[3] )
         } // foreach attrib
 
         // if no attribs found, but we created the _Attribs subhash, clean it up now
-                if (this.preserveAttributes && !num_keys(attribs)) {
+                if (this.preserveAttributes && !numKeys(attribs)) {
                   delete leaf[this.attribsKey]
         }
 
@@ -178,7 +177,7 @@ XML.prototype.parse = function (branch, name) {
         }
 
         // Compress into simple node if text only
-                var num_leaf_keys = num_keys(leaf)
+                var num_leaf_keys = numKeys(leaf)
                 if ((typeof(leaf[this.dataKey]) != "undefined") && (num_leaf_keys == 1)) {
                   leaf = leaf[this.dataKey]
         }
@@ -188,7 +187,7 @@ XML.prototype.parse = function (branch, name) {
 
         // Add leaf to parent branch
                 if (typeof(branch[nodeName]) != "undefined") {
-                  if (isa_array(branch[nodeName])) {
+                  if (isaArray(branch[nodeName])) {
                     branch[nodeName].push( leaf )
           }
           else {
@@ -214,12 +213,12 @@ XML.prototype.parse = function (branch, name) {
           if (branch == this.tree) {
             if (typeof(this.tree[this.dataKey]) != "undefined") delete this.tree[this.dataKey]
 
-            if (num_keys(this.tree) > 1) {
-              this.throwParseError( "Only one top-level node is allowed in document", first_key(this.tree) )
+            if (numKeys(this.tree) > 1) {
+              this.throwParseError( "Only one top-level node is allowed in document", firstKey(this.tree) )
               return
     }
 
-            this.documentNodeName = first_key(this.tree)
+            this.documentNodeName = firstKey(this.tree)
             if (this.documentNodeName) {
               this.tree = this.tree[this.documentNodeName]
     }
@@ -374,7 +373,7 @@ XML.prototype.getTree = function () {
 
 XML.prototype.compose = function () {
   // compose tree back into XML
-          var raw = compose_xml( this.tree, this.documentNodeName )
+          var raw = stringify( this.tree, this.documentNodeName, undefined )
           var body = raw.substring( raw.indexOf("\n") + 1, raw.length )
           var xml = ""
 
@@ -401,7 +400,7 @@ XML.prototype.compose = function () {
 // Static Utility Functions:
 //
 
-var parse_xml = exports.parse = function parse_xml(text, opts) {
+var parse = function parse_xml(text, opts) {
   // turn text into XML tree quickly
           if (!opts) opts = {}
           opts.text = text
@@ -409,7 +408,7 @@ var parse_xml = exports.parse = function parse_xml(text, opts) {
           return parser.error() ? parser.getLastError() : parser.getTree()
 }
 
-var trim = exports.trim = function trim(text) {
+var trim = function trim(text) {
   // strip whitespace from beginning and end of string
           if (text == null) return ""
 
@@ -421,7 +420,7 @@ var trim = exports.trim = function trim(text) {
           return text
 }
 
-var encode_entities = exports.encodeEntities = function encode_entities(text) {
+var encodeEntities = function encode_entities(text) {
   // Simple entitize exports.for = function for composing XML
           if (text == null) return ""
 
@@ -434,7 +433,7 @@ var encode_entities = exports.encodeEntities = function encode_entities(text) {
           return text
 }
 
-var encode_attrib_entities = exports.encodeAttribEntities = function encode_attrib_entities(text) {
+var encodeAttribEntities = function encode_attrib_entities(text) {
   // Simple entitize exports.for = function for composing XML attributes
           if (text == null) return ""
 
@@ -449,7 +448,7 @@ var encode_attrib_entities = exports.encodeAttribEntities = function encode_attr
           return text
 }
 
-var decode_entities = exports.decodeEntities = function decode_entities(text) {
+var decodeEntities = function decode_entities(text) {
   // Decode XML entities into raw ASCII
           if (text == null) return ""
 
@@ -464,7 +463,7 @@ var decode_entities = exports.decodeEntities = function decode_entities(text) {
           return text
 }
 
-var compose_xml = exports.stringify = function compose_xml(node, name, indent) {
+var stringify = function compose_xml(node, name, indent) {
   // Compose node into XML including attributes
   // Recurse for child nodes
           var xml = ""
@@ -477,7 +476,7 @@ var compose_xml = exports.stringify = function compose_xml(node, name, indent) {
 
             if (!name) {
       // no name provided, assume content is wrapped in it
-              name = first_key(node)
+              name = firstKey(node)
               node = node[name]
     }
   }
@@ -498,10 +497,10 @@ var compose_xml = exports.stringify = function compose_xml(node, name, indent) {
 
               if (node["_Attribs"]) {
                 has_attribs = 1
-                var sorted_keys = hash_keys_to_array(node["_Attribs"]).sort()
+                var sorted_keys = hashKeysToArray(node["_Attribs"]).sort()
                 for (var idx = 0, len = sorted_keys.length; idx < len; idx++) {
-                  var key = sorted_keys[idx]
-                  xml += " " + key + "=\"" + encode_attrib_entities(node["_Attribs"][key]) + "\""
+                  let key = sorted_keys[idx]
+                  xml += " " + key + "=\"" + encodeAttribEntities(node["_Attribs"][key]) + "\""
         }
       } // has attribs
 
@@ -511,14 +510,14 @@ var compose_xml = exports.stringify = function compose_xml(node, name, indent) {
 
                 if (node["_Data"]) {
           // simple text child node
-                  xml += encode_entities(node["_Data"]) + "</" + name + ">\n"
+                  xml += encodeEntities(node["_Data"]) + "</" + name + ">\n"
         } // just text
         else {
                   xml += "\n"
 
-                  var sorted_keys = hash_keys_to_array(node).sort()
+                  var sorted_keys = hashKeysToArray(node).sort()
                   for (var idx = 0, len = sorted_keys.length; idx < len; idx++) {
-                    var key = sorted_keys[idx]
+                    let key = sorted_keys[idx]
                     if ((key != "_Attribs") && key.match(re_valid_tag_name)) {
               // recurse for node, with incremented indent value
                       xml += compose_xml( node[key], key, indent + 1 )
@@ -543,13 +542,13 @@ var compose_xml = exports.stringify = function compose_xml(node, name, indent) {
   } // complex node
   else {
     // node is simple string
-            xml += indent_text + "<" + name + ">" + encode_entities(node) + "</" + name + ">\n"
+            xml += indent_text + "<" + name + ">" + encodeEntities(node) + "</" + name + ">\n"
   } // simple text node
 
           return xml
 }
 
-var always_array = exports.alwaysArray = function always_array(obj, key) {
+var alwaysArray = function always_array(obj, key) {
   // if object is not array, return array containing object
   // if key is passed, work like XMLalwaysarray() instead
           if (key) {
@@ -567,33 +566,49 @@ var always_array = exports.alwaysArray = function always_array(obj, key) {
   }
 }
 
-var hash_keys_to_array = exports.hashKeysToArray = function hash_keys_to_array(hash) {
+var hashKeysToArray = function hash_keys_to_array(hash) {
   // convert hash keys to array (discard values)
           var array = []
           for (var key in hash) array.push(key)
           return array
 }
 
-var isa_hash = exports.isaHash = function isa_hash(arg) {
+var isaHash = function isa_hash(arg) {
   // determine if arg is a hash
           return( !!arg && (typeof(arg) == "object") && (typeof(arg.length) == "undefined") )
 }
 
-var isa_array = exports.isaArray = function isa_array(arg) {
+var isaArray = function isa_array(arg) {
   // determine if arg is an array or is array-like
           if (typeof(arg) == "array") return true
           return( !!arg && (typeof(arg) == "object") && (typeof(arg.length) != "undefined") )
 }
 
-var first_key = exports.firstKey = function first_key(hash) {
+var firstKey = function first_key(hash) {
   // return first key from hash (unordered)
           for (var key in hash) return key
           return null // no keys in hash
 }
 
-var num_keys = exports.numKeys = function num_keys(hash) {
+var numKeys = function num_keys(hash) {
   // count the number of keys in a hash
           var count = 0
           for (var a in hash) count++
           return count
+}
+
+export {
+    XML,
+    numKeys,    
+    firstKey,
+    isaArray,
+    isaHash,
+    hashKeysToArray,
+    alwaysArray,
+    stringify,
+    parse,
+    trim,
+    encodeEntities,
+    decodeEntities,
+    encodeAttribEntities
 }
