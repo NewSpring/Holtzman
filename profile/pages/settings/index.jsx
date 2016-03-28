@@ -1,7 +1,7 @@
 import { Component } from "react"
 import { connect } from "react-redux"
 
-import { onBoard as onBoardActions, nav as navActions } from "../../../core/store"
+import { accounts as accountsActions, nav as navActions } from "../../../core/store"
 import { avatar } from "../../../core/methods/files/client"
 import { GraphQL } from "../../../core/graphql"
 
@@ -52,11 +52,11 @@ function updateUser(id, dispatch) {
 
   return GraphQL.query(personQuery)
     .then((person) => {
-      dispatch(onBoardActions.person(person.person))
+      dispatch(accountsActions.person(person.person))
     })
 }
 
-const map = (state) => ({ person: state.onBoard.person })
+const map = (state) => ({ person: state.accounts.person })
 
 @connect(map)
 class Template extends Component {

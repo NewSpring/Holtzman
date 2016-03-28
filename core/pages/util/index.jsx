@@ -37,10 +37,6 @@ const Routes = [
     component: Template,
     childRoutes: [
       { path: "reset-password/:token", component: ResetPassword },
-      // { path: "personal-details", component: PersonalDetails },
-      // { path: "home-address", component: HomeAddress },
-      // { path: "saved-accounts", component: PaymentDetails },
-      // { path: "privacy-policy", component: PP },
     ]
   },
   {

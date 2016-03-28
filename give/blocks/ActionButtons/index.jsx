@@ -2,13 +2,13 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
 import { GraphQL } from "../../../core/graphql"
-import OnBoard from "../../../core/blocks/onBoard"
+import OnBoard from "../../../core/blocks/accounts"
 
 
 // @TODO refactor once giving is converted to sagas
 import {
   modal,
-  onBoard as onBoardActions,
+  accounts as accountsActions,
   nav as navActions,
   collections as collectionActions
 } from "../../../core/store"
@@ -65,7 +65,7 @@ function prefillRedux(dispatch) {
 
 */
 const map = (store) => ({
-  authorized: store.onBoard.authorized,
+  authorized: store.accounts.authorized,
   savedAccount: store.collections.savedAccounts
 })
 @connect(map)
@@ -160,7 +160,7 @@ export default class GiveNow extends Component {
         onFinished: this.renderAfterLogin
       }))
 
-      this.props.dispatch(onBoardActions.setAccount(true))
+      this.props.dispatch(accountsActions.setAccount(true))
 
     }
 
@@ -178,7 +178,7 @@ export default class GiveNow extends Component {
   }
 
   register = () => {
-    this.props.dispatch(onBoardActions.setAccount(false))
+    this.props.dispatch(accountsActions.setAccount(false))
     this.props.dispatch(modal.render(OnBoard, {
       onFinished: this.renderAfterLogin
     }))

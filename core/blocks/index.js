@@ -1,7 +1,7 @@
 
 import Authorized from "./authorzied"
 import Global from "./global"
-import OnBoard from "./onBoard"
+import OnBoard from "./accounts"
 import Nav from "./nav"
 import Modal from "./modal"
 import Sections from "./sections"

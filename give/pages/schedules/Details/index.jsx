@@ -51,7 +51,7 @@ function getTransaction(id, dispatch){
 
 
 const map = (state) => ({
-  person: state.onBoard.person,
+  person: state.accounts.person,
   transactions: state.transactions.scheduledTransactions
 
 })

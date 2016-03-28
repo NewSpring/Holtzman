@@ -11,7 +11,7 @@ Blocks denote components that are tied into exterior data / states. They represe
 
 ## Blocks
 
-- [On Board](./onBoard/README.md)
+- [On Board](./accounts/README.md)
 
 
 ## Testing Blocks
