@@ -109,7 +109,7 @@ function getAccounts(dispatch) {
 const map = (store) => ({
   schedules: store.transactions.scheduledTransactions,
   give: store.give,
-  person: store.onBoard.person
+  person: store.accounts.person
 })
 
 @connect(map)

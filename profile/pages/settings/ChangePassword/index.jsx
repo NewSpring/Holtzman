@@ -3,7 +3,7 @@ import { Link } from "react-router"
 import { connect } from "react-redux"
 
 import { nav } from "../../../../core/store"
-import { reset } from "../../../../core/methods/auth/client"
+import { reset } from "../../../../core/methods/accounts/client"
 
 import { Error, Loading } from "../../../../core/components/states"
 import Success from "../Success"
