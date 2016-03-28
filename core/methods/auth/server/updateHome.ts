@@ -1,6 +1,6 @@
 /*global Meteor, check */
 import { api } from "../../../util/rock"
-import { makeNewGuid } from "../../../util"
+import { Guid } from "../../../util"
 
 Meteor.methods({
   "rock/auth/updateHome": function (data) {
@@ -61,7 +61,7 @@ Meteor.methods({
     */
 
     const Location = { ...{
-      Guid: makeNewGuid(),
+      Guid: Guid.newGuid(),
       IsActive: true
     }, ...data }
 
@@ -76,7 +76,7 @@ Meteor.methods({
       LocationId,
       GroupLocationTypeValueId: 19, // Home
       IsMailingLocation: true,
-      Guid: makeNewGuid(),
+      Guid: Guid.newGuid(),
       CreatedByPersonAliasId: user.services.rock.PrimaryAliasId
     }
 

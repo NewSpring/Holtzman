@@ -2,8 +2,8 @@
 
 import { inherit } from "./inherit"
 import { base64Encode, base64Decode } from "./encode"
-import { Guid } from "./guid"
-import XML from "./xml"
+import Guid from "./guid"
+import { parse } from "./xml"
 
 import Error from "./error"
 import format from "./format"
@@ -17,7 +17,7 @@ export default {
   base64Encode,
   base64Decode,
   Guid,
-  parseXML: XML.parse,
+  parseXML: parse,
   Error,
   format,
   regex,

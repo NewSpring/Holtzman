@@ -1,5 +1,5 @@
 
-import { makeNewGuid } from "../guid"
+import Guid from "../guid"
 import Moment from "moment"
 
 export default function startup(api) {
@@ -16,7 +16,7 @@ export default function startup(api) {
           DefinedTypeId: 12,
           Value: ROOT_URL,
           Description: `Application at ${ROOT_URL}`,
-          Guid: makeNewGuid()
+          Guid: Guid.newGuid()
         }
         current = api.post.sync("DefinedValues", DefinedValue)
         current = [{
@@ -35,7 +35,7 @@ export default function startup(api) {
           Description: `Application at ${ROOT_URL}`,
           Theme: "Rock",
           AllowIndexing: false,
-          Guid: makeNewGuid(),
+          Guid: Guid.newGuid(),
         }
 
         site = api.post.sync("Sites", Site)
