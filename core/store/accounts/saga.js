@@ -14,7 +14,7 @@ addSaga(function* checkAccount(getState) {
   while (true) {
 
     // wait for the email field to be blurred
-    const { data } = yield take("accounts.SET_DATA")
+    const { data } = yield take("ACCOUNTS.SET_DATA")
     const { email } = data
 
     // if the event was triggered by email check to see if it available
@@ -42,7 +42,7 @@ addSaga(function* completeAccount(getState) {
   while (true) {
 
     // wait until we are trying to complete an account
-    yield take("accounts.COMPLETE_ACCOUNT")
+    yield take("ACCOUNTS.COMPLETE_ACCOUNT")
     const state = getState()
     const { email, personId } = state.accounts.data
 
@@ -145,7 +145,7 @@ addSaga(function* account(getState) {
   // setup this saga to always be listening for actions
   while (true) {
 
-    const { state } = yield take("accounts.SET_STATE")
+    const { state } = yield take("ACCOUNTS.SET_STATE")
 
     if (state === "submit") {
       let currentState = getState(),
