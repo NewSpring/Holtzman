@@ -42,6 +42,7 @@ if (typeof Accounts != "undefined") {
 
 Meteor.methods({
   "rock/accounts/recover": (email, PersonId) => {
+
     check(email, String);
     check(PersonId, Number);
 
@@ -65,7 +66,7 @@ Meteor.methods({
       }
 
     } catch (e) {
-      return false
+      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account")
     }
 
     // Create Rock Account
@@ -83,23 +84,29 @@ Meteor.methods({
       throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account")
     }
 
-    let person = api.get.sync(`People/${PersonId}`)
-    const { PrimaryAliasId } = person
+    try {
+      let person = api.get.sync(`People/${PersonId}`)
+      const { PrimaryAliasId } = person
 
-    Meteor.users.update(meteorUserId, {
-      $set: {
-        "services.rock" : {
-          PersonId,
-          PrimaryAliasId
+      Meteor.users.update(meteorUserId, {
+        $set: {
+          "services.rock" : {
+            PersonId,
+            PrimaryAliasId
+          }
         }
-      }
-    })
+      })
 
-    // Send Reset Email
-    Accounts.sendEnrollmentEmail(meteorUserId)
+      // Send Reset Email
+      Accounts.sendEnrollmentEmail(meteorUserId)
 
-    // let the client know
-    return true
+      // let the client know
+      return true
+    } catch (e) {
+      console.error(e, "recover line 108")
+      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account")
+    }
+
 
   }
 })
