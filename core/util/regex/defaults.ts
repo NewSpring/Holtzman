@@ -1,6 +1,9 @@
-const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/
 
-export default {
+interface RegExpMap {
+  [s: string]: RegExp
+}
+
+let map : RegExpMap = {
   email: /[\w\.\'_%-]+(\+[\w-]*)?@([\w-]+\.)+[\w-]+/,
   bcrypt: /^\$2a\$10\$[\/\.a-zA-Z0-9]{53}$/,
   phoneNumber: /^[1-9]([0-9]{6}|[0-9]{9})$/,
@@ -12,5 +15,8 @@ export default {
   startOfVisa: /^4[0-9]{0,15}$/,
   startOfMastercard: /^5$|^5[1-5][0-9]{0,14}$/,
   startOfAmEx: /^3$|^3[47][0-9]{0,13}$/,
-  startOfDiscover: d
-}
+  startOfDiscover: /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/
+};
+
+
+export default map

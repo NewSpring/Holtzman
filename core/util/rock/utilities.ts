@@ -2,13 +2,14 @@
 
 import Error from "../error"
 import startup from "./startup"
+import Meteor from "../../../definitions/Meteor.d"
 
 class FunctionWithSync extends Function {
     sync : Function
 }
 
 class API {
-    _ : Object
+    _ : any
     registerEndpoint : FunctionWithSync
     call : FunctionWithSync
     get : FunctionWithSync
@@ -27,7 +28,7 @@ class Endpoint {
 
 const api : API = {
 
-    _ : {},
+    _: {},
 
     // registration of required data for Rock
     registerEndpoint: (obj : Endpoint) : void => {
@@ -146,7 +147,7 @@ const api : API = {
         return api.call.apply(this, args)
     },
     
-    parseEndpoint: (str) => {
+    parseEndpoint: (str : string) : string => {
         return str.split("\n").map((x) => {
             let trimmed = x.trim()
             if ( trimmed.slice(-3) === "and" ||  trimmed.slice(-2) === "or") {

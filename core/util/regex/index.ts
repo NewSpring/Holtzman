@@ -5,17 +5,17 @@ import Validate from "../validate"
 import Error from "../error"
 import defaultRegex from "./defaults"
 
-Regex.addRegex = (name : string, test : RegExpConstructor, validate : boolean) => {
+Regex.addRegex = (name : string, test : RegExp, validate : boolean) => {
 
   if (Regex[name]) {
-    throw new Error(
+    throw Error(
       "Regex assigned",
       `Regex ${name} is already registered`
     )
   }
 
   if (!test) {
-    throw new Error(
+    throw Error(
       "Regex TypeError",
       `Regexter ${name} requires a regex`
     )

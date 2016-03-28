@@ -1,6 +1,6 @@
-import { parseEndpoint } from "../utilities"
+import Utilities from "../utilities"
 
-export default parseEndpoint(`
+export default Utilities.parseEndpoint(`
   FinancialAccounts?
     $select=
       Id,
