@@ -45,12 +45,17 @@ addSaga(function* completeAccount(getState) {
     yield take("ACCOUNTS.COMPLETE_ACCOUNT")
     const state = getState()
     const { email, personId } = state.accounts.data
+    let created = false, error;
 
     if (email && personId) {
       // set the UI to show the loading screen
       yield put(actions.loading())
 
-      const created = yield cps(accounts.recover, email, personId)
+      try {
+        created = yield cps(accounts.recover, email, personId)
+      } catch (e) {
+        error = e
+      }
 
       if (created) {
 
@@ -59,7 +64,20 @@ addSaga(function* completeAccount(getState) {
 
       } else {
 
-        // handle errors
+        // add error to store
+        yield put(actions.error({ "password": error }))
+
+        // remove the recover account settings
+        yield put(actions.resetAccount())
+
+        // set not logged in status
+        yield put(actions.authorize(false))
+
+        // fail the form
+        yield put(actions.fail())
+
+        // reset the UI
+        yield put(actions.setState("default"))
 
       }
 
