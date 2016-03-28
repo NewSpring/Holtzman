@@ -154,9 +154,16 @@ export default class AccountsContainer extends Component {
     }
 
     if (data.personId && !authorized && resettingAccount) {
+      let email = data.email
+      for (let p of peopleWithoutAccountEmails) {
+        if (p.id === data.personId) {
+          email = p.email
+          break;
+        }
+      }
       return (
         <SuccessCreate
-          email={data.email}
+          email={email}
           goBack={this.goBackToDefaultOnBoard}
         />
       )
