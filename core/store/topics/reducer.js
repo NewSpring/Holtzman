@@ -15,7 +15,7 @@ export default createReducer(initial, {
   ["TOPIC.TOGGLE"](state, action) {
     const topic = action.props.topic;
     const previousTopics = state.topics;
-    const nextTopics = _.contains(previousTopics, topic) ?
+    const nextTopics = _.includes(previousTopics, topic) ?
       _.without(previousTopics, topic) :
       _.union(previousTopics, [topic]);
 
