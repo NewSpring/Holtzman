@@ -23,10 +23,6 @@ const reducer = createReducer(initial, {
           ) 
       }
     );
-    
-    return {...state, ...{
-      [action.collection]: {...state[action.collection], ...action.data}
-    }}
 
   }
 
