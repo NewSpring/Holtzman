@@ -2,7 +2,6 @@
 
 import Error from "../error"
 import startup from "./startup"
-import Meteor from "../../../definitions/Meteor.d"
 
 class FunctionWithSync extends Function {
     sync : Function

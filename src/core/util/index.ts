@@ -2,7 +2,7 @@
 
 import { inherit } from "./inherit"
 import { base64Encode, base64Decode } from "./encode"
-import Guid from "./guid"
+import { Guid } from "./guid"
 import { parse } from "./xml"
 
 import Error from "./error"
