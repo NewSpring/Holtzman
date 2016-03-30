@@ -35,4 +35,4 @@ node_modules
 dist
 coverage
 _book
-typings
+typings/
