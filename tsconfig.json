@@ -10,9 +10,18 @@
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "pretty": true,
-    "removeComments": true
+    "removeComments": true,
+    "jsx": "react",
+    "allowJs": false
   },
   "files": [
-    "typings/main.d.ts"
+    "typings/main.d.ts",
+    "src/core/components/loading/Spinner.tsx",
+    "test/core/components/loading/Spinner.spec.tsx"
    ]
+  // "exclude": [
+  //   "typings/main/",
+  //   "typings/browser",
+  //   "node_modules"
+  // ]
 }

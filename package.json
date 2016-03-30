@@ -7,7 +7,8 @@
     "lint": "eslint core give profile groups test",
     "fix": "eslint --fix core give profile groups test",
     "check": "npm run lint && npm run test",
-    "test": "mocha --compilers js:babel-core/register --recursive",
+    "pretest": "rm -rf ./dist && tsc",
+    "test": "mocha --reporter spec --full-trace --recursive ./dist/test",
     "test:watch": "npm test -- --watch",
     "docs:clean": "rimraf _book",
     "docs:prepare": "gitbook install",
@@ -30,9 +31,8 @@
     "babel": "5.8.21",
     "babel-core": "^5.8.34",
     "babel-eslint": "^4.1.6",
-    "enzyme": "^2.2.0",
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
+    "enzyme": "^2.2.0",
     "eslint": "^1.7.1",
     "eslint-config-rackt": "1.0.0",
     "eslint-plugin-react": "^3.6.3",
@@ -43,7 +43,8 @@
     "react-addons-test-utils": "^0.14.7",
     "redux-logger": "^2.6.1",
     "typescript": "^1.8.9",
-    "typescript-definition-tester": "0.0.4"
+    "typescript-definition-tester": "0.0.4",
+    "typescript-require": "^0.2.9-1"
   },
   "dependencies": {
     "google-map-react": "^0.10.5",
@@ -54,6 +55,7 @@
     "moment": "^2.10.6",
     "react-controllables": "^0.6.0",
     "react-day-picker": "^1.2.0",
+    "react-dom": "^0.14.8",
     "react-helmet": "^2.3.1",
     "react-motion": "^0.4.2",
     "react-pure-render": "^1.0.2",

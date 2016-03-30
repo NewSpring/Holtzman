@@ -36,3 +36,5 @@ dist
 coverage
 _book
 typings/
+dist
+tmp
