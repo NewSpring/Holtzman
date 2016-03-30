@@ -1,5 +1,5 @@
 import expect from "expect"
-import modal from "../../core/store/modal/index.js"
+import modal from "../../../src/core/store/modal/index.js"
 
 describe("modal actions", () => {
   it("hide: create an action to hide the modal", () => {

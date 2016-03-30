@@ -1,8 +1,8 @@
 {
   "name": "apollos",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A reactive framework for incredible applications",
-  "main": "core/index.js",
+  "main": "src/core/index.js",
   "scripts": {
     "lint": "eslint core give profile groups test",
     "fix": "eslint --fix core give profile groups test",
