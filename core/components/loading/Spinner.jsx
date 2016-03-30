@@ -1,10 +1,10 @@
-import { Component, PropTypes} from "react"
+import React, { Component, PropTypes} from "react"
 
-import Styles from "./spinner.css"
+// import Styles from "./spinner.css"
 
 function getClasses(mergeClasses) {
   let classes = [
-    Styles.loader
+    "loader"
   ]
 
   if (mergeClasses) {
@@ -16,8 +16,8 @@ function getClasses(mergeClasses) {
 
 const Spinner = ({ theme, styles, classes }) => (
   <div
-    className={ theme || getClasses(classes) }
-    style={ styles || {} }
+      className={theme || getClasses(classes)}
+      style={styles || {}}
   ></div>
 )
 

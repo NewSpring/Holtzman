@@ -69,6 +69,7 @@ Meteor.methods({
     RockUser = RockUser[0]
     RockUser.PlainTextPassword = newPassword
     RockUser.IsConfirmed = true
+    RockUser.EntityTypeId = 27
     try {
       let response = api.put.sync(`UserLogins/${RockUser.Id}`, RockUser)
       if (response.statusText) {
