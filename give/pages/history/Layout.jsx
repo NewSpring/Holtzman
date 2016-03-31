@@ -89,7 +89,7 @@ export default class Layout extends Component {
             <div className="soft soft-double-ends hard-left@lap-and-up">
               <h2 className="flush hard">Giving History</h2>
               <p className="flush-bottom soft-top"><small><em>
-                Currently we only support viewing your personal giving history, and not the history of your family. We are working hard to bring this ability, but in the meantime, if you sign into the site using the email of the family member you would like to see, you can view their history and schedules there. If you have any questions please <a href="//rock.newspring.cc/workflows/177" target="_blank">let us know!</a>
+                Currently we only support viewing your personal giving history, and not the history of your family. We are working hard to bring this ability, but in the meantime, if you sign into the site using the email of the family member you would like to see, you can view their history and schedules there. If you have any questions please <a href="//rock.newspring.cc/workflows/152?Topic=Stewardship" target="_blank">let us know!</a>
               </em></small></p>
             </div>
           </div>
@@ -116,7 +116,7 @@ export default class Layout extends Component {
                     <p>
                       We didn't find any contributions associated with your account. If you would like to start giving, click <Link to="/give/now">here</Link>
                     </p>
-                    <p><em>If you have any questions, please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a> and someone will be happy to assist you.</em></p>
+                    <p><em>If you have any questions, please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a> and someone will be happy to assist you.</em></p>
                   </div>
                 )
               }

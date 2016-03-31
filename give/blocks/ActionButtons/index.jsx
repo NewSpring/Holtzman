@@ -152,9 +152,9 @@ export default class GiveNow extends Component {
       this.props.dispatch(giveActions.setAccount(details))
     }
 
-    if (this.props.authorized && Meteor.userId() && !this.props.disabled) {
+    if (Meteor.userId() && !this.props.disabled) {
       this.props.dispatch(modal.render(Give))
-    } else if (!this.props.authorized && !Meteor.userId()){
+    } else if (!Meteor.userId()){
 
       this.props.dispatch(modal.render(OnBoard, {
         onFinished: this.renderAfterLogin
@@ -204,7 +204,7 @@ export default class GiveNow extends Component {
 
     }
 
-    if (!this.props.authorized && !Meteor.userId()) {
+    if (!Meteor.userId()) {
       text = "Sign In"
     }
 
@@ -258,7 +258,7 @@ export default class GiveNow extends Component {
 
           }()}
           {() => {
-            if (!this.props.authorized && !this.props.disabledGuest && !Meteor.userId()) {
+            if (!this.props.disabledGuest && !Meteor.userId()) {
               return (
                 <Guest
                   disabled={this.props.disabled}
