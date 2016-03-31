@@ -12,7 +12,7 @@ const Later = ({ date, onClick }) => (
       We will remind you about your contributions on <strong>
       {Moment(date).format("dddd, MMMM Do")}
       </strong>!
-      If you would like to reset your schedules before then, please contact our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a>
+      If you would like to reset your schedules before then, please contact our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a>
     </p>
 
     <button className="one-whole btn push-ends" onClick={onClick}>
