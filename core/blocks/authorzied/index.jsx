@@ -2,13 +2,13 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 
-import { onBoard as onBoardActions, modal } from "../../store"
+import { accounts as accountsActions, modal } from "../../store"
 import { routeActions } from "../../store/routing"
-import OnBoard from "../onBoard"
+import OnBoard from "../accounts"
 
 import { People } from "../../collections"
 
-const map = (state) => ({ auth: state.onBoard.authorized, modal: state.modal })
+const map = (state) => ({ auth: state.accounts.authorized, modal: state.modal })
 @connect(map)
 export default class Authorized extends Component {
 
@@ -22,7 +22,7 @@ export default class Authorized extends Component {
     // fail safe if for some reason we are logged in but not authorized in
     // the application
     if (authorized && !this.props.auth) {
-      this.props.dispatch(onBoardActions.authorize(true))
+      this.props.dispatch(accountsActions.authorize(true))
     }
   }
 
@@ -43,7 +43,7 @@ export default class Authorized extends Component {
 
 
   render () {
-    if (this.props.auth || Meteor.userId()) {
+    if (Meteor.userId()) {
       return this.props.children
     }
 

@@ -409,7 +409,7 @@ function* recoverTransactions(getStore) {
   let user = Meteor.userId()
 
   if (!user) {
-    const { authorized } = yield take("ONBOARD.IS_AUTHORIZED")
+    const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED")
   }
 
   user = Meteor.user()
@@ -530,7 +530,7 @@ addSaga(function* bindGiveAuth(geStore){
 
   while (true) {
 
-    const { authorized } = yield take("ONBOARD.IS_AUTHORIZED")
+    const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED")
 
     if (!authorized) {
       yield put(actions.clearData())

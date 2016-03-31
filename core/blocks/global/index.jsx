@@ -8,7 +8,7 @@ import { People, Likes } from "../../collections"
 import Meta from "../../components/meta"
 
 import {
-  onBoard as onBoardActions,
+  accounts as accountsActions,
   liked as likedActions,
   topics as topicActions,
   campuses as campusActions,
@@ -89,7 +89,7 @@ function getUser(id, dispatch) {
   return GraphQL.query(personQuery)
     .then(({ person }) => {
       if (person) {
-        dispatch(onBoardActions.person(person))
+        dispatch(accountsActions.person(person))
       }
 
     })
@@ -108,7 +108,7 @@ function bindLogout(dispatch) {
       return getUser(user, dispatch)
     }
 
-    dispatch(onBoardActions.signout())
+    dispatch(accountsActions.signout())
 
 
   })

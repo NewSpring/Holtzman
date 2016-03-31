@@ -2,7 +2,7 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
 import { nav as navActions, modal, collections as collectionActions } from "../../../../../core/store"
-import OnBoard from "../../../../../core/blocks/onBoard"
+import OnBoard from "../../../../../core/blocks/accounts"
 import { GraphQL } from "../../../../../core/graphql"
 import { join } from "../../../../methods/join"
 
@@ -12,8 +12,8 @@ import Layout from "./Layout"
 import Join from "./Join"
 
 const map = (state) => ({
-  person: state.onBoard.person,
-  authorized: state.onBoard.authorized,
+  person: state.accounts.person,
+  authorized: state.accounts.authorized,
   previousLocations: state.routing.location.previous
 })
 @connect(map)
