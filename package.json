@@ -4,7 +4,6 @@
   "description": "A reactive framework for incredible applications",
   "main": "src/core/index.js",
   "scripts": {
-    "lint": "eslint core give profile groups test",
     "fix": "eslint --fix core give profile groups test",
     "check": "npm run lint && npm run test",
     "pretest": "rm -rf ./dist && tsc",
@@ -14,7 +13,10 @@
     "docs:prepare": "gitbook install",
     "docs:build": "npm run docs:prepare && gitbook build -g NewSpring/Apollos",
     "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:NewSpring/Apollos gh-pages --force"
+    "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:NewSpring/Apollos gh-pages --force",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --reporter dot --full-trace --recursive ./dist/test/",
+    "postcoverage": "remap-istanbul --input coverage/coverage.json --type lcovonly --output coverage/lcov.info",
+    "lint": "tslint src/*.ts && tslint test/*.ts"
   },
   "xo": {},
   "repository": {
@@ -34,13 +36,16 @@
     "chai": "^3.5.0",
     "chai-enzyme": "^0.4.1",
     "cheerio": "^0.20.0",
+    "coveralls": "^2.11.9",
     "enzyme": "^2.2.0",
     "eslint": "^1.7.1",
     "eslint-config-rackt": "1.0.0",
     "eslint-plugin-react": "^3.6.3",
     "expect": "^1.13.4",
     "gitbook-cli": "^0.3.4",
+    "istanbul": "^0.4.2",
     "mocha": "^2.3.4",
+    "mocha-lcov-reporter": "^1.2.0",
     "react": "^0.14.7",
     "react-addons-test-utils": "^0.14.7",
     "redux-logger": "^2.6.1",
