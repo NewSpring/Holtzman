@@ -4,7 +4,7 @@ import { Link } from "react-router"
 // import { VelocityComponent } from "velocity-react"
 
 import { GraphQL } from "../../../../core/graphql"
-import { onBoard as onBoardActions } from "../../../../core/store"
+import { accounts as accountsActions } from "../../../../core/store"
 
 import { avatar } from "../../../../core/methods/files/client"
 
@@ -48,7 +48,7 @@ function updateUser(id, dispatch) {
 
   return GraphQL.query(personQuery)
     .then((person) => {
-      dispatch(onBoardActions.person(person.person))
+      dispatch(accountsActions.person(person.person))
     })
 }
 
@@ -216,7 +216,7 @@ export default class Menu extends Component {
                 <RenderCell name="Saved Accounts" />
               </Link>
               <Link to="/give/schedules" className="plain text-dark-secondary">
-                <RenderCell name="Scheduled Gifts" />
+                <RenderCell name="Scheduled Contributions" />
               </Link>
               <Link to="/give/history" className="plain text-dark-secondary">
                 <RenderCell name="Giving History" last={true} />

@@ -5,7 +5,7 @@ import Moment from "moment"
 
 import { GraphQL } from "../../../core/graphql"
 import { Controls, Forms } from "../../../core/components"
-import OnBoard from "../../../core/blocks/onBoard"
+import OnBoard from "../../../core/blocks/accounts"
 import {
   modal,
   campuses as campusActions,
@@ -24,7 +24,7 @@ import Success from "./Success"
 // We only care about the give state
 const map = (state) => ({
   give: state.give,
-  person: state.onBoard.person,
+  person: state.accounts.person,
   campuses: state.campuses.campuses,
   states: state.collections.states,
   countries: state.collections.countries,
@@ -172,7 +172,7 @@ export default class Give extends Component {
     return `$${value}`
   }
 
-  goToOnboard = () => {
+  goToaccounts = () => {
     const { data } = this.props.give
 
     let props = {
@@ -253,7 +253,7 @@ export default class Give extends Component {
           total={this.monentize(total.toFixed(2))}
           email={data.personal.email}
           guest={transactionType === "guest"}
-          onClick={this.goToOnboard}
+          onClick={this.goToaccounts}
           schedules={this.copiedSchedules}
         />
       default:

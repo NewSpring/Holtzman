@@ -5,7 +5,7 @@ import { GraphQL } from "../../../core/graphql"
 
 import Layout from "./Layout"
 import { Likes, Following } from "../../blocks"
-import { onBoard as onBoardActions, nav as navActions } from "../../../core/store"
+import { accounts as accountsActions, nav as navActions } from "../../../core/store"
 import { avatar } from "../../../core/methods/files/client"
 
 
@@ -47,11 +47,11 @@ function updateUser(id, dispatch) {
 
   return GraphQL.query(personQuery)
     .then((person) => {
-      dispatch(onBoardActions.person(person.person))
+      dispatch(accountsActions.person(person.person))
     })
 }
 
-const map = (state) => ({ person: state.onBoard.person })
+const map = (state) => ({ person: state.accounts.person })
 @connect(map)
 export default class Home extends Component {
 

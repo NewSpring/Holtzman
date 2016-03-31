@@ -5,8 +5,8 @@ import Moment from "moment"
 import { GraphQL } from "../../../../core/graphql"
 
 import { Campuses, States } from "../../../../core/collections"
-import { nav, campuses as campusActions, onBoard as onBoardActions } from "../../../../core/store"
-import { update } from "../../../../core/methods/auth/client/"
+import { nav, campuses as campusActions, accounts as accountsActions } from "../../../../core/store"
+import { update } from "../../../../core/methods/accounts/client/"
 
 import { Loading, Error } from "../../../../core/components/states"
 
@@ -84,7 +84,7 @@ function getUser(id, dispatch) {
   return GraphQL.query(personQuery)
     .then(({ person }) => {
       if (person) {
-        dispatch(onBoardActions.person(person))
+        dispatch(accountsActions.person(person))
       }
 
     })
@@ -92,7 +92,7 @@ function getUser(id, dispatch) {
 }
 
 const map = (state) => ({
-  person: state.onBoard.person,
+  person: state.accounts.person,
 })
 
 @connect(map)
