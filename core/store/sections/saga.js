@@ -86,6 +86,10 @@ addSaga(function* sectionsSaga(getState) {
   function extractImage(content) {
     let { images } = content.content
 
+    if (!images.length) {
+      return null
+    }
+    
     // prefer 1x1 image
     let oneByOne = _.find(images, (image) => {
       return image.fileLabel === "1:1"

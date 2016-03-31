@@ -3,7 +3,7 @@ import "regenerator/runtime"
 import liked from "./liked"
 import modal from "./modal"
 import nav from "./nav"
-import onBoard from "./onBoard"
+import accounts from "./accounts"
 import sections from "./sections"
 import topics from "./topics"
 import campuses from "./campuses"
@@ -39,7 +39,7 @@ export {
   liked,
   modal,
   nav,
-  onBoard,
+  accounts,
   sections,
   topics,
   collections,
