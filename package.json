@@ -32,6 +32,8 @@
     "babel-core": "^5.8.34",
     "babel-eslint": "^4.1.6",
     "chai": "^3.5.0",
+    "chai-enzyme": "^0.4.1",
+    "cheerio": "^0.20.0",
     "enzyme": "^2.2.0",
     "eslint": "^1.7.1",
     "eslint-config-rackt": "1.0.0",

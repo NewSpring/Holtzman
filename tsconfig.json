@@ -14,9 +14,9 @@
     "jsx": "react",
     "allowJs": false
   },
-  "files": [
-    "typings/main.d.ts",
-    "src/core/components/loading/Spinner.tsx",
-    "test/core/components/loading/Spinner.spec.tsx"
+  "exclude": [
+    "typings",
+    "node_modules",
+    "dist"
   ]
 }
