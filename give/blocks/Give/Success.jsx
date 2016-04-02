@@ -49,7 +49,7 @@ const Success = ({ total, email, guest, onClick, schedules }) => {
           }
         }()}
         <p className="test-dark-tertiary text-left"><em>
-          If you have any questions please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a> and someone will be happy to assist you.
+          If you have any questions please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a> and someone will be happy to assist you.
         </em></p>
 
       </div>
