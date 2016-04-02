@@ -11,7 +11,7 @@ const responsiveBindings = store => next => action => {
 
 
   // XXX figure out how to get width on the server
-  if (typeof window === "undefined" || window === null) {
+  if (typeof window != "undefined" && window != null) {
     return
   }
 
