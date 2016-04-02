@@ -13,6 +13,7 @@ import share from "./share"
 import comingsoon from "./comingsoon"
 import search from "./search"
 import filters from "./filters"
+import responsive from "./responsive"
 
 import {
   join,
@@ -48,6 +49,7 @@ export {
   routing,
   search,
   filters,
+  responsive,
 
   wrapper,
   createReduxStore,
