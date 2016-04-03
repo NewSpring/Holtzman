@@ -7,6 +7,22 @@ import { upsertLocations } from "./upsertLocations"
 const ScheduledTransactions = () => {
   if (api._ && api._.baseURL) {
 
+    // prior to binding the observer, syncronously lookup all processing transctions
+    // remove their processing status
+    let stalledTransactions = ScheduledTransactionReciepts.find({
+      "__processing": true
+    }).fetch()
+
+    if (stalledTransactions.length) {
+      for (let transaction of stalledTransactions) {
+        ScheduledTransactionReciepts.update(transaction._id, {
+          $set: {
+            __processing: false
+          }
+        })
+      }
+    }
+
     ScheduledTransactionReciepts.find().observe({
       added: function (ScheduledTransaction) {
 
@@ -68,9 +84,18 @@ const ScheduledTransactions = () => {
 
         // this should never be isGuest, but is a saftey net
         const isGuest = PersonId ? false : true
+        // This scope issue is bizzare to me, but this works
+        let ScopedId = PersonId
+        let ScopedAliasId = PrimaryAliasId
         if (!PersonId) {
           PersonId = api.post.sync(`People`, Person)
           PrimaryAliasId = api.get.sync(`People/${PersonId}`).PrimaryAliasId
+        } else {
+          let RockPerson = api.get.sync(`PersonAlias/${ScopedAliasId}`)
+          let RockPersonId = RockPerson.Person.Id
+          RockPerson = api.get.sync(`People/${RockPersonId}`)
+          Person = {...Person, ...RockPerson}
+          let { PersonId, PrimaryAliasId } = Person
         }
 
         // add locatin data to person
