@@ -8,6 +8,23 @@ let GIVING_EMAIL_ID = false;
 const transactions = () => {
   if (api._ && api._.baseURL) {
 
+    // prior to binding the observer, syncronously lookup all processing transctions
+    // remove their processing status
+    let stalledTransactions = TransactionReciepts.find({
+      "__processing": true
+    }).fetch()
+
+    if (stalledTransactions.length) {
+      for (let transaction of stalledTransactions) {
+        TransactionReciepts.update(transaction._id, {
+          $set: {
+            __processing: false
+          }
+        })
+      }
+    }
+
+
     TransactionReciepts.find().observe({
       added: function (Transaction) {
 
@@ -65,11 +82,14 @@ const transactions = () => {
         const isGuest = PersonId ? false : true
         // This scope issue is bizzare to me, but this works
         let ScopedId = PersonId
+        let ScopedAliasId = PrimaryAliasId
         if (!PersonId) {
           PersonId = api.post.sync(`People`, Person)
           PrimaryAliasId = api.get.sync(`People/${PersonId}`).PrimaryAliasId
         } else {
-          let RockPerson = api.get.sync(`People/${ScopedId}`)
+          let RockPerson = api.get.sync(`PersonAlias/${ScopedAliasId}`)
+          let RockPersonId = RockPerson.Person.Id
+          RockPerson = api.get.sync(`People/${RockPersonId}`)
           Person = {...Person, ...RockPerson}
           let { PersonId, PrimaryAliasId } = Person
         }
