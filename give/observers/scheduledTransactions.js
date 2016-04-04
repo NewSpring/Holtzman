@@ -7,22 +7,6 @@ import { upsertLocations } from "./upsertLocations"
 const ScheduledTransactions = () => {
   if (api._ && api._.baseURL) {
 
-    // prior to binding the observer, syncronously lookup all processing transctions
-    // remove their processing status
-    let stalledTransactions = ScheduledTransactionReciepts.find({
-      "__processing": true
-    }).fetch()
-
-    if (stalledTransactions.length) {
-      for (let transaction of stalledTransactions) {
-        ScheduledTransactionReciepts.update(transaction._id, {
-          $set: {
-            __processing: false
-          }
-        })
-      }
-    }
-
     ScheduledTransactionReciepts.find().observe({
       added: function (ScheduledTransaction) {
 
@@ -79,7 +63,8 @@ const ScheduledTransactions = () => {
           Guid: makeNewGuid(),
           IsSystem: false,
           Gender: 0,
-          SystemNote: "Created from NewSpring Apollos"
+          ConnectionStatusValueId: 67, // Web Prospect
+          SystemNote: `Created from NewSpring Apollos on ${__meteor_runtime_config__.ROOT_URL}`
         } }
 
         // this should never be isGuest, but is a saftey net
@@ -95,11 +80,16 @@ const ScheduledTransactions = () => {
           let RockPersonId = RockPerson.Person.Id
           RockPerson = api.get.sync(`People/${RockPersonId}`)
           Person = {...Person, ...RockPerson}
-          let { PersonId, PrimaryAliasId } = Person
+          PrimaryAliasId = Person.PrimaryAliasId
+          PersonId = Person.Id
         }
 
-        // add locatin data to person
-        upsertLocations(PersonId, Location)
+        try {
+          // add locatin data to person
+          upsertLocations(PersonId, Location)
+        } catch (e) {
+          console.error(e, PersonId, PrimaryAliasId)
+        }
 
 
         // Create FinancialPaymentDetail
