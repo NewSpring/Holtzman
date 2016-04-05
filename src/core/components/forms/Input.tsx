@@ -1,46 +1,65 @@
 
-import React from "react";
+import React, { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
 import ReactDom from "react-dom";
-import Lodash from "lodash"
+// XXX refactor with just lodash.assign / we get typings for lodash.assign
+import { assign } from "lodash";
 
-import Label from "./components/Label"
+import Label from "./components/Label";
 
-export class InputProps {
-  defaultValue: string
-  autofocus: boolean
-  value: string
-  format: Function
-  onChange: Function
-  validation: Function
-  onBlur: Function
-  status: string
-  disabled: boolean
-  errorText: string
-  style: string
-  classes: string
-  theme: string[]
-  hideLabel: boolean
-  id: string
-  name: string
-  label: string
-  ref: string
-  type: string
-  placeholder: string
-  inputClasses: string[]
-  maxLength: string
-}
+export enum InputType {
+  "email",
+  "text",
+  "tel",
+};
+ 
+export declare interface InputProps {
+  defaultValue?: string;
+  autofocus?: boolean; // triggers the input to focus on render
+  value?: string ;
+  format?(value: string, element: Element, e: SyntheticEvent): string;
+  onChange?(value: string, element: Element, e: SyntheticEvent): void;
+  validation?(value: string, element: Element, e: SyntheticEvent): boolean;
+  onBlur?(value: string, element: Element, e: SyntheticEvent): void;
+  status?: string; // XXX needs better name
+  disabled?: boolean;
+  errorText?: string;
+  style?: HTMLProps<HTMLStyleElement>;
+  classes?: Array<string>; // XXX containerClasses
+  theme?: string;
+  hideLabel?: boolean;
+  id?: string;
+  name?: string;
+  label?: string;
+  ref?: string;
+  type?: InputType;
+  placeholder?: string;
+  inputClasses?: Array<string>;
+  maxLength?: number;
+};
 
-export default class Input extends React.Component<InputProps, {}> {
+export declare interface InputState {
+  active: boolean;
+  focused: boolean;
+  error: boolean;
+  status: string;
+  value: void;
+};
 
-  interval: number
-  _previousValue: string
+export default class Input extends Component<InputProps, {}> {
+
+  private interval: number;
+  private _previousValue: string;
   
   refs: {
     [key: string]: Element;
     "apollos-input": HTMLInputElement;
-  }
+  };
+  
+  // static propTypes = {
+  //   defaultValue: PropTypes.any,
+  // }
 
-  state = {
+  public state: InputState = {
     active: false,
     focused: false,
     error: false,
@@ -56,7 +75,7 @@ export default class Input extends React.Component<InputProps, {}> {
 
   componentDidMount() {
     if (this.props.autofocus) {
-      this.refs["apollos-input"].focus()
+      this.refs["apollos-input"].focus();
     }
 
     // one day, I dream of a universal browser auto-fill event
@@ -65,11 +84,11 @@ export default class Input extends React.Component<InputProps, {}> {
     this.interval = setInterval(() => {
 
       if (this._previousValue === target.value || !target.value) {
-        return
+        return;
       }
 
       if (!this._previousValue && target.value && !this.state.focused) {
-        this.setValue(target.value)
+        this.setValue(target.value);
       }
 
       this._previousValue = target.value;
@@ -85,83 +104,79 @@ export default class Input extends React.Component<InputProps, {}> {
 
   componentWillUpdate(nextProps){
     if (this.props.defaultValue != nextProps.defaultValue) {
-      this.setValue(nextProps.defaultValue)
-      this.setState({focused: false})
+      this.setValue(nextProps.defaultValue);
+      this.setState({focused: false});
     }
   }
 
   componentWillUnmount(){
     if (this.interval) {
-      clearInterval(this.interval)
+      clearInterval(this.interval);
     }
   }
 
-
-  format = (e) => {
+  format = (e: SyntheticEvent): void => {
 
     const target = ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]);
-    let value = this.refs["apollos-input"].value
+    let value = this.refs["apollos-input"].value;
 
     if (this.props.format && typeof(this.props.format) === "function") {
-
       const newValue = this.props.format(value, target, e);
       target.value = newValue;
-
     }
 
-    if (this.props.onChange && typeof(this.props.onChange) === "function" ) {
-      this.props.onChange(target.value, target, e)
+    if (this.props.onChange && typeof(this.props.onChange) === "function") {
+      this.props.onChange(target.value, target, e);
     }
 
   }
 
-  validate = (e) => {
+  validate = (e: SyntheticEvent): void => {
 
     const target = ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]);
-    const value = target.value
+    const value = target.value;
 
     if (!value) {
       this.setState({
         active: false,
         error: false
-      })
+      });
     }
 
     this.setState({
       focused: false
-    })
+    });
 
     if (this.props.validation && typeof(this.props.validation) === "function") {
       this.setState({
-        error: !this.props.validation(value, target, e)
+        error: !this.props.validation(value, target, e),
       });
     }
 
     if (this.props.onBlur && typeof(this.props.onBlur) === "function") {
-      this.props.onBlur(value, target, e)
+      this.props.onBlur(value, target, e);
     }
 
   }
 
-  focus = (event): void => {
+  focus = (): void => {
     this.setState({
       active: true,
       error: false,
-      focused: true
-    })
+      focused: true,
+    });
   }
 
   setValue = (value: string): void => {
     let node = ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]);
     node.value = value;
-    this.focus(null)
-    this.validate(null)
+    this.focus();
+    this.validate(null);
   }
 
   getValue = (): string => {
-    return ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]).value
+    return ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]).value;
   }
-
 
   setStatus = (message: string): void => {
     this.props.status = message;
@@ -178,29 +193,27 @@ export default class Input extends React.Component<InputProps, {}> {
   renderHelpText = (): JSX.Element => {
 
     if ((this.state.error && this.props.errorText) || this.state.status) {
-
       return (
         <span className="input__status">
           {this.props.errorText || this.state.status}
         </span>
       );
     }
-
   }
 
-  style = () => {
+  style = (): HTMLStyleElement | any => {
 
-    let style = {}
+    let style = {};
 
     if (this.props.style) {
-      Lodash.assign(style, this.props.style)
+      style = assign(style, this.props.style);
     }
 
     if (this.props.disabled) {
-      Lodash.assign(style, { cursor: "inherit" })
+      style = assign(style, { cursor: "inherit" });
     }
 
-    return style
+    return style;
   }
 
   render() {
@@ -209,13 +222,15 @@ export default class Input extends React.Component<InputProps, {}> {
     ];
 
     // theme overwrite
-    if (this.props.theme) { inputclasses = this.props.theme }
+    if (this.props.theme) inputclasses = this.props.theme.split(" ");
+    
     // state mangaged classes
-    if (this.state.active) { inputclasses.push("input--active") }
-    if (this.state.focused) { inputclasses.push("input--focused") }
-    if (this.state.error) { inputclasses.push("input--alert") }
+    if (this.state.active) inputclasses.push("input--active");
+    if (this.state.focused) inputclasses.push("input--focused");
+    if (this.state.error) inputclasses.push("input--alert");
+    
     // custom added classes
-    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
+    if (this.props.classes) inputclasses = inputclasses.concat(this.props.classes);
 
     return (
       <div className={inputclasses.join(" ")} style={this.props.style || {}}>
