@@ -16,10 +16,10 @@ export declare interface InputProps {
   defaultValue?: string;
   autofocus?: boolean; // triggers the input to focus on render
   value?: string ;
-  format?(value: string, element: Element, e: SyntheticEvent): string;
-  onChange?(value: string, element: Element, e: SyntheticEvent): void;
-  validation?(value: string, element: Element, e: SyntheticEvent): boolean;
-  onBlur?(value: string, element: Element, e: SyntheticEvent): void;
+  format?(value: string, element: HTMLInputElement, e: SyntheticEvent): string;
+  onChange?(value: string, element: HTMLInputElement, e: SyntheticEvent): void;
+  validation?(value: string, element: HTMLInputElement, e: SyntheticEvent): boolean;
+  onBlur?(value: string, element: HTMLInputElement, e: SyntheticEvent): void;
   status?: string; // XXX needs better name
   disabled?: boolean;
   errorText?: string;
@@ -65,13 +65,13 @@ export default class Input extends Component<InputProps, {}> {
     error: false,
     status: "",
     value: null
-  }
+  };
 
   componentWillMount() {
     if (this.props.defaultValue) {
       this.setState({ active: true })
     }
-  }
+  };
 
   componentDidMount() {
     if (this.props.autofocus) {
@@ -99,21 +99,20 @@ export default class Input extends Component<InputProps, {}> {
     if (this.props.value) {
       this.setValue(`$${this.props.value}`);
     }
-
-  }
+  };
 
   componentWillUpdate(nextProps){
     if (this.props.defaultValue != nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue);
       this.setState({focused: false});
     }
-  }
+  };
 
   componentWillUnmount(){
     if (this.interval) {
       clearInterval(this.interval);
     }
-  }
+  };
 
   format = (e: SyntheticEvent): void => {
 
@@ -128,8 +127,7 @@ export default class Input extends Component<InputProps, {}> {
     if (this.props.onChange && typeof(this.props.onChange) === "function") {
       this.props.onChange(target.value, target, e);
     }
-
-  }
+  };
 
   validate = (e: SyntheticEvent): void => {
 
@@ -156,8 +154,7 @@ export default class Input extends Component<InputProps, {}> {
     if (this.props.onBlur && typeof(this.props.onBlur) === "function") {
       this.props.onBlur(value, target, e);
     }
-
-  }
+  };
 
   focus = (): void => {
     this.setState({
@@ -165,22 +162,22 @@ export default class Input extends Component<InputProps, {}> {
       error: false,
       focused: true,
     });
-  }
+  };
 
   setValue = (value: string): void => {
     let node = ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]);
     node.value = value;
     this.focus();
     this.validate(null);
-  }
+  };
 
   getValue = (): string => {
     return ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]).value;
-  }
+  };
 
   setStatus = (message: string): void => {
     this.props.status = message;
-  }
+  };
 
   disabled = (): boolean => {
     if (this.props.disabled) {
@@ -188,7 +185,7 @@ export default class Input extends Component<InputProps, {}> {
     }
     
     return false;
-  }
+  };
 
   renderHelpText = (): JSX.Element => {
 
@@ -199,7 +196,7 @@ export default class Input extends Component<InputProps, {}> {
         </span>
       );
     }
-  }
+  };
 
   style = (): HTMLStyleElement | any => {
 
@@ -214,7 +211,7 @@ export default class Input extends Component<InputProps, {}> {
     }
 
     return style;
-  }
+  };
 
   render() {
     let inputclasses = [
@@ -274,6 +271,6 @@ export default class Input extends Component<InputProps, {}> {
       </div>
     );
 
-  }
+  };
 
-}
+};

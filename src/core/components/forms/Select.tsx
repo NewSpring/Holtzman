@@ -1,85 +1,116 @@
-import { Component, PropTypes } from "react";
-import ReactDom from "react-dom";
+import React, { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
+import ReactDOM from "react-dom";
 // import ReactSelect from "react-select";
 
-import Label from "./components/Label"
+import Label from "./components/Label";
 
-import SelectClasses from "./select.css"
+import SelectClasses from "./select.css";
 
-export default class Select extends Component {
+export declare interface SelectItem {
+  value: string;
+  label: string;
+};
 
-  state = {
+export declare interface SelectProps {
+  defaultValue: string;
+  onChange?(value: string, element: HTMLSelectElement, e: SyntheticEvent): void;
+  validation?(value: string, element: HTMLSelectElement, e: SyntheticEvent): boolean;
+  status: string;
+  disabled: boolean;
+  errorText: string;
+  theme: string;
+  classes: Array<string>;
+  selected: boolean;
+  hideLabel: boolean;
+  id: string;
+  label: string;
+  name: string;
+  ref?: string;
+  placeholder?: string;
+  inputClasses?: Array<string>;
+  includeBlank: boolean;
+  deselect: boolean;
+  items: Array<SelectItem>;
+  optionClasses: Array<string>;
+};
+
+export declare interface SelectState {
+  active: boolean;
+  focused: boolean;
+  error: boolean;
+  status: string;
+};
+
+export default class Select extends Component<SelectProps, {}> {
+
+  public state: SelectState = {
     active: false,
     focused: false,
     error: false,
     status: ""
-  }
+  };
 
-  componentWillMount(){
+  componentWillMount() {
     if (this.props.defaultValue) {
       this.setState({ active: true })
-
     }
-  }
+  };
 
-  componentDidMount(){
+  componentDidMount() {
     if (this.props.defaultValue) {
-      const target = ReactDOM.findDOMNode(this.refs["apollos-select"])
+      const target = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"])
 
       if (this.props.onChange) {
-        this.props.onChange(this.props.defaultValue, target)
+        this.props.onChange(this.props.defaultValue, target, null)
       }
 
       if (this.props.validation) {
-        this.props.validation(this.props.defaultValue, target)
+        this.props.validation(this.props.defaultValue, target, null)
       }
     }
-  }
+  };
 
   componentWillUpdate(nextProps){
     if (this.props.defaultValue != nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue)
       this.setState({focused: false})
-      const target = ReactDOM.findDOMNode(this.refs["apollos-select"])
-      this.change({
-        value: nextProps.defaultValue,
-        id: target.id,
-        currentTarget: target
-      })
+      const target = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"])
+      this.change(target.id, nextProps.defaultValue, target, null);
     }
-  }
+  };
 
-  focus = (event) => {
+  focus = (): void => {
     this.setState({
       active: true,
       error: false,
       focused: true
     })
-  }
+  };
 
-  setValue = (value) => {
-    let node = ReactDOM.findDOMNode(this.refs["apollos-select"]);
+  setValue = (value: string): void => {
+    let node = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]);
     node.value = value;
     this.focus()
     // this.change()
-  }
+  };
 
-  getValue = () => {
-    return ReactDOM.findDOMNode(this.refs["apollos-select"]).value
-  }
+  getValue = (): string => {
+    return ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]).value
+  };
 
-
-  setStatus = (message) => {
+  setStatus = (message: string): void => {
     this.props.status = message;
-  }
+  };
 
-  disabled = () => {
+  disabled = (): boolean => {
     if (this.props.disabled) {
-      return disabled;
+      return true;
     }
-  }
+    
+    return false;
+  };
 
-  renderHelpText = (message) => {
+  renderHelpText = (message: string): JSX.Element => {
 
     if ((this.state.error && this.props.errorText) || this.state.status) {
 
@@ -89,25 +120,26 @@ export default class Select extends Component {
         </span>
       );
     }
+  };
+  
+  onChange = (e: SyntheticEvent): void => {
+    const { id, value } = e.currentTarget as HTMLSelectElement;
+    const target = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]);
+    this.change(id, value, target, null);
+  };
 
-  }
-
-  change = (e) => {
-    const { id, value } = e.currentTarget
-    const target = ReactDOM.findDOMNode(this.refs["apollos-select"])
-    // console.log(target)
+  change = (id: string, value: string, target: HTMLSelectElement, e: SyntheticEvent): void => {
     if (this.props.onChange) {
-      this.props.onChange(value, e.currentTarget)
+      this.props.onChange(value, target, e);
     }
 
     if (this.props.validation) {
-      this.props.validation(value, e.currentTarget)
+      this.props.validation(value, target, e)
     }
-
-  }
+  };
 
   validate = () => {
-    const target = ReactDOM.findDOMNode(this.refs["apollos-select"]);
+    const target = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]);
     const value = target.value
 
     if (!value) {
@@ -123,30 +155,28 @@ export default class Select extends Component {
 
     if (this.props.validation && typeof(this.props.validation) === "function") {
       this.setState({
-        error: !this.props.validation(value, target)
+        error: !this.props.validation(value, target, null)
       });
 
     }
-  }
+  };
 
-
-
-  render() {
+  render(): JSX.Element {
 
     let inputclasses = [
       "input"
     ];
 
     // theme overwrite
-    if (this.props.theme) { inputclasses = this.props.theme }
+    if (this.props.theme) inputclasses = this.props.theme.split(" ");
     // state mangaged classes
-    if (this.state.active) { inputclasses.push("input--active") }
-    if (this.state.focused) { inputclasses.push("input--focused") }
-    if (this.state.error) { inputclasses.push("input--alert") }
+    if (this.state.active) inputclasses.push("input--active");
+    if (this.state.focused) inputclasses.push("input--focused");
+    if (this.state.error) inputclasses.push("input--alert");
     // custom added classes
-    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
+    if (this.props.classes) inputclasses = inputclasses.concat(this.props.classes);
 
-    if (this.props.selected) { inputclasses.push("input--active") }
+    if (this.props.selected) inputclasses.push("input--active");
 
     return (
       <div className={inputclasses.join(" ") + ` ${SelectClasses.select}`}>
@@ -160,10 +190,13 @@ export default class Select extends Component {
                 labelName={
                   this.props.label || this.props.name
                 }
+                disabled ={
+                  this.disabled()
+                }
               />
             )
           }
-        })()}
+        })()};
 
         <select
           ref="apollos-select"
@@ -178,14 +211,14 @@ export default class Select extends Component {
           value={this.props.selected}
 
         >
-          {() => {
+          {function () {
             if (this.props.placeholder || this.props.includeBlank) {
               return (
                 <option style={{display:"none"}}>{this.props.placeholder || ""}</option>
               )
             }
           }()}
-          {() => {
+          {function () {
             if (this.props.deselect) {
               return (
                 <option></option>
@@ -207,12 +240,12 @@ export default class Select extends Component {
 
 
 
-        {this.renderHelpText()}
+        {this.renderHelpText(null)}
 
       </div>
     );
 
-  }
+  };
 
 }
 
