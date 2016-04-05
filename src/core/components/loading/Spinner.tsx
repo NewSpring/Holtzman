@@ -21,7 +21,7 @@ export interface SpinnerProps {
   theme?: string,
   styles?: HTMLProps<HTMLStyleElement>,
   classes?: string[]
-} 
+}
 
 
 const Spinner = ({ theme, styles, classes }: SpinnerProps) => (
