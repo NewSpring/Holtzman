@@ -13,17 +13,17 @@ const { assert } = chai;
 import Input from "./../../../../src/core/components/forms/Input";
 
 describe("<Input /> component", () => {
-  
+
  describe("state", () => {
-   it("is south carolina", () => {
-      assert.equal(true, true);
-   })
+   it("has a default state", () =>{
+     const wrapper = shallow(<Input classes={["foo"]}/>);
+     console.log(wrapper);
+     chai.expect(wrapper.hasClass("foo")).to.equal(true);
+   });
  });
- 
+
  describe("props", () => {
    it("has the correct classname", () => {
-    // const wrapper = shallow(<Input />);
-    // chai.expect(wrapper.hasClass("loader")).to.equal(true);
     assert.equal(true, true);
   });
  });
