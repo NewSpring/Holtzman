@@ -4,13 +4,17 @@ machine:
 
 dependencies:
   pre:
-    - npm i -g tslint typings coveralls
+    - npm i -g tslint typings coveralls type
     - typings i
   cache_directories:
     - "node_modules"
     - "typings"
 
 test:
+  override:
+    - npm run pretest
+    - npm run ci-test
+    - npm run posttest
   post:
     - npm run coverage
     - coveralls < ./coverage/lcov.info
