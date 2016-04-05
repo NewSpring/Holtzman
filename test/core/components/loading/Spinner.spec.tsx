@@ -27,6 +27,12 @@ describe("<Spinner /> component", () => {
     chai.expect(wrapper.hasClass("loader")).to.equal(false);
   });
 
+  it("can have extra classes passed to it", () => {
+    const wrapper = shallow(<Spinner classes={["foobar"]} />);
+    chai.expect(wrapper.hasClass("foobar")).to.equal(true);
+    chai.expect(wrapper.hasClass("loader")).to.equal(true);
+  });
+
   it("can set independent styles", () => {
     const wrapper = shallow(<Spinner styles={{borderColor: "#fff"}} />);
     chai.expect(wrapper).to.have.style("border-color", "#fff");

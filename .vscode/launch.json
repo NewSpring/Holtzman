@@ -1,0 +1,16 @@
+{
+  "version": "0.1.0",
+  "configurations": [
+    {
+      "name": "Test",
+      "type": "node",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "outDir": "${workspaceRoot}/test/",
+      "args": ["--recursive", "./dist/test", "--debug-brk"],
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": null
+    }
+  ]
+}
