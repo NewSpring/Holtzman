@@ -11,6 +11,8 @@ dependencies:
     - "typings"
 
 test:
+  pre:
+    - mkdir -p $CIRCLE_TEST_REPORTS/mocha/
   override:
     - npm run pretest
     - npm run ci-test

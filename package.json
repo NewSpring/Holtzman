@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "tslint src/**/*.ts && tslint test/**/*.ts",
     "pretest": "rm -rf ./dist && tsc",
-    "ci-test": "mocha --reporter mocha-junit-reporter --full-trace --recursive ./dist/test",
+    "ci-test": "mocha --reporter mocha-junit-reporter --full-trace --recursive --reporter-options mochaFile=$CIRCLE_TEST_REPORTS/mocha/junit.xml ./dist/test",
     "test": "mocha --reporter spec --full-trace --recursive ./dist/test",
     "posttest": "npm run lint",
     "test:watch": "npm test -- --watch",
