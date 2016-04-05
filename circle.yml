@@ -1,8 +1,22 @@
 machine:
   node:
-    version: 0.10.41
+    version: 4.2.1
+
+dependencies:
+  pre:
+    - npm i -g tslint typings coveralls type
+    - typings i
+  cache_directories:
+    - "node_modules"
+    - "typings"
 
 test:
   pre:
-    - npm i -g tslint
-    - npm run lint
+    - mkdir -p $CIRCLE_TEST_REPORTS/mocha/
+  override:
+    - npm run pretest
+    - npm run ci-test
+    - npm run posttest
+  post:
+    - npm run coverage
+    - coveralls < ./coverage/lcov.info
