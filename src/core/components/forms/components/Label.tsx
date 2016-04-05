@@ -1,25 +1,25 @@
-import React from "react"
+import React from "react";
 
 function style(disabled: boolean): Object {
   if (disabled) {
     return {
       cursor: "inherit"
-    }
+    };
   }
 
-  return {}
+  return {};
 }
 
-export class LabelProps {
-  labelFor: string
-  labelName: string
-  disabled: boolean
-}
+export interface LabelProps {
+  labelFor: string,
+  labelName: string,
+  disabled?: boolean
+};
 
 const Label = ({ labelFor, labelName, disabled }: LabelProps) => (
-  <label htmlFor={labelFor} style={style(disabled)} >
+  <label htmlFor={labelFor} style={style(disabled)}>
     {labelName}
   </label>
-)
+);
 
 export default Label;
