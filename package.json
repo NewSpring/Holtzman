@@ -4,7 +4,7 @@
   "description": "A reactive framework for incredible applications",
   "main": "src/core/index.js",
   "scripts": {
-    "preinstall": "typings install",
+    "postinstall": "typings install",
 
     "lint": "tslint src/**/*.ts && tslint test/**/*.ts",
 
