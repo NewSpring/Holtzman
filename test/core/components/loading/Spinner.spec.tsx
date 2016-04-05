@@ -21,12 +21,12 @@ describe("<Spinner /> component", () => {
     const wrapper = shallow(<Spinner theme="foobar" />);
     chai.expect(wrapper.hasClass("foobar")).to.equal(true);
   });
-  
+
   it("can have a theme that overrides defaults", () => {
     const wrapper = shallow(<Spinner theme="foobar" />);
     chai.expect(wrapper.hasClass("loader")).to.equal(false);
   });
-​
+
   it("can set independent styles", () => {
     const wrapper = shallow(<Spinner styles={{borderColor: "#fff"}} />);
     chai.expect(wrapper).to.have.style("border-color", "#fff");
