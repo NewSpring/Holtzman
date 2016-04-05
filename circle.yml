@@ -4,5 +4,4 @@ machine:
 
 test:
   pre:
-    - npm i -g tslint
-    - npm run lint
+    - npm i -g tslint typings
