@@ -1,10 +1,44 @@
-import { Component, PropTypes } from "react";
+
+import React from "react";
 import ReactDom from "react-dom";
+import Lodash from "lodash"
 
 import Label from "./components/Label"
 
-export default class Input extends Component {
+export class InputProps {
+  defaultValue: string
+  autofocus: boolean
+  value: string
+  format: Function
+  onChange: Function
+  validation: Function
+  onBlur: Function
+  status: string
+  disabled: boolean
+  errorText: string
+  style: string
+  classes: string
+  theme: string[]
+  hideLabel: boolean
+  id: string
+  name: string
+  label: string
+  ref: string
+  type: string
+  placeholder: string
+  inputClasses: string[]
+  maxLength: string
+}
 
+export default class Input extends React.Component<InputProps, {}> {
+
+  interval: number
+  _previousValue: string
+  
+  refs: {
+    [key: string]: Element;
+    "apollos-input": HTMLInputElement;
+  }
 
   state = {
     active: false,
@@ -14,21 +48,20 @@ export default class Input extends Component {
     value: null
   }
 
-  componentWillMount(){
+  componentWillMount() {
     if (this.props.defaultValue) {
       this.setState({ active: true })
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (this.props.autofocus) {
       this.refs["apollos-input"].focus()
     }
 
-
     // one day, I dream of a universal browser auto-fill event
     // until then. I'll keep on checking
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const target = ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]);
     this.interval = setInterval(() => {
 
       if (this._previousValue === target.value || !target.value) {
@@ -66,7 +99,7 @@ export default class Input extends Component {
 
   format = (e) => {
 
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const target = ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]);
     let value = this.refs["apollos-input"].value
 
     if (this.props.format && typeof(this.props.format) === "function") {
@@ -84,7 +117,7 @@ export default class Input extends Component {
 
   validate = (e) => {
 
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const target = ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]);
     const value = target.value
 
     if (!value) {
@@ -110,7 +143,7 @@ export default class Input extends Component {
 
   }
 
-  focus = (event) => {
+  focus = (event): void => {
     this.setState({
       active: true,
       error: false,
@@ -118,29 +151,31 @@ export default class Input extends Component {
     })
   }
 
-  setValue = (value) => {
-    let node = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+  setValue = (value: string): void => {
+    let node = ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]);
     node.value = value;
-    this.focus()
-    this.validate()
+    this.focus(null)
+    this.validate(null)
   }
 
-  getValue = () => {
-    return ReactDOM.findDOMNode(this.refs["apollos-input"]).value
+  getValue = (): string => {
+    return ReactDom.findDOMNode<HTMLInputElement>(this.refs["apollos-input"]).value
   }
 
 
-  setStatus = (message) => {
+  setStatus = (message: string): void => {
     this.props.status = message;
   }
 
-  disabled = () => {
+  disabled = (): boolean => {
     if (this.props.disabled) {
-      return this.props.disabled;
+      return true;
     }
+    
+    return false;
   }
 
-  renderHelpText = (message) => {
+  renderHelpText = (): JSX.Element => {
 
     if ((this.state.error && this.props.errorText) || this.state.status) {
 
@@ -158,19 +193,15 @@ export default class Input extends Component {
     let style = {}
 
     if (this.props.style) {
-      style = {...style, ...this.props.style}
+      Lodash.assign(style, this.props.style)
     }
 
     if (this.props.disabled) {
-      style = {...style, ...{
-        cursor: "inherit"
-      }}
+      Lodash.assign(style, { cursor: "inherit" })
     }
 
     return style
   }
-
-
 
   render() {
     let inputclasses = [
@@ -198,7 +229,7 @@ export default class Input extends Component {
                 labelName={
                   this.props.label || this.props.name
                 }
-                disabed={this.disabled()}
+                disabled={this.disabled()}
               />
             )
           }

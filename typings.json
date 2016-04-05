@@ -9,5 +9,11 @@
   "dependencies": {
     "chai": "registry:npm/chai#3.5.0+20160328084239",
     "chai-enzyme": "registry:npm/chai-enzyme#0.4.0+20160310114720"
+  },
+  "ambientDevDependencies": {
+    "react-dom": "registry:dt/react-dom#0.14.0+20160316155526"
+  },
+  "devDependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20160305082308"
   }
 }
