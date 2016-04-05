@@ -1,7 +1,8 @@
 machine:
   node:
-    version: 0.10.41
+    version: 4.2.1
 
 test:
   pre:
-    - npm i -g tslint typings
+    - npm i -g tslint
+    - npm i -g typings
