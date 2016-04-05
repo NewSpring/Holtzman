@@ -5,4 +5,4 @@ machine:
 test:
   pre:
     - npm i -g tslint
-    - npm i -g typings
+    - npm i -g typings && typings i
