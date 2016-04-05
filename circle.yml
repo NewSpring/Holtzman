@@ -2,7 +2,15 @@ machine:
   node:
     version: 4.2.1
 
-test:
+dependencies:
   pre:
-    - npm i -g tslint
-    - npm i -g typings && typings i
+    - npm i -g tslint typings coveralls
+    - typings i
+  cache_directories:
+    - "node_modules"
+    - "typings"
+
+test:
+  post:
+    - npm run coverage
+    - coveralls < ./coverage/lcov.info
