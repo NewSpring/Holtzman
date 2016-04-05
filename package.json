@@ -37,6 +37,7 @@
     "mocha": "^2.3.4",
     "react-addons-test-utils": "^0.14.8",
     "redux-logger": "^2.6.1",
+    "remap-istanbul": "^0.5.1",
     "tslint": "^3.7.1",
     "typescript": "^1.8.9",
     "typescript-definition-tester": "0.0.4",
