@@ -6,7 +6,7 @@ import * as ReactDom from "react-dom";
 import Label from "./components/Label";
 
 export declare interface CheckboxProps {
-  defaultValue?: string;
+  defaultValue?: boolean;
   id?: string;
   type?: string;
   status?: string;
