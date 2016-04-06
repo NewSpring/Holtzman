@@ -46,6 +46,24 @@ describe("<Select /> component", () => {
       expect(wrapper.find("select")).to.have.attr("disabled", "disabled");
     });
 
+    it("fires validation prop with default value", (done) => {
+      const theSpy = spy((value, target, e) => {
+        expect(value).to.equal("the default value");
+        done();
+      });
+
+      const wrapper = mount(<Select defaultValue="the default value" validation={theSpy} />);
+    });
+
+    it("fires change prop with default value", (done) => {
+      const theSpy = spy((value, target, e) => {
+        expect(value).to.equal("the default value");
+        done();
+      });
+
+      const wrapper = mount(<Select defaultValue="the default value" onChange={theSpy} />);
+    });
+
   });
 
   describe("events", () => {
@@ -83,9 +101,31 @@ describe("<Select /> component", () => {
       select.selectedIndex = 1;
       select.dispatchEvent(new Event("change", { bubbles: true }));
     });
+
+    it("passes a value to the validation prop", (done) => {
+
+      const validationSpy = spy((value, target, e) => {
+        expect(value).to.equal("10");
+        done();
+      });
+
+      const container = document.createElement("div");
+      document.body.appendChild(container);
+
+      let reactSelect = <Select validation={validationSpy} items={[{value: "20", label: "twenty"}, {value: "10", label: "ten"}]} />;
+
+      const wrapper = mount(reactSelect, {
+        attachTo: container
+      });
+
+      let select = container.querySelectorAll("select")[0] as HTMLSelectElement;
+      select.selectedIndex = 1;
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+    });
   });
 
   describe("methods", () => {
+
     describe("getValue", () => {
       it("gets the value of the select", () => {
         const wrapper = mount(<Select defaultValue="test" includeBlank={false} items={[{value: "test", label: "ten"}]} />);
@@ -96,6 +136,7 @@ describe("<Select /> component", () => {
         expect(getValueSpy()).to.equal("test");
       });
     });
+
     describe("focus", () => {
       it("sets the state to be \"active\" and \"focused\" and clears errors", () => {
         const wrapper = mount(<Select items={[{value: "10", label: "ten"}]} />);
@@ -113,7 +154,25 @@ describe("<Select /> component", () => {
           status: "",
         });
       });
+
+      it("sets the value to default with componentWillUpdate", () => {
+        const container = document.createElement("div");
+        document.body.appendChild(container);
+
+        let reactSelect = <Select defaultValue="20" items={[{value: "20", label: "twenty"}, {value: "10", label: "ten"}]} />;
+
+        const wrapper = mount(reactSelect, {
+          attachTo: container
+        });
+
+        wrapper.setProps({defaultValue: "10"});
+
+        let select = container.querySelectorAll("select")[0] as HTMLSelectElement;
+        expect(select.value).to.equal("10");
+      });
+
     });
+
     describe("setStatus", () => {
       it("sets the status within the state", () => {
         const wrapper = mount(<Select />);
