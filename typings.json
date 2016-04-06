@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "chai": "registry:npm/chai#3.5.0+20160328084239",
-    "chai-enzyme": "registry:npm/chai-enzyme#0.4.0+20160310114720"
+    "chai-enzyme": "registry:npm/chai-enzyme#0.4.0+20160310114720",
+    "sinon": "registry:npm/sinon#1.16.0+20160309002336"
   },
   "ambientDevDependencies": {
     "react-dom": "registry:dt/react-dom#0.14.0+20160316155526"
