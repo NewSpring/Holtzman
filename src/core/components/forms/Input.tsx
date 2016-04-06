@@ -177,7 +177,7 @@ export default class Input extends Component<InputProps, {}> {
 
   setStatus = (message: string): void => {
     this.setState({
-      status: "message",
+      status: message,
     });
   };
 

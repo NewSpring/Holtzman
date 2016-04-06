@@ -99,7 +99,7 @@ describe("<Input /> component", () => {
 
   //     expect(setValueSpy.called).to.equal(true);
   //   });
-  // });
+  });
 
   describe("events", () => {
     it("sets the state of \"focused\" on a focus event", () => {
@@ -144,7 +144,7 @@ describe("<Input /> component", () => {
         const wrapper = mount(<Input />);
         // get the instance of Input
         const inst = wrapper.instance();
-        // spy on the getValue method
+        // spy on the focus method
         const focusSpy = spy(inst, "focus");
         // go ahead and focus the component
         focusSpy();
@@ -155,6 +155,21 @@ describe("<Input /> component", () => {
           error: false,
           status: "",
         });
+      });
+    });
+    describe("setStatus", () => {
+      it("sets the status within the state", () => {
+        const wrapper = mount(<Input />);
+        // get the instance of Input
+        const inst = wrapper.instance();
+        // spy on the setStatus method
+        const setStatusSpy = spy(inst, "setStatus");
+        // share a test string for easier changes if needed
+        const testString = "this is a test";
+        // change the status
+        setStatusSpy(testString);
+        // verify the state
+        expect(wrapper.state().status).to.equal(testString);
       });
     });
   });
