@@ -4,7 +4,8 @@ import ReactDOM from "react-dom";
 
 import Label from "./components/Label";
 
-import SelectClasses from "./select.css";
+// XXX remove need of css
+// import SelectClasses from "./select.css";
 
 export declare interface SelectItem {
   value: string;
@@ -106,7 +107,7 @@ export default class Select extends Component<SelectProps, {}> {
     if (this.props.disabled) {
       return true;
     }
-    
+
     return false;
   };
 
@@ -121,7 +122,7 @@ export default class Select extends Component<SelectProps, {}> {
       );
     }
   };
-  
+
   onChange = (e: SyntheticEvent): void => {
     const { id, value } = e.currentTarget as HTMLSelectElement;
     const target = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]);
@@ -179,7 +180,7 @@ export default class Select extends Component<SelectProps, {}> {
     if (this.props.selected) inputclasses.push("input--active");
 
     return (
-      <div className={inputclasses.join(" ") + ` ${SelectClasses.select}`}>
+      <div className={inputclasses.join(" ")}>
         {(() => {
           if (!this.props.hideLabel){
             return (
