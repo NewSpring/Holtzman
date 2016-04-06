@@ -1,7 +1,7 @@
 
 import * as React from "react";
 import * as chai from "chai";
-import { shallow, mount, ShallowWrapper } from "enzyme";
+import { shallow, mount, ShallowWrapper, ReactWrapper, CommonWrapper } from "enzyme";
 import { spy } from "sinon";
 
 declare function require(name: string);
@@ -50,7 +50,56 @@ describe("<Input /> component", () => {
       const wrapper = shallow(<Input style={{color: "blue"}} />);
       expect(wrapper.find("input")).to.have.style("color", "blue");
     });
-  });
+
+    it("can focus the input on render", () => {
+      // create an emty div to render into
+      const container = document.createElement("DIV");
+      container.id = "test";
+      // add container to the DOM
+      document.body.appendChild(container);
+
+      const wrapper = mount(<Input autofocus={true} />, {
+        attachTo: container
+      });
+
+      /*
+        XXX enzyme does not currently support `input:focus`
+        so instead we do a manual lookup on the dom to find the
+        focused input.
+
+        Thanks JSDOM!
+      */
+      // bind blur event using the native dom
+      let input = container.querySelectorAll("input:focus")[0];
+      expect(input).not.be.undefined;
+
+      // destory the container since we need to keep the DOM
+      // clean for other tests
+      // http://airbnb.io/enzyme/docs/guides/jsdom.html#-describewithdom-api-and-clearing-the-document-after-every-test
+      container.remove();
+    });
+
+  //   it("can call setValue if a value is passed in", () => {
+
+  //     interface PatchWrapper extends ReactWrapper<any, {}>{
+  //       unmount(): void;
+  //       mount(): void;
+  //     }
+
+  //     // mount the first time to get access to the method
+  //     const wrapper = mount(<Input value="test" />) as PatchWrapper;
+
+  //     // get instance and spy on method
+  //     const inst = wrapper.instance();
+  //     const setValueSpy = spy(inst, "setValue");
+
+  //     // unmount and remount
+  //     wrapper.unmount();
+  //     wrapper.mount();
+
+  //     expect(setValueSpy.called).to.equal(true);
+  //   });
+  // });
 
   describe("events", () => {
     it("sets the state of \"focused\" on a focus event", () => {
