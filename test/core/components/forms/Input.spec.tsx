@@ -126,6 +126,23 @@ describe("<Input /> component", () => {
       });
       expect(focusSpy.called).to.equal(true);
     });
+
+    it("passes a value to the onChange prop", (done) => {
+
+      const value = 10;
+
+      const onChangeSpy = spy((value) => {
+        expect(value).to.equal(`${value}`);
+        done();
+      });
+
+      const wrapper = mount(<Input onChange={onChangeSpy} />);
+      wrapper.find("input").simulate("change", {
+        target: {
+          value,
+        },
+      });
+    });
   });
 
   describe("methods", () => {
