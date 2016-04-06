@@ -129,19 +129,21 @@ describe("<Input /> component", () => {
 
     it("passes a value to the onChange prop", (done) => {
 
-      const value = 10;
-
-      const onChangeSpy = spy((value) => {
-        expect(value).to.equal(`${value}`);
+      const onChangeSpy = spy((value, target, e) => {
+        expect(value).to.equal("10");
         done();
       });
 
-      const wrapper = mount(<Input onChange={onChangeSpy} />);
-      wrapper.find("input").simulate("change", {
-        target: {
-          value,
-        },
+      const container = document.createElement("div");
+      document.body.appendChild(container);
+
+      const wrapper = mount(<Input onChange={onChangeSpy} />, {
+        attachTo: container
       });
+
+      let input = container.querySelectorAll("input")[0] as HTMLInputElement;
+      input.value = "10";
+      input.dispatchEvent(new Event("input", { bubbles: true }));
     });
   });
 
