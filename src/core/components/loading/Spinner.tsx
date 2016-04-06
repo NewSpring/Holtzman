@@ -1,5 +1,5 @@
 
-import * as React from "react"
+import * as React from "react";
 import { Component, ReactElement, HTMLProps } from "react";
 
 // import Styles from "./spinner.css"
@@ -7,20 +7,20 @@ import { Component, ReactElement, HTMLProps } from "react";
 function getClasses(mergeClasses: string[]): string {
   let classes: string[] = [
     "loader"
-  ]
+  ];
 
   if (mergeClasses) {
-    classes = classes.concat(mergeClasses)
+    classes = classes.concat(mergeClasses);
   }
 
-  return classes.join(" ")
-}
+  return classes.join(" ");
+};
 
 
 export interface SpinnerProps {
-  theme?: string,
-  styles?: HTMLProps<HTMLStyleElement>,
-  classes?: string[]
+  theme?: string;
+  styles?: HTMLProps<HTMLStyleElement>;
+  classes?: Array<string>;
 }
 
 
@@ -29,6 +29,6 @@ const Spinner = ({ theme, styles, classes }: SpinnerProps) => (
       className={theme || getClasses(classes)}
       style={styles || {}}
   ></div>
-)
+);
 
-export default Spinner
+export default Spinner;
