@@ -1,5 +1,7 @@
 
-import React, { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
+// XXX figure out why enzyme needs this
+import * as React from "react";
+import { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
 import ReactDom from "react-dom";
 // XXX refactor with just lodash.assign / we get typings for lodash.assign
 import { assign } from "lodash";
@@ -11,7 +13,7 @@ export enum InputType {
   "text",
   "tel",
 };
- 
+
 export declare interface InputProps {
   defaultValue?: string;
   autofocus?: boolean; // triggers the input to focus on render
@@ -49,12 +51,12 @@ export default class Input extends Component<InputProps, {}> {
 
   private interval: number;
   private _previousValue: string;
-  
+
   refs: {
     [key: string]: Element;
     "apollos-input": HTMLInputElement;
   };
-  
+
   // static propTypes = {
   //   defaultValue: PropTypes.any,
   // }
@@ -183,7 +185,7 @@ export default class Input extends Component<InputProps, {}> {
     if (this.props.disabled) {
       return true;
     }
-    
+
     return false;
   };
 
@@ -220,12 +222,12 @@ export default class Input extends Component<InputProps, {}> {
 
     // theme overwrite
     if (this.props.theme) inputclasses = this.props.theme.split(" ");
-    
+
     // state mangaged classes
     if (this.state.active) inputclasses.push("input--active");
     if (this.state.focused) inputclasses.push("input--focused");
     if (this.state.error) inputclasses.push("input--alert");
-    
+
     // custom added classes
     if (this.props.classes) inputclasses = inputclasses.concat(this.props.classes);
 
