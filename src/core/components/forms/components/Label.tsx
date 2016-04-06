@@ -1,19 +1,17 @@
-import React from "react";
 
-function style(disabled: boolean): Object {
-  if (disabled) {
-    return {
-      cursor: "inherit"
-    };
-  }
+// XXX figure out why enzyme needs this
+import * as React from "react";
+import { HTMLProps } from "react";
 
+function style(disabled: boolean): HTMLProps<HTMLStyleElement> | any {
+  if (disabled) return { cursor: "inherit" };
   return {};
-}
+};
 
-export interface LabelProps {
-  labelFor: string,
-  labelName: string,
-  disabled?: boolean
+export declare interface LabelProps {
+  labelFor: string;
+  labelName: string;
+  disabled?: boolean;
 };
 
 const Label = ({ labelFor, labelName, disabled }: LabelProps) => (
