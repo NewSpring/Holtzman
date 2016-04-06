@@ -1,7 +1,8 @@
 
 import * as React from "react";
 import * as chai from "chai";
-import { shallow, ShallowWrapper } from "enzyme";
+import { shallow, mount, ShallowWrapper } from "enzyme";
+import { spy } from "sinon";
 
 declare function require(name: string);
 const chaiEnzyme = require("chai-enzyme");
@@ -20,7 +21,6 @@ describe("<Input /> component", () => {
        focused: false,
        error: false,
        status: "",
-       value: null,
      });
    });
 
@@ -28,11 +28,55 @@ describe("<Input /> component", () => {
      const wrapper = shallow(<Input defaultValue="test" />);
      expect(wrapper.state().active).to.equal(true);
    });
+
+   it("can set a message", () => {
+      const wrapper = shallow(<Input />);
+      wrapper.setState({ status: "this is a test" });
+      expect(wrapper.contains(
+        <span className="input__status">
+          this is a test
+        </span>
+      )).to.equal(true);
+    });
  });
 
-//  describe("props", () => {
-//    it("has the correct classname", () => {
-//   });
-//  });
+  describe("props", () => {
+    it("can set the input to be disabled", () => {
+      const wrapper = shallow(<Input disabled={true} />);
+      expect(wrapper.find("input")).to.have.style("cursor", "inherit");
+    });
+
+    it("can set styles on input", () => {
+      const wrapper = shallow(<Input style={{color: "blue"}} />);
+      expect(wrapper.find("input")).to.have.style("color", "blue");
+    });
+  });
+
+  describe("events", () => {
+    it("sets the state of \"focused\" on a focus event", () => {
+      const wrapper = shallow(<Input />);
+      expect(wrapper.state().focused).to.equal(false);
+      wrapper.find("input").simulate("focus");
+      expect(wrapper.state().focused).to.equal(true);
+    });
+
+    it("sets the state of \"active\" on a focus event", () => {
+      const wrapper = shallow(<Input />);
+      expect(wrapper.state().active).to.equal(false);
+      wrapper.find("input").simulate("focus");
+      expect(wrapper.state().active).to.equal(true);
+    });
+
+    it("sets the state of \"value\" on a change event if there is a format prop passed", () => {
+      const focusSpy = spy((value) => (value));
+      const wrapper = mount(<Input format={focusSpy} />);
+      wrapper.find("input").simulate("change", {
+        target: {
+          value: 10,
+        },
+      });
+      expect(focusSpy.called).to.equal(true);
+    });
+  });
 
 });
