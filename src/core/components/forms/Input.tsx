@@ -176,7 +176,9 @@ export default class Input extends Component<InputProps, {}> {
   };
 
   setStatus = (message: string): void => {
-    this.props.status = message;
+    this.setState({
+      status: "message",
+    });
   };
 
   disabled = (): boolean => {

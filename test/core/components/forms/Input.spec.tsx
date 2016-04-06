@@ -79,4 +79,35 @@ describe("<Input /> component", () => {
     });
   });
 
+  describe("methods", () => {
+    describe("getValue", () => {
+      it("gets the value of the input", () => {
+        const wrapper = mount(<Input defaultValue="test" />);
+        // get the instance of Input
+        const inst = wrapper.instance();
+        // spy on the getValue method
+        const getValueSpy = spy(inst, "getValue");
+        expect(getValueSpy()).to.equal("test");
+      });
+    });
+    describe("focus", () => {
+      it("sets the state to be \"active\" and \"focused\" and clears errors", () => {
+        const wrapper = mount(<Input />);
+        // get the instance of Input
+        const inst = wrapper.instance();
+        // spy on the getValue method
+        const focusSpy = spy(inst, "focus");
+        // go ahead and focus the component
+        focusSpy();
+        // verify the state
+        expect(wrapper.state()).to.deep.equal({
+          active: true,
+          focused: true,
+          error: false,
+          status: "",
+        });
+      });
+    });
+  });
+
 });
