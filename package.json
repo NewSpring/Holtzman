@@ -10,7 +10,7 @@
     "test": "mocha --require ./test/fixtures/setup.js --reporter spec --full-trace --recursive ./dist/test",
     "posttest": "npm run lint",
     "test:watch": "npm test -- --watch",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --reporter dot --full-trace --recursive ./dist/test/",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --require ./test/fixtures/setup.js --reporter dot --full-trace --recursive ./dist/test/",
     "postcoverage": "remap-istanbul --input coverage/coverage.json --type lcovonly --output coverage/lcov.info",
     "docs:clean": "rimraf _book",
     "docs:prepare": "gitbook install",
