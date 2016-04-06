@@ -19,7 +19,6 @@ export declare interface CheckboxProps {
   label?: string;
   hideLabel?: boolean;
   clicked?(value: string, element: HTMLInputElement, e: SyntheticEvent): void;
-  // validation?(value: string, element: HTMLInputElement, e: SyntheticEvent): boolean;
 };
 
 export declare interface CheckboxState {
