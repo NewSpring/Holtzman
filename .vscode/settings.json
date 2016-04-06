@@ -10,7 +10,7 @@
     "**/.DS_Store": true,
     "node_modules": true,
     "tmp": true,
-    // "dist": true,
+    "dist": true,
     "coverage": true,
     "typings": true
   }
