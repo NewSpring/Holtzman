@@ -30,6 +30,6 @@ describe("<Fieldset /> component", () => {
   it("can have extra classes passed to it", () => {
     const wrapper = shallow(<Fieldset classes={["foobar"]} />);
     expect(wrapper.hasClass("foobar")).to.equal(true);
-    expect(wrapper.hasClass("loader")).to.equal(true);
+    expect(wrapper.hasClass("flush-bottom")).to.equal(true);
   });
 });

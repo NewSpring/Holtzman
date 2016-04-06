@@ -16,11 +16,12 @@ function getClasses(mergeClasses: Array<string>): string{
 export interface FieldSetProps {
   theme?: string;
   classes?: string[];
+  children?: any;
 };
 
-const Fieldset = ({ theme, classes }: FieldSetProps) => (
+const Fieldset = ({ theme, classes, children }: FieldSetProps) => (
   <fieldset className={ theme || getClasses(classes) }>
-    {this.props.children}
+    {children}
   </fieldset>
 );
 
