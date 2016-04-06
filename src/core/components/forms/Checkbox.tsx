@@ -1,54 +1,59 @@
-import React, { PropTypes } from "react"
 
-import Label from "./components/Label"
+import * as React from "react";
+import { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
+import * as ReactDom from "react-dom";
 
-export default class Checkbox extends React.Component {
+import Label from "./components/Label";
 
-  state = {
+export declare interface CheckboxProps {
+  defaultValue?: boolean;
+  id?: string;
+  type?: string;
+  status?: string;
+  name?: string;
+  disabled?: boolean;
+  classes?: Array<string>;
+  inputClasses?: Array<string>;
+  errorText?: string;
+  theme?: string;
+  label?: string;
+  hideLabel?: boolean;
+  clicked?(value: string, element: HTMLInputElement, e: SyntheticEvent): void;
+};
+
+export declare interface CheckboxState {
+  status: boolean;
+  error: boolean;
+};
+
+export default class Checkbox extends Component<CheckboxProps, {}> {
+
+  public state: CheckboxState = {
     status: false,
-    error: false
-  }
+    error: false,
+  };
 
-  validate = (event) => {
-    const value = event.target.value;
-
-    if (!value) {
-      this.setState({
-        active: false,
-        error: false
-      })
-    }
-
-    if (this.props.validation && typeof(this.props.validation) === "function") {
-      this.setState({
-        error: !this.props.validation(value)
-      });
-
-    }
-  }
-
-  setStatus = (message) => {
+  setStatus = (message: string): void => {
     this.props.status = message;
-  }
+  };
 
-  disabled = () => {
+  disabled = (): boolean => {
     if (this.props.disabled) {
-      return disabled;
+      return true;
     }
-  }
+    return false;
+  };
 
-  renderHelpText(message) {
+  renderHelpText = (): JSX.Element => {
 
     if ((this.state.error && this.props.errorText) || this.state.status) {
-
       return (
         <span className="input__status">
           {this.props.errorText || this.state.status}
         </span>
       );
     }
-
-  }
+  };
 
   render () {
     let inputclasses = [
@@ -56,9 +61,9 @@ export default class Checkbox extends React.Component {
     ];
 
     // theme overwrite
-    if (this.props.theme) { inputclasses = this.props.theme }
+    if (this.props.theme) inputclasses = this.props.theme.split(" ");
     // state mangaged classes
-    if (this.state.status) { inputclasses.push("push-double-bottom") }
+    if (this.state.status) inputclasses.push("push-double-bottom");
 
     if (this.props.type) {
       inputclasses.push(this.props.type);
@@ -66,9 +71,9 @@ export default class Checkbox extends React.Component {
       inputclasses.push("checkbox");
     }
 
-    if (this.props.error) { inputclasses.push("input--alert") }
+    if (this.state.error) inputclasses.push("input--alert");
     // custom added classes
-    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
+    if (this.props.classes) inputclasses = inputclasses.concat(this.props.classes);
 
 
     return (
@@ -99,12 +104,14 @@ export default class Checkbox extends React.Component {
                 labelFor={
                   this.props.id || this.props.label || this.props.name
                 }
+                labelName={
+                  this.props.label || this.props.name
+                }
+                disabled={this.disabled()}
               />
             )
           }
         })()}
-
-
 
         {this.renderHelpText()}
       </div>
