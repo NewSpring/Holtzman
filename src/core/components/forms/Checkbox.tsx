@@ -34,26 +34,6 @@ export default class Checkbox extends Component<CheckboxProps, {}> {
     error: false,
   };
 
-  // What exactly would you validate a checkbox for?
-  //
-  // validate = (e: SyntheticEvent): void => {
-  //   const value = e.target.value;
-
-  //   if (!value) {
-  //     this.setState({
-  //       active: false,
-  //       error: false
-  //     })
-  //   }
-
-  //   if (this.props.validation && typeof(this.props.validation) === "function") {
-  //     this.setState({
-  //       error: !this.props.validation(value),
-  //     });
-
-  //   }
-  // };
-
   setStatus = (message: string): void => {
     this.props.status = message;
   };
