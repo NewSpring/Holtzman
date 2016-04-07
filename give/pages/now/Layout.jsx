@@ -27,6 +27,20 @@ const Layout = ({ alive, accounts }, context) => (
       </Split>
 
       <Left scroll={true} classes={["background--light-secondary"]} >
+        <div className="background--light-secondary soft-half soft-sides@portable soft-double-sides@anchored">
+
+          <div className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+            <h5 className="soft-half-sides soft-half-bottom flush-bottom">Exciting Changes to Giving!</h5>
+            <p className="soft-half-sides flush-bottom">
+              <em>
+                <small>
+                  You may notice our website looks a little different, but we’re confident our new site will make it easier and more enjoyable for you to give! If you want to know more, or are having problems giving, <a href="//newspring.cc/news/exciting-changes-to-how-you-give" target="blank">click here to read more!</a>
+                </small>
+              </em>
+           </p>
+          </div>
+
+        </div>
         <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{overflow: "visible"}}>
 
           <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
