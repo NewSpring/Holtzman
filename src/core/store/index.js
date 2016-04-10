@@ -32,7 +32,8 @@ import {
 //
 // })
 
-import { wrapper, createReduxStore } from "./redux-bindings"
+// there is an issue loading jsx from a js file
+import { wrapper, createReduxStore } from "./redux-bindings.jsx"
 import { addMiddleware, addReducer, createReducer, addSaga } from "./utilities"
 
 export {
