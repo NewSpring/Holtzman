@@ -145,14 +145,14 @@ export default createReducer(initial, {
     return assign(state, { account: action.account }) as AccountState;
   },
 
-  [types.SET_DATA]: (state: AccountState, action: Action) => {
+  [types.SET_DATA]: (state: AccountState, action: Action): AccountState => {
 
     // @TODO validation on new data
 
     return assign(state, { data: assign(state.data, action.data) }) as AccountState;
   },
 
-  [types.REMOVE_DATA]: (state: AccountState, action: Action) => {
+  [types.REMOVE_DATA]: (state: AccountState, action: Action): AccountState => {
 
     if (!action.field || state.data[action.field]) {
       return state;
@@ -161,7 +161,7 @@ export default createReducer(initial, {
     return assign(state, { data: assign(state.data, { [state.data[action.field]]: null }) }) as AccountState;
   },
 
-  [types.SET_STATE]: (state: AccountState, action: Action) => {
+  [types.SET_STATE]: (state: AccountState, action: Action): AccountState => {
 
     let stateName = action.state.trim()
     const stateTypes = [ "default", "loading", "submit", "signout" ]
@@ -179,7 +179,7 @@ export default createReducer(initial, {
     return assign(state, { state: stateName }) as AccountState;
   },
 
-  [types.SET_ERROR]: (state: AccountState, action: Action) => {
+  [types.SET_ERROR]: (state: AccountState, action: Action): AccountState => {
 
     if (!action.error) {
       return state;
@@ -188,7 +188,7 @@ export default createReducer(initial, {
     return assign(state, { errors: assign( state.errors, action.errors )}) as AccountState;
   },
 
-  [types.REMOVE_ERROR]: (state: AccountState, action: Action) => {
+  [types.REMOVE_ERROR]: (state: AccountState, action: Action): AccountState => {
 
     if (!action.error || !state.errors[action.error]) {
       return state;
@@ -199,10 +199,10 @@ export default createReducer(initial, {
     delete errors[action.error];
 
     // update the state
-    return assign(state, { errors: errors });
+    return assign(state, { errors: errors }) as AccountState;
   },
 
-  [types.SET_ERRORS]: (state: AccountState, action: Action) => {
+  [types.SET_ERRORS]: (state: AccountState, action: Action): AccountState => {
 
     return assign(state, {
       errors: assign(state.errors, action.errors)
@@ -210,7 +210,7 @@ export default createReducer(initial, {
 
   },
 
-  [types.REMOVE_ERRORS]: (state: AccountState, action: Action) => {
+  [types.REMOVE_ERRORS]: (state: AccountState, action: Action): AccountState => {
 
     return assign(state, {
       errors: {}
@@ -218,7 +218,7 @@ export default createReducer(initial, {
 
   },
 
-  [types.SET_SUCCESS]: (state: AccountState, action: Action) => {
+  [types.SET_SUCCESS]: (state: AccountState, action: Action): AccountState => {
 
     if (typeof action.success != "boolean") {
       return state
@@ -230,7 +230,7 @@ export default createReducer(initial, {
 
   },
 
-  [types.IS_AUTHORIZED]: (state: AccountState, action: Action) => {
+  [types.IS_AUTHORIZED]: (state: AccountState, action: Action): AccountState => {
 
     if (typeof action.authorized != "boolean") {
       return state
@@ -242,7 +242,7 @@ export default createReducer(initial, {
 
   },
 
-  [types.SET_PERSON]: (state: AccountState, action: Action) => {
+  [types.SET_PERSON]: (state: AccountState, action: Action): AccountState => {
 
     if (!action.person) {
       return state
@@ -263,39 +263,39 @@ export default createReducer(initial, {
 
   },
 
-  [types.SHOW_WELCOME]: (state: AccountState, action: Action) => {
+  [types.SHOW_WELCOME]: (state: AccountState, action: Action): AccountState => {
 
     return assign(state, { showWelcome: true }) as AccountState;
 
   },
 
-  [types.SET_ALTERNATE_ACCOUNTS]: (state: AccountState, action: Action) => {
+  [types.SET_ALTERNATE_ACCOUNTS]: (state: AccountState, action: Action): AccountState => {
 
     // @TODO validation on new data
 
     return assign(state, { alternateAccounts: action.alternateAccounts }) as AccountState;
   },
 
-  [types.SET_PEOPLE_WITHOUT_ACCOUNTS]: (state: AccountState, action: Action) => {
+  [types.SET_PEOPLE_WITHOUT_ACCOUNTS]: (state: AccountState, action: Action): AccountState => {
 
     // @TODO validation on new data
 
     return assign(state, { peopleWithoutAccountEmails: action.peopleWithoutAccountEmails }) as AccountState;
   },
 
-  [types.COMPLETE_ACCOUNT]: (state: AccountState, action: Action) => {
+  [types.COMPLETE_ACCOUNT]: (state: AccountState, action: Action): AccountState => {
 
     return assign(state, { resettingAccount: true }) as AccountState;
   },
 
-  [types.RESET_ACCOUNT]: (state: AccountState, action: Action) => {
+  [types.RESET_ACCOUNT]: (state: AccountState, action: Action): AccountState => {
 
     return assign(state, {
       resettingAccount: false,
       peopleWithoutAccountEmails: [],
       alternateAccounts: [],
       account: true,
-    } as AccountState);
+    }) as AccountState;
 
   }
 
