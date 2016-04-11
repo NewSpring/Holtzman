@@ -91,7 +91,7 @@ export default class SearchItem extends Component {
             </div>
           </div>
 
-          {() => {
+          {function() {
             if (this.props.item.image === "null") {
               let classes = this.bgClasses();
               classes.push(Styles["placeholder-img"]);

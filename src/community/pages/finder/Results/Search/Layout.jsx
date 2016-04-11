@@ -117,7 +117,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }, con
             deselect={true}
           />
 
-          {() => {
+          {function() {
 
             if (showError) {
               return (
@@ -130,7 +130,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }, con
             }
           }()}
 
-          {() => {
+          {function() {
 
             let btnClasses = ["one-whole"];
             if (!ready){

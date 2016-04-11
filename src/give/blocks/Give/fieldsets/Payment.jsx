@@ -309,7 +309,7 @@ export default class Payment extends Component {
 
 
         <div className="soft">
-          {() => {
+          {function() {
             if (payment.type === "ach") {
               return this.bankFields()
             } else {
@@ -317,7 +317,7 @@ export default class Payment extends Component {
             }
           }()}
 
-          {() => {
+          {function() {
             if (
               this.props.savedAccount.id === null &&
               this.props.transactionType != "guest" &&
@@ -336,7 +336,7 @@ export default class Payment extends Component {
           }()}
 
 
-          {() => {
+          {function() {
             if (
               this.state.save &&
               this.props.savedAccount.id === null &&
@@ -367,7 +367,7 @@ export default class Payment extends Component {
             Back
           </a>
 
-          {() => {
+          {function() {
             const { billing } = this.props.data
             let btnClasses = ["push-left"];
 

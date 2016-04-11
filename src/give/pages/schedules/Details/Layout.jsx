@@ -71,7 +71,7 @@ export default class Layout extends Component {
               </Link>
               <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
                 <div className="soft-double-ends@anchored">
-                  {() => {
+                  {function() {
 
                     if (!schedule) {
                       // loading
@@ -92,14 +92,14 @@ export default class Layout extends Component {
                         <h1 className="text-dark-primary">{this.monentize(schedule.details[0].amount)}</h1>
 
 
-                        {() => {
+                        {function() {
                           const detail = schedule.payment
                           if (detail && detail.accountNumber) {
                             return (
                               <h4 className="text-dark-secondary soft-half-top">
                                 {detail.accountNumber.slice(-4)}&nbsp;
 
-                                {() => {
+                                {function() {
                                   if (detail.paymentType && detail.paymentType === "ACH") {
                                     return (
                                       <AccountType width="30px" height="20px" type="Bank"/>
@@ -116,7 +116,7 @@ export default class Layout extends Component {
                           }
                         }()}
 
-                        {(() => {
+                        {(function() {
 
                           if (complete) {
                             return (

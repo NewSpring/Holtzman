@@ -106,7 +106,7 @@ export default class Layout extends Component {
           <Left scroll={true} classes={["background--light-secondary"]} ref="container">
 
 
-              {(() => {
+              {(function() {
                 if (recoverableSchedules.length) {
                   return (
                     <div className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
@@ -141,7 +141,7 @@ export default class Layout extends Component {
               </h4>
 
 
-              {() => {
+              {function() {
 
 
                 if (!Meteor.user()) {

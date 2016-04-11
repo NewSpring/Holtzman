@@ -21,7 +21,7 @@ const Layout = ({ group, join, hash, handleBack }, context) => {
           <div className="soft-sides@anchored ratio__item one-whole floating--bottom">
             <div className="floating__item text-left one-whole soft-double-sides soft-double-bottom">
               <h3 className="text-light-primary push-half-bottom">{group.name}</h3>
-              {() => {
+              {function() {
                 if (leaders.length) {
                   return (
                     <div>
@@ -88,7 +88,7 @@ const Layout = ({ group, join, hash, handleBack }, context) => {
                   </h5>
                 </div>
 
-                {() => {
+                {function() {
                   if (group.locations && group.locations.length) {
                     let loc = group.locations[0]
                     return (

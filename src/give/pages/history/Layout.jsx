@@ -182,7 +182,7 @@ export default class Layout extends Component {
 
 
           <div className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable" ref="history">
-            {() => {
+            {function() {
 
               // if (!alive) {
               //   return <Offline />

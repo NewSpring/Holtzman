@@ -4,7 +4,7 @@ import { Motion, spring, presets } from "react-motion";
 
 import { modal as modalActions, nav as navActions } from "../../store"
 
-import Modal from "./Modal.jsx"
+import Modal from "./Modal"
 import offset from "../../blocks/nav/offset.css"
 import styles from "./modal.css"
 

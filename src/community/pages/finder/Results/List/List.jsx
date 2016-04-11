@@ -99,7 +99,7 @@ const List = ({
       <div className="one-whole text-center soft-double-top soft-bottom">
 
         <div>
-          {() => {
+          {function() {
           let btnClasses = ["btn--dark-tertiary", "one-whole@handheld", "push-bottom"];
 
           if (done) {

@@ -188,7 +188,7 @@ export default class TextArea extends Component {
 
     return (
       <div className={inputclasses.join(" ")} style={this.props.style || {}}>
-        {(() => {
+        {(function() {
           if (!this.props.hideLabel){
             return (
               <Label

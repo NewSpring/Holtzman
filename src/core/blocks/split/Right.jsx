@@ -112,12 +112,12 @@ export default class Right extends Component {
   renderOutSideRatio(){
     return (
       <div>
-        {() => {
+        {function() {
           if (this.props.outsideRatio) {
             return this.props.outsideRatio()
           }
         }()}
-        {() => {
+        {function() {
           let styles = this.styles()
 
           styles = {...styles, ...{

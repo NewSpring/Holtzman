@@ -117,7 +117,7 @@ export default class Layout extends Component {
               <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
             </Link>
 
-            {(() => {
+            {(function() {
               let count = 0
               if (recoverableSchedules.length) {
                 return (
@@ -195,7 +195,7 @@ export default class Layout extends Component {
                             </div>
 
 
-                            {() => {
+                            {function() {
                               if (Number(schedule.id) === this.state.expandedSchedule) {
                                 return (
                                   <div className="text-light-primary soft outlined--light outlined--top flush one-whole">

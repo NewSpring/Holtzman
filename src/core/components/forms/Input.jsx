@@ -3,14 +3,15 @@ import ReactDom from "react-dom";
 
 import Label from "./components/Label"
 
-export default class File extends Component {
+export default class Input extends Component {
 
 
   state = {
     active: false,
     focused: false,
     error: false,
-    status: ""
+    status: "",
+    value: null
   }
 
   componentWillMount(){
@@ -23,12 +24,42 @@ export default class File extends Component {
     if (this.props.autofocus) {
       this.refs["apollos-input"].focus()
     }
+
+
+    // one day, I dream of a universal browser auto-fill event
+    // until then. I'll keep on checking
+    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    this.interval = setInterval(() => {
+
+      if (this._previousValue === target.value || !target.value) {
+        return
+      }
+
+      if (!this._previousValue && target.value && !this.state.focused) {
+        this.setValue(target.value)
+      }
+
+      this._previousValue = target.value;
+
+    }, 20)
+
+    // set value on re-render
+    if (this.props.value) {
+      this.setValue(`$${this.props.value}`);
+    }
+
   }
 
   componentWillUpdate(nextProps){
     if (this.props.defaultValue != nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue)
       this.setState({focused: false})
+    }
+  }
+
+  componentWillUnmount(){
+    if (this.interval) {
+      clearInterval(this.interval)
     }
   }
 
@@ -44,9 +75,14 @@ export default class File extends Component {
       target.value = newValue;
 
     }
+
+    if (this.props.onChange && typeof(this.props.onChange) === "function" ) {
+      this.props.onChange(target.value, target, e)
+    }
+
   }
 
-  validate = () => {
+  validate = (e) => {
 
     const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
     const value = target.value
@@ -64,10 +100,14 @@ export default class File extends Component {
 
     if (this.props.validation && typeof(this.props.validation) === "function") {
       this.setState({
-        error: !this.props.validation(value, target)
+        error: !this.props.validation(value, target, e)
       });
-
     }
+
+    if (this.props.onBlur && typeof(this.props.onBlur) === "function") {
+      this.props.onBlur(value, target, e)
+    }
+
   }
 
   focus = (event) => {
@@ -114,13 +154,20 @@ export default class File extends Component {
   }
 
   style = () => {
-    if (this.props.disabled) {
-      return {
-        cursor: "inherit"
-      }
+
+    let style = {}
+
+    if (this.props.style) {
+      style = {...style, ...this.props.style}
     }
 
-    return {}
+    if (this.props.disabled) {
+      style = {...style, ...{
+        cursor: "inherit"
+      }}
+    }
+
+    return style
   }
 
 
@@ -161,7 +208,7 @@ export default class File extends Component {
         <input
           ref="apollos-input"
           id={this.props.id || this.props.ref || this.props.name || this.props.label}
-          type="file"
+          type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }
           className={this.props.inputClasses}
@@ -171,8 +218,10 @@ export default class File extends Component {
           onChange={this.format}
           defaultValue={this.props.defaultValue}
           style={this.style()}
-          {...this.props}
+          maxLength={this.props.maxLength || ""}
         />
+
+        {this.props.children}
 
         {this.renderHelpText()}
 

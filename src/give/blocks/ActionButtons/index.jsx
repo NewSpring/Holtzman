@@ -285,7 +285,7 @@ export default class GiveNow extends Component {
             style={this.props.style || {}}
             dataId={this.props.dataId}
           />
-          {() => {
+          {function() {
             if (!this.props.authorized && !Meteor.userId()) {
               return (
                 <SecondaryButton

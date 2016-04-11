@@ -137,7 +137,7 @@ class ForgotPassword extends React.Component {
           Back
         </a>
 
-        {() => {
+        {function() {
           let btnClasses = ["push-left"];
           if (Object.keys(this.props.errors).length){
             btnClasses.push("btn--disabled");

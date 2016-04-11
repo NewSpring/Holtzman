@@ -14,7 +14,7 @@ const Success = ({ total, email, guest, onClick, schedules }) => {
       <div className="push-double-top">
         <SuccessIcon />
         <h3 className="text-primary push-ends">Success!</h3>
-        {() => {
+        {function() {
           if (schedule) {
             return (
               <p className="text-left">
@@ -30,7 +30,7 @@ const Success = ({ total, email, guest, onClick, schedules }) => {
           )
         }()}
 
-        {() => {
+        {function() {
           if (guest) {
             return (
               <div>

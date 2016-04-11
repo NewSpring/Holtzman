@@ -45,7 +45,7 @@ const Layout = ({ alive, accounts }, context) => (
 
           <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
             <div className="soft-double-ends@anchored">
-              {() => {
+              {function() {
 
                 if (!alive) {
                   return <Offline />
@@ -80,7 +80,7 @@ const Layout = ({ alive, accounts }, context) => (
           </h4>
           <div className="grid">
 
-            {(() => {
+            {(function() {
 
               if (!alive) { return null }
 

@@ -184,7 +184,7 @@ export default class Menu extends Component {
   render() {
     return (
       <div className="background--light-secondary soft-double-bottom soft-double-sides@lap-and-up">
-        {() => {
+        {function() {
           if (Meteor.isCordova) {
             return <Header />
           }

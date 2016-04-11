@@ -163,7 +163,7 @@ export default class Card extends Component {
         className={theme || this.cardClasses()}
         style={styles || this.styles() }
         >
-        {() => {
+        {function() {
           if (link) {
             return (
               <Link className={wrapperClasses} to={link}>

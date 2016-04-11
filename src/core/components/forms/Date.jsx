@@ -103,7 +103,7 @@ export default class DateComponent extends Component {
         </div>
 
 
-        {(()=>{
+        {(function() {
           if (this.state.showDatePicker) {
             return (
               <div id="datepicker">
