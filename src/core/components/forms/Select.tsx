@@ -1,5 +1,7 @@
-import React, { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
-import ReactDOM from "react-dom";
+
+import * as React from "react";
+import { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
+import * as ReactDom from "react-dom";
 // import ReactSelect from "react-select";
 
 import Label from "./components/Label";
@@ -13,26 +15,26 @@ export declare interface SelectItem {
 };
 
 export declare interface SelectProps {
-  defaultValue: string;
+  defaultValue?: string;
   onChange?(value: string, element: HTMLSelectElement, e: SyntheticEvent): void;
   validation?(value: string, element: HTMLSelectElement, e: SyntheticEvent): boolean;
-  status: string;
-  disabled: boolean;
-  errorText: string;
-  theme: string;
-  classes: Array<string>;
-  selected: boolean;
-  hideLabel: boolean;
-  id: string;
-  label: string;
-  name: string;
+  status?: string;
+  disabled?: boolean;
+  errorText?: string;
+  theme?: string;
+  classes?: Array<string>;
+  selected?: boolean;
+  hideLabel?: boolean;
+  id?: string;
+  label?: string;
+  name?: string;
   ref?: string;
   placeholder?: string;
   inputClasses?: Array<string>;
-  includeBlank: boolean;
-  deselect: boolean;
-  items: Array<SelectItem>;
-  optionClasses: Array<string>;
+  includeBlank?: boolean;
+  deselect?: boolean;
+  items?: Array<SelectItem>;
+  optionClasses?: Array<string>;
 };
 
 export declare interface SelectState {
@@ -59,7 +61,7 @@ export default class Select extends Component<SelectProps, {}> {
 
   componentDidMount() {
     if (this.props.defaultValue) {
-      const target = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"])
+      const target = ReactDom.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"])
 
       if (this.props.onChange) {
         this.props.onChange(this.props.defaultValue, target, null)
@@ -75,8 +77,15 @@ export default class Select extends Component<SelectProps, {}> {
     if (this.props.defaultValue != nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue)
       this.setState({focused: false})
-      const target = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"])
-      this.change(target.id, nextProps.defaultValue, target, null);
+      const target = ReactDom.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"])
+
+      if (this.props.onChange) {
+        this.props.onChange(nextProps.defaultValue, target, null);
+      }
+
+      if (this.props.validation) {
+        this.props.validation(nextProps.defaultValue, target, null)
+      }
     }
   };
 
@@ -89,18 +98,20 @@ export default class Select extends Component<SelectProps, {}> {
   };
 
   setValue = (value: string): void => {
-    let node = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]);
+    let node = ReactDom.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]);
     node.value = value;
     this.focus()
     // this.change()
   };
 
   getValue = (): string => {
-    return ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]).value
+    return ReactDom.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]).value
   };
 
   setStatus = (message: string): void => {
-    this.props.status = message;
+    this.setState({
+      status: message,
+    });
   };
 
   disabled = (): boolean => {
@@ -123,13 +134,10 @@ export default class Select extends Component<SelectProps, {}> {
     }
   };
 
-  onChange = (e: SyntheticEvent): void => {
+  onChangeEvent = (e: SyntheticEvent): void => {
     const { id, value } = e.currentTarget as HTMLSelectElement;
-    const target = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]);
-    this.change(id, value, target, null);
-  };
+    const target = ReactDom.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]);
 
-  change = (id: string, value: string, target: HTMLSelectElement, e: SyntheticEvent): void => {
     if (this.props.onChange) {
       this.props.onChange(value, target, e);
     }
@@ -140,19 +148,19 @@ export default class Select extends Component<SelectProps, {}> {
   };
 
   validate = () => {
-    const target = ReactDOM.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]);
-    const value = target.value
+    const target = ReactDom.findDOMNode<HTMLSelectElement>(this.refs["apollos-select"]);
+    const value = target.value;
 
     if (!value) {
       this.setState({
         active: false,
         error: false
-      })
+      });
     }
 
     this.setState({
       focused: false
-    })
+    });
 
     if (this.props.validation && typeof(this.props.validation) === "function") {
       this.setState({
@@ -207,36 +215,40 @@ export default class Select extends Component<SelectProps, {}> {
           className={this.props.inputClasses}
           disabled={this.disabled()}
           onFocus={this.focus}
-          onChange={this.change}
+          onChange={this.onChangeEvent}
           defaultValue={this.props.defaultValue}
           value={this.props.selected}
 
         >
-          {function () {
+          {(() => {
             if (this.props.placeholder || this.props.includeBlank) {
               return (
                 <option style={{display:"none"}}>{this.props.placeholder || ""}</option>
               )
             }
-          }()}
-          {function () {
+          })()}
+          {(() => {
             if (this.props.deselect) {
               return (
                 <option></option>
               )
             }
-          }()}
-          {this.props.items.map((option, key) => {
-            return (
-              <option
-                className={this.props.optionClasses}
-                value={option.value  || option.label}
-                key={key}
-              >
-                {option.label || option.value}
-              </option>
-            )
-          })}
+          })()}
+          {(() => {
+            if(this.props.items) {
+              return this.props.items.map((option, key) => {
+                return (
+                  <option
+                    className={this.props.optionClasses}
+                    value={option.value  || option.label}
+                    key={key}
+                  >
+                    {option.label || option.value}
+                  </option>
+                );
+              })
+            }
+          })()}
         </select>
 
 
