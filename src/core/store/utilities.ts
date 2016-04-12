@@ -1,8 +1,5 @@
 
-export interface Action {
-  type: string
-};
-
+export type Action = any;
 export interface State extends Object {};
 export type Reducer = (state: State, action: Action) => State;
 export type Middleware = {};
@@ -36,7 +33,7 @@ const addReducer = (obj: { [key: string]: Function }): { [key: string]: Function
   return obj;
 };
 
-const createReducer = (initialState: State, (handlers: { [key: string]: Handler })): Reducer => {
+const createReducer = (initialState: State, handlers: { [key: string]: (State, Action) => State }): Reducer => {
 
   return (state = initialState, action: Action) => {
     // better than switch statement
