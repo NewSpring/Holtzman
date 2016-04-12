@@ -6,7 +6,7 @@ import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
 
 import inAppLink from "../../util/inAppLink"
 
-import Styles from "./styles"
+import Styles from "./styles.css"
 
 export default class SearchItem extends Component {
 

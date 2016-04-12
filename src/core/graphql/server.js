@@ -1,4 +1,4 @@
-const Future = Npm.require("fibers/future");
+import { future } from "fibers"
 
 
 Meteor.methods({
@@ -12,7 +12,7 @@ Meteor.methods({
     }}
 
     const payload = { query, variables, operationName };
-    const f = new Future();
+    const f = new future();
 
     fetch(Meteor.settings.heighliner, {
         method: "POST",

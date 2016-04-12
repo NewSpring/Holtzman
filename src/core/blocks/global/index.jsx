@@ -14,7 +14,7 @@ import {
   campuses as campusActions,
 } from "../../store"
 
-import Styles from "./Styles"
+import Styles from "./Styles.css"
 
 const Watermark = () => (
   <div className={Styles["global-watermark"]}>

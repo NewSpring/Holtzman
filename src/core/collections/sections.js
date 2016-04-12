@@ -1,4 +1,4 @@
 /*global Mongo*/
-const Sections = new Mongo.Collection("sections")
+// const Sections = new Mongo.Collection("sections")
 
-export default Sections
+// export default Sections
