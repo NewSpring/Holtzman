@@ -1,9 +1,9 @@
+import { assign } from "lodash";
 
-
-const savedAccount = (state, action) => {
+const savedAccount = (state: any, action: any): any => {
 
   if (!action.savedAccount && action.savedAccount != "clear") {
-    return state
+    return state;
   }
 
   if (action.savedAccount === "clear") {
@@ -14,14 +14,12 @@ const savedAccount = (state, action) => {
         paymentType: null, // type of card
       },
       name: null, // name of card
-    }
+    };
   }
 
-  return { ...state, ...{
-    savedAccount: action.savedAccount
-  } }
-}
+  return assign(state, { savedAccount: action.savedAccount });
+};
 
-export default {
+export {
   savedAccount
-}
+};
