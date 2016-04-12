@@ -32,7 +32,7 @@ import {
 // })
 
 import { wrapper, createReduxStore } from "./redux-bindings"
-import { addMiddleware, addReducer, createReducer, addSaga } from "./utilities"
+import { addMiddleware, addReducer, createReducer, addSaga, State } from "./utilities"
 
 export {
   campuses,
@@ -56,6 +56,7 @@ export {
 
   addReducer,
   createReducer,
+  State,
 
   addSaga,
   take,
