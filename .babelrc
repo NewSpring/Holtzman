@@ -1,6 +1,7 @@
 {
 
   "presets": [
+    "meteor",
     "es2015-loose",
     "stage-0",
     "react",
@@ -9,22 +10,7 @@
   "plugins": [
     "transform-decorators-legacy",
     "css-modules-transform",
-  ],
+    "add-module-exports",
+  ]
 
-  "env": {
-    "development": {
-      "plugins": [
-        ["react-transform", {
-          "transforms": [{
-            "transform": "react-transform-hmr",
-            "imports": ["react"],
-            "locals": ["module"]
-          }, {
-            "transform": "react-transform-catch-errors",
-            "imports": ["react", "redbox-react"]
-          }]
-        }]
-      ]
-    }
-  }
 }
