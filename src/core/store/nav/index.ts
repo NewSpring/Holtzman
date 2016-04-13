@@ -25,16 +25,14 @@
 
 
 */
-import reducer from "./reducer"
-import { addReducer } from "../utilities"
+import reducer from "./reducer";
+import { addReducer } from "../utilities";
 
 addReducer({
   nav: reducer
-})
+});
 
 export default {
-  reducer,
-
   setLevel: (level) => ({ type: "NAV.SET_LEVEL", level }),
   reset: () => ({ type: "NAV.SET_LEVEL", level: "TOP" }),
 
@@ -43,4 +41,4 @@ export default {
 
   hide: () => ({ type: "NAV.SET_VISIBILITY", visible: false }),
   show: () => ({ type: "NAV.SET_VISIBILITY", visible: true })
-}
+};
