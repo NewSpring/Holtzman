@@ -39,7 +39,7 @@
     "redux-logger": "^2.6.1"
   },
   "dependencies": {
-    "apollo-client": "0.0.3",
+    "apollo-client": "git+https://github.com/NewSpring/apollo-client.git#self-fix",
     "google-map-react": "^0.10.5",
     "liquid-node": "git+https://github.com/NewSpring/liquid-node.git",
     "lodash.assign": "^4.0.6",
