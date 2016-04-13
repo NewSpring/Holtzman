@@ -6,28 +6,28 @@
 import { assign, includes, without, union } from "lodash";
 import { State, createReducer } from "../utilities";
 
-export interface Likes {
+export interface LikedState {
   likes: Array<any>;
 };
 
-const initial: Likes = {
+const initial: LikedState = {
   likes: []
 };
 
 export default createReducer(initial, {
 
-  ["LIKED.TOGGLE"]: (state: Likes, action: any): Likes => {
+  ["LIKED.TOGGLE"]: (state: LikedState, action: any): LikedState => {
     const entryId = action.props.entryId;
     const previousLikes = state.likes;
     const nextLikes = includes(previousLikes, entryId) ?
       without(previousLikes, entryId) :
       union(previousLikes, [entryId]);
 
-    return assign( state, { likes: nextLikes }) as Likes;
+    return assign( state, { likes: nextLikes }) as LikedState;
   },
 
-  ["LIKED.SET"]: (state: Likes, action: any): Likes => {
-    return assign(state, { likes: action.content }) as Likes;
+  ["LIKED.SET"]: (state: LikedState, action: any): LikedState => {
+    return assign(state, { likes: action.content }) as LikedState;
   }
 
 });
