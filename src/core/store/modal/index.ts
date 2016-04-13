@@ -16,12 +16,12 @@
     change type of modal to render (default is side)
 
 */
-import reducer from "./reducer"
-import { addReducer } from "../utilities"
+import reducer from "./reducer";
+import { State, addReducer } from "../utilities";
 
 addReducer({
   modal: reducer
-})
+});
 
 export default {
   reducer,
@@ -35,4 +35,4 @@ export default {
 
   changeTo: (state) => ({ type: "MODAL.SET_TYPE", state })
 
-}
+};
