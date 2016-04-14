@@ -11,8 +11,8 @@ import { createReducer, State, Action } from "../utilities";
 import types from "./types";
 
 export interface Campus {
-  name: string,
-  shortcode: string
+  name: string;
+  shortcode: string;
 };
 
 export interface Location {
@@ -53,7 +53,7 @@ export enum AccountStateEnum {
   default,
   submit,
   signout,
-  loading
+  loading,
 };
 
 export interface AccountState extends State {
@@ -70,7 +70,7 @@ export interface AccountState extends State {
   data: AccountData;
   state: AccountStateEnum;
   attempts: number;
-  errors: { [key: number]: string }
+  errors: { [key: number]: string };
 };
 
 const initial: AccountState = {
@@ -90,7 +90,7 @@ const initial: AccountState = {
     birthdate: null, // Date
     campus: {
       name: null, // String
-      shortcode: null // String
+      shortcode: null, // String
     },
     email: null, // String
     home: {
@@ -100,13 +100,13 @@ const initial: AccountState = {
       zip: null, // String
       state: null, // String
       street1: null, // String
-      street2: null // String
+      street2: null, // String
     },
     firstName: null, // String
     lastName: null, // String
     nickName: null, // String
     phoneNumbers: [],
-    photo: null // String
+    photo: null, // String
   },
 
   data: {
@@ -115,13 +115,13 @@ const initial: AccountState = {
     terms: true, // String,
     firstName: null, // String
     lastName: null, // String
-    personId: null // Number
+    personId: null, // Number
   },
 
   state: AccountStateEnum.default,
 
   attempts: 0,
-  errors: {}
+  errors: {},
 };
 
 
@@ -129,7 +129,7 @@ export default createReducer(initial, {
 
   [types.SET_FORGOT]: (state: AccountState, action: Action): AccountState => {
 
-    if (typeof action.forgot != "boolean") {
+    if (typeof action.forgot !== "boolean") {
       return state;
     }
 
@@ -138,7 +138,7 @@ export default createReducer(initial, {
 
   [types.SET_ACCOUNT_STATUS]: (state: AccountState, action: Action): AccountState => {
 
-    if (typeof action.account != "boolean") {
+    if (typeof action.account !== "boolean") {
       return state;
     }
 
@@ -163,17 +163,17 @@ export default createReducer(initial, {
 
   [types.SET_STATE]: (state: AccountState, action: Action): AccountState => {
 
-    let stateName = action.state.trim()
-    const stateTypes = [ "default", "loading", "submit", "signout" ]
+    let stateName = action.state.trim();
+    const stateTypes = [ "default", "loading", "submit", "signout" ];
 
     if (stateTypes.indexOf(stateName) === -1) {
       return state;
     }
 
     if (stateName === "signout") {
-      state.authorized = false
-      stateName = "default"
-      state.person = initial.person
+      state.authorized = false;
+      stateName = "default";
+      state.person = initial.person;
     }
 
     return assign(state, { state: stateName }) as AccountState;
@@ -205,7 +205,7 @@ export default createReducer(initial, {
   [types.SET_ERRORS]: (state: AccountState, action: Action): AccountState => {
 
     return assign(state, {
-      errors: assign(state.errors, action.errors)
+      errors: assign(state.errors, action.errors),
     }) as AccountState;
 
   },
@@ -213,31 +213,31 @@ export default createReducer(initial, {
   [types.REMOVE_ERRORS]: (state: AccountState, action: Action): AccountState => {
 
     return assign(state, {
-      errors: {}
+      errors: {},
     }) as AccountState;
 
   },
 
   [types.SET_SUCCESS]: (state: AccountState, action: Action): AccountState => {
 
-    if (typeof action.success != "boolean") {
-      return state
+    if (typeof action.success !== "boolean") {
+      return state;
     }
 
     return assign(state, {
-      success: action.success
+      success: action.success,
     }) as AccountState;
 
   },
 
   [types.IS_AUTHORIZED]: (state: AccountState, action: Action): AccountState => {
 
-    if (typeof action.authorized != "boolean") {
-      return state
+    if (typeof action.authorized !== "boolean") {
+      return state;
     }
 
     return assign(state, {
-      authorized: action.authorized
+      authorized: action.authorized,
     }) as AccountState;
 
   },
@@ -245,7 +245,7 @@ export default createReducer(initial, {
   [types.SET_PERSON]: (state: AccountState, action: Action): AccountState => {
 
     if (!action.person) {
-      return state
+      return state;
     }
 
     if (!action.person.Home) {
@@ -258,7 +258,7 @@ export default createReducer(initial, {
 
     return assign(state, {
       person: action.person,
-      authorized: true
+      authorized: true,
     }) as AccountState;
 
   },
@@ -297,6 +297,6 @@ export default createReducer(initial, {
       account: true,
     }) as AccountState;
 
-  }
+  },
 
 });

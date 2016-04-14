@@ -11,29 +11,31 @@ const reducers: { [key: string]: Function } = {};
 const addReducer = (obj: { [key: string]: Function }): { [key: string]: Function } => {
 
   for (let name in obj) {
-    let handler = obj[name];
+    if (obj.hasOwnProperty(name)) {
+      let handler = obj[name];
 
-    if (reducers[name]) {
-      throw new Meteor.Error(
-        "Reducer assigned",
-        `reducers function ${name} is already registered`
-      );
+      if (reducers[name]) {
+        throw new Meteor.Error(
+          "Reducer assigned",
+          `reducers function ${name} is already registered`
+        );
+      }
+
+      if (!handler || typeof(handler) !== "function") {
+        throw new Meteor.Error(
+          "Reducer TypeError",
+          `Reducer ${name} requires a function`
+        );
+      }
+
+      reducers[name] = handler;
     }
-
-    if (!handler || typeof(handler) != "function") {
-      throw new Meteor.Error(
-        "Reducer TypeError",
-        `Reducer ${name} requires a function`
-      );
-    }
-
-    reducers[name] = handler;
   }
 
   return obj;
 };
 
-const createReducer = (initialState: State, handlers: { [key: string]: (State, Action) => State }): Reducer => {
+const createReducer = (initialState: State, handlers: { [key: string]: (state: State, action: Action) => State }): Reducer => {
 
   return (state = initialState, action: Action) => {
     // better than switch statement
@@ -42,7 +44,7 @@ const createReducer = (initialState: State, handlers: { [key: string]: (State, A
     } else {
       return state;
     }
-  }
+  };
 };
 
 // stored middlewares for use with other packages
