@@ -5,7 +5,7 @@
 
 
 */
-import { assign } from "lodash";
+import { assign, cloneDeep } from "lodash";
 
 import { createReducer, State, Action } from "../utilities";
 import types from "./types";
@@ -133,7 +133,7 @@ export default createReducer(initial, {
       return state;
     }
 
-    return assign(state, { forgot: action.forgot }) as AccountState;
+    return assign(cloneDeep(state), { forgot: action.forgot }) as AccountState;
   },
 
   [types.SET_ACCOUNT_STATUS]: (state: AccountState, action: Action): AccountState => {
@@ -142,14 +142,14 @@ export default createReducer(initial, {
       return state;
     }
 
-    return assign(state, { account: action.account }) as AccountState;
+    return assign(cloneDeep(state), { account: action.account }) as AccountState;
   },
 
   [types.SET_DATA]: (state: AccountState, action: Action): AccountState => {
 
     // @TODO validation on new data
 
-    return assign(state, { data: assign(state.data, action.data) }) as AccountState;
+    return assign(cloneDeep(state), { data: assign(state.data, action.data) }) as AccountState;
   },
 
   [types.REMOVE_DATA]: (state: AccountState, action: Action): AccountState => {
@@ -158,7 +158,7 @@ export default createReducer(initial, {
       return state;
     }
 
-    return assign(state, { data: assign(state.data, { [state.data[action.field]]: null }) }) as AccountState;
+    return assign(cloneDeep(state), { data: assign(state.data, { [state.data[action.field]]: null }) }) as AccountState;
   },
 
   [types.SET_STATE]: (state: AccountState, action: Action): AccountState => {
@@ -176,7 +176,7 @@ export default createReducer(initial, {
       state.person = initial.person;
     }
 
-    return assign(state, { state: stateName }) as AccountState;
+    return assign(cloneDeep(state), { state: stateName }) as AccountState;
   },
 
   [types.SET_ERROR]: (state: AccountState, action: Action): AccountState => {
@@ -185,7 +185,7 @@ export default createReducer(initial, {
       return state;
     }
 
-    return assign(state, { errors: assign( state.errors, action.errors )}) as AccountState;
+    return assign(cloneDeep(state), { errors: assign( state.errors, action.errors )}) as AccountState;
   },
 
   [types.REMOVE_ERROR]: (state: AccountState, action: Action): AccountState => {
@@ -199,12 +199,12 @@ export default createReducer(initial, {
     delete errors[action.error];
 
     // update the state
-    return assign(state, { errors: errors }) as AccountState;
+    return assign(cloneDeep(state), { errors: errors }) as AccountState;
   },
 
   [types.SET_ERRORS]: (state: AccountState, action: Action): AccountState => {
 
-    return assign(state, {
+    return assign(cloneDeep(state), {
       errors: assign(state.errors, action.errors),
     }) as AccountState;
 
@@ -212,7 +212,7 @@ export default createReducer(initial, {
 
   [types.REMOVE_ERRORS]: (state: AccountState, action: Action): AccountState => {
 
-    return assign(state, {
+    return assign(cloneDeep(state), {
       errors: {},
     }) as AccountState;
 
@@ -224,7 +224,7 @@ export default createReducer(initial, {
       return state;
     }
 
-    return assign(state, {
+    return assign(cloneDeep(state), {
       success: action.success,
     }) as AccountState;
 
@@ -236,7 +236,7 @@ export default createReducer(initial, {
       return state;
     }
 
-    return assign(state, {
+    return assign(cloneDeep(state), {
       authorized: action.authorized,
     }) as AccountState;
 
@@ -256,7 +256,7 @@ export default createReducer(initial, {
       action.person.Campus = initial.person.campus;
     }
 
-    return assign(state, {
+    return assign(cloneDeep(state), {
       person: action.person,
       authorized: true,
     }) as AccountState;
@@ -265,7 +265,7 @@ export default createReducer(initial, {
 
   [types.SHOW_WELCOME]: (state: AccountState, action: Action): AccountState => {
 
-    return assign(state, { showWelcome: true }) as AccountState;
+    return assign(cloneDeep(state), { showWelcome: true }) as AccountState;
 
   },
 
@@ -273,24 +273,24 @@ export default createReducer(initial, {
 
     // @TODO validation on new data
 
-    return assign(state, { alternateAccounts: action.alternateAccounts }) as AccountState;
+    return assign(cloneDeep(state), { alternateAccounts: action.alternateAccounts }) as AccountState;
   },
 
   [types.SET_PEOPLE_WITHOUT_ACCOUNTS]: (state: AccountState, action: Action): AccountState => {
 
     // @TODO validation on new data
 
-    return assign(state, { peopleWithoutAccountEmails: action.peopleWithoutAccountEmails }) as AccountState;
+    return assign(cloneDeep(state), { peopleWithoutAccountEmails: action.peopleWithoutAccountEmails }) as AccountState;
   },
 
   [types.COMPLETE_ACCOUNT]: (state: AccountState, action: Action): AccountState => {
 
-    return assign(state, { resettingAccount: true }) as AccountState;
+    return assign(cloneDeep(state), { resettingAccount: true }) as AccountState;
   },
 
   [types.RESET_ACCOUNT]: (state: AccountState, action: Action): AccountState => {
 
-    return assign(state, {
+    return assign(cloneDeep(state), {
       resettingAccount: false,
       peopleWithoutAccountEmails: [],
       alternateAccounts: [],
