@@ -211,4 +211,176 @@ describe("core/store/accounts/reducer", () => {
 
   });
 
+  describe("ACCOUNTS.SET_STATE", () => {
+
+    it("ignores bad state values", () => {
+      let oldState = { state: "the old state" };
+      let action = { type: "ACCOUNTS.SET_STATE", state: null };
+      let newState = reducer(oldState, action) as AccountState;
+      assert.equal(newState.state, "the old state");
+      assert.equal(oldState.state, "the old state");
+
+      oldState = { state: "the old state" };
+      action = { type: "ACCOUNTS.SET_STATE", state: "drew" };
+      newState = reducer(oldState, action) as AccountState;
+      assert.equal(newState.state, "the old state");
+      assert.equal(oldState.state, "the old state");
+
+      oldState = { state: "the old state" };
+      action = { type: "ACCOUNTS.SET_STATE", state: "LOADING" };
+      newState = reducer(oldState, action) as AccountState;
+      assert.equal(newState.state, "the old state");
+      assert.equal(oldState.state, "the old state");
+    });
+
+    it("allows trimmable whitespace in state", () => {
+      let oldState = { state: "the old state" };
+      let action = { type: "ACCOUNTS.SET_STATE", state: "  submit  " };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.state, "the old state");
+      assert.equal(newState.state, "submit");
+    });
+
+    it("sets additional things for signout", () => {
+      let oldState = {
+        state: "the old state",
+        authorized: true,
+        person: { age: 50, firstName: "old first name" },
+      };
+      let action = { type: "ACCOUNTS.SET_STATE", state: "signout" };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.state, "the old state");
+      assert.equal(oldState.authorized, true);
+      assert.equal(oldState.person.age, 50);
+      assert.equal(oldState.person.firstName, "old first name");
+
+      assert.equal(newState.state, "default");
+      assert.equal(newState.authorized, false);
+      assert.equal(newState.person.age, null);
+      assert.equal(newState.person.firstName, null);
+    });
+
+  });
+
+  describe("ACCOUNTS.SET_ERROR", () => {
+    it("ignores actions with no error", () => {
+      let oldState = {
+        errors: {
+          errorA: "A",
+          errorB: "B",
+        },
+      };
+      let action = { type: "ACCOUNTS.SET_ERROR", error: null };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.errors["errorA"], "A");
+      assert.equal(oldState.errors["errorB"], "B");
+      assert.equal(Object.keys(oldState.errors).length, 2);
+
+      assert.equal(newState.errors["errorA"], "A");
+      assert.equal(newState.errors["errorB"], "B");
+      assert.equal(Object.keys(newState.errors).length, 2);
+    });
+
+    it("adds error", () => {
+      let oldState = {
+        errors: {
+          errorA: "A",
+          errorB: "B",
+        },
+      };
+      let action = { type: "ACCOUNTS.SET_ERROR", error: { errorC: "C" } };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.errors["errorA"], "A");
+      assert.equal(oldState.errors["errorB"], "B");
+      assert.equal(Object.keys(oldState.errors).length, 2);
+
+      assert.equal(newState.errors["errorA"], "A");
+      assert.equal(newState.errors["errorB"], "B");
+      assert.equal(newState.errors["errorC"], "C");
+      assert.equal(Object.keys(newState.errors).length, 3);
+    });
+
+    it("overwrites error", () => {
+      let oldState = {
+        errors: {
+          errorA: "A",
+          errorB: "B",
+        },
+      };
+      let action = { type: "ACCOUNTS.SET_ERROR", error: { errorB: "B2" } };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.errors["errorA"], "A");
+      assert.equal(oldState.errors["errorB"], "B");
+      assert.equal(Object.keys(oldState.errors).length, 2);
+
+      assert.equal(newState.errors["errorA"], "A");
+      assert.equal(newState.errors["errorB"], "B2");
+      assert.equal(Object.keys(newState.errors).length, 2);
+    });
+
+  });
+
+  describe("ACCOUNTS.REMOVE_ERROR", () => {
+    it("ignores actions with no error", () => {
+      let oldState = {
+        errors: {
+          errorA: "A",
+          errorB: "B",
+        },
+      };
+      let action = { type: "ACCOUNTS.REMOVE_ERROR", error: null };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.errors["errorA"], "A");
+      assert.equal(oldState.errors["errorB"], "B");
+      assert.equal(Object.keys(oldState.errors).length, 2);
+
+      assert.equal(newState.errors["errorA"], "A");
+      assert.equal(newState.errors["errorB"], "B");
+      assert.equal(Object.keys(newState.errors).length, 2);
+    });
+
+    it("is okay with removing a non existant error", () => {
+      let oldState = {
+        errors: {
+          errorA: "A",
+          errorB: "B",
+        },
+      };
+      let action = { type: "ACCOUNTS.REMOVE_ERROR", error: "errorC" };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.errors["errorA"], "A");
+      assert.equal(oldState.errors["errorB"], "B");
+      assert.equal(Object.keys(oldState.errors).length, 2);
+
+      assert.equal(newState.errors["errorA"], "A");
+      assert.equal(newState.errors["errorB"], "B");
+      assert.equal(Object.keys(newState.errors).length, 2);
+    });
+
+    it("removes the error", () => {
+      let oldState = {
+        errors: {
+          errorA: "A",
+          errorB: "B",
+        },
+      };
+      let action = { type: "ACCOUNTS.REMOVE_ERROR", error: "errorB" };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.errors["errorA"], "A");
+      assert.equal(oldState.errors["errorB"], "B");
+      assert.equal(Object.keys(oldState.errors).length, 2);
+
+      assert.equal(newState.errors["errorA"], "A");
+      assert.equal(Object.keys(newState.errors).length, 1);
+    });
+  });
+
 });

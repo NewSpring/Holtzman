@@ -165,6 +165,10 @@ export default createReducer(initial, {
 
   [types.SET_STATE]: (state: AccountState, action: Action): AccountState => {
 
+    if (!action.state) {
+      return state;
+    }
+
     let stateName = action.state.trim();
     const stateTypes = [ "default", "loading", "submit", "signout" ];
 
@@ -172,13 +176,15 @@ export default createReducer(initial, {
       return state;
     }
 
+    let clonedState = cloneDeep(state);
+
     if (stateName === "signout") {
-      state.authorized = false;
+      clonedState.authorized = false;
       stateName = "default";
-      state.person = initial.person;
+      clonedState.person = initial.person;
     }
 
-    return assign(cloneDeep(state), { state: stateName }) as AccountState;
+    return assign(clonedState, { state: stateName }) as AccountState;
   },
 
   [types.SET_ERROR]: (state: AccountState, action: Action): AccountState => {
@@ -187,7 +193,8 @@ export default createReducer(initial, {
       return state;
     }
 
-    return assign(cloneDeep(state), { errors: assign( state.errors, action.errors )}) as AccountState;
+    let clonedState = cloneDeep(state);
+    return assign(clonedState, { errors: assign(clonedState.errors, action.error) }) as AccountState;
   },
 
   [types.REMOVE_ERROR]: (state: AccountState, action: Action): AccountState => {
@@ -196,12 +203,12 @@ export default createReducer(initial, {
       return state;
     }
 
-    const errors = state.errors;
-
+    let clonedState = cloneDeep(state);
+    let errors = clonedState.errors;
     delete errors[action.error];
 
     // update the state
-    return assign(cloneDeep(state), { errors: errors }) as AccountState;
+    return assign(clonedState, { errors: errors }) as AccountState;
   },
 
   [types.SET_ERRORS]: (state: AccountState, action: Action): AccountState => {
