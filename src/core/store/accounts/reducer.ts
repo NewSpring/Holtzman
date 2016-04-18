@@ -154,11 +154,13 @@ export default createReducer(initial, {
 
   [types.REMOVE_DATA]: (state: AccountState, action: Action): AccountState => {
 
-    if (!action.field || state.data[action.field]) {
+    if (!action.field || !state.data[action.field]) {
       return state;
     }
 
-    return assign(cloneDeep(state), { data: assign(state.data, { [state.data[action.field]]: null }) }) as AccountState;
+    let clonedState = cloneDeep(state) as AccountState;
+    clonedState.data[action.field] = null;
+    return clonedState;
   },
 
   [types.SET_STATE]: (state: AccountState, action: Action): AccountState => {
