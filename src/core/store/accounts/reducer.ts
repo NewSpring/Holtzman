@@ -148,8 +148,8 @@ export default createReducer(initial, {
   [types.SET_DATA]: (state: AccountState, action: Action): AccountState => {
 
     // @TODO validation on new data
-
-    return assign(cloneDeep(state), { data: assign(state.data, action.data) }) as AccountState;
+    let clonedState = cloneDeep(state);
+    return assign(clonedState, { data: assign(clonedState.data, action.data) }) as AccountState;
   },
 
   [types.REMOVE_DATA]: (state: AccountState, action: Action): AccountState => {

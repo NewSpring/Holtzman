@@ -48,4 +48,77 @@ describe("core/store/accounts/reducer", () => {
 
   });
 
+  describe("ACCOUNTS.SET_DATA", () => {
+
+    it("sets all props", () => {
+      let oldState = { data: {
+        email: "the old email",
+        password: "the old password",
+        terms: false,
+        firstName: "old first",
+        lastName: "old last",
+        personId: 1,
+       }, };
+
+      let action = { data: {
+        email: "the new email",
+        password: "the new password",
+        terms: true,
+        firstName: "new first",
+        lastName: "new last",
+        personId: 2,
+      }, type: "ACCOUNTS.SET_DATA", };
+
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.data.email, "the old email");
+      assert.equal(oldState.data.password, "the old password");
+      assert.equal(oldState.data.terms, false);
+      assert.equal(oldState.data.firstName, "old first");
+      assert.equal(oldState.data.lastName, "old last");
+      assert.equal(oldState.data.personId, 1);
+
+      assert.equal(newState.data.email, "the new email");
+      assert.equal(newState.data.password, "the new password");
+      assert.equal(newState.data.terms, true);
+      assert.equal(newState.data.firstName, "new first");
+      assert.equal(newState.data.lastName, "new last");
+      assert.equal(newState.data.personId, 2);
+    });
+
+    it("sets some props", () => {
+      let oldState = { data: {
+        email: "the old email",
+        password: "the old password",
+        terms: false,
+        firstName: null,
+        lastName: null,
+        personId: 1,
+       }, };
+
+      let action = { data: {
+        terms: true,
+        firstName: "new first",
+        personId: 2,
+      }, type: "ACCOUNTS.SET_DATA", };
+
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.data.email, "the old email");
+      assert.equal(oldState.data.password, "the old password");
+      assert.equal(oldState.data.terms, false);
+      assert.equal(oldState.data.firstName, null);
+      assert.equal(oldState.data.lastName, null);
+      assert.equal(oldState.data.personId, 1);
+
+      assert.equal(newState.data.email, "the old email");
+      assert.equal(newState.data.password, "the old password");
+      assert.equal(newState.data.terms, true);
+      assert.equal(newState.data.firstName, "new first");
+      assert.equal(newState.data.lastName, null);
+      assert.equal(newState.data.personId, 2);
+    });
+
+  });
+
 });
