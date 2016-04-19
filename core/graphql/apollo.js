@@ -4,8 +4,10 @@
 // apollo client demands exclusivity?
 // apollo client is probably fine and it's webpack
 // webpack is evil
-import ApolloClient, { createNetworkInterface } from "apollo-client";
-import { readQueryFromStore } from "apollo-client/lib/src/data/readFromStore";
+import ApolloClient, {
+  createNetworkInterface,
+  readQueryFromStore,
+} from "apollo-client";
 import { addReducer, addMiddleware } from "../store";
 
 const heighliner = createNetworkInterface("http://localhost:8888/");
