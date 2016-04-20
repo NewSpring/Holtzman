@@ -1,11 +1,11 @@
-import types from "./types"
+import types from "./types";
 
 export default {
   types,
 
-  setProgress: (step) => ({ type: types.SET_PROGRESS, step }),
-  next: () => ({ type: types.SET_PROGRESS, increment: 1 }),
-  previous: () => ({ type: types.SET_PROGRESS, increment: -1 }),
+  setProgress: (step: number): any => ({ type: types.SET_PROGRESS, step }),
+  next: (): any => ({ type: types.SET_PROGRESS, increment: 1 }),
+  previous: (): any => ({ type: types.SET_PROGRESS, increment: -1 }),
 
   setAccount: (savedAccount) => ({ type: types.SET_SAVED_ACCOUNT, savedAccount }),
   clearAccount: () => ({ type: types.SET_SAVED_ACCOUNT, savedAccount: "clear" }),

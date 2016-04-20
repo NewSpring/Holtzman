@@ -3,23 +3,26 @@
   Navigation store
 
 */
+import { assign } from "lodash";
 
-import modalActions from "../modal"
-import likedActions from "../liked"
-import shareActions from "../share"
-import Sections from "../../blocks/sections"
-import Discover from "../../blocks/discover"
+import modalActions from "../modal";
+import likedActions from "../liked";
+import shareActions from "../share";
 
-import { routeActions } from "../routing"
+import { State, createReducer } from "../utilities";
+import Sections from "../../blocks/sections";
+import Discover from "../../blocks/discover";
 
-let sectionsVisible = false
-let discoverVisible = false
+import { routeActions } from "../routing";
+
+let sectionsVisible = false;
+let discoverVisible = false;
 
 const back = () => {
-  return routeActions.goBack()
+  return routeActions.goBack();
 }
 
-const isEqual = (path) => {
+const isEqual = (path: string) => {
   if (typeof window != "undefined" && window != null) {
     return window.location.pathname === path
   }
@@ -89,49 +92,42 @@ if (!Meteor.isCordova) {
   links = {
     TOP: links.TOP,
     CONTENT: links.TOP,
-    BASIC_CONTENT :links.TOP,
+    BASIC_CONTENT: links.TOP,
     MODAL: links.MODAL
   }
 }
 
+export interface NavState {
+  level: string;
+  visible: boolean;
+  links: Array<any>;
+}
 
-const initial = { level: "TOP", visible: true, links: links.TOP}
+const initial: NavState = { level: "TOP", visible: true, links: links.TOP}
 
-export default function nav(state = initial, action) {
+export default createReducer(initial, {
+  ["NAV.SET_LEVEL"]: ( state: NavState, action: any): NavState => {
+    return assign( state, { level: action.level, links: links[action.level]}) as NavState;
+  },
+  ["NAV.SET_LINKS"]: ( state: NavState, action: any): NavState => {
+    return assign( state, { links: [ assign(state.links, action.links)]}) as NavState;
+  },
+  ["NAV.SET_ACTION"]: ( state: NavState, action: any): NavState => {
 
-  switch (action.type) {
-    case "NAV.SET_LEVEL":
-      return { ...state, ...{
-        level: action.level,
-        links: links[action.level]
-      } }
-    case "NAV.SET_LINKS":
-      return { ...state, ...{
-        links: [ ...state.links, ...action.links ]
-      } }
-    case "NAV.SET_ACTION":
+      let newLinks = [];
 
-      let newLinks = [
-        ...state.links.slice(0, action.props.id - 1),
-        {
-          ...state.links[action.props.id - 1],
-          action: action.props.action,
-        },
-        ...state.links.slice(action.props.id)
-      ]
+      newLinks.concat(state.links.slice(0, action.props.id - 1));
+      newLinks.push(assign({}, state.links[action.props.id - 1], { action: action.props.action }));
+      newLinks.concat(state.links.slice(action.props.id));
 
       if (links[action.level]) {
         links[action.level] = newLinks
       }
 
-      return { ...state, ...{
-        links: newLinks
-      } }
-    case "NAV.SET_VISIBILITY":
-      return { ...state, ...{
-        visible: action.visible }
-      }
-    default:
-      return state
+      return assign({}, state, { links: newLinks }) as NavState;
+  },
+  ["NAV.SET_VISIBILITY"]: (state: NavState, action: any): NavState => {
+    return assign(state, { visible: action.visible }) as NavState;
   }
-}
+});
+
