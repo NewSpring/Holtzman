@@ -570,4 +570,80 @@ describe("core/store/accounts/reducer", () => {
     });
 
   });
+
+  describe("ACCOUNTS.SHOW_WELCOME", () => {
+    it("sets show welcome", () => {
+      let oldState = {
+        showWelcome: false,
+      };
+      let action = { type: "ACCOUNTS.SHOW_WELCOME" };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.showWelcome, false);
+      assert.equal(newState.showWelcome, true);
+    });
+  });
+
+  describe("ACCOUNTS.SET_ALTERNATE_ACCOUNTS", () => {
+    it("sets alt accounts", () => {
+      let oldState = {
+        alternateAccounts: {
+          account1: "1",
+        },
+      };
+      let action = { type: "ACCOUNTS.SET_ALTERNATE_ACCOUNTS", alternateAccounts: {
+        account2: "2",
+      }, };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.deepEqual(oldState.alternateAccounts, { account1: "1" });
+      assert.deepEqual(newState.alternateAccounts, { account2: "2" });
+    });
+  });
+
+  describe("ACCOUNTS.SET_PEOPLE_WITHOUT_ACCOUNTS", () => {
+    it("sets people without accounts", () => {
+      let oldState = {
+        peopleWithoutAccountEmails: {
+          person1: "1",
+        },
+      };
+      let action = { type: "ACCOUNTS.SET_PEOPLE_WITHOUT_ACCOUNTS", peopleWithoutAccountEmails: {
+        person2: "2",
+      }, };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.deepEqual(oldState.peopleWithoutAccountEmails, { person1: "1" });
+      assert.deepEqual(newState.peopleWithoutAccountEmails, { person2: "2" });
+    });
+  });
+
+  describe("ACCOUNTS.COMPLETE_ACCOUNT", () => {
+    it("sets show welcome", () => {
+      let oldState = {
+        resettingAccount: false,
+      };
+      let action = { type: "ACCOUNTS.COMPLETE_ACCOUNT" };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.resettingAccount, false);
+      assert.equal(newState.resettingAccount, true);
+    });
+  });
+
+  describe("ACCOUNTS.RESET_ACCOUNT", () => {
+    it("sets defaults", () => {
+      let oldState = { resettingAccount: true };
+      let action = { type: "ACCOUNTS.RESET_ACCOUNT" };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.deepEqual(oldState, { resettingAccount: true });
+      assert.deepEqual(newState, {
+        resettingAccount: false,
+        peopleWithoutAccountEmails: [],
+        alternateAccounts: [],
+        account: true,
+      });
+    });
+  });
 });
