@@ -383,4 +383,191 @@ describe("core/store/accounts/reducer", () => {
     });
   });
 
+  describe("ACCOUNTS.SET_ERRORS", () => {
+    it("merges the errors", () => {
+      let oldState = {
+        errors: {
+          errorA: "A",
+          errorB: "B",
+        },
+      };
+      let action = { type: "ACCOUNTS.SET_ERRORS", errors: {
+        errorC: "C",
+        errorD: "D",
+      }, };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.errors["errorA"], "A");
+      assert.equal(oldState.errors["errorB"], "B");
+      assert.equal(Object.keys(oldState.errors).length, 2);
+
+      assert.equal(newState.errors["errorA"], "A");
+      assert.equal(newState.errors["errorB"], "B");
+      assert.equal(newState.errors["errorC"], "C");
+      assert.equal(newState.errors["errorD"], "D");
+      assert.equal(Object.keys(newState.errors).length, 4);
+    });
+  });
+
+  describe("ACCOUNTS.REMOVE_ERRORS", () => {
+    it("removes the errors", () => {
+      let oldState = {
+        errors: {
+          errorA: "A",
+          errorB: "B",
+        },
+      };
+      let action = { type: "ACCOUNTS.REMOVE_ERRORS" };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.errors["errorA"], "A");
+      assert.equal(oldState.errors["errorB"], "B");
+      assert.equal(Object.keys(oldState.errors).length, 2);
+
+      assert.equal(Object.keys(newState.errors).length, 0);
+    });
+  });
+
+  describe("ACCOUNTS.SET_SUCCESS", () => {
+    it("ignores non booleans", () => {
+      let oldState = {
+        success: false,
+      };
+      let action = { type: "ACCOUNTS.SET_SUCCESS", success: "true" };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.success, false);
+      assert.equal(newState.success, false);
+    });
+
+    it("sets success", () => {
+      let oldState = {
+        success: false,
+      };
+      let action = { type: "ACCOUNTS.SET_SUCCESS", success: true };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.success, false);
+      assert.equal(newState.success, true);
+    });
+  });
+
+  describe("ACCOUNTS.IS_AUTHORIZED", () => {
+      it("ignores non booleans", () => {
+      let oldState = {
+        authorized: false,
+      };
+      let action = { type: "ACCOUNTS.IS_AUTHORIZED", authorized: "true" };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.authorized, false);
+      assert.equal(newState.authorized, false);
+    });
+
+    it("sets success", () => {
+      let oldState = {
+        authorized: false,
+      };
+      let action = { type: "ACCOUNTS.IS_AUTHORIZED", authorized: true };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.authorized, false);
+      assert.equal(newState.authorized, true);
+    });
+  });
+
+  describe("ACCOUNTS.SET_PERSON", () => {
+    it("does nothing if no person in action", () => {
+      let oldState = {
+        person: { firstName: "the first name" },
+      };
+      let action = { type: "ACCOUNTS.SET_PERSON", person: false };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.person.firstName, "the first name");
+      assert.equal(Object.keys(oldState.person).length, 1);
+
+      assert.equal(newState.person.firstName, "the first name");
+      assert.equal(Object.keys(newState.person).length, 1);
+    });
+
+    it("updates the person with defaults from initial state", () => {
+      let oldState = {
+        person: {
+          firstName: "the first name",
+          home: "the home",
+          campus: "the campus",
+        },
+        authorized: false,
+      };
+      let action = { type: "ACCOUNTS.SET_PERSON", person: {
+        firstName: "new first name",
+      }, };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.equal(oldState.person.firstName, "the first name");
+      assert.equal(oldState.person.campus, "the campus");
+      assert.equal(oldState.person.home, "the home");
+      assert.equal(oldState.authorized, false);
+      assert.equal(Object.keys(oldState.person).length, 3);
+
+      assert.equal(newState.person.firstName, "new first name");
+      assert.deepEqual(newState.person.campus, { name: null, shortcode: null });
+      assert.deepEqual(newState.person.home, {
+        city: null,
+        country: null,
+        id: null,
+        zip: null,
+        state: null,
+        street1: null,
+        street2: null,
+      });
+      assert.equal(newState.authorized, true);
+      assert.equal(Object.keys(newState.person).length, 3);
+    });
+
+    it("updates the person", () => {
+      let oldState = {
+        person: {
+          firstName: "the first name",
+          home: { city: "old city" },
+          campus: { shortcode: "old" },
+        },
+        authorized: false,
+      };
+      let action = { type: "ACCOUNTS.SET_PERSON",
+        person: {
+          firstName: "new first name",
+          home: {
+            city: "new city",
+          },
+          campus: {
+            shortCode: "new",
+          },
+        },
+      };
+      let newState = reducer(oldState, action) as AccountState;
+
+      assert.deepEqual(oldState.person, {
+        firstName: "the first name",
+          home: {
+            city: "old city",
+          },
+          campus: {
+            shortcode: "old",
+          },
+      });
+
+      assert.deepEqual(newState.person, {
+        firstName: "new first name",
+        home: {
+          city: "new city",
+        },
+        campus: {
+          shortCode: "new",
+        },
+      });
+    });
+
+  });
 });

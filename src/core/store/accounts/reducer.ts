@@ -213,9 +213,9 @@ export default createReducer(initial, {
 
   [types.SET_ERRORS]: (state: AccountState, action: Action): AccountState => {
 
-    return assign(cloneDeep(state), {
-      errors: assign(state.errors, action.errors),
-    }) as AccountState;
+    let clonedState = cloneDeep(state);
+    clonedState.errors = assign(clonedState.errors, action.errors) as { [key: number]: string; };
+    return clonedState as AccountState;
 
   },
 
@@ -257,12 +257,12 @@ export default createReducer(initial, {
       return state;
     }
 
-    if (!action.person.Home) {
-      action.person.Home = initial.person.home;
+    if (!action.person.home) {
+      action.person.home = initial.person.home;
     }
 
-    if (!action.person.Campus) {
-      action.person.Campus = initial.person.campus;
+    if (!action.person.campus) {
+      action.person.campus = initial.person.campus;
     }
 
     return assign(cloneDeep(state), {
