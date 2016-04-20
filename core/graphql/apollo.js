@@ -9,6 +9,7 @@ import ApolloClient, {
   readQueryFromStore,
 } from "apollo-client";
 import { addReducer, addMiddleware } from "../store";
+import { connect } from "react-apollo";
 
 const heighliner = createNetworkInterface("http://localhost:8888/");
 const apolloClient = new ApolloClient({
@@ -23,4 +24,5 @@ addMiddleware(apolloClient.middleware());
 export {
   apolloClient,
   readQueryFromStore,
+  connect,
 };
