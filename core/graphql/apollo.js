@@ -11,7 +11,7 @@ import ApolloClient, {
 import { addReducer, addMiddleware } from "../store";
 import { connect } from "react-apollo";
 
-const heighliner = createNetworkInterface("http://localhost:8888/");
+const heighliner = createNetworkInterface(Meteor.settings.public.heighliner);
 const apolloClient = new ApolloClient({
   networkInterface: heighliner,
 });
