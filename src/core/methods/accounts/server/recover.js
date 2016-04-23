@@ -103,7 +103,7 @@ Meteor.methods({
       // let the client know
       return true
     } catch (e) {
-      console.error(e, "recover line 108")
+      console.error("@@RECOVER_ERROR", e)
       throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account")
     }
 

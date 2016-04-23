@@ -110,6 +110,8 @@ export default class Details extends Component {
     let transaction = this.props.transactions[id]
     let complete = false
 
+    transaction || (transaction = false)
+
     if (new Date(transaction.next) < new Date() && transaction.schedule.value === "One-Time") {
       complete = true
     }

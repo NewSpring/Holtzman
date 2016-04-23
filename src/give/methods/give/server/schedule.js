@@ -83,12 +83,15 @@ const cancel = ({ id, gateway }) => {
   // created via Rock / NMI / Apollos
   if (existing.GatewayScheduleId) {
     response = api.patch.sync(`FinancialScheduledTransactions/${id}`, { IsActive: false })
+    // debug for now
+    console.log("@@REMOVE_SCHEDULE_DATA", response, id, gateway, existing)
   } else {
     // infellowhsip move over
     response = api.delete.sync(`FinancialScheduledTransactions/${id}`)
   }
 
-  if (response.status) {
+  if (response.statusText) {
+    console.error("@@REMOVE_SCHEDULE_ERROR", response, id, existing);
     throw new Meteor.Error(response)
   }
 
