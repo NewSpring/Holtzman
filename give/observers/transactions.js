@@ -84,7 +84,7 @@ const transactions = () => {
           // add locatin data to person
           upsertLocations(PersonId, Location)
         } catch (e) {
-          console.error(e, PersonId, PrimaryAliasId)
+          console.error("@@TRANSACTION_ERROR", e, PersonId, PrimaryAliasId)
         }
 
 
