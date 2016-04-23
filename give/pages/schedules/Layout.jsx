@@ -134,6 +134,7 @@ export default class Layout extends Component {
               </div>
             </div>
 
+
             <div  id="active-schedules" className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
               <h4 className="soft soft-double-ends text-center flush-bottom">
                 My Schedules
@@ -141,6 +142,15 @@ export default class Layout extends Component {
 
 
               {() => {
+
+
+                if (!Meteor.user()) {
+                  return (
+                    <div className="text-center soft-sides">
+                      <p><em>Please sign in or create an account to setup or view your scheduled contributions!</em></p>
+                    </div>
+                  )
+                }
 
                 if (!schedules.length && !ready) {
                   // loading
