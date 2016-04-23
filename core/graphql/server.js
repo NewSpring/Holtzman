@@ -30,7 +30,7 @@ Meteor.methods({
         f.return(data);
       })
       .catch(error => {
-        console.error(error)
+        console.error("@@GRAPHQL_ERROR", error, payload)
         f.throw(error);
       });
 
