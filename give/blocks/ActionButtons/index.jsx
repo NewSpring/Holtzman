@@ -41,20 +41,6 @@ function getPaymentDetails(id, dispatch) {
     .then(({ paymentDetails }) => (paymentDetails))
 }
 
-
-function prefillRedux(dispatch) {
-  Tracker.autorun((computation) => {
-
-    Meteor.subscribe("recently-liked")
-
-    if (Meteor.userId()) {
-      getPaymentDetails(Meteor.userId(), dispatch)
-      computation.stop()
-    }
-
-  });
-}
-
 /*
 
   The give now button is presented in the following order:
@@ -76,7 +62,10 @@ export default class GiveNow extends Component {
   }
 
   componentDidMount(){
+    this.getData();
+  }
 
+  getData = () => {
     const id = Meteor.userId()
     const { dispatch, savedAccount } = this.props
 
@@ -89,10 +78,13 @@ export default class GiveNow extends Component {
           ))
 
         })
-    } else {
-      prefillRedux(dispatch)
     }
+  }
 
+  componentWillReceiveProps(nextProps){
+    if (!this.props.authorized && nextProps.authorized) {
+      this.getData();
+    }
   }
 
   getAccount = () => {
@@ -199,7 +191,7 @@ export default class GiveNow extends Component {
       const details = this.getAccount()
       let { accountNumber } = details.payment
       accountNumber = accountNumber.slice(-4).trim()
-
+      text = "Continue"
       text += ` using ${accountNumber}`
 
     }
@@ -267,6 +259,20 @@ export default class GiveNow extends Component {
               )
             }
           }()}
+
+          {(() => {
+            if (this.props.savedAccount && Object.keys(this.props.savedAccount).length && !this.props.hideCard) {
+              return (
+                <p className="flush-bottom hard-bottom soft-top">
+                  <small>
+                    <em>
+                      Clicking the button above will prompt you to finalize your details before finishing your contribution.
+                    </em>
+                  </small>
+                </p>
+              )
+            }
+          }())}
 
         </span>
 
