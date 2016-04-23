@@ -56,7 +56,8 @@ export default class Layout extends Component {
       prefillFund = existing.details[0].account.id
     }
 
-    let defaultDate = Moment().add(1, "days")
+    // let defaultDate = Moment().add(1, "days")
+    let defaultDate;
     if (existing && existing.next && new Date(existing.next) > new Date()) {
       defaultDate = new Date(existing.next)
     }
