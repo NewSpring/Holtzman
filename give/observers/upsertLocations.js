@@ -96,7 +96,7 @@ export function upsertLocations(PersonId, Location){
   let LocationId = api.post.sync(`Locations`, Location)
 
   if (!LocationId || LocationId.statusText) {
-    console.error("Location could not be created", Location);
+    console.error("@@LOCATION_UPDATE_ERROR", Location);
     return
   }
 

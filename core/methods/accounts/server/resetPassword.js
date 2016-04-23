@@ -73,11 +73,11 @@ Meteor.methods({
     try {
       let response = api.put.sync(`UserLogins/${RockUser.Id}`, RockUser)
       if (response.statusText) {
-        console.error(RockUser, response)
+        console.error("@@GROUP_ADD_ERROR", RockUser, response)
         throw new Meteor.Error("It looks like we had an unexpected issue! We are so sorry! Please try again")
       }
     } catch (e) {
-      console.error(e, e.message)
+      console.error("@@GROUP_ADD_SECOND_ERROR", e, e.message)
       throw new Meteor.Error("It looks like we had an unexpected issue! We are so sorry! Please try again")
     }
 
