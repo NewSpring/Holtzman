@@ -5,6 +5,7 @@ import { cancelBilling as gatewayCancelBilling } from "../../give/server/nmi"
 const remove = (id) => {
 
   let existing = api.get.sync(`FinancialPersonSavedAccounts/${id}`)
+  let result = api.delete.sync(`FinancialPersonSavedAccounts/${id}`)
 
   // only remove if this is an NMI transaction and we have a gateway code
   if (existing.ReferenceNumber && existing.FinancialGatewayId === api._.give.gateway.id) {
@@ -14,8 +15,6 @@ const remove = (id) => {
       throw new Meteor.Error(e.message ? e.message : e)
     }
   }
-
-  let result = api.delete.sync(`FinancialPersonSavedAccounts/${id}`)
 
   if (result.status) {
     throw new Meteor.Error(result)
