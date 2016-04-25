@@ -16,16 +16,14 @@
     change type of modal to render (default is side)
 
 */
-import reducer from "./reducer"
-import { addReducer } from "../utilities"
+import reducer from "./reducer";
+import { addReducer } from "../utilities";
 
 addReducer({
-  modal: reducer
-})
+  modal: reducer,
+});
 
 export default {
-  reducer,
-
   hide: () => ({ type: "MODAL.SET_VISIBILITY", visible: false }),
   show: () => ({ type: "MODAL.SET_VISIBILITY", visible: true }),
 
@@ -33,6 +31,5 @@ export default {
 
   update: (props) => ({ type: "MODAL.SET_PROPS", props }),
 
-  changeTo: (state) => ({ type: "MODAL.SET_TYPE", state })
-
-}
+  changeTo: (state) => ({ type: "MODAL.SET_TYPE", state }),
+};
