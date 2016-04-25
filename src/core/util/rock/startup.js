@@ -55,7 +55,7 @@ export default function startup(api) {
     api._.give || (api._.give = {})
 
     // Gateways
-    let NMI = api.get.sync("FinancialGateways?$filter=EntityType/Name eq 'Rock.Financial.NMIGateway'&$expand=EntityType")
+    let NMI = api.get.sync("FinancialGateways?$filter=substringof('NMI', EntityType/Name) eq true&$expand=EntityType")
 
     if (!NMI.statusText && NMI.length) {
       // Meteor.settings.nmi = NMI
