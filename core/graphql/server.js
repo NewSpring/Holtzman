@@ -22,7 +22,6 @@ Meteor.methods({
     //   token += new Buffer(`guest:guest`).toString("base64")
     // }
 
-    console.log(Meteor.settings);
     fetch(Meteor.settings.public.heighliner, {
         method: "POST",
         headers: {
