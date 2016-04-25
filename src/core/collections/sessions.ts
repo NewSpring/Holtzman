@@ -10,18 +10,27 @@
   }
 */
 
-let sessions;
+export interface Session {
+  _id: string;
+  ip: string;
+  userId: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+let sessions: Mongo.Collection<Session> = null;
+
 if (Meteor.isServer) {
 
-  sessions = new Mongo.Collection(null)
+  sessions = new Mongo.Collection(null) as Mongo.Collection<Session>;
 
   // bind connection starts and ends
   Meteor.onConnection((connection) => {
 
-    let ip = connection.ip
+    let ip = connection.ip;
 
     if (connection.httpHeaders && connection.httpHeaders["x-forwarded-for"]) {
-      ip = connection.httpHeaders["x-forwarded-for"]
+      ip = connection.httpHeaders["x-forwarded-for"];
     }
 
     // on a connection, insert the connection details
@@ -30,16 +39,16 @@ if (Meteor.isServer) {
       ip,
       userId: null,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     }, (err, id) => {
 
       connection.onClose(() => {
-        sessions.remove(id)
-      })
+        sessions.remove(id);
+      });
 
-    })
+    });
 
-  })
+  });
 
   // Dummy publish for this.userId
   Meteor.publish("apollos-session-dummy", function(){
@@ -47,20 +56,20 @@ if (Meteor.isServer) {
     sessions.update(this.connection.id, {
       $set: {
         userId: this.userId,
-        updatedAt: new Date()
-      }
+        updatedAt: new Date(),
+      },
     // async
-    }, (err, update) => {})
+  }, (err, update) => { return; });
 
-    return []
+    return [];
 
-  })
+  });
 
-}
+};
 
 if (Meteor.isClient) {
-  Meteor.subscribe("apollos-session-dummy")
+  Meteor.subscribe("apollos-session-dummy");
 }
 
 
-export default sessions
+export default sessions;
