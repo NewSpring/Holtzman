@@ -49,6 +49,7 @@
     "react-apollo": "^0.1.5",
     "react-controllables": "^0.6.0",
     "react-day-picker": "^1.2.0",
+    "react-dom": "^0.14.8",
     "react-helmet": "^2.3.1",
     "react-motion": "^0.4.2",
     "react-pure-render": "^1.0.2",
