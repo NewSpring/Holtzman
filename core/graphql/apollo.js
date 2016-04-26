@@ -15,11 +15,11 @@ import { applyMiddleware } from "redux";
 import { Tokens } from "../collections";
 
 let token = "basic ";
-if (Meteor.userId()) {
+// if (Meteor.userId()) {
   token += new Buffer(`apollos:${Meteor.settings.public.rock.token}`).toString("base64");
-} else {
-  token += new Buffer(`guest:guest`).toString("base64");
-}
+// } else {
+//  token += new Buffer(`guest:guest`).toString("base64");
+//}
 
 const networkInterface = createNetworkInterface(
   Meteor.settings.public.heighliner, {
