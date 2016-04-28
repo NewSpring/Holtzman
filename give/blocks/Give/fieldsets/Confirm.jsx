@@ -282,6 +282,14 @@ export default class Confirm extends Component {
                 >
                   Enter New Payment
                 </h6>
+
+                <h6
+                  className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+                  style={{cursor: "pointer"}}
+                  onClick={this.props.goToStepOne}
+                >
+                  Edit payment details
+                </h6>
               </div>
             )
           }
