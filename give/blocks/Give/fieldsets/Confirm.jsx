@@ -21,9 +21,10 @@ export default class Confirm extends Component {
   }
 
   header = () => {
+    const { personal } = this.props.data
     return (
       <h4 className="text-center">
-        Review And Complete Your Contribution
+        Hi {personal.firstName}! Here are your contribution details.
       </h4>
     )
   }
@@ -156,20 +157,20 @@ export default class Confirm extends Component {
 
   listItem = (transaction, key) => {
     return (
-      <div key={key} className="soft-ends hard-sides outlined--light outlined--bottom">
+      <div key={key} className="soft-half-ends hard-sides">
 
         <div className="grid" style={{verticalAlign: "middle"}}>
 
-          <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
-            <h5 className="text-dark-tertiary flush text-left">
+          <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
+            <h5 className="text-dark-secondary flush text-left">
               {transaction.label}
             </h5>
           </div>
 
-          <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
-            <h3 className="text-dark-secondary flush">
+          <div className="grid__item one-third text-right" style={{verticalAlign: "middle"}}>
+            <h5 className="text-dark-secondary flush">
               {this.monentize(transaction.value)}
-            </h3>
+            </h5>
           </div>
 
         </div>
@@ -273,6 +274,14 @@ export default class Confirm extends Component {
                 >
                   Change payment accounts
                 </h6>
+
+                <h6
+                  className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+                  style={{cursor: "pointer"}}
+                  onClick={this.props.goToStepOne}
+                >
+                  Edit payment details
+                </h6>
               </div>
             )
           }
@@ -366,6 +375,8 @@ export default class Confirm extends Component {
       return this.renderScheduleConfirm()
     }
 
+    const { personal } = this.props.data
+
     return (
       <div>
         <div className="push-double@lap-and-up push">
@@ -373,6 +384,10 @@ export default class Confirm extends Component {
         </div>
 
         <div className="soft">
+          <h5 className="text-dark-secodary text-left">
+            <small><em>{personal.campus} Campus</em></small>
+          </h5>
+          <div className="outlined--light outlined--bottom one-whole push-bottom"></div>
           {transactions.map((transaction, key) => {
             return this.listItem(transaction, key)
           })}
@@ -382,7 +397,7 @@ export default class Confirm extends Component {
             <div className="grid" style={{verticalAlign: "middle"}}>
 
               <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
-                <h5 className="text-dark-tertiary flush text-left">
+                <h5 className="text-dark-secondary flush text-left">
                   Total
                 </h5>
               </div>
