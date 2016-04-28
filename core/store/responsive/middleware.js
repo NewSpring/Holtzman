@@ -42,7 +42,6 @@ const responsiveBindings = store => next => action => {
   }
 
   const onBodyResize = () => {
-    console.log("here")
     const { responsive } = getState();
 
     const w = window,
