@@ -88,7 +88,7 @@ const ScheduledTransactions = () => {
           // add locatin data to person
           upsertLocations(PersonId, Location)
         } catch (e) {
-          console.error(e, PersonId, PrimaryAliasId)
+          console.error("@@SCHEDULE_TRANSACTION_ERROR", e, PersonId, PrimaryAliasId)
         }
 
 
