@@ -197,7 +197,7 @@ addSaga(function* account(getState) {
           // @TODO figure out caching issues?
           let personQuery = `
             {
-              person(mongoId: "${Meteor.userId()}", cache: false) {
+              person(cache: false) {
                 age
                 birthdate
                 birthDay

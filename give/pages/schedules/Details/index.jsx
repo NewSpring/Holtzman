@@ -8,10 +8,9 @@ import Confirm from "./Confirm"
 import Layout from "./Layout"
 
 function getTransaction(id, dispatch){
-  let mongoId = Meteor.userId()
   let query = `
   {
-    transaction: scheduledFinanicalTransaction(id: ${id},  mongoId: "${mongoId}") {
+    transaction: scheduledFinanicalTransaction(id: ${id}) {
       numberOfPayments
       next
       end

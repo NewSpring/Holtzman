@@ -7,10 +7,6 @@ Meteor.methods({
     check(variables, Match.OneOf(Object, undefined, null));
     check(operationName, Match.OneOf(String, undefined, null));
 
-    variables = {...variables, ...{
-      mongoId: this.userId
-    }}
-
     const payload = { query, variables, operationName };
     const f = new Future();
 
@@ -22,13 +18,17 @@ Meteor.methods({
     //   token += new Buffer(`guest:guest`).toString("base64")
     // }
 
+    let headers = {
+      'Accept': 'appplication/json',
+      'Content-Type': 'application/json',
+    };
+    if (this.userId) {
+      headers['Authorization'] = Accounts._getLoginToken(this.connection.id);
+    }
+
     fetch(Meteor.settings.public.heighliner, {
         method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': "basic " + new Buffer(`apollos:${Meteor.settings.rock.token}`).toString("base64")
-        },
+        headers: headers,
         body: JSON.stringify(payload)
       })
       .then((response) => {

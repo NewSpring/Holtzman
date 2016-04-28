@@ -29,7 +29,7 @@ function getPaymentDetails(id) {
 
   let query = `
     {
-      paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${id}") {
+      paymentDetails: allSavedPaymentAccounts(cache: false) {
         name
         id
         date

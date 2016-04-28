@@ -24,8 +24,8 @@ export default class GiveNow extends Component {
 
   componentDidMount(){
     let query = `
-      query PaymentDetails($mongoId: String){
-        accounts: allSavedPaymentAccounts(mongoId: $mongoId, cache: false){
+      query PaymentDetails {
+        accounts: allSavedPaymentAccounts(cache: false){
           id
           name
           payment {

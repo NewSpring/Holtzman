@@ -197,7 +197,7 @@ addSaga(function* chargeTransaction(getStore) {
           const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
           let query = `
             {
-              paymentDetails: allSavedPaymentAccounts(cache: false, mongoId: "${Meteor.userId()}") {
+              paymentDetails: allSavedPaymentAccounts(cache: false) {
                 name
                 id
                 date
@@ -420,8 +420,8 @@ function* recoverTransactions(getStore) {
   }
 
   let query = `
-    query ScheduledTransactions($mongoId: String) {
-      schedules: allScheduledFinanicalTransactions(mongoId: $mongoId, active: false, cache: false) {
+    query ScheduledTransactions {
+      schedules: allScheduledFinanicalTransactions(active: false, cache: false) {
         id
         gateway
         start
