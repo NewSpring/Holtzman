@@ -40,7 +40,7 @@ const SecondaryButton = ({ disabled, onClick }) => {
   )
 }
 
-const Guest = ({ disabled, onClick }) => {
+const Guest = ({ disabled, onClick, text }) => {
   let classes = [
     "outlined--bottom",
     "outlined--light"
@@ -61,7 +61,7 @@ const Guest = ({ disabled, onClick }) => {
   return (
     <div className="display-block soft-half-top">
       <h6 className={classes.join(" ")} style={style} onClick={onClick}>
-        Give as Guest
+        {text || "Give as Guest"}
       </h6>
     </div>
   )

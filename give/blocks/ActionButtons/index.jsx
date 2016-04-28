@@ -14,12 +14,15 @@ import {
 } from "../../../core/store"
 
 
-import Give from "../Give"
+
 import { AccountType } from "../../components"
 
 import { give as giveActions } from "../../store"
 
-import { PrimaryButton, SecondaryButton, Guest } from "./Buttons"
+import Give from "../Give"
+import ChangePayments from "../ChangePayments"
+
+import { PrimaryButton, SecondaryButton, Guest as TertiaryButton } from "./Buttons"
 
 
 function getPaymentDetails(id, dispatch) {
@@ -52,7 +55,8 @@ function getPaymentDetails(id, dispatch) {
 */
 const map = (store) => ({
   authorized: store.accounts.authorized,
-  savedAccount: store.collections.savedAccounts
+  savedAccounts: store.collections.savedAccounts,
+  savedAccount: store.give.savedAccount,
 })
 @connect(map)
 export default class GiveNow extends Component {
@@ -67,9 +71,9 @@ export default class GiveNow extends Component {
 
   getData = () => {
     const id = Meteor.userId()
-    const { dispatch, savedAccount } = this.props
+    const { dispatch, savedAccounts } = this.props
 
-    if (id && (!savedAccount || !Object.keys(savedAccount).length)) {
+    if (id && (!savedAccounts || !Object.keys(savedAccounts).length)) {
       getPaymentDetails(id, dispatch)
         .then(paymentDetails => {
 
@@ -88,11 +92,16 @@ export default class GiveNow extends Component {
   }
 
   getAccount = () => {
+
+    if (this.props.savedAccount && this.props.savedAccount.id) {
+      return this.props.savedAccount
+    }
+
     let account = {}
-    if (this.props.savedAccount && Object.keys(this.props.savedAccount).length) {
+    if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length) {
       let accounts = []
-      for (let acc in this.props.savedAccount) {
-        accounts.push(this.props.savedAccount[acc])
+      for (let acc in this.props.savedAccounts) {
+        accounts.push(this.props.savedAccounts[acc])
       }
       account = _.sortBy(accounts, "date")[accounts.length - 1]
     }
@@ -103,7 +112,7 @@ export default class GiveNow extends Component {
   buttonClasses = () => {
     let classes = ["btn"]
 
-    if (this.props.savedAccount && Object.keys(this.props.savedAccount).length) {
+    if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length) {
       classes.push("has-card")
     }
 
@@ -138,7 +147,7 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(giveActions.setTransactionType("default"))
 
-    if (this.props.savedAccount && Object.keys(this.props.savedAccount).length) {
+    if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length) {
       // const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       const details = this.getAccount()
       this.props.dispatch(giveActions.setAccount(details))
@@ -178,6 +187,21 @@ export default class GiveNow extends Component {
 
   }
 
+  changePayments = (e) => {
+    e.preventDefault();
+
+    let accounts = [];
+    for (let account in this.props.savedAccounts) {
+      accounts.push(this.props.savedAccounts[account]);
+    }
+
+    this.props.dispatch(modal.render(ChangePayments, {
+      // onFinished: () => {},
+      savedAccounts: accounts,
+      currentAccount: this.getAccount(),
+    }));
+  }
+
   buttonText = () => {
 
     let text = "Give Now"
@@ -185,14 +209,14 @@ export default class GiveNow extends Component {
       text = this.props.text
     }
 
-    if (this.props.savedAccount && Object.keys(this.props.savedAccount).length && !this.props.hideCard) {
+    if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length && !this.props.hideCard) {
 
       // const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       const details = this.getAccount()
       let { accountNumber } = details.payment
       accountNumber = accountNumber.slice(-4).trim()
-      text = "Continue"
-      text += ` using ${accountNumber}`
+      text = "Review"
+      text += ` Using ${accountNumber}`
 
     }
 
@@ -206,7 +230,7 @@ export default class GiveNow extends Component {
 
   icon = () => {
 
-    if (this.props.savedAccount && Object.keys(this.props.savedAccount).length && this.props.authorized && !this.props.hideCard) {
+    if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length && this.props.authorized && !this.props.hideCard) {
       // const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       const detail = this.getAccount()
       if (detail.paymentType && detail.payment.paymentType === "ACH") {
@@ -225,7 +249,6 @@ export default class GiveNow extends Component {
 
 
   render () {
-
     try {
       return (
         <span>
@@ -252,7 +275,7 @@ export default class GiveNow extends Component {
           {() => {
             if (!this.props.disabledGuest && !Meteor.userId()) {
               return (
-                <Guest
+                <TertiaryButton
                   disabled={this.props.disabled}
                   onClick={this.giveAsGuest}
                 />
@@ -261,15 +284,12 @@ export default class GiveNow extends Component {
           }()}
 
           {(() => {
-            if (this.props.savedAccount && Object.keys(this.props.savedAccount).length && !this.props.hideCard) {
+            if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length && !this.props.hideCard) {
               return (
-                <p className="flush-bottom hard-bottom soft-top">
-                  <small>
-                    <em>
-                      Clicking the button above will prompt you to finalize your details before finishing your contribution.
-                    </em>
-                  </small>
-                </p>
+                <TertiaryButton
+                  onClick={this.changePayments}
+                  text={"Change payment account"}
+                />
               )
             }
           }())}
@@ -279,6 +299,7 @@ export default class GiveNow extends Component {
       )
     } catch (e) {
       console.log(e)
+      return null
     }
 
   }
