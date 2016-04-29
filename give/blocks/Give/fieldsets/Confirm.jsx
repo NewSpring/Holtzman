@@ -272,15 +272,15 @@ export default class Confirm extends Component {
                   style={{cursor: "pointer"}}
                   onClick={this.changeAccounts}
                 >
-                  Change payment accounts
+                  Change Payment Accounts
                 </h6>
-
+                <br/>
                 <h6
                   className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
                   style={{cursor: "pointer"}}
                   onClick={this.props.goToStepOne}
                 >
-                  Edit payment details
+                  Enter New Payment
                 </h6>
               </div>
             )
