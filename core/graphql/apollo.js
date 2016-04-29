@@ -21,7 +21,7 @@ import { Tokens } from "../collections";
 //   token += new Buffer(`guest:guest`).toString("base64");
 // }
 
-let token = Accounts._storedLoginToken() ? Accounts._storedLoginToken() : null;
+let token = Accounts._storedLoginToken && Accounts._storedLoginToken() ? Accounts._storedLoginToken() : null;
 
 const networkInterface = createNetworkInterface(
   Meteor.settings.public.heighliner, {
