@@ -12,6 +12,123 @@ import Meta from "../../../core/components/meta"
 
 import { Offline } from "../../components/status"
 
+function formatDate(date){
+  return Moment(date).format("MMM D, YYYY")
+}
+
+function monentize(value, fixed){
+
+  if (typeof value === "number") {
+    value = `${value}`
+  }
+
+  if (!value.length) {
+    return `$0.00`
+  }
+
+  value = value.replace(/[^\d.-]/g, "")
+
+  let decimals = value.split(".")[1]
+  if ((decimals && decimals.length >= 2) || fixed) {
+    value = Number(value).toFixed(2)
+    value = String(value)
+  }
+
+  value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  return `$${value}`
+}
+
+const TransactionDetail = ({ transactionDetail, transaction, icon, status }) => (
+  <div className="grid" style={{verticalAlign: "middle"}}>
+
+    <div className="grid__item three-fifths" style={{verticalAlign: "middle"}}>
+      <h5 className="text-dark-tertiary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
+        {transactionDetail.account.name}
+      </h5>
+      <p className="flush italic small text-dark-tertiary">
+        {status ? `${status} - `: ''}{formatDate(transaction.date)}
+      </p>
+    </div>
+
+    <div className="grid__item two-fifths text-right" style={{verticalAlign: "middle"}}>
+      <div className="soft-half-right">
+
+        <h4 className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up" style={{
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {monentize(transactionDetail.amount)}
+          {() => {
+            if (icon) {
+              return (
+                <span className="text-primary icon-arrow-next locked" style={{
+                  right: "-5px",
+                  top: "1px"
+                }}/>
+              )
+            }
+          }()}
+
+        </h4>
+
+
+      </div>
+
+    </div>
+
+  </div>
+)
+
+let count = 0;
+const TransactionCard = ({ transactionDetail, transaction }) => {
+  let { status } = transaction;
+
+  /*
+
+    turn on a couple pendings for UI testing
+
+  */
+  if (count < 1) {
+    status = 'Pendingsettlement'
+  }
+  count ++
+
+  if (status && status.toLowerCase().indexOf('pending') > -1) {
+    return (
+      <div
+        className="soft card"
+        style={{
+          borderStyle: "solid",
+          borderColor: "f1f1f1",
+          boxShadow: "none",
+          borderWidth: "2px",
+          backgroundColor: "transparent",
+        }}
+      >
+        <TransactionDetail
+          transactionDetail={transactionDetail}
+          transaction={transaction}
+          icon={false}
+          status="Pending"
+        />
+      </div>
+    )
+  }
+  return (
+    <div className="soft card">
+      <Link to={`/give/history/${transaction.id}/${transactionDetail.account.id}`}>
+        <TransactionDetail
+          transactionDetail={transactionDetail}
+          transaction={transaction}
+          icon={true}
+        />
+      </Link>
+    </div>
+  )
+}
+
 export default class Layout extends Component {
 
   static contextTypes = {
@@ -36,33 +153,8 @@ export default class Layout extends Component {
     }
   }
 
-  monentize = (value, fixed) => {
-
-    if (typeof value === "number") {
-      value = `${value}`
-    }
-
-    if (!value.length) {
-      return `$0.00`
-    }
-
-    value = value.replace(/[^\d.-]/g, "")
-
-    let decimals = value.split(".")[1]
-    if ((decimals && decimals.length >= 2) || fixed) {
-      value = Number(value).toFixed(2)
-      value = String(value)
-    }
-
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    return `$${value}`
-  }
-
-  formatDate = (date) => {
-    return Moment(date).format("MMM D, YYYY")
-  }
-
-
+  monentize = monentize
+  formatDate = formatDate
 
   render () {
 
@@ -142,77 +234,21 @@ export default class Layout extends Component {
                               <div className="soft text-left">
                                 <h5>{year}</h5>
                               </div>
-                              <div  className="soft card">
-
-                                <Link to={`/give/history/${transaction.id}/${transactionDetail.account.id}`}>
-
-                                  <div className="grid" style={{verticalAlign: "middle"}} key={i}>
-
-                                    <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
-                                      <h5 className="text-dark-tertiary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
-                                        {transactionDetail.account.name}
-                                      </h5>
-                                      <p className="flush soft-half-top italic small text-dark-tertiary">
-                                        {this.formatDate(transaction.date)}
-                                      </p>
-                                    </div>
-
-                                    <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
-                                      <div className="soft-half-right">
-                                        <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
-                                          {this.monentize(transactionDetail.amount)}
-                                          <span className="text-primary icon-arrow-next locked" style={{
-                                              right: "-5px",
-                                              top: "1px"
-                                            }}></span>
-                                        </h4>
-                                      </div>
-
-                                    </div>
-
-                                  </div>
-                                </Link>
-
-                              </div>
+                              <TransactionCard
+                                transaction={transaction}
+                                transactionDetail={transactionDetail}
+                              />
                             </div>
                           )
 
                         }
 
                         return (
-
-                          <div key={i} className="soft card">
-
-                            <Link to={`/give/history/${transaction.id}/${transactionDetail.account.id}`}>
-
-                              <div className="grid" style={{verticalAlign: "middle"}} key={i}>
-
-                                <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
-                                  <h5 className="text-dark-tertiary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
-                                    {transactionDetail.account.name}
-                                  </h5>
-                                  <p className="flush soft-half-top italic small text-dark-tertiary">
-                                    {this.formatDate(transaction.date)}
-                                  </p>
-                                </div>
-
-                                <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
-                                  <div className="soft-half-right">
-                                    <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
-                                      {this.monentize(transactionDetail.amount)}
-                                      <span className="text-primary icon-arrow-next locked" style={{
-                                          right: "-5px",
-                                          top: "1px"
-                                        }}></span>
-                                    </h4>
-                                  </div>
-
-                                </div>
-
-                              </div>
-                            </Link>
-
-                          </div>
+                          <TransactionCard
+                            transaction={transaction}
+                            transactionDetail={transactionDetail}
+                            key={key}
+                          />
                         )
                       })}
                     </div>
