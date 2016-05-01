@@ -190,18 +190,22 @@ export default class Layout extends Component {
 
                             <div className="grid" style={{verticalAlign: "middle"}} key={i}>
 
-                              <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
+                              <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
                                 <h6 className="text-dark-tertiary push-half-bottom">
                                   {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
                                   <span className="text-dark-secondary">{complete ? " - Complete" : ""}</span>
                                 </h6>
-                                <h5 className="flush">
+                                <h5 className="flush one-whole" style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                  }}>
                                   {schedule.details[0].account.name}
                                 </h5>
                                 <p className="flush soft-half-top text-dark-tertiary">
                                   <small>
                                     <em>
-                                      This started on {this.formatDate(schedule.start)}
+                                      {this.formatDate(schedule.start)}
                                     </em>
                                   </small>
                                 </p>
@@ -209,9 +213,13 @@ export default class Layout extends Component {
                               </div>
 
 
-                              <div className="grid__item one-third text-right" style={{verticalAlign: "middle"}}>
+                              <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
                                 <div className="soft-half-right">
-                                  <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
+                                  <h4 className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up" style={{
+                                      overflow: "hidden",
+                                      textOverflow: "ellipsis",
+                                      whiteSpace: "nowrap",
+                                    }}>
                                     {this.monentize(schedule.details[0].amount)}
                                     <span className="text-primary icon-arrow-next locked" style={{
                                         right: "-5px",
