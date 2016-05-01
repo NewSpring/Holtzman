@@ -20,7 +20,7 @@ const Layout = ({ alive, accounts }, context) => (
       <Split nav={true} classes={["background--light-primary"]}>
 
         <Right
-          background="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
+          background="//s3.amazonaws.com/ns.assets/apollos/39616.perry.cen.web.scheduleyourgivingad_1x2.jpg"
           link="/give/schedules"
         />
 
@@ -64,6 +64,14 @@ const Layout = ({ alive, accounts }, context) => (
             </div>
           </div>
         </div>
+
+        <Link to="/give/schedules" className="visually--hidden@lap-and-up">
+          <div className="ratio--landscape@handheld background--fill" style={{
+              backgroundImage: "url(//s3.amazonaws.com/ns.assets/apollos/39616.perry.cen.web.scheduleyourgivingad_2x1.jpg)"
+            }}>
+            <div className="ratio__item"></div>
+          </div>
+        </Link>
 
         <div className="soft-half soft-sides@portable soft-double-sides@anchored">
 
