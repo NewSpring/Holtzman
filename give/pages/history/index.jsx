@@ -18,6 +18,7 @@ function getTransactions(data, dispatch) {
       transactions: allFinanicalTransactions(cache: false, mongoId: "${mongoId}", limit: ${size}, skip: ${skip}) {
         id
         date
+        status
         summary
         details {
           id
@@ -162,11 +163,6 @@ export default class Template extends Component {
       transactions.push(this.props.transactions[transaction])
     }
 
-    // transactions = transactions.sort((a, b) => {
-    //   a = new Date(a.date);
-    //   b = new Date(b.date);
-    //   return a>b ? -1 : a<b ? 1 : 0;
-    // })
     transactions = _.sortBy(transactions, "date").reverse()
 
 
