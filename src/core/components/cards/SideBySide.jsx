@@ -109,7 +109,7 @@ export default class Card extends Component {
         let src = image.defaultImage
           if (typeof window != "undefined" && window != null) {
             if (window.matchMedia("(max-width: 480px)").matches) {
-              src = image["1:2"] ? image["1:2"] : image.url
+              src = image["2:1"] ? image["2:1"] : image.url
             } else if (window.matchMedia("(max-width: 730px)").matches) {
               src = image["1:2"] ? image["1:2"] : image.url
             } else if (window.matchMedia("(max-width: 768px)").matches) {
