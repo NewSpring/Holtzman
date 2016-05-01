@@ -81,7 +81,6 @@ const TransactionDetail = ({ transactionDetail, transaction, icon, status }) => 
   </div>
 )
 
-let count = 0;
 const TransactionCard = ({ transactionDetail, transaction }) => {
   let { status } = transaction;
 
@@ -90,11 +89,6 @@ const TransactionCard = ({ transactionDetail, transaction }) => {
     turn on a couple pendings for UI testing
 
   */
-  if (count < 1) {
-    status = 'Pendingsettlement'
-  }
-  count ++
-
   if (status && status.toLowerCase().indexOf('pending') > -1) {
     return (
       <div
@@ -221,8 +215,11 @@ export default class Layout extends Component {
                   return (
                     <div key={key}>
                       {details.map((transactionDetail, i) => {
-
                         if (!transactionDetail.account) {
+                          return null
+                        }
+
+                        if (Number(transactionDetail.amount) <= 0) {
                           return null
                         }
 
