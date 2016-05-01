@@ -90,7 +90,7 @@ export default class Give extends Component {
 
     const mappedPerson = {
       personal: {
-        firstName: person.firstName,
+        firstName: person.nickName || person.firstName,
         lastName: person.lastName,
         email: person.email,
         campus: campus.name
