@@ -92,7 +92,7 @@ export default class Checkbox extends React.Component {
           style={{width: 0}}
         />
 
-      {(function() {
+      {(() => {
           if (!this.props.hideLabel){
             return (
               <Label

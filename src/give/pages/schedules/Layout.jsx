@@ -106,7 +106,7 @@ export default class Layout extends Component {
           <Left scroll={true} classes={["background--light-secondary"]} ref="container">
 
 
-              {(function() {
+              {(() => {
                 if (recoverableSchedules.length) {
                   return (
                     <div className="background--primary soft-half soft-sides@portable soft-double-sides@anchored">
@@ -124,7 +124,7 @@ export default class Layout extends Component {
 
                   )
                 }
-              }())}
+              })()}
 
             <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
               <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">

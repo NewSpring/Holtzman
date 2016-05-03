@@ -26,7 +26,7 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format, donate, 
       to
     </h3>
 
-    {(function() {
+    {(() => {
       // if (accounts.length > 1) {
         return (
           <Forms.Select

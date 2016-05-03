@@ -78,14 +78,14 @@ export default class SearchContainer extends Component {
     const { dispatch } = this.props
     let term = document.getElementById("search").value;
 
-    Promise.all([
-      dispatch(searchActions.searching(true)),
-      dispatch(searchActions.clear()),
-      dispatch(searchActions.term(term)),
-      dispatch(searchActions.toggleLoading()),
-    ]).then(() => {
-      this.getSearch();
-    });
+    // Promise.all([
+    //   dispatch(searchActions.searching(true)),
+    //   dispatch(searchActions.clear()),
+    //   dispatch(searchActions.term(term)),
+    //   dispatch(searchActions.toggleLoading()),
+    // ]).then(() => {
+    //   this.getSearch();
+    // });
   }
 
   loadMore = (event) => {

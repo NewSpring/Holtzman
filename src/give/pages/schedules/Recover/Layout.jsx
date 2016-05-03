@@ -117,7 +117,7 @@ export default class Layout extends Component {
               <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
             </Link>
 
-            {(function() {
+            {(() => {
               let count = 0
               if (recoverableSchedules.length) {
                 return (
@@ -258,7 +258,7 @@ export default class Layout extends Component {
                 </div>
 
               )
-            }())}
+            })()}
 
           </Left>
         </div>

@@ -150,7 +150,7 @@ export default class Select extends Component {
 
     return (
       <div className={inputclasses.join(" ") + ` ${SelectClasses.select}`}>
-        {(function() {
+        {(() => {
           if (!this.props.hideLabel){
             return (
               <Label

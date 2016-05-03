@@ -116,7 +116,7 @@ export default class Layout extends Component {
                           }
                         }()}
 
-                        {(function() {
+                        {(() => {
 
                           if (complete) {
                             return (
@@ -134,7 +134,6 @@ export default class Layout extends Component {
                                 Stop Contribution
                               </h6>
                             )
-
                           }
 
 
@@ -144,7 +143,7 @@ export default class Layout extends Component {
                             </h6>
                           )
 
-                        }())}
+                        })()}
 
                         <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
                           Thank you so much for your contributions! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.

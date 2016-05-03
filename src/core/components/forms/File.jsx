@@ -141,7 +141,7 @@ export default class File extends Component {
 
     return (
       <div className={inputclasses.join(" ")} style={this.props.style || {}}>
-        {(function() {
+        {(() => {
           if (!this.props.hideLabel){
             return (
               <Label

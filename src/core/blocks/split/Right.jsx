@@ -100,7 +100,7 @@ export default class Right extends Component {
     );
   }
 
-  renderInsideRatio(){
+  renderInsideRatio = () => {
 
     return (
       <div className={ this.props.ratioTheme || this.ratioClasses()}>
@@ -109,15 +109,15 @@ export default class Right extends Component {
     )
 
   }
-  renderOutSideRatio(){
+  renderOutSideRatio = () => {
     return (
       <div>
-        {function() {
+        {(() => {
           if (this.props.outsideRatio) {
             return this.props.outsideRatio()
           }
-        }()}
-        {function() {
+        })()}
+        {(() => {
           let styles = this.styles()
 
           styles = {...styles, ...{
@@ -130,12 +130,12 @@ export default class Right extends Component {
               <div className="locked-sides locked-ends background--fill" style={styles}></div>
             )
           }
-        }()}
+        })()}
       </div>
     )
   }
 
-  render () {
+  render() {
 
     const { blur } = this.props
     let Wrapper = DefaultWrapper

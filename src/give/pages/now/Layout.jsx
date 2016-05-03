@@ -80,7 +80,7 @@ const Layout = ({ alive, accounts }, context) => (
           </h4>
           <div className="grid">
 
-            {(function() {
+            {(() => {
 
               if (!alive) { return null }
 
