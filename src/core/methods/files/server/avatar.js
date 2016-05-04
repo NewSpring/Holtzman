@@ -10,7 +10,7 @@ Meteor.methods({
       throw new Meteor.Error("Must be logged in to upload an avatar")
     }
 
-    let user = Meteor.user()
+    let user = Meteor.users.findOne(this.userId)
     user || (user = { services: { rock: {} }})
     const { PersonId } = user.services.rock
 
@@ -28,8 +28,11 @@ Meteor.methods({
     if (upload.statusText) {
       throw new Meteor.Error(upload.statusText)
     }
-
-    api.delete.sync(`BinaryFiles/${PhotoId}`)
+  
+    try {
+      api.delete(`BinaryFiles/${PhotoId}`)
+    } catch (e) {}
+    
 
     return true
   }
