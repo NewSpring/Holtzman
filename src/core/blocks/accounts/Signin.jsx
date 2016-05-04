@@ -116,14 +116,16 @@ class SignIn extends Component {
   submit = (event) => {
     event.preventDefault();
     const { refs } = this
+    let data = {...this.props.data}
     for (let input in refs) {
       const component = refs[input]
       if (component.validate) {
         component.validate()
       }
+      data[input] = component.getValue()
     }
 
-    if (this.props.data.email && this.props.data.password) {
+    if (data.email && data.password) {
       this.props.submit();
     }
 
