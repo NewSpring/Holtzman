@@ -25,7 +25,7 @@ import ChangePayments from "../ChangePayments"
 import { PrimaryButton, SecondaryButton, Guest as TertiaryButton } from "./Buttons"
 
 
-function getPaymentDetails(id, dispatch) {
+function getPaymentDetails(id) {
 
   let query = `
     {
@@ -158,7 +158,8 @@ export default class GiveNow extends Component {
     } else if (!Meteor.userId()){
 
       this.props.dispatch(modal.render(OnBoard, {
-        onFinished: this.renderAfterLogin
+        onSignin: this.getPaymentDetailsAfterLogin,
+        onFinished: this.renderAfterLogin,
       }))
 
       this.props.dispatch(accountsActions.setAccount(true))
@@ -167,6 +168,29 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(navActions.setLevel("MODAL"))
 
+  }
+
+  getPaymentDetailsAfterLogin = () => {
+    const { dispatch } = this.props
+    const id = Meteor.userId();
+    return getPaymentDetails(id)
+      .then(paymentDetails => {
+        if (!paymentDetails.length) {
+          return
+        }
+
+        dispatch(collectionActions.upsertBatch(
+          "savedAccounts", paymentDetails, "id"
+        ));
+
+        return paymentDetails
+      })
+      .then((paymentDetails) => {
+        if (paymentDetails) {
+          const details = _.sortBy(paymentDetails, "date")[paymentDetails.length - 1]
+          this.props.dispatch(giveActions.setAccount(details))
+        }
+      });
   }
 
   giveAsGuest = () => {

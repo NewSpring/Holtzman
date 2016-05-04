@@ -244,7 +244,7 @@ export default class Layout extends Component {
                           <TransactionCard
                             transaction={transaction}
                             transactionDetail={transactionDetail}
-                            key={key}
+                            key={i}
                           />
                         )
                       })}
