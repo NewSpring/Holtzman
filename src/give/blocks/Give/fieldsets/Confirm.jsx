@@ -251,7 +251,7 @@ export default class Confirm extends Component {
   renderPaymentOptions = () => {
     return (
       <div>
-        {function() {
+        {(() => {
           if (this.props.savedAccount.id === null) {
             return (
               <div className="display-block soft-top text-left">
@@ -285,7 +285,7 @@ export default class Confirm extends Component {
               </div>
             )
           }
-        }()}
+        })()}
       </div>
     )
   }

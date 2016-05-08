@@ -24,7 +24,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format, selectV
       selected={selectVal}
     />
 
-    {function() {
+    {(() => {
       if (state.fund) {
         return (
           <div className="display-block">
@@ -47,7 +47,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format, selectV
           </div>
         )
       }
-    }()}
+    })()}
 
 
   </div>

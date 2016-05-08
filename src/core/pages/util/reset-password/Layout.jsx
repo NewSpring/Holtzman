@@ -34,7 +34,7 @@ const Layout = ({ submit, save, state }, context) => (
           Back
         </Link>
 
-        {function() {
+        {(() => {
           let btnClasses = ["push-left"];
           const { newP, newPDup } = state
           if ( !newP || !newPDup){
@@ -48,7 +48,7 @@ const Layout = ({ submit, save, state }, context) => (
               Enter
             </button>
           )
-        }()}
+        })()}
       </Forms.Form>
     </div>
 )

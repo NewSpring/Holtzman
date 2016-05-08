@@ -14,7 +14,7 @@ const Success = ({ total, email, guest, onClick, schedules }) => {
       <div className="push-double-top">
         <SuccessIcon />
         <h3 className="text-primary push-ends">Success!</h3>
-        {function() {
+        {(() => {
           if (schedule) {
             return (
               <p className="text-left">
@@ -28,9 +28,9 @@ const Success = ({ total, email, guest, onClick, schedules }) => {
               Thank you for your contribution of {total} to NewSpring Church. We will email a receipt to {email}
             </p>
           )
-        }()}
+        })()}
 
-        {function() {
+        {(() => {
           if (guest) {
             return (
               <div>
@@ -47,7 +47,7 @@ const Success = ({ total, email, guest, onClick, schedules }) => {
 
             )
           }
-        }()}
+        })()}
         <p className="test-dark-tertiary text-left"><em>
           If you have any questions please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a> and someone will be happy to assist you.
         </em></p>

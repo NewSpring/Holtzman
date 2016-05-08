@@ -152,7 +152,7 @@ export default class Personal extends Component {
           </a>
           */}
 
-          {function() {
+          {(() => {
             let btnClasses = [
               // "push-left"
             ];
@@ -169,7 +169,7 @@ export default class Personal extends Component {
                 Next
               </button>
             )
-          }()}
+          })()}
 
         </div>
 

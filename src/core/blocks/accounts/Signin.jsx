@@ -186,14 +186,14 @@ class SignIn extends Component {
           submit={this.submit}
         >
 
-        {function() {
+        {(() => {
           if (!this.props.account && this.props.alternateAccounts.length) {
             // return null
             return (
               <div className="soft-sides push-back-half-top soft-double-bottom">
                 <h6 className="flush-bottom">
                   It looks like you may have a NewSpring account already!
-                  {function() {
+                  {(() => {
                     if (this.props.alternateAccounts.length === 1) {
 
                       return (
@@ -236,13 +236,13 @@ class SignIn extends Component {
                       </span>
                     )
 
-                  }()}
+                  })()}
                 </h6>
               </div>
             )
 
           }
-        }()}
+        })()}
 
         <div className="soft-sides">
 
@@ -259,7 +259,7 @@ class SignIn extends Component {
 
         </div>
 
-        {function() {
+        {(() => {
           if (!this.props.account && this.props.peopleWithoutAccountEmails.length && this.state.showAlternativePeople) {
             let people = [...this.props.peopleWithoutAccountEmails]
             let classes = [
@@ -387,7 +387,7 @@ class SignIn extends Component {
                 ref="password"
               />
 
-              {function() {
+            {(() => {
                 if (!this.props.account) {
                   return (
                     <div>
@@ -413,10 +413,10 @@ class SignIn extends Component {
                   )
 
                 }
-              }()}
+              })()}
 
 
-              {function() {
+              {(() => {
                 if (!this.props.account) {
 
                   return (
@@ -446,9 +446,9 @@ class SignIn extends Component {
                   )
 
                 }
-              }()}
+              })()}
 
-              {function() {
+              {(() => {
                 const { data } = this.props
                 let btnClasses = [];
 
@@ -463,12 +463,12 @@ class SignIn extends Component {
                     Enter
                   </button>
                 )
-              }()}
+              })()}
             </div>
 
           )
 
-        }()}
+        })()}
 
 
         </Forms.Form>

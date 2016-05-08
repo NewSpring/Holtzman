@@ -154,7 +154,7 @@ export default class Layout extends Component {
             Back
           </Link>
            */}
-         {function() {
+         {(() => {
             let btnClasses = [];
             let ready = true
             if (!ready){
@@ -168,7 +168,7 @@ export default class Layout extends Component {
                 Update
               </button>
             )
-          }()}
+          })()}
         </Forms.Form>
       </div>
     )

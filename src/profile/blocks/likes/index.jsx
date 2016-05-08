@@ -41,7 +41,7 @@ export default class LikesContainer extends Component {
         {likes.map((like, i) => {
           return <LikesItem like={like} key={i} />
         })}
-        {function() {
+        {(() => {
 
           if (!likes.length) {
             return (
@@ -68,7 +68,7 @@ export default class LikesContainer extends Component {
             )
           }
 
-        }()}
+        })()}
       </div>
     );
 

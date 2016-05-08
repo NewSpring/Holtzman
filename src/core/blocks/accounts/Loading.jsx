@@ -13,7 +13,7 @@ const Loading = ({ account }, context) => (
         <div className="floating__item">
           <Spinner />
 
-          {function() {
+          {(() => {
             if (account) {
               return (
                 <h4 className="text-light-primary">Signing you in...</h4>
@@ -23,7 +23,7 @@ const Loading = ({ account }, context) => (
             return (
               <h4 className="text-light-primary">Creating your account</h4>
             )
-          }()}
+          })()}
 
         </div>
       </div>

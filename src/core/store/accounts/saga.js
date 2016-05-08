@@ -1,4 +1,4 @@
-import "regenerator/runtime"
+import "regenerator-runtime/runtime"
 import { take, put, cps, call } from "redux-saga/effects"
 
 import { GraphQL } from "../../graphql"

@@ -167,7 +167,7 @@ export default class Select extends Component {
 
         <select
           ref="apollos-select"
-          id={this.props.id || this.props.ref || this.props.label || this.props.name}
+          id={this.props.id || this.props.label || this.props.name}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }
           className={this.props.inputClasses}
@@ -178,20 +178,20 @@ export default class Select extends Component {
           value={this.props.selected}
 
         >
-          {function() {
+          {(() => {
             if (this.props.placeholder || this.props.includeBlank) {
               return (
                 <option style={{display:"none"}}>{this.props.placeholder || ""}</option>
               )
             }
-          }()}
-          {function() {
+          })()}
+          {(() => {
             if (this.props.deselect) {
               return (
                 <option></option>
               )
             }
-          }()}
+          })()}
           {this.props.items.map((option, key) => {
             return (
               <option
@@ -218,7 +218,7 @@ export default class Select extends Component {
 
 // <ReactSelect
 //   ref="apollos-select"
-//   id={this.props.id || this.props.ref || this.props.label || this.props.name}
+//   id={this.props.id || this.props.label || this.props.name}
 //   placeholder={this.props.placeholder}
 //   name={this.props.name || this.props.label }
 //   className={this.props.inputClasses}

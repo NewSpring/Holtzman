@@ -71,7 +71,7 @@ export default class NavLink extends Component {
         <div className={`floating ${Styles["locked"]}`} >
           <div className="floating__item">
             <i className={iconClasses} style={itemStyle}></i>
-            {function() {
+            {(() => {
               if (navItem.label) {
                 return (
                   <h7 className="display-block">
@@ -79,7 +79,7 @@ export default class NavLink extends Component {
                   </h7>
                 )
               }
-            }()}
+            })()}
 
           </div>
 

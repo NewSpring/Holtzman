@@ -140,7 +140,7 @@ export default class Billing extends Component {
           />
 
           <div className="grid">
-            {function() {
+            {(() => {
               if (!billing.country || billing.country === "US" || billing.country === "CA") {
                 return (
                   <div className="grid__item one-half">
@@ -157,8 +157,8 @@ export default class Billing extends Component {
                   </div>
                 )
               }
-            }()}
-            {function() {
+            })()}
+            {(() => {
               let length = "one-whole"
               if (!billing.country || billing.country === "US" || billing.country === "CA") {
                 length = "one-half"
@@ -176,7 +176,7 @@ export default class Billing extends Component {
                   />
                 </div>
               )
-            }()}
+            })()}
 
 
           </div>
@@ -190,7 +190,7 @@ export default class Billing extends Component {
             Back
           </a>
 
-          {function() {
+          {(() => {
             const { billing } = this.props.data
             let btnClasses = ["push-left"];
             let disabled = false
@@ -206,7 +206,7 @@ export default class Billing extends Component {
                 Next
               </button>
             )
-          }()}
+          })()}
 
         </div>
 

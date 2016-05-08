@@ -99,7 +99,7 @@ const List = ({
       <div className="one-whole text-center soft-double-top soft-bottom">
 
         <div>
-          {function() {
+          {(() => {
           let btnClasses = ["btn--dark-tertiary", "one-whole@handheld", "push-bottom"];
 
           if (done) {
@@ -121,7 +121,7 @@ const List = ({
               Load More Results
             </button>
           )
-        }()}
+        })()}
         </div>
         <h6 className="soft-top">
           <a href={`${Meteor.settings.public.rock.baseURL}Workflows/81`} target="_blank">

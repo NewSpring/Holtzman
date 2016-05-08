@@ -11,8 +11,6 @@ import { Offline } from "../../components/status"
 import AddToCart from "../../blocks/AddToCart"
 
 const Layout = ({ alive, accounts }, context) => (
-
-
     <div>
 
       <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/you_cant_outgive_god2x1.jpg" />
@@ -45,7 +43,7 @@ const Layout = ({ alive, accounts }, context) => (
 
           <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
             <div className="soft-double-ends@anchored">
-              {function() {
+              {(() => {
 
                 if (!alive) {
                   return <Offline />
@@ -60,7 +58,7 @@ const Layout = ({ alive, accounts }, context) => (
                 }
 
                 return <AddToCart accounts={accounts} />
-              }()}
+              })()}
             </div>
           </div>
         </div>

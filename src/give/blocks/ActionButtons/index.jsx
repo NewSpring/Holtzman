@@ -285,7 +285,7 @@ export default class GiveNow extends Component {
             style={this.props.style || {}}
             dataId={this.props.dataId}
           />
-          {function() {
+          {(() => {
             if (!this.props.authorized && !Meteor.userId()) {
               return (
                 <SecondaryButton
@@ -305,7 +305,7 @@ export default class GiveNow extends Component {
                 />
               )
             }
-          }()}
+          })()}
 
           {(() => {
             if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length && !this.props.hideCard) {

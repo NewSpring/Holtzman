@@ -232,7 +232,7 @@ export default class Layout extends Component {
 //   includeBlank={true}
 // />
 
-// {() => {
+// {(() => {
   // if ((accounts && accounts.length > 1) || !accounts.length) {
   //   if (primary.id) {
   //     delete transactions[primary.id]
@@ -255,4 +255,4 @@ export default class Layout extends Component {
   //   </h3>
   // )
 
-// }()}
+// })()}

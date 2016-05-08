@@ -2,7 +2,7 @@
 const Input = ({ searchSubmit, cancel, showCancel }) => (
   <section className="soft-double-ends background--light-primary">
 
-    {function() {
+    {(() => {
       if (showCancel) {
         return (
           <button onClick={cancel} className="locked-right push-right push-half-top">
@@ -10,7 +10,7 @@ const Input = ({ searchSubmit, cancel, showCancel }) => (
           </button>
         )
       }
-    }()}
+    })()}
 
     <form onSubmit={searchSubmit} className={`hard ${showCancel ? "push-double-right" : ""}`}>
       <div className={`input hard-bottom ${showCancel ? "push-right" : ""}`}>

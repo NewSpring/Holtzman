@@ -354,7 +354,7 @@ export default class ListContainer extends Component {
 
           <Right mobile={false}>
             <div className="locked-ends locked-sides" style={{zIndex: 5}}>
-              {function() {
+              {(() => {
                 switch (this.state.status) {
                   case "loading":
                     return null
@@ -384,7 +384,7 @@ export default class ListContainer extends Component {
 
                 return null
 
-              }()}
+              })()}
 
             </div>
 
@@ -393,7 +393,7 @@ export default class ListContainer extends Component {
         </Split>
         <Left scroll={true} classes={["background--light-primary"]}>
 
-          {function() {
+          {(() => {
             switch (this.state.status) {
               case "error":
                 return <Err msg="Looks like there was a problem finding a group" />
@@ -405,7 +405,7 @@ export default class ListContainer extends Component {
             return (
               <div>{children}</div>
             )
-          }()}
+          })()}
 
         </Left>
 

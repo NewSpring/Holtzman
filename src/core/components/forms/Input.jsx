@@ -207,7 +207,7 @@ export default class Input extends Component {
 
         <input
           ref="apollos-input"
-          id={this.props.id || this.props.ref || this.props.name || this.props.label}
+          id={this.props.id || this.props.name || this.props.label}
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }

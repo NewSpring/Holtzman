@@ -64,7 +64,7 @@ export default class Layout extends Component {
             </Link>
             <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
               <div className="soft-double-ends@anchored">
-                {function() {
+                {(() => {
                   const { person, transaction, account } = this.props
 
                   if (!transaction) {
@@ -85,14 +85,14 @@ export default class Layout extends Component {
 
                       <h6 className="push-bottom text-dark-tertiary">{person.firstName} {person.lastName}</h6>
 
-                      {function() {
+                      {(() => {
                         const detail = transaction.payment
                         if (detail && detail.accountNumber) {
                           return (
                             <h4 className="text-dark-secondary">
                               {detail.accountNumber.slice(-4)}&nbsp;
 
-                              {function() {
+                              {(() => {
                                 if (detail.paymentType && detail.paymentType === "ACH") {
                                   return (
                                     <AccountType width="30px" height="20px" type="Bank"/>
@@ -102,18 +102,18 @@ export default class Layout extends Component {
                                     <AccountType width="30px" height="20px" type={detail.paymentType} />
                                   )
                                 }
-                              }()}
+                              })()}
 
                             </h4>
                           )
                         }
-                      }()}
+                      })()}
                       <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
                         Thank you so much for your contributions! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
                       </p>
                     </div>
                   )
-                }()}
+                })()}
               </div>
             </div>
           </div>

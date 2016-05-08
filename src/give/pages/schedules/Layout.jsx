@@ -141,7 +141,7 @@ export default class Layout extends Component {
               </h4>
 
 
-              {function() {
+              {(() => {
 
 
                 if (!Meteor.user()) {
@@ -246,7 +246,7 @@ export default class Layout extends Component {
                     </p>
                   </div>
                 )
-              }()}
+              })()}
             </div>
 
 

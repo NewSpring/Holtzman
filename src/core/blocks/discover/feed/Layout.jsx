@@ -30,7 +30,7 @@ const Layout = ({ featuredItem, popularItems, recommendedItems, textItems }) => 
         <h6 className="push-left soft-half-bottom soft-top">Recommended by NewSpring</h6>
       </section>
 
-      {function() {
+      {(() => {
         if (featuredItem) {
           return (
             <DiscoverHero
@@ -40,7 +40,7 @@ const Layout = ({ featuredItem, popularItems, recommendedItems, textItems }) => 
             />
           )
         }
-      }()}
+      })()}
 
 
       <section className="soft-half background--light-secondary">

@@ -88,7 +88,9 @@ export default class RecoverSchedules extends Component {
       <Recover
         schedules={arr}
         hide={this.close}
-        onClick={() => {this.setState({state: "remind"})}}
+        onClick={() => {
+          return this.setState({state: "remind"});
+        }}
       />
     )
   }
