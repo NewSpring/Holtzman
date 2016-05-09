@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime"
 
 import { Component, PropTypes} from "react"
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
-import { Provider } from "react-apollo"
+import { ApolloProvider } from "react-apollo"
 import thunk from "redux-thunk"
 import sagaMiddleware from "redux-saga"
 
