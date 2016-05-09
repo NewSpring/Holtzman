@@ -73,7 +73,7 @@ const createReduxStore = (initialState, history) => {
 //     )
 //   }
 // }
-const wrapper = Provider
+const wrapper = ApolloProvider
 
 export {
   wrapper,
