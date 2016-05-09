@@ -1,7 +1,7 @@
 
 // XXX figure out why enzyme needs this
 import * as React from "react";
-import { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
+import { HTMLProps, SyntheticEvent } from "react";
 import * as ReactDom from "react-dom";
 // XXX refactor with just lodash.assign / we get typings for lodash.assign
 import { assign } from "lodash";
@@ -46,7 +46,7 @@ export declare interface InputState {
   status: string;
 };
 
-export default class Input extends Component<InputProps, {}> {
+export default class Input extends React.Component<InputProps, {}> {
 
   private interval: number;
   private _previousValue: string;

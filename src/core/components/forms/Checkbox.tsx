@@ -1,6 +1,6 @@
 
 import * as React from "react";
-import { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
+import { HTMLProps, SyntheticEvent } from "react";
 import * as ReactDom from "react-dom";
 
 import Label from "./components/Label";
@@ -26,7 +26,7 @@ export declare interface CheckboxState {
   error: boolean;
 };
 
-export default class Checkbox extends Component<CheckboxProps, {}> {
+export default class Checkbox extends React.Component<CheckboxProps, {}> {
 
   public state: CheckboxState = {
     status: false,

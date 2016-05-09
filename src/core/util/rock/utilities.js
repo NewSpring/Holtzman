@@ -156,7 +156,7 @@ if (Meteor.isServer) {
 }
 
 
-export default {
+export {
   api,
   parseEndpoint,
 }

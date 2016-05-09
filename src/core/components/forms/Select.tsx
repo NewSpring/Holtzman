@@ -1,6 +1,6 @@
 
 import * as React from "react";
-import { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
+import { HTMLProps, SyntheticEvent } from "react";
 import * as ReactDom from "react-dom";
 // import ReactSelect from "react-select";
 
@@ -44,7 +44,7 @@ export declare interface SelectState {
   status: string;
 };
 
-export default class Select extends Component<SelectProps, {}> {
+export default class Select extends React.Component<SelectProps, {}> {
 
   public state: SelectState = {
     active: false,
@@ -205,7 +205,7 @@ export default class Select extends Component<SelectProps, {}> {
               />
             )
           }
-        })()};
+        })()}
 
         <select
           ref="apollos-select"

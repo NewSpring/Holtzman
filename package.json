@@ -2,14 +2,14 @@
   "name": "apollos",
   "version": "1.0.7",
   "description": "A reactive framework for incredible applications",
-  "main": "src/core/index.js",
+  "main": "lib/core/index.js",
   "scripts": {
     "lint": "tslint src/**/*.ts && tslint test/**/*.ts",
     "lint:to:fix": "tslint src/**/*.ts* && tslint test/**/*.ts*",
     "pretest": "typings i && rm -rf ./lib && npm run build",
     "clean": "rm -rf ./lib && rm -rf ./.tmp && rm -rf ./.test",
-    "merge": "cp -R src ./lib && cp -R ./.tmp/src ./lib && cp -R ./.tmp/ ./.test/",
-    "build": "npm run clean && tsc && npm run merge && ./node_modules/.bin/babel ./lib -d lib && cp -R ./lib ./.test/src",
+    "merge": "cp -R ./src ./.tmp && cp -R ./.tmp/ ./.test/",
+    "build": "npm run clean && tsc && npm run merge && ./node_modules/.bin/babel ./.tmp/src -d lib",
     "postinstall": "npm run build",
     "ci-test": "mocha --require ./test/fixtures/setup.js --reporter mocha-junit-reporter --full-trace --recursive --reporter-options mochaFile=$CIRCLE_TEST_REPORTS/mocha/junit.xml ./.test/test",
     "test": "mocha --require ./test/fixtures/setup.js --reporter spec --full-trace --recursive ./.test/test",
@@ -60,9 +60,9 @@
     "lodash": "^4.8.2",
     "mocha": "^2.3.4",
     "mocha-junit-reporter": "^1.10.0",
-    "react": "^15.0.2",
+    "react": "^0.14.*",
     "react-addons-test-utils": "^0.14.8",
-    "react-dom": "^15.0.2",
+    "react-dom": "^0.14.*",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "redux-logger": "^2.6.1",
@@ -74,8 +74,8 @@
     "typescript-require": "^0.2.9-1"
   },
   "peerDependencies": {
-    "react": "^15.0.2 || ^14.0.0",
-    "react-dom": "^15.0.2"
+    "react": "^15.0.2 || ^0.14.*",
+    "react-dom": "^15.0.2 || ^0.14.*"
   },
   "dependencies": {
     "es6-promise": "^3.1.2",
