@@ -295,8 +295,8 @@ export default class GiveNow extends Component {
               )
             }
 
-          }()}
-          {() => {
+          })()}
+          {(() => {
             if (!this.props.disabledGuest && !Meteor.userId()) {
               return (
                 <TertiaryButton
@@ -316,7 +316,7 @@ export default class GiveNow extends Component {
                 />
               )
             }
-          }())}
+          })()}
 
         </span>
 

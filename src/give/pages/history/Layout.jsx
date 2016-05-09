@@ -60,7 +60,7 @@ const TransactionDetail = ({ transactionDetail, transaction, icon, status }) => 
           }}
         >
           {monentize(transactionDetail.amount)}
-          {() => {
+          {(() => {
             if (icon) {
               return (
                 <span className="text-primary icon-arrow-next locked" style={{
@@ -69,7 +69,7 @@ const TransactionDetail = ({ transactionDetail, transaction, icon, status }) => 
                 }}/>
               )
             }
-          }()}
+          })()}
 
         </h4>
 
