@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from "react"
+import { Component, PropTypes} from "react"
 import ReactDom from "react-dom"
 const { span } = React.DOM
 

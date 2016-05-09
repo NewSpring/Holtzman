@@ -1,5 +1,5 @@
-import * as React from "react"
-import { Component, PropTypes } from 'react'
+import * as React from "react";
+import { Component, PropTypes } from "react";
 
 function getClasses(mergeClasses: Array<string>): string{
   let classes: string[] = [

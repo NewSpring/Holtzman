@@ -6,7 +6,7 @@
 import { assign } from "lodash";
 import { State, createReducer } from "../utilities";
 
-export interface ModalState {
+export interface ModalState extends State {
   visible: boolean;
   state: string;
   content: string;

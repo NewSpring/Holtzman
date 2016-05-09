@@ -7,7 +7,7 @@
     "declaration": true,
     "noImplicitAny": false,
     "rootDir": ".",
-    "outDir": "dist",
+    "outDir": ".tmp",
     "allowSyntheticDefaultImports": true,
     "pretty": true,
     "removeComments": true,
@@ -17,7 +17,7 @@
   "exclude": [
     "typings",
     "node_modules",
-    "dist",
+    "lib",
     "tmp",
     "test/fixtures"
   ]

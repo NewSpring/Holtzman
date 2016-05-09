@@ -209,7 +209,7 @@ export default class Select extends Component<SelectProps, {}> {
 
         <select
           ref="apollos-select"
-          id={this.props.id || this.props.ref || this.props.label || this.props.name}
+          id={this.props.id || this.props.label || this.props.name}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }
           className={this.props.inputClasses}
@@ -264,7 +264,7 @@ export default class Select extends Component<SelectProps, {}> {
 
 // <ReactSelect
 //   ref="apollos-select"
-//   id={this.props.id || this.props.ref || this.props.label || this.props.name}
+//   id={this.props.id || this.props.label || this.props.name}
 //   placeholder={this.props.placeholder}
 //   name={this.props.name || this.props.label }
 //   className={this.props.inputClasses}

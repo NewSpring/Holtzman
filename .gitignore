@@ -36,5 +36,6 @@ dist
 coverage
 _book
 typings/
-tmp
+.tmp
 lib
+.test
