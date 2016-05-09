@@ -39,7 +39,7 @@ export default class Checkbox extends Component<CheckboxProps, {}> {
 
   disabled = (): boolean => {
     if (this.props.disabled) {
-      return true;
+      return this.props.disabled;
     }
     return false;
   };
