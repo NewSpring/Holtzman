@@ -8,6 +8,7 @@ import ApolloClient, {
   createNetworkInterface,
   readQueryFromStore,
 } from "apollo-client";
+import gql from "apollo-client/lib/src/gql";
 import { AuthTokenHeaderMiddleware } from "apollo-client/lib/src/middleware"
 import { addReducer, addMiddleware } from "../store";
 import { connect } from "react-apollo";
@@ -44,4 +45,5 @@ export {
   apolloClient,
   readQueryFromStore,
   connect,
+  gql,
 };
