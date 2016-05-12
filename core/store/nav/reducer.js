@@ -27,7 +27,7 @@ const isEqual = (path) => {
   return false
 }
 
-const profileLink = !Meteor.isCordova ? "/profile" : "/profile/settings"
+const profileLink = Meteor.isCordova ? "/profile" : "/profile/settings"
 
 let links = {
   TOP:[
@@ -85,14 +85,14 @@ let links = {
 }
 
 // use basic nav for web right now
-// if (!Meteor.isCordova) {
-//   links = {
-//     TOP: links.TOP,
-//     CONTENT: links.TOP,
-//     BASIC_CONTENT :links.TOP,
-//     MODAL: links.MODAL
-//   }
-// }
+if (!Meteor.isCordova) {
+  links = {
+    TOP: links.TOP,
+    CONTENT: links.TOP,
+    BASIC_CONTENT :links.TOP,
+    MODAL: links.MODAL
+  }
+}
 
 
 const initial = { level: "TOP", visible: true, links: links.TOP}

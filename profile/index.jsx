@@ -12,13 +12,13 @@ const Root = ({ children }) => (
 
 export default {
   path: "profile",
-  // onEnter: (_, replaceState) => {
-  //   if (!Meteor.isCordova) {
-  //     if (_.location.pathname === "/profile" || _.location.pathname === "/profile/") {
-  //       replaceState(null, "/profile/settings")
-  //     }
-  //   }
-  // },
+  onEnter: (_, replaceState) => {
+    if (!Meteor.isCordova) {
+      if (_.location.pathname === "/profile" || _.location.pathname === "/profile/") {
+        replaceState(null, "/profile/settings")
+      }
+    }
+  },
   component: Root,
   indexRoute: { component: Home },
   childRoutes: Routes
