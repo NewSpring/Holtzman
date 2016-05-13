@@ -19,5 +19,5 @@ test:
     - npm run posttest
   post:
     - npm run coverage
-    - cp -R ./.test/coverage/ ./
-    - coveralls < ./coverage/lcov.info
+    # - cp -R ./.test/coverage/ ./
+    # - coveralls < ./coverage/lcov.info
