@@ -19,4 +19,4 @@ test:
     - npm run posttest
   post:
     - npm run coverage
-    - coveralls < ./coverage/lcov.info
+    - coveralls < ./.test/coverage/lcov.info
