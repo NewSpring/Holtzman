@@ -1,5 +1,5 @@
 
-import * as React from "react";
+// import  from "react";
 import { HTMLProps } from "react";
 
 // import Styles from "./spinner.css"

@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "tslint src/**/*.ts && tslint test/**/*.ts",
     "lint:to:fix": "tslint src/**/*.ts* && tslint test/**/*.ts*",
-    "pretest": "typings i && rm -rf ./lib && npm run build",
+    "pretest": "typings i && rm -rf ./lib ./.test && npm run build && ./node_modules/.bin/babel ./.test -d ./.test",
     "clean": "rm -rf ./lib && rm -rf ./.tmp && rm -rf ./.test",
     "merge": "cp -R ./src ./.tmp && cp -R ./.tmp/ ./.test/",
     "build": "npm run clean && tsc && npm run merge && ./node_modules/.bin/babel ./.tmp/src -d lib",

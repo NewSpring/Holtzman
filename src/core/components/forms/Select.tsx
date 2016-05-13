@@ -1,8 +1,6 @@
 
-import * as React from "react";
-import { HTMLProps, SyntheticEvent } from "react";
-import * as ReactDom from "react-dom";
-// import ReactSelect from "react-select";
+import { Component, HTMLProps, SyntheticEvent  } from "react";
+import ReactDom from "react-dom";
 
 import Label from "./components/Label";
 
@@ -44,7 +42,7 @@ export declare interface SelectState {
   status: string;
 };
 
-export default class Select extends React.Component<SelectProps, {}> {
+export default class Select extends Component<SelectProps, {}> {
 
   public state: SelectState = {
     active: false,
