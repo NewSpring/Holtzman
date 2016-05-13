@@ -49,6 +49,7 @@
     "babel-preset-meteor": "^6.6.6",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
+    "babel-runtime": "^6.6.1",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.4.1",
     "coveralls": "^2.11.9",
