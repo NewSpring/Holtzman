@@ -2,7 +2,7 @@ import { StyleSheet } from "aphrodite";
 
 const keyframes = {
   "from": {
-    transform: "rotate(0deg)"
+    transform: "rotate(0deg)",
   },
   "to": {
     transform: "rotate(360deg)",
@@ -18,7 +18,7 @@ export default StyleSheet.create({
 
     borderRadius: "50%",
     display: "inline-block",
-    borderColor:" #6BAC43 transparent #6BAC43 #6BAC43",
+    borderColor: "#6BAC43 transparent #6BAC43 #6BAC43",
 
     width: "60px",
     height: "60px",

@@ -10,11 +10,18 @@ const { expect, assert } = chai;
 
 import Spinner from "./../../../../src/core/components/loading/Spinner";
 
+
+function hasRegexClass(wrapper: ShallowWrapper<any, any>, klass: RegExp): boolean {
+  const html = wrapper.html();
+  return html.match(klass).length > 0;
+};
+
 describe("<Spinner /> component", () => {
 
  it("has the correct classname", () => {
     const wrapper = shallow(<Spinner />);
-    expect(wrapper.hasClass("loader")).to.equal(true);
+    console.log(wrapper.html())
+    expect(hasRegexClass(wrapper, /loader/)).to.equal(true);
   });
 
   it("can apply the theme", () => {
@@ -30,7 +37,8 @@ describe("<Spinner /> component", () => {
   it("can have extra classes passed to it", () => {
     const wrapper = shallow(<Spinner classes={["foobar"]} />);
     expect(wrapper.hasClass("foobar")).to.equal(true);
-    expect(wrapper.hasClass("loader")).to.equal(true);
+    // expect(wrapper.hasClass("loader")).to.equal(true);
+    expect(hasRegexClass(wrapper, /loader/)).to.equal(true);
   });
 
   it("can set independent styles", () => {
