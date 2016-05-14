@@ -1,12 +1,14 @@
 
 // import  from "react";
 import { HTMLProps } from "react";
+import { css } from "aphrodite";
 
-// import Styles from "./spinner.css"
+import styles from "./spinner-css"
 
 function getClasses(mergeClasses: string[]): string {
   let classes: string[] = [
-    "loader"
+    // "loader"
+    css(styles.loader)
   ];
 
   if (mergeClasses) {

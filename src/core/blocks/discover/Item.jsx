@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react"
 import { Link } from "react-router"
 
 import { ImageLoader } from "../../components/loading"
-import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
+import LoadingStyles from "../../components/loading/FeedItemSkeleton-css"
 
 import inAppLink from "../../util/inAppLink"
 

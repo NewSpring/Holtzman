@@ -1,11 +1,10 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 import { Motion, spring, presets } from "react-motion";
-
+import { css } from "aphrodite";
 import { modal as modalActions, nav as navActions } from "../../store"
 
 import Modal from "./Modal"
-import offset from "../../blocks/nav/offset.css"
 import styles from "./modal.css"
 
 

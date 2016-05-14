@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import { ImageLoader } from "../../components/loading"
-import Styles from "../../components/loading/FeedItemSkeleton.css"
+import Styles from "../../components/loading/FeedItemSkeleton-css"
 
 import Hover from "./right.css"
 

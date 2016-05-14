@@ -1,7 +1,8 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
+import { css } from "aphrodite";
 
-import styles from "../nav/offset.css"
+import styles from "../nav/offset-css"
 
 import Right from "./Right"
 import Left from "./Left"
@@ -38,7 +39,7 @@ export default class SplitContainer extends Component {
     }
 
     if (this.props.navigation.visible && this.props.nav) {
-      classes.push(styles["offset"])
+      classes.push(css(styles["offset"]))
     }
 
     return classes.join(" ");

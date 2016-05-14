@@ -3,7 +3,7 @@ import Moment from "moment"
 import { Link } from "react-router"
 
 import { ImageLoader } from "../../../core/components/loading"
-import LoadingStyles from "../../../core/components/loading/FeedItemSkeleton.css"
+import LoadingStyles from "../../../core/components/loading/FeedItemSkeleton-css"
 
 import inAppLink from "../../../core/util/inAppLink"
 

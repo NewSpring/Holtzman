@@ -4,7 +4,7 @@ import { Link } from "react-router"
 import { VelocityTransitionGroup } from "velocity-react"
 
 import { ImageLoader } from "../../components/loading"
-import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
+import LoadingStyles from "../../components/loading/FeedItemSkeleton-css"
 
 
 const ExternalLinkWrapper = (props) => {

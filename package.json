@@ -79,6 +79,7 @@
     "react-dom": "^15.0.2 || ^0.14.*"
   },
   "dependencies": {
+    "aphrodite": "git+https://github.com/NewSpring/aphrodite.git#release",
     "es6-promise": "^3.1.2",
     "fibers": "^1.0.13",
     "google-map-react": "^0.10.5",

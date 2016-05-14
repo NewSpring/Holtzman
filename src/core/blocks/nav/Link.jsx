@@ -1,8 +1,9 @@
 import { Component, PropTypes } from "react"
 import ReactDom from "react-dom"
 import { routeActions } from "../../store/routing"
+import { css } from "aphrodite";
 
-import Styles from "./nav.css"
+import styles from "./nav-css";
 
 export default class NavLink extends Component {
 
@@ -21,7 +22,8 @@ export default class NavLink extends Component {
       "soft-sides@handheld",
       "soft-half-ends@lap-and-up",
       "one-whole@lap-and-up",
-      "plain"
+      "plain",
+      css(styles.button),
     ];
 
     if (navItem.isActive && navItem.isActive(this.props)) {
@@ -53,7 +55,7 @@ export default class NavLink extends Component {
   }
 
   render () {
-    const iconClasses = `${this.props.navItem.icon} display-block`;
+    const iconClasses = `${this.props.navItem.icon} display-block ${css(styles.i)}`;
     let { navItem } = this.props
 
     let itemStyle = {}
@@ -68,7 +70,7 @@ export default class NavLink extends Component {
         onClick={this.handleAction}
         style={{minHeight: "40px"}}
       >
-        <div className={`floating ${Styles["locked"]}`} >
+        <div className={`floating locked@lap-and-up`} >
           <div className="floating__item">
             <i className={iconClasses} style={itemStyle}></i>
             {(() => {

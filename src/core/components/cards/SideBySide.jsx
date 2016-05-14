@@ -3,7 +3,7 @@ import { Link } from "react-router"
 
 import { ImageLoader } from "../loading"
 
-import Styles from "../loading/FeedItemSkeleton.css"
+import Styles from "../loading/FeedItemSkeleton-css"
 
 let Wrapper = (props) => (
   <div {...this.props}>

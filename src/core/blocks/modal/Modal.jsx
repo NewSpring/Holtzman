@@ -1,8 +1,9 @@
 import { Component, PropTypes} from "react";
-import {VelocityComponent } from "velocity-react";
+import { VelocityComponent } from "velocity-react";
+import { css } from "aphrodite";
 
 import styles from "./modal.css"
-import offsetStyles from "../nav/offset.css"
+import offsetStyles from "../nav/offset-css"
 
 export default class SideModal extends Component {
 
@@ -84,7 +85,7 @@ export default class SideModal extends Component {
     }
 
     if (offset) {
-      classList.push(offsetStyles["offset"])
+      classList.push(css(offsetStyles["offset"]))
     }
 
     return classList.join(" ");
