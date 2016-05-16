@@ -5,7 +5,8 @@ import Moment from "moment"
 import ReactDOM from "react-dom"
 
 import Input from "./Input"
-import Styles from "./date.css"
+// global styles
+import Styles from "./date-css"
 
 
 export default class DateComponent extends Component {
@@ -93,6 +94,7 @@ export default class DateComponent extends Component {
 
     return (
       <div className="display-inline-block" style={{position: "relative"}}>
+        <Styles />
         <div style={{position: "relative"}}>
           <Input
             {...this.props}

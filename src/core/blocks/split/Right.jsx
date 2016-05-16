@@ -1,9 +1,11 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
+import { css } from "aphrodite";
+
 import { ImageLoader } from "../../components/loading"
 import Styles from "../../components/loading/FeedItemSkeleton-css"
 
-import Hover from "./right.css"
+import Hover from "./right-css"
 
 const DefaultWrapper = (props) => (
   <section {...props} className={props.imageclasses.join(" ")}>{props.children}</section>
@@ -29,7 +31,7 @@ export default class Right extends Component {
       "panel__item--right",
       "hard",
       "flush",
-      Hover.right,
+      css(Hover.right),
       "transition"
     ];
 

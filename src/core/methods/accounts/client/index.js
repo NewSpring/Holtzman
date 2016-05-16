@@ -9,7 +9,7 @@ import updateHome from "./updateHome"
 import forceReset from "./forceReset"
 import recover from "./recover"
 
-export default {
+export {
   available,
   login,
   signup,

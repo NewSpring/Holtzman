@@ -1,5 +1,3 @@
-import "regenerator-runtime/runtime"
-
 import liked from "./liked"
 import modal from "./modal"
 import nav from "./nav"

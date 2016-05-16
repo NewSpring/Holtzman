@@ -1,11 +1,12 @@
 
 import { Component, HTMLProps, SyntheticEvent  } from "react";
 import ReactDom from "react-dom";
+import { css } from "aphrodite";
 
 import Label from "./components/Label";
 
 // XXX remove need of css
-// import SelectClasses from "./select.css";
+import SelectClasses from "./select-css";
 
 export declare interface SelectItem {
   value: string;
@@ -186,7 +187,7 @@ export default class Select extends Component<SelectProps, {}> {
     if (this.props.selected) inputclasses.push("input--active");
 
     return (
-      <div className={inputclasses.join(" ")}>
+      <div className={inputclasses.join(" ") + ` ${css(SelectClasses.select)}`}>
         {(() => {
           if (!this.props.hideLabel){
             return (

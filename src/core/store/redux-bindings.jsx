@@ -1,5 +1,3 @@
-// import "regenerator-runtime/runtime";
-
 import {
   Component,
   PropTypes,
@@ -16,7 +14,6 @@ import {
   Provider,
 } from "react-redux";
 
-// import sagaMiddleware from "redux-saga";
 import Global from "../blocks/global";
 
 import {
@@ -51,11 +48,12 @@ const createReduxStore = (initialState, history) => {
 
   let sharedMiddlewares = [...middlewares];
 
+  const sagaMiddleware = require("redux-saga").default;
   const reduxRouterMiddleware = syncHistory(history);
   let sharedCompose = [
     applyMiddleware(
       ...sharedMiddlewares,
-      // sagaMiddleware(...convertedSagas),
+      sagaMiddleware(...convertedSagas),
       reduxRouterMiddleware
     ),
   ];

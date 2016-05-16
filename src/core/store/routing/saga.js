@@ -1,8 +1,6 @@
-
-import "regenerator-runtime/runtime"
 import { take, put, cps } from "redux-saga/effects"
 
-import { routing as log } from "../../methods"
+import log from "../../methods/routing/client"
 import { addSaga } from "../utilities"
 
 addSaga(function* logInitRoute() {

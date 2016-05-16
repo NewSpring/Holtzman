@@ -1,11 +1,13 @@
 import { Component, PropTypes} from "react"
 import Moment from "moment"
+import { css } from "aphrodite";
+
 import { VelocityComponent } from "velocity-react"
 
 import GiveNow from "../ActionButtons"
 import { Forms, Loading } from "../../../core/components"
 
-import Styles from "./styles.css"
+import Styles from "./styles-css"
 // <div className="display-inline-block">
 //
 //
@@ -18,7 +20,7 @@ import Styles from "./styles.css"
 //     hideLabel={true}
 //     ref="date"
 //     classes={["soft-bottom", "input--active", "display-inline-block"]}
-//     inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
+//     inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
 //     placeholder="select date"
 //     style={{width: "200px"}}
 //   />
@@ -84,7 +86,7 @@ export default class Layout extends Component {
               hideLabel={true}
               ref="primary-account"
               classes={["soft-bottom", "input--active", "display-inline-block"]}
-              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
+              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
               placeholder="$0.00"
               validate={save}
               format={format}
@@ -101,7 +103,7 @@ export default class Layout extends Component {
               id={`select`}
               hideLabel={true}
               ref="select-account"
-              classes={["soft-bottom", "display-inline-block", Styles.select]}
+              classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
               inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary`}
               placeholder="select fund here"
               onChange={setFund}
@@ -121,7 +123,7 @@ export default class Layout extends Component {
               id={`schedules`}
               hideLabel={true}
               ref="schedules"
-              classes={["soft-bottom", "display-inline-block", Styles.select]}
+              classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
               inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary`}
               includeBlank={true}
               placeholder="choose frequency"
@@ -138,7 +140,7 @@ export default class Layout extends Component {
               hideLabel={true}
               ref="start-date"
               classes={["soft-bottom", "input--active", "display-inline-block"]}
-              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
+              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
               placeholder="select date"
               past={false}
               today={false}
@@ -189,7 +191,7 @@ export default class Layout extends Component {
               hideLabel={true}
               ref="primary-account"
               classes={["soft-bottom", "input--active", "display-inline-block"]}
-              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
+              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
               placeholder="$0.00"
               validate={save}
               format={format}
@@ -208,7 +210,7 @@ export default class Layout extends Component {
               hideLabel={true}
               ref="start-date"
               classes={["soft-bottom", "input--active", "display-inline-block"]}
-              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
+              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
               placeholder="select date"
               past={false}
               today={false}

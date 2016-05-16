@@ -1,4 +1,3 @@
-
 declare module 'aphrodite' {
 
   namespace StyleSheet {

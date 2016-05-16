@@ -70,7 +70,7 @@ export default class NavLink extends Component {
         onClick={this.handleAction}
         style={{minHeight: "40px"}}
       >
-        <div className={`floating locked@lap-and-up`} >
+        <div className={`floating`} >
           <div className="floating__item">
             <i className={iconClasses} style={itemStyle}></i>
             {(() => {

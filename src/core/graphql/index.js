@@ -1,6 +1,6 @@
 
 import { Lokka } from "lokka"
-import { Promise } from "es6-promise"
+// import { Promise } from "es6-promise"
 
 const LokkaTransport = class {
 

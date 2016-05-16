@@ -8,7 +8,6 @@ import { give as giveActions } from "../../store"
 
 
 import Layout from "./Layout"
-import Square from "./Square"
 
 
 // We only care about the give state
