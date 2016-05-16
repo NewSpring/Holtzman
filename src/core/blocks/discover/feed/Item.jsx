@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 
 import { ImageLoader } from "../../../components/loading"
-import LoadingStyles from "../../../components/loading/FeedItemSkeleton.css"
+import LoadingStyles from "../../../components/loading/FeedItemSkeleton-css"
 
 import inAppLink from "../../../util/inAppLink"
 

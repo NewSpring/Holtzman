@@ -195,7 +195,7 @@ export default class Layout extends Component {
                             </div>
 
 
-                            {() => {
+                            {(() => {
                               if (Number(schedule.id) === this.state.expandedSchedule) {
                                 return (
                                   <div className="text-light-primary soft outlined--light outlined--top flush one-whole">
@@ -211,7 +211,7 @@ export default class Layout extends Component {
                                   </div>
                                 )
                               }
-                            }()}
+                            })()}
 
 
                           </div>
@@ -258,7 +258,7 @@ export default class Layout extends Component {
                 </div>
 
               )
-            }())}
+            })()}
 
           </Left>
         </div>

@@ -45,7 +45,7 @@ const Layout = ({ submit, save, state }, context) => (
           Back
         </Link>
          */}
-        {() => {
+         {(() => {
           let btnClasses = [];
           const { current, newP, newPDup } = state
           if (!current || !newP || !newPDup){
@@ -59,7 +59,7 @@ const Layout = ({ submit, save, state }, context) => (
               Enter
             </button>
           )
-        }()}
+        })()}
       </Forms.Form>
     </div>
 )

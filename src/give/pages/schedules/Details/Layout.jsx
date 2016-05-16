@@ -71,7 +71,7 @@ export default class Layout extends Component {
               </Link>
               <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
                 <div className="soft-double-ends@anchored">
-                  {() => {
+                  {(() => {
 
                     if (!schedule) {
                       // loading
@@ -92,14 +92,14 @@ export default class Layout extends Component {
                         <h1 className="text-dark-primary">{this.monentize(schedule.details[0].amount)}</h1>
 
 
-                        {() => {
+                        {(() => {
                           const detail = schedule.payment
                           if (detail && detail.accountNumber) {
                             return (
                               <h4 className="text-dark-secondary soft-half-top">
                                 {detail.accountNumber.slice(-4)}&nbsp;
 
-                                {() => {
+                                {(() => {
                                   if (detail.paymentType && detail.paymentType === "ACH") {
                                     return (
                                       <AccountType width="30px" height="20px" type="Bank"/>
@@ -109,12 +109,12 @@ export default class Layout extends Component {
                                       <AccountType width="30px" height="20px" type={detail.paymentType} />
                                     )
                                   }
-                                }()}
+                                })()}
 
                               </h4>
                             )
                           }
-                        }()}
+                        })()}
 
                         {(() => {
 
@@ -134,7 +134,6 @@ export default class Layout extends Component {
                                 Stop Contribution
                               </h6>
                             )
-
                           }
 
 
@@ -144,7 +143,7 @@ export default class Layout extends Component {
                             </h6>
                           )
 
-                        }())}
+                        })()}
 
                         <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
                           Thank you so much for your contributions! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
@@ -152,7 +151,7 @@ export default class Layout extends Component {
                       </div>
                     )
 
-                  }()}
+                  })()}
 
                 </div>
               </div>
@@ -230,7 +229,7 @@ export default class Layout extends Component {
   //       {schedule.payment.accountNumber.slice(-4)}
   //     </span>
   //   </h3>
-  //   {() => {
+  //   {(() => {
   //     if (state.isActive) {
   //       return (
   //         <button className="btn--alert btn--thin btn--small" onClick={stop}>
@@ -238,7 +237,7 @@ export default class Layout extends Component {
   //         </button>
   //       )
   //     }
-  //   }()}
+  //   })()}
   // </div>
   //
   // <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">

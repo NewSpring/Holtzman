@@ -1,9 +1,11 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
-import { ImageLoader } from "../../components/loading"
-import Styles from "../../components/loading/FeedItemSkeleton.css"
+import { css } from "aphrodite";
 
-import Hover from "./right.css"
+import { ImageLoader } from "../../components/loading"
+import Styles from "../../components/loading/FeedItemSkeleton-css"
+
+import Hover from "./right-css"
 
 const DefaultWrapper = (props) => (
   <section {...props} className={props.imageclasses.join(" ")}>{props.children}</section>
@@ -29,7 +31,7 @@ export default class Right extends Component {
       "panel__item--right",
       "hard",
       "flush",
-      Hover.right,
+      css(Hover.right),
       "transition"
     ];
 
@@ -100,7 +102,7 @@ export default class Right extends Component {
     );
   }
 
-  renderInsideRatio(){
+  renderInsideRatio = () => {
 
     return (
       <div className={ this.props.ratioTheme || this.ratioClasses()}>
@@ -109,15 +111,15 @@ export default class Right extends Component {
     )
 
   }
-  renderOutSideRatio(){
+  renderOutSideRatio = () => {
     return (
       <div>
-        {() => {
+        {(() => {
           if (this.props.outsideRatio) {
             return this.props.outsideRatio()
           }
-        }()}
-        {() => {
+        })()}
+        {(() => {
           let styles = this.styles()
 
           styles = {...styles, ...{
@@ -130,12 +132,12 @@ export default class Right extends Component {
               <div className="locked-sides locked-ends background--fill" style={styles}></div>
             )
           }
-        }()}
+        })()}
       </div>
     )
   }
 
-  render () {
+  render() {
 
     const { blur } = this.props
     let Wrapper = DefaultWrapper

@@ -2,7 +2,7 @@
 import avatar from "./avatar"
 import upload from "./upload"
 
-export default {
+export {
   avatar,
   upload,
 }

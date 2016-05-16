@@ -1,6 +1,6 @@
 
 const Regex : any = {}
-import Format from "../format.js"
+import Format from "../format"
 import Validate from "../validate"
 import Error from "../error"
 import defaultRegex from "./defaults"

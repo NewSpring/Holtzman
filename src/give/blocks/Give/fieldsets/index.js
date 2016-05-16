@@ -1,6 +1,6 @@
 
 import Personal from "./Personal"
-import Billing from "./Billing.jsx"
+import Billing from "./Billing"
 import Payment from "./Payment"
 import Confirm from "./Confirm"
 

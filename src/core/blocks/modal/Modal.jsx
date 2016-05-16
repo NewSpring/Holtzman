@@ -1,8 +1,9 @@
 import { Component, PropTypes} from "react";
-import {VelocityComponent } from "velocity-react";
+import { VelocityComponent } from "velocity-react";
+import { css } from "aphrodite";
 
-import styles from "./modal.css"
-import offsetStyles from "../nav/offset.css"
+import styles from "./modal-css"
+import offsetStyles from "../nav/offset-css"
 
 export default class SideModal extends Component {
 
@@ -37,7 +38,7 @@ export default class SideModal extends Component {
     let classes = [
       "hard",
       "one-whole",
-      styles["interior"],
+      css(styles["interior"]),
       "scrollable"
     ];
 
@@ -72,7 +73,7 @@ export default class SideModal extends Component {
     if (classes && classes.length) {
       classList.concat(classes);
     } else {
-      classList.push(styles["side-panel"])
+      classList.push(css(styles["side-panel"]))
     }
 
     if (layoutOverride && layoutOverride.length) {
@@ -84,7 +85,7 @@ export default class SideModal extends Component {
     }
 
     if (offset) {
-      classList.push(offsetStyles["offset"])
+      classList.push(css(offsetStyles["offset"]))
     }
 
     return classList.join(" ");

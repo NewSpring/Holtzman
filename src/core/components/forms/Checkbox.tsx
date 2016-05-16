@@ -1,7 +1,6 @@
 
-import * as React from "react";
-import { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
-import * as ReactDom from "react-dom";
+import { Component, HTMLProps, SyntheticEvent  } from "react";
+import ReactDom from "react-dom";
 
 import Label from "./components/Label";
 
@@ -39,7 +38,7 @@ export default class Checkbox extends Component<CheckboxProps, {}> {
 
   disabled = (): boolean => {
     if (this.props.disabled) {
-      return true;
+      return this.props.disabled;
     }
     return false;
   };
@@ -90,7 +89,7 @@ export default class Checkbox extends Component<CheckboxProps, {}> {
           id={this.props.id || this.props.label || this.props.name}
           type={this.props.type || "checkbox"}
           name={this.props.name || this.props.label }
-          className={this.props.inputClasses}
+          className={this.props.inputClasses ? this.props.inputClasses.join(" ") : ""}
           disabled={this.disabled()}
           defaultChecked={this.props.defaultValue ? "checked": ""}
           onClick={this.props.clicked}

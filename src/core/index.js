@@ -4,7 +4,7 @@
   Apollos Core
 
 */
-import "./startup"
+// import "./startup"
 
 import publish from "./publications"
 import { wrapper, createReduxStore } from "./store"

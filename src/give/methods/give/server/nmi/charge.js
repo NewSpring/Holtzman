@@ -78,7 +78,7 @@ const step1 = (token, callback) => {
       err = data["result-text"]
     }
 
-    console.error(data)
+    console.error("@@CHARGE_ERROR", data, xml)
     callback(err)
 
   })

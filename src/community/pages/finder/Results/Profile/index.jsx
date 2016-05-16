@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { nav as navActions, modal, collections as collectionActions } from "../../../../../core/store"
 import OnBoard from "../../../../../core/blocks/accounts"
 import { GraphQL } from "../../../../../core/graphql"
-import { join } from "../../../../methods/join"
+import { join } from "../../../../methods/join/client"
 
 import { routeActions } from "../../../../../core/store/routing"
 

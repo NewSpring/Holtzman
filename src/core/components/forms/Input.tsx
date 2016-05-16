@@ -1,8 +1,7 @@
 
-// XXX figure out why enzyme needs this
-import * as React from "react";
-import { Component, PropTypes, HTMLProps, SyntheticEvent } from "react";
-import * as ReactDom from "react-dom";
+import { Component, HTMLProps, SyntheticEvent  } from "react";
+import ReactDom from "react-dom";
+
 // XXX refactor with just lodash.assign / we get typings for lodash.assign
 import { assign } from "lodash";
 
@@ -183,7 +182,7 @@ export default class Input extends Component<InputProps, {}> {
 
   disabled = (): boolean => {
     if (this.props.disabled) {
-      return true;
+      return this.props.disabled;
     }
 
     return false;
@@ -252,7 +251,7 @@ export default class Input extends Component<InputProps, {}> {
 
         <input
           ref="apollos-input"
-          id={this.props.id || this.props.ref || this.props.name || this.props.label}
+          id={this.props.id || this.props.name || this.props.label}
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }

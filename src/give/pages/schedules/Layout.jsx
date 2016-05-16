@@ -89,7 +89,7 @@ export default class Layout extends Component {
       person
     } = this.props
 
-    let photo = "//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
+    let photo = "//s3.amazonaws.com/ns.assets/apollos/39616.perry.cen.web.scheduleyourgivingad_1x2.jpg"
     return (
         <div>
           <Split nav={true} classes={["background--light-primary"]}>
@@ -124,7 +124,7 @@ export default class Layout extends Component {
 
                   )
                 }
-              }())}
+              })()}
 
             <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
               <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
@@ -134,13 +134,23 @@ export default class Layout extends Component {
               </div>
             </div>
 
+
             <div  id="active-schedules" className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
               <h4 className="soft soft-double-ends text-center flush-bottom">
                 My Schedules
               </h4>
 
 
-              {() => {
+              {(() => {
+
+
+                if (!Meteor.user()) {
+                  return (
+                    <div className="text-center soft-sides">
+                      <p><em>Please sign in or create an account to setup or view your scheduled contributions!</em></p>
+                    </div>
+                  )
+                }
 
                 if (!schedules.length && !ready) {
                   // loading
@@ -180,18 +190,22 @@ export default class Layout extends Component {
 
                             <div className="grid" style={{verticalAlign: "middle"}} key={i}>
 
-                              <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
+                              <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
                                 <h6 className="text-dark-tertiary push-half-bottom">
                                   {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
                                   <span className="text-dark-secondary">{complete ? " - Complete" : ""}</span>
                                 </h6>
-                                <h5 className="flush">
+                                <h5 className="flush one-whole" style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                  }}>
                                   {schedule.details[0].account.name}
                                 </h5>
                                 <p className="flush soft-half-top text-dark-tertiary">
                                   <small>
                                     <em>
-                                      This started on {this.formatDate(schedule.start)}
+                                      {this.formatDate(schedule.start)}
                                     </em>
                                   </small>
                                 </p>
@@ -199,9 +213,13 @@ export default class Layout extends Component {
                               </div>
 
 
-                              <div className="grid__item one-third text-right" style={{verticalAlign: "middle"}}>
+                              <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
                                 <div className="soft-half-right">
-                                  <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
+                                  <h4 className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up" style={{
+                                      overflow: "hidden",
+                                      textOverflow: "ellipsis",
+                                      whiteSpace: "nowrap",
+                                    }}>
                                     {this.monentize(schedule.details[0].amount)}
                                     <span className="text-primary icon-arrow-next locked" style={{
                                         right: "-5px",
@@ -228,7 +246,7 @@ export default class Layout extends Component {
                     </p>
                   </div>
                 )
-              }()}
+              })()}
             </div>
 
 

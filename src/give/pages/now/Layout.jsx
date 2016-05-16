@@ -11,8 +11,6 @@ import { Offline } from "../../components/status"
 import AddToCart from "../../blocks/AddToCart"
 
 const Layout = ({ alive, accounts }, context) => (
-
-
     <div>
 
       <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/you_cant_outgive_god2x1.jpg" />
@@ -20,18 +18,32 @@ const Layout = ({ alive, accounts }, context) => (
       <Split nav={true} classes={["background--light-primary"]}>
 
         <Right
-          background="//s3.amazonaws.com/ns.assets/apollos/1x2.jpg"
+          background="//s3.amazonaws.com/ns.assets/apollos/39616.perry.cen.web.scheduleyourgivingad_1x2.jpg"
           link="/give/schedules"
         />
 
       </Split>
 
       <Left scroll={true} classes={["background--light-secondary"]} >
+        <div className="background--light-secondary soft-half soft-sides@portable soft-double-sides@anchored">
+
+          <div className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+            <h5 className="soft-half-sides soft-half-bottom flush-bottom">Exciting Changes to Giving!</h5>
+            <p className="soft-half-sides flush-bottom">
+              <em>
+                <small>
+                  You may notice our website looks a little different, but we’re confident our new site will make it easier and more enjoyable for you to give! If you want to know more, or are having problems giving, <a href="//newspring.cc/news/exciting-changes-to-how-you-give" target="blank">click here to read more!</a>
+                </small>
+              </em>
+           </p>
+          </div>
+
+        </div>
         <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{overflow: "visible"}}>
 
           <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
             <div className="soft-double-ends@anchored">
-              {() => {
+              {(() => {
 
                 if (!alive) {
                   return <Offline />
@@ -46,10 +58,18 @@ const Layout = ({ alive, accounts }, context) => (
                 }
 
                 return <AddToCart accounts={accounts} />
-              }()}
+              })()}
             </div>
           </div>
         </div>
+
+        <Link to="/give/schedules" className="visually--hidden@lap-and-up">
+          <div className="ratio--landscape@handheld background--fill" style={{
+              backgroundImage: "url(//s3.amazonaws.com/ns.assets/apollos/39616.perry.cen.web.scheduleyourgivingad_2x1.jpg)"
+            }}>
+            <div className="ratio__item"></div>
+          </div>
+        </Link>
 
         <div className="soft-half soft-sides@portable soft-double-sides@anchored">
 

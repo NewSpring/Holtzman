@@ -1,23 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "es6",
     "moduleResolution": "node",
     "sourceMap": true,
     "declaration": true,
     "noImplicitAny": false,
     "rootDir": ".",
-    "outDir": "dist",
+    "outDir": ".tmp",
     "allowSyntheticDefaultImports": true,
     "pretty": true,
     "removeComments": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "allowJs": false
   },
   "exclude": [
     "typings",
     "node_modules",
-    "dist",
+    "lib",
+    ".tmp",
+    ".test",
     "test/fixtures"
   ]
 }

@@ -18,4 +18,4 @@ let map: RegExpMap = {
   startOfDiscover: /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/,
 };
 
-export default map
+export default map;

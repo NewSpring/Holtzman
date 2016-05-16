@@ -43,7 +43,7 @@ export default class Authorized extends Component {
 
 
   render () {
-    if (this.props.auth || Meteor.userId()) {
+    if (Meteor.userId()) {
       return this.props.children
     }
 

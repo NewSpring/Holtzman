@@ -1,6 +1,6 @@
 import { Component } from "react"
 
-import Styles from "./FeedItemSkeleton.css"
+import Styles from "./FeedItemSkeleton-css"
 
 export default class FeedItemSkeleton extends Component {
 

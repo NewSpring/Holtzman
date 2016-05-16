@@ -12,6 +12,117 @@ import Meta from "../../../core/components/meta"
 
 import { Offline } from "../../components/status"
 
+function formatDate(date){
+  return Moment(date).format("MMM D, YYYY")
+}
+
+function monentize(value, fixed){
+
+  if (typeof value === "number") {
+    value = `${value}`
+  }
+
+  if (!value.length) {
+    return `$0.00`
+  }
+
+  value = value.replace(/[^\d.-]/g, "")
+
+  let decimals = value.split(".")[1]
+  if ((decimals && decimals.length >= 2) || fixed) {
+    value = Number(value).toFixed(2)
+    value = String(value)
+  }
+
+  value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  return `$${value}`
+}
+
+const TransactionDetail = ({ transactionDetail, transaction, icon, status }) => (
+  <div className="grid" style={{verticalAlign: "middle"}}>
+
+    <div className="grid__item three-fifths" style={{verticalAlign: "middle"}}>
+      <h5 className="text-dark-tertiary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
+        {transactionDetail.account.name}
+      </h5>
+      <p className="flush italic small text-dark-tertiary">
+        {status ? `${status} - `: ''}{formatDate(transaction.date)}
+      </p>
+    </div>
+
+    <div className="grid__item two-fifths text-right" style={{verticalAlign: "middle"}}>
+      <div className="soft-half-right">
+
+        <h4 className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up" style={{
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {monentize(transactionDetail.amount)}
+          {(() => {
+            if (icon) {
+              return (
+                <span className="text-primary icon-arrow-next locked" style={{
+                  right: "-5px",
+                  top: "1px"
+                }}/>
+              )
+            }
+          })()}
+
+        </h4>
+
+
+      </div>
+
+    </div>
+
+  </div>
+)
+
+const TransactionCard = ({ transactionDetail, transaction }) => {
+  let { status } = transaction;
+
+  /*
+
+    turn on a couple pendings for UI testing
+
+  */
+  if (status && status.toLowerCase().indexOf('pending') > -1) {
+    return (
+      <div
+        className="soft card"
+        style={{
+          borderStyle: "solid",
+          borderColor: "f1f1f1",
+          boxShadow: "none",
+          borderWidth: "2px",
+          backgroundColor: "transparent",
+        }}
+      >
+        <TransactionDetail
+          transactionDetail={transactionDetail}
+          transaction={transaction}
+          icon={false}
+          status="Pending"
+        />
+      </div>
+    )
+  }
+  return (
+    <div className="soft card">
+      <Link to={`/give/history/${transaction.id}/${transactionDetail.account.id}`}>
+        <TransactionDetail
+          transactionDetail={transactionDetail}
+          transaction={transaction}
+          icon={true}
+        />
+      </Link>
+    </div>
+  )
+}
+
 export default class Layout extends Component {
 
   static contextTypes = {
@@ -36,33 +147,8 @@ export default class Layout extends Component {
     }
   }
 
-  monentize = (value, fixed) => {
-
-    if (typeof value === "number") {
-      value = `${value}`
-    }
-
-    if (!value.length) {
-      return `$0.00`
-    }
-
-    value = value.replace(/[^\d.-]/g, "")
-
-    let decimals = value.split(".")[1]
-    if ((decimals && decimals.length >= 2) || fixed) {
-      value = Number(value).toFixed(2)
-      value = String(value)
-    }
-
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    return `$${value}`
-  }
-
-  formatDate = (date) => {
-    return Moment(date).format("MMM D, YYYY")
-  }
-
-
+  monentize = monentize
+  formatDate = formatDate
 
   render () {
 
@@ -89,14 +175,14 @@ export default class Layout extends Component {
             <div className="soft soft-double-ends hard-left@lap-and-up">
               <h2 className="flush hard">Giving History</h2>
               <p className="flush-bottom soft-top"><small><em>
-                Currently we only support viewing your personal giving history, and not the history of your family. We are working hard to bring this ability, but in the meantime, if you sign into the site using the email of the family member you would like to see, you can view their history and schedules there. If you have any questions please <a href="//rock.newspring.cc/workflows/177" target="_blank">let us know!</a>
+                Currently we only support viewing your personal giving history, and not the history of your family. We are working hard to bring this ability, but in the meantime, if you sign into the site using the email of the family member you would like to see, you can view their history and schedules there. If you have any questions please <a href="//rock.newspring.cc/workflows/152?Topic=Stewardship" target="_blank">let us know!</a>
               </em></small></p>
             </div>
           </div>
 
 
           <div className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable" ref="history">
-            {() => {
+            {(() => {
 
               // if (!alive) {
               //   return <Offline />
@@ -116,7 +202,7 @@ export default class Layout extends Component {
                     <p>
                       We didn't find any contributions associated with your account. If you would like to start giving, click <Link to="/give/now">here</Link>
                     </p>
-                    <p><em>If you have any questions, please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/177">contact us </a> and someone will be happy to assist you.</em></p>
+                    <p><em>If you have any questions, please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a> and someone will be happy to assist you.</em></p>
                   </div>
                 )
               }
@@ -129,8 +215,11 @@ export default class Layout extends Component {
                   return (
                     <div key={key}>
                       {details.map((transactionDetail, i) => {
-
                         if (!transactionDetail.account) {
+                          return null
+                        }
+
+                        if (Number(transactionDetail.amount) <= 0) {
                           return null
                         }
 
@@ -142,77 +231,21 @@ export default class Layout extends Component {
                               <div className="soft text-left">
                                 <h5>{year}</h5>
                               </div>
-                              <div  className="soft card">
-
-                                <Link to={`/give/history/${transaction.id}/${transactionDetail.account.id}`}>
-
-                                  <div className="grid" style={{verticalAlign: "middle"}} key={i}>
-
-                                    <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
-                                      <h5 className="text-dark-tertiary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
-                                        {transactionDetail.account.name}
-                                      </h5>
-                                      <p className="flush soft-half-top italic small text-dark-tertiary">
-                                        {this.formatDate(transaction.date)}
-                                      </p>
-                                    </div>
-
-                                    <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
-                                      <div className="soft-half-right">
-                                        <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
-                                          {this.monentize(transactionDetail.amount)}
-                                          <span className="text-primary icon-arrow-next locked" style={{
-                                              right: "-5px",
-                                              top: "1px"
-                                            }}></span>
-                                        </h4>
-                                      </div>
-
-                                    </div>
-
-                                  </div>
-                                </Link>
-
-                              </div>
+                              <TransactionCard
+                                transaction={transaction}
+                                transactionDetail={transactionDetail}
+                              />
                             </div>
                           )
 
                         }
 
                         return (
-
-                          <div key={i} className="soft card">
-
-                            <Link to={`/give/history/${transaction.id}/${transactionDetail.account.id}`}>
-
-                              <div className="grid" style={{verticalAlign: "middle"}} key={i}>
-
-                                <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
-                                  <h5 className="text-dark-tertiary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
-                                    {transactionDetail.account.name}
-                                  </h5>
-                                  <p className="flush soft-half-top italic small text-dark-tertiary">
-                                    {this.formatDate(transaction.date)}
-                                  </p>
-                                </div>
-
-                                <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
-                                  <div className="soft-half-right">
-                                    <h4 className="text-dark-tertiary flush soft-right@handheld soft-double-right@lap-and-up">
-                                      {this.monentize(transactionDetail.amount)}
-                                      <span className="text-primary icon-arrow-next locked" style={{
-                                          right: "-5px",
-                                          top: "1px"
-                                        }}></span>
-                                    </h4>
-                                  </div>
-
-                                </div>
-
-                              </div>
-                            </Link>
-
-                          </div>
+                          <TransactionCard
+                            transaction={transaction}
+                            transactionDetail={transactionDetail}
+                            key={i}
+                          />
                         )
                       })}
                     </div>
@@ -223,7 +256,7 @@ export default class Layout extends Component {
                 </div>
               )
 
-            }()}
+            })()}
           </div>
 
 

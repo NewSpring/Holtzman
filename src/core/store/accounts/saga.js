@@ -1,8 +1,7 @@
-import "regenerator/runtime"
 import { take, put, cps, call } from "redux-saga/effects"
 
 import { GraphQL } from "../../graphql"
-import { accounts } from "../../methods"
+import { accounts } from "../../methods/accounts/client"
 import { addSaga } from "../utilities"
 
 import actions from "./actions"

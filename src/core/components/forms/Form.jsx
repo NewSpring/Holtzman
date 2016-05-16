@@ -1,7 +1,7 @@
-import { PropTypes } from "react"
+import { Component, PropTypes } from "react"
 import Fieldset from "./Fieldset"
 
-export default class Form extends React.Component {
+export default class Form extends Component {
 
   layoutClasses = () => {
     let classes = [

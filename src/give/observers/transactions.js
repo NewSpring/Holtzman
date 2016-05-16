@@ -27,6 +27,7 @@ const transactions = () => {
           }
         })
 
+
         delete Transaction.__processing
 
 
@@ -59,23 +60,33 @@ const transactions = () => {
           Guid: makeNewGuid(),
           IsSystem: false,
           Gender: 0,
-          SystemNote: "Created from NewSpring Apollos"
+          ConnectionStatusValueId: 67, // Web Prospect
+          SystemNote: `Created from NewSpring Apollos on ${__meteor_runtime_config__.ROOT_URL}`
         } }
 
         const isGuest = PersonId ? false : true
         // This scope issue is bizzare to me, but this works
         let ScopedId = PersonId
+        let ScopedAliasId = PrimaryAliasId
         if (!PersonId) {
           PersonId = api.post.sync(`People`, Person)
           PrimaryAliasId = api.get.sync(`People/${PersonId}`).PrimaryAliasId
         } else {
-          let RockPerson = api.get.sync(`People/${ScopedId}`)
+          let RockPerson = api.get.sync(`PersonAlias/${ScopedAliasId}`)
+          let RockPersonId = RockPerson.Person.Id
+          RockPerson = api.get.sync(`People/${RockPersonId}`)
           Person = {...Person, ...RockPerson}
-          let { PersonId, PrimaryAliasId } = Person
+          PrimaryAliasId = Person.PrimaryAliasId
+          PersonId = Person.Id
         }
 
-        // add locatin data to person
-        upsertLocations(PersonId, Location)
+        try {
+          // add locatin data to person
+          upsertLocations(PersonId, Location)
+        } catch (e) {
+          console.error("@@TRANSACTION_ERROR", e, PersonId, PrimaryAliasId)
+        }
+
 
         // Create FinancialPaymentDetail
         FinancialPaymentDetail = { ...FinancialPaymentDetail, ...{

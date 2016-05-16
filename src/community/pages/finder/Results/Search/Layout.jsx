@@ -117,7 +117,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }, con
             deselect={true}
           />
 
-          {() => {
+          {(() => {
 
             if (showError) {
               return (
@@ -128,9 +128,9 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }, con
                 </h6>
               )
             }
-          }()}
+          })()}
 
-          {() => {
+          {(() => {
 
             let btnClasses = ["one-whole"];
             if (!ready){
@@ -144,7 +144,7 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }, con
                 Search
               </button>
             )
-          }()}
+          })()}
 
         </Forms.Form>
       </div>

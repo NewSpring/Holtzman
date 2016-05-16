@@ -140,7 +140,7 @@ export default class Billing extends Component {
           />
 
           <div className="grid">
-            {() => {
+            {(() => {
               if (!billing.country || billing.country === "US" || billing.country === "CA") {
                 return (
                   <div className="grid__item one-half">
@@ -157,8 +157,8 @@ export default class Billing extends Component {
                   </div>
                 )
               }
-            }()}
-            {() => {
+            })()}
+            {(() => {
               let length = "one-whole"
               if (!billing.country || billing.country === "US" || billing.country === "CA") {
                 length = "one-half"
@@ -168,7 +168,6 @@ export default class Billing extends Component {
                   <Forms.Input
                     name="zip"
                     label="Zip/Postal"
-                    type="tel"
                     errorText="Please enter your zip"
                     defaultValue={billing.zip}
                     onChange={this.zip}
@@ -177,7 +176,7 @@ export default class Billing extends Component {
                   />
                 </div>
               )
-            }()}
+            })()}
 
 
           </div>
@@ -191,7 +190,7 @@ export default class Billing extends Component {
             Back
           </a>
 
-          {() => {
+          {(() => {
             const { billing } = this.props.data
             let btnClasses = ["push-left"];
             let disabled = false
@@ -207,7 +206,7 @@ export default class Billing extends Component {
                 Next
               </button>
             )
-          }()}
+          })()}
 
         </div>
 

@@ -3,7 +3,7 @@ import { Link } from "react-router"
 
 import { ImageLoader } from "../loading"
 
-import Styles from "../loading/FeedItemSkeleton.css"
+import Styles from "../loading/FeedItemSkeleton-css"
 
 let Wrapper = (props) => (
   <div {...props}>
@@ -163,7 +163,7 @@ export default class Card extends Component {
         className={theme || this.cardClasses()}
         style={styles || this.styles() }
         >
-        {() => {
+        {(() => {
           if (link) {
             return (
               <Link className={wrapperClasses} to={link}>
@@ -176,7 +176,7 @@ export default class Card extends Component {
               {this.createImage()}
             </Wrapper>
           )
-        }()}
+        })()}
         <div
           className={ itemTheme || this.itemClasses() }
           style={itemStyles}

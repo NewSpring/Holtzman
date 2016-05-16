@@ -1,5 +1,6 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
+import { css } from "aphrodite";
 
 import { GraphQL } from "../../graphql"
 import Nav from "../nav"
@@ -14,11 +15,11 @@ import {
   campuses as campusActions,
 } from "../../store"
 
-import Styles from "./Styles"
+import Styles from "./watermark-css"
 
 const Watermark = () => (
-  <div className={Styles["global-watermark"]}>
-    <h4 className={`soft-half flush text-light-primary uppercase watermark ${Styles["watermark"]} visuallyhidden@handheld`}>
+  <div className={css(Styles["global-watermark"])}>
+    <h4 className={`soft-half flush text-light-primary uppercase watermark ${css(Styles["watermark"])} visuallyhidden@handheld`}>
       NewSpring
     </h4>
   </div>

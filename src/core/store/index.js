@@ -1,5 +1,3 @@
-import "regenerator/runtime"
-
 import liked from "./liked"
 import modal from "./modal"
 import nav from "./nav"
@@ -13,6 +11,7 @@ import share from "./share"
 import comingsoon from "./comingsoon"
 import search from "./search"
 import filters from "./filters"
+import responsive from "./responsive"
 
 import {
   join,
@@ -31,6 +30,7 @@ import {
 //
 // })
 
+// there is an issue loading jsx from a js file
 import { wrapper, createReduxStore } from "./redux-bindings"
 import { addMiddleware, addReducer, createReducer, addSaga } from "./utilities"
 
@@ -48,6 +48,7 @@ export {
   routing,
   search,
   filters,
+  responsive,
 
   wrapper,
   createReduxStore,

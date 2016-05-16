@@ -1,4 +1,4 @@
-const Future = Npm.require("fibers/future");
+import future from "fibers/future"
 
 
 Meteor.methods({
@@ -12,7 +12,7 @@ Meteor.methods({
     }}
 
     const payload = { query, variables, operationName };
-    const f = new Future();
+    const f = new future;
 
     fetch(Meteor.settings.heighliner, {
         method: "POST",
@@ -30,7 +30,7 @@ Meteor.methods({
         f.return(data);
       })
       .catch(error => {
-        console.error(error)
+        console.error("@@GRAPHQL_ERROR", error, payload)
         f.throw(error);
       });
 

@@ -3,7 +3,7 @@ import { Link } from "react-router"
 
 import { ImageLoader } from "../loading"
 
-import Styles from "../loading/FeedItemSkeleton.css"
+import Styles from "../loading/FeedItemSkeleton-css"
 
 let Wrapper = (props) => (
   <div {...this.props}>
@@ -27,8 +27,10 @@ export default class Card extends Component {
       "soft",
       "text-left",
       "soft-double@anchored",
-      "one-whole",
+      "one-whole@palm",
+      "one-whole@lap",
       "three-fifths@lap-wide",
+      "three-fifths@palm-wide",
       "one-half@anchored",
     ];
 
@@ -91,6 +93,9 @@ export default class Card extends Component {
           "card__image",
           "locked-ends@lap-wide-and-up",
           "locked-sides@lap-wide-and-up",
+          "locked-ends@palm-wide",
+          "locked-sides@palm-wide",
+          "relative@palm",
           "relative@lap"
         ]
 
@@ -103,12 +108,18 @@ export default class Card extends Component {
 
         let src = image.defaultImage
           if (typeof window != "undefined" && window != null) {
-             if (window.matchMedia("(max-width: 1024px)").matches) {
-               src = image["2:1"] ? image["2:1"] : image.url
-             } else if (window.matchMedia("(max-width: 1281px)").matches) {
-               src = image["1:2"] ? image["1:2"] : image.url
-             } else {
-               src = image["1:1"] ? image["1:1"] : image.url
+            if (window.matchMedia("(max-width: 480px)").matches) {
+              src = image["2:1"] ? image["2:1"] : image.url
+            } else if (window.matchMedia("(max-width: 730px)").matches) {
+              src = image["1:2"] ? image["1:2"] : image.url
+            } else if (window.matchMedia("(max-width: 768px)").matches) {
+              src = image["1:1"] ? image["1:1"] : image.url
+            } else if (window.matchMedia("(max-width: 1024px)").matches) {
+              src = image["2:1"] ? image["2:1"] : image.url
+            } else if (window.matchMedia("(max-width: 1281px)").matches) {
+              src = image["1:2"] ? image["1:2"] : image.url
+            } else {
+              src = image["1:1"] ? image["1:1"] : image.url
            }
 
          let style
@@ -137,7 +148,21 @@ export default class Card extends Component {
     const { link, image, theme, styles, itemTheme, itemStyles } = this.props
 
 
-    let wrapperClasses = "relative@lap plain locked-ends@lap-wide-and-up locked-right@lap-wide-and-up one-whole@lap two-fifths@lap-wide one-half@anchored"
+    let wrapperClasses = [
+      "relative@lap",
+      "relative@palm",
+      "plain",
+      "locked-ends@lap-wide-and-up",
+      "locked-right@lap-wide-and-up",
+      "locked-ends@palm-wide",
+      "locked-right@palm-wide",
+      "one-whole@lap",
+      "one-whole@palm",
+      "two-fifths@lap-wide",
+      "two-fifths@palm-wide",
+      "one-half@anchored"
+    ].join(" ")
+
 
     if (link) {
       return (

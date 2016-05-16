@@ -1,5 +1,3 @@
-
-import "regenerator/runtime"
 import { take, put, cps } from "redux-saga/effects"
 import { addSaga } from "../utilities"
 

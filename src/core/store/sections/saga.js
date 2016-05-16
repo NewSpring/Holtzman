@@ -1,5 +1,3 @@
-import "regenerator/runtime"
-
 import { take, put } from "redux-saga/effects"
 
 
@@ -89,7 +87,7 @@ addSaga(function* sectionsSaga(getState) {
     if (!images.length) {
       return null
     }
-    
+
     // prefer 1x1 image
     let oneByOne = _.find(images, (image) => {
       return image.fileLabel === "1:1"

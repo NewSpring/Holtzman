@@ -52,23 +52,28 @@ describe("core/store/accounts/reducer", () => {
   describe("ACCOUNTS.SET_DATA", () => {
 
     it("sets all props", () => {
-      let oldState = { data: {
-        email: "the old email",
-        password: "the old password",
-        terms: false,
-        firstName: "old first",
-        lastName: "old last",
-        personId: 1,
-       }, };
+      let oldState = {
+        data: {
+          email: "the old email",
+          password: "the old password",
+          terms: false,
+          firstName: "old first",
+          lastName: "old last",
+          personId: 1,
+         },
+       };
 
-      let action = { data: {
-        email: "the new email",
-        password: "the new password",
-        terms: true,
-        firstName: "new first",
-        lastName: "new last",
-        personId: 2,
-      }, type: "ACCOUNTS.SET_DATA", };
+      let action = {
+        data: {
+          email: "the new email",
+          password: "the new password",
+          terms: true,
+          firstName: "new first",
+          lastName: "new last",
+          personId: 2,
+        },
+        type: "ACCOUNTS.SET_DATA",
+      };
 
       let newState = reducer(oldState, action) as AccountState;
 
@@ -88,20 +93,25 @@ describe("core/store/accounts/reducer", () => {
     });
 
     it("sets some props", () => {
-      let oldState = { data: {
-        email: "the old email",
-        password: "the old password",
-        terms: false,
-        firstName: null,
-        lastName: null,
-        personId: 1,
-       }, };
+      let oldState = {
+        data: {
+          email: "the old email",
+          password: "the old password",
+          terms: false,
+          firstName: null,
+          lastName: null,
+          personId: 1,
+        },
+      };
 
-      let action = { data: {
-        terms: true,
-        firstName: "new first",
-        personId: 2,
-      }, type: "ACCOUNTS.SET_DATA", };
+      let action = {
+        data: {
+          terms: true,
+          firstName: "new first",
+          personId: 2,
+        },
+        type: "ACCOUNTS.SET_DATA",
+      };
 
       let newState = reducer(oldState, action) as AccountState;
 
@@ -125,14 +135,16 @@ describe("core/store/accounts/reducer", () => {
   describe("ACCOUNTS.REMOVE_DATA", () => {
 
     it("does nothing without a field", () => {
-      let oldState = { data: {
-        email: "the old email",
-        password: "the old password",
-        terms: false,
-        firstName: "old first",
-        lastName: "old last",
-        personId: 1,
-       }, };
+      let oldState = {
+        data: {
+          email: "the old email",
+          password: "the old password",
+          terms: false,
+          firstName: "old first",
+          lastName: "old last",
+          personId: 1,
+         },
+       };
 
       let action = { field: null, type: "ACCOUNTS.REMOVE_DATA" };
 
@@ -154,14 +166,16 @@ describe("core/store/accounts/reducer", () => {
     });
 
     it("does nothing if the field is already unset", () => {
-      let oldState = { data: {
-        email: null,
-        password: "the old password",
-        terms: false,
-        firstName: "old first",
-        lastName: "old last",
-        personId: 1,
-       }, };
+      let oldState = {
+        data: {
+          email: null,
+          password: "the old password",
+          terms: false,
+          firstName: "old first",
+          lastName: "old last",
+          personId: 1,
+         },
+       };
 
       let action = { field: "email", type: "ACCOUNTS.REMOVE_DATA" };
 
@@ -183,14 +197,16 @@ describe("core/store/accounts/reducer", () => {
     });
 
     it("clears the field", () => {
-      let oldState = { data: {
-        email: null,
-        password: "the old password",
-        terms: false,
-        firstName: "old first",
-        lastName: "old last",
-        personId: 1,
-       }, };
+      let oldState = {
+        data: {
+          email: null,
+          password: "the old password",
+          terms: false,
+          firstName: "old first",
+          lastName: "old last",
+          personId: 1,
+         },
+       };
 
       let action = { field: "firstName", type: "ACCOUNTS.REMOVE_DATA" };
       let newState = reducer(oldState, action) as AccountState;
@@ -392,10 +408,13 @@ describe("core/store/accounts/reducer", () => {
           errorB: "B",
         },
       };
-      let action = { type: "ACCOUNTS.SET_ERRORS", errors: {
-        errorC: "C",
-        errorD: "D",
-      }, };
+      let action = {
+        type: "ACCOUNTS.SET_ERRORS",
+        errors: {
+          errorC: "C",
+          errorD: "D",
+        },
+      };
       let newState = reducer(oldState, action) as AccountState;
 
       assert.equal(oldState.errors["errorA"], "A");
@@ -501,9 +520,12 @@ describe("core/store/accounts/reducer", () => {
         },
         authorized: false,
       };
-      let action = { type: "ACCOUNTS.SET_PERSON", person: {
-        firstName: "new first name",
-      }, };
+      let action = {
+        type: "ACCOUNTS.SET_PERSON",
+        person: {
+          firstName: "new first name",
+        },
+      };
       let newState = reducer(oldState, action) as AccountState;
 
       assert.equal(oldState.person.firstName, "the first name");
@@ -592,9 +614,12 @@ describe("core/store/accounts/reducer", () => {
           account1: "1",
         },
       };
-      let action = { type: "ACCOUNTS.SET_ALTERNATE_ACCOUNTS", alternateAccounts: {
-        account2: "2",
-      }, };
+      let action = {
+        type: "ACCOUNTS.SET_ALTERNATE_ACCOUNTS",
+        alternateAccounts: {
+          account2: "2",
+        },
+      };
       let newState = reducer(oldState, action) as AccountState;
 
       assert.deepEqual(oldState.alternateAccounts, { account1: "1" });
@@ -609,9 +634,12 @@ describe("core/store/accounts/reducer", () => {
           person1: "1",
         },
       };
-      let action = { type: "ACCOUNTS.SET_PEOPLE_WITHOUT_ACCOUNTS", peopleWithoutAccountEmails: {
-        person2: "2",
-      }, };
+      let action = {
+        type: "ACCOUNTS.SET_PEOPLE_WITHOUT_ACCOUNTS",
+        peopleWithoutAccountEmails: {
+          person2: "2",
+        },
+      };
       let newState = reducer(oldState, action) as AccountState;
 
       assert.deepEqual(oldState.peopleWithoutAccountEmails, { person1: "1" });

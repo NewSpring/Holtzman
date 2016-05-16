@@ -21,7 +21,7 @@ const Layout = ({ group, join, hash, handleBack }, context) => {
           <div className="soft-sides@anchored ratio__item one-whole floating--bottom">
             <div className="floating__item text-left one-whole soft-double-sides soft-double-bottom">
               <h3 className="text-light-primary push-half-bottom">{group.name}</h3>
-              {() => {
+              {(() => {
                 if (leaders.length) {
                   return (
                     <div>
@@ -41,7 +41,7 @@ const Layout = ({ group, join, hash, handleBack }, context) => {
                     </div>
                   )
                 }
-              }()}
+              })()}
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ const Layout = ({ group, join, hash, handleBack }, context) => {
                   </h5>
                 </div>
 
-                {() => {
+                {(() => {
                   if (group.locations && group.locations.length) {
                     let loc = group.locations[0]
                     return (
@@ -100,7 +100,7 @@ const Layout = ({ group, join, hash, handleBack }, context) => {
                       </div>
                     )
                   }
-                }()}
+                })()}
 
                 <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
                   <h7 className="text-dark-tertiary">Information</h7>

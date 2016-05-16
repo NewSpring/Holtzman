@@ -79,9 +79,11 @@ export default class ImageLoader extends Component {
       return
     }
 
-
     // lazy load only if in view on client
     let el = ReactDOM.findDOMNode(this.refs["loader"])
+    if (!el) {
+      return;
+    }
     el = el.children[0]
 
     const isElementInView = (e) => {

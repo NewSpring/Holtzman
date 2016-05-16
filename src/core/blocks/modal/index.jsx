@@ -1,13 +1,9 @@
-import { Component, PropTypes} from "react"
+import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import { Motion, spring, presets } from "react-motion";
-
 import { modal as modalActions, nav as navActions } from "../../store"
 
-import Modal from "./Modal.jsx"
-import offset from "../../blocks/nav/offset.css"
-import styles from "./modal.css"
-
+import Modal from "./Modal"
 
 const map = (state) => ({
   navigation: state.nav,
@@ -95,7 +91,6 @@ export default class SideModalContainer extends Component {
   }
 
   render () {
-
     let enter = "fadeIn"
     let exit = "fadeOut"
 

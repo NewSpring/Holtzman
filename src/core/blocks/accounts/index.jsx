@@ -21,7 +21,22 @@ export default class AccountsContainer extends Component {
     onFinished: PropTypes.func
   }
 
+  state = {
+    loading: false,
+    account: null,
+  }
+
+  componentWillMount(){
+
+    if (typeof this.props.account != "undefined") {
+      this.setState({
+        account: this.props.account,
+      })
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
+
     // if logged in, go to the next action
     if (!this.props.accounts.authorized && nextProps.accounts.authorized) {
       // let the UI show the welcome
@@ -32,13 +47,31 @@ export default class AccountsContainer extends Component {
         return
       }
 
-      // follow up action
-      if (this.props.onFinished) {
-        return this.props.onFinished()
+      const finish = () => {
+        this.setState({
+          loading: false,
+        });
+        // follow up action
+        if (this.props.onFinished) {
+          return this.props.onFinished()
+        }
+
+        // close the modal
+        this.props.hide()
       }
 
-      // close the modal
-      this.props.hide()
+      if (this.props.onSignin) {
+        this.setState({
+          loading: true,
+        })
+
+        return this.props.onSignin()
+          .then(finish)
+          .catch(finish);
+      }
+
+      finish();
+
     }
   }
 
@@ -88,10 +121,17 @@ export default class AccountsContainer extends Component {
     this.props.authorize(false)
   }
 
+  setAccountWrapper = (bool) => {
+    this.setState({
+      account: null,
+    });
+
+    this.props.setAccount(bool)
+  }
 
   render () {
 
-    const {
+    let {
       data,
       errors,
       state,
@@ -105,11 +145,15 @@ export default class AccountsContainer extends Component {
       resettingAccount,
     } = this.props.accounts
 
+    if (this.state.loading) {
+      state = "loading";
+    }
+
 
     let account = this.props.accounts.account
 
-    if (typeof this.props.account != "undefined") {
-      account = this.props.account
+    if (this.state.account != null) {
+      account = this.state.account
     }
 
 
@@ -182,7 +226,7 @@ export default class AccountsContainer extends Component {
         back={this.goBack}
         completeAccount={this.props.completeAccount}
         forgot={this.goForgotPassword}
-        setAccount={this.props.setAccount}
+        setAccount={this.setAccountWrapper}
         alternateAccounts={alternateAccounts}
         peopleWithoutAccountEmails={peopleWithoutAccountEmails}
       />

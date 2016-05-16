@@ -1,6 +1,5 @@
 
 // XXX figure out why enzyme needs this
-import * as React from "react";
 import { HTMLProps } from "react";
 
 function style(disabled: boolean): HTMLProps<HTMLStyleElement> | any {

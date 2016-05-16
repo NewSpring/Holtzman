@@ -81,7 +81,7 @@ export default class ListView extends Component {
             done={done}
             onHover={onHover}
           >
-          {() => {
+          {(() => {
             if (this.state.showFilters) {
               return(
                 <Filter
@@ -92,7 +92,7 @@ export default class ListView extends Component {
                 />
               )
             }
-          }()}
+          })()}
           </List>
 
         </div>

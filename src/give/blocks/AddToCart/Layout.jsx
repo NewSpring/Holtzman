@@ -1,11 +1,11 @@
 import { Component, PropTypes} from "react"
+import { css } from "aphrodite";
 
 import { Forms } from "../../../core/components"
 
 import GiveNow from "../ActionButtons"
 
 import SubFund from "./Subfund"
-import Styles from "./styles.css"
 
 
 export default class Layout extends Component {
@@ -232,7 +232,7 @@ export default class Layout extends Component {
 //   includeBlank={true}
 // />
 
-// {() => {
+// {(() => {
   // if ((accounts && accounts.length > 1) || !accounts.length) {
   //   if (primary.id) {
   //     delete transactions[primary.id]
@@ -255,4 +255,4 @@ export default class Layout extends Component {
   //   </h3>
   // )
 
-// }()}
+// })()}

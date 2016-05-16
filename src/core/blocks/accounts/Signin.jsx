@@ -116,14 +116,16 @@ class SignIn extends Component {
   submit = (event) => {
     event.preventDefault();
     const { refs } = this
+    let data = {...this.props.data}
     for (let input in refs) {
       const component = refs[input]
       if (component.validate) {
         component.validate()
       }
+      data[input] = component.getValue()
     }
 
-    if (this.props.data.email && this.props.data.password) {
+    if (data.email && data.password) {
       this.props.submit();
     }
 
@@ -184,14 +186,14 @@ class SignIn extends Component {
           submit={this.submit}
         >
 
-        {() => {
+        {(() => {
           if (!this.props.account && this.props.alternateAccounts.length) {
             // return null
             return (
               <div className="soft-sides push-back-half-top soft-double-bottom">
                 <h6 className="flush-bottom">
                   It looks like you may have a NewSpring account already!
-                  {() => {
+                  {(() => {
                     if (this.props.alternateAccounts.length === 1) {
 
                       return (
@@ -234,13 +236,13 @@ class SignIn extends Component {
                       </span>
                     )
 
-                  }()}
+                  })()}
                 </h6>
               </div>
             )
 
           }
-        }()}
+        })()}
 
         <div className="soft-sides">
 
@@ -257,7 +259,7 @@ class SignIn extends Component {
 
         </div>
 
-        {() => {
+        {(() => {
           if (!this.props.account && this.props.peopleWithoutAccountEmails.length && this.state.showAlternativePeople) {
             let people = [...this.props.peopleWithoutAccountEmails]
             let classes = [
@@ -385,7 +387,7 @@ class SignIn extends Component {
                 ref="password"
               />
 
-              {() => {
+            {(() => {
                 if (!this.props.account) {
                   return (
                     <div>
@@ -411,10 +413,10 @@ class SignIn extends Component {
                   )
 
                 }
-              }()}
+              })()}
 
 
-              {() => {
+              {(() => {
                 if (!this.props.account) {
 
                   return (
@@ -444,9 +446,9 @@ class SignIn extends Component {
                   )
 
                 }
-              }()}
+              })()}
 
-              {() => {
+              {(() => {
                 const { data } = this.props
                 let btnClasses = [];
 
@@ -461,12 +463,12 @@ class SignIn extends Component {
                     Enter
                   </button>
                 )
-              }()}
+              })()}
             </div>
 
           )
 
-        }()}
+        })()}
 
 
         </Forms.Form>
