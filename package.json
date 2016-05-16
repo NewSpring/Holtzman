@@ -30,7 +30,7 @@
     "babel": "5.8.21",
     "babel-core": "^5.8.34",
     "babel-eslint": "^4.1.6",
-    "eslint": "^1.7.1",
+    "eslint": "^2.10.2",
     "eslint-config-rackt": "1.0.0",
     "eslint-plugin-react": "^3.6.3",
     "expect": "^1.13.4",
