@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/NewSpring/newspring-core",
   "devDependencies": {
-    "babel": "5.8.21",
+    "babel": "6.3.26",
     "babel-core": "^5.8.34",
     "babel-eslint": "^4.1.6",
     "eslint": "^1.7.1",
