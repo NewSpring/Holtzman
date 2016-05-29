@@ -149,8 +149,9 @@ export default createReducer(initial, {
       data: initial.data,
       success: initial.success,
       state: initial.state,
-      errors: initial.errors
-
+      errors: initial.errors,
+      savedAccount: initial.savedAccount,
+      recoverableSchedules: initial.recoverableSchedules,
     } }
   },
 
