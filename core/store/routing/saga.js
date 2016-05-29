@@ -1,5 +1,5 @@
 
-import "regenerator/runtime"
+import "regenerator-runtime/runtime"
 import { take, put, cps } from "redux-saga/effects"
 
 import { routing as log } from "../../methods"
