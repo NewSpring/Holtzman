@@ -1,4 +1,5 @@
 /*global Meteor, check */
+import StripTags from "striptags"
 import { api } from "../../../util/rock"
 import { makeNewGuid } from "../../../util"
 import Moment from "moment"
@@ -61,8 +62,8 @@ Meteor.methods({
     let Person = {
       Email: account.email,
       Guid: makeNewGuid(),
-      FirstName: account.firstName,
-      LastName: account.lastName,
+      FirstName: StripTags(account.firstName),
+      LastName: StripTags(account.lastName),
       IsSystem: false,
       Gender: 0,
       ConnectionStatusValueId: 67, // Web Prospect

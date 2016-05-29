@@ -16,31 +16,17 @@ import {
 } from "../../../../core/store"
 
 
-function getGroups(param, dispatch ) {
-
-  let params = ""
-  if (Object.keys(param).length) {
-    params += "("
-    for (let key in param) {
-      if (isNaN(Number(param[key]))) {
-        params += ` ${key}: "${param[key]}",`
-      } else {
-        params += ` ${key}: ${param[key]},`
-      }
-
-    }
-    params += ")"
-  }
+function getGroups(params, dispatch ) {
 
   let query = `
-    {
+    query GetGroups($first: Int, $includeGroup: Int, $lat: Float, $lng: Float, $campus: Int, $name: String, $distance: Int, $after: Int){
       topics: allDefinedValues(id: 52) {
         id
         description
         value
       }
 
-      groups: allGroups${params} {
+      groups: allGroups( first: $first, includeGroup: $includeGroup, lat: $lat, lng: $lng, campus: $campus, name: $name, distance: $distance, after: $after){
         count
         items {
           id
@@ -83,7 +69,7 @@ function getGroups(param, dispatch ) {
       }
     }
   `
-  return GraphQL.query(query)
+  return GraphQL.query(query, params)
     .then(({ groups, topics }) => {
 
       dispatch(collectionActions.upsertBatch("groups", groups.items, "id"))
@@ -294,7 +280,7 @@ export default class ListContainer extends Component {
         (Number(filters.childCare) === -1 || (convert(filters.childCare) === group.childCare)) &&
         (Number(filters.topic) === -1 || filters.topic === group.demographic) &&
         (Number(filters.campus) === -1 || Number(filters.campus) === Number(group.campusId)) &&
-        filters.days.indexOf(Number(group.schedule.day)) > -1
+        (group.schedule && filters.days.indexOf(Number(group.schedule.day)) > -1)
       )
 
       if (!filter) {

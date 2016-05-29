@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
 import ReactDom from "react-dom";
+import StripTags from "striptags";
 
 import Label from "./components/Label"
 
@@ -67,7 +68,8 @@ export default class Input extends Component {
   format = (e) => {
 
     const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    let value = this.refs["apollos-input"].value
+    // let value = this.refs["apollos-input"].value
+    let value = this.getValue();
 
     if (this.props.format && typeof(this.props.format) === "function") {
 
@@ -85,7 +87,8 @@ export default class Input extends Component {
   validate = (e) => {
 
     const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    const value = target.value
+    // const value = target.value
+    const value = this.getValue();
 
     if (!value) {
       this.setState({
@@ -120,13 +123,14 @@ export default class Input extends Component {
 
   setValue = (value) => {
     let node = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    node.value = value;
+    node.value = StripTags(value); // prevent XSS;
     this.focus()
     this.validate()
   }
 
   getValue = () => {
-    return ReactDOM.findDOMNode(this.refs["apollos-input"]).value
+    // http://stackoverflow.com/questions/5788527/is-strip-tags-vulnerable-to-scripting-attacks/5793453#5793453
+    return StripTags(ReactDOM.findDOMNode(this.refs["apollos-input"]).value) // prevent XSS
   }
 
 

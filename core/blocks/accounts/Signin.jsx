@@ -43,7 +43,7 @@ class SignIn extends Component {
   }
 
   isEmail = (value) => {
-    const isValid = Validate.isEmail(value)
+    const isValid = value.length ? Validate.isEmail(value) : true;
 
     if (!isValid ) {
       this.props.clear("email")
