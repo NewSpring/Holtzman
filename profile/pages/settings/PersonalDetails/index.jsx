@@ -93,6 +93,7 @@ function getUser(id, dispatch) {
 
 const map = (state) => ({
   person: state.accounts.person,
+  campuses: state.campuses.campuses,
 })
 
 @connect(map)
@@ -188,6 +189,17 @@ export default class PersonalDetails extends Component {
 
   render () {
 
+    let campuses = []
+    for (let campus in this.props.campuses) {
+      campuses.push(this.props.campuses[campus])
+    }
+
+    campuses || (campuses = [])
+    campuses = campuses.map((campus) => {
+      return { label: campus.name, value: campus.id }
+    })
+
+
 
     const { state } = this.state
     switch (state) {
@@ -206,6 +218,7 @@ export default class PersonalDetails extends Component {
             days={this.getDays()}
             years={this.getYears()}
             person={this.props.person}
+            campuses={campuses}
           />
         )
     }

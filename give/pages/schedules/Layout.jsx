@@ -89,6 +89,7 @@ export default class Layout extends Component {
       person
     } = this.props
 
+    let hasCompletedSchedules = false;
     let photo = "//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_1x2.jpg"
     return (
         <div>
@@ -137,7 +138,7 @@ export default class Layout extends Component {
 
             <div  id="active-schedules" className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
               <h4 className="soft soft-double-ends text-center flush-bottom">
-                My Schedules
+                My Active Schedules
               </h4>
 
 
@@ -180,7 +181,8 @@ export default class Layout extends Component {
 
                       let complete = false
                       if (new Date(schedule.next) < new Date() && schedule.schedule.value === "One-Time") {
-                        complete = true
+                        hasCompletedSchedules = true;
+                        return null;
                       }
 
                       return (
@@ -247,8 +249,92 @@ export default class Layout extends Component {
                   </div>
                 )
               }()}
-            </div>
 
+              {() => {
+                if (hasCompletedSchedules) {
+                  return (
+                    <div>
+                      <hr className="flush hard"/>
+                      <h4 className="soft soft-double-ends text-center flush-bottom">
+                        My Completed Schedules
+                      </h4>
+
+                      {schedules.map((schedule, i) => {
+
+                        if (!schedule.details || !schedule.details[0].account) {
+                          return null
+                        }
+
+                        let complete = false
+                        if (new Date(schedule.next) < new Date() && schedule.schedule.value === "One-Time") {
+                          complete = true
+                        }
+
+                        if (!complete) {
+                          return null;
+                        }
+
+                        return (
+                          <div key={i} className="soft card">
+
+                            <Link to={`/give/schedules/${schedule.id}`}>
+
+                              <div className="grid" style={{verticalAlign: "middle"}} key={i}>
+
+                                <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
+                                  <h6 className="text-dark-tertiary push-half-bottom">
+                                    {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
+                                    <span className="text-dark-secondary">{complete ? " - Complete" : ""}</span>
+                                  </h6>
+                                  <h5 className="flush one-whole" style={{
+                                      overflow: "hidden",
+                                      textOverflow: "ellipsis",
+                                      whiteSpace: "nowrap",
+                                    }}>
+                                    {schedule.details[0].account.name}
+                                  </h5>
+                                  <p className="flush soft-half-top text-dark-tertiary">
+                                    <small>
+                                      <em>
+                                        {this.formatDate(schedule.start)}
+                                      </em>
+                                    </small>
+                                  </p>
+
+                                </div>
+
+
+                                <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
+                                  <div className="soft-half-right">
+                                    <h4 className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up" style={{
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        whiteSpace: "nowrap",
+                                      }}>
+                                      {this.monentize(schedule.details[0].amount)}
+                                      <span className="text-primary icon-arrow-next locked" style={{
+                                          right: "-5px",
+                                          top: "1px"
+                                        }}></span>
+                                    </h4>
+                                  </div>
+
+                                </div>
+
+                              </div>
+                            </Link>
+
+                          </div>
+                        )
+
+                      })}
+
+                    </div>
+                  )
+                }
+
+              }()}
+            </div>
 
           </Left>
         </div>
