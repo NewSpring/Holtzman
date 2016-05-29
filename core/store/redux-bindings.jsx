@@ -1,4 +1,4 @@
-import "regenerator/runtime"
+import "regenerator-runtime/runtime"
 
 import { Component, PropTypes} from "react"
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
