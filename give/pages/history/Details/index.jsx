@@ -16,6 +16,7 @@ function getTransaction(id, account, dispatch){
         id
         date
         summary
+        status
         details {
           id
           amount
