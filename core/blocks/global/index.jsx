@@ -12,6 +12,7 @@ import {
   liked as likedActions,
   topics as topicActions,
   campuses as campusActions,
+  collections as collectionActions,
 } from "../../store"
 
 import Styles from "./Styles"
@@ -104,12 +105,12 @@ function bindLogout(dispatch) {
     const user = Meteor.userId()
 
     if (user) {
-
       return getUser(user, dispatch)
     }
 
-    dispatch(accountsActions.signout())
-
+    dispatch(collectionActions.clear("savedAccounts"));
+    dispatch(accountsActions.setAccount(false));
+    dispatch(accountsActions.signout());
 
   })
 
@@ -122,6 +123,7 @@ function prefillRedux(dispatch) {
     Meteor.subscribe("recently-liked")
 
     if (Meteor.userId()) {
+
       Meteor.subscribe("userData");
       let topics = Meteor.user() ? Meteor.user().topics : [];
       if (topics && topics.length) {
@@ -129,9 +131,11 @@ function prefillRedux(dispatch) {
       }
 
       Meteor.subscribe("likes")
+
       let likes = Likes.find({
         userId: Meteor.userId()
       }).fetch().map((like) => like.entryId);
+
       if (likes.length){
         dispatch(likedActions.set(likes));
       }
@@ -162,7 +166,6 @@ export default class Global extends Component {
   componentDidMount() {
     this.setState({ shouldAnimate: true });
     const { dispatch } = this.props
-    const user = Meteor.userId()
 
     if (!this.handle) {
       this.handle = bindLogout(dispatch)
@@ -198,7 +201,8 @@ export default class Global extends Component {
 
   componentWillUnmount(){
     if (this.handle) {
-      this.handle.stop()
+      this.handle.stop();
+      delete this.handle;
     }
   }
 

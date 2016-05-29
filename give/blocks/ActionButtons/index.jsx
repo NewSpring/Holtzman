@@ -308,7 +308,7 @@ export default class GiveNow extends Component {
           }()}
 
           {(() => {
-            if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length && !this.props.hideCard) {
+            if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length && !this.props.hideCard && Meteor.userId()) {
               return (
                 <TertiaryButton
                   onClick={this.changePayments}
