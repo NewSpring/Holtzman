@@ -130,6 +130,7 @@ export default createReducer(initial, {
       state.authorized = false
       stateName = "default"
       state.person = initial.person
+      state.data = initial.data
     }
 
     return { ...state, ...{

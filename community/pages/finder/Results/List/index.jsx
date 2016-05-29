@@ -22,7 +22,7 @@ export default class ListView extends Component {
   }
 
   state = {
-    showFilters: false
+    showFilters: (typeof window != "undefined" && window.innerWidth > 768)
   }
 
   componentWillMount() {
