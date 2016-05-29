@@ -106,7 +106,6 @@ function bindLogout(dispatch) {
     const user = Meteor.userId()
 
     if (!user && hasBeenSignedIn) {
-      console.log("signing out and clearing data");
       dispatch(collectionActions.clear("savedAccounts"));
       dispatch(accountsActions.authorize(false));
       dispatch(accountsActions.signout());

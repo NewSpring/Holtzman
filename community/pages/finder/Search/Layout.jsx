@@ -146,6 +146,20 @@ const Layout = ({ geocode, home, ready, save, states, showError, campuses }, con
             )
           }()}
 
+          {() => {
+            if (Meteor.userId()) {
+              return (
+                <p className="push-double-top ">
+                  <a className="text-dark-secondary"
+                    href="#"
+                    onClick={() => {Meteor.logout()}}
+                  >
+                    <small><em>Sign Out</em></small>
+                  </a>
+                </p>
+              )
+            }
+          }()}
         </Forms.Form>
       </div>
     </Left>

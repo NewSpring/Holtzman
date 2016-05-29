@@ -28,6 +28,9 @@ const reducer = createReducer(initial, {
     return {...state, ...{
       scheduledTransactions: newState
     }}
+  },
+  ["TRANSACTIONS.CLEAR"]() {
+    return initial
   }
 });
 
@@ -40,4 +43,5 @@ export default {
   add: (transactions) => ({ type: "TRANSACTIONS.ADD", transactions }),
   addSchedule: (scheduledTransactions) => ({ type: "TRANSACTIONS.ADD_SCHEDULE", scheduledTransactions }),
   removeSchedule: (id) => ({ type: "TRANSACTIONS.REMOVE_SCHEDULE", id }),
+  clearData: () => ({ type: "TRANSACTIONS.CLEAR" })
 }
