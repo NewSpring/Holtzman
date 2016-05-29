@@ -18,38 +18,38 @@ function getUser(id, dispatch) {
 
   // @TODO figure out caching issues?
   let personQuery = `
-    {
-      person(mongoId: "${id}", cache: false) {
-        age
-        birthdate
-        birthDay
-        birthMonth
-        birthYear
-        campus {
-          name
-          shortCode
-          id
-        }
-        home {
-          city
-          country
-          id
-          zip
-          state
-          street1
-          street2
-        }
-        firstName
-        lastName
-        nickName
-        email
-        phoneNumbers {
-          number
-          formated
-        }
-        photo
+  {
+    person(mongoId: "${id}", cache: false) {
+      age
+      birthdate
+      birthDay
+      birthMonth
+      birthYear
+      campus(cache: false) {
+        name
+        shortCode
+        id
       }
+      home {
+        city
+        country
+        id
+        zip
+        state
+        street1
+        street2
+      }
+      firstName
+      lastName
+      nickName
+      email
+      phoneNumbers {
+        number
+        formated
+      }
+      photo
     }
+  }
   `
 
   return GraphQL.query(personQuery)
@@ -113,15 +113,6 @@ export default class HomeAddress extends Component {
     const { home, campus } = this.props.person
     const { state } = this.state
 
-    let campuses = []
-    for (let campus in this.props.campuses) {
-      campuses.push(this.props.campuses[campus])
-    }
-
-    campuses || (campuses = [])
-    campuses = campuses.map((campus) => {
-      return { label: campus.name, value: campus.id }
-    })
 
     switch (state) {
       case "error":
@@ -131,7 +122,7 @@ export default class HomeAddress extends Component {
       case "success":
         return <Success msg="Your information has been updated!" />
       default:
-        return <Layout home={home} update={this.updateAddress} campuses={campuses} campus={this.props.person.campus} />
+        return <Layout home={home} update={this.updateAddress}  />
     }
 
   }

@@ -71,27 +71,38 @@ export default class Layout extends Component {
           </div>
 
           <h6 className="soft-bottom">Name</h6>
-          <Forms.Input
-            name="NickName"
-            label="Nickname"
-            ref="NickName"
-            type="text"
-            defaultValue={nickName}
-          />
-          <Forms.Input
-            name="FirstName"
-            label="First Name"
-            ref="FirstName"
-            type="text"
-            defaultValue={firstName}
-          />
-          <Forms.Input
-            name="LastName"
-            label="Last Name"
-            ref="LastName"
-            type="text"
-            defaultValue={lastName}
-          />
+            <Forms.Input
+              name="NickName"
+              label="Nickname"
+              ref="NickName"
+              type="text"
+              defaultValue={nickName}
+            />
+          
+          <div className="grid">
+            <div className="grid__item one-half">
+
+              <Forms.Input
+                name="FirstName"
+                label="First Name"
+                ref="FirstName"
+                type="text"
+                defaultValue={firstName}
+              />
+            </div>
+            <div className="grid__item one-half">
+
+              <Forms.Input
+                name="LastName"
+                label="Last Name"
+                ref="LastName"
+                type="text"
+                defaultValue={lastName}
+              />
+            </div>
+          </div>
+
+
 
         <h6 className="soft-bottom">Contact</h6>
           <Forms.Input
@@ -148,6 +159,16 @@ export default class Layout extends Component {
             />
           </div>
         </div>
+        <h6 className="soft-bottom">Campus</h6>
+        <Forms.Select
+          name="Campus"
+          label="Campus"
+          type="Campus"
+          defaultValue={campus.id || false}
+          ref="Campus"
+          includeBlank={true}
+          items={campuses}
+        />
 
         {/*
           <Link to="/profile/settings" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">

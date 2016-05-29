@@ -38,14 +38,14 @@ function monentize(value, fixed){
   return `$${value}`
 }
 
-const TransactionDetail = ({ transactionDetail, transaction, icon, status }) => (
+const TransactionDetail = ({ transactionDetail, transaction, icon, status, failure }) => (
   <div className="grid" style={{verticalAlign: "middle"}}>
 
     <div className="grid__item three-fifths" style={{verticalAlign: "middle"}}>
       <h5 className="text-dark-tertiary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
         {transactionDetail.account.name}
       </h5>
-      <p className="flush italic small text-dark-tertiary">
+      <p className={`flush italic small ${failure ? 'text-alert' : 'text-dark-tertiary'}`}>
         {status ? `${status} - `: ''}{formatDate(transaction.date)}
       </p>
     </div>
@@ -107,6 +107,25 @@ const TransactionCard = ({ transactionDetail, transaction }) => {
           icon={false}
           status="Pending"
         />
+      </div>
+    )
+  }
+
+  if (status && status.toLowerCase().indexOf('failed') > -1) {
+    return (
+      <div
+        className="soft card"
+      >
+        <TransactionDetail
+          transactionDetail={transactionDetail}
+          transaction={transaction}
+          icon={false}
+          status="Failed to Process"
+          failure={true}
+        />
+      <p className="flush-bottom soft-top" style={{lineHeight: ".9"}}><small><em>
+          For more information about why this contribution failed to process, please contact our Finance Team at <a href="tel:864-965-9990">864-965-9990</a> or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us</a>
+        </em></small></p>
       </div>
     )
   }

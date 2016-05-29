@@ -105,21 +105,6 @@ export default class Layout extends Component {
             </div>
           </div>
 
-          <h6 className="soft-bottom">Campus</h6>
-          <Forms.Select
-            name="Campus"
-            label="Campus"
-            type="Campus"
-            defaultValue={campus.id || false}
-            ref="Campus"
-            includeBlank={true}
-            items={campuses}
-          />
-          {/*
-          <Link to="/profile/settings" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">
-            Back
-          </Link>
-          */}
           {() => {
             let btnClasses = [];
             let ready = true
@@ -135,6 +120,8 @@ export default class Layout extends Component {
               </button>
             )
           }()}
+
+
         </Forms.Form>
       </div>
     )
