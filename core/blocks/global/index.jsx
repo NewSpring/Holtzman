@@ -97,6 +97,7 @@ function getUser(id, dispatch) {
 
 }
 
+let hasBeenSignedIn = false;
 function bindLogout(dispatch) {
   let handle = {}
 
@@ -104,13 +105,19 @@ function bindLogout(dispatch) {
     handle = computation
     const user = Meteor.userId()
 
-    if (user) {
-      return getUser(user, dispatch)
+    if (!user && hasBeenSignedIn) {
+      console.log("signing out and clearing data");
+      dispatch(collectionActions.clear("savedAccounts"));
+      dispatch(accountsActions.authorize(false));
+      dispatch(accountsActions.signout());
+      hasBeenSignedIn = false;
+      return;
     }
 
-    dispatch(collectionActions.clear("savedAccounts"));
-    dispatch(accountsActions.setAccount(false));
-    dispatch(accountsActions.signout());
+    if (user) {
+      hasBeenSignedIn = true;
+      return getUser(user, dispatch)
+    }
 
   })
 
@@ -167,10 +174,7 @@ export default class Global extends Component {
     this.setState({ shouldAnimate: true });
     const { dispatch } = this.props
 
-    if (!this.handle) {
-      this.handle = bindLogout(dispatch)
-    }
-
+    bindLogout(dispatch);
     prefillRedux(dispatch);
 
     let query = `
@@ -197,13 +201,6 @@ export default class Global extends Component {
 
       })
 
-  }
-
-  componentWillUnmount(){
-    if (this.handle) {
-      this.handle.stop();
-      delete this.handle;
-    }
   }
 
   render() { return <App {...this.props} /> }
