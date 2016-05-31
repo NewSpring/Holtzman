@@ -1,0 +1,38 @@
+# mac files
+.DS_Store
+
+# environment vars
+.fastlane/.env
+
+# screenshots
+.fastlane/screenshots
+
+# meteor build folder
+.build
+
+# xcode builds
+*.ipa
+*.dSYM.zip
+
+# apple certs
+*.mobileprovision
+
+# ignore fastlane reports
+.fastlane/report.xml
+
+# ignore local packages
+packages/*
+
+# ignore node modules
+node_modules
+
+# ignore settings
+.remote/*
+
+# deployment files
+apollos.pem
+compose.pem
+mup.json
+settings.json
+bundle.crt
+private.key
