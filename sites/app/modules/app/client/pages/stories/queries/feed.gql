@@ -1,0 +1,26 @@
+query getStories($limit: Int!, $skip: Int!) {
+  allContent(channel: "stories", limit: $limit, skip: $skip) {
+    entryId: id
+    title
+    status
+    channelName
+    meta {
+      urlTitle
+      siteId
+      date
+      channelId
+    }
+    content {
+      body
+      scripture
+      images {
+        fileName
+        fileType
+        fileLabel
+        s3
+        cloudfront
+      }
+      ooyalaId
+    }
+  }
+}

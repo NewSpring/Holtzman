@@ -1,0 +1,17 @@
+:local(.player-flex) {
+  display: flex;
+  display: -webkit-flex;
+}
+
+:local(.player-container) {
+  height: 100%;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  -webkit-align-content: stretch;
+  align-content: stretch;
+}
+
+:local(.player-flex-one) {
+  -webkit-flex: 1;
+  flex: 1;
+}

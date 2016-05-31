@@ -1,0 +1,33 @@
+query getAlbum($entryId: Int!) {
+  content(id: $entryId) {
+    entryId: id
+    title
+    status
+    channelName
+    meta {
+      urlTitle
+      siteId
+      date
+      channelId
+    }
+    content {
+      images {
+        fileName
+        fileType
+        fileLabel
+        s3
+        cloudfront
+      }
+      colors {
+        value
+        description
+      }
+      isLight
+    }
+    tracks {
+      title
+      duration
+      file
+    }
+  }
+}

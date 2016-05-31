@@ -1,0 +1,72 @@
+{
+  "name": "newspring-app",
+  "version": "0.0.1",
+  "description": "",
+  "main": "entry/server/entry.js",
+  "browser": "entry/client/entry.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint ./modules",
+    "lintfix": "./node_modules/.bin/eslint ./modules --fix",
+    "test": "gagarin -v --skip-build -t 20000 --settings settings.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newspring/newspring-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/newspring/newspring-app/issues"
+  },
+  "homepage": "https://github.com/newspring/newspring-app#readme",
+  "dependencies": {
+    "apollos": "git+https://git@github.com/NewSpring/Apollos.git#apollo-client-2",
+    "audio5": "^0.1.10",
+    "babel": "^5.8.23",
+    "babel-plugin-react-transform": "^1.1.1",
+    "chromedriver": "^2.20.0",
+    "norma-bower": "^0.3.7",
+    "norma-meteor-run": "jbaxleyiii/norma-meteor-run",
+    "react": "^0.14.8",
+    "react-addons-create-fragment": "^0.14.8",
+    "react-addons-css-transition-group": "^0.14.8",
+    "react-addons-linked-state-mixin": "^0.14.8",
+    "react-addons-perf": "^0.14.8",
+    "react-addons-pure-render-mixin": "^0.14.8",
+    "react-addons-test-utils": "^0.14.8",
+    "react-addons-transition-group": "^0.14.8",
+    "react-addons-update": "^0.14.8",
+    "react-dom": "^0.14.8",
+    "react-hammerjs": "^0.4.5",
+    "react-mixin": "^3.0.0",
+    "react-pull-to-refresh": "^1.0.3",
+    "react-redux": "^4.0.0",
+    "react-swipe-views": "git+https://git@github.com/NewSpring/react-swipe-views.git",
+    "react-transform-hmr": "^1.0.1",
+    "redux": "^3.0.4",
+    "redux-devtools": "^2.1.5",
+    "velocity-react": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel-loader": "^5.3.2",
+    "cordova-common": "^1.0.0",
+    "cordova-lib": "^5.4.1",
+    "css-loader": "^0.23.0",
+    "eslint": "^1.10.3",
+    "exports-loader": "^0.6.2",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "file-loader": "^0.8.5",
+    "gagarin": "0.4.11",
+    "imports-loader": "^0.6.5",
+    "json-loader": "^0.5.4",
+    "null-loader": "^0.1.1",
+    "raw-loader": "^0.5.1",
+    "react-transform-catch-errors": "^1.0.0",
+    "redbox-react": "^1.2.5",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.0",
+    "webpack-hot-middleware": "^2.4.1",
+    "xcode": "^0.8.2"
+  }
+}

@@ -1,0 +1,15 @@
+
+:local(.play-bar) {
+  height: 4px;
+}
+
+:local(.play-bar--active){
+  margin-top: -24px;
+}
+
+:local(.scrub-dot) {
+  width: 15px;
+  height: 15px;
+  margin-top: -24px;
+  border: 1px solid #dddddd;
+}

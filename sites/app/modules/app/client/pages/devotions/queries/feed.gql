@@ -1,0 +1,25 @@
+query getDevotionals($limit: Int!, $skip: Int!) {
+  allContent(channel: "devotionals", limit: $limit, skip: $skip) {
+    entryId: id
+    title
+    status
+    channelName
+    meta {
+      urlTitle
+      siteId
+      date
+      channelId
+    }
+    content {
+      body
+      scripture
+      images {
+        fileName
+        fileType
+        fileLabel
+        s3
+        cloudfront
+      }
+    }
+  }
+}
