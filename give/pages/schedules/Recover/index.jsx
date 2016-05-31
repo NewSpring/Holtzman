@@ -22,8 +22,8 @@ function mapArrayToObj(array){
 
 function getSchedules(dispatch) {
   let query = `
-    query ScheduledTransactions($mongoId: String) {
-      transactions: allScheduledFinanicalTransactions(mongoId: $mongoId, cache: false) {
+    query ScheduledTransactions {
+      transactions: allScheduledFinanicalTransactions(cache: false) {
         numberOfPayments
         next
         end
@@ -99,16 +99,13 @@ export default class Template extends Component {
   }
 
   static fetchData(getStore, dispatch) {
-    let mongoId = Meteor.userId();
 
     return getAccounts(dispatch)
       .then((accounts) => {
-        if (mongoId) {
-          return getSchedules(dispatch)
+        return getSchedules(dispatch)
             // .then(() => {
             //   this.setState({loaded: true})
             // })
-        }
         // this.setState({loaded: true})
       })
   }
@@ -122,17 +119,13 @@ export default class Template extends Component {
       loaded: false
     })
 
-    let mongoId = Meteor.userId();
-
     return getAccounts(dispatch)
       .then((accounts) => {
 
-        if (mongoId) {
-          return getSchedules(dispatch)
-            .then(() => {
-              this.setState({loaded: true})
-            })
-        }
+        return getSchedules(dispatch)
+          .then(() => {
+            this.setState({loaded: true})
+          })
         this.setState({loaded: true})
       })
 

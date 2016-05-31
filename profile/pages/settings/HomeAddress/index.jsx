@@ -18,38 +18,38 @@ function getUser(id, dispatch) {
 
   // @TODO figure out caching issues?
   let personQuery = `
-  {
-    person(mongoId: "${id}", cache: false) {
-      age
-      birthdate
-      birthDay
-      birthMonth
-      birthYear
-      campus(cache: false) {
-        name
-        shortCode
-        id
+    {
+      person(cache: false) {
+        age
+        birthdate
+        birthDay
+        birthMonth
+        birthYear
+        campus(cache: false) {
+          name
+          shortCode
+          id
+        }
+        home {
+          city
+          country
+          id
+          zip
+          state
+          street1
+          street2
+        }
+        firstName
+        lastName
+        nickName
+        email
+        phoneNumbers {
+          number
+          formated
+        }
+        photo
       }
-      home {
-        city
-        country
-        id
-        zip
-        state
-        street1
-        street2
-      }
-      firstName
-      lastName
-      nickName
-      email
-      phoneNumbers {
-        number
-        formated
-      }
-      photo
     }
-  }
   `
 
   return GraphQL.query(personQuery)

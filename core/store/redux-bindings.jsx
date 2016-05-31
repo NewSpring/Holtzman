@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime"
 
 import { Component, PropTypes} from "react"
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
-import { Provider } from "react-redux"
+import { ApolloProvider } from "react-apollo"
 import thunk from "redux-thunk"
 import sagaMiddleware from "redux-saga"
 
@@ -73,7 +73,7 @@ const createReduxStore = (initialState, history) => {
 //     )
 //   }
 // }
-const wrapper = Provider
+const wrapper = ApolloProvider
 
 export {
   wrapper,

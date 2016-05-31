@@ -12,10 +12,10 @@ import Details from "./Details"
 
 
 function getTransactions(data, dispatch) {
-  const { mongoId, size, skip } = data
+  const { size, skip } = data
   let query = `
     {
-      transactions: allFinanicalTransactions(cache: false, mongoId: "${mongoId}", limit: ${size}, skip: ${skip}) {
+      transactions: allFinanicalTransactions(cache: false, limit: ${size}, skip: ${skip}) {
         id
         date
         status
@@ -62,21 +62,17 @@ export default class Template extends Component {
   }
 
   static fetchData(getStore, dispatch) {
-    let mongoId = Meteor.userId(),
-        size = 20,
+    let size = 20,
         skip = 0 * size;
 
-    if (mongoId) {
-      return getTransactions({ mongoId, skip, size }, dispatch)
-    }
+    return getTransactions({ skip, size }, dispatch)
   }
 
   getData = () => {
 
     const { dispatch } = this.props
 
-    let mongoId = Meteor.userId(),
-        size = this.state.pageSize,
+    let size = this.state.pageSize,
         skip = this.state.page * size;
 
     if (this.state.done) {
@@ -87,16 +83,14 @@ export default class Template extends Component {
       return
     }
 
-    if (mongoId) {
-      getTransactions({ mongoId, skip, size }, dispatch)
-        .then((transactions) => {
-          let done = false
-          if (transactions.length < size) {
-            done = true
-          }
-          this.setState({ done, loaded: true })
-        })
-    }
+    getTransactions({ skip, size }, dispatch)
+      .then((transactions) => {
+        let done = false
+        if (transactions.length < size) {
+          done = true
+        }
+        this.setState({ done, loaded: true })
+      })
   }
 
   // its probably safter to not SSR giving data right?

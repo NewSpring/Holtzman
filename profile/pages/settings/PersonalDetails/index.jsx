@@ -48,7 +48,7 @@ function getUser(id, dispatch) {
   // @TODO figure out caching issues?
   let personQuery = `
     {
-      person(mongoId: "${id}", cache: false) {
+      person(cache: false) {
         age
         birthdate
         birthDay
