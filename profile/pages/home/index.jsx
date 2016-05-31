@@ -12,7 +12,7 @@ import { avatar } from "../../../core/methods/files/client"
 function updateUser(id, dispatch) {
   let personQuery = `
     {
-      person(mongoId: "${id}", cache: false) {
+      person(cache: false) {
         age
         birthdate
         birthDay
