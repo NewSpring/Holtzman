@@ -1,0 +1,26 @@
+query getArticle($entryId: Int!) {
+  content(id: $entryId) {
+    id
+    entryId: id
+    title
+    status
+    channelName
+    authors
+    meta {
+      urlTitle
+      siteId
+      date
+      channelId
+    }
+    content {
+      body
+      images {
+        fileName
+        fileType
+        fileLabel
+        s3
+        cloudfront
+      }
+    }
+  }
+}

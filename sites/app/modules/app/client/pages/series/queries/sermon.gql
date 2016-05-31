@@ -1,0 +1,20 @@
+query getSermon($sermonId: Int!) {
+  content(id: $sermonId) {
+    entryId: id
+    title
+    status
+    channelName
+    meta {
+      urlTitle
+      siteId
+      date
+      actualDate
+      channelId
+    }
+    content {
+      description
+      speakers
+      ooyalaId
+    }
+  }
+}

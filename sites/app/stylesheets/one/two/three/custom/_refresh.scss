@@ -1,0 +1,112 @@
+.ptr-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #aaa;
+  z-index: 1;
+  text-align: center;
+  height: 70px;
+  background: $dark-color;
+}
+
+.ptr-fake-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  z-index: 0;
+  background: $dark-color;
+}
+
+.refresh-view {
+  z-index: 1;
+  position: relative;
+}
+
+.ptr-element i {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -10px;
+  font-size: 34px;
+  width: auto;
+  height: auto;
+  transition: all .25s ease;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  color: $brand-color;
+}
+.ptr-refresh .ptr-element i {
+  -webkit-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+.ptr-loading .ptr-element i,
+.ptr-reset .ptr-element i {
+  display: none;
+}
+
+.ptr-element .loading {
+  display: block;
+}
+
+.ptr-loading .ptr-element .loading {
+  display: block;
+  -webkit-animation-duration: .5s;
+  -ms-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: rotate-forever;
+  -ms-animation-name: rotate-forever;
+  animation-name: rotate-forever;
+  -webkit-animation-timing-function: linear;
+  -ms-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.ptr-loading .refresh-view, .ptr-reset .refresh-view,
+.ptr-loading .ptr-element, .ptr-reset .ptr-element {
+  transition: all .25s ease;
+}
+
+.ptr-reset .refresh-view {
+  -webkit-transform: translate3d( 0, 0, 0 );
+  transform: translate3d( 0, 0, 0 );
+}
+
+.ptr-loading .refresh-view {
+  -webkit-transform: translate3d( 0, 70px, 0 );
+  transform: translate3d( 0, 70px, 0 );
+}
+
+body:not(.ptr-loading) .ptr-element {
+  transform: translate3d(0, -70px, 0);
+}
+
+@-webkit-keyframes rotate-forever {
+  0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg)
+  }
+}
+@keyframes rotate-forever {
+  0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg)
+  }
+}

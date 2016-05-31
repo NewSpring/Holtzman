@@ -1,0 +1,28 @@
+query getSeries($limit: Int!, $skip: Int!){
+  allContent(channel: "series_newspring", limit: $limit, skip: $skip) {
+    entryId: id
+    title
+    status
+    channelName
+    meta {
+      urlTitle
+      siteId
+      date
+      channelId
+    }
+    content {
+      images {
+        fileName
+        fileType
+        fileLabel
+        s3
+        cloudfront
+      }
+      colors {
+        id
+        value
+        description
+      }
+    }
+  }
+}

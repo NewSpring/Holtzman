@@ -1,0 +1,18 @@
+query getRelatedSermons($entryId: Int!) {
+  allContent(channel: "sermons" collectionId: $entryId) {
+    entryId: id
+    title
+    status
+    channelName
+    collectionId
+    meta {
+      urlTitle
+      siteId
+      date
+      channelId
+    }
+    content {
+      speakers
+    }
+  }
+}
