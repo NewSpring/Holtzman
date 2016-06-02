@@ -12,11 +12,11 @@ if (process.env.NODE_ENV !== "production") {
           transform: "react-transform-hmr",
           imports: ["react"],
           locals: ["module"]
-        },
-        {
-          transform: "react-transform-catch-errors",
-          imports: ["react", "redbox-react"]
         }
+        // {
+        //   transform: "react-transform-catch-errors",
+        //   imports: ["react", "redbox-react"]
+        // }
       ]
     }
   };
@@ -49,7 +49,7 @@ module.exports = {
         test: /\.jsx?$/,
         loader: "babel",
         query: babelSettings,
-        exclude: /node_modules(?!\/apollos)/
+        exclude: /node_modules/
       },
       { test: /\.css$/, loader: cssLoader },
       { test: /\.(png|jpe?g)(\?.*)?$/, loader: "url?limit=8182" },

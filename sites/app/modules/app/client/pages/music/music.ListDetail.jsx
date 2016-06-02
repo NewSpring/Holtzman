@@ -15,7 +15,7 @@ import {
   nav as navActions,
   liked as likedActions,
   share as shareActions
-} from "apollos/core/store"
+} from "../../../../../../../apollos/core/store"
 
 import { Music as MusicCollection } from "app/lib/collections"
 

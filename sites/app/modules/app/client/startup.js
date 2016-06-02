@@ -1,4 +1,4 @@
-import "apollos/core/startup"
+import "../../../../../apollos/core/startup"
 
 function openUrl(url) {
   try {

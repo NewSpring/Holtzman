@@ -1,6 +1,6 @@
 
 
-import { addReducer } from "apollos/core/store"
+import { addReducer } from "../../../../../../apollos/core/store"
 import audio from "./audio"
 
 

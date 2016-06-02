@@ -4,15 +4,15 @@ import { Pageable } from "app/client/mixins"
 import { VelocityComponent } from "velocity-react"
 
 import ReactPullToRefresh from "react-pull-to-refresh";
-import { Loading } from "apollos/core/components"
+import { Loading } from "../../../../../../../apollos/core/components"
 
-import Split, { Left, Right } from "apollos/core/blocks/split"
-import { nav as navActions } from "apollos/core/store"
-import { connect, gql } from "apollos/core/graphql/apollo";
+import Split, { Left, Right } from "../../../../../../../apollos/core/blocks/split"
+import { nav as navActions } from "../../../../../../../apollos/core/store"
+import { connect, gql } from "../../../../../../../apollos/core/graphql/apollo";
 
 import Helpers from "app/client/helpers";
 
-import { FeedItemSkeleton } from "apollos/core/components/loading"
+import { FeedItemSkeleton } from "../../../../../../../apollos/core/components/loading"
 import HomeHero from "./home.Hero"
 import { FeedItem } from "app/client/components/cards"
 
