@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/newspring/newspring-app#readme",
   "dependencies": {
-    "apollos": "git+https://git@github.com/NewSpring/Apollos.git#apollo-client-2",
+    "apollos": "git+https://git@github.com/NewSpring/Apollos.git#1.0.31",
     "audio5": "^0.1.10",
     "babel": "^5.8.23",
     "babel-plugin-react-transform": "^1.1.1",
