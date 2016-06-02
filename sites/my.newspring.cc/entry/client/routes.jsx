@@ -6,6 +6,7 @@ import {
 } from "../../../../apollos"
 
 import { Global } from "../../../../apollos/core/blocks"
+import { apolloClient } from "../../../../apollos/core/graphql/apollo";
 
 import { Routes } from "app/client"
 import Give from "../../../../apollos/give"
@@ -15,6 +16,7 @@ import Community from "../../../../apollos/community"
 const client = {
   wrapper,
   createReduxStore,
+  apolloClient,
   props: {
     onUpdate() {
       const { state } = this
@@ -31,6 +33,7 @@ const client = {
 const server = {
   wrapper,
   createReduxStore,
+  apolloClient,
 }
 
 // const [ Util, NotFound ] = Core
