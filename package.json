@@ -48,7 +48,7 @@
     "moment": "^2.10.6",
     "react-apollo": "^0.3.5",
     "react-controllables": "^0.6.0",
-    "react-day-picker": "^1.2.0",
+    "react-day-picker": "^2.1.0",
     "react-dom": "^0.14.8",
     "react-helmet": "^2.3.1",
     "react-motion": "^0.4.2",
