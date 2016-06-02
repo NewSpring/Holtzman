@@ -20,25 +20,61 @@ const mapStateToProps = (state) => {
 @connect(mapStateToProps)
 export default class FullPlayer extends Component {
 
+  state = {
+    isShort: false
+  }
+
   componentDidMount() {
     const artworkContainer = this.refs.artworkContainer;
     const artwork = this.refs.artwork;
+    this.setState({
+      isShort: artworkContainer.clientWidth > artworkContainer.clientHeight
+    });
+  }
 
-    // please refactor i didn't mean for this
-    if (artworkContainer.clientWidth > artworkContainer.clientHeight) {
-      artworkContainer.style.height = "100%";
-      artworkContainer.style.backgroundImage = `
+  getArtworkStyles = (album) => {
+    const artworkContainer = this.refs.artworkContainer;
+    let styles = Helpers.backgrounds.styles(album);
+
+    if(this.state.isShort) {
+      styles.height = `${artworkContainer.clientHeight}px`;
+      styles.backgroundSize = "contain";
+      styles.backgroundColor = "transparent";
+    }
+
+    return styles;
+  };
+
+  getArtworkClasses = (album) => {
+    let classes = [
+      "one-whole",
+      "overlay--gradient",
+      "background--fill",
+      Helpers.collections.classes(album)
+    ];
+
+    if(!this.state.isShort) {
+      classes.push("ratio--square");
+    }
+
+    return classes.join(" ");
+  };
+
+  getArtworkContainerStyles = () => {
+    let styles = {};
+
+    if(this.state.isShort) {
+      styles.height = "100%";
+      styles.backgroundImage = `
         url('${this.getImage(this.props.playing.album, { blurred: true })}')
       `;
-      artworkContainer.style.paddingTop = "10px";
-      artworkContainer.style.paddingBottom = "10px";
-      artworkContainer.style.backgroundSize = "cover";
-      artwork.style.height = `${artworkContainer.clientHeight}px`;
-      artwork.style.backgroundSize = "contain";
-      artwork.style.backgroundColor = "transparent";
-      artwork.className = artwork.className.replace(/\bratio--square\b/,'');
+      styles.paddingTop = "10px";
+      styles.paddingBottom = "10px";
+      styles.backgroundSize = "cover";
     }
-  }
+
+    return styles;
+  };
 
   getImage = (data, options = { blurred: false }) => {
     const { images } = data.content
@@ -145,16 +181,6 @@ export default class FullPlayer extends Component {
     }
   };
 
-  backgroundClasses = (album) => {
-    return [
-      "one-whole",
-      "overlay--gradient",
-      "ratio--square",
-      "background--fill",
-      Helpers.collections.classes(album)
-    ].join(" ")
-  }
-
   render () {
 
     const { state, playing } = this.props;
@@ -185,11 +211,14 @@ export default class FullPlayer extends Component {
           Styles["player-flex"] + " " + Styles["player-container"]
         }>
 
-          <section ref="artworkContainer" className="hard">
+          <section
+            ref="artworkContainer"
+            className="hard"
+            style={this.getArtworkContainerStyles()}>
             <div
               ref="artwork"
-              className={this.backgroundClasses(album)}
-              style={Helpers.backgrounds.styles(album)}>
+              className={this.getArtworkClasses(album)}
+              style={this.getArtworkStyles(album)}>
             </div>
           </section>
 
