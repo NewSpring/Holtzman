@@ -1,7 +1,7 @@
-import "apollos"
-import "apollos/give/methods"
-import Give from "apollos/give/observers"
-import { api } from "apollos/core/util/rock"
+import "../../../../../apollos"
+import "../../../../../apollos/give/methods"
+import Give from "../../../../../apollos/give/observers"
+import { api } from "../../../../../apollos/core/util/rock"
 
 // add support for Promise since meteor ships with node 10.41
 fetch.Promise = Promise

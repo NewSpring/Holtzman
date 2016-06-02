@@ -5,7 +5,7 @@ import ListDetail from "../../../pages/music/music.ListDetail"
 import AudioScrubber from "./audio.Scrubber"
 
 import { audio as audioActions } from "app/client/actions"
-import { modal } from "apollos/core/store"
+import { modal } from "../../../../../../../../apollos/core/store"
 
 @connect()
 export default class AudioControls extends Component {

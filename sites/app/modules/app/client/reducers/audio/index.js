@@ -6,7 +6,7 @@
 
 */
 
-import { createReducer } from "apollos/core/store"
+import { createReducer } from "../../../../../../../apollos/core/store"
 import { types } from "../../actions/audio"
 
 const initial = {

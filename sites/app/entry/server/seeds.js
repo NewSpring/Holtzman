@@ -1,4 +1,4 @@
-import { Sections } from "apollos/core/collections";
+import { Sections } from "../../../../apollos/core/collections";
 
 const gridItems = [
   {

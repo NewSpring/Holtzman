@@ -1,21 +1,21 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
-import { connect, gql } from "apollos/core/graphql/apollo";
+import { connect, gql } from "../../../../../../../apollos/core/graphql/apollo";
 import { Likeable, Shareable } from "app/client/mixins"
 import Hammer from "react-hammerjs";
 import { VelocityComponent } from "velocity-react"
 
 import Helpers from "app/client/helpers"
 
-import { Loading } from "apollos/core/components"
+import { Loading } from "../../../../../../../apollos/core/components"
 
-import { nav as navActions } from "apollos/core/store"
+import { nav as navActions } from "../../../../../../../apollos/core/store"
 
 // can we use the core toggle here? Is it ready @jbaxleyiii?
 import DevotionsSingleContent from "./devotions.SingleContent"
 import DevotionsSingleScripture from "./devotions.SingleScripture"
 
-// TODO: integrate this with apollos core toggle
+// TODO: integrate this with ../apollos core toggle
 import SwipeViews from "react-swipe-views"
 
 import DevotionQuery from "./queries/single"

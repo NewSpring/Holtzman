@@ -1,5 +1,5 @@
 import Helpers from "app/client/helpers"
-import { share as shareActions } from "apollos/core/store"
+import { share as shareActions } from "../../../../../../apollos/core/store"
 
 const Shareable = {
 
