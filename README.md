@@ -6,6 +6,7 @@
 
 Apollos
 =======================
+[![Build Status](https://travis-ci.org/NewSpring/Apollos.svg?branch=monolith)](https://travis-ci.org/NewSpring/Apollos)
 [![Circle CI](https://circleci.com/gh/NewSpring/Apollos/tree/master.svg?style=svg)](https://circleci.com/gh/NewSpring/Apollos/tree/master)
 
 Apollos is a reactive application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
