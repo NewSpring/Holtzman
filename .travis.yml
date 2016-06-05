@@ -13,3 +13,4 @@ script:
 - "./scripts/test/apollos.sh"
 - "./scripts/prepare/app.sh"
 - "./scripts/test/app.sh"
+- "./scripts/deploy/app.sh"
