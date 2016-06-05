@@ -1,5 +1,5 @@
 
-import { Global } from "../../../../../apollos/core/blocks"
+import { Global } from "apollos/core/blocks"
 
 import { Routes } from "app/client/pages"
 

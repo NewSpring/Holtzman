@@ -24,6 +24,9 @@ module.exports = {
   },
   resolve: {
     root: path.join(__dirname, "..", "modules"),
+    alias: {
+      apollos: path.join(__dirname, "..", "..", "..", "apollos")
+    },
     extensions: ["", ".js", ".jsx", ".json", ".css"]
   }
 };
