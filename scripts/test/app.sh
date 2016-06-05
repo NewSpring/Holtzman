@@ -16,6 +16,9 @@ curl https://install.meteor.com | /bin/sh
 echo "${YELLOW}### Installing NPM deps ###"
 npm install
 
+ls node_modules
+ls node_modules/.bin
+
 echo "${YELLOW}### Installing Norma ###"
 npm install -g NewSpring/Norma#forked-cson
 
