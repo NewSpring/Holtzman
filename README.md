@@ -19,14 +19,11 @@ Apollos is a reactive application framework for building high speed, web + nativ
 * <a href="https://www.biblegateway.com/passage/?search=1%20Corinthians%203:6&version=NIV">1 Corinthians 3:6</a>
 * <a href="https://www.biblegateway.com/passage/?search=Titus%203:13&version=NIV">Titus 3:13</a>
 
+## Structure
 
+This repo contains the core Apollos framework, as well as the sites that share the core Apollos code:
 
-## Requirements
-
-Meteor packages:
-
-```
-meteor add timbrandin:fetch promise accounts-password accounts-base check bjwiley2:server-watch
-```
-
-> these will be migrated to a `newspring:apollos` package before launch
+- `/apollos`: shared code
+- `/sites`: root site directory
+  - `/app`: native mobile app
+  - `/my.newspring.cc`: give site
