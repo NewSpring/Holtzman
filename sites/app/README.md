@@ -16,7 +16,9 @@ Each folder level should contain an README.md explaining what the scope of the f
 ## Getting Started
 
 ```shell
-git clone https://github.com/NewSpring/newspring-app
+git clone https://github.com/NewSpring/apollos
+
+cd sites/app
 
 # install node modules
 npm install
