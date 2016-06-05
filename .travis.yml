@@ -6,11 +6,7 @@ language: node_js
 node_js:
   - "0.10"
 
-before_script: cd apollos
-
-script:
-  - npm install
-  - npm run lint
+script: ./scripts/test-apollos.sh
 
 notifications:
   slack:
