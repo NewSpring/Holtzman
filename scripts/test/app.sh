@@ -5,38 +5,32 @@ if [ "${TRAVIS_OS_NAME}" != "osx" ]; then
   exit 0
 fi
 
-# enter app directory
+echo "### Entering app directory ###"
 cd sites/app
 
-# brew
-# brew install brew-cask
-
-# meteor
-# if [ ! -f $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
+echo "### Installing Meteor ###"
 curl https://install.meteor.com | sh
 
-# chrome
-# brew cask install google-chrome
-# brew install chromedriver
-
-# install app deps
+echo "### Installing NPM deps ###"
 npm install
 
-# norma build
+echo "### Installing Norma ###"
 npm install -g NewSpring/Norma#forked-cson
+
+echo "### Downloading things with Norma ###"
 norma build
 
-# remove packages for gagarin work around
+echo "### Remove platforms for Gagarin workaround ###"
 meteor remove-platform ios android
 
-# prepare test build of app
+echo "### Preparing Gagarin test build ###"
 npm install -g gagarin
 cp ./.remote/settings/sites/app.newspring.io/alpha.settings.json ./settings.json
 meteor build --directory ./.gagarin/local --server localhost:3000
 cd ./.gagarin/local/bundle/programs/server/ && npm i
 
-# start chromedriver
+echo "### Starting Chromedriver ###"
 ./node_modules/.bin/chromedriver --port=9515
 
-# test
+echo "### Running App Tests ###"
 npm test
