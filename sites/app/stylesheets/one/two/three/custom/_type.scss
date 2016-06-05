@@ -1,0 +1,25 @@
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 100%;
+  }
+  h1 {
+    font-size: 2.6em;
+  }
+  h2 {
+    font-size: 2.1em;
+  }
+}
+
+.plain {
+  text-decoration: none;
+}
+
+h7 {
+  @extend %h7;
+  font-weight: 400;
+}
+
+h5 {
+  @extend %h5;
+  font-weight: 500;
+}

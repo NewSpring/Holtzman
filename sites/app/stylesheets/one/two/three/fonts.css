@@ -1,0 +1,117 @@
+/* ----------------------------------------------------------------------------
+	FONT: Colfax Web Light
+---------------------------------------------------------------------------- */
+@font-face{
+	font-family:'colfax-web';
+	src:url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/light.eot');
+	src:url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/light.eot?#iefix') format('embedded-opentype'),
+		url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/light.woff') format('woff');
+	font-style:normal;
+	font-weight:300;
+}
+/* ----------------------------------------------------------------------------
+	FONT: Colfax Web Regular
+---------------------------------------------------------------------------- */
+@font-face{
+	font-family:'colfax-web';
+	src:url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/regular.eot');
+	src:url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/regular.eot?#iefix') format('embedded-opentype'),
+		url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/regular.woff') format('woff');
+	font-style:normal;
+	font-weight:400;
+}
+/* ----------------------------------------------------------------------------
+	FONT: Colfax Web Medium
+---------------------------------------------------------------------------- */
+@font-face{
+	font-family:'colfax-web';
+	src:url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/medium.eot');
+	src:url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/medium.eot?#iefix') format('embedded-opentype'),
+		url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/medium.woff') format('woff');
+	font-style:normal;
+	font-weight:500;
+}
+/* ----------------------------------------------------------------------------
+	FONT: Colfax Web Bold
+---------------------------------------------------------------------------- */
+@font-face{
+	font-family:'colfax-web';
+	src:url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/bold.eot');
+	src:url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/bold.eot?#iefix') format('embedded-opentype'),
+		url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/bold.woff') format('woff');
+	font-style:normal;
+	font-weight:700;
+}
+/* ----------------------------------------------------------------------------
+	FONT: Colfax Web Black
+---------------------------------------------------------------------------- */
+@font-face{
+	font-family:'colfax-web';
+	src:url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/black.eot');
+	src:url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/black.eot?#iefix') format('embedded-opentype'),
+		url('//d3n6tjerleuu41.cloudfront.net/fonts/colfax/black.woff') format('woff');
+	font-style:normal;
+	font-weight:900;
+}
+
+@font-face{
+	font-family: "alice";
+	src: url("/oofont/alice.eot");
+	src: url("/oofont/alice.eot?#iefix") format("embedded-opentype"), url("/oofont/alice.woff") format("woff"), url("/oofont/alice.ttf") format("truetype"), url("/oofont/alice.svg#alice") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* roboto condensed regular */
+@font-face{
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 400;
+	src: local("Roboto Condensed"), local("RobotoCondensed-Regular"), url("/oofont/RobotoCondensed-Regular.woff2") format("woff2"), url("/oofont/RobotoCondensed-Regular.woff") format("woff"), url("/oofont/RobotoCondensed-Regular.ttf") format("truetype");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* roboto condensed bold */
+@font-face{
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 700;
+	src: local("Roboto Condensed Bold"), local("RobotoCondensed-Bold"), url("/oofont/RobotoCondensed-Bold.woff2") format("woff2"), url("/oofont/RobotoCondensed-Bold.woff") format("woff"), url("/oofont/RobotoCondensed-Bold.ttf") format("truetype");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* roboto regular */
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	src: local("Roboto"), local("Roboto-Regular"), url("/oofont/Roboto-Regular.woff2") format("woff2"), url("/oofont/Roboto-Regular.ttf") format("truetype"), url("/oofont/Roboto-Regular.woff") format("woff");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* roboto bold */
+@font-face{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 700;
+	src: local("Roboto Bold"), local("Roboto-Bold"), url("/oofont/Roboto-Bold.woff2") format("woff2"), url("/oofont/Roboto-Bold.ttf") format("truetype"), url("/oofont/Roboto-Bold.woff") format("woff");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* Open Sans regular */
+@font-face{
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local("Open Sans"), local("OpenSans"), url("/oofont/OpenSans.woff2") format("woff2"), url("/oofont/OpenSans.woff") format("woff"), url("/oofont/OpenSans.ttf") format("truetype");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* Open Sans regular */
+@font-face{
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local("Open Sans"), local("OpenSans"), url("/oofont/OpenSans.woff2") format("woff2"), url("/oofont/OpenSans.woff") format("woff"), url("/oofont/OpenSans.ttf") format("truetype");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}

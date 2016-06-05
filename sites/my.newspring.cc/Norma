@@ -1,0 +1,20 @@
+name: "newspring-app"
+
+tasks:
+  bower:
+    "./.remote":
+      "settings": "https://github.com/NewSpring/ops-settings.git"
+      "junction": "NewSpring/junction-framework"
+      "fonts": "NewSpring/newspring-fonts"
+    "./packages":
+      "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#7c6b8aff8225dd5030a21d09f169d839f8693cf9"
+      "fetch": "https://github.com/NewSpring/meteor-fetch.git#95db94933bc332f9e9b4c02a555c86b5522893bd"
+      "react-router-ssr": "https://github.com/NewSpring/meteor-react-router-ssr.git#cd54e9474821f40ef4e5d2038442649a8ee8baad"
+      "static-html": "https://github.com/NewSpring/static-html.git#0d174e6c2584141e70981fbe2cac613730165941"
+      "inject-data": "https://github.com/NewSpring/inject-data.git#3b713f4383a3207ee18ed08af739d31853f7bafc"
+      "newrelic": "https://github.com/NewSpring/newrelic/commit/23fc89fe2d71d754f4d70336337bfa2a17a79383"
+
+  "meteor-run":
+    endpoint: "jbaxleyiii/norma-meteor-run"
+    src: "./"
+    settings: ".remote/settings/sites/my.newspring.cc/settings.json"

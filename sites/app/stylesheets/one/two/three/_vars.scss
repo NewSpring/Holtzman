@@ -1,0 +1,146 @@
+
+// switch once we purchase meta
+// $body-font:"ff-meta-serif-web-pro", serif;
+$body-font: "Droid Serif", serif;
+$base-font-size: 20px;
+$use-old-namespace: false;
+$use-new-namespace: true;
+
+$fonts: (
+  colfax: (
+    h1: (
+      font-size: 3em,
+      line-height: 1.05,
+      margin-bottom: $base-spacing-unit,
+      font-family: "colfax-web",
+      font-weight: 700
+    ),
+    h2: (
+      font-family: "colfax-web",
+      font-weight: 700,
+      font-size: 2.35em,
+      line-height: 1.25,
+      margin-bottom: $base-spacing-unit
+    ),
+    h3: (
+      font-family: "colfax-web",
+      font-weight: 700,
+      font-size: 1.8em,
+      line-height: 1.25,
+      margin-bottom: $base-spacing-unit
+    ),
+    h4: (
+      font-family: "colfax-web",
+      font-weight: 700,
+      font-size: 1.4em,
+      line-height: 1.2222222,
+      margin-bottom: $half-spacing-unit
+    ),
+    h5: (
+      font-family: "colfax-web",
+      font-weight: 700,
+      font-size: 1.125em,
+      line-height: 1.25,
+      margin-bottom: $half-spacing-unit
+    ),
+    h6: (
+      font-family: "colfax-web",
+      font-weight: 500,
+      font-size: .875em,
+      line-height: 1.125,
+      margin-bottom: $half-spacing-unit
+    ),
+    h7: (
+      font-family: "colfax-web",
+      font-weight: 500,
+      font-size: .775em,
+      line-height: 1.125,
+      margin-bottom: $half-spacing-unit
+    ),
+    label: (
+      font-family: "colfax-web",
+      font-size: .775em,
+      font-weight: 500,
+      line-height: 1.125
+    )
+  ),
+  meta-serif: (
+    p: (
+      font-family: $body-font,
+      font-size: $base-font-size/16px * 1em,
+      line-height: 1.75,
+      margin-bottom: $base-spacing-unit
+    ),
+    li: (
+      font-family: $body-font,
+      font-size: $base-font-size/16px * 1em,
+      line-height: 1.75,
+      margin-bottom: $base-spacing-unit
+    ),
+    small: (
+      font-size: .875em,
+      line-height: 1.75,
+      margin-bottom: $base-spacing-unit
+    ),
+    strong: (
+      font-family: $body-font,
+      font-size: $base-font-size/16px * 1em,
+      font-weight: 700,
+      line-height: 1.75,
+      margin-bottom: $base-spacing-unit
+    ),
+    em: (
+      font-family: $body-font,
+      font-style: italic,
+      font-weight:500,
+      font-size: .875em,
+      line-height: 1.75,
+      margin-bottom: $base-spacing-unit
+    )
+  )
+);
+
+$ratios: (
+  ratio--portrait: (
+    width: 1,
+    height: 2
+  ),
+  ratio--square: (
+    width: 1,
+    height: 1
+  ),
+  ratio--landscape: (
+    width: 2,
+    height: 1
+  ),
+  ratio--thin: (
+    width: 4,
+    height: 1
+  )
+);
+
+
+// type sets
+$typography: (
+  h1: colfax,
+  h2: colfax,
+  h3: colfax,
+  h4: colfax,
+  h5: colfax,
+  h6: colfax,
+  h7: colfax,
+  p: meta-serif,
+  small: meta-serif,
+  strong: meta-serif,
+  em: meta-serif,
+  label: colfax,
+  li: meta-serif
+);
+
+// this doesn't work
+// something to do with @importing a @font-face declaration
+@import "/.remote/fonts/colfax-hinted/light";
+@import "/.remote/fonts/colfax-hinted/regular";
+@import "/.remote/fonts/colfax-hinted/medium";
+@import "/.remote/fonts/colfax-hinted/bold";
+@import "/.remote/fonts/colfax-hinted/black";
