@@ -7,33 +7,37 @@ if [ "${TRAVIS_OS_NAME}" != "osx" ]; then
 fi
 
 YELLOW=`tput setaf 3`
+yecho () {
+  echo "${YELLOW}$1"
+}
 
-echo "${YELLOW}### Entering app directory ###"
+
+yecho "### Entering app directory ###"
 cd sites/app
 
-echo "${YELLOW}### Installing Meteor ###"
+yecho "### Installing Meteor ###"
 curl https://install.meteor.com | /bin/sh
 
-echo "${YELLOW}### Installing NPM deps ###"
+yecho "### Installing NPM deps ###"
 npm install
 
-echo "${YELLOW}### Installing Norma ###"
+yecho "### Installing Norma ###"
 npm install -g NewSpring/Norma#forked-cson
 
-echo "${YELLOW}### Downloading things with Norma ###"
+yecho "### Downloading things with Norma ###"
 norma build
 
-echo "${YELLOW}### Remove platforms for Gagarin workaround ###"
+yecho "### Remove platforms for Gagarin workaround ###"
 meteor remove-platform ios android
 
-echo "${YELLOW}### Preparing Gagarin test build ###"
+yecho "### Preparing Gagarin test build ###"
 npm install -g gagarin
 cp ./.remote/settings/sites/app.newspring.io/alpha.settings.json ./settings.json
 meteor build --directory ./.gagarin/local --server localhost:3000
 cd ./.gagarin/local/bundle/programs/server/ && npm i
 
-echo "${YELLOW}### Starting Chromedriver ###"
+yecho "### Starting Chromedriver ###"
 ./node_modules/chromedriver/lib/chromedriver/chromedriver --port=9515 &
 
-echo "${YELLOW}### Running App Tests ###"
+yecho "### Running App Tests ###"
 npm test
