@@ -1,0 +1,31 @@
+query getSeriesSingle($entryId: Int!) {
+  content(id: $entryId) {
+    entryId: id
+    title
+    status
+    channelName
+    meta {
+      urlTitle
+      siteId
+      date
+      channelId
+    }
+    content {
+      description
+      images {
+        fileName
+        fileType
+        fileLabel
+        s3
+        cloudfront
+      }
+      ooyalaId
+      colors {
+        id
+        value
+        description
+      }
+    }
+  }
+}
+

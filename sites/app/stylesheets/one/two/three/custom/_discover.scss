@@ -1,0 +1,20 @@
+.ratio--half-landscape:before {
+  padding-top: 25%;
+}
+
+#search i {
+  position: absolute;
+}
+
+#search input::-webkit-input-placeholder {
+  color: #858585;
+}
+
+#search input {
+  padding-left: 25px;
+}
+
+.fixed-top {
+  position: fixed;
+  z-index: 1;
+}

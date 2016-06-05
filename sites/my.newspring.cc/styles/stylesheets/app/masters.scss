@@ -1,0 +1,70 @@
+
+// @import "./base/_select";
+
+// import default vars
+@import "/.remote/junction/lib/mixins";
+
+// make changes specific to this app
+@import "./vars";
+
+// import full library
+@import "/.remote/junction/lib/framework";
+
+
+@import "./helpers/_type";
+
+// html, body, #react-app {
+//   background: #303030;
+// }
+
+.card {
+  background-color: #fff;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .075);
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.overlay--solid-medium {
+  @extend %_overlay;
+  &:after {
+    background: rgba($dark-color, .4);
+  }
+}
+
+html.modal--opened {
+  overflow: hidden;
+  height: 100%;
+}
+
+blockquote {
+  font-size: 1.4em;
+  text-align: center;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  margin: 40px 0 40px;
+  padding: 30px 20px 15px 20px;
+
+}
+
+blockquote p {
+  font-style: italic;
+  color: #505050;
+  letter-spacing: -1px;
+  font-weight: 100;
+}
+
+@include namespace(grid--rev) {
+  margin-left: -$base-spacing-unit;
+  list-style:none;
+  margin-bottom:0;
+  direction:rtl;
+  text-align:right;
+
+  & > .grid__item {
+    direction:ltr;
+    text-align:left;
+  }
+}

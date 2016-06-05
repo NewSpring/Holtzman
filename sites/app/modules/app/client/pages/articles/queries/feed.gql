@@ -1,0 +1,25 @@
+query getArticles($limit: Int!, $skip: Int!) {
+  allContent(channel: "articles", limit: $limit, skip: $skip) {
+    entryId: id
+    title
+    status
+    channelName
+    meta {
+      urlTitle
+      siteId
+      date
+      channelId
+    }
+    content {
+      body
+      scripture
+      images {
+        fileName
+        fileType
+        fileLabel
+        s3
+        cloudfront
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+.verse-num, .chapter-num {
+  color: map-get($colors, dark-tertiary);
+  vertical-align: super;
+  font-size: 14px;
+  padding-right: 2px;
+}

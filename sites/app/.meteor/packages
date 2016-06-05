@@ -1,0 +1,34 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-base             # Packages every Meteor app needs to have
+mobile-experience       # Packages for a great mobile UX
+mongo                   # The database Meteor supports right now
+tracker                 # Meteor's client-side reactive programming library
+
+standard-minifiers      # JS/CSS minifiers run for production mode
+es5-shim                # ECMAScript 5 compatibility for older browsers.
+
+webpack:webpack
+react-meteor-data
+reactrouter:react-router-ssr
+newspring:scss
+momentjs:moment
+static-html
+# crosswalk
+anti:gagarin@=0.4.11
+check
+meteorhacks:kadira
+meteorhacks:subs-manager
+force-ssl
+timbrandin:fetch
+promise
+accounts-password
+accounts-base
+random
+bjwiley2:server-watch
+# silvervue:wkwebview
+nfl:react-helmet
