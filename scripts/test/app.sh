@@ -9,7 +9,7 @@ echo "### Entering app directory ###"
 cd sites/app
 
 echo "### Installing Meteor ###"
-curl https://install.meteor.com | sh
+curl https://install.meteor.com | /bin/sh
 
 echo "### Installing NPM deps ###"
 npm install
