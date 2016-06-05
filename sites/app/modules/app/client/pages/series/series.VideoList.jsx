@@ -1,8 +1,8 @@
 import { Component, PropTypes } from "react";
-import { connect, gql } from "../../../../../../../apollos/core/graphql/apollo";
+import { connect, gql } from "apollos/core/graphql/apollo";
 
 import SeriesVideoListItem from "./series.VideoListItem";
-import { Spinner } from "../../../../../../../apollos/core/components/loading"
+import { Spinner } from "apollos/core/components/loading"
 
 import SermonsQuery from "./queries/relatedSermons"
 

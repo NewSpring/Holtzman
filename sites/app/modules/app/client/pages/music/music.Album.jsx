@@ -1,22 +1,22 @@
 import { Component, PropTypes, Lib } from "react"
 import ReactMixin from "react-mixin"
 import { Likeable, Shareable } from "app/client/mixins"
-import { connect, gql } from "../../../../../../../apollos/core/graphql/apollo";
+import { connect, gql } from "apollos/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 
 // loading state
-import { Loading } from "../../../../../../../apollos/core/components"
+import { Loading } from "apollos/core/components"
 
 // action helpers
 import { modal,
   nav as navActions
-} from "../../../../../../../apollos/core/store"
+} from "apollos/core/store"
 import { audio as audioActions } from "app/client/actions"
 
 import Helpers from "app/client/helpers"
 
 import { Music as MusicCollection } from "app/lib/collections"
-import { Likes } from "../../../../../../../apollos/core/collections"
+import { Likes } from "apollos/core/collections"
 
 import Track from "./music.Track";
 import SaveOffline from "./music.SaveOffline"

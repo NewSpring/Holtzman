@@ -1,14 +1,14 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { Pageable } from "app/client/mixins"
-import { connect, gql } from "../../../../../../../apollos/core/graphql/apollo";
+import { connect, gql } from "apollos/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 
 import ReactPullToRefresh from "react-pull-to-refresh";
-import { Loading } from "../../../../../../../apollos/core/components"
+import { Loading } from "apollos/core/components"
 
-import { FeedItemSkeleton } from "../../../../../../../apollos/core/components/loading"
-import { nav as navActions } from "../../../../../../../apollos/core/store"
+import { FeedItemSkeleton } from "apollos/core/components/loading"
+import { nav as navActions } from "apollos/core/store"
 
 import Single from "./devotions.Single"
 

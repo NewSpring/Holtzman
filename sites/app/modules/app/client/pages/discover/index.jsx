@@ -2,7 +2,7 @@ import { Component } from "react"
 import ReactMixin from "react-mixin"
 import { connect } from "react-redux"
 
-import { nav as navActions, comingsoon as comingsoonActions } from "../../../../../../../apollos/core/store"
+import { nav as navActions, comingsoon as comingsoonActions } from "apollos/core/store"
 
 import Search from "./discover.Search"
 import DiscoverHero from "./discover.Hero"

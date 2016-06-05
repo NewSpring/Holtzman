@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
-import { Card } from "../../../../../../../apollos/core/components"
+import { Card } from "apollos/core/components"
 
 import { Collections } from "app/lib/collections";
 import Helpers from "app/client/helpers"

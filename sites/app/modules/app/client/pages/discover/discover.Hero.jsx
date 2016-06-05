@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 
-import { inAppLink } from "../../../../../../../apollos/core/util/inAppLink"
+import { inAppLink } from "apollos/core/util/inAppLink"
 
 export default class DiscoverHero extends Component {
 
