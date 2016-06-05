@@ -23,7 +23,7 @@ brew install chromedriver
 npm install
 
 # norma build
-npm install -g NewSpring/Norma#forcked-cson
+npm install -g NewSpring/Norma#forked-cson
 norma build
 
 # remove packages for gagarin work around
