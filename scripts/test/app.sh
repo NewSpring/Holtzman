@@ -34,10 +34,8 @@ yecho "### Preparing Gagarin test build ###"
 npm install -g gagarin
 cp ./.remote/settings/sites/app.newspring.io/alpha.settings.json ./settings.json
 meteor build --directory ./.gagarin/local --server localhost:3000
-pwd
 cd ./.gagarin/local/bundle/programs/server/ && npm i
-cd ~/apollos
-pwd
+cd $TRAVIS_BUILD_DIR
 
 yecho "### Starting Chromedriver ###"
 ./node_modules/chromedriver/lib/chromedriver/chromedriver --port=9515 &

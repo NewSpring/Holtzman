@@ -10,7 +10,5 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 - mv -fv .travis/ssh-config ~/.ssh/config
 script:
-- pwd
-- ls ~
 - "./scripts/test/apollos.sh"
 - "./scripts/test/app.sh"
