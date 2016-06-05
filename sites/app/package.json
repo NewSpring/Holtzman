@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint ./modules",
     "lintfix": "./node_modules/.bin/eslint ./modules --fix",
-    "test": "gagarin -v --skip-build -t 20000 --settings settings.json"
+    "test": "gagarin -v --skip-build -T 20000 --settings settings.json"
   },
   "repository": {
     "type": "git",
