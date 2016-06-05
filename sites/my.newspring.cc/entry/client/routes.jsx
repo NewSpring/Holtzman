@@ -3,15 +3,15 @@ import {
   wrapper,
   createReduxStore,
   Routes as Core,
-} from "../../../../apollos"
+} from "apollos"
 
-import { Global } from "../../../../apollos/core/blocks"
-import { apolloClient } from "../../../../apollos/core/graphql/apollo";
+import { Global } from "apollos/core/blocks"
+import { apolloClient } from "apollos/core/graphql/apollo";
 
 import { Routes } from "app/client"
-import Give from "../../../../apollos/give"
-import Profile from "../../../../apollos/profile"
-import Community from "../../../../apollos/community"
+import Give from "apollos/give"
+import Profile from "apollos/profile"
+import Community from "apollos/community"
 
 const client = {
   wrapper,

@@ -1,5 +1,5 @@
 
-import "../../../../../apollos/core/startup"
+import "apollos/core/startup"
 
 Meteor.startup(() => {
   if (Meteor.isClient) {

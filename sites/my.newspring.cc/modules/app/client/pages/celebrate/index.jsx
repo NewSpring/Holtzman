@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react"
 
-import Meta from "../../../../../../../apollos/core/components/meta"
+import Meta from "apollos/core/components/meta"
 import Intro from "./intro"
 
 import Salvation from "./salvation"
