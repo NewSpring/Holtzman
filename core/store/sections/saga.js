@@ -75,7 +75,7 @@ addSaga(function* sectionsSaga(getState) {
           ...${images}
         }
       }
-      music: allContent(limit: 1, channel: "albums") {
+      music: allContent(limit: 1, channel: "newspring_albums") {
         content {
           ...${images}
         }
