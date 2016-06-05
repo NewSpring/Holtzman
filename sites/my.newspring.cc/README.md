@@ -13,17 +13,9 @@ Initial site to launch for NewSpring using Rock and the Apollos framework. It wi
 ## Running
 
 ```bash
-$ npm i
+$ git clone https://github.com/NewSpring/apollos
+$ cd sites/my.newspring.cc
+$ npm install
 $ norma build
-$ norma
-```
-
-
-### Running with local version of Apollos
-```bash
-$ cd <my path to my local apollos project> && npm link
-$ cd <back to this project>
-$ cd ./.meteor/local/webpack-npm/node_modules/ && npm link apollos
-$ cd <back to this projects root>
 $ norma
 ```
