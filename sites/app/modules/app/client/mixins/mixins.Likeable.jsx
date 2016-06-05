@@ -1,6 +1,6 @@
-import { Likes } from "../../../../../../apollos/core/collections"
-import { nav as navActions, liked as likedActions, modal } from "../../../../../../apollos/core/store"
-import { OnBoard } from "../../../../../../apollos/core/blocks"
+import { Likes } from "apollos/core/collections"
+import { nav as navActions, liked as likedActions, modal } from "apollos/core/store"
+import { OnBoard } from "apollos/core/blocks"
 
 import Helpers from "app/client/helpers"
 

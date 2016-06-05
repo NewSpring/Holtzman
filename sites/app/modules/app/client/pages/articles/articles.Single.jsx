@@ -1,20 +1,20 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
-import { connect, gql } from "../../../../../../../apollos/core/graphql/apollo";
+import { connect, gql } from "apollos/core/graphql/apollo";
 import { Likeable, Shareable } from "app/client/mixins"
 import Meta from "react-helmet"
 import { VelocityComponent } from "velocity-react"
 
 // loading state
-import Split, { Left, Right } from "../../../../../../../apollos/core/blocks/split"
-import { Loading } from "../../../../../../../apollos/core/components"
+import Split, { Left, Right } from "apollos/core/blocks/split"
+import { Loading } from "apollos/core/components"
 
 // import editorial collection for lookup
 import Helpers from "app/client/helpers"
 
 import {
   nav as navActions
-} from "../../../../../../../apollos/core/store"
+} from "apollos/core/store"
 
 // import content component
 import Content from "./articles.Content";

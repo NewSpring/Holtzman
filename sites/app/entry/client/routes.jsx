@@ -1,15 +1,15 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
-import { wrapper, createReduxStore } from "../../../../apollos"
+import { wrapper, createReduxStore } from "apollos"
 
 import { Routes } from "app/client"
-import Give from "../../../../apollos/give"
-import Profile from "../../../../apollos/profile"
-import Groups from "../../../../apollos/community"
+import Give from "apollos/give"
+import Profile from "apollos/profile"
+import Groups from "apollos/community"
 
-import { Global } from "../../../../apollos/core/blocks"
-import { RouteTransition } from "../../../../apollos/core/components/transitions"
-import { apolloClient } from "../../../../apollos/core/graphql/apollo"
+import { Global } from "apollos/core/blocks"
+import { RouteTransition } from "apollos/core/components/transitions"
+import { apolloClient } from "apollos/core/graphql/apollo"
 import AudioPlayer from "app/client/components/players/audio"
 // import { ComingSoon } from "app/client/components/content"
 
