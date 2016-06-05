@@ -8,6 +8,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_e447456204f1_key -iv $encrypted_e447456204f1_iv
   -in .travis/id_rsa_travis.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
+- mv -fv .travis/ssh-config ~/.ssh/config
 script:
 - "./scripts/test/apollos.sh"
 - "./scripts/test/app.sh"
