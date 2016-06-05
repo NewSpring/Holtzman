@@ -22,7 +22,17 @@ module.exports = {
     reload: true
   },
   resolve: {
-    root: path.join(__dirname, "..", "modules"),
+    root: [
+      path.join(__dirname, "..", "node_modules"),
+      path.join(__dirname, "..", "modules")
+    ],
+    extensions: ["", ".js", ".jsx", ".json", ".css", ".gql"]
+  },
+  resolveLoader: {
+    modulesDirectories: [
+      path.join(__dirname, "..", "node_modules"),
+      path.join(__dirname, "..", "modules")
+    ],
     extensions: ["", ".js", ".jsx", ".json", ".css", ".gql"]
   }
 };
