@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
-if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
-  echo "osx yay"
+# exit if it's a linux container
+if [ "${TRAVIS_OS_NAME}" != "osx" ]; then
+  exit 0
 fi
+
+echo "this is osx"
