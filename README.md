@@ -27,3 +27,5 @@ This repo contains the core Apollos framework, as well as the sites that share t
 - `/sites`: root site directory
   - `/app`: native mobile app
   - `/my.newspring.cc`: give site
+
+Information on running the individual sites can be found in their respective root directories.
