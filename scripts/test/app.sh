@@ -9,15 +9,15 @@ fi
 cd sites/app
 
 # brew
-brew install brew-cask
+# brew install brew-cask
 
 # meteor
 # if [ ! -f $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
 curl https://install.meteor.com | sh
 
 # chrome
-brew cask install google-chrome
-brew install chromedriver
+# brew cask install google-chrome
+# brew install chromedriver
 
 # install app deps
 npm install
@@ -36,7 +36,7 @@ meteor build --directory ./.gagarin/local --server localhost:3000
 cd ./.gagarin/local/bundle/programs/server/ && npm i
 
 # start chromedriver
-chromedriver --port=9515
+./node_modules/.bin/chromedriver --port=9515
 
 # test
 npm test
