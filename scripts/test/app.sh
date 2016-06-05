@@ -2,8 +2,6 @@
 
 # force script to error out at first error
 set -e
-# trace execution of commands
-set -x
 
 # exit if it's a linux container
 if [ "${TRAVIS_OS_NAME}" != "osx" ]; then
