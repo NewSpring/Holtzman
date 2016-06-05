@@ -32,7 +32,7 @@ meteor build --directory ./.gagarin/local --server localhost:3000
 cd ./.gagarin/local/bundle/programs/server/ && npm i
 
 echo "${YELLOW}### Starting Chromedriver ###"
-./node_modules/.bin/chromedriver --port=9515 &
+./node_modules/chromedriver/lib/chromedriver/chromedriver --port=9515 &
 
 echo "${YELLOW}### Running App Tests ###"
 npm test
