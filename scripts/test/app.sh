@@ -2,6 +2,7 @@
 
 # exit if it's a linux container
 if [ "${TRAVIS_OS_NAME}" != "osx" ]; then
+  echo "Not building app on ${TRAVIS_OS_NAME}"
   exit 0
 fi
 
