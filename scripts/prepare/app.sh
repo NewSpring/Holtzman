@@ -33,8 +33,8 @@ norma build
 yecho "### Remove platforms for Gagarin workaround ###"
 meteor remove-platform ios android
 
-yecho "### Preparing Gagarin test build ###"
-npm install -g gagarin
-cp ./.remote/settings/sites/app.newspring.io/alpha.settings.json ./settings.json
-meteor build --directory ./.gagarin/local --server localhost:3000
-cd ./.gagarin/local/bundle/programs/server/ && npm i
+# yecho "### Preparing Gagarin test build ###"
+# npm install -g gagarin
+# cp ./.remote/settings/sites/app.newspring.io/alpha.settings.json ./settings.json
+# meteor build --directory ./.gagarin/local --server localhost:3000
+# cd ./.gagarin/local/bundle/programs/server/ && npm i

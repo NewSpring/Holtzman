@@ -11,6 +11,6 @@ before_install:
 - mv -fv .travis/ssh-config ~/.ssh/config
 script:
 # - "./scripts/test/apollos.sh"
-# - "./scripts/prepare/app.sh"
+- "./scripts/prepare/app.sh"
 # - "./scripts/test/app.sh"
 - "./scripts/deploy/app.sh"
