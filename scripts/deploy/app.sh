@@ -59,13 +59,11 @@ $GIT_HISTORY"
 
 yecho "### Installing node 4 ###"
 nvm install node4-lts && nvm use node4-lts
-yecho "### Adding ios and android platforms ###"
-meteor add-platform ios android
 
 yecho "### Installing Android sdks ###"
 brew install android-sdk
 echo export ANDROID_HOME=/usr/local/opt/android-sdk >> ~/.bashrc
-echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-23.0.2,android-23,extra-google-m2repository,extra-google-google_play_services,extra-android-support
+echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-23.0.3,android-23
 echo export ANDROID_ZIPALIGN=/usr/local/opt/android-sdk/build-tools/23.0.2/zipalign >> ~/.bashrc
 
 yecho "### Moving settings and certs ###"
@@ -92,26 +90,27 @@ aws configure set default.aws_access_key_id $AWS_ACCESS_KEY
 aws configure set default.aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws configure set default.region us-east-1
 
+echo export ROOT_URL="https://${CHANNEL}-app.newspring.io" >> ~/.bashrc
+
+yecho "### Building for linux environment ###"
+meteor build .build --architecture os.linux.x86_64 --server "${CHANNEL}-app.newspring.io"
+ls .build
+
+yecho "### Uploading bundle to S3 ###"
+aws s3 cp .build/$TRAVIS_REPO_SLUG.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+
+yecho "### Updating ECS ###"
+# BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" .ecs/update_ecs.sh
+
+yecho "### Adding ios and android platforms ###"
+meteor add-platform ios android
 
 if [ "${CHANNEL}" == "alpha" ]; then
-  yecho "### Building for linux environment ###"
-  meteor build .build --architecture os.linux.x86_64 --server alpha-app.newspring.io
-  ls .build
-
-  yecho "### Uploading bundle to S3 ###"
-  # aws s3 cp .build/$TRAVIS_REPO_SLUG.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
-
-  yecho "### Updating ECS ###"
-  # BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" .ecs/update_ecs.sh
-
   yecho "### Deploying to Hockey ###"
   # launch hockey https://alpha-app.newspring.io ./.remote/settings/sites/app.newspring.io/alpha.settings.json
 fi
 
 if [ "${CHANNEL}" == "beta" ]; then
-  yecho "### Deploying to ECS ###"
-  meteor build .build --architecture os.linux.x86_64 --server beta-app.newspring.io
-
   yecho "### Deploying to TestFlight ###"
   # launch hockey https://beta-app.newspring.io ./.remote/settings/sites/app.newspring.io/beta.settings.json
 fi
