@@ -82,12 +82,35 @@ cp ./.remote/settings/sites/app.newspring.io/launch.json ./launch.json
 yecho "### Updating fastlane ###"
 sudo gem update fastlane
 
+yecho "### Configuring aws tool ###"
+aws --version
+aws configure set default.aws_access_key_id $AWS_ACCESS_KEY
+aws configure set default.aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+aws configure set default.region us-east-1
+
+yecho "### Installing boto3 ###"
+python --version
+pip install boto3
+
 if [ "${CHANNEL}" == "alpha" ]; then
+  yecho "### Building for linux environment ###"
+  meteor build .build --architecture os.linux.x86_64 --server alpha-app.newspring.io
+  ls .build
+
+  yecho "### Uploading bundle to S3 ###"
+  # aws s3 cp .build/$TRAVIS_REPO_SLUG.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+
+  yecho "### Updating ECS ###"
+  # BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" .ecs/update_ecs.sh
+
   yecho "### Deploying to Hockey ###"
   # launch hockey https://alpha-app.newspring.io ./.remote/settings/sites/app.newspring.io/alpha.settings.json
 fi
 
-if [ "${CHANNEL}" == "alpha" ]; then
+if [ "${CHANNEL}" == "beta" ]; then
+  yecho "### Deploying to ECS ###"
+  meteor build .build --architecture os.linux.x86_64 --server beta-app.newspring.io
+
   yecho "### Deploying to TestFlight ###"
   # launch hockey https://beta-app.newspring.io ./.remote/settings/sites/app.newspring.io/beta.settings.json
 fi
