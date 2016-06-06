@@ -60,6 +60,9 @@ $GIT_HISTORY"
 yecho "### Installing node 4 ###"
 nvm install node4-lts && nvm use node4-lts
 
+yecho "### Adding ios and android platforms ###"
+meteor add-platform ios android
+
 yecho "### Installing Android sdks ###"
 brew install android-sdk
 echo export ANDROID_HOME=/usr/local/opt/android-sdk >> ~/.bashrc
@@ -93,7 +96,7 @@ aws configure set default.region us-east-1
 echo export ROOT_URL="https://${CHANNEL}-app.newspring.io" >> ~/.bashrc
 
 yecho "### Building for linux environment ###"
-meteor build .build --architecture os.linux.x86_64 --server "${CHANNEL}-app.newspring.io"
+meteor build .build --server-only --architecture os.linux.x86_64 --server "${CHANNEL}-app.newspring.io"
 ls .build
 
 yecho "### Uploading bundle to S3 ###"
@@ -101,9 +104,6 @@ aws s3 cp .build/$TRAVIS_REPO_SLUG.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAV
 
 yecho "### Updating ECS ###"
 # BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" .ecs/update_ecs.sh
-
-yecho "### Adding ios and android platforms ###"
-meteor add-platform ios android
 
 if [ "${CHANNEL}" == "alpha" ]; then
   yecho "### Deploying to Hockey ###"
