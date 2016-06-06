@@ -76,7 +76,7 @@ cp ./.remote/settings/ssl/bundle.crt .
 cp ./.remote/settings/ssl/private.key .
 
 yecho "### Installing launch ###"
-git clone git@github.com:NewSpring/meteor-launch.git .launch && cd .launch && npm install && npm link
+git clone git@github.com:NewSpring/meteor-launch.git .launch && cd .launch && npm install && npm link && cd ..
 cp ./.remote/settings/sites/app.newspring.io/launch.json ./launch.json
 
 yecho "### Updating fastlane ###"
