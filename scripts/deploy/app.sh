@@ -82,15 +82,17 @@ cp ./.remote/settings/sites/app.newspring.io/launch.json ./launch.json
 yecho "### Updating fastlane ###"
 sudo gem update fastlane
 
+yecho "### Installing aws and boto3 ###"
+python --version
+pip install awscli
+pip install boto3
+
 yecho "### Configuring aws tool ###"
 aws --version
 aws configure set default.aws_access_key_id $AWS_ACCESS_KEY
 aws configure set default.aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws configure set default.region us-east-1
 
-yecho "### Installing boto3 ###"
-python --version
-pip install boto3
 
 if [ "${CHANNEL}" == "alpha" ]; then
   yecho "### Building for linux environment ###"
