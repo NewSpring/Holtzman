@@ -1,6 +1,6 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
-import { Pageable } from "app/client/mixins"
+import { Pageable, Headerable } from "app/client/mixins"
 import { VelocityComponent } from "velocity-react"
 
 import ReactPullToRefresh from "react-pull-to-refresh";
@@ -46,10 +46,14 @@ const mapStateToProps = (state) => {
   mapStateToProps,
 })
 @ReactMixin.decorate(Pageable)
+@ReactMixin.decorate(Headerable)
 export default class Home extends Component {
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("TOP"))
+    this.props.dispatch(navActions.setLevel("TOP"));
+    this.headerAction({
+      title: "NEWSPRING"
+    });
   }
 
   handleRefresh = (resolve, reject) => {

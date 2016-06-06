@@ -45,6 +45,8 @@ export default class Header extends Component {
           paddingBottom: "15px",
           backgroundColor: this.props.color,
           borderBottom: "1px solid rgba(0,0,0, 0.1)",
+          position: "relative",
+          zIndex: 100
         }}
       >
       {(() => {
