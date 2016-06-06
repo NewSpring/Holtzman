@@ -7,15 +7,17 @@
   position: absolute;
   padding-bottom: 60px;
   -webkit-overflow-scrolling: touch;
-  background-color: #fff;
+  background-color: #FFF;
 }
 
 .SwipeViewsHeader {
-  border-bottom: 2px solid #DDD;
-  background-color: #fff;
+  border-bottom: 2px solid rgba(0,0,0, 0.1);
+  background-color: #6bac43;
   display: flex;
   flex-flow: row nowrap;
-  min-height: 43px;
+  min-height: 45px;
+  z-index: 999;
+  position: relative;
 }
 
 .SwipeViewsTabs {
@@ -37,7 +39,7 @@
 .SwipeViewsTab {
   position: relative;
   display: inline;
-  padding-top: 13.5px;
+  padding-top: 14px;
   padding-bottom: 11.5px;
   margin-bottom: 0;
   flex: 1;
@@ -46,7 +48,11 @@
   font-size: 0.875em;
   line-height: 1.125;
   font-weight: bold;
-  color: #858585;
+  color: #1C683E;
+}
+
+.SwipeViewsTab.active {
+  color: #FFF !important;
 }
 
 .SwipeViewsTab > a {
@@ -68,7 +74,7 @@
   left: 50%;
   margin-left: -20px;
   bottom: -11px;
-  border-top: 15px solid #DDD;
+  border-top: 15px solid rgba(0,0,0, 0.1);
   border-right: 21px solid rgba(0, 0, 0, 0);
   border-left: 21px solid rgba(0, 0, 0, 0);
   content: '';
@@ -80,7 +86,7 @@
   left: 50%;
   margin-left: -19px;
   bottom: -8px;
-  border-top: 14px solid #FFF;
+  border-top: 14px solid #6bac43;
   border-right: 20px solid rgba(0, 0, 0, 0);
   border-left: 20px solid rgba(0, 0, 0, 0);
   content: '';

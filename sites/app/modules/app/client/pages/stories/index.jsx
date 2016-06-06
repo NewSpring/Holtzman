@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react"
 import ReactMixin from "react-mixin"
-import { Pageable } from "app/client/mixins"
+import { Pageable, Headerable } from "app/client/mixins"
 import { connect, gql } from "apollos/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 
@@ -42,10 +42,14 @@ const mapStateToProps = (state) => {
   mapStateToProps,
 })
 @ReactMixin.decorate(Pageable)
+@ReactMixin.decorate(Headerable)
 class Template extends Component {
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("TOP"))
+    this.props.dispatch(navActions.setLevel("TOP"));
+    this.headerAction({
+      title: "All Stories"
+    });
   }
 
   handleRefresh = (resolve, reject) => {
@@ -108,9 +112,6 @@ class Template extends Component {
           >
 
             <div className="background--light-primary">
-              <section className="text-center soft-half-bottom">
-                <h1 className="flush">Stories</h1>
-              </section>
               <section className="soft-half">
                 <div className="grid">
                   {this.renderItems()}

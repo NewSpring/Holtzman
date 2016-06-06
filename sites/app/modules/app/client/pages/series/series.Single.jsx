@@ -1,12 +1,13 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
-import { Likeable, Shareable } from "app/client/mixins"
+import { Likeable, Shareable, Headerable } from "app/client/mixins"
 import { connect, gql } from "apollos/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 
 // loading state
 import { Loading } from "apollos/core/components"
 import { nav as navActions } from "apollos/core/store"
+import headerActions from "app/client/reducers/header"
 
 import Helpers from "app/client/helpers"
 
@@ -31,6 +32,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
+@ReactMixin.decorate(Headerable)
 export default class SeriesSingle extends Component {
 
   componentWillMount() {
