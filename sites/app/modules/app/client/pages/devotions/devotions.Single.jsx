@@ -10,6 +10,7 @@ import Helpers from "app/client/helpers"
 import { Loading } from "apollos/core/components"
 
 import { nav as navActions } from "apollos/core/store"
+import headerActions from "app/client/reducers/header"
 
 // can we use the core toggle here? Is it ready @jbaxleyiii?
 import DevotionsSingleContent from "./devotions.SingleContent"
@@ -55,6 +56,7 @@ export default class SeriesSingle extends Component {
       id: 2,
       action: this.likeableAction
     }));
+    this.props.dispatch(headerActions.hide());
   }
 
   renderContent = (devotion) => {

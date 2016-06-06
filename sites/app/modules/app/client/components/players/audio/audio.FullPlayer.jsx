@@ -3,6 +3,7 @@ import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 
 import Helpers from "app/client/helpers"
+import headerActions from "app/client/reducers/header"
 
 import { Players } from "app/client/libraries"
 import AudioControls from "./audio.Controls"
@@ -22,6 +23,14 @@ export default class FullPlayer extends Component {
 
   state = {
     isShort: false
+  }
+
+  componentWillMount() {
+    this.props.dispatch(headerActions.hide());
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(headerActions.show());
   }
 
   componentDidMount() {
