@@ -97,10 +97,9 @@ echo export ROOT_URL="https://${CHANNEL}-app.newspring.io" >> ~/.bashrc
 
 yecho "### Building for linux environment ###"
 meteor build .build --server-only --architecture os.linux.x86_64 --server "${CHANNEL}-app.newspring.io"
-ls .build
 
 yecho "### Uploading bundle to S3 ###"
-aws s3 cp .build/$TRAVIS_REPO_SLUG.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
 yecho "### Updating ECS ###"
 # BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" .ecs/update_ecs.sh
