@@ -61,18 +61,23 @@ export default class SideModal extends Component {
   layoutClasses = () => {
 
     const { float, offset } = this.props
-    const { classes, layoutOverride } = this.props.modal.props
+    const { classes, layoutOverride, modalBackground } = this.props.modal.props
 
     let classList = [
       "hard",
       "flush",
-      "background--light-primary",
     ];
 
     if (classes && classes.length) {
       classList.concat(classes);
     } else {
       classList.push(styles["side-panel"])
+    }
+
+    if (modalBackground === "dark") {
+      classList.push("background--dark-primary");
+    } else {
+      classList.push("background--light-primary");
     }
 
     if (layoutOverride && layoutOverride.length) {
