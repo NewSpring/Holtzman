@@ -6,7 +6,7 @@ import MiniPlayer from "./audio.MiniPlayer"
 import AudioPlayerUtility from "./audio.PlayerUtility"
 
 import { audio as audioActions } from "app/client/actions"
-import { modal } from "apollos/core/store"
+import { modal, nav as navActions } from "apollos/core/store"
 
 const mapStateToProps = (state) => {
   return {
@@ -31,11 +31,14 @@ export default class AudioPlayer extends Component {
     const modalClosing = modalVis && !modalNextVis;
 
     if( expanding ) {
-      this.props.dispatch(modal.render(FullPlayer));
+      this.props.dispatch(modal.render(FullPlayer, { audioPlayer: true }));
+      this.props.dispatch(navActions.setLevel("DOWN"));
+      this.props.dispatch(navActions.setColor("transparent"));
     }
 
     if( expanded && modalClosing ) {
       this.props.dispatch(audioActions.setVisibility("dock"));
+      this.props.dispatch(navActions.reset());
     }
 
   };
