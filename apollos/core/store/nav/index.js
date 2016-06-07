@@ -35,9 +35,8 @@ addReducer({
 export default {
   reducer,
 
-  setLevel: (level) => ({ type: "NAV.SET_LEVEL", level}),
+  setLevel: (level) => ({ type: "NAV.SET_LEVEL", level }),
   reset: () => ({ type: "NAV.SET_LEVEL", level: "TOP" }),
-  // resetColor: () => ({type: "NAV.SET_COLOR", color: "#202020" }),
 
   setColor: (color) => ({ type: "NAV.SET_COLOR", color}),
 
