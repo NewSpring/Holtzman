@@ -30,8 +30,9 @@ export default class SideModalContainer extends Component {
 
   }
 
-  componentDidMount(){
-    if (!this.props.modal.props.keepNav && this.props.modal.visible) {
+  componentDidMount() {
+    if(!this.props.modal.props.keepNav && this.props.modal.visible)
+    {
       this.props.dispatch(navActions.setLevel("MODAL"))
     }
 
@@ -45,17 +46,18 @@ export default class SideModalContainer extends Component {
     if (Meteor.isClient) {
       document.removeEventListener("keyup", this.bindEsc, false)
     }
+    this.props.dispatch(navActions.resetColor())
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.modal.visible && nextProps.navigation.level != "MODAL" && nextProps.modal.props.keepNav != true) {
+    if (nextProps.modal.visible && nextProps.navigation.level != "MODAL" && nextProps.navigation.level != "DOWN" && nextProps.modal.props.keepNav != true) {
       this.props.dispatch(navActions.setLevel("MODAL"))
       this.setState({ previous: this.props.navigation.level })
     }
 
-    if (!nextProps.modal.visible && nextProps.navigation.level === "MODAL" && !this.props.modal.props.keepNav) {
+    if (!nextProps.modal.visible && nextProps.navigation.level === "MODAL" && nextProps.navigation.level === "DOWN" && !this.props.modal.props.keepNav) {
       let previous = this.state.previous
-      if (previous === "MODAL" || !previous) {
+      if (previous === "MODAL" || previous === "DOWN" || !previous) {
         previous = "TOP"
       }
       this.props.dispatch(navActions.setLevel(previous))
@@ -80,8 +82,6 @@ export default class SideModalContainer extends Component {
         root.className += " modal--opened"
       }
     }
-
-
   }
 
   close = (e) => {
