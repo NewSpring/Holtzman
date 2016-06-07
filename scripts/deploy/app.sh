@@ -94,6 +94,11 @@ aws configure set default.aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws configure set default.region us-east-1
 
 echo export ROOT_URL="https://${CHANNEL}-app.newspring.io" >> ~/.bashrc
+echo export METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/app/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json" >> ~/.bashrc
+echo export ECS_TASK_NAME >> ~/.bashrc
+echo export ECS_CLUSTER=app >> ~/.bashrc
+echo export ECS_FAMILY=app >> ~/.bashrc
+echo export ECS_SERVICE=app >> ~/.bashrc
 
 yecho "### Building for linux environment ###"
 meteor build .build --server-only --architecture os.linux.x86_64 --server "${CHANNEL}-app.newspring.io"
@@ -101,15 +106,17 @@ meteor build .build --server-only --architecture os.linux.x86_64 --server "${CHA
 yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
+echo export BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" >> ~/.bashrc
+
 yecho "### Updating ECS ###"
-# BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" .ecs/update_ecs.sh
+$TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
 
 if [ "${CHANNEL}" == "alpha" ]; then
   yecho "### Deploying to Hockey ###"
-  # launch hockey https://alpha-app.newspring.io ./.remote/settings/sites/app.newspring.io/alpha.settings.json
+  # launch hockey https://alpha-app.newspring.io $METEOR_SETTINGS_PATH
 fi
 
 if [ "${CHANNEL}" == "beta" ]; then
   yecho "### Deploying to TestFlight ###"
-  # launch hockey https://beta-app.newspring.io ./.remote/settings/sites/app.newspring.io/beta.settings.json
+  # launch hockey https://beta-app.newspring.io $METEOR_SETTINGS_PATH
 fi
