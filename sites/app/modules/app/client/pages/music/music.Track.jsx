@@ -14,7 +14,7 @@ export default class AudioTrack extends Component {
 
   ListDetail = (event) => {
     this.props.dispatch(modal.render(ListDetail, {
-      color: "background--dark-primary",
+      modalBackground: "dark",
       album: this.props.album,
       trackNumber: this.props.trackNumber,
       style: {
