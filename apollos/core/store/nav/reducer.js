@@ -99,7 +99,13 @@ if (!Meteor.isCordova) {
 }
 
 
-const initial = { level: "TOP", visible: true, links: links.TOP, color: "#202020"}
+const initial = {
+  level: "TOP",
+  visible: true,
+  links: links.TOP,
+  bgColor: "#202020",
+  fgColor: "light",
+};
 
 export default function nav(state = initial, action) {
 
@@ -108,7 +114,8 @@ export default function nav(state = initial, action) {
       return { ...state, ...{
         level: action.level,
         links: links[action.level],
-        color: action.color || initial.color
+        bgColor: action.bgColor || initial.bgColor,
+        fgColor: action.fgColor || initial.fgColor,
       } }
     case "NAV.SET_LINKS":
       return { ...state, ...{
@@ -116,11 +123,13 @@ export default function nav(state = initial, action) {
       } }
     case "NAV.SET_COLOR":
       return { ...state, ...{
-        color: action.color
+        bgColor: action.bgColor,
+        fgColor: action.fgColor,
       } }
     case "NAV.RESET_COLOR":
       return { ...state, ...{
-        color: "#202020"
+        bgColor: initial.bgColor,
+        fgColor: initial.fgColor,
       } }
     case "NAV.SET_ACTION":
 
