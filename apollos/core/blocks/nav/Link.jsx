@@ -16,13 +16,18 @@ export default class NavLink extends Component {
     const { navItem } = this.props
 
     let classes = [
-      "text-light-primary",
       "floating__item",
       "soft-sides@handheld",
       "soft-half-ends@lap-and-up",
       "one-whole@lap-and-up",
       "plain"
     ];
+
+    if (this.props.fgColor === "light") {
+      classes.push("text-light-primary");
+    } else {
+      classes.push("text-dark-primary");
+    }
 
     if (navItem.isActive && navItem.isActive(this.props)) {
       classes.push("text-brand")
