@@ -15,6 +15,7 @@ const Likeable = {
 
     if (!Meteor.userId()) {
       this.props.dispatch(modal.render(OnBoard, { coverHeader: true }))
+      this.props.dispatch(modal.update({modalBackground: "light"}))
     } else {
       this.updateRedux(entry);
       this.updateDatabase(entry);
