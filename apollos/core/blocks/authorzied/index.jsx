@@ -14,6 +14,8 @@ export default class Authorized extends Component {
 
 
   componentWillMount(){
+
+    this.props.dispatch(modal.update({modalBackground: "light"}))
     const authorized = Meteor.userId()
     if (!authorized) {
       this.props.dispatch(modal.render(OnBoard, {
