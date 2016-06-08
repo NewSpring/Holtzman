@@ -35,7 +35,8 @@ export default class NavContainer extends Component {
         links={ state.links }
         handleAction={this.handleAction}
         back={this.getBackLink}
-        color={ state.color }
+        bgColor={ state.bgColor }
+        fgColor={ state.fgColor }
         reset={this.reset}
         modal={this.props.modal}
         liked={this.props.liked}
