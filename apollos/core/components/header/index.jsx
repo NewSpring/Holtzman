@@ -7,6 +7,7 @@ import { connect } from "react-redux"
   light: state.header.content.light,
   text: state.header.content.title,
   visible: state.header.visible,
+  isSearch: state.header.content.isSearch
 }))
 export default class Header extends Component {
 
@@ -35,6 +36,18 @@ export default class Header extends Component {
         }}
       >
       {(() => {
+        if (this.props.isSearch) {
+          return (
+            <h6 className={`flush hard text-light-primary uppercase one-whole`}
+              style={{
+                fontWeight: 900,
+                letterSpacing: "1px",
+              }}>
+              SEARCH
+            </h6>
+          )
+        }
+
         if (this.props.text === "default") {
           return (
             <h6 className={`flush hard ${text} uppercase one-whole`}
