@@ -74,7 +74,7 @@ const Header = {
 
     const content = item.content;
     let color = false;
-    if (content && content.colors && content.colors.length > 0) {
+    if (item.title !== "Music" && content && content.colors && content.colors.length > 0) {
       const primaryColor = _.find(content.colors, (cl) => {
         cl.description === "primary"
       });
