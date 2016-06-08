@@ -1,10 +1,13 @@
 import { Component, PropTypes} from "react"
+import ReactMixin from "react-mixin"
 import { connect } from "react-redux"
 import { Link } from "react-router"
 // import { VelocityComponent } from "velocity-react"
 
+import { Headerable } from "../../../../core/mixins/"
+
 import { GraphQL } from "../../../../core/graphql"
-import { accounts as accountsActions } from "../../../../core/store"
+import { accounts as accountsActions, nav as navActions } from "../../../../core/store"
 
 import { avatar } from "../../../../core/methods/files/client"
 
@@ -52,15 +55,6 @@ function updateUser(id, dispatch) {
     })
 }
 
-const Header = () => (
-  <div className="soft text-center background--light-primary outlined--light outlined--bottom" style={{position: "relative"}}>
-    <h5 className="soft-left display-inline-block flush">Settings</h5>
-    <Link to="/profile" className="visuallyhidden@lap-and-up soft locked-top locked-right floating">
-      <h6 className="plain floating__item flush">Done</h6>
-    </Link>
-  </div>
-)
-
 const RenderCell = ({name, iconFunc, last, children}) => {
   let icon = "icon-arrow-next";
   if (typeof iconFunc === "function") {
@@ -88,10 +82,18 @@ const RenderCell = ({name, iconFunc, last, children}) => {
 }
 
 @connect()
+@ReactMixin.decorate(Headerable)
 export default class Menu extends Component {
 
   static contextTypes = {
     shouldAnimate: PropTypes.bool
+  }
+
+  componentWillMount() {
+    this.props.dispatch(navActions.setLevel("TOP"));
+    this.headerAction({
+      title: "Profile"
+    });
   }
 
   state = {

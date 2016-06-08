@@ -1,6 +1,6 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
-import { Pageable, Headerable } from "app/client/mixins"
+import { Pageable } from "app/client/mixins"
 import { VelocityComponent } from "velocity-react"
 
 import ReactPullToRefresh from "react-pull-to-refresh";
@@ -13,6 +13,7 @@ import { connect, gql } from "apollos/core/graphql/apollo";
 import Helpers from "app/client/helpers";
 
 import { FeedItemSkeleton } from "apollos/core/components/loading"
+import { Headerable } from "apollos/core/mixins"
 import HomeHero from "./home.Hero"
 import { FeedItem } from "app/client/components/cards"
 
@@ -52,7 +53,7 @@ export default class Home extends Component {
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     this.headerAction({
-      title: "NEWSPRING"
+      title: "default"
     });
   }
 

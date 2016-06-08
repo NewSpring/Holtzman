@@ -1,5 +1,5 @@
-import { Component, PropTypes} from "react";
-import {VelocityComponent } from "velocity-react";
+import { Component, PropTypes } from "react";
+import { VelocityComponent } from "velocity-react";
 
 import styles from "./modal.css"
 import offsetStyles from "../nav/offset.css"
@@ -61,7 +61,7 @@ export default class SideModal extends Component {
   layoutClasses = () => {
 
     const { float, offset } = this.props
-    const { classes, layoutOverride } = this.props.modal.props
+    const { classes, layoutOverride, coverHeader } = this.props.modal.props
 
     let classList = [
       "hard",
@@ -89,6 +89,16 @@ export default class SideModal extends Component {
 
     return classList.join(" ");
   }
+
+  styles = () => {
+    let style = this.props.styles || this.props.style;
+
+    if(!this.props.coverHeader) {
+      style.top = "46px";
+    }
+
+    return style;
+  };
 
   render () {
 
@@ -137,7 +147,7 @@ export default class SideModal extends Component {
         >
           <section
             className={ this.props.theme || this.layoutClasses() }
-            style={ this.props.styles || this.props.style }
+            style={ this.styles() }
           >
             <div className={ this.childClasses() } style={{ height: "100%" }}>
               <ChildComponent {...props} />
