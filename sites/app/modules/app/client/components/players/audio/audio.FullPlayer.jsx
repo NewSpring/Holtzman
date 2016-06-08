@@ -26,11 +26,11 @@ export default class FullPlayer extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(headerActions.hide());
+    this.props.dispatch(headerActions.hide({statusBar: false}));
   }
 
   componentWillUnmount() {
-    this.props.dispatch(headerActions.show());
+    this.props.dispatch(headerActions.show({statusBar: true}));
   }
 
   componentDidMount() {

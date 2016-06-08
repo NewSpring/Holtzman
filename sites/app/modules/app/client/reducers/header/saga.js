@@ -7,6 +7,7 @@ addSaga(function* share(getStore) {
   while (true) {
     const { payload } = yield take("HEADER.SET")
 
+    console.log("setting");
     let { header } = getStore()
 
     if (
@@ -33,12 +34,11 @@ addSaga(function* share(getStore) {
       window.StatusBar
     ) {
 
-      console.log(header)
-      if (!header.visible) {
+      if (!header.statusBar) {
         StatusBar.hide()
       }
 
-      if (header.visible) {
+      if (header.statusBar) {
         StatusBar.show()
       }
     }

@@ -10,8 +10,8 @@ addReducer({
 })
 
 export default {
-  show: () => ({ type: "HEADER.SHOW" }),
-  hide: () => ({ type: "HEADER.HIDE" }),
+  show: (options = {}) => ({ type: "HEADER.TOGGLE_VISIBILITY", visible: true, statusBar: options.statusBar }),
+  hide: (options = {}) => ({ type: "HEADER.TOGGLE_VISIBILITY", visible: false, statusBar: options.statusBar }),
 
   set: (content) => ({ type: "HEADER.SET", content }),
   color: (color) => ({ type: "HEADER.SET", content: { color } }),
