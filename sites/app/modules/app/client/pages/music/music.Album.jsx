@@ -58,10 +58,6 @@ export default class MusicAlbum extends Component {
       id: 2,
       action: this.likeableAction
     }));
-
-    this.headerAction({
-      title: "Music"
-    });
   }
 
   componentWillUnmount() {
