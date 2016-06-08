@@ -25,6 +25,8 @@ const Header = {
     const item = this.getEntry(props);
     if (!item) return
 
+    item.title = this.getHeaderTitle(props);
+
     if (!props.currentSermon) {
       this.setHeaderDetails(item);
     }
@@ -55,9 +57,16 @@ const Header = {
     return null
   },
 
+  getHeaderTitle: function(props) {
+    if (props.devotion) return "Devotion";
+    if (props.article) return "Article";
+    if (props.story) return "Story";
+    if (props.currentSermon) return "Series";
+    if (props.series) return "Series";
+    if (props.album) return "Music";
+  },
+
   setHeaderDetails: function(item, options = { parentItem: null }) {
-    // use parent for image if provided i.e. sermons
-    let imageItem = options.parentItem ? options.parentItem : item
 
     let msg = {
       title: item.title,

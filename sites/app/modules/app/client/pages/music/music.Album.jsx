@@ -69,12 +69,6 @@ export default class MusicAlbum extends Component {
     this.props.dispatch(audioActions.dock())
   }
 
-  graphDataDidLoad(request) {
-    if (request === "album") {
-      this.shareableAction(this.data.album)
-    }
-  }
-
   shuffle = () => {
     if (this.state.repeatPattern === "shuffle") {
       this.setState({repeatPattern: "next"});
