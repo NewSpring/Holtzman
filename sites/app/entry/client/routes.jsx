@@ -9,6 +9,7 @@ import Groups from "apollos/community"
 
 import { Global } from "apollos/core/blocks"
 import { RouteTransition } from "apollos/core/components/transitions"
+import Header from "apollos/core/components/header/"
 import { apolloClient } from "apollos/core/graphql/apollo"
 import AudioPlayer from "app/client/components/players/audio"
 import LivePlayer from "app/client/components/live"
@@ -16,68 +17,6 @@ import LivePlayer from "app/client/components/live"
 
 // import createHistory from "history/lib/createBrowserHistory"
 // import useScroll from "scroll-behavior/lib/useStandardScroll"
-
-@connect((state) => ({
-  color: state.header.content.color || "#6BAC43",
-  light: state.header.content.light,
-  text: state.header.content.title,
-  visible: state.header.visible,
-}))
-export default class Header extends Component {
-
-  render () {
-    const lightColor = "text-light-primary";
-    const darkColor = "text-dark-primary";
-
-    let text = lightColor;
-    if (!this.props.light) {
-      text = darkColor;
-    }
-
-    if (!this.props.visible) {
-      return null;
-    }
-    return (
-      <div
-        className="text-center"
-        style={{
-          paddingTop: "15px",
-          paddingBottom: "15px",
-          backgroundColor: this.props.color,
-          borderBottom: "1px solid rgba(0,0,0, 0.1)",
-          position: "relative",
-          zIndex: 100
-        }}
-      >
-      {(() => {
-        if (this.props.text === "default") {
-          return (
-            <h6 className={`flush hard ${text} uppercase one-whole`}
-              style={{
-                fontWeight: 900,
-                letterSpacing: "1px",
-              }}>
-              NewSpring
-            </h6>
-          )
-        }
-
-        return (
-          <h6 className={`flush-bottom soft-sides ${text}`} style={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}>
-            {this.props.text}
-          </h6>
-        )
-      })()}
-
-      </div>
-    )
-  }
-}
-
 
 const map = (state) => ({
   audio: state.audio,
