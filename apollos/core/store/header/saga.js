@@ -7,7 +7,6 @@ addSaga(function* share(getStore) {
   while (true) {
     const { payload } = yield take("HEADER.SET")
 
-    console.log("setting");
     let { header } = getStore()
 
     if (
