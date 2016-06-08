@@ -1,11 +1,12 @@
 import { Component, PropTypes } from "react"
 import ReactMixin from "react-mixin"
-import { Likeable, Shareable, Headerable } from "app/client/mixins"
+import { Likeable, Shareable } from "app/client/mixins"
 import { connect, gql } from "apollos/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 
 import { Loading } from "apollos/core/components"
 import { nav as navActions } from "apollos/core/store"
+import { Headerable } from "apollos/core/mixins"
 
 import Helpers from "app/client/helpers"
 

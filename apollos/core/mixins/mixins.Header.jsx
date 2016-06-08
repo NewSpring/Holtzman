@@ -69,7 +69,7 @@ const Header = {
       const primaryColor = _.find(content.colors, (cl) => {
         cl.description === "primary"
       });
-      
+
       color = primaryColor ? primaryColor.value : content.colors[0].value;
     }
 

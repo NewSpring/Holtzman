@@ -1,11 +1,12 @@
 import { Component, PropTypes } from "react"
 import ReactMixin from "react-mixin"
-import { Pageable, Headerable } from "app/client/mixins"
+import { Pageable } from "app/client/mixins"
 import { connect, gql } from "apollos/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 
 import ReactPullToRefresh from "react-pull-to-refresh";
 import { Loading } from "apollos/core/components"
+import { Headerable } from "apollos/core/mixins"
 
 import { FeedItemSkeleton } from "apollos/core/components/loading"
 import { nav as navActions } from "apollos/core/store"

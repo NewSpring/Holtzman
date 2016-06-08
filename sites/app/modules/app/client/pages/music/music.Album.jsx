@@ -1,11 +1,12 @@
 import { Component, PropTypes, Lib } from "react"
 import ReactMixin from "react-mixin"
-import { Likeable, Shareable, Headerable } from "app/client/mixins"
+import { Likeable, Shareable } from "app/client/mixins"
 import { connect, gql } from "apollos/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 
 // loading state
 import { Loading } from "apollos/core/components"
+import { Headerable } from "apollos/core/mixins"
 
 // action helpers
 import { modal,
@@ -57,7 +58,7 @@ export default class MusicAlbum extends Component {
       id: 2,
       action: this.likeableAction
     }));
-    
+
     this.headerAction({
       title: "Music"
     });

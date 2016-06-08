@@ -2,6 +2,8 @@ import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 
+import { Headerable } from "../../../core/mixins/"
+
 import { GraphQL } from "../../../core/graphql"
 import modal from "../../store/modal"
 
@@ -11,13 +13,16 @@ import Layout from "./Layout"
 
 const map = (state) => ({ search: state.search })
 @connect(map)
+@ReactMixin.decorate(Headerable)
 export default class SearchContainer extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"))
     this.props.dispatch(modal.update({keepNav: true}))
 
-
+    this.headerAction({
+      title: "DISCOVER"
+    });
   }
 
   componentDidMount(){
