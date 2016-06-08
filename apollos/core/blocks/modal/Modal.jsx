@@ -92,10 +92,7 @@ export default class SideModal extends Component {
 
   styles = () => {
     let style = this.props.styles || this.props.style;
-
-    if(!this.props.coverHeader) {
-      style.top = "46px";
-    }
+    style.top = this.props.props.coverHeader ? "0" : "46px";
 
     return style;
   };
@@ -136,7 +133,6 @@ export default class SideModal extends Component {
         }
       }
     }
-
 
     return (
       <div className="panel overlay--solid-dark fixed" id="@@modal" onClick={close} style={{zIndex: 100, position: "fixed"}}>
