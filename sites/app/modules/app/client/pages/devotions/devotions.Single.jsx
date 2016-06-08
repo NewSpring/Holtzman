@@ -10,7 +10,7 @@ import Helpers from "app/client/helpers"
 import { Loading } from "apollos/core/components"
 
 import { nav as navActions } from "apollos/core/store"
-import headerActions from "app/client/reducers/header"
+import headerActions from "apollos/core/store/header"
 
 // can we use the core toggle here? Is it ready @jbaxleyiii?
 import DevotionsSingleContent from "./devotions.SingleContent"

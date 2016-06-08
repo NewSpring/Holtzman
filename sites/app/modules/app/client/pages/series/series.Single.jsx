@@ -7,7 +7,7 @@ import { VelocityComponent } from "velocity-react"
 // loading state
 import { Loading } from "apollos/core/components"
 import { nav as navActions } from "apollos/core/store"
-import headerActions from "app/client/reducers/header"
+import headerActions from "apollos/core/store/header"
 import { Headerable } from "apollos/core/mixins"
 
 import Helpers from "app/client/helpers"

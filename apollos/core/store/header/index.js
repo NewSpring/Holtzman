@@ -17,4 +17,5 @@ export default {
   color: (color) => ({ type: "HEADER.SET", content: { color } }),
   title: (title) => ({ type: "HEADER.SET", content: { title } }),
   light: (light) => ({ type: "HEADER.SET", content: { light } }),
+  isSearch: (isSearch) => ({ type: "HEADER.SET", content: { isSearch } }),
 }
