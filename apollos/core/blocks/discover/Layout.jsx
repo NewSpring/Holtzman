@@ -1,5 +1,4 @@
 
-import Input from "./Input"
 import Results from "./Results"
 import Feed from "./feed"
 
@@ -16,8 +15,6 @@ const Content = ({ loadMore, search }) => {
 const SearchLayout = ({ searchSubmit, loadMore, cancel, search, hide }) => (
 
   <section className="hard">
-
-    <Input searchSubmit={searchSubmit} cancel={cancel} showCancel={search.searching} />
 
     <Content loadMore={loadMore} search={search} />
 

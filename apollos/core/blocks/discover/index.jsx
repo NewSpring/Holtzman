@@ -21,7 +21,8 @@ export default class SearchContainer extends Component {
     this.props.dispatch(modal.update({keepNav: true}))
 
     this.headerAction({
-      title: "DISCOVER"
+      isSearch: true,
+      searchSubmit: this.searchSubmit
     });
   }
 
@@ -114,7 +115,6 @@ export default class SearchContainer extends Component {
 
     return (
       <Layout
-        searchSubmit={this.searchSubmit}
         loadMore={this.loadMore}
         cancel={this.cancel}
         search={search}
