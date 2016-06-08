@@ -6,6 +6,7 @@ import { connect } from "react-redux"
   color: state.header.content.color || "#6BAC43",
   light: state.header.content.light,
   text: state.header.content.title,
+  subText: state.header.content.subTitle,
   visible: state.header.visible,
   isSearch: state.header.content.isSearch
 }))
@@ -70,6 +71,13 @@ export default class Header extends Component {
           </h6>
         )
       })()}
+      {(() => {
+        if (this.props.subText) {
+          return (
+            <h6>{this.props.subText}</h6>
+          );
+        }
+      }())}
 
       </div>
     )

@@ -22,7 +22,7 @@ const Header = {
   getContent(props) {
     if (!!this.state.__headerSet) return
 
-    const item = this.getEntry(props);
+    const item = { ...this.getEntry(props) };
     if (!item) return
 
     item.title = this.getHeaderTitle(props);
@@ -70,6 +70,11 @@ const Header = {
 
     let msg = {
       title: item.title,
+    }
+
+    if (options.parentItem) {
+      console.log(options.parentItem);
+      msg.subTitle = options.parentItem.title;
     }
 
     const content = item.content;
