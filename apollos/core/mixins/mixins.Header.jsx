@@ -1,5 +1,5 @@
 import Helpers from "app/client/helpers"
-import headerActions from "app/client/reducers/header"
+import headerActions from "../store/header/"
 
 const Header = {
 
@@ -35,7 +35,7 @@ const Header = {
     }
   },
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.props.dispatch(headerActions.set({
       color: null,
       title: "default"
