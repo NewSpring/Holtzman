@@ -33,7 +33,10 @@ export default class AudioPlayer extends Component {
     if( expanding ) {
       this.props.dispatch(modal.render(FullPlayer, { audioPlayer: true }));
       this.props.dispatch(navActions.setLevel("DOWN"));
-      this.props.dispatch(navActions.setColor("transparent"));
+      const { isLight } = this.props.audio.playing.album.content;
+      // reverse is light so it makes sense for foreground
+      const fgColor = isLight === "light" ? "dark" : "light";
+      this.props.dispatch(navActions.setColor("transparent", fgColor));
     }
 
     if( expanded && modalClosing ) {
