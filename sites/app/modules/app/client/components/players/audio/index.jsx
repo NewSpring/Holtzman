@@ -31,7 +31,7 @@ export default class AudioPlayer extends Component {
     const modalClosing = modalVis && !modalNextVis;
 
     if( expanding ) {
-      this.props.dispatch(modal.render(FullPlayer));
+      this.props.dispatch(modal.render(FullPlayer, { coverHeader: true }));
     }
 
     if( expanded && modalClosing ) {
