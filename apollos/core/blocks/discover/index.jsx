@@ -29,7 +29,8 @@ export default class SearchContainer extends Component {
   componentDidMount(){
     let term = this.props.search.term;
 
-    document.getElementById("search").value = term
+    // XXX
+    //document.getElementById("search").value = term
   }
 
   componentWillUnmount() {
