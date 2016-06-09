@@ -52,6 +52,13 @@ const Shareable = {
   },
 
   setShareAction: function(item, options = { parentItem: null }) {
+    if (
+      item.channelName === "sermons" &&
+      typeof options.parentItem === "undefined"
+    ) {
+      // wait for all props
+      return;
+    }
     // use parent for image if provided i.e. sermons
     let imageItem = options.parentItem ? options.parentItem : item;
     let image = Helpers.backgrounds.image(imageItem);
