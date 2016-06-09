@@ -12,6 +12,8 @@ const initial = {
     title: "default",
     color: brand,
     light: true,
+    isSearch: false,
+    searchSubmit: false
   },
 };
 

@@ -12,7 +12,7 @@ const Content = ({ loadMore, search }) => {
 
 }
 
-const SearchLayout = ({ searchSubmit, loadMore, cancel, search, hide }) => (
+const SearchLayout = ({ loadMore, cancel, search, hide }) => (
 
   <section className="hard">
 

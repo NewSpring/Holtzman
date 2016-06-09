@@ -8,13 +8,13 @@ import { connect } from "react-redux"
     light: state.header.content.light,
     text: state.header.content.title,
     visible: state.header.visible,
-    isSearch: state.header.content.isSearch
+    isSearch: state.header.content.isSearch,
+    searchSubmit: state.header.content.searchSubmit
   };
 })
 export default class Header extends Component {
 
   render () {
-    console.log(this.props);
     const lightColor = "text-light-primary";
     const darkColor = "text-dark-primary";
 
@@ -50,6 +50,7 @@ export default class Header extends Component {
                   className="h5 text-light-primary"
                   autoComplete="off"
                   style={{ paddingLeft: "30px", borderBottom: "none", marginTop: "7px" }}
+                  placeholder="Type your search here..."
                 />
               </div>
             </form>

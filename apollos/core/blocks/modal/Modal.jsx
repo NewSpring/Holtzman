@@ -6,6 +6,10 @@ import offsetStyles from "../nav/offset.css"
 
 export default class SideModal extends Component {
 
+  state = {
+    coverHeader: false
+  }
+
   static contextTypes = {
     shouldAnimate: PropTypes.bool
   }
@@ -90,9 +94,19 @@ export default class SideModal extends Component {
     return classList.join(" ");
   }
 
+  componentWillUpdate (nextProps) {
+    const coverHeader = !!nextProps.props.coverHeader;
+    console.log("NEXT", nextProps.props, coverHeader);
+
+    if(coverHeader != this.state.coverHeader) {
+      console.log("SET", coverHeader);
+      this.setState({ coverHeader });
+    }
+  }
+
   styles = () => {
-    let style = this.props.styles || this.props.style;
-    style.top = this.props.props.coverHeader ? "0" : "46px";
+    let style = { ... (this.props.styles || this.props.style) };
+    style.top = this.state.coverHeader ? "0px" : "46px";
 
     return style;
   };

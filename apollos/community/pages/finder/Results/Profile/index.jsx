@@ -72,7 +72,8 @@ export default class Profile extends Component {
       join()
     } else {
       this.props.dispatch(modal.render(OnBoard, {
-        onFinished: join
+        onFinished: join,
+        coverHeader: true
       }))
     }
 

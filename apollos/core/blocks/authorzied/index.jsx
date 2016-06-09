@@ -16,7 +16,9 @@ export default class Authorized extends Component {
   componentWillMount(){
     const authorized = Meteor.userId()
     if (!authorized) {
-      this.props.dispatch(modal.render(OnBoard))
+      this.props.dispatch(modal.render(OnBoard, {
+        coverHeader: true
+      }))
     }
 
     // fail safe if for some reason we are logged in but not authorized in
@@ -33,7 +35,9 @@ export default class Authorized extends Component {
     }
 
     if (this.props.auth && !nextProps.auth) {
-      this.props.dispatch(modal.render(OnBoard))
+      this.props.dispatch(modal.render(OnBoard, {
+        coverHeader: true
+      }))
     }
 
     // if (!this.props.auth && nextProps.auth) {
