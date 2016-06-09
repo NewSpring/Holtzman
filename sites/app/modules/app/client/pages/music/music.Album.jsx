@@ -58,21 +58,11 @@ export default class MusicAlbum extends Component {
       id: 2,
       action: this.likeableAction
     }));
-
-    this.headerAction({
-      title: "Music"
-    });
   }
 
   componentWillUnmount() {
     this.props.dispatch(navActions.setLevel("TOP"))
     this.props.dispatch(audioActions.dock())
-  }
-
-  graphDataDidLoad(request) {
-    if (request === "album") {
-      this.shareableAction(this.data.album)
-    }
   }
 
   shuffle = () => {
