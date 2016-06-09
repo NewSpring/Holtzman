@@ -25,60 +25,81 @@ export default class Header extends Component {
       return null;
     }
     return (
-      <div
-        className="text-center"
-        style={{
-          paddingTop: "15px",
-          paddingBottom: "15px",
-          backgroundColor: this.props.color,
-          borderBottom: "1px solid rgba(0,0,0, 0.1)",
-          position: "relative",
-          zIndex: 100
-        }}
-      >
-      {(() => {
-        if (this.props.isSearch) {
-          return (
-            <h6 className={`flush hard text-light-primary uppercase one-whole`}
-              style={{
-                fontWeight: 900,
-                letterSpacing: "1px",
+      <div>
+        <div
+          className="text-center"
+          style={{
+            paddingTop: "15px",
+            paddingBottom: "15px",
+            backgroundColor: this.props.color,
+            borderBottom: "1px solid rgba(0,0,0, 0.1)",
+            position: "relative",
+            zIndex: 100
+          }}
+        >
+          {(() => {
+            if (this.props.isSearch) {
+              return (
+                <h6 className={`flush hard text-light-primary uppercase one-whole`}
+                  style={{
+                    fontWeight: 900,
+                    letterSpacing: "1px",
+                  }}>
+                  SEARCH
+                </h6>
+              )
+            }
+
+            if (this.props.text === "default") {
+              return (
+                <h6 className={`flush hard ${text} uppercase one-whole`}
+                  style={{
+                    fontWeight: 900,
+                    letterSpacing: "1px",
+                  }}>
+                  NewSpring
+                </h6>
+              )
+            }
+
+            return (
+              <h6 className={`flush-bottom soft-sides ${text}`} style={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
               }}>
-              SEARCH
-            </h6>
-          )
-        }
+                {this.props.text}
+              </h6>
+            )
+          })()}
 
-        if (this.props.text === "default") {
-          return (
-            <h6 className={`flush hard ${text} uppercase one-whole`}
-              style={{
-                fontWeight: 900,
-                letterSpacing: "1px",
-              }}>
-              NewSpring
-            </h6>
-          )
-        }
+        </div>
 
-        return (
-          <h6 className={`flush-bottom soft-sides ${text}`} style={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}>
-            {this.props.text}
-          </h6>
-        )
-      })()}
-      {(() => {
-        if (this.props.subText) {
-          return (
-            <h6>{this.props.subText}</h6>
-          );
-        }
-      }())}
-
+        {(() => {
+          if (this.props.subText) {
+            return (
+              <div
+                className="text-center"
+                style={{
+                  paddingTop: "8px",
+                  paddingBottom: "8px",
+                  backgroundColor: this.props.color,
+                  position: "relative",
+                  zIndex: 100
+                }}
+              >
+                <h6 className={`flush-bottom soft-sides ${text}`} style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  fontWeight: "normal"
+                }}>
+                  {this.props.subText}
+                </h6>
+              </div>
+            );
+          }
+        }())}
       </div>
     )
   }
