@@ -109,7 +109,17 @@ export default class AudioPlayerUtility extends Component {
       const seekLength = Number((min * 60)) + Number(sec)
       const width = Number((length - (length - seekLength))/length)
 
-      this.props.setProgress(width * 100, pos);
+      // ensure seconds are not greater than 60
+      const realSec = Number(sec) % 60;
+      // if there is a minute, return that. else, caclulate minutes from seconds
+      const realMin = Number(min) > 0 ? Number(min) : Math.floor(Number(sec) / 60);
+
+      // ensure minutes and seconds are 0 padded
+      const formatSec = realSec < 10 ? `0${realSec}` : realSec;
+      const formatMin = realMin < 10 ? `0${realMin}` : realMin;
+
+      const formatPos = `${formatMin}:${formatSec}`;
+      this.props.setProgress(width * 100, formatPos);
     })
 
     player.ended(() => {
