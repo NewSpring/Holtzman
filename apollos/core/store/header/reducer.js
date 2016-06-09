@@ -10,6 +10,7 @@ const initial = {
   statusBar: true,
   content: {
     title: "default",
+    subTitle: "none",
     color: brand,
     light: true,
     isSearch: false,
@@ -23,6 +24,15 @@ export default createReducer(initial, {
     if (!action.content.color) {
       action.content.color = brand;
     }
+    else if(action.content.color.indexOf("#") !== 0 && action.content.color !== "transparent") {
+      action.content.color = "#" + action.content.color;
+    }
+
+    if (!action.content.subTitle) {
+      action.content.subTitle = initial.subTitle;
+    }
+
+    console.log(action.content.color);
 
     return {...state,
       content: {...state.content, ...action.content}

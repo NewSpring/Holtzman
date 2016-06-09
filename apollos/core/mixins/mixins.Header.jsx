@@ -22,8 +22,10 @@ const Header = {
   getContent(props) {
     if (!!this.state.__headerSet) return
 
-    const item = this.getEntry(props);
+    const item = { ...this.getEntry(props) };
     if (!item) return
+
+    item.title = this.getHeaderTitle(props);
 
     if (!props.currentSermon) {
       this.setHeaderDetails(item);
@@ -55,17 +57,28 @@ const Header = {
     return null
   },
 
+  getHeaderTitle: function(props) {
+    if (props.devotion) return "Devotion";
+    if (props.article) return "Article";
+    if (props.story) return "Story";
+    if (props.currentSermon) return "Series";
+    if (props.series) return "Series";
+    if (props.album) return "Music";
+  },
+
   setHeaderDetails: function(item, options = { parentItem: null }) {
-    // use parent for image if provided i.e. sermons
-    let imageItem = options.parentItem ? options.parentItem : item
 
     let msg = {
       title: item.title,
     }
 
+    if (options.parentItem) {
+      msg.subTitle = options.parentItem.title;
+    }
+
     const content = item.content;
     let color = false;
-    if (content && content.colors && content.colors.length > 0) {
+    if (item.title !== "Music" && content && content.colors && content.colors.length > 0) {
       const primaryColor = _.find(content.colors, (cl) => {
         cl.description === "primary"
       });

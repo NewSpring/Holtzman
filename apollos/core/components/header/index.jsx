@@ -2,16 +2,15 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 
-@connect((state) => {
-  return {
-    color: state.header.content.color || "#6BAC43",
-    light: state.header.content.light,
-    text: state.header.content.title,
-    visible: state.header.visible,
-    isSearch: state.header.content.isSearch,
-    searchSubmit: state.header.content.searchSubmit
-  };
-})
+@connect((state) => ({
+  color: state.header.content.color || "#6BAC43",
+  light: state.header.content.light,
+  text: state.header.content.title,
+  subText: state.header.content.subTitle,
+  visible: state.header.visible,
+  isSearch: state.header.content.isSearch,
+  searchSubmit: state.header.content.searchSubmit
+}))
 export default class Header extends Component {
 
   render () {
@@ -26,60 +25,95 @@ export default class Header extends Component {
     if (!this.props.visible) {
       return null;
     }
+
+    let paddingTop = "15px";
+
+    if(this.props.isSearch) {
+      paddingTop = "0";
+    }
+
     return (
-      <div
-        className="text-center"
-        style={{
-          paddingTop: this.props.isSearch ? "0" : "15px",
-          paddingBottom: "15px",
-          backgroundColor: this.props.color,
-          borderBottom: "1px solid rgba(0,0,0, 0.1)",
-          position: "relative",
-          zIndex: 100
-        }}
-      >
-      {(() => {
-        if (this.props.isSearch) {
-          return (
-            <form onSubmit={this.props.searchSubmit} className={`hard-ends soft-sides`}>
-              <div className={`input hard-bottom`}>
-                <i className="icon-search locked-left push-half-top text-light-primary"></i>
-                <input
-                  id="search"
-                  type="text"
-                  className="h5 text-light-primary"
-                  autoComplete="off"
-                  style={{ paddingLeft: "30px", borderBottom: "none", marginTop: "7px" }}
-                  placeholder="Type your search here..."
-                />
-              </div>
-            </form>
-          )
-        }
+      <div class="hard">
+        <div
+          className="text-center"
+          style={{
+            paddingTop: paddingTop,
+            paddingBottom: "15px",
+            backgroundColor: this.props.color,
+            borderBottom: "1px solid rgba(0,0,0, 0.1)",
+            position: "relative",
+            zIndex: 100
+          }}
+        >
+          {(() => {
+            if (this.props.isSearch) {
+              return (
+                <form onSubmit={this.props.searchSubmit} className={`hard-ends soft-sides`}>
+                  <div className={`input hard-bottom`}>
+                    <i className="icon-search locked-left push-half-top text-light-primary"></i>
+                    <input
+                      id="search"
+                      type="text"
+                      className="h5 text-light-primary"
+                      autoComplete="off"
+                      style={{ paddingLeft: "30px", borderBottom: "none", marginTop: "7px" }}
+                      placeholder="Type your search here..."
+                    />
+                  </div>
+                </form>
+              )
+            }
 
-        if (this.props.text === "default") {
-          return (
-            <h6 className={`flush hard ${text} uppercase one-whole`}
-              style={{
-                fontWeight: 900,
-                letterSpacing: "1px",
+            if (this.props.text === "default") {
+              return (
+                <h6 className={`flush hard ${text} uppercase one-whole`}
+                  style={{
+                    fontWeight: 900,
+                    letterSpacing: "1px",
+                  }}>
+                  NewSpring
+                </h6>
+              )
+            }
+
+            return (
+              <h6 className={`flush-bottom soft-sides ${text}`} style={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
               }}>
-              NewSpring
-            </h6>
-          )
-        }
+                {this.props.text}
+              </h6>
+            )
+          })()}
 
-        return (
-          <h6 className={`flush-bottom soft-sides ${text}`} style={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}>
-            {this.props.text}
-          </h6>
-        )
-      })()}
+        </div>
 
+        {(() => {
+          if (this.props.subText) {
+            return (
+              <div
+                className="text-center"
+                style={{
+                  paddingTop: "8px",
+                  paddingBottom: "8px",
+                  backgroundColor: this.props.color,
+                  position: "relative",
+                  zIndex: 100
+                }}
+              >
+                <h6 className={`flush-bottom soft-sides ${text}`} style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  fontWeight: "normal"
+                }}>
+                  {this.props.subText}
+                </h6>
+              </div>
+            );
+          }
+        }())}
       </div>
     )
   }

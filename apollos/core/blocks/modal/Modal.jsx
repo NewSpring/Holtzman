@@ -96,10 +96,8 @@ export default class SideModal extends Component {
 
   componentWillUpdate (nextProps) {
     const coverHeader = !!nextProps.props.coverHeader;
-    console.log("NEXT", nextProps.props, coverHeader);
 
     if(coverHeader != this.state.coverHeader) {
-      console.log("SET", coverHeader);
       this.setState({ coverHeader });
     }
   }

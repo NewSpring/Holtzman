@@ -37,10 +37,23 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 export default class SeriesSingle extends Component {
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("CONTENT"))
+    this.props.dispatch(navActions.setLevel("CONTENT"));
+
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
       action: this.likeableAction
+    }));
+  }
+
+  componentWillUpdate() {
+    const { content } = this.props.series;
+    if(!content) return;
+
+    const color = Helpers.collections.color(content);
+
+    this.props.dispatch(headerActions.set({
+      title: "Series",
+      color: color
     }));
   }
 

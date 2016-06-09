@@ -7,6 +7,7 @@ import { VelocityComponent } from "velocity-react"
 import { Loading } from "apollos/core/components"
 import { nav as navActions } from "apollos/core/store"
 import { Headerable } from "apollos/core/mixins"
+import headerActions from "apollos/core/store/header"
 
 import Helpers from "app/client/helpers"
 
@@ -48,6 +49,19 @@ export default class SeriesSingleVideo extends Component {
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
       action: this.likeableAction
+    }));
+  }
+
+  componentWillUpdate() {
+    const { content } = this.props.series;
+    if(!content) return;
+
+    const color = Helpers.collections.color(content);
+
+    this.props.dispatch(headerActions.set({
+      title: "Series",
+      subTitle: content.title,
+      color: color
     }));
   }
 
