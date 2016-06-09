@@ -79,7 +79,7 @@ const Header = {
 
     this.props.dispatch(headerActions.set(msg))
     this.props.dispatch(headerActions.show(msg))
-    this.props.dispatch(headerActions.isSearch(item.isSearch))
+    this.props.dispatch(headerActions.isSearch(item.isSearch, item.searchSubmit))
     this.setState({
       __headerSet: true,
     });

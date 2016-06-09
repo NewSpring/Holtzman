@@ -176,6 +176,7 @@ export default class Give extends Component {
     const { data } = this.props.give
 
     let props = {
+      coverHeader: true,
       account: false,
       data: {
         email: data.personal.email,
