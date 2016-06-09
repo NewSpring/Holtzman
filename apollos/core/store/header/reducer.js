@@ -22,6 +22,10 @@ export default createReducer(initial, {
     if (!action.content.color) {
       action.content.color = brand;
     }
+    else if(action.content.color.indexOf("#") !== 0) {
+      action.content.color = "#" + action.content.color;
+    }
+
     if (!action.content.subTitle) {
       action.content.subTitle = initial.subTitle;
     }

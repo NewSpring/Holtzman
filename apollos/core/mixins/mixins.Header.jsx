@@ -73,7 +73,6 @@ const Header = {
     }
 
     if (options.parentItem) {
-      console.log(options.parentItem);
       msg.subTitle = options.parentItem.title;
     }
 
