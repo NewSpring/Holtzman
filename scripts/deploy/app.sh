@@ -108,10 +108,11 @@ aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.
 
 echo export BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" >> ~/.bashrc
 
-yecho "### Updating ECS ###"
-$TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
-
 if [ "${CHANNEL}" == "alpha" ]; then
+  echo export HOST_PORT=8062 >> ~/.bashrc
+  yecho "### Updating ECS ###"
+  $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
+
   yecho "### Deploying to Hockey ###"
   # launch hockey https://alpha-app.newspring.io $METEOR_SETTINGS_PATH
 fi
