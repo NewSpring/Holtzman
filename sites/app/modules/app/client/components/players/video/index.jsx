@@ -59,7 +59,7 @@ export default class VideoPlayer extends Component {
       "playerBrandingId": "ZmJmNTVlNDk1NjcwYTVkMzAzODkyMjg0",
       "autoplay": true,
       "skin": {
-        "config": "//ns.ops.s3.amazonaws.com/player/skin.json",
+        "config": "http://ns.ops.s3.amazonaws.com/player/skin.json",
         "inline": {"shareScreen": {"embed": {"source": "<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/stable/4.3.3/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>"}}}
       },
       onCreate: (player) => {
