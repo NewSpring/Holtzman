@@ -20,6 +20,7 @@ export default class SearchContainer extends Component {
     this.props.dispatch(navActions.setLevel("TOP"))
     this.props.dispatch(modal.update({keepNav: true}))
 
+    console.log("DISCOVER HA");
     this.headerAction({
       isSearch: true,
       searchSubmit: this.searchSubmit

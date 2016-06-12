@@ -64,7 +64,7 @@ export default class Header extends Component {
               )
             }
 
-            if (this.props.text === "default") {
+            if (this.props.text === "default" || this.props.text === "NewSpring") {
               return (
                 <h6 className={`flush hard ${text} uppercase one-whole`}
                   style={{

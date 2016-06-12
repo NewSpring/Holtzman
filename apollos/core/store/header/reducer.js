@@ -9,8 +9,8 @@ const initial = {
   visible: true,
   statusBar: true,
   content: {
-    title: "default",
-    subTitle: "none",
+    title: "NewSpring",
+    subTitle: "",
     color: brand,
     light: true,
     isSearch: false,
@@ -21,21 +21,17 @@ const initial = {
 export default createReducer(initial, {
 
   ["HEADER.SET"](state, action) {
-    if (!action.content.color) {
-      action.content.color = brand;
-    }
-    else if(action.content.color.indexOf("#") !== 0 && action.content.color !== "transparent") {
-      action.content.color = "#" + action.content.color;
+    const mergedContent = { ...initial.content, ...action.content };
+    console.log(action, mergedContent);
+
+    if(mergedContent.color.indexOf("#") !== 0 && mergedContent.color !== "transparent") {
+      mergedContent.color = "#" + mergedContent.color;
     }
 
-    if (!action.content.subTitle) {
-      action.content.subTitle = initial.subTitle;
-    }
-
-    console.log(action.content.color);
+    console.log(mergedContent);
 
     return {...state,
-      content: {...state.content, ...action.content}
+      content: { ...state.content, ...mergedContent }
     }
   },
 

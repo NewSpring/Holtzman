@@ -8,10 +8,10 @@ const Header = {
     this.state = {
       __headerSet: false,
     };
-    this.props.dispatch(headerActions.set({
-      title: "",
-      color: "transparent"
-    }))
+    // this.props.dispatch(headerActions.set({
+    //   title: "",
+    //   color: "transparent"
+    // }))
     this.getContent(this.props);
   },
 
@@ -38,10 +38,10 @@ const Header = {
   },
 
   componentWillUnmount() {
-    this.props.dispatch(headerActions.set({
-      color: null,
-      title: "default"
-    }))
+    // this.props.dispatch(headerActions.set({
+    //   color: null,
+    //   title: "default"
+    // }))
   },
 
   getEntry: function(nextProps) {
@@ -66,33 +66,13 @@ const Header = {
     if (props.album) return "Music";
   },
 
-  setHeaderDetails: function(item, options = { parentItem: null }) {
+  setHeaderDetails: function(options) {
 
-    let msg = {
-      title: item.title,
+    if(!options) {
+      return;
     }
 
-    if (options.parentItem) {
-      msg.subTitle = options.parentItem.title;
-    }
-
-    const content = item.content;
-    let color = false;
-    if (item.title !== "Music" && content && content.colors && content.colors.length > 0) {
-      const primaryColor = _.find(content.colors, (cl) => {
-        cl.description === "primary"
-      });
-
-      color = primaryColor ? primaryColor.value : content.colors[0].value;
-    }
-
-    if (color) {
-      msg.color = `#${color}`;
-    }
-
-    this.props.dispatch(headerActions.set(msg))
-    this.props.dispatch(headerActions.show(msg))
-    this.props.dispatch(headerActions.isSearch(item.isSearch, item.searchSubmit))
+    this.props.dispatch(headerActions.set(options));
     this.setState({
       __headerSet: true,
     });
