@@ -43,7 +43,12 @@ export default class NavLayout extends React.Component {
 
     const { handleAction, back, reset } = this.props
     return (
-      <section className={ this.props.theme || this.layoutClasses() } style={{backgroundColor: "#202020"}}>
+      <section
+        className={ this.props.theme || this.layoutClasses() }
+        style={{
+          backgroundColor: this.props.bgColor
+        }}
+      >
         {this.props.links.map((item, i) => {
           return (
             <NavLink
@@ -53,6 +58,7 @@ export default class NavLayout extends React.Component {
               reset={reset}
               modal={this.props.modal}
               liked={this.isLiked()}
+              fgColor={this.props.fgColor}
             />
           );
         })}

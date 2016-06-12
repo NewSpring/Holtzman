@@ -6,7 +6,7 @@ import MiniPlayer from "./audio.MiniPlayer"
 import AudioPlayerUtility from "./audio.PlayerUtility"
 
 import { audio as audioActions } from "app/client/actions"
-import { modal } from "apollos/core/store"
+import { modal, nav as navActions } from "apollos/core/store"
 
 const mapStateToProps = (state) => {
   return {
@@ -31,11 +31,17 @@ export default class AudioPlayer extends Component {
     const modalClosing = modalVis && !modalNextVis;
 
     if( expanding ) {
-      this.props.dispatch(modal.render(FullPlayer, { coverHeader: true }));
+      this.props.dispatch(modal.render(FullPlayer, { coverHeader: true, audioPlayer: true }));
+      this.props.dispatch(navActions.setLevel("DOWN"));
+      const { isLight } = this.props.audio.playing.album.content;
+      // reverse is light so it makes sense for foreground
+      const fgColor = isLight === "light" ? "dark" : "light";
+      this.props.dispatch(navActions.setColor("transparent", fgColor));
     }
 
     if( expanded && modalClosing ) {
       this.props.dispatch(audioActions.setVisibility("dock"));
+      this.props.dispatch(navActions.reset());
     }
 
   };

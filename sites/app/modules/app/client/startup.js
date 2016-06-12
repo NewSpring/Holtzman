@@ -139,5 +139,8 @@ if (Meteor.isClient) {
     })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
   }
 
+  if (Meteor.settings.public.sentry && typeof Raven != "undefined") {
+    Raven.config(Meteor.settings.public.sentry).install()
+  }
 
 }
