@@ -101,7 +101,7 @@ yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
 yecho "### Installing node 4 ###"
-brew unlink node && brew install node4-lts && brew link node4-lts
+rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install node4-lts && nvm use node4-lts
 node -v
 
 yecho "### Updating ECS ###"
