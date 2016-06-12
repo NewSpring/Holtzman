@@ -49,7 +49,6 @@ class Template extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    console.log("ALL SERIES HA");
     this.headerAction({
       title: "All Series"
     });

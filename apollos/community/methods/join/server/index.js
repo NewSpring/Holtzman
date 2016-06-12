@@ -14,9 +14,8 @@ Meteor.methods({
       throw new Meteor.Error("You must be signed in to join a group")
     }
 
-    let user = Meteor.users.findOne({ _id: this.userId })
-    console.log(user)
-    
+    let user = Meteor.users.findOne({ _id: this.userId });
+
     if (!user || !user.services || !user.services.rock || !user.services.rock.PersonId) {
       throw new Meteor.Error("There was a problem joining this group")
     }
@@ -46,7 +45,7 @@ Meteor.methods({
 
 
     let GroupMemberId = api.post.sync(`GroupMembers`, GroupMember)
-    console.log(GroupMemberId, GroupMember)
+
     if (GroupMemberId.statusText) {
       // it could be that you are already a member of this group
       // lets check that

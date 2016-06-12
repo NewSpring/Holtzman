@@ -52,7 +52,6 @@ export default class Home extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    console.log("HOME HA");
     this.headerAction({
       title: "NewSpring"
     });

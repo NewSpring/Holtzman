@@ -95,7 +95,7 @@ export default class Select extends Component {
   change = (e) => {
     const { id, value } = e.currentTarget
     const target = ReactDOM.findDOMNode(this.refs["apollos-select"])
-    // console.log(target)
+
     if (this.props.onChange) {
       this.props.onChange(value, e.currentTarget)
     }

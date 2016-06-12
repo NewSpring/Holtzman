@@ -48,7 +48,6 @@ class Template extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    console.log("ALL MUSIC HA");
     this.headerAction({
       title: "All Music"
     });
