@@ -109,7 +109,7 @@ if [ "${CHANNEL}" == "alpha" ]; then
   MONGO_URL=$DOCKER_MONGO_URL OPLOG_URL=$DOCKER_OPLOG_URL ROOT_URL="https://${CHANNEL}-app.newspring.io" METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/app/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json" ECS_TASK_NAME=app ECS_CLUSTER=apollos ECS_FAMILY=app ECS_SERVICE=alpha-app HOST_PORT=8062 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
 
   yecho "### Deploying to Hockey ###"
-  # launch hockey https://alpha-app.newspring.io $METEOR_SETTINGS_PATH
+  launch hockey https://alpha-app.newspring.io $METEOR_SETTINGS_PATH
 fi
 
 if [ "${CHANNEL}" == "beta" ]; then
