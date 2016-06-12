@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -e
 set -u
@@ -34,7 +34,7 @@ make_task_def() {
           },
           {
             "name": "MONGO_URL",
-            "value": "'"$DOCKER_MONGO_URL"'"
+            "value": "'"$MONGO_URL"'"
           },
           {
             "name": "DISABLE_WEBSOCKETS",
@@ -50,7 +50,7 @@ make_task_def() {
           },
           {
             "name": "OPLOG_URL",
-            "value": "'"$DOCKER_OPLOG_URL"'"
+            "value": "'"$OPLOG_URL"'"
           },
           {
             "name": "METEOR_SETTINGS",
