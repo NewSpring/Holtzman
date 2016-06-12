@@ -20,6 +20,7 @@ export default class SectionsContainer extends Component {
     this.props.dispatch(navActions.setLevel("TOP"))
     this.props.dispatch(modal.update({keepNav: true}))
 
+    console.log("SECTIONS HA");
     this.headerAction({
       title: "Sections"
     });

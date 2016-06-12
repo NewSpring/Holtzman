@@ -91,6 +91,7 @@ export default class Menu extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
+    console.log("PROFILE HA");
     this.headerAction({
       title: "Profile"
     });
