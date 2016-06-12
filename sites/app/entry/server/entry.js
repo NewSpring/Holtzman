@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === "production" || process.env.CI) {
   // Load Webpack infos for SSR
   ReactRouterSSR.LoadWebpackStats(WebpackStats);
 
-  require("../client/routes");
+  // require("../client/routes");
 
   // cdn party
   if (Meteor.settings.cdnPrefix && __meteor_runtime_config__.ROOT_URL.match("localhost") === null) {
