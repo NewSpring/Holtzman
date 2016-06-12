@@ -109,6 +109,4 @@ deploy_cluster() {
     return 0
 }
 
-cd sites/app
-
 deploy_cluster
