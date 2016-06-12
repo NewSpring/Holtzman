@@ -57,9 +57,6 @@ yecho "Release Notes:
 
 $GIT_HISTORY"
 
-yecho "### Installing node 4 ###"
-nvm install node4-lts && nvm use node4-lts
-
 yecho "### Installing jq ###"
 brew update
 brew install jq
@@ -103,6 +100,10 @@ meteor build .build --server-only --architecture os.linux.x86_64 --server "${CHA
 yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
+yecho "### Installing node 4 ###"
+brew install node4-lts && brew link node4-lts
+node -v
+
 yecho "### Updating ECS ###"
 
 if [ "${CHANNEL}" == "alpha" ]; then
@@ -116,5 +117,5 @@ if [ "${CHANNEL}" == "beta" ]; then
   ROOT_URL="https://${CHANNEL}-app.newspring.io" METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/app/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json" ECS_TASK_NAME=app ECS_CLUSTER=apollos ECS_FAMILY=app ECS_SERVICE=beta-app HOST_PORT=8072 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
 
   yecho "### Deploying to TestFlight ###"
-  # launch hockey https://beta-app.newspring.io $METEOR_SETTINGS_PATH
+  launch hockey https://beta-app.newspring.io $METEOR_SETTINGS_PATH
 fi
