@@ -20,11 +20,11 @@ export default class SearchContainer extends Component {
     this.props.dispatch(navActions.setLevel("TOP"))
     this.props.dispatch(modal.update({keepNav: true}))
 
-    console.log("DISCOVER HA");
+    this.lockHeader("DiscoverModal");
     this.headerAction({
       isSearch: true,
       searchSubmit: this.searchSubmit
-    });
+    }, "DiscoverModal");
   }
 
   componentDidMount(){
@@ -35,7 +35,8 @@ export default class SearchContainer extends Component {
   }
 
   componentWillUnmount() {
-    this.props.dispatch(modal.update({keepNav: false, layoutOverride: []}))
+    this.props.dispatch(modal.update({keepNav: false, layoutOverride: []}));
+    this.unlockHeader();
   }
 
   hide = () => {

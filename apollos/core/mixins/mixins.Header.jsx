@@ -66,13 +66,21 @@ const Header = {
     if (props.album) return "Music";
   },
 
-  setHeaderDetails: function(options) {
+  lockHeader: function(requestee) {
+    this.props.dispatch(headerActions.lock(requestee));
+  },
+
+  unlockHeader: function() {
+    this.props.dispatch(headerActions.unlock());
+  },
+
+  setHeaderDetails: function(options, requestee) {
 
     if(!options) {
       return;
     }
 
-    this.props.dispatch(headerActions.set(options));
+    this.props.dispatch(headerActions.set(options, requestee));
     this.setState({
       __headerSet: true,
     });

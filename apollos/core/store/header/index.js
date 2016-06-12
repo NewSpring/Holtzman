@@ -13,9 +13,12 @@ export default {
   show: (options = {}) => ({ type: "HEADER.TOGGLE_VISIBILITY", visible: true, statusBar: options.statusBar }),
   hide: (options = {}) => ({ type: "HEADER.TOGGLE_VISIBILITY", visible: false, statusBar: options.statusBar }),
 
-  set: (content) => ({ type: "HEADER.SET", content }),
+  set: (content, requestee) => ({ type: "HEADER.SET", content, requestee }),
   color: (color) => ({ type: "HEADER.SET", content: { color } }),
   title: (title) => ({ type: "HEADER.SET", content: { title } }),
   light: (light) => ({ type: "HEADER.SET", content: { light } }),
   isSearch: (isSearch, searchSubmit) => ({ type: "HEADER.SET", content: { isSearch, searchSubmit } }),
+
+  lock: (requestee) => ({ type: "HEADER.LOCK", requestee }),
+  unlock: () => ({ type: "HEADER.UNLOCK" }),
 }

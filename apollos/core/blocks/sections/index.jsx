@@ -20,14 +20,15 @@ export default class SectionsContainer extends Component {
     this.props.dispatch(navActions.setLevel("TOP"))
     this.props.dispatch(modal.update({keepNav: true}))
 
-    console.log("SECTIONS HA");
+    this.lockHeader("SectionsContainer");
     this.headerAction({
       title: "Sections"
-    });
+    }, "SectionsContainer");
   }
 
   componentWillUnmount() {
-    this.props.dispatch(modal.update({keepNav: false}))
+    this.props.dispatch(modal.update({keepNav: false}));
+    this.unlockHeader();
   }
 
   hide = () => {
