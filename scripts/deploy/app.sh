@@ -61,6 +61,7 @@ yecho "### Installing node 4 ###"
 nvm install node4-lts && nvm use node4-lts
 
 yecho "### Installing jq ###"
+brew update
 brew install jq
 
 yecho "### Adding ios and android platforms ###"
