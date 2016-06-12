@@ -106,14 +106,14 @@ aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.
 yecho "### Updating ECS ###"
 
 if [ "${CHANNEL}" == "alpha" ]; then
-  ROOT_URL="https://${CHANNEL}-app.newspring.io" METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/app/.remote/sites/app.newspring.io/${CHANNEL}.settings.json" ECS_TASK_NAME=app ECS_CLUSTER=apollos ECS_FAMILY=app ECS_SERVICE=alpha-app HOST_PORT=8062 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
+  ROOT_URL="https://${CHANNEL}-app.newspring.io" METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/app/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json" ECS_TASK_NAME=app ECS_CLUSTER=apollos ECS_FAMILY=app ECS_SERVICE=alpha-app HOST_PORT=8062 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
 
   yecho "### Deploying to Hockey ###"
   # launch hockey https://alpha-app.newspring.io $METEOR_SETTINGS_PATH
 fi
 
 if [ "${CHANNEL}" == "beta" ]; then
-  ROOT_URL="https://${CHANNEL}-app.newspring.io" METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/app/.remote/sites/app.newspring.io/${CHANNEL}.settings.json" ECS_TASK_NAME=app ECS_CLUSTER=apollos ECS_FAMILY=app ECS_SERVICE=beta-app HOST_PORT=8072 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
+  ROOT_URL="https://${CHANNEL}-app.newspring.io" METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/app/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json" ECS_TASK_NAME=app ECS_CLUSTER=apollos ECS_FAMILY=app ECS_SERVICE=beta-app HOST_PORT=8072 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
 
   yecho "### Deploying to TestFlight ###"
   # launch hockey https://beta-app.newspring.io $METEOR_SETTINGS_PATH
