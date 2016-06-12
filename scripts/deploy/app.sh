@@ -18,7 +18,7 @@ fi
 
 CURRENT_TAG=`git describe --exact-match --abbrev=0 --tags`
 
-if [[ $CURRENT_TAG == "" ]]; then
+if [[ $TRAVIS_TAG == "" ]]; then
   echo "No tags found, no need for a release."
   exit 0
 fi
