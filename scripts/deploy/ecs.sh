@@ -22,7 +22,7 @@ make_task_def() {
         "image": "meteorhacks/meteord:binbuild",
         "portMappings": [
           {
-            "hostPort": "'"$HOST_PORT"'",
+            "hostPort": '"$HOST_PORT"',
             "containerPort": 80,
             "protocol": "tcp"
           }
