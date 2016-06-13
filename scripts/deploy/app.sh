@@ -77,10 +77,6 @@ cp ./.remote/settings/sites/app.newspring.io/androidkey ~/.keystore
 cp ./.remote/settings/ssl/bundle.crt .
 cp ./.remote/settings/ssl/private.key .
 
-yecho "### Installing launch ###"
-git clone git@github.com:NewSpring/meteor-launch.git .launch && cd .launch && npm install && npm link && cd ..
-cp ./.remote/settings/sites/app.newspring.io/launch.json ./launch.json
-
 yecho "### Updating fastlane ###"
 sudo gem update fastlane
 
@@ -101,8 +97,12 @@ yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
 yecho "### Installing node 4 ###"
-rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install node4-lts && nvm use node4-lts
+rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install 4.1 && nvm use 4.1
 node -v
+
+yecho "### Installing launch ###"
+git clone git@github.com:NewSpring/meteor-launch.git .launch && cd .launch && npm install && npm link && cd ..
+cp ./.remote/settings/sites/app.newspring.io/launch.json ./launch.json
 
 yecho "### Updating ECS ###"
 
