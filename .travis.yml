@@ -11,7 +11,6 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 - mv -fv .travis/ssh-config ~/.ssh/config
 script:
-- gcc --version
 # - "./scripts/test/apollos.sh"
 - "./scripts/prepare/app.sh"
 # - "./scripts/test/app.sh"
