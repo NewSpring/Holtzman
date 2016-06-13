@@ -82,6 +82,7 @@ sudo gem update fastlane
 
 yecho "### Installing aws and boto3 ###"
 python --version
+sudo easy_install pip
 sudo pip install awscli boto3
 
 yecho "### Configuring aws tool ###"
