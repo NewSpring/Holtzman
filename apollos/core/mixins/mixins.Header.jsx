@@ -3,7 +3,10 @@ import headerActions from "../store/header/"
 
 const Header = {
 
-  componentWillMount: function() {
+  savedDataOptions: null,
+  savedDataRequestee: null,
+
+  componentWillMount: function () {
     this.headerAction = this.setHeaderDetails.bind(this);
     this.state = {
       __headerSet: false,
@@ -15,8 +18,15 @@ const Header = {
     this.getContent(this.props);
   },
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps: function (nextProps) {
     this.getContent(nextProps)
+
+    if(nextProps.modal && this.props.modal) {
+      if(!nextProps.modal.visible && this.props.modal.visible) {
+        this.unlockHeader();
+        this.setHeaderDetails(this.savedDataOptions, this.savedDataRequestee);
+      }
+    }
   },
 
   getContent(props) {
@@ -75,6 +85,9 @@ const Header = {
   },
 
   setHeaderDetails: function(options, requestee) {
+
+    this.savedDataOptions = options;
+    this.savedDataRequestee = requestee;
 
     if(!options) {
       return;
