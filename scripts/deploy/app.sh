@@ -99,6 +99,8 @@ aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.
 yecho "### Installing node 4 ###"
 rm -rf ~/.nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
+echo export NVM_DIR=~/.nvm >> ~/.bashrc
+source ~/.nvm/nvm.sh
 nvm install 4.1 && nvm use 4.1
 node -v
 
