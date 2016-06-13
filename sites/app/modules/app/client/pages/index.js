@@ -6,22 +6,21 @@ import Home from "./home"
 import Music from "./music"
 import Series from "./series"
 import Stories from "./stories"
+import Sections from "./sections";
 
-const Routes = [
-  // { path: "/sections", component: Sections },
-  { path: "/discover", component: Discover }
-].concat(
+const Routes = [].concat(
   Articles.Routes,
   Devotions.Routes,
   Music.Routes,
   Series.Routes,
-  Stories.Routes
+  Stories.Routes,
+  Sections.Routes,
+  Discover.Routes,
 )
 
 export default {
   Articles,
   Devotions,
-  Discover,
   Home,
   Music,
   Series,
