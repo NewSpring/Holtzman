@@ -81,8 +81,8 @@ yecho "### Updating fastlane ###"
 sudo gem update fastlane
 
 yecho "### Installing aws and boto3 ###"
+brew install python
 python --version
-sudo easy_install pip
 sudo pip install awscli boto3
 
 yecho "### Configuring aws tool ###"
