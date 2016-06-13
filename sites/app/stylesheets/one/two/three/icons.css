@@ -114,3 +114,9 @@
 .icon-settings:before {
   content: "z";
 }
+.icon-repeat-one:before {
+  content: "\44";
+}
+.icon-repeat-all:before {
+  content: "\47";
+}
