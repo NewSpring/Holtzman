@@ -39,6 +39,9 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 const mapStateToProps = (state) => {
   return {
     paging: state.paging,
+    modal: {
+      visible: state.modal.visible
+    }
   };
 };
 

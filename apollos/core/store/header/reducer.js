@@ -43,6 +43,7 @@ export default createReducer(initial, {
 
   ["HEADER.SET"](state, action) {
     if(state.lockHolder && action.requestee !== state.lockHolder) {
+      console.log("DENIED HEADER CHANGE");
       return state;
     }
 
