@@ -41,7 +41,6 @@ export default class AudioPlayer extends Component {
 
     if( expanded && modalClosing ) {
       this.props.dispatch(audioActions.setVisibility("dock"));
-      this.props.dispatch(navActions.reset());
     }
 
   };
