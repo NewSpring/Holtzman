@@ -52,9 +52,15 @@ export default createReducer(initial, {
       mergedContent.color = "#" + mergedContent.color;
     }
 
-    return {...state,
+    const newState = {...state,
       content: { ...state.content, ...mergedContent }
     }
+
+    if(mergedContent.title || mergedContent.isSearch) {
+      newState.visible = true;
+    }
+
+    return newState;
   },
 
   ["HEADER.TOGGLE_VISIBILITY"](state, action) {
