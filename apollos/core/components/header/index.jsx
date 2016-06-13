@@ -33,7 +33,7 @@ export default class Header extends Component {
     }
 
     return (
-      <div class="hard">
+      <div>
         <div
           className="text-center"
           style={{
