@@ -33,33 +33,43 @@ export default class AudioControls extends Component {
   }
 
   repeatClasses = () => {
-    let classes = [
-      "soft-half-right",
-      "flush",
-      "h5"
-    ];
-
     const { repeat } = this.props.audio;
 
+    let classes = [
+      "flush",
+      "h5",
+      "icon-repeat"
+    ];
     if (repeat != "default") {
-      classes.push("text-primary");
+      classes.push(this.getPrimaryTextClass());
     } else {
       classes.push(this.getTertiaryTextClass());
     }
 
-    if (repeat === "repeat") {
-      // classes.push("icon-repeat-all")
-      // temp until icon is ready
-      classes = classes.concat([
-        "icon-repeat",
-        this.getPrimaryTextClass()
-      ])
-    } else {
-      classes.push("icon-repeat");
-    }
-
     return classes.join(" ");
   };
+
+  repeatIconStyles = {
+    top: "-34px"
+  }
+
+  repeatIcon = () => {
+    const { repeat } = this.props.audio;
+
+    let classes = [
+      this.getPrimaryTextClass(),
+      "h3",
+      "push-double-left",
+      "soft-left"
+    ];
+    if (repeat === "repeat") classes.push("icon-repeat-all");
+    if (repeat === "repeat-one") classes.push("icon-repeat-one");
+
+    return (
+      <i className={classes.join(" ")} onClick={this.repeat} style={this.repeatIconStyles}></i>
+    );
+  }
+
 
   backClasses = () => {
     return [
@@ -90,6 +100,17 @@ export default class AudioControls extends Component {
       toggleIcon
     ].join(" ");
   };
+
+  playIconPosition = () => {
+    const { state } = this.props.audio;
+
+    if (state != "playing") { return {
+      left: "6px"
+      }
+    } else return {
+      left: "2px"
+    }
+  }
 
   toggle = (e) => {
     e.preventDefault()
@@ -174,6 +195,7 @@ export default class AudioControls extends Component {
 
     this.props.dispatch(modal.render(ListDetail, {
       color: "background--dark-primary",
+      modalBackground: "dark",
       album: album,
       trackNumber: trackNumber,
       style: {
@@ -181,6 +203,10 @@ export default class AudioControls extends Component {
       }
     }));
   };
+
+  controlGridStyles = {
+    maxHeight: "60px"
+  }
 
   render() {
     const { state, back, next, visibility } = this.props.audio;
@@ -212,7 +238,7 @@ export default class AudioControls extends Component {
         </button>
 
         <button className="plain floating__item" onClick={this.toggle}>
-          <i className={this.toggleClasses(toggleIcon)}></i>
+          <i className={this.toggleClasses(toggleIcon)} style={this.playIconPosition()}></i>
         </button>
 
         <button className="plain floating__item" onClick={this.next}>
@@ -223,7 +249,7 @@ export default class AudioControls extends Component {
           isLight={this.props.isLight}
         />
 
-        <div className="grid one-whole flush">
+      <div className="grid one-whole flush" style={this.controlGridStyles}>
           <div className="grid__item one-third text-left hard">
             <button className="plain floating__item" onClick={this.shuffle}>
               <i className={this.shuffleClasses()}></i>
@@ -239,7 +265,9 @@ export default class AudioControls extends Component {
               •••
             </h5>
           </div>
+          {this.repeatIcon()}
         </div>
+
 
       </div>
     );
