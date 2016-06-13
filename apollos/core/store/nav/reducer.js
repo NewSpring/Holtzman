@@ -29,6 +29,48 @@ const isEqual = (path) => {
 
 const profileLink = Meteor.isCordova ? "/profile" : "/profile/settings"
 
+const sectionsAction = (props) => {
+  const { modal, dispatch } = props
+
+  if (Meteor.isCordova) {
+    return routeActions.push("/sections");
+  } else {
+    discoverVisible = false
+    sectionsVisible = true
+    return modalActions.render(Sections, { keepNav: true })
+  }
+};
+
+const discoverAction = (props) => {
+  const { modal, dispatch } = props;
+
+  if (Meteor.isCordova) {
+    return routeActions.push("/discover");
+  } else {
+    sectionsVisible = false;
+    discoverVisible = true;
+    return modalActions.render(Discover, {
+      keepNav: true, layoutOverride: ["background--light-secondary"]
+    });
+  }
+};
+
+const sectionsActive = (props) => {
+  if (Meteor.isCordova) {
+    return isEqual("/sections");
+  } else {
+    return sectionsVisible && props.modal.visible;
+  }
+};
+
+const discoverActive = (props) => {
+  if (Meteor.isCordova) {
+    return isEqual("/discover");
+  } else {
+    return discoverVisible && props.modal.visible
+  }
+};
+
 let links = {
   TOP:[
     {
@@ -41,26 +83,16 @@ let links = {
     {
       id: 2,
       label: "Sections",
-      action: (props) => {
-        const { modal, dispatch } = props
-        discoverVisible = false
-        sectionsVisible = true
-        return modalActions.render(Sections, { keepNav: true, coverHeader: false })
-      },
+      action: sectionsAction,
       icon: "icon-sections",
-      isActive: (props) => (sectionsVisible && props.modal.visible)
+      isActive: sectionsActive,
     },
     {
       id: 3,
       label:"Discover",
-      action: (props) => {
-        const { modal, dispatch } = props
-        sectionsVisible = false
-        discoverVisible = true
-        return modalActions.render(Discover, { keepNav: true, layoutOverride: ["background--light-secondary"], coverHeader: false })
-      },
+      action: discoverAction,
       icon:"icon-search",
-      isActive: (props) => (discoverVisible && props.modal.visible)
+      isActive: discoverActive,
     },
     {
       id: 4,

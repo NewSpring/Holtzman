@@ -1,12 +1,12 @@
 import { Component, PropTypes } from "react";
 
-import Discover from "apollos/core/blocks/discover";
+import Sections from "apollos/core/blocks/sections";
 
 const Template = () => {
   return (
     <div className="background--light-primary locked-ends locked-sides scrollable soft-double-bottom">
       <div className="soft-bottom">
-        <Discover />
+        <Sections />
       </div>
     </div>
   );
@@ -14,7 +14,7 @@ const Template = () => {
 
 const Routes = [
   {
-    path: "/discover",
+    path: "/sections",
     component: Template,
   },
 ];
