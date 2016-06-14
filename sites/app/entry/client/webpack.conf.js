@@ -1,4 +1,5 @@
 var webpack = require("webpack");
+var path = require("path");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var babelSettings = { stage: 0 };
@@ -39,7 +40,6 @@ if (process.env.NODE_ENV === 'production') {
   cssLoader = 'style!css?module&localIdentName=[name]__[local]__[hash:base64:5]';
 }
 
-
 module.exports = {
   entry: "./entry",
   plugins: plugins,
@@ -49,7 +49,14 @@ module.exports = {
         test: /\.jsx?$/,
         loader: "babel",
         query: babelSettings,
-        exclude: /node_modules/
+        include: [
+          path.join(__dirname, "..", "..", "..", "..", "apollos", "core"),
+          path.join(__dirname, "..", "..", "..", "..", "apollos", "profile"),
+          path.join(__dirname, "..", "..", "..", "..", "apollos", "community"),
+          path.join(__dirname, "..", "..", "..", "..", "apollos", "give"),
+          path.join(__dirname, "..", "..", "entry"),
+          path.join(__dirname, "..", "..", "modules")
+        ]
       },
       { test: /\.css$/, loader: cssLoader },
       { test: /\.(png|jpe?g)(\?.*)?$/, loader: "url?limit=8182" },
