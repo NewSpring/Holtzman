@@ -12,8 +12,9 @@ before_install:
   -in .travis/id_rsa_travis.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 - mv -fv .travis/ssh-config ~/.ssh/config
+- rvm install 2.2.5
+- rvm use 2.2.5
 script:
-- ruby -v
 # - "./scripts/test/apollos.sh"
 - "./scripts/prepare/app.sh"
 # - "./scripts/test/app.sh"
