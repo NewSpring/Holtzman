@@ -130,7 +130,7 @@ export default class AudioScrubber extends Component {
     ];
 
     return (
-      <div className="grid one-whole flush">
+      <div className="grid one-whole flush soft-top">
 
         <div className={"hard grid__item one-tenth floating__item " + this.getTertiaryTextClass(isLight)}>
           <small>
