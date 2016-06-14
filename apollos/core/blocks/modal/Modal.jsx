@@ -125,6 +125,8 @@ export default class SideModal extends Component {
     }
 
     if (typeof window != "undefined" && window != null) {
+      window.scrollTo(0, 0);
+
       if (window.matchMedia("(max-width: 480px)").matches) {
         slide.translateY = [0, 80]
         if (typeof this.props.styles != "undefined") {
