@@ -99,8 +99,15 @@ export default class VideoPlayer extends Component {
       return;
     }
 
+    this.player.play();
+
     playerReady()
 
+  }
+
+  hide = () => {
+    this.player.pause();
+    this.setState({ hide: true });
   }
 
   styles = () => {
