@@ -12,9 +12,19 @@ const Content = ({ loadMore, search }) => {
 
 }
 
+const getStyle = () => {
+  const style = {};
+
+  if(Meteor.isCordova) {
+    style.marginTop = "50px";
+  }
+
+  return style;
+};
+
 const SearchLayout = ({ loadMore, cancel, search, hide }) => (
 
-  <section className="hard">
+  <section className="hard" style={getStyle()}>
 
     <Content loadMore={loadMore} search={search} />
 

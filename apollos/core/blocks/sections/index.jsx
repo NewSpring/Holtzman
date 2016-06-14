@@ -35,6 +35,16 @@ export default class SectionsContainer extends Component {
     return this.props.dispatch(modal.hide())
   }
 
+  getStyle = () => {
+    const style = {};
+
+    if(Meteor.isCordova) {
+      style.marginTop = "50px";
+    }
+
+    return style;
+  };
+
   render(){
     let count = 0
     let { content } = this.props.sections
@@ -50,6 +60,10 @@ export default class SectionsContainer extends Component {
       chunkedItems.push(items.splice(0, 2))
     }
 
-    return <Groups items={chunkedItems} hide={this.hide} />
+    return (
+      <section className="hard" style={this.getStyle()}>
+        <Groups items={chunkedItems} hide={this.hide} />
+      </section>
+    );
   }
 }
