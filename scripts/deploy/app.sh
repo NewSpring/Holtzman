@@ -78,7 +78,7 @@ cp ./.remote/settings/ssl/bundle.crt .
 cp ./.remote/settings/ssl/private.key .
 
 yecho "### Updating fastlane ###"
-sudo gem update fastlane
+gem install fastlane && gem update fastlane
 
 yecho "### Installing aws and boto3 ###"
 brew install python
