@@ -10,7 +10,7 @@ tasks:
       "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#432a60bded46edd02561e87b6a947b88072e9c68"
       "fetch": "https://github.com/NewSpring/meteor-fetch.git#56c32c0d3af9880bb2127538290e4afd29f7fffd"
       "react-router-ssr": "https://github.com/NewSpring/meteor-react-router-ssr.git#a51ced99dc8ae75b1a0fcc4ccdc1992da7ea7b17"
-      "static-html": "https://github.com/NewSpring/static-html.git#edcfdefbb5387d37baa4eb24ae1794b613b6ee3e",
+      "static-html": "https://github.com/NewSpring/static-html.git#73dc36b3fae100ec24c728bb0f500a4f79bf879c",
       "inject-data": "https://github.com/NewSpring/inject-data.git#3b713f4383a3207ee18ed08af739d31853f7bafc"
 
   "meteor-run":
