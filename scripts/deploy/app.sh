@@ -69,9 +69,6 @@ brew install android-sdk
 echo export ANDROID_HOME=/usr/local/opt/android-sdk >> ~/.bashrc
 echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-23.0.3,android-23
 echo export ANDROID_ZIPALIGN=/usr/local/opt/android-sdk/build-tools/23.0.3/zipalign >> ~/.bashrc
-ls /usr/local/opt/android-sdk
-ls /usr/local/opt/android-sdk/build-tools
-ls /usr/local/opt/android-sdk/build-tools/23.0.3
 
 yecho "### Moving settings and certs ###"
 cp ./.remote/settings/sites/app.newspring.io/apollos.pem ./apollos.pem
