@@ -53,9 +53,11 @@ export default class SideModalContainer extends Component {
     if (nextProps.modal.visible && nextProps.navigation.level != "MODAL" && nextProps.navigation.level != "DOWN" && nextProps.modal.props.keepNav != true) {
       this.props.dispatch(navActions.setLevel("MODAL"))
       this.setState({ previous: this.props.navigation.level })
+    }else if (nextProps.modal.visible && nextProps.navigation.level === "DOWN" ){
+      this.setState({ previous: this.props.navigation.level })
     }
 
-    if (!nextProps.modal.visible && nextProps.navigation.level === "MODAL" && nextProps.navigation.level === "DOWN" && !this.props.modal.props.keepNav) {
+    if (!nextProps.modal.visible && ( nextProps.navigation.level === "MODAL" || nextProps.navigation.level === "DOWN" ) && !this.props.modal.props.keepNav) {
       let previous = this.state.previous
       if (previous === "MODAL" || previous === "DOWN" || !previous) {
         previous = "TOP"
@@ -66,7 +68,6 @@ export default class SideModalContainer extends Component {
     if (!nextProps.modal.visible && (this.props.path != nextProps.path)) {
       this.props.dispatch(modalActions.hide())
     }
-
   }
 
   componentWillUpdate(nextProps){
