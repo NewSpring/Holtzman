@@ -95,6 +95,10 @@ export default class AudioScrubber extends Component {
     return dark ? {backgroundColor: "rgba(255,255,255,.2)"} : {backgroundColor: "rgba(0,0,0,.2)"};
   };
 
+  getTertiaryTextColor = (dark) => {
+    return dark ? {color: "rgba(255,255,255,.5)"} : {color: "rgba(0,0,0,.5)"};
+  };
+
   getSecondayBackgroundClass = (dark) => {
     return dark ? "background--dark-secondary" : "background--light-secondary";
   };
@@ -132,7 +136,7 @@ export default class AudioScrubber extends Component {
     return (
       <div className="grid one-whole flush soft-top">
 
-        <div className={"hard grid__item one-tenth floating__item " + this.getTertiaryTextClass(isLight)}>
+        <div className="hard grid__item one-tenth floating__item " style={this.getTertiaryTextColor(!isLight)}>
           <small>
             <small>
               {this.getCurrentTime()}
@@ -165,7 +169,7 @@ export default class AudioScrubber extends Component {
           </div>
         </div>
 
-        <div className={"hard grid__item one-tenth floating__item " + this.getTertiaryTextClass(isLight)}>
+        <div className="hard grid__item one-tenth floating__item " style={this.getTertiaryTextColor(!isLight)}>
           <small>
             <small>
               {this.getTrackDuration()}
