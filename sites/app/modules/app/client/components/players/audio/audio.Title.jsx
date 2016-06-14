@@ -23,10 +23,10 @@ export default class AudioTitle extends Component {
     if (this.props.isPlaying) {
       return (
         <div>
-          <h4 className={this.getSecondayTextClass()}>
+          <h5 className={this.getSecondayTextClass() + " flush"}>
             {this.props.trackTitle}
-          </h4>
-          <h6 className={this.getTertiaryTextClass()}>
+          </h5>
+          <h6 className={this.getTertiaryTextClass() + " push-bottom"}>
             <span className="music-album-artist">
               {this.props.artistName}
             </span>

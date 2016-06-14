@@ -205,7 +205,7 @@ export default class AudioControls extends Component {
   };
 
   controlGridStyles = {
-    maxHeight: "60px"
+    maxHeight: "30px"
   }
 
   render() {
