@@ -34,7 +34,16 @@ const mapQueriesToProps = ({ ownProps, state }) => {
     },
   };
 };
-@connect({ mapQueriesToProps })
+
+const mapStateToProps = (state) => {
+  return {
+    modal: {
+      visible: state.modal.visible
+    }
+  }
+};
+
+@connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 export default class SeriesSingle extends Component {
@@ -51,15 +60,23 @@ export default class SeriesSingle extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction
-    }));
+    if(Meteor.isCordova) {
+      this.props.dispatch(navActions.setLevel("CONTENT"));
+      this.props.dispatch(navActions.setAction("CONTENT", {
+        id: 2,
+        action: this.likeableAction
+      }));
+    }
+
     this.props.dispatch(headerActions.hide());
   }
 
   renderContent = (devotion) => {
+
+    if(this.props.modal.visible) {
+      return (<div></div>);
+    }
+
     if (devotion.content.scripture === "") {
       return (
         <div title="Devotional">
