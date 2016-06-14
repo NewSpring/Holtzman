@@ -26,19 +26,13 @@ export default class Header extends Component {
       return null;
     }
 
-    let paddingTop = "15px";
-
-    if(this.props.isSearch) {
-      paddingTop = "0";
-    }
-
     return (
       <div>
         <div
           className="text-center"
           style={{
-            paddingTop: paddingTop,
-            paddingBottom: "15px",
+            paddingTop: this.props.isSearch ? "0" : "15px",
+            paddingBottom: this.props.isSearch ? "0" : "15px",
             backgroundColor: this.props.color,
             borderBottom: "1px solid rgba(0,0,0, 0.1)",
             position: "relative",
