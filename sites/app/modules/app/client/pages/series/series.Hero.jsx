@@ -36,7 +36,7 @@ export default class SeriesHero extends Component {
 
   stop = () => {
     if (this.player) {
-      this.player.destroy()
+      this.player.hide();
     }
     this.setState({playing: false})
   }
