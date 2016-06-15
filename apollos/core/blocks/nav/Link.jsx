@@ -37,6 +37,22 @@ export default class NavLink extends Component {
     return classes.join(" ")
   }
 
+  containerClasses = () => {
+
+    const { navItem } = this.props;
+
+    let classes = [
+      "floating",
+      Styles["locked"],
+    ];
+
+    if (navItem.label) {
+      classes.push("soft-half-top@handheld");
+    }
+
+    return classes.join(" ");
+  }
+
   handleAction = (e) => {
     e.preventDefault();
     const { navItem } = this.props
@@ -73,7 +89,7 @@ export default class NavLink extends Component {
         onClick={this.handleAction}
         style={{minHeight: "60px"}}
       >
-        <div className={`floating ${Styles["locked"]} soft-half-top@handheld`} >
+        <div className={this.containerClasses()}>
           <div className="floating__item">
             <i className={iconClasses} style={itemStyle}></i>
             {() => {
