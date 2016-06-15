@@ -24,7 +24,7 @@ export default class HomeHero extends Component {
     return (
       <section className="hard">
         <div className="one-whole overlay__item floating__item soft-left soft-bottom">
-          <h3 className="text-light-primary flush">{heroItem.title}</h3>
+          <h3 className="text-light-primary flush capitalize">{heroItem.title}</h3>
           <i className={iconClasses}></i>
           <h7 className="text-light-primary soft-top">{ready ? Helpers.categories.name(heroItem) : ""}</h7>
           <h7 className="text-light-primary text-right float-right soft-right">{ready ? Helpers.time.relative(heroItem) : ""}</h7>
