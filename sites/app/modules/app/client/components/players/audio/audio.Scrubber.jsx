@@ -158,10 +158,10 @@ export default class AudioScrubber extends Component {
             className={Styles["play-bar--active"] + " floating--right"}
             style={this.scrubStyle()}>
             <div
-              className={Styles["play-bar"] + " " + "rounded " + this.getSecondayBackgroundClass(isLight)}>
+              className={Styles["play-bar"] + " " + "rounded " + this.getPrimaryBackgroundClass(isLight)}>
             </div>
             <button
-              className={Styles["scrub-dot"] + " plain floating__item round " + this.getSecondayBackgroundClass(isLight)}>
+              className={Styles["scrub-dot"] + " plain floating__item round " + this.getPrimaryBackgroundClass(isLight)}>
             </button>
           </div>
           <div
