@@ -25,6 +25,8 @@ export default function modal(state = initial, action) {
         props: { ...state.props, ...action.props }
       } };
     case "MODAL.SET_CONTENT":
+      action.props.coverMiniPlayer = !!action.props.coverMiniPlayer;
+
       return { ...state, ...{
         content: action.content || state.content,
         visible: action.visible || state.visible,
