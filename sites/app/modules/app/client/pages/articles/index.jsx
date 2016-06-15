@@ -8,6 +8,7 @@ import ReactPullToRefresh from "react-pull-to-refresh";
 import { Loading } from "apollos/core/components"
 
 import { FeedItemSkeleton } from "apollos/core/components/loading"
+import { Headerable } from "apollos/core/mixins"
 import { nav as navActions } from "apollos/core/store"
 
 import Single from "./articles.Single"
@@ -42,10 +43,15 @@ const mapStateToProps = (state) => {
   mapStateToProps,
 })
 @ReactMixin.decorate(Pageable)
+@ReactMixin.decorate(Headerable)
 class Template extends Component {
 
-  componentWillMount(){
-    this.props.dispatch(navActions.setLevel("TOP"))
+  componentWillMount() {
+    this.props.dispatch(navActions.setLevel("TOP"));
+
+    this.headerAction({
+      title: "All Articles"
+    });
   }
 
   handleRefresh = (resolve, reject) => {
@@ -108,9 +114,6 @@ class Template extends Component {
           >
 
             <div className="soft@portable soft-double@lap-and-up background--light-primary">
-              <section className="text-center soft-half-bottom">
-                <h1 className="flush">Articles</h1>
-              </section>
               <section className="soft-half">
                 <div className="grid">
                   {this.renderItems()}

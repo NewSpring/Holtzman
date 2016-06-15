@@ -9,14 +9,20 @@ import Groups from "apollos/community"
 
 import { Global } from "apollos/core/blocks"
 import { RouteTransition } from "apollos/core/components/transitions"
+import Header from "apollos/core/components/header/"
 import { apolloClient } from "apollos/core/graphql/apollo"
 import AudioPlayer from "app/client/components/players/audio"
+import LivePlayer from "app/client/components/live"
 // import { ComingSoon } from "app/client/components/content"
 
 // import createHistory from "history/lib/createBrowserHistory"
 // import useScroll from "scroll-behavior/lib/useStandardScroll"
 
-const map = (state) => ({ audio: state.audio, location: state.routing.location, modal: state.modal, comingsoon: state.comingsoon })
+const map = (state) => ({
+  audio: state.audio,
+  location: state.routing.location,
+  modal: state.modal,
+})
 @connect(map)
 class Layout extends Component {
   render() {
@@ -33,6 +39,8 @@ class Layout extends Component {
 
     return (
       <Global className={classes.join(" ")}>
+        <Header />
+        {/*<LivePlayer/>*/}
         {this.props.children}
         <AudioPlayer />
       </Global>

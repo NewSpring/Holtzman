@@ -5,5 +5,5 @@ import Shareable from "./mixins.Shareable"
 export default {
   Likeable,
   Pageable,
-  Shareable
+  Shareable,
 }

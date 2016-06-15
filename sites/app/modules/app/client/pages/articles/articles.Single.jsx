@@ -7,6 +7,7 @@ import { VelocityComponent } from "velocity-react"
 
 // loading state
 import Split, { Left, Right } from "apollos/core/blocks/split"
+import { Headerable } from "apollos/core/mixins"
 import { Loading } from "apollos/core/components"
 
 // import editorial collection for lookup
@@ -37,14 +38,17 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
+@ReactMixin.decorate(Headerable)
 export default class ArticlesSingle extends Component {
 
   componentWillMount(){
-    this.props.dispatch(navActions.setLevel("CONTENT"))
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction
-    }));
+    if(Meteor.isCordova) {
+      this.props.dispatch(navActions.setLevel("CONTENT"));
+      this.props.dispatch(navActions.setAction("CONTENT", {
+        id: 2,
+        action: this.likeableAction
+      }));
+    }
   }
 
   render() {

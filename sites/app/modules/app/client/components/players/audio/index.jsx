@@ -31,7 +31,7 @@ export default class AudioPlayer extends Component {
     const modalClosing = modalVis && !modalNextVis;
 
     if( expanding ) {
-      this.props.dispatch(modal.render(FullPlayer, { audioPlayer: true }));
+      this.props.dispatch(modal.render(FullPlayer, { coverHeader: true, audioPlayer: true }));
       this.props.dispatch(navActions.setLevel("DOWN"));
       const { isLight } = this.props.audio.playing.album.content;
       // reverse is light so it makes sense for foreground

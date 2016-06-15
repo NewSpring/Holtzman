@@ -6,6 +6,7 @@ import { VelocityComponent } from "velocity-react"
 
 import ReactPullToRefresh from "react-pull-to-refresh";
 import { Loading } from "apollos/core/components"
+import { Headerable } from "apollos/core/mixins"
 
 import { FeedItemSkeleton } from "apollos/core/components/loading"
 import { nav as navActions } from "apollos/core/store"
@@ -42,10 +43,14 @@ const mapStateToProps = (state) => {
   mapStateToProps,
 })
 @ReactMixin.decorate(Pageable)
+@ReactMixin.decorate(Headerable)
 class Devotions extends Component {
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("TOP"))
+    this.props.dispatch(navActions.setLevel("TOP"));
+    this.headerAction({
+      title: "All Devotionals"
+    });
   }
 
   handleRefresh = (resolve, reject) => {
@@ -107,9 +112,6 @@ class Devotions extends Component {
           >
 
             <div className="background--light-primary">
-              <section className="text-center soft-half-bottom">
-                <h1 className="flush">Devotionals</h1>
-              </section>
               <section className="soft-half">
                 <div className="grid">
                   {this.renderItems()}

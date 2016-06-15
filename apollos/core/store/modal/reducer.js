@@ -19,9 +19,11 @@ const initial = {
 export default function modal(state = initial, action) {
   switch (action.type) {
     case "MODAL.SET_PROPS":
+      action.props.coverHeader = !!action.props.coverHeader;
+
       return { ...state, ...{
         props: { ...state.props, ...action.props }
-      } }
+      } };
     case "MODAL.SET_CONTENT":
       return { ...state, ...{
         content: action.content || state.content,

@@ -1,5 +1,4 @@
 
-import Input from "./Input"
 import Results from "./Results"
 import Feed from "./feed"
 
@@ -13,11 +12,19 @@ const Content = ({ loadMore, search }) => {
 
 }
 
-const SearchLayout = ({ searchSubmit, loadMore, cancel, search, hide }) => (
+const getStyle = () => {
+  const style = {};
 
-  <section className="hard">
+  if(Meteor.isCordova) {
+    style.marginTop = "50px";
+  }
 
-    <Input searchSubmit={searchSubmit} cancel={cancel} showCancel={search.searching} />
+  return style;
+};
+
+const SearchLayout = ({ loadMore, cancel, search, hide }) => (
+
+  <section className="hard" style={getStyle()}>
 
     <Content loadMore={loadMore} search={search} />
 

@@ -7,6 +7,8 @@ import { VelocityComponent } from "velocity-react"
 // loading state
 import { Loading } from "apollos/core/components"
 import { nav as navActions } from "apollos/core/store"
+import headerActions from "apollos/core/store/header"
+import { Headerable } from "apollos/core/mixins"
 
 import Helpers from "app/client/helpers"
 
@@ -31,13 +33,29 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
+@ReactMixin.decorate(Headerable)
 export default class SeriesSingle extends Component {
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("CONTENT"))
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction
+    if(Meteor.isCordova) {
+      this.props.dispatch(navActions.setLevel("CONTENT"));
+
+      this.props.dispatch(navActions.setAction("CONTENT", {
+        id: 2,
+        action: this.likeableAction
+      }));
+    }
+  }
+
+  componentWillUpdate() {
+    const { content } = this.props.series;
+    if(!content) return;
+
+    const color = Helpers.collections.color(content);
+
+    this.props.dispatch(headerActions.set({
+      title: "Series",
+      color: color
     }));
   }
 

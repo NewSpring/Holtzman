@@ -13,6 +13,7 @@ import { connect, gql } from "apollos/core/graphql/apollo";
 import Helpers from "app/client/helpers";
 
 import { FeedItemSkeleton } from "apollos/core/components/loading"
+import { Headerable } from "apollos/core/mixins"
 import HomeHero from "./home.Hero"
 import { FeedItem } from "app/client/components/cards"
 
@@ -38,6 +39,9 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 const mapStateToProps = (state) => {
   return {
     paging: state.paging,
+    modal: {
+      visible: state.modal.visible
+    }
   };
 };
 
@@ -46,10 +50,14 @@ const mapStateToProps = (state) => {
   mapStateToProps,
 })
 @ReactMixin.decorate(Pageable)
+@ReactMixin.decorate(Headerable)
 export default class Home extends Component {
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("TOP"))
+    this.props.dispatch(navActions.setLevel("TOP"));
+    this.headerAction({
+      title: "NewSpring"
+    });
   }
 
   handleRefresh = (resolve, reject) => {

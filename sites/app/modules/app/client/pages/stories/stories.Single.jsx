@@ -7,6 +7,7 @@ import { VelocityComponent } from "velocity-react"
 // loading state
 import { Loading } from "apollos/core/components"
 import { nav as navActions } from "apollos/core/store"
+import { Headerable } from "apollos/core/mixins"
 
 // import content component
 import StoriesContent from "./stories.Content";
@@ -29,14 +30,17 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
+@ReactMixin.decorate(Headerable)
 export default class StoriesSingle extends Component {
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("CONTENT"))
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction
-    }));
+    if(Meteor.isCordova) {
+      this.props.dispatch(navActions.setLevel("CONTENT"))
+      this.props.dispatch(navActions.setAction("CONTENT", {
+        id: 2,
+        action: this.likeableAction
+      }));
+    }
   }
 
   render() {

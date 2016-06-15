@@ -1,10 +1,14 @@
-import { Component, PropTypes} from "react";
-import {VelocityComponent } from "velocity-react";
+import { Component, PropTypes } from "react";
+import { VelocityComponent } from "velocity-react";
 
 import styles from "./modal.css"
 import offsetStyles from "../nav/offset.css"
 
 export default class SideModal extends Component {
+
+  state = {
+    coverHeader: false
+  }
 
   static contextTypes = {
     shouldAnimate: PropTypes.bool
@@ -61,7 +65,7 @@ export default class SideModal extends Component {
   layoutClasses = () => {
 
     const { float, offset } = this.props
-    const { classes, layoutOverride } = this.props.modal.props
+    const { classes, layoutOverride, coverHeader } = this.props.modal.props
 
     let classList = [
       "hard",
@@ -90,6 +94,21 @@ export default class SideModal extends Component {
     return classList.join(" ");
   }
 
+  componentWillUpdate (nextProps) {
+    const coverHeader = !!nextProps.props.coverHeader;
+
+    if(coverHeader != this.state.coverHeader) {
+      this.setState({ coverHeader });
+    }
+  }
+
+  styles = () => {
+    let style = { ... (this.props.styles || this.props.style) };
+    style.top = this.state.coverHeader ? "0px" : "46px";
+
+    return style;
+  };
+
   render () {
 
     let slide = {
@@ -106,6 +125,8 @@ export default class SideModal extends Component {
     }
 
     if (typeof window != "undefined" && window != null) {
+      window.scrollTo(0, 0);
+
       if (window.matchMedia("(max-width: 480px)").matches) {
         slide.translateY = [0, 80]
         if (typeof this.props.styles != "undefined") {
@@ -127,7 +148,6 @@ export default class SideModal extends Component {
       }
     }
 
-
     return (
       <div className="panel overlay--solid-dark fixed" id="@@modal" onClick={close} style={{zIndex: 100, position: "fixed"}}>
         <VelocityComponent
@@ -137,7 +157,7 @@ export default class SideModal extends Component {
         >
           <section
             className={ this.props.theme || this.layoutClasses() }
-            style={ this.props.styles || this.props.style }
+            style={ this.styles() }
           >
             <div className={ this.childClasses() } style={{ height: "100%" }}>
               <ChildComponent {...props} />
