@@ -2,7 +2,7 @@
   position: fixed;
   max-height: 50px;
   opacity: .95;
-  z-index: 99;
+  z-index: 101;
 }
 
 :local(.mini-album-cover) {
@@ -12,7 +12,7 @@
 :local(.mini-player-stop) {
   position: fixed;
   height: 50px;
-  z-index: 99;
+  z-index: 101;
 }
 
 :local(.mini-player-stop h6) {
