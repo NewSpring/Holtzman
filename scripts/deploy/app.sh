@@ -96,7 +96,7 @@ git clone git@github.com:NewSpring/meteor-launch.git .launch && cd .launch && np
 cp ./.remote/settings/sites/app.newspring.io/launch.json ./launch.json
 
 yecho "### Building for linux environment ###"
-launch build "${CHANNEL}-app.newspring.io"
+launch build "${CHANNEL}-app.newspring.io" "$TRAVIS_BUILD_DIR/sites/app/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json"
 
 yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
