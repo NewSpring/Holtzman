@@ -18,8 +18,8 @@ export default class AudioTitle extends Component {
     return this.props.isLight ? "text-dark-tertiary" : "text-light-tertiary";
   };
 
-  getSecondayTextClass = () => {
-    return this.props.isLight ? "text-dark-secondary" : "text-light-secondary";
+  getPrimaryTextClass = () => {
+    return this.props.isLight ? "text-dark-primary" : "text-light-primary";
   };
 
   render() {
@@ -27,7 +27,7 @@ export default class AudioTitle extends Component {
     if (this.props.isPlaying) {
       return (
         <div>
-          <h5 className={this.getSecondayTextClass() + " flush"}>
+          <h5 className={this.getPrimaryTextClass() + " flush"}>
             {this.props.trackTitle}
           </h5>
           <h6 className="push-bottom" style={this.getTertiaryTextColor(!isLight)}>

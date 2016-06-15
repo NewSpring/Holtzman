@@ -8,8 +8,8 @@
 }
 
 :local(.scrub-dot) {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   margin-top: -26px;
   border: 1px solid #dddddd;
 }

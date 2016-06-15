@@ -100,7 +100,7 @@ export default class AudioControls extends Component {
     return [
       "soft-sides",
       "flush",
-      this.getSecondayTextClass(),
+      this.getPrimaryTextClass(),
       "h1",
       toggleIcon
     ].join(" ");
@@ -232,7 +232,7 @@ export default class AudioControls extends Component {
         "text-center",
         "h4",
         toggleIcon,
-        this.getSecondayTextClass()
+        this.getPrimaryTextClass()
       ]
 
       return (
