@@ -4,7 +4,7 @@ import Sections from "apollos/core/blocks/sections";
 
 const Template = () => {
   return (
-    <div className="background--light-primary locked-ends locked-sides scrollable soft-double-bottom">
+    <div className="background--light-primary soft-double-bottom">
       <div className="soft-bottom">
         <Sections />
       </div>
