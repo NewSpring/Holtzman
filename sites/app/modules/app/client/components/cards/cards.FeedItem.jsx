@@ -86,7 +86,10 @@ export default class FeedItem extends Component {
   }
 
   h4Classes = () => {
-    return this.isSeriesItem() ? "text-light-primary" : "text-dark-primary"
+    return [
+      this.isSeriesItem() ? "text-light-primary" : "text-dark-primary",
+      "capitalize",
+    ].join(" ");
   }
 
   categoryClasses = () => {
