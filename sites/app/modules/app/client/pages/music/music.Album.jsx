@@ -143,7 +143,7 @@ export default class MusicAlbum extends Component {
         duration={1000}
         runOnMount={true}
       >
-        <section className="hard background--light-primary locked-ends locked-sides scrollable push-double-bottom" style={getStyle()}>
+        <section className="hard background--light-primary push-bottom" style={getStyle()}>
           <div className="one-whole soft overlay floating background--dark-primary background--fill" style={{backgroundImage: `url(${getUrl(album.content.images[1])})`}}>
             <div
               className="one-third floating__item display-inline overlay__item ratio--square background--fill"
