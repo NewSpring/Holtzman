@@ -160,6 +160,7 @@ export default class GiveNow extends Component {
       this.props.dispatch(modal.render(OnBoard, {
         onSignin: this.getPaymentDetailsAfterLogin,
         onFinished: this.renderAfterLogin,
+        coverHeader: true
       }))
 
       this.props.dispatch(accountsActions.setAccount(true))
@@ -205,7 +206,8 @@ export default class GiveNow extends Component {
   register = () => {
     this.props.dispatch(accountsActions.setAccount(false))
     this.props.dispatch(modal.render(OnBoard, {
-      onFinished: this.renderAfterLogin
+      onFinished: this.renderAfterLogin,
+      coverHeader: true
     }))
     // this.props.dispatch(navActions.setLevel("MODAL"))
 

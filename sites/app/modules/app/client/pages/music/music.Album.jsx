@@ -6,6 +6,7 @@ import { VelocityComponent } from "velocity-react"
 
 // loading state
 import { Loading } from "apollos/core/components"
+import { Headerable } from "apollos/core/mixins"
 
 // action helpers
 import { modal,
@@ -42,6 +43,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
+@ReactMixin.decorate(Headerable)
 export default class MusicAlbum extends Component {
 
   state = {
@@ -51,22 +53,18 @@ export default class MusicAlbum extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("CONTENT"))
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction
-    }));
+    if(Meteor.isCordova) {
+      this.props.dispatch(navActions.setLevel("CONTENT"))
+      this.props.dispatch(navActions.setAction("CONTENT", {
+        id: 2,
+        action: this.likeableAction
+      }));
+    }
   }
 
   componentWillUnmount() {
     this.props.dispatch(navActions.setLevel("TOP"))
     this.props.dispatch(audioActions.dock())
-  }
-
-  graphDataDidLoad(request) {
-    if (request === "album") {
-      this.shareableAction(this.data.album)
-    }
   }
 
   shuffle = () => {

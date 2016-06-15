@@ -14,7 +14,7 @@ const Likeable = {
     const entry = this.getLikableEntry();
 
     if (!Meteor.userId()) {
-      this.props.dispatch(modal.render(OnBoard))
+      this.props.dispatch(modal.render(OnBoard, { coverHeader: true }))
     } else {
       this.updateRedux(entry);
       this.updateDatabase(entry);

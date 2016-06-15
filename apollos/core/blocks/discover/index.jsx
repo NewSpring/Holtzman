@@ -2,6 +2,8 @@ import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import ReactMixin from "react-mixin"
 
+import { Headerable } from "../../../core/mixins/"
+
 import { GraphQL } from "../../../core/graphql"
 import modal from "../../store/modal"
 
@@ -11,23 +13,30 @@ import Layout from "./Layout"
 
 const map = (state) => ({ search: state.search })
 @connect(map)
+@ReactMixin.decorate(Headerable)
 export default class SearchContainer extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"))
     this.props.dispatch(modal.update({keepNav: true}))
 
-
+    this.lockHeader("DiscoverModal");
+    this.headerAction({
+      isSearch: true,
+      searchSubmit: this.searchSubmit
+    }, "DiscoverModal");
   }
 
   componentDidMount(){
     let term = this.props.search.term;
 
-    document.getElementById("search").value = term
+    // XXX
+    //document.getElementById("search").value = term
   }
 
   componentWillUnmount() {
-    this.props.dispatch(modal.update({keepNav: false, layoutOverride: []}))
+    this.props.dispatch(modal.update({keepNav: false, layoutOverride: []}));
+    this.unlockHeader();
   }
 
   hide = () => {
@@ -109,7 +118,6 @@ export default class SearchContainer extends Component {
 
     return (
       <Layout
-        searchSubmit={this.searchSubmit}
         loadMore={this.loadMore}
         cancel={this.cancel}
         search={search}
