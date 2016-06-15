@@ -33,7 +33,9 @@ export default class ListDetail extends Component {
   }
 
   componentWillUnmount() {
-    this.props.dispatch(navActions.setLevel("CONTENT"));
+    if(Meteor.isCordova) {
+      this.props.dispatch(navActions.setLevel("CONTENT"));
+    }
   }
 
   render () {
