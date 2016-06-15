@@ -19,7 +19,8 @@ export default class AudioTrack extends Component {
       trackNumber: this.props.trackNumber,
       style: {
         opacity: .9
-      }
+      },
+      coverMiniPlayer: true
     }));
   }
 
