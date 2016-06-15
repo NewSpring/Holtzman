@@ -218,7 +218,7 @@ export default class MiniPlayer extends Component {
             className={this.albumClasses()}
             style={bgImageStyle}
           ></div>
-          <div className="plain floating__item">
+        <div className="plain floating__item six-eighths truncate">
             <h6 className="display-block text-dark-secondary flush">
               {playing.track.title}
             </h6>
