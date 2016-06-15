@@ -14,6 +14,7 @@ export default class NavLayout extends React.Component {
       "soft-half",
       "locked-left",
       "locked-bottom",
+      "hard-ends@handheld",
       "hard-sides@lap-and-up",
       "soft-half-top@lap-and-up"
     ];
