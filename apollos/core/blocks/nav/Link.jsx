@@ -71,9 +71,9 @@ export default class NavLink extends Component {
       <button
         className={this.linkClasses()}
         onClick={this.handleAction}
-        style={{minHeight: "40px"}}
+        style={{minHeight: "60px"}}
       >
-        <div className={`floating ${Styles["locked"]}`} >
+        <div className={`floating ${Styles["locked"]} soft-half-top@handheld`} >
           <div className="floating__item">
             <i className={iconClasses} style={itemStyle}></i>
             {() => {
