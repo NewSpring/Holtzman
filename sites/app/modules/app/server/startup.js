@@ -1,4 +1,4 @@
-import "apollos"
+import "apollos/core"
 import "apollos/give/methods"
 import Give from "apollos/give/observers"
 import { api } from "apollos/core/util/rock"
