@@ -109,6 +109,13 @@ export default class SideModal extends Component {
     return style;
   };
 
+  getContainerStyle () {
+    return {
+      zIndex: this.props.props.coverMiniPlayer ? 102 : 100,
+      position: "fixed"
+    };
+  };
+
   render () {
 
     let slide = {
@@ -149,7 +156,7 @@ export default class SideModal extends Component {
     }
 
     return (
-      <div className="panel overlay--solid-dark fixed" id="@@modal" onClick={close} style={{zIndex: 100, position: "fixed"}}>
+      <div className="panel overlay--solid-dark fixed" id="@@modal" onClick={close} style={this.getContainerStyle()}>
         <VelocityComponent
           animation={slide}
           duration={300}
