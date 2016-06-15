@@ -92,7 +92,7 @@ aws configure set default.aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws configure set default.region us-east-1
 
 yecho "### Building for linux environment ###"
-meteor build .build --architecture os.linux.x86_64 --server "${CHANNEL}-app.newspring.io"
+launch build "${CHANNEL}-app.newspring.io"
 
 yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
