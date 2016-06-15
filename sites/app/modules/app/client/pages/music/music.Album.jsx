@@ -53,11 +53,13 @@ export default class MusicAlbum extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("CONTENT"))
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction
-    }));
+    if(Meteor.isCordova) {
+      this.props.dispatch(navActions.setLevel("CONTENT"))
+      this.props.dispatch(navActions.setAction("CONTENT", {
+        id: 2,
+        action: this.likeableAction
+      }));
+    }
   }
 
   componentWillUnmount() {
