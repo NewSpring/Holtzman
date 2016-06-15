@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
-import { wrapper, createReduxStore } from "apollos"
+import { wrapper, createReduxStore } from "apollos/core"
 
 import { Routes } from "app/client"
 import Give from "apollos/give"
