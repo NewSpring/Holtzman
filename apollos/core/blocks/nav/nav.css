@@ -1,6 +1,6 @@
 
 :local(.nav-bar) {
-  z-index: 100;
+  z-index: 102;
 }
 
 :local(.nav-bar button) {
