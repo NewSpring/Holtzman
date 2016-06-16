@@ -22,6 +22,11 @@
 @import "./custom/scripture";
 
 .card {
+  /* force hardware acceleration on render */
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+
   background-color: #fff;
   border-width: 1px;
   border-color: rgba(0, 0, 0, .1);
