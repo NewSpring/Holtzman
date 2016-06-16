@@ -21,6 +21,11 @@
 }
 
 .refresh-view {
+  /* force hardware acceleration on render */
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+
   z-index: 1;
   position: relative;
 }
@@ -52,6 +57,11 @@
 }
 
 .ptr-loading .ptr-element .loading {
+  /* force hardware acceleration on render */
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+
   display: block;
   -webkit-animation-duration: .5s;
   -ms-animation-duration: .5s;
