@@ -77,6 +77,17 @@ export default class VideoPlayer extends Component {
         this.messages.subscribe(OO.EVENTS.PLAY_FAILED, "Video", (eventName) => {
           this.destroy();
         });
+
+        this.messages.subscribe(OO.EVENTS.FULLSCREEN_CHANGED, "Video", (eventName) => {
+          // ios sets the status bar text color to black
+          // when it goes full screen
+          if (!player.isFullscreen()) {
+            // wait a bit because it doesn't work right away
+            setTimeout(() => {
+              StatusBar.styleLightContent();
+            }, 500);
+          }
+        });
       }
     };
 
