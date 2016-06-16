@@ -130,7 +130,7 @@ export default class Home extends Component {
             <Right
               mobile={true}
               background={photo ? photo : "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/fpo/fpo.Music2_1700_850_90_c1.jpg"}
-              classes={["floating--bottom", "overlay--gradient", "text-left"]}
+              classes={["floating--bottom", "text-left"]}
               ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up", "floating--bottom", "text-left"]}
               aspect="square"
               link={heroLink}

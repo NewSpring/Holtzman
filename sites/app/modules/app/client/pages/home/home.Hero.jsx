@@ -22,7 +22,7 @@ export default class HomeHero extends Component {
     }
 
     return (
-      <section className="hard">
+      <section className="hard overlay--gradient">
         <div className="one-whole overlay__item floating__item soft-left soft-bottom">
           <h3 className="text-light-primary flush capitalize">{heroItem.title}</h3>
           <i className={iconClasses}></i>
