@@ -6,8 +6,16 @@ import { AccountType } from "../../../../give/components"
 
 import Back from "../Back"
 
+const styles = {
+  overflow: "visible",
+  zIndex: 1,
+  marginTop: Meteor.isCordova ? "50px" : "0",
+};
+
 const Layout = ({ details, remove }) => (
-  <div className="background--light-primary text-center soft-double-top push-double-bottom push-double-top" style={{overflow: "visible"}}>
+  <div
+    className="background--light-primary text-center soft-double-top push-double-bottom push-double-top"
+    style={styles}>
     <Meta title="Saved Payments" />
     <Back />
     <div className="one-whole two-thirds@anchored display-inline-block">

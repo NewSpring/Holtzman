@@ -40,6 +40,12 @@ export default class Layout extends Component {
     this.props.submit(data)
   }
 
+  containerStyles = () => {
+    return {
+      marginTop: Meteor.isCordova ? "50px" : "0",
+    }
+  }
+
   render () {
 
     const { submit, person, months, saveMonth, days, years, campuses } = this.props
@@ -56,7 +62,10 @@ export default class Layout extends Component {
     } = person
 
     return (
-    <div className="background--light-primary one-whole text-center push-double-top@lap-and-up soft-double-bottom push-double-bottom">
+      <div
+        className="background--light-primary one-whole text-center push-double-top@lap-and-up soft-double-bottom push-double-bottom"
+        style={this.containerStyles()}
+      >
       <Meta title="Update your details" />
         <Back />
         <Forms.Form
@@ -78,7 +87,7 @@ export default class Layout extends Component {
               type="text"
               defaultValue={nickName}
             />
-          
+
           <div className="grid">
             <div className="grid__item one-half">
 

@@ -183,14 +183,18 @@ export default class Menu extends Component {
     }
   }
 
+  containerStyles = () => {
+    return {
+      marginTop: Meteor.isCordova ? "45px" : "0",
+    }
+  }
+
   render() {
     return (
-      <div className="background--light-secondary soft-double-bottom soft-double-sides@lap-and-up">
-        {() => {
-          if (Meteor.isCordova) {
-            return <Header />
-          }
-        }()}
+      <div
+        className="background--light-secondary soft-double-bottom soft-double-sides@lap-and-up"
+        style={this.containerStyles()}
+      >
         <section className={this.sectionClasses()}>
           <div className={this.dividerClasses()}>
             <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
