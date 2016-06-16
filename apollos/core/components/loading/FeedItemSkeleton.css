@@ -1,4 +1,7 @@
-.load-item,
+.load-item {
+  background: #dddddd;
+}
+
 .fake-text,
 .fake-text-small {
   background: linear-gradient(270deg, #dddddd, #bcbcbc, #dddddd);
