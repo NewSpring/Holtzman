@@ -1,6 +1,8 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 
+import headerActions from "../../../core/store/header"
+
 import { GraphQL } from "../../../core/graphql"
 
 import Layout from "./Layout"
@@ -75,6 +77,14 @@ export default class Home extends Component {
   content = [<Likes />, <Following />]
 
   componentDidMount(){
+    const item = {
+      title: "Profile",
+    };
+
+    this.props.dispatch(headerActions.set(item));
+    this.setState({
+      __headerSet: true,
+    });
     this.props.dispatch(navActions.setLevel("TOP"))
 
   }
