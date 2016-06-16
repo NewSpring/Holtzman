@@ -28,6 +28,12 @@ export default class Layout extends Component {
     this.props.update(data)
   }
 
+  containerStyles = () => {
+    return {
+      marginTop: Meteor.isCordova ? "50px" : "0",
+    }
+  }
+
   render () {
     const { update, home, campuses, campus } = this.props
 
@@ -41,7 +47,10 @@ export default class Layout extends Component {
     } = home
 
     return (
-    <div className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom background--light-primary">
+      <div
+        className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom background--light-primary"
+        style={this.containerStyles()}
+      >
       <Meta title="Change your address" />
         <Back />
         <Forms.Form
