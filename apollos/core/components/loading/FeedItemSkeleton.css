@@ -4,6 +4,9 @@
 
 .fake-text,
 .fake-text-small {
+  /* force hardware acceleration */
+  -webkit-transform: translate3d(0, 0, 0);
+
   background: linear-gradient(270deg, #dddddd, #bcbcbc, #dddddd);
   -webkit-animation: ColorAnimation 5s cubic-bezier(0.66, 0.21, 0.49, 0.88) infinite;
   animation: ColorAnimation 5s cubic-bezier(0.66, 0.21, 0.49, 0.88) infinite;
@@ -46,6 +49,9 @@
 }
 
 :global(.imageloader.loaded > :first-child) {
+  /* force hardware acceleration */
+  -webkit-transform: translate3d(0, 0, 0);
+
   opacity: 1;
   transition: opacity .5s ease-in-out;
  -moz-transition: opacity .5s ease-in-out;
