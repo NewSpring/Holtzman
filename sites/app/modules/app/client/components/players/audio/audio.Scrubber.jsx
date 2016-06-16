@@ -91,8 +91,12 @@ export default class AudioScrubber extends Component {
     this.props.seek(percentClicked);
   }
 
-  getTertiaryBackgroundClass = (dark) => {
-    return dark ? "background--dark-tertiary" : "background--light-tertiary";
+  getTertiaryBackgroundColor = (dark) => {
+    return dark ? {backgroundColor: "rgba(255,255,255,.2)"} : {backgroundColor: "rgba(0,0,0,.2)"};
+  };
+
+  getTertiaryTextColor = (dark) => {
+    return dark ? {color: "rgba(255,255,255,.5)"} : {color: "rgba(0,0,0,.5)"};
   };
 
   getSecondayBackgroundClass = (dark) => {
@@ -125,15 +129,14 @@ export default class AudioScrubber extends Component {
 
     const playbar = [
       "play-bar",
-      this.getTertiaryBackgroundClass(!isLight),
       "rounded",
       Styles["play-bar"]
     ];
 
     return (
-      <div className="grid one-whole flush">
+      <div className="grid one-whole flush soft-top">
 
-        <div className={"hard grid__item one-tenth floating__item " + this.getTertiaryTextClass(isLight)}>
+        <div className="hard grid__item one-tenth floating__item " style={this.getTertiaryTextColor(!isLight)}>
           <small>
             <small>
               {this.getCurrentTime()}
@@ -147,15 +150,26 @@ export default class AudioScrubber extends Component {
           onTouchEnd={this.touchEnd}
           onTouchMove={this.touchMove}
           onClick={this.click}>
-          <div className={playbar.join(" ")}></div>
-          <div className={Styles["play-bar--active"] + " floating--right"} style={this.scrubStyle()}>
-            <div className={Styles["play-bar"] + " " + this.getSecondayBackgroundClass(isLight)}></div>
-            <button className={Styles["scrub-dot"] + " plain floating__item round " + this.getSecondayBackgroundClass(isLight)}></button>
+          <div
+            className={playbar.join(" ")}
+            style={this.getTertiaryBackgroundColor(!isLight)}>
           </div>
-          <div className="cover" style={{position: "absolute", top: "-20px", bottom: 0, left: 0, right: 0}}></div>
+          <div
+            className={Styles["play-bar--active"] + " floating--right"}
+            style={this.scrubStyle()}>
+            <div
+              className={Styles["play-bar"] + " " + "rounded " + this.getPrimaryBackgroundClass(isLight)}>
+            </div>
+            <button
+              className={Styles["scrub-dot"] + " plain floating__item round " + this.getPrimaryBackgroundClass(isLight)}>
+            </button>
+          </div>
+          <div
+            className="cover" style={{position: "absolute", top: "-20px", bottom: 0, left: 0, right: 0}}>
+          </div>
         </div>
 
-        <div className={"hard grid__item one-tenth floating__item " + this.getTertiaryTextClass(isLight)}>
+        <div className="hard grid__item one-tenth floating__item " style={this.getTertiaryTextColor(!isLight)}>
           <small>
             <small>
               {this.getTrackDuration()}

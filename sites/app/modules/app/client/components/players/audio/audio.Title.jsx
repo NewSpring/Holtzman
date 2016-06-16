@@ -10,23 +10,27 @@ export default class AudioTitle extends Component {
     isLight: PropTypes.bool.isRequired
   }
 
+  getTertiaryTextColor = (dark) => {
+    return dark ? {color: "rgba(255,255,255,.5)"} : {color: "rgba(0,0,0,.5)"};
+  };
+
   getTertiaryTextClass = () => {
     return this.props.isLight ? "text-dark-tertiary" : "text-light-tertiary";
   };
 
-  getSecondayTextClass = () => {
-    return this.props.isLight ? "text-dark-secondary" : "text-light-secondary";
+  getPrimaryTextClass = () => {
+    return this.props.isLight ? "text-dark-primary" : "text-light-primary";
   };
 
   render() {
-
+    const { isLight } = this.props;
     if (this.props.isPlaying) {
       return (
         <div>
-          <h4 className={this.getSecondayTextClass()}>
+          <h5 className={this.getPrimaryTextClass() + " flush"}>
             {this.props.trackTitle}
-          </h4>
-          <h6 className={this.getTertiaryTextClass()}>
+          </h5>
+          <h6 className="push-bottom" style={this.getTertiaryTextColor(!isLight)}>
             <span className="music-album-artist">
               {this.props.artistName}
             </span>
