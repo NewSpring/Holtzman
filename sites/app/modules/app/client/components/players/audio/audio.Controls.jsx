@@ -22,43 +22,58 @@ export default class AudioControls extends Component {
       "h5",
       "icon-shuffle"
     ]
-
-    if (this.props.audio.order === "shuffle") {
-      classes.push("text-primary");
-    } else {
-      classes.push(this.getTertiaryTextClass());
-    }
-
     return classes.join(" ");
   }
 
-  repeatClasses = () => {
-    let classes = [
-      "soft-half-right",
-      "flush",
-      "h5"
-    ];
+  activeShuffleStyles = () => {
+    const { isLight } = this.props;
+    if (this.props.audio.order === "shuffle") {
+      return this.getPrimaryTextColor(!isLight);
+    } else {
+      return this.getTertiaryTextColor(!isLight);
+    }
+  };
 
+  repeatClasses = () => {
     const { repeat } = this.props.audio;
 
-    if (repeat != "default") {
-      classes.push("text-primary");
-    } else {
-      classes.push(this.getTertiaryTextClass());
-    }
-
-    if (repeat === "repeat") {
-      // classes.push("icon-repeat-all")
-      // temp until icon is ready
-      classes = classes.concat([
-        "icon-repeat",
-        this.getPrimaryTextClass()
-      ])
-    } else {
-      classes.push("icon-repeat");
-    }
-
+    let classes = [
+      "flush",
+      "h5",
+      "icon-repeat"
+    ];
     return classes.join(" ");
+  };
+
+  repeatIconStyles = {
+    top: "-34px"
+  }
+
+  repeatIcon = () => {
+    const { repeat } = this.props.audio;
+
+    let classes = [
+      this.getPrimaryTextClass(),
+      "h3",
+      "push-double-left",
+      "soft-left"
+    ];
+    if (repeat === "repeat") classes.push("icon-repeat-all");
+    if (repeat === "repeat-one") classes.push("icon-repeat-one");
+
+    return (
+      <i className={classes.join(" ")} onClick={this.repeat} style={this.repeatIconStyles}></i>
+    );
+  }
+
+  activeRepeatStyles = () => {
+    const { repeat } = this.props.audio;
+    const { isLight } = this.props;
+    if (repeat != "default") {
+      return this.getPrimaryTextColor(!isLight);
+    } else {
+      return this.getTertiaryTextColor(!isLight);
+    }
   };
 
   backClasses = () => {
@@ -85,11 +100,22 @@ export default class AudioControls extends Component {
     return [
       "soft-sides",
       "flush",
-      this.getSecondayTextClass(),
+      this.getPrimaryTextClass(),
       "h1",
       toggleIcon
     ].join(" ");
   };
+
+  playIconPosition = () => {
+    const { state } = this.props.audio;
+
+    if (state != "playing") { return {
+      left: "6px"
+      }
+    } else return {
+      left: "2px"
+    }
+  }
 
   toggle = (e) => {
     e.preventDefault()
@@ -147,6 +173,14 @@ export default class AudioControls extends Component {
     }
   };
 
+  getTertiaryTextColor = (dark) => {
+    return dark ? {color: "rgba(255,255,255,.5)"} : {color: "rgba(0,0,0,.5)"};
+  };
+  getPrimaryTextColor = (dark) => {
+    return dark ? {color: "rgba(255,255,255,1)"} : {color: "rgba(0,0,0,1)"};
+  };
+
+
   getTertiaryTextClass = () => {
     return this.props.isLight ? "text-dark-tertiary" : "text-light-tertiary";
   };
@@ -174,6 +208,7 @@ export default class AudioControls extends Component {
 
     this.props.dispatch(modal.render(ListDetail, {
       color: "background--dark-primary",
+      modalBackground: "dark",
       album: album,
       trackNumber: trackNumber,
       style: {
@@ -182,17 +217,22 @@ export default class AudioControls extends Component {
     }));
   };
 
+  controlGridStyles = {
+    maxHeight: "30px"
+  }
+
   render() {
     const { state, back, next, visibility } = this.props.audio;
     const isPlaying = state === "playing";
     const toggleIcon = isPlaying ? "icon-pause" : "icon-play";
+    const { isLight } = this.props;
 
     if(visibility === "dock") {
       const classes = [
         "text-center",
         "h4",
         toggleIcon,
-        this.getSecondayTextClass()
+        this.getPrimaryTextClass()
       ]
 
       return (
@@ -212,7 +252,7 @@ export default class AudioControls extends Component {
         </button>
 
         <button className="plain floating__item" onClick={this.toggle}>
-          <i className={this.toggleClasses(toggleIcon)}></i>
+          <i className={this.toggleClasses(toggleIcon)} style={this.playIconPosition()}></i>
         </button>
 
         <button className="plain floating__item" onClick={this.next}>
@@ -223,23 +263,25 @@ export default class AudioControls extends Component {
           isLight={this.props.isLight}
         />
 
-        <div className="grid one-whole flush">
+        <div className="grid one-whole flush" style={this.controlGridStyles}>
           <div className="grid__item one-third text-left hard">
             <button className="plain floating__item" onClick={this.shuffle}>
-              <i className={this.shuffleClasses()}></i>
+              <i className={this.shuffleClasses()} style={this.activeShuffleStyles()}></i>
             </button>
           </div>
           <div className="grid__item one-third hard-ends hard">
             <button className="plain floating__item" onClick={this.repeat}>
-              <i className={this.repeatClasses()}></i>
+              <i className={this.repeatClasses()} style={this.activeRepeatStyles()}></i>
             </button>
           </div>
           <div className="grid__item one-third text-right hard-sides">
-            <h5 onClick={this.listDetail} className={this.getTertiaryTextClass()}>
+            <h5 onClick={this.listDetail} style={this.getTertiaryTextColor(!isLight)}>
               •••
             </h5>
           </div>
+          {this.repeatIcon()}
         </div>
+
 
       </div>
     );

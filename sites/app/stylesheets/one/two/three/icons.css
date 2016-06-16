@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @font-face {
   font-family: "newspring-icofont";
   src:url("/icofont/newspring-icofont.eot");
@@ -52,7 +54,7 @@
   content: "e";
 }
 .icon-pause:before {
-  content: "f";
+  content: "\49";
 }
 .icon-play:before {
   content: "g";
@@ -113,4 +115,10 @@
 }
 .icon-settings:before {
   content: "z";
+}
+.icon-repeat-one:before {
+  content: "\44";
+}
+.icon-repeat-all:before {
+  content: "\47";
 }

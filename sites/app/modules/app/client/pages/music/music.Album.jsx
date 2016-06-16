@@ -155,7 +155,7 @@ export default class MusicAlbum extends Component {
             </div>
           </div>
           <div className="background--light-primary one-whole">
-            <div className="soft-sides soft-half-ends">
+            <div className="soft-sides soft-half-ends push-bottom">
               {tracks.map((track, i) => {
                 return <Track
                   track={track}
