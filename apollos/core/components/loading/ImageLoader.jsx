@@ -86,7 +86,12 @@ export default class ImageLoader extends Component {
 
     const isElementInView = (e) => {
       let coords = e.getBoundingClientRect()
-      return (Math.abs(coords.left) >= 0 && Math.abs(coords.top)) <= (window.innerHeight || document.documentElement.clientHeight)
+      return (
+        // if item is left of the screen's left side
+        Math.abs(coords.left) >= 0 &&
+        // if item is within two screens
+        Math.abs(coords.top) <= (window.innerHeight || document.documentElement.clientHeight) * 2
+      );
     }
 
     const seeIfInView = () => {
