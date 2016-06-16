@@ -3,3 +3,4 @@ cordova-plugin-safariviewcontroller@https://github.com/EddyVerbruggen/cordova-pl
 cordova-plugin-media@2.3.0
 io.lookback.sdk@https://github.com/NewSpring/cordova-lookback.git#62986a48e9701c58b345e47cfe05ae3a722d2525
 cordova-plugin-social-message@0.4.0
+cordova-plugin-statusbar@2.1.3
