@@ -1,3 +1,5 @@
-:local(.right:hover) {
-  opacity: 0.8
+@media screen and (min-width: 769px) {
+  :local(.right:hover) {
+    opacity: 0.8
+  }
 }
