@@ -3,8 +3,16 @@ import Meta from "../../../../core/components/meta"
 
 import Back from "../Back"
 
+const styles = {
+  overflow: "visible",
+  zIndex: 1,
+  marginTop: Meteor.isCordova ? "50px" : "0",
+};
+
 const Layout = ({ submit, save, state }, context) => (
-  <div className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom " style={{overflow: "visible", zIndex: 1}}>
+  <div
+    className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom "
+    style={styles}>
     <Back />
     <Meta title="Change your password" />
       <Forms.Form
