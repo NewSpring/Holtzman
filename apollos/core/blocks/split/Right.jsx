@@ -159,7 +159,8 @@ export default class Right extends Component {
               "locked-ends",
               "locked-sides",
               "hard",
-              "floating"
+              "floating",
+              "overlay--gradient",
             ]}
           >
             {this.renderInsideRatio()}
