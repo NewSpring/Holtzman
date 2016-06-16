@@ -75,7 +75,11 @@ if (Meteor.isCordova) {
       }
 
 
-    })
+    });
+
+    window.addEventListener("statusTap", (event) => {
+      $('body').velocity("scroll", { duration: 500, easing: "ease-in" })
+    });
   });
 }
 
