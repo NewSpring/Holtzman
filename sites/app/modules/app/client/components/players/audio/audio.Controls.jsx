@@ -263,7 +263,7 @@ export default class AudioControls extends Component {
           isLight={this.props.isLight}
         />
 
-      <div className="grid one-whole flush" style={this.controlGridStyles}>
+        <div className="grid one-whole flush" style={this.controlGridStyles}>
           <div className="grid__item one-third text-left hard">
             <button className="plain floating__item" onClick={this.shuffle}>
               <i className={this.shuffleClasses()} style={this.activeShuffleStyles()}></i>
