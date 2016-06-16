@@ -18,8 +18,10 @@ export default class SectionsContainer extends Component {
 
   componentDidMount() {
     this.props.dispatch(navActions.setLevel("TOP"))
-    this.props.dispatch(modal.update({keepNav: true}))
-    this.props.dispatch(modal.update({modalBackground: "light"}))
+    this.props.dispatch(modal.update({
+      keepNav: true,
+      modalBackground: "light",
+    }));
 
     this.lockHeader("SectionsContainer");
     this.headerAction({
