@@ -40,6 +40,8 @@ export default class ListDetail extends Component {
   closeModal = (e) => {
     if(this.props.audio.visibility === "expand") {
       this.props.dispatch(audioActions.setVisibility("dock"));
+      // XXX - When I hide the modal, I need the visibility of dock to have
+      // taken effect. Bwah.
       setTimeout(() => {
         this.props.dispatch(modal.hide());
       }, 250);
