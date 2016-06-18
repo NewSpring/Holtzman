@@ -1,9 +1,21 @@
 import { Component, PropTypes } from "react";
+import { connect } from "react-redux"
 import { VelocityComponent } from "velocity-react";
 
 import styles from "./modal.css"
 import offsetStyles from "../nav/offset.css"
 
+import { audio as audioActions } from "app/client/actions"
+
+const mapStateToProps = (state) => {
+  return {
+    audio: {
+      visibility: state.audio.visibility
+    }
+  };
+};
+
+@connect(mapStateToProps)
 export default class SideModal extends Component {
 
   state = {
@@ -106,6 +118,16 @@ export default class SideModal extends Component {
       this.setState({ coverHeader });
     }
   }
+
+  componentDidUpdate(previousProps) {
+    if(previousProps.visible && !this.props.visible &&
+      previousProps.audio.visibility === "expand" &&
+      previousProps.component.displayName.indexOf("FullPlayer") === -1) {
+      // Modal, that was not the Full Player, closed but the audio player
+      // was still set to be expanded
+      this.props.dispatch(audioActions.setVisibility("expand"));
+    }
+  };
 
   styles = () => {
     let style = { ... (this.props.styles || this.props.style) };

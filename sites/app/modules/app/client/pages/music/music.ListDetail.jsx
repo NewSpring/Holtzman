@@ -6,6 +6,7 @@ import { Link } from "react-router"
 import ReactMixin from "react-mixin"
 
 import { Shareable } from "app/client/mixins"
+import { audio as audioActions } from "app/client/actions"
 
 import { Helpers } from "app/client"
 
@@ -19,7 +20,15 @@ import {
 
 import { Music as MusicCollection } from "app/lib/collections"
 
-@connect()
+const mapStateToProps = (state) => {
+  return {
+    audio: {
+      visibility: state.audio.visibility
+    }
+  };
+};
+
+@connect(mapStateToProps)
 //@ReactMixin.decorate(Shareable)
 export default class ListDetail extends Component {
 
@@ -29,7 +38,15 @@ export default class ListDetail extends Component {
   };
 
   closeModal = (e) => {
-    this.props.dispatch(modal.hide())
+    if(this.props.audio.visibility === "expand") {
+      this.props.dispatch(audioActions.setVisibility("dock"));
+      setTimeout(() => {
+        this.props.dispatch(modal.hide());
+      }, 250);
+    }
+    else {
+      this.props.dispatch(modal.hide());
+    }
   }
 
   componentWillUnmount() {
