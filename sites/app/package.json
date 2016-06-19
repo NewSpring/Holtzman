@@ -51,7 +51,7 @@
     "react-helmet": "^2.3.1",
     "react-mixin": "^3.0.0",
     "react-motion": "^0.4.2",
-    "react-pull-to-refresh": "^1.0.3",
+    "react-pull-to-refresh": "git+https://git@github.com/NewSpring/react-pull-to-refresh.git",
     "react-pure-render": "^1.0.2",
     "react-redux": "^4.0.0",
     "react-select": "^0.9.1",
