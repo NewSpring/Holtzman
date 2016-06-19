@@ -106,8 +106,9 @@ export default class MiniPlayer extends Component {
 
   startHideTimer = () => {
     this.timeout = setTimeout(() => {
-      this.props.pause()
-      this.props.hide()
+      this.props.pause();
+      this.props.hide();
+      this.props.reset();
     }, 600000)
   }
 
@@ -147,6 +148,7 @@ export default class MiniPlayer extends Component {
       }, 300);
       setTimeout(() => {
         this.props.hide();
+        this.props.reset();
       }, 600);
     }
 
