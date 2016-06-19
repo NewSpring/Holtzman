@@ -46,7 +46,7 @@ export default class NavLink extends Component {
       Styles["locked"],
     ];
 
-    if (navItem.label) {
+    if (navItem.label && !Meteor.isCordova) {
       classes.push("soft-half-top@handheld");
     }
 
@@ -93,7 +93,7 @@ export default class NavLink extends Component {
           <div className="floating__item">
             <i className={iconClasses} style={itemStyle}></i>
             {() => {
-              if (navItem.label) {
+              if (navItem.label && !Meteor.isCordova) {
                 return (
                   <h7 className="display-block">
                     <small className="text-center">{navItem.label}</small>
