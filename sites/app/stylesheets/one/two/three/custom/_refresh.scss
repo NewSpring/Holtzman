@@ -1,4 +1,5 @@
 .ptr-element {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -7,17 +8,27 @@
   z-index: 1;
   text-align: center;
   height: 70px;
-  background: $dark-color;
+  background: map-get($colors, light-secondary);
 }
 
 .ptr-fake-background {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 300px;
   z-index: 0;
-  background: $dark-color;
+  background: map-get($colors, light-secondary);
+}
+
+.ptr-pulling .ptr-element,
+.ptr-loading .ptr-element,
+.ptr-reset .ptr-element,
+.ptr-pulling .ptr-fake-background,
+.ptr-loading .ptr-fake-background,
+.ptr-reset .ptr-fake-background {
+  display: block;
 }
 
 .refresh-view {
@@ -47,13 +58,10 @@
   -webkit-transform: rotate(225deg);
   transform: rotate(225deg);
 }
+
 .ptr-loading .ptr-element i,
 .ptr-reset .ptr-element i {
   display: none;
-}
-
-.ptr-element .loading {
-  display: block;
 }
 
 .ptr-loading .ptr-element .loading {
