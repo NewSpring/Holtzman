@@ -31,6 +31,7 @@ const types = {
   ADD_TO_PLAYLIST: "AUDIO.ADD_TO_PLAYLIST",
   SET_PLAYING: "AUDIO.SET_PLAYING",
   SET_REPEAT: "AUDIO.SET_REPEAT",
+  RESET_ALL: "AUDIO.RESET_ALL",
 }
 
 export default {
@@ -54,6 +55,7 @@ export default {
   loading: () => ({ type: types.SET_STATE, state: "loading" }),
   stop: () => ({ type: types.SET_STATE, state: "default" }),
 
+  reset: () => ({ type: types.RESET_ALL }),
 
   seek: (seek) => ({ type: types.SET_SEEK, seek }),
   restart: () => ({ type: types.SET_SEEK, seek: 0.01 }),
