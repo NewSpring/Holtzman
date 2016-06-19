@@ -93,7 +93,7 @@
     "null-loader": "^0.1.1",
     "raw-loader": "^0.5.1",
     "react-transform-catch-errors": "^1.0.0",
-    "redbox-react": "^1.2.5",
+    "redbox-react": "1.2.6",
     "redux-logger": "^2.6.1",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
