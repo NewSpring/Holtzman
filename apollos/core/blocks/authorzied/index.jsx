@@ -8,7 +8,11 @@ import OnBoard from "../accounts"
 
 import { People } from "../../collections"
 
-const map = (state) => ({ auth: state.accounts.authorized, modal: state.modal })
+const map = (state) => ({
+  auth: state.accounts.authorized,
+  modal: state.modal,
+  previous: state.routing.location.previous,
+});
 @connect(map)
 export default class Authorized extends Component {
 
@@ -33,7 +37,9 @@ export default class Authorized extends Component {
   componentWillReceiveProps(nextProps) {
 
     if (this.props.modal.visible && !nextProps.modal.visible && !nextProps.auth) {
-      this.props.dispatch(routeActions.push("/"))
+      // use last route instead of goBack() to force update of active nav item
+      const lastRoute = nextProps.previous[nextProps.previous.length-1] || "/";
+      this.props.dispatch(routeActions.push(lastRoute))
     }
 
     if (this.props.auth && !nextProps.auth) {
