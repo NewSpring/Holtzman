@@ -78,7 +78,23 @@ if (Meteor.isCordova) {
     });
 
     window.addEventListener("statusTap", (event) => {
-      $("[data-status-scroll]").velocity("scroll", { duration: 350, easing: "ease-in" });
+      const options = {
+        duration: 350,
+        easing: "ease-in",
+      };
+
+      const $scroll = $("[data-status-scroll]");
+      const container = $("[data-status-scroll-container]")[0];
+      const $item = $("[data-status-scroll-item]");
+
+      if ($item && container) {
+        const offset = $item.data("status-scroll-offset");
+        options.container = container;
+        if (offset) options.offset = offset;
+        $item.velocity("scroll", options);
+      } else {
+        $scroll.velocity("scroll", options);
+      }
     });
   });
 }
