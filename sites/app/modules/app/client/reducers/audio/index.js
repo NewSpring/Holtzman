@@ -169,7 +169,10 @@ export default createReducer(initial, {
         "dock" :
         state.visibility
     }};
-  }
+  },
 
+  [types.RESET_ALL](state, action) {
+    return initial
+  },
 
 })
