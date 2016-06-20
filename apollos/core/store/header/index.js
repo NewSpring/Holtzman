@@ -21,4 +21,7 @@ export default {
 
   lock: (requestee) => ({ type: "HEADER.LOCK", requestee }),
   unlock: () => ({ type: "HEADER.UNLOCK" }),
+
+  // XXX this currently doesn't affect the store
+  statusBarColor: (color) => ({ type: "STATUSBAR.SET", color }),
 }
