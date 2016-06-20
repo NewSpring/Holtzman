@@ -169,6 +169,20 @@ export default class Menu extends Component {
     }
   }
 
+  showFeedback = () => {
+    if (Meteor.isCordova){
+      return (
+        <a href="#" onClick={this.getFeedback} className="plain text-dark-secondary">
+          <RenderCell name="Get Feedback" />
+        </a>
+      );
+    }
+  }
+
+  getFeedback = () => {
+    if (Meteor.isCordova) hockeyapp.feedback();
+  }
+
   dividerClasses = () => {
     let classes = ["push-double-ends"];
 
@@ -240,6 +254,7 @@ export default class Menu extends Component {
                 </div>
               </a>
               */}
+              {this.showFeedback()}
               <a href="//newspring.cc/privacy" onClick={inAppLink} target="_blank" className="plain text-dark-secondary">
                 <RenderCell name="Privacy Policy" />
               </a>
