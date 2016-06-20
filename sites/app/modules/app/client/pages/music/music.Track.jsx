@@ -20,7 +20,8 @@ export default class AudioTrack extends Component {
       style: {
         opacity: .9
       },
-      coverMiniPlayer: true
+      coverHeader: true,
+      coverMiniPlayer: true,
     }));
   }
 

@@ -25,6 +25,24 @@ addSaga(function* share(getStore) {
 addSaga(function* share(getStore) {
 
   while (true) {
+    const { color } = yield take("STATUSBAR.SET")
+
+    if (
+      typeof window != "undefined" &&
+      window != null &&
+      window.StatusBar
+    ) {
+
+      if (color) {
+        StatusBar.backgroundColorByHexString(color)
+      }
+    }
+  }
+});
+
+addSaga(function* share(getStore) {
+
+  while (true) {
     const { payload } = yield take("HEADER.TOGGLE_VISIBILITY")
     let { header } = getStore()
     if (
