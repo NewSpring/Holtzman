@@ -16,8 +16,15 @@ class Template extends Component {
 
   render() {
     return (
-      <div className="background--light-primary locked-ends locked-sides scrollable soft-double-bottom">
-        <div style={this.containerStyles()}>
+      <div
+        className="background--light-primary locked-ends locked-sides scrollable soft-double-bottom"
+        data-status-scroll-container={true}
+      >
+        <div
+          style={this.containerStyles()}
+          data-status-scroll-item={true}
+          data-status-scroll-offset={-50}
+        >
           <Discover />
         </div>
       </div>
