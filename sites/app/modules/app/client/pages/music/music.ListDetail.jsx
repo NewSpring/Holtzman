@@ -6,6 +6,7 @@ import { Link } from "react-router"
 import ReactMixin from "react-mixin"
 
 import { Shareable } from "app/client/mixins"
+import { audio as audioActions } from "app/client/actions"
 
 import { Helpers } from "app/client"
 
@@ -14,14 +15,28 @@ import {
   modal,
   nav as navActions,
   liked as likedActions,
-  share as shareActions
+  share as shareActions,
+  header as headerActions,
 } from "apollos/core/store"
 
 import { Music as MusicCollection } from "app/lib/collections"
 
-@connect()
+const mapStateToProps = (state) => {
+  return {
+    audio: {
+      visibility: state.audio.visibility
+    },
+    header: state.header,
+  };
+};
+
+@connect(mapStateToProps)
 //@ReactMixin.decorate(Shareable)
 export default class ListDetail extends Component {
+
+  state = {
+    previousHeaderColor: null,
+  }
 
   sectionStyles = {
     position:"absolute",
@@ -29,11 +44,35 @@ export default class ListDetail extends Component {
   };
 
   closeModal = (e) => {
-    this.props.dispatch(modal.hide())
+    if(this.props.audio.visibility === "expand") {
+      this.props.dispatch(audioActions.setVisibility("dock"));
+      // XXX - When I hide the modal, I need the visibility of dock to have
+      // taken effect. Bwah.
+      setTimeout(() => {
+        this.props.dispatch(modal.hide());
+      }, 250);
+    }
+    else {
+      this.props.dispatch(modal.hide());
+    }
+  }
+
+  componentWillMount() {
+    // must wait for some reason
+    setTimeout(() => {
+      this.props.dispatch(headerActions.statusBarColor("#303030"));
+    }, 250);
+    this.props.dispatch(navActions.setLevel("MODAL"));
+    this.setState({
+      previousHeaderColor: this.props.header.content.color,
+    });
   }
 
   componentWillUnmount() {
     if(Meteor.isCordova) {
+      this.props.dispatch(
+        headerActions.statusBarColor(this.state.previousHeaderColor)
+      );
       this.props.dispatch(navActions.setLevel("CONTENT"));
     }
   }
