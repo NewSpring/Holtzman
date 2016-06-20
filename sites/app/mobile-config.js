@@ -57,7 +57,7 @@ App.accessRule('*');
 
 App.setPreference('EnableBitcode', false);
 App.setPreference('ShowSplashScreenSpinner', false);
-App.setPreference('SplashMaintainAspectRatio', false);
+App.setPreference('SplashMaintainAspectRatio', true);
 
 App.setPreference("StatusBarBackgroundColor", "#202020");
 App.setPreference("StatusBarStyle", "lightcontent");
