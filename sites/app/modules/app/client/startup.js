@@ -77,8 +77,56 @@ if (Meteor.isCordova) {
 
     });
 
+    /* Quick and dirty implementation of scrolling to the top of the page
+     * when tapping the status bar.
+     *
+     * For most content, we are able to
+     * just scroll the main view to the top. To do this, we add
+     * `data-status-scroll` to the main view, and use velocity to scroll it
+     * to the top of the page.
+     *
+     * However, many of our views utilize absolute positioning for one reason
+     * or another. Because of this, those items have scroll state outside of 
+     * the main view. For those, we must determine the item to be scrolled,
+     * and the container in which the item exists and handles the scrolling.
+     * For that case, we add `data-status-scroll-item` to the item, and
+     * `data-status-scroll-container` to its container.
+     *
+     * It is also possible to set an offset using `data-status-scroll-offset`.
+     */
     window.addEventListener("statusTap", (event) => {
-      $('body').velocity("scroll", { duration: 500, easing: "ease-in" })
+      const options = {
+        duration: 350,
+        easing: "ease-in",
+      };
+
+      // this is the main view used by most content
+      const $scroll = $("[data-status-scroll]");
+      // this will be the absolutely positioned containers
+      // there may be multiple
+      const $containers = $("[data-status-scroll-container]");
+      // this will be the items inside absolutely positioned containers
+      // there may be multiple
+      const $items = $("[data-status-scroll-item]");
+
+      if ($items.length > 0 && $containers.length > 0) {
+        // handle items inside positioned containers
+        $items.map((i) => {
+          const item = $items[i];
+
+          const container = $containers[i];
+          options.container = container;
+
+          // use offset to account for headers and other stuff
+          const offset = $(item).data("status-scroll-offset");
+          if (offset) options.offset = offset;
+
+          $(item).velocity("scroll", options);
+        });
+      } else {
+        // most items will be inside the main view
+        $scroll.velocity("scroll", options);
+      }
     });
   });
 }

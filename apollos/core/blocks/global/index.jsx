@@ -34,7 +34,9 @@ const App = ({ children, className }) => (
   >
     <div className={className}>
       <Meta />
-      {children}
+      <div data-status-scroll={true}>
+        {children}
+      </div>
 
 
       <Modal/>
