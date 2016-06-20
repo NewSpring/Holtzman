@@ -14,8 +14,13 @@ export default class DevotionsSingleScripture extends Component {
 
     const devotion = this.props.devotion;
 
+    // `data-status-scroll-container` is set in the react-swipe-views module
     return (
-      <section className="hard-sides hard-top background--light-primary">
+      <section
+        className="hard-sides hard-top background--light-primary"
+        data-status-scroll-item={true}
+        data-status-scroll-offset={-50}
+      >
 
         {Helpers.scriptures.list(devotion, { commas: false }).map((scripture, i) => {
           return (
