@@ -172,14 +172,14 @@ export default class Menu extends Component {
   showFeedback = () => {
     if (Meteor.isCordova){
       return (
-        <a href="#" onClick={this.getFeedback} className="plain text-dark-secondary">
-          <RenderCell name="Get Feedback" />
+        <a href="#" onClick={this.giveFeedback} className="plain text-dark-secondary">
+          <RenderCell name="Give Feedback" />
         </a>
       );
     }
   }
 
-  getFeedback = () => {
+  giveFeedback = () => {
     if (Meteor.isCordova) hockeyapp.feedback();
   }
 
