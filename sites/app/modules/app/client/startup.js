@@ -44,6 +44,11 @@ function dismissSafari() {
 if (Meteor.isCordova) {
 
   document.addEventListener("deviceready", function(){
+
+    if (Meteor.settings.public.hockey) {
+      hockeyapp.start(null, null, Meteor.settings.public.hockey);
+    }
+
     window.Lookback.setupWithAppToken(Meteor.settings.public.lookback);
     window.Lookback.shakeToRecord(true);
     window.open = cordova.InAppBrowser.open;
@@ -179,6 +184,7 @@ if (Meteor.isClient) {
     ga("create", Meteor.settings.public.ga, "auto");
     ga("send", "pageview");
   }
+
 
   if (Meteor.settings.public.hotjar) {
     (function(h,o,t,j,a,r){
