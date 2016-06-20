@@ -15,6 +15,7 @@ import search from "./search"
 import filters from "./filters"
 import responsive from "./responsive"
 import paging from "./paging"
+import header from "./header"
 
 import {
   join,
@@ -52,6 +53,7 @@ export {
   filters,
   responsive,
   paging,
+  header,
 
   wrapper,
   createReduxStore,
