@@ -15,8 +15,12 @@ export default class DevotionsSingleContent extends Component {
 
     const devotion = this.props.devotion;
 
+    // `data-status-scroll-container` is set in the react-swipe-views module
     return (
-        <section className="hard-sides hard-top background--light-primary">
+      <section
+        className="hard-sides hard-top background--light-primary"
+        data-status-scroll-item={true}
+      >
           <div
             className="one-whole ratio--square background--fill"
             style={Helpers.backgrounds.styles(devotion)}>
