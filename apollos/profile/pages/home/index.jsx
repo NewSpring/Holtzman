@@ -79,6 +79,7 @@ export default class Home extends Component {
   componentDidMount(){
     const item = {
       title: "Profile",
+      showSettings: true,
     };
 
     this.props.dispatch(headerActions.set(item));
