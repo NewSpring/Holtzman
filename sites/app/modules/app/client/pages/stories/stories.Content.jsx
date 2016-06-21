@@ -34,7 +34,7 @@ export default class StoriesContent extends Component {
           }
         }()}
         <div className="soft push-top">
-          <h1 className="capitalize">{story.title}</h1>
+          <h2 className="capitalize">{story.title}</h2>
           <h4 className="text-dark-tertiary">{story.subtitle}</h4>
           <div dangerouslySetInnerHTML={Helpers.react.markup(story)}></div>
         </div>

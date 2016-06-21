@@ -95,7 +95,7 @@ export default class SeriesSingleVideo extends Component {
         <div className="background--light-primary">
           <SingleVideoPlayer sermon={currentSermon} series={series} />
           <div className="soft push-top">
-            <h1>{currentSermon.title}</h1>
+            <h2 className="push-half-bottom">{currentSermon.title}</h2>
             <h4>{Helpers.content.speakers(currentSermon)}</h4>
             <h6 className="text-dark-tertiary">{Helpers.time.date(currentSermon)}</h6>
             <div dangerouslySetInnerHTML={Helpers.react.markup(currentSermon, "description")}></div>
