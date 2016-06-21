@@ -73,10 +73,6 @@ export default class SeriesSingle extends Component {
 
   renderContent = (devotion) => {
 
-    if(this.props.modal.visible) {
-      return (<div></div>);
-    }
-
     if (devotion.content.scripture === "") {
       return (
         <div title="Devotional">
