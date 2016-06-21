@@ -6,11 +6,6 @@ import Meta from "react-helmet"
 import Split, { Left, Right } from "../../../core/blocks/split"
 import { Toggle } from "../../../core/components/controls"
 
-const SettingsLink = () => (
-  <Link to="/profile/settings" className="text-light-primary plain soft overlay__item locked-top locked-right">
-    <i className="icon-settings h4"></i>
-  </Link>
-)
 
 const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
   <div>
@@ -27,7 +22,6 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
         ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
         background={photo}
         blur={true}
-        outsideRatio={SettingsLink}
       >
         <div className="soft one-whole">
           <label htmlFor="file"
