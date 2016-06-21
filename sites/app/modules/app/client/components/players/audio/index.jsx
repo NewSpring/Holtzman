@@ -30,17 +30,30 @@ export default class AudioPlayer extends Component {
 
     const modalClosing = modalVis && !modalNextVis;
 
-    if( expanding ) {
+    const { current } = this.props.modal;
+
+    const triggerModal = () => {
       this.props.dispatch(modal.render(FullPlayer, { coverHeader: true, audioPlayer: true }));
       this.props.dispatch(navActions.setLevel("DOWN"));
       const { isLight } = this.props.audio.playing.album.content;
       // reverse is light so it makes sense for foreground
       const fgColor = isLight === "light" ? "dark" : "light";
       this.props.dispatch(navActions.setColor("transparent", fgColor));
+    };
+
+    if( expanding ) {
+      triggerModal();
     }
 
     if( expanded && modalClosing ) {
-      this.props.dispatch(audioActions.setVisibility("dock"));
+      if (this.props.modal.retrigger === "FullPlayer") {
+        setTimeout(() => {
+          triggerModal();
+        }, 250);
+        this.props.dispatch(modal.setRetrigger(null));
+      } else {
+        this.props.dispatch(audioActions.setVisibility("dock"));
+      }
     }
 
   };
