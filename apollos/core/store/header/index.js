@@ -10,8 +10,16 @@ addReducer({
 })
 
 export default {
-  show: (options = {}) => ({ type: "HEADER.TOGGLE_VISIBILITY", visible: true, statusBar: options.statusBar }),
-  hide: (options = {}) => ({ type: "HEADER.TOGGLE_VISIBILITY", visible: false, statusBar: options.statusBar }),
+  show: (options = {}) => ({
+    type: "HEADER.TOGGLE_VISIBILITY",
+    visible: typeof options.visible === "undefined" ? true : options.visible,
+    statusBar: options.statusBar,
+  }),
+  hide: (options = {}) => ({
+    type: "HEADER.TOGGLE_VISIBILITY",
+    visible: typeof options.visible === "undefined" ? false : options.visible,
+    statusBar: options.statusBar,
+  }),
 
   set: (content, requestee) => ({ type: "HEADER.SET", content, requestee }),
   color: (color) => ({ type: "HEADER.SET", content: { color } }),
