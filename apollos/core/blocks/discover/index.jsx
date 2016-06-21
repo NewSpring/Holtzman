@@ -18,7 +18,9 @@ export default class SearchContainer extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"))
-    this.props.dispatch(modal.update({keepNav: true}))
+    if (!Meteor.isCordova) {
+      this.props.dispatch(modal.update({keepNav: true}))
+    }
 
     this.lockHeader("DiscoverModal");
     this.headerAction({

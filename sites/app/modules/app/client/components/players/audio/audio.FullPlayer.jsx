@@ -14,7 +14,8 @@ import Styles from "./audio.styles.fullPlayer";
 
 const mapStateToProps = (state) => {
   return {
-    ...state.audio
+    ...state.audio,
+    header: state.header,
   };
 };
 
@@ -22,15 +23,19 @@ const mapStateToProps = (state) => {
 export default class FullPlayer extends Component {
 
   state = {
-    isShort: false
+    isShort: false,
+    hadHeader: true,
   }
 
   componentWillMount() {
     this.props.dispatch(headerActions.hide({statusBar: false}));
+    this.setState({
+      hadHeader: this.props.header.visible,
+    });
   }
 
   componentWillUnmount() {
-    this.props.dispatch(headerActions.show({statusBar: true}));
+    this.props.dispatch(headerActions.show({visible: this.state.hadHeader, statusBar: true}));
   }
 
   componentDidMount() {
