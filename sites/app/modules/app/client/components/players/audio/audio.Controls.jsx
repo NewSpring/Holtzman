@@ -215,6 +215,7 @@ export default class AudioControls extends Component {
         opacity: .9
       }
     }));
+    this.props.dispatch(modal.setRetrigger("FullPlayer"));
     this.props.dispatch(navActions.setColor("#202020", "light"));
   };
 

@@ -33,6 +33,8 @@ export default {
 
   update: (props) => ({ type: "MODAL.SET_PROPS", props }),
 
-  changeTo: (state) => ({ type: "MODAL.SET_TYPE", state })
+  changeTo: (state) => ({ type: "MODAL.SET_TYPE", state }),
+
+  setRetrigger: (retrigger) => ({ type: "MODAL.SET_RETRIGGER", retrigger }),
 
 }
