@@ -26,7 +26,7 @@ export default class DevotionsSingleContent extends Component {
             style={Helpers.backgrounds.styles(devotion)}>
           </div>
           <div className="soft push-top">
-            <h1 className="capitalize">{devotion.title}</h1>
+            <h2 className="capitalize">{devotion.title}</h2>
             {() => {
               if (devotion.content.scripture !== "") {
                 return (
