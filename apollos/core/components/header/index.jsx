@@ -1,5 +1,6 @@
 
 import { Component, PropTypes } from "react"
+import { Link } from "react-router"
 import { connect } from "react-redux"
 
 @connect((state) => ({
@@ -9,9 +10,20 @@ import { connect } from "react-redux"
   subText: state.header.content.subTitle,
   visible: state.header.visible,
   isSearch: state.header.content.isSearch,
+  showSettings: state.header.content.showSettings,
   searchSubmit: state.header.content.searchSubmit
 }))
 export default class Header extends Component {
+
+  showSettings = () => {
+    if (this.props.showSettings) {
+      return (
+      <Link to="/profile/settings" className="text-light-primary plain soft-half-top soft-half-right overlay__item locked-top locked-right" style={{marginTop: "-3px"}}>
+        <i className="icon-settings h4"></i>
+      </Link>
+      )
+    }
+  }
 
   render () {
     const lightColor = "text-light-primary";
@@ -77,6 +89,7 @@ export default class Header extends Component {
                 whiteSpace: "nowrap",
               }}>
                 {this.props.text}
+                {this.showSettings()}
               </h6>
             )
           })()}
