@@ -12,7 +12,7 @@ const map = (state) => ({ state: state.topics })
 export default class FollowingContainer extends Component {
   topics = [
     "Articles",
-    "Devotions",
+    "Devotionals",
     "Stories",
     "Series",
     "Sermons",
