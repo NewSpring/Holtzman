@@ -8,6 +8,7 @@ const initial = {
   visible: false,
   state: "default", // "full"
   content: null, // component to render within nav
+  retrigger: null,
   props: {
     classes: [], // classes to be added to modal
     theme: false, // string of classes to overwrite theme
@@ -39,6 +40,10 @@ export default function modal(state = initial, action) {
     case "MODAL.SET_TYPE":
       return { ...state, ...{
         state: action.state || state.state
+      } }
+    case "MODAL.SET_RETRIGGER":
+      return { ...state, ...{
+        retrigger: action.retrigger
       } }
     default:
       return state
