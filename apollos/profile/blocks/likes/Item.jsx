@@ -83,7 +83,8 @@ export default class LikesItem extends Component {
                 imageclasses={this.iamgeclasses}
                 ></ImageLoader>
               <div className="card__item soft text-dark-tertiary">
-                <h4 className="text-dark">{like.title}</h4>
+                <h4 className="text-dark-primary capitalize">{like.title}</h4>
+                  <i className={this.iconClasses}></i>
                   <h7>{like.category}</h7>
                 <h7 className="text-right float-right">{this.getDate(like)}</h7>
               </div>

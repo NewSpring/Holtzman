@@ -74,7 +74,16 @@ export default class NavLink extends Component {
   }
 
   render () {
-    const iconClasses = `${this.props.navItem.icon} display-block`;
+    let icon = this.props.navItem.icon;
+    if (
+      this.props.navItem.isActive &&
+      this.props.navItem.isActive(this.props) &&
+      this.props.navItem.activeIcon
+    ) {
+      icon = this.props.navItem.activeIcon; 
+    }
+
+    const iconClasses = `${icon} display-block`;
     let { navItem } = this.props
 
     let itemStyle = {}

@@ -46,7 +46,7 @@ export default class LikesContainer extends Component {
           if (!likes.length) {
             return (
               <div>
-                <p className="soft-ends text-center">
+                <p className="soft text-center">
                   <em>
                     <small>
                       Check out some of the latest things from NewSpring
