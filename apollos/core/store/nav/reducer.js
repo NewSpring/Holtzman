@@ -105,7 +105,7 @@ let links = {
   CONTENT: [
     { id: 1, action: back, icon:"icon-arrow-back" },
     // { id: 2, action: showSections, icon:"icon-sections" },
-    { id: 2, action: false, icon:"icon-like", isActive: (props) => props.liked },
+    { id: 2, action: false, icon:"icon-like", activeIcon: "icon-like-solid", isActive: (props) => props.liked },
     { id: 3, action: shareActions.share, icon:"icon-share" }
   ],
   BASIC_CONTENT: [

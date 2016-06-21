@@ -122,3 +122,6 @@
 .icon-repeat-all:before {
   content: "\47";
 }
+.icon-like-solid:before {
+  content: "\42";
+}
