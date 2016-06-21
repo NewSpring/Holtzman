@@ -26,7 +26,7 @@ export default class ArticlesContent extends Component {
 
     return (
       <section className="hard-sides hard-top">
-        <h1 className="capitalize">{article.title}</h1>
+        <h2 className="capitalize">{article.title}</h2>
         {this.getAuthor()}
         <div dangerouslySetInnerHTML={Helpers.react.markup(article)}></div>
       </section>
