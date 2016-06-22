@@ -18,6 +18,28 @@ const mapStateToProps = (state) => {
 @connect(mapStateToProps)
 export default class AudioPlayer extends Component {
 
+  componentWillMount() {
+    // Listen for audio commands from the lock screen or command center
+    if (typeof RemoteCommand !== "undefined") {
+      RemoteCommand.on("command", (command) => {
+        switch(command) {
+          case "play":
+            this.props.dispatch(audioActions.play());
+            break;
+          case "pause":
+            this.props.dispatch(audioActions.pause());
+            break;
+          case "nextTrack":
+            this.props.dispatch(audioActions.next());
+            break;
+          case "previousTrack":
+            this.props.dispatch(audioActions.previous());
+            break;
+        }
+      });
+    }
+  }
+
   componentWillUpdate(nextProps) {
     const nextVis = nextProps.audio.visibility;
     const { visibility } = this.props.audio;
