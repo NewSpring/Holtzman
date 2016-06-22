@@ -21,6 +21,8 @@
 
 */
 
+import saga from "./saga";
+
 const types = {
   SET_VISIBILITY: "AUDIO.SET_VISIBILITY",
   SET_ORDER: "AUDIO.SET_ORDER",
