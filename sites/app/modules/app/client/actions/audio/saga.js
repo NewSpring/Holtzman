@@ -4,6 +4,15 @@ import { addSaga } from "apollos/core/store/utilities"
 
 addSaga(function* setMetaData(getStore) {
 
+  /* This updates the iOS MPNowPlayingInfoCenter, which basically
+   * means it provides title, artwork, and playback information to
+   * the lock screen and the command center.
+   *
+   * We only need to update the information when the playback state
+   * has changed, because MPNowPlayingInfoCenter will automatically
+   * calculate how much time has passed based on `playbackRate`.
+   * When paused, `playbackRate` is 0, and when playing it is 1.
+   */
   while(true) {
     const payload = yield take("AUDIO.SET_STATE");
 
