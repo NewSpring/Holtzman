@@ -4,38 +4,48 @@
   "description": "A reactive framework for incredible applications",
   "main": "core/index.js",
   "scripts": {
-    "lint": "eslint core give profile groups test",
-    "fix": "eslint --fix core give profile groups test",
-    "check": "npm run lint && npm run test",
-    "test": "mocha --compilers js:babel-core/register --recursive",
-    "test:watch": "npm test -- --watch",
-    "docs:clean": "rimraf _book",
-    "docs:prepare": "gitbook install",
-    "docs:build": "npm run docs:prepare && gitbook build -g NewSpring/Apollos",
-    "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:NewSpring/Apollos gh-pages --force"
+    "compile": "babel ./src -d ./dist",
+    "start": "babel --watch ./src -d ./dist"
   },
-  "xo": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/NewSpring/newspring-core.git"
   },
-  "author": "",
+  "author": "jbaxleyiii",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NewSpring/newspring-core/issues"
   },
+  "babel": {
+    "presets": [
+      "meteor",
+      "es2015-loose",
+      "stage-0",
+      "react"
+    ],
+    "plugins": [
+      "transform-decorators-legacy",
+      "css-modules-transform",
+      "add-module-exports",
+      "react-require"
+    ]
+  },
   "homepage": "https://github.com/NewSpring/newspring-core",
   "devDependencies": {
-    "babel": "5.8.21",
-    "babel-core": "^5.8.34",
-    "babel-eslint": "^4.1.6",
-    "eslint": "^1.7.1",
-    "eslint-config-rackt": "1.0.0",
-    "eslint-plugin-react": "^3.6.3",
-    "expect": "^1.13.4",
-    "gitbook-cli": "^0.3.4",
-    "mocha": "^2.3.4",
-    "redux-logger": "^2.6.1"
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.1.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-css-modules-transform": "^0.1.1",
+    "babel-plugin-react-require": "^2.1.0",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-decorators": "^6.8.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-decorators-legacy": "^1.0.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-meteor": "^6.11.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0"
   }
 }
