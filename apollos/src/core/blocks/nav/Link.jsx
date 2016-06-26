@@ -45,8 +45,8 @@ export default class NavLink extends Component {
 
     let classes = [
       "floating",
-      "locked-ends",
-      "locked-sides",
+      "locked-ends@handheld",
+      "locked-sides@handheld",
     ];
 
     if (navItem.label && process.env.WEB) {
@@ -86,7 +86,7 @@ export default class NavLink extends Component {
       icon = this.props.navItem.activeIcon;
     }
 
-    const iconClasses = `${icon} display-block`;
+    const iconClasses = `${icon} display-block ${css(styles.i)}`;
     let { navItem } = this.props
 
     let itemStyle = {}

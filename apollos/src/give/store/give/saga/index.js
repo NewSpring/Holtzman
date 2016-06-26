@@ -10,7 +10,6 @@ import modalActions from "../../../../core/store/modal"
 
 import types from "./../types"
 import actions from "../actions"
-import transactionActions from "../../transactions"
 
 import { CreditCardForm, AchForm } from "./paymentForm"
 import formatPersonDetails from "./formatPersonDetails"
