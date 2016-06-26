@@ -17,7 +17,7 @@ export default class Layout extends Component {
   }
 
   formatDate = (date) => {
-    return Moment(date).format("MMM D, YYYY")
+    return Moment(new Date(date)).format("MMM D, YYYY")
   }
 
   monentize = (value, fixed) => {
@@ -48,7 +48,14 @@ export default class Layout extends Component {
 
   render () {
 
-    const { schedule, stop, state, person, active, complete } = this.props
+    const {
+      schedule,
+      stop,
+      state,
+      active,
+      complete,
+      ready,
+    } = this.props
 
     return (
 
@@ -65,15 +72,21 @@ export default class Layout extends Component {
           <Left scroll={true} classes={["background--light-secondary"]} ref="container">
 
             <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
-              <Link to="/give/schedules" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
-                <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
-                <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
-              </Link>
+              {(() => {
+                if (process.env.WEB) {
+                  return (
+                    <Link to="/give/schedules" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
+                      <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
+                      <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
+                    </Link>
+                  )
+                }
+              })()}
               <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
                 <div className="soft-double-ends@anchored">
                   {(() => {
 
-                    if (!schedule) {
+                    if (!schedule || !ready) {
                       // loading
                       return (
                         <div className="text-center soft">
@@ -125,8 +138,6 @@ export default class Layout extends Component {
                             )
                           }
 
-
-
                           if (active) {
                             return (
                               <h6 className="text-alert" onClick={stop} style={{cursor: "pointer"}}>
@@ -135,7 +146,6 @@ export default class Layout extends Component {
                             )
                           }
 
-
                           return (
                             <h6 className="text-brand">
                               Contribution Stopped
@@ -143,7 +153,6 @@ export default class Layout extends Component {
                           )
 
                         })()}
-
 
                         <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
                           Thank you so much for your contributions! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
@@ -166,9 +175,7 @@ export default class Layout extends Component {
                 <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
                   <SideBySide
                     link="https://newspring.cc/stories/jen-feagles"
-                    image={{
-                      url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/JenFeagles.hero_1700_723_90_c1.jpg"
-                    }}
+                    defaultImage="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/JenFeagles.hero_1700_723_90_c1.jpg"
                   >
                     <h4 className="push-half-top@portable push-top@anchored">
                       Jennifer Feagles Story
@@ -188,9 +195,7 @@ export default class Layout extends Component {
                 <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
                   <SideBySide
                     link="https://newspring.cc/stories/brooke-brissey"
-                    image={{
-                      url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/BrookeBrissey_Hero_1700_723_90_c1.jpg"
-                    }}
+                    defaultImage="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/BrookeBrissey_Hero_1700_723_90_c1.jpg"
                   >
                     <h4 className="push-half-top@portable push-top@anchored">
                       Brooke Brissey's Story

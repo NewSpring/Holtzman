@@ -1,36 +1,31 @@
 import "regenerator-runtime/runtime"
 
 import { take, put } from "redux-saga/effects"
-
-
-import { GraphQL } from "../../graphql"
+import gql from "apollo-client/gql";
 import { addSaga } from "../utilities"
+import { GraphQL } from "../../graphql";
 
-// @TODO abstract action creators to file that isn't index
+// XXX abstract action creators to file that isn't index
 const set = (content) => ({ type: "SECTIONS.SET_CONTENT", content })
 
 addSaga(function* sectionsSaga(getState) {
 
-  // Query to preload all of the menu items and a
-  // query to preload the most recent images of the nav type
-  const images = GraphQL.createFragment(`
-    fragment on Content {
-      images {
-        s3
-        cloudfront
-        fileLabel
+  const site = process.env.NATIVE ? "newspring-app" : "newspring-main";
+
+  // XXX move to sections.graphql and import
+  const query = gql`
+    fragment NavigationImages on Content {
+      content {
+        images {
+          s3
+          cloudfront
+          label
+        }
       }
     }
-  `)
 
-  let site = "newspring-main"
-  if (Meteor.isCordova) {
-    site = "newspring-app"
-  }
-
-  let query = `
-    {
-      navigation(nav: "${site}") {
+    query GetNavigation($site: String!) {
+      navigation(nav: $site) {
         id
         link
         text
@@ -44,44 +39,31 @@ addSaga(function* sectionsSaga(getState) {
           sort
         }
       }
-
-      sermons: allContent(limit: 1, channel: "series_newspring") {
-        content {
-          ...${images}
-        }
+      sermons: content(limit: 1, channel: "series_newspring") {
+        ...NavigationImages
       }
-      articles: allContent(limit: 1, channel: "articles") {
-        content {
-          ...${images}
-        }
+      articles: content(limit: 1, channel: "articles") {
+        ...NavigationImages
       }
-      devotionals: allContent(limit: 1, channel: "devotionals") {
-        content {
-          ...${images}
-        }
+      devotionals: content(limit: 1, channel: "devotionals") {
+        ...NavigationImages
       }
-      stories: allContent(limit: 1, channel: "stories") {
-        content {
-          ...${images}
-        }
+      stories: content(limit: 1, channel: "stories") {
+        ...NavigationImages
       }
-      studies: allContent(limit: 1, channel: "studies") {
-        content {
-          ...${images}
-        }
+      studies: content(limit: 1, channel: "studies") {
+        ...NavigationImages
       }
-      news: allContent(limit: 1, channel: "news") {
-        content {
-          ...${images}
-        }
+      news: content(limit: 1, channel: "news") {
+        ...NavigationImages
       }
-      music: allContent(limit: 1, channel: "albums") {
-        content {
-          ...${images}
-        }
+      music: content(limit: 1, channel: "newspring_albums") {
+        ...NavigationImages
       }
     }
-  `
+  `;
+
+  const variables = { site };
 
   function extractImage(content) {
     let { images } = content.content
@@ -89,7 +71,7 @@ addSaga(function* sectionsSaga(getState) {
     if (!images.length) {
       return null
     }
-    
+
     // prefer 1x1 image
     let oneByOne = _.find(images, (image) => {
       return image.fileLabel === "1:1"
@@ -117,20 +99,17 @@ addSaga(function* sectionsSaga(getState) {
   }
 
   // go ahead and make the query on load (this will be cached on heighliner)
-  let recentItems = yield GraphQL.query(query)
-  let navigation = recentItems.navigation
-  delete recentItems.navigation
+  let { data } = yield GraphQL.query({ query, variables });
+  let navigation = data.navigation
+  delete data.navigation
   let filteredItems = {}
 
   // parse the results and only get a single usable image
-  for (let item in recentItems) {
-    let image = extractImage(recentItems[item][0])
+  for (let item in data) {
+    let image = extractImage(data[item][0])
     filteredItems[item] = image
   }
 
-  // wait on the sections panel to be expanded
-  // let sections = yield take("SECTIONS.SET_CONTENT")
-  // sections = sections.content
   function bindForeignImages(sections) {
     // remap the images of the section panel
     for (let section in sections) {
@@ -144,13 +123,13 @@ addSaga(function* sectionsSaga(getState) {
       sections[section].image = sections[section].image.replace(/^http:|^https:/i, "");
 
       // pre download images for super speed
-      // if (sections[section].image) {
-      //
-      //   if (typeof window != "undefined" && window != null) {
-      //     let img = document.createElement("img")
-      //     img.src = sections[section].image
-      //   }
-      // }
+      if (process.env.NATIVE && sections[section].image) {
+
+        if (typeof window != "undefined" && window != null) {
+          let img = document.createElement("img")
+          img.src = sections[section].image
+        }
+      }
 
       bindForeignImages(sections[section].children)
     }
@@ -180,9 +159,7 @@ addSaga(function* sectionsSaga(getState) {
   }
 
   bindForeignImages(navigation)
-  if (!Meteor.isCordova) {
-    fixInternaLinks(navigation)
-  }
+  if (process.env.WEB) fixInternaLinks(navigation);
 
   // update the content and end the saga (not a daemon)
   yield put(set(navigation))

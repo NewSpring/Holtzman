@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
-import { connect } from "react-redux"
+import { connect } from "react-apollo"
+import gql from "apollo-client/gql";
 
-import { GraphQL } from "../../../core/graphql"
 import OnBoard from "../../../core/blocks/accounts"
 
 
@@ -10,9 +10,7 @@ import {
   modal,
   accounts as accountsActions,
   nav as navActions,
-  collections as collectionActions
 } from "../../../core/store"
-
 
 
 import { AccountType } from "../../components"
@@ -22,28 +20,35 @@ import { give as giveActions } from "../../store"
 import Give from "../Give"
 import ChangePayments from "../ChangePayments"
 
-import { PrimaryButton, SecondaryButton, Guest as TertiaryButton } from "./Buttons"
+import {
+  PrimaryButton,
+  SecondaryButton,
+  Guest as TertiaryButton,
+} from "./Buttons"
 
 
-function getPaymentDetails(id) {
-
-  let query = `
-    {
-      paymentDetails: allSavedPaymentAccounts(cache: false) {
-        name
-        id
-        date
-        payment {
-          accountNumber
-          paymentType
+mapQueriesToProps = ({ ownProps }) => ({
+  savedPayments: {
+      query: gql`
+        query GetSavedPaymentAccounts {
+          savedPayments {
+            name
+            id
+            date
+            payment {
+              accountNumber
+              paymentType
+            }
+          }
         }
+      `,
+      variables: {
+        // even though this is unused, we include it to trigger a recal when a person
+        // logs in or logs out
+        authorized: ownProps.authorized,
       }
     }
-  `
-  return GraphQL.query(query)
-    .then(({ paymentDetails }) => (paymentDetails))
-}
-
+});
 /*
 
   The give now button is presented in the following order:
@@ -53,72 +58,40 @@ function getPaymentDetails(id) {
   3. Give as guest (in small text) if not signed in
 
 */
-const map = (store) => ({
+const mapStateToProps = (store) => ({
   authorized: store.accounts.authorized,
-  savedAccounts: store.collections.savedAccounts,
   savedAccount: store.give.savedAccount,
 })
-@connect(map)
+@connect({ mapStateToProps, mapQueriesToProps })
 export default class GiveNow extends Component {
 
   state = {
     paymentDetails: false,
   }
 
-  componentDidMount(){
-    this.getData();
-  }
-
-  getData = () => {
-    const id = Meteor.userId()
-    const { dispatch, savedAccounts } = this.props
-
-    if (id && (!savedAccounts || !Object.keys(savedAccounts).length)) {
-      getPaymentDetails(id, dispatch)
-        .then(paymentDetails => {
-
-          dispatch(collectionActions.upsertBatch(
-            "savedAccounts", paymentDetails, "id"
-          ))
-
-        })
-    }
-  }
-
-  componentWillReceiveProps(nextProps){
-    if (!this.props.authorized && nextProps.authorized) {
-      this.getData();
-    }
-  }
-
   getAccount = () => {
+    const { savedAccount } = this.props;
+    if (savedAccount && savedAccount.id) return savedAccount;
 
-    if (this.props.savedAccount && this.props.savedAccount.id) {
-      return this.props.savedAccount
-    }
+    if (!this.props.savedPayments) return {};
 
-    let account = {}
-    if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length) {
-      let accounts = []
-      for (let acc in this.props.savedAccounts) {
-        accounts.push(this.props.savedAccounts[acc])
-      }
-      account = _.sortBy(accounts, "date")[accounts.length - 1]
-    }
+    const { savedPayments } = this.props.savedPayments;
+    if (!savedPayments || !savedPayments.length) return {};
 
-    return account
+    return _.sortBy(savedPayments, "date")[savedPayments.length - 1];
   }
 
   buttonClasses = () => {
     let classes = ["btn"]
 
-    if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length) {
+    if (this.props.savedPayments.savedPayments) {
       classes.push("has-card")
     }
 
     if (this.props.disabled && this.props.authorized && Meteor.userId()) {
       classes.push("btn--disabled")
     }
+
     if (this.props.classes) {
       classes = classes.concat(this.props.classes)
     }
@@ -147,7 +120,7 @@ export default class GiveNow extends Component {
 
     this.props.dispatch(giveActions.setTransactionType("default"))
 
-    if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length) {
+    if (this.props.savedPayments.savedPayments) {
       // const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       const details = this.getAccount()
       this.props.dispatch(giveActions.setAccount(details))
@@ -171,33 +144,9 @@ export default class GiveNow extends Component {
 
   }
 
-  getPaymentDetailsAfterLogin = () => {
-    const { dispatch } = this.props
-    const id = Meteor.userId();
-    return getPaymentDetails(id)
-      .then(paymentDetails => {
-        if (!paymentDetails.length) {
-          return
-        }
-
-        dispatch(collectionActions.upsertBatch(
-          "savedAccounts", paymentDetails, "id"
-        ));
-
-        return paymentDetails
-      })
-      .then((paymentDetails) => {
-        if (paymentDetails) {
-          const details = _.sortBy(paymentDetails, "date")[paymentDetails.length - 1]
-          this.props.dispatch(giveActions.setAccount(details))
-        }
-      });
-  }
-
   giveAsGuest = () => {
-    if (this.props.disabled) {
-      return
-    }
+    if (this.props.disabled) return;
+
     this.props.dispatch(giveActions.setTransactionType("guest"))
     this.props.dispatch(modal.render(Give))
     // this.props.dispatch(navActions.setLevel("MODAL"))
@@ -216,14 +165,9 @@ export default class GiveNow extends Component {
   changePayments = (e) => {
     e.preventDefault();
 
-    let accounts = [];
-    for (let account in this.props.savedAccounts) {
-      accounts.push(this.props.savedAccounts[account]);
-    }
-
     this.props.dispatch(modal.render(ChangePayments, {
       // onFinished: () => {},
-      savedAccounts: accounts,
+      savedAccounts: this.props.savedPayments.savedPayments,
       currentAccount: this.getAccount(),
     }));
   }
@@ -234,15 +178,13 @@ export default class GiveNow extends Component {
     if (this.props.text) {
       text = this.props.text
     }
+    const { savedPayments } = this.props.savedPayments;
+    if (savedPayments && savedPayments.length && !this.props.hideCard) {
 
-    if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length && !this.props.hideCard) {
-
-      // const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       const details = this.getAccount()
       let { accountNumber } = details.payment
       accountNumber = accountNumber.slice(-4).trim()
-      text = "Review"
-      text += ` Using ${accountNumber}`
+      text = `Review Using ${accountNumber}`
 
     }
 
@@ -256,7 +198,7 @@ export default class GiveNow extends Component {
 
   icon = () => {
 
-    if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length && this.props.authorized && !this.props.hideCard) {
+    if (this.props.savedPayments.savedPayments && this.props.authorized && !this.props.hideCard) {
       // const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       const detail = this.getAccount()
       if (detail.paymentType && detail.payment.paymentType === "ACH") {
@@ -310,7 +252,8 @@ export default class GiveNow extends Component {
           })()}
 
           {(() => {
-            if (this.props.savedAccounts && Object.keys(this.props.savedAccounts).length && !this.props.hideCard && Meteor.userId()) {
+            const { savedPayments } = this.props.savedPayments;
+            if (savedPayments && savedPayments.length && !this.props.hideCard && Meteor.userId()) {
               return (
                 <TertiaryButton
                   onClick={this.changePayments}

@@ -17,18 +17,13 @@ export default class Layout extends Component {
   }
 
   formatDate = (date) => {
-    return Moment(date).format("MMM D, YYYY")
+    return Moment(new Date(date)).format("MMM D, YYYY")
   }
 
   monentize = (value, fixed) => {
 
-    if (typeof value === "number") {
-      value = `${value}`
-    }
-
-    if (!value.length) {
-      return `$0.00`
-    }
+    if (typeof value === "number") value = `${value}`;
+    if (!value.length) return `$0.00`
 
     value = value.replace(/[^\d.-]/g, "")
 
@@ -58,15 +53,20 @@ export default class Layout extends Component {
         <Left scroll={true} ref="container" classes={["background--light-secondary"]}>
 
           <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
-            <Link to="/give/history" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
-              <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
-              <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
-            </Link>
+            {(() => {
+              if (process.env.WEB) {
+                return (
+                  <Link to="/give/history" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
+                    <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}}></i>
+                    <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
+                  </Link>
+                )
+              }
+            })()}
             <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
               <div className="soft-double-ends@anchored">
                 {(() => {
-                  const { person, transaction, account } = this.props
-
+                  const { transaction } = this.props
                   if (!transaction) {
                     // loading
                     return (
@@ -75,7 +75,8 @@ export default class Layout extends Component {
                       </div>
                     )
                   }
-
+                  const { account } = transaction.details[0];
+                  const { person } = transaction;
                   return (
                     <div className="text-center">
                       <p className="push-half-bottom"><em>{this.formatDate(transaction.date)}</em></p>
@@ -126,9 +127,7 @@ export default class Layout extends Component {
               <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
                 <SideBySide
                   link="https://newspring.cc/stories/jen-feagles"
-                  image={{
-                    url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/JenFeagles.hero_1700_723_90_c1.jpg"
-                  }}
+                  defaultImage="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/JenFeagles.hero_1700_723_90_c1.jpg"
                 >
                   <h4 className="push-half-top@portable push-top@anchored">
                     Jennifer Feagles Story
@@ -148,9 +147,7 @@ export default class Layout extends Component {
               <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
                 <SideBySide
                   link="https://newspring.cc/stories/brooke-brissey"
-                  image={{
-                    url: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/BrookeBrissey_Hero_1700_723_90_c1.jpg"
-                  }}
+                  defaultImage="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/BrookeBrissey_Hero_1700_723_90_c1.jpg"
                 >
                   <h4 className="push-half-top@portable push-top@anchored">
                     Brooke Brissey's Story

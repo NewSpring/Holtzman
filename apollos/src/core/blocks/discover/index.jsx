@@ -1,18 +1,21 @@
 import { Component, PropTypes } from "react"
-import { connect } from "react-redux"
+import { connect } from "react-apollo"
 import ReactMixin from "react-mixin"
+import gql from "apollo-client/gql";
 
-import { Headerable } from "../../../core/mixins/"
+import { Headerable } from "../../../core/mixins/";
 
-import { GraphQL } from "../../../core/graphql"
-import modal from "../../store/modal"
+import modal from "../../store/modal";
 
-import { search as searchActions, nav as navActions } from "../../store"
+import {
+  search as searchActions,
+  nav as navActions,
+} from "../../store";
 
-import Layout from "./Layout"
+import Layout from "./Layout";
 
-const map = (state) => ({ search: state.search })
-@connect(map)
+const mapStateToProps = (state) => ({ search: state.search })
+@connect({ mapStateToProps })
 @ReactMixin.decorate(Headerable)
 export default class SearchContainer extends Component {
 
@@ -46,12 +49,11 @@ export default class SearchContainer extends Component {
   }
 
   getSearch() {
-    const { dispatch } = this.props
+    const { dispatch, client } = this.props
     let { page, pageSize, term } = this.props.search
-
-    let query = `
-      {
-        search(query: "${term}", first: ${pageSize}, after: ${page * pageSize}, site: "https://newspring.cc") {
+    const query = gql`
+      query Search($term: String!, $first: Int, $after: Int, $site: String) {
+        search(query: $term, first: $first, after: $after, site: $site) {
           total
           items {
             id
@@ -67,9 +69,16 @@ export default class SearchContainer extends Component {
           }
         }
       }
-    `
+    `;
 
-    GraphQL.query(query)
+    const variables = {
+      term,
+      first: pageSize,
+      after: page * pageSize,
+      site: "https://newspring.cc",
+    };
+
+    client.query({ query, variables, forceFetch: true })
       .then(({ search }) => {
         dispatch(searchActions.toggleLoading());
         dispatch(searchActions.incrementPage());

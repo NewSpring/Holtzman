@@ -4,10 +4,7 @@ import { Motion, spring, presets } from "react-motion";
 
 import { modal as modalActions, nav as navActions } from "../../store"
 
-import Modal from "./Modal.jsx"
-import offset from "../../blocks/nav/offset.css"
-import styles from "./modal.css"
-
+import Modal from "./Modal"
 
 const map = (state) => ({
   navigation: state.nav,

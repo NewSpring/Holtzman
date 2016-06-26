@@ -1,27 +1,27 @@
 import { PropTypes } from "react"
-// import { VelocityComponent } from "velocity-react"
+import find from "lodash.find";
 import { Link } from "react-router"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import Meta from "../../../core/components/meta"
 import AddToCart from "../../blocks/AddToCart"
 
-const Layout = ({ account }, context) => (
-
+const Layout = ({ account }) => (
   <div>
     <Split nav={true} classes={["background--light-primary"]}>
       <Meta
         title={account.name}
         description={account.summary}
-        image={account.formatedImage["2:1"] ? account.formatedImage["2:1"] : account.image}
+        image={
+          account.images ? find(account.images, { fileLabel: "2:1" }).cloudfront : account.image
+        }
         meta={[
           {"property": "og:type", "content": "article"}
         ]}
       />
 
-      <Right background={account.formatedImage["2:1"] ? account.formatedImage["2:1"] : account.image } mobile={true} />
-      <Right background={account.formatedImage["1:2"] ? account.formatedImage["1:2"] : account.image } mobile={false} />
-
+      <Right background={account.images ? find(account.images, { fileLabel: "2:1" }).cloudfront : account.image } mobile={true} />
+      <Right background={account.images ? find(account.images, { fileLabel: "1:2" }).cloudfront : account.image } mobile={false} />
 
     </Split>
     <Left scroll={true} classes={["background--light-primary"]}>
@@ -33,9 +33,7 @@ const Layout = ({ account }, context) => (
         <div className="soft soft-double-bottom soft-double-top@lap-and-up">
 
           <h2>{account.name}</h2>
-          <div dangerouslySetInnerHTML={{__html: account.description}}>
-
-          </div>
+          <div dangerouslySetInnerHTML={{__html: account.description}}></div>
         </div>
       </div>
 
@@ -50,8 +48,5 @@ const Layout = ({ account }, context) => (
     </Left>
   </div>
 
-)
-
-Layout.contextTypes = { shouldAnimate: PropTypes.bool };
-
+);
 export default Layout

@@ -1,73 +1,37 @@
 import { Component, PropTypes} from "react"
-import { connect } from "react-redux"
+import { connect } from "react-apollo"
+import gql from "apollo-client/gql";
 
-import { GraphQL } from "../../../../core/graphql"
+import {
+  nav,
+  accounts as accountsActions,
+} from "../../../../core/store";
 
-import { nav, accounts as accountsActions } from "../../../../core/store"
 import { updateHome } from "../../../../core/methods/accounts/client"
-import { Error, Loading } from "../../../../core/components/states"
+import { Error as Err, Loading } from "../../../../core/components/states"
 
 import Success from "../Success"
 import Layout from "./Layout"
 
-
-// @TODO move to saga?
-function getUser(id, dispatch) {
-
-  // this is probably to heavy of a universal call?
-
-  // @TODO figure out caching issues?
-  let personQuery = `
-    {
-      person(cache: false) {
-        age
-        birthdate
-        birthDay
-        birthMonth
-        birthYear
-        campus(cache: false) {
-          name
-          shortCode
-          id
+const mapQueriesToProps = () => ({
+  data: {
+    query: gql`
+      query GetPersonsHome {
+        person: currentPerson {
+          home {
+            street1
+            street2
+            state
+            city
+            zip
+            country
+          }
         }
-        home {
-          city
-          country
-          id
-          zip
-          state
-          street1
-          street2
-        }
-        firstName
-        lastName
-        nickName
-        email
-        phoneNumbers {
-          number
-          formated
-        }
-        photo
       }
-    }
-  `
-
-  return GraphQL.query(personQuery)
-    .then(({ person }) => {
-      if (person) {
-        dispatch(accountsActions.person(person))
-      }
-
-    })
-
-}
-
-
-const map = (state) => ({
-  person: state.accounts.person,
-  campuses: state.campuses.campuses
+    `
+  }
 })
-@connect(map)
+@connect({ mapQueriesToProps })
 export default class HomeAddress extends Component {
 
   state = {
@@ -85,7 +49,6 @@ export default class HomeAddress extends Component {
   updateAddress = (data) => {
 
     this.setState({ state: "loading" })
-
     updateHome(data, (err, result) => {
 
       if (err) {
@@ -96,21 +59,18 @@ export default class HomeAddress extends Component {
         return
       }
 
-
-      this.setState({ state: "success" })
-      getUser(Meteor.userId(), this.props.dispatch)
+      this.setState({ state: "success" });
+      this.props.data.refetch()
         .then(() => {
           this.setState({ state: "default"})
-        })
-
-    })
-
+        });
+    });
 
   }
 
   render () {
 
-    const { home, campus } = this.props.person
+    const { home } = this.props.person
     const { state } = this.state
 
 

@@ -1,66 +1,25 @@
 import { Component, PropTypes} from "react"
 import ReactMixin from "react-mixin"
-import { connect } from "react-redux"
+import { connect } from "react-apollo";
+import gql from "apollo-client/gql";
 import { Link } from "react-router"
-// import { VelocityComponent } from "velocity-react"
 
 import { Headerable } from "../../../../core/mixins/"
 
-import { GraphQL } from "../../../../core/graphql"
-import { accounts as accountsActions, nav as navActions } from "../../../../core/store"
+import {
+  accounts as accountsActions,
+  nav as navActions,
+} from "../../../../core/store";
 
 import { avatar } from "../../../../core/methods/files/client"
-
 import inAppLink from "../../../../core/util/inAppLink"
-
-function updateUser(id, dispatch) {
-  let personQuery = `
-    {
-      person(cache: false) {
-        age
-        birthdate
-        birthDay
-        birthMonth
-        birthYear
-        campus {
-          name
-          shortCode
-          id
-        }
-        home {
-          city
-          country
-          id
-          zip
-          state
-          street1
-          street2
-        }
-        firstName
-        lastName
-        nickName
-        email
-        phoneNumbers {
-          number
-          formated
-        }
-        photo
-      }
-    }
-  `
-
-  return GraphQL.query(personQuery)
-    .then((person) => {
-      dispatch(accountsActions.person(person.person))
-    })
-}
 
 const RenderCell = ({name, iconFunc, last, children}) => {
   let icon = "icon-arrow-next";
   if (typeof iconFunc === "function") {
     icon = iconFunc();
   }
-  if (Meteor.isCordova) {
+  if (process.env.NATIVE) {
     let classes = ["push-left", "soft-ends", "soft-right", "text-left"];
     if (!last) classes.push("outlined--light", "outlined--bottom");
     return (
@@ -80,8 +39,18 @@ const RenderCell = ({name, iconFunc, last, children}) => {
     )
   }
 }
-
-@connect()
+const mapQueriesToProps = () => ({
+  data: {
+    query: gql`
+      query GetPhoto {
+        currentPerson {
+          photo
+        }
+      }
+    `,
+  }
+});
+@connect({ mapQueriesToProps })
 @ReactMixin.decorate(Headerable)
 export default class Menu extends Component {
 
@@ -102,15 +71,12 @@ export default class Menu extends Component {
 
   signout = (e) => {
     e.preventDefault()
-
     Meteor.logout()
   }
 
   upload = (e) => {
     e.preventDefault()
-
     let files = e.target.files
-
     if (!Meteor.settings.public.rock) {
       return
     }
@@ -133,7 +99,7 @@ export default class Menu extends Component {
        })
       .then((id) => {
         avatar(id, (err, response) => {
-          updateUser(Meteor.userId(), this.props.dispatch)
+          this.props.data.refetch()
             .then((result) => {
               this.setState({
                 upload: "uploaded"
@@ -164,13 +130,11 @@ export default class Menu extends Component {
   }
 
   sectionClasses = () => {
-    if (Meteor.isCordova) {
-      return "hard"
-    }
+    if (process.env.NATIVE) return "hard";
   }
 
   showFeedback = () => {
-    if (Meteor.isCordova){
+    if (process.env.NATIVE){
       return (
         <a href="#" onClick={this.giveFeedback} className="plain text-dark-secondary">
           <RenderCell name="Give Feedback" />
@@ -180,28 +144,20 @@ export default class Menu extends Component {
   }
 
   giveFeedback = () => {
-    if (Meteor.isCordova) hockeyapp.feedback();
+    if (process.env.NATIVE && typeof hockeyapp != "undefined") hockeyapp.feedback();
   }
 
   dividerClasses = () => {
-    let classes = ["push-double-ends"];
-
-    if (Meteor.isCordova) classes.push("background--light-primary");
-
+    let classes = ["push-double-ends@lap-and-up", "push-half-ends"];
+    if (process.env.NATIVE) classes.push("background--light-primary");
     return classes.join(" ")
   }
 
   outlineClasses = () => {
-    if (Meteor.isCordova) {
-      return "outlined--light one-whole"
-    }
+    if (process.env.NATIVE) return "outlined--light one-whole";
   }
 
-  containerStyles = () => {
-    return {
-      marginTop: Meteor.isCordova ? "45px" : "0",
-    }
-  }
+  containerStyles = () => ({ marginTop: process.env.NATIVE ? "45px" : "0px" });
 
   render() {
     return (
@@ -246,14 +202,6 @@ export default class Menu extends Component {
 
           <div className={this.dividerClasses()}>
             <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
-              {/*
-              <a onClick={inAppLink} href="//newspring.cc/about" target="_blank" className="plain text-dark-secondary">
-                <div className="card soft-ends soft-right text-left outlined--light">
-                  <h6 className="soft-left flush display-inline-block">About Us</h6>
-                  <i className="float-right icon-arrow-next"></i>
-                </div>
-              </a>
-              */}
               {this.showFeedback()}
               <a href="//newspring.cc/privacy" onClick={inAppLink} target="_blank" className="plain text-dark-secondary">
                 <RenderCell name="Privacy Policy" />

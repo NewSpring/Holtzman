@@ -1,7 +1,7 @@
 
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
-import ReactDom from "react-dom"
+import ReactDOM from "react-dom"
 import Moment from "moment"
 // import { TransitionMotion, spring, presets } from "react-motion"
 // import { VelocityComponent } from "velocity-react"
@@ -131,7 +131,7 @@ const TransactionCard = ({ transactionDetail, transaction }) => {
   }
   return (
     <div className="soft card">
-      <Link to={`/give/history/${transaction.id}/${transactionDetail.account.id}`}>
+      <Link to={`/give/history/${transaction.id}`}>
         <TransactionDetail
           transactionDetail={transactionDetail}
           transaction={transaction}
@@ -149,7 +149,7 @@ export default class Layout extends Component {
   }
 
   componentDidMount() {
-    const container = ReactDom.findDOMNode(this.refs["container"])
+    const container = ReactDOM.findDOMNode(this.refs["container"])
     container.addEventListener("scroll", this.props.onScroll);
      if (typeof window != "undefined" && window != null) {
        window.addEventListener("scroll", this.props.onScroll);
@@ -158,7 +158,7 @@ export default class Layout extends Component {
   }
 
   componentWillUnmount() {
-    const container = ReactDom.findDOMNode(this.refs["container"])
+    const container = ReactDOM.findDOMNode(this.refs["container"])
     container.removeEventListener("scroll", this.props.onScroll);
 
     if (typeof window != "undefined" && window != null) {
@@ -203,10 +203,6 @@ export default class Layout extends Component {
           <div className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable" ref="history">
             {(() => {
 
-              // if (!alive) {
-              //   return <Offline />
-              // }
-
               if (!transactions.length && !ready) {
                 // loading
                 return (
@@ -217,7 +213,7 @@ export default class Layout extends Component {
                 )
               } else if (!transactions.length && ready) {
                 return (
-                  <div className="text-left soft-ends">
+                  <div className="text-left soft-ends soft-half-sides">
                     <p>
                       We didn't find any contributions associated with your account. If you would like to start giving, click <Link to="/give/now">here</Link>
                     </p>

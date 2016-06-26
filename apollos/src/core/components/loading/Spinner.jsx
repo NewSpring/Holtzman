@@ -1,10 +1,10 @@
 import { Component, PropTypes} from "react"
-
-import Styles from "./spinner.css"
+import { css } from "aphrodite";
+import Styles from "./spinner-css"
 
 function getClasses(mergeClasses) {
   let classes = [
-    Styles.loader
+    css(Styles.loader)
   ]
 
   if (mergeClasses) {

@@ -1,96 +1,70 @@
 import { Component, PropTypes} from "react"
-import { connect } from "react-redux"
+import { connect } from "react-apollo"
+import gql from "apollo-client/gql";
 
-import { GraphQL } from "../../../../core/graphql"
 import { nav as navActions } from "../../../../core/store"
 import { transactions as transactionActions } from "../../../store"
 
 import Layout from "./Layout"
 
 
-function getTransaction(id, account, dispatch){
-  let query = `
-    {
-      transaction: finanicalTransaction(id: ${id}) {
-        id
-        date
-        summary
-        status
-        details {
+const mapQueriesToProps = ({ ownProps }) => ({
+  data: {
+    query: gql`
+      query GetTransaction($transactionId: ID!) {
+        transaction: node(id: $transactionId) {
           id
-          amount
-          date
+          ... on Transaction {
+            id
+            date
+            summary
+            status
+            person {
+              firstName
+              nickName
+              lastName
+            }
+            details {
+              id
+              amount
+              account {
+                name
+                description
+                summary
+                end
+                start
+              }
+            }
+            payment {
+              id
+              paymentType
+              accountNumber
+            }
+          }
         }
-        payment {
-         id
-         paymentType
-         accountNumber
-       }
       }
-      account: financialAccount(id: ${account}) {
-        id
-        name
-        description
-        summary
-        image
-        end
-        start
-      }
-    }
-  `
+    `,
+    variables: {
+      transactionId: ownProps.params.id
+    },
+  },
+});
 
-  return GraphQL.query(query)
-    .then(({transaction, account}) => {
-      transaction.account = account
-      const obj = {
-        [transaction.id]: transaction
-      }
-      dispatch(transactionActions.add(obj))
-    })
-}
-
-
-const map = (state) => ({
-  person: state.accounts.person,
-  transactions: state.transactions.transactions
-})
-
-@connect(map)
+@connect({ mapQueriesToProps })
 export default class Details extends Component {
-
-  static fetchData(getStore, dispatch, props) {
-    const { id, account } = props.params
-    return getTransaction(id, account, dispatch)
-  }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"))
-  }
-
-  componentDidMount(){
-    const { id, account } = this.props.params
-    const { dispatch } = this.props
-    getTransaction(id, account, dispatch)
   }
 
   componentWillUnmount() {
     this.props.dispatch(navActions.setLevel("TOP"))
   }
 
-
   render () {
-    const id = Number(this.props.params.id)
-    let transaction = this.props.transactions[id]
-    transaction || (transaction = false)
-    let account = transaction.account
-    account || (account = {})
+    let { loading, transaction } = this.props.data
+    // if (loading) return <Loading /> // XXX
 
-    return (
-      <Layout
-        transaction={transaction}
-        person={this.props.person}
-        account={account}
-      />
-    )
+    return <Layout transaction={transaction} />;
   }
 }

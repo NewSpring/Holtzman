@@ -1,60 +1,35 @@
 import { Component, PropTypes} from "react"
-import { connect } from "react-redux"
+import { connect } from "react-apollo";
+import gql from "apollo-client/gql";
 
 import headerActions from "../../../core/store/header"
 
-import { GraphQL } from "../../../core/graphql"
-
 import Layout from "./Layout"
 import { Likes, Following } from "../../blocks"
-import { accounts as accountsActions, nav as navActions } from "../../../core/store"
+
+import {
+  accounts as accountsActions,
+  nav as navActions,
+} from "../../../core/store"
+
 import { avatar } from "../../../core/methods/files/client"
 
-
-function updateUser(id, dispatch) {
-  let personQuery = `
-    {
-      person(cache: false) {
-        age
-        birthdate
-        birthDay
-        birthMonth
-        birthYear
-        campus {
-          name
-          shortCode
-          id
+const mapQueriesToProps = () => ({
+  data: {
+    query: gql`
+      query GetPerson {
+        currentPerson {
+          photo
+          firstName
+          nickName
+          lastName
         }
-        home {
-          city
-          country
-          id
-          zip
-          state
-          street1
-          street2
-        }
-        firstName
-        lastName
-        nickName
-        email
-        phoneNumbers {
-          number
-          formated
-        }
-        photo
       }
-    }
-  `
+    `,
+  }
+})
 
-  return GraphQL.query(personQuery)
-    .then((person) => {
-      dispatch(accountsActions.person(person.person))
-    })
-}
-
-const map = (state) => ({ person: state.accounts.person })
-@connect(map)
+@connect({ mapQueriesToProps })
 export default class Home extends Component {
 
   state = {
@@ -62,32 +37,22 @@ export default class Home extends Component {
     photo: null
   }
 
-  // we need to fork react-router-ssr to allow cascading
-  // fetch datas
-  static fetchData(getStore, dispatch) {
-
-    let id = Meteor.userId()
-
-    if (id) {
-      return updateUser(id, dispatch)
-    }
-
-  }
-
   content = [<Likes />, <Following />]
 
   componentDidMount(){
-    const item = {
-      title: "Profile",
-      showSettings: true,
-    };
+    if (process.env.NATIVE) {
+      const item = {
+        title: "Profile",
+        showSettings: true,
+      };
 
-    this.props.dispatch(headerActions.set(item));
-    this.setState({
-      __headerSet: true,
-    });
+      this.props.dispatch(headerActions.set(item));
+      this.setState({
+        __headerSet: true,
+      });
+    }
+
     this.props.dispatch(navActions.setLevel("TOP"))
-
   }
 
   getContent = () => {
@@ -156,10 +121,11 @@ export default class Home extends Component {
 
   render () {
 
-    const { person } = this.props
-    let { photo } = person
+    let { person } = this.props.data
+    person || (person = {});
 
-    // photo = photo ? `//core-rock.newspring.cc/${photo}` : null
+    // if (this.props.data.loading) return <Loading /> // XXX
+    let { photo } = person
 
     if (this.state.photo) {
       photo = this.state.photo
