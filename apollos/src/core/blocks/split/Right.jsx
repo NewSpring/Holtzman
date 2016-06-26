@@ -146,6 +146,7 @@ export default class Right extends Component {
     }
 
     if (this.props.link) {
+      let overlay = process.env.NATIVE ? "overlay--gradient" : "";
       return (
         <Link
           to={this.props.link}
@@ -162,7 +163,7 @@ export default class Right extends Component {
               "locked-sides",
               "hard",
               "floating",
-              "overlay--gradient",
+              overlay,
             ]}
           >
             {this.renderInsideRatio()}
