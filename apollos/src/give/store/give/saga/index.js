@@ -2,13 +2,11 @@ import "regenerator-runtime/runtime"
 import ReactDOM from "react-dom"
 import Moment from "moment"
 import { take, put, cps, call } from "redux-saga/effects"
+import gql from "apollo-client/gql";
 
 import { GraphQL } from "../../../../core/graphql"
 import { addSaga } from "../../../../core/store/utilities"
 import modalActions from "../../../../core/store/modal"
-import collectionActions from "../../../../core/store/collections"
-
-import { api } from "../../../../core/util/rock"
 
 import types from "./../types"
 import actions from "../actions"
@@ -18,7 +16,7 @@ import { CreditCardForm, AchForm } from "./paymentForm"
 import formatPersonDetails from "./formatPersonDetails"
 
 import { order, schedule, charge } from "../../../methods/give/client"
-import RecoverSchedules from "../../../blocks/RecoverSchedules"
+// import RecoverSchedules from "../../../blocks/RecoverSchedules"
 
 
 // at this point in time we have to do steps 1 - 3 of the
@@ -195,9 +193,9 @@ addSaga(function* chargeTransaction(getStore) {
         // to revist
         if (name) {
           const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
-          let query = `
-            {
-              paymentDetails: allSavedPaymentAccounts(cache: false) {
+          let query = gql`
+            query GetSavedPayments {
+              savedPayments {
                 name
                 id
                 date
@@ -211,13 +209,7 @@ addSaga(function* chargeTransaction(getStore) {
 
           // wait one second before calling this
           yield call(delay, 1000)
-          let { paymentDetails } = yield GraphQL.query(query)
-
-          if (paymentDetails && paymentDetails.length) {
-            yield put(collectionActions.upsertBatch(
-              "savedAccounts", paymentDetails, "id"
-            ))
-          }
+          yield GraphQL.query({ query })
 
         }
 
@@ -406,124 +398,124 @@ addSaga(function* createOrder(getStore) {
 */
 
 // recover transactions
-function* recoverTransactions(getStore) {
-  let user = Meteor.userId()
+// function* recoverTransactions(getStore) {
+//   let user = Meteor.userId()
 
-  if (!user) {
-    const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED")
-  }
+//   if (!user) {
+//     const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED")
+//   }
 
-  user = Meteor.user()
+//   user = Meteor.user()
 
-  if (user && user.profile && user.profile.reminderDate) {
-    yield put(actions.setReminder(user.profile.reminderDate))
-  }
+//   if (user && user.profile && user.profile.reminderDate) {
+//     yield put(actions.setReminder(user.profile.reminderDate))
+//   }
 
-  let query = `
-    query ScheduledTransactions {
-      schedules: allScheduledFinanicalTransactions(active: false, cache: false) {
-        id
-        gateway
-        start
-        next
-        details {
-          amount
-          account {
-            name
-            id
-            description
-          }
-        }
-        schedule {
-          value
-          description
-        }
-      }
-    }
-  `
+//   let query = gql`
+//     query ScheduledTransactions {
+//       schedules: allScheduledFinanicalTransactions(active: false, cache: false) {
+//         id
+//         gateway
+//         start
+//         next
+//         details {
+//           amount
+//           account {
+//             name
+//             id
+//             description
+//           }
+//         }
+//         schedule {
+//           value
+//           description
+//         }
+//       }
+//     }
+//   `
 
-  let { schedules } = yield GraphQL.query(query)
+//   let { schedules } = yield GraphQL.query({ query })
 
-  let bulkUpdate = {}
-  schedules = schedules.filter(x => !x.gateway)
+//   let bulkUpdate = {}
+//   schedules = schedules.filter(x => !x.gateway)
 
-  if (schedules.length) {
-    for (let schedule of schedules) {
-      // only recover schedules that are missing info (i.e. not turned off in Rock)
-      if (schedule.gateway) { continue; }
+//   if (schedules.length) {
+//     for (let schedule of schedules) {
+//       // only recover schedules that are missing info (i.e. not turned off in Rock)
+//       if (schedule.gateway) { continue; }
 
-      if (schedule.schedule.value === "Twice a Month") {
-        schedule.schedule.value = null
-      }
-      bulkUpdate[schedule.id] = {...{
-        start: Moment(schedule.start).format("YYYYMMDD"),
-        frequency: schedule.schedule.value
-      }, ...schedule }
+//       if (schedule.schedule.value === "Twice a Month") {
+//         schedule.schedule.value = null
+//       }
+//       bulkUpdate[schedule.id] = {...{
+//         start: Moment(schedule.start).format("YYYYMMDD"),
+//         frequency: schedule.schedule.value
+//       }, ...schedule }
 
-    }
+//     }
 
-    let store = getStore()
-    let time = new Date()
-    if (user && user.profile && user.profile.reminderDate) {
-      time = user.profile.reminderDate
-    }
-    let now = new Date()
+//     let store = getStore()
+//     let time = new Date()
+//     if (user && user.profile && user.profile.reminderDate) {
+//       time = user.profile.reminderDate
+//     }
+//     let now = new Date()
 
-    yield put(actions.saveSchedules(bulkUpdate))
+//     yield put(actions.saveSchedules(bulkUpdate))
 
-    // only update the store if it is past the reminder date
-    if (now < time) {
-      return
-    }
+//     // only update the store if it is past the reminder date
+//     if (now < time) {
+//       return
+//     }
 
-    let state = getStore();
-    let { pathname } = state.routing.location
+//     let state = getStore();
+//     let { pathname } = state.routing.location
 
-    if (pathname.split("/").length === 4 && pathname.split("/")[3] === "recover" ) {
-      return
-    }
+//     if (pathname.split("/").length === 4 && pathname.split("/")[3] === "recover" ) {
+//       return
+//     }
 
-    if (Meteor.isClient) {
-      yield put(modalActions.render(RecoverSchedules))
-    }
+//     if (Meteor.isClient) {
+//       yield put(modalActions.render(RecoverSchedules))
+//     }
 
 
-  }
+//   }
 
-}
+// }
 
 // ensure we are on a /give route
-addSaga(function* watchRoute(getStore){
+// addSaga(function* watchRoute(getStore){
 
-  while (true) {
+//   while (true) {
 
-    let state = getStore();
-    let { pathname } = state.routing.location,
-        recovered;
+//     let state = getStore();
+//     let { pathname } = state.routing.location,
+//         recovered;
 
-    function isGive(path) {
-      return path.split("/")[1] === "give"
-    }
+//     function isGive(path) {
+//       return path.split("/")[1] === "give"
+//     }
 
-    if (!isGive(pathname)) {
-      const { payload } = yield take("@@router/UPDATE_LOCATION")
+//     if (!isGive(pathname)) {
+//       const { payload } = yield take("@@router/UPDATE_LOCATION")
 
-      if (isGive(payload.pathname)) {
+//       if (isGive(payload.pathname)) {
 
-        recovered = yield* recoverTransactions(getStore)
-        break
-      }
+//         recovered = yield* recoverTransactions(getStore)
+//         break
+//       }
 
-    } else {
-      recovered = yield* recoverTransactions(getStore)
-      break
-    }
+//     } else {
+//       recovered = yield* recoverTransactions(getStore)
+//       break
+//     }
 
 
 
-  }
+//   }
 
-})
+// })
 
 
 // clear out data on user change

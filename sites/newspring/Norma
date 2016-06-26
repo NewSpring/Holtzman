@@ -1,0 +1,18 @@
+name: "newspring-app"
+
+tasks:
+  bower:
+    "./.remote":
+      "settings": "https://github.com/NewSpring/ops-settings.git"
+      "junction": "NewSpring/junction-framework"
+      "fonts": "NewSpring/newspring-fonts"
+    "./packages":
+      "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#432a60bded46edd02561e87b6a947b88072e9c68"
+      "fetch": "https://github.com/NewSpring/meteor-fetch.git#95db94933bc332f9e9b4c02a555c86b5522893bd"
+      "fast-render": "https://github.com/NewSpring/fast-render.git#cc69abec95fdee6ac09c143276c50726a11982f0"
+      "micro-minfier-js": "https://github.com/NewSpring/micro-minifer-js.git#737bfdf83c46256733b9f77c539efecc4bccee1b"
+
+  "meteor-run":
+    endpoint: "jbaxleyiii/norma-meteor-run"
+    src: "./"
+    settings: ".remote/settings/sites/my.newspring.cc/settings.json"

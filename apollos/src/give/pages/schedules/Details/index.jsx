@@ -1,61 +1,58 @@
 import { Component, PropTypes} from "react"
-import { connect } from "react-redux"
+import { connect } from "react-apollo"
+import gql from "apollo-client/gql";
 
-import { GraphQL } from "../../../../core/graphql"
-import { nav as navActions, modal as modalActions } from "../../../../core/store"
-import { transactions as transactionActions, give as giveActions } from "../../../store"
+import {
+  nav as navActions,
+  modal as modalActions,
+} from "../../../../core/store";
+
+import { give as giveActions } from "../../../store";
+
 import Confirm from "./Confirm"
 import Layout from "./Layout"
 
-function getTransaction(id, dispatch){
-  let query = `
-  {
-    transaction: scheduledFinanicalTransaction(id: ${id}) {
-      numberOfPayments
-      next
-      end
-      id
-      reminderDate
-      gateway
-      start
-      date
-      details {
-        amount
-        account {
-          name
-          description
+const mapQueriesToProps = ({ ownProps }) => ({
+  data: {
+    query: gql`
+      query GetScheduleTransaction($scheduleTransactionId: ID!) {
+        transaction: node(id: $scheduleTransactionId) {
+          id
+          ... on ScheduledTransaction {
+            numberOfPayments
+            next
+            end
+            id
+            reminderDate
+            gateway
+            start
+            date
+            details {
+              amount
+              account {
+                name
+                description
+              }
+            }
+            payment {
+              paymentType
+              accountNumber
+              id
+            }
+            schedule {
+              value
+              description
+            }
+          }
         }
       }
-      payment {
-        paymentType
-        accountNumber
-        id
-      }
-      schedule {
-        value
-        description
-      }
-    }
+    `,
+    variables: { scheduleTransactionId: ownProps.params.id },
+    ssr: true,
   }
-  `
-
-  return GraphQL.query(query)
-    .then(({transaction}) => {
-      const obj = {
-        [transaction.id]: transaction
-      }
-      dispatch(transactionActions.addSchedule(obj))
-    })
-}
-
-
-const map = (state) => ({
-  person: state.accounts.person,
-  transactions: state.transactions.scheduledTransactions
-
 })
 
-@connect(map)
+@connect({ mapQueriesToProps })
 export default class Details extends Component {
 
   state = {
@@ -63,25 +60,14 @@ export default class Details extends Component {
     removed: null
   }
 
-  static fetchData(getStore, dispatch, props) {
-    const { id } = props.params
-    return getTransaction(id, dispatch)
-  }
-
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"))
-  }
-
-  componentDidMount(){
-    const { id } = this.props.params
-    const { dispatch } = this.props
-    getTransaction(id, dispatch)
   }
 
   componentWillUnmount() {
     this.props.dispatch(navActions.setLevel("TOP"))
     if (this.state.removed) {
-      // WUT, need to clean up after launch
+      // XXX need to clean up after launch
       this.props.dispatch(giveActions.deleteSchedule(this.state.removed))
       this.props.dispatch(transactionActions.removeSchedule(this.state.removed))
     }
@@ -105,12 +91,10 @@ export default class Details extends Component {
   }
 
   render () {
-    const id = Number(this.props.params.id)
-    let transaction = this.props.transactions[id]
-    let complete = false
 
-    transaction || (transaction = false)
-
+    let complete = false;
+    let { transaction } = this.props.data;
+    transaction || (transaction = false);
     if (new Date(transaction.next) < new Date() && transaction.schedule.value === "One-Time") {
       complete = true
     }
@@ -119,8 +103,8 @@ export default class Details extends Component {
       <Layout
         stop={this.stop}
         schedule={transaction}
+        ready={!this.props.data.loading}
         state={this.state}
-        person={this.props.person}
         active={this.state.isActive}
         complete={complete}
       />

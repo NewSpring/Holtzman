@@ -1,0 +1,23 @@
+{
+  "name": "apollos-runtime",
+  "version": "0.0.1",
+  "description": "Local development environment for apollos projects",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "newspring": "cd ./sites/newspring && WEB=true meteor --settings .remote/settings/sites/my.newspring.cc/settings.json & cd apollos && npm start",
+    "newspring:native": "cd ./sites/newspring && NATIVE=true meteor --settings .remote/settings/sites/my.newspring.cc/settings.json & cd apollos && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NewSpring/Apollos.git"
+  },
+  "author": "jbaxleyiii",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NewSpring/Apollos/issues"
+  },
+  "homepage": "https://github.com/NewSpring/Apollos#readme",
+  "dependencies": {
+  }
+}

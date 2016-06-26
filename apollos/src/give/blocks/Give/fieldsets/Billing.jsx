@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react"
-import ReactDom from "react-dom"
+import ReactDOM from "react-dom"
 
 import { Controls, Forms } from "../../../../core/components"
 import { Validate } from "../../../../core/util"

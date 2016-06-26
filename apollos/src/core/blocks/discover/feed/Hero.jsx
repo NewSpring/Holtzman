@@ -1,7 +1,8 @@
 import { Component, PropTypes } from "react";
+import { css } from "aphrodite";
 
 import { ImageLoader } from "../../../components/loading"
-import LoadingStyles from "../../../components/loading/FeedItemSkeleton.css"
+import LoadingStyles from "../../../components/loading/FeedItemSkeleton-css"
 
 import inAppLink from "../../../util/inAppLink"
 
@@ -29,7 +30,7 @@ export default class DiscoverHero extends Component {
   preloader = () => {
     return (
       <div
-        className={`${this.imageclasses.join(" ")} ${LoadingStyles["load-item"]}`}
+        className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
         >
         {this.children}
       </div>

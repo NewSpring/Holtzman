@@ -1,31 +1,19 @@
 import { Component, PropTypes} from "react"
-import { connect } from "react-redux"
-import ReactMixin from "react-mixin"
+import { connect } from "react-apollo";
+import { createContainer } from "meteor/react-meteor-data";
+import gql from "apollo-client/gql";
 
-import { GraphQL } from "../../../graphql"
 import { Likes } from "../../../collections"
 
-import {
-  modal,
-  collections as collectionActions,
-} from "../../../store"
+import { modal } from "../../../store"
 
 import Layout from "./Layout"
 
-const map = (state) => ({
-  discover: state.collections.discover
-})
-@connect(map)
-@ReactMixin.decorate(ReactMeteorData)
-export default class Discover extends Component {
-
-
-  componentDidMount() {
-    const { dispatch } = this.props
-
-    let query = `
-      {
-        discover: allLowReorderSets(setName: "promotions_newspring", ttl: 3600) {
+const mapQueriesToProps = () => ({
+  discover: {
+    query: gql`
+      query GetPromotions($setName: String!) {
+        items: lowReorderSets(setName: $setName) {
           title
           id
           status
@@ -43,68 +31,31 @@ export default class Discover extends Component {
           }
         }
       }
-    `
-
-    GraphQL.query(query)
-      .then(({ discover }) => {
-
-        let mappedObj = {}
-        for (let entry of discover) {
-          mappedObj[entry.id] = entry
-        }
-
-        dispatch(collectionActions.insert("discover", mappedObj))
-
-      })
-
-  }
-
-
-  getMeteorData() {
-    Meteor.subscribe("recently-liked")
-    const likes = Likes.find({
-      userId: {
-        $not: Meteor.userId()
-      }
-    }, { sort: { dateLiked: -1 }}).fetch()
-
-    return {
-      popularItems: likes
+    `,
+    variables: {
+      // XXX if we want app specfic promos
+      // setName: proccess.env.WEB ? "promotions_newspring" : "promotions_newspring_app"
+      setName: "promotions_newspring"
     }
   }
-
+});
+@connect({ mapQueriesToProps })
+export default class Discover extends Component {
 
   render() {
 
     let { discover } = this.props
-    discover || (discover = {})
-    let discoverArr = []
-    for (let dis in discover ) {
-      discoverArr.push(discover[dis])
-    }
+    if (discover.loading) return null // XXX <Loading />
 
-    const featured = discoverArr.filter((x) => (x.status.toLowerCase() === "featured"))
-    const open = discoverArr.filter((x) => (x.status.toLowerCase() === "open"))
+    const featured = discover.items.filter((x) => (x.status.toLowerCase() === "featured"))
+    const open = discover.items.filter((x) => (x.status.toLowerCase() === "open"))
 
     const featuredItem = featured[0]
     const recommendedItems = [...featured.slice(1, featured.length - 1)]
-    const popular = this.data.popularItems
-
-    let popularItems = []
-    let uniqueIds = []
-    for (let item of this.data.popularItems) {
-      if (uniqueIds.indexOf(item.entryId) > -1) {
-        continue
-      }
-
-      uniqueIds.push(item.entryId)
-      popularItems.push(item)
-    }
 
     return (
       <Layout
         featuredItem={featuredItem}
-        popularItems={popularItems.slice(0, 5)}
         recommendedItems={recommendedItems}
         textItems={open}
       />
