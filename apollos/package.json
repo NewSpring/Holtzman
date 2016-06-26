@@ -5,7 +5,7 @@
   "main": "dist/core/index.js",
   "scripts": {
     "compile": "babel ./src -d ./dist",
-    "start": "babel --watch ./src -d ./dist -q"
+    "start": "babel --watch ./src -d ./dist"
   },
   "repository": {
     "type": "git",

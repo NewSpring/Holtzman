@@ -86,17 +86,32 @@ const Layout = ({ alive, accounts }) => (
                     <h4 className="push-half-top@portable push-top@anchored">
                       {account.name}
                     </h4>
-                    <p>
-                      <small>
-                        {account.summary}
-                      </small>
-                    </p>
-                    <Link
-                      to={`/give/campaign/${encodeURI(account.name)}`}
-                      className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
-                    >
-                      Learn more
-                    </Link>
+                    <p><small>{account.summary}</small></p>
+                    {(() => {
+
+                      if (process.env.NATIVE) {
+                        return (
+                          <div className="display-inline-block" style={{verticalAlign: "middle"}}>
+                            <i className="soft-half-right icon-category-text" style={{verticalAlign: "middle"}}></i>
+                            <h7 className="text-dark-tertiary" style={{verticalAlign: "middle"}}>Contribution Fund</h7>
+                            {/*<h7 className="text-right float-right text-dark-tertiary"></h7>*/}
+                          </div>
+                        )
+                      }
+
+                      if (process.env.WEB) {
+                        return (
+                          <Link
+                            to={`/give/campaign/${encodeURI(account.name)}`}
+                            className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                          >
+                            Learn more
+                          </Link>
+                        )
+                      }
+
+                    })()}
+
 
                   </SideBySide>
                 </div>
