@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react"
 import { Link } from "react-router"
 
-import Helpers from "app/client/helpers"
+import Helpers from "/imports/helpers"
 
 export default class SeriesVideoListItem extends Component {
 

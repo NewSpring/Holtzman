@@ -27,7 +27,7 @@ const Layout = ({ alive, accounts }) => (
       <Left scroll={true} classes={["background--light-secondary"]} >
         <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{overflow: "visible"}}>
 
-          <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
+          <div className="text-left soft-double-top@lap-and-up hard-left@lap-and-up soft-half-bottom soft@anchored ">
             <div className="soft-double-ends@anchored">
               {(() => {
 
@@ -74,7 +74,7 @@ const Layout = ({ alive, accounts }) => (
                 )
               }
             })()}
-            
+
             {accounts.accounts && accounts.accounts.map((account, i) => {
               return (
                 <div key={i} className="grid__item one-whole push-half-bottom flush-bottom@handheld hard-bottom">

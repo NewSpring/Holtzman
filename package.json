@@ -5,7 +5,7 @@
   "main": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "newspring": "cd ./sites/newspring && WEB=true meteor --settings .remote/settings/sites/my.newspring.cc/settings.json & cd apollos && npm start",
+    "newspring": "cd ./sites/newspring && WEB=true METEOR_PROFILE=1 meteor --settings .remote/settings/sites/my.newspring.cc/settings.json",
     "newspring:native": "cd ./sites/newspring && NATIVE=true meteor --settings .remote/settings/sites/my.newspring.cc/settings.json & cd apollos && npm start"
   },
   "repository": {

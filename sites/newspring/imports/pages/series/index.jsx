@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react"
 import ReactMixin from "react-mixin"
-import { Pageable } from "app/client/mixins"
+import { Pageable } from "/imports/mixins"
 import { connect, gql } from "apollos/dist/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 
@@ -14,8 +14,7 @@ import { nav as navActions } from "apollos/dist/core/store"
 import Single from "./series.Single"
 import SingleVideo from "./series.SingleVideo"
 
-import { Collections } from "app/lib/collections"
-import { FeedItem } from "app/client/components/cards"
+import { FeedItem } from "/imports/components/cards"
 
 import SeriesQuery from "./queries/feed"
 

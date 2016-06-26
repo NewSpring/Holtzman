@@ -1,7 +1,7 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
 import { connect, gql } from "apollos/dist/core/graphql/apollo";
-import { Likeable, Shareable } from "app/client/mixins"
+import { Likeable, Shareable } from "/imports/mixins"
 import Meta from "react-helmet"
 import { VelocityComponent } from "velocity-react"
 
@@ -11,7 +11,7 @@ import { Headerable } from "apollos/dist/core/mixins"
 import { Loading } from "apollos/dist/core/components"
 
 // import editorial collection for lookup
-import Helpers from "app/client/helpers"
+import Helpers from "/imports/helpers"
 
 import {
   nav as navActions
