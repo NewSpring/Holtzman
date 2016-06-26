@@ -8,6 +8,7 @@ import { Likes } from "../../collections"
 import Modal from "../modal"
 import Meta from "../../components/meta"
 import Nav from "../nav"
+import Header from "../../components/header";
 
 import {
   accounts as accountsActions,
@@ -26,22 +27,26 @@ const Watermark = () => (
 )
 
 
-export const App = ({ children, className }) => (
-  <div
-    className="push-double-bottom@handheld soft-bottom@handheld push-double-left@lap-and-up soft-double-left@lap-and-up"
-  >
-    <div className={className}>
-      <Meta />
-      <div data-status-scroll={true}>
-        {children}
+export const App = ({ children, className }) => {
+  return (
+    <div
+      className="push-double-bottom@handheld soft-bottom@handheld push-double-left@lap-and-up soft-double-left@lap-and-up"
+    >
+      <div className={className}>
+        <Meta />
+        {(() => { if (process.env.NATIVE) return <Header />; })()}
+        {/*<LivePlayer/>*/}
+        <div data-status-scroll={true}>
+          {children}
+        </div>
+        <Modal/>
+        <Nav />
+        <Watermark />
       </div>
-      <Modal/>
-      <Nav />
-      <Watermark />
-    </div>
 
-  </div>
-)
+    </div>
+  )
+}
 
 
 export const Blank = () => (<div></div>);
@@ -81,8 +86,11 @@ const GlobalData =  createContainer(({ dispatch }) => {
   return { userId }
 }, Blank);
 
-
-@connect()
+const map = (state) => ({
+  location: state.routing.location,
+  modal: state.modal,
+})
+@connect(map)
 export default class Global extends Component {
   render(){
     const { dispatch } = this.props;

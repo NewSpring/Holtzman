@@ -1,11 +1,11 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
 import { connect, gql } from "apollos/dist/core/graphql/apollo";
-import { Likeable, Shareable } from "app/client/mixins"
+import { Likeable, Shareable } from "/imports/mixins"
 import Hammer from "react-hammerjs";
 import { VelocityComponent } from "velocity-react"
 
-import Helpers from "app/client/helpers"
+import Helpers from "/imports/helpers"
 
 import { Loading } from "apollos/dist/core/components"
 

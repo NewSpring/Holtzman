@@ -7,7 +7,7 @@
 */
 
 import { createReducer } from "apollos/dist/core/store"
-import { types } from "../../actions/audio"
+import types from "./types"
 
 const initial = {
   visibility: "dock", // "hide", "dock", "expand"

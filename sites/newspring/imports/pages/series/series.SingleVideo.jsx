@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react"
 import ReactMixin from "react-mixin"
-import { Likeable, Shareable } from "app/client/mixins"
+import { Likeable, Shareable } from "/imports/mixins"
 import { connect, gql } from "apollos/dist/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 
@@ -9,7 +9,7 @@ import { nav as navActions } from "apollos/dist/core/store"
 import { Headerable } from "apollos/dist/core/mixins"
 import headerActions from "apollos/dist/core/store/header"
 
-import Helpers from "app/client/helpers"
+import Helpers from "/imports/helpers"
 
 import SingleVideoPlayer from "./series.SingleVideoPlayer"
 import SeriesVideoList from "./series.VideoList"

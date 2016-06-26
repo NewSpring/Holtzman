@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 
-import Helpers from "app/client/helpers"
+import Helpers from "/imports/helpers"
 
 export default class Tags extends Component {
 

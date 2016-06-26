@@ -1,6 +1,6 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
-import { Likeable, Shareable } from "app/client/mixins"
+import { Likeable, Shareable } from "/imports/mixins"
 import { connect, gql } from "apollos/dist/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 

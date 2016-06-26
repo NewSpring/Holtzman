@@ -13,7 +13,7 @@ Mixins can be included like this:
 
 ```javascript
 import ReactMixin from "react-mixin"
-import { MixinName } from "app/client/mixins"
+import { MixinName } from "/imports/mixins"
 @ReactMixin.decorate(MixinName)
 ```
 

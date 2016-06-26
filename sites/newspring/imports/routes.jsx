@@ -8,9 +8,9 @@ if (process.env.NATIVE) {
 export default {
   path: "/",
   indexRoute: { component: process.env.NATIVE ? Home : null },
-  onEnter: (_, replaceState) => {
+  onEnter: (_, replace) => {
     if (process.env.WEB && _.location.pathname === "/") {
-      return replaceState(null, "/give/now");
+      return replace({ pathname: "/give/now" });
     }
   },
   // childRoutes: Routes

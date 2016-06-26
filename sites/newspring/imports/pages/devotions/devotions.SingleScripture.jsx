@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react";
 
 import ScriptureItem from "./devotions.ScriptureItem";
 
-import Helpers from "app/client/helpers"
+import Helpers from "/imports/helpers"
 
 export default class DevotionsSingleScripture extends Component {
 
