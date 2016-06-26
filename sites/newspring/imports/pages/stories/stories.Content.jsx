@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 
-import Helpers from "app/client/helpers"
-import Components from "app/client/components"
+import Helpers from "/imports/helpers"
+import Components from "/imports/components"
 import SingleVideoPlayer from "./stories.SingleVideoPlayer"
 
 export default class StoriesContent extends Component {

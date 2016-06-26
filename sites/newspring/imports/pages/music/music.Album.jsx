@@ -1,6 +1,6 @@
 import { Component, PropTypes, Lib } from "react"
 import ReactMixin from "react-mixin"
-import { Likeable, Shareable } from "app/client/mixins"
+import { Likeable, Shareable } from "/imports/mixins"
 import { connect, gql } from "apollos/dist/core/graphql/apollo";
 import { VelocityComponent } from "velocity-react"
 
@@ -12,11 +12,10 @@ import { Headerable } from "apollos/dist/core/mixins"
 import { modal,
   nav as navActions
 } from "apollos/dist/core/store"
-import { audio as audioActions } from "app/client/actions"
+import { audio as audioActions } from "/imports/store/audio"
 
-import Helpers from "app/client/helpers"
+import Helpers from "/imports/helpers"
 
-import { Music as MusicCollection } from "app/lib/collections"
 import { Likes } from "apollos/dist/core/collections"
 
 import Track from "./music.Track";

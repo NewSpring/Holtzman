@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 import ListDetail from "./music.ListDetail"
-import { audio as audioActions } from "app/client/actions"
+import { audio as audioActions } from "/imports/store/audio"
 import { connect } from "react-redux"
 
 import { modal } from "apollos/dist/core/store"
