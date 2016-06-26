@@ -1,38 +1,22 @@
 
-import { Lokka } from "lokka"
+import ApolloClient, {
+  createNetworkInterface,
+  readQueryFromStore,
+} from "apollo-client";
 
-const LokkaTransport = class {
 
-  send(query, variables, operationName) {
-    return this.call("graphql.transport", query, variables, operationName)
-      .then(({data, errors}) => {
-        if (errors) {
-          const message = errors[0].message;
-          const error = new Meteor.Error(400, `GraphQL Error: ${message}`);
-          error.rawError = errors;
+let hasToken = Accounts._storedLoginToken && Accounts._storedLoginToken();
+let token =  hasToken ? Accounts._storedLoginToken() : null;
 
-          throw error;
-        }
+const networkInterface = createNetworkInterface("http://localhost:8888", {
+  headers: { Authorization: token },
+});
 
-        return data;
-      });
-  }
-
-  call(...args) {
-    return new Promise((resolve, reject) => {
-      Meteor.call(...args, (error, result) => {
-        if(error) {
-          return reject(error);
-        }
-
-        return resolve(result);
-      });
-    });
-  }
-};
-
-const GraphQL = new Lokka({ transport: new LokkaTransport() })
+const GraphQL = new ApolloClient({
+  networkInterface,
+  // shouldBatch: true, // XXX not working yet
+});
 
 export {
-  GraphQL
-}
+  GraphQL,
+};

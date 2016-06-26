@@ -1,6 +1,6 @@
 
 import { Component, PropTypes} from "react"
-import ReactDom from "react-dom"
+import ReactDOM from "react-dom"
 import Moment from "moment"
 // import { VelocityComponent } from "velocity-react"
 import { Link } from "react-router"

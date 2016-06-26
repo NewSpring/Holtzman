@@ -1,9 +1,13 @@
 import { Component } from "react"
-import { connect } from "react-redux"
+import { connect } from "react-apollo";
+import gql from "apollo-client/gql";
 
-import { accounts as accountsActions, nav as navActions } from "../../../core/store"
+import {
+  accounts as accountsActions,
+  nav as navActions,
+} from "../../../core/store"
+
 import { avatar } from "../../../core/methods/files/client"
-import { GraphQL } from "../../../core/graphql"
 
 import Layout from "./Layout"
 
@@ -13,75 +17,26 @@ import PersonalDetails from "./PersonalDetails"
 import HomeAddress from "./HomeAddress"
 import PaymentDetails from "./Payments"
 
-
-function updateUser(id, dispatch) {
-  let personQuery = `
-    {
-      person(cache: false) {
-        age
-        birthdate
-        birthDay
-        birthMonth
-        birthYear
-        campus {
-          name
-          shortCode
-          id
+const mapQueriesToProps = () => ({
+  data: {
+    query: gql`
+      query GetPersonForSettings {
+        person: currentPerson {
+          firstName
+          lastName
+          nickName
+          photo
+          home {
+            state
+            city
+          }
         }
-        home {
-          city
-          country
-          id
-          zip
-          state
-          street1
-          street2
-        }
-        firstName
-        lastName
-        nickName
-        email
-        phoneNumbers {
-          number
-          formated
-        }
-        photo
       }
-    }
-  `
-
-  return GraphQL.query(personQuery)
-    .then((person) => {
-      dispatch(accountsActions.person(person.person))
-    })
-}
-
-const map = (state) => ({ person: state.accounts.person })
-
-@connect(map)
+    `,
+  },
+});
+@connect({ mapQueriesToProps })
 class Template extends Component {
-
-  // we need to fork react-router-ssr to allow cascading
-  // fetch datas
-  static fetchData(getStore, dispatch) {
-
-    let id = Meteor.userId()
-
-    if (id) {
-      return updateUser(id, dispatch)
-    }
-
-  }
-
-  componentDidMount(){
-    const { dispatch } = this.props
-    let id = Meteor.userId()
-
-    if (id) {
-      return updateUser(id, dispatch)
-    }
-    
-  }
 
   componentWillMount(){
     this.props.dispatch(navActions.setLevel("TOP"))
@@ -142,16 +97,15 @@ class Template extends Component {
   }
 
   render() {
-    const { person } = this.props
-    let { photo } = person
-    // photo = photo ? `//core-rock.newspring.cc/${photo}` : null
-    let mobile = !Meteor.isCordova
+    const { person } = this.props.data
 
+    let mobile = process.env.WEB;
     if (this.props.location.pathname.split("/").length > 3) {
       mobile = false
     }
+
     return (
-      <Layout photo={photo} person={person} mobile={mobile} onUpload={this.onUpload}>
+      <Layout person={person || {}} mobile={mobile} onUpload={this.onUpload}>
         {this.props.children}
       </Layout>
     )

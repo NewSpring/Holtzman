@@ -1,12 +1,13 @@
 import { Component, PropTypes } from "react"
 import { Link } from "react-router"
+import { css } from "aphrodite";
 
 import { ImageLoader } from "../../components/loading"
-import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
+import LoadingStyles from "../../components/loading/FeedItemSkeleton-css"
 
 import inAppLink from "../../util/inAppLink"
 
-import Styles from "./styles"
+import Styles from "./styles-css"
 
 export default class SearchItem extends Component {
 
@@ -18,7 +19,7 @@ export default class SearchItem extends Component {
       "rounded",
       "text-dark-secondary",
       "display-block",
-      Styles.card
+      css(Styles.card)
     ].join(" ")
   }
 
@@ -26,7 +27,7 @@ export default class SearchItem extends Component {
     return [
       "grid",
       "flush",
-      Styles["height-100"]
+      css(Styles["height-100"])
     ].join(" ")
   }
 
@@ -37,12 +38,12 @@ export default class SearchItem extends Component {
       "soft-half",
       "floating--left",
       "one-whole",
-      Styles["height-100"]
+      css(Styles["height-100"])
     ].join(" ")
   }
 
   pClasses = () => {
-    return `small ${Styles["ellipsis-p"]}`
+    return `small ${css(Styles["ellipsis-p"])}`
   }
 
   bgClasses = () => {
@@ -52,14 +53,14 @@ export default class SearchItem extends Component {
       "hard",
       "soft-half-left",
       "background--cover",
-      Styles["height-100"]
+      css(Styles["height-100"])
     ]
   }
 
   // context from ImageLoader
   preloader() {
     return (
-      <div className={`${this.imageclasses.join(" ")} ${LoadingStyles["load-item"]}`}>
+      <div className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}>
         <div className="ratio--square"></div>
       </div>
     );
@@ -94,7 +95,7 @@ export default class SearchItem extends Component {
           {(() => {
             if (this.props.item.image === "null") {
               let classes = this.bgClasses();
-              classes.push(Styles["placeholder-img"]);
+              classes.push(css(Styles["placeholder-img"]));
               return (
                 <div className={classes.join(" ")}></div>
               );

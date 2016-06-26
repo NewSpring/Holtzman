@@ -1,10 +1,11 @@
 import { Component, PropTypes } from "react";
-import ReactDom from "react-dom";
+import ReactDOM from "react-dom";
+import { css } from "aphrodite";
 // import ReactSelect from "react-select";
 
 import Label from "./components/Label"
 
-import SelectClasses from "./select.css"
+import SelectClasses from "./select-css"
 
 export default class Select extends Component {
 
@@ -149,7 +150,7 @@ export default class Select extends Component {
     if (this.props.selected) { inputclasses.push("input--active") }
 
     return (
-      <div className={inputclasses.join(" ") + ` ${SelectClasses.select}`}>
+      <div className={inputclasses.join(" ") + ` ${css(SelectClasses.select)}`}>
         {(() => {
           if (!this.props.hideLabel){
             return (
@@ -167,7 +168,7 @@ export default class Select extends Component {
 
         <select
           ref="apollos-select"
-          id={this.props.id || this.props.ref || this.props.label || this.props.name}
+          id={this.props.id || this.props.label || this.props.name}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }
           className={this.props.inputClasses}
@@ -215,19 +216,3 @@ export default class Select extends Component {
   }
 
 }
-
-// <ReactSelect
-//   ref="apollos-select"
-//   id={this.props.id || this.props.ref || this.props.label || this.props.name}
-//   placeholder={this.props.placeholder}
-//   name={this.props.name || this.props.label }
-//   className={this.props.inputClasses}
-//   disabled={this.disabled()}
-//   onFocus={this.focus}
-//   onChange={this.change}
-//   value={this.props.defaultValue}
-//   options={this.props.items}
-//   multi={false}
-//   searchable={false}
-//   clearable={false}
-// />

@@ -1,7 +1,8 @@
 import { PropTypes } from "react"
+import { css } from "aphrodite";
 
 import { Forms } from "../../../../core/components"
-import Styles from "../styles.css"
+import Styles from "../../AddSchedule/styles-css"
 
 const Layout = ({ classes, accounts, state, preFill, showInputs, format, selectVal, inputVal }) => (
   <div>
@@ -15,7 +16,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format, selectV
       name="select-account"
       id={`${state.id}_select`}
       hideLabel={true}
-      classes={["soft-bottom", "display-inline-block", `${Styles.select}`]}
+      classes={["soft-bottom", "display-inline-block", `${css(Styles.select)}`]}
       inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
       placeholder="select fund"
       onChange={showInputs}
@@ -37,7 +38,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format, selectV
               hideLabel={true}
               type="tel"
               classes={["soft-bottom", "input--active", "display-inline-block"]}
-              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${Styles["show-placeholder"]}`}
+              inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
               placeholder="$0.00"
               format={format}
               defaultValue={preFill(state.id)}

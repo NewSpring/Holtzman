@@ -1,8 +1,9 @@
-import { Component, PropTypes } from "react"
-import ReactDom from "react-dom"
-import { routeActions } from "../../store/routing"
+import { Component, PropTypes } from "react";
+import ReactDOM from "react-dom";
+import { css } from "aphrodite";
 
-import Styles from "./nav.css"
+import { routeActions } from "../../store/routing";
+import styles from "./nav-css";
 
 export default class NavLink extends Component {
 
@@ -20,7 +21,8 @@ export default class NavLink extends Component {
       "soft-sides@handheld",
       "soft-half-ends@lap-and-up",
       "one-whole@lap-and-up",
-      "plain"
+      "plain",
+      css(styles.button),
     ];
 
     if (this.props.fgColor === "light") {
@@ -43,10 +45,11 @@ export default class NavLink extends Component {
 
     let classes = [
       "floating",
-      Styles["locked"],
+      "locked-ends",
+      "locked-sides",
     ];
 
-    if (navItem.label && !Meteor.isCordova) {
+    if (navItem.label && process.env.WEB) {
       classes.push("soft-half-top@handheld");
     }
 
@@ -80,14 +83,14 @@ export default class NavLink extends Component {
       this.props.navItem.isActive(this.props) &&
       this.props.navItem.activeIcon
     ) {
-      icon = this.props.navItem.activeIcon; 
+      icon = this.props.navItem.activeIcon;
     }
 
     const iconClasses = `${icon} display-block`;
     let { navItem } = this.props
 
     let itemStyle = {}
-    if (Meteor.isCordova) {
+    if (process.env.NATIVE) {
       itemStyle = {
         marginTop: "-3px"
       }
@@ -102,7 +105,7 @@ export default class NavLink extends Component {
           <div className="floating__item">
             <i className={iconClasses} style={itemStyle}></i>
             {(() => {
-              if (navItem.label && !Meteor.isCordova) {
+              if (navItem.label && process.env.WEB) {
                 return (
                   <h7 className="display-block">
                     <small className="text-center">{navItem.label}</small>

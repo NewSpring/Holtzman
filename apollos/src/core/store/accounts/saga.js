@@ -1,8 +1,9 @@
 import "regenerator-runtime/runtime"
 import { take, put, cps, call } from "redux-saga/effects"
+import gql from "apollo-client/gql";
 
 import { GraphQL } from "../../graphql"
-import { accounts } from "../../methods"
+import accounts from "../../methods/accounts/client"
 import { addSaga } from "../utilities"
 
 import actions from "./actions"
@@ -193,13 +194,11 @@ addSaga(function* account(getState) {
 
         } else {
 
-          // force fetch info
-          // @TODO figure out caching issues?
-          let personQuery = `
-            {
-              person(cache: false) {
+          const query = gql`
+            query GetPersonData {
+              person: currentPerson {
                 age
-                birthdate
+                birthDate
                 birthDay
                 birthMonth
                 birthYear
@@ -223,14 +222,15 @@ addSaga(function* account(getState) {
                 email
                 phoneNumbers {
                   number
-                  formated
                 }
                 photo
               }
             }
-          `
-          const lookup = () => (GraphQL.query(personQuery))
-          const { person } = yield call(lookup)
+          `;
+
+          // forceFetch for someone signs out and signs back in again
+          const { data } = yield GraphQL.query({ query, forceFetch: true });
+          const { person } = data;
 
           if (person) {
             yield put(actions.person(person))

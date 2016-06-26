@@ -20,6 +20,37 @@ function mapArrayToObj(array){
   return obj
 }
 
+// query GetScheduleTransactions {
+//   transactions: scheduledTransactions(isActive: false) {
+//     numberOfPayments
+//     next
+//     end
+//     id
+//     reminderDate
+//     code
+//     gateway
+//     start
+//     date
+//     details {
+//       amount
+//       account {
+//         name
+//         description
+//       }
+//     }
+//     payment {
+//       paymentType
+//       accountNumber
+//       id
+//     }
+//     schedule {
+//       value
+//       description
+//     }
+//   }
+// }
+
+
 function getSchedules(dispatch) {
   let query = `
     query ScheduledTransactions {

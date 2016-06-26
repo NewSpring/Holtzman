@@ -2,7 +2,7 @@
   Shared store
 */
 
-import { createReducer } from "apollos/core/store/utilities"
+import { createReducer } from "../utilities"
 
 let brand = "#6BAC43"
 const initial = {

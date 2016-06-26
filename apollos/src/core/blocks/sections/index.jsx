@@ -6,7 +6,11 @@ import { Headerable } from "../../../core/mixins/"
 
 import { Sections } from "../../collections"
 import modal from "../../store/modal"
-import { sections as sectionActions, nav as navActions } from "../../store"
+
+import {
+  sections as sectionActions,
+  nav as navActions,
+} from "../../store"
 
 import Groups from "./Groups"
 
@@ -18,7 +22,7 @@ export default class SectionsContainer extends Component {
 
   componentDidMount() {
     this.props.dispatch(navActions.setLevel("TOP"))
-    if (!Meteor.isCordova) {
+    if (process.env.WEB) {
       this.props.dispatch(modal.update({
         keepNav: true,
         modalBackground: "light",

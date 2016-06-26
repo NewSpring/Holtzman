@@ -1,6 +1,6 @@
 import { Component } from "react"
-
-import Styles from "./FeedItemSkeleton.css"
+import { css } from "aphrodite";
+import Styles from "./FeedItemSkeleton-css"
 
 export default class FeedItemSkeleton extends Component {
 
@@ -9,7 +9,7 @@ export default class FeedItemSkeleton extends Component {
       "rounded-top",
       "ratio--square",
       "background--light-tertiary",
-      Styles["load-item"]
+      css(Styles["load-item"])
     ];
 
     return classes.join(" ")
@@ -20,7 +20,7 @@ export default class FeedItemSkeleton extends Component {
       "one-whole",
       "push-half-bottom",
       "background--light-tertiary",
-      Styles["fake-text"]
+      css(Styles["fake-text"])
     ];
 
     return classes.join(" ")
@@ -31,7 +31,7 @@ export default class FeedItemSkeleton extends Component {
       "two-thirds",
       "push-bottom",
       "background--lirght-tertiary",
-      Styles["fake-text"]
+      css(Styles["fake-text"])
     ];
 
     return classes.join(" ")
@@ -41,7 +41,7 @@ export default class FeedItemSkeleton extends Component {
     let classes = [
       "one-fifth",
       "background--light-tertiary",
-      Styles["fake-text-small"]
+      css(Styles["fake-text-small"])
     ];
 
     return classes.join(" ")

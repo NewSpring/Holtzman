@@ -1,9 +1,10 @@
 import { Component, PropTypes} from "react"
+import gql from "apollo-client";
 
-import { GraphQL } from "../../graphql"
+import { GraphQL } from "../../graphql";
 import Split, { Left, Right } from "../../blocks/split"
 
-import ResetPassword from "./reset-password"
+// import ResetPassword from "./reset-password"
 
 const Template = (props) => {
 
@@ -32,13 +33,13 @@ const Template = (props) => {
 }
 
 const Routes = [
-  {
-    path: "_",
-    component: Template,
-    childRoutes: [
-      { path: "reset-password/:token", component: ResetPassword },
-    ]
-  },
+  // {
+  //   path: "_",
+  //   component: Template,
+  //   childRoutes: [
+  //     { path: "reset-password/:token", component: ResetPassword },
+  //   ]
+  // },
   {
     path: "/$*",
     onEnter: (location, replaceState, callback) => {
@@ -49,41 +50,26 @@ const Routes = [
 
       let [fund, amount] = url.split("/")
 
-      let compare = (accounts) => {
-        for (let account of accounts) {
-          let smallname = account.name
-            .replace(/\s+/g, "")
-            .toLowerCase()
-
-          let dest = `/give/campaign/${account.name}`
-
-          if (amount) {
-            dest += `?${account.name}=${amount}`
-          }
-
-          if (smallname === fund) {
-            replaceState(null, dest)
-            callback()
+      const query = gql`
+        query CashTag($tag: String!) {
+          account: accountFromCashTag(cashTag: $tag) {
+            name
           }
         }
-      }
+      `;
+      const variables = { tag: fund };
 
-      GraphQL.query(`
-        {
-          accounts: allFinancialAccounts(limit: 100, ttl: 8640) {
-            description
-            name
-            id
-            summary
-            image
-            order
-          }
-        }`).then(({ accounts }) => {
-          if (accounts.length) {
-            compare(accounts)
-          }
-        })
+      GraphQL.query({ query, variables })
+        .then(({ data }) => {
+          console.log(data);
+          const { account } = data;
+          let dest = `/give/campaign/${account.name}`
 
+          if (amount) dest += `?${account.name}=${amount}`;
+
+          replaceState(null, dest);
+          callback();
+        });
     }
   }
 ]

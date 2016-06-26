@@ -1,102 +1,37 @@
 import { Component, PropTypes} from "react"
-import { connect } from "react-redux"
+import { connect } from "react-apollo"
+import gql from "apollo-client/gql";
 import Moment from "moment"
 
-import { GraphQL } from "../../../../core/graphql"
-
-import { Campuses, States } from "../../../../core/collections"
-import { nav, campuses as campusActions, accounts as accountsActions } from "../../../../core/store"
+import { accounts as accountsActions } from "../../../../core/store"
 import { update } from "../../../../core/methods/accounts/client/"
 
-import { Loading, Error } from "../../../../core/components/states"
+import { Loading, Error as Err } from "../../../../core/components/states"
 
 import Success from "../Success"
 import Layout from "./Layout"
 
 
-function getCampuses(dispatch) {
-  let query = `
-    {
-      campuses: allCampuses {
-        name
-        shortCode
-        id
-        locationId
-      }
-    }
-  `
-
-  return GraphQL.query(query)
-    .then(({ campuses }) => {
-
-      let mappedObj = {}
-      for (let campus of campuses) {
-        mappedObj[campus.id] = campus
-      }
-
-      dispatch(campusActions.add(mappedObj))
-
-    })
-
-}
-
-// @TODO move to saga?
-function getUser(id, dispatch) {
-
-  // this is probably to heavy of a universal call?
-
-  // @TODO figure out caching issues?
-  let personQuery = `
-    {
-      person(cache: false) {
-        age
-        birthdate
-        birthDay
-        birthMonth
-        birthYear
-        campus(cache: false) {
+const mapQueriesToProps = () => ({
+  campuses: {
+    query: gql`
+      query GetCampuses {
+        campuses {
           name
           shortCode
           id
+          locationId
         }
-        home {
-          city
-          country
-          id
-          zip
-          state
-          street1
-          street2
-        }
-        firstName
-        lastName
-        nickName
-        email
-        phoneNumbers {
-          number
-          formated
-        }
-        photo
       }
-    }
-  `
+    `,
+  },
+  person: {
+    query: gql`
 
-  return GraphQL.query(personQuery)
-    .then(({ person }) => {
-      if (person) {
-        dispatch(accountsActions.person(person))
-      }
-
-    })
-
-}
-
-const map = (state) => ({
-  person: state.accounts.person,
-  campuses: state.campuses.campuses,
-})
-
-@connect(map)
+    `,
+  },
+});
+@connect({ mapQueriesToProps })
 export default class PersonalDetails extends Component {
 
   state = {
@@ -104,23 +39,13 @@ export default class PersonalDetails extends Component {
     state: "default"
   }
 
-  static fetchData(getStore, dispatch){
-    return getCampuses(dispatch)
-  }
-
   componentWillMount(){
     this.props.dispatch(nav.setLevel("BASIC_CONTENT"))
-  }
-
-  componentDidMount(){
-    const { dispatch } = this.props
-    return getCampuses(dispatch)
   }
 
   componentWillUnmount(){
     this.props.dispatch(nav.setLevel("TOP"))
   }
-
 
   getDays = () => {
 
@@ -177,7 +102,7 @@ export default class PersonalDetails extends Component {
 
 
       this.setState({ state: "success" })
-      getUser(Meteor.userId(), this.props.dispatch)
+      this.props.person.refetch()
         .then(() => {
           this.setState({ state: "default"})
         })
@@ -189,17 +114,10 @@ export default class PersonalDetails extends Component {
 
   render () {
 
-    let campuses = []
-    for (let campus in this.props.campuses) {
-      campuses.push(this.props.campuses[campus])
-    }
-
-    campuses || (campuses = [])
-    campuses = campuses.map((campus) => {
+    let { campuses } = this.props.campuses
+    campuses = campuses && campuses.map((campus) => {
       return { label: campus.name, value: campus.id }
     })
-
-
 
     const { state } = this.state
     switch (state) {
@@ -217,7 +135,7 @@ export default class PersonalDetails extends Component {
             saveMonth={this.saveMonth}
             days={this.getDays()}
             years={this.getYears()}
-            person={this.props.person}
+            person={this.props.person || {}} // XXX perf
             campuses={campuses}
           />
         )

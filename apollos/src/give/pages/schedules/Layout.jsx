@@ -1,6 +1,6 @@
 
 import { Component, PropTypes} from "react"
-import ReactDom from "react-dom"
+import ReactDOM from "react-dom"
 import Moment from "moment"
 // import { VelocityComponent } from "velocity-react"
 import { Link } from "react-router"
@@ -16,10 +16,6 @@ import { AccountType } from "../../components"
 
 
 export default class Layout extends Component {
-
-  static contextTypes = {
-    shouldAnimate: PropTypes.bool
-  }
 
   state = {
     expandedSchedule: null
@@ -48,7 +44,7 @@ export default class Layout extends Component {
   }
 
   formatDate = (date) => {
-    return Moment(date).format("MMM D, YYYY")
+    return Moment(new Date(date)).format("MMM D, YYYY")
   }
 
   monentize = (value, fixed) => {
@@ -82,7 +78,8 @@ export default class Layout extends Component {
     const {
       schedules,
       accounts,
-      ready,
+      schedulesReady,
+      accountsReady,
       recoverableSchedules,
       cancelSchedule,
       confirm,
@@ -130,7 +127,17 @@ export default class Layout extends Component {
             <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
               <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
                 <div className="soft-double-ends@anchored">
-                  <AddSchedule accounts={accounts}/>
+                  {(() => {
+                    if (!accountsReady || !accounts || !accounts.length) {
+                      return (
+                        <div className="text-center soft">
+                          <Spinner styles={{width: "40px", height: "40px"}}/>
+                        </div>
+                      )
+                    }
+                    return <AddSchedule accounts={accounts}/>
+                  })()}
+
                 </div>
               </div>
             </div>
@@ -153,7 +160,7 @@ export default class Layout extends Component {
                   )
                 }
 
-                if (!schedules.length && !ready) {
+                if ((schedules && !schedules.length) && !schedulesReady) {
                   // loading
                   return (
                     <div className="text-center soft">
@@ -162,7 +169,7 @@ export default class Layout extends Component {
                   )
                 }
 
-                if (!schedules.length && ready) {
+                if ((schedules && !schedules.length) && schedulesReady) {
                   return (
                     <div className="text-center soft-sides">
                       <p><em>You don't have any active scheduled contributions. If you created a new schedule, it may take a few minutes to be reflected here</em></p>
@@ -173,7 +180,7 @@ export default class Layout extends Component {
 
                 return (
                   <div>
-                    {schedules.map((schedule, i) => {
+                    {schedules && schedules.map((schedule, i) => {
 
                       if (!schedule.details || !schedule.details[0].account) {
                         return null
@@ -259,7 +266,7 @@ export default class Layout extends Component {
                         My Completed Schedules
                       </h4>
 
-                      {schedules.map((schedule, i) => {
+                      {schedules && schedules.map((schedule, i) => {
 
                         if (!schedule.details || !schedule.details[0].account) {
                           return null

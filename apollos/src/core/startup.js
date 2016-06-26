@@ -3,13 +3,10 @@
 import "./util/regex"
 
 if (Meteor.isClient) {
-  require("velocity-animate")
-  require("velocity-animate/velocity.ui")
-  Meteor.subscribe("sections")
-  // Meteor.subscribe("campuses")
+  require("velocity-animate");
+  require("velocity-animate/velocity.ui");
 }
 
 if (Meteor.isServer) {
-  require("./graphql/server")
-  require("./publications")
+  require("./publications");
 }
