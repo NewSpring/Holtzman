@@ -33,19 +33,13 @@ const mapQueriesToProps = () => ({
 
 @connect({ mapQueriesToProps })
 class Template extends Component {
-  render () {
-    return <Layout {...this.props} />
-  }
+  render () { return <Layout {...this.props} />; }
 }
 
 // Bind reactive data to component
 const TemplateWithData = createContainer(() => {
   let alive = true;
-  try {
-    // XXX why isn't this ready in time?
-   alive = serverWatch.isAlive("ROCK");
-  } catch (e) {}
-
+  try {  alive = serverWatch.isAlive("ROCK");} catch (e) {}
   return { alive };
 }, Template);
 

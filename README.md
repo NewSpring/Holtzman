@@ -24,10 +24,33 @@ This repo contains the core Apollos framework, as well as the sites that share t
 
 - `/apollos`: shared code
 - `/sites`: root site directory
-  - `/app`: native mobile app
-  - `/my.newspring.cc`: give site
+  - `/newspring`: newspring.cc (currently my.newspring.cc)
 
-Information on running the individual sites can be found in their respective root directories.
+## Prerequisites
+
+- [Meteor](curl https://install.meteor.com/ | sh): `curl https://install.meteor.com/ | sh`;  
+- [Node](https://nodejs.org/en/download/)
+
+## Local Development
+
+To install, clone down this repo and run `npm install && npm link`. This will bind `apollos` to your system to be used to run this app.
+
+> *NOTICE*
+Until meteor 1.4 ships (with native node support), you need to run ` meteor npm run` before each of these commands. For instance: `meteor npm run apollos run newspring`
+This is due to Meteor running a different version of node. See [this](https://github.com/meteor/meteor/issues/4314) for a more detailed explanation.
+During this period, you must also use `--` as a break when passing options. For instance: `meteor npm run apollos newspring -- --native`
+
+`apollos setup <site>`: This command will bootstrap individual sites. This may take some time.
+
+`apollos run <site>`: This will start a local server to serve the site and print its address in your console.
+
+`apollos run <site> --native`: This will run the native version of the application but allow you to work on most of the code in your web browser.
+
+`apollos run <site> --ios`: This will run the native app of a given site in the iOS simulator
+
+`apollos run <site> --android`: This will run the native app of a given site in the android simulator
+
+`apollos run <site> --ios --device`: This will run the native app of a given site through xCode so it can be run on a local device
 
 ## Deploys
 

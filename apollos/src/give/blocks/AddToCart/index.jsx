@@ -5,11 +5,7 @@ import { connect } from "react-redux"
 import { Forms, Loading } from "../../../core/components"
 
 import { give as giveActions } from "../../store"
-
-
 import Layout from "./Layout"
-import Square from "./Square"
-
 
 // We only care about the give state
 const map = (state) => ({ give: state.give })
