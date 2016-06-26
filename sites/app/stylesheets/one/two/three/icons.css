@@ -125,3 +125,12 @@
 .icon-like-solid:before {
   content: "\42";
 }
+.icon-volume:before {
+  content: "\66";
+}
+.icon-mute:before {
+  content: "\48";
+}
+.icon-fullscreen:before {
+  content: "\4a";
+}
