@@ -1,56 +1,38 @@
 import { Component, PropTypes} from "react"
-import { connect } from "react-redux"
+import { connect } from "react-apollo"
+import gql from "apollo-client/gql";
 
-import { GraphQL } from "../../../core/graphql"
 import Authorized from "../../../core/blocks/authorzied"
 import { nav as navActions } from "../../../core/store"
-
-import { transactions as transactionActions } from "../../store"
 
 import Layout from "./Layout"
 import Details from "./Details"
 
-
-function getTransactions(data, dispatch) {
-  const { size, skip } = data
-  let query = `
-    {
-      transactions: allFinanicalTransactions(cache: false, limit: ${size}, skip: ${skip}) {
-        id
-        date
-        status
-        summary
-        details {
+const mapQueriesToProps = () => ({
+  data: {
+    query: gql`
+      query GetTransactions($limit: Int, $skip: Int) {
+        transactions(limit: $limit, skip: $skip) {
           id
-          amount
-          account {
-            id
-            name
-          }
           date
+          status
+          summary
+          details {
+            id
+            amount
+            account {
+              id
+              name
+            }
+          }
         }
       }
-    }
-  `
-  return GraphQL.query(query)
-    .then(({ transactions }) => {
-      let mappedObj = {}
-
-      for (const transaction of transactions) {
-        mappedObj[transaction.id] = transaction
-      }
-
-      dispatch(transactionActions.add(mappedObj))
-
-      return transactions
-    })
-}
-
-const map = (state) => ({
-  transactions: state.transactions.transactions
-})
-
-@connect(map)
+    `,
+    variables: { limit: 20, skip: 0 }
+  },
+});
+const defaultArray = [];
+@connect({ mapQueriesToProps })
 export default class Template extends Component {
 
   state = {
@@ -61,46 +43,6 @@ export default class Template extends Component {
     loaded: false
   }
 
-  static fetchData(getStore, dispatch) {
-    let size = 20,
-        skip = 0 * size;
-
-    return getTransactions({ skip, size }, dispatch)
-  }
-
-  getData = () => {
-
-    const { dispatch } = this.props
-
-    let size = this.state.pageSize,
-        skip = this.state.page * size;
-
-    if (this.state.done) {
-      return
-    }
-
-    if (Object.keys(this.props.transactions).length === ((size + 1) * this.state.pageSize)) {
-      return
-    }
-
-    getTransactions({ skip, size }, dispatch)
-      .then((transactions) => {
-        let done = false
-        if (transactions.length < size) {
-          done = true
-        }
-        this.setState({ done, loaded: true })
-      })
-  }
-
-  // its probably safter to not SSR giving data right?
-  componentDidMount(){
-    const { dispatch } = this.props
-
-    this.getData()
-
-  }
-
   componentDidUpdate(prevProps, prevState){
     const { page, shouldUpdate } = this.state
 
@@ -108,7 +50,11 @@ export default class Template extends Component {
       return
     }
 
-    this.getData()
+    let limit = this.state.pageSize,
+        skip = this.state.page * limit;
+
+    console.log(limit, skip, "refetching...");
+    this.props.data.refetch({ limit, skip });
   }
 
   // @TODO fix scroll loading
@@ -127,9 +73,9 @@ export default class Template extends Component {
     if ( percentage > 0.5 && this.state.shouldUpdate) {
       let nextPage = this.state.page + 1
 
-      // //
-      if (Object.keys(this.props.transactions).length === ((nextPage + 1) * this.state.pageSize)) {
-        return
+      const { transactions } = this.props.data;
+      if ((transactions && transactions.length) === ((nextPage + 1) * this.state.pageSize)) {
+        return;
       }
 
       this.setState({
@@ -139,34 +85,26 @@ export default class Template extends Component {
 
       // wait a bit to prevent paging multiple times
       setTimeout(() => {
-        if (nextPage * this.state.pageSize > Object.keys(this.props.transactions).length) {
+        const { transactions } = this.props.data;
+        if (nextPage * this.state.pageSize > (transactions && transactions.length)) {
           this.setState({ done: true, shouldUpdate: false });
         } else {
           this.setState({ shouldUpdate: true });
         }
-      }, 1000);
+      }, 250);
     }
   }
 
 
   render () {
 
-    let transactions = []
-
-    for (const transaction in this.props.transactions){
-      transactions.push(this.props.transactions[transaction])
-    }
-
-    transactions = _.sortBy(transactions, "date").reverse()
-
-
     return (
       <Layout
         onScroll={this.onScroll}
         state={this.state}
-        transactions={transactions}
+        transactions={this.props.data.transactions || defaultArray}
         alive={true}
-        ready={this.state.loaded}
+        ready={!this.props.data.loading}
       />
     )
   }
@@ -180,7 +118,7 @@ const Routes = [
     indexRoute: { component: Template },
     childRoutes: [
       {
-        path: ":id/:account",
+        path: ":id",
         component: Details
       }
     ]

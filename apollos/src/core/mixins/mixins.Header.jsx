@@ -1,4 +1,3 @@
-import Helpers from "app/client/helpers"
 import headerActions from "../store/header/"
 
 const Header = {

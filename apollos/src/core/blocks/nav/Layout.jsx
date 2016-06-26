@@ -1,10 +1,10 @@
 import React, { PropTypes } from "react"
+import { css } from "aphrodite";
 
 import NavLink from "./Link"
-import styles from "./nav.css";
+import styles from "./nav-css";
 
 export default class NavLayout extends React.Component {
-
 
   layoutClasses = () => {
     let classes = [
@@ -23,7 +23,7 @@ export default class NavLayout extends React.Component {
     if (this.props.classes) {
       classes.concat(this.props.classes);
     } else {
-      classes.push(styles["nav-bar"]);
+      classes.push(css(styles["nav-bar"]));
     }
 
     return classes.join(" ");

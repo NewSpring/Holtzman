@@ -1,4 +1,3 @@
-import Global from "../blocks/global"
 import Util from "./util"
 
 /*
@@ -9,39 +8,39 @@ import Util from "./util"
   click links that are relative, and 404.
 
 */
-const NotFound = [
-  {
-    path: "*",
-    onEnter: function (nextState, replaceState) {
-      let link = `${nextState.location.pathname}${nextState.location.search}${nextState.location.hash}`
-
-      if (Meteor.isCordova) {
-        window.open(`//newspring.cc${link}`)
-        return
-      }
-
-      if (Meteor.isClient) {
-        // stay at current route while we wait on the browser
-        let current = [...nextState.location.previous].pop()
-        if (current) {
-          replaceState(null, current, nextState.location.search)
-        }
-
-        // leave when the browser will let you
-        window.location = `https://newspring.cc${link}`
-        return
-      }
-
-      // replaceState(null, `//newspring.cc${link}`)
-
-    }
-  }
-]
+// const NotFound = [
+//   {
+//     path: "*",
+//     onEnter: function (nextState, replaceState) {
+//       let link = `${nextState.location.pathname}${nextState.location.search}${nextState.location.hash}`
+//
+//       if (Meteor.isCordova) {
+//         window.open(`//newspring.cc${link}`)
+//         return
+//       }
+//
+//       if (Meteor.isClient) {
+//         // stay at current route while we wait on the browser
+//         let current = [...nextState.location.previous].pop()
+//         if (current) {
+//           replaceState(null, current, nextState.location.search)
+//         }
+//
+//         // leave when the browser will let you
+//         window.location = `https://newspring.cc${link}`
+//         return
+//       }
+//
+//       // replaceState(null, `//newspring.cc${link}`)
+//
+//     }
+//   }
+// ]
 
 const Routes = {
   childRoutes: [].concat(
     Util.Routes,
-    NotFound
+    // NotFound
   )
 }
 

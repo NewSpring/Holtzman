@@ -1,16 +1,12 @@
 import { Component, PropTypes} from "react"
-import ReactDom from "react-dom"
-import { connect } from "react-redux"
+import ReactDOM from "react-dom"
+import { connect } from "react-apollo";
+import gql from "apollo-client/gql";
 import Moment from "moment"
 
-import { GraphQL } from "../../../core/graphql"
-import { Controls, Forms } from "../../../core/components"
-import OnBoard from "../../../core/blocks/accounts"
-import {
-  modal,
-  campuses as campusActions,
-  collections as collectionActions
- } from "../../../core/store"
+import { Controls, Forms } from "../../../core/components";
+import OnBoard from "../../../core/blocks/accounts";
+import { modal } from "../../../core/store";
 
 
 import { give as giveActions } from "../../store"
@@ -20,32 +16,77 @@ import Loading from "./Loading"
 import Err from "./Err"
 import Success from "./Success"
 
+const mapQueriesToProps = () => ({
+  data: {
+    query: gql`
+      fragment DefinedValues on DefinedValue {
+        name: description
+        value
+        id
+        _id
+      }
 
+      query GetCheckoutData($state: Int!, $country: Int!) {
+        states: definedValues(id: $state, all: true) {
+          ...DefinedValues
+        }
+        countries: definedValues(id: $country, all: true) {
+          ...DefinedValues
+        }
+        person: currentPerson {
+          firstName
+          nickName
+          lastName
+          email
+          campus {
+            name
+          }
+          home {
+            street1
+            street2
+            city
+            state
+            zip
+            country
+          }
+        }
+        savedPayments {
+          name
+          id
+          date
+          payment {
+            accountNumber
+            paymentType
+          }
+        }
+        campuses {
+          name
+        }
+      }
+    `,
+    variables: {
+      stateId: 28,
+      countryId: 45,
+    }
+  }
+});
+const defaultArray = []; // empty array for usage as default in render
 // We only care about the give state
-const map = (state) => ({
+const mapStateToProps = (state) => ({
   give: state.give,
-  person: state.accounts.person,
-  campuses: state.campuses.campuses,
-  states: state.collections.states,
-  countries: state.collections.countries,
-  savedAccounts: state.collections.savedAccounts
-})
+});
 
-@connect(map)
+@connect({ mapStateToProps, mapQueriesToProps })
 export default class Give extends Component {
 
   componentWillMount() {
-    const { savedAccount } = this.props.give
-
     this.updateData()
 
-    if (!savedAccount.id) {
-      return
-    }
+    const { savedAccount } = this.props.give
+    if (!savedAccount.id) return;
 
     this.props.dispatch(giveActions.setProgress(4))
   }
-
 
   componentWillUnmount(){
     if (this.props.give.state != "default") {
@@ -54,35 +95,12 @@ export default class Give extends Component {
     }
   }
 
-  componentDidMount() {
-
-    const { dispatch } = this.props
-
-    let query = `
-      {
-        states: allDefinedValues(id: 28) {
-          name: description
-          value
-          id
-        }
-        countries: allDefinedValues(id: 45) {
-          name: description
-          value
-          id
-        }
-      }
-    `
-
-    GraphQL.query(query)
-      .then(({ states, countries }) => {
-        dispatch(collectionActions.insert("states", states, "id"))
-        dispatch(collectionActions.upsertBatch("countries", countries, "id"))
-      })
-  }
-
   updateData = () => {
 
-    const { person } = this.props
+    const { data } = this.props
+    if (data.loading || !data.person) return;
+
+    const { person } = data;
 
     let { campus, home } = person
     campus || (campus = {})
@@ -203,37 +221,21 @@ export default class Give extends Component {
       scheduleToRecover
     } = this.props.give
 
-    let savedAccounts = []
-    for (let account in this.props.savedAccounts) {
-      savedAccounts.push(this.props.savedAccounts[account])
-    }
+    let { campuses, states, countries } = this.props.data
 
-    let campuses = []
-    for (let campus in this.props.campuses) {
-      campuses.push(this.props.campuses[campus])
-    }
-
+    campuses || (campuses = defaultArray);
     campuses = campuses.map((x) => ({
       label: x.name,
       value: x.name
     }))
 
-    let states = []
-    for (let state in this.props.states) {
-      states.push(this.props.states[state])
-    }
-
+    states || (states = defaultArray);
     states = states.map((x) => ({
       label: x.name,
       value: x.value
     }))
 
-
-    let countries = []
-    for (let country in this.props.countries) {
-      countries.push(this.props.countries[country])
-    }
-
+    countries || (countries = defaultArray);
     countries = countries.map((x) => ({
       label: x.name,
       value: x.value
@@ -301,7 +303,7 @@ export default class Give extends Component {
               countries={countries}
               schedules={schedules}
               goToStepOne={this.goToStepOne}
-              savedAccounts={savedAccounts}
+              savedAccounts={this.props.data.savedPayments || defaultArray} // XXX perf
               changeSavedAccount={this.changeSavedAccount}
               scheduleToRecover={scheduleToRecover}
             >

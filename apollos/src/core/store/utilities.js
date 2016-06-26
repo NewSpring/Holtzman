@@ -1,7 +1,6 @@
 
 // stored state for use with other packages
 const reducers = {}
-import Error from "../util/error"
 
 const addReducer = (obj) => {
 
@@ -69,6 +68,4 @@ export default {
 
   sagas,
   addSaga,
-
-
 }

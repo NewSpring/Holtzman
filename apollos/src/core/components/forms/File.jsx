@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import ReactDom from "react-dom";
+import ReactDOM from "react-dom";
 
 import Label from "./components/Label"
 
@@ -160,7 +160,7 @@ export default class File extends Component {
 
         <input
           ref="apollos-input"
-          id={this.props.id || this.props.ref || this.props.name || this.props.label}
+          id={this.props.id || this.props.name || this.props.label}
           type="file"
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label }

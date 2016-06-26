@@ -1,9 +1,11 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
-import { ImageLoader } from "../../components/loading"
-import Styles from "../../components/loading/FeedItemSkeleton.css"
+import { css } from "aphrodite";
 
-import Hover from "./right.css"
+import { ImageLoader } from "../../components/loading"
+import Styles from "../../components/loading/FeedItemSkeleton-css"
+
+import Hover from "./right-css"
 
 const DefaultWrapper = (props) => (
   <section {...props} className={props.imageclasses.join(" ")}>{props.children}</section>
@@ -29,7 +31,7 @@ export default class Right extends Component {
       "panel__item--right",
       "hard",
       "flush",
-      Hover.right,
+      css(Hover.right),
       "transition"
     ];
 
@@ -85,7 +87,7 @@ export default class Right extends Component {
   // context from ImageLoader
   preloader() {
     return (
-      <section className={`${this.imageclasses.join(" ")} ${Styles["load-item"]}`}>
+      <section className={`${this.imageclasses.join(" ")} ${css(Styles["load-item"])}`}>
         { this.children ? this.children : null }
       </section>
     );

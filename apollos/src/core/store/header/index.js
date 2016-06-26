@@ -3,7 +3,7 @@
 */
 import reducer from "./reducer"
 import saga from "./saga"
-import { addReducer } from "apollos/core/store/utilities"
+import { addReducer } from "../utilities"
 
 addReducer({
   header: reducer

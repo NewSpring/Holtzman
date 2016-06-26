@@ -2,8 +2,7 @@ import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 
 import { ImageLoader } from "../loading"
-
-import Styles from "../loading/FeedItemSkeleton.css"
+import Styles from "../loading/FeedItemSkeleton-css"
 
 let Wrapper = (props) => (
   <div {...props}>
@@ -73,7 +72,7 @@ export default class Card extends Component {
   // context from ImageLoader
   preloader() {
     return (
-      <div className={`${this.imageclasses.join(" ")} ${Styles["load-item"]}`}>
+      <div className={`${this.imageclasses.join(" ")}`}>
         <div className="ratio__item"></div>
       </div>
     );
@@ -96,8 +95,7 @@ export default class Card extends Component {
       let imageclasses = [
         "background--fill",
         "card__image",
-        "background-light-tertiary"
-
+        "background-light-tertiary",
       ]
 
       if (image.ratio) {
@@ -112,9 +110,7 @@ export default class Card extends Component {
 
       let style
       if (image.full != true) {
-        style = {
-          backgroundImage: `url(${image.url})`
-        }
+        style = { backgroundImage: `url(${image.url})` }
       }
 
       return (

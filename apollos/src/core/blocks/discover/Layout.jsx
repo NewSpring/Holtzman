@@ -15,7 +15,7 @@ const Content = ({ loadMore, search }) => {
 const getStyle = () => {
   const style = {};
 
-  if(Meteor.isCordova) {
+  if (process.env.NATIVE) {
     style.marginTop = "50px";
   }
 

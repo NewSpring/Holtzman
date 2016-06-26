@@ -1,7 +1,11 @@
-import { Component, PropTypes } from "react"
-import { connect } from "react-redux"
+import { Component, PropTypes } from "react";
+import { connect } from "react-redux";
 
-import { nav as navActions, modal as modalActions } from "../../store"
+import {
+  nav as navActions,
+  modal as modalActions
+} from "../../store";
+
 import NavLayout from "./Layout"
 
 // We only care about the navigation state

@@ -4,8 +4,6 @@ import { Link } from "react-router"
 import { VelocityTransitionGroup } from "velocity-react"
 
 import { ImageLoader } from "../../components/loading"
-import LoadingStyles from "../../components/loading/FeedItemSkeleton.css"
-
 
 const ExternalLinkWrapper = (props) => {
 
@@ -37,7 +35,7 @@ function preloader() {
   return (
     <div
       id={this.id}
-      className={`${this.imageclasses.join(" ")} ${LoadingStyles["load-item"]}`}
+      className={`${this.imageclasses.join(" ")}`}
       >
       {this.children}
     </div>

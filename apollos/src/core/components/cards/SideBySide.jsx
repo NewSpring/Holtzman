@@ -1,9 +1,10 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
+import { css } from "aphrodite";
 
 import { ImageLoader } from "../loading"
 
-import Styles from "../loading/FeedItemSkeleton.css"
+import Styles from "../loading/FeedItemSkeleton-css"
 
 let Wrapper = (props) => (
   <div {...this.props}>
@@ -17,8 +18,9 @@ export default class Card extends Component {
     classes: PropTypes.array,
     theme: PropTypes.string,
     link: PropTypes.string,
-    image: PropTypes.object,
-    styles: PropTypes.object
+    fallbackImage: PropTypes.string,
+    images: PropTypes.array,
+    styles: PropTypes.object,
   }
 
   itemClasses = () => {
@@ -58,9 +60,9 @@ export default class Card extends Component {
       overflow: "hidden"
     }
 
-    if (this.props.image && this.props.image.full) {
-      defaultStyles.backgroundImage = `url(${this.props.image.url})`
-    }
+    // if (this.props.image && this.props.image.full) {
+    //   defaultStyles.backgroundImage = `url(${this.props.image.url})`
+    // }
 
     return defaultStyles
   }
@@ -68,7 +70,7 @@ export default class Card extends Component {
   // context from ImageLoader
   preloader() {
     return (
-      <div className={`${this.imageclasses.join(" ")} ${Styles["load-item"]}`}>
+      <div className={`${this.imageclasses.join(" ")} ${css(Styles["load-item"])}`}>
         <div className="ratio__item"></div>
       </div>
     );
@@ -83,69 +85,71 @@ export default class Card extends Component {
     );
   }
 
-  createImage = () => {
+  getResponsiveImage = () => {
+    const { images } = this.props;
 
-      const { image } = this.props
-
-      if (image) {
-        let imageclasses = [
-          "background--fill",
-          "card__image",
-          "locked-ends@lap-wide-and-up",
-          "locked-sides@lap-wide-and-up",
-          "locked-ends@palm-wide",
-          "locked-sides@palm-wide",
-          "relative@palm",
-          "relative@lap"
-        ]
-
-        if (image.ratio) {
-          imageclasses.push(`ratio--${image.ratio}`)
-        } else {
-          imageclasses.push("ratio--landscape")
-        }
-
-
-        let src = image.defaultImage
-          if (typeof window != "undefined" && window != null) {
-            if (window.matchMedia("(max-width: 480px)").matches) {
-              src = image["2:1"] ? image["2:1"] : image.url
-            } else if (window.matchMedia("(max-width: 730px)").matches) {
-              src = image["1:2"] ? image["1:2"] : image.url
-            } else if (window.matchMedia("(max-width: 768px)").matches) {
-              src = image["1:1"] ? image["1:1"] : image.url
-            } else if (window.matchMedia("(max-width: 1024px)").matches) {
-              src = image["2:1"] ? image["2:1"] : image.url
-            } else if (window.matchMedia("(max-width: 1281px)").matches) {
-              src = image["1:2"] ? image["1:2"] : image.url
-            } else {
-              src = image["1:1"] ? image["1:1"] : image.url
-           }
-
-         let style
-         if (image.full != true) {
-           style = {
-             backgroundImage: `url(${src})`,
-           }
-         }
-
-        return (
-          <ImageLoader
-            src={src}
-            preloader={this.preloader}
-            renderElement={this.renderElement}
-            imageclasses={imageclasses}
-            style={style}
-          />
-        )
-      }
+    if (typeof window === "undefined" || window === null || !images) {
+      return false;
     }
+
+    let sizes = {};
+    for (let image of images) {
+      image.url = image.cloudfront ? image.cloudfront : image.s3;
+      sizes[image.fileLabel] = image;
+    }
+
+    if (window.matchMedia("(max-width: 480px)").matches) {
+      src = sizes["2:1"] ? sizes["2:1"].url : false
+    } else if (window.matchMedia("(max-width: 730px)").matches) {
+      src = sizes["1:2"] ? sizes["1:2"].url : false;
+    } else if (window.matchMedia("(max-width: 768px)").matches) {
+      src = sizes["1:1"] ? sizes["1:1"].url : false;
+    } else if (window.matchMedia("(max-width: 1024px)").matches) {
+      src = sizes["2:1"] ? sizes["2:1"].url : false;
+    } else if (window.matchMedia("(max-width: 1281px)").matches) {
+      src = sizes["1:2"] ? sizes["1:2"].url : false;
+    } else {
+      src = sizes["1:1"] ? sizes["1:1"].url : false;
+    }
+
+    return src;
+  }
+
+  createImage = () => {
+    const { defaultImage } = this.props
+
+    let imageclasses = [
+      "background--fill",
+      "card__image",
+      "locked-ends@lap-wide-and-up",
+      "locked-sides@lap-wide-and-up",
+      "locked-ends@palm-wide",
+      "locked-sides@palm-wide",
+      "relative@palm",
+      "relative@lap",
+      "ratio--landscape",
+    ]
+
+    let src = this.getResponsiveImage() || defaultImage;
+
+    let style = {
+      backgroundImage: `url(${src})`,
+    }
+
+    return (
+      <ImageLoader
+        src={src}
+        preloader={this.preloader}
+        renderElement={this.renderElement}
+        imageclasses={imageclasses}
+        style={style}
+      />
+    )
   }
 
 
   render () {
-
-    const { link, image, theme, styles, itemTheme, itemStyles } = this.props
+    const { link, theme, styles, itemTheme, itemStyles } = this.props
 
 
     let wrapperClasses = [
@@ -201,7 +205,8 @@ export default class Card extends Component {
 
       </div>
 
-    )
+    );
+
   }
 
 }

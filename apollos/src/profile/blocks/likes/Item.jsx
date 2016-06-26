@@ -1,9 +1,10 @@
 import { Component, PropTypes } from "react"
 import Moment from "moment"
 import { Link } from "react-router"
+import { css } from "aphrodite"
 
 import { ImageLoader } from "../../../core/components/loading"
-import LoadingStyles from "../../../core/components/loading/FeedItemSkeleton.css"
+import LoadingStyles from "../../../core/components/loading/FeedItemSkeleton-css"
 
 import inAppLink from "../../../core/util/inAppLink"
 
@@ -27,7 +28,7 @@ export default class LikesItem extends Component {
   preloader = () => {
     return (
       <div
-        className={`${this.imageclasses.join(" ")} ${LoadingStyles["load-item"]}`}
+        className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
         >
         {this.children}
       </div>

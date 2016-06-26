@@ -30,12 +30,12 @@ export default class Layout extends Component {
 
   containerStyles = () => {
     return {
-      marginTop: Meteor.isCordova ? "50px" : "0",
+      marginTop: process.env.NATIVE ? "50px" : "0",
     }
   }
 
   render () {
-    const { update, home, campuses, campus } = this.props
+    const { update, home, campus } = this.props
 
     let {
       city,

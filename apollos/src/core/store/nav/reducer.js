@@ -27,48 +27,38 @@ const isEqual = (path) => {
   return false
 }
 
-const profileLink = Meteor.isCordova ? "/profile" : "/profile/settings"
+const profileLink = process.env.NATIVE ? "/profile" : "/profile/settings"
 
 const sectionsAction = (props) => {
   const { modal, dispatch } = props
 
-  if (Meteor.isCordova) {
-    return routeActions.push("/sections");
-  } else {
-    discoverVisible = false
-    sectionsVisible = true
-    return modalActions.render(Sections, { keepNav: true })
-  }
+  if (process.env.NATIVE) return routeActions.push("/sections");
+
+  discoverVisible = false
+  sectionsVisible = true
+  return modalActions.render(Sections, { keepNav: true })
 };
 
 const discoverAction = (props) => {
   const { modal, dispatch } = props;
 
-  if (Meteor.isCordova) {
-    return routeActions.push("/discover");
-  } else {
-    sectionsVisible = false;
-    discoverVisible = true;
-    return modalActions.render(Discover, {
-      keepNav: true, layoutOverride: ["background--light-secondary"]
-    });
-  }
+  if (process.env.NATIVE) return routeActions.push("/discover");
+
+  sectionsVisible = false;
+  discoverVisible = true;
+  return modalActions.render(Discover, {
+    keepNav: true, layoutOverride: ["background--light-secondary"]
+  });
 };
 
 const sectionsActive = (props) => {
-  if (Meteor.isCordova) {
-    return isEqual("/sections");
-  } else {
-    return sectionsVisible && props.modal.visible;
-  }
+  if (process.env.NATIVE) return isEqual("/sections");
+  return sectionsVisible && props.modal.visible;
 };
 
 const discoverActive = (props) => {
-  if (Meteor.isCordova) {
-    return isEqual("/discover");
-  } else {
-    return discoverVisible && props.modal.visible
-  }
+  if (process.env.NATIVE) return isEqual("/discover");
+  return discoverVisible && props.modal.visible;
 };
 
 let links = {
@@ -120,7 +110,7 @@ let links = {
 }
 
 // use basic nav for web right now
-if (!Meteor.isCordova) {
+if (process.env.WEB) {
   links = {
     TOP: links.TOP,
     CONTENT: links.TOP,

@@ -1,7 +1,0 @@
-
-import "./startup"
-
-
-export default {
-
-}

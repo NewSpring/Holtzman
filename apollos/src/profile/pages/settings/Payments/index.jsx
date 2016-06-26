@@ -1,31 +1,19 @@
 import { Component, PropTypes} from "react"
-import { connect } from "react-redux"
+import { connect } from "react-apollo"
+import gql from "apollo-client/gql";
 
-import { GraphQL } from "../../../../core/graphql"
 import { nav } from "../../../../core/store"
 import { Loading } from "../../../../core/components"
 
-import { collections as collectionActions } from "../../../../core/store"
 import { give as giveActions } from "../../../../give/store"
 
 import Layout from "./Layout"
 
-@connect()
-export default class GiveNow extends Component {
-
-  state = {
-    accounts: [],
-    loaded: false
-  }
-
-  componentWillMount(){
-    this.props.dispatch(nav.setLevel("BASIC_CONTENT"))
-  }
-
-  componentDidMount(){
-    let query = `
+const mapQueriesToProps = () => ({
+  data: {
+    query: gql`
       query PaymentDetails {
-        accounts: allSavedPaymentAccounts(cache: false){
+        accounts: savedPayments {
           id
           name
           payment {
@@ -35,12 +23,17 @@ export default class GiveNow extends Component {
           }
         }
       }
-    `
+    `,
+  },
+});
 
-    return GraphQL.query(query)
-      .then(({ accounts }) => {
-        this.setState({ accounts, loaded: true })
-      })
+@connect({ mapQueriesToProps })
+export default class GiveNow extends Component {
+
+  state = { accountsRemoved: [] }
+
+  componentWillMount(){
+    this.props.dispatch(nav.setLevel("BASIC_CONTENT"))
   }
 
   componentWillUnmount(){
@@ -50,39 +43,20 @@ export default class GiveNow extends Component {
 
   remove = (e) => {
     e.preventDefault()
-
     const { id } = e.target
 
-    let accounts = this.state.accounts.filter((x) => (
-      x.id != id
-    ))
+    let accountsRemoved = [...this.state.accountsRemoved, [id]]
 
-    this.setState({ accounts: accounts })
-    this.props.dispatch(collectionActions.delete("savedAccounts", Number(id)))
+    this.setState({ accountsRemoved: accounts })
     Meteor.call("PaymentAccounts.remove", id, (err, response) => {
       console.log(err, response)
+      this.props.data.refetch(); // clear out data store for newly missing account
     })
   }
 
   render () {
-
-    return <Layout details={this.state.accounts} remove={this.remove} />
-
-    // if (!this.state.loaded) {
-    //   return (
-    //     <div className="locked-ends locked-sides floating">
-    //       <div className="floating__item">
-    //         <Loading/>
-    //       </div>
-    //     </div>
-    //   )
-    // }
-    // console.log(this.state)
-    // try {
-    //   return <Layout details={this.state.accounts} remove={this.remove} />
-    // } catch (e) {
-    //   console.log(e)
-    // }
+    const { accounts } = this.props.data;
+    return <Layout details={accounts} remove={this.remove} />
 
   }
 }
