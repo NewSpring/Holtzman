@@ -1,10 +1,10 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 
-import { Helpers } from "app/client"
-import { audio as audioActions } from "app/client/actions"
+import { Helpers } from "/imports"
+import { audio as audioActions } from "/imports/store/audio"
 
-import { Players } from "app/client/libraries"
+import { Players } from "/imports/libraries"
 import AudioControls from "./audio.Controls"
 import AudioTitle from "./audio.Title"
 import AudioScrubber from "./audio.Scrubber"

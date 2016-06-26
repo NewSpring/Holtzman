@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 
-import { Video } from "app/client/components/players"
-import Helpers from "app/client/helpers"
+import { Video } from "/imports/components/players"
+import Helpers from "/imports/helpers"
 
 
 export default class StoriesSingleVideoPlayer extends Component {

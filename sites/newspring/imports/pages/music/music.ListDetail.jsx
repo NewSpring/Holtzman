@@ -5,10 +5,10 @@ import Album from "./music.Album"
 import { Link } from "react-router"
 import ReactMixin from "react-mixin"
 
-import { Shareable } from "app/client/mixins"
-import { audio as audioActions } from "app/client/actions"
+import { Shareable } from "/imports/mixins"
+import { audio as audioActions } from "/imports/store/audio"
 
-import { Helpers } from "app/client"
+import { Helpers } from "/imports"
 
 // action helpers
 import {
@@ -18,8 +18,6 @@ import {
   share as shareActions,
   header as headerActions,
 } from "apollos/dist/core/store"
-
-import { Music as MusicCollection } from "app/lib/collections"
 
 const mapStateToProps = (state) => {
   return {
