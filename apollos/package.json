@@ -24,10 +24,12 @@
       "react"
     ],
     "plugins": [
+      "transform-react-constant-elements",
       "transform-decorators-legacy",
       "css-modules-transform",
       "add-module-exports",
-      "react-require"
+      "react-require",
+      "react-remove-prop-types"
     ]
   },
   "homepage": "https://github.com/NewSpring/newspring-core",
@@ -37,6 +39,7 @@
     "babel-eslint": "^6.1.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-css-modules-transform": "^0.1.1",
+    "babel-plugin-react-remove-prop-types": "^2.0.2",
     "babel-plugin-react-require": "^2.1.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-decorators": "^6.8.0",
@@ -66,6 +69,7 @@
     "lodash.assign": "^4.0.9",
     "lodash.find": "^4.4.0",
     "moment": "^2.13.0",
+    "react-addons-pure-render-mixin": "^15.1.0",
     "react-apollo": "^0.3.9",
     "react-controllables": "^0.6.0",
     "react-day-picker": "^2.2.0",

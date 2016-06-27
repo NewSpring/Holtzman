@@ -1,6 +1,5 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-apollo";
-import { createContainer } from "meteor/react-meteor-data";
 import gql from "apollo-client/gql";
 
 import { Likes } from "../../../collections"

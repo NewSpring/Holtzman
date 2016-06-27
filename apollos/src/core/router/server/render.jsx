@@ -2,7 +2,7 @@ import { RoutingContext } from "react-router";
 import { StyleSheetServer } from "aphrodite";
 import ReactHelmet from "react-helmet";
 import Cheerio from "cheerio/lib/cheerio";
-import ReactDOMServer from "react-dom/server";
+import ReactDOMServer from "react/dist/react.min";
 
 import InjectData from "./inject-data";
 
