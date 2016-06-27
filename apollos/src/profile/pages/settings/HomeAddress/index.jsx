@@ -76,7 +76,7 @@ export default class HomeAddress extends Component {
 
     switch (state) {
       case "error":
-        return <Err msg="Looks like there was a problem" error={error} />
+        return <Err msg="Looks like there was a problem" />
       case "loading":
         return <Loading msg="Updating your information..." />
       case "success":

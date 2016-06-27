@@ -145,7 +145,10 @@ Vorpal
   .option("-n, --native", "Runs the native version of the application")
   .option("--ios", "Run the native app of a given site in the iOS simulator")
   .option("--android", "Run the native app of a given site in the Android simulator")
-  .option("-d, --device", "Run the native app of a given site on the device of the platform")
+  .option("--device", "Run the native app of a given site on the device of the platform")
+  .option("--production", "Run the application in production mode")
+  .option("--debug", "Run the application in debug mode")
+
   .autocomplete(sites)
   .action(function(args, cb) {
     var app = Path.join(sitesFolder, args.site);
@@ -157,17 +160,37 @@ Vorpal
     }
 
     var env = process.env;
+    if (options.debug) env.METEOR_PROFILE = 200;
+    if (options.production) env.NODE_ENV = "production";
     if (!options.ios && !options.android && !options.native) env.WEB = true;
     if (options.native || options.ios || options.android) env.NATIVE = true;
 
-    if (!options.quick) {
+    if (!options.quick && !options.production) {
       var babel = Spawn("npm", ["run", "start"], { cwd: apollosFolder });
     }
 
-    var meteor = Spawn("meteor", [
+    var meteorArgs = [
       "--settings",
       ".remote/settings/sites/my.newspring.cc/settings.json",
-    ], { stdio: "inherit", cwd: app, env: env });
+    ];
+
+    function run() {
+      var meteor = Spawn("meteor", meteorArgs, { stdio: "inherit", cwd: app, env: env });
+    }
+
+    if (options.production) {
+      console.log("Building apollos in production mode");
+      meteorArgs.push("--production");
+      var babel = Spawn("npm", ["run", "compile"], { cwd: apollosFolder, env: env });
+      babel.on("close", function(){
+        console.log("Running " + args.site + " in production mode");
+        run();
+      })
+
+    } else {
+      run();
+    }
+
 
   });
 

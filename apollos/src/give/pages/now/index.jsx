@@ -2,7 +2,7 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-apollo"
 import ReactMixin from "react-mixin"
 import gql from "apollo-client/gql";
-import { createContainer } from "meteor/react-meteor-data";
+import { createContainer } from "../../../core/blocks/meteor/react-meteor-data";
 
 import Layout from "./Layout"
 

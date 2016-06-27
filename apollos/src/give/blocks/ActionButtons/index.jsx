@@ -27,7 +27,7 @@ import {
 } from "./Buttons"
 
 
-mapQueriesToProps = ({ ownProps }) => ({
+const mapQueriesToProps = ({ ownProps }) => ({
   savedPayments: {
       query: gql`
         query GetSavedPaymentAccounts {
