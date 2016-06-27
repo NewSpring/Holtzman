@@ -18,21 +18,23 @@
   },
   "homepage": "https://github.com/NewSpring/my.newspring.cc",
   "devDependencies": {
-    "gagarin": "^0.4.12",
-    "norma-bower": "^0.3.8",
-    "norma-meteor-run": "jbaxleyiii/norma-meteor-run",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-css-modules-transform": "^0.1.1",
+    "babel-plugin-react-remove-prop-types": "^2.0.2",
     "babel-plugin-react-require": "^2.1.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-decorators": "^6.8.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-constant-elements": "^6.9.1",
     "babel-preset-decorators-legacy": "^1.0.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-meteor": "^6.11.0",
     "babel-preset-react": "^6.5.0",
-    "babel-preset-stage-0": "^6.5.0"
+    "babel-preset-stage-0": "^6.5.0",
+    "gagarin": "^0.4.12",
+    "norma-bower": "^0.3.8",
+    "norma-meteor-run": "jbaxleyiii/norma-meteor-run"
   },
   "babel": {
     "presets": [
@@ -44,7 +46,15 @@
     "plugins": [
       "transform-decorators-legacy",
       "react-require"
-    ]
+    ],
+    "env": {
+      "production": {
+        "plugins": [
+          "transform-react-constant-elements",
+          "react-remove-prop-types"
+        ]
+      }
+    }
   },
   "apollos": {
     "resource": {
