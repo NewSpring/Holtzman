@@ -1,6 +1,6 @@
 
 // Do server-rendering only in proudction mode
-if (process.env.NODE_ENV === "production") {
+// if (process.env.NODE_ENV === "production") {
 
   // load the application
   import { run } from "apollos/dist/core/router/server";
@@ -15,4 +15,4 @@ if (process.env.NODE_ENV === "production") {
   //     WebAppInternals.setBundledJsCssPrefix(Meteor.settings.cdnPrefix);
   //   })
   // }
-}
+// }

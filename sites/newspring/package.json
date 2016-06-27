@@ -44,17 +44,11 @@
       "react"
     ],
     "plugins": [
+      "transform-react-constant-elements",
       "transform-decorators-legacy",
-      "react-require"
-    ],
-    "env": {
-      "production": {
-        "plugins": [
-          "transform-react-constant-elements",
-          "react-remove-prop-types"
-        ]
-      }
-    }
+      "react-require",
+      "react-remove-prop-types"
+    ]
   },
   "apollos": {
     "resource": {
