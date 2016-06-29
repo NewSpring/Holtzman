@@ -48,3 +48,7 @@ p > img {
 .song-cell p {
   flex-grow: 1;
 }
+
+.cell-wrapper div:last-of-type {
+  border: none;
+}
