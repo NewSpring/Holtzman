@@ -38,14 +38,14 @@ $fonts: (
     ),
     h5: (
       font-family: "colfax-web",
-      font-weight: 500,
+      font-weight: 700,
       font-size: 1.125em,
       line-height: 1.25,
       margin-bottom: $half-spacing-unit
     ),
     h6: (
       font-family: "colfax-web",
-      font-weight: 500,
+      font-weight: 700,
       font-size: .875em,
       line-height: 1.125,
       margin-bottom: $half-spacing-unit
@@ -60,7 +60,7 @@ $fonts: (
     label: (
       font-family: "colfax-web",
       font-size: .775em,
-      font-weight: 500,
+      font-weight: 700,
       line-height: 1.125
     )
   ),
@@ -68,25 +68,25 @@ $fonts: (
     p: (
       font-family: $body-font,
       font-size: $base-font-size/16px * 1em,
-      line-height: 1.75,
+      line-height: 1.6,
       margin-bottom: $base-spacing-unit
     ),
     li: (
       font-family: $body-font,
       font-size: $base-font-size/16px * 1em,
-      line-height: 1.75,
+      line-height: 1.6,
       margin-bottom: $base-spacing-unit
     ),
     small: (
       font-size: .875em,
-      line-height: 1.75,
+      line-height: 1.4,
       margin-bottom: $base-spacing-unit
     ),
     strong: (
       font-family: $body-font,
       font-size: $base-font-size/16px * 1em,
       font-weight: 700,
-      line-height: 1.75,
+      line-height: 1.6,
       margin-bottom: $base-spacing-unit
     ),
     em: (
@@ -94,7 +94,7 @@ $fonts: (
       font-style: italic,
       font-weight:500,
       font-size: .875em,
-      line-height: 1.75,
+      line-height: 1.6,
       margin-bottom: $base-spacing-unit
     )
   )
