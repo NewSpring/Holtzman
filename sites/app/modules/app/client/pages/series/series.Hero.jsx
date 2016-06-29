@@ -3,8 +3,6 @@ import { Component, PropTypes } from "react";
 import { Video } from "app/client/components/players"
 import Helpers from "app/client/helpers"
 
-import Styles from "./series.styles.hero.css"
-
 export default class SeriesHero extends Component {
 
   state = {
@@ -25,13 +23,11 @@ export default class SeriesHero extends Component {
     ].join(" ")
   }
 
-  iconClasses = () => {
-    let classes = [
-      "soft-half-right",
-      Styles["btn-icon"],
-    ];
-
-    return classes.join(" ");
+  iconStyles = () => {
+    return {
+      position: "relative",
+      top: "2px",
+    }
   }
 
   play = () => {
@@ -60,7 +56,7 @@ export default class SeriesHero extends Component {
     if (this.state.playing) {
       return (
         <button className="btn--light display-block one-whole" onClick={this.stop}>
-          <i className={this.iconClasses() + " icon-close"}></i>
+          <i className="soft-half-right icon-close" style={this.iconStyles()}></i>
           Close The Trailer
         </button>
       )
@@ -68,7 +64,7 @@ export default class SeriesHero extends Component {
 
     return (
       <button className="btn--light display-block one-whole" onClick={this.play}>
-        <i className={this.iconClasses() + " icon-play"}></i>
+        <i className="soft-half-right icon-play" style={this.iconStyles()}></i>
         Watch The Trailer
       </button>
     )
