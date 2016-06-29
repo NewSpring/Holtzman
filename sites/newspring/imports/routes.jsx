@@ -1,5 +1,5 @@
 
-// import { Routes } from "./pages"
+import { Routes } from "./pages"
 
 if (process.env.NATIVE) {
   import Home from "/imports/pages/home/index";
@@ -13,5 +13,5 @@ export default {
       return replace({ pathname: "/give/now" });
     }
   },
-  // childRoutes: Routes
+  childRoutes: Routes
 }
