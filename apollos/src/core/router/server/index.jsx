@@ -1,4 +1,4 @@
-import { match, Router, RoutingContext, createMemoryHistory } from "react-router";
+import { match, Router, createMemoryHistory } from "react-router";
 import Compress from "compression";
 import CookieParser from "cookie-parser";
 import Url from "url";
@@ -44,7 +44,7 @@ export function run(routes, clientOptions = {}, serverOptions = {}) {
   if (!serverOptions.webpackStats) {
     serverOptions.webpackStats = webpackStats;
   }
-  
+
   Meteor.bindEnvironment(() => {
 
     // Parse cookies for the login token

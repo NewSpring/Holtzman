@@ -236,5 +236,5 @@ class CartContainer extends Component {
 export default createContainer(() => {
   let alive = true;
   try { alive = serverWatch.isAlive("ROCK") } catch(e) {};
-  return { alive};
+  return { alive };
 }, CartContainer)

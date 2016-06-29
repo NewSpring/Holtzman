@@ -22,7 +22,6 @@ accounts-base
 
 random
 check
-react-meteor-data
 bjwiley2:server-watch
 
 timbrandin:fetch
