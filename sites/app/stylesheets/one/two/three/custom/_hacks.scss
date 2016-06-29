@@ -52,3 +52,10 @@ p > img {
 .cell-wrapper div:last-of-type {
   border: none;
 }
+
+.unread-notification {
+  width: 8px;
+  height: 8px;
+  position: relative;
+  top: 2px;
+}
