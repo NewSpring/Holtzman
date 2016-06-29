@@ -9,7 +9,7 @@ $use-new-namespace: true;
 $fonts: (
   colfax: (
     h1: (
-      font-size: 3em,
+      font-size: 2.9em,
       line-height: 1.05,
       margin-bottom: $base-spacing-unit,
       font-family: "colfax-web",
@@ -39,7 +39,7 @@ $fonts: (
     h5: (
       font-family: "colfax-web",
       font-weight: 700,
-      font-size: 1.125em,
+      font-size: 1.112em,
       line-height: 1.25,
       margin-bottom: $half-spacing-unit
     ),
@@ -53,13 +53,13 @@ $fonts: (
     h7: (
       font-family: "colfax-web",
       font-weight: 400,
-      font-size: .775em,
+      font-size: .778em,
       line-height: 1.125,
       margin-bottom: $half-spacing-unit
     ),
     label: (
       font-family: "colfax-web",
-      font-size: .775em,
+      font-size: .778em,
       font-weight: 700,
       line-height: 1.125
     )
@@ -67,13 +67,13 @@ $fonts: (
   meta-serif: (
     p: (
       font-family: $body-font,
-      font-size: $base-font-size/16px * 1em,
+      font-size: 1.112em,
       line-height: 1.6,
       margin-bottom: $base-spacing-unit
     ),
     li: (
       font-family: $body-font,
-      font-size: $base-font-size/16px * 1em,
+      font-size: 1.112em,
       line-height: 1.6,
       margin-bottom: $base-spacing-unit
     ),
@@ -84,7 +84,7 @@ $fonts: (
     ),
     strong: (
       font-family: $body-font,
-      font-size: $base-font-size/16px * 1em,
+      font-size: 1.112em,
       font-weight: 700,
       line-height: 1.6,
       margin-bottom: $base-spacing-unit
