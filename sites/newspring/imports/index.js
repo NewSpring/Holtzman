@@ -68,6 +68,7 @@ export const client = {
 export const server = {
   wrapper,
   createReduxStore,
+  wrapperProps: { client: GraphQL },
 };
 
 export const routes = {

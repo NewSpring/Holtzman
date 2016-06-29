@@ -6,7 +6,7 @@ import { Loading } from "../../../core/components"
 
 import LikesItem from "./Item"
 
-@ReactMixin.decorate(ReactMeteorData)
+// @ReactMixin.decorate(ReactMeteorData)
 export default class LikesContainer extends Component {
 
   getMeteorData() {

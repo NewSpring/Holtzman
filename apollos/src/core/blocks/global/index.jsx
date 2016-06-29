@@ -97,7 +97,7 @@ export default class Global extends Component {
     return (
       <div id="global">
         <App {...this.props} />
-        <GlobalData dispatch={dispatch} />
+        {/*<GlobalData dispatch={dispatch} />*/}
       </div>
     );
   }

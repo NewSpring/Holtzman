@@ -68,3 +68,37 @@ blockquote p {
     text-align:left;
   }
 }
+
+.tag {
+  @extend h5;
+  background-color: map-get($colors, light-tertiary);
+  text-transform: lowercase;
+  display: inline-block;
+  padding: $base-spacing-unit/4 $base-spacing-unit/2;
+  border-radius: 6px;
+  font-weight: 700;
+  color: map-get($colors, dark-primary);
+}
+
+.tag--clickable {
+  &:hover {
+    color: map-get($colors, light-primary);
+    background-color: $brand-color;
+  }
+}
+
+.tag--active {
+  @extend .tag;
+  color: map-get($colors, light-primary);
+  background-color: $brand-color;
+}
+
+.tag--disabled {
+  @extend .tag;
+  color: map-get($colors, dark-secondary);
+  background-color: map-get($colors, light-secondary);
+  &:hover {
+    color: map-get($colors, dark-secondary);
+    background-color: map-get($colors, light-secondary);
+  }
+}
