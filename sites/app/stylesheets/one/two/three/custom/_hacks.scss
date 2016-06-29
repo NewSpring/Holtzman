@@ -37,28 +37,14 @@ p > img {
   margin: $base-spacing-unit 0;
 }
 
-ul {
-  padding-left: 20px;
-  list-style: disc outside;
+.push-triple-bottom {
+  margin-bottom: 60px;
 }
 
-ol {
-  padding-left: 40px;
+.song-cell {
+  display: flex;
 }
 
-blockquote {
-  font-size: 1.4em;
-  text-align: center;
-  border-top: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-  margin: 40px 0 40px;
-  padding: 30px 20px 15px 20px;
-
-}
-
-blockquote p {
-  font-style: italic;
-  color: #505050;
-  letter-spacing: -1px;
-  font-weight: 100;
+.song-cell p {
+  flex-grow: 1;
 }
