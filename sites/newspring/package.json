@@ -44,10 +44,12 @@
       "react"
     ],
     "plugins": [
+      "transform-inline-environment-variables",
       "transform-react-constant-elements",
       "transform-decorators-legacy",
       "react-require",
-      "react-remove-prop-types"
+      "react-remove-prop-types",
+      "transform-dead-code-elimination"
     ]
   },
   "apollos": {

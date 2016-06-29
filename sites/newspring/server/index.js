@@ -3,10 +3,10 @@
 // if (process.env.NODE_ENV === "production") {
 
   // load the application
-  import { run } from "apollos/dist/core/router/server";
-  import { routes, client, server } from "/imports";
-
-  run(routes, client, server);
+  // import { run } from "apollos/dist/core/router/server";
+  // import { routes, client, server } from "/imports";
+  //
+  // run(routes, client, server);
 
   // cdn party
   // cdn is still not reliable enough :(

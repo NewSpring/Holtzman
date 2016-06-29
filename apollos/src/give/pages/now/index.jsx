@@ -39,7 +39,7 @@ class Template extends Component {
 // Bind reactive data to component
 const TemplateWithData = createContainer(() => {
   let alive = true;
-  try {  alive = serverWatch.isAlive("ROCK");} catch (e) {}
+  try {  alive = serverWatch.isAlive("ROCK"); } catch (e) {}
   return { alive };
 }, Template);
 

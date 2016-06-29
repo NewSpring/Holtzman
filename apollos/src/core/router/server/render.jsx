@@ -1,9 +1,9 @@
-import { RoutingContext } from "react-router";
+import { RouterContext } from "react-router";
 import { StyleSheetServer } from "aphrodite";
 import ReactHelmet from "react-helmet";
 import Cheerio from "cheerio/lib/cheerio";
-import ReactDOMServer from "react/dist/react.min";
-
+import MinReact from "react/dist/react.min";
+const ReactDOMServer = MinReact.__SECRET_DOM_SERVER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
 import InjectData from "./inject-data";
 
 let cache = {}; // in memory cache of static markup
@@ -97,10 +97,10 @@ function generateSSRData(serverOptions, context, req, res, renderProps, history)
         fetchComponentData(renderProps, reduxStore);
       }
 
-      // Wrap the <RoutingContext> if needed before rendering it.
-      let app = <RoutingContext {...renderProps} />;
+      // Wrap the <RouterContext> if needed before rendering it.
+      let app = <RouterContext {...renderProps} />;
       if (serverOptions.wrapper) {
-        const wrapperProps = {};
+        const wrapperProps = serverOptions.wrapperProps || {};
         // Pass the redux store to the wrapper, which is supposed to be some
         // flavour of react-redux's <Provider>.
         if (reduxStore) {
@@ -344,45 +344,6 @@ function moveStyles(data) {
 
   return $.html();
 }
-
-// Protect against returning data that has not been published
-const originalFind = Mongo.Collection.prototype.find;
-const originalFindOne = Mongo.Collection.prototype.findOne;
-
-Mongo.Collection.prototype._getSSRCollection = function() {
-  return Mongo.Collection._ssrData[this._name] || new LocalCollection(this._name);
-};
-
-Mongo.Collection.prototype.findOne = function(...args) {
-  if (!Mongo.Collection._isSSR) {
-    return originalFindOne.apply(this, args);
-  }
-
-  return this._getSSRCollection().findOne(...args);
-};
-
-Mongo.Collection.prototype.find = function(...args) {
-  if (!Mongo.Collection._isSSR) {
-    return originalFind.apply(this, args);
-  }
-
-  return this._getSSRCollection().find(...args);
-};
-
-Mongo.Collection._fakePublish = function(data) {
-  // Create a local collection and only add the published data
-  for (let name in data) {
-    if (!Mongo.Collection._ssrData[name]) {
-      Mongo.Collection._ssrData[name] = new LocalCollection(name);
-    }
-
-    for (let i = 0; i < data[name].length; ++i) {
-      data[name][i].forEach(doc => {
-        Mongo.Collection._ssrData[name].update({ _id: doc._id }, doc, { upsert: true });
-      });
-    }
-  }
-};
 
 function _getCacheKey(url) {
   return Meteor.userId() + "::" + url

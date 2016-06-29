@@ -125,7 +125,7 @@ class MeteorDataManager {
     const component = this.component;
     const oldData = this.oldData;
 
-    if (! (newData && (typeof newData) === 'object')) {
+    if (!newData || typeof newData != 'object') {
       throw new Error("Expected object returned from getMeteorData");
     }
     // update componentData in place based on newData
