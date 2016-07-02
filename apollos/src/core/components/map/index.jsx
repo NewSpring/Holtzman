@@ -4,7 +4,7 @@ import shouldPureComponentUpdate from "react-pure-render/function"
 
 let GoogleMap
 if (Meteor.isClient) {
-  GoogleMap = require("google-map-react")
+  GoogleMap = require("google-map-react").default;
 }
 
 import { fitBounds } from "google-map-react/utils";
@@ -19,6 +19,8 @@ const K_MARGIN_LEFT = 30;
 
 const K_HOVER_DISTANCE = 30;
 
+let dynamicProps = {};
+let defaultCenter = [34.595413, -82.6241234];
 @controllable(["center", "zoom", "markers"])
 export default class Map extends Component {
 
@@ -135,15 +137,13 @@ export default class Map extends Component {
 
   render () {
     try {
-      let dynamicProps = {}
 
       if (this.props.markers && this.props.markers.length === 1) {
         let center = this.props.markers[0]
         dynamicProps.center = [center.latitude, center.longitude]
       } else {
-        dynamicProps.defaultCenter = [34.595413, -82.6241234]
+        dynamicProps.defaultCenter = defaultCenter;
       }
-
 
       if (typeof window != "undefined" && window != null ) {
         return (
@@ -156,6 +156,7 @@ export default class Map extends Component {
             onChildMouseEnter={this._onChildMouseEnter}
             onChildMouseLeave={this._onChildMouseLeave}
             distanceToMouse={this._distanceToMouse}
+            bootstrapURLKeys={{ key: "AIzaSyCntgrGdfBmzdMxACihPEutGBh_5xsFx8Y" }}
             margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
             hoverDistance={K_HOVER_DISTANCE}
             yesIWantToUseGoogleMapApiInternals={true}
@@ -175,14 +176,14 @@ export default class Map extends Component {
 
             }}
           >
-            {this.props.markers.map((marker) => {
+            {this.props.markers && this.props.markers.map((marker) => {
 
               return <Marker
                 lat={marker.latitude}
                 lng={marker.longitude}
                 key={marker.id}
                 // active={Number(this.props.active) === Number(marker.id)}
-                hover={Number(this.props.hover) === Number(marker.id)}
+                hover={this.props.hover == marker.id}
                 popUp={this.props.popUp}
               />
 

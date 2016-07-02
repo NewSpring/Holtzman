@@ -82,6 +82,7 @@
     "react-pull-to-refresh": "git+https://git@github.com/NewSpring/react-pull-to-refresh.git",
     "react-redux": "^4.0.0",
     "react-router": "^2.4.0",
-    "redux": "^3.0.4"
+    "redux": "^3.0.4",
+    "truncate": "^2.0.0"
   }
 }
