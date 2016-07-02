@@ -3,7 +3,7 @@ import { connect } from "react-apollo"
 import gql from "apollo-client/gql";
 
 import Profile from "./profile/index";
-
+import Finder from "./finder/index";
 // import { nav as navActions } from "apollos/dist/core/store"
 
 // const mapQueriesToProps = () => ({
@@ -39,7 +39,7 @@ export default class Template extends Component {
 
 const Routes = [
   { path: "groups", component: Template },
-  // { path: "groups/finder", component: Finder },
+  { path: "groups/finder", component: Finder },
   { path: "groups/:id", component: Profile }
 ]
 
