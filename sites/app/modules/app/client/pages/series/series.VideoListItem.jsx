@@ -1,6 +1,8 @@
 import { Component, PropTypes } from "react"
 import { Link } from "react-router"
 
+import Styles from "./series.styles.VideoListItem.css"
+
 import Helpers from "app/client/helpers"
 
 export default class SeriesVideoListItem extends Component {
@@ -37,7 +39,9 @@ export default class SeriesVideoListItem extends Component {
         className="text-dark-secondary floating ratio--square display-inline-block rounded background--light-tertiary push-right"
         style={this.dynamicWidth()}>
         <div className="one-whole soft-sides text-left floating__item">
-          <div className="background--light-primary floating number-styles">
+          <div className={
+            "background--light-primary " + "floating number-styles " + Styles["number-styles"]  
+          }>
             <h5 className="floating__item flush">{order + 1}</h5>
           </div>
           <h4>{sermon.title}</h4>

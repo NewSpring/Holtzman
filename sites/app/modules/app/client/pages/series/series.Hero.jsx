@@ -23,6 +23,13 @@ export default class SeriesHero extends Component {
     ].join(" ")
   }
 
+  iconStyles = () => {
+    return {
+      position: "relative",
+      top: "2px",
+    }
+  }
+
   play = () => {
     if (this.player) {
       this.player.show({play: true})
@@ -49,7 +56,7 @@ export default class SeriesHero extends Component {
     if (this.state.playing) {
       return (
         <button className="btn--light display-block one-whole" onClick={this.stop}>
-          <i className="icon-close soft-half-right"></i>
+          <i className="soft-half-right icon-close" style={this.iconStyles()}></i>
           Close The Trailer
         </button>
       )
@@ -57,7 +64,7 @@ export default class SeriesHero extends Component {
 
     return (
       <button className="btn--light display-block one-whole" onClick={this.play}>
-        <i className="icon-play soft-half-right"></i>
+        <i className="soft-half-right icon-play" style={this.iconStyles()}></i>
         Watch The Trailer
       </button>
     )
