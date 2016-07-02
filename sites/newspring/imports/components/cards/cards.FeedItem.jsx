@@ -114,6 +114,7 @@ export default class FeedItem extends Component {
 
   render() {
     const item = this.props.item;
+    
     return (
       <Card
         link={Helpers.content.links(item)}

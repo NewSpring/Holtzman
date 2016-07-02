@@ -70,7 +70,7 @@ blockquote p {
 }
 
 .tag {
-  @extend h5;
+  @extend h6;
   background-color: map-get($colors, light-tertiary);
   text-transform: lowercase;
   display: inline-block;
@@ -81,6 +81,7 @@ blockquote p {
 }
 
 .tag--clickable {
+  @extend .tag;
   &:hover {
     color: map-get($colors, light-primary);
     background-color: $brand-color;

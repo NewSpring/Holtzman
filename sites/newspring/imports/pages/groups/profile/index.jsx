@@ -1,7 +1,11 @@
-import { Component, PropTypes} from "react"
-import { connect } from "react-apollo"
+import { Component, PropTypes} from "react";
+import { connect } from "react-apollo";
+import { Link } from "react-router";
 import gql from "apollo-client/gql";
 import Meta from "apollos/dist/core/components/meta";
+import GoogleMap from "apollos/dist/core/components/map";
+import Split, { Left, Right } from "apollos/dist/core/blocks/split";
+
 // import { nav as navActions } from "apollos/dist/core/store"
 
 const Layout = ({ group, leaders, isLeader }) => (
@@ -14,7 +18,7 @@ const Layout = ({ group, leaders, isLeader }) => (
       className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--gradient"
       style={{
         overflow: "visible",
-        backgroundImage: `url(${group.photo})`,
+        backgroundImage: `url('${group.photo}')`,
         zIndex:10
       }}
     >
@@ -59,13 +63,13 @@ const Layout = ({ group, leaders, isLeader }) => (
     <section className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
 
       {/* Join Group CTA */}
-      {/* XXX shows manage group if you are a leader / can manage */}
+      {/* shows manage group if you are a leader / can manage */}
       <div className="card outlined outlined--light">
         <div className="grid card__item soft ">
           <h5 className="flush-bottom push-half-bottom@handheld push-half-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-secondary">#TheseAreMyPeople</h5>
           <div className="grid__item text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
             <button className="flush-bottom push-half-bottom@handheld btn">
-              {isLeader ? "Manage" : "Join}"} Group
+              {isLeader ? "Manage" : "Join"} Group
             </button>
           </div>
         </div>
@@ -111,7 +115,7 @@ const Layout = ({ group, leaders, isLeader }) => (
               <h7 className="text-dark-secondary">Information</h7>
               <h5 className="text-dark-secondary soft-half-top flush-bottom">
                 {group.kidFriendly ? "Children Welcome" : "Adults Only"}
-                {group.ageRange ? `,${group.ageRange[0]} - ${group.ageRange[1]}` : ""}
+                {group.ageRange ? `, ${group.ageRange[0]} - ${group.ageRange[1]}` : ""}
               </h5>
             </div>
 
@@ -144,7 +148,7 @@ const Layout = ({ group, leaders, isLeader }) => (
             </div>
 
             {/* Tags */}
-            <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            <div className="soft-bottom">
               <h7 className="text-dark-secondary">Tags</h7>
               <div className="soft-half-top flush-bottom">
                 {group.tags.map((tag, i) => (
@@ -165,6 +169,20 @@ const Layout = ({ group, leaders, isLeader }) => (
               </div>
             </div>
 
+          </div>
+        </div>
+      </div>
+
+      {/* Search */}
+      <div className="card outlined outlined--light">
+        <div className="grid card__item soft ">
+          <h5 className="flush-bottom push-half-bottom@handheld push-half-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-secondary">
+            Looking for another group?
+          </h5>
+          <div className="grid__item text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+            <Link to="/groups/finder" className="flush-bottom push-half-bottom@handheld btn">
+              Find A Group
+            </Link>
           </div>
         </div>
       </div>
@@ -228,7 +246,7 @@ export default class Template extends Component {
     const { data } = this.props;
 
     if (data.loading) return null;
-    const { group, person } = data;
+    let { group, person, errors } = data;
     let isLeader;
     const leaders = group && group.members && group.members
       .filter(x => x.role.toLowerCase() === "leader");
@@ -236,6 +254,35 @@ export default class Template extends Component {
     isLeader = person && leaders.filter(x => x.id === person.id).length;
     group.photo || (group.photo = "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png");
 
-    return <Layout isLeader={isLeader} group={group} leaders={leaders || defaultArray} />
+    let markers = defaultArray;
+    if (group.locations && group.locations.length && group.locations[0].location) {
+      const { latitude, longitude } = group.locations[0].location;
+      markers = [{ latitude, longitude }];
+    }
+    let isMobile;
+    if (typeof window != "undefined" && window != null ) {
+      isMobile = window.matchMedia("(max-width: 768px)").matches;
+    }
+    return (
+      <div>
+        <Split>
+          {/* Map */}
+          <Right mobile={false} classes={["background--left"]}>
+            {(() => {
+              if (isMobile) return null;
+              return (
+                <GoogleMap
+                  autoCenter={true}
+                  markers={markers}
+                />
+              )
+            })()}
+          </Right>
+        </Split>
+        <Left scroll={true} classes={["background--light-secondary"]}>
+          <Layout isLeader={isLeader} group={group} leaders={leaders || defaultArray} />
+        </Left>
+      </div>
+    )
   }
 }

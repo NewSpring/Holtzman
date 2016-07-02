@@ -116,7 +116,7 @@ export default class Card extends Component {
   }
 
   createImage = () => {
-    const { defaultImage } = this.props
+    let { defaultImage, ratio } = this.props
 
     let imageclasses = [
       "background--fill",
@@ -127,8 +127,10 @@ export default class Card extends Component {
       "locked-sides@palm-wide",
       "relative@palm",
       "relative@lap",
-      "ratio--landscape",
-    ]
+    ];
+
+    if (!ratio) ratio = "ratio--landscape"
+    imageclasses.push(ratio);
 
     let src = this.getResponsiveImage() || defaultImage;
 

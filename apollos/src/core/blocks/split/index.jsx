@@ -38,7 +38,7 @@ export default class SplitContainer extends Component {
       classes = classes.concat(this.props.classes);
     }
 
-    if (this.props.navigation.visible && this.props.nav) {
+    if (this.props.navigation.visible && this.props.nav != false) {
       classes.push(css(styles["offset"]))
     }
 
