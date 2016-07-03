@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 import ListDetail from "./music.ListDetail"
-import { audio as audioActions } from "/imports/store/audio"
+import { actions as audioActions } from "/imports/store/audio"
 import { connect } from "react-redux"
 
 import { modal } from "apollos/dist/core/store"
@@ -55,7 +55,7 @@ export default class AudioTrack extends Component {
 
     const track = {
       ...this.props.track,
-      ...this.props.album.tracks[index]
+      ...this.props.album.content.tracks[index]
     };
 
     if(!track.file) {
@@ -70,7 +70,7 @@ export default class AudioTrack extends Component {
     }));
 
     this.props.dispatch(audioActions.setPlaylist(
-      this.props.album.tracks
+      this.props.album.content.tracks
     ));
   }
 

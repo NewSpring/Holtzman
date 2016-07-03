@@ -1,8 +1,9 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
 import { Likeable, Shareable } from "/imports/mixins"
-import { connect, gql } from "apollos/dist/core/graphql/apollo";
+import { connect } from "react-apollo";
 import { VelocityComponent } from "velocity-react"
+import gql from "apollo-client/gql";
 
 // loading state
 import { Loading } from "apollos/dist/core/components"
@@ -15,16 +16,46 @@ import Helpers from "/imports/helpers"
 import SeriesHero from "./series.Hero";
 import SeriesVideoList from "./series.VideoList";
 
-import SeriesQuery from "./queries/single"
-
 const mapQueriesToProps = ({ ownProps, state }) => {
   const pathParts = state.routing.location.pathname.split("/");
   return {
     series: {
-      query: gql`${SeriesQuery}`,
-      variables: {
-        entryId: Number(pathParts[2]),
-      },
+      query: gql`
+        query getSeriesSingle($id: ID!) {
+          content: node(id: $id) {
+            id
+            ... on Content {
+              entryId: id
+              title
+              status
+              channelName
+              meta {
+                urlTitle
+                siteId
+                date
+                channelId
+              }
+              content {
+                description
+                images {
+                  fileName
+                  fileType
+                  fileLabel
+                  s3
+                  cloudfront
+                }
+                ooyalaId
+                colors {
+                  id
+                  value
+                  description
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: { id: ownProps.params.id },
       forceFetch: false,
       returnPartialData: false,
     },
@@ -37,14 +68,13 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 export default class SeriesSingle extends Component {
 
   componentWillMount() {
-    if(Meteor.isCordova) {
-      this.props.dispatch(navActions.setLevel("CONTENT"));
+    if (process.env.WEB) return;
 
-      this.props.dispatch(navActions.setAction("CONTENT", {
-        id: 2,
-        action: this.likeableAction
-      }));
-    }
+    this.props.dispatch(navActions.setLevel("CONTENT"));
+    this.props.dispatch(navActions.setAction("CONTENT", {
+      id: 2,
+      action: this.likeableAction
+    }));
   }
 
   componentWillUpdate() {
@@ -52,7 +82,6 @@ export default class SeriesSingle extends Component {
     if(!content) return;
 
     const color = Helpers.collections.color(content);
-
     this.props.dispatch(headerActions.set({
       title: "Series",
       color: color
@@ -85,7 +114,6 @@ export default class SeriesSingle extends Component {
     }
 
     const series = content;
-
     return (
       <VelocityComponent
         animation={"transition.fadeIn"}
@@ -100,11 +128,9 @@ export default class SeriesSingle extends Component {
           <section className="text-light-primary hard-bottom">
             <div dangerouslySetInnerHTML={Helpers.react.markup(series, "description")}></div>
           </section>
-          <SeriesVideoList params={this.props.params} />
+          <SeriesVideoList id={this.props.params.id} />
         </div>
       </VelocityComponent>
     );
-
   }
-
 };

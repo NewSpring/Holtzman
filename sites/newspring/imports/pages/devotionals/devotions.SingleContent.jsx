@@ -27,17 +27,17 @@ export default class DevotionsSingleContent extends Component {
           </div>
           <div className="soft push-top">
             <h2 className="capitalize">{devotion.title}</h2>
-            {() => {
-              if (devotion.content.scripture !== "") {
-                return (
-                  <a
-                    href="#"
-                    className="h4 soft-bottom display-block text-center"
-                    onClick={this.props.onClickLink}
-                    >{Helpers.scriptures.list(devotion)}</a>
-                );
-              }
-            }()}
+            {/* XXX update scripture formatting */}
+            {/*{(() => {
+              if (!devotion.content.scripture) return null;
+              return (
+                <a
+                  href="#"
+                  className="h4 soft-bottom display-block text-center"
+                  onClick={this.props.onClickLink}
+                  >{Helpers.scriptures.list(devotion)}</a>
+              );
+            })()}*/}
 
             <div dangerouslySetInnerHTML={Helpers.react.markup(devotion)}></div>
 

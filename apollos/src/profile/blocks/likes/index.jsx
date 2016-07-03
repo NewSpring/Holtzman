@@ -1,39 +1,19 @@
 import { Component } from "react"
-import ReactMixin from "react-mixin"
-
+import { createContainer } from "../../../core/blocks/meteor/react-meteor-data"
 import { Likes } from "../../../core/collections"
 import { Loading } from "../../../core/components"
 
 import LikesItem from "./Item"
 
-// @ReactMixin.decorate(ReactMeteorData)
-export default class LikesContainer extends Component {
-
-  getMeteorData() {
-    Meteor.subscribe("likes")
-    const likes = Likes.find({
-      userId: Meteor.userId()
-    }, { sort: { dateLiked: -1 }}).fetch()
-
-    const recentLikes = Likes.find({
-      userId: {
-        $not: Meteor.userId()
-      }
-    }, { sort: { dateLiked: -1 }}).fetch()
-
-    return {
-      likes,
-      recentLikes
-    }
-  }
+class LikesContainer extends Component {
 
   render() {
 
-    if (!this.data.likes) {
+    if (!this.props.likes) {
       <Loading />
     }
 
-    const { likes, recentLikes } = this.data
+    const { likes, recentLikes } = this.props
 
     let ids = []
     return(
@@ -71,7 +51,23 @@ export default class LikesContainer extends Component {
         })()}
       </div>
     );
-
   }
-
 }
+
+export default createContainer(() => {
+  Meteor.subscribe("likes")
+  const likes = Likes.find({
+    userId: Meteor.userId()
+  }, { sort: { dateLiked: -1 }}).fetch()
+
+  const recentLikes = Likes.find({
+    userId: {
+      $not: Meteor.userId()
+    }
+  }, { sort: { dateLiked: -1 }}).fetch()
+
+  return {
+    likes,
+    recentLikes
+  }
+}, LikesContainer);

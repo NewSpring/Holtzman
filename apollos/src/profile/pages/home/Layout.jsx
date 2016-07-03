@@ -31,7 +31,12 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
             <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
           </label>
         <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName} {person.lastName}</h4>
-          <p className="text-light-primary flush"><em>{person.home.city}</em></p>
+        {(() => {
+          if (!person.home || !person.home.city) return null;
+          return (
+            <p className="text-light-primary flush"><em>{person.home.city}</em></p>
+          )
+        })()}
         </div>
 
       </Right>
@@ -40,13 +45,9 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
 
     </Split>
     <Left scroll={true}>
-
       <Toggle items={["Likes", "Following"]} toggle={onToggle} />
-
       <div>
-
         {content}
-
       </div>
     </Left>
   </div>

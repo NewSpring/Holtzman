@@ -14,7 +14,10 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
 
     {/* Tags :rocket: */}
     <div className="soft soft-double-ends push-double@lap-and-up soft-double@lap-wide-and-up text-center">
-      <h3 className="soft-half-bottom@handheld soft-bottom@anchored">Find My People</h3>
+      <h3 className="flush-bottom soft-half-bottom">Find My People</h3>
+      <h6 className="soft-half-bottom@handheld soft-bottom@anchored">
+        <em>Select multiple tags to find even more groups</em>
+      </h6>
       <div className="push-ends soft-double-sides@lap-and-up push-double-sides@anchored soft-sides@handheld">
         {tags.map((tag, i) => <Tag onClick={tagOnClick} key={i} val={tag.value} />)}
       </div>
@@ -63,7 +66,7 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
     </div>
 
     {/* Group Stories */}
-    <div className="soft soft-double-ends soft-double@lap-wide-and-up text-center">
+    <div className="soft-half soft-double-ends soft-double@lap-wide-and-up text-center">
       <h3 className="push-top">You Can't Do Life Alone</h3>
       {content && content.map((entry, key) => (
         <SideBySide
