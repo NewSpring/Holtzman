@@ -84,7 +84,7 @@ export default class ListDetail extends Component {
             <div className="grid floating push-bottom">
               <div className="grid__item background--fill floating__item text-left hard push-left ratio--square background--light-secondary one-eighth" style={{backgroundImage: `url(${this.props.album.content.images[0].cloudfront})`}}></div>
               <div className="floating__item text-left grid__item eight-tenths">
-                <h5 className="flush">{this.props.album.tracks[this.props.trackNumber].title}</h5>
+                <h5 className="flush">{this.props.album.content.tracks[this.props.trackNumber].title}</h5>
                 <h7 className="text-light-tertiary">
                   <span>{this.props.album.title} – </span>
                   <span>{this.props.album.artist || "NewSpring"}</span>

@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import { connect } from "apollos/dist/core/graphql/apollo";
+import { connect } from "react-apollo";
 
 import Discover from "apollos/dist/core/blocks/discover";
 

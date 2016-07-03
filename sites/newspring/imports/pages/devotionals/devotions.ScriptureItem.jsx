@@ -10,8 +10,12 @@ export default class ScriptureItem extends Component {
     scriptureData: ""
   }
 
+  formatScripture = () => {
+    return `${this.props.scripture.book} ${this.props.scripture.passage}`
+  }
+
   getScriptureData = () => {
-    Meteor.call("getScripture", this.props.scripture, function(err, data) {
+    Meteor.call("getScripture", this.formatScripture(), function(err, data) {
       this.setState({ scriptureData: data });
     }.bind(this));
   }
@@ -32,15 +36,12 @@ export default class ScriptureItem extends Component {
 
     return (
       <div className="soft push-top">
-        <h4 className="soft-bottom display-inline-block">{this.props.scripture}</h4>
+        <h4 className="soft-bottom display-inline-block">{this.formatScripture()}</h4>
         <p className="small push-half-left display-inline-block">ESV</p>
-        {() => {
-          if (scriptureData.length === 0) {
-            return <p>Loading...</p>
-          } else {
-            return <div dangerouslySetInnerHTML={this.createMarkup()} />
-          }
-        }()}
+        {(() => {
+          if (scriptureData.length === 0) return <p>Loading...</p>
+          return <div dangerouslySetInnerHTML={this.createMarkup()} />
+        })()}
       </div>
     );
 

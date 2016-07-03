@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect, gql } from "apollos/dist/core/graphql/apollo";
+import { connect } from "react-apollo";
+import gql from "apollo-client/gql";
 
 const mapQueriesToProps = ({ ownProps, state }) => {
   return {

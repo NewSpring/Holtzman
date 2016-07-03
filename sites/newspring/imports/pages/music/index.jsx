@@ -1,8 +1,9 @@
 import { Component, PropTypes } from "react"
 import ReactMixin from "react-mixin"
 import { Pageable } from "/imports/mixins"
-import { connect, gql } from "apollos/dist/core/graphql/apollo";
+import { connect } from "react-apollo";
 import { VelocityComponent } from "velocity-react"
+import gql from "apollo-client/gql";
 
 import ReactPullToRefresh from "react-pull-to-refresh";
 import { Loading } from "apollos/dist/core/components"
@@ -15,77 +16,84 @@ import Album from "./music.Album"
 
 import { FeedItem } from "/imports/components/cards";
 
-import AlbumsQuery from "./queries/feed"
-
-const mapQueriesToProps = ({ ownProps, state }) => {
-  return {
-    data: {
-      query: gql`${AlbumsQuery}`,
-      variables: {
-        limit: state.paging.pageSize * state.paging.page,
-        skip: state.paging.skip,
-      },
-      forceFetch: false,
-      returnPartialData: false,
+const mapQueriesToProps = ({ ownProps, state }) => ({
+  data: {
+    query: gql`
+      query getAlbums($limit: Int!, $skip: Int!) {
+        content(channel: "newspring_albums", limit: $limit, skip: $skip) {
+          id
+          entryId: id
+          title
+          status
+          channelName
+          meta {
+            urlTitle
+            siteId
+            date
+            channelId
+          }
+          content {
+            images {
+              fileName
+              fileType
+              fileLabel
+              s3
+              cloudfront
+            }
+            tracks {
+              file
+            }
+          }
+        }
+      }
+    `,
+    variables: {
+      limit: state.paging.pageSize * state.paging.page,
+      skip: state.paging.skip,
     },
-  };
-};
+    forceFetch: false,
+    returnPartialData: false,
+  },
+});
 
-const mapStateToProps = (state) => {
-  return {
-    paging: state.paging,
-  };
-};
+const mapStateToProps = (state) => ({ paging: state.paging });
 
-@connect({
-  mapQueriesToProps,
-  mapStateToProps,
-})
+@connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({
-      title: "All Music"
-    });
+    this.headerAction({ title: "All Music" });
   }
 
   handleRefresh = (resolve, reject) => {
     this.props.data.refetch()
-      .then((result) => {
-        resolve();
-      }).catch((error) => {
-        console.error(error);
-        reject();
-      });
+      .then(resolve)
+      .catch(reject);
   }
 
   renderItems = () => {
 
-    const { allContent } = this.props.data;
+    const { content } = this.props.data;
     let loading = true;
     let items = [1, 2, 3, 4, 5];
 
-    if (allContent) {
+    if (content) {
       loading = false;
-      items = _.filter(allContent, (item) => {
-        return _.any(item.tracks, (track) => {
-          return !!track.file;
-        });
+      items = _.filter(content, (item) => {
+        return _.any(item.content.tracks, (track) => !!track.file);
       });
     }
 
     return items.map((item, i) => {
       return (
         <div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
-          {() => {
-            if (loading) {
-              return <FeedItemSkeleton />
-            }
-            return <FeedItem item={item}  />
-          }()}
+          {(() => {
+            if (loading) return <FeedItemSkeleton />;
+            return <FeedItem item={item} />;
+          })()}
         </div>
       );
     });
@@ -101,19 +109,12 @@ class Template extends Component {
         runOnMount={true}
       >
         <div>
-
           <div className="ptr-fake-background"></div>
-
           <ReactPullToRefresh
             onRefresh={this.handleRefresh}
-            icon={
-              <i className="icon-leaf-outline"></i>
-            }
-            loading={
-              <i className="loading icon-leaf-outline"></i>
-            }
+            icon={<i className="icon-leaf-outline"></i>}
+            loading={<i className="loading icon-leaf-outline"></i>}
           >
-
             <div className="background--light-primary">
               <section className="soft-half">
                 <div className="grid">
@@ -121,22 +122,17 @@ class Template extends Component {
                 </div>
               </section>
             </div>
-
           </ReactPullToRefresh>
-
         </div>
-
       </VelocityComponent>
     );
-
   }
-
 }
 
 
 const Routes = [
   { path: "music", component: Template },
-  { path: "music/:entryId", component: Album }
+  { path: "music/:id", component: Album }
 ]
 
 export default {

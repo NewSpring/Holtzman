@@ -1,8 +1,9 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { Pageable } from "/imports/mixins"
-import { connect, gql } from "apollos/dist/core/graphql/apollo";
+import { connect } from "react-apollo";
 import { VelocityComponent } from "velocity-react"
+import gql from "apollo-client/gql";
 
 import ReactPullToRefresh from "react-pull-to-refresh";
 import { Loading } from "apollos/dist/core/components"
@@ -15,77 +16,78 @@ import Single from "./devotions.Single"
 
 import { FeedItem } from "/imports/components/cards"
 
-import DevotionsQuery from "./queries/feed"
-
-const mapQueriesToProps = ({ ownProps, state }) => {
-  return {
-    data: {
-      query: gql`${DevotionsQuery}`,
-      variables: {
-        limit: state.paging.pageSize * state.paging.page,
-        skip: state.paging.skip,
-      },
-      forceFetch: false,
-      returnPartialData: false,
+const mapQueriesToProps = ({ ownProps, state }) => ({
+  data: {
+    query: gql`
+      query getDevotionals($limit: Int!, $skip: Int!) {
+        content(channel: "devotionals", limit: $limit, skip: $skip) {
+          id
+          entryId: id
+          title
+          status
+          channelName
+          meta {
+            urlTitle
+            siteId
+            date
+            channelId
+          }
+          content {
+            body
+            images {
+              fileName
+              fileType
+              fileLabel
+              s3
+              cloudfront
+            }
+          }
+        }
+      }
+    `,
+    variables: {
+      limit: state.paging.pageSize * state.paging.page,
+      skip: state.paging.skip,
     },
-  };
-};
+    forceFetch: false,
+    returnPartialData: false,
+  },
+});
 
-const mapStateToProps = (state) => {
-  return {
-    paging: state.paging,
-  };
-};
+const mapStateToProps = (state) => ({ paging: state.paging });
 
-@connect({
-  mapQueriesToProps,
-  mapStateToProps,
-})
+@connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Devotions extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({
-      title: "All Devotionals"
-    });
+    this.headerAction({ title: "All Devotionals" });
   }
 
   handleRefresh = (resolve, reject) => {
     this.props.data.refetch()
-      .then((result) => {
-        resolve();
-      }).catch((error) => {
-        console.error(error);
-        reject();
-      });
+      .then(resolve)
+      .catch(reject);
   }
 
   renderItems = () => {
-
-    const { allContent } = this.props.data;
-
+    const { content } = this.props.data;
     let items = [1, 2, 3, 4, 5]
-    if (allContent) {
-      items = allContent;
-    }
+    if (content) items = content;
     return (
-
       items.map((item, i) => {
         return (
           <div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
-            {() => {
-              if (typeof item === "number") {
-                return <FeedItemSkeleton />
-              }
-              return <FeedItem item={item}  />
-            }()}
+            {(() => {
+              if (typeof item === "number") return <FeedItemSkeleton />;
+              return <FeedItem item={item}  />;
+            })()}
           </div>
         )
       })
     )
-
   }
 
 
@@ -102,12 +104,8 @@ class Devotions extends Component {
 
           <ReactPullToRefresh
             onRefresh={this.handleRefresh}
-            icon={
-              <i className="icon-leaf-outline"></i>
-            }
-            loading={
-              <i className="loading icon-leaf-outline"></i>
-            }
+            icon={<i className="icon-leaf-outline"></i>}
+            loading={<i className="loading icon-leaf-outline"></i>}
           >
 
             <div className="background--light-primary">
@@ -117,21 +115,16 @@ class Devotions extends Component {
                 </div>
               </section>
             </div>
-
           </ReactPullToRefresh>
-
         </div>
-
       </VelocityComponent>
     )
-
   }
-
 }
 
 const Routes = [
   { path: "devotions", component: Devotions },
-  { path: "devotions/:entryId", component: Single }
+  { path: "devotions/:id", component: Single }
 ]
 
 export default {
