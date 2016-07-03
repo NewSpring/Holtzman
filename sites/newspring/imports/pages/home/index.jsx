@@ -6,14 +6,14 @@ import gql from "apollo-client/gql";
 import { Link } from "react-router";
 import ReactPullToRefresh from "react-pull-to-refresh";
 
-import { Loading } from "apollos/dist/core/components"
+import Loading from "apollos/dist/core/components/loading"
 import { FeedItemSkeleton } from "apollos/dist/core/components/loading"
 import Split, { Left, Right } from "apollos/dist/core/blocks/split"
 import { nav as navActions } from "apollos/dist/core/store"
-// import { Headerable } from "apollos/dist/core/mixins"
+import { Headerable } from "apollos/dist/core/mixins"
 
 import Helpers from "/imports/helpers";
-// import { Pageable } from "/imports/mixins"
+import { Pageable } from "/imports/mixins"
 import { FeedItem } from "/imports/components/cards"
 
 import HomeHero from "./home.Hero"
@@ -27,7 +27,6 @@ const mapQueriesToProps = ({ ownProps, state }) => {
             entryId: id
             title
             channelName
-            collectionId
             status
             meta {
               siteId
@@ -66,32 +65,26 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 const mapStateToProps = (state) => {
   return {
     paging: state.paging,
-    modal: {
-      visible: state.modal.visible
-    }
+    modal: { visible: state.modal.visible }
   };
 };
 
 @connect({ mapQueriesToProps, mapStateToProps })
-// @ReactMixin.decorate(Pageable)
-// @ReactMixin.decorate(Headerable)
+@ReactMixin.decorate(Pageable)
+@ReactMixin.decorate(Headerable)
 export default class Home extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    // this.headerAction({
-    //   title: "NewSpring"
-    // });
+    this.headerAction({
+      title: "NEWSPRING CHURCH"
+    });
   }
 
   handleRefresh = (resolve, reject) => {
     this.props.data.refetch()
-      .then((result) => {
-        resolve();
-      }).catch((error) => {
-        console.error(error);
-        reject();
-      });
+      .then(resolve)
+      .catch(reject);
   }
 
   renderFeed = () => {
@@ -103,19 +96,14 @@ export default class Home extends Component {
       feedItems = feed.slice(1);
     }
     return (
-
-      feedItems.map((item, i) => {
-        return (
-          <div className="grid__item one-half@lap-wide-and-up flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
-            {(() => {
-              if (typeof item === "number") {
-                return <FeedItemSkeleton />
-              }
-              return <FeedItem item={item}  />
-            })()}
-          </div>
-        )
-      })
+      feedItems.map((item, i) => (
+        <div className="grid__item one-half@lap-wide-and-up flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
+          {(() => {
+            if (typeof item === "number") return <FeedItemSkeleton />
+            return <FeedItem item={item}  />
+          })()}
+        </div>
+      ))
 
     )
   }
@@ -137,33 +125,28 @@ export default class Home extends Component {
           duration={1000}
           runOnMount={true}
         >
-        <Split nav={true} classes={["background--light-primary"]}>
-
+        <div>
           <div className="ptr-fake-background"></div>
 
           <ReactPullToRefresh
             onRefresh={this.handleRefresh}
-            icon={
-              <i className="icon-leaf-outline"></i>
-            }
-            loading={
-              <i className="loading icon-leaf-outline"></i>
-            }
+            icon={<i className="icon-leaf-outline"></i>}
+            loading={<i className="loading icon-leaf-outline"></i>}
           >
+            <Split nav={true} classes={["background--light-primary"]}>
+              <Right
+                mobile={true}
+                background={photo}
+                classes={["floating--bottom", "text-left", "background--dark-primary"]}
+                ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up", "floating--bottom", "text-left"]}
+                aspect="square"
+                link={heroLink}
+              >
 
-            <Right
-              mobile={true}
-              background={photo}
-              classes={["floating--bottom", "text-left", "background--dark-primary"]}
-              ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up", "floating--bottom", "text-left"]}
-              aspect="square"
-              link={heroLink}
-            >
+                <HomeHero item={heroItem ? heroItem : {}} />
 
-              <HomeHero item={heroItem ? heroItem : {}} />
-
-            </Right>
-
+              </Right>
+            </Split>
             <Left scroll={true} ref="container">
               <section className="background--light-secondary soft-half@handheld soft@portable soft-double@anchored">
                 <div className="grid">
@@ -171,10 +154,8 @@ export default class Home extends Component {
                 </div>
               </section>
             </Left>
-
           </ReactPullToRefresh>
-
-        </Split>
+        </div>
       </VelocityComponent>
 
     )

@@ -18,11 +18,14 @@ const mapQueriesToProps = () => ({
   data: {
     query: gql`
       query GetPerson {
-        currentPerson {
+        person: currentPerson {
           photo
           firstName
           nickName
           lastName
+          home {
+            city
+          }
         }
       }
     `,

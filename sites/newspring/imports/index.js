@@ -15,10 +15,9 @@ import Profile from "apollos/dist/profile"
 import Global from "apollos/dist/core/blocks/global";
 
 if (process.env.NATIVE) {
-  // XXX can be removed when AudioPlayer is imported
-  import "./store/audio"
-  // import AudioPlayer from "/imports/components/players/audio/index"
-  // import LivePlayer from "/imports/components/live"
+  import AudioPlayer from "/imports/components/players/audio/index"
+  // XXX add live query back to heighliner
+  // import LivePlayer from "/imports/components/live/index"
 }
 
 @connect((state) => ({ audio: state.audio }))
@@ -37,7 +36,7 @@ class App extends Component {
       <Global className={classes.join(" ")}>
         {/*<LivePlayer/>*/}
         {this.props.children}
-        {/*<AudioPlayer />*/}
+        <AudioPlayer />
       </Global>
     );
   }
@@ -78,7 +77,6 @@ export const routes = {
 
     Give,
     Profile,
-
 
     // always goes last
     Core,

@@ -1,8 +1,8 @@
 
-import Audio from "./audio"
-import Video from "./video"
+// import Audio from "./audio"
+import Video from "./video/index"
 
-export default {
-  Audio,
+export {
+  // Audio,
   Video
 }
