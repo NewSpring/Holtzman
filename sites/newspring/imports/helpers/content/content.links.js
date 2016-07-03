@@ -7,7 +7,7 @@ function contentLink(contentItem) {
     case "series_newspring":
       return `/series/${entryId}`
     case "sermons":
-      const seriesId = contentItem.collectionId;
+      const seriesId = contentItem.parent && contentItem.parent.entryId;
       return `/series/${seriesId}/sermon/${entryId}`
     case "devotionals":
       return `/devotions/${entryId}`

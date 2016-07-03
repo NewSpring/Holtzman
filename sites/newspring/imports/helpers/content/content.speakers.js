@@ -1,6 +1,6 @@
 
 function speakers(contentItem) {
-  const speakers = contentItem.content.speakers.split(",");
+  const speakers = contentItem.content.speaker.split(",");
 
   return speakers.map((speaker) => {
     let words = speaker.split(" ");

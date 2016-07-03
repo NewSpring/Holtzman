@@ -1,8 +1,9 @@
 import { Component, PropTypes } from "react"
 import ReactMixin from "react-mixin"
 import { Pageable } from "/imports/mixins"
-import { connect, gql } from "apollos/dist/core/graphql/apollo";
+import { connect } from "react-apollo";
 import { VelocityComponent } from "velocity-react"
+import gql from "apollo-client/gql";
 
 import ReactPullToRefresh from "react-pull-to-refresh";
 import { Loading } from "apollos/dist/core/components"
@@ -15,77 +16,80 @@ import Single from "./articles.Single"
 
 import { FeedItem } from "/imports/components/cards"
 
-import ArticlesQuery from "./queries/feed"
-
-const mapQueriesToProps = ({ ownProps, state }) => {
-  return {
-    data: {
-      query: gql`${ArticlesQuery}`,
-      variables: {
-        limit: state.paging.pageSize * state.paging.page,
-        skip: state.paging.skip,
-      },
-      forceFetch: false,
-      returnPartialData: false,
+const mapQueriesToProps = ({ ownProps, state }) => ({
+  data: {
+    query: gql`
+      query getArticles($limit: Int!, $skip: Int!) {
+        content(channel: "articles", limit: $limit, skip: $skip) {
+          entryId: id
+          title
+          status
+          channelName
+          meta {
+            urlTitle
+            siteId
+            date
+            channelId
+          }
+          content {
+            body
+            scripture {
+              book
+              passage
+            }
+            images {
+              fileName
+              fileType
+              fileLabel
+              s3
+              cloudfront
+            }
+          }
+        }
+      }
+    `,
+    variables: {
+      limit: state.paging.pageSize * state.paging.page,
+      skip: state.paging.skip,
     },
-  };
-};
+    forceFetch: false,
+    returnPartialData: false,
+  },
+});
 
-const mapStateToProps = (state) => {
-  return {
-    paging: state.paging,
-  };
-};
+const mapStateToProps = (state) => ({ paging: state.paging });
 
-@connect({
-  mapQueriesToProps,
-  mapStateToProps,
-})
+@connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-
-    this.headerAction({
-      title: "All Articles"
-    });
+    this.headerAction({ title: "All Articles" });
   }
 
   handleRefresh = (resolve, reject) => {
     this.props.data.refetch()
-      .then((result) => {
-        resolve();
-      }).catch((error) => {
-        console.error(error);
-        reject();
-      });
+      .then(resolve)
+      .catch(reject);
   }
 
   renderItems = () => {
-
-    const { allContent } = this.props.data;
-
+    const { content } = this.props.data;
     let articles = [1, 2, 3, 4, 5]
-    if (allContent) {
-      articles = allContent;
-    }
+    if (content) articles = content;
     return (
-
       articles.map((article, i) => {
         return (
           <div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
-            {() => {
-              if (typeof article === "number") {
-                return <FeedItemSkeleton />
-              }
+            {(() => {
+              if (typeof article === "number") return <FeedItemSkeleton />
               return <FeedItem item={article}  />
-            }()}
+            })()}
           </div>
         )
       })
-
     )
   }
 
@@ -93,23 +97,17 @@ class Template extends Component {
 
     return (
       <VelocityComponent
-          animation={"transition.fadeIn"}
-          duration={1000}
-          runOnMount={true}
-        >
-
+        animation={"transition.fadeIn"}
+        duration={1000}
+        runOnMount={true}
+      >
         <div>
-
           <div className="ptr-fake-background"></div>
 
           <ReactPullToRefresh
             onRefresh={this.handleRefresh}
-            icon={
-              <i className="icon-leaf-outline"></i>
-            }
-            loading={
-              <i className="loading icon-leaf-outline"></i>
-            }
+            icon={<i className="icon-leaf-outline"></i>}
+            loading={<i className="loading icon-leaf-outline"></i>}
           >
 
             <div className="soft@portable soft-double@lap-and-up background--light-primary">
@@ -121,10 +119,8 @@ class Template extends Component {
             </div>
 
           </ReactPullToRefresh>
-
         </div>
-
-    </VelocityComponent>
+      </VelocityComponent>
     );
 
   }
@@ -133,7 +129,7 @@ class Template extends Component {
 
 const Routes = [
   { path: "articles", component: Template },
-  { path: "articles/:entryId", component: Single }
+  { path: "articles/:id", component: Single }
 ]
 
 export default {

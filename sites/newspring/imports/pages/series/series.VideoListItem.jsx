@@ -37,7 +37,11 @@ export default class SeriesVideoListItem extends Component {
         className="text-dark-secondary floating ratio--square display-inline-block rounded background--light-tertiary push-right"
         style={this.dynamicWidth()}>
         <div className="one-whole soft-sides text-left floating__item">
-          <div className="background--light-primary floating number-styles">
+          <div className="background--light-primary floating locked-left locked-top" style={{
+            width: "40px",
+            height: "40px",
+            borderRadius: "6px 0 6px 0",
+          }}>
             <h5 className="floating__item flush">{order + 1}</h5>
           </div>
           <h4>{sermon.title}</h4>

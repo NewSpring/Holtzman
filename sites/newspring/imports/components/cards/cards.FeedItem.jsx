@@ -7,7 +7,7 @@ import Helpers from "/imports/helpers"
 export default class FeedItem extends Component {
 
   static propTypes = {
-    item: PropTypes.object.isRequired
+    // item: PropTypes.object.isRequired
   }
 
   isSeriesItem = () => {
@@ -114,7 +114,7 @@ export default class FeedItem extends Component {
 
   render() {
     const item = this.props.item;
-    
+
     return (
       <Card
         link={Helpers.content.links(item)}

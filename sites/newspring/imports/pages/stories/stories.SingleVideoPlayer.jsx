@@ -19,21 +19,9 @@ export default class StoriesSingleVideoPlayer extends Component {
         className="background--fill overlay--gradient ratio--landscape floating"
         style={Helpers.backgrounds.styles(story, { label: "2:1" })}>
         <i className="text-light-primary plain floating__item overlay__item icon-play h1"></i>
-        <div style={{
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            width: "100%",
-            zIndex: "10"
-          }}>
-          <Video
-            id={story.content.ooyalaId}
-            ref="video"
-            hide={false}
-          />
+        <div className="locked locked-ends one-whole" style={{ zIndex: "10" }}>
+          <Video id={story.content.ooyalaId} hide={false} />
         </div>
-
-
       </div>
     );
 

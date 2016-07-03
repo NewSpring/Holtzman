@@ -1,24 +1,44 @@
 import { Component, PropTypes } from "react";
-import { connect, gql } from "apollos/dist/core/graphql/apollo";
+import { connect } from "react-apollo";
+import gql from "apollo-client/gql";
 
 import SeriesVideoListItem from "./series.VideoListItem";
 import { Spinner } from "apollos/dist/core/components/loading"
 
-import SermonsQuery from "./queries/relatedSermons"
-
-const mapQueriesToProps = ({ ownProps, state }) => {
-  const pathParts = state.routing.location.pathname.split("/");
-  return {
-    sermons: {
-      query: gql`${SermonsQuery}`,
-      variables: {
-        entryId: Number(pathParts[2]),
-      },
-      forceFetch: false,
-      returnPartialData: false,
-    },
-  };
-};
+const mapQueriesToProps = ({ ownProps }) => ({
+  sermons: {
+    query: gql`
+      query GetSermonsFromSeries($id: ID!) {
+        content: node(id: $id) {
+          ... on Content {
+            sermons: children(channels: ["sermons"]) {
+              id
+              entryId: id
+              title
+              status
+              channelName
+              parent {
+                entryId: id
+              }
+              meta {
+                urlTitle
+                siteId
+                date
+                channelId
+              }
+              content {
+                speaker
+              }
+            }
+          }
+        }
+      }
+    `,
+    variables: { id: ownProps.id },
+    forceFetch: false,
+    returnPartialData: false,
+  },
+});
 @connect({ mapQueriesToProps })
 export default class SeriesVideoList extends Component {
 
@@ -27,7 +47,7 @@ export default class SeriesVideoList extends Component {
     if (typeof window != "undefined" || window != null) {
       let itemSize = (window.innerWidth - 40) * 0.8; // four-fifths
       itemSize += 20; // account for margin
-      const items = this.props.sermons.allContent.length;
+      const items = this.props.sermons.content.sermons.length;
       const width = (items * itemSize) + 40;
       return {
         width: `${width}px`
@@ -45,9 +65,9 @@ export default class SeriesVideoList extends Component {
 
   render() {
 
-    const { allContent } = this.props.sermons;
+    const { content } = this.props.sermons;
 
-    if (!allContent) {
+    if (!content) {
       return (
         <div className="text-center soft-ends">
           <Spinner />
@@ -55,7 +75,7 @@ export default class SeriesVideoList extends Component {
       )
     }
 
-    const sermons = allContent;
+    const { sermons } = content;
 
     return (
       <div style={this.overflow}>

@@ -1,9 +1,10 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
-import { connect, gql } from "apollos/dist/core/graphql/apollo";
+import { connect } from "react-apollo";
 import { Likeable, Shareable } from "/imports/mixins"
 import Meta from "react-helmet"
 import { VelocityComponent } from "velocity-react"
+import gql from "apollo-client/gql";
 
 // loading state
 import Split, { Left, Right } from "apollos/dist/core/blocks/split"
@@ -20,21 +21,42 @@ import {
 // import content component
 import Content from "./articles.Content";
 
-import ArticleQuery from "./queries/single"
-
-const mapQueriesToProps = ({ ownProps, state }) => {
-  const pathParts = state.routing.location.pathname.split("/");
-  return {
-    article: {
-      query: gql`${ArticleQuery}`,
-      variables: {
-        entryId: Number(pathParts[2]),
-      },
-      forceFetch: false,
-      returnPartialData: false,
-    },
-  };
-};
+const mapQueriesToProps = ({ ownProps, state }) => ({
+  article: {
+    query: gql`
+      query getArticle($id: ID!) {
+        content: node(id: $id) {
+          id
+          ... on Content {
+            title
+            status
+            channelName
+            authors
+            meta {
+              urlTitle
+              siteId
+              date
+              channelId
+            }
+            content {
+              body
+              images {
+                fileName
+                fileType
+                fileLabel
+                s3
+                cloudfront
+              }
+            }
+          }
+        }
+      }
+    `,
+    variables: { id: ownProps.params.id },
+    forceFetch: false,
+    returnPartialData: false, // XXX can this be true?
+  },
+})
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
@@ -42,13 +64,12 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 export default class ArticlesSingle extends Component {
 
   componentWillMount(){
-    if(Meteor.isCordova) {
-      this.props.dispatch(navActions.setLevel("CONTENT"));
-      this.props.dispatch(navActions.setAction("CONTENT", {
-        id: 2,
-        action: this.likeableAction
-      }));
-    }
+    if (process.env.WEB) return;
+    this.props.dispatch(navActions.setLevel("CONTENT"));
+    this.props.dispatch(navActions.setAction("CONTENT", {
+      id: 2,
+      action: this.likeableAction
+    }));
   }
 
   render() {
@@ -66,7 +87,6 @@ export default class ArticlesSingle extends Component {
     }
 
     const article = content;
-
     let photo = Helpers.backgrounds.image(article)
 
     return (
@@ -75,26 +95,24 @@ export default class ArticlesSingle extends Component {
         duration={1000}
         runOnMount={true}
       >
-        <Split nav={true} classes={["background--light-primary"]}>
-          <Right
-            mobile={true}
-            background={photo}
-            classes={["floating--bottom", "overlay--gradient@lap-and-up"]}
-            ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up"]}
-            aspect="square"
-          ></Right>
-
+        <div>
+          <Split nav={true} classes={["background--light-primary"]}>
+            <Right
+              mobile={true}
+              background={photo}
+              classes={["floating--bottom", "overlay--gradient@lap-and-up"]}
+              ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up"]}
+              aspect="square"
+            ></Right>
+          </Split>
           <Left scroll={true} >
             <section className="soft@handheld soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
               <Content article={article} />
             </section>
           </Left>
-        </Split>
+        </div>
       </VelocityComponent>
-
-
     );
 
   }
-
 }

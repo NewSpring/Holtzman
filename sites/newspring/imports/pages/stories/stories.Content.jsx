@@ -4,35 +4,28 @@ import Helpers from "/imports/helpers"
 import Components from "/imports/components"
 import SingleVideoPlayer from "./stories.SingleVideoPlayer"
 
+const StoryImage = ({ story }) => (
+  <div
+    className="one-whole ratio--square background--fill"
+    style={Helpers.backgrounds.styles(story)}>
+  </div>
+);
+
 export default class StoriesContent extends Component {
 
   static propTypes = {
     story: PropTypes.object.isRequired
   }
 
-
-
   render() {
-
-    const StoryImage = () => (
-      <div
-        className="one-whole ratio--square background--fill"
-        style={Helpers.backgrounds.styles(story)}>
-      </div>
-    );
-
     const story = this.props.story;
 
     return (
-
       <section className="background--light-primary hard-sides hard-top">
-        {() => {
-         if (story.content.ooyalaId.length === 0) {
-           return <StoryImage />
-          } else {
-            return <SingleVideoPlayer story={story} />
-          }
-        }()}
+        {(() => {
+         if (story.content.ooyalaId.length === 0) return <StoryImage story={story} />;
+          return <SingleVideoPlayer story={story} />;
+        })()}
         <div className="soft push-top">
           <h2 className="capitalize">{story.title}</h2>
           <h4 className="text-dark-tertiary">{story.subtitle}</h4>
