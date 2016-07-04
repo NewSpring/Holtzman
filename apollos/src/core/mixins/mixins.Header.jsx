@@ -7,7 +7,7 @@ const Header = {
 
   componentWillMount: function () {
     this.headerAction = this.setHeaderDetails.bind(this);
-    this.state = {
+    this.state = {...this.state, ...{
       __headerSet: false,
     };
     // this.props.dispatch(headerActions.set({

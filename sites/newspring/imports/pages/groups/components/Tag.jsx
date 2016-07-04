@@ -13,18 +13,20 @@ export default class Tag extends Component {
     clickAble: PropTypes.bool,
     active: PropTypes.bool,
     val: PropTypes.string.isRequired,
+    canBeActive: PropTypes.bool,
   }
 
   static defaultProps = {
     className: "",
     style: {},
     clickAble: true,
+    canBeActive: true,
   }
 
   state = { isActive: false }
 
   componentWillMount() {
-    if (this.props.active || this.isInQueryString()) {
+    if ((this.props.active || this.isInQueryString()) && this.props.canBeActive) {
       this.setState({ isActive: true });
     }
   }
@@ -40,11 +42,11 @@ export default class Tag extends Component {
 
   onClick = (e) => {
     if (e) e.stopPropagation();
-    let { val, onClick, router, location, clickAble } = this.props;
+    let { val, onClick, router, location, clickAble, canBeActive } = this.props;
 
     if (!clickAble) return null;
 
-    this.setState({ isActive: !this.state.isActive });
+    if (canBeActive) this.setState({ isActive: !this.state.isActive });
 
     if (onClick) {
       onClick(val);
@@ -66,9 +68,8 @@ export default class Tag extends Component {
 
     tags = tags.filter(x => x)
 
-    if (!tags.length) {
-      // XXX determine if this is the only search param
-      delete location.query
+    if (!tags.length && location.query.tags) {
+      delete location.query.tags
     } else {
       location.query.tags = tags.join(",")
     }
@@ -77,13 +78,13 @@ export default class Tag extends Component {
   }
 
   render() {
-    const { className, style, clickAble, val } = this.props;
+    const { className, style, clickAble, val, canBeActive } = this.props;
     let classes = [
       "tag",
       "push-half-right"
     ];
     if (clickAble) classes.push("tag--clickable");
-    if (this.state.isActive) classes.push("tag--active");
+    if (this.state.isActive && canBeActive) classes.push("tag--active");
 
     return (
       <span

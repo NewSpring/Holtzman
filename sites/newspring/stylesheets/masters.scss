@@ -73,6 +73,7 @@ blockquote p {
 
 .tag {
   @extend h6;
+  position: relative;
   background-color: map-get($colors, light-tertiary);
   text-transform: lowercase;
   display: inline-block;
@@ -84,6 +85,7 @@ blockquote p {
 
 .tag--clickable {
   @extend .tag;
+  cursor: pointer;
   &:hover {
     color: map-get($colors, light-primary);
     background-color: $brand-color;
@@ -92,6 +94,7 @@ blockquote p {
 
 .tag--active {
   @extend .tag;
+  cursor: pointer;
   color: map-get($colors, light-primary);
   background-color: $brand-color;
 }
@@ -103,5 +106,14 @@ blockquote p {
   &:hover {
     color: map-get($colors, dark-secondary);
     background-color: map-get($colors, light-secondary);
+  }
+}
+
+.tag--active.tag--clickable {
+  padding-right: 30px;
+  &:after {
+    content: "✕";
+    position: absolute;
+    right: 8px;
   }
 }

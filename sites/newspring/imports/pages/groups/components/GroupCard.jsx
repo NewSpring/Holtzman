@@ -6,13 +6,18 @@ import SideBySide from "apollos/dist/core/components/cards/SideBySide";
 
 import Tag from "../components/Tag";
 
-export default withRouter(({ group, router }) => {
+export default withRouter(({ group, router, onHover }) => {
   if (!group) group = {};
   const leaders = group && group.members && group.members
     .filter(x => x.role.toLowerCase() === "leader");
 
   return (
-    <button onClick={() => router.push(`/groups/${group.id}`)} className="relative one-whole push-bottom@lap-and-up plain" >
+    <button
+      onMouseOver={onHover}
+      id={group.id}
+      onClick={() => router.push(`/groups/${group.id}`)}
+      className="relative one-whole push-bottom@lap-and-up plain"
+    >
       <SideBySide
         defaultImage={group.photo ? group.photo : "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png" }
         left={["one-whole", "two-thirds@lap-and-up"]}

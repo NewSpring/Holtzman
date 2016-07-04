@@ -1,8 +1,10 @@
-import { Component, PropTypes} from "react"
-import { connect } from "react-apollo"
+import { Component, PropTypes} from "react";
+import { connect } from "react-apollo";
+import ReactMixin from "react-mixin";
 import gql from "apollo-client/gql";
 import { withRouter } from "react-router";
 import Split, { Left, Right } from "apollos/dist/core/blocks/split";
+import { Headerable } from "apollos/dist/core/mixins"
 
 import Layout from "./Layout";
 import Result from "./Result"
@@ -52,11 +54,16 @@ const defaultArray = [];
 const mapStateToProps = (state) => ({ location: state.routing.location })
 @withRouter
 @connect({ mapQueriesToProps, mapStateToProps })
+@ReactMixin.decorate(Headerable)
 export default class Template extends Component {
 
   state = {
     tags: [],
     query: null,
+  }
+
+  componentWillMount() {
+    this.headerAction({ title: "Group Finder" });
   }
 
   tagOnClick = (tag) => {
@@ -106,7 +113,6 @@ export default class Template extends Component {
   render () {
     const { attributes, location, content } = this.props;
     if (Object.keys(location.query).length) return <Result />;
-
     return (
       <div>
         <Split>
@@ -118,7 +124,7 @@ export default class Template extends Component {
         </Split>
         <Left scroll={true} classes={["background--light-secondary"]}>
           <Layout
-            canSearchTags={this.state.tags.length || this.state.query}
+            canSearchTags={false || this.state.tags.length || this.state.query}
             tags={(attributes && attributes.tags) || defaultArray}
             tagOnClick={this.tagOnClick}
             submitTags={this.submitTags}
