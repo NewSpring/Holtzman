@@ -3,7 +3,10 @@ import { connect } from "react-apollo"
 import gql from "apollo-client/gql";
 import Moment from "moment"
 
-import { accounts as accountsActions } from "../../../../core/store"
+import {
+  nav,
+  accounts as accountsActions
+} from "../../../../core/store"
 import { update } from "../../../../core/methods/accounts/client/"
 
 import { Loading, Error as Err } from "../../../../core/components/states"
@@ -19,7 +22,7 @@ const mapQueriesToProps = () => ({
         campuses {
           name
           shortCode
-          id
+          id: entityId
           locationId
         }
       }
@@ -27,7 +30,20 @@ const mapQueriesToProps = () => ({
   },
   person: {
     query: gql`
-
+      query GetPersonForSettings {
+        person: currentPerson {
+          campus {
+            id: entityId
+          }
+          firstName
+          lastName
+          nickName
+          email
+          birthDay
+          birthMonth
+          birthYear
+        }
+      }
     `,
   },
 });
@@ -135,7 +151,7 @@ export default class PersonalDetails extends Component {
             saveMonth={this.saveMonth}
             days={this.getDays()}
             years={this.getYears()}
-            person={this.props.person || {}} // XXX perf
+            person={this.props.person && this.props.person.person || {}} // XXX perf
             campuses={campuses}
           />
         )

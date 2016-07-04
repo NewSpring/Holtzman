@@ -6,36 +6,34 @@ import FollowingItem from "./Item"
 
 import { topics as topicActions } from "../../../core/store"
 
-const map = (state) => ({ state: state.topics })
+let topics = [
+  "Articles",
+  "Devotionals",
+  "Stories",
+  "Series",
+  "Sermons",
+  "Music"
+];
 
+// XXX make this dynamic via heighliner
+const map = (state) => ({ topics: state.topics })
 @connect(map)
 export default class FollowingContainer extends Component {
-  topics = [
-    "Articles",
-    "Devotionals",
-    "Stories",
-    "Series",
-    "Sermons",
-    "Music"
-  ]
+
 
   h7Classes = `flush outlined--light outlined--bottom display-block soft-sides soft-half-top soft-bottom text-center soft-double-sides@lap-and-up soft-double-bottom@lap-and-up`
 
   containerClasses = `cell-wrapper push-half-bottom background--light-primary outlined--light outlined--bottom text-dark-secondary`
 
   changed = (id) => {
-    const topic = this.topics[id];
+    const topic = topics[id];
     this.props.dispatch(topicActions.toggle({ topic: topic }));
     Meteor.call("toggleTopic", topic);
   }
 
   active = (item) => {
-    if (this.props.state.topics) {
-      return this.props.state.topics.indexOf(item) === -1
-    }
-    else {
-      return true
-    }
+    if (this.props.topics) return this.props.topics.indexOf(item) === -1
+    return true
   }
 
   render() {
@@ -50,7 +48,7 @@ export default class FollowingContainer extends Component {
 
         <div className={this.containerClasses}>
 
-          {this.topics.map((contentItem, i) => {
+          {topics.map((contentItem, i) => {
             return <FollowingItem item={contentItem} switchId={i} key={i} changed={this.changed} active={this.active(contentItem)} />
           })}
 

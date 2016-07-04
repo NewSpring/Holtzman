@@ -1,7 +1,7 @@
 
 const SignOut = ({ signout }) => (
   <div>
-    <div className="push-double">
+    <div className="push-double-ends soft-half-sides">
       <h4 className="text-center">
         Sign out of your NewSpring profile
       </h4>
