@@ -5,10 +5,11 @@ import { Loading } from "../../../core/components"
 
 import LikesItem from "./Item"
 
+// XXX make this dynamic via heighliner
 class LikesContainer extends Component {
 
   render() {
-
+    console.log(this.props)
     if (!this.props.likes) {
       <Loading />
     }

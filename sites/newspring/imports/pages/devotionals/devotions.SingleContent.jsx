@@ -28,7 +28,7 @@ export default class DevotionsSingleContent extends Component {
           <div className="soft push-top">
             <h2 className="capitalize">{devotion.title}</h2>
             {/* XXX update scripture formatting */}
-            {/*{(() => {
+            {(() => {
               if (!devotion.content.scripture) return null;
               return (
                 <a
@@ -37,7 +37,7 @@ export default class DevotionsSingleContent extends Component {
                   onClick={this.props.onClickLink}
                   >{Helpers.scriptures.list(devotion)}</a>
               );
-            })()}*/}
+            })()}
 
             <div dangerouslySetInnerHTML={Helpers.react.markup(devotion)}></div>
 
