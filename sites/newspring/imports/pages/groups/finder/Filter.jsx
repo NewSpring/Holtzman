@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-apollo";
+import { withRouter } from "react-router";
 import gql from "apollo-client/gql";
 
 import Loading from "apollos/dist/core/components/loading/index";
@@ -20,61 +21,59 @@ const mapQueriesToProps = () => ({
     `,
   },
 })
-
+const mapStateToProps = (state) => ({ location: state.routing.location })
 let defaultTags = [];
-@connect({ mapQueriesToProps })
+@withRouter
+@connect({ mapQueriesToProps, mapStateToProps })
 export default class Filter extends Component {
 
-  state = {
-    toggled: false,
-    showSearch: false,
-    query: null,
-  }
-
-  onClick = () => this.setState({
-    toggled: !this.state.toggled,
-    showSearch: this.state.showSearch,
-  });
-
-  onToggleSearch = () => this.setState({
-    toggled: this.state.toggled,
-    showSearch: !this.state.showSearch,
-  });
+  state = { query: null }
 
   findByQuery = (e) => {
     if (e && e.preventDefault) e.preventDefault();
-    console.log("submitting...")
+
+    const { query } = this.state;
+    let { router, location } = this.props;
+
+    if (!location.query) location.query = {};
+    if (query) location.query.q = query
+
+    // reset state
+    this.setState({ query: null });
+    router.push(location);
   }
 
   inputOnChange = (value) => {
-    this.setState({
-      toggled: this.state.toggled,
-      showSearch: this.state.showSearch,
-      query: value,
-    });
+    this.setState({ query: value });
   }
 
   render() {
-    const { attributes } = this.props;
+    const {
+      attributes,
+      showSearch,
+      toggleSearch,
+      showTags,
+      toggleTags,
+    } = this.props;
+
     let tags = attributes.tags ? attributes.tags : defaultTags;
-    const { toggled, showSearch } = this.state;
     return (
       <div>
         <div
-          onClick={this.onClick}
+          onClick={toggleTags}
           style={{verticalAlign: "middle"}}
           className="background--light-primary soft-half-bottom soft-top soft-sides soft-double-sides@anchored outlined--light outlined--bottom"
         >
           <h6 className="float-left flush-bottom text-dark-tertiary" style={{verticalAlign: "middle"}}>
-            {toggled ? "Hide" : "See"} All Tags
+            {showTags ? "Hide" : "See"} All Tags
           </h6>
-          <span className={`float-right icon-arrow-${toggled ? "up" : "down"}`} style={{verticalAlign: "middle"}}></span>
+          <span className={`float-right icon-arrow-${showTags ? "up" : "down"}`} style={{verticalAlign: "middle"}}></span>
 
         </div>
 
         {/* filter internals */}
         {(() => {
-          if (!toggled) return null; // hidden
+          if (!showTags) return null; // hidden
           if (!tags.length) return null; // XXX loading....
           return (
             <div className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-ends@anchored text-center background--light-primary">
@@ -91,15 +90,16 @@ export default class Filter extends Component {
         {(() => {
           if (!showSearch) return null;
           return (
-            <div className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-ends@anchored text-left background--light-primary">
+            <div className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double@anchored text-left background--light-primary">
 
               <Forms.Form
                 classes={["hard", "display-inline-block", "one-whole" ]}
                 submit={(e) => this.findByQuery(e)}
               >
-                <i className="icon-search locked-left"></i>
+                <i className="icon-search locked-left soft-half-left"></i>
                 <i
-                  onClick={() => this.onToggleSearch()}
+                  style={{zIndex: 1}}
+                  onClick={toggleSearch}
                   className="icon-close locked-right soft-half-right"
                 ></i>
                 <Forms.Input
