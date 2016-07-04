@@ -14,7 +14,7 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
 
     {/* Tags :rocket: */}
     <div className="soft-half soft-double-ends push-double@lap-and-up soft-double@lap-wide-and-up text-center">
-      <h3 className="flush-bottom soft-half-bottom">Find My People</h3>
+      <h3 className="flush-bottom">Find My People</h3>
       <h6 className="soft-half-bottom@handheld soft-bottom@anchored">
         <em>Select multiple tags to find even more groups</em>
       </h6>
