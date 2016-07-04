@@ -23,10 +23,7 @@ export default class DevotionsSingleScripture extends Component {
       >
 
         {Helpers.scriptures.list(devotion, { commas: false }).map((scripture, i) => {
-          return (
-            <ScriptureItem scripture={scripture} key={i} />
-          );
-
+          return <ScriptureItem scripture={scripture} key={i} />
         })}
 
         <p className="small italic push-sides">

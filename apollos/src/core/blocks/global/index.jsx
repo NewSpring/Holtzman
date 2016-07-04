@@ -72,7 +72,7 @@ const GlobalData =  createContainer(({ dispatch }) => {
     // Load in topics from user profile
     Meteor.subscribe("userData");
     let topics = Meteor.user() ? Meteor.user().topics : [];
-    // if (topics && topics.length) dispatch(topicActions.set(topics));
+    if (topics && topics.length) dispatch(topicActions.set(topics));
 
 
     // XXX which one?

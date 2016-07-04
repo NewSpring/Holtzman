@@ -19,6 +19,7 @@ export default class SearchItem extends Component {
       "rounded",
       "text-dark-secondary",
       "display-block",
+      "plain",
       css(Styles.card)
     ].join(" ")
   }
