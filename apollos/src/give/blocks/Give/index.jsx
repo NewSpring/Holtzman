@@ -64,10 +64,7 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
-    variables: {
-      stateId: 28,
-      countryId: 45,
-    }
+    variables: { state: 28, country: 45 }
   }
 });
 const defaultArray = []; // empty array for usage as default in render

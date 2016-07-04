@@ -8,7 +8,7 @@ import ApolloClient, {
 let hasToken = Accounts._storedLoginToken && Accounts._storedLoginToken();
 let token =  hasToken ? Accounts._storedLoginToken() : null;
 
-const networkInterface = createNetworkInterface("http://localhost:8888", {
+const networkInterface = createNetworkInterface(Meteor.settings.public.heighliner, {
   headers: { Authorization: token },
 });
 

@@ -159,6 +159,8 @@ Vorpal
       return cb();
     }
 
+    var packageFile = require(Path.join(app, "package.json"));
+
     var env = process.env;
     if (options.debug) env.METEOR_PROFILE = 200;
     if (options.production) env.NODE_ENV = "production";
@@ -169,10 +171,11 @@ Vorpal
       var babel = Spawn("npm", ["run", "start"], { cwd: apollosFolder });
     }
 
-    var meteorArgs = [
-      "--settings",
-      ".remote/settings/sites/my.newspring.cc/settings.json",
-    ];
+    var meteorArgs = [ "--settings" ];
+
+    if (packageFile.apollos && packageFile.apollos.settings) {
+      meteorArgs.push(packageFile.apollos.settings)
+    }
 
     function run() {
       var meteor = Spawn("meteor", meteorArgs, { stdio: "inherit", cwd: app, env: env });
