@@ -13,12 +13,12 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
     <Meta title="Group Finder" description={"#TheseAreMyPeople"} />
 
     {/* Tags :rocket: */}
-    <div className="soft soft-double-ends push-double@lap-and-up soft-double@lap-wide-and-up text-center">
+    <div className="soft-half soft-double-ends push-double@lap-and-up soft-double@lap-wide-and-up text-center">
       <h3 className="flush-bottom soft-half-bottom">Find My People</h3>
       <h6 className="soft-half-bottom@handheld soft-bottom@anchored">
         <em>Select multiple tags to find even more groups</em>
       </h6>
-      <div className="push-ends soft-double-sides@lap-and-up push-double-sides@anchored soft-sides@handheld">
+      <div className="push-ends soft-double-sides@lap-and-up push-double-sides@anchored">
         {tags.map((tag, i) => <Tag onClick={tagOnClick} key={i} val={tag.value} />)}
       </div>
       {(() => {

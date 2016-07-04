@@ -13,7 +13,7 @@ const mapQueriesToProps = () => ({
         accounts {
           description
           name
-          id
+          id: entityId
           summary
           image
           order

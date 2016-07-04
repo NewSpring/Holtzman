@@ -90,11 +90,16 @@ export default class NavLink extends Component {
     let { navItem } = this.props
 
     let itemStyle = {}
-    if (process.env.NATIVE) {
-      itemStyle = {
-        marginTop: "-3px"
-      }
+    if (process.env.NATIVE && icon === "icon-groups") {
+      itemStyle.fontSize = "2.5em";
+      itemStyle.lineHeight = "1.6em"
     }
+    if (process.env.WEB && icon === "icon-groups") {
+      itemStyle.fontSize = "2.5em";
+      itemStyle.lineHeight = ".5em"
+      itemStyle.marginTop = "-9px"
+    }
+
     return (
       <button
         className={this.linkClasses()}

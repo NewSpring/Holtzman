@@ -1,10 +1,12 @@
+@charset "UTF-8";
+
 @font-face {
   font-family: "newspring-icofont";
-  src:url("//d3n6tjerleuu41.cloudfront.net/fonts/newspring-icon/newspring-icofont.eot");
-  src:url("//d3n6tjerleuu41.cloudfront.net/fonts/newspring-icon/newspring-icofont.eot?#iefix") format("embedded-opentype"),
-    url("//d3n6tjerleuu41.cloudfront.net/fonts/newspring-icon/newspring-icofont.woff") format("woff"),
-    url("//d3n6tjerleuu41.cloudfront.net/fonts/newspring-icon/newspring-icofont.ttf") format("truetype"),
-    url("//d3n6tjerleuu41.cloudfront.net/fonts/newspring-icon/newspring-icofont.svg#newspring-icofont") format("svg");
+  src:url("/icofont/newspring-icofont.eot");
+  src:url("/icofont/newspring-icofont.eot?#iefix") format("embedded-opentype"),
+    url("/icofont/newspring-icofont.woff") format("woff"),
+    url("/icofont/newspring-icofont.ttf") format("truetype"),
+    url("/icofont/newspring-icofont.svg#newspring-icofont") format("svg");
   font-weight: normal;
   font-style: normal;
 
@@ -52,7 +54,7 @@
   content: "e";
 }
 .icon-pause:before {
-  content: "f";
+  content: "\49";
 }
 .icon-play:before {
   content: "g";
@@ -113,4 +115,25 @@
 }
 .icon-settings:before {
   content: "z";
+}
+.icon-repeat-one:before {
+  content: "\44";
+}
+.icon-repeat-all:before {
+  content: "\47";
+}
+.icon-like-solid:before {
+  content: "\42";
+}
+.icon-volume:before {
+  content: "\66";
+}
+.icon-mute:before {
+  content: "\48";
+}
+.icon-fullscreen:before {
+  content: "\4a";
+}
+.icon-groups:before {
+  content: "\41";
 }
