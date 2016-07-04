@@ -13,7 +13,8 @@ const initial = {
     classes: [], // classes to be added to modal
     theme: false, // string of classes to overwrite theme
     styles: {}, // styles to be set on modal component
-    keepNav: false
+    keepNav: false,
+    coverMiniPlayer: true,
   }
 }
 
@@ -26,8 +27,9 @@ export default function modal(state = initial, action) {
         props: { ...state.props, ...action.props }
       } };
     case "MODAL.SET_CONTENT":
-      action.props.coverMiniPlayer = !!action.props.coverMiniPlayer;
-
+      if (action.props) {
+        action.props.coverMiniPlayer = !!action.props.coverMiniPlayer;
+      }
       return { ...state, ...{
         content: action.content || state.content,
         visible: action.visible || state.visible,

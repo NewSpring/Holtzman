@@ -113,8 +113,9 @@ export default class SideModal extends Component {
   };
 
   getContainerStyle () {
+    let mini = this.props.props && this.props.props.coverMiniPlayer
     return {
-      zIndex: this.props.props.coverMiniPlayer ? 102 : 100,
+      zIndex: mini ? 102 : 100,
       position: "fixed"
     };
   };

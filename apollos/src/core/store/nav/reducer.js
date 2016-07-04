@@ -79,13 +79,20 @@ let links = {
     },
     {
       id: 3,
+      label: "Groups",
+      link: "groups/finder",
+      icon: "icon-groups",
+      isActive: (props) => (isEqual("/groups/finder") && !props.modal.visible)
+    },
+    {
+      id: 4,
       label:"Discover",
       action: discoverAction,
       icon:"icon-search",
       isActive: discoverActive,
     },
     {
-      id: 4,
+      id: 5,
       label: "Profile",
       link: profileLink,
       icon: "icon-profile",
