@@ -8,7 +8,19 @@ import Tag from "../components/Tag";
 import Group from "../components/GroupCard";
 import Filter from "./Filter";
 
-export default ({ groups, tags, loading, count, query, removeQueryString }) => (
+export default ({
+  groups,
+  tags,
+  loading,
+  count,
+  query,
+  removeQueryString,
+  showSearch,
+  toggleSearch,
+  showTags,
+  toggleTags,
+  onCardHover,
+}) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
 
@@ -36,11 +48,28 @@ export default ({ groups, tags, loading, count, query, removeQueryString }) => (
       {tags && tags.map((tag, key) => (
         <Tag className="flush-bottom" val={tag} key={key} />
       ))}
-      <Tag className="flush-bottom background--dark-tertiary" val="+" />
+      {(() => {
+        if (showTags) return null;
+        return (
+          <Tag
+            style={{verticalAlign: "bottom"}}
+            className="flush-bottom background--dark-tertiary"
+            val="..."
+            canBeActive={false}
+            onClick={() => toggleTags()}
+          />
+        )
+      })()}
+
     </div>
 
     {/* Filter */}
-    <Filter />
+    <Filter
+      showSearch={showSearch}
+      toggleSearch={toggleSearch}
+      showTags={showTags}
+      toggleTags={toggleTags}
+    />
 
     {/* Results */}
     <div className="soft-half soft@portable soft-double-sides@anchored soft-ends@lap-and-up">
@@ -55,8 +84,16 @@ export default ({ groups, tags, loading, count, query, removeQueryString }) => (
             <h6 className="em float-left flush-bottom text-dark-tertiary" style={{verticalAlign: "middle"}}>
               {count} Results
             </h6>
-            <span className="float-right icon-search" style={{verticalAlign: "middle"}}></span>
-
+            {(() => {
+              if (showSearch) return null;
+              return (
+                <span
+                  className="float-right icon-search"
+                  style={{verticalAlign: "middle"}}
+                  onClick={() => toggleSearch()}
+                ></span>
+              )
+            })()}
           </div>
         )
       })()}
@@ -74,7 +111,7 @@ export default ({ groups, tags, loading, count, query, removeQueryString }) => (
       {/* Results */}
 
       {groups.map((group, key) => (
-        <Group group={group} id={group.id} key={key} />
+        <Group onHover={onCardHover} group={group} id={group.id} key={key} />
       ))}
 
       {/* Ad unit */}

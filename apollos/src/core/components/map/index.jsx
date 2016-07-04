@@ -112,39 +112,38 @@ export default class Map extends Component {
     }
   }
 
-  componentWillUpdate(nextProps){
+  componentDidUpdate(prevProps){
+    const didChange = !_.isEqual(this.props.markers, prevProps.markers)
+    if (didChange && prevProps.autoCenter && this.map) {
 
-    if (this.props.active === nextProps.active && this.props.hover === nextProps.hover ) {
-      if (nextProps.autoCenter && this.map) {
+      let markers = this.props.markers.filter((x) => {
+        return x.latitude && x.longitude
+      }).map((marker) => (
+        new google.maps.LatLng(marker.latitude,marker.longitude)
+      ))
 
-        let markers = this.props.markers.filter((x) => {
-          return x.latitude && x.longitude
-        }).map((marker) => (
-          new google.maps.LatLng(marker.latitude,marker.longitude)
-        ))
-
-        if (markers.length && markers.length > 1) {
-          this.map.fitBounds(markers.reduce(function(bounds, marker) {
-            return bounds.extend(marker);
-          }, new google.maps.LatLngBounds()));
-        }
-
+      if (markers.length && markers.length > 1) {
+        this.map.fitBounds(markers.reduce(function(bounds, marker) {
+          return bounds.extend(marker);
+        }, new google.maps.LatLngBounds()));
       }
-    }
 
+    }
   }
 
 
   render () {
     try {
-
       if (this.props.markers && this.props.markers.length === 1) {
         let center = this.props.markers[0]
-        dynamicProps.center = [center.latitude, center.longitude]
+        if (!center.latitude || !center.longitude) {
+          dynamicProps.defaultCenter = defaultCenter;
+        } else {
+          dynamicProps.center = [center.latitude, center.longitude]
+        }
       } else {
         dynamicProps.defaultCenter = defaultCenter;
       }
-
       if (typeof window != "undefined" && window != null ) {
         return (
           <GoogleMap
@@ -162,11 +161,11 @@ export default class Map extends Component {
             yesIWantToUseGoogleMapApiInternals={true}
             onGoogleApiLoaded={({map, maps}) => {
               this.map = map
-              let markers = this.props.markers.filter((x) => {
-                return x.latitude && x.longitude
-              }).map((marker) => (
-                new google.maps.LatLng(marker.latitude,marker.longitude)
-              ))
+              let markers = this.props.markers
+                .filter((x) => x.latitude && x.longitude)
+                .map((marker) => (
+                  new google.maps.LatLng(marker.latitude,marker.longitude)
+                ))
 
               if (markers.length > 1) {
                 this.map.fitBounds(markers.reduce(function(bounds, marker) {
@@ -177,13 +176,12 @@ export default class Map extends Component {
             }}
           >
             {this.props.markers && this.props.markers.map((marker) => {
-
               return <Marker
                 lat={marker.latitude}
                 lng={marker.longitude}
                 key={marker.id}
-                // active={Number(this.props.active) === Number(marker.id)}
-                hover={this.props.hover == marker.id}
+                active={this.props.active === marker.id}
+                hover={this.props.hover === marker.id}
                 popUp={this.props.popUp}
               />
 

@@ -1,7 +1,7 @@
+import Groups from "./groups/index";
 
 if (process.env.WEB) {
   // import Celebrate from "./celebrate";
-  import Groups from "./groups/index";
 }
 
 if (process.env.NATIVE) {
@@ -16,9 +16,10 @@ if (process.env.NATIVE) {
 
 
 let Routes = []
+Routes = Routes.concat(Groups.Routes);
+
 if (process.env.WEB) {
   // Routes.push(Celebrate.Routes);
-  Routes = Routes.concat(Groups.Routes);
 }
 
 if (process.env.NATIVE) {

@@ -67,13 +67,28 @@ const defaultArray = [];
 export default class Template extends Component {
 
   state = {
-    markers: []
+    markers: [],
+    showTags: false,
+    showSearch: false,
+    hover: null,
+  }
+
+  onCardHover = (e) => {
+    const { id } = e.currentTarget
+    this.setState({ hover: id })
+  }
+
+  onMarkerHover = (marker) => {
+    this.setState({ hover: marker.id })
   }
 
   componentWillReceiveProps(nextProps) {
     const markers = this.getMarkers(nextProps);
     this.setState({ markers });
   }
+
+  toggleTags = () => this.setState({ showTags: !this.state.showTags })
+  toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
 
   getMarkers = (props) => {
     const { data } = props;
@@ -119,6 +134,8 @@ export default class Template extends Component {
                 <GoogleMap
                   autoCenter={true}
                   markers={this.state.markers}
+                  onMarkerHover={this.onMarkerHover}
+                  hover={this.state.hover}
                 />
               )
             })()}
@@ -132,6 +149,11 @@ export default class Template extends Component {
             tags={tags.split(",").filter(x => x)}
             query={q}
             removeQueryString={this.removeQueryString}
+            showTags={this.state.showTags}
+            toggleTags={this.toggleTags}
+            showSearch={this.state.showSearch}
+            toggleSearch={this.toggleSearch}
+            onCardHover={this.onCardHover}
           />
         </Left>
       </div>

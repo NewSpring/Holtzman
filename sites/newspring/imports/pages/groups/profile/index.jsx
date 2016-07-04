@@ -40,6 +40,8 @@ const mapQueriesToProps = ({ ownProps }) => ({
                 distance
                 city
                 state
+                latitude
+                longitude
               }
             }
             schedule {

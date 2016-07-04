@@ -53,6 +53,7 @@
     ]
   },
   "apollos": {
+    "settings": "./.remote/settings/sites/my.newspring.cc/local.settings.json",
     "resource": {
       "./.remote": {
         "junction": "NewSpring/junction-framework",
