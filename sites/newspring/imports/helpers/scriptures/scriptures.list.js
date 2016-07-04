@@ -2,35 +2,17 @@
 
 function scriptureList(contentItem, { commas=true } = {}) {
   let scriptures = contentItem.content.scripture;
+  if (!scriptures && commas) return;
+  if (!scriptures) return [];
 
-  if (scriptures === "false") {
-    if (commas) {
-      return
-    } else {
-      return []
-    }
-  }
+  const { book, passage } = scriptures;
 
-  scriptures = scriptures.split("\n");
-  scriptures = _.filter(scriptures, (scripture) => {
-    return scripture !== ""
+  let combo = scriptures.map(({ book, passage}, i) => {
+    return `${book} ${passage}`
   });
 
-  let books = _.filter(scriptures, (scripture, i) => {
-    return i % 2 === 0
-  });
-  let verses = _.filter(scriptures, (scripture, i ) => {
-    return i % 2 === 1
-  });
-  let combo = books.map((book, i) => {
-    return `${book} ${verses[i]}`
-  });
-
-  if (commas) {
-    return combo.join(", ")
-  } else {
-    return combo
-  }
+  if (commas) return combo.join(", ")
+  return combo
 }
 
 export default scriptureList

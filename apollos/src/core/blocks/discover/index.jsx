@@ -49,7 +49,7 @@ export default class SearchContainer extends Component {
   }
 
   getSearch() {
-    const { dispatch, client } = this.props
+    const { dispatch } = this.props
     let { page, pageSize, term } = this.props.search
     const query = gql`
       query Search($term: String!, $first: Int, $after: Int, $site: String) {
@@ -78,8 +78,9 @@ export default class SearchContainer extends Component {
       site: "https://newspring.cc",
     };
 
-    client.query({ query, variables, forceFetch: true })
-      .then(({ search }) => {
+    this.props.query({ query, variables, forceFetch: true })
+      .then(({ data }) => {
+        const { search } = data;
         dispatch(searchActions.toggleLoading());
         dispatch(searchActions.incrementPage());
         dispatch(searchActions.add(search.items));

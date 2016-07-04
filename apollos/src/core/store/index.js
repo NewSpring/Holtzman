@@ -9,6 +9,7 @@ import search from "./search";
 import sections from "./sections";
 import share from "./share";
 import liked from "./liked";
+import topics from "./topics";
 
 let header;
 if (process.env.NATIVE) header = require("./header");
@@ -27,6 +28,7 @@ export {
   sections,
   share,
   liked,
+  topics,
 
   wrapper,
   createReduxStore,

@@ -18,7 +18,7 @@ export default class Header extends Component {
   showSettings = () => {
     if (this.props.showSettings) {
       return (
-      <Link to="/profile/settings" className="text-light-primary plain soft-half-top soft-half-right overlay__item locked-top locked-right" style={{marginTop: "-3px"}}>
+      <Link to="/profile/settings" className="text-light-primary plain soft-half-top soft-half-right overlay__item locked-top locked-right">
         <i className="icon-settings h4"></i>
       </Link>
       )
@@ -43,8 +43,8 @@ export default class Header extends Component {
         <div
           className="text-center"
           style={{
-            paddingTop: this.props.isSearch ? "0" : "15px",
-            paddingBottom: this.props.isSearch ? "0" : "15px",
+            paddingTop: this.props.isSearch ? "0px" : "15px",
+            paddingBottom: this.props.isSearch ? "0px" : "15px",
             backgroundColor: this.props.color,
             borderBottom: "1px solid rgba(0,0,0, 0.1)",
             position: "relative",

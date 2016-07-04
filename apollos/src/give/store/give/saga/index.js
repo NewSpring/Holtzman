@@ -521,14 +521,8 @@ addSaga(function* createOrder(getStore) {
 addSaga(function* bindGiveAuth(geStore){
 
   while (true) {
-
     const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED")
-
-    if (!authorized) {
-      yield put(actions.clearData())
-      yield put(transactionActions.clearData())
-    }
-
+    if (!authorized) yield put(actions.clearData())
   }
 
 })
