@@ -57,6 +57,7 @@ const mapQueriesToProps = () => ({
           description
           name
           id
+          entityId
           summary
           image
           order

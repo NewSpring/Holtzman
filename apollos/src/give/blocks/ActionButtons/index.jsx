@@ -197,15 +197,14 @@ export default class GiveNow extends Component {
   }
 
   icon = () => {
-
     if (this.props.savedPayments.savedPayments && this.props.authorized && !this.props.hideCard) {
       // const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       const detail = this.getAccount()
-      if (detail.paymentType && detail.payment.paymentType === "ACH") {
+      if (detail.payment && detail.payment.paymentType === "ACH") {
         return (
           <AccountType width="30px" height="21px" type="Bank"/>
         )
-      } else if (detail.payment.paymentType) {
+      } else if (detail.payment && detail.payment.paymentType) {
         return (
           <AccountType width="30px" height="21px" type={detail.payment.paymentType} />
         )

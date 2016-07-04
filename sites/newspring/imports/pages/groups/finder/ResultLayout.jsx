@@ -36,6 +36,7 @@ export default ({ groups, tags, loading, count, query, removeQueryString }) => (
       {tags && tags.map((tag, key) => (
         <Tag className="flush-bottom" val={tag} key={key} />
       ))}
+      <Tag className="flush-bottom background--dark-tertiary" val="+" />
     </div>
 
     {/* Filter */}

@@ -58,9 +58,8 @@ export default class SubFund extends Component {
   }
 
   getFund = (id) => {
-    let selectedFund = this.props.accounts.filter((fund) => {
-      return fund.value === Number(id)
-    })
+    console.log(id, this.props.accounts)
+    let selectedFund = this.props.accounts.filter((fund) => fund.value === id)
 
     return selectedFund[0]
   }
@@ -72,7 +71,7 @@ export default class SubFund extends Component {
     }
 
     // remove old funds transaction
-    this.props.clearTransaction(Number(`${this.state.id}`));
+    this.props.clearTransaction(`${this.state.id}`);
     this.props.remove(this.props.instance, this.state.id)
 
     let fund = this.getFund(id)
