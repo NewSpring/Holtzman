@@ -41,7 +41,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
               cloudfront
             }
             tracks {
-              file
+              file: s3
             }
           }
         }

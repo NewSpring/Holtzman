@@ -42,7 +42,7 @@ export default class Layout extends Component {
 
   containerStyles = () => {
     return {
-      marginTop: Meteor.isCordova ? "50px" : "0",
+      marginTop: process.env.NATIVE? "50px" : "0px",
     }
   }
 
@@ -173,10 +173,10 @@ export default class Layout extends Component {
           name="Campus"
           label="Campus"
           type="Campus"
-          defaultValue={campus.id || false}
+          defaultValue={campus && campus.id || false}
           ref="Campus"
           includeBlank={true}
-          items={campuses}
+          items={campuses ? campuses : []}
         />
 
         {/*

@@ -30,7 +30,7 @@ export default class Layout extends Component {
 
   containerStyles = () => {
     return {
-      marginTop: process.env.NATIVE ? "50px" : "0",
+      marginTop: process.env.NATIVE ? "50px" : "0px",
     }
   }
 

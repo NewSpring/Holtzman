@@ -1,6 +1,6 @@
 
 import Players from "./players"
 
-export default {
+export {
   Players
 }
