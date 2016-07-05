@@ -20,6 +20,13 @@ make_task_def() {
         "cpu": 512,
         "essential": true,
         "image": "meteorhacks/meteord:binbuild",
+        "logConfiguration": {
+        "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "'"$ECS_TASK_NAME"'",
+            "awslogs-region": "us-east-1"
+          }
+        },
         "portMappings": [
           {
             "hostPort": '"$HOST_PORT"',
