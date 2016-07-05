@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 
 import Styles from "./audio.styles.scrubber.css"
 
-import { audio as audioActions } from "/imports/store/audio"
+import { actions as audioActions } from "/imports/store/audio"
 
 const mapStateToProps = (state) => {
   return state.audio;

@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import ListDetail from "../../../pages/music/music.ListDetail"
 import AudioScrubber from "./audio.Scrubber"
 
-import { audio as audioActions } from "/imports/store/audio"
+import { actions as audioActions } from "/imports/store/audio"
 import { modal, nav as navActions } from "apollos/dist/core/store"
 
 @connect()

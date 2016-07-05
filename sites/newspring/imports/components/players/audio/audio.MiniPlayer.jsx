@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router"
-import { audio as audioActions } from "/imports/store/audio"
+import { actions as audioActions } from "/imports/store/audio"
 import Helpers from "/imports/helpers"
 import AudioPlayerUtility from "./audio.PlayerUtility";
 import AudioControls from "./audio.Controls"

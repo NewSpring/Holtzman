@@ -134,7 +134,6 @@ export default class PersonalDetails extends Component {
     campuses = campuses && campuses.map((campus) => {
       return { label: campus.name, value: campus.id }
     })
-
     const { state } = this.state
     switch (state) {
       case "error":
