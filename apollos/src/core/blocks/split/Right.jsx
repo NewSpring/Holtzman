@@ -8,7 +8,7 @@ import Styles from "../../components/loading/FeedItemSkeleton-css"
 import Hover from "./right-css"
 
 const DefaultWrapper = (props) => (
-  <section {...props} className={props.imageclasses.join(" ")}>{props.children}</section>
+  <section className={props.imageclasses.join(" ")}>{props.children}</section>
 )
 
 export default class Right extends Component {
