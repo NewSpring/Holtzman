@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime"
 
 import { take, put } from "redux-saga/effects"
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 import { addSaga } from "../utilities"
 import { GraphQL } from "../../graphql";
 
