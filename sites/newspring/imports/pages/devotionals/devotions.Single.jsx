@@ -4,7 +4,7 @@ import { connect } from "react-apollo";
 import { Likeable, Shareable } from "/imports/mixins"
 import Hammer from "react-hammerjs";
 import { VelocityComponent } from "velocity-react"
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 
 import Helpers from "/imports/helpers"
 
