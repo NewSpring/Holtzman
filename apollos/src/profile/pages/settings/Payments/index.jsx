@@ -1,6 +1,6 @@
 import { Component, PropTypes} from "react"
 import { connect } from "react-apollo"
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 
 import { nav } from "../../../../core/store"
 import { Loading } from "../../../../core/components"

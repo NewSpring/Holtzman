@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-apollo";
 import { withRouter } from "react-router";
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 
 import Loading from "apollos/dist/core/components/loading/index";
 import Forms from "apollos/dist/core/components/forms";

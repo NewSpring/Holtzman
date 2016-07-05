@@ -4,7 +4,7 @@ import { connect } from "react-apollo";
 import { Likeable, Shareable } from "/imports/mixins"
 import Meta from "react-helmet"
 import { VelocityComponent } from "velocity-react"
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 
 // loading state
 import Split, { Left, Right } from "apollos/dist/core/blocks/split"

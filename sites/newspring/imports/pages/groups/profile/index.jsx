@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react";
 import { connect } from "react-apollo";
 import { Link } from "react-router";
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 import GoogleMap from "apollos/dist/core/components/map";
 import Split, { Left, Right } from "apollos/dist/core/blocks/split";
 
