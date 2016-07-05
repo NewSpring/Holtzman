@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react";
 import { connect } from "react-apollo";
 import ReactMixin from "react-mixin";
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 import { withRouter } from "react-router";
 import Split, { Left, Right } from "apollos/dist/core/blocks/split";
 import { Headerable } from "apollos/dist/core/mixins"

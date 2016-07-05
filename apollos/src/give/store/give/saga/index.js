@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime"
 import ReactDOM from "react-dom"
 import Moment from "moment"
 import { take, put, cps, call } from "redux-saga/effects"
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 
 import { GraphQL } from "../../../../core/graphql"
 import { addSaga } from "../../../../core/store/utilities"

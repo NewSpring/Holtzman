@@ -69,6 +69,7 @@
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
     "google-map-react": "^0.14.8",
+    "graphql-tag": "^0.1.7",
     "history": "^3.0.0",
     "liquid-node": "git+https://github.com/NewSpring/liquid-node.git",
     "lodash.assign": "^4.0.9",

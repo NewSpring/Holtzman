@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import ReactDOM from "react-dom"
 import { connect } from "react-apollo";
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 import Moment from "moment"
 
 import { Controls, Forms } from "../../../core/components";

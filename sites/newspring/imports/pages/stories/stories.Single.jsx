@@ -3,7 +3,7 @@ import ReactMixin from "react-mixin"
 import { Likeable, Shareable } from "/imports/mixins"
 import { connect } from "react-apollo";
 import { VelocityComponent } from "velocity-react"
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 
 // loading state
 import { Loading } from "apollos/dist/core/components"

@@ -1,6 +1,6 @@
 import { Component } from "react"
 import { connect } from "react-apollo";
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 
 import {
   accounts as accountsActions,

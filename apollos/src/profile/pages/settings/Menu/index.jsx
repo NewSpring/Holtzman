@@ -1,7 +1,7 @@
 import { Component, PropTypes} from "react"
 import ReactMixin from "react-mixin"
 import { connect } from "react-apollo";
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 import { Link } from "react-router"
 
 import { Headerable } from "../../../../core/mixins/"
