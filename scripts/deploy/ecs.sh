@@ -21,7 +21,7 @@ make_task_def() {
         "essential": true,
         "image": "meteorhacks/meteord:binbuild",
         "logConfiguration": {
-        "logDriver": "awslogs",
+          "logDriver": "awslogs",
           "options": {
             "awslogs-group": "'"$ECS_TASK_NAME"'",
             "awslogs-region": "us-east-1"
