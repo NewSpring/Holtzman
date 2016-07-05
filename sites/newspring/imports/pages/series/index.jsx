@@ -3,7 +3,7 @@ import ReactMixin from "react-mixin"
 import { Pageable } from "/imports/mixins"
 import { connect } from "react-apollo";
 import { VelocityComponent } from "velocity-react"
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 
 import ReactPullToRefresh from "react-pull-to-refresh";
 import { Loading } from "apollos/dist/core/components"

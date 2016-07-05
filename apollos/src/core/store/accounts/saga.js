@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime"
 import { take, put, cps, call } from "redux-saga/effects"
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 
 import { GraphQL } from "../../graphql"
 import accounts from "../../methods/accounts/client"

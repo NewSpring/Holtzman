@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 
 import SeriesVideoListItem from "./series.VideoListItem";
 import { Spinner } from "apollos/dist/core/components/loading"
