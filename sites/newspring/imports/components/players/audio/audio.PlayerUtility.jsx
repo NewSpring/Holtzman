@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 
 import { Helpers } from "/imports"
-import { audio as audioActions } from "/imports/store/audio"
+import { actions as audioActions } from "/imports/store/audio"
 
 import { Players } from "/imports/libraries"
 import AudioControls from "./audio.Controls"
