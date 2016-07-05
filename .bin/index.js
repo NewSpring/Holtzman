@@ -168,7 +168,7 @@ Vorpal
     if (options.native || options.ios || options.android) env.NATIVE = true;
 
     if (!options.quick && !options.production) {
-      var babel = Spawn("npm", ["run", "start"], { cwd: apollosFolder });
+      var babel = Spawn("npm", ["run", "start"], { stdio: ["ignore", "ignore", process.stderr], cwd: apollosFolder });
     }
 
     var meteorArgs = [ "--settings" ];
