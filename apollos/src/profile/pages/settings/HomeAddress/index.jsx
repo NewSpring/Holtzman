@@ -31,6 +31,15 @@ const mapQueriesToProps = () => ({
     `
   }
 })
+
+let defaultHome = {
+  street1: null,
+  street2: null,
+  state: null,
+  city: null,
+  zip: null,
+  country: null,
+}
 @connect({ mapQueriesToProps })
 export default class HomeAddress extends Component {
 
@@ -70,9 +79,9 @@ export default class HomeAddress extends Component {
 
   render () {
 
-    const { home } = this.props.person
+    const { person } = this.props.data
     const { state } = this.state
-
+    let home = person && person.home || defaultHome;
 
     switch (state) {
       case "error":

@@ -45,7 +45,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
               tracks {
                 title
                 duration
-                file
+                file: s3
               }
               images {
                 fileName

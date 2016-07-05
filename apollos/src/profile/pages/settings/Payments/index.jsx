@@ -26,7 +26,7 @@ const mapQueriesToProps = () => ({
     `,
   },
 });
-
+let defaultAccounts = []
 @connect({ mapQueriesToProps })
 export default class GiveNow extends Component {
 
@@ -56,7 +56,7 @@ export default class GiveNow extends Component {
 
   render () {
     const { accounts } = this.props.data;
-    return <Layout details={accounts} remove={this.remove} />
+    return <Layout loading={this.props.data.loading} details={accounts} remove={this.remove} />
 
   }
 }

@@ -6,7 +6,7 @@ import Back from "../Back"
 const styles = {
   overflow: "visible",
   zIndex: 1,
-  marginTop: Meteor.isCordova ? "50px" : "0",
+  marginTop: process.env.NATIVE ? "50px" : "0px",
 };
 
 const Layout = ({ submit, save, state }, context) => (
