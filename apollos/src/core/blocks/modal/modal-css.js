@@ -21,7 +21,7 @@ export default StyleSheet.create({
     overflowY: "auto !important",
 
     "@media (max-width: 767px)": {
-      paddingBottom: "120px",
+      paddingBottom: "60px",
     },
 
   }
