@@ -101,27 +101,22 @@ export default class SeriesSingle extends Component {
         </div>
       );
     }
-    try {
-      // XXX update swipe views to support react router 2.0
-      return (
-        <SwipeViews selectedIndex={this.state.selectedIndex} disableSwipe={true} className="background--light-primary">
 
-          <div title="Devotional">
-            <DevotionsSingleContent
-              devotion={devotion}
-              onClickLink={this.onClickLink}
-            />
-          </div>
+    return (
+      <SwipeViews selectedIndex={this.state.selectedIndex} disableSwipe={true} className="background--light-primary">
 
-          <div title="Scripture">
-            <DevotionsSingleScripture devotion={devotion} />
-          </div>
-        </SwipeViews>
-      );
-    } catch (e) {
-      console.log(e);
-    }
+        <div title="Devotional">
+          <DevotionsSingleContent
+            devotion={devotion}
+            onClickLink={this.onClickLink}
+          />
+        </div>
 
+        <div title="Scripture">
+          <DevotionsSingleScripture devotion={devotion} />
+        </div>
+      </SwipeViews>
+    );
   }
 
   render() {
