@@ -54,12 +54,13 @@ export default class Filter extends Component {
       toggleSearch,
       showTags,
       toggleTags,
+      q,
     } = this.props;
-
+    console.log(q)
     let tags = attributes.tags ? attributes.tags : defaultTags;
     return (
       <div>
-        <div
+        {/*<div
           onClick={toggleTags}
           style={{verticalAlign: "middle"}}
           className="background--light-primary soft-half-bottom soft-top soft-sides soft-double-sides@anchored outlined--light outlined--bottom"
@@ -69,7 +70,7 @@ export default class Filter extends Component {
           </h6>
           <span className={`float-right icon-arrow-${showTags ? "up" : "down"}`} style={{verticalAlign: "middle"}}></span>
 
-        </div>
+        </div>*/}
 
         {/* filter internals */}
         {(() => {
@@ -108,6 +109,7 @@ export default class Filter extends Component {
                   inputClasses={["soft-double-left"]}
                   placeholder="Type your search here..."
                   type="text"
+                  defaultValue={q}
                   onChange={(e) => this.inputOnChange(e)}
                 />
 

@@ -73,6 +73,10 @@ export default class Template extends Component {
     hover: null,
   }
 
+  componentWillMount() {
+    if (this.props.q) this.setState({ showSearch: true });
+  }
+
   onCardHover = (e) => {
     const { id } = e.currentTarget
     this.setState({ hover: id })
@@ -123,6 +127,7 @@ export default class Template extends Component {
     if (typeof window != "undefined" && window != null ) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
     }
+    console.log(q)
     return (
       <div>
         <Split>
