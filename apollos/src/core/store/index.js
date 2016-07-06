@@ -29,6 +29,7 @@ export {
   share,
   liked,
   topics,
+  header,
 
   wrapper,
   createReduxStore,

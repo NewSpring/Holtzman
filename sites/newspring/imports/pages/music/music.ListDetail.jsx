@@ -56,18 +56,20 @@ export default class ListDetail extends Component {
   }
 
   componentWillMount() {
-    // must wait for some reason
-    setTimeout(() => {
-      this.props.dispatch(headerActions.statusBarColor("#303030"));
-    }, 250);
-    this.props.dispatch(navActions.setLevel("MODAL"));
-    this.setState({
-      previousHeaderColor: this.props.header.content.color,
-    });
+    if (process.env.NATIVE) {
+      // must wait for some reason
+      setTimeout(() => {
+        this.props.dispatch(headerActions.statusBarColor("#303030"));
+      }, 250);
+      this.props.dispatch(navActions.setLevel("MODAL"));
+      this.setState({
+        previousHeaderColor: this.props.header.content.color,
+      });
+    }
   }
 
   componentWillUnmount() {
-    if(Meteor.isCordova) {
+    if (process.env.NATIVE) {
       this.props.dispatch(
         headerActions.statusBarColor(this.state.previousHeaderColor)
       );
