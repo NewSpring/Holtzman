@@ -15,7 +15,6 @@ import Profile from "apollos/dist/profile"
 import Global from "apollos/dist/core/blocks/global";
 
 let App = null;
-console.log(process.env.NATIVE)
 if (process.env.NATIVE) {
   import AudioPlayer from "/imports/components/players/audio/index"
   // XXX add live query back to heighliner
@@ -62,7 +61,6 @@ export const server = {
   createReduxStore,
   wrapperProps: { client: GraphQL },
 };
-console.log(process.env.NATIVE, process.env.WEB)
 export const routes = {
   component: process.env.NATIVE ? App : Global,
   childRoutes: [

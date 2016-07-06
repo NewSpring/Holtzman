@@ -1,12 +1,13 @@
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router"
+import { css } from "aphrodite";
 import { actions as audioActions } from "/imports/store/audio"
 import Helpers from "/imports/helpers"
 import AudioPlayerUtility from "./audio.PlayerUtility";
 import AudioControls from "./audio.Controls"
 
-import Styles from "./audio.sytles.miniPlayer.css"
+import Styles from "./audio.styles.miniPlayer";
 
 // We only care about the audio state
 function mapStateToProps(state) {
@@ -32,18 +33,17 @@ export default class MiniPlayer extends Component {
       "text-left",
       "soft-half",
       "floating",
-      "push-triple-bottom"
     ];
 
 
     if (this.props.classes) {
       classes.concat(this.props.classes);
     } else {
-      classes.push(Styles["mini-player"]);
+      classes.push(css(Styles["mini-player"]));
     }
 
     if (this.state.transition) {
-      classes.push(Styles["mini-player-transition"]);
+      classes.push(css(Styles["mini-player-transition"]));
     }
 
     return classes.join(" ");
@@ -54,15 +54,14 @@ export default class MiniPlayer extends Component {
       "locked-bottom",
       "one-whole",
       "background--alert",
-      "push-triple-bottom",
       "text-right",
       "text-light-primary",
       "soft-half",
-      Styles["mini-player-stop"],
+      css(Styles["mini-player-stop"]),
     ];
 
     if (this.state.transition) {
-      classes.push(Styles["mini-player-transition"]);
+      classes.push(css(Styles["mini-player-transition"]));
     }
 
     return classes.join(" ");
@@ -77,7 +76,7 @@ export default class MiniPlayer extends Component {
       "background--primary",
       "floating__item"
     ]
-    classes.push(Styles["mini-album-cover"])
+    classes.push(css(Styles["mini-album-cover"]));
 
     return classes.join(" ")
   }
@@ -182,7 +181,7 @@ export default class MiniPlayer extends Component {
   fadeClass = () => {
     const { visibility } = this.props.audio;
     if (visibility === "fade") {
-      return Styles["mini-player-fade"];
+      return css(Styles["mini-player-fade"]);
     }
   }
 
