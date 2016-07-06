@@ -195,16 +195,8 @@ export default class AudioControls extends Component {
 
   listDetail = () => {
     const { album, track } = this.props.audio.playing;
-    let trackNumber = null;
-    let index = 1;
 
-    for(let current of album.tracks) {
-      if(current.title == track.title) {
-        trackNumber = index;
-      }
-
-      index++;
-    }
+    const trackNumber = album.content.tracks.findIndex(current => current.title === track.title);
 
     this.props.dispatch(modal.render(ListDetail, {
       color: "background--dark-primary",
