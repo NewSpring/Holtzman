@@ -34,32 +34,16 @@ export default ({
         WebkitOverflowScrolling: "touch",
       }}
     >
-      {(() => {
-        if (!query) return null
-        return (
-          <Tag
-            className="flush-bottom"
-            active={true}
-            val={query}
-            onClick={() => removeQueryString()}
-          />
-        )
-      })()}
       {tags && tags.map((tag, key) => (
         <Tag className="flush-bottom" val={tag} key={key} />
       ))}
-      {(() => {
-        if (showTags) return null;
-        return (
-          <Tag
-            style={{verticalAlign: "bottom"}}
-            className="flush-bottom background--dark-tertiary"
-            val="..."
-            canBeActive={false}
-            onClick={() => toggleTags()}
-          />
-        )
-      })()}
+      <Tag
+        style={{verticalAlign: "bottom"}}
+        className="flush-bottom background--dark-tertiary"
+        val="..."
+        canBeActive={false}
+        onClick={() => toggleTags()}
+      />
 
     </div>
 
@@ -69,6 +53,7 @@ export default ({
       toggleSearch={toggleSearch}
       showTags={showTags}
       toggleTags={toggleTags}
+      q={query}
     />
 
     {/* Results */}
