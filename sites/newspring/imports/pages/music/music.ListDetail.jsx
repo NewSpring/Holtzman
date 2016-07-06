@@ -6,7 +6,7 @@ import { Link } from "react-router"
 import ReactMixin from "react-mixin"
 
 import { Shareable } from "/imports/mixins"
-import { audio as audioActions } from "/imports/store/audio"
+import { actions as audioActions } from "/imports/store/audio"
 
 import { Helpers } from "/imports"
 
