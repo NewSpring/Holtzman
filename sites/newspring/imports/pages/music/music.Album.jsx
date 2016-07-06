@@ -13,7 +13,7 @@ import { Headerable } from "apollos/dist/core/mixins"
 import { modal,
   nav as navActions
 } from "apollos/dist/core/store"
-import { audio as audioActions } from "/imports/store/audio"
+import { actions as audioActions } from "/imports/store/audio"
 
 import Helpers from "/imports/helpers"
 
