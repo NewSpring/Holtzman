@@ -1,7 +1,4 @@
 import { Component, PropTypes } from "react";
-import { css } from "aphrodite";
-
-import Styles from "./switch-css"
 
 export default class Switch extends Component {
 
@@ -12,7 +9,7 @@ export default class Switch extends Component {
 
   layoutClasses = () => {
     let classes = [
-      css(Styles["toggle-switch"])
+      "toggle-switch"
     ];
 
     if (this.props.classes) {
@@ -41,7 +38,7 @@ export default class Switch extends Component {
           onChange={this.changed}
           checked={this.props.active}
         />
-        <label htmlFor={switchId} className={`float-right ${css(Styles.label)} ${this.props.active ? css(Styles["checked-label"]) : ""}`}></label>
+        <label htmlFor={switchId} className="float-right"></label>
       </div>
     );
 

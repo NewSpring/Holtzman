@@ -13,7 +13,7 @@ import Header from "../../components/header";
 import {
   accounts as accountsActions,
   liked as likedActions,
-  // topics as topicActions,
+  topics as topicActions,
 } from "../../store"
 
 import Styles from "./watermark-css"
