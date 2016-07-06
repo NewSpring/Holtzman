@@ -2,7 +2,7 @@
 import { PropTypes, Component } from "react";
 import { connect } from "react-redux"
 
-import Styles from "./audio.styles.scrubber.css"
+import Styles from "./audio.styles.scrubber"
 
 import { actions as audioActions } from "/imports/store/audio"
 
