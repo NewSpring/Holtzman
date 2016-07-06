@@ -92,7 +92,7 @@
     "react-pull-to-refresh": "git+https://git@github.com/NewSpring/react-pull-to-refresh.git",
     "react-redux": "^4.0.0",
     "react-router": "^2.4.0",
-    "react-swipe-views": "git+https://git@github.com/NewSpring/react-swipe-views.git#6e75fcd2d2b409fcb38f85a829fc6ca1a5bacf70",
+    "react-swipe-views": "git+https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
     "redux": "^3.0.4",
     "truncate": "^2.0.0"
   }
