@@ -129,7 +129,6 @@ const Item = ({ section, go, children }) => {
         to={section.link}
         className="plain"
         onClick={go}
-        force={true}
         id={section.id}
       >
         <ImageLoader
