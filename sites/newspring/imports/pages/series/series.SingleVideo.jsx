@@ -101,8 +101,8 @@ export default class SeriesSingleVideo extends Component {
     }));
   }
 
-  componentWillUpdate() {
-    const { content } = this.props.series;
+  componentWillUpdate(nextProps){
+    const { content } = nextProps.series;
     if(!content) return;
 
     const color = Helpers.collections.color(content);
