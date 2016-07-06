@@ -1,7 +1,7 @@
 
 import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
-
+import { css } from "aphrodite";
 import Helpers from "/imports/helpers"
 import headerActions from "apollos/dist/core/store/header"
 
@@ -39,11 +39,15 @@ export default class FullPlayer extends Component {
   }
 
   componentDidMount() {
-    const artworkContainer = this.refs.artworkContainer;
-    const artwork = this.refs.artwork;
-    this.setState({
-      isShort: artworkContainer.clientWidth > artworkContainer.clientHeight
-    });
+    setTimeout(() => {
+      const artworkContainer = this.refs.artworkContainer;
+      const artwork = this.refs.artwork;
+      console.log(artworkContainer.clientWidth)
+      this.setState({
+        isShort: artworkContainer.clientWidth > artworkContainer.clientHeight
+      });
+    }, 30);
+
   }
 
   getArtworkStyles = (album) => {
@@ -222,7 +226,7 @@ export default class FullPlayer extends Component {
         <style>{Helpers.collections.backgroundStyles(album)}</style>
 
         <div className={
-          Styles["player-flex"] + " " + Styles["player-container"]
+          css(Styles["player-flex"]) + " " + css(Styles["player-container"])
         }>
 
           <section
@@ -237,7 +241,7 @@ export default class FullPlayer extends Component {
           </section>
 
           <div className={
-            "text-center soft-sides " + Styles["player-flex-one"]
+            "text-center soft-sides " + css(Styles["player-flex-one"])
           }>
 
             <AudioTitle

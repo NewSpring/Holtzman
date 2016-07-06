@@ -1,6 +1,7 @@
 
 import { PropTypes, Component } from "react";
 import { connect } from "react-redux"
+import { css } from "aphrodite";
 
 import Styles from "./audio.styles.scrubber"
 
@@ -130,7 +131,7 @@ export default class AudioScrubber extends Component {
     const playbar = [
       "play-bar",
       "rounded",
-      Styles["play-bar"]
+      css(Styles["play-bar"]),
     ];
 
     return (
@@ -155,13 +156,13 @@ export default class AudioScrubber extends Component {
             style={this.getTertiaryBackgroundColor(!isLight)}>
           </div>
           <div
-            className={Styles["play-bar--active"] + " floating--right"}
+            className={css(Styles["play-bar--active"]) + " floating--right"}
             style={this.scrubStyle()}>
             <div
-              className={Styles["play-bar"] + " " + "rounded " + this.getPrimaryBackgroundClass(isLight)}>
+              className={css(Styles["play-bar"]) + " " + "rounded " + this.getPrimaryBackgroundClass(isLight)}>
             </div>
             <button
-              className={Styles["scrub-dot"] + " plain floating__item round " + this.getPrimaryBackgroundClass(isLight)}>
+              className={css(Styles["scrub-dot"]) + " plain floating__item round " + this.getPrimaryBackgroundClass(isLight)}>
             </button>
           </div>
           <div

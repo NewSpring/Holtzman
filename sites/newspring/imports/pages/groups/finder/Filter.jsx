@@ -43,6 +43,21 @@ export default class Filter extends Component {
     router.push(location);
   }
 
+  removeQuery = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+
+    this.props.toggleSearch();
+
+    const { query } = this.state;
+    let { router, location } = this.props;
+
+    if (location.query && location.query.q) delete location.query.q;
+    // reset state
+    this.setState({ query: null });
+    router.push(location);
+
+  }
+
   inputOnChange = (value) => {
     this.setState({ query: value });
   }
@@ -56,21 +71,9 @@ export default class Filter extends Component {
       toggleTags,
       q,
     } = this.props;
-    console.log(q)
     let tags = attributes.tags ? attributes.tags : defaultTags;
     return (
       <div>
-        {/*<div
-          onClick={toggleTags}
-          style={{verticalAlign: "middle"}}
-          className="background--light-primary soft-half-bottom soft-top soft-sides soft-double-sides@anchored outlined--light outlined--bottom"
-        >
-          <h6 className="float-left flush-bottom text-dark-tertiary" style={{verticalAlign: "middle"}}>
-            {showTags ? "Hide" : "See"} All Tags
-          </h6>
-          <span className={`float-right icon-arrow-${showTags ? "up" : "down"}`} style={{verticalAlign: "middle"}}></span>
-
-        </div>*/}
 
         {/* filter internals */}
         {(() => {
@@ -97,16 +100,16 @@ export default class Filter extends Component {
                 classes={["hard", "display-inline-block", "one-whole" ]}
                 submit={(e) => this.findByQuery(e)}
               >
-                <i className="icon-search locked-left soft-half-left"></i>
-                <i
-                  style={{zIndex: 1}}
-                  onClick={toggleSearch}
-                  className="icon-close locked-right soft-half-right"
-                ></i>
+                <i style={{paddingTop: "4px"}} className="icon-search locked-left soft-half-left"></i>
+                <span
+                  style={{zIndex: 1, paddingTop: "5px", "cursor": "pointer"}}
+                  onClick={this.removeQuery}
+                  className="h7 locked-right soft-half-right flush-bottom"
+                >Cancel</span>
                 <Forms.Input
                   hideLabel={true}
-                  classes={["hard-bottom", "soft-double-right"]}
-                  inputClasses={["soft-double-left"]}
+                  classes={["hard-bottom", "soft-double-right", "push-double-right"]}
+                  inputClasses="soft-double-left soft-half-bottom"
                   placeholder="Type your search here..."
                   type="text"
                   defaultValue={q}

@@ -127,7 +127,7 @@ export default class Template extends Component {
     if (typeof window != "undefined" && window != null ) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
     }
-    console.log(q)
+
     return (
       <div>
         <Split>
