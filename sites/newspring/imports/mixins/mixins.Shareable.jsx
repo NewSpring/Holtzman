@@ -5,9 +5,9 @@ const Shareable = {
 
   componentWillMount: function() {
     this.shareableAction = this.setShareAction.bind(this);
-    this.state = {
+    this.setState({
       __shareActionSet: false,
-    };
+    });
     // needed for client cache
     this.setShareProps(this.props);
   },
