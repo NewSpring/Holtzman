@@ -167,9 +167,11 @@ Vorpal
     if (!options.ios && !options.android && !options.native) env.WEB = true;
     if (options.native || options.ios || options.android) env.NATIVE = true;
 
-    if (!options.quick && !options.production) {
-      var babel = Spawn("npm", ["run", "start"], { cwd: apollosFolder });
-    }
+    // until meteor 1.4 and junction updates to support newer libsass
+    // we will need to watch the apollos directory separately
+    // if (!options.quick && !options.production) {
+    //   var babel = Spawn("npm", ["run", "start"], { stdio: ["ignore", "ignore", process.stderr], cwd: apollosFolder });
+    // }
 
     var meteorArgs = [ "--settings" ];
 

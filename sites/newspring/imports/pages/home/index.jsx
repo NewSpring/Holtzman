@@ -2,7 +2,7 @@ import { Component } from "react"
 import ReactMixin from "react-mixin"
 import { VelocityComponent } from "velocity-react"
 import { connect } from "react-apollo";
-import gql from "apollo-client/gql";
+import gql from "graphql-tag";
 import { Link } from "react-router";
 import ReactPullToRefresh from "react-pull-to-refresh";
 

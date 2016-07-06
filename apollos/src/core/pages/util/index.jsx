@@ -1,5 +1,5 @@
 import { Component, PropTypes} from "react"
-import gql from "apollo-client";
+import gql from "graphql-tag";
 
 import { GraphQL } from "../../graphql";
 import Split, { Left, Right } from "../../blocks/split"
