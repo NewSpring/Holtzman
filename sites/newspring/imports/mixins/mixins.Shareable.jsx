@@ -26,7 +26,7 @@ const Shareable = {
     if (nextProps.currentSermon) item = nextProps.currentSermon;
     if (nextProps.album) item = nextProps.album;
 
-    if(item.entryId) {
+    if (item.id) {
       return item;
     }
 
