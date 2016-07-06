@@ -51,7 +51,7 @@ export default class AudioTrack extends Component {
 
   play = (e) => {
     e.preventDefault();
-    const index = this.props.trackNumber - 1;
+    const index = this.props.trackNumber;
 
     const track = {
       ...this.props.track,
