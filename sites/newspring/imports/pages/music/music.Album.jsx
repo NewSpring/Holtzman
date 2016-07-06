@@ -190,7 +190,7 @@ export default class MusicAlbum extends Component {
                     track={track}
                     album={album}
                     key={i}
-                    trackNumber={i + 1} />
+                    trackNumber={i} />
                 })}
               </div>
             </div>
