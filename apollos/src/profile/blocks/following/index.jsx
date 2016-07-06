@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 
 import FollowingItem from "./Item"
 
-import { topics as topicActions } from "../../../core/store"
+import topicActions from "../../../core/store/topics/"
 
 let topics = [
   "Articles",
@@ -16,7 +16,7 @@ let topics = [
 ];
 
 // XXX make this dynamic via heighliner
-const map = (state) => ({ topics: state.topics })
+const map = (state) => ({ topics: state.topics.topics })
 @connect(map)
 export default class FollowingContainer extends Component {
 
