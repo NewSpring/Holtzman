@@ -39,15 +39,11 @@ export default class FullPlayer extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      const artworkContainer = this.refs.artworkContainer;
-      const artwork = this.refs.artwork;
-      console.log(artworkContainer.clientWidth)
-      this.setState({
-        isShort: artworkContainer.clientWidth > artworkContainer.clientHeight
-      });
-    }, 30);
-
+    const artworkContainer = this.refs.artworkContainer;
+    const artwork = this.refs.artwork;
+    this.setState({
+      isShort: artworkContainer.clientWidth > artworkContainer.clientHeight
+    });
   }
 
   getArtworkStyles = (album) => {
