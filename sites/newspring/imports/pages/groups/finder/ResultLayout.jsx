@@ -116,9 +116,9 @@ export default ({
                 </h4>
 
                 {/* CTA */}
-                <Link to="https://rock.newspring.cc/workflows/10" className="btn push-top">
+                <a href="https://rock.newspring.cc/workflows/93/?Interest=Next%20Steps" className="btn push-top">
                   Start My Group
-                </Link>
+                </a>
               </div>
             </SideBySide>
           </button>
