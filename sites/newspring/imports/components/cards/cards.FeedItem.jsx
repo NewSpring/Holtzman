@@ -95,7 +95,7 @@ export default class FeedItem extends Component {
   }
 
   timeClasses = () => {
-    let classes = ["text-right", "float-right"];
+    let classes = ["text-right", "float-right", "flush-bottom"];
     if (this.isSeriesItem()) {
       classes.push("text-light-primary");
     }
@@ -130,7 +130,7 @@ export default class FeedItem extends Component {
           <h4 className={this.h4Classes()}>{item.title}</h4>
           <i className={this.iconClasses()}></i>
           <h7 className={this.categoryClasses()}>{Helpers.categories.name(item)}</h7>
-          <h7 className={this.timeClasses()}>{Helpers.time.relative(item)}</h7>
+          <h7 style={{marginTop: "5px"}}className={this.timeClasses()}>{Helpers.time.relative(item)}</h7>
         </div>
       </Card>
     )
