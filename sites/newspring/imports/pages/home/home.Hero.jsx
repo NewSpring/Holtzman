@@ -12,6 +12,13 @@ export default class HomeHero extends Component {
     marginTop: "5px"
   }
 
+  iconStyles = () => {
+    return {
+      position: "relative",
+      top: "4px",
+    }
+  }
+
   render() {
 
     const heroItem = this.props.item;
@@ -27,7 +34,7 @@ export default class HomeHero extends Component {
       <section className="hard">
         <div className="one-whole overlay__item floating__item soft">
           <h3 className="text-light-primary flush soft-half-bottom capitalize">{heroItem.title}</h3>
-          <i className={iconClasses}></i>
+          <i className={iconClasses} style={this.iconStyles()}></i>
           <h7 className="text-light-primary">{ready ? Helpers.categories.name(heroItem) : ""}</h7>
           <h7 className="text-light-primary text-right float-right" style={this.timeStampStyles}>{ready ? Helpers.time.relative(heroItem) : ""}</h7>
         </div>
