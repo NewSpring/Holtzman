@@ -169,7 +169,7 @@ class SignIn extends Component {
   render () {
     return (
       <div>
-        <div className="push-double-ends soft-half-sides">
+        <div className="push-double-ends soft-sides">
           {this.props.header || this.header()}
         </div>
 
