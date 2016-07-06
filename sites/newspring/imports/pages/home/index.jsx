@@ -18,49 +18,46 @@ import { FeedItem } from "/imports/components/cards"
 
 import HomeHero from "./home.Hero"
 
-const mapQueriesToProps = ({ ownProps, state }) => {
-  return {
-    data: {
-      query: gql`
-        query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!){
-          feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: false) {
-            entryId: id
-            title
-            channelName
-            status
-            meta {
-              siteId
-              date
-              channelId
+const mapQueriesToProps = ({ ownProps, state }) => ({
+  data: {
+    query: gql`
+      query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!){
+        feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: false) {
+          entryId: id
+          title
+          channelName
+          status
+          meta {
+            siteId
+            date
+            channelId
+          }
+          content {
+            images {
+              fileName
+              fileType
+              fileLabel
+              s3
+              cloudfront
             }
-            content {
-              images {
-                fileName
-                fileType
-                fileLabel
-                s3
-                cloudfront
-              }
-              colors {
-                id
-                value
-                description
-              }
+            colors {
+              id
+              value
+              description
             }
           }
         }
-      `,
-      variables: {
-        // excludeChannels: state.topics.topics,
-        excludeChannels: [],
-        limit: state.paging.pageSize * state.paging.page,
-        skip: state.paging.skip,
-      },
-      forceFetch: false,
-      returnPartialData: false,
+      }
+    `,
+    variables: {
+      excludeChannels: state.topics.topics,
+      limit: state.paging.pageSize * state.paging.page,
+      skip: state.paging.skip,
     },
-  };
-};
+    forceFetch: false,
+    returnPartialData: false,
+  },
+});
 
 const mapStateToProps = (state) => {
   return {
