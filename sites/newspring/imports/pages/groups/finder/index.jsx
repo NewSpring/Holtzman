@@ -5,6 +5,7 @@ import gql from "graphql-tag";
 import { withRouter } from "react-router";
 import Split, { Left, Right } from "apollos/dist/core/blocks/split";
 import { Headerable } from "apollos/dist/core/mixins"
+import { nav as navActions } from "apollos/dist/core/store"
 
 import Layout from "./Layout";
 import Result from "./Result"
@@ -26,9 +27,12 @@ const mapQueriesToProps = ({ ownProps }) => ({
         entries: taggedContent(tagName: $tagName, limit: $limit, includeChannels: $includeChannels, cache: false) {
           entryId: id
           title
+          channelName
+          status
           meta {
-            summary
-            urlTitle
+            siteId
+            date
+            channelId
           }
           content {
             images {
@@ -63,7 +67,16 @@ export default class Template extends Component {
   }
 
   componentWillMount() {
+    this.props.dispatch(navActions.setLevel("TOP"));
     this.headerAction({ title: "Group Finder" });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location && Object.keys(nextProps.location.query).length) {
+      this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
+    } else {
+      this.props.dispatch(navActions.setLevel("TOP"));
+    }
   }
 
   tagOnClick = (tag) => {

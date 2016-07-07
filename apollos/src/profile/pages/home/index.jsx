@@ -14,7 +14,7 @@ import {
 
 import { avatar } from "../../../core/methods/files/client"
 
-const mapQueriesToProps = () => ({
+const mapQueriesToProps = ({ state }) => ({
   data: {
     query: gql`
       query GetPerson {
@@ -32,7 +32,9 @@ const mapQueriesToProps = () => ({
   }
 })
 
-@connect({ mapQueriesToProps })
+const mapStateToProps = (state) => ({ authorized: state.accounts.authorized });
+
+@connect({ mapQueriesToProps, mapStateToProps })
 export default class Home extends Component {
 
   state = {
@@ -101,7 +103,6 @@ export default class Home extends Component {
     }
 
     for (let file in files) {
-      // console.log(files[file])
       let { name } = files[file]
       let reader = new FileReader();
 
@@ -123,7 +124,6 @@ export default class Home extends Component {
   }
 
   render () {
-
     let { person } = this.props.data
     person || (person = {});
 
