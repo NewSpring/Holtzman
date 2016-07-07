@@ -36,75 +36,54 @@ const defaultArray = [];
 export default class Template extends Component {
 
   state = {
-    page: 0,
-    pageSize: 20,
+    offset: 0,
     shouldUpdate: true,
     done: false,
-    loaded: false
+    loaded: false,
+    transactions: [] // XXX remove after refetchMore has landed in apollo-client
   }
 
-  componentDidUpdate(prevProps, prevState){
-    const { page, shouldUpdate } = this.state
-
-    if (prevState.page === page || prevState.shouldUpdate === shouldUpdate) {
-      return
-    }
-
-    let limit = this.state.pageSize,
-        skip = this.state.page * limit;
-
-    console.log(limit, skip, "refetching...");
-    this.props.data.refetch({ limit, skip });
-  }
-
-  // @TODO fix scroll loading
-  onScroll = (e) => {
-    if (this.state.done) return
-
-    const { scrollHeight, clientHeight, scrollTop, offsetTop } = e.currentTarget
-
-    let percentage;
-    if (scrollTop && scrollHeight) {
-      percentage = scrollTop / scrollHeight
-    } else if (window.scrollY && document.body.clientHeight) {
-      percentage = window.scrollY / document.body.clientHeight
-    }
-
-    if ( percentage > 0.5 && this.state.shouldUpdate) {
-      let nextPage = this.state.page + 1
-
-      const { transactions } = this.props.data;
-      if ((transactions && transactions.length) === ((nextPage + 1) * this.state.pageSize)) {
-        return;
-      }
-
-      this.setState({
-        page: nextPage,
-        shouldUpdate: false
+  paginate = () => {
+    const { q, tags } = this.props;
+    this.props.data.refetch({
+      limit: 20,
+      skip: this.state.offset + 20,
+    })
+      .then(({ data }) => {
+        const { transactions } = data;
+        let done = false;
+        if (transactions.length < 20) done = true;
+        this.setState({
+          transactions: this.state.transactions.concat(transactions),
+          offset: this.state.offset + 20,
+          done,
+        });
       });
-
-      // wait a bit to prevent paging multiple times
-      setTimeout(() => {
-        const { transactions } = this.props.data;
-        if (nextPage * this.state.pageSize > (transactions && transactions.length)) {
-          this.setState({ done: true, shouldUpdate: false });
-        } else {
-          this.setState({ shouldUpdate: true });
-        }
-      }, 250);
-    }
   }
 
+  componentWillMount(){
+    // coming back to this page with data in the store
+    if (!this.props.data.loading && this.props.data.transactions) {
+      this.setState({ transactions: this.props.data.transactions })
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.data.loading && !nextProps.data.loading && !this.state.transactions.length) {
+      this.setState({ transactions: nextProps.data.transactions })
+    }
+
+  }
 
   render () {
 
     return (
       <Layout
-        onScroll={this.onScroll}
+        paginate={this.paginate}
         state={this.state}
-        transactions={this.props.data.transactions || defaultArray}
+        transactions={this.state.transactions}
         alive={true}
         ready={!this.props.data.loading}
+        done={this.state.done}
       />
     )
   }
