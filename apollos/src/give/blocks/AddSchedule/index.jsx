@@ -182,6 +182,13 @@ class CartContainer extends Component {
 
   render () {
 
+    // XXX put give give back together
+    return (
+      <h3 className="text-dark-tertiary push-double-ends">
+        Giving is currently disabled for this build of the beta app
+      </h3>
+    )
+
     if (!this.props.alive) {
       return <Offline />
     }

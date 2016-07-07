@@ -55,6 +55,8 @@ export default class Layout extends Component {
       active,
       complete,
       ready,
+      entries,
+      loadingEntries
     } = this.props
 
     return (
@@ -169,49 +171,59 @@ export default class Layout extends Component {
             <div className="soft-half soft-sides@portable soft-double-sides@anchored">
 
               <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
-                Read Some Recent Stories
+                Recent Articles About Giving
               </h4>
-              <div className="grid">
-                <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
-                  <SideBySide
-                    link="https://newspring.cc/stories/jen-feagles"
-                    defaultImage="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/JenFeagles.hero_1700_723_90_c1.jpg"
-                  >
-                    <h4 className="push-half-top@portable push-top@anchored">
-                      Jennifer Feagles Story
-                    </h4>
-                    <p>
-                      Jennifer Feagles shares about how Jesus gave her more than she could have imagined when she put him first in her…
-                    </p>
-                    <Link
-                      to="https://newspring.cc/stories/jen-feagles"
-                      className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
-                    >
-                      Watch Story
-                    </Link>
+              {(() => {
+                if (loadingEntries) (
+                  <div className="one-whole soft text-center"><Spinner /></div>
+                )
+                return (
+                  <div className="grid">
+                    {entries && entries.map((entry, key) => (
+                      <div key={key} className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+                        <SideBySide
+                          classes={["push-bottom@lap-and-up"]}
+                          images={entry.content.images}
+                          defaultImage={entry.content.images[0].cloudfront}
+                        >
+                          <h4 className="push-half-top@portable push-top@anchored">
+                            {entry.title}
+                          </h4>
 
-                  </SideBySide>
-                </div>
-                <div className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
-                  <SideBySide
-                    link="https://newspring.cc/stories/brooke-brissey"
-                    defaultImage="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/collection/stories/BrookeBrissey_Hero_1700_723_90_c1.jpg"
-                  >
-                    <h4 className="push-half-top@portable push-top@anchored">
-                      Brooke Brissey's Story
-                    </h4>
-                    <p>
-                      Brooke Brissey discovered the power of a financial plan to obey God's call on her life. This is her story in her own…                  </p>
-                    <Link
-                      to="https://newspring.cc/stories/brooke-brissey"
-                      className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
-                    >
-                      Read Story
-                    </Link>
+                          <p><small dangerouslySetInnerHTML={{ __html: entry.meta.summary }}></small></p>
+                          {(() => {
+                            if (process.env.WEB) {
+                              return (
+                                <a
+                                  target="_blank"
+                                  href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
+                                  className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                                >
+                                  Read more
+                                </a>
+                              )
+                            }
 
-                  </SideBySide>
-                </div>
-              </div>
+                            if (process.env.NATIVE) {
+                              return (
+                                <Link
+                                  to={`/articles/${entry.entryId}`}
+                                  className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                                >
+                                  Read more
+                                </Link>
+                              )
+                            }
+                          })()}
+
+
+                        </SideBySide>
+                      </div>
+                    ))}
+                  </div>
+                )
+
+              })()}
             </div>
 
           </Left>
