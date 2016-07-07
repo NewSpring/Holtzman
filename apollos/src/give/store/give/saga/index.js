@@ -1,4 +1,5 @@
 import "regenerator-runtime/runtime"
+import React from "react";
 import ReactDOM from "react-dom"
 import Moment from "moment"
 import { take, put, cps, call } from "redux-saga/effects"

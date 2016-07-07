@@ -182,9 +182,12 @@ export default class GiveNow extends Component {
     if (savedPayments && savedPayments.length && !this.props.hideCard) {
 
       const details = this.getAccount()
-      let { accountNumber } = details.payment
-      accountNumber = accountNumber.slice(-4).trim()
-      text = `Review Using ${accountNumber}`
+      if (details && details.payment && details.payment.accountNumber) {
+        let { accountNumber } = details.payment
+        accountNumber = accountNumber.slice(-4).trim()
+        text = `Review Using ${accountNumber}`
+      }
+
 
     }
 
