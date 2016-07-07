@@ -96,6 +96,10 @@ export default class Template extends Component {
   componentWillMount() {
     if (this.props.q) this.setState({ showSearch: true });
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
+
+    if (this.props.data.groups) {
+      this.setState({ groups: this.props.data.groups.results })
+    }
   }
 
   onCardHover = (e) => {
