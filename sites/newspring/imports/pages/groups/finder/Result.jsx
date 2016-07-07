@@ -109,11 +109,24 @@ export default class Template extends Component {
 
   componentWillReceiveProps(nextProps) {
     const markers = this.getMarkers(nextProps);
-    this.setState({ markers });
+    let newState = {
+      markers,
+    }
+
+    if (this.props.q !== nextProps.q || this.props.tags !== nextProps.tags) {
+      if (nextProps.data.groups && nextProps.data.groups) {
+        newState.groups = nextProps.data.groups.results;
+      } else {
+        newState.groups = [];
+      }
+
+    }
 
     if (this.props.data.loading && !nextProps.data.loading && !this.state.groups.length) {
-      this.setState({ groups: nextProps.data.groups.results })
+      newState.groups = nextProps.data.groups.results
     }
+
+    this.setState(newState);
   }
 
   toggleTags = () => this.setState({ showTags: !this.state.showTags })
