@@ -9,6 +9,36 @@ import Layout from "./Layout"
 
 
 const mapQueriesToProps = ({ ownProps }) => ({
+  entries: {
+    query: gql`
+      query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
+        entries: taggedContent(tagName: $tagName, limit: $limit, includeChannels: $includeChannels, cache: false) {
+          entryId: id
+          title
+          channelName
+          status
+          meta {
+            summary
+            urlTitle
+          }
+          content {
+            images {
+              fileName
+              fileType
+              fileLabel
+              s3
+              cloudfront
+            }
+          }
+        }
+      }
+    `,
+    variables: {
+      tagName: "giving",
+      limit: 2,
+      includeChannels: ["articles"],
+    }
+  },
   data: {
     query: gql`
       query GetTransaction($transactionId: ID!) {
@@ -62,9 +92,14 @@ export default class Details extends Component {
   }
 
   render () {
-    let { loading, transaction } = this.props.data
+    let { transaction } = this.props.data
+    const { entries, loading } = this.props.entries
     // if (loading) return <Loading /> // XXX
 
-    return <Layout transaction={transaction} />;
+    return <Layout
+      transaction={transaction}
+      entries={entries}
+      loadingEntries={loading}
+      />;
   }
 }
