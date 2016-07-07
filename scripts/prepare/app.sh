@@ -29,6 +29,10 @@ yecho "### Apollos Compile ###"
 cd apollos
 npm run compile
 
+yecho "### Settings Grab ###"
+cd ../sites/newspring/.remote
+git clone git@github.com:NewSpring/ops-settings.git settings
+
 # yecho "### Preparing Gagarin test build ###"
 # npm install -g gagarin
 # cp ./.remote/settings/sites/app.newspring.io/alpha.settings.json ./settings.json
