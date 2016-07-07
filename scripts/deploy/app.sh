@@ -11,10 +11,10 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   exit 0
 fi
 
-if [[ "$TRAVIS_BRANCH" != "master" ]]; then
-  echo "Testing on a branch other than master. No deployment will be done."
-  exit 0
-fi
+# if [[ "$TRAVIS_BRANCH" != "master" ]]; then
+#   echo "Testing on a branch other than master. No deployment will be done."
+#   exit 0
+# fi
 
 if [[ $TRAVIS_TAG == "" ]]; then
   echo "No tags found, no need for a release."
@@ -30,7 +30,7 @@ yecho () {
 set -e
 
 yecho "### Entering app directory ###"
-cd sites/app
+cd sites/newspring
 
 CURRENT_TAG=`git describe --exact-match --abbrev=0 --tags`
 
@@ -92,14 +92,14 @@ aws configure set default.aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws configure set default.region us-east-1
 
 yecho "### Installing launch ###"
-git clone git@github.com:NewSpring/meteor-launch.git .launch && cd .launch && npm install && npm link && cd ..
+npm install -g meteor-launch
 cp ./.remote/settings/sites/app.newspring.io/launch.json ./launch.json
 
 yecho "### Building for linux environment https://${CHANNEL}-app.newspring.io ###"
 launch build "https://${CHANNEL}-app.newspring.io" "$TRAVIS_BUILD_DIR/sites/app/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json"
 
 yecho "### Uploading bundle to S3 ###"
-aws s3 cp .build/app.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+aws s3 cp .build/newspring s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
 yecho "### Updating ECS ###"
 
