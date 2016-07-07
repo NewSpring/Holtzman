@@ -92,7 +92,7 @@ npm install -g meteor-launch
 cp ./.remote/settings/sites/app.newspring.io/launch.json ./launch.json
 
 yecho "### Building for linux environment https://${CHANNEL}-app.newspring.io ###"
-launch build "https://${CHANNEL}-app.newspring.io" "$TRAVIS_BUILD_DIR/sites/app/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json"
+launch build "https://${CHANNEL}-app.newspring.io" "$TRAVIS_BUILD_DIR/sites/newspring/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json"
 
 yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/newspring s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
@@ -100,14 +100,14 @@ aws s3 cp .build/newspring s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.g
 yecho "### Updating ECS ###"
 
 if [ "${CHANNEL}" == "alpha" ]; then
-  MONGO_URL=$DOCKER_MONGO_URL OPLOG_URL=$DOCKER_OPLOG_URL ROOT_URL="https://${CHANNEL}-app.newspring.io" METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/app/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json" ECS_TASK_NAME=app ECS_CLUSTER=apollos ECS_FAMILY=app ECS_SERVICE=alpha-app HOST_PORT=8062 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
+  MONGO_URL=$DOCKER_MONGO_URL OPLOG_URL=$DOCKER_OPLOG_URL ROOT_URL="https://${CHANNEL}-app.newspring.io" METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/newspring/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json" ECS_TASK_NAME=app ECS_CLUSTER=apollos ECS_FAMILY=app ECS_SERVICE=alpha-app HOST_PORT=8062 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
 
   yecho "### Deploying to Hockey ###"
   launch hockey https://alpha-app.newspring.io $METEOR_SETTINGS_PATH
 fi
 
 if [ "${CHANNEL}" == "beta" ]; then
-  ROOT_URL="https://${CHANNEL}-app.newspring.io" METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/app/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json" ECS_TASK_NAME=app ECS_CLUSTER=apollos ECS_FAMILY=app ECS_SERVICE=beta-app HOST_PORT=8072 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
+  ROOT_URL="https://${CHANNEL}-app.newspring.io" METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/newspring/.remote/settings/sites/app.newspring.io/${CHANNEL}.settings.json" ECS_TASK_NAME=app ECS_CLUSTER=apollos ECS_FAMILY=app ECS_SERVICE=beta-app HOST_PORT=8072 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz" $TRAVIS_BUILD_DIR/scripts/deploy/ecs.sh
 
   yecho "### Deploying to TestFlight ###"
   launch testflight https://beta-app.newspring.io $METEOR_SETTINGS_PATH
