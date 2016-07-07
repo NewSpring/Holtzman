@@ -15,23 +15,19 @@ yecho () {
 }
 
 
-yecho "### Entering app directory ###"
-cd sites/app
-
 yecho "### Installing Meteor ###"
 curl https://install.meteor.com | /bin/sh
 
 yecho "### Installing NPM deps ###"
 npm install
+npm link
 
-yecho "### Installing Norma ###"
-npm install -g NewSpring/Norma#forked-cson
+yecho "### Apollos Setup ###"
+meteor npm run apollos run setup newspring
 
-yecho "### Downloading things with Norma ###"
-norma build
-
-yecho "### Remove platforms for Gagarin workaround ###"
-meteor remove-platform ios android
+yecho "### Apollos Compile ###"
+cd apollos
+npm run compile
 
 # yecho "### Preparing Gagarin test build ###"
 # npm install -g gagarin
