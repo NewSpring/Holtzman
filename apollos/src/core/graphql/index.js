@@ -5,16 +5,26 @@ import ApolloClient, {
 } from "apollo-client";
 
 
-let hasToken = Accounts._storedLoginToken && Accounts._storedLoginToken();
-let token =  hasToken ? Accounts._storedLoginToken() : null;
+const networkInterface = createNetworkInterface(Meteor.settings.public.heighliner);
 
-const networkInterface = createNetworkInterface(Meteor.settings.public.heighliner, {
-  headers: { Authorization: token },
-});
+networkInterface.use([{
+  applyMiddleware(request, next) {
+    const currentUserToken = Accounts._storedLoginToken();
+    if (!currentUserToken) {
+      next();
+      return;
+    }
+
+    if (!request.options.headers) request.options.headers = new Headers();
+    request.options.headers.Authorization = currentUserToken;
+
+    next();
+  },
+}])
 
 const GraphQL = new ApolloClient({
   networkInterface,
-  // shouldBatch: true, // XXX not working yet
+  shouldBatch: false, // XXX not working with multiple root fields on a query
 });
 
 export {
