@@ -16,7 +16,8 @@ yecho () {
 
 
 yecho "### Installing Meteor ###"
-curl https://install.meteor.com | /bin/sh
+if [ ! -d "$DIRECTORY" ]; then curl https://install.meteor.com | /bin/sh; fi
+export PATH=$PATH:$HOME/.meteor
 
 yecho "### Installing NPM deps ###"
 npm install
