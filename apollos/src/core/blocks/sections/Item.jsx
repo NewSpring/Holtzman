@@ -164,12 +164,12 @@ export default class SectionItem extends Component {
     const { id } = e.currentTarget
 
     for (let section of this.props.sections) {
-      if (Number(section.id) === Number(id) && section.children.length) {
+      if (section.id === id && section.children.length) {
         e.preventDefault()
 
         // if a section is open and a different section is clicked
         // then change the opened section to the one clicked
-        if (this.state.section != null && Number(this.state.section.id) !== Number(id)) {
+        if (this.state.section != null &&  this.state.section.id !== id) {
           this.setState({ section: null });
           setTimeout(() => {
             this.setState({ section: section });
@@ -178,7 +178,7 @@ export default class SectionItem extends Component {
 
         // if a section is open and that section is clicked
         // then close the section clicked
-        else if (this.state.section != null && Number(section.id) === Number(id)) {
+        else if (this.state.section != null && section.id === id) {
           this.setState({ section: null })
         }
 

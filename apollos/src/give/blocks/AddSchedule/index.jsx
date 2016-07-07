@@ -184,7 +184,7 @@ class CartContainer extends Component {
 
     // XXX put give give back together
     return (
-      <h3 className="text-dark-tertiary push-double-ends">
+      <h3 className="text-dark-tertiary push-double-bottom">
         Giving is currently disabled for this build of the beta app
       </h3>
     )
