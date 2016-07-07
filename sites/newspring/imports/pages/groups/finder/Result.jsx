@@ -2,6 +2,7 @@ import { Component, PropTypes} from "react";
 import { connect } from "react-apollo";
 import { withRouter } from "react-router";
 import gql from "graphql-tag";
+import { nav as navActions } from "apollos/dist/core/store"
 
 import Split, { Left, Right } from "apollos/dist/core/blocks/split";
 import GoogleMap from "apollos/dist/core/components/map";
@@ -75,6 +76,7 @@ export default class Template extends Component {
 
   componentWillMount() {
     if (this.props.q) this.setState({ showSearch: true });
+    this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
   }
 
   onCardHover = (e) => {

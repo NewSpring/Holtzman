@@ -71,6 +71,7 @@ export default class Template extends Component {
   closeModal = (e) => {
     if (e && e.preventDefault) e.preventDefault();
     this.props.dispatch(modal.hide())
+    this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
   }
 
   sendRequest = (e, callback) => {
