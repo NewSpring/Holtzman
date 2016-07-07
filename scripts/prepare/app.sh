@@ -23,7 +23,7 @@ npm install
 npm link
 
 yecho "### Apollos Setup ###"
-meteor npm run apollos run setup newspring
+meteor npm run apollos setup newspring
 
 yecho "### Apollos Compile ###"
 cd apollos
