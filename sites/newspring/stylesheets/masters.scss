@@ -125,3 +125,15 @@ blockquote p {
     right: 8px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 100%;
+  }
+  h1 {
+    font-size: 2.6em;
+  }
+  h2 {
+    font-size: 2.1em;
+  }
+}
