@@ -21,8 +21,8 @@ import HomeHero from "./home.Hero"
 const mapQueriesToProps = ({ ownProps, state }) => ({
   data: {
     query: gql`
-      query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!){
-        feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: false) {
+      query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!){
+        feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
           entryId: id
           title
           channelName
@@ -53,18 +53,18 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
       excludeChannels: state.topics.topics,
       limit: state.paging.pageSize * state.paging.page,
       skip: state.paging.skip,
+      cache: true,
     },
     forceFetch: false,
     returnPartialData: false,
   },
 });
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) => ({
     paging: state.paging,
-    modal: { visible: state.modal.visible }
-  };
-};
+    topics: state.topics.topics,
+    modal: { visible: state.modal.visible },
+});
 
 @connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Pageable)
@@ -79,7 +79,15 @@ export default class Home extends Component {
   }
 
   handleRefresh = (resolve, reject) => {
-    this.props.data.refetch()
+    const { topics, paging } = this.props;
+    let refetchVariables = {
+      excludeChannels: topics,
+      limit: paging.pageSize * paging.page,
+      skip: paging.skip,
+      cache: false,
+    };
+
+    this.props.data.refetch(refetchVariables)
       .then(resolve)
       .catch(reject);
   }

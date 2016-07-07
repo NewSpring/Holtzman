@@ -9,10 +9,7 @@ import LikesItem from "./Item"
 class LikesContainer extends Component {
 
   render() {
-    console.log(this.props)
-    if (!this.props.likes) {
-      <Loading />
-    }
+    if (!this.props.likes) return <Loading />;
 
     const { likes, recentLikes } = this.props
 

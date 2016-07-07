@@ -68,11 +68,19 @@ export default class NavLink extends Component {
       return
     }
 
-    if (navItem.link && (navItem.link != window.location.pathname)) {
+    if (navItem.link && (navItem.link !== window.location.pathname)) {
       function navigate() {
         return routeActions.push(navItem.link)
       }
       this.props.handleAction(navigate)
+      return
+    }
+
+    if (navItem.link && (navItem.link === window.location.pathname)) {
+      $("body").velocity("scroll", {
+        duration: 350,
+        easing: "ease-in",
+      }); // smooth scroll to the top
     }
   }
 
