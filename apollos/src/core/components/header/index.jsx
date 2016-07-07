@@ -77,7 +77,7 @@ export default class Header extends Component {
                     fontWeight: 900,
                     letterSpacing: "1px",
                   }}>
-                  NewSpring
+                  NewSpring Church
                 </h6>
               )
             }
@@ -87,6 +87,7 @@ export default class Header extends Component {
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
+                fontWeight: 900,
               }}>
                 {this.props.text}
                 {this.showSettings()}
