@@ -144,34 +144,12 @@ const TransactionCard = ({ transactionDetail, transaction }) => {
 
 export default class Layout extends Component {
 
-  static contextTypes = {
-    shouldAnimate: PropTypes.bool
-  }
-
-  componentDidMount() {
-    const container = ReactDOM.findDOMNode(this.refs["container"])
-    container.addEventListener("scroll", this.props.onScroll);
-     if (typeof window != "undefined" && window != null) {
-       window.addEventListener("scroll", this.props.onScroll);
-     }
-
-  }
-
-  componentWillUnmount() {
-    const container = ReactDOM.findDOMNode(this.refs["container"])
-    container.removeEventListener("scroll", this.props.onScroll);
-
-    if (typeof window != "undefined" && window != null) {
-      window.removeEventListener("scroll", this.props.onScroll);
-    }
-  }
-
   monentize = monentize
   formatDate = formatDate
 
   render () {
 
-    const { transactions, ready } = this.props
+    const { transactions, ready, paginate, done } = this.props
 
 
     return (
@@ -271,6 +249,40 @@ export default class Layout extends Component {
                 </div>
               )
 
+            })()}
+          </div>
+
+          {/* Load more */}
+          <div className="one-whole text-center">
+            {(() => {
+              let btnClasses = [
+                "btn--dark-tertiary",
+                "push-ends"
+              ];
+
+              if (!ready && !transactions.length) return null;
+
+              if (done) {
+                return (
+                  <button className="disabled soft-ends btn" disabled>
+                    No More Contributions
+                  </button>
+                )
+              }
+
+              if (!ready) {
+                return (
+                  <button className="disabled btn" disabled>
+                    Loading...
+                  </button>
+                )
+              }
+
+              return (
+                <button onClick={paginate} className={btnClasses.join(" ")}>
+                  Load More Contributions
+                </button>
+              )
             })()}
           </div>
 
