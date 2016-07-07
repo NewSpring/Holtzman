@@ -61,9 +61,6 @@ yecho "### Installing jq ###"
 brew update
 brew install jq
 
-yecho "### Adding ios and android platforms ###"
-meteor add-platform ios android
-
 yecho "### Installing Android sdks ###"
 brew install android-sdk
 echo export ANDROID_HOME=/usr/local/opt/android-sdk >> ~/.bashrc
