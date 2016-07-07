@@ -72,6 +72,25 @@ export default class Template extends Component {
     showTags: false,
     showSearch: false,
     hover: null,
+    groups: [], // XXX after refetchMore lands in apollo client, remove
+    offset: 0,
+  }
+
+  paginate = () => {
+    const { q, tags } = this.props;
+    this.props.data.refetch({
+      tags: tags.split(",").filter(x => x),
+      query: q,
+      limit: 10,
+      offset: this.state.offset + 10,
+    })
+      .then(({ data }) => {
+        const { results } = data.groups;
+        this.setState({
+          groups: this.state.groups.concat(results),
+          offset: this.state.offset + 10,
+        });
+      });
   }
 
   componentWillMount() {
@@ -91,17 +110,22 @@ export default class Template extends Component {
   componentWillReceiveProps(nextProps) {
     const markers = this.getMarkers(nextProps);
     this.setState({ markers });
+
+    if (this.props.data.loading && !nextProps.data.loading && !this.state.groups.length) {
+      this.setState({ groups: nextProps.data.groups.results })
+    }
   }
 
   toggleTags = () => this.setState({ showTags: !this.state.showTags })
   toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
 
+
   getMarkers = (props) => {
     const { data } = props;
     const { markers } = this.state;
-    if (!data.groups || !data.groups.results) return markers;
+    if (!data.groups || !this.state.groups) return markers;
 
-    return markers.concat(data.groups.results)
+    return markers.concat(this.state.groups)
       .filter(x => x.locations && x.locations.length && x.locations[0].location)
       .map(x => ({
         latitude: x.locations[0].location.latitude,
@@ -124,7 +148,8 @@ export default class Template extends Component {
     const { data, location, tags, q } = this.props;
     let count, groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
-    if (data.groups && data.groups.results) groups = data.groups.results;
+    groups = this.state.groups;
+
     let isMobile;
     if (typeof window != "undefined" && window != null ) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -161,6 +186,7 @@ export default class Template extends Component {
             showSearch={this.state.showSearch}
             toggleSearch={this.toggleSearch}
             onCardHover={this.onCardHover}
+            paginate={this.paginate}
           />
         </Left>
       </div>
