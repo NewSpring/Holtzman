@@ -9,9 +9,9 @@ ruby:
 - '2.2.5'
 cache:
   directories:
-  - $HOME/node_modules
-  - $HOME/apollos/node_modules
-  - $HOME/sites/newspring/node_modules
+  - $TRAVIS_BUILD_DIR/node_modules
+  - $TRAVIS_BUILD_DIR/apollos/node_modules
+  - $TRAVIS_BUILD_DIR/sites/newspring/node_modules
 before_install:
 - openssl aes-256-cbc -K $encrypted_e447456204f1_key -iv $encrypted_e447456204f1_iv
   -in .travis/id_rsa_travis.enc -out ~/.ssh/id_rsa -d
