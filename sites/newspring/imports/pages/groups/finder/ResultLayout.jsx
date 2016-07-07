@@ -20,6 +20,7 @@ export default ({
   showTags,
   toggleTags,
   onCardHover,
+  paginate,
 }) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
@@ -132,8 +133,9 @@ export default ({
             "btn--dark-tertiary",
             "push-ends"
           ];
-          if (loading) return null
 
+          if (loading && !groups.length) return null;
+          
           if (count === groups.length) {
             return (
               <button className="disabled soft-ends btn" disabled>
@@ -142,16 +144,16 @@ export default ({
             )
           }
 
-          // if (loadingMoreGroups) {
-          //   return (
-          //     <button className="disabled one-whole@handheld btn" disabled>
-          //       Loading...
-          //     </button>
-          //   )
-          // }
+          if (loading) {
+            return (
+              <button className="disabled btn" disabled>
+                Loading...
+              </button>
+            )
+          }
 
           return (
-            <button className={btnClasses.join(" ")}>
+            <button onClick={paginate} className={btnClasses.join(" ")}>
               Load More Groups
             </button>
           )
