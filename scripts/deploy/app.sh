@@ -58,11 +58,7 @@ yecho "Release Notes:
 $GIT_HISTORY"
 
 yecho "### Installing jq ###"
-brew update
 brew install jq
-
-yecho "### Adding ios and android platforms ###"
-meteor add-platform ios android
 
 yecho "### Installing Android sdks ###"
 brew install android-sdk
@@ -78,7 +74,7 @@ cp ./.remote/settings/ssl/bundle.crt .
 cp ./.remote/settings/ssl/private.key .
 
 yecho "### Updating fastlane ###"
-gem install fastlane && gem update fastlane
+gem install fastlane --no-ri --no-rdoc
 
 yecho "### Installing aws and boto3 ###"
 brew install python
