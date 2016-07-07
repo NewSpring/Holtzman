@@ -13,6 +13,36 @@ import Confirm from "./Confirm"
 import Layout from "./Layout"
 
 const mapQueriesToProps = ({ ownProps }) => ({
+  entries: {
+    query: gql`
+      query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
+        entries: taggedContent(tagName: $tagName, limit: $limit, includeChannels: $includeChannels, cache: false) {
+          entryId: id
+          title
+          channelName
+          status
+          meta {
+            summary
+            urlTitle
+          }
+          content {
+            images {
+              fileName
+              fileType
+              fileLabel
+              s3
+              cloudfront
+            }
+          }
+        }
+      }
+    `,
+    variables: {
+      tagName: "giving",
+      limit: 2,
+      includeChannels: ["articles"],
+    }
+  },
   data: {
     query: gql`
       query GetScheduleTransaction($scheduleTransactionId: ID!) {
@@ -99,6 +129,8 @@ export default class Details extends Component {
       complete = true
     }
 
+    const { entries, loading } = this.props.entries
+
     return (
       <Layout
         stop={this.stop}
@@ -107,6 +139,8 @@ export default class Details extends Component {
         state={this.state}
         active={this.state.isActive}
         complete={complete}
+        entries={entries}
+        loadingEntries={loading}
       />
     )
   }
