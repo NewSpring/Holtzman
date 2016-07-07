@@ -47,7 +47,6 @@ meteor-base@1.0.4
 meteorhacks:fast-render@2.10.1
 meteorhacks:inject-data@1.4.1
 meteorhacks:picker@1.0.3
-micro-minifier-js@1.0.0
 minifier-css@1.1.12_1
 minifier-js@1.1.12_1
 minimongo@1.0.17
@@ -75,6 +74,7 @@ spacebars@1.0.12
 spacebars-compiler@1.0.12
 srp@1.0.9
 standard-minifier-css@1.0.7_1
+standard-minifier-js@1.0.7_1
 static-html@1.0.10_1
 templating-tools@1.0.4
 timbrandin:fetch@1.0.0
