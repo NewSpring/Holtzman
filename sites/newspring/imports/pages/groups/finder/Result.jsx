@@ -30,6 +30,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
             description
             photo
             ageRange
+            distance
             locations {
               location {
                 latitude

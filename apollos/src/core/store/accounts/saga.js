@@ -197,6 +197,7 @@ addSaga(function* account(getState) {
           const query = gql`
             query GetPersonData {
               person: currentPerson {
+                id
                 age
                 birthDate
                 birthDay
@@ -220,9 +221,6 @@ addSaga(function* account(getState) {
                 lastName
                 nickName
                 email
-                phoneNumbers {
-                  number
-                }
                 photo
               }
             }
