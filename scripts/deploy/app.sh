@@ -58,12 +58,12 @@ cd "sites/$APP"
 yecho "### Creating settings for the $CHANNEL of $APP:$DEST"
 URLPREFIX="my"
 if [ "$DEST" = "native" ]; then URLPREFIX="native"; fi
-METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/${APP}/.remote/settings/sites/${APP}/${CHANNEL}.settings.json"
-ROOT_URL="https://${CHANNEL}-${URLPREFIX}.newspring.cc"
+METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
+ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.cc"
 ECS_TASK_NAME="$DEST" # XXX long term this should be $APP or maybe $APP-$DEST
 ECS_CLUSTER=apollos # XXX move to Guild
 ECS_FAMILY="$DEST"
-ECS_SERVICE="$CHANNEL-#DEST"
+ECS_SERVICE="$CHANNEL-$DEST"
 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz"
 HOST_PORT=8080 # production newspring web
 if [ "$DEST" = "native" ] && [ "$CHANNEL" = "alpha" ]; then HOST_PORT=8062; fi
@@ -88,10 +88,6 @@ if [ "$DEST" = "native" ]; then
   yecho "### Updating fastlane ###"
   gem install fastlane --no-ri --no-rdoc
 
-  yecho "### Installing launch ###"
-  npm install -g meteor-launch
-  cp ./.remote/settings/sites/$APP/launch.json ./launch.json
-
   yecho "### Installing python ###"
   brew install python
 
@@ -99,6 +95,10 @@ if [ "$DEST" = "native" ]; then
   brew install jq
 
 fi
+
+yecho "### Installing launch ###"
+npm install -g meteor-launch
+cp ./.remote/settings/sites/$APP/launch.json ./launch.json
 
 yecho "### Installing aws and boto3 ###"
 python --version
@@ -111,7 +111,7 @@ aws configure set default.aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws configure set default.region us-east-1
 
 
-yecho "### Building for linux environment https://${CHANNEL}-${URLPREFIX}.newspring.cc ###"
+yecho "### Building for linux environment https://$CHANNEL-$URLPREFIX.newspring.cc ###"
 WEB=true
 NATIVE=true
 if [ "$DEST" = "native" ]; then WEB=false; fi
@@ -120,9 +120,6 @@ if [ "$DEST" = "web" ]; then NATIVE=false; fi
 cd ../../apollos && WEB=$WEB NATIVE=$NATIVE npm run compile && cd ../
 rm -rf sites/$APP/.meteor/local
 WEB=$WEB NATIVE=$NATIVE launch build $ROOT_URL $METEOR_SETTINGS_PATH
-
-yecho "### SO FAR SO GOOD"
-exit 0
 
 yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/newspring s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
@@ -146,11 +143,11 @@ make_task_def() {
         ],
         "environment": [
           { "name": "REBUILD_NPM_MODULES", "value": "1" },
-          { "name": "MONGO_URL", "value": "'"$MONGO_URL"'" },
+          { "name": "MONGO_URL", "value": "'"$DOCKER_MONGO_URL"'" },
           { "name": "DISABLE_WEBSOCKETS", "value": "1" },
           { "name": "ROOT_URL", "value": "'"$ROOT_URL"'" },
           { "name": "BUNDLE_URL", "value": "'"$BUNDLE_URL"'" },
-          { "name": "OPLOG_URL", "value": "'"$OPLOG_URL"'" },
+          { "name": "OPLOG_URL", "value": "'"$DOCKER_OPLOG_URL"'" },
           { "name": "METEOR_SETTINGS", "value": "'"$meteor_settings"'" },
           { "name": "TZ", "value": "America/New_York" }
         ]
