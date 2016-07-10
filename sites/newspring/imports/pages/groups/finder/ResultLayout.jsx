@@ -135,7 +135,7 @@ export default ({
           ];
 
           if (loading && !groups.length) return null;
-          
+
           if (count === groups.length) {
             return (
               <button className="disabled soft-ends btn" disabled>

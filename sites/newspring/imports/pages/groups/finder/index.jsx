@@ -33,6 +33,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
             siteId
             date
             channelId
+            summary
           }
           content {
             images {

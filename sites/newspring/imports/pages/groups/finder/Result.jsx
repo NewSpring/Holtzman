@@ -29,7 +29,6 @@ const mapQueriesToProps = ({ ownProps }) => ({
             demographic
             description
             photo
-            kidFriendly
             ageRange
             locations {
               location {
@@ -112,10 +111,8 @@ export default class Template extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const markers = this.getMarkers(nextProps);
-    let newState = {
-      markers,
-    }
+
+    let newState = {}
 
     if (this.props.q !== nextProps.q || this.props.tags !== nextProps.tags) {
       if (nextProps.data.groups && nextProps.data.groups) {
@@ -129,7 +126,7 @@ export default class Template extends Component {
     if (this.props.data.loading && !nextProps.data.loading && !this.state.groups.length) {
       newState.groups = nextProps.data.groups.results
     }
-
+    newState.markers = this.getMarkers(newState.groups);
     this.setState(newState);
   }
 
@@ -137,12 +134,9 @@ export default class Template extends Component {
   toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
 
 
-  getMarkers = (props) => {
-    const { data } = props;
-    const { markers } = this.state;
-    if (!data.groups || !this.state.groups) return markers;
-
-    return markers.concat(this.state.groups)
+  getMarkers = (groups = []) => {
+    const { markers } = this.state
+    return markers.concat(groups)
       .filter(x => x.locations && x.locations.length && x.locations[0].location)
       .map(x => ({
         latitude: x.locations[0].location.latitude,
@@ -195,7 +189,7 @@ export default class Template extends Component {
             loading={data.loading}
             groups={groups}
             count={count}
-            tags={tags.split(",").filter(x => x)}
+            tags={tags && tags.split(",").filter(x => x)}
             query={q}
             removeQueryString={this.removeQueryString}
             showTags={this.state.showTags}
@@ -207,6 +201,6 @@ export default class Template extends Component {
           />
         </Left>
       </div>
-    )
+    );
   }
 }
