@@ -37,15 +37,14 @@ export default withRouter(({ group, router, onHover }) => {
           })}</h5>
 
         {/* Distance */}
-        {/*{(() => {
-          if (!group.locations || !group.locations[0].location) return null;
-          if (!group.locations[0].location.distance) return null;
+        {(() => {
+          if (!group.distance) return null;
           return (
-            <h6 className="em text-dark-tertiary">
-              {group.locations[0].location.distance.toFixed(2)} miles away
+            <h6 className="em text-dark-tertiary push-half-bottom">
+              {group.distance.toFixed(2)} miles away
             </h6>
           )
-        })()}*/}
+        })()}
 
 
         {/* Description */}
