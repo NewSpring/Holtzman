@@ -26,13 +26,10 @@ npm link
 yecho "### Apollos Setup ###"
 meteor npm run apollos setup newspring
 
-yecho "### Apollos Compile ###"
-cd apollos
-npm run compile
-
 yecho "### Settings Grab ###"
 cd ../sites/newspring/.remote
 git clone git@github.com:NewSpring/ops-settings.git settings
+cd settings && git checkout refactor # temp until confirmed working
 
 # yecho "### Preparing Gagarin test build ###"
 # npm install -g gagarin
