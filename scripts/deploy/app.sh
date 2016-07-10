@@ -42,12 +42,12 @@ DEST=$(echo "$CURRENT_TAG" | cut -d'/' -f2)
 CHANNEL=$(echo "$CURRENT_TAG" | cut -d'/' -f3)
 
 # exit if it's a linux container and a native build
-if [ "$TRAVIS_OS_NAME" != "osx" -a "$DEST" == "native" ]; then
+if [ "$TRAVIS_OS_NAME" != "osx" ] && [ "$DEST" = "native" ]; then
   echo "Not deploying app on $TRAVIS_OS_NAME"
   exit 0
 fi
 # exit if it's an osx container and a web build
-if [ "$TRAVIS_OS_NAME" == "osx" -a "$DEST" != "native" ]; then
+if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$DEST" != "native" ]; then
   echo "Not deploying app on $TRAVIS_OS_NAME"
   exit 0
 fi
@@ -57,7 +57,7 @@ cd "sites/$APP"
 
 yecho "### Creating settings for the $CHANNEL of $APP:$DEST"
 URLPREFIX="my"
-if [ "$DEST" == "native" ]; then URLPREFIX="native"; fi
+if [ "$DEST" = "native" ]; then URLPREFIX="native"; fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/${APP}/.remote/settings/sites/${APP}/${CHANNEL}.settings.json"
 ROOT_URL="https://${CHANNEL}-${URLPREFIX}.newspring.cc"
 ECS_TASK_NAME="$DEST" # XXX long term this should be $APP or maybe $APP-$DEST
@@ -66,16 +66,16 @@ ECS_FAMILY="$DEST"
 ECS_SERVICE="$CHANNEL-#DEST"
 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz"
 HOST_PORT=8080 # production newspring web
-if [ "$DEST" == "native" -a "$CHANNEL" == "alpha" ]; then HOST_PORT=8062; fi
-if [ "$DEST" == "native" -a "$CHANNEL" == "beta" ]; then HOST_PORT=8072; fi
-if [ "$DEST" == "native" -a "$CHANNEL" == "prod" ]; then HOST_PORT=8082; fi
-if [ "$DEST" == "web" -a "$CHANNEL" == "beta" ]; then HOST_PORT=8070; fi
+if [ "$DEST" = "native" ] && [ "$CHANNEL" = "alpha" ]; then HOST_PORT=8062; fi
+if [ "$DEST" = "native" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8072; fi
+if [ "$DEST" = "native" ] && [ "$CHANNEL" = "prod" ]; then HOST_PORT=8082; fi
+if [ "$DEST" = "web" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8070; fi
 
 
 
 
 yecho "### Deploying $APP:$DEST to $CHANNEL ###"
-if [ "$DEST" == "native" ]; then
+if [ "$DEST" = "native" ]; then
   yecho "### Installing Android sdks ###"
   brew install android-sdk
   echo export ANDROID_HOME=/usr/local/opt/android-sdk >> ~/.bashrc
@@ -176,18 +176,18 @@ deploy_cluster() {
 deploy_cluster
 
 
-if [ "$DEST" == "web" ]; then
+if [ "$DEST" = "web" ]; then
   yecho "### $APP deployed to $ROOT_URL"
   exit 0
 fi
 
 yecho "### Deploying app bundle ###"
-if [ "$CHANNEL" == "alpha" ]; then
+if [ "$CHANNEL" = "alpha" ]; then
   yecho "### Deploying to Hockey ###"
   launch hockey ROOT_URL $METEOR_SETTINGS_PATH
 fi
 
-if [ "$CHANNEL" == "beta" ]; then
+if [ "$CHANNEL" = "beta" ]; then
   yecho "### Deploying to TestFlight ###"
   launch testflight ROOT_URL $METEOR_SETTINGS_PATH
 fi
