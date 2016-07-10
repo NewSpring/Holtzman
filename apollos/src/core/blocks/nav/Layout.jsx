@@ -26,7 +26,10 @@ export default class NavLayout extends React.Component {
       classes.push(css(styles["nav-bar"]));
     }
 
-    if (this.props.bgColor !== "transparent") {
+    if (
+      this.props.bgColor !== "transparent" &&
+      this.props.fgColor === "light"
+    ) {
       classes.push(css(styles["nav-bar-border"]));
     }
 
