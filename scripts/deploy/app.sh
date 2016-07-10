@@ -1,4 +1,27 @@
 #!/usr/bin/env sh
+YELLOW=`tput setaf 3`
+yecho () {
+  echo "${YELLOW}$1"
+}
+
+# force script to error out at first error
+set -e
+
+CURRENT_TAG=`git describe --exact-match --abbrev=0 --tags`
+
+PREVIOUS_TAG=`git describe HEAD^1 --abbrev=0 --tags`
+GIT_HISTORY=`git log --no-merges --format="- %s" $PREVIOUS_TAG..HEAD`
+
+if [[ $PREVIOUS_TAG == "" ]]; then
+  GIT_HISTORY=`git log --no-merges --format="- %s"`
+fi
+
+
+yecho "Current Tag: $CURRENT_TAG"
+yecho "Previous Tag: $PREVIOUS_TAG"
+yecho "Release Notes:
+
+$GIT_HISTORY"
 
 APP=$(echo $CURRENT_TAG | cut -d'/' -f1)
 DEST=$(echo $CURRENT_TAG | cut -d'/' -f2)
@@ -31,32 +54,8 @@ if [[ $TRAVIS_TAG == "" ]]; then
   exit 0
 fi
 
-YELLOW=`tput setaf 3`
-yecho () {
-  echo "${YELLOW}$1"
-}
-
-# force script to error out at first error
-set -e
-
 yecho "### Entering app directory ###"
 cd sites/$APP
-
-CURRENT_TAG=`git describe --exact-match --abbrev=0 --tags`
-
-PREVIOUS_TAG=`git describe HEAD^1 --abbrev=0 --tags`
-GIT_HISTORY=`git log --no-merges --format="- %s" $PREVIOUS_TAG..HEAD`
-
-if [[ $PREVIOUS_TAG == "" ]]; then
-  GIT_HISTORY=`git log --no-merges --format="- %s"`
-fi
-
-
-yecho "Current Tag: $CURRENT_TAG"
-yecho "Previous Tag: $PREVIOUS_TAG"
-yecho "Release Notes:
-
-$GIT_HISTORY"
 
 yecho "### Creating settings for the $CHANNEL of $APP:$DEST"
 URLPREFIX="my"
