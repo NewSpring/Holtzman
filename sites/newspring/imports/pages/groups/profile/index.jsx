@@ -30,7 +30,6 @@ const mapQueriesToProps = ({ ownProps }) => ({
             description
             photo
             kidFriendly
-            distance
             ageRange
             tags {
               id

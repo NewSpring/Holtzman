@@ -59,8 +59,8 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
             type="text"
             onChange={(e) => inputOnChange(e)}
           />
-          <div className="one-whole text-left">
-            <h6><em>Find a group by zipcode, name, or description</em></h6>
+          <div className="one-whole text-center@handheld text-left@lap-and-up">
+            <h6><em>Find a group by zipcode, name, campus, or description</em></h6>
           </div>
         </Forms.Form>
       </div>
