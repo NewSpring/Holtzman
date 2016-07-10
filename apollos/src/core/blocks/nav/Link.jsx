@@ -72,12 +72,13 @@ export default class NavLink extends Component {
       return
     }
 
-    if (navItem.link && (navItem.link === window.location.pathname)) {
-      $("body").velocity("scroll", {
-        duration: 350,
-        easing: "ease-in",
-      }); // smooth scroll to the top
-    }
+    // XXX this was making the nav jump since its in the body...
+    // if (navItem.link && (navItem.link === window.location.pathname)) {
+    //   $("body").velocity("scroll", {
+    //     duration: 350,
+    //     easing: "ease-in",
+    //   }); // smooth scroll to the top
+    // }
   }
 
   render () {
