@@ -26,7 +26,7 @@ yecho "### Apollos Setup ###"
 meteor npm run apollos setup newspring
 
 yecho "### Settings Grab ###"
-cd ../sites/newspring/.remote
+cd sites/newspring/.remote
 git clone git@github.com:NewSpring/ops-settings.git settings
 cd settings && git checkout refactor # temp until confirmed working
 
