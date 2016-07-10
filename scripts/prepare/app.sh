@@ -3,8 +3,18 @@
 # force script to error out at first error
 set -e
 
-# exit if it's a linux container
-if [ "${TRAVIS_OS_NAME}" != "osx" ]; then
+APP=$(echo $CURRENT_TAG | cut -d'/' -f1)
+DEST=$(echo $CURRENT_TAG | cut -d'/' -f2)
+CHANNEL=$(echo $CURRENT_TAG | cut -d'/' -f3)
+
+# exit if it's a linux container and a native build
+if [ "${TRAVIS_OS_NAME}" != "osx" && "${DEST}" == "native"]; then
+  echo "Not preparing app on ${TRAVIS_OS_NAME}"
+  exit 0
+fi
+
+# exit if it's an osx container and a web build
+if [ "${TRAVIS_OS_NAME}" == "osx" && "${DEST}" != "native"]; then
   echo "Not preparing app on ${TRAVIS_OS_NAME}"
   exit 0
 fi
