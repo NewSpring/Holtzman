@@ -39,12 +39,6 @@ APP=$(echo "$CURRENT_TAG" | cut -d'/' -f1)
 DEST=$(echo "$CURRENT_TAG" | cut -d'/' -f2)
 CHANNEL=$(echo "$CURRENT_TAG" | cut -d'/' -f3)
 
-echo "$APP"
-echo "$DEST"
-echo "$CHANNEL"
-
-exit 0
-
 # exit if it's a linux container and a native build
 if [ "${TRAVIS_OS_NAME}" != "osx" ] && [ "${DEST}" == "native" ]; then
   echo "Not deploying app on ${TRAVIS_OS_NAME}"
@@ -114,6 +108,9 @@ yecho "### Building for linux environment https://${CHANNEL}-${URLPREFIX}.newspr
 cd apollos && ${DEST^^}=true npm run compile && cd ..
 rm -rf sites/$APP/.meteor/local
 ${DEST^^}=true launch build $ROOT_URL $METEOR_SETTINGS_PATH
+
+yecho "### SO FAR SO GOOD"
+exit 0
 
 yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/newspring s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
