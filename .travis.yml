@@ -22,6 +22,6 @@ before_install:
 - rvm use 2.2.5
 script:
 # - "./scripts/test/apollos.sh"
-- "./scripts/prepare/app.sh"
+# - "./scripts/prepare/app.sh" XXX comment out for faster build times
 # - "./scripts/test/app.sh"
 - "./scripts/deploy/app.sh"
