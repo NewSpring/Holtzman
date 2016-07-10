@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
-if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   echo "This is a pull request. No deployment will be done."
   exit 0
 fi
 
-if [[ $TRAVIS_TAG == "" ]]; then
+if [ -z "$TRAVIS_TAG" ]; then
   echo "No tags found, no need for a release."
   exit 0
 fi
@@ -22,7 +22,7 @@ CURRENT_TAG=`git describe --exact-match --abbrev=0 --tags`
 PREVIOUS_TAG=`git describe HEAD^1 --abbrev=0 --tags`
 GIT_HISTORY=`git log --no-merges --format="- %s" $PREVIOUS_TAG..HEAD`
 
-if [[ $PREVIOUS_TAG == "" ]]; then
+if [ -z "$PREVIOUS_TAG" ]; then
   GIT_HISTORY=`git log --no-merges --format="- %s"`
 fi
 
@@ -59,7 +59,7 @@ cd sites/$APP
 
 yecho "### Creating settings for the $CHANNEL of $APP:$DEST"
 URLPREFIX="my"
-if [[ $DEST == "native" ]]; then URLPREFIX="native" fi
+if [ "$DEST" == "native" ]; then URLPREFIX="native" fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/${APP}/.remote/settings/sites/${APP}/${CHANNEL}.settings.json"
 ROOT_URL="https://${CHANNEL}-${URLPREFIX}.newspring.cc"
 ECS_TASK_NAME="$DEST" # XXX long term this should be $APP or maybe $APP-$DEST
@@ -78,7 +78,7 @@ yecho "### Installing jq ###"
 brew install jq
 
 yecho "### Deploying $APP:$DEST to $CHANNEL ###"
-if [[ $DEST == "native" ]]; then
+if [ "$DEST" == "native" ]; then
   yecho "### Installing Android sdks ###"
   brew install android-sdk
   echo export ANDROID_HOME=/usr/local/opt/android-sdk >> ~/.bashrc
@@ -159,8 +159,8 @@ register_definition() {
 deploy_cluster() {
   make_task_def
   register_definition
-  if [[ $(aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --task-definition $revision | \
-               $JQ '.service.taskDefinition') != $revision ]]; then
+  if [ $(aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --task-definition $revision | \
+               $JQ '.service.taskDefinition') != $revision ]; then
     echo "Error updating service."
     return 1
   fi
