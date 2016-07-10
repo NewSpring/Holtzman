@@ -70,7 +70,7 @@ if [ "$DEST" = "native" ] && [ "$CHANNEL" = "alpha" ]; then HOST_PORT=8062; fi
 if [ "$DEST" = "native" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8072; fi
 if [ "$DEST" = "native" ] && [ "$CHANNEL" = "prod" ]; then HOST_PORT=8082; fi
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8070; fi
-
+ENVDEST=$(echo $DEST | tr 'a-z' 'A-Z')
 
 
 
@@ -112,9 +112,9 @@ aws configure set default.region us-east-1
 
 
 yecho "### Building for linux environment https://${CHANNEL}-${URLPREFIX}.newspring.cc ###"
-cd apollos && ${DEST^^}=true npm run compile && cd ..
+cd ./apollos && $ENVDEST=true npm run compile && cd ..
 rm -rf sites/$APP/.meteor/local
-${DEST^^}=true launch build $ROOT_URL $METEOR_SETTINGS_PATH
+$ENVDEST=true launch build $ROOT_URL $METEOR_SETTINGS_PATH
 
 yecho "### SO FAR SO GOOD"
 exit 0
