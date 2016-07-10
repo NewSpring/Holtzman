@@ -232,7 +232,9 @@ export default class AudioControls extends Component {
       return (
         <button
           className="plain float-right"
-          onClick={this.toggle}>
+          onClick={this.toggle}
+          style={{marginTop: "4px"}} // fix icon height
+        >
           <i className={classes.join(" ")}></i>
         </button>
       )

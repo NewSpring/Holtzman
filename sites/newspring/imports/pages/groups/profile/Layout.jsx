@@ -107,7 +107,7 @@ export default ({ group, leaders, isLeader, join }) => (
               return (
                 <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
                   <h7 className="text-dark-secondary">
-                    Address {loc.location.distance ? `- ${loc.location.distance.toFixed(2)} miles away`: ""}
+                    Address {group.distance ? `- ${group.distance.toFixed(2)} miles away`: ""}
                   </h7>
                   <h5 className="text-dark-secondary soft-half-top flush-bottom">
                     {loc.location.city}, {loc.location.state}
