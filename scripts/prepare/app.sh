@@ -9,7 +9,7 @@ yecho () {
 set -e
 
 ### XXX how do we make this dynamic without tags?
-if [ "$TRAVIS_TAG" == "" ]; then
+if [ -z "$TRAVIS_TAG" ]; then
   echo "No tags found, no need for a build since we currently have no tests."
   exit 0
 fi
