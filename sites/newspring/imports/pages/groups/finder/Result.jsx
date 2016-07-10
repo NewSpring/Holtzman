@@ -98,7 +98,8 @@ export default class Template extends Component {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
 
     if (this.props.data.groups) {
-      this.setState({ groups: this.props.data.groups.results })
+      const markers = this.getMarkers(this.props.data.groups.results);
+      this.setState({ markers, groups: this.props.data.groups.results })
     }
   }
 
