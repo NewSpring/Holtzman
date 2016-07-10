@@ -40,13 +40,13 @@ DEST=$(echo "$CURRENT_TAG" | cut -d'/' -f2)
 CHANNEL=$(echo "$CURRENT_TAG" | cut -d'/' -f3)
 
 # exit if it's a linux container and a native build
-if [ "${TRAVIS_OS_NAME}" != "osx" ] && [ "${DEST}" == "native" ]; then
-  echo "Not deploying app on ${TRAVIS_OS_NAME}"
+if [ "$TRAVIS_OS_NAME" != "osx" ] && [ "$DEST" == "native" ]; then
+  echo "Not deploying app on $TRAVIS_OS_NAME"
   exit 0
 fi
 # exit if it's an osx container and a web build
-if [ "${TRAVIS_OS_NAME}" == "osx" ] && [ "${DEST}" != "native" ]; then
-  echo "Not deploying app on ${TRAVIS_OS_NAME}"
+if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$DEST" != "native" ]; then
+  echo "Not deploying app on $TRAVIS_OS_NAME"
   exit 0
 fi
 
@@ -64,14 +64,13 @@ ECS_FAMILY="$DEST"
 ECS_SERVICE="$CHANNEL-#DEST"
 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz"
 HOST_PORT=8080 # production newspring web
-if [ "${DEST}" == "native" ] && [ "${CHANNEL}" == "alpha" ]; then HOST_PORT=8062; fi
-if [ "${DEST}" == "native" ] && [ "${CHANNEL}" == "beta" ]; then HOST_PORT=8072; fi
-if [ "${DEST}" == "native" ] && [ "${CHANNEL}" == "prod" ]; then HOST_PORT=8082; fi
-if [ "${DEST}" == "web" ] && [ "${CHANNEL}" == "beta" ]; then HOST_PORT=8070; fi
+if [ "$DEST" == "native" ] && [ "$CHANNEL" == "alpha" ]; then HOST_PORT=8062; fi
+if [ "$DEST" == "native" ] && [ "$CHANNEL" == "beta" ]; then HOST_PORT=8072; fi
+if [ "$DEST" == "native" ] && [ "$CHANNEL" == "prod" ]; then HOST_PORT=8082; fi
+if [ "$DEST" == "web" ] && [ "$CHANNEL" == "beta" ]; then HOST_PORT=8070; fi
 
 
-yecho "### Installing jq ###"
-brew install jq
+
 
 yecho "### Deploying $APP:$DEST to $CHANNEL ###"
 if [ "$DEST" == "native" ]; then
@@ -90,10 +89,16 @@ if [ "$DEST" == "native" ]; then
   yecho "### Installing launch ###"
   npm install -g meteor-launch
   cp ./.remote/settings/sites/$APP/launch.json ./launch.json
+
+  yecho "### Installing python ###"
+  brew install python
+
+  yecho "### Installing jq ###"
+  brew install jq
+
 fi
 
 yecho "### Installing aws and boto3 ###"
-brew install python
 python --version
 sudo pip install awscli boto3
 
@@ -175,12 +180,12 @@ if [ "$DEST" == "web" ]; then
 fi
 
 yecho "### Deploying app bundle ###"
-if [ "${CHANNEL}" == "alpha" ]; then
+if [ "$CHANNEL" == "alpha" ]; then
   yecho "### Deploying to Hockey ###"
   launch hockey ROOT_URL $METEOR_SETTINGS_PATH
 fi
 
-if [ "${CHANNEL}" == "beta" ]; then
+if [ "$CHANNEL" == "beta" ]; then
   yecho "### Deploying to TestFlight ###"
   launch testflight ROOT_URL $METEOR_SETTINGS_PATH
 fi
