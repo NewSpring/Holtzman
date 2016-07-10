@@ -30,6 +30,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
             description
             photo
             kidFriendly
+            distance
             ageRange
             tags {
               id
@@ -37,7 +38,6 @@ const mapQueriesToProps = ({ ownProps }) => ({
             }
             locations {
               location {
-                distance
                 city
                 state
                 latitude
