@@ -201,7 +201,6 @@ export default class FullPlayer extends Component {
     const { album, track } = playing;
     const { images, colors, isLight } = album.content;
     const playlist = [ track ];
-    const isLightBool = isLight === "light";
 
     const bgImageStyle = {
       backgroundImage: 'url(' + this.getImageUrl(images) + ')'
@@ -245,12 +244,12 @@ export default class FullPlayer extends Component {
               artistName={track.artist || album.artist || "NewSpring"}
               albumTitle={album.title}
               isPlaying={state != "default"}
-              isLight={isLightBool}
+              isLight={isLight}
             />
 
             <AudioControls
               audio={this.props}
-              isLight={isLightBool}
+              isLight={isLight}
             />
 
           </div>
