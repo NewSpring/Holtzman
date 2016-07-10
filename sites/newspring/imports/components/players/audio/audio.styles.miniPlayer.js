@@ -6,7 +6,7 @@ export default StyleSheet.create({
     maxHeight: "50px",
     opacity: ".95",
     zIndex: "101",
-    marginBottom: "60px",
+    marginBottom: "52px",
   },
 
   "mini-album-cover": {
@@ -17,7 +17,7 @@ export default StyleSheet.create({
     position: "fixed",
     height: "50px",
     zIndex: "101",
-    marginBottom: "60px",
+    marginBottom: "52px",
   },
 
   "mini-player-stop h6": {
