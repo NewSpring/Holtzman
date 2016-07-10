@@ -112,9 +112,9 @@ aws configure set default.region us-east-1
 
 
 yecho "### Building for linux environment https://${CHANNEL}-${URLPREFIX}.newspring.cc ###"
-cd ./apollos && $ENVDEST=true npm run compile && cd ..
+cd ../../apollos && "$ENVDEST"=true npm run compile && cd ../
 rm -rf sites/$APP/.meteor/local
-$ENVDEST=true launch build $ROOT_URL $METEOR_SETTINGS_PATH
+"$ENVDEST"=true launch build $ROOT_URL $METEOR_SETTINGS_PATH
 
 yecho "### SO FAR SO GOOD"
 exit 0
