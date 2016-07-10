@@ -62,6 +62,7 @@ export default class ListDetail extends Component {
         this.props.dispatch(headerActions.statusBarColor("#303030"));
       }, 250);
       this.props.dispatch(navActions.setLevel("MODAL"));
+      this.props.dispatch(navActions.setColor("#202020", "dark"));
       this.setState({
         previousHeaderColor: this.props.header.content.color,
       });
