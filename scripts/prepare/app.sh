@@ -8,41 +8,7 @@ yecho () {
 # force script to error out at first error
 set -e
 
-CURRENT_TAG=`git describe --exact-match --abbrev=0 --tags`
-
-PREVIOUS_TAG=`git describe HEAD^1 --abbrev=0 --tags`
-GIT_HISTORY=`git log --no-merges --format="- %s" $PREVIOUS_TAG..HEAD`
-
-if [[ $PREVIOUS_TAG == "" ]]; then
-  GIT_HISTORY=`git log --no-merges --format="- %s"`
-fi
-
-
-yecho "Current Tag: $CURRENT_TAG"
-yecho "Previous Tag: $PREVIOUS_TAG"
-yecho "Release Notes:
-
-$GIT_HISTORY"
-
-APP=$(echo $CURRENT_TAG | cut -d'/' -f1)
-DEST=$(echo $CURRENT_TAG | cut -d'/' -f2)
-CHANNEL=$(echo $CURRENT_TAG | cut -d'/' -f3)
-
-echo $APP
-echo $DEST
-echo $CHANNEL
-
-# exit if it's a linux container and a native build
-if [ "${TRAVIS_OS_NAME}" != "osx" && "${DEST}" == "native"]; then
-  echo "Not preparing app on ${TRAVIS_OS_NAME}"
-  exit 0
-fi
-
-# exit if it's an osx container and a web build
-if [ "${TRAVIS_OS_NAME}" == "osx" && "${DEST}" != "native"]; then
-  echo "Not preparing app on ${TRAVIS_OS_NAME}"
-  exit 0
-fi
+### XXX how do we make this dynamic without tags?
 
 yecho "### Installing Meteor ###"
 if [ ! -d "$DIRECTORY" ]; then curl https://install.meteor.com | /bin/sh; fi

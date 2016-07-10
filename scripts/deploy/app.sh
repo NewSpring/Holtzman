@@ -1,8 +1,18 @@
 #!/usr/bin/env sh
+
+if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
+  echo "This is a pull request. No deployment will be done."
+  exit 0
+fi
+
+if [[ $TRAVIS_TAG == "" ]]; then
+  echo "No tags found, no need for a release."
+  exit 0
+fi
+
+
 YELLOW=`tput setaf 3`
-yecho () {
-  echo "${YELLOW}$1"
-}
+yecho () { echo "${YELLOW}$1" }
 
 # force script to error out at first error
 set -e
@@ -41,16 +51,6 @@ fi
 # exit if it's an osx container and a web build
 if [ "${TRAVIS_OS_NAME}" == "osx" && "${DEST}" != "native"]; then
   echo "Not deploying app on ${TRAVIS_OS_NAME}"
-  exit 0
-fi
-
-if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
-  echo "This is a pull request. No deployment will be done."
-  exit 0
-fi
-
-if [[ $TRAVIS_TAG == "" ]]; then
-  echo "No tags found, no need for a release."
   exit 0
 fi
 
