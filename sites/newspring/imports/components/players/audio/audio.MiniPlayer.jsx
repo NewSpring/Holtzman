@@ -202,7 +202,7 @@ export default class MiniPlayer extends Component {
           className={this.stopClasses()}
           style={{ left: `${-(100 - this.state.lastPercent)}%` }}
         >
-          <h6>
+          <h6 style={{marginTop: "6px"}}>
             Stop Music
             <i className="icon-close display-inline-block push-half-sides"></i>
           </h6>
