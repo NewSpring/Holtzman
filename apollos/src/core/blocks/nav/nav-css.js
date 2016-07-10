@@ -10,7 +10,6 @@ export default StyleSheet.create({
       display: "flex",
       justifyContent: "center",
       width: "100%",
-      borderTop: "2px solid #ddd",
     },
 
     "@media screen and (min-width: 769px)": {
@@ -22,6 +21,12 @@ export default StyleSheet.create({
       ":before": {
         content: "none",
       }
+    },
+  },
+
+  "nav-bar-border": {
+    "@media screen and (max-width: 768px)": {
+      borderTop: "2px solid #ddd",
     },
   },
 
