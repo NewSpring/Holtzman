@@ -31,9 +31,14 @@ export default class Right extends Component {
       "panel__item--right",
       "hard",
       "flush",
-      css(Hover.right),
-      "transition"
     ];
+
+    if (process.env.WEB) {
+      classes.push(
+        css(Hover.right),
+        "transition",
+      );
+    }
 
     if (this.props.mobile && !this.props.aspect) {
       classes.push("ratio--landscape@handheld")
