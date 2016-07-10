@@ -28,7 +28,7 @@ export default class NavLink extends Component {
     if (this.props.fgColor === "light") {
       classes.push("text-dark-secondary");
     } else {
-      classes.push("text-dark-primary");
+      classes.push("text-light-primary");
     }
 
     if (navItem.isActive && navItem.isActive(this.props)) {
