@@ -61,14 +61,16 @@ const discoverActive = (props) => {
   return discoverVisible && props.modal.visible;
 };
 
+let homeLink = "/";
+if (process.env.WEB) homeLink = "/give/now";
 let links = {
   TOP:[
     {
       id: 1,
       label: "Home",
-      link: "/",
+      link: homeLink,
       icon: "icon-logo",
-      isActive: (props) => (isEqual("/") && !props.modal.visible)
+      isActive: (props) => (isEqual(homeLink) && !props.modal.visible)
     },
     {
       id: 2,
