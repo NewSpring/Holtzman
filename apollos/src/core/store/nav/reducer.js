@@ -132,7 +132,8 @@ const initial = {
   level: "TOP",
   visible: true,
   links: links.TOP,
-  bgColor: "#202020",
+  // bgColor: "#202020",
+  bgColor: "#f7f7f7",
   fgColor: "light",
 };
 

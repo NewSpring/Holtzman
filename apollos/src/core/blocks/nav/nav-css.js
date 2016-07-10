@@ -10,12 +10,14 @@ export default StyleSheet.create({
       display: "flex",
       justifyContent: "center",
       width: "100%",
+      borderTop: "2px solid #ddd",
     },
 
     "@media screen and (min-width: 769px)": {
       position: "fixed",
       maxWidth: "80px",
       top: 0,
+      borderRight: "2px solid #ddd",
 
       ":before": {
         content: "none",
