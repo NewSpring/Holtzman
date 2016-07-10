@@ -119,10 +119,10 @@ if [ "$DEST" = "web" ]; then NATIVE=false; fi
 
 cd ../../apollos && WEB=$WEB NATIVE=$NATIVE npm run compile && cd ../
 rm -rf sites/$APP/.meteor/local
-WEB=$WEB NATIVE=$NATIVE launch build $ROOT_URL $METEOR_SETTINGS_PATH
+cd ./stites/$APP WEB=$WEB NATIVE=$NATIVE launch build $ROOT_URL $METEOR_SETTINGS_PATH
 
 yecho "### Uploading bundle to S3 ###"
-aws s3 cp .build/newspring s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+aws s3 cp .build/$APP s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
 yecho "### Updating ECS ###"
 # more bash-friendly output for jq
