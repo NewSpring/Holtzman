@@ -28,12 +28,10 @@ const mapQueriesToProps = ({ ownProps }) => ({
           entryId: id
           title
           channelName
-          status
           meta {
-            siteId
             date
-            channelId
             summary
+            urlTitle
           }
           content {
             images {
