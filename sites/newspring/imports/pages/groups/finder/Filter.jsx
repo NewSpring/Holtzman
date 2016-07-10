@@ -116,8 +116,8 @@ export default class Filter extends Component {
                   onChange={(e) => this.inputOnChange(e)}
                 />
 
-                <div className="one-whole text-left">
-                  <h6><em>Find a group by zipcode, name, or description</em></h6>
+              <div className="one-whole text-left">
+                  <h6><em>Find a group by zipcode, name, campus, or description</em></h6>
                 </div>
               </Forms.Form>
 
