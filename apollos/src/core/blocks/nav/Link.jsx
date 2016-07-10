@@ -26,7 +26,7 @@ export default class NavLink extends Component {
     ];
 
     if (this.props.fgColor === "light") {
-      classes.push("text-light-primary");
+      classes.push("text-dark-secondary");
     } else {
       classes.push("text-dark-primary");
     }
@@ -48,10 +48,6 @@ export default class NavLink extends Component {
       "locked-ends@handheld",
       "locked-sides@handheld",
     ];
-
-    if (navItem.label && process.env.WEB) {
-      classes.push("soft-half-top@handheld");
-    }
 
     return classes.join(" ");
   }
@@ -97,10 +93,10 @@ export default class NavLink extends Component {
     const iconClasses = `${icon} display-block ${css(styles.i)}`;
     let { navItem } = this.props
 
-    let itemStyle = {}
+    let itemStyle = { marginBottom: "-2px" };
     if (process.env.NATIVE && icon === "icon-groups") {
       itemStyle.fontSize = "2.5em";
-      itemStyle.lineHeight = "1.6em"
+      itemStyle.lineHeight = "1.5em"
     }
     if (process.env.WEB && icon === "icon-groups") {
       itemStyle.fontSize = "2.5em";
@@ -108,20 +104,25 @@ export default class NavLink extends Component {
       itemStyle.marginTop = "-9px"
     }
 
+    let containerStyles = {}
+    if (process.env.WEB) {
+      containerStyles = { paddingTop: "8px" };
+    }
+
     return (
       <button
         className={this.linkClasses()}
         onClick={this.handleAction}
-        style={{minHeight: "60px"}}
+        style={{minHeight: "50px"}}
       >
-        <div className={this.containerClasses()}>
+        <div className={this.containerClasses()} style={containerStyles}>
           <div className="floating__item">
             <i className={iconClasses} style={itemStyle}></i>
             {(() => {
               if (navItem.label && process.env.WEB) {
                 return (
                   <h7 className="display-block">
-                    <small className="text-center">{navItem.label}</small>
+                    <small className="text-center text-dark-secondary">{navItem.label}</small>
                   </h7>
                 )
               }
