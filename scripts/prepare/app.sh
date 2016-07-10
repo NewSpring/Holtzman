@@ -1,19 +1,18 @@
 #!/usr/bin/env sh
 
-# force script to error out at first error
-set -e
-
-# exit if it's a linux container
-if [ "${TRAVIS_OS_NAME}" != "osx" ]; then
-  echo "Not preparing app on ${TRAVIS_OS_NAME}"
-  exit 0
-fi
-
 YELLOW=`tput setaf 3`
 yecho () {
   echo "${YELLOW}$1"
 }
 
+# force script to error out at first error
+set -e
+
+### XXX how do we make this dynamic without tags?
+if [ -z "$TRAVIS_TAG" ]; then
+  echo "No tags found, no need for a build since we currently have no tests."
+  exit 0
+fi
 
 yecho "### Installing Meteor ###"
 if [ ! -d "$DIRECTORY" ]; then curl https://install.meteor.com | /bin/sh; fi
@@ -26,13 +25,10 @@ npm link
 yecho "### Apollos Setup ###"
 meteor npm run apollos setup newspring
 
-yecho "### Apollos Compile ###"
-cd apollos
-npm run compile
-
 yecho "### Settings Grab ###"
-cd ../sites/newspring/.remote
+cd sites/newspring/.remote
 git clone git@github.com:NewSpring/ops-settings.git settings
+cd settings && git checkout refactor # temp until confirmed working
 
 # yecho "### Preparing Gagarin test build ###"
 # npm install -g gagarin

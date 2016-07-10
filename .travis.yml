@@ -1,3 +1,4 @@
+sudo: required # force to run in container
 os:
 - linux
 - osx
