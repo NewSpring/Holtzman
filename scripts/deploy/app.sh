@@ -11,19 +11,21 @@ if [ -z "$TRAVIS_TAG" ]; then
 fi
 
 
-YELLOW=`tput setaf 3`
-yecho () { echo "${YELLOW}$1" }
+YELLOW=$(tput setaf 3)
+yecho () {
+        echo "${YELLOW}$1"
+}
 
 # force script to error out at first error
 set -e
 
-CURRENT_TAG=`git describe --exact-match --abbrev=0 --tags`
+CURRENT_TAG=$(git describe --exact-match --abbrev=0 --tags)
 
-PREVIOUS_TAG=`git describe HEAD^1 --abbrev=0 --tags`
-GIT_HISTORY=`git log --no-merges --format="- %s" $PREVIOUS_TAG..HEAD`
+PREVIOUS_TAG=$(git describe HEAD^1 --abbrev=0 --tags)
+GIT_HISTORY=$(git log --no-merges --format="- %s" "$PREVIOUS_TAG"..HEAD)
 
 if [ -z "$PREVIOUS_TAG" ]; then
-  GIT_HISTORY=`git log --no-merges --format="- %s"`
+  GIT_HISTORY=$(git log --no-merges --format="- %s")
 fi
 
 
@@ -33,33 +35,33 @@ yecho "Release Notes:
 
 $GIT_HISTORY"
 
-APP=$(echo $CURRENT_TAG | cut -d'/' -f1)
-DEST=$(echo $CURRENT_TAG | cut -d'/' -f2)
-CHANNEL=$(echo $CURRENT_TAG | cut -d'/' -f3)
+APP=$(echo "$CURRENT_TAG" | cut -d'/' -f1)
+DEST=$(echo "$CURRENT_TAG" | cut -d'/' -f2)
+CHANNEL=$(echo "$CURRENT_TAG" | cut -d'/' -f3)
 
-echo $APP
-echo $DEST
-echo $CHANNEL
+echo "$APP"
+echo "$DEST"
+echo "$CHANNEL"
 
 exit 0
 
 # exit if it's a linux container and a native build
-if [ "${TRAVIS_OS_NAME}" != "osx" && "${DEST}" == "native"]; then
+if [ "${TRAVIS_OS_NAME}" != "osx" ] && [ "${DEST}" == "native" ]; then
   echo "Not deploying app on ${TRAVIS_OS_NAME}"
   exit 0
 fi
 # exit if it's an osx container and a web build
-if [ "${TRAVIS_OS_NAME}" == "osx" && "${DEST}" != "native"]; then
+if [ "${TRAVIS_OS_NAME}" == "osx" ] && [ "${DEST}" != "native" ]; then
   echo "Not deploying app on ${TRAVIS_OS_NAME}"
   exit 0
 fi
 
 yecho "### Entering app directory ###"
-cd sites/$APP
+cd "sites/$APP"
 
 yecho "### Creating settings for the $CHANNEL of $APP:$DEST"
 URLPREFIX="my"
-if [ "$DEST" == "native" ]; then URLPREFIX="native" fi
+if [ "$DEST" == "native" ]; then URLPREFIX="native"; fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/${APP}/.remote/settings/sites/${APP}/${CHANNEL}.settings.json"
 ROOT_URL="https://${CHANNEL}-${URLPREFIX}.newspring.cc"
 ECS_TASK_NAME="$DEST" # XXX long term this should be $APP or maybe $APP-$DEST
@@ -68,10 +70,10 @@ ECS_FAMILY="$DEST"
 ECS_SERVICE="$CHANNEL-#DEST"
 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz"
 HOST_PORT=8080 # production newspring web
-if [ "${DEST}" == "native" && "${CHANNEL}" == "alpha" ]; then HOST_PORT=8062 fi
-if [ "${DEST}" == "native" && "${CHANNEL}" == "beta" ]; then HOST_PORT=8072 fi
-if [ "${DEST}" == "native" && "${CHANNEL}" == "prod" ]; then HOST_PORT=8082 fi
-if [ "${DEST}" == "web" && "${CHANNEL}" == "beta" ]; then HOST_PORT=8070 fi
+if [ "${DEST}" == "native" ] && [ "${CHANNEL}" == "alpha" ]; then HOST_PORT=8062; fi
+if [ "${DEST}" == "native" ] && [ "${CHANNEL}" == "beta" ]; then HOST_PORT=8072; fi
+if [ "${DEST}" == "native" ] && [ "${CHANNEL}" == "prod" ]; then HOST_PORT=8082; fi
+if [ "${DEST}" == "web" ] && [ "${CHANNEL}" == "beta" ]; then HOST_PORT=8070; fi
 
 
 yecho "### Installing jq ###"
