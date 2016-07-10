@@ -37,7 +37,7 @@ export default class AudioPlayer extends Component {
       this.props.dispatch(navActions.setLevel("DOWN"));
       const { isLight } = this.props.audio.playing.album.content;
       // reverse is light so it makes sense for foreground
-      const fgColor = isLight === "light" ? "dark" : "light";
+      const fgColor = isLight ? "light" : "dark";
       this.props.dispatch(navActions.setColor("transparent", fgColor));
     };
 
