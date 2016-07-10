@@ -62,16 +62,17 @@ export default ({ group, leaders, isLeader, join }) => (
           <h5 className="flush-bottom push-half-bottom@handheld push-half-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-secondary">#TheseAreMyPeople</h5>
           <div className="grid__item text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
             {(() => {
+              let className = "flush-bottom push-half-bottom@handheld btn";
               if (isLeader) {
                 return (
-                  <a target="_blank" href={`${Meteor.settings.public.rock.baseURL}groups/leader?GroupId=${group.entityId}`}>
+                  <a target="_blank" className={className} href={`${Meteor.settings.public.rock.baseURL}groups/leader?GroupId=${group.entityId}`}>
                     Manage Group
                   </a>
                 )
               }
 
               return (
-                <button onClick={() => join()} className="flush-bottom push-half-bottom@handheld btn">
+                <button onClick={() => join()} className={className}>
                   Join Group
                 </button>
               );
