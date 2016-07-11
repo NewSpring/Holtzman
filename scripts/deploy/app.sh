@@ -61,7 +61,7 @@ if [ "$DEST" = "native" ]; then URLPREFIX="native"; fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
 ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.cc"
 ECS_TASK_NAME="$DEST" # XXX long term this should be $APP or maybe $APP-$DEST
-ECS_CLUSTER=apollos # XXX move to Guild
+ECS_CLUSTER="apollos" # XXX move to Guild
 ECS_FAMILY="$DEST"
 ECS_SERVICE="$CHANNEL-$DEST"
 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz"
