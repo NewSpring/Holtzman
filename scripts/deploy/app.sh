@@ -60,18 +60,28 @@ URLPREFIX="my"
 if [ "$DEST" = "native" ]; then URLPREFIX="native"; fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
 ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.cc"
-ECS_TASK_NAME="$DEST" # XXX long term this should be $APP or maybe $APP-$DEST
+
 ECS_CLUSTER="apollos" # XXX move to Guild
-ECS_FAMILY="$DEST"
 ECS_SERVICE="$CHANNEL-$DEST"
+ECS_TASK_FAMILY="$DEST"
+ECS_TASK_NAME=""
+if [ "$DEST" = "web" ]; then
+  ECS_TASK_FAMILY="newwwspring"
+  ECS_SERVICE="$CHANNEL-$DEST"
+  ECS_TASK_NAME="apollos"
+fi
+if [ "$DEST" = "native" ]; then
+  ECS_TASK_FAMILY="app"
+  ECS_SERVICE="$CHANNEL-app"
+  ECS_TASK_NAME="app"
+fi
+
 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz"
 HOST_PORT=8080 # production newspring web
 if [ "$DEST" = "native" ] && [ "$CHANNEL" = "alpha" ]; then HOST_PORT=8062; fi
 if [ "$DEST" = "native" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8072; fi
 if [ "$DEST" = "native" ] && [ "$CHANNEL" = "prod" ]; then HOST_PORT=8082; fi
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8070; fi
-ENVDEST=$(echo $DEST | tr 'a-z' 'A-Z')
-
 
 
 yecho "### Deploying $APP:$DEST to $CHANNEL ###"
@@ -162,7 +172,7 @@ make_task_def() {
 }
 
 register_definition() {
-  if revision=$(aws ecs register-task-definition --container-definitions "$task_template" --family $ECS_FAMILY | $JQ '.taskDefinition.taskDefinitionArn'); then
+  if revision=$(aws ecs register-task-definition --container-definitions "$task_template" --family $ECS_TASK_FAMILY | $JQ '.taskDefinition.taskDefinitionArn'); then
     yecho "Revision: $revision"
   else
     echo "Failed to register task definition"
