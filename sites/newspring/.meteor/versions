@@ -17,6 +17,7 @@ callback-hook@1.0.9
 check@1.2.3
 chuangbo:cookie@1.1.0
 coffeescript@1.1.2_1
+crosswalk@1.6.2
 ddp@1.2.5
 ddp-client@1.2.8_1
 ddp-common@1.2.6
