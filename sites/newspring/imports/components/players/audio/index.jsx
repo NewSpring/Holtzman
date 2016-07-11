@@ -86,7 +86,7 @@ export default class AudioPlayer extends Component {
     const { file } = track;
 
     const show = [ "dock", "fade" ];
-    return (show.includes(visibility) && file)
+    return (show.indexOf(visibility) >= 0 && file)
   };
 
   render () {
