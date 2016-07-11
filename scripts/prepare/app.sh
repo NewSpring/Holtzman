@@ -14,6 +14,22 @@ if [ -z "$TRAVIS_TAG" ]; then
   exit 0
 fi
 
+CURRENT_TAG=$(git describe --exact-match --abbrev=0 --tags)
+APP=$(echo "$CURRENT_TAG" | cut -d'/' -f1)
+DEST=$(echo "$CURRENT_TAG" | cut -d'/' -f2)
+CHANNEL=$(echo "$CURRENT_TAG" | cut -d'/' -f3)
+
+# exit if it's a linux container and a native build
+if [ "$TRAVIS_OS_NAME" != "osx" ] && [ "$DEST" = "native" ]; then
+  echo "Not deploying app on $TRAVIS_OS_NAME"
+  exit 0
+fi
+# exit if it's an osx container and a web build
+if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$DEST" != "native" ]; then
+  echo "Not deploying app on $TRAVIS_OS_NAME"
+  exit 0
+fi
+
 yecho "### Installing Meteor ###"
 if [ ! -d "$DIRECTORY" ]; then curl https://install.meteor.com | /bin/sh; fi
 export PATH=$PATH:$HOME/.meteor
