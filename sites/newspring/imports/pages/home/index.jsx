@@ -21,30 +21,37 @@ import HomeHero from "./home.Hero"
 const mapQueriesToProps = ({ ownProps, state }) => ({
   data: {
     query: gql`
-      query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!){
-        feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
-          entryId: id
-          title
-          channelName
-          status
-          meta {
-            siteId
-            date
-            channelId
+      fragment ContentForFeed on Content {
+        entryId: id
+        title
+        channelName
+        status
+        meta {
+          siteId
+          date
+          channelId
+        }
+        content {
+          images {
+            fileName
+            fileType
+            fileLabel
+            s3
+            cloudfront
           }
-          content {
-            images {
-              fileName
-              fileType
-              fileLabel
-              s3
-              cloudfront
-            }
-            colors {
-              id
-              value
-              description
-            }
+          colors {
+            id
+            value
+            description
+          }
+        }
+      }
+
+      query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
+        feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
+          ...ContentForFeed
+          parent {
+            ...ContentForFeed
           }
         }
       }
@@ -121,9 +128,13 @@ export default class Home extends Component {
     if (feed) {
       heroItem = feed[0];
       heroLink = Helpers.content.links(heroItem);
-      photo = Helpers.backgrounds.image(heroItem)
-    }
+      if (heroItem.channelName === "sermons") {
+        photo = Helpers.backgrounds.image(heroItem.parent)
+      } else {
+        photo = Helpers.backgrounds.image(heroItem)
+      }
 
+    }
     return (
       <VelocityComponent
           animation={"transition.fadeIn"}
