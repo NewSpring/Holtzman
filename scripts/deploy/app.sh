@@ -135,7 +135,8 @@ if [ "$DEST" = "web" ]; then
   meteor remove-platform android
   meteor remove-platform ios
 fi
-WEB=$WEB NATIVE=$NATIVE launch build $ROOT_URL $METEOR_SETTINGS_PATH
+# XXX pass env vars through launch
+WEB=$WEB NATIVE=$NATIVE meteor build .build --architecture os.linux.x86_64 --server $ROOT_URL --mobile-settings $METEOR_SETTINGS_PATH
 
 yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/$APP.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
