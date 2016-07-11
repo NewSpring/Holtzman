@@ -122,21 +122,37 @@ aws configure set default.region us-east-1
 
 
 yecho "### Building for linux environment https://$CHANNEL-$URLPREFIX.newspring.cc ###"
-WEB=true
-NATIVE=true
-if [ "$DEST" = "native" ]; then WEB=false; fi
-if [ "$DEST" = "web" ]; then NATIVE=false; fi
 
-cd ../../apollos && WEB=$WEB NATIVE=$NATIVE npm run compile && cd ../
-rm -rf sites/$APP/.meteor/local
-cd ./sites/$APP
-if [ "$DEST" = "web" ]; then
+if [ "$DEST" = "native" ]; then
+  yecho "### Building apollos for $DEST"
+  cd ../../apollos && NATIVE=true npm run compile && cd ../
+  rm -rf sites/$APP/.meteor/local
+
   yecho "### Removing cordova platforms ###"
+  cd ./sites/$APP
   meteor remove-platform android
   meteor remove-platform ios
+
+  yecho "### Building meteor for env $DEST ###"
+  # XXX pass env vars through launch
+  NATIVE=true meteor build .build --architecture os.linux.x86_64 --server $ROOT_URL --mobile-settings $METEOR_SETTINGS_PATH
 fi
-# XXX pass env vars through launch
-WEB=$WEB NATIVE=$NATIVE meteor build .build --architecture os.linux.x86_64 --server $ROOT_URL --mobile-settings $METEOR_SETTINGS_PATH
+if [ "$DEST" = "web" ]; then
+  yecho "### Building apollos for $DEST"
+  cd ../../apollos && WEB=true npm run compile && cd ../
+  rm -rf sites/$APP/.meteor/local
+
+  yecho "### Removing cordova platforms ###"
+  cd ./sites/$APP
+  meteor remove-platform android
+  meteor remove-platform ios
+
+  yecho "### Building meteor for env $DEST ###"
+  # XXX pass env vars through launch
+  WEB=true meteor build .build --architecture os.linux.x86_64 --server $ROOT_URL --mobile-settings $METEOR_SETTINGS_PATH
+fi
+
+
 
 yecho "### Uploading bundle to S3 ###"
 aws s3 cp .build/$APP.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
