@@ -11,31 +11,23 @@ export default class FeedItem extends Component {
   }
 
   isSeriesItem = () => {
-    return (
-      this.props.item.channelName === "series_newspring" ||
-        this.props.item.channelName === "sermons"
-    )
+    const { channelName } = this.props.item;
+    return (channelName === "series_newspring" || channelName === "sermons")
   }
 
   getImage = (item) => {
-    if (item.channelName === "sermons") {
-      // if (item.content.images.length > 0) return Helpers.backgrounds.image(item);
-      // const series = Collections.findOne({ entryId: item.collectionId });
-      // if (series) return Helpers.backgrounds.image(series);
+    if (item.channelName === "sermons" && item.parent) {
+      if (item.content.images.length > 0) return Helpers.backgrounds.image(item);
+      return Helpers.backgrounds.image(item.parent);
     }
-    else {
-      return Helpers.backgrounds.image(item)
-    }
+    return Helpers.backgrounds.image(item)
   }
 
   overlayStyles = (item) => {
     if (item.channelName === "sermons") {
-      // const series = Collections.findOne({ entryId: item.collectionId });
-      // if (series) return Helpers.styles.overlay(series);
+      return Helpers.styles.overlay(item.parent);
     }
-    else {
-      return Helpers.styles.overlay(item)
-    }
+    return Helpers.styles.overlay(item)
   }
 
   cardClasses = (item) => {
@@ -44,17 +36,15 @@ export default class FeedItem extends Component {
     if (this.isSeriesItem()) {
       let collection;
       if (item.channelName === "sermons") {
-        // collection = Collections.findOne({ entryId: item.collectionId });
+        collection = this.props.item.parent;
       } else {
         collection = this.props.item;
       }
 
-      // if (collection) {
-      //   const collectionClass = Helpers.collections.classes(collection);
-      //   if (collectionClass) {
-      //     classes.push(Helpers.collections.classes(collection));
-      //   }
-      // }
+      if (collection) {
+        const collectionClass = Helpers.collections.classes(collection);
+        if (collectionClass) classes.push(Helpers.collections.classes(collection));
+      }
 
       classes = classes.concat([
         "overlay--gradient",

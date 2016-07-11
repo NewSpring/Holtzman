@@ -42,7 +42,7 @@ const Likeable = {
 
   updateRedux: function(entry) {
     this.props.dispatch(likedActions.toggle({
-      entryId: entry.id
+      entryId: entry.id || entry.entryId
     }));
   },
 
@@ -51,8 +51,8 @@ const Likeable = {
 
     // find existing like
     const foundLike = Likes.findOne({
-      userId: Meteor.user()._id,
-      entryId: entry.id
+      userId: Meteor.userId(),
+      entryId: entry.id || entry.entryId
     });
 
     // update database
@@ -61,7 +61,7 @@ const Likeable = {
     } else {
       Likes.insert({
         userId: Meteor.userId(),
-        entryId: entry.id,
+        entryId: entry.id || entry.entryId,
         title: entry.title,
         image: entry.channelName === "sermons" ?
           Helpers.backgrounds.image(this.props.series.content) :
