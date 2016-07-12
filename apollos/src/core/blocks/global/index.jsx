@@ -9,6 +9,7 @@ import Modal from "../modal"
 import Meta from "../../components/meta"
 import Nav from "../nav"
 import Header from "../../components/header";
+import Live from "../../components/live";
 
 import {
   accounts as accountsActions,
@@ -35,7 +36,7 @@ export const App = ({ children, className }) => {
       <div className={className}>
         <Meta />
         {(() => { if (process.env.NATIVE) return <Header />; })()}
-        {/*<LivePlayer/>*/}
+        {(() => { if (process.env.NATIVE) return <Live />; })()}
         <div data-status-scroll={true}>
           {children}
         </div>
