@@ -21,32 +21,15 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 @connect({ mapQueriesToProps })
 export default class Live extends Component {
   render () {
-    // const { live } = this.props.data;
+    const { live, streamUrl } = this.props.data;
 
     return (
       <div
-        className="locked-top locked-sides background--secondary text-center"
-        style={{
-          zIndex: 999,
-          opacity: .9,
-          paddingTop: "5px",
-          paddingBottom: "5px",
-          top: "45px",
-        }}
+        className="background--secondary text-center soft-half-ends"
       >
-        <p className="text-light-primary flush hard"><small><em>
-          Streaming Live - Watch Now
-          <span
-            className="icon-arrow-next"
-            style={{
-              display: "12px",
-              fontSize: "12px",
-              marginLeft: "7px",
-            }}
-          >
-
-          </span>
-        </em></small></p>
+        <h7 className="text-light-primary flush hard">
+          NewSpring Church Live, Watch Now!
+        </h7>
       </div>
     )
   }
