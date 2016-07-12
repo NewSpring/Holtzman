@@ -44,6 +44,5 @@ export default StyleSheet.create({
   },
   "live-text": {
     ...textAnimation,
-    color: "white",
   }
 });

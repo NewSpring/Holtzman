@@ -45,6 +45,7 @@ export default class Live extends Component {
     const classes = [
       "flush",
       "hard",
+      "text-light-primary",
       css(Styles["live-text"])
     ];
 
