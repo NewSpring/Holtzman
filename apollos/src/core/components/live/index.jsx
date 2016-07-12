@@ -7,22 +7,13 @@ const mapQueriesToProps = ({ ownProps, state }) => {
     data: {
       query: gql`query IsLive {
         live {
-          title
           live
-          media {
-            streamUrl
-          }
-          content {
-            description
-            body
-            images {
-              cloudfront
-            }
-          }
+          streamUrl
         }
       }`,
       forceFetch: false,
       returnPartialData: false,
+      pollInterval: 60000,
     },
   };
 };
@@ -30,7 +21,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
 @connect({ mapQueriesToProps })
 export default class Live extends Component {
   render () {
-    const { live } = this.props.data;
+    // const { live } = this.props.data;
 
     return (
       <div
