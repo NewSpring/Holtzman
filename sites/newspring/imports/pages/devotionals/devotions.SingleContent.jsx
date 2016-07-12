@@ -33,6 +33,9 @@ export default class DevotionsSingleContent extends Component {
     return (
       <section
         className={this.getClasses()}
+        style={{
+          transition: "0.7s margin",
+        }}
         data-status-scroll-item={true}
       >
           <div
