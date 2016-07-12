@@ -9,6 +9,7 @@ import search from "./search";
 import sections from "./sections";
 import share from "./share";
 import liked from "./liked";
+import live from "./live";
 import topics from "./topics";
 
 let header;
@@ -28,6 +29,7 @@ export {
   sections,
   share,
   liked,
+  live,
   topics,
   header,
 
