@@ -29,7 +29,6 @@ export default class Live extends Component {
 
   getClasses = () => {
     const classes = [
-      "background--secondary",
       "text-center",
       "soft-half-ends",
       css(Styles["live-banner"])
@@ -38,6 +37,16 @@ export default class Live extends Component {
     if (this.props.live.float) {
       classes.push(css(Styles["live-float"]));
     }
+
+    return classes.join(" ");
+  }
+
+  getTextClasses = () => {
+    const classes = [
+      "flush",
+      "hard",
+      css(Styles["live-text"])
+    ];
 
     return classes.join(" ");
   }
@@ -58,7 +67,7 @@ export default class Live extends Component {
               className={this.getClasses()}
               style={interpolatingStyle}
             >
-              <h7 className="text-light-primary flush hard">
+              <h7 className={this.getTextClasses()}>
                 NewSpring Church Live, Watch Now!
               </h7>
             </div>
