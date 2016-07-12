@@ -32,6 +32,7 @@ export default class Live extends Component {
       "background--secondary",
       "text-center",
       "soft-half-ends",
+      css(Styles["live-banner"])
     ];
 
     if (this.props.live.float) {
