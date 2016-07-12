@@ -39,10 +39,6 @@ export default StyleSheet.create({
     width: "100%",
     zIndex: 1,
   },
-  "live-banner": {
-    ...animation,
-  },
-  "live-text": {
-    ...textAnimation,
-  }
+  "live-banner": animation,
+  "live-text": textAnimation,
 });
