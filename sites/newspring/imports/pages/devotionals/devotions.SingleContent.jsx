@@ -11,6 +11,20 @@ export default class DevotionsSingleContent extends Component {
     devotion: PropTypes.object.isRequired
   }
 
+  getClasses = () => {
+    let classes = [
+      "hard-sides",
+      "hard-top",
+      "background--light-primary",
+    ];
+
+    if (this.props.classes) {
+      classes = classes.concat(this.props.classes);
+    }
+
+    return classes.join(" ");
+  }
+
   render() {
 
     const devotion = this.props.devotion;
@@ -18,7 +32,7 @@ export default class DevotionsSingleContent extends Component {
     // `data-status-scroll-container` is set in the react-swipe-views module
     return (
       <section
-        className="hard-sides hard-top background--light-primary"
+        className={this.getClasses()}
         data-status-scroll-item={true}
       >
           <div
