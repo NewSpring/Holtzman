@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 
+import liveActions from "apollos/dist/core/store/live"
 import Discover from "apollos/dist/core/blocks/discover";
 
 const mapStateToProps = (state) => ({ audio: state.audio });
@@ -12,6 +13,14 @@ class Template extends Component {
     return {
       paddingBottom: this.props.audio.state === "default" ? "20px" : "60px",
     }
+  }
+
+  componentWillMount() {
+    this.props.dispatch(liveActions.hide());
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(liveActions.show());
   }
 
   render() {
