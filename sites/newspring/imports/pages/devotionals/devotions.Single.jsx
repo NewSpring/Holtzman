@@ -88,6 +88,7 @@ export default class SeriesSingle extends Component {
     event.preventDefault();
     this.setState({
       selectedIndex: 1,
+      liveSet: false,
       livePush: false,
     });
   }
@@ -95,7 +96,11 @@ export default class SeriesSingle extends Component {
   componentWillMount() {
     if (process.env.WEB) return;
 
-    this.handleLiveBar();
+    // hide the live bar and then bring it back
+    // after the view has faded in. this prevents
+    // an issue with the z-index and the arrow
+    // from the header.
+    this.props.dispatch(liveActions.hide());
 
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
@@ -107,29 +112,40 @@ export default class SeriesSingle extends Component {
   }
 
   componentWillUnmount() {
+    if (process.env.WEB) return;
     this.props.dispatch(liveActions.unfloat());
   }
 
-  // hide the live bar and then bring it back
-  // after the view has faded in. this prevents
-  // an issue with the z-index and the arrow
-  // from the header.
-  //
-  // also, apply float styles to the bar so it
+  // if has scripture and live re-enabled
+  // the live bar
+  // else apply float styles to the bar so it
   // will display below the fixed header
-  handleLiveBar = () => {
+  componentWillUpdate(nextProps, nextState) {
+    const { liveSet } = nextState;
+    const { content } = nextProps.devotion;
     // XXX
-    // handle case when there's no scripture
-    // if (!this.props.live.live) return;
-    if (!true) return;
-    this.props.dispatch(liveActions.hide());
-    this.props.dispatch(liveActions.float());
-    setTimeout(() => {
-      this.setState({
-        livePush: true,
-      });
-      this.props.dispatch(liveActions.show());
-    }, 1000);
+    // const { live } = nextProps.live;
+    const live = true;
+
+    if (liveSet || !live || !content) return;
+
+    this.setState({
+      liveSet: true,
+    });
+
+    if (content.content.scripture) {
+      this.props.dispatch(liveActions.float());
+      setTimeout(() => {
+        this.setState({
+          livePush: true,
+        });
+        this.props.dispatch(liveActions.show());
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        this.props.dispatch(liveActions.show());
+      }, 1000);
+    }
   }
 
   getLiveClasses = () => {
