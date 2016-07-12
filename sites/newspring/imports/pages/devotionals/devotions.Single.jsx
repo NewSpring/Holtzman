@@ -71,7 +71,6 @@ const mapQueriesToProps = ({ ownProps, state }) => {
       }`,
       forceFetch: false,
       returnPartialData: false,
-      pollInterval: 60000,
     },
   };
 };
