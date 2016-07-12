@@ -2,6 +2,7 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 import { css } from "aphrodite";
+import { Motion, spring } from "react-motion";
 
 import Styles from "./live-css";
 
@@ -46,13 +47,23 @@ export default class Live extends Component {
     if (!this.props.live.show) return <div />
 
     return (
-      <div
-        className={this.getClasses()}
+      <Motion
+        defaultStyle={{height: 0}}
+        style={{height: spring(40)}}
       >
-        <h7 className="text-light-primary flush hard">
-          NewSpring Church Live, Watch Now!
-        </h7>
-      </div>
+        {interpolatingStyle => {
+          return (
+            <div
+              className={this.getClasses()}
+              style={interpolatingStyle}
+            >
+              <h7 className="text-light-primary flush hard">
+                NewSpring Church Live, Watch Now!
+              </h7>
+            </div>
+          );
+        }}
+      </Motion>
     )
   }
 }
