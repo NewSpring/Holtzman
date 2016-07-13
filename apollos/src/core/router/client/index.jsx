@@ -15,12 +15,6 @@ export function run(routes, clientOptions = {}){
 
   Meteor.startup(() => {
 
-    if (typeof FastRender !== "undefined") {
-      InjectData.getData('fast-render-data', function(payload) {
-        FastRender.init(payload);
-      });
-    }
-
     let rootElement = document.getElementById(rootElementName);
 
     // In case the root element doesn't exist, let's create it
