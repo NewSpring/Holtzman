@@ -66,7 +66,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
       query: gql`query IsLive {
         live {
           live
-          streamUrl
+          embedCode
         }
       }`,
       forceFetch: false,
