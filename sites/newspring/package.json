@@ -64,9 +64,7 @@
       },
       "./packages": {
         "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#432a60bded46edd02561e87b6a947b88072e9c68",
-        "fetch": "https://github.com/NewSpring/meteor-fetch.git#95db94933bc332f9e9b4c02a555c86b5522893bd",
-        "fast-render": "https://github.com/NewSpring/fast-render.git#cc69abec95fdee6ac09c143276c50726a11982f0",
-        "micro-minfier-js": "https://github.com/NewSpring/micro-minifer-js.git#bcc1d9f745d256e225ddb9a8955f9ab2d8ee32ee"
+        "fetch": "https://github.com/NewSpring/meteor-fetch.git#95db94933bc332f9e9b4c02a555c86b5522893bd"
       }
     }
   },
