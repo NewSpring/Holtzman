@@ -30,6 +30,6 @@ promise
 force-ssl
 
 anti:gagarin
-meteorhacks:fast-render
+meteorhacks:fast-render@2.12.0
 # nathantreid:css-modules
 crosswalk

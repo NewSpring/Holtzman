@@ -11,7 +11,6 @@ export default class NavLink extends Component {
     navItem: PropTypes.object.isRequired
   }
 
-
   linkClasses = () => {
 
     const { navItem } = this.props
