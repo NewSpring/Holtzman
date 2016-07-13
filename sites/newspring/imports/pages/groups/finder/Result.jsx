@@ -174,7 +174,7 @@ export default class Template extends Component {
           {/* Map */}
           <Right mobile={false} classes={["background--left"]}>
             {(() => {
-              if (isMobile) return null;
+              if (isMobile || Meteor.isServer) return null;
               return (
                 <GoogleMap
                   autoCenter={true}
