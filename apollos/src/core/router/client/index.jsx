@@ -69,9 +69,6 @@ export function run(routes, clientOptions = {}){
     ReactDOM.render(app, rootElement);
 
     let collectorEl = document.getElementById(clientOptions.styleCollectorId || 'css-style-collector-data')
-
-    if (collectorEl) {
-      collectorEl.parentNode.removeChild(collectorEl);
-    }
+    if (collectorEl) collectorEl.parentNode.removeChild(collectorEl);
   });
 };

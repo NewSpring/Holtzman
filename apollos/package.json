@@ -76,7 +76,7 @@
     "lodash.find": "^4.4.0",
     "moment": "^2.13.0",
     "react-addons-pure-render-mixin": "^15.1.0",
-    "react-apollo": "^0.3.12",
+    "react-apollo": "^0.3.17",
     "react-controllables": "^0.6.0",
     "react-day-picker": "^2.2.0",
     "react-mixin": "^3.0.5",

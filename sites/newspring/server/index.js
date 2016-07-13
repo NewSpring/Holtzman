@@ -1,12 +1,13 @@
 
+import React from "react";
 // Do server-rendering only in proudction mode
-// if (process.env.NODE_ENV === "production") {
+if (process.env.WEB) {
 
   // load the application
-  // import { run } from "apollos/dist/core/router/server";
-  // import { routes, client, server } from "/imports";
-  //
-  // run(routes, client, server);
+  import { run } from "apollos/dist/core/router/server";
+  import { routes, client, server } from "/imports";
+
+  run(routes, client, server);
 
   // cdn party
   // cdn is still not reliable enough :(
@@ -15,4 +16,4 @@
   //     WebAppInternals.setBundledJsCssPrefix(Meteor.settings.cdnPrefix);
   //   })
   // }
-// }
+}
