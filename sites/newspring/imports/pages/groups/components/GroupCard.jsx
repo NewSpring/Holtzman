@@ -56,7 +56,7 @@ export default withRouter(({ group, router, onHover }) => {
             <Tag val={tag.value} key={i} />
           ))}
           {(() => {
-            if (!group.type) return null;
+            if (!group.type || group.type === "Interests") return null;
             return <Tag val={group.type} />
           })()}
           {/*{(() => {
