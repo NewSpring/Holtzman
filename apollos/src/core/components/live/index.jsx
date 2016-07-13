@@ -12,7 +12,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
       query: gql`query IsLive {
         live {
           live
-          streamUrl
+          embedCode
         }
       }`,
       forceFetch: false,
@@ -53,7 +53,7 @@ export default class Live extends Component {
   }
 
   render () {
-    const { live, streamUrl } = this.props.data;
+    const { live, embedCode } = this.props.data;
 
     if (!this.props.live.show) return <div />
 
