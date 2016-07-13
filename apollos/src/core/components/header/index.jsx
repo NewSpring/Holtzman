@@ -3,6 +3,8 @@ import { Component, PropTypes } from "react"
 import { Link } from "react-router"
 import { connect } from "react-redux"
 
+import Live from "../live";
+
 @connect((state) => ({
   color: state.header.content.color || "#6BAC43",
   light: state.header.content.light,
@@ -39,16 +41,19 @@ export default class Header extends Component {
     }
 
     return (
-      <div>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 100
+        }}
+      >
         <div
           className="text-center"
           style={{
             paddingTop: this.props.isSearch ? "0px" : "15px",
             paddingBottom: this.props.isSearch ? "0px" : "15px",
             backgroundColor: this.props.color,
-            borderBottom: "1px solid rgba(0,0,0, 0.1)",
-            position: "relative",
-            zIndex: 100
+            borderBottom: "1px solid rgba(0,0,0, 0.1)"
           }}
         >
           {(() => {
@@ -122,6 +127,7 @@ export default class Header extends Component {
             );
           };
         })()}
+        <Live />
       </div>
     )
   }
