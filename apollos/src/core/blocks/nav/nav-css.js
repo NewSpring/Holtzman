@@ -16,6 +16,7 @@ export default StyleSheet.create({
       position: "fixed",
       maxWidth: "80px",
       top: 0,
+      paddingLeft: "5px",
       borderRight: "1px solid #ddd",
 
       ":before": {
