@@ -12,8 +12,8 @@ import NavLayout from "./Layout"
 const map = (state) => ({
   state: state.nav,
   modal: state.modal,
-  liked: state.liked
-  // router: state.routing
+  liked: state.liked,
+  path: state.routing.location.pathname
 })
 
 @connect(map)
@@ -29,10 +29,8 @@ export default class NavContainer extends Component {
   }
 
   render () {
-    const { state } = this.props
-    if (!state.visible) {
-      return null
-    }
+    const { state, modal, liked, path } = this.props
+    if (!state.visible) return null
 
     return (
       <NavLayout
@@ -42,8 +40,9 @@ export default class NavContainer extends Component {
         bgColor={ state.bgColor }
         fgColor={ state.fgColor }
         reset={this.reset}
-        modal={this.props.modal}
-        liked={this.props.liked}
+        modal={modal}
+        liked={liked}
+        path={path}
         key="navigation"
       />
     )
