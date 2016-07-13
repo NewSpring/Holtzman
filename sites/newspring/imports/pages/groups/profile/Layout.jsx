@@ -116,6 +116,21 @@ export default ({ group, leaders, isLeader, join }) => (
               );
             })()}
 
+            {/* Campus  */}
+            {(() => {
+              if (!group.campus || !group.campus.name) return null;
+              return (
+                <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
+                  <h7 className="text-dark-secondary">
+                    Campus
+                  </h7>
+                  <h5 className="text-dark-secondary soft-half-top flush-bottom">
+                    {group.campus.name}
+                  </h5>
+                </div>
+              );
+            })()}
+
             {/* Group Information */}
             <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
               <h7 className="text-dark-secondary">Information</h7>
