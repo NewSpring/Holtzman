@@ -16,7 +16,7 @@ export default StyleSheet.create({
       position: "fixed",
       maxWidth: "80px",
       top: 0,
-      borderRight: "2px solid #ddd",
+      borderRight: "1px solid #ddd",
 
       ":before": {
         content: "none",
@@ -26,7 +26,7 @@ export default StyleSheet.create({
 
   "nav-bar-border": {
     "@media screen and (max-width: 768px)": {
-      borderTop: "2px solid #ddd",
+      borderTop: "1px solid #ddd",
     },
   },
 

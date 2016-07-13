@@ -9,7 +9,8 @@ const networkInterface = createNetworkInterface(Meteor.settings.public.heighline
 
 networkInterface.use([{
   applyMiddleware(request, next) {
-    const currentUserToken = Accounts._storedLoginToken();
+    // XXX how do we get the current user info here?
+    const currentUserToken = Accounts._storedLoginToken && Accounts._storedLoginToken();
     if (!currentUserToken) {
       next();
       return;
@@ -24,6 +25,7 @@ networkInterface.use([{
 
 const GraphQL = new ApolloClient({
   networkInterface,
+  ssrMode: Meteor.isServer,
   shouldBatch: false, // XXX not working with multiple root fields on a query
 });
 

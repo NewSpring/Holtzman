@@ -10,6 +10,8 @@ const set = (content) => ({ type: "SECTIONS.SET_CONTENT", content })
 
 addSaga(function* sectionsSaga(getState) {
 
+  if (Meteor.isServer) return;
+
   const site = process.env.NATIVE ? "newspring-app" : "newspring-main";
 
   // XXX move to sections.graphql and import
