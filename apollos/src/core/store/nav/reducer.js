@@ -15,18 +15,7 @@ import { routeActions } from "../routing"
 let sectionsVisible = false
 let discoverVisible = false
 
-const back = () => {
-  return routeActions.goBack()
-}
-
-const isEqual = (path) => {
-  if (typeof window != "undefined" && window != null) {
-    return window.location.pathname === path
-  }
-
-  return false
-}
-
+const back = () => routeActions.goBack();
 const profileLink = process.env.NATIVE ? "/profile" : "/profile/settings"
 
 const sectionsAction = (props) => {
@@ -51,14 +40,14 @@ const discoverAction = (props) => {
   });
 };
 
-const sectionsActive = (props) => {
-  if (process.env.NATIVE) return isEqual("/sections");
-  return sectionsVisible && props.modal.visible;
+const sectionsActive = ({ path, modal }) => {
+  if (process.env.NATIVE) return path === "/sections";
+  return sectionsVisible && modal.visible;
 };
 
-const discoverActive = (props) => {
-  if (process.env.NATIVE) return isEqual("/discover");
-  return discoverVisible && props.modal.visible;
+const discoverActive = ({ path, modal }) => {
+  if (process.env.NATIVE) return path === "/discover";
+  return discoverVisible && modal.visible;
 };
 
 let homeLink = "/";
@@ -70,7 +59,7 @@ let links = {
       label: "Home",
       link: homeLink,
       icon: "icon-logo",
-      isActive: (props) => (isEqual(homeLink) && !props.modal.visible)
+      isActive: ({ path, modal }) => (path === homeLink && !modal.visible)
     },
     {
       id: 2,
@@ -84,7 +73,7 @@ let links = {
       label: "Groups",
       link: "/groups/finder",
       icon: "icon-groups",
-      isActive: (props) => (isEqual("/groups/finder") && !props.modal.visible)
+      isActive: ({ path, modal }) => (path === "/groups/finder" && !modal.visible)
     },
     {
       id: 4,
@@ -98,7 +87,7 @@ let links = {
       label: "Profile",
       link: profileLink,
       icon: "icon-profile",
-      isActive: (props) => (isEqual(profileLink) && !props.modal.visible)
+      isActive: ({ path, modal }) => (path === profileLink && !modal.visible)
     }
   ],
   CONTENT: [

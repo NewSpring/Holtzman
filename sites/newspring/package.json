@@ -39,6 +39,7 @@
     "norma-meteor-run": "jbaxleyiii/norma-meteor-run"
   },
   "babel": {
+    "compact": true,
     "presets": [
       "meteor",
       "es2015-loose",

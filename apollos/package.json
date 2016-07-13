@@ -17,6 +17,7 @@
     "url": "https://github.com/NewSpring/newspring-core/issues"
   },
   "babel": {
+    "compact": true,
     "presets": [
       "meteor",
       "es2015-loose",
