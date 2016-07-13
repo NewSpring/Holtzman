@@ -100,45 +100,26 @@ export default ({
         <Group onHover={onCardHover} group={group} id={group.id} key={key} />
       ))}
 
-      {/* Ad unit */}
       {(() => {
-        if (loading) return null;
+        if (!count) return null;
         return (
-          <button className="relative one-whole" >
-            <SideBySide
-              defaultImage="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.2x1_1700_850_90_c1.jpg"
-              left={["one-whole", "two-thirds@lap-and-up"]}
-              right={["one-whole", "one-third@lap-and-up"]}
-            >
-              <div className="one-whole text-center@handheld">
-                {/* Name */}
-                <h4 className="soft-half-top push-top@anchored">
-                  {groups.length === 0 ? "We didn't find any groups, would you like to create one?": "Can't find what you're looking for? Start your own group!"}
-                </h4>
-
-                {/* CTA */}
-                <a href="https://rock.newspring.cc/workflows/93/?Interest=Next%20Steps" className="btn push-top">
-                  Start My Group
-                </a>
-              </div>
-            </SideBySide>
-          </button>
+          <div
+            className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides"
+          >
+            <h6 className="em text-dark-secondary flush">
+              {groups.length} results of {count}
+            </h6>
+          </div>
         )
       })()}
 
       {/* Load more */}
-      <div className="one-whole text-center">
+      <div className="one-whole text-center push-double-bottom">
         {(() => {
-          let btnClasses = [
-            "btn--dark-tertiary",
-            "push-ends"
-          ];
-
           if (loading && !groups.length) return null;
-
           if (count === groups.length) {
             return (
-              <button className="disabled soft-ends btn" disabled>
+              <button className="disabled btn" disabled>
                 No more groups
               </button>
             )
@@ -153,16 +134,32 @@ export default ({
           }
 
           return (
-            <button onClick={paginate} className={btnClasses.join(" ")}>
+            <button onClick={() => paginate()} className="btn--dark-tertiary btn">
               Load More Groups
             </button>
           )
         })()}
       </div>
 
+      {/* Ad unit */}
+      <button className="relative one-whole push-double-top@lap-and-up push-top push-bottom@lap-and-up" >
+        <div className="card soft soft-double-sides@lap-and-up">
+          <div className="card__item soft-double-sides@lap-and-up">
+            <div className="one-whole text-center@handheld">
+              {/* Name */}
+              <h4 className="soft-half-top push-top@anchored capitalize">
+                Can't find what you're looking for, or want to start your own group?
+              </h4>
+
+              {/* CTA */}
+              <a href="https://rock.newspring.cc/workflows/81" className="btn push-half-top">
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </button>
 
     </div>
-
-
   </section>
 )

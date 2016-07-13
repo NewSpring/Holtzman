@@ -8,8 +8,6 @@ import Tag from "../components/Tag";
 
 export default withRouter(({ group, router, onHover }) => {
   if (!group) group = {};
-  const leaders = group && group.members && group.members
-    .filter(x => x.role.toLowerCase() === "leader");
 
   return (
     <button
@@ -28,13 +26,15 @@ export default withRouter(({ group, router, onHover }) => {
           {group.name}
         </h4>
 
-        {/* Leaders */}
-        <h5 className="plain text-dark-tertiary">
-          {leaders && leaders.map((x, i) => {
-            let string = `${x.person.nickName || x.person.firstName} ${x.person.lastName}`;
-            if (leaders.length - 1 != i) string += ", ";
-            return <span key={i}>{string}</span>
-          })}</h5>
+        {/* Schedule */}
+        {(() => {
+          if (!group.schedule || !group.schedule.description) return null;
+          return (
+            <h6 className="plain text-dark-tertiary">
+              {group.schedule.description}
+            </h6>
+          )
+        })()}
 
         {/* Distance */}
         {(() => {

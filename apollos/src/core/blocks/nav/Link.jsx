@@ -25,7 +25,7 @@ export default class NavLink extends Component {
     ];
 
     if (this.props.fgColor === "light") {
-      classes.push("text-dark-secondary");
+      classes.push("text-dark-primary");
     } else {
       classes.push("text-light-primary");
     }
@@ -109,6 +109,7 @@ export default class NavLink extends Component {
       containerStyles = { paddingTop: "8px" };
     }
 
+    let active = navItem.isActive && navItem.isActive(this.props);
     return (
       <button
         className={this.linkClasses()}
@@ -122,7 +123,7 @@ export default class NavLink extends Component {
               if (navItem.label && process.env.WEB) {
                 return (
                   <h7 className="display-block">
-                    <small className="text-center text-dark-secondary">{navItem.label}</small>
+                    <small className={`text-center ${active ? "text-brand": "text-dark-primary"}`}>{navItem.label}</small>
                   </h7>
                 )
               }

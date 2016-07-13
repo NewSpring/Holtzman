@@ -31,30 +31,13 @@ const mapQueriesToProps = ({ ownProps }) => ({
             photo
             kidFriendly
             ageRange
-            tags {
-              id
-              value
-            }
-            locations {
-              location {
-                city
-                state
-                latitude
-                longitude
-              }
-            }
-            schedule {
-              description
-              name
-            }
+            campus { name }
+            tags { id, value }
+            locations { location { city, state, latitude, longitude } }
+            schedule { description }
             members {
               role
-              person {
-                photo
-                firstName
-                nickName
-                lastName
-              }
+              person { photo, firstName, nickName, lastName }
             }
           }
         }
