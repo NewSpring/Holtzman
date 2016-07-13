@@ -124,7 +124,7 @@ const initial = {
   visible: true,
   links: links.TOP,
   // bgColor: "#202020",
-  bgColor: "#f7f7f7",
+  bgColor: "#e7e7e7",
   fgColor: "light",
 };
 
