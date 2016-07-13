@@ -176,7 +176,7 @@ export default ({ group, leaders, isLeader, join }) => (
                   <span className="tag push-half-right" key={i}>{tag.value}</span>
                 ))}
                 {(() => {
-                  if (!group.type) return null;
+                  if (!group.type || group.type === "Interests") return null;
                   return <span className="tag push-half-right">{group.type}</span>;
                 })()}
                 {(() => {
