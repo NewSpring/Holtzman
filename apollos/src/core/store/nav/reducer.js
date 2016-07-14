@@ -123,9 +123,10 @@ const initial = {
   level: "TOP",
   visible: true,
   links: links.TOP,
-  // bgColor: "#202020",
-  bgColor: "#e7e7e7",
-  fgColor: "light",
+  bgColor: "#202020",
+  fgColor: "dark",
+  // bgColor: "#e7e7e7",
+  // fgColor: "light",
 };
 
 export default function nav(state = initial, action) {
