@@ -81,7 +81,7 @@ export default class Home extends Component {
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     this.headerAction({
-      title: "NEWSPRING CHURCH"
+      title: "default"
     });
   }
 

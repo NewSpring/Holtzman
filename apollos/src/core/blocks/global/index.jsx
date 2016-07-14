@@ -20,7 +20,7 @@ import Styles from "./watermark-css"
 
 const Watermark = () => (
   <div className={css(Styles["global-watermark"])}>
-    <h4 className={`soft-half flush text-light-primary uppercase watermark ${Styles["watermark"]} visuallyhidden@handheld`}>
+    <h4 className={`soft-half flush text-light-primary uppercase watermark ${css(Styles["watermark"])} visuallyhidden@handheld`}>
       NewSpring
     </h4>
   </div>

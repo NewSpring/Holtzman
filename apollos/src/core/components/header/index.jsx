@@ -87,7 +87,7 @@ export default class Header extends Component {
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
-                fontWeight: 900,
+                fontWeight: 700,
               }}>
                 {this.props.text}
                 {this.showSettings()}
