@@ -1,6 +1,6 @@
 
 function contentLink(contentItem) {
-  const entryId = contentItem.entryId;
+  const entryId = contentItem.entryId || contentItem.id;
   const category = contentItem.channelName;
 
   switch(category) {
