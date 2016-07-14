@@ -162,7 +162,6 @@ class SignIn extends Component {
 
   completeAccount = (e) => {
     e.preventDefault()
-
     this.props.completeAccount()
   }
 
@@ -279,7 +278,7 @@ class SignIn extends Component {
 
                   let color = "#f1f1f1"
 
-                  if (person.id === this.state.selectedPerson) {
+                  if (person.id === this.state.selectedPerson || person.id === this.props.data.personId) {
                     color = "#6bac43"
                   }
 
@@ -450,7 +449,7 @@ class SignIn extends Component {
 
               {(() => {
                 const { data } = this.props
-                let btnClasses = [];
+                let btnClasses = ["push-double-bottom"];
 
                 if (data.email === null || data.password === null && !data.terms){
                   btnClasses.push("btn--disabled");

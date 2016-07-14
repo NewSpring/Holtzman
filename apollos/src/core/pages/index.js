@@ -1,5 +1,5 @@
-import Util from "./util"
-
+import Util from "./util";
+import Signup from "./signup";
 /*
 
   In order to coexist with newspring.cc while we migrate to
@@ -40,6 +40,7 @@ import Util from "./util"
 const Routes = {
   childRoutes: [].concat(
     Util.Routes,
+    Signup.Routes,
     // NotFound
   )
 }
