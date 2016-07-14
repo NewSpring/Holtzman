@@ -8,38 +8,21 @@ export default ({ group, leaders, isLeader, join }) => (
 
     {/* Hero */}
     <div
-      className="ratio--landscape@lap-wide-and-up ratio--square background--fill overlay--gradient"
+      className="ratio--landscape background--fill"
       style={{
         overflow: "visible",
         backgroundImage: `url('${group.photo}')`,
         zIndex:10
       }}
     >
-      <div className="soft-sides@anchored ratio__item one-whole floating--bottom">
-        <div className="floating__item text-left one-whole soft-double-sides@lap-wide-and-up soft-sides soft-double-bottom">
-          <h3 className="text-light-primary push-half-bottom">{group.name}</h3>
-          <div className="locked">
-            {leaders.map((leader, i) => (
-              <div
-                className="ratio--square round display-inline-block push-right background--fill"
-                key={i}
-                style={{
-                  backgroundImage: `url(${leader.person.photo})`,
-                  width: "80px",
-                  height: "80px"
-                }}
-              >
-                <div className="ratio__item"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <div className="ratio__item"></div>
     </div>
 
-    {/* Group Leader List*/}
-    <div className="push-double-sides@anchored push-half-sides soft-double-top flush-ends card outlined outlined--light">
+    {/* Group Information */}
+    <div style={{borderRadius: "0 0 3px 3px"}} className="push-double-sides@anchored push-half-sides flush-ends card outlined outlined--light">
       <div className="card__item soft">
+        <h3 className="text-dark-primary push-half-top push-bottom">{group.name}</h3>
+
         <h7 className="text-dark-secondary">
           <small>Group Leaders</small>
         </h7>
@@ -48,7 +31,21 @@ export default ({ group, leaders, isLeader, join }) => (
             let string = `${x.person.nickName || x.person.firstName} ${x.person.lastName}`;
             if (leaders.length - 1 != i) string += ", ";
             return <span key={i}>{string}</span>
-          })}</h5>
+          })}
+        </h5>
+        {leaders.map((leader, i) => (
+          <div
+            className="ratio--square round display-inline-block push-right background--fill"
+            key={i}
+            style={{
+              backgroundImage: `url(${leader.person.photo})`,
+              width: "80px",
+              height: "80px"
+            }}
+          >
+            <div className="ratio__item"></div>
+          </div>
+        ))}
       </div>
     </div>
 
@@ -57,10 +54,10 @@ export default ({ group, leaders, isLeader, join }) => (
 
       {/* Join Group CTA */}
       {/* shows manage group if you are a leader / can manage */}
-      <div className="card outlined outlined--light">
-        <div className="grid card__item soft ">
-          <h5 className="flush-bottom push-half-bottom@handheld push-half-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-secondary">#TheseAreMyPeople</h5>
-          <div className="grid__item text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+      <div className="card outlined outlined--light soft-sides-@lap-and-up">
+        <div className="grid card__item soft push-half flush">
+          <h4 className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">#TheseAreMyPeople</h4>
+          <div className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
             {(() => {
               let className = "flush-bottom push-half-bottom@handheld btn";
               if (isLeader) {
@@ -195,13 +192,13 @@ export default ({ group, leaders, isLeader, join }) => (
       </div>
 
       {/* Search */}
-      <div className="card outlined outlined--light">
-        <div className="grid card__item soft ">
-          <h5 className="flush-bottom push-half-bottom@handheld push-half-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-secondary">
+      <div className="card outlined outlined--light soft-sides-@lap-and-up">
+        <div className="grid card__item soft push-half flush">
+          <h4 className="flush-bottom push-bottom@handheld hard-left push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-secondary">
             Looking for another group?
-          </h5>
-          <div className="grid__item text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
-            <Link to="/groups/finder" className="flush-bottom push-half-bottom@handheld btn">
+          </h4>
+          <div className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+            <Link to="/groups/finder" className="flush-bottom push-half-bottom@handheld btn--dark-tertiary">
               Find A Group
             </Link>
           </div>
