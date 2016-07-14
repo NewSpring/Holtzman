@@ -4,7 +4,7 @@ import { VelocityComponent } from "velocity-react"
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 import { Link } from "react-router";
-import ReactPullToRefresh from "react-pull-to-refresh";
+import ApollosPullToRefresh from "apollos/dist/core/components/pullToRefresh";
 
 import Loading from "apollos/dist/core/components/loading"
 import { FeedItemSkeleton } from "apollos/dist/core/components/loading"
@@ -137,41 +137,33 @@ export default class Home extends Component {
     }
     return (
       <VelocityComponent
-          animation={"transition.fadeIn"}
-          duration={1000}
-          runOnMount={true}
-        >
-        <div>
-          <div className="ptr-fake-background"></div>
+        animation={"transition.fadeIn"}
+        duration={1000}
+        runOnMount={true}
+      >
+        <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
+          <Split nav={true} classes={["background--light-primary"]}>
+            <Right
+              mobile={true}
+              background={photo}
+              classes={["floating--bottom", "text-left", "background--dark-primary"]}
+              ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up", "floating--bottom", "text-left"]}
+              aspect="square"
+              link={heroLink}
+            >
 
-          <ReactPullToRefresh
-            onRefresh={this.handleRefresh}
-            icon={<i className="icon-leaf-outline"></i>}
-            loading={<i className="loading icon-leaf-outline"></i>}
-          >
-            <Split nav={true} classes={["background--light-primary"]}>
-              <Right
-                mobile={true}
-                background={photo}
-                classes={["floating--bottom", "text-left", "background--dark-primary"]}
-                ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up", "floating--bottom", "text-left"]}
-                aspect="square"
-                link={heroLink}
-              >
+              <HomeHero item={heroItem ? heroItem : {}} />
 
-                <HomeHero item={heroItem ? heroItem : {}} />
-
-              </Right>
-            </Split>
-            <Left scroll={true} ref="container">
-              <section className="background--light-secondary soft-half@handheld soft@portable soft-double@anchored">
-                <div className="grid">
-                  {this.renderFeed()}
-                </div>
-              </section>
-            </Left>
-          </ReactPullToRefresh>
-        </div>
+            </Right>
+          </Split>
+          <Left scroll={true} ref="container">
+            <section className="background--light-secondary soft-half@handheld soft@portable soft-double@anchored">
+              <div className="grid">
+                {this.renderFeed()}
+              </div>
+            </section>
+          </Left>
+        </ApollosPullToRefresh>
       </VelocityComponent>
 
     )
