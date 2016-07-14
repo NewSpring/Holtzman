@@ -1,5 +1,7 @@
 import { Component, PropTypes } from "react"
-import { connect } from "react-redux"
+import { connect as ApolloConnect } from "react-apollo";
+import { connect } from "react-redux";
+import gql from "apollo-client/gql";
 
 import { Loading, Error as Err } from "../../components/states"
 import accountsActions from "../../store/accounts"
@@ -11,10 +13,48 @@ import Success from "./Success"
 import ForgotPassword from "./ForgotPassword"
 import SuccessCreate from "./SuccessCreate"
 
+const mapDispatchToProps = {...accountsActions, ...modalActions};
+const mapQueriesToProps = ({ state }) => ({
+  data: {
+    query: gql`
+      query GetPersonByGuid($guid:ID) {
+        person(guid:$guid) {
+          firstName
+          lastName
+          email
+          photo
+          id: entityId
+          personId: entityId
+        }
+      }
+    `,
+    variables: {
+      guid: state.routing.location && state.routing.location.query && state.routing.location.query.guid,
+    },
+  }
+})
+
+@ApolloConnect({ mapQueriesToProps, mapDispatchToProps })
+export default class AccountsWithData extends Component {
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.data.loading && nextProps.data.person) {
+      this.props.setAccount(false);
+      this.props.save(nextProps.data.person);
+      this.props.peopleWithoutAccountEmails([nextProps.data.person]);
+    }
+  }
+
+  render() {
+    const { person } = this.props.data;
+    return <AccountsContainer {...this.props} data={person} />
+  }
+}
+
 // We only care about the accounts state
-const map = (state) => ({ accounts: state.accounts })
-@connect(map, {...accountsActions, ...modalActions})
-export default class AccountsContainer extends Component {
+const mapStateToProps = (state) => ({ accounts: state.accounts });
+@connect(mapStateToProps, mapDispatchToProps)
+class AccountsContainer extends Component {
 
   static propTypes = {
     back: PropTypes.func,

@@ -55,17 +55,22 @@ const responsiveBindings = store => next => action => {
     dispatch(actions.setHeight(y));
 
     const breakpoints = getBreakpoints(x);
-
-    if (!_.difference(responsive.breakpoints, breakpoints).length) {
+    let diff = _.difference(responsive.breakpoints, breakpoints);
+    if (!responsive.breakpoints.length) {
+      dispatch(actions.setBreakpoints(breakpoints))
+    }
+    if (diff.length) {
       dispatch(actions.setBreakpoints(breakpoints))
     }
   }
 
   const deboncedResize = new Debouncer(onBodyResize);
+  onBodyResize();
 
   // this is a single run through since we are using a debounced
   // method to bind to the window's events
   window.addEventListener("resize", deboncedResize, false);
+
 
   return next(action);
 };
