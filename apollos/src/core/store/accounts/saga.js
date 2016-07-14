@@ -48,7 +48,12 @@ addSaga(function* completeAccount(getState) {
     const { email, personId } = state.accounts.data
     let created = false, error;
 
-    if (email && personId) {
+    // XXX dead code removal broke this
+    function wut() {
+      return state.accounts.data.email && state.accounts.data.personId
+    }
+    if (wut()) {
+
       // set the UI to show the loading screen
       yield put(actions.loading())
 
@@ -59,7 +64,7 @@ addSaga(function* completeAccount(getState) {
       }
 
       if (created) {
-
+      
         // reset the UI
         yield put(actions.setState("default"))
 
@@ -81,12 +86,8 @@ addSaga(function* completeAccount(getState) {
         yield put(actions.setState("default"))
 
       }
-
-
     }
-
   }
-
 })
 
 function* login(getState) {
