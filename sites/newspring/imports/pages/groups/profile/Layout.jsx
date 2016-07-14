@@ -19,7 +19,7 @@ export default ({ group, leaders, isLeader, join }) => (
     </div>
 
     {/* Group Information */}
-    <div style={{borderRadius: "0 0 3px 3px"}} className="push-double-sides@anchored push-half-sides flush-ends card outlined outlined--light">
+    <div style={{borderRadius: "0 0 3px 3px"}} className="push-double-sides@lap-and-up push-half-sides flush-ends card outlined outlined--light">
       <div className="card__item soft">
         <h3 className="text-dark-primary push-half-top push-bottom">{group.name}</h3>
 
@@ -192,12 +192,12 @@ export default ({ group, leaders, isLeader, join }) => (
       </div>
 
       {/* Search */}
-      <div className="card outlined outlined--light soft-sides-@lap-and-up">
-        <div className="grid card__item soft push-half flush">
-          <h4 className="flush-bottom push-bottom@handheld hard-left push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-secondary">
+      <div className="card outlined outlined--light soft-sides-@lap-and-up push-bottom">
+        <div className="card__item soft-double">
+          <h4 className=" push-bottom one-whole text-center text-dark-secondary">
             Looking for another group?
           </h4>
-          <div className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          <div className="text-center one-whole">
             <Link to="/groups/finder" className="flush-bottom push-half-bottom@handheld btn--dark-tertiary">
               Find A Group
             </Link>
