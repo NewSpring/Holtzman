@@ -17,7 +17,8 @@ export default StyleSheet.create({
       maxWidth: "80px",
       top: 0,
       paddingLeft: "5px",
-      borderRight: "1px solid #ddd",
+      // border for light nav
+      // borderRight: "1px solid #ddd",
 
       ":before": {
         content: "none",
