@@ -6,7 +6,9 @@ export default StyleSheet.create({
     maxHeight: "50px",
     opacity: ".95",
     zIndex: "101",
-    marginBottom: "52px",
+    // account for border on light version of nav
+    // marginBottom: "52px",
+    marginBottom: "50px",
   },
 
   "mini-album-cover": {
