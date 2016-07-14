@@ -2,6 +2,7 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 import { css } from "aphrodite";
+import { Link } from "react-router";
 import { Motion, spring } from "react-motion";
 
 import Styles from "./live-css";
@@ -31,6 +32,9 @@ export default class Live extends Component {
     const classes = [
       "text-center",
       "soft-half-ends",
+      "display-inline-block",
+      "plain",
+      "one-whole",
       css(Styles["live-banner"])
     ];
 
@@ -64,14 +68,15 @@ export default class Live extends Component {
       >
         {interpolatingStyle => {
           return (
-            <div
+            <Link
+              to={`/video/${embedCode}`}
               className={this.getClasses()}
               style={interpolatingStyle}
             >
               <h7 className={this.getTextClasses()}>
                 NewSpring Church Live, Watch Now!
               </h7>
-            </div>
+            </Link>
           );
         }}
       </Motion>
