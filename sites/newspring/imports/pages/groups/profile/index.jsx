@@ -4,6 +4,8 @@ import { Link } from "react-router";
 import gql from "graphql-tag";
 import GoogleMap from "apollos/dist/core/components/map";
 import Split, { Left, Right } from "apollos/dist/core/blocks/split";
+import { Headerable } from "apollos/dist/core/mixins"
+import ReactMixin from "react-mixin";
 
 import { nav as navActions, modal } from "apollos/dist/core/store";
 import OnBoard from "apollos/dist/core/blocks/accounts";
@@ -48,7 +50,12 @@ const mapQueriesToProps = ({ ownProps }) => ({
 });
 const defaultArray = [];
 @connect({ mapQueriesToProps })
+@ReactMixin.decorate(Headerable)
 export default class Template extends Component {
+
+  componentWillMount(){
+    this.headerAction({ title: "Group Profile" });
+  }
 
   closeModal = (e) => {
     if (e && e.preventDefault) e.preventDefault();
