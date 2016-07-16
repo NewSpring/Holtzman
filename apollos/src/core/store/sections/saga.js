@@ -70,27 +70,25 @@ addSaga(function* sectionsSaga(getState) {
   function extractImage(content) {
     let { images } = content.content
 
-    if (!images.length) {
-      return null
-    }
+    if (!images.length) return null;
 
     // prefer 1x1 image
     let oneByOne = _.find(images, (image) => {
-      return image.fileLabel === "1:1"
+      return image.label === "1:1"
     });
 
     if (oneByOne) return oneByOne.cloudfront ? oneByOne.cloudfront : oneByOne.s3
 
     // then try 2x1, especially for devotions that only have 2x1
     let twoByOne = _.find(images, (image) => {
-      return image.fileLabel === "2:1"
+      return image.label === "2:1"
     });
 
     if (twoByOne) return twoByOne.cloudfront ? twoByOne.cloudfront : twoByOne.s3
 
     // then try default, for devotions with leather times
     let defaultImage = _.find(images, (image) => {
-      return image.fileLabel === "default"
+      return image.label === "default"
     });
 
     if (defaultImage) return defaultImage.cloudfront ? defaultImage.cloudfront : defaultImage.s3

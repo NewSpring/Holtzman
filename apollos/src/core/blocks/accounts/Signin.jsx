@@ -18,29 +18,25 @@ class SignIn extends Component {
     state: PropTypes.string.isRequired,
     success: PropTypes.bool.isRequired,
     header: PropTypes.object,
-    toggles: PropTypes.array
+    toggles: PropTypes.array,
   }
 
-  static defaultProps = {
-    toggles: ["Sign In", "Register"]
-  }
+  static defaultProps = { toggles: ["Sign In", "Register"] }
 
-  state = {
-    showAlternativePeople: true,
-    selectedPerson: null
-  }
+  state = { showAlternativePeople: true, selectedPerson: null }
 
-  header = () => {
-    return (
-      <h4 className="text-center">
-        Sign in or create your NewSpring profile
-      </h4>
-    )
-  }
+  header = () => (
+    <div className="text-center">
+      <h3 className="uppercase text-light-primary flush-bottom push-half-bottom" style={{fontWeight: "900"}}>
+        Welcome To NewSpring
+      </h3>
+      <p className="flush-bottom"><em className="text-light-primary small">
+        Sign In or Create your NewSpring Account
+      </em></p>
+    </div>
+  )
 
-  toggle = (num) => {
-    this.props.setAccount(num == 0)
-  }
+  toggle = (num) => this.props.setAccount(num == 0)
 
   isEmail = (value) => {
     const isValid = value.length ? Validate.isEmail(value) : true;
@@ -51,10 +47,7 @@ class SignIn extends Component {
       this.props.save({ email: value })
     }
 
-    this.setState({
-      showAlternativePeople: true
-    })
-
+    this.setState({ showAlternativePeople: true });
     return isValid;
   }
 
@@ -135,40 +128,31 @@ class SignIn extends Component {
   selectPerson = (id) => {
 
     if (this.state.selectPerson === id) {
-      this.setState({
-        selectedPerson: null
-      })
-
+      this.setState({ selectedPerson: null })
       this.props.clear("data")
-
       return
     }
 
-    this.setState({
-      selectedPerson: id
-    })
-
+    this.setState({ selectedPerson: id })
     this.props.save({ personId: id })
 
   }
 
-  createNewPerson = () => {
-    this.setState({
-      showAlternativePeople: false
-    })
-
+  createNewPerson = (e) => {
+    e && e.preventDefault();
+    this.setState({ showAlternativePeople: false })
     this.props.clear("data")
   }
 
   completeAccount = (e) => {
-    e.preventDefault()
+    e && e.preventDefault()
     this.props.completeAccount()
   }
 
   render () {
     return (
       <div>
-        <div className="push-double-ends soft-sides">
+        <div className="soft-double-ends soft-sides background--primary">
           {this.props.header || this.header()}
         </div>
 
@@ -181,70 +165,11 @@ class SignIn extends Component {
         <Forms.Form
           id="accounts"
           fieldsetTheme="flush soft-top"
-          classes={["hard-sides"]}
+          classes={["soft-double-sides@palm-wide-and-up", "soft-sides"]}
           submit={this.submit}
         >
 
-        {(() => {
-          if (!this.props.account && this.props.alternateAccounts.length) {
-            // return null
-            return (
-              <div className="soft-sides push-back-half-top soft-double-bottom">
-                <h6 className="flush-bottom">
-                  It looks like you may have a NewSpring account already!
-                  {(() => {
-                    if (this.props.alternateAccounts.length === 1) {
-
-                      return (
-                        <span>
-                          &nbsp; Is this your email&nbsp;
-                          <a
-                            href="#"
-                            onClick={this.changeEmails}
-                            data-email={this.props.alternateAccounts[0]}
-                          >
-                            {this.props.alternateAccounts[0]}
-                          </a>?
-                        </span>
-                      )
-                    }
-
-                    let count = 0
-                    return (
-                      <span>
-                        &nbsp; Is one of these your email&nbsp;
-
-                        {this.props.alternateAccounts.map((x, key) => {
-                          count ++
-                          return (
-                            <span key={key}>
-
-                            <a
-                              href="#"
-                              onClick={this.changeEmails}
-                              data-email={x}
-                            >
-                              {x}
-                            </a>
-                            {count != this.props.alternateAccounts.length ? ", " : ""}{count === this.props.alternateAccounts.length - 1 ? " or " : ""}
-                          </span>
-                          )
-
-                        })}
-                        ?
-                      </span>
-                    )
-
-                  })()}
-                </h6>
-              </div>
-            )
-
-          }
-        })()}
-
-        <div className="soft-sides">
-
+        <div >
           <Forms.Input
             name="email"
             type="email"
@@ -255,126 +180,86 @@ class SignIn extends Component {
             defaultValue={this.props.data.email}
             ref="email"
           />
-
         </div>
 
         {(() => {
+          if (!this.props.account && this.props.alternateAccounts.length) {
+            // return null
+            return (
+              <div>
+                <div className="push-back-double-top soft-bottom one-whole text-left">
+                  <h6 className="flush-bottom text-dark-primary push-back-half-top">
+                    It looks like you may have a NewSpring account already!
+                    <span>
+                      &nbsp; Is this your email?<br/><br/>
+                      <a href="#" onClick={this.changeEmails} data-email={this.props.alternateAccounts[0]}>
+                        {this.props.alternateAccounts[0]}
+                      </a>?
+                    </span>
+                    <br/><br/>Click below to sign in with this email.
+                  </h6>
+                </div>
+                <div className="push-half-top push-bottom soft-half-bottom one-whole text-center">
+                  <button className="btn" type="submit" onClick={this.changeEmails} data-email={this.props.alternateAccounts[0]}>
+                    Sign In
+                  </button>
+                </div>
+              </div>
+            )
+          }
+
           if (!this.props.account && this.props.peopleWithoutAccountEmails.length && this.state.showAlternativePeople) {
             let people = [...this.props.peopleWithoutAccountEmails]
-            let classes = [
-              "soft-half-sides",
-              "soft-bottom",
-              "push-bottom",
-              "push-back-top",
-            ]
             return (
-              <div className={classes.join(" ")}>
+              <div className="one-whole text-left push-back-double-top">
+                <h6 className="text-dark-primary soft-top flush-bottom soft-half-bottom push-back-double-top">
+                  It looks like you already have a NewSpring account started!
+                  To finish setting it up, select your person and click complete account.
+                </h6>
                 {people.map((person, key) => {
-                  let classes = [
-                    "card",
-                    "soft-half",
-                    "text-left"
-                  ]
-
-                  let color = "#f1f1f1"
-
-                  if (person.id === this.state.selectedPerson || person.id === this.props.data.personId) {
-                    color = "#6bac43"
+                  const isActive = () => {
+                    return person.id === this.props.data.id || person.id === this.state.selectedPerson
                   }
-
                   return (
-                    <div className={classes.join(" ")} key={key} style={{
-                        borderStyle: "solid",
-                        borderColor: color,
-                        boxShadow: "none",
-                        borderWidth: "2px",
-                      }}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      this.selectPerson(person.id)
-                    }}
+                    <div className="text-left soft-double-left push-top relative" key={key}
+                      onClick={() => this.selectPerson(person.id)}
                     >
-                      <div className="card__item">
-                        <div
-                          className="round background--fill display-inline-block push-half-right"
-                          style={{
-                            backgroundImage: `url(${person.photo})`,
-                            width: "40px",
-                            height: "40px",
-                            verticalAlign: "middle"
-                          }}
-                        >
-                        </div>
-                        <div className="flush hard display-inline-block"
+                    <div className="locked-left">
+                      {/* XXX just used for UI purposes */}
+                      <Forms.Checkbox classes={["push-top", "hard-bottom"]} defaultValue={isActive()}/>
+                    </div>
+                      <div
+                        className="round background--fill display-inline-block push-half-right"
                         style={{
+                          backgroundImage: `url(${person.photo})`,
+                          width: "70px",
+                          height: "70px",
                           verticalAlign: "middle"
-                        }}>
-
+                        }}
+                      />
+                      <div className="flush hard display-inline-block" style={{ verticalAlign: "middle"}}>
                         <h5 className="flush-bottom">{person.firstName} {person.lastName}</h5>
-                        <h7 className="flush-bottom">{person.email}</h7>
-                        </div>
+                        <h7 className="flush-bottom em text-dark-tertiary">{person.email}</h7>
                       </div>
                     </div>
                   )
                 })}
 
-                <div
-                  className="card soft-half text-left"
-                  style={{
-                    borderStyle: "solid",
-                    borderColor: "#f1f1f1",
-                    boxShadow: "none",
-                    borderWidth: "2px",
-                  }}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    this.createNewPerson()
-                  }}
-                >
-                  <div className="card__item">
-                    <div
-                      className="display-inline-block push-half-right"
-                      style={{
-                        width: "40px",
-                        height: "40px",
-                        verticalAlign: "middle",
-                        paddingTop: "5px"
-                      }}
-                    >
-                      <i
-                        className="icon-profile"
-                        style={{
-                          fontSize: "30px",
-                          marginLeft: "5px"
-                        }}
-                      ></i>
-                    </div>
-                    <h5
-                      className="flush hard display-inline-block"
-                      style={{
-                        verticalAlign: "middle"
-                      }}
-                    >Create new account</h5>
-                  </div>
+                <div className="one-whole text-center push-top">
+                  <button className="btn push-top push-bottom" onClick={this.completeAccount}>
+                    Complete Account
+                  </button>
+                  <a href="#" className="h7 soft-double-bottom text-dark-secondary display-block" onClick={this.createNewPerson}>
+                    Register new account
+                  </a>
                 </div>
-
-                <h6 className="soft-top soft-half-sides flush-bottom">
-                  <em>
-                    It looks like you already have a NewSpring account started! To finish setting up your account, click on your name above.
-                  </em>
-                </h6>
-
-                <button className="btn push-top" onClick={this.completeAccount}>
-                  Complete Account
-                </button>
 
               </div>
             )
           }
 
           return (
-            <div className="soft-sides">
-
+            <div>
               <Forms.Input
                 name="password"
                 placeholder="password"
@@ -385,36 +270,30 @@ class SignIn extends Component {
                 format={this.liveSavePassword}
                 ref="password"
               />
-
               {(() => {
-                if (!this.props.account) {
-                  return (
-                    <div>
-                      <Forms.Input
-                        name="firstName"
-                        label="First Name"
-                        errorText="Please enter your first name"
-                        validation={this.firstName}
-                        defaultValue={this.props.data.firstName}
-                        ref="firstName"
-                      />
+                if (this.props.account) return null;
+                return (
+                  <div>
+                    <Forms.Input
+                      name="firstName"
+                      label="First Name"
+                      errorText="Please enter your first name"
+                      validation={this.firstName}
+                      defaultValue={this.props.data.firstName}
+                      ref="firstName"
+                    />
 
-                      <Forms.Input
-                        name="lastName"
-                        label="Last Name"
-                        errorText="Please enter your last name"
-                        validation={this.lastName}
-                        defaultValue={this.props.data.lastName}
-                        ref="lastName"
-                      />
-                    </div>
-
-                  )
-
-                }
+                    <Forms.Input
+                      name="lastName"
+                      label="Last Name"
+                      errorText="Please enter your last name"
+                      validation={this.lastName}
+                      defaultValue={this.props.data.lastName}
+                      ref="lastName"
+                    />
+                  </div>
+                )
               })()}
-
-
               {(() => {
                 if (!this.props.account) {
 
@@ -427,24 +306,21 @@ class SignIn extends Component {
                       By signing up you agree to our <a href="//newspring.cc/terms" target="_blank">terms of use</a>
                     </Forms.Checkbox>
                   )
-                } else {
-                  return (
-                    <div className="push-bottom">
-                      <h7 >
-                        <small>
-                          <a href="/profile/forgot-password"
-                            className="text-primary"
-                            onClick={this.props.forgot}
-                          >
-                            Forgot Password?
-                          </a>
-                        </small>
-                      </h7>
-                    </div>
-
-                  )
-
                 }
+                return (
+                  <div className="push-bottom">
+                    <h7 >
+                      <small>
+                        <a href="/profile/forgot-password"
+                          className="text-primary"
+                          onClick={this.props.forgot}
+                        >
+                          Forgot Password?
+                        </a>
+                      </small>
+                    </h7>
+                  </div>
+                )
               })()}
 
               {(() => {
