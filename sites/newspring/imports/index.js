@@ -16,9 +16,18 @@ import Global from "apollos/dist/core/blocks/global";
 
 let App = null;
 if (process.env.NATIVE) {
+  import scriptLoader from "react-async-script-loader";
   import AudioPlayer from "/imports/components/players/audio/index"
   // XXX add live query back to heighliner
   // import LivePlayer from "/imports/components/live/index"
+
+  // sync load ooyala scripts
+  // XXX can we move this to just the video component?
+  @scriptLoader(
+    "//player.ooyala.com/static/v4/stable/4.4.11/core.min.js",
+    "//player.ooyala.com/static/v4/stable/4.4.11/video-plugin/main_html5.js",
+    "//player.ooyala.com/static/v4/stable/4.4.11/skin-plugin/html5-skin.js",
+  )
   @connect((state) => ({ audio: state.audio }))
   class AppGlobal extends Component {
     render() {
