@@ -12,7 +12,7 @@ export default StyleSheet.create({
     overflowY: "auto",
     WebkitOverflowScrolling: "touch",
 
-    "@media (max-width: 767px)": {
+    "@media (max-width: 480px)": {
       width: "100%",
     },
   },
@@ -20,7 +20,7 @@ export default StyleSheet.create({
 
     overflowY: "auto !important",
 
-    "@media (max-width: 767px)": {
+    "@media (max-width: 480px)": {
       paddingBottom: "60px",
     },
 
