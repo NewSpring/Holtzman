@@ -2,6 +2,11 @@ if (process.env.NATIVE) {
   // this breaks is found on server
   import Audio5 from "audio5"
   window.Audio5 = Audio5;
+
+  // load droid
+  function loadCSS(e,n,t){function i(e){return r.body?e():void setTimeout(function(){i(e)})}var o,r=window.document,a=r.createElement("link"),d=t||"all";if(n)o=n;else{var l=(r.body||r.getElementsByTagName("head")[0]).childNodes;o=l[l.length-1]}var f=r.styleSheets;a.rel="stylesheet",a.href=e,a.media="only x",i(function(){o.parentNode.insertBefore(a,n?o:o.nextSibling)});var s=function(e){for(var n=a.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){s(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=d}),a.onloadcssdefined=s,s(function(){a.media!==d&&(a.media=d)}),a};
+  loadCSS("https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic")
+
   function openUrl(url) {
     try {
       SafariViewController.isAvailable(function (available) {
