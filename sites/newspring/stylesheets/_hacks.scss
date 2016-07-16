@@ -1,6 +1,4 @@
-/* wkwebview's default html background is black? */
 html, body, #react-app {
-  // background: #fff;
   background: #ffffff;
 }
 
@@ -62,6 +60,48 @@ blockquote p {
   letter-spacing: -1px;
   font-weight: 100;
 }
+
+// XXX move to junction / update in junction
+
+%_panel {
+  @include media-query(palm-wide-and-up) {
+    @include absolute(top 0 bottom 0 right 0 left 0);
+
+    z-index: 0;
+  }
+
+  -webkit-overflow-scrolling: touch;
+}
+
+%_panel__item {
+  // don't split on mobile
+  @include media-query(palm-wide-and-up) {
+    @include absolute(top 0 bottom 0);
+
+    height: 100%;
+  }
+}
+
+.panel {
+  @extend %_panel;
+}
+
+.panel__item {
+  @extend %_panel__item;
+}
+
+.panel__item--left {
+  @extend %_panel__item;
+
+  left: 0;
+}
+
+.panel__item--right {
+  @extend %_panel__item;
+
+  right: 0;
+}
+
 
 .plain {
   text-decoration: none;
