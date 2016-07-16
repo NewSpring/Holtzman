@@ -17,9 +17,9 @@ export default class NavLink extends Component {
 
     let classes = [
       "floating__item",
-      "soft-sides@handheld",
-      "soft-half-ends@lap-and-up",
-      "one-whole@lap-and-up",
+      "soft-sides@palm",
+      "soft-half-ends@palm-wide-and-up",
+      "one-whole@palm-wide-and-up",
       "plain",
       css(styles.button),
     ];
@@ -44,8 +44,8 @@ export default class NavLink extends Component {
 
     let classes = [
       "floating",
-      "locked-ends@handheld",
-      "locked-sides@handheld",
+      "locked-ends@palm",
+      "locked-sides@palm",
     ];
 
     return classes.join(" ");

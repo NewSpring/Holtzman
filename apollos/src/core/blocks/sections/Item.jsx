@@ -67,13 +67,9 @@ const ChildItem = ({ section, go }) => {
   }
 
   const imageclasses = [
-    "overlay--solid-medium",
     "background--fill",
     "background--dark-tertiary",
-    "rounded",
-    "ratio--thin",
-    "floating--bottom",
-    "floating--left"
+    "ratio--square"
   ];
 
   return (
@@ -84,18 +80,24 @@ const ChildItem = ({ section, go }) => {
         onClick={go}
         id={section.id}
       >
-        <ImageLoader
-          src={section.image}
-          preloader={preloader}
-          renderElement={renderElement}
-          force={true}
-          imageclasses={imageclasses}
-          style={{backgroundImage: `url(${section.image})`}}
+      <div className="rounded one-whole grid rounded flush background--light-primary">
+        <div className="grid__item two-thirds hard" style={{verticalAlign: "middle"}}>
+          <h5 className="soft-left text-dark-primary flush-bottom">{section.text}</h5>
+        </div>
+        <div className="grid__item one-third hard" style={{verticalAlign: "middle"}}>
+          <ImageLoader
+            src={section.image}
+            preloader={preloader}
+            renderElement={renderElement}
+            force={true}
+            imageclasses={imageclasses}
+            style={{backgroundImage: `url(${section.image})`, borderRadius: "0px 6px 6px 0px"}}
           >
-          <div className="overlay__item floating__item ratio__item">
-            <h6 className="text-light-primary soft-left">{section.text}</h6>
-          </div>
-        </ImageLoader>
+            <div className="ratio__item"/>
+          </ImageLoader>
+        </div>
+      </div>
+
       </ExternalLinkWrapper>
     </div>
   )

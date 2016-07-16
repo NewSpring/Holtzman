@@ -19,7 +19,7 @@ export default ({ group, leaders, isLeader, join }) => (
     </div>
 
     {/* Group Information */}
-    <div style={{borderRadius: "0 0 3px 3px"}} className="push-double-sides@lap-and-up push-half-sides flush-ends card outlined outlined--light">
+    <div style={{borderRadius: "0 0 6px 6px"}} className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light">
       <div className="card__item soft">
         <h3 className="text-dark-primary push-half-top push-bottom">{group.name}</h3>
 
@@ -78,9 +78,12 @@ export default ({ group, leaders, isLeader, join }) => (
         </div>
       </div>
 
+      {/* General Information */}
       <div className="card outlined outlined--light hard one-whole">
         <div className="card__item push-half-top@handheld">
-          <div className="soft-left@lap-wide-and-up soft soft-double-bottom soft-half-bottom@handheld">
+          <div className="soft-left@lap-wide-and-up soft soft-double-bottom">
+
+            <h5 className="soft-half-ends">Group Details</h5>
 
             {/* Group Meeting Schedule */}
             {(() => {
@@ -89,9 +92,9 @@ export default ({ group, leaders, isLeader, join }) => (
               return (
                 <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
                   <h7 className="text-dark-secondary">Time</h7>
-                  <h5 className="text-dark-secondary soft-half-top flush-bottom">
+                  <h6 className="text-dark-secondary soft-half-top flush-bottom">
                     {group.schedule.description}
-                  </h5>
+                  </h6>
                 </div>
               );
             })()}
@@ -106,9 +109,9 @@ export default ({ group, leaders, isLeader, join }) => (
                   <h7 className="text-dark-secondary">
                     Address
                   </h7>
-                  <h5 className="text-dark-secondary soft-half-top flush-bottom">
+                  <h6 className="text-dark-secondary soft-half-top flush-bottom">
                     {loc.location.city}, {loc.location.state}
-                  </h5>
+                  </h6>
                 </div>
               );
             })()}
@@ -121,28 +124,39 @@ export default ({ group, leaders, isLeader, join }) => (
                   <h7 className="text-dark-secondary">
                     Campus
                   </h7>
-                  <h5 className="text-dark-secondary soft-half-top flush-bottom">
+                  <h6 className="text-dark-secondary soft-half-top flush-bottom">
                     {group.campus.name}
-                  </h5>
+                  </h6>
                 </div>
               );
             })()}
 
             {/* Group Information */}
-            <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
+            <div>
               <h7 className="text-dark-secondary">Information</h7>
-              <h5 className="text-dark-secondary soft-half-top flush-bottom">
+              <h6 className="text-dark-secondary soft-half-top flush-bottom">
                 {group.kidFriendly ? "Children Welcome" : "Adults Only"}
                 {group.ageRange ? `, ${group.ageRange[0]} - ${group.ageRange[1]}` : ""}
-              </h5>
+              </h6>
             </div>
+
+          </div>
+        </div>
+      </div>
+
+      {/* More Information */}
+      <div className="card outlined outlined--light hard one-whole">
+        <div className="card__item push-half-top@handheld">
+          <div className="soft-left@lap-wide-and-up soft soft-double-bottom">
+
+            <h5 className="soft-half-ends">More Information</h5>
 
             {/* Group Description */}
             <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
               <h7 className="text-dark-secondary">Description</h7>
-              <h5 className="text-dark-secondary soft-half-top flush-bottom">
+              <p className="soft-half-top flush-bottom">
                 {group.description}
-              </h5>
+              </p>
             </div>
 
             {/* Group Members */}
@@ -166,27 +180,26 @@ export default ({ group, leaders, isLeader, join }) => (
             </div>
 
             {/* Tags */}
-            <div className="soft-bottom">
+            <div>
               <h7 className="text-dark-secondary">Tags</h7>
               <div className="soft-half-top flush-bottom">
                 {group.tags && group.tags.map((tag, i) => (
-                  <span className="tag push-half-right" key={i}>{tag.value}</span>
+                  <span className="tag push-half-right flush-bottom" key={i}>{tag.value}</span>
                 ))}
                 {(() => {
                   if (!group.type || group.type === "Interests") return null;
-                  return <span className="tag push-half-right">{group.type}</span>;
+                  return <span className="tag push-half-right flush-bottom">{group.type}</span>;
                 })()}
                 {(() => {
                   if (!group.kidFriendly) return null;
-                  return <span className="tag push-half-right">kid friendly</span>;
+                  return <span className="tag push-half-right flush-bottom">kid friendly</span>;
                 })()}
                 {(() => {
                   if (!group.demographic) return null;
-                  return <span className="tag push-half-right">{group.demographic}</span>;
+                  return <span className="tag push-half-right flush-bottom">{group.demographic}</span>;
                 })()}
               </div>
             </div>
-
           </div>
         </div>
       </div>

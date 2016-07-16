@@ -46,8 +46,7 @@ export default class AccountsWithData extends Component {
   }
 
   render() {
-    const { person } = this.props.data;
-    return <AccountsContainer {...this.props} data={person} />
+    return <AccountsContainer {...this.props} />
   }
 }
 
@@ -134,38 +133,28 @@ class AccountsContainer extends Component {
   }
 
   goSignIn = (e) => {
-    if (e) {
-      e.preventDefault();
-    }
-
+    e && e.preventDefault();
     this.props.remember()
   }
 
   goBackToDefaultOnBoard = (e) => {
-    if (e) {
-      e.preventDefault();
-    }
-
+    e && e.preventDefault();
     this.props.resetAccount()
   }
 
   goForgotPassword = (e) => {
-    e.preventDefault();
+    e && e.preventDefault();
     this.props.forgot()
   }
 
   signout = (e) => {
     e.preventDefault()
     Meteor.logout()
-
     this.props.authorize(false)
   }
 
   setAccountWrapper = (bool) => {
-    this.setState({
-      account: null,
-    });
-
+    this.setState({ account: null });
     this.props.setAccount(bool)
   }
 
@@ -185,17 +174,10 @@ class AccountsContainer extends Component {
       resettingAccount,
     } = this.props.accounts
 
-    if (this.state.loading) {
-      state = "loading";
-    }
-
-
+    if (this.state.loading) state = "loading";
     let account = this.props.accounts.account
 
-    if (this.state.account != null) {
-      account = this.state.account
-    }
-
+    if (this.state.account != null) account = this.state.account;
 
     if (Object.keys(errors).length) {
       let primaryError;
@@ -206,14 +188,10 @@ class AccountsContainer extends Component {
       return <Err msg="There was an error" error={primaryError} />
     }
 
-
-
-
     if (state === "loading") {
       let msg = account ? "Signing you in..." : "Creating your account..."
       return <Loading msg={msg} />
     }
-
 
     if (forgot) {
       return (
@@ -257,7 +235,7 @@ class AccountsContainer extends Component {
       <SignIn
         save={this.props.save}
         clear={this.props.clear}
-        data={this.props.data || data}
+        data={data}
         errors={errors}
         account={account}
         state={state}
