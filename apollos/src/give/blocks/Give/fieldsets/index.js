@@ -4,7 +4,7 @@ import Billing from "./Billing"
 import Payment from "./Payment"
 import Confirm from "./Confirm"
 
-export default {
+export {
   Personal,
   Billing,
   Payment,

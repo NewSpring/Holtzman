@@ -11,7 +11,7 @@ import { modal } from "../../../core/store";
 
 import { give as giveActions } from "../../store"
 
-import { Personal, Payment, Billing, Confirm} from "./fieldsets"
+import { Personal, Payment, Billing, Confirm } from "./fieldsets"
 import Loading from "./Loading"
 import Err from "./Err"
 import Success from "./Success"
@@ -38,34 +38,18 @@ const mapQueriesToProps = () => ({
           nickName
           lastName
           email
-          campus {
-            name
-          }
-          home {
-            street1
-            street2
-            city
-            state
-            zip
-            country
-          }
+          campus { name, id: entityId }
+          home { street1, street2, city, state, zip, country }
         }
         savedPayments {
-          name
-          id
-          date
-          payment {
-            accountNumber
-            paymentType
-          }
+          name, id: entityId, date,
+          payment { accountNumber, paymentType }
         }
-        campuses {
-          name
-        }
+        campuses { name, id: entityId }
       }
     `,
     variables: { state: 28, country: 45 }
-  }
+  },
 });
 const defaultArray = []; // empty array for usage as default in render
 // We only care about the give state
@@ -77,7 +61,7 @@ const mapStateToProps = (state) => ({
 export default class Give extends Component {
 
   componentWillMount() {
-    this.updateData()
+    this.updateData(this.props)
 
     const { savedAccount } = this.props.give
     if (!savedAccount.id) return;
@@ -92,9 +76,13 @@ export default class Give extends Component {
     }
   }
 
-  updateData = () => {
+  componentWillReceiveProps(nextProps){
+    if (!nextProps.data.loading && this.props.data.loading){
+      this.updateData(nextProps);
+    }
+  }
 
-    const { data } = this.props
+  updateData = ({ data }) => {
     if (data.loading || !data.person) return;
 
     const { person } = data;
@@ -108,7 +96,8 @@ export default class Give extends Component {
         firstName: person.nickName || person.firstName,
         lastName: person.lastName,
         email: person.email,
-        campus: campus.name
+        campus: campus.name,
+        campusId: campus.id
       },
       billing: {
         streetAddress: home.street1,
@@ -127,16 +116,7 @@ export default class Give extends Component {
   onSubmit = (e) => {
     e.preventDefault()
     const { dispatch } = this.props
-
     dispatch(giveActions.submit())
-  }
-
-  goBack = (e) => {
-    e.preventDefault();
-    if (typeof window != "undefined" && window != null) {
-      window.history.back()
-    }
-
   }
 
   next = (e) => {
@@ -221,22 +201,13 @@ export default class Give extends Component {
     let { campuses, states, countries } = this.props.data
 
     campuses || (campuses = defaultArray);
-    campuses = campuses.map((x) => ({
-      label: x.name,
-      value: x.name
-    }))
+    campuses = campuses.map((x) => ({ label: x.name, value: x.id }));
 
     states || (states = defaultArray);
-    states = states.map((x) => ({
-      label: x.name,
-      value: x.value
-    }))
+    states = states.map((x) => ({ label: x.name, value: x.value }));
 
     countries || (countries = defaultArray);
-    countries = countries.map((x) => ({
-      label: x.name,
-      value: x.value
-    }))
+    countries = countries.map((x) => ({ label: x.name, value: x.value }));
 
 
     let save = (...args) => { this.props.dispatch(giveActions.save(...args)) }
@@ -258,7 +229,6 @@ export default class Give extends Component {
         />
       default:
         let Step;
-
         switch (step) {
           case 4:
             Step = Confirm

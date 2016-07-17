@@ -1,5 +1,5 @@
 
-import "./saga"
+// import "./saga"
 
 // Constants
 // taken from https://github.com/reactjs/react-router-redux/blob/master/src/index.js

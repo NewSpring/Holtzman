@@ -148,7 +148,6 @@ export default class Select extends Component {
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
 
     if (this.props.selected) { inputclasses.push("input--active") }
-
     return (
       <div className={inputclasses.join(" ") + ` ${css(SelectClasses.select)}`}>
         {(() => {

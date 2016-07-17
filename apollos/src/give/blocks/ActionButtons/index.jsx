@@ -32,13 +32,8 @@ const mapQueriesToProps = ({ ownProps }) => ({
       query: gql`
         query GetSavedPaymentAccounts {
           savedPayments {
-            name
-            id
-            date
-            payment {
-              accountNumber
-              paymentType
-            }
+            name, id: entityId, date,
+            payment { accountNumber, paymentType }
           }
         }
       `,
@@ -46,7 +41,8 @@ const mapQueriesToProps = ({ ownProps }) => ({
         // even though this is unused, we include it to trigger a recal when a person
         // logs in or logs out
         authorized: ownProps.authorized,
-      }
+      },
+      forceFetch: true,
     }
 });
 /*
@@ -88,7 +84,7 @@ export default class GiveNow extends Component {
       classes.push("has-card")
     }
 
-    if (this.props.disabled && this.props.authorized && Meteor.userId()) {
+    if (this.props.disabled && Meteor.userId()) {
       classes.push("btn--disabled")
     }
 
@@ -100,10 +96,7 @@ export default class GiveNow extends Component {
   }
 
   renderAfterLogin = () => {
-    if (this.props.disabled) {
-      return this.props.dispatch(modal.hide())
-    }
-
+    if (this.props.disabled) return this.props.dispatch(modal.hide())
     this.props.dispatch(modal.render(Give))
   }
 
@@ -187,20 +180,16 @@ export default class GiveNow extends Component {
         accountNumber = accountNumber.slice(-4).trim()
         text = `Review Using ${accountNumber}`
       }
-
-
     }
 
-    if (!Meteor.userId()) {
-      text = "Sign In"
-    }
+    if (!Meteor.userId()) text = "Sign In"
 
     return text
 
   }
 
   icon = () => {
-    if (this.props.savedPayments.savedPayments && this.props.authorized && !this.props.hideCard) {
+    if (this.props.savedPayments.savedPayments && !this.props.hideCard) {
       // const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       const detail = this.getAccount()
       if (detail.payment && detail.payment.paymentType === "ACH") {
@@ -212,9 +201,7 @@ export default class GiveNow extends Component {
           <AccountType width="30px" height="21px" type={detail.payment.paymentType} />
         )
       }
-
     }
-
   }
 
 
@@ -269,7 +256,6 @@ export default class GiveNow extends Component {
 
       )
     } catch (e) {
-      console.log(e)
       return null
     }
 

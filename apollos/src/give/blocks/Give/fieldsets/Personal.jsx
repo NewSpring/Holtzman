@@ -68,9 +68,7 @@ export default class Personal extends Component {
   }
 
   campus = (value) => {
-
-    this.props.save({ personal: { campus: value }})
-
+    this.props.save({ personal: { campusId: value }})
     return true
   }
 
@@ -84,6 +82,7 @@ export default class Personal extends Component {
 
     if (campuses.length === 0) {
       delete personal.campus
+      delete personal.campusId
     }
 
     return (
@@ -136,7 +135,7 @@ export default class Personal extends Component {
             type="campus"
             errorText="Please choose a campus"
             validation={this.campus}
-            defaultValue={personal.campus}
+            defaultValue={personal.campusId}
             ref="campus"
             includeBlank={true}
             items={campuses}
@@ -157,7 +156,7 @@ export default class Personal extends Component {
               // "push-left"
             ];
             let disabled = false
-            if (personal.email === null || personal.firstName === null || personal.email === null || personal.campus === null){
+            if (personal.email === null || personal.firstName === null || personal.email === null || personal.campusId === null){
               btnClasses.push("btn--disabled");
               disabled = true
             } else {

@@ -58,6 +58,7 @@ const Styles = () => (
         background-position: center;
         background-size: contain;
         cursor: pointer;
+        top: 1rem;
       }
 
         .DayPicker-NavButton--prev {

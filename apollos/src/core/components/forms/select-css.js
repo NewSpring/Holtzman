@@ -3,7 +3,7 @@ import { StyleSheet } from "aphrodite";
 export default StyleSheet.create({
   "select": {
     ":after": {
-      content: "",
+      content: '""',
       borderColor: "#858585 transparent transparent transparent",
       borderStyle: "solid",
       borderWidth: "6px 6px 0 6px",
