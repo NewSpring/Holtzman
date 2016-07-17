@@ -2,13 +2,14 @@
 // used to create the wrapper
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, browserHistory } from "react-router";
+import { applyRouterMiddleware, browserHistory, Router } from 'react-router';
 import InjectData from "./inject-data";
 import { StyleSheet } from "aphrodite";
+import useScroll from "react-router-scroll";
 
 export function run(routes, clientOptions = {}){
 
-  const history = clientOptions.history || browserHistory;
+  const history = browserHistory;
 
   const rootElementName = clientOptions.rootElement || 'react-app';
   const rootElementType = clientOptions.rootElementType || 'div';
@@ -38,6 +39,7 @@ export function run(routes, clientOptions = {}){
       <Router
         history={history}
         children={routes}
+        render={applyRouterMiddleware(useScroll())}
         {...clientOptions.props}
       />
     );

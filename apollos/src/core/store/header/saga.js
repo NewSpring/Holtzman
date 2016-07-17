@@ -1,62 +1,32 @@
-import { take, put, cps } from "redux-saga/effects"
+import { takeLatest } from "redux-saga";
+import { fork, put, cps, select } from "redux-saga/effects"
 import { addSaga } from "../utilities"
 
-addSaga(function* share(getStore) {
+const canRun = (
+  typeof window !== "undefined" && window !== null && window.StatusBar
+);
 
-  while (true) {
-    const { payload } = yield take("HEADER.SET")
-
-    let { header } = getStore()
-
-    if (
-      typeof window != "undefined" &&
-      window != null &&
-      window.StatusBar
-    ) {
-
-      if (header.content.color) {
-        StatusBar.backgroundColorByHexString(header.content.color)
-      }
-    }
+function* toogleHeader() {
+  let { header } = select()
+  if (canRun) {
+    if (!header.statusBar) StatusBar.hide()
+    if (header.statusBar) StatusBar.show()
   }
-});
+};
 
-addSaga(function* share(getStore) {
+function* setColor({ color}) {
+  if (canRun && color) StatusBar.backgroundColorByHexString(color);
+};
 
-  while (true) {
-    const { color } = yield take("STATUSBAR.SET")
-
-    if (
-      typeof window != "undefined" &&
-      window != null &&
-      window.StatusBar
-    ) {
-
-      if (color) {
-        StatusBar.backgroundColorByHexString(color)
-      }
-    }
+function* toogleHeader() {
+  let { header } = select()
+  if (canRun && header.content.color) {
+    StatusBar.backgroundColorByHexString(header.content.color);
   }
-});
+};
 
-addSaga(function* share(getStore) {
-
-  while (true) {
-    const { payload } = yield take("HEADER.TOGGLE_VISIBILITY")
-    let { header } = getStore()
-    if (
-      typeof window != "undefined" &&
-      window != null &&
-      window.StatusBar
-    ) {
-
-      if (!header.statusBar) {
-        StatusBar.hide()
-      }
-
-      if (header.statusBar) {
-        StatusBar.show()
-      }
-    }
-  }
-});
+addSaga(function* headerSaga() {
+  yield fork(takeLatest, "HEADER.TOGGLE_VISIBILITY", toogleHeader);
+  yield fork(takeLatest, "STATUSBAR.SET", setColor);
+  yield fork(takeLatest, "HEADER.SET", setColor)
+})

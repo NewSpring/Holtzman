@@ -58,7 +58,6 @@ export default class SubFund extends Component {
   }
 
   getFund = (id) => {
-    console.log(id, this.props.accounts)
     let selectedFund = this.props.accounts.filter((fund) => fund.value === id)
 
     return selectedFund[0]

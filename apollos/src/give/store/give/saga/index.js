@@ -2,7 +2,8 @@ import "regenerator-runtime/runtime"
 import React from "react";
 import ReactDOM from "react-dom"
 import Moment from "moment"
-import { take, put, cps, call } from "redux-saga/effects"
+import { takeLatest, takeEvery } from "redux-saga";
+import { fork, take, put, cps, call, select } from "redux-saga/effects"
 import gql from "graphql-tag";
 
 import { GraphQL } from "../../../../core/graphql"
@@ -18,15 +19,16 @@ import formatPersonDetails from "./formatPersonDetails"
 import { order, schedule, charge } from "../../../methods/give/client"
 // import RecoverSchedules from "../../../blocks/RecoverSchedules"
 
+// XXX break this file up into smaller files
 
 // at this point in time we have to do steps 1 - 3 of the
 // three step process to create a validation response
 // this validation process is required to ensure that the account
 // that is being used to make payments, is actually valid
 // see https://github.com/NewSpring/Apollos/issues/439 for discussion
-function* validate(getStore) {
+function* validate() {
 
-  const { give, campuses } = getStore(),
+  const { give } = yield select(),
     name = give.data.payment.name;
 
   let success = true,
@@ -43,7 +45,7 @@ function* validate(getStore) {
 
   // step 1 (sumbit personal details)
   // personal info is ready to be submitted
-  const formattedData = formatPersonDetails(modifiedGive, campuses)
+  const formattedData = formatPersonDetails(modifiedGive)
 
   // in order to make this a validation call, we need to set the amount
   // to be 9
@@ -83,144 +85,142 @@ function* validate(getStore) {
 }
 
 // handle the transactions
-addSaga(function* chargeTransaction(getStore) {
+function* chargeTransaction({ state }) {
 
-  while (true) {
-    let { state } = yield take(types.SET_STATE)
-    let { give, campuses } = getStore(),
-        name = give.data.payment.name,
-        action = charge,
-        error = false,
-        id;
+  if (state !== "submit") return;
 
-    if (state === "submit") {
+  let { give } = yield select(),
+      name = give.data.payment.name,
+      action = charge,
+      error = false,
+      id;
 
-      // set loading state
-      yield put(actions.loading())
+  // set loading state
+  yield put(actions.loading())
 
-      // personal info is ready to be submitted
-      const formattedData = formatPersonDetails(give, campuses)
+  // personal info is ready to be submitted
+  const formattedData = formatPersonDetails(give)
 
-      // if you have a saved account, NMI lets you "order" a schedule
-      // instead of order + charge
-      if (formattedData.savedAccount && Object.keys(give.schedules).length) {
-        // wrap the function for the same api
-        action = (token, name, id, callback) => {
-          Meteor.call("give/order", formattedData, true, id, callback)
-        }
+  // if you have a saved account, NMI lets you "order" a schedule
+  // instead of order + charge
+  if (formattedData.savedAccount && Object.keys(give.schedules).length) {
+    // wrap the function for the same api
+    action = (token, name, id, callback) => {
+      Meteor.call("give/order", formattedData, true, id, callback)
+    }
 
-      } else {
+  } else {
 
-        let store = getStore()
-        give = store.give
+    let store = yield select()
+    give = store.give
 
-        if (formattedData.savedAccount) {
-          // set people data and store transaction id
-          yield* submitPersonDetails(give, campuses, true)
-        }
+    if (formattedData.savedAccount) {
+      // set people data and store transaction id
+      yield* submitPersonDetails(give, true)
+    }
 
-        store = getStore()
-        give = store.give
+    store = yield select()
+    give = store.give
 
-        // wait until we have the transaction url
-        if (!give.url) {
-          let { url } = yield take(types.SET_TRANSACTION_DETAILS)
-          give.url = url
-        }
-
-      }
-
-      // get the token and name of the saved account
-      let token = give.url.split("/").pop();
-
-      if (Object.keys(give.schedules).length) {
-        // if there is not a saved account, charge the order
-        if (!formattedData.savedAccount) {
-          action = schedule
-
-          if (give.data.payment.type === "cc") {
-            // saved accounts don't validate the payment by default
-            // so we make 3 blocking requests to validate the card :(
-            let { success, validationError } = yield* validate(getStore)
-
-            if (validationError) {
-              error = validationError
-            }
-          }
-
-        }
-
-      }
-
-
-      if (give.scheduleToRecover && Object.keys(give.schedules).length) {
-        id = give.scheduleToRecover
-      }
-
-
-      let transactionResponse = {}
-      // submit transaction
-      try {
-        if (!error) {
-          transactionResponse = yield cps(action, token, name, id)
-        }
-      } catch (e) { error = e }
-
-      // set error states
-      if (error) {
-
-        yield put(actions.error({ transaction: error }))
-
-        // remove loading state
-        yield put(actions.setState("error"))
-
-      } else {
-
-        // remove loading state
-        yield put(actions.setState("success"))
-
-        // if we activated an inactive schedule, remove it
-        if (give.scheduleToRecover && give.recoverableSchedules[give.scheduleToRecover]) {
-          yield put(actions.deleteSchedule(give.scheduleToRecover))
-          yield put(actions.deleteRecoverableSchedules(give.scheduleToRecover))
-        }
-
-        // if this was a named card (as in creating a saved account)
-        // lets force and update of the payment cards and set it in the store
-        // @TODO this is a race condition against updates in Rock
-        // we don't have a way to optimistcally update this without it being a
-        // hacky work around. I think this can wait until Apollo is closer
-        // to revist
-        if (name) {
-          const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
-          let query = gql`
-            query GetSavedPayments {
-              savedPayments {
-                name
-                id
-                date
-                payment {
-                  accountNumber
-                  paymentType
-                }
-              }
-            }
-          `
-
-          // wait one second before calling this
-          yield call(delay, 1000)
-          yield GraphQL.query({ query })
-
-        }
-
-      }
-
+    // wait until we have the transaction url
+    if (!give.url) {
+      let { url } = yield take(types.SET_TRANSACTION_DETAILS)
+      give.url = url
     }
   }
 
-})
+  // get the token and name of the saved account
+  let token = give.url.split("/").pop();
+
+  if (Object.keys(give.schedules).length) {
+    // if there is not a saved account, charge the order
+    if (!formattedData.savedAccount) {
+      action = schedule
+
+      if (give.data.payment.type === "cc") {
+        // saved accounts don't validate the payment by default
+        // so we make 3 blocking requests to validate the card :(
+        let { success, validationError } = yield* validate()
+
+        if (validationError) {
+          error = validationError
+        }
+      }
+    }
+  }
+
+
+  if (give.scheduleToRecover && Object.keys(give.schedules).length) {
+    id = give.scheduleToRecover
+  }
+
+  let transactionResponse = {}
+  // submit transaction
+  try {
+    if (!error) {
+      transactionResponse = yield cps(action, token, name, id)
+    }
+  } catch (e) { error = e }
+
+  // set error states
+  if (error) {
+
+    yield put(actions.error({ transaction: error }))
+
+    // remove loading state
+    yield put(actions.setState("error"))
+
+  } else {
+
+    // remove loading state
+    yield put(actions.setState("success"))
+
+    // if we activated an inactive schedule, remove it
+    if (give.scheduleToRecover && give.recoverableSchedules[give.scheduleToRecover]) {
+      yield put(actions.deleteSchedule(give.scheduleToRecover))
+      yield put(actions.deleteRecoverableSchedules(give.scheduleToRecover))
+    }
+
+    // if this was a named card (as in creating a saved account)
+    // lets force and update of the payment cards and set it in the store
+    // @TODO this is a race condition against updates in Rock
+    // we don't have a way to optimistcally update this without it being a
+    // hacky work around. I think this can wait until Apollo is closer
+    // to revist
+    if (name) {
+      const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+      let query = gql`
+        query GetSavedPayments {
+          savedPayments {
+            name
+            id
+            date
+            payment {
+              accountNumber
+              paymentType
+            }
+          }
+        }
+      `
+
+      // wait one second before calling this
+      yield call(delay, 1000)
+      yield GraphQL.query({ query })
+    }
+  }
+}
+
 
 function* submitPaymentDetails(data, url) {
+
+  /*
+
+    Oddity with NMI, when using a saved account for a subscription,
+    you only submit the order, not the charge, etc
+
+  */
+  if (data.payment.type === "cc" && !data.payment.cardNumber) return;
+  if (data.payment.type === "ach" && !data.payment.accountNumber) return;
 
   const form = document.createElement("FORM")
 
@@ -256,7 +256,7 @@ function* submitPaymentDetails(data, url) {
 
   // @TODO test on older browsers
   // store data in NMI's system
-  return fetch(url, {
+  return yield fetch(url, {
       method: "POST",
       body: new FormData(form),
       mode: "no-cors"
@@ -271,10 +271,10 @@ function* submitPaymentDetails(data, url) {
 
 }
 
-function* submitPersonDetails(give, campuses, autoSubmit) {
+function* submitPersonDetails(give, autoSubmit) {
 
   // personal info is ready to be submitted
-  const formattedData = formatPersonDetails(give, campuses)
+  const formattedData = formatPersonDetails(give)
 
   /*
 
@@ -283,7 +283,7 @@ function* submitPersonDetails(give, campuses, autoSubmit) {
 
   */
   if (formattedData.savedAccount && Object.keys(give.schedules).length) {
-    return
+    return;
   }
 
   let error, url;
@@ -293,12 +293,6 @@ function* submitPersonDetails(give, campuses, autoSubmit) {
     url = response.url
 
   } catch (e) { error = e }
-
-  // @TODO show an error state here?
-  // because the transaction will fail anyway, it probably makes
-  // more sense to let the action procede. If we error here, which
-  // is before people *submit*, they may feel like we tried to charge
-  // them without asking
 
   if (autoSubmit) {
 
@@ -332,51 +326,34 @@ function* submitPersonDetails(give, campuses, autoSubmit) {
 }
 
 // transaction processing flow controller
-addSaga(function* createOrder(getStore) {
+function* createOrder() {
+  /*
 
-  // setup this saga to always be listening for actions
-  while (true) {
+    steps to give
 
-    /*
+    Full Steps
+    1. add person data
+    2. submit person data to NMI
+    3. get back transaction code
+    4. submit payment details to NMI
+    5. process transaction
+    6. handle success / errors
 
-      steps to give
+    Saved Account
+    1. submit person code to NMI
+    2. get back transaction code
+    3. process transaction
+    4. handle success / errors
 
-      Full Steps
-      1. add person data
-      2. submit person data to NMI
-      3. get back transaction code
-      4. submit payment details to NMI
-      5. process transaction
-      6. handle success / errors
-
-      Saved Account
-      1. submit person code to NMI
-      2. get back transaction code
-      3. process transaction
-      4. handle success / errors
-
-    */
-    const { step } = yield take(types.SET_PROGRESS)
-    let { give, campuses } = getStore()
-
-
-    if ((give.step - 1) === 2) {
-
-      // set people data and store transaction id
-      yield* submitPersonDetails(give, campuses, false)
-
-
-    } else if ((give.step - 1) === 3) {
-
-      yield submitPaymentDetails(give.data, give.url)
-
-    }
-
-
-
+  */
+  let { give } = yield select()
+  if ((give.step - 1) === 2) {
+    // set people data and store transaction id
+    yield* submitPersonDetails(give, false);
+  } else if ((give.step - 1) === 3) {
+    yield* submitPaymentDetails(give.data, give.url);
   }
-
-})
+}
 
 
 /*
@@ -398,7 +375,7 @@ addSaga(function* createOrder(getStore) {
 */
 
 // recover transactions
-// function* recoverTransactions(getStore) {
+// function* recoverTransactions() {
 //   let user = Meteor.userId()
 
 //   if (!user) {
@@ -454,7 +431,7 @@ addSaga(function* createOrder(getStore) {
 
 //     }
 
-//     let store = getStore()
+//     let store = yield select()
 //     let time = new Date()
 //     if (user && user.profile && user.profile.reminderDate) {
 //       time = user.profile.reminderDate
@@ -464,11 +441,9 @@ addSaga(function* createOrder(getStore) {
 //     yield put(actions.saveSchedules(bulkUpdate))
 
 //     // only update the store if it is past the reminder date
-//     if (now < time) {
-//       return
-//     }
+//     if (now < time) return
 
-//     let state = getStore();
+//     let state = yield select();
 //     let { pathname } = state.routing.location
 
 //     if (pathname.split("/").length === 4 && pathname.split("/")[3] === "recover" ) {
@@ -485,11 +460,11 @@ addSaga(function* createOrder(getStore) {
 // }
 
 // ensure we are on a /give route
-// addSaga(function* watchRoute(getStore){
+// addSaga(function* watchRoute(){
 
 //   while (true) {
 
-//     let state = getStore();
+//     let state = yield select();
 //     let { pathname } = state.routing.location,
 //         recovered;
 
@@ -502,12 +477,12 @@ addSaga(function* createOrder(getStore) {
 
 //       if (isGive(payload.pathname)) {
 
-//         recovered = yield* recoverTransactions(getStore)
+//         recovered = yield* recoverTransactions()
 //         break
 //       }
 
 //     } else {
-//       recovered = yield* recoverTransactions(getStore)
+//       recovered = yield* recoverTransactions()
 //       break
 //     }
 
@@ -519,11 +494,12 @@ addSaga(function* createOrder(getStore) {
 
 
 // clear out data on user change
-addSaga(function* bindGiveAuth(geStore){
+function* clearGiveData({ authorized }){
+  if (!authorized) yield put(actions.clearData())
+}
 
-  while (true) {
-    const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED")
-    if (!authorized) yield put(actions.clearData())
-  }
-
+addSaga(function* accountsSaga(){
+  yield fork(takeEvery, types.SET_STATE, chargeTransaction);
+  yield fork(takeEvery, types.SET_PROGRESS, createOrder);
+  yield fork(takeEvery, "ACCOUNTS.IS_AUTHORIZED", clearGiveData);
 })

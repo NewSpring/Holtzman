@@ -106,22 +106,18 @@ function charge(token, accountName) {
 
 
     if (accountName) {
-
       formatedTransaction.meta.FinancialPersonSavedAccounts = {
         Name: accountName,
         ReferenceNumber: response["customer-vault-id"],
         TransactionCode: response["transaction-id"],
         FinancialGatewayId: api._.give.gateway.id
       }
-
     }
-
 
     if (response.billing["cc-number"]) {
       formatedTransaction.FinancialPaymentDetail = CC
     } else {
       formatedTransaction.FinancialPaymentDetail = Check
-
     }
 
     if (!Array.isArray(response.product)) {
@@ -150,10 +146,7 @@ function charge(token, accountName) {
       })
     }
 
-
-    TransactionReciepts.insert(formatedTransaction, () => {
-
-    })
+    TransactionReciepts.insert(formatedTransaction, () => {});
   }
 
   const returnReponse = _.pick(response,

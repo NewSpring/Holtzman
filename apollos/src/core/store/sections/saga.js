@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime"
 
-import { take, put } from "redux-saga/effects"
+import { fork, put } from "redux-saga/effects"
 import gql from "graphql-tag";
 import { addSaga } from "../utilities"
 import { GraphQL } from "../../graphql";
@@ -8,8 +8,7 @@ import { GraphQL } from "../../graphql";
 // XXX abstract action creators to file that isn't index
 const set = (content) => ({ type: "SECTIONS.SET_CONTENT", content })
 
-addSaga(function* sectionsSaga(getState) {
-
+function* getSectionsData(){
   if (Meteor.isServer) return;
 
   const site = process.env.NATIVE ? "newspring-app" : "newspring-main";
@@ -163,5 +162,8 @@ addSaga(function* sectionsSaga(getState) {
 
   // update the content and end the saga (not a daemon)
   yield put(set(navigation))
+}
 
+addSaga(function* sectionsSaga(getState) {
+  yield fork(getSectionsData)
 })

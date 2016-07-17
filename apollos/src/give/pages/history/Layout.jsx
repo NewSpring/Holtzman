@@ -81,7 +81,7 @@ const TransactionDetail = ({ transactionDetail, transaction, icon, status, failu
   </div>
 )
 
-const TransactionCard = ({ transactionDetail, transaction }) => {
+export const TransactionCard = ({ transactionDetail, transaction }) => {
   let { status } = transaction;
 
   /*
