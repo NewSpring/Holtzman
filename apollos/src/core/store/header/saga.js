@@ -6,7 +6,7 @@ const canRun = (
   typeof window !== "undefined" && window !== null && window.StatusBar
 );
 
-function* toogleHeader() {
+function* toggleHeader() {
   let { header } = select()
   if (canRun) {
     if (!header.statusBar) StatusBar.hide()
@@ -14,11 +14,11 @@ function* toogleHeader() {
   }
 };
 
-function* setColor({ color}) {
+function* setColor({ color }) {
   if (canRun && color) StatusBar.backgroundColorByHexString(color);
 };
 
-function* toogleHeader() {
+function* setColorFromHeader() {
   let { header } = select()
   if (canRun && header.content.color) {
     StatusBar.backgroundColorByHexString(header.content.color);
@@ -26,7 +26,7 @@ function* toogleHeader() {
 };
 
 addSaga(function* headerSaga() {
-  yield fork(takeLatest, "HEADER.TOGGLE_VISIBILITY", toogleHeader);
+  yield fork(takeLatest, "HEADER.TOGGLE_VISIBILITY", toggleHeader);
   yield fork(takeLatest, "STATUSBAR.SET", setColor);
-  yield fork(takeLatest, "HEADER.SET", setColor)
+  yield fork(takeLatest, "HEADER.SET", setColorFromHeader)
 })
