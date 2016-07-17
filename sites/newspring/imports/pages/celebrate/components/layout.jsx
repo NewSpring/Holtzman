@@ -2,8 +2,8 @@
 import React, { Component, PropTypes } from "react"
 import { css } from "aphrodite";
 
-import ImageLoader from "apollos/lib/core/components/loading/ImageLoader"
-import Styles from "apollos/lib/core/components/loading/FeedItemSkeleton-css"
+import ImageLoader from "apollos/dist/core/components/loading/ImageLoader"
+import Styles from "apollos/dist/core/components/loading/FeedItemSkeleton-css"
 
 export const Stats = ({ children, className }) => (
   <div className={`soft-top soft-sides soft-double-top@lap-and-up ${className}`}>
