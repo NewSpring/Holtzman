@@ -7,20 +7,25 @@ const canRun = (
 );
 
 function* toggleHeader() {
+  console.log("toggleHeader");
   let { header } = select()
   if (canRun) {
+    console.log("toggleHeader can run");
     if (!header.statusBar) StatusBar.hide()
     if (header.statusBar) StatusBar.show()
   }
 };
 
 function* setColor({ color }) {
+  console.log("setColor", color);
   if (canRun && color) StatusBar.backgroundColorByHexString(color);
 };
 
 function* setColorFromHeader() {
   let { header } = select()
+  console.log("setColorFromHeader", header);
   if (canRun && header.content.color) {
+    console.log("setColorFromHeader can run");
     StatusBar.backgroundColorByHexString(header.content.color);
   }
 };
