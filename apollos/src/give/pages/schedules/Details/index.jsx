@@ -21,19 +21,8 @@ const mapQueriesToProps = ({ ownProps }) => ({
           title
           channelName
           status
-          meta {
-            summary
-            urlTitle
-          }
-          content {
-            images {
-              fileName
-              fileType
-              fileLabel
-              s3
-              cloudfront
-            }
-          }
+          meta { summary, urlTitle }
+          content { images { fileName, fileType, fileLabel, s3, cloudfront } }
         }
       }
     `,
@@ -47,31 +36,24 @@ const mapQueriesToProps = ({ ownProps }) => ({
     query: gql`
       query GetScheduleTransaction($scheduleTransactionId: ID!) {
         transaction: node(id: $scheduleTransactionId) {
-          id
           ... on ScheduledTransaction {
             numberOfPayments
             next
             end
-            id
+            id: entityId
             reminderDate
             gateway
             start
             date
-            details {
-              amount
-              account {
-                name
-                description
-              }
-            }
-            payment {
-              paymentType
-              accountNumber
+            details { amount, account { name, description } }
+            payment { paymentType, accountNumber, id }
+            schedule { value, description }
+            transactions {
               id
-            }
-            schedule {
-              value
-              description
+              date
+              status
+              summary
+              details { id, amount, account { id, name } }
             }
           }
         }
@@ -97,9 +79,7 @@ export default class Details extends Component {
   componentWillUnmount() {
     this.props.dispatch(navActions.setLevel("TOP"))
     if (this.state.removed) {
-      // XXX need to clean up after launch
       this.props.dispatch(giveActions.deleteSchedule(this.state.removed))
-      this.props.dispatch(transactionActions.removeSchedule(this.state.removed))
     }
   }
 
@@ -109,7 +89,7 @@ export default class Details extends Component {
 
     this.props.dispatch(modalActions.render(Confirm, {
       onFinished: () => {
-        const { id, gateway } = this.props.transactions[Number(this.props.params.id)]
+        const { id, gateway } = this.props.data.transaction;
 
         this.setState({isActive: false, removed: id})
         Meteor.call("give/schedule/cancel", {id, gateway}, (err, response) => {

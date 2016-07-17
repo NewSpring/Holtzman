@@ -2,7 +2,7 @@
 import give from "./give/server"
 import paymentAccounts from "./paymentAccounts/server"
 
-export default {
+export {
   give,
   paymentAccounts,
 }

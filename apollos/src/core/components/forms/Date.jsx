@@ -39,24 +39,15 @@ export default class DateComponent extends Component {
   }
 
   toggle = (e) => {
-    this.setState({
-      showDatePicker: !this.state.showDatePicker
-    })
+    this.setState({ showDatePicker: !this.state.showDatePicker })
     setTimeout(() => {
       this.fixPickerPosition();
     }, 200);
   }
 
-  onDayClick = (e, day, modifiers) => {
-
-    if (modifiers.indexOf("disabled") > -1) {
-      return
-    }
-
-    this.setState({
-      selectedDay: modifiers.indexOf("selected") > -1 ? null : day
-    });
-
+  onDayClick = (e, day, { selected, disabled }) => {
+    if (disabled) return
+    this.setState({ selectedDay: selected ? null : day });
   }
 
 
@@ -79,7 +70,8 @@ export default class DateComponent extends Component {
       formatMonthTitle: (d, locale) => `${MONTHS[locale][d.getMonth()]} ${d.getFullYear()}`,
       formatWeekdayShort: (i, locale) => WEEKDAYS_SHORT[locale][i],
       formatWeekdayLong: (i, locale) => WEEKDAYS_LONG[locale][i],
-      getFirstDayOfWeek: (locale) => 0
+      getFirstDayOfWeek: (d) => 0,
+      formatDay: (d, l) => d.toDateString(),
     }
 
     let formattedDay = selectedDay && selectedDay.toLocaleDateString()

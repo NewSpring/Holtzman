@@ -182,16 +182,7 @@ class CartContainer extends Component {
 
   render () {
 
-    // XXX put give give back together
-    return (
-      <h3 className="text-dark-tertiary push-double-bottom">
-        Giving is currently disabled for this build of the beta app
-      </h3>
-    )
-
-    if (!this.props.alive) {
-      return <Offline />
-    }
+    if (!this.props.alive) return <Offline />
 
     const { transactions } = this.props.give
 
@@ -202,7 +193,6 @@ class CartContainer extends Component {
       { label: "once a month", value: "Monthly" },
     ]
 
-    console.log(this.props)
     let mappedAccounts = this.props.accounts.map((x) => ({
       value: x.id,
       label: x.name
@@ -234,7 +224,6 @@ class CartContainer extends Component {
         />
       )
     } catch (e) {
-      console.log(e);
     }
 
   }

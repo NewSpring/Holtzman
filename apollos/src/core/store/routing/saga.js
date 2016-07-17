@@ -1,23 +1,10 @@
 
 import "regenerator-runtime/runtime"
-import { take, put, cps } from "redux-saga/effects"
+import { takeLatest } from "redux-saga";
+import { fork, put, cps } from "redux-saga/effects"
 
 // import { routing as log } from "../../methods"
 import { addSaga } from "../utilities"
-
-addSaga(function* scrollToTop(getStore) {
-
-  while (true) {
-
-    const { payload } = yield take("@@router/UPDATE_LOCATION")
-
-    if (payload.action === "PUSH") {
-      window.scrollTo(0, 0)
-    }
-
-  }
-
-})
 
 // addSaga(function* logInitRoute() {
 //

@@ -1,5 +1,6 @@
 import "regenerator-runtime/runtime"
-import { take, put, cps, call } from "redux-saga/effects"
+import { takeLatest, takeEvery } from "redux-saga";
+import { fork, put, cps, call, select } from "redux-saga/effects"
 import gql from "graphql-tag";
 
 import { GraphQL } from "../../graphql"
@@ -8,90 +9,77 @@ import { addSaga } from "../utilities"
 
 import actions from "./actions"
 
+let inFlight = false;
 // Check for availibilty of account
-addSaga(function* checkAccount(getState) {
+function* checkAccount({ data }) {
+  const { email } = data
+  // if the event was triggered by email check to see if it available
+  if (!email || inFlight) return;
 
-  // setup this saga to always be listening for actions
-  while (true) {
+  // only make one request at a time
+  inFlight = true;
+  // make call to Rock to check if account is open
+  let {
+    isAvailable,
+    alternateAccounts,
+    peopleWithoutAccountEmails,
+  } = yield cps(accounts.available, email);
 
-    // wait for the email field to be blurred
-    const { data } = yield take("ACCOUNTS.SET_DATA")
-    const { email } = data
+  inFlight = false;
+  // end the run of this saga iteration by setting account
+  yield put(actions.setAccount(!isAvailable))
+  yield put(actions.setAlternateAccounts(alternateAccounts))
+  yield put(actions.peopleWithoutAccountEmails(peopleWithoutAccountEmails))
 
-    // if the event was triggered by email check to see if it available
-    if (email) {
-      // make call to Rock to check if account is open
-      let {
-        isAvailable,
-        alternateAccounts,
-        peopleWithoutAccountEmails,
-      } = yield cps(accounts.available, email)
+}
 
-      // end the run of this saga iteration by setting account
-      yield put(actions.setAccount(!isAvailable))
-      yield put(actions.setAlternateAccounts(alternateAccounts))
-      yield put(actions.peopleWithoutAccountEmails(peopleWithoutAccountEmails))
+function* completeAccount() {
+  const state = yield select();
+  const { email, personId } = state.accounts.data
+  let created = false, error;
 
-    }
-
+  // XXX dead code removal broke this
+  function canComplete() {
+    return state.accounts.data.email && state.accounts.data.personId
   }
+  if (canComplete()) {
 
-})
+    // set the UI to show the loading screen
+    yield put(actions.loading())
 
-addSaga(function* completeAccount(getState) {
-
-  while (true) {
-
-    // wait until we are trying to complete an account
-    yield take("ACCOUNTS.COMPLETE_ACCOUNT")
-    const state = getState()
-    const { email, personId } = state.accounts.data
-    let created = false, error;
-
-    // XXX dead code removal broke this
-    function wut() {
-      return state.accounts.data.email && state.accounts.data.personId
+    try {
+      created = yield cps(accounts.recover, email, personId)
+    } catch (e) {
+      error = e
     }
-    if (wut()) {
 
-      // set the UI to show the loading screen
-      yield put(actions.loading())
+    if (created) {
+      // reset the UI
+      yield put(actions.setState("default"))
 
-      try {
-        created = yield cps(accounts.recover, email, personId)
-      } catch (e) {
-        error = e
-      }
+    } else {
 
-      if (created) {
-      
-        // reset the UI
-        yield put(actions.setState("default"))
+      // add error to store
+      yield put(actions.error({ "password": error }))
 
-      } else {
+      // remove the recover account settings
+      yield put(actions.resetAccount())
 
-        // add error to store
-        yield put(actions.error({ "password": error }))
+      // set not logged in status
+      yield put(actions.authorize(false))
 
-        // remove the recover account settings
-        yield put(actions.resetAccount())
+      // fail the form
+      yield put(actions.fail())
 
-        // set not logged in status
-        yield put(actions.authorize(false))
+      // reset the UI
+      yield put(actions.setState("default"))
 
-        // fail the form
-        yield put(actions.fail())
-
-        // reset the UI
-        yield put(actions.setState("default"))
-
-      }
     }
   }
-})
+}
 
-function* login(getState) {
-  const currentState = getState()
+function* login() {
+  const currentState = yield select()
   const { data, state } = currentState.accounts
 
   if (data.email && data.password) {
@@ -123,8 +111,8 @@ function* login(getState) {
 
 }
 
-function* signup(getState) {
-  const currentState = getState()
+function* signup() {
+  const currentState = yield select()
   const { data, state } = currentState.accounts
 
   // shorthand for 80 ch limit
@@ -160,110 +148,100 @@ function* signup(getState) {
 }
 
 // handle accounts wordflow
-addSaga(function* account(getState) {
+function* onboard({ state }) {
+  if (state !== "submit") return;
 
-  // setup this saga to always be listening for actions
-  while (true) {
+  let currentState = yield select(),
+      returnValue = false;
 
-    const { state } = yield take("ACCOUNTS.SET_STATE")
-
-    if (state === "submit") {
-      let currentState = getState(),
-          returnValue = false;
-
-      if (currentState.accounts.account) {
-        returnValue = yield* login(getState)
-      } else {
-        returnValue = yield* signup(getState)
-      }
-
-      if (returnValue) {
-        let { result, error } = returnValue
-
-        if (error) {
-          // add error to store
-          yield put(actions.error({ "password": error.error }))
-
-          // set not logged in status
-          yield put(actions.authorize(false))
-
-          // fail the form
-          yield put(actions.fail())
-
-          // reset the UI
-          yield put(actions.setState("default"))
-
-        } else {
-
-          const query = gql`
-            query GetPersonData {
-              person: currentPerson {
-                id
-                age
-                birthDate
-                birthDay
-                birthMonth
-                birthYear
-                campus {
-                  name
-                  shortCode
-                  id
-                }
-                home {
-                  city
-                  country
-                  id
-                  zip
-                  state
-                  street1
-                  street2
-                }
-                firstName
-                lastName
-                nickName
-                email
-                photo
-              }
-            }
-          `;
-
-          // forceFetch for someone signs out and signs back in again
-          const { data } = yield GraphQL.query({ query, forceFetch: true });
-          const { person } = data;
-
-          if (person) {
-            yield put(actions.person(person))
-          }
-
-          // set the logged in status
-          yield put(actions.authorize(true))
-
-          // succeed the form
-          yield put(actions.success())
-
-          let user = Meteor.user()
-
-          // if this is the first login, show welcome
-          if (!user || !user.profile || !user.profile.lastLogin) {
-            yield put(actions.showWelcome())
-          }
-
-          // reset the UI
-          yield put(actions.setState("default"))
-
-          // update login time
-          Meteor.users.update(Meteor.userId(), {
-            $set: {
-              "profile.lastLogin": new Date()
-            }
-          })
-
-        }
-      }
-
-
-    }
-
+  if (currentState.accounts.account) {
+    returnValue = yield* login()
+  } else {
+    returnValue = yield* signup()
   }
 
+  if (returnValue) {
+    let { result, error } = returnValue
+
+    if (error) {
+      // add error to store
+      yield put(actions.error({ "password": error.error }))
+
+      // set not logged in status
+      yield put(actions.authorize(false))
+
+      // fail the form
+      yield put(actions.fail())
+
+      // reset the UI
+      yield put(actions.setState("default"))
+
+    } else {
+
+      const query = gql`
+        query GetPersonData {
+          person: currentPerson {
+            id
+            age
+            birthDate
+            birthDay
+            birthMonth
+            birthYear
+            campus {
+              name
+              shortCode
+              id
+            }
+            home {
+              city
+              country
+              id
+              zip
+              state
+              street1
+              street2
+            }
+            firstName
+            lastName
+            nickName
+            email
+            photo
+          }
+        }
+      `;
+
+      // forceFetch for someone signs out and signs back in again
+      const { data } = yield GraphQL.query({ query, forceFetch: true });
+      const { person } = data;
+
+      if (person) yield put(actions.person(person))
+
+      // set the logged in status
+      yield put(actions.authorize(true))
+
+      // succeed the form
+      yield put(actions.success())
+
+      let user = Meteor.user()
+
+      // if this is the first login, show welcome
+      if (!user || !user.profile || !user.profile.lastLogin) {
+        yield put(actions.showWelcome())
+      }
+
+      // reset the UI
+      yield put(actions.setState("default"))
+
+      // update login time
+      Meteor.users.update(Meteor.userId(), {
+        $set: { "profile.lastLogin": new Date() }
+      });
+    }
+  }
+}
+
+addSaga(function* accountsSaga(){
+  yield fork(takeEvery, "ACCOUNTS.SET_DATA", checkAccount);
+  yield fork(takeLatest, "ACCOUNTS.COMPLETE_ACCOUNT", completeAccount);
+  yield fork(takeEvery, "ACCOUNTS.SET_STATE", onboard);
 })

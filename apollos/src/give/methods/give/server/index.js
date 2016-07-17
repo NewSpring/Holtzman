@@ -3,7 +3,7 @@ import charge from "./charge.js"
 import schedule from "./schedule"
 import voidTransaction from "./void"
 
-export default {
+export {
   order,
   charge,
   schedule,

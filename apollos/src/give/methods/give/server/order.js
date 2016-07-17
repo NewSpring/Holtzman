@@ -7,25 +7,15 @@ import createSchedule from "./createSchedule"
 function order(orderData, instant, id){
 
   let user = null
-  if (this.userId) {
-    user = Meteor.users.findOne({_id: this.userId})
-  }
+  if (this.userId) user = Meteor.users.findOne({_id: this.userId})
 
   // default to sale
   let method = "sale"
 
   // offline order using saved account
-  if (orderData.savedAccount) {
-    method = "sale"
-  }
-
-  if (orderData["start-date"]) {
-    method = "add-subscription"
-  }
-
-  if (orderData.amount === 0) {
-    method = "validate"
-  }
+  if (orderData.savedAccount) method = "sale";
+  if (orderData["start-date"]) method = "add-subscription";
+  if (orderData.amount === 0) method = "validate";
 
   if (user && user.services.rock && method != "add-subscription") {
     orderData["customer-id"] = user.services.rock.PrimaryAliasId
@@ -33,7 +23,9 @@ function order(orderData, instant, id){
 
 
   if (orderData.savedAccount) {
-    let accountDetails = api.get.sync(`FinancialPersonSavedAccounts/${orderData.savedAccount}`)
+    let accountDetails = api.get.sync(
+      `FinancialPersonSavedAccounts/${orderData.savedAccount}`
+    );
 
     delete orderData.savedAccount
     delete orderData.savedAccountName
@@ -55,26 +47,16 @@ function order(orderData, instant, id){
     orderData["ip-address"] = ip
 
     // strongly force CVV on acctions that aren't a saved account
-    if (!orderData["customer-vault-id"]) {
-      orderData["cvv-reject"] = "P|N|S|U"
-    }
+    if (!orderData["customer-vault-id"]) orderData["cvv-reject"] = "P|N|S|U";
   }
 
   try {
-
-    let response = Meteor.wrapAsync(gatewayOrder)(orderData, method)
-    if (instant) {
-      response = createSchedule(response, null, id, user)
-    }
+    let response = Meteor.wrapAsync(gatewayOrder)(orderData, method);
+    if (instant) response = createSchedule(response, null, id, user);
     return response
-
-
   } catch (e) {
     throw new Meteor.Error(e.message)
   }
-
-
-
 
 }
 

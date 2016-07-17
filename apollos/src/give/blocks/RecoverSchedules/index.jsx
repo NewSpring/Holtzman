@@ -49,8 +49,6 @@ export default class RecoverSchedules extends Component {
     this.props.dispatch(giveActions.clearData())
     this.setState({state: "later"})
 
-
-
   }
 
 
