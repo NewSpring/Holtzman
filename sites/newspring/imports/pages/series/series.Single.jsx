@@ -70,6 +70,9 @@ export default class SeriesSingle extends Component {
   componentWillMount() {
     if (process.env.WEB) return;
 
+    // needed for cached data
+    this.handleHeaderStyle(this.props);
+
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
@@ -78,6 +81,10 @@ export default class SeriesSingle extends Component {
   }
 
   componentWillUpdate(nextProps) {
+    this.handleHeaderStyle(nextProps);
+  }
+
+  handleHeaderStyle = (nextProps) => {
     const { content } = nextProps.series;
     if(!content) return;
 
