@@ -35,8 +35,7 @@ const createSchedule = (response, accountName, id, user) => {
       }
     }
 
-    return null
-
+    return null;
   }
 
   let card = getCardType(response.billing["cc-number"])

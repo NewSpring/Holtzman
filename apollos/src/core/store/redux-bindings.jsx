@@ -3,7 +3,7 @@ import "regenerator-runtime/runtime"
 import { Component, PropTypes } from "react"
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
 import { ApolloProvider } from "react-apollo"
-import sagaMiddleware from "redux-saga"
+import createSagaMiddleware from "redux-saga"
 
 import { GraphQL } from "../graphql";
 
@@ -22,17 +22,15 @@ const createReduxStore = (initialState, history) => {
     apollo: GraphQL.reducer(),
   }};
 
-  let convertedSagas = sagas.map((saga) => (saga()));
-
   let sharedMiddlewares = [...middlewares, ...GraphQL.middleware()];
 
-  const sagaMiddleware = require("redux-saga").default;
   const reduxRouterMiddleware = syncHistory(history);
 
+  const sagaMiddleware = createSagaMiddleware();
   let sharedCompose = [
     applyMiddleware(
       ...sharedMiddlewares,
-      sagaMiddleware(...convertedSagas),
+      sagaMiddleware,
       reduxRouterMiddleware
     ),
   ];
@@ -43,10 +41,13 @@ const createReduxStore = (initialState, history) => {
     ]];
   }
 
-
-  return compose(...sharedCompose)(createStore)(
+  const store = compose(...sharedCompose)(createStore)(
     combineReducers(joinedReducers), initialState
   );
+
+  sagas.forEach(saga => sagaMiddleware.run(saga()));
+
+  return store;
 
 };
 

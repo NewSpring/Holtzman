@@ -73,6 +73,7 @@ const initial = {
       lastName: null, // String
       email: null, // String
       campus: null, // String
+      campusId: null, // Number
     },
     billing: {
       streetAddress: null, // String

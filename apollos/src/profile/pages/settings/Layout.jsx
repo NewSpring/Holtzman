@@ -40,7 +40,7 @@ const Layout = ({ person , children, mobile, onUpload }) => (
 
     </Split>
 
-    <Left scroll={true} classes={!mobile ? ["locked-ends@handheld", "locked-sides@handheld", "scrollable", "background--light-primary"] : ["background--light-primary"]}>
+    <Left scroll={true} classes={!mobile ? ["locked-ends@palm", "locked-sides@palm", "scrollable", "background--light-primary"] : ["background--light-primary"]}>
       {children}
     </Left>
   </div>

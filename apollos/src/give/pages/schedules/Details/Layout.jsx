@@ -9,6 +9,8 @@ import SideBySide from "../../../../core/components/cards/SideBySide"
 import Meta from "../../../../core/components/meta"
 
 import { AccountType } from "../../../components"
+import { TransactionCard } from "../../history/Layout";
+
 
 export default class Layout extends Component {
 
@@ -168,8 +170,72 @@ export default class Layout extends Component {
               </div>
             </div>
 
+
+
             <div className="soft-half soft-sides@portable soft-double-sides@anchored">
 
+              {(() => {
+                if (!schedule) return null;
+                let { transactions } = schedule;
+                if (!transactions.length && ready) {
+                  return (
+                    <div className="text-left soft-double-top soft-half-sides">
+                      <p>
+                        We didn't find any contributions associated with this schedule.
+                      </p>
+                      <p><em>If you have any questions, please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a> and someone will be happy to assist you.</em></p>
+                    </div>
+                  )
+                }
+
+                let lastYear = null
+                return (
+                  <div>
+                  <h4 className="soft soft-double-ends text-center flush-bottom">
+                    Contributions from this Schedule
+                  </h4>
+                  {transactions.map((transaction, key) => {
+                    let { details } = transaction
+                    return (
+                      <div key={key}>
+                        {details.map((transactionDetail, i) => {
+                          if (!transactionDetail.account) return null
+
+                          if (Number(transactionDetail.amount) <= 0) return null
+
+                          let year = Moment(transaction.date).year()
+                          if (year != lastYear) {
+                            lastYear = year
+                            return (
+                              <div key={i}>
+                                <div className="soft text-left">
+                                  <h5>{year}</h5>
+                                </div>
+                                <TransactionCard
+                                  transaction={transaction}
+                                  transactionDetail={transactionDetail}
+                                />
+                              </div>
+                            )
+
+                          }
+
+                          return (
+                            <TransactionCard
+                              transaction={transaction}
+                              transactionDetail={transactionDetail}
+                              key={i}
+                            />
+                          )
+                        })}
+                      </div>
+                    )
+                  })}
+                  </div>
+                )
+              })()}
+
+              <hr className="push-double-top flush-bottom"/>
               <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
                 Recent Articles About Giving
               </h4>

@@ -183,9 +183,9 @@ export default class Confirm extends Component {
     return (
       <div className="display-inline-block one-whole" key={key}>
 
-        <p>
-          Starting on {Moment(schedule.start).format("MMM D, YYYY")}, I will give <span clasName="text-primary">{this.monentize(this.props.total)}</span> to {schedule.label}. This will occur {schedule.frequency}.
-        </p>
+        <h5 className="text-dark-secondary text-left">
+          Starting on {Moment(schedule.start).format("MMM D, YYYY")}, I will give <span className="text-primary">{this.monentize(this.props.total)}</span> to {schedule.label}. This will occur {schedule.frequency.toLowerCase()}.
+        </h5>
 
       </div>
 
