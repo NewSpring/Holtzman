@@ -37,7 +37,7 @@ export default class Header extends Component {
     }
 
     if (!this.props.visible) {
-      return null;
+      return <Live />;
     }
 
     return (
