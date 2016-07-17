@@ -8,7 +8,7 @@ const canRun = (
 
 function* toggleHeader() {
   console.log("toggleHeader");
-  let { header } = select()
+  let { header } = yield select()
   if (canRun) {
     console.log("toggleHeader can run");
     if (!header.statusBar) StatusBar.hide()
@@ -22,7 +22,7 @@ function* setColor({ color }) {
 };
 
 function* setColorFromHeader() {
-  let { header } = select()
+  let { header } = yield select()
   console.log("setColorFromHeader", header);
   if (canRun && header.content.color) {
     console.log("setColorFromHeader can run");
