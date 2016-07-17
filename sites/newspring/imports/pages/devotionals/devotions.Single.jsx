@@ -101,6 +101,8 @@ export default class SeriesSingle extends Component {
     // an issue with the z-index and the arrow
     // from the header.
     this.props.dispatch(liveActions.hide());
+    // for cached data
+    this.handleLiveBar(this.props, this.state);
 
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
@@ -116,15 +118,19 @@ export default class SeriesSingle extends Component {
     this.props.dispatch(liveActions.unfloat());
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    this.handleLiveBar(nextProps, nextState);
+  }
+
   // if has scripture and live re-enabled
   // the live bar
   // else apply float styles to the bar so it
   // will display below the fixed header
-  componentWillUpdate(nextProps, nextState) {
-    const { liveSet } = nextState;
-    const { content } = nextProps.devotion;
+  handleLiveBar = (props, state) => {
+    const { liveSet } = state;
+    const { content } = props.devotion;
     // XXX
-    // const { live } = nextProps.live;
+    // const { live } = props.live;
     const live = true;
 
     if (liveSet || !live || !content) return;
