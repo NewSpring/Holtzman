@@ -7,6 +7,8 @@ import { Motion, spring } from "react-motion";
 
 import Styles from "./live-css";
 
+import liveActions from "apollos/dist/core/store/live";
+
 const mapQueriesToProps = ({ ownProps, state }) => {
   return {
     data: {
@@ -35,7 +37,7 @@ export default class Live extends Component {
       "display-inline-block",
       "plain",
       "one-whole",
-      css(Styles["live-banner"])
+      css(Styles["live-banner"]),
     ];
 
     if (this.props.live.float) {
@@ -50,16 +52,40 @@ export default class Live extends Component {
       "flush",
       "hard",
       "text-light-primary",
-      css(Styles["live-text"])
+      css(Styles["live-text"]),
     ];
 
     return classes.join(" ");
   }
 
-  render () {
-    const { live, embedCode } = this.props.data;
+  componentWillUpdate(nextProps, nextState) {
+    this.handleLiveChange(nextProps, nextState);
+  }
 
-    if (!this.props.live.show) return <div />
+  handleLiveChange = (nextProps) => {
+    const { live } = nextProps.data;
+    if (!live) return;
+
+    const isLive = live.live;
+    const embedCode = live.embedCode;
+
+    if (
+      isLive === nextProps.live.live &&
+      embedCode === nextProps.live.embedCode
+    ) {
+      return;
+    }
+
+    if (isLive) {
+      this.props.dispatch(liveActions.set({ isLive, embedCode }));
+    } else {
+      this.props.dispatch(liveActions.reset());
+    }
+  }
+
+  render () {
+    const { live, show, embedCode } = this.props.live;
+    if (!live || !show || !embedCode) return null;
 
     return (
       <Motion

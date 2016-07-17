@@ -3,6 +3,12 @@
 
   Live action types
 
+  LIVE.SET
+    set live status and embed code
+
+  LIVE.RESET
+    reset live status and embed code
+
   LIVE.SHOW
     show live bar
 
@@ -21,6 +27,8 @@ addReducer({
 })
 
 export default {
+  set: ({ isLive, embedCode }) => ({ type: "LIVE.SET", isLive, embedCode }),
+  reset: () => ({ type: "LIVE.RESET" }),
   show: () => ({ type: "LIVE.SHOW" }),
   hide: () => ({ type: "LIVE.HIDE" }),
   float: () => ({ type: "LIVE.FLOAT" }),
