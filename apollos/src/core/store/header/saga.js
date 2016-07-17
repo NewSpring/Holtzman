@@ -3,7 +3,7 @@ import { fork, put, cps, select } from "redux-saga/effects"
 import { addSaga } from "../utilities"
 
 const canRun = (
-  typeof window !== "undefined" && window !== null && window.StatusBar
+  typeof window !== "undefined" && window !== null && window.StatusBar !== "undefined"
 );
 
 function* toggleHeader() {
@@ -26,6 +26,9 @@ function* setColor({ color }) {
 function* setColorFromHeader() {
   console.log("setColorFromHeader");
   let { header } = yield select()
+  console.log(header);
+  console.log(header.content.color);
+  console.log(canRun);
   if (canRun && header.content.color) {
     console.log("setColorFromHeader can run");
     console.log(header);
