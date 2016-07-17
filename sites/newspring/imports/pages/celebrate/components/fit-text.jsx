@@ -26,7 +26,7 @@ const FitText = React.createClass({
   },
 
   setFontSize(){
-    const element = ReactDOM.findDOMNode(this);
+    const element = this.element.children[0];
     const width = element.offsetWidth;
 
     element.style.fontSize = Math.max(
@@ -38,7 +38,7 @@ const FitText = React.createClass({
   },
 
   render() {
-    return this.props.children;
+    return <div ref={(node) => this.element = node}>{this.props.children}</div>
   }
 })
 // class FitText extends Component {
