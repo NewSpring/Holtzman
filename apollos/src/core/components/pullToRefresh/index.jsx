@@ -4,7 +4,8 @@ import { connect } from "react-apollo";
 import ReactPullToRefresh from "react-pull-to-refresh";
 
 const mapStateToProps = (state) => ({
-  isLive: state.live.show,
+  isLive: state.live.live,
+  show: state.live.show,
 });
 
 @connect({ mapStateToProps })
@@ -16,12 +17,14 @@ export default class ApollosPullToRefresh extends Component {
 
   render() {
 
+    const liveBannerVisible = this.props.isLive && this.props.show;
+
     return (
       <div>
         <div className="ptr-fake-background">
         </div>
 
-        {(() => { if (this.props.isLive) return (
+        {(() => { if (liveBannerVisible) return (
           <style>
             {".ptr-element i {\
               top: 100px;\
