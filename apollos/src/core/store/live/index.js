@@ -3,6 +3,12 @@
 
   Live action types
 
+  LIVE.SET
+    set live status and embed code
+
+  LIVE.RESET
+    reset live status and embed code
+
   LIVE.SHOW
     show live bar
 
