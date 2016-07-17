@@ -4,12 +4,16 @@ import { connect } from "react-redux";
 import { Video } from "/imports/components/players"
 
 import navActions from "apollos/dist/core/store/nav";
+import headerActions from "apollos/dist/core/store/header"
 
 @connect()
 class Template extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
+    this.props.dispatch(headerActions.set({
+      title: "Live Now",
+    }));
   }
 
   render() {
