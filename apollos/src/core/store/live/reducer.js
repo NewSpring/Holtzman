@@ -23,7 +23,6 @@ export default createReducer(initial, {
   },
 
   ["LIVE.RESET"](state, action) {
-    console.log("resetting");
     return {...state, ...{
       live: initial.live,
       embedCode: initial.embedCode,
