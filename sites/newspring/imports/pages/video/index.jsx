@@ -14,8 +14,6 @@ class Template extends Component {
 
   render() {
     let { embedCode } = this.props.params;
-    // XXX for testing hardcode embed code
-    embedCode = "M1anI0ZDqWIIFq5VESbHl7Hok1zz0N83";
 
     return (
       <div className="locked-ends locked-sides background--dark-primary floating">

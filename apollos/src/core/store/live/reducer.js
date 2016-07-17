@@ -7,11 +7,28 @@
 import { createReducer } from "../utilities"
 
 const initial = {
+  live: false,
+  embedCode: null,
   show: true,
   float: false,
 }
 
 export default createReducer(initial, {
+
+  ["LIVE.SET"](state, action) {
+    return {...state, ...{
+      live: action.isLive,
+      embedCode: action.embedCode,
+    } };
+  },
+
+  ["LIVE.RESET"](state, action) {
+    console.log("resetting");
+    return {...state, ...{
+      live: initial.live,
+      embedCode: initial.embedCode,
+    } };
+  },
 
   ["LIVE.SHOW"](state, action) {
     return {...state, ...{

@@ -21,6 +21,8 @@ addReducer({
 })
 
 export default {
+  set: ({ isLive, embedCode }) => ({ type: "LIVE.SET", isLive, embedCode }),
+  reset: () => ({ type: "LIVE.RESET" }),
   show: () => ({ type: "LIVE.SHOW" }),
   hide: () => ({ type: "LIVE.HIDE" }),
   float: () => ({ type: "LIVE.FLOAT" }),
