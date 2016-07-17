@@ -62,20 +62,13 @@ const mapQueriesToProps = ({ ownProps, state }) => {
       forceFetch: false,
       returnPartialData: false,
     },
-    live: {
-      query: gql`query IsLive {
-        live {
-          live
-          embedCode
-        }
-      }`,
-      forceFetch: false,
-      returnPartialData: false,
-    },
   };
 };
 
-const mapStateToProps = (state) => ({ modal: { visible: state.modal.visible }});
+const mapStateToProps = (state) => ({
+  modal: { visible: state.modal.visible },
+  live: state.live,
+});
 
 @connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Likeable)
@@ -129,9 +122,7 @@ export default class SeriesSingle extends Component {
   handleLiveBar = (props, state) => {
     const { liveSet } = state;
     const { content } = props.devotion;
-    // XXX
-    // const { live } = props.live;
-    const live = true;
+    const { live } = props.live;
 
     if (liveSet || !live || !content) return;
 
@@ -156,9 +147,7 @@ export default class SeriesSingle extends Component {
 
   getLiveClasses = () => {
     const classes = [];
-    // XXX
-    // if (this.props.live.live && this.state.livePush) {
-    if (true && this.state.livePush) {
+    if (this.props.live.live && this.state.livePush) {
       classes.push("push-double-top");
     }
 
