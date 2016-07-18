@@ -4,7 +4,7 @@ Meteor.methods({
   'getScripture': function(scripture) {
     check(scripture, String);
 
-    let baseUrl = "http://www.esvapi.org/v2/rest/passageQuery?key=IP";
+    let baseUrl = `http://www.esvapi.org/v2/rest/passageQuery?key=${Meteor.settings.public.esv}`;
     baseUrl += `&passage=${scripture}`;
     baseUrl += "&include-headings=false&include-passage-references=false&include-footnotes=false&include-audio-link=false&include-short-copyright=false";
 
