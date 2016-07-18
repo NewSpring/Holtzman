@@ -3,7 +3,7 @@ import { fork, put, cps, select } from "redux-saga/effects"
 import { addSaga } from "../utilities"
 
 const canRun = (
-  typeof window !== "undefined" && window !== null && window.StatusBar !== "undefined"
+  typeof window !== "undefined" && window !== null && typeof window.StatusBar !== "undefined"
 );
 
 function* toggleHeader() {
