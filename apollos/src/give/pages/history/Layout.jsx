@@ -38,16 +38,22 @@ function monentize(value, fixed){
   return `$${value}`
 }
 
-const TransactionDetail = ({ transactionDetail, transaction, icon, status, failure }) => (
+const TransactionDetail = ({ transactionDetail, transaction, icon, status, failure, person }) => (
   <div className="grid" style={{verticalAlign: "middle"}}>
-
     <div className="grid__item three-fifths" style={{verticalAlign: "middle"}}>
-      <h5 className="text-dark-tertiary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
-        {transactionDetail.account.name}
-      </h5>
-      <p className={`flush italic small ${failure ? 'text-alert' : 'text-dark-tertiary'}`}>
-        {status ? `${status} - `: ''}{formatDate(transaction.date)}
-      </p>
+      <div className="relative">
+        <div className="background--fill soft visuallyhidden@palm float-left round push-half-top" style={{ backgroundImage: `url("${person.photo}")`}}></div>
+        <div className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
+          <h5 className="text-dark-secondary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
+            {transactionDetail.account.name}
+          </h5>
+          <h6 className="text-dark-tertiary soft-half-bottom flush">{person.firstName} {person.lastName}</h6>
+          <p className={`flush italic small ${failure ? 'text-alert' : 'text-dark-tertiary'}`}>
+            {status ? `${status} - `: ''}{formatDate(transaction.date)}
+          </p>
+        </div>
+      </div>
+
     </div>
 
     <div className="grid__item two-fifths text-right" style={{verticalAlign: "middle"}}>
@@ -81,7 +87,7 @@ const TransactionDetail = ({ transactionDetail, transaction, icon, status, failu
   </div>
 )
 
-export const TransactionCard = ({ transactionDetail, transaction }) => {
+export const TransactionCard = ({ transactionDetail, transaction, person }) => {
   let { status } = transaction;
 
   /*
@@ -106,6 +112,7 @@ export const TransactionCard = ({ transactionDetail, transaction }) => {
           transaction={transaction}
           icon={false}
           status="Pending"
+          person={person}
         />
       </div>
     )
@@ -122,6 +129,7 @@ export const TransactionCard = ({ transactionDetail, transaction }) => {
           icon={false}
           status="Failed to Process"
           failure={true}
+          person={person}
         />
       <p className="flush-bottom soft-top" style={{lineHeight: ".9"}}><small><em>
           For more information about why this contribution failed to process, please contact our Finance Team at <a href="tel:864-965-9990">864-965-9990</a> or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us</a>
@@ -136,6 +144,7 @@ export const TransactionCard = ({ transactionDetail, transaction }) => {
           transactionDetail={transactionDetail}
           transaction={transaction}
           icon={true}
+          person={person}
         />
       </Link>
     </div>
@@ -171,9 +180,6 @@ export default class Layout extends Component {
           <div className="soft-double-sides@lap-and-up soft-ends@lap-and-up background--light-primary">
             <div className="soft soft-double-ends hard-left@lap-and-up">
               <h2 className="flush hard">Giving History</h2>
-              <p className="flush-bottom soft-top"><small><em>
-                Currently we only support viewing your personal giving history, and not the history of your family. We are working hard to bring this ability, but in the meantime, if you sign into the site using the email of the family member you would like to see, you can view their history and schedules there. If you have any questions please <a href="//rock.newspring.cc/workflows/152?Topic=Stewardship" target="_blank">let us know!</a>
-              </em></small></p>
             </div>
           </div>
 
@@ -204,17 +210,13 @@ export default class Layout extends Component {
               return (
                 <div>
                 {transactions.map((transaction, key) => {
-                  let { details } = transaction
+                  let { details, person } = transaction
                   return (
                     <div key={key}>
                       {details.map((transactionDetail, i) => {
-                        if (!transactionDetail.account) {
-                          return null
-                        }
+                        if (!transactionDetail.account) return null
 
-                        if (Number(transactionDetail.amount) <= 0) {
-                          return null
-                        }
+                        if (Number(transactionDetail.amount) <= 0) return null
 
                         let year = Moment(transaction.date).year()
                         if (year != lastYear) {
@@ -227,6 +229,7 @@ export default class Layout extends Component {
                               <TransactionCard
                                 transaction={transaction}
                                 transactionDetail={transactionDetail}
+                                person={person}
                               />
                             </div>
                           )
@@ -237,6 +240,7 @@ export default class Layout extends Component {
                           <TransactionCard
                             transaction={transaction}
                             transactionDetail={transactionDetail}
+                            person={person}
                             key={i}
                           />
                         )
@@ -257,7 +261,8 @@ export default class Layout extends Component {
             {(() => {
               let btnClasses = [
                 "btn--dark-tertiary",
-                "push-ends"
+                "push-top",
+                "push-double-bottom"
               ];
 
               if (!ready && !transactions.length) return null;

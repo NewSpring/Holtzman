@@ -17,13 +17,11 @@ const mapQueriesToProps = () => ({
           date
           status
           summary
+          person { firstName, lastName, photo }
           details {
             id
             amount
-            account {
-              id
-              name
-            }
+            account { id, name }
           }
         }
       }
