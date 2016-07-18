@@ -61,7 +61,7 @@ export default class Card extends Component {
     }
 
     // if (this.props.image && this.props.image.full) {
-    //   defaultStyles.backgroundImage = `url(${this.props.image.url})`
+    //   defaultStyles.backgroundImage = `url('${this.props.image.url}')`
     // }
 
     return defaultStyles
@@ -134,9 +134,7 @@ export default class Card extends Component {
 
     let src = this.getResponsiveImage() || defaultImage;
 
-    let style = {
-      backgroundImage: `url(${src})`,
-    }
+    let style = { backgroundImage: `url('${src}')` }
 
     return (
       <ImageLoader

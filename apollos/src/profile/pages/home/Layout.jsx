@@ -26,7 +26,7 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
         <div className="soft one-whole">
           <label htmlFor="file"
             className="background--fill ratio--square round two-fifths display-inline-block"
-            style={{ backgroundImage: `url(${photo})`, position: "relative"}}
+            style={{ backgroundImage: `url('${photo}')`, position: "relative"}}
           >
             <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
           </label>

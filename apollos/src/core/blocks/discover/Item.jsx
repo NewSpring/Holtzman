@@ -109,7 +109,7 @@ export default class SearchItem extends Component {
                   renderElement={this.renderElement}
                   imageclasses={this.bgClasses()}
                   style={{
-                    backgroundImage: `url(${this.props.item.image})`
+                    backgroundImage: `url('${this.props.item.image}')`
                   }}
                 />
               );

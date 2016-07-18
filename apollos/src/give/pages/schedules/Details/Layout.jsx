@@ -106,7 +106,7 @@ export default class Layout extends Component {
                         <h4 className="text-dark-secondary flush-bottom">{this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}</h4>
                         <h3 className="text-primary">{schedule.details[0].account.name}</h3>
 
-                        <h1 className="text-dark-primary">{this.monentize(schedule.details[0].amount)}</h1>
+                        <h1 className="text-dark-primary flush-bottom soft-half-bottom">{this.monentize(schedule.details[0].amount)}</h1>
 
 
                         {(() => {
