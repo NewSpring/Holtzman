@@ -231,7 +231,7 @@ class SignIn extends Component {
                       <div
                         className="round background--fill display-inline-block push-half-right"
                         style={{
-                          backgroundImage: `url(${person.photo})`,
+                          backgroundImage: `url('${person.photo}')`,
                           width: "70px",
                           height: "70px",
                           verticalAlign: "middle"

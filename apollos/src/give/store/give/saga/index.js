@@ -416,11 +416,11 @@ function* recoverTransactions() {
   let { schedules } = data;
   hasRecovered = true;
   let bulkUpdate = {}
-  // schedules = schedules.filter(x => !x.gateway)
+  schedules = schedules.filter(x => !x.gateway)
   if (schedules.length) {
     for (let schedule of schedules) {
       // only recover schedules that are missing info (i.e. not turned off in Rock)
-      // if (schedule.gateway) continue;
+      if (schedule.gateway) continue;
 
       if (schedule.schedule.value === "Twice a Month") {
         schedule.schedule.value = null
