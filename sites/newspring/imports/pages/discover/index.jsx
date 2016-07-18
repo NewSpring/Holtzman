@@ -11,7 +11,7 @@ class Template extends Component {
 
   containerStyles = () => {
     return {
-      paddingBottom: this.props.audio.state === "default" ? "20px" : "60px",
+      paddingBottom: this.props.audio.state === "default" ? "10px" : "50px",
     }
   }
 
