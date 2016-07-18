@@ -94,7 +94,7 @@ export default class Filter extends Component {
         {(() => {
           if (!showSearch) return null;
           return (
-            <div className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double@anchored text-left background--light-primary">
+            <div className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary">
 
               <Forms.Form
                 classes={["hard", "display-inline-block", "one-whole" ]}
@@ -104,11 +104,11 @@ export default class Filter extends Component {
                 <span
                   style={{zIndex: 1, paddingTop: "5px", "cursor": "pointer"}}
                   onClick={this.removeQuery}
-                  className="h7 locked-right soft-half-right flush-bottom"
+                  className="h7 locked-right flush-bottom"
                 >Cancel</span>
                 <Forms.Input
                   hideLabel={true}
-                  classes={["hard-bottom", "soft-double-right", "push-double-right"]}
+                  classes={["hard-bottom", "soft-right", "push-double-right"]}
                   inputClasses="soft-double-left soft-half-bottom"
                   placeholder="Type your search here..."
                   type="text"
