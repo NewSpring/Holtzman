@@ -86,7 +86,10 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
     returnPartialData: false,
   },
 });
-@connect({ mapQueriesToProps })
+
+const mapStateToProps = (state) => ({ live: state.live });
+
+@connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
@@ -107,11 +110,17 @@ export default class SeriesSingleVideo extends Component {
 
     const color = Helpers.collections.color(content);
 
-    this.props.dispatch(headerActions.set({
+    const { live } = this.props.live;
+
+    const options = {
       title: "Series",
-      subTitle: content.title,
-      color: color
-    }));
+      color: color,
+    };
+
+    if (!live) options.subTitle = content.title;
+
+    this.props.dispatch(headerActions.set(options));
+
   }
 
   render() {

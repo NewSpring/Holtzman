@@ -35,7 +35,6 @@ export const App = ({ children, className }) => {
       <div className={className}>
         <Meta />
         {(() => { if (process.env.NATIVE) return <Header />; })()}
-        {/*<LivePlayer/>*/}
         <div data-status-scroll={true}>
           {children}
         </div>

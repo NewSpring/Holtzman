@@ -10,6 +10,7 @@ if (process.env.NATIVE) {
   import Series from "./series/index"
   import Stories from "./stories/index"
   import Sections from "./sections/index";
+  import Video from "./video/index";
 }
 
 
@@ -28,6 +29,7 @@ if (process.env.NATIVE) {
     Stories.Routes,
     Sections.Routes,
     Discover.Routes,
+    Video.Routes,
   );
 }
 

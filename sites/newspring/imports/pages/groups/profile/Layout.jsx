@@ -90,7 +90,7 @@ export default ({ group, leaders, isLeader, join }) => (
               if (!group.schedule) return null;
               if (!group.schedule.description) return null;
               return (
-                <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
+                <div className="soft-bottom">
                   <h7 className="text-dark-secondary">Time</h7>
                   <h6 className="text-dark-secondary soft-half-top flush-bottom">
                     {group.schedule.description}
@@ -105,7 +105,7 @@ export default ({ group, leaders, isLeader, join }) => (
               const loc = group.locations[0]
               if (!loc) return null;
               return (
-                <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
+                <div className="soft-bottom">
                   <h7 className="text-dark-secondary">
                     Address
                   </h7>
@@ -120,7 +120,7 @@ export default ({ group, leaders, isLeader, join }) => (
             {(() => {
               if (!group.campus || !group.campus.name) return null;
               return (
-                <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
+                <div className="soft-bottom">
                   <h7 className="text-dark-secondary">
                     Campus
                   </h7>

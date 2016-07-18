@@ -5,12 +5,12 @@ import { connect } from "react-apollo";
 import { VelocityComponent } from "velocity-react"
 import gql from "graphql-tag";
 
-import ReactPullToRefresh from "react-pull-to-refresh";
 import { Loading } from "apollos/dist/core/components"
 import { Headerable } from "apollos/dist/core/mixins"
 
 import { FeedItemSkeleton } from "apollos/dist/core/components/loading"
 import { nav as navActions } from "apollos/dist/core/store"
+import ApollosPullToRefresh from "apollos/dist/core/components/pullToRefresh";
 
 import Single from "./series.Single"
 import SingleVideo from "./series.SingleVideo"
@@ -103,24 +103,15 @@ class Template extends Component {
         duration={1000}
         runOnMount={true}
       >
-        <div>
-          <div className="ptr-fake-background"></div>
-
-          <ReactPullToRefresh
-            onRefresh={this.handleRefresh}
-            icon={<i className="icon-leaf-outline"></i>}
-            loading={<i className="loading icon-leaf-outline"></i>}
-          >
-
-            <div className="background--light-primary">
-              <section className="soft-half">
-                <div className="grid">
-                  {this.renderItems()}
-                </div>
-              </section>
-            </div>
-          </ReactPullToRefresh>
-        </div>
+        <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
+          <div className="background--light-primary">
+            <section className="soft-half">
+              <div className="grid">
+                {this.renderItems()}
+              </div>
+            </section>
+          </div>
+        </ApollosPullToRefresh>
       </VelocityComponent>
     );
   }

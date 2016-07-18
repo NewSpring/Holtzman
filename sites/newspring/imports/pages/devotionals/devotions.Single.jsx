@@ -12,6 +12,7 @@ import { Loading } from "apollos/dist/core/components"
 
 import { nav as navActions } from "apollos/dist/core/store"
 import headerActions from "apollos/dist/core/store/header"
+import liveActions from "apollos/dist/core/store/live"
 
 // can we use the core toggle here? Is it ready @jbaxleyiii?
 import DevotionsSingleContent from "./devotions.SingleContent"
@@ -64,7 +65,10 @@ const mapQueriesToProps = ({ ownProps, state }) => {
   };
 };
 
-const mapStateToProps = (state) => ({ modal: { visible: state.modal.visible }});
+const mapStateToProps = (state) => ({
+  modal: { visible: state.modal.visible },
+  live: state.live,
+});
 
 @connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Likeable)
@@ -75,11 +79,24 @@ export default class SeriesSingle extends Component {
 
   onClickLink = (event) => {
     event.preventDefault();
-    this.setState({ selectedIndex: 1 });
+    this.setState({
+      selectedIndex: 1,
+      liveSet: false,
+      livePush: false,
+    });
   }
 
   componentWillMount() {
     if (process.env.WEB) return;
+
+    // hide the live bar and then bring it back
+    // after the view has faded in. this prevents
+    // an issue with the z-index and the arrow
+    // from the header.
+    this.props.dispatch(liveActions.hide());
+    // for cached data
+    this.handleLiveBar(this.props, this.state);
+
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
@@ -87,6 +104,54 @@ export default class SeriesSingle extends Component {
     }));
 
     this.props.dispatch(headerActions.hide());
+  }
+
+  componentWillUnmount() {
+    if (process.env.WEB) return;
+    this.props.dispatch(liveActions.unfloat());
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    this.handleLiveBar(nextProps, nextState);
+  }
+
+  // if has scripture and live re-enabled
+  // the live bar
+  // else apply float styles to the bar so it
+  // will display below the fixed header
+  handleLiveBar = (props, state) => {
+    const { liveSet } = state;
+    const { content } = props.devotion;
+    const { live } = props.live;
+
+    if (liveSet || !live || !content) return;
+
+    this.setState({
+      liveSet: true,
+    });
+
+    if (content.content.scripture) {
+      this.props.dispatch(liveActions.float());
+      setTimeout(() => {
+        this.setState({
+          livePush: true,
+        });
+        this.props.dispatch(liveActions.show());
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        this.props.dispatch(liveActions.show());
+      }, 1000);
+    }
+  }
+
+  getLiveClasses = () => {
+    const classes = [];
+    if (this.props.live.live && this.state.livePush) {
+      classes.push("push-double-top");
+    }
+
+    return classes;
   }
 
   renderContent = (devotion) => {
@@ -97,23 +162,31 @@ export default class SeriesSingle extends Component {
           <DevotionsSingleContent
             devotion={devotion}
             onClickLink={this.onClickLink}
+            classes={this.getLiveClasses()}
           />
         </div>
       );
     }
 
     return (
-      <SwipeViews selectedIndex={this.state.selectedIndex} disableSwipe={true} className="background--light-primary">
+      <SwipeViews
+        selectedIndex={this.state.selectedIndex}
+        disableSwipe={true}
+      >
 
         <div title="Devotional">
           <DevotionsSingleContent
             devotion={devotion}
             onClickLink={this.onClickLink}
+            classes={this.getLiveClasses()}
           />
         </div>
 
         <div title="Scripture">
-          <DevotionsSingleScripture devotion={devotion} />
+          <DevotionsSingleScripture
+            devotion={devotion}
+            classes={this.getLiveClasses()}
+          />
         </div>
       </SwipeViews>
     );
