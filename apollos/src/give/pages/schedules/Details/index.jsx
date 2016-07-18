@@ -53,6 +53,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
               date
               status
               summary
+              person { firstName, lastName, photo }
               details { id, amount, account { id, name } }
             }
           }

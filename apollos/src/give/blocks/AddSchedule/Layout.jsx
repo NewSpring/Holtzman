@@ -76,8 +76,8 @@ export default class Layout extends Component {
             inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary`}
             placeholder="select fund here"
             onChange={setFund}
+            defaultValue={prefillFund}
           />
-          {/*defaultValue={prefillFund}*/}
           <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
             &nbsp;
           </h3>
@@ -92,7 +92,7 @@ export default class Layout extends Component {
             includeBlank={true}
             placeholder="choose frequency"
             onChange={setFrequency}
-            defaultValue={existing ? existing.frequency : null}
+            defaultValue={existing && existing.schedule ? existing.schedule.value : null}
           />
           <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
             &nbsp; starting &nbsp;

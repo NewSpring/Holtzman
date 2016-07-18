@@ -33,16 +33,8 @@ class CartContainer extends Component {
           fundId: Number(existing.details[0].account.id),
           fundLabel: existing.details[0].account.name,
           frequency: existing.frequency,
-          amount:   Number(existing.details[0].amount.replace(/[^0-9\.]+/g, ''))
+          amount: Number(`${existing.details[0].amount}`.replace(/[^0-9\.]+/g, ''))
         })
-
-        // if (existing.details[0].amount) {
-        //   this.props.addTransactions({ [Number(existing.details[0].account.id)]: {
-        //     value: Number(existing.details[0].amount.replace(/[^0-9\.]+/g, '')),
-        //     label: existing.details[0].account.name
-        //   }})
-        // }
-
       }
     }
   }
@@ -57,12 +49,6 @@ class CartContainer extends Component {
     if (Object.keys(transactions).length === 0 && Object.keys(schedules).length === 0) {
       let form = document.getElementById("add-to-cart");
       if (form) form.reset();
-
-      // this works, but the input--active never comes back
-      // let inputs = document.getElementsByClassName("input");
-      // for (let i = 0; i < inputs.length; i++) {
-      //   inputs[i].className = inputs[i].className.replace(/\binput--active\b/gmi,'');
-      // }
     }
   }
 
