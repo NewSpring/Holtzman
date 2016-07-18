@@ -17,7 +17,7 @@ import { CreditCardForm, AchForm } from "./paymentForm"
 import formatPersonDetails from "./formatPersonDetails"
 
 import { order, schedule, charge } from "../../../methods/give/client"
-// import RecoverSchedules from "../../../blocks/RecoverSchedules"
+import RecoverSchedules from "../../../blocks/RecoverSchedules"
 
 // XXX break this file up into smaller files
 
@@ -374,123 +374,100 @@ function* createOrder() {
 
 */
 
+let hasRecovered = false;
 // recover transactions
-// function* recoverTransactions() {
-//   let user = Meteor.userId()
+function* recoverTransactions() {
 
-//   if (!user) {
-//     const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED")
-//   }
+  if (hasRecovered) return;
 
-//   user = Meteor.user()
+  let user = Meteor.userId()
 
-//   if (user && user.profile && user.profile.reminderDate) {
-//     yield put(actions.setReminder(user.profile.reminderDate))
-//   }
+  if (!user) {
+    const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED")
+  }
 
-//   let query = gql`
-//     query ScheduledTransactions {
-//       schedules: allScheduledFinanicalTransactions(active: false, cache: false) {
-//         id
-//         gateway
-//         start
-//         next
-//         details {
-//           amount
-//           account {
-//             name
-//             id
-//             description
-//           }
-//         }
-//         schedule {
-//           value
-//           description
-//         }
-//       }
-//     }
-//   `
+  user = Meteor.user()
 
-//   let { schedules } = yield GraphQL.query({ query })
+  if (user && user.profile && user.profile.reminderDate) {
+    yield put(actions.setReminder(user.profile.reminderDate))
+  }
 
-//   let bulkUpdate = {}
-//   schedules = schedules.filter(x => !x.gateway)
+  const query = gql`
+    query GetInActiveSchedules($isActive: Boolean, $cache: Boolean) {
+      schedules: scheduledTransactions(isActive: $isActive, cache: $cache) {
+        id: entityId
+        start
+        next
+        gateway
+        date
+        schedule { value, description }
+        details {
+          amount
+          account { name, id, description }
+        }
+      }
+    }
+  `;
 
-//   if (schedules.length) {
-//     for (let schedule of schedules) {
-//       // only recover schedules that are missing info (i.e. not turned off in Rock)
-//       if (schedule.gateway) { continue; }
+  const variables = { isActive: false, cache: false };
 
-//       if (schedule.schedule.value === "Twice a Month") {
-//         schedule.schedule.value = null
-//       }
-//       bulkUpdate[schedule.id] = {...{
-//         start: Moment(schedule.start).format("YYYYMMDD"),
-//         frequency: schedule.schedule.value
-//       }, ...schedule }
+  let { data } = yield GraphQL.query({ query, variables })
 
-//     }
+  let { schedules } = data;
+  hasRecovered = true;
+  let bulkUpdate = {}
+  // schedules = schedules.filter(x => !x.gateway)
+  if (schedules.length) {
+    for (let schedule of schedules) {
+      // only recover schedules that are missing info (i.e. not turned off in Rock)
+      // if (schedule.gateway) continue;
 
-//     let store = yield select()
-//     let time = new Date()
-//     if (user && user.profile && user.profile.reminderDate) {
-//       time = user.profile.reminderDate
-//     }
-//     let now = new Date()
+      if (schedule.schedule.value === "Twice a Month") {
+        schedule.schedule.value = null
+      }
+      bulkUpdate[schedule.id] = {...{
+        start: Moment(schedule.start).format("YYYYMMDD"),
+        frequency: schedule.schedule.value
+      }, ...schedule }
 
-//     yield put(actions.saveSchedules(bulkUpdate))
+    }
 
-//     // only update the store if it is past the reminder date
-//     if (now < time) return
+    let time = new Date()
+    if (user && user.profile && user.profile.reminderDate) {
+      time = user.profile.reminderDate
+    }
+    let now = new Date()
 
-//     let state = yield select();
-//     let { pathname } = state.routing.location
+    yield put(actions.saveSchedules(bulkUpdate))
 
-//     if (pathname.split("/").length === 4 && pathname.split("/")[3] === "recover" ) {
-//       return
-//     }
+    // only update the store if it is past the reminder date
+    if (now < time) return
 
-//     if (Meteor.isClient) {
-//       yield put(modalActions.render(RecoverSchedules))
-//     }
+    let state = yield select();
+    let { pathname } = state.routing.location
 
+    if (pathname.split("/").length === 4 && pathname.split("/")[3] === "recover" ) {
+      return
+    }
 
-//   }
+    yield put(modalActions.render(RecoverSchedules))
+  }
 
-// }
+}
 
 // ensure we are on a /give route
-// addSaga(function* watchRoute(){
+function* watchRoute({ payload }){
 
-//   while (true) {
+  if (Meteor.isServer) return;
 
-//     let state = yield select();
-//     let { pathname } = state.routing.location,
-//         recovered;
+  function isGive(path) {
+    return path.split("/")[1] === "give"
+  }
 
-//     function isGive(path) {
-//       return path.split("/")[1] === "give"
-//     }
+  if (isGive(payload.pathname)) yield* recoverTransactions();
 
-//     if (!isGive(pathname)) {
-//       const { payload } = yield take("@@router/UPDATE_LOCATION")
+}
 
-//       if (isGive(payload.pathname)) {
-
-//         recovered = yield* recoverTransactions()
-//         break
-//       }
-
-//     } else {
-//       recovered = yield* recoverTransactions()
-//       break
-//     }
-
-
-
-//   }
-
-// })
 
 
 // clear out data on user change
@@ -502,4 +479,14 @@ addSaga(function* accountsSaga(){
   yield fork(takeEvery, types.SET_STATE, chargeTransaction);
   yield fork(takeEvery, types.SET_PROGRESS, createOrder);
   yield fork(takeEvery, "ACCOUNTS.IS_AUTHORIZED", clearGiveData);
+  yield fork(takeLatest, "@@router/UPDATE_LOCATION", watchRoute)
+
+  const state = yield select();
+  const payload = state.routing.location;
+
+  function isGive(path) {
+    return path.split("/")[1] === "give"
+  }
+
+  if (isGive(payload.pathname)) yield* recoverTransactions();
 })

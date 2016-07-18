@@ -17,13 +17,8 @@ import { AccountType } from "../../../components"
 
 export default class Layout extends Component {
 
-  static contextTypes = {
-    shouldAnimate: PropTypes.bool
-  }
-
-  state = {
-    expandedSchedule: null
-  }
+  static contextTypes = { shouldAnimate: PropTypes.bool }
+  state = { expandedSchedule: null }
 
   componentWillMount() {
     if (this.props.recoverableSchedules.length) {
@@ -89,7 +84,6 @@ export default class Layout extends Component {
   render () {
 
     const {
-      schedules,
       accounts,
       ready,
       recoverableSchedules,
@@ -219,7 +213,7 @@ export default class Layout extends Component {
                       })}
                       <div className="card">
                         <div className="card__item">
-                          <p className="soft text-center soft-double-sides@lap-and-up">
+                          <p className="soft text-center soft-double-sides@lap-and-up hard-bottom">
                             <small>
                               <em>
                                 Please be aware that your existing schedule will continue to charge the account on file until you transfer it to our new system.

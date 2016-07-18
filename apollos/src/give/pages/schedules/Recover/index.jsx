@@ -1,166 +1,61 @@
-import { Component, PropTypes} from "react"
-import { connect } from "react-redux"
+import { Component, PropTypes } from "react";
+import { connect } from "react-apollo";
+import gql from "apollo-client/gql";
 
-import { GraphQL } from "../../../../core/graphql"
-import Authorized from "../../../../core/blocks/authorzied"
-import { nav as navActions, modal as modalActions } from "../../../../core/store"
-
+import Authorized from "../../../../core/blocks/authorzied";
 import {
-  transactions as transactionActions,
-  give as giveActions
-} from "../../../store"
+  nav as navActions,
+  modal as modalActions,
+} from "../../../../core/store";
+
+import { give as giveActions } from "../../../store"
 
 import Layout from "./Layout"
 import Confirm from "./../Details/Confirm"
 
-
-function mapArrayToObj(array){
-  let obj = {}
-  for (let item of array) { obj[item.id] = item }
-  return obj
-}
-
-// query GetScheduleTransactions {
-//   transactions: scheduledTransactions(isActive: false) {
-//     numberOfPayments
-//     next
-//     end
-//     id
-//     reminderDate
-//     code
-//     gateway
-//     start
-//     date
-//     details {
-//       amount
-//       account {
-//         name
-//         description
-//       }
-//     }
-//     payment {
-//       paymentType
-//       accountNumber
-//       id
-//     }
-//     schedule {
-//       value
-//       description
-//     }
-//   }
-// }
-
-
-function getSchedules(dispatch) {
-  let query = `
-    query ScheduledTransactions {
-      transactions: allScheduledFinanicalTransactions(cache: false) {
-        numberOfPayments
-        next
-        end
-        id
-        reminderDate
-        code
-        gateway
-        start
-        date
-        details {
-          amount
-          account {
-            name
-            description
-          }
+const mapQueriesToProps = () => ({
+  data: {
+    query: gql`
+      query GetScheduleTransactions {
+        transactions: scheduledTransactions(isActive: false, cache: false) {
+          numberOfPayments
+          next
+          end
+          id: entityId
+          reminderDate
+          gateway
+          start
+          date
+          details { amount, account { name, description, id: entityId } }
+          payment { paymentType, accountNumber, id }
+          schedule { value, description }
         }
-        payment {
-          paymentType
-          accountNumber
-          id
-        }
-        schedule {
-          value
-          description
-        }
+        person: currentPerson { firstName, lastName }
       }
-    }
-  `
-  return GraphQL.query(query)
-    .then(({ transactions }) => {
-      let mappedObj = {}
-
-      for (const transaction of transactions) {
-        mappedObj[transaction.id] = transaction
-      }
-
-      dispatch(transactionActions.addSchedule(mappedObj))
-
-      return transactions
-    })
-}
-
-function getAccounts(dispatch) {
-  return GraphQL.query(`
-      {
-        accounts: allFinancialAccounts(limit: 100, ttl: 86400) {
+    `
+  },
+  accounts: {
+    query: gql`
+      query GetFinancialAccounts {
+        accounts {
           description
           name
-          id
+          id: entityId
           summary
           image
           order
+          images { fileName, fileType, fileLabel, s3, cloudfront }
         }
       }
-    `).then(result => {
-      const obj = mapArrayToObj(result.accounts.filter((x) => (x.summary)))
-      dispatch(giveActions.setAccounts(obj))
-      return result
-    })
-}
-
-const map = (store) => ({
-  schedules: store.transactions.scheduledTransactions,
-  give: store.give,
-  person: store.accounts.person
+    `,
+  }
 })
 
-@connect(map)
+const mapStateToProps = (store) => ({ give: store.give })
+let defaultArray = [];
+
+@connect({ mapStateToProps, mapQueriesToProps })
 export default class Template extends Component {
-
-  state = {
-    loaded: true
-  }
-
-  static fetchData(getStore, dispatch) {
-
-    return getAccounts(dispatch)
-      .then((accounts) => {
-        return getSchedules(dispatch)
-            // .then(() => {
-            //   this.setState({loaded: true})
-            // })
-        // this.setState({loaded: true})
-      })
-  }
-
-
-
-  componentDidMount(){
-    const { dispatch } = this.props
-
-    this.setState({
-      loaded: false
-    })
-
-    return getAccounts(dispatch)
-      .then((accounts) => {
-
-        return getSchedules(dispatch)
-          .then(() => {
-            this.setState({loaded: true})
-          })
-        this.setState({loaded: true})
-      })
-
-  }
 
   confirm = (e) => {
     const { dataset } = e.currentTarget
@@ -177,7 +72,7 @@ export default class Template extends Component {
 
     this.props.dispatch(modalActions.render(Confirm, {
       onFinished: () => {
-        dispatch(giveActions.deleteSchedule(id))
+        this.props.dispatch(giveActions.deleteSchedule(id))
         // WUT, need to clean up after launch
         this.props.dispatch(giveActions.deleteSchedule(Number(id)))
         // this.props.dispatch(transactionActions.removeSchedule(Number(id)))
@@ -192,34 +87,17 @@ export default class Template extends Component {
 
 
   render () {
-    const { schedules, give } = this.props
-    const { accounts, recoverableSchedules } = give
-    let transactions = []
-    for (const transaction in schedules) {
-      transactions.push(schedules[transaction])
-    }
-
-    let mappedAccounts = []
-    for (const account in accounts) {
-      mappedAccounts.push(accounts[account])
-    }
-
-    mappedAccounts = _.sortBy(mappedAccounts, "order")
-
-    let recovers = []
-    for (const recover in recoverableSchedules) {
-      recovers.push(recoverableSchedules[recover])
-    }
+    const { schedules, give, data, accounts } = this.props
+    const { recoverableSchedules } = give
 
     return (
       <Layout
-        ready={this.state.loaded}
-        schedules={transactions}
-        accounts={mappedAccounts}
+        ready={!this.props.data.loading}
+        accounts={accounts.accounts || defaultArray}
         cancelSchedule={this.cancel}
-        recoverableSchedules={recovers}
+        recoverableSchedules={data.transactions || defaultArray}
         confirm={this.confirm}
-        person={this.props.person}
+        person={this.props.data.person || {}}
       />
     )
   }
