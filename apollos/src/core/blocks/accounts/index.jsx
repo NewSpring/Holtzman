@@ -6,6 +6,7 @@ import gql from "apollo-client/gql";
 import { Loading, Error as Err } from "../../components/states"
 import accountsActions from "../../store/accounts"
 import modalActions from "../../store/modal"
+import headerActions from "../../store/header"
 
 // import Loading from "./Loading"
 import SignIn from "./Signin"
@@ -66,11 +67,20 @@ class AccountsContainer extends Component {
   }
 
   componentWillMount(){
+    if (process.env.NATIVE) {
+      headerActions.hide();
+    }
 
     if (typeof this.props.account != "undefined") {
       this.setState({
         account: this.props.account,
       })
+    }
+  }
+
+  componentWillUnmount() {
+    if (process.env.NATIVE) {
+      headerActions.show();
     }
   }
 
