@@ -195,7 +195,7 @@ export default class Layout extends Component {
                     Contributions from this Schedule
                   </h4>
                   {transactions.map((transaction, key) => {
-                    let { details } = transaction
+                    let { details, person } = transaction
                     return (
                       <div key={key}>
                         {details.map((transactionDetail, i) => {
@@ -214,6 +214,7 @@ export default class Layout extends Component {
                                 <TransactionCard
                                   transaction={transaction}
                                   transactionDetail={transactionDetail}
+                                  person={person}
                                 />
                               </div>
                             )
@@ -225,6 +226,7 @@ export default class Layout extends Component {
                               transaction={transaction}
                               transactionDetail={transactionDetail}
                               key={i}
+                              person={person}
                             />
                           )
                         })}
