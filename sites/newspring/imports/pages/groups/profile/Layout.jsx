@@ -38,7 +38,7 @@ export default ({ group, leaders, isLeader, join }) => (
             className="ratio--square round display-inline-block push-right background--fill"
             key={i}
             style={{
-              backgroundImage: `url(${leader.person.photo})`,
+              backgroundImage: `url('${leader.person.photo}')`,
               width: "80px",
               height: "80px"
             }}
@@ -147,7 +147,7 @@ export default ({ group, leaders, isLeader, join }) => (
       {/* More Information */}
       <div className="card outlined outlined--light hard one-whole">
         <div className="card__item push-half-top@handheld">
-          <div className="soft-left@lap-wide-and-up soft soft-double-bottom">
+          <div className="soft-left@lap-wide-and-up soft soft-bottom">
 
             <h5 className="soft-half-ends">More Information</h5>
 
@@ -168,7 +168,7 @@ export default ({ group, leaders, isLeader, join }) => (
                     className="ratio--square round display-inline-block push-half-right background--fill"
                     key={i}
                     style={{
-                      backgroundImage: `url(${member.person.photo})`,
+                      backgroundImage: `url('${member.person.photo}')`,
                       width: "40px",
                       height: "40px"
                     }}
@@ -184,19 +184,19 @@ export default ({ group, leaders, isLeader, join }) => (
               <h7 className="text-dark-secondary">Tags</h7>
               <div className="soft-half-top flush-bottom">
                 {group.tags && group.tags.map((tag, i) => (
-                  <span className="tag push-half-right flush-bottom" key={i}>{tag.value}</span>
+                  <span className="tag push-half-right" key={i}>{tag.value}</span>
                 ))}
                 {(() => {
                   if (!group.type || group.type === "Interests") return null;
-                  return <span className="tag push-half-right flush-bottom">{group.type}</span>;
+                  return <span className="tag push-half-right">{group.type}</span>;
                 })()}
                 {(() => {
                   if (!group.kidFriendly) return null;
-                  return <span className="tag push-half-right flush-bottom">kid friendly</span>;
+                  return <span className="tag push-half-right">kid friendly</span>;
                 })()}
                 {(() => {
                   if (!group.demographic) return null;
-                  return <span className="tag push-half-right flush-bottom">{group.demographic}</span>;
+                  return <span className="tag push-half-right">{group.demographic}</span>;
                 })()}
               </div>
             </div>

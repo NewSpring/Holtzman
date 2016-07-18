@@ -91,7 +91,7 @@ const ChildItem = ({ section, go }) => {
             renderElement={renderElement}
             force={true}
             imageclasses={imageclasses}
-            style={{backgroundImage: `url(${section.image})`, borderRadius: "0px 6px 6px 0px"}}
+            style={{backgroundImage: `url('${section.image}')`, borderRadius: "0px 6px 6px 0px"}}
           >
             <div className="ratio__item"/>
           </ImageLoader>
@@ -139,7 +139,7 @@ const Item = ({ section, go, children }) => {
           renderElement={renderElement}
 
           imageclasses={imageclasses}
-          style={{backgroundImage: `url(${section.image})`}}
+          style={{backgroundImage: `url('${section.image}')`}}
           >
           <div className="overlay__item floating__item ratio__item">
             <h6 className="text-light-primary soft-left">{section.text}</h6>
