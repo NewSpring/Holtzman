@@ -72,7 +72,7 @@ export default class Right extends Component {
   styles = () => {
     if (this.props.background) {
       return {
-        backgroundImage: `url(${this.props.background})`
+        backgroundImage: `url('${this.props.background}')`
       }
     }
 

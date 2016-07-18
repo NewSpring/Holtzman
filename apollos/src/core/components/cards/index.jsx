@@ -58,7 +58,7 @@ export default class Card extends Component {
     }
 
     if (this.props.image && this.props.image.full) {
-      defaultStyles.backgroundImage = `url(${this.props.image.url})`
+      defaultStyles.backgroundImage = `url('${this.props.image.url}')`
     }
 
     if (this.props.linkAll) {
@@ -110,7 +110,7 @@ export default class Card extends Component {
 
       let style
       if (image.full != true) {
-        style = { backgroundImage: `url(${image.url})` }
+        style = { backgroundImage: `url('${image.url}')` }
       }
 
       return (
