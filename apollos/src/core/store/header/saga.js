@@ -3,30 +3,30 @@ import { fork, put, cps, select } from "redux-saga/effects"
 import { addSaga } from "../utilities"
 
 const canRun = (
-  typeof window !== "undefined" && window !== null && window.StatusBar
+  typeof window !== "undefined" && window !== null && window.StatusBar !== "undefined"
 );
 
-function* toogleHeader() {
-  let { header } = select()
+function* toggleHeader() {
+  let { header } = yield select()
   if (canRun) {
     if (!header.statusBar) StatusBar.hide()
     if (header.statusBar) StatusBar.show()
   }
 };
 
-function* setColor({ color}) {
+function* setColor({ color }) {
   if (canRun && color) StatusBar.backgroundColorByHexString(color);
 };
 
-function* toogleHeader() {
-  let { header } = select()
+function* setColorFromHeader() {
+  let { header } = yield select()
   if (canRun && header.content.color) {
     StatusBar.backgroundColorByHexString(header.content.color);
   }
 };
 
 addSaga(function* headerSaga() {
-  yield fork(takeLatest, "HEADER.TOGGLE_VISIBILITY", toogleHeader);
+  yield fork(takeLatest, "HEADER.TOGGLE_VISIBILITY", toggleHeader);
   yield fork(takeLatest, "STATUSBAR.SET", setColor);
-  yield fork(takeLatest, "HEADER.SET", setColor)
+  yield fork(takeLatest, "HEADER.SET", setColorFromHeader)
 })

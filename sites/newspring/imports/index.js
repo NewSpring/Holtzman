@@ -18,16 +18,20 @@ let App = null;
 if (process.env.NATIVE) {
   import scriptLoader from "react-async-script-loader";
   import AudioPlayer from "/imports/components/players/audio/index"
-  // XXX add live query back to heighliner
-  // import LivePlayer from "/imports/components/live/index"
 
   // sync load ooyala scripts
   // XXX can we move this to just the video component?
-  @scriptLoader(
-    "//player.ooyala.com/static/v4/stable/4.4.11/core.min.js",
-    "//player.ooyala.com/static/v4/stable/4.4.11/video-plugin/main_html5.js",
-    "//player.ooyala.com/static/v4/stable/4.4.11/skin-plugin/html5-skin.js",
-  )
+  const scripts = [
+    "//player.ooyala.com/static/v4/stable/4.5.5/core.min.js",
+    "//player.ooyala.com/static/v4/stable/4.5.5/video-plugin/main_html5.min.js",
+    "//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/html5-skin.js",
+  ];
+  if (Meteor.isCordova) {
+    scripts.push(
+      "//player.ooyala.com/static/v4/stable/4.5.5/video-plugin/bit_wrapper.min.js"
+    );
+  }
+  @scriptLoader(...scripts)
   @connect((state) => ({ audio: state.audio }))
   class AppGlobal extends Component {
     render() {
@@ -42,7 +46,6 @@ if (process.env.NATIVE) {
 
       return (
         <Global className={classes.join(" ")}>
-          {/*<LivePlayer/>*/}
           {this.props.children}
           <AudioPlayer propVal={visibility}/>
         </Global>
