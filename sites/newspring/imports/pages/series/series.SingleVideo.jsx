@@ -97,6 +97,10 @@ export default class SeriesSingleVideo extends Component {
 
   componentWillMount() {
     if (process.env.WEB) return;
+
+    // needed for client cache
+    this.handleHeader(this.props);
+
     this.props.dispatch(navActions.setLevel("CONTENT"))
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
@@ -105,6 +109,10 @@ export default class SeriesSingleVideo extends Component {
   }
 
   componentWillUpdate(nextProps){
+    this.handleHeader(nextProps);
+  }
+
+  handleHeader = (nextProps) => {
     const { content } = nextProps.series;
     if(!content) return;
 
@@ -120,7 +128,6 @@ export default class SeriesSingleVideo extends Component {
     if (!live) options.subTitle = content.title;
 
     this.props.dispatch(headerActions.set(options));
-
   }
 
   render() {
