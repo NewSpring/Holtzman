@@ -19,7 +19,6 @@ function* setColor({ color }) {
 };
 
 function* setColorFromHeader() {
-  console.log("canRun", canRun());
   let { header } = yield select()
   if (canRun() && header.content.color) {
     StatusBar.backgroundColorByHexString(header.content.color);
