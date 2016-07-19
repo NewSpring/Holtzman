@@ -26,14 +26,22 @@ export default class Tag extends Component {
   state = { isActive: false }
 
   componentWillMount() {
-    if ((this.props.active || this.isInQueryString()) && this.props.canBeActive) {
+    if ((this.props.active || this.isInQueryString(this.props)) && this.props.canBeActive) {
       this.setState({ isActive: true });
     }
   }
 
-  isInQueryString = () => {
-    const { val } = this.props;
-    const { query } = this.props.location;
+  componentWillReceiveProps(nextProps) {
+    if ((this.props.active || this.isInQueryString(nextProps)) && nextProps.canBeActive) {
+      this.setState({ isActive: true });
+    } else {
+      this.setState({ isActive: false })
+    }
+  }
+
+  isInQueryString = (props) => {
+    const { val } = props;
+    const { query } = props.location;
     if (!query || !query.tags) return false;
 
     const tags = query.tags.toLowerCase().split(",").filter(x => x);

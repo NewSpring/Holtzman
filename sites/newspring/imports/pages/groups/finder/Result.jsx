@@ -3,8 +3,8 @@ import { connect } from "react-apollo";
 import { withRouter, Link } from "react-router";
 import gql from "graphql-tag";
 import { nav as navActions } from "apollos/dist/core/store"
-import ReactTooltip from "react-tooltip";
-import Truncate from "truncate";
+// import ReactTooltip from "react-tooltip";
+// import Truncate from "truncate";
 
 import Split, { Left, Right } from "apollos/dist/core/blocks/split";
 import GoogleMap from "apollos/dist/core/components/map";
@@ -121,33 +121,33 @@ export default class Template extends Component {
   toggleTags = () => this.setState({ showTags: !this.state.showTags })
   toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
 
-  createChild = (group) => (
-    <div>
-      <span className="locked-sides locked-ends" style={{cursor: "pointer"}} data-tip data-for={group.id}></span>
-      <style>{`.toolTip { padding: 0 !important; border-radius: 6px !important; opacity: 1 !important; }`}</style>
-      <ReactTooltip  class="toolTip" id={group.id} place="top" type="light" effect="solid">
-        <Link to={`/groups/${group.id}`} className="plain display-block" onClick={(e) => console.log(e)}>
-          <div className="background--light-primary rounded">
-            <div className="grid flush rounded text-left" style={{width: "280px"}}>
-              <div className="grid__item two-thirds hard" style={{verticalAlign: "middle"}}>
-                <div className="one-whole text-left soft-half">
-                  <h5 className="text-dark-primary">{group.name}</h5>
-                  <p className="hard flush text-dark-primary"><small>{Truncate(group.description, 60)}</small></p>
-                </div>
-              </div>
-              <div className="grid__item one-third hard locked-ends locked-right" style={{verticalAlign: "middle"}}>
-                <div className="background--fill one-whole locked-ends locked-sides" style={{
-                    backgroundImage: `url('${group.photo}')`,
-                    borderRadius: "0 6px 6px 0"
-                }}>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Link>
-      </ReactTooltip>
-    </div>
-  )
+  // createChild = (group) => (
+  //   <div>
+  //     <span className="locked-sides locked-ends" style={{cursor: "pointer"}} data-tip data-for={group.id}></span>
+  //     <style>{`.toolTip { padding: 0 !important; border-radius: 6px !important; opacity: 1 !important; }`}</style>
+  //     <ReactTooltip  class="toolTip" id={group.id} place="top" type="light" effect="solid">
+  //       <Link to={`/groups/${group.id}`} className="plain display-block" onClick={(e) => console.log(e)}>
+  //         <div className="background--light-primary rounded">
+  //           <div className="grid flush rounded text-left" style={{width: "280px"}}>
+  //             <div className="grid__item two-thirds hard" style={{verticalAlign: "middle"}}>
+  //               <div className="one-whole text-left soft-half">
+  //                 <h5 className="text-dark-primary">{group.name}</h5>
+  //                 <p className="hard flush text-dark-primary"><small>{Truncate(group.description, 60)}</small></p>
+  //               </div>
+  //             </div>
+  //             <div className="grid__item one-third hard locked-ends locked-right" style={{verticalAlign: "middle"}}>
+  //               <div className="background--fill one-whole locked-ends locked-sides" style={{
+  //                   backgroundImage: `url('${group.photo}')`,
+  //                   borderRadius: "0 6px 6px 0"
+  //               }}>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </Link>
+  //     </ReactTooltip>
+  //   </div>
+  // )
 
 
   getMarkers = (groups = []) => {
@@ -158,7 +158,7 @@ export default class Template extends Component {
         latitude: x.locations[0].location.latitude,
         longitude: x.locations[0].location.longitude,
         id: x.id,
-        children: this.createChild(x),
+        // children: this.createChild(x),
       }))
       .filter(x => x.latitude && x.longitude)
     ), (x) => x.id);
