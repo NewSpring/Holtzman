@@ -5,6 +5,7 @@ import ReactDOM from "react-dom"
 import Moment from "moment"
 // import { TransitionMotion, spring, presets } from "react-motion"
 // import { VelocityComponent } from "velocity-react"
+import Filter from "./Filter";
 
 import { Spinner } from "../../../core/components/loading"
 import Split, { Left, Right } from "../../../core/blocks/split"
@@ -158,7 +159,7 @@ export default class Layout extends Component {
 
   render () {
 
-    const { transactions, ready, paginate, done } = this.props
+    const { transactions, ready, paginate, done, changeFamily, changeDates, reloading } = this.props
 
 
     return (
@@ -183,11 +184,11 @@ export default class Layout extends Component {
             </div>
           </div>
 
-
+          <Filter family={this.props.family} changeFamily={changeFamily} changeDates={changeDates} />
           <div className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable" ref="history">
             {(() => {
 
-              if (!transactions.length && !ready) {
+              if (reloading || !transactions.length && !ready) {
                 // loading
                 return (
                   <div className="text-center soft">
@@ -223,7 +224,7 @@ export default class Layout extends Component {
                           lastYear = year
                           return (
                             <div key={i}>
-                              <div className="soft text-left">
+                              <div className="soft soft-half-left text-left">
                                 <h5>{year}</h5>
                               </div>
                               <TransactionCard
@@ -269,7 +270,7 @@ export default class Layout extends Component {
 
               if (done) {
                 return (
-                  <button className="disabled soft-ends btn" disabled>
+                  <button className="disabled soft-ends push-double-bottom btn" disabled>
                     No More Contributions
                   </button>
                 )
@@ -277,7 +278,7 @@ export default class Layout extends Component {
 
               if (!ready) {
                 return (
-                  <button className="disabled btn" disabled>
+                  <button className="disabled btn push-double-bottom" disabled>
                     Loading...
                   </button>
                 )

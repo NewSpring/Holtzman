@@ -93,6 +93,7 @@
     "react-redux": "^4.0.0",
     "react-router": "^2.4.0",
     "react-swipe-views": "git+https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
+    "react-tooltip": "^3.0.13",
     "redux": "^3.0.4",
     "truncate": "^2.0.0"
   }
