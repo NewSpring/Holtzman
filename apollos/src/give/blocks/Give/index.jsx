@@ -168,6 +168,7 @@ export default class Give extends Component {
   }
 
   goToaccounts = () => {
+    console.log("ER")
     const { data } = this.props.give
 
     let props = {
@@ -180,7 +181,7 @@ export default class Give extends Component {
         terms: true
       }
     }
-
+    console.log(props)
     this.props.dispatch(modal.render(OnBoard, props))
   }
 
@@ -212,7 +213,6 @@ export default class Give extends Component {
 
     let save = (...args) => { this.props.dispatch(giveActions.save(...args)) }
     let clear = (...args) => { this.props.dispatch(giveActions.clear(...args)) }
-
     switch (state) {
       case "loading":
         this.copiedSchedules = {...schedules}
