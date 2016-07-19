@@ -15,7 +15,6 @@ const cancelTransaction = (transactionId, callback) => {
 
   const builder = new Builder()
   const xml = builder.buildObject(cancelTransactionObj)
-
   return fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",
     body: `${xml}`,
@@ -27,7 +26,6 @@ const cancelTransaction = (transactionId, callback) => {
     return response.text()
   })
   .then((data) => {
-
     try {
       data = parseXML(data)
     } catch (e) {

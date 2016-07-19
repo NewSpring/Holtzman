@@ -58,16 +58,13 @@ export default class SubFund extends Component {
   }
 
   getFund = (id) => {
-    let selectedFund = this.props.accounts.filter((fund) => fund.value === id)
-
+    let selectedFund = this.props.accounts.filter((fund) => fund.value == id)
     return selectedFund[0]
   }
 
   saveFund = (id) => {
 
-    if (id === this.state.id) {
-      return
-    }
+    if (id == this.state.id) return
 
     // remove old funds transaction
     this.props.clearTransaction(`${this.state.id}`);
@@ -158,10 +155,7 @@ export default class SubFund extends Component {
 
   render () {
 
-
-    if (!this.props.accounts.length) {
-      return null
-    }
+    if (!this.props.accounts.length) return null
 
     if (this.props.primary) {
 

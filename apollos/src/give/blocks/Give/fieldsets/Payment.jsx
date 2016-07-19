@@ -319,7 +319,7 @@ export default class Payment extends Component {
 
           {(() => {
             if (
-              this.props.savedAccount.id === null &&
+              !this.props.savedAccount.id &&
               this.props.transactionType != "guest" &&
               Object.keys(this.props.schedules).length === 0
             ) {
@@ -339,7 +339,7 @@ export default class Payment extends Component {
           {(() => {
             if (
               this.state.save &&
-              this.props.savedAccount.id === null &&
+              !this.props.savedAccount.id &&
               this.props.transactionType != "guest" &&
               Object.keys(this.props.schedules).length === 0
             ) {

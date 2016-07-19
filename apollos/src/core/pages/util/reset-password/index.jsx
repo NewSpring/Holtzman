@@ -20,7 +20,6 @@ export default class ChangePassword extends Component {
   submit = (e) => {
     e.preventDefault()
     this.setState({ state: "loading" })
-
     Accounts.resetPassword(this.props.params.token, this.state.newP, (err) => {
       if (err) {
         this.setState({ state: "error", err: err })
@@ -72,14 +71,25 @@ export default class ChangePassword extends Component {
 
   render () {
     const { state, err } = this.state
-
     switch (state) {
       case "error":
-        return <Error msg="Looks like there was a problem" error={err && err.message ? err.message : " "} />
+        return (
+          <div className="fixed-ends fixed-sides">
+            <Error msg="Looks like there was a problem" error={err && err.message ? err.message : " "} />
+          </div>
+        )
       case "loading":
-        return <Loading msg="Updating your password..." />
+        return (
+          <div className="fixed-ends fixed-sides">
+            <Loading msg="Updating your password..." />
+          </div>
+        )
       case "success":
-        return <Success msg="Your password has been updated!" />
+        return (
+          <div className="fixed-ends fixed-sides">
+            <Success msg="Your password has been updated!" />
+          </div>
+        )
       default:
         return  (
           <Layout

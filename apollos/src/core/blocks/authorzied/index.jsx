@@ -22,9 +22,7 @@ export default class Authorized extends Component {
     this.props.dispatch(modal.update({modalBackground: "light"}))
     const authorized = Meteor.userId()
     if (!authorized) {
-      this.props.dispatch(modal.render(OnBoard, {
-        coverHeader: true
-      }))
+      this.props.dispatch(modal.render(OnBoard, { coverHeader: true }))
     }
 
     // fail safe if for some reason we are logged in but not authorized in
@@ -38,8 +36,8 @@ export default class Authorized extends Component {
 
     if (this.props.modal.visible && !nextProps.modal.visible && !nextProps.auth) {
       // use last route instead of goBack() to force update of active nav item
-      const lastRoute = nextProps.previous[nextProps.previous.length-1] || "/";
-      this.props.dispatch(routeActions.push(lastRoute))
+      // const lastRoute = nextProps.previous[nextProps.previous.length-1] || "/";
+      this.props.dispatch(routeActions.push("/"))
     }
 
     if (this.props.auth && !nextProps.auth) {
@@ -55,9 +53,7 @@ export default class Authorized extends Component {
 
 
   render () {
-    if (Meteor.userId()) {
-      return this.props.children
-    }
+    if (Meteor.userId()) return this.props.children
 
     /*
 

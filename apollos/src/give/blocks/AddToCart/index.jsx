@@ -74,22 +74,22 @@ export default class CartContainer extends Component {
           query  = window.location.search.substring(1);
 
       let urlParams = {};
-      // while (match = search.exec(query))
-      //    urlParams[decode(match[1])] = decode(match[2]);
+      while (match = search.exec(query))
+         urlParams[decode(match[1])] = decode(match[2]);
 
-      // for (let account of this.props.accounts) {
-      //   if (urlParams[account.name]) {
-      //     let value = urlParams[account.name]
-      //     let id = account.id
+      for (let account of this.props.accounts) {
+        if (urlParams[account.name]) {
+          let value = urlParams[account.name]
+          let id = account.id
 
-      //     value = this.monentize(value)
+          value = this.monentize(value)
 
-      //     this.props.addTransactions({ [id]: {
-      //       value: Number(value.replace(/[^0-9\.]+/g, '')),
-      //       label: account.name
-      //     }})
-      //   }
-      // }
+          this.props.addTransactions({ [id]: {
+            value: Number(value.replace(/[^0-9\.]+/g, '')),
+            label: account.name
+          }})
+        }
+      }
     }
 
 
