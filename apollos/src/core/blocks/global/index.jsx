@@ -30,7 +30,7 @@ const Watermark = () => (
 export const App = ({ children, className }) => {
   return (
     <div
-      className="push-double-bottom@palm soft-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up"
+      className="push-double-bottom@palm soft-half-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up"
     >
       <div className={className}>
         <Meta />

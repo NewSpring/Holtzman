@@ -19,7 +19,7 @@ export default StyleSheet.create({
     position: "fixed",
     height: "50px",
     zIndex: "101",
-    marginBottom: "52px",
+    marginBottom: "50px",
   },
 
   "mini-player-stop h6": {

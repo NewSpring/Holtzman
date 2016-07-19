@@ -15,14 +15,10 @@ export default class StoriesSingleVideoPlayer extends Component {
     const story = this.props.story;
 
     return (
-      <div
-        className="background--fill overlay--gradient ratio--landscape floating"
-        style={Helpers.backgrounds.styles(story, { label: "2:1" })}>
-        <i className="text-light-primary plain floating__item overlay__item icon-play h1"></i>
-        <div className="locked locked-ends one-whole" style={{ zIndex: "10" }}>
-          <Video id={story.content.ooyalaId} hide={false} />
-        </div>
-      </div>
+      <Video
+        id={story.content.ooyalaId}
+        hide={false}
+      />
     );
 
   }
