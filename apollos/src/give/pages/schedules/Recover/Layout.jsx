@@ -113,7 +113,7 @@ export default class Layout extends Component {
 
             {(() => {
               let count = 0
-              if (recoverableSchedules.length) {
+              if (recoverableSchedules && recoverableSchedules.filter(x => !x.gateway).length) {
                 return (
                   <div>
                     <div className="background--light-primary soft-half soft-sides@portable soft-double-sides@anchored soft-double-top">
@@ -134,7 +134,7 @@ export default class Layout extends Component {
                       </h4>
 
                       */}
-                      {recoverableSchedules.map((schedule, i) => {
+                      {recoverableSchedules.filter(x => !x.gateway).map((schedule, i) => {
                         count ++
                         if (!schedule.details || !schedule.details[0].account) {
                           return null

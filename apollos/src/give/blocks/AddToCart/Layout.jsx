@@ -29,7 +29,6 @@ export default class Layout extends Component {
     }
 
     let instance = getInstance()
-
     if (instance) {
       let current = [...this.state.instances]
       let updated = current.map((x) => {
@@ -111,8 +110,6 @@ export default class Layout extends Component {
     for (let i = 0; i < this.state.SubFundInstances; i++) {
       accountsCount.push(i)
     }
-
-    // console.log(this.state.instances.length, accountsCount.length)
 
     return (
       <div className="push-top@handheld soft-half-top@lap-and-up">

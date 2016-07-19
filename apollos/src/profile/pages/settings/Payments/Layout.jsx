@@ -18,7 +18,7 @@ const Layout = ({ details, remove, loading }) => (
     style={styles}>
     <Meta title="Saved Payments" />
     <Back />
-    <div className="one-whole two-thirds@anchored display-inline-block">
+    <div className="one-whole two-thirds@anchored display-inline-block push-double-top">
       <h3>Saved Accounts</h3>
       <div className="soft-sides soft-double-sides@lap-and-up text-center">
         {(() => {

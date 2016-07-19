@@ -70,11 +70,10 @@ const cancel = ({ id, gateway }) => {
   let response = {}
 
   let existing = api.get.sync(`FinancialScheduledTransactions/${id}`)
-
   // only remove if this is an NMI transaction and we have a gateway code
   if (gateway && existing.FinancialGatewayId === api._.give.gateway.id) {
     try {
-      response = Meteor.wrapAsync(gatewayCancel)(gateway)
+      response = Meteor.wrapAsync(gatewayCancel)(existing.GatewayScheduleId)
     } catch (e) {
       throw new Meteor.Error(e.message ? e.message : e)
     }
@@ -84,7 +83,7 @@ const cancel = ({ id, gateway }) => {
   if (existing.GatewayScheduleId) {
     response = api.patch.sync(`FinancialScheduledTransactions/${id}`, { IsActive: false })
     // debug for now
-    console.log("@@REMOVE_SCHEDULE_DATA", response, id, gateway, existing)
+    console.log("@@REMOVE_SCHEDULE_DATA", response, id, existing.GatewayScheduleId, existing)
   } else {
     // infellowhsip move over
     response = api.delete.sync(`FinancialScheduledTransactions/${id}`)
