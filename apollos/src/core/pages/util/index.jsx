@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import { GraphQL } from "../../graphql";
 import Split, { Left, Right } from "../../blocks/split"
 
-// import ResetPassword from "./reset-password"
+import ResetPassword from "./reset-password"
 
 const Template = (props) => {
 
@@ -33,13 +33,13 @@ const Template = (props) => {
 }
 
 const Routes = [
-  // {
-  //   path: "_",
-  //   component: Template,
-  //   childRoutes: [
-  //     { path: "reset-password/:token", component: ResetPassword },
-  //   ]
-  // },
+  {
+    path: "_",
+    component: Template,
+    childRoutes: [
+      { path: "reset-password/:token", component: ResetPassword },
+    ]
+  },
   {
     path: "/$*",
     onEnter: (location, replaceState, callback) => {

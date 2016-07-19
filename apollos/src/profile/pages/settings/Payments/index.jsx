@@ -14,7 +14,7 @@ const mapQueriesToProps = () => ({
     query: gql`
       query PaymentDetails {
         accounts: savedPayments {
-          id
+          id: entityId
           name
           payment {
             id
@@ -30,7 +30,7 @@ let defaultAccounts = []
 @connect({ mapQueriesToProps })
 export default class GiveNow extends Component {
 
-  state = { accountsRemoved: [] }
+  state = { accounts: [] }
 
   componentWillMount(){
     this.props.dispatch(nav.setLevel("BASIC_CONTENT"))
@@ -40,22 +40,28 @@ export default class GiveNow extends Component {
     this.props.dispatch(nav.setLevel("TOP"))
   }
 
+  componentWillReceiveProps(nextProps){
+    if (this.props.data.loading && !nextProps.data.loading) {
+      this.setState({ accounts: nextProps.data.accounts })
+    }
+  }
+
 
   remove = (e) => {
     e.preventDefault()
     const { id } = e.target
 
-    let accountsRemoved = [...this.state.accountsRemoved, [id]]
+    let accounts = this.state.accounts.filter(x => x.id != id);
 
-    this.setState({ accountsRemoved: accounts })
+    this.setState({ accounts })
     Meteor.call("PaymentAccounts.remove", id, (err, response) => {
-      console.log(err, response)
+      // XXX mutation
       this.props.data.refetch(); // clear out data store for newly missing account
     })
   }
 
   render () {
-    const { accounts } = this.props.data;
+    const { accounts } = this.state;
     return <Layout loading={this.props.data.loading} details={accounts} remove={this.remove} />
 
   }

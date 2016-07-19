@@ -94,7 +94,8 @@ export default class Details extends Component {
 
         this.setState({isActive: false, removed: id})
         Meteor.call("give/schedule/cancel", {id, gateway}, (err, response) => {
-          // console.log(err, response)
+          console.log(err, response)
+          console.log(id, gateway)
         })
       }
     }))
