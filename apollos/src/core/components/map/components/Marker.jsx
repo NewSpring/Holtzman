@@ -18,12 +18,10 @@ export default class Marker extends Component {
   render() {
     let style = (this.props.$hover || this.props.hover) ? hover : base;
 
-    if (this.props.active) {
-      style = active
-    }
+    if (this.props.active) style = active
 
     return (
-       <div style={style}>
+       <div className="relative" style={style}>
           {this.props.children}
        </div>
     );
