@@ -175,17 +175,16 @@ export default class Map extends Component {
 
             }}
           >
-            {this.props.markers && this.props.markers.map((marker) => {
-              return <Marker
+            {this.props.markers && this.props.markers.map((marker) => (
+              <Marker
                 lat={marker.latitude}
                 lng={marker.longitude}
                 key={marker.id}
                 active={this.props.active === marker.id}
                 hover={this.props.hover === marker.id}
                 popUp={this.props.popUp}
-              />
-
-            })}
+              >{marker.children || null}</Marker>
+            ))}
           </GoogleMap>
         )
       }
