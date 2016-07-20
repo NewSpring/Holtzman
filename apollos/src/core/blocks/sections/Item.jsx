@@ -59,7 +59,7 @@ const ChildItem = ({ section, go }) => {
   if (!section) {
     return (
       <div className="one-whole grid__item">
-        <div className="rounded ratio--landscape">
+        <div className="rounded ratio--landscape soft-ends">
           <div className="ratio__item"></div>
         </div>
       </div>
@@ -69,7 +69,8 @@ const ChildItem = ({ section, go }) => {
   const imageclasses = [
     "background--fill",
     "background--dark-tertiary",
-    "ratio--square"
+    "ratio--landscape",
+    "soft-ends"
   ];
 
   return (
@@ -82,7 +83,7 @@ const ChildItem = ({ section, go }) => {
       >
       <div className="rounded one-whole grid rounded flush background--light-primary">
         <div className="grid__item two-thirds hard" style={{verticalAlign: "middle"}}>
-          <h5 className="soft-left text-dark-primary flush-bottom">{section.text}</h5>
+          <h6 className="soft-left text-dark-primary flush-bottom">{section.text}</h6>
         </div>
         <div className="grid__item one-third hard" style={{verticalAlign: "middle"}}>
           <ImageLoader
@@ -108,7 +109,7 @@ const Item = ({ section, go, children }) => {
   if (!section) {
     return (
       <div className="one-half grid__item">
-        <div className="rounded ratio--square">
+        <div className="rounded ratio--landscape">
           <div className="ratio__item"></div>
         </div>
       </div>
