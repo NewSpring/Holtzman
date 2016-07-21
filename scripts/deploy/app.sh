@@ -145,13 +145,19 @@ if [ "$DEST" = "native" ]; then
 fi
 if [ "$DEST" = "web" ]; then
   yecho "### Building apollos for $DEST"
-  cd ../../apollos && WEB=true npm run compile && cd ../
+  cd ../../apollos && WEB=true npm run compile
+  rm -rf node_modules && cd ../
   rm -rf sites/$APP/.meteor/local
 
   yecho "### Removing cordova platforms ###"
   cd ./sites/$APP
   meteor remove-platform android
   meteor remove-platform ios
+
+  yecho "### Reinstalling / linking apollos for better dependencies ###"
+  rm -rf node_modules/apollos && npm i
+  ls node_modules/apollos
+  ls node_modules/apollos/dist
 
   yecho "### Building meteor for env $DEST ###"
   # XXX pass env vars through launch
