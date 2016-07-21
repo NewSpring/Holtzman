@@ -62,6 +62,7 @@ METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$
 ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.cc"
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
   ROOT_URL="https://pre-my.newspring.cc"
+  METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/my.newspring.cc/$CHANNEL.settings.json"
 fi
 
 yecho "ROOT_URL"
