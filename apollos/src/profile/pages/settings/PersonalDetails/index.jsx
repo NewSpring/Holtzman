@@ -14,7 +14,7 @@ import { Loading, Error as Err } from "../../../../core/components/states"
 import Success from "../Success"
 import Layout from "./Layout"
 
-
+// XXX remove cache: false once we feel good about caching
 const mapQueriesToProps = () => ({
   campuses: {
     query: gql`
@@ -31,7 +31,7 @@ const mapQueriesToProps = () => ({
   person: {
     query: gql`
       query GetPersonForSettings {
-        person: currentPerson {
+        person: currentPerson(cache: false) {
           campus {
             id: entityId
           }
@@ -110,18 +110,14 @@ export default class PersonalDetails extends Component {
 
       if (err) {
         this.setState({ state: "error", err: err })
-        setTimeout(() => {
-          this.setState({ state: "default"})
-        }, 3000)
+        setTimeout(() => this.setState({ state: "default"}), 3000)
         return
       }
 
 
       this.setState({ state: "success" })
       this.props.person.refetch()
-        .then(() => {
-          this.setState({ state: "default"})
-        })
+        .then(() => this.setState({ state: "default"}))
 
     })
 
