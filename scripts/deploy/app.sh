@@ -178,6 +178,10 @@ make_task_def() {
         "portMappings": [
           { "hostPort": '"$HOST_PORT"', "containerPort": 80, "protocol": "tcp" }
         ],
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": { "awslogs-group": "'"$ECS_SERVICE"'", "awslogs-region": "us-east-1" }
+        },
         "environment": [
           { "name": "REBUILD_NPM_MODULES", "value": "1" },
           { "name": "MONGO_URL", "value": "'"$DOCKER_MONGO_URL"'" },
