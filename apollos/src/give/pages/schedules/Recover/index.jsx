@@ -13,6 +13,7 @@ import { give as giveActions } from "../../../store"
 import Layout from "./Layout"
 import Confirm from "./../Details/Confirm"
 
+// XXX remove cache: false when heighliner caching is tested
 const mapQueriesToProps = () => ({
   data: {
     query: gql`
@@ -32,7 +33,8 @@ const mapQueriesToProps = () => ({
         }
         person: currentPerson { firstName, lastName }
       }
-    `
+    `,
+    forceFetch: true,
   },
   accounts: {
     query: gql`

@@ -16,7 +16,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
   entries: {
     query: gql`
       query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
-        entries: taggedContent(tagName: $tagName, limit: $limit, includeChannels: $includeChannels, cache: false) {
+        entries: taggedContent(tagName: $tagName, limit: $limit, includeChannels: $includeChannels) {
           entryId: id
           title
           channelName
@@ -61,7 +61,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
       }
     `,
     variables: { scheduleTransactionId: ownProps.params.id },
-    ssr: true,
+    forceFetch: true,
   }
 })
 
