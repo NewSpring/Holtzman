@@ -145,7 +145,7 @@ if [ "$DEST" = "native" ]; then
 fi
 if [ "$DEST" = "web" ]; then
   yecho "### Building apollos for $DEST"
-  cd ../../apollos && WEB=true npm run compile
+  cd ../../apollos && NODE_ENV="production" WEB=true npm run compile
   rm -rf node_modules && cd ../
   rm -rf sites/$APP/.meteor/local
 
@@ -161,7 +161,7 @@ if [ "$DEST" = "web" ]; then
 
   yecho "### Building meteor for env $DEST ###"
   # XXX pass env vars through launch
-  WEB=true meteor build .build --architecture os.linux.x86_64 --server $ROOT_URL --mobile-settings $METEOR_SETTINGS_PATH
+  NODE_ENV="production" WEB=true meteor build .build --architecture os.linux.x86_64 --server $ROOT_URL --mobile-settings $METEOR_SETTINGS_PATH
 fi
 
 
