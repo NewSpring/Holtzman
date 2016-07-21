@@ -1,7 +1,7 @@
 
 import React from "react";
 // Do server-rendering only in proudction mode
-if (process.env.WEB) {
+if (process.env.WEB && process.env.NODE_ENV === "proudction") {
 
   // load the application
   import { run } from "apollos/dist/core/router/server";
