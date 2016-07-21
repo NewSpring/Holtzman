@@ -19,9 +19,10 @@ const mapQueriesToProps = ({ ownProps }) => ({
     `
   },
   data: {
+    // XXX remove cache: false when heighliner caching is tested
     query: gql`
       query GetTransactions($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
-        transactions(limit: $limit, skip: $skip, people: $people, start: $start, end: $end) {
+        transactions(limit: $limit, skip: $skip, people: $people, start: $start, end: $end, cache: false) {
           id
           date
           status
@@ -35,7 +36,8 @@ const mapQueriesToProps = ({ ownProps }) => ({
         }
       }
     `,
-    variables: { limit: 20, skip: 0, people: [], start: "", end: "" }
+    variables: { limit: 20, skip: 0, people: [], start: "", end: "" },
+    forceFetch: true,
   },
 });
 const defaultArray = [];

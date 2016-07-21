@@ -48,7 +48,7 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
-    ssr: true,
+    forceFetch: true,
   },
   accounts: {
     query: gql`

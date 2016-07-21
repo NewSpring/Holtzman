@@ -7,7 +7,7 @@ import { Motion, spring } from "react-motion";
 
 import Styles from "./live-css";
 
-import liveActions from "apollos/dist/core/store/live";
+import liveActions from "../../store/live";
 
 const mapQueriesToProps = ({ ownProps, state }) => {
   return {

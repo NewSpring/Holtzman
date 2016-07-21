@@ -13,11 +13,12 @@ import { Error as Err, Loading } from "../../../../core/components/states"
 import Success from "../Success"
 import Layout from "./Layout"
 
+// XXX remove cache: false once we feel good about caching
 const mapQueriesToProps = () => ({
   data: {
     query: gql`
       query GetPersonsHome {
-        person: currentPerson {
+        person: currentPerson(cache: false){
           home {
             street1
             street2
