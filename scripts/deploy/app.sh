@@ -192,6 +192,7 @@ make_task_def() {
         },
         "environment": [
           { "name": "REBUILD_NPM_MODULES", "value": "1" },
+          { "name": "NODE_ENV", "value": "production" },
           { "name": "MONGO_URL", "value": "'"$DOCKER_MONGO_URL"'" },
           { "name": "DISABLE_WEBSOCKETS", "value": "1" },
           { "name": "ROOT_URL", "value": "'"$ROOT_URL"'" },
