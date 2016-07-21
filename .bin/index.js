@@ -112,6 +112,7 @@ Vorpal
           cwd: app, stdio: "inherit"
         });
         child.on("error", f);
+        if (process.env.CI) return; // On the CI, we don't want to link
         child.on("close", function(){
           var dest = Path.join(app, "node_modules/apollos");
           Rimraf(dest);
