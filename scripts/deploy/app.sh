@@ -136,6 +136,8 @@ if [ "$DEST" = "native" ]; then
 
   yecho "### Reinstalling / linking apollos for better dependencies ###"
   rm -rf node_modules/apollos && npm i
+  ls node_modules/apollos
+  ls node_modules/apollos/dist
 
   yecho "### Building meteor for env $DEST ###"
   # XXX pass env vars through launch
