@@ -9,11 +9,12 @@ import { give as giveActions } from "../../../../give/store"
 
 import Layout from "./Layout"
 
+// XXX remove cache: false once we feel good about caching
 const mapQueriesToProps = () => ({
   data: {
     query: gql`
       query PaymentDetails {
-        accounts: savedPayments {
+        accounts: savedPayments(cache: false) {
           id: entityId
           name
           payment {

@@ -27,11 +27,12 @@ import {
 } from "./Buttons"
 
 
+// XXX remove cache: false when heighliner caching is tested
 const mapQueriesToProps = ({ ownProps }) => ({
   savedPayments: {
       query: gql`
         query GetSavedPaymentAccounts {
-          savedPayments {
+          savedPayments(cache: false) {
             name, id: entityId, date,
             payment { accountNumber, paymentType }
           }
