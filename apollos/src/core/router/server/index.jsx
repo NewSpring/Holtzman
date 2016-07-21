@@ -185,9 +185,7 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
 
       // Do the rendering.
       const renderedData = StyleSheetServer.renderStatic(function() {
-        console.log("starting to fetch queries");
         Promise.awaitAll([getDataFromTree(app)]);
-        console.log("got all queries");
         return ReactDOMServer.renderToString(app)
       });
 
@@ -198,7 +196,7 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
         InjectData.pushData(res, 'aphrodite-classes', JSON.stringify(css));
       }
 
-      const head = ReactHelmet.rewind();
+      head = ReactHelmet.rewind();
 
       // If using redux, pass the resulting redux state to the client so that it
       // can hydrate from there.
