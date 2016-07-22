@@ -88,7 +88,7 @@ export default class Filter extends Component {
               {family && family.map(({ person }, key) => {
                 let active = this.state.people.indexOf(person.id) > -1;
                 return (
-                  <div key={key} className="soft-half-bottom soft-half-left" onClick={(e) => this.onClick(person)}>
+                  <div key={key} style={{ cursor: "pointer" }}className="soft-half-bottom soft-half-left" onClick={(e) => this.onClick(person)}>
                     <div
                       className={`${active ? "background--primary" : ""} display-inline-block outlined`}
                       style={{
