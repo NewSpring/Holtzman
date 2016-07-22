@@ -32,6 +32,7 @@ const mapQueriesToProps = ({ state }) => ({
     variables: {
       guid: state.routing.location && state.routing.location.query && state.routing.location.query.guid,
     },
+    ssr: false,
   }
 })
 
@@ -67,21 +68,15 @@ class AccountsContainer extends Component {
   }
 
   componentWillMount(){
-    if (process.env.NATIVE) {
-      headerActions.hide();
-    }
+    if (process.env.NATIVE) headerActions.hide();
 
     if (typeof this.props.account != "undefined") {
-      this.setState({
-        account: this.props.account,
-      })
+      this.setState({ account: this.props.account })
     }
   }
 
   componentWillUnmount() {
-    if (process.env.NATIVE) {
-      headerActions.show();
-    }
+    if (process.env.NATIVE) hackeaderActions.show();
   }
 
   componentWillReceiveProps(nextProps) {
