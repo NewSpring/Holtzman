@@ -414,6 +414,7 @@ function* recoverTransactions() {
   let { data } = yield GraphQL.query({ query, variables })
 
   let { schedules } = data;
+  if (!schedules) schedules = [];
   hasRecovered = true;
   let bulkUpdate = {}
   schedules = schedules.filter(x => !x.gateway)
