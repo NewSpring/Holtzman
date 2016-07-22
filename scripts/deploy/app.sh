@@ -68,7 +68,7 @@ fi
 yecho "ROOT_URL"
 yecho $ROOT_URL
 
-ECS_CLUSTER="guild"
+ECS_CLUSTER="apollos"
 ECS_SERVICE="$CHANNEL-$DEST"
 ECS_TASK_FAMILY="$DEST"
 ECS_TASK_NAME=""
@@ -78,6 +78,7 @@ if [ "$DEST" = "web" ]; then
   ECS_TASK_NAME="apollos"
 fi
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
+  ECS_CLUSTER="guild"
   ECS_SERVICE="web-production"
 fi
 if [ "$DEST" = "native" ]; then
