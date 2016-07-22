@@ -30,11 +30,9 @@ const mapQueriesToProps = () => ({
   },
   person: {
     query: gql`
-      query GetPersonForSettings {
-        person: currentPerson(cache: false) {
-          campus {
-            id: entityId
-          }
+      query GetPersonForSettings($cache: Boolean) {
+        person: currentPerson(cache: $cache) {
+          campus { id: entityId }
           firstName
           lastName
           nickName
@@ -45,6 +43,7 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
+    variables: { cache: true }
   },
 });
 @connect({ mapQueriesToProps })
@@ -116,7 +115,7 @@ export default class PersonalDetails extends Component {
 
 
       this.setState({ state: "success" })
-      this.props.person.refetch()
+      this.props.person.refetch({ cache: false })
         .then(() => this.setState({ state: "default"}))
 
     })

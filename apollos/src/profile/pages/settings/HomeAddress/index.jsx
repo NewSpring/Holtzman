@@ -17,9 +17,9 @@ import Layout from "./Layout"
 const mapQueriesToProps = () => ({
   data: {
     query: gql`
-      query GetPersonsHome {
-        person: currentPerson(cache: false){
-          home {
+      query GetPersonsHome($cache: Boolean) {
+        person: currentPerson {
+          home(cache: $cache) {
             street1
             street2
             state
@@ -29,7 +29,8 @@ const mapQueriesToProps = () => ({
           }
         }
       }
-    `
+    `,
+    variables: { cache: true }
   }
 })
 
@@ -70,7 +71,7 @@ export default class HomeAddress extends Component {
       }
 
       this.setState({ state: "success" });
-      this.props.data.refetch()
+      this.props.data.refetch({ cache: false })
         .then(() => {
           this.setState({ state: "default"})
         });
