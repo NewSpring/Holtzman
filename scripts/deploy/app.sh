@@ -60,8 +60,15 @@ URLPREFIX="my"
 if [ "$DEST" = "native" ]; then URLPREFIX="native"; fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
 ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.cc"
+if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
+  ROOT_URL="https://pre-my.newspring.cc"
+  METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
+fi
 
-ECS_CLUSTER="apollos" # XXX move to Guild
+yecho "ROOT_URL"
+yecho $ROOT_URL
+
+ECS_CLUSTER="guild"
 ECS_SERVICE="$CHANNEL-$DEST"
 ECS_TASK_FAMILY="$DEST"
 ECS_TASK_NAME=""
@@ -70,18 +77,28 @@ if [ "$DEST" = "web" ]; then
   ECS_SERVICE="$CHANNEL-$DEST"
   ECS_TASK_NAME="apollos"
 fi
+if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
+  ECS_SERVICE="web-production"
+fi
 if [ "$DEST" = "native" ]; then
   ECS_TASK_FAMILY="app"
   ECS_SERVICE="$CHANNEL-app"
   ECS_TASK_NAME="app"
 fi
 
+yecho $ECS_TASK_FAMILY
+yecho $ECS_SERVICE
+yecho $ECS_TASK_NAME
+
 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz"
 HOST_PORT=8080 # production newspring web
 if [ "$DEST" = "native" ] && [ "$CHANNEL" = "alpha" ]; then HOST_PORT=8062; fi
 if [ "$DEST" = "native" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8072; fi
-if [ "$DEST" = "native" ] && [ "$CHANNEL" = "prod" ]; then HOST_PORT=8082; fi
+if [ "$DEST" = "native" ] && [ "$CHANNEL" = "production" ]; then HOST_PORT=8082; fi
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8070; fi
+if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then HOST_PORT=8080; fi
+
+yecho $HOST_PORT
 
 
 yecho "### Deploying $APP:$DEST to $CHANNEL ###"
