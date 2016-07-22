@@ -61,7 +61,7 @@ if [ "$DEST" = "native" ]; then URLPREFIX="native"; fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
 ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.cc"
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
-  ROOT_URL="https://pre-my.newspring.cc"
+  ROOT_URL="https://my.newspring.cc"
   METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
 fi
 
