@@ -20,7 +20,8 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
         <em>Select multiple tags to find even more groups</em>
       </h6>
       <div className="push-ends soft-double-sides@lap-and-up push-double-sides@anchored">
-        {tags.map((tag, i) => <Tag onClick={tagOnClick} key={i} val={tag.value} />)}
+        {/* weird SSR stuff here to investigate */}
+        {tags.map((tag, i) => <Tag className="" onClick={tagOnClick} key={i} val={tag.value} />)}
       </div>
       {(() => {
         if (!tags.length ) {
