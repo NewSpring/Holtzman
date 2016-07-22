@@ -6,6 +6,7 @@ import GoogleMap from "apollos/dist/core/components/map";
 import Split, { Left, Right } from "apollos/dist/core/blocks/split";
 import { Headerable } from "apollos/dist/core/mixins"
 import ReactMixin from "react-mixin";
+import Loading from "apollos/dist/core/components/loading/index";
 
 import { nav as navActions, modal } from "apollos/dist/core/store";
 import OnBoard from "apollos/dist/core/blocks/accounts";
@@ -94,7 +95,22 @@ export default class Template extends Component {
   render () {
     const { data } = this.props;
 
-    if (data.loading) return null;
+    if (data.loading) return (
+      <div>
+        <Split>
+          {/* Map */}
+          <Right mobile={false} classes={["background--left"]} />
+        </Split>
+        <Left scroll={true} classes={["background--light-secondary"]}>
+          <div className="soft-double text-center">
+            <Loading />
+          </div>
+        </Left>
+      </div>
+    );
+
+
+
     let { group, person, errors } = data;
     let isLeader;
     const leaders = group && group.members && group.members
