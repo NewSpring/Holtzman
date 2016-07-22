@@ -59,10 +59,10 @@ export default withRouter(({ group, router, onHover }) => {
             if (!group.type || group.type === "Interests") return null;
             return <Tag val={group.type} />
           })()}
-          {/*{(() => {
+          {(() => {
             if (!group.kidFriendly) return null;
-            return <Tag value="childcare" />
-          })()}*/}
+            return <Tag val="kid friendly" />
+          })()}
           {(() => {
             if (!group.demographic) return null;
             return <Tag val={group.demographic} />

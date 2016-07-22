@@ -4,6 +4,8 @@ import Forms from "apollos/dist/core/components/forms";
 import SideBySide from "apollos/dist/core/components/cards/SideBySide";
 import Loading from "apollos/dist/core/components/loading/index";
 import Tag from "../components/Tag";
+import Meta from "apollos/dist/core/components/meta";
+
 
 import Group from "../components/GroupCard";
 import Filter from "./Filter";
@@ -24,6 +26,7 @@ export default ({
 }) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
+    <Meta title="Group Finder" />
 
     {/* Tag List */}
     <div
@@ -36,7 +39,7 @@ export default ({
       }}
     >
       {tags && tags.map((tag, key) => (
-        <Tag className="flush-bottom" val={tag} key={key} />
+        <Tag style={{verticalAlign: "bottom"}} className="flush-bottom" val={tag} key={key} canBeActive={true} />
       ))}
       <Tag
         style={{verticalAlign: "bottom"}}

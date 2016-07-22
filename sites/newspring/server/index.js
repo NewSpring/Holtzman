@@ -1,7 +1,7 @@
 
 import React from "react";
 
-if (process.env.NODE_ENV === "proudction") console.log("PROD");
+if (process.env.NODE_ENV === "production") console.log("PROD");
 
 if (process.env.WEB) {
 

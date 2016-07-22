@@ -28,6 +28,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
             name
             entityId
             type
+            kidFriendly
             demographic
             description
             photo
@@ -41,6 +42,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
         }
       }
     `,
+    ssr: false,
     variables: {
       tags: ownProps.tags.split(",").filter(x => x),
       query: ownProps.q,
