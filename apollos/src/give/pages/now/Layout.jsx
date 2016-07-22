@@ -28,7 +28,7 @@ const Layout = ({ alive, accounts }) => (
         <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{overflow: "visible"}}>
 
           <div className="text-left soft-double-top@lap-and-up hard-left@lap-and-up soft-half-bottom soft@anchored ">
-            <div className="soft-double-ends@anchored">
+            <div className="soft-double-ends@palm-wide-and-up soft-ends@palm">
               {(() => {
 
                 if (!alive) {
