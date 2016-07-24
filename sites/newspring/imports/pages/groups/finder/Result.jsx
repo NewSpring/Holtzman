@@ -10,18 +10,38 @@ import Split, { Left, Right } from "apollos/dist/core/blocks/split";
 import GoogleMap from "apollos/dist/core/components/map";
 import Layout from "./ResultLayout";
 
+// HACK
+let internalIp = null;
+if (Meteor.isClient) {
+  // NOTE: window.RTCPeerConnection is "not a constructor" in FF22/23
+  var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;   //compatibility for firefox and chrome
+
+  if (RTCPeerConnection) {
+   const pc = new RTCPeerConnection({iceServers:[]}), noop = function(){};
+   pc.createDataChannel("");    //create a bogus data channel
+   pc.createOffer(pc.setLocalDescription.bind(pc), noop);    // create offer and set local description
+   pc.onicecandidate = function(ice){  //listen for candidate events
+     if (!ice || !ice.candidate || !ice.candidate.candidate)  return;
+     const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
+     internalIp = myIP;
+     pc.onicecandidate = noop;
+   };
+ }
+}
+
 const mapStateToProps = ({ routing }) => {
   const { location } = routing;
   const tags = Object.keys(location.query).length && location.query.tags ? location.query.tags : "";
   const q = Object.keys(location.query).length && location.query.q ? location.query.q : null;
+  const campus = Object.keys(location.query).length && location.query.campus ? location.query.campus : null;
   return { tags, q, location };
 }
 
 const mapQueriesToProps = ({ ownProps }) => ({
   data: {
     query: gql`
-      query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int) {
-        groups(query: $query, attributes: $tags, limit: $limit, offset: $offset) {
+      query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String) {
+        groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip) {
           count
           results {
             id
@@ -46,6 +66,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
     variables: {
       tags: ownProps.tags.split(",").filter(x => x),
       query: ownProps.q,
+      ip: internalIp,
       limit: 10,
       offset: 0,
     },
