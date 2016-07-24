@@ -49,6 +49,7 @@ const mapQueriesToProps = () => ({
       }
     `,
     forceFetch: true,
+    ssr: false,
   },
   accounts: {
     query: gql`
@@ -109,7 +110,7 @@ export default class Template extends Component {
       <Layout
         accountsReady={!accounts.loading}
         schedules={schedules.schedules}
-        schedulesReady={!schedules.ready}
+        schedulesReady={!schedules.loading}
         accounts={accounts.accounts}
         cancelSchedule={this.cancel}
         recoverableSchedules={recoverableSchedules}
