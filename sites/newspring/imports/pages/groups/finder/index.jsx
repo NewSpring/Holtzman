@@ -124,7 +124,7 @@ export default class Template extends Component {
 
   render () {
     const { attributes, location, content } = this.props;
-    if (Object.keys(location.query).length) return <Result />;
+    if (location.query && (location.query.tags || location.query.q)) return <Result />;
     return (
       <div>
         <Split>
