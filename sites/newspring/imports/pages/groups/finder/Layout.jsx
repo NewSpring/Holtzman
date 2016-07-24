@@ -11,7 +11,11 @@ import Tag from "../components/Tag";
 export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inputOnChange, content }) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
-    <Meta title="Group Finder" description={"#TheseAreMyPeople"} />
+    <Meta
+      title="Group Finder"
+      description="Who are your people? We know it's important to be connected, but it's hard to build lasting friendships. What if taking one simple step changed everything? At NewSpring, we’re trying to make it easier for you to find people who share your interests. We know that when you get together with people and have fun, you’ll begin to grow into a strong community that serves and grows together. What if you are one step away from saying, “These are my people”?"
+      image="https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.2x1_2000_1000_90_a789ae07aae81961.jpg"
+    />
 
     {/* Tags :rocket: */}
     <div className="soft-half soft-double-ends soft-double-sides@palm-wide push-double@lap-and-up soft-double@lap-wide-and-up text-center">
