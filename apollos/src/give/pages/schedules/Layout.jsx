@@ -187,7 +187,7 @@ export default class Layout extends Component {
                       }
 
                       let complete = false
-                      if (new Date(schedule.next) < new Date() && schedule.schedule.value === "One-Time") {
+                      if (new Date(schedule.next) < Moment().add(1, "day") && schedule.schedule.value === "One-Time") {
                         hasCompletedSchedules = true;
                         return null;
                       }
@@ -273,7 +273,7 @@ export default class Layout extends Component {
                         }
 
                         let complete = false
-                        if (new Date(schedule.next) < new Date() && schedule.schedule.value === "One-Time") {
+                        if (new Date(schedule.next) < Moment().add(1, "day") && schedule.schedule.value === "One-Time") {
                           complete = true
                         }
 

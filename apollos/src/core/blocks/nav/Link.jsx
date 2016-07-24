@@ -63,7 +63,7 @@ export default class NavLink extends Component {
       return
     }
 
-    if (navItem.link && (navItem.link !== window.location.pathname)) {
+    if (navItem.link && (window.location.search || navItem.link !== window.location.pathname)) {
       function navigate() {
         return routeActions.push(navItem.link)
       }

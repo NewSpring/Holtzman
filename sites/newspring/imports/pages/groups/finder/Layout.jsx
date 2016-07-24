@@ -73,26 +73,30 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
       {content && content.map((entry, key) => {
         if (process.env.WEB) {
           return (
-            <SideBySide
+            <a
+              target="_blank"
+              href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
+              className="plain"
               key={key}
-              classes={["push-bottom@lap-and-up"]}
-              images={entry.content.images}
-              defaultImage={entry.content.images[0].cloudfront}
             >
-              <h4 className="push-half-top@portable push-top@anchored">
-                {entry.title}
-              </h4>
-
-              <p><small dangerouslySetInnerHTML={{ __html: entry.meta.summary }}></small></p>
-              <a
-                target="_blank"
-                href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
-                className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+              <SideBySide
+                classes={["push-bottom@lap-and-up"]}
+                images={entry.content.images}
+                defaultImage={entry.content.images[0].cloudfront}
               >
-                Read more
-              </a>
+                <h4 className="text-dark-primary push-half-top@portable push-top@anchored">
+                  {entry.title}
+                </h4>
 
-            </SideBySide>
+                <p className="text-dark-primary"><small dangerouslySetInnerHTML={{ __html: entry.meta.summary }}></small></p>
+                <span
+                  className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                >
+                  Read more
+                </span>
+
+              </SideBySide>
+            </a>
           )
         }
         return <FeedItem item={entry} key={key} />
