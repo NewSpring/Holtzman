@@ -85,7 +85,7 @@ export default class Layout extends Component {
 
                       <h1 className="text-dark-primary">{this.monentize(transaction.details[0].amount)}</h1>
 
-                      <h6 className="push-bottom text-dark-tertiary">{person.firstName} {person.lastName}</h6>
+                      <h6 className="push-bottom text-dark-tertiary">{person.nickName | person.firstName} {person.lastName}</h6>
 
                       {(() => {
                         const detail = transaction.payment

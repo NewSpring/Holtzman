@@ -117,7 +117,7 @@ export default ({
       })()}
 
       {/* Load more */}
-      <div className="one-whole text-center push-double-bottom">
+      <div className="one-whole text-center push-bottom">
         {(() => {
           if (loading && !groups.length) return null;
           if (count === groups.length) {
@@ -136,6 +136,18 @@ export default ({
             )
           }
 
+          if (!groups.length) {
+            return (
+              <div className="card push-top">
+                <div className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up">
+                  <p className="flush hard"><em><small>
+                    Unfortunately, we didn't find any groups matching your search. You can start a group <a href="https://rock.newspring.cc/workflows/81">here!</a>
+                  </small></em></p>
+                </div>
+              </div>
+            )
+          }
+
           return (
             <button onClick={() => paginate()} className="btn--dark-tertiary btn">
               Load More Groups
@@ -145,7 +157,7 @@ export default ({
       </div>
 
       {/* Ad unit */}
-      <button className="relative one-whole push-double-top@lap-and-up push-top push-bottom@lap-and-up" >
+      <button className="relative one-whole push-double-top@lap-and-up push-double-top push-bottom@lap-and-up" >
         <div className="card soft soft-double-sides@lap-and-up">
           <div className="card__item soft-double-sides@lap-and-up">
             <div className="one-whole text-center@handheld">
