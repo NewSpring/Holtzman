@@ -100,7 +100,10 @@ export function generateData(newData) {
         "name": "og:app_id",
         "content": "167012243402263",
       },
-
+      {
+        "name": "fb:app_id",
+        "content": "167012243402263",
+      },
     ],
     link: [
       // Google+
