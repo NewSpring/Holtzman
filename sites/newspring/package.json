@@ -66,7 +66,7 @@
       },
       "./packages": {
         "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#432a60bded46edd02561e87b6a947b88072e9c68",
-        "fetch": "https://github.com/NewSpring/meteor-fetch.git#95db94933bc332f9e9b4c02a555c86b5522893bd",
+        "fetch": "https://github.com/NewSpring/meteor-fetch.git#c36567418edd59564d54de9747c1f59e0ed0bf7f",
         "inject-data": "https://github.com/NewSpring/inject-data.git#ea2e078e4763f8fd3875c77fb1073e3794bf8e6a"
       }
     }
