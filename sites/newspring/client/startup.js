@@ -171,7 +171,7 @@ Meteor.startup(() => {
 
 
     if (Meteor.settings.public.chartbeat) {
-      window._sf_async_config = { uid: Meteor.settings.public.chartbeat, domain: 'native.newspring.cc', useCanonical: true };
+      window._sf_async_config = { uid: Meteor.settings.public.chartbeat, domain: window.location.hostname, useCanonical: true };
       (function() {
         function loadChartbeat() {
           window._sf_endpt = (new Date()).getTime();
