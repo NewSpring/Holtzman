@@ -93,6 +93,7 @@ export default class Template extends Component {
       query: q,
       limit: 10,
       offset: this.state.offset + 10,
+      ip: internalIp,
     })
       .then(({ data }) => {
         const { results } = data.groups;
