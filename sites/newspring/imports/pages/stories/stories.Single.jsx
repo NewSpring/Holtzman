@@ -2,7 +2,6 @@ import { Component } from "react"
 import ReactMixin from "react-mixin"
 import { Likeable, Shareable } from "/imports/mixins"
 import { connect } from "react-apollo";
-import { VelocityComponent } from "velocity-react"
 import gql from "graphql-tag";
 
 // loading state
@@ -80,14 +79,6 @@ export default class StoriesSingle extends Component {
     }
 
     const story = content;
-    return (
-      <VelocityComponent
-        animation={"transition.fadeIn"}
-        duration={1000}
-        runOnMount={true}
-      >
-        <StoriesContent story={story} />
-      </VelocityComponent>
-    );
+    return <StoriesContent story={story} />
   }
 }

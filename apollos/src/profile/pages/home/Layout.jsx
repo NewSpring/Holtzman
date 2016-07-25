@@ -1,7 +1,6 @@
 import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import Meta from "react-helmet"
-// import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import { Toggle } from "../../../core/components/controls"

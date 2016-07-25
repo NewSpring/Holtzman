@@ -3,8 +3,6 @@ import { Component, PropTypes} from "react"
 import { Link } from "react-router"
 import ReactDOM from "react-dom"
 import Moment from "moment"
-// import { TransitionMotion, spring, presets } from "react-motion"
-// import { VelocityComponent } from "velocity-react"
 import Filter from "./Filter";
 
 import { Spinner } from "../../../core/components/loading"
