@@ -125,7 +125,7 @@ export default class Layout extends Component {
 
             <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
               <div className="text-left soft-double-top@palm-wide-and-up hard-left@lap-and-up soft-half-bottom soft@anchored">
-                <h2 className="flush text-dark-primary soft-top@handheld soft-double-top">Schedule Your Giving</h2>
+                <h2 className="flush soft-bottom@portable text-dark-primary soft-top@handheld soft-double-top">Schedule Your Giving</h2>
                 <div className="soft-double-ends@anchored">
                   {(() => {
                     if (!accountsReady || !accounts || !accounts.length) {
