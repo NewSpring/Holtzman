@@ -86,7 +86,7 @@ export default class Layout extends Component {
     } = this.props
 
     let hasCompletedSchedules = false;
-    let photo = "//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_1x2.jpg"
+    let photo = "//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
     return (
         <div>
           <Split nav={true} classes={["background--light-primary"]}>
