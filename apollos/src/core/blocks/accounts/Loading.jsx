@@ -1,34 +1,28 @@
 import { PropTypes } from "react"
-import { VelocityComponent } from "velocity-react"
 
 import { WindowLoading, Spinner } from "../../components/loading"
 
 const Loading = ({ account }, context) => (
-  <VelocityComponent
-    animation={"transition.fadeIn"}
-    runOnMount={context.shouldAnimate}
-  >
-    <WindowLoading classes={["background--primary"]}>
-      <div className="locked-top locked-bottom one-whole floating">
-        <div className="floating__item">
-          <Spinner />
+  <WindowLoading classes={["background--primary"]}>
+    <div className="locked-top locked-bottom one-whole floating">
+      <div className="floating__item">
+        <Spinner />
 
-          {(() => {
-            if (account) {
-              return (
-                <h4 className="text-light-primary">Signing you in...</h4>
-              )
-            }
-
+        {(() => {
+          if (account) {
             return (
-              <h4 className="text-light-primary">Creating your account</h4>
+              <h4 className="text-light-primary">Signing you in...</h4>
             )
-          })()}
+          }
 
-        </div>
+          return (
+            <h4 className="text-light-primary">Creating your account</h4>
+          )
+        })()}
+
       </div>
-    </WindowLoading>
-  </VelocityComponent>
+    </div>
+  </WindowLoading>
 )
 
 Loading.propTypes = {

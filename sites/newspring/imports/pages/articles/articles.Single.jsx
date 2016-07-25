@@ -3,7 +3,6 @@ import ReactMixin from "react-mixin"
 import { connect } from "react-apollo";
 import { Likeable, Shareable } from "/imports/mixins"
 import Meta from "react-helmet"
-import { VelocityComponent } from "velocity-react"
 import gql from "graphql-tag";
 
 // loading state
@@ -90,28 +89,22 @@ export default class ArticlesSingle extends Component {
     let photo = Helpers.backgrounds.image(article)
 
     return (
-      <VelocityComponent
-        animation={"transition.fadeIn"}
-        duration={1000}
-        runOnMount={true}
-      >
-        <div>
-          <Split nav={true} classes={["background--light-primary"]}>
-            <Right
-              mobile={true}
-              background={photo}
-              classes={["floating--bottom", "overlay--gradient@lap-and-up"]}
-              ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up"]}
-              aspect="square"
-            ></Right>
-          </Split>
-          <Left scroll={true} >
-            <section className="soft@handheld soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
-              <Content article={article} />
-            </section>
-          </Left>
-        </div>
-      </VelocityComponent>
+      <div>
+        <Split nav={true} classes={["background--light-primary"]}>
+          <Right
+            mobile={true}
+            background={photo}
+            classes={["floating--bottom", "overlay--gradient@lap-and-up"]}
+            ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up"]}
+            aspect="square"
+          ></Right>
+        </Split>
+        <Left scroll={true} >
+          <section className="soft@handheld soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
+            <Content article={article} />
+          </section>
+        </Left>
+      </div>
     );
 
   }
