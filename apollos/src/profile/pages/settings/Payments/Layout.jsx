@@ -2,7 +2,6 @@ import { PropTypes } from "react"
 import Meta from "../../../../core/components/meta"
 import Loading from "../../../../core/components/loading";
 import { AccountType } from "../../../../give/components"
-// import { VelocityComponent } from "velocity-react"
 
 import Back from "../Back"
 

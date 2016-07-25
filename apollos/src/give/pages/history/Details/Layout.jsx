@@ -1,7 +1,6 @@
 import { Component, PropTypes} from "react"
 import Moment from "moment"
 import { Link } from "react-router"
-// import { VelocityComponent } from "velocity-react"
 
 import { Spinner } from "../../../../core/components/loading"
 import Split, { Left, Right } from "../../../../core/blocks/split"

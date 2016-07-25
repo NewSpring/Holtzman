@@ -1,6 +1,5 @@
 import { PropTypes } from "react"
 import { Link } from "react-router"
-// import { VelocityComponent } from "velocity-react"
 
 import Split, { Left, Right } from "../../../core/blocks/split"
 import Meta from "../../../core/components/meta"

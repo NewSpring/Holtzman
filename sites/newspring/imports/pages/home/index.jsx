@@ -1,6 +1,5 @@
 import { Component } from "react"
 import ReactMixin from "react-mixin"
-import { VelocityComponent } from "velocity-react"
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 import { Link } from "react-router";
@@ -136,11 +135,6 @@ export default class Home extends Component {
 
     }
     return (
-      <VelocityComponent
-        animation={"transition.fadeIn"}
-        duration={1000}
-        runOnMount={true}
-      >
         <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
           <Split nav={true} classes={["background--light-primary"]}>
             <Right
@@ -164,8 +158,6 @@ export default class Home extends Component {
             </section>
           </Left>
         </ApollosPullToRefresh>
-      </VelocityComponent>
-
     )
   }
 

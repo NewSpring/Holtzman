@@ -2,7 +2,6 @@ import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { Pageable } from "/imports/mixins"
 import { connect } from "react-apollo";
-import { VelocityComponent } from "velocity-react"
 import gql from "graphql-tag";
 
 import { Loading } from "apollos/dist/core/components"
@@ -93,21 +92,15 @@ class Devotions extends Component {
 
   render() {
     return (
-      <VelocityComponent
-        animation={"transition.fadeIn"}
-        duration={1000}
-        runOnMount={true}
-      >
-        <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
-          <div className="background--light-primary">
-            <section className="soft-half">
-              <div className="grid">
-                {this.renderItems()}
-              </div>
-            </section>
-          </div>
-        </ApollosPullToRefresh>
-      </VelocityComponent>
+      <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
+        <div className="background--light-primary">
+          <section className="soft-half">
+            <div className="grid">
+              {this.renderItems()}
+            </div>
+          </section>
+        </div>
+      </ApollosPullToRefresh>
     )
   }
 }

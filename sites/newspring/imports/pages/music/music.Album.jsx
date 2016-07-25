@@ -2,7 +2,6 @@ import { Component, PropTypes, Lib } from "react"
 import ReactMixin from "react-mixin"
 import { Likeable, Shareable } from "/imports/mixins"
 import { connect } from "react-apollo";
-import { VelocityComponent } from "velocity-react"
 import gql from "graphql-tag";
 
 // loading state
@@ -166,36 +165,30 @@ export default class MusicAlbum extends Component {
     });
     try {
       return (
-        <VelocityComponent
-          animation={"transition.fadeIn"}
-          duration={1000}
-          runOnMount={true}
-        >
-          <section className="hard background--light-primary" style={getStyle()}>
-            {/* XXX need a get blurred image helper here */}
-            <div className="one-whole soft overlay floating background--dark-primary background--fill" style={{backgroundImage: `url(${getUrl(album.content.images[1])})`}}>
-              <div
-                className="one-third floating__item display-inline overlay__item ratio--square background--fill"
-                style={{backgroundImage: `url(${getUrl(album.content.images[0])})`}}>
-              </div>
-              <div className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
-                <h5>{album.title}</h5>
-                <h7>{this.props.albumArtist || "NewSpring"}</h7>
-              </div>
+        <section className="hard background--light-primary" style={getStyle()}>
+          {/* XXX need a get blurred image helper here */}
+          <div className="one-whole soft overlay floating background--dark-primary background--fill" style={{backgroundImage: `url(${getUrl(album.content.images[1])})`}}>
+            <div
+              className="one-third floating__item display-inline overlay__item ratio--square background--fill"
+              style={{backgroundImage: `url(${getUrl(album.content.images[0])})`}}>
             </div>
-            <div className="background--light-primary one-whole">
-              <div className="soft-sides soft-half-ends push-bottom">
-                {tracks.map((track, i) => {
-                  return <Track
-                    track={track}
-                    album={album}
-                    key={i}
-                    trackNumber={i} />
-                })}
-              </div>
+            <div className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
+              <h5>{album.title}</h5>
+              <h7>{this.props.albumArtist || "NewSpring"}</h7>
             </div>
-          </section>
-        </VelocityComponent>
+          </div>
+          <div className="background--light-primary one-whole">
+            <div className="soft-sides soft-half-ends push-bottom">
+              {tracks.map((track, i) => {
+                return <Track
+                  track={track}
+                  album={album}
+                  key={i}
+                  trackNumber={i} />
+              })}
+            </div>
+          </div>
+        </section>
       );
     } catch (e) {
       console.log(e);
