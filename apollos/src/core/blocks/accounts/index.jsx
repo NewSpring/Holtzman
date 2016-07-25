@@ -76,7 +76,7 @@ class AccountsContainer extends Component {
   }
 
   componentWillUnmount() {
-    if (process.env.NATIVE) hackeaderActions.show();
+    if (process.env.NATIVE) headerActions.show();
   }
 
   componentWillReceiveProps(nextProps) {

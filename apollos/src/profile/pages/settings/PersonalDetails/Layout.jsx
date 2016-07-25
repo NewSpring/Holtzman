@@ -5,9 +5,6 @@ import Validate from "../../../../core/util/validate"
 
 import Back from "../Back"
 
-// import { VelocityComponent } from "velocity-react"
-
-//
 export default class Layout extends Component {
 
   static propTypes = {

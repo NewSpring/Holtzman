@@ -2,7 +2,6 @@ import { Component, PropTypes } from "react"
 import ReactMixin from "react-mixin"
 import { Likeable, Shareable } from "/imports/mixins"
 import { connect } from "react-apollo";
-import { VelocityComponent } from "velocity-react"
 import gql from "graphql-tag";
 
 import Loading from "apollos/dist/core/components/loading"
@@ -150,22 +149,16 @@ export default class SeriesSingleVideo extends Component {
     const series = seriesContent;
 
     return (
-      <VelocityComponent
-        animation={"transition.fadeIn"}
-        duration={1000}
-        runOnMount={true}
-      >
-        <div className="background--light-primary">
-          <SingleVideoPlayer sermon={currentSermon} series={series} />
-          <div className="soft push-top">
-            <h2 className="push-half-bottom">{currentSermon.title}</h2>
-            <h4>{Helpers.content.speakers(currentSermon)}</h4>
-            <h6 className="text-dark-tertiary">{Helpers.time.date(currentSermon)}</h6>
-            <div dangerouslySetInnerHTML={Helpers.react.markup(currentSermon, "description")}></div>
-          </div>
-          <SeriesVideoList id={this.props.params.id} />
+      <div className="background--light-primary">
+        <SingleVideoPlayer sermon={currentSermon} series={series} />
+        <div className="soft push-top">
+          <h2 className="push-half-bottom">{currentSermon.title}</h2>
+          <h4>{Helpers.content.speakers(currentSermon)}</h4>
+          <h6 className="text-dark-tertiary">{Helpers.time.date(currentSermon)}</h6>
+          <div dangerouslySetInnerHTML={Helpers.react.markup(currentSermon, "description")}></div>
         </div>
-      </VelocityComponent>
+        <SeriesVideoList id={this.props.params.id} />
+      </div>
     );
   }
 }
