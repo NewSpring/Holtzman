@@ -2,7 +2,6 @@ import { Component } from "react"
 import ReactMixin from "react-mixin"
 import { Likeable, Shareable } from "/imports/mixins"
 import { connect } from "react-apollo";
-import { VelocityComponent } from "velocity-react"
 import gql from "graphql-tag";
 
 // loading state
@@ -122,22 +121,16 @@ export default class SeriesSingle extends Component {
 
     const series = content;
     return (
-      <VelocityComponent
-        animation={"transition.fadeIn"}
-        duration={1000}
-        runOnMount={true}
-      >
-        <div className={`${Helpers.collections.classes(series)} background--light-primary`}>
-          <div className={Helpers.collections.classes(series)} style={this.hackBackgroundStyles()}></div>
-          <style>{Helpers.styles.overlay(series)}</style>
-          <style>{Helpers.collections.backgroundStyles(series)}</style>
-          <SeriesHero series={series} />
-          <section className="text-light-primary hard-bottom">
-            <div dangerouslySetInnerHTML={Helpers.react.markup(series, "description")}></div>
-          </section>
-          <SeriesVideoList id={this.props.params.id} />
-        </div>
-      </VelocityComponent>
+      <div className={`${Helpers.collections.classes(series)} background--light-primary`}>
+        <div className={Helpers.collections.classes(series)} style={this.hackBackgroundStyles()}></div>
+        <style>{Helpers.styles.overlay(series)}</style>
+        <style>{Helpers.collections.backgroundStyles(series)}</style>
+        <SeriesHero series={series} />
+        <section className="text-light-primary hard-bottom">
+          <div dangerouslySetInnerHTML={Helpers.react.markup(series, "description")}></div>
+        </section>
+        <SeriesVideoList id={this.props.params.id} />
+      </div>
     );
   }
 };

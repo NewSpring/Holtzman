@@ -2,7 +2,6 @@
 import { Component, PropTypes} from "react"
 import ReactDOM from "react-dom"
 import Moment from "moment"
-// import { VelocityComponent } from "velocity-react"
 import { Link } from "react-router"
 
 import { Spinner } from "../../../core/components/loading"
