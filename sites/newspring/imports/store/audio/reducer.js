@@ -6,7 +6,7 @@
 
 */
 
-import { createReducer } from "apollos/dist/core/store"
+import { createReducer } from "apollos-core/dist/core/store"
 import types from "./types"
 
 const initial = {

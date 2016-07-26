@@ -5,10 +5,10 @@ import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 // loading state
-import { Loading } from "apollos/dist/core/components"
-import { nav as navActions } from "apollos/dist/core/store"
-import headerActions from "apollos/dist/core/store/header"
-import { Headerable } from "apollos/dist/core/mixins"
+import { Loading } from "apollos-core/dist/core/components"
+import { nav as navActions } from "apollos-core/dist/core/store"
+import headerActions from "apollos-core/dist/core/store/header"
+import { Headerable } from "apollos-core/dist/core/mixins"
 
 import Helpers from "/imports/helpers"
 

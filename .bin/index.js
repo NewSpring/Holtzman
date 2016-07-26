@@ -12,7 +12,7 @@ var Vorpal = require("vorpal")(),
       Promise = require("es6-promise").Promise,
       GitHub = require("github-download"),
       Mkdirp = require("mkdirp"),
-      Symlink = require("symlink-or-copy").sync;
+      Symlink = require("symlink-or-copy").sync
       ;
 
 var root = Path.resolve(__dirname, "../"),
@@ -168,13 +168,27 @@ Vorpal
     if (!options.ios && !options.android && !options.native) env.WEB = true;
     if (options.native || options.ios || options.android) env.NATIVE = true;
 
-    // until meteor 1.4 and junction updates to support newer libsass
-    // we will need to watch the apollos directory separately
-    // if (!options.quick && !options.production) {
-    //   var babel = Spawn("npm", ["run", "start"], { stdio: ["ignore", "ignore", process.stderr], cwd: apollosFolder });
-    // }
+    var configFile = Path.join(__dirname, "apollos-runtime.json");
+    if (!Fs.existsSync(configFile)) {
+      Fs.writeFileSync(configFile, JSON.stringify({ WEB: !!env.WEB }, null, 2), "utf8");
+    }
+
+    var apolloRuntime = require(configFile);
+    // removes the built files for a rebuild
+    if (!options.quick && !!apolloRuntime.WEB != !!env.WEB) {
+      Rimraf(Path.join(app, ".meteor/local"));
+      Rimraf(Path.join(apollosFolder, "./dist"));
+    }
+
+    if (!options.quick && !options.production) {
+      var babel = Spawn("npm", ["run", "start"], { stdio: ["ignore", "ignore", process.stderr], cwd: apollosFolder });
+    }
 
     var meteorArgs = [ "--settings" ];
+    if (options.ios && !options.device) meteorArgs.unshift("run", "ios");
+    if (options.android && !options.device) meteorArgs.unshift("run", "android");
+    if (options.ios && options.device) meteorArgs.unshift("run", "ios-device");
+    if (options.android && options.device) meteorArgs.unshift("run", "android-device");
 
     if (packageFile.apollos && packageFile.apollos.settings) {
       meteorArgs.push(packageFile.apollos.settings)
@@ -183,6 +197,8 @@ Vorpal
     function run() {
       var meteor = Spawn("meteor", meteorArgs, { stdio: "inherit", cwd: app, env: env });
     }
+
+    Fs.writeFileSync(configFile, JSON.stringify({ WEB: !!env.WEB }, null, 2), "utf8");
 
     if (options.production) {
       console.log("Building apollos in production mode");

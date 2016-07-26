@@ -6,16 +6,16 @@ import Meta from "react-helmet"
 import gql from "graphql-tag";
 
 // loading state
-import Split, { Left, Right } from "apollos/dist/core/blocks/split"
-import { Headerable } from "apollos/dist/core/mixins"
-import { Loading } from "apollos/dist/core/components"
+import Split, { Left, Right } from "apollos-core/dist/core/blocks/split"
+import { Headerable } from "apollos-core/dist/core/mixins"
+import { Loading } from "apollos-core/dist/core/components"
 
 // import editorial collection for lookup
 import Helpers from "/imports/helpers"
 
 import {
   nav as navActions
-} from "apollos/dist/core/store"
+} from "apollos-core/dist/core/store"
 
 // import content component
 import Content from "./articles.Content";

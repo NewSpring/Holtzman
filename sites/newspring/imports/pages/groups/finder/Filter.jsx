@@ -3,8 +3,8 @@ import { connect } from "react-apollo";
 import { withRouter } from "react-router";
 import gql from "graphql-tag";
 
-import Loading from "apollos/dist/core/components/loading/index";
-import Forms from "apollos/dist/core/components/forms";
+import Loading from "apollos-core/dist/core/components/loading/index";
+import Forms from "apollos-core/dist/core/components/forms";
 
 import Tag from "../components/Tag";
 

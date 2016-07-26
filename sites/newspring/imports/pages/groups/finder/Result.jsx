@@ -2,12 +2,12 @@ import { Component, PropTypes} from "react";
 import { connect } from "react-apollo";
 import { withRouter, Link } from "react-router";
 import gql from "graphql-tag";
-import { nav as navActions } from "apollos/dist/core/store"
+import { nav as navActions } from "apollos-core/dist/core/store"
 // import ReactTooltip from "react-tooltip";
 // import Truncate from "truncate";
 
-import Split, { Left, Right } from "apollos/dist/core/blocks/split";
-import GoogleMap from "apollos/dist/core/components/map";
+import Split, { Left, Right } from "apollos-core/dist/core/blocks/split";
+import GoogleMap from "apollos-core/dist/core/components/map";
 import Layout from "./ResultLayout";
 
 // HACK

@@ -3,9 +3,9 @@ import { connect } from "react-apollo";
 import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 import { withRouter } from "react-router";
-import Split, { Left, Right } from "apollos/dist/core/blocks/split";
-import { Headerable } from "apollos/dist/core/mixins"
-import { nav as navActions } from "apollos/dist/core/store"
+import Split, { Left, Right } from "apollos-core/dist/core/blocks/split";
+import { Headerable } from "apollos-core/dist/core/mixins"
+import { nav as navActions } from "apollos-core/dist/core/store"
 
 import Layout from "./Layout";
 import Result from "./Result"

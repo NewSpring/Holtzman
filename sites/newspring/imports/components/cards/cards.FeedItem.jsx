@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
-import Card from "apollos/dist/core/components/cards"
+import Card from "apollos-core/dist/core/components/cards"
 import Helpers from "/imports/helpers"
 
 export default class FeedItem extends Component {

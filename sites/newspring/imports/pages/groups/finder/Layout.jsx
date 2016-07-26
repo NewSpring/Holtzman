@@ -1,11 +1,11 @@
 import { Component, PropTypes} from "react"
-import Meta from "apollos/dist/core/components/meta";
-import Forms from "apollos/dist/core/components/forms";
-import Loading from "apollos/dist/core/components/loading";
+import Meta from "apollos-core/dist/core/components/meta";
+import Forms from "apollos-core/dist/core/components/forms";
+import Loading from "apollos-core/dist/core/components/loading";
 import { Link } from "react-router";
 
 import { FeedItem } from "/imports/components/cards"
-import SideBySide from "apollos/dist/core/components/cards/SideBySide";
+import SideBySide from "apollos-core/dist/core/components/cards/SideBySide";
 import Tag from "../components/Tag";
 
 export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inputOnChange, content }) => (
