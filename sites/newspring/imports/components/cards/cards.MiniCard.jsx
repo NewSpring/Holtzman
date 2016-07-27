@@ -17,7 +17,7 @@ const MiniCard = ({ link, title, icon, type, images, description, content }) => 
   <Link to={Helpers.content.links(content)} className="plain">
     <div className="card">
         <div className={`card__item soft push-half-ends ${hasImage(content) ? "two-thirds" : "one-whole"}`} style={{verticalAlign: "middle"}}>
-          <h6 className="text-dark-primary">{title}</h6>
+          <h6 className="text-dark-primary capitalize">{title}</h6>
 
           {(() => {
             // if (!content) return;
