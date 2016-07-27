@@ -38,10 +38,15 @@ export default class DevotionsSingleContent extends Component {
         }}
         data-status-scroll-item={true}
       >
-          <div
-            className="one-whole ratio--square background--fill"
-            style={Helpers.backgrounds.styles(devotion)}>
-          </div>
+        {(() => {
+          if (!devotion.content.images.length) return null;
+          return (
+            <div
+              className="one-whole ratio--square background--fill"
+              style={Helpers.backgrounds.styles(devotion)}>
+            </div>
+          )
+        })()}
           <div className="soft push-top">
             <h2 className="capitalize">{devotion.title}</h2>
             {/* XXX update scripture formatting */}
