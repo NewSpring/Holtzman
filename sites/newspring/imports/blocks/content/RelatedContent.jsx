@@ -17,6 +17,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
           title
           channelName
           parent {
+            entryId: id
             content {
               images {
                 s3
