@@ -2,12 +2,21 @@
 import { Link } from "react-router";
 import Helpers from "/imports/helpers";
 
+const hasImage = (content) => {
+  return content.content.images.length > 0 ||
+    (
+      content.parent &&
+      content.parent.content &&
+      content.parent.content.images.length > 0
+    )
+}
+
 // XXX right now this uses the content prop for everything
 // it should less intelligent and use the other props directly
 const MiniCard = ({ link, title, icon, type, images, description, content }) => (
   <Link to={Helpers.content.links(content)} className="plain">
     <div className="card">
-        <div className={`card__item soft push-half-ends ${content.content.images.length ? "two-thirds" : "one-whole"}`} style={{verticalAlign: "middle"}}>
+        <div className={`card__item soft push-half-ends ${hasImage(content) ? "two-thirds" : "one-whole"}`} style={{verticalAlign: "middle"}}>
           <h6 className="text-dark-primary">{title}</h6>
 
           {(() => {
