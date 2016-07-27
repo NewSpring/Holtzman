@@ -5,11 +5,12 @@ import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 // loading state
-import { Loading } from "apollos-core/dist/core/components"
+import Loading from "apollos-core/dist/core/components/loading"
 import { nav as navActions } from "apollos-core/dist/core/store"
 import headerActions from "apollos-core/dist/core/store/header"
 import { Headerable } from "apollos-core/dist/core/mixins"
 
+import RelatedContent from "/imports/blocks/content/RelatedContent";
 import Helpers from "/imports/helpers"
 
 import SeriesHero from "./series.Hero";
@@ -36,6 +37,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
               }
               content {
                 description
+                tags
                 images {
                   fileName
                   fileType
@@ -121,16 +123,20 @@ export default class SeriesSingle extends Component {
 
     const series = content;
     return (
-      <div className={`${Helpers.collections.classes(series)} background--light-primary`}>
-        <div className={Helpers.collections.classes(series)} style={this.hackBackgroundStyles()}></div>
-        <style>{Helpers.styles.overlay(series)}</style>
-        <style>{Helpers.collections.backgroundStyles(series)}</style>
-        <SeriesHero series={series} />
-        <section className="text-light-primary hard-bottom">
-          <div dangerouslySetInnerHTML={Helpers.react.markup(series, "description")}></div>
-        </section>
-        <SeriesVideoList id={this.props.params.id} />
+      <div>
+        <div className={`${Helpers.collections.classes(series)} background--light-primary`}>
+          <div className={Helpers.collections.classes(series)} style={this.hackBackgroundStyles()}></div>
+          <style>{Helpers.styles.overlay(series)}</style>
+          <style>{Helpers.collections.backgroundStyles(series)}</style>
+          <SeriesHero series={series} />
+          <section className="text-light-primary hard-bottom">
+            <div dangerouslySetInnerHTML={Helpers.react.markup(series, "description")}></div>
+          </section>
+          <SeriesVideoList id={this.props.params.id} />
+        </div>
+        <RelatedContent excludedIds={[series.id]} tags={series.content.tags} />
       </div>
+
     );
   }
 };

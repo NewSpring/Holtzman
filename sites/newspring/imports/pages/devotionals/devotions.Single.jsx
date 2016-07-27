@@ -41,6 +41,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
               }
               content {
                 body
+                tags
                 scripture {
                   book
                   passage

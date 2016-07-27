@@ -3,8 +3,8 @@ import { Component, PropTypes } from "react";
 
 import Helpers from "/imports/helpers"
 import Components from "/imports/components"
-
-
+import RelatedContent from "/imports/blocks/content/RelatedContent";
+let defaultArray = [];
 export default class DevotionsSingleContent extends Component {
 
   static propTypes = {
@@ -59,6 +59,8 @@ export default class DevotionsSingleContent extends Component {
             <div dangerouslySetInnerHTML={Helpers.react.markup(devotion)}></div>
 
           </div>
+          <RelatedContent excludedIds={[devotion.id]} tags={devotion.content.tags || defaultArray} />
+
         </section>
       );
     }

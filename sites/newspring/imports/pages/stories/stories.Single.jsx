@@ -32,6 +32,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
             content {
               body
               ooyalaId
+              tags
               images {
                 fileName
                 fileType
