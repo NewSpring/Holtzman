@@ -39,7 +39,7 @@ npm install
 npm link
 
 yecho "### Apollos Setup ###"
-meteor npm run apollos setup newspring
+apollos setup newspring
 
 yecho "### Settings Grab ###"
 cd sites/newspring/.remote
