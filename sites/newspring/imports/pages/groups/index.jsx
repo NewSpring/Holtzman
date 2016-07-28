@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 
 import Profile from "./profile/index";
 import Finder from "./finder/index";
-// import { nav as navActions } from "apollos/dist/core/store"
+// import { nav as navActions } from "apollos-core/dist/core/store"
 
 // const mapQueriesToProps = () => ({
 //   data: {

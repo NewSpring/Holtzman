@@ -1,5 +1,5 @@
 {
-  "name": "apollos",
+  "name": "apollos-core",
   "version": "1.0.6",
   "description": "A reactive framework for incredible applications",
   "main": "dist/core/index.js",

@@ -3,13 +3,13 @@ import ReactMixin from "react-mixin"
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 import { Link } from "react-router";
-import ApollosPullToRefresh from "apollos/dist/core/components/pullToRefresh";
+import ApollosPullToRefresh from "apollos-core/dist/core/components/pullToRefresh";
 
-import Loading from "apollos/dist/core/components/loading"
-import { FeedItemSkeleton } from "apollos/dist/core/components/loading"
-import Split, { Left, Right } from "apollos/dist/core/blocks/split"
-import { nav as navActions } from "apollos/dist/core/store"
-import { Headerable } from "apollos/dist/core/mixins"
+import Loading from "apollos-core/dist/core/components/loading"
+import { FeedItemSkeleton } from "apollos-core/dist/core/components/loading"
+import Split, { Left, Right } from "apollos-core/dist/core/blocks/split"
+import { nav as navActions } from "apollos-core/dist/core/store"
+import { Headerable } from "apollos-core/dist/core/mixins"
 
 import Helpers from "/imports/helpers";
 import { Pageable } from "/imports/mixins"

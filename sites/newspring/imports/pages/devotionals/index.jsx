@@ -4,12 +4,12 @@ import { Pageable } from "/imports/mixins"
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
-import { Loading } from "apollos/dist/core/components"
-import { Headerable } from "apollos/dist/core/mixins"
+import { Loading } from "apollos-core/dist/core/components"
+import { Headerable } from "apollos-core/dist/core/mixins"
 
-import { FeedItemSkeleton } from "apollos/dist/core/components/loading"
-import { nav as navActions } from "apollos/dist/core/store"
-import ApollosPullToRefresh from "apollos/dist/core/components/pullToRefresh";
+import { FeedItemSkeleton } from "apollos-core/dist/core/components/loading"
+import { nav as navActions } from "apollos-core/dist/core/store"
+import ApollosPullToRefresh from "apollos-core/dist/core/components/pullToRefresh";
 
 import Single from "./devotions.Single"
 

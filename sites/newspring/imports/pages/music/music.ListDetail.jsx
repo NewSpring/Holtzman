@@ -17,7 +17,7 @@ import {
   liked as likedActions,
   share as shareActions,
   header as headerActions,
-} from "apollos/dist/core/store"
+} from "apollos-core/dist/core/store"
 
 const mapStateToProps = (state) => {
   return {

@@ -1,12 +1,8 @@
 
-import React from "react";
-
-if (process.env.NODE_ENV === "production") console.log("PROD");
-
-if (process.env.WEB) {
+if (process.env.WEB && process.env.NODE_ENV === "production") {
 
   // load the application
-  import { run } from "apollos/dist/core/router/server";
+  import { run } from "apollos-core/dist/core/router/server";
   import { routes, client, server } from "/imports";
 
   run(routes, client, server);

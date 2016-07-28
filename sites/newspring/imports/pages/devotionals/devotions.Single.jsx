@@ -7,11 +7,11 @@ import gql from "graphql-tag";
 
 import Helpers from "/imports/helpers"
 
-import { Loading } from "apollos/dist/core/components"
+import { Loading } from "apollos-core/dist/core/components"
 
-import { nav as navActions } from "apollos/dist/core/store"
-import headerActions from "apollos/dist/core/store/header"
-import liveActions from "apollos/dist/core/store/live"
+import { nav as navActions } from "apollos-core/dist/core/store"
+import headerActions from "apollos-core/dist/core/store/header"
+import liveActions from "apollos-core/dist/core/store/live"
 
 // can we use the core toggle here? Is it ready @jbaxleyiii?
 import DevotionsSingleContent from "./devotions.SingleContent"
@@ -41,6 +41,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
               }
               content {
                 body
+                tags
                 scripture {
                   book
                   passage

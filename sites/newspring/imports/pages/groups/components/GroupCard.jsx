@@ -1,8 +1,8 @@
 import Truncate from "truncate";
 import { withRouter } from "react-router"
 
-import Loading from "apollos/dist/core/components/loading/index";
-import SideBySide from "apollos/dist/core/components/cards/SideBySide";
+import Loading from "apollos-core/dist/core/components/loading/index";
+import SideBySide from "apollos-core/dist/core/components/cards/SideBySide";
 
 import Tag from "../components/Tag";
 
