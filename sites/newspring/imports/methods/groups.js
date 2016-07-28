@@ -1,6 +1,6 @@
 /*global Meteor, check */
-import { api, parseEndpoint } from "apollos/dist/core/util/rock"
-import { makeNewGuid } from "apollos/dist/core/util/guid"
+import { api, parseEndpoint } from "apollos-core/dist/core/util/rock"
+import { makeNewGuid } from "apollos-core/dist/core/util/guid"
 import Moment from "moment"
 
 

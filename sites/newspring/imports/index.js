@@ -6,13 +6,13 @@ import {
   createReduxStore,
   GraphQL,
   Routes as Core,
-} from "apollos";
+} from "apollos-core";
 
 import Routes from "./routes";
-import Give from "apollos/dist/give"
-import Profile from "apollos/dist/profile"
+import Give from "apollos-core/dist/give"
+import Profile from "apollos-core/dist/profile"
 
-import Global from "apollos/dist/core/blocks/global";
+import Global from "apollos-core/dist/core/blocks/global";
 
 let App = null;
 if (process.env.NATIVE) {

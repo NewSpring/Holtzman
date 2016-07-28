@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 
-import Sections from "apollos/dist/core/blocks/sections";
+import Sections from "apollos-core/dist/core/blocks/sections";
 
 const Template = () => {
   return (

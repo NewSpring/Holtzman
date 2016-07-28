@@ -3,7 +3,7 @@ import { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import { css } from "aphrodite";
 import Helpers from "/imports/helpers"
-import headerActions from "apollos/dist/core/store/header"
+import headerActions from "apollos-core/dist/core/store/header"
 
 import { Players } from "/imports/libraries"
 import AudioControls from "./audio.Controls"

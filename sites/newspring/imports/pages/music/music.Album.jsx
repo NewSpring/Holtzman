@@ -5,18 +5,18 @@ import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 // loading state
-import { Loading } from "apollos/dist/core/components"
-import { Headerable } from "apollos/dist/core/mixins"
+import { Loading } from "apollos-core/dist/core/components"
+import { Headerable } from "apollos-core/dist/core/mixins"
 
 // action helpers
 import { modal,
   nav as navActions
-} from "apollos/dist/core/store"
+} from "apollos-core/dist/core/store"
 import { actions as audioActions } from "/imports/store/audio"
 
 import Helpers from "/imports/helpers"
 
-import { Likes } from "apollos/dist/core/collections"
+import { Likes } from "apollos-core/dist/core/collections"
 
 import Track from "./music.Track";
 import SaveOffline from "./music.SaveOffline"
