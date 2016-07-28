@@ -200,7 +200,7 @@ make_task_def() {
         "memory": 512,
         "cpu": 512,
         "essential": true,
-        "image": "meteorhacks/meteord:binbuild",
+        "image": "abernix:meteord:base",
         "portMappings": [
           { "hostPort": '"$HOST_PORT"', "containerPort": 80, "protocol": "tcp" }
         ],
