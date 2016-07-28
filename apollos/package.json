@@ -56,7 +56,8 @@
     "babel-preset-es2015-loose": "7.0.0",
     "babel-preset-meteor": "6.11.0",
     "babel-preset-react": "6.5.0",
-    "babel-preset-stage-0": "6.5.0"
+    "babel-preset-stage-0": "6.5.0",
+    "babel-traverse": "^6.11.4"
   },
   "peerDependencies": {
     "react": "^15.1.0 || ^0.14.*",
