@@ -36,3 +36,4 @@ dist
 coverage
 _book
 dev_bundle
+apollos-runtime.json

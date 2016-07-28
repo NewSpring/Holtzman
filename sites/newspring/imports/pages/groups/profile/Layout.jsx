@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import Meta from "apollos/dist/core/components/meta";
+import Meta from "apollos-core/dist/core/components/meta";
 
 export default ({ group, leaders, isLeader, join }) => (
   <section className="background--light-secondary hard">

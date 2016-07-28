@@ -1,4 +1,4 @@
-import { paging as pagingActions } from "apollos/dist/core/store";
+import { paging as pagingActions } from "apollos-core/dist/core/store";
 
 const Pageable = {
 

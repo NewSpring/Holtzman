@@ -3,7 +3,7 @@ import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 import SeriesVideoListItem from "./series.VideoListItem";
-import { Spinner } from "apollos/dist/core/components/loading"
+import { Spinner } from "apollos-core/dist/core/components/loading"
 
 const mapQueriesToProps = ({ ownProps }) => ({
   sermons: {

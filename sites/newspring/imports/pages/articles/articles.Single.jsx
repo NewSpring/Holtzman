@@ -6,16 +6,17 @@ import Meta from "react-helmet"
 import gql from "graphql-tag";
 
 // loading state
-import Split, { Left, Right } from "apollos/dist/core/blocks/split"
-import { Headerable } from "apollos/dist/core/mixins"
-import { Loading } from "apollos/dist/core/components"
+import Split, { Left, Right } from "apollos-core/dist/core/blocks/split"
+import { Headerable } from "apollos-core/dist/core/mixins"
+import { Loading } from "apollos-core/dist/core/components"
 
 // import editorial collection for lookup
 import Helpers from "/imports/helpers"
+import RelatedContent from "/imports/blocks/content/RelatedContent";
 
 import {
   nav as navActions
-} from "apollos/dist/core/store"
+} from "apollos-core/dist/core/store"
 
 // import content component
 import Content from "./articles.Content";
@@ -39,6 +40,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
             }
             content {
               body
+              tags
               images {
                 fileName
                 fileType
@@ -55,7 +57,9 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
     forceFetch: false,
     returnPartialData: false, // XXX can this be true?
   },
-})
+});
+
+const defaultArray = [];
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
@@ -87,7 +91,6 @@ export default class ArticlesSingle extends Component {
 
     const article = content;
     let photo = Helpers.backgrounds.image(article)
-
     return (
       <div>
         <Split nav={true} classes={["background--light-primary"]}>
@@ -100,12 +103,14 @@ export default class ArticlesSingle extends Component {
           ></Right>
         </Split>
         <Left scroll={true} >
-          <section className="soft@handheld soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
-            <Content article={article} />
-          </section>
+          <div className="one-whole">
+            <section className="soft@handheld soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
+              <Content article={article} />
+            </section>
+            <RelatedContent excludedIds={[article.id]} tags={article.content.tags || defaultArray} />
+          </div>
         </Left>
       </div>
     );
-
   }
 }

@@ -46,6 +46,8 @@ export default class SeriesHero extends Component {
   }
 
   button = () => {
+    if (!this.props.series.content.ooyalaId) return null;
+    
     if (this.state.playing) {
       return (
         <button className="btn--light display-block one-whole" onClick={this.stop}>
@@ -74,14 +76,31 @@ export default class SeriesHero extends Component {
             zIndex: "10"
           }}>
           <div className="ratio__item">
+            {(() => {
+              if (!series.content.ooyalaId) return null;
+              return (
+                <Video
+                  id={series.content.ooyalaId}
+                  ref="video"
+                  success={this.ready}
+                  hide={true}
+                />
+            )
+            })()}
+
+          </div>
+        </div>
+        {(() => {
+          if (!series.content.ooyalaId) return null;
+          return (
             <Video
               id={series.content.ooyalaId}
               ref="video"
               success={this.ready}
               hide={true}
             />
-          </div>
-        </div>
+        )
+        })()}
         <div
           className={this.backgroundClasses()}
           style={Helpers.backgrounds.styles(series)}>
