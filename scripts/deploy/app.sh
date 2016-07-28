@@ -153,9 +153,9 @@ if [ "$DEST" = "native" ]; then
   meteor remove-platform ios
 
   yecho "### Reinstalling / linking apollos for better dependencies ###"
-  rm -rf node_modules/apollos && npm i
-  ls node_modules/apollos
-  ls node_modules/apollos/dist
+  rm -rf node_modules/apollos-core && npm i
+  ls node_modules/apollos-core
+  ls node_modules/apollos-core/dist
 
   yecho "### Building meteor for env $DEST ###"
   # XXX pass env vars through launch
@@ -173,9 +173,9 @@ if [ "$DEST" = "web" ]; then
   meteor remove-platform ios
 
   yecho "### Reinstalling / linking apollos for better dependencies ###"
-  rm -rf node_modules/apollos && npm i
-  ls node_modules/apollos
-  ls node_modules/apollos/dist
+  rm -rf node_modules/apollos-core && npm i
+  ls node_modules/apollos-core
+  ls node_modules/apollos-core/dist
 
   yecho "### Building meteor for env $DEST ###"
   # XXX pass env vars through launch
