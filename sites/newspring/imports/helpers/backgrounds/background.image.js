@@ -1,9 +1,12 @@
 
 function backgroundImage(contentItem, { label="1:1" } = {}) {
 
-  const images = contentItem.content ?
+  let images = contentItem.content ?
                   contentItem.content.images :
                   undefined;
+  if ((!images || !images.length) && contentItem.parent && contentItem.parent.content) {
+    images = contentItem.parent.content.images || undefined;
+  }
   const channel = contentItem.channelName;
 
   let bgImage = _.find(images, (image) => {

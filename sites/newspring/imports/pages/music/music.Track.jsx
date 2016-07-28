@@ -3,7 +3,7 @@ import ListDetail from "./music.ListDetail"
 import { actions as audioActions } from "/imports/store/audio"
 import { connect } from "react-redux"
 
-import { modal } from "apollos/dist/core/store"
+import { modal } from "apollos-core/dist/core/store"
 
 @connect()
 export default class AudioTrack extends Component {

@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react"
 
-import Meta from "apollos/dist/core/components/meta"
+import Meta from "apollos-core/dist/core/components/meta"
 import Intro from "./intro/index"
 
 import Salvation from "./salvation/index"

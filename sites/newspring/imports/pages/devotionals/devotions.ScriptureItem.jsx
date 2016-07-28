@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import Loading from "apollos/dist/core/components/loading"
+import Loading from "apollos-core/dist/core/components/loading"
 export default class ScriptureItem extends Component {
 
   static propTypes = { scripture: PropTypes.string.isRequired }

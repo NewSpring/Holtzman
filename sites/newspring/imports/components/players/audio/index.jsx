@@ -6,7 +6,7 @@ import MiniPlayer from "./audio.MiniPlayer"
 import AudioPlayerUtility from "./audio.PlayerUtility"
 
 import { actions as audioActions } from "/imports/store/audio"
-import { modal, nav as navActions } from "apollos/dist/core/store"
+import { modal, nav as navActions } from "apollos-core/dist/core/store"
 
 const mapStateToProps = (state) => {
   return {

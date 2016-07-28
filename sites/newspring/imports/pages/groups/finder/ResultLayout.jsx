@@ -1,10 +1,10 @@
 
 import { Link } from "react-router";
-import Forms from "apollos/dist/core/components/forms";
-import SideBySide from "apollos/dist/core/components/cards/SideBySide";
-import Loading from "apollos/dist/core/components/loading/index";
+import Forms from "apollos-core/dist/core/components/forms";
+import SideBySide from "apollos-core/dist/core/components/cards/SideBySide";
+import Loading from "apollos-core/dist/core/components/loading/index";
 import Tag from "../components/Tag";
-import Meta from "apollos/dist/core/components/meta";
+import Meta from "apollos-core/dist/core/components/meta";
 
 
 import Group from "../components/GroupCard";

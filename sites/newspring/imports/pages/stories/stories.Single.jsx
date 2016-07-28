@@ -5,9 +5,9 @@ import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 // loading state
-import { Loading } from "apollos/dist/core/components"
-import { nav as navActions } from "apollos/dist/core/store"
-import { Headerable } from "apollos/dist/core/mixins"
+import { Loading } from "apollos-core/dist/core/components"
+import { nav as navActions } from "apollos-core/dist/core/store"
+import { Headerable } from "apollos-core/dist/core/mixins"
 
 // import content component
 import StoriesContent from "./stories.Content";
@@ -32,6 +32,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
             content {
               body
               ooyalaId
+              tags
               images {
                 fileName
                 fileType

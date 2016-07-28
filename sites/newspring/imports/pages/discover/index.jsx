@@ -1,8 +1,8 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 
-import liveActions from "apollos/dist/core/store/live"
-import Discover from "apollos/dist/core/blocks/discover";
+import liveActions from "apollos-core/dist/core/store/live"
+import Discover from "apollos-core/dist/core/blocks/discover";
 
 const mapStateToProps = (state) => ({ audio: state.audio });
 

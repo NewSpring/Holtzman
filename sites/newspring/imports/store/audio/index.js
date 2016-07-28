@@ -1,5 +1,5 @@
 
-import { addReducer } from "apollos/dist/core/store";
+import { addReducer } from "apollos-core/dist/core/store";
 import types from "./types";
 import reducer from "./reducer";
 import actions from "./actions";

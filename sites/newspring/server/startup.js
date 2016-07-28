@@ -1,8 +1,8 @@
-import "apollos/dist/core/publications";
-import "apollos/dist/core/methods/server";
-import "apollos/dist/give/methods/server";
-import Give from "apollos/dist/give/observers";
-import { api } from "apollos/dist/core/util/rock";
+import "apollos-core/dist/core/publications";
+import "apollos-core/dist/core/methods/server";
+import "apollos-core/dist/give/methods/server";
+import Give from "apollos-core/dist/give/observers";
+import { api } from "apollos-core/dist/core/util/rock";
 import "/imports/methods";
 
 // add support for Promise since meteor ships with node 10.41

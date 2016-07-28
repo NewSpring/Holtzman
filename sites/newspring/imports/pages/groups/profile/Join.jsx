@@ -1,6 +1,6 @@
 import { Component, PropTypes} from "react"
-import Forms from "apollos/dist/core/components/forms"
-import { Error as Err, Loading, Success } from "apollos/dist/core/components/states"
+import Forms from "apollos-core/dist/core/components/forms"
+import { Error as Err, Loading, Success } from "apollos-core/dist/core/components/states"
 
 export default class Join extends Component {
 

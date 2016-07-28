@@ -3,8 +3,8 @@ import { Component, PropTypes } from "react";
 
 import Helpers from "/imports/helpers"
 import Components from "/imports/components"
-
-
+import RelatedContent from "/imports/blocks/content/RelatedContent";
+let defaultArray = [];
 export default class DevotionsSingleContent extends Component {
 
   static propTypes = {
@@ -38,10 +38,15 @@ export default class DevotionsSingleContent extends Component {
         }}
         data-status-scroll-item={true}
       >
-          <div
-            className="one-whole ratio--square background--fill"
-            style={Helpers.backgrounds.styles(devotion)}>
-          </div>
+        {(() => {
+          if (!devotion.content.images.length) return null;
+          return (
+            <div
+              className="one-whole ratio--square background--fill"
+              style={Helpers.backgrounds.styles(devotion)}>
+            </div>
+          )
+        })()}
           <div className="soft push-top">
             <h2 className="capitalize">{devotion.title}</h2>
             {/* XXX update scripture formatting */}
@@ -59,6 +64,8 @@ export default class DevotionsSingleContent extends Component {
             <div dangerouslySetInnerHTML={Helpers.react.markup(devotion)}></div>
 
           </div>
+          <RelatedContent excludedIds={[devotion.id]} tags={devotion.content.tags || defaultArray} />
+
         </section>
       );
     }

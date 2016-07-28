@@ -2,14 +2,14 @@ import { Component, PropTypes} from "react";
 import { connect } from "react-apollo";
 import { Link } from "react-router";
 import gql from "graphql-tag";
-import GoogleMap from "apollos/dist/core/components/map";
-import Split, { Left, Right } from "apollos/dist/core/blocks/split";
-import { Headerable } from "apollos/dist/core/mixins"
+import GoogleMap from "apollos-core/dist/core/components/map";
+import Split, { Left, Right } from "apollos-core/dist/core/blocks/split";
+import { Headerable } from "apollos-core/dist/core/mixins"
 import ReactMixin from "react-mixin";
-import Loading from "apollos/dist/core/components/loading/index";
+import Loading from "apollos-core/dist/core/components/loading/index";
 
-import { nav as navActions, modal } from "apollos/dist/core/store";
-import OnBoard from "apollos/dist/core/blocks/accounts";
+import { nav as navActions, modal } from "apollos-core/dist/core/store";
+import OnBoard from "apollos-core/dist/core/blocks/accounts";
 
 import Layout from "./Layout";
 import Join from "./Join";
