@@ -58,10 +58,12 @@ cd "sites/$APP"
 
 yecho "### Creating settings for the $CHANNEL of $APP:$DEST"
 URLPREFIX="my"
+TLD="cc"
 ### XXX make this native
 if [ "$DEST" = "native" ]; then URLPREFIX="app"; fi
+if [ "$DEST" = "native" ]; then TLD="io"; fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
-ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.cc"
+ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.$TLD"
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
   ROOT_URL="https://my.newspring.cc"
   METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
