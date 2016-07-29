@@ -57,7 +57,8 @@ cd "sites/$APP"
 
 yecho "### Creating settings for the $CHANNEL of $APP:$DEST"
 URLPREFIX="my"
-if [ "$DEST" = "native" ]; then URLPREFIX="native"; fi
+### XXX make this native
+if [ "$DEST" = "native" ]; then URLPREFIX="app"; fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
 ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.cc"
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
@@ -147,11 +148,6 @@ if [ "$DEST" = "native" ]; then
   rm -rf node_modules && cd ../
   rm -rf sites/$APP/.meteor/local
 
-  yecho "### Removing cordova platforms ###"
-  cd ./sites/$APP
-  meteor remove-platform android
-  meteor remove-platform ios
-
   yecho "### Reinstalling / linking apollos for better dependencies ###"
   rm -rf node_modules/apollos-core && npm i
   ls node_modules/apollos-core
@@ -209,13 +205,11 @@ make_task_def() {
           "options": { "awslogs-group": "'"$ECS_SERVICE"'", "awslogs-region": "us-east-1" }
         },
         "environment": [
-          { "name": "REBUILD_NPM_MODULES", "value": "1" },
           { "name": "NODE_ENV", "value": "production" },
           { "name": "MONGO_URL", "value": "'"$DOCKER_MONGO_URL"'" },
           { "name": "DISABLE_WEBSOCKETS", "value": "1" },
           { "name": "ROOT_URL", "value": "'"$ROOT_URL"'" },
           { "name": "BUNDLE_URL", "value": "'"$BUNDLE_URL"'" },
-          { "name": "OPLOG_URL", "value": "'"$DOCKER_OPLOG_URL"'" },
           { "name": "METEOR_SETTINGS", "value": "'"$meteor_settings"'" },
           { "name": "TZ", "value": "America/New_York" }
         ]
