@@ -40,6 +40,7 @@ $GIT_HISTORY
 APP=$(echo "$CURRENT_TAG" | cut -d'/' -f1)
 DEST=$(echo "$CURRENT_TAG" | cut -d'/' -f2)
 CHANNEL=$(echo "$CURRENT_TAG" | cut -d'/' -f3)
+RELEASE=$(echo "$CURRENT_TAG" | cut -d'/' -f4)
 
 # exit if it's a linux container and a native build
 if [ "$TRAVIS_OS_NAME" != "osx" ] && [ "$DEST" = "native" ]; then
@@ -149,6 +150,7 @@ if [ "$DEST" = "native" ]; then
   rm -rf sites/$APP/.meteor/local
 
   yecho "### Reinstalling / linking apollos for better dependencies ###"
+  cd ./sites/$APP
   rm -rf node_modules/apollos-core && npm i
   ls node_modules/apollos-core
   ls node_modules/apollos-core/dist
@@ -189,7 +191,7 @@ JQ="jq --raw-output --exit-status"
 
 # sets $task_def
 make_task_def() {
-    meteor_settings=$(cat $METEOR_SETTINGS_PATH | $JQ . | sed 's/\"/\\"/g' | tr -d '\n')
+    meteor_settings=$($JQ '. + { "release": "$RELEASE" }' | cat $METEOR_SETTINGS_PATH | sed 's/\"/\\"/g' | tr -d '\n')
     task_template='[
       {
         "name": "'"$ECS_TASK_NAME"'",
