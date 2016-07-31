@@ -67,6 +67,20 @@ export default class MiniPlayer extends Component {
     return classes.join(" ");
   }
 
+  stopH6Classes = () => {
+    return css(Styles["mini-player-stop-h6"]);
+  }
+
+  stopH6IconClasses = () => {
+    let classes = [
+      "icon-close",
+      "display-inline-block",
+      "push-half-sides",
+      css(Styles["mini-player-stop-h6-icon"]),
+    ];
+    return classes.join(" ");
+  }
+
   albumClasses = () => {
     let classes = [
       "background--fill",
@@ -202,9 +216,9 @@ export default class MiniPlayer extends Component {
           className={this.stopClasses()}
           style={{ left: `${-(100 - this.state.lastPercent)}%` }}
         >
-          <h6 style={{marginTop: "6px"}}>
+          <h6 className={this.stopH6Classes()}>
             Stop Music
-            <i className="icon-close display-inline-block push-half-sides"></i>
+            <i className={this.stopH6IconClasses()}></i>
           </h6>
         </div>
         <div
