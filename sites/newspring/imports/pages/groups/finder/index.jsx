@@ -119,6 +119,7 @@ export default class Template extends Component {
 
   findByQuery = (e) => {
     if (e) e.preventDefault();
+    document.getElementById("search").blur();
     this.getResults();
   }
 
