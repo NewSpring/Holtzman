@@ -35,13 +35,6 @@ This repo contains the core Apollos framework, as well as the sites that share t
 
 To install, clone down this repo and run `npm install && npm link`. This will bind `apollos` to your system to be used to run this app.
 
-> *NOTICE*
-Until meteor 1.4 ships (with native node support), you need to run ` meteor npm run` before each of these commands. For instance: `meteor npm run apollos run newspring`
-This is due to Meteor running a different version of node. See [this](https://github.com/meteor/meteor/issues/4314) for a more detailed explanation.
-During this period, you must also use `--` as a break when passing options. For instance: `meteor npm run apollos newspring -- --native`
-
-You will also need to watch the Apollos directory separately until Meteor 1.4 is released, and we update junction to support newer versions of libsass. Just `cd apollos` and `npm run start`. A gratsi.
-
 `apollos setup <site>`: This command will bootstrap individual sites. This may take some time.
 
 `apollos run <site>`: This will start a local server to serve the site and print its address in your console.
