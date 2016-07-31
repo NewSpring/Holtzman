@@ -6,7 +6,7 @@ export default StyleSheet.create({
 
     "@media screen and (max-width: 480px)": {
       position: "fixed",
-      maxHeight: "60px",
+      maxHeight: "50px",
       display: "flex",
       justifyContent: "center",
       width: "100%",
