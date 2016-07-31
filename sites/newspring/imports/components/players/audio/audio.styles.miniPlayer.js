@@ -22,12 +22,15 @@ export default StyleSheet.create({
     marginBottom: "50px",
   },
 
-  "mini-player-stop h6": {
-    marginTop: "4px",
+  "mini-player-stop-h6": {
+    marginTop: "6px",
   },
 
-  "mini-player stop h6 i": {
+  "mini-player-stop-h6-icon": {
     fontSize: "1.2em",
+    ":before": {
+      verticalAlign: "middle",
+    },
   },
 
   "mini-player-transition": {
