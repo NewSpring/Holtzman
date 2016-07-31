@@ -68,7 +68,7 @@ export default class Header extends Component {
                     <i className="icon-search locked-left push-half-top text-light-primary"></i>
                     <input
                       id="search"
-                      type="search"
+                      type="text"
                       name="search"
                       className="h5 text-light-primary"
                       autoComplete="off"
