@@ -193,32 +193,32 @@ JQ="jq --raw-output --exit-status"
 
 # sets $task_def
 make_task_def() {
-    meteor_settings=$($JQ '. + { "release": "$RELEASE" }' | cat $METEOR_SETTINGS_PATH | sed 's/\"/\\"/g' | tr -d '\n')
-    task_template='[
-      {
-        "name": "'"$ECS_TASK_NAME"'",
-        "memory": 512,
-        "cpu": 512,
-        "essential": true,
-        "image": "abernix/meteord:base",
-        "portMappings": [
-          { "hostPort": '"$HOST_PORT"', "containerPort": 80, "protocol": "tcp" }
-        ],
-        "logConfiguration": {
-          "logDriver": "awslogs",
-          "options": { "awslogs-group": "'"$ECS_SERVICE"'", "awslogs-region": "us-east-1" }
-        },
-        "environment": [
-          { "name": "NODE_ENV", "value": "production" },
-          { "name": "MONGO_URL", "value": "'"$DOCKER_MONGO_URL"'" },
-          { "name": "DISABLE_WEBSOCKETS", "value": "1" },
-          { "name": "ROOT_URL", "value": "'"$ROOT_URL"'" },
-          { "name": "BUNDLE_URL", "value": "'"$BUNDLE_URL"'" },
-          { "name": "METEOR_SETTINGS", "value": "'"$meteor_settings"'" },
-          { "name": "TZ", "value": "America/New_York" }
-        ]
-      }
-    ]'
+  meteor_settings=$($JQ '. + { "release": "$RELEASE" }' >>> $METEOR_SETTINGS_PATH | sed 's/\"/\\"/g' | tr -d '\n')
+  task_template='[
+    {
+      "name": "'"$ECS_TASK_NAME"'",
+      "memory": 512,
+      "cpu": 512,
+      "essential": true,
+      "image": "abernix/meteord:base",
+      "portMappings": [
+        { "hostPort": '"$HOST_PORT"', "containerPort": 80, "protocol": "tcp" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": { "awslogs-group": "'"$ECS_SERVICE"'", "awslogs-region": "us-east-1" }
+      },
+      "environment": [
+        { "name": "NODE_ENV", "value": "production" },
+        { "name": "MONGO_URL", "value": "'"$DOCKER_MONGO_URL"'" },
+        { "name": "DISABLE_WEBSOCKETS", "value": "1" },
+        { "name": "ROOT_URL", "value": "'"$ROOT_URL"'" },
+        { "name": "BUNDLE_URL", "value": "'"$BUNDLE_URL"'" },
+        { "name": "METEOR_SETTINGS", "value": "'"$meteor_settings"'" },
+        { "name": "TZ", "value": "America/New_York" }
+      ]
+    }
+  ]'
 }
 
 register_definition() {
