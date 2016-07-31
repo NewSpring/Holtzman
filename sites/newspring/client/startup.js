@@ -107,8 +107,8 @@ if (process.env.NATIVE) {
        * It is also possible to set an offset using `data-status-scroll-offset`.
        */
       window.addEventListener("statusTap", (event) => {
-        const objToArray = (obj) => {
-          return Object.keys(obj).map((k) => obj[k]);
+        const flatten = (obj) => {
+          return [].concat.apply([], obj);
         };
 
         const options = {
@@ -120,13 +120,13 @@ if (process.env.NATIVE) {
         };
 
         // this is the main view used by most content
-        const scroll = objToArray(document.querySelectorAll("[data-status-scroll]"));
+        const scroll = flatten(document.querySelectorAll("[data-status-scroll]"));
         // this will be the absolutely positioned containers
         // there may be multiple
-        const containers = objToArray(document.querySelectorAll("[data-status-scroll-container]"));
+        const containers = flatten(document.querySelectorAll("[data-status-scroll-container]"));
         // this will be the items inside absolutely positioned containers
         // there may be multiple
-        const items = objToArray(document.querySelectorAll("[data-status-scroll-item]"));
+        const items = flatten(document.querySelectorAll("[data-status-scroll-item]"));
 
         if (items.length > 0 && containers.length > 0) {
           // handle items inside positioned containers
