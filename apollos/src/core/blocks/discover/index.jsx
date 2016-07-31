@@ -96,6 +96,7 @@ export default class SearchContainer extends Component {
 
   searchSubmit = (event) => {
     event.preventDefault();
+    document.getElementById("search").blur();
     const { dispatch } = this.props
     let term = document.getElementById("search").value;
 
