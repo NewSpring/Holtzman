@@ -40,6 +40,7 @@ $GIT_HISTORY
 APP=$(echo "$CURRENT_TAG" | cut -d'/' -f1)
 DEST=$(echo "$CURRENT_TAG" | cut -d'/' -f2)
 CHANNEL=$(echo "$CURRENT_TAG" | cut -d'/' -f3)
+RELEASE=$(echo "$CURRENT_TAG" | cut -d'/' -f4)
 
 # exit if it's a linux container and a native build
 if [ "$TRAVIS_OS_NAME" != "osx" ] && [ "$DEST" = "native" ]; then
@@ -57,9 +58,12 @@ cd "sites/$APP"
 
 yecho "### Creating settings for the $CHANNEL of $APP:$DEST"
 URLPREFIX="my"
-if [ "$DEST" = "native" ]; then URLPREFIX="native"; fi
+TLD="cc"
+### XXX make this native
+if [ "$DEST" = "native" ]; then URLPREFIX="app"; fi
+if [ "$DEST" = "native" ]; then TLD="io"; fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
-ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.cc"
+ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.$TLD"
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
   ROOT_URL="https://my.newspring.cc"
   METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
@@ -147,15 +151,11 @@ if [ "$DEST" = "native" ]; then
   rm -rf node_modules && cd ../
   rm -rf sites/$APP/.meteor/local
 
-  yecho "### Removing cordova platforms ###"
-  cd ./sites/$APP
-  meteor remove-platform android
-  meteor remove-platform ios
-
   yecho "### Reinstalling / linking apollos for better dependencies ###"
-  rm -rf node_modules/apollos && npm i
-  ls node_modules/apollos
-  ls node_modules/apollos/dist
+  cd ./sites/$APP
+  rm -rf node_modules/apollos-core && npm i
+  ls node_modules/apollos-core
+  ls node_modules/apollos-core/dist
 
   yecho "### Building meteor for env $DEST ###"
   # XXX pass env vars through launch
@@ -173,9 +173,9 @@ if [ "$DEST" = "web" ]; then
   meteor remove-platform ios
 
   yecho "### Reinstalling / linking apollos for better dependencies ###"
-  rm -rf node_modules/apollos && npm i
-  ls node_modules/apollos
-  ls node_modules/apollos/dist
+  rm -rf node_modules/apollos-core && npm i
+  ls node_modules/apollos-core
+  ls node_modules/apollos-core/dist
 
   yecho "### Building meteor for env $DEST ###"
   # XXX pass env vars through launch
@@ -193,14 +193,14 @@ JQ="jq --raw-output --exit-status"
 
 # sets $task_def
 make_task_def() {
-    meteor_settings=$(cat $METEOR_SETTINGS_PATH | $JQ . | sed 's/\"/\\"/g' | tr -d '\n')
+    meteor_settings=$($JQ '. + { "release": "$RELEASE" }' | cat $METEOR_SETTINGS_PATH | sed 's/\"/\\"/g' | tr -d '\n')
     task_template='[
       {
         "name": "'"$ECS_TASK_NAME"'",
         "memory": 512,
         "cpu": 512,
         "essential": true,
-        "image": "meteorhacks/meteord:binbuild",
+        "image": "abernix/meteord:base",
         "portMappings": [
           { "hostPort": '"$HOST_PORT"', "containerPort": 80, "protocol": "tcp" }
         ],
@@ -209,13 +209,11 @@ make_task_def() {
           "options": { "awslogs-group": "'"$ECS_SERVICE"'", "awslogs-region": "us-east-1" }
         },
         "environment": [
-          { "name": "REBUILD_NPM_MODULES", "value": "1" },
           { "name": "NODE_ENV", "value": "production" },
           { "name": "MONGO_URL", "value": "'"$DOCKER_MONGO_URL"'" },
           { "name": "DISABLE_WEBSOCKETS", "value": "1" },
           { "name": "ROOT_URL", "value": "'"$ROOT_URL"'" },
           { "name": "BUNDLE_URL", "value": "'"$BUNDLE_URL"'" },
-          { "name": "OPLOG_URL", "value": "'"$DOCKER_OPLOG_URL"'" },
           { "name": "METEOR_SETTINGS", "value": "'"$meteor_settings"'" },
           { "name": "TZ", "value": "America/New_York" }
         ]
