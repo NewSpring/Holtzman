@@ -49,12 +49,11 @@ To install, clone down this repo and run `npm install && npm link`. This will bi
 
 ## Deploys
 
-This project can be automatically deployed by Travis CI using release tags. We have 3 different environments to deploy to: alpha, beta, production.
+This project can be automatically deployed by Travis CI using release tags. We have 2 different versions of the application, web and native. We also have 3 different environments to deploy to: alpha, beta, production.
 
-To do a release, simply create a tag using the following naming convention:
+To deploy, create a release/tag using a combination of the site name, site version, environment target, and version number.
 
 ```
-app/alpha/0.0.3
-app/beta/1.0
-my.newspring.cc/production/3.4.5
+newspring/web/production/1.0.8
+newspring/native/beta/0.0.3-45
 ```
