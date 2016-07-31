@@ -62,7 +62,7 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
             hideLabel={true}
             classes={["hard-bottom"]}
             placeholder="Type your search here..."
-            type="search"
+            type="text"
             name="search"
             onChange={(e) => inputOnChange(e)}
           />
