@@ -56,12 +56,14 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
             "soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block", "push-bottom"
           ]}
           submit={(e) => findByQuery(e)}
+          action={true}
         >
           <Forms.Input
             hideLabel={true}
             classes={["hard-bottom"]}
             placeholder="Type your search here..."
             type="text"
+            name="search"
             onChange={(e) => inputOnChange(e)}
           />
           <div className="one-whole text-center@handheld text-left@lap-and-up">
