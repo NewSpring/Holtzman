@@ -114,6 +114,9 @@ if (process.env.NATIVE) {
         const options = {
           duration: 350,
           easing: "ease-in",
+          // header + live banner should never be more than 100,
+          // and this shouldn't affect instances where no offset is needed
+          offset: -100,
         };
 
         // this is the main view used by most content
@@ -134,7 +137,7 @@ if (process.env.NATIVE) {
 
             // use offset to account for headers and other stuff
             const offset = item.dataset.statusScrollOffset;
-            if (offset) options.offset = offset;
+            if (offset) options.offset += offset;
 
             Velocity(item, "scroll", options);
           });
