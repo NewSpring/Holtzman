@@ -1,0 +1,106 @@
+.SwipeViewsContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+  position: absolute;
+  padding-bottom: 50px;
+  -webkit-overflow-scrolling: touch;
+  background-color: #FFF;
+}
+
+.SwipeViewsHeader {
+  border-bottom: 2px solid rgba(0,0,0, 0.1);
+  background-color: #6bac43;
+  display: flex;
+  flex-flow: row nowrap;
+  min-height: 45px;
+  z-index: 100;
+  position: relative;
+}
+
+.SwipeViewsTabs {
+  flex: 1;
+  // min-height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  margin-bottom: -4px;
+}
+
+.SwipeViewsTabs > ul {
+  flex: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+.SwipeViewsTab {
+  position: relative;
+  display: inline;
+  padding-top: 14px;
+  padding-bottom: 11.5px;
+  margin-bottom: 0;
+  flex: 1;
+  text-align: center;
+  font-family: "colfax-web";
+  font-size: 0.875em;
+  line-height: 1.125;
+  font-weight: bold;
+  color: #1C683E;
+}
+
+.SwipeViewsTab.active {
+  color: #FFF !important;
+}
+
+.SwipeViewsTab > a {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.SwipeViewsInk {
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  height: 4px;
+  position: relative;
+}
+
+.SwipeViewsInk:before {
+  position: absolute;
+  left: 50%;
+  margin-left: -20px;
+  bottom: -11px;
+  border-top: 15px solid rgba(0,0,0, 0.1);
+  border-right: 21px solid rgba(0, 0, 0, 0);
+  border-left: 21px solid rgba(0, 0, 0, 0);
+  content: '';
+  z-index: 2;
+}
+
+.SwipeViewsInk:after {
+  position: absolute;
+  left: 50%;
+  margin-left: -19px;
+  bottom: -8px;
+  border-top: 14px solid #6bac43;
+  border-right: 20px solid rgba(0, 0, 0, 0);
+  border-left: 20px solid rgba(0, 0, 0, 0);
+  content: '';
+  z-index: 2;
+}
+
+.SwipeViews {
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  display: flex;
+  flex-flow: row nowrap;
+  overflow-x: hidden;
+}
+
+.SwipeView {
+  overflow-y: scroll;
+}
