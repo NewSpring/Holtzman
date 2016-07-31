@@ -107,37 +107,43 @@ if (process.env.NATIVE) {
        * It is also possible to set an offset using `data-status-scroll-offset`.
        */
       window.addEventListener("statusTap", (event) => {
+        const objToArray = (obj) => {
+          return Object.keys(obj).map((k) => obj[k]);
+        };
+
         const options = {
           duration: 350,
           easing: "ease-in",
+          // header + live banner should never be more than 100,
+          // and this shouldn't affect instances where no offset is needed
+          offset: -100,
         };
 
         // this is the main view used by most content
-        const $scroll = $("[data-status-scroll]");
+        const scroll = objToArray(document.querySelectorAll("[data-status-scroll]"));
         // this will be the absolutely positioned containers
         // there may be multiple
-        const $containers = $("[data-status-scroll-container]");
+        const containers = objToArray(document.querySelectorAll("[data-status-scroll-container]"));
         // this will be the items inside absolutely positioned containers
         // there may be multiple
-        const $items = $("[data-status-scroll-item]");
+        const items = objToArray(document.querySelectorAll("[data-status-scroll-item]"));
 
-        if ($items.length > 0 && $containers.length > 0) {
+        if (items.length > 0 && containers.length > 0) {
           // handle items inside positioned containers
-          $items.map((i) => {
-            const item = $items[i];
-
-            const container = $containers[i];
+          items.map((elem, i) => {
+            const item = items[i];
+            const container = containers[i];
             options.container = container;
 
             // use offset to account for headers and other stuff
-            const offset = $(item).data("status-scroll-offset");
-            if (offset) options.offset = offset;
+            const offset = item.dataset.statusScrollOffset;
+            if (offset) options.offset += offset;
 
-            $(item).velocity("scroll", options);
+            Velocity(item, "scroll", options);
           });
         } else {
           // most items will be inside the main view
-          $scroll.velocity("scroll", options);
+          Velocity(scroll, "scroll", options);
         }
       });
     });
