@@ -1,4 +1,6 @@
 sudo: required # force to run in container
+env: # required for node_bcrypt
+  - CXX=g++-4.8
 os:
 - linux
 - osx
@@ -8,6 +10,13 @@ node_js:
 - '6'
 ruby:
 - '2.2.5'
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
 cache:
   directories:
   - $TRAVIS_BUILD_DIR/node_modules
