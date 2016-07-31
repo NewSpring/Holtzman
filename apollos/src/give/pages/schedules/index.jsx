@@ -19,7 +19,7 @@ const mapQueriesToProps = () => ({
   schedules: {
     query: gql`
       query GetScheduleTransactions {
-        schedules: scheduledTransactions {
+        schedules: scheduledTransactions(cache: false) {
           numberOfPayments
           next
           end
