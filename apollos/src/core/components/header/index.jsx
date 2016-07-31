@@ -59,12 +59,17 @@ export default class Header extends Component {
           {(() => {
             if (this.props.isSearch) {
               return (
-                <form onSubmit={this.props.searchSubmit} className={`hard-ends soft-sides`}>
+                <form
+                  onSubmit={this.props.searchSubmit}
+                  className={`hard-ends soft-sides`}
+                  action={true}
+                >
                   <div className={`input hard-bottom`}>
                     <i className="icon-search locked-left push-half-top text-light-primary"></i>
                     <input
                       id="search"
                       type="text"
+                      name="search"
                       className="h5 text-light-primary"
                       autoComplete="off"
                       style={{ paddingLeft: "30px", borderBottom: "none", marginTop: "7px" }}
