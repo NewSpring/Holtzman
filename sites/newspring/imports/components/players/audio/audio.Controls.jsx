@@ -46,7 +46,8 @@ export default class AudioControls extends Component {
   };
 
   repeatIconStyles = {
-    top: "-34px"
+    top: "-38px",
+    position: "relative",
   }
 
   repeatIcon = () => {
@@ -110,10 +111,13 @@ export default class AudioControls extends Component {
     const { state } = this.props.audio;
 
     if (state != "playing") { return {
-      left: "6px"
+      left: "6px",
+      position: "relative",
+
       }
     } else return {
-      left: "2px"
+      left: "2px",
+      position: "relative",
     }
   }
 
@@ -233,7 +237,6 @@ export default class AudioControls extends Component {
         <button
           className="plain float-right"
           onClick={this.toggle}
-          style={{marginTop: "4px"}} // fix icon height
         >
           <i className={classes.join(" ")}></i>
         </button>
