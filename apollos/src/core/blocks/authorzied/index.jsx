@@ -36,8 +36,10 @@ export default class Authorized extends Component {
 
     if (this.props.modal.visible && !nextProps.modal.visible && !nextProps.auth) {
       // use last route instead of goBack() to force update of active nav item
-      // const lastRoute = nextProps.previous[nextProps.previous.length-1] || "/";
-      this.props.dispatch(routeActions.push("/"))
+      const lastRoute = nextProps.previous[nextProps.previous.length-1] || "/";
+      this.props.dispatch(routeActions.push(lastRoute));
+      // XXX what case did this handle?
+      // this.props.dispatch(routeActions.push("/"))
     }
 
     if (this.props.auth && !nextProps.auth) {
