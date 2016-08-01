@@ -29,13 +29,13 @@ const MiniCard = ({ link, title, icon, type, images, description, content }) => 
             {(() => {
               if (!content) return;
               // if (!icon) return;
-              return <span style={{verticalAlign: "middle"}} className={`${Helpers.categories.icon(content)} text-dark-tertiary`}></span>
+              return <span className={`${Helpers.categories.icon(content)} text-dark-tertiary`}></span>
             })()}
 
             {(() => {
               if (!content) return;
               // if (!type) return;
-              return <h7 style={{verticalAlign: "middle"}} className="text-dark-tertiary soft-half-left">{Helpers.categories.name(content)}</h7>
+              return <h7 className="text-dark-tertiary soft-half-left">{Helpers.categories.name(content)}</h7>
             })()}
 
           </div>
