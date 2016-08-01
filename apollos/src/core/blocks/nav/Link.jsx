@@ -96,15 +96,18 @@ export default class NavLink extends Component {
     let itemStyle = {}
     if (process.env.NATIVE && icon === "icon-groups") {
       itemStyle.fontSize = "2.5em";
-      itemStyle.lineHeight = "1.5em"
+      itemStyle.lineHeight = "1.35em"
     }
     if (process.env.WEB && icon === "icon-groups") {
       itemStyle.fontSize = "2.5em";
       itemStyle.lineHeight = ".5em"
       itemStyle.marginTop = "-9px"
     }
+    if (process.env.NATIVE && icon === "icon-share") {
+      itemStyle.lineHeight = "1.5em"
+    }
 
-    let containerStyles = {}
+    let containerStyles = { paddingBottom: "3px" };
 
     let active = navItem.isActive && navItem.isActive(this.props);
     return (
