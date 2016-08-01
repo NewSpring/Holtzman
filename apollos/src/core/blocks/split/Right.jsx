@@ -33,7 +33,7 @@ export default class Right extends Component {
       "flush",
     ];
 
-    if (this.props.link) {
+    if (this.props.link && process.env.WEB) {
       classes.push(
         css(Hover.right),
         "transition",
