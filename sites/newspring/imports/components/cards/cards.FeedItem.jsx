@@ -101,13 +101,6 @@ export default class FeedItem extends Component {
     return classes
   }
 
-  iconStyles = () => {
-    return {
-      position: "relative",
-      top: "4px",
-    }
-  }
-
 
   render() {
     const item = this.props.item;
@@ -125,7 +118,7 @@ export default class FeedItem extends Component {
 
         <div className="text-left">
           <h4 className={this.h4Classes()}>{item.title}</h4>
-          <i className={this.iconClasses()} style={this.iconStyles()}></i>
+          <i className={this.iconClasses()}></i>
           <h7 className={this.categoryClasses()}>{Helpers.categories.name(item)}</h7>
           <h7 style={{marginTop: "5px"}}className={this.timeClasses()}>{Helpers.time.relative(item)}</h7>
         </div>
