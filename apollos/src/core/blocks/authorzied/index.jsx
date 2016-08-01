@@ -34,10 +34,14 @@ export default class Authorized extends Component {
 
   componentWillReceiveProps(nextProps) {
 
+    // if the modal is hiding, but the user is not authorized
     if (this.props.modal.visible && !nextProps.modal.visible && !nextProps.auth) {
       // use last route instead of goBack() to force update of active nav item
-      // const lastRoute = nextProps.previous[nextProps.previous.length-1] || "/";
-      this.props.dispatch(routeActions.push("/"))
+      // handle case where a protected route is the first page visited
+      const lastRoute = nextProps.previous.length !== 1 ?
+        nextProps.previous[nextProps.previous.length-1] : "/";
+
+      this.props.dispatch(routeActions.push(lastRoute));
     }
 
     if (this.props.auth && !nextProps.auth) {
