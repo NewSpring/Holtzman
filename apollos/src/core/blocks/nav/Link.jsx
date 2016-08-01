@@ -107,7 +107,14 @@ export default class NavLink extends Component {
       itemStyle.lineHeight = "1.5em"
     }
 
-    let containerStyles = { paddingBottom: "3px" };
+    let containerStyles = {}
+    if (process.env.WEB) {
+        containerStyles = { paddingTop: "4px" };
+    }
+    if (process.env.NATIVE) {
+        containerStyles = { paddingBottom: "3px" };
+    }
+
 
     let active = navItem.isActive && navItem.isActive(this.props);
     return (
