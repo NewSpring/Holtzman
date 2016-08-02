@@ -78,7 +78,7 @@ export default ({
               return (
                 <span
                   className="float-right icon-search"
-                  style={{verticalAlign: "middle"}}
+                  style={{marginTop: "-4px"}}
                   onClick={() => toggleSearch()}
                 ></span>
               )
