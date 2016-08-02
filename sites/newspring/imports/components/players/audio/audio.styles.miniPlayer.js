@@ -23,14 +23,11 @@ export default StyleSheet.create({
   },
 
   "mini-player-stop-h6": {
-    marginTop: "6px",
+    marginTop: "3px",
   },
 
   "mini-player-stop-h6-icon": {
     fontSize: "1.2em",
-    ":before": {
-      verticalAlign: "middle",
-    },
   },
 
   "mini-player-transition": {

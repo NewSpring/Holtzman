@@ -100,7 +100,7 @@ export default class Filter extends Component {
                 classes={["hard", "display-inline-block", "one-whole" ]}
                 submit={(e) => this.findByQuery(e)}
               >
-                <i style={{paddingTop: "4px"}} className="icon-search locked-left soft-half-left"></i>
+                <i className="icon-search locked-left soft-half-left"></i>
                 <span
                   style={{zIndex: 1, paddingTop: "5px", "cursor": "pointer"}}
                   onClick={this.removeQuery}
