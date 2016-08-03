@@ -7,7 +7,8 @@ export default class AudioTitle extends Component {
     artistName: PropTypes.string.isRequired,
     albumTitle: PropTypes.string.isRequired,
     isPlaying: PropTypes.bool.isRequired,
-    isLight: PropTypes.bool.isRequired
+    isLight: PropTypes.bool.isRequired,
+    channelName: PropTypes.string.isRequired,
   }
 
   getTertiaryTextColor = (dark) => {
@@ -22,6 +23,35 @@ export default class AudioTitle extends Component {
     return this.props.isLight ? "text-dark-primary" : "text-light-primary";
   };
 
+  // show title before artist if sermon
+  // else show artist before title
+  getArtistLine = () => {
+    if (this.props.channelName === "series_newspring") {
+      return (
+        <div>
+          <span className="music-album-title">
+            {this.props.albumTitle}
+          </span>
+          <span> - </span>
+          <span className="music-album-artist">
+            {this.props.artistName}
+          </span>
+        </div>
+      );
+    }
+    return (
+      <div>
+        <span className="music-album-artist">
+          {this.props.artistName}
+        </span>
+        <span> - </span>
+        <span className="music-album-title">
+          {this.props.albumTitle}
+        </span>
+      </div>
+    );
+  };
+
   render() {
     const { isLight } = this.props;
     if (this.props.isPlaying) {
@@ -31,13 +61,7 @@ export default class AudioTitle extends Component {
             {this.props.trackTitle}
           </h5>
           <h6 className="push-bottom" style={this.getTertiaryTextColor(!isLight)}>
-            <span className="music-album-artist">
-              {this.props.artistName}
-            </span>
-            <span> - </span>
-            <span className="music-album-title">
-              {this.props.albumTitle}
-            </span>
+            {this.getArtistLine()}
           </h6>
         </div>
       );

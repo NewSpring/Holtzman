@@ -135,17 +135,15 @@ export default class SeriesSingleVideo extends Component {
     this.props.dispatch(headerActions.set(options));
   }
 
-  play = (e) => {
+  playAudio = (e) => {
     e.preventDefault();
-    // trigger audio redux bla blah
-    console.log("triggering audio");
-
     const currentSermon = this.props.currentSermon.content;
     const series = this.props.series.content;
     this.props.dispatch(audioActions.setPlaying({
       track: {
         ...currentSermon.content.audio[0],
         title: currentSermon.title,
+        artist: Helpers.content.speakers(currentSermon),
       },
       album: series,
     }));
@@ -176,7 +174,7 @@ export default class SeriesSingleVideo extends Component {
         <div
           className="soft-sides background--light-secondary text-dark-secondary"
           style={{ paddingTop: "15px", paddingBottom: "15px" }}
-          onClick={this.play}
+          onClick={this.playAudio}
         >
           <h7>Listen To Audio</h7>
           <i

@@ -209,6 +209,18 @@ export default class MiniPlayer extends Component {
     }
   }
 
+  // show title before artist if sermon
+  // else show artist before title
+  getArtistLine = () => {
+    const { album, track } = this.props.audio.playing;
+    const artistName = track.artist || album.artist || "NewSpring";
+    const collectionTitle = album.title;
+    if (album.channelName === "series_newspring") {
+      return `${collectionTitle} – ${artistName}`;
+    }
+    return `${artistName} – ${collectionTitle}`;
+  }
+
   render () {
 
     const { state, playing, progress } = this.props.audio;
@@ -248,7 +260,7 @@ export default class MiniPlayer extends Component {
               {playing.track.title}
             </h6>
             <h7 className="flush text-dark-tertiary">
-              {playing.track.artist || playing.album.artist || "NewSpring" } – {playing.album.title}
+              {this.getArtistLine()}
             </h7>
           </div>
           <AudioControls
