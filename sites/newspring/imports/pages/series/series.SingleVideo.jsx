@@ -129,6 +129,12 @@ export default class SeriesSingleVideo extends Component {
     this.props.dispatch(headerActions.set(options));
   }
 
+  triggerAudio = (event) => {
+    event.preventDefault();
+    // trigger audio redux bla blah
+    console.log("triggering audio");
+  }
+
   render() {
 
     const sermonContent = this.props.currentSermon.content;
@@ -151,6 +157,17 @@ export default class SeriesSingleVideo extends Component {
     return (
       <div className="background--light-primary">
         <SingleVideoPlayer sermon={currentSermon} series={series} />
+        <div
+          className="soft-sides background--light-secondary text-dark-secondary"
+          style={{ paddingTop: "15px", paddingBottom: "15px" }}
+          onClick={this.triggerAudio}
+        >
+          <h7>Listen To Audio</h7>
+          <i
+            className="icon-category-audio float-right"
+            style={{ marginTop: "-2px" }}
+          />
+        </div>
         <div className="soft push-top">
           <h2 className="push-half-bottom">{currentSermon.title}</h2>
           <h4>{Helpers.content.speakers(currentSermon)}</h4>
