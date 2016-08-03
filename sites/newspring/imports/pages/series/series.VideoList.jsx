@@ -67,13 +67,15 @@ export default class SeriesVideoList extends Component {
 
     const { content } = this.props.sermons;
 
-    if (!content) {
+    if (this.props.sermons.loading) {
       return (
         <div className="text-center soft-ends">
           <Spinner />
         </div>
       )
     }
+
+    if (!content || content.sermons.length === 0) return null;
 
     const { sermons } = content;
 
