@@ -6,6 +6,7 @@ import gql from "graphql-tag";
 
 import Loading from "apollos-core/dist/core/components/loading"
 import { nav as navActions } from "apollos-core/dist/core/store"
+import { actions as audioActions } from "/imports/store/audio"
 import { Headerable } from "apollos-core/dist/core/mixins"
 import headerActions from "apollos-core/dist/core/store/header"
 
@@ -32,6 +33,10 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
               channelId
             }
             content {
+              audio {
+                duration
+                file: s3
+              }
               description
               speaker
               ooyalaId
@@ -75,6 +80,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
                 value
                 description
               }
+              isLight
             }
           }
         }
@@ -129,10 +135,20 @@ export default class SeriesSingleVideo extends Component {
     this.props.dispatch(headerActions.set(options));
   }
 
-  triggerAudio = (event) => {
-    event.preventDefault();
+  play = (e) => {
+    e.preventDefault();
     // trigger audio redux bla blah
     console.log("triggering audio");
+
+    const currentSermon = this.props.currentSermon.content;
+    const series = this.props.series.content;
+    this.props.dispatch(audioActions.setPlaying({
+      track: {
+        ...currentSermon.content.audio[0],
+        title: currentSermon.title,
+      },
+      album: series,
+    }));
   }
 
   render() {
@@ -160,7 +176,7 @@ export default class SeriesSingleVideo extends Component {
         <div
           className="soft-sides background--light-secondary text-dark-secondary"
           style={{ paddingTop: "15px", paddingBottom: "15px" }}
-          onClick={this.triggerAudio}
+          onClick={this.play}
         >
           <h7>Listen To Audio</h7>
           <i

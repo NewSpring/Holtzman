@@ -130,10 +130,20 @@ export default class MiniPlayer extends Component {
   };
 
   getImage = (images, options = { blurred: false }) => {
-    const image = options.blurred ? images[1] : images[0]
+    const oneByOne = _.find(images, x => ( x.fileLabel === "1:1" ));
+    const blurred = images[1];
+
+    let image;
+    if (options.blurred) {
+      image = blurred;
+    } else if (oneByOne) {
+      image = oneByOne;
+    } else {
+      image = images[0];
+    }
     return image.cloudfront && image.cloudfront !== "false" ?
       image.cloudfront :
-      image.s3
+      image.s3;
   };
 
   touchStart = (e) => {
