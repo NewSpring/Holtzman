@@ -195,6 +195,11 @@ export default class FullPlayer extends Component {
     }
   };
 
+  getArtist = () => {
+    const { album, track } = this.props.playing;
+    return track.artist || album.artist || "NewSpring"
+  }
+
   render () {
 
     const { state, playing } = this.props;
@@ -241,10 +246,11 @@ export default class FullPlayer extends Component {
 
             <AudioTitle
               trackTitle={track.title}
-              artistName={track.artist || album.artist || "NewSpring"}
+              artistName={this.getArtist()}
               albumTitle={album.title}
               isPlaying={state != "default"}
               isLight={isLight}
+              channelName={album.channelName}
             />
 
             <AudioControls
