@@ -140,13 +140,23 @@ export default class AudioControls extends Component {
   next = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    this.props.dispatch(audioActions.next());
+    const { album } = this.props.audio.playing;
+    if (album.channelName === "series_newspring") {
+      this.props.dispatch(audioActions.seek(0));
+    } else {
+      this.props.dispatch(audioActions.next());
+    }
   };
 
   back = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    this.props.dispatch(audioActions.previous());
+    const { album } = this.props.audio.playing;
+    if (album.channelName === "series_newspring") {
+      this.props.dispatch(audioActions.seek(0));
+    } else {
+      this.props.dispatch(audioActions.previous());
+    }
   };
 
   repeat = (e) => {
