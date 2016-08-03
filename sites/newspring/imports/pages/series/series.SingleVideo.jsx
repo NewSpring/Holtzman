@@ -6,6 +6,7 @@ import gql from "graphql-tag";
 
 import Loading from "apollos-core/dist/core/components/loading"
 import { nav as navActions } from "apollos-core/dist/core/store"
+import { actions as audioActions } from "/imports/store/audio"
 import { Headerable } from "apollos-core/dist/core/mixins"
 import headerActions from "apollos-core/dist/core/store/header"
 
@@ -32,6 +33,10 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
               channelId
             }
             content {
+              audio {
+                duration
+                file: s3
+              }
               description
               speaker
               ooyalaId
@@ -75,6 +80,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
                 value
                 description
               }
+              isLight
             }
           }
         }
@@ -129,6 +135,20 @@ export default class SeriesSingleVideo extends Component {
     this.props.dispatch(headerActions.set(options));
   }
 
+  playAudio = (e) => {
+    e.preventDefault();
+    const currentSermon = this.props.currentSermon.content;
+    const series = this.props.series.content;
+    this.props.dispatch(audioActions.setPlaying({
+      track: {
+        ...currentSermon.content.audio[0],
+        title: currentSermon.title,
+        artist: Helpers.content.speakers(currentSermon),
+      },
+      album: series,
+    }));
+  }
+
   render() {
 
     const sermonContent = this.props.currentSermon.content;
@@ -151,6 +171,17 @@ export default class SeriesSingleVideo extends Component {
     return (
       <div className="background--light-primary">
         <SingleVideoPlayer sermon={currentSermon} series={series} />
+        <div
+          className="soft-sides background--light-secondary text-dark-secondary"
+          style={{ paddingTop: "15px", paddingBottom: "15px" }}
+          onClick={this.playAudio}
+        >
+          <h7>Listen To Audio</h7>
+          <i
+            className="icon-category-audio float-right"
+            style={{ marginTop: "-2px" }}
+          />
+        </div>
         <div className="soft push-top">
           <h2 className="push-half-bottom">{currentSermon.title}</h2>
           <h4>{Helpers.content.speakers(currentSermon)}</h4>

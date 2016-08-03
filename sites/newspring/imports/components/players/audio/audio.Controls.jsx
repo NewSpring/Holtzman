@@ -140,13 +140,23 @@ export default class AudioControls extends Component {
   next = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    this.props.dispatch(audioActions.next());
+    const { album } = this.props.audio.playing;
+    if (album.channelName === "series_newspring") {
+      this.props.dispatch(audioActions.seek(0));
+    } else {
+      this.props.dispatch(audioActions.next());
+    }
   };
 
   back = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    this.props.dispatch(audioActions.previous());
+    const { album } = this.props.audio.playing;
+    if (album.channelName === "series_newspring") {
+      this.props.dispatch(audioActions.seek(0));
+    } else {
+      this.props.dispatch(audioActions.previous());
+    }
   };
 
   repeat = (e) => {
@@ -219,6 +229,32 @@ export default class AudioControls extends Component {
     maxHeight: "30px"
   }
 
+  playlistControls = () => {
+    const showControls = this.props.audio.playing.album.channelName !== "series_newspring";
+    if (!showControls) return null;
+    const { isLight } = this.props;
+    return (
+      <div className="grid one-whole flush" style={this.controlGridStyles}>
+        <div className="grid__item one-third text-left hard">
+          <button className="plain floating__item" onClick={this.shuffle}>
+            <i className={this.shuffleClasses()} style={this.activeShuffleStyles()}></i>
+          </button>
+        </div>
+        <div className="grid__item one-third hard-ends hard">
+          <button className="plain floating__item" onClick={this.repeat}>
+            <i className={this.repeatClasses()} style={this.activeRepeatStyles()}></i>
+          </button>
+        </div>
+        <div className="grid__item one-third text-right hard-sides">
+          <h5 onClick={this.listDetail} style={this.getTertiaryTextColor(!isLight)}>
+            •••
+          </h5>
+        </div>
+        {this.repeatIcon()}
+      </div>
+    );
+  }
+
   render() {
     const { state, back, next, visibility } = this.props.audio;
     const isPlaying = state === "playing";
@@ -262,25 +298,7 @@ export default class AudioControls extends Component {
           isLight={this.props.isLight}
         />
 
-        <div className="grid one-whole flush" style={this.controlGridStyles}>
-          <div className="grid__item one-third text-left hard">
-            <button className="plain floating__item" onClick={this.shuffle}>
-              <i className={this.shuffleClasses()} style={this.activeShuffleStyles()}></i>
-            </button>
-          </div>
-          <div className="grid__item one-third hard-ends hard">
-            <button className="plain floating__item" onClick={this.repeat}>
-              <i className={this.repeatClasses()} style={this.activeRepeatStyles()}></i>
-            </button>
-          </div>
-          <div className="grid__item one-third text-right hard-sides">
-            <h5 onClick={this.listDetail} style={this.getTertiaryTextColor(!isLight)}>
-              •••
-            </h5>
-          </div>
-          {this.repeatIcon()}
-        </div>
-
+        {this.playlistControls()}
 
       </div>
     );
