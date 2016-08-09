@@ -176,7 +176,7 @@ export default class SeriesSingleVideo extends Component {
           style={{ paddingTop: "15px", paddingBottom: "15px" }}
           onClick={this.playAudio}
         >
-          <h7>Listen To Audio</h7>
+          <h7 style={{ verticalAlign: "middle" }}>Listen To Audio</h7>
           <i
             className="icon-category-audio float-right"
             style={{ marginTop: "-2px" }}
