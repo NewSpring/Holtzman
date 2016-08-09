@@ -239,7 +239,7 @@ export default class MiniPlayer extends Component {
           style={{ left: `${-(100 - this.state.lastPercent)}%` }}
         >
           <h6 className={this.stopH6Classes()}>
-            Stop Music
+            Stop Audio
             <i className={this.stopH6IconClasses()}></i>
           </h6>
         </div>
