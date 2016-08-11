@@ -155,7 +155,12 @@ export default ({ group, leaders, isLeader, join }) => (
             <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
               <h7 className="text-dark-secondary">Description</h7>
               <p className="soft-half-top flush-bottom">
-                {group.description}
+                {group.description && group.description.split("\n").map((text, key) => (
+                  <span key={key}>
+                    {text}
+                    <br/>
+                  </span>
+                ))}
               </p>
             </div>
 
