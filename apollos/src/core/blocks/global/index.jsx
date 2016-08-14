@@ -58,6 +58,17 @@ const GlobalData =  createContainer(({ dispatch }) => {
 
   const userId = Meteor.userId();
 
+  if (typeof Raven != "undefined") {
+    if (!userId) Raven.setUserContext();
+    if (userId && Meteor.user()) {
+      const person = Meteor.user();
+      const email = person.emails[0] && person.emails[0].address;
+      if (email) {
+        Raven.setUserContext({ id: userId, email });
+      }
+    }
+  }
+
   // XXX create universal store clearing on logout
   if (!userId && hasBeenSignedIn) {
     dispatch(accountsActions.authorize(false));
