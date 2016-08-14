@@ -13,7 +13,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
     query: gql`
       query GetFilterContent {
         family: currentFamily {
-          person { photo, firstName, lastName, id: entityId }
+          person { photo, nickName, firstName, lastName, id: entityId }
         }
       }
     `
