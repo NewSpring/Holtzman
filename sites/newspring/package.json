@@ -35,10 +35,11 @@
     "babel-preset-meteor": "^6.11.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
-    "babel-traverse": "6.11.4",
+    "babel-traverse": "^6.11.4",
     "gagarin": "^0.4.12",
     "norma-bower": "^0.3.8",
-    "norma-meteor-run": "jbaxleyiii/norma-meteor-run"
+    "norma-meteor-run": "jbaxleyiii/norma-meteor-run",
+    "react-transform-sentry": "^1.0.0"
   },
   "babel": {
     "compact": true,
@@ -50,12 +51,19 @@
     ],
     "plugins": [
       "transform-react-router-optimize",
-      ["react-transform", {
-        "transforms": [{
-          "transform" : "react-transform-sentry",
-          "imports" : ["react"]
-        }]
-      }],
+      [
+        "react-transform",
+        {
+          "transforms": [
+            {
+              "transform": "react-transform-sentry",
+              "imports": [
+                "react"
+              ]
+            }
+          ]
+        }
+      ],
       "transform-inline-environment-variables",
       "transform-react-constant-elements",
       "transform-decorators-legacy",
