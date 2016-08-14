@@ -50,6 +50,12 @@
     ],
     "plugins": [
       "transform-react-router-optimize",
+      ["react-transform", {
+        "transforms": [{
+          "transform" : "react-transform-sentry",
+          "imports" : ["react"]
+        }]
+      }],
       "transform-inline-environment-variables",
       "transform-react-constant-elements",
       "transform-decorators-legacy",
