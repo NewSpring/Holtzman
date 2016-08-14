@@ -261,5 +261,3 @@ if [ "$CHANNEL" = "beta" ]; then
   yecho "### Deploying to TestFlight ###"
   launch testflight ROOT_URL $METEOR_SETTINGS_PATH
 fi
-
-$(cat ./local.settings.json | jq . | sed 's/\"/\\"/g' | tr -d '\n')
