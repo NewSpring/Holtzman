@@ -193,7 +193,7 @@ JQ="jq --raw-output --exit-status"
 
 # sets $task_def
 make_task_def() {
-  meteor_settings=$(cat $METEOR_SETTINGS_PATH | $JQ . | sed 's/\"/\\"/g' | tr -d '\n')
+  meteor_settings=$(cat $METEOR_SETTINGS_PATH | $JQ . | $JQ '.public.release = "'"$APP: $DEST-$CHANNEL-$RELEASE"'"' | sed 's/\"/\\"/g' | tr -d '\n')
   # XXX add release into public settings
   # meteor_settings=$($JQ '. + { "release": "$RELEASE" }' >>> $METEOR_SETTINGS_PATH | sed 's/\"/\\"/g' | tr -d '\n')
   task_template='[
@@ -261,3 +261,5 @@ if [ "$CHANNEL" = "beta" ]; then
   yecho "### Deploying to TestFlight ###"
   launch testflight ROOT_URL $METEOR_SETTINGS_PATH
 fi
+
+$(cat ./local.settings.json | jq . | sed 's/\"/\\"/g' | tr -d '\n')

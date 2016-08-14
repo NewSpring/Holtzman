@@ -64,7 +64,6 @@ const GlobalData =  createContainer(({ dispatch }) => {
       const person = Meteor.user();
       const email = person.emails[0] && person.emails[0].address;
       if (email) {
-        console.log("setting context for", email)
         Raven.setUserContext({ id: userId, email });
       }
     }

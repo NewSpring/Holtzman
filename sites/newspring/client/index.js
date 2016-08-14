@@ -1,5 +1,7 @@
 if (Meteor.settings.public.sentry && typeof Raven != "undefined") {
-  Raven.config(Meteor.settings.public.sentry).install()
+  Raven.config(Meteor.settings.public.sentry, {
+    release: Meteor.settings.public.release,
+  }).install()
 }
 import { GraphQL } from "apollos-core/dist/core/graphql";
 import { run } from "apollos-core/dist/core/router/client";
