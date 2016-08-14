@@ -21,7 +21,7 @@ const mapQueriesToProps = () => ({
   data: {
     query: gql`
       query GetPersonForSettings {
-        person: currentPerson {
+        person: currentPerson(cache: false) {
           firstName
           lastName
           nickName
