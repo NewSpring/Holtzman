@@ -55,6 +55,10 @@ export function generateData(newData) {
 
       // twitter cards
       {
+        "name": "twitter:card",
+        "content": image ? "summary_large_image" : "summary",
+      },
+      {
         "name": "twitter:title",
         "content": title,
       },
