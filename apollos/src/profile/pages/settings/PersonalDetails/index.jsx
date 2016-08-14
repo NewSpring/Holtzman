@@ -32,7 +32,7 @@ const mapQueriesToProps = () => ({
     query: gql`
       query GetPersonForSettings($cache: Boolean) {
         person: currentPerson(cache: $cache) {
-          campus { id: entityId }
+          campus(cache: $cache) { id: entityId }
           firstName
           lastName
           nickName
