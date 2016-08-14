@@ -27,6 +27,12 @@ const mapQueriesToProps = () => ({
 
 @connect({ mapQueriesToProps })
 class Template extends Component {
+  componentDidMount(){
+    setTimeout(() => {
+      throw new Error("Auto bound to sentry!");
+    }, 1000)
+
+  }
   render () { return <Layout {...this.props} />; }
 }
 
