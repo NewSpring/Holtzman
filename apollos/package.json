@@ -63,8 +63,7 @@
     "babel-preset-meteor": "6.11.0",
     "babel-preset-react": "6.5.0",
     "babel-preset-stage-0": "6.5.0",
-    "babel-traverse": "6.11.4",
-    "react-transform-sentry": "^1.0.0"
+    "babel-traverse": "6.11.4"
   },
   "peerDependencies": {
     "react": "^15.1.0 || ^0.14.*",
@@ -94,6 +93,7 @@
     "react-pure-render": "^1.0.2",
     "react-redux": "^4.4.5",
     "react-router-scroll": "^0.2.1",
+    "react-transform-sentry": "^1.0.0",
     "redux": "^3.5.2",
     "redux-saga": "^0.11.0",
     "regenerator-runtime": "^0.9.5",
