@@ -72,7 +72,7 @@ fi
 yecho "ROOT_URL"
 yecho $ROOT_URL
 
-ECS_CLUSTER="apollos"
+ECS_CLUSTER="guild"
 ECS_SERVICE="$CHANNEL-$DEST"
 ECS_TASK_FAMILY="$DEST"
 ECS_TASK_NAME=""
@@ -82,7 +82,6 @@ if [ "$DEST" = "web" ]; then
   ECS_TASK_NAME="apollos"
 fi
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
-  ECS_CLUSTER="guild"
   ECS_SERVICE="web-production"
 fi
 if [ "$DEST" = "native" ]; then
@@ -96,14 +95,14 @@ yecho $ECS_SERVICE
 yecho $ECS_TASK_NAME
 
 BUNDLE_URL="http://ns.ops.s3.amazonaws.com/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz"
-HOST_PORT=8080 # production newspring web
-if [ "$DEST" = "native" ] && [ "$CHANNEL" = "alpha" ]; then HOST_PORT=8062; fi
-if [ "$DEST" = "native" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8072; fi
-if [ "$DEST" = "native" ] && [ "$CHANNEL" = "production" ]; then HOST_PORT=8082; fi
-if [ "$DEST" = "web" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8070; fi
-if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then HOST_PORT=8080; fi
+# HOST_PORT=0 # production newspring web
+# if [ "$DEST" = "native" ] && [ "$CHANNEL" = "alpha" ]; then HOST_PORT=8062; fi
+# if [ "$DEST" = "native" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8072; fi
+# if [ "$DEST" = "native" ] && [ "$CHANNEL" = "production" ]; then HOST_PORT=8082; fi
+# if [ "$DEST" = "web" ] && [ "$CHANNEL" = "beta" ]; then HOST_PORT=8070; fi
+# if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then HOST_PORT=8080; fi
 
-yecho $HOST_PORT
+# yecho $HOST_PORT
 
 
 yecho "### Deploying $APP:$DEST to $CHANNEL ###"
@@ -204,7 +203,7 @@ make_task_def() {
       "essential": true,
       "image": "abernix/meteord:base",
       "portMappings": [
-        { "hostPort": '"$HOST_PORT"', "containerPort": 80, "protocol": "tcp" }
+        { "hostPort": 0, "containerPort": 80, "protocol": "tcp" }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
