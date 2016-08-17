@@ -12,10 +12,10 @@ function getImage(images, label = "2:1") {
 
   for (let image of images) {
     if (image.fileLabel === label) {
-      selectedImage = image.cloudfront ? image.cloudfront : image.s3
-      break
+      selectedImage = image.url;
+      break;
     }
-    selectedImage = image.cloudfront ? image.cloudfront : image.s3
+    selectedImage = image.url;
   }
   return selectedImage
 
