@@ -46,12 +46,11 @@ const mapQueriesToProps = ({ ownProps }) => ({
                 duration
                 file: s3
               }
-              images {
+              images(sizes: ["medium"]) {
                 fileName
                 fileType
                 fileLabel
-                s3
-                cloudfront
+                url
               }
               colors {
                 value
@@ -146,7 +145,7 @@ export default class MusicAlbum extends Component {
         image.cloudfront = false;
       }
 
-      let url = image.cloudfront || image.s3;
+      let url = image.url;
 
       if(!url) {
         return url;

@@ -32,12 +32,11 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
             channelId
           }
           content {
-            images {
+            images(sizes: ["large"]) {
               fileName
               fileType
               fileLabel
-              s3
-              cloudfront
+              url
             }
             tracks {
               file: s3

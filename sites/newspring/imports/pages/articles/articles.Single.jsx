@@ -41,12 +41,11 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
             content {
               body
               tags
-              images {
+              images(sizes: ["large"]) {
                 fileName
                 fileType
                 fileLabel
-                s3
-                cloudfront
+                url
               }
             }
           }

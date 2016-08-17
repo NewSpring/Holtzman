@@ -34,7 +34,10 @@ function backgroundImage(contentItem, { label="1:1" } = {}) {
   }
 
   if (bgImage) {
-    if (bgImage.cloudfront && bgImage.cloudfront !== "false") bgImage = bgImage.cloudfront;
+    if (bgImage.url) bgImage = bgImage.url;
+
+    // for backwards compatability
+    else if (bgImage.cloudfront && bgImage.cloudfront !== "false") bgImage = bgImage.cloudfront;
     else if (bgImage.s3) bgImage = bgImage.s3;
   } else {
     bgImage = "";
