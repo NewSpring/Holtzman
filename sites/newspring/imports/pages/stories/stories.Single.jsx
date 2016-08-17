@@ -33,12 +33,11 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
               body
               ooyalaId
               tags
-              images {
+              images(sizes: ["large"]) {
                 fileName
                 fileType
                 fileLabel
-                s3
-                cloudfront
+                url
               }
             }
           }
