@@ -129,23 +129,6 @@ export default class MiniPlayer extends Component {
     this.props.dispatch(audioActions.setVisibility("expand"));
   };
 
-  getImage = (images, options = { blurred: false }) => {
-    const oneByOne = _.find(images, x => ( x.fileLabel === "1:1" ));
-    const blurred = images[1];
-
-    let image;
-    if (options.blurred) {
-      image = blurred;
-    } else if (oneByOne) {
-      image = oneByOne;
-    } else {
-      image = images[0];
-    }
-    return image.cloudfront && image.cloudfront !== "false" ?
-      image.cloudfront :
-      image.s3;
-  };
-
   touchStart = (e) => {
     this.setState({
       startX: e.touches[0].clientX,
@@ -229,7 +212,7 @@ export default class MiniPlayer extends Component {
     const playlist = [ track ];
 
     const bgImageStyle = {
-      backgroundImage: 'url(' + this.getImage(images) + ')'
+      backgroundImage: 'url(' + images[2].url + ')'
     };
 
     return (
