@@ -67,11 +67,12 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
             }
             content {
               description
-              images(sizes: ["large"]) {
+              images(sizes: ["large", "medium", "small"]) {
                 fileName
                 fileType
                 fileLabel
                 url
+                size
               }
               ooyalaId
               colors {
