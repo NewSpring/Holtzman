@@ -11,8 +11,7 @@ function sectionImage(images) {
   }
 
   if (bgImage) {
-    if (bgImage.cloudfront) bgImage = bgImage.cloudfront;
-    else if (bgImage.s3) bgImage = bgImage.s3;
+    bgImage = bgImage.url;
   } else {
     bgImage = "";
   }
