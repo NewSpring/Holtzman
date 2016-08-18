@@ -134,7 +134,7 @@ export default class Layout extends Component {
                         <SideBySide
                           classes={["push-bottom@lap-and-up"]}
                           images={entry.content.images}
-                          defaultImage={entry.content.images[0].cloudfront}
+                          defaultImage={entry.content.images[0].url}
                         >
                           <h4 className="push-half-top@portable push-top@anchored">
                             {entry.title}
