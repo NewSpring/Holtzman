@@ -94,7 +94,6 @@ export default class Card extends Component {
 
     let sizes = {};
     for (let image of images) {
-      image.url = image.cloudfront ? image.cloudfront : image.s3;
       sizes[image.fileLabel] = image;
     }
 
