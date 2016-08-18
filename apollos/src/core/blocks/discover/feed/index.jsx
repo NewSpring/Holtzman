@@ -21,11 +21,10 @@ const mapQueriesToProps = () => ({
             date
           }
           content {
-            images {
-              cloudfront
+            images(sizes: ["large"]) {
               fileName
               fileLabel
-              s3
+              url
             }
           }
         }
