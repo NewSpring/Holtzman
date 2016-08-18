@@ -141,10 +141,6 @@ export default class MusicAlbum extends Component {
     }
 
     const getUrl = (image) => {
-      if(image.cloudfront === "false") {
-        image.cloudfront = false;
-      }
-
       let url = image.url;
 
       if(!url) {
