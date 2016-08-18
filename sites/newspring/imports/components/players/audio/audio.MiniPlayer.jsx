@@ -209,10 +209,17 @@ export default class MiniPlayer extends Component {
     const { state, playing, progress } = this.props.audio;
     const { album, track } = playing;
     const { images } = album.content;
+    const smallImage = _.find(images, (image) => {
+      if (image.fileLabel && image.size) {
+        return image.fileLabel === "1:1" && image.size === "small";
+      } else {
+        return image.size === "small";
+      }
+    });
     const playlist = [ track ];
 
     const bgImageStyle = {
-      backgroundImage: 'url(' + images[2].url + ')'
+      backgroundImage: 'url(' + smallImage.url + ')'
     };
 
     return (
