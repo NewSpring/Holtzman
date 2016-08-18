@@ -98,17 +98,17 @@ export default class Card extends Component {
     }
 
     if (window.matchMedia("(max-width: 480px)").matches) {
-      src = sizes["2:1"] ? sizes["2:1"].url : false
+      src = sizes["2:1"] ? sizes["2:1"].url || sizes["2:1"].cloudfront : false
     } else if (window.matchMedia("(max-width: 730px)").matches) {
-      src = sizes["1:2"] ? sizes["1:2"].url : false;
+      src = sizes["1:2"] ? sizes["1:2"].url || sizes["1:2"].cloudfront : false;
     } else if (window.matchMedia("(max-width: 768px)").matches) {
-      src = sizes["1:1"] ? sizes["1:1"].url : false;
+      src = sizes["1:1"] ? sizes["1:1"].url || sizes["1:1"].cloudfront : false;
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
-      src = sizes["2:1"] ? sizes["2:1"].url : false;
+      src = sizes["2:1"] ? sizes["2:1"].url || sizes["2:1"].cloudfront : false;
     } else if (window.matchMedia("(max-width: 1281px)").matches) {
-      src = sizes["1:2"] ? sizes["1:2"].url : false;
+      src = sizes["1:2"] ? sizes["1:2"].url || sizes["1:2"].cloudfront : false;
     } else {
-      src = sizes["1:1"] ? sizes["1:1"].url : false;
+      src = sizes["1:1"] ? sizes["1:1"].url | sizes["1:1"].cloudfront : false;
     }
 
     return src;
