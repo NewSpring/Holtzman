@@ -13,15 +13,15 @@ const Layout = ({ account }) => (
         title={account.name}
         description={account.summary}
         image={
-          account.images ? find(account.images, { fileLabel: "2:1" }).url : account.image
+          account.images ? find(account.images, { fileLabel: "2:1" }).cloudfront : account.image
         }
         meta={[
           {"property": "og:type", "content": "article"}
         ]}
       />
 
-      <Right background={account.images ? find(account.images, { fileLabel: "2:1" }).url : account.image } mobile={true} />
-      <Right background={account.images ? find(account.images, { fileLabel: "1:2" }).url : account.image } mobile={false} />
+      <Right background={account.images ? find(account.images, { fileLabel: "2:1" }).cloudfront : account.image } mobile={true} />
+      <Right background={account.images ? find(account.images, { fileLabel: "1:2" }).cloudfront : account.image } mobile={false} />
 
     </Split>
     <Left scroll={true} classes={["background--light-primary"]}>

@@ -61,7 +61,7 @@ const mapQueriesToProps = () => ({
           summary
           image
           order
-          images(sizes: ["large"]) { fileName, fileType, fileLabel, url }
+          images { fileName, fileType, fileLabel, s3, cloudfront }
         }
       }
     `,
