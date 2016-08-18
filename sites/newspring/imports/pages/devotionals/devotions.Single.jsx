@@ -46,12 +46,11 @@ const mapQueriesToProps = ({ ownProps, state }) => {
                   book
                   passage
                 }
-                images {
+                images(sizes: ["large"]) {
                   fileName
                   fileType
                   fileLabel
-                  s3
-                  cloudfront
+                  url
                 }
               }
             }

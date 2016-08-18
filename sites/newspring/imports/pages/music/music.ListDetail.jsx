@@ -80,12 +80,15 @@ export default class ListDetail extends Component {
 
   render () {
 
-    let url = `/music/${this.props.album.entryId}`
+    let url = `/music/${this.props.album.entryId}`;
+    const smallImage = _.find(this.props.album.content.images, (image) => {
+      return image.fileName.indexOf("blur") === -1 && image.size === "small";
+    });
     return (
         <div className="one-whole soft background--dark-primary" style={this.sectionStyles}>
           <div className="text-light-primary">
             <div className="grid floating push-bottom">
-              <div className="grid__item background--fill floating__item text-left hard push-left ratio--square background--light-secondary one-eighth" style={{backgroundImage: `url(${this.props.album.content.images[0].cloudfront})`}}></div>
+              <div className="grid__item background--fill floating__item text-left hard push-left ratio--square background--light-secondary one-eighth" style={{backgroundImage: `url(${smallImage.url})`}}></div>
               <div className="floating__item text-left grid__item eight-tenths">
                 <h5 className="flush">{this.props.album.content.tracks[this.props.trackNumber].title}</h5>
                 <h7 className="text-light-tertiary">

@@ -22,7 +22,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
           channelName
           status
           meta { summary, urlTitle }
-          content { images { fileName, fileType, fileLabel, s3, cloudfront } }
+          content { images(sizes: ["large"]) { fileName, fileType, fileLabel, url } }
         }
       }
     `,

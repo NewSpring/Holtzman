@@ -67,12 +67,12 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
             }
             content {
               description
-              images {
+              images(sizes: ["large", "medium", "small"]) {
                 fileName
                 fileType
                 fileLabel
-                s3
-                cloudfront
+                url
+                size
               }
               ooyalaId
               colors {

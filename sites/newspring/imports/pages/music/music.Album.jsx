@@ -46,12 +46,12 @@ const mapQueriesToProps = ({ ownProps }) => ({
                 duration
                 file: s3
               }
-              images {
+              images(sizes: ["large", "medium", "small", "xsmall"]) {
                 fileName
                 fileType
                 fileLabel
-                s3
-                cloudfront
+                size
+                url
               }
               colors {
                 value
@@ -142,11 +142,7 @@ export default class MusicAlbum extends Component {
     }
 
     const getUrl = (image) => {
-      if(image.cloudfront === "false") {
-        image.cloudfront = false;
-      }
-
-      let url = image.cloudfront || image.s3;
+      let url = image.url;
 
       if(!url) {
         return url;
@@ -163,14 +159,22 @@ export default class MusicAlbum extends Component {
     const tracks = _.filter(album.content.tracks, (track) => {
       return !!track.file;
     });
+
+    const xsmallBlurImage = _.find(album.content.images, (image) => {
+      return image.fileName.indexOf("blur") > -1 && image.size === "xsmall";
+    });
+    const mediumImage = _.find(album.content.images, (image) => {
+      return image.fileName.indexOf("blur") === -1 && image.size === "medium";
+    });
+
     try {
       return (
         <section className="hard background--light-primary" style={getStyle()}>
           {/* XXX need a get blurred image helper here */}
-          <div className="one-whole soft overlay floating background--dark-primary background--fill" style={{backgroundImage: `url(${getUrl(album.content.images[1])})`}}>
+          <div className="one-whole soft overlay floating background--dark-primary background--fill" style={{backgroundImage: `url(${getUrl(xsmallBlurImage)})`}}>
             <div
               className="one-third floating__item display-inline overlay__item ratio--square background--fill"
-              style={{backgroundImage: `url(${getUrl(album.content.images[0])})`}}>
+              style={{backgroundImage: `url(${getUrl(mediumImage)})`}}>
             </div>
             <div className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
               <h5>{album.title}</h5>
