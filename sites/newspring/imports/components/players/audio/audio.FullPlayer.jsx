@@ -93,9 +93,7 @@ export default class FullPlayer extends Component {
   getImage = (data, options = { blurred: false }) => {
     const { images } = data.content
     const image = options.blurred ? images[1] : images[0]
-    return image.cloudfront && image.cloudfront !== "false" ?
-      image.cloudfront :
-      image.s3
+    return image.url;
   }
 
   toggle = () => {
@@ -177,11 +175,7 @@ export default class FullPlayer extends Component {
   getImageUrl = (images, blurred = false) => {
     const image = blurred ? images[1] : images[0];
 
-    if( image.cloudfront && image.cloudfront !== "false" ) {
-      return image.cloudfront;
-    }
-
-    return image.s3;
+    return image.url;
   };
 
   hackBackgroundStyles = () => {

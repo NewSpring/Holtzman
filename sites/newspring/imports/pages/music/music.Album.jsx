@@ -46,10 +46,11 @@ const mapQueriesToProps = ({ ownProps }) => ({
                 duration
                 file: s3
               }
-              images(sizes: ["medium"]) {
+              images(sizes: ["large", "medium", "small", "xsmall"]) {
                 fileName
                 fileType
                 fileLabel
+                size
                 url
               }
               colors {
@@ -162,10 +163,10 @@ export default class MusicAlbum extends Component {
       return (
         <section className="hard background--light-primary" style={getStyle()}>
           {/* XXX need a get blurred image helper here */}
-          <div className="one-whole soft overlay floating background--dark-primary background--fill" style={{backgroundImage: `url(${getUrl(album.content.images[1])})`}}>
+          <div className="one-whole soft overlay floating background--dark-primary background--fill" style={{backgroundImage: `url(${getUrl(album.content.images[7])})`}}>
             <div
               className="one-third floating__item display-inline overlay__item ratio--square background--fill"
-              style={{backgroundImage: `url(${getUrl(album.content.images[0])})`}}>
+              style={{backgroundImage: `url(${getUrl(album.content.images[1])})`}}>
             </div>
             <div className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
               <h5>{album.title}</h5>
