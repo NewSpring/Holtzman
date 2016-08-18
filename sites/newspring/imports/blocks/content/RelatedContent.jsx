@@ -19,9 +19,8 @@ const mapQueriesToProps = ({ ownProps }) => ({
           parent {
             entryId: id
             content {
-              images {
-                s3
-                cloudfront
+              images(sizes: ["medium"]) {
+                url
                 label
                 fileLabel
                 id
@@ -29,9 +28,8 @@ const mapQueriesToProps = ({ ownProps }) => ({
             }
           }
           content {
-            images {
-              s3
-              cloudfront
+            images(sizes: ["medium"]) {
+              url
               label
               fileLabel
               id

@@ -17,9 +17,8 @@ function* getSectionsData(){
   const query = gql`
     fragment NavigationImages on Content {
       content {
-        images {
-          s3
-          cloudfront
+        images(sizes: ["medium"]) {
+          url
           label
         }
       }
@@ -76,24 +75,24 @@ function* getSectionsData(){
       return image.label === "1:1"
     });
 
-    if (oneByOne) return oneByOne.cloudfront ? oneByOne.cloudfront : oneByOne.s3
+    if (oneByOne) return oneByOne.url;
 
     // then try 2x1, especially for devotions that only have 2x1
     let twoByOne = _.find(images, (image) => {
       return image.label === "2:1"
     });
 
-    if (twoByOne) return twoByOne.cloudfront ? twoByOne.cloudfront : twoByOne.s3
+    if (twoByOne) return twoByOne.url;
 
     // then try default, for devotions with leather times
     let defaultImage = _.find(images, (image) => {
       return image.label === "default"
     });
 
-    if (defaultImage) return defaultImage.cloudfront ? defaultImage.cloudfront : defaultImage.s3
+    if (defaultImage) return defaultImage.url;
 
     // finally, just return the first image
-    return images[0].cloudfront ? images[0].cloudfront : images[0].s3
+    return images[0].url;
 
   }
 
