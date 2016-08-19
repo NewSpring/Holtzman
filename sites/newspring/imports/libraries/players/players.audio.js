@@ -17,7 +17,7 @@ class Audio {
 
       });
     } catch (e) {
-      error(e);
+      console.error(e);
     }
 
 
