@@ -14,6 +14,8 @@ import { Loading } from "apollos-core/dist/core/components"
 import Helpers from "/imports/helpers"
 import RelatedContent from "/imports/blocks/content/RelatedContent";
 
+import SingleVideoPlayer from "/imports/components/players/video/Player";
+
 import {
   nav as navActions
 } from "apollos-core/dist/core/store"
@@ -40,6 +42,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
             }
             content {
               body
+              ooyalaId
               tags
               images(sizes: ["large"]) {
                 fileName
@@ -93,13 +96,21 @@ export default class ArticlesSingle extends Component {
     return (
       <div>
         <Split nav={true} classes={["background--light-primary"]}>
-          <Right
-            mobile={true}
-            background={photo}
-            classes={["floating--bottom", "overlay--gradient@lap-and-up"]}
-            ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up"]}
-            aspect="square"
-          ></Right>
+          {(() => {
+            if (article.content.ooyalaId.length === 0) {
+              return (
+                <Right
+                  mobile={true}
+                  background={photo}
+                  classes={["floating--bottom", "overlay--gradient@lap-and-up"]}
+                  ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up"]}
+                  aspect="square"
+                ></Right>
+              );
+            } else {
+              return <SingleVideoPlayer ooyalaId={article.content.ooyalaId} />
+            }
+          })()}
         </Split>
         <Left scroll={true} >
           <div className="one-whole">
