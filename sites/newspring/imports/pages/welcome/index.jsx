@@ -4,12 +4,23 @@ import Slider from "react-slick";
 
 class Welcome extends Component {
 
+  componentWillUnmount() {
+    if (typeof NativeStorage === "undefined") return;
+    NativeStorage.setItem("welcomed", true,
+      (success) => {},
+      (error) => { console.error("could not set welcomed"); },
+    );
+  }
+
   render() {
     const containerStyles = {
-      position: "relative",
+      position: "absolute",
+      height: "100%",
+      width: "100%",
+      overflowY: "hidden",
     };
     const skipStyles = {
-      position: "absolute",
+      position: "fixed",
       bottom: "5px",
       right: "10px",
       color: "white",
@@ -24,16 +35,16 @@ class Welcome extends Component {
           arrows={false}
           infinite={false}
         >
-          <div><img src="http://placekitten.com/g/414/736" /></div>
-          <div><img src="http://placekitten.com/g/414/736" /></div>
-          <div><img src="http://placekitten.com/g/414/736" /></div>
-          <div><img src="http://placekitten.com/g/414/736" /></div>
-          <div><img src="http://placekitten.com/g/414/736" /></div>
-          <div><img src="http://placekitten.com/g/414/736" /></div>
-          <div><img src="http://placekitten.com/g/414/736" /></div>
+          <div><img src="/welcome/onboard-img1.jpg" /></div>
+          <div><img src="/welcome/onboard-img2.jpg" /></div>
+          <div><img src="/welcome/onboard-img3.jpg" /></div>
+          <div><img src="/welcome/onboard-img4.jpg" /></div>
+          <div><img src="/welcome/onboard-img5.jpg" /></div>
+          <div><img src="/welcome/onboard-img6.jpg" /></div>
+          <div><img src="/welcome/onboard-img7.jpg" /></div>
           <div>
             <Link to="/">
-              <img src="http://placekitten.com/g/414/736" />
+              <img src="/welcome/onboard-img8.jpg" />
             </Link>
           </div>
         </Slider>
