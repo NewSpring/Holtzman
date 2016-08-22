@@ -48,6 +48,7 @@ class Welcome extends Component {
           dots={true}
           arrows={false}
           infinite={false}
+          speed={300}
           slickGoTo={this.state.slickGoTo || 0}
         >
           <div><img src="/welcome/onboard-img1.jpg" onClick={this.next} data-index={0} /></div>
