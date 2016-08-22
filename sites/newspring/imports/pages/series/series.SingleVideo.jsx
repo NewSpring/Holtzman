@@ -12,7 +12,7 @@ import headerActions from "apollos-core/dist/core/store/header"
 
 import Helpers from "/imports/helpers"
 
-import SingleVideoPlayer from "./series.SingleVideoPlayer"
+import SingleVideoPlayer from "/imports/components/players/video/Player";
 import SeriesVideoList from "./series.VideoList"
 
 const mapQueriesToProps = ({ ownProps, state }) => ({
@@ -170,7 +170,7 @@ export default class SeriesSingleVideo extends Component {
 
     return (
       <div className="background--light-primary">
-        <SingleVideoPlayer sermon={currentSermon} series={series} />
+        <SingleVideoPlayer ooyalaId={currentSermon.content.ooyalaId} />
         <div
           className="soft-sides background--light-secondary text-dark-secondary"
           style={{ paddingTop: "15px", paddingBottom: "15px" }}

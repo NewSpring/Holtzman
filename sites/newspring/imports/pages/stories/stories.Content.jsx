@@ -1,8 +1,8 @@
 import { Component, PropTypes } from "react";
 
-import Helpers from "/imports/helpers"
-import Components from "/imports/components"
-import SingleVideoPlayer from "./stories.SingleVideoPlayer"
+import Helpers from "/imports/helpers";
+import Components from "/imports/components";
+import SingleVideoPlayer from "/imports/components/players/video/Player";
 import RelatedContent from "/imports/blocks/content/RelatedContent";
 
 const StoryImage = ({ story }) => (
@@ -26,7 +26,7 @@ export default class StoriesContent extends Component {
         <section className="background--light-primary hard-sides hard-top">
           {(() => {
            if (story.content.ooyalaId.length === 0) return <StoryImage story={story} />;
-            return <SingleVideoPlayer story={story} />;
+            return <SingleVideoPlayer ooyalaId={story.content.ooyalaId} />;
           })()}
           <div className="soft push-top">
             <h2 className="capitalize">{story.title}</h2>
