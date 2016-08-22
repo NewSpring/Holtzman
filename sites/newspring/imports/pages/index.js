@@ -11,6 +11,7 @@ if (process.env.NATIVE) {
   import Stories from "./stories/index"
   import Sections from "./sections/index";
   import Video from "./video/index";
+  import Welcome from "./welcome/index";
 }
 
 
@@ -30,6 +31,7 @@ if (process.env.NATIVE) {
     Sections.Routes,
     Discover.Routes,
     Video.Routes,
+    Welcome.Routes,
   );
 }
 

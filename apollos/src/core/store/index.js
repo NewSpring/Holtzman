@@ -11,6 +11,7 @@ import share from "./share";
 import liked from "./liked";
 import live from "./live";
 import topics from "./topics";
+import fullscreen from "./fullscreen";
 
 let header;
 if (process.env.NATIVE) header = require("./header");
