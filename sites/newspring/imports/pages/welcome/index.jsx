@@ -53,6 +53,7 @@ class Welcome extends Component {
           arrows={false}
           infinite={false}
           speed={300}
+          edgeFriction={0}
           afterChange={this.updateState}
           slickGoTo={this.state.slickGoTo || 0}
         >
