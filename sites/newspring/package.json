@@ -72,7 +72,7 @@
     ]
   },
   "apollos": {
-    "settings": "./.remote/settings/sites/my.newspring.cc/local.settings.json",
+    "settings": "./.remote/settings/sites/app.newspring.io/alpha.settings.json",
     "resource": {
       "./.remote": {
         "junction": "NewSpring/junction-framework",
@@ -109,6 +109,7 @@
     "react-pull-to-refresh": "git+https://git@github.com/NewSpring/react-pull-to-refresh.git",
     "react-redux": "^4.0.0",
     "react-router": "^2.4.0",
+    "react-slick": "^0.13.1",
     "react-swipe-views": "git+https://git@github.com/NewSpring/react-swipe-views.git#d531949ddccb84ec53e634f7964c1c5cfac2c9b5",
     "react-tooltip": "^3.0.13",
     "react-transform-sentry": "^1.0.0",

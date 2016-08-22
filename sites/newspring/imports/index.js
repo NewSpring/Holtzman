@@ -32,9 +32,12 @@ if (process.env.NATIVE) {
     );
   }
   @scriptLoader(...scripts)
-  @connect((state) => ({ audio: state.audio }))
+  @connect((state) => ({ audio: state.audio, pathname: state.routing.location.pathname }))
   class AppGlobal extends Component {
     render() {
+      if (this.props.pathname === "/welcome") {
+        return <div>{this.props.children}</div>
+      }
       const { visibility, playing } = this.props.audio;
 
       let classes = [];
