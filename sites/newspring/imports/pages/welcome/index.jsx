@@ -16,9 +16,13 @@ class Welcome extends Component {
     );
   }
 
+  updateState = (index) => {
+    this.setState({ slickGoTo: Number(index) });
+  }
+
   next = (event) => {
-    const index = event.target.dataset.index;
-    this.setState({ slickGoTo: Number(event.target.dataset.index) + 1 });
+    const index = Number(event.target.dataset.index);
+    this.setState({ slickGoTo: index + 1 });
   }
 
   skip = (event) => {
@@ -49,6 +53,7 @@ class Welcome extends Component {
           arrows={false}
           infinite={false}
           speed={300}
+          afterChange={this.updateState}
           slickGoTo={this.state.slickGoTo || 0}
         >
           <div><img src="/welcome/onboard-img1.jpg" onClick={this.next} data-index={0} /></div>
