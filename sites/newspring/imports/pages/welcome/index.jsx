@@ -4,12 +4,30 @@ import Slider from "react-slick";
 
 class Welcome extends Component {
 
+  state = {
+    slickGoTo: 0,
+  }
+
   componentWillUnmount() {
     if (typeof NativeStorage === "undefined") return;
     NativeStorage.setItem("welcomed", true,
       (success) => {},
       (error) => { console.error("could not set welcomed"); },
     );
+  }
+
+  updateState = (index) => {
+    this.setState({ slickGoTo: Number(index) });
+  }
+
+  next = (event) => {
+    const index = Number(event.target.dataset.index);
+    this.setState({ slickGoTo: index + 1 });
+  }
+
+  skip = (event) => {
+    event.preventDefault();
+    this.setState({ slickGoTo: 7 });
   }
 
   render() {
@@ -34,21 +52,25 @@ class Welcome extends Component {
           dots={true}
           arrows={false}
           infinite={false}
+          speed={300}
+          edgeFriction={0}
+          afterChange={this.updateState}
+          slickGoTo={this.state.slickGoTo || 0}
         >
-          <div><img src="/welcome/onboard-img1.jpg" /></div>
-          <div><img src="/welcome/onboard-img2.jpg" /></div>
-          <div><img src="/welcome/onboard-img3.jpg" /></div>
-          <div><img src="/welcome/onboard-img4.jpg" /></div>
-          <div><img src="/welcome/onboard-img5.jpg" /></div>
-          <div><img src="/welcome/onboard-img6.jpg" /></div>
-          <div><img src="/welcome/onboard-img7.jpg" /></div>
+          <div><img src="/welcome/onboard-img1.jpg" onClick={this.next} data-index={0} /></div>
+          <div><img src="/welcome/onboard-img2.jpg" onClick={this.next} data-index={1} /></div>
+          <div><img src="/welcome/onboard-img3.jpg" onClick={this.next} data-index={2} /></div>
+          <div><img src="/welcome/onboard-img4.jpg" onClick={this.next} data-index={3} /></div>
+          <div><img src="/welcome/onboard-img5.jpg" onClick={this.next} data-index={4} /></div>
+          <div><img src="/welcome/onboard-img6.jpg" onClick={this.next} data-index={5} /></div>
+          <div><img src="/welcome/onboard-img7.jpg" onClick={this.next} data-index={6} /></div>
           <div>
             <Link to="/">
               <img src="/welcome/onboard-img8.jpg" />
             </Link>
           </div>
         </Slider>
-        <Link to="/" style={skipStyles}>Skip</Link>
+        <Link to="/" onClick={this.skip} style={skipStyles}>Skip</Link>
       </div>
     );
   }
