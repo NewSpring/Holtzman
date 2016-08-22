@@ -4,20 +4,17 @@ import { Video } from "/imports/components/players"
 import Helpers from "/imports/helpers"
 
 
-export default class StoriesSingleVideoPlayer extends Component {
+export default class SingleVideoPlayer extends Component {
 
   static propTypes = {
-    story: PropTypes.object.isRequired
+    ooyalaId: PropTypes.string.isRequired,
   }
 
   render() {
 
-    const story = this.props.story;
-
     return (
       <Video
-        id={story.content.ooyalaId}
-        hide={false}
+        id={this.props.ooyalaId}
       />
     );
 
