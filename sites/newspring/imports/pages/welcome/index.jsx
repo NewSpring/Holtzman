@@ -21,6 +21,11 @@ class Welcome extends Component {
     this.setState({ slickGoTo: Number(event.target.dataset.index) + 1 });
   }
 
+  skip = (event) => {
+    event.preventDefault();
+    this.setState({ slickGoTo: 7 });
+  }
+
   render() {
     const containerStyles = {
       position: "absolute",
@@ -58,7 +63,7 @@ class Welcome extends Component {
             </Link>
           </div>
         </Slider>
-        <Link to="/" style={skipStyles}>Skip</Link>
+        <Link to="/" onClick={this.skip} style={skipStyles}>Skip</Link>
       </div>
     );
   }
