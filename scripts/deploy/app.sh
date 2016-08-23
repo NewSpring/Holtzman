@@ -81,9 +81,6 @@ if [ "$DEST" = "web" ]; then
   ECS_SERVICE="$CHANNEL-$DEST"
   ECS_TASK_NAME="apollos"
 fi
-if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
-  ECS_SERVICE="web-production"
-fi
 if [ "$DEST" = "native" ]; then
   ECS_TASK_FAMILY="app"
   ECS_SERVICE="$CHANNEL-app"
