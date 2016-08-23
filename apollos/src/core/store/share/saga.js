@@ -32,7 +32,6 @@ function* share({ payload }) {
     window.socialmessage.send(msg)
   }
 
-  yield put({ type: "SHARE.SHARE" })
 }
 
 addSaga(function* shareSaga() {
