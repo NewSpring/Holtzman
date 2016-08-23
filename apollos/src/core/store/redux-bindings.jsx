@@ -4,6 +4,7 @@ import { Component, PropTypes } from "react"
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
 import { ApolloProvider } from "react-apollo"
 import createSagaMiddleware from "redux-saga"
+import reduxReset from "redux-reset";
 
 import { GraphQL } from "../graphql";
 
@@ -33,6 +34,7 @@ const createReduxStore = (initialState, history) => {
       sagaMiddleware,
       reduxRouterMiddleware
     ),
+    reduxReset(),
   ];
 
   if (process.env.NODE_ENV != "production") {
