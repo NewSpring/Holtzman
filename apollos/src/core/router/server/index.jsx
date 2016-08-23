@@ -84,6 +84,12 @@ export function run(routes, serverOptions = {}) {
             res.end();
           } else if (renderProps) {
             sendSSRHtml(serverOptions, req, res, next, renderProps, history);
+            try {
+              GraphQL.store.dispatch({ type: "RESET" }); // reset store after each query
+            } catch (e) {
+              console.error(e);
+            }
+
           } else {
             res.writeHead(404);
             res.write('Not found');

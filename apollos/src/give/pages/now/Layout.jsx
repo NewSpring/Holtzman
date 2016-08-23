@@ -76,7 +76,6 @@ const Layout = ({ alive, accounts }) => (
             })()}
 
             {accounts.accounts && accounts.accounts.map((account, i) => {
-              console.log(account);
               return (
                 <div key={i} className="grid__item one-whole push-half-bottom flush-bottom@handheld hard-bottom">
                   <SideBySide
