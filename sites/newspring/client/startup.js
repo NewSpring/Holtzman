@@ -17,6 +17,7 @@ if (process.env.NATIVE) {
                 animated: true, // default true, note that 'hide' will reuse this preference (the 'Done' button will always animate though)
                 transition: 'curl', // unless animated is false you can choose from: curl, flip, fade, slide (default)
                 enterReaderModeIfAvailable: false, // default false
+                controlTintColor: "#6BAC43",
                 tintColor: "#6BAC43" // default to ios blue
               },
               // this success handler will be invoked for the lifecycle events 'opened', 'loaded' and 'closed'
