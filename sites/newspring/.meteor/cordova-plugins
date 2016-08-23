@@ -1,7 +1,7 @@
 cordova-plugin-hockeyapp@2.2.2
 cordova-plugin-inappbrowser@1.4.0
 cordova-plugin-media@2.3.0
-cordova-plugin-safariviewcontroller@1.4.4
+cordova-plugin-safariviewcontroller@https://github.com/johnthepink/cordova-plugin-safariviewcontroller.git#ff8e5ccf1488e4e8ceff72f2c0ef99ce0346af25
 cordova-plugin-social-message@0.4.0
 cordova-plugin-statusbar@2.1.3
 io.lookback.sdk@https://github.com/NewSpring/cordova-lookback.git#62986a48e9701c58b345e47cfe05ae3a722d2525
