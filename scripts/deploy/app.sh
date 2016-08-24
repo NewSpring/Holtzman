@@ -209,7 +209,6 @@ make_task_def() {
       "environment": [
         { "name": "NODE_ENV", "value": "production" },
         { "name": "MONGO_URL", "value": "'"$DOCKER_MONGO_URL"'" },
-        { "name": "DISABLE_WEBSOCKETS", "value": "1" },
         { "name": "ROOT_URL", "value": "'"$ROOT_URL"'" },
         { "name": "BUNDLE_URL", "value": "'"$BUNDLE_URL"'" },
         { "name": "METEOR_SETTINGS", "value": "'"$meteor_settings"'" },
