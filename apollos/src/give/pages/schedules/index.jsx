@@ -74,7 +74,7 @@ const mapStateToProps = (store) => ({
 });
 
 @connect({ mapStateToProps, mapQueriesToProps })
-export default class Template extends Component {
+class Template extends Component {
 
   confirm = (e) => {
     const { dataset } = e.currentTarget
