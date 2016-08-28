@@ -22,13 +22,13 @@ if (process.env.NATIVE) {
   // sync load ooyala scripts
   // XXX can we move this to just the video component?
   const scripts = [
-    "//player.ooyala.com/static/v4/stable/4.5.5/core.min.js",
-    "//player.ooyala.com/static/v4/stable/4.5.5/video-plugin/main_html5.min.js",
-    "//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/html5-skin.js",
+    "//player.ooyala.com/static/v4/stable/4.6.9/core.min.js",
+    "//player.ooyala.com/static/v4/stable/4.6.9/video-plugin/main_html5.min.js",
+    "//player.ooyala.com/static/v4/stable/4.6.9/skin-plugin/html5-skin.js",
   ];
   if (Meteor.isCordova) {
     scripts.push(
-      "//player.ooyala.com/static/v4/stable/4.5.5/video-plugin/bit_wrapper.min.js"
+      "//player.ooyala.com/static/v4/stable/4.6.9/video-plugin/bit_wrapper.min.js"
     );
   }
   @scriptLoader(...scripts)
