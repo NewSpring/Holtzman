@@ -34,7 +34,7 @@ const mapQueriesToProps = () => ({
 })
 
 @connect({ mapQueriesToProps })
-export default class Template extends Component {
+class Template extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"))
