@@ -42,7 +42,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
 });
 const defaultArray = [];
 @connect({ mapQueriesToProps })
-export default class Template extends Component {
+class Template extends Component {
 
   state = {
     offset: 0,
