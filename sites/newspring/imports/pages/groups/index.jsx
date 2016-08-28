@@ -31,7 +31,7 @@ import Finder from "./finder/index";
 // });
 // const defaultArray = [];
 // @connect({ mapQueriesToProps })
-export default class Template extends Component {
+class Template extends Component {
   render () {
     return <h1>Lets find some groups!</h1>
   }
