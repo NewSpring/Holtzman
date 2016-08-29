@@ -11,10 +11,8 @@ const mapQueriesToProps = () => ({
           id
           guid
           name
-          # services {
-          #   day
-          #   time
-          # }
+          services
+          url
           location {
             street1
             street2

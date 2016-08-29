@@ -3,8 +3,31 @@ import { Component, PropTypes } from "react";
 import Meta from "apollos-core/dist/core/components/meta";
 import Forms from "apollos-core/dist/core/components/forms";
 import Loading from "apollos-core/dist/core/components/loading";
+import gql from 'apollo-client/gql';
+
+const campusLookup = gql`
+  query GeoLocate($origin: String, $destinations: String) {
+    geolocate(origin: $origin, destinations: $destinations) {
+      rows {
+        elements {
+          distance {
+            text
+            value
+          }
+          duration {
+            text
+            value
+          }
+          status
+        }
+      }
+    }
+  }
+`
 
 export default class Layout extends Component {
+
+  state = { value: null, list: null }
 
   dynamicItemWidth = () => {
 
@@ -33,6 +56,33 @@ export default class Layout extends Component {
     return {}
   }
 
+  findByQuery = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    document.getElementById("search").blur();
+    const { value } = document.getElementById("search");
+
+    const campusList = this.props.data.campuses.filter(x => x.location.street1);
+    const destinations = campusList.map(campus => (
+      `${campus.location.street1} ${campus.location.zip}`
+    )).join("|");
+
+    const origin = value;
+    // XXX this will break with new react-apollo
+    this.props.query({
+      query: campusLookup,
+      variables: { destinations, origin }
+    })
+      .then(({ data }) => {
+        const byLocations = [...data.geolocate.rows[0].elements];
+        return byLocations.map((x, i) => {
+          campusList[i].distance = x.distance;
+          return campusList[i];
+        })
+      })
+      .then((list) => _.sortBy(list, (x => x.distance.value)))
+      .then(list => this.setState({ list }))
+  }
+
   overflow = {
     overflowX: "scroll",
     overflowY: "hidden",
@@ -42,6 +92,8 @@ export default class Layout extends Component {
   render() {
     let { campuses } = this.props.data;
 
+    if (this.state.list) campuses = this.state.list;
+
     return (
       <div>
 
@@ -50,21 +102,26 @@ export default class Layout extends Component {
           <h3 className="push-half-top">Find A Campus</h3>
           <div style={this.overflow}>
             <section   className="soft-half" style={this.dynamicWidth()}>
-              {campuses && campuses.filter(x => x.location.street1).map((campus) => (
-              <div
-                  key={campus.id}
-                  className="text-dark-secondary floating ratio--square display-inline-block rounded  push-right card text-left"
-                  style={this.dynamicItemWidth()}>
-                  <div className="one-whole soft-sides text-left floating__item">
-                    <h4>{campus.name}</h4>
-                    <h6 className="text-dark-secondary flush-bottom">{campus.location.street1}</h6>
-                    <h6 className="text-dark-secondary">{campus.location.city}, {campus.location.state}</h6>
-                    <p className="flush">
-                      <a href="#">Get Directions</a>
-                    </p>
+              {campuses && campuses.filter(x => x.location.street1).map((campus, i) => {
+                let style = this.dynamicItemWidth();
+                if (i === 0 && this.state.list) {
+                  style.borderColor = "#6bac43";
+                  style.borderStyle = "solid";
+                  style.borderWidth = "3px";
+                }
+                return (
+                  <div
+                    key={campus.id}
+                    className={`text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left`}
+                    style={style}>
+                    <div className="one-whole soft-sides text-left floating__item">
+                      <h4>{campus.name}</h4>
+                      {campus.services && campus.services.map((x, key) => <p className="flush-bottom soft-half-bottom" key={key}>{x}</p>)}
+                      <a href={campus.url} target="_blank" className="h5 plain">Get Directions <span className="icon-arrow-next text-primary" /></a>
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </section>
           </div>
         </div>
@@ -87,7 +144,8 @@ export default class Layout extends Component {
               inputClasses="soft-double-left soft-half-bottom"
               placeholder="Type your search here..."
               type="text"
-              onChange={(e) => this.inputOnChange(e)}
+              id="search"
+              onChange={({ value }) => this.setState({ value })}
             />
 
           <div className="one-whole text-left">
