@@ -126,9 +126,9 @@ function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) 
 
   return function(data) {
     if (typeof data === "string" && data.indexOf("<!DOCTYPE html>") === 0) {
-      data = addInjectData(res, data)
       data = moveStyles(data);
       data = moveScripts(data);
+      data = addInjectData(res, data);
 
       if (css) {
         data = data.replace("</head>",
