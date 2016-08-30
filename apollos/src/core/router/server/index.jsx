@@ -126,7 +126,7 @@ function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) 
 
   return function(data) {
     if (typeof data === "string" && data.indexOf("<!DOCTYPE html>") === 0) {
-      data = addInjectData(res, data)
+      data = addInjectData(res, data);
       data = moveStyles(data);
       data = moveScripts(data);
 
@@ -145,6 +145,7 @@ function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) 
 
       data = data.replace("<body>", `<body><div id="react-app">${html}</div>`);
     }
+
 
     // store in cache based on user id and url
     // when user not logged in, it should be undefined
@@ -251,10 +252,12 @@ function addInjectData(res, data) {
 function moveScripts(data) {
   const $ = Cheerio.load(data, { decodeEntities: false });
   const heads = $("head script").not(`[data-ssr-ignore="true"]`);
-  $("body").append(heads);
+  const bodies = $("body script").not(`[data-ssr-ignore="true"]`);
+  $("body").append([...heads, ...bodies]);
 
   // Remove empty lines caused by removing scripts
   $("head").html($("head").html().replace(/(^[ \t]*\n)/gm, ""));
+  $("body").html($("body").html().replace(/(^[ \t]*\n)/gm, ""));
   return $.html();
 }
 
