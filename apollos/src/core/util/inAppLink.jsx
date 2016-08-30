@@ -46,3 +46,7 @@ const inAppLink = (e) => {
 }
 
 export default inAppLink
+
+export {
+  openUrl,
+};

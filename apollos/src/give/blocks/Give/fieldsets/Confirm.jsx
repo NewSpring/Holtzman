@@ -2,13 +2,19 @@ import { Component, PropTypes} from "react"
 import { AccountType } from "../../../components"
 import Moment from "moment"
 import { connect } from "react-redux"
+import cloneDeep from "lodash.clonedeep";
 
 import { Forms } from "../../../../core/components"
+
+import { openUrl } from "../../../../core/util/inAppLink";
 
 export default class Confirm extends Component {
 
   static propTypes = {
     data: PropTypes.object.isRequired,
+    transactions: PropTypes.object.isRequired,
+    total: PropTypes.number.isRequired,
+    url: PropTypes.string.isRequired,
     save: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     clear: PropTypes.func.isRequired,
@@ -19,6 +25,10 @@ export default class Confirm extends Component {
   state = {
     changePayments: false,
   }
+
+  isIOS = () => (
+    typeof cordova !== "undefined" && cordova.platformId === "ios"
+  )
 
   header = () => {
     const { personal } = this.props.data
@@ -248,6 +258,43 @@ export default class Confirm extends Component {
     this.props.changeSavedAccount(act)
   }
 
+  completeGift = (e) => {
+    e.preventDefault();
+    // deep clone
+    const props = cloneDeep(this.props);
+    const { url, transactions, total, data } = props;
+    const { cardNumber, type, accountNumber } = data.payment;
+
+    // remove sensitive information
+    delete data.billing; delete data.payment;
+
+    // add last 4 in
+    data.payment = {
+      last4: type === "cc" ? cardNumber.slice(-4) : accountNumber.slice(-4),
+      type,
+    };
+
+    const giveData = encodeURIComponent(
+      JSON.stringify({
+        url,
+        transactions,
+        total,
+        data,
+      })
+    );
+    console.log(giveData);
+
+    // ensure trailing slash
+    let rootUrl = __meteor_runtime_config__.ROOT_URL;
+    if (rootUrl[rootUrl.length - 1] !== "/") {
+      rootUrl = `${rootUrl}/`;
+    }
+
+    const giveUrl = `${rootUrl}give/review?giveData=${giveData}`;
+    console.log(giveUrl);
+    openUrl(giveUrl);
+  }
+
   renderPaymentOptions = () => {
     return (
       <div>
@@ -359,6 +406,34 @@ export default class Confirm extends Component {
     )
   }
 
+  renderActionButton = () => {
+    if (this.isIOS()) {
+      return (
+        <div>
+          <p className="text-dark-secondary">
+            <small>
+              <em>
+                Due to restrictions you must complete your gift in the browser.
+              </em>
+            </small>
+          </p>
+          <button
+            className="btn soft-half-top one-whole"
+            onClick={this.completeGift}
+          >
+            Complete Gift in Browser
+          </button>
+        </div>
+      );
+    } else {
+      return (
+        <button className="btn soft-half-top one-whole" type="submit">
+          {this.buttonText()} {this.icon()}
+        </button>
+      );
+    }
+  }
+
   render () {
 
     let transactions = []
@@ -412,9 +487,7 @@ export default class Confirm extends Component {
           </div>
 
 
-          <button className="btn soft-half-top one-whole" type="submit">
-            {this.buttonText()} {this.icon()}
-          </button>
+          {this.renderActionButton()}
 
           {this.renderPaymentOptions()}
 

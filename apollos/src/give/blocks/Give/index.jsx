@@ -188,6 +188,7 @@ export default class Give extends Component {
   render () {
     let {
       data,
+      url,
       errors,
       step,
       transactions,
@@ -255,6 +256,7 @@ export default class Give extends Component {
 
             <Step
               data={data}
+              url={url}
               savedAccount={savedAccount}
               transactions={transactions}
               transactionType={transactionType}
