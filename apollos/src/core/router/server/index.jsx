@@ -47,18 +47,20 @@ export function run(routes, serverOptions = {}) {
       if (!IsAppUrl(req)) return next();
 
       const loginToken = req.cookies['meteor_login_token'];
+
+      if (!GraphQL.networkInterface._opts.headers) {
+        GraphQL.networkInterface._opts.headers = new fetch.Headers();
+      }
+      if (loginToken) {
+        GraphQL.networkInterface._opts.headers.Authorization = loginToken;
+      } else {
+        delete GraphQL.networkInterface._opts.headers.Authorization;
+      }
+
+
+
       const headers = req.headers;
       const context = new FastRender._Context(loginToken, { headers });
-
-      GraphQL.networkInterface.use([{
-        applyMiddleware(request, next) {
-          const currentUserToken = loginToken;
-          if (!currentUserToken) return next();
-          if (!request.options.headers) request.options.headers = new fetch.Headers();
-          request.options.headers.Authorization = currentUserToken;
-          next();
-        },
-      }])
 
       FastRender.frContext.withValue(context, function() {
         const history = createMemoryHistory(req.url);
@@ -86,9 +88,7 @@ export function run(routes, serverOptions = {}) {
             sendSSRHtml(serverOptions, req, res, next, renderProps, history);
             try {
               GraphQL.store.dispatch({ type: "RESET" }); // reset store after each query
-            } catch (e) {
-              console.error(e);
-            }
+            } catch (e) { console.error(e); }
 
           } else {
             res.writeHead(404);
