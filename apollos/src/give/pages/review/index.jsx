@@ -19,7 +19,10 @@ class Template extends Component {
     const { dispatch } = this.props;
     // store payment personal and billing
     dispatch(giveActions.save(giveData.data));
+    // store url
     dispatch(giveActions.setDetails(giveData.url));
+    // store transactions
+    dispatch(giveActions.addTransactions(giveData.transactions));
   }
 
   getGiveData = () => {
