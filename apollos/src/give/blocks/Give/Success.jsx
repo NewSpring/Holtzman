@@ -1,7 +1,7 @@
 
 import { Success as SuccessIcon } from "../../../core/components/icons"
 import Moment from "moment"
-const Success = ({ total, email, guest, onClick, schedules }) => {
+const Success = ({ total, email, guest, onClick, schedules, additionalMessage }) => {
   let schedule = false
   for (let sched in schedules) {
     schedule = schedules[sched]
@@ -27,6 +27,13 @@ const Success = ({ total, email, guest, onClick, schedules }) => {
             </p>
           )
         })({ email, schedule, total })}
+
+        {(({ additionalMessage }) => {
+          if (!additionalMessage) return;
+          return (
+            <h5>{additionalMessage}</h5>
+          );
+        })({ additionalMessage })}
 
         {(({ guest, onClick }) => {
           console.log(onClick)
