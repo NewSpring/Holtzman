@@ -7,6 +7,7 @@ import Err from "../../blocks/Give/Err"
 import Success from "../../blocks/Give/Success"
 
 import { give as giveActions } from "../../store";
+import { nav as navActions } from "../../../core/store";
 
 const mapStateToProps = (state) => ({
   give: state.give,
@@ -17,6 +18,8 @@ class Template extends Component {
   componentWillMount() {
     const giveData = this.getGiveData();
     const { dispatch } = this.props;
+    // hide nav
+    dispatch(navActions.hide());
     // store payment personal and billing
     dispatch(giveActions.save(giveData.data));
     // store url
