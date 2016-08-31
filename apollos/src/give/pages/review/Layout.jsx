@@ -70,11 +70,15 @@ export default class Layout extends Component {
     let text = "Give Now";
 
     if (payment.last4) {
-      text += ` using ${masked.slice(-4)}`;
+      text += ` using ${payment.last4}`;
     }
 
     return text;
 
+  }
+
+  icon = (icon) => {
+    return <AccountType width="30px" height="21px" type={icon} />;
   }
 
   render() {
@@ -86,7 +90,7 @@ export default class Layout extends Component {
       transactions.push(this.props.transactions[transaction]);
     }
 
-    const { personal } = this.props.data;
+    const { personal, payment } = this.props.data;
 
     return (
       <div>
@@ -123,7 +127,7 @@ export default class Layout extends Component {
           </div>
 
           <button className="btn soft-half-top one-whole" onClick={this.props.onSubmit}>
-            {this.buttonText()}
+            {this.buttonText()} {this.icon(payment.icon)}
           </button>
 
         </div>
