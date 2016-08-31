@@ -92,55 +92,43 @@ export default class Confirm extends Component {
 
   }
 
-  icon = () => {
+  getCardType = () => {
 
-    const { payment } = this.props.data
-    const { savedAccount } = this.props
-
+    const { payment } = this.props.data;
+    const { savedAccount } = this.props;
     if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
-      return (
-        // replace with SVG
-        <AccountType width="30px" height="21px" type={savedAccount.payment.paymentType}/>
-      )
+      return savedAccount.payment.paymentType;
     }
 
-    const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
-
     if (payment.type === "ach") {
-      return (
-        <AccountType width="30px" height="21px" type="Bank"/>
-      )
+      return "Bank";
     }
 
     if (payment.type === "cc") {
 
-      const getCardType = (card) => {
+      const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi;
 
-        const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi
+      const defaultRegex = {
+        Visa: /^4[0-9]{0,15}$/gmi,
+        MasterCard: /^5$|^5[1-5][0-9]{0,14}$/gmi,
+        AmEx: /^3$|^3[47][0-9]{0,13}$/gmi,
+        Discover: d,
+      };
 
-        const defaultRegex = {
-          Visa: /^4[0-9]{0,15}$/gmi,
-          MasterCard: /^5$|^5[1-5][0-9]{0,14}$/gmi,
-          AmEx: /^3$|^3[47][0-9]{0,13}$/gmi,
-          Discover: d
+      for (let regex in defaultRegex) {
+        if (defaultRegex[regex].test(payment.cardNumber.replace(/-/gmi, ""))) {
+          return regex;
         }
-
-        for (let regex in defaultRegex) {
-          if (defaultRegex[regex].test(card.replace(/-/gmi, ""))) {
-            return regex
-          }
-        }
-
-        return null
-
       }
 
-      return (
-        // replace with SVG
-        <AccountType width="30px" height="21px" type={getCardType(masked)}/>
-      )
     }
 
+    return null;
+
+  }
+
+  icon = () => {
+    return <AccountType width="30px" height="21px" type={this.getCardType()} />;
   }
 
   monentize = (value, fixed) => {
@@ -271,6 +259,7 @@ export default class Confirm extends Component {
     // add last 4 in
     data.payment = {
       last4: type === "cc" ? cardNumber.slice(-4) : accountNumber.slice(-4),
+      icon: this.getCardType(),
       type,
     };
 
