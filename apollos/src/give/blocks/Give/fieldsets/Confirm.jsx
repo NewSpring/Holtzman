@@ -279,7 +279,7 @@ export default class Confirm extends Component {
       rootUrl = `${rootUrl}/`;
     }
 
-    const giveUrl = `${rootUrl}give/review?giveData=${giveData}`;
+    const giveUrl = `${Meteor.settings.public.giveUrl}give/review?giveData=${giveData}`;
     openUrl(
       giveUrl,
       null,
