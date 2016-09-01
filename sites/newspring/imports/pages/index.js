@@ -12,6 +12,7 @@ if (process.env.NATIVE) {
   import Sections from "./sections/index";
   import Video from "./video/index";
   import Welcome from "./welcome/index";
+  import Locations from "./locations/index";
 }
 
 
@@ -32,6 +33,7 @@ if (process.env.NATIVE) {
     Discover.Routes,
     Video.Routes,
     Welcome.Routes,
+    Locations.Routes,
   );
 }
 
