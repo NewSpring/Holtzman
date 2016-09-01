@@ -2,16 +2,23 @@ import { Component, PropTypes} from "react"
 import { AccountType } from "../../../components"
 import Moment from "moment"
 import { connect } from "react-redux"
+import cloneDeep from "lodash.clonedeep";
 
 import { Forms } from "../../../../core/components"
+
+import { openUrl } from "../../../../core/util/inAppLink";
 
 export default class Confirm extends Component {
 
   static propTypes = {
     data: PropTypes.object.isRequired,
+    transactions: PropTypes.object.isRequired,
+    total: PropTypes.number.isRequired,
+    url: PropTypes.string.isRequired,
     save: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     clear: PropTypes.func.isRequired,
+    clearData: PropTypes.func.isRequired,
     next: PropTypes.func.isRequired
   }
 
@@ -19,6 +26,10 @@ export default class Confirm extends Component {
   state = {
     changePayments: false,
   }
+
+  isIOS = () => (
+    typeof cordova !== "undefined" && cordova.platformId === "ios"
+  )
 
   header = () => {
     const { personal } = this.props.data
@@ -82,55 +93,43 @@ export default class Confirm extends Component {
 
   }
 
-  icon = () => {
+  getCardType = () => {
 
-    const { payment } = this.props.data
-    const { savedAccount } = this.props
-
+    const { payment } = this.props.data;
+    const { savedAccount } = this.props;
     if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
-      return (
-        // replace with SVG
-        <AccountType width="30px" height="21px" type={savedAccount.payment.paymentType}/>
-      )
+      return savedAccount.payment.paymentType;
     }
 
-    const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
-
     if (payment.type === "ach") {
-      return (
-        <AccountType width="30px" height="21px" type="Bank"/>
-      )
+      return "Bank";
     }
 
     if (payment.type === "cc") {
 
-      const getCardType = (card) => {
+      const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi;
 
-        const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi
+      const defaultRegex = {
+        Visa: /^4[0-9]{0,15}$/gmi,
+        MasterCard: /^5$|^5[1-5][0-9]{0,14}$/gmi,
+        AmEx: /^3$|^3[47][0-9]{0,13}$/gmi,
+        Discover: d,
+      };
 
-        const defaultRegex = {
-          Visa: /^4[0-9]{0,15}$/gmi,
-          MasterCard: /^5$|^5[1-5][0-9]{0,14}$/gmi,
-          AmEx: /^3$|^3[47][0-9]{0,13}$/gmi,
-          Discover: d
+      for (let regex in defaultRegex) {
+        if (defaultRegex[regex].test(payment.cardNumber.replace(/-/gmi, ""))) {
+          return regex;
         }
-
-        for (let regex in defaultRegex) {
-          if (defaultRegex[regex].test(card.replace(/-/gmi, ""))) {
-            return regex
-          }
-        }
-
-        return null
-
       }
 
-      return (
-        // replace with SVG
-        <AccountType width="30px" height="21px" type={getCardType(masked)}/>
-      )
     }
 
+    return null;
+
+  }
+
+  icon = () => {
+    return <AccountType width="30px" height="21px" type={this.getCardType()} />;
   }
 
   monentize = (value, fixed) => {
@@ -248,6 +247,47 @@ export default class Confirm extends Component {
     this.props.changeSavedAccount(act)
   }
 
+  completeGift = (e) => {
+    e.preventDefault();
+    // deep clone
+    const props = cloneDeep(this.props);
+    const { url, transactions, total, data } = props;
+    const { cardNumber, type, accountNumber } = data.payment;
+
+    // remove sensitive information
+    delete data.billing; delete data.payment;
+
+    // add last 4 in
+    data.payment = {
+      last4: type === "cc" ? cardNumber.slice(-4) : accountNumber.slice(-4),
+      icon: this.getCardType(),
+      type,
+    };
+
+    const giveData = encodeURIComponent(
+      JSON.stringify({
+        url,
+        transactions,
+        total,
+        data,
+      })
+    );
+
+    // ensure trailing slash
+    let rootUrl = __meteor_runtime_config__.ROOT_URL;
+    if (rootUrl[rootUrl.length - 1] !== "/") {
+      rootUrl = `${rootUrl}/`;
+    }
+
+    const giveUrl = `${Meteor.settings.public.giveUrl}give/review?giveData=${giveData}`;
+    openUrl(
+      giveUrl,
+      null,
+      () => { this.props.clearData() },
+      null
+    );
+  }
+
   renderPaymentOptions = () => {
     return (
       <div>
@@ -359,6 +399,34 @@ export default class Confirm extends Component {
     )
   }
 
+  renderActionButton = () => {
+    if (this.isIOS()) {
+      return (
+        <div>
+          <p className="text-dark-secondary">
+            <small>
+              <em>
+                Due to restrictions with your operating system, you must complete your gift in the browser.
+              </em>
+            </small>
+          </p>
+          <button
+            className="btn soft-half-top one-whole"
+            onClick={this.completeGift}
+          >
+            Complete Gift in Browser
+          </button>
+        </div>
+      );
+    } else {
+      return (
+        <button className="btn soft-half-top one-whole" type="submit">
+          {this.buttonText()} {this.icon()}
+        </button>
+      );
+    }
+  }
+
   render () {
 
     let transactions = []
@@ -412,9 +480,7 @@ export default class Confirm extends Component {
           </div>
 
 
-          <button className="btn soft-half-top one-whole" type="submit">
-            {this.buttonText()} {this.icon()}
-          </button>
+          {this.renderActionButton()}
 
           {this.renderPaymentOptions()}
 
