@@ -282,8 +282,12 @@ export default class Confirm extends Component {
 
     const giveUrl = `${rootUrl}give/review?giveData=${giveData}`;
     console.log(giveUrl);
-    this.props.clearData();
-    openUrl(giveUrl);
+    openUrl(
+      giveUrl,
+      null,
+      () => { this.props.clearData() },
+      null
+    );
   }
 
   renderPaymentOptions = () => {

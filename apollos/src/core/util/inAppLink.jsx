@@ -1,4 +1,4 @@
-function openUrl(url) {
+function openUrl(url, opened, loaded, closed) {
   try {
     SafariViewController.isAvailable(function (available) {
       if (available) {
@@ -12,12 +12,18 @@ function openUrl(url) {
             },
             // this success handler will be invoked for the lifecycle events 'opened', 'loaded' and 'closed'
             function(result) {
-              if (result.event === 'opened') {
+              if (result.event === 'opened' && opened) {
                 // view has opened
-              } else if (result.event === 'loaded') {
+                console.log("opened");
+                opened();
+              } else if (result.event === 'loaded' && loaded) {
                 // view has loaded
-              } else if (result.event === 'closed') {
+                console.log("loaded");
+                loaded();
+              } else if (result.event === 'closed' && closed) {
                 // view has closed
+                concole.log("closed");
+                closed();
               }
             },
             // error function?
