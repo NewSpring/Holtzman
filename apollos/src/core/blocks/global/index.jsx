@@ -62,7 +62,7 @@ const GlobalData =  createContainer(({ dispatch }) => {
     if (!userId) Raven.setUserContext();
     if (userId && Meteor.user()) {
       const person = Meteor.user();
-      const email = person.emails[0] && person.emails[0].address;
+      const email = person.emails && person.emails[0] && person.emails[0].address;
       if (email) {
         Raven.setUserContext({ id: userId, email });
       }
