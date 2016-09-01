@@ -88,14 +88,14 @@ class Template extends Component {
       case "error":
         return <Err
           msg={errors[Object.keys(errors)[0]].error}
-          additionalMessage="Please click 'Done' to get back to the app."
+          additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
         />
       case "success":
         return <Success
           total={this.monentize(total.toFixed(2))}
           email={data.personal.email}
           guest={false} // prevent showing giving history
-          additionalMessage="Please click 'Done' to get back to the app."
+          additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
         />
       default:
         return <Layout {...giveData} onSubmit={this.onSubmit} />
