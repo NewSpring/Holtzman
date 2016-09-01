@@ -14,15 +14,12 @@ function openUrl(url, opened, loaded, closed) {
             function(result) {
               if (result.event === 'opened' && opened) {
                 // view has opened
-                console.log("opened");
                 opened();
               } else if (result.event === 'loaded' && loaded) {
                 // view has loaded
-                console.log("loaded");
                 loaded();
               } else if (result.event === 'closed' && closed) {
                 // view has closed
-                concole.log("closed");
                 closed();
               }
             },

@@ -75,7 +75,6 @@ class Template extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    console.log("submit");
     this.props.dispatch(giveActions.submit());
   }
 
