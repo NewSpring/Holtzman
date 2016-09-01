@@ -406,7 +406,7 @@ export default class Confirm extends Component {
           <p className="text-dark-secondary">
             <small>
               <em>
-                Due to restrictions you must complete your gift in the browser.
+                Due to restrictions with your operating system, you must complete your gift in the browser.
               </em>
             </small>
           </p>
