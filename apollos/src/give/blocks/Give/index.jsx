@@ -214,6 +214,10 @@ export default class Give extends Component {
 
     let save = (...args) => { this.props.dispatch(giveActions.save(...args)) }
     let clear = (...args) => { this.props.dispatch(giveActions.clear(...args)) }
+    let clearData = () => {
+      this.props.dispatch(giveActions.clearData());
+      this.props.dispatch(modal.hide());
+    }
     switch (state) {
       case "loading":
         this.copiedSchedules = {...schedules}
@@ -263,6 +267,7 @@ export default class Give extends Component {
               save={save}
               errors={errors}
               clear={clear}
+              clearData={clearData}
               next={this.next}
               back={this.back}
               ref="inputs"

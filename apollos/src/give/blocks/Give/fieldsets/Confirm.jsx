@@ -18,6 +18,7 @@ export default class Confirm extends Component {
     save: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     clear: PropTypes.func.isRequired,
+    clearData: PropTypes.func.isRequired,
     next: PropTypes.func.isRequired
   }
 
@@ -281,6 +282,7 @@ export default class Confirm extends Component {
 
     const giveUrl = `${rootUrl}give/review?giveData=${giveData}`;
     console.log(giveUrl);
+    this.props.clearData();
     openUrl(giveUrl);
   }
 
