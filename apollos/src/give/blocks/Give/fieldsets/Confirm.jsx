@@ -272,7 +272,6 @@ export default class Confirm extends Component {
         data,
       })
     );
-    console.log(giveData);
 
     // ensure trailing slash
     let rootUrl = __meteor_runtime_config__.ROOT_URL;
@@ -281,7 +280,6 @@ export default class Confirm extends Component {
     }
 
     const giveUrl = `${rootUrl}give/review?giveData=${giveData}`;
-    console.log(giveUrl);
     openUrl(
       giveUrl,
       null,

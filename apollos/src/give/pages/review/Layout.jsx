@@ -82,8 +82,6 @@ export default class Layout extends Component {
   }
 
   render() {
-    console.log(this.props);
-
     let transactions = [];
 
     for (let transaction in this.props.transactions) {
