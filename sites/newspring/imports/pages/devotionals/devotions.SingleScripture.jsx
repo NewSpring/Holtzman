@@ -15,6 +15,7 @@ export default class DevotionsSingleScripture extends Component {
       "hard-sides",
       "hard-top",
       "background--light-primary",
+      "soft-sides@palm-wide-and-up"
     ];
 
     if (this.props.classes) {

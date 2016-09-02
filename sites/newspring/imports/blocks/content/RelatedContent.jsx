@@ -58,7 +58,7 @@ export default class RelatedContent extends Component {
     const { taggedContent, loading } = this.props.content;
     if (!loading && (taggedContent && !taggedContent.length)) return null;
     return (
-      <section className="soft-half-sides@handheld soft-top soft-half-bottom background--light-secondary">
+      <section className="soft-half-sides@palm soft-double@palm-wide soft-top soft-half-bottom background--light-secondary">
         <div className="one-whole text-center">
           <h5 className="flush soft-bottom">{this.props.title}</h5>
         </div>
@@ -73,13 +73,14 @@ export default class RelatedContent extends Component {
             }
           })()}
           {taggedContent && taggedContent.map((content, key) => (
+            <div key={key} className="soft-half-bottom@palm-wide">
             <MiniCard
-              key={key}
               title={content.title}
               images={content.content.images}
               type={content.channel}
               content={content}
             />
+            </div>
           ))}
         </div>
       </section>
