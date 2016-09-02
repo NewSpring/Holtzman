@@ -32,7 +32,8 @@ export default class Layout extends Component {
   dynamicItemWidth = () => {
 
     if (typeof window != "undefined" || window != null) {
-      const itemSize = (window.innerWidth - 40) * 0.8; // four-fifths
+      const ratio = window.isTablet ? 0.4 : 0.8;
+      const itemSize = (window.innerWidth - 40) * ratio; // four-fifths
       return { width: itemSize, height: itemSize }
     }
 
@@ -46,7 +47,8 @@ export default class Layout extends Component {
     if (!campuses) return {};
 
     if (typeof window != "undefined" || window != null) {
-      let itemSize = (window.innerWidth - 40) * 0.8; // four-fifths
+      const ratio = window.isTablet ? 0.4 : 0.8
+      let itemSize = (window.innerWidth - 40) * ratio; // four-fifths
       itemSize += 20; // account for margin
       const items = campuses.filter(x => x.location.street1).length;
       const width = (items * itemSize) + 40;
@@ -99,9 +101,9 @@ export default class Layout extends Component {
 
         {/* Slider */}
         <div className="background--light-secondary soft-ends text-center">
-          <h3 className="push-half-top">Find A Campus</h3>
-          <div style={this.overflow}>
-            <section   className="soft-half" style={this.dynamicWidth()}>
+          <h3 className="push-half-top">Campus Directory</h3>
+          <div style={this.overflow} className="soft-left@palm-wide-and-up">
+            <section className="soft-half" style={this.dynamicWidth()}>
               {campuses && campuses.filter(x => x.location.street1).map((campus, i) => {
                 let style = this.dynamicItemWidth();
                 if (i === 0 && this.state.list) {
@@ -127,7 +129,7 @@ export default class Layout extends Component {
         </div>
 
         {/* Search */}
-        <div className="soft soft-double-ends soft-double@lap-and-up text-center background--light-primary">
+        <div className="soft soft-double-ends soft-double@palm-wide-and-up text-center background--light-primary">
           <h3 className="push-half-ends">Find Your Closest Campus</h3>
           <Forms.Form
             classes={["hard", "display-inline-block", "one-whole" ]}
