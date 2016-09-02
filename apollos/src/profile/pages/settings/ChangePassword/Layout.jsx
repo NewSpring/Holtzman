@@ -17,7 +17,7 @@ const Layout = ({ submit, save, state }, context) => (
     <Meta title="Change your password" />
       <Forms.Form
         id="reset-password"
-        classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
+        classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block", "soft-double-sides@palm-wide"]}
         submit={submit}
       >
         <div className="push-double">
