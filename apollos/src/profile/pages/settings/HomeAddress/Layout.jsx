@@ -55,7 +55,7 @@ export default class Layout extends Component {
         <Back />
         <Forms.Form
           id="reset-password"
-          classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block"]}
+          classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block", "soft-double-sides@palm-wide"]}
           submit={this.submit}
         >
           <div className="push-double">
