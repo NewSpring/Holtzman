@@ -114,7 +114,7 @@ export default class ArticlesSingle extends Component {
         </Split>
         <Left scroll={true} >
           <div className="one-whole">
-            <section className="soft@handheld soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
+            <section className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
               <Content article={article} />
             </section>
             <RelatedContent excludedIds={[article.id]} tags={article.content.tags || defaultArray} />
