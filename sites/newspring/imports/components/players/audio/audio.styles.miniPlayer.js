@@ -24,7 +24,12 @@ export default StyleSheet.create({
     position: "fixed",
     height: "50px",
     zIndex: "101",
-    marginBottom: "50px",
+    "@media (max-width: 767px)": {
+      marginBottom: "50px",
+    },
+    "@media (min-width: 768px)": {
+      paddingLeft: "90px",
+    },
   },
 
   "mini-player-stop-h6": {
