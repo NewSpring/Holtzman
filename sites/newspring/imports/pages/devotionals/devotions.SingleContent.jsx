@@ -42,12 +42,12 @@ export default class DevotionsSingleContent extends Component {
           if (!devotion.content.images.length) return null;
           return (
             <div
-              className="one-whole ratio--square background--fill"
+              className="one-whole ratio--square ratio--landscape@palm-wide background--fill"
               style={Helpers.backgrounds.styles(devotion)}>
             </div>
           )
         })()}
-          <div className="soft push-top">
+          <div className="soft soft-double@palm-wide-and-up push-top">
             <h2 className="capitalize">{devotion.title}</h2>
             {/* XXX update scripture formatting */}
             {(() => {
