@@ -42,7 +42,7 @@ export default class DevotionsSingleContent extends Component {
           if (!devotion.content.images.length) return null;
           return (
             <div
-              className="one-whole ratio--square background--fill"
+              className="one-whole ratio--square ratio--landscape@palm-wide background--fill"
               style={Helpers.backgrounds.styles(devotion)}>
             </div>
           )
