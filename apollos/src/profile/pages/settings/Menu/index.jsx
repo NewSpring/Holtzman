@@ -157,7 +157,7 @@ export default class Menu extends Component {
     if (process.env.NATIVE) return "outlined--light one-whole";
   }
 
-  containerStyles = () => ({ marginTop: process.env.NATIVE ? "45px" : "0px" });
+  containerStyles = () => ({ marginTop: (process.env.NATIVE && window.isPhone) ? "45px" : "0px" });
 
   render() {
     return (
