@@ -9,6 +9,14 @@ const mapStateToProps = (state) => ({ audio: state.audio });
 @connect({ mapStateToProps })
 class Template extends Component {
 
+  absoluteStyle = () => {
+    if (process.env.NATIVE && window.outerWidth >= 768) {
+      return {
+        left: "80px",
+      };
+    }
+  }
+
   containerStyles = () => {
     return {
       paddingBottom: this.props.audio.state === "default" ? "10px" : "50px",
@@ -27,6 +35,7 @@ class Template extends Component {
     return (
       <div
         className="background--light-primary locked-ends locked-sides scrollable soft-double-bottom"
+        style={this.absoluteStyle()}
         data-status-scroll-container={true}
       >
         <div
