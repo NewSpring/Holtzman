@@ -2,7 +2,7 @@ import { Component, PropTypes} from "react"
 import { connect } from "react-redux"
 import { css } from "aphrodite";
 
-import styles from "../nav/offset-css"
+import styles from "./panel-css";
 
 import Right from "./Right"
 import Left from "./Left"
@@ -31,7 +31,8 @@ export default class SplitContainer extends Component {
   layoutClasses = () => {
     let classes = [
       "panel",
-      "fixed@lap-and-up"
+      "fixed@lap-and-up",
+      css(styles["panel"]),
     ];
 
     if (this.props.classes) {
