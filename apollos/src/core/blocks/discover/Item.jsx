@@ -12,16 +12,19 @@ import Styles from "./styles-css"
 export default class SearchItem extends Component {
 
   cardClasses = () => {
-    return [
+    let classes = [
       "background--light-primary",
-      "push-half-bottom",
+      "push-half-bottom@palm",
+      "push-bottom@palm-wide-and-up",
       "card",
       "rounded",
       "text-dark-secondary",
       "display-block",
       "plain",
       css(Styles.card)
-    ].join(" ")
+    ];
+
+    return classes.join(" ");
   }
 
   gridClasses = () => {
