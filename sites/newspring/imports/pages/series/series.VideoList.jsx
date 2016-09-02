@@ -45,7 +45,8 @@ export default class SeriesVideoList extends Component {
   dynamicWidth = () => {
 
     if (typeof window != "undefined" || window != null) {
-      let itemSize = (window.innerWidth - 40) * 0.8; // four-fifths
+      const ratio = window.isTablet ? 0.4 : 0.8
+      let itemSize = (window.innerWidth - 40) * ratio; // four-fifths
       itemSize += 20; // account for margin
       const items = this.props.sermons.content.sermons.length;
       const width = (items * itemSize) + 40;
@@ -60,6 +61,7 @@ export default class SeriesVideoList extends Component {
   overflow = {
     overflowX: "scroll",
     overflowY: "hidden",
+    paddingLeft: "20px",
     "WebkitOverflowScrolling": "touch"
   }
 
