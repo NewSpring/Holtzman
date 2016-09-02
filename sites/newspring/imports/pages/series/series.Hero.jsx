@@ -18,6 +18,7 @@ export default class SeriesHero extends Component {
       "one-whole",
       "overlay--gradient",
       "ratio--square",
+      "ratio--landscape@palm-wide",
       "background--fill",
       Helpers.collections.classes(this.props.series)
     ].join(" ")
@@ -47,10 +48,10 @@ export default class SeriesHero extends Component {
 
   button = () => {
     if (!this.props.series.content.ooyalaId) return null;
-    
+
     if (this.state.playing) {
       return (
-        <button className="btn--light display-block one-whole" onClick={this.stop}>
+        <button className="btn--light display-inline-block one-whole@palm" onClick={this.stop}>
           <i className="icon-close soft-half-right"></i>
           Close The Trailer
         </button>
@@ -58,7 +59,7 @@ export default class SeriesHero extends Component {
     }
 
     return (
-      <button className="btn--light display-block one-whole" onClick={this.play}>
+      <button className="btn--light display-inline-block one-whole@palm" onClick={this.play}>
         <i className="icon-play soft-half-right"></i>
         Watch The Trailer
       </button>
@@ -68,10 +69,10 @@ export default class SeriesHero extends Component {
   render() {
 
     const series = this.props.series;
-
+    const imageLabel = window.isTablet ? "2:1" : "1:1";
     return (
       <section className="hard">
-        <div className="one-whole ratio--square" style={{
+        <div className="one-whole ratio--square ratio--landscape@palm-wide" style={{
             position: "absolute",
             zIndex: "10"
           }}>
@@ -103,8 +104,8 @@ export default class SeriesHero extends Component {
         })()}
         <div
           className={this.backgroundClasses()}
-          style={Helpers.backgrounds.styles(series)}>
-          <div className="overlay__item text-light-primary soft-sides push-top">
+          style={Helpers.backgrounds.styles(series, imageLabel)}>
+          <div className="overlay__item text-light-primary text-center soft-sides push-top">
             {this.button()}
           </div>
         </div>

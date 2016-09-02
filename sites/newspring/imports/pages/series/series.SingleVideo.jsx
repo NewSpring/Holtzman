@@ -182,7 +182,7 @@ export default class SeriesSingleVideo extends Component {
             style={{ marginTop: "-2px" }}
           />
         </div>
-        <div className="soft push-top">
+        <div className="soft soft-double@palm-wide-and-up push-top">
           <h2 className="push-half-bottom">{currentSermon.title}</h2>
           <h4>{Helpers.content.speakers(currentSermon)}</h4>
           <h6 className="text-dark-tertiary">{Helpers.time.date(currentSermon)}</h6>
