@@ -74,39 +74,45 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
     </div>
 
     {/* Group Stories */}
-    <div className="soft-half soft-double-ends soft-double@lap-wide-and-up text-center">
+    <div className="soft-half soft-sides@palm-wide-and-up soft-double-ends soft-double@lap-wide-and-up text-center">
       <h3 className="push-top">You Can't Do Life Alone</h3>
-      {content && content.map((entry, key) => {
-        if (process.env.WEB) {
-          return (
-            <a
-              target="_blank"
-              href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
-              className="plain"
-              key={key}
-            >
-              <SideBySide
-                classes={["push-bottom@lap-and-up"]}
-                images={entry.content.images}
-                defaultImage={entry.content.images[0].url}
+      <div className="grid">
+        {content && content.map((entry, key) => {
+          if (process.env.WEB) {
+            return (
+              <a
+                target="_blank"
+                href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
+                className="plain"
+                key={key}
               >
-                <h4 className="text-dark-primary push-half-top@portable push-top@anchored">
-                  {entry.title}
-                </h4>
-
-                <p className="text-dark-primary"><small dangerouslySetInnerHTML={{ __html: entry.meta.summary }}></small></p>
-                <span
-                  className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                <SideBySide
+                  classes={["push-bottom@lap-and-up"]}
+                  images={entry.content.images}
+                  defaultImage={entry.content.images[0].url}
                 >
-                  Read more
-                </span>
+                  <h4 className="text-dark-primary push-half-top@portable push-top@anchored">
+                    {entry.title}
+                  </h4>
 
-              </SideBySide>
-            </a>
+                  <p className="text-dark-primary"><small dangerouslySetInnerHTML={{ __html: entry.meta.summary }}></small></p>
+                  <span
+                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                  >
+                    Read more
+                  </span>
+
+                </SideBySide>
+              </a>
+            )
+          }
+          return (
+            <div className="grid__item one-half" key={key} >
+              <FeedItem item={entry} />
+            </div>
           )
-        }
-        return <FeedItem item={entry} key={key} />
-      })}
+        })}
+      </div>
     </div>
   </section>
 )
