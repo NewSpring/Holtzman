@@ -83,7 +83,7 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
               <a
                 target="_blank"
                 href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
-                className="plain"
+                className="plain grid__item one-whole"
                 key={key}
               >
                 <SideBySide
@@ -107,7 +107,7 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
             )
           }
           return (
-            <div className="grid__item one-half" key={key} >
+            <div className="grid__item one-whole one-half@palm-wide-and-up" key={key} >
               <FeedItem item={entry} />
             </div>
           )
