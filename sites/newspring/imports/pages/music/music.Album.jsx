@@ -171,7 +171,7 @@ export default class MusicAlbum extends Component {
       return (
         <section className="hard background--light-primary" style={getStyle()}>
           {/* XXX need a get blurred image helper here */}
-          <div className="one-whole soft overlay floating background--dark-primary background--fill" style={{backgroundImage: `url(${getUrl(xsmallBlurImage)})`}}>
+          <div className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill" style={{backgroundImage: `url(${getUrl(xsmallBlurImage)})`}}>
             <div
               className="one-third floating__item display-inline overlay__item ratio--square background--fill"
               style={{backgroundImage: `url(${getUrl(mediumImage)})`}}>
@@ -182,7 +182,7 @@ export default class MusicAlbum extends Component {
             </div>
           </div>
           <div className="background--light-primary one-whole">
-            <div className="soft-sides soft-half-ends push-bottom">
+            <div className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
               {tracks.map((track, i) => {
                 return <Track
                   track={track}
