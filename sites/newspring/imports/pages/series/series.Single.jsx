@@ -128,7 +128,7 @@ export default class SeriesSingle extends Component {
           <style>{Helpers.styles.overlay(series)}</style>
           <style>{Helpers.collections.backgroundStyles(series)}</style>
           <SeriesHero series={series} />
-          <section className="text-light-primary hard-bottom">
+          <section className="text-light-primary hard-bottom soft-double-sides@palm-wide">
             <div dangerouslySetInnerHTML={Helpers.react.markup(series, "description")}></div>
           </section>
           <SeriesVideoList id={this.props.params.id} />
