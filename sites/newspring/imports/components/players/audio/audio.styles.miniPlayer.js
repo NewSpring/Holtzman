@@ -8,7 +8,12 @@ export default StyleSheet.create({
     zIndex: "101",
     // account for border on light version of nav
     // marginBottom: "52px",
-    marginBottom: "50px",
+    "@media (max-width: 767px)": {
+      marginBottom: "50px",
+    },
+    "@media (min-width: 768px)": {
+      paddingLeft: "90px",
+    },
   },
 
   "mini-album-cover": {
