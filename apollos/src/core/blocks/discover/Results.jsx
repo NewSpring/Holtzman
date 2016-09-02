@@ -34,7 +34,7 @@ const Results = ({ loadMore, search }) => {
   }
   if (search.items.length > 0) {
     return (
-      <section className="background--light-secondary soft-half">
+      <section className="background--light-secondary soft-half@palm soft@palm-wide-and-up">
         {search.items.map((item, i) => {
           return <Item item={item} key={i} />
         })}
