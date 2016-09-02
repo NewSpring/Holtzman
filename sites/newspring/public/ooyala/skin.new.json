@@ -158,7 +158,6 @@
       }
     },
     "autoHide": true,
-    "height": 60,
     "logo": {
       "imageResource": {"url": "//ns-ops.s3.amazonaws.com/player/ns.logo.white.png","androidResource" : "logo","iosResource" : "logo"},
       "clickUrl": "https://newspring.cc",
