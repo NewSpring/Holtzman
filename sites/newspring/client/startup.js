@@ -154,6 +154,9 @@ if (process.env.NATIVE) {
 Meteor.startup(() => {
   if (Meteor.isClient) {
 
+    window.isPhone = window.outerWidth < 768;
+    window.isTablet = window.outerWidth >= 768;
+
     (function(kitID) {
       if (!kitID) {
         return

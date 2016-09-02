@@ -56,11 +56,15 @@ export default class AudioPlayer extends Component {
 
     const triggerModal = () => {
       this.props.dispatch(modal.render(FullPlayer, { coverHeader: true, audioPlayer: true }));
-      this.props.dispatch(navActions.setLevel("DOWN"));
-      const { isLight } = this.props.audio.playing.album.content;
-      // reverse is light so it makes sense for foreground
-      const fgColor = isLight ? "light" : "dark";
-      this.props.dispatch(navActions.setColor("transparent", fgColor));
+
+      // if phone, change to down arrow and make nav transparent
+      if (window.isPhone) {
+        this.props.dispatch(navActions.setLevel("DOWN"));
+        const { isLight } = this.props.audio.playing.album.content;
+        // reverse is light so it makes sense for foreground
+        const fgColor = isLight ? "light" : "dark";
+        this.props.dispatch(navActions.setColor("transparent", fgColor));
+      }
     };
 
     if( expanding ) {
