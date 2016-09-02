@@ -47,7 +47,7 @@ export default class DevotionsSingleContent extends Component {
             </div>
           )
         })()}
-          <div className="soft push-top">
+          <div className="soft soft-double@palm-wide-and-up push-top">
             <h2 className="capitalize">{devotion.title}</h2>
             {/* XXX update scripture formatting */}
             {(() => {
