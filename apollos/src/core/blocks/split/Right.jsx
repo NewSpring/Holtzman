@@ -6,6 +6,7 @@ import { ImageLoader } from "../../components/loading"
 import Styles from "../../components/loading/FeedItemSkeleton-css"
 
 import Hover from "./right-css"
+import PanelStyles from "./panel-css"
 
 const DefaultWrapper = (props) => (
   <section className={props.imageclasses.join(" ")}>{props.children}</section>
@@ -31,6 +32,7 @@ export default class Right extends Component {
       "panel__item--right",
       "hard",
       "flush",
+      css(PanelStyles["panel"]),
     ];
 
     if (this.props.link && process.env.WEB) {
@@ -43,7 +45,8 @@ export default class Right extends Component {
     if (this.props.mobile && !this.props.aspect) {
       classes.push("ratio--landscape@handheld")
     } else if (this.props.mobile && this.props.aspect) {
-      classes.push(`ratio--${this.props.aspect}@handheld`)
+      classes.push(`ratio--${this.props.aspect}@palm`)
+      classes.push(`ratio--landscape@palm-wide`)
     } else {
       classes.push("visuallyhidden@handheld")
     }

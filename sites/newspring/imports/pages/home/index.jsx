@@ -107,7 +107,7 @@ export default class Home extends Component {
     }
     return (
       feedItems.map((item, i) => (
-        <div className="grid__item one-half@lap-wide-and-up flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
+        <div className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored" key={i}>
           {(() => {
             if (typeof item === "number") return <FeedItemSkeleton />
             return <FeedItem item={item}  />
@@ -150,7 +150,7 @@ export default class Home extends Component {
             </Right>
           </Split>
           <Left scroll={true} ref="container">
-            <section className="background--light-secondary soft-half@handheld soft@portable soft-double@anchored">
+            <section className="background--light-secondary soft-half@palm soft@palm-wide-and-up soft-double@anchored">
               <div className="grid">
                 {this.renderFeed()}
               </div>
