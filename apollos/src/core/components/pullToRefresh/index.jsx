@@ -24,11 +24,21 @@ export default class ApollosPullToRefresh extends Component {
         <div className="ptr-fake-background">
         </div>
 
+        <style>{`
+          @media screen and (min-width: 481px) and (max-width: 769px) {
+              .ptr-element {
+                margin-left: 40px;
+              }
+            }
+        `}</style>
+
         {(() => { if (liveBannerVisible) return (
           <style>
-            {".ptr-element i {\
-              top: 100px;\
-            }"}
+            {`
+              .ptr-element i {
+                top: 100px;
+              }
+            `}
           </style>
         ); })()}
 
