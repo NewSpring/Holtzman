@@ -2,7 +2,6 @@ import { Component } from "react"
 import ReactMixin from "react-mixin"
 import { connect } from "react-apollo";
 import { Likeable, Shareable } from "/imports/mixins"
-import Hammer from "react-hammerjs";
 import gql from "graphql-tag";
 
 import Helpers from "/imports/helpers"
@@ -168,28 +167,26 @@ export default class SeriesSingle extends Component {
     }
 
     return (
-      <div className="relative">
-        <SwipeViews
-          selectedIndex={this.state.selectedIndex}
-          disableSwipe={true}
-        >
+      <SwipeViews
+        selectedIndex={this.state.selectedIndex}
+        disableSwipe={true}
+      >
 
-          <div title="Devotional">
-            <DevotionsSingleContent
-              devotion={devotion}
-              onClickLink={this.onClickLink}
-              classes={this.getLiveClasses()}
-            />
-          </div>
+        <div title="Devotional">
+          <DevotionsSingleContent
+            devotion={devotion}
+            onClickLink={this.onClickLink}
+            classes={this.getLiveClasses()}
+          />
+        </div>
 
-          <div title="Scripture">
-            <DevotionsSingleScripture
-              devotion={devotion}
-              classes={this.getLiveClasses()}
-            />
-          </div>
-        </SwipeViews>
-      </div>
+        <div title="Scripture">
+          <DevotionsSingleScripture
+            devotion={devotion}
+            classes={this.getLiveClasses()}
+          />
+        </div>
+      </SwipeViews>
     );
   }
 
@@ -207,12 +204,7 @@ export default class SeriesSingle extends Component {
     }
 
     const devotion = content;
-
-    return (
-      <div>
-        {this.renderContent(devotion)}
-      </div>
-    )
+    return this.renderContent(devotion);
 
   }
 
