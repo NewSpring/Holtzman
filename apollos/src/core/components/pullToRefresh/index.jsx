@@ -44,6 +44,7 @@ export default class ApollosPullToRefresh extends Component {
 
         <ReactPullToRefresh
           onRefresh={this.props.handleRefresh}
+          hammerOptions={{ touchAction: 'auto' }}
           icon={<i className="icon-leaf-outline"></i>}
           loading={<i className="loading icon-leaf-outline"></i>}
         >
