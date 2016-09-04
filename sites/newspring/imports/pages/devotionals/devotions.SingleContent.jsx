@@ -13,8 +13,7 @@ export default class DevotionsSingleContent extends Component {
 
   getClasses = () => {
     let classes = [
-      "hard-sides",
-      "hard-top",
+      "hard",
       "background--light-primary",
     ];
 
