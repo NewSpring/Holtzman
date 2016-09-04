@@ -168,26 +168,28 @@ export default class SeriesSingle extends Component {
     }
 
     return (
-      <SwipeViews
-        selectedIndex={this.state.selectedIndex}
-        disableSwipe={true}
-      >
+      <div className="relative">
+        <SwipeViews
+          selectedIndex={this.state.selectedIndex}
+          disableSwipe={true}
+        >
 
-        <div title="Devotional">
-          <DevotionsSingleContent
-            devotion={devotion}
-            onClickLink={this.onClickLink}
-            classes={this.getLiveClasses()}
-          />
-        </div>
+          <div title="Devotional">
+            <DevotionsSingleContent
+              devotion={devotion}
+              onClickLink={this.onClickLink}
+              classes={this.getLiveClasses()}
+            />
+          </div>
 
-        <div title="Scripture">
-          <DevotionsSingleScripture
-            devotion={devotion}
-            classes={this.getLiveClasses()}
-          />
-        </div>
-      </SwipeViews>
+          <div title="Scripture">
+            <DevotionsSingleScripture
+              devotion={devotion}
+              classes={this.getLiveClasses()}
+            />
+          </div>
+        </SwipeViews>
+      </div>
     );
   }
 
