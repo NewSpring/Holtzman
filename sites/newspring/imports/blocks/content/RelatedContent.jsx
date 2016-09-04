@@ -73,13 +73,20 @@ export default class RelatedContent extends Component {
             }
           })()}
           {taggedContent && taggedContent.map((content, key) => (
-            <div key={key} className="soft-half-bottom@palm-wide">
-            <MiniCard
-              title={content.title}
-              images={content.content.images}
-              type={content.channel}
-              content={content}
-            />
+            <div
+              key={key}
+              className="soft-half-bottom@palm-wide"
+              style={{
+                maxWidth: "480px",
+                margin: "0 auto",
+              }}
+            >
+              <MiniCard
+                title={content.title}
+                images={content.content.images}
+                type={content.channel}
+                content={content}
+              />
             </div>
           ))}
         </div>
