@@ -38,6 +38,10 @@ export default StyleSheet.create({
     top: "45px",
     width: "100%",
     zIndex: 1,
+    "@media screen and (min-width: 481px)": {
+      paddingLeft: "80px",
+      left: 0,
+    },
   },
   "live-banner": animation,
   "live-text": textAnimation,
