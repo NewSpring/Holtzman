@@ -1,21 +1,15 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
+import { css } from "aphrodite";
 
 import liveActions from "apollos-core/dist/core/store/live"
 import Discover from "apollos-core/dist/core/blocks/discover";
+import styles from "apollos-core/dist/core/blocks/nav/offset-css";
 
 const mapStateToProps = (state) => ({ audio: state.audio });
 
 @connect({ mapStateToProps })
 class Template extends Component {
-
-  absoluteStyle = () => {
-    if (process.env.NATIVE && window.outerWidth >= 768) {
-      return {
-        left: "80px",
-      };
-    }
-  }
 
   containerStyles = () => {
     return {
@@ -34,8 +28,7 @@ class Template extends Component {
   render() {
     return (
       <div
-        className="background--light-primary locked-ends locked-sides scrollable soft-double-bottom"
-        style={this.absoluteStyle()}
+        className={`background--light-primary locked-ends locked-sides scrollable soft-double-bottom ${css(styles["offset"])}`}
         data-status-scroll-container={true}
       >
         <div
