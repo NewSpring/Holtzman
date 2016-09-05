@@ -1,8 +1,8 @@
 
-import Tags from "./content.Tags"
-import ComingSoon from "./content.ComingSoon"
+import Tags from "./content.Tags";
+import ComingSoon from "./content.ComingSoon";
 
 export default {
   Tags,
   ComingSoon
-}
+};

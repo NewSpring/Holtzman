@@ -28,12 +28,12 @@
     toggle between discover topics and search results
 
 */
-import reducer from "./reducer"
-import { addReducer } from "../utilities"
+import reducer from "./reducer";
+import { addReducer } from "../utilities";
 
 addReducer({
   search: reducer
-})
+});
 
 export default {
   term: (term) => ({ type: "SEARCH.SET_TERM", term }),
@@ -49,4 +49,4 @@ export default {
   none: (none) => ({ type: "SEARCH.NONE", none }),
 
   searching: (searching) => ({ type: "SEARCH.SEARCHING", searching })
-}
+};

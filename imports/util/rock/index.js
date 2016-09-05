@@ -1,9 +1,9 @@
 
-import { api, parseEndpoint } from "./utilities"
-import endpoints from "./endpoints"
+import { api, parseEndpoint } from "./utilities";
+import endpoints from "./endpoints";
 
-export default {
+export {
   api,
   endpoints,
   parseEndpoint
-}
+};

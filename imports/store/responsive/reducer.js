@@ -55,23 +55,23 @@ const initial = {
   width: null, // Number / screen width
   breakpoints: [], // array of stringified breakpoints
   _breakpoints: breakpoints, // object to test against
-}
+};
 
 export default function modal(state = initial, action) {
   switch (action.type) {
     case "@@RESPONSIVE.SET_BREAKPOINT":
       return { ...state, ...{
         breakpoints: action.breakpoints
-      } }
+      } };
     case "@@RESPONSIVE.SET_WIDTH":
       return { ...state, ...{
         width: action.width
-      } }
+      } };
     case "@@RESPONSIVE.SET_HEIGHT":
     return { ...state, ...{
       height: action.height
-    } }
+    } };
     default:
-      return state
+      return state;
   }
 }

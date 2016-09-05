@@ -5,16 +5,16 @@
   TOPIC.SET
     used for loading topics from the db
 */
-import reducer from "./reducer"
-import { addReducer } from "../utilities"
+import reducer from "./reducer";
+import { addReducer } from "../utilities";
 
 addReducer({
   topics: reducer
-})
+});
 
 export default {
   toggle: (props) => ({ type: "TOPIC.TOGGLE", props}),
 
   set: (content) => ({ type: "TOPIC.SET", content})
 
-}
+};

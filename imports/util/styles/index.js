@@ -1,6 +1,6 @@
 
-import overlay from "./styles.overlay"
+import overlay from "./styles.overlay";
 
 export default {
   overlay
-}
+};

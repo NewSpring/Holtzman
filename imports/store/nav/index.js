@@ -25,12 +25,12 @@
 
 
 */
-import reducer from "./reducer"
-import { addReducer } from "../utilities"
+import reducer from "./reducer";
+import { addReducer } from "../utilities";
 
 addReducer({
   nav: reducer
-})
+});
 
 export default {
   reducer,
@@ -45,4 +45,4 @@ export default {
 
   hide: () => ({ type: "NAV.SET_VISIBILITY", visible: false }),
   show: () => ({ type: "NAV.SET_VISIBILITY", visible: true })
-}
+};

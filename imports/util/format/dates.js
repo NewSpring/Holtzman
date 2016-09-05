@@ -17,21 +17,21 @@ let months = [
   "October",
   "November",
   "December"
-]
+];
 
 function toDateString(dateObj, abbreviated) {
-  const year = dateObj.getFullYear()
-  const date = dateObj.getDate()
-  const month = dateObj.getMonth()
-  let monthName = months[month]
+  const year = dateObj.getFullYear();
+  const date = dateObj.getDate();
+  const month = dateObj.getMonth();
+  let monthName = months[month];
 
   if (abbreviated) {
-    monthName = monthName.substring(0, 3)
+    monthName = monthName.substring(0, 3);
   }
 
 
-  return `${monthName} ${date}, ${year}`
+  return `${monthName} ${date}, ${year}`;
 }
 
 
-export { toDateString }
+export { toDateString };

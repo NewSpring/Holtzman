@@ -8,4 +8,4 @@ function date(contentItem) {
 
 }
 
-export default date
+export default date;

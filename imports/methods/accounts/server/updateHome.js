@@ -1,15 +1,15 @@
 /*global Meteor, check */
-import { api } from "../../../util/rock"
-import { makeNewGuid } from "../../../util"
+import { api } from "../../../util/rock";
+import { makeNewGuid } from "../../../util";
 
 Meteor.methods({
   "rock/accounts/updateHome": function (data) {
 
     if (!this.userId) {
-      throw new Meteor.Error("You must be logged in to change your information")
+      throw new Meteor.Error("You must be logged in to change your information");
     }
 
-    const user = Meteor.users.findOne(this.userId)
+    const user = Meteor.users.findOne(this.userId);
 
     let query = api.parseEndpoint(`
       Groups/GetFamilies/${user.services.rock.PersonId}?
@@ -21,35 +21,35 @@ Meteor.methods({
           Id,
           GroupLocations/Location/Id,
           GroupLocations/GroupLocationTypeValue/Value
-    `)
+    `);
 
-    let locations = api.get.sync(query)
-    locations = locations[0]
-    let GroupId = locations.Id
-    locations = locations.GroupLocations
+    let locations = api.get.sync(query);
+    locations = locations[0];
+    let GroupId = locations.Id;
+    locations = locations.GroupLocations;
 
-    let home = false
+    let home = false;
 
     for (let location of locations) {
       if (location.GroupLocationTypeValue.Value === "Home") {
-        home = location.Location.Id
+        home = location.Location.Id;
       }
     }
 
     // move campus to another call
-    const Campus = data.Campus
-    delete data.Campus
+    const Campus = data.Campus;
+    delete data.Campus;
 
     // if (GroupId) {
     //   let result = api.patch.sync(`Groups/${GroupId}`, { CampusId: Campus })
     // }
 
     if (home) {
-      let success = api.patch.sync(`Locations/${home}`, data)
+      let success = api.patch.sync(`Locations/${home}`, data);
       if (success) {
-        return true
+        return true;
       } else {
-        throw new Meteor.Error(success)
+        throw new Meteor.Error(success);
       }
     }
 
@@ -63,12 +63,12 @@ Meteor.methods({
     const Location = { ...{
       Guid: makeNewGuid(),
       IsActive: true
-    }, ...data }
+    }, ...data };
 
-    let LocationId = api.post.sync(`Locations`, Location)
+    let LocationId = api.post.sync("Locations", Location);
 
     if (!LocationId) {
-      throw new Meteor.Error("Location could not be created", Location)
+      throw new Meteor.Error("Location could not be created", Location);
     }
 
     const GroupLocation = {
@@ -78,16 +78,16 @@ Meteor.methods({
       IsMailingLocation: true,
       Guid: makeNewGuid(),
       CreatedByPersonAliasId: user.services.rock.PrimaryAliasId
-    }
+    };
 
-    let result = api.post.sync(`GroupLocations`, GroupLocation)
+    let result = api.post.sync("GroupLocations", GroupLocation);
 
     if (result.state === 400) {
-      throw new Meteor.Error(result)
+      throw new Meteor.Error(result);
     }
 
-    return true
+    return true;
 
 
   },
-})
+});

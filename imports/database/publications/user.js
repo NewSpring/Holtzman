@@ -1,4 +1,4 @@
-import { Meteor } from 'meteor/meteor';
+import { Meteor } from "meteor/meteor";
 
 if (Meteor.isServer) {
 
@@ -11,7 +11,7 @@ if (Meteor.isServer) {
           profile: 1,
         }
       }
-    )
-  })
+    );
+  });
 
 }

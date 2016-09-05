@@ -16,12 +16,12 @@
     change type of modal to render (default is side)
 
 */
-import reducer from "./reducer"
-import { addReducer } from "../utilities"
+import reducer from "./reducer";
+import { addReducer } from "../utilities";
 
 addReducer({
   modal: reducer
-})
+});
 
 export default {
   reducer,
@@ -37,4 +37,4 @@ export default {
 
   setRetrigger: (retrigger) => ({ type: "MODAL.SET_RETRIGGER", retrigger }),
 
-}
+};

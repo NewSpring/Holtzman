@@ -1,6 +1,6 @@
 
-import accounts from "./accounts"
+import accounts from "./accounts";
 
 export default {
   accounts
-}
+};

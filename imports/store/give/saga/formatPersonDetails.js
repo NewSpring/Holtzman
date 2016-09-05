@@ -1,7 +1,7 @@
-import Moment from "moment"
+import Moment from "moment";
 
 const formatPersonDetails = (give) => {
-  const { data, transactions, total, schedules, savedAccount } = give
+  const { data, transactions, total, schedules, savedAccount } = give;
 
   // here we format data for the NMI processing
   let joinedData = {
@@ -16,10 +16,10 @@ const formatPersonDetails = (give) => {
       state: data.billing.state,
       postal: data.billing.zip
     },
-  }
+  };
 
   let campusId = data.personal.campusId;
-  joinedData["merchant-defined-field-2"] = campusId
+  joinedData["merchant-defined-field-2"] = campusId;
 
   if (schedules && Object.keys(schedules).length) {
     // // @TODO allow custom start dates
@@ -28,64 +28,64 @@ const formatPersonDetails = (give) => {
     joinedData.plan = {
       payments: 0,
       amount: total
-    }
+    };
 
-    delete joinedData.amount
+    delete joinedData.amount;
     for (let key in schedules) {
-      let schedule = schedules[key]
+      let schedule = schedules[key];
       switch (schedule.frequency) {
         case "One-Time":
-          joinedData.plan.payments = 1
-          joinedData.plan["month-frequency"] = 12
-          joinedData.plan["day-of-month"] = schedule.start ? Moment(schedule.start).date() : Moment().date()
+          joinedData.plan.payments = 1;
+          joinedData.plan["month-frequency"] = 12;
+          joinedData.plan["day-of-month"] = schedule.start ? Moment(schedule.start).date() : Moment().date();
           break;
         case "Weekly":
-          joinedData.plan["day-frequency"] = 7
+          joinedData.plan["day-frequency"] = 7;
           break;
         case "Bi-Weekly":
-          joinedData.plan["day-frequency"] = 14
+          joinedData.plan["day-frequency"] = 14;
           break;
         // case "Twice a Month":
         //   joinedData.plan["month-frequency"] =
         //   break;
         case "Monthly":
-          joinedData.plan["month-frequency"] = 1
-          joinedData.plan["day-of-month"] = schedule.start ? Moment(schedule.start).date() : Moment().date()
+          joinedData.plan["month-frequency"] = 1;
+          joinedData.plan["day-of-month"] = schedule.start ? Moment(schedule.start).date() : Moment().date();
           break;
       }
 
-      joinedData["start-date"] = schedule.start ? Moment(schedule.start).format("YYYYMMDD") : Moment().add(1, "days").format("YYYYMMDD")
-      joinedData["merchant-defined-field-3"] = joinedData["start-date"]
+      joinedData["start-date"] = schedule.start ? Moment(schedule.start).format("YYYYMMDD") : Moment().add(1, "days").format("YYYYMMDD");
+      joinedData["merchant-defined-field-3"] = joinedData["start-date"];
 
       for (let transaction in transactions) {
-        joinedData["merchant-defined-field-1"] = transaction
-        break
+        joinedData["merchant-defined-field-1"] = transaction;
+        break;
       }
 
       // @TODO support multiple accounts at once
-      break
+      break;
     }
 
 
   } else if (transactions && Object.keys(transactions).length) {
 
-    joinedData.product = []
+    joinedData.product = [];
     for (let transaction in transactions) {
       joinedData.product.push({
         "quantity": 1,
         "product-code": transaction,
         description: transactions[transaction].label,
         "total-amount": transactions[transaction].value
-      })
+      });
     }
   }
 
   if (savedAccount.id) {
-    joinedData.savedAccount = savedAccount.id
-    joinedData.savedAccountName = savedAccount.name
+    joinedData.savedAccount = savedAccount.id;
+    joinedData.savedAccountName = savedAccount.name;
   }
 
-  return joinedData
-}
+  return joinedData;
+};
 
-export default formatPersonDetails
+export default formatPersonDetails;

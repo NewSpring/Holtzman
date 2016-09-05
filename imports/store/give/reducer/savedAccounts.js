@@ -3,7 +3,7 @@
 const savedAccount = (state, action) => {
 
   if (!action.savedAccount && action.savedAccount != "clear") {
-    return state
+    return state;
   }
 
   if (action.savedAccount === "clear") {
@@ -14,14 +14,14 @@ const savedAccount = (state, action) => {
         paymentType: null, // type of card
       },
       name: null, // name of card
-    }
+    };
   }
 
   return { ...state, ...{
     savedAccount: action.savedAccount
-  } }
-}
+  } };
+};
 
 export default {
   savedAccount
-}
+};

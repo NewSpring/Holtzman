@@ -1,13 +1,13 @@
 
 
-import available from "./available"
-import login from "./login"
-import signup from "./signup"
-import reset from "./resetPassword"
-import update from "./update"
-import updateHome from "./updateHome"
-import forceReset from "./forceReset"
-import recover from "./recover"
+import available from "./available";
+import login from "./login";
+import signup from "./signup";
+import reset from "./resetPassword";
+import update from "./update";
+import updateHome from "./updateHome";
+import forceReset from "./forceReset";
+import recover from "./recover";
 
 export default {
   available,
@@ -18,4 +18,4 @@ export default {
   updateHome,
   forceReset,
   recover
-}
+};

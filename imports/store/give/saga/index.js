@@ -1,23 +1,23 @@
-import "regenerator-runtime/runtime"
+import "regenerator-runtime/runtime";
 import React from "react";
-import ReactDOM from "react-dom"
-import Moment from "moment"
+import ReactDOM from "react-dom";
+import Moment from "moment";
 import { takeLatest, takeEvery } from "redux-saga";
-import { fork, take, put, cps, call, select } from "redux-saga/effects"
+import { fork, take, put, cps, call, select } from "redux-saga/effects";
 import gql from "graphql-tag";
 
-import { GraphQL } from "../../../../core/graphql"
-import { addSaga } from "../../../../core/store/utilities"
-import modalActions from "../../../../core/store/modal"
+import { GraphQL } from "../../../../core/graphql";
+import { addSaga } from "../../../../core/store/utilities";
+import modalActions from "../../../../core/store/modal";
 
-import types from "./../types"
-import actions from "../actions"
+import types from "./../types";
+import actions from "../actions";
 
-import { CreditCardForm, AchForm } from "./paymentForm"
-import formatPersonDetails from "./formatPersonDetails"
+import { CreditCardForm, AchForm } from "./paymentForm";
+import formatPersonDetails from "./formatPersonDetails";
 
-import { order, schedule, charge } from "../../../methods/give/client"
-import RecoverSchedules from "../../../blocks/RecoverSchedules"
+import { order, schedule, charge } from "../../../methods/give/client";
+import RecoverSchedules from "../../../blocks/RecoverSchedules";
 
 // XXX break this file up into smaller files
 
@@ -37,49 +37,49 @@ function* validate() {
 
   // we strip all product and schedule data so the validation is
   // just of the personal details + billing address
-  const modifiedGive = {...give}
-  delete modifiedGive.transactions
-  delete modifiedGive.schedules
+  const modifiedGive = {...give};
+  delete modifiedGive.transactions;
+  delete modifiedGive.schedules;
 
 
 
   // step 1 (sumbit personal details)
   // personal info is ready to be submitted
-  const formattedData = formatPersonDetails(modifiedGive)
+  const formattedData = formatPersonDetails(modifiedGive);
 
   // in order to make this a validation call, we need to set the amount
   // to be 9
-  formattedData.amount = 0
+  formattedData.amount = 0;
 
   let error, url;
   try {
     // call the Meteor method to submit data to NMI
-    const response = yield cps(order, formattedData)
-    url = response.url
+    const response = yield cps(order, formattedData);
+    url = response.url;
 
   } catch (e) { error = e }
 
   // step 2 (sumbit payment details)
-  yield submitPaymentDetails(modifiedGive.data, url)
+  yield submitPaymentDetails(modifiedGive.data, url);
 
   if (url) {
     // step 3 (trigger validation)
     let token = url.split("/").pop();
     try {
-      transactionResponse = yield cps(charge, token, name, null)
+      transactionResponse = yield cps(charge, token, name, null);
     } catch (e) {
-      validationError = e
-      success = false
+      validationError = e;
+      success = false;
     }
   } else {
-    success = false
-    validationError = error
+    success = false;
+    validationError = error;
   }
 
   return {
     success,
     validationError,
-  }
+  };
 
 
 }
@@ -96,36 +96,36 @@ function* chargeTransaction({ state }) {
       id;
 
   // set loading state
-  yield put(actions.loading())
+  yield put(actions.loading());
 
   // personal info is ready to be submitted
-  const formattedData = formatPersonDetails(give)
+  const formattedData = formatPersonDetails(give);
 
   // if you have a saved account, NMI lets you "order" a schedule
   // instead of order + charge
   if (formattedData.savedAccount && Object.keys(give.schedules).length) {
     // wrap the function for the same api
     action = (token, name, id, callback) => {
-      Meteor.call("give/order", formattedData, true, id, callback)
-    }
+      Meteor.call("give/order", formattedData, true, id, callback);
+    };
 
   } else {
 
-    let store = yield select()
-    give = store.give
+    let store = yield select();
+    give = store.give;
 
     if (formattedData.savedAccount) {
       // set people data and store transaction id
-      yield* submitPersonDetails(give, true)
+      yield* submitPersonDetails(give, true);
     }
 
-    store = yield select()
-    give = store.give
+    store = yield select();
+    give = store.give;
 
     // wait until we have the transaction url
     if (!give.url) {
-      let { url } = yield take(types.SET_TRANSACTION_DETAILS)
-      give.url = url
+      let { url } = yield take(types.SET_TRANSACTION_DETAILS);
+      give.url = url;
     }
   }
 
@@ -135,15 +135,15 @@ function* chargeTransaction({ state }) {
   if (Object.keys(give.schedules).length) {
     // if there is not a saved account, charge the order
     if (!formattedData.savedAccount) {
-      action = schedule
+      action = schedule;
 
       if (give.data.payment.type === "cc") {
         // saved accounts don't validate the payment by default
         // so we make 3 blocking requests to validate the card :(
-        let { success, validationError } = yield* validate()
+        let { success, validationError } = yield* validate();
 
         if (validationError) {
-          error = validationError
+          error = validationError;
         }
       }
     }
@@ -151,34 +151,34 @@ function* chargeTransaction({ state }) {
 
 
   if (give.scheduleToRecover && Object.keys(give.schedules).length) {
-    id = give.scheduleToRecover
+    id = give.scheduleToRecover;
   }
 
-  let transactionResponse = {}
+  let transactionResponse = {};
   // submit transaction
   try {
     if (!error) {
-      transactionResponse = yield cps(action, token, name, id)
+      transactionResponse = yield cps(action, token, name, id);
     }
   } catch (e) { error = e }
 
   // set error states
   if (error) {
 
-    yield put(actions.error({ transaction: error }))
+    yield put(actions.error({ transaction: error }));
 
     // remove loading state
-    yield put(actions.setState("error"))
+    yield put(actions.setState("error"));
 
   } else {
 
     // remove loading state
-    yield put(actions.setState("success"))
+    yield put(actions.setState("success"));
 
     // if we activated an inactive schedule, remove it
     if (give.scheduleToRecover && give.recoverableSchedules[give.scheduleToRecover]) {
-      yield put(actions.deleteSchedule(give.scheduleToRecover))
-      yield put(actions.deleteRecoverableSchedules(give.scheduleToRecover))
+      yield put(actions.deleteSchedule(give.scheduleToRecover));
+      yield put(actions.deleteRecoverableSchedules(give.scheduleToRecover));
     }
 
     // if this was a named card (as in creating a saved account)
@@ -188,7 +188,7 @@ function* chargeTransaction({ state }) {
     // hacky work around. I think this can wait until Apollo is closer
     // to revist
     if (name) {
-      const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+      const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
       let query = gql`
         query GetSavedPayments {
           savedPayments {
@@ -201,11 +201,11 @@ function* chargeTransaction({ state }) {
             }
           }
         }
-      `
+      `;
 
       // wait one second before calling this
-      yield call(delay, 1000)
-      yield GraphQL.query({ query })
+      yield call(delay, 1000);
+      yield GraphQL.query({ query });
     }
   }
 }
@@ -222,12 +222,12 @@ function* submitPaymentDetails(data, url) {
   if (data.payment.type === "cc" && !data.payment.cardNumber) return;
   if (data.payment.type === "ach" && !data.payment.accountNumber) return;
 
-  const form = document.createElement("FORM")
+  const form = document.createElement("FORM");
 
   let Component,
       obj;
 
-  const { payment, personal } = data
+  const { payment, personal } = data;
 
   // format data and select component
   if (payment.type === "ach") {
@@ -236,23 +236,23 @@ function* submitPaymentDetails(data, url) {
       account: payment.accountNumber,
       routing: payment.routingNumber,
       type: payment.accountType
-    }
+    };
 
-    Component = AchForm
+    Component = AchForm;
   } else {
     obj = {
       number: payment.cardNumber,
       exp: payment.expiration,
       ccv: payment.ccv,
-    }
+    };
 
-    Component = CreditCardForm
+    Component = CreditCardForm;
   }
 
   // create the fieldset
   const FieldSet = React.createElement(Component, {...obj});
   // add fieldset to non rendered form
-  ReactDOM.render(FieldSet, form)
+  ReactDOM.render(FieldSet, form);
 
   // @TODO test on older browsers
   // store data in NMI's system
@@ -267,14 +267,14 @@ function* submitPaymentDetails(data, url) {
     })
     .catch((e) => {
       // @TODO error handling
-    })
+    });
 
 }
 
 function* submitPersonDetails(give, autoSubmit) {
 
   // personal info is ready to be submitted
-  const formattedData = formatPersonDetails(give)
+  const formattedData = formatPersonDetails(give);
 
   /*
 
@@ -289,8 +289,8 @@ function* submitPersonDetails(give, autoSubmit) {
   let error, url;
   try {
     // call the Meteor method to submit data to NMI
-    const response = yield cps(order, formattedData)
-    url = response.url
+    const response = yield cps(order, formattedData);
+    url = response.url;
 
   } catch (e) { error = e }
 
@@ -316,12 +316,12 @@ function* submitPersonDetails(give, autoSubmit) {
       mode: "no-cors"
     })
       .then((response) => {})
-      .catch((e) => {})
+      .catch((e) => {});
 
   }
 
   // update the store with the url
-  return yield put(actions.setDetails(url))
+  return yield put(actions.setDetails(url));
 
 }
 
@@ -346,7 +346,7 @@ function* createOrder() {
     4. handle success / errors
 
   */
-  let { give } = yield select()
+  let { give } = yield select();
   if ((give.step - 1) === 2) {
     // set people data and store transaction id
     yield* submitPersonDetails(give, false);
@@ -380,16 +380,16 @@ function* recoverTransactions() {
 
   if (hasRecovered) return;
 
-  let user = Meteor.userId()
+  let user = Meteor.userId();
 
   if (!user) {
-    const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED")
+    const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED");
   }
 
-  user = Meteor.user()
+  user = Meteor.user();
 
   if (user && user.profile && user.profile.reminderDate) {
-    yield put(actions.setReminder(user.profile.reminderDate))
+    yield put(actions.setReminder(user.profile.reminderDate));
   }
 
   const query = gql`
@@ -411,47 +411,47 @@ function* recoverTransactions() {
 
   const variables = { isActive: false, cache: false };
 
-  let { data } = yield GraphQL.query({ query, variables })
+  let { data } = yield GraphQL.query({ query, variables });
 
   let { schedules } = data;
   if (!schedules) schedules = [];
   hasRecovered = true;
-  let bulkUpdate = {}
-  schedules = schedules.filter(x => !x.gateway)
+  let bulkUpdate = {};
+  schedules = schedules.filter(x => !x.gateway);
   if (schedules.length) {
     for (let schedule of schedules) {
       // only recover schedules that are missing info (i.e. not turned off in Rock)
       if (schedule.gateway) continue;
 
       if (schedule.schedule.value === "Twice a Month") {
-        schedule.schedule.value = null
+        schedule.schedule.value = null;
       }
       bulkUpdate[schedule.id] = {...{
         start: Moment(schedule.start).format("YYYYMMDD"),
         frequency: schedule.schedule.value
-      }, ...schedule }
+      }, ...schedule };
 
     }
 
-    let time = new Date()
+    let time = new Date();
     if (user && user.profile && user.profile.reminderDate) {
-      time = user.profile.reminderDate
+      time = user.profile.reminderDate;
     }
-    let now = new Date()
+    let now = new Date();
 
-    yield put(actions.saveSchedules(bulkUpdate))
+    yield put(actions.saveSchedules(bulkUpdate));
 
     // only update the store if it is past the reminder date
-    if (now < time) return
+    if (now < time) return;
 
     let state = yield select();
-    let { pathname } = state.routing.location
+    let { pathname } = state.routing.location;
 
     if (pathname.split("/").length === 4 && pathname.split("/")[3] === "recover" ) {
-      return
+      return;
     }
 
-    yield put(modalActions.render(RecoverSchedules))
+    yield put(modalActions.render(RecoverSchedules));
   }
 
 }
@@ -462,7 +462,7 @@ function* watchRoute({ payload }){
   if (Meteor.isServer) return;
 
   function isGive(path) {
-    return path.split("/")[1] === "give"
+    return path.split("/")[1] === "give";
   }
 
   if (isGive(payload.pathname)) yield* recoverTransactions();
@@ -473,21 +473,21 @@ function* watchRoute({ payload }){
 
 // clear out data on user change
 function* clearGiveData({ authorized }){
-  if (!authorized) yield put(actions.clearData())
+  if (!authorized) yield put(actions.clearData());
 }
 
 addSaga(function* accountsSaga(){
   yield fork(takeEvery, types.SET_STATE, chargeTransaction);
   yield fork(takeEvery, types.SET_PROGRESS, createOrder);
   yield fork(takeEvery, "ACCOUNTS.IS_AUTHORIZED", clearGiveData);
-  yield fork(takeLatest, "@@router/UPDATE_LOCATION", watchRoute)
+  yield fork(takeLatest, "@@router/UPDATE_LOCATION", watchRoute);
 
   const state = yield select();
   const payload = state.routing.location;
 
   function isGive(path) {
-    return path.split("/")[1] === "give"
+    return path.split("/")[1] === "give";
   }
 
   if (isGive(payload.pathname)) yield* recoverTransactions();
-})
+});
