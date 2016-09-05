@@ -17,6 +17,7 @@
     "quotes": [2, "double"],
     "jsx-quotes": [2, "prefer-double"],
     "semi": [2, "always", { "omitLastInOneLineBlock": true}],
+    # "no-unused-vars": 2,
 
     "react/jsx-boolean-value": 2,
     "react/jsx-closing-bracket-location": 2,
