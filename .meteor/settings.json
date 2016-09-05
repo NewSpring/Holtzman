@@ -1,0 +1,24 @@
+{
+  "rock": {
+    "baseURL": "https://rock.newspring.cc/",
+    "token": "6jTiDOj6eVFS1uqyDk1pRWxR",
+    "tokenName": "Authorization-Token"
+  },
+  "slack": "https://hooks.slack.com/services/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",
+  "public": {
+    "lookback": "rs3HMt78YRHBKLqMQ",
+    "hockey": "55f30ca2e7c3612439ebf7589a7052c8",
+    "typekit": "ice7qhs",
+    "cdnPrefix": "https://d21jvaqa12zkju.cloudfront.net",
+    "ga": "UA-7130289-25",
+    "chartbeat": 36438,
+    "hotjar": 143602,
+    "heighliner": "https://api.newspring.cc/graphql",
+    "esv": "0e5f479ccc336793",
+    "rock": {
+      "baseURL": "https://rock.newspring.cc/",
+      "token": "QLTgNQP3fDJIXxohu9RY1CA1",
+      "tokenName": "Authorization-Token"
+    }
+  }
+}
