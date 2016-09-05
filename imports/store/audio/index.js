@@ -10,4 +10,4 @@ export {
   types,
   actions,
   reducer,
-}
+};

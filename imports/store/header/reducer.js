@@ -2,9 +2,9 @@
   Shared store
 */
 
-import { createReducer } from "../utilities"
+import { createReducer } from "../utilities";
 
-let brand = "#6BAC43"
+let brand = "#6BAC43";
 const initial = {
   visible: true,
   statusBar: true,
@@ -55,7 +55,7 @@ export default createReducer(initial, {
 
     const newState = {...state,
       content: { ...state.content, ...mergedContent }
-    }
+    };
 
     if(mergedContent.title || mergedContent.isSearch) {
       newState.visible = true;
@@ -69,7 +69,7 @@ export default createReducer(initial, {
       visible: action.visible,
       // do type check since statusBar is a boolean value
       statusBar: typeof action.statusBar === "undefined" ? initial.statusBar : action.statusBar,
-    }
+    };
   },
 
 });

@@ -59,4 +59,4 @@ export default {
   repeat: () => ({ type: types.SET_REPEAT, repeat: "repeat" }),
   resetRepeat: () => ({ type: types.SET_REPEAT, repeat: "default" }),
   repeatOne: () => ({ type: types.SET_REPEAT, repeat: "repeat-one" }),
-}
+};

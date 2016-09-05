@@ -1,5 +1,5 @@
 
-import { Accounts } from 'meteor/meteor';
+import { Accounts } from "meteor/accounts-base";
 
 import ApolloClient, {
   createNetworkInterface,
@@ -23,7 +23,7 @@ networkInterface.use([{
 
     next();
   },
-}])
+}]);
 
 const GraphQL = new ApolloClient({
   networkInterface,

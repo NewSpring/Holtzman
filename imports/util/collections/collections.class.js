@@ -1,8 +1,8 @@
 
-import collectionColor from "./collections.color"
+import collectionColor from "./collections.color";
 
 function collectionClass(contentItem) {
-  return `overlay-color--${collectionColor(contentItem)}`
+  return `overlay-color--${collectionColor(contentItem)}`;
 }
 
-export default collectionClass
+export default collectionClass;

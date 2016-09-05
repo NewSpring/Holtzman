@@ -32,7 +32,7 @@ export default function patchSubscribeData (ReactRouterSSR) {
       const collName = this._name;
 
       // this line is added just to make sure this works CollectionFS
-      if (typeof this._transform === 'function') {
+      if (typeof this._transform === "function") {
         options.transform = this._transform;
       }
 
@@ -69,7 +69,7 @@ export default function patchSubscribeData (ReactRouterSSR) {
   // By default, Meteor[call,apply] also inherit SsrContext
   // So, they can't access the full MongoDB dataset because of that
   // Then, we need to remove the SsrContext within Method calls
-  ['call', 'apply'].forEach((methodName) => {
+  ["call", "apply"].forEach((methodName) => {
     const original = Meteor[methodName];
     Meteor[methodName] = (...args) => {
       const response = ReactRouterSSR.ssrContext.withValue(null, () => {

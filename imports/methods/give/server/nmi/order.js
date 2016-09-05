@@ -1,14 +1,14 @@
 /*global Meteor */
 
-import { Builder } from "xml2js"
-import { parseXML } from "../../../../util"
-import ErrorCodes from "./language"
+import { Builder } from "xml2js";
+import { parseXML } from "../../../../util";
+import ErrorCodes from "./language";
 
 const step2 = (purchaseData, method, callback) => {
 
-  method || (method = "sale")
-  const { ROOT_URL } = __meteor_runtime_config__
-  let url = `${ROOT_URL}/give/now`
+  method || (method = "sale");
+  const { ROOT_URL } = __meteor_runtime_config__;
+  let url = `${ROOT_URL}/give/now`;
 
   const sale = {
     [method]: { ...{
@@ -17,29 +17,29 @@ const step2 = (purchaseData, method, callback) => {
       "order-description": "Online contributions from Apollos",
       "order-id": `apollos_${Date.now()}_${Math.ceil(Math.random() * 100000)}` || purchaseData.orderId,
     }, ...purchaseData }
-  }
+  };
 
   if (!purchaseData["customer-vault-id"] && method === "sale") {
-    sale.sale["add-customer"] = ""
+    sale.sale["add-customer"] = "";
   }
 
-  let instant = false
+  let instant = false;
   // if we are using a customer vault, no need for a redirect-url
   if (purchaseData["customer-vault-id"] && method === "add-subscription") {
-    delete sale[method]["redirect-url"]
-    instant = true
+    delete sale[method]["redirect-url"];
+    instant = true;
   }
 
 
-  const builder = new Builder()
-  const xml = builder.buildObject(sale)
+  const builder = new Builder();
+  const xml = builder.buildObject(sale);
   function timeout(ms, promise) {
     return new Promise(function(resolve, reject) {
       setTimeout(function() {
-        reject(new Error("The request to our payment process took longer than expected. For your safety we have cancelled this action. You were not charged and should be able to try again!"))
-      }, ms)
-      promise.then(resolve, reject)
-    })
+        reject(new Error("The request to our payment process took longer than expected. For your safety we have cancelled this action. You were not charged and should be able to try again!"));
+      }, ms);
+      promise.then(resolve, reject);
+    });
   }
 
 
@@ -51,60 +51,60 @@ const step2 = (purchaseData, method, callback) => {
     }
   })
   .then((response) => {
-    return response.text()
+    return response.text();
   })
   .then((data) => {
 
     try {
-      data = parseXML(data)
+      data = parseXML(data);
     } catch (e) {
-      callback(e)
-      return
+      callback(e);
+      return;
     }
 
     // instant transaction
     if (instant) {
 
       if (data["result-code"] === "100") {
-        callback(null, data)
-        return
+        callback(null, data);
+        return;
       }
 
-      let number = Number(data["result-code"])
+      let number = Number(data["result-code"]);
       let err;
       if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
-        err = ErrorCodes[number]
+        err = ErrorCodes[number];
       } else if (ErrorCodes[number] === "result-text")  {
-        err = data["result-text"]
+        err = data["result-text"];
       }
 
-      callback(err)
-      return
+      callback(err);
+      return;
     }
 
     if (data["result-code"] === "100") {
       let response = {
         url: data["form-url"],
         transactionId: data["transaction-id"]
-      }
-      callback(null, response)
-      return
+      };
+      callback(null, response);
+      return;
     }
 
-    let number = Number(data["result-code"])
+    let number = Number(data["result-code"]);
     let err;
     if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
-      err = ErrorCodes[number]
+      err = ErrorCodes[number];
     } else if (ErrorCodes[number] === "result-text")  {
-      err = data["result-text"]
+      err = data["result-text"];
     }
 
-    callback(err)
+    callback(err);
 
   })
-  .catch(callback))
+  .catch(callback));
 
 
-}
+};
 
-export default step2
+export default step2;

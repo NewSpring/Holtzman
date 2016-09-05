@@ -3,7 +3,7 @@
 function sectionImage(images) {
 
   let bgImage = _.find(images, (image) => {
-    return image.fileLabel === "1:1"
+    return image.fileLabel === "1:1";
   });
 
   if (!bgImage) {
@@ -16,8 +16,8 @@ function sectionImage(images) {
     bgImage = "";
   }
 
-  return bgImage
+  return bgImage;
 
 }
 
-export default sectionImage
+export default sectionImage;

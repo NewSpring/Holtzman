@@ -1,6 +1,6 @@
 // converted from coffeescript in old newspring core js
 var Debouncer,
-  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments) } };
 
 Debouncer = (function() {
   function Debouncer(data) {
@@ -10,8 +10,8 @@ Debouncer = (function() {
     this.update = bind(this.update, this);
 
     if (Meteor.isServer) {
-      this.data()
-      return
+      this.data();
+      return;
     }
 
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
@@ -39,4 +39,4 @@ Debouncer = (function() {
 
 })();
 
-export default Debouncer
+export default Debouncer;

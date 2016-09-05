@@ -10,26 +10,26 @@ function backgroundImage(contentItem, { label="1:1" } = {}) {
   const channel = contentItem.channelName;
 
   let bgImage = _.find(images, (image) => {
-    return image.fileLabel === label
+    return image.fileLabel === label;
   });
 
   if (!bgImage) {
     if (channel === "devotionals") {
       let editorialImage = _.find(images, (image) => {
-        return image.fileLabel === "2:1"
+        return image.fileLabel === "2:1";
       });
       let inlineImage = _.find(images, (image) => {
-        return image.fileLabel === "inline"
+        return image.fileLabel === "inline";
       });
       let defaultImage = _.find(images, (image) => {
-        return image.fileLabel === "default"
+        return image.fileLabel === "default";
       });
       if (editorialImage) bgImage = editorialImage;
       else if (inlineImage) bgImage = inlineImage;
       else if (defaultImage) bgImage = defaultImage;
       else if (images) bgImage = images[0];
     } else if (images) {
-      bgImage = images[0]
+      bgImage = images[0];
     }
   }
 
@@ -43,7 +43,7 @@ function backgroundImage(contentItem, { label="1:1" } = {}) {
     bgImage = "";
   }
 
-  return bgImage
+  return bgImage;
 }
 
-export default backgroundImage
+export default backgroundImage;

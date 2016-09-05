@@ -1,10 +1,10 @@
 
-import "regenerator-runtime/runtime"
+import "regenerator-runtime/runtime";
 import { takeLatest } from "redux-saga";
-import { fork, put, cps } from "redux-saga/effects"
+import { fork, put, cps } from "redux-saga/effects";
 
 // import { routing as log } from "../../methods"
-import { addSaga } from "../utilities"
+import { addSaga } from "../utilities";
 
 // addSaga(function* logInitRoute() {
 //

@@ -41,4 +41,4 @@ export default {
 
   SET_TRANSACTION_DETAILS: "GIVE.SET_TRANSACTION_DETAILS",
 
-}
+};

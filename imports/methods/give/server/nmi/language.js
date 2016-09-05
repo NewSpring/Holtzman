@@ -22,4 +22,4 @@ export default {
   410: "We had an issue processing transactions, please try again",
   411: "Looks like we are having connection issues with our processor, please try again later",
   430: "This looks like a duplicate transaction, for your safety, we have declined the transaction",
-}
+};

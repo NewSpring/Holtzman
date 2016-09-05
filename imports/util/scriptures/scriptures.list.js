@@ -8,11 +8,11 @@ function scriptureList(contentItem, { commas=true } = {}) {
   const { book, passage } = scriptures;
 
   let combo = scriptures.map(({ book, passage}, i) => {
-    return `${book} ${passage}`
+    return `${book} ${passage}`;
   });
 
-  if (commas) return combo.join(", ")
-  return combo
+  if (commas) return combo.join(", ");
+  return combo;
 }
 
-export default scriptureList
+export default scriptureList;

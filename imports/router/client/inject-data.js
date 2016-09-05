@@ -4,7 +4,7 @@ import InjectData from "../shared/inject-data";
 Meteor.startup(function() {
   // var dom = $('script[type="text/inject-data"]', document);
   // var injectedDataString = $.trim(dom.text());
-  var dom = document.querySelectorAll('script[type="text/inject-data"]')[0];
+  var dom = document.querySelectorAll("script[type=\"text/inject-data\"]")[0];
   var injectedDataString = dom && dom.innerText ? dom.innerText.trim() : "";
   InjectData._data = InjectData._decode(injectedDataString) || {};
 });

@@ -2,11 +2,11 @@
 let routing;
 
 if (Meteor.isClient) {
-  routing = require("./client")
+  routing = require("./client");
 }
 
 if (Meteor.isServer) {
-  routing = require("./server")
+  routing = require("./server");
 }
 
-export default routing
+export default routing;

@@ -1,7 +1,7 @@
 /*global Meteor */
 
-import { Builder } from "xml2js"
-import { parseXML } from "../../../../util"
+import { Builder } from "xml2js";
+import { parseXML } from "../../../../util";
 
 const voidTransaction = (transactionId, callback) => {
 
@@ -10,10 +10,10 @@ const voidTransaction = (transactionId, callback) => {
       "api-key": Meteor.settings.nmi,
       "transaction-id": transactionId
     }
-  }
+  };
 
-  const builder = new Builder()
-  const xml = builder.buildObject(voidTransactionObj)
+  const builder = new Builder();
+  const xml = builder.buildObject(voidTransactionObj);
 
   return fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",
@@ -23,28 +23,28 @@ const voidTransaction = (transactionId, callback) => {
     }
   })
   .then((response) => {
-    return response.text()
+    return response.text();
   })
   .then((data) => {
 
     try {
-      data = parseXML(data)
+      data = parseXML(data);
     } catch (e) {
-      callback(e)
-      return
+      callback(e);
+      return;
     }
 
     if (data["result-code"] === "100") {
-      callback(null, data)
-      return
+      callback(null, data);
+      return;
     }
 
-    callback(data["result-text"])
+    callback(data["result-text"]);
 
   })
-  .catch(callback)
+  .catch(callback);
 
 
-}
+};
 
-export default voidTransaction
+export default voidTransaction;

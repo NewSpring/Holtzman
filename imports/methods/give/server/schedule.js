@@ -1,10 +1,10 @@
 /*global Meteor */
 
-import Moment from "moment"
+import Moment from "moment";
 
-import { api } from "../../../util/rock"
-import { charge as gatewaySchedule, cancel as gatewayCancel } from "./nmi"
-import createSchedule from "./createSchedule"
+import { api } from "../../../util/rock";
+import { charge as gatewaySchedule, cancel as gatewayCancel } from "./nmi";
+import createSchedule from "./createSchedule";
 
 
 /*
@@ -46,55 +46,55 @@ import createSchedule from "./createSchedule"
 
 Meteor.methods({
   "give/schedule": function(token, accountName, id) {
-    let user = null
+    let user = null;
     if (this.userId) {
-      user = Meteor.users.findOne({ _id: this.userId })
+      user = Meteor.users.findOne({ _id: this.userId });
     }
 
-    let response = {}
+    let response = {};
     try {
-      response = Meteor.wrapAsync(gatewaySchedule)(token)
-      response = createSchedule(response, accountName, id, user)
+      response = Meteor.wrapAsync(gatewaySchedule)(token);
+      response = createSchedule(response, accountName, id, user);
     } catch (e) {
-      throw new Meteor.Error(e.message)
+      throw new Meteor.Error(e.message);
     }
 
 
-    return response
+    return response;
 
   }
-})
+});
 
 
 const cancel = ({ id, gateway }) => {
-  let response = {}
+  let response = {};
 
-  let existing = api.get.sync(`FinancialScheduledTransactions/${id}`)
+  let existing = api.get.sync(`FinancialScheduledTransactions/${id}`);
   // only remove if this is an NMI transaction and we have a gateway code
   if (gateway && existing.FinancialGatewayId === api._.give.gateway.id) {
     try {
-      response = Meteor.wrapAsync(gatewayCancel)(existing.GatewayScheduleId)
+      response = Meteor.wrapAsync(gatewayCancel)(existing.GatewayScheduleId);
     } catch (e) {
-      throw new Meteor.Error(e.message ? e.message : e)
+      throw new Meteor.Error(e.message ? e.message : e);
     }
   }
 
   // created via Rock / NMI / Apollos
   if (existing.GatewayScheduleId) {
-    response = api.patch.sync(`FinancialScheduledTransactions/${id}`, { IsActive: false })
+    response = api.patch.sync(`FinancialScheduledTransactions/${id}`, { IsActive: false });
     // debug for now
-    console.log("@@REMOVE_SCHEDULE_DATA", response, id, existing.GatewayScheduleId, existing)
+    console.log("@@REMOVE_SCHEDULE_DATA", response, id, existing.GatewayScheduleId, existing);
   } else {
     // infellowhsip move over
-    response = api.delete.sync(`FinancialScheduledTransactions/${id}`)
+    response = api.delete.sync(`FinancialScheduledTransactions/${id}`);
   }
 
   if (response.statusText) {
     console.error("@@REMOVE_SCHEDULE_ERROR", response, id, existing);
-    throw new Meteor.Error(response)
+    throw new Meteor.Error(response);
   }
 
-  return true
-}
+  return true;
+};
 
-Meteor.methods({ "give/schedule/cancel": cancel })
+Meteor.methods({ "give/schedule/cancel": cancel });

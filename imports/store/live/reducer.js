@@ -4,14 +4,14 @@
 
 */
 
-import { createReducer } from "../utilities"
+import { createReducer } from "../utilities";
 
 const initial = {
   live: false,
   embedCode: null,
   show: true,
   float: false,
-}
+};
 
 export default createReducer(initial, {
 

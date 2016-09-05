@@ -17,20 +17,20 @@ const animation = {
   animationIterationCount: "infinite",
   animationName: keyframes,
   animationTimingFunction: "cubic-bezier(0.66, 0.21, 0.49, 0.88)",
-}
+};
 
 const phaders = {
   "from": {
     opacity: 0,
   }
-}
+};
 
 const textAnimation = {
   animationDuration: "1.5s",
   animationIterationCount: "infinite",
   animationName: phaders,
   animationDirection: "alternate",
-}
+};
 
 export default StyleSheet.create({
   "live-float": {
