@@ -3,3 +3,5 @@
 **/server.js
 **/webpack.config*.js
 **/core/util/xml.js
+**/.meteor/**
+**/packages/**
