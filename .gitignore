@@ -37,3 +37,12 @@ coverage
 _book
 dev_bundle
 apollos-runtime.json
+
+# ignore settings
+.remote/*
+
+ ignore launchfile
+launch.json
+
+# fastlane
+.notfastlane

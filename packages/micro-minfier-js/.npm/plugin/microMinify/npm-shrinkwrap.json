@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "acorn": {
+      "version": "3.1.0",
+      "resolved": "https://registry.npmjs.org/acorn/-/acorn-3.1.0.tgz",
+      "from": "acorn@3.1.0"
+    }
+  }
+}
