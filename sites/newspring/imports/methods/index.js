@@ -1,2 +1,0 @@
-import "./scripture";
-import "./groups";
