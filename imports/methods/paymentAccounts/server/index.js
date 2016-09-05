@@ -1,29 +1,29 @@
 /*global Meteor */
 
-import { api } from "../../../util/rock"
-import { cancelBilling as gatewayCancelBilling } from "../../give/server/nmi"
+import { api } from "../../../util/rock";
+import { cancelBilling as gatewayCancelBilling } from "../../give/server/nmi";
 const remove = (id) => {
 
-  let existing = api.get.sync(`FinancialPersonSavedAccounts/${id}`)
-  let result = api.delete.sync(`FinancialPersonSavedAccounts/${id}`)
+  let existing = api.get.sync(`FinancialPersonSavedAccounts/${id}`);
+  let result = api.delete.sync(`FinancialPersonSavedAccounts/${id}`);
 
   // only remove if this is an NMI transaction and we have a gateway code
   if (existing.ReferenceNumber && existing.FinancialGatewayId === api._.give.gateway.id) {
     try {
-      let response = Meteor.wrapAsync(gatewayCancelBilling)(existing.ReferenceNumber)
+      let response = Meteor.wrapAsync(gatewayCancelBilling)(existing.ReferenceNumber);
     } catch (e) {
-      throw new Meteor.Error(e.message ? e.message : e)
+      throw new Meteor.Error(e.message ? e.message : e);
     }
   }
 
   if (result.status) {
-    throw new Meteor.Error(result)
+    throw new Meteor.Error(result);
   }
 
-  return true
-}
+  return true;
+};
 
 
-Meteor.methods({ "PaymentAccounts.remove": remove })
+Meteor.methods({ "PaymentAccounts.remove": remove });
 
-export default remove
+export default remove;

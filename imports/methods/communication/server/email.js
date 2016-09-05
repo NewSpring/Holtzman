@@ -1,28 +1,28 @@
 /*global Meteor, check */
 
-import toPascalCase from "to-pascal-case"
-import toSnakeCase from "to-snake-case"
-import Moment from "moment"
+import toPascalCase from "to-pascal-case";
+import toSnakeCase from "to-snake-case";
+import Moment from "moment";
 
-import { api, Lava } from "../../../util/rock"
-import { makeNewGuid } from "../../../util"
+import { api, Lava } from "../../../util/rock";
+import { makeNewGuid } from "../../../util";
 
 
 // @TODO abstract
-import Liquid from "liquid-node"
-const Parser = new Liquid.Engine
+import Liquid from "liquid-node";
+const Parser = new Liquid.Engine;
 
-let StandardFilters = {...Liquid.StandardFilters}
-let caseChangedFilter = {}
+let StandardFilters = {...Liquid.StandardFilters};
+let caseChangedFilter = {};
 for (let filter in StandardFilters) {
-  let newFilter = toPascalCase(filter)
+  let newFilter = toPascalCase(filter);
 
 
   caseChangedFilter[newFilter] = (input, format) => {
-    input = toSnakeCase(input)
+    input = toSnakeCase(input);
 
-    return StandardFilters[filter](input, format)
-  }
+    return StandardFilters[filter](input, format);
+  };
 
 }
 
@@ -55,10 +55,10 @@ Parser.registerFilters({...caseChangedFilter, ...{
   Attribute: function(variable, key){
 
     if (variable === "Global") {
-      let global = this.context.findVariable("GlobalAttribute")
+      let global = this.context.findVariable("GlobalAttribute");
       return global.then((response) => {
-        return response[key]
-      })
+        return response[key];
+      });
     }
 
   },
@@ -66,39 +66,39 @@ Parser.registerFilters({...caseChangedFilter, ...{
 
     // hardcode number formating for now
     if (format === "#,##0.00") {
-      value = Number(value).toFixed(2)
+      value = Number(value).toFixed(2);
 
-      return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   },
   Date: function(input, format) {
     // console.log(this)
-    input = toDate(input)
+    input = toDate(input);
 
     if (input == null) {
       return "";
     } else if (toString(format).length === 0) {
       return input.toUTCString();
     } else {
-      format = format.replace(/y/gmi, "Y")
+      format = format.replace(/y/gmi, "Y");
       return Moment(input).format(format);
     }
 
     // return Liquid.StandardFilters.date(input, format.toLowerCase())
   }
-}})
+}});
 
 
 
 Meteor.methods({
   "communication/email/send": function(emailId, PersonAliasId, mergeFields){
-    check(emailId, Number)
+    check(emailId, Number);
     // check(PersonAliasId, Number)
 
-    let Email = api.get.sync(`SystemEmails/${emailId}`)
+    let Email = api.get.sync(`SystemEmails/${emailId}`);
 
     if (!Email.Body || !Email.Subject) {
-      throw new Meteor.Error(`No email body or subject found for ${emailId}`)
+      throw new Meteor.Error(`No email body or subject found for ${emailId}`);
     }
 
     /*
@@ -108,13 +108,13 @@ Meteor.methods({
       @TODO depreciate for MergeFieldsJson
 
     */
-    const GlobalAttribute = {}
-    const Globals = api.get.sync("AttributeValues?$filter=Attribute/EntityTypeId eq null&$expand=Attribute&$select=Attribute/Key,Value")
-    const Defaults = api.get.sync("Attributes?$filter=EntityTypeId eq null&$select=DefaultValue,Key")
+    const GlobalAttribute = {};
+    const Globals = api.get.sync("AttributeValues?$filter=Attribute/EntityTypeId eq null&$expand=Attribute&$select=Attribute/Key,Value");
+    const Defaults = api.get.sync("Attributes?$filter=EntityTypeId eq null&$select=DefaultValue,Key");
 
     for (let d of Defaults) { GlobalAttribute[d.Key] = d.DefaultValue }
     for (let g of Globals) { GlobalAttribute[g.Attribute.Key] = g.Value }
-    mergeFields = {...mergeFields, ...{ GlobalAttribute }}
+    mergeFields = {...mergeFields, ...{ GlobalAttribute }};
 
     return Promise.all([
       // Parser.parse(Email.Subject)
@@ -141,61 +141,61 @@ Meteor.methods({
           MediumData: {
             HtmlMessage: body
           }
-        }
+        };
 
-        return api.post("Communications", Communication)
+        return api.post("Communications", Communication);
 
       })
       .then((CommunicationId) => {
 
         if (CommunicationId.statusText) {
-          throw new Meteor.Error(CommunicationId)
+          throw new Meteor.Error(CommunicationId);
         }
 
         // this is a bug in core right now. We can't set Mandrill on the initial
         // post because it locks everything up, we can however, patch it
         api.patch.sync(`Communications/${CommunicationId}`, {
           MediumEntityTypeId: 37 // Mandrill
-        })
+        });
 
 
         if (typeof PersonAliasId === "number") {
-          PersonAliasId = [PersonAliasId]
+          PersonAliasId = [PersonAliasId];
         }
 
 
-        let ids = []
+        let ids = [];
         for (let id of PersonAliasId) {
           let CommunicationRecipient = {
             PersonAliasId: id,
             CommunicationId,
             Status: 0, // Pending
             Guid: makeNewGuid()
-          }
+          };
 
-          let CommunicationRecipientId = api.post.sync("CommunicationRecipients", CommunicationRecipient)
+          let CommunicationRecipientId = api.post.sync("CommunicationRecipients", CommunicationRecipient);
 
-          ids.push(CommunicationRecipientId)
+          ids.push(CommunicationRecipientId);
         }
 
-        return ids
+        return ids;
 
       })
       .then((communications) => {
 
         for (let CommunicationRecipientId of communications) {
           if (CommunicationRecipientId.statusText) {
-            throw new Meteor.Error(CommunicationRecipientId)
+            throw new Meteor.Error(CommunicationRecipientId);
           }
         }
 
-        return communications
+        return communications;
       })
       .catch((e) => {
-        console.log(e)
-        throw e
-      })
+        console.log(e);
+        throw e;
+      });
 
 
   }
-})
+});

@@ -4,7 +4,7 @@
 
 */
 
-import { createReducer } from "../utilities"
+import { createReducer } from "../utilities";
 
 const initial = {
   sharing: false,
@@ -16,7 +16,7 @@ const initial = {
     url: null
   }
 
-}
+};
 
 export default createReducer(initial, {
 
@@ -24,13 +24,13 @@ export default createReducer(initial, {
 
     return {...state,
       sharing: !state.sharing
-    }
+    };
   },
 
   ["SHARE.SET"](state, action) {
     return {...state,
       content: {...state.content, ...action.content}
-    }
+    };
   }
 
 });

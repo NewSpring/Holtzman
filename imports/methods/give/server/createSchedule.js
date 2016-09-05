@@ -1,27 +1,27 @@
 
-import Moment from "moment"
+import Moment from "moment";
 import {
   ScheduledTransactionReciepts
 } from "../../../database/collections/scheduledTransactions";
-import { api, parseEndpoint } from "../../../util/rock"
+import { api, parseEndpoint } from "../../../util/rock";
 
 
 const createSchedule = (response, accountName, id, user) => {
 
   const getCardType = (card) => {
 
-    const { paymentTypes } = api._.give
-    let ids = {}
+    const { paymentTypes } = api._.give;
+    let ids = {};
     for (let f of paymentTypes) { ids[f.Value] = f }
 
-    const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9\*]{0,12}$/gmi
+    const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9\*]{0,12}$/gmi;
 
     const defaultRegex = {
       visa: /^4[0-9\*]{0,15}$/gmi,
       masterCard: /^5$|^5[1-5][0-9\*]{0,14}$/gmi,
       amEx: /^3$|^3[47][0-9\*]{0,13}$/gmi,
       discover: d
-    }
+    };
 
     let definedTypeMapping = {
       visa: ids["Visa"].Id,
@@ -29,69 +29,69 @@ const createSchedule = (response, accountName, id, user) => {
       // check: 9,
       discover: ids["Discover"].Id,
       amEx: ids["American Express"].Id
-    }
+    };
 
     for (let regex in defaultRegex) {
       if (defaultRegex[regex].test(card)) {
-        return definedTypeMapping[regex]
+        return definedTypeMapping[regex];
       }
     }
 
     return null;
-  }
+  };
 
-  let card = getCardType(response.billing["cc-number"])
+  let card = getCardType(response.billing["cc-number"]);
 
   const getFreqencyId = (plan) => {
-    const { frequencies } = api._.give
+    const { frequencies } = api._.give;
 
-    let ids = {}
+    let ids = {};
     for (let f of frequencies) { ids[f.Value] = f }
 
     if (plan["day-frequency"]) {
       switch (plan["day-frequency"]) {
         case "7":
-          return ids["Weekly"].Id // Every Week (Rock)
+          return ids["Weekly"].Id; // Every Week (Rock)
         case "14":
-          return ids["Bi-Weekly"].Id // Every Two Weeks (Rock)
+          return ids["Bi-Weekly"].Id; // Every Two Weeks (Rock)
       }
     }
 
     if (plan["month-frequency"]) {
       switch (plan["month-frequency"]) {
         case "2":
-          return ids["Twice a Month"].Id // Twice A Month (Rock)
+          return ids["Twice a Month"].Id; // Twice A Month (Rock)
         case "1":
-          return ids["Monthly"].Id // Once A Month (Rock)
+          return ids["Monthly"].Id; // Once A Month (Rock)
       }
     }
 
     if (plan["day-of-month"]) {
-      return ids["One-Time"].Id // One Time (Rock)
+      return ids["One-Time"].Id; // One Time (Rock)
     }
 
-    return null
+    return null;
 
-  }
+  };
 
-  let frequency = getFreqencyId(response.plan)
+  let frequency = getFreqencyId(response.plan);
 
   if (response.result === "1") {
 
     if (!user || !user.services || !user.services.rock) {
-      user = { services: { rock: {} } }
+      user = { services: { rock: {} } };
     }
 
     let CC = {
       AccountNumberMasked: response.billing["cc-number"],
       CurrencyTypeValueId: 156,
       CreditCardTypeValueId: card
-    }
+    };
 
     let Check = {
       AccountNumberMasked: response.billing["account-number"],
       CurrencyTypeValueId: 157
-    }
+    };
 
 
     let formatedFinancialScheduledTransaction = {
@@ -122,11 +122,11 @@ const createSchedule = (response, accountName, id, user) => {
           Postal: response.billing.postal
         }
       }
-    }
+    };
 
     if (id) {
-      formatedFinancialScheduledTransaction.Id = id
-      formatedFinancialScheduledTransaction.IsActive = true
+      formatedFinancialScheduledTransaction.Id = id;
+      formatedFinancialScheduledTransaction.IsActive = true;
     }
 
     if (accountName) {
@@ -134,13 +134,13 @@ const createSchedule = (response, accountName, id, user) => {
         Name: accountName,
         ReferenceNumber: response["customer-vault-id"],
         TransactionCode: response["transaction-id"]
-      }
+      };
     }
 
     if (response.billing["cc-number"]) {
-      formatedFinancialScheduledTransaction.FinancialPaymentDetail = CC
+      formatedFinancialScheduledTransaction.FinancialPaymentDetail = CC;
     } else {
-      formatedFinancialScheduledTransaction.FinancialPaymentDetail = Check
+      formatedFinancialScheduledTransaction.FinancialPaymentDetail = Check;
 
     }
 
@@ -149,30 +149,30 @@ const createSchedule = (response, accountName, id, user) => {
         FinancialAccounts?
           $filter=ParentAccountId eq ${Number(response["merchant-defined-field-1"])} and
           CampusId eq ${Number(response["merchant-defined-field-2"])}
-      `)
+      `);
 
-      let AccountId = api.get.sync(endpoint)
+      let AccountId = api.get.sync(endpoint);
 
       if (AccountId.length) {
-        AccountId = AccountId[0].Id
+        AccountId = AccountId[0].Id;
       } else {
-        AccountId = Number(response["merchant-defined-field-1"])
+        AccountId = Number(response["merchant-defined-field-1"]);
       }
 
       formatedFinancialScheduledTransaction.ScheduledTransactionDetails.push({
         AccountId,
         Amount: Number(response.plan["amount"])
-      })
+      });
     }
 
 
     ScheduledTransactionReciepts.insert(formatedFinancialScheduledTransaction, () => {
 
-    })
+    });
   }
 
-  return response
+  return response;
 
-}
+};
 
-export default createSchedule
+export default createSchedule;

@@ -15,15 +15,15 @@ import Mongo from "meteor/mongo";
 let sessions;
 if (Meteor.isServer) {
 
-  sessions = new Mongo.Collection(null)
+  sessions = new Mongo.Collection(null);
 
   // bind connection starts and ends
   Meteor.onConnection((connection) => {
 
-    let ip = connection.ip
+    let ip = connection.ip;
 
     if (connection.httpHeaders && connection.httpHeaders["x-forwarded-for"]) {
-      ip = connection.httpHeaders["x-forwarded-for"]
+      ip = connection.httpHeaders["x-forwarded-for"];
     }
 
     // on a connection, insert the connection details
@@ -36,12 +36,12 @@ if (Meteor.isServer) {
     }, (err, id) => {
 
       connection.onClose(() => {
-        sessions.remove(id)
-      })
+        sessions.remove(id);
+      });
 
-    })
+    });
 
-  })
+  });
 
   // Dummy publish for this.userId
   Meteor.publish("apollos-session-dummy", function(){
@@ -52,17 +52,17 @@ if (Meteor.isServer) {
         updatedAt: new Date()
       }
     // async
-    }, (err, update) => {})
+    }, (err, update) => {});
 
-    return []
+    return [];
 
-  })
+  });
 
 }
 
 if (Meteor.isClient) {
-  Meteor.subscribe("apollos-session-dummy")
+  Meteor.subscribe("apollos-session-dummy");
 }
 
 
-export default sessions
+export default sessions;

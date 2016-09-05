@@ -1,9 +1,9 @@
 
-import Error from "./Error"
-import Success from "./Success"
+import Error from "./Error";
+import Success from "./Success";
 
 
-export default {
+export {
   Error,
   Success
-}
+};

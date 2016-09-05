@@ -1,12 +1,12 @@
-import "regenerator-runtime/runtime"
+import "regenerator-runtime/runtime";
 
-import { fork, put } from "redux-saga/effects"
+import { fork, put } from "redux-saga/effects";
 import gql from "graphql-tag";
-import { addSaga } from "../utilities"
+import { addSaga } from "../utilities";
 import { GraphQL } from "../../graphql";
 
 // XXX abstract action creators to file that isn't index
-const set = (content) => ({ type: "SECTIONS.SET_CONTENT", content })
+const set = (content) => ({ type: "SECTIONS.SET_CONTENT", content });
 
 function* getSectionsData(){
   if (Meteor.isServer) return;
@@ -66,27 +66,27 @@ function* getSectionsData(){
   const variables = { site };
 
   function extractImage(content) {
-    let { images } = content.content
+    let { images } = content.content;
 
     if (!images.length) return null;
 
     // prefer 1x1 image
     let oneByOne = _.find(images, (image) => {
-      return image.label === "1:1"
+      return image.label === "1:1";
     });
 
     if (oneByOne) return oneByOne.url;
 
     // then try 2x1, especially for devotions that only have 2x1
     let twoByOne = _.find(images, (image) => {
-      return image.label === "2:1"
+      return image.label === "2:1";
     });
 
     if (twoByOne) return twoByOne.url;
 
     // then try default, for devotions with leather times
     let defaultImage = _.find(images, (image) => {
-      return image.label === "default"
+      return image.label === "default";
     });
 
     if (defaultImage) return defaultImage.url;
@@ -98,23 +98,23 @@ function* getSectionsData(){
 
   // go ahead and make the query on load (this will be cached on heighliner)
   let { data } = yield GraphQL.query({ query, variables });
-  let navigation = data.navigation
-  delete data.navigation
-  let filteredItems = {}
+  let navigation = data.navigation;
+  delete data.navigation;
+  let filteredItems = {};
 
   // parse the results and only get a single usable image
   for (let item in data) {
-    let image = extractImage(data[item][0])
-    filteredItems[item] = image
+    let image = extractImage(data[item][0]);
+    filteredItems[item] = image;
   }
 
   function bindForeignImages(sections) {
     // remap the images of the section panel
     for (let section in sections) {
 
-      let name = sections[section].text.toLowerCase()
+      let name = sections[section].text.toLowerCase();
       if (filteredItems[name]) {
-        sections[section].image = filteredItems[name]
+        sections[section].image = filteredItems[name];
       }
 
       // ensure protocol relative
@@ -124,12 +124,12 @@ function* getSectionsData(){
       if (process.env.NATIVE && sections[section].image) {
 
         if (typeof window != "undefined" && window != null) {
-          let img = document.createElement("img")
-          img.src = sections[section].image
+          let img = document.createElement("img");
+          img.src = sections[section].image;
         }
       }
 
-      bindForeignImages(sections[section].children)
+      bindForeignImages(sections[section].children);
     }
 
   }
@@ -137,32 +137,32 @@ function* getSectionsData(){
   function fixInternaLinks(sections) {
 
     for (let section in sections) {
-      let url = sections[section].link
-      let regex = new RegExp(__meteor_runtime_config__.ROOT_URL, "gmi")
+      let url = sections[section].link;
+      let regex = new RegExp(__meteor_runtime_config__.ROOT_URL, "gmi");
       if (url.match(regex)) {
-        url = url.replace(regex, "")
+        url = url.replace(regex, "");
         if (url[0] != "/") {
-          url = "/" + url
+          url = "/" + url;
         }
 
       } else {
-        url = "//newspring.cc" + url
+        url = "//newspring.cc" + url;
       }
 
-      sections[section].link = url
+      sections[section].link = url;
 
-      fixInternaLinks(sections[section].children)
+      fixInternaLinks(sections[section].children);
     }
 
   }
 
-  bindForeignImages(navigation)
+  bindForeignImages(navigation);
   if (process.env.WEB) fixInternaLinks(navigation);
 
   // update the content and end the saga (not a daemon)
-  yield put(set(navigation))
+  yield put(set(navigation));
 }
 
 addSaga(function* sectionsSaga(getState) {
-  yield fork(getSectionsData)
-})
+  yield fork(getSectionsData);
+});

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint-fix": "eslint ./imports ./client ./server --fix",
+    "lint": "eslint ./imports ./client ./server"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,7 @@
   },
   "homepage": "https://github.com/NewSpring/my.newspring.cc",
   "devDependencies": {
+    "babel-eslint": "^6.1.2",
     "babel-jest": "^15.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-css-modules-transform": "^0.1.1",
@@ -40,6 +43,8 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-traverse": "^6.11.4",
     "es6-promise": "^3.2.1",
+    "eslint": "^3.4.0",
+    "eslint-plugin-react": "^6.2.0",
     "gagarin": "^0.4.12",
     "github-download": "^0.5.0",
     "jest": "^15.1.1",
@@ -105,6 +110,7 @@
     "aphrodite": "git+https://github.com/NewSpring/aphrodite.git#release",
     "apollo-client": "^0.3.27",
     "audio5": "^0.1.10",
+    "bcrypt": "^0.8.7",
     "cheerio": "^0.20.0",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",

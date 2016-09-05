@@ -1,26 +1,26 @@
 /*global Meteor, check */
-import Moment from "moment"
+import Moment from "moment";
 
-import { api, parseEndpoint } from "../../../util/rock"
-import Validate from "../../../util/validate"
+import { api, parseEndpoint } from "../../../util/rock";
+import Validate from "../../../util/validate";
 
 let RECOVER_ACCOUNT = false;
 if (typeof Accounts != "undefined") {
   Accounts.emailTemplates.enrollAccount.text = (user, token) => {
 
     // let PersonAliasId, mergeFields
-    let { PersonId } = user.profile.rock
-    let { ROOT_URL } = __meteor_runtime_config__
+    let { PersonId } = user.profile.rock;
+    let { ROOT_URL } = __meteor_runtime_config__;
 
-    let Person = api.get.sync(`People/${PersonId}`)
+    let Person = api.get.sync(`People/${PersonId}`);
 
     if (!RECOVER_ACCOUNT ) {
-      RECOVER_ACCOUNT = api.get.sync(`SystemEmails?$filter=Title eq 'Recover Account'`)
-      RECOVER_ACCOUNT = RECOVER_ACCOUNT.length ? RECOVER_ACCOUNT[0].Id : false
+      RECOVER_ACCOUNT = api.get.sync("SystemEmails?$filter=Title eq 'Recover Account'");
+      RECOVER_ACCOUNT = RECOVER_ACCOUNT.length ? RECOVER_ACCOUNT[0].Id : false;
     }
 
-    token = token.split("/")
-    token = token[token.length - 1]
+    token = token.split("/");
+    token = token[token.length - 1];
     if (RECOVER_ACCOUNT) {
       Meteor.call(
         "communication/email/send",
@@ -31,13 +31,13 @@ if (typeof Accounts != "undefined") {
           Person,
         }
         , (err, response) => {}
-      )
+      );
     }
 
 
-    return false
+    return false;
 
-  }
+  };
 }
 
 Meteor.methods({
@@ -51,9 +51,9 @@ Meteor.methods({
     // Create Apollos Account
     // try to create new meteor account
     try {
-      let user = Accounts.findUserByEmail(email)
+      let user = Accounts.findUserByEmail(email);
       if (user && user._id) {
-        meteorUserId = user._id
+        meteorUserId = user._id;
       } else {
         meteorUserId = Accounts.createUser({
           email: email,
@@ -62,11 +62,11 @@ Meteor.methods({
               PersonId,
             },
           },
-        })
+        });
       }
 
     } catch (e) {
-      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account")
+      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account");
     }
 
     // Create Rock Account
@@ -77,16 +77,16 @@ Meteor.methods({
       IsConfirmed: false,
       // PlainTextPassword: account.password,
       LastLoginDateTime: `${Moment().toISOString()}`
-    }
+    };
 
-    let createdUser = api.post.sync("UserLogins", user)
+    let createdUser = api.post.sync("UserLogins", user);
     if (createdUser.statusText) {
-      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account")
+      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account");
     }
 
     try {
-      let person = api.get.sync(`People/${PersonId}`)
-      const { PrimaryAliasId } = person
+      let person = api.get.sync(`People/${PersonId}`);
+      const { PrimaryAliasId } = person;
 
       Meteor.users.update(meteorUserId, {
         $set: {
@@ -95,18 +95,18 @@ Meteor.methods({
             PrimaryAliasId
           }
         }
-      })
+      });
 
       // Send Reset Email
-      Accounts.sendEnrollmentEmail(meteorUserId)
+      Accounts.sendEnrollmentEmail(meteorUserId);
 
       // let the client know
-      return true
+      return true;
     } catch (e) {
-      console.error("@@RECOVER_ERROR", e)
-      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account")
+      console.error("@@RECOVER_ERROR", e);
+      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account");
     }
 
 
   }
-})
+});

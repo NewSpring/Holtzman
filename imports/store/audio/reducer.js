@@ -6,8 +6,8 @@
 
 */
 
-import { createReducer } from "../"
-import types from "./types"
+import { createReducer } from "../";
+import types from "./types";
 
 const initial = {
   visibility: "dock", // "hide", "dock", "expand"
@@ -47,7 +47,7 @@ const initial = {
     }
 
   }
-}
+};
 
 export default createReducer(initial, {
 
@@ -57,107 +57,107 @@ export default createReducer(initial, {
     const visiblityTypes = [ "default", "fade", "hide", "dock", "expand" ];
 
     if (visiblityTypes.indexOf(visibility) === -1) {
-      return state
+      return state;
     }
 
     return {...state, ...{
       visibility: visibility }
-    }
+    };
   },
 
   [types.SET_ORDER](state, action) {
-    const order = action.order.trim()
-    const orderTypes = [ "default", "shuffle" ]
+    const order = action.order.trim();
+    const orderTypes = [ "default", "shuffle" ];
 
     if (orderTypes.indexOf(order) === -1) {
-      return state
+      return state;
     }
 
     return {...state, ...{
       order: order }
-    }
+    };
   },
 
   [types.SET_REPEAT](state, action) {
-    const repeat = action.repeat.trim()
-    const repeatTypes = [ "default", "repeat", "repeat-one" ]
+    const repeat = action.repeat.trim();
+    const repeatTypes = [ "default", "repeat", "repeat-one" ];
 
     if (repeatTypes.indexOf(repeat) === -1) {
-      return state
+      return state;
     }
 
     return {...state, ...{
       repeat: repeat }
-    }
+    };
   },
 
   [types.SET_STATE](state, action) {
-    const playerState = action.state.trim()
+    const playerState = action.state.trim();
     const playerStateTypes = [
       "default", "playing", "paused", "ready", "loading", "next", "previous"
-    ]
+    ];
 
     if (playerStateTypes.indexOf(playerState) === -1) {
-      return state
+      return state;
     }
 
     return {...state, ...{
       state: playerState }
-    }
+    };
   },
 
   [types.SET_SEEK](state, action) {
-    let number = action.seek
+    let number = action.seek;
 
     if (typeof number != "number") {
       try {
-        number = Number(number.trim())
+        number = Number(number.trim());
       } catch (e) {
-        return state
+        return state;
       }
     }
 
     if ( (number < 0) || (number > 100) ) {
-      return state
+      return state;
     }
 
     return {...state, ...{
       seek: number }
-    }
+    };
   },
 
   [types.SET_PROGRESS](state, action) {
     let time = action.time;
-    let number = action.progress
+    let number = action.progress;
 
     if (typeof number != "number") {
       try {
-        number = Number(number.trim())
+        number = Number(number.trim());
       } catch (e) {
-        return state
+        return state;
       }
     }
 
     if ( (number < 0) || (number > 100) ) {
-      return state
+      return state;
     }
 
     return {...state, ...{
         progress: number,
         time: time
       }
-    }
+    };
   },
 
   [types.SET_PLAYLIST](state, action) {
     let playlist = action.playlist.map((x) => {
-      const { title, duration, file } = x
-      return { title, duration, file }
-    })
+      const { title, duration, file } = x;
+      return { title, duration, file };
+    });
 
     return {...state, ...{
       playlist: playlist
-    }}
+    }};
   },
 
   [types.SET_PLAYING](state, action) {
@@ -172,7 +172,7 @@ export default createReducer(initial, {
   },
 
   [types.RESET_ALL](state, action) {
-    return initial
+    return initial;
   },
 
-})
+});

@@ -2,7 +2,7 @@
 // used to create the wrapper
 import React from "react";
 import ReactDOM from "react-dom";
-import { applyRouterMiddleware, browserHistory, Router } from 'react-router';
+import { applyRouterMiddleware, browserHistory, Router } from "react-router";
 import InjectData from "./inject-data";
 import { StyleSheet } from "aphrodite";
 import useScroll from "react-router-scroll";
@@ -11,8 +11,8 @@ export function run(routes, clientOptions = {}){
 
   const history = browserHistory;
 
-  const rootElementName = clientOptions.rootElement || 'react-app';
-  const rootElementType = clientOptions.rootElementType || 'div';
+  const rootElementName = clientOptions.rootElement || "react-app";
+  const rootElementType = clientOptions.rootElementType || "div";
 
   Meteor.startup(() => {
 
@@ -28,8 +28,8 @@ export function run(routes, clientOptions = {}){
 
     // If using redux, create the store with the initial state injected by the server.
     let reduxStore;
-    if (typeof clientOptions.createReduxStore !== 'undefined') {
-      InjectData.getData('redux-initial-state', data => {
+    if (typeof clientOptions.createReduxStore !== "undefined") {
+      InjectData.getData("redux-initial-state", data => {
         const initialState = data ? JSON.parse(data) : undefined;
         reduxStore = clientOptions.createReduxStore(initialState, history);
       });
@@ -37,10 +37,10 @@ export function run(routes, clientOptions = {}){
 
     let app = (
       <Router
-        history={history}
-        children={routes}
-        render={applyRouterMiddleware(useScroll())}
-        {...clientOptions.props}
+          history={history}
+          children={routes}
+          render={applyRouterMiddleware(useScroll())}
+          {...clientOptions.props}
       />
     );
 
@@ -56,7 +56,7 @@ export function run(routes, clientOptions = {}){
     }
 
     let css;
-    InjectData.getData('aphrodite-classes', data => {
+    InjectData.getData("aphrodite-classes", data => {
       css = data ? JSON.parse(data) : {};
     });
 
@@ -64,7 +64,7 @@ export function run(routes, clientOptions = {}){
 
     ReactDOM.render(app, rootElement);
 
-    let collectorEl = document.getElementById(clientOptions.styleCollectorId || 'css-style-collector-data')
+    let collectorEl = document.getElementById(clientOptions.styleCollectorId || "css-style-collector-data");
     if (collectorEl) collectorEl.parentNode.removeChild(collectorEl);
   });
 };

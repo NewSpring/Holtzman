@@ -1,6 +1,6 @@
 
-import images from "./sections.images"
+import images from "./sections.images";
 
 export default {
   images
-}
+};

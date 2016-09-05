@@ -1,4 +1,4 @@
-import { parseEndpoint } from "../utilities"
+import { parseEndpoint } from "../utilities";
 
 export default parseEndpoint(`
   FinancialAccounts?
@@ -19,4 +19,4 @@ export default parseEndpoint(`
       IsPublic eq true and
       IsActive eq true and
       Description ne null
-`)
+`);

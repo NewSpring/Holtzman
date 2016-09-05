@@ -1,5 +1,5 @@
-import { Meteor } from 'meteor/meteor';
-import { Likes } from "../collections/likes";
+import { Meteor } from "meteor/meteor";
+import Likes from "../collections/likes";
 
 if (Meteor.isServer) {
   // must use function because arrow version doesn't like 'this'
@@ -13,8 +13,8 @@ if (Meteor.isServer) {
           dateLiked: -1
         }
       }
-    )
-  })
+    );
+  });
 
   Meteor.publish("recently-liked", function(){
     return Likes.find(
@@ -29,8 +29,8 @@ if (Meteor.isServer) {
         },
         limit: 15
       }
-    )
+    );
 
-  })
+  });
 
 }

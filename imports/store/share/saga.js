@@ -1,17 +1,17 @@
 
-import "regenerator-runtime/runtime"
+import "regenerator-runtime/runtime";
 import { takeLatest } from "redux-saga";
-import { fork, put, cps, select } from "redux-saga/effects"
-import { addSaga } from "../utilities"
+import { fork, put, cps, select } from "redux-saga/effects";
+import { addSaga } from "../utilities";
 
 
 function* share({ payload }) {
   let { share } = yield select();
-  let msg = {}
+  let msg = {};
 
   for (let key in share.content) {
     if (share.content[key] != null ) {
-      msg[key] = share.content[key]
+      msg[key] = share.content[key];
     }
   }
 
@@ -26,14 +26,14 @@ function* share({ payload }) {
   ) {
 
     if (msg.image && msg.image[0] === "/") {
-      msg.image = "http:" + msg.image
+      msg.image = "http:" + msg.image;
     }
 
-    window.socialmessage.send(msg)
+    window.socialmessage.send(msg);
   }
 
 }
 
 addSaga(function* shareSaga() {
   yield fork(takeLatest, "SHARE.SHARE", share);
-})
+});

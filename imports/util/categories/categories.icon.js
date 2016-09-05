@@ -6,14 +6,14 @@ function categoryIcon(contentItem) {
   switch(category) {
     case "series_newspring":
     case "sermons":
-      return "icon-category-video"
+      return "icon-category-video";
     case "newspring_albums":
-      return "icon-category-audio"
+      return "icon-category-audio";
     case "articles":
     case "devotionals":
     case "stories":
-      return "icon-category-text"
+      return "icon-category-text";
   }
 }
 
-export default categoryIcon
+export default categoryIcon;

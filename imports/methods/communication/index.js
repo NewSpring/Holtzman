@@ -1,11 +1,11 @@
 let communication;
 
 if (Meteor.isClient) {
-  communication = require("./client")
+  communication = require("./client");
 }
 
 if (Meteor.isServer) {
-  communication = require("./server")
+  communication = require("./server");
 }
 
-export default communication
+export default communication;

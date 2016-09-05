@@ -1,13 +1,13 @@
 /*
   Share action types
 */
-import reducer from "./reducer"
-import saga from "./saga"
-import { addReducer } from "../utilities"
+import reducer from "./reducer";
+import saga from "./saga";
+import { addReducer } from "../utilities";
 
 addReducer({
   header: reducer
-})
+});
 
 export default {
   show: (options = {}) => ({
@@ -32,4 +32,4 @@ export default {
 
   // XXX this currently doesn't affect the store
   statusBarColor: (color) => ({ type: "STATUSBAR.SET", color }),
-}
+};

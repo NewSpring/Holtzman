@@ -1,7 +1,6 @@
-import { creditCVV, creditCard, creditExpiry } from "./credit-card"
+import { creditCVV, creditCard, creditExpiry } from "./credit-card";
 
-const Validate = {}
-import Error from "../error"
+const Validate = {};
 
 Validate.addValidator = (name, handler) => {
 
@@ -9,23 +8,23 @@ Validate.addValidator = (name, handler) => {
     throw new Error(
       "Validator assigned",
       `Validate function ${name} is already registered`
-    )
+    );
   }
 
   if (!handler || typeof(handler) != "function") {
     throw new Error(
       "Validator TypeError",
       `Validator ${name} requires a function`
-    )
+    );
   }
 
-  Validate[name] = handler
-  return { [name]: handler }
-}
+  Validate[name] = handler;
+  return { [name]: handler };
+};
 
 
-Validate.addValidator("isCCV", creditCVV)
-Validate.addValidator("isCreditCard", creditCard)
-Validate.addValidator("isExpiry", creditExpiry)
+Validate.addValidator("isCCV", creditCVV);
+Validate.addValidator("isCreditCard", creditCard);
+Validate.addValidator("isExpiry", creditExpiry);
 
-export default Validate
+export default Validate;
