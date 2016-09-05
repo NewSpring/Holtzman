@@ -1,18 +1,18 @@
 
-import { addMiddleware } from "../utilities"
-import Debouncer from "../../util/debounce"
-import actions from "./actions"
+import { addMiddleware } from "../utilities";
+import Debouncer from "../../util/debounce";
+import actions from "./actions";
 
 let bound = false;
 const responsiveBindings = store => next => action => {
 
-  if (bound) { return next(action); }
+  if (bound) { return next(action) }
   bound = true;
 
 
   // XXX figure out how to get width on the server
   if (typeof window === "undefined" || window === null) {
-    return
+    return;
   }
 
   const { dispatch, getState } = store;
@@ -23,23 +23,23 @@ const responsiveBindings = store => next => action => {
 
     let breakpoints = [];
     for (let breakpoint in responsive._breakpoints) {
-      let name = breakpoint
-      let range = responsive._breakpoints[breakpoint]
+      let name = breakpoint;
+      let range = responsive._breakpoints[breakpoint];
 
       if (range.min && width < range.min) {
-        continue
+        continue;
       }
 
       if (range.max && width > range.max) {
-        continue
+        continue;
       }
 
-      breakpoints.push(name)
+      breakpoints.push(name);
 
     }
 
     return breakpoints;
-  }
+  };
 
   const onBodyResize = () => {
     const { responsive } = getState();
@@ -57,12 +57,12 @@ const responsiveBindings = store => next => action => {
     const breakpoints = getBreakpoints(x);
     let diff = _.difference(responsive.breakpoints, breakpoints);
     if (!responsive.breakpoints.length) {
-      dispatch(actions.setBreakpoints(breakpoints))
+      dispatch(actions.setBreakpoints(breakpoints));
     }
     if (diff.length) {
-      dispatch(actions.setBreakpoints(breakpoints))
+      dispatch(actions.setBreakpoints(breakpoints));
     }
-  }
+  };
 
   const deboncedResize = new Debouncer(onBodyResize);
   onBodyResize();

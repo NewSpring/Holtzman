@@ -19,12 +19,12 @@
     float live bar for special cases
 
 */
-import reducer from "./reducer"
-import { addReducer } from "../utilities"
+import reducer from "./reducer";
+import { addReducer } from "../utilities";
 
 addReducer({
   live: reducer
-})
+});
 
 export default {
   set: ({ isLive, embedCode }) => ({ type: "LIVE.SET", isLive, embedCode }),
@@ -33,4 +33,4 @@ export default {
   hide: () => ({ type: "LIVE.HIDE" }),
   float: () => ({ type: "LIVE.FLOAT" }),
   unfloat: () => ({ type: "LIVE.UNFLOAT" }),
-}
+};

@@ -1,4 +1,4 @@
-import types from "./types"
+import types from "./types";
 
 export default {
   types,
@@ -51,4 +51,4 @@ export default {
   setReminder: (reminderDate) => ({ type: types.SET_REMINDER_DATE, reminderDate }),
 
 
-}
+};

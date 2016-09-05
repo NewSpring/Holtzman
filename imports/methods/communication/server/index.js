@@ -1,9 +1,9 @@
 
-import email from "./email"
-import slack from "./slack"
+import email from "./email";
+import slack from "./slack";
 
 
 export {
   email,
   slack
-}
+};

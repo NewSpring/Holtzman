@@ -4,28 +4,28 @@
 
 */
 
-import modalActions from "../modal"
-import likedActions from "../liked"
-import shareActions from "../share"
-import Sections from "../../blocks/sections"
-import Discover from "../../blocks/discover"
+import modalActions from "../modal";
+import likedActions from "../liked";
+import shareActions from "../share";
+import Sections from "../../blocks/sections";
+import Discover from "../../blocks/discover";
 
-import { routeActions } from "../routing"
+import { routeActions } from "../routing";
 
-let sectionsVisible = false
-let discoverVisible = false
+let sectionsVisible = false;
+let discoverVisible = false;
 
 const back = () => routeActions.goBack();
-const profileLink = process.env.NATIVE ? "/profile" : "/profile/settings"
+const profileLink = process.env.NATIVE ? "/profile" : "/profile/settings";
 
 const sectionsAction = (props) => {
-  const { modal, dispatch } = props
+  const { modal, dispatch } = props;
 
   if (process.env.NATIVE) return routeActions.push("/sections");
 
-  discoverVisible = false
-  sectionsVisible = true
-  return modalActions.render(Sections, { keepNav: true })
+  discoverVisible = false;
+  sectionsVisible = true;
+  return modalActions.render(Sections, { keepNav: true });
 };
 
 const discoverAction = (props) => {
@@ -105,7 +105,7 @@ let links = {
   DOWN: [
     { id: 1, action: modalActions.hide, icon:"icon-arrow-down"}
   ]
-}
+};
 
 // use basic nav for web right now
 if (process.env.WEB) {
@@ -115,7 +115,7 @@ if (process.env.WEB) {
     BASIC_CONTENT: links.TOP,
     MODAL: links.MODAL,
     DOWN: links.DOWN
-  }
+  };
 }
 
 
@@ -138,21 +138,21 @@ export default function nav(state = initial, action) {
         links: links[action.level],
         bgColor: action.bgColor || initial.bgColor,
         fgColor: action.fgColor || initial.fgColor,
-      } }
+      } };
     case "NAV.SET_LINKS":
       return { ...state, ...{
         links: [ ...state.links, ...action.links ]
-      } }
+      } };
     case "NAV.SET_COLOR":
       return { ...state, ...{
         bgColor: action.bgColor,
         fgColor: action.fgColor,
-      } }
+      } };
     case "NAV.RESET_COLOR":
       return { ...state, ...{
         bgColor: initial.bgColor,
         fgColor: initial.fgColor,
-      } }
+      } };
     case "NAV.SET_ACTION":
 
       let newLinks = [
@@ -162,20 +162,20 @@ export default function nav(state = initial, action) {
           action: action.props.action,
         },
         ...state.links.slice(action.props.id)
-      ]
+      ];
 
       if (links[action.level]) {
-        links[action.level] = newLinks
+        links[action.level] = newLinks;
       }
 
       return { ...state, ...{
         links: newLinks
-      } }
+      } };
     case "NAV.SET_VISIBILITY":
       return { ...state, ...{
         visible: action.visible }
-      }
+      };
     default:
-      return state
+      return state;
   }
 }

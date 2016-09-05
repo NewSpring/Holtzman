@@ -1,29 +1,29 @@
 /*global Meteor, check */
-import { api } from "../../../util/rock"
+import { api } from "../../../util/rock";
 
 Meteor.methods({
   "rock/accounts/forceReset": function (Username) {
-    check(Username, String)
+    check(Username, String);
 
     // special case for AD lookup
     if (Username.indexOf("@newspring.cc") > -1) {
-      throw new Meteor.Error("NewSpring staff accounts are managed by IT")
+      throw new Meteor.Error("NewSpring staff accounts are managed by IT");
     }
 
-    let RockUser = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`)
+    let RockUser = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`);
     if (RockUser.statusText || !RockUser.length) {
       // we don't tell people there account doesn't exist
-      return true
+      return true;
     }
 
-    RockUser = RockUser[0]
-    const { PersonId } = RockUser
+    RockUser = RockUser[0];
+    const { PersonId } = RockUser;
 
     try {
-      let person = api.get.sync(`People/${PersonId}`)
-      const { PrimaryAliasId } = person
+      let person = api.get.sync(`People/${PersonId}`);
+      const { PrimaryAliasId } = person;
 
-      let meteorUserId = Accounts.createUser({ email: Username })
+      let meteorUserId = Accounts.createUser({ email: Username });
 
       Meteor.users.upsert(meteorUserId, {
           $set: {
@@ -35,19 +35,19 @@ Meteor.methods({
         },
         (err, response) => {
           if (!err) {
-            console.log("sending link")
-            Accounts.sendResetPasswordEmail(meteorUserId)
+            console.log("sending link");
+            Accounts.sendResetPasswordEmail(meteorUserId);
           }
         }
-      )
+      );
 
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
 
 
 
-    return true
+    return true;
 
   },
-})
+});

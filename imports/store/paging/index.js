@@ -10,4 +10,4 @@ export default {
   pause: () => ({ type: "PAGING.PAUSE" }),
   resume: () => ({ type: "PAGING.RESUME" }),
   reset: () => ({ type: "PAGING.RESET" })
-}
+};

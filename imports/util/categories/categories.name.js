@@ -4,9 +4,9 @@ function categoryName(contentItem) {
 
   switch(category) {
     case "series_newspring":
-      return "Series"
+      return "Series";
     case "newspring_albums":
-      return "Albums"
+      return "Albums";
     default:
       let categoryName = category.charAt(0).toUpperCase();
       if (category.charAt(category.length - 2) === "s") {
@@ -16,8 +16,8 @@ function categoryName(contentItem) {
       else {
         categoryName += category.substr(1, category.length-1);
       }
-      return categoryName
+      return categoryName;
   }
 }
 
-export default categoryName
+export default categoryName;

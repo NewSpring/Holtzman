@@ -22,7 +22,7 @@ function relativeTime(contentItem) {
   let date = contentItem.meta.date;
 
   let time = Moment(new Date(date));
-  return time.fromNow(true) // true omits "ago"
+  return time.fromNow(true); // true omits "ago"
 }
 
-export default relativeTime
+export default relativeTime;

@@ -1,4 +1,4 @@
-import types from "./types"
+import types from "./types";
 
 export default {
   types,
@@ -45,4 +45,4 @@ export default {
   completeAccount: () => ({ type: types.COMPLETE_ACCOUNT }),
   resetAccount: () => ({ type: types.RESET_ACCOUNT }),
 
-}
+};

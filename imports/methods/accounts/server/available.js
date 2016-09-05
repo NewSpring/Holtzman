@@ -1,42 +1,42 @@
 /*global Meteor, check */
-import { api, parseEndpoint } from "../../../util/rock"
-import Validate from "../../../util/validate"
+import { api, parseEndpoint } from "../../../util/rock";
+import Validate from "../../../util/validate";
 
 function getPhoto(person = {}) {
 
   if (person.Photo && person.Photo.Path) {
-    let { Path } = person.Photo
+    let { Path } = person.Photo;
 
     // is relative to Rock
     if (Path[0] === "~") {
-      Path = Path.substr(2)
-      Path = Meteor.settings.public.rock.baseURL + Path
+      Path = Path.substr(2);
+      Path = Meteor.settings.public.rock.baseURL + Path;
 
-      return Path
+      return Path;
     }
 
     if (Path.indexOf("?") > -1){
-      Path = Path.slice(0, Path.indexOf("?"))
+      Path = Path.slice(0, Path.indexOf("?"));
     }
 
     // is a storage provider
-    return Path
+    return Path;
   }
 
   if (!person.PhotoUrl) {
-    person.PhotoUrl = "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/member_images/members.nophoto_1000_1000_90_c1.jpg"
+    person.PhotoUrl = "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/member_images/members.nophoto_1000_1000_90_c1.jpg";
   }
 
-  return person.PhotoUrl
+  return person.PhotoUrl;
 }
 
 Meteor.methods({
   "rock/accounts/available": (email) => {
-    check(email, String)
+    check(email, String);
 
     // special case for AD lookup
     if (email.indexOf("@newspring.cc") > -1) {
-      email = email.replace(/@newspring.cc/, "")
+      email = email.replace(/@newspring.cc/, "");
     }
 
     let isAvailable = api.get.sync(`userlogins/available/${email}`),
@@ -46,7 +46,7 @@ Meteor.methods({
 
     if (isAvailable) {
       // first see if a person has this email but doesn't have an account
-      let People = api.get.sync(`People/GetByEmail/${email}`)
+      let People = api.get.sync(`People/GetByEmail/${email}`);
 
       if (!People.length) {
         let SecondaryEmailPeople = api.get.sync(parseEndpoint(`
@@ -60,14 +60,14 @@ Meteor.methods({
             &$select=
               Value,
               EntityId
-        `))
+        `));
 
         // showing more than 5 possible people in this case
         // would be confusing to a user so lets limit our lookup
         let realisticReturnAmounts = 5;
         let ids = SecondaryEmailPeople.map((x) => {
-          return `(Id eq ${x.EntityId})`
-        }).slice(0, realisticReturnAmounts).join(" and ")
+          return `(Id eq ${x.EntityId})`;
+        }).slice(0, realisticReturnAmounts).join(" and ");
 
         /*
 
@@ -81,7 +81,7 @@ Meteor.methods({
       }
 
 
-      let peopleToCheck = []
+      let peopleToCheck = [];
 
       if (People.length) {
         for (let person of People) {
@@ -97,7 +97,7 @@ Meteor.methods({
 
             alternateAccounts = alternateAccounts
               .concat(person.Users.map(x => (x.UserName)))
-              .filter(Validate.isEmail)
+              .filter(Validate.isEmail);
 
           } else {
             peopleToCheck.push(person.Id);
@@ -115,7 +115,7 @@ Meteor.methods({
           if (emailsForPerson.length) {
             for (let UserLogin of emailsForPerson) {
               if (Validate.isEmail(UserLogin.UserName)) {
-                alternateAccounts.push(UserLogin.UserName)
+                alternateAccounts.push(UserLogin.UserName);
               }
             }
           }
@@ -127,6 +127,6 @@ Meteor.methods({
       isAvailable,
       alternateAccounts,
       peopleWithoutAccountEmails
-    }
+    };
   }
-})
+});

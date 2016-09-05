@@ -1,21 +1,21 @@
-import "regenerator-runtime/runtime"
+import "regenerator-runtime/runtime";
 
-import { Component, PropTypes } from "react"
-import { createStore, combineReducers, compose, applyMiddleware } from "redux"
-import { ApolloProvider } from "react-apollo"
-import createSagaMiddleware from "redux-saga"
+import { Component, PropTypes } from "react";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import { ApolloProvider } from "react-apollo";
+import createSagaMiddleware from "redux-saga";
 import reduxReset from "redux-reset";
 
 import { GraphQL } from "../graphql";
 
-import { reducers, middlewares, sagas } from "./utilities"
-import { syncHistory, routeReducer } from "./routing"
+import { reducers, middlewares, sagas } from "./utilities";
+import { syncHistory, routeReducer } from "./routing";
 
 const createReduxStore = (initialState, history) => {
 
   if (initialState) {
     // bug with SSR
-    delete initialState.nav
+    delete initialState.nav;
   }
 
   const joinedReducers = {...reducers, ...{
@@ -39,7 +39,7 @@ const createReduxStore = (initialState, history) => {
 
   if (process.env.NODE_ENV != "production") {
     sharedCompose = [...sharedCompose, ...[
-      typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
+      typeof window === "object" && typeof window.devToolsExtension !== "undefined" ? window.devToolsExtension() : f => f
     ]];
   }
 
@@ -59,4 +59,4 @@ const wrapper = ApolloProvider;
 export {
   wrapper,
   createReduxStore
-}
+};

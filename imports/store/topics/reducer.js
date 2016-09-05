@@ -2,11 +2,11 @@
   Topic store
 */
 
-import { createReducer } from "../utilities"
+import { createReducer } from "../utilities";
 
 const initial = {
   topics: []
-}
+};
 
 export default createReducer(initial, {
 
@@ -19,13 +19,13 @@ export default createReducer(initial, {
 
     return {...state,
       topics: nextTopics
-    }
+    };
   },
 
   ["TOPIC.SET"](state, action) {
     return {...state,
       topics: action.content
-    }
+    };
   }
 
 });

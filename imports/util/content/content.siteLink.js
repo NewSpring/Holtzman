@@ -6,20 +6,20 @@ function siteLink(contentItem, parentItem) {
 
   switch(category) {
     case "series_newspring":
-      return `${siteUrl}/sermons/${slug}`
+      return `${siteUrl}/sermons/${slug}`;
     case "sermons":
       const seriesSlug = parentItem.meta.urlTitle;
-      return `${siteUrl}/sermons/${seriesSlug}/${slug}`
+      return `${siteUrl}/sermons/${seriesSlug}/${slug}`;
     case "devotionals":
-      return `${siteUrl}/devotionals/${slug}`
+      return `${siteUrl}/devotionals/${slug}`;
     case "albums":
-      return `${siteUrl}/music/${slug}`
+      return `${siteUrl}/music/${slug}`;
     case "articles":
-      return `${siteUrl}/articles/${slug}`
+      return `${siteUrl}/articles/${slug}`;
     case "stories":
-      return `${siteUrl}/stories/${slug}`
+      return `${siteUrl}/stories/${slug}`;
 
   }
 }
 
-export default siteLink
+export default siteLink;

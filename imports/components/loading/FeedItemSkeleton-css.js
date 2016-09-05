@@ -16,7 +16,7 @@ const animation = {
   animationTimingFunction: "cubic-bezier(0.66, 0.21, 0.49, 0.88)",
   background: "linear-gradient(270deg, #dddddd, #bcbcbc, #dddddd)",
   backgroundSize: "200%",
-}
+};
 
 const borderRadius = "2px";
 

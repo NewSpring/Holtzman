@@ -5,7 +5,7 @@
     "ga": "",
     "hockey": "",
     "sentry": false,
-    "heighliner": "https://api.newspring.cc/",
+    "heighliner": "https://api.newspring.cc/graphql",
     "esv": false
   },
   "rock": {

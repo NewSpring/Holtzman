@@ -1,22 +1,24 @@
-import Groups from "./groups/index";
-import Celebrate from "./celebrate/index";
+import Give from "./give";
+import Groups from "./groups";
+import Celebrate from "./celebrate";
 
 if (process.env.NATIVE) {
-  import Articles from "./articles/index"
-  import Devotionals from "./devotionals/index"
-  import Discover from "./discover/index"
-  import Music from "./music/index"
-  import Series from "./series/index"
-  import Stories from "./stories/index"
-  import Sections from "./sections/index";
-  import Video from "./video/index";
-  import Welcome from "./welcome/index";
-  import Locations from "./locations/index";
+  import Articles from "./articles";
+  import Devotionals from "./devotionals";
+  import Discover from "./discover";
+  import Music from "./music";
+  import Series from "./series";
+  import Stories from "./stories";
+  import Sections from "./sections";
+  import Video from "./video";
+  import Welcome from "./welcome";
+  import Locations from "./locations";
 }
 
 
-let Routes = []
+let Routes = [];
 Routes = Routes.concat(
+  Give,
   Groups.Routes,
   Celebrate.Routes
 );
@@ -38,4 +40,4 @@ if (process.env.NATIVE) {
 
 export {
   Routes,
-}
+};

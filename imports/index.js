@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   wrapper,
   createReduxStore,
-} from "./store/redux-bindings";
+} from "./store";
 
 import { GraphQL } from "./graphql";
 
@@ -12,9 +12,10 @@ import Routes from "./routes";
 import Global from "./blocks/global";
 
 let App = null;
+
 if (process.env.NATIVE) {
   import scriptLoader from "react-async-script-loader";
-  import AudioPlayer from "./components/players/audio"
+  import AudioPlayer from "./components/players/audio";
 
   // sync load ooyala scripts
   // XXX can we move this to just the video component?
@@ -33,7 +34,7 @@ if (process.env.NATIVE) {
   class AppGlobal extends Component {
     render() {
       if (this.props.pathname === "/welcome") {
-        return <div>{this.props.children}</div>
+        return <div>{this.props.children}</div>;
       }
       const { visibility, playing } = this.props.audio;
 
@@ -66,7 +67,7 @@ export const client = {
       }
     },
   },
-}
+};
 
 export const server = {
   wrapper,

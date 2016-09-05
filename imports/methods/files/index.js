@@ -2,11 +2,11 @@
 let files;
 
 if (Meteor.isClient) {
-  files = require("./client")
+  files = require("./client");
 }
 
 if (Meteor.isServer) {
-  files = require("./server")
+  files = require("./server");
 }
 
-export default files
+export default files;

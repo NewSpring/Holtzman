@@ -2,11 +2,11 @@
 let paymentAccounts;
 
 if (Meteor.isClient) {
-  paymentAccounts = {}
+  paymentAccounts = {};
 }
 
 if (Meteor.isServer) {
-  paymentAccounts = require("./server")
+  paymentAccounts = require("./server");
 }
 
-export default paymentAccounts
+export default paymentAccounts;

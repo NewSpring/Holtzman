@@ -1,8 +1,8 @@
 /*global Meteor */
 
-import { Builder } from "xml2js"
-import { parseXML } from "../../../..//util"
-import ErrorCodes from "./language"
+import { Builder } from "xml2js";
+import { parseXML } from "../../../..//util";
+import ErrorCodes from "./language";
 
 const cancelTransaction = (transactionId, callback) => {
 
@@ -11,10 +11,10 @@ const cancelTransaction = (transactionId, callback) => {
       "api-key": Meteor.settings.nmi,
       "subscription-id": transactionId
     }
-  }
+  };
 
-  const builder = new Builder()
-  const xml = builder.buildObject(cancelTransactionObj)
+  const builder = new Builder();
+  const xml = builder.buildObject(cancelTransactionObj);
   return fetch("https://secure.networkmerchants.com/api/v2/three-step", {
     method: "POST",
     body: `${xml}`,
@@ -23,34 +23,34 @@ const cancelTransaction = (transactionId, callback) => {
     }
   })
   .then((response) => {
-    return response.text()
+    return response.text();
   })
   .then((data) => {
     try {
-      data = parseXML(data)
+      data = parseXML(data);
     } catch (e) {
-      callback(e)
-      return
+      callback(e);
+      return;
     }
 
     if (data["result-code"] === "100") {
-      callback(null, data)
-      return
+      callback(null, data);
+      return;
     }
-    let number = Number(data["result-code"])
+    let number = Number(data["result-code"]);
     let err;
     if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
-      err = ErrorCodes[number]
+      err = ErrorCodes[number];
     } else if (ErrorCodes[number] === "result-text")  {
-      err = data["result-text"]
+      err = data["result-text"];
     }
 
-    callback(err)
+    callback(err);
 
   })
-  .catch(callback)
+  .catch(callback);
 
 
-}
+};
 
-export default cancelTransaction
+export default cancelTransaction;

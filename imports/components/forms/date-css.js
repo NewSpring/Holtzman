@@ -158,4 +158,4 @@ const Styles = () => (
   `}</style>
 );
 
-export default Styles
+export default Styles;

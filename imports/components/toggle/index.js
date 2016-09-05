@@ -1,6 +1,6 @@
 
-import ToggleSwitch from "./toggle.ToggleSwitch"
+import ToggleSwitch from "./toggle.ToggleSwitch";
 
 export default {
   ToggleSwitch
-}
+};

@@ -5,20 +5,20 @@ export function generateData(newData) {
     title: "Welcome | NewSpring Church",
     description: "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 11 campuses across the state of South Carolina.",
     image: "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
-  }
+  };
 
   if (newData.title) {
     newData = {...newData, ...{
       title: `${newData.title} | NewSpring Church`
-    }}
+    }};
   }
 
-  let data = {...defaultData, ...newData}
+  let data = {...defaultData, ...newData};
 
-  const { description, title, image } = data
-  delete data.description
-  delete data.title
-  delete data.image
+  const { description, title, image } = data;
+  delete data.description;
+  delete data.title;
+  delete data.image;
 
 
   return {...{
@@ -120,5 +120,5 @@ export function generateData(newData) {
         "href": "https://plus.google.com/+newspringchurch"
       },
     ]
-  }, ...data}
+  }, ...data};
 }

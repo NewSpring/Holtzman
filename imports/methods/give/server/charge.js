@@ -1,19 +1,19 @@
 
 /*global Meteor */
 
-import { api, parseEndpoint } from "../../../util/rock"
+import { api, parseEndpoint } from "../../../util/rock";
 
-import { TransactionReciepts } from "../../../database/collections/transactions"
-import { charge as gatewayCharge } from "./nmi"
+import { TransactionReciepts } from "../../../database/collections/transactions";
+import { charge as gatewayCharge } from "./nmi";
 
 function charge(token, accountName) {
 
-  let response = {}
+  let response = {};
 
   try {
-    response = Meteor.wrapAsync(gatewayCharge)(token)
+    response = Meteor.wrapAsync(gatewayCharge)(token);
   } catch (e) {
-    throw new Meteor.Error(e.message)
+    throw new Meteor.Error(e.message);
   }
 
   // this was a validation action, we can save the card but that is all
@@ -22,26 +22,26 @@ function charge(token, accountName) {
   if (response["action-type"] === "validate") {
     const returnReponse = _.pick(response,
       "avs-result", "order-id", "cvv-result", "result-code"
-    )
-    return returnReponse
+    );
+    return returnReponse;
   }
 
 
-  let user = null
+  let user = null;
   if (this.userId) {
-    user = Meteor.users.findOne({ _id: this.userId })
+    user = Meteor.users.findOne({ _id: this.userId });
   }
 
 
   const getCardType = (card) => {
-    const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9\*]{0,12}$/gmi
+    const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9\*]{0,12}$/gmi;
 
     const defaultRegex = {
       visa: /^4[0-9\*]{0,15}$/gmi,
       masterCard: /^5$|^5[1-5][0-9\*]{0,14}$/gmi,
       amEx: /^3$|^3[47][0-9\*]{0,13}$/gmi,
       discover: d
-    }
+    };
 
     let definedTypeMapping = {
       visa: 7,
@@ -49,35 +49,35 @@ function charge(token, accountName) {
       // check: 9,
       discover: 160,
       amEx: 159
-    }
+    };
 
     for (let regex in defaultRegex) {
       if (defaultRegex[regex].test(card)) {
-        return definedTypeMapping[regex]
+        return definedTypeMapping[regex];
       }
     }
 
-    return null
+    return null;
 
-  }
+  };
 
-  let card = getCardType(response.billing["cc-number"])
+  let card = getCardType(response.billing["cc-number"]);
 
 
   if (response.result === "1") {
 
-    user || (user = { services: { rock: {} } })
+    user || (user = { services: { rock: {} } });
 
     let CC = {
       AccountNumberMasked: response.billing["cc-number"],
       CurrencyTypeValueId: 156,
       CreditCardTypeValueId: card
-    }
+    };
 
     let Check = {
       AccountNumberMasked: response.billing["account-number"],
       CurrencyTypeValueId: 157
-    }
+    };
 
     let formatedTransaction = {
       TransactionCode: response["transaction-id"],
@@ -102,7 +102,7 @@ function charge(token, accountName) {
           Postal: response.billing.postal
         }
       }
-    }
+    };
 
 
     if (accountName) {
@@ -111,17 +111,17 @@ function charge(token, accountName) {
         ReferenceNumber: response["customer-vault-id"],
         TransactionCode: response["transaction-id"],
         FinancialGatewayId: api._.give.gateway.id
-      }
+      };
     }
 
     if (response.billing["cc-number"]) {
-      formatedTransaction.FinancialPaymentDetail = CC
+      formatedTransaction.FinancialPaymentDetail = CC;
     } else {
-      formatedTransaction.FinancialPaymentDetail = Check
+      formatedTransaction.FinancialPaymentDetail = Check;
     }
 
     if (!Array.isArray(response.product)) {
-      response.product = [ response.product ]
+      response.product = [ response.product ];
     }
 
     for (let product of response.product) {
@@ -129,21 +129,21 @@ function charge(token, accountName) {
         FinancialAccounts?
           $filter=ParentAccountId eq ${Number(product["product-code"])} and
           CampusId eq ${Number(response["merchant-defined-field-2"])}
-      `)
+      `);
 
-      let AccountId = api.get.sync(endpoint)
+      let AccountId = api.get.sync(endpoint);
 
       if (AccountId.length) {
-        AccountId = AccountId[0].Id
+        AccountId = AccountId[0].Id;
       } else {
-        AccountId = Number(product["product-code"])
+        AccountId = Number(product["product-code"]);
       }
 
       formatedTransaction.TransactionDetails.push({
         AccountId,
         AccountName: product.description,
         Amount: Number(product["total-amount"])
-      })
+      });
     }
 
     TransactionReciepts.insert(formatedTransaction, () => {});
@@ -151,11 +151,11 @@ function charge(token, accountName) {
 
   const returnReponse = _.pick(response,
     "avs-result", "order-id", "cvv-result", "result-code"
-  )
-  return returnReponse
+  );
+  return returnReponse;
 
 }
 
-Meteor.methods({ "give/charge": charge })
+Meteor.methods({ "give/charge": charge });
 
-export default charge
+export default charge;
