@@ -8,10 +8,10 @@ export default StyleSheet.create({
     zIndex: "101",
     // account for border on light version of nav
     // marginBottom: "52px",
-    "@media (max-width: 767px)": {
+    "@media (max-width: 480px)": {
       marginBottom: "50px",
     },
-    "@media (min-width: 768px)": {
+    "@media (min-width: 481px)": {
       paddingLeft: "90px",
     },
   },
@@ -24,10 +24,10 @@ export default StyleSheet.create({
     position: "fixed",
     height: "50px",
     zIndex: "101",
-    "@media (max-width: 767px)": {
+    "@media (max-width: 480px)": {
       marginBottom: "50px",
     },
-    "@media (min-width: 768px)": {
+    "@media (min-width: 481px)": {
       paddingLeft: "90px",
     },
   },
