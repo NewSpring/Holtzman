@@ -1,3 +1,4 @@
+import { Meteor } from "meteor/meteor";
 import { Component, PropTypes} from "react";
 import Moment from "moment";
 import { connect } from "react-redux";

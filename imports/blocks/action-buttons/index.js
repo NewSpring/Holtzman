@@ -1,3 +1,4 @@
+import { Meteor } from "meteor/meteor";
 import { Component, PropTypes} from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
