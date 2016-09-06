@@ -5,9 +5,14 @@
   flex-flow: column nowrap;
   overflow: hidden;
   position: absolute;
-  // padding-bottom: 50px;
   -webkit-overflow-scrolling: touch;
   background-color: #FFF;
+}
+
+@media screen and (max-width: 480px) {
+  .SwipeViewsContainer {
+    padding-bottom: 50px;
+  }
 }
 
 .SwipeViewsHeader {
