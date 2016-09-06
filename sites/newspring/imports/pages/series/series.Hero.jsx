@@ -71,7 +71,7 @@ export default class SeriesHero extends Component {
     const series = this.props.series;
     const imageLabel = window.isTablet ? "2:1" : "1:1";
     return (
-      <section className="hard">
+      <section className="relative hard">
         <div className="one-whole ratio--square ratio--landscape@palm-wide" style={{
             position: "absolute",
             zIndex: "10"
