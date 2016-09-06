@@ -40,6 +40,6 @@ const Routes = [
 ];
 
 export default {
-  Template,
+  TemplateWithData,
   Routes
 };

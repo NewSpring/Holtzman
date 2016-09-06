@@ -5,7 +5,7 @@
 
 
 */
-import { createReducer } from "../../../../core/store";
+import { createReducer } from "../../utilities";
 import types from "../types";
 
 import { progress } from "./progress";

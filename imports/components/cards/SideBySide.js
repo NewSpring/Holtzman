@@ -92,7 +92,7 @@ export default class Card extends Component {
       return false;
     }
 
-    let sizes = {};
+    let sizes = {}, src;
     for (let image of images) {
       sizes[image.fileLabel] = image;
     }
