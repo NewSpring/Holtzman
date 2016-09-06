@@ -157,13 +157,10 @@ export default class Menu extends Component {
     if (process.env.NATIVE) return "outlined--light one-whole";
   }
 
-  containerStyles = () => ({ marginTop: (process.env.NATIVE && window.isPhone) ? "45px" : "0px" });
-
   render() {
     return (
       <div
         className="background--light-secondary soft-double-bottom soft-double-sides@lap-and-up"
-        style={this.containerStyles()}
       >
         <section className={this.sectionClasses()}>
           <div className={this.dividerClasses()}>
