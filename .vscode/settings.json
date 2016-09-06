@@ -18,7 +18,7 @@
     "coverage": true,
     "typings": true,
     "assets": true,
-    ".metoer/locat": true,
+    ".metoer/local": true,
     "packages": true,
     "public": true,
     ".editorconfig": true,
