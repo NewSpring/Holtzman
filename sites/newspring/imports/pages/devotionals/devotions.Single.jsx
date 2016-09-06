@@ -167,7 +167,6 @@ export default class SeriesSingle extends Component {
     }
 
     return (
-      <div className="relative">
         <SwipeViews
           selectedIndex={this.state.selectedIndex}
           disableSwipe={true}
@@ -188,7 +187,6 @@ export default class SeriesSingle extends Component {
             />
           </div>
         </SwipeViews>
-      </div>
     );
   }
 
