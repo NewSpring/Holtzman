@@ -40,7 +40,7 @@ const Layout = ({ account }) => (
       <div className="background--light-secondary">
         <div className="constrain-copy soft-double@lap-and-up">
           <div className="soft soft-double-bottom soft-double-top@lap-and-up">
-            <AddToCart accounts={[account]} donate />
+            {/*<AddToCart accounts={[account]} donate />*/}
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { Meteor } from "meteor/meteor";
 
 const getDefault = ({ searchSubmit, cancel, showCancel }) => (
   <section className="soft-double-ends background--light-primary">

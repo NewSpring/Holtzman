@@ -22,6 +22,6 @@ const savedAccount = (state, action) => {
   } };
 };
 
-export default {
+export {
   savedAccount
 };

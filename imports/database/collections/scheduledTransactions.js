@@ -1,4 +1,4 @@
-import Mongo from "meteor/mongo";
+import { Mongo } from "meteor/mongo";
 
 const ScheduledTransactionReciepts = new Mongo.Collection("scheduledTransactionReciepts");
 

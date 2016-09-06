@@ -1,7 +1,7 @@
 /*global Meteor */
 
 import { Builder } from "xml2js";
-import { parseXML } from "../../../util";
+import { parseXML } from "../../../../util";
 import ErrorCodes from "./language";
 
 const cancelBilling = (customer, callback) => {

@@ -5,7 +5,6 @@ import Forms from "../../components/forms";
 import GiveNow from "../action-buttons";
 
 import SubFund from "./Subfund";
-
 export default class Layout extends Component {
 
   state = {
@@ -146,7 +145,6 @@ export default class Layout extends Component {
 
                 return instanceAccounts.indexOf(x.value) === -1;
               });
-
               if (key === 0) {
                 return (
                   <SubFund
@@ -163,7 +161,6 @@ export default class Layout extends Component {
                   />
                 );
               }
-
               return (
                 <SubFund
                     accounts={copiedAccounts}

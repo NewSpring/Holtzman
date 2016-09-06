@@ -6,7 +6,7 @@
 
 */
 
-import { createReducer } from "../";
+import { createReducer } from "../utilities";
 import types from "./types";
 
 const initial = {

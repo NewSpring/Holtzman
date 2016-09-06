@@ -1,6 +1,7 @@
 import Give from "./give";
 import Groups from "./groups";
 import Celebrate from "./celebrate";
+import Profile from "./profile";
 
 if (process.env.NATIVE) {
   import Articles from "./articles";
@@ -18,6 +19,7 @@ if (process.env.NATIVE) {
 
 let Routes = [];
 Routes = Routes.concat(
+  Profile,
   Give,
   Groups.Routes,
   Celebrate.Routes
