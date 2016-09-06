@@ -52,7 +52,7 @@ const clearTransactions = (state) => {
   } };
 };
 
-export default {
+export {
   addTransaction,
   clearTransaction,
   clearTransactions

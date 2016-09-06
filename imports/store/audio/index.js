@@ -1,5 +1,5 @@
 
-import { addReducer } from "../";
+import { addReducer } from "../utilities";
 import types from "./types";
 import reducer from "./reducer";
 import actions from "./actions";

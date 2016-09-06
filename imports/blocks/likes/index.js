@@ -1,3 +1,4 @@
+import { Meteor } from "meteor/meteor";
 import { Component } from "react";
 import { createContainer } from "../../blocks/meteor/react-meteor-data";
 import Likes from "../../database/collections/likes";

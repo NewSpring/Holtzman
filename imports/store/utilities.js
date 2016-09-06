@@ -29,7 +29,6 @@ const addReducer = (obj) => {
 };
 
 const createReducer = (initialState, handlers) => {
-
   return (state = initialState, action) => {
     // better than switch statement
     if (handlers.hasOwnProperty(action.type)) {

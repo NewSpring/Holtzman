@@ -1,3 +1,4 @@
+import { Meteor } from "meteor/meteor";
 import { Component } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";

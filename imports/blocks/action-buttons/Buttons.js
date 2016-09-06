@@ -68,7 +68,7 @@ const Guest = ({ disabled, onClick, text }) => {
 
 };
 
-export default {
+export {
   PrimaryButton,
   SecondaryButton,
   Guest

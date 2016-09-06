@@ -1,9 +1,9 @@
 
+import Home from "./home";
+import Settings from "./settings";
 
 import Global from "../../blocks/global";
 import Authorized from "../../blocks/authorzied";
-
-import { Home, Routes } from "./pages";
 
 const Root = ({ children }) => (
   <Authorized>
@@ -22,5 +22,7 @@ export default {
   },
   component: Root,
   indexRoute: { component: Home },
-  childRoutes: Routes
+  childRoutes: [
+    ...Settings.Routes,
+  ]
 };

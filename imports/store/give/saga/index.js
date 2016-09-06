@@ -6,9 +6,9 @@ import { takeLatest, takeEvery } from "redux-saga";
 import { fork, take, put, cps, call, select } from "redux-saga/effects";
 import gql from "graphql-tag";
 
-import { GraphQL } from "../../../../core/graphql";
-import { addSaga } from "../../../../core/store/utilities";
-import modalActions from "../../../../core/store/modal";
+import { GraphQL } from "../../../graphql";
+import { addSaga } from "../../utilities";
+import modalActions from "../../modal";
 
 import types from "./../types";
 import actions from "../actions";

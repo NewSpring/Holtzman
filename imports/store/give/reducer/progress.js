@@ -9,7 +9,7 @@ const progress = (state, action) => {
     if (state.step + action.increment <= 0) {
       return state;
     }
-    
+
     return { ...state, ...{
       step: state.step + action.increment
     } };
@@ -24,5 +24,6 @@ const progress = (state, action) => {
 };
 
 
-export default {
-  progress};
+export {
+  progress
+};
