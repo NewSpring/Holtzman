@@ -24,29 +24,12 @@ export default class ApollosPullToRefresh extends Component {
         <div className="ptr-fake-background">
         </div>
 
-        <style>{`
-          @media screen and (min-width: 481px) and (max-width: 769px) {
-              .ptr-element {
-                margin-left: 40px;
-              }
-            }
-        `}</style>
-
-        {(() => { if (liveBannerVisible) return (
-          <style>
-            {`
-              .ptr-element i {
-                top: 100px;
-              }
-            `}
-          </style>
-        ); })()}
-
         <ReactPullToRefresh
           onRefresh={this.props.handleRefresh}
           hammerOptions={{ touchAction: 'auto' }}
           icon={<i className="icon-leaf-outline"></i>}
           loading={<i className="loading icon-leaf-outline"></i>}
+          className="relative"
         >
           {this.props.children}
         </ReactPullToRefresh>
