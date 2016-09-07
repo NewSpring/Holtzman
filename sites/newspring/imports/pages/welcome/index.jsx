@@ -45,6 +45,7 @@ class Welcome extends Component {
       textDecoration: "none",
       fontSize: "15px",
     };
+    const imagePrefix = window.innerWidth >= 480 ? "tablet" : "phone";
 
     return (
       <div style={containerStyles}>
@@ -57,16 +58,16 @@ class Welcome extends Component {
           afterChange={this.updateState}
           slickGoTo={this.state.slickGoTo || 0}
         >
-          <div><img src="/welcome/onboard-img1.jpg" onClick={this.next} data-index={0} /></div>
-          <div><img src="/welcome/onboard-img2.jpg" onClick={this.next} data-index={1} /></div>
-          <div><img src="/welcome/onboard-img3.jpg" onClick={this.next} data-index={2} /></div>
-          <div><img src="/welcome/onboard-img4.jpg" onClick={this.next} data-index={3} /></div>
-          <div><img src="/welcome/onboard-img5.jpg" onClick={this.next} data-index={4} /></div>
-          <div><img src="/welcome/onboard-img6.jpg" onClick={this.next} data-index={5} /></div>
-          <div><img src="/welcome/onboard-img7.jpg" onClick={this.next} data-index={6} /></div>
+          <div><img src={`/welcome/${imagePrefix}/onboard-img1.jpg`} onClick={this.next} data-index={0} /></div>
+          <div><img src={`/welcome/${imagePrefix}/onboard-img2.jpg`} onClick={this.next} data-index={1} /></div>
+          <div><img src={`/welcome/${imagePrefix}/onboard-img3.jpg`} onClick={this.next} data-index={2} /></div>
+          <div><img src={`/welcome/${imagePrefix}/onboard-img4.jpg`} onClick={this.next} data-index={3} /></div>
+          <div><img src={`/welcome/${imagePrefix}/onboard-img5.jpg`} onClick={this.next} data-index={4} /></div>
+          <div><img src={`/welcome/${imagePrefix}/onboard-img6.jpg`} onClick={this.next} data-index={5} /></div>
+          <div><img src={`/welcome/${imagePrefix}/onboard-img7.jpg`} onClick={this.next} data-index={6} /></div>
           <div>
             <Link to="/">
-              <img src="/welcome/onboard-img8.jpg" />
+              <img src={`/welcome/${imagePrefix}/onboard-img8.jpg`} />
             </Link>
           </div>
         </Slider>
