@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { actions as audioActions } from "../../../store/audio";
 
-import { Players } from "../../../libraries";
+import Audio from "../../../libraries/players/audio";
 import AudioControls from "./audio.Controls";
 import AudioTitle from "./audio.Title";
 import AudioScrubber from "./audio.Scrubber";
@@ -87,7 +87,7 @@ export default class AudioPlayerUtility extends Component {
 
     // set loading state
     this.props.loading();
-    const player = new Players.audio(track.file, () => {
+    const player = new Audio(track.file, () => {
 
       // set ready state
       this.props.ready();

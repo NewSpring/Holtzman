@@ -1,7 +1,7 @@
 
 import { Link } from "react-router";
 import backgrounds from "../../util/backgrounds";
-import content from "../../util/content";
+import contentHelper from "../../util/content";
 import categories from "../../util/categories";
 
 const hasImage = (content) => {
@@ -16,7 +16,7 @@ const hasImage = (content) => {
 // XXX right now this uses the content prop for everything
 // it should less intelligent and use the other props directly
 const MiniCard = ({ link, title, icon, type, images, description, content }) => (
-  <Link to={content.links(content)} className="plain">
+  <Link to={contentHelper.links(content)} className="plain">
     <div className="card">
         <div className={`card__item soft push-half-ends ${hasImage(content) ? "two-thirds" : "one-whole"}`} style={{verticalAlign: "middle"}}>
           <h6 className="text-dark-primary capitalize">{title}</h6>

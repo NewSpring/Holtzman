@@ -129,10 +129,7 @@ export default class Home extends Component {
 
     // if (this.props.data.loading) return <Loading /> // XXX
     let { photo } = person;
-
-    if (this.state.photo) {
-      photo = this.state.photo;
-    }
+    if (this.state.photo) photo = this.state.photo;
 
     return (
       <Layout

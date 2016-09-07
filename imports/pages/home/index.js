@@ -8,7 +8,7 @@ import Split, { Left, Right } from "../../blocks/split";
 
 import ApollosPullToRefresh from "../../components/pullToRefresh";
 import Loading, { FeedItemSkeleton } from "../../components/loading";
-import { FeedItem } from "../../components/cards/cards.FeedItem";
+import FeedItem from "../../components/cards/cards.FeedItem";
 
 import { nav as navActions } from "../../store";
 import Headerable from "../../mixins/mixins.Header";

@@ -13,7 +13,7 @@ import Shareable from "../../mixins/mixins.Shareable";
 import Loading from "../../components/loading";
 
 // import editorial collection for lookup
-import backgrounds from "../../utils/backgrounds";
+import backgrounds from "../../util/backgrounds";
 import RelatedContent from "../../blocks/content/RelatedContent";
 
 import SingleVideoPlayer from "../../components/players/video/Player";
