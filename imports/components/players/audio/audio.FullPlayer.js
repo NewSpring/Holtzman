@@ -8,7 +8,6 @@ import backgrounds from "../../../util/backgrounds";
 
 import headerActions from "../../../store/header";
 
-import { Players } from "../../../libraries";
 import AudioControls from "./audio.Controls";
 import AudioTitle from "./audio.Title";
 import Track from "./audio.Track";

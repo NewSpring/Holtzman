@@ -6,6 +6,8 @@ import actions from "./actions";
 
 addReducer({ audio: reducer });
 
+export default actions;
+
 export {
   types,
   actions,
