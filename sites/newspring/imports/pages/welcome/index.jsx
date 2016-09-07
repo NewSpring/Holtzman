@@ -48,7 +48,7 @@ class Welcome extends Component {
     const imagePrefix = window.innerWidth >= 480 ? "tablet" : "phone";
 
     return (
-      <div style={containerStyles}>
+      <div className="background--primary" style={containerStyles}>
         <Slider
           dots={true}
           arrows={false}
