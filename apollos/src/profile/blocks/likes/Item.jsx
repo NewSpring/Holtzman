@@ -74,7 +74,7 @@ export default class LikesItem extends Component {
     const like = this.props.like;
 
     return (
-      <div className="grid__item one-whole">
+      <div className="grid__item one-whole one-half@palm-wide-and-up">
         <div className="card">
           <Link to={like.link} onClick={this.onClick} className="plain">
               <ImageLoader
