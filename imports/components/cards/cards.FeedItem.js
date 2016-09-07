@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import Card from "./index";
 import styles from "../../util/styles";
 import backgrounds from "../../util/backgrounds";
+import content from "../../util/content";
 import collections from "../../util/collections";
 import categories from "../../util/categories";
 import time from "../../util/time";
@@ -108,7 +109,6 @@ export default class FeedItem extends Component {
 
   render() {
     const item = this.props.item;
-
     return (
       <Card
           link={content.links(item)}
@@ -124,10 +124,9 @@ export default class FeedItem extends Component {
           <h4 className={this.h4Classes()}>{item.title}</h4>
           <i className={this.iconClasses()} />
           <h7 className={this.categoryClasses()}>{categories.name(item)}</h7>
-          <h7 style={{marginTop: "5px"}}className={this.timeClasses()}>{time.relative(item)}</h7>
+          <h7 style={{marginTop: "5px"}} className={this.timeClasses()}>{time.relative(item)}</h7>
         </div>
       </Card>
     );
-
   }
 }

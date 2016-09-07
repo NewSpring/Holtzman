@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import Meta from "react-helmet";
 
 import Split, { Left, Right } from "../../../blocks/split";
-import { Toggle } from "../../../components/controls";
+import Toggle from "../../../components/controls/toggle";
 
 
 const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (

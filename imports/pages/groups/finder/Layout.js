@@ -4,7 +4,7 @@ import Forms from "../../../components/forms";
 import Loading from "../../../components/loading";
 import { Link } from "react-router";
 
-import { FeedItem } from "../../../components/cards/cards.FeedItem";
+import FeedItem from "../../../components/cards/cards.FeedItem";
 import SideBySide from "../../../components/cards/SideBySide";
 import Tag from "../components/Tag";
 

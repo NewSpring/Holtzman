@@ -9,6 +9,8 @@ import Meta from "../../components/meta";
 import Nav from "../nav";
 import Header from "../../components/header";
 
+import Likes from "../../database/collections/likes";
+
 import {
   accounts as accountsActions,
   liked as likedActions,

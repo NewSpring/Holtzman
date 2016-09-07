@@ -14,6 +14,8 @@ import {
   live as liveActions,
 } from "../../store";
 
+console.log(headerActions)
+
 // can we use the core toggle here? Is it ready @jbaxleyiii?
 import DevotionsSingleContent from "./devotions.SingleContent";
 import DevotionsSingleScripture from "./devotions.SingleScripture";

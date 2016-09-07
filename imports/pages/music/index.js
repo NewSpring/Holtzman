@@ -5,7 +5,7 @@ import gql from "graphql-tag";
 
 import ApollosPullToRefresh from "../../components/pullToRefresh";
 import Loading, { FeedItemSkeleton } from "../../components/loading";
-import { FeedItem } from "../../components/cards/cards.FeedItem";
+import FeedItem from "../../components/cards/cards.FeedItem";
 
 import Headerable from "../../mixins/mixins.Header";
 import Pageable from "../../mixins/mixins.Pageable";
