@@ -6,12 +6,11 @@ import Back from "../Back"
 const styles = {
   overflow: "visible",
   zIndex: 1,
-  marginTop: process.env.NATIVE ? "50px" : "0px",
 };
 
 const Layout = ({ submit, save, state }, context) => (
   <div
-    className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom "
+    className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up push-double-bottom "
     style={styles}>
     <Back />
     <Meta title="Change your password" />

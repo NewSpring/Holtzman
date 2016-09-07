@@ -37,12 +37,6 @@ export default class Layout extends Component {
     this.props.submit(data)
   }
 
-  containerStyles = () => {
-    return {
-      marginTop: process.env.NATIVE? "50px" : "0px",
-    }
-  }
-
   render () {
 
     const { submit, person, months, saveMonth, days, years, campuses } = this.props
@@ -60,8 +54,7 @@ export default class Layout extends Component {
 
     return (
       <div
-        className="background--light-primary one-whole text-center push-double-top@lap-and-up soft-double-bottom push-double-bottom"
-        style={this.containerStyles()}
+        className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up soft-double-bottom push-double-bottom"
       >
       <Meta title="Update your details" />
         <Back />
