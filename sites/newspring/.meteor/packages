@@ -33,3 +33,4 @@ meteorhacks:fast-render@2.12.0
 # nathantreid:css-modules
 crosswalk@1.6.2
 shell-server
+dispatch:reload-on-resume
