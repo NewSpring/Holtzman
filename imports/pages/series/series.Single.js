@@ -94,7 +94,7 @@ export default class SeriesSingle extends Component {
     const { content } = nextProps.series;
     if(!content) return;
 
-    const color = Helpers.collections.color(content);
+    const color = collections.color(content);
     this.props.dispatch(headerActions.set({
       title: "Series",
       color: color
@@ -129,13 +129,13 @@ export default class SeriesSingle extends Component {
     const series = content;
     return (
       <div>
-        <div className={`${Helpers.collections.classes(series)} background--light-primary`}>
-          <div className={Helpers.collections.classes(series)} style={this.hackBackgroundStyles()} />
-          <style>{Helpers.styles.overlay(series)}</style>
-          <style>{Helpers.collections.backgroundStyles(series)}</style>
+        <div className={`${collections.classes(series)} background--light-primary`}>
+          <div className={collections.classes(series)} style={this.hackBackgroundStyles()} />
+          <style>{styles.overlay(series)}</style>
+          <style>{collections.backgroundStyles(series)}</style>
           <SeriesHero series={series} />
           <section className="text-light-primary hard-bottom soft-double-sides@palm-wide">
-            <div dangerouslySetInnerHTML={Helpers.react.markup(series, "description")} />
+            <div dangerouslySetInnerHTML={react.markup(series, "description")} />
           </section>
           <SeriesVideoList id={this.props.params.id} />
         </div>
