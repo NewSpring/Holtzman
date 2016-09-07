@@ -8,7 +8,7 @@ import Pageable from "../../mixins/mixins.Pageable";
 
 import Loading, { FeedItemSkeleton } from "../../components/loading";
 import ApollosPullToRefresh from "../../components/pullToRefresh";
-import { FeedItem } from "../../components/cards/cards.FeedItem";
+import FeedItem from "../../components/cards/cards.FeedItem";
 
 import { nav as navActions } from "../../store";
 

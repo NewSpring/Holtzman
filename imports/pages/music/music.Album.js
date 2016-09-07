@@ -16,9 +16,8 @@ import Shareable from "../../mixins/mixins.Shareable";
 import {
   modal,
   nav as navActions,
+  audio as audioActions
 } from "../../store";
-
-import { actions as audioActions } from "../../store/audio";
 
 import Track from "./music.Track";
 import SaveOffline from "./music.SaveOffline";
