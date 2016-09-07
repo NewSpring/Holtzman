@@ -34,20 +34,9 @@ yecho "### Installing Meteor ###"
 if [ ! -d "$DIRECTORY" ]; then curl https://install.meteor.com | /bin/sh; fi
 export PATH=$PATH:$HOME/.meteor
 
-yecho "### Installing NPM deps ###"
-npm install
-npm link
-
 yecho "### Apollos Setup ###"
-apollos setup newspring
+apollos setup
 
 yecho "### Settings Grab ###"
-cd sites/newspring/.remote
+cd .remote
 git clone git@github.com:NewSpring/ops-settings.git settings
-cd settings && git checkout refactor # temp until confirmed working
-
-# yecho "### Preparing Gagarin test build ###"
-# npm install -g gagarin
-# cp ./.remote/settings/sites/app.newspring.io/alpha.settings.json ./settings.json
-# meteor build --directory ./.gagarin/local --server localhost:3000
-# cd ./.gagarin/local/bundle/programs/server/ && npm i
