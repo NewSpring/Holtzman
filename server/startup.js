@@ -1,4 +1,4 @@
-import "/imports/util/regex"
+import "/imports/util/regex";
 
 // publications
 import "/imports/database/publications/likes";
