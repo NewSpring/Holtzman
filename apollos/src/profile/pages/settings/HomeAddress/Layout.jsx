@@ -28,12 +28,6 @@ export default class Layout extends Component {
     this.props.update(data)
   }
 
-  containerStyles = () => {
-    return {
-      marginTop: process.env.NATIVE ? "50px" : "0px",
-    }
-  }
-
   render () {
     const { update, home, campus } = this.props
 
@@ -48,8 +42,7 @@ export default class Layout extends Component {
 
     return (
       <div
-        className="background--light-primary one-whole text-center push-double-top@lap-and-up push-double-bottom background--light-primary"
-        style={this.containerStyles()}
+        className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up push-double-bottom background--light-primary"
       >
       <Meta title="Change your address" />
         <Back />

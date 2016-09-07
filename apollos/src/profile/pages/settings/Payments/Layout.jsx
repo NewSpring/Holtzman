@@ -8,12 +8,11 @@ import Back from "../Back"
 const styles = {
   overflow: "visible",
   zIndex: 1,
-  marginTop: process.env.NATIVE ? "50px" : "0px",
 };
 
 const Layout = ({ details, remove, loading }) => (
   <div
-    className="background--light-primary text-center soft-double-top push-double-bottom push-double-top soft-double-sides@palm-wide"
+    className="background--light-primary text-center soft-double-top push-double-bottom push-top push-double-top@lap-and-up soft-double-sides@palm-wide"
     style={styles}>
     <Meta title="Saved Payments" />
     <Back />
