@@ -67,7 +67,7 @@ const ScheduledTransactions = () => {
           SystemNote: `Created from NewSpring Apollos on ${__meteor_runtime_config__.ROOT_URL}`
         } }
 
-        // this should never be isGuest, but is a saftey net
+        // this should never be isGuest, but is a safety net
         const isGuest = PersonId ? false : true
         // This scope issue is bizzare to me, but this works
         let ScopedId = PersonId

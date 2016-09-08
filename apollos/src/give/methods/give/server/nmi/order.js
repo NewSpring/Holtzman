@@ -36,7 +36,7 @@ const step2 = (purchaseData, method, callback) => {
   function timeout(ms, promise) {
     return new Promise(function(resolve, reject) {
       setTimeout(function() {
-        reject(new Error("The request to our payment process took longer than expected. For your saftey we have cancelled this action. You were not charged and should be able to try again!"))
+        reject(new Error("The request to our payment process took longer than expected. For your safety we have cancelled this action. You were not charged and should be able to try again!"))
       }, ms)
       promise.then(resolve, reject)
     })

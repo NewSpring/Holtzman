@@ -21,5 +21,5 @@ export default {
   400: "There was an error with our payment processor, you were not charged, please try again",
   410: "We had an issue processing transactions, please try again",
   411: "Looks like we are having connection issues with our processor, please try again later",
-  430: "This looks like a duplicate transaction, for your saftey, we have declined the transaction",
+  430: "This looks like a duplicate transaction, for your safety, we have declined the transaction",
 }
