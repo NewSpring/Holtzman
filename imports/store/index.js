@@ -14,8 +14,8 @@ import sections from "./sections";
 import share from "./share";
 import topics from "./topics";
 // import fullscreen from "./fullscreen";
-
-if (process.env.NATIVE) import header from "./header";
+let header;
+if (process.env.NATIVE) header = require("./header");
 
 import { wrapper, createReduxStore } from "./store";
 import { addMiddleware, addReducer, createReducer, addSaga } from "./utilities";
