@@ -44,8 +44,17 @@ apollos-runtime.json
 # ignore settings
 .remote/*
 
- ignore launchfile
+# ignore launch
 launch.json
+.fastlane
+.build
 
-# fastlane
-.notfastlane
+# xcode builds
+*.ipa
+*.dSYM.zip
+
+# certs
+*.mobileprovision
+*.pem
+*.key
+*.crt
