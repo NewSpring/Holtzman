@@ -43,6 +43,8 @@ apollos-runtime.json
 
 # ignore settings
 .remote/*
+.meteor/settings.json
+
 
 # ignore launch
 launch.json
