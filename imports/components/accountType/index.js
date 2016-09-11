@@ -24,8 +24,7 @@ const AccountType = ({ width, height, type }) => {
   height || (height = 40);
 
   let Icon = Accounts[type];
-  return null;
-  // return <Icon width={width} height={height} style={style} />;
+  return <Icon width={width} height={height} style={style} />;
 };
 
 AccountType.propTypes = {
