@@ -19,6 +19,8 @@ import formatPersonDetails from "./formatPersonDetails";
 import { order, schedule, charge } from "../../../methods/give/client";
 import RecoverSchedules from "../../../blocks/RecoverSchedules";
 
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 // XXX break this file up into smaller files
 
 // at this point in time we have to do steps 1 - 3 of the
@@ -256,6 +258,7 @@ function* submitPaymentDetails(data, url) {
 
   // @TODO test on older browsers
   // store data in NMI's system
+  yield delay(50); // ensure gift is in nmi's system beofre progressing
   return yield fetch(url, {
       method: "POST",
       body: new FormData(form),
@@ -310,13 +313,14 @@ function* submitPersonDetails(give, autoSubmit) {
         DO NOT REMOVE THIS
 
     */
+    yield delay(50); // ensure gift is in nmi's system beofre progressing
     const response = yield fetch(url, {
       method: "POST",
       body: new FormData(),
       mode: "no-cors"
     })
-      .then((response) => {})
-      .catch((e) => {});
+      .then(console.log)
+      .catch(console.log);
 
   }
 

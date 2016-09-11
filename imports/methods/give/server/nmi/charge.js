@@ -64,12 +64,12 @@ const step1 = (token, callback) => {
       return;
     }
 
-    let number = Number(data["result-code"]);
+    let number = data["result-code"];
     let err;
 
     // special mapping to ensure duplicates
     if (data["result-text"].indexOf("Duplicate") > -1) {
-      number = 430;
+      number = "430";
     }
 
     if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
@@ -79,7 +79,7 @@ const step1 = (token, callback) => {
     }
 
     console.error("@@CHARGE_ERROR", data, xml);
-    callback(err);
+    callback({ message: err });
 
   })
   .catch(callback));

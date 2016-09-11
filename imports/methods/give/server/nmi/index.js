@@ -4,7 +4,7 @@ import voidTransaction from "./void";
 import cancel from "./cancel";
 import cancelBilling from "./cancel-card";
 
-export default {
+export {
   order,
   charge,
   cancel,
