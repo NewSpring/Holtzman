@@ -68,8 +68,13 @@ export default class Personal extends Component {
     return true;
   }
 
-  campus = (value) => {
+  campus = (value, target) => {
     this.props.save({ personal: { campusId: value }});
+    // save name for display
+    for (let campus of this.props.campuses) {
+      if (`${campus.value}` !== value) continue;
+      this.props.save({ personal: { campus: campus.label }});
+    }
     return true;
   }
 
