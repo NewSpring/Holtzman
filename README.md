@@ -18,34 +18,56 @@ Apollos is a reactive application framework for building high speed, web + nativ
 * <a href="https://www.biblegateway.com/passage/?search=1%20Corinthians%203:6&version=NIV">1 Corinthians 3:6</a>
 * <a href="https://www.biblegateway.com/passage/?search=Titus%203:13&version=NIV">Titus 3:13</a>
 
-## Structure
-
-This repo contains the core Apollos framework, as well as the sites that share the core Apollos code:
-
-- `/apollos`: shared code
-- `/sites`: root site directory
-  - `/newspring`: newspring.cc (currently my.newspring.cc)
-
 ## Prerequisites
 
-- [Meteor](curl https://install.meteor.com/ | sh): `curl https://install.meteor.com/ | sh`;  
-- [Node](https://nodejs.org/en/download/)
+- [Meteor](curl https://install.meteor.com/ | sh): `curl https://install.meteor.com/ | sh`;
+- [Node 6](https://nodejs.org/en/download/)
+
+## Quick Start
+
+```
+git clone git@github.com:NewSpring/Apollos.git
+cd Apollos
+npm link
+apollos setup
+apollos run
+```
+
+## Structure
+
+This repo contains the code base used to build v5 of the NewSpring site and native app. Our sites and native apps share much of the same functionality, and therefore share the same code.
+
+- `/assets`: additional assets that don't need to be loaded over a web server
+- `/client`: entry point for client
+- `/imports`: basically all code, client and server
+- `/public`: static assets to be loaded from web server
+- `/scripts`: command line scripts used for deployment, testing, etc
+- `/server`: entry point for server
+- `/stylesheets`: sass for generating our css using sass and junction
+- `main.html`: root HTML file
+- `mobile-config.js`: used to generate cordova apps
+- `package.json`: used to manage npm dependencies and etc.
 
 ## Local Development
 
-To install, clone down this repo and run `npm install && npm link`. This will bind `apollos` to your system to be used to run this app.
+To install, clone down this repo and run `npm link`. This will bind `apollos` to your system to be used to run this app.
 
-`apollos setup <site>`: This command will bootstrap individual sites. This may take some time.
+`apollos setup`: This command will bootstrap the application. This may take some time.
 
-`apollos run <site>`: This will start a local server to serve the site and print its address in your console.
+  - `-c || --clean`: Force rebuild of application
+  - `-l || --log <level>`: NOT IMPLEMENTED
 
-`apollos run <site> --native`: This will run the native version of the application but allow you to work on most of the code in your web browser.
+`apollos run`: This will start a local server to serve the site and print its address in your console.
 
-`apollos run <site> --ios`: This will run the native app of a given site in the iOS simulator
-
-`apollos run <site> --android`: This will run the native app of a given site in the android simulator
-
-`apollos run <site> --ios --device`: This will run the native app of a given site through xCode so it can be run on a local device
+  - `-p || --port`: NOT IMPLEMENTED
+  - `-v || --verbosity`: NOT IMPLEMENTED
+  - `-q || --quick`: Removes built files (`.meteor/local`)
+  - `-n || --native`: This will run the native version of the application but allow you to work on most of the code in your web browser
+  - `--ios`: Run the native app in the iOS simulator
+  - `--android`: Run the native app in the Android simulator
+  - `--device`: Run the native app on a device. Use in conjunction with `--ios` or `--android`
+  - `--production`: Run the application in production mode
+  - `--debug`: Run the application in debug mode
 
 ## Deploys
 
