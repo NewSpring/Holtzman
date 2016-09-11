@@ -169,7 +169,6 @@ export default class Give extends Component {
   }
 
   goToaccounts = () => {
-    console.log("ER");
     const { data } = this.props.give;
 
     let props = {
@@ -182,7 +181,6 @@ export default class Give extends Component {
         terms: true
       }
     };
-    console.log(props);
     this.props.dispatch(modal.render(OnBoard, props));
   }
 
