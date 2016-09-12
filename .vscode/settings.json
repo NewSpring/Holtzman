@@ -16,6 +16,18 @@
     "**/**/*.yml": true,
     "**/npm-*": true,
     "coverage": true,
-    "typings": true
+    "typings": true,
+    "assets": true,
+    ".metoer/local": true,
+    "packages": true,
+    "public": true,
+    ".editorconfig": true,
+    "launch.json": true,
+    "LICENSE": true,
+    "main.html": true,
+    "mobile-config.js": true,
+    "NewSpring.xcscheme": true,
+    ".travis": true,
+    "scripts": true
   }
 }

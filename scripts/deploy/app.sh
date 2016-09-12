@@ -53,20 +53,17 @@ if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$DEST" != "native" ]; then
   exit 0
 fi
 
-yecho "### Entering app directory ###"
-cd "sites/$APP"
-
 yecho "### Creating settings for the $CHANNEL of $APP:$DEST"
 URLPREFIX="my"
 TLD="cc"
 ### XXX make this native
 if [ "$DEST" = "native" ]; then URLPREFIX="app"; fi
 if [ "$DEST" = "native" ]; then TLD="io"; fi
-METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
+METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/.remote/settings/sites/$APP/$CHANNEL.settings.json"
 ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.$TLD"
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
   ROOT_URL="https://my.newspring.cc"
-  METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/sites/$APP/.remote/settings/sites/$APP/$CHANNEL.settings.json"
+  METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/.remote/settings/sites/$APP/$CHANNEL.settings.json"
 fi
 
 yecho "ROOT_URL"
@@ -142,36 +139,14 @@ aws configure set default.region us-east-1
 yecho "### Building for linux environment https://$CHANNEL-$URLPREFIX.newspring.cc ###"
 
 if [ "$DEST" = "native" ]; then
-  yecho "### Building apollos for $DEST"
-  cd ../../apollos && NATIVE=true npm run compile
-  rm -rf node_modules && cd ../
-  rm -rf sites/$APP/.meteor/local
-
-  yecho "### Reinstalling / linking apollos for better dependencies ###"
-  cd ./sites/$APP
-  rm -rf node_modules/apollos-core && npm i
-  ls node_modules/apollos-core
-  ls node_modules/apollos-core/dist
-
   yecho "### Building meteor for env $DEST ###"
   # XXX pass env vars through launch
   NATIVE=true meteor build .build --architecture os.linux.x86_64 --server $ROOT_URL --mobile-settings $METEOR_SETTINGS_PATH
 fi
 if [ "$DEST" = "web" ]; then
-  yecho "### Building apollos for $DEST"
-  cd ../../apollos && NODE_ENV="production" WEB=true npm run compile
-  rm -rf node_modules && cd ../
-  rm -rf sites/$APP/.meteor/local
-
   yecho "### Removing cordova platforms ###"
-  cd ./sites/$APP
   meteor remove-platform android
   meteor remove-platform ios
-
-  yecho "### Reinstalling / linking apollos for better dependencies ###"
-  rm -rf node_modules/apollos-core && npm i
-  ls node_modules/apollos-core
-  ls node_modules/apollos-core/dist
 
   yecho "### Building meteor for env $DEST ###"
   # XXX pass env vars through launch
@@ -181,7 +156,7 @@ fi
 
 
 yecho "### Uploading bundle to S3 ###"
-aws s3 cp .build/$APP.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+aws s3 cp .build/Holtzmann.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
 yecho "### Updating ECS ###"
 # more bash-friendly output for jq

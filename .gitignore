@@ -24,6 +24,9 @@ build/Release
 # Commenting this out is preferred by some people, see
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
+/packages
+.meteor/local
+settings.json
 
 # Users Environment Variables
 .lock-wscript
@@ -37,3 +40,23 @@ coverage
 _book
 dev_bundle
 apollos-runtime.json
+
+# ignore settings
+.remote/*
+.meteor/settings.json
+
+
+# ignore launch
+launch.json
+.fastlane
+.build
+
+# xcode builds
+*.ipa
+*.dSYM.zip
+
+# certs
+*.mobileprovision
+*.pem
+*.key
+*.crt

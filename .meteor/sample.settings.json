@@ -1,0 +1,16 @@
+{
+  "public": {
+    "lookback": "",
+    "typekit": "",
+    "ga": "",
+    "hockey": "",
+    "sentry": false,
+    "heighliner": "https://api.newspring.cc/graphql",
+    "esv": false
+  },
+  "rock": {
+    "baseURL": "https://rock.newspring.cc/",
+    "token": false,
+    "tokenName": "Authorization-Token"
+  }
+}

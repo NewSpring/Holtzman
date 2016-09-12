@@ -4,35 +4,19 @@
 // XXX currently this project is written to support node 0.10.*
 // when Meteor 1.4 is ready, we can rewrite in es6
 var Vorpal = require("vorpal")(),
-      Path = require("path"),
-      Fs = require("fs"),
-      Exec = require("child_process").exec,
-      Spawn = require("child_process").spawn,
-      Rimraf = require("rimraf").sync,
-      Promise = require("es6-promise").Promise,
-      GitHub = require("github-download"),
-      Mkdirp = require("mkdirp"),
-      Symlink = require("symlink-or-copy").sync
-      ;
+    Path = require("path"),
+    Fs = require("fs"),
+    Exec = require("child_process").exec,
+    Spawn = require("child_process").spawn,
+    Rimraf = require("rimraf").sync,
+    Promise = require("es6-promise").Promise,
+    GitHub = require("github-download"),
+    Mkdirp = require("mkdirp")
+    ;
 
-var root = Path.resolve(__dirname, "../"),
-      sitesFolder = Path.join(root, "./sites"),
-      apollosFolder = Path.join(root, "./apollos")
-      ;
+var root = Path.resolve(__dirname, "../");
 
-function getDirectories(srcpath) {
-  return Fs.readdirSync(srcpath).filter(function(file) {
-    return Fs.statSync(Path.join(srcpath, file)).isDirectory();
-  });
-}
-
-var sites = getDirectories(sitesFolder);
-var apollosCompiled = [
-  "dist",
-  "node_modules"
-];
-
-var sitesCompiled = [
+var built = [
   ".remote",
   "node_modules",
   "packages",
@@ -51,32 +35,19 @@ function installDep(src, dep){
 }
 
 Vorpal
-  .command("setup <site>")
+  .command("setup")
   .description("Bootstrap an application. This may take some time...")
   .option("-c, --clean", "Force rebuild of application(s)")
   .option("-l, --log [level]", "Sets verbosity level.")
-  .autocomplete(sites)
   .action(function(args, cb) {
-    var app = Path.join(sitesFolder, args.site);
+    var app = root;
     var options = args.options;
-    // var log = this.log;
-    if (args.site && sites.indexOf(args.site) === -1) {
-      this.log("Could not find " + args.site + " in /sites folder");
-      return cb();
-    }
 
     if (options.clean) {
       console.log("Cleaning all dependencies...");
-      if (args.site) {
-        for (var i = 0; i < sitesCompiled.length; i++) {
-          var localPath = sitesCompiled[i];
-          Rimraf(Path.join(app, localPath));
-        }
-      }
-
-      for (var i = 0; i < apollosCompiled.length; i++) {
-        var localPath = apollosCompiled[i];
-        Rimraf(Path.join(apollosFolder, localPath));
+      for (var i = 0; i < built.length; i++) {
+        var localPath = built[i];
+        Rimraf(Path.join(app, localPath));
       }
     }
 
@@ -89,7 +60,7 @@ Vorpal
         var deps = packageFile.apollos.resource[subDir];
         for (var dep in deps) {
           if (!deps.hasOwnProperty(dep)) continue;
-          console.log("installing resource: " + dep + " for " + args.site)
+          console.log("installing resource: " + dep)
           depPromises.push(installDep(Path.join(localPath, dep), deps[dep]));
         }
       }
@@ -97,38 +68,21 @@ Vorpal
     var npmPromises = [];
     npmPromises.push(
       new Promise(function(p, f){
-        console.log("installing npm deps of Apollos...");
-        var child = Spawn("npm", ["install"], {
-          cwd: apollosFolder, stdio: "inherit"
-        });
-        child.on("error", f);
-        child.on("close", p);
-      })
-    );
-    npmPromises.push(
-      new Promise(function(p, f){
-        console.log("installing npm deps of " + args.site + "...");
+        console.log("installing npm deps");
         var child = Spawn("npm", ["install"], {
           cwd: app, stdio: "inherit"
         });
         child.on("error", f);
-        if (process.env.CI) return; // On the CI, we don't want to link
-        child.on("close", function(){
-          var dest = Path.join(app, "node_modules/apollos");
-          Rimraf(dest);
-          Symlink(apollosFolder, dest);
-          return p();
-        });
       })
     );
 
     return Promise.all(npmPromises.concat(depPromises))
       .then(function(){
-        console.log(args.site + " should be ready to go!");
-        console.log("if " + args.site + " has a settings file, you will need to clone it down manually");
-        console.log("\n");
-        console.log("    cd " + app + "/.remote/ && git clone https://github.com/NewSpring/ops-settings.git settings");
-        console.log("\n");
+        console.log("Holtzmann should be ready to go!");
+        // console.log("you will need to clone it down manually");
+        // console.log("\n");
+        // console.log("    cd " + app + "/.remote/ && git clone https://github.com/NewSpring/ops-settings.git settings");
+        // console.log("\n");
         cb();
       })
       .catch(function(err) {
@@ -138,7 +92,7 @@ Vorpal
   });
 
 Vorpal
-  .command("run <site>")
+  .command("run")
   .description("Start a local server to serve the site and print its address in your console")
   .option("-p, --port", "Choose a port to run the application")
   .option("-v, --verbosity [level]", "Sets verbosity level.")
@@ -149,16 +103,9 @@ Vorpal
   .option("--device", "Run the native app of a given site on the device of the platform")
   .option("--production", "Run the application in production mode")
   .option("--debug", "Run the application in debug mode")
-
-  .autocomplete(sites)
   .action(function(args, cb) {
-    var app = Path.join(sitesFolder, args.site);
+    var app = root;
     var options = args.options;
-
-    if (sites.indexOf(args.site) === -1) {
-      this.log("Could not find " + args.site + " in /sites folder");
-      return cb();
-    }
 
     var packageFile = require(Path.join(app, "package.json"));
 
@@ -177,11 +124,6 @@ Vorpal
     // removes the built files for a rebuild
     if (!options.quick && !!apolloRuntime.WEB != !!env.WEB) {
       Rimraf(Path.join(app, ".meteor/local"));
-      Rimraf(Path.join(apollosFolder, "./dist"));
-    }
-
-    if (!options.quick && !options.production) {
-      var babel = Spawn("npm", ["run", "start"], { stdio: ["ignore", "ignore", process.stderr], cwd: apollosFolder });
     }
 
     var meteorArgs = [ "--settings" ];
@@ -190,8 +132,13 @@ Vorpal
     if (options.ios && options.device) meteorArgs.unshift("run", "ios-device");
     if (options.android && options.device) meteorArgs.unshift("run", "android-device");
 
-    if (packageFile.apollos && packageFile.apollos.settings) {
+    if (
+      packageFile.apollos && packageFile.apollos.settings &&
+      Fs.existsSync(Path.join(app, packageFile.apollos.settings))
+    ) {
       meteorArgs.push(packageFile.apollos.settings)
+    } else {
+      meteorArgs.push(Path.join(app, ".meteor/sample.settings.json"));
     }
 
     function run() {
@@ -203,12 +150,6 @@ Vorpal
     if (options.production) {
       console.log("Building apollos in production mode");
       meteorArgs.push("--production");
-      var babel = Spawn("npm", ["run", "compile"], { cwd: apollosFolder, env: env });
-      babel.on("close", function(){
-        console.log("Running " + args.site + " in production mode");
-        run();
-      })
-
     } else {
       run();
     }

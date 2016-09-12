@@ -20,8 +20,6 @@ addons:
 cache:
   directories:
   - $TRAVIS_BUILD_DIR/node_modules
-  - $TRAVIS_BUILD_DIR/apollos/node_modules
-  - $TRAVIS_BUILD_DIR/sites/newspring/node_modules
   - $TRAVIS_BUILD_DIR/.meteor
 before_install:
 - openssl aes-256-cbc -K $encrypted_e447456204f1_key -iv $encrypted_e447456204f1_iv
@@ -31,7 +29,7 @@ before_install:
 - rvm install 2.2.5
 - rvm use 2.2.5
 script:
-# - "./scripts/test/apollos.sh"
-- "./scripts/prepare/app.sh"
-# - "./scripts/test/app.sh"
-- "./scripts/deploy/app.sh"
+  - npm i && npm link
+  - npm test
+  - "./scripts/prepare/app.sh"
+  - "./scripts/deploy/app.sh"
