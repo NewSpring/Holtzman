@@ -1,3 +1,5 @@
+
+import "react-hot-loader/patch";
 import { Meteor } from "meteor/meteor";
 
 if (Meteor.settings.public.sentry && typeof Raven != "undefined") {

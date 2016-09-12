@@ -7,6 +7,8 @@ import InjectData from "./inject-data";
 import { StyleSheet } from "aphrodite";
 import useScroll from "react-router-scroll";
 
+import { AppContainer as HotLoaderAppContainer } from "react-hot-loader";
+
 export function run(routes, clientOptions = {}){
 
   const history = browserHistory;
@@ -15,7 +17,6 @@ export function run(routes, clientOptions = {}){
   const rootElementType = clientOptions.rootElementType || "div";
 
   Meteor.startup(() => {
-
     let rootElement = document.getElementById(rootElementName);
 
     // In case the root element doesn't exist, let's create it
@@ -35,36 +36,49 @@ export function run(routes, clientOptions = {}){
       });
     }
 
-    let app = (
-      <Router
-          history={history}
-          children={routes}
-          render={applyRouterMiddleware(useScroll())}
-          {...clientOptions.props}
-      />
-    );
+    const renderApp = (CurrentRoutes) => {
+      let app = (
+        <Router
+            history={history}
+            children={CurrentRoutes}
+            render={applyRouterMiddleware(useScroll())}
+            {...clientOptions.props}
+        />
+      );
 
-    if (clientOptions.wrapper) {
-      const wrapperProps = clientOptions.wrapperProps || {};
-      // Pass the redux store to the wrapper, which is supposed to be some
-      // flavour of react-redux's <Provider>.
-      if (reduxStore) {
-        wrapperProps.store = reduxStore;
+      if (clientOptions.wrapper) {
+        const wrapperProps = clientOptions.wrapperProps || {};
+        // Pass the redux store to the wrapper, which is supposed to be some
+        // flavour of react-redux's <Provider>.
+        if (reduxStore) {
+          wrapperProps.store = reduxStore;
+        }
+
+        app = <clientOptions.wrapper {...wrapperProps}>{app}</clientOptions.wrapper>;
       }
 
-      app = <clientOptions.wrapper {...wrapperProps}>{app}</clientOptions.wrapper>;
+      let css;
+      InjectData.getData("aphrodite-classes", data => {
+        css = data ? JSON.parse(data) : {};
+      });
+
+      // StyleSheet.rehydrate(css.renderedClassNames);
+
+      app = <HotLoaderAppContainer>{app}</HotLoaderAppContainer>;
+
+      ReactDOM.render(app, rootElement);
+
+      let collectorEl = document.getElementById(clientOptions.styleCollectorId || "css-style-collector-data");
+      if (collectorEl) collectorEl.parentNode.removeChild(collectorEl);
+    };
+
+    renderApp(routes);
+
+    if (module.hot) {
+      module.hot.accept("/imports", () => {
+        const NextRoutes = require("/imports").routes;
+        renderApp(NextRoutes, client);
+      });
     }
-
-    let css;
-    InjectData.getData("aphrodite-classes", data => {
-      css = data ? JSON.parse(data) : {};
-    });
-
-    // StyleSheet.rehydrate(css.renderedClassNames);
-
-    ReactDOM.render(app, rootElement);
-
-    let collectorEl = document.getElementById(clientOptions.styleCollectorId || "css-style-collector-data");
-    if (collectorEl) collectorEl.parentNode.removeChild(collectorEl);
   });
 };
