@@ -4,19 +4,11 @@
   </a>
 </p>
 
-Apollos
+Holtzmann
 =======================
-[![Build Status](https://travis-ci.org/NewSpring/Apollos.svg)](https://travis-ci.org/NewSpring/Apollos)
+[![Build Status](https://travis-ci.org/NewSpring/Holtzmann.svg)](https://travis-ci.org/NewSpring/Holtzmann)
 
-Apollos is a reactive application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
-
-## Who was Apollos?
-
-* <a href="https://www.biblegateway.com/passage/?search=Acts%2018:24-28&version=NIV">Acts 18:24-28</a>
-* <a href="https://www.biblegateway.com/passage/?search=Acts+19:1&version=NIV">Acts 19:1</a>
-* <a href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:12-13&version=NIV">1 Corinthians 1:12-13</a>
-* <a href="https://www.biblegateway.com/passage/?search=1%20Corinthians%203:6&version=NIV">1 Corinthians 3:6</a>
-* <a href="https://www.biblegateway.com/passage/?search=Titus%203:13&version=NIV">Titus 3:13</a>
+Holtzmann is a reactive application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
 
 ## Prerequisites
 
@@ -26,8 +18,8 @@ Apollos is a reactive application framework for building high speed, web + nativ
 ## Quick Start
 
 ```
-git clone git@github.com:NewSpring/Apollos.git
-cd Apollos
+git clone git@github.com:NewSpring/Holtzmann.git
+cd Holtzmann
 npm link
 apollos setup
 apollos run
