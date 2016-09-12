@@ -33,15 +33,9 @@ export default class SearchContainer extends Component {
     }, "DiscoverModal");
   }
 
-  componentDidMount(){
-    let term = this.props.search.term;
-
-    // XXX
-    //document.getElementById("search").value = term
-  }
-
   componentWillUnmount() {
     this.props.dispatch(modal.update({keepNav: false, layoutOverride: []}));
+    this.props.dispatch(searchActions.searching(false));
     this.unlockHeader();
   }
 
@@ -119,21 +113,12 @@ export default class SearchContainer extends Component {
     this.getSearch();
   }
 
-  cancel = (event) => {
-    event.preventDefault();
-    const { dispatch } = this.props;
-
-    dispatch(searchActions.searching(false));
-    document.getElementById("search").value = "";
-  }
-
   render() {
     const search = this.props.search;
 
     return (
       <Layout
           loadMore={this.loadMore}
-          cancel={this.cancel}
           search={search}
           hide={this.hide}
       />
