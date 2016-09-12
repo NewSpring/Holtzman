@@ -9,7 +9,15 @@
     "lint": "eslint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "postinstall": "./.bin/index.js setup",
+    "setup": "./.bin/index.js setup",
+    "start": "./.bin/index.js run",
+    "web": "./.bin/index.js run",
+    "native": "./.bin/index.js run --native",
+    "ios": "./.bin/index.js run --ios",
+    "android": "./.bin/index.js run --android",
+    "device": "./.bin/index.js run --ios --device"
   },
   "repository": {
     "type": "git",
@@ -21,7 +29,8 @@
     "url": "https://github.com/NewSpring/my.newspring.cc/issues"
   },
   "bin": {
-    "apollos": "./.bin/index.js"
+    "holtzmann": "./.bin/index.js",
+    "hz": "./.bin/index.js"
   },
   "homepage": "https://github.com/NewSpring/my.newspring.cc",
   "jest": {

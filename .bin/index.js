@@ -65,28 +65,25 @@ Vorpal
         }
       }
     }
-    var npmPromises = [];
-    npmPromises.push(
-      new Promise(function(p, f){
-        console.log("installing npm deps");
-        var child = Spawn("npm", ["install"], {
-          cwd: app, stdio: "inherit"
-        });
-        child.on("error", f);
-      })
-    );
+    // var npmPromises = [];
+    // npmPromises.push(
+    //   new Promise(function(p, f){
+    //     console.log("installing npm deps");
+    //     var child = Spawn("npm", ["install"], {
+    //       cwd: app, stdio: "inherit"
+    //     });
+    //     child.on("error", f);
+    //   })
+    // );
 
-    return Promise.all(npmPromises.concat(depPromises))
+    return Promise.all(depPromises)
       .then(function(){
-        console.log("Holtzmann should be ready to go!");
-        // console.log("you will need to clone it down manually");
-        // console.log("\n");
-        // console.log("    cd " + app + "/.remote/ && git clone https://github.com/NewSpring/ops-settings.git settings");
-        // console.log("\n");
+        Vorpal.hide();
         cb();
       })
       .catch(function(err) {
         console.error(err);
+        Vorpal.hide();
         cb();
       })
   });
@@ -154,7 +151,10 @@ Vorpal
 
     run();
 
-  });
+  })
+  // .cancel(function(){
+  //   Vorpal.hide();
+  // });
 
 
 Vorpal
