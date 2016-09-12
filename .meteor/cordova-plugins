@@ -1,7 +1,6 @@
 cordova-plugin-hockeyapp@2.2.2
 cordova-plugin-inappbrowser@1.4.0
 cordova-plugin-media@2.3.0
-cordova-plugin-meteor-webapp@https://github.com/meteor/cordova-plugin-meteor-webapp.git#8bf95eed3f313299fc2de33658866278eea2cdc5
 cordova-plugin-nativestorage@2.0.2
 cordova-plugin-safariviewcontroller@https://github.com/johnthepink/cordova-plugin-safariviewcontroller.git#ff8e5ccf1488e4e8ceff72f2c0ef99ce0346af25
 cordova-plugin-social-message@0.4.0
