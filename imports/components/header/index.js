@@ -3,6 +3,8 @@ import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
 
+import { search as searchActions } from "../../store";
+
 import Live from "../live";
 
 @connect((state) => ({
@@ -13,7 +15,9 @@ import Live from "../live";
   visible: state.header.visible,
   isSearch: state.header.content.isSearch,
   showSettings: state.header.content.showSettings,
-  searchSubmit: state.header.content.searchSubmit
+  searchSubmit: state.header.content.searchSubmit,
+  searchTerm: state.search.term,
+  searching: state.search.searching,
 }))
 export default class Header extends Component {
 
@@ -25,6 +29,15 @@ export default class Header extends Component {
       </Link>
       );
     }
+  }
+
+  cancelSearch = (event) => {
+    event.preventDefault();
+    const { dispatch } = this.props;
+
+    dispatch(searchActions.searching(false));
+    dispatch(searchActions.term(null));
+    this.searchInput.value = "";
   }
 
   render () {
@@ -57,6 +70,19 @@ export default class Header extends Component {
           }}
         >
           {(() => {
+            if (this.props.searching) {
+              return (
+                <button
+                    onClick={this.cancelSearch}
+                    className="locked-right push-right text-light-secondary"
+                    style={{ marginTop: "13px", zIndex: 1 }}
+                >
+                  <small>Cancel</small>
+                </button>
+              );
+            }
+          })()}
+          {(() => {
             if (this.props.isSearch) {
               return (
                 <form
@@ -68,6 +94,7 @@ export default class Header extends Component {
                     <i className="icon-search locked-left push-half-top text-light-primary" />
                     <input
                         id="search"
+                        ref={(ref) => this.searchInput = ref}
                         type="text"
                         name="search"
                         className="h5 text-light-primary"
