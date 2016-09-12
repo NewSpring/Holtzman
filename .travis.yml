@@ -33,5 +33,5 @@ before_install:
 script:
   - npm i && npm link
   - npm test
-  # - "./scripts/prepare/app.sh"
-  # - "./scripts/deploy/app.sh"
+  - "./scripts/prepare/app.sh"
+  - "./scripts/deploy/app.sh"
