@@ -5,6 +5,7 @@ import gql from "graphql-tag";;
 import Meta from "../../components/meta";
 import Forms from "../../components/forms";
 import Loading from "../../components/loading";
+import inAppLink from "../../util/inAppLink";
 
 const campusLookup = gql`
   query GeoLocate($origin: String, $destinations: String) {
@@ -83,7 +84,10 @@ export default class Layout extends Component {
         });
       })
       .then((list) => _.sortBy(list, (x => x.distance.value)))
-      .then(list => this.setState({ list }));
+      .then(list => this.setState({ list }))
+      .then(() => {
+        this.slider.children[0].scrollIntoView({block: "end", behavior: "smooth"});
+      });
   }
 
   overflow = {
@@ -99,36 +103,6 @@ export default class Layout extends Component {
 
     return (
       <div>
-
-        {/* Slider */}
-        <div className="background--light-secondary soft-ends text-center">
-          <h3 className="push-half-top">Campus Directory</h3>
-          <div style={this.overflow} className="soft-left@palm-wide-and-up">
-            <section className="soft-half" style={this.dynamicWidth()}>
-              {campuses && campuses.filter(x => x.location.street1).map((campus, i) => {
-                let style = this.dynamicItemWidth();
-                if (i === 0 && this.state.list) {
-                  style.borderColor = "#6bac43";
-                  style.borderStyle = "solid";
-                  style.borderWidth = "3px";
-                }
-                return (
-                  <div
-                      key={campus.id}
-                      className={"text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left"}
-                      style={style}
-                  >
-                    <div className="one-whole soft-sides text-left floating__item">
-                      <h4>{campus.name}</h4>
-                      {campus.services && campus.services.map((x, key) => <p className="flush-bottom soft-half-bottom" key={key}>{x}</p>)}
-                      <a href={campus.url} target="_blank" className="h5 plain">Get Directions <span className="icon-arrow-next text-primary" /></a>
-                    </div>
-                  </div>
-                );
-              })}
-            </section>
-          </div>
-        </div>
 
         {/* Search */}
         <div className="soft soft-double-ends soft-double@palm-wide-and-up text-center background--light-primary">
@@ -158,6 +132,52 @@ export default class Layout extends Component {
           </Forms.Form>
 
         </div>
+        {/* End Search */}
+
+        {/* Slider */}
+        <div className="background--light-secondary soft-ends text-center">
+          <h3 className="push-half-top">Campus Directory</h3>
+          <div style={this.overflow} className="soft-left@palm-wide-and-up">
+            <section className="soft-half" style={this.dynamicWidth()} ref={
+              (n) => {this.slider = n}
+            }>
+              {campuses && campuses.filter(x => x.location.street1).map((campus, i) => {
+                let style = this.dynamicItemWidth();
+                if (i === 0 && this.state.list) {
+                  style.borderColor = "#6bac43";
+                  style.borderStyle = "solid";
+                  style.borderWidth = "3px";
+                }
+                return (
+                  <div
+                      key={campus.id}
+                      className={"text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left"}
+                      style={style}
+                      onClick={inAppLink}
+                  >
+                    <div className="one-whole soft-sides text-left floating__item">
+                      <h4>{campus.name}</h4>
+                      {(() => {
+                        if (!campus.distance || !campus.distance.value) return;
+                        return (
+                          <h7 className="italic display-block">
+                            {(campus.distance.value * 0.000621371192).toFixed(2)} miles away
+                          </h7>
+                        );
+                      })()}
+                      {campus.services && campus.services.map((x, key) => <p className="flush-bottom soft-half-bottom" key={key}>{x}</p>)}
+                      <a href={campus.url} target="_blank" className="h5 plain">
+                        Learn More <span className="icon-arrow-next text-primary" />
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
+            </section>
+          </div>
+        </div>
+        {/* End Slider */}
+
       </div>
     );
   }
