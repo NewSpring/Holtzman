@@ -4,5 +4,5 @@ import name from "./categories.name";
 
 export default {
   icon,
-  name
+  name,
 };

@@ -6,5 +6,5 @@ import Accounts from "./Accounts";
 export {
   Error,
   Success,
-  Accounts
+  Accounts,
 };

@@ -10,11 +10,11 @@ import saga from "./saga";
 import { addReducer } from "../utilities";
 
 addReducer({
-  share: reducer
+  share: reducer,
 });
 
 export default {
-  set: (content) => ({ type: "SHARE.SET", content }),
+  set: content => ({ type: "SHARE.SET", content }),
 
-  share: () => ({ type: "SHARE.SHARE" })
+  share: () => ({ type: "SHARE.SHARE" }),
 };

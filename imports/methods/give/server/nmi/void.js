@@ -1,15 +1,14 @@
-/*global Meteor */
+/* global Meteor */
 
 import { Builder } from "xml2js";
 import { parseXML } from "../../../../util";
 
 const voidTransaction = (transactionId, callback) => {
-
   const voidTransactionObj = {
     "void": {
       "api-key": Meteor.settings.nmi,
-      "transaction-id": transactionId
-    }
+      "transaction-id": transactionId,
+    },
   };
 
   const builder = new Builder();
@@ -19,14 +18,13 @@ const voidTransaction = (transactionId, callback) => {
     method: "POST",
     body: `${xml}`,
     headers: {
-      "Content-Type": "text/xml"
-    }
+      "Content-Type": "text/xml",
+    },
   })
   .then((response) => {
     return response.text();
   })
   .then((data) => {
-
     try {
       data = parseXML(data);
     } catch (e) {
@@ -40,11 +38,8 @@ const voidTransaction = (transactionId, callback) => {
     }
 
     callback(data["result-text"]);
-
   })
   .catch(callback);
-
-
 };
 
 export default voidTransaction;

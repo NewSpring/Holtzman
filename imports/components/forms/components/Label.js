@@ -1,9 +1,9 @@
 
 
-function style(disabled){
+function style(disabled) {
   if (disabled) {
     return {
-      cursor: "inherit"
+      cursor: "inherit",
     };
   }
 

@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import gql from "graphql-tag";
 
 import { GraphQL } from "../../graphql";
@@ -7,19 +7,17 @@ import Split, { Left, Right } from "../../blocks/split";
 import ResetPassword from "./reset-password";
 
 const Template = (props) => {
-
-  let photo = "https://s3.amazonaws.com/ns.assets/apollos/leaves.png";
+  const photo = "https://s3.amazonaws.com/ns.assets/apollos/leaves.png";
   return (
     <div>
       <Split nav classes={["background--light-primary"]}>
 
         <Right
-            mobile={false}
-            background={photo}
-            backgroundFill={false}
-            classes={["background--right", "background--bottom"]}
+          mobile={false}
+          background={photo}
+          backgroundFill={false}
+          classes={["background--right", "background--bottom"]}
         />
-
 
 
       </Split>
@@ -29,7 +27,6 @@ const Template = (props) => {
     </div>
 
   );
-
 };
 
 const Routes = [
@@ -38,13 +35,12 @@ const Routes = [
     component: Template,
     childRoutes: [
       { path: "reset-password/:token", component: ResetPassword },
-    ]
+    ],
   },
   {
     path: "/$*",
     onEnter: (location, replaceState, callback) => {
-
-      let url = location.params.splat
+      const url = location.params.splat
         .replace(/\s+/g, "")
         .toLowerCase();
 
@@ -69,11 +65,11 @@ const Routes = [
           replaceState(null, dest);
           callback();
         });
-    }
-  }
+    },
+  },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

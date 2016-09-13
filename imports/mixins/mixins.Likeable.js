@@ -8,11 +8,11 @@ import categories from "../util/categories";
 
 const Likeable = {
 
-  componentWillMount: function() {
+  componentWillMount() {
     this.likeableAction = this.onClickAction.bind(this);
   },
 
-  onClickAction: function() {
+  onClickAction() {
     const entry = this.getLikableEntry();
 
     if (!Meteor.userId()) {
@@ -28,11 +28,11 @@ const Likeable = {
 
     return {
       type: "FALSY",
-      payload: {}
+      payload: {},
     };
   },
 
-  getLikableEntry: function() {
+  getLikableEntry() {
     const { props } = this;
     if (props.devotion) return props.devotion.content;
     if (props.article) return props.article.content;
@@ -42,19 +42,17 @@ const Likeable = {
     if (props.album) return props.album.content;
   },
 
-  updateRedux: function(entry) {
+  updateRedux(entry) {
     this.props.dispatch(likedActions.toggle({
-      entryId: entry.id || entry.entryId
+      entryId: entry.id || entry.entryId,
     }));
   },
 
-  updateDatabase: function(entry) {
-
-
+  updateDatabase(entry) {
     // find existing like
     const foundLike = Likes.findOne({
       userId: Meteor.userId(),
-      entryId: entry.id || entry.entryId
+      entryId: entry.id || entry.entryId,
     });
 
     // update database
@@ -80,10 +78,10 @@ const Likeable = {
         category: categories.name(entry),
         date: entry.meta.date,
         status: entry.status,
-        dateLiked: new Date()
+        dateLiked: new Date(),
       });
     }
-  }
+  },
 
 };
 

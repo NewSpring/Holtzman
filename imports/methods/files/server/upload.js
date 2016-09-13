@@ -1,16 +1,15 @@
 
-/*global Meteor, check */
+/* global Meteor, check */
 
 import { api, parseEndpoint } from "../../../util/rock/utilities";
 
 Meteor.methods({
   "file/upload": (file, id) => {
-
     const headers = {
-      [api._.tokenName]: api._.token
+      [api._.tokenName]: api._.token,
     };
 
-    let body = new Buffer(file, "base64");
+    const body = new Buffer(file, "base64");
 
     const options = {
       method: "POST",
@@ -40,13 +39,12 @@ Meteor.methods({
       });
     };
 
-    let sync = Meteor.wrapAsync(promiseWrapper);
+    const sync = Meteor.wrapAsync(promiseWrapper);
 
     return sync(fetch(url, options)
       .then((response) => {
         return response;
       })
     );
-
-  }
+  },
 });

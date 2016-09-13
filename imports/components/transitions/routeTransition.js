@@ -1,8 +1,7 @@
 import React from "react";
 import { TransitionMotion, spring, presets } from "react-motion";
 
-export default function RouteTransition({children, pathname}) {
-
+export default function RouteTransition({ children, pathname }) {
   const farLeft = -20;
   const farRight = 20;
 
@@ -12,7 +11,6 @@ export default function RouteTransition({children, pathname}) {
   };
 
   const getDirection = (action, pathname) => {
-
     const isNum = Number(lastPart()) > 0;
 
     if (action === "enter") {
@@ -23,19 +21,19 @@ export default function RouteTransition({children, pathname}) {
     }
   };
 
-  const willEnter = children => {
+  const willEnter = (children) => {
     return {
       children,
       opacity: spring(0),
-      translate: getDirection("enter", pathname)
+      translate: getDirection("enter", pathname),
     };
   };
 
-  const willLeave = (key, {children}) => {
+  const willLeave = (key, { children }) => {
     return {
       children,
       opacity: spring(0),
-      translate: getDirection("leave", pathname)
+      translate: getDirection("leave", pathname),
     };
   };
 
@@ -44,23 +42,23 @@ export default function RouteTransition({children, pathname}) {
       [pathname]: {
         children,
         opacity: spring(1),
-        translate: spring(0)
-      }
+        translate: spring(0),
+      },
     };
   };
 
   return (
     <TransitionMotion
-        styles={getStyles(children, pathname)}
-        willEnter={willEnter}
-        willLeave={willLeave}
+      styles={getStyles(children, pathname)}
+      willEnter={willEnter}
+      willLeave={willLeave}
     >
       {interpolated =>
         <div>
           {Object.keys(interpolated).map(key =>
             <div
-                key={`${key}-transition`}
-                style={{
+              key={`${key}-transition`}
+              style={{
                 WebkitBackfaceVisibility: "hidden",
                 WebkitPerspective: 1000,
                 position: "absolute",
@@ -68,7 +66,7 @@ export default function RouteTransition({children, pathname}) {
                 minHeight: "100%",
                 paddingBottom: "60px",
                 opacity: interpolated[key].opacity,
-                transform: `translate3d(${interpolated[key].translate}%, 0, 0)`
+                transform: `translate3d(${interpolated[key].translate}%, 0, 0)`,
               }}
             >
               {interpolated[key].children}

@@ -14,14 +14,13 @@ class LikesContainer extends Component {
 
     const { likes, recentLikes } = this.props;
 
-    let ids = [];
-    return(
-      <div className="grid soft-top background--light-secondary soft-half-sides soft-double@lap-and-up " style={{marginTop: "-20px"}}>
+    const ids = [];
+    return (
+      <div className="grid soft-top background--light-secondary soft-half-sides soft-double@lap-and-up " style={{ marginTop: "-20px" }}>
         {likes.map((like, i) => {
           return <LikesItem like={like} key={i} />;
         })}
         {(() => {
-
           if (!likes.length) {
             return (
               <div>
@@ -34,7 +33,6 @@ class LikesContainer extends Component {
                 </p>
 
                 {recentLikes.map((like, i) => {
-
                   if (ids.indexOf(like.entryId) > -1) {
                     return;
                   }
@@ -46,7 +44,6 @@ class LikesContainer extends Component {
 
             );
           }
-
         })()}
       </div>
     );
@@ -56,17 +53,17 @@ class LikesContainer extends Component {
 export default createContainer(() => {
   Meteor.subscribe("likes");
   const likes = Likes.find({
-    userId: Meteor.userId()
-  }, { sort: { dateLiked: -1 }}).fetch();
+    userId: Meteor.userId(),
+  }, { sort: { dateLiked: -1 } }).fetch();
 
   const recentLikes = Likes.find({
     userId: {
-      $not: Meteor.userId()
-    }
-  }, { sort: { dateLiked: -1 }}).fetch();
+      $not: Meteor.userId(),
+    },
+  }, { sort: { dateLiked: -1 } }).fetch();
 
   return {
     likes,
-    recentLikes
+    recentLikes,
   };
 }, LikesContainer);

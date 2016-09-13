@@ -26,15 +26,15 @@ const Loading = ({ account }, context) => (
 );
 
 Loading.propTypes = {
-  account: PropTypes.bool
+  account: PropTypes.bool,
 };
 
 Loading.defaultProps = {
-  account: false
+  account: false,
 };
 
 Loading.contextTypes = {
-  shouldAnimate: PropTypes.bool
+  shouldAnimate: PropTypes.bool,
 };
 
 export default Loading;

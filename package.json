@@ -93,6 +93,7 @@
     "xml2js": "^0.4.16"
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.0.0",
     "babel-eslint": "^6.1.2",
     "babel-jest": "^15.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
@@ -105,21 +106,26 @@
     "babel-plugin-transform-react-constant-elements": "^6.9.1",
     "babel-plugin-transform-react-router-optimize": "^1.0.1",
     "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-es2016": "^6.11.3",
     "babel-preset-meteor": "^6.11.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
+    "babel-preset-stage-1": "^6.13.0",
+    "babel-root-slash-import": "^1.1.0",
     "babel-traverse": "^6.11.4",
-    "eslint": "^3.4.0",
-    "eslint-plugin-react": "^6.2.0",
+    "es6-promise": "^3.2.1",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^11.1.0",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.2.1",
+    "gagarin": "^0.4.12",
     "github-download": "^0.5.0",
     "jest": "^15.1.1",
     "mkdirp": "^0.5.1",
     "react-test-renderer": "^15.3.1",
     "rimraf": "^2.5.2",
     "vorpal": "^1.11.2",
-    "write-json-file": "^2.0.0",
-    "babel-preset-es2016": "^6.11.3",
-    "babel-preset-stage-1": "^6.13.0",
-    "@kadira/storybook": "^2.0.0"
+    "write-json-file": "^2.0.0"
   }
 }

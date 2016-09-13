@@ -5,11 +5,11 @@ import schedules from "./scheduledTransactions";
 
 const observers = {
   transactions,
-  schedules
+  schedules,
 };
 
 const observe = () => {
-  for (let observer in observers) {
+  for (const observer in observers) {
     observers[observer]();
   }
 };

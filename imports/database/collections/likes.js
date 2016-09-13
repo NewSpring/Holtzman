@@ -23,7 +23,7 @@ Likes.allow({
   },
   "remove": (userId, doc) => {
     return userId === doc.userId;
-  }
+  },
 });
 
 export default Likes;

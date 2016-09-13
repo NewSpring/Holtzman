@@ -16,7 +16,7 @@ import {
 import FitText from "../components/fit-text";
 
 let primary = "#0088BB",
-    secondary = "#006290";
+  secondary = "#006290";
 
 const Baptism = () => (
   <div className="display-inline-block text-center one-whole" style={{ overflow: "hidden" }}>
@@ -24,8 +24,8 @@ const Baptism = () => (
     <Stats>
       <FitText compressor={1.4}>
         <h3
-            className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
-            style={{
+          className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
+          style={{
             fontFamily: "ff-meta-serif-web-pro, serif",
           }}
         >
@@ -33,7 +33,7 @@ const Baptism = () => (
         </h3>
       </FitText>
 
-      <FitText compressor={.3}>
+      <FitText compressor={0.3}>
         <h1 className="uppercase text-light-primary" style={{
           fontWeight: "900",
           color: primary,
@@ -44,8 +44,8 @@ const Baptism = () => (
 
       <FitText compressor={1.6}>
         <h3
-            className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
-            style={{
+          className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
+          style={{
             fontFamily: "ff-meta-serif-web-pro, serif",
           }}
         >
@@ -53,7 +53,7 @@ const Baptism = () => (
         </h3>
       </FitText>
 
-      <FitText compressor={.55}>
+      <FitText compressor={0.55}>
         <h1 className="uppercase text-light-primary" style={{
           fontWeight: "900",
           color: primary,
@@ -68,9 +68,9 @@ const Baptism = () => (
 
     <Leaves>
       <SolidLeaf
-          className="locked-bottom locked-right"
-          size="200px"
-          style={{
+        className="locked-bottom locked-right"
+        size="200px"
+        style={{
           transform: "rotate(-225deg)",
           marginBottom: "-50px",
           marginRight: "-150px",
@@ -78,9 +78,9 @@ const Baptism = () => (
         }}
       />
       <SolidLeaf
-          className="locked-bottom locked-right"
-          size="130px"
-          style={{
+        className="locked-bottom locked-right"
+        size="130px"
+        style={{
           transform: "rotate(-270deg)",
           marginBottom: "-100px",
           marginRight: "-10px",
@@ -88,9 +88,9 @@ const Baptism = () => (
         }}
       />
       <StripedLeaf
-          className="locked-bottom locked-right"
-          size="90px"
-          style={{
+        className="locked-bottom locked-right"
+        size="90px"
+        style={{
           transform: "rotate(180deg)",
           marginBottom: "60px",
           marginRight: "-20px",
@@ -99,9 +99,9 @@ const Baptism = () => (
       />
 
       <SolidLeaf
-          className="locked-bottom locked-left"
-          size="250px"
-          style={{
+        className="locked-bottom locked-left"
+        size="250px"
+        style={{
           transform: "rotate(-135deg)",
           marginBottom: "-90px",
           marginLeft: "-150px",
@@ -110,9 +110,9 @@ const Baptism = () => (
       />
 
       <StripedLeaf
-          className="locked-bottom locked-left"
-          size="120px"
-          style={{
+        className="locked-bottom locked-left"
+        size="120px"
+        style={{
           transform: "rotate(-90deg)",
           marginBottom: "-20px",
           marginLeft: "0px",
@@ -132,9 +132,9 @@ const Baptism = () => (
             "My husband met Jesus at NewSpring in Florence and he tried to convince me for four years to come. I attended a Presbyterian church my whole life, but in 2015, I finally gave in and we started attending NewSpring as a family. I prayed with my two children to ask Jesus into their lives, and they wanted to be baptized with their father. I realized baptism by immersion was my next step, too. Baptism was our way of saying, 'We are a family, and we are following Jesus no matter what.'"
           </p>
           <h6
-              className="italictext-dark-primary"
-              style={{
-              fontFamily: "ff-meta-serif-web-pro, serif"
+            className="italictext-dark-primary"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
             The Crowley Family, Florence Campus

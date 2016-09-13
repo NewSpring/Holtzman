@@ -11,15 +11,15 @@ export default withRouter(({ group, router, onHover }) => {
 
   return (
     <button
-        onMouseOver={onHover}
-        id={group.id}
-        onClick={() => router.push(`/groups/${group.id}`)}
-        className="relative one-whole push-bottom@lap-and-up plain"
+      onMouseOver={onHover}
+      id={group.id}
+      onClick={() => router.push(`/groups/${group.id}`)}
+      className="relative one-whole push-bottom@lap-and-up plain"
     >
       <SideBySide
-          defaultImage={group.photo ? group.photo : "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png"}
-          left={["one-whole", "two-thirds@lap-and-up"]}
-          right={["one-whole", "one-third@lap-and-up"]}
+        defaultImage={group.photo ? group.photo : "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png"}
+        left={["one-whole", "two-thirds@lap-and-up"]}
+        right={["one-whole", "one-third@lap-and-up"]}
       >
         {/* Name */}
         <h4 className="plain text-dark-primary push-half-top push-top@anchored">

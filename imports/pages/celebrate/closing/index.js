@@ -8,30 +8,30 @@ import {
 
 import {
   Stats,
-  Leaves
+  Leaves,
 } from "../components/layout";
 
 import FitText from "../components/fit-text";
 
 const Closing = () => (
   <div className="background--primary soft-top display-inline-block text-center one-whole" style={{
-      overflow: "hidden"
-    }}>
+    overflow: "hidden",
+  }}>
 
     <Stats>
       <FitText compressor={1.1}>
         <h3
-            className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
-            style={{
+          className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
+          style={{
             fontFamily: "ff-meta-serif-web-pro, serif",
-            fontSize: "22px"
+            fontSize: "22px",
           }}
         >
           Because you listened to
         </h3>
       </FitText>
 
-      <FitText compressor={.35}>
+      <FitText compressor={0.35}>
         <h1 className="uppercase flush-bottom text-light-primary" style={{
           fontSize: "80px",
           fontWeight: "900",
@@ -42,10 +42,10 @@ const Closing = () => (
 
       <FitText compressor={1.1}>
         <h3
-            className="flush-bottom push-double-bottom text-tertiary italic"
-            style={{
+          className="flush-bottom push-double-bottom text-tertiary italic"
+          style={{
             fontFamily: "ff-meta-serif-web-pro, serif",
-            fontSize: "26px"
+            fontSize: "26px",
           }}
         >
           and did what He said,
@@ -54,17 +54,17 @@ const Closing = () => (
 
       <FitText compressor={1.1}>
         <h3
-            className="flush-bottom soft-half-bottom text-tertiary italic"
-            style={{
+          className="flush-bottom soft-half-bottom text-tertiary italic"
+          style={{
             fontFamily: "ff-meta-serif-web-pro, serif",
-            fontSize: "25px"
+            fontSize: "25px",
           }}
         >
           we impacted our
         </h3>
       </FitText>
 
-      <FitText compressor={.33}>
+      <FitText compressor={0.33}>
         <h1 className="uppercase flush-bottom text-light-primary" style={{
           fontSize: "63px",
           fontWeight: "900",
@@ -84,40 +84,40 @@ const Closing = () => (
 
     <Leaves>
       <SolidLeaf
-          className="locked-bottom locked-left"
-          size="200px"
-          color="text-tertiary"
-          style={{
+        className="locked-bottom locked-left"
+        size="200px"
+        color="text-tertiary"
+        style={{
           transform: "rotate(45deg)",
           marginBottom: "-130px",
           marginLeft: "10px",
         }}
       />
       <SolidLeaf
-          className="locked-bottom locked-left"
-          size="200px"
-          color="text-secondary"
-          style={{
+        className="locked-bottom locked-left"
+        size="200px"
+        color="text-secondary"
+        style={{
           transform: "rotate(-90deg)",
           marginBottom: "-50px",
           marginLeft: "-150px",
         }}
       />
       <StripedLeaf
-          className="locked-bottom locked-left"
-          size="70px"
-          color="text-tertiary"
-          style={{
+        className="locked-bottom locked-left"
+        size="70px"
+        color="text-tertiary"
+        style={{
           transform: "rotate(-90deg)",
           marginBottom: "30px",
           marginLeft: "10px",
         }}
       />
       <SolidLeaf
-          className="locked-bottom locked-right"
-          size="300px"
-          color="text-tertiary"
-          style={{
+        className="locked-bottom locked-right"
+        size="300px"
+        color="text-tertiary"
+        style={{
           transform: "rotate(-270deg)",
           marginBottom: "-100px",
           marginRight: "-240px",
@@ -125,10 +125,10 @@ const Closing = () => (
       />
 
       <StripedLeaf
-          className="locked-bottom locked-right"
-          size="90px"
-          color="text-secondary"
-          style={{
+        className="locked-bottom locked-right"
+        size="90px"
+        color="text-secondary"
+        style={{
           transform: "rotate(-135deg)",
           marginBottom: "-20px",
           marginRight: "20px",

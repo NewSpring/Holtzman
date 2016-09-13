@@ -13,8 +13,8 @@ const styles = {
 
 const Layout = ({ details, remove, loading }) => (
   <div
-      className="background--light-primary text-center soft-double-top push-double-bottom push-top push-double-top@lap-and-up soft-double-sides@palm-wide"
-      style={styles}
+    className="background--light-primary text-center soft-double-top push-double-bottom push-top push-double-top@lap-and-up soft-double-sides@palm-wide"
+    style={styles}
   >
     <Meta title="Saved Payments" />
     <Back />
@@ -37,7 +37,7 @@ const Layout = ({ details, remove, loading }) => (
               <h5 className="hard one-whole flush-bottom">
                 {account.payment.accountNumber.slice(0, account.payment.accountNumber.length - 5).replace(/./gmi, "*")}{account.payment.accountNumber.slice(-4)}
                 <span className="float-right ">
-                  <AccountType width="30px" height="20px" type={account.payment.paymentType}/>
+                  <AccountType width="30px" height="20px" type={account.payment.paymentType} />
 
                 </span>
 
@@ -60,7 +60,7 @@ const Layout = ({ details, remove, loading }) => (
 
 Layout.propTypes = {
   details: PropTypes.array,
-  remove: PropTypes.func
+  remove: PropTypes.func,
 };
 
 export default Layout;

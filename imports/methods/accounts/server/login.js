@@ -1,4 +1,4 @@
-/*global Meteor, check */
+/* global Meteor, check */
 import { api } from "../../../util/rock";
 import Moment from "moment";
 
@@ -14,7 +14,7 @@ Meteor.methods({
       Username = Username.replace(/@newspring.cc/, "");
     }
 
-    let isAuthorized = api.post.sync("Auth/login", { Username, Password: password });
+    const isAuthorized = api.post.sync("Auth/login", { Username, Password: password });
 
     if (isAuthorized.statusText) {
       throw new Meteor.Error("Your password is incorrect");
@@ -25,14 +25,13 @@ Meteor.methods({
 
     // ensure the users exists if they tried to login
     if (isAuthorized && !userAccount) {
-      userAccount =  Accounts.createUser({
-        email: email,
-        password: password
+      userAccount = Accounts.createUser({
+        email,
+        password,
       });
 
 
-
-      let user = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`);
+      const user = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`);
       const { PersonId } = user[0];
       if (!user[0].IsConfirmed) {
         api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, (err, response) => {
@@ -40,41 +39,36 @@ Meteor.methods({
       }
 
       api.patch(`UserLogins/${user[0].Id}`, {
-        LastLoginDateTime: `${Moment().toISOString()}`
+        LastLoginDateTime: `${Moment().toISOString()}`,
       });
 
-      let person = api.get.sync(`People/${PersonId}`);
+      const person = api.get.sync(`People/${PersonId}`);
       const { PrimaryAliasId } = person;
 
       if (userAccount) {
         Meteor.users.update(userAccount._id || userAccount, {
           $set: {
-            "services.rock" : {
+            "services.rock": {
               PersonId,
-              PrimaryAliasId
-            }
-          }
+              PrimaryAliasId,
+            },
+          },
         });
       }
 
       if (process.env.NODE_ENV === "production") {
-
         Meteor.setTimeout(() => {
+          const currentCount = Meteor.users.find().count();
+          const missing = `${50000 - currentCount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-          let currentCount = Meteor.users.find().count();
-          let missing = `${50000 - currentCount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-          let text = `Another user signed up for a NewSpring Account! Only ${missing} to go!`;
+          const text = `Another user signed up for a NewSpring Account! Only ${missing} to go!`;
 
 
           Meteor.call("communication/slack/send", text, "#users");
-
         }, 10);
-
       }
 
       // slack hook here
-
     }
     // ensure meteor password is same as rock's
     else {
@@ -88,7 +82,7 @@ Meteor.methods({
         }
 
         api.patch(`UserLogins/${user[0].Id}`, {
-          LastLoginDateTime: `${Moment().toISOString()}`
+          LastLoginDateTime: `${Moment().toISOString()}`,
         });
 
         api.get(`People/${PersonId}`, (err, person) => {
@@ -99,18 +93,16 @@ Meteor.methods({
             if (userRock.PersonId != PersonId || userRock.PrimaryAliasId != PrimaryAliasId) {
               Meteor.users.update(userAccount._id || userAccount, {
                 $set: {
-                  "services.rock" : {
+                  "services.rock": {
                     PersonId,
-                    PrimaryAliasId
-                  }
-                }
+                    PrimaryAliasId,
+                  },
+                },
               });
             }
           }
         });
-
       });
-
     }
 
 

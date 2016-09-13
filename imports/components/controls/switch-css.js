@@ -40,7 +40,7 @@ export default StyleSheet.create({
       background: "white",
       boxShadow: "inset 0 0 0 2px #ddd",
       transition: ".25s ease-in-out",
-    }
+    },
   },
   "checked-label": {
     ":before": {
@@ -51,6 +51,6 @@ export default StyleSheet.create({
     ":after": {
       left: "20px",
       boxShadow: "inset 0 0 0 2px #6bac43",
-    }
+    },
   },
 });
