@@ -75,9 +75,8 @@ export default ({
               {count} Results
             </h6>
             {(() => {
-              if (showSearch) return null;
               return (
-                <span
+                <button
                     className="float-right icon-search"
                     style={{marginTop: "-4px"}}
                     onClick={() => toggleSearch()}
