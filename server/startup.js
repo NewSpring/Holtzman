@@ -13,6 +13,7 @@ import "/imports/methods/groups/server";
 import "/imports/methods/paymentAccounts/server";
 // import "/imports/methods/routing/server";
 import "/imports/methods/topics/server";
+import "/imports/methods/scripture/server";
 
 
 import Give from "/imports/database/observers";
