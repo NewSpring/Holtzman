@@ -1,5 +1,6 @@
 
 import Item from "./Item";
+import Loading from "../../components/loading";
 
 const LoadingText = ({ search }) => {
   if (search.loading) {
@@ -43,7 +44,11 @@ const Results = ({ loadMore, search }) => {
     );
   }
 
-  return <div />;
+  return (
+    <div className="one-whole text-center soft">
+      <Loading />
+    </div>
+  );
 };
 
 export default Results;
