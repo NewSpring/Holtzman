@@ -24,6 +24,17 @@ export default class LikesItem extends Component {
     "ratio--landscape"
   ];
 
+  containerClasses = () => {
+    let classes = [
+      "grid__item",
+      "one-whole",
+    ];
+    if (process.env.NATIVE) {
+      classes.push("one-half@palm-wide-and-up");
+    }
+    return classes.join(" ");
+  };
+
   // context from ImageLoader
   preloader = () => {
     return (
@@ -74,7 +85,7 @@ export default class LikesItem extends Component {
     const like = this.props.like;
 
     return (
-      <div className="grid__item one-whole one-half@palm-wide-and-up">
+      <div className={this.containerClasses()}>
         <div className="card">
           <Link to={like.link} onClick={this.onClick} className="plain">
               <ImageLoader
