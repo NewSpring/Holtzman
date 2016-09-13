@@ -2,13 +2,13 @@
 // @import "./base/_select";
 
 // import default vars
-@import "/.remote/junction/lib/mixins";
+@import "../.remote/junction/docs/mixins";
 
 // make changes specific to this app
 @import "./vars";
 
 // import full library
-@import "/.remote/junction/lib/framework";
+@import "../.remote/junction/docs/framework";
 
 // hacks
 @import "./hacks";
@@ -38,12 +38,12 @@
   z-index: 1;
 }
 
-.overlay--solid-medium {
-  @extend %_overlay;
-  &:after {
-    background: rgba($dark-color, .4);
-  }
-}
+// .overlay--solid-medium {
+//   @extend %_overlay;
+//   &:after {
+//     background: rgba($dark-color, .4);
+//   }
+// }
 
 html.modal--opened {
   overflow: hidden;
