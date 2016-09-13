@@ -7,7 +7,7 @@ import {
   accounts as accountsActions,
 } from "../../../../store";
 
-import { updateHome } from "../../../../methods/accounts/client";
+import { updateHome } from "../../../../methods/accounts/browser";
 import { Error as Err, Loading } from "../../../../components/states";
 
 import Success from "../Success";

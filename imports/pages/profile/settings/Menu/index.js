@@ -11,7 +11,7 @@ import {
   nav as navActions,
 } from "../../../../store";
 
-import { avatar } from "../../../../methods/files/client";
+import { avatar } from "../../../../methods/files/browser";
 import inAppLink from "../../../../util/inAppLink";
 
 const RenderCell = ({name, iconFunc, last, children}) => {

@@ -16,7 +16,7 @@ import actions from "../actions";
 import { CreditCardForm, AchForm } from "./paymentForm";
 import formatPersonDetails from "./formatPersonDetails";
 
-import { order, schedule, charge } from "../../../methods/give/client";
+import { order, schedule, charge } from "../../../methods/give/browser";
 import RecoverSchedules from "../../../blocks/RecoverSchedules";
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));

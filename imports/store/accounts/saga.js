@@ -4,7 +4,7 @@ import { fork, put, cps, call, select } from "redux-saga/effects";
 import gql from "graphql-tag";
 
 import { GraphQL } from "../../graphql";
-import accounts from "../../methods/accounts/client";
+import accounts from "../../methods/accounts/browser";
 import { addSaga } from "../utilities";
 
 import actions from "./actions";

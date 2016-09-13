@@ -5,7 +5,7 @@ import Controls from "../../components/controls";
 import { Error, Loading, Success } from "../../components/states";
 
 import Validate from "../../util/validate";
-import { forceReset } from "../../methods/accounts/client";
+import { forceReset } from "../../methods/accounts/browser";
 import { routeActions } from "../../store/routing";
 
 class ForgotPassword extends React.Component {
