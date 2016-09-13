@@ -12,5 +12,5 @@ export default {
   startOfVisa: /^4[0-9]{0,15}$/,
   startOfMastercard: /^5$|^5[1-5][0-9]{0,14}$/,
   startOfAmEx: /^3$|^3[47][0-9]{0,13}$/,
-  startOfDiscover: d
+  startOfDiscover: d,
 };

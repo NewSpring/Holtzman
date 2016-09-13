@@ -1,6 +1,6 @@
 
-const Success = (props) => (
-  <svg width="60px" height="61px" viewBox="0 0 60 61"  version="1.1">
+const Success = props => (
+  <svg width="60px" height="61px" viewBox="0 0 60 61" version="1.1">
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" >
         <g transform="translate(-90.000000, -159.000000)" fill="#6BAC43">
             <g transform="translate(90.000000, 159.903000)">

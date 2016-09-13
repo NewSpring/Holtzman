@@ -1,4 +1,4 @@
-/*global Meteor, check */
+/* global Meteor, check */
 import Moment from "moment";
 
 import { api, parseEndpoint } from "../../../util/rock";
@@ -7,14 +7,13 @@ import Validate from "../../../util/validate";
 let RECOVER_ACCOUNT = false;
 if (typeof Accounts != "undefined") {
   Accounts.emailTemplates.enrollAccount.text = (user, token) => {
-
     // let PersonAliasId, mergeFields
-    let { PersonId } = user.profile.rock;
-    let { ROOT_URL } = __meteor_runtime_config__;
+    const { PersonId } = user.profile.rock;
+    const { ROOT_URL } = __meteor_runtime_config__;
 
-    let Person = api.get.sync(`People/${PersonId}`);
+    const Person = api.get.sync(`People/${PersonId}`);
 
-    if (!RECOVER_ACCOUNT ) {
+    if (!RECOVER_ACCOUNT) {
       RECOVER_ACCOUNT = api.get.sync("SystemEmails?$filter=Title eq 'Recover Account'");
       RECOVER_ACCOUNT = RECOVER_ACCOUNT.length ? RECOVER_ACCOUNT[0].Id : false;
     }
@@ -36,13 +35,11 @@ if (typeof Accounts != "undefined") {
 
 
     return false;
-
   };
 }
 
 Meteor.methods({
   "rock/accounts/recover": (email, PersonId) => {
-
     check(email, String);
     check(PersonId, Number);
 
@@ -51,12 +48,12 @@ Meteor.methods({
     // Create Apollos Account
     // try to create new meteor account
     try {
-      let user = Accounts.findUserByEmail(email);
+      const user = Accounts.findUserByEmail(email);
       if (user && user._id) {
         meteorUserId = user._id;
       } else {
         meteorUserId = Accounts.createUser({
-          email: email,
+          email,
           profile: {
             rock: {
               PersonId,
@@ -64,7 +61,6 @@ Meteor.methods({
           },
         });
       }
-
     } catch (e) {
       throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account");
     }
@@ -76,25 +72,25 @@ Meteor.methods({
       UserName: email,
       IsConfirmed: false,
       // PlainTextPassword: account.password,
-      LastLoginDateTime: `${Moment().toISOString()}`
+      LastLoginDateTime: `${Moment().toISOString()}`,
     };
 
-    let createdUser = api.post.sync("UserLogins", user);
+    const createdUser = api.post.sync("UserLogins", user);
     if (createdUser.statusText) {
       throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account");
     }
 
     try {
-      let person = api.get.sync(`People/${PersonId}`);
+      const person = api.get.sync(`People/${PersonId}`);
       const { PrimaryAliasId } = person;
 
       Meteor.users.update(meteorUserId, {
         $set: {
-          "services.rock" : {
+          "services.rock": {
             PersonId,
-            PrimaryAliasId
-          }
-        }
+            PrimaryAliasId,
+          },
+        },
       });
 
       // Send Reset Email
@@ -106,7 +102,5 @@ Meteor.methods({
       console.error("@@RECOVER_ERROR", e);
       throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account");
     }
-
-
-  }
+  },
 });

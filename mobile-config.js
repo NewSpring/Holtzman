@@ -27,7 +27,7 @@ App.icons({
   "android_hdpi": "assets/icons/android/icon-72x72-hdpi.png",
   "android_xhdpi": "assets/icons/android/icon-96x96-xhdpi.png",
   "android_xxhdpi": "assets/icons/android/icon-144x144-xxhdpi.png",
-  "android_xxxhdpi": "assets/icons/android/icon-192x192-xxxhpdi.png"
+  "android_xxxhdpi": "assets/icons/android/icon-192x192-xxxhpdi.png",
 });
 
 App.launchScreens({
@@ -50,7 +50,7 @@ App.launchScreens({
   "android_xhdpi_portrait": "assets/splash/android/splash-720x960.png",
   "android_xhdpi_landscape": "assets/splash/android/splash-960x720.png",
   "android_xxhdpi_portrait": "assets/splash/android/splash-1080x1440.png",
-  "android_xxhdpi_landscape": "assets/splash/android/splash-1440x1080.png"
+  "android_xxhdpi_landscape": "assets/splash/android/splash-1440x1080.png",
 });
 
 App.accessRule("*");

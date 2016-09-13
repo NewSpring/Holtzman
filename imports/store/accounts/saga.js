@@ -30,7 +30,6 @@ function* checkAccount({ data }) {
   yield put(actions.setAccount(!isAvailable));
   yield put(actions.setAlternateAccounts(alternateAccounts));
   yield put(actions.peopleWithoutAccountEmails(peopleWithoutAccountEmails));
-
 }
 
 function* completeAccount() {
@@ -43,7 +42,6 @@ function* completeAccount() {
     return state.accounts.data.email && state.accounts.data.personId;
   }
   if (canComplete()) {
-
     // set the UI to show the loading screen
     yield put(actions.loading());
 
@@ -56,9 +54,7 @@ function* completeAccount() {
     if (created) {
       // reset the UI
       yield put(actions.setState("default"));
-
     } else {
-
       // add error to store
       yield put(actions.error({ "password": error }));
 
@@ -73,7 +69,6 @@ function* completeAccount() {
 
       // reset the UI
       yield put(actions.setState("default"));
-
     }
   }
 }
@@ -90,7 +85,7 @@ function* login() {
 
     try {
       // make the call to try and login
-      let isAuthorized = yield cps(accounts.login, email, password);
+      const isAuthorized = yield cps(accounts.login, email, password);
 
       // this should always be true shouldn't it?
       if (isAuthorized) {
@@ -102,13 +97,10 @@ function* login() {
           return { error: new Meteor.Error("An unkown error occured") };
         }
       }
-
     } catch (error) {
       return { error };
     }
-
   }
-
 }
 
 function* signup() {
@@ -116,7 +108,7 @@ function* signup() {
   const { data, state } = currentState.accounts;
 
   // shorthand for 80 ch limit
-  let d = data;
+  const d = data;
   if (d.email && d.password && d.firstName && d.lastName && d.terms) {
     let { email, password } = data;
 
@@ -124,9 +116,8 @@ function* signup() {
     yield put(actions.loading());
 
     try {
-
       // make the call to try and signup
-      let isAuthorized = yield cps(accounts.signup, data);
+      const isAuthorized = yield cps(accounts.signup, data);
 
       // this should always be true shouldn't it?
       if (isAuthorized) {
@@ -139,11 +130,9 @@ function* signup() {
           return { error: new Meteor.Error("An unkown error occured") };
         }
       }
-
     } catch (error) {
       return { error };
     }
-
   }
 }
 
@@ -152,7 +141,7 @@ function* onboard({ state }) {
   if (state !== "submit") return;
 
   let currentState = yield select(),
-      returnValue = false;
+    returnValue = false;
 
   console.log(currentState);
   if (currentState.accounts.account) {
@@ -176,9 +165,7 @@ function* onboard({ state }) {
 
       // reset the UI
       yield put(actions.setState("default"));
-
     } else {
-
       const query = gql`
         query GetPersonData {
           person: currentPerson {
@@ -223,7 +210,7 @@ function* onboard({ state }) {
       // succeed the form
       yield put(actions.success());
 
-      let user = Meteor.user();
+      const user = Meteor.user();
 
       // if this is the first login, show welcome
       if (!user || !user.profile || !user.profile.lastLogin) {
@@ -235,13 +222,13 @@ function* onboard({ state }) {
 
       // update login time
       Meteor.users.update(Meteor.userId(), {
-        $set: { "profile.lastLogin": new Date() }
+        $set: { "profile.lastLogin": new Date() },
       });
     }
   }
 }
 
-addSaga(function* accountsSaga(){
+addSaga(function* accountsSaga() {
   yield fork(takeEvery, "ACCOUNTS.SET_DATA", checkAccount);
   yield fork(takeLatest, "ACCOUNTS.COMPLETE_ACCOUNT", completeAccount);
   yield fork(takeEvery, "ACCOUNTS.SET_STATE", onboard);

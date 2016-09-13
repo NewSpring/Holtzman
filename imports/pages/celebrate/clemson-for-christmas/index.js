@@ -25,12 +25,12 @@ const giveNumbers = [
 
 const ClemsonForChristmas = () => (
   <div className="display-inline-block text-center one-whole ">
-    <div className="soft-double-top@lap-and-up" style={{overflow: "visible"}}>
+    <div className="soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
       <Stats>
         <FitText compressor={1.2}>
           <h3
-              className="flush-bottom soft-half-bottom soft-double-top text-dark-secondary italic"
-              style={{
+            className="flush-bottom soft-half-bottom soft-double-top text-dark-secondary italic"
+            style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
@@ -38,7 +38,7 @@ const ClemsonForChristmas = () => (
           </h3>
         </FitText>
 
-        <FitText compressor={.5}>
+        <FitText compressor={0.5}>
         <h1 className="uppercase text-primary" style={{
           fontWeight: "900",
         }}>
@@ -48,8 +48,8 @@ const ClemsonForChristmas = () => (
 
         <FitText compressor={1.2}>
         <h3
-            className="flush-bottom push-back-half-top soft-bottom text-dark-secondary italic"
-            style={{
+          className="flush-bottom push-back-half-top soft-bottom text-dark-secondary italic"
+          style={{
             fontFamily: "ff-meta-serif-web-pro, serif",
           }}
         >
@@ -140,12 +140,12 @@ const ClemsonForChristmas = () => (
     <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
 
       <h3
-          className="text-center soft-half-top flush-bottom"
+        className="text-center soft-half-top flush-bottom"
       >Giving:</h3>
 
       <h5
-          className="text-center soft-half-bottom flush-bottom italic"
-          style={{fontFamily: "ff-meta-serif-web-pro, serif"}}
+        className="text-center soft-half-bottom flush-bottom italic"
+        style={{ fontFamily: "ff-meta-serif-web-pro, serif" }}
       >You Can't Outgive God</h5>
 
       <List items={giveNumbers} />

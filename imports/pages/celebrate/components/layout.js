@@ -61,13 +61,13 @@ export const Leaves = ({ children }) => (
 
 export class Image extends Component {
 
-  preloader(){
+  preloader() {
     return (
       <div className={`${this.imageclasses.join(" ")} ${css(Styles["load-item"])}`} />
     );
   }
 
-  renderElement(){
+  renderElement() {
     return (
       <div className={`${this.imageclasses.join(" ")}`} style={this.style} />
     );
@@ -80,24 +80,22 @@ export class Image extends Component {
         <div className="text-center push-double-top">
           <div className="three-quarters one-half@lap ratio--square display-inline-block">
             <ImageLoader
-                src={url}
-                preloader={this.preloader}
-                renderElement={this.renderElement}
-                imageclasses={["ratio__item", "one-whole", "round", "background--fill"]}
-                style={{
-                backgroundImage: `url(${url})`
+              src={url}
+              preloader={this.preloader}
+              renderElement={this.renderElement}
+              imageclasses={["ratio__item", "one-whole", "round", "background--fill"]}
+              style={{
+                backgroundImage: `url(${url})`,
               }}
             />
           </div>
         </div>
       </div>
     );
-
   }
 }
 
 export const Body = ({ children, rev }) => {
-
   if (rev) {
     return (
       <div className="grid__item one-whole one-half@lap-wide-and-up soft-double-left@lap-and-up" style={{ verticalAlign: "middle" }}>

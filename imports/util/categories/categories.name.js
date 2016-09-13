@@ -1,8 +1,8 @@
 
 function categoryName(contentItem) {
-  let category = contentItem.channelName;
+  const category = contentItem.channelName;
 
-  switch(category) {
+  switch (category) {
     case "series_newspring":
       return "Series";
     case "newspring_albums":
@@ -11,10 +11,10 @@ function categoryName(contentItem) {
       let categoryName = category.charAt(0).toUpperCase();
       if (category.charAt(category.length - 2) === "s") {
         // capitlize first letter and remove "s" from end
-        categoryName += category.substr(1, category.length-2);
+        categoryName += category.substr(1, category.length - 2);
       }
       else {
-        categoryName += category.substr(1, category.length-1);
+        categoryName += category.substr(1, category.length - 1);
       }
       return categoryName;
   }

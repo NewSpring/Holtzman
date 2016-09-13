@@ -24,5 +24,5 @@ export default {
   indexRoute: { component: Home },
   childRoutes: [
     ...Settings.Routes,
-  ]
+  ],
 };

@@ -3,20 +3,20 @@ import Likes from "../collections/likes";
 
 if (Meteor.isServer) {
   // must use function because arrow version doesn't like 'this'
-  Meteor.publish("likes", function() {
+  Meteor.publish("likes", function () {
     return Likes.find(
       {
-        userId: this.userId
+        userId: this.userId,
       },
       {
         sort: {
-          dateLiked: -1
-        }
+          dateLiked: -1,
+        },
       }
     );
   });
 
-  Meteor.publish("recently-liked", function(){
+  Meteor.publish("recently-liked", () => {
     return Likes.find(
       {
         // userId: {
@@ -25,12 +25,10 @@ if (Meteor.isServer) {
       },
       {
         sort: {
-          dateLiked: -1
+          dateLiked: -1,
         },
-        limit: 15
+        limit: 15,
       }
     );
-
   });
-
 }

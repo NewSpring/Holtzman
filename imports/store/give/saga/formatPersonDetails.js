@@ -4,7 +4,7 @@ const formatPersonDetails = (give) => {
   const { data, transactions, total, schedules, savedAccount } = give;
 
   // here we format data for the NMI processing
-  let joinedData = {
+  const joinedData = {
     amount: total,
     billing: {
       "first-name": data.personal.firstName,
@@ -14,11 +14,11 @@ const formatPersonDetails = (give) => {
       address2: data.billing.streetAddress2 || "",
       city: data.billing.city,
       state: data.billing.state,
-      postal: data.billing.zip
+      postal: data.billing.zip,
     },
   };
 
-  let campusId = data.personal.campusId;
+  const campusId = data.personal.campusId;
   joinedData["merchant-defined-field-2"] = campusId;
 
   if (schedules && Object.keys(schedules).length) {
@@ -27,12 +27,12 @@ const formatPersonDetails = (give) => {
     // @TODO allow number of payments
     joinedData.plan = {
       payments: 0,
-      amount: total
+      amount: total,
     };
 
     delete joinedData.amount;
-    for (let key in schedules) {
-      let schedule = schedules[key];
+    for (const key in schedules) {
+      const schedule = schedules[key];
       switch (schedule.frequency) {
         case "One-Time":
           joinedData.plan.payments = 1;
@@ -57,7 +57,7 @@ const formatPersonDetails = (give) => {
       joinedData["start-date"] = schedule.start ? Moment(schedule.start).format("YYYYMMDD") : Moment().add(1, "days").format("YYYYMMDD");
       joinedData["merchant-defined-field-3"] = joinedData["start-date"];
 
-      for (let transaction in transactions) {
+      for (const transaction in transactions) {
         joinedData["merchant-defined-field-1"] = transaction;
         break;
       }
@@ -65,17 +65,14 @@ const formatPersonDetails = (give) => {
       // @TODO support multiple accounts at once
       break;
     }
-
-
   } else if (transactions && Object.keys(transactions).length) {
-
     joinedData.product = [];
-    for (let transaction in transactions) {
+    for (const transaction in transactions) {
       joinedData.product.push({
         "quantity": 1,
         "product-code": transaction,
         description: transactions[transaction].label,
-        "total-amount": transactions[transaction].value
+        "total-amount": transactions[transaction].value,
       });
     }
   }

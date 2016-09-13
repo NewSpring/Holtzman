@@ -1,7 +1,6 @@
 
 
 function sectionImage(images) {
-
   let bgImage = _.find(images, (image) => {
     return image.fileLabel === "1:1";
   });
@@ -17,7 +16,6 @@ function sectionImage(images) {
   }
 
   return bgImage;
-
 }
 
 export default sectionImage;

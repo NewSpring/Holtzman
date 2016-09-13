@@ -1,4 +1,4 @@
-/*global Meteor */
+/* global Meteor */
 
 const charge = (token, name, id, callback) => {
   Meteor.call("give/charge", token, name, id, callback);

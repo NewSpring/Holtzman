@@ -1,4 +1,4 @@
-/*global Meteor */
+/* global Meteor */
 
 // login = args => Meteor.apply("Rock.login", args)
 const login = (email, password, callback) => {

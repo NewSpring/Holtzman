@@ -1,8 +1,8 @@
 
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 
 export default class Offline extends Component {
-  render () {
+  render() {
     return (
       <div className="soft-ends text-left soft-sides floating outlined--light outlined">
         <h6 className="text-dark-secondary three-quarters flush floating__item">Save for offline listening</h6>

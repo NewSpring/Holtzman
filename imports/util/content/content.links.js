@@ -3,7 +3,7 @@ function contentLink(contentItem) {
   const entryId = contentItem.entryId || contentItem.id;
   const category = contentItem.channelName;
 
-  switch(category) {
+  switch (category) {
     case "series_newspring":
       return `/series/${entryId}`;
     case "sermons":
