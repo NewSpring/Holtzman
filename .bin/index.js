@@ -142,7 +142,6 @@ Vorpal
     }
 
     function run() {
-      console.log(meteorArgs);
       var meteor = Spawn("meteor", meteorArgs, { stdio: "inherit", cwd: app, env: env });
     }
 
