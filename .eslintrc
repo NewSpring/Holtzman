@@ -1,5 +1,14 @@
 {
   "extends": "airbnb",
+  "parserOptions": {
+    "allowImportExportEverywhere": true
+  },
+  "env": {
+    "meteor": true,
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
   "rules": {
     "quotes": [2, "double"],
     "import/no-unresolved": [2, { "ignore": [
