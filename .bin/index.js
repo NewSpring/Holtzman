@@ -142,6 +142,7 @@ Vorpal
     }
 
     function run() {
+      console.log(meteorArgs);
       var meteor = Spawn("meteor", meteorArgs, { stdio: "inherit", cwd: app, env: env });
     }
 
@@ -150,10 +151,9 @@ Vorpal
     if (options.production) {
       console.log("Building apollos in production mode");
       meteorArgs.push("--production");
-    } else {
-      run();
     }
 
+    run();
 
   });
 
