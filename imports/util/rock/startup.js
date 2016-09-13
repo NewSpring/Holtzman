@@ -3,24 +3,23 @@ import { makeNewGuid } from "../guid";
 import Moment from "moment";
 
 export default function startup(api) {
-
   if (Meteor.isServer) {
     if (process.env.NODE_ENV === "production" && __meteor_runtime_config__.ROOT_URL.match("localhost") === null) {
-      let { ROOT_URL } = __meteor_runtime_config__;
+      const { ROOT_URL } = __meteor_runtime_config__;
       let current = api.get.sync(`DefinedValues?$filter=Value eq '${ROOT_URL}' and DefinedTypeId eq 12`);
 
       if (!current.length) {
-        let DefinedValue = {
+        const DefinedValue = {
           IsSystem: true,
           Order: 0,
           DefinedTypeId: 12,
           Value: ROOT_URL,
           Description: `Application at ${ROOT_URL}`,
-          Guid: makeNewGuid()
+          Guid: makeNewGuid(),
         };
         current = api.post.sync("DefinedValues", DefinedValue);
         current = [{
-          Id: current
+          Id: current,
         }];
       }
 
@@ -29,7 +28,7 @@ export default function startup(api) {
       let site = api.get.sync(`Sites?$filter=Name eq '${ROOT_URL}'`);
 
       if (!site.length) {
-        let Site = {
+        const Site = {
           IsSystem: false,
           Name: ROOT_URL,
           Description: `Application at ${ROOT_URL}`,
@@ -40,13 +39,11 @@ export default function startup(api) {
 
         site = api.post.sync("Sites", Site);
         site = [{
-          Id: site
+          Id: site,
         }];
-
       }
 
       api._.siteId = site[0].Id;
-
     }
 
 
@@ -59,13 +56,13 @@ export default function startup(api) {
 
     if (!NMI.statusText && NMI.length) {
       // Meteor.settings.nmi = NMI
-      let { Id } = NMI[0];
+      const { Id } = NMI[0];
       NMI = api.get.sync(`AttributeValues?$filter=EntityId eq ${Id} and Attribute/Key eq 'SecurityKey'&$expand=Attribute&$select=Value,Id`);
       if (!NMI.statusText && NMI.length) {
         Meteor.settings.nmi = NMI[0].Value;
         api._.give.gateway = {
           id: Id,
-          api: NMI[0].Value
+          api: NMI[0].Value,
         };
       }
     }
@@ -75,10 +72,10 @@ export default function startup(api) {
       Defined Values (move to GQL)
 
     */
-    let frequencies = api.get.sync("DefinedValues?$filter=DefinedTypeId eq 23&$select=Value,Description,Id");
+    const frequencies = api.get.sync("DefinedValues?$filter=DefinedTypeId eq 23&$select=Value,Description,Id");
     api._.give.frequencies = frequencies;
 
-    let paymentTypes = api.get.sync("DefinedValues?$filter=DefinedTypeId eq 10 or DefinedTypeId eq 11&$select=Value,Description,Id");
+    const paymentTypes = api.get.sync("DefinedValues?$filter=DefinedTypeId eq 10 or DefinedTypeId eq 11&$select=Value,Description,Id");
     api._.give.paymentTypes = paymentTypes;
 
     if (typeof serverWatch != "undefined") {
@@ -89,7 +86,6 @@ export default function startup(api) {
 
       // Start watching again
       serverWatch.watch("ROCK", api._.baseURL, 30 * 1000);
-
     }
   }
 }

@@ -20,7 +20,7 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format, donate, 
       placeholder="$0.00"
       format={format}
       defaultValue={preFill(state.id)}
-      style={{maxWidth: "150px"}}
+      style={{ maxWidth: "150px" }}
     />
 
     <h3 className={"text-dark-tertiary display-inline-block push-half-bottom push-half-right"}>
@@ -29,18 +29,18 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format, donate, 
 
     {(() => {
       // if (accounts.length > 1) {
-        return (
+      return (
           <Forms.Select
-              items={accounts}
-              name="select-account"
-              id={`${state.id}_select`}
-              hideLabel
-              classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
-              inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
-              placeholder="select fund"
-              onChange={saveFund}
-              selected={selectVal}
-              defaultValue={accounts.length === 1 ? accounts[0].value : null}
+            items={accounts}
+            name="select-account"
+            id={`${state.id}_select`}
+            hideLabel
+            classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
+            inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
+            placeholder="select fund"
+            onChange={saveFund}
+            selected={selectVal}
+            defaultValue={accounts.length === 1 ? accounts[0].value : null}
           />
         );
       // }

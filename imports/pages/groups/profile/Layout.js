@@ -10,18 +10,18 @@ export default ({ group, leaders, isLeader, join }) => (
 
     {/* Hero */}
     <div
-        className="ratio--landscape background--fill"
-        style={{
+      className="ratio--landscape background--fill"
+      style={{
         overflow: "visible",
         backgroundImage: `url('${group.photo}')`,
-        zIndex:10
+        zIndex: 10,
       }}
     >
       <div className="ratio__item" />
     </div>
 
     {/* Group Information */}
-    <div style={{borderRadius: "0 0 6px 6px"}} className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light">
+    <div style={{ borderRadius: "0 0 6px 6px" }} className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light">
       <div className="card__item soft">
         <h3 className="text-dark-primary push-half-top push-bottom">{group.name}</h3>
 
@@ -37,12 +37,12 @@ export default ({ group, leaders, isLeader, join }) => (
         </h5>
         {leaders.map((leader, i) => (
           <div
-              className="ratio--square round display-inline-block push-right background--fill"
-              key={i}
-              style={{
+            className="ratio--square round display-inline-block push-right background--fill"
+            key={i}
+            style={{
               backgroundImage: `url('${leader.person.photo}')`,
               width: "80px",
-              height: "80px"
+              height: "80px",
             }}
           >
             <div className="ratio__item" />
@@ -61,7 +61,7 @@ export default ({ group, leaders, isLeader, join }) => (
           <h4 className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">#TheseAreMyPeople</h4>
           <div className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
             {(() => {
-              let className = "flush-bottom push-half-bottom@handheld btn";
+              const className = "flush-bottom push-half-bottom@handheld btn";
               if (isLeader) {
                 return (
                   <a target="_blank" className={className} href={`${Meteor.settings.public.rock.baseURL}groups/leader?GroupId=${group.entityId}`}>
@@ -160,7 +160,7 @@ export default ({ group, leaders, isLeader, join }) => (
                 {group.description && group.description.split("\n").map((text, key) => (
                   <span key={key}>
                     {text}
-                    <br/>
+                    <br />
                   </span>
                 ))}
               </p>
@@ -172,12 +172,12 @@ export default ({ group, leaders, isLeader, join }) => (
               <div className="soft-half-top flush-bottom">
                 {group.members.filter(x => x.person && x.person.photo).map((member, i) => (
                   <div
-                      className="ratio--square round display-inline-block push-half-right background--fill"
-                      key={i}
-                      style={{
+                    className="ratio--square round display-inline-block push-half-right background--fill"
+                    key={i}
+                    style={{
                       backgroundImage: `url('${member.person.photo}')`,
                       width: "40px",
-                      height: "40px"
+                      height: "40px",
                     }}
                   >
                     <div className="ratio__item" />

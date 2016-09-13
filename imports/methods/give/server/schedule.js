@@ -1,4 +1,4 @@
-/*global Meteor */
+/* global Meteor */
 
 import Moment from "moment";
 
@@ -45,7 +45,7 @@ import createSchedule from "./createSchedule";
 */
 
 Meteor.methods({
-  "give/schedule": function(token, accountName, id) {
+  "give/schedule": function (token, accountName, id) {
     let user = null;
     if (this.userId) user = Meteor.users.findOne({ _id: this.userId });
 
@@ -59,15 +59,14 @@ Meteor.methods({
 
 
     return response;
-
-  }
+  },
 });
 
 
 const cancel = ({ id, gateway }) => {
   let response = {};
 
-  let existing = api.get.sync(`FinancialScheduledTransactions/${id}`);
+  const existing = api.get.sync(`FinancialScheduledTransactions/${id}`);
   // only remove if this is an NMI transaction and we have a gateway code
   if (gateway && existing.FinancialGatewayId === api._.give.gateway.id) {
     try {

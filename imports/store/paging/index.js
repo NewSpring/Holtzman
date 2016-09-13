@@ -9,5 +9,5 @@ export default {
   increment: () => ({ type: "PAGING.INCREMENT" }),
   pause: () => ({ type: "PAGING.PAUSE" }),
   resume: () => ({ type: "PAGING.RESUME" }),
-  reset: () => ({ type: "PAGING.RESET" })
+  reset: () => ({ type: "PAGING.RESET" }),
 };

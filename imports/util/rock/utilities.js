@@ -1,10 +1,10 @@
-/*global _, Meteor */
+/* global _, Meteor */
 
 import { makeNewGuid } from "./../guid";
 import startup from "./startup";
 
 const api = {
-  _: {}
+  _: {},
 };
 
 // registration of required data for Rock
@@ -13,7 +13,6 @@ api.registerEndpoint = (obj) => {
     api._ = obj;
 
     startup(api);
-
   }
 };
 
@@ -30,15 +29,13 @@ api.registerEndpoint = (obj) => {
  */
 
 api.call = function (method, endpoint, data, callback) {
-
   function checkStatus(response) {
-
     if (response.status >= 200 && response.status < 300) {
       return response;
     } else {
       return {
         status: response.status,
-        statusText: response.statusText
+        statusText: response.statusText,
       };
     }
   }
@@ -58,14 +55,14 @@ api.call = function (method, endpoint, data, callback) {
 
   const headers = {
     [this._.tokenName]: this._.token,
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   };
 
   const options = {
     method,
     body,
     headers,
-    credentials: "same-origin"
+    credentials: "same-origin",
   };
 
   endpoint = this._.baseURL + "api/" + endpoint;
@@ -81,7 +78,6 @@ api.call = function (method, endpoint, data, callback) {
       }
 
       return response;
-
     })
     .then((data) => {
       if (callback) {
@@ -89,7 +85,6 @@ api.call = function (method, endpoint, data, callback) {
       }
 
       return data;
-
     })
     .catch((er) => {
       if (callback) {
@@ -107,7 +102,7 @@ api.get = function () {
   return api.call.apply(this, args);
 };
 
-api["delete"] = function () {
+api.delete = function () {
   let args;
   args = _.values(arguments);
   args.unshift("DELETE");
@@ -133,13 +128,12 @@ api.patch = function () {
   args = _.values(arguments);
   args.unshift("PATCH");
   return api.call.apply(this, args);
-
 };
 
 const parseEndpoint = (str) => {
   return str.split("\n").map((x) => {
     let trimmed = x.trim();
-    if ( trimmed.slice(-3) === "and" ||  trimmed.slice(-2) === "or") {
+    if (trimmed.slice(-3) === "and" || trimmed.slice(-2) === "or") {
       trimmed += " ";
     }
 

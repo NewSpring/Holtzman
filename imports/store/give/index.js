@@ -9,7 +9,7 @@ import reducer from "./reducer";
 import { addReducer } from "../utilities";
 
 addReducer({
-  give: reducer
+  give: reducer,
 });
 
 export default actions;

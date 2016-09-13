@@ -1,9 +1,8 @@
-/*global Meteor, check */
+/* global Meteor, check */
 import { api, parseEndpoint } from "../../../util/rock";
 import Validate from "../../../util/validate";
 
 function getPhoto(person = {}) {
-
   if (person.Photo && person.Photo.Path) {
     let { Path } = person.Photo;
 
@@ -15,7 +14,7 @@ function getPhoto(person = {}) {
       return Path;
     }
 
-    if (Path.indexOf("?") > -1){
+    if (Path.indexOf("?") > -1) {
       Path = Path.slice(0, Path.indexOf("?"));
     }
 
@@ -40,8 +39,8 @@ Meteor.methods({
     }
 
     let isAvailable = api.get.sync(`userlogins/available/${email}`),
-        alternateAccounts = [],
-        peopleWithoutAccountEmails = [];
+      alternateAccounts = [],
+      peopleWithoutAccountEmails = [];
 
 
     if (isAvailable) {
@@ -49,7 +48,7 @@ Meteor.methods({
       let People = api.get.sync(`People/GetByEmail/${email}`);
 
       if (!People.length) {
-        let SecondaryEmailPeople = api.get.sync(parseEndpoint(`
+        const SecondaryEmailPeople = api.get.sync(parseEndpoint(`
           AttributeValues?
             $filter=
               Attribute/Key eq 'SecondaryEmail' and
@@ -64,8 +63,8 @@ Meteor.methods({
 
         // showing more than 5 possible people in this case
         // would be confusing to a user so lets limit our lookup
-        let realisticReturnAmounts = 5;
-        let ids = SecondaryEmailPeople.map((x) => {
+        const realisticReturnAmounts = 5;
+        const ids = SecondaryEmailPeople.map((x) => {
           return `(Id eq ${x.EntityId})`;
         }).slice(0, realisticReturnAmounts).join(" and ");
 
@@ -77,14 +76,13 @@ Meteor.methods({
 
         */
         People = api.get.sync(`People?$filter=${ids}&$expand=Photo`);
-
       }
 
 
-      let peopleToCheck = [];
+      const peopleToCheck = [];
 
       if (People.length) {
-        for (let person of People) {
+        for (const person of People) {
           peopleWithoutAccountEmails.push({
             email: person.Email,
             firstName: person.NickName || person.FirstName,
@@ -94,15 +92,12 @@ Meteor.methods({
           });
 
           if (person.Users) {
-
             alternateAccounts = alternateAccounts
               .concat(person.Users.map(x => (x.UserName)))
               .filter(Validate.isEmail);
-
           } else {
             peopleToCheck.push(person.Id);
           }
-
         }
       }
 
@@ -110,10 +105,10 @@ Meteor.methods({
       // lets see if they have any user logins to the
       // user can go ahead and try to login with that account
       if (peopleToCheck.length) {
-        for (let personId of peopleToCheck) {
-          let emailsForPerson = api.get.sync(`UserLogins?$filter=PersonId eq ${personId}`);
+        for (const personId of peopleToCheck) {
+          const emailsForPerson = api.get.sync(`UserLogins?$filter=PersonId eq ${personId}`);
           if (emailsForPerson.length) {
-            for (let UserLogin of emailsForPerson) {
+            for (const UserLogin of emailsForPerson) {
               if (Validate.isEmail(UserLogin.UserName)) {
                 alternateAccounts.push(UserLogin.UserName);
               }
@@ -126,7 +121,7 @@ Meteor.methods({
     return {
       isAvailable,
       alternateAccounts,
-      peopleWithoutAccountEmails
+      peopleWithoutAccountEmails,
     };
-  }
+  },
 });

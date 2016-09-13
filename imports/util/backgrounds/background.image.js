@@ -1,6 +1,5 @@
 
-function backgroundImage(contentItem, { label="1:1" } = {}) {
-
+function backgroundImage(contentItem, { label = "1:1" } = {}) {
   let images = contentItem.content ?
                   contentItem.content.images :
                   undefined;
@@ -15,13 +14,13 @@ function backgroundImage(contentItem, { label="1:1" } = {}) {
 
   if (!bgImage) {
     if (channel === "devotionals") {
-      let editorialImage = _.find(images, (image) => {
+      const editorialImage = _.find(images, (image) => {
         return image.fileLabel === "2:1";
       });
-      let inlineImage = _.find(images, (image) => {
+      const inlineImage = _.find(images, (image) => {
         return image.fileLabel === "inline";
       });
-      let defaultImage = _.find(images, (image) => {
+      const defaultImage = _.find(images, (image) => {
         return image.fileLabel === "default";
       });
       if (editorialImage) bgImage = editorialImage;

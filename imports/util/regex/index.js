@@ -5,7 +5,6 @@ import Validate from "../validate";
 import defaultRegex from "./defaults";
 
 Regex.addRegex = (name, test, validate) => {
-
   if (Regex[name]) {
     throw new Error(
       "Regex assigned",
@@ -13,7 +12,7 @@ Regex.addRegex = (name, test, validate) => {
     );
   }
 
-  if (!test || !test instanceof RegExp) {
+  if (!test || !(test instanceof RegExp)) {
     throw new Error(
       "Regex TypeError",
       `Regexter ${name} requires a regex`
@@ -24,10 +23,9 @@ Regex.addRegex = (name, test, validate) => {
 
   if (validate) {
     const funcName = `is${Format.capitalize(name)}`;
-    Validate.addValidator(funcName, (str) => { return test.test(str) });
+    Validate.addValidator(funcName, (str) => { return test.test(str); });
   }
   return;
-
 };
 
 /*
@@ -37,7 +35,7 @@ Regex.addRegex = (name, test, validate) => {
 */
 // such a long regex
 
-for (let name in defaultRegex) {
+for (const name in defaultRegex) {
   const _regex = defaultRegex[name];
   Regex.addRegex(name, _regex, true);
 }

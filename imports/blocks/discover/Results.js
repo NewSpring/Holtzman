@@ -15,8 +15,8 @@ const LoadMore = ({ loadMore, search }) => {
     return (
       <div className="text-center push-double-top">
         <button
-            className="btn--dark-tertiary"
-            onClick={loadMore}
+          className="btn--dark-tertiary"
+          onClick={loadMore}
         >
           <LoadingText search={search} />
         </button>
@@ -29,7 +29,6 @@ const LoadMore = ({ loadMore, search }) => {
 };
 
 const Results = ({ loadMore, search }) => {
-
   if (search.none) {
     return <h6 className="soft">No results for {search.term}!</h6>;
   }

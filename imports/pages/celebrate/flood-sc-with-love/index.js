@@ -26,17 +26,17 @@ const floodNumbers = [
 ];
 
 let primary = "#0088BB",
-    secondary = "#006290";
+  secondary = "#006290";
 
 const Fuse = () => (
   <div className="display-inline-block text-center one-whole ">
-    <div className="background--light-primary soft-double-top@lap-and-up" style={{overflow: "visible"}}>
+    <div className="background--light-primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
       <Stats>
 
         <FitText compressor={1.5}>
           <h3
-              className="flush-bottom soft-half-bottom soft-double-top italic"
-              style={{
+            className="flush-bottom soft-half-bottom soft-double-top italic"
+            style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
 
             }}
@@ -45,7 +45,7 @@ const Fuse = () => (
           </h3>
         </FitText>
 
-        <FitText compressor={.2}>
+        <FitText compressor={0.2}>
           <h1 className="uppercase text-light-primary" style={{
             fontWeight: "900",
             color: primary,
@@ -54,7 +54,7 @@ const Fuse = () => (
           </h1>
         </FitText>
 
-        <FitText compressor={.4}>
+        <FitText compressor={0.4}>
           <h1 className="uppercase push-back-top text-light-primary" style={{
             fontWeight: "900",
             color: primary,
@@ -65,8 +65,8 @@ const Fuse = () => (
 
         <FitText compressor={1.3}>
           <h3
-              className="flush-bottom push-back-half-top soft-bottom italic"
-              style={{
+            className="flush-bottom push-back-half-top soft-bottom italic"
+            style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
@@ -78,9 +78,9 @@ const Fuse = () => (
       <div className="soft-double-ends" />
       <Leaves>
         <SolidLeaf
-            className="locked-bottom locked-right"
-            size="200px"
-            style={{
+          className="locked-bottom locked-right"
+          size="200px"
+          style={{
             transform: "rotate(-225deg)",
             marginBottom: "-50px",
             marginRight: "-150px",
@@ -88,9 +88,9 @@ const Fuse = () => (
           }}
         />
         <SolidLeaf
-            className="locked-bottom locked-right"
-            size="130px"
-            style={{
+          className="locked-bottom locked-right"
+          size="130px"
+          style={{
             transform: "rotate(-270deg)",
             marginBottom: "-100px",
             marginRight: "-10px",
@@ -98,9 +98,9 @@ const Fuse = () => (
           }}
         />
         <StripedLeaf
-            className="locked-bottom locked-right"
-            size="90px"
-            style={{
+          className="locked-bottom locked-right"
+          size="90px"
+          style={{
             transform: "rotate(180deg)",
             marginBottom: "60px",
             marginRight: "-20px",
@@ -109,9 +109,9 @@ const Fuse = () => (
         />
 
         <SolidLeaf
-            className="locked-bottom locked-left"
-            size="250px"
-            style={{
+          className="locked-bottom locked-left"
+          size="250px"
+          style={{
             transform: "rotate(-135deg)",
             marginBottom: "-90px",
             marginLeft: "-150px",
@@ -120,9 +120,9 @@ const Fuse = () => (
         />
 
         <StripedLeaf
-            className="locked-bottom locked-left"
-            size="120px"
-            style={{
+          className="locked-bottom locked-left"
+          size="120px"
+          style={{
             transform: "rotate(-90deg)",
             marginBottom: "-20px",
             marginLeft: "0px",
@@ -131,7 +131,6 @@ const Fuse = () => (
         />
 
       </Leaves>
-
 
 
     </div>
@@ -150,9 +149,9 @@ const Fuse = () => (
             "When the flood hit in 2015, I was overwhelmed. I couldn’t handle it by myself. What impressed me was that a NewSpring volunteer came on his own to help us with the mold and flooding in the basement. He prayed with me, and the next Sunday I went to church. The week after that, I gave my life to Jesus. It’s been completely different. I smile more. I am more relaxed. I know I can have a relationship with the Lord, and he will guide me through the darkness of the world in which we live."
           </p>
           <h6
-              className="italic text-dark-primary"
-              style={{
-              fontFamily: "ff-meta-serif-web-pro, serif"
+            className="italic text-dark-primary"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
             Michael Walsh, Columbia Campus
@@ -165,12 +164,12 @@ const Fuse = () => (
     <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
 
       <h3
-          className="text-center soft-half-top flush-bottom"
+        className="text-center soft-half-top flush-bottom"
       >#FloodSCWithLove:</h3>
 
       <h5
-          className="text-center soft-half-bottom flush-bottom italic"
-          style={{fontFamily: "ff-meta-serif-web-pro, serif"}}
+        className="text-center soft-half-bottom flush-bottom italic"
+        style={{ fontFamily: "ff-meta-serif-web-pro, serif" }}
       >Saved People Serve People</h5>
 
     <List items={floodNumbers} />

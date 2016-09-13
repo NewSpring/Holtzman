@@ -3,13 +3,11 @@ import Results from "./Results";
 import Feed from "./feed";
 
 const Content = ({ loadMore, search }) => {
-
   if (search.searching) {
     return <Results loadMore={loadMore} search={search} />;
   } else {
     return <Feed />;
   }
-
 };
 
 const getStyle = () => {

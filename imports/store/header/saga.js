@@ -7,16 +7,16 @@ const canRun = () => {
 };
 
 function* toggleHeader() {
-  let { header } = yield select();
+  const { header } = yield select();
   if (canRun()) {
     if (!header.statusBar) StatusBar.hide();
     if (header.statusBar) StatusBar.show();
   }
-};
+}
 
 function* setColor({ color }) {
   if (canRun() && color) StatusBar.backgroundColorByHexString(color);
-};
+}
 
 function* setColorFromHeader() {
   let { header } = yield select();
@@ -30,7 +30,7 @@ function* setColorFromHeader() {
       StatusBar.styleDefault();
     }
   }
-};
+}
 
 addSaga(function* headerSaga() {
   yield fork(takeLatest, "HEADER.TOGGLE_VISIBILITY", toggleHeader);

@@ -4,5 +4,5 @@ import Video from "./video/index";
 
 export {
   // Audio,
-  Video
+  Video,
 };

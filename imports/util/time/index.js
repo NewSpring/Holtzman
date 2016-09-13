@@ -4,5 +4,5 @@ import relative from "./time.relative";
 
 export default {
   date,
-  relative
+  relative,
 };

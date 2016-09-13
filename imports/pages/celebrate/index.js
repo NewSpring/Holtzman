@@ -24,18 +24,15 @@ import Closing from "./closing/index";
 
 @connect()
 class Template extends Component {
+
   componentDidMount(){
     if (process.env.NATIVE) {
-      const item = {
-        title: "Annual Report",
-      };
-
-      this.props.dispatch(headerActions.set(item));
+      this.props.dispatch(headerActions.set({ title: "Annual Report" }));
     }
 
   }
 
-  render () {
+  render() {
     return (
       <div>
         <Meta title="Annual Report" />
@@ -78,5 +75,5 @@ const Routes = [
 
 export default {
   Template,
-  Routes
+  Routes,
 };

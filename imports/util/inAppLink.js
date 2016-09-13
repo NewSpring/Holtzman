@@ -1,17 +1,17 @@
 function openUrl(url, opened, loaded, closed) {
   try {
-    SafariViewController.isAvailable(function (available) {
+    SafariViewController.isAvailable((available) => {
       if (available) {
         SafariViewController.show({
-              url: url,
-              hidden: false, // default false. You can use this to load cookies etc in the background (see issue #1 for details).
-              animated: true, // default true, note that 'hide' will reuse this preference (the 'Done' button will always animate though)
-              transition: "curl", // unless animated is false you can choose from: curl, flip, fade, slide (default)
-              enterReaderModeIfAvailable: false, // default false
-              tintColor: "#6BAC43" // default to ios blue
-            },
+          url,
+          hidden: false, // default false. You can use this to load cookies etc in the background (see issue #1 for details).
+          animated: true, // default true, note that 'hide' will reuse this preference (the 'Done' button will always animate though)
+          transition: "curl", // unless animated is false you can choose from: curl, flip, fade, slide (default)
+          enterReaderModeIfAvailable: false, // default false
+          tintColor: "#6BAC43", // default to ios blue
+        },
             // this success handler will be invoked for the lifecycle events 'opened', 'loaded' and 'closed'
-            function(result) {
+            (result) => {
               if (result.event === "opened" && opened) {
                 // view has opened
                 opened();
@@ -24,7 +24,7 @@ function openUrl(url, opened, loaded, closed) {
               }
             },
             // error function?
-            function(msg) {
+            (msg) => {
               alert("KO: " + msg);
             });
       } else {
@@ -33,7 +33,7 @@ function openUrl(url, opened, loaded, closed) {
       }
     });
   }
-  catch(err) {
+  catch (err) {
     window.open(url, "_blank", "location=yes");
   }
 }

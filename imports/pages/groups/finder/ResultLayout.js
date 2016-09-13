@@ -32,8 +32,8 @@ export default ({
 
     {/* Tag List */}
     <div
-        className="background--light-primary soft soft-double-left@anchored outlined--light outlined--bottom"
-        style={{
+      className="background--light-primary soft soft-double-left@anchored outlined--light outlined--bottom"
+      style={{
         whiteSpace: "nowrap",
         overflowY: "hidden",
         overflowX: "scroll",
@@ -41,7 +41,7 @@ export default ({
       }}
     >
       {tags && tags.map((tag, key) => (
-        <Tag style={{verticalAlign: "bottom"}} className="flush-bottom" val={tag} key={key} canBeActive />
+        <Tag style={{ verticalAlign: "bottom" }} className="flush-bottom" val={tag} key={key} canBeActive />
       ))}
       {campuses && campuses.map((campus, key) => (
         <Tag
@@ -54,22 +54,22 @@ export default ({
         />
       ))}
       <Tag
-          style={{verticalAlign: "bottom"}}
-          className="flush-bottom background--dark-tertiary"
-          val="..."
-          canBeActive={false}
-          onClick={() => toggleTags()}
+        style={{ verticalAlign: "bottom" }}
+        className="flush-bottom background--dark-tertiary"
+        val="..."
+        canBeActive={false}
+        onClick={() => toggleTags()}
       />
 
     </div>
 
     {/* Filter */}
     <Filter
-        showSearch={showSearch}
-        toggleSearch={toggleSearch}
-        showTags={showTags}
-        toggleTags={toggleTags}
-        q={query}
+      showSearch={showSearch}
+      toggleSearch={toggleSearch}
+      showTags={showTags}
+      toggleTags={toggleTags}
+      q={query}
     />
 
     {/* Results */}
@@ -79,10 +79,10 @@ export default ({
         if (loading || !count) return null;
         return (
           <div
-              style={{verticalAlign: "middle"}}
-              className="push-bottom push-double-bottom@lap-and-up soft-half-ends soft-half-sides"
+            style={{ verticalAlign: "middle" }}
+            className="push-bottom push-double-bottom@lap-and-up soft-half-ends soft-half-sides"
           >
-            <h6 className="em float-left flush-bottom text-dark-tertiary" style={{verticalAlign: "middle"}}>
+            <h6 className="em float-left flush-bottom text-dark-tertiary" style={{ verticalAlign: "middle" }}>
               {count} Results
             </h6>
             {(() => {
@@ -118,7 +118,7 @@ export default ({
         if (!count) return null;
         return (
           <div
-              className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides"
+            className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides"
           >
             <h6 className="em text-dark-secondary flush">
               {groups.length} results of {count}

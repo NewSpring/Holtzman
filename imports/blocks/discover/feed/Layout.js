@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
 import DiscoverHero from "./Hero";
@@ -6,10 +6,9 @@ import PopularItem from "../../likes/Item";
 import DiscoverItem from "./Item";
 
 function getImage(images, label = "2:1") {
-
   let selectedImage = false;
 
-  for (let image of images) {
+  for (const image of images) {
     if (image.fileLabel === label) {
       selectedImage = image.url;
       break;
@@ -17,13 +16,12 @@ function getImage(images, label = "2:1") {
     selectedImage = image.url;
   }
   return selectedImage;
-
 }
 
-let textItemCount = 0;
+const textItemCount = 0;
 const Layout = ({ featuredItem, popularItems, recommendedItems, textItems }) => {
   return (
-    <div style={{ overflowY: "hidden", height:"100%"}} className="background--light-primary">
+    <div style={{ overflowY: "hidden", height: "100%" }} className="background--light-primary">
 
       <section className="hard background--light-secondary">
         <h6 className="push-left soft-half-bottom soft-top">Recommended by NewSpring</h6>
@@ -33,9 +31,9 @@ const Layout = ({ featuredItem, popularItems, recommendedItems, textItems }) => 
         if (featuredItem) {
           return (
             <DiscoverHero
-                link={featuredItem.meta.urlTitle}
-                image={getImage(featuredItem.content.images, "1:1")}
-                topicName={featuredItem.title}
+              link={featuredItem.meta.urlTitle}
+              image={getImage(featuredItem.content.images, "1:1")}
+              topicName={featuredItem.title}
             />
           );
         }
@@ -44,20 +42,19 @@ const Layout = ({ featuredItem, popularItems, recommendedItems, textItems }) => 
 
       <section className="soft-half background--light-secondary">
         <div className="grid">
-          {recommendedItems.map(function(item, i) {
-            let formatedObj = {
+          {recommendedItems.map((item, i) => {
+            const formatedObj = {
               link: item.meta.urlTitle,
               image: getImage(item.content.images),
               title: item.title,
               date: item.meta.date,
               category: "Need to know",
-              icon: "icon-leaf-outline"
+              icon: "icon-leaf-outline",
             };
 
             return (
-                <PopularItem like={formatedObj} key={i}/>
+                <PopularItem like={formatedObj} key={i} />
             );
-
           })}
         </div>
       </section>

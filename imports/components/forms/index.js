@@ -18,5 +18,5 @@ export default {
   Fieldset,
   Label,
   Date,
-  TextArea
+  TextArea,
 };

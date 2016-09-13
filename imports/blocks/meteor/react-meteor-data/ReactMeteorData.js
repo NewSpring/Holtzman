@@ -51,7 +51,7 @@ class MeteorDataManager {
   calculateData() {
     const component = this.component;
 
-    if (! component.getMeteorData) {
+    if (!component.getMeteorData) {
       return null;
     }
 
@@ -108,7 +108,7 @@ class MeteorDataManager {
     });
 
     if (Package.mongo && Package.mongo.Mongo) {
-      Object.keys(data).forEach(function (key) {
+      Object.keys(data).forEach((key) => {
         if (data[key] instanceof Package.mongo.Mongo.Cursor) {
           console.warn(
   "Warning: you are returning a Mongo cursor from getMeteorData. This value " +
@@ -129,7 +129,7 @@ class MeteorDataManager {
       throw new Error("Expected object returned from getMeteorData");
     }
     // update componentData in place based on newData
-    for (let key in newData) {
+    for (const key in newData) {
       component.data[key] = newData[key];
     }
     // if there is oldData (which is every time this method is called
@@ -138,7 +138,7 @@ class MeteorDataManager {
     // co-existing with something else that writes to a component's
     // this.data.
     if (oldData) {
-      for (let key in oldData) {
+      for (const key in oldData) {
         if (!(key in newData)) {
           delete component.data[key];
         }

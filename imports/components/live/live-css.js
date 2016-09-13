@@ -22,7 +22,7 @@ const animation = {
 const phaders = {
   "from": {
     opacity: 0,
-  }
+  },
 };
 
 const textAnimation = {

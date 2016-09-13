@@ -1,4 +1,4 @@
-/*global Meteor */
+/* global Meteor */
 
 const available = (email, callback) => {
   Meteor.call("rock/accounts/available", email, callback);

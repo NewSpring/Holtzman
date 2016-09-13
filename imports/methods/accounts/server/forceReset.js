@@ -1,4 +1,4 @@
-/*global Meteor, check */
+/* global Meteor, check */
 import { api } from "../../../util/rock";
 
 Meteor.methods({
@@ -20,33 +20,30 @@ Meteor.methods({
     const { PersonId } = RockUser;
 
     try {
-      let person = api.get.sync(`People/${PersonId}`);
+      const person = api.get.sync(`People/${PersonId}`);
       const { PrimaryAliasId } = person;
 
-      let meteorUserId = Accounts.createUser({ email: Username });
+      const meteorUserId = Accounts.createUser({ email: Username });
 
       Meteor.users.upsert(meteorUserId, {
-          $set: {
-            "services.rock" : {
-              PersonId,
-              PrimaryAliasId
-            }
-          }
+        $set: {
+          "services.rock": {
+            PersonId,
+            PrimaryAliasId,
+          },
         },
+      },
         (err, response) => {
           if (!err) {
             Accounts.sendResetPasswordEmail(meteorUserId);
           }
         }
       );
-
     } catch (e) {
       console.log(e);
     }
 
 
-
     return true;
-
   },
 });

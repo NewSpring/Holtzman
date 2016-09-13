@@ -4,5 +4,5 @@ function capitalize(str) {
 }
 
 export {
-  capitalize
+  capitalize,
 };

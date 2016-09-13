@@ -1,8 +1,7 @@
 import { PropTypes } from "react";
 import { WindowLoading } from "../loading";
 
-const Err = ({msg, error, style}, context) => {
-
+const Err = ({ msg, error, style }, context) => {
   if (typeof error != "string") {
     if (error && error.message) {
       error = error.message;
@@ -23,11 +22,10 @@ const Err = ({msg, error, style}, context) => {
       </div>
     </WindowLoading>
   );
-
 };
 
 Err.contextTypes = {
-  shouldAnimate: PropTypes.bool
+  shouldAnimate: PropTypes.bool,
 };
 
 export default Err;

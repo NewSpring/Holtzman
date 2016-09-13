@@ -2,7 +2,7 @@
 import Forms from "../../components/forms";
 import { Link } from "react-router";
 
-const RecoverableSchedule = ({id, account, amount, frequency, removeOnClick}) => (
+const RecoverableSchedule = ({ id, account, amount, frequency, removeOnClick }) => (
   <div>
     <div className="display-inline-block soft-half-ends one-whole">
       <h5 className="flush-bottom float-left">{account}</h5>
@@ -12,19 +12,19 @@ const RecoverableSchedule = ({id, account, amount, frequency, removeOnClick}) =>
 
       <div className="grid__item one-half">
         <Forms.Input
-            label="Amount"
-            defaultValue={"$" + amount}
-            disabled
-            classes={["soft-half-bottom"]}
+          label="Amount"
+          defaultValue={"$" + amount}
+          disabled
+          classes={["soft-half-bottom"]}
         />
       </div>
 
       <div className="grid__item one-half">
         <Forms.Input
-            label="Frequency"
-            defaultValue={frequency}
-            disabled
-            classes={["soft-half-bottom"]}
+          label="Frequency"
+          defaultValue={frequency}
+          disabled
+          classes={["soft-half-bottom"]}
         />
       </div>
     </div>
@@ -41,13 +41,13 @@ const Layout = ({ schedules, reminderDate, onClick, hide }) => (
       Our records show that you have active giving schedules in our previous system. To access your schedule within our new system, simply review your schedule and re-enter your payment details. If you're not ready to do this, your schedule will continue in our previous system until you transfer it.
     </p>
 
-    {schedules.map((schedule) => (
+    {schedules.map(schedule => (
       <RecoverableSchedule
-          amount={schedule.details[0].amount}
-          frequency={schedule.schedule.value}
-          account={schedule.details[0].account.name}
-          key={Number(schedule.id)}
-          id={Number(schedule.id)}
+        amount={schedule.details[0].amount}
+        frequency={schedule.schedule.value}
+        account={schedule.details[0].account.name}
+        key={Number(schedule.id)}
+        id={Number(schedule.id)}
       />
     ))}
 

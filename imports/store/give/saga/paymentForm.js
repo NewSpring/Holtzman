@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 
 const CreditCardForm = ({ number, exp, ccv }) => (
   <fieldset>
@@ -20,5 +20,5 @@ const AchForm = ({ account, routing, name, type }) => (
 
 export {
   CreditCardForm,
-  AchForm
+  AchForm,
 };

@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
@@ -22,8 +22,8 @@ const mapQueriesToProps = () => ({
           images { fileName, fileType, fileLabel, s3, cloudfront }
         }
       }
-    `
-  }
+    `,
+  },
 });
 
 class Page extends Component {
@@ -48,19 +48,19 @@ class Page extends Component {
 
 // Bind reactive data to component
 const TemplateWithData = createContainer(() => {
-    let alive = true;
-    try { alive = serverWatch.isAlive("ROCK") } catch (e) {}
-    return { alive };
-  },
-  connect({ mapQueriesToProps })((props) => <Page {...props} />)
+  let alive = true;
+  try { alive = serverWatch.isAlive("ROCK"); } catch (e) {}
+  return { alive };
+},
+  connect({ mapQueriesToProps })(props => <Layout {...props} />)
 );
 
 
 const Routes = [
-  { path: "now", component: TemplateWithData }
+  { path: "now", component: TemplateWithData },
 ];
 
 export default {
   TemplateWithData,
-  Routes
+  Routes,
 };

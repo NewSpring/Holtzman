@@ -3,7 +3,7 @@ import { Success as SuccessIcon } from "../../components/icons";
 import Moment from "moment";
 const Success = ({ total, email, guest, onClick, schedules, additionalMessage }) => {
   let schedule = false;
-  for (let sched in schedules) {
+  for (const sched in schedules) {
     schedule = schedules[sched];
     break;
   }
@@ -44,7 +44,7 @@ const Success = ({ total, email, guest, onClick, schedules, additionalMessage })
 
               </p>
               <button
-                  className="btn one-whole push-bottom" onClick={(e) => onClick()}
+                className="btn one-whole push-bottom" onClick={e => onClick()}
               >
                 Create Account
               </button>

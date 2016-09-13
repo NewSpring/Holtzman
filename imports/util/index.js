@@ -10,7 +10,7 @@ import regex from "./regex";
 import rock from "./rock";
 import validate from "./validate";
 import Debouncer from "./debounce";
-const parseXML =  XML.parse;
+const parseXML = XML.parse;
 
 export {
   inherit,
