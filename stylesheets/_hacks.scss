@@ -107,7 +107,10 @@ blockquote p {
   text-decoration: none;
 }
 
-
 .floating:before {
   margin-right: 0!important; // XXX JAMES SAID THIS IS OKAY
+}
+// needs to be defined after toggle__item:hover
+.toggle__item--active.toggle__item:hover {
+  color: #6bac43;
 }
