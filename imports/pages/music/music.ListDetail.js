@@ -4,17 +4,16 @@ import { connect } from "react-redux";
 import { Link } from "react-router";
 import ReactMixin from "react-mixin";
 
+import Shareable from "../../mixins/mixins.Shareable";
+
 // action helpers
 import {
   modal,
   nav as navActions,
-  liked as likedActions,
   share as shareActions,
   header as headerActions,
   audio as audioActions
 } from "../../store";
-
-import Album from "./music.Album";
 
 const mapStateToProps = (state) => {
   return {
@@ -26,6 +25,7 @@ const mapStateToProps = (state) => {
 };
 
 @connect(mapStateToProps)
+@ReactMixin.decorate(Shareable)
 export default class ListDetail extends Component {
 
   state = {
@@ -74,6 +74,12 @@ export default class ListDetail extends Component {
     }
   }
 
+  share = (event) => {
+    event.preventDefault();
+    const { dispatch } = this.props;
+    dispatch(shareActions.share());
+  }
+
   render () {
 
     let url = `/music/${this.props.album.entryId}`;
@@ -81,24 +87,24 @@ export default class ListDetail extends Component {
       return image.fileName.indexOf("blur") === -1 && image.size === "small";
     });
     return (
-        <div className="one-whole soft background--dark-primary" style={this.sectionStyles}>
-          <div className="text-light-primary">
-            <div className="grid floating push-bottom">
-              <div className="grid__item background--fill floating__item text-left hard push-left ratio--square background--light-secondary one-eighth" style={{backgroundImage: `url(${smallImage.url})`}} />
-              <div className="floating__item text-left grid__item eight-tenths">
-                <h5 className="flush">{this.props.album.content.tracks[this.props.trackNumber].title}</h5>
-                <h7 className="text-light-tertiary">
-                  <span>{this.props.album.title} – </span>
-                  <span>{this.props.album.artist || "NewSpring"}</span>
-                </h7>
-              </div>
+      <div className="one-whole soft background--dark-primary" style={this.sectionStyles}>
+        <div className="text-light-primary">
+          <div className="grid floating push-bottom">
+            <div className="grid__item background--fill floating__item text-left hard push-left ratio--square background--light-secondary one-eighth" style={{backgroundImage: `url(${smallImage.url})`}} />
+            <div className="floating__item text-left grid__item eight-tenths">
+              <h5 className="flush">{this.props.album.content.tracks[this.props.trackNumber].title}</h5>
+              <h7 className="text-light-tertiary">
+                <span>{this.props.album.title} – </span>
+                <span>{this.props.album.artist || "NewSpring"}</span>
+              </h7>
             </div>
-            <Link to={url} onClick={this.closeModal} className="text-light-primary soft-half-top push-ends plain">
-              <h5>View Album</h5>
-            </Link>
-            <h5 onClick={this.shareableAction} className="push-ends">Share</h5>
           </div>
+          <Link to={url} onClick={this.closeModal} className="text-light-primary soft-half-top push-ends plain">
+            <h5>View Album</h5>
+          </Link>
+          <h5 onClick={this.share} className="push-ends">Share</h5>
         </div>
+      </div>
     );
 
   }
