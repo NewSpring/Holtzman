@@ -10,3 +10,8 @@ const Controls = {
 };
 
 export default Controls;
+export {
+  Toggle,
+  Switch,
+  Progress,
+};
