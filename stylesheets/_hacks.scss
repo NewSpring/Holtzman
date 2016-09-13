@@ -106,3 +106,8 @@ blockquote p {
 .plain {
   text-decoration: none;
 }
+
+
+.floating:before {
+  margin-right: 0!important; // XXX JAMES SAID THIS IS OKAY
+}
