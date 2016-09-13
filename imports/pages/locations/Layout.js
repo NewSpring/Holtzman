@@ -86,7 +86,9 @@ export default class Layout extends Component {
       .then((list) => _.sortBy(list, (x => x.distance.value)))
       .then(list => this.setState({ list }))
       .then(() => {
-        this.slider.children[0].scrollIntoView({block: "end", behavior: "smooth"});
+        const element = this.slider;
+        element.children[0].scrollIntoView({block: "end", behavior: "smooth"});
+        element.parentElement.scrollLeft += -20;
       });
   }
 
