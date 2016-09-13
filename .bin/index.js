@@ -150,10 +150,9 @@ Vorpal
     if (options.production) {
       console.log("Building apollos in production mode");
       meteorArgs.push("--production");
-    } else {
-      run();
     }
 
+    run();
 
   });
 

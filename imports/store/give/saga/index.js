@@ -16,8 +16,8 @@ import actions from "../actions";
 import { CreditCardForm, AchForm } from "./paymentForm";
 import formatPersonDetails from "./formatPersonDetails";
 
-import { order, schedule, charge } from "../../../methods/give/client";
-import RecoverSchedules from "../../../blocks/RecoverSchedules";
+import { order, schedule, charge } from "../../../methods/give/browser";
+import RecoverSchedules from "../../../blocks/recover-schedules";
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -258,8 +258,7 @@ function* submitPaymentDetails(data, url) {
 
   // @TODO test on older browsers
   // store data in NMI's system
-  yield delay(50); // ensure gift is in nmi's system beofre progressing
-  return yield fetch(url, {
+  yield fetch(url, {
       method: "POST",
       body: new FormData(form),
       mode: "no-cors"
@@ -271,6 +270,8 @@ function* submitPaymentDetails(data, url) {
     .catch((e) => {
       // @TODO error handling
     });
+  yield delay(50); // ensure gift is in nmi's system beofre progressing
+  return;
 
 }
 
@@ -313,7 +314,6 @@ function* submitPersonDetails(give, autoSubmit) {
         DO NOT REMOVE THIS
 
     */
-    yield delay(50); // ensure gift is in nmi's system beofre progressing
     const response = yield fetch(url, {
       method: "POST",
       body: new FormData(),
@@ -321,6 +321,8 @@ function* submitPersonDetails(give, autoSubmit) {
     })
       .then(console.log)
       .catch(console.log);
+
+    yield delay(50); // ensure gift is in nmi's system beofre progressing
 
   }
 

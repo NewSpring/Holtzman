@@ -12,7 +12,7 @@ import {
   header as headerActions,
 } from "../../../store";
 
-import { avatar } from "../../../methods/files/client";
+import { avatar } from "../../../methods/files/browser";
 
 const mapQueriesToProps = ({ state }) => ({
   data: {

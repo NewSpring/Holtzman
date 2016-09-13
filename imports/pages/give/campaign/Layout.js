@@ -27,7 +27,7 @@ const Layout = ({ account }) => (
     <Left scroll classes={["background--light-primary"]}>
       <Link to="/give/now" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain visuallyhidden@handheld" >
         <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}} />
-        <span className="display-inline-block" style={{verticalAlign: "middle", marginBottom: "2px"}}>Back</span>
+        <span className="display-inline-block" style={{verticalAlign: "middle", marginTop: "5px"}}>Back</span>
       </Link>
       <div className="soft@lap-and-up soft-double-top@lap-and-up">
         <div className="soft soft-double-bottom soft-double-top@lap-and-up">
@@ -40,7 +40,7 @@ const Layout = ({ account }) => (
       <div className="background--light-secondary">
         <div className="constrain-copy soft-double@lap-and-up">
           <div className="soft soft-double-bottom soft-double-top@lap-and-up">
-            {/*<AddToCart accounts={[account]} donate />*/}
+            <AddToCart accounts={[account]} donate />
           </div>
         </div>
       </div>

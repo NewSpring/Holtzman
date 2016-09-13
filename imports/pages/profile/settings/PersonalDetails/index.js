@@ -8,7 +8,7 @@ import {
   accounts as accountsActions
 } from "../../../../store";
 
-import { update } from "../../../../methods/accounts/client";
+import { update } from "../../../../methods/accounts/browser";
 
 import { Loading, Error as Err } from "../../../../components/states";
 

@@ -7,7 +7,7 @@ import {
   nav as navActions,
 } from "../../../store";
 
-import { avatar } from "../../../methods/files/client";
+import { avatar } from "../../../methods/files/browser";
 
 import Layout from "./Layout";
 
