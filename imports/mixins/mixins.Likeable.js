@@ -61,6 +61,13 @@ const Likeable = {
     if (foundLike) {
       Likes.remove(foundLike._id);
     } else {
+      if (entry.channelName === "sermons") {
+        const series = this.props.series.content;
+        entry.parent = {
+          entryId: series.id || series.entryId,
+        };
+      }
+
       Likes.insert({
         userId: Meteor.userId(),
         entryId: entry.id || entry.entryId,
