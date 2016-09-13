@@ -1,6 +1,9 @@
 {
   "extends": "airbnb",
   "rules": {
-    "quotes": [2, "double"]
+    "quotes": [2, "double"],
+    "import/no-unresolved": [2, { "ignore": [
+      "^meteor/*", "^/imports/*"
+    ] }]
   }
 }
