@@ -6,7 +6,7 @@ import gql from "graphql-tag";
 import Loading from "../../components/loading";
 import {
   nav as navActions,
-  actions as audioActions,
+  audio as audioActions,
   header as headerActions,
 } from "../../store";
 
