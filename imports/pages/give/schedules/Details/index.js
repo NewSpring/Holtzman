@@ -5,7 +5,8 @@ import gql from "graphql-tag";
 import {
   nav as navActions,
   modal as modalActions,
- give as giveActions,
+  give as giveActions,
+  header as headerActions,
 } from "../../../../store";
 
 import Confirm from "./Confirm";
@@ -74,6 +75,20 @@ export default class Details extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
+  }
+
+  componentDidMount(){
+    if (process.env.NATIVE) {
+      const item = {
+        title: "Schedule Details",
+      };
+
+      this.props.dispatch(headerActions.set(item));
+      this.setState({
+        __headerSet: true,
+      });
+    }
+
   }
 
   componentWillUnmount() {

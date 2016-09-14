@@ -7,6 +7,7 @@ import Authorized from "../../../blocks/authorzied";
 import {
   nav as navActions,
   modal as modalActions,
+  header as headerActions,
 } from "../../../store";
 
 import { give as giveActions } from "../../../store";
@@ -76,6 +77,20 @@ const mapStateToProps = (store) => ({
 
 @connect({ mapStateToProps, mapQueriesToProps })
 class Template extends Component {
+
+  componentDidMount(){
+    if (process.env.NATIVE) {
+      const item = {
+        title: "Schedule Your Giving",
+      };
+
+      this.props.dispatch(headerActions.set(item));
+      this.setState({
+        __headerSet: true,
+      });
+    }
+
+  }
 
   confirm = (e) => {
     const { dataset } = e.currentTarget;
