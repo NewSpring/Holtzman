@@ -84,7 +84,7 @@ export default class FeedItem extends Component {
   }
 
   categoryClasses = () => {
-    return !this.isLight() ? "text-light-primary" : "text-dark-tertiary";
+    return !this.isLight() ? "text-light-primary" : "text-dark-secondary";
   }
 
   timeClasses = () => {
@@ -93,14 +93,14 @@ export default class FeedItem extends Component {
       classes.push("text-light-primary");
     }
     else {
-      classes.push("text-dark-tertiary");
+      classes.push("text-dark-secondary");
     }
     return classes.join(" ");
   }
 
   iconClasses = () => {
     let classes = `soft-half-right ${categories.icon(this.props.item)} `;
-    classes += !this.isLight() ? "text-light-primary" : "text-dark-tertiary";
+    classes += !this.isLight() ? "text-light-primary" : "text-dark-secondary";
     return classes;
   }
 
