@@ -65,16 +65,6 @@ Vorpal
         }
       }
     }
-    // var npmPromises = [];
-    // npmPromises.push(
-    //   new Promise(function(p, f){
-    //     console.log("installing npm deps");
-    //     var child = Spawn("npm", ["install"], {
-    //       cwd: app, stdio: "inherit"
-    //     });
-    //     child.on("error", f);
-    //   })
-    // );
 
     return Promise.all(depPromises)
       .then(function(){
@@ -88,6 +78,7 @@ Vorpal
       })
   });
 
+var meteorProcess;
 Vorpal
   .command("run")
   .description("Start a local server to serve the site and print its address in your console")
@@ -112,12 +103,13 @@ Vorpal
     if (!options.ios && !options.android && !options.native) env.WEB = true;
     if (options.native || options.ios || options.android) env.NATIVE = true;
 
-    var configFile = Path.join(__dirname, "apollos-runtime.json");
-    if (!Fs.existsSync(configFile)) {
-      Fs.writeFileSync(configFile, JSON.stringify({ WEB: !!env.WEB }, null, 2), "utf8");
+    Vorpal.localStorage("holtzmann"); // ensure this exists
+    if (!Vorpal.localStorage.getItem("runtime")) {
+      Vorpal.localStorage.setItem("runtime", !!env.WEB);
     }
 
-    var apolloRuntime = require(configFile);
+    var apolloRuntime = Vorpal.localStorage.getItem("runtime");
+
     // removes the built files for a rebuild
     if (!options.quick && !!apolloRuntime.WEB != !!env.WEB) {
       Rimraf(Path.join(app, ".meteor/local"));
@@ -138,23 +130,21 @@ Vorpal
       meteorArgs.push(Path.join(app, ".meteor/sample.settings.json"));
     }
 
-    function run() {
-      var meteor = Spawn("meteor", meteorArgs, { stdio: "inherit", cwd: app, env: env });
-    }
-
-    Fs.writeFileSync(configFile, JSON.stringify({ WEB: !!env.WEB }, null, 2), "utf8");
+    Vorpal.localStorage.setItem("runtime", !!env.WEB);
 
     if (options.production) {
       console.log("Building apollos in production mode");
       meteorArgs.push("--production");
     }
 
-    run();
-
+    meteorProcess = Spawn("meteor", meteorArgs, { stdio: "inherit", cwd: app, env: env });
+    meteorProcess.on("close", function(){
+      Vorpal.hide();
+    })
+    return;
   })
-  // .cancel(function(){
-  //   Vorpal.hide();
-  // });
+
+process.on('SIGINT', () => process.exit(2));
 
 
 Vorpal
