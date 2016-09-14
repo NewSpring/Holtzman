@@ -73,13 +73,19 @@ export default class ChangePassword extends Component {
   render () {
     const { state, err } = this.state;
 
-    return <Loading msg="Updating your password..." />;
-    console.log(err)
     switch (state) {
       case "error":
-        return <Err msg="Looks like there was a problem" error={err && err.message ? err.message : " "} />;
+        return (
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+            <Err error={err} msg="Looks like there was a problem" />;
+          </div>
+        );
       case "loading":
-        return <Loading msg="Updating your password..." />;
+        return (
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+            <Loading msg="Updating your password..." />;
+          </div>
+        );
       case "success":
         return <Success msg="Your password has been updated!" />;
       default:

@@ -4,9 +4,9 @@ import { WindowLoading } from "../loading";
 const Err = ({msg, error, style}, context) => {
 
   if (typeof error != "string") {
-    if (error.message) {
+    if (error && error.message) {
       error = error.message;
-    } else if (error.error && typeof error.error === "string") {
+    } else if (error && error.error && typeof error.error === "string") {
       error = error.error;
     } else {
       error = "An unexpected error occured";
