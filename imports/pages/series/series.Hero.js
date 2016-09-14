@@ -49,10 +49,10 @@ export default class SeriesHero extends Component {
 
   button = () => {
     if (!this.props.series.content.ooyalaId) return null;
-
+    const { isLight } = this.props.series.content;
     if (this.state.playing) {
       return (
-        <button className="btn--light display-inline-block one-whole@palm" onClick={this.stop}>
+        <button className={`${!isLight ? "btn--light" : "btn--dark-secondary"} display-inline-block one-whole@palm`} onClick={this.stop}>
           <i className="icon-close soft-half-right" />
           Close The Trailer
         </button>
@@ -60,7 +60,7 @@ export default class SeriesHero extends Component {
     }
 
     return (
-      <button className="btn--light display-inline-block one-whole@palm" onClick={this.play}>
+      <button className={`${!isLight ? "btn--light" : "btn--dark-secondary"} display-inline-block one-whole@palm`} onClick={this.play}>
         <i className="icon-play soft-half-right" />
         Watch The Trailer
       </button>
@@ -107,7 +107,7 @@ export default class SeriesHero extends Component {
             className={this.backgroundClasses()}
             style={backgrounds.styles(series, imageLabel)}
         >
-          <div className="overlay__item text-light-primary text-center soft-sides push-top">
+          <div className={`overlay__item ${series.content.isLight ? "text-light-primary" : "text-dark-primary"} text-center soft-sides push-top`}>
             {this.button()}
           </div>
         </div>
