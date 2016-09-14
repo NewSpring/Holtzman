@@ -7,6 +7,7 @@ import {
   nav as navActions,
   modal as modalActions,
   give as giveActions,
+  header as headerActions,
 } from "../../../../store";
 
 import Layout from "./Layout";
@@ -57,6 +58,20 @@ let defaultArray = [];
 
 @connect({ mapStateToProps, mapQueriesToProps })
 export default class Template extends Component {
+
+  componentDidMount(){
+    if (process.env.NATIVE) {
+      const item = {
+        title: "Schedule Transfer",
+      };
+
+      this.props.dispatch(headerActions.set(item));
+      this.setState({
+        __headerSet: true,
+      });
+    }
+
+  }
 
   confirm = (e) => {
     const { dataset } = e.currentTarget;

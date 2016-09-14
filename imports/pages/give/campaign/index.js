@@ -7,6 +7,7 @@ import Loading from "../../../components/loading";
 import {
   nav as navActions,
   give as giveActions,
+  header as headerActions,
 } from "../../../store";
 
 import Layout from "./Layout";
@@ -40,6 +41,20 @@ class Template extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
+  }
+
+  componentDidMount(){
+    if (process.env.NATIVE) {
+      const item = {
+        title: decodeURI(this.props.params.name),
+      };
+
+      this.props.dispatch(headerActions.set(item));
+      this.setState({
+        __headerSet: true,
+      });
+    }
+
   }
 
   componentWillUnmount() {

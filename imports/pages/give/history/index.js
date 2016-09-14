@@ -3,7 +3,7 @@ import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 import Authorized from "../../../blocks/authorzied";
-import { nav as navActions } from "../../../store";
+import { nav as navActions, header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
 import Details from "./Details";
@@ -81,6 +81,20 @@ class Template extends Component {
     if (!this.props.data.loading && this.props.data.transactions) {
       this.setState({ transactions: this.props.data.transactions });
     }
+  }
+
+  componentDidMount(){
+    if (process.env.NATIVE) {
+      const item = {
+        title: "Giving History",
+      };
+
+      this.props.dispatch(headerActions.set(item));
+      this.setState({
+        __headerSet: true,
+      });
+    }
+
   }
   componentWillReceiveProps(nextProps, nextState) {
     if (this.props.data.loading && !nextProps.data.loading && !this.state.transactions.length) {
