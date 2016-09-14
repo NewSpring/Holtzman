@@ -2,6 +2,8 @@
 import { Component, PropTypes } from "react";
 import gql from "graphql-tag";;
 
+import { Link } from "react-router";
+
 import Meta from "../../components/meta";
 import Forms from "../../components/forms";
 import Loading from "../../components/loading";
@@ -151,8 +153,9 @@ export default class Layout extends Component {
                   style.borderWidth = "3px";
                 }
                 return (
-                  <div
+                  <Link
                       key={campus.id}
+                      to={campus.url}
                       className={"text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left"}
                       style={style}
                       onClick={inAppLink}
@@ -168,11 +171,11 @@ export default class Layout extends Component {
                         );
                       })()}
                       {campus.services && campus.services.map((x, key) => <p className="flush-bottom soft-half-bottom" key={key}>{x}</p>)}
-                      <a href={campus.url} target="_blank" className="h5 plain">
+                      <h5 className="text-primary plain">
                         Learn More <span className="icon-arrow-next text-primary" />
-                      </a>
+                      </h5>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </section>
