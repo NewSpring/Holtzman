@@ -88,9 +88,9 @@ export default ({
             {(() => {
               return (
                 <button
-                    className="float-right icon-search"
-                    style={{marginTop: "-4px"}}
-                    onClick={() => toggleSearch()}
+                  className="float-right icon-search"
+                  style={{ marginTop: "-4px" }}
+                  onClick={() => toggleSearch()}
                 />
               );
             })()}
