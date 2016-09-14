@@ -7,7 +7,9 @@ import collectionColor from "../collections/collections.color";
 function overlayStyles(contentItem) {
   return `
     .${collectionClass(contentItem)}:after{
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #${collectionColor(contentItem)} 100%);
+      background: linear-gradient(
+        to bottom, rgba(0, 0, 0, 0) 0%, #${collectionColor(contentItem)} 100%
+      );
     }
   `;
 }
