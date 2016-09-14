@@ -10,7 +10,7 @@ Validate.addValidator = (name, handler) => {
     );
   }
 
-  if (!handler || typeof (handler) != "function") {
+  if (!handler || typeof (handler) !== "function") {
     throw new Error(
       "Validator TypeError",
       `Validator ${name} requires a function`
