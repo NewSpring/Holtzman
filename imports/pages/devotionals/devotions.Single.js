@@ -14,8 +14,6 @@ import {
   live as liveActions,
 } from "../../store";
 
-console.log(headerActions)
-
 // can we use the core toggle here? Is it ready @jbaxleyiii?
 import DevotionsSingleContent from "./devotions.SingleContent";
 import DevotionsSingleScripture from "./devotions.SingleScripture";
@@ -105,6 +103,7 @@ export default class SeriesSingle extends Component {
       action: this.likeableAction
     }));
 
+    this.props.dispatch(headerActions.set({}));
     this.props.dispatch(headerActions.hide());
   }
 
