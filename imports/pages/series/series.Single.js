@@ -44,6 +44,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
               content {
                 description
                 tags
+                isLight
                 images(sizes: ["large"]) {
                   fileName
                   fileType
@@ -91,13 +92,14 @@ export default class SeriesSingle extends Component {
   }
 
   handleHeaderStyle = (nextProps) => {
-    const { content } = nextProps.series;
+    const content = nextProps.series.content;
     if(!content) return;
 
     const color = collections.color(content);
     this.props.dispatch(headerActions.set({
       title: "Series",
-      color: color
+      color: color,
+      light: !content.isLight,
     }));
   }
 
@@ -134,7 +136,7 @@ export default class SeriesSingle extends Component {
           <style>{styles.overlay(series)}</style>
           <style>{collections.backgroundStyles(series)}</style>
           <SeriesHero series={series} />
-          <section className="text-light-primary hard-bottom soft-double-sides@palm-wide">
+          <section className={`${series.content.isLight ? "text-dark-primary" : "text-light-primary"} hard-bottom soft-double-sides@palm-wide`}>
             <div dangerouslySetInnerHTML={react.markup(series, "description")} />
           </section>
           <SeriesVideoList id={this.props.params.id} />

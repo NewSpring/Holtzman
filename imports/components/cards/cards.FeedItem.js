@@ -20,6 +20,14 @@ export default class FeedItem extends Component {
     return (channelName === "series_newspring" || channelName === "sermons");
   }
 
+  isLight = () => {
+    if (!this.isSeriesItem()) return true;
+    if (this.props.item.channelName === "sermons") {
+      return this.props.item.parent.content.isLight;
+    }
+    return this.props.item.content.isLight;
+  }
+
   getImage = (item) => {
     if (item.channelName === "sermons" && item.parent) {
       if (item.content.images.length > 0) return backgrounds.image(item);
@@ -79,19 +87,20 @@ export default class FeedItem extends Component {
   }
 
   h4Classes = () => {
+
     return [
-      this.isSeriesItem() ? "text-light-primary" : "text-dark-primary",
+      !this.isLight() ? "text-light-primary" : "text-dark-primary",
       "capitalize",
     ].join(" ");
   }
 
   categoryClasses = () => {
-    return this.isSeriesItem() ? "text-light-primary" : "text-dark-tertiary";
+    return !this.isLight() ? "text-light-primary" : "text-dark-tertiary";
   }
 
   timeClasses = () => {
     let classes = ["text-right", "float-right", "flush-bottom"];
-    if (this.isSeriesItem()) {
+    if (!this.isLight()) {
       classes.push("text-light-primary");
     }
     else {
@@ -102,7 +111,7 @@ export default class FeedItem extends Component {
 
   iconClasses = () => {
     let classes = `soft-half-right ${categories.icon(this.props.item)} `;
-    classes += this.isSeriesItem() ? "text-light-primary" : "text-dark-tertiary";
+    classes += !this.isLight() ? "text-light-primary" : "text-dark-tertiary";
     return classes;
   }
 

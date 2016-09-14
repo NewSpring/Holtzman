@@ -135,6 +135,7 @@ export default class SeriesSingleVideo extends Component {
     const options = {
       title: "Series",
       color: color,
+      light: content.isLight
     };
 
     if (!live) options.subTitle = content.title;

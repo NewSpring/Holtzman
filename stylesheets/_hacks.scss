@@ -114,3 +114,13 @@ blockquote p {
 .toggle__item--active.toggle__item:hover {
   color: #6bac43;
 }
+
+.btn--dark-secondary {
+  @extend %btn;
+  color: map-get($colors, "dark-secondary");
+  border-color: map-get($colors, "dark-secondary");
+
+  &:hover {
+    background-color: map-get($colors, "dark-secondary");
+  }
+}

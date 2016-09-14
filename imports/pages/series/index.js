@@ -38,6 +38,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
               fileLabel
               url
             }
+            isLight
             colors {
               id
               value
