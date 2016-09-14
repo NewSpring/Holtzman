@@ -47,22 +47,9 @@ export default class FeedItem extends Component {
     let classes = [];
 
     if (this.isSeriesItem()) {
-      let collection;
-      if (item.channelName === "sermons") {
-        collection = this.props.item.parent;
-      } else {
-        collection = this.props.item;
-      }
-
-      if (collection) {
-        const collectionClass = collections.classes(collection);
-        if (collectionClass) classes.push(collections.classes(collection));
-      }
 
       classes = classes.concat([
-        "overlay--gradient",
         "rounded",
-        "background--fill"
       ]);
     } else {
       classes.push("rounded-top");
@@ -76,12 +63,14 @@ export default class FeedItem extends Component {
       "card__item",
       "soft",
       "text-center",
-      "soft-ends",
+      "soft-bottom",
       "rounded-bottom"
     ];
 
     if (this.isSeriesItem()) {
-      classes.push("overlay__item", "outlined--none");
+      classes.push("overlay__item", "outlined--none", "soft-half-top");
+    } else {
+      classes.push("soft-top");
     }
     return classes.join(" ");
   }
@@ -115,6 +104,45 @@ export default class FeedItem extends Component {
     return classes;
   }
 
+  wrapperClasses = () => {
+    let classes = ["background--fill"];
+    if (this.isSeriesItem()) {
+      const { item } = this.props;
+      let collection;
+      if (item.channelName === "sermons") {
+        collection = this.props.item.parent;
+      } else {
+        collection = this.props.item;
+      }
+
+      if (collection) {
+        const collectionClass = collections.classes(collection);
+        if (collectionClass) classes.push(collections.classes(collection));
+      }
+
+      classes.push("overlay--gradient");
+    }
+    return classes.join(" ");
+  }
+
+  itemStyles = () => {
+    if (this.isSeriesItem()) {
+      let { item } = this.props;
+
+      if (item.channelName === "sermons") {
+        item = item.parent;
+      }
+      const color = item.content.colors[0] && item.content.colors[0].value;
+      if (!color) return {};
+
+      return {
+        backgroundColor: `#${color}`,
+      };
+    }
+
+    return {};
+  }
+
 
   render() {
     const item = this.props.item;
@@ -125,6 +153,8 @@ export default class FeedItem extends Component {
           imageclasses={["rounded-top"]}
           image={{ url: this.getImage(item), ratio: "square", full: this.isSeriesItem() }}
           itemTheme={this.itemTheme()}
+          wrapperClasses={this.wrapperClasses()}
+          itemStyles={this.itemStyles()}
           linkAll
       >
         <style>{this.overlayStyles(item)}</style>

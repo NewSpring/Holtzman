@@ -57,13 +57,18 @@ export default class Card extends Component {
       display: "block"
     };
 
-    if (this.props.image && this.props.image.full) {
-      defaultStyles.backgroundImage = `url('${this.props.image.url}')`;
-    }
-
     if (this.props.linkAll) {
       defaultStyles.color = "inherit";
       defaultStyles.textDecoration = "none";
+    }
+
+    return defaultStyles;
+  }
+
+  imageStyles = () => {
+    const defaultStyles = {};
+    if (this.props.image && this.props.image.full) {
+      defaultStyles.backgroundImage = `url('${this.props.image.url}')`;
     }
 
     return defaultStyles;
@@ -127,9 +132,9 @@ export default class Card extends Component {
 
   render () {
 
-    const { link, image, theme, styles, itemTheme, itemStyles } = this.props;
+    let { link, image, theme, styles, itemTheme, itemStyles, wrapperClasses } = this.props;
 
-    let wrapperClasses = "plain";
+    wrapperClasses += " plain";
     if (this.props.mobile ===  false) {
       wrapperClasses += " visuallyhidden@handheld";
     }
@@ -141,7 +146,7 @@ export default class Card extends Component {
             style={styles || this.styles()}
             to={link}
         >
-          <div className={wrapperClasses} >
+          <div className={wrapperClasses} style={this.imageStyles()} >
             {this.createImage()}
           </div>
           <div
