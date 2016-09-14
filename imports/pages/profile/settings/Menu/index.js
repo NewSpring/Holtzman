@@ -43,7 +43,7 @@ const mapQueriesToProps = () => ({
   data: {
     query: gql`
       query GetPhoto {
-        currentPerson {
+        currentPerson(cache: false) {
           photo
         }
       }

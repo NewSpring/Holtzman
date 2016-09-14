@@ -6,3 +6,8 @@ export default {
   avatar,
   upload,
 };
+
+export {
+  avatar,
+  upload,
+};
