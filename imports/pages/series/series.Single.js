@@ -92,14 +92,14 @@ export default class SeriesSingle extends Component {
   }
 
   handleHeaderStyle = (nextProps) => {
-    const { content } = nextProps.series;
+    const content = nextProps.series.content;
     if(!content) return;
 
     const color = collections.color(content);
     this.props.dispatch(headerActions.set({
       title: "Series",
       color: color,
-      light: content.isLight,
+      light: !content.isLight,
     }));
   }
 
