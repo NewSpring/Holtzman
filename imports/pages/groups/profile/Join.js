@@ -58,7 +58,7 @@ export default class Join extends Component {
             submit={this.onClick}
         >
           <Forms.TextArea
-              label="Your Message"
+              label="Your Message (click message to edit)"
               name="message"
               classes={["hard-bottom", "push-half-ends"]}
               inputClasses="text-dark-secondary"
