@@ -24,7 +24,7 @@ const Pageable = {
     const scrollPosition = window.scrollY;
     const deviceHeight = window.outerHeight;
     const contentHeight = document.body.clientHeight;
-    const threshold = 0.8;
+    const threshold = 0.7;
 
     if ((scrollPosition + deviceHeight) / contentHeight > threshold && this.props.paging.shouldUpdate) {
       this.props.dispatch(pagingActions.pause());
