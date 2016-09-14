@@ -16,7 +16,7 @@ import "/imports/methods/topics/server";
 import "/imports/methods/scripture/server";
 
 
-import Give from "/imports/database/observers";
+import give from "/imports/database/observers";
 import { api } from "/imports/util/rock";
 
 // add support for Promise since meteor ships with node 10.41
@@ -26,4 +26,4 @@ fetch.Promise = Promise;
 api.registerEndpoint(Meteor.settings.rock);
 
 // setup collection observations
-Give();
+give();

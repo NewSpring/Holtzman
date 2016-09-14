@@ -4,7 +4,7 @@ import { addReducer } from "../utilities";
 import actions from "./actions";
 
 addReducer({
-  responsive: reducer
+  responsive: reducer,
 });
 
 export default {

@@ -4,9 +4,8 @@ import Debouncer from "../../util/debounce";
 import actions from "./actions";
 
 let bound = false;
-const responsiveBindings = store => next => action => {
-
-  if (bound) { return next(action) }
+const responsiveBindings = store => next => (action) => {
+  if (bound) { return next(action); }
   bound = true;
 
 
@@ -21,10 +20,10 @@ const responsiveBindings = store => next => action => {
   const getBreakpoints = (width) => {
     const { responsive } = getState();
 
-    let breakpoints = [];
-    for (let breakpoint in responsive._breakpoints) {
-      let name = breakpoint;
-      let range = responsive._breakpoints[breakpoint];
+    const breakpoints = [];
+    for (const breakpoint in responsive._breakpoints) {
+      const name = breakpoint;
+      const range = responsive._breakpoints[breakpoint];
 
       if (range.min && width < range.min) {
         continue;
@@ -35,7 +34,6 @@ const responsiveBindings = store => next => action => {
       }
 
       breakpoints.push(name);
-
     }
 
     return breakpoints;
@@ -49,13 +47,13 @@ const responsiveBindings = store => next => action => {
       e = d.documentElement,
       g = d.getElementsByTagName("body")[0],
       x = w.innerWidth || e.clientWidth || g.clientWidth,
-      y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
 
     dispatch(actions.setWidth(x));
     dispatch(actions.setHeight(y));
 
     const breakpoints = getBreakpoints(x);
-    let diff = _.difference(responsive.breakpoints, breakpoints);
+    const diff = _.difference(responsive.breakpoints, breakpoints);
     if (!responsive.breakpoints.length) {
       dispatch(actions.setBreakpoints(breakpoints));
     }

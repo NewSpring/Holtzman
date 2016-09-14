@@ -3,7 +3,7 @@
 // import { Sessions } from "../../../database/collections"
 // import { makeNewGuid } from "../../../util/guid"
 // import Moment from "moment"
-// 
+//
 // Meteor.methods({
 //   "rock/routes/log": function(path, title) {
 //     check(path, String)

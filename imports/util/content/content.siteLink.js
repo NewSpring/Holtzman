@@ -4,7 +4,7 @@ function siteLink(contentItem, parentItem) {
   const slug = contentItem.meta.urlTitle;
   const category = contentItem.channelName;
 
-  switch(category) {
+  switch (category) {
     case "series_newspring":
       return `${siteUrl}/sermons/${slug}`;
     case "sermons":

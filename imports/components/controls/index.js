@@ -6,7 +6,7 @@ import Switch from "./switch";
 const Controls = {
   Toggle,
   Switch,
-  Progress
+  Progress,
 };
 
 export default Controls;

@@ -1,12 +1,11 @@
 
 
 function inherit(Child, Parent) {
-
   // copy Parent static properties
   Child = Object.assign(Child, Parent);
 
   // a middle member of prototype chain: takes the prototype from the Parent
-  var Middle = function () {
+  const Middle = function () {
     this.constructor = Child;
   };
   Middle.prototype = Parent.prototype;

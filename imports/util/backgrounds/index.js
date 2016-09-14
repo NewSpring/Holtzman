@@ -4,5 +4,5 @@ import styles from "./background.styles";
 
 export default {
   image,
-  styles
+  styles,
 };

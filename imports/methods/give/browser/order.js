@@ -1,4 +1,4 @@
-/*global Meteor */
+/* global Meteor */
 
 const order = (data, callback) => {
   Meteor.call("give/order", data, callback);

@@ -5,5 +5,5 @@ import slack from "./slack";
 
 export {
   email,
-  slack
+  slack,
 };

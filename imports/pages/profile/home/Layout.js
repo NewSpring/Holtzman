@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import Meta from "react-helmet";
 
@@ -11,23 +11,23 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
     <Split nav classes={["background--light-primary"]}>
 
       <Meta
-          title={person ? `${person.nickName} ${person.lastName}` : "Sign In"}
-          titleTemplate="%s | NewSpring Church"
+        title={person ? `${person.nickName} ${person.lastName}` : "Sign In"}
+        titleTemplate="%s | NewSpring Church"
       />
 
       <Right
-          mobile
-          classes={["floating", "overlay--solid-dark"]}
-          ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
-          background={photo}
-          blur
+        mobile
+        classes={["floating", "overlay--solid-dark"]}
+        ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
+        background={photo}
+        blur
       >
         <div className="soft one-whole">
           <label htmlFor="file"
-              className="background--fill ratio--square round two-fifths display-inline-block"
-              style={{ backgroundImage: `url('${photo}')`, position: "relative"}}
+            className="background--fill ratio--square round two-fifths display-inline-block"
+            style={{ backgroundImage: `url('${photo}')`, position: "relative" }}
           >
-            <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
+            <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{ opacity: 0 }} />
           </label>
         <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName} {person.lastName}</h4>
         {(() => {
@@ -39,7 +39,6 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
         </div>
 
       </Right>
-
 
 
     </Split>

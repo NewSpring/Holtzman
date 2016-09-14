@@ -1,15 +1,14 @@
-/*global Meteor, check */
+/* global Meteor, check */
 import { api } from "../../../util/rock";
 
 let RESET_EMAIL_ID = false;
 if (typeof Accounts != "undefined") {
   Accounts.emailTemplates.resetPassword.text = (user, token) => {
-
     // let PersonAliasId, mergeFields
     let { PersonAliasId, PersonId } = user.services.rock;
-    let { ROOT_URL } = __meteor_runtime_config__;
+    const { ROOT_URL } = __meteor_runtime_config__;
 
-    let Person = api.get.sync(`People/${PersonId}`);
+    const Person = api.get.sync(`People/${PersonId}`);
 
     if (!RESET_EMAIL_ID) {
       RESET_EMAIL_ID = api.get.sync("SystemEmails?$filter=Title eq 'Reset Password'");
@@ -24,13 +23,12 @@ if (typeof Accounts != "undefined") {
       Number(Person.PrimaryAliasId),
       {
         ResetPasswordUrl: `${ROOT_URL}/_/reset-password/${token}`,
-        Person
+        Person,
       }
       , (err, response) => {}
     );
 
     return false;
-
   };
 }
 
@@ -43,8 +41,8 @@ Meteor.methods({
       throw new Meteor.Error("You must be logged in to change your password");
     }
 
-    let user = Meteor.users.findOne(this.userId);
-    let email = user.emails[0].address;
+    const user = Meteor.users.findOne(this.userId);
+    const email = user.emails[0].address;
     const Username = email; // this will need to be adjusted long term
 
     // special case for AD lookup
@@ -71,7 +69,7 @@ Meteor.methods({
     RockUser.IsConfirmed = true;
     RockUser.EntityTypeId = 27;
     try {
-      let response = api.put.sync(`UserLogins/${RockUser.Id}`, RockUser);
+      const response = api.put.sync(`UserLogins/${RockUser.Id}`, RockUser);
       if (response.statusText) {
         console.error("@@GROUP_ADD_ERROR", RockUser, response);
         throw new Meteor.Error("It looks like we had an unexpected issue! We are so sorry! Please try again");
@@ -84,6 +82,5 @@ Meteor.methods({
     Accounts.setPassword(this.userId, newPassword, { logout: false });
 
     return true;
-
   },
 });

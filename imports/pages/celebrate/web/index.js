@@ -22,14 +22,14 @@ const webNumbers = [
 
 const Web = () => (
   <div className="display-inline-block text-center one-whole ">
-    <div className="background--primary soft-double-top@lap-and-up" style={{overflow: "visible"}}>
+    <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
       <Stats>
         <FitText compressor={1.4}>
           <h3
-              className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
-              style={{
+            className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
+            style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
-              fontSize: "25px"
+              fontSize: "25px",
             }}
           >
             We filled Death Valley and Williams Brice combined over
@@ -37,7 +37,7 @@ const Web = () => (
         </FitText>
 
 
-        <FitText compressor={.2}>
+        <FitText compressor={0.2}>
           <h1 className="uppercase flush-bottom text-light-primary" style={{
             fontSize: "150px",
             fontWeight: "900",
@@ -46,7 +46,7 @@ const Web = () => (
           </h1>
         </FitText>
 
-        <FitText compressor={.4}>
+        <FitText compressor={0.4}>
           <h1 className="uppercase push-back-top push-back-double-top@lap-wide-and-up text-light-primary" style={{
             fontSize: "40px",
             fontWeight: "900",
@@ -57,10 +57,10 @@ const Web = () => (
 
         <FitText compressor={1.4}>
           <h3
-              className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
-              style={{
+            className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
+            style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
-              fontSize: "21px"
+              fontSize: "21px",
             }}
           >
             with people on our sites and apps
@@ -72,30 +72,30 @@ const Web = () => (
 
       <Leaves>
         <SolidLeaf
-            className="locked-bottom locked-right"
-            size="200px"
-            color="text-secondary"
-            style={{
+          className="locked-bottom locked-right"
+          size="200px"
+          color="text-secondary"
+          style={{
             transform: "rotate(-225deg)",
             marginBottom: "-50px",
             marginRight: "-150px",
           }}
         />
         <SolidLeaf
-            className="locked-bottom locked-right"
-            size="130px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-right"
+          size="130px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(-270deg)",
             marginBottom: "-100px",
             marginRight: "-10px",
           }}
         />
         <StripedLeaf
-            className="locked-bottom locked-right"
-            size="90px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-right"
+          size="90px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(180deg)",
             marginBottom: "60px",
             marginRight: "-20px",
@@ -103,10 +103,10 @@ const Web = () => (
         />
 
         <SolidLeaf
-            className="locked-bottom locked-left"
-            size="250px"
-            color="text-secondary"
-            style={{
+          className="locked-bottom locked-left"
+          size="250px"
+          color="text-secondary"
+          style={{
             transform: "rotate(-135deg)",
             marginBottom: "-90px",
             marginLeft: "-150px",
@@ -114,10 +114,10 @@ const Web = () => (
         />
 
         <StripedLeaf
-            className="locked-bottom locked-left"
-            size="120px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-left"
+          size="120px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(-90deg)",
             marginBottom: "-20px",
             marginLeft: "0px",
@@ -125,7 +125,6 @@ const Web = () => (
         />
 
       </Leaves>
-
 
 
     </div>
@@ -139,9 +138,9 @@ const Web = () => (
             "I was talking with a childhood friend in South Carolina who I reconnected with through Facebook, and she told me about NewSpring.  I checked out the website right after we spoke, and I have watched online live (almost!) every Sunday since then. On the morning of the Feb. 22, 2015, I realized that I didn’t know Christ and I bowed my head and prayed to Jesus. I can honestly say that my life hasn’t been the same since then."
           </p>
           <h6
-              className="italic text-dark-primary"
-              style={{
-              fontFamily: "ff-meta-serif-web-pro, serif"
+            className="italic text-dark-primary"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
           Maria Suppa, Montreal, Canada
@@ -153,7 +152,7 @@ const Web = () => (
     <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
 
       <h3
-          className="text-center soft-half-top flush-bottom"
+        className="text-center soft-half-top flush-bottom"
       >Web</h3>
 
 

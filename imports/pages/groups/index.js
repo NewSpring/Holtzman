@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -31,7 +31,7 @@ import Finder from "./finder/index";
 // const defaultArray = [];
 // @connect({ mapQueriesToProps })
 class Template extends Component {
-  render () {
+  render() {
     return <h1>Lets find some groups!</h1>;
   }
 }
@@ -39,10 +39,10 @@ class Template extends Component {
 const Routes = [
   { path: "groups", component: Template },
   { path: "groups/finder", component: Finder },
-  { path: "groups/:id", component: Profile }
+  { path: "groups/:id", component: Profile },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

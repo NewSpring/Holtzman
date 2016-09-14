@@ -20,7 +20,7 @@ import NewSpringNetwork from "./newspring-network/index";
 import Closing from "./closing/index";
 
 class Template extends Component {
-  render () {
+  render() {
     return (
       <div>
         <Meta title="Annual Report" />
@@ -63,5 +63,5 @@ const Routes = [
 
 export default {
   Template,
-  Routes
+  Routes,
 };

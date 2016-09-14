@@ -3,17 +3,17 @@ import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 
-const map = (store) => ({
-  width: store.responsive.width
+const map = store => ({
+  width: store.responsive.width,
 });
 
 // @connect(map)
 const FitText = React.createClass({
-  getDefaultProps: function(){
+  getDefaultProps() {
     return {
       compressor: 1.0,
       minFontSize: Number.NEGATIVE_INFINITY,
-      maxFontSize: Number.POSITIVE_INFINITY
+      maxFontSize: Number.POSITIVE_INFINITY,
     };
   },
 
@@ -25,7 +25,7 @@ const FitText = React.createClass({
     this.setFontSize();
   },
 
-  setFontSize(){
+  setFontSize() {
     const element = this.element.children[0];
     const width = element.offsetWidth;
 
@@ -38,8 +38,8 @@ const FitText = React.createClass({
   },
 
   render() {
-    return <div ref={(node) => this.element = node}>{this.props.children}</div>;
-  }
+    return <div ref={node => this.element = node}>{this.props.children}</div>;
+  },
 });
 // class FitText extends Component {
 //

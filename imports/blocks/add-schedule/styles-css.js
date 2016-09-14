@@ -9,6 +9,6 @@ export default StyleSheet.create({
   "show-placeholder": {
     "::-webkit-input-placeholder": {
       color: "#ddd!important",
-    }
-  }
+    },
+  },
 });

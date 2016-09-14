@@ -29,7 +29,7 @@ export default StyleSheet.create({
 
       ":before": {
         content: "none",
-      }
+      },
     },
   },
 

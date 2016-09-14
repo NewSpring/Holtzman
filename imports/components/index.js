@@ -8,5 +8,5 @@ export default {
   Cards,
   Content,
   Players,
-  Toggle
+  Toggle,
 };

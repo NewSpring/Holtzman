@@ -6,11 +6,11 @@ import { addSaga } from "../utilities";
 
 
 function* share({ payload }) {
-  let { share } = yield select();
-  let msg = {};
+  const { share } = yield select();
+  const msg = {};
 
-  for (let key in share.content) {
-    if (share.content[key] != null ) {
+  for (const key in share.content) {
+    if (share.content[key] != null) {
       msg[key] = share.content[key];
     }
   }
@@ -24,14 +24,12 @@ function* share({ payload }) {
     window.socialmessage &&
     Object.keys(msg).length
   ) {
-
     if (msg.image && msg.image[0] === "/") {
       msg.image = "http:" + msg.image;
     }
 
     window.socialmessage.send(msg);
   }
-
 }
 
 addSaga(function* shareSaga() {

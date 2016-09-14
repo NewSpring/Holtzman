@@ -1,9 +1,9 @@
 // stolen from https://github.com/kadirahq/flow-router/blob/ssr/server/ssr_data.js
 
-export default function patchSubscribeData (ReactRouterSSR) {
+export default function patchSubscribeData(ReactRouterSSR) {
   const originalSubscribe = Meteor.subscribe;
 
-  Meteor.subscribe = function(pubName) {
+  Meteor.subscribe = function (pubName) {
     const params = Array.prototype.slice.call(arguments, 1);
 
     const ssrContext = ReactRouterSSR.ssrContext.get();
@@ -18,14 +18,14 @@ export default function patchSubscribeData (ReactRouterSSR) {
     }
 
     return {
-      ready: () => true
+      ready: () => true,
     };
   };
 
   const Mongo = Package.mongo.Mongo;
   const originalFind = Mongo.Collection.prototype.find;
 
-  Mongo.Collection.prototype.find = function(selector = {}, options = {}) {
+  Mongo.Collection.prototype.find = function (selector = {}, options = {}) {
     selector = selector || {};
     const ssrContext = ReactRouterSSR.ssrContext.get();
     if (ssrContext && !ReactRouterSSR.inSubscription.get()) {
@@ -46,7 +46,7 @@ export default function patchSubscribeData (ReactRouterSSR) {
 
   // We must implement this. Otherwise, it'll call the origin prototype's
   // find method
-  Mongo.Collection.prototype.findOne = function(selector, options) {
+  Mongo.Collection.prototype.findOne = function (selector, options) {
     options = options || {};
     options.limit = 1;
     return this.find(selector, options).fetch()[0];

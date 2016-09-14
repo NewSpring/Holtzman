@@ -2,12 +2,12 @@ import { paging as pagingActions } from "../store";
 
 const Pageable = {
 
-  componentDidMount: function() {
+  componentDidMount() {
     this._bindPageOnScroll = this._pageOnScroll.bind(this);
     window.addEventListener("scroll", this._bindPageOnScroll);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     window.removeEventListener("scroll", this._bindPageOnScroll);
     this.props.dispatch(pagingActions.reset());
   },
@@ -18,7 +18,7 @@ const Pageable = {
     return true;
   },
 
-  _pageOnScroll: function(event) {
+  _pageOnScroll(event) {
     if (this.props.paging.done) return;
 
     const scrollPosition = window.scrollY;
