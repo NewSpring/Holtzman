@@ -22,6 +22,9 @@ export default class FeedItem extends Component {
 
   isLight = () => {
     if (!this.isSeriesItem()) return false;
+    if (this.props.item.channelName === "sermons") {
+      return this.props.item.parent.content.isLight;
+    }
     return this.props.item.content.isLight;
   }
 
