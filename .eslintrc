@@ -14,5 +14,8 @@
     "import/no-unresolved": [2, { "ignore": [
       "^meteor/*", "^/imports/*"
     ] }]
+  },
+  "settings": {
+    "import/core-modules": [ "meteor/meteor" ]
   }
 }
