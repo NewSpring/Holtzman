@@ -55,15 +55,17 @@ const Layout = ({ submit, save, state }, context) => (
          */}
         {(() => {
           let btnClasses = [];
+          let disabled = true;
           const { current, newP, newPDup } = state;
           if (!current || !newP || !newPDup){
             btnClasses.push("btn--disabled");
           } else {
             btnClasses.push("btn");
+            disabled = false;
           }
 
           return (
-            <button className={btnClasses.join(" ")}>
+            <button className={btnClasses.join(" ")} disabled={disabled}>
               Enter
             </button>
           );

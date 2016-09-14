@@ -130,12 +130,21 @@ export default class PersonalDetails extends Component {
     campuses = campuses && campuses.map((campus) => {
       return { label: campus.name, value: campus.id };
     });
-    const { state } = this.state;
+    const { state, err } = this.state;
+
     switch (state) {
       case "error":
-        return <Error msg="Looks like there was a problem" />;
+        return (
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+            <Err error={err} msg="Looks like there was a problem" />;
+          </div>
+        );
       case "loading":
-        return <Loading msg="Updating your information..." />;
+        return (
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+            <Loading msg="Updating your information..." />;
+          </div>
+        );
       case "success":
         return <Success msg="Your information has been updated!" />;
       default:

@@ -5,10 +5,11 @@ import { connect } from "react-redux";
 import { nav } from "../../../../store";
 import { reset } from "../../../../methods/accounts/browser";
 
-import { Error, Loading } from "../../../../components/states";
+import { Error as Err, Loading } from "../../../../components/states";
 import Success from "../Success";
 import Layout from "./Layout";
 
+console.log(Loading)
 @connect()
 export default class ChangePassword extends Component {
 
@@ -74,9 +75,17 @@ export default class ChangePassword extends Component {
 
     switch (state) {
       case "error":
-        return <Error msg="Looks like there was a problem" error={err && err.message ? err.message : " "} />;
+        return (
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+            <Err error={err} msg="Looks like there was a problem" />;
+          </div>
+        );
       case "loading":
-        return <Loading msg="Updating your password..." />;
+        return (
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+            <Loading msg="Updating your password..." />;
+          </div>
+        );
       case "success":
         return <Success msg="Your password has been updated!" />;
       default:
