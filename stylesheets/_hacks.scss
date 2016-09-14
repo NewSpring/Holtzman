@@ -19,7 +19,7 @@ html, body, #react-app {
   user-select: none;
 }
 
-input {
+input, textarea {
   -webkit-user-select: auto !important;
   -khtml-user-select: auto !important;
   -moz-user-select: auto !important;
