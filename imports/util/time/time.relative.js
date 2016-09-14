@@ -1,6 +1,6 @@
-import Moment from "moment";
+import moment from "moment";
 
-Moment.updateLocale("en", {
+moment.updateLocale("en", {
   relativeTime: {
     future: "in %s",
     past: "%s ago",
@@ -21,7 +21,7 @@ Moment.updateLocale("en", {
 function relativeTime(contentItem) {
   const date = contentItem.meta.date;
 
-  const time = Moment(new Date(date));
+  const time = moment(new Date(date));
   return time.fromNow(true); // true omits "ago"
 }
 
