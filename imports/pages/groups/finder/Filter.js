@@ -102,7 +102,7 @@ export default class Filter extends Component {
               >
                 <i className="icon-search locked-left soft-half-left" />
                 <span
-                    style={{zIndex: 1, paddingTop: "5px", "cursor": "pointer"}}
+                    style={{zIndex: 1, padding: "20px 0px", "marginTop": "-15px", "cursor": "pointer"}}
                     onClick={this.removeQuery}
                     className="h7 locked-right flush-bottom"
                 >Cancel</span>
