@@ -52,7 +52,7 @@ export default class SeriesHero extends Component {
     const { isLight } = this.props.series.content;
     if (this.state.playing) {
       return (
-        <button className={`${!isLight ? "btn--light" : "btn--dark-secondary"} display-inline-block one-whole@palm`} onClick={this.stop}>
+        <button className={`${!isLight ? "btn--light" : "btn--dark-secondary"} push-double-top@palm-wide-and-up display-inline-block one-whole@palm`} onClick={this.stop}>
           <i className="icon-close soft-half-right" />
           Close The Trailer
         </button>
