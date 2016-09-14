@@ -21,7 +21,7 @@ export default class FeedItem extends Component {
   }
 
   isLight = () => {
-    if (!this.isSeriesItem()) return false;
+    if (!this.isSeriesItem()) return true;
     if (this.props.item.channelName === "sermons") {
       return this.props.item.parent.content.isLight;
     }
@@ -87,6 +87,7 @@ export default class FeedItem extends Component {
   }
 
   h4Classes = () => {
+
     return [
       !this.isLight() ? "text-light-primary" : "text-dark-primary",
       "capitalize",
