@@ -23,7 +23,6 @@ const clearTransaction = (state, action) => {
 
   let total = 0;
 
-  console.log(action.transactionId, state.transactions);
   if (!action.transactionId || !state.transactions[action.transactionId]) {
     return state;
   }

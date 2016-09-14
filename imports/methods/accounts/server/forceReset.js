@@ -35,7 +35,6 @@ Meteor.methods({
         },
         (err, response) => {
           if (!err) {
-            console.log("sending link");
             Accounts.sendResetPasswordEmail(meteorUserId);
           }
         }

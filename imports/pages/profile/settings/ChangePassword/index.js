@@ -9,7 +9,6 @@ import { Error as Err, Loading } from "../../../../components/states";
 import Success from "../Success";
 import Layout from "./Layout";
 
-console.log(Loading)
 @connect()
 export default class ChangePassword extends Component {
 

@@ -36,7 +36,6 @@ Meteor.methods({
       const { PersonId } = user[0];
       if (!user[0].IsConfirmed) {
         api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, (err, response) => {
-          console.log(err, response);
         });
       }
 
@@ -85,7 +84,6 @@ Meteor.methods({
 
         if (!user[0].IsConfirmed) {
           api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, (err, response) => {
-            console.log(err, response);
           });
         }
 

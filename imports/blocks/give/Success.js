@@ -36,7 +36,6 @@ const Success = ({ total, email, guest, onClick, schedules, additionalMessage })
         })({ additionalMessage })}
 
         {(({ guest, onClick }) => {
-          console.log(onClick);
           if (!guest) return;
           return (
             <div>

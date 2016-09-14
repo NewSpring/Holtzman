@@ -3,7 +3,6 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import { modal, audio as audioActions } from "../../store";
-console.log(audioActions)
 import ListDetail from "./music.ListDetail";
 
 @connect()
