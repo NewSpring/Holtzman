@@ -119,4 +119,8 @@ blockquote p {
   @extend %btn;
   color: map-get($colors, "dark-secondary");
   border-color: map-get($colors, "dark-secondary");
+
+  &:hover {
+    background-color: map-get($colors, "dark-secondary");
+  }
 }
