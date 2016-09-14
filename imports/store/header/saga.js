@@ -20,8 +20,15 @@ function* setColor({ color }) {
 
 function* setColorFromHeader() {
   let { header } = yield select();
-  if (canRun() && header.content.color) {
-    StatusBar.backgroundColorByHexString(header.content.color);
+  if (canRun()) {
+    if (header.content.color) {
+      StatusBar.backgroundColorByHexString(header.content.color);
+    }
+    if (header.content.light) {
+      StatusBar.styleLightContent();
+    } else {
+      StatusBar.styleDefault();
+    }
   }
 };
 
