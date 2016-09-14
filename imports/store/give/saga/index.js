@@ -270,7 +270,7 @@ function* submitPaymentDetails(data, url) {
     .catch((e) => {
       // @TODO error handling
     });
-  yield delay(50); // ensure gift is in nmi's system beofre progressing
+  yield delay(300); // ensure gift is in nmi's system beofre progressing
   return;
 
 }
@@ -322,7 +322,7 @@ function* submitPersonDetails(give, autoSubmit) {
       .then(console.log)
       .catch(console.log);
 
-    yield delay(50); // ensure gift is in nmi's system beofre progressing
+    yield delay(300); // ensure gift is in nmi's system beofre progressing
 
   }
 
