@@ -4,10 +4,6 @@ import Slider from "react-slick";
 
 class Welcome extends Component {
 
-  state = {
-    slickGoTo: 0,
-  }
-
   componentWillUnmount() {
     if (typeof NativeStorage === "undefined") return;
     NativeStorage.setItem("welcomed", true,
@@ -16,18 +12,14 @@ class Welcome extends Component {
     );
   }
 
-  updateState = (index) => {
-    this.setState({ slickGoTo: Number(index) });
-  }
-
   next = (event) => {
     const index = Number(event.target.dataset.index);
-    this.setState({ slickGoTo: index + 1 });
+    this.refs.welcomeSlider.slickGoTo(index + 1);
   }
 
   skip = (event) => {
     event.preventDefault();
-    this.setState({ slickGoTo: 7 });
+    this.refs.welcomeSlider.slickGoTo(7);
   }
 
   render() {
@@ -50,13 +42,12 @@ class Welcome extends Component {
     return (
       <div className="background--primary" style={containerStyles}>
         <Slider
+            ref="welcomeSlider"
             dots
             arrows={false}
             infinite={false}
             speed={300}
             edgeFriction={0}
-            afterChange={this.updateState}
-            slickGoTo={this.state.slickGoTo || 0}
         >
           <div><img src={`/welcome/${imagePrefix}/onboard-img1.jpg`} onClick={this.next} data-index={0} /></div>
           <div><img src={`/welcome/${imagePrefix}/onboard-img2.jpg`} onClick={this.next} data-index={1} /></div>
