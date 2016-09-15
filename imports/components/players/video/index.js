@@ -1,5 +1,8 @@
 
 import { Component, PropTypes } from "react";
+import { connect } from "react-redux";
+
+import { audio as audioActions } from "../../../store";
 
 // used to flatten dom elements into an actual array
 const flattenTco = ([first, ...rest], accumulator) =>
@@ -11,7 +14,7 @@ const flattenTco = ([first, ...rest], accumulator) =>
 
 const flatten = (n) => flattenTco(n, []);
 
-
+@connect((state) => ({ audioState: state.audio.state }))
 export default class VideoPlayer extends Component {
 
   static propTypes = {
@@ -26,8 +29,19 @@ export default class VideoPlayer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.id != nextProps.id) {
+    if (this.props.id !== nextProps.id) {
       this.player.setEmbedCode(nextProps.id);
+    }
+
+    const { audioState } = nextProps;
+    if (
+      (audioState === "playing" || audioState === "loading") &&
+      (
+        this.props.audioState !== "loading" &&
+        this.props.audioState !== "playing"
+      )
+    ) {
+      this.player && this.player.pause();
     }
   }
 
@@ -64,6 +78,9 @@ export default class VideoPlayer extends Component {
         "inline": {"shareScreen": {"embed": {"source": "<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>"}}}
       },
       onCreate: (player) => {
+
+        if (player.isPlaying()) this.props.dispatch(audioActions.pause());
+
         // bind message bus for reporting analaytics
         this.messages = player.mb;
         if (cb) {
@@ -73,6 +90,10 @@ export default class VideoPlayer extends Component {
         // if (this.props.hide) {
         this.messages.subscribe(OO.EVENTS.PLAYED, "Video", (eventName) => {
           this.destroy();
+        });
+
+        this.messages.subscribe(OO.EVENTS.PLAY, "Video", (eventName) => {
+          this.props.dispatch(audioActions.pause());
         });
 
         this.messages.subscribe(OO.EVENTS.PLAY_FAILED, "Video", (eventName) => {
@@ -111,7 +132,9 @@ export default class VideoPlayer extends Component {
       return;
     }
 
+    this.props.dispatch(audioActions.pause());
     this.player.play();
+
 
     playerReady();
 
