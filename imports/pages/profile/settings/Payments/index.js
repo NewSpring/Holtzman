@@ -10,6 +10,7 @@ import Layout from "./Layout";
 // XXX remove cache: false once we feel good about caching
 const mapQueriesToProps = () => ({
   data: {
+    forceFetch: true,
     query: gql`
       query PaymentDetails {
         accounts: savedPayments(cache: false) {
