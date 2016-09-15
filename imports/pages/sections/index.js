@@ -4,7 +4,7 @@ import Sections from "../../blocks/sections";
 
 const Template = () => {
   return (
-    <div className="background--light-primary">
+    <div className="background--light-secondary">
       <Sections />
     </div>
   );
