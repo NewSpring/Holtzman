@@ -5,6 +5,7 @@ import Forms from "../../../components/forms";
 import SideBySide from "../../../components/cards/SideBySide";
 import Loading from "../../../components/loading";
 import Meta from "../../../components/meta";
+import inAppLink from "../../../util/inAppLink";
 
 import Tag from "../components/Tag";
 import Group from "../components/GroupCard";
@@ -167,9 +168,13 @@ export default ({
               </h4>
 
               {/* CTA */}
-              <a href="https://rock.newspring.cc/workflows/81" className="btn push-half-top">
+              <Link
+                onClick={inAppLink}
+                href="https://rock.newspring.cc/workflows/81"
+                className="btn push-half-top"
+              >
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>

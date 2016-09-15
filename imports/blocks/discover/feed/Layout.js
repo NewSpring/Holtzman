@@ -5,6 +5,7 @@ import DiscoverHero from "./Hero";
 import PopularItem from "../../likes/Item";
 import DiscoverItem from "./Item";
 
+import inAppLink from "../../../util/inAppLink";
 
 function getImage(images, label = "2:1") {
 
@@ -80,7 +81,7 @@ const Layout = ({ featuredItem, popularItems, recommendedItems, textItems }) => 
 
                     return (
                       <span key={i}>
-                        <Link to={x.meta.urlTitle} >{x.title}</Link>
+                        <Link onClick={inAppLink} to={x.meta.urlTitle} >{x.title}</Link>
                         {delimeter}
                       </span>
                     );
