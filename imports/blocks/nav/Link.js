@@ -2,7 +2,9 @@ import { Component, PropTypes } from "react";
 import ReactDOM from "react-dom";
 import { css } from "aphrodite";
 
-import Velocity from "velocity-animate";
+if (Meteor.isCordova) {
+  import Velocity from "velocity-animate";
+}
 
 
 import { routeActions } from "../../store/routing";
