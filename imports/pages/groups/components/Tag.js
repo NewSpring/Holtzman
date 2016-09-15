@@ -92,7 +92,17 @@ export default class Tag extends Component {
       "push-half-right"
     ];
     if (clickAble) classes.push("tag--clickable");
-    if (this.state.isActive && canBeActive) classes.push("tag--active");
+
+    // Touch enabled devices tag class overrides
+    if (!!("ontouchstart" in window) || window.navigator.msMaxTouchPoints > 0) {
+      if (this.state.isActive && canBeActive) {
+        classes.push("tag--nohover--active");
+      } else {
+        classes.push("tag--nohover");
+      };
+    } else if (this.state.isActive && canBeActive) {
+      classes.push("tag--active");
+    };
 
     return (
       <span

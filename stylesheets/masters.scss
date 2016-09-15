@@ -118,6 +118,25 @@ blockquote p {
   }
 }
 
+.tag--nohover {
+
+  &--active {
+    color: map-get($colors, light-primary);
+    background-color: $brand-color;
+    padding-right: 30px;
+    &:after {
+      content: "✕";
+      position: absolute;
+      right: 8px;
+    }
+  }
+
+  &:hover {
+    background-color: map-get($colors, light-tertiary);
+    color: map-get($colors, dark-primary);
+  }
+}
+
 .tag--active.tag--clickable {
   padding-right: 30px;
   &:after {
