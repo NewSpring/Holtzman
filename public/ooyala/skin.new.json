@@ -224,7 +224,7 @@
     "expand": {"fontFamilyName": "newspring-icofont", "fontString": "", "fontStyleClass": "oo-icon icon-fullscreen"},
     "compress": {"fontFamilyName": "newspring-icofont", "fontString": "", "fontStyleClass": "oo-icon icon-close"},
     "ellipsis": {"fontFamilyName": "ooyala-slick-type", "fontString": "\u0066", "fontStyleClass": "oo-icon oo-icon-system-menu"},
-    "replay": {"fontFamilyName": "ooyala-slick-type", "fontString": "\u0063", "fontStyleClass": "oo-icon oo-icon-system-replay"},
+    "replay": {"fontFamilyName": "ooyala-slick-type", "fontString": "", "fontStyleClass": "oo-icon icon-play"},
     "share": {"fontFamilyName": "newspring-icofont", "fontString": "", "fontStyleClass": "oo-icon icon-share"},
     "cc": {"fontFamilyName": "ooyala-slick-type", "fontString": "\u006B", "fontStyleClass": "oo-icon oo-icon-cc"},
     "discovery": {"fontFamilyName": "ooyala-slick-type", "fontString": "\u006C", "fontStyleClass": "oo-icon oo-icon-discovery-binoculars"},
