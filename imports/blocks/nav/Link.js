@@ -2,6 +2,9 @@ import { Component, PropTypes } from "react";
 import ReactDOM from "react-dom";
 import { css } from "aphrodite";
 
+import Velocity from "velocity-animate";
+
+
 import { routeActions } from "../../store/routing";
 import styles from "./nav-css";
 
@@ -72,12 +75,17 @@ export default class NavLink extends Component {
     }
 
     // XXX this was making the nav jump since its in the body...
-    // if (navItem.link && (navItem.link === window.location.pathname)) {
-    //   $("body").velocity("scroll", {
-    //     duration: 350,
-    //     easing: "ease-in",
-    //   }); // smooth scroll to the top
-    // }
+    if (navItem.link && (navItem.link === window.location.pathname)) {
+      const containers = document.querySelectorAll("[data-status-scroll=\"true\"]");
+      if (containers && containers.length) {
+        Velocity(containers[0], "scroll", {
+          duration: 350,
+          easing: "ease-in",
+          offset: -80
+        }); // smooth scroll to the top
+      }
+
+    }
   }
 
   render () {
