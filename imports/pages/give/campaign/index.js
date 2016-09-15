@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
-import Loading from "../../../components/loading";
+import Spinner from "../../../components/loading";
 
 import {
   nav as navActions,
@@ -11,6 +11,14 @@ import {
 } from "../../../store";
 
 import Layout from "./Layout";
+
+const Loading = () => (
+  <div className="floating" style={{ position: "fixed", top: 0, bottom: 0, width: "100%" }}>
+    <div className="floating__item">
+      <Spinner/>;
+    </div>
+  </div>
+);
 
 const mapQueriesToProps = () => ({
   accounts: {
@@ -73,7 +81,7 @@ class Template extends Component {
 
   render () {
     const { accounts } = this.props;
-    if (accounts.loading) return <Loading/>;
+    if (accounts.loading) return <Loading />;
 
     const account = this.getAccount();
     if (!account) return <Loading />;
