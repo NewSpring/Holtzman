@@ -113,7 +113,7 @@ export default class Filter extends Component {
 
               <h6 className="soft-half-top push-top text-dark-secondary display-inline-block">Choose Date Range</h6>
               <div className="grid one-whole push-top flush-left@palm">
-                <div className="hard-left@palm grid__item one-whole one-third@palm-wide-and-up one-half@lap">
+                <div className="hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap">
                   <Forms.Input
                       label="Start Date (MM/YY)"
                       type="text"
@@ -124,7 +124,7 @@ export default class Filter extends Component {
                       validation={(value) => (value.length === 0 || value.length === 5)}
                   />
                 </div>
-                <div className="hard-left@palm grid__item one-whole one-third@palm-wide-and-up one-half@lap">
+                <div className="hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap">
                   <Forms.Input
                       label="End Date (MM/YY)"
                       type="text"
