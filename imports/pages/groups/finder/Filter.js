@@ -31,6 +31,7 @@ export default class Filter extends Component {
 
   findByQuery = (e) => {
     if (e && e.preventDefault) e.preventDefault();
+    document.getElementById("search").blur();
 
     const { query } = this.state;
     let { router, location } = this.props;
@@ -99,6 +100,7 @@ export default class Filter extends Component {
               <Forms.Form
                   classes={["hard", "display-inline-block", "one-whole" ]}
                   submit={(e) => this.findByQuery(e)}
+                  action
               >
                 <i className="icon-search locked-left soft-half-left" />
                 <span
@@ -107,6 +109,9 @@ export default class Filter extends Component {
                     className="h7 locked-right flush-bottom"
                 >Cancel</span>
                 <Forms.Input
+                    id="search"
+                    name="search"
+                    ref="searchInput"
                     hideLabel
                     classes={["hard-bottom", "soft-right", "push-double-right"]}
                     inputClasses="soft-double-left soft-half-bottom"
