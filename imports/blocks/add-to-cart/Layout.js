@@ -48,6 +48,7 @@ export default class Layout extends Component {
       });
 
     } else {
+      if (this.props.accounts.length === this.state.SubFundInstances) return;
       this.setState({
         SubFundInstances: this.state.SubFundInstances + 1,
         instances: [...this.state.instances, ...[
