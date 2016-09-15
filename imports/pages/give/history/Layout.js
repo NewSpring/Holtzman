@@ -264,6 +264,7 @@ export default class Layout extends Component {
               ];
 
               if (!ready && !transactions.length) return null;
+              if (!transactions.length && ready) return null;
 
               if (done) {
                 return (
