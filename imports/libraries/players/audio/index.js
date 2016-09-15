@@ -74,7 +74,7 @@ if (Meteor.isCordova) {
       }
 
 
-      this._audio5.one("canplay", success);
+      this._audio5.on("canplay", success);
 
 
       this._audio5.on("timeupdate", () => {
