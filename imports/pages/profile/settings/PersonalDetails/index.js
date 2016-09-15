@@ -44,7 +44,8 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
-    variables: { cache: true }
+    variables: { cache: false },
+    forceFetch: true,
   },
 });
 @connect({ mapQueriesToProps })
