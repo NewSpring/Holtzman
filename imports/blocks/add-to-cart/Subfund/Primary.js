@@ -40,6 +40,7 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format, donate, 
               placeholder="select fund"
               onChange={saveFund}
               selected={selectVal}
+              defaultValue={accounts.length === 1 ? accounts[0].value : null}
           />
         );
       // }
