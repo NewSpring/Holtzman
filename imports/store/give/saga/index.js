@@ -319,8 +319,10 @@ function* submitPersonDetails(give, autoSubmit) {
       body: new FormData(),
       mode: "no-cors"
     })
-      .then(console.log)
-      .catch(console.log);
+      .then(console.log("i made it"))
+      .catch((error) => {
+        // console.log("error dark", error);
+      })
 
     yield delay(300); // ensure gift is in nmi's system beofre progressing
 
