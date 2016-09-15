@@ -13,6 +13,7 @@ export default class Input extends Component {
     error: false,
     status: "",
     value: null
+    autofocus: false
   }
 
   componentWillMount(){

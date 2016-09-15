@@ -119,6 +119,7 @@ export default class Filter extends Component {
                     type="text"
                     defaultValue={q}
                     onChange={(e) => this.inputOnChange(e)}
+                    autofocus={true}
                 />
 
               <div className="one-whole text-left">
