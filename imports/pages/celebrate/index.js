@@ -1,4 +1,7 @@
 import { Component, PropTypes } from "react";
+import { connect } from "react-redux";
+
+import { header as headerActions } from "../../store";
 
 import Meta from "../../components/meta";
 import Intro from "./intro/index";
@@ -19,7 +22,19 @@ import NewSpringNetwork from "./newspring-network/index";
 
 import Closing from "./closing/index";
 
+@connect()
 class Template extends Component {
+  componentDidMount(){
+    if (process.env.NATIVE) {
+      const item = {
+        title: "Annual Report",
+      };
+
+      this.props.dispatch(headerActions.set(item));
+    }
+
+  }
+
   render () {
     return (
       <div>
