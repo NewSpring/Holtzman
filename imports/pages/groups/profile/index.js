@@ -62,7 +62,6 @@ export default class Template extends Component {
   }
 
   componentWillUnmount(){
-    console.log("unmount!");
     this.props.dispatch(modal.update({onFinished: null}));
   }
 
