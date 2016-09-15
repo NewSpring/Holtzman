@@ -96,7 +96,7 @@ class Template extends Component {
   render() {
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
-        <div className="background--light-primary">
+        <div className="background--light-secondary">
           <section className="soft-half">
             <div className="grid">
               {this.renderItems()}
