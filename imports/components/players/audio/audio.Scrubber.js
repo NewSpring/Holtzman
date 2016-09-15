@@ -48,21 +48,29 @@ export default class AudioScrubber extends Component {
   touchEnd = (e) => {
     const percent = this.state.lastPercent;
 
-    if(typeof percent === "number") {
-      this.seek(percent);
-    }
-
     setTimeout(() => {
       this.setState({
         lastPercent: null,
         override: false
       });
     }, 250);
+
+    if(typeof percent === "number") {
+      this.seek(percent);
+    }
   }
 
   click = (e) => {
     const percentClicked = this.calculatePercent(e.target, e.clientX);
-    this.seek(percentClicked);
+
+    this.setState({
+      lastPercent: null,
+      override: false
+    });
+
+    if(typeof percentClicked === "number") {
+      this.seek(percentClicked);
+    }
   }
 
   calculatePercent = (targetElement, clickedX) => {
