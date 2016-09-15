@@ -154,7 +154,6 @@ function* onboard({ state }) {
   let currentState = yield select(),
       returnValue = false;
 
-  console.log(currentState);
   if (currentState.accounts.account) {
     returnValue = yield* login();
   } else {

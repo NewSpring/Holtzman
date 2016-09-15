@@ -110,7 +110,6 @@ class Template extends Component {
         dispatch(giveActions.deleteSchedule(id));
 
         Meteor.call("give/schedule/cancel", { id }, (err, response) => {
-          console.log(err, response);
         });
       }
     }));

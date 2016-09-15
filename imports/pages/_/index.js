@@ -61,7 +61,6 @@ const Routes = [
 
       GraphQL.query({ query, variables })
         .then(({ data }) => {
-          console.log(data);
           const { account } = data;
           let dest = `/give/campaign/${account.name}`;
 
