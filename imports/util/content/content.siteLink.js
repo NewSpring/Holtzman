@@ -12,7 +12,7 @@ function siteLink(contentItem, parentItem) {
       return `${siteUrl}/sermons/${seriesSlug}/${slug}`;
     case "devotionals":
       return `${siteUrl}/devotionals/${slug}`;
-    case "albums":
+    case "newspring_albums":
       return `${siteUrl}/music/${slug}`;
     case "articles":
       return `${siteUrl}/articles/${slug}`;
