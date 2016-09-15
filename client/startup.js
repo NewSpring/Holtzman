@@ -1,7 +1,6 @@
 import "velocity-animate";
 import "velocity-animate/velocity.ui";
-import "/imports/util/regex"
-
+import "/imports/util/regex";
 if (process.env.NATIVE) {
   // this breaks is found on server
   import Audio5 from "audio5"
