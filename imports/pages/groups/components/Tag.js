@@ -94,7 +94,7 @@ export default class Tag extends Component {
     if (clickAble) classes.push("tag--clickable");
 
     // Touch enabled devices tag class overrides
-    if (!!("ontouchstart" in window) || window.navigator.msMaxTouchPoints > 0) {
+    if (Meteor.isCordova) {
       if (this.state.isActive && canBeActive) {
         classes.push("tag--nohover--active");
       } else {
