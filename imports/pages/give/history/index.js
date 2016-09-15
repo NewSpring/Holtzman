@@ -115,7 +115,13 @@ class Template extends Component {
       .then((response) => {
         if (!response || !response.data) return;
         const { transactions } = response.data;
-        this.setState({ offset: 0, done: false, loaded: true, transactions, people });
+        this.setState({
+          offset: 0,
+          done: transactions.length < 20,
+          loaded: true,
+          transactions,
+          people
+        });
       });
   }
 
@@ -133,7 +139,7 @@ class Template extends Component {
         const { transactions } = response.data;
         this.setState({
           offset: 0,
-          done: false,
+          done: transactions.length < 20,
           loaded: true,
           transactions,
           start,
