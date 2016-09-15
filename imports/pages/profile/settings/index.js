@@ -64,7 +64,7 @@ class Template extends Component {
        })
       .then((id) => {
         avatar(id, (err, response) => {
-          updateUser(Meteor.userId(), this.props.dispatch);
+          this.props.data.refetch();
         });
       });
 

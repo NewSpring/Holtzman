@@ -18,7 +18,7 @@ const mapQueriesToProps = ({ state }) => ({
   data: {
     query: gql`
       query GetPerson {
-        person: currentPerson {
+        person: currentPerson (cache: false) {
           photo
           firstName
           nickName
@@ -92,7 +92,7 @@ export default class Home extends Component {
        })
       .then((id) => {
         avatar(id, (err, response) => {
-          updateUser(Meteor.userId(), this.props.dispatch);
+          this.props.data.refetch();
         });
       });
 
