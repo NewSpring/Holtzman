@@ -14,7 +14,7 @@ export default class SeriesVideoListItem extends Component {
   dynamicWidth = () => {
 
     if (typeof window != "undefined" || window != null) {
-      const ratio = window.isTablet ? 0.4 : 0.8;
+      const ratio = window.isTablet ? 0.375 : 0.8;
       const itemSize = (window.innerWidth - 40) * ratio; // four-fifths
       return {
         width: itemSize,
