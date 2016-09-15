@@ -18,18 +18,23 @@ function* checkAccount({ data }) {
 
   // only make one request at a time
   inFlight = true;
-  // make call to Rock to check if account is open
-  let {
-    isAvailable,
-    alternateAccounts,
-    peopleWithoutAccountEmails,
-  } = yield cps(accounts.available, email);
+  try {
+    // make call to Rock to check if account is open
+    let {
+      isAvailable,
+      alternateAccounts,
+      peopleWithoutAccountEmails,
+    } = yield cps(accounts.available, email);
 
-  inFlight = false;
-  // end the run of this saga iteration by setting account
-  yield put(actions.setAccount(!isAvailable));
-  yield put(actions.setAlternateAccounts(alternateAccounts));
-  yield put(actions.peopleWithoutAccountEmails(peopleWithoutAccountEmails));
+    inFlight = false;
+    // end the run of this saga iteration by setting account
+    yield put(actions.setAccount(!isAvailable));
+    yield put(actions.setAlternateAccounts(alternateAccounts));
+    yield put(actions.peopleWithoutAccountEmails(peopleWithoutAccountEmails));
+  } catch (e) {
+    console.log(e);
+  }
+
 
 }
 
