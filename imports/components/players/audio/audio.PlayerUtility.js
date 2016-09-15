@@ -88,18 +88,28 @@ export default class AudioPlayerUtility extends Component {
     this.props.loading();
 
     const Player = Meteor.isCordova ? Media : Audio;
+
     const player = new Player(track.file, () => {
+      if (Meteor.isCordova) return;
 
       // set ready state
       this.props.ready();
 
       if (autoload) {
         this.props.play();
+        player.play();
         return;
       }
 
-
     });
+
+    if (autoload && Meteor.isCordova) {
+      // set ready state
+      this.props.ready();
+
+      this.props.play();
+      player.play();
+    }
 
     player.timeupdate((pos) => {
       const [durMin, durSec] = track.duration.split(":");
@@ -119,8 +129,11 @@ export default class AudioPlayerUtility extends Component {
       const formatMin = realMin < 10 ? `0${realMin}` : realMin;
 
       const formatPos = `${formatMin}:${formatSec}`;
+      if (this.file !== track.file) return;
       this.props.setProgress(width * 100, formatPos);
     });
+
+    this.file = track.file;
 
     player.ended(() => {
       this.props.next();
@@ -186,7 +199,10 @@ export default class AudioPlayerUtility extends Component {
         if (repeat === "repeat-one") {
           this.props.restart();
           this.props.play();
-          if (this.player) this.player.play();
+          if (this.player && Meteor.isCordova) {
+            this.props.seek(0);
+            this.player.play();
+          }
           return;
         }
 
@@ -234,7 +250,10 @@ export default class AudioPlayerUtility extends Component {
         if (repeat === "repeat-one") {
           this.props.restart();
           this.props.play();
-          if (this.player) this.player.play();
+          if (this.player && Meteor.isCordova) {
+            this.props.seek(0);
+            this.player.play();
+          }
           return;
         }
 
