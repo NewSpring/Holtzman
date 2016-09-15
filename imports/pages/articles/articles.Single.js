@@ -18,6 +18,8 @@ import RelatedContent from "../../blocks/content/RelatedContent";
 
 import SingleVideoPlayer from "../../components/players/video/Player";
 
+import { linkListener } from "../../util/inAppLink";
+
 import {
   nav as navActions
 } from "../../store";
@@ -77,6 +79,7 @@ export default class ArticlesSingle extends Component {
       id: 2,
       action: this.likeableAction
     }));
+
   }
 
   render() {

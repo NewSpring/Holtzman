@@ -11,6 +11,8 @@ import Header from "../../components/header";
 
 import Likes from "../../database/collections/likes";
 
+import { linkListener } from "../../util/inAppLink";
+
 import {
   accounts as accountsActions,
   liked as likedActions,
@@ -103,6 +105,13 @@ const map = (state) => ({
 });
 @connect(map)
 export default class Global extends Component {
+
+  componentWillMount() {
+    if (Meteor.isCordova) {
+      document.addEventListener("click", linkListener);
+    }
+  }
+
   render(){
     const { dispatch } = this.props;
     return (

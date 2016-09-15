@@ -65,35 +65,6 @@ if (process.env.NATIVE) {
       window.Lookback.shakeToRecord(true);
       window.open = cordova.InAppBrowser.open;
 
-      document.addEventListener("click", (event) => {
-
-        // aggressively get all clicks of <a></a> links in cordova
-        let target = event.target;
-
-        if (target.tagName != "A" && target.fastClickScrollParent) {
-          target = target.fastClickScrollParent;
-        } else if (
-          target.tagName != "A" &&
-          target.parentElement &&
-          target.parentElement.tagName === "A"
-        ) {
-          target = target.parentElement;
-        }
-
-        if (!target.href || !target.host) {
-          return;
-        }
-
-        // exterior link
-        if (target.host != window.location.host) {
-          event.preventDefault();
-          event.stopPropagation();
-          openUrl(target.href);
-        }
-
-
-      });
-
       /* Quick and dirty implementation of scrolling to the top of the page
        * when tapping the status bar.
        *
