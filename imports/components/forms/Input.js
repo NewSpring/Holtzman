@@ -12,7 +12,7 @@ export default class Input extends Component {
     focused: false,
     error: false,
     status: "",
-    value: null
+    value: null,
     autofocus: false
   }
 
