@@ -252,7 +252,8 @@ export default class Confirm extends Component {
     e.preventDefault();
     // deep clone
     const props = cloneDeep(this.props);
-    const { url, transactions, total, data } = props;
+    let { url } = props;
+    const { transactions, total, data, savedAccount } = props;
     const { cardNumber, type, accountNumber } = data.payment;
 
     // remove sensitive information
@@ -260,15 +261,25 @@ export default class Confirm extends Component {
 
     // add last 4 in
     data.payment = {
-      last4: type === "cc" ? cardNumber.slice(-4) : accountNumber.slice(-4),
       icon: this.getCardType(),
       type,
     };
+
+    if (props.savedAccount) {
+      data.payment.last4 = props.savedAccount.payment.accountNumber.slice(-4);
+    } else if (type === "cc") {
+      data.payment.last4 = cardNumber.slice(-4);
+    } else {
+      data.payment.last4 = accountNumber.slice(-4);
+    }
+
+    if (url.length === 0) url = false;
 
     const giveData = encodeURIComponent(
       JSON.stringify({
         url,
         transactions,
+        savedAccount,
         total,
         data,
       })

@@ -25,6 +25,8 @@ class Template extends Component {
     dispatch(giveActions.setDetails(giveData.url));
     // store transactions
     dispatch(giveActions.addTransactions(giveData.transactions));
+    // store saved account
+    dispatch(giveActions.setAccount(giveData.savedAccount));
   }
 
   getGiveData = () => {
