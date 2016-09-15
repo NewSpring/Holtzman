@@ -61,6 +61,10 @@ export default class Template extends Component {
     this.headerAction({ title: "Group Profile" });
   }
 
+  componentWillUnmount(){
+    this.props.dispatch(modal.update({onFinished: null}));
+  }
+
   closeModal = (e) => {
     if (e && e.preventDefault) e.preventDefault();
     this.props.dispatch(modal.hide());
