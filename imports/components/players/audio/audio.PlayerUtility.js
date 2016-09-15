@@ -31,7 +31,6 @@ export default class AudioPlayerUtility extends Component {
       this.player = this.createPlayer(nextAudio.playing.track, nextAudio.state === "playing");
     }
 
-
     // change of state
     if (audio.state != nextAudio.state && audio.state != "default") {
       // play || pause
@@ -185,6 +184,7 @@ export default class AudioPlayerUtility extends Component {
         if (repeat === "repeat-one") {
           this.props.restart();
           this.props.play();
+          if (this.player) this.player.play();
           return;
         }
 
