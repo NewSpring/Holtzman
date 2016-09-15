@@ -90,13 +90,13 @@ export default class AudioPlayerUtility extends Component {
     const Player = Meteor.isCordova ? Media : Audio;
 
     const player = new Player(track.file, () => {
-      if (Meteor.isCordova) return;
 
       // set ready state
       this.props.ready();
 
       if (autoload) {
         this.props.play();
+        if (Meteor.isCordova) return;
         player.play();
         return;
       }
@@ -104,9 +104,6 @@ export default class AudioPlayerUtility extends Component {
     });
 
     if (autoload && Meteor.isCordova) {
-      // set ready state
-      this.props.ready();
-
       this.props.play();
       player.play();
     }
