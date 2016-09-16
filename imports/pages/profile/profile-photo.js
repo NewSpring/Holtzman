@@ -30,7 +30,7 @@ export default (WrappedComponent) => {
       e.preventDefault();
       e.stopPropagation();
       if (!Meteor.settings.public.rock) return Promise.reject();
-      console.log(opts);
+
       return new Promise((s, f) => {
         navigator.camera.getPicture(
           (photo) => {
@@ -47,7 +47,7 @@ export default (WrappedComponent) => {
             encodingType: Camera.EncodingType.JPEG,
             mediaType: Camera.MediaType.PICTURE,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            allowEdit: true,
+            allowEdit: false,
             cameraDirection: Camera.Direction.FRONT,
           }, ...opts}
         )
@@ -57,10 +57,11 @@ export default (WrappedComponent) => {
             avatar(response, (err, response) => {
               if (err) f(err);
               if (!err) s(response);
+              navigator.camera.cleanup();
             });
           });
         })
-        .catch((e) => console.log(e))
+        .catch((e) => { camera.cleanup(); console.log(e) })
 
     }
 
