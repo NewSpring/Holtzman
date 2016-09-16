@@ -108,7 +108,7 @@ export default (WrappedComponent) => {
 
     render() {
       const props = {...{
-        upload: Meteor.isCordova ? this.nativeUpload : this.webUpload,
+        upload: process.env.NATIVE ? this.nativeUpload : this.webUpload,
         photo: this.state.photo || this.props.photo,
       }, ...this.props};
       // props.client = this.client;
