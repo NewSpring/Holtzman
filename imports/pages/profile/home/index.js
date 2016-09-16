@@ -16,6 +16,7 @@ import withProfileUpload from "../profile-photo";
 
 const mapQueriesToProps = ({ state }) => ({
   data: {
+    forceFetch: true,
     query: gql`
       query GetPerson {
         person: currentPerson (cache: false) {
