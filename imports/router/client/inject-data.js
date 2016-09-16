@@ -1,6 +1,15 @@
 
 import InjectData from "../shared/inject-data";
 
+FastRender._securityCheck = function(payload) {
+  if(payload && payload.loginToken) {
+    var localStorageLoginToken = Meteor._localStorage.getItem('Meteor.loginToken');
+    if(localStorageLoginToken != payload.loginToken) {
+      Meteor.logout();
+    }
+  }
+};
+
 Meteor.startup(function() {
   // var dom = $('script[type="text/inject-data"]', document);
   // var injectedDataString = $.trim(dom.text());
