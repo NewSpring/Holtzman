@@ -7,7 +7,7 @@ import {
   nav as navActions,
 } from "../../../store";
 
-import { avatar } from "../../../methods/files/browser";
+import withProfileUpload from "../profile-photo";
 
 import Layout from "./Layout";
 
@@ -35,6 +35,7 @@ const mapQueriesToProps = () => ({
     `,
   },
 });
+@withProfileUpload
 @connect({ mapQueriesToProps })
 class Template extends Component {
 
@@ -43,60 +44,11 @@ class Template extends Component {
   }
 
   onUpload = (e) => {
-    let files = e.target.files;
-
-    if (!Meteor.settings.public.rock) {
-      return;
-    }
-
-    var data = new FormData();
-    data.append("file", files[0]);
-
-    const { baseURL, token, tokenName } = Meteor.settings.public.rock;
-
-    fetch(`${baseURL}api/BinaryFiles/Upload?binaryFileTypeId=5`, {
-      method: "POST",
-      headers: { [tokenName]: token },
-      body: data
-    })
-      .then((response) => {
-        return response.json();
-       })
-      .then((id) => {
-        avatar(id, (err, response) => {
-          this.props.data.refetch();
-        });
-      });
-
-    const save = (url) => {
-      this.setState({
-        photo: url
-      });
-    };
-
-    for (let file in files) {
-      // console.log(files[file])
-      let { name } = files[file];
-      let reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = ((theFile) => {
-        return (e) => {
-          // Render thumbnail.
-          return save(e.target.result);
-        };
-      })(files[file]);
-
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(files[file]);
-
-      break;
-
-    }
-
+    this.props.upload(e).then(() => this.props.data.refetch())
   }
 
   render() {
+    const { photo } = this.props;
     const { person } = this.props.data;
 
     let mobile = process.env.WEB;
@@ -104,6 +56,7 @@ class Template extends Component {
       mobile = false;
     }
 
+    if (photo) person.photo = photo;
     return (
       <Layout person={person || {}} mobile={mobile} onUpload={this.onUpload}>
         {this.props.children}

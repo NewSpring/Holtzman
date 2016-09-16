@@ -27,7 +27,18 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
               className="background--fill ratio--square round two-fifths display-inline-block"
               style={{ backgroundImage: `url('${photo}')`, position: "relative"}}
           >
-            <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
+            {(() => {
+              if (!Meteor.isCordova) {
+                return (
+                  <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
+                )
+              }
+
+              return (
+                <div onClick={onUpload} className="locked-ends locked-sides" style={{opacity: 0}} />
+              )
+            })()}
+
           </label>
         <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName} {person.lastName}</h4>
         {(() => {
