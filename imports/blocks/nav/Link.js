@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react";
 import ReactDOM from "react-dom";
 import { css } from "aphrodite";
 
-if (Meteor.isCordova) {
+if (Meteor.isClient) {
   import Velocity from "velocity-animate";
 }
 

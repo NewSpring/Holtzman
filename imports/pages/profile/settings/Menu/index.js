@@ -11,10 +11,11 @@ import {
   nav as navActions,
 } from "../../../../store";
 
-import { avatar } from "../../../../methods/files/browser";
 import inAppLink from "../../../../util/inAppLink";
+import withProfileUpload from "../../profile-photo";
 
-const RenderCell = ({name, iconFunc, last, children}) => {
+
+const RenderCell = ({name, iconFunc, last, children }) => {
   let icon = "icon-arrow-next";
   if (typeof iconFunc === "function") {
     icon = iconFunc();
@@ -48,8 +49,10 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
+    forceFetch: true,
   }
 });
+@withProfileUpload
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Headerable)
 export default class Menu extends Component {
@@ -66,7 +69,8 @@ export default class Menu extends Component {
   }
 
   state = {
-    upload: "default"
+    upload: "default",
+    capture: "default",
   }
 
   signout = (e) => {
@@ -74,45 +78,19 @@ export default class Menu extends Component {
     Meteor.logout();
   }
 
-  upload = (e) => {
-    e.preventDefault();
-    let files = e.target.files;
-    if (!Meteor.settings.public.rock) {
-      return;
-    }
-
-    this.setState({
-      upload: "loading"
-    });
-    var data = new FormData();
-    data.append("file", files[0]);
-
-    const { baseURL, token, tokenName } = Meteor.settings.public.rock;
-
-    fetch(`${baseURL}api/BinaryFiles/Upload?binaryFileTypeId=5`, {
-      method: "POST",
-      headers: { [tokenName]: token },
-      body: data
-    })
-      .then((response) => {
-        return response.json();
-       })
-      .then((id) => {
-        avatar(id, (err, response) => {
-          this.props.data.refetch()
-            .then((result) => {
-              this.setState({
-                upload: "uploaded"
-              });
-
-              setTimeout(() => {
-                this.setState({
-                  upload: "default"
-                });
-              }, 2000);
-            });
-        });
-      });
+  upload = (e, key, opts) => {
+    console.log(opts, key)
+    this.setState({ [key]: "loading" });
+    this.props.upload(e, opts)
+      .then(() => {
+        this.setState({ [key]: "uploaded" });
+        this.props.data.refetch();
+        setTimeout(() => this.setState({ [key]: "default" }), 2000);
+      })
+      .catch(() => {
+        this.setState({ [key]: "failed" });
+        setTimeout(() => this.setState({ [key]: "default" }), 2000);
+      })
 
   }
 
@@ -124,8 +102,23 @@ export default class Menu extends Component {
         // @TODO replace with loading icon
         return "icon-leaf-outline";
       case "uploaded":
-        // @TODO replace with loading icon
         return "icon-check-mark text-primary";
+      case "failed":
+        return "icon-close text-alert";
+    }
+  }
+
+  captureIcon = () => {
+    switch (this.state.capture) {
+      case "default":
+        return "icon-arrow-next";
+      case "loading":
+        // @TODO replace with loading icon
+        return "icon-leaf-outline";
+      case "uploaded":
+        return "icon-check-mark text-primary";
+      case "failed":
+        return "icon-close text-alert";
     }
   }
 
@@ -172,10 +165,31 @@ export default class Menu extends Component {
                 <RenderCell name="My Address" />
               </Link>
               <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
-                <RenderCell name="Change Profile Photo" iconFunc={this.uploadIcon}>
-                  <input onChange={this.upload} type="file" className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
+                <RenderCell name="Take Profile Photo" iconFunc={this.captureIcon}>
+                  {(() => {
+                    if (!Meteor.isCordova) {
+                      return (
+                        <input onChange={e => this.upload(e, "capture")} type="file" className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
+                      )
+                    }
+
+                    return (
+                      <div onClick={e => this.upload(e, "capture")} className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
+                    )
+                  })()}
                 </RenderCell>
               </button>
+              {(() => {
+                if (Meteor.isCordova) {
+                  return (
+                    <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
+                      <RenderCell name="Upload Profile Photo" iconFunc={this.uploadIcon}>
+                        <div onClick={(e) => this.upload(e, "upload", { sourceType: Camera.PictureSourceType.PHOTOLIBRARY })} className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
+                      </RenderCell>
+                    </button>
+                  )
+                }
+              })()}
               <Link to="/profile/settings/change-password" className="plain text-dark-secondary">
                 <RenderCell name="Change Password" last />
               </Link>
