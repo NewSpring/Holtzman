@@ -167,7 +167,7 @@ export default class Menu extends Component {
               <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
                 <RenderCell name="Upload Profile Photo" iconFunc={this.uploadIcon}>
                   {(() => {
-                    if (!Meteor.isCordova) {
+                    if (!process.env.NATIVE) {
                       return (
                         <input onChange={e => this.upload(e, "upload")} type="file" className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
                       )
@@ -180,7 +180,7 @@ export default class Menu extends Component {
                 </RenderCell>
               </button>
               {(() => {
-                if (Meteor.isCordova) {
+                if (process.env.NATIVE) {
                   return (
                     <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
                       <RenderCell name="Take Profile Photo" iconFunc={this.captureIcon}>
