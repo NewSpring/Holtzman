@@ -46,7 +46,7 @@ export default (WrappedComponent) => {
             correctOrientation: true,
             encodingType: Camera.EncodingType.JPEG,
             mediaType: Camera.MediaType.PICTURE,
-            sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
             cameraDirection: Camera.Direction.FRONT,
           }, ...opts}

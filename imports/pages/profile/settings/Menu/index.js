@@ -165,16 +165,16 @@ export default class Menu extends Component {
                 <RenderCell name="My Address" />
               </Link>
               <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
-                <RenderCell name="Take Profile Photo" iconFunc={this.captureIcon}>
+                <RenderCell name="Upload Profile Photo" iconFunc={this.uploadIcon}>
                   {(() => {
                     if (!Meteor.isCordova) {
                       return (
-                        <input onChange={e => this.upload(e, "capture")} type="file" className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
+                        <input onChange={e => this.upload(e, "upload")} type="file" className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
                       )
                     }
 
                     return (
-                      <div onClick={e => this.upload(e, "capture")} className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
+                      <div onClick={e => this.upload(e, "upload")} className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
                     )
                   })()}
                 </RenderCell>
@@ -183,8 +183,8 @@ export default class Menu extends Component {
                 if (Meteor.isCordova) {
                   return (
                     <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
-                      <RenderCell name="Upload Profile Photo" iconFunc={this.uploadIcon}>
-                        <div onClick={(e) => this.upload(e, "upload", { sourceType: Camera.PictureSourceType.PHOTOLIBRARY })} className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
+                      <RenderCell name="Take Profile Photo" iconFunc={this.captureIcon}>
+                        <div onClick={(e) => this.upload(e, "capture", { sourceType: Camera.PictureSourceType.CAMERA})} className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
                       </RenderCell>
                     </button>
                   )
