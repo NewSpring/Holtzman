@@ -49,6 +49,7 @@ export default {
   setDetails: (url) => ({ type: types.SET_TRANSACTION_DETAILS, url }),
 
   setReminder: (reminderDate) => ({ type: types.SET_REMINDER_DATE, reminderDate }),
+  setUserId: (userId) => ({ type: types.SET_USERID, userId }),
 
 
 };

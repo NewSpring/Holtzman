@@ -20,6 +20,8 @@ import {
 
 const initial = {
 
+  userId: null, // used in native => web transactions
+
   step: 1, // Number (step along in progress bar to show)
   transactionType: "default", // "default", "guest", "recurring"
   url: "", // String representing the endpoint with NMI to submit to
@@ -306,6 +308,10 @@ export default createReducer(initial, {
     return { ...state, ... {
       reminderDate: action.reminderDate
     }};
+  },
+
+  [types.SET_USERID](state, { userId }) {
+    return { ...state, ... { userId }};
   },
 
 

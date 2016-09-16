@@ -54,6 +54,7 @@ export default class Layout extends Component {
               id={state.fundId || -1}
               name={state.fundLabel || "primary-account"}
               hideLabel
+              type={Meteor.isCordova ? "text": "tel"}
               ref="primary-account"
               classes={["soft-bottom", "input--active", "display-inline-block"]}
               inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
