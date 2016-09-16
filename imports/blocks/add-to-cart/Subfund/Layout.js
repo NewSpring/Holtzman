@@ -37,7 +37,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format, selectV
                 id={state.id}
                 name={state.fund || "secondary-account"}
                 hideLabel
-                type="tel"
+                type={Meteor.isCordova ? "text": "tel"}
                 classes={["soft-bottom", "input--active", "display-inline-block"]}
                 inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
                 placeholder="$0.00"

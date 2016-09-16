@@ -156,6 +156,8 @@ function* chargeTransaction({ state }) {
     id = give.scheduleToRecover;
   }
 
+  if (give.userId) id = give.userId; // used in native => web payments
+
   let transactionResponse = {};
   // submit transaction
   try {

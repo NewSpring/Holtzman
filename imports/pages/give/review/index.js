@@ -27,6 +27,10 @@ class Template extends Component {
     dispatch(giveActions.addTransactions(giveData.transactions));
     // store saved account
     dispatch(giveActions.setAccount(giveData.savedAccount));
+
+    // store user id to match rock personal
+    dispatch(giveActions.setUserId(giveData.userId));
+
   }
 
   getGiveData = () => {

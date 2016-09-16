@@ -47,9 +47,7 @@ import createSchedule from "./createSchedule";
 Meteor.methods({
   "give/schedule": function(token, accountName, id) {
     let user = null;
-    if (this.userId) {
-      user = Meteor.users.findOne({ _id: this.userId });
-    }
+    if (this.userId) user = Meteor.users.findOne({ _id: this.userId });
 
     let response = {};
     try {
