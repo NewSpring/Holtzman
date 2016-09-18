@@ -4,6 +4,21 @@ import Label from "./components/Label";
 
 export default class Checkbox extends React.Component {
 
+  static propTypes = {
+    classes: PropTypes.array,
+    validation: PropTypes.func,
+    status: PropTypes.string,
+    errorText: PropTypes.string,
+    theme: PropTypes.string,
+    type: PropTypes.string,
+    id: PropTypes.string,
+    label: PropTypes.string,
+    name: PropTypes.string,
+    defaultValue: PropTypes.string,
+    clicked: PropTypes.func,
+    inputClasses: PropTypes.array
+  }
+
   state = {
     status: false,
     error: false
@@ -77,7 +92,7 @@ export default class Checkbox extends React.Component {
             id={this.props.id || this.props.label || this.props.name}
             type={this.props.type || "checkbox"}
             name={this.props.name || this.props.label}
-            className={this.props.inputClasses}
+            className={this.props.inputClasses.join(" ")}
             disabled={this.props.disabled ? true : false}
             defaultChecked={this.props.defaultValue ? "checked": ""}
             onClick={this.props.clicked}
