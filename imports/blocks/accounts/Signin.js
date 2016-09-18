@@ -225,7 +225,7 @@ class SignIn extends Component {
                     >
                     <div className="locked-left">
                       {/* XXX just used for UI purposes */}
-                      <Forms.Checkbox classes={["push-top", "hard-bottom"]} defaultValue={isActive()}/>
+                      <Forms.Checkbox disabled classes={["push-top", "hard-bottom"]} defaultValue={isActive()}/>
                     </div>
                       <div
                           className="round background--fill display-inline-block push-half-right"
