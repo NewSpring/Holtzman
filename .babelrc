@@ -23,7 +23,6 @@
     }
   },
   "plugins": [
-    "babel-root-slash-import",
     "transform-react-router-optimize",
     "transform-inline-environment-variables",
     "transform-react-constant-elements",
