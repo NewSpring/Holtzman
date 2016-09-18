@@ -4,10 +4,6 @@ import Label from "./components/Label";
 
 export default class Checkbox extends React.Component {
 
-  constructor(props) {
-      super(props);
-  }
-
   state = {
     status: false,
     error: false
@@ -33,15 +29,6 @@ export default class Checkbox extends React.Component {
 
   setStatus = (message) => {
     this.props.status = message;
-  }
-
-  disabled = () => {
-    console.log(this);
-    return true;
-    // if (this.props.disabled) {
-    //   console.log(this.props.disabled);
-    //   return this.props.disabled;
-    // }
   }
 
   renderHelpText(message) {
@@ -77,9 +64,6 @@ export default class Checkbox extends React.Component {
     // custom added classes
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
 
-    if(this.props.classes) {console.log("hello!")};
-    console.log(this);
-
     return (
       <div className={inputclasses.join(" ")}>
 
@@ -94,7 +78,7 @@ export default class Checkbox extends React.Component {
             type={this.props.type || "checkbox"}
             name={this.props.name || this.props.label}
             className={this.props.inputClasses}
-            disabled={this.disabled()}
+            disabled={this.props.disabled ? true : false}
             defaultChecked={this.props.defaultValue ? "checked": ""}
             onClick={this.props.clicked}
             style={{width: 0}}
