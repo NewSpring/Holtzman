@@ -52,7 +52,7 @@ if (Meteor.isCordova) {
       }
 
       this.isPlaying = true;
-      this.play({ playAudioWhenScreenIsLocked : true });
+      this.play();
 
     };
   });
