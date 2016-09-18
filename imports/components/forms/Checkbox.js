@@ -4,6 +4,21 @@ import Label from "./components/Label";
 
 export default class Checkbox extends React.Component {
 
+  static propTypes = {
+    classes: PropTypes.array,
+    validation: PropTypes.func,
+    status: PropTypes.string,
+    errorText: PropTypes.string,
+    theme: PropTypes.string,
+    type: PropTypes.string,
+    id: PropTypes.string,
+    label: PropTypes.string,
+    name: PropTypes.string,
+    defaultValue: PropTypes.string,
+    clicked: PropTypes.func,
+    inputClasses: PropTypes.array
+  }
+
   state = {
     status: false,
     error: false
@@ -29,12 +44,6 @@ export default class Checkbox extends React.Component {
 
   setStatus = (message) => {
     this.props.status = message;
-  }
-
-  disabled = () => {
-    if (this.props.disabled) {
-      return disabled;
-    }
   }
 
   renderHelpText(message) {
@@ -70,7 +79,6 @@ export default class Checkbox extends React.Component {
     // custom added classes
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
 
-
     return (
       <div className={inputclasses.join(" ")}>
 
@@ -81,12 +89,11 @@ export default class Checkbox extends React.Component {
         </h6>
 
         <input
-            ref={this.props.id || this.props.label || this.props.name}
             id={this.props.id || this.props.label || this.props.name}
             type={this.props.type || "checkbox"}
             name={this.props.name || this.props.label}
-            className={this.props.inputClasses}
-            disabled={this.disabled()}
+            className={this.props.inputClasses.join(" ")}
+            disabled={this.props.disabled ? true : false}
             defaultChecked={this.props.defaultValue ? "checked": ""}
             onClick={this.props.clicked}
             style={{width: 0}}
