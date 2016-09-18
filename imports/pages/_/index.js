@@ -34,7 +34,7 @@ const Template = (props) => {
 
 const Routes = [
   {
-    path: "_",
+    path: "/_",
     component: Template,
     childRoutes: [
       { path: "reset-password/:token", component: ResetPassword },

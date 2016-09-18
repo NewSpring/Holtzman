@@ -1,3 +1,4 @@
+import Util from "./_";
 import Give from "./give";
 import Groups from "./groups";
 import Celebrate from "./celebrate";
@@ -39,6 +40,8 @@ if (process.env.NATIVE) {
     Locations.Routes,
   );
 }
+
+Routes = Routes.concat(Util.Routes);
 
 export {
   Routes,
