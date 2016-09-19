@@ -160,8 +160,13 @@ export default class AudioPlayerUtility extends Component {
     let [min, sec] = this.props.audio.playing.track.duration.split(":");
 
     // duration in milliseconds
-    const duration = (Number((min * 60)) + Number(sec)) * 100;
-    const newPos =  duration * (value / 10);
+
+    const duration = (Number((min * 60)) + Number(sec)) * 1000;
+
+    console.log('Percentage: ' + (value / 100));
+
+    const newPos =  duration * (value / 100);
+    console.log('New Position: ' + newPos);
     this.player.seekTo(newPos);
   }
 

@@ -39,6 +39,8 @@ export default class AudioScrubber extends Component {
   touchMove = (e) => {
     const percent = this.calculatePercent(e.target, e.touches[0].clientX);
 
+    console.log(percent);
+
     this.setState({
       lastPercent: percent,
       override: true
@@ -46,24 +48,29 @@ export default class AudioScrubber extends Component {
   };
 
   touchEnd = (e) => {
-    const percent = this.state.lastPercent;
+      const percent = this.state.lastPercent;
 
-    if(typeof percent === "number") {
-      this.seek(percent);
-    }
+      // setTimeout(() => {
 
-    setTimeout(() => {
-      this.setState({
-        lastPercent: null,
-        override: false
-      });
-    }, 250);
+        if(typeof percent === "number") {
+          this.seek(percent);
+        };
+
+        this.setState({
+          lastPercent: percent,
+          override: true
+        });
+
+      // }
+      // , 550);
+
+
   }
 
-  click = (e) => {
-    const percentClicked = this.calculatePercent(e.target, e.clientX);
-    this.seek(percentClicked);
-  }
+  // click = (e) => {
+  //   const percentClicked = this.calculatePercent(e.target, e.clientX);
+  //   this.seek(percentClicked);
+  // }
 
   calculatePercent = (targetElement, clickedX) => {
     var min = targetElement.offsetParent.offsetLeft;
@@ -116,10 +123,6 @@ export default class AudioScrubber extends Component {
     return this.props.playing.track.duration;
   };
 
-  getTrackDuration = () => {
-    return this.props.playing.track.duration;
-  };
-
   getCurrentTime = () => {
     const { time } = this.props;
     return time;
@@ -150,7 +153,7 @@ export default class AudioScrubber extends Component {
             style={{position: "relative"}}
             onTouchEnd={this.touchEnd}
             onTouchMove={this.touchMove}
-            onClick={this.click}
+            // onClick={this.click}
         >
           <div
               className={playbar.join(" ")}
