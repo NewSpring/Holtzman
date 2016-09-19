@@ -1,12 +1,11 @@
-import { Component, PropTypes } from "react";
-import { Link } from "react-router";
+import { PropTypes } from "react";
 import Meta from "react-helmet";
 
 import Split, { Left, Right } from "../../../blocks/split";
 import Toggle from "../../../components/controls/toggle";
 
 
-const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
+const Layout = ({ photo, person, onToggle, content, onUpload }) => (
   <div>
     <Split nav classes={["background--light-primary"]}>
 
@@ -23,7 +22,8 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
         blur
       >
         <div className="soft one-whole">
-          <label htmlFor="file"
+          <label
+            htmlFor="file"
             className="background--fill ratio--square round two-fifths display-inline-block"
             style={{ backgroundImage: `url('${photo}')`, position: "relative" }}
           >
@@ -39,7 +39,11 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
               )
             })()}
           </label>
-        <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName} {person.lastName}</h4>
+          <h4
+            className="text-light-primary soft-half-top flush-bottom"
+          >
+            {person.nickName} {person.lastName}
+          </h4>
         {(() => {
           if (!person.home || !person.home.city) return null;
           return (
@@ -62,6 +66,12 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
 
 );
 
-Layout.contextTypes = { shouldAnimate: PropTypes.bool };
+Layout.propTypes = {
+  photo: PropTypes.object.isRequired,
+  person: PropTypes.object.isRequired,
+  onToggle: PropTypes.function.isRequired,
+  content: PropTypes.object.isRequired,
+  onUpload: PropTypes.function.isRequired,
+};
 
 export default Layout;
