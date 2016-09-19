@@ -4,7 +4,6 @@ import gql from "graphql-tag";
 
 import {
   nav,
-  accounts as accountsActions,
 } from "../../../../store";
 
 import { updateHome } from "../../../../methods/accounts/browser";
@@ -45,6 +44,14 @@ const defaultHome = {
 @connect({ mapQueriesToProps })
 export default class HomeAddress extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    data: {
+      refetch: PropTypes.function.isRequired,
+      person: PropTypes.object.isRequired,
+    },
+  }
+
   state = {
     state: "default",
   }
@@ -59,7 +66,7 @@ export default class HomeAddress extends Component {
 
   updateAddress = (data) => {
     this.setState({ state: "loading" });
-    updateHome(data, (err, result) => {
+    updateHome(data, (err) => {
       if (err) {
         this.setState({ state: "error", err });
         setTimeout(() => {
@@ -79,7 +86,7 @@ export default class HomeAddress extends Component {
   render() {
     const { person } = this.props.data;
     const { state } = this.state;
-    const home = person && person.home || defaultHome;
+    const home = (person && person.home) || defaultHome;
 
     switch (state) {
       case "error":
