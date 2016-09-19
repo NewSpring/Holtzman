@@ -7,7 +7,6 @@ import { Link } from "react-router";
 import Headerable from "../../../../mixins/mixins.Header";
 
 import {
-  accounts as accountsActions,
   nav as navActions,
 } from "../../../../store";
 
@@ -29,16 +28,23 @@ const RenderCell = ({ name, iconFunc, last, children }) => {
         {children}
       </div>
     );
-  } else {
-    return (
-      <div className="card soft-ends soft-right text-left outlined--light">
-        <h6 className="soft-left flush display-inline-block">{name}</h6>
-        <i className={`float-right ${icon}`} />
-        {children}
-      </div>
-    );
   }
+  return (
+    <div className="card soft-ends soft-right text-left outlined--light">
+      <h6 className="soft-left flush display-inline-block">{name}</h6>
+      <i className={`float-right ${icon}`} />
+      {children}
+    </div>
+  );
 };
+
+RenderCell.propTypes = {
+  name: PropTypes.string.isRequired,
+  iconFunc: PropTypes.function.isRequired,
+  last: PropTypes.boolean.isRequired,
+  children: PropTypes.object.isRequired,
+};
+
 const mapQueriesToProps = () => ({
   data: {
     query: gql`
@@ -54,8 +60,15 @@ const mapQueriesToProps = () => ({
 @ReactMixin.decorate(Headerable)
 export default class Menu extends Component {
 
-  static contextTypes = {
-    shouldAnimate: PropTypes.bool,
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    data: {
+      refetch: PropTypes.function.isRequired,
+    },
+  }
+
+  state = {
+    upload: "default",
   }
 
   componentWillMount() {
@@ -63,10 +76,6 @@ export default class Menu extends Component {
     this.headerAction({
       title: "Profile",
     });
-  }
-
-  state = {
-    upload: "default",
   }
 
   signout = (e) => {
@@ -94,13 +103,11 @@ export default class Menu extends Component {
       headers: { [tokenName]: token },
       body: data,
     })
-      .then((response) => {
-        return response.json();
-      })
-      .then((id) => {
-        avatar(id, (err, response) => {
+      .then(response => (response.json()))
+      .then(id => {
+        avatar(id, () => {
           this.props.data.refetch()
-            .then((result) => {
+            .then(() => {
               this.setState({
                 upload: "uploaded",
               });
@@ -125,25 +132,29 @@ export default class Menu extends Component {
       case "uploaded":
         // @TODO replace with loading icon
         return "icon-check-mark text-primary";
+      default:
+        return null;
     }
   }
 
   sectionClasses = () => {
     if (process.env.NATIVE) return "hard";
+    return "";
   }
 
   showFeedback = () => {
     if (process.env.NATIVE) {
       return (
-        <a href="#" onClick={this.giveFeedback} className="plain text-dark-secondary">
+        <a onClick={this.giveFeedback} className="plain text-dark-secondary">
           <RenderCell name="Give Feedback" />
         </a>
       );
     }
+    return null;
   }
 
   giveFeedback = () => {
-    if (process.env.NATIVE && typeof hockeyapp != "undefined") hockeyapp.feedback();
+    if (process.env.NATIVE && typeof hockeyapp !== "undefined") hockeyapp.feedback();
   }
 
   dividerClasses = () => {
@@ -154,6 +165,7 @@ export default class Menu extends Component {
 
   outlineClasses = () => {
     if (process.env.NATIVE) return "outlined--light one-whole";
+    return "";
   }
 
   render() {
@@ -170,9 +182,17 @@ export default class Menu extends Component {
               <Link to="/profile/settings/home-address" className="plain text-dark-secondary">
                 <RenderCell name="My Address" />
               </Link>
-              <button className="plain text-dark-secondary display-inline-block one-whole" style={{ position: "relative" }}>
+              <button
+                className="plain text-dark-secondary display-inline-block one-whole"
+                style={{ position: "relative" }}
+              >
                 <RenderCell name="Change Profile Photo" iconFunc={this.uploadIcon}>
-                  <input onChange={this.upload} type="file" className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
+                  <input
+                    onChange={this.upload}
+                    type="file"
+                    className="locked-ends locked-sides"
+                    style={{ opacity: 0, zIndex: 1 }}
+                  />
                 </RenderCell>
               </button>
               <Link to="/profile/settings/change-password" className="plain text-dark-secondary">
@@ -199,17 +219,34 @@ export default class Menu extends Component {
           <div className={this.dividerClasses()}>
             <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
               {this.showFeedback()}
-              <a href="//newspring.cc/privacy" onClick={inAppLink} target="_blank" className="plain text-dark-secondary">
+              <a
+                href="//newspring.cc/privacy"
+                rel="noopener noreferrer"
+                onClick={inAppLink}
+                target="_blank"
+                className="plain text-dark-secondary"
+              >
                 <RenderCell name="Privacy Policy" />
               </a>
-              <a href="//newspring.cc/terms" onClick={inAppLink} target="_blank" className="plain text-dark-secondary">
+              <a
+                href="//newspring.cc/terms"
+                rel="noopener noreferrer"
+                onClick={inAppLink}
+                target="_blank"
+                className="plain text-dark-secondary"
+              >
                 <RenderCell name="Terms of Use" last />
               </a>
             </div>
           </div>
 
           <div className="one-whole text-center push-double-bottom">
-            <button onClick={this.signout} className="btn--dark-tertiary push-top soft-half-ends">Sign Out</button>
+            <button
+              onClick={this.signout}
+              className="btn--dark-tertiary push-top soft-half-ends"
+            >
+              Sign Out
+            </button>
           </div>
         </section>
       </div>

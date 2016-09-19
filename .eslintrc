@@ -13,7 +13,8 @@
   "globals": {
     "__meteor_runtime_config__": true,
     "NativeStorage": true,
-    "ga": true
+    "ga": true,
+    "hockeyapp"
   },
   "rules": {
     "quotes": [2, "double"],
