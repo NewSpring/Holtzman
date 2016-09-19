@@ -1,3 +1,5 @@
+/* eslint-disable react/prefer-stateless-function */
+import Meteor from "meteor/meteor";
 import { Component } from "react";
 import { connect } from "react-redux";
 
@@ -62,7 +64,7 @@ export const client = {
   wrapperProps: { client: GraphQL },
   props: {
     onUpdate() {
-      if (typeof ga != "undefined") {
+      if (typeof ga !== "undefined") {
         ga("send", "pageview");
       }
     },

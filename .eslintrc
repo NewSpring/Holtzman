@@ -12,7 +12,8 @@
   },
   "globals": {
     "__meteor_runtime_config__": true,
-    "NativeStorage": true
+    "NativeStorage": true,
+    "ga": true
   },
   "rules": {
     "quotes": [2, "double"],
