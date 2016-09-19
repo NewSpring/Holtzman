@@ -39,8 +39,6 @@ export default class AudioScrubber extends Component {
   touchMove = (e) => {
     const percent = this.calculatePercent(e.target, e.touches[0].clientX);
 
-    console.log(percent);
-
     this.setState({
       lastPercent: percent,
       override: true
@@ -48,29 +46,23 @@ export default class AudioScrubber extends Component {
   };
 
   touchEnd = (e) => {
-      const percent = this.state.lastPercent;
+    const percent = this.state.lastPercent;
 
-      // setTimeout(() => {
+    if(typeof percent === "number") {
+      this.seek(percent);
+    };
 
-        if(typeof percent === "number") {
-          this.seek(percent);
-        };
-
-        this.setState({
-          lastPercent: percent,
-          override: true
-        });
-
-      // }
-      // , 550);
-
-
+    setTimeout(() => {
+      this.setState({
+        override: false
+      });
+    }, 1000);
   }
 
-  // click = (e) => {
-  //   const percentClicked = this.calculatePercent(e.target, e.clientX);
-  //   this.seek(percentClicked);
-  // }
+  click = (e) => {
+    const percentClicked = this.calculatePercent(e.target, e.clientX);
+    this.seek(percentClicked);
+  }
 
   calculatePercent = (targetElement, clickedX) => {
     var min = targetElement.offsetParent.offsetLeft;
