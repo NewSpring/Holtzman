@@ -20,6 +20,17 @@ const mapQueriesToProps = () => ({
       }
     `,
   },
+  campusLocations: {
+    query: gql`
+      query GetCampuses {
+        campuses {
+          entityId
+          id
+          name
+        }
+      }
+    `
+  }
 });
 const mapStateToProps = (state) => ({ location: state.routing.location });
 let defaultTags = [];
@@ -66,6 +77,7 @@ export default class Filter extends Component {
   render() {
     const {
       attributes,
+      campusLocations,
       showSearch,
       toggleSearch,
       showTags,
@@ -73,6 +85,7 @@ export default class Filter extends Component {
       q,
     } = this.props;
     let tags = attributes.tags ? attributes.tags : defaultTags;
+    let campuses = campusLocations.campuses ? campusLocations.campuses : defaultTags;
     return (
       <div>
 
@@ -81,12 +94,24 @@ export default class Filter extends Component {
           if (!showTags) return null; // hidden
           if (!tags.length) return null; // XXX loading....
           return (
-            <div className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-ends@anchored text-center background--light-primary">
-              <h4 className="soft-half-bottom flush-bottom">
-                Featured Tags
-              </h4>
-              <div className="two-thirds@anchored display-inline-block soft-ends@anchored">
-                {tags.map((tag, key) => <Tag key={key} val={tag.value} />)}
+            <div>
+              <div className="soft-half-sides soft-top soft-double-top@anchored text-center background--light-primary">
+                <h4 className="soft-half-bottom flush-bottom">
+                  Featured Tags
+                </h4>
+                <div className="two-thirds@anchored display-inline-block soft-ends@anchored">
+                  {tags.map((tag, key) => <Tag key={key} val={tag.value} />)}
+                </div>
+              </div>
+              <div className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-bottom@anchored text-center background--light-primary">
+                <h4 className="soft-half-bottom flush-bottom">
+                  Campuses
+                </h4>
+                <div className="two-thirds@anchored display-inline-block soft-ends@anchored">
+                  {campuses.map((campus, key) => (
+                    <Tag key={key} val={campus.name} urlKey="campuses"/>
+                  ))}
+                </div>
               </div>
             </div>
           );

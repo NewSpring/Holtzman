@@ -17,6 +17,7 @@ export default ({
   loading,
   count,
   query,
+  campuses,
   removeQueryString,
   showSearch,
   toggleSearch,
@@ -41,6 +42,16 @@ export default ({
     >
       {tags && tags.map((tag, key) => (
         <Tag style={{verticalAlign: "bottom"}} className="flush-bottom" val={tag} key={key} canBeActive />
+      ))}
+      {campuses && campuses.map((campus, key) => (
+        <Tag
+          style={{verticalAlign: "bottom"}}
+          className="flush-bottom"
+          val={campus}
+          urlKey="campuses"
+          key={key}
+          canBeActive
+        />
       ))}
       <Tag
           style={{verticalAlign: "bottom"}}
