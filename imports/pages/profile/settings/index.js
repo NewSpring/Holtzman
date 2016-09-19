@@ -1,9 +1,8 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 import {
-  accounts as accountsActions,
   nav as navActions,
 } from "../../../store";
 
@@ -38,6 +37,17 @@ const mapQueriesToProps = () => ({
 @withProfileUpload
 @connect({ mapQueriesToProps })
 class Template extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    data: {
+      person: PropTypes.object.isRequired,
+    },
+    location: {
+      pathname: PropTypes.string.isRequired,
+    },
+    children: PropTypes.object.isRequired,
+  }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
