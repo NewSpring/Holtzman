@@ -16,13 +16,13 @@ import Shareable from "../../mixins/mixins.Shareable";
 
 import time from "../../util/time";
 import react from "../../util/react";
-import content from "../../util/content";
+import contentHelpers from "../../util/content";
 import collections from "../../util/collections";
 
 import SingleVideoPlayer from "../../components/players/video/Player";
 import SeriesVideoList from "./series.VideoList";
 
-const mapQueriesToProps = ({ ownProps, state }) => ({
+const mapQueriesToProps = ({ ownProps }) => ({
   currentSermon: {
     query: gql`
       query getSermon($sermonId: ID!) {
@@ -107,6 +107,22 @@ const mapStateToProps = state => ({ live: state.live });
 @ReactMixin.decorate(Headerable)
 export default class SeriesSingleVideo extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    live: {
+      live: PropTypes.boolean.isRequired,
+    },
+    currentSermon: {
+      content: PropTypes.object.isRequired,
+    },
+    series: {
+      content: PropTypes.object.isRequired,
+    },
+    params: {
+      id: PropTypes.string.isRequired,
+    },
+  }
+
   componentWillMount() {
     if (process.env.WEB) return;
 
@@ -152,7 +168,7 @@ export default class SeriesSingleVideo extends Component {
       track: {
         ...currentSermon.content.audio[0],
         title: currentSermon.title,
-        artist: content.speakers(currentSermon),
+        artist: contentHelpers.speakers(currentSermon),
       },
       album: series,
     }));
@@ -174,7 +190,6 @@ export default class SeriesSingleVideo extends Component {
     }
 
     const currentSermon = sermonContent;
-    const series = seriesContent;
 
     return (
       <div className="background--light-primary">
@@ -192,7 +207,7 @@ export default class SeriesSingleVideo extends Component {
         </div>
         <div className="soft soft-double@palm-wide-and-up push-top">
           <h2 className="push-half-bottom">{currentSermon.title}</h2>
-          <h4>{content.speakers(currentSermon)}</h4>
+          <h4>{contentHelpers.speakers(currentSermon)}</h4>
           <h6 className="text-dark-tertiary">{time.date(currentSermon)}</h6>
           <div dangerouslySetInnerHTML={react.markup(currentSermon, "description")} />
         </div>
