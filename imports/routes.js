@@ -1,7 +1,8 @@
-/* eslint-disable */
 import { Routes } from "./pages"
 
-if (process.env.NATIVE) import Home from "./pages/home";
+if (process.env.NATIVE) {
+  import Home from "./pages/home";
+}
 
 const redirectToWelcome = (replace, cb) => {
   if (typeof NativeStorage === "undefined") return cb();
