@@ -7,14 +7,13 @@ import Likes from "../../../blocks/likes";
 import Following from "../../../blocks/following";
 
 import {
-  accounts as accountsActions,
   nav as navActions,
   header as headerActions,
 } from "../../../store";
 
 import withProfileUpload from "../profile-photo";
 
-const mapQueriesToProps = ({ state }) => ({
+const mapQueriesToProps = () => ({
   data: {
     forceFetch: true,
     query: gql`
@@ -39,10 +38,14 @@ const mapStateToProps = state => ({ authorized: state.accounts.authorized });
 @connect({ mapQueriesToProps, mapStateToProps })
 export default class Home extends Component {
 
-  state = {
-    content: 0,
-    photo: null,
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    data: {
+      person: PropTypes.object.isRequired,
+    },
   }
+
+  state = { content: 0, photo: null }
 
   content = [<Likes />, <Following />]
 
@@ -60,7 +63,6 @@ export default class Home extends Component {
 
   render () {
     const { upload } = this.props;
-
     let { person } = this.props.data;
     person || (person = {});
 
