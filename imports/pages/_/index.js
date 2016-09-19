@@ -44,7 +44,7 @@ const Routes = [
         .replace(/\s+/g, "")
         .toLowerCase();
 
-      let [fund, amount] = url.split("/");
+      const [fund, amount] = url.split("/");
 
       const query = gql`
         query CashTag($tag: String!) {
@@ -57,7 +57,6 @@ const Routes = [
 
       GraphQL.query({ query, variables })
         .then(({ data }) => {
-          console.log(data);
           const { account } = data;
           let dest = `/give/campaign/${account.name}`;
 
