@@ -5,7 +5,7 @@ function inherit(Child, Parent) {
   Child = Object.assign(Child, Parent);
 
   // a middle member of prototype chain: takes the prototype from the Parent
-  const Middle = function () {
+  const Middle = () => {
     this.constructor = Child;
   };
   Middle.prototype = Parent.prototype;
@@ -14,4 +14,4 @@ function inherit(Child, Parent) {
   return Child;
 }
 
-export { inherit };
+export default { inherit };

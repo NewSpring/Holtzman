@@ -1,7 +1,7 @@
 
 
 function sectionImage(images) {
-  let bgImage = _.find(images, (image) => (
+  let bgImage = _.find(images, image => (
     image.fileLabel === "1:1"
   ));
 

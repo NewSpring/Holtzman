@@ -2,12 +2,12 @@
 function contentLink(contentItem) {
   const entryId = contentItem.entryId || contentItem.id;
   const category = contentItem.channelName;
+  const seriesId = contentItem.parent && contentItem.parent.entryId;
 
   switch (category) {
     case "series_newspring":
       return `/series/${entryId}`;
     case "sermons":
-      const seriesId = contentItem.parent && contentItem.parent.entryId;
       return `/series/${seriesId}/sermon/${entryId}`;
     case "devotionals":
       return `/devotions/${entryId}`;
@@ -17,6 +17,8 @@ function contentLink(contentItem) {
       return `/articles/${entryId}`;
     case "stories":
       return `/stories/${entryId}`;
+    default:
+      return null;
 
   }
 }

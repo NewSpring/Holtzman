@@ -1,6 +1,5 @@
 /* global _, Meteor */
 
-import { makeNewGuid } from "./../guid";
 import startup from "./startup";
 
 const api = {
@@ -28,16 +27,15 @@ api.registerEndpoint = (obj) => {
   @param callback [Function] callback to run on response
  */
 
-api.call = function (method, endpoint, data, callback) {
+api.call = (method, endpoint, data, callback) => {
   function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
       return response;
-    } else {
-      return {
-        status: response.status,
-        statusText: response.statusText,
-      };
     }
+    return {
+      status: response.status,
+      statusText: response.statusText,
+    };
   }
 
 
@@ -65,7 +63,7 @@ api.call = function (method, endpoint, data, callback) {
     credentials: "same-origin",
   };
 
-  endpoint = this._.baseURL + "api/" + endpoint;
+  endpoint = `${this._.baseURL}api/${endpoint}`;
   return fetch(endpoint, options)
     .then(checkStatus)
     .then((response) => {
@@ -95,51 +93,46 @@ api.call = function (method, endpoint, data, callback) {
 };
 
 
-api.get = function () {
-  let args;
-  args = _.values(arguments);
+api.get = () => {
+  const args = _.values(arguments);
   args.unshift("GET");
   return api.call.apply(this, args);
 };
 
-api.delete = function () {
-  let args;
-  args = _.values(arguments);
+api.delete = () => {
+  const args = _.values(arguments);
   args.unshift("DELETE");
   return api.call.apply(this, args);
 };
 
-api.put = function () {
-  let args;
-  args = _.values(arguments);
+api.put = () => {
+  const args = _.values(arguments);
   args.unshift("PUT");
   return api.call.apply(this, args);
 };
 
-api.post = function () {
-  let args;
-  args = _.values(arguments);
+api.post = () => {
+  const args = _.values(arguments);
   args.unshift("POST");
   return api.call.apply(this, args);
 };
 
-api.patch = function () {
-  let args;
-  args = _.values(arguments);
+api.patch = () => {
+  const args = _.values(arguments);
   args.unshift("PATCH");
   return api.call.apply(this, args);
 };
 
-const parseEndpoint = (str) => {
-  return str.split("\n").map((x) => {
+const parseEndpoint = (str) => (
+  str.split("\n").map((x) => {
     let trimmed = x.trim();
     if (trimmed.slice(-3) === "and" || trimmed.slice(-2) === "or") {
       trimmed += " ";
     }
 
     return trimmed;
-  }).join("");
-};
+  }).join("")
+);
 api.parseEndpoint = parseEndpoint;
 
 if (Meteor.isServer) {
