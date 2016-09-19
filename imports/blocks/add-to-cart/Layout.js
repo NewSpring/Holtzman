@@ -5,7 +5,16 @@ import Forms from "../../components/forms";
 import GiveNow from "../action-buttons";
 
 import SubFund from "./Subfund";
+
 export default class Layout extends Component {
+
+  static propTypes = {
+    accounts: PropTypes.array, // eslint-disable-line
+    preFill: PropTypes.func,
+    total: PropTypes.string,
+    monentize: PropTypes.func,
+    donate: PropTypes.func,
+  }
 
   state = {
     SubFundInstances: 1,
@@ -18,10 +27,8 @@ export default class Layout extends Component {
   }
 
   update = (key, value, amount) => {
-    const getInstance = (id) => {
-      const instance = this.state.instances.filter((x) => {
-        return x.id === key;
-      });
+    const getInstance = () => {
+      const instance = this.state.instances.filter(x => (x.id === key));
 
       return instance && instance[0];
     };
@@ -56,21 +63,18 @@ export default class Layout extends Component {
     }
   }
 
-  remove = (key, value) => {
-    let newInstances = this.state.instances.filter((x) => {
-      return x.id != key;
-    });
+  remove = (key) => {
+    let newInstances = this.state.instances.filter(x => (x.id !== key));
 
     // if an instance is removed and that instance is not at the end
     if (key !== 0 &&
-        this.state.instances.length > newInstances.length &&
-        this.state.instances.length !== key + 1)
-      {
-        // currently no good way to reorder sub funds
-        // so, force re-render and fill the data back in
+      this.state.instances.length > newInstances.length &&
+      this.state.instances.length !== key + 1) {
+      // currently no good way to reorder sub funds
+      // so, force re-render and fill the data back in
       this.setState({ SubFundInstances: 1 });
 
-        // remap ids
+      // remap ids
       newInstances = newInstances.map((newInstance, i) => {
         newInstance.id = i;
         return newInstance;
@@ -94,17 +98,14 @@ export default class Layout extends Component {
   render() {
     const {
       accounts,
-      save,
-      format,
       preFill,
       total,
-      transactions,
       monentize,
       donate,
     } = this.props;
 
     const accountsCount = [];
-    for (let i = 0; i < this.state.SubFundInstances; i++) {
+    for (let i = 0; i < this.state.SubFundInstances; i += 1) {
       accountsCount.push(i);
     }
 
@@ -119,23 +120,23 @@ export default class Layout extends Component {
           <div className="display-inline-block">
             {accountsCount.map((key) => {
               // collect data for re-render on reorder
-              let selectVal, inputVal;
+              let selectVal;
+              let inputVal;
+
               const existingInstance = this.state.instances[key];
               if (existingInstance) {
                 selectVal = existingInstance.accountId;
                 inputVal = existingInstance.amount;
               }
 
-              const instanceAccounts = this.state.instances.map((x) => {
-                return x.accountId;
-              });
+              const instanceAccounts = this.state.instances.map(x => (x.accountId));
 
               const copiedAccounts = [...accounts].filter((x) => {
-                const alreadySelectedByThisInstance = this.state.instances.filter((y) => {
-                  return y.id === key;
-                });
+                const alreadySelectedByThisInstance =
+                  this.state.instances.filter(y => (y.id === key));
 
-                if (alreadySelectedByThisInstance.length && Number(alreadySelectedByThisInstance[0].accountId) === x.value) {
+                if (alreadySelectedByThisInstance.length
+                    && Number(alreadySelectedByThisInstance[0].accountId) === x.value) {
                   return true;
                 }
 
