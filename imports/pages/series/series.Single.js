@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
@@ -22,9 +22,8 @@ import react from "../../util/react";
 import SeriesHero from "./series.Hero";
 import SeriesVideoList from "./series.VideoList";
 
-const mapQueriesToProps = ({ ownProps, state }) => {
-  const pathParts = state.routing.location.pathname.split("/");
-  return {
+const mapQueriesToProps = ({ ownProps }) => (
+  {
     series: {
       query: gql`
         query getSeriesSingle($id: ID!) {
@@ -66,13 +65,24 @@ const mapQueriesToProps = ({ ownProps, state }) => {
       forceFetch: false,
       returnPartialData: false,
     },
-  };
-};
+  }
+);
+
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
 export default class SeriesSingle extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    series: {
+      content: PropTypes.object.isRequired,
+    },
+    params: {
+      id: PropTypes.string.isRequired,
+    },
+  }
 
   componentWillMount() {
     if (process.env.WEB) return;
