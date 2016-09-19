@@ -310,12 +310,7 @@ function* submitPersonDetails(give, autoSubmit) {
         // console.log("error dark", error);
       })
 
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
     yield delay(300); // ensure gift is in nmi's system beofre progressing
-
-=======
-    yield delay(50); // ensure gift is in nmi's system beofre progressing
->>>>>>> lint fix yayayayay
   }
 
   // update the store with the url

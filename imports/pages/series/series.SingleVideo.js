@@ -125,13 +125,8 @@ export default class SeriesSingleVideo extends Component {
   }
 
   handleHeader = (nextProps) => {
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
     const content = nextProps.series.content;
     if(!content) return;
-=======
-    const { content } = nextProps.series;
-    if (!content) return;
->>>>>>> lint fix yayayayay
 
     const { isLight } = nextProps.series.content.content;
     const color = collections.color(content);
@@ -140,12 +135,8 @@ export default class SeriesSingleVideo extends Component {
 
     const options = {
       title: "Series",
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
       color: color,
-      light: !isLight
-=======
-      color,
->>>>>>> lint fix yayayayay
+      light: !isLight,
     };
 
     if (!live) options.subTitle = content.title;

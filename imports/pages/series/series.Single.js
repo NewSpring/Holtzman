@@ -92,7 +92,6 @@ export default class SeriesSingle extends Component {
   }
 
   handleHeaderStyle = (nextProps) => {
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
     const content = nextProps.series.content;
     if(!content) return;
     const { isLight } = nextProps.series.content.content;
@@ -101,15 +100,6 @@ export default class SeriesSingle extends Component {
       title: "Series",
       color: color,
       light: !isLight,
-=======
-    const { content } = nextProps.series;
-    if (!content) return;
-
-    const color = collections.color(content);
-    this.props.dispatch(headerActions.set({
-      title: "Series",
-      color,
->>>>>>> lint fix yayayayay
     }));
   }
 
