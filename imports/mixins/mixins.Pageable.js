@@ -12,13 +12,13 @@ const Pageable = {
     this.props.dispatch(pagingActions.reset());
   },
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     if (nextProps.data.loading) return false;
 
     return true;
   },
 
-  _pageOnScroll(event) {
+  _pageOnScroll() {
     if (this.props.paging.done) return;
 
     const scrollPosition = window.scrollY;
@@ -26,7 +26,10 @@ const Pageable = {
     const contentHeight = document.body.clientHeight;
     const threshold = 0.7;
 
-    if ((scrollPosition + deviceHeight) / contentHeight > threshold && this.props.paging.shouldUpdate) {
+    if (
+      (scrollPosition + deviceHeight) / contentHeight > threshold &&
+      this.props.paging.shouldUpdate
+    ) {
       this.props.dispatch(pagingActions.pause());
       this.props.dispatch(pagingActions.increment());
 

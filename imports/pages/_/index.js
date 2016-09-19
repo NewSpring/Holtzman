@@ -44,7 +44,7 @@ const Routes = [
         .replace(/\s+/g, "")
         .toLowerCase();
 
-      let [fund, amount] = url.split("/");
+      const [fund, amount] = url.split("/");
 
       const query = gql`
         query CashTag($tag: String!) {
