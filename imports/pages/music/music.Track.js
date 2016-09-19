@@ -9,10 +9,19 @@ import ListDetail from "./music.ListDetail";
 export default class AudioTrack extends Component {
 
   static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    album: {
+      content: {
+        tracks: PropTypes.array.isRequired,
+      },
+    },
+    albumTitle: PropTypes.string.isRequired,
     track: PropTypes.object.isRequired,
+    trackNumber: PropTypes.number.isRequired,
+    active: PropTypes.boolean.isRequired,
   }
 
-  ListDetail = (event) => {
+  ListDetail = () => {
     this.props.dispatch(modal.render(ListDetail, {
       modalBackground: "dark",
       album: this.props.album,
@@ -60,7 +69,6 @@ export default class AudioTrack extends Component {
 
     if (!track.file) {
       // XXX Do something, probably like telling them they cannot listen
-      console.log("No file to play!");
       return;
     }
 
@@ -77,13 +85,20 @@ export default class AudioTrack extends Component {
   render() {
     return (
       <div className="grid floating">
-        <p onClick={this.play} className="grid__item text-left eight-ninths ellipsis push-half-ends">
+        <p
+          onClick={this.play}
+          className="grid__item text-left eight-ninths ellipsis push-half-ends"
+        >
           {this.props.track.title}
           <span className="text-dark-tertiary display-block small flush">
             {this.props.albumTitle}
           </span>
         </p>
-        <span onClick={this.ListDetail} data-track={this.props.trackNumber} className="text-dark-tertiary grid__item one-tenth floating__item">
+        <span
+          onClick={this.ListDetail}
+          data-track={this.props.trackNumber}
+          className="text-dark-tertiary grid__item one-tenth floating__item"
+        >
           •••
         </span>
       </div>
