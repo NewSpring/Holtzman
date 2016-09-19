@@ -1,5 +1,5 @@
 import Likes from "../database/collections/likes";
-import { nav as navActions, liked as likedActions, modal } from "../store";
+import { liked as likedActions, modal } from "../store";
 import OnBoard from "../blocks/accounts";
 
 import backgrounds from "../util/backgrounds";
@@ -40,6 +40,7 @@ const Likeable = {
     if (props.currentSermon) return props.currentSermon.content;
     if (props.series) return props.series.content;
     if (props.album) return props.album.content;
+    return null;
   },
 
   updateRedux(entry) {
@@ -57,6 +58,7 @@ const Likeable = {
 
     // update database
     if (foundLike) {
+      // eslint-disable-next-line no-underscore-dangle
       Likes.remove(foundLike._id);
     } else {
       if (entry.channelName === "sermons") {
