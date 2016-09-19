@@ -2,15 +2,31 @@ import { Component, PropTypes } from "react";
 import Moment from "moment";
 import { css } from "aphrodite";
 
-import Loading from "../../components/loading";
 import Forms from "../../components/forms";
 import GiveNow from "../action-buttons";
 import Styles from "./styles-css";
 
 export default class Layout extends Component {
 
+  static propTypes = {
+    schedules: PropTypes.string,
+    save: PropTypes.string,
+    accounts: PropTypes.array, // eslint-disable-line
+    setFund: PropTypes.func,
+    state: PropTypes.string,
+    format: PropTypes.string,
+    total: PropTypes.string,
+    saveDate: PropTypes.func,
+    setFrequency: PropTypes.func,
+    existing: PropTypes.string,
+    ready: PropTypes.string,
+    text: PropTypes.string,
+    onSubmitSchedule: PropTypes.func,
+    dataId: PropTypes.string,
+  }
+
   render() {
-    let {
+    const {
       schedules,
       setFrequency,
       accounts,
@@ -21,11 +37,10 @@ export default class Layout extends Component {
       total,
       saveDate,
       existing,
-      date,
       ready,
     } = this.props;
 
-    total || (total = 0);
+    total || (total = 0); // eslint-disable-line
 
     let prefillFund = accounts[0].value;
     if (existing && existing.details && existing.details.length && existing.details[0].account) {
@@ -61,7 +76,7 @@ export default class Layout extends Component {
             validate={save}
             format={format}
             style={{ width: "200px" }}
-            defaultValue={existing && existing.details && existing.details.length && existing.details[0].amount ? "$" + existing.details[0].amount : null}
+            defaultValue={existing && existing.details && existing.details.length && existing.details[0].amount ? `$${existing.details[0].amount}` : null}
           />
           <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
             to&nbsp;
@@ -108,7 +123,7 @@ export default class Layout extends Component {
             placeholder="select date"
             past={false}
             today={false}
-            format={value => (Moment(value).format("MMM D, YYYY"))}
+            format={value => (Moment(value).format("MMM D, YYYY"))} // eslint-disable-line
             validation={saveDate}
             defaultValue={defaultDate}
           />

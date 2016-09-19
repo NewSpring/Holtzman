@@ -1,7 +1,7 @@
 import { StyleSheet } from "aphrodite";
 
 export default StyleSheet.create({
-  "select": {
+  "select": { // eslint-disable-line
     ":after": {
       top: "15px !important",
     },
