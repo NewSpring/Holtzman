@@ -1,9 +1,8 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 import {
-  accounts as accountsActions,
   nav as navActions,
 } from "../../../store";
 
@@ -38,6 +37,17 @@ const mapQueriesToProps = () => ({
 @connect({ mapQueriesToProps })
 class Template extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    data: {
+      person: PropTypes.object.isRequired,
+    },
+    location: {
+      pathname: PropTypes.string.isRequired,
+    },
+    children: PropTypes.object.isRequired,
+  }
+
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
   }
@@ -59,11 +69,9 @@ class Template extends Component {
       headers: { [tokenName]: token },
       body: data,
     })
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => (response.json()))
       .then((id) => {
-        avatar(id, (err, response) => {
+        avatar(id, () => {
           updateUser(Meteor.userId(), this.props.dispatch);
         });
       });
@@ -75,17 +83,14 @@ class Template extends Component {
     };
 
     for (const file in files) {
-      // console.log(files[file])
-      const { name } = files[file];
       const reader = new FileReader();
 
       // Closure to capture the file information.
-      reader.onload = ((theFile) => {
-        return (e) => {
-          // Render thumbnail.
-          return save(e.target.result);
-        };
-      })(files[file]);
+      reader.onload = (() => (
+        (event) => (
+          save(event.target.result) // Render thumbnail
+        )
+      ))(files[file]);
 
       // Read in the image file as a data URL.
       reader.readAsDataURL(files[file]);
