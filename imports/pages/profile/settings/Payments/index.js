@@ -2,8 +2,7 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
-import { nav, give as giveActions } from "../../../../store";
-import Loading from "../../../../components/loading";
+import { nav } from "../../../../store";
 
 import Layout from "./Layout";
 
@@ -26,18 +25,21 @@ const mapQueriesToProps = () => ({
     `,
   },
 });
-const defaultAccounts = [];
 @connect({ mapQueriesToProps })
 export default class GiveNow extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    data: {
+      loading: PropTypes.boolean.isRequired,
+      refetch: PropTypes.function.isRequired,
+    },
+  }
 
   state = { accounts: [] }
 
   componentWillMount() {
     this.props.dispatch(nav.setLevel("BASIC_CONTENT"));
-  }
-
-  componentWillUnmount() {
-    this.props.dispatch(nav.setLevel("TOP"));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,15 +48,18 @@ export default class GiveNow extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.dispatch(nav.setLevel("TOP"));
+  }
 
   remove = (e) => {
     e.preventDefault();
     const { id } = e.target;
 
-    const accounts = this.state.accounts.filter(x => x.id != id);
+    const accounts = this.state.accounts.filter(x => x.id !== id);
 
     this.setState({ accounts });
-    Meteor.call("PaymentAccounts.remove", id, (err, response) => {
+    Meteor.call("PaymentAccounts.remove", id, () => {
       // XXX mutation
       this.props.data.refetch(); // clear out data store for newly missing account
     });
