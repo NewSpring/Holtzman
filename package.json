@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "posttest": "npm run lint",
     "lint-fix": "eslint ./ --fix",
     "lint": "eslint ./imports ./client ./server",
     "storybook": "start-storybook -p 6006",
