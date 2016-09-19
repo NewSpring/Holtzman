@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Util from "./_";
 import Give from "./give";
 import Groups from "./groups";
@@ -43,6 +44,10 @@ if (process.env.NATIVE) {
 }
 
 Routes = Routes.concat(Signup.Routes, Util.Routes);
+
+export default {
+  Routes,
+};
 
 export {
   Routes,
