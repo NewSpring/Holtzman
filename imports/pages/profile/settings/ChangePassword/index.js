@@ -1,5 +1,4 @@
 import { Component, PropTypes } from "react";
-import { Link } from "react-router";
 import { connect } from "react-redux";
 
 import { nav } from "../../../../store";
@@ -11,6 +10,10 @@ import Layout from "./Layout";
 
 @connect()
 export default class ChangePassword extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+  }
 
   state = {
     current: null,
@@ -31,7 +34,7 @@ export default class ChangePassword extends Component {
     e.preventDefault();
     this.setState({ state: "loading" });
 
-    reset(this.state.current, this.state.newP, (err, result) => {
+    reset(this.state.current, this.state.newP, (err) => {
       if (err) {
         this.setState({ state: "error", err });
         setTimeout(() => {
@@ -52,11 +55,11 @@ export default class ChangePassword extends Component {
   save = (value, input) => {
     const { id } = input;
 
-    if (id === "newPDup" && this.state.newP && this.state.newP != value) {
+    if (id === "newPDup" && this.state.newP && this.state.newP !== value) {
       return false;
     }
 
-    if (id === "newP" && this.state.newPDup && this.state.newPDup != value) {
+    if (id === "newP" && this.state.newPDup && this.state.newPDup !== value) {
       return false;
     }
 
