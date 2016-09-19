@@ -11,7 +11,7 @@ const responsiveBindings = store => next => (action) => {
 
   // XXX figure out how to get width on the server
   if (typeof window === "undefined" || window === null) {
-    return;
+    return null;
   }
 
   const { dispatch, getState } = store;
@@ -42,12 +42,12 @@ const responsiveBindings = store => next => (action) => {
   const onBodyResize = () => {
     const { responsive } = getState();
 
-    const w = window,
-      d = document,
-      e = d.documentElement,
-      g = d.getElementsByTagName("body")[0],
-      x = w.innerWidth || e.clientWidth || g.clientWidth,
-      y = w.innerHeight || e.clientHeight || g.clientHeight;
+    const w = window;
+    const d = document;
+    const e = d.documentElement;
+    const g = d.getElementsByTagName("body")[0];
+    const x = w.innerWidth || e.clientWidth || g.clientWidth;
+    const y = w.innerHeight || e.clientHeight || g.clientHeight;
 
     dispatch(actions.setWidth(x));
     dispatch(actions.setHeight(y));

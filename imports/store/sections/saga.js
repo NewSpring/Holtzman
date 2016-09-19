@@ -1,3 +1,5 @@
+/* global __meteor_runtime_config__ */
+
 import "regenerator-runtime/runtime";
 
 import { fork, put } from "redux-saga/effects";
@@ -71,23 +73,23 @@ function* getSectionsData() {
     if (!images.length) return null;
 
     // prefer 1x1 image
-    const oneByOne = _.find(images, (image) => {
-      return image.label === "1:1";
-    });
+    const oneByOne = _.find(images, image => (
+      image.label === "1:1"
+    ));
 
     if (oneByOne) return oneByOne.url;
 
     // then try 2x1, especially for devotions that only have 2x1
-    const twoByOne = _.find(images, (image) => {
-      return image.label === "2:1";
-    });
+    const twoByOne = _.find(images, image => (
+      image.label === "2:1"
+    ));
 
     if (twoByOne) return twoByOne.url;
 
     // then try default, for devotions with leather times
-    const defaultImage = _.find(images, (image) => {
-      return image.label === "default";
-    });
+    const defaultImage = _.find(images, image => (
+      image.label === "default"
+    ));
 
     if (defaultImage) return defaultImage.url;
 
@@ -120,7 +122,7 @@ function* getSectionsData() {
 
       // pre download images for super speed
       if (process.env.NATIVE && sections[section].image) {
-        if (typeof window != "undefined" && window != null) {
+        if (typeof window !== "undefined" && window !== null) {
           const img = document.createElement("img");
           img.src = sections[section].image;
         }
@@ -136,11 +138,11 @@ function* getSectionsData() {
       const regex = new RegExp(__meteor_runtime_config__.ROOT_URL, "gmi");
       if (url.match(regex)) {
         url = url.replace(regex, "");
-        if (url[0] != "/") {
-          url = "/" + url;
+        if (url[0] !== "/") {
+          url = `/${url}`;
         }
       } else {
-        url = "//newspring.cc" + url;
+        url = `//newspring.cc${url}`;
       }
 
       sections[section].link = url;
@@ -156,6 +158,6 @@ function* getSectionsData() {
   yield put(set(navigation));
 }
 
-addSaga(function* sectionsSaga(getState) {
+addSaga(function* sectionsSaga() {
   yield fork(getSectionsData);
 });

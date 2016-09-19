@@ -1,11 +1,11 @@
 
 import "regenerator-runtime/runtime";
 import { takeLatest } from "redux-saga";
-import { fork, put, cps, select } from "redux-saga/effects";
+import { fork, select } from "redux-saga/effects";
 import { addSaga } from "../utilities";
 
 
-function* share({ payload }) {
+function* shareAction() {
   const { share } = yield select();
   const msg = {};
 
@@ -19,13 +19,13 @@ function* share({ payload }) {
   if (msg.image) delete msg.image;
 
   if (
-    typeof window != "undefined" &&
+    typeof window !== "undefined" &&
     window != null &&
     window.socialmessage &&
     Object.keys(msg).length
   ) {
     if (msg.image && msg.image[0] === "/") {
-      msg.image = "http:" + msg.image;
+      msg.image = `http:${msg.image}`;
     }
 
     window.socialmessage.send(msg);
@@ -33,5 +33,5 @@ function* share({ payload }) {
 }
 
 addSaga(function* shareSaga() {
-  yield fork(takeLatest, "SHARE.SHARE", share);
+  yield fork(takeLatest, "SHARE.SHARE", shareAction);
 });
