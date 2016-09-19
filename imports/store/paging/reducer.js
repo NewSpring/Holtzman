@@ -7,7 +7,7 @@ const initial = {
 };
 
 export default function paging(state = initial, action) {
-  switch(action.type) {
+  switch (action.type) {
     case "PAGING.INCREMENT":
       return { ...state, ...{
         page: state.page + 1,

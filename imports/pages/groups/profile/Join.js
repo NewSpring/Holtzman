@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 
 import Forms from "../../../components/forms";
 import { Error as Err, Loading, Success } from "../../../components/states";
@@ -21,12 +21,12 @@ export default class Join extends Component {
     });
   }
 
-  render () {
+  render() {
     const { group, onExit } = this.props;
-    let leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"));
-    let firstNames = leaders.map((x, i) => (x.person.nickName || x.person.firstName)).join(", ");
+    const leaders = group.members.filter(x => (x.role.toLowerCase() === "leader"));
+    const firstNames = leaders.map((x, i) => (x.person.nickName || x.person.firstName)).join(", ");
 
-    let message = `\nHey${" " + firstNames},\n\nI'm interested in joining your group and looking forward to hearing from you soon!\n\nThanks!`;
+    const message = `\nHey${" " + firstNames},\n\nI'm interested in joining your group and looking forward to hearing from you soon!\n\nThanks!`;
     switch (this.state.state) {
       case "loading":
         return <Loading msg="We're sending your request!" />;
@@ -53,17 +53,17 @@ export default class Join extends Component {
           Request to Join {group.name}
         </h4>
         <Forms.Form
-            id="message-form"
-            classes={["hard"]}
-            submit={this.onClick}
+          id="message-form"
+          classes={["hard"]}
+          submit={this.onClick}
         >
           <Forms.TextArea
-              label="Your Message (click message to edit)"
-              name="message"
-              classes={["hard-bottom", "push-half-ends"]}
-              inputClasses="text-dark-secondary"
-              rows={10}
-              defaultValue={message}
+            label="Your Message (click message to edit)"
+            name="message"
+            classes={["hard-bottom", "push-half-ends"]}
+            inputClasses="text-dark-secondary"
+            rows={10}
+            defaultValue={message}
           />
           <div className="grid">
             <div className="grid__item one-half">

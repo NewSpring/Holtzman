@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import Moment from "moment";
 import { Link } from "react-router";
 
@@ -15,7 +15,7 @@ import { TransactionCard } from "../../history/Layout";
 export default class Layout extends Component {
 
   static contextTypes = {
-    shouldAnimate: PropTypes.bool
+    shouldAnimate: PropTypes.bool,
   }
 
   formatDate = (date) => {
@@ -23,7 +23,6 @@ export default class Layout extends Component {
   }
 
   monentize = (value, fixed) => {
-
     if (typeof value === "number") {
       value = `${value}`;
     }
@@ -34,7 +33,7 @@ export default class Layout extends Component {
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -48,8 +47,7 @@ export default class Layout extends Component {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  render () {
-
+  render() {
     const {
       schedule,
       stop,
@@ -58,7 +56,7 @@ export default class Layout extends Component {
       complete,
       ready,
       entries,
-      loadingEntries
+      loadingEntries,
     } = this.props;
 
     return (
@@ -69,7 +67,7 @@ export default class Layout extends Component {
             <Meta title="Giving Schedule" />
 
             <Right background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-                mobile={false}
+              mobile={false}
             />
           </Split>
           <Left scroll classes={["background--light-secondary"]} ref="container">
@@ -79,8 +77,8 @@ export default class Layout extends Component {
                 if (process.env.WEB) {
                   return (
                     <Link to="/give/schedules" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
-                      <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}} />
-                      <span className="display-inline-block" style={{verticalAlign: "middle", marginTop: "3px"}}>Back</span>
+                      <i className="icon-arrow-back soft-half-right display-inline-block" style={{ verticalAlign: "middle" }} />
+                      <span className="display-inline-block" style={{ verticalAlign: "middle", marginTop: "3px" }}>Back</span>
                     </Link>
                   );
                 }
@@ -88,12 +86,11 @@ export default class Layout extends Component {
               <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
                 <div className="soft-double-ends@anchored">
                   {(() => {
-
                     if (!schedule || !ready) {
                       // loading
                       return (
                         <div className="text-center soft">
-                          <Spinner styles={{width: "40px", height: "40px"}}/>
+                          <Spinner styles={{ width: "40px", height: "40px" }} />
                         </div>
                       );
                     }
@@ -118,7 +115,7 @@ export default class Layout extends Component {
                                 {(() => {
                                   if (detail.paymentType && detail.paymentType === "ACH") {
                                     return (
-                                      <AccountType width="30px" height="20px" type="Bank"/>
+                                      <AccountType width="30px" height="20px" type="Bank" />
                                     );
                                   } else if (detail.paymentType) {
                                     return (
@@ -132,7 +129,6 @@ export default class Layout extends Component {
                           }
                         })()}
                         {(() => {
-
                           if (complete) {
                             return (
                               <h6 className="text-brand">
@@ -143,7 +139,7 @@ export default class Layout extends Component {
 
                           if (active) {
                             return (
-                              <h6 className="text-alert" onClick={stop} style={{cursor: "pointer"}}>
+                              <h6 className="text-alert" onClick={stop} style={{ cursor: "pointer" }}>
                                 Stop Contribution
                               </h6>
                             );
@@ -154,7 +150,6 @@ export default class Layout extends Component {
                               Contribution Stopped
                             </h6>
                           );
-
                         })()}
 
                         <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
@@ -162,7 +157,6 @@ export default class Layout extends Component {
                         </p>
                       </div>
                     );
-
                   })()}
 
                 </div>
@@ -170,12 +164,11 @@ export default class Layout extends Component {
             </div>
 
 
-
             <div className="soft-half soft-sides@portable soft-double-sides@anchored">
 
               {(() => {
                 if (!schedule) return null;
-                let { transactions } = schedule;
+                const { transactions } = schedule;
                 if (!transactions.length && ready) {
                   return (
                     <div className="text-left soft-double-top soft-half-sides">
@@ -202,7 +195,7 @@ export default class Layout extends Component {
 
                           if (Number(transactionDetail.amount) <= 0) return null;
 
-                          let year = Moment(transaction.date).year();
+                          const year = Moment(transaction.date).year();
                           if (year != lastYear) {
                             lastYear = year;
                             return (
@@ -211,21 +204,20 @@ export default class Layout extends Component {
                                   <h5>{year}</h5>
                                 </div>
                                 <TransactionCard
-                                    transaction={transaction}
-                                    transactionDetail={transactionDetail}
-                                    person={person}
+                                  transaction={transaction}
+                                  transactionDetail={transactionDetail}
+                                  person={person}
                                 />
                               </div>
                             );
-
                           }
 
                           return (
                             <TransactionCard
-                                transaction={transaction}
-                                transactionDetail={transactionDetail}
-                                key={i}
-                                person={person}
+                              transaction={transaction}
+                              transactionDetail={transactionDetail}
+                              key={i}
+                              person={person}
                             />
                           );
                         })}
@@ -236,7 +228,7 @@ export default class Layout extends Component {
                 );
               })()}
 
-              <hr className="push-double-top flush-bottom"/>
+              <hr className="push-double-top flush-bottom" />
               <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
                 Recent Articles About Giving
               </h4>
@@ -249,9 +241,9 @@ export default class Layout extends Component {
                     {entries && entries.map((entry, key) => (
                       <div key={key} className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
                         <SideBySide
-                            classes={["push-bottom@lap-and-up"]}
-                            images={entry.content.images}
-                            defaultImage={entry.content.images[0].url}
+                          classes={["push-bottom@lap-and-up"]}
+                          images={entry.content.images}
+                          defaultImage={entry.content.images[0].url}
                         >
                           <h4 className="push-half-top@portable push-top@anchored">
                             {entry.title}
@@ -262,9 +254,9 @@ export default class Layout extends Component {
                             if (process.env.WEB) {
                               return (
                                 <a
-                                    target="_blank"
-                                    href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
-                                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                                  target="_blank"
+                                  href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
+                                  className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
                                 >
                                   Read more
                                 </a>
@@ -274,8 +266,8 @@ export default class Layout extends Component {
                             if (process.env.NATIVE) {
                               return (
                                 <Link
-                                    to={`/articles/${entry.entryId}`}
-                                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                                  to={`/articles/${entry.entryId}`}
+                                  className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
                                 >
                                   Read more
                                 </Link>
@@ -289,7 +281,6 @@ export default class Layout extends Component {
                     ))}
                   </div>
                 );
-
               })()}
             </div>
 

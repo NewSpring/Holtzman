@@ -25,7 +25,7 @@ export default class MiniPlayer extends Component {
   };
 
   layoutClasses = () => {
-    let classes = [
+    const classes = [
       "locked-bottom",
       "one-whole",
       "background--light-tertiary",
@@ -49,7 +49,7 @@ export default class MiniPlayer extends Component {
   }
 
   stopClasses = () => {
-    let classes = [
+    const classes = [
       "locked-bottom",
       "one-whole",
       "background--alert",
@@ -71,7 +71,7 @@ export default class MiniPlayer extends Component {
   }
 
   stopH6IconClasses = () => {
-    let classes = [
+    const classes = [
       "icon-close",
       "display-inline-block",
       "push-half-sides",
@@ -81,13 +81,13 @@ export default class MiniPlayer extends Component {
   }
 
   albumClasses = () => {
-    let classes = [
+    const classes = [
       "background--fill",
       "ratio--square",
       "float-left",
       "push-half-right",
       "background--primary",
-      "floating__item"
+      "floating__item",
     ];
     classes.push(css(Styles["mini-album-cover"]));
 
@@ -180,7 +180,7 @@ export default class MiniPlayer extends Component {
 
   playerStyle = () => {
     return {
-      left: `${this.state.lastPercent}%`
+      left: `${this.state.lastPercent}%`,
     };
   }
 
@@ -203,8 +203,7 @@ export default class MiniPlayer extends Component {
     return `${artistName} – ${collectionTitle}`;
   }
 
-  render () {
-
+  render() {
     const { state, playing, progress } = this.props.audio;
     const { album, track } = playing;
     const { images } = album.content;
@@ -215,17 +214,17 @@ export default class MiniPlayer extends Component {
         return image.size === "small";
       }
     });
-    const playlist = [ track ];
+    const playlist = [track];
 
     const bgImageStyle = {
-      backgroundImage: "url(" + smallImage.url + ")"
+      backgroundImage: "url(" + smallImage.url + ")",
     };
 
     return (
       <div className={this.fadeClass()}>
         <div
-            className={this.stopClasses()}
-            style={{ left: `${-(100 - this.state.lastPercent)}%` }}
+          className={this.stopClasses()}
+          style={{ left: `${-(100 - this.state.lastPercent)}%` }}
         >
           <h6 className={this.stopH6Classes()}>
             Stop Audio
@@ -233,16 +232,16 @@ export default class MiniPlayer extends Component {
           </h6>
         </div>
         <div
-            onClick={this.openFullPlayer}
-            className={this.props.theme || this.layoutClasses()}
-            onTouchStart={this.touchStart}
-            onTouchMove={this.touchMove}
-            onTouchEnd={this.touchEnd}
-            style={this.playerStyle()}
+          onClick={this.openFullPlayer}
+          className={this.props.theme || this.layoutClasses()}
+          onTouchStart={this.touchStart}
+          onTouchMove={this.touchMove}
+          onTouchEnd={this.touchEnd}
+          style={this.playerStyle()}
         >
           <div
-              className={this.albumClasses()}
-              style={bgImageStyle}
+            className={this.albumClasses()}
+            style={bgImageStyle}
           />
           <div className="plain floating__item six-eighths truncate">
             <h6 className="display-block text-dark-secondary flush">
@@ -253,8 +252,8 @@ export default class MiniPlayer extends Component {
             </h7>
           </div>
           <AudioControls
-              audio={this.props.audio}
-              isLight
+            audio={this.props.audio}
+            isLight
           />
         </div>
       </div>

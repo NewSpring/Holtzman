@@ -15,20 +15,20 @@ const Leaf = ({ size, color, type, style, className }) => {
   );
 };
 
-const OutlinedLeaf = (props) => (
-  <Leaf type="leaf-outline" {...props}/>
+const OutlinedLeaf = props => (
+  <Leaf type="leaf-outline" {...props} />
 );
 
-const SolidLeaf = (props) => (
-  <Leaf type="leaf-solid" {...props}/>
+const SolidLeaf = props => (
+  <Leaf type="leaf-solid" {...props} />
 );
 
-const StripedLeaf = (props) => (
-  <Leaf type="leaf-striped" {...props}/>
+const StripedLeaf = props => (
+  <Leaf type="leaf-striped" {...props} />
 );
 
-const Logo = (props) => (
-  <Leaf type="logo" {...props}/>
+const Logo = props => (
+  <Leaf type="logo" {...props} />
 );
 
 export {

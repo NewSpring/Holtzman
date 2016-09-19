@@ -50,11 +50,11 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
-  }
+  },
 });
 
-const mapStateToProps = (store) => ({ give: store.give });
-let defaultArray = [];
+const mapStateToProps = store => ({ give: store.give });
+const defaultArray = [];
 
 @connect({ mapStateToProps, mapQueriesToProps })
 export default class Template extends Component {
@@ -96,24 +96,23 @@ export default class Template extends Component {
         Meteor.call("give/schedule/cancel", { id }, (err, response) => {
           // console.log(err, response)
         });
-      }
+      },
     }));
-
   }
 
 
-  render () {
+  render() {
     const { schedules, give, data, accounts } = this.props;
     const { recoverableSchedules } = give;
 
     return (
       <Layout
-          ready={!this.props.data.loading}
-          accounts={accounts.accounts || defaultArray}
-          cancelSchedule={this.cancel}
-          recoverableSchedules={data.transactions || defaultArray}
-          confirm={this.confirm}
-          person={this.props.data.person || {}}
+        ready={!this.props.data.loading}
+        accounts={accounts.accounts || defaultArray}
+        cancelSchedule={this.cancel}
+        recoverableSchedules={data.transactions || defaultArray}
+        confirm={this.confirm}
+        person={this.props.data.person || {}}
       />
     );
   }

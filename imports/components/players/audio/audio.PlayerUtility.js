@@ -12,7 +12,7 @@ import Track from "./audio.Track";
 // We only care about the audio state
 function mapStateToProps(state) {
   return {
-    audio: state.audio
+    audio: state.audio,
   };
 }
 
@@ -21,7 +21,6 @@ export default class AudioPlayerUtility extends Component {
 
 
   componentWillUpdate(nextProps, nextState) {
-
     const nextAudio = nextProps.audio;
     const { audio } = this.props;
 
@@ -47,14 +46,12 @@ export default class AudioPlayerUtility extends Component {
         this.previous();
         return;
       }
-
     }
 
     // seeking
     if (audio.seek != nextAudio.seek) {
       this.seek(nextAudio.seek);
     }
-
   }
 
   tracksWithFiles = () => {
@@ -65,7 +62,6 @@ export default class AudioPlayerUtility extends Component {
   }
 
   createPlayer = (track, autoload) => {
-
     // only make sweet jams on client side
     if (typeof window === "undefined" || window === null) {
       return;
@@ -88,7 +84,6 @@ export default class AudioPlayerUtility extends Component {
     const Player = Meteor.isCordova ? Media : Audio;
     const getProps = () => this.props;
     const player = new Player(track.file, () => {
-
       // set ready state
       this.props.ready();
 
@@ -98,7 +93,6 @@ export default class AudioPlayerUtility extends Component {
         player.play();
         return;
       }
-
     }, () => {}, function audioEventStream(STATUS) {
       if (this.done) return;
       // this === Media object
@@ -129,7 +123,7 @@ export default class AudioPlayerUtility extends Component {
 
       const [min, sec] = pos.split(":");
       const seekLength = Number((min * 60)) + Number(sec);
-      const width = Number((length - (length - seekLength))/length);
+      const width = Number((length - (length - seekLength)) / length);
 
       // ensure seconds are not greater than 60
       const realSec = Number(sec) % 60;
@@ -156,7 +150,7 @@ export default class AudioPlayerUtility extends Component {
   }
 
   toggle = (playerState) => {
-    if (!this.player || !this.player.playPause) { return }
+    if (!this.player || !this.player.playPause) { return; }
     if (playerState === "playing") {
       this.player.play();
       return;
@@ -171,14 +165,12 @@ export default class AudioPlayerUtility extends Component {
   seek = (value) => {
     // value is percent of how far to scrub
 
-    if (!this.player || !this.player.seekTo) { return }
+    if (!this.player || !this.player.seekTo) { return; }
 
     let [min, sec] = this.props.audio.playing.track.duration.split(":");
 
     // duration in milliseconds
-
     const duration = (Number((min * 60)) + Number(sec)) * 1000;
-
     const newPos =  duration * (value / 100);
 
     this.player.seekTo(newPos);
@@ -190,10 +182,10 @@ export default class AudioPlayerUtility extends Component {
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
 
-    let currentTrack = playing.track.title;
+    const currentTrack = playing.track.title;
 
-    for (let track of playlist) {
-      let index = playlist.indexOf(track);
+    for (const track of playlist) {
+      const index = playlist.indexOf(track);
       if (track.title === currentTrack) {
         let next;
 
@@ -221,7 +213,7 @@ export default class AudioPlayerUtility extends Component {
         }
 
         this.props.setPlaying({
-          track: next
+          track: next,
         });
 
         break;
@@ -235,14 +227,14 @@ export default class AudioPlayerUtility extends Component {
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
 
-    let currentTrack = playing.track.title;
+    const currentTrack = playing.track.title;
 
-    for (let track of playlist) {
-      let index = playlist.indexOf(track);
+    for (const track of playlist) {
+      const index = playlist.indexOf(track);
       if (track.title === currentTrack) {
         let prev;
 
-        this.setState({force: false});
+        this.setState({ force: false });
 
         switch (order) {
           case "shuffle":
@@ -273,7 +265,7 @@ export default class AudioPlayerUtility extends Component {
         }
 
         this.props.setPlaying({
-          track: prev
+          track: prev,
         });
         break;
       }
@@ -283,4 +275,4 @@ export default class AudioPlayerUtility extends Component {
   render() {
     return <span />;
   }
-};
+}

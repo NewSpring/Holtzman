@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
 
@@ -14,7 +14,7 @@ export default class ChangePassword extends Component {
   state = {
     newP: null,
     newPDup: null,
-    state: "default"
+    state: "default",
   }
 
   submit = (e) => {
@@ -22,18 +22,18 @@ export default class ChangePassword extends Component {
     this.setState({ state: "loading" });
     Accounts.resetPassword(this.props.params.token, this.state.newP, (err) => {
       if (err) {
-        this.setState({ state: "error", err: err });
+        this.setState({ state: "error", err });
         setTimeout(() => {
-          this.setState({ state: "default"});
+          this.setState({ state: "default" });
         }, 5000);
         return;
       }
 
       reset(false, this.state.newP, (err, result) => {
         if (err) {
-          this.setState({ state: "error", err: err });
+          this.setState({ state: "error", err });
           setTimeout(() => {
-            this.setState({ state: "default"});
+            this.setState({ state: "default" });
           }, 5000);
           return;
         }
@@ -45,11 +45,8 @@ export default class ChangePassword extends Component {
           // this.setState({ state: "default"})
           this.props.dispatch(routeActions.push("/profile"));
         }, 1000);
-
       });
     });
-
-
   }
 
   save = (value, input) => {
@@ -63,13 +60,13 @@ export default class ChangePassword extends Component {
       return false;
     }
 
-    this.setState({[id]: value});
+    this.setState({ [id]: value });
 
     return true;
   }
 
 
-  render () {
+  render() {
     const { state, err } = this.state;
     switch (state) {
       case "error":
@@ -91,11 +88,11 @@ export default class ChangePassword extends Component {
           </div>
         );
       default:
-        return  (
+        return (
           <Layout
-              submit={this.submit}
-              save={this.save}
-              state={this.state}
+            submit={this.submit}
+            save={this.save}
+            state={this.state}
           />
         );
     }

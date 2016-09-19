@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
@@ -49,12 +49,12 @@ const mapQueriesToProps = ({ ownProps }) => ({
       tagName: "community",
       includeChannels: ["articles"],
       limit: 2,
-    }
-  }
+    },
+  },
 });
 
 const defaultArray = [];
-const mapStateToProps = (state) => ({ location: state.routing.location });
+const mapStateToProps = state => ({ location: state.routing.location });
 @withRouter
 @connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Headerable)
@@ -79,7 +79,7 @@ export default class Template extends Component {
   }
 
   tagOnClick = (tag) => {
-    let tagList = [...this.state.tags];
+    const tagList = [...this.state.tags];
     if (tagList.indexOf(tag) > -1) {
       // remove the tag from the list string
       tagList.splice(tagList.indexOf(tag), 1);
@@ -93,7 +93,7 @@ export default class Template extends Component {
   inputOnChange = (value) => {
     this.setState({
       tags: this.state.tags,
-      query: value
+      query: value,
     });
   }
 
@@ -124,7 +124,7 @@ export default class Template extends Component {
     this.getResults();
   }
 
-  render () {
+  render() {
     const { attributes, location, content } = this.props;
     if (location.query && (
       location.query.tags || location.query.q || location.query.campuses
@@ -133,20 +133,20 @@ export default class Template extends Component {
       <div>
         <Split>
           <Right
-              mobile={false}
-              classes={["background--left"]}
-              background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
+            mobile={false}
+            classes={["background--left"]}
+            background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
           />
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-              canSearchTags={false || this.state.tags.length || this.state.query}
-              tags={(attributes && attributes.tags) || defaultArray}
-              tagOnClick={this.tagOnClick}
-              submitTags={this.submitTags}
-              findByQuery={this.findByQuery}
-              inputOnChange={this.inputOnChange}
-              content={content.loading ? defaultArray : content.entries}
+            canSearchTags={false || this.state.tags.length || this.state.query}
+            tags={(attributes && attributes.tags) || defaultArray}
+            tagOnClick={this.tagOnClick}
+            submitTags={this.submitTags}
+            findByQuery={this.findByQuery}
+            inputOnChange={this.inputOnChange}
+            content={content.loading ? defaultArray : content.entries}
           />
         </Left>
       </div>

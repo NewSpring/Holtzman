@@ -13,14 +13,13 @@ import styles from "./nav-css";
 export default class NavLink extends Component {
 
   static propTypes = {
-    navItem: PropTypes.object.isRequired
+    navItem: PropTypes.object.isRequired,
   }
 
   linkClasses = () => {
-
     const { navItem } = this.props;
 
-    let classes = [
+    const classes = [
       "floating__item",
       "soft-sides@palm",
       "soft-half-ends@palm-wide-and-up",
@@ -44,10 +43,9 @@ export default class NavLink extends Component {
   }
 
   containerClasses = () => {
-
     const { navItem } = this.props;
 
-    let classes = [
+    const classes = [
       "floating",
       "locked-ends@palm",
       "locked-sides@palm",
@@ -63,7 +61,6 @@ export default class NavLink extends Component {
     this.props.reset();
 
     if (navItem.action && typeof navItem.action === "function") {
-
       this.props.handleAction(navItem.action);
       return;
     }
@@ -90,7 +87,7 @@ export default class NavLink extends Component {
     }
   }
 
-  render () {
+  render() {
     let icon = this.props.navItem.icon;
     if (
       this.props.navItem.isActive &&
@@ -101,9 +98,9 @@ export default class NavLink extends Component {
     }
 
     const iconClasses = `${icon} display-block ${css(styles.i)}`;
-    let { navItem } = this.props;
+    const { navItem } = this.props;
 
-    let itemStyle = {};
+    const itemStyle = {};
     if (process.env.NATIVE && icon === "icon-groups") {
       itemStyle.fontSize = "2.5em";
       itemStyle.lineHeight = "1.35em";
@@ -119,19 +116,19 @@ export default class NavLink extends Component {
 
     let containerStyles = {};
     if (process.env.WEB) {
-        containerStyles = { paddingTop: "4px" };
+      containerStyles = { paddingTop: "4px" };
     }
     if (process.env.NATIVE) {
-        containerStyles = { paddingBottom: "3px" };
+      containerStyles = { paddingBottom: "3px" };
     }
 
 
-    let active = navItem.isActive && navItem.isActive(this.props);
+    const active = navItem.isActive && navItem.isActive(this.props);
     return (
       <button
-          className={this.linkClasses()}
-          onClick={this.handleAction}
-          style={{minHeight: "50px"}}
+        className={this.linkClasses()}
+        onClick={this.handleAction}
+        style={{ minHeight: "50px" }}
       >
         <div className={this.containerClasses()} style={containerStyles}>
           <div className="floating__item">
@@ -140,7 +137,7 @@ export default class NavLink extends Component {
               if (navItem.label && process.env.WEB) {
                 return (
                   <h7 className="display-block">
-                    <small className={`text-center ${active ? "text-brand": "text-light-primary"}`}>{navItem.label}</small>
+                    <small className={`text-center ${active ? "text-brand" : "text-light-primary"}`}>{navItem.label}</small>
                   </h7>
                 );
               }

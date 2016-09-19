@@ -5,15 +5,15 @@ export default class AudioTrack extends Component {
   static propTypes = {
     track: PropTypes.object.isRequired,
     play: PropTypes.func.isRequired,
-    active: PropTypes.bool.isRequired
+    active: PropTypes.bool.isRequired,
   }
 
   trackClasses = () => {
-    let classes = [
+    const classes = [
       "background--primary",
       "round",
       "push-half-top",
-      "push-half-right"
+      "push-half-right",
     ];
 
     if (this.props.active) classes.push("unread-notification");
@@ -22,9 +22,9 @@ export default class AudioTrack extends Component {
   }
 
   textClasses = () => {
-    let classes = [
+    const classes = [
       "text-left",
-      "truncate"
+      "truncate",
     ];
 
     if (this.props.active) classes.push("strong");
@@ -34,15 +34,15 @@ export default class AudioTrack extends Component {
 
   play = (e) => {
     e.preventDefault();
-    if(!this.props.track.file) return;
+    if (!this.props.track.file) return;
 
     this.props.play(this.props.track);
   }
 
   buttonClasses = () => {
-    let classes = [
+    const classes = [
       "plain",
-      "one-whole"
+      "one-whole",
     ];
 
     this.props.track.file ?
@@ -53,11 +53,11 @@ export default class AudioTrack extends Component {
   }
 
   durationClasses = () => {
-    let classes = [
+    const classes = [
       "soft-half-left",
       "small",
       "italic",
-      "text-right"
+      "text-right",
     ];
 
     this.props.track.file ?
@@ -69,7 +69,6 @@ export default class AudioTrack extends Component {
 
 
   render() {
-
     return (
       <button className={this.buttonClasses()} onClick={this.play}>
         <div className="song-cell soft-half-ends">
@@ -83,7 +82,6 @@ export default class AudioTrack extends Component {
         </div>
       </button>
     );
-
   }
 
 }

@@ -30,29 +30,29 @@ export default class FullPlayer extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(headerActions.hide({statusBar: false}));
+    this.props.dispatch(headerActions.hide({ statusBar: false }));
     this.setState({
       hadHeader: this.props.header.visible,
     });
   }
 
   componentWillUnmount() {
-    this.props.dispatch(headerActions.show({visible: this.state.hadHeader, statusBar: true}));
+    this.props.dispatch(headerActions.show({ visible: this.state.hadHeader, statusBar: true }));
   }
 
   componentDidMount() {
     const artworkContainer = this.refs.artworkContainer;
     const artwork = this.refs.artwork;
     this.setState({
-      isShort: artworkContainer.clientWidth > artworkContainer.clientHeight
+      isShort: artworkContainer.clientWidth > artworkContainer.clientHeight,
     });
   }
 
   getArtworkStyles = (album) => {
     const artworkContainer = this.refs.artworkContainer;
-    let styles = backgrounds.styles(album);
+    const styles = backgrounds.styles(album);
 
-    if(this.state.isShort) {
+    if (this.state.isShort) {
       styles.height = `${artworkContainer.clientHeight}px`;
       styles.backgroundSize = "contain";
       styles.backgroundColor = "transparent";
@@ -62,14 +62,14 @@ export default class FullPlayer extends Component {
   };
 
   getArtworkClasses = (album) => {
-    let classes = [
+    const classes = [
       "one-whole",
       "overlay--gradient",
       "background--fill",
-      collections.classes(album)
+      collections.classes(album),
     ];
 
-    if(!this.state.isShort) {
+    if (!this.state.isShort) {
       classes.push("ratio--square");
     }
 
@@ -77,9 +77,9 @@ export default class FullPlayer extends Component {
   };
 
   getArtworkContainerStyles = () => {
-    let styles = {};
+    const styles = {};
 
-    if(this.state.isShort) {
+    if (this.state.isShort) {
       styles.height = "100%";
       styles.backgroundImage = `
         url('${this.getImage(this.props.playing.album, { blurred: true })}')
@@ -102,21 +102,19 @@ export default class FullPlayer extends Component {
     const { state } = this.props.audio;
 
     if (!this.props.audio.playing.album.title) {
-
       const { data } = this.props;
       const album = {
         title: data.title,
         image: this.getImage(data),
         blurredImage: this.getImage(data, { blurred: true }),
-        id: data.entryId
+        id: data.entryId,
       };
 
       this.props.setPlaylist(data.tracks);
       this.props.setPlaying({
         album,
-        track: data.tracks[0]
+        track: data.tracks[0],
       });
-
     }
 
     if (state != "playing") {
@@ -128,22 +126,18 @@ export default class FullPlayer extends Component {
       this.props.pause();
       return;
     }
-
   }
 
   seek = (e) => {
-
     const ne = e.nativeEvent;
 
     const xPosition = ne.clientX;
 
     // get the correct target
     const width = ne.target.clientWidth;
-    const percent = ((width - (width - xPosition))/width) * 100;
+    const percent = ((width - (width - xPosition)) / width) * 100;
 
     this.props.seek(percent);
-
-
   }
 
   shuffle = () => {
@@ -171,7 +165,6 @@ export default class FullPlayer extends Component {
     }
 
     this.props.repeat();
-
   }
 
   getImageUrl = (images, blurred = false) => {
@@ -187,7 +180,7 @@ export default class FullPlayer extends Component {
       left: 0,
       width: "100%",
       height: "100%",
-      zIndex: -1
+      zIndex: -1,
     };
   };
 
@@ -196,22 +189,21 @@ export default class FullPlayer extends Component {
     return track.artist || album.artist || "NewSpring";
   }
 
-  render () {
-
+  render() {
     const { state, playing } = this.props;
     const { album, track } = playing;
     const { images, colors, isLight } = album.content;
-    const playlist = [ track ];
+    const playlist = [track];
 
     const bgImageStyle = {
-      backgroundImage: "url(" + this.getImageUrl(images) + ")"
+      backgroundImage: "url(" + this.getImageUrl(images) + ")",
     };
 
     const bgColorStyle = {
       height: "100%",
     };
 
-    if(colors && colors[0] && colors[0].value) {
+    if (colors && colors[0] && colors[0].value) {
       bgColorStyle.backgroundColor = "#" + colors[0].value;
     }
 
@@ -226,14 +218,14 @@ export default class FullPlayer extends Component {
         }>
 
           <section
-              ref="artworkContainer"
-              className="hard"
-              style={this.getArtworkContainerStyles()}
+            ref="artworkContainer"
+            className="hard"
+            style={this.getArtworkContainerStyles()}
           >
             <div
-                ref="artwork"
-                className={this.getArtworkClasses(album)}
-                style={this.getArtworkStyles(album)}
+              ref="artwork"
+              className={this.getArtworkClasses(album)}
+              style={this.getArtworkStyles(album)}
             />
           </section>
 
@@ -242,17 +234,17 @@ export default class FullPlayer extends Component {
           }>
 
             <AudioTitle
-                trackTitle={track.title}
-                artistName={this.getArtist()}
-                albumTitle={album.title}
-                isPlaying={state != "default"}
-                isLight={isLight}
-                channelName={album.channelName}
+              trackTitle={track.title}
+              artistName={this.getArtist()}
+              albumTitle={album.title}
+              isPlaying={state != "default"}
+              isLight={isLight}
+              channelName={album.channelName}
             />
 
             <AudioControls
-                audio={this.props}
-                isLight={isLight}
+              audio={this.props}
+              isLight={isLight}
             />
 
           </div>
@@ -260,6 +252,5 @@ export default class FullPlayer extends Component {
         </div>
       </div>
     );
-
   }
 }

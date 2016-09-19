@@ -1,11 +1,10 @@
 
 const addTransaction = (state, action) => {
-
   let total = 0;
 
-  let mergedTransactions = { ...state.transactions, ...action.transactions };
+  const mergedTransactions = { ...state.transactions, ...action.transactions };
 
-  for (let fund in mergedTransactions) {
+  for (const fund in mergedTransactions) {
     if (typeof mergedTransactions[fund].value != "number") {
       delete mergedTransactions[fund];
     }
@@ -15,12 +14,11 @@ const addTransaction = (state, action) => {
 
   return { ...state, ...{
     transactions: mergedTransactions,
-    total: total
+    total,
   } };
 };
 
 const clearTransaction = (state, action) => {
-
   let total = 0;
 
   if (!action.transactionId || !state.transactions[action.transactionId]) {
@@ -29,7 +27,7 @@ const clearTransaction = (state, action) => {
 
   delete state.transactions[action.transactionId];
 
-  for (let fund in state.transactions) {
+  for (const fund in state.transactions) {
     if (typeof state.transactions[fund].value != "number") {
       delete state.transactions[fund];
     }
@@ -39,20 +37,19 @@ const clearTransaction = (state, action) => {
 
   return { ...state, ...{
     transactions: state.transactions,
-    total: total
+    total,
   } };
 };
 
 const clearTransactions = (state) => {
-
   return { ...state, ...{
     total: 0,
-    transactions: {}
+    transactions: {},
   } };
 };
 
 export {
   addTransaction,
   clearTransaction,
-  clearTransactions
+  clearTransactions,
 };

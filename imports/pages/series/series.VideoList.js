@@ -43,7 +43,6 @@ const mapQueriesToProps = ({ ownProps }) => ({
 export default class SeriesVideoList extends Component {
 
   dynamicWidth = () => {
-
     if (typeof window != "undefined" || window != null) {
       const ratio = window.isTablet ? 0.375 : 0.8;
       let itemSize = (window.innerWidth - 40) * ratio; // four-fifths
@@ -51,7 +50,7 @@ export default class SeriesVideoList extends Component {
       const items = this.props.sermons.content.sermons.length;
       const width = (items * itemSize) + 40;
       return {
-        width: `${width}px`
+        width: `${width}px`,
       };
     }
 
@@ -62,11 +61,10 @@ export default class SeriesVideoList extends Component {
     overflowX: "scroll",
     overflowY: "hidden",
     paddingLeft: "20px",
-    "WebkitOverflowScrolling": "touch"
+    "WebkitOverflowScrolling": "touch",
   }
 
   render() {
-
     const { content } = this.props.sermons;
 
     if (this.props.sermons.loading) {
@@ -84,8 +82,8 @@ export default class SeriesVideoList extends Component {
     return (
       <div style={this.overflow}>
         <section
-            className="soft-half-top"
-            style={this.dynamicWidth()}
+          className="soft-half-top"
+          style={this.dynamicWidth()}
         >
           {sermons.map((sermon, i) => {
             return <SeriesVideoListItem sermon={sermon} order={i} key={i} />;

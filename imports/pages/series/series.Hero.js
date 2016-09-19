@@ -7,11 +7,11 @@ import backgrounds from "../../util/backgrounds";
 export default class SeriesHero extends Component {
 
   state = {
-    playing: false
+    playing: false,
   }
 
   static propTypes = {
-    series: PropTypes.object.isRequired
+    series: PropTypes.object.isRequired,
   }
 
   backgroundClasses = () => {
@@ -21,26 +21,24 @@ export default class SeriesHero extends Component {
       "ratio--square",
       "ratio--landscape@palm-wide",
       "background--fill",
-      collections.classes(this.props.series)
+      collections.classes(this.props.series),
     ].join(" ");
   }
 
   play = () => {
     if (this.player) {
-      this.player.show({play: true});
-      this.setState({playing: true});
+      this.player.show({ play: true });
+      this.setState({ playing: true });
     } else {
       setTimeout(this.play, 250);
     }
-
-
   }
 
   stop = () => {
     if (this.player) {
       this.player.hide();
     }
-    this.setState({playing: false});
+    this.setState({ playing: false });
   }
 
   ready = (player) => {
@@ -68,24 +66,23 @@ export default class SeriesHero extends Component {
   }
 
   render() {
-
     const series = this.props.series;
     const imageLabel = window.isTablet ? "2:1" : "1:1";
     return (
       <section className="relative hard">
         <div className="one-whole ratio--square ratio--landscape@palm-wide" style={{
-            position: "absolute",
-            zIndex: "10"
-          }}>
+          position: "absolute",
+          zIndex: "10",
+        }}>
           <div className="ratio__item">
             {(() => {
               if (!series.content.ooyalaId) return null;
               return (
                 <Video
-                    id={series.content.ooyalaId}
-                    ref="video"
-                    success={this.ready}
-                    hide
+                  id={series.content.ooyalaId}
+                  ref="video"
+                  success={this.ready}
+                  hide
                 />
             );
             })()}
@@ -96,16 +93,16 @@ export default class SeriesHero extends Component {
           if (!series.content.ooyalaId) return null;
           return (
             <Video
-                id={series.content.ooyalaId}
-                ref="video"
-                success={this.ready}
-                hide
+              id={series.content.ooyalaId}
+              ref="video"
+              success={this.ready}
+              hide
             />
         );
         })()}
         <div
-            className={this.backgroundClasses()}
-            style={backgrounds.styles(series, imageLabel)}
+          className={this.backgroundClasses()}
+          style={backgrounds.styles(series, imageLabel)}
         >
           <div className={`overlay__item ${series.content.isLight ? "text-light-primary" : "text-dark-primary"} text-center soft-sides push-top`}>
             {this.button()}

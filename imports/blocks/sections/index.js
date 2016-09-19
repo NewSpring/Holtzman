@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import ReactMixin from "react-mixin";
 
@@ -13,7 +13,7 @@ import {
 
 import Groups from "./Groups";
 
-const map = (state) => ({ sections: state.sections });
+const map = state => ({ sections: state.sections });
 
 @connect(map)
 @ReactMixin.decorate(Headerable)
@@ -30,12 +30,12 @@ export default class SectionsContainer extends Component {
 
     this.lockHeader("SectionsContainer");
     this.headerAction({
-      title: "Sections"
+      title: "Sections",
     }, "SectionsContainer");
   }
 
   componentWillUnmount() {
-    this.props.dispatch(modal.update({keepNav: false}));
+    this.props.dispatch(modal.update({ keepNav: false }));
     this.unlockHeader();
   }
 
@@ -43,17 +43,17 @@ export default class SectionsContainer extends Component {
     return this.props.dispatch(modal.hide());
   }
 
-  render(){
-    let count = 0;
-    let { content } = this.props.sections;
+  render() {
+    const count = 0;
+    const { content } = this.props.sections;
 
-    let items = [];
+    const items = [];
 
-    for (let section in content) {
+    for (const section in content) {
       items.push(content[section]);
     }
 
-    let chunkedItems = [];
+    const chunkedItems = [];
     while (items.length) {
       chunkedItems.push(items.splice(0, 2));
     }

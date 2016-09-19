@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import { give as giveActions } from "../../../store";
@@ -14,14 +14,14 @@ export default class SubFund extends Component {
     focused: false,
     fund: false,
     amount: null,
-    id: `select-account_${Date.now()}_${Math.floor((Math.random() * 100))}`
+    id: `select-account_${Date.now()}_${Math.floor((Math.random() * 100))}`,
   }
 
   componentWillMount() {
     if (this.props.primary) {
       this.setState({
         fund: true,
-        id: this.props.accounts[0].value
+        id: this.props.accounts[0].value,
       });
 
       this.props.update(this.props.instance, this.props.accounts[0].value, this.state.amount);
@@ -36,7 +36,6 @@ export default class SubFund extends Component {
   }
 
   monentize = (value, fixed) => {
-
     if (typeof value === "number") {
       value = `${value}`;
     }
@@ -47,7 +46,7 @@ export default class SubFund extends Component {
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -58,76 +57,67 @@ export default class SubFund extends Component {
   }
 
   getFund = (id) => {
-    let selectedFund = this.props.accounts.filter((fund) => fund.value == id);
+    const selectedFund = this.props.accounts.filter(fund => fund.value == id);
     return selectedFund[0];
   }
 
   saveFund = (id) => {
-
     if (id == this.state.id) return;
 
     // remove old funds transaction
     this.props.clearTransaction(`${this.state.id}`);
     this.props.remove(this.props.instance, this.state.id);
 
-    let fund = this.getFund(id);
+    const fund = this.getFund(id);
 
     if (!fund) {
       this.setState({
         id: null,
         fund: false,
-        amount: null
+        amount: null,
       });
       return;
     }
 
     this.setState({
       id: fund.value,
-      fund: true
+      fund: true,
     });
 
     // we have monies, lets update the store
     if (this.state.amount) {
-
       this.props.addTransactions({ [id]: {
         value: Number(`${this.state.amount}`.replace(/[^0-9\.]+/g, "")),
-        label: fund.label
-      }});
+        label: fund.label,
+      } });
 
       this.props.update(this.props.instance, id, this.state.amount);
-
     }
-
   }
 
   saveAmount = (value) => {
-
     value = this.monentize(value);
 
-    let numberValue = Number(value.replace(/[^\d.-]/g, ""));
+    const numberValue = Number(value.replace(/[^\d.-]/g, ""));
 
     if (numberValue > 0) {
-
       this.setState({
         active: true,
-        amount: numberValue
+        amount: numberValue,
       });
 
       // there is also a fund stored, lets update the transactions store
       if (this.state.fund) {
-        let { id } = this.state;
-        let fund = this.getFund(id);
+        const { id } = this.state;
+        const fund = this.getFund(id);
         this.props.addTransactions({ [id]: {
           value: Number(value.replace(/[^0-9\.]+/g, "")),
-          label: fund.label
-        }});
+          label: fund.label,
+        } });
 
         this.props.update(this.props.instance, id, numberValue);
       }
-
-
     } else {
-
       // remove transaction
       if (this.state.fund) {
         this.props.clearTransaction(this.state.id);
@@ -139,7 +129,6 @@ export default class SubFund extends Component {
       //   fund: false,
       //   id: `select-account_${Date.now()}_${Math.floor((Math.random() * 100))}`
       // })
-
     }
 
     return value;
@@ -153,12 +142,10 @@ export default class SubFund extends Component {
     }
   }
 
-  render () {
-
+  render() {
     if (!this.props.accounts.length) return null;
 
     if (this.props.primary) {
-
       /*
 
         The primary subfund template presents an input field first
@@ -175,14 +162,14 @@ export default class SubFund extends Component {
 
       return (
         <Primary
-            classes={this.statusClass()}
-            accounts={this.props.accounts}
-            state={this.state}
-            saveFund={this.saveFund}
-            format={this.saveAmount}
-            preFill={this.props.preFill}
-            donate={this.props.donate}
-            selectVal={this.props.selectVal}
+          classes={this.statusClass()}
+          accounts={this.props.accounts}
+          state={this.state}
+          saveFund={this.saveFund}
+          format={this.saveAmount}
+          preFill={this.props.preFill}
+          donate={this.props.donate}
+          selectVal={this.props.selectVal}
         />
       );
     }
@@ -202,14 +189,14 @@ export default class SubFund extends Component {
     */
     return (
       <Layout
-          classes={this.statusClass()}
-          accounts={this.props.accounts}
-          state={this.state}
-          showInputs={this.saveFund}
-          format={this.saveAmount}
-          preFill={this.props.preFill}
-          selectVal={this.props.selectVal}
-          inputVal={this.props.inputVal}
+        classes={this.statusClass()}
+        accounts={this.props.accounts}
+        state={this.state}
+        showInputs={this.saveFund}
+        format={this.saveAmount}
+        preFill={this.props.preFill}
+        selectVal={this.props.selectVal}
+        inputVal={this.props.inputVal}
       />
     );
   }

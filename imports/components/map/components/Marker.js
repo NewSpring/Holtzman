@@ -8,7 +8,7 @@ export default class Marker extends Component {
     // GoogleMap pass $hover props to hovered components
     // to detect hover it uses internal mechanism, explained in x_distance_hover example
     $hover: PropTypes.bool,
-    text: PropTypes.string
+    text: PropTypes.string,
   };
 
   static defaultProps = {};

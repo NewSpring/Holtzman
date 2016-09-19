@@ -12,7 +12,7 @@ const flattenTco = ([first, ...rest], accumulator) =>
       ? flattenTco([...first, ...rest])
       : flattenTco(rest, accumulator.concat(first));
 
-const flatten = (n) => flattenTco(n, []);
+const flatten = n => flattenTco(n, []);
 
 @connect((state) => ({ audioState: state.audio.state }))
 export default class VideoPlayer extends Component {
@@ -25,7 +25,7 @@ export default class VideoPlayer extends Component {
   }
 
   state = {
-    hide: this.props.hide || false
+    hide: this.props.hide || false,
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,7 +46,7 @@ export default class VideoPlayer extends Component {
   }
 
 
-  componentDidMount(){
+  componentDidMount() {
     this.createPlayer(this.props.id, this.props.success);
   }
 
@@ -59,23 +59,22 @@ export default class VideoPlayer extends Component {
 
 
   createPlayer = (id, cb) => {
-
     if ((typeof window != "undefined" || window != null) && !window.OO) {
-      const callback = () => { this.createPlayer(id, cb) };
+      const callback = () => { this.createPlayer(id, cb); };
 
       setTimeout(callback, 250);
 
       return;
     }
 
-    let videoParams = {
+    const videoParams = {
       "pcode": "E1dWM6UGncxhent7MRATc3hmkzUD",
       "playerBrandingId": "ZmJmNTVlNDk1NjcwYTVkMzAzODkyMjg0",
       "autoplay": true,
       "skin": {
         "config": "/ooyala/skin.new.json",
         // "config": "//player.ooyala.com/static/v4/stable/4.6.9/skin-plugin/skin.json",
-        "inline": {"shareScreen": {"embed": {"source": "<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>"}}}
+        "inline": { "shareScreen": { "embed": { "source": "<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>" } } },
       },
       onCreate: (player) => {
 
@@ -110,7 +109,7 @@ export default class VideoPlayer extends Component {
             }, 500);
           }
         });
-      }
+      },
     };
 
     OO.ready(() => {
@@ -124,7 +123,7 @@ export default class VideoPlayer extends Component {
 
   show = (opts) => {
     const playerReady = () => {
-      this.setState({hide: false});
+      this.setState({ hide: false });
     };
 
     if ((this.player && this.player.state === "destroyed") || !this.player) {
@@ -137,7 +136,6 @@ export default class VideoPlayer extends Component {
 
 
     playerReady();
-
   }
 
   hide = () => {
@@ -146,21 +144,19 @@ export default class VideoPlayer extends Component {
   }
 
   styles = () => {
-
     let style = this.props.style;
 
-    if (this.state.hide){
-      style = {...style, ...{
-        display: "none"
-      }};
+    if (this.state.hide) {
+      style = { ...style, ...{
+        display: "none",
+      } };
     }
 
     return style;
-
   }
 
 
-  render () {
+  render() {
     return (
       <div id={this.getDivId()} className="ooyala-player" style={this.styles()} />
     );

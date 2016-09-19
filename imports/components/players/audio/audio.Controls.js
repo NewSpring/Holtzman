@@ -12,15 +12,15 @@ export default class AudioControls extends Component {
 
   static propTypes = {
     audio: PropTypes.object.isRequired,
-    isLight: PropTypes.bool.isRequired
+    isLight: PropTypes.bool.isRequired,
   }
 
   shuffleClasses = () => {
-    let classes = [
+    const classes = [
       "soft-half-right",
       "flush",
       "h5",
-      "icon-shuffle"
+      "icon-shuffle",
     ];
     return classes.join(" ");
   }
@@ -37,10 +37,10 @@ export default class AudioControls extends Component {
   repeatClasses = () => {
     const { repeat } = this.props.audio;
 
-    let classes = [
+    const classes = [
       "flush",
       "h5",
-      "icon-repeat"
+      "icon-repeat",
     ];
     return classes.join(" ");
   };
@@ -53,11 +53,11 @@ export default class AudioControls extends Component {
   repeatIcon = () => {
     const { repeat } = this.props.audio;
 
-    let classes = [
+    const classes = [
       this.getPrimaryTextClass(),
       "h3",
       "push-double-left",
-      "soft-left"
+      "soft-left",
     ];
     if (repeat === "repeat") classes.push("icon-repeat-all");
     if (repeat === "repeat-one") classes.push("icon-repeat-one");
@@ -83,7 +83,7 @@ export default class AudioControls extends Component {
       "flush",
       this.getSecondayTextClass(),
       "h3",
-      "icon-skip-back"
+      "icon-skip-back",
     ].join(" ");
   };
 
@@ -93,7 +93,7 @@ export default class AudioControls extends Component {
       "flush",
       this.getSecondayTextClass(),
       "h3",
-      "icon-skip-next"
+      "icon-skip-next",
     ].join(" ");
   };
 
@@ -103,7 +103,7 @@ export default class AudioControls extends Component {
       "flush",
       this.getPrimaryTextClass(),
       "h1",
-      toggleIcon
+      toggleIcon,
     ].join(" ");
   };
 
@@ -114,7 +114,7 @@ export default class AudioControls extends Component {
       left: "6px",
       position: "relative",
 
-      };
+    };
     } else return {
       left: "2px",
       position: "relative",
@@ -164,10 +164,10 @@ export default class AudioControls extends Component {
     e.stopPropagation();
     const { repeat } = this.props.audio;
 
-    if(repeat === "default") {
+    if (repeat === "default") {
       this.props.dispatch(audioActions.repeat());
     }
-    else if(repeat === "repeat") {
+    else if (repeat === "repeat") {
       this.props.dispatch(audioActions.repeatOne());
     }
     else {
@@ -188,10 +188,10 @@ export default class AudioControls extends Component {
   };
 
   getTertiaryTextColor = (dark) => {
-    return dark ? {color: "rgba(255,255,255,.5)"} : {color: "rgba(0,0,0,.5)"};
+    return dark ? { color: "rgba(255,255,255,.5)" } : { color: "rgba(0,0,0,.5)" };
   };
   getPrimaryTextColor = (dark) => {
-    return dark ? {color: "rgba(255,255,255,1)"} : {color: "rgba(0,0,0,1)"};
+    return dark ? { color: "rgba(255,255,255,1)" } : { color: "rgba(0,0,0,1)" };
   };
 
 
@@ -215,18 +215,18 @@ export default class AudioControls extends Component {
     this.props.dispatch(modal.render(ListDetail, {
       color: "background--dark-primary",
       modalBackground: "dark",
-      album: album,
-      trackNumber: trackNumber,
+      album,
+      trackNumber,
       style: {
-        opacity: .9
-      }
+        opacity: 0.9,
+      },
     }));
     this.props.dispatch(modal.setRetrigger("FullPlayer"));
     this.props.dispatch(navActions.setColor("#202020", "light"));
   };
 
   controlGridStyles = {
-    maxHeight: "30px"
+    maxHeight: "30px",
   }
 
   playlistControls = () => {
@@ -261,18 +261,18 @@ export default class AudioControls extends Component {
     const toggleIcon = isPlaying ? "icon-pause" : "icon-play";
     const { isLight } = this.props;
 
-    if(visibility === "dock") {
+    if (visibility === "dock") {
       const classes = [
         "text-center",
         "h4",
         toggleIcon,
-        this.getPrimaryTextClass()
+        this.getPrimaryTextClass(),
       ];
 
       return (
         <button
-            className="plain float-right"
-            onClick={this.toggle}
+          className="plain float-right"
+          onClick={this.toggle}
         >
           <i className={classes.join(" ")} />
         </button>
@@ -295,14 +295,13 @@ export default class AudioControls extends Component {
         </button>
 
         <AudioScrubber
-            isLight={this.props.isLight}
+          isLight={this.props.isLight}
         />
 
         {this.playlistControls()}
 
       </div>
     );
-
   }
 
 }

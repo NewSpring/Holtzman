@@ -7,7 +7,7 @@ import scriptures from "../../util/scriptures";
 export default class DevotionsSingleScripture extends Component {
 
   static propTypes = {
-    devotion: PropTypes.object.isRequired
+    devotion: PropTypes.object.isRequired,
   }
 
   getClasses = () => {
@@ -15,7 +15,7 @@ export default class DevotionsSingleScripture extends Component {
       "hard-sides",
       "hard-top",
       "background--light-primary",
-      "soft-sides@palm-wide-and-up"
+      "soft-sides@palm-wide-and-up",
     ];
 
     if (this.props.classes) {
@@ -26,15 +26,14 @@ export default class DevotionsSingleScripture extends Component {
   }
 
   render() {
-
     const devotion = this.props.devotion;
 
     // `data-status-scroll-container` is set in the react-swipe-views module
     return (
       <section
-          className={this.getClasses()}
-          data-status-scroll-item
-          data-status-scroll-offset={-50}
+        className={this.getClasses()}
+        data-status-scroll-item
+        data-status-scroll-offset={-50}
       >
 
         {scriptures.list(devotion, { commas: false }).map((scripture, i) => {
@@ -46,6 +45,5 @@ export default class DevotionsSingleScripture extends Component {
         </p>
       </section>
     );
-
   }
 }

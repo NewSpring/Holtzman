@@ -56,7 +56,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
   },
 });
 
-const mapStateToProps = (state) => ({ paging: state.paging });
+const mapStateToProps = state => ({ paging: state.paging });
 
 @connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Pageable)
@@ -84,7 +84,7 @@ class Template extends Component {
           <div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
             {(() => {
               if (typeof article === "number") return <FeedItemSkeleton />;
-              return <FeedItem item={article}  />;
+              return <FeedItem item={article} />;
             })()}
           </div>
         );
@@ -93,7 +93,6 @@ class Template extends Component {
   }
 
   render() {
-
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
         <div className="soft@portable soft-double@lap-and-up background--light-secondary">
@@ -105,17 +104,16 @@ class Template extends Component {
         </div>
       </ApollosPullToRefresh>
     );
-
   }
 
 }
 
 const Routes = [
   { path: "articles", component: Template },
-  { path: "articles/:id", component: Single }
+  { path: "articles/:id", component: Single },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

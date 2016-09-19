@@ -13,8 +13,8 @@ export default class Filter extends Component {
   }
 
   onClick = ({ id }) => {
-    let people = [...this.state.people];
-    let index = people.indexOf(id);
+    const people = [...this.state.people];
+    const index = people.indexOf(id);
     if (index > -1) {
       people.splice(index, 1);
       this.setState({ people });
@@ -64,7 +64,7 @@ export default class Filter extends Component {
   // }
 
 
-  render () {
+  render() {
     const { family } = this.props;
     const { expanded } = this.state;
     return (
@@ -72,13 +72,13 @@ export default class Filter extends Component {
         <div onClick={this.toggle} className="one-whole outlined--light outlined--top background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up">
           <h6 className="text-dark-secondary flush-bottom display-inline-block">Filter Transactions</h6>
           <span
-              className={`float-right flush-bottom ${expanded ? "h7" : "icon-filter"}`}
-              style={{ marginTop: expanded ? "3px" : "0px" , cursor: "pointer" }}
+            className={`float-right flush-bottom ${expanded ? "h7" : "icon-filter"}`}
+            style={{ marginTop: expanded ? "3px" : "0px", cursor: "pointer" }}
           >
             {!expanded ? "" : "Done"}
           </span>
         </div>
-        <div className="one-whole outlined--bottom outlined--light"/>
+        <div className="one-whole outlined--bottom outlined--light" />
         {(() => {
           if (!expanded) return null;
           return (
@@ -86,26 +86,26 @@ export default class Filter extends Component {
               <h6 className="push-top soft-half-bottom text-dark-secondary display-inline-block">Family Member</h6>
 
               {family && family.map(({ person }, key) => {
-                let active = this.state.people.indexOf(person.id) > -1;
+                const active = this.state.people.indexOf(person.id) > -1;
                 return (
-                  <div key={key} style={{ cursor: "pointer" }}className="soft-half-bottom soft-half-left" onClick={(e) => this.onClick(person)}>
+                  <div key={key} style={{ cursor: "pointer" }}className="soft-half-bottom soft-half-left" onClick={e => this.onClick(person)}>
                     <div
-                        className={`${active ? "background--primary" : ""} display-inline-block outlined`}
-                        style={{
+                      className={`${active ? "background--primary" : ""} display-inline-block outlined`}
+                      style={{
                         width: "15px",
                         height: "15px",
                         verticalAlign: "middle",
                         borderWidth: "2px",
                         borderRadius: "3px",
-                        cursor: "pointer"
+                        cursor: "pointer",
                       }}
                     />
                     <div className="push-left round background--fill display-inline-block" style={{
-                        width: "35px",
-                        height: "35px",
-                        verticalAlign: "middle",
-                        backgroundImage: `url('${person.photo}')`
-                      }} />
+                      width: "35px",
+                      height: "35px",
+                      verticalAlign: "middle",
+                      backgroundImage: `url('${person.photo}')`,
+                    }} />
                     <h7 className="soft-half-left">{person.nickName || person.firstName} {person.lastName}</h7>
                   </div>
                 );
@@ -115,24 +115,24 @@ export default class Filter extends Component {
               <div className="grid one-whole push-top flush-left@palm">
                 <div className="hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap">
                   <Forms.Input
-                      label="Start Date (MM/YY)"
-                      type="text"
-                      id="start"
-                      defaultValue={this.state.start}
-                      onBlur={this.saveData}
-                      errorText="Please enter a start date"
-                      validation={(value) => (value.length === 0 || value.length === 5)}
+                    label="Start Date (MM/YY)"
+                    type="text"
+                    id="start"
+                    defaultValue={this.state.start}
+                    onBlur={this.saveData}
+                    errorText="Please enter a start date"
+                    validation={value => (value.length === 0 || value.length === 5)}
                   />
                 </div>
                 <div className="hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap">
                   <Forms.Input
-                      label="End Date (MM/YY)"
-                      type="text"
-                      id="end"
-                      defaultValue={this.state.end}
-                      onBlur={this.saveData}
-                      errorText="Please enter an end date"
-                      validation={(value) => (value.length === 0 || value.length === 5)}
+                    label="End Date (MM/YY)"
+                    type="text"
+                    id="end"
+                    defaultValue={this.state.end}
+                    onBlur={this.saveData}
+                    errorText="Please enter an end date"
+                    validation={value => (value.length === 0 || value.length === 5)}
                   />
                 </div>
               </div>

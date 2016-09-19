@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import { withRouter, Link } from "react-router";
 import gql from "graphql-tag";
@@ -15,19 +15,19 @@ import Layout from "./ResultLayout";
 let internalIp = null;
 if (Meteor.isClient) {
   // NOTE: window.RTCPeerConnection is "not a constructor" in FF22/23
-  var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;   //compatibility for firefox and chrome
+  const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;   // compatibility for firefox and chrome
 
   if (RTCPeerConnection) {
-   const pc = new RTCPeerConnection({iceServers:[]}), noop = function(){};
-   pc.createDataChannel("");    //create a bogus data channel
-   pc.createOffer(pc.setLocalDescription.bind(pc), noop);    // create offer and set local description
-   pc.onicecandidate = function(ice){  //listen for candidate events
-     if (!ice || !ice.candidate || !ice.candidate.candidate)  return;
-     const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
-     internalIp = myIP;
-     pc.onicecandidate = noop;
-   };
- }
+    const pc = new RTCPeerConnection({ iceServers: [] }), noop = function () {};
+    pc.createDataChannel("");    // create a bogus data channel
+    pc.createOffer(pc.setLocalDescription.bind(pc), noop);    // create offer and set local description
+    pc.onicecandidate = function (ice) {  // listen for candidate events
+      if (!ice || !ice.candidate || !ice.candidate.candidate) return;
+      const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
+      internalIp = myIP;
+      pc.onicecandidate = noop;
+    };
+  }
 }
 
 const mapStateToProps = ({ routing }) => {
@@ -135,8 +135,7 @@ export default class Template extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
-    let newState = {};
+    const newState = {};
     let clear = false;
     if (
       this.props.q !== nextProps.q ||
@@ -176,7 +175,7 @@ export default class Template extends Component {
         // children: this.createChild(x),
       }))
       .filter(x => x.latitude && x.longitude)
-    ), (x) => x.id);
+    ), x => x.id);
   }
 
   removeQueryString = (e) => {
@@ -188,14 +187,14 @@ export default class Template extends Component {
     router.replace(newPath);
   }
 
-  render () {
+  render() {
     const { data, location, tags, campusLocations, campuses, q } = this.props;
     let count, groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
     groups = this.state.groups;
 
     let isMobile;
-    if (typeof window != "undefined" && window != null ) {
+    if (typeof window != "undefined" && window != null) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
     }
 
@@ -208,11 +207,11 @@ export default class Template extends Component {
               if (isMobile || Meteor.isServer) return null;
               return (
                 <GoogleMap
-                    autoCenter
-                    markers={this.state.markers}
-                    onMarkerHover={this.onMarkerHover}
-                    hover={this.state.hover}
-                    onChildClick={({ id }) => this.props.router.push(`/groups/${id}`)}
+                  autoCenter
+                  markers={this.state.markers}
+                  onMarkerHover={this.onMarkerHover}
+                  hover={this.state.hover}
+                  onChildClick={({ id }) => this.props.router.push(`/groups/${id}`)}
                 />
               );
             })()}

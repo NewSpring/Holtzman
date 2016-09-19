@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -30,11 +30,11 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
-    variables: { cache: true }
-  }
+    variables: { cache: true },
+  },
 });
 
-let defaultHome = {
+const defaultHome = {
   street1: null,
   street2: null,
   state: null,
@@ -46,26 +46,24 @@ let defaultHome = {
 export default class HomeAddress extends Component {
 
   state = {
-    state: "default"
+    state: "default",
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.props.dispatch(nav.setLevel("BASIC_CONTENT"));
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.props.dispatch(nav.setLevel("TOP"));
   }
 
   updateAddress = (data) => {
-
     this.setState({ state: "loading" });
     updateHome(data, (err, result) => {
-
       if (err) {
-        this.setState({ state: "error", err: err });
+        this.setState({ state: "error", err });
         setTimeout(() => {
-          this.setState({ state: "default"});
+          this.setState({ state: "default" });
         }, 3000);
         return;
       }
@@ -73,17 +71,15 @@ export default class HomeAddress extends Component {
       this.setState({ state: "success" });
       this.props.data.refetch({ cache: false })
         .then(() => {
-          this.setState({ state: "default"});
+          this.setState({ state: "default" });
         });
     });
-
   }
 
-  render () {
-
+  render() {
     const { person } = this.props.data;
     const { state } = this.state;
-    let home = person && person.home || defaultHome;
+    const home = person && person.home || defaultHome;
 
     switch (state) {
       case "error":
@@ -101,8 +97,7 @@ export default class HomeAddress extends Component {
       case "success":
         return <Success msg="Your information has been updated!" />;
       default:
-        return <Layout home={home} update={this.updateAddress}  />;
+        return <Layout home={home} update={this.updateAddress} />;
     }
-
   }
 }

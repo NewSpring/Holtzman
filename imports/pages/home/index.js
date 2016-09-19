@@ -69,10 +69,10 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
   },
 });
 
-const mapStateToProps = (state) => ({
-    paging: state.paging,
-    topics: state.topics.topics,
-    modal: { visible: state.modal.visible },
+const mapStateToProps = state => ({
+  paging: state.paging,
+  topics: state.topics.topics,
+  modal: { visible: state.modal.visible },
 });
 
 @connect({ mapQueriesToProps, mapStateToProps })
@@ -83,13 +83,13 @@ export default class Home extends Component {
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     this.headerAction({
-      title: "default"
+      title: "default",
     });
   }
 
   handleRefresh = (resolve, reject) => {
     const { topics, paging } = this.props;
-    let refetchVariables = {
+    const refetchVariables = {
       excludeChannels: topics,
       limit: paging.pageSize * paging.page,
       skip: paging.skip,
@@ -102,7 +102,6 @@ export default class Home extends Component {
   }
 
   renderFeed = () => {
-
     const { feed } = this.props.data;
 
     let feedItems = [1, 2, 3, 4, 5];
@@ -114,7 +113,7 @@ export default class Home extends Component {
         <div className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored" key={i}>
           {(() => {
             if (typeof item === "number") return <FeedItemSkeleton />;
-            return <FeedItem item={item}  />;
+            return <FeedItem item={item} />;
           })()}
         </div>
       ))
@@ -123,7 +122,6 @@ export default class Home extends Component {
   }
 
   render() {
-
     const { feed } = this.props.data;
 
     let photo, heroItem, heroLink;
@@ -135,18 +133,17 @@ export default class Home extends Component {
       } else {
         photo = backgrounds.image(heroItem);
       }
-
     }
     return (
         <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
           <Split nav classes={["background--light-primary"]}>
             <Right
-                mobile
-                background={photo}
-                classes={["floating--bottom", "text-left", "background--dark-primary"]}
-                ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up", "floating--bottom", "text-left"]}
-                aspect="square"
-                link={heroLink}
+              mobile
+              background={photo}
+              classes={["floating--bottom", "text-left", "background--dark-primary"]}
+              ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up", "floating--bottom", "text-left"]}
+              aspect="square"
+              link={heroLink}
             >
 
               <HomeHero item={heroItem ? heroItem : {}} />

@@ -6,20 +6,19 @@ import time from "../../util/time";
 export default class HomeHero extends Component {
 
   static propTypes = {
-    item: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired,
   }
 
   timeStampStyles = {
-    marginTop: "5px"
+    marginTop: "5px",
   }
 
 
   render() {
-
     const heroItem = this.props.item;
 
     let iconClasses = "text-light-primary soft-half-right";
-    let ready = Object.keys(heroItem).length;
+    const ready = Object.keys(heroItem).length;
 
     if (ready) {
       iconClasses += ` ${categories.icon(heroItem)} `;

@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
 import { VelocityTransitionGroup } from "velocity-react";
@@ -6,7 +6,6 @@ import { VelocityTransitionGroup } from "velocity-react";
 import { ImageLoader } from "../../components/loading";
 
 const ExternalLinkWrapper = (props) => {
-
   let url = props.to;
   if (props.to.match("//") === null) {
     return (
@@ -21,21 +20,20 @@ const ExternalLinkWrapper = (props) => {
   }
   return (
     <a
-        {...props}
-        href={url}
+      {...props}
+      href={url}
     >
       {props.children}
     </a>
   );
-
 };
 
 // context from ImageLoader
 function preloader() {
   return (
     <div
-        id={this.id}
-        className={`${this.imageclasses.join(" ")}`}
+      id={this.id}
+      className={`${this.imageclasses.join(" ")}`}
     >
       {this.children}
     </div>
@@ -46,9 +44,9 @@ function preloader() {
 function renderElement() {
   return (
     <div
-        id={this.id}
-        className={this.imageclasses.join(" ")}
-        style={this.style}
+      id={this.id}
+      className={this.imageclasses.join(" ")}
+      style={this.style}
     >
       {this.children}
     </div>
@@ -70,31 +68,31 @@ const ChildItem = ({ section, go }) => {
     "background--fill",
     "background--dark-tertiary",
     "ratio--landscape",
-    "soft-ends"
+    "soft-ends",
   ];
 
   return (
     <div className="one-whole soft-half-left grid__item push-half-bottom">
       <ExternalLinkWrapper
-          to={section.link}
-          className="plain"
-          onClick={go}
-          id={section.id}
+        to={section.link}
+        className="plain"
+        onClick={go}
+        id={section.id}
       >
       <div className="rounded one-whole grid rounded flush background--light-primary">
-        <div className="grid__item two-thirds hard" style={{verticalAlign: "middle"}}>
+        <div className="grid__item two-thirds hard" style={{ verticalAlign: "middle" }}>
           <h6 className="soft-left text-dark-primary flush-bottom">{section.text}</h6>
         </div>
-        <div className="grid__item one-third hard" style={{verticalAlign: "middle"}}>
+        <div className="grid__item one-third hard" style={{ verticalAlign: "middle" }}>
           <ImageLoader
-              src={section.image}
-              preloader={preloader}
-              renderElement={renderElement}
-              force
-              imageclasses={imageclasses}
-              style={{backgroundImage: `url('${section.image}')`, borderRadius: "0px 6px 6px 0px"}}
+            src={section.image}
+            preloader={preloader}
+            renderElement={renderElement}
+            force
+            imageclasses={imageclasses}
+            style={{ backgroundImage: `url('${section.image}')`, borderRadius: "0px 6px 6px 0px" }}
           >
-            <div className="ratio__item"/>
+            <div className="ratio__item" />
           </ImageLoader>
         </div>
       </div>
@@ -123,24 +121,24 @@ const Item = ({ section, go, children }) => {
     "rounded",
     "ratio--square",
     "floating--bottom",
-    "floating--left"
+    "floating--left",
   ];
 
   return (
     <div className="one-half soft-half-left grid__item push-half-bottom">
       <ExternalLinkWrapper
-          to={section.link}
-          className="plain"
-          onClick={go}
-          id={section.id}
+        to={section.link}
+        className="plain"
+        onClick={go}
+        id={section.id}
       >
         <ImageLoader
-            src={section.image}
-            preloader={preloader}
-            renderElement={renderElement}
+          src={section.image}
+          preloader={preloader}
+          renderElement={renderElement}
 
-            imageclasses={imageclasses}
-            style={{backgroundImage: `url('${section.image}')`}}
+          imageclasses={imageclasses}
+          style={{ backgroundImage: `url('${section.image}')` }}
         >
           <div className="overlay__item floating__item ratio__item">
             <h6 className="text-light-primary soft-left">{section.text}</h6>
@@ -156,27 +154,27 @@ export default class SectionItem extends Component {
 
   static propTypes = {
     sections: PropTypes.array,
-    hide: PropTypes.func.isRequired
+    hide: PropTypes.func.isRequired,
   }
 
   state = {
-    section: null
+    section: null,
   }
 
   expandOrGo = (e) => {
     const { id } = e.currentTarget;
 
-    for (let section of this.props.sections) {
+    for (const section of this.props.sections) {
       if (section.id === id && section.children.length) {
         e.preventDefault();
 
         // if a section is open and a different section is clicked
         // then change the opened section to the one clicked
-        if (this.state.section != null &&  this.state.section.id !== id) {
+        if (this.state.section != null && this.state.section.id !== id) {
           this.setState({ section: null });
           setTimeout(() => {
-            this.setState({ section: section });
-          },400);
+            this.setState({ section });
+          }, 400);
         }
 
         // if a section is open and that section is clicked
@@ -188,16 +186,14 @@ export default class SectionItem extends Component {
         // else nothing is open
         // and open the section clicked
         else {
-          this.setState({ section: section });
+          this.setState({ section });
         }
 
         return;
-
       }
     }
 
     this.props.hide();
-
   }
 
   renderChildren = () => {
@@ -207,9 +203,9 @@ export default class SectionItem extends Component {
       return null;
     }
 
-    let children = [];
+    const children = [];
 
-    for (let child in section.children) {
+    for (const child in section.children) {
       children.push(section.children[child]);
     }
 
@@ -226,7 +222,6 @@ export default class SectionItem extends Component {
       </div>
 
     );
-
   }
 
   renderArrow = (sectionItem) => {
@@ -251,13 +246,12 @@ export default class SectionItem extends Component {
         marginBottom: "-10px",
         left: "50%",
         marginLeft: "-10px",
-        marginTop:"2px"
-        }} />
+        marginTop: "2px",
+      }} />
     );
   }
 
-  render () {
-
+  render() {
     const { sections } = this.props;
 
     return (
@@ -279,11 +273,11 @@ export default class SectionItem extends Component {
 
         <div className="one-whole">
           <VelocityTransitionGroup
-              enter={{
-              animation: "slideDown", duration: 250
+            enter={{
+              animation: "slideDown", duration: 250,
             }}
-              leave={{
-              animation: "slideUp", duration: 250
+            leave={{
+              animation: "slideUp", duration: 250,
             }}
           >
             {this.renderChildren()}
@@ -291,7 +285,5 @@ export default class SectionItem extends Component {
         </div>
       </div>
     );
-
-
   }
 }

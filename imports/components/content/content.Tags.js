@@ -5,11 +5,10 @@ import content from "../../util/content";
 export default class Tags extends Component {
 
   static propTypes = {
-    item: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired,
   }
 
   render() {
-
     const item = this.props.item;
 
     return (
@@ -19,9 +18,9 @@ export default class Tags extends Component {
             {content.tags(item).map((tag, i) => {
               return (
                 <a
-                    href="#"
-                    className="soft-half-right text-dark-tertiary plain"
-                    key={i}
+                  href="#"
+                  className="soft-half-right text-dark-tertiary plain"
+                  key={i}
                 >
                   {tag}
                 </a>
@@ -32,7 +31,6 @@ export default class Tags extends Component {
       </p>
 
     );
-
   }
 
 }

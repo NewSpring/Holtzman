@@ -12,13 +12,13 @@ import {
   nav as navActions,
   share as shareActions,
   header as headerActions,
-  audio as audioActions
+  audio as audioActions,
 } from "../../store";
 
 const mapStateToProps = (state) => {
   return {
     audio: {
-      visibility: state.audio.visibility
+      visibility: state.audio.visibility,
     },
     header: state.header,
   };
@@ -33,12 +33,12 @@ export default class ListDetail extends Component {
   }
 
   sectionStyles = {
-    position:"absolute",
-    bottom:"60px"
+    position: "absolute",
+    bottom: "60px",
   };
 
   closeModal = (e) => {
-    if(this.props.audio.visibility === "expand") {
+    if (this.props.audio.visibility === "expand") {
       this.props.dispatch(audioActions.setVisibility("dock"));
       // XXX - When I hide the modal, I need the visibility of dock to have
       // taken effect. Bwah.
@@ -80,9 +80,8 @@ export default class ListDetail extends Component {
     dispatch(shareActions.share());
   }
 
-  render () {
-
-    let url = `/music/${this.props.album.entryId}`;
+  render() {
+    const url = `/music/${this.props.album.entryId}`;
     const smallImage = _.find(this.props.album.content.images, (image) => {
       return image.fileName.indexOf("blur") === -1 && image.size === "small";
     });
@@ -90,7 +89,7 @@ export default class ListDetail extends Component {
       <div className="one-whole soft background--dark-primary" style={this.sectionStyles}>
         <div className="text-light-primary">
           <div className="grid floating push-bottom">
-            <div className="grid__item background--fill floating__item text-left hard push-left ratio--square background--light-secondary one-eighth" style={{backgroundImage: `url(${smallImage.url})`}} />
+            <div className="grid__item background--fill floating__item text-left hard push-left ratio--square background--light-secondary one-eighth" style={{ backgroundImage: `url(${smallImage.url})` }} />
             <div className="floating__item text-left grid__item eight-tenths">
               <h5 className="flush">{this.props.album.content.tracks[this.props.trackNumber].title}</h5>
               <h7 className="text-light-tertiary">
@@ -106,7 +105,6 @@ export default class ListDetail extends Component {
         </div>
       </div>
     );
-
   }
 
 }

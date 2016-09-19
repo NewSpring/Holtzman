@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import { Link } from "react-router";
 import gql from "graphql-tag";
@@ -49,7 +49,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
         }
       }
     `,
-    variables: { id: ownProps.params.id }
+    variables: { id: ownProps.params.id },
   },
 });
 const defaultArray = [];
@@ -57,7 +57,7 @@ const defaultArray = [];
 @ReactMixin.decorate(Headerable)
 export default class Template extends Component {
 
-  componentWillMount(){
+  componentWillMount() {
     this.headerAction({ title: "Group Profile" });
   }
 
@@ -75,7 +75,7 @@ export default class Template extends Component {
     if (e && e.preventDefault) e.preventDefault();
 
     const { currentTarget } = e;
-    let message = currentTarget.querySelectorAll("textarea")[0].value.replace(new RegExp("\\n", "gmi"), "<br/>");
+    const message = currentTarget.querySelectorAll("textarea")[0].value.replace(new RegExp("\\n", "gmi"), "<br/>");
 
     Meteor.call("community/actions/join",
       this.props.data.group.entityId, message, callback
@@ -99,7 +99,7 @@ export default class Template extends Component {
     }));
   }
 
-  render () {
+  render() {
     const { data } = this.props;
 
     if (data.loading) return (
@@ -117,7 +117,6 @@ export default class Template extends Component {
     );
 
 
-
     let { group, person, errors } = data;
     let isLeader;
     const leaders = group && group.members && group.members
@@ -132,7 +131,7 @@ export default class Template extends Component {
       markers = [{ latitude, longitude }];
     }
     let isMobile;
-    if (typeof window != "undefined" && window != null ) {
+    if (typeof window != "undefined" && window != null) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
     }
     return (
@@ -144,8 +143,8 @@ export default class Template extends Component {
               if (isMobile || Meteor.isServer) return null;
               return (
                 <GoogleMap
-                    autoCenter
-                    markers={markers}
+                  autoCenter
+                  markers={markers}
                 />
               );
             })()}
@@ -153,14 +152,13 @@ export default class Template extends Component {
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-              isLeader={isLeader}
-              group={group}
-              leaders={leaders || defaultArray}
-              join={this.join}
+            isLeader={isLeader}
+            group={group}
+            leaders={leaders || defaultArray}
+            join={this.join}
           />
         </Left>
       </div>
     );
-
   }
 }

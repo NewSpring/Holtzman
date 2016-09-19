@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { connect }from "react-apollo";
+import { connect } from "react-apollo";
 import Layout from "./Layout";
 
 import Loading from "../../../blocks/give/Loading";
@@ -8,10 +8,10 @@ import Success from "../../../blocks/give/Success";
 
 import { give as giveActions, nav as navActions } from "../../../store";
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   give: state.give,
 });
-@connect({mapStateToProps})
+@connect({ mapStateToProps })
 class Template extends Component {
 
   componentWillMount() {
@@ -45,7 +45,7 @@ class Template extends Component {
           queryString[pair[0]] = decodeURIComponent(pair[1]);
         // If second entry with this name
         } else if (typeof queryString[pair[0]] === "string") {
-          var arr = [queryString[pair[0]], decodeURIComponent(pair[1])];
+          const arr = [queryString[pair[0]], decodeURIComponent(pair[1])];
           queryString[pair[0]] = arr;
         // If third or later entry with this name
         } else {
@@ -57,7 +57,6 @@ class Template extends Component {
   }
 
   monentize = (value, fixed) => {
-
     if (typeof value === "number") {
       value = `${value}`;
     }
@@ -68,7 +67,7 @@ class Template extends Component {
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -92,16 +91,16 @@ class Template extends Component {
         return <Loading msg="We're Processing Your Contribution" />;
       case "error":
         return (<Err
-            msg={errors[Object.keys(errors)[0]].error}
-            additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
-                />);
+          msg={errors[Object.keys(errors)[0]].error}
+          additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
+        />);
       case "success":
         return (<Success
-            total={this.monentize(total.toFixed(2))}
-            email={data.personal.email}
-            guest={false} // prevent showing giving history
-            additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
-                />);
+          total={this.monentize(total.toFixed(2))}
+          email={data.personal.email}
+          guest={false} // prevent showing giving history
+          additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
+        />);
       default:
         return <Layout {...giveData} onSubmit={this.onSubmit} />;
     }
@@ -109,7 +108,7 @@ class Template extends Component {
 }
 
 const Routes = [
-  { path: "review", component: Template }
+  { path: "review", component: Template },
 ];
 
 export default {

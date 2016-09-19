@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import Moment from "moment";
 import { Link } from "react-router";
 
@@ -12,7 +12,7 @@ import AccountType from "../../../../components/accountType";
 export default class Layout extends Component {
 
   static contextTypes = {
-    shouldAnimate: PropTypes.bool
+    shouldAnimate: PropTypes.bool,
   }
 
   formatDate = (date) => {
@@ -20,13 +20,12 @@ export default class Layout extends Component {
   }
 
   monentize = (value, fixed) => {
-
     if (typeof value === "number") value = `${value}`;
     if (!value.length) return "$0.00";
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -36,7 +35,7 @@ export default class Layout extends Component {
     return `$${value}`;
   }
 
-  render () {
+  render() {
     const { loadingEntries, entries } = this.props;
     return (
       <div>
@@ -45,7 +44,7 @@ export default class Layout extends Component {
           <Meta title="Giving History" />
 
           <Right background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
-              mobile={false}
+            mobile={false}
           />
 
         </Split>
@@ -56,8 +55,8 @@ export default class Layout extends Component {
               if (process.env.WEB) {
                 return (
                   <Link to="/give/history" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
-                    <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}} />
-                    <span className="display-inline-block" style={{verticalAlign: "middle", marginTop: "3px"}}>Back</span>
+                    <i className="icon-arrow-back soft-half-right display-inline-block" style={{ verticalAlign: "middle" }} />
+                    <span className="display-inline-block" style={{ verticalAlign: "middle", marginTop: "3px" }}>Back</span>
                   </Link>
                 );
               }
@@ -70,7 +69,7 @@ export default class Layout extends Component {
                     // loading
                     return (
                       <div className="text-center soft">
-                        <Spinner styles={{width: "40px", height: "40px"}}/>
+                        <Spinner styles={{ width: "40px", height: "40px" }} />
                       </div>
                     );
                   }
@@ -95,7 +94,7 @@ export default class Layout extends Component {
                               {(() => {
                                 if (detail.paymentType && detail.paymentType === "ACH") {
                                   return (
-                                    <AccountType width="30px" height="20px" type="Bank"/>
+                                    <AccountType width="30px" height="20px" type="Bank" />
                                   );
                                 } else if (detail.paymentType) {
                                   return (
@@ -131,9 +130,9 @@ export default class Layout extends Component {
                     {entries && entries.map((entry, key) => (
                       <div key={key} className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
                         <SideBySide
-                            classes={["push-bottom@lap-and-up"]}
-                            images={entry.content.images}
-                            defaultImage={entry.content.images[0].url}
+                          classes={["push-bottom@lap-and-up"]}
+                          images={entry.content.images}
+                          defaultImage={entry.content.images[0].url}
                         >
                           <h4 className="push-half-top@portable push-top@anchored">
                             {entry.title}
@@ -144,9 +143,9 @@ export default class Layout extends Component {
                             if (process.env.WEB) {
                               return (
                                 <a
-                                    target="_blank"
-                                    href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
-                                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                                  target="_blank"
+                                  href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
+                                  className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
                                 >
                                   Read more
                                 </a>
@@ -156,8 +155,8 @@ export default class Layout extends Component {
                             if (process.env.NATIVE) {
                               return (
                                 <Link
-                                    to={`/articles/${entry.entryId}`}
-                                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                                  to={`/articles/${entry.entryId}`}
+                                  className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
                                 >
                                   Read more
                                 </Link>
@@ -171,7 +170,6 @@ export default class Layout extends Component {
                     ))}
                   </div>
                 );
-
               })()}
 
           </div>

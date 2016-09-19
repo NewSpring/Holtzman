@@ -32,8 +32,8 @@ const mapQueriesToProps = () => ({
     `
   }
 });
-const mapStateToProps = (state) => ({ location: state.routing.location });
-let defaultTags = [];
+const mapStateToProps = state => ({ location: state.routing.location });
+const defaultTags = [];
 @withRouter
 @connect({ mapQueriesToProps, mapStateToProps })
 export default class Filter extends Component {
@@ -67,7 +67,6 @@ export default class Filter extends Component {
     // reset state
     this.setState({ query: null });
     router.push(location);
-
   }
 
   inputOnChange = (value) => {
@@ -84,8 +83,8 @@ export default class Filter extends Component {
       toggleTags,
       q,
     } = this.props;
-    let tags = attributes.tags ? attributes.tags : defaultTags;
-    let campuses = campusLocations.campuses ? campusLocations.campuses : defaultTags;
+    const tags = attributes.tags ? attributes.tags : defaultTags;
+    const campuses = campusLocations.campuses ? campusLocations.campuses : defaultTags;
     return (
       <div>
 

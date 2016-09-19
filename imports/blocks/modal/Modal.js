@@ -9,7 +9,7 @@ import offsetStyles from "../nav/offset-css";
 export default class SideModal extends Component {
 
   state = {
-    coverHeader: false
+    coverHeader: false,
   }
 
   static propTypes = {
@@ -20,7 +20,7 @@ export default class SideModal extends Component {
     styles: PropTypes.object,
     close: PropTypes.func.isRequired,
     component: PropTypes.func,
-    props: PropTypes.object.isRequired
+    props: PropTypes.object.isRequired,
   }
 
   static defaultProps = {
@@ -29,18 +29,17 @@ export default class SideModal extends Component {
     classes: [],
     offset: true,
     styles: {},
-    props: {}
+    props: {},
   }
 
   childClasses = () => {
-
     const { childClasses, float } = this.props;
 
     let classes = [
       "hard",
       "one-whole",
-      css(styles["interior"]),
-      "scrollable"
+      css(styles.interior),
+      "scrollable",
     ];
 
     if (childClasses.length) {
@@ -52,20 +51,18 @@ export default class SideModal extends Component {
     } else {
       classes = classes.concat([
         "inline-block",
-        "locked-top"
+        "locked-top",
       ]);
     }
 
     return classes.join(" ");
-
   }
 
   layoutClasses = () => {
-
     const { float, offset } = this.props;
     const { classes, layoutOverride, coverHeader, modalBackground } = this.props.modal.props;
 
-    let classList = [
+    const classList = [
       "hard",
       "flush",
     ];
@@ -91,45 +88,44 @@ export default class SideModal extends Component {
     }
 
     if (offset) {
-      classList.push(css(offsetStyles["offset"]));
+      classList.push(css(offsetStyles.offset));
     }
 
     return classList.join(" ");
   }
 
-  componentWillUpdate (nextProps) {
+  componentWillUpdate(nextProps) {
     const coverHeader = !!nextProps.props.coverHeader;
 
-    if(coverHeader != this.state.coverHeader) {
+    if (coverHeader != this.state.coverHeader) {
       this.setState({ coverHeader });
     }
   }
 
   styles = () => {
-    let style = { ... (this.props.styles || this.props.style) };
+    const style = { ...(this.props.styles || this.props.style) };
     style.top = (process.env.WEB || this.state.coverHeader) ? "0px" : "46px";
 
     return style;
   };
 
-  getContainerStyle () {
-    let mini = this.props.props && this.props.props.coverMiniPlayer;
+  getContainerStyle() {
+    const mini = this.props.props && this.props.props.coverMiniPlayer;
     return {
       zIndex: mini ? 102 : 100,
-      position: "fixed"
+      position: "fixed",
     };
-  };
+  }
 
-  render () {
-
-    let slide = {
+  render() {
+    const slide = {
       opacity: [1, 0],
-      translateZ: 0
+      translateZ: 0,
     };
 
     const { close, component, props, visible } = this.props;
 
-    let ChildComponent = component;
+    const ChildComponent = component;
 
     if (!visible || !component) {
       return <div />;
@@ -162,13 +158,13 @@ export default class SideModal extends Component {
     return (
       <div className="panel overlay--solid-dark fixed" id="@@modal" onClick={close} style={this.getContainerStyle()}>
         <VelocityComponent
-            animation={slide}
-            duration={300}
-            runOnMount
+          animation={slide}
+          duration={300}
+          runOnMount
         >
           <section
-              className={this.props.theme || this.layoutClasses()}
-              style={this.styles()}
+            className={this.props.theme || this.layoutClasses()}
+            style={this.styles()}
           >
             <div className={this.childClasses()} style={{ height: "100%" }}>
               <ChildComponent {...props} />

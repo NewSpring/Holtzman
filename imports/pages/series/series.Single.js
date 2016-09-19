@@ -83,7 +83,7 @@ export default class SeriesSingle extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction
+      action: this.likeableAction,
     }));
   }
 
@@ -92,6 +92,7 @@ export default class SeriesSingle extends Component {
   }
 
   handleHeaderStyle = (nextProps) => {
+<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
     const content = nextProps.series.content;
     if(!content) return;
     const { isLight } = nextProps.series.content.content;
@@ -100,6 +101,15 @@ export default class SeriesSingle extends Component {
       title: "Series",
       color: color,
       light: !isLight,
+=======
+    const { content } = nextProps.series;
+    if (!content) return;
+
+    const color = collections.color(content);
+    this.props.dispatch(headerActions.set({
+      title: "Series",
+      color,
+>>>>>>> lint fix yayayayay
     }));
   }
 
@@ -110,7 +120,7 @@ export default class SeriesSingle extends Component {
       left: 0,
       width: "100%",
       height: "100%",
-      zIndex: -1
+      zIndex: -1,
     };
   }
 
@@ -122,7 +132,7 @@ export default class SeriesSingle extends Component {
       return (
         <div className="locked-ends locked-sides floating">
           <div className="floating__item">
-            <Loading/>
+            <Loading />
           </div>
         </div>
       );
@@ -146,4 +156,4 @@ export default class SeriesSingle extends Component {
 
     );
   }
-};
+}

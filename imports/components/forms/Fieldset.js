@@ -3,7 +3,7 @@ import React, { PropTypes } from "react";
 export default class FieldSet extends React.Component {
   layoutClasses = () => {
     let classes = [
-      "flush-bottom"
+      "flush-bottom",
     ];
 
     if (this.props.classes) {
@@ -13,7 +13,7 @@ export default class FieldSet extends React.Component {
     return classes.join(" ");
   }
 
-  render () {
+  render() {
     return (
       <fieldset className={this.props.theme || this.layoutClasses()}>
         {this.props.children}

@@ -1,17 +1,17 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 
 export default class Progress extends Component {
 
   static propTypes = {
     steps: PropTypes.number.isRequired,
-    active: PropTypes.number.isRequired
+    active: PropTypes.number.isRequired,
   }
 
   steps = () => {
     const { steps } = this.props;
 
-    let stepsArray = [];
-    for(var i = 0; i < steps; i++) {
+    const stepsArray = [];
+    for (let i = 0; i < steps; i++) {
       stepsArray.push(i);
     }
 
@@ -24,8 +24,7 @@ export default class Progress extends Component {
     return (this.props.steps + 2 - count);
   }
 
-  render () {
-
+  render() {
     const steps = this.steps();
 
     return (
@@ -33,8 +32,7 @@ export default class Progress extends Component {
         <div className="progress">
 
           {steps.map((step, key) => {
-
-            let classes = [];
+            const classes = [];
             const style = { zIndex: 1 };
 
             if (step.count + 1 <= this.props.active) {
@@ -45,9 +43,9 @@ export default class Progress extends Component {
 
             return (
               <div
-                  className={classes.join(" ")}
-                  style={style}
-                  key={key}
+                className={classes.join(" ")}
+                style={style}
+                key={key}
               />
             );
           })}

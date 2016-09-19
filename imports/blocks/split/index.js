@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 
@@ -12,7 +12,7 @@ export {
   Left,
 };
 
-const map = (state) => ({ navigation: state.nav });
+const map = state => ({ navigation: state.nav });
 
 @connect(map)
 export default class SplitContainer extends Component {
@@ -21,18 +21,18 @@ export default class SplitContainer extends Component {
     classes: PropTypes.array,
     theme: PropTypes.string,
     styles: PropTypes.object,
-    nav: PropTypes.bool
+    nav: PropTypes.bool,
   }
 
   static defaultProps = {
-    styles: {}
+    styles: {},
   }
 
   layoutClasses = () => {
     let classes = [
       "panel",
       "fixed@lap-and-up",
-      css(styles["panel"]),
+      css(styles.panel),
     ];
 
     if (this.props.classes) {
@@ -40,17 +40,17 @@ export default class SplitContainer extends Component {
     }
 
     if (this.props.navigation.visible && this.props.nav != false) {
-      classes.push(css(styles["offset"]));
+      classes.push(css(styles.offset));
     }
 
     return classes.join(" ");
   }
 
-  render () {
+  render() {
     return (
       <div
-          className={this.props.theme || this.layoutClasses()}
-          style={this.props.styles}
+        className={this.props.theme || this.layoutClasses()}
+        style={this.props.styles}
       >
         {this.props.children}
       </div>

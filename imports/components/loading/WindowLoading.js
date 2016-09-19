@@ -6,11 +6,10 @@ function getStyles(style) {
     bottom: 0,
     left: 0,
     right: 0,
-    zIndex: 9999
+    zIndex: 9999,
   };
 
-  return {...defaults, ...style};
-
+  return { ...defaults, ...style };
 }
 
 function getClasses(mergeClasses) {
@@ -25,8 +24,8 @@ function getClasses(mergeClasses) {
 
 const Loading = ({ theme, classes, styles, children }) => (
   <div
-      className={theme || getClasses(classes)}
-      style={getStyles(styles)}
+    className={theme || getClasses(classes)}
+    style={getStyles(styles)}
   >
     {children}
   </div>
