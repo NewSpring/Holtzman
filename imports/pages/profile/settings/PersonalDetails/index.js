@@ -1,16 +1,15 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
-import Moment from "moment";
+import moment from "moment";
 
 import {
   nav,
-  accounts as accountsActions,
 } from "../../../../store";
 
 import { update } from "../../../../methods/accounts/browser";
 
-import { Loading, Error as Err } from "../../../../components/states";
+import { Loading } from "../../../../components/states";
 
 import Success from "../Success";
 import Layout from "./Layout";
@@ -51,6 +50,17 @@ const mapQueriesToProps = () => ({
 @connect({ mapQueriesToProps })
 export default class PersonalDetails extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    person: {
+      person: PropTypes.object.isRequired,
+      refetch: PropTypes.func.isRequired,
+    },
+    campuses: {
+      campuses: PropTypes.array.isRequired,
+    },
+  }
+
   state = {
     month: null,
     state: "default",
@@ -65,9 +75,9 @@ export default class PersonalDetails extends Component {
   }
 
   getDays = () => {
-    let totalDays = Moment("1", "M").daysInMonth();
+    let totalDays = moment("1", "M").daysInMonth();
     if (this.state.month) {
-      totalDays = Moment(this.state.month, "M").daysInMonth();
+      totalDays = moment(this.state.month, "M").daysInMonth();
     }
 
     const arr = [];
@@ -77,11 +87,11 @@ export default class PersonalDetails extends Component {
     return arr;
   }
 
-  getMonths = () => {
-    return Moment.monthsShort().map((month, i) => {
-      return { label: month, value: i + 1 };
-    });
-  }
+  getMonths = () => (
+    moment.monthsShort().map((month, i) => (
+      { label: month, value: i + 1 }
+    ))
+  )
 
   getYears = () => {
     const now = new Date().getFullYear();
@@ -103,8 +113,7 @@ export default class PersonalDetails extends Component {
   updatePerson = (data) => {
     this.setState({ state: "loading" });
 
-    const refs = this.refs;
-    update(data, (err, result) => {
+    update(data, (err) => {
       if (err) {
         this.setState({ state: "error", err });
         setTimeout(() => this.setState({ state: "default" }), 3000);
@@ -120,10 +129,10 @@ export default class PersonalDetails extends Component {
 
   render() {
     let { campuses } = this.props.campuses;
-    campuses = campuses && campuses.map((campus) => {
+    campuses = campuses && campuses.map(campus => {
       return { label: campus.name, value: campus.id };
     });
-    const { state, err } = this.state;
+    const { state } = this.state;
 
     switch (state) {
       case "error":
@@ -148,7 +157,7 @@ export default class PersonalDetails extends Component {
             saveMonth={this.saveMonth}
             days={this.getDays()}
             years={this.getYears()}
-            person={this.props.person && this.props.person.person || {}} // XXX perf
+            person={(this.props.person && this.props.person.person) || {}} // XXX perf
             campuses={campuses}
           />
         );
