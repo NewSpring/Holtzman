@@ -95,7 +95,14 @@ class ForgotPassword extends React.Component {
       case "loading":
         return <Loading msg="Sending email to reset your password..." />;
       case "success":
-        return <Success msg={`An email has been sent to ${this.props.email} with instructions on how to reset your password!`} />;
+        return (
+          <Success
+            msg={
+              `An email has been sent to ${this.props.email} ` +
+              "with instructions on how to reset your password!"
+            }
+          />
+        );
       default:
         return (
           <Forms.Form
