@@ -1,10 +1,7 @@
-import { Component, PropTypes, Lib } from "react";
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
-import { Link } from "react-router";
-
-import Likes from "../../database/collections/likes";
 
 // loading state
 import Loading from "../../components/loading";
@@ -14,13 +11,11 @@ import Shareable from "../../mixins/mixins.Shareable";
 
 // action helpers
 import {
-  modal,
   nav as navActions,
   audio as audioActions,
 } from "../../store";
 
 import Track from "./music.Track";
-import SaveOffline from "./music.SaveOffline";
 
 const mapQueriesToProps = ({ ownProps }) => ({
   album: {
@@ -73,6 +68,15 @@ const mapQueriesToProps = ({ ownProps }) => ({
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
 export default class MusicAlbum extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    album: {
+      content: PropTypes.object.isRequired,
+    },
+    modalVisible: PropTypes.boolean.isRequired,
+    albumArtist: PropTypes.string.isRequired,
+  }
 
   state = {
     currentTrack: null,
@@ -155,47 +159,60 @@ export default class MusicAlbum extends Component {
     };
 
     const album = content;
-    const tracks = _.filter(album.content.tracks, (track) => {
-      return !!track.file;
-    });
+    const tracks = _.filter(album.content.tracks, track => (!!track.file));
 
-    const xsmallBlurImage = _.find(album.content.images, (image) => {
-      return image.fileName.indexOf("blur") > -1 && image.size === "xsmall";
-    });
-    const mediumImage = _.find(album.content.images, (image) => {
-      return image.fileName.indexOf("blur") === -1 && image.size === "medium";
-    });
+    const xsmallBlurImage = _.find(album.content.images, image => (
+      image.fileName.indexOf("blur") > -1 && image.size === "xsmall"
+    ));
+    const mediumImage = _.find(album.content.images, image => (
+      image.fileName.indexOf("blur") === -1 && image.size === "medium"
+    ));
 
-    try {
-      return (
-        <section className="hard background--light-primary" style={getStyle()}>
-          {/* XXX need a get blurred image helper here */}
-          <div className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill" style={{ backgroundImage: `url(${getUrl(xsmallBlurImage)})` }}>
-            <div
-              className="one-third floating__item display-inline overlay__item ratio--square background--fill"
-              style={{ backgroundImage: `url(${getUrl(mediumImage)})` }}
-            />
-            <div className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
-              <h5>{album.title}</h5>
-              <h7>{this.props.albumArtist || "NewSpring"}</h7>
-            </div>
+    return (
+      <section className="hard background--light-primary" style={getStyle()}>
+        {/* XXX need a get blurred image helper here */}
+        <div
+          className={
+            "one-whole soft soft-double@palm-wide-and-up overlay floating " +
+            "background--dark-primary background--fill"
+          }
+          style={{ backgroundImage: `url(${getUrl(xsmallBlurImage)})` }}
+        >
+          <div
+            className={
+              "one-third floating__item display-inline overlay__item " +
+              "ratio--square background--fill"
+            }
+            style={{ backgroundImage: `url(${getUrl(mediumImage)})` }}
+          />
+          <div
+            className={
+              "overlay__item soft-left text-left floating__item " +
+              "two-thirds text-light-primary"
+            }
+          >
+            <h5>{album.title}</h5>
+            <h7>{this.props.albumArtist || "NewSpring"}</h7>
           </div>
-          <div className="background--light-primary one-whole">
-            <div className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
-              {tracks.map((track, i) => {
-                return (<Track
-                  track={track}
-                  album={album}
-                  key={i}
-                  trackNumber={i}
-                />);
-              })}
-            </div>
+        </div>
+        <div className="background--light-primary one-whole">
+          <div
+            className={
+              "soft-sides soft-double-sides@palm-wide-and-up " +
+              "soft-ends@palm-wide-and-up soft-half-ends push-bottom"
+            }
+          >
+            {tracks.map((track, i) => (
+              <Track
+                track={track}
+                album={album}
+                key={i}
+                trackNumber={i}
+              />
+            ))}
           </div>
-        </section>
-      );
-    } catch (e) {
-      console.log(e);
-    }
+        </div>
+      </section>
+    );
   }
 }
