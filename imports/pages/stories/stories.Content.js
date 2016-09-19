@@ -8,15 +8,15 @@ import react from "../../util/react";
 const ratio = window.isTablet ? "2:1" : "1:1";
 const StoryImage = ({ story }) => (
   <div
-      className="one-whole ratio--square ratio--landscape@palm-wide-and-up background--fill"
-      style={backgrounds.styles(story, ratio)}
+    className="one-whole ratio--square ratio--landscape@palm-wide-and-up background--fill"
+    style={backgrounds.styles(story, ratio)}
   />
 );
 
 export default class StoriesContent extends Component {
 
   static propTypes = {
-    story: PropTypes.object.isRequired
+    story: PropTypes.object.isRequired,
   }
 
   render() {
@@ -26,7 +26,7 @@ export default class StoriesContent extends Component {
       <div>
         <section className="background--light-primary hard-sides hard-top">
           {(() => {
-           if (story.content.ooyalaId.length === 0) return <StoryImage story={story} />;
+            if (story.content.ooyalaId.length === 0) return <StoryImage story={story} />;
             return <SingleVideoPlayer ooyalaId={story.content.ooyalaId} />;
           })()}
           <div className="soft soft-double-sides@palm-wide-and-up push-top">
@@ -39,7 +39,6 @@ export default class StoriesContent extends Component {
       </div>
 
     );
-
   }
 
 }

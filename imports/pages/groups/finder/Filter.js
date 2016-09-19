@@ -21,8 +21,8 @@ const mapQueriesToProps = () => ({
     `,
   },
 });
-const mapStateToProps = (state) => ({ location: state.routing.location });
-let defaultTags = [];
+const mapStateToProps = state => ({ location: state.routing.location });
+const defaultTags = [];
 @withRouter
 @connect({ mapQueriesToProps, mapStateToProps })
 export default class Filter extends Component {
@@ -55,7 +55,6 @@ export default class Filter extends Component {
     // reset state
     this.setState({ query: null });
     router.push(location);
-
   }
 
   inputOnChange = (value) => {
@@ -71,7 +70,7 @@ export default class Filter extends Component {
       toggleTags,
       q,
     } = this.props;
-    let tags = attributes.tags ? attributes.tags : defaultTags;
+    const tags = attributes.tags ? attributes.tags : defaultTags;
     return (
       <div>
 
@@ -97,23 +96,23 @@ export default class Filter extends Component {
             <div className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary">
 
               <Forms.Form
-                  classes={["hard", "display-inline-block", "one-whole" ]}
-                  submit={(e) => this.findByQuery(e)}
+                classes={["hard", "display-inline-block", "one-whole"]}
+                submit={e => this.findByQuery(e)}
               >
                 <i className="icon-search locked-left soft-half-left" />
                 <span
-                    style={{zIndex: 1, paddingTop: "5px", "cursor": "pointer"}}
-                    onClick={this.removeQuery}
-                    className="h7 locked-right flush-bottom"
+                  style={{ zIndex: 1, paddingTop: "5px", "cursor": "pointer" }}
+                  onClick={this.removeQuery}
+                  className="h7 locked-right flush-bottom"
                 >Cancel</span>
                 <Forms.Input
-                    hideLabel
-                    classes={["hard-bottom", "soft-right", "push-double-right"]}
-                    inputClasses="soft-double-left soft-half-bottom"
-                    placeholder="Type your search here..."
-                    type="text"
-                    defaultValue={q}
-                    onChange={(e) => this.inputOnChange(e)}
+                  hideLabel
+                  classes={["hard-bottom", "soft-right", "push-double-right"]}
+                  inputClasses="soft-double-left soft-half-bottom"
+                  placeholder="Type your search here..."
+                  type="text"
+                  defaultValue={q}
+                  onChange={e => this.inputOnChange(e)}
                 />
 
               <div className="one-whole text-left">

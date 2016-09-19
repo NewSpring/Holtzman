@@ -26,7 +26,7 @@ class SignIn extends Component {
 
   header = () => (
     <div className="text-center">
-      <h3 className="uppercase text-light-primary flush-bottom push-half-bottom" style={{fontWeight: "900"}}>
+      <h3 className="uppercase text-light-primary flush-bottom push-half-bottom" style={{ fontWeight: "900" }}>
         Welcome To NewSpring
       </h3>
       <p className="flush-bottom"><em className="text-light-primary small">
@@ -35,12 +35,12 @@ class SignIn extends Component {
     </div>
   )
 
-  toggle = (num) => this.props.setAccount(num == 0)
+  toggle = num => this.props.setAccount(num == 0)
 
   isEmail = (value) => {
     const isValid = value.length ? Validate.isEmail(value) : true;
 
-    if (!isValid ) {
+    if (!isValid) {
       this.props.clear("email");
     } else {
       this.props.save({ email: value });
@@ -58,7 +58,7 @@ class SignIn extends Component {
   liveSavePassword = (value) => {
     const isValid = value.length ? true : false;
 
-    if (!isValid ) {
+    if (!isValid) {
       this.props.clear("password");
     } else {
       this.props.save({ password: value });
@@ -70,7 +70,7 @@ class SignIn extends Component {
   firstName = (value) => {
     const isValid = value.length ? true : false;
 
-    if (!isValid ) {
+    if (!isValid) {
       this.props.clear("firstName");
     } else {
       this.props.save({ firstName: value });
@@ -82,7 +82,7 @@ class SignIn extends Component {
   lastName = (value) => {
     const isValid = value.length ? true : false;
 
-    if (!isValid ) {
+    if (!isValid) {
       this.props.clear("lastName");
     } else {
       this.props.save({ lastName: value });
@@ -108,8 +108,8 @@ class SignIn extends Component {
   submit = (event) => {
     event.preventDefault();
     const { refs } = this;
-    let data = {...this.props.data};
-    for (let input in refs) {
+    const data = { ...this.props.data };
+    for (const input in refs) {
       const component = refs[input];
       if (component.validate) {
         component.validate();
@@ -125,7 +125,6 @@ class SignIn extends Component {
   }
 
   selectPerson = (id) => {
-
     if (this.state.selectPerson === id) {
       this.setState({ selectedPerson: null });
       this.props.clear("data");
@@ -134,7 +133,6 @@ class SignIn extends Component {
 
     this.setState({ selectedPerson: id });
     this.props.save({ personId: id });
-
   }
 
   createNewPerson = (e) => {
@@ -148,7 +146,7 @@ class SignIn extends Component {
     this.props.completeAccount();
   }
 
-  render () {
+  render() {
     return (
       <div>
         <div className="soft-double-ends soft-sides background--primary">
@@ -156,28 +154,28 @@ class SignIn extends Component {
         </div>
 
         <Controls.Toggle
-            items={this.props.toggles}
-            toggle={this.toggle}
-            state={this.props.account ? 0 : 1}
+          items={this.props.toggles}
+          toggle={this.toggle}
+          state={this.props.account ? 0 : 1}
         />
 
         <Forms.Form
-            id="accounts"
-            fieldsetTheme="flush soft-top"
-            classes={["soft-double-sides@palm-wide-and-up", "soft-sides"]}
-            submit={this.submit}
+          id="accounts"
+          fieldsetTheme="flush soft-top"
+          classes={["soft-double-sides@palm-wide-and-up", "soft-sides"]}
+          submit={this.submit}
         >
 
         <div >
           <Forms.Input
-              name="email"
-              type="email"
-              placeholder="user@email.com"
-              label="Email"
-              errorText="Please enter a valid email"
-              validation={this.isEmail}
-              defaultValue={this.props.data.email}
-              ref="email"
+            name="email"
+            type="email"
+            placeholder="user@email.com"
+            label="Email"
+            errorText="Please enter a valid email"
+            validation={this.isEmail}
+            defaultValue={this.props.data.email}
+            ref="email"
           />
         </div>
 
@@ -190,12 +188,12 @@ class SignIn extends Component {
                   <h6 className="flush-bottom text-dark-primary push-back-half-top">
                     It looks like you may have a NewSpring account already!
                     <span>
-                      &nbsp; Is this your email?<br/><br/>
+                      &nbsp; Is this your email?<br /><br />
                       <a href="#" onClick={this.changeEmails} data-email={this.props.alternateAccounts[0]}>
                         {this.props.alternateAccounts[0]}
                       </a>?
                     </span>
-                    <br/><br/>Click below to sign in with this email.
+                    <br /><br />Click below to sign in with this email.
                   </h6>
                 </div>
                 <div className="push-half-top push-bottom soft-half-bottom one-whole text-center">
@@ -208,7 +206,7 @@ class SignIn extends Component {
           }
 
           if (!this.props.account && this.props.peopleWithoutAccountEmails.length && this.state.showAlternativePeople) {
-            let people = [...this.props.peopleWithoutAccountEmails];
+            const people = [...this.props.peopleWithoutAccountEmails];
             return (
               <div className="one-whole text-left push-back-double-top">
                 <h6 className="text-dark-primary soft-top flush-bottom soft-half-bottom push-back-double-top">
@@ -221,22 +219,22 @@ class SignIn extends Component {
                   };
                   return (
                     <div className="text-left soft-double-left push-top relative" key={key}
-                        onClick={() => this.selectPerson(person.id)}
+                      onClick={() => this.selectPerson(person.id)}
                     >
                     <div className="locked-left">
                       {/* XXX just used for UI purposes */}
-                      <Forms.Checkbox classes={["push-top", "hard-bottom"]} defaultValue={isActive()}/>
+                      <Forms.Checkbox classes={["push-top", "hard-bottom"]} defaultValue={isActive()} />
                     </div>
                       <div
-                          className="round background--fill display-inline-block push-half-right"
-                          style={{
+                        className="round background--fill display-inline-block push-half-right"
+                        style={{
                           backgroundImage: `url('${person.photo}')`,
                           width: "70px",
                           height: "70px",
-                          verticalAlign: "middle"
+                          verticalAlign: "middle",
                         }}
                       />
-                      <div className="flush hard display-inline-block" style={{ verticalAlign: "middle"}}>
+                      <div className="flush hard display-inline-block" style={{ verticalAlign: "middle" }}>
                         <h5 className="flush-bottom">{person.firstName} {person.lastName}</h5>
                         <h7 className="flush-bottom em text-dark-tertiary">{person.email}</h7>
                       </div>
@@ -260,47 +258,46 @@ class SignIn extends Component {
           return (
             <div>
               <Forms.Input
-                  name="password"
-                  placeholder="password"
-                  label="Password"
-                  type="password"
-                  errorText="Password may not be empty"
-                  validation={this.savePassword}
-                  format={this.liveSavePassword}
-                  ref="password"
+                name="password"
+                placeholder="password"
+                label="Password"
+                type="password"
+                errorText="Password may not be empty"
+                validation={this.savePassword}
+                format={this.liveSavePassword}
+                ref="password"
               />
               {(() => {
                 if (this.props.account) return null;
                 return (
                   <div>
                     <Forms.Input
-                        name="firstName"
-                        label="First Name"
-                        errorText="Please enter your first name"
-                        validation={this.firstName}
-                        defaultValue={this.props.data.firstName}
-                        ref="firstName"
+                      name="firstName"
+                      label="First Name"
+                      errorText="Please enter your first name"
+                      validation={this.firstName}
+                      defaultValue={this.props.data.firstName}
+                      ref="firstName"
                     />
 
                     <Forms.Input
-                        name="lastName"
-                        label="Last Name"
-                        errorText="Please enter your last name"
-                        validation={this.lastName}
-                        defaultValue={this.props.data.lastName}
-                        ref="lastName"
+                      name="lastName"
+                      label="Last Name"
+                      errorText="Please enter your last name"
+                      validation={this.lastName}
+                      defaultValue={this.props.data.lastName}
+                      ref="lastName"
                     />
                   </div>
                 );
               })()}
               {(() => {
                 if (!this.props.account) {
-
                   return (
                     <Forms.Checkbox
-                        name="terms"
-                        defaultValue={this.props.data.terms}
-                        clicked={this.saveTerms}
+                      name="terms"
+                      defaultValue={this.props.data.terms}
+                      clicked={this.saveTerms}
                     >
                       By signing up you agree to our <a href="//newspring.cc/terms" target="_blank">terms of use</a>
                     </Forms.Checkbox>
@@ -311,8 +308,8 @@ class SignIn extends Component {
                     <h7 >
                       <small>
                         <a href="/profile/forgot-password"
-                            className="text-primary"
-                            onClick={this.props.forgot}
+                          className="text-primary"
+                          onClick={this.props.forgot}
                         >
                           Forgot Password?
                         </a>
@@ -324,9 +321,9 @@ class SignIn extends Component {
 
               {(() => {
                 const { data } = this.props;
-                let btnClasses = ["push-double-bottom"];
+                const btnClasses = ["push-double-bottom"];
 
-                if (data.email === null || data.password === null && !data.terms){
+                if (data.email === null || data.password === null && !data.terms) {
                   btnClasses.push("btn--disabled");
                 } else {
                   btnClasses.push("btn");
@@ -341,7 +338,6 @@ class SignIn extends Component {
             </div>
 
           );
-
         })()}
 
 

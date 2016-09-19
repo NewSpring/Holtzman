@@ -14,7 +14,7 @@ import {
   live as liveActions,
 } from "../../store";
 
-console.log(headerActions)
+console.log(headerActions);
 
 // can we use the core toggle here? Is it ready @jbaxleyiii?
 import DevotionsSingleContent from "./devotions.SingleContent";
@@ -67,7 +67,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
   };
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   modal: { visible: state.modal.visible },
   live: state.live,
 });
@@ -102,7 +102,7 @@ export default class SeriesSingle extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction
+      action: this.likeableAction,
     }));
 
     this.props.dispatch(headerActions.hide());
@@ -157,14 +157,13 @@ export default class SeriesSingle extends Component {
   }
 
   renderContent = (devotion) => {
-
     if (!devotion.content.scripture) {
       return (
         <div title="Devotional">
           <DevotionsSingleContent
-              devotion={devotion}
-              onClickLink={this.onClickLink}
-              classes={this.getLiveClasses()}
+            devotion={devotion}
+            onClickLink={this.onClickLink}
+            classes={this.getLiveClasses()}
           />
         </div>
       );
@@ -172,22 +171,22 @@ export default class SeriesSingle extends Component {
 
     return (
         <SwipeViews
-            selectedIndex={this.state.selectedIndex}
-            disableSwipe
+          selectedIndex={this.state.selectedIndex}
+          disableSwipe
         >
 
           <div title="Devotional">
             <DevotionsSingleContent
-                devotion={devotion}
-                onClickLink={this.onClickLink}
-                classes={this.getLiveClasses()}
+              devotion={devotion}
+              onClickLink={this.onClickLink}
+              classes={this.getLiveClasses()}
             />
           </div>
 
           <div title="Scripture">
             <DevotionsSingleScripture
-                devotion={devotion}
-                classes={this.getLiveClasses()}
+              devotion={devotion}
+              classes={this.getLiveClasses()}
             />
           </div>
         </SwipeViews>
@@ -195,13 +194,12 @@ export default class SeriesSingle extends Component {
   }
 
   render() {
-
     const { content } = this.props.devotion;
     if (!content) {
       return (
         <div className="locked-ends locked-sides floating">
           <div className="floating__item">
-            <Loading/>
+            <Loading />
           </div>
         </div>
       );
@@ -216,4 +214,4 @@ export default class SeriesSingle extends Component {
     );
   }
 
-};
+}

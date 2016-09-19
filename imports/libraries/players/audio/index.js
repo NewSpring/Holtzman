@@ -8,12 +8,11 @@
 class Audio {
 
   constructor(src, success, error, status) {
-
     try {
       this._audio5 = new Audio5({
-        ready: function(player) {
+        ready(player) {
           this.load(src);
-        }
+        },
 
       });
     } catch (e) {
@@ -30,10 +29,9 @@ class Audio {
 
     this.position = null;
     this.duration = this._audio5.duration;
-
   }
 
-  getCurrentPosition = () => { this._audio5.position }
+  getCurrentPosition = () => { this._audio5.position; }
 
   timeupdate = (callback) => {
     this._audio5.on("timeupdate", () => {
@@ -41,61 +39,55 @@ class Audio {
     });
   }
 
-  getDuration = () => { this._audio5.duration }
+  getDuration = () => { this._audio5.duration; }
 
-  play = () => { this._audio5.play() }
+  play = () => { this._audio5.play(); }
 
-  pause = () => { this._audio5.pause() }
-  playPause = () => { this._audio5.playPause() }
+  pause = () => { this._audio5.pause(); }
+  playPause = () => { this._audio5.playPause(); }
 
   // native only
-  release(){ return }
+  release() { return; }
 
 
-  seekTo = (pos) => { this._audio5.seek(pos / 1000) }
+  seekTo = (pos) => { this._audio5.seek(pos / 1000); }
 
-  setVolume = (vol) => { this._audio5.volume(vol) }
+  setVolume = (vol) => { this._audio5.volume(vol); }
 
-  startRecord(){ return }
-  stopRecord(){ return }
+  startRecord() { return; }
+  stopRecord() { return; }
 
-  stop = () => { this._audio5.pause() }
-  release = () => { this._audio5.destroy() }
+  stop = () => { this._audio5.pause(); }
+  release = () => { this._audio5.destroy(); }
 
-  ended = (callback) => { this._audio5.on("ended", callback) }
+  ended = (callback) => { this._audio5.on("ended", callback); }
 
 }
 
 
 if (Meteor.isCordova) {
-
   document.addEventListener("deviceready", (event) => {
-
-
-    Media.prototype.timeupdate = function(callback){
+    Media.prototype.timeupdate = function (callback) {
       return setInterval(() => {
-        this.getCurrentPosition(function(position) {
-            if (position > -1) {
-              const mins = Math.floor(position / 600);
-              const seconds = (position % 600).toFixed(0);
+        this.getCurrentPosition((position) => {
+          if (position > -1) {
+            const mins = Math.floor(position / 600);
+            const seconds = (position % 600).toFixed(0);
 
-              const date = `${mins}:${seconds}`;
-              callback(date);
-            }
-
+            const date = `${mins}:${seconds}`;
+            callback(date);
+          }
         });
       }, 1000);
-
     };
 
-    Media.prototype.ended = function(callback) {
-
+    Media.prototype.ended = function (callback) {
       const getDuration = () => {
         return this.getDuration();
       };
 
-      let interval = setInterval(() => {
-        this.getCurrentPosition(function(position) {
+      const interval = setInterval(() => {
+        this.getCurrentPosition((position) => {
           if (position > -1) {
             const duration = getDuration();
             if (position.toFixed(1) === duration.toFixed(1)) {
@@ -108,8 +100,7 @@ if (Meteor.isCordova) {
       }, 10);
     };
 
-    Media.prototype.playPause = function(){
-
+    Media.prototype.playPause = function () {
       if (this.isPlaying) {
         this.pause();
         this.isPlaying = false;
@@ -118,12 +109,10 @@ if (Meteor.isCordova) {
 
       this.isPlaying = true;
       this.play();
-
     };
 
     Audio = Media;
   });
-
 }
 
 export default Audio;

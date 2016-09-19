@@ -10,13 +10,11 @@ export default class SingleVideoPlayer extends Component {
   }
 
   render() {
-
     return (
       <Video
-          id={this.props.ooyalaId}
+        id={this.props.ooyalaId}
       />
     );
-
   }
 
 }

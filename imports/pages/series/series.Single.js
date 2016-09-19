@@ -82,7 +82,7 @@ export default class SeriesSingle extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction
+      action: this.likeableAction,
     }));
   }
 
@@ -92,12 +92,12 @@ export default class SeriesSingle extends Component {
 
   handleHeaderStyle = (nextProps) => {
     const { content } = nextProps.series;
-    if(!content) return;
+    if (!content) return;
 
     const color = collections.color(content);
     this.props.dispatch(headerActions.set({
       title: "Series",
-      color: color
+      color,
     }));
   }
 
@@ -108,7 +108,7 @@ export default class SeriesSingle extends Component {
       left: 0,
       width: "100%",
       height: "100%",
-      zIndex: -1
+      zIndex: -1,
     };
   }
 
@@ -120,7 +120,7 @@ export default class SeriesSingle extends Component {
       return (
         <div className="locked-ends locked-sides floating">
           <div className="floating__item">
-            <Loading/>
+            <Loading />
           </div>
         </div>
       );
@@ -144,4 +144,4 @@ export default class SeriesSingle extends Component {
 
     );
   }
-};
+}

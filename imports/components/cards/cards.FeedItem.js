@@ -54,7 +54,7 @@ export default class FeedItem extends Component {
       classes = classes.concat([
         "overlay--gradient",
         "rounded",
-        "background--fill"
+        "background--fill",
       ]);
     } else {
       classes.push("rounded-top");
@@ -64,12 +64,12 @@ export default class FeedItem extends Component {
   }
 
   itemTheme = () => {
-    let classes = [
+    const classes = [
       "card__item",
       "soft",
       "text-center",
       "soft-ends",
-      "rounded-bottom"
+      "rounded-bottom",
     ];
 
     if (this.isSeriesItem()) {
@@ -90,7 +90,7 @@ export default class FeedItem extends Component {
   }
 
   timeClasses = () => {
-    let classes = ["text-right", "float-right", "flush-bottom"];
+    const classes = ["text-right", "float-right", "flush-bottom"];
     if (this.isSeriesItem()) {
       classes.push("text-light-primary");
     }
@@ -111,12 +111,12 @@ export default class FeedItem extends Component {
     const item = this.props.item;
     return (
       <Card
-          link={content.links(item)}
-          classes={this.cardClasses(item)}
-          imageclasses={["rounded-top"]}
-          image={{ url: this.getImage(item), ratio: "square", full: this.isSeriesItem() }}
-          itemTheme={this.itemTheme()}
-          linkAll
+        link={content.links(item)}
+        classes={this.cardClasses(item)}
+        imageclasses={["rounded-top"]}
+        image={{ url: this.getImage(item), ratio: "square", full: this.isSeriesItem() }}
+        itemTheme={this.itemTheme()}
+        linkAll
       >
         <style>{this.overlayStyles(item)}</style>
 
@@ -124,7 +124,7 @@ export default class FeedItem extends Component {
           <h4 className={this.h4Classes()}>{item.title}</h4>
           <i className={this.iconClasses()} />
           <h7 className={this.categoryClasses()}>{categories.name(item)}</h7>
-          <h7 style={{marginTop: "5px"}} className={this.timeClasses()}>{time.relative(item)}</h7>
+          <h7 style={{ marginTop: "5px" }} className={this.timeClasses()}>{time.relative(item)}</h7>
         </div>
       </Card>
     );

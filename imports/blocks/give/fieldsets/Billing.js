@@ -28,17 +28,17 @@ export default class Billing extends Component {
   streetAddress = (value) => {
     const isValid = value.length ? true : false;
 
-    if (!isValid ) {
+    if (!isValid) {
       this.props.clear("billing", "streetAddress");
     } else {
-      this.props.save({ billing: { streetAddress: value }});
+      this.props.save({ billing: { streetAddress: value } });
     }
 
     return true;
   }
 
   streetAddress2 = (value) => {
-    this.props.save({ billing: { streetAddress2: value }});
+    this.props.save({ billing: { streetAddress2: value } });
     return true;
   }
 
@@ -48,7 +48,7 @@ export default class Billing extends Component {
     if (!value.length) {
       this.props.clear("billing", "state");
     } else {
-      this.props.save({ billing: { state: value }});
+      this.props.save({ billing: { state: value } });
     }
 
     return true;
@@ -57,39 +57,37 @@ export default class Billing extends Component {
   saveCountry = (value) => {
     const isValid = value.length ? true : false;
 
-    if (!isValid ) {
+    if (!isValid) {
       this.props.clear("billing", "country");
     } else {
-      this.props.save({ billing: { country: value }});
+      this.props.save({ billing: { country: value } });
     }
 
     return true;
   }
 
   city = (value) => {
-
     if (!value.length) {
       this.props.clear("billing", "city");
     } else {
-      this.props.save({ billing: { city: value }});
+      this.props.save({ billing: { city: value } });
     }
 
     return true;
   }
 
   zip = (value) => {
-
     // we can't require zip for international giving
-    if (!value.length ) {
+    if (!value.length) {
       this.props.clear("billing", "zip");
     } else {
-      this.props.save({ billing: { zip: value }});
+      this.props.save({ billing: { zip: value } });
     }
 
     return true;
   }
 
-  render () {
+  render() {
     const { billing } = this.props.data;
     const { states, countries } = this.props;
     return (
@@ -104,40 +102,40 @@ export default class Billing extends Component {
 
 
           <Forms.Input
-              name="streetAddress"
-              label="Street Address"
-              errorText="Please enter your address"
-              validation={this.streetAddress}
-              defaultValue={billing.streetAddress}
-              ref="streetAddress"
-              autoFocus
+            name="streetAddress"
+            label="Street Address"
+            errorText="Please enter your address"
+            validation={this.streetAddress}
+            defaultValue={billing.streetAddress}
+            ref="streetAddress"
+            autoFocus
           />
           <Forms.Input
-              name="streetAddress2"
-              label="Street Address (optional)"
-              validation={this.streetAddress2}
-              defaultValue={billing.streetAddress2}
-              ref="streetAddress2"
+            name="streetAddress2"
+            label="Street Address (optional)"
+            validation={this.streetAddress2}
+            defaultValue={billing.streetAddress2}
+            ref="streetAddress2"
           />
 
           <Forms.Select
-              name="country"
-              label="Country"
-              errorText="Please enter your country"
-              defaultValue={billing.country ? billing.country : "US"}
-              items={countries}
-              validation={this.saveCountry}
-              ref="country"
-              includeBlank
+            name="country"
+            label="Country"
+            errorText="Please enter your country"
+            defaultValue={billing.country ? billing.country : "US"}
+            items={countries}
+            validation={this.saveCountry}
+            ref="country"
+            includeBlank
           />
 
           <Forms.Input
-              name="city"
-              label="City"
-              errorText="Please enter your city"
-              defaultValue={billing.city}
-              validation={this.city}
-              ref="city"
+            name="city"
+            label="City"
+            errorText="Please enter your city"
+            defaultValue={billing.city}
+            validation={this.city}
+            ref="city"
           />
 
           <div className="grid">
@@ -146,14 +144,14 @@ export default class Billing extends Component {
                 return (
                   <div className="grid__item one-half">
                     <Forms.Select
-                        name="state"
-                        label="State/Territory"
-                        errorText="Please enter your state"
-                        defaultValue={billing.state ? billing.state : "SC"}
-                        items={states}
-                        validation={this.saveState}
-                        ref="state"
-                        includeBlank
+                      name="state"
+                      label="State/Territory"
+                      errorText="Please enter your state"
+                      defaultValue={billing.state ? billing.state : "SC"}
+                      items={states}
+                      validation={this.saveState}
+                      ref="state"
+                      includeBlank
                     />
                   </div>
                 );
@@ -167,13 +165,13 @@ export default class Billing extends Component {
               return (
                 <div className={`grid__item ${length}`}>
                   <Forms.Input
-                      name="zip"
-                      label="Zip/Postal"
-                      errorText="Please enter your zip"
-                      defaultValue={billing.zip}
-                      onChange={this.zip}
-                      validation={this.zip}
-                      ref="zip"
+                    name="zip"
+                    label="Zip/Postal"
+                    errorText="Please enter your zip"
+                    defaultValue={billing.zip}
+                    onChange={this.zip}
+                    validation={this.zip}
+                    ref="zip"
                   />
                 </div>
               );
@@ -185,7 +183,6 @@ export default class Billing extends Component {
         </div>
 
 
-
         <div>
           <a href="#" tabIndex={-1} onClick={this.props.back} className="btn--small btn--dark-tertiary display-inline-block">
             Back
@@ -193,9 +190,9 @@ export default class Billing extends Component {
 
           {(() => {
             const { billing } = this.props.data;
-            let btnClasses = ["push-left"];
+            const btnClasses = ["push-left"];
             let disabled = false;
-            if (!billing.streetAddress || !billing.city ){
+            if (!billing.streetAddress || !billing.city) {
               btnClasses.push("btn--disabled");
               disabled = true;
             } else {

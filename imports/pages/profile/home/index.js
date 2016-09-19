@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -29,22 +29,22 @@ const mapQueriesToProps = ({ state }) => ({
         }
       }
     `,
-  }
+  },
 });
 
-const mapStateToProps = (state) => ({ authorized: state.accounts.authorized });
+const mapStateToProps = state => ({ authorized: state.accounts.authorized });
 
 @connect({ mapQueriesToProps, mapStateToProps })
 export default class Home extends Component {
 
   state = {
     content: 0,
-    photo: null
+    photo: null,
   }
 
   content = [<Likes />, <Following />]
 
-  componentDidMount(){
+  componentDidMount() {
     if (process.env.NATIVE) {
       const item = {
         title: "Profile",
@@ -66,18 +66,18 @@ export default class Home extends Component {
 
   onToggle = (toggle) => {
     this.setState({
-      content: toggle
+      content: toggle,
     });
   }
 
   onUpload = (e) => {
-    let files = e.target.files;
+    const files = e.target.files;
 
     if (!Meteor.settings.public.rock) {
       return;
     }
 
-    var data = new FormData();
+    const data = new FormData();
     data.append("file", files[0]);
 
     const { baseURL, token, tokenName } = Meteor.settings.public.rock;
@@ -85,11 +85,11 @@ export default class Home extends Component {
     fetch(`${baseURL}api/BinaryFiles/Upload?binaryFileTypeId=5`, {
       method: "POST",
       headers: { [tokenName]: token },
-      body: data
+      body: data,
     })
       .then((response) => {
         return response.json();
-       })
+      })
       .then((id) => {
         avatar(id, (err, response) => {
           updateUser(Meteor.userId(), this.props.dispatch);
@@ -98,13 +98,13 @@ export default class Home extends Component {
 
     const save = (url) => {
       this.setState({
-        photo: url
+        photo: url,
       });
     };
 
-    for (let file in files) {
-      let { name } = files[file];
-      let reader = new FileReader();
+    for (const file in files) {
+      const { name } = files[file];
+      const reader = new FileReader();
 
       // Closure to capture the file information.
       reader.onload = ((theFile) => {
@@ -118,12 +118,10 @@ export default class Home extends Component {
       reader.readAsDataURL(files[file]);
 
       break;
-
     }
-
   }
 
-  render () {
+  render() {
     let { person } = this.props.data;
     person || (person = {});
 
@@ -133,11 +131,11 @@ export default class Home extends Component {
 
     return (
       <Layout
-          photo={photo}
-          person={person}
-          onToggle={this.onToggle}
-          content={this.getContent()}
-          onUpload={this.onUpload}
+        photo={photo}
+        person={person}
+        onToggle={this.onToggle}
+        content={this.getContent()}
+        onUpload={this.onUpload}
       />
     );
   }

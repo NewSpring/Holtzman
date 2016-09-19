@@ -1,7 +1,6 @@
 
 
 const savedAccount = (state, action) => {
-
   if (!action.savedAccount && action.savedAccount != "clear") {
     return state;
   }
@@ -18,10 +17,10 @@ const savedAccount = (state, action) => {
   }
 
   return { ...state, ...{
-    savedAccount: action.savedAccount
+    savedAccount: action.savedAccount,
   } };
 };
 
 export {
-  savedAccount
+  savedAccount,
 };

@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import { css } from "aphrodite";
 
@@ -6,7 +6,7 @@ import { ImageLoader } from "../loading";
 
 import Styles from "../loading/FeedItemSkeleton-css";
 
-let Wrapper = (props) => (
+const Wrapper = props => (
   <div {...this.props}>
     {this.props.children}
   </div>
@@ -56,8 +56,8 @@ export default class Card extends Component {
   }
 
   styles = () => {
-    let defaultStyles = {
-      overflow: "hidden"
+    const defaultStyles = {
+      overflow: "hidden",
     };
 
     // if (this.props.image && this.props.image.full) {
@@ -93,7 +93,7 @@ export default class Card extends Component {
     }
 
     let sizes = {}, src;
-    for (let image of images) {
+    for (const image of images) {
       sizes[image.fileLabel] = image;
     }
 
@@ -117,7 +117,7 @@ export default class Card extends Component {
   createImage = () => {
     let { defaultImage, ratio } = this.props;
 
-    let imageclasses = [
+    const imageclasses = [
       "background--fill",
       "card__image",
       "locked-ends@lap-wide-and-up",
@@ -131,27 +131,27 @@ export default class Card extends Component {
     if (!ratio) ratio = "ratio--landscape";
     imageclasses.push(ratio);
 
-    let src = this.getResponsiveImage() || defaultImage;
+    const src = this.getResponsiveImage() || defaultImage;
 
-    let style = { backgroundImage: `url('${src}')` };
+    const style = { backgroundImage: `url('${src}')` };
 
     return (
       <ImageLoader
-          src={src}
-          preloader={this.preloader}
-          renderElement={this.renderElement}
-          imageclasses={imageclasses}
-          style={style}
+        src={src}
+        preloader={this.preloader}
+        renderElement={this.renderElement}
+        imageclasses={imageclasses}
+        style={style}
       />
     );
   }
 
 
-  render () {
+  render() {
     const { link, theme, styles, itemTheme, itemStyles } = this.props;
 
 
-    let wrapperClasses = [
+    const wrapperClasses = [
       "relative@lap",
       "relative@palm",
       "plain",
@@ -163,22 +163,22 @@ export default class Card extends Component {
       "one-whole@palm",
       "two-fifths@lap-wide",
       "two-fifths@palm-wide",
-      "one-half@anchored"
+      "one-half@anchored",
     ].join(" ");
 
 
     if (link) {
       return (
         <div
-            className={theme || this.cardClasses()}
-            style={styles || this.styles()}
+          className={theme || this.cardClasses()}
+          style={styles || this.styles()}
         >
           <Link className={wrapperClasses} to={link}>
             {this.createImage()}
           </Link>
           <div
-              className={itemTheme || this.itemClasses()}
-              style={itemStyles}
+            className={itemTheme || this.itemClasses()}
+            style={itemStyles}
           >
             {this.props.children}
           </div>
@@ -189,15 +189,15 @@ export default class Card extends Component {
 
     return (
       <div
-          className={theme || this.cardClasses()}
-          style={styles || this.styles()}
+        className={theme || this.cardClasses()}
+        style={styles || this.styles()}
       >
         <div className={wrapperClasses}>
           {this.createImage()}
         </div>
         <div
-            className={itemTheme || this.itemClasses()}
-            style={itemStyles}
+          className={itemTheme || this.itemClasses()}
+          style={itemStyles}
         >
           {this.props.children}
         </div>
@@ -205,7 +205,6 @@ export default class Card extends Component {
       </div>
 
     );
-
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import { css } from "aphrodite";
 
@@ -8,7 +8,7 @@ import Styles from "../../components/loading/FeedItemSkeleton-css";
 import Hover from "./right-css";
 import PanelStyles from "./panel-css";
 
-const DefaultWrapper = (props) => (
+const DefaultWrapper = props => (
   <section className={props.imageclasses.join(" ")}>{props.children}</section>
 );
 
@@ -20,7 +20,7 @@ export default class Right extends Component {
     scroll: PropTypes.bool,
     width: PropTypes.string,
     background: PropTypes.string,
-    styles: PropTypes.object
+    styles: PropTypes.object,
   }
 
   shouldComponentUpdate(nextProps) {
@@ -32,7 +32,7 @@ export default class Right extends Component {
       "panel__item--right",
       "hard",
       "flush",
-      css(PanelStyles["panel"]),
+      css(PanelStyles.panel),
     ];
 
     if (this.props.link && process.env.WEB) {
@@ -75,7 +75,7 @@ export default class Right extends Component {
   styles = () => {
     if (this.props.background) {
       return {
-        backgroundImage: `url('${this.props.background}')`
+        backgroundImage: `url('${this.props.background}')`,
       };
     }
 
@@ -110,16 +110,14 @@ export default class Right extends Component {
     );
   }
 
-  renderInsideRatio(){
-
+  renderInsideRatio() {
     return (
       <div className={this.props.ratioTheme || this.ratioClasses()}>
         {this.props.children}
       </div>
     );
-
   }
-  renderOutSideRatio(){
+  renderOutSideRatio() {
     return (
       <div>
         {(() => {
@@ -130,10 +128,10 @@ export default class Right extends Component {
         {(() => {
           let styles = this.styles();
 
-          styles = {...styles, ...{
-              WebkitFilter: "blur(10px)",
-              filter: "blur(10px)"
-          }};
+          styles = { ...styles, ...{
+            WebkitFilter: "blur(10px)",
+            filter: "blur(10px)",
+          } };
 
           if (this.props.blur) {
             return (
@@ -145,8 +143,7 @@ export default class Right extends Component {
     );
   }
 
-  render () {
-
+  render() {
     const { blur } = this.props;
     let Wrapper = DefaultWrapper;
     if (this.props.background) {
@@ -154,18 +151,18 @@ export default class Right extends Component {
     }
 
     if (this.props.link) {
-      let overlay = process.env.NATIVE ? "overlay--gradient" : "";
+      const overlay = process.env.NATIVE ? "overlay--gradient" : "";
       return (
         <Link
-            to={this.props.link}
-            className={this.props.theme || this.layoutClasses().join(" ")}
+          to={this.props.link}
+          className={this.props.theme || this.layoutClasses().join(" ")}
         >
           <Wrapper
-              src={this.props.background}
-              preloader={this.preloader}
-              renderElement={this.renderElement}
-              style={this.props.styles || this.styles()}
-              imageclasses={[
+            src={this.props.background}
+            preloader={this.preloader}
+            renderElement={this.renderElement}
+            style={this.props.styles || this.styles()}
+            imageclasses={[
               "background--fill",
               "locked-ends",
               "locked-sides",
@@ -184,11 +181,11 @@ export default class Right extends Component {
     return (
 
       <Wrapper
-          src={this.props.background}
-          preloader={this.preloader}
-          renderElement={this.renderElement}
-          imageclasses={this.props.theme && this.props.theme.split(" ") || this.layoutClasses()}
-          style={this.props.styles || this.styles()}
+        src={this.props.background}
+        preloader={this.preloader}
+        renderElement={this.renderElement}
+        imageclasses={this.props.theme && this.props.theme.split(" ") || this.layoutClasses()}
+        style={this.props.styles || this.styles()}
       >
         {this.renderInsideRatio()}
         {this.renderOutSideRatio()}

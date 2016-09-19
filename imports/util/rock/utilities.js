@@ -123,7 +123,7 @@ api.patch = () => {
   return api.call.apply(this, args);
 };
 
-const parseEndpoint = (str) => (
+const parseEndpoint = str => (
   str.split("\n").map((x) => {
     let trimmed = x.trim();
     if (trimmed.slice(-3) === "and" || trimmed.slice(-2) === "or") {

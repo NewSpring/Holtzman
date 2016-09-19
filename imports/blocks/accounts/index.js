@@ -15,7 +15,7 @@ import Success from "./Success";
 import ForgotPassword from "./ForgotPassword";
 import SuccessCreate from "./SuccessCreate";
 
-const mapDispatchToProps = {...accountsActions, ...modalActions};
+const mapDispatchToProps = { ...accountsActions, ...modalActions };
 const mapQueriesToProps = ({ state }) => ({
   data: {
     query: gql`
@@ -34,7 +34,7 @@ const mapQueriesToProps = ({ state }) => ({
       guid: state.routing.location && state.routing.location.query && state.routing.location.query.guid,
     },
     ssr: false,
-  }
+  },
 });
 
 @ApolloConnect({ mapQueriesToProps, mapDispatchToProps })
@@ -54,13 +54,13 @@ export default class AccountsWithData extends Component {
 }
 
 // We only care about the accounts state
-const mapStateToProps = (state) => ({ accounts: state.accounts });
+const mapStateToProps = state => ({ accounts: state.accounts });
 @connect(mapStateToProps, mapDispatchToProps)
 class AccountsContainer extends Component {
 
   static propTypes = {
     back: PropTypes.func,
-    onFinished: PropTypes.func
+    onFinished: PropTypes.func,
   }
 
   state = {
@@ -68,7 +68,7 @@ class AccountsContainer extends Component {
     account: null,
   }
 
-  componentWillMount(){
+  componentWillMount() {
     if (process.env.NATIVE) headerActions.hide();
 
     if (typeof this.props.account != "undefined") {
@@ -81,14 +81,13 @@ class AccountsContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
     // if logged in, go to the next action
     if (!this.props.accounts.authorized && nextProps.accounts.authorized) {
       // let the UI show the welcome
-      let user = Meteor.user();
-      let isOld = user && user.profile && user.profile.lastLogin < new Date();
+      const user = Meteor.user();
+      const isOld = user && user.profile && user.profile.lastLogin < new Date();
 
-      if (nextProps.accounts.showWelcome  && !isOld) {
+      if (nextProps.accounts.showWelcome && !isOld) {
         return;
       }
 
@@ -116,11 +115,10 @@ class AccountsContainer extends Component {
       }
 
       finish();
-
     }
   }
 
-  componentDidUpdate(prevProps, prevState){
+  componentDidUpdate(prevProps, prevState) {
     const { reset } = this.props;
 
     if (Object.keys(this.props.accounts.errors).length) {
@@ -128,7 +126,6 @@ class AccountsContainer extends Component {
         reset();
       }, 2000);
     }
-
   }
 
   goBack = (e) => {
@@ -164,8 +161,7 @@ class AccountsContainer extends Component {
     this.props.setAccount(bool);
   }
 
-  render () {
-
+  render() {
     let {
       data,
       errors,
@@ -187,7 +183,7 @@ class AccountsContainer extends Component {
 
     if (Object.keys(errors).length) {
       let primaryError;
-      for (let error in errors) {
+      for (const error in errors) {
         primaryError = errors[error];
         break;
       }
@@ -195,19 +191,19 @@ class AccountsContainer extends Component {
     }
 
     if (state === "loading") {
-      let msg = account ? "Signing you in..." : "Creating your account...";
+      const msg = account ? "Signing you in..." : "Creating your account...";
       return <Loading msg={msg} />;
     }
 
     if (forgot) {
       return (
         <ForgotPassword
-            save={this.props.save}
-            clear={this.props.clear}
-            email={data.email}
-            errors={errors}
-            back={this.goSignIn}
-            submit={this.props.submit}
+          save={this.props.save}
+          clear={this.props.clear}
+          email={data.email}
+          errors={errors}
+          back={this.goSignIn}
+          submit={this.props.submit}
         />
       );
     }
@@ -215,15 +211,15 @@ class AccountsContainer extends Component {
     if (authorized && showWelcome) {
       return (
         <Success
-            person={person}
-            onExit={this.props.hide}
+          person={person}
+          onExit={this.props.hide}
         />
       );
     }
 
     if (data.personId && !authorized && resettingAccount) {
       let email = data.email;
-      for (let p of peopleWithoutAccountEmails) {
+      for (const p of peopleWithoutAccountEmails) {
         if (p.id === data.personId) {
           email = p.email;
           break;
@@ -231,28 +227,28 @@ class AccountsContainer extends Component {
       }
       return (
         <SuccessCreate
-            email={email}
-            goBack={this.goBackToDefaultOnBoard}
+          email={email}
+          goBack={this.goBackToDefaultOnBoard}
         />
       );
     }
 
     return (
       <SignIn
-          save={this.props.save}
-          clear={this.props.clear}
-          data={data}
-          errors={errors}
-          account={account}
-          state={state}
-          submit={this.props.submit}
-          success={success}
-          back={this.goBack}
-          completeAccount={this.props.completeAccount}
-          forgot={this.goForgotPassword}
-          setAccount={this.setAccountWrapper}
-          alternateAccounts={alternateAccounts}
-          peopleWithoutAccountEmails={peopleWithoutAccountEmails}
+        save={this.props.save}
+        clear={this.props.clear}
+        data={data}
+        errors={errors}
+        account={account}
+        state={state}
+        submit={this.props.submit}
+        success={success}
+        back={this.goBack}
+        completeAccount={this.props.completeAccount}
+        forgot={this.goForgotPassword}
+        setAccount={this.setAccountWrapper}
+        alternateAccounts={alternateAccounts}
+        peopleWithoutAccountEmails={peopleWithoutAccountEmails}
       />
     );
   }

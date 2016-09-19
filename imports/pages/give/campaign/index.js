@@ -31,7 +31,7 @@ const mapQueriesToProps = () => ({
           }
         }
       }
-    `
+    `,
   },
 });
 
@@ -49,16 +49,16 @@ class Template extends Component {
   getAccount() {
     const { accounts, params } = this.props;
     if (!accounts.accounts || !params.name) return false;
-    for (let account of accounts.accounts) {
+    for (const account of accounts.accounts) {
       if (account.name === decodeURI(params.name)) return account;
     }
 
     return false;
   }
 
-  render () {
+  render() {
     const { accounts } = this.props;
-    if (accounts.loading) return <Loading/>;
+    if (accounts.loading) return <Loading />;
 
     const account = this.getAccount();
     if (!account) return <Loading />;
@@ -69,10 +69,10 @@ class Template extends Component {
 
 
 const Routes = [
-  { path: "campaign/:name", component: Template }
+  { path: "campaign/:name", component: Template },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

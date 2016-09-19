@@ -12,7 +12,7 @@ export default class Personal extends Component {
     save: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     clear: PropTypes.func.isRequired,
-    next: PropTypes.func.isRequired
+    next: PropTypes.func.isRequired,
   }
 
   header = () => {
@@ -26,16 +26,15 @@ export default class Personal extends Component {
 
   firstName = (value) => {
     const isValid = value.length ? true : false;
-    const noError = !this.props.errors["firstName"];
+    const noError = !this.props.errors.firstName;
 
-    if (!isValid ) {
+    if (!isValid) {
       this.props.clear("firstName");
     } else {
-
       this.props.save({
         personal: {
-          firstName: value
-        }
+          firstName: value,
+        },
       });
     }
 
@@ -44,12 +43,12 @@ export default class Personal extends Component {
 
   isEmail = (value) => {
     const isValid = Validate.isEmail(value);
-    const noError = !this.props.errors["email"];
+    const noError = !this.props.errors.email;
 
-    if (!isValid ) {
+    if (!isValid) {
       this.props.clear("email");
     } else {
-      this.props.save({ personal: { email: value }});
+      this.props.save({ personal: { email: value } });
     }
 
     return isValid;
@@ -57,30 +56,29 @@ export default class Personal extends Component {
 
   lastName = (value) => {
     const isValid = value.length ? true : false;
-    const noError = !this.props.errors["lastName"];
+    const noError = !this.props.errors.lastName;
 
-    if (!isValid ) {
+    if (!isValid) {
       this.props.clear("lastName");
     } else {
-      this.props.save({ personal: { lastName: value }});
+      this.props.save({ personal: { lastName: value } });
     }
 
     return true;
   }
 
   campus = (value, target) => {
-    this.props.save({ personal: { campusId: value }});
+    this.props.save({ personal: { campusId: value } });
     // save name for display
-    for (let campus of this.props.campuses) {
+    for (const campus of this.props.campuses) {
       if (`${campus.value}` !== value) continue;
-      this.props.save({ personal: { campus: campus.label }});
+      this.props.save({ personal: { campus: campus.label } });
     }
     return true;
   }
 
 
-
-  render () {
+  render() {
     const { personal } = this.props.data;
     let { campuses } = this.props;
 
@@ -103,51 +101,50 @@ export default class Personal extends Component {
           <div className="grid">
             <div className="grid__item one-half">
               <Forms.Input
-                  name="firstName"
-                  label="First Name"
-                  errorText="Please enter your first name"
-                  validation={this.firstName}
-                  defaultValue={personal.firstName}
-                  ref="firstName"
+                name="firstName"
+                label="First Name"
+                errorText="Please enter your first name"
+                validation={this.firstName}
+                defaultValue={personal.firstName}
+                ref="firstName"
               />
             </div>
             <div className="grid__item one-half">
               <Forms.Input
-                  name="lastName"
-                  label="Last Name"
-                  errorText="Please enter your last name"
-                  validation={this.lastName}
-                  defaultValue={personal.lastName}
-                  ref="lastName"
+                name="lastName"
+                label="Last Name"
+                errorText="Please enter your last name"
+                validation={this.lastName}
+                defaultValue={personal.lastName}
+                ref="lastName"
               />
             </div>
 
 
           </div>
           <Forms.Input
-              name="email"
-              placeholder="user@email.com"
-              label="Email"
-              type="email"
-              errorText="Please enter a valid email"
-              validation={this.isEmail}
-              defaultValue={personal.email}
-              ref="email"
+            name="email"
+            placeholder="user@email.com"
+            label="Email"
+            type="email"
+            errorText="Please enter a valid email"
+            validation={this.isEmail}
+            defaultValue={personal.email}
+            ref="email"
           />
 
           <Forms.Select
-              name="campus"
-              label="Campus"
-              type="campus"
-              errorText="Please choose a campus"
-              validation={this.campus}
-              defaultValue={personal.campusId}
-              ref="campus"
-              includeBlank
-              items={campuses}
+            name="campus"
+            label="Campus"
+            type="campus"
+            errorText="Please choose a campus"
+            validation={this.campus}
+            defaultValue={personal.campusId}
+            ref="campus"
+            includeBlank
+            items={campuses}
           />
         </div>
-
 
 
         <div>
@@ -158,11 +155,11 @@ export default class Personal extends Component {
           */}
 
           {(() => {
-            let btnClasses = [
+            const btnClasses = [
               // "push-left"
             ];
             let disabled = false;
-            if (personal.email === null || personal.firstName === null || personal.email === null || personal.campusId === null){
+            if (personal.email === null || personal.firstName === null || personal.email === null || personal.campusId === null) {
               btnClasses.push("btn--disabled");
               disabled = true;
             } else {

@@ -11,21 +11,21 @@ import inAppLink from "../../util/inAppLink";
 export default class LikesItem extends Component {
 
   static propTypes = {
-    like: PropTypes.object.isRequired
+    like: PropTypes.object.isRequired,
   }
 
   backgroundStyles = {
-    backgroundImage: `url('${this.props.like.image}')`
+    backgroundImage: `url('${this.props.like.image}')`,
   }
 
   imageclasses = [
     "background--fill",
     "card__image",
-    "ratio--landscape"
+    "ratio--landscape",
   ];
 
   containerClasses = () => {
-    let classes = [
+    const classes = [
       "grid__item",
       "one-whole",
     ];
@@ -39,7 +39,7 @@ export default class LikesItem extends Component {
   preloader = () => {
     return (
       <div
-          className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
+        className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
       >
         {this.children}
       </div>
@@ -50,8 +50,8 @@ export default class LikesItem extends Component {
   renderElement = () => {
     return (
       <div
-          className={this.imageclasses.join(" ")}
-          style={this.backgroundStyles}
+        className={this.imageclasses.join(" ")}
+        style={this.backgroundStyles}
       >
         {this.children}
       </div>
@@ -59,10 +59,10 @@ export default class LikesItem extends Component {
   }
 
   getDate(entry) {
-    let date = new Date(entry.date);
+    const date = new Date(entry.date);
 
-    let time = Moment(date);
-    let currentTime = new Date();
+    const time = Moment(date);
+    const currentTime = new Date();
 
     if (date.getUTCFullYear() === currentTime.getUTCFullYear())
       return Moment(time).format("MMM D");
@@ -81,7 +81,6 @@ export default class LikesItem extends Component {
   }
 
   render() {
-
     const like = this.props.like;
 
     return (
@@ -89,10 +88,10 @@ export default class LikesItem extends Component {
         <div className="card">
           <Link to={like.link} onClick={this.onClick} className="plain">
               <ImageLoader
-                  src={this.props.like.image}
-                  preloader={this.preloader}
-                  renderElement={this.renderElement}
-                  imageclasses={this.iamgeclasses}
+                src={this.props.like.image}
+                preloader={this.preloader}
+                renderElement={this.renderElement}
+                imageclasses={this.iamgeclasses}
               />
               <div className="card__item soft text-dark-tertiary">
                 <h4 className="text-dark-primary capitalize">{like.title}</h4>

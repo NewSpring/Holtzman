@@ -15,24 +15,24 @@ const mapStateToProps = (state) => {
 export default class AudioScrubber extends Component {
 
   static propTypes = {
-    isLight: PropTypes.bool.isRequired
+    isLight: PropTypes.bool.isRequired,
   }
 
   state = {
     lastPercent: null,
-    override: false
+    override: false,
   }
 
   scrubStyle = () => {
     let { progress } = this.props;
     const { lastPercent, override } = this.state;
 
-    if(override) {
+    if (override) {
       progress = lastPercent;
     }
 
     return {
-      width: `${progress}%`
+      width: `${progress}%`,
     };
   };
 
@@ -41,21 +41,21 @@ export default class AudioScrubber extends Component {
 
     this.setState({
       lastPercent: percent,
-      override: true
+      override: true,
     });
   };
 
   touchEnd = (e) => {
     const percent = this.state.lastPercent;
 
-    if(typeof percent === "number") {
+    if (typeof percent === "number") {
       this.seek(percent);
     }
 
     setTimeout(() => {
       this.setState({
         lastPercent: null,
-        override: false
+        override: false,
       });
     }, 250);
   }
@@ -66,15 +66,15 @@ export default class AudioScrubber extends Component {
   }
 
   calculatePercent = (targetElement, clickedX) => {
-    var min = targetElement.offsetParent.offsetLeft;
-    var range = targetElement.offsetWidth;
-    var offsetClicked = clickedX - min;
-    var percentClicked = offsetClicked / range * 100;
+    const min = targetElement.offsetParent.offsetLeft;
+    const range = targetElement.offsetWidth;
+    const offsetClicked = clickedX - min;
+    let percentClicked = offsetClicked / range * 100;
 
-    if(percentClicked > 100) {
+    if (percentClicked > 100) {
       percentClicked = 100;
     }
-    else if(percentClicked < 0) {
+    else if (percentClicked < 0) {
       percentClicked = 0;
     }
 
@@ -82,10 +82,10 @@ export default class AudioScrubber extends Component {
   }
 
   seek = (percentClicked) => {
-    if(percentClicked > 100) {
+    if (percentClicked > 100) {
       percentClicked = 100;
     }
-    else if(percentClicked < 0) {
+    else if (percentClicked < 0) {
       percentClicked = 0;
     }
 
@@ -93,11 +93,11 @@ export default class AudioScrubber extends Component {
   }
 
   getTertiaryBackgroundColor = (dark) => {
-    return dark ? {backgroundColor: "rgba(255,255,255,.2)"} : {backgroundColor: "rgba(0,0,0,.2)"};
+    return dark ? { backgroundColor: "rgba(255,255,255,.2)" } : { backgroundColor: "rgba(0,0,0,.2)" };
   };
 
   getTertiaryTextColor = (dark) => {
-    return dark ? {color: "rgba(255,255,255,.5)"} : {color: "rgba(0,0,0,.5)"};
+    return dark ? { color: "rgba(255,255,255,.5)" } : { color: "rgba(0,0,0,.5)" };
   };
 
   getSecondayBackgroundClass = (dark) => {
@@ -146,29 +146,29 @@ export default class AudioScrubber extends Component {
         </div>
 
         <div
-            className="grid__item eight-tenths push-half-ends floating__item soft-half-sides"
-            style={{position: "relative"}}
-            onTouchEnd={this.touchEnd}
-            onTouchMove={this.touchMove}
-            onClick={this.click}
+          className="grid__item eight-tenths push-half-ends floating__item soft-half-sides"
+          style={{ position: "relative" }}
+          onTouchEnd={this.touchEnd}
+          onTouchMove={this.touchMove}
+          onClick={this.click}
         >
           <div
-              className={playbar.join(" ")}
-              style={this.getTertiaryBackgroundColor(!isLight)}
+            className={playbar.join(" ")}
+            style={this.getTertiaryBackgroundColor(!isLight)}
           />
           <div
-              className={css(Styles["play-bar--active"]) + " floating--right"}
-              style={this.scrubStyle()}
+            className={css(Styles["play-bar--active"]) + " floating--right"}
+            style={this.scrubStyle()}
           >
             <div
-                className={css(Styles["play-bar"]) + " " + "rounded " + this.getPrimaryBackgroundClass(isLight)}
+              className={css(Styles["play-bar"]) + " " + "rounded " + this.getPrimaryBackgroundClass(isLight)}
             />
             <button
-                className={css(Styles["scrub-dot"]) + " plain floating__item round " + this.getPrimaryBackgroundClass(isLight)}
+              className={css(Styles["scrub-dot"]) + " plain floating__item round " + this.getPrimaryBackgroundClass(isLight)}
             />
           </div>
           <div
-              className="cover" style={{position: "absolute", top: "-20px", bottom: 0, left: 0, right: 0}}
+            className="cover" style={{ position: "absolute", top: "-20px", bottom: 0, left: 0, right: 0 }}
           />
         </div>
 

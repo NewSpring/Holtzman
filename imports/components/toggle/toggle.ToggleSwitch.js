@@ -3,11 +3,10 @@ import { Component, PropTypes } from "react";
 export default class ToggleSwitch extends Component {
 
   static propTypes = {
-    followingId: PropTypes.string
+    followingId: PropTypes.string,
   }
 
   render() {
-
     const followingId = this.props.followingId;
 
     return (
@@ -16,7 +15,6 @@ export default class ToggleSwitch extends Component {
         <label htmlFor={followingId} />
       </div>
     );
-
   }
 
 }

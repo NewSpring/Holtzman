@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
@@ -14,13 +14,13 @@ import {
 import { avatar } from "../../../../methods/files/browser";
 import inAppLink from "../../../../util/inAppLink";
 
-const RenderCell = ({name, iconFunc, last, children}) => {
+const RenderCell = ({ name, iconFunc, last, children }) => {
   let icon = "icon-arrow-next";
   if (typeof iconFunc === "function") {
     icon = iconFunc();
   }
   if (process.env.NATIVE) {
-    let classes = ["push-left", "soft-ends", "soft-right", "text-left"];
+    const classes = ["push-left", "soft-ends", "soft-right", "text-left"];
     if (!last) classes.push("outlined--light", "outlined--bottom");
     return (
       <div className={classes.join(" ")}>
@@ -48,25 +48,25 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
-  }
+  },
 });
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Headerable)
 export default class Menu extends Component {
 
   static contextTypes = {
-    shouldAnimate: PropTypes.bool
+    shouldAnimate: PropTypes.bool,
   }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     this.headerAction({
-      title: "Profile"
+      title: "Profile",
     });
   }
 
   state = {
-    upload: "default"
+    upload: "default",
   }
 
   signout = (e) => {
@@ -76,15 +76,15 @@ export default class Menu extends Component {
 
   upload = (e) => {
     e.preventDefault();
-    let files = e.target.files;
+    const files = e.target.files;
     if (!Meteor.settings.public.rock) {
       return;
     }
 
     this.setState({
-      upload: "loading"
+      upload: "loading",
     });
-    var data = new FormData();
+    const data = new FormData();
     data.append("file", files[0]);
 
     const { baseURL, token, tokenName } = Meteor.settings.public.rock;
@@ -92,28 +92,27 @@ export default class Menu extends Component {
     fetch(`${baseURL}api/BinaryFiles/Upload?binaryFileTypeId=5`, {
       method: "POST",
       headers: { [tokenName]: token },
-      body: data
+      body: data,
     })
       .then((response) => {
         return response.json();
-       })
+      })
       .then((id) => {
         avatar(id, (err, response) => {
           this.props.data.refetch()
             .then((result) => {
               this.setState({
-                upload: "uploaded"
+                upload: "uploaded",
               });
 
               setTimeout(() => {
                 this.setState({
-                  upload: "default"
+                  upload: "default",
                 });
               }, 2000);
             });
         });
       });
-
   }
 
   uploadIcon = () => {
@@ -134,7 +133,7 @@ export default class Menu extends Component {
   }
 
   showFeedback = () => {
-    if (process.env.NATIVE){
+    if (process.env.NATIVE) {
       return (
         <a href="#" onClick={this.giveFeedback} className="plain text-dark-secondary">
           <RenderCell name="Give Feedback" />
@@ -148,7 +147,7 @@ export default class Menu extends Component {
   }
 
   dividerClasses = () => {
-    let classes = ["push-double-ends@lap-and-up", "push-half-ends"];
+    const classes = ["push-double-ends@lap-and-up", "push-half-ends"];
     if (process.env.NATIVE) classes.push("background--light-primary");
     return classes.join(" ");
   }
@@ -160,7 +159,7 @@ export default class Menu extends Component {
   render() {
     return (
       <div
-          className="background--light-secondary soft-double-bottom soft-double-sides@lap-and-up"
+        className="background--light-secondary soft-double-bottom soft-double-sides@lap-and-up"
       >
         <section className={this.sectionClasses()}>
           <div className={this.dividerClasses()}>
@@ -171,9 +170,9 @@ export default class Menu extends Component {
               <Link to="/profile/settings/home-address" className="plain text-dark-secondary">
                 <RenderCell name="My Address" />
               </Link>
-              <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
+              <button className="plain text-dark-secondary display-inline-block one-whole" style={{ position: "relative" }}>
                 <RenderCell name="Change Profile Photo" iconFunc={this.uploadIcon}>
-                  <input onChange={this.upload} type="file" className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
+                  <input onChange={this.upload} type="file" className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
                 </RenderCell>
               </button>
               <Link to="/profile/settings/change-password" className="plain text-dark-secondary">

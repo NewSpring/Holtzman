@@ -26,7 +26,7 @@ function IsAppUrl({ url }) {
 }
 
 const ReactRouterSSR = {};
-let cache = {}; // in memory cache of static markup
+const cache = {}; // in memory cache of static markup
 const CACHE_TTL = Meteor.settings.cacheTTL || 300000; // 5 minutes in milliseconds
 
 // creating some EnvironmentVariables that will be used later on
@@ -38,7 +38,6 @@ export function run(routes, serverOptions = {}) {
   patchSubscribeData(ReactRouterSSR);
 
   Meteor.bindEnvironment(() => {
-
     // Parse cookies for the login token
     WebApp.rawConnectHandlers.use(CookieParser());
     WebApp.rawConnectHandlers.use(Compress());
@@ -46,7 +45,7 @@ export function run(routes, serverOptions = {}) {
     WebApp.connectHandlers.use(Meteor.bindEnvironment((req, res, next) => {
       if (!IsAppUrl(req)) return next();
 
-      const loginToken = req.cookies["meteor_login_token"];
+      const loginToken = req.cookies.meteor_login_token;
 
       if (!GraphQL.networkInterface._opts.headers) {
         GraphQL.networkInterface._opts.headers = new fetch.Headers();
@@ -58,11 +57,10 @@ export function run(routes, serverOptions = {}) {
       }
 
 
-
       const headers = req.headers;
       const context = new FastRender._Context(loginToken, { headers });
 
-      FastRender.frContext.withValue(context, function() {
+      FastRender.frContext.withValue(context, () => {
         const history = createMemoryHistory(req.url);
 
         match({ history, routes, location: req.url }, Meteor.bindEnvironment((
@@ -70,7 +68,6 @@ export function run(routes, serverOptions = {}) {
           redirectLocation,
           renderProps
         ) => {
-
           if (err) {
             res.writeHead(500);
             res.write(err.messages);
@@ -81,32 +78,30 @@ export function run(routes, serverOptions = {}) {
             res.end();
           } else if (redirectLocation) {
             res.writeHead(302, {
-              Location: redirectLocation.pathname + redirectLocation.search
+              Location: redirectLocation.pathname + redirectLocation.search,
             });
             res.end();
           } else if (renderProps) {
             sendSSRHtml(serverOptions, req, res, next, renderProps, history);
             try {
               GraphQL.store.dispatch({ type: "RESET" }); // reset store after each query
-            } catch (e) { console.error(e) }
-
+            } catch (e) { console.error(e); }
           } else {
             res.writeHead(404);
             res.write("Not found");
             res.end();
           }
-
         }));
       });
     }));
   })();
-};
+}
 
 function sendSSRHtml(serverOptions, req, res, next, renderProps, history) {
   const cacheKey = _getCacheKey(req.url);
 
   function quickWrite(originalWrite) {
-    return function(data) { originalWrite.call(this, cache[cacheKey].data) };
+    return function (data) { originalWrite.call(this, cache[cacheKey].data); };
   }
   // if there is cached data and it's not expired
   if (cache[cacheKey]) {
@@ -124,7 +119,7 @@ function sendSSRHtml(serverOptions, req, res, next, renderProps, history) {
 function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) {
   const cacheKey = _getCacheKey(req.url);
 
-  return function(data) {
+  return function (data) {
     if (typeof data === "string" && data.indexOf("<!DOCTYPE html>") === 0) {
       data = addInjectData(res, data);
       data = moveStyles(data);
@@ -150,9 +145,9 @@ function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) 
     // store in cache based on user id and url
     // when user not logged in, it should be undefined
     // this should be fine as all logged out users should see the same
-    cache[cacheKey] = { data: data, timeout: setTimeout(() => {
+    cache[cacheKey] = { data, timeout: setTimeout(() => {
       delete cache[cacheKey];
-    }, CACHE_TTL)};
+    }, CACHE_TTL) };
 
     originalWrite.call(this, data);
   };
@@ -191,7 +186,7 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
       }
 
       // Do the rendering.
-      const renderedData = StyleSheetServer.renderStatic(function() {
+      const renderedData = StyleSheetServer.renderStatic(() => {
         Promise.awaitAll([getDataFromTree(app)]);
         return ReactDOMServer.renderToString(app);
       });
@@ -219,7 +214,7 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
       const data = context.getData();
       InjectData.pushData(res, "fast-render-data", data);
     }
-    catch(err) {
+    catch (err) {
       console.error(new Date(), "error while server-rendering", err.stack);
     }
   });
@@ -235,10 +230,10 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
 */
 
 function addInjectData(res, data) {
-  let condition = res._injectPayload && !res._injected;
+  const condition = res._injectPayload && !res._injected;
   if (condition) {
     // inject data
-    let payload = InjectData._encode(res._injectPayload);
+    const payload = InjectData._encode(res._injectPayload);
     data = data.replace("</body>", `<script type="text/inject-data">${payload}</script></body>`);
 
     res._injected = true;
@@ -271,4 +266,4 @@ function moveStyles(data) {
   return $.html();
 }
 
-const _getCacheKey = (url) => (Meteor.userId() + "::" + url);
+const _getCacheKey = url => (Meteor.userId() + "::" + url);

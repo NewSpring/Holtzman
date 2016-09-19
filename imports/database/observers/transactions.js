@@ -7,10 +7,8 @@ import { upsertLocations } from "./upsertLocations";
 let GIVING_EMAIL_ID = false;
 const transactions = () => {
   if (api._ && api._.baseURL) {
-
     TransactionReciepts.find().observe({
-      added: function (Transaction) {
-
+      added(Transaction) {
         /*
 
           This is a crude (but hopefully successful) way to
@@ -23,8 +21,8 @@ const transactions = () => {
 
         TransactionReciepts.update(Transaction._id, {
           $set: {
-            __processing: true
-          }
+            __processing: true,
+          },
         });
 
 
@@ -61,21 +59,21 @@ const transactions = () => {
           IsSystem: false,
           Gender: 0,
           ConnectionStatusValueId: 67, // Web Prospect
-          SystemNote: `Created from NewSpring Apollos on ${__meteor_runtime_config__.ROOT_URL}`
+          SystemNote: `Created from NewSpring Apollos on ${__meteor_runtime_config__.ROOT_URL}`,
         } };
 
         const isGuest = PersonId ? false : true;
         // This scope issue is bizzare to me, but this works
-        let ScopedId = PersonId;
-        let ScopedAliasId = PrimaryAliasId;
+        const ScopedId = PersonId;
+        const ScopedAliasId = PrimaryAliasId;
         if (!PersonId) {
           PersonId = api.post.sync("People", Person);
           PrimaryAliasId = api.get.sync(`People/${PersonId}`).PrimaryAliasId;
         } else {
           let RockPerson = api.get.sync(`PersonAlias/${ScopedAliasId}`);
-          let RockPersonId = RockPerson.Person.Id;
+          const RockPersonId = RockPerson.Person.Id;
           RockPerson = api.get.sync(`People/${RockPersonId}`);
-          Person = {...Person, ...RockPerson};
+          Person = { ...Person, ...RockPerson };
           PrimaryAliasId = Person.PrimaryAliasId;
           PersonId = Person.Id;
         }
@@ -90,7 +88,7 @@ const transactions = () => {
 
         // Create FinancialPaymentDetail
         FinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
-          Guid: makeNewGuid()
+          Guid: makeNewGuid(),
         } };
 
         const FinancialPaymentDetailId = api.post.sync("FinancialPaymentDetails", FinancialPaymentDetail);
@@ -106,8 +104,8 @@ const transactions = () => {
           CreatedByPersonAliasId: PrimaryAliasId,
           ModifiedByPersonAliasId: PrimaryAliasId,
           SourceTypeValueId: api._.rockId ? api._.rockId : 10,
-          FinancialPaymentDetailId: FinancialPaymentDetailId,
-          TransactionDateTime: new Date()
+          FinancialPaymentDetailId,
+          TransactionDateTime: new Date(),
         } };
 
         const TransactionId = api.post.sync("FinancialTransactions", Transaction);
@@ -124,7 +122,7 @@ const transactions = () => {
             Guid: makeNewGuid(),
             TransactionId,
             CreatedByPersonAliasId: PrimaryAliasId,
-            ModifiedByPersonAliasId: PrimaryAliasId
+            ModifiedByPersonAliasId: PrimaryAliasId,
           } };
 
           api.post.sync("FinancialTransactionDetails", TransactionDetail);
@@ -132,13 +130,12 @@ const transactions = () => {
 
 
         if (FinancialPersonSavedAccounts) {
-
           // Create FinancialPaymentDetail
-          let SecondFinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
-            Guid: makeNewGuid()
+          const SecondFinancialPaymentDetail = { ...FinancialPaymentDetail, ...{
+            Guid: makeNewGuid(),
           } };
 
-          let SecondFinancialPaymentDetailId = api.post.sync("FinancialPaymentDetails", SecondFinancialPaymentDetail);
+          const SecondFinancialPaymentDetailId = api.post.sync("FinancialPaymentDetails", SecondFinancialPaymentDetail);
 
           if (SecondFinancialPaymentDetailId.status) {
             return;
@@ -150,7 +147,7 @@ const transactions = () => {
             PersonAliasId: PrimaryAliasId,
             FinancialPaymentDetailId: SecondFinancialPaymentDetailId,
             CreatedByPersonAliasId: PrimaryAliasId,
-            ModifiedByPersonAliasId: PrimaryAliasId
+            ModifiedByPersonAliasId: PrimaryAliasId,
           } };
 
           if (FinancialPersonSavedAccounts.ReferenceNumber) {
@@ -162,8 +159,7 @@ const transactions = () => {
         }
 
 
-        if (TransactionId && !TransactionId.statusText ) {
-
+        if (TransactionId && !TransactionId.statusText) {
           // taken from https://github.com/SparkDevNetwork/Rock/blob/cb8cb69aff36cf182b5d35c6e14c8a344b035a90/Rock/Transactions/SendPaymentReciepts.cs
           // setup merge fields
           const mergeFields = {
@@ -171,7 +167,7 @@ const transactions = () => {
           };
 
           let totalAmount = 0;
-          let accountAmounts = [];
+          const accountAmounts = [];
           for (const detail of TransactionDetails) {
             if (detail.Amount === 0 || !detail.AccountId) {
               continue;
@@ -188,20 +184,19 @@ const transactions = () => {
           }
 
 
-          mergeFields["TotalAmount"] = totalAmount;
-          mergeFields["GaveAnonymous"] = isGuest;
-          mergeFields["ReceiptEmail"] = Person.Email;
-          mergeFields["ReceiptEmailed"] = true;
-          mergeFields["LastName"] = Person.LastName;
-          mergeFields["FirstNames"] = Person.NickName || Person.FirstName;
-          mergeFields["TransactionCode"] = Transaction.TransactionCode;
-          mergeFields["Amounts"] = accountAmounts;
-          mergeFields["AccountNumberMasked"] = FinancialPaymentDetail.AccountNumberMasked.slice(-4);
+          mergeFields.TotalAmount = totalAmount;
+          mergeFields.GaveAnonymous = isGuest;
+          mergeFields.ReceiptEmail = Person.Email;
+          mergeFields.ReceiptEmailed = true;
+          mergeFields.LastName = Person.LastName;
+          mergeFields.FirstNames = Person.NickName || Person.FirstName;
+          mergeFields.TransactionCode = Transaction.TransactionCode;
+          mergeFields.Amounts = accountAmounts;
+          mergeFields.AccountNumberMasked = FinancialPaymentDetail.AccountNumberMasked.slice(-4);
 
           // remove record
           TransactionReciepts.remove(_id, (err) => {
             if (!err) {
-
               if (!GIVING_EMAIL_ID) {
                 GIVING_EMAIL_ID = api.get.sync("SystemEmails?$filter=Title eq 'Giving Receipt'");
                 GIVING_EMAIL_ID = GIVING_EMAIL_ID[0].Id;
@@ -219,12 +214,9 @@ const transactions = () => {
             }
           });
         }
-
-      }
+      },
     });
-
   }
-
 };
 
 export default transactions;

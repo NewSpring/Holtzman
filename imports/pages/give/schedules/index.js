@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -67,10 +67,10 @@ const mapQueriesToProps = () => ({
       }
     `,
     ssr: true,
-  }
+  },
 });
 
-const mapStateToProps = (store) => ({
+const mapStateToProps = store => ({
   give: store.give,
 });
 
@@ -97,25 +97,24 @@ class Template extends Component {
         Meteor.call("give/schedule/cancel", { id }, (err, response) => {
           console.log(err, response);
         });
-      }
+      },
     }));
-
   }
 
 
-  render () {
+  render() {
     const { schedules, accounts, give } = this.props;
     const { recoverableSchedules } = give;
 
     return (
       <Layout
-          accountsReady={!accounts.loading}
-          schedules={schedules.schedules}
-          schedulesReady={!schedules.loading}
-          accounts={accounts.accounts}
-          cancelSchedule={this.cancel}
-          recoverableSchedules={recoverableSchedules}
-          confirm={this.confirm}
+        accountsReady={!accounts.loading}
+        schedules={schedules.schedules}
+        schedulesReady={!schedules.loading}
+        accounts={accounts.accounts}
+        cancelSchedule={this.cancel}
+        recoverableSchedules={recoverableSchedules}
+        confirm={this.confirm}
       />
     );
   }
@@ -127,16 +126,16 @@ const Routes = [
   {
     path: "schedules/transfer",
     component: Authorized,
-    indexRoute: { component: Recover }
+    indexRoute: { component: Recover },
   },
   {
     path: "schedules/:id",
     component: Authorized,
-    indexRoute: { component: Details }
-  }
+    indexRoute: { component: Details },
+  },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

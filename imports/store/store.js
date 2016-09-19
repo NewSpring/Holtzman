@@ -12,18 +12,17 @@ import { reducers, middlewares, sagas } from "./utilities";
 import { syncHistory, routeReducer } from "./routing";
 
 const createReduxStore = (initialState, history) => {
-
   if (initialState) {
     // bug with SSR
     delete initialState.nav;
   }
 
-  const joinedReducers = {...reducers, ...{
+  const joinedReducers = { ...reducers, ...{
     routing: routeReducer,
     apollo: GraphQL.reducer(),
-  }};
+  } };
 
-  let sharedMiddlewares = [...middlewares, ...GraphQL.middleware()];
+  const sharedMiddlewares = [...middlewares, ...GraphQL.middleware()];
 
   const reduxRouterMiddleware = syncHistory(history);
 
@@ -39,7 +38,7 @@ const createReduxStore = (initialState, history) => {
 
   if (process.env.NODE_ENV != "production") {
     sharedCompose = [...sharedCompose, ...[
-      typeof window === "object" && typeof window.devToolsExtension !== "undefined" ? window.devToolsExtension() : f => f
+      typeof window === "object" && typeof window.devToolsExtension !== "undefined" ? window.devToolsExtension() : f => f,
     ]];
   }
 
@@ -50,7 +49,6 @@ const createReduxStore = (initialState, history) => {
   sagas.forEach(saga => sagaMiddleware.run(saga()));
 
   return store;
-
 };
 
 
@@ -58,5 +56,5 @@ const wrapper = ApolloProvider;
 
 export {
   wrapper,
-  createReduxStore
+  createReduxStore,
 };

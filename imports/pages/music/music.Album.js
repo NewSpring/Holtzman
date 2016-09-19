@@ -16,7 +16,7 @@ import Shareable from "../../mixins/mixins.Shareable";
 import {
   modal,
   nav as navActions,
-  audio as audioActions
+  audio as audioActions,
 } from "../../store";
 
 import Track from "./music.Track";
@@ -77,7 +77,7 @@ export default class MusicAlbum extends Component {
   state = {
     currentTrack: null,
     repeatPattern: "next",
-    force: false
+    force: false,
   }
 
   componentWillMount() {
@@ -85,7 +85,7 @@ export default class MusicAlbum extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction
+      action: this.likeableAction,
     }));
   }
 
@@ -96,24 +96,24 @@ export default class MusicAlbum extends Component {
 
   shuffle = () => {
     if (this.state.repeatPattern === "shuffle") {
-      this.setState({repeatPattern: "next"});
+      this.setState({ repeatPattern: "next" });
       return;
     }
-    this.setState({repeatPattern: "shuffle"});
+    this.setState({ repeatPattern: "shuffle" });
   }
 
   repeat = () => {
     if (this.state.repeatPattern === "repeat") {
-      this.setState({repeatPattern: "repeatAll"});
+      this.setState({ repeatPattern: "repeatAll" });
       return;
     }
 
     if (this.state.repeatPattern === "repeatAll") {
-      this.setState({repeatPattern: "next"});
+      this.setState({ repeatPattern: "next" });
       return;
     }
 
-    this.setState({repeatPattern: "repeat"});
+    this.setState({ repeatPattern: "repeat" });
   }
 
   render() {
@@ -124,7 +124,7 @@ export default class MusicAlbum extends Component {
       return (
         <div className="locked-ends locked-sides floating">
           <div className="floating__item">
-            <Loading/>
+            <Loading />
           </div>
         </div>
       );
@@ -133,7 +133,7 @@ export default class MusicAlbum extends Component {
     const getStyle = () => {
       if (this.props.modalVisible) {
         return {
-          WebkitFilter: "blur(2px)"
+          WebkitFilter: "blur(2px)",
         };
       }
 
@@ -143,7 +143,7 @@ export default class MusicAlbum extends Component {
     const getUrl = (image) => {
       let url = image.url;
 
-      if(!url) {
+      if (!url) {
         return url;
       }
 
@@ -170,10 +170,10 @@ export default class MusicAlbum extends Component {
       return (
         <section className="hard background--light-primary" style={getStyle()}>
           {/* XXX need a get blurred image helper here */}
-          <div className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill" style={{backgroundImage: `url(${getUrl(xsmallBlurImage)})`}}>
+          <div className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill" style={{ backgroundImage: `url(${getUrl(xsmallBlurImage)})` }}>
             <div
-                className="one-third floating__item display-inline overlay__item ratio--square background--fill"
-                style={{backgroundImage: `url(${getUrl(mediumImage)})`}}
+              className="one-third floating__item display-inline overlay__item ratio--square background--fill"
+              style={{ backgroundImage: `url(${getUrl(mediumImage)})` }}
             />
             <div className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
               <h5>{album.title}</h5>
@@ -184,11 +184,11 @@ export default class MusicAlbum extends Component {
             <div className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
               {tracks.map((track, i) => {
                 return (<Track
-                    track={track}
-                    album={album}
-                    key={i}
-                    trackNumber={i}
-                        />);
+                  track={track}
+                  album={album}
+                  key={i}
+                  trackNumber={i}
+                />);
               })}
             </div>
           </div>
@@ -197,7 +197,5 @@ export default class MusicAlbum extends Component {
     } catch (e) {
       console.log(e);
     }
-
-
   }
 }

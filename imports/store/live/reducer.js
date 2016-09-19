@@ -15,40 +15,40 @@ const initial = {
 
 export default createReducer(initial, {
 
-  ["LIVE.SET"](state, action) {
-    return {...state, ...{
+  ["LIVE.SET"]: function (state, action) {
+    return { ...state, ...{
       live: action.isLive,
       embedCode: action.embedCode,
     } };
   },
 
-  ["LIVE.RESET"](state, action) {
-    return {...state, ...{
+  ["LIVE.RESET"]: function (state, action) {
+    return { ...state, ...{
       live: initial.live,
       embedCode: initial.embedCode,
     } };
   },
 
-  ["LIVE.SHOW"](state, action) {
-    return {...state, ...{
+  ["LIVE.SHOW"]: function (state, action) {
+    return { ...state, ...{
       show: true,
     } };
   },
 
-  ["LIVE.HIDE"](state, action) {
-    return {...state, ...{
+  ["LIVE.HIDE"]: function (state, action) {
+    return { ...state, ...{
       show: false,
     } };
   },
 
-  ["LIVE.FLOAT"](state, action) {
-    return {...state, ...{
+  ["LIVE.FLOAT"]: function (state, action) {
+    return { ...state, ...{
       float: true,
     } };
   },
 
-  ["LIVE.UNFLOAT"](state, action) {
-    return {...state, ...{
+  ["LIVE.UNFLOAT"]: function (state, action) {
+    return { ...state, ...{
       float: false,
     } };
   },

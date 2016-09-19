@@ -5,7 +5,7 @@ export default class Form extends React.Component {
 
   layoutClasses = () => {
     let classes = [
-      "hard-ends"
+      "hard-ends",
     ];
 
     if (this.props.classes) {
@@ -15,19 +15,18 @@ export default class Form extends React.Component {
     return classes.join(" ");
   }
 
-  render () {
-
+  render() {
     return (
       <form
-          id={this.props.id}
-          onSubmit={this.props.submit}
-          className={this.props.theme || this.layoutClasses()}
-          action={this.props.action}
-          method={this.props.method}
-          style={this.props.style}
+        id={this.props.id}
+        onSubmit={this.props.submit}
+        className={this.props.theme || this.layoutClasses()}
+        action={this.props.action}
+        method={this.props.method}
+        style={this.props.style}
       >
         <Fieldset
-            theme={this.props.fieldsetTheme}
+          theme={this.props.fieldsetTheme}
         >
           {this.props.children}
         </Fieldset>

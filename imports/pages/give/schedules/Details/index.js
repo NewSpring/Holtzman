@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -29,7 +29,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
       tagName: "giving",
       limit: 2,
       includeChannels: ["articles"],
-    }
+    },
   },
   data: {
     query: gql`
@@ -61,7 +61,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
     `,
     variables: { scheduleTransactionId: ownProps.params.id },
     forceFetch: true,
-  }
+  },
 });
 
 @connect({ mapQueriesToProps })
@@ -69,7 +69,7 @@ export default class Details extends Component {
 
   state = {
     isActive: true,
-    removed: null
+    removed: null,
   }
 
   componentWillMount() {
@@ -91,18 +91,16 @@ export default class Details extends Component {
       onFinished: () => {
         const { id, gateway } = this.props.data.transaction;
 
-        this.setState({isActive: false, removed: id});
-        Meteor.call("give/schedule/cancel", {id, gateway}, (err, response) => {
+        this.setState({ isActive: false, removed: id });
+        Meteor.call("give/schedule/cancel", { id, gateway }, (err, response) => {
           console.log(err, response);
           console.log(id, gateway);
         });
-      }
+      },
     }));
-
   }
 
-  render () {
-
+  render() {
     let complete = false;
     let { transaction } = this.props.data;
     transaction || (transaction = false);
@@ -114,14 +112,14 @@ export default class Details extends Component {
 
     return (
       <Layout
-          stop={this.stop}
-          schedule={transaction}
-          ready={!this.props.data.loading}
-          state={this.state}
-          active={this.state.isActive}
-          complete={complete}
-          entries={entries}
-          loadingEntries={loading}
+        stop={this.stop}
+        schedule={transaction}
+        ready={!this.props.data.loading}
+        state={this.state}
+        active={this.state.isActive}
+        complete={complete}
+        entries={entries}
+        loadingEntries={loading}
       />
     );
   }

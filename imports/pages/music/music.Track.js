@@ -3,14 +3,14 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import { modal, audio as audioActions } from "../../store";
-console.log(audioActions)
+console.log(audioActions);
 import ListDetail from "./music.ListDetail";
 
 @connect()
 export default class AudioTrack extends Component {
 
   static propTypes = {
-    track: PropTypes.object.isRequired
+    track: PropTypes.object.isRequired,
   }
 
   ListDetail = (event) => {
@@ -19,7 +19,7 @@ export default class AudioTrack extends Component {
       album: this.props.album,
       trackNumber: this.props.trackNumber,
       style: {
-        opacity: .9
+        opacity: 0.9,
       },
       coverHeader: true,
       coverMiniPlayer: true,
@@ -27,11 +27,11 @@ export default class AudioTrack extends Component {
   }
 
   trackClasses = () => {
-    let classes = [
+    const classes = [
       "background--primary",
       "round",
       "push-half-top",
-      "push-half-right"
+      "push-half-right",
     ];
 
     if (this.props.active) classes.push("unread-notification");
@@ -40,9 +40,9 @@ export default class AudioTrack extends Component {
   }
 
   textClasses = () => {
-    let classes = [
+    const classes = [
       "float-left",
-      "truncate"
+      "truncate",
     ];
 
     if (this.props.active) classes.push("strong");
@@ -56,10 +56,10 @@ export default class AudioTrack extends Component {
 
     const track = {
       ...this.props.track,
-      ...this.props.album.content.tracks[index]
+      ...this.props.album.content.tracks[index],
     };
 
-    if(!track.file) {
+    if (!track.file) {
       // XXX Do something, probably like telling them they cannot listen
       console.log("No file to play!");
       return;
@@ -67,7 +67,7 @@ export default class AudioTrack extends Component {
 
     this.props.dispatch(audioActions.setPlaying({
       track,
-      album: this.props.album
+      album: this.props.album,
     }));
 
     this.props.dispatch(audioActions.setPlaylist(
@@ -89,7 +89,6 @@ export default class AudioTrack extends Component {
         </span>
       </div>
     );
-
   }
 
 }

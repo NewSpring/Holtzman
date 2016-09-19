@@ -9,11 +9,11 @@ import inAppLink from "../../../util/inAppLink";
 export default class DiscoverItem extends Component {
 
   static propTypes = {
-    item: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired,
   }
 
   backgroundStyles = {
-    backgroundImage: `url('${this.props.item.image}')`
+    backgroundImage: `url('${this.props.item.image}')`,
   }
 
   imageclasses = [
@@ -23,14 +23,14 @@ export default class DiscoverItem extends Component {
     "ratio--landscape",
     "floating--bottom",
     "floating--left",
-    "card__image"
+    "card__image",
   ];
 
   // context from ImageLoader
   preloader = () => {
     return (
       <div
-          className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
+        className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
       >
         {this.children}
       </div>
@@ -41,8 +41,8 @@ export default class DiscoverItem extends Component {
   renderElement = () => {
     return (
       <div
-          className={this.imageclasses.join(" ")}
-          style={this.backgroundStyles}
+        className={this.imageclasses.join(" ")}
+        style={this.backgroundStyles}
       >
         {this.children}
       </div>
@@ -54,11 +54,11 @@ export default class DiscoverItem extends Component {
       <div className="push-half-bottom card">
         <a href={this.props.item.link} onClick={inAppLink}>
           <ImageLoader
-              src={this.props.item.image}
-              preloader={this.preloader}
-              renderElement={this.renderElement}
-              imageclasses={this.imageclasses}
-              force
+            src={this.props.item.image}
+            preloader={this.preloader}
+            renderElement={this.renderElement}
+            imageclasses={this.imageclasses}
+            force
           >
             <div className="overlay__item floating__item soft-left soft-bottom text-light-primary card__item">
               <h5 className="flush">{this.props.item.topicName}</h5>

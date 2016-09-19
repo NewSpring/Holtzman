@@ -21,7 +21,7 @@ import Styles from "./watermark-css";
 
 const Watermark = () => (
   <div className={css(Styles["global-watermark"])}>
-    <h4 className={`soft-half flush text-light-primary uppercase watermark ${css(Styles["watermark"])} visuallyhidden@handheld`}>
+    <h4 className={`soft-half flush text-light-primary uppercase watermark ${css(Styles.watermark)} visuallyhidden@handheld`}>
       NewSpring
     </h4>
   </div>
@@ -31,7 +31,7 @@ const Watermark = () => (
 export const App = ({ children, className }) => {
   return (
     <div
-        className="push-double-bottom@palm soft-half-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up"
+      className="push-double-bottom@palm soft-half-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up"
     >
       <div className={className}>
         <Meta />
@@ -39,7 +39,7 @@ export const App = ({ children, className }) => {
         <div data-status-scroll>
           {children}
         </div>
-        <Modal/>
+        <Modal />
         <Nav />
         <Watermark />
       </div>
@@ -55,8 +55,7 @@ export const Blank = () => (<div />);
 // it has no children to avoid reredering any child elements on change
 // it pretty much just gives us Tracker + redux together
 let hasBeenSignedIn = false;
-const GlobalData =  createContainer(({ dispatch }) => {
-
+const GlobalData = createContainer(({ dispatch }) => {
   const userId = Meteor.userId();
 
   if (typeof Raven != "undefined") {
@@ -82,7 +81,7 @@ const GlobalData =  createContainer(({ dispatch }) => {
 
     // Load in topics from user profile
     Meteor.subscribe("userData");
-    let topics = Meteor.user() ? Meteor.user().topics : [];
+    const topics = Meteor.user() ? Meteor.user().topics : [];
     if (topics && topics.length) dispatch(topicActions.set(topics));
 
 
@@ -90,20 +89,20 @@ const GlobalData =  createContainer(({ dispatch }) => {
     // XXX remove this section and replace with Heighliner implementation
     Meteor.subscribe("likes");
     Meteor.subscribe("recently-liked");
-    let likes = Likes.find({ userId }).fetch().map((like) => like.entryId);
+    const likes = Likes.find({ userId }).fetch().map(like => like.entryId);
     if (likes.length) dispatch(likedActions.set(likes));
   }
 
   return { userId };
 }, Blank);
 
-const map = (state) => ({
+const map = state => ({
   location: state.routing.location,
   modal: state.modal,
 });
 @connect(map)
 export default class Global extends Component {
-  render(){
+  render() {
     const { dispatch } = this.props;
     return (
       <div id="global">
@@ -112,4 +111,4 @@ export default class Global extends Component {
       </div>
     );
   }
-};
+}

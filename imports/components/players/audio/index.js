@@ -11,7 +11,7 @@ import { modal, nav as navActions } from "../../../store";
 const mapStateToProps = (state) => {
   return {
     audio: state.audio,
-    modal: state.modal
+    modal: state.modal,
   };
 };
 
@@ -22,7 +22,7 @@ export default class AudioPlayer extends Component {
     // Listen for audio commands from the lock screen or command center
     if (typeof RemoteCommand !== "undefined") {
       RemoteCommand.on("command", (command) => {
-        switch(command) {
+        switch (command) {
           case "play":
             this.props.dispatch(audioActions.play());
             break;
@@ -67,11 +67,11 @@ export default class AudioPlayer extends Component {
       }
     };
 
-    if( expanding ) {
+    if (expanding) {
       triggerModal();
     }
 
-    if( expanded && modalClosing ) {
+    if (expanded && modalClosing) {
       if (this.props.modal.retrigger === "FullPlayer") {
         setTimeout(() => {
           triggerModal();
@@ -81,23 +81,22 @@ export default class AudioPlayer extends Component {
         this.props.dispatch(audioActions.setVisibility("dock"));
       }
     }
-
-  };
+  }
 
   shouldDisplayMini = () => {
     const { visibility, playing } = this.props.audio;
     const { track } = playing;
     const { file } = track;
 
-    const show = [ "dock", "fade" ];
+    const show = ["dock", "fade"];
     return (show.indexOf(visibility) >= 0 && file);
   };
 
-  render () {
+  render() {
     return (
       <div>
         {(() => {
-          if(this.shouldDisplayMini()) {
+          if (this.shouldDisplayMini()) {
             return <MiniPlayer {...this.props} />;
           }
         })()}

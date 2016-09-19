@@ -11,12 +11,11 @@ import Meta from "../../../components/meta";
 
 import Offline from "../../../components/status/Offline";
 
-function formatDate(date){
+function formatDate(date) {
   return Moment(date).format("MMM D, YYYY");
 }
 
-function monentize(value, fixed){
-
+function monentize(value, fixed) {
   if (typeof value === "number") {
     value = `${value}`;
   }
@@ -27,7 +26,7 @@ function monentize(value, fixed){
 
   value = value.replace(/[^\d.-]/g, "");
 
-  let decimals = value.split(".")[1];
+  const decimals = value.split(".")[1];
   if ((decimals && decimals.length >= 2) || fixed) {
     value = Number(value).toFixed(2);
     value = String(value);
@@ -38,39 +37,39 @@ function monentize(value, fixed){
 }
 
 const TransactionDetail = ({ transactionDetail, transaction, icon, status, failure, person }) => (
-  <div className="grid" style={{verticalAlign: "middle"}}>
-    <div className="grid__item three-fifths" style={{verticalAlign: "middle"}}>
+  <div className="grid" style={{ verticalAlign: "middle" }}>
+    <div className="grid__item three-fifths" style={{ verticalAlign: "middle" }}>
       <div className="relative">
-        <div className="background--fill soft visuallyhidden@palm float-left round push-half-top" style={{ backgroundImage: `url("${person.photo}")`}} />
+        <div className="background--fill soft visuallyhidden@palm float-left round push-half-top" style={{ backgroundImage: `url("${person.photo}")` }} />
         <div className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
-          <h5 className="text-dark-secondary flush" style={{textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
+          <h5 className="text-dark-secondary flush" style={{ textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
             {transactionDetail.account.name}
           </h5>
           <h6 className="text-dark-tertiary soft-half-bottom flush">{person.firstName} {person.lastName}</h6>
           <p className={`flush italic small ${failure ? "text-alert" : "text-dark-tertiary"}`}>
-            {status ? `${status} - `: ""}{formatDate(transaction.date)}
+            {status ? `${status} - ` : ""}{formatDate(transaction.date)}
           </p>
         </div>
       </div>
 
     </div>
 
-    <div className="grid__item two-fifths text-right" style={{verticalAlign: "middle"}}>
+    <div className="grid__item two-fifths text-right" style={{ verticalAlign: "middle" }}>
       <div className="soft-half-right">
 
         <h4 className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up" style={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}>
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }}>
           {monentize(transactionDetail.amount)}
           {(() => {
             if (icon) {
               return (
                 <span className="text-primary icon-arrow-next locked" style={{
                   right: "-5px",
-                  top: "1px"
-                }}/>
+                  top: "1px",
+                }} />
               );
             }
           })()}
@@ -86,7 +85,7 @@ const TransactionDetail = ({ transactionDetail, transaction, icon, status, failu
 );
 
 export const TransactionCard = ({ transactionDetail, transaction, person }) => {
-  let { status } = transaction;
+  const { status } = transaction;
 
   /*
 
@@ -96,8 +95,8 @@ export const TransactionCard = ({ transactionDetail, transaction, person }) => {
   if (status && status.toLowerCase().indexOf("pending") > -1) {
     return (
       <div
-          className="soft card"
-          style={{
+        className="soft card"
+        style={{
           borderStyle: "solid",
           borderColor: "f1f1f1",
           boxShadow: "none",
@@ -106,11 +105,11 @@ export const TransactionCard = ({ transactionDetail, transaction, person }) => {
         }}
       >
         <TransactionDetail
-            transactionDetail={transactionDetail}
-            transaction={transaction}
-            icon={false}
-            status="Pending"
-            person={person}
+          transactionDetail={transactionDetail}
+          transaction={transaction}
+          icon={false}
+          status="Pending"
+          person={person}
         />
       </div>
     );
@@ -119,17 +118,17 @@ export const TransactionCard = ({ transactionDetail, transaction, person }) => {
   if (status && status.toLowerCase().indexOf("failed") > -1) {
     return (
       <div
-          className="soft card"
+        className="soft card"
       >
         <TransactionDetail
-            transactionDetail={transactionDetail}
-            transaction={transaction}
-            icon={false}
-            status="Failed to Process"
-            failure
-            person={person}
+          transactionDetail={transactionDetail}
+          transaction={transaction}
+          icon={false}
+          status="Failed to Process"
+          failure
+          person={person}
         />
-      <p className="flush-bottom soft-top" style={{lineHeight: ".9"}}><small><em>
+      <p className="flush-bottom soft-top" style={{ lineHeight: ".9" }}><small><em>
           For more information about why this contribution failed to process, please contact our Finance Team at <a href="tel:864-965-9990">864-965-9990</a> or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us</a>
         </em></small></p>
       </div>
@@ -139,10 +138,10 @@ export const TransactionCard = ({ transactionDetail, transaction, person }) => {
     <div className="soft card">
       <Link to={`/give/history/${transaction.id}`}>
         <TransactionDetail
-            transactionDetail={transactionDetail}
-            transaction={transaction}
-            icon
-            person={person}
+          transactionDetail={transactionDetail}
+          transaction={transaction}
+          icon
+          person={person}
         />
       </Link>
     </div>
@@ -154,8 +153,7 @@ export default class Layout extends Component {
   monentize = monentize
   formatDate = formatDate
 
-  render () {
-
+  render() {
     const { transactions, ready, paginate, done, changeFamily, changeDates, reloading } = this.props;
 
 
@@ -167,7 +165,7 @@ export default class Layout extends Component {
           <Meta title="Giving History" />
 
           <Right background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg"
-              mobile={false}
+            mobile={false}
           />
 
 
@@ -184,12 +182,11 @@ export default class Layout extends Component {
           <Filter family={this.props.family} changeFamily={changeFamily} changeDates={changeDates} />
           <div className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable" ref="history">
             {(() => {
-
               if (reloading || !transactions.length && !ready) {
                 // loading
                 return (
                   <div className="text-center soft">
-                    <Spinner styles={{width: "40px", height: "40px"}}/>
+                    <Spinner styles={{ width: "40px", height: "40px" }} />
                   </div>
 
                 );
@@ -216,7 +213,7 @@ export default class Layout extends Component {
 
                         if (Number(transactionDetail.amount) <= 0) return null;
 
-                        let year = Moment(transaction.date).year();
+                        const year = Moment(transaction.date).year();
                         if (year != lastYear) {
                           lastYear = year;
                           return (
@@ -225,42 +222,39 @@ export default class Layout extends Component {
                                 <h5>{year}</h5>
                               </div>
                               <TransactionCard
-                                  transaction={transaction}
-                                  transactionDetail={transactionDetail}
-                                  person={person}
+                                transaction={transaction}
+                                transactionDetail={transactionDetail}
+                                person={person}
                               />
                             </div>
                           );
-
                         }
 
                         return (
                           <TransactionCard
-                              transaction={transaction}
-                              transactionDetail={transactionDetail}
-                              person={person}
-                              key={i}
+                            transaction={transaction}
+                            transactionDetail={transactionDetail}
+                            person={person}
+                            key={i}
                           />
                         );
                       })}
                     </div>
 
                   );
-
                 })}
                 </div>
               );
-
             })()}
           </div>
 
           {/* Load more */}
           <div className="one-whole text-center">
             {(() => {
-              let btnClasses = [
+              const btnClasses = [
                 "btn--dark-tertiary",
                 "push-top",
-                "push-double-bottom"
+                "push-double-bottom",
               ];
 
               if (!ready && !transactions.length) return null;

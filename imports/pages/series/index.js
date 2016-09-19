@@ -56,7 +56,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
   },
 });
 
-const mapStateToProps = (state) => ({ paging: state.paging });
+const mapStateToProps = state => ({ paging: state.paging });
 
 @connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Pageable)
@@ -93,7 +93,6 @@ class Template extends Component {
   }
 
   render() {
-
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
         <div className="background--light-primary">
@@ -106,16 +105,16 @@ class Template extends Component {
       </ApollosPullToRefresh>
     );
   }
-};
+}
 
 
 const Routes = [
   { path: "/series", component: Template },
   { path: "/series/:id", component: Single },
-  { path: "/series/:id/sermon/:sermonId", component: SingleVideo }
+  { path: "/series/:id/sermon/:sermonId", component: SingleVideo },
 ];
 
 export default {
   Template,
-  Routes: Routes
+  Routes,
 };

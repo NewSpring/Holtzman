@@ -38,18 +38,18 @@ const mapQueriesToProps = () => ({
 @connect({ mapQueriesToProps })
 class Template extends Component {
 
-  componentWillMount(){
+  componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
   }
 
   onUpload = (e) => {
-    let files = e.target.files;
+    const files = e.target.files;
 
     if (!Meteor.settings.public.rock) {
       return;
     }
 
-    var data = new FormData();
+    const data = new FormData();
     data.append("file", files[0]);
 
     const { baseURL, token, tokenName } = Meteor.settings.public.rock;
@@ -57,11 +57,11 @@ class Template extends Component {
     fetch(`${baseURL}api/BinaryFiles/Upload?binaryFileTypeId=5`, {
       method: "POST",
       headers: { [tokenName]: token },
-      body: data
+      body: data,
     })
       .then((response) => {
         return response.json();
-       })
+      })
       .then((id) => {
         avatar(id, (err, response) => {
           updateUser(Meteor.userId(), this.props.dispatch);
@@ -70,14 +70,14 @@ class Template extends Component {
 
     const save = (url) => {
       this.setState({
-        photo: url
+        photo: url,
       });
     };
 
-    for (let file in files) {
+    for (const file in files) {
       // console.log(files[file])
-      let { name } = files[file];
-      let reader = new FileReader();
+      const { name } = files[file];
+      const reader = new FileReader();
 
       // Closure to capture the file information.
       reader.onload = ((theFile) => {
@@ -91,9 +91,7 @@ class Template extends Component {
       reader.readAsDataURL(files[file]);
 
       break;
-
     }
-
   }
 
   render() {
@@ -118,18 +116,18 @@ const Routes = [
     path: "settings",
     component: Template,
     indexRoute: {
-      component: Menu
+      component: Menu,
     },
     childRoutes: [
       { path: "change-password", component: ChangePassword },
       { path: "personal-details", component: PersonalDetails },
       { path: "home-address", component: HomeAddress },
       { path: "saved-accounts", component: PaymentDetails },
-    ]
-  }
+    ],
+  },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

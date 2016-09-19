@@ -1,4 +1,4 @@
-import { Routes } from "./pages"
+import { Routes } from "./pages";
 
 if (process.env.NATIVE) {
   import Home from "./pages/home";
@@ -32,5 +32,5 @@ export default {
       return cb();
     }
   },
-  childRoutes: Routes
-}
+  childRoutes: Routes,
+};

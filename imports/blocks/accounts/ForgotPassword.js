@@ -24,13 +24,13 @@ class ForgotPassword extends React.Component {
   }
 
   state = {
-    state: "default"
+    state: "default",
   }
 
   isEmail = (value) => {
     const isValid = Validate.isEmail(value);
 
-    if (!isValid ) {
+    if (!isValid) {
       this.props.clear("email");
     } else {
       this.props.save({ email: value });
@@ -43,11 +43,11 @@ class ForgotPassword extends React.Component {
     e.preventDefault();
 
     this.setState({
-      state: "loading"
+      state: "loading",
     });
 
     Accounts.forgotPassword({
-      email: this.props.email
+      email: this.props.email,
     }, (err, response) => {
       if (err) {
         if (err.error === 403) {
@@ -55,11 +55,10 @@ class ForgotPassword extends React.Component {
           // we fire a server side check with Rock then on the server
           // we create a user (if they exist in Rock) and email them the reciept
           forceReset(this.props.email, (err, response) => {
-
             if (err) {
               this.setState({ state: "error", err: err.message });
               setTimeout(() => {
-                this.setState({ state: "default"});
+                this.setState({ state: "default" });
               }, 3000);
               return;
             }
@@ -67,9 +66,8 @@ class ForgotPassword extends React.Component {
             this.setState({ state: "success" });
 
             setTimeout(() => {
-              this.setState({ state: "default"});
+              this.setState({ state: "default" });
               this.props.back();
-
             }, 3000);
           });
 
@@ -77,7 +75,7 @@ class ForgotPassword extends React.Component {
         }
         this.setState({ state: "error", err: err.message });
         setTimeout(() => {
-          this.setState({ state: "default"});
+          this.setState({ state: "default" });
         }, 3000);
         return;
       }
@@ -85,16 +83,13 @@ class ForgotPassword extends React.Component {
       this.setState({ state: "success" });
 
       setTimeout(() => {
-        this.setState({ state: "default"});
+        this.setState({ state: "default" });
         this.props.back();
-
       }, 3000);
-
     });
-
   }
 
-  render () {
+  render() {
     const { err } = this.state;
 
     switch (this.state.state) {
@@ -108,10 +103,10 @@ class ForgotPassword extends React.Component {
 
     return (
       <Forms.Form
-          id="forgot-password"
-          fieldsetTheme="flush soft-top"
-          classes={["push-double-top"]}
-          submit={this.submit}
+        id="forgot-password"
+        fieldsetTheme="flush soft-top"
+        classes={["push-double-top"]}
+        submit={this.submit}
       >
         <legend className="push-half-bottom">
           Reset Password
@@ -121,27 +116,27 @@ class ForgotPassword extends React.Component {
         </h6>
 
         <Forms.Input
-            name="email"
-            placeholder="user@email.com"
-            label="Email"
-            errorText="Email does not exist"
-            validation={this.isEmail}
-            defaultValue={this.props.email}
+          name="email"
+          placeholder="user@email.com"
+          label="Email"
+          errorText="Email does not exist"
+          validation={this.isEmail}
+          defaultValue={this.props.email}
         />
 
       <div>
         <a
-            href="#"
-            onClick={this.props.back}
-            tabIndex={-1}
-            className="btn--small btn--dark-tertiary display-inline-block"
+          href="#"
+          onClick={this.props.back}
+          tabIndex={-1}
+          className="btn--small btn--dark-tertiary display-inline-block"
         >
           Back
         </a>
 
         {(() => {
-          let btnClasses = ["push-left"];
-          if (Object.keys(this.props.errors).length){
+          const btnClasses = ["push-left"];
+          if (Object.keys(this.props.errors).length) {
             btnClasses.push("btn--disabled");
           } else {
             btnClasses.push("btn");

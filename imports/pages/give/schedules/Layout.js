@@ -17,7 +17,7 @@ import AccountType from "../../../components/accountType";
 export default class Layout extends Component {
 
   state = {
-    expandedSchedule: null
+    expandedSchedule: null,
   }
 
   expandSchedule = (e) => {
@@ -32,13 +32,13 @@ export default class Layout extends Component {
     }
 
     this.setState({
-      expandedSchedule: Number(id)
+      expandedSchedule: Number(id),
     });
   }
 
   collapseSchedule = () => {
     this.setState({
-      expandedSchedule: null
+      expandedSchedule: null,
     });
   }
 
@@ -47,7 +47,6 @@ export default class Layout extends Component {
   }
 
   monentize = (value, fixed) => {
-
     if (typeof value === "number") {
       value = `${value}`;
     }
@@ -58,7 +57,7 @@ export default class Layout extends Component {
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -72,8 +71,7 @@ export default class Layout extends Component {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  render () {
-
+  render() {
     const {
       schedules,
       accounts,
@@ -82,11 +80,11 @@ export default class Layout extends Component {
       recoverableSchedules,
       cancelSchedule,
       confirm,
-      person
+      person,
     } = this.props;
 
     let hasCompletedSchedules = false;
-    let photo = "//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg";
+    const photo = "//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg";
     return (
         <div>
           <Split nav classes={["background--light-primary"]}>
@@ -94,8 +92,8 @@ export default class Layout extends Component {
             <Meta title="Schedule Your Giving" image={photo} />
 
             <Right
-                background={photo}
-                mobile={false}
+              background={photo}
+              mobile={false}
             />
 
 
@@ -131,11 +129,11 @@ export default class Layout extends Component {
                     if (!accountsReady || !accounts || !accounts.length) {
                       return (
                         <div className="text-center soft">
-                          <Spinner styles={{width: "40px", height: "40px"}}/>
+                          <Spinner styles={{ width: "40px", height: "40px" }} />
                         </div>
                       );
                     }
-                    return <AddSchedule accounts={accounts}/>;
+                    return <AddSchedule accounts={accounts} />;
                   })()}
 
                 </div>
@@ -143,15 +141,13 @@ export default class Layout extends Component {
             </div>
 
 
-            <div  id="active-schedules" className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
+            <div id="active-schedules" className="soft-half soft-sides@portable soft-double-sides@anchored soft-double-bottom@anchored soft-bottom@portable">
               <h4 className="soft soft-double-ends text-center flush-bottom">
                 My Active Schedules
               </h4>
 
 
               {(() => {
-
-
                 if (!Meteor.user()) {
                   return (
                     <div className="text-center soft-sides">
@@ -164,7 +160,7 @@ export default class Layout extends Component {
                   // loading
                   return (
                     <div className="text-center soft">
-                      <Spinner styles={{width: "40px", height: "40px"}}/>
+                      <Spinner styles={{ width: "40px", height: "40px" }} />
                     </div>
                   );
                 }
@@ -175,18 +171,16 @@ export default class Layout extends Component {
                       <p><em>You don't have any active scheduled contributions. If you created a new schedule, it may take a few minutes to be reflected here</em></p>
                     </div>
                   );
-
                 }
 
                 return (
                   <div>
                     {schedules && schedules.map((schedule, i) => {
-
                       if (!schedule.details || !schedule.details[0].account) {
                         return null;
                       }
 
-                      let complete = false;
+                      const complete = false;
                       if (new Date(schedule.next) < Moment().add(1, "day") && schedule.schedule.value === "One-Time") {
                         hasCompletedSchedules = true;
                         return null;
@@ -197,18 +191,18 @@ export default class Layout extends Component {
 
                           <Link to={`/give/schedules/${schedule.id}`}>
 
-                            <div className="grid" style={{verticalAlign: "middle"}} key={i}>
+                            <div className="grid" style={{ verticalAlign: "middle" }} key={i}>
 
-                              <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
+                              <div className="grid__item one-half" style={{ verticalAlign: "middle" }}>
                                 <h6 className="text-dark-tertiary push-half-bottom">
                                   {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
                                   <span className="text-dark-secondary">{complete ? " - Complete" : ""}</span>
                                 </h6>
                                 <h5 className="flush one-whole" style={{
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    whiteSpace: "nowrap",
-                                  }}>
+                                  overflow: "hidden",
+                                  textOverflow: "ellipsis",
+                                  whiteSpace: "nowrap",
+                                }}>
                                   {schedule.details[0].account.name}
                                 </h5>
                                 <p className="flush soft-half-top text-dark-tertiary">
@@ -222,18 +216,18 @@ export default class Layout extends Component {
                               </div>
 
 
-                              <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
+                              <div className="grid__item one-half text-right" style={{ verticalAlign: "middle" }}>
                                 <div className="soft-half-right">
                                   <h4 className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up" style={{
-                                      overflow: "hidden",
-                                      textOverflow: "ellipsis",
-                                      whiteSpace: "nowrap",
-                                    }}>
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                  }}>
                                     {this.monentize(schedule.details[0].amount)}
                                     <span className="text-primary icon-arrow-next locked" style={{
-                                        right: "-5px",
-                                        top: "1px"
-                                      }} />
+                                      right: "-5px",
+                                      top: "1px",
+                                    }} />
                                   </h4>
                                 </div>
 
@@ -244,7 +238,6 @@ export default class Layout extends Component {
 
                         </div>
                       );
-
                     })}
                     <p className="soft text-center">
                       <small>
@@ -261,13 +254,12 @@ export default class Layout extends Component {
                 if (hasCompletedSchedules) {
                   return (
                     <div>
-                      <hr className="flush hard"/>
+                      <hr className="flush hard" />
                       <h4 className="soft soft-double-ends text-center flush-bottom">
                         My Completed Schedules
                       </h4>
 
                       {schedules && schedules.map((schedule, i) => {
-
                         if (!schedule.details || !schedule.details[0].account) {
                           return null;
                         }
@@ -286,18 +278,18 @@ export default class Layout extends Component {
 
                             <Link to={`/give/schedules/${schedule.id}`}>
 
-                              <div className="grid" style={{verticalAlign: "middle"}} key={i}>
+                              <div className="grid" style={{ verticalAlign: "middle" }} key={i}>
 
-                                <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
+                                <div className="grid__item one-half" style={{ verticalAlign: "middle" }}>
                                   <h6 className="text-dark-tertiary push-half-bottom">
                                     {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
                                     <span className="text-dark-secondary">{complete ? " - Complete" : ""}</span>
                                   </h6>
                                   <h5 className="flush one-whole" style={{
-                                      overflow: "hidden",
-                                      textOverflow: "ellipsis",
-                                      whiteSpace: "nowrap",
-                                    }}>
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                  }}>
                                     {schedule.details[0].account.name}
                                   </h5>
                                   <p className="flush soft-half-top text-dark-tertiary">
@@ -311,18 +303,18 @@ export default class Layout extends Component {
                                 </div>
 
 
-                                <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
+                                <div className="grid__item one-half text-right" style={{ verticalAlign: "middle" }}>
                                   <div className="soft-half-right">
                                     <h4 className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up" style={{
-                                        overflow: "hidden",
-                                        textOverflow: "ellipsis",
-                                        whiteSpace: "nowrap",
-                                      }}>
+                                      overflow: "hidden",
+                                      textOverflow: "ellipsis",
+                                      whiteSpace: "nowrap",
+                                    }}>
                                       {this.monentize(schedule.details[0].amount)}
                                       <span className="text-primary icon-arrow-next locked" style={{
-                                          right: "-5px",
-                                          top: "1px"
-                                        }} />
+                                        right: "-5px",
+                                        top: "1px",
+                                      }} />
                                     </h4>
                                   </div>
 
@@ -333,13 +325,11 @@ export default class Layout extends Component {
 
                           </div>
                         );
-
                       })}
 
                     </div>
                   );
                 }
-
               })()}
             </div>
 

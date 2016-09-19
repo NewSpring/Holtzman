@@ -19,7 +19,7 @@ import RelatedContent from "../../blocks/content/RelatedContent";
 import SingleVideoPlayer from "../../components/players/video/Player";
 
 import {
-  nav as navActions
+  nav as navActions,
 } from "../../store";
 
 // import content component
@@ -70,12 +70,12 @@ const defaultArray = [];
 @ReactMixin.decorate(Headerable)
 export default class ArticlesSingle extends Component {
 
-  componentWillMount(){
+  componentWillMount() {
     if (process.env.WEB) return;
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction
+      action: this.likeableAction,
     }));
   }
 
@@ -87,14 +87,14 @@ export default class ArticlesSingle extends Component {
       return (
         <div className="locked-ends locked-sides floating">
           <div className="floating__item">
-            <Loading/>
+            <Loading />
           </div>
         </div>
       );
     }
 
     const article = content;
-    let photo = backgrounds.image(article);
+    const photo = backgrounds.image(article);
     return (
       <div>
         <Split nav classes={["background--light-primary"]}>
@@ -102,11 +102,11 @@ export default class ArticlesSingle extends Component {
             if (article.content.ooyalaId.length === 0) {
               return (
                 <Right
-                    mobile
-                    background={photo}
-                    classes={["floating--bottom", "overlay--gradient@lap-and-up"]}
-                    ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up"]}
-                    aspect="square"
+                  mobile
+                  background={photo}
+                  classes={["floating--bottom", "overlay--gradient@lap-and-up"]}
+                  ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up"]}
+                  aspect="square"
                 />
               );
             } else {

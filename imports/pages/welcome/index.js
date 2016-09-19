@@ -12,7 +12,7 @@ class Welcome extends Component {
     if (typeof NativeStorage === "undefined") return;
     NativeStorage.setItem("welcomed", true,
       (success) => {},
-      (error) => { console.error("could not set welcomed") },
+      (error) => { console.error("could not set welcomed"); },
     );
   }
 
@@ -50,13 +50,13 @@ class Welcome extends Component {
     return (
       <div className="background--primary" style={containerStyles}>
         <Slider
-            dots
-            arrows={false}
-            infinite={false}
-            speed={300}
-            edgeFriction={0}
-            afterChange={this.updateState}
-            slickGoTo={this.state.slickGoTo || 0}
+          dots
+          arrows={false}
+          infinite={false}
+          speed={300}
+          edgeFriction={0}
+          afterChange={this.updateState}
+          slickGoTo={this.state.slickGoTo || 0}
         >
           <div><img src={`/welcome/${imagePrefix}/onboard-img1.jpg`} onClick={this.next} data-index={0} /></div>
           <div><img src={`/welcome/${imagePrefix}/onboard-img2.jpg`} onClick={this.next} data-index={1} /></div>
