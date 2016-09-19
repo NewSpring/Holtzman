@@ -137,12 +137,13 @@ export default class Template extends Component {
   componentWillReceiveProps(nextProps) {
 
     let newState = {};
-
+    let clear = false;
     if (
       this.props.q !== nextProps.q ||
       this.props.tags !== nextProps.tags ||
       this.props.campuses !== nextProps.campuses
     ) {
+      clear = true; // variables have changed
       if (nextProps.data.groups && nextProps.data.groups) {
         newState.groups = nextProps.data.groups.results;
       } else {
@@ -153,7 +154,9 @@ export default class Template extends Component {
     if (this.props.data.loading && !nextProps.data.loading && !this.state.groups.length) {
       newState.groups = nextProps.data.groups.results;
     }
-    newState.markers = this.getMarkers(nextProps.data.groups && nextProps.data.groups.results);
+    newState.markers = this.getMarkers(
+      nextProps.data.groups && nextProps.data.groups.results, clear
+    );
     this.setState(newState);
   }
 
@@ -161,8 +164,9 @@ export default class Template extends Component {
   toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
 
 
-  getMarkers = (groups = []) => {
-    const { markers } = this.state;
+  getMarkers = (groups = [], clear = false) => {
+    let { markers } = this.state;
+    if (clear) markers = [];
     return _.uniq(markers.concat(groups
       .filter(x => x.locations && x.locations.length && x.locations[0].location)
       .map(x => ({

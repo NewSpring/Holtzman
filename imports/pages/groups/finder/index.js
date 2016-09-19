@@ -104,9 +104,10 @@ export default class Template extends Component {
     if (!location.query) location.query = {};
 
     if (query) location.query.q = query;
-    if (tags.length) {
-      location.query.tags = tags.join(",").toLowerCase();
-    }
+    if (tags.length) location.query.tags = tags.join(",").toLowerCase();
+
+    if (location.query.campuses) delete location.query.campuses;
+
     // reset state
     this.setState({ tags: [], query: null });
     router.push(location);
@@ -125,7 +126,9 @@ export default class Template extends Component {
 
   render () {
     const { attributes, location, content } = this.props;
-    if (location.query && (location.query.tags || location.query.q)) return <Result />;
+    if (location.query && (
+      location.query.tags || location.query.q || location.query.campuses
+    )) return <Result />;
     return (
       <div>
         <Split>
