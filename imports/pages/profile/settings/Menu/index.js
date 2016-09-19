@@ -7,7 +7,6 @@ import { Link } from "react-router";
 import Headerable from "../../../../mixins/mixins.Header";
 
 import {
-  accounts as accountsActions,
   nav as navActions,
 } from "../../../../store";
 
@@ -29,16 +28,23 @@ const RenderCell = ({ name, iconFunc, last, children }) => {
         {children}
       </div>
     );
-  } else {
-    return (
-      <div className="card soft-ends soft-right text-left outlined--light">
-        <h6 className="soft-left flush display-inline-block">{name}</h6>
-        <i className={`float-right ${icon}`} />
-        {children}
-      </div>
-    );
   }
+  return (
+    <div className="card soft-ends soft-right text-left outlined--light">
+      <h6 className="soft-left flush display-inline-block">{name}</h6>
+      <i className={`float-right ${icon}`} />
+      {children}
+    </div>
+  );
 };
+
+RenderCell.propTypes = {
+  name: PropTypes.string.isRequired,
+  iconFunc: PropTypes.function.isRequired,
+  last: PropTypes.boolean.isRequired,
+  children: PropTypes.object.isRequired,
+};
+
 const mapQueriesToProps = () => ({
   data: {
     query: gql`
@@ -56,8 +62,15 @@ const mapQueriesToProps = () => ({
 @ReactMixin.decorate(Headerable)
 export default class Menu extends Component {
 
-  static contextTypes = {
-    shouldAnimate: PropTypes.bool,
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    data: {
+      refetch: PropTypes.function.isRequired,
+    },
+  }
+
+  state = {
+    upload: "default",
   }
 
   componentWillMount() {
@@ -88,7 +101,7 @@ export default class Menu extends Component {
       .catch(() => {
         this.setState({ [key]: "failed" });
         setTimeout(() => this.setState({ [key]: "default" }), 2000);
-      })
+      });
   }
 
   uploadIcon = () => {
@@ -116,25 +129,29 @@ export default class Menu extends Component {
         return "icon-check-mark text-primary";
       case "failed":
         return "icon-close text-alert";
+      default:
+        return null;
     }
   }
 
   sectionClasses = () => {
     if (process.env.NATIVE) return "hard";
+    return "";
   }
 
   showFeedback = () => {
     if (process.env.NATIVE) {
       return (
-        <a href="#" onClick={this.giveFeedback} className="plain text-dark-secondary">
+        <a onClick={this.giveFeedback} className="plain text-dark-secondary">
           <RenderCell name="Give Feedback" />
         </a>
       );
     }
+    return null;
   }
 
   giveFeedback = () => {
-    if (process.env.NATIVE && typeof hockeyapp != "undefined") hockeyapp.feedback();
+    if (process.env.NATIVE && typeof hockeyapp !== "undefined") hockeyapp.feedback();
   }
 
   dividerClasses = () => {
@@ -145,6 +162,7 @@ export default class Menu extends Component {
 
   outlineClasses = () => {
     if (process.env.NATIVE) return "outlined--light one-whole";
+    return "";
   }
 
   render() {
@@ -211,17 +229,34 @@ export default class Menu extends Component {
           <div className={this.dividerClasses()}>
             <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
               {this.showFeedback()}
-              <a href="//newspring.cc/privacy" onClick={inAppLink} target="_blank" className="plain text-dark-secondary">
+              <a
+                href="//newspring.cc/privacy"
+                rel="noopener noreferrer"
+                onClick={inAppLink}
+                target="_blank"
+                className="plain text-dark-secondary"
+              >
                 <RenderCell name="Privacy Policy" />
               </a>
-              <a href="//newspring.cc/terms" onClick={inAppLink} target="_blank" className="plain text-dark-secondary">
+              <a
+                href="//newspring.cc/terms"
+                rel="noopener noreferrer"
+                onClick={inAppLink}
+                target="_blank"
+                className="plain text-dark-secondary"
+              >
                 <RenderCell name="Terms of Use" last />
               </a>
             </div>
           </div>
 
           <div className="one-whole text-center push-double-bottom">
-            <button onClick={this.signout} className="btn--dark-tertiary push-top soft-half-ends">Sign Out</button>
+            <button
+              onClick={this.signout}
+              className="btn--dark-tertiary push-top soft-half-ends"
+            >
+              Sign Out
+            </button>
           </div>
         </section>
       </div>
