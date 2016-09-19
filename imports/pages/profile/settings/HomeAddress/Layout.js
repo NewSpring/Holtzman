@@ -29,11 +29,10 @@ export default class Layout extends Component {
   }
 
   render() {
-    const { update, home, campus } = this.props;
+    const { home } = this.props;
 
-    let {
+    const {
       city,
-      country,
       zip,
       state,
       street1,
@@ -42,13 +41,23 @@ export default class Layout extends Component {
 
     return (
       <div
-        className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up push-double-bottom background--light-primary"
+        className={
+          "background--light-primary one-whole text-center push-top " +
+          "push-double-top@lap-and-up push-double-bottom background--light-primary"
+        }
       >
-      <Meta title="Change your address" />
+        <Meta title="Change your address" />
         <Back />
         <Forms.Form
           id="reset-password"
-          classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block", "soft-double-sides@palm-wide"]}
+          classes={[
+            "soft",
+            "one-whole",
+            "two-thirds@portable",
+            "one-half@anchored",
+            "display-inline-block",
+            "soft-double-sides@palm-wide",
+          ]}
           submit={this.submit}
         >
           <div className="push-double">
