@@ -2,7 +2,7 @@ import { PropTypes } from "react";
 
 import { WindowLoading, Spinner } from "../../components/loading";
 
-const Loading = ({ account }, context) => (
+const Loading = ({ account }) => (
   <WindowLoading classes={["background--primary"]}>
     <div className="locked-top locked-bottom one-whole floating">
       <div className="floating__item">

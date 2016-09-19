@@ -58,43 +58,25 @@ const mapStateToProps = store => ({
 @connect({ mapStateToProps, mapQueriesToProps })
 export default class GiveNow extends Component {
 
+  static propTypes = {
+    authorized: PropTypes.bool,
+    classes: PropTypes.array, // eslint-disable-line
+    dataId: PropTypes.string,
+    disabled: PropTypes.bool,
+    disabledGuest: PropTypes.bool,
+    dispatch: PropTypes.func,
+    hideCard: PropTypes.bool,
+    onClick: PropTypes.func,
+    savedAccount: PropTypes.object, // eslint-disable-line
+    savedPayments: PropTypes.array, // eslint-disable-line
+    style: PropTypes.object, // eslint-disable-line
+    text: PropTypes.string,
+    theme: PropTypes.string,
+    value: PropTypes.string,
+  }
+
   state = {
     paymentDetails: false,
-  }
-
-  getAccount = () => {
-    const { savedAccount } = this.props;
-    if (savedAccount && savedAccount.id) return savedAccount;
-
-    if (!this.props.savedPayments) return {};
-
-    const { savedPayments } = this.props.savedPayments;
-    if (!savedPayments || !savedPayments.length) return {};
-
-    return _.sortBy(savedPayments, "date")[savedPayments.length - 1];
-  }
-
-  buttonClasses = () => {
-    let classes = ["btn"];
-
-    if (this.props.savedPayments.savedPayments) {
-      classes.push("has-card");
-    }
-
-    if (this.props.disabled && Meteor.userId()) {
-      classes.push("btn--disabled");
-    }
-
-    if (this.props.classes) {
-      classes = classes.concat(this.props.classes);
-    }
-
-    return classes.join(" ");
-  }
-
-  renderAfterLogin = () => {
-    if (this.props.disabled) return this.props.dispatch(modal.hide());
-    this.props.dispatch(modal.render(Give));
   }
 
   onClick = (e) => {
@@ -128,6 +110,36 @@ export default class GiveNow extends Component {
     }
 
     this.props.dispatch(navActions.setLevel("MODAL"));
+  }
+
+  getAccount = () => {
+    const { savedAccount } = this.props;
+    if (savedAccount && savedAccount.id) return savedAccount;
+
+    if (!this.props.savedPayments) return {};
+
+    const { savedPayments } = this.props.savedPayments;
+    if (!savedPayments || !savedPayments.length) return {};
+
+    return _.sortBy(savedPayments, "date")[savedPayments.length - 1];
+  }
+
+  buttonClasses = () => {
+    let classes = ["btn"];
+
+    if (this.props.savedPayments.savedPayments) {
+      classes.push("has-card");
+    }
+
+    if (this.props.disabled && Meteor.userId()) {
+      classes.push("btn--disabled");
+    }
+
+    if (this.props.classes) {
+      classes = classes.concat(this.props.classes);
+    }
+
+    return classes.join(" ");
   }
 
   giveAsGuest = () => {
@@ -191,6 +203,13 @@ export default class GiveNow extends Component {
         );
       }
     }
+    return null;
+  }
+
+  renderAfterLogin = () => {
+    if (this.props.disabled) return this.props.dispatch(modal.hide());
+    this.props.dispatch(modal.render(Give));
+    return null;
   }
 
 
@@ -216,6 +235,7 @@ export default class GiveNow extends Component {
                 />
               );
             }
+            return null;
           })()}
           {(() => {
             if (!this.props.disabledGuest && !Meteor.userId()) {
@@ -226,6 +246,7 @@ export default class GiveNow extends Component {
                 />
               );
             }
+            return null;
           })()}
 
           {(() => {
@@ -238,6 +259,7 @@ export default class GiveNow extends Component {
                 />
               );
             }
+            return null;
           })()}
 
         </span>

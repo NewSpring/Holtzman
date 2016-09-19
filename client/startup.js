@@ -1,3 +1,4 @@
+/* eslint-disable */
 import "velocity-animate";
 import "velocity-animate/velocity.ui";
 import "/imports/util/regex";
@@ -5,7 +6,9 @@ import "/imports/util/regex";
 if (process.env.NATIVE) {
   // this breaks is found on server
   import Audio5 from "audio5";
+
   window.Audio5 = Audio5;
+
 
   // load droid
   function loadCSS(e, n, t) { function i(e) { return r.body ? e() : void setTimeout(() => { i(e); }); } let o, r = window.document, a = r.createElement("link"), d = t || "all"; if (n)o = n; else { const l = (r.body || r.getElementsByTagName("head")[0]).childNodes; o = l[l.length - 1]; } const f = r.styleSheets; a.rel = "stylesheet", a.href = e, a.media = "only x", i(() => { o.parentNode.insertBefore(a, n ? o : o.nextSibling); }); const s = function (e) { for (let n = a.href, t = f.length; t--;) if (f[t].href === n) return e(); setTimeout(() => { s(e); }); }; return a.addEventListener && a.addEventListener("load", function () { this.media = d; }), a.onloadcssdefined = s, s(() => { a.media !== d && (a.media = d); }), a; }

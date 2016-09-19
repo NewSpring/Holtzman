@@ -234,7 +234,7 @@ export default class Layout extends Component {
                         <strong>Your gift matters!</strong>
                       </p>
                       <p>
-                        We believe that every number has a name, every name has a story, and every story matters to God. Because you give, we are able to see thousands of life change stories every year at NewSpring Church. There is no organization with more potential to change the world than the local church. Thank you for being a difference maker!                                          </p>
+                        We believe that every number has a name, every name has a story, and every story matters to God. Because you give, we are able to see thousands of life change stories every year at NewSpring Church. There is no organization with more potential to change the world than the local church. Thank you for being a difference maker!                                                              </p>
 
                       <p>
                         <em>
