@@ -13,6 +13,8 @@ function categoryIcon(contentItem) {
     case "devotionals":
     case "stories":
       return "icon-category-text";
+    default:
+      return null;
   }
 }
 

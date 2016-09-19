@@ -1,6 +1,7 @@
 
 function categoryName(contentItem) {
   const category = contentItem.channelName;
+  let contentCategory = category.charAt(0).toUpperCase();
 
   switch (category) {
     case "series_newspring":
@@ -8,15 +9,13 @@ function categoryName(contentItem) {
     case "newspring_albums":
       return "Albums";
     default:
-      let categoryName = category.charAt(0).toUpperCase();
       if (category.charAt(category.length - 2) === "s") {
         // capitlize first letter and remove "s" from end
-        categoryName += category.substr(1, category.length - 2);
+        contentCategory += category.substr(1, category.length - 2);
+      } else {
+        contentCategory += category.substr(1, category.length - 1);
       }
-      else {
-        categoryName += category.substr(1, category.length - 1);
-      }
-      return categoryName;
+      return contentCategory;
   }
 }
 

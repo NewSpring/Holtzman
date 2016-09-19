@@ -1,12 +1,18 @@
+/* global __meteor_runtime_config__ serverWatch */
 
 import { makeNewGuid } from "../guid";
-import Moment from "moment";
 
 export default function startup(api) {
   if (Meteor.isServer) {
-    if (process.env.NODE_ENV === "production" && __meteor_runtime_config__.ROOT_URL.match("localhost") === null) {
+    if (
+      process.env.NODE_ENV === "production" &&
+      __meteor_runtime_config__.ROOT_URL.match("localhost") === null
+    ) {
+      // eslint-disable-next-line camelcase
       const { ROOT_URL } = __meteor_runtime_config__;
-      let current = api.get.sync(`DefinedValues?$filter=Value eq '${ROOT_URL}' and DefinedTypeId eq 12`);
+      let current = api.get.sync(
+        `DefinedValues?$filter=Value eq '${ROOT_URL}' and DefinedTypeId eq 12`
+      );
 
       if (!current.length) {
         const DefinedValue = {
@@ -52,12 +58,17 @@ export default function startup(api) {
     api._.give || (api._.give = {});
 
     // Gateways
-    let NMI = api.get.sync("FinancialGateways?$filter=substringof('NMI', EntityType/Name) eq true&$expand=EntityType");
+    let NMI = api.get.sync(
+      "FinancialGateways?$filter=substringof('NMI', EntityType/Name) eq true&$expand=EntityType"
+    );
 
     if (!NMI.statusText && NMI.length) {
       // Meteor.settings.nmi = NMI
       const { Id } = NMI[0];
-      NMI = api.get.sync(`AttributeValues?$filter=EntityId eq ${Id} and Attribute/Key eq 'SecurityKey'&$expand=Attribute&$select=Value,Id`);
+      NMI = api.get.sync(
+        `AttributeValues?$filter=EntityId eq ${Id} ` +
+        "and Attribute/Key eq 'SecurityKey'&$expand=Attribute&$select=Value,Id"
+      );
       if (!NMI.statusText && NMI.length) {
         Meteor.settings.nmi = NMI[0].Value;
         api._.give.gateway = {
@@ -72,15 +83,20 @@ export default function startup(api) {
       Defined Values (move to GQL)
 
     */
-    const frequencies = api.get.sync("DefinedValues?$filter=DefinedTypeId eq 23&$select=Value,Description,Id");
+    const frequencies = api.get.sync(
+      "DefinedValues?$filter=DefinedTypeId eq 23&$select=Value,Description,Id"
+    );
     api._.give.frequencies = frequencies;
 
-    const paymentTypes = api.get.sync("DefinedValues?$filter=DefinedTypeId eq 10 or DefinedTypeId eq 11&$select=Value,Description,Id");
+    const paymentTypes = api.get.sync(
+      "DefinedValues?$filter=DefinedTypeId eq 10 " +
+      "or DefinedTypeId eq 11&$select=Value,Description,Id"
+    );
     api._.give.paymentTypes = paymentTypes;
 
-    if (typeof serverWatch != "undefined") {
+    if (typeof serverWatch !== "undefined") {
       // If Rock is being watched (aka old states), remove watching
-      if (serverWatch.getKeys().indexOf("ROCK") != -1) {
+      if (serverWatch.getKeys().indexOf("ROCK") > -1) {
         serverWatch.stopWatching("ROCK");
       }
 
