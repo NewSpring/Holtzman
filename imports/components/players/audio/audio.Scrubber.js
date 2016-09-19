@@ -20,6 +20,7 @@ export default class AudioScrubber extends Component {
 
   state = {
     lastPercent: null,
+    scrubbing: false,
     override: false
   }
 
@@ -41,6 +42,7 @@ export default class AudioScrubber extends Component {
 
     this.setState({
       lastPercent: percent,
+      scrubbing: true,
       override: true
     });
   };
@@ -54,14 +56,33 @@ export default class AudioScrubber extends Component {
 
     setTimeout(() => {
       this.setState({
+        scrubbing: false,
         override: false
       });
     }, 1000);
   }
 
   click = (e) => {
-    const percentClicked = this.calculatePercent(e.target, e.clientX);
-    this.seek(percentClicked);
+    const { scrubbing } = this.state;
+
+    if(!scrubbing) {
+
+      const percentClicked = this.calculatePercent(e.target, e.clientX);
+
+      this.setState({
+        lastPercent: percentClicked,
+        override: true
+      });
+
+      this.seek(percentClicked);
+
+      setTimeout(() => {
+        this.setState({
+          override: false
+        });
+      }, 1000);
+
+    }
   }
 
   calculatePercent = (targetElement, clickedX) => {
@@ -145,7 +166,7 @@ export default class AudioScrubber extends Component {
             style={{position: "relative"}}
             onTouchEnd={this.touchEnd}
             onTouchMove={this.touchMove}
-            // onClick={this.click}
+            onClick={this.click}
         >
           <div
               className={playbar.join(" ")}
