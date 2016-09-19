@@ -1,3 +1,4 @@
+import { PropTypes } from "react";
 
 const SignOut = ({ signout }) => (
   <div>
@@ -13,5 +14,9 @@ const SignOut = ({ signout }) => (
     </div>
   </div>
 );
+
+SignOut.propTypes = {
+  signout: PropTypes.func,
+};
 
 export default SignOut;
