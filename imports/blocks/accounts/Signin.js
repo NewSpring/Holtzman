@@ -175,186 +175,188 @@ class SignIn extends Component {
             />
           </div>
 
-        {(() => {
-          if (!this.props.account && this.props.alternateAccounts.length) {
-            // return null
+          {(() => {
+            if (!this.props.account && this.props.alternateAccounts.length) {
+              // return null
+              return (
+                <div>
+                  <div className="push-back-double-top soft-bottom one-whole text-left">
+                    <h6 className="flush-bottom text-dark-primary push-back-half-top">
+                      It looks like you may have a NewSpring account already!
+                      <span>
+                        &nbsp; Is this your email?<br /><br />
+                        <a href="" onClick={this.changeEmails} data-email={this.props.alternateAccounts[0]}>
+                          {this.props.alternateAccounts[0]}
+                        </a>?
+                      </span>
+                      <br /><br />Click below to sign in with this email.
+                    </h6>
+                  </div>
+                  <div className="push-half-top push-bottom soft-half-bottom one-whole text-center">
+                    <button className="btn" type="submit" onClick={this.changeEmails} data-email={this.props.alternateAccounts[0]}>
+                      Sign In
+                    </button>
+                  </div>
+                </div>
+              );
+            }
+
+            if (
+              !this.props.account &&
+              this.props.peopleWithoutAccountEmails.length &&
+              this.state.showAlternativePeople
+            ) {
+              const people = [...this.props.peopleWithoutAccountEmails];
+              return (
+                <div className="one-whole text-left push-back-double-top">
+                  <h6 className="text-dark-primary soft-top flush-bottom soft-half-bottom push-back-double-top">
+                    It looks like you already have a NewSpring account started!
+                    To finish setting it up, select your person and click complete account.
+                  </h6>
+                  {people.map((person, key) => {
+                    const isActive = () => (
+                      person.id === this.props.data.id || person.id === this.state.selectedPerson
+                    );
+                    return (
+                      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+                      <div
+                        className="text-left soft-double-left push-top relative"
+                        key={key}
+                        onClick={() => this.selectPerson(person.id)}
+                      >
+                        <div className="locked-left">
+                          {/* XXX just used for UI purposes */}
+                          <Forms.Checkbox
+                            classes={["push-top", "hard-bottom"]}
+                            defaultValue={isActive()}
+                          />
+                        </div>
+                        <div
+                          className="round background--fill display-inline-block push-half-right"
+                          style={{
+                            backgroundImage: `url('${person.photo}')`,
+                            width: "70px",
+                            height: "70px",
+                            verticalAlign: "middle",
+                          }}
+                        />
+                        <div
+                          className="flush hard display-inline-block"
+                          style={{ verticalAlign: "middle" }}
+                        >
+                          <h5 className="flush-bottom">{person.firstName} {person.lastName}</h5>
+                          <h7 className="flush-bottom em text-dark-tertiary">{person.email}</h7>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  <div className="one-whole text-center push-top">
+                    <button className="btn push-top push-bottom" onClick={this.completeAccount}>
+                      Complete Account
+                    </button>
+                    <a
+                      className="h7 soft-double-bottom text-dark-secondary display-block"
+                      onClick={this.createNewPerson}
+                      href=""
+                    >
+                      Register new account
+                    </a>
+                  </div>
+
+                </div>
+              );
+            }
+
             return (
               <div>
-                <div className="push-back-double-top soft-bottom one-whole text-left">
-                  <h6 className="flush-bottom text-dark-primary push-back-half-top">
-                    It looks like you may have a NewSpring account already!
-                    <span>
-                      &nbsp; Is this your email?<br /><br />
-                      <a onClick={this.changeEmails} data-email={this.props.alternateAccounts[0]}>
-                        {this.props.alternateAccounts[0]}
-                      </a>?
-                    </span>
-                    <br /><br />Click below to sign in with this email.
-                  </h6>
-                </div>
-                <div className="push-half-top push-bottom soft-half-bottom one-whole text-center">
-                  <button className="btn" type="submit" onClick={this.changeEmails} data-email={this.props.alternateAccounts[0]}>
-                    Sign In
-                  </button>
-                </div>
-              </div>
-            );
-          }
-
-          if (
-            !this.props.account &&
-            this.props.peopleWithoutAccountEmails.length &&
-            this.state.showAlternativePeople
-          ) {
-            const people = [...this.props.peopleWithoutAccountEmails];
-            return (
-              <div className="one-whole text-left push-back-double-top">
-                <h6 className="text-dark-primary soft-top flush-bottom soft-half-bottom push-back-double-top">
-                  It looks like you already have a NewSpring account started!
-                  To finish setting it up, select your person and click complete account.
-                </h6>
-                {people.map((person, key) => {
-                  const isActive = () => (
-                    person.id === this.props.data.id || person.id === this.state.selectedPerson
-                  );
+                <Forms.Input
+                  name="password"
+                  placeholder="password"
+                  label="Password"
+                  type="password"
+                  errorText="Password may not be empty"
+                  validation={this.savePassword}
+                  format={this.liveSavePassword}
+                  ref="password"
+                />
+                {(() => {
+                  if (this.props.account) return null;
                   return (
-                    <div
-                      className="text-left soft-double-left push-top relative"
-                      key={key}
-                      onClick={() => this.selectPerson(person.id)}
-                    >
-                      <div className="locked-left">
-                        {/* XXX just used for UI purposes */}
-                        <Forms.Checkbox
-                          classes={["push-top", "hard-bottom"]}
-                          defaultValue={isActive()}
-                        />
-                      </div>
-                      <div
-                        className="round background--fill display-inline-block push-half-right"
-                        style={{
-                          backgroundImage: `url('${person.photo}')`,
-                          width: "70px",
-                          height: "70px",
-                          verticalAlign: "middle",
-                        }}
+                    <div>
+                      <Forms.Input
+                        name="firstName"
+                        label="First Name"
+                        errorText="Please enter your first name"
+                        validation={this.firstName}
+                        defaultValue={this.props.data.firstName}
+                        ref="firstName" // eslint-disable-line
                       />
-                      <div
-                        className="flush hard display-inline-block"
-                        style={{ verticalAlign: "middle" }}
-                      >
-                        <h5 className="flush-bottom">{person.firstName} {person.lastName}</h5>
-                        <h7 className="flush-bottom em text-dark-tertiary">{person.email}</h7>
-                      </div>
+
+                      <Forms.Input
+                        name="lastName"
+                        label="Last Name"
+                        errorText="Please enter your last name"
+                        validation={this.lastName}
+                        defaultValue={this.props.data.lastName}
+                        ref="lastName"
+                      />
                     </div>
                   );
-                })}
-
-                <div className="one-whole text-center push-top">
-                  <button className="btn push-top push-bottom" onClick={this.completeAccount}>
-                    Complete Account
-                  </button>
-                  <a
-                    className="h7 soft-double-bottom text-dark-secondary display-block"
-                    onClick={this.createNewPerson}
-                  >
-                    Register new account
-                  </a>
-                </div>
-
-              </div>
-            );
-          }
-
-          return (
-            <div>
-              <Forms.Input
-                name="password"
-                placeholder="password"
-                label="Password"
-                type="password"
-                errorText="Password may not be empty"
-                validation={this.savePassword}
-                format={this.liveSavePassword}
-                ref="password"
-              />
-              {(() => {
-                if (this.props.account) return null;
-                return (
-                  <div>
-                    <Forms.Input
-                      name="firstName"
-                      label="First Name"
-                      errorText="Please enter your first name"
-                      validation={this.firstName}
-                      defaultValue={this.props.data.firstName}
-                      ref="firstName" // eslint-disable-line
-                    />
-
-                    <Forms.Input
-                      name="lastName"
-                      label="Last Name"
-                      errorText="Please enter your last name"
-                      validation={this.lastName}
-                      defaultValue={this.props.data.lastName}
-                      ref="lastName"
-                    />
-                  </div>
-                );
-              })()}
-              {(() => {
-                if (!this.props.account) {
+                })()}
+                {(() => {
+                  if (!this.props.account) {
+                    return (
+                      <Forms.Checkbox
+                        name="terms"
+                        defaultValue={this.props.data.terms}
+                        clicked={this.saveTerms}
+                      >
+                        By signing up you agree to our <a
+                          href="//newspring.cc/terms"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >terms of use</a>
+                      </Forms.Checkbox>
+                    );
+                  }
                   return (
-                    <Forms.Checkbox
-                      name="terms"
-                      defaultValue={this.props.data.terms}
-                      clicked={this.saveTerms}
-                    >
-                      By signing up you agree to our <a
-                        href="//newspring.cc/terms"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >terms of use</a>
-                    </Forms.Checkbox>
+                    <div className="push-bottom">
+                      <h7>
+                        <small>
+                          <a
+                            href="/profile/forgot-password"
+                            className="text-primary"
+                            onClick={this.props.forgot}
+                          >
+                            Forgot Password?
+                          </a>
+                        </small>
+                      </h7>
+                    </div>
                   );
-                }
-                return (
-                  <div className="push-bottom">
-                    <h7>
-                      <small>
-                        <a
-                          href="/profile/forgot-password"
-                          className="text-primary"
-                          onClick={this.props.forgot}
-                        >
-                          Forgot Password?
-                        </a>
-                      </small>
-                    </h7>
-                  </div>
-                );
-              })()}
+                })()}
 
-              {(() => {
-                const { data } = this.props;
-                const btnClasses = ["push-double-bottom"];
+                {(() => {
+                  const { data } = this.props;
+                  const btnClasses = ["push-double-bottom"];
 
-                if (data.email === null || (data.password === null && !data.terms)) {
-                  btnClasses.push("btn--disabled");
-                } else {
-                  btnClasses.push("btn");
-                }
+                  if (data.email === null || (data.password === null && !data.terms)) {
+                    btnClasses.push("btn--disabled");
+                  } else {
+                    btnClasses.push("btn");
+                  }
 
-                return (
-                  <button className={btnClasses.join(" ")} type="submit">
-                    Enter
-                  </button>
-                );
-              })()}
-            </div>
+                  return (
+                    <button className={btnClasses.join(" ")} type="submit">
+                      Enter
+                    </button>
+                  );
+                })()}
+              </div>
 
-          );
-        })()}
+            );
+          })()}
 
 
         </Forms.Form>
