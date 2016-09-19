@@ -3,11 +3,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { applyRouterMiddleware, browserHistory, Router } from "react-router";
-import InjectData from "./inject-data";
-import { StyleSheet } from "aphrodite";
 import useScroll from "react-router-scroll";
+import InjectData from "./inject-data";
 
-export function run(routes, clientOptions = {}) {
+export default function run(routes, clientOptions = {}) {
   const history = browserHistory;
 
   const rootElementName = clientOptions.rootElement || "react-app";
@@ -53,16 +52,19 @@ export function run(routes, clientOptions = {}) {
       app = <clientOptions.wrapper {...wrapperProps}>{app}</clientOptions.wrapper>;
     }
 
-    let css;
-    InjectData.getData("aphrodite-classes", (data) => {
-      css = data ? JSON.parse(data) : {};
-    });
+    // let css;
+    // InjectData.getData("aphrodite-classes", (data) => {
+    //   css = data ? JSON.parse(data) : {};
+    // });
 
     // StyleSheet.rehydrate(css.renderedClassNames);
 
     ReactDOM.render(app, rootElement);
 
-    const collectorEl = document.getElementById(clientOptions.styleCollectorId || "css-style-collector-data");
+    const collectorEl = document.getElementById(
+      clientOptions.styleCollectorId ||
+      "css-style-collector-data"
+    );
     if (collectorEl) collectorEl.parentNode.removeChild(collectorEl);
   });
 }
