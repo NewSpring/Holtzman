@@ -15,7 +15,8 @@
     "import/no-unresolved": [2, { "ignore": [
       "^meteor/*", "^/imports/*"
     ] }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/react-in-jsx-scope": 0
   },
   "settings": {
     "import/core-modules": [ "meteor/meteor" ]
