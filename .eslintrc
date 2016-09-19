@@ -10,6 +10,9 @@
     "browser": true,
     "es6": true
   },
+  "globals": {
+    "__meteor_runtime_config__": true
+  },
   "rules": {
     "quotes": [2, "double"],
     "import/no-unresolved": [2, { "ignore": [
