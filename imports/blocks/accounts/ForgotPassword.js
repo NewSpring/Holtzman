@@ -1,12 +1,10 @@
 import React, { PropTypes } from "react";
 
 import Forms from "../../components/forms";
-import Controls from "../../components/controls";
 import { Error, Loading, Success } from "../../components/states";
 
 import Validate from "../../util/validate";
 import { forceReset } from "../../methods/accounts/browser";
-import { routeActions } from "../../store/routing";
 
 class ForgotPassword extends React.Component {
 
@@ -14,9 +12,8 @@ class ForgotPassword extends React.Component {
     save: PropTypes.func.isRequired,
     clear: PropTypes.func.isRequired,
     email: PropTypes.string,
-    errors: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired, // eslint-disable-line
     back: PropTypes.func.isRequired,
-    submit: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -48,15 +45,15 @@ class ForgotPassword extends React.Component {
 
     Accounts.forgotPassword({
       email: this.props.email,
-    }, (err, response) => {
+    }, (err) => {
       if (err) {
         if (err.error === 403) {
           // this user may exist in Rock but not in Apollos
           // we fire a server side check with Rock then on the server
           // we create a user (if they exist in Rock) and email them the reciept
-          forceReset(this.props.email, (err, response) => {
-            if (err) {
-              this.setState({ state: "error", err: err.message });
+          forceReset(this.props.email, (error) => {
+            if (error) {
+              this.setState({ state: "error", err: error.message });
               setTimeout(() => {
                 this.setState({ state: "default" });
               }, 3000);
@@ -94,65 +91,63 @@ class ForgotPassword extends React.Component {
 
     switch (this.state.state) {
       case "error":
-        return <Error msg="Looks like there was a problem" error={err ? err : " "} />;
+        return <Error msg="Looks like there was a problem" error={err || " "} />;
       case "loading":
         return <Loading msg="Sending email to reset your password..." />;
       case "success":
         return <Success msg={`An email has been sent to ${this.props.email} with instructions on how to reset your password!`} />;
+      default:
+        return (
+          <Forms.Form
+            id="forgot-password"
+            fieldsetTheme="flush soft-top"
+            classes={["push-double-top"]}
+            submit={this.submit}
+          >
+            <legend className="push-half-bottom">
+              Reset Password
+            </legend>
+            <h6 className="push-double-bottom">
+              confirm your email to send the reset link
+            </h6>
+
+            <Forms.Input
+              name="email"
+              placeholder="user@email.com"
+              label="Email"
+              errorText="Email does not exist"
+              validation={this.isEmail}
+              defaultValue={this.props.email}
+            />
+
+            <div>
+              <a
+                onClick={this.props.back}
+                tabIndex={-1}
+                className="btn--small btn--dark-tertiary display-inline-block"
+              >
+                Back
+              </a>
+
+            {(() => {
+              const btnClasses = ["push-left"];
+              if (Object.keys(this.props.errors).length) {
+                btnClasses.push("btn--disabled");
+              } else {
+                btnClasses.push("btn");
+              }
+
+              return (
+                <button className={btnClasses.join(" ")} type="submit">
+                  Enter
+                </button>
+              );
+            })()}
+
+            </div>
+          </Forms.Form>
+        );
     }
-
-    return (
-      <Forms.Form
-        id="forgot-password"
-        fieldsetTheme="flush soft-top"
-        classes={["push-double-top"]}
-        submit={this.submit}
-      >
-        <legend className="push-half-bottom">
-          Reset Password
-        </legend>
-        <h6 className="push-double-bottom">
-          confirm your email to send the reset link
-        </h6>
-
-        <Forms.Input
-          name="email"
-          placeholder="user@email.com"
-          label="Email"
-          errorText="Email does not exist"
-          validation={this.isEmail}
-          defaultValue={this.props.email}
-        />
-
-      <div>
-        <a
-          href="#"
-          onClick={this.props.back}
-          tabIndex={-1}
-          className="btn--small btn--dark-tertiary display-inline-block"
-        >
-          Back
-        </a>
-
-        {(() => {
-          const btnClasses = ["push-left"];
-          if (Object.keys(this.props.errors).length) {
-            btnClasses.push("btn--disabled");
-          } else {
-            btnClasses.push("btn");
-          }
-
-          return (
-            <button className={btnClasses.join(" ")} type="submit">
-              Enter
-            </button>
-          );
-        })()}
-
-        </div>
-
-    </Forms.Form>
-    );
   }
 }
 

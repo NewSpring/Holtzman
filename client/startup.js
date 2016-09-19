@@ -1,10 +1,7 @@
 import "velocity-animate";
 import "velocity-animate/velocity.ui";
 import "/imports/util/regex";
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
-=======
 
->>>>>>> lint fix yayayayay
 if (process.env.NATIVE) {
   // this breaks is found on server
   import Audio5 from "audio5";
@@ -66,8 +63,6 @@ if (process.env.NATIVE) {
       window.Lookback.shakeToRecord(true);
       window.open = cordova.InAppBrowser.open;
 
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
-=======
       document.addEventListener("click", (event) => {
         // aggressively get all clicks of <a></a> links in cordova
         let target = event.target;
@@ -94,7 +89,6 @@ if (process.env.NATIVE) {
         }
       });
 
->>>>>>> lint fix yayayayay
       /* Quick and dirty implementation of scrolling to the top of the page
        * when tapping the status bar.
        *

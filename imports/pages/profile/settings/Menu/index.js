@@ -14,12 +14,7 @@ import {
 import inAppLink from "../../../../util/inAppLink";
 import withProfileUpload from "../../profile-photo";
 
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
-
-const RenderCell = ({name, iconFunc, last, children }) => {
-=======
 const RenderCell = ({ name, iconFunc, last, children }) => {
->>>>>>> lint fix yayayayay
   let icon = "icon-arrow-next";
   if (typeof iconFunc === "function") {
     icon = iconFunc();
@@ -53,12 +48,8 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
     forceFetch: true,
-  }
-=======
   },
->>>>>>> lint fix yayayayay
 });
 @withProfileUpload
 @connect({ mapQueriesToProps })
@@ -78,10 +69,7 @@ export default class Menu extends Component {
 
   state = {
     upload: "default",
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
     capture: "default",
-=======
->>>>>>> lint fix yayayayay
   }
 
   signout = (e) => {
@@ -89,9 +77,7 @@ export default class Menu extends Component {
     Meteor.logout();
   }
 
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
   upload = (e, key, opts) => {
-    console.log(opts, key)
     this.setState({ [key]: "loading" });
     this.props.upload(e, opts)
       .then(() => {
@@ -103,48 +89,6 @@ export default class Menu extends Component {
         this.setState({ [key]: "failed" });
         setTimeout(() => this.setState({ [key]: "default" }), 2000);
       })
-
-=======
-  upload = (e) => {
-    e.preventDefault();
-    const files = e.target.files;
-    if (!Meteor.settings.public.rock) {
-      return;
-    }
-
-    this.setState({
-      upload: "loading",
-    });
-    const data = new FormData();
-    data.append("file", files[0]);
-
-    const { baseURL, token, tokenName } = Meteor.settings.public.rock;
-
-    fetch(`${baseURL}api/BinaryFiles/Upload?binaryFileTypeId=5`, {
-      method: "POST",
-      headers: { [tokenName]: token },
-      body: data,
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((id) => {
-        avatar(id, (err, response) => {
-          this.props.data.refetch()
-            .then((result) => {
-              this.setState({
-                upload: "uploaded",
-              });
-
-              setTimeout(() => {
-                this.setState({
-                  upload: "default",
-                });
-              }, 2000);
-            });
-        });
-      });
->>>>>>> lint fix yayayayay
   }
 
   uploadIcon = () => {
@@ -217,7 +161,6 @@ export default class Menu extends Component {
               <Link to="/profile/settings/home-address" className="plain text-dark-secondary">
                 <RenderCell name="My Address" />
               </Link>
-<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
               <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
                 <RenderCell name="Upload Profile Photo" iconFunc={this.uploadIcon}>
                   {(() => {
@@ -231,11 +174,6 @@ export default class Menu extends Component {
                       <div onClick={e => this.upload(e, "upload")} className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
                     )
                   })()}
-=======
-              <button className="plain text-dark-secondary display-inline-block one-whole" style={{ position: "relative" }}>
-                <RenderCell name="Change Profile Photo" iconFunc={this.uploadIcon}>
-                  <input onChange={this.upload} type="file" className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
->>>>>>> lint fix yayayayay
                 </RenderCell>
               </button>
               {(() => {
