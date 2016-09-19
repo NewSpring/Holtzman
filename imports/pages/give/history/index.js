@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -16,7 +16,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
           person { photo, nickName, firstName, lastName, id: entityId }
         }
       }
-    `
+    `,
   },
   data: {
     // XXX remove cache: false when heighliner caching is tested
@@ -52,7 +52,7 @@ class Template extends Component {
     start: "",
     end: "",
     people: [],
-    transactions: [] // XXX remove after refetchMore has landed in apollo-client
+    transactions: [], // XXX remove after refetchMore has landed in apollo-client
   }
 
   paginate = () => {
@@ -62,7 +62,7 @@ class Template extends Component {
       skip: this.state.offset + 20,
       people: this.state.people,
       start: this.state.start,
-      end: this.state.end
+      end: this.state.end,
     })
       .then(({ data }) => {
         const { transactions } = data;
@@ -76,7 +76,7 @@ class Template extends Component {
       });
   }
 
-  componentWillMount(){
+  componentWillMount() {
     // coming back to this page with data in the store
     if (!this.props.data.loading && this.props.data.transactions) {
       this.setState({ transactions: this.props.data.transactions });
@@ -100,18 +100,17 @@ class Template extends Component {
     if (this.props.data.loading && !nextProps.data.loading && !this.state.transactions.length) {
       this.setState({ transactions: nextProps.data.transactions });
     }
-
   }
 
   changeFamily = (people) => {
     this.setState({ loaded: false });
     this.props.data.refetch({
-        start: this.state.start,
-        end: this.state.end,
-        limit: 20,
-        skip: 0,
-        people
-      })
+      start: this.state.start,
+      end: this.state.end,
+      limit: 20,
+      skip: 0,
+      people,
+    })
       .then((response) => {
         if (!response || !response.data) return;
         const { transactions } = response.data;
@@ -128,12 +127,12 @@ class Template extends Component {
   changeDates = (start, end) => {
     this.setState({ loaded: false });
     this.props.data.refetch({
-        people: this.state.people,
-        limit: 20,
-        skip: 0,
-        start,
-        end,
-      })
+      people: this.state.people,
+      limit: 20,
+      skip: 0,
+      start,
+      end,
+    })
       .then((response) => {
         if (!response || !response.data) return;
         const { transactions } = response.data;
@@ -148,19 +147,19 @@ class Template extends Component {
       });
   }
 
-  render () {
+  render() {
     return (
       <Layout
-          paginate={this.paginate}
-          state={this.state}
-          transactions={this.state.transactions}
-          family={this.props.filter.family || []}
-          alive
-          ready={!this.props.data.loading}
-          reloading={!this.state.loaded}
-          done={this.state.done}
-          changeFamily={this.changeFamily}
-          changeDates={this.changeDates}
+        paginate={this.paginate}
+        state={this.state}
+        transactions={this.state.transactions}
+        family={this.props.filter.family || []}
+        alive
+        ready={!this.props.data.loading}
+        reloading={!this.state.loaded}
+        done={this.state.done}
+        changeFamily={this.changeFamily}
+        changeDates={this.changeDates}
       />
     );
   }
@@ -175,13 +174,13 @@ const Routes = [
     childRoutes: [
       {
         path: ":id",
-        component: Details
-      }
-    ]
-  }
+        component: Details,
+      },
+    ],
+  },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

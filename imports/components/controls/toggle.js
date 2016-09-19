@@ -4,41 +4,41 @@ export default class Toggle extends Component {
 
   static propTypes = {
     items: PropTypes.array.isRequired,
-    toggle: PropTypes.func.isRequired
+    toggle: PropTypes.func.isRequired,
   }
 
   state = {
-    active: 0
+    active: 0,
   }
 
   componentWillMount() {
     if (this.props.state != null || this.props.state != undefined) {
-      this.setState({active: this.props.state});
+      this.setState({ active: this.props.state });
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.state != null || this.props.state != undefined) {
-      this.setState({active: nextProps.state});
+      this.setState({ active: nextProps.state });
     }
   }
 
   toggle = (event) => {
     const active = Number(event.target.dataset.toggle);
     if (active != this.state.active) {
-      if (typeof(this.props.toggle) === "function") {
+      if (typeof (this.props.toggle) === "function") {
         this.props.toggle(active);
       }
 
-      this.setState({active: active});
+      this.setState({ active });
     }
   }
 
   toggleClasses = (main) => {
-    let classes = [
+    const classes = [
       "transition",
       "text-center",
-      "toggle__item"
+      "toggle__item",
     ];
 
     if (this.state.active === main) {
@@ -55,22 +55,21 @@ export default class Toggle extends Component {
 
   arrowStyle = () => {
     return {
-      marginLeft: `${this.toggleWidth() * this.state.active}%`
+      marginLeft: `${this.toggleWidth() * this.state.active}%`,
     };
   }
 
-  render () {
-
+  render() {
     return (
       <div className="toggle push-bottom soft-sides" style={{ backgroundColor: "#fff" }}>
         {this.props.items.map((item, i) => {
-          return(
+          return (
             <div
-                data-toggle={i}
-                className={this.toggleClasses(i)}
-                style={this.toggleStyle}
-                onClick={this.toggle}
-                key={i}
+              data-toggle={i}
+              className={this.toggleClasses(i)}
+              style={this.toggleStyle}
+              onClick={this.toggle}
+              key={i}
             >{item}</div>
           );
         })}

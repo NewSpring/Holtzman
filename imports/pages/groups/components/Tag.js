@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 
 @withRouter
-@connect((state) => ({ location: state.routing.location }))
+@connect(state => ({ location: state.routing.location }))
 export default class Tag extends Component {
 
   static propTypes = {
@@ -90,9 +90,9 @@ export default class Tag extends Component {
 
   render() {
     const { className, style, clickAble, val, canBeActive, label } = this.props;
-    let classes = [
+    const classes = [
       "tag",
-      "push-half-right"
+      "push-half-right",
     ];
     if (clickAble) classes.push("tag--clickable");
 
@@ -109,9 +109,9 @@ export default class Tag extends Component {
 
     return (
       <span
-          className={`${classes.join(" ")} ${className}`}
-          style={style}
-          onClick={this.onClick}
+        className={`${classes.join(" ")} ${className}`}
+        style={style}
+        onClick={this.onClick}
       >
         {label ? label : val}
       </span>

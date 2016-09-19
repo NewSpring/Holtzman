@@ -6,11 +6,11 @@ import backgrounds from "../../util/backgrounds";
 
 import RelatedContent from "../../blocks/content/RelatedContent";
 
-let defaultArray = [];
+const defaultArray = [];
 export default class DevotionsSingleContent extends Component {
 
   static propTypes = {
-    devotion: PropTypes.object.isRequired
+    devotion: PropTypes.object.isRequired,
   }
 
   getClasses = () => {
@@ -27,24 +27,23 @@ export default class DevotionsSingleContent extends Component {
   }
 
   render() {
-
     const devotion = this.props.devotion;
 
     // `data-status-scroll-container` is set in the react-swipe-views module
     return (
       <section
-          className={this.getClasses()}
-          style={{
+        className={this.getClasses()}
+        style={{
           transition: "0.7s margin",
         }}
-          data-status-scroll-item
+        data-status-scroll-item
       >
         {(() => {
           if (!devotion.content.images.length) return null;
           return (
             <div
-                className="one-whole ratio--square ratio--landscape@palm-wide background--fill"
-                style={backgrounds.styles(devotion)}
+              className="one-whole ratio--square ratio--landscape@palm-wide background--fill"
+              style={backgrounds.styles(devotion)}
             />
           );
         })()}
@@ -55,9 +54,9 @@ export default class DevotionsSingleContent extends Component {
               if (!devotion.content.scripture) return null;
               return (
                 <a
-                    href="#"
-                    className="h4 soft-bottom display-block text-center"
-                    onClick={this.props.onClickLink}
+                  href="#"
+                  className="h4 soft-bottom display-block text-center"
+                  onClick={this.props.onClickLink}
                 >{scriptures.list(devotion)}</a>
               );
             })()}
@@ -69,6 +68,6 @@ export default class DevotionsSingleContent extends Component {
 
         </section>
       );
-    }
+  }
 
 }

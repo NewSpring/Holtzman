@@ -12,7 +12,7 @@ import Styles from "./styles-css";
 export default class SearchItem extends Component {
 
   cardClasses = () => {
-    let classes = [
+    const classes = [
       "background--light-primary",
       "push-half-bottom@palm",
       "push-bottom@palm-wide-and-up",
@@ -21,7 +21,7 @@ export default class SearchItem extends Component {
       "text-dark-secondary",
       "display-block",
       "plain",
-      css(Styles.card)
+      css(Styles.card),
     ];
 
     return classes.join(" ");
@@ -31,7 +31,7 @@ export default class SearchItem extends Component {
     return [
       "grid",
       "flush",
-      css(Styles["height-100"])
+      css(Styles["height-100"]),
     ].join(" ");
   }
 
@@ -42,7 +42,7 @@ export default class SearchItem extends Component {
       "soft-half",
       "floating--left",
       "one-whole",
-      css(Styles["height-100"])
+      css(Styles["height-100"]),
     ].join(" ");
   }
 
@@ -57,7 +57,7 @@ export default class SearchItem extends Component {
       "hard",
       "soft-half-left",
       "background--cover",
-      css(Styles["height-100"])
+      css(Styles["height-100"]),
     ];
   }
 
@@ -74,14 +74,13 @@ export default class SearchItem extends Component {
   renderElement() {
     return (
       <div
-          className={this.imageclasses.join(" ")}
-          style={this.style}
+        className={this.imageclasses.join(" ")}
+        style={this.style}
       />
     );
   }
 
   render() {
-
     return (
       <Link to={this.props.item.link} className={this.cardClasses()} onClick={inAppLink}>
         <div className={this.gridClasses()}>
@@ -97,7 +96,7 @@ export default class SearchItem extends Component {
 
           {(() => {
             if (this.props.item.image === "null") {
-              let classes = this.bgClasses();
+              const classes = this.bgClasses();
               classes.push(css(Styles["placeholder-img"]));
               return (
                 <div className={classes.join(" ")} />
@@ -105,13 +104,13 @@ export default class SearchItem extends Component {
             } else {
               return (
                 <ImageLoader
-                    src={this.props.item.image}
-                    force
-                    preloader={this.preloader}
-                    renderElement={this.renderElement}
-                    imageclasses={this.bgClasses()}
-                    style={{
-                    backgroundImage: `url('${this.props.item.image}')`
+                  src={this.props.item.image}
+                  force
+                  preloader={this.preloader}
+                  renderElement={this.renderElement}
+                  imageclasses={this.bgClasses()}
+                  style={{
+                    backgroundImage: `url('${this.props.item.image}')`,
                   }}
                 />
               );
@@ -121,7 +120,6 @@ export default class SearchItem extends Component {
         </div>
       </Link>
     );
-
   }
 
 }

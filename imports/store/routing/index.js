@@ -11,7 +11,7 @@ const SELECT_LOCATION = state => state.routing.location;
 function transition(method) {
   return (...args) => ({
     type: TRANSITION,
-    payload: { method, args }
+    payload: { method, args },
   });
 }
 
@@ -26,14 +26,14 @@ export const routeActions = { push, replace, go, goBack, goForward };
 function updateLocation(location) {
   return {
     type: UPDATE_LOCATION,
-    payload: location
+    payload: location,
   };
 }
 
 // Reducer
 
 const initialState = {
-  location: undefined
+  location: undefined,
 };
 
 export function routeReducer(state = initialState, { type, payload: location }) {
@@ -50,16 +50,16 @@ export function syncHistory(history) {
   let unsubscribeHistory, currentKey, unsubscribeStore;
   let connected = false, syncing = false;
 
-  history.listen(location => { initialState.location = location })();
+  history.listen((location) => { initialState.location = location; })();
 
   function middleware(store) {
-    unsubscribeHistory = history.listen(location => {
+    unsubscribeHistory = history.listen((location) => {
       currentKey = location.key;
       if (syncing) {
         // Don't dispatch a new action if we're replaying location.
         return;
       }
-      let { routing } = store.getState();
+      const { routing } = store.getState();
       location.previous || (location.previous = []);
       routing.location.previous || (routing.location.previous = []);
 
@@ -76,12 +76,12 @@ export function syncHistory(history) {
 
     connected = true;
 
-    return next => action => {
+    return next => (action) => {
       if (action.type !== TRANSITION || !connected) {
         return next(action);
       }
 
-      let { routing } = store.getState();
+      const { routing } = store.getState();
 
       let { payload: { method, args } } = action;
 

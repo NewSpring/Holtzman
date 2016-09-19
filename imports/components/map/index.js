@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import controllable from "react-controllables";
 import shouldPureComponentUpdate from "react-pure-render/function";
 
@@ -19,8 +19,8 @@ const K_MARGIN_LEFT = 30;
 
 const K_HOVER_DISTANCE = 30;
 
-let dynamicProps = {};
-let defaultCenter = [34.595413, -82.6241234];
+const dynamicProps = {};
+const defaultCenter = [34.595413, -82.6241234];
 @controllable(["center", "zoom", "markers"])
 export default class Map extends Component {
 
@@ -37,7 +37,7 @@ export default class Map extends Component {
     visibleRowLast: PropTypes.number,
     maxVisibleRows: PropTypes.number,
     hoveredRowIndex: PropTypes.number,
-    openBallonIndex: PropTypes.number
+    openBallonIndex: PropTypes.number,
   }
 
   static defaultProps = {
@@ -52,8 +52,8 @@ export default class Map extends Component {
       panControl: false,
       mapTypeControl: false,
       scrollwheel: false,
-      disableDefaultUI: true
-    }
+      disableDefaultUI: true,
+    },
   }
 
   shouldComponentUpdate = shouldPureComponentUpdate;
@@ -61,7 +61,7 @@ export default class Map extends Component {
 
   _onBoundsChange = (center, zoom, bounds, marginBounds) => {
     if (this.props.onBoundsChange) {
-      this.props.onBoundsChange({center, zoom, bounds, marginBounds});
+      this.props.onBoundsChange({ center, zoom, bounds, marginBounds });
     } else {
       this.props.onCenterChange(center);
       this.props.onZoomChange(zoom);
@@ -72,7 +72,7 @@ export default class Map extends Component {
     const { markers } = this.props;
 
     let marker;
-    for (let _marker of markers) {
+    for (const _marker of markers) {
       if (`${_marker.id}` === `${key}`) {
         marker = _marker;
         break;
@@ -88,7 +88,7 @@ export default class Map extends Component {
     const { markers } = this.props;
 
     let marker;
-    for (let _marker of markers) {
+    for (const _marker of markers) {
       if (`${_marker.id}` === `${key}`) {
         marker = _marker;
         break;
@@ -112,30 +112,28 @@ export default class Map extends Component {
     }
   }
 
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps) {
     const didChange = !_.isEqual(this.props.markers, prevProps.markers);
     if (didChange && prevProps.autoCenter && this.map) {
-
-      let markers = this.props.markers.filter((x) => {
+      const markers = this.props.markers.filter((x) => {
         return x.latitude && x.longitude;
-      }).map((marker) => (
-        new google.maps.LatLng(marker.latitude,marker.longitude)
+      }).map(marker => (
+        new google.maps.LatLng(marker.latitude, marker.longitude)
       ));
 
       if (markers.length && markers.length > 1) {
-        this.map.fitBounds(markers.reduce(function(bounds, marker) {
+        this.map.fitBounds(markers.reduce((bounds, marker) => {
           return bounds.extend(marker);
         }, new google.maps.LatLngBounds()));
       }
-
     }
   }
 
 
-  render () {
+  render() {
     try {
       if (this.props.markers && this.props.markers.length === 1) {
-        let center = this.props.markers[0];
+        const center = this.props.markers[0];
         if (!center.latitude || !center.longitude) {
           dynamicProps.defaultCenter = defaultCenter;
         } else {
@@ -144,45 +142,44 @@ export default class Map extends Component {
       } else {
         dynamicProps.defaultCenter = defaultCenter;
       }
-      if (typeof window != "undefined" && window != null ) {
+      if (typeof window != "undefined" && window != null) {
         return (
           <GoogleMap
-              {...dynamicProps}
-              zoom={this.props.zoom}
-              options={this.props.options}
-              onChange={this._onBoundsChange}
-              onChildClick={this._onChildClick}
-              onChildMouseEnter={this._onChildMouseEnter}
-              onChildMouseLeave={this._onChildMouseLeave}
-              distanceToMouse={this._distanceToMouse}
-              bootstrapURLKeys={{ key: "AIzaSyCntgrGdfBmzdMxACihPEutGBh_5xsFx8Y" }}
-              margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
-              hoverDistance={K_HOVER_DISTANCE}
-              yesIWantToUseGoogleMapApiInternals
-              onGoogleApiLoaded={({map, maps}) => {
+            {...dynamicProps}
+            zoom={this.props.zoom}
+            options={this.props.options}
+            onChange={this._onBoundsChange}
+            onChildClick={this._onChildClick}
+            onChildMouseEnter={this._onChildMouseEnter}
+            onChildMouseLeave={this._onChildMouseLeave}
+            distanceToMouse={this._distanceToMouse}
+            bootstrapURLKeys={{ key: "AIzaSyCntgrGdfBmzdMxACihPEutGBh_5xsFx8Y" }}
+            margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
+            hoverDistance={K_HOVER_DISTANCE}
+            yesIWantToUseGoogleMapApiInternals
+            onGoogleApiLoaded={({ map, maps }) => {
               this.map = map;
-              let markers = this.props.markers
-                .filter((x) => x.latitude && x.longitude)
-                .map((marker) => (
-                  new google.maps.LatLng(marker.latitude,marker.longitude)
+              const markers = this.props.markers
+                .filter(x => x.latitude && x.longitude)
+                .map(marker => (
+                  new google.maps.LatLng(marker.latitude, marker.longitude)
                 ));
 
               if (markers.length > 1) {
-                this.map.fitBounds(markers.reduce(function(bounds, marker) {
+                this.map.fitBounds(markers.reduce((bounds, marker) => {
                   return bounds.extend(marker);
                 }, new google.maps.LatLngBounds()));
               }
-
             }}
           >
-            {this.props.markers && this.props.markers.map((marker) => (
+            {this.props.markers && this.props.markers.map(marker => (
               <Marker
-                  lat={marker.latitude}
-                  lng={marker.longitude}
-                  key={marker.id}
-                  active={this.props.active === marker.id}
-                  hover={this.props.hover === marker.id}
-                  popUp={this.props.popUp}
+                lat={marker.latitude}
+                lng={marker.longitude}
+                key={marker.id}
+                active={this.props.active === marker.id}
+                hover={this.props.hover === marker.id}
+                popUp={this.props.popUp}
               >{marker.children || null}</Marker>
             ))}
           </GoogleMap>
@@ -192,7 +189,6 @@ export default class Map extends Component {
       console.log(e);
       return null;
     }
-
   }
 
 }

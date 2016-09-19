@@ -19,7 +19,7 @@ import formatPersonDetails from "./formatPersonDetails";
 import { order, schedule, charge } from "../../../methods/give/browser";
 import RecoverSchedules from "../../../blocks/recover-schedules";
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // XXX break this file up into smaller files
 
@@ -29,7 +29,6 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 // that is being used to make payments, is actually valid
 // see https://github.com/NewSpring/Apollos/issues/439 for discussion
 function* validate() {
-
   const { give } = yield select(),
     name = give.data.payment.name;
 
@@ -39,10 +38,9 @@ function* validate() {
 
   // we strip all product and schedule data so the validation is
   // just of the personal details + billing address
-  const modifiedGive = {...give};
+  const modifiedGive = { ...give };
   delete modifiedGive.transactions;
   delete modifiedGive.schedules;
-
 
 
   // step 1 (sumbit personal details)
@@ -58,15 +56,14 @@ function* validate() {
     // call the Meteor method to submit data to NMI
     const response = yield cps(order, formattedData);
     url = response.url;
-
-  } catch (e) { error = e }
+  } catch (e) { error = e; }
 
   // step 2 (sumbit payment details)
   yield submitPaymentDetails(modifiedGive.data, url);
 
   if (url) {
     // step 3 (trigger validation)
-    let token = url.split("/").pop();
+    const token = url.split("/").pop();
     try {
       transactionResponse = yield cps(charge, token, name, null);
     } catch (e) {
@@ -82,20 +79,17 @@ function* validate() {
     success,
     validationError,
   };
-
-
 }
 
 // handle the transactions
 function* chargeTransaction({ state }) {
-
   if (state !== "submit") return;
 
   let { give } = yield select(),
-      name = give.data.payment.name,
-      action = charge,
-      error = false,
-      id;
+    name = give.data.payment.name,
+    action = charge,
+    error = false,
+    id;
 
   // set loading state
   yield put(actions.loading());
@@ -110,9 +104,7 @@ function* chargeTransaction({ state }) {
     action = (token, name, id, callback) => {
       Meteor.call("give/order", formattedData, true, id, callback);
     };
-
   } else {
-
     let store = yield select();
     give = store.give;
 
@@ -126,13 +118,13 @@ function* chargeTransaction({ state }) {
 
     // wait until we have the transaction url
     if (!give.url) {
-      let { url } = yield take(types.SET_TRANSACTION_DETAILS);
+      const { url } = yield take(types.SET_TRANSACTION_DETAILS);
       give.url = url;
     }
   }
 
   // get the token and name of the saved account
-  let token = give.url.split("/").pop();
+  const token = give.url.split("/").pop();
 
   if (Object.keys(give.schedules).length) {
     // if there is not a saved account, charge the order
@@ -164,18 +156,15 @@ function* chargeTransaction({ state }) {
     if (!error) {
       transactionResponse = yield cps(action, token, name, id);
     }
-  } catch (e) { error = e }
+  } catch (e) { error = e; }
 
   // set error states
   if (error) {
-
     yield put(actions.error({ transaction: error }));
 
     // remove loading state
     yield put(actions.setState("error"));
-
   } else {
-
     // remove loading state
     yield put(actions.setState("success"));
 
@@ -192,8 +181,8 @@ function* chargeTransaction({ state }) {
     // hacky work around. I think this can wait until Apollo is closer
     // to revist
     if (name) {
-      const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-      let query = gql`
+      const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+      const query = gql`
         query GetSavedPayments {
           savedPayments {
             name
@@ -216,7 +205,6 @@ function* chargeTransaction({ state }) {
 
 
 function* submitPaymentDetails(data, url) {
-
   /*
 
     Oddity with NMI, when using a saved account for a subscription,
@@ -229,7 +217,7 @@ function* submitPaymentDetails(data, url) {
   const form = document.createElement("FORM");
 
   let Component,
-      obj;
+    obj;
 
   const { payment, personal } = data;
 
@@ -239,7 +227,7 @@ function* submitPaymentDetails(data, url) {
       name: `${personal.firstName} ${personal.lastName}`,
       account: payment.accountNumber,
       routing: payment.routingNumber,
-      type: payment.accountType
+      type: payment.accountType,
     };
 
     Component = AchForm;
@@ -254,17 +242,17 @@ function* submitPaymentDetails(data, url) {
   }
 
   // create the fieldset
-  const FieldSet = React.createElement(Component, {...obj});
+  const FieldSet = React.createElement(Component, { ...obj });
   // add fieldset to non rendered form
   ReactDOM.render(FieldSet, form);
 
   // @TODO test on older browsers
   // store data in NMI's system
   yield fetch(url, {
-      method: "POST",
-      body: new FormData(form),
-      mode: "no-cors"
-    })
+    method: "POST",
+    body: new FormData(form),
+    mode: "no-cors",
+  })
     .then((response) => {
       // next()
 
@@ -274,11 +262,9 @@ function* submitPaymentDetails(data, url) {
     });
   yield delay(300); // ensure gift is in nmi's system beofre progressing
   return;
-
 }
 
 function* submitPersonDetails(give, autoSubmit) {
-
   // personal info is ready to be submitted
   const formattedData = formatPersonDetails(give);
 
@@ -297,11 +283,9 @@ function* submitPersonDetails(give, autoSubmit) {
     // call the Meteor method to submit data to NMI
     const response = yield cps(order, formattedData);
     url = response.url;
-
-  } catch (e) { error = e }
+  } catch (e) { error = e; }
 
   if (autoSubmit) {
-
     /*
 
       @NOTE
@@ -319,20 +303,23 @@ function* submitPersonDetails(give, autoSubmit) {
     const response = yield fetch(url, {
       method: "POST",
       body: new FormData(),
-      mode: "no-cors"
+      mode: "no-cors",
     })
       .then(console.log("i made it"))
       .catch((error) => {
         // console.log("error dark", error);
       })
 
+<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
     yield delay(300); // ensure gift is in nmi's system beofre progressing
 
+=======
+    yield delay(50); // ensure gift is in nmi's system beofre progressing
+>>>>>>> lint fix yayayayay
   }
 
   // update the store with the url
   return yield put(actions.setDetails(url));
-
 }
 
 // transaction processing flow controller
@@ -356,7 +343,7 @@ function* createOrder() {
     4. handle success / errors
 
   */
-  let { give } = yield select();
+  const { give } = yield select();
   if ((give.step - 1) === 2) {
     // set people data and store transaction id
     yield* submitPersonDetails(give, false);
@@ -387,7 +374,6 @@ function* createOrder() {
 let hasRecovered = false;
 // recover transactions
 function* recoverTransactions() {
-
   if (hasRecovered) return;
 
   let user = Meteor.userId();
@@ -421,54 +407,51 @@ function* recoverTransactions() {
 
   const variables = { isActive: false, cache: false };
 
-  let { data } = yield GraphQL.query({ query, variables });
+  const { data } = yield GraphQL.query({ query, variables });
 
   let { schedules } = data;
   if (!schedules) schedules = [];
   hasRecovered = true;
-  let bulkUpdate = {};
+  const bulkUpdate = {};
   schedules = schedules.filter(x => !x.gateway);
   if (schedules.length) {
-    for (let schedule of schedules) {
+    for (const schedule of schedules) {
       // only recover schedules that are missing info (i.e. not turned off in Rock)
       if (schedule.gateway) continue;
 
       if (schedule.schedule.value === "Twice a Month") {
         schedule.schedule.value = null;
       }
-      bulkUpdate[schedule.id] = {...{
+      bulkUpdate[schedule.id] = { ...{
         start: Moment(schedule.start).format("YYYYMMDD"),
-        frequency: schedule.schedule.value
+        frequency: schedule.schedule.value,
       }, ...schedule };
-
     }
 
     let time = new Date();
     if (user && user.profile && user.profile.reminderDate) {
       time = user.profile.reminderDate;
     }
-    let now = new Date();
+    const now = new Date();
 
     yield put(actions.saveSchedules(bulkUpdate));
 
     // only update the store if it is past the reminder date
     if (now < time) return;
 
-    let state = yield select();
-    let { pathname } = state.routing.location;
+    const state = yield select();
+    const { pathname } = state.routing.location;
 
-    if (pathname.split("/").length === 4 && pathname.split("/")[3] === "recover" ) {
+    if (pathname.split("/").length === 4 && pathname.split("/")[3] === "recover") {
       return;
     }
 
     yield put(modalActions.render(RecoverSchedules));
   }
-
 }
 
 // ensure we are on a /give route
-function* watchRoute({ payload }){
-
+function* watchRoute({ payload }) {
   if (Meteor.isServer) return;
 
   function isGive(path) {
@@ -476,17 +459,15 @@ function* watchRoute({ payload }){
   }
 
   if (isGive(payload.pathname)) yield* recoverTransactions();
-
 }
-
 
 
 // clear out data on user change
-function* clearGiveData({ authorized }){
+function* clearGiveData({ authorized }) {
   if (!authorized) yield put(actions.clearData());
 }
 
-addSaga(function* accountsSaga(){
+addSaga(function* accountsSaga() {
   yield fork(takeEvery, types.SET_STATE, chargeTransaction);
   yield fork(takeEvery, types.SET_PROGRESS, createOrder);
   yield fork(takeEvery, "ACCOUNTS.IS_AUTHORIZED", clearGiveData);

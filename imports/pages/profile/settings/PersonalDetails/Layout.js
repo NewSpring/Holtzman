@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 
 import Forms from "../../../../components/forms";
 import Meta from "../../../../components/meta";
@@ -20,14 +20,14 @@ export default class Layout extends Component {
   submit = (e) => {
     e.preventDefault();
 
-    let data = {};
-    for (let ref in this.refs) {
+    const data = {};
+    for (const ref in this.refs) {
       let value = this.refs[ref].getValue();
       if (ref === "Email" && !Validate.isEmail(value)) {
         continue;
       }
 
-      let number = Number(value);
+      const number = Number(value);
       if (number) {
         value = number;
       }
@@ -38,8 +38,7 @@ export default class Layout extends Component {
     this.props.submit(data);
   }
 
-  render () {
-
+  render() {
     const { submit, person, months, saveMonth, days, years, campuses } = this.props;
 
     const {
@@ -50,19 +49,19 @@ export default class Layout extends Component {
       email,
       birthDay,
       birthMonth,
-      birthYear
+      birthYear,
     } = person;
 
     return (
       <div
-          className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up soft-double-bottom push-double-bottom"
+        className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up soft-double-bottom push-double-bottom"
       >
       <Meta title="Update your details" />
         <Back />
         <Forms.Form
-            id="reset-password"
-            classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block", "soft-double-sides@palm-wide"]}
-            submit={this.submit}
+          id="reset-password"
+          classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block", "soft-double-sides@palm-wide"]}
+          submit={this.submit}
         >
           <div className="push-double">
             <h4 className="text-center">
@@ -72,48 +71,47 @@ export default class Layout extends Component {
 
           <h6 className="soft-bottom">Name</h6>
             <Forms.Input
-                name="NickName"
-                label="Nickname"
-                ref="NickName"
-                type="text"
-                defaultValue={nickName}
+              name="NickName"
+              label="Nickname"
+              ref="NickName"
+              type="text"
+              defaultValue={nickName}
             />
 
           <div className="grid">
             <div className="grid__item one-half">
 
               <Forms.Input
-                  name="FirstName"
-                  label="First Name"
-                  ref="FirstName"
-                  type="text"
-                  defaultValue={firstName}
+                name="FirstName"
+                label="First Name"
+                ref="FirstName"
+                type="text"
+                defaultValue={firstName}
               />
             </div>
             <div className="grid__item one-half">
 
               <Forms.Input
-                  name="LastName"
-                  label="Last Name"
-                  ref="LastName"
-                  type="text"
-                  defaultValue={lastName}
+                name="LastName"
+                label="Last Name"
+                ref="LastName"
+                type="text"
+                defaultValue={lastName}
               />
             </div>
           </div>
 
 
-
         <h6 className="soft-bottom">Contact</h6>
           <Forms.Input
-              name="Email"
-              placeholder="user@email.com"
-              label="Email"
-              type="email"
-              ref="Email"
-              errorText="Please enter a valid email"
-              validation={Validate.isEmail}
-              defaultValue={email}
+            name="Email"
+            placeholder="user@email.com"
+            label="Email"
+            type="email"
+            ref="Email"
+            errorText="Please enter a valid email"
+            validation={Validate.isEmail}
+            defaultValue={email}
           />
 
         <h6 className="soft-bottom">Birthday</h6>
@@ -122,25 +120,25 @@ export default class Layout extends Component {
             <div className="grid">
               <div className="grid__item one-half">
                 <Forms.Select
-                    name="BirthMonth"
-                    label="Month"
-                    ref="BirthMonth"
-                    type="text"
-                    defaultValue={birthMonth}
-                    includeBlank
-                    items={months}
-                    validation={saveMonth}
+                  name="BirthMonth"
+                  label="Month"
+                  ref="BirthMonth"
+                  type="text"
+                  defaultValue={birthMonth}
+                  includeBlank
+                  items={months}
+                  validation={saveMonth}
                 />
               </div>
               <div className="grid__item one-half">
                 <Forms.Select
-                    name="BirthDay"
-                    label="Day"
-                    ref="BirthDay"
-                    type="text"
-                    defaultValue={birthDay}
-                    includeBlank
-                    items={days}
+                  name="BirthDay"
+                  label="Day"
+                  ref="BirthDay"
+                  type="text"
+                  defaultValue={birthDay}
+                  includeBlank
+                  items={days}
                 />
               </div>
 
@@ -149,25 +147,25 @@ export default class Layout extends Component {
           </div>
           <div className="grid__item two-fifths">
             <Forms.Select
-                name="BirthYear"
-                label="Year"
-                ref="BirthYear"
-                type="text"
-                defaultValue={birthYear}
-                includeBlank
-                items={years}
+              name="BirthYear"
+              label="Year"
+              ref="BirthYear"
+              type="text"
+              defaultValue={birthYear}
+              includeBlank
+              items={years}
             />
           </div>
         </div>
         <h6 className="soft-bottom">Campus</h6>
         <Forms.Select
-            name="Campus"
-            label="Campus"
-            type="Campus"
-            defaultValue={campus && campus.id || false}
-            ref="Campus"
-            includeBlank
-            items={campuses ? campuses : []}
+          name="Campus"
+          label="Campus"
+          type="Campus"
+          defaultValue={campus && campus.id || false}
+          ref="Campus"
+          includeBlank
+          items={campuses ? campuses : []}
         />
 
         {/*
@@ -176,9 +174,9 @@ export default class Layout extends Component {
           </Link>
            */}
           {(() => {
-            let btnClasses = [];
-            let ready = true;
-            if (!ready){
+            const btnClasses = [];
+            const ready = true;
+            if (!ready) {
               btnClasses.push("btn--disabled");
             } else {
               btnClasses.push("btn");

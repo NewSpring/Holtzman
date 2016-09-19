@@ -6,7 +6,7 @@ import Loading from "../../components/loading";
 import MiniCard from "../../components/cards/cards.MiniCard";
 
 // XXX add skip if no tags
-let defaultArray = [];
+const defaultArray = [];
 const mapQueriesToProps = ({ ownProps }) => ({
   content: {
     query: gql`
@@ -43,18 +43,18 @@ const mapQueriesToProps = ({ ownProps }) => ({
       includeChannels: ownProps.includeChannels || defaultArray,
       limit: ownProps.limit || 3,
       excludedIds: ownProps.excludedIds || defaultArray,
-    }
-  }
+    },
+  },
 });
 
 @connect({ mapQueriesToProps })
 export default class RelatedContent extends Component {
 
   static defaultProps = {
-    title: "More Like This"
+    title: "More Like This",
   }
 
-  render () {
+  render() {
     const { taggedContent, loading } = this.props.content;
     if (!loading && (taggedContent && !taggedContent.length)) return null;
     return (
@@ -74,18 +74,18 @@ export default class RelatedContent extends Component {
           })()}
           {taggedContent && taggedContent.map((content, key) => (
             <div
-                key={key}
-                className="soft-half-bottom@palm-wide"
-                style={{
+              key={key}
+              className="soft-half-bottom@palm-wide"
+              style={{
                 maxWidth: "480px",
                 margin: "0 auto",
               }}
             >
               <MiniCard
-                  title={content.title}
-                  images={content.content.images}
-                  type={content.channel}
-                  content={content}
+                title={content.title}
+                images={content.content.images}
+                type={content.channel}
+                content={content}
               />
             </div>
           ))}

@@ -30,7 +30,7 @@ if (process.env.NATIVE) {
     );
   }
   @scriptLoader(...scripts)
-  @connect((state) => ({ audio: state.audio, pathname: state.routing.location.pathname }))
+  @connect(state => ({ audio: state.audio, pathname: state.routing.location.pathname }))
   class AppGlobal extends Component {
     render() {
       if (this.props.pathname === "/welcome") {
@@ -38,7 +38,7 @@ if (process.env.NATIVE) {
       }
       const { visibility, playing } = this.props.audio;
 
-      let classes = [];
+      const classes = [];
 
       if (visibility === "dock" && playing.track.title) {
         classes.push("push-double-bottom");
@@ -48,7 +48,7 @@ if (process.env.NATIVE) {
       return (
         <Global className={classes.join(" ")}>
           {this.props.children}
-          <AudioPlayer propVal={visibility}/>
+          <AudioPlayer propVal={visibility} />
         </Global>
       );
     }
@@ -77,5 +77,5 @@ export const server = {
 
 export const routes = {
   component: process.env.NATIVE ? App : Global,
-  childRoutes: [ Routes ],
+  childRoutes: [Routes],
 };

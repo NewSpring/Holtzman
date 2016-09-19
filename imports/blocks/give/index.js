@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
@@ -42,12 +42,12 @@ const mapQueriesToProps = () => ({
         campuses { name, id: entityId }
       }
     `,
-    variables: { state: 28, country: 45 }
+    variables: { state: 28, country: 45 },
   },
 });
 const defaultArray = []; // empty array for usage as default in render
 // We only care about the give state
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   give: state.give,
 });
 
@@ -63,15 +63,15 @@ export default class Give extends Component {
     this.props.dispatch(giveActions.setProgress(4));
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     if (this.props.give.state != "default") {
       this.props.dispatch(giveActions.clearData());
       this.props.dispatch(giveActions.clearSchedules());
     }
   }
 
-  componentWillReceiveProps(nextProps){
-    if (!nextProps.data.loading && this.props.data.loading){
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.data.loading && this.props.data.loading) {
       this.updateData(nextProps);
     }
   }
@@ -91,7 +91,7 @@ export default class Give extends Component {
         lastName: person.lastName,
         email: person.email,
         campus: campus.name,
-        campusId: campus.id
+        campusId: campus.id,
       },
       billing: {
         streetAddress: home.street1,
@@ -99,12 +99,11 @@ export default class Give extends Component {
         city: home.city,
         state: home.state,
         zip: home.zip,
-        country: home.country
-      }
+        country: home.country,
+      },
     };
 
     this.props.dispatch(giveActions.save(mappedPerson));
-
   }
 
   onSubmit = (e) => {
@@ -140,7 +139,6 @@ export default class Give extends Component {
   }
 
   monentize = (value, fixed) => {
-
     if (typeof value === "number") {
       value = `${value}`;
     }
@@ -151,7 +149,7 @@ export default class Give extends Component {
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -164,20 +162,20 @@ export default class Give extends Component {
   goToaccounts = () => {
     const { data } = this.props.give;
 
-    let props = {
+    const props = {
       coverHeader: true,
       account: false,
       data: {
         email: data.personal.email,
         firstName: data.personal.firstName,
         lastName: data.personal.lastName,
-        terms: true
-      }
+        terms: true,
+      },
     };
     this.props.dispatch(modal.render(OnBoard, props));
   }
 
-  render () {
+  render() {
     let {
       data,
       url,
@@ -189,41 +187,41 @@ export default class Give extends Component {
       savedAccount,
       state,
       transactionType,
-      scheduleToRecover
+      scheduleToRecover,
     } = this.props.give;
 
     let { campuses, states, countries } = this.props.data;
 
     campuses || (campuses = defaultArray);
-    campuses = campuses.map((x) => ({ label: x.name, value: x.id }));
+    campuses = campuses.map(x => ({ label: x.name, value: x.id }));
 
     states || (states = defaultArray);
-    states = states.map((x) => ({ label: x.name, value: x.value }));
+    states = states.map(x => ({ label: x.name, value: x.value }));
 
     countries || (countries = defaultArray);
-    countries = countries.map((x) => ({ label: x.name, value: x.value }));
+    countries = countries.map(x => ({ label: x.name, value: x.value }));
 
 
-    let save = (...args) => { this.props.dispatch(giveActions.save(...args)) };
-    let clear = (...args) => { this.props.dispatch(giveActions.clear(...args)) };
-    let clearData = () => {
+    const save = (...args) => { this.props.dispatch(giveActions.save(...args)); };
+    const clear = (...args) => { this.props.dispatch(giveActions.clear(...args)); };
+    const clearData = () => {
       this.props.dispatch(giveActions.clearData());
       this.props.dispatch(modal.hide());
     };
     switch (state) {
       case "loading":
-        this.copiedSchedules = {...schedules};
+        this.copiedSchedules = { ...schedules };
         return <Loading msg="We're Processing Your Contribution" />;
       case "error":
         return <Err msg={errors[Object.keys(errors)[0]].error} goToStepOne={this.goToStepOne} />;
       case "success":
         return (<Success
-            total={this.monentize(total.toFixed(2))}
-            email={data.personal.email}
-            guest={transactionType === "guest"}
-            onClick={this.goToaccounts}
-            schedules={this.copiedSchedules}
-                />);
+          total={this.monentize(total.toFixed(2))}
+          email={data.personal.email}
+          guest={transactionType === "guest"}
+          onClick={this.goToaccounts}
+          schedules={this.copiedSchedules}
+        />);
       default:
         let Step;
         switch (step) {
@@ -242,40 +240,40 @@ export default class Give extends Component {
 
         return (
           <Forms.Form
-              id="give"
-              theme="hard"
-              fieldsetTheme="flush soft-top scrollable soft-double-bottom"
-              ref="form"
-              method="POST"
-              submit={this.onSubmit}
+            id="give"
+            theme="hard"
+            fieldsetTheme="flush soft-top scrollable soft-double-bottom"
+            ref="form"
+            method="POST"
+            submit={this.onSubmit}
           >
 
             <Step
-                data={data}
-                url={url}
-                savedAccount={savedAccount}
-                transactions={transactions}
-                transactionType={transactionType}
-                save={save}
-                errors={errors}
-                clear={clear}
-                clearData={clearData}
-                next={this.next}
-                back={this.back}
-                ref="inputs"
-                total={total}
-                campuses={campuses}
-                states={states}
-                countries={countries}
-                schedules={schedules}
-                goToStepOne={this.goToStepOne}
-                savedAccounts={this.props.data.savedPayments || defaultArray} // XXX perf
-                changeSavedAccount={this.changeSavedAccount}
-                scheduleToRecover={scheduleToRecover}
+              data={data}
+              url={url}
+              savedAccount={savedAccount}
+              transactions={transactions}
+              transactionType={transactionType}
+              save={save}
+              errors={errors}
+              clear={clear}
+              clearData={clearData}
+              next={this.next}
+              back={this.back}
+              ref="inputs"
+              total={total}
+              campuses={campuses}
+              states={states}
+              countries={countries}
+              schedules={schedules}
+              goToStepOne={this.goToStepOne}
+              savedAccounts={this.props.data.savedPayments || defaultArray} // XXX perf
+              changeSavedAccount={this.changeSavedAccount}
+              scheduleToRecover={scheduleToRecover}
             >
               <Controls.Progress
-                  steps={4}
-                  active={step}
+                steps={4}
+                active={step}
               />
             </Step>
 

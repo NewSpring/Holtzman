@@ -39,7 +39,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
       tagName: "giving",
       limit: 2,
       includeChannels: ["articles"],
-    }
+    },
   },
   data: {
     query: gql`
@@ -77,7 +77,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
       }
     `,
     variables: {
-      transactionId: ownProps.params.id
+      transactionId: ownProps.params.id,
     },
   },
 });
@@ -107,15 +107,15 @@ export default class Details extends Component {
     this.props.dispatch(navActions.setLevel("TOP"));
   }
 
-  render () {
-    let { transaction } = this.props.data;
+  render() {
+    const { transaction } = this.props.data;
     const { entries, loading } = this.props.entries;
     // if (loading) return <Loading /> // XXX
 
     return (<Layout
-        transaction={transaction}
-        entries={entries}
-        loadingEntries={loading}
-            />);
+      transaction={transaction}
+      entries={entries}
+      loadingEntries={loading}
+    />);
   }
 }

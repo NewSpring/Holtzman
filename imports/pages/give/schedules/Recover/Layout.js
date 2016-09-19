@@ -1,5 +1,5 @@
 
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import ReactDOM from "react-dom";
 import Moment from "moment";
 import { Link } from "react-router";
@@ -20,9 +20,9 @@ export default class Layout extends Component {
 
   componentWillMount() {
     if (this.props.recoverableSchedules.length) {
-      let id = this.props.recoverableSchedules[0].id;
+      const id = this.props.recoverableSchedules[0].id;
       this.setState({
-        expandedSchedule: Number(id)
+        expandedSchedule: Number(id),
       });
     }
   }
@@ -39,13 +39,13 @@ export default class Layout extends Component {
     }
 
     this.setState({
-      expandedSchedule: Number(id)
+      expandedSchedule: Number(id),
     });
   }
 
   collapseSchedule = () => {
     this.setState({
-      expandedSchedule: null
+      expandedSchedule: null,
     });
   }
 
@@ -54,7 +54,6 @@ export default class Layout extends Component {
   }
 
   monentize = (value, fixed) => {
-
     if (typeof value === "number") {
       value = `${value}`;
     }
@@ -65,7 +64,7 @@ export default class Layout extends Component {
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -79,15 +78,14 @@ export default class Layout extends Component {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  render () {
-
+  render() {
     const {
       accounts,
       ready,
       recoverableSchedules,
       cancelSchedule,
       confirm,
-      person
+      person,
     } = this.props;
 
     return (
@@ -98,15 +96,15 @@ export default class Layout extends Component {
             <Meta title="Transfer Your Giving Schedule" />
 
             <Right
-                background="//s3.amazonaws.com/ns.assets/apollos/29516.marketing.cen.webad.thebestisyettocome_1x2.png"
-                mobile={false}
+              background="//s3.amazonaws.com/ns.assets/apollos/29516.marketing.cen.webad.thebestisyettocome_1x2.png"
+              mobile={false}
             />
 
           </Split>
           <Left scroll classes={recoverableSchedules.length ? ["background--light-secondary"] : ["background--light-primary"]} ref="container">
             <Link to="/give/schedules" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
-              <i className="icon-arrow-back soft-half-right display-inline-block" style={{verticalAlign: "middle"}} />
-              <span className="display-inline-block" style={{verticalAlign: "middle", marginTop: "5px"}}>Back</span>
+              <i className="icon-arrow-back soft-half-right display-inline-block" style={{ verticalAlign: "middle" }} />
+              <span className="display-inline-block" style={{ verticalAlign: "middle", marginTop: "5px" }}>Back</span>
             </Link>
 
             {(() => {
@@ -133,7 +131,7 @@ export default class Layout extends Component {
 
                       */}
                       {recoverableSchedules.filter(x => !x.gateway).map((schedule, i) => {
-                        count ++;
+                        count++;
                         if (!schedule.details || !schedule.details[0].account) {
                           return null;
                         }
@@ -144,16 +142,16 @@ export default class Layout extends Component {
                         }
                         return (
                           <div key={i} className="card" >
-                            <div className="soft" onClick={this.expandSchedule} data-id={schedule.id} style={{cursor: "pointer"}}>
-                              <div className="grid" style={{verticalAlign: "middle"}} key={i}>
+                            <div className="soft" onClick={this.expandSchedule} data-id={schedule.id} style={{ cursor: "pointer" }}>
+                              <div className="grid" style={{ verticalAlign: "middle" }} key={i}>
 
-                                <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
+                                <div className="grid__item two-thirds" style={{ verticalAlign: "middle" }}>
                                   {/*
                                   <div className="display-inline-block soft-right visuallyhidden@handheld" style={{verticalAlign: "middle"}}>
                                     <ErrIcon/>
                                   </div>
                                   */}
-                                  <div className="display-inline-block" style={{verticalAlign: "middle"}}>
+                                  <div className="display-inline-block" style={{ verticalAlign: "middle" }}>
                                     <h6 className="text-dark-tertiary push-half-bottom">
                                       {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
                                     </h6>
@@ -170,14 +168,14 @@ export default class Layout extends Component {
                                   </div>
                                 </div>
 
-                                <div className="grid__item one-third text-right" style={{verticalAlign: "middle"}}>
+                                <div className="grid__item one-third text-right" style={{ verticalAlign: "middle" }}>
                                   <div className="soft-half-right">
-                                    <h4 className="text-dark-tertiary flush" style={{paddingRight: "25px"}}>
+                                    <h4 className="text-dark-tertiary flush" style={{ paddingRight: "25px" }}>
                                       {this.monentize(schedule.details[0].amount)}
                                       <span className={`text-dark-tertiary ${arrow} locked`} style={{
-                                          right: "-3px",
-                                          top: "1px"
-                                        }} />
+                                        right: "-3px",
+                                        top: "1px",
+                                      }} />
                                     </h4>
                                   </div>
 
@@ -191,12 +189,12 @@ export default class Layout extends Component {
                               if (Number(schedule.id) === this.state.expandedSchedule) {
                                 return (
                                   <div className="text-light-primary soft outlined--light outlined--top flush one-whole">
-                                    <AddSchedule accounts={accounts} existing={schedule} text="Transfer" onClick={confirm} dataId={schedule.id}/>
+                                    <AddSchedule accounts={accounts} existing={schedule} text="Transfer" onClick={confirm} dataId={schedule.id} />
                                     <h6
-                                        className="outlined--light outlined--bottom display-inline-block text-dark-tertiary push-top"
-                                        style={{cursor: "pointer"}}
-                                        onClick={cancelSchedule}
-                                        data-id={schedule.id}
+                                      className="outlined--light outlined--bottom display-inline-block text-dark-tertiary push-top"
+                                      style={{ cursor: "pointer" }}
+                                      onClick={cancelSchedule}
+                                      data-id={schedule.id}
                                     >
                                       Stop Contribution
                                     </h6>
@@ -236,7 +234,7 @@ export default class Layout extends Component {
                         <strong>Your gift matters!</strong>
                       </p>
                       <p>
-                        We believe that every number has a name, every name has a story, and every story matters to God. Because you give, we are able to see thousands of life change stories every year at NewSpring Church. There is no organization with more potential to change the world than the local church. Thank you for being a difference maker!                      </p>
+                        We believe that every number has a name, every name has a story, and every story matters to God. Because you give, we are able to see thousands of life change stories every year at NewSpring Church. There is no organization with more potential to change the world than the local church. Thank you for being a difference maker!                                </p>
 
                       <p>
                         <em>

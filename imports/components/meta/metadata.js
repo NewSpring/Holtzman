@@ -1,19 +1,18 @@
 
 export function generateData(newData) {
-
-  let defaultData = {
+  const defaultData = {
     title: "Welcome | NewSpring Church",
     description: "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 11 campuses across the state of South Carolina.",
     image: "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
   };
 
   if (newData.title) {
-    newData = {...newData, ...{
-      title: `${newData.title} | NewSpring Church`
-    }};
+    newData = { ...newData, ...{
+      title: `${newData.title} | NewSpring Church`,
+    } };
   }
 
-  let data = {...defaultData, ...newData};
+  const data = { ...defaultData, ...newData };
 
   const { description, title, image } = data;
   delete data.description;
@@ -21,8 +20,8 @@ export function generateData(newData) {
   delete data.image;
 
 
-  return {...{
-    title: title,
+  return { ...{
+    title,
     meta: [
       {
         "name": "description",
@@ -32,7 +31,7 @@ export function generateData(newData) {
       // Rich Snippets
       {
         "itemprop": "name",
-        "content": title
+        "content": title,
       },
       {
         "itemprop": "description",
@@ -113,12 +112,12 @@ export function generateData(newData) {
       // Google+
       {
         "rel": "author",
-        "href": "https://plus.google.com/+newspringchurch/posts"
+        "href": "https://plus.google.com/+newspringchurch/posts",
       },
       {
         "rel": "publisher",
-        "href": "https://plus.google.com/+newspringchurch"
+        "href": "https://plus.google.com/+newspringchurch",
       },
-    ]
-  }, ...data};
+    ],
+  }, ...data };
 }

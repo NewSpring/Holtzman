@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { Motion, spring, presets } from "react-motion";
 
@@ -6,7 +6,7 @@ import { modal as modalActions, nav as navActions } from "../../store";
 
 import Modal from "./Modal";
 
-const map = (state) => ({
+const map = state => ({
   navigation: state.nav,
   modal: state.modal,
   path: state.routing.path,
@@ -16,7 +16,7 @@ const map = (state) => ({
 export default class SideModalContainer extends Component {
 
   state = {
-    previous: null
+    previous: null,
   }
 
   bindEsc = (event) => {
@@ -24,11 +24,10 @@ export default class SideModalContainer extends Component {
     if (event.keyCode === 27) {
       this.props.dispatch(modalActions.hide());
     }
-
   }
 
   componentDidMount() {
-    if(!this.props.modal.props.keepNav && this.props.modal.visible)
+    if (!this.props.modal.props.keepNav && this.props.modal.visible)
     {
       this.props.dispatch(navActions.setLevel("MODAL"));
     }
@@ -36,7 +35,6 @@ export default class SideModalContainer extends Component {
     if (Meteor.isClient) {
       document.addEventListener("keyup", this.bindEsc, false);
     }
-
   }
 
   componentWillUnmount() {
@@ -50,11 +48,11 @@ export default class SideModalContainer extends Component {
     if (nextProps.modal.visible && nextProps.navigation.level != "MODAL" && nextProps.navigation.level != "DOWN" && nextProps.modal.props.keepNav != true) {
       this.props.dispatch(navActions.setLevel("MODAL"));
       this.setState({ previous: this.props.navigation.level });
-    }else if (nextProps.modal.visible && nextProps.navigation.level === "DOWN" ){
+    } else if (nextProps.modal.visible && nextProps.navigation.level === "DOWN") {
       this.setState({ previous: this.props.navigation.level });
     }
 
-    if (!nextProps.modal.visible && ( nextProps.navigation.level === "MODAL" || nextProps.navigation.level === "DOWN" ) && !this.props.modal.props.keepNav) {
+    if (!nextProps.modal.visible && (nextProps.navigation.level === "MODAL" || nextProps.navigation.level === "DOWN") && !this.props.modal.props.keepNav) {
       let previous = this.state.previous;
       if (previous === "MODAL" || previous === "DOWN" || !previous) {
         previous = "TOP";
@@ -67,15 +65,14 @@ export default class SideModalContainer extends Component {
     }
   }
 
-  componentWillUpdate(nextProps){
-    if (typeof document != "undefined" && document != null ) {
-      let root = document.documentElement;
+  componentWillUpdate(nextProps) {
+    if (typeof document != "undefined" && document != null) {
+      const root = document.documentElement;
 
       if (!nextProps.modal.visible) {
         root.className = root.className.split(" ").filter((className) => {
           return className != "modal--opened";
         }).join(" ");
-
       } else if (!this.props.modal.visible && nextProps.modal.visible) {
         root.className += " modal--opened";
       }
@@ -92,19 +89,18 @@ export default class SideModalContainer extends Component {
     this.props.dispatch(modalActions.hide());
   }
 
-  render () {
-
-    let enter = "fadeIn";
-    let exit = "fadeOut";
+  render() {
+    const enter = "fadeIn";
+    const exit = "fadeOut";
 
     const { visible, content, props } = this.props.modal;
     return (
       <Modal
-          close={this.close}
-          component={content}
-          props={props}
-          visible={visible}
-          {...this.props}
+        close={this.close}
+        component={content}
+        props={props}
+        visible={visible}
+        {...this.props}
       />
     );
   }

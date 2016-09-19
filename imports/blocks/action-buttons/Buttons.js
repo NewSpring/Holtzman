@@ -8,13 +8,12 @@ const PrimaryButton = ({ disabled, classes, onClick, text, icon, value, style, d
 );
 
 const SecondaryButton = ({ disabled, onClick }) => {
-
-  let classes = [
+  const classes = [
     "btn--thin",
     "btn--small",
     "display-inline-block",
     "push-left@lap-and-up",
-    "push-half-left@handheld"
+    "push-half-left@handheld",
   ];
   let style = {};
 
@@ -22,7 +21,7 @@ const SecondaryButton = ({ disabled, onClick }) => {
     classes.push("btn--disabled");
     // this should be fixed in junction
     style = {
-      backgroundColor: "transparent !important" // handle hover :(
+      backgroundColor: "transparent !important", // handle hover :(
     };
   } else {
     classes.push("btn--dark-tertiary");
@@ -30,10 +29,10 @@ const SecondaryButton = ({ disabled, onClick }) => {
 
   return (
     <button
-        style={style}
-        disabled={disabled}
-        className={classes.join(" ")}
-        onClick={onClick}
+      style={style}
+      disabled={disabled}
+      className={classes.join(" ")}
+      onClick={onClick}
     >
       Register
     </button>
@@ -41,21 +40,21 @@ const SecondaryButton = ({ disabled, onClick }) => {
 };
 
 const Guest = ({ disabled, onClick, text }) => {
-  let classes = [
+  const classes = [
     "outlined--bottom",
-    "outlined--light"
+    "outlined--light",
   ];
 
   let style = {
-    display: "inline"
+    display: "inline",
   };
 
   if (disabled) {
     classes.push("text-light-tertiary");
-    style = {...style, ...{ cursor: "text" } };
+    style = { ...style, ...{ cursor: "text" } };
   } else {
     classes.push("text-dark-tertiary");
-    style = {...style, ...{ cursor: "pointer" } };
+    style = { ...style, ...{ cursor: "pointer" } };
   }
 
   return (
@@ -65,11 +64,10 @@ const Guest = ({ disabled, onClick, text }) => {
       </h6>
     </div>
   );
-
 };
 
 export {
   PrimaryButton,
   SecondaryButton,
-  Guest
+  Guest,
 };

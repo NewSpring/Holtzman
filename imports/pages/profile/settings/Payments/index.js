@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -26,21 +26,21 @@ const mapQueriesToProps = () => ({
     `,
   },
 });
-let defaultAccounts = [];
+const defaultAccounts = [];
 @connect({ mapQueriesToProps })
 export default class GiveNow extends Component {
 
   state = { accounts: [] }
 
-  componentWillMount(){
+  componentWillMount() {
     this.props.dispatch(nav.setLevel("BASIC_CONTENT"));
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.props.dispatch(nav.setLevel("TOP"));
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     if (this.props.data.loading && !nextProps.data.loading) {
       this.setState({ accounts: nextProps.data.accounts });
     }
@@ -51,7 +51,7 @@ export default class GiveNow extends Component {
     e.preventDefault();
     const { id } = e.target;
 
-    let accounts = this.state.accounts.filter(x => x.id != id);
+    const accounts = this.state.accounts.filter(x => x.id != id);
 
     this.setState({ accounts });
     Meteor.call("PaymentAccounts.remove", id, (err, response) => {
@@ -60,9 +60,8 @@ export default class GiveNow extends Component {
     });
   }
 
-  render () {
+  render() {
     const { accounts } = this.state;
     return <Layout loading={this.props.data.loading} details={accounts} remove={this.remove} />;
-
   }
 }

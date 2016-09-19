@@ -53,7 +53,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
   },
 });
 
-const mapStateToProps = (state) => ({ paging: state.paging });
+const mapStateToProps = state => ({ paging: state.paging });
 
 @connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Pageable)
@@ -72,7 +72,6 @@ class Template extends Component {
   }
 
   renderItems = () => {
-
     const { content } = this.props.data;
     let loading = true;
     let items = [1, 2, 3, 4, 5];
@@ -80,7 +79,7 @@ class Template extends Component {
     if (content) {
       loading = false;
       items = _.filter(content, (item) => {
-        return _.any(item.content.tracks, (track) => !!track.file);
+        return _.any(item.content.tracks, track => !!track.file);
       });
     }
 
@@ -98,7 +97,6 @@ class Template extends Component {
 
 
   render() {
-
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
         <div className="background--light-secondary">
@@ -116,10 +114,10 @@ class Template extends Component {
 
 const Routes = [
   { path: "music", component: Template },
-  { path: "music/:id", component: Album }
+  { path: "music/:id", component: Album },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

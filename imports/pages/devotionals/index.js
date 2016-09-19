@@ -51,7 +51,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
   },
 });
 
-const mapStateToProps = (state) => ({ paging: state.paging });
+const mapStateToProps = state => ({ paging: state.paging });
 
 @connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Pageable)
@@ -79,7 +79,7 @@ class Devotions extends Component {
           <div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
             {(() => {
               if (typeof item === "number") return <FeedItemSkeleton />;
-              return <FeedItem item={item}  />;
+              return <FeedItem item={item} />;
             })()}
           </div>
         );
@@ -105,10 +105,10 @@ class Devotions extends Component {
 
 const Routes = [
   { path: "devotions", component: Devotions },
-  { path: "devotions/:id", component: Single }
+  { path: "devotions/:id", component: Single },
 ];
 
 export default {
   Devotions,
-  Routes
+  Routes,
 };

@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import { Error } from "../../../../components/icons";
@@ -9,14 +9,12 @@ import { nav as navActions, modal as modalActions } from "../../../../store";
 export default class Err extends Component {
 
   onClick = () => {
-
     // follow up action
     if (this.props.onFinished) {
       this.props.onFinished();
     }
 
     this.back();
-
   }
 
   back = () => {
@@ -24,8 +22,7 @@ export default class Err extends Component {
   }
 
 
-  render () {
-
+  render() {
     return (
       <div className="soft soft-double-ends push-double-top one-whole text-center">
         <div className="push-double-top">
@@ -39,8 +36,8 @@ export default class Err extends Component {
           </button>
 
           <button
-              className="btn--thin btn--small btn--dark-tertiary one-whole"
-              onClick={this.back}
+            className="btn--thin btn--small btn--dark-tertiary one-whole"
+            onClick={this.back}
           >
             Back to Contributions
           </button>

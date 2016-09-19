@@ -13,17 +13,16 @@ export default class Select extends Component {
     active: false,
     focused: false,
     error: false,
-    status: ""
+    status: "",
   }
 
-  componentWillMount(){
+  componentWillMount() {
     if (this.props.defaultValue) {
       this.setState({ active: true });
-
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (this.props.defaultValue) {
       const target = ReactDOM.findDOMNode(this.refs["apollos-select"]);
 
@@ -37,15 +36,15 @@ export default class Select extends Component {
     }
   }
 
-  componentWillUpdate(nextProps){
+  componentWillUpdate(nextProps) {
     if (this.props.defaultValue != nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue);
-      this.setState({focused: false});
+      this.setState({ focused: false });
       const target = ReactDOM.findDOMNode(this.refs["apollos-select"]);
       this.change({
         value: nextProps.defaultValue,
         id: target.id,
-        currentTarget: target
+        currentTarget: target,
       });
     }
   }
@@ -54,12 +53,12 @@ export default class Select extends Component {
     this.setState({
       active: true,
       error: false,
-      focused: true
+      focused: true,
     });
   }
 
   setValue = (value) => {
-    let node = ReactDOM.findDOMNode(this.refs["apollos-select"]);
+    const node = ReactDOM.findDOMNode(this.refs["apollos-select"]);
     node.value = value;
     this.focus();
     // this.change()
@@ -81,16 +80,13 @@ export default class Select extends Component {
   }
 
   renderHelpText = (message) => {
-
     if ((this.state.error && this.props.errorText) || this.state.status) {
-
       return (
         <span className="input__status">
           {this.props.errorText || this.state.status}
         </span>
       );
     }
-
   }
 
   change = (e) => {
@@ -104,7 +100,6 @@ export default class Select extends Component {
     if (this.props.validation) {
       this.props.validation(value, e.currentTarget);
     }
-
   }
 
   validate = () => {
@@ -114,50 +109,47 @@ export default class Select extends Component {
     if (!value) {
       this.setState({
         active: false,
-        error: false
+        error: false,
       });
     }
 
     this.setState({
-      focused: false
+      focused: false,
     });
 
-    if (this.props.validation && typeof(this.props.validation) === "function") {
+    if (this.props.validation && typeof (this.props.validation) === "function") {
       this.setState({
-        error: !this.props.validation(value, target)
+        error: !this.props.validation(value, target),
       });
-
     }
   }
 
 
-
   render() {
-
     let inputclasses = [
-      "input"
+      "input",
     ];
 
     // theme overwrite
-    if (this.props.theme) { inputclasses = this.props.theme }
+    if (this.props.theme) { inputclasses = this.props.theme; }
     // state mangaged classes
-    if (this.state.active) { inputclasses.push("input--active") }
-    if (this.state.focused) { inputclasses.push("input--focused") }
-    if (this.state.error) { inputclasses.push("input--alert") }
+    if (this.state.active) { inputclasses.push("input--active"); }
+    if (this.state.focused) { inputclasses.push("input--focused"); }
+    if (this.state.error) { inputclasses.push("input--alert"); }
     // custom added classes
-    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
+    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
 
-    if (this.props.selected) { inputclasses.push("input--active") }
+    if (this.props.selected) { inputclasses.push("input--active"); }
     return (
       <div className={inputclasses.join(" ") + ` ${css(SelectClasses.select)}`}>
         {(() => {
-          if (!this.props.hideLabel){
+          if (!this.props.hideLabel) {
             return (
               <Label
-                  labelFor={
+                labelFor={
                   this.props.id || this.props.label || this.props.name
                 }
-                  labelName={
+                labelName={
                   this.props.label || this.props.name
                 }
               />
@@ -166,22 +158,22 @@ export default class Select extends Component {
         })()}
 
         <select
-            ref="apollos-select"
-            id={this.props.id || this.props.label || this.props.name}
-            placeholder={this.props.placeholder || this.props.label}
-            name={this.props.name || this.props.label}
-            className={this.props.inputClasses}
-            disabled={this.disabled()}
-            onFocus={this.focus}
-            onChange={this.change}
-            defaultValue={this.props.defaultValue}
-            value={this.props.selected}
+          ref="apollos-select"
+          id={this.props.id || this.props.label || this.props.name}
+          placeholder={this.props.placeholder || this.props.label}
+          name={this.props.name || this.props.label}
+          className={this.props.inputClasses}
+          disabled={this.disabled()}
+          onFocus={this.focus}
+          onChange={this.change}
+          defaultValue={this.props.defaultValue}
+          value={this.props.selected}
 
         >
           {(() => {
             if (this.props.placeholder || this.props.includeBlank) {
               return (
-                <option style={{display:"none"}}>{this.props.placeholder || ""}</option>
+                <option style={{ display: "none" }}>{this.props.placeholder || ""}</option>
               );
             }
           })()}
@@ -195,9 +187,9 @@ export default class Select extends Component {
           {this.props.items.map((option, key) => {
             return (
               <option
-                  className={this.props.optionClasses}
-                  value={option.value  || option.label}
-                  key={key}
+                className={this.props.optionClasses}
+                value={option.value || option.label}
+                key={key}
               >
                 {option.label || option.value}
               </option>
@@ -206,12 +198,10 @@ export default class Select extends Component {
         </select>
 
 
-
         {this.renderHelpText()}
 
       </div>
     );
-
   }
 
 }

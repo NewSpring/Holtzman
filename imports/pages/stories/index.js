@@ -53,7 +53,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
   },
 });
 
-const mapStateToProps = (state) => ({ paging: state.paging });
+const mapStateToProps = state => ({ paging: state.paging });
 
 @connect({
   mapQueriesToProps,
@@ -110,10 +110,10 @@ class Template extends Component {
 
 const Routes = [
   { path: "stories", component: Template },
-  { path: "stories/:id", component: Single }
+  { path: "stories/:id", component: Single },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

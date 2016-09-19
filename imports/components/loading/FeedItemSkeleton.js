@@ -5,49 +5,49 @@ import Styles from "./FeedItemSkeleton-css";
 export default class FeedItemSkeleton extends Component {
 
   backgroundStyles = () => {
-    let classes = [
+    const classes = [
       "rounded-top",
       "ratio--square",
       "background--light-tertiary",
-      css(Styles["load-item"])
+      css(Styles["load-item"]),
     ];
 
     return classes.join(" ");
   }
 
   titleStyles = () => {
-    let classes = [
+    const classes = [
       "one-whole",
       "push-half-bottom",
       "background--light-tertiary",
-      css(Styles["fake-text"])
+      css(Styles["fake-text"]),
     ];
 
     return classes.join(" ");
   }
 
   subtitleStyles = () => {
-    let classes = [
+    const classes = [
       "two-thirds",
       "push-bottom",
       "background--lirght-tertiary",
-      css(Styles["fake-text"])
+      css(Styles["fake-text"]),
     ];
 
     return classes.join(" ");
   }
 
   subsubtitleStyles = () => {
-    let classes = [
+    const classes = [
       "one-fifth",
       "background--light-tertiary",
-      css(Styles["fake-text-small"])
+      css(Styles["fake-text-small"]),
     ];
 
     return classes.join(" ");
   }
 
-  render () {
+  render() {
     return (
       <div className="card">
         <div className={this.backgroundStyles()} />
@@ -58,6 +58,5 @@ export default class FeedItemSkeleton extends Component {
         </div>
       </div>
     );
-
   }
 }

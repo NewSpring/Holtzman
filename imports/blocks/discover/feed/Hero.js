@@ -12,25 +12,25 @@ export default class DiscoverHero extends Component {
     link: PropTypes.string,
     image: PropTypes.string,
     topicName: PropTypes.string,
-    tags: PropTypes.array
+    tags: PropTypes.array,
   }
 
   backgroundStyles = {
-    backgroundImage: `url('${this.props.image}')`
+    backgroundImage: `url('${this.props.image}')`,
   }
 
   imageclasses = [
     "background--fill",
     "ratio--square",
     "floating--bottom",
-    "floating--left"
+    "floating--left",
   ];
 
   // context from ImageLoader
   preloader = () => {
     return (
       <div
-          className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
+        className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
       >
         {this.children}
       </div>
@@ -41,8 +41,8 @@ export default class DiscoverHero extends Component {
   renderElement = () => {
     return (
       <div
-          className={this.imageclasses.join(" ")}
-          style={this.backgroundStyles}
+        className={this.imageclasses.join(" ")}
+        style={this.backgroundStyles}
       >
         {this.children}
       </div>
@@ -53,19 +53,19 @@ export default class DiscoverHero extends Component {
     return (
       <div>
         <a
-            href={this.props.link}
-            onClick={inAppLink}
+          href={this.props.link}
+          onClick={inAppLink}
         >
         <ImageLoader
-            src={this.props.image}
-            preloader={this.preloader}
-            force
-            renderElement={this.renderElement}
-            imageclasses={this.imageclasses}
+          src={this.props.image}
+          preloader={this.preloader}
+          force
+          renderElement={this.renderElement}
+          imageclasses={this.imageclasses}
         >
 
             <div className="floating__item soft-left soft-bottom text-light-primary">
-              {/*<h4 className="flush">{this.props.topicName}</h4>
+              {/* <h4 className="flush">{this.props.topicName}</h4>
 
                 <h7 className="soft-top">
                   {this.props.tags.join(", ")}

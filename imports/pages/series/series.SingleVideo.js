@@ -99,7 +99,7 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
   },
 });
 
-const mapStateToProps = (state) => ({ live: state.live });
+const mapStateToProps = state => ({ live: state.live });
 
 @connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Likeable)
@@ -116,17 +116,22 @@ export default class SeriesSingleVideo extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction
+      action: this.likeableAction,
     }));
   }
 
-  componentWillUpdate(nextProps){
+  componentWillUpdate(nextProps) {
     this.handleHeader(nextProps);
   }
 
   handleHeader = (nextProps) => {
+<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
     const content = nextProps.series.content;
     if(!content) return;
+=======
+    const { content } = nextProps.series;
+    if (!content) return;
+>>>>>>> lint fix yayayayay
 
     const { isLight } = nextProps.series.content.content;
     const color = collections.color(content);
@@ -135,8 +140,12 @@ export default class SeriesSingleVideo extends Component {
 
     const options = {
       title: "Series",
+<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
       color: color,
       light: !isLight
+=======
+      color,
+>>>>>>> lint fix yayayayay
     };
 
     if (!live) options.subTitle = content.title;
@@ -159,7 +168,6 @@ export default class SeriesSingleVideo extends Component {
   }
 
   render() {
-
     const sermonContent = this.props.currentSermon.content;
     const seriesContent = this.props.series.content;
 
@@ -168,7 +176,7 @@ export default class SeriesSingleVideo extends Component {
       return (
         <div className="locked-ends locked-sides floating">
           <div className="floating__item">
-            <Loading/>
+            <Loading />
           </div>
         </div>
       );
@@ -181,14 +189,14 @@ export default class SeriesSingleVideo extends Component {
       <div className="background--light-primary">
         <SingleVideoPlayer ooyalaId={currentSermon.content.ooyalaId} />
         <div
-            className="soft-sides background--light-secondary text-dark-secondary"
-            style={{ paddingTop: "15px", paddingBottom: "15px" }}
-            onClick={this.playAudio}
+          className="soft-sides background--light-secondary text-dark-secondary"
+          style={{ paddingTop: "15px", paddingBottom: "15px" }}
+          onClick={this.playAudio}
         >
           <h7 style={{ verticalAlign: "middle" }}>Listen To Audio</h7>
           <i
-              className="icon-category-audio float-right"
-              style={{ marginTop: "-2px" }}
+            className="icon-category-audio float-right"
+            style={{ marginTop: "-2px" }}
           />
         </div>
         <div className="soft soft-double@palm-wide-and-up push-top">

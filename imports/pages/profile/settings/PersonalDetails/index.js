@@ -1,11 +1,11 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 import Moment from "moment";
 
 import {
   nav,
-  accounts as accountsActions
+  accounts as accountsActions,
 } from "../../../../store";
 
 import { update } from "../../../../methods/accounts/browser";
@@ -44,8 +44,12 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
+<<<<<<< af9dad8f18cc2439eddcf93cec4b6bf310851530
     variables: { cache: false },
     forceFetch: true,
+=======
+    variables: { cache: true },
+>>>>>>> lint fix yayayayay
   },
 });
 @connect({ mapQueriesToProps })
@@ -53,80 +57,72 @@ export default class PersonalDetails extends Component {
 
   state = {
     month: null,
-    state: "default"
+    state: "default",
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.props.dispatch(nav.setLevel("BASIC_CONTENT"));
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.props.dispatch(nav.setLevel("TOP"));
   }
 
   getDays = () => {
-
     let totalDays = Moment("1", "M").daysInMonth();
     if (this.state.month) {
       totalDays = Moment(this.state.month, "M").daysInMonth();
     }
 
-    let arr = [];
+    const arr = [];
     for (let i = 0; i < totalDays; i++) {
-      arr.push({ label: i + 1, value: i + 1});
+      arr.push({ label: i + 1, value: i + 1 });
     }
     return arr;
   }
 
   getMonths = () => {
     return Moment.monthsShort().map((month, i) => {
-      return { label: month, value: i + 1};
+      return { label: month, value: i + 1 };
     });
   }
 
   getYears = () => {
-    let now = new Date().getFullYear();
+    const now = new Date().getFullYear();
 
-    let arr = [];
+    const arr = [];
     for (let i = 0; i < 150; i++) {
-      arr.push({ label: (now - i), value: (now - i)});
+      arr.push({ label: (now - i), value: (now - i) });
     }
 
     return arr;
-
   }
 
   saveMonth = (value) => {
-    this.setState({month: value});
+    this.setState({ month: value });
 
     return true;
   }
 
   updatePerson = (data) => {
-
     this.setState({ state: "loading" });
 
-    let refs = this.refs;
+    const refs = this.refs;
     update(data, (err, result) => {
-
       if (err) {
-        this.setState({ state: "error", err: err });
-        setTimeout(() => this.setState({ state: "default"}), 3000);
+        this.setState({ state: "error", err });
+        setTimeout(() => this.setState({ state: "default" }), 3000);
         return;
       }
 
 
       this.setState({ state: "success" });
       this.props.person.refetch({ cache: false })
-        .then(() => this.setState({ state: "default"}));
-
+        .then(() => this.setState({ state: "default" }));
     });
-
-
   }
 
-  render () {
-
+  render() {
     let { campuses } = this.props.campuses;
     campuses = campuses && campuses.map((campus) => {
       return { label: campus.name, value: campus.id };
@@ -149,18 +145,17 @@ export default class PersonalDetails extends Component {
       case "success":
         return <Success msg="Your information has been updated!" />;
       default:
-        return  (
+        return (
           <Layout
-              submit={this.updatePerson}
-              months={this.getMonths()}
-              saveMonth={this.saveMonth}
-              days={this.getDays()}
-              years={this.getYears()}
-              person={this.props.person && this.props.person.person || {}} // XXX perf
-              campuses={campuses}
+            submit={this.updatePerson}
+            months={this.getMonths()}
+            saveMonth={this.saveMonth}
+            days={this.getDays()}
+            years={this.getYears()}
+            person={this.props.person && this.props.person.person || {}} // XXX perf
+            campuses={campuses}
           />
         );
     }
-
   }
 }

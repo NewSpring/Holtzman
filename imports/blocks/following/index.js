@@ -7,17 +7,17 @@ import FollowingItem from "./Item";
 
 import topicActions from "../../store/topics/";
 
-let topics = [
+const topics = [
   "Articles",
   "Devotionals",
   "Stories",
   "Series",
   "Sermons",
-  "Music"
+  "Music",
 ];
 
 // XXX make this dynamic via heighliner
-const map = (state) => ({ topics: state.topics.topics });
+const map = state => ({ topics: state.topics.topics });
 @connect(map)
 export default class FollowingContainer extends Component {
 
@@ -28,7 +28,7 @@ export default class FollowingContainer extends Component {
 
   changed = (id) => {
     const topic = topics[id];
-    this.props.dispatch(topicActions.toggle({ topic: topic }));
+    this.props.dispatch(topicActions.toggle({ topic }));
     Meteor.call("toggleTopic", topic);
   }
 
@@ -38,10 +38,8 @@ export default class FollowingContainer extends Component {
   }
 
   render() {
-
-
     return (
-      <section className="background--light-secondary hard-sides" style={{marginTop: "-20px"}}>
+      <section className="background--light-secondary hard-sides" style={{ marginTop: "-20px" }}>
 
         <h7 className={this.h7Classes}>
           Personalize your NewSpring Home and follow the types of content you care about.
@@ -57,7 +55,6 @@ export default class FollowingContainer extends Component {
 
       </section>
     );
-
   }
 
 }

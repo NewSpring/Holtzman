@@ -22,15 +22,15 @@ export default class Layout extends Component {
     return (
       <div key={key} className="soft-half-ends hard-sides">
 
-        <div className="grid" style={{verticalAlign: "middle"}}>
+        <div className="grid" style={{ verticalAlign: "middle" }}>
 
-          <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
+          <div className="grid__item two-thirds" style={{ verticalAlign: "middle" }}>
             <h5 className="text-dark-secondary flush text-left">
               {transaction.label}
             </h5>
           </div>
 
-          <div className="grid__item one-third text-right" style={{verticalAlign: "middle"}}>
+          <div className="grid__item one-third text-right" style={{ verticalAlign: "middle" }}>
             <h5 className="text-dark-secondary flush">
               {this.monentize(transaction.value)}
             </h5>
@@ -42,7 +42,6 @@ export default class Layout extends Component {
   }
 
   monentize = (value, fixed) => {
-
     if (typeof value === "number") {
       value = `${value}`;
     }
@@ -53,7 +52,7 @@ export default class Layout extends Component {
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 1) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -64,8 +63,7 @@ export default class Layout extends Component {
   }
 
   buttonText = () => {
-
-    let { payment } = this.props.data;
+    const { payment } = this.props.data;
 
     let text = "Give Now";
 
@@ -74,7 +72,6 @@ export default class Layout extends Component {
     }
 
     return text;
-
   }
 
   icon = (icon) => {
@@ -82,9 +79,9 @@ export default class Layout extends Component {
   }
 
   render() {
-    let transactions = [];
+    const transactions = [];
 
-    for (let transaction in this.props.transactions) {
+    for (const transaction in this.props.transactions) {
       transactions.push(this.props.transactions[transaction]);
     }
 
@@ -107,15 +104,15 @@ export default class Layout extends Component {
 
           <div className="soft-ends hard-sides">
 
-            <div className="grid" style={{verticalAlign: "middle"}}>
+            <div className="grid" style={{ verticalAlign: "middle" }}>
 
-              <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
+              <div className="grid__item one-half" style={{ verticalAlign: "middle" }}>
                 <h5 className="text-dark-secondary flush text-left">
                   Total
                 </h5>
               </div>
 
-              <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
+              <div className="grid__item one-half text-right" style={{ verticalAlign: "middle" }}>
                 <h3 className="text-primary flush">
                   {this.monentize(this.props.total)}
                 </h3>

@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -7,7 +7,7 @@ import {
   modal,
   accounts as accountsActions,
   nav as navActions,
-  give as giveActions
+  give as giveActions,
 } from "../../store";
 
 import AccountType from "../../components/accountType";
@@ -26,7 +26,7 @@ import {
 // XXX remove cache: false when heighliner caching is tested
 const mapQueriesToProps = ({ ownProps }) => ({
   savedPayments: {
-      query: gql`
+    query: gql`
         query GetSavedPaymentAccounts {
           savedPayments(cache: false) {
             name, id: entityId, date,
@@ -34,13 +34,13 @@ const mapQueriesToProps = ({ ownProps }) => ({
           }
         }
       `,
-      variables: {
+    variables: {
         // even though this is unused, we include it to trigger a recal when a person
         // logs in or logs out
-        authorized: ownProps.authorized,
-      },
-      forceFetch: true,
-    }
+      authorized: ownProps.authorized,
+    },
+    forceFetch: true,
+  },
 });
 /*
 
@@ -51,7 +51,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
   3. Give as guest (in small text) if not signed in
 
 */
-const mapStateToProps = (store) => ({
+const mapStateToProps = store => ({
   authorized: store.accounts.authorized,
   savedAccount: store.give.savedAccount,
 });
@@ -98,7 +98,6 @@ export default class GiveNow extends Component {
   }
 
   onClick = (e) => {
-
     let keepGoing = true;
     if (this.props.onClick) {
       keepGoing = this.props.onClick(e);
@@ -118,20 +117,17 @@ export default class GiveNow extends Component {
 
     if (Meteor.userId() && !this.props.disabled) {
       this.props.dispatch(modal.render(Give));
-    } else if (!Meteor.userId()){
-
+    } else if (!Meteor.userId()) {
       this.props.dispatch(modal.render(OnBoard, {
         onSignin: this.getPaymentDetailsAfterLogin,
         onFinished: this.renderAfterLogin,
-        coverHeader: true
+        coverHeader: true,
       }));
 
       this.props.dispatch(accountsActions.setAccount(true));
-
     }
 
     this.props.dispatch(navActions.setLevel("MODAL"));
-
   }
 
   giveAsGuest = () => {
@@ -146,10 +142,9 @@ export default class GiveNow extends Component {
     this.props.dispatch(accountsActions.setAccount(false));
     this.props.dispatch(modal.render(OnBoard, {
       onFinished: this.renderAfterLogin,
-      coverHeader: true
+      coverHeader: true,
     }));
     // this.props.dispatch(navActions.setLevel("MODAL"))
-
   }
 
   changePayments = (e) => {
@@ -163,14 +158,12 @@ export default class GiveNow extends Component {
   }
 
   buttonText = () => {
-
     let text = "Give Now";
     if (this.props.text) {
       text = this.props.text;
     }
     const { savedPayments } = this.props.savedPayments;
     if (savedPayments && savedPayments.length && !this.props.hideCard) {
-
       const details = this.getAccount();
       if (details && details.payment && details.payment.accountNumber) {
         let { accountNumber } = details.payment;
@@ -182,7 +175,6 @@ export default class GiveNow extends Component {
     if (!Meteor.userId()) text = "Sign In";
 
     return text;
-
   }
 
   icon = () => {
@@ -191,7 +183,7 @@ export default class GiveNow extends Component {
       const detail = this.getAccount();
       if (detail.payment && detail.payment.paymentType === "ACH") {
         return (
-          <AccountType width="30px" height="21px" type="Bank"/>
+          <AccountType width="30px" height="21px" type="Bank" />
         );
       } else if (detail.payment && detail.payment.paymentType) {
         return (
@@ -202,36 +194,35 @@ export default class GiveNow extends Component {
   }
 
 
-  render () {
+  render() {
     try {
       return (
         <span>
           <PrimaryButton
-              classes={this.props.theme || this.buttonClasses()}
-              icon={this.icon()}
-              text={this.buttonText()}
-              onClick={this.onClick}
-              value={this.props.value}
-              style={this.props.style || {}}
-              dataId={this.props.dataId}
+            classes={this.props.theme || this.buttonClasses()}
+            icon={this.icon()}
+            text={this.buttonText()}
+            onClick={this.onClick}
+            value={this.props.value}
+            style={this.props.style || {}}
+            dataId={this.props.dataId}
           />
           {(() => {
             if (!this.props.authorized && !Meteor.userId()) {
               return (
                 <SecondaryButton
 
-                    onClick={this.register}
+                  onClick={this.register}
                 />
               );
             }
-
           })()}
           {(() => {
             if (!this.props.disabledGuest && !Meteor.userId()) {
               return (
                 <TertiaryButton
-                    disabled={this.props.disabled}
-                    onClick={this.giveAsGuest}
+                  disabled={this.props.disabled}
+                  onClick={this.giveAsGuest}
                 />
               );
             }
@@ -242,8 +233,8 @@ export default class GiveNow extends Component {
             if (savedPayments && savedPayments.length && !this.props.hideCard && Meteor.userId()) {
               return (
                 <TertiaryButton
-                    onClick={this.changePayments}
-                    text={"Change payment account"}
+                  onClick={this.changePayments}
+                  text={"Change payment account"}
                 />
               );
             }
@@ -255,6 +246,5 @@ export default class GiveNow extends Component {
     } catch (e) {
       return null;
     }
-
   }
 }

@@ -14,61 +14,61 @@ const initial = {
   loading: false,
   done: false,
   none: false,
-  searching: false
+  searching: false,
 };
 
 export default createReducer(initial, {
 
-  ["SEARCH.SET_TERM"](state, action) {
-    return {...state,
-      term: action.term
+  ["SEARCH.SET_TERM"]: function (state, action) {
+    return { ...state,
+      term: action.term,
     };
   },
 
-  ["SEARCH.ADD"](state, action) {
-    return {...state,
-      items: [ ...state.items, ...action.items ]
+  ["SEARCH.ADD"]: function (state, action) {
+    return { ...state,
+      items: [...state.items, ...action.items],
     };
   },
 
-  ["SEARCH.CLEAR"](state, action) {
-    return {...state,
+  ["SEARCH.CLEAR"]: function (state, action) {
+    return { ...state,
       items: [],
       page: 0,
       done: false,
-      none: false
+      none: false,
     };
   },
 
-  ["SEARCH.INCREMENT_PAGE"](state, action) {
-    return {...state,
-      page: state.page + 1
+  ["SEARCH.INCREMENT_PAGE"]: function (state, action) {
+    return { ...state,
+      page: state.page + 1,
     };
   },
 
-  ["SEARCH.TOGGLE_LOADING"](state, action) {
-    return {...state,
-      loading: !state.loading
+  ["SEARCH.TOGGLE_LOADING"]: function (state, action) {
+    return { ...state,
+      loading: !state.loading,
     };
   },
 
-  ["SEARCH.DONE"](state, action) {
-    return {...state,
-      done: action.done
+  ["SEARCH.DONE"]: function (state, action) {
+    return { ...state,
+      done: action.done,
     };
   },
 
-  ["SEARCH.NONE"](state, action) {
-    return {...state,
-      none: action.none
+  ["SEARCH.NONE"]: function (state, action) {
+    return { ...state,
+      none: action.none,
     };
   },
 
-  ["SEARCH.SEARCHING"](state, action) {
-    return {...state,
+  ["SEARCH.SEARCHING"]: function (state, action) {
+    return { ...state,
       searching: action.searching,
-      term: null
+      term: null,
     };
-  }
+  },
 
 });

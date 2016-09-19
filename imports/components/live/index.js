@@ -25,7 +25,7 @@ const mapQueriesToProps = ({ ownProps, state }) => {
   };
 };
 
-const mapStateToProps = (state) => ({ live: state.live });
+const mapStateToProps = state => ({ live: state.live });
 
 @connect({ mapQueriesToProps, mapStateToProps })
 export default class Live extends Component {
@@ -83,21 +83,21 @@ export default class Live extends Component {
     }
   }
 
-  render () {
+  render() {
     const { live, show, embedCode } = this.props.live;
     if (!live || !show || !embedCode) return null;
 
     return (
       <Motion
-          defaultStyle={{height: 0}}
-          style={{height: spring(40)}}
+        defaultStyle={{ height: 0 }}
+        style={{ height: spring(40) }}
       >
-        {interpolatingStyle => {
+        {(interpolatingStyle) => {
           return (
             <Link
-                to={`/video/${embedCode}`}
-                className={this.getClasses()}
-                style={interpolatingStyle}
+              to={`/video/${embedCode}`}
+              className={this.getClasses()}
+              style={interpolatingStyle}
             >
               <h7 className={this.getTextClasses()}>
                 NewSpring Church Live, Watch Now!

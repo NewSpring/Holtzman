@@ -5,9 +5,9 @@ import { share as shareActions } from "../store";
 
 const Shareable = {
 
-  componentWillMount: function() {
+  componentWillMount() {
     this.shareableAction = this.setShareAction.bind(this);
-    this.state = {...this.state, ...{ __shareActionSet: false }};
+    this.state = { ...this.state, ...{ __shareActionSet: false } };
 
     // needed for client cache
     this.setShareProps(this.props);
@@ -17,8 +17,7 @@ const Shareable = {
     this.setShareProps(nextProps);
   },
 
-  getShareableEntry: function(nextProps) {
-
+  getShareableEntry(nextProps) {
     let item;
     if (nextProps.devotion) item = nextProps.devotion;
     if (nextProps.article) item = nextProps.article;
@@ -35,7 +34,7 @@ const Shareable = {
     return null;
   },
 
-  setShareProps: function(nextProps) {
+  setShareProps(nextProps) {
     if (!!this.state.__shareActionSet) return;
     const item = this.getShareableEntry(nextProps);
     if (!item) return;
@@ -52,7 +51,7 @@ const Shareable = {
     }
   },
 
-  setShareAction: function(item, options = { parentItem: null }) {
+  setShareAction(item, options = { parentItem: null }) {
     if (
       item.channelName === "sermons" &&
       typeof options.parentItem === "undefined"
@@ -61,24 +60,24 @@ const Shareable = {
       return;
     }
     // use parent for image if provided i.e. sermons
-    let imageItem = options.parentItem ? options.parentItem : item;
+    const imageItem = options.parentItem ? options.parentItem : item;
     let image = backgrounds.image(imageItem);
     if (image[0] === "/") {
       image = `https:${image}`;
     }
 
-    let msg = {
+    const msg = {
       subject: item.title,
       text: item.title,
-      image: image,
-      url: content.siteLink(item, options.parentItem)
+      image,
+      url: content.siteLink(item, options.parentItem),
     };
 
     this.props.dispatch(shareActions.set(msg));
     this.setState({
       __shareActionSet: true,
     });
-  }
+  },
 
 };
 

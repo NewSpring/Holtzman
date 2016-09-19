@@ -6,7 +6,7 @@ import liveActions from "../../store/live";
 import Discover from "../../blocks/discover";
 import styles from "../../blocks/nav/offset-css";
 
-const mapStateToProps = (state) => ({ audio: state.audio });
+const mapStateToProps = state => ({ audio: state.audio });
 
 @connect({ mapStateToProps })
 class Template extends Component {
@@ -28,13 +28,13 @@ class Template extends Component {
   render() {
     return (
       <div
-          className={`background--light-primary locked-ends locked-sides scrollable soft-double-bottom ${css(styles["offset"])}`}
-          data-status-scroll-container
+        className={`background--light-primary locked-ends locked-sides scrollable soft-double-bottom ${css(styles.offset)}`}
+        data-status-scroll-container
       >
         <div
-            style={this.containerStyles()}
-            data-status-scroll-item
-            data-status-scroll-offset={-50}
+          style={this.containerStyles()}
+          data-status-scroll-item
+          data-status-scroll-offset={-50}
         >
           <Discover />
         </div>

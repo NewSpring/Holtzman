@@ -5,17 +5,17 @@ const Header = {
   savedDataOptions: null,
   savedDataRequestee: null,
 
-  componentWillMount: function () {
+  componentWillMount() {
     this.headerAction = this.setHeaderDetails.bind(this);
-    this.state = {...this.state, ...{ __headerSet: false }};
+    this.state = { ...this.state, ...{ __headerSet: false } };
     this.getContent(this.props);
   },
 
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.getContent(nextProps);
 
-    if(nextProps.modal && this.props.modal) {
-      if(!nextProps.modal.visible && this.props.modal.visible) {
+    if (nextProps.modal && this.props.modal) {
+      if (!nextProps.modal.visible && this.props.modal.visible) {
         this.unlockHeader();
         this.setHeaderDetails(this.savedDataOptions, this.savedDataRequestee);
       }
@@ -47,7 +47,7 @@ const Header = {
     // }))
   },
 
-  getEntry: function(nextProps) {
+  getEntry(nextProps) {
     let item = false;
     if (nextProps.devotion) item = nextProps.devotion;
     if (nextProps.article) item = nextProps.article;
@@ -60,7 +60,7 @@ const Header = {
     return null;
   },
 
-  getHeaderTitle: function(props) {
+  getHeaderTitle(props) {
     if (props.devotion) return "Devotion";
     if (props.article) return "Article";
     if (props.story) return "Story";
@@ -69,20 +69,19 @@ const Header = {
     if (props.album) return "Music";
   },
 
-  lockHeader: function(requestee) {
+  lockHeader(requestee) {
     this.props.dispatch(headerActions.lock(requestee));
   },
 
-  unlockHeader: function() {
+  unlockHeader() {
     this.props.dispatch(headerActions.unlock());
   },
 
-  setHeaderDetails: function(options, requestee) {
-
+  setHeaderDetails(options, requestee) {
     this.savedDataOptions = options;
     this.savedDataRequestee = requestee;
 
-    if(!options) {
+    if (!options) {
       return;
     }
 
@@ -90,7 +89,7 @@ const Header = {
     this.setState({
       __headerSet: true,
     });
-  }
+  },
 
 };
 

@@ -7,7 +7,7 @@ import styles from "./nav-css";
 export default class NavLayout extends React.Component {
 
   layoutClasses = () => {
-    let classes = [
+    const classes = [
       // "background--dark-primary",
       "one-whole",
       "floating",
@@ -16,7 +16,7 @@ export default class NavLayout extends React.Component {
       "locked-bottom",
       "hard-ends@palm",
       "hard-sides@palm-wide-and-up",
-      "soft-half-top@palm-wide-and-up"
+      "soft-half-top@palm-wide-and-up",
     ];
 
 
@@ -44,30 +44,28 @@ export default class NavLayout extends React.Component {
     }
 
     return false;
-
   }
 
-  render () {
-
+  render() {
     const { handleAction, back, reset, path } = this.props;
     return (
       <section
-          className={this.props.theme || this.layoutClasses()}
-          style={{
-          backgroundColor: this.props.bgColor
+        className={this.props.theme || this.layoutClasses()}
+        style={{
+          backgroundColor: this.props.bgColor,
         }}
       >
         {this.props.links.map((item, i) => {
           return (
             <NavLink
-                navItem={item}
-                key={i}
-                handleAction={handleAction}
-                reset={reset}
-                modal={this.props.modal}
-                liked={this.isLiked()}
-                path={path}
-                fgColor={this.props.fgColor}
+              navItem={item}
+              key={i}
+              handleAction={handleAction}
+              reset={reset}
+              modal={this.props.modal}
+              liked={this.isLiked()}
+              path={path}
+              fgColor={this.props.fgColor}
             />
           );
         })}

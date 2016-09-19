@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import Moment from "moment";
 import { connect } from "react-redux";
 import cloneDeep from "lodash.clonedeep";
@@ -20,7 +20,7 @@ export default class Confirm extends Component {
     errors: PropTypes.object.isRequired,
     clear: PropTypes.func.isRequired,
     clearData: PropTypes.func.isRequired,
-    next: PropTypes.func.isRequired
+    next: PropTypes.func.isRequired,
   }
 
 
@@ -65,11 +65,10 @@ export default class Confirm extends Component {
   }
 
   buttonText = () => {
-
     let { payment } = this.props.data;
 
     if (!payment.accountNumber && !payment.cardNumber) {
-      payment = {...this.props.savedAccount.payment};
+      payment = { ...this.props.savedAccount.payment };
       payment.type = "ach";
     }
 
@@ -84,18 +83,14 @@ export default class Confirm extends Component {
     }
 
     if (payment.accountNumber || payment.cardNumber) {
-
       const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
       text += ` using ${masked.slice(-4)}`;
-
     }
 
     return text;
-
   }
 
   getCardType = () => {
-
     const { payment } = this.props.data;
     const { savedAccount } = this.props;
     if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
@@ -107,7 +102,6 @@ export default class Confirm extends Component {
     }
 
     if (payment.type === "cc") {
-
       const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi;
 
       const defaultRegex = {
@@ -117,16 +111,14 @@ export default class Confirm extends Component {
         Discover: d,
       };
 
-      for (let regex in defaultRegex) {
+      for (const regex in defaultRegex) {
         if (defaultRegex[regex].test(payment.cardNumber.replace(/-/gmi, ""))) {
           return regex;
         }
       }
-
     }
 
     return null;
-
   }
 
   icon = () => {
@@ -134,7 +126,6 @@ export default class Confirm extends Component {
   }
 
   monentize = (value, fixed) => {
-
     if (typeof value === "number") {
       value = `${value}`;
     }
@@ -145,7 +136,7 @@ export default class Confirm extends Component {
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 1) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -159,15 +150,15 @@ export default class Confirm extends Component {
     return (
       <div key={key} className="soft-half-ends hard-sides">
 
-        <div className="grid" style={{verticalAlign: "middle"}}>
+        <div className="grid" style={{ verticalAlign: "middle" }}>
 
-          <div className="grid__item two-thirds" style={{verticalAlign: "middle"}}>
+          <div className="grid__item two-thirds" style={{ verticalAlign: "middle" }}>
             <h5 className="text-dark-secondary flush text-left">
               {transaction.label}
             </h5>
           </div>
 
-          <div className="grid__item one-third text-right" style={{verticalAlign: "middle"}}>
+          <div className="grid__item one-third text-right" style={{ verticalAlign: "middle" }}>
             <h5 className="text-dark-secondary flush">
               {this.monentize(transaction.value)}
             </h5>
@@ -179,7 +170,6 @@ export default class Confirm extends Component {
   }
 
   scheduleItem = (schedule, key) => {
-
     return (
       <div className="display-inline-block one-whole" key={key}>
 
@@ -190,14 +180,12 @@ export default class Confirm extends Component {
       </div>
 
     );
-
-
   }
 
   renderScheduleConfirm = () => {
-    let schedules = [];
+    const schedules = [];
 
-    for (let schedule in this.props.schedules) {
+    for (const schedule in this.props.schedules) {
       schedules.push(this.props.schedules[schedule]);
     }
 
@@ -228,9 +216,8 @@ export default class Confirm extends Component {
     e.preventDefault();
 
     this.setState({
-      changePayments: !this.state.changePayments
+      changePayments: !this.state.changePayments,
     });
-
   }
 
   choose = (e) => {
@@ -238,7 +225,7 @@ export default class Confirm extends Component {
 
     const { id } = e.currentTarget;
     let act = {};
-    for (let account of this.props.savedAccounts) {
+    for (const account of this.props.savedAccounts) {
       if (Number(account.id) === Number(id)) {
         act = account;
         break;
@@ -296,7 +283,7 @@ export default class Confirm extends Component {
     openUrl(
       giveUrl,
       null,
-      () => { this.props.clearData() },
+      () => { this.props.clearData(); },
       null
     );
   }
@@ -309,9 +296,9 @@ export default class Confirm extends Component {
             return (
               <div className="display-block soft-top text-left">
                 <h6
-                    className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
-                    style={{cursor: "pointer"}}
-                    onClick={this.props.back}
+                  className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+                  style={{ cursor: "pointer" }}
+                  onClick={this.props.back}
                 >
                   Edit Contribution Details
                 </h6>
@@ -321,17 +308,17 @@ export default class Confirm extends Component {
             return (
               <div className="display-block soft-top text-left">
                 <h6
-                    className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
-                    style={{cursor: "pointer"}}
-                    onClick={this.changeAccounts}
+                  className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+                  style={{ cursor: "pointer" }}
+                  onClick={this.changeAccounts}
                 >
                   Change Payment Accounts
                 </h6>
-                <br/>
+                <br />
                 <h6
-                    className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
-                    style={{cursor: "pointer"}}
-                    onClick={this.props.goToStepOne}
+                  className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+                  style={{ cursor: "pointer" }}
+                  onClick={this.props.goToStepOne}
                 >
                   Enter New Payment
                 </h6>
@@ -353,19 +340,19 @@ export default class Confirm extends Component {
         <div className="soft">
           {this.props.savedAccounts.map((account, key) => {
             return (
-              <div key={key} style={{position: "relative", cursor: "pointer"}} id={account.id} onClick={this.choose}>
-                <div  className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative">
+              <div key={key} style={{ position: "relative", cursor: "pointer" }} id={account.id} onClick={this.choose}>
+                <div className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative">
 
                   <div className="display-inline-block soft-half-ends one-whole">
                     <h6 className="flush-bottom float-left text-dark-tertiary">{account.name}</h6>
-                    {/*<button className="h6 flush-bottom float-right text-primary" id={account.id} onClick={this.choose}>Choose</button>*/}
+                    {/* <button className="h6 flush-bottom float-right text-primary" id={account.id} onClick={this.choose}>Choose</button>*/}
                   </div>
 
 
                   <h5 className="hard one-whole flush-bottom text-dark-tertiary">
                     {account.payment.accountNumber.slice(0, account.payment.accountNumber.length - 5).replace(/./gmi, "*")}{account.payment.accountNumber.slice(-4)}
                     <span className="float-right soft-half-left">
-                      <AccountType width="40px" height="25px" type={account.payment.paymentType}/>
+                      <AccountType width="40px" height="25px" type={account.payment.paymentType} />
 
                     </span>
 
@@ -375,23 +362,23 @@ export default class Confirm extends Component {
                 </div>
                 <div className="locked-ends locked-sides">
                   <input
-                      type="checkbox"
-                      id={"label" + account.id}
-                      readOnly
-                      checked={Number(account.id) === Number(this.props.savedAccount.id)}
-                      style={{
+                    type="checkbox"
+                    id={"label" + account.id}
+                    readOnly
+                    checked={Number(account.id) === Number(this.props.savedAccount.id)}
+                    style={{
                       opacity: 0,
                       position: "absolute",
                       top: 0,
                       left: 0,
-                      padding: "50px"
+                      padding: "50px",
                     }}
                   />
                 <label htmlFor={"label" + account.id} style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: 0
-                  }}/>
+                  position: "absolute",
+                  top: "50%",
+                  left: 0,
+                }} />
                 </div>
               </div>
             );
@@ -424,8 +411,8 @@ export default class Confirm extends Component {
             </small>
           </p>
           <button
-              className="btn soft-half-top one-whole"
-              onClick={this.completeGift}
+            className="btn soft-half-top one-whole"
+            onClick={this.completeGift}
           >
             Complete Gift in Browser
           </button>
@@ -440,11 +427,10 @@ export default class Confirm extends Component {
     }
   }
 
-  render () {
+  render() {
+    const transactions = [];
 
-    let transactions = [];
-
-    for (let transaction in this.props.transactions) {
+    for (const transaction in this.props.transactions) {
       transactions.push(this.props.transactions[transaction]);
     }
 
@@ -475,15 +461,15 @@ export default class Confirm extends Component {
 
           <div className="soft-ends hard-sides">
 
-            <div className="grid" style={{verticalAlign: "middle"}}>
+            <div className="grid" style={{ verticalAlign: "middle" }}>
 
-              <div className="grid__item one-half" style={{verticalAlign: "middle"}}>
+              <div className="grid__item one-half" style={{ verticalAlign: "middle" }}>
                 <h5 className="text-dark-secondary flush text-left">
                   Total
                 </h5>
               </div>
 
-              <div className="grid__item one-half text-right" style={{verticalAlign: "middle"}}>
+              <div className="grid__item one-half text-right" style={{ verticalAlign: "middle" }}>
                 <h3 className="text-primary flush">
                   {this.monentize(this.props.total)}
                 </h3>

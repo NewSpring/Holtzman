@@ -7,14 +7,14 @@ export default class ComingSoon extends Component {
     backgroundColor: "rgba(0,0,0,0.5)",
     zIndex: "2",
     height: "100%",
-    position: "fixed"
+    position: "fixed",
   }
 
   overlayClasses = () => {
     return [
       "one-whole",
       "soft-double-top",
-      "floating--top"
+      "floating--top",
     ].join(" ");
   }
 
@@ -25,7 +25,7 @@ export default class ComingSoon extends Component {
       "three-quarters",
       "soft",
       "floating__item",
-      "push-double-top"
+      "push-double-top",
     ].join(" ");
   }
 
