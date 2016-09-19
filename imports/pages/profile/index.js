@@ -1,8 +1,7 @@
-
+import { PropTypes } from "react";
 import Home from "./home";
 import Settings from "./settings";
 
-import Global from "../../blocks/global";
 import Authorized from "../../blocks/authorzied";
 
 const Root = ({ children }) => (
@@ -10,6 +9,10 @@ const Root = ({ children }) => (
     {children}
   </Authorized>
 );
+
+Root.propTypes = {
+  children: PropTypes.object.isRequired,
+};
 
 export default {
   path: "profile",
