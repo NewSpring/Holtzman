@@ -136,20 +136,20 @@ class ForgotPassword extends React.Component {
                 Back
               </a>
 
-            {(() => {
-              const btnClasses = ["push-left"];
-              if (Object.keys(this.props.errors).length) {
-                btnClasses.push("btn--disabled");
-              } else {
-                btnClasses.push("btn");
-              }
+              {(() => {
+                const btnClasses = ["push-left"];
+                if (Object.keys(this.props.errors).length) {
+                  btnClasses.push("btn--disabled");
+                } else {
+                  btnClasses.push("btn");
+                }
 
-              return (
-                <button className={btnClasses.join(" ")} type="submit">
-                  Enter
-                </button>
+                return (
+                  <button className={btnClasses.join(" ")} type="submit">
+                    Enter
+                  </button>
               );
-            })()}
+              })()}
 
             </div>
           </Forms.Form>
