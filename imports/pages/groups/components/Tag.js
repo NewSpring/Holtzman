@@ -14,6 +14,8 @@ export default class Tag extends Component {
     active: PropTypes.bool,
     val: PropTypes.string.isRequired,
     canBeActive: PropTypes.bool,
+    label: PropTypes.string,
+    urlKey: PropTypes.string,
   }
 
   static defaultProps = {
@@ -21,6 +23,7 @@ export default class Tag extends Component {
     style: {},
     clickAble: true,
     canBeActive: true,
+    urlKey: "tags",
   }
 
   state = { isActive: false }
@@ -40,17 +43,17 @@ export default class Tag extends Component {
   }
 
   isInQueryString = (props) => {
-    const { val } = props;
+    const { val, urlKey } = props;
     const { query } = props.location;
-    if (!query || !query.tags) return false;
+    if (!query || !query[urlKey]) return false;
 
-    const tags = query.tags.toLowerCase().split(",").filter(x => x);
+    const tags = query[urlKey].toLowerCase().split(",").filter(x => x);
     return tags.indexOf(val.toLowerCase()) > -1;
   }
 
   onClick = (e) => {
     if (e) e.stopPropagation();
-    let { val, onClick, router, location, clickAble, canBeActive } = this.props;
+    let { val, onClick, router, location, clickAble, canBeActive, urlKey } = this.props;
 
     if (!clickAble) return null;
 
@@ -63,8 +66,8 @@ export default class Tag extends Component {
 
     val = val.toLowerCase();
     let tags = [];
-    if (location.query && location.query.tags) {
-      tags = location.query.tags.split(",");
+    if (location.query && location.query[urlKey]) {
+      tags = location.query[urlKey].split(",");
     }
 
     if (tags.indexOf(val) > -1) {
@@ -76,17 +79,17 @@ export default class Tag extends Component {
 
     tags = tags.filter(x => x);
 
-    if (!tags.length && location.query.tags) {
-      delete location.query.tags;
+    if (!tags.length && location.query[urlKey]) {
+      delete location.query[urlKey];
     } else {
-      location.query.tags = tags.join(",");
+      location.query[urlKey] = tags.join(",");
     }
     const newPath = router.createPath(location);
     router.replace(newPath);
   }
 
   render() {
-    const { className, style, clickAble, val, canBeActive } = this.props;
+    const { className, style, clickAble, val, canBeActive, label } = this.props;
     let classes = [
       "tag",
       "push-half-right"
@@ -110,7 +113,7 @@ export default class Tag extends Component {
           style={style}
           onClick={this.onClick}
       >
-        {val}
+        {label ? label : val}
       </span>
     );
   }

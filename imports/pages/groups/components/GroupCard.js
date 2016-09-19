@@ -67,6 +67,10 @@ export default withRouter(({ group, router, onHover }) => {
             if (!group.demographic) return null;
             return <Tag val={group.demographic} />;
           })()}
+          {(() => {
+            if (!group.campus || !group.campus.name) return null;
+            return <Tag val={group.campus.name} urlKey="campuses" />;
+          })()}
         </div>
 
       </SideBySide>
