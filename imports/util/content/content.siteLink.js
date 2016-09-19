@@ -8,8 +8,7 @@ function siteLink(contentItem, parentItem) {
     case "series_newspring":
       return `${siteUrl}/sermons/${slug}`;
     case "sermons":
-      const seriesSlug = parentItem.meta.urlTitle;
-      return `${siteUrl}/sermons/${seriesSlug}/${slug}`;
+      return `${siteUrl}/sermons/${parentItem.meta.urlTitle}/${slug}`;
     case "devotionals":
       return `${siteUrl}/devotionals/${slug}`;
     case "newspring_albums":
@@ -18,6 +17,8 @@ function siteLink(contentItem, parentItem) {
       return `${siteUrl}/articles/${slug}`;
     case "stories":
       return `${siteUrl}/stories/${slug}`;
+    default:
+      return null;
 
   }
 }

@@ -1,8 +1,9 @@
 
-const Regex = {};
 import Format from "../format";
 import Validate from "../validate";
 import defaultRegex from "./defaults";
+
+const Regex = {};
 
 Regex.addRegex = (name, test, validate) => {
   if (Regex[name]) {
@@ -23,7 +24,7 @@ Regex.addRegex = (name, test, validate) => {
 
   if (validate) {
     const funcName = `is${Format.capitalize(name)}`;
-    Validate.addValidator(funcName, (str) => { return test.test(str); });
+    Validate.addValidator(funcName, str => (test.test(str)));
   }
   return;
 };
@@ -36,8 +37,8 @@ Regex.addRegex = (name, test, validate) => {
 // such a long regex
 
 for (const name in defaultRegex) {
-  const _regex = defaultRegex[name];
-  Regex.addRegex(name, _regex, true);
+  const regex = defaultRegex[name];
+  Regex.addRegex(name, regex, true);
 }
 
 export { defaultRegex };

@@ -34,4 +34,4 @@ function toDateString(dateObj, abbreviated) {
 }
 
 
-export { toDateString };
+export default { toDateString };

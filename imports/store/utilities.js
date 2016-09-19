@@ -13,7 +13,7 @@ const addReducer = (obj) => {
       );
     }
 
-    if (!handler || typeof (handler) != "function") {
+    if (!handler || typeof (handler) !== "function") {
       throw new Error(
         "Reducer TypeError",
         `Reducer ${name} requires a function`
@@ -26,16 +26,15 @@ const addReducer = (obj) => {
   return obj;
 };
 
-const createReducer = (initialState, handlers) => {
-  return (state = initialState, action) => {
+const createReducer = (initialState, handlers) => (
+  (state = initialState, action) => {
     // better than switch statement
     if (handlers.hasOwnProperty(action.type)) {
       return handlers[action.type](state, action);
-    } else {
-      return state;
     }
-  };
-};
+    return state;
+  }
+);
 
 // stored middlewares for use with other packages
 const middlewares = [];
