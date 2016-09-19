@@ -1,7 +1,10 @@
 {
   "extends": "airbnb",
   "parserOptions": {
-    "allowImportExportEverywhere": true
+    "allowImportExportEverywhere": true,
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "env": {
     "meteor": true,
