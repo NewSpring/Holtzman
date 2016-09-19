@@ -1,4 +1,4 @@
-import { Component, PropTypes } from "react";
+import { PropTypes } from "react";
 
 import RelatedContent from "../../blocks/content/RelatedContent";
 import SingleVideoPlayer from "../../components/players/video/Player";
@@ -13,32 +13,35 @@ const StoryImage = ({ story }) => (
   />
 );
 
-export default class StoriesContent extends Component {
+StoryImage.propTypes = {
+  story: PropTypes.object.isRequired,
+};
 
-  static propTypes = {
-    story: PropTypes.object.isRequired,
-  }
+const StoriesContent = () => {
+  const story = this.props.story;
 
-  render() {
-    const story = this.props.story;
+  return (
+    <div>
+      <section className="background--light-primary hard-sides hard-top">
+        {(() => {
+          if (story.content.ooyalaId.length === 0) return <StoryImage story={story} />;
+          return <SingleVideoPlayer ooyalaId={story.content.ooyalaId} />;
+        })()}
+        <div className="soft soft-double-sides@palm-wide-and-up push-top">
+          <h2 className="capitalize">{story.title}</h2>
+          <h4 className="text-dark-tertiary">{story.subtitle}</h4>
+          <div dangerouslySetInnerHTML={react.markup(story)} />
+        </div>
+      </section>
+      <RelatedContent excludedIds={[story.id]} tags={story.content.tags} />
+    </div>
 
-    return (
-      <div>
-        <section className="background--light-primary hard-sides hard-top">
-          {(() => {
-            if (story.content.ooyalaId.length === 0) return <StoryImage story={story} />;
-            return <SingleVideoPlayer ooyalaId={story.content.ooyalaId} />;
-          })()}
-          <div className="soft soft-double-sides@palm-wide-and-up push-top">
-            <h2 className="capitalize">{story.title}</h2>
-            <h4 className="text-dark-tertiary">{story.subtitle}</h4>
-            <div dangerouslySetInnerHTML={react.markup(story)} />
-          </div>
-        </section>
-        <RelatedContent excludedIds={[story.id]} tags={story.content.tags} />
-      </div>
+  );
+};
 
-    );
-  }
 
-}
+StoriesContent.propTypes = {
+  story: PropTypes.object.isRequired,
+};
+
+export default StoriesContent;

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Give from "./give";
 import Groups from "./groups";
 import Celebrate from "./celebrate";
@@ -40,6 +41,6 @@ if (process.env.NATIVE) {
   );
 }
 
-export {
+export default {
   Routes,
 };

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
@@ -14,7 +14,7 @@ import Shareable from "../../mixins/mixins.Shareable";
 // import content component
 import StoriesContent from "./stories.Content";
 
-const mapQueriesToProps = ({ ownProps, state }) => ({
+const mapQueriesToProps = ({ ownProps }) => ({
   story: {
     query: gql`
       query getStory($id: ID!) {
@@ -56,6 +56,13 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
 export default class StoriesSingle extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    story: {
+      content: PropTypes.object,
+    },
+  }
 
   componentWillMount() {
     if (process.env.WEB) return;

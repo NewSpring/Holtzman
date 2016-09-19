@@ -6,24 +6,24 @@ import backgrounds from "../../util/backgrounds";
 
 export default class SeriesHero extends Component {
 
-  state = {
-    playing: false,
-  }
-
   static propTypes = {
     series: PropTypes.object.isRequired,
   }
 
-  backgroundClasses = () => {
-    return [
+  state = {
+    playing: false,
+  }
+
+  backgroundClasses = () => (
+    [
       "one-whole",
       "overlay--gradient",
       "ratio--square",
       "ratio--landscape@palm-wide",
       "background--fill",
       collections.classes(this.props.series),
-    ].join(" ");
-  }
+    ].join(" ")
+  )
 
   play = () => {
     if (this.player) {
@@ -70,10 +70,13 @@ export default class SeriesHero extends Component {
     const imageLabel = window.isTablet ? "2:1" : "1:1";
     return (
       <section className="relative hard">
-        <div className="one-whole ratio--square ratio--landscape@palm-wide" style={{
-          position: "absolute",
-          zIndex: "10",
-        }}>
+        <div
+          className="one-whole ratio--square ratio--landscape@palm-wide"
+          style={{
+            position: "absolute",
+            zIndex: "10",
+          }}
+        >
           <div className="ratio__item">
             {(() => {
               if (!series.content.ooyalaId) return null;
