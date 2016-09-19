@@ -8,16 +8,17 @@ class SignIn extends Component {
 
   static propTypes = {
     setAccount: PropTypes.func.isRequired,
+    clear: PropTypes.func,
     save: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
-    back: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired, // eslint-disable-line
     forgot: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired,
     account: PropTypes.bool.isRequired,
-    state: PropTypes.string.isRequired,
-    success: PropTypes.bool.isRequired,
-    header: PropTypes.object,
-    toggles: PropTypes.array,
+    header: PropTypes.object, // eslint-disable-line
+    submit: PropTypes.func,
+    toggles: PropTypes.array, // eslint-disable-line
+    completeAccount: PropTypes.func,
+    alternateAccounts: PropTypes.array, // eslint-disable-line
+    peopleWithoutAccountEmails: PropTypes.array, // eslint-disable-line
   }
 
   static defaultProps = { toggles: ["Sign In", "Register"] }
@@ -35,7 +36,7 @@ class SignIn extends Component {
     </div>
   )
 
-  toggle = num => this.props.setAccount(num == 0)
+  toggle = num => this.props.setAccount(num === 0)
 
   isEmail = (value) => {
     const isValid = value.length ? Validate.isEmail(value) : true;
@@ -56,7 +57,7 @@ class SignIn extends Component {
   }
 
   liveSavePassword = (value) => {
-    const isValid = value.length ? true : false;
+    const isValid = value.length;
 
     if (!isValid) {
       this.props.clear("password");
@@ -68,7 +69,7 @@ class SignIn extends Component {
   }
 
   firstName = (value) => {
-    const isValid = value.length ? true : false;
+    const isValid = value.length;
 
     if (!isValid) {
       this.props.clear("firstName");
@@ -80,7 +81,7 @@ class SignIn extends Component {
   }
 
   lastName = (value) => {
-    const isValid = value.length ? true : false;
+    const isValid = value.length;
 
     if (!isValid) {
       this.props.clear("lastName");
@@ -109,17 +110,13 @@ class SignIn extends Component {
     event.preventDefault();
     const { refs } = this;
     const data = { ...this.props.data };
-    for (const input in refs) {
+    for (const input in refs) { // eslint-disable-line
       const component = refs[input];
-      if (component.validate) {
-        component.validate();
-      }
+      if (component.validate) component.validate();
       data[input] = component.getValue();
     }
 
-    if (data.email && data.password) {
-      this.props.submit();
-    }
+    if (data.email && data.password) this.props.submit();
 
     return;
   }
@@ -136,13 +133,13 @@ class SignIn extends Component {
   }
 
   createNewPerson = (e) => {
-    e && e.preventDefault();
+    if (e) e.preventDefault();
     this.setState({ showAlternativePeople: false });
     this.props.clear("data");
   }
 
   completeAccount = (e) => {
-    e && e.preventDefault();
+    if (e) e.preventDefault();
     this.props.completeAccount();
   }
 
@@ -165,19 +162,18 @@ class SignIn extends Component {
           classes={["soft-double-sides@palm-wide-and-up", "soft-sides"]}
           submit={this.submit}
         >
-
-        <div >
-          <Forms.Input
-            name="email"
-            type="email"
-            placeholder="user@email.com"
-            label="Email"
-            errorText="Please enter a valid email"
-            validation={this.isEmail}
-            defaultValue={this.props.data.email}
-            ref="email"
-          />
-        </div>
+          <div>
+            <Forms.Input
+              name="email"
+              type="email"
+              placeholder="user@email.com"
+              label="Email"
+              errorText="Please enter a valid email"
+              validation={this.isEmail}
+              defaultValue={this.props.data.email}
+              ref="email"
+            />
+          </div>
 
         {(() => {
           if (!this.props.account && this.props.alternateAccounts.length) {
@@ -189,7 +185,7 @@ class SignIn extends Component {
                     It looks like you may have a NewSpring account already!
                     <span>
                       &nbsp; Is this your email?<br /><br />
-                      <a href="#" onClick={this.changeEmails} data-email={this.props.alternateAccounts[0]}>
+                      <a onClick={this.changeEmails} data-email={this.props.alternateAccounts[0]}>
                         {this.props.alternateAccounts[0]}
                       </a>?
                     </span>
@@ -205,7 +201,11 @@ class SignIn extends Component {
             );
           }
 
-          if (!this.props.account && this.props.peopleWithoutAccountEmails.length && this.state.showAlternativePeople) {
+          if (
+            !this.props.account &&
+            this.props.peopleWithoutAccountEmails.length &&
+            this.state.showAlternativePeople
+          ) {
             const people = [...this.props.peopleWithoutAccountEmails];
             return (
               <div className="one-whole text-left push-back-double-top">
@@ -214,17 +214,22 @@ class SignIn extends Component {
                   To finish setting it up, select your person and click complete account.
                 </h6>
                 {people.map((person, key) => {
-                  const isActive = () => {
-                    return person.id === this.props.data.id || person.id === this.state.selectedPerson;
-                  };
+                  const isActive = () => (
+                    person.id === this.props.data.id || person.id === this.state.selectedPerson
+                  );
                   return (
-                    <div className="text-left soft-double-left push-top relative" key={key}
+                    <div
+                      className="text-left soft-double-left push-top relative"
+                      key={key}
                       onClick={() => this.selectPerson(person.id)}
                     >
-                    <div className="locked-left">
-                      {/* XXX just used for UI purposes */}
-                      <Forms.Checkbox classes={["push-top", "hard-bottom"]} defaultValue={isActive()} />
-                    </div>
+                      <div className="locked-left">
+                        {/* XXX just used for UI purposes */}
+                        <Forms.Checkbox
+                          classes={["push-top", "hard-bottom"]}
+                          defaultValue={isActive()}
+                        />
+                      </div>
                       <div
                         className="round background--fill display-inline-block push-half-right"
                         style={{
@@ -234,7 +239,10 @@ class SignIn extends Component {
                           verticalAlign: "middle",
                         }}
                       />
-                      <div className="flush hard display-inline-block" style={{ verticalAlign: "middle" }}>
+                      <div
+                        className="flush hard display-inline-block"
+                        style={{ verticalAlign: "middle" }}
+                      >
                         <h5 className="flush-bottom">{person.firstName} {person.lastName}</h5>
                         <h7 className="flush-bottom em text-dark-tertiary">{person.email}</h7>
                       </div>
@@ -246,7 +254,10 @@ class SignIn extends Component {
                   <button className="btn push-top push-bottom" onClick={this.completeAccount}>
                     Complete Account
                   </button>
-                  <a href="#" className="h7 soft-double-bottom text-dark-secondary display-block" onClick={this.createNewPerson}>
+                  <a
+                    className="h7 soft-double-bottom text-dark-secondary display-block"
+                    onClick={this.createNewPerson}
+                  >
                     Register new account
                   </a>
                 </div>
@@ -277,7 +288,7 @@ class SignIn extends Component {
                       errorText="Please enter your first name"
                       validation={this.firstName}
                       defaultValue={this.props.data.firstName}
-                      ref="firstName"
+                      ref="firstName" // eslint-disable-line
                     />
 
                     <Forms.Input
@@ -299,15 +310,20 @@ class SignIn extends Component {
                       defaultValue={this.props.data.terms}
                       clicked={this.saveTerms}
                     >
-                      By signing up you agree to our <a href="//newspring.cc/terms" target="_blank">terms of use</a>
+                      By signing up you agree to our <a
+                        href="//newspring.cc/terms"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >terms of use</a>
                     </Forms.Checkbox>
                   );
                 }
                 return (
                   <div className="push-bottom">
-                    <h7 >
+                    <h7>
                       <small>
-                        <a href="/profile/forgot-password"
+                        <a
+                          href="/profile/forgot-password"
                           className="text-primary"
                           onClick={this.props.forgot}
                         >
@@ -323,7 +339,7 @@ class SignIn extends Component {
                 const { data } = this.props;
                 const btnClasses = ["push-double-bottom"];
 
-                if (data.email === null || data.password === null && !data.terms) {
+                if (data.email === null || (data.password === null && !data.terms)) {
                   btnClasses.push("btn--disabled");
                 } else {
                   btnClasses.push("btn");

@@ -1,5 +1,4 @@
-
-import { Link } from "react-router";
+import { PropTypes } from "react";
 
 const Success = ({ email, goBack }) => (
 
@@ -22,5 +21,9 @@ const Success = ({ email, goBack }) => (
   </div>
 );
 
+Success.propTypes = {
+  email: PropTypes.string,
+  goBack: PropTypes.string,
+};
 
 export default Success;

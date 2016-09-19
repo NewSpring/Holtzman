@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
-import { connect as ApolloConnect } from "react-apollo";
+import { connect as apolloConnect } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
@@ -31,14 +31,22 @@ const mapQueriesToProps = ({ state }) => ({
       }
     `,
     variables: {
-      guid: state.routing.location && state.routing.location.query && state.routing.location.query.guid,
+      guid: (
+        state.routing.location && state.routing.location.query && state.routing.location.query.guid
+      ),
     },
     ssr: false,
   },
 });
 
-@ApolloConnect({ mapQueriesToProps, mapDispatchToProps })
+@apolloConnect({ mapQueriesToProps, mapDispatchToProps })
 export default class AccountsWithData extends Component {
+
+  static propTypes = {
+    setAccount: PropTypes.func.isRequired,
+    save: PropTypes.func.isRequired,
+    peopleWithoutAccountEmails: PropTypes.func.isRequired,
+  }
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.data.loading && nextProps.data.person) {
@@ -56,11 +64,25 @@ export default class AccountsWithData extends Component {
 // We only care about the accounts state
 const mapStateToProps = state => ({ accounts: state.accounts });
 @connect(mapStateToProps, mapDispatchToProps)
-class AccountsContainer extends Component {
+class AccountsContainer extends Component { // eslint-disable-line
 
   static propTypes = {
-    back: PropTypes.func,
+    account: PropTypes.object, // eslint-disable-line
+    accounts: PropTypes.object, // eslint-disable-line
+    authorize: PropTypes.func,
+    completeAccount: PropTypes.func, // eslint-disable-line
+    dispatch: PropTypes.func,
+    hide: PropTypes.func,
     onFinished: PropTypes.func,
+    onSignin: PropTypes.onSignin,
+    remember: PropTypes.func,
+    reset: PropTypes.reset,
+    resetAccount: PropTypes.func,
+    forgot: PropTypes.func,
+    setAccount: PropTypes.func,
+    save: PropTypes.func,
+    clear: PropTypes.func,
+    submit: PropTypes.func,
   }
 
   state = {
@@ -69,15 +91,11 @@ class AccountsContainer extends Component {
   }
 
   componentWillMount() {
-    if (process.env.NATIVE) headerActions.hide();
+    if (process.env.NATIVE) this.props.dispatch(headerActions.hide());
 
-    if (typeof this.props.account != "undefined") {
+    if (typeof this.props.account !== "undefined") {
       this.setState({ account: this.props.account });
     }
-  }
-
-  componentWillUnmount() {
-    if (process.env.NATIVE) headerActions.show();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -87,29 +105,22 @@ class AccountsContainer extends Component {
       const user = Meteor.user();
       const isOld = user && user.profile && user.profile.lastLogin < new Date();
 
-      if (nextProps.accounts.showWelcome && !isOld) {
-        return;
-      }
+      if (nextProps.accounts.showWelcome && !isOld) return;
 
       const finish = () => {
-        this.setState({
-          loading: false,
-        });
+        this.setState({ loading: false });
         // follow up action
-        if (this.props.onFinished) {
-          return this.props.onFinished();
-        }
+        if (this.props.onFinished) return this.props.onFinished();
 
         // close the modal
         this.props.hide();
+        return null;
       };
 
       if (this.props.onSignin) {
-        this.setState({
-          loading: true,
-        });
+        this.setState({ loading: true });
 
-        return this.props.onSignin()
+        this.props.onSignin()
           .then(finish)
           .catch(finish);
       }
@@ -118,42 +129,16 @@ class AccountsContainer extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate() {
     const { reset } = this.props;
 
     if (Object.keys(this.props.accounts.errors).length) {
-      setTimeout(() => {
-        reset();
-      }, 2000);
+      setTimeout(() => reset(), 2000);
     }
   }
 
-  goBack = (e) => {
-    e.preventDefault();
-    if (typeof window != "undefined" && window != null) {
-      window.history.back();
-    }
-  }
-
-  goSignIn = (e) => {
-    e && e.preventDefault();
-    this.props.remember();
-  }
-
-  goBackToDefaultOnBoard = (e) => {
-    e && e.preventDefault();
-    this.props.resetAccount();
-  }
-
-  goForgotPassword = (e) => {
-    e && e.preventDefault();
-    this.props.forgot();
-  }
-
-  signout = (e) => {
-    e.preventDefault();
-    Meteor.logout();
-    this.props.authorize(false);
+  componentWillUnmount() {
+    if (process.env.NATIVE) this.props.dispatch(headerActions.show());
   }
 
   setAccountWrapper = (bool) => {
@@ -161,11 +146,38 @@ class AccountsContainer extends Component {
     this.props.setAccount(bool);
   }
 
+  goBack = (e) => {
+    e.preventDefault();
+    if (typeof window !== "undefined" && window != null) {
+      window.history.back();
+    }
+  }
+
+  goSignIn = (e) => {
+    if (e) e.preventDefault();
+    this.props.remember();
+  }
+
+  goBackToDefaultOnBoard = (e) => {
+    if (e) e.preventDefault();
+    this.props.resetAccount();
+  }
+
+  goForgotPassword = (e) => {
+    if (e) e.preventDefault();
+    this.props.forgot();
+  }
+
+  signout = (e) => {
+    if (e) e.preventDefault();
+    Meteor.logout();
+    this.props.authorize(false);
+  }
+
   render() {
-    let {
+    const {
       data,
       errors,
-      state,
       success,
       forgot,
       authorized,
@@ -176,6 +188,8 @@ class AccountsContainer extends Component {
       resettingAccount,
     } = this.props.accounts;
 
+    let { state } = this.props.accounts;
+
     if (this.state.loading) state = "loading";
     let account = this.props.accounts.account;
 
@@ -183,7 +197,7 @@ class AccountsContainer extends Component {
 
     if (Object.keys(errors).length) {
       let primaryError;
-      for (const error in errors) {
+      for (const error in errors) { // eslint-disable-line
         primaryError = errors[error];
         break;
       }
