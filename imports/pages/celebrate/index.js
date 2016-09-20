@@ -1,5 +1,3 @@
-import { Component, PropTypes } from "react";
-
 import Meta from "../../components/meta";
 import Intro from "./intro/index";
 
@@ -19,39 +17,34 @@ import NewSpringNetwork from "./newspring-network/index";
 
 import Closing from "./closing/index";
 
-class Template extends Component {
-  render() {
-    return (
-      <div>
-        <Meta title="Annual Report" />
+const Template = () => (
+  <div>
+    <Meta title="Annual Report" />
 
-        <Intro />
+    <Intro />
 
-        <Salvation />
-        <Baptism />
-        <CareRoom />
-        <Serving />
+    <Salvation />
+    <Baptism />
+    <CareRoom />
+    <Serving />
 
-        <KidSpring />
-        <Fuse />
-        <GauntletX />
+    <KidSpring />
+    <Fuse />
+    <GauntletX />
 
-        <FloodSCWithLove />
+    <FloodSCWithLove />
 
-        <ClemsonForChristmas />
+    <ClemsonForChristmas />
 
-        <Missions />
+    <Missions />
 
-        <Web />
-        <SocialMedia />
-        <NewSpringNetwork />
+    <Web />
+    <SocialMedia />
+    <NewSpringNetwork />
 
-        <Closing />
-      </div>
-
-    );
-  }
-}
+    <Closing />
+  </div>
+);
 
 
 const Routes = [
