@@ -1,4 +1,4 @@
-
+import PropTypes from "react";
 
 function style(disabled) {
   if (disabled) {
@@ -16,5 +16,11 @@ const Label = ({ labelFor, labelName, disabled }) => (
     {labelName}
   </label>
 );
+
+Label.propTypes = {
+  labelFor: PropTypes.string,
+  labelName: PropTypes.string,
+  disabled: PropTypes.bool,
+};
 
 export default Label;
