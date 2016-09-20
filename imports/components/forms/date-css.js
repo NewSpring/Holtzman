@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /* DayPicker styles */
 const Styles = () => (
   <style>{`\
