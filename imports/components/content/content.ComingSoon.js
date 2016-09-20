@@ -1,7 +1,6 @@
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 
 export default class ComingSoon extends Component {
-
 
   overlayStyles = {
     backgroundColor: "rgba(0,0,0,0.5)",
@@ -10,16 +9,15 @@ export default class ComingSoon extends Component {
     position: "fixed",
   }
 
-  overlayClasses = () => {
-    return [
+  overlayClasses = () =>
+    [
       "one-whole",
       "soft-double-top",
       "floating--top",
     ].join(" ");
-  }
 
-  containerClasses = () => {
-    return [
+  containerClasses = () =>
+    [
       "background--light-secondary",
       "rounded",
       "three-quarters",
@@ -27,17 +25,14 @@ export default class ComingSoon extends Component {
       "floating__item",
       "push-double-top",
     ].join(" ");
-  }
-
 
   render() {
     return (
-
-        <div style={this.overlayStyles} className={this.overlayClasses()}>
-          <div style={this.containerStyles} className={this.containerClasses()}>
-            <h3 className="text-dark-secondary">Discover Is Coming Soon!</h3>
-          </div>
+      <div style={this.overlayStyles} className={this.overlayClasses()}>
+        <div style={this.containerStyles} className={this.containerClasses()}>
+          <h3 className="text-dark-secondary">Discover Is Coming Soon!</h3>
         </div>
+      </div>
     );
   }
 
