@@ -75,10 +75,10 @@ export default class AudioPlayerUtility extends Component {
       return;
     }
 
-    if (this.player && this.player.stop) {
-      this.player.stop();
-      this.player.release();
-    }
+    // if (this.player && this.player.stop) {
+    //   this.player.stop();
+    //   this.player.release();
+    // }
 
     if (track.file.indexOf("http") === -1) {
       track.file = `https:${track.file}`;
@@ -102,11 +102,14 @@ export default class AudioPlayerUtility extends Component {
       }
 
     }, () => {}, function audioEventStream(STATUS) {
+      if (this.done) return;
       // this === Media object
       if (STATUS === Media.MEDIA_STOPPED) {
         const length = this.getDuration();
         if (length === player.getDuration()) { // reached the end of the song
           for (let cb of this.endedCallbacks) cb();
+          delete this.endedCallbacks;
+          this.done = true;
         }
       }
     });
