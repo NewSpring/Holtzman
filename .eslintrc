@@ -26,6 +26,9 @@
     "react/no-string-refs": 0
   },
   "settings": {
-    "import/core-modules": [ "meteor/meteor" ]
+    "import/core-modules": [
+      "meteor/meteor",
+      "meteor/accounts-base"
+    ]
   }
 }
