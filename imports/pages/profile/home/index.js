@@ -7,14 +7,13 @@ import Likes from "../../../blocks/likes";
 import Following from "../../../blocks/following";
 
 import {
-  accounts as accountsActions,
   nav as navActions,
   header as headerActions,
 } from "../../../store";
 
 import { avatar } from "../../../methods/files/browser";
 
-const mapQueriesToProps = ({ state }) => ({
+const mapQueriesToProps = () => ({
   data: {
     query: gql`
       query GetPerson {
@@ -37,12 +36,17 @@ const mapStateToProps = state => ({ authorized: state.accounts.authorized });
 @connect({ mapQueriesToProps, mapStateToProps })
 export default class Home extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.function.isRequired,
+    data: {
+      person: PropTypes.object.isRequired,
+    },
+  }
+
   state = {
     content: 0,
     photo: null,
   }
-
-  content = [<Likes />, <Following />]
 
   componentDidMount() {
     if (process.env.NATIVE) {
@@ -52,16 +56,10 @@ export default class Home extends Component {
       };
 
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
+      this.changeHeaderState();
     }
 
     this.props.dispatch(navActions.setLevel("TOP"));
-  }
-
-  getContent = () => {
-    return this.content[this.state.content];
   }
 
   onToggle = (toggle) => {
@@ -87,11 +85,9 @@ export default class Home extends Component {
       headers: { [tokenName]: token },
       body: data,
     })
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => (response.json()))
       .then((id) => {
-        avatar(id, (err, response) => {
+        avatar(id, () => {
           updateUser(Meteor.userId(), this.props.dispatch);
         });
       });
@@ -103,22 +99,32 @@ export default class Home extends Component {
     };
 
     for (const file in files) {
-      const { name } = files[file];
       const reader = new FileReader();
 
       // Closure to capture the file information.
-      reader.onload = ((theFile) => {
-        return (e) => {
-          // Render thumbnail.
-          return save(e.target.result);
-        };
-      })(files[file]);
+      reader.onload = (() => (
+        (event) => (
+          save(event.target.result) // Render thumbnail
+        )
+      ))(files[file]);
 
       // Read in the image file as a data URL.
       reader.readAsDataURL(files[file]);
 
       break;
     }
+  }
+
+  getContent = () => (
+    this.content[this.state.content]
+  )
+
+  content = [<Likes />, <Following />]
+
+  changeHeaderState = () => {
+    this.setState({
+      __headerSet: true,
+    });
   }
 
   render() {

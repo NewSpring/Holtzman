@@ -15,6 +15,7 @@ export default class Layout extends Component {
     saveMonth: PropTypes.func.isRequired,
     days: PropTypes.array.isRequired,
     years: PropTypes.array.isRequired,
+    campuses: PropTypes.array.isRequired,
   }
 
   submit = (e) => {
@@ -39,7 +40,7 @@ export default class Layout extends Component {
   }
 
   render() {
-    const { submit, person, months, saveMonth, days, years, campuses } = this.props;
+    const { person, months, saveMonth, days, years, campuses } = this.props;
 
     const {
       campus,
@@ -54,13 +55,23 @@ export default class Layout extends Component {
 
     return (
       <div
-        className="background--light-primary one-whole text-center push-top push-double-top@lap-and-up soft-double-bottom push-double-bottom"
+        className={
+          "background--light-primary one-whole text-center push-top " +
+          "push-double-top@lap-and-up soft-double-bottom push-double-bottom"
+        }
       >
-      <Meta title="Update your details" />
+        <Meta title="Update your details" />
         <Back />
         <Forms.Form
           id="reset-password"
-          classes={["soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block", "soft-double-sides@palm-wide"]}
+          classes={[
+            "soft",
+            "one-whole",
+            "two-thirds@portable",
+            "one-half@anchored",
+            "display-inline-block",
+            "soft-double-sides@palm-wide",
+          ]}
           submit={this.submit}
         >
           <div className="push-double">
@@ -70,13 +81,13 @@ export default class Layout extends Component {
           </div>
 
           <h6 className="soft-bottom">Name</h6>
-            <Forms.Input
-              name="NickName"
-              label="Nickname"
-              ref="NickName"
-              type="text"
-              defaultValue={nickName}
-            />
+          <Forms.Input
+            name="NickName"
+            label="Nickname"
+            ref="NickName"
+            type="text"
+            defaultValue={nickName}
+          />
 
           <div className="grid">
             <div className="grid__item one-half">
@@ -102,7 +113,7 @@ export default class Layout extends Component {
           </div>
 
 
-        <h6 className="soft-bottom">Contact</h6>
+          <h6 className="soft-bottom">Contact</h6>
           <Forms.Input
             name="Email"
             placeholder="user@email.com"
@@ -114,65 +125,69 @@ export default class Layout extends Component {
             defaultValue={email}
           />
 
-        <h6 className="soft-bottom">Birthday</h6>
-        <div className="grid">
-          <div className="grid__item three-fifths">
-            <div className="grid">
-              <div className="grid__item one-half">
-                <Forms.Select
-                  name="BirthMonth"
-                  label="Month"
-                  ref="BirthMonth"
-                  type="text"
-                  defaultValue={birthMonth}
-                  includeBlank
-                  items={months}
-                  validation={saveMonth}
-                />
-              </div>
-              <div className="grid__item one-half">
-                <Forms.Select
-                  name="BirthDay"
-                  label="Day"
-                  ref="BirthDay"
-                  type="text"
-                  defaultValue={birthDay}
-                  includeBlank
-                  items={days}
-                />
+          <h6 className="soft-bottom">Birthday</h6>
+          <div className="grid">
+            <div className="grid__item three-fifths">
+              <div className="grid">
+                <div className="grid__item one-half">
+                  <Forms.Select
+                    name="BirthMonth"
+                    label="Month"
+                    ref="BirthMonth"
+                    type="text"
+                    defaultValue={birthMonth}
+                    includeBlank
+                    items={months}
+                    validation={saveMonth}
+                  />
+                </div>
+                <div className="grid__item one-half">
+                  <Forms.Select
+                    name="BirthDay"
+                    label="Day"
+                    ref="BirthDay"
+                    type="text"
+                    defaultValue={birthDay}
+                    includeBlank
+                    items={days}
+                  />
+                </div>
+
               </div>
 
             </div>
-
+            <div className="grid__item two-fifths">
+              <Forms.Select
+                name="BirthYear"
+                label="Year"
+                ref="BirthYear"
+                type="text"
+                defaultValue={birthYear}
+                includeBlank
+                items={years}
+              />
+            </div>
           </div>
-          <div className="grid__item two-fifths">
-            <Forms.Select
-              name="BirthYear"
-              label="Year"
-              ref="BirthYear"
-              type="text"
-              defaultValue={birthYear}
-              includeBlank
-              items={years}
-            />
-          </div>
-        </div>
-        <h6 className="soft-bottom">Campus</h6>
-        <Forms.Select
-          name="Campus"
-          label="Campus"
-          type="Campus"
-          defaultValue={campus && campus.id || false}
-          ref="Campus"
-          includeBlank
-          items={campuses ? campuses : []}
-        />
+          <h6 className="soft-bottom">Campus</h6>
+          <Forms.Select
+            name="Campus"
+            label="Campus"
+            type="Campus"
+            defaultValue={(campus && campus.id) || false}
+            ref="Campus"
+            includeBlank
+            items={campuses || []}
+          />
 
-        {/*
-          <Link to="/profile/settings" tabIndex={-1} className="btn--small btn--dark-tertiary display-inline-block">
+          {/*
+          <Link
+            to="/profile/settings"
+            tabIndex={-1}
+            className="btn--small btn--dark-tertiary display-inline-block"
+          >
             Back
           </Link>
-           */}
+          */}
           {(() => {
             const btnClasses = [];
             const ready = true;
