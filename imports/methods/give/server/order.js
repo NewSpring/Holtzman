@@ -4,8 +4,9 @@ import { order as gatewayOrder } from "./nmi";
 import createSchedule from "./createSchedule";
 
 
-function order(orderData, instant, id) {
+function order(data, instant, id) {
   let user = null;
+  const orderData = data;
   if (this.userId) user = Meteor.users.findOne({ _id: this.userId });
 
   // default to sale
@@ -16,7 +17,7 @@ function order(orderData, instant, id) {
   if (orderData["start-date"]) method = "add-subscription";
   if (orderData.amount === 0) method = "validate";
 
-  if (user && user.services.rock && method != "add-subscription") {
+  if (user && user.services.rock && method !== "add-subscription") {
     orderData["customer-id"] = user.services.rock.PrimaryAliasId;
   }
 
@@ -34,7 +35,7 @@ function order(orderData, instant, id) {
     }
   }
 
-  if (method != "add-subscription") {
+  if (method !== "add-subscription") {
     // add in IP address
     const { connection } = this;
     let ip = connection.clientAddress;

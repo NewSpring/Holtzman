@@ -1,10 +1,8 @@
 
 
 Meteor.methods({
-  "communication/slack/send": function (text, room) {
-    if (!Meteor.settings.slack || !text) {
-      return;
-    }
+  "communication/slack/send": function sendSlack(text, room) {
+    if (!Meteor.settings.slack || !text) return Promise.resolve();
 
     const message = {
       username: "Apollos",
@@ -12,9 +10,8 @@ Meteor.methods({
       text,
     };
 
-    if (room) {
-      message.channel = room;
-    }
+    if (room) message.channel = room;
+
     return fetch(Meteor.settings.slack, {
       method: "POST",
       body: JSON.stringify(message),
