@@ -1,7 +1,6 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
-import Meta from "react-helmet";
 import gql from "graphql-tag";
 
 // loading state
@@ -27,7 +26,7 @@ import {
 // import content component
 import Content from "./articles.Content";
 
-const mapQueriesToProps = ({ ownProps, state }) => ({
+const mapQueriesToProps = ({ ownProps }) => ({
   article: {
     query: gql`
       query getArticle($id: ID!) {
@@ -72,6 +71,13 @@ const defaultArray = [];
 @ReactMixin.decorate(Headerable)
 export default class ArticlesSingle extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    article: {
+      content: PropTypes.object.isRequired,
+    },
+  }
+
   componentWillMount() {
     if (process.env.WEB) return;
     this.props.dispatch(navActions.setLevel("CONTENT"));
@@ -112,17 +118,24 @@ export default class ArticlesSingle extends Component {
                   aspect="square"
                 />
               );
-            } else {
-              return <SingleVideoPlayer ooyalaId={article.content.ooyalaId} />;
             }
+            return <SingleVideoPlayer ooyalaId={article.content.ooyalaId} />;
           })()}
         </Split>
         <Left scroll >
           <div className="one-whole">
-            <section className="soft@palm soft-double-sides@palm-wide-and-up soft@lap soft-double@lap-wide-and-up push-top push-double-top@lap-and-up">
+            <section
+              className={
+                "soft@palm soft-double-sides@palm-wide-and-up soft@lap " +
+                "soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
+              }
+            >
               <Content article={article} />
             </section>
-            <RelatedContent excludedIds={[article.id]} tags={article.content.tags || defaultArray} />
+            <RelatedContent
+              excludedIds={[article.id]}
+              tags={article.content.tags || defaultArray}
+            />
           </div>
         </Left>
       </div>
