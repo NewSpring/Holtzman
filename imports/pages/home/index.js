@@ -1,13 +1,12 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
-import { Link } from "react-router";
 
 import Split, { Left, Right } from "../../blocks/split";
 
 import ApollosPullToRefresh from "../../components/pullToRefresh";
-import Loading, { FeedItemSkeleton } from "../../components/loading";
+import { FeedItemSkeleton } from "../../components/loading";
 import FeedItem from "../../components/cards/cards.FeedItem";
 
 import { nav as navActions } from "../../store";
@@ -20,7 +19,7 @@ import content from "../../util/content";
 
 import HomeHero from "./home.Hero";
 
-const mapQueriesToProps = ({ ownProps, state }) => ({
+const mapQueriesToProps = ({ state }) => ({
   data: {
     query: gql`
       fragment ContentForFeed on Content {
@@ -80,6 +79,16 @@ const mapStateToProps = state => ({
 @ReactMixin.decorate(Headerable)
 export default class Home extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    topics: PropTypes.object.isRequired,
+    paging: PropTypes.object.isRequired,
+    data: {
+      refetch: PropTypes.func.isRequired,
+      feed: PropTypes.array.isRequired,
+    },
+  }
+
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     this.headerAction({
@@ -110,7 +119,13 @@ export default class Home extends Component {
     }
     return (
       feedItems.map((item, i) => (
-        <div className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored" key={i}>
+        <div
+          className={
+            "grid__item one-half@palm-wide-and-up flush-bottom@palm " +
+            "push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+          }
+          key={i}
+        >
           {(() => {
             if (typeof item === "number") return <FeedItemSkeleton />;
             return <FeedItem item={item} />;
@@ -124,7 +139,9 @@ export default class Home extends Component {
   render() {
     const { feed } = this.props.data;
 
-    let photo, heroItem, heroLink;
+    let photo;
+    let heroItem;
+    let heroLink;
     if (feed) {
       heroItem = feed[0];
       heroLink = content.links(heroItem);
@@ -135,29 +152,41 @@ export default class Home extends Component {
       }
     }
     return (
-        <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
-          <Split nav classes={["background--light-primary"]}>
-            <Right
-              mobile
-              background={photo}
-              classes={["floating--bottom", "text-left", "background--dark-primary"]}
-              ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up", "floating--bottom", "text-left"]}
-              aspect="square"
-              link={heroLink}
-            >
+      <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
+        <Split nav classes={["background--light-primary"]}>
+          <Right
+            mobile
+            background={photo}
+            classes={["floating--bottom", "text-left", "background--dark-primary"]}
+            ratioClasses={[
+              "floating__item",
+              "overlay__item",
+              "one-whole",
+              "soft@lap-and-up",
+              "floating--bottom",
+              "text-left",
+            ]}
+            aspect="square"
+            link={heroLink}
+          >
 
-              <HomeHero item={heroItem ? heroItem : {}} />
+            <HomeHero item={heroItem || {}} />
 
-            </Right>
-          </Split>
-          <Left scroll ref="container">
-            <section className="background--light-secondary soft-half@palm soft@palm-wide-and-up soft-double@anchored">
-              <div className="grid">
-                {this.renderFeed()}
-              </div>
-            </section>
-          </Left>
-        </ApollosPullToRefresh>
+          </Right>
+        </Split>
+        <Left scroll ref="container">
+          <section
+            className={
+              "background--light-secondary soft-half@palm " +
+              "soft@palm-wide-and-up soft-double@anchored"
+            }
+          >
+            <div className="grid">
+              {this.renderFeed()}
+            </div>
+          </section>
+        </Left>
+      </ApollosPullToRefresh>
     );
   }
 
