@@ -14,6 +14,8 @@ export default class Tag extends Component {
     active: PropTypes.bool,
     val: PropTypes.string.isRequired,
     canBeActive: PropTypes.bool,
+    router: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
   }
 
   static defaultProps = {
@@ -39,20 +41,12 @@ export default class Tag extends Component {
     }
   }
 
-  isInQueryString = (props) => {
-    const { val } = props;
-    const { query } = props.location;
-    if (!query || !query.tags) return false;
-
-    const tags = query.tags.toLowerCase().split(",").filter(x => x);
-    return tags.indexOf(val.toLowerCase()) > -1;
-  }
-
   onClick = (e) => {
     if (e) e.stopPropagation();
-    let { val, onClick, router, location, clickAble, canBeActive } = this.props;
+    let { val } = this.props;
+    const { onClick, router, location, clickAble, canBeActive } = this.props;
 
-    if (!clickAble) return null;
+    if (!clickAble) return;
 
     if (canBeActive) this.setState({ isActive: !this.state.isActive });
 
@@ -83,6 +77,15 @@ export default class Tag extends Component {
     }
     const newPath = router.createPath(location);
     router.replace(newPath);
+  }
+
+  isInQueryString = (props) => {
+    const { val } = props;
+    const { query } = props.location;
+    if (!query || !query.tags) return false;
+
+    const tags = query.tags.toLowerCase().split(",").filter(x => x);
+    return tags.indexOf(val.toLowerCase()) > -1;
   }
 
   render() {
