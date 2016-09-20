@@ -5,23 +5,45 @@ import Label from "./components/Label";
 export default class Checkbox extends React.Component {
 
   static propTypes = {
-    classes: PropTypes.array,
-    validation: PropTypes.func,
+    defaultValue: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string,
+    ]),
     status: PropTypes.string,
+    disabled: PropTypes.any, // eslint-disable-line
+    validation: PropTypes.func,
     errorText: PropTypes.string,
     theme: PropTypes.string,
     type: PropTypes.string,
+    error: PropTypes.any, // eslint-disable-line
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    children: PropTypes.any, // eslint-disable-line
     id: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
-    defaultValue: PropTypes.string,
+    inputClasses: PropTypes.array, // eslint-disable-line
     clicked: PropTypes.func,
-    inputClasses: PropTypes.array
+    hideLabel: PropTypes.bool,
   }
 
   state = {
     status: false,
     error: false,
+  }
+
+  setStatus = (message) => {
+    this.props.status = message;
+    return undefined;
+  }
+
+  disabled = () => {
+    if (this.props.disabled) {
+      return disabled; // eslint-disable-line
+    }
+    return undefined;
   }
 
   validate = (event) => {
@@ -41,11 +63,7 @@ export default class Checkbox extends React.Component {
     }
   }
 
-  setStatus = (message) => {
-    this.props.status = message;
-  }
-
-  renderHelpText(message) {
+  renderHelpText() {
     if ((this.state.error && this.props.errorText) || this.state.status) {
       return (
         <span className="input__status">
@@ -53,6 +71,7 @@ export default class Checkbox extends React.Component {
         </span>
       );
     }
+    return undefined;
   }
 
   render() {
