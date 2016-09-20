@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import { Link } from "react-router";
+// import { Link } from "react-router";
 
 import Card from "./index";
 import styles from "../../util/styles";
@@ -12,12 +12,7 @@ import time from "../../util/time";
 export default class FeedItem extends Component {
 
   static propTypes = {
-    // item: PropTypes.object.isRequired
-  }
-
-  isSeriesItem = () => {
-    const { channelName } = this.props.item;
-    return (channelName === "series_newspring" || channelName === "sermons");
+    item: PropTypes.object.isRequired // eslint-disable-line
   }
 
   isLight = () => {
@@ -34,6 +29,11 @@ export default class FeedItem extends Component {
       return backgrounds.image(item.parent);
     }
     return backgrounds.image(item);
+  }
+
+  isSeriesItem = () => {
+    const { channelName } = this.props.item;
+    return (channelName === "series_newspring" || channelName === "sermons");
   }
 
   overlayStyles = (item) => {
@@ -76,16 +76,15 @@ export default class FeedItem extends Component {
   }
 
   h4Classes = () => {
-
     return [
       !this.isLight() ? "text-light-primary" : "text-dark-primary",
       "capitalize",
     ].join(" ");
   }
 
-  categoryClasses = () => {
-    return !this.isLight() ? "text-light-primary" : "text-dark-secondary";
-  }
+  categoryClasses = () => (
+    !this.isLight() ? "text-light-primary" : "text-dark-secondary"
+  );
 
   timeClasses = () => {
     const classes = ["text-right", "float-right", "flush-bottom"];
