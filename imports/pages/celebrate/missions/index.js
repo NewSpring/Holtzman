@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -22,6 +20,7 @@ const missionNumbers = [
   // { count: "47", label: "Salvations on Mission Trips" },
 ];
 
+/* eslint-disable max-len */
 const Missions = () => (
   <div className="display-inline-block text-center one-whole ">
     <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
@@ -40,19 +39,25 @@ const Missions = () => (
 
 
         <FitText compressor={0.2}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontSize: "150px",
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontSize: "150px",
+              fontWeight: "900",
+            }}
+          >
               47
           </h1>
         </FitText>
 
         <FitText compressor={0.7}>
-          <h1 className="uppercase push-back-top text-light-primary" style={{
-            fontSize: "40px",
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase push-back-top text-light-primary"
+            style={{
+              fontSize: "40px",
+              fontWeight: "900",
+            }}
+          >
             Salvations
           </h1>
         </FitText>
@@ -152,7 +157,9 @@ const Missions = () => (
 
     </div>
 
-    <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
+    <div
+      className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up"
+    >
 
       <h3
         className="text-center soft-half-top flush-bottom"
@@ -163,9 +170,10 @@ const Missions = () => (
         style={{ fontFamily: "ff-meta-serif-web-pro, serif" }}
       >Every Name Has a Story</h5>
 
-    <List items={missionNumbers} />
+      <List items={missionNumbers} />
     </div>
   </div>
 );
+/* eslint-enable max-len */
 
 export default Missions;
