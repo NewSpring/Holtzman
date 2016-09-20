@@ -6,7 +6,6 @@
 
 if (Meteor.isCordova) {
   document.addEventListener("deviceready", (event) => {
-
     Media.prototype.timeupdate = function(callback){
       return setInterval(() => {
         this.getCurrentPosition(function(position) {
