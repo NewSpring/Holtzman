@@ -2,7 +2,7 @@
 import { api } from "../../../util/rock";
 
 Meteor.methods({
-  "rock/accounts/update": function (data) {
+  "rock/accounts/update": function updateAccount(data) {
     if (!this.userId) {
       throw new Meteor.Error("You must be logged in to change your information");
     }
@@ -12,7 +12,7 @@ Meteor.methods({
     const Person = { ...data };
 
     // clean up data
-    for (const key in Person) {
+    for (const key in Person) { // eslint-disable-line
       if (!Person[key]) {
         delete Person[key];
       }

@@ -1,8 +1,9 @@
 /* global Meteor, check */
-import StripTags from "striptags";
+import stripTags from "striptags";
+import moment from "moment";
+
 import { api } from "../../../util/rock";
 import { makeNewGuid } from "../../../util";
-import Moment from "moment";
 
 let NEW_USER_EMAL_ID = false;
 Meteor.methods({
@@ -34,7 +35,7 @@ Meteor.methods({
 
     // if they do, kill it with fire
     if (userAccount) {
-      Meteor.users.remove(userAccount._id);
+      Meteor.users.remove(userAccount._id); // eslint-disable-line
     }
 
     let meteorUserId = null;
@@ -62,8 +63,8 @@ Meteor.methods({
     let Person = {
       Email: account.email,
       Guid: makeNewGuid(),
-      FirstName: StripTags(account.firstName),
-      LastName: StripTags(account.lastName),
+      FirstName: stripTags(account.firstName),
+      LastName: stripTags(account.lastName),
       IsSystem: false,
       Gender: 0,
       ConnectionStatusValueId: 67, // Web Prospect
@@ -79,7 +80,7 @@ Meteor.methods({
       UserName: account.email,
       IsConfirmed: true,
       PlainTextPassword: account.password,
-      LastLoginDateTime: `${Moment().toISOString()}`,
+      LastLoginDateTime: `${moment().toISOString()}`,
     };
 
     const createdUser = api.post.sync("UserLogins", user);
@@ -114,7 +115,7 @@ Meteor.methods({
           User: UserLogin,
 
         }
-        , (err, response) => {}
+        , () => {}
       );
 
       if (process.env.NODE_ENV === "production") {
