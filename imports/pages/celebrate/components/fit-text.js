@@ -1,84 +1,47 @@
 
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import ReactDOM from "react-dom";
 
 const map = store => ({
   width: store.responsive.width,
 });
 
-// @connect(map)
-const FitText = React.createClass({
-  getDefaultProps() {
-    return {
-      compressor: 1.0,
-      minFontSize: Number.NEGATIVE_INFINITY,
-      maxFontSize: Number.POSITIVE_INFINITY,
-    };
-  },
+@connect(map)
+export default class FitText extends Component {
+  static propTypes = {
+    compressor: PropTypes.number.isRequired,
+    maxFontSize: PropTypes.number.isRequired,
+    minFontSize: PropTypes.number.isRequired,
+    children: PropTypes.object.isRequired,
+  }
 
-  componentDidUpdate() {
-    this.setFontSize();
-  },
+  static defaultProps = {
+    compressor: 1.0,
+    minFontSize: Number.NEGATIVE_INFINITY,
+    maxFontSize: Number.POSITIVE_INFINITY,
+  }
 
   componentDidMount() {
     this.setFontSize();
-  },
+  }
+
+  componentDidUpdate() {
+    this.setFontSize();
+  }
 
   setFontSize() {
     const element = this.element.children[0];
     const width = element.offsetWidth;
-
-    element.style.fontSize = Math.max(
+    const max = Math.max(
       Math.min(
         (width / (this.props.compressor * 10)),
         parseFloat(this.props.maxFontSize)),
         parseFloat(this.props.minFontSize)
-      ) + "px";
-  },
+    );
+    element.style.fontSize = `${max}px`;
+  }
 
   render() {
-    return <div ref={node => this.element = node}>{this.props.children}</div>;
-  },
-});
-// class FitText extends Component {
-//
-//   static defaultProps = {
-//     compressor: 1.0,
-//     minFontSize: Number.NEGATIVE_INFINITY,
-//     maxFontSize: Number.POSITIVE_INFINITY
-//   }
-//
-//   static propTypes: {
-//     children: PropTypes.element.isRequired,
-//     compressor: PropTypes.number,
-//     minFontSize: PropTypes.number,
-//     maxFontSize: PropTypes.number,
-//   }
-//
-//   componentDidUpdate() {
-//     this.setFontSize()
-//   }
-//
-//   componentDidMount() {
-//     this.setFontSize()
-//   }
-//
-//   setFontSize = () => {
-//     const element = ReactDOM.findDOMNode(this);
-//     const width = element.offsetWidth;
-//
-//     element.style.fontSize = Math.max(
-//       Math.min(
-//         (width / (this.props.compressor * 10)),
-//         parseFloat(this.props.maxFontSize)),
-//         parseFloat(this.props.minFontSize)
-//       ) + "px";
-//   }
-//
-//   render() {
-//     return this.props.children;
-//   }
-// }
-
-export default connect(map)(FitText);
+    return <div ref={node => { this.element = node; }}>{this.props.children}</div>;
+  }
+}
