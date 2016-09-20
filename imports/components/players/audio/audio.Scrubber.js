@@ -26,6 +26,12 @@ export default class AudioScrubber extends Component {
     override: false
   }
 
+  // Added cleanup methods for timeOut events
+  componentWillUnmount() {
+    if (this.onTouchEndTimeout) clearTimeout(this.touchEndTimeout);
+    if (this.onClickTimeout) clearTimeout(this.onClickTimeout);
+  }
+
   scrubStyle = () => {
     let { progress } = this.props;
     const { lastPercent, override } = this.state;
@@ -57,7 +63,7 @@ export default class AudioScrubber extends Component {
       this.seek(percent);
     };
 
-    setTimeout(() => {
+    this.touchEndTimeout = setTimeout(() => {
       // Set states back to intial values so that time updates,
       // and click events will happen appropriatly.
       // Timeout is a full second as a shorter timeout did not
@@ -90,7 +96,7 @@ export default class AudioScrubber extends Component {
       // We need to set the state back to it's initial value to allow incrementing
       // of the current time.
       // Timeout is a full second as a shorter timeout did not set the state appropriatly.
-      setTimeout(() => {
+      this.onClickTimeout = setTimeout(() => {
         this.setState({
           override: false
         });
