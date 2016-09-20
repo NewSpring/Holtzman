@@ -1,6 +1,5 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
-import { Link } from "react-router";
 import gql from "graphql-tag";
 import ReactMixin from "react-mixin";
 
@@ -57,6 +56,13 @@ const defaultArray = [];
 @ReactMixin.decorate(Headerable)
 export default class Template extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: {
+      group: PropTypes.object.isRequired,
+    },
+  }
+
   componentWillMount() {
     this.headerAction({ title: "Group Profile" });
   }
@@ -75,7 +81,8 @@ export default class Template extends Component {
     if (e && e.preventDefault) e.preventDefault();
 
     const { currentTarget } = e;
-    const message = currentTarget.querySelectorAll("textarea")[0].value.replace(new RegExp("\\n", "gmi"), "<br/>");
+    const message = currentTarget.querySelectorAll("textarea")[0].value
+      .replace(new RegExp("\\n", "gmi"), "<br/>");
 
     Meteor.call("community/actions/join",
       this.props.data.group.entityId, message, callback
@@ -97,33 +104,38 @@ export default class Template extends Component {
       onFinished: joinModal,
       coverHeader: true,
     }));
+
+    return null;
   }
 
   render() {
     const { data } = this.props;
 
-    if (data.loading) return (
-      <div>
-        <Split>
-          {/* Map */}
-          <Right mobile={false} classes={["background--left"]} />
-        </Split>
-        <Left scroll classes={["background--light-secondary"]}>
-          <div className="soft-double text-center">
-            <Loading />
-          </div>
-        </Left>
-      </div>
-    );
+    if (data.loading) {
+      return (
+        <div>
+          <Split>
+            {/* Map */}
+            <Right mobile={false} classes={["background--left"]} />
+          </Split>
+          <Left scroll classes={["background--light-secondary"]}>
+            <div className="soft-double text-center">
+              <Loading />
+            </div>
+          </Left>
+        </div>
+      );
+    }
 
 
-    let { group, person, errors } = data;
-    let isLeader;
+    const { group, person } = data;
     const leaders = group && group.members && group.members
       .filter(x => x.role.toLowerCase() === "leader");
 
-    isLeader = person && leaders.filter(x => x.id === person.id).length;
-    group.photo || (group.photo = "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png");
+    const isLeader = person && leaders.filter(x => x.id === person.id).length;
+    if (!group.photo) {
+      group.photo = "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png";
+    }
 
     let markers = defaultArray;
     if (group.locations && group.locations.length && group.locations[0].location) {
@@ -131,7 +143,7 @@ export default class Template extends Component {
       markers = [{ latitude, longitude }];
     }
     let isMobile;
-    if (typeof window != "undefined" && window != null) {
+    if (typeof window !== "undefined" && window !== null) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
     }
     return (
