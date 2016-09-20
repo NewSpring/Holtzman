@@ -11,6 +11,8 @@ export default class DevotionsSingleContent extends Component {
 
   static propTypes = {
     devotion: PropTypes.object.isRequired,
+    classes: PropTypes.array.isRequired,
+    onClickLink: PropTypes.func.isRequired,
   }
 
   getClasses = () => {
@@ -47,27 +49,27 @@ export default class DevotionsSingleContent extends Component {
             />
           );
         })()}
-          <div className="soft soft-double@palm-wide-and-up push-top">
-            <h2 className="capitalize">{devotion.title}</h2>
-            {/* XXX update scripture formatting */}
-            {(() => {
-              if (!devotion.content.scripture) return null;
-              return (
-                <a
-                  href="#"
-                  className="h4 soft-bottom display-block text-center"
-                  onClick={this.props.onClickLink}
-                >{scriptures.list(devotion)}</a>
-              );
-            })()}
+        <div className="soft soft-double@palm-wide-and-up push-top">
+          <h2 className="capitalize">{devotion.title}</h2>
+          {/* XXX update scripture formatting */}
+          {(() => {
+            if (!devotion.content.scripture) return null;
+            return (
+              <a
+                href=""
+                className="h4 soft-bottom display-block text-center"
+                onClick={this.props.onClickLink}
+              >{scriptures.list(devotion)}</a>
+            );
+          })()}
 
-            <div dangerouslySetInnerHTML={react.markup(devotion)} />
+          <div dangerouslySetInnerHTML={react.markup(devotion)} />
 
-          </div>
-          <RelatedContent excludedIds={[devotion.id]} tags={devotion.content.tags || defaultArray} />
+        </div>
+        <RelatedContent excludedIds={[devotion.id]} tags={devotion.content.tags || defaultArray} />
 
-        </section>
-      );
+      </section>
+    );
   }
 
 }
