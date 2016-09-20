@@ -1,17 +1,16 @@
 
+import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
 
-import ApolloClient, {
-  createNetworkInterface,
-  readQueryFromStore,
-} from "apollo-client";
-
+import ApolloClient, { createNetworkInterface } from "apollo-client";
 
 const networkInterface = createNetworkInterface(Meteor.settings.public.heighliner);
 
 networkInterface.use([{
-  applyMiddleware(request, next) {
-    // XXX how do we get the current user info here?
+  applyMiddleware(req, next) {
+    const request = req;
+
+    // eslint-disable-next-line
     const currentUserToken = Accounts._storedLoginToken && Accounts._storedLoginToken();
     if (!currentUserToken) {
       next();
@@ -30,6 +29,8 @@ const GraphQL = new ApolloClient({
   ssrMode: Meteor.isServer,
   shouldBatch: false, // XXX not working with multiple root fields on a query
 });
+
+export default GraphQL;
 
 export {
   GraphQL,
