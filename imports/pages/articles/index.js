@@ -3,7 +3,7 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
-import Loading, { FeedItemSkeleton } from "../../components/loading";
+import { FeedItemSkeleton } from "../../components/loading";
 
 import Headerable from "../../mixins/mixins.Header";
 import Pageable from "../../mixins/mixins.Pageable";
@@ -16,7 +16,7 @@ import Single from "./articles.Single";
 
 import FeedItem from "../../components/cards/cards.FeedItem";
 
-const mapQueriesToProps = ({ ownProps, state }) => ({
+const mapQueriesToProps = ({ state }) => ({
   data: {
     query: gql`
       query getArticles($limit: Int!, $skip: Int!) {
@@ -63,6 +63,14 @@ const mapStateToProps = state => ({ paging: state.paging });
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: {
+      refetch: PropTypes.func.isRequired,
+      content: PropTypes.object.isRequired,
+    },
+  }
+
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     this.headerAction({ title: "All Articles" });
@@ -79,16 +87,20 @@ class Template extends Component {
     let articles = [1, 2, 3, 4, 5];
     if (content) articles = content;
     return (
-      articles.map((article, i) => {
-        return (
-          <div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
-            {(() => {
-              if (typeof article === "number") return <FeedItemSkeleton />;
-              return <FeedItem item={article} />;
-            })()}
-          </div>
-        );
-      })
+      articles.map((article, i) => (
+        <div
+          className={
+            "grid__item one-half@palm-wide one-third@portable one-quarter@anchored " +
+            "flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          }
+          key={i}
+        >
+          {(() => {
+            if (typeof article === "number") return <FeedItemSkeleton />;
+            return <FeedItem item={article} />;
+          })()}
+        </div>
+      ))
     );
   }
 
