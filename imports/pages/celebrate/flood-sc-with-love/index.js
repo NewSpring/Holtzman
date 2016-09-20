@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -25,12 +23,16 @@ const floodNumbers = [
   { count: "$422,201.56", label: "Given in donations" },
 ];
 
-let primary = "#0088BB",
-  secondary = "#006290";
+const primary = "#0088BB";
+const secondary = "#006290";
 
+/* eslint-disable max-len */
 const Fuse = () => (
   <div className="display-inline-block text-center one-whole ">
-    <div className="background--light-primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
+    <div
+      className="background--light-primary soft-double-top@lap-and-up"
+      style={{ overflow: "visible" }}
+    >
       <Stats>
 
         <FitText compressor={1.5}>
@@ -46,19 +48,25 @@ const Fuse = () => (
         </FitText>
 
         <FitText compressor={0.2}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontWeight: "900",
-            color: primary,
-          }}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+              color: primary,
+            }}
+          >
             160
           </h1>
         </FitText>
 
         <FitText compressor={0.4}>
-          <h1 className="uppercase push-back-top text-light-primary" style={{
-            fontWeight: "900",
-            color: primary,
-          }}>
+          <h1
+            className="uppercase push-back-top text-light-primary"
+            style={{
+              fontWeight: "900",
+              color: primary,
+            }}
+          >
               Homes
           </h1>
         </FitText>
@@ -161,7 +169,9 @@ const Fuse = () => (
 
     </div>
 
-    <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
+    <div
+      className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up"
+    >
 
       <h3
         className="text-center soft-half-top flush-bottom"
@@ -172,9 +182,10 @@ const Fuse = () => (
         style={{ fontFamily: "ff-meta-serif-web-pro, serif" }}
       >Saved People Serve People</h5>
 
-    <List items={floodNumbers} />
+      <List items={floodNumbers} />
     </div>
   </div>
 );
+/* eslint-enable max-len */
 
 export default Fuse;
