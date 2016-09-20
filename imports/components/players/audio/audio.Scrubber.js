@@ -20,6 +20,8 @@ export default class AudioScrubber extends Component {
 
   state = {
     lastPercent: null,
+    // This allows us to track if a user is scrubbing,
+    // this way a click event doesn't also fire
     scrubbing: false,
     override: false
   }
@@ -42,6 +44,7 @@ export default class AudioScrubber extends Component {
 
     this.setState({
       lastPercent: percent,
+      // A scrub event is taking place, so we don't want a click event also
       scrubbing: true,
       override: true
     });
@@ -55,6 +58,10 @@ export default class AudioScrubber extends Component {
     };
 
     setTimeout(() => {
+      // Set states back to intial values so that time updates,
+      // and click events will happen appropriatly.
+      // Timeout is a full second as a shorter timeout did not
+      // set this states properly.
       this.setState({
         scrubbing: false,
         override: false
@@ -63,12 +70,16 @@ export default class AudioScrubber extends Component {
   }
 
   click = (e) => {
+    // We are checking if a scrub is currently taking place,
+    // as a onTouchEnd and Click event were both happening on scrub.
     const { scrubbing } = this.state;
 
+    // If a user is scrubbing, don't execute the onClick event
     if(!scrubbing) {
 
       const percentClicked = this.calculatePercent(e.target, e.clientX);
 
+      // Setting the state allows our time, and position to consistantly update.
       this.setState({
         lastPercent: percentClicked,
         override: true
@@ -76,6 +87,9 @@ export default class AudioScrubber extends Component {
 
       this.seek(percentClicked);
 
+      // We need to set the state back to it's initial value to allow incrementing
+      // of the current time.
+      // Timeout is a full second as a shorter timeout did not set the state appropriatly.
       setTimeout(() => {
         this.setState({
           override: false
