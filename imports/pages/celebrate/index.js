@@ -29,7 +29,6 @@ class Template extends Component {
     if (process.env.NATIVE) {
       this.props.dispatch(headerActions.set({ title: "Annual Report" }));
     }
-
   }
 
   render() {
@@ -60,7 +59,6 @@ class Template extends Component {
 
         <Closing />
       </div>
-
     );
   }
 }
