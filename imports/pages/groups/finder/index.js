@@ -10,7 +10,8 @@ import { nav as navActions } from "../../../store";
 
 import Layout from "./Layout";
 import Result from "./Result";
-const mapQueriesToProps = ({ ownProps }) => ({
+
+const mapQueriesToProps = () => ({
   attributes: {
     query: gql`
       query GetGroupAttributes {
@@ -25,7 +26,12 @@ const mapQueriesToProps = ({ ownProps }) => ({
   content: {
     query: gql`
       query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
-        entries: taggedContent(tagName: $tagName, limit: $limit, includeChannels: $includeChannels, cache: false) {
+        entries: taggedContent(
+          tagName: $tagName,
+          limit: $limit,
+          includeChannels: $includeChannels,
+          cache: false
+        ) {
           entryId: id
           title
           channelName
@@ -60,6 +66,14 @@ const mapStateToProps = state => ({ location: state.routing.location });
 @ReactMixin.decorate(Headerable)
 export default class Template extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    router: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    attributes: PropTypes.object.isRequired,
+    content: PropTypes.object.isRequired,
+  }
+
   state = {
     tags: [],
     query: null,
@@ -78,28 +92,9 @@ export default class Template extends Component {
     }
   }
 
-  tagOnClick = (tag) => {
-    const tagList = [...this.state.tags];
-    if (tagList.indexOf(tag) > -1) {
-      // remove the tag from the list string
-      tagList.splice(tagList.indexOf(tag), 1);
-    } else {
-      tagList.push(tag);
-    }
-
-    this.setState({ tags: tagList });
-  }
-
-  inputOnChange = (value) => {
-    this.setState({
-      tags: this.state.tags,
-      query: value,
-    });
-  }
-
   getResults = () => {
     const { tags, query } = this.state;
-    let { router, location } = this.props;
+    const { router, location } = this.props;
 
     if (!location.query) location.query = {};
 
@@ -113,6 +108,25 @@ export default class Template extends Component {
     router.push(location);
   }
 
+  inputOnChange = (value) => {
+    this.setState({
+      tags: this.state.tags,
+      query: value,
+    });
+  }
+
+  tagOnClick = (tag) => {
+    const tagList = [...this.state.tags];
+    if (tagList.indexOf(tag) > -1) {
+      // remove the tag from the list string
+      tagList.splice(tagList.indexOf(tag), 1);
+    } else {
+      tagList.push(tag);
+    }
+
+    this.setState({ tags: tagList });
+  }
+
   submitTags = (e) => {
     if (e) e.preventDefault();
     this.getResults();
@@ -124,6 +138,7 @@ export default class Template extends Component {
     this.getResults();
   }
 
+  /* eslint-disable max-len */
   render() {
     const { attributes, location, content } = this.props;
     if (location.query && (
@@ -153,4 +168,5 @@ export default class Template extends Component {
 
     );
   }
+  /* eslint-enable max-len */
 }
