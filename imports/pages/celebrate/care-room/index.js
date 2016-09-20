@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -15,6 +13,7 @@ import {
 
 import FitText from "../components/fit-text";
 
+/* eslint-disable max-len */
 const CareRoom = () => (
   <div className="display-inline-block text-center one-whole ">
     <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
@@ -32,9 +31,12 @@ const CareRoom = () => (
         </FitText>
 
         <FitText compressor={0.3}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
             13,162
           </h1>
         </FitText>
