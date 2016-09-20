@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
 import { ImageLoader } from "../loading";
-import Styles from "../loading/FeedItemSkeleton-css";
+// import Styles from "../loading/FeedItemSkeleton-css";
 
 const Wrapper = props => (
   <div {...props}>
@@ -10,14 +10,28 @@ const Wrapper = props => (
   </div>
 );
 
+Wrapper.propTypes = {
+  children: PropTypes.any, // eslint-disable-line
+};
+
 export default class Card extends Component {
 
   static propTypes = {
-    classes: PropTypes.array,
+    classes: PropTypes.array, // eslint-disable-line
     theme: PropTypes.string,
     link: PropTypes.string,
-    image: PropTypes.object,
-    styles: PropTypes.object,
+    image: PropTypes.object, // eslint-disable-line
+    styles: PropTypes.object, // eslint-disable-line
+    children: PropTypes.any, // eslint-disable-line
+    itemClasses: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    linkAll: PropTypes.any, // eslint-disable-line
+    imageclasses: PropTypes.array, // eslint-disable-line
+    itemTheme: PropTypes.string,
+    itemStyles: PropTypes.object, // eslint-disable-line
+    mobile: PropTypes.bool,
   }
 
   itemClasses = () => {
@@ -83,15 +97,6 @@ export default class Card extends Component {
     );
   }
 
-  // context from ImageLoader
-  renderElement() {
-    return (
-      <div className={this.imageclasses.join(" ")} style={this.style}>
-        <div className="ratio__item" />
-      </div>
-    );
-  }
-
   createImage = () => {
     const { image } = this.props;
 
@@ -113,7 +118,7 @@ export default class Card extends Component {
       }
 
       let style;
-      if (image.full != true) {
+      if (image.full !== true) {
         style = { backgroundImage: `url('${image.url}')` };
       }
 
@@ -127,6 +132,16 @@ export default class Card extends Component {
         />
       );
     }
+    return undefined;
+  }
+
+  // context from ImageLoader
+  renderElement() {
+    return (
+      <div className={this.imageclasses.join(" ")} style={this.style}>
+        <div className="ratio__item" />
+      </div>
+    );
   }
 
   render() {
