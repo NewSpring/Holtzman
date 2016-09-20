@@ -11,18 +11,15 @@ const AccountType = ({ width, height, type }) => {
     marginLeft: "6px",
   };
 
+  let inputType = type;
+
   if (type === "American Express") {
-    type = "AmEx";
+    inputType = "AmEx";
+  } else if (type === "ACH") {
+    inputType = "Bank";
   }
 
-  if (type === "ACH") {
-    type = "Bank";
-  }
-
-  width || (width = 54);
-  height || (height = 40);
-
-  const Icon = Accounts[type];
+  const Icon = Accounts[inputType];
   return <Icon width={width} height={height} style={style} />;
 };
 
@@ -34,7 +31,8 @@ AccountType.propTypes = {
 
 AccountType.defaultProps = {
   type: "Bank",
+  width: 54,
+  height: 40,
 };
-
 
 export default AccountType;
