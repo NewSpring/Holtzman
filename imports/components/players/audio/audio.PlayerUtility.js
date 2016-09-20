@@ -101,6 +101,14 @@ export default class AudioPlayerUtility extends Component {
         return;
       }
 
+    }, () => {}, function audioEventStream(STATUS) {
+      // this === Media object
+      if (STATUS === Media.MEDIA_STOPPED) {
+        const length = this.getDuration();
+        if (length === player.getDuration()) { // reached the end of the song
+          for (let cb of this.endedCallbacks) cb();
+        }
+      }
     });
 
     if (autoload && Meteor.isCordova) {

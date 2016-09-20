@@ -24,24 +24,10 @@ if (Meteor.isCordova) {
 
     };
 
+
     Media.prototype.ended = function(callback) {
-
-      const getDuration = () => {
-        return this.getDuration();
-      };
-
-      let interval = setInterval(() => {
-        this.getCurrentPosition(function(position) {
-          if (position > -1) {
-            const duration = getDuration();
-            if (position.toFixed(1) === duration.toFixed(1)) {
-              clearInterval(interval);
-              callback(null);
-              return;
-            }
-          }
-        });
-      }, 10);
+      if (!this.endedCallbacks) this.endedCallbacks = [];
+      this.endedCallbacks.push(callback);
     };
 
     Media.prototype.playPause = function(){
