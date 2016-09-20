@@ -1,7 +1,8 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
+import SwipeViews from "react-swipe-views";
 
 import Loading from "../../components/loading";
 
@@ -14,18 +15,12 @@ import {
   live as liveActions,
 } from "../../store";
 
-console.log(headerActions);
-
 // can we use the core toggle here? Is it ready @jbaxleyiii?
 import DevotionsSingleContent from "./devotions.SingleContent";
 import DevotionsSingleScripture from "./devotions.SingleScripture";
 
-// TODO: integrate this with ../apollos core toggle
-import SwipeViews from "react-swipe-views";
-
-const mapQueriesToProps = ({ ownProps, state }) => {
-  const pathParts = state.routing.location.pathname.split("/");
-  return {
+const mapQueriesToProps = ({ ownProps }) => (
+  {
     devotion: {
       query: gql`
         query getDevotional($id: ID!) {
@@ -64,8 +59,8 @@ const mapQueriesToProps = ({ ownProps, state }) => {
       forceFetch: false,
       returnPartialData: false,
     },
-  };
-};
+  }
+);
 
 const mapStateToProps = state => ({
   modal: { visible: state.modal.visible },
@@ -77,16 +72,17 @@ const mapStateToProps = state => ({
 @ReactMixin.decorate(Shareable)
 export default class SeriesSingle extends Component {
 
-  state = { selectedIndex: 0 }
-
-  onClickLink = (event) => {
-    event.preventDefault();
-    this.setState({
-      selectedIndex: 1,
-      liveSet: false,
-      livePush: false,
-    });
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    live: {
+      live: PropTypes.bool.isRequired,
+    },
+    devotion: {
+      content: PropTypes.object.isRequired,
+    },
   }
+
+  state = { selectedIndex: 0 }
 
   componentWillMount() {
     if (process.env.WEB) return;
@@ -108,13 +104,31 @@ export default class SeriesSingle extends Component {
     this.props.dispatch(headerActions.hide());
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    this.handleLiveBar(nextProps, nextState);
+  }
+
   componentWillUnmount() {
     if (process.env.WEB) return;
     this.props.dispatch(liveActions.unfloat());
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    this.handleLiveBar(nextProps, nextState);
+  onClickLink = (event) => {
+    event.preventDefault();
+    this.setState({
+      selectedIndex: 1,
+      liveSet: false,
+      livePush: false,
+    });
+  }
+
+  getLiveClasses = () => {
+    const classes = [];
+    if (this.props.live.live && this.state.livePush) {
+      classes.push("push-double-top");
+    }
+
+    return classes;
   }
 
   // if has scripture and live re-enabled
@@ -147,15 +161,6 @@ export default class SeriesSingle extends Component {
     }
   }
 
-  getLiveClasses = () => {
-    const classes = [];
-    if (this.props.live.live && this.state.livePush) {
-      classes.push("push-double-top");
-    }
-
-    return classes;
-  }
-
   renderContent = (devotion) => {
     if (!devotion.content.scripture) {
       return (
@@ -170,26 +175,26 @@ export default class SeriesSingle extends Component {
     }
 
     return (
-        <SwipeViews
-          selectedIndex={this.state.selectedIndex}
-          disableSwipe
-        >
+      <SwipeViews
+        selectedIndex={this.state.selectedIndex}
+        disableSwipe
+      >
 
-          <div title="Devotional">
-            <DevotionsSingleContent
-              devotion={devotion}
-              onClickLink={this.onClickLink}
-              classes={this.getLiveClasses()}
-            />
-          </div>
+        <div title="Devotional">
+          <DevotionsSingleContent
+            devotion={devotion}
+            onClickLink={this.onClickLink}
+            classes={this.getLiveClasses()}
+          />
+        </div>
 
-          <div title="Scripture">
-            <DevotionsSingleScripture
-              devotion={devotion}
-              classes={this.getLiveClasses()}
-            />
-          </div>
-        </SwipeViews>
+        <div title="Scripture">
+          <DevotionsSingleScripture
+            devotion={devotion}
+            classes={this.getLiveClasses()}
+          />
+        </div>
+      </SwipeViews>
     );
   }
 
