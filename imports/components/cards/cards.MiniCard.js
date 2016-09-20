@@ -4,14 +4,13 @@ import backgrounds from "../../util/backgrounds";
 import contentHelper from "../../util/content";
 import categories from "../../util/categories";
 
-const hasImage = (content) => {
+const hasImage = (content) =>
   return content.content.images.length > 0 ||
     (
       content.parent &&
       content.parent.content &&
       content.parent.content.images.length > 0
     );
-};
 
 // XXX right now this uses the content prop for everything
 // it should less intelligent and use the other props directly
