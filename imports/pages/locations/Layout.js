@@ -6,7 +6,6 @@ import { Link } from "react-router";
 
 import Meta from "../../components/meta";
 import Forms from "../../components/forms";
-import Loading from "../../components/loading";
 import inAppLink from "../../util/inAppLink";
 
 const campusLookup = gql`
@@ -31,10 +30,17 @@ const campusLookup = gql`
 
 export default class Layout extends Component {
 
+  static propTypes = {
+    data: {
+      campuses: PropTypes.array.isRequired,
+    },
+    query: PropTypes.func.isRequired,
+  }
+
   state = { value: null, list: null }
 
   dynamicItemWidth = () => {
-    if (typeof window != "undefined" || window != null) {
+    if (typeof window !== "undefined" || window !== null) {
       const ratio = window.isTablet ? 0.4 : 0.8;
       const itemSize = (window.innerWidth - 40) * ratio; // four-fifths
       return { width: itemSize, height: itemSize };
@@ -48,7 +54,7 @@ export default class Layout extends Component {
 
     if (!campuses) return {};
 
-    if (typeof window != "undefined" || window != null) {
+    if (typeof window !== "undefined" || window !== null) {
       const ratio = window.isTablet ? 0.4 : 0.8;
       let itemSize = (window.innerWidth - 40) * ratio; // four-fifths
       itemSize += 20; // account for margin
@@ -95,7 +101,7 @@ export default class Layout extends Component {
   overflow = {
     overflowX: "scroll",
     overflowY: "hidden",
-    "WebkitOverflowScrolling": "touch",
+    WebkitOverflowScrolling: "touch",
   }
 
   render() {
@@ -107,7 +113,12 @@ export default class Layout extends Component {
       <div>
 
         {/* Search */}
-        <div className="soft soft-double-ends soft-double@palm-wide-and-up text-center background--light-primary">
+        <div
+          className={
+            "soft soft-double-ends soft-double@palm-wide-and-up " +
+            "text-center background--light-primary"
+          }
+        >
           <h3 className="push-half-ends">Find Your Closest Campus</h3>
           <Forms.Form
             classes={["hard", "display-inline-block", "one-whole"]}
@@ -128,7 +139,7 @@ export default class Layout extends Component {
               onChange={({ value }) => this.setState({ value })}
             />
 
-          <div className="one-whole text-left">
+            <div className="one-whole text-left">
               <h6><em>Find a campus by city, state, or zip</em></h6>
             </div>
           </Forms.Form>
@@ -140,9 +151,11 @@ export default class Layout extends Component {
         <div className="background--light-secondary soft-ends text-center">
           <h3 className="push-half-top">Campus Directory</h3>
           <div style={this.overflow} className="soft-left@palm-wide-and-up">
-            <section className="soft-half" style={this.dynamicWidth()} ref={
-              (n) => { this.slider = n; }
-            }>
+            <section
+              className="soft-half"
+              style={this.dynamicWidth()}
+              ref={(n) => { this.slider = n; }}
+            >
               {campuses && campuses.filter(x => x.location.street1).map((campus, i) => {
                 const style = this.dynamicItemWidth();
                 if (i === 0 && this.state.list) {
@@ -154,21 +167,26 @@ export default class Layout extends Component {
                   <Link
                     key={campus.id}
                     to={campus.url}
-                    className={"text-dark-secondary transition floating ratio--square display-inline-block rounded  push-right card text-left"}
+                    className={
+                      "text-dark-secondary transition floating ratio--square " +
+                      "display-inline-block rounded  push-right card text-left"
+                    }
                     style={style}
                     onClick={inAppLink}
                   >
                     <div className="one-whole soft-sides text-left floating__item">
                       <h4>{campus.name}</h4>
                       {(() => {
-                        if (!campus.distance || !campus.distance.value) return;
+                        if (!campus.distance || !campus.distance.value) return null;
                         return (
                           <h7 className="italic display-block">
                             {(campus.distance.value * 0.000621371192).toFixed(2)} miles away
                           </h7>
                         );
                       })()}
-                      {campus.services && campus.services.map((x, key) => <p className="flush-bottom soft-half-bottom" key={key}>{x}</p>)}
+                      {campus.services && campus.services.map((x, key) =>
+                        (<p className="flush-bottom soft-half-bottom" key={key}>{x}</p>))
+                      }
                       <h5 className="text-primary plain">
                         Learn More <span className="icon-arrow-next text-primary" />
                       </h5>
