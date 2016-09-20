@@ -6,21 +6,23 @@ import { ImageLoader } from "../loading";
 
 import Styles from "../loading/FeedItemSkeleton-css";
 
-const Wrapper = props => (
-  <div {...this.props}>
-    {this.props.children}
-  </div>
-);
-
 export default class Card extends Component {
 
   static propTypes = {
-    classes: PropTypes.array,
+    classes: PropTypes.array, // eslint-disable-line
     theme: PropTypes.string,
     link: PropTypes.string,
-    fallbackImage: PropTypes.string,
-    images: PropTypes.array,
-    styles: PropTypes.object,
+    itemClasses: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    images: PropTypes.array, // eslint-disable-line
+    styles: PropTypes.object, // eslint-disable-line
+    ratio: PropTypes.string,
+    defaultImage: PropTypes.string,
+    itemTheme: PropTypes.string,
+    itemStyles: PropTypes.object, // eslint-disable-line
+    children: PropTypes.any, //eslint-disable-line
   }
 
   itemClasses = () => {
@@ -92,7 +94,8 @@ export default class Card extends Component {
       return false;
     }
 
-    let sizes = {}, src;
+    const sizes = {};
+    let src;
     for (const image of images) {
       sizes[image.fileLabel] = image;
     }
@@ -108,14 +111,15 @@ export default class Card extends Component {
     } else if (window.matchMedia("(max-width: 1281px)").matches) {
       src = sizes["1:2"] ? sizes["1:2"].url || sizes["1:2"].cloudfront : false;
     } else {
-      src = sizes["1:1"] ? sizes["1:1"].url | sizes["1:1"].cloudfront : false;
+      src = sizes["1:1"] ? sizes["1:1"].url || sizes["1:1"].cloudfront : false;
     }
 
     return src;
   }
 
   createImage = () => {
-    let { defaultImage, ratio } = this.props;
+    let { ratio } = this.props;
+    const { defaultImage } = this.props;
 
     const imageclasses = [
       "background--fill",
