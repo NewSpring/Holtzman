@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
-import { withRouter, Link } from "react-router";
+import { withRouter } from "react-router";
 import gql from "graphql-tag";
 
 import { nav as navActions } from "../../../store";
@@ -15,15 +15,22 @@ import Layout from "./ResultLayout";
 let internalIp = null;
 if (Meteor.isClient) {
   // NOTE: window.RTCPeerConnection is "not a constructor" in FF22/23
-  const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;   // compatibility for firefox and chrome
+  const RTCPeerConnection = window.RTCPeerConnection ||
+    window.mozRTCPeerConnection ||
+    window.webkitRTCPeerConnection;   // compatibility for firefox and chrome
 
   if (RTCPeerConnection) {
-    const pc = new RTCPeerConnection({ iceServers: [] }), noop = function () {};
-    pc.createDataChannel("");    // create a bogus data channel
-    pc.createOffer(pc.setLocalDescription.bind(pc), noop);    // create offer and set local description
-    pc.onicecandidate = function (ice) {  // listen for candidate events
+    const pc = new RTCPeerConnection({ iceServers: [] });
+    const noop = () => {};
+    // create a bogus data channel
+    pc.createDataChannel("");
+    // create offer and set local description
+    pc.createOffer(pc.setLocalDescription.bind(pc), noop);
+    // listen for candidate events
+    pc.onicecandidate = (ice) => {
       if (!ice || !ice.candidate || !ice.candidate.candidate) return;
-      const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
+      const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/
+        .exec(ice.candidate.candidate)[1];
       internalIp = myIP;
       pc.onicecandidate = noop;
     };
@@ -34,7 +41,6 @@ const mapStateToProps = ({ routing }) => {
   const { location } = routing;
   const tags = Object.keys(location.query).length && location.query.tags ? location.query.tags : "";
   const q = Object.keys(location.query).length && location.query.q ? location.query.q : null;
-  const campus = Object.keys(location.query).length && location.query.campus ? location.query.campus : null;
   return { tags, q, location };
 };
 
@@ -78,6 +84,19 @@ const defaultArray = [];
 @connect({ mapQueriesToProps, mapStateToProps })
 export default class Template extends Component {
 
+  static propTypes = {
+    q: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    data: {
+      groups: {
+        results: PropTypes.array.isRequired,
+      },
+    },
+    tags: PropTypes.string.isRequired,
+    location: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
+  }
+
   state = {
     markers: [],
     showTags: false,
@@ -85,24 +104,6 @@ export default class Template extends Component {
     hover: null,
     groups: [], // XXX after refetchMore lands in apollo client, remove
     offset: 0,
-  }
-
-  paginate = () => {
-    const { q, tags } = this.props;
-    this.props.data.refetch({
-      tags: tags.split(",").filter(x => x),
-      query: q,
-      limit: 10,
-      offset: this.state.offset + 10,
-      ip: internalIp,
-    })
-      .then(({ data }) => {
-        const { results } = data.groups;
-        this.setState({
-          groups: this.state.groups.concat(results),
-          offset: this.state.offset + 10,
-        });
-      });
   }
 
   componentWillMount() {
@@ -113,15 +114,6 @@ export default class Template extends Component {
       const markers = this.getMarkers(this.props.data.groups.results);
       this.setState({ markers, groups: this.props.data.groups.results });
     }
-  }
-
-  onCardHover = (e) => {
-    const { id } = e.currentTarget;
-    this.setState({ hover: id });
-  }
-
-  onMarkerHover = (marker) => {
-    this.setState({ hover: marker.id });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -142,9 +134,16 @@ export default class Template extends Component {
     this.setState(newState);
   }
 
-  toggleTags = () => this.setState({ showTags: !this.state.showTags })
-  toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
+  onCardHover = (e) => {
+    const { id } = e.currentTarget;
+    this.setState({ hover: id });
+  }
 
+  onMarkerHover = (marker) => {
+    this.setState({ hover: marker.id });
+  }
+
+  /* eslint-disable max-len */
   // createChild = (group) => (
   //   <div>
   //     <span className="locked-sides locked-ends" style={{cursor: "pointer"}} data-tip data-for={group.id}></span>
@@ -172,7 +171,7 @@ export default class Template extends Component {
   //     </ReactTooltip>
   //   </div>
   // )
-
+  /* eslint-enable max-len */
 
   getMarkers = (groups = []) => {
     const { markers } = this.state;
@@ -188,6 +187,27 @@ export default class Template extends Component {
     ), x => x.id);
   }
 
+  toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
+  toggleTags = () => this.setState({ showTags: !this.state.showTags })
+
+  paginate = () => {
+    const { q, tags } = this.props;
+    this.props.data.refetch({
+      tags: tags.split(",").filter(x => x),
+      query: q,
+      limit: 10,
+      offset: this.state.offset + 10,
+      ip: internalIp,
+    })
+      .then(({ data }) => {
+        const { results } = data.groups;
+        this.setState({
+          groups: this.state.groups.concat(results),
+          offset: this.state.offset + 10,
+        });
+      });
+  }
+
   removeQueryString = (e) => {
     if (e) e.preventDefault();
     const { location, router } = this.props;
@@ -198,13 +218,14 @@ export default class Template extends Component {
   }
 
   render() {
-    const { data, location, tags, q } = this.props;
-    let count, groups = defaultArray;
+    const { data, tags, q } = this.props;
+    let count;
+    let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
     groups = this.state.groups;
 
     let isMobile;
-    if (typeof window != "undefined" && window != null) {
+    if (typeof window !== "undefined" && window !== null) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
     }
 
