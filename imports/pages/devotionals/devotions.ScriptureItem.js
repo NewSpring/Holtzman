@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
 import Loading from "../../components/loading";
+
 export default class ScriptureItem extends Component {
 
   static propTypes = { scripture: PropTypes.string.isRequired }
