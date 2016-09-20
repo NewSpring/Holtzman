@@ -1,15 +1,15 @@
 /* global Meteor, check */
-import Moment from "moment";
-
-import { api, parseEndpoint } from "../../../util/rock";
-import Validate from "../../../util/validate";
+import moment from "moment";
+import { api } from "../../../util/rock";
 
 let RECOVER_ACCOUNT = false;
-if (typeof Accounts != "undefined") {
-  Accounts.emailTemplates.enrollAccount.text = (user, token) => {
+if (typeof Accounts !== "undefined") {
+  Accounts.emailTemplates.enrollAccount.text = (user, t) => {
+    let token = t;
+
     // let PersonAliasId, mergeFields
     const { PersonId } = user.profile.rock;
-    const { ROOT_URL } = __meteor_runtime_config__;
+    const { ROOT_URL } = __meteor_runtime_config__; // eslint-disable-line
 
     const Person = api.get.sync(`People/${PersonId}`);
 
@@ -29,7 +29,7 @@ if (typeof Accounts != "undefined") {
           ResetPasswordUrl: `${ROOT_URL}/_/reset-password/${token}`,
           Person,
         }
-        , (err, response) => {}
+        , () => {}
       );
     }
 
@@ -49,8 +49,8 @@ Meteor.methods({
     // try to create new meteor account
     try {
       const user = Accounts.findUserByEmail(email);
-      if (user && user._id) {
-        meteorUserId = user._id;
+      if (user && user._id) { // eslint-disable-line
+        meteorUserId = user._id; // eslint-disable-line
       } else {
         meteorUserId = Accounts.createUser({
           email,
@@ -62,7 +62,9 @@ Meteor.methods({
         });
       }
     } catch (e) {
-      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account");
+      throw new Meteor.Error(
+        "There was a problem finishing your account, please try again or create a new account"
+      );
     }
 
     // Create Rock Account
@@ -72,12 +74,14 @@ Meteor.methods({
       UserName: email,
       IsConfirmed: false,
       // PlainTextPassword: account.password,
-      LastLoginDateTime: `${Moment().toISOString()}`,
+      LastLoginDateTime: `${moment().toISOString()}`,
     };
 
     const createdUser = api.post.sync("UserLogins", user);
     if (createdUser.statusText) {
-      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account");
+      throw new Meteor.Error(
+        "There was a problem finishing your account, please try again or create a new account"
+      );
     }
 
     try {
@@ -99,8 +103,11 @@ Meteor.methods({
       // let the client know
       return true;
     } catch (e) {
+      // eslint-disable-next-line
       console.error("@@RECOVER_ERROR", e);
-      throw new Meteor.Error("There was a problem finishing your account, please try again or create a new account");
+      throw new Meteor.Error(
+        "There was a problem finishing your account, please try again or create a new account"
+      );
     }
   },
 });

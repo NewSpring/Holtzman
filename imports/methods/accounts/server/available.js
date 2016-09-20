@@ -2,7 +2,8 @@
 import { api, parseEndpoint } from "../../../util/rock";
 import Validate from "../../../util/validate";
 
-function getPhoto(person = {}) {
+function getPhoto(per = {}) {
+  const person = per;
   if (person.Photo && person.Photo.Path) {
     let { Path } = person.Photo;
 
@@ -30,7 +31,8 @@ function getPhoto(person = {}) {
 }
 
 Meteor.methods({
-  "rock/accounts/available": (email) => {
+  "rock/accounts/available": (mail) => {
+    let email = mail;
     check(email, String);
 
     // special case for AD lookup
@@ -38,9 +40,10 @@ Meteor.methods({
       email = email.replace(/@newspring.cc/, "");
     }
 
-    let isAvailable = api.get.sync(`userlogins/available/${email}`),
-      alternateAccounts = [],
-      peopleWithoutAccountEmails = [];
+    const isAvailable = api.get.sync(`userlogins/available/${email}`);
+    const peopleWithoutAccountEmails = [];
+
+    let alternateAccounts = [];
 
 
     if (isAvailable) {
@@ -64,9 +67,9 @@ Meteor.methods({
         // showing more than 5 possible people in this case
         // would be confusing to a user so lets limit our lookup
         const realisticReturnAmounts = 5;
-        const ids = SecondaryEmailPeople.map((x) => {
-          return `(Id eq ${x.EntityId})`;
-        }).slice(0, realisticReturnAmounts).join(" and ");
+        const ids = SecondaryEmailPeople.map(x => (
+          `(Id eq ${x.EntityId})`
+        )).slice(0, realisticReturnAmounts).join(" and ");
 
         /*
 
