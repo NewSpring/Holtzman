@@ -1,5 +1,5 @@
 
-import Moment from "moment";
+import moment from "moment";
 import {
   ScheduledTransactionReciepts,
 } from "../../../database/collections/scheduledTransactions";
@@ -29,7 +29,7 @@ const createSchedule = (response, accountName, id, user) => {
       amEx: ids["American Express"].Id,
     };
 
-    for (const regex in defaultRegex) {
+    for (const regex in defaultRegex) { // eslint-disable-line
       if (defaultRegex[regex].test(card)) {
         return definedTypeMapping[regex];
       }
@@ -47,7 +47,7 @@ const createSchedule = (response, accountName, id, user) => {
     for (const f of frequencies) { ids[f.Value] = f; }
 
     if (plan["day-frequency"]) {
-      switch (plan["day-frequency"]) {
+      switch (plan["day-frequency"]) { // eslint-disable-line
         case "7":
           return ids.Weekly.Id; // Every Week (Rock)
         case "14":
@@ -56,7 +56,7 @@ const createSchedule = (response, accountName, id, user) => {
     }
 
     if (plan["month-frequency"]) {
-      switch (plan["month-frequency"]) {
+      switch (plan["month-frequency"]) { // eslint-disable-line
         case "2":
           return ids["Twice a Month"].Id; // Twice A Month (Rock)
         case "1":
@@ -75,7 +75,7 @@ const createSchedule = (response, accountName, id, user) => {
 
   if (response.result === "1") {
     if (!user || !user.services || !user.services.rock) {
-      user = { services: { rock: {} } };
+      user = { services: { rock: {} } }; // eslint-disable-line
     }
 
     const CC = {
@@ -95,9 +95,9 @@ const createSchedule = (response, accountName, id, user) => {
       GatewayScheduleId: response["subscription-id"],
       TransactionFrequencyValueId: frequency,
       IsActive: true,
-      StartDate: `${Moment(response["merchant-defined-field-3"], "YYYYMMDD").toISOString()}`,
+      StartDate: `${moment(response["merchant-defined-field-3"], "YYYYMMDD").toISOString()}`,
       FinancialGatewayId: api._.give.gateway.id,
-      NextPaymentDate: `${Moment(response["merchant-defined-field-3"], "YYYYMMDD").toISOString()}`,
+      NextPaymentDate: `${moment(response["merchant-defined-field-3"], "YYYYMMDD").toISOString()}`,
       // "NextPaymentDate": "2016-03-04T00:00:00",
       // Summary: `Reference Number: ${response["transaction-id"]}`,
       ScheduledTransactionDetails: [],

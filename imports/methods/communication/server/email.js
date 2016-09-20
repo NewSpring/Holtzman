@@ -2,91 +2,84 @@
 
 import toPascalCase from "to-pascal-case";
 import toSnakeCase from "to-snake-case";
-import Moment from "moment";
+import moment from "moment";
+import Liquid from "liquid-node";
 
-import { api, Lava } from "../../../util/rock";
+
+import { api } from "../../../util/rock";
 import { makeNewGuid } from "../../../util";
 
-
 // @TODO abstract
-import Liquid from "liquid-node";
 const Parser = new Liquid.Engine();
 
 const StandardFilters = { ...Liquid.StandardFilters };
 const caseChangedFilter = {};
-for (const filter in StandardFilters) {
+for (const filter in StandardFilters) { // eslint-disable-line
   const newFilter = toPascalCase(filter);
 
 
-  caseChangedFilter[newFilter] = (input, format) => {
+  caseChangedFilter[newFilter] = (i, format) => {
+    let input = i;
     input = toSnakeCase(input);
 
     return StandardFilters[filter](input, format);
   };
 }
 
+function toDate(i) {
+  let input = i;
+  if (input == null) return null;
+  if (input instanceof Date) return input;
+  if (input === "now" || input === "Now") return new Date();
 
-function toDate(input) {
-  if (input == null) {
-    return;
-  }
-  if (input instanceof Date) {
-    return input;
-  }
-  if (input === "now" || input === "Now") {
-    return new Date();
-  }
-  if (isNumber(input)) {
-    input = parseInt(input);
+  if (_.isNumber(input)) {
+    input = parseInt(input); // eslint-disable-line
   } else {
     input = toString(input);
-    if (input.length === 0) {
-      return;
-    }
+    if (input.length === 0) return null;
     input = Date.parse(input);
   }
-  if (input != null) {
-    return new Date(input);
-  }
+  if (input != null) return new Date(input);
+
+  return null;
 }
 
-Parser.registerFilters({ ...caseChangedFilter, ...{
-  Attribute(variable, key) {
-    if (variable === "Global") {
-      const global = this.context.findVariable("GlobalAttribute");
-      return global.then((response) => {
-        return response[key];
-      });
-    }
-  },
-  Format(value, format) {
-    // hardcode number formating for now
-    if (format === "#,##0.00") {
-      value = Number(value).toFixed(2);
+Parser.registerFilters({ ...caseChangedFilter,
+  ...{
+    Attribute(variable, key) {
+      if (variable === "Global") {
+        const global = this.context.findVariable("GlobalAttribute");
+        return global.then(response => response[key]);
+      }
+      return null;
+    },
+    Format(value, format) {
+      // hardcode number formating for now
+      if (format === "#,##0.00") {
+        return `${Number(value).toFixed(2)}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      return null;
+    },
+    Date(i, f) {
+      let input = i;
+      let format = f;
 
-      return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-  },
-  Date(input, format) {
-    // console.log(this)
-    input = toDate(input);
+      input = toDate(input);
 
-    if (input == null) {
-      return "";
-    } else if (toString(format).length === 0) {
-      return input.toUTCString();
-    } else {
+      if (input == null) return "";
+      if (toString(format).length === 0) return input.toUTCString();
+
       format = format.replace(/y/gmi, "Y");
-      return Moment(input).format(format);
-    }
-
-    // return Liquid.StandardFilters.date(input, format.toLowerCase())
+      return moment(input).format(format);
+      // return Liquid.StandardFilters.date(input, format.toLowerCase())
+    },
   },
-} });
+});
 
 
 Meteor.methods({
-  "communication/email/send": function (emailId, PersonAliasId, mergeFields) {
+  "communication/email/send": function sendEmail(emailId, PersonAliasId, merge) {
+    let mergeFields = merge;
     check(emailId, Number);
     // check(PersonAliasId, Number)
 
@@ -152,7 +145,7 @@ Meteor.methods({
 
 
         if (typeof PersonAliasId === "number") {
-          PersonAliasId = [PersonAliasId];
+          PersonAliasId = [PersonAliasId]; // eslint-disable-line
         }
 
 
@@ -182,6 +175,7 @@ Meteor.methods({
         return communications;
       })
       .catch((e) => {
+        // eslint-disable-next-line
         console.log(e);
         throw e;
       });

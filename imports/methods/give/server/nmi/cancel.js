@@ -21,10 +21,9 @@ const cancelTransaction = (transactionId, callback) => {
       "Content-Type": "text/xml",
     },
   })
+  .then(response => response.text())
   .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
+    let data = response;
     try {
       data = parseXML(data);
     } catch (e) {
@@ -38,7 +37,7 @@ const cancelTransaction = (transactionId, callback) => {
     }
     const number = Number(data["result-code"]);
     let err;
-    if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
+    if (ErrorCodes[number] && ErrorCodes[number] !== "result-text") {
       err = ErrorCodes[number];
     } else if (ErrorCodes[number] === "result-text") {
       err = data["result-text"];

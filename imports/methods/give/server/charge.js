@@ -50,7 +50,7 @@ function charge(token, accountName) {
       amEx: 159,
     };
 
-    for (const regex in defaultRegex) {
+    for (const regex in defaultRegex) { // eslint-disable-line
       if (defaultRegex[regex].test(card)) {
         return definedTypeMapping[regex];
       }
@@ -63,7 +63,7 @@ function charge(token, accountName) {
 
 
   if (response.result === "1") {
-    user || (user = { services: { rock: {} } });
+    user || (user = { services: { rock: {} } }); // eslint-disable-line
 
     const CC = {
       AccountNumberMasked: response.billing["cc-number"],

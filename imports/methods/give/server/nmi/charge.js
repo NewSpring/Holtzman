@@ -31,10 +31,9 @@ const step1 = (token, callback) => {
       "Content-Type": "text/xml",
     },
   })
+  .then(response => response.text())
   .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
+    let data = response;
     // clean all tags to make sure they are parseable
     const matches = data.match(/<([^>]+)>/gmi);
 
@@ -70,7 +69,7 @@ const step1 = (token, callback) => {
       number = "430";
     }
 
-    if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
+    if (ErrorCodes[number] && ErrorCodes[number] !== "result-text") {
       err = ErrorCodes[number];
     } else if (ErrorCodes[number] === "result-text") {
       err = data["result-text"];
