@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
-import { withRouter, Link } from "react-router";
+import { withRouter } from "react-router";
 import gql from "graphql-tag";
 
 import { nav as navActions } from "../../../store";
@@ -15,15 +15,22 @@ import Layout from "./ResultLayout";
 let internalIp = null;
 if (Meteor.isClient) {
   // NOTE: window.RTCPeerConnection is "not a constructor" in FF22/23
-  const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;   // compatibility for firefox and chrome
+  const RTCPeerConnection = window.RTCPeerConnection ||
+    window.mozRTCPeerConnection ||
+    window.webkitRTCPeerConnection;   // compatibility for firefox and chrome
 
   if (RTCPeerConnection) {
-    const pc = new RTCPeerConnection({ iceServers: [] }), noop = function () {};
-    pc.createDataChannel("");    // create a bogus data channel
-    pc.createOffer(pc.setLocalDescription.bind(pc), noop);    // create offer and set local description
-    pc.onicecandidate = function (ice) {  // listen for candidate events
+    const pc = new RTCPeerConnection({ iceServers: [] });
+    const noop = () => {};
+    // create a bogus data channel
+    pc.createDataChannel("");
+    // create offer and set local description
+    pc.createOffer(pc.setLocalDescription.bind(pc), noop);
+    // listen for candidate events
+    pc.onicecandidate = (ice) => {
       if (!ice || !ice.candidate || !ice.candidate.candidate) return;
-      const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
+      const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/
+        .exec(ice.candidate.candidate)[1];
       internalIp = myIP;
       pc.onicecandidate = noop;
     };
@@ -87,6 +94,19 @@ const defaultArray = [];
 @connect({ mapQueriesToProps, mapStateToProps })
 export default class Template extends Component {
 
+  static propTypes = {
+    q: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    data: {
+      groups: {
+        results: PropTypes.array.isRequired,
+      },
+    },
+    tags: PropTypes.string.isRequired,
+    location: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
+  }
+
   state = {
     markers: [],
     showTags: false,
@@ -125,15 +145,6 @@ export default class Template extends Component {
     }
   }
 
-  onCardHover = (e) => {
-    const { id } = e.currentTarget;
-    this.setState({ hover: id });
-  }
-
-  onMarkerHover = (marker) => {
-    this.setState({ hover: marker.id });
-  }
-
   componentWillReceiveProps(nextProps) {
     const newState = {};
     let clear = false;
@@ -159,9 +170,14 @@ export default class Template extends Component {
     this.setState(newState);
   }
 
-  toggleTags = () => this.setState({ showTags: !this.state.showTags })
-  toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
+  onCardHover = (e) => {
+    const { id } = e.currentTarget;
+    this.setState({ hover: id });
+  }
 
+  onMarkerHover = (marker) => {
+    this.setState({ hover: marker.id });
+  }
 
   getMarkers = (groups = [], clear = false) => {
     let { markers } = this.state;
@@ -178,6 +194,27 @@ export default class Template extends Component {
     ), x => x.id);
   }
 
+  toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
+  toggleTags = () => this.setState({ showTags: !this.state.showTags })
+
+  paginate = () => {
+    const { q, tags } = this.props;
+    this.props.data.refetch({
+      tags: tags.split(",").filter(x => x),
+      query: q,
+      limit: 10,
+      offset: this.state.offset + 10,
+      ip: internalIp,
+    })
+      .then(({ data }) => {
+        const { results } = data.groups;
+        this.setState({
+          groups: this.state.groups.concat(results),
+          offset: this.state.offset + 10,
+        });
+      });
+  }
+
   removeQueryString = (e) => {
     if (e) e.preventDefault();
     const { location, router } = this.props;
@@ -189,12 +226,13 @@ export default class Template extends Component {
 
   render() {
     const { data, location, tags, campusLocations, campuses, q } = this.props;
-    let count, groups = defaultArray;
+    let count;
+    let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
     groups = this.state.groups;
 
     let isMobile;
-    if (typeof window != "undefined" && window != null) {
+    if (typeof window !== "undefined" && window !== null) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
     }
 
