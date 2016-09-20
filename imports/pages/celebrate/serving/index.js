@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -15,6 +13,7 @@ import {
 
 import FitText from "../components/fit-text";
 
+/* eslint-disable max-len */
 const Serving = () => (
   <div className="display-inline-block text-center one-whole ">
     <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
@@ -32,9 +31,12 @@ const Serving = () => (
         </FitText>
 
         <FitText compressor={0.3}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
             5,270
           </h1>
         </FitText>
@@ -51,9 +53,12 @@ const Serving = () => (
         </FitText>
 
         <FitText compressor={0.7}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
             Volunteer
           </h1>
         </FitText>
@@ -143,5 +148,6 @@ const Serving = () => (
 
   </div>
 );
+/* eslint-enable max-len */
 
 export default Serving;
