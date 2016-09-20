@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -21,6 +19,7 @@ const newspringNetworkNumbers = [
   { count: "38,073", label: "Church Leaders in NewSpring Network" },
 ];
 
+/* eslint-disable max-len */
 const NewSpringNetwork = () => (
   <div className="display-inline-block text-center one-whole ">
     <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
@@ -37,25 +36,34 @@ const NewSpringNetwork = () => (
         </FitText>
 
         <FitText compressor={0.4}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
               38,073
           </h1>
         </FitText>
 
         <FitText compressor={0.5}>
-          <h1 className="uppercase push-back-top text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase push-back-top text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
             Church
           </h1>
         </FitText>
 
         <FitText compressor={0.55}>
-          <h1 className="uppercase push-back-top text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase push-back-top text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
             Leaders
           </h1>
         </FitText>
@@ -156,15 +164,18 @@ const NewSpringNetwork = () => (
 
     </div>
 
-    <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
+    <div
+      className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up"
+    >
 
       <h3
         className="text-center soft-half-top flush-bottom"
       >NewSpring Network</h3>
 
-    <List items={newspringNetworkNumbers} />
+      <List items={newspringNetworkNumbers} />
     </div>
   </div>
 );
+/* eslint-enable max-len */
 
 export default NewSpringNetwork;

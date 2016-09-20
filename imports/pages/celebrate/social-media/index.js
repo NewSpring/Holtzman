@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -21,6 +19,7 @@ const socialMedia = [
   // { count: "1,393,779", label: "People reached on social media each month" },
 ];
 
+/* eslint-disable max-len */
 const SocialMedia = () => (
   <div className="display-inline-block text-center one-whole ">
     <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
@@ -37,17 +36,23 @@ const SocialMedia = () => (
         </FitText>
 
         <FitText compressor={0.3}>
-          <h1 className="uppercase flush-bottom text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase flush-bottom text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
               Mary
           </h1>
         </FitText>
 
         <FitText compressor={0.60}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
             Ashleigh's
           </h1>
         </FitText>
@@ -151,7 +156,9 @@ const SocialMedia = () => (
 
     </div>
 
-    <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
+    <div
+      className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up"
+    >
 
       <h3
         className="text-center soft-half-top flush-bottom"
@@ -161,5 +168,6 @@ const SocialMedia = () => (
     </div>
   </div>
 );
+/* eslint-enable max-len */
 
 export default SocialMedia;

@@ -1,4 +1,4 @@
-
+import { PropTypes } from "react";
 
 const Leaf = ({ size, color, type, style, className }) => {
   const computedStyles = { ...{ width: size, height: size }, ...style };
@@ -13,6 +13,14 @@ const Leaf = ({ size, color, type, style, className }) => {
       <i className={`icon-${type} ${color}`} style={textStyles} />
     </div>
   );
+};
+
+Leaf.propTypes = {
+  size: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  style: PropTypes.object,
+  className: PropTypes.string,
 };
 
 const OutlinedLeaf = props => (

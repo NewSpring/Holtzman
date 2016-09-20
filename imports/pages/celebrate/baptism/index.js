@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -15,9 +13,10 @@ import {
 
 import FitText from "../components/fit-text";
 
-let primary = "#0088BB",
-  secondary = "#006290";
+const primary = "#0088BB";
+const secondary = "#006290";
 
+/* eslint-disable max-len */
 const Baptism = () => (
   <div className="display-inline-block text-center one-whole" style={{ overflow: "hidden" }}>
 
@@ -34,10 +33,13 @@ const Baptism = () => (
       </FitText>
 
       <FitText compressor={0.3}>
-        <h1 className="uppercase text-light-primary" style={{
-          fontWeight: "900",
-          color: primary,
-        }}>
+        <h1
+          className="uppercase text-light-primary"
+          style={{
+            fontWeight: "900",
+            color: primary,
+          }}
+        >
             5,253
         </h1>
       </FitText>
@@ -54,10 +56,13 @@ const Baptism = () => (
       </FitText>
 
       <FitText compressor={0.55}>
-        <h1 className="uppercase text-light-primary" style={{
-          fontWeight: "900",
-          color: primary,
-        }}>
+        <h1
+          className="uppercase text-light-primary"
+          style={{
+            fontWeight: "900",
+            color: primary,
+          }}
+        >
             Baptisms
         </h1>
       </FitText>
