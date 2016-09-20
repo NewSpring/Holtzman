@@ -1,13 +1,12 @@
-import { api, parseEndpoint } from "../../util/rock";
+import { api } from "../../util/rock";
 import { makeNewGuid } from "../../util/guid";
 
 
 let HomeId = false;
 let BillingAddressId = false;
-export function upsertLocations(PersonId, Location) {
-  if (!PersonId || !Location) {
-    return;
-  }
+export function upsertLocations(PersonId, doc) { // eslint-disable-line
+  let Location = doc;
+  if (!PersonId || !Location) return;
 
   // verify the defined values are correctly in Rock
   // if they aren't in Rock already add them
@@ -16,7 +15,7 @@ export function upsertLocations(PersonId, Location) {
     for (const loc of locationTypes) {
       if (loc.Value === "Home") {
         HomeId = loc.Id;
-        continue;
+        continue; // eslint-disable-line
       }
 
       if (loc.Value === "Billing Address") {
@@ -63,8 +62,8 @@ export function upsertLocations(PersonId, Location) {
 
 
   // see if Street1 of the location matches any on file
-  let home = false,
-    exists = false;
+  let home = false;
+  let exists = false;
 
   for (const loc of locations) {
     const location = loc.Location;
@@ -86,14 +85,12 @@ export function upsertLocations(PersonId, Location) {
   }
 
   // add Guid and IsActive to the location
-  Location = { ...{
-    Guid: makeNewGuid(),
-    IsActive: true,
-  }, ...Location };
+  Location = { ...{ Guid: makeNewGuid(), IsActive: true }, ...Location };
 
   const LocationId = api.post.sync("Locations", Location);
 
   if (!LocationId || LocationId.statusText) {
+    // eslint-disable-next-line
     console.error("@@LOCATION_UPDATE_ERROR", Location);
     return;
   }
@@ -108,8 +105,7 @@ export function upsertLocations(PersonId, Location) {
       Guid: makeNewGuid(),
     };
 
-    const result = api.post.sync("GroupLocations", GroupLocation);
-
+    api.post.sync("GroupLocations", GroupLocation);
     return;
   }
 
@@ -123,7 +119,7 @@ export function upsertLocations(PersonId, Location) {
       Guid: makeNewGuid(),
     };
 
-    const result = api.post.sync("GroupLocations", GroupLocation);
+    api.post.sync("GroupLocations", GroupLocation);
     return;
   }
 }

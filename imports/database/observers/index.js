@@ -9,7 +9,7 @@ const observers = {
 };
 
 const observe = () => {
-  for (const observer in observers) {
+  for (const observer in observers) { // eslint-disable-line
     observers[observer]();
   }
 };
