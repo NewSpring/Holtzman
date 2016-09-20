@@ -1,14 +1,22 @@
-import { Component, PropTypes } from "react";
+import { PropTypes } from "react";
 import Meta from "../../../components/meta";
 import Forms from "../../../components/forms";
 import Loading from "../../../components/loading";
-import { Link } from "react-router";
 
 import FeedItem from "../../../components/cards/cards.FeedItem";
 import SideBySide from "../../../components/cards/SideBySide";
 import Tag from "../components/Tag";
 
-export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inputOnChange, content }) => (
+/* eslint-disable max-len */
+const Layout = ({
+  tags,
+  tagOnClick,
+  submitTags,
+  canSearchTags,
+  findByQuery,
+  inputOnChange,
+  content,
+}) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
     <Meta
@@ -18,7 +26,12 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
     />
 
     {/* Tags :rocket: */}
-    <div className="soft-half soft-double-ends soft-double-sides@palm-wide push-double@lap-and-up soft-double@lap-wide-and-up text-center">
+    <div
+      className={
+        "soft-half soft-double-ends soft-double-sides@palm-wide " +
+        "push-double@lap-and-up soft-double@lap-wide-and-up text-center"
+      }
+    >
       <h3 className="flush-bottom">Find My People</h3>
       <h6 className="soft-half-bottom@handheld soft-bottom@anchored">
         <em>Select multiple tags to find even more groups</em>
@@ -48,12 +61,21 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
     </div>
 
     {/* Search */}
-    <div className="soft soft-double-ends soft-double@lap-and-up text-center background--light-primary">
+    <div
+      className="soft soft-double-ends soft-double@lap-and-up text-center background--light-primary"
+    >
       <div>
-        <h3 className="soft-ends@anchored push-top@lap-and-up flush-bottom">Don't see what you're looking for?</h3>
+        <h3 className="soft-ends@anchored push-top@lap-and-up flush-bottom">
+          Don't see what you're looking for?
+        </h3>
         <Forms.Form
           classes={[
-            "soft", "one-whole", "two-thirds@portable", "one-half@anchored", "display-inline-block", "push-bottom",
+            "soft",
+            "one-whole",
+            "two-thirds@portable",
+            "one-half@anchored",
+            "display-inline-block",
+            "push-bottom",
           ]}
           submit={e => findByQuery(e)}
           action
@@ -74,13 +96,19 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
     </div>
 
     {/* Group Stories */}
-    <div className="soft-half soft-sides@palm-wide-and-up soft-double-ends soft-double@lap-wide-and-up text-center">
+    <div
+      className={
+        "soft-half soft-sides@palm-wide-and-up soft-double-ends " +
+        "soft-double@lap-wide-and-up text-center"
+      }
+    >
       <h3 className="push-top">You Can't Do Life Alone</h3>
       <div className="grid">
         {content && content.map((entry, key) => {
           if (process.env.WEB) {
             return (
               <a
+                rel="noopener noreferrer"
                 target="_blank"
                 href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
                 className="plain grid__item one-whole"
@@ -95,9 +123,14 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
                     {entry.title}
                   </h4>
 
-                  <p className="text-dark-primary"><small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} /></p>
+                  <p className="text-dark-primary">
+                    <small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} />
+                  </p>
                   <span
-                    className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                    className={
+                      "h6 btn--small btn--dark-tertiary " +
+                      "soft-sides@portable one-whole@handheld"
+                    }
                   >
                     Read more
                   </span>
@@ -116,3 +149,16 @@ export default ({ tags, tagOnClick, submitTags, canSearchTags, findByQuery, inpu
     </div>
   </section>
 );
+/* eslint-enable max-len */
+
+Layout.propTypes = {
+  tags: PropTypes.array.isRequired,
+  tagOnClick: PropTypes.func.isRequired,
+  submitTags: PropTypes.func.isRequired,
+  canSearchTags: PropTypes.bool.isRequired,
+  findByQuery: PropTypes.func.isRequired,
+  inputOnChange: PropTypes.func.isRequired,
+  content: PropTypes.object.isRequired,
+};
+
+export default Layout;
