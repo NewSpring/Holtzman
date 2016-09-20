@@ -1,6 +1,5 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
   Logo,
@@ -13,10 +12,13 @@ import {
 
 import FitText from "../components/fit-text";
 
-const Intro = ({ width, height }) => (
-  <div className="background--primary soft-top display-inline-block text-center one-whole" style={{
-    overflow: "hidden",
-  }}>
+const Intro = () => (
+  <div
+    className="background--primary soft-top display-inline-block text-center one-whole"
+    style={{
+      overflow: "hidden",
+    }}
+  >
 
     <Stats>
 
@@ -33,17 +35,23 @@ const Intro = ({ width, height }) => (
         </FitText>
 
         <FitText compressor={0.73}>
-          <h1 className="uppercase flush-bottom text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase flush-bottom text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
               Celebrate In
           </h1>
         </FitText>
 
         <FitText compressor={0.23}>
-          <h1 className="uppercase flush-bottom text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase flush-bottom text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
             2015
           </h1>
         </FitText>
@@ -125,30 +133,36 @@ const Intro = ({ width, height }) => (
 
     <Stats>
       <FitText compressor={1.1}>
-      <h3
-        className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
-        style={{
-          fontFamily: "ff-meta-serif-web-pro, serif",
-        }}
-      >
-        See how you were a
-      </h3>
+        <h3
+          className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
+          style={{
+            fontFamily: "ff-meta-serif-web-pro, serif",
+          }}
+        >
+          See how you were a
+        </h3>
       </FitText>
 
       <FitText compressor={0.65}>
-        <h1 className="uppercase flush-bottom text-light-primary" style={{
-          fontWeight: "900",
-        }}>
+        <h1
+          className="uppercase flush-bottom text-light-primary"
+          style={{
+            fontWeight: "900",
+          }}
+        >
           Difference
         </h1>
       </FitText>
 
       <FitText compressor={0.4}>
-      <h1 className="uppercase flush-bottom text-light-primary" style={{
-        fontWeight: "900",
-      }}>
-        Maker!
-      </h1>
+        <h1
+          className="uppercase flush-bottom text-light-primary"
+          style={{
+            fontWeight: "900",
+          }}
+        >
+          Maker!
+        </h1>
       </FitText>
     </Stats>
     <div className="soft-double-ends" />
