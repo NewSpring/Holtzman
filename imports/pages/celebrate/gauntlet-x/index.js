@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -23,6 +21,7 @@ const fuseNumbers = [
   { count: "1,324", label: "Volunteers" },
 ];
 
+/* eslint-disable max-len */
 const Fuse = () => (
   <div className="display-inline-block text-center one-whole ">
     <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
@@ -39,17 +38,23 @@ const Fuse = () => (
         </FitText>
 
         <FitText compressor={0.3}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
               1,066
           </h1>
         </FitText>
 
         <FitText compressor={0.65}>
-          <h1 className="uppercase push-back-top text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase push-back-top text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
               Salvations
           </h1>
         </FitText>
@@ -67,10 +72,13 @@ const Fuse = () => (
         </FitText>
 
         <FitText compressor={0.55}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontSize: "53px",
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontSize: "53px",
+              fontWeight: "900",
+            }}
+          >
               Students
           </h1>
         </FitText>
@@ -163,7 +171,9 @@ const Fuse = () => (
 
     </div>
 
-    <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
+    <div
+      className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up"
+    >
 
       <h3
         className="text-center soft-half-top flush-bottom"
@@ -178,5 +188,6 @@ const Fuse = () => (
     </div>
   </div>
 );
+/* eslint-enable max-len */
 
 export default Fuse;
