@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -20,6 +18,7 @@ const webNumbers = [
   { count: "3,581,508", label: "Total Unique Users (All sites + apps)" },
 ];
 
+/* eslint-disable max-len */
 const Web = () => (
   <div className="display-inline-block text-center one-whole ">
     <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
@@ -38,19 +37,27 @@ const Web = () => (
 
 
         <FitText compressor={0.2}>
-          <h1 className="uppercase flush-bottom text-light-primary" style={{
-            fontSize: "150px",
-            fontWeight: "900",
-          }}>
+          <h1
+            className="uppercase flush-bottom text-light-primary"
+            style={{
+              fontSize: "150px",
+              fontWeight: "900",
+            }}
+          >
             22
           </h1>
         </FitText>
 
         <FitText compressor={0.4}>
-          <h1 className="uppercase push-back-top push-back-double-top@lap-wide-and-up text-light-primary" style={{
-            fontSize: "40px",
-            fontWeight: "900",
-          }}>
+          <h1
+            className={
+              "uppercase push-back-top push-back-double-top@lap-wide-and-up text-light-primary"
+            }
+            style={{
+              fontSize: "40px",
+              fontWeight: "900",
+            }}
+          >
             times
           </h1>
         </FitText>
@@ -149,7 +156,9 @@ const Web = () => (
       </div>
 
     </div>
-    <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
+    <div
+      className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up"
+    >
 
       <h3
         className="text-center soft-half-top flush-bottom"
@@ -160,5 +169,6 @@ const Web = () => (
     </div>
   </div>
 );
+/* eslint-enable max-len */
 
 export default Web;
