@@ -20,7 +20,16 @@ export default class AudioScrubber extends Component {
 
   state = {
     lastPercent: null,
+    // This allows us to track if a user is scrubbing,
+    // this way a click event doesn't also fire
+    scrubbing: false,
     override: false
+  }
+
+  // Added cleanup methods for timeOut events
+  componentWillUnmount() {
+    if (this.onTouchEndTimeout) clearTimeout(this.touchEndTimeout);
+    if (this.onClickTimeout) clearTimeout(this.onClickTimeout);
   }
 
   scrubStyle = () => {
@@ -41,6 +50,8 @@ export default class AudioScrubber extends Component {
 
     this.setState({
       lastPercent: percent,
+      // A scrub event is taking place, so we don't want a click event also
+      scrubbing: true,
       override: true
     });
   };
@@ -50,19 +61,48 @@ export default class AudioScrubber extends Component {
 
     if(typeof percent === "number") {
       this.seek(percent);
-    }
+    };
 
-    setTimeout(() => {
+    this.touchEndTimeout = setTimeout(() => {
+      // Set states back to intial values so that time updates,
+      // and click events will happen appropriatly.
+      // Timeout is a full second as a shorter timeout did not
+      // set this states properly.
       this.setState({
-        lastPercent: null,
+        scrubbing: false,
         override: false
       });
-    }, 250);
+    }, 1000);
   }
 
   click = (e) => {
-    const percentClicked = this.calculatePercent(e.target, e.clientX);
-    this.seek(percentClicked);
+    // We are checking if a scrub is currently taking place,
+    // as a onTouchEnd and Click event were both happening on scrub.
+    const { scrubbing } = this.state;
+
+    // If a user is scrubbing, don't execute the onClick event
+    if(!scrubbing) {
+
+      const percentClicked = this.calculatePercent(e.target, e.clientX);
+
+      // Setting the state allows our time, and position to consistantly update.
+      this.setState({
+        lastPercent: percentClicked,
+        override: true
+      });
+
+      this.seek(percentClicked);
+
+      // We need to set the state back to it's initial value to allow incrementing
+      // of the current time.
+      // Timeout is a full second as a shorter timeout did not set the state appropriatly.
+      this.onClickTimeout = setTimeout(() => {
+        this.setState({
+          override: false
+        });
+      }, 1000);
+
+    }
   }
 
   calculatePercent = (targetElement, clickedX) => {
@@ -110,10 +150,6 @@ export default class AudioScrubber extends Component {
 
   getTertiaryTextClass = (dark) => {
     return dark ? "text-dark-tertiary" : "text-light-tertiary";
-  };
-
-  getTrackDuration = () => {
-    return this.props.playing.track.duration;
   };
 
   getTrackDuration = () => {

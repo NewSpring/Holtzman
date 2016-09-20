@@ -126,6 +126,7 @@ export default class AudioPlayerUtility extends Component {
       const formatMin = realMin < 10 ? `0${realMin}` : realMin;
 
       const formatPos = `${formatMin}:${formatSec}`;
+
       if (this.file !== track.file) return;
       this.props.setProgress(width * 100, formatPos);
     });
@@ -160,8 +161,11 @@ export default class AudioPlayerUtility extends Component {
     let [min, sec] = this.props.audio.playing.track.duration.split(":");
 
     // duration in milliseconds
-    const duration = (Number((min * 60)) + Number(sec)) * 100;
-    const newPos =  duration * (value / 10);
+
+    const duration = (Number((min * 60)) + Number(sec)) * 1000;
+
+    const newPos =  duration * (value / 100);
+
     this.player.seekTo(newPos);
   }
 
