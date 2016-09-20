@@ -1,9 +1,11 @@
-
+import { PropTypes } from "react";
 import { Link } from "react-router";
 
 import Meta from "../../../components/meta";
 
-export default ({ group, leaders, isLeader, join }) => (
+const rockUrl = Meteor.settings.public.rock.baseURL;
+
+const Layout = ({ group, leaders, isLeader, join }) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
     <Meta title={group.name} image={group.photo} description={group.description} />
@@ -21,7 +23,13 @@ export default ({ group, leaders, isLeader, join }) => (
     </div>
 
     {/* Group Information */}
-    <div style={{ borderRadius: "0 0 6px 6px" }} className="push-double-sides@lap-wide-and-up push-half-sides flush-ends card outlined outlined--light">
+    <div
+      style={{ borderRadius: "0 0 6px 6px" }}
+      className={
+        "push-double-sides@lap-wide-and-up push-half-sides " +
+        "flush-ends card outlined outlined--light"
+      }
+    >
       <div className="card__item soft">
         <h3 className="text-dark-primary push-half-top push-bottom">{group.name}</h3>
 
@@ -31,7 +39,7 @@ export default ({ group, leaders, isLeader, join }) => (
         <h5 className="text-dark-secondary soft-half-top">
           {leaders.map((x, i) => {
             let string = `${x.person.nickName || x.person.firstName} ${x.person.lastName}`;
-            if (leaders.length - 1 != i) string += ", ";
+            if (leaders.length - 1 !== i) string += ", ";
             return <span key={i}>{string}</span>;
           })}
         </h5>
@@ -52,19 +60,41 @@ export default ({ group, leaders, isLeader, join }) => (
     </div>
 
     {/* Main card stacks */}
-    <section className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides">
+    <section
+      className="soft-double-sides@lap-wide-and-up soft-half-sides soft-half-ends flush-sides"
+    >
 
       {/* Join Group CTA */}
       {/* shows manage group if you are a leader / can manage */}
       <div className="card outlined outlined--light soft-sides-@lap-and-up">
         <div className="grid card__item soft push-half flush">
-          <h4 className="flush-bottom hard-left push-bottom@handheld push-bottom@lap push-half-top grid__item one-half@lap-wide-and-up one-whole text-center@handheld text-center@lap text-dark-primary">#TheseAreMyPeople</h4>
-          <div className="grid__item hard-left text-right@lap-wide-and-up text-center one-whole one-half@lap-wide-and-up">
+          <h4
+            className={
+              "flush-bottom hard-left push-bottom@handheld push-bottom@lap " +
+              "push-half-top grid__item one-half@lap-wide-and-up one-whole " +
+              "text-center@handheld text-center@lap text-dark-primary"
+            }
+          >
+            #TheseAreMyPeople
+          </h4>
+          <div
+            className={
+              "grid__item hard-left text-right@lap-wide-and-up " +
+              "text-center one-whole one-half@lap-wide-and-up"
+            }
+          >
             {(() => {
               const className = "flush-bottom push-half-bottom@handheld btn";
               if (isLeader) {
                 return (
-                  <a target="_blank" className={className} href={`${Meteor.settings.public.rock.baseURL}groups/leader?GroupId=${group.entityId}`}>
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className={className}
+                    href={
+                      `${rockUrl}groups/leader?GroupId=${group.entityId}`
+                    }
+                  >
                     Manage Group
                   </a>
                 );
@@ -172,7 +202,10 @@ export default ({ group, leaders, isLeader, join }) => (
               <div className="soft-half-top flush-bottom">
                 {group.members.filter(x => x.person && x.person.photo).map((member, i) => (
                   <div
-                    className="ratio--square round display-inline-block push-half-right background--fill"
+                    className={
+                      "ratio--square round display-inline-block " +
+                      "push-half-right background--fill"
+                    }
                     key={i}
                     style={{
                       backgroundImage: `url('${member.person.photo}')`,
@@ -218,7 +251,10 @@ export default ({ group, leaders, isLeader, join }) => (
             Looking for another group?
           </h4>
           <div className="text-center one-whole">
-            <Link to="/groups/finder" className="flush-bottom push-half-bottom@handheld btn--dark-tertiary">
+            <Link
+              to="/groups/finder"
+              className="flush-bottom push-half-bottom@handheld btn--dark-tertiary"
+            >
               Find A Group
             </Link>
           </div>
@@ -227,3 +263,12 @@ export default ({ group, leaders, isLeader, join }) => (
     </section>
   </section>
 );
+
+Layout.propTypes = {
+  group: PropTypes.object.isRequired,
+  leaders: PropTypes.array.isRequired,
+  isLeader: PropTypes.bool.isRequired,
+  join: PropTypes.function.isRequired,
+};
+
+export default Layout;
