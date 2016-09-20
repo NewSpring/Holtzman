@@ -1,3 +1,4 @@
+import { PropTypes } from "react";
 import { Link } from "react-router";
 import Forms from "../../../components/forms";
 
@@ -68,5 +69,11 @@ const Layout = ({ submit, save, state }) => (
     </Forms.Form>
   </div>
 );
+
+Layout.propTypes = {
+  submit: PropTypes.func.isRequired,
+  save: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired,
+};
 
 export default Layout;
