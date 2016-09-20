@@ -5,7 +5,10 @@ export default class Switch extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
     changed: PropTypes.func.isRequired,
-    classes: PropTypes.array, // eslint-disable-line
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
     containerClasses: PropTypes.string,
     containerStyle: PropTypes.object, // eslint-disable-line
     theme: PropTypes.string,
