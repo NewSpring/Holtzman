@@ -14,7 +14,7 @@
     "__meteor_runtime_config__": true,
     "NativeStorage": true,
     "ga": true,
-    "hockeyapp"
+    "hockeyapp": true
   },
   "rules": {
     "quotes": [2, "double"],
@@ -28,7 +28,8 @@
   "settings": {
     "import/core-modules": [
       "meteor/meteor",
-      "meteor/accounts-base"
+      "meteor/accounts-base",
+      "meteor/mongo"
     ]
   }
 }
