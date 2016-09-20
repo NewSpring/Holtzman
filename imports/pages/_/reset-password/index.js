@@ -1,5 +1,4 @@
 import { Component, PropTypes } from "react";
-import { Link } from "react-router";
 import { connect } from "react-redux";
 
 import { reset } from "../../../methods/accounts/browser";
@@ -10,6 +9,13 @@ import Layout from "./Layout";
 
 @connect()
 export default class ChangePassword extends Component {
+
+  static propTypes = {
+    params: {
+      token: PropTypes.string.isRequired,
+    },
+    dispatch: PropTypes.func.isRequired,
+  }
 
   state = {
     newP: null,
@@ -29,9 +35,9 @@ export default class ChangePassword extends Component {
         return;
       }
 
-      reset(false, this.state.newP, (err, result) => {
-        if (err) {
-          this.setState({ state: "error", err });
+      reset(false, this.state.newP, (error) => {
+        if (error) {
+          this.setState({ state: "error", error });
           setTimeout(() => {
             this.setState({ state: "default" });
           }, 5000);
@@ -52,11 +58,11 @@ export default class ChangePassword extends Component {
   save = (value, input) => {
     const { id } = input;
 
-    if (id === "newPDup" && this.state.newP && this.state.newP != value) {
+    if (id === "newPDup" && this.state.newP && this.state.newP !== value) {
       return false;
     }
 
-    if (id === "newP" && this.state.newPDup && this.state.newPDup != value) {
+    if (id === "newP" && this.state.newPDup && this.state.newPDup !== value) {
       return false;
     }
 
@@ -72,7 +78,10 @@ export default class ChangePassword extends Component {
       case "error":
         return (
           <div className="fixed-ends fixed-sides">
-            <Error msg="Looks like there was a problem" error={err && err.message ? err.message : " "} />
+            <Error
+              msg="Looks like there was a problem"
+              error={err && err.message ? err.message : " "}
+            />
           </div>
         );
       case "loading":
