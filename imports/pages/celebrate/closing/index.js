@@ -1,6 +1,5 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
   Logo,
@@ -14,9 +13,12 @@ import {
 import FitText from "../components/fit-text";
 
 const Closing = () => (
-  <div className="background--primary soft-top display-inline-block text-center one-whole" style={{
-    overflow: "hidden",
-  }}>
+  <div
+    className="background--primary soft-top display-inline-block text-center one-whole"
+    style={{
+      overflow: "hidden",
+    }}
+  >
 
     <Stats>
       <FitText compressor={1.1}>
@@ -32,10 +34,13 @@ const Closing = () => (
       </FitText>
 
       <FitText compressor={0.35}>
-        <h1 className="uppercase flush-bottom text-light-primary" style={{
-          fontSize: "80px",
-          fontWeight: "900",
-        }}>
+        <h1
+          className="uppercase flush-bottom text-light-primary"
+          style={{
+            fontSize: "80px",
+            fontWeight: "900",
+          }}
+        >
           Jesus
         </h1>
       </FitText>
@@ -65,10 +70,13 @@ const Closing = () => (
       </FitText>
 
       <FitText compressor={0.33}>
-        <h1 className="uppercase flush-bottom text-light-primary" style={{
-          fontSize: "63px",
-          fontWeight: "900",
-        }}>
+        <h1
+          className="uppercase flush-bottom text-light-primary"
+          style={{
+            fontSize: "63px",
+            fontWeight: "900",
+          }}
+        >
           State
         </h1>
       </FitText>
