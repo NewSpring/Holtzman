@@ -33,13 +33,12 @@ Meteor.methods({
           },
         },
       },
-        (err, response) => {
-          if (!err) {
-            Accounts.sendResetPasswordEmail(meteorUserId);
-          }
+        (err) => {
+          if (!err) Accounts.sendResetPasswordEmail(meteorUserId);
         }
       );
     } catch (e) {
+      // eslint-disable-next-line
       console.log(e);
     }
 

@@ -2,11 +2,13 @@
 import { api } from "../../../util/rock";
 
 let RESET_EMAIL_ID = false;
-if (typeof Accounts != "undefined") {
-  Accounts.emailTemplates.resetPassword.text = (user, token) => {
+if (typeof Accounts !== "undefined") {
+  Accounts.emailTemplates.resetPassword.text = (user, t) => {
+    let token = t;
+
     // let PersonAliasId, mergeFields
-    let { PersonAliasId, PersonId } = user.services.rock;
-    const { ROOT_URL } = __meteor_runtime_config__;
+    const { PersonId } = user.services.rock;
+    const { ROOT_URL } = __meteor_runtime_config__; // eslint-disable-line
 
     const Person = api.get.sync(`People/${PersonId}`);
 
@@ -25,7 +27,7 @@ if (typeof Accounts != "undefined") {
         ResetPasswordUrl: `${ROOT_URL}/_/reset-password/${token}`,
         Person,
       }
-      , (err, response) => {}
+      , () => {}
     );
 
     return false;
@@ -33,7 +35,7 @@ if (typeof Accounts != "undefined") {
 }
 
 Meteor.methods({
-  "rock/accounts/reset": function (current, newPassword) {
+  "rock/accounts/reset": function resetAccount(current, newPassword) {
     // check(current, String)
     check(newPassword, String);
 
@@ -71,12 +73,18 @@ Meteor.methods({
     try {
       const response = api.put.sync(`UserLogins/${RockUser.Id}`, RockUser);
       if (response.statusText) {
+        // eslint-disable-next-line
         console.error("@@GROUP_ADD_ERROR", RockUser, response);
-        throw new Meteor.Error("It looks like we had an unexpected issue! We are so sorry! Please try again");
+        throw new Meteor.Error(
+          "It looks like we had an unexpected issue! We are so sorry! Please try again"
+        );
       }
     } catch (e) {
+      // eslint-disable-next-line
       console.error("@@GROUP_ADD_SECOND_ERROR", e, e.message);
-      throw new Meteor.Error("It looks like we had an unexpected issue! We are so sorry! Please try again");
+      throw new Meteor.Error(
+        "It looks like we had an unexpected issue! We are so sorry! Please try again"
+      );
     }
 
     Accounts.setPassword(this.userId, newPassword, { logout: false });

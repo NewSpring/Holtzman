@@ -3,7 +3,7 @@ import { api } from "../../../util/rock";
 import { makeNewGuid } from "../../../util";
 
 Meteor.methods({
-  "rock/accounts/updateHome": function (data) {
+  "rock/accounts/updateHome": function updateHome(data) {
     if (!this.userId) {
       throw new Meteor.Error("You must be logged in to change your information");
     }
@@ -36,8 +36,7 @@ Meteor.methods({
     }
 
     // move campus to another call
-    const Campus = data.Campus;
-    delete data.Campus;
+    delete data.Campus; // eslint-disable-line
 
     // if (GroupId) {
     //   let result = api.patch.sync(`Groups/${GroupId}`, { CampusId: Campus })
@@ -45,11 +44,8 @@ Meteor.methods({
 
     if (home) {
       const success = api.patch.sync(`Locations/${home}`, data);
-      if (success) {
-        return true;
-      } else {
-        throw new Meteor.Error(success);
-      }
+      if (success) return true;
+      throw new Meteor.Error(success);
     }
 
 
@@ -59,16 +55,10 @@ Meteor.methods({
 
     */
 
-    const Location = { ...{
-      Guid: makeNewGuid(),
-      IsActive: true,
-    }, ...data };
-
+    const Location = { ...{ Guid: makeNewGuid(), IsActive: true }, ...data };
     const LocationId = api.post.sync("Locations", Location);
 
-    if (!LocationId) {
-      throw new Meteor.Error("Location could not be created", Location);
-    }
+    if (!LocationId) throw new Meteor.Error("Location could not be created", Location);
 
     const GroupLocation = {
       GroupId,
