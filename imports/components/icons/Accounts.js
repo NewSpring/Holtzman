@@ -1,5 +1,6 @@
+import { PropTypes } from "react";
 
-const AmEx = ({ width, height, style }) => (
+const AmEx = ({ width, height }) => (
   <div
     style={{
       width,
@@ -14,7 +15,12 @@ const AmEx = ({ width, height, style }) => (
   />
 );
 
-const Visa = ({ width, height, style }) => (
+AmEx.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+};
+
+const Visa = ({ width, height }) => (
   <div
     style={{
       width,
@@ -28,7 +34,12 @@ const Visa = ({ width, height, style }) => (
   />
 );
 
-const Discover = ({ width, height, style }) => (
+Visa.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+};
+
+const Discover = ({ width, height }) => (
   <div
     style={{
       width,
@@ -42,7 +53,12 @@ const Discover = ({ width, height, style }) => (
   />
 );
 
-const MasterCard = ({ width, height, style }) => (
+Discover.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+};
+
+const MasterCard = ({ width, height }) => (
   <div
     style={{
       width,
@@ -56,7 +72,12 @@ const MasterCard = ({ width, height, style }) => (
   />
 );
 
-const Bank = ({ width, height, style }) => (
+MasterCard.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+};
+
+const Bank = ({ width, height }) => (
   <div
     style={{
       width,
@@ -70,6 +91,10 @@ const Bank = ({ width, height, style }) => (
   />
 );
 
+Bank.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+};
 
 export default {
   AmEx,
