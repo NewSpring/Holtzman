@@ -265,7 +265,7 @@ export default class Confirm extends Component {
       type,
     };
 
-    if (props.savedAccount) {
+    if (props.savedAccount && props.savedAccount.id) {
       data.payment.last4 = props.savedAccount.payment.accountNumber.slice(-4);
     } else if (type === "cc") {
       data.payment.last4 = cardNumber.slice(-4);
