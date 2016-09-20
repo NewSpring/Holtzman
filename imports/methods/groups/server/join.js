@@ -1,14 +1,13 @@
 /* global Meteor, check */
 import { api, parseEndpoint } from "../../../util/rock";
 import { makeNewGuid } from "../../../util/guid";
-import Moment from "moment";
 
 
-let GROUP_MEMBER_REQUEST_EMAIL = false,
-  EMAIL_EXISTS = true;
+let GROUP_MEMBER_REQUEST_EMAIL = false;
+let EMAIL_EXISTS = true;
 
 Meteor.methods({
-  "community/actions/join": function (GroupId, message) {
+  "community/actions/join": function joinGroup(GroupId, message) {
     if (!this.userId) {
       throw new Meteor.Error("You must be signed in to join a group");
     }
@@ -20,7 +19,7 @@ Meteor.methods({
     }
 
     // user || (user = { services: { rock: {} }})
-    const { PersonId, PrimaryAliasId } = user.services.rock;
+    const { PersonId } = user.services.rock;
 
     // first time this is used, try to load the email in memory
     if (!GROUP_MEMBER_REQUEST_EMAIL && EMAIL_EXISTS) {
@@ -92,7 +91,7 @@ Meteor.methods({
             Person,
             Group,
           }
-          , (err, response) => {
+          , (err) => {
             // in case this messed up, let the job handle it in Rock
             if (err) {
               api.patch.sync(`GroupMembers/${GroupMemberId}`, {

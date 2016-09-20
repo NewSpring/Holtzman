@@ -30,8 +30,6 @@ Meteor.methods({
 
     url = api._.baseURL + url;
 
-    console.log(url);
-
     const promiseWrapper = (promise, callback) => {
       promise.then((response) => {
         callback(null, response);
@@ -45,7 +43,7 @@ Meteor.methods({
 
     return sync(fetch(url, options)
       .then((response) => {
-        console.log(response);
+        console.log(response); // eslint-disable-line
         return response;
       })
     );

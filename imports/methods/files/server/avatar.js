@@ -1,16 +1,16 @@
 
 /* global Meteor, check */
 
-import { api, parseEndpoint } from "../../../util/rock";
+import { api } from "../../../util/rock";
 
 Meteor.methods({
-  "file/upload/avatar": function (id) {
+  "file/upload/avatar": function avatar(id) {
     if (!this.userId) {
       throw new Meteor.Error("Must be logged in to upload an avatar");
     }
 
     let user = Meteor.users.findOne(this.userId);
-    user || (user = { services: { rock: {} } });
+    user || (user = { services: { rock: {} } }); // eslint-disable-line
     const { PersonId } = user.services.rock;
 
     const Person = api.get.sync(`People/${PersonId}`);
@@ -30,7 +30,7 @@ Meteor.methods({
 
     try {
       api.delete(`BinaryFiles/${PhotoId}`);
-    } catch (e) {}
+    } catch (e) {} // eslint-disable-line
 
 
     return true;
