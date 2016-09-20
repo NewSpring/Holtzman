@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 /*
 
   This file unifies the API from the cordova and audio5 depending on env
@@ -7,16 +9,16 @@
 
 class Audio {
 
-  constructor(src, success, error, status) {
+  constructor(src, success) {
     try {
-      this._audio5 = new Audio5({
-        ready(player) {
+      this._audio5 = new Audio5({ // eslint-disable-line
+        ready() {
           this.load(src);
         },
 
       });
     } catch (e) {
-      console.error(e);
+      console.error(e); // eslint-disable-line
     }
 
 
@@ -31,7 +33,7 @@ class Audio {
     this.duration = this._audio5.duration;
   }
 
-  getCurrentPosition = () => { this._audio5.position; }
+  getCurrentPosition = () => this._audio5.position
 
   timeupdate = (callback) => {
     this._audio5.on("timeupdate", () => {
@@ -39,7 +41,7 @@ class Audio {
     });
   }
 
-  getDuration = () => { this._audio5.duration; }
+  getDuration = () => this._audio5.duration
 
   play = () => { this._audio5.play(); }
 
@@ -47,15 +49,15 @@ class Audio {
   playPause = () => { this._audio5.playPause(); }
 
   // native only
-  release() { return; }
+  release() { return; } // eslint-disable-line
 
 
   seekTo = (pos) => { this._audio5.seek(pos / 1000); }
 
   setVolume = (vol) => { this._audio5.volume(vol); }
 
-  startRecord() { return; }
-  stopRecord() { return; }
+  startRecord() { return; } // eslint-disable-line
+  stopRecord() { return; } // eslint-disable-line
 
   stop = () => { this._audio5.pause(); }
   release = () => { this._audio5.destroy(); }
@@ -66,8 +68,8 @@ class Audio {
 
 
 if (Meteor.isCordova) {
-  document.addEventListener("deviceready", (event) => {
-    Media.prototype.timeupdate = function (callback) {
+  document.addEventListener("deviceready", () => {
+    Media.prototype.timeupdate = function timer(callback) { // eslint-disable-line
       return setInterval(() => {
         this.getCurrentPosition((position) => {
           if (position > -1) {
@@ -81,10 +83,8 @@ if (Meteor.isCordova) {
       }, 1000);
     };
 
-    Media.prototype.ended = function (callback) {
-      const getDuration = () => {
-        return this.getDuration();
-      };
+    Media.prototype.ended = function (callback) { // eslint-disable-line
+      const getDuration = () => this.getDuration();
 
       const interval = setInterval(() => {
         this.getCurrentPosition((position) => {
@@ -100,7 +100,7 @@ if (Meteor.isCordova) {
       }, 10);
     };
 
-    Media.prototype.playPause = function () {
+    Media.prototype.playPause = function () { // eslint-disable-line
       if (this.isPlaying) {
         this.pause();
         this.isPlaying = false;
@@ -111,7 +111,7 @@ if (Meteor.isCordova) {
       this.play();
     };
 
-    Audio = Media;
+    Audio = Media; // eslint-disable-line
   });
 }
 
