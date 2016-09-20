@@ -1,8 +1,4 @@
-
-import { Link } from "react-router";
-
-import Forms from "../../../components/forms";
-import SideBySide from "../../../components/cards/SideBySide";
+import { PropTypes } from "react";
 import Loading from "../../../components/loading";
 import Meta from "../../../components/meta";
 
@@ -11,7 +7,7 @@ import Group from "../components/GroupCard";
 
 import Filter from "./Filter";
 
-export default ({
+const Layout = ({
   groups,
   tags,
   loading,
@@ -32,7 +28,11 @@ export default ({
 
     {/* Tag List */}
     <div
-      className="background--light-primary soft soft-double-left@anchored outlined--light outlined--bottom"
+      className={
+        "background--light-primary soft soft-double-left@anchored " +
+        "outlined--light outlined--bottom"
+      }
+    >
       style={{
         whiteSpace: "nowrap",
         overflowY: "hidden",
@@ -41,7 +41,13 @@ export default ({
       }}
     >
       {tags && tags.map((tag, key) => (
-        <Tag style={{ verticalAlign: "bottom" }} className="flush-bottom" val={tag} key={key} canBeActive />
+        <Tag
+          style={{ verticalAlign: "bottom" }}
+          className="flush-bottom"
+          val={tag}
+          key={key}
+          canBeActive
+        />
       ))}
       {campuses && campuses.map((campus, key) => (
         <Tag
@@ -82,18 +88,19 @@ export default ({
             style={{ verticalAlign: "middle" }}
             className="push-bottom push-double-bottom@lap-and-up soft-half-ends soft-half-sides"
           >
-            <h6 className="em float-left flush-bottom text-dark-tertiary" style={{ verticalAlign: "middle" }}>
+            <h6
+              className="em float-left flush-bottom text-dark-tertiary"
+              style={{ verticalAlign: "middle" }}
+            >
               {count} Results
             </h6>
-            {(() => {
-              return (
-                <button
-                  className="float-right icon-search"
-                  style={{ marginTop: "-4px" }}
-                  onClick={() => toggleSearch()}
-                />
-              );
-            })()}
+            {(() => (
+              <button
+                className="float-right icon-search"
+                style={{ marginTop: "-4px" }}
+                onClick={() => toggleSearch()}
+              />
+            ))()}
           </div>
         );
       })()}
@@ -118,7 +125,10 @@ export default ({
         if (!count) return null;
         return (
           <div
-            className="text-center soft-half-top push-top push-double-top@lap-and-up soft-half-bottom soft-half-sides"
+            className={
+              "text-center soft-half-top push-top push-double-top@lap-and-up " +
+              "soft-half-bottom soft-half-sides"
+            }
           >
             <h6 className="em text-dark-secondary flush">
               {groups.length} results of {count}
@@ -168,7 +178,12 @@ export default ({
       </div>
 
       {/* Ad unit */}
-      <button className="relative one-whole push-double-top@lap-and-up push-double-top push-bottom@lap-and-up" >
+      <button
+        className={
+          "relative one-whole push-double-top@lap-and-up " +
+          "push-double-top push-bottom@lap-and-up"
+        }
+      >
         <div className="card soft soft-double-sides@lap-and-up">
           <div className="card__item soft-double-sides@lap-and-up">
             <div className="one-whole text-center@handheld">
@@ -192,3 +207,19 @@ export default ({
     </div>
   </section>
 );
+
+Layout.propTypes = {
+  groups: PropTypes.array.isRequired,
+  tags: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  query: PropTypes.string.isRequired,
+  showSearch: PropTypes.bool.isRequired,
+  toggleSearch: PropTypes.func.isRequired,
+  showTags: PropTypes.bool.isRequired,
+  count: PropTypes.number.isRequired,
+  toggleTags: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired,
+  paginate: PropTypes.func.isRequired,
+};
+
+export default Layout;
