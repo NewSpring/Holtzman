@@ -16,6 +16,8 @@ export default class Tag extends Component {
     canBeActive: PropTypes.bool,
     label: PropTypes.string,
     urlKey: PropTypes.string,
+    router: PropTypes.object,
+    location: PropTypes.object,
   }
 
   static defaultProps = {
@@ -55,7 +57,7 @@ export default class Tag extends Component {
     if (e) e.stopPropagation();
     let { val, onClick, router, location, clickAble, canBeActive, urlKey } = this.props;
 
-    if (!clickAble) return null;
+    if (!clickAble) return;
 
     if (canBeActive) this.setState({ isActive: !this.state.isActive });
 
@@ -86,6 +88,15 @@ export default class Tag extends Component {
     }
     const newPath = router.createPath(location);
     router.replace(newPath);
+  }
+
+  isInQueryString = (props) => {
+    const { val } = props;
+    const { query } = props.location;
+    if (!query || !query.tags) return false;
+
+    const tags = query.tags.toLowerCase().split(",").filter(x => x);
+    return tags.indexOf(val.toLowerCase()) > -1;
   }
 
   render() {
