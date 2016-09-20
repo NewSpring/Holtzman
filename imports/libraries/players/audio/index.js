@@ -11,6 +11,7 @@ if (Meteor.isCordova) {
       return setInterval(() => {
         this.getCurrentPosition(function(position) {
             if (position > -1) {
+              // Convert position to minutes and seconds
               const mins = Math.floor(position / 60);
               const seconds = (position % 60).toFixed(0);
 
