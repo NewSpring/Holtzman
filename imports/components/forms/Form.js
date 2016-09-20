@@ -1,7 +1,22 @@
-import { PropTypes } from "react";
+import { Component, PropTypes } from "react";
 import Fieldset from "./Fieldset";
 
-export default class Form extends React.Component {
+export default class Form extends Component {
+
+  static propTypes = {
+    theme: PropTypes.string,
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    children: PropTypes.any, // eslint-disable-line
+    id: PropTypes.string,
+    submit: PropTypes.func,
+    action: PropTypes.string,
+    method: PropTypes.string,
+    style: PropTypes.object, // eslint-disable-line
+    fieldsetTheme: PropTypes.string,
+  }
 
   layoutClasses = () => {
     let classes = [
