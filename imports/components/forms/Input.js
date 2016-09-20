@@ -1,11 +1,41 @@
 import { Component, PropTypes } from "react";
-import ReactDOM from "react-dom";
 import StripTags from "striptags";
 
 import Label from "./components/Label";
 
 export default class Input extends Component {
 
+  static propTypes = {
+    defaultValue: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string,
+    ]),
+    status: PropTypes.string,
+    disabled: PropTypes.any, // eslint-disable-line
+    validation: PropTypes.func,
+    errorText: PropTypes.string,
+    theme: PropTypes.string,
+    type: PropTypes.string,
+    error: PropTypes.any, // eslint-disable-line
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    children: PropTypes.any, // eslint-disable-line
+    id: PropTypes.string,
+    label: PropTypes.string,
+    name: PropTypes.string,
+    inputClasses: PropTypes.array, // eslint-disable-line
+    hideLabel: PropTypes.bool,
+    autofocus: PropTypes.any, // eslint-disable-line
+    format: PropTypes.func,
+    onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    style: PropTypes.object, //eslint-disable-line
+    value: PropTypes.string,
+    placeholder: PropTypes.string,
+    maxLength: PropTypes.number,
+  }
 
   state = {
     active: false,
@@ -24,23 +54,23 @@ export default class Input extends Component {
 
   componentDidMount() {
     if (this.props.autofocus) {
-      this.refs["apollos-input"].focus();
+      this.node.focus();
     }
 
 
     // one day, I dream of a universal browser auto-fill event
     // until then. I'll keep on checking
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const target = this.node;
     this.interval = setInterval(() => {
-      if (this._previousValue === target.value || !target.value) {
+      if (this._previousValue === target.value || !target.value) { // eslint-disable-line
         return;
       }
 
-      if (!this._previousValue && target.value && !this.state.focused) {
+      if (!this._previousValue && target.value && !this.state.focused) { // eslint-disable-line
         this.setValue(target.value);
       }
 
-      this._previousValue = target.value;
+      this._previousValue = target.value; // eslint-disable-line
     }, 20);
 
     // set value on re-render
@@ -50,7 +80,7 @@ export default class Input extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    if (this.props.defaultValue != nextProps.defaultValue) {
+    if (this.props.defaultValue !== nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue);
       this.setState({ focused: false });
     }
@@ -63,9 +93,9 @@ export default class Input extends Component {
   }
 
 
-  format = (e) => {
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    // let value = this.refs["apollos-input"].value
+  format = (e) => { // eslint-disable-line
+    const target = this.node;
+    // let value = this.node.value
     const value = this.getValue();
 
     if (this.props.format && typeof (this.props.format) === "function") {
@@ -79,7 +109,7 @@ export default class Input extends Component {
   }
 
   validate = (e) => {
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const target = this.node;
     // const value = target.value
     const value = this.getValue();
 
@@ -105,7 +135,7 @@ export default class Input extends Component {
     }
   }
 
-  focus = (event) => {
+  focus = () => {
     this.setState({
       active: true,
       error: false,
@@ -114,17 +144,17 @@ export default class Input extends Component {
   }
 
   setValue = (value) => {
-    const node = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    node.value = StripTags(value); // prevent XSS;
+    const node = this.node;
+     // prevent XSS;
+    node.value = StripTags(value); // eslint-disable-line
     this.focus();
     this.validate();
   }
 
-  getValue = () => {
-    // http://stackoverflow.com/questions/5788527/is-strip-tags-vulnerable-to-scripting-attacks/5793453#5793453
-    return StripTags(ReactDOM.findDOMNode(this.refs["apollos-input"]).value); // prevent XSS
-  }
-
+  // http://stackoverflow.com/questions/5788527/is-strip-tags-vulnerable-to-scripting-attacks/5793453#5793453
+    // prevent XSS;
+  getValue = () =>
+    StripTags(this.node.value); // eslint-disable-line
 
   setStatus = (message) => {
     this.props.status = message;
@@ -134,9 +164,10 @@ export default class Input extends Component {
     if (this.props.disabled) {
       return this.props.disabled;
     }
+    return undefined;
   }
 
-  renderHelpText = (message) => {
+  renderHelpText = () => {
     if ((this.state.error && this.props.errorText) || this.state.status) {
       return (
         <span className="input__status">
@@ -144,6 +175,7 @@ export default class Input extends Component {
         </span>
       );
     }
+    return undefined;
   }
 
   style = () => {
@@ -154,9 +186,12 @@ export default class Input extends Component {
     }
 
     if (this.props.disabled) {
-      style = { ...style, ...{
-        cursor: "inherit",
-      } };
+      style = {
+        ...style,
+        ...{
+          cursor: "inherit",
+        },
+      };
     }
 
     return style;
@@ -193,11 +228,12 @@ export default class Input extends Component {
               />
             );
           }
+          return undefined;
         })()}
 
 
         <input
-          ref="apollos-input"
+          ref={node => (this.node = node)}
           id={this.props.id || this.props.name || this.props.label}
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}
