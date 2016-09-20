@@ -30,7 +30,9 @@ export default class HomeHero extends Component {
           <h3 className="text-light-primary flush soft-half-bottom capitalize">{heroItem.title}</h3>
           <i className={iconClasses} />
           <h7 className="text-light-primary">{ready ? categories.name(heroItem) : ""}</h7>
-          <h7 className="text-light-primary text-right float-right" style={this.timeStampStyles}>{ready ? time.relative(heroItem) : ""}</h7>
+          <h7 className="text-light-primary text-right float-right" style={this.timeStampStyles}>
+            {ready ? time.relative(heroItem) : ""}
+          </h7>
         </div>
       </section>
     );
