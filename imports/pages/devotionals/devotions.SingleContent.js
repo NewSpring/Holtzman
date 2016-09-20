@@ -11,7 +11,7 @@ export default class DevotionsSingleContent extends Component {
 
   static propTypes = {
     devotion: PropTypes.object.isRequired,
-    classes: PropTypes.array.isRequired,
+    classes: PropTypes.array,
     onClickLink: PropTypes.func.isRequired,
   }
 
