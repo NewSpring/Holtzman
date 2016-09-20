@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -22,6 +20,7 @@ const fuseNumbers = [
   { count: "13,427", label: "First Timers" },
 ];
 
+/* eslint-disable max-len */
 const Fuse = () => (
   <div className="display-inline-block text-center one-whole ">
     <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
@@ -38,30 +37,36 @@ const Fuse = () => (
         </FitText>
 
         <FitText compressor={0.3}>
-        <h1 className="uppercase text-light-primary" style={{
-          fontWeight: "900",
-        }}>
-            4,286
-        </h1>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
+              4,286
+          </h1>
         </FitText>
 
         <FitText compressor={0.55}>
-        <h1 className="uppercase push-back-top text-light-primary" style={{
-          fontWeight: "900",
-        }}>
-            Students
-        </h1>
+          <h1
+            className="uppercase push-back-top text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
+              Students
+          </h1>
         </FitText>
 
         <FitText compressor={1.5}>
-        <h3
-          className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
-          style={{
-            fontFamily: "ff-meta-serif-web-pro, serif",
-          }}
-        >
-          got to belong at Fuse
-        </h3>
+          <h3
+            className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
+            }}
+          >
+            got to belong at Fuse
+          </h3>
         </FitText>
       </Stats>
 
@@ -146,7 +151,9 @@ const Fuse = () => (
 
     </div>
 
-    <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
+    <div
+      className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up"
+    >
 
       <h3
         className="text-center soft-half-top flush-bottom"
@@ -157,9 +164,10 @@ const Fuse = () => (
         style={{ fontFamily: "ff-meta-serif-web-pro, serif" }}
       >The Next Generation</h5>
 
-    <List items={fuseNumbers} />
+      <List items={fuseNumbers} />
     </div>
   </div>
 );
+/* eslint-enable max-len */
 
 export default Fuse;
