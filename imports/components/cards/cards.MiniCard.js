@@ -1,11 +1,11 @@
-
+import PropTypes from "react";
 import { Link } from "react-router";
 import backgrounds from "../../util/backgrounds";
 import contentHelper from "../../util/content";
 import categories from "../../util/categories";
 
-const hasImage = (content) =>
-  return content.content.images.length > 0 ||
+const hasImage = content =>
+  content.content.images.length > 0 ||
     (
       content.parent &&
       content.parent.content &&
@@ -14,44 +14,51 @@ const hasImage = (content) =>
 
 // XXX right now this uses the content prop for everything
 // it should less intelligent and use the other props directly
-const MiniCard = ({ link, title, icon, type, images, description, content }) => (
+// Unused props: icon, link, type, images
+const MiniCard = ({ title, description, content }) => (
   <Link to={contentHelper.links(content)} className="plain">
     <div className="card">
-        <div className={`card__item soft push-half-ends ${hasImage(content) ? "two-thirds" : "one-whole"}`} style={{ verticalAlign: "middle" }}>
-          <h6 className="text-dark-primary capitalize">{title}</h6>
+      <div className={`card__item soft push-half-ends ${hasImage(content) ? "two-thirds" : "one-whole"}`} style={{ verticalAlign: "middle" }}>
+        <h6 className="text-dark-primary capitalize">{title}</h6>
 
+        {(() => {
+          // if (!content) return;
+          if (!description) return undefined;
+          return <p className="text-dark-primary">{description}</p>;
+        })()}
+
+        <div className="display-inline-block">
           {(() => {
-            // if (!content) return;
-            if (!description) return;
-            return <p className="text-dark-primary">{description}</p>;
+            if (!content) return undefined;
+            // if (!icon) return;
+            return <span className={`${categories.icon(content)} text-dark-tertiary`} />;
           })()}
 
-          <div className="display-inline-block">
-            {(() => {
-              if (!content) return;
-              // if (!icon) return;
-              return <span className={`${categories.icon(content)} text-dark-tertiary`} />;
-            })()}
-
-            {(() => {
-              if (!content) return;
-              // if (!type) return;
-              return <h7 className="text-dark-tertiary soft-half-left">{categories.name(content)}</h7>;
-            })()}
-
-          </div>
+          {(() => {
+            if (!content) return undefined;
+            // if (!type) return;
+            return <h7 className="text-dark-tertiary soft-half-left">{categories.name(content)}</h7>;
+          })()}
 
         </div>
-        <div
-          className="locked-ends locked-right card__image one-third background--fill"
-          style={{
-            verticalAlign: "middle",
-            backgroundImage: `url('${backgrounds.image(content, { label: "2:1" })}')`,
-          }}
-        />
+
+      </div>
+      <div
+        className="locked-ends locked-right card__image one-third background--fill"
+        style={{
+          verticalAlign: "middle",
+          backgroundImage: `url('${backgrounds.image(content, { label: "2:1" })}')`,
+        }}
+      />
     </div>
 
   </Link>
 );
+
+MiniCard.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  content: PropTypes.object.isRequired, // eslint-disable-line
+};
 
 export default MiniCard;
