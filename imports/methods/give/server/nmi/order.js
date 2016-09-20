@@ -5,8 +5,8 @@ import { parseXML } from "../../../../util";
 import ErrorCodes from "./language";
 
 const step2 = (purchaseData, method, callback) => {
-  method || (method = "sale");
-  const { ROOT_URL } = __meteor_runtime_config__;
+  method || (method = "sale"); // eslint-disable-line
+  const { ROOT_URL } = __meteor_runtime_config__; // eslint-disable-line
   const url = `${ROOT_URL}/give/now`;
 
   const sale = {
@@ -15,7 +15,8 @@ const step2 = (purchaseData, method, callback) => {
       "redirect-url": url,
       "order-description": "Online contributions from Apollos",
       "order-id": `apollos_${Date.now()}_${Math.ceil(Math.random() * 100000)}` || purchaseData.orderId,
-    }, ...purchaseData },
+    },
+    ...purchaseData },
   };
 
   if (!purchaseData["customer-vault-id"] && method === "sale") {
@@ -49,10 +50,9 @@ const step2 = (purchaseData, method, callback) => {
       "Content-Type": "text/xml",
     },
   })
-  .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
+  .then(response => response.text())
+  .then((r) => {
+    let data = r;
     try {
       data = parseXML(data);
     } catch (e) {
@@ -69,7 +69,7 @@ const step2 = (purchaseData, method, callback) => {
 
       const number = Number(data["result-code"]);
       let err;
-      if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
+      if (ErrorCodes[number] && ErrorCodes[number] !== "result-text") {
         err = ErrorCodes[number];
       } else if (ErrorCodes[number] === "result-text") {
         err = data["result-text"];
@@ -90,7 +90,7 @@ const step2 = (purchaseData, method, callback) => {
 
     const number = Number(data["result-code"]);
     let err;
-    if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
+    if (ErrorCodes[number] && ErrorCodes[number] !== "result-text") {
       err = ErrorCodes[number];
     } else if (ErrorCodes[number] === "result-text") {
       err = data["result-text"];

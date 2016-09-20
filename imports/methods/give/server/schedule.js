@@ -1,7 +1,4 @@
 /* global Meteor */
-
-import Moment from "moment";
-
 import { api } from "../../../util/rock";
 import { charge as gatewaySchedule, cancel as gatewayCancel } from "./nmi";
 import createSchedule from "./createSchedule";
@@ -45,7 +42,7 @@ import createSchedule from "./createSchedule";
 */
 
 Meteor.methods({
-  "give/schedule": function (token, accountName, id) {
+  "give/schedule": function schedule(token, accountName, id) {
     let user = null;
     if (this.userId) user = Meteor.users.findOne({ _id: this.userId });
 

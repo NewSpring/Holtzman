@@ -5,7 +5,7 @@ import { parseXML } from "../../../../util";
 
 const voidTransaction = (transactionId, callback) => {
   const voidTransactionObj = {
-    "void": {
+    void: {
       "api-key": Meteor.settings.nmi,
       "transaction-id": transactionId,
     },
@@ -21,10 +21,9 @@ const voidTransaction = (transactionId, callback) => {
       "Content-Type": "text/xml",
     },
   })
+  .then(response => response.text())
   .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
+    let data = response;
     try {
       data = parseXML(data);
     } catch (e) {

@@ -41,10 +41,7 @@ Meteor.methods({
 
     const sync = Meteor.wrapAsync(promiseWrapper);
 
-    return sync(fetch(url, options)
-      .then((response) => {
-        return response;
-      })
+    return sync(fetch(url, options);
     );
   },
 });

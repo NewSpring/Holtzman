@@ -1,7 +1,7 @@
 const Future = Npm.require("fibers/future");
 
 Meteor.methods({
-  "getScripture": function (scripture) {
+  getScripture(scripture) {
     check(scripture, String);
 
     let baseUrl = `http://www.esvapi.org/v2/rest/passageQuery?key=${Meteor.settings.public.esv}`;
@@ -11,14 +11,14 @@ Meteor.methods({
     const f = new Future();
 
     fetch(baseUrl)
-      .then((response) => {
+      .then((response) => { // eslint-disable-line
         return response.text();
       })
       .then((data) => {
         f.return(data);
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error); // eslint-disable-line
         f.throw(error);
       });
 
