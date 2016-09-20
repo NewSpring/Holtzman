@@ -1,17 +1,9 @@
 
 import {
-  OutlinedLeaf,
-  SolidLeaf,
-  StripedLeaf,
-  Logo,
-} from "../components/leaves";
-
-import {
   Image,
   Body,
 } from "../components/layout";
 
-import FitText from "../components/fit-text";
 import List from "../components/list";
 
 const salvationList = [
@@ -19,6 +11,7 @@ const salvationList = [
   { count: "3,982", label: "Student Salvations at Fuse and Gauntlet" },
 ];
 
+/* eslint-disable max-len */
 const Salvation = () => (
   <div style={{ overflow: "hidden" }}>
 
@@ -45,7 +38,9 @@ const Salvation = () => (
     </div>
 
 
-    <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
+    <div
+      className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up"
+    >
 
       <h3
         className="text-center soft-half-top flush-bottom"
@@ -61,5 +56,6 @@ const Salvation = () => (
     </div>
   </div>
 );
+/* eslint-enable max-len */
 
 export default Salvation;
