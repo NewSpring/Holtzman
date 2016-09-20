@@ -25,6 +25,24 @@ export default class Card extends Component {
     children: PropTypes.any, //eslint-disable-line
   }
 
+  // context from ImageLoader
+  preloader() { // eslint-disable-line
+    return (
+      <div className={`${this.imageclasses.join(" ")} ${css(Styles["load-item"])}`}>
+        <div className="ratio__item" />
+      </div>
+    );
+  }
+
+  // context from ImageLoader
+  renderElement() {
+    return (
+      <div className={this.imageclasses.join(" ")} style={this.style}>
+        <div className="ratio__item" />
+      </div>
+    );
+  }
+
   itemClasses = () => {
     let classes = [
       "card__item",
@@ -67,24 +85,6 @@ export default class Card extends Component {
     // }
 
     return defaultStyles;
-  }
-
-  // context from ImageLoader
-  preloader() {
-    return (
-      <div className={`${this.imageclasses.join(" ")} ${css(Styles["load-item"])}`}>
-        <div className="ratio__item" />
-      </div>
-    );
-  }
-
-  // context from ImageLoader
-  renderElement() {
-    return (
-      <div className={this.imageclasses.join(" ")} style={this.style}>
-        <div className="ratio__item" />
-      </div>
-    );
   }
 
   getResponsiveImage = () => {
