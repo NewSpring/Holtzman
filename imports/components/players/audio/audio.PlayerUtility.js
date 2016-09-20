@@ -27,7 +27,7 @@ export default class AudioPlayerUtility extends Component {
 
 
     // change of track to play
-    if (audio.playing.track.title != nextAudio.playing.track.title) {
+    if (audio.playing.track.title !== nextAudio.playing.track.title) {
       this.player = this.createPlayer(nextAudio.playing.track, nextAudio.state === "playing");
     }
 
@@ -71,9 +71,7 @@ export default class AudioPlayerUtility extends Component {
       return;
     }
 
-    if (!track.file) {
-      return;
-    }
+    if (!track.file) return;
 
     // if (this.player && this.player.stop) {
     //   this.player.stop();
@@ -88,7 +86,7 @@ export default class AudioPlayerUtility extends Component {
     this.props.loading();
 
     const Player = Meteor.isCordova ? Media : Audio;
-
+    const getProps = () => this.props;
     const player = new Player(track.file, () => {
 
       // set ready state
@@ -107,6 +105,12 @@ export default class AudioPlayerUtility extends Component {
       if (STATUS === Media.MEDIA_STOPPED) {
         const length = this.getDuration();
         if (length === player.getDuration()) { // reached the end of the song
+          const { audio } = getProps();
+          if (audio.repeat === "repeat-one") {
+            this.seekTo(0);
+            this.play();
+            return;
+          }
           for (let cb of this.endedCallbacks) cb();
           delete this.endedCallbacks;
           this.done = true;
@@ -210,13 +214,9 @@ export default class AudioPlayerUtility extends Component {
             }
         }
 
+        // This file needs cleanup
+        // repeat one handled in creation of player above
         if (repeat === "repeat-one") {
-          this.props.restart();
-          this.props.play();
-          if (this.player && Meteor.isCordova) {
-            this.props.seek(0);
-            this.player.play();
-          }
           return;
         }
 
