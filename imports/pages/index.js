@@ -41,6 +41,4 @@ if (process.env.NATIVE) {
   );
 }
 
-export default {
-  Routes,
-};
+export default Routes;
