@@ -1,9 +1,8 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import { withRouter } from "react-router";
 import gql from "graphql-tag";
 
-import Loading from "../../../components/loading";
 import Forms from "../../../components/forms";
 
 import Tag from "../components/Tag";
@@ -27,13 +26,23 @@ const defaultTags = [];
 @connect({ mapQueriesToProps, mapStateToProps })
 export default class Filter extends Component {
 
+  static propTypes = {
+    router: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    toggleSearch: PropTypes.func.isRequired,
+    attributes: PropTypes.object.isRequired,
+    showSearch: PropTypes.bool.isRequired,
+    showTags: PropTypes.bool.isRequired,
+    q: PropTypes.string.isRequired,
+  }
+
   state = { query: null }
 
   findByQuery = (e) => {
     if (e && e.preventDefault) e.preventDefault();
 
     const { query } = this.state;
-    let { router, location } = this.props;
+    const { router, location } = this.props;
 
     if (!location.query) location.query = {};
     if (query) location.query.q = query;
@@ -48,8 +57,7 @@ export default class Filter extends Component {
 
     this.props.toggleSearch();
 
-    const { query } = this.state;
-    let { router, location } = this.props;
+    const { router, location } = this.props;
 
     if (location.query && location.query.q) delete location.query.q;
     // reset state
@@ -65,9 +73,7 @@ export default class Filter extends Component {
     const {
       attributes,
       showSearch,
-      toggleSearch,
       showTags,
-      toggleTags,
       q,
     } = this.props;
     const tags = attributes.tags ? attributes.tags : defaultTags;
@@ -79,7 +85,12 @@ export default class Filter extends Component {
           if (!showTags) return null; // hidden
           if (!tags.length) return null; // XXX loading....
           return (
-            <div className="outlined--light outlined--bottom soft-half-sides soft-ends soft-double-ends@anchored text-center background--light-primary">
+            <div
+              className={
+                "outlined--light outlined--bottom soft-half-sides soft-ends " +
+                "soft-double-ends@anchored text-center background--light-primary"
+              }
+            >
               <h4 className="soft-half-bottom flush-bottom">
                 Featured Tags
               </h4>
@@ -93,7 +104,12 @@ export default class Filter extends Component {
         {(() => {
           if (!showSearch) return null;
           return (
-            <div className="outlined--light outlined--bottom soft-half-sides@handheld soft soft-double@anchored text-left background--light-primary">
+            <div
+              className={
+                "outlined--light outlined--bottom soft-half-sides@handheld soft " +
+                "soft-double@anchored text-left background--light-primary"
+              }
+            >
 
               <Forms.Form
                 classes={["hard", "display-inline-block", "one-whole"]}
@@ -101,7 +117,7 @@ export default class Filter extends Component {
               >
                 <i className="icon-search locked-left soft-half-left" />
                 <span
-                  style={{ zIndex: 1, paddingTop: "5px", "cursor": "pointer" }}
+                  style={{ zIndex: 1, paddingTop: "5px", cursor: "pointer" }}
                   onClick={this.removeQuery}
                   className="h7 locked-right flush-bottom"
                 >Cancel</span>
@@ -115,7 +131,7 @@ export default class Filter extends Component {
                   onChange={e => this.inputOnChange(e)}
                 />
 
-              <div className="one-whole text-left">
+                <div className="one-whole text-left">
                   <h6><em>Find a group by zipcode, name, campus, or description</em></h6>
                 </div>
               </Forms.Form>

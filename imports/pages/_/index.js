@@ -1,3 +1,4 @@
+import { PropTypes } from "react";
 import gql from "graphql-tag";
 
 import { GraphQL } from "../../graphql";
@@ -26,6 +27,10 @@ const Template = (props) => {
     </div>
 
   );
+};
+
+Template.propTypes = {
+  children: PropTypes.object.isRequired,
 };
 
 const Routes = [
