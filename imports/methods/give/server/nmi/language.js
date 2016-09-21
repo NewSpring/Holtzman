@@ -11,6 +11,7 @@ export default {
   223: "Your card has expired",
   224: "Your expiration date is invalid",
   225: "Your security code is invalid",
+  // eslint-disable-next-line max-len
   240: "Please call your account provider for more information as to why this transaction could not be processed",
   250: "Please call our finance team",
   251: "This card has been reported as lost",
@@ -21,5 +22,6 @@ export default {
   400: "There was an error with our payment processor, you were not charged, please try again",
   410: "We had an issue processing transactions, please try again",
   411: "Looks like we are having connection issues with our processor, please try again later",
+  // eslint-disable-next-line max-len
   430: "This looks like a duplicate transaction, for your safety, we have declined the transaction. Please try again in five minutes",
 };
