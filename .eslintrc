@@ -28,7 +28,8 @@
     ] }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": 0,
-    "react/no-string-refs": 0
+    "react/no-string-refs": 0,
+    "react/forbid-prop-types": 0
   },
   "settings": {
     "import/core-modules": [
