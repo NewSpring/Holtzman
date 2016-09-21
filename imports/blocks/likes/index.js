@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import { createContainer } from "../../blocks/meteor/react-meteor-data";
 import Likes from "../../database/collections/likes";
 import Loading from "../../components/loading";
@@ -9,6 +9,11 @@ import LikesItem from "./Item";
 // XXX make this dynamic via heighliner
 class LikesContainer extends Component {
 
+  static propTypes = {
+    likes: PropTypes.array,
+    recentLikes: PropTypes.array,
+  }
+
   render() {
     if (!this.props.likes) return <Loading />;
 
@@ -16,10 +21,16 @@ class LikesContainer extends Component {
 
     const ids = [];
     return (
-      <div className="grid soft-top background--light-secondary soft-half-sides soft-double@lap-and-up " style={{ marginTop: "-20px" }}>
-        {likes.map((like, i) => {
-          return <LikesItem like={like} key={i} />;
-        })}
+      <div
+        className={
+          "grid soft-top background--light-secondary " +
+          "soft-half-sides soft-double@lap-and-up"
+        }
+        style={{ marginTop: "-20px" }}
+      >
+        {likes.map((like, i) => (
+          <LikesItem like={like} key={i} />
+        ))}
         {(() => {
           if (!likes.length) {
             return (
@@ -34,7 +45,7 @@ class LikesContainer extends Component {
 
                 {recentLikes.map((like, i) => {
                   if (ids.indexOf(like.entryId) > -1) {
-                    return;
+                    return null;
                   }
 
                   ids.push(like.entryId);
@@ -44,6 +55,7 @@ class LikesContainer extends Component {
 
             );
           }
+          return null;
         })()}
       </div>
     );
