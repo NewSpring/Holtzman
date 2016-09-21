@@ -1,3 +1,4 @@
+/* eslint-disable */
 import renderer from "react-test-renderer";
 import Offline from "../Offline";
 

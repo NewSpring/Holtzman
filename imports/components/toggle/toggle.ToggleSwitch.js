@@ -1,20 +1,18 @@
-import { Component, PropTypes } from "react";
+import { PropTypes } from "react";
 
-export default class ToggleSwitch extends Component {
+const ToggleSwitch = (props) => {
+  const followingId = props.followingId;
 
-  static propTypes = {
-    followingId: PropTypes.string,
-  }
+  return (
+    <div className="float-right toggle-wrap floating__item">
+      <input className="toggle-switch" type="checkbox" name="toggle-switch" id={followingId} />
+      <label htmlFor={followingId} />
+    </div>
+  );
+};
 
-  render() {
-    const followingId = this.props.followingId;
+ToggleSwitch.propTypes = {
+  followingId: PropTypes.string,
+};
 
-    return (
-      <div className="float-right toggle-wrap floating__item">
-        <input className="toggle-switch" type="checkbox" name="toggle-switch" id={followingId} />
-        <label htmlFor={followingId} />
-      </div>
-    );
-  }
-
-}
+export default ToggleSwitch;
