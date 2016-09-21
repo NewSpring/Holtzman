@@ -4,9 +4,9 @@ import Video from "../video";
 
 // XXX Why does this exist?
 // XXX answer: it used to be a lot more complicated
-const SingleVideoPlayer = () => (
+const SingleVideoPlayer = ({ ooyalaId }) => (
   <Video
-    id={this.props.ooyalaId}
+    id={ooyalaId}
   />
 );
 

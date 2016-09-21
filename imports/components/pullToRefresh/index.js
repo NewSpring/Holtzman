@@ -7,12 +7,12 @@ const mapStateToProps = state => ({
   show: state.live.show,
 });
 
-const ApollosPullToRefresh = () => (
+const ApollosPullToRefresh = ({ handleRefresh }) => (
   <div>
     <div className="ptr-fake-background" />
 
     <ReactPullToRefresh
-      onRefresh={this.props.handleRefresh}
+      onRefresh={handleRefresh}
       hammerOptions={{ touchAction: "auto" }}
       icon={
         <i
