@@ -50,10 +50,11 @@ const Likeable = {
   },
 
   updateDatabase(entry) {
+    const curEntry = entry;
     // find existing like
     const foundLike = Likes.findOne({
       userId: Meteor.userId(),
-      entryId: entry.id || entry.entryId,
+      entryId: curEntry.id || curEntry.entryId,
     });
 
     // update database
@@ -61,25 +62,25 @@ const Likeable = {
       // eslint-disable-next-line no-underscore-dangle
       Likes.remove(foundLike._id);
     } else {
-      if (entry.channelName === "sermons") {
+      if (curEntry.channelName === "sermons") {
         const series = this.props.series.content;
-        entry.parent = {
+        curEntry.parent = {
           entryId: series.id || series.entryId,
         };
       }
 
       Likes.insert({
         userId: Meteor.userId(),
-        entryId: entry.id || entry.entryId,
-        title: entry.title,
-        image: entry.channelName === "sermons" ?
+        entryId: curEntry.id || curEntry.entryId,
+        title: curEntry.title,
+        image: curEntry.channelName === "sermons" ?
           backgrounds.image(this.props.series.content) :
-          backgrounds.image(entry),
-        link: content.links(entry),
-        icon: categories.icon(entry),
-        category: categories.name(entry),
-        date: entry.meta.date,
-        status: entry.status,
+          backgrounds.image(curEntry),
+        link: content.links(curEntry),
+        icon: categories.icon(curEntry),
+        category: categories.name(curEntry),
+        date: curEntry.meta.date,
+        status: curEntry.status,
         dateLiked: new Date(),
       });
     }
