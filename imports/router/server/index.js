@@ -1,29 +1,18 @@
-import { match, Router, createMemoryHistory, RouterContext } from "react-router";
-import Compress from "compression";
-import CookieParser from "cookie-parser";
-import Url from "url";
+/* eslint-disable no-underscore-dangle, no-param-reassign */
+import { match, createMemoryHistory, RouterContext } from "react-router";
+import compress from "compression";
+import cookieParser from "cookie-parser";
 import { StyleSheetServer } from "aphrodite";
 import ReactHelmet from "react-helmet";
 import Cheerio from "cheerio/lib/cheerio";
 import MinReact from "react/dist/react.min";
-const ReactDOMServer = MinReact.__SECRET_DOM_SERVER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 import { getDataFromTree } from "react-apollo/server";
-
 import { GraphQL } from "../../graphql";
 import InjectData from "./inject-data";
 import SSRContext from "./context";
 import patchSubscribeData from "./data";
 
-// meteor algorithm to check if this is a meteor serving http request or not
-function IsAppUrl({ url }) {
-  if (url === "/favicon.ico" || url === "/robots.txt") return false;
-  if (url === "/app.manifest") return false;
-  // Avoid serving app HTML for declared routes such as /sockjs/.
-  if (typeof RoutePolicy !== "undefined" && RoutePolicy.classify(url)) {
-    return false;
-  }
-  return true;
-}
+const ReactDOMServer = MinReact.__SECRET_DOM_SERVER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 
 const ReactRouterSSR = {};
 const cache = {}; // in memory cache of static markup
@@ -33,128 +22,60 @@ const CACHE_TTL = Meteor.settings.cacheTTL || 300000; // 5 minutes in millisecon
 ReactRouterSSR.ssrContext = new Meteor.EnvironmentVariable();
 ReactRouterSSR.inSubscription = new Meteor.EnvironmentVariable();
 
-export function run(routes, serverOptions = {}) {
-  // this line just patches Subscribe and find mechanisms
-  patchSubscribeData(ReactRouterSSR);
-
-  Meteor.bindEnvironment(() => {
-    // Parse cookies for the login token
-    WebApp.rawConnectHandlers.use(CookieParser());
-    WebApp.rawConnectHandlers.use(Compress());
-
-    WebApp.connectHandlers.use(Meteor.bindEnvironment((req, res, next) => {
-      if (!IsAppUrl(req)) return next();
-
-      const loginToken = req.cookies.meteor_login_token;
-
-      if (!GraphQL.networkInterface._opts.headers) {
-        GraphQL.networkInterface._opts.headers = new fetch.Headers();
-      }
-      if (loginToken) {
-        GraphQL.networkInterface._opts.headers.Authorization = loginToken;
-      } else {
-        delete GraphQL.networkInterface._opts.headers.Authorization;
-      }
-
-
-      const headers = req.headers;
-      const context = new FastRender._Context(loginToken, { headers });
-
-      FastRender.frContext.withValue(context, () => {
-        const history = createMemoryHistory(req.url);
-
-        match({ history, routes, location: req.url }, Meteor.bindEnvironment((
-          err,
-          redirectLocation,
-          renderProps
-        ) => {
-          if (err) {
-            res.writeHead(500);
-            res.write(err.messages);
-            res.end();
-          } else if (req.url === "/_/ping") {
-            res.writeHead(200);
-            res.write("PONG");
-            res.end();
-          } else if (redirectLocation) {
-            res.writeHead(302, {
-              Location: redirectLocation.pathname + redirectLocation.search,
-            });
-            res.end();
-          } else if (renderProps) {
-            sendSSRHtml(serverOptions, req, res, next, renderProps, history);
-            try {
-              GraphQL.store.dispatch({ type: "RESET" }); // reset store after each query
-            } catch (e) { console.error(e); }
-          } else {
-            res.writeHead(404);
-            res.write("Not found");
-            res.end();
-          }
-        }));
-      });
-    }));
-  })();
-}
-
-function sendSSRHtml(serverOptions, req, res, next, renderProps, history) {
-  const cacheKey = _getCacheKey(req.url);
-
-  function quickWrite(originalWrite) {
-    return function (data) { originalWrite.call(this, cache[cacheKey].data); };
+// meteor algorithm to check if this is a meteor serving http request or not
+function isAppUrl({ url }) {
+  if (url === "/favicon.ico" || url === "/robots.txt") return false;
+  if (url === "/app.manifest") return false;
+  // Avoid serving app HTML for declared routes such as /sockjs/.
+  if (typeof RoutePolicy !== "undefined" && RoutePolicy.classify(url)) {
+    return false;
   }
-  // if there is cached data and it's not expired
-  if (cache[cacheKey]) {
-    res.write = quickWrite(res.write);
-    next();
-    return;
+  return true;
+}
+
+function addInjectData(res, data) {
+  const condition = res._injectPayload && !res._injected;
+  if (condition) {
+    // inject data
+    const payload = InjectData._encode(res._injectPayload);
+    data = data.replace("</body>", `<script type="text/inject-data">${payload}</script></body>`);
+
+    res._injected = true;
+    return data;
   }
-
-  const { css, html, head } = generateSSRData(serverOptions, req, res, renderProps, history);
-  res.write = patchResWrite(serverOptions, res.write, css, html, head, req, res);
-
-  next();
+  return data;
 }
 
-function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) {
-  const cacheKey = _getCacheKey(req.url);
+// Thank you FlowRouter for this wonderful idea :)
+// https://github.com/kadirahq/flow-router/blob/ssr/server/route.js
+function moveScripts(data) {
+  const $ = Cheerio.load(data, { decodeEntities: false });
+  const heads = $("head script").not("[data-ssr-ignore=\"true\"]");
+  const bodies = $("body script").not("[data-ssr-ignore=\"true\"]");
+  $("body").append([...heads, ...bodies]);
 
-  return function (data) {
-    if (typeof data === "string" && data.indexOf("<!DOCTYPE html>") === 0) {
-      data = addInjectData(res, data);
-      data = moveStyles(data);
-      data = moveScripts(data);
-
-      if (css) {
-        data = data.replace("</head>",
-          `<style data-aphrodite>${css.content}</style></head>`
-        );
-      }
-
-      if (head) {
-        // Add react-helmet stuff in the header (yay SEO!)
-        data = data.replace("<head>",
-          `<head>${head.title}${head.base}${head.meta}${head.link}${head.script}`
-        );
-      }
-
-      data = data.replace("<body>", `<body><div id="react-app">${html}</div>`);
-    }
-
-
-    // store in cache based on user id and url
-    // when user not logged in, it should be undefined
-    // this should be fine as all logged out users should see the same
-    cache[cacheKey] = { data, timeout: setTimeout(() => {
-      delete cache[cacheKey];
-    }, CACHE_TTL) };
-
-    originalWrite.call(this, data);
-  };
+  // Remove empty lines caused by removing scripts
+  $("head").html($("head").html().replace(/(^[ \t]*\n)/gm, ""));
+  $("body").html($("body").html().replace(/(^[ \t]*\n)/gm, ""));
+  return $.html();
 }
+
+function moveStyles(data) {
+  const $ = Cheerio.load(data, { decodeEntities: false });
+  const styles = $("head link[type=\"text/css\"]").not("[data-ssr-ignore=\"true\"]");
+  $("head").append(styles);
+
+  // Remove empty lines caused by removing scripts
+  $("head").html($("head").html().replace(/(^[ \t]*\n)/gm, ""));
+  return $.html();
+}
+
+const _getCacheKey = url => (`${Meteor.userId()}::${url}`);
 
 function generateSSRData(serverOptions, req, res, renderProps, history) {
-  let html, css, head;
+  let html;
+  let css;
+  let head;
 
   // we're stealing all the code from FlowRouter SSR
   // https://github.com/kadirahq/flow-router/blob/ssr/server/route.js#L61
@@ -213,13 +134,138 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
       const context = FastRender.frContext.get();
       const data = context.getData();
       InjectData.pushData(res, "fast-render-data", data);
-    }
-    catch (err) {
+    } catch (err) {
+      // eslint-disable-next-line
       console.error(new Date(), "error while server-rendering", err.stack);
     }
   });
 
   return { html, css, head };
+}
+
+function patchResWrite(serverOptions, originalWrite, css, html, head, req, res) {
+  const cacheKey = _getCacheKey(req.url);
+
+  return function patch(data) {
+    if (typeof data === "string" && data.indexOf("<!DOCTYPE html>") === 0) {
+      data = addInjectData(res, data);
+      data = moveStyles(data);
+      data = moveScripts(data);
+
+      if (css) {
+        data = data.replace("</head>",
+          `<style data-aphrodite>${css.content}</style></head>`
+        );
+      }
+
+      if (head) {
+        // Add react-helmet stuff in the header (yay SEO!)
+        data = data.replace("<head>",
+          `<head>${head.title}${head.base}${head.meta}${head.link}${head.script}`
+        );
+      }
+
+      data = data.replace("<body>", `<body><div id="react-app">${html}</div>`);
+    }
+
+
+    // store in cache based on user id and url
+    // when user not logged in, it should be undefined
+    // this should be fine as all logged out users should see the same
+    cache[cacheKey] = {
+      data,
+      timeout: setTimeout(() => {
+        delete cache[cacheKey];
+      }, CACHE_TTL),
+    };
+
+    originalWrite.call(this, data);
+  };
+}
+
+function sendSSRHtml(serverOptions, req, res, next, renderProps, history) {
+  const cacheKey = _getCacheKey(req.url);
+
+  function quickWrite(originalWrite) {
+    return function write() { originalWrite.call(this, cache[cacheKey].data); };
+  }
+  // if there is cached data and it's not expired
+  if (cache[cacheKey]) {
+    res.write = quickWrite(res.write); // eslint-disable-line
+    next();
+    return;
+  }
+
+  const { css, html, head } = generateSSRData(serverOptions, req, res, renderProps, history);
+  // eslint-disable-next-line no-param-reassign
+  res.write = patchResWrite(serverOptions, res.write, css, html, head, req, res);
+
+  next();
+}
+
+export default function run(routes, serverOptions = {}) {
+  // this line just patches Subscribe and find mechanisms
+  patchSubscribeData(ReactRouterSSR);
+
+  Meteor.bindEnvironment(() => {
+    // Parse cookies for the login token
+    WebApp.rawConnectHandlers.use(cookieParser());
+    WebApp.rawConnectHandlers.use(compress());
+
+    // eslint-disable-next-line
+    WebApp.connectHandlers.use(Meteor.bindEnvironment((req, res, next) => {
+      if (!isAppUrl(req)) return next();
+
+      const loginToken = req.cookies.meteor_login_token;
+
+      if (!GraphQL.networkInterface._opts.headers) {
+        GraphQL.networkInterface._opts.headers = new fetch.Headers();
+      }
+      if (loginToken) {
+        GraphQL.networkInterface._opts.headers.Authorization = loginToken;
+      } else {
+        delete GraphQL.networkInterface._opts.headers.Authorization;
+      }
+
+
+      const headers = req.headers;
+      const context = new FastRender._Context(loginToken, { headers });
+
+      FastRender.frContext.withValue(context, () => {
+        const history = createMemoryHistory(req.url);
+
+        match({ history, routes, location: req.url }, Meteor.bindEnvironment((
+          err,
+          redirectLocation,
+          renderProps
+        ) => {
+          if (err) {
+            res.writeHead(500);
+            res.write(err.messages);
+            res.end();
+          } else if (req.url === "/_/ping") {
+            res.writeHead(200);
+            res.write("PONG");
+            res.end();
+          } else if (redirectLocation) {
+            res.writeHead(302, {
+              Location: redirectLocation.pathname + redirectLocation.search,
+            });
+            res.end();
+          } else if (renderProps) {
+            sendSSRHtml(serverOptions, req, res, next, renderProps, history);
+            try {
+              GraphQL.store.dispatch({ type: "RESET" }); // reset store after each query
+            } catch (e) { /* console.error(e); */ }
+          } else {
+            res.writeHead(404);
+            res.write("Not found");
+            res.end();
+          }
+        }));
+      });
+    }));
+  })();
 }
 
 
@@ -228,42 +274,3 @@ function generateSSRData(serverOptions, req, res, renderProps, history) {
   Utilities
 
 */
-
-function addInjectData(res, data) {
-  const condition = res._injectPayload && !res._injected;
-  if (condition) {
-    // inject data
-    const payload = InjectData._encode(res._injectPayload);
-    data = data.replace("</body>", `<script type="text/inject-data">${payload}</script></body>`);
-
-    res._injected = true;
-    return data;
-  }
-  return data;
-}
-
-// Thank you FlowRouter for this wonderful idea :)
-// https://github.com/kadirahq/flow-router/blob/ssr/server/route.js
-function moveScripts(data) {
-  const $ = Cheerio.load(data, { decodeEntities: false });
-  const heads = $("head script").not("[data-ssr-ignore=\"true\"]");
-  const bodies = $("body script").not("[data-ssr-ignore=\"true\"]");
-  $("body").append([...heads, ...bodies]);
-
-  // Remove empty lines caused by removing scripts
-  $("head").html($("head").html().replace(/(^[ \t]*\n)/gm, ""));
-  $("body").html($("body").html().replace(/(^[ \t]*\n)/gm, ""));
-  return $.html();
-}
-
-function moveStyles(data) {
-  const $ = Cheerio.load(data, { decodeEntities: false });
-  const styles = $("head link[type=\"text/css\"]").not("[data-ssr-ignore=\"true\"]");
-  $("head").append(styles);
-
-  // Remove empty lines caused by removing scripts
-  $("head").html($("head").html().replace(/(^[ \t]*\n)/gm, ""));
-  return $.html();
-}
-
-const _getCacheKey = url => (Meteor.userId() + "::" + url);

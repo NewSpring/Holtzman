@@ -18,7 +18,8 @@
     "google": true,
     "serverWatch": true,
     "Raven": true,
-    "FastRender": true
+    "FastRender": true,
+    "RoutePolicy": true
   },
   "rules": {
     "quotes": [2, "double"],
