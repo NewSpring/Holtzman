@@ -2,9 +2,7 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
-import Authorized from "../../../../blocks/authorzied";
 import {
-  nav as navActions,
   modal as modalActions,
   give as giveActions,
   header as headerActions,
@@ -59,6 +57,12 @@ const defaultArray = [];
 @connect({ mapStateToProps, mapQueriesToProps })
 export default class Template extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+    accounts: PropTypes.object.isRequired,
+  }
+
   componentDidMount(){
     if (process.env.NATIVE) {
       const item = {
@@ -70,7 +74,6 @@ export default class Template extends Component {
         __headerSet: true,
       });
     }
-
   }
 
   confirm = (e) => {
@@ -84,7 +87,6 @@ export default class Template extends Component {
   cancel = (e) => {
     const { dataset } = e.currentTarget;
     const { id } = dataset;
-    const { dispatch } = this.props;
 
     this.props.dispatch(modalActions.render(Confirm, {
       onFinished: () => {
@@ -93,7 +95,7 @@ export default class Template extends Component {
         this.props.dispatch(giveActions.deleteSchedule(Number(id)));
         // this.props.dispatch(transactionActions.removeSchedule(Number(id)))
         this.props.dispatch(giveActions.deleteRecoverableSchedules(Number(id)));
-        Meteor.call("give/schedule/cancel", { id }, (err, response) => {
+        Meteor.call("give/schedule/cancel", { id }, () => {
           // console.log(err, response)
         });
       },
@@ -102,8 +104,7 @@ export default class Template extends Component {
 
 
   render() {
-    const { schedules, give, data, accounts } = this.props;
-    const { recoverableSchedules } = give;
+    const { data, accounts } = this.props;
 
     return (
       <Layout
