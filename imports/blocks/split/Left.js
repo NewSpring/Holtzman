@@ -9,6 +9,7 @@ export default class Left extends Component {
     width: PropTypes.string,
     background: PropTypes.string,
     styles: PropTypes.object,
+    children: PropTypes.object,
   }
 
   layoutClasses = () => {
@@ -45,9 +46,12 @@ export default class Left extends Component {
       // position: "relative"
     };
     if (this.props.background) {
-      return { ...defaults, ...{
-        backgroundImage: "url($this.props.image)",
-      } };
+      return {
+        ...defaults,
+        ...{
+          backgroundImage: "url($this.props.image)",
+        },
+      };
     }
 
     return defaults;
