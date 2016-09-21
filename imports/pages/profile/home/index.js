@@ -64,7 +64,9 @@ export default class Home extends Component {
   render () {
     const { upload } = this.props;
     let { person } = this.props.data;
-    person || (person = {});
+    if (!person) {
+      person = {};
+    }
 
     // if (this.props.data.loading) return <Loading /> // XXX
     let { photo } = person;
