@@ -59,8 +59,11 @@ export default createReducer(initial, {
       return state;
     }
 
-    return { ...state, ...{
-      visibility },
+    return {
+      ...state,
+      ...{
+        visibility,
+      },
     };
   },
 
@@ -72,8 +75,11 @@ export default createReducer(initial, {
       return state;
     }
 
-    return { ...state, ...{
-      order },
+    return {
+      ...state,
+      ...{
+        order,
+      },
     };
   },
 
@@ -85,8 +91,11 @@ export default createReducer(initial, {
       return state;
     }
 
-    return { ...state, ...{
-      repeat },
+    return {
+      ...state,
+      ...{
+        repeat,
+      },
     };
   },
 
@@ -100,15 +109,18 @@ export default createReducer(initial, {
       return state;
     }
 
-    return { ...state, ...{
-      state: playerState },
+    return {
+      ...state,
+      ...{
+        state: playerState,
+      },
     };
   },
 
   [types.SET_SEEK](state, action) {
     let number = action.seek;
 
-    if (typeof number != "number") {
+    if (typeof number !== "number") {
       try {
         number = Number(number.trim());
       } catch (e) {
@@ -120,8 +132,11 @@ export default createReducer(initial, {
       return state;
     }
 
-    return { ...state, ...{
-      seek: number },
+    return {
+      ...state,
+      ...{
+        seek: number,
+      },
     };
   },
 
@@ -129,7 +144,7 @@ export default createReducer(initial, {
     const time = action.time;
     let number = action.progress;
 
-    if (typeof number != "number") {
+    if (typeof number !== "number") {
       try {
         number = Number(number.trim());
       } catch (e) {
@@ -141,10 +156,12 @@ export default createReducer(initial, {
       return state;
     }
 
-    return { ...state, ...{
-      progress: number,
-      time,
-    },
+    return {
+      ...state,
+      ...{
+        progress: number,
+        time,
+      },
     };
   },
 
@@ -154,22 +171,30 @@ export default createReducer(initial, {
       return { title, duration, file };
     });
 
-    return { ...state, ...{
-      playlist,
-    } };
+    return {
+      ...state,
+      ...{
+        playlist,
+      },
+    };
   },
 
   [types.SET_PLAYING](state, action) {
-    return { ...state, ...{
-      playing: { ...state.playing, ...action.playing },
-      state: action.state || state.state,
-      visibility: state.visibility === "hide" ?
-        "dock" :
-        state.visibility,
-    } };
+    return {
+      ...state,
+      ...{
+        playing: {
+          ...state.playing,
+          ...action.playing,
+        },
+        state: action.state || state.state,
+        visibility: state.visibility === "hide" ?
+        "dock" : state.visibility,
+      },
+    };
   },
 
-  [types.RESET_ALL](state, action) {
+  [types.RESET_ALL]() {
     return initial;
   },
 
