@@ -1,3 +1,4 @@
+import { PropTypes } from "react";
 
 import Item from "./Item";
 import Loading from "../../components/loading";
@@ -5,9 +6,9 @@ import Loading from "../../components/loading";
 const LoadingText = ({ search }) => {
   if (search.loading) {
     return <span>Loading...</span>;
-  } else {
-    return <span>Load More Results</span>;
   }
+
+  return <span>Load More Results</span>;
 };
 
 const LoadMore = ({ loadMore, search }) => {
@@ -23,9 +24,8 @@ const LoadMore = ({ loadMore, search }) => {
       </div>
     );
   }
-  else {
-    return <div />;
-  }
+
+  return <div />;
 };
 
 const Results = ({ loadMore, search }) => {
@@ -35,9 +35,7 @@ const Results = ({ loadMore, search }) => {
   if (search.items.length > 0) {
     return (
       <section className="background--light-secondary soft-half@palm soft@palm-wide-and-up">
-        {search.items.map((item, i) => {
-          return <Item item={item} key={i} />;
-        })}
+        { search.items.map((item, i) => (<Item item={item} key={i} />))}
         <LoadMore loadMore={loadMore} search={search} />
       </section>
     );
@@ -48,6 +46,20 @@ const Results = ({ loadMore, search }) => {
       <Loading />
     </div>
   );
+};
+
+LoadingText.propTypes = {
+  search: PropTypes.func,
+};
+
+LoadMore.propTypes = {
+  search: PropTypes.func,
+  loadMore: PropTypes.func,
+};
+
+Results.propTypes = {
+  search: PropTypes.func,
+  loadMore: PropTypes.func,
 };
 
 export default Results;
