@@ -4,16 +4,6 @@ import { connect } from "react-redux";
 
 import { audio as audioActions } from "../../../store";
 
-// used to flatten dom elements into an actual array
-const flattenTco = ([first, ...rest], accumulator) =>
-  (first === undefined)
-    ? accumulator
-    : (Array.isArray(first))
-      ? flattenTco([...first, ...rest])
-      : flattenTco(rest, accumulator.concat(first));
-
-const flatten = n => flattenTco(n, []);
-
 @connect((state) => ({ audioState: state.audio.state }))
 export default class VideoPlayer extends Component {
 
@@ -21,11 +11,16 @@ export default class VideoPlayer extends Component {
     id: PropTypes.string.isRequired,
     hide: PropTypes.bool,
     success: PropTypes.func,
+    style: PropTypes.object,
     // color: PropTypes.string
   }
 
   state = {
     hide: this.props.hide || false,
+  }
+
+  componentDidMount() {
+    this.createPlayer(this.props.id, this.props.success);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -45,12 +40,6 @@ export default class VideoPlayer extends Component {
     }
   }
 
-
-  componentDidMount() {
-    this.createPlayer(this.props.id, this.props.success);
-  }
-
-
   componentWillUnmount() {
     if (this.player) {
       this.player.destroy();
@@ -58,8 +47,10 @@ export default class VideoPlayer extends Component {
   }
 
 
+  getDivId = () => (`ooyala-player-${this.props.id}`)
+
   createPlayer = (id, cb) => {
-    if ((typeof window != "undefined" || window != null) && !window.OO) {
+    if ((typeof window !== "undefined" || window !== null) && !window.OO) {
       const callback = () => { this.createPlayer(id, cb); };
 
       setTimeout(callback, 250);
@@ -68,13 +59,14 @@ export default class VideoPlayer extends Component {
     }
 
     const videoParams = {
-      "pcode": "E1dWM6UGncxhent7MRATc3hmkzUD",
-      "playerBrandingId": "ZmJmNTVlNDk1NjcwYTVkMzAzODkyMjg0",
-      "autoplay": true,
-      "skin": {
-        "config": "/ooyala/skin.new.json",
+      pcode: "E1dWM6UGncxhent7MRATc3hmkzUD",
+      playerBrandingId: "ZmJmNTVlNDk1NjcwYTVkMzAzODkyMjg0",
+      autoplay: true,
+      skin: {
+        config: "/ooyala/skin.new.json",
         // "config": "//player.ooyala.com/static/v4/stable/4.6.9/skin-plugin/skin.json",
-        "inline": { "shareScreen": { "embed": { "source": "<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>" } } },
+        // eslint-disable-next-line max-len
+        inline: { shareScreen: { embed: { source: "<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/stable/4.5.5/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>" } } },
       },
       onCreate: (player) => {
 
@@ -87,19 +79,19 @@ export default class VideoPlayer extends Component {
         }
 
         // if (this.props.hide) {
-        this.messages.subscribe(OO.EVENTS.PLAYED, "Video", (eventName) => {
+        this.messages.subscribe(OO.EVENTS.PLAYED, "Video", () => {
           this.destroy();
         });
 
-        this.messages.subscribe(OO.EVENTS.PLAY, "Video", (eventName) => {
+        this.messages.subscribe(OO.EVENTS.PLAY, "Video", () => {
           this.props.dispatch(audioActions.pause());
         });
 
-        this.messages.subscribe(OO.EVENTS.PLAY_FAILED, "Video", (eventName) => {
+        this.messages.subscribe(OO.EVENTS.PLAY_FAILED, "Video", () => {
           this.destroy();
         });
 
-        this.messages.subscribe(OO.EVENTS.FULLSCREEN_CHANGED, "Video", (eventName) => {
+        this.messages.subscribe(OO.EVENTS.FULLSCREEN_CHANGED, "Video", () => {
           // ios sets the status bar text color to black
           // when it goes full screen
           if (!player.isFullscreen()) {
@@ -117,11 +109,7 @@ export default class VideoPlayer extends Component {
     });
   }
 
-  getDivId = () => {
-    return `ooyala-player-${this.props.id}`;
-  }
-
-  show = (opts) => {
+  show = () => {
     const playerReady = () => {
       this.setState({ hide: false });
     };
@@ -147,9 +135,11 @@ export default class VideoPlayer extends Component {
     let style = this.props.style;
 
     if (this.state.hide) {
-      style = { ...style, ...{
-        display: "none",
-      } };
+      style = { ...style,
+        ...{
+          display: "none",
+        },
+      };
     }
 
     return style;
