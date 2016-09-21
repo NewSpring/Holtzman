@@ -1,4 +1,5 @@
 /* global __meteor_runtime_config__ serverWatch */
+/* eslint-disable no-param-reassign */
 
 import { makeNewGuid } from "../guid";
 
@@ -55,7 +56,9 @@ export default function startup(api) {
 
     // GIVE
 
-    api._.give || (api._.give = {});
+    if (!api._.give) {
+      api._.give = {};
+    }
 
     // Gateways
     let NMI = api.get.sync(
