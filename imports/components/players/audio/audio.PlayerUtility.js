@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { actions as audioActions } from "../../../store/audio";
 
-import { Audio } from "../../../libraries/players/audio";
+import Audio from "../../../libraries/players/audio";
 import AudioControls from "./audio.Controls";
 import AudioTitle from "./audio.Title";
 import AudioScrubber from "./audio.Scrubber";
@@ -19,21 +19,35 @@ function mapStateToProps(state) {
 @connect(mapStateToProps, audioActions)
 export default class AudioPlayerUtility extends Component {
 
+  static propTypes = {
+    audio: PropTypes.object, // eslint-disable-line
+    loading: PropTypes.func,
+    ready: PropTypes.func,
+    play: PropTypes.func,
+    setProgress: PropTypes.func,
+    next: PropTypes.func,
+    restart: PropTypes.func,
+    setPlaying: PropTypes.func,
 
-  componentWillUpdate(nextProps, nextState) {
+  };
+
+  static render() {
+    return <span />;
+  }
+
+  componentWillUpdate(nextProps) {
     const nextAudio = nextProps.audio;
     const { audio } = this.props;
 
-
     // change of track to play
-    if (audio.playing.track.title != nextAudio.playing.track.title) {
+    if (audio.playing.track.title !== nextAudio.playing.track.title) {
       this.player = this.createPlayer(nextAudio.playing.track, nextAudio.state === "playing");
     }
 
     // change of state
-    if (audio.state != nextAudio.state && audio.state != "default") {
+    if (audio.state !== nextAudio.state && audio.state !== "default") {
       // play || pause
-      if ((audio.state != "next" && audio.state != "previous") && nextAudio.state === "playing" || nextAudio.state === "paused") {
+      if (((audio.state !== "next" && audio.state !== "previous") && nextAudio.state === "playing") || nextAudio.state === "paused") {
         this.toggle(nextAudio.state);
       }
 
@@ -49,16 +63,16 @@ export default class AudioPlayerUtility extends Component {
     }
 
     // seeking
-    if (audio.seek != nextAudio.seek) {
+    if (audio.seek !== nextAudio.seek) {
       this.seek(nextAudio.seek);
     }
   }
 
   tracksWithFiles = () => {
     const { playlist } = this.props.audio;
-    return _.filter(playlist, (track) => {
-      return track.file;
-    });
+    return _.filter(playlist, track =>
+      track.file
+    );
   }
 
   createPlayer = (track, autoload) => {
@@ -77,7 +91,7 @@ export default class AudioPlayerUtility extends Component {
     }
 
     if (track.file.indexOf("http") === -1) {
-      track.file = `https:${track.file}`;
+      track.file = `https:${track.file}`; // eslint-disable-line
     }
 
     // set loading state
@@ -130,8 +144,6 @@ export default class AudioPlayerUtility extends Component {
     player.ended(() => {
       this.props.next();
     });
-
-    return player;
   }
 
   toggle = (playerState) => {
@@ -152,7 +164,7 @@ export default class AudioPlayerUtility extends Component {
 
     if (!this.player || !this.player.seekTo) { return; }
 
-    let [min, sec] = this.props.audio.playing.track.duration.split(":");
+    const [min, sec] = this.props.audio.playing.track.duration.split(":");
 
     // duration in milliseconds
     const duration = (Number((min * 60)) + Number(sec)) * 1000;
@@ -175,7 +187,7 @@ export default class AudioPlayerUtility extends Component {
         let next;
 
         switch (order) {
-          case "shuffle":
+          case "shuffle": {
             let randomId = Math.floor(Math.random() * playlist.length);
             while (randomId === index) {
               randomId = Math.floor(Math.random() * playlist.length);
@@ -183,12 +195,14 @@ export default class AudioPlayerUtility extends Component {
 
             next = playlist[randomId];
             break;
-          default:
+          }
+          default: {
             if ((playlist.length - 1) === index) {
               next = playlist[0];
             } else {
               next = playlist[index + 1];
             }
+          }
         }
 
         if (repeat === "repeat-one") {
@@ -226,8 +240,7 @@ export default class AudioPlayerUtility extends Component {
         this.setState({ force: false });
 
         switch (order) {
-          case "shuffle":
-
+          case "shuffle": {
             let randomId = Math.floor(Math.random() * playlist.length);
             while (randomId === index) {
               randomId = Math.floor(Math.random() * playlist.length);
@@ -235,12 +248,14 @@ export default class AudioPlayerUtility extends Component {
 
             prev = playlist[randomId];
             break;
-          default:
+          }
+          default: {
             if (index === 0) {
               prev = playlist[playlist.length - 1];
             } else {
               prev = playlist[index - 1];
             }
+          }
         }
 
         if (repeat === "repeat-one") {
@@ -261,7 +276,4 @@ export default class AudioPlayerUtility extends Component {
     }
   };
 
-  render() {
-    return <span />;
-  }
 }
