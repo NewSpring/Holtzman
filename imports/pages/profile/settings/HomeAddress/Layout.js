@@ -15,6 +15,7 @@ export default class Layout extends Component {
     e.preventDefault();
 
     const data = {};
+    // eslint-disable-next-line
     for (const ref in this.refs) {
       let value = this.refs[ref].getValue();
       const number = Number(value);
