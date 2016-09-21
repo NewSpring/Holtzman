@@ -1,5 +1,5 @@
 
-import { addReducer, addMiddleware } from "../utilities";
+import { addReducer } from "../utilities";
 
 import actions from "./actions";
 import reducer from "./reducer";
