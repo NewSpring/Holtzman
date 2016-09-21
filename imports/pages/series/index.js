@@ -113,9 +113,9 @@ class Template extends Component {
 }
 
 Template.propTypes = {
-  dispatch: PropTypes.function.isRequired,
+  dispatch: PropTypes.func.isRequired,
   data: {
-    refetch: PropTypes.function.isRequired,
+    refetch: PropTypes.func.isRequired,
     content: PropTypes.object.isReqruired,
   },
 };

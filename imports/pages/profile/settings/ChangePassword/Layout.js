@@ -81,8 +81,8 @@ const Layout = ({ submit, save, state }) => (
 );
 
 Layout.propTypes = {
-  submit: PropTypes.function.isRequired,
-  save: PropTypes.function.isRequired,
+  submit: PropTypes.func.isRequired,
+  save: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
 };
 

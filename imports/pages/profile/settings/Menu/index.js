@@ -40,8 +40,8 @@ const RenderCell = ({ name, iconFunc, last, children }) => {
 
 RenderCell.propTypes = {
   name: PropTypes.string.isRequired,
-  iconFunc: PropTypes.function.isRequired,
-  last: PropTypes.boolean.isRequired,
+  iconFunc: PropTypes.func.isRequired,
+  last: PropTypes.bool.isRequired,
   children: PropTypes.object.isRequired,
 };
 
@@ -63,9 +63,9 @@ const mapQueriesToProps = () => ({
 export default class Menu extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
     data: {
-      refetch: PropTypes.function.isRequired,
+      refetch: PropTypes.func.isRequired,
     },
   }
 

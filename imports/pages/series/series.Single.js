@@ -75,7 +75,7 @@ const mapQueriesToProps = ({ ownProps }) => (
 export default class SeriesSingle extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
     series: {
       content: PropTypes.object.isRequired,
     },

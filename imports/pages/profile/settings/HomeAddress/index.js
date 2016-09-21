@@ -45,9 +45,9 @@ const defaultHome = {
 export default class HomeAddress extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
     data: {
-      refetch: PropTypes.function.isRequired,
+      refetch: PropTypes.func.isRequired,
       person: PropTypes.object.isRequired,
     },
   }
