@@ -15,7 +15,12 @@ const mapQueriesToProps = ({ ownProps }) => ({
   entries: {
     query: gql`
       query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
-        entries: taggedContent(tagName: $tagName, limit: $limit, includeChannels: $includeChannels, cache: false) {
+        entries: taggedContent(
+          tagName: $tagName,
+          limit: $limit,
+          includeChannels: $includeChannels,
+          cache: false
+        ) {
           entryId: id
           title
           channelName
@@ -84,6 +89,12 @@ const mapQueriesToProps = ({ ownProps }) => ({
 
 @connect({ mapQueriesToProps })
 export default class Details extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+    entries: PropTypes.object.isRequired,
+  }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
