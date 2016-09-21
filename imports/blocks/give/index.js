@@ -1,16 +1,12 @@
 import { Component, PropTypes } from "react";
-import ReactDOM from "react-dom";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
-import Moment from "moment";
 
 import Controls from "../../components/controls";
 import Forms from "../../components/forms";
 
 import OnBoard from "../../blocks/accounts";
-import { modal } from "../../store";
-
-import { give as giveActions } from "../../store";
+import { modal, give as giveActions } from "../../store";
 
 import { Personal, Payment, Billing, Confirm } from "./fieldsets";
 import Loading from "./Loading";
@@ -54,6 +50,12 @@ const mapStateToProps = state => ({
 @connect({ mapStateToProps, mapQueriesToProps })
 export default class Give extends Component {
 
+  propTypes = {
+    give: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+  }
+
   componentWillMount() {
     this.updateData(this.props);
 
@@ -63,17 +65,23 @@ export default class Give extends Component {
     this.props.dispatch(giveActions.setProgress(4));
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.data.loading && this.props.data.loading) {
+      this.updateData(nextProps);
+    }
+  }
+
   componentWillUnmount() {
-    if (this.props.give.state != "default") {
+    if (this.props.give.state !== "default") {
       this.props.dispatch(giveActions.clearData());
       this.props.dispatch(giveActions.clearSchedules());
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.data.loading && this.props.data.loading) {
-      this.updateData(nextProps);
-    }
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { dispatch } = this.props;
+    dispatch(giveActions.submit());
   }
 
   updateData = ({ data }) => {
@@ -82,8 +90,14 @@ export default class Give extends Component {
     const { person } = data;
 
     let { campus, home } = person;
-    campus || (campus = {});
-    home || (home = {});
+
+    if (!campus) {
+      campus = {};
+    }
+
+    if (!home) {
+      home = {};
+    }
 
     const mappedPerson = {
       personal: {
@@ -104,12 +118,6 @@ export default class Give extends Component {
     };
 
     this.props.dispatch(giveActions.save(mappedPerson));
-  }
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    const { dispatch } = this.props;
-    dispatch(giveActions.submit());
   }
 
   next = (e) => {
@@ -138,9 +146,11 @@ export default class Give extends Component {
     this.props.dispatch(giveActions.previous());
   }
 
-  monentize = (value, fixed) => {
-    if (typeof value === "number") {
-      value = `${value}`;
+  monentize = (amount, fixed) => {
+    let value;
+
+    if (typeof amount === "number") {
+      value = `${amount}`;
     }
 
     if (!value.length) {
@@ -176,7 +186,7 @@ export default class Give extends Component {
   }
 
   render() {
-    let {
+    const {
       data,
       url,
       errors,
@@ -192,15 +202,23 @@ export default class Give extends Component {
 
     let { campuses, states, countries } = this.props.data;
 
-    campuses || (campuses = defaultArray);
+    if (!campuses) {
+      campuses = defaultArray;
+    }
+
     campuses = campuses.map(x => ({ label: x.name, value: x.id }));
 
-    states || (states = defaultArray);
+    if (!states) {
+      states = defaultArray;
+    }
+
     states = states.map(x => ({ label: x.name, value: x.value }));
 
-    countries || (countries = defaultArray);
-    countries = countries.map(x => ({ label: x.name, value: x.value }));
+    if (!countries) {
+      countries = defaultArray;
+    }
 
+    countries = countries.map(x => ({ label: x.name, value: x.value }));
 
     const save = (...args) => { this.props.dispatch(giveActions.save(...args)); };
     const clear = (...args) => { this.props.dispatch(giveActions.clear(...args)); };
@@ -222,6 +240,7 @@ export default class Give extends Component {
           onClick={this.goToaccounts}
           schedules={this.copiedSchedules}
         />);
+      // eslint-disable-next-line
       default:
         let Step;
         switch (step) {
@@ -276,8 +295,6 @@ export default class Give extends Component {
                 active={step}
               />
             </Step>
-
-
           </Forms.Form>
         );
     }
