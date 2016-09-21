@@ -15,42 +15,60 @@ const initial = {
 
 export default createReducer(initial, {
 
-  ["LIVE.SET"]: function (state, action) {
-    return { ...state, ...{
-      live: action.isLive,
-      embedCode: action.embedCode,
-    } };
-  },
+  "LIVE.SET": (state, action) => (
+    {
+      ...state,
+      ...{
+        live: action.isLive,
+        embedCode: action.embedCode,
+      },
+    }
+  ),
 
-  ["LIVE.RESET"]: function (state, action) {
-    return { ...state, ...{
-      live: initial.live,
-      embedCode: initial.embedCode,
-    } };
-  },
+  "LIVE.RESET": (state) => (
+    {
+      ...state,
+      ...{
+        live: initial.live,
+        embedCode: initial.embedCode,
+      },
+    }
+  ),
 
-  ["LIVE.SHOW"]: function (state, action) {
-    return { ...state, ...{
-      show: true,
-    } };
-  },
+  "LIVE.SHOW": (state) => (
+    {
+      ...state,
+      ...{
+        show: true,
+      },
+    }
+  ),
 
-  ["LIVE.HIDE"]: function (state, action) {
-    return { ...state, ...{
-      show: false,
-    } };
-  },
+  "LIVE.HIDE": (state) => (
+    {
+      ...state,
+      ...{
+        show: false,
+      },
+    }
+  ),
 
-  ["LIVE.FLOAT"]: function (state, action) {
-    return { ...state, ...{
-      float: true,
-    } };
-  },
+  "LIVE.FLOAT": (state) => (
+    {
+      ...state,
+      ...{
+        float: true,
+      },
+    }
+  ),
 
-  ["LIVE.UNFLOAT"]: function (state, action) {
-    return { ...state, ...{
-      float: false,
-    } };
-  },
+  "LIVE.UNFLOAT": (state) => (
+    {
+      ...state,
+      ...{
+        float: false,
+      },
+    }
+  ),
 
 });
