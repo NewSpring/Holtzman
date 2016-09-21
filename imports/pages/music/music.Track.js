@@ -18,7 +18,7 @@ export default class AudioTrack extends Component {
     albumTitle: PropTypes.string.isRequired,
     track: PropTypes.object.isRequired,
     trackNumber: PropTypes.number.isRequired,
-    active: PropTypes.boolean.isRequired,
+    active: PropTypes.bool.isRequired,
   }
 
   ListDetail = () => {

@@ -69,9 +69,9 @@ const Layout = ({ photo, person, onToggle, content, onUpload }) => (
 Layout.propTypes = {
   photo: PropTypes.object.isRequired,
   person: PropTypes.object.isRequired,
-  onToggle: PropTypes.function.isRequired,
+  onToggle: PropTypes.func.isRequired,
   content: PropTypes.object.isRequired,
-  onUpload: PropTypes.function.isRequired,
+  onUpload: PropTypes.func.isRequired,
 };
 
 export default Layout;

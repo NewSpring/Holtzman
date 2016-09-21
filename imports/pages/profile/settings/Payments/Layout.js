@@ -76,7 +76,7 @@ const Layout = ({ details, remove, loading }) => (
 Layout.propTypes = {
   details: PropTypes.array.isRequired,
   remove: PropTypes.func.isRequired,
-  loading: PropTypes.boolean.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Layout;

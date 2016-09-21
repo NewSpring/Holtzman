@@ -39,7 +39,7 @@ const mapStateToProps = state => ({ authorized: state.accounts.authorized });
 export default class Home extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
     data: {
       person: PropTypes.object.isRequired,
     },

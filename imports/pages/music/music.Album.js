@@ -74,7 +74,7 @@ export default class MusicAlbum extends Component {
     album: {
       content: PropTypes.object.isRequired,
     },
-    modalVisible: PropTypes.boolean.isRequired,
+    modalVisible: PropTypes.bool.isRequired,
     albumArtist: PropTypes.string.isRequired,
   }
 

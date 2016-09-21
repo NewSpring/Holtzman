@@ -29,10 +29,10 @@ const mapQueriesToProps = () => ({
 export default class GiveNow extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
     data: {
-      loading: PropTypes.boolean.isRequired,
-      refetch: PropTypes.function.isRequired,
+      loading: PropTypes.bool.isRequired,
+      refetch: PropTypes.func.isRequired,
     },
   }
 
