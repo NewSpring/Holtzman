@@ -1,7 +1,7 @@
 import { StyleSheet } from "aphrodite";
 
 export default StyleSheet.create({
-  "select": {
+  select: {
     ":after": {
       content: "\"\"",
       borderColor: "#858585 transparent transparent transparent",
