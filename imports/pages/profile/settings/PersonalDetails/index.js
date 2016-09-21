@@ -81,7 +81,7 @@ export default class PersonalDetails extends Component {
     }
 
     const arr = [];
-    for (let i = 0; i < totalDays; i++) {
+    for (let i = 0; i < totalDays; i += 1) {
       arr.push({ label: i + 1, value: i + 1 });
     }
     return arr;
@@ -97,7 +97,7 @@ export default class PersonalDetails extends Component {
     const now = new Date().getFullYear();
 
     const arr = [];
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < 150; i += 1) {
       arr.push({ label: (now - i), value: (now - i) });
     }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { PropTypes } from "react";
 
 import RelatedContent from "../../blocks/content/RelatedContent";
@@ -37,11 +38,6 @@ const StoriesContent = () => {
     </div>
 
   );
-};
-
-
-StoriesContent.propTypes = {
-  story: PropTypes.object.isRequired,
 };
 
 export default StoriesContent;

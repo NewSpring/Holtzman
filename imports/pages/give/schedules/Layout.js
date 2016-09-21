@@ -69,7 +69,7 @@ export default class Layout extends Component {
     return `$${strVal}`;
   }
 
-  capitalizeFirstLetter = (string) => (
+  capitalizeFirstLetter = string => (
     string.charAt(0).toUpperCase() + string.slice(1)
   )
 
@@ -102,37 +102,37 @@ export default class Layout extends Component {
         <Left scroll classes={["background--light-secondary"]} ref="container">
 
 
-            {(() => {
-              if (recoverableSchedules.length) {
-                return (
-                  <div
-                    className={
-                      "background--primary soft-half soft-sides@portable soft-double-sides@anchored"
-                    }
-                  >
+          {(() => {
+            if (recoverableSchedules.length) {
+              return (
+                <div
+                  className={
+                    "background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+                  }
+                >
 
-                    <div className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
-                      <h4 className="text-light-primary soft-half-sides soft-half-bottom">
-                        Hey { person.nickName || person.firstName }!
-                      </h4>
-                      <h5 className="text-light-primary soft-half-sides soft-bottom">
-                         We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
-                      </h5>
+                  <div className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+                    <h4 className="text-light-primary soft-half-sides soft-half-bottom">
+                      Hey { person.nickName || person.firstName }!
+                    </h4>
+                    <h5 className="text-light-primary soft-half-sides soft-bottom">
+                       We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
+                    </h5>
 
-                      <Link
-                        to="/give/schedules/transfer"
-                        className="btn--light"
-                      >
-                        Transfer Schedules
-                      </Link>
-                    </div>
-
+                    <Link
+                      to="/give/schedules/transfer"
+                      className="btn--light"
+                    >
+                      Transfer Schedules
+                    </Link>
                   </div>
 
-                );
-              }
-              return null;
-            })()}
+                </div>
+
+              );
+            }
+            return null;
+          })()}
 
           <div
             className={

@@ -15,7 +15,7 @@ import {
   audio as audioActions,
 } from "../../store";
 
-const mapStateToProps = (state) => (
+const mapStateToProps = state => (
   {
     audio: {
       visibility: state.audio.visibility,

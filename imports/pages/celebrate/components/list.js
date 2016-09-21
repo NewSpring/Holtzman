@@ -118,7 +118,7 @@ const List = () => {
     >
       <section style={dynamicWidthContainer(items.length)}>
         {items.map((x, key) => {
-          count++;
+          count += 1;
           return (
             <ListItem item={x} key={key} padding={items.length !== count} />
           );

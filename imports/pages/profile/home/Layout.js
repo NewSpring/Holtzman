@@ -44,12 +44,12 @@ const Layout = ({ photo, person, onToggle, content, onUpload }) => (
           >
             {person.nickName} {person.lastName}
           </h4>
-        {(() => {
-          if (!person.home || !person.home.city) return null;
-          return (
-            <p className="text-light-primary flush"><em>{person.home.city}</em></p>
-          );
-        })()}
+          {(() => {
+            if (!person.home || !person.home.city) return null;
+            return (
+              <p className="text-light-primary flush"><em>{person.home.city}</em></p>
+            );
+          })()}
         </div>
 
       </Right>
