@@ -24,6 +24,7 @@ function getPhoto(per = {}) {
   }
 
   if (!person.PhotoUrl) {
+    // eslint-disable-next-line max-len
     person.PhotoUrl = "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/member_images/members.nophoto_1000_1000_90_c1.jpg";
   }
 
