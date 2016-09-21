@@ -5,24 +5,38 @@ import { css } from "aphrodite";
 import collections from "../../../util/collections";
 import styles from "../../../util/styles";
 import backgrounds from "../../../util/backgrounds";
-
 import headerActions from "../../../store/header";
-
 import AudioControls from "./audio.Controls";
 import AudioTitle from "./audio.Title";
-import Track from "./audio.Track";
-
 import Styles from "./audio.styles.fullPlayer";
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = state =>
+  ({
     ...state.audio,
     header: state.header,
-  };
-};
+  });
 
 @connect(mapStateToProps)
 export default class FullPlayer extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func,
+    header: PropTypes.object, // eslint-disable-line
+    playing: PropTypes.object, // eslint-disable-line
+    audio: PropTypes.object, // eslint-disable-line
+    data: PropTypes.object, // eslint-disable-line
+    setPlaylist: PropTypes.func,
+    setPlaying: PropTypes.func,
+    play: PropTypes.func,
+    pause: PropTypes.func,
+    seek: PropTypes.func,
+    resetOrder: PropTypes.func,
+    shuffle: PropTypes.func,
+    resetRepeat: PropTypes.func,
+    repeatOne: PropTypes.func,
+    state: PropTypes.string,
+    repeat: PropTypes.func,
+  }
 
   state = {
     isShort: false,
@@ -36,29 +50,45 @@ export default class FullPlayer extends Component {
     });
   }
 
+  componentDidMount() {
+    this.setArtworkState();
+  }
+
   componentWillUnmount() {
     this.props.dispatch(headerActions.show({ visible: this.state.hadHeader, statusBar: true }));
   }
 
-  componentDidMount() {
+  setArtworkState = () => {
     const artworkContainer = this.refs.artworkContainer;
-    const artwork = this.refs.artwork;
     this.setState({
       isShort: artworkContainer.clientWidth > artworkContainer.clientHeight,
     });
+    return null;
   }
+
+  getArtist = () => {
+    const { album, track } = this.props.playing;
+    return track.artist || album.artist || "NewSpring";
+  }
+
+  getImageUrl = (images, blurred = false) => {
+    const image = blurred ? images[1] : images[0];
+
+    return image.url;
+  };
+
 
   getArtworkStyles = (album) => {
     const artworkContainer = this.refs.artworkContainer;
-    const styles = backgrounds.styles(album);
+    const awStyles = backgrounds.styles(album);
 
     if (this.state.isShort) {
-      styles.height = `${artworkContainer.clientHeight}px`;
-      styles.backgroundSize = "contain";
-      styles.backgroundColor = "transparent";
+      awStyles.height = `${artworkContainer.clientHeight}px`;
+      awStyles.backgroundSize = "contain";
+      awStyles.backgroundColor = "transparent";
     }
 
-    return styles;
+    return awStyles;
   };
 
   getArtworkClasses = (album) => {
@@ -77,19 +107,19 @@ export default class FullPlayer extends Component {
   };
 
   getArtworkContainerStyles = () => {
-    const styles = {};
+    const awcStyles = {};
 
     if (this.state.isShort) {
-      styles.height = "100%";
-      styles.backgroundImage = `
+      awcStyles.height = "100%";
+      awcStyles.backgroundImage = `
         url('${this.getImage(this.props.playing.album, { blurred: true })}')
       `;
-      styles.paddingTop = "10px";
-      styles.paddingBottom = "10px";
-      styles.backgroundSize = "cover";
+      awcStyles.paddingTop = "10px";
+      awcStyles.paddingBottom = "10px";
+      awcStyles.backgroundSize = "cover";
     }
 
-    return styles;
+    return awcStyles;
   };
 
   getImage = (data, options = { blurred: false }) => {
@@ -117,7 +147,7 @@ export default class FullPlayer extends Component {
       });
     }
 
-    if (state != "playing") {
+    if (state !== "playing") {
       this.props.play();
       return;
     }
@@ -167,44 +197,27 @@ export default class FullPlayer extends Component {
     this.props.repeat();
   }
 
-  getImageUrl = (images, blurred = false) => {
-    const image = blurred ? images[1] : images[0];
-
-    return image.url;
-  };
-
-  hackBackgroundStyles = () => {
-    return {
+  hackBackgroundStyles = () =>
+    ({
       position: "absolute",
       top: 0,
       left: 0,
       width: "100%",
       height: "100%",
       zIndex: -1,
-    };
-  };
-
-  getArtist = () => {
-    const { album, track } = this.props.playing;
-    return track.artist || album.artist || "NewSpring";
-  }
+    });
 
   render() {
     const { state, playing } = this.props;
     const { album, track } = playing;
-    const { images, colors, isLight } = album.content;
-    const playlist = [track];
-
-    const bgImageStyle = {
-      backgroundImage: "url(" + this.getImageUrl(images) + ")",
-    };
+    const { colors, isLight } = album.content;
 
     const bgColorStyle = {
       height: "100%",
     };
 
     if (colors && colors[0] && colors[0].value) {
-      bgColorStyle.backgroundColor = "#" + colors[0].value;
+      bgColorStyle.backgroundColor = `#${colors[0].value}`;
     }
 
     return (
@@ -213,9 +226,11 @@ export default class FullPlayer extends Component {
         <style>{styles.overlay(album)}</style>
         <style>{collections.backgroundStyles(album)}</style>
 
-        <div className={
-          css(Styles["player-flex"]) + " " + css(Styles["player-container"])
-        }>
+        <div
+          className={
+            `${css(Styles["player-flex"])} ${css(Styles["player-container"])}`
+          }
+        >
 
           <section
             ref="artworkContainer"
@@ -229,15 +244,17 @@ export default class FullPlayer extends Component {
             />
           </section>
 
-          <div className={
-            "text-center soft-sides " + css(Styles["player-flex-one"])
-          }>
+          <div
+            className={
+              `text-center soft-sides ${css(Styles["player-flex-one"])}`
+            }
+          >
 
             <AudioTitle
               trackTitle={track.title}
               artistName={this.getArtist()}
               albumTitle={album.title}
-              isPlaying={state != "default"}
+              isPlaying={state !== "default"}
               isLight={isLight}
               channelName={album.channelName}
             />
