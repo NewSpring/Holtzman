@@ -5,7 +5,7 @@
 */
 
 const breakpoints = {
-  "palm": {
+  palm: {
     max: 480,
   },
   "palm-wide": {
@@ -15,10 +15,10 @@ const breakpoints = {
   "palm-wide-and-up": {
     min: 481,
   },
-  "handheld": {
+  handheld: {
     max: 768,
   },
-  "lap": {
+  lap: {
     min: 769,
     max: 1024,
   },
@@ -32,11 +32,11 @@ const breakpoints = {
   "lap-wide-and-up": {
     min: 1025,
   },
-  "portable": {
+  portable: {
     min: 769,
     max: 1280,
   },
-  "desk": {
+  desk: {
     min: 1281,
     max: 1680,
   },
@@ -46,7 +46,7 @@ const breakpoints = {
   "desk-wide": {
     min: 1681,
   },
-  "anchored": {
+  anchored: {
     min: 1281,
   },
 };
@@ -60,17 +60,26 @@ const initial = {
 export default function modal(state = initial, action) {
   switch (action.type) {
     case "@@RESPONSIVE.SET_BREAKPOINT":
-      return { ...state, ...{
-        breakpoints: action.breakpoints,
-      } };
+      return {
+        ...state,
+        ...{
+          breakpoints: action.breakpoints,
+        },
+      };
     case "@@RESPONSIVE.SET_WIDTH":
-      return { ...state, ...{
-        width: action.width,
-      } };
+      return {
+        ...state,
+        ...{
+          width: action.width,
+        },
+      };
     case "@@RESPONSIVE.SET_HEIGHT":
-      return { ...state, ...{
-        height: action.height,
-      } };
+      return {
+        ...state,
+        ...{
+          height: action.height,
+        },
+      };
     default:
       return state;
   }
