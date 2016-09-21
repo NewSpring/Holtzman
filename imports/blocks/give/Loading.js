@@ -1,7 +1,7 @@
 import { PropTypes } from "react";
 import { WindowLoading, Spinner } from "../../components/loading";
 
-const Loading = context => (
+const Loading = () => (
   <WindowLoading classes={["background--primary"]}>
     <div className="soft soft-double-ends push-double-top one-whole text-center">
       <div className="push-double-top">
