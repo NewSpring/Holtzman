@@ -22,6 +22,8 @@ export default class SplitContainer extends Component {
     theme: PropTypes.string,
     styles: PropTypes.object,
     nav: PropTypes.bool,
+    children: PropTypes.object,
+    navigation: PropTypes.object,
   }
 
   static defaultProps = {
@@ -39,7 +41,7 @@ export default class SplitContainer extends Component {
       classes = classes.concat(this.props.classes);
     }
 
-    if (this.props.navigation.visible && this.props.nav != false) {
+    if (this.props.navigation.visible && this.props.nav !== false) {
       classes.push(css(styles.offset));
     }
 
