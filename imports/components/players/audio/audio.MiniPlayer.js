@@ -1,9 +1,7 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router";
 import { css } from "aphrodite";
 import { actions as audioActions } from "../../../store/audio";
-import AudioPlayerUtility from "./audio.PlayerUtility";
 import AudioControls from "./audio.Controls";
 
 import Styles from "./audio.styles.miniPlayer";
@@ -18,11 +16,42 @@ function mapStateToProps(state) {
 @connect(mapStateToProps, audioActions)
 export default class MiniPlayer extends Component {
 
+  propTypes = {
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    audio: PropTypes.object, // eslint-disable-line
+    dispatch: PropTypes.func,
+    header: PropTypes.object, // eslint-disable-line
+    playing: PropTypes.object, // eslint-disable-line
+    audio: PropTypes.object, // eslint-disable-line
+    data: PropTypes.object, // eslint-disable-line
+    play: PropTypes.func,
+    pause: PropTypes.func,
+    hide: PropTypes.func,
+    reset: PropTypes.func,
+    fade: PropTypes.func,
+    theme: PropTypes.string,
+  };
+
   state = {
     lastPercent: 0,
     startX: 0,
     transition: false,
   };
+
+  // show title before artist if sermon
+  // else show artist before title
+  getArtistLine = () => {
+    const { album, track } = this.props.audio.playing;
+    const artistName = track.artist || album.artist || "NewSpring";
+    const collectionTitle = album.title;
+    if (album.channelName === "series_newspring") {
+      return `${collectionTitle} – ${artistName}`;
+    }
+    return `${artistName} – ${collectionTitle}`;
+  }
 
   layoutClasses = () => {
     const classes = [
@@ -66,9 +95,8 @@ export default class MiniPlayer extends Component {
     return classes.join(" ");
   }
 
-  stopH6Classes = () => {
-    return css(Styles["mini-player-stop-h6"]);
-  }
+  stopH6Classes = () =>
+    css(Styles["mini-player-stop-h6"]);
 
   stopH6IconClasses = () => {
     const classes = [
@@ -99,7 +127,7 @@ export default class MiniPlayer extends Component {
     e.stopPropagation();
     const { state } = this.props.audio;
 
-    if (state != "playing") {
+    if (state !== "playing") {
       this.removeHideTimer();
       this.props.play();
       return;
@@ -142,7 +170,7 @@ export default class MiniPlayer extends Component {
     });
   }
 
-  touchEnd = (e) => {
+  touchEnd = () => {
     const decider = 25;
     const stop = this.state.lastPercent > decider;
 
@@ -166,58 +194,44 @@ export default class MiniPlayer extends Component {
   calculatePercent = (targetElement, clickedX) => {
     const range = targetElement.offsetWidth;
     const offsetClicked = clickedX - this.state.startX;
-    const percentClicked = offsetClicked / range * 100;
+    const percentClicked = (offsetClicked / range) * 100;
 
     if (percentClicked > 100) {
       return 100;
-    }
-    else if (percentClicked < 0) {
+    } else if (percentClicked < 0) {
       return 0;
     }
 
     return percentClicked;
   }
 
-  playerStyle = () => {
-    return {
+  playerStyle = () =>
+    ({
       left: `${this.state.lastPercent}%`,
-    };
-  }
+    });
+
 
   fadeClass = () => {
     const { visibility } = this.props.audio;
     if (visibility === "fade") {
       return css(Styles["mini-player-fade"]);
     }
-  }
-
-  // show title before artist if sermon
-  // else show artist before title
-  getArtistLine = () => {
-    const { album, track } = this.props.audio.playing;
-    const artistName = track.artist || album.artist || "NewSpring";
-    const collectionTitle = album.title;
-    if (album.channelName === "series_newspring") {
-      return `${collectionTitle} – ${artistName}`;
-    }
-    return `${artistName} – ${collectionTitle}`;
+    return undefined;
   }
 
   render() {
-    const { state, playing, progress } = this.props.audio;
-    const { album, track } = playing;
+    const { playing } = this.props.audio;
+    const { album } = playing;
     const { images } = album.content;
     const smallImage = _.find(images, (image) => {
       if (image.fileLabel && image.size) {
         return image.fileLabel === "1:1" && image.size === "small";
-      } else {
-        return image.size === "small";
       }
+      return image.size === "small";
     });
-    const playlist = [track];
 
     const bgImageStyle = {
-      backgroundImage: "url(" + smallImage.url + ")",
+      backgroundImage: `url(${smallImage.url})`,
     };
 
     return (
@@ -231,6 +245,7 @@ export default class MiniPlayer extends Component {
             <i className={this.stopH6IconClasses()} />
           </h6>
         </div>
+        {/* eslint-disable */}
         <div
           onClick={this.openFullPlayer}
           className={this.props.theme || this.layoutClasses()}
@@ -239,6 +254,7 @@ export default class MiniPlayer extends Component {
           onTouchEnd={this.touchEnd}
           style={this.playerStyle()}
         >
+        {/* eslint-enable */}
           <div
             className={this.albumClasses()}
             style={bgImageStyle}
