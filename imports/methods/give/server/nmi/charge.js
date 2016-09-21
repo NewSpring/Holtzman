@@ -18,6 +18,7 @@ const step1 = (token, callback) => {
   function timeout(ms, promise) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        // eslint-disable-next-line max-len
         reject(new Error("The request to our payment process took longer than expected. For your safety we have cancelled this action. You were not charged and should be able to try again!"));
       }, ms);
       promise.then(resolve, reject);
@@ -75,6 +76,7 @@ const step1 = (token, callback) => {
       err = data["result-text"];
     }
 
+    // eslint-disable-next-line no-console
     console.error("@@CHARGE_ERROR", data, xml);
     callback({ message: err });
   })
