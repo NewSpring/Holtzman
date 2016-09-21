@@ -1,8 +1,8 @@
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes } from "react";
+import { PropTypes } from "react";
 import { connect } from "react-redux";
-import { createContainer } from "../meteor/react-meteor-data";
 import { css } from "aphrodite";
+import { createContainer } from "../meteor/react-meteor-data";
 
 import Modal from "../modal";
 import Meta from "../../components/meta";
@@ -23,31 +23,47 @@ import Styles from "./watermark-css";
 
 const Watermark = () => (
   <div className={css(Styles["global-watermark"])}>
-    <h4 className={`soft-half flush text-light-primary uppercase watermark ${css(Styles.watermark)} visuallyhidden@handheld`}>
+    <h4
+      className={
+        "soft-half flush text-light-primary uppercase watermark " +
+        `${css(Styles.watermark)} visuallyhidden@handheld`
+      }
+    >
       NewSpring
     </h4>
   </div>
 );
 
 
-export const App = ({ children, className }) => {
-  return (
-    <div
-      className="push-double-bottom@palm soft-half-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up"
-    >
-      <div className={className}>
-        <Meta />
-        {(() => { if (process.env.NATIVE) return <Header />; })()}
-        <div data-status-scroll>
-          {children}
-        </div>
-        <Modal />
-        <Nav />
-        <Watermark />
+export const App = ({ children, className }) => (
+  <div
+    className={
+      "push-double-bottom@palm soft-half-bottom@palm " +
+      "push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up"
+    }
+  >
+    <div className={className}>
+      <Meta />
+      {(() => {
+        if (process.env.NATIVE) {
+          return <Header />;
+        }
+        return null;
+      })()}
+      <div data-status-scroll>
+        {children}
       </div>
-
+      <Modal />
+      <Nav />
+      <Watermark />
     </div>
-  );
+
+  </div>
+);
+
+App.propTypes = {
+  children: PropTypes.object.isRequired,
+  className: PropTypes.string,
 };
 
 
@@ -60,7 +76,7 @@ let hasBeenSignedIn = false;
 const GlobalData = createContainer(({ dispatch }) => {
   const userId = Meteor.userId();
 
-  if (typeof Raven != "undefined") {
+  if (typeof Raven !== "undefined") {
     if (!userId) Raven.setUserContext();
     if (userId && Meteor.user()) {
       const person = Meteor.user();
@@ -102,6 +118,7 @@ const map = state => ({
   location: state.routing.location,
   modal: state.modal,
 });
+
 @connect(map)
 export default class Global extends Component {
 
