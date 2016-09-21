@@ -6,6 +6,19 @@ import styles from "./nav-css";
 
 export default class NavLayout extends React.Component {
 
+  static propTypes = {
+    classes: PropTypes.string,
+    bgColor: PropTypes.string,
+    fgColor: PropTypes.string,
+    reset: PropTypes.func,
+    path: PropTypes.string,
+    theme: PropTypes.string,
+    links: PropTypes.object,
+    modal: PropTypes.string,
+    handleAction: PropTypes.func,
+    liked: PropTypes.bool,
+  }
+
   layoutClasses = () => {
     const classes = [
       // "background--dark-primary",
@@ -37,7 +50,7 @@ export default class NavLayout extends React.Component {
   }
 
   isLiked = () => {
-    if (typeof window != "undefined" && window != null) {
+    if (typeof window !== "undefined" && window != null) {
       const urlParts = window.location.pathname.split("/");
       const entryId = urlParts[urlParts.length - 1];
       return _.contains(this.props.liked.likes, String(entryId));
@@ -47,7 +60,7 @@ export default class NavLayout extends React.Component {
   }
 
   render() {
-    const { handleAction, back, reset, path } = this.props;
+    const { handleAction, reset, path } = this.props;
     return (
       <section
         className={this.props.theme || this.layoutClasses()}
