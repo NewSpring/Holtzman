@@ -11,6 +11,7 @@ import {
 import { GraphQL } from "./graphql";
 
 import Routes from "./routes";
+console.log("Routes", Routes);
 import Global from "./blocks/global";
 
 let App = null;

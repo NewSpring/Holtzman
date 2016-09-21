@@ -1,4 +1,4 @@
-import { Routes } from "./pages";
+import Routes from "./pages";
 
 if (process.env.NATIVE) {
   // eslint-disable-next-line no-unused-vars
