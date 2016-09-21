@@ -6,7 +6,6 @@ import Loading from "../../../components/loading";
 
 import {
   nav as navActions,
-  give as giveActions,
 } from "../../../store";
 
 import Layout from "./Layout";
@@ -37,6 +36,12 @@ const mapQueriesToProps = () => ({
 
 @connect({ mapQueriesToProps })
 class Template extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    accounts: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
+  }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
