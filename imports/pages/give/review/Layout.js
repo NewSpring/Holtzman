@@ -78,6 +78,7 @@ export default class Layout extends Component {
   render() {
     const transactions = [];
 
+    // eslint-disable-next-line
     for (const transaction in this.props.transactions) {
       transactions.push(this.props.transactions[transaction]);
     }
