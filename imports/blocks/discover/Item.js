@@ -11,6 +11,10 @@ import Styles from "./styles-css";
 
 export default class SearchItem extends Component {
 
+  propTypes = {
+    item: PropTypes.object, // eslint-disable-line
+  }
+
   cardClasses = () => {
     const classes = [
       "background--light-primary",
@@ -27,39 +31,39 @@ export default class SearchItem extends Component {
     return classes.join(" ");
   }
 
-  gridClasses = () => {
-    return [
+  gridClasses = () => (
+    [
       "grid",
       "flush",
       css(Styles["height-100"]),
-    ].join(" ");
-  }
+    ].join(" ")
+  )
 
-  gridItemClasses = () => {
-    return [
+  gridItemClasses = () => (
+    [
       "grid__item",
       "three-fifths",
       "soft-half",
       "floating--left",
       "one-whole",
       css(Styles["height-100"]),
-    ].join(" ");
-  }
+    ].join(" ")
+  )
 
-  pClasses = () => {
-    return `small ${css(Styles["ellipsis-p"])}`;
-  }
+  pClasses = () => (
+    `small ${css(Styles["ellipsis-p"])}`
+  )
 
-  bgClasses = () => {
-    return [
+  bgClasses = () => (
+    [
       "grid__item",
       "two-fifths",
       "hard",
       "soft-half-left",
       "background--cover",
       css(Styles["height-100"]),
-    ];
-  }
+    ]
+  )
 
   // context from ImageLoader
   preloader() {
@@ -101,22 +105,20 @@ export default class SearchItem extends Component {
               return (
                 <div className={classes.join(" ")} />
               );
-            } else {
-              return (
-                <ImageLoader
-                  src={this.props.item.image}
-                  force
-                  preloader={this.preloader}
-                  renderElement={this.renderElement}
-                  imageclasses={this.bgClasses()}
-                  style={{
-                    backgroundImage: `url('${this.props.item.image}')`,
-                  }}
-                />
-              );
             }
+            return (
+              <ImageLoader
+                src={this.props.item.image}
+                force
+                preloader={this.preloader}
+                renderElement={this.renderElement}
+                imageclasses={this.bgClasses()}
+                style={{
+                  backgroundImage: `url('${this.props.item.image}')`,
+                }}
+              />
+            );
           })()}
-
         </div>
       </Link>
     );
