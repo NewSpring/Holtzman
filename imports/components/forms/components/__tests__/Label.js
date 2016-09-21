@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import renderer from "react-test-renderer";
 import Label from "../Label";
 

@@ -1,10 +1,30 @@
 import { Component, PropTypes } from "react";
-import ReactDOM from "react-dom";
 
 import Label from "./components/Label";
 
 export default class File extends Component {
 
+  static propTypes = {
+    defaultValue: PropTypes.string,
+    autofocus: PropTypes.bool,
+    format: PropTypes.func,
+    validation: PropTypes.func,
+    status: PropTypes.string,
+    disabled: PropTypes.bool,
+    errorText: PropTypes.string,
+    theme: PropTypes.string,
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    style: PropTypes.object, // eslint-disable-line
+    id: PropTypes.string,
+    name: PropTypes.string,
+    label: PropTypes.string,
+    hideLabel: PropTypes.string,
+    placeholder: PropTypes.string,
+    inputClasses: PropTypes.array, // eslint-disable-line
+  }
 
   state = {
     active: false,
@@ -21,21 +41,21 @@ export default class File extends Component {
 
   componentDidMount() {
     if (this.props.autofocus) {
-      this.refs["apollos-input"].focus();
+      this.node.focus();
     }
   }
 
   componentWillUpdate(nextProps) {
-    if (this.props.defaultValue != nextProps.defaultValue) {
+    if (this.props.defaultValue !== nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue);
       this.setState({ focused: false });
     }
   }
 
 
-  format = (e) => {
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    const value = this.refs["apollos-input"].value;
+  format = (e) => { // eslint-disable-line
+    const target = this.node;
+    const value = this.node.value;
 
     if (this.props.format && typeof (this.props.format) === "function") {
       const newValue = this.props.format(value, target, e);
@@ -44,7 +64,7 @@ export default class File extends Component {
   }
 
   validate = () => {
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const target = this.node;
     const value = target.value;
 
     if (!value) {
@@ -65,7 +85,7 @@ export default class File extends Component {
     }
   }
 
-  focus = (event) => {
+  focus = () => {
     this.setState({
       active: true,
       error: false,
@@ -74,28 +94,20 @@ export default class File extends Component {
   }
 
   setValue = (value) => {
-    const node = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const node = this.node;
     node.value = value;
     this.focus();
     this.validate();
   }
 
-  getValue = () => {
-    return ReactDOM.findDOMNode(this.refs["apollos-input"]).value;
-  }
-
+  getValue = () =>
+    this.node.value;
 
   setStatus = (message) => {
     this.props.status = message;
   }
 
-  disabled = () => {
-    if (this.props.disabled) {
-      return this.props.disabled;
-    }
-  }
-
-  renderHelpText = (message) => {
+  renderHelpText = () => {
     if ((this.state.error && this.props.errorText) || this.state.status) {
       return (
         <span className="input__status">
@@ -103,6 +115,7 @@ export default class File extends Component {
         </span>
       );
     }
+    return undefined;
   }
 
   style = () => {
@@ -142,21 +155,22 @@ export default class File extends Component {
                 labelName={
                   this.props.label || this.props.name
                 }
-                disabed={this.disabled()}
+                disabed={this.props.disabled ? this.props.disabled : false}
               />
             );
           }
+          return undefined;
         })()}
 
 
         <input
-          ref="apollos-input"
+          ref={node => (this.node = node)}
           id={this.props.id || this.props.name || this.props.label}
           type="file"
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label}
           className={this.props.inputClasses}
-          disabled={this.disabled()}
+          disabled={this.props.disabled ? this.props.disabled : false}
           onBlur={this.validate}
           onFocus={this.focus}
           onChange={this.format}

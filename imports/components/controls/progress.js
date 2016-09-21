@@ -7,21 +7,20 @@ export default class Progress extends Component {
     active: PropTypes.number.isRequired,
   }
 
+  getLayer = count =>
+    ((this.props.steps + 2) - count);
+
   steps = () => {
     const { steps } = this.props;
 
     const stepsArray = [];
-    for (let i = 0; i < steps; i++) {
+    for (let i = 0; i < steps; i += 1) {
       stepsArray.push(i);
     }
 
-    return stepsArray.map((value, count) => {
-      return { count };
-    });
-  }
-
-  getLayer = (count) => {
-    return (this.props.steps + 2 - count);
+    return stepsArray.map((value, count) =>
+      ({ count })
+    );
   }
 
   render() {

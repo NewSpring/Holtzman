@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import { Link } from "react-router";
+// import { Link } from "react-router";
 
 import Card from "./index";
 import styles from "../../util/styles";
@@ -12,12 +12,7 @@ import time from "../../util/time";
 export default class FeedItem extends Component {
 
   static propTypes = {
-    // item: PropTypes.object.isRequired
-  }
-
-  isSeriesItem = () => {
-    const { channelName } = this.props.item;
-    return (channelName === "series_newspring" || channelName === "sermons");
+    item: PropTypes.object.isRequired // eslint-disable-line
   }
 
   getImage = (item) => {
@@ -26,6 +21,11 @@ export default class FeedItem extends Component {
       return backgrounds.image(item.parent);
     }
     return backgrounds.image(item);
+  }
+
+  isSeriesItem = () => {
+    const { channelName } = this.props.item;
+    return (channelName === "series_newspring" || channelName === "sermons");
   }
 
   overlayStyles = (item) => {
@@ -78,23 +78,21 @@ export default class FeedItem extends Component {
     return classes.join(" ");
   }
 
-  h4Classes = () => {
-    return [
+  h4Classes = () =>
+    [
       this.isSeriesItem() ? "text-light-primary" : "text-dark-primary",
       "capitalize",
     ].join(" ");
-  }
 
-  categoryClasses = () => {
-    return this.isSeriesItem() ? "text-light-primary" : "text-dark-tertiary";
-  }
+
+  categoryClasses = () =>
+    (this.isSeriesItem() ? "text-light-primary" : "text-dark-tertiary");
 
   timeClasses = () => {
     const classes = ["text-right", "float-right", "flush-bottom"];
     if (this.isSeriesItem()) {
       classes.push("text-light-primary");
-    }
-    else {
+    } else {
       classes.push("text-dark-tertiary");
     }
     return classes.join(" ");
