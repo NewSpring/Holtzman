@@ -8,7 +8,7 @@ import { nav as navActions, header as headerActions } from "../../../store";
 import Layout from "./Layout";
 import Details from "./Details";
 
-const mapQueriesToProps = ({ ownProps }) => ({
+const mapQueriesToProps = () => ({
   filter: {
     query: gql`
       query GetFilterContent {
@@ -22,7 +22,14 @@ const mapQueriesToProps = ({ ownProps }) => ({
     // XXX remove cache: false when heighliner caching is tested
     query: gql`
       query GetTransactions($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
-        transactions(limit: $limit, skip: $skip, people: $people, start: $start, end: $end, cache: false) {
+        transactions(
+          limit: $limit,
+          skip: $skip,
+          people: $people,
+          start: $start,
+          end: $end,
+          cache: false
+        ) {
           id
           date
           status
@@ -40,9 +47,19 @@ const mapQueriesToProps = ({ ownProps }) => ({
     forceFetch: true,
   },
 });
-const defaultArray = [];
 @connect({ mapQueriesToProps })
 class Template extends Component {
+
+  static propTypes = {
+    data: {
+      loading: PropTypes.bool.isRequired,
+      transactions: PropTypes.object.isRequired,
+      refetch: PropTypes.func.isRequired,
+    },
+    filter: {
+      family: PropTypes.object.isRequired,
+    },
+  }
 
   state = {
     offset: 0,
@@ -53,27 +70,6 @@ class Template extends Component {
     end: "",
     people: [],
     transactions: [], // XXX remove after refetchMore has landed in apollo-client
-  }
-
-  paginate = () => {
-    const { q, tags } = this.props;
-    this.props.data.refetch({
-      limit: 20,
-      skip: this.state.offset + 20,
-      people: this.state.people,
-      start: this.state.start,
-      end: this.state.end,
-    })
-      .then(({ data }) => {
-        const { transactions } = data;
-        let done = false;
-        if (transactions.length < 20) done = true;
-        this.setState({
-          transactions: this.state.transactions.concat(transactions),
-          offset: this.state.offset + 20,
-          done,
-        });
-      });
   }
 
   componentWillMount() {
@@ -96,10 +92,31 @@ class Template extends Component {
     }
 
   }
+  
   componentWillReceiveProps(nextProps, nextState) {
     if (this.props.data.loading && !nextProps.data.loading && !this.state.transactions.length) {
       this.setState({ transactions: nextProps.data.transactions });
     }
+  }
+
+  paginate = () => {
+    this.props.data.refetch({
+      limit: 20,
+      skip: this.state.offset + 20,
+      people: this.state.people,
+      start: this.state.start,
+      end: this.state.end,
+    })
+      .then(({ data }) => {
+        const { transactions } = data;
+        let done = false;
+        if (transactions.length < 20) done = true;
+        this.setState({
+          transactions: this.state.transactions.concat(transactions),
+          offset: this.state.offset + 20,
+          done,
+        });
+      });
   }
 
   changeFamily = (people) => {
