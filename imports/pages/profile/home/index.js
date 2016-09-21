@@ -85,7 +85,7 @@ export default class Home extends Component {
       headers: { [tokenName]: token },
       body: data,
     })
-      .then((response) => (response.json()))
+      .then(response => (response.json()))
       .then((id) => {
         avatar(id, () => {
           // eslint-disable-next-line
@@ -105,7 +105,7 @@ export default class Home extends Component {
 
       // Closure to capture the file information.
       reader.onload = (() => (
-        (event) => (
+        event => (
           save(event.target.result) // Render thumbnail
         )
       ))(files[file]);

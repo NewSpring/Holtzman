@@ -42,6 +42,6 @@ export default class FitText extends Component {
   }
 
   render() {
-    return <div ref={node => { this.element = node; }}>{this.props.children}</div>;
+    return <div ref={(node) => { this.element = node; }}>{this.props.children}</div>;
   }
 }

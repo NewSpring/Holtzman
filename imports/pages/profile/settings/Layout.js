@@ -57,7 +57,6 @@ const Layout = ({ person, children, mobile, onUpload }) => (
 );
 
 Layout.propTypes = {
-  photo: PropTypes.string.isRequired,
   person: PropTypes.object.isRequired,
   children: PropTypes.object.isRequired,
   mobile: PropTypes.bool.isRequired,

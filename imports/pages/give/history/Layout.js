@@ -267,45 +267,45 @@ export default class Layout extends Component {
               let lastYear = null;
               return (
                 <div>
-                {transactions.map((transaction, key) => {
-                  const { details, person } = transaction;
-                  return (
-                    <div key={key}>
-                      {details.map((transactionDetail, i) => {
-                        if (!transactionDetail.account) return null;
+                  {transactions.map((transaction, key) => {
+                    const { details, person } = transaction;
+                    return (
+                      <div key={key}>
+                        {details.map((transactionDetail, i) => {
+                          if (!transactionDetail.account) return null;
 
-                        if (Number(transactionDetail.amount) <= 0) return null;
+                          if (Number(transactionDetail.amount) <= 0) return null;
 
-                        const year = moment(transaction.date).year();
-                        if (year !== lastYear) {
-                          lastYear = year;
-                          return (
-                            <div key={i}>
-                              <div className="soft soft-half-left text-left">
-                                <h5>{year}</h5>
+                          const year = moment(transaction.date).year();
+                          if (year !== lastYear) {
+                            lastYear = year;
+                            return (
+                              <div key={i}>
+                                <div className="soft soft-half-left text-left">
+                                  <h5>{year}</h5>
+                                </div>
+                                <TransactionCard
+                                  transaction={transaction}
+                                  transactionDetail={transactionDetail}
+                                  person={person}
+                                />
                               </div>
-                              <TransactionCard
-                                transaction={transaction}
-                                transactionDetail={transactionDetail}
-                                person={person}
-                              />
-                            </div>
+                            );
+                          }
+
+                          return (
+                            <TransactionCard
+                              transaction={transaction}
+                              transactionDetail={transactionDetail}
+                              person={person}
+                              key={i}
+                            />
                           );
-                        }
+                        })}
+                      </div>
 
-                        return (
-                          <TransactionCard
-                            transaction={transaction}
-                            transactionDetail={transactionDetail}
-                            person={person}
-                            key={i}
-                          />
-                        );
-                      })}
-                    </div>
-
-                  );
-                })}
+                    );
+                  })}
                 </div>
               );
             })()}

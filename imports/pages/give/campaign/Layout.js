@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { PropTypes } from "react";
 import find from "lodash.find";
 import { Link } from "react-router";
