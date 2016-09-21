@@ -116,13 +116,15 @@ export default createReducer(initial, {
 
   [types.SAVE_DATA](state, action) {
     // @TODO validation on new data
-    return { ...state, ...{
-      data: {
-        personal: { ...state.data.personal, ...action.data.personal },
-        billing: { ...state.data.billing, ...action.data.billing },
-        payment: { ...state.data.payment, ...action.data.payment },
+    return { ...state,
+      ...{
+        data: {
+          personal: { ...state.data.personal, ...action.data.personal },
+          billing: { ...state.data.billing, ...action.data.billing },
+          payment: { ...state.data.payment, ...action.data.payment },
+        },
       },
-    } };
+    };
   },
 
   [types.REMOVE_DATA](state, action) {
@@ -130,29 +132,40 @@ export default createReducer(initial, {
       return state;
     }
 
-    return { ...state, ...{
-      data: { ...state.data, ...{
-        [action.level]: { ...state.data[action.level], ...{
-          [action.field]: null,
-        } },
-      } },
-    } };
+    return { ...state,
+      ...{
+        data: {
+          ...state.data,
+          ...{
+            [action.level]: {
+              ...state.data[action.level],
+              ...{
+                [action.field]: null,
+              },
+            },
+          },
+        },
+      },
+    };
   },
 
   [types.CLEAR_DATA](state) {
-    return { ...state, ...{
-      step: initial.step,
-      total: initial.total,
-      transactions: initial.transactions,
-      schedules: initial.schedules,
-      url: initial.url,
-      data: initial.data,
-      success: initial.success,
-      state: initial.state,
-      errors: initial.errors,
-      savedAccount: initial.savedAccount,
-      recoverableSchedules: initial.recoverableSchedules,
-    } };
+    return {
+      ...state,
+      ...{
+        step: initial.step,
+        total: initial.total,
+        transactions: initial.transactions,
+        schedules: initial.schedules,
+        url: initial.url,
+        data: initial.data,
+        success: initial.success,
+        state: initial.state,
+        errors: initial.errors,
+        savedAccount: initial.savedAccount,
+        recoverableSchedules: initial.recoverableSchedules,
+      },
+    };
   },
 
 
@@ -192,27 +205,41 @@ export default createReducer(initial, {
       return state;
     }
 
-    return { ...state, ...{
-      schedules: { ...state.schedules, ...{
-        [action.id]: { ...state.schedules[action.id], ...{
-          [state.schedule[action.field]]: null,
-        } },
-      } },
-    } };
+    return {
+      ...state,
+      ...{
+        schedules: {
+          ...state.schedules,
+          ...{
+            [action.id]: {
+              ...state.schedules[action.id],
+              ...{
+                [state.schedule[action.field]]: null,
+              },
+            },
+          },
+        },
+      },
+    };
   },
 
-  [types.CLEAR_SCHEDULES](state, action) {
-    return { ...state, ...{
-      schedules: { },
-    } };
+  [types.CLEAR_SCHEDULES](state) {
+    return {
+      ...state,
+      ...{
+        schedules: { },
+      },
+    };
   },
 
   [types.CLEAR_SCHEDULES_EXCEPT](state, action) {
     const newState = { ...state };
 
     if (newState.schedules[action.id]) {
+      // eslint-disable-next-line no-restricted-syntax
       for (const schedule in newState.schedules) {
         if (Number(newState.schedules[schedule].id) === Number(action.id)) {
+          // eslint-disable-next-line no-continue
           continue;
         }
 
@@ -231,9 +258,11 @@ export default createReducer(initial, {
       return state;
     }
 
-    return { ...state, ...{
-      state: stateName,
-    } };
+    return { ...state,
+      ...{
+        state: stateName,
+      },
+    };
   },
 
   [types.SET_ERROR](state, action) {
@@ -241,9 +270,11 @@ export default createReducer(initial, {
       return state;
     }
 
-    return { ...state, ...{
-      errors: { ...state.errors, ...action.error },
-    } };
+    return { ...state,
+      ...{
+        errors: { ...state.errors, ...action.error },
+      },
+    };
   },
 
   [types.REMOVE_ERROR](state, action) {
@@ -256,39 +287,51 @@ export default createReducer(initial, {
     delete errors[action.error];
 
     // update the state
-    return { ...state, ...{
-      errors,
-    } };
+    return { ...state,
+      ...{
+        errors,
+      },
+    };
   },
 
   [types.SET_ERRORS](state, action) {
-    return { ...state, ...{
-      errors: { ...state.errors, ...action.errors },
-    } };
+    return { ...state,
+      ...{
+        errors: { ...state.errors, ...action.errors },
+      },
+    };
   },
 
   [types.SET_ACCOUNTS](state, action) {
-    return { ...state, ...{
-      accounts: { ...state.accounts, ...action.accounts },
-    } };
+    return { ...state,
+      ...{
+        accounts: { ...state.accounts, ...action.accounts },
+      },
+    };
   },
 
   [types.SET_TRANSACTION_TYPE](state, action) {
-    return { ...state, ...{
-      transactionType: action.transactionType,
-    } };
+    return { ...state,
+      ...{
+        transactionType: action.transactionType,
+      },
+    };
   },
 
   [types.SET_TRANSACTION_DETAILS](state, action) {
-    return { ...state, ...{
-      url: action.url,
-    } };
+    return { ...state,
+      ...{
+        url: action.url,
+      },
+    };
   },
 
   [types.SET_REMINDER_DATE](state, action) {
-    return { ...state, ...{
-      reminderDate: action.reminderDate,
-    } };
+    return { ...state,
+      ...{
+        reminderDate: action.reminderDate,
+      },
+    };
   },
 
   [types.SET_USERID](state, { userId }) {
