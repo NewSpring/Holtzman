@@ -22,7 +22,7 @@ const initial = {
 
 export default createReducer(initial, {
 
-  ["HEADER.LOCK"]: function (state, action) {
+  "HEADER.LOCK": (state, action) => {
     if (state.lockHolder) {
       return state;
     }
@@ -32,7 +32,7 @@ export default createReducer(initial, {
     return newState;
   },
 
-  ["HEADER.UNLOCK"]: function (state, action) {
+  "HEADER.UNLOCK": (state) => {
     if (!state.lockHolder) {
       return state;
     }
@@ -42,7 +42,7 @@ export default createReducer(initial, {
     return newState;
   },
 
-  ["HEADER.SET"]: function (state, action) {
+  "HEADER.SET": (state, action) => {
     if (state.lockHolder && action.requestee !== state.lockHolder) {
       return state;
     }
@@ -50,7 +50,7 @@ export default createReducer(initial, {
     const mergedContent = { ...initial.content, ...action.content };
 
     if (mergedContent.color.indexOf("#") !== 0 && mergedContent.color !== "transparent") {
-      mergedContent.color = "#" + mergedContent.color;
+      mergedContent.color = `#${mergedContent.color}`;
     }
 
     const newState = { ...state,
@@ -64,12 +64,12 @@ export default createReducer(initial, {
     return newState;
   },
 
-  ["HEADER.TOGGLE_VISIBILITY"]: function (state, action) {
-    return { ...state,
+  "HEADER.TOGGLE_VISIBILITY": (state, action) => (
+    { ...state,
       visible: action.visible,
       // do type check since statusBar is a boolean value
       statusBar: typeof action.statusBar === "undefined" ? initial.statusBar : action.statusBar,
-    };
-  },
+    }
+  ),
 
 });
