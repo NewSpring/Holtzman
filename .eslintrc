@@ -15,7 +15,8 @@
     "NativeStorage": true,
     "ga": true,
     "hockeyapp": true,
-    "google": true
+    "google": true,
+    "serverWatch": true
   },
   "rules": {
     "quotes": [2, "double"],

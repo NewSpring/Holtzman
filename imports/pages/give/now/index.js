@@ -1,6 +1,4 @@
-import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
-import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 
 import { createContainer } from "../../../blocks/meteor/react-meteor-data";
@@ -49,7 +47,7 @@ class Page extends Component {
 // Bind reactive data to component
 const TemplateWithData = createContainer(() => {
   let alive = true;
-  try { alive = serverWatch.isAlive("ROCK"); } catch (e) {}
+  try { alive = serverWatch.isAlive("ROCK"); } catch (e) { /* do nothing */ }
   return { alive };
 },
   connect({ mapQueriesToProps })(props => <Layout {...props} />)
