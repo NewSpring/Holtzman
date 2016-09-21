@@ -16,18 +16,46 @@ const Layout = ({ account }) => (
           account.images ? find(account.images, { fileLabel: "2:1" }).cloudfront : account.image
         }
         meta={[
-          { "property": "og:type", "content": "article" },
+          { property: "og:type", content: "article" },
         ]}
       />
 
-      <Right background={account.images ? find(account.images, { fileLabel: "2:1" }).cloudfront : account.image} mobile />
-      <Right background={account.images ? find(account.images, { fileLabel: "1:2" }).cloudfront : account.image} mobile={false} />
+      <Right
+        background={
+          account.images ?
+            find(account.images, { fileLabel: "2:1" }).cloudfront :
+            account.image
+        }
+        mobile
+      />
+      <Right
+        background={
+          account.images ?
+            find(account.images, { fileLabel: "1:2" }).cloudfront :
+            account.image
+        }
+        mobile={false}
+      />
 
     </Split>
     <Left scroll classes={["background--light-primary"]}>
-      <Link to="/give/now" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain visuallyhidden@handheld" >
-        <i className="icon-arrow-back soft-half-right display-inline-block" style={{ verticalAlign: "middle" }} />
-        <span className="display-inline-block" style={{ verticalAlign: "middle", marginBottom: "5px" }}>Back</span>
+      <Link
+        to="/give/now"
+        className={
+          "locked-top locked-left soft-double@lap-and-up soft " +
+          "h7 text-dark-secondary plain visuallyhidden@handheld"
+        }
+      >
+        <i
+          className="icon-arrow-back soft-half-right display-inline-block"
+          style={{ verticalAlign: "middle" }}
+        />
+        <span
+          className="display-inline-block"
+          style={{ verticalAlign: "middle", marginBottom: "5px" }}
+        >
+          Back
+        </span>
       </Link>
       <div className="soft@lap-and-up soft-double-top@lap-and-up">
         <div className="soft soft-double-bottom soft-double-top@lap-and-up">
@@ -49,4 +77,9 @@ const Layout = ({ account }) => (
   </div>
 
 );
+
+Layout.propTypes = {
+  account: PropTypes.object.isRequired,
+};
+
 export default Layout;
