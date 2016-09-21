@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 import React from "react";
 import ReactDOM from "react-dom";
-import Moment from "moment";
+import moment from "moment";
 import { takeLatest, takeEvery } from "redux-saga";
 import { fork, take, put, cps, call, select } from "redux-saga/effects";
 import gql from "graphql-tag";
@@ -23,184 +23,57 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // XXX break this file up into smaller files
 
-// at this point in time we have to do steps 1 - 3 of the
-// three step process to create a validation response
-// this validation process is required to ensure that the account
-// that is being used to make payments, is actually valid
-// see https://github.com/NewSpring/Apollos/issues/439 for discussion
-function* validate() {
-  const { give } = yield select(),
-    name = give.data.payment.name;
-
-  let success = true,
-    validationError = false,
-    transactionResponse;
-
-  // we strip all product and schedule data so the validation is
-  // just of the personal details + billing address
-  const modifiedGive = { ...give };
-  delete modifiedGive.transactions;
-  delete modifiedGive.schedules;
-
-
-  // step 1 (sumbit personal details)
+function* submitPersonDetails(give, autoSubmit) {
   // personal info is ready to be submitted
-  const formattedData = formatPersonDetails(modifiedGive);
+  const formattedData = formatPersonDetails(give);
 
-  // in order to make this a validation call, we need to set the amount
-  // to be 9
-  formattedData.amount = 0;
+  /*
 
-  let error, url;
+    Oddity with NMI, when using a saved account for a subscription,
+    you only submit the order, not the charge, etc
+
+  */
+  if (formattedData.savedAccount && Object.keys(give.schedules).length) {
+    return null;
+  }
+
+  let error; // eslint-disable-line no-unused-vars
+  let url;
   try {
     // call the Meteor method to submit data to NMI
     const response = yield cps(order, formattedData);
     url = response.url;
   } catch (e) { error = e; }
 
-  // step 2 (sumbit payment details)
-  yield submitPaymentDetails(modifiedGive.data, url);
+  if (autoSubmit) {
+    /*
 
-  if (url) {
-    // step 3 (trigger validation)
-    const token = url.split("/").pop();
-    try {
-      transactionResponse = yield cps(charge, token, name, null);
-    } catch (e) {
-      validationError = e;
-      success = false;
-    }
-  } else {
-    success = false;
-    validationError = error;
+      @NOTE
+        This is a hacky way to get around the submission required
+        by transnational gateway. We do a POST into the dark web of
+        NMI servers
+
+      @NOTE
+        This will always throw an error but we just catch it and ignore
+
+      @NOTE
+        DO NOT REMOVE THIS
+
+    */
+    yield fetch(url, {
+      method: "POST",
+      body: new FormData(),
+      mode: "no-cors",
+    })
+      .then(console.log) // eslint-disable-line no-console
+      .catch(console.log); // eslint-disable-line no-console
+
+    yield delay(50); // ensure gift is in nmi's system beofre progressing
   }
 
-  return {
-    success,
-    validationError,
-  };
+  // update the store with the url
+  return yield put(actions.setDetails(url));
 }
-
-// handle the transactions
-function* chargeTransaction({ state }) {
-  if (state !== "submit") return;
-
-  let { give } = yield select(),
-    name = give.data.payment.name,
-    action = charge,
-    error = false,
-    id;
-
-  // set loading state
-  yield put(actions.loading());
-
-  // personal info is ready to be submitted
-  const formattedData = formatPersonDetails(give);
-
-  // if you have a saved account, NMI lets you "order" a schedule
-  // instead of order + charge
-  if (formattedData.savedAccount && Object.keys(give.schedules).length) {
-    // wrap the function for the same api
-    action = (token, name, id, callback) => {
-      Meteor.call("give/order", formattedData, true, id, callback);
-    };
-  } else {
-    let store = yield select();
-    give = store.give;
-
-    if (formattedData.savedAccount) {
-      // set people data and store transaction id
-      yield* submitPersonDetails(give, true);
-    }
-
-    store = yield select();
-    give = store.give;
-
-    // wait until we have the transaction url
-    if (!give.url) {
-      const { url } = yield take(types.SET_TRANSACTION_DETAILS);
-      give.url = url;
-    }
-  }
-
-  // get the token and name of the saved account
-  const token = give.url.split("/").pop();
-
-  if (Object.keys(give.schedules).length) {
-    // if there is not a saved account, charge the order
-    if (!formattedData.savedAccount) {
-      action = schedule;
-
-      if (give.data.payment.type === "cc") {
-        // saved accounts don't validate the payment by default
-        // so we make 3 blocking requests to validate the card :(
-        let { success, validationError } = yield* validate();
-
-        if (validationError) {
-          error = validationError;
-        }
-      }
-    }
-  }
-
-
-  if (give.scheduleToRecover && Object.keys(give.schedules).length) {
-    id = give.scheduleToRecover;
-  }
-
-  let transactionResponse = {};
-  // submit transaction
-  try {
-    if (!error) {
-      transactionResponse = yield cps(action, token, name, id);
-    }
-  } catch (e) { error = e; }
-
-  // set error states
-  if (error) {
-    yield put(actions.error({ transaction: error }));
-
-    // remove loading state
-    yield put(actions.setState("error"));
-  } else {
-    // remove loading state
-    yield put(actions.setState("success"));
-
-    // if we activated an inactive schedule, remove it
-    if (give.scheduleToRecover && give.recoverableSchedules[give.scheduleToRecover]) {
-      yield put(actions.deleteSchedule(give.scheduleToRecover));
-      yield put(actions.deleteRecoverableSchedules(give.scheduleToRecover));
-    }
-
-    // if this was a named card (as in creating a saved account)
-    // lets force and update of the payment cards and set it in the store
-    // @TODO this is a race condition against updates in Rock
-    // we don't have a way to optimistcally update this without it being a
-    // hacky work around. I think this can wait until Apollo is closer
-    // to revist
-    if (name) {
-      const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-      const query = gql`
-        query GetSavedPayments {
-          savedPayments {
-            name
-            id
-            date
-            payment {
-              accountNumber
-              paymentType
-            }
-          }
-        }
-      `;
-
-      // wait one second before calling this
-      yield call(delay, 1000);
-      yield GraphQL.query({ query });
-    }
-  }
-}
-
 
 function* submitPaymentDetails(data, url) {
   /*
@@ -214,8 +87,8 @@ function* submitPaymentDetails(data, url) {
 
   const form = document.createElement("FORM");
 
-  let Component,
-    obj;
+  let Component;
+  let obj;
 
   const { payment, personal } = data;
 
@@ -251,67 +124,195 @@ function* submitPaymentDetails(data, url) {
     body: new FormData(form),
     mode: "no-cors",
   })
-    .then((response) => {
+    .then(() => {
       // next()
 
     })
-    .catch((e) => {
+    .catch(() => {
       // @TODO error handling
     });
   yield delay(50); // ensure gift is in nmi's system beofre progressing
   return;
 }
 
-function* submitPersonDetails(give, autoSubmit) {
+// at this point in time we have to do steps 1 - 3 of the
+// three step process to create a validation response
+// this validation process is required to ensure that the account
+// that is being used to make payments, is actually valid
+// see https://github.com/NewSpring/Apollos/issues/439 for discussion
+function* validate() {
+  const { give } = yield select();
+  const name = give.data.payment.name;
+
+  let success = true;
+  let validationError = false;
+
+  // we strip all product and schedule data so the validation is
+  // just of the personal details + billing address
+  const modifiedGive = { ...give };
+  delete modifiedGive.transactions;
+  delete modifiedGive.schedules;
+
+
+  // step 1 (sumbit personal details)
   // personal info is ready to be submitted
-  const formattedData = formatPersonDetails(give);
+  const formattedData = formatPersonDetails(modifiedGive);
 
-  /*
+  // in order to make this a validation call, we need to set the amount
+  // to be 9
+  formattedData.amount = 0;
 
-    Oddity with NMI, when using a saved account for a subscription,
-    you only submit the order, not the charge, etc
-
-  */
-  if (formattedData.savedAccount && Object.keys(give.schedules).length) {
-    return;
-  }
-
-  let error, url;
+  let error;
+  let url;
   try {
     // call the Meteor method to submit data to NMI
     const response = yield cps(order, formattedData);
     url = response.url;
   } catch (e) { error = e; }
 
-  if (autoSubmit) {
-    /*
+  // step 2 (sumbit payment details)
+  yield submitPaymentDetails(modifiedGive.data, url);
 
-      @NOTE
-        This is a hacky way to get around the submission required
-        by transnational gateway. We do a POST into the dark web of
-        NMI servers
-
-      @NOTE
-        This will always throw an error but we just catch it and ignore
-
-      @NOTE
-        DO NOT REMOVE THIS
-
-    */
-    const response = yield fetch(url, {
-      method: "POST",
-      body: new FormData(),
-      mode: "no-cors",
-    })
-      .then(console.log)
-      .catch(console.log);
-
-    yield delay(50); // ensure gift is in nmi's system beofre progressing
+  if (url) {
+    // step 3 (trigger validation)
+    const token = url.split("/").pop();
+    try {
+      yield cps(charge, token, name, null);
+    } catch (e) {
+      validationError = e;
+      success = false;
+    }
+  } else {
+    success = false;
+    validationError = error;
   }
 
-  // update the store with the url
-  return yield put(actions.setDetails(url));
+  return {
+    success,
+    validationError,
+  };
 }
+
+// handle the transactions
+function* chargeTransaction({ state }) {
+  if (state !== "submit") return;
+
+  let { give } = yield select();
+  const name = give.data.payment.name;
+  let action = charge;
+  let error = false;
+  let id;
+
+  // set loading state
+  yield put(actions.loading());
+
+  // personal info is ready to be submitted
+  const formattedData = formatPersonDetails(give);
+
+  // if you have a saved account, NMI lets you "order" a schedule
+  // instead of order + charge
+  if (formattedData.savedAccount && Object.keys(give.schedules).length) {
+    // wrap the function for the same api
+    action = (token, theName, theId, callback) => {
+      Meteor.call("give/order", formattedData, true, theId, callback);
+    };
+  } else {
+    let store = yield select();
+    give = store.give;
+
+    if (formattedData.savedAccount) {
+      // set people data and store transaction id
+      yield* submitPersonDetails(give, true);
+    }
+
+    store = yield select();
+    give = store.give;
+
+    // wait until we have the transaction url
+    if (!give.url) {
+      const { url } = yield take(types.SET_TRANSACTION_DETAILS);
+      give.url = url;
+    }
+  }
+
+  // get the token and name of the saved account
+  const token = give.url.split("/").pop();
+
+  if (Object.keys(give.schedules).length) {
+    // if there is not a saved account, charge the order
+    if (!formattedData.savedAccount) {
+      action = schedule;
+
+      if (give.data.payment.type === "cc") {
+        // saved accounts don't validate the payment by default
+        // so we make 3 blocking requests to validate the card :(
+        const { validationError } = yield* validate();
+
+        if (validationError) {
+          error = validationError;
+        }
+      }
+    }
+  }
+
+
+  if (give.scheduleToRecover && Object.keys(give.schedules).length) {
+    id = give.scheduleToRecover;
+  }
+
+  let transactionResponse = {}; // eslint-disable-line no-unused-vars
+  // submit transaction
+  try {
+    if (!error) {
+      transactionResponse = yield cps(action, token, name, id);
+    }
+  } catch (e) { error = e; }
+
+  // set error states
+  if (error) {
+    yield put(actions.error({ transaction: error }));
+
+    // remove loading state
+    yield put(actions.setState("error"));
+  } else {
+    // remove loading state
+    yield put(actions.setState("success"));
+
+    // if we activated an inactive schedule, remove it
+    if (give.scheduleToRecover && give.recoverableSchedules[give.scheduleToRecover]) {
+      yield put(actions.deleteSchedule(give.scheduleToRecover));
+      yield put(actions.deleteRecoverableSchedules(give.scheduleToRecover));
+    }
+
+    // if this was a named card (as in creating a saved account)
+    // lets force and update of the payment cards and set it in the store
+    // @TODO this is a race condition against updates in Rock
+    // we don't have a way to optimistcally update this without it being a
+    // hacky work around. I think this can wait until Apollo is closer
+    // to revist
+    if (name) {
+      const anotherDelay = ms => new Promise(resolve => setTimeout(resolve, ms));
+      const query = gql`
+        query GetSavedPayments {
+          savedPayments {
+            name
+            id
+            date
+            payment {
+              accountNumber
+              paymentType
+            }
+          }
+        }
+      `;
+
+      // wait one second before calling this
+      yield call(anotherDelay, 1000);
+      yield GraphQL.query({ query });
+    }
+  }
+}
+
 
 // transaction processing flow controller
 function* createOrder() {
@@ -370,7 +371,7 @@ function* recoverTransactions() {
   let user = Meteor.userId();
 
   if (!user) {
-    const { authorized } = yield take("ACCOUNTS.IS_AUTHORIZED");
+    yield take("ACCOUNTS.IS_AUTHORIZED");
   }
 
   user = Meteor.user();
@@ -406,17 +407,21 @@ function* recoverTransactions() {
   const bulkUpdate = {};
   schedules = schedules.filter(x => !x.gateway);
   if (schedules.length) {
-    for (const schedule of schedules) {
+    for (const aSchedule of schedules) {
       // only recover schedules that are missing info (i.e. not turned off in Rock)
-      if (schedule.gateway) continue;
+      // eslint-disable-next-line no-continue
+      if (aSchedule.gateway) continue;
 
-      if (schedule.schedule.value === "Twice a Month") {
-        schedule.schedule.value = null;
+      if (aSchedule.schedule.value === "Twice a Month") {
+        aSchedule.schedule.value = null;
       }
-      bulkUpdate[schedule.id] = { ...{
-        start: Moment(schedule.start).format("YYYYMMDD"),
-        frequency: schedule.schedule.value,
-      }, ...schedule };
+      bulkUpdate[aSchedule.id] = {
+        ...{
+          start: moment(aSchedule.start).format("YYYYMMDD"),
+          frequency: aSchedule.schedule.value,
+        },
+        ...aSchedule,
+      };
     }
 
     let time = new Date();
