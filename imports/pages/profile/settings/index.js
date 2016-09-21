@@ -38,7 +38,7 @@ const mapQueriesToProps = () => ({
 class Template extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
     data: {
       person: PropTypes.object.isRequired,
     },

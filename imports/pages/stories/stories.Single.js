@@ -58,7 +58,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
 export default class StoriesSingle extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
     story: {
       content: PropTypes.object,
     },
