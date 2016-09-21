@@ -1,10 +1,10 @@
 import { takeLatest } from "redux-saga";
-import { fork, put, cps, select } from "redux-saga/effects";
+import { fork, select } from "redux-saga/effects";
 import { addSaga } from "../utilities";
 
-const canRun = () => {
-  return typeof window !== "undefined" && window !== null && typeof window.StatusBar !== "undefined";
-};
+const canRun = () => (
+  typeof window !== "undefined" && window !== null && typeof window.StatusBar !== "undefined"
+);
 
 function* toggleHeader() {
   const { header } = yield select();
@@ -14,7 +14,7 @@ function* toggleHeader() {
   }
 }
 
-function* setColor({ color }) {
+function setColor({ color }) {
   if (canRun() && color) StatusBar.backgroundColorByHexString(color);
 }
 

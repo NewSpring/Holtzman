@@ -19,7 +19,8 @@
     "serverWatch": true,
     "Raven": true,
     "FastRender": true,
-    "RoutePolicy": true
+    "RoutePolicy": true,
+    "StatusBar": true
   },
   "rules": {
     "quotes": [2, "double"],
