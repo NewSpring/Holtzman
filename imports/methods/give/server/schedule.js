@@ -77,6 +77,7 @@ const cancel = ({ id, gateway }) => {
   if (existing.GatewayScheduleId) {
     response = api.patch.sync(`FinancialScheduledTransactions/${id}`, { IsActive: false });
     // debug for now
+    // eslint-disable-next-line no-console
     console.log("@@REMOVE_SCHEDULE_DATA", response, id, existing.GatewayScheduleId, existing);
   } else {
     // infellowhsip move over
@@ -84,6 +85,7 @@ const cancel = ({ id, gateway }) => {
   }
 
   if (response.statusText) {
+    // eslint-disable-next-line no-console
     console.error("@@REMOVE_SCHEDULE_ERROR", response, id, existing);
     throw new Meteor.Error(response);
   }
