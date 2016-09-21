@@ -33,8 +33,8 @@ Meteor.methods({
       const user = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`);
       const { PersonId } = user[0];
       if (!user[0].IsConfirmed) {
-        api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, (err, response) => {
-        });
+        // eslint-disable-next-line
+        api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, () => { });
       }
 
       api.patch(`UserLogins/${user[0].Id}`, {
