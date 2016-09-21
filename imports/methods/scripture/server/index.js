@@ -6,7 +6,8 @@ Meteor.methods({
 
     let baseUrl = `http://www.esvapi.org/v2/rest/passageQuery?key=${Meteor.settings.public.esv}`;
     baseUrl += `&passage=${scripture}`;
-    baseUrl += "&include-headings=false&include-passage-references=false&include-footnotes=false&include-audio-link=false&include-short-copyright=false";
+    baseUrl += "&include-headings=false&include-passage-references=false";
+    baseUrl += "&include-footnotes=false&include-audio-link=false&include-short-copyright=false";
 
     const f = new Future();
 
