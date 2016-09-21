@@ -27,7 +27,7 @@ api.registerEndpoint = (obj) => {
   @param callback [Function] callback to run on response
  */
 
-api.call = (method, endpoint, data, callback) => {
+api.call = function (method, endpoint, data, callback) {
   function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
       return response;
@@ -93,31 +93,31 @@ api.call = (method, endpoint, data, callback) => {
 };
 
 
-api.get = () => {
+api.get = function () {
   const args = _.values(arguments);
   args.unshift("GET");
   return api.call.apply(this, args);
 };
 
-api.delete = () => {
+api.delete = function () {
   const args = _.values(arguments);
   args.unshift("DELETE");
   return api.call.apply(this, args);
 };
 
-api.put = () => {
+api.put = function () {
   const args = _.values(arguments);
   args.unshift("PUT");
   return api.call.apply(this, args);
 };
 
-api.post = () => {
+api.post = function () {
   const args = _.values(arguments);
   args.unshift("POST");
   return api.call.apply(this, args);
 };
 
-api.patch = () => {
+api.patch = function () {
   const args = _.values(arguments);
   args.unshift("PATCH");
   return api.call.apply(this, args);
