@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
-import { createContainer } from "../meteor/react-meteor-data";
+import createContainer from "../meteor/react-meteor-data";
 
 import { give as giveActions } from "../../store";
 import Offline from "../../components/status/Offline";
