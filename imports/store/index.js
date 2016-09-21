@@ -15,11 +15,11 @@ import share from "./share";
 import topics from "./topics";
 // import fullscreen from "./fullscreen";
 
-let header;
-if (process.env.NATIVE) header = require("./header").default;
-
 import { wrapper, createReduxStore } from "./store";
-import { addMiddleware, addReducer, createReducer, addSaga } from "./utilities";
+import { addMiddleware, addReducer, createReducer } from "./utilities";
+
+let header; // eslint-disable-line
+if (process.env.NATIVE) header = require("./header").default; // eslint-disable-line
 
 export {
   accounts,
