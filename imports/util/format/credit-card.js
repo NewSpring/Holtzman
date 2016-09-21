@@ -18,4 +18,4 @@ const creditCard = (value) => {
   return value;
 };
 
-export default { creditCard };
+export default creditCard;
