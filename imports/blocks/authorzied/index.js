@@ -1,7 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import ReactMixin from "react-mixin";
 
 import { accounts as accountsActions, modal } from "../../store";
 import { routeActions } from "../../store/routing";
@@ -15,6 +14,12 @@ const map = state => ({
 @connect(map)
 export default class Authorized extends Component {
 
+  propTypes = {
+    dispatch: PropTypes.func,
+    auth: PropTypes.object, // eslint-disable-line
+    modal: PropTypes.object, // eslint-disable-line
+    children: PropTypes.object, // eslint-disable-line
+  }
 
   componentWillMount() {
     this.props.dispatch(modal.update({ modalBackground: "light" }));
