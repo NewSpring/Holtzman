@@ -1,4 +1,4 @@
-import React from "react";
+import { React, PropTypes } from "react";
 import { TransitionMotion, spring, presets } from "react-motion";
 
 export default function RouteTransition({ children, pathname }) {
@@ -10,42 +10,39 @@ export default function RouteTransition({ children, pathname }) {
     return pathParts[pathParts.length - 1];
   };
 
-  const getDirection = (action, pathname) => {
+  const getDirection = (action) => {
     const isNum = Number(lastPart()) > 0;
 
     if (action === "enter") {
       return isNum ? spring(farRight, presets.stiff) : spring(farLeft, presets.stiff);
-    }
-    else if (action === "leave") {
+    } else if (action === "leave") {
       return isNum ? spring(farLeft, presets.stiff) : spring(farRight, presets.stiff);
     }
+    return null;
   };
 
-  const willEnter = (children) => {
-    return {
-      children,
+  const willEnter = childArgs =>
+    ({
+      childArgs,
       opacity: spring(0),
       translate: getDirection("enter", pathname),
-    };
-  };
+    });
 
-  const willLeave = (key, { children }) => {
-    return {
-      children,
+  const willLeave = (key, { childArgs }) =>
+    ({
+      childArgs,
       opacity: spring(0),
       translate: getDirection("leave", pathname),
-    };
-  };
+    });
 
-  const getStyles = (children, pathname) => {
-    return {
-      [pathname]: {
-        children,
+  const getStyles = (childArgs, pathArgs) =>
+    ({
+      [pathArgs]: {
+        childArgs,
         opacity: spring(1),
         translate: spring(0),
       },
-    };
-  };
+    });
 
   return (
     <TransitionMotion
@@ -77,3 +74,8 @@ export default function RouteTransition({ children, pathname }) {
     </TransitionMotion>
   );
 }
+
+RouteTransition.propTypes = {
+  children: PropTypes.any, // eslint-disable-line
+  pathname: PropTypes.string,
+};

@@ -8,15 +8,20 @@ import AudioPlayerUtility from "./audio.PlayerUtility";
 import { actions as audioActions } from "../../../store/audio";
 import { modal, nav as navActions } from "../../../store";
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = state =>
+  ({
     audio: state.audio,
     modal: state.modal,
-  };
-};
+  });
 
 @connect(mapStateToProps)
 export default class AudioPlayer extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func,
+    audio: PropTypes.object, // eslint-disable-line
+    modal: PropTypes.object, // eslint-disable-line
+  }
 
   componentWillMount() {
     // Listen for audio commands from the lock screen or command center
@@ -35,6 +40,8 @@ export default class AudioPlayer extends Component {
           case "previousTrack":
             this.props.dispatch(audioActions.previous());
             break;
+          default:
+            break;
         }
       });
     }
@@ -51,8 +58,6 @@ export default class AudioPlayer extends Component {
     const modalNextVis = nextProps.modal.visible;
 
     const modalClosing = modalVis && !modalNextVis;
-
-    const { current } = this.props.modal;
 
     const triggerModal = () => {
       this.props.dispatch(modal.render(FullPlayer, { coverHeader: true, audioPlayer: true }));
@@ -99,6 +104,7 @@ export default class AudioPlayer extends Component {
           if (this.shouldDisplayMini()) {
             return <MiniPlayer {...this.props} />;
           }
+          return undefined;
         })()}
         <AudioPlayerUtility />
       </div>
