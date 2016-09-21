@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import Moment from "moment";
+import moment from "moment";
 import { Link } from "react-router";
 
 import Split, { Left, Right } from "../../../../blocks/split";
@@ -11,30 +11,33 @@ import AccountType from "../../../../components/accountType";
 
 export default class Layout extends Component {
 
-  static contextTypes = {
-    shouldAnimate: PropTypes.bool,
+  static propTypes = {
+    loadingEntries: PropTypes.bool.isRequired,
+    entries: PropTypes.object.isRequired,
+    transaction: PropTypes.object.isRequired,
   }
 
-  formatDate = (date) => {
-    return Moment(new Date(date)).format("MMM D, YYYY");
-  }
+  formatDate = (date) => (
+    moment(new Date(date)).format("MMM D, YYYY")
+  )
 
   monentize = (value, fixed) => {
-    if (typeof value === "number") value = `${value}`;
-    if (!value.length) return "$0.00";
+    let strVal = typeof value === "number" ? `${value}` : value;
+    if (!strVal.length) return "$0.00";
 
-    value = value.replace(/[^\d.-]/g, "");
+    strVal = strVal.replace(/[^\d.-]/g, "");
 
-    const decimals = value.split(".")[1];
+    const decimals = strVal.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
-      value = Number(value).toFixed(2);
-      value = String(value);
+      strVal = Number(strVal).toFixed(2);
+      strVal = String(strVal);
     }
 
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${value}`;
+    strVal = strVal.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return `$${strVal}`;
   }
 
+  /* eslint-disable max-len */
   render() {
     const { loadingEntries, entries } = this.props;
     return (
@@ -43,25 +46,51 @@ export default class Layout extends Component {
 
           <Meta title="Giving History" />
 
-          <Right background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
+          <Right
+            background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
             mobile={false}
           />
 
         </Split>
         <Left scroll ref="container" classes={["background--light-secondary"]}>
 
-          <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary">
+          <div
+            className={
+              "soft-double-sides@lap-and-up soft-double-ends@lap-and-up " +
+              "soft background--light-primary"
+            }
+          >
             {(() => {
               if (process.env.WEB) {
                 return (
-                  <Link to="/give/history" className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain" >
-                    <i className="icon-arrow-back soft-half-right display-inline-block" style={{ verticalAlign: "middle" }} />
-                    <span className="display-inline-block" style={{ verticalAlign: "middle", marginTop: "3px" }}>Back</span>
+                  <Link
+                    to="/give/history"
+                    className={
+                      "locked-top locked-left soft-double@lap-and-up " +
+                      "soft h7 text-dark-secondary plain"
+                    }
+                  >
+                    <i
+                      className="icon-arrow-back soft-half-right display-inline-block"
+                      style={{ verticalAlign: "middle" }}
+                    />
+                    <span
+                      className="display-inline-block"
+                      style={{ verticalAlign: "middle", marginTop: "3px" }}
+                    >
+                      Back
+                    </span>
                   </Link>
                 );
               }
+              return null;
             })()}
-            <div className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored ">
+            <div
+              className={
+                "text-left soft-double-top hard-left@lap-and-up " +
+                "soft-half-bottom soft@anchored"
+              }
+            >
               <div className="soft-double-ends@anchored">
                 {(() => {
                   const { transaction } = this.props;
@@ -77,12 +106,18 @@ export default class Layout extends Component {
                   const { person } = transaction;
                   return (
                     <div className="text-center">
-                      <p className="push-half-bottom"><em>{this.formatDate(transaction.date)}</em></p>
+                      <p className="push-half-bottom">
+                        <em>{this.formatDate(transaction.date)}</em>
+                      </p>
                       <h3 className="text-dark-secondary">{account.name}</h3>
 
-                      <h1 className="text-dark-primary">{this.monentize(transaction.details[0].amount)}</h1>
+                      <h1 className="text-dark-primary">
+                        {this.monentize(transaction.details[0].amount)}
+                      </h1>
 
-                      <h6 className="push-bottom text-dark-tertiary">{person.nickName || person.firstName} {person.lastName}</h6>
+                      <h6 className="push-bottom text-dark-tertiary">
+                        {person.nickName || person.firstName} {person.lastName}
+                      </h6>
 
                       {(() => {
                         const detail = transaction.payment;
@@ -98,16 +133,27 @@ export default class Layout extends Component {
                                   );
                                 } else if (detail.paymentType) {
                                   return (
-                                    <AccountType width="30px" height="20px" type={detail.paymentType} />
+                                    <AccountType
+                                      width="30px"
+                                      height="20px"
+                                      type={detail.paymentType}
+                                    />
                                   );
                                 }
+                                return null;
                               })()}
 
                             </h4>
                           );
                         }
+                        return null;
                       })()}
-                      <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
+                      <p
+                        className={
+                          "text-center soft-ends soft-double@anchored " +
+                          "flush-bottom soft-ends soft-sides@portable"
+                        }
+                      >
                         Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
                       </p>
                     </div>
@@ -122,13 +168,18 @@ export default class Layout extends Component {
               Recent Articles About Giving
             </h4>
               {(() => {
-                if (loadingEntries) (
-                  <div className="one-whole soft text-center"><Spinner /></div>
-                );
+                if (loadingEntries) {
+                  return <div className="one-whole soft text-center"><Spinner /></div>;
+                }
                 return (
                   <div className="grid">
                     {entries && entries.map((entry, key) => (
-                      <div key={key} className="grid__item one-whole push-half-bottom push-bottom@portable hard-bottom">
+                      <div
+                        key={key}
+                        className={
+                          "grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+                        }
+                      >
                         <SideBySide
                           classes={["push-bottom@lap-and-up"]}
                           images={entry.content.images}
@@ -143,9 +194,13 @@ export default class Layout extends Component {
                             if (process.env.WEB) {
                               return (
                                 <a
+                                  rel="noopener noreferrer"
                                   target="_blank"
                                   href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
-                                  className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                                  className={
+                                    "h6 btn--small btn--dark-tertiary " +
+                                    "soft-sides@portable one-whole@handheld"
+                                  }
                                 >
                                   Read more
                                 </a>
@@ -156,12 +211,17 @@ export default class Layout extends Component {
                               return (
                                 <Link
                                   to={`/articles/${entry.entryId}`}
-                                  className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                                  className={
+                                    "h6 btn--small btn--dark-tertiary " +
+                                    "soft-sides@portable one-whole@handheld"
+                                  }
                                 >
                                   Read more
                                 </Link>
                               );
                             }
+
+                            return null;
                           })()}
 
 
@@ -180,4 +240,5 @@ export default class Layout extends Component {
 
     );
   }
+  /* eslint-enable max-len */
 }
