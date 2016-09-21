@@ -3,6 +3,7 @@
 const reducers = {};
 
 const addReducer = (obj) => {
+  // eslint-disable-next-line no-restricted-syntax, guard-for-in
   for (const name in obj) {
     const handler = obj[name];
 
@@ -29,6 +30,7 @@ const addReducer = (obj) => {
 const createReducer = (initialState, handlers) => (
   (state = initialState, action) => {
     // better than switch statement
+    // eslint-disable-next-line no-prototype-builtins
     if (handlers.hasOwnProperty(action.type)) {
       return handlers[action.type](state, action);
     }
