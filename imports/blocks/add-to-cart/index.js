@@ -2,9 +2,6 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import Loading from "../../components/loading";
-import Forms from "../../components/forms";
-
 import { give as giveActions } from "../../store";
 import Layout from "./Layout";
 
@@ -14,66 +11,31 @@ const map = state => ({ give: state.give });
 @connect(map, giveActions)
 export default class CartContainer extends Component {
 
-  monentize = (value, fixed) => {
-    if (typeof value === "number") {
-      value = `${value}`;
-    }
-
-    if (!value.length) {
-      return "$0.00";
-    }
-
-    value = value.replace(/[^\d.-]/g, "");
-
-    const decimals = value.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      value = Number(value).toFixed(2);
-      value = String(value);
-    }
-
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${value}`;
-  }
-
-  format = (value, target) => {
-    const { id, name } = target;
-
-    value = this.monentize(value);
-
-    this.props.addTransactions({ [id]: {
-      value: Number(value.replace(/[^0-9\.]+/g, "")),
-      label: name,
-    } });
-
-    return value;
-  }
-
-  saveData = (value, target) => {
-    const { id, name } = target;
-
-    value = this.monentize(value);
-
-    this.props.addTransactions({ [id]: {
-      value: Number(value.replace(/[^0-9\.]+/g, "")),
-      label: name,
-    } });
-
-    return true;
+  propTypes = {
+    clearTransactions: PropTypes.func,
+    accounts: PropTypes.object, // eslint-disable-line
+    addTransactions: PropTypes.func,
+    give: PropTypes.object, // eslint-disable-line
+    donate: PropTypes.func,
   }
 
   componentWillMount() {
     this.props.clearTransactions();
 
-    if (typeof window != "undefined" && window != null) {
-      let match,
-        pl = /\+/g,  // Regex for replacing addition symbol with a space
-        search = /([^&=]+)=?([^&]*)/g,
-        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-        query = window.location.search.substring(1);
+    if (typeof window !== "undefined" && window !== null) {
+      let match;
+
+      const pl = /\+/g;  // Regex for replacing addition symbol with a spac
+      const search = /([^&=]+)=?([^&]*)/g;
+      const decode = (s) => { decodeURIComponent(s.replace(pl, " ")); };
+      const query = window.location.search.substring(1);
 
       const urlParams = {};
-      while (match = search.exec(query))
+
+      // eslint-disable-next-line
+      while (match = search.exec(query)) {
         urlParams[decode(match[1])] = decode(match[2]);
+      }
 
       for (const account of this.props.accounts) {
         if (urlParams[account.name]) {
@@ -97,8 +59,58 @@ export default class CartContainer extends Component {
     }
   }
 
+  monentize = (amount, fixed) => {
+    let value;
+
+    if (typeof amount === "number") {
+      value = `${amount}`;
+    }
+
+    if (!value.length) {
+      return "$0.00";
+    }
+
+    value = value.replace(/[^\d.-]/g, "");
+
+    const decimals = value.split(".")[1];
+    if ((decimals && decimals.length >= 2) || fixed) {
+      value = Number(value).toFixed(2);
+      value = String(value);
+    }
+
+    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return `$${value}`;
+  }
+
+  format = (amount, target) => {
+    const { id, name } = target;
+
+    const value = this.monentize(amount);
+
+    this.props.addTransactions({ [id]: {
+      value: Number(value.replace(/[^0-9\.]+/g, "")),
+      label: name,
+    } });
+
+    return value;
+  }
+
+  saveData = (amount, target) => {
+    const { id, name } = target;
+
+    const value = this.monentize(amount);
+
+    this.props.addTransactions({ [id]: {
+      value: Number(value.replace(/[^0-9\.]+/g, "")),
+      label: name,
+    } });
+
+    return true;
+  }
+
+
   preFillValue = (id) => {
-    const { total, transactions } = this.props.give;
+    const { transactions } = this.props.give;
 
     if (transactions[id] && transactions[id].value) {
       return `$${transactions[id].value}`;
@@ -109,7 +121,7 @@ export default class CartContainer extends Component {
 
 
   render() {
-    const { total, transactions } = this.props.give;
+    const { total } = this.props.give;
     if (!this.props.accounts) return null;
     const accounts = this.props.accounts.map(x => ({
       label: x.name,
