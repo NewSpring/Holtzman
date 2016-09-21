@@ -5,6 +5,7 @@
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "editor.wrappingColumn": 100,
+  "eslint.enable": true,
   "javascript.validate.enable": false,
   "files.exclude": {
     "**/.git": true,
