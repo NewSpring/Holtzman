@@ -2,7 +2,6 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import {
-  nav as navActions,
   modal as modalActions,
 } from "../../store";
 
@@ -18,6 +17,14 @@ const map = state => ({
 
 @connect(map)
 export default class NavContainer extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.object,
+    liked: PropTypes.bool,
+    state: PropTypes.object,
+    modal: PropTypes.string,
+    path: PropTypes.string,
+  }
 
   handleAction = (action) => {
     this.props.dispatch(action(this.props));
