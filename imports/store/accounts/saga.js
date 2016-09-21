@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime";
 import { takeLatest, takeEvery } from "redux-saga";
-import { fork, put, cps, call, select } from "redux-saga/effects";
+import { fork, put, cps, select } from "redux-saga/effects";
 import gql from "graphql-tag";
 
 import { GraphQL } from "../../graphql";
@@ -18,7 +18,6 @@ function* checkAccount({ data }) {
 
   // only make one request at a time
   inFlight = true;
-
   try {
     // make call to Rock to check if account is open
     let {
@@ -40,6 +39,7 @@ function* checkAccount({ data }) {
 function* completeAccount() {
   const state = yield select();
   const { email, personId } = state.accounts.data;
+  // eslint-disable-next-line
   let created = false, error;
 
   // XXX dead code removal broke this
@@ -61,7 +61,7 @@ function* completeAccount() {
       yield put(actions.setState("default"));
     } else {
       // add error to store
-      yield put(actions.error({ "password": error }));
+      yield put(actions.error({ password: error }));
 
       // remove the recover account settings
       yield put(actions.resetAccount());
@@ -80,10 +80,10 @@ function* completeAccount() {
 
 function* login() {
   const currentState = yield select();
-  const { data, state } = currentState.accounts;
+  const { data } = currentState.accounts;
 
   if (data.email && data.password) {
-    let { email, password } = data;
+    const { email, password } = data;
 
     // set the UI to show the loading screen
     yield put(actions.loading());
@@ -95,27 +95,28 @@ function* login() {
       // this should always be true shouldn't it?
       if (isAuthorized) {
         // return Meteor login to parent saga
+        // eslint-disable-next-line
         const result = yield cps(Meteor.loginWithPassword, email, password);
         if (isAuthorized) {
           return { result: isAuthorized };
-        } else {
-          return { error: new Meteor.Error("An unkown error occured") };
         }
+        return { error: new Meteor.Error("An unkown error occured") };
       }
     } catch (error) {
       return { error };
     }
   }
+  return false;
 }
 
 function* signup() {
   const currentState = yield select();
-  const { data, state } = currentState.accounts;
+  const { data } = currentState.accounts;
 
   // shorthand for 80 ch limit
   const d = data;
   if (d.email && d.password && d.firstName && d.lastName && d.terms) {
-    let { email, password } = data;
+    const { email, password } = data;
 
     // set the UI to show the loading screen
     yield put(actions.loading());
@@ -127,10 +128,12 @@ function* signup() {
       // this should always be true shouldn't it?
       if (isAuthorized) {
         // return Meteor login to parent saga
+        // eslint-disable-next-line
         const result = yield cps(Meteor.loginWithPassword, email, password);
 
         if (isAuthorized) {
           return { result: isAuthorized };
+        // eslint-disable-next-line
         } else {
           return { error: new Meteor.Error("An unkown error occured") };
         }
@@ -139,14 +142,15 @@ function* signup() {
       return { error };
     }
   }
+  return false;
 }
 
 // handle accounts wordflow
 function* onboard({ state }) {
   if (state !== "submit") return;
 
-  let currentState = yield select(),
-    returnValue = false;
+  const currentState = yield select();
+  let returnValue = false;
 
   if (currentState.accounts.account) {
     returnValue = yield* login();
@@ -155,11 +159,11 @@ function* onboard({ state }) {
   }
 
   if (returnValue) {
-    let { result, error } = returnValue;
+    const { error } = returnValue;
 
     if (error) {
       // add error to store
-      yield put(actions.error({ "password": error.error }));
+      yield put(actions.error({ password: error.error }));
 
       // set not logged in status
       yield put(actions.authorize(false));
