@@ -20,6 +20,12 @@ const mapStateToProps = state => ({ search: state.search });
 @ReactMixin.decorate(Headerable)
 export default class SearchContainer extends Component {
 
+  propTypes = {
+    dispatch: PropTypes.func,
+    search: PropTypes.func,
+    query: PropTypes.string,
+  }
+
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     if (!Meteor.isCordova) {
@@ -39,13 +45,10 @@ export default class SearchContainer extends Component {
     this.unlockHeader();
   }
 
-  hide = () => {
-    return this.props.dispatch(modal.hide());
-  }
 
   getSearch() {
     const { dispatch } = this.props;
-    let { page, pageSize, term } = this.props.search;
+    const { page, pageSize, term } = this.props.search;
     const query = gql`
       query Search($term: String!, $first: Int, $after: Int, $site: String) {
         search(query: $term, first: $first, after: $after, site: $site) {
@@ -87,6 +90,10 @@ export default class SearchContainer extends Component {
         }
       });
   }
+
+  hide = () => (
+    this.props.dispatch(modal.hide())
+  )
 
   searchSubmit = (event) => {
     event.preventDefault();
