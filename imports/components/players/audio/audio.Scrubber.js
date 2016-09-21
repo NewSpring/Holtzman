@@ -7,21 +7,46 @@ import Styles from "./audio.styles.scrubber";
 
 import { actions as audioActions } from "../../../store/audio";
 
-const mapStateToProps = (state) => {
-  return state.audio;
-};
+const mapStateToProps = state => state.audio;
 
 @connect(mapStateToProps, audioActions)
 export default class AudioScrubber extends Component {
 
   static propTypes = {
     isLight: PropTypes.bool.isRequired,
+    playing: PropTypes.object, // eslint-disable-line
+    time: PropTypes.any, // eslint-disable-line
+    progress: PropTypes.number,
+    seek: PropTypes.func,
   }
 
   state = {
     lastPercent: null,
     override: false,
   }
+
+  getTertiaryBackgroundColor = dark =>
+    (dark ? { backgroundColor: "rgba(255,255,255,.2)" } : { backgroundColor: "rgba(0,0,0,.2)" });
+
+  getTertiaryTextColor = dark =>
+    (dark ? { color: "rgba(255,255,255,.5)" } : { color: "rgba(0,0,0,.5)" });
+
+  getSecondayBackgroundClass = dark =>
+    (dark ? "background--dark-secondary" : "background--light-secondary");
+
+  getPrimaryBackgroundClass = dark =>
+    (dark ? "background--dark-primary" : "background--light-primary");
+
+  getTertiaryTextClass = dark =>
+    (dark ? "text-dark-tertiary" : "text-light-tertiary");
+
+  getTrackDuration = () =>
+    this.props.playing.track.duration;
+
+  getCurrentTime = () => {
+    const { time } = this.props;
+    return time;
+  };
 
   scrubStyle = () => {
     let { progress } = this.props;
@@ -45,7 +70,7 @@ export default class AudioScrubber extends Component {
     });
   };
 
-  touchEnd = (e) => {
+  touchEnd = () => {
     const percent = this.state.lastPercent;
 
     if (typeof percent === "number") {
@@ -69,12 +94,11 @@ export default class AudioScrubber extends Component {
     const min = targetElement.offsetParent.offsetLeft;
     const range = targetElement.offsetWidth;
     const offsetClicked = clickedX - min;
-    let percentClicked = offsetClicked / range * 100;
+    let percentClicked = (offsetClicked / range) * 100;
 
     if (percentClicked > 100) {
       percentClicked = 100;
-    }
-    else if (percentClicked < 0) {
+    } else if (percentClicked < 0) {
       percentClicked = 0;
     }
 
@@ -83,47 +107,13 @@ export default class AudioScrubber extends Component {
 
   seek = (percentClicked) => {
     if (percentClicked > 100) {
-      percentClicked = 100;
-    }
-    else if (percentClicked < 0) {
-      percentClicked = 0;
+      percentClicked = 100; // eslint-disable-line
+    } else if (percentClicked < 0) {
+      percentClicked = 0; // eslint-disable-line
     }
 
     this.props.seek(percentClicked);
   }
-
-  getTertiaryBackgroundColor = (dark) => {
-    return dark ? { backgroundColor: "rgba(255,255,255,.2)" } : { backgroundColor: "rgba(0,0,0,.2)" };
-  };
-
-  getTertiaryTextColor = (dark) => {
-    return dark ? { color: "rgba(255,255,255,.5)" } : { color: "rgba(0,0,0,.5)" };
-  };
-
-  getSecondayBackgroundClass = (dark) => {
-    return dark ? "background--dark-secondary" : "background--light-secondary";
-  };
-
-  getPrimaryBackgroundClass = (dark) => {
-    return dark ? "background--dark-primary" : "background--light-primary";
-  };
-
-  getTertiaryTextClass = (dark) => {
-    return dark ? "text-dark-tertiary" : "text-light-tertiary";
-  };
-
-  getTrackDuration = () => {
-    return this.props.playing.track.duration;
-  };
-
-  getTrackDuration = () => {
-    return this.props.playing.track.duration;
-  };
-
-  getCurrentTime = () => {
-    const { time } = this.props;
-    return time;
-  };
 
   render() {
     const { isLight } = this.props;
@@ -157,14 +147,14 @@ export default class AudioScrubber extends Component {
             style={this.getTertiaryBackgroundColor(!isLight)}
           />
           <div
-            className={css(Styles["play-bar--active"]) + " floating--right"}
+            className={`${css(Styles["play-bar--active"])} floating--right`}
             style={this.scrubStyle()}
           >
             <div
-              className={css(Styles["play-bar"]) + " " + "rounded " + this.getPrimaryBackgroundClass(isLight)}
+              className={`${css(Styles["play-bar"])} rounded ${this.getPrimaryBackgroundClass(isLight)}`}
             />
             <button
-              className={css(Styles["scrub-dot"]) + " plain floating__item round " + this.getPrimaryBackgroundClass(isLight)}
+              className={`${css(Styles["scrub-dot"])} plain floating__item round ${this.getPrimaryBackgroundClass(isLight)}`}
             />
           </div>
           <div
