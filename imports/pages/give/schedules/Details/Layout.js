@@ -19,7 +19,7 @@ export default class Layout extends Component {
   }
 
   formatDate = (date) => {
-    return Moment(new Date(date)).format("MMM D, YYYY");
+    return Moment(new Date(date)).add(4, "hours").format("MMM D, YYYY");
   }
 
   monentize = (value, fixed) => {
