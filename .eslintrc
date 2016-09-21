@@ -17,7 +17,8 @@
     "hockeyapp": true,
     "google": true,
     "serverWatch": true,
-    "Raven": true
+    "Raven": true,
+    "FastRender": true
   },
   "rules": {
     "quotes": [2, "double"],
