@@ -96,7 +96,9 @@ const transactions = () => {
           ...{ Guid: makeNewGuid() },
         };
 
-        const FinancialPaymentDetailId = api.post.sync("FinancialPaymentDetails", FinancialPaymentDetail);
+        const FinancialPaymentDetailId = api.post.sync(
+          "FinancialPaymentDetails", FinancialPaymentDetail
+        );
 
         if (FinancialPaymentDetailId.status) return;
 
@@ -140,7 +142,9 @@ const transactions = () => {
             ...{ Guid: makeNewGuid() },
           };
 
-          const SecondFinancialPaymentDetailId = api.post.sync("FinancialPaymentDetails", SecondFinancialPaymentDetail);
+          const SecondFinancialPaymentDetailId = api.post.sync(
+            "FinancialPaymentDetails", SecondFinancialPaymentDetail
+          );
 
           if (SecondFinancialPaymentDetailId.status) return;
 
