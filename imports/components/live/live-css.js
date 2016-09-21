@@ -20,7 +20,7 @@ const animation = {
 };
 
 const phaders = {
-  "from": {
+  from: {
     opacity: 0,
   },
 };
