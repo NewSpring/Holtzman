@@ -36,6 +36,7 @@ Regex.addRegex = (name, test, validate) => {
 */
 // such a long regex
 
+// eslint-disable-next-line
 for (const name in defaultRegex) {
   const regex = defaultRegex[name];
   Regex.addRegex(name, regex, true);
