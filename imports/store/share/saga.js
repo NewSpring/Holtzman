@@ -9,6 +9,7 @@ function* shareAction() {
   const { share } = yield select();
   const msg = {};
 
+  // eslint-disable-next-line
   for (const key in share.content) {
     if (share.content[key] != null) {
       msg[key] = share.content[key];
