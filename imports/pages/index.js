@@ -3,6 +3,7 @@ import Give from "./give";
 import Groups from "./groups";
 import Celebrate from "./celebrate";
 import Profile from "./profile";
+import Signup from "./signup";
 
 if (process.env.NATIVE) {
   import Articles from "./articles";
@@ -41,7 +42,7 @@ if (process.env.NATIVE) {
   );
 }
 
-Routes = Routes.concat(Util.Routes);
+Routes = Routes.concat(Signup.Routes, Util.Routes);
 
 export {
   Routes,
