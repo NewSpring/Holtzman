@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+import { PropTypes } from "react";
 
 import Forms from "../../components/forms";
 
@@ -64,6 +66,11 @@ const Remind = ({ onSubmit, back }) => {
 
     </div>
   );
+};
+
+Remind.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  back: PropTypes.func.isRequired,
 };
 
 export default Remind;
