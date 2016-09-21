@@ -60,8 +60,8 @@ Layout.propTypes = {
   photo: PropTypes.string.isRequired,
   person: PropTypes.object.isRequired,
   children: PropTypes.object.isRequired,
-  mobile: PropTypes.boolean.isRequired,
-  onUpload: PropTypes.function.isRequired,
+  mobile: PropTypes.bool.isRequired,
+  onUpload: PropTypes.func.isRequired,
 };
 
 export default Layout;

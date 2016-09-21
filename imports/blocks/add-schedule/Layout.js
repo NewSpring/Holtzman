@@ -26,6 +26,7 @@ export default class Layout extends Component {
   }
 
   render() {
+    let { total } = this.props;
     const {
       schedules,
       setFrequency,
@@ -34,13 +35,14 @@ export default class Layout extends Component {
       state,
       save,
       format,
-      total,
       saveDate,
       existing,
       ready,
     } = this.props;
 
-    total || (total = 0); // eslint-disable-line
+    if (!total) {
+      total = 0;
+    }
 
     let prefillFund = accounts[0].value;
     if (existing && existing.details && existing.details.length && existing.details[0].account) {

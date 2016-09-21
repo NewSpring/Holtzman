@@ -14,7 +14,8 @@ const step2 = (purchaseData, method, callback) => {
       "api-key": Meteor.settings.nmi,
       "redirect-url": url,
       "order-description": "Online contributions from Apollos",
-      "order-id": `apollos_${Date.now()}_${Math.ceil(Math.random() * 100000)}` || purchaseData.orderId,
+      "order-id": `apollos_${Date.now()}_${Math.ceil(Math.random() * 100000)}` ||
+        purchaseData.orderId,
     },
     ...purchaseData },
   };
@@ -36,6 +37,7 @@ const step2 = (purchaseData, method, callback) => {
   function timeout(ms, promise) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        // eslint-disable-next-line max-len
         reject(new Error("The request to our payment process took longer than expected. For your safety we have cancelled this action. You were not charged and should be able to try again!"));
       }, ms);
       promise.then(resolve, reject);

@@ -38,7 +38,7 @@ const mapQueriesToProps = () => ({
 class Template extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
     data: {
       person: PropTypes.object.isRequired,
     },
@@ -72,7 +72,7 @@ class Template extends Component {
       .then((response) => (response.json()))
       .then((id) => {
         avatar(id, () => {
-          updateUser(Meteor.userId(), this.props.dispatch);
+          updateUser(Meteor.userId(), this.props.dispatch); // eslint-disable-line
         });
       });
 
@@ -82,6 +82,7 @@ class Template extends Component {
       });
     };
 
+    // eslint-disable-next-line
     for (const file in files) {
       const reader = new FileReader();
 

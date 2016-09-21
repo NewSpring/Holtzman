@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
@@ -62,6 +62,14 @@ const mapStateToProps = state => ({ paging: state.paging });
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: {
+      content: PropTypes.object.isRequired,
+      refetch: PropTypes.func.isRequired,
+    },
+  }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));

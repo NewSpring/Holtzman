@@ -122,19 +122,26 @@ const ScheduledTransactions = () => {
           delete ScheduledTransaction.Id;
           delete ScheduledTransaction.Guid;
 
-          const response = api.patch.sync(`FinancialScheduledTransactions/${ScheduledTransactionId}`, ScheduledTransaction);
+          const response = api.patch.sync(
+            `FinancialScheduledTransactions/${ScheduledTransactionId}`, ScheduledTransaction
+          );
           if (response.statusText) {
             ScheduledTransactionId = response;
           } else {
             // Delete all schedule transaction details associated with this account
             // since new deatils were generated
-            const details = api.get.sync(`FinancialScheduledTransactionDetails?$filter=ScheduledTransactionId eq ${ScheduledTransactionId}`);
+            const details = api.get.sync(
+              // eslint-disable-next-line max-len
+              `FinancialScheduledTransactionDetails?$filter=ScheduledTransactionId eq ${ScheduledTransactionId}`
+            );
             for (const oldSchedule of details) {
               api.delete.sync(`FinancialScheduledTransactionDetails/${oldSchedule.Id}`);
             }
           }
         } else {
-          ScheduledTransactionId = api.post.sync("FinancialScheduledTransactions", ScheduledTransaction);
+          ScheduledTransactionId = api.post.sync(
+            "FinancialScheduledTransactions", ScheduledTransaction
+          );
         }
 
         if (ScheduledTransactionId.status) return;
@@ -162,7 +169,9 @@ const ScheduledTransactions = () => {
             ...{ Guid: makeNewGuid() },
           };
 
-          const SecondFinancialPaymentDetailId = api.post.sync("FinancialPaymentDetails", SecondFinancialPaymentDetail);
+          const SecondFinancialPaymentDetailId = api.post.sync(
+            "FinancialPaymentDetails", SecondFinancialPaymentDetail
+          );
 
           if (SecondFinancialPaymentDetailId.status) return;
 

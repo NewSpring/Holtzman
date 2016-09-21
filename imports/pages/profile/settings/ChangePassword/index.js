@@ -12,7 +12,7 @@ import Layout from "./Layout";
 export default class ChangePassword extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
   }
 
   state = {

@@ -15,7 +15,11 @@ const mapQueriesToProps = ({ ownProps }) => ({
   entries: {
     query: gql`
       query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
-        entries: taggedContent(tagName: $tagName, limit: $limit, includeChannels: $includeChannels) {
+        entries: taggedContent(
+          tagName: $tagName,
+          limit: $limit,
+          includeChannels: $includeChannels
+        ) {
           entryId: id
           title
           channelName
@@ -67,6 +71,14 @@ const mapQueriesToProps = ({ ownProps }) => ({
 @connect({ mapQueriesToProps })
 export default class Details extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: {
+      transaction: PropTypes.object.isRequired,
+    },
+    entries: PropTypes.object.isRequired,
+  }
+
   state = {
     isActive: true,
     removed: null,
@@ -92,9 +104,9 @@ export default class Details extends Component {
         const { id, gateway } = this.props.data.transaction;
 
         this.setState({ isActive: false, removed: id });
-        Meteor.call("give/schedule/cancel", { id, gateway }, (err, response) => {
-          console.log(err, response);
-          console.log(id, gateway);
+        Meteor.call("give/schedule/cancel", { id, gateway }, () => {
+          // console.log(err, response);
+          // console.log(id, gateway);
         });
       },
     }));
@@ -103,7 +115,9 @@ export default class Details extends Component {
   render() {
     let complete = false;
     let { transaction } = this.props.data;
-    transaction || (transaction = false);
+    if (!transaction) {
+      transaction = false;
+    }
     if (new Date(transaction.next) < new Date() && transaction.schedule.value === "One-Time") {
       complete = true;
     }

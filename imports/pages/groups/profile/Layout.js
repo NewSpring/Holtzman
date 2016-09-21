@@ -268,7 +268,7 @@ Layout.propTypes = {
   group: PropTypes.object.isRequired,
   leaders: PropTypes.array.isRequired,
   isLeader: PropTypes.bool.isRequired,
-  join: PropTypes.function.isRequired,
+  join: PropTypes.func.isRequired,
 };
 
 export default Layout;

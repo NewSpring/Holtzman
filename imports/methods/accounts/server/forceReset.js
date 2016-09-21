@@ -2,7 +2,7 @@
 import { api } from "../../../util/rock";
 
 Meteor.methods({
-  "rock/accounts/forceReset": function (Username) {
+  "rock/accounts/forceReset": function forceReset(Username) {
     check(Username, String);
 
     // special case for AD lookup

@@ -37,7 +37,7 @@ const mapStateToProps = state => ({ authorized: state.accounts.authorized });
 export default class Home extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
     data: {
       person: PropTypes.object.isRequired,
     },
@@ -88,6 +88,7 @@ export default class Home extends Component {
       .then((response) => (response.json()))
       .then((id) => {
         avatar(id, () => {
+          // eslint-disable-next-line
           updateUser(Meteor.userId(), this.props.dispatch);
         });
       });
@@ -98,6 +99,7 @@ export default class Home extends Component {
       });
     };
 
+    // eslint-disable-next-line
     for (const file in files) {
       const reader = new FileReader();
 
@@ -129,7 +131,9 @@ export default class Home extends Component {
 
   render() {
     let { person } = this.props.data;
-    person || (person = {});
+    if (!person) {
+      person = {};
+    }
 
     // if (this.props.data.loading) return <Loading /> // XXX
     let { photo } = person;

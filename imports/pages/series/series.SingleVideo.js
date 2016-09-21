@@ -108,9 +108,9 @@ const mapStateToProps = state => ({ live: state.live });
 export default class SeriesSingleVideo extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.function.isRequired,
+    dispatch: PropTypes.func.isRequired,
     live: {
-      live: PropTypes.boolean.isRequired,
+      live: PropTypes.bool.isRequired,
     },
     currentSermon: {
       content: PropTypes.object.isRequired,

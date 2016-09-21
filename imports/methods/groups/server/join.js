@@ -23,7 +23,9 @@ Meteor.methods({
 
     // first time this is used, try to load the email in memory
     if (!GROUP_MEMBER_REQUEST_EMAIL && EMAIL_EXISTS) {
-      GROUP_MEMBER_REQUEST_EMAIL = api.get.sync("SystemEmails?$filter=Title eq 'Group Member Request'");
+      GROUP_MEMBER_REQUEST_EMAIL = api.get.sync(
+        "SystemEmails?$filter=Title eq 'Group Member Request'"
+      );
       if (!GROUP_MEMBER_REQUEST_EMAIL.length) {
         EMAIL_EXISTS = false;
       } else {
@@ -46,7 +48,9 @@ Meteor.methods({
     if (GroupMemberId.statusText) {
       // it could be that you are already a member of this group
       // lets check that
-      const inGroup = api.get.sync(`GroupMembers?$filter=GroupId eq ${GroupId} and PersonId eq ${PersonId}`);
+      const inGroup = api.get.sync(
+        `GroupMembers?$filter=GroupId eq ${GroupId} and PersonId eq ${PersonId}`
+      );
       if (inGroup.length) {
         throw new Meteor.Error("You are already a member of this group");
       }

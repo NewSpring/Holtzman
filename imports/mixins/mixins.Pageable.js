@@ -3,12 +3,12 @@ import { paging as pagingActions } from "../store";
 const Pageable = {
 
   componentDidMount() {
-    this._bindPageOnScroll = this._pageOnScroll.bind(this);
-    window.addEventListener("scroll", this._bindPageOnScroll);
+    this._bindPageOnScroll = this._pageOnScroll.bind(this); // eslint-disable-line
+    window.addEventListener("scroll", this._bindPageOnScroll); // eslint-disable-line
   },
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this._bindPageOnScroll);
+    window.removeEventListener("scroll", this._bindPageOnScroll); // eslint-disable-line
     this.props.dispatch(pagingActions.reset());
   },
 
