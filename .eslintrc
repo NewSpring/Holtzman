@@ -21,7 +21,8 @@
     "FastRender": true,
     "RoutePolicy": true,
     "StatusBar": true,
-    "OO": true
+    "OO": true,
+    "RemoteCommand": true
   },
   "rules": {
     "quotes": [2, "double"],

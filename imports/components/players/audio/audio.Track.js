@@ -45,7 +45,7 @@ export default class AudioTrack extends Component {
       "one-whole",
     ];
 
-    this.props.track.file ?
+    this.props.track.file ? // eslint-disable-line
       classes.push("text-dark-primary") :
       classes.push("text-light-tertiary");
 
@@ -60,7 +60,7 @@ export default class AudioTrack extends Component {
       "text-right",
     ];
 
-    this.props.track.file ?
+    this.props.track.file ? // eslint-disable-line
       classes.push("text-dark-tertiary") :
       classes.push("text-light-tertiary");
 
