@@ -12,6 +12,11 @@ const DefaultWrapper = props => (
   <section className={props.imageclasses.join(" ")}>{props.children}</section>
 );
 
+DefaultWrapper.propTypes = {
+  imageclasses: PropTypes.object,
+  children: PropTypes.object,
+};
+
 export default class Right extends Component {
 
   static propTypes = {
@@ -21,6 +26,15 @@ export default class Right extends Component {
     width: PropTypes.string,
     background: PropTypes.string,
     styles: PropTypes.object,
+    link: PropTypes.string,
+    outsideRatio: PropTypes.string,
+    aspect: PropTypes.string,
+    children: PropTypes.object,
+    ratioClasses: PropTypes.object,
+    blur: PropTypes.bool,
+    mobile: PropTypes.bool,
+    backgroundFill: PropTypes.bool,
+    ratioTheme: PropTypes.object,
   }
 
   shouldComponentUpdate(nextProps) {
@@ -61,7 +75,7 @@ export default class Right extends Component {
       classes.push("five-twelfths@lap-and-up");
     }
 
-    if (this.props.background && this.props.backgroundFill != false) {
+    if (this.props.background && this.props.backgroundFill !== false) {
       classes.push("background--fill");
     }
 
@@ -124,27 +138,31 @@ export default class Right extends Component {
           if (this.props.outsideRatio) {
             return this.props.outsideRatio();
           }
+          return null;
         })()}
         {(() => {
           let styles = this.styles();
 
-          styles = { ...styles, ...{
-            WebkitFilter: "blur(10px)",
-            filter: "blur(10px)",
-          } };
+          styles = {
+            ...styles,
+            ...{
+              WebkitFilter: "blur(10px)",
+              filter: "blur(10px)",
+            },
+          };
 
           if (this.props.blur) {
             return (
               <div className="locked-sides locked-ends background--fill" style={styles} />
             );
           }
+          return null;
         })()}
       </div>
     );
   }
 
   render() {
-    const { blur } = this.props;
     let Wrapper = DefaultWrapper;
     if (this.props.background) {
       Wrapper = ImageLoader;
@@ -184,7 +202,7 @@ export default class Right extends Component {
         src={this.props.background}
         preloader={this.preloader}
         renderElement={this.renderElement}
-        imageclasses={this.props.theme && this.props.theme.split(" ") || this.layoutClasses()}
+        imageclasses={(this.props.theme && this.props.theme.split(" ")) || this.layoutClasses()}
         style={this.props.styles || this.styles()}
       >
         {this.renderInsideRatio()}

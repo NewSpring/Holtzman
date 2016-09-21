@@ -1,12 +1,12 @@
 import { StyleSheet } from "aphrodite";
 
 export default StyleSheet.create({
-  "panel": {
+  panel: {
     "@media screen and (min-width: 481px) and (max-width: 768px)": {
       position: "relative",
     },
   },
-  "offset": {
+  offset: {
     "@media screen and (min-width: 769px)": {
       marginLeft: "80px",
     },
