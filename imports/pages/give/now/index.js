@@ -1,7 +1,7 @@
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
-import { createContainer } from "../../../blocks/meteor/react-meteor-data";
+import createContainer from "../../../blocks/meteor/react-meteor-data";
 import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
