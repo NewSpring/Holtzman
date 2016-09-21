@@ -12,7 +12,7 @@
 
 */
 import reducer from "./reducer";
-import saga from "./saga";
+import "./saga";
 import { addReducer } from "../utilities";
 
 addReducer({
