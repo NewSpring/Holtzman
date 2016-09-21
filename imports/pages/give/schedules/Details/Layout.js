@@ -25,7 +25,7 @@ export default class Layout extends Component {
   }
 
   formatDate = (date) => (
-    Moment(new Date(date)).add(4, "hours").format("MMM D, YYYY");
+    moment(new Date(date)).add(4, "hours").format("MMM D, YYYY");
   )
 
   monentize = (value, fixed) => {
