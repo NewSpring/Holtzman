@@ -1,7 +1,7 @@
 import { PropTypes } from "react";
 import { WindowLoading, Spinner } from "../loading";
 
-const Loading = ({ msg, style }, context) => (
+const Loading = ({ msg, style }) => (
   <WindowLoading styles={style} classes={["background--primary"]}>
     <div className="locked-top locked-bottom one-whole floating">
       <div className="floating__item">
@@ -12,8 +12,9 @@ const Loading = ({ msg, style }, context) => (
   </WindowLoading>
 );
 
-Loading.contextTypes = {
-  shouldAnimate: PropTypes.bool,
+Loading.propTypes = {
+  msg: PropTypes.string.isRequired,
+  style: PropTypes.object,
 };
 
 export default Loading;
