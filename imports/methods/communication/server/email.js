@@ -97,7 +97,9 @@ Meteor.methods({
 
     */
     const GlobalAttribute = {};
+    // eslint-disable-next-line max-len
     const Globals = api.get.sync("AttributeValues?$filter=Attribute/EntityTypeId eq null&$expand=Attribute&$select=Attribute/Key,Value");
+    // eslint-disable-next-line max-len
     const Defaults = api.get.sync("Attributes?$filter=EntityTypeId eq null&$select=DefaultValue,Key");
 
     for (const d of Defaults) { GlobalAttribute[d.Key] = d.DefaultValue; }
@@ -158,7 +160,9 @@ Meteor.methods({
             Guid: makeNewGuid(),
           };
 
-          const CommunicationRecipientId = api.post.sync("CommunicationRecipients", CommunicationRecipient);
+          const CommunicationRecipientId = api.post.sync(
+            "CommunicationRecipients", CommunicationRecipient
+          );
 
           ids.push(CommunicationRecipientId);
         }
