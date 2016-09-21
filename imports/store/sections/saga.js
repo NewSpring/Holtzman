@@ -1,5 +1,3 @@
-/* global __meteor_runtime_config__ */
-
 import "regenerator-runtime/runtime";
 
 import { fork, put } from "redux-saga/effects";
@@ -104,6 +102,7 @@ function* getSectionsData() {
   const filteredItems = {};
 
   // parse the results and only get a single usable image
+  // eslint-disable-next-line
   for (const item in data) {
     const image = extractImage(data[item][0]);
     filteredItems[item] = image;
@@ -111,13 +110,16 @@ function* getSectionsData() {
 
   function bindForeignImages(sections) {
     // remap the images of the section panel
+    // eslint-disable-next-line
     for (const section in sections) {
       const name = sections[section].text.toLowerCase();
       if (filteredItems[name]) {
+        // eslint-disable-next-line
         sections[section].image = filteredItems[name];
       }
 
       // ensure protocol relative
+      // eslint-disable-next-line
       sections[section].image = sections[section].image.replace(/^http:|^https:/i, "");
 
       // pre download images for super speed
@@ -133,6 +135,7 @@ function* getSectionsData() {
   }
 
   function fixInternaLinks(sections) {
+    // eslint-disable-next-line
     for (const section in sections) {
       let url = sections[section].link;
       const regex = new RegExp(__meteor_runtime_config__.ROOT_URL, "gmi");
@@ -145,6 +148,7 @@ function* getSectionsData() {
         url = `//newspring.cc${url}`;
       }
 
+      // eslint-disable-next-line
       sections[section].link = url;
 
       fixInternaLinks(sections[section].children);
