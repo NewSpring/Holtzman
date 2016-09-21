@@ -7,7 +7,6 @@ import Headerable from "../../mixins/mixins.Header";
 import modal from "../../store/modal";
 
 import {
-  sections as sectionActions,
   nav as navActions,
 } from "../../store";
 
@@ -18,6 +17,11 @@ const map = state => ({ sections: state.sections });
 @connect(map)
 @ReactMixin.decorate(Headerable)
 export default class SectionsContainer extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    sections: PropTypes.object.isRequired,
+  }
 
   componentDidMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
@@ -39,16 +43,14 @@ export default class SectionsContainer extends Component {
     this.unlockHeader();
   }
 
-  hide = () => {
-    return this.props.dispatch(modal.hide());
-  }
+  hide = () => (this.props.dispatch(modal.hide()))
 
   render() {
-    const count = 0;
     const { content } = this.props.sections;
 
     const items = [];
 
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const section in content) {
       items.push(content[section]);
     }
