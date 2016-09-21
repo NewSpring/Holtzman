@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
-import { createContainer } from "../../blocks/meteor/react-meteor-data";
+import createContainer from "../../blocks/meteor/react-meteor-data";
 import Likes from "../../database/collections/likes";
 import Loading from "../../components/loading";
 
