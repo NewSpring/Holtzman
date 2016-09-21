@@ -58,13 +58,13 @@ export default class Map extends Component {
       const markers = this.props.markers.filter(x =>
         (x.latitude && x.longitude)
       ).map(marker => (
-        new google.maps.LatLng(marker.latitude, marker.longitude) // eslint-disable-line
+        new google.maps.LatLng(marker.latitude, marker.longitude)
       ));
 
       if (markers.length && markers.length > 1) {
         this.map.fitBounds(markers.reduce((bounds, marker) => { // eslint-disable-line
           return bounds.extend(marker);
-        }, new google.maps.LatLngBounds())); // eslint-disable-line
+        }, new google.maps.LatLngBounds()));
       }
     }
   }
@@ -154,13 +154,13 @@ export default class Map extends Component {
               const markers = this.props.markers
                 .filter(x => x.latitude && x.longitude)
                 .map(marker => (
-                  new google.maps.LatLng(marker.latitude, marker.longitude) // eslint-disable-line
+                  new google.maps.LatLng(marker.latitude, marker.longitude)
                 ));
 
               if (markers.length > 1) {
                 this.map.fitBounds(markers.reduce((bounds, marker) => { // eslint-disable-line
                   return bounds.extend(marker);
-                }, new google.maps.LatLngBounds())); // eslint-disable-line
+                }, new google.maps.LatLngBounds()));
               }
             }}
           >
