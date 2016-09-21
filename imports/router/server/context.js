@@ -1,4 +1,5 @@
 // stolen from https://github.com/kadirahq/flow-router/blob/ssr/server/ssr_context.js
+/* eslint-disable no-underscore-dangle */
 export default class SsrContext {
   constructor() {
     this._collections = {};
