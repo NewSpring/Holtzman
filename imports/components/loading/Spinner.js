@@ -1,4 +1,4 @@
-import { Component, PropTypes } from "react";
+import { PropTypes } from "react";
 import { css } from "aphrodite";
 import Styles from "./spinner-css";
 
@@ -20,5 +20,14 @@ const Spinner = ({ theme, styles, classes }) => (
     style={styles || {}}
   />
 );
+
+Spinner.propTypes = {
+  theme: PropTypes.string,
+  styles: PropTypes.object, // eslint-disable-line
+  classes: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+  ]),
+};
 
 export default Spinner;

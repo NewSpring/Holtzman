@@ -1,10 +1,10 @@
 import { StyleSheet } from "aphrodite";
 
 const keyframes = {
-  "from": {
+  from: {
     backgroundPosition: "100%",
   },
-  "to": {
+  to: {
     backgroundPosition: "-100%",
   },
 };
