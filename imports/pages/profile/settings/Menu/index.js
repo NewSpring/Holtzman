@@ -104,7 +104,7 @@ export default class Menu extends Component {
       body: data,
     })
       .then(response => (response.json()))
-      .then(id => {
+      .then((id) => {
         avatar(id, () => {
           this.props.data.refetch()
             .then(() => {

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
 import moment from "moment";
 import { Link } from "react-router";
@@ -24,7 +25,7 @@ export default class Layout extends Component {
     loadingEntries: PropTypes.bool,
   }
 
-  formatDate = (date) => (
+  formatDate = date => (
     moment(new Date(date)).format("MMM D, YYYY")
   )
 
@@ -47,7 +48,7 @@ export default class Layout extends Component {
     return `$${strVal}`;
   }
 
-  capitalizeFirstLetter = (string) => (
+  capitalizeFirstLetter = string => (
     string.charAt(0).toUpperCase() + string.slice(1)
   )
 

@@ -1,6 +1,6 @@
 /* eslint-disable react/prefer-stateless-function */
 import Meteor from "meteor/meteor";
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import {
@@ -34,6 +34,13 @@ if (process.env.NATIVE) {
   @scriptLoader(...scripts)
   @connect(state => ({ audio: state.audio, pathname: state.routing.location.pathname }))
   class AppGlobal extends Component {
+
+    static propTypes = {
+      pathname: PropTypes.string.isRequired,
+      audio: PropTypes.object.isRequired,
+      children: PropTypes.object.isRequired,
+    }
+
     render() {
       if (this.props.pathname === "/welcome") {
         return <div>{this.props.children}</div>;

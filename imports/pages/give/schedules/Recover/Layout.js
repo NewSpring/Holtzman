@@ -51,7 +51,7 @@ export default class Layout extends Component {
     });
   }
 
-  formatDate = (date) => (
+  formatDate = date => (
     moment(date).format("MMM D, YYYY")
   )
 
@@ -74,7 +74,7 @@ export default class Layout extends Component {
     return `$${strVal}`;
   }
 
-  capitalizeFirstLetter = (string) => (
+  capitalizeFirstLetter = string => (
     string.charAt(0).toUpperCase() + string.slice(1)
   )
 
@@ -165,7 +165,7 @@ export default class Layout extends Component {
 
                     */}
                     {recoverableSchedules.filter(x => !x.gateway).map((schedule, i) => {
-                      count++;
+                      count += 1;
                       if (!schedule.details || !schedule.details[0].account) {
                         return null;
                       }

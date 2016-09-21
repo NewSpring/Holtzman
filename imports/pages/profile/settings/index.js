@@ -69,7 +69,7 @@ class Template extends Component {
       headers: { [tokenName]: token },
       body: data,
     })
-      .then((response) => (response.json()))
+      .then(response => (response.json()))
       .then((id) => {
         avatar(id, () => {
           updateUser(Meteor.userId(), this.props.dispatch); // eslint-disable-line
@@ -88,7 +88,7 @@ class Template extends Component {
 
       // Closure to capture the file information.
       reader.onload = (() => (
-        (event) => (
+        event => (
           save(event.target.result) // Render thumbnail
         )
       ))(files[file]);

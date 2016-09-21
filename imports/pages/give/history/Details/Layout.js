@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
 import moment from "moment";
 import { Link } from "react-router";
@@ -17,7 +18,7 @@ export default class Layout extends Component {
     transaction: PropTypes.object.isRequired,
   }
 
-  formatDate = (date) => (
+  formatDate = date => (
     moment(new Date(date)).format("MMM D, YYYY")
   )
 
@@ -167,70 +168,70 @@ export default class Layout extends Component {
             <h4 className="soft soft-double-ends text-center@lap-and-up flush-bottom">
               Recent Articles About Giving
             </h4>
-              {(() => {
-                if (loadingEntries) {
-                  return <div className="one-whole soft text-center"><Spinner /></div>;
-                }
-                return (
-                  <div className="grid">
-                    {entries && entries.map((entry, key) => (
-                      <div
-                        key={key}
-                        className={
-                          "grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
-                        }
+            {(() => {
+              if (loadingEntries) {
+                return <div className="one-whole soft text-center"><Spinner /></div>;
+              }
+              return (
+                <div className="grid">
+                  {entries && entries.map((entry, key) => (
+                    <div
+                      key={key}
+                      className={
+                        "grid__item one-whole push-half-bottom push-bottom@portable hard-bottom"
+                      }
+                    >
+                      <SideBySide
+                        classes={["push-bottom@lap-and-up"]}
+                        images={entry.content.images}
+                        defaultImage={entry.content.images[0].url}
                       >
-                        <SideBySide
-                          classes={["push-bottom@lap-and-up"]}
-                          images={entry.content.images}
-                          defaultImage={entry.content.images[0].url}
-                        >
-                          <h4 className="push-half-top@portable push-top@anchored">
-                            {entry.title}
-                          </h4>
+                        <h4 className="push-half-top@portable push-top@anchored">
+                          {entry.title}
+                        </h4>
 
-                          <p><small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} /></p>
-                          {(() => {
-                            if (process.env.WEB) {
-                              return (
-                                <a
-                                  rel="noopener noreferrer"
-                                  target="_blank"
-                                  href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
-                                  className={
-                                    "h6 btn--small btn--dark-tertiary " +
-                                    "soft-sides@portable one-whole@handheld"
-                                  }
-                                >
-                                  Read more
-                                </a>
-                              );
-                            }
+                        <p><small dangerouslySetInnerHTML={{ __html: entry.meta.summary }} /></p>
+                        {(() => {
+                          if (process.env.WEB) {
+                            return (
+                              <a
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                href={`https://newspring.cc/articles/${entry.meta.urlTitle}`}
+                                className={
+                                  "h6 btn--small btn--dark-tertiary " +
+                                  "soft-sides@portable one-whole@handheld"
+                                }
+                              >
+                                Read more
+                              </a>
+                            );
+                          }
 
-                            if (process.env.NATIVE) {
-                              return (
-                                <Link
-                                  to={`/articles/${entry.entryId}`}
-                                  className={
-                                    "h6 btn--small btn--dark-tertiary " +
-                                    "soft-sides@portable one-whole@handheld"
-                                  }
-                                >
-                                  Read more
-                                </Link>
-                              );
-                            }
+                          if (process.env.NATIVE) {
+                            return (
+                              <Link
+                                to={`/articles/${entry.entryId}`}
+                                className={
+                                  "h6 btn--small btn--dark-tertiary " +
+                                  "soft-sides@portable one-whole@handheld"
+                                }
+                              >
+                                Read more
+                              </Link>
+                            );
+                          }
 
-                            return null;
-                          })()}
+                          return null;
+                        })()}
 
 
-                        </SideBySide>
-                      </div>
-                    ))}
-                  </div>
-                );
-              })()}
+                      </SideBySide>
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
 
           </div>
 

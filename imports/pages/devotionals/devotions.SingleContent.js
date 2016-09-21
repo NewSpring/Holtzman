@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
 
 import scriptures from "../../util/scriptures";
