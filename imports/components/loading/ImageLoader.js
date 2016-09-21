@@ -1,9 +1,8 @@
 import { Component, PropTypes } from "react";
 import ReactDOM from "react-dom";
-const { span } = React.DOM;
-
-
 import Debouncer from "./../../util/debounce";
+
+const { span } = ReactDOM;
 
 const Status = {
   PENDING: "pending",
@@ -17,12 +16,16 @@ export default class ImageLoader extends Component {
   static propTypes = {
     wrapper: PropTypes.func,
     className: PropTypes.string,
-    style: PropTypes.object,
+    style: PropTypes.object, // eslint-disable-line
     preloader: PropTypes.func,
     src: PropTypes.string,
     onLoad: PropTypes.func,
     onError: PropTypes.func,
-    imgProps: PropTypes.object,
+    imgProps: PropTypes.object, // eslint-disable-line
+    force: PropTypes.bool,
+    renderElement: PropTypes.func,
+    children: PropTypes.any, // eslint-disable-line
+    imgProps: PropTypes.array, // eslint-disable-line
   };
 
   static defaultProps = {
@@ -81,7 +84,7 @@ export default class ImageLoader extends Component {
 
 
     // lazy load only if in view on client
-    let el = ReactDOM.findDOMNode(this.refs.loader);
+    let el = this.node;
     el = el.children[0];
 
     const isElementInView = (e) => {
@@ -160,13 +163,14 @@ export default class ImageLoader extends Component {
     const { src, imgProps } = this.props;
     const props = { src };
 
-    for (const k in imgProps) {
-      if (imgProps.hasOwnProperty(k)) {
+    imgProps.map((k) => {
+      if ({}.hasOwnProperty.call(imgProps, "k")) {
         props[k] = imgProps[k];
       }
-    }
+      return undefined;
+    });
 
-    return <img {...props} />;
+    return <img {...props} role="presentation" />;
   }
 
   render() {
@@ -205,6 +209,6 @@ export default class ImageLoader extends Component {
         break;
     }
 
-    return <span ref="loader">{this.props.wrapper(...wrapperArgs)}</span>;
+    return <span ref={node => (this.node = node)}>{this.props.wrapper(...wrapperArgs)}</span>;
   }
 }

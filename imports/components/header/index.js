@@ -21,14 +21,28 @@ import Live from "../live";
 }))
 export default class Header extends Component {
 
+  static propTypes = {
+    showSettings: PropTypes.bool,
+    dispatch: PropTypes.func,
+    light: PropTypes.bool,
+    visible: PropTypes.bool,
+    isSearch: PropTypes.bool,
+    color: PropTypes.string,
+    searching: PropTypes.bool,
+    searchSubmit: PropTypes.func,
+    text: PropTypes.string,
+    subText: PropTypes.string,
+  }
+
   showSettings = () => {
     if (this.props.showSettings) {
       return (
-      <Link to="/profile/settings" className="text-light-primary plain soft-half-top soft-half-right overlay__item locked-top locked-right">
-        <i className="icon-settings h4" />
-      </Link>
+        <Link to="/profile/settings" className="text-light-primary plain soft-half-top soft-half-right overlay__item locked-top locked-right">
+          <i className="icon-settings h4" />
+        </Link>
       );
     }
+    return undefined;
   }
 
   cancelSearch = (event) => {
@@ -81,6 +95,7 @@ export default class Header extends Component {
                 </button>
               );
             }
+            return undefined;
           })()}
           {(() => {
             if (this.props.isSearch) {
@@ -94,7 +109,7 @@ export default class Header extends Component {
                     <i className="icon-search locked-left push-half-top text-light-primary" />
                     <input
                       id="search"
-                      ref={ref => this.searchInput = ref}
+                      ref={ref => (this.searchInput = ref)}
                       type="text"
                       name="search"
                       className="h5 text-light-primary"
@@ -109,7 +124,8 @@ export default class Header extends Component {
 
             if (this.props.text === "default" || this.props.text === "NewSpring") {
               return (
-                <h6 className={`flush hard ${text} uppercase one-whole`}
+                <h6
+                  className={`flush hard ${text} uppercase one-whole`}
                   style={{
                     fontWeight: 900,
                     letterSpacing: "1px",
@@ -121,12 +137,15 @@ export default class Header extends Component {
             }
 
             return (
-              <h6 className={`flush-bottom soft-sides ${text}`} style={{
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
-                fontWeight: 700,
-              }}>
+              <h6
+                className={`flush-bottom soft-sides ${text}`}
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  fontWeight: 700,
+                }}
+              >
                 {this.props.text}
                 {this.showSettings()}
               </h6>
@@ -148,17 +167,21 @@ export default class Header extends Component {
                   zIndex: 100,
                 }}
               >
-                <h6 className={`flush-bottom soft-sides ${text}`} style={{
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
-                  fontWeight: "normal",
-                }}>
+                <h6
+                  className={`flush-bottom soft-sides ${text}`}
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    fontWeight: "normal",
+                  }}
+                >
                   {this.props.subText}
                 </h6>
               </div>
             );
           }
+          return undefined;
         })()}
         <Live />
       </div>

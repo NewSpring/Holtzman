@@ -1,5 +1,4 @@
 import { Component, PropTypes } from "react";
-import ReactDOM from "react-dom";
 import { css } from "aphrodite";
 // import ReactSelect from "react-select";
 
@@ -8,6 +7,38 @@ import Label from "./components/Label";
 import SelectClasses from "./select-css";
 
 export default class Select extends Component {
+
+  static propTypes = {
+    defaultValue: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string,
+    ]),
+    status: PropTypes.string,
+    disabled: PropTypes.any, // eslint-disable-line
+    validation: PropTypes.func,
+    errorText: PropTypes.string,
+    theme: PropTypes.string,
+    error: PropTypes.any, // eslint-disable-line
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    children: PropTypes.any, // eslint-disable-line
+    id: PropTypes.string,
+    label: PropTypes.string,
+    name: PropTypes.string,
+    inputClasses: PropTypes.array, // eslint-disable-line
+    hideLabel: PropTypes.bool,
+    autofocus: PropTypes.any, // eslint-disable-line
+    onChange: PropTypes.func,
+    style: PropTypes.object, // eslint-disable-line
+    placeholder: PropTypes.string,
+    selected: PropTypes.any, // eslint-disable-line
+    includeBlank: PropTypes.any, // eslint-disable-line
+    deselect: PropTypes.any, // eslint-disable-line
+    items: PropTypes.array, // eslint-disable-line
+    optionClasses: PropTypes.string,
+  }
 
   state = {
     active: false,
@@ -24,7 +55,7 @@ export default class Select extends Component {
 
   componentDidMount() {
     if (this.props.defaultValue) {
-      const target = ReactDOM.findDOMNode(this.refs["apollos-select"]);
+      const target = this.node;
 
       if (this.props.onChange) {
         this.props.onChange(this.props.defaultValue, target);
@@ -37,10 +68,10 @@ export default class Select extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    if (this.props.defaultValue != nextProps.defaultValue) {
+    if (this.props.defaultValue !== nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue);
       this.setState({ focused: false });
-      const target = ReactDOM.findDOMNode(this.refs["apollos-select"]);
+      const target = this.node;
       this.change({
         value: nextProps.defaultValue,
         id: target.id,
@@ -49,7 +80,7 @@ export default class Select extends Component {
     }
   }
 
-  focus = (event) => {
+  focus = () => { // eslint-disable-line
     this.setState({
       active: true,
       error: false,
@@ -58,15 +89,14 @@ export default class Select extends Component {
   }
 
   setValue = (value) => {
-    const node = ReactDOM.findDOMNode(this.refs["apollos-select"]);
+    const node = this.node;
     node.value = value;
     this.focus();
     // this.change()
   }
 
-  getValue = () => {
-    return ReactDOM.findDOMNode(this.refs["apollos-select"]).value;
-  }
+  getValue = () =>
+    this.node.value;
 
 
   setStatus = (message) => {
@@ -75,11 +105,12 @@ export default class Select extends Component {
 
   disabled = () => {
     if (this.props.disabled) {
-      return disabled;
+      return this.props.disabled;
     }
+    return undefined;
   }
 
-  renderHelpText = (message) => {
+  renderHelpText = () => {
     if ((this.state.error && this.props.errorText) || this.state.status) {
       return (
         <span className="input__status">
@@ -87,11 +118,11 @@ export default class Select extends Component {
         </span>
       );
     }
+    return undefined;
   }
 
   change = (e) => {
-    const { id, value } = e.currentTarget;
-    const target = ReactDOM.findDOMNode(this.refs["apollos-select"]);
+    const { value } = e.currentTarget;
 
     if (this.props.onChange) {
       this.props.onChange(value, e.currentTarget);
@@ -103,7 +134,7 @@ export default class Select extends Component {
   }
 
   validate = () => {
-    const target = ReactDOM.findDOMNode(this.refs["apollos-select"]);
+    const target = this.node;
     const value = target.value;
 
     if (!value) {
@@ -141,7 +172,7 @@ export default class Select extends Component {
 
     if (this.props.selected) { inputclasses.push("input--active"); }
     return (
-      <div className={inputclasses.join(" ") + ` ${css(SelectClasses.select)}`}>
+      <div className={`${inputclasses.join(" ")} ${css(SelectClasses.select)}`}>
         {(() => {
           if (!this.props.hideLabel) {
             return (
@@ -155,10 +186,11 @@ export default class Select extends Component {
               />
             );
           }
+          return undefined;
         })()}
 
         <select
-          ref="apollos-select"
+          ref={node => (this.node = node)}
           id={this.props.id || this.props.label || this.props.name}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label}
@@ -176,6 +208,7 @@ export default class Select extends Component {
                 <option style={{ display: "none" }}>{this.props.placeholder || ""}</option>
               );
             }
+            return undefined;
           })()}
           {(() => {
             if (this.props.deselect) {
@@ -183,18 +216,17 @@ export default class Select extends Component {
                 <option />
               );
             }
+            return undefined;
           })()}
-          {this.props.items.map((option, key) => {
-            return (
-              <option
-                className={this.props.optionClasses}
-                value={option.value || option.label}
-                key={key}
-              >
-                {option.label || option.value}
-              </option>
-            );
-          })}
+          {this.props.items.map((option, key) =>
+            <option
+              className={this.props.optionClasses}
+              value={option.value || option.label}
+              key={key}
+            >
+              {option.label || option.value}
+            </option>
+          )}
         </select>
 
 
