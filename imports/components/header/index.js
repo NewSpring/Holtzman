@@ -21,6 +21,11 @@ import Live from "../live";
 }))
 export default class Header extends Component {
 
+  static propTypes = {
+    showSettings: PropTypes.any, // eslint-disable-line
+
+  }
+
   showSettings = () => {
     if (this.props.showSettings) {
       return (
@@ -29,6 +34,7 @@ export default class Header extends Component {
       </Link>
       );
     }
+    return undefined;
   }
 
   cancelSearch = (event) => {
