@@ -23,7 +23,7 @@ const Header = {
   },
 
   getContent(props) {
-    if (!!this.state.__headerSet) return;
+    if (!!this.state.__headerSet) return; // eslint-disable-line
 
     const item = { ...this.getEntry(props) };
     if (!item) return;
@@ -32,8 +32,7 @@ const Header = {
 
     if (!props.currentSermon) {
       this.setHeaderDetails(item);
-    }
-    else if (props.currentSermon.content && props.series.content) {
+    } else if (props.currentSermon.content && props.series.content) {
       this.setHeaderDetails(item, {
         parentItem: props.series.content,
       });
@@ -67,6 +66,7 @@ const Header = {
     if (props.currentSermon) return "Series";
     if (props.series) return "Series";
     if (props.album) return "Music";
+    return "";
   },
 
   lockHeader(requestee) {
