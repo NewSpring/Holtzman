@@ -39,12 +39,12 @@ export default StyleSheet.create({
     },
   },
 
-  "i": {
+  i: {
     fontSize: "1.4em",
     position: "relative",
   },
 
-  "button": {
+  button: {
     flexGrow: 1,
     position: "relative",
 

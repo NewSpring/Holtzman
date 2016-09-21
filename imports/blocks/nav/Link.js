@@ -1,14 +1,16 @@
 import { Component, PropTypes } from "react";
-import ReactDOM from "react-dom";
 import { css } from "aphrodite";
 
-import { routeActions } from "../../store/routing";
+// import { routeActions } from "../../store/routing";
 import styles from "./nav-css";
 
 export default class NavLink extends Component {
 
   static propTypes = {
     navItem: PropTypes.object.isRequired,
+    handleAction: PropTypes.string,
+    fgColor: PropTypes.string,
+    reset: PropTypes,
   }
 
   linkClasses = () => {
@@ -38,8 +40,6 @@ export default class NavLink extends Component {
   }
 
   containerClasses = () => {
-    const { navItem } = this.props;
-
     const classes = [
       "floating",
       "locked-ends@palm",
@@ -60,13 +60,14 @@ export default class NavLink extends Component {
       return;
     }
 
-    if (navItem.link && (window.location.search || navItem.link !== window.location.pathname)) {
-      function navigate() {
-        return routeActions.push(navItem.link);
-      }
-      this.props.handleAction(navigate);
-      return;
-    }
+    // function navigate() {
+    //   if (navItem.link &&
+    // (window.location.search || navItem.link !== window.location.pathname)) {
+    //     this.props.handleAction(navigate);
+    //     return routeActions.push(navItem.link);
+    //   }
+    //   return null;
+    // }
 
     // XXX this was making the nav jump since its in the body...
     // if (navItem.link && (navItem.link === window.location.pathname)) {
@@ -127,10 +128,15 @@ export default class NavLink extends Component {
               if (navItem.label && process.env.WEB) {
                 return (
                   <h7 className="display-block">
-                    <small className={`text-center ${active ? "text-brand" : "text-light-primary"}`}>{navItem.label}</small>
+                    <small
+                      className={`text-center ${active ? "text-brand" : "text-light-primary"}`}
+                    >
+                      {navItem.label}
+                    </small>
                   </h7>
                 );
               }
+              return null;
             })()}
 
           </div>
