@@ -5,12 +5,10 @@ import gql from "graphql-tag";
 import Authorized from "../../../blocks/authorzied";
 
 import {
-  nav as navActions,
   modal as modalActions,
   header as headerActions,
+  give as giveActions,
 } from "../../../store";
-
-import { give as giveActions } from "../../../store";
 
 import Details from "./Details";
 import Layout from "./Layout";
@@ -78,6 +76,13 @@ const mapStateToProps = store => ({
 @connect({ mapStateToProps, mapQueriesToProps })
 class Template extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    schedules: PropTypes.object.isRequired,
+    accounts: PropTypes.object.isRequired,
+    give: PropTypes.object.isRequired,
+  }
+
   componentDidMount(){
     if (process.env.NATIVE) {
       const item = {
@@ -89,7 +94,6 @@ class Template extends Component {
         __headerSet: true,
       });
     }
-
   }
 
   confirm = (e) => {
@@ -109,8 +113,8 @@ class Template extends Component {
       onFinished: () => {
         dispatch(giveActions.deleteSchedule(id));
 
-        Meteor.call("give/schedule/cancel", { id }, (err, response) => {
-        });
+        // eslint-disable-next-line
+        Meteor.call("give/schedule/cancel", { id }, () => { });
       },
     }));
   }
