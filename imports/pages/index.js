@@ -45,10 +45,8 @@ if (process.env.NATIVE) {
 
 Routes = Routes.concat(Signup.Routes, Util.Routes);
 
-export default {
-  Routes,
-};
-
 export {
   Routes,
 };
+
+export default Routes;
