@@ -68,20 +68,18 @@ export default class NavLayout extends React.Component {
           backgroundColor: this.props.bgColor,
         }}
       >
-        {this.props.links.map((item, i) => {
-          return (
-            <NavLink
-              navItem={item}
-              key={i}
-              handleAction={handleAction}
-              reset={reset}
-              modal={this.props.modal}
-              liked={this.isLiked()}
-              path={path}
-              fgColor={this.props.fgColor}
-            />
-          );
-        })}
+        {this.props.links.map((item, i) => (
+          <NavLink
+            navItem={item}
+            key={i}
+            handleAction={handleAction}
+            reset={reset}
+            modal={this.props.modal}
+            liked={this.isLiked()}
+            path={path}
+            fgColor={this.props.fgColor}
+          />
+        ))}
       </section>
     );
   }

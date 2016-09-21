@@ -138,7 +138,11 @@ export default class NavLink extends Component {
               if (navItem.label && process.env.WEB) {
                 return (
                   <h7 className="display-block">
-                    <small className={`text-center ${active ? "text-brand" : "text-light-primary"}`}>{navItem.label}</small>
+                    <small
+                      className={`text-center ${active ? "text-brand" : "text-light-primary"}`}
+                    >
+                      {navItem.label}
+                    </small>
                   </h7>
                 );
               }
