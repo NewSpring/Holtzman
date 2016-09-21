@@ -1,10 +1,39 @@
 import { Component, PropTypes } from "react";
-import ReactDOM from "react-dom";
 
 import Label from "./components/Label";
 
 export default class TextArea extends Component {
 
+  static propTypes = {
+    defaultValue: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string,
+    ]),
+    status: PropTypes.string,
+    disabled: PropTypes.any, // eslint-disable-line
+    validation: PropTypes.func,
+    errorText: PropTypes.string,
+    theme: PropTypes.string,
+    type: PropTypes.string,
+    error: PropTypes.any, // eslint-disable-line
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    children: PropTypes.any, // eslint-disable-line
+    id: PropTypes.string,
+    label: PropTypes.string,
+    name: PropTypes.string,
+    inputClasses: PropTypes.array, // eslint-disable-line
+    hideLabel: PropTypes.bool,
+    autofocus: PropTypes.any, // eslint-disable-line
+    format: PropTypes.func,
+    onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    style: PropTypes.object, //eslint-disable-line
+    placeholder: PropTypes.string,
+    rows: PropTypes.number,
+  }
 
   state = {
     active: false,
@@ -22,31 +51,31 @@ export default class TextArea extends Component {
 
   componentDidMount() {
     if (this.props.autofocus) {
-      this.refs["apollos-input"].focus();
+      this.node.focus();
     }
 
     // if (this.props.defaultValue) {
-    //   this.refs["apollos-input"].value = `${this.props.defaultValue}`
+    //   this.node.value = `${this.props.defaultValue}`
     // }
 
     // one day, I dream of a universal browser auto-fill event
     // until then. I'll keep on checking
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const target = this.node;
     this.interval = setInterval(() => {
-      if (this._previousValue === target.value || !target.value) {
+      if (this._previousValue === target.value || !target.value) { // eslint-disable-line
         return;
       }
 
-      if (!this._previousValue && target.value && !this.state.focused) {
+      if (!this._previousValue && target.value && !this.state.focused) { // eslint-disable-line
         this.setValue(target.value);
       }
 
-      this._previousValue = target.value;
+      this._previousValue = target.value; // eslint-disable-line
     }, 20);
   }
 
   componentWillUpdate(nextProps) {
-    if (this.props.defaultValue != nextProps.defaultValue) {
+    if (this.props.defaultValue !== nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue);
       this.setState({ focused: false });
     }
@@ -59,9 +88,9 @@ export default class TextArea extends Component {
   }
 
 
-  format = (e) => {
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    const value = this.refs["apollos-input"].value;
+  format = (e) => { // eslint-disable-line
+    const target = this.node;
+    const value = this.node.value;
 
     if (this.props.format && typeof (this.props.format) === "function") {
       const newValue = this.props.format(value, target, e);
@@ -74,7 +103,7 @@ export default class TextArea extends Component {
   }
 
   validate = (e) => {
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const target = this.node;
     const value = target.value;
 
     if (!value) {
@@ -99,7 +128,7 @@ export default class TextArea extends Component {
     }
   }
 
-  focus = (event) => {
+  focus = () => {
     this.setState({
       active: true,
       error: false,
@@ -108,16 +137,13 @@ export default class TextArea extends Component {
   }
 
   setValue = (value) => {
-    const node = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const node = this.node;
     node.value = value;
     this.focus();
     this.validate();
   }
 
-  getValue = () => {
-    return ReactDOM.findDOMNode(this.refs["apollos-input"]).value;
-  }
-
+  getValue = () => this.node.value;
 
   setStatus = (message) => {
     this.props.status = message;
@@ -127,9 +153,10 @@ export default class TextArea extends Component {
     if (this.props.disabled) {
       return this.props.disabled;
     }
+    return undefined;
   }
 
-  renderHelpText = (message) => {
+  renderHelpText = () => {
     if ((this.state.error && this.props.errorText) || this.state.status) {
       return (
         <span className="input__status">
@@ -137,6 +164,7 @@ export default class TextArea extends Component {
         </span>
       );
     }
+    return undefined;
   }
 
 
@@ -148,9 +176,12 @@ export default class TextArea extends Component {
     }
 
     if (this.props.disabled) {
-      style = { ...style, ...{
-        cursor: "inherit",
-      } };
+      style = {
+        ...style,
+        ...{
+          cursor: "inherit",
+        },
+      };
     }
 
     return style;
@@ -187,11 +218,12 @@ export default class TextArea extends Component {
               />
             );
           }
+          return undefined;
         })()}
 
 
         <textarea
-          ref="apollos-input"
+          ref={node => (this.node = node)}
           id={this.props.id || this.props.name || this.props.label}
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}
