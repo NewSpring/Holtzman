@@ -14,7 +14,8 @@
     "__meteor_runtime_config__": true,
     "NativeStorage": true,
     "ga": true,
-    "hockeyapp": true
+    "hockeyapp": true,
+    "google": true
   },
   "rules": {
     "quotes": [2, "double"],
