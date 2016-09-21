@@ -8,6 +8,7 @@ import MiniCard from "../../components/cards/cards.MiniCard";
 // XXX add skip if no tags
 const defaultArray = [];
 const mapQueriesToProps = ({ ownProps }) => ({
+  /* eslint-disable */
   content: {
     query: gql`
       query GetRelatedContent($tags: [String], $includeChannels: [String], $limit: Int, $excludedIds: [String]) {
@@ -38,6 +39,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
         }
       }
     `,
+    /* eslint-enable */
     variables: {
       tags: ownProps.tags || defaultArray,
       includeChannels: ownProps.includeChannels || defaultArray,
@@ -54,6 +56,11 @@ export default class RelatedContent extends Component {
     title: "More Like This",
   }
 
+  static propTypes = {
+    content: PropTypes.string,
+    title: PropTypes.string,
+  }
+
   render() {
     const { taggedContent, loading } = this.props.content;
     if (!loading && (taggedContent && !taggedContent.length)) return null;
@@ -64,13 +71,12 @@ export default class RelatedContent extends Component {
         </div>
         <div>
           {(() => {
-            if (this.props.content.loading) {
-              return (
-                <div className="one-whole text-center soft">
-                  <Loading />
-                </div>
-              );
-            }
+            if (!this.props.content.loading) return null;
+            return (
+              <div className="one-whole text-center soft">
+                <Loading />
+              </div>
+            );
           })()}
           {taggedContent && taggedContent.map((content, key) => (
             <div
