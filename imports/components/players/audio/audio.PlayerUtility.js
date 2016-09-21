@@ -27,10 +27,6 @@ export default class AudioPlayerUtility extends Component {
 
   };
 
-  static render() {
-    return <span />;
-  }
-
   componentWillUpdate(nextProps) {
     const nextAudio = nextProps.audio;
     const { audio } = this.props;
@@ -44,6 +40,7 @@ export default class AudioPlayerUtility extends Component {
     // change of state
     if (audio.state !== nextAudio.state && audio.state !== "default") {
       // play || pause
+      // eslint-disable-next-line max-len
       if (((audio.state !== "next" && audio.state !== "previous") && nextAudio.state === "playing") || nextAudio.state === "paused") {
         this.toggle(nextAudio.state);
       }
@@ -245,5 +242,9 @@ export default class AudioPlayerUtility extends Component {
       }
     }
   };
+
+  render() {
+    return <span />;
+  }
 
 }

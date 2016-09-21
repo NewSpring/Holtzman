@@ -116,10 +116,10 @@ const map = state => ({
   location: state.routing.location,
   modal: state.modal,
 });
-const Global = ({ dispatch }) => (
+const Global = (props) => (
   <div id="global">
-    <App {...this.props} />
-    <GlobalData dispatch={dispatch} />
+    <App {...props} />
+    <GlobalData dispatch={props.dispatch} />
   </div>
 );
 
