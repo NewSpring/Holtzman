@@ -11,10 +11,9 @@ const mapStateToProps = state => ({ audio: state.audio });
 @connect({ mapStateToProps })
 class Template extends Component {
 
-  containerStyles = () => {
-    return {
-      paddingBottom: this.props.audio.state === "default" ? "10px" : "50px",
-    };
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    audio: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
@@ -25,10 +24,19 @@ class Template extends Component {
     this.props.dispatch(liveActions.show());
   }
 
+  containerStyles = () => (
+    {
+      paddingBottom: this.props.audio.state === "default" ? "10px" : "50px",
+    }
+  )
+
   render() {
     return (
       <div
-        className={`background--light-primary locked-ends locked-sides scrollable soft-double-bottom ${css(styles.offset)}`}
+        className={
+          "background--light-primary locked-ends locked-sides " +
+          `scrollable soft-double-bottom ${css(styles.offset)}`
+        }
         data-status-scroll-container
       >
         <div
