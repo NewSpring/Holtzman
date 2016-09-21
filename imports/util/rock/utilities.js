@@ -1,4 +1,5 @@
 /* global _, Meteor */
+/* eslint-disable no-param-reassign, prefer-rest-params */
 
 import startup from "./startup";
 
@@ -27,7 +28,7 @@ api.registerEndpoint = (obj) => {
   @param callback [Function] callback to run on response
  */
 
-api.call = function (method, endpoint, data, callback) {
+api.call = function call(method, endpoint, data, callback) {
   function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
       return response;
@@ -77,12 +78,12 @@ api.call = function (method, endpoint, data, callback) {
 
       return response;
     })
-    .then((data) => {
+    .then((responseData) => {
       if (callback) {
-        callback(null, data);
+        callback(null, responseData);
       }
 
-      return data;
+      return responseData;
     })
     .catch((er) => {
       if (callback) {
@@ -93,31 +94,31 @@ api.call = function (method, endpoint, data, callback) {
 };
 
 
-api.get = function () {
+api.get = function get() {
   const args = _.values(arguments);
   args.unshift("GET");
   return api.call.apply(this, args);
 };
 
-api.delete = function () {
+api.delete = function apiDelete() {
   const args = _.values(arguments);
   args.unshift("DELETE");
   return api.call.apply(this, args);
 };
 
-api.put = function () {
+api.put = function put() {
   const args = _.values(arguments);
   args.unshift("PUT");
   return api.call.apply(this, args);
 };
 
-api.post = function () {
+api.post = function post() {
   const args = _.values(arguments);
   args.unshift("POST");
   return api.call.apply(this, args);
 };
 
-api.patch = function () {
+api.patch = function patch() {
   const args = _.values(arguments);
   args.unshift("PATCH");
   return api.call.apply(this, args);
@@ -136,6 +137,7 @@ const parseEndpoint = str => (
 api.parseEndpoint = parseEndpoint;
 
 if (Meteor.isServer) {
+  // eslint-disable-next-line
   for (const meth in api) {
     api[meth].sync = Meteor.wrapAsync(api[meth], api);
   }
