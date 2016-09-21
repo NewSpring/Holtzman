@@ -7,7 +7,7 @@
     "test": "jest",
     "posttest": "npm run lint",
     "lint-fix": "eslint ./ --fix",
-    "lint": "eslint",
+    "lint": "eslint ./imports ./client ./server",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "coverage": "jest --coverage"
