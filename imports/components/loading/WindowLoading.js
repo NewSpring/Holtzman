@@ -1,3 +1,4 @@
+import { PropTypes } from "react";
 
 function getStyles(style) {
   const defaults = {
@@ -30,5 +31,15 @@ const Loading = ({ theme, classes, styles, children }) => (
     {children}
   </div>
 );
+
+Loading.propTypes = {
+  theme: PropTypes.string,
+  classes: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+  ]),
+  styles: PropTypes.object, // eslint-disable-line
+  children: PropTypes.any, //eslint-disable-line
+};
 
 export default Loading;

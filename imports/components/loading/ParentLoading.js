@@ -1,7 +1,7 @@
 
 import Spinner from "./Spinner";
 
-const Loading = props => (
+const Loading = () => (
   <Spinner />
 );
 
