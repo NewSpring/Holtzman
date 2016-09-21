@@ -9,7 +9,7 @@ import { createReducer } from "../../utilities";
 import types from "../types";
 
 import progress from "./progress";
-import { savedAccount } from "./savedAccounts";
+import savedAccount from "./savedAccounts";
 import { addTransaction, clearTransaction, clearTransactions } from "./transactions";
 import {
   setRecoverableSchedule,
