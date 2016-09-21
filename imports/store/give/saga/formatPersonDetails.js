@@ -1,4 +1,4 @@
-import Moment from "moment";
+import moment from "moment";
 
 const formatPersonDetails = (give) => {
   const { data, transactions, total, schedules, savedAccount } = give;
@@ -23,7 +23,7 @@ const formatPersonDetails = (give) => {
 
   if (schedules && Object.keys(schedules).length) {
     // // @TODO allow custom start dates
-    // joinedData["start-date"] = Moment().format("YYYYMMDD")
+    // joinedData["start-date"] = moment().format("YYYYMMDD")
     // @TODO allow number of payments
     joinedData.plan = {
       payments: 0,
@@ -31,13 +31,17 @@ const formatPersonDetails = (give) => {
     };
 
     delete joinedData.amount;
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const key in schedules) {
       const schedule = schedules[key];
       switch (schedule.frequency) {
         case "One-Time":
           joinedData.plan.payments = 1;
           joinedData.plan["month-frequency"] = 12;
-          joinedData.plan["day-of-month"] = schedule.start ? Moment(schedule.start).date() : Moment().date();
+          joinedData.plan["day-of-month"] = schedule.start ?
+            moment(schedule.start).date() :
+            moment().date()
+          ;
           break;
         case "Weekly":
           joinedData.plan["day-frequency"] = 7;
@@ -50,13 +54,22 @@ const formatPersonDetails = (give) => {
         //   break;
         case "Monthly":
           joinedData.plan["month-frequency"] = 1;
-          joinedData.plan["day-of-month"] = schedule.start ? Moment(schedule.start).date() : Moment().date();
+          joinedData.plan["day-of-month"] = schedule.start ?
+            moment(schedule.start).date() :
+            moment().date()
+          ;
+          break;
+        default:
           break;
       }
 
-      joinedData["start-date"] = schedule.start ? Moment(schedule.start).format("YYYYMMDD") : Moment().add(1, "days").format("YYYYMMDD");
+      joinedData["start-date"] = schedule.start ?
+        moment(schedule.start).format("YYYYMMDD") :
+        moment().add(1, "days").format("YYYYMMDD")
+      ;
       joinedData["merchant-defined-field-3"] = joinedData["start-date"];
 
+      // eslint-disable-next-line no-restricted-syntax, guard-for-in
       for (const transaction in transactions) {
         joinedData["merchant-defined-field-1"] = transaction;
         break;
@@ -67,9 +80,10 @@ const formatPersonDetails = (give) => {
     }
   } else if (transactions && Object.keys(transactions).length) {
     joinedData.product = [];
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const transaction in transactions) {
       joinedData.product.push({
-        "quantity": 1,
+        quantity: 1,
         "product-code": transaction,
         description: transactions[transaction].label,
         "total-amount": transactions[transaction].value,

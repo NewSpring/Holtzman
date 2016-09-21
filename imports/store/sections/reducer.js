@@ -17,23 +17,31 @@ const initial = {
 export default function modal(state = initial, action) {
   switch (action.type) {
     case "SECTIONS.SET_PROPS":
-      return { ...state, ...{
-        props: { ...state.props, ...action.props },
-      } };
+      return {
+        ...state,
+        ...{
+          props: { ...state.props, ...action.props },
+        },
+      };
     case "SECTIONS.SET_CONTENT":
 
       // deep merge
 
+      // eslint-disable-next-line
       for (const section in action.content) {
         if (state.content[section]) {
+          // eslint-disable-next-line
           action.content[section] = { ...state.content[section], ...action.content[section] };
         }
       }
 
 
-      return { ...state, ...{
-        content: { ...state.content, ...action.content },
-      } };
+      return {
+        ...state,
+        ...{
+          content: { ...state.content, ...action.content },
+        },
+      };
     default:
       return state;
   }
