@@ -1,3 +1,4 @@
+/* eslint-disable */
 // converted from coffeescript in old newspring core js
 let Debouncer,
   bind = function (fn, me) { return function () { return fn.apply(me, arguments); }; };
