@@ -20,7 +20,8 @@
     "Raven": true,
     "FastRender": true,
     "RoutePolicy": true,
-    "StatusBar": true
+    "StatusBar": true,
+    "OO": true
   },
   "rules": {
     "quotes": [2, "double"],
