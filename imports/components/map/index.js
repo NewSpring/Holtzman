@@ -1,16 +1,12 @@
 import { Component, PropTypes } from "react";
 import controllable from "react-controllables";
 import shouldPureComponentUpdate from "react-pure-render/function";
+import Marker from "./components/Marker";
 
 let GoogleMap;
 if (Meteor.isClient) {
-  GoogleMap = require("google-map-react").default;
+  GoogleMap = require("google-map-react").default; // eslint-disable-line
 }
-
-import { fitBounds } from "google-map-react/utils";
-
-
-import Marker from "./components/Marker";
 
 const K_MARGIN_TOP = 30;
 const K_MARGIN_RIGHT = 30;
@@ -30,14 +26,12 @@ export default class Map extends Component {
     onBoundsChange: PropTypes.func,
     onMarkerHover: PropTypes.func,
     onChildClick: PropTypes.func,
-    center: PropTypes.any,
     zoom: PropTypes.number,
-    markers: PropTypes.any,
-    visibleRowFirst: PropTypes.number,
-    visibleRowLast: PropTypes.number,
-    maxVisibleRows: PropTypes.number,
-    hoveredRowIndex: PropTypes.number,
-    openBallonIndex: PropTypes.number,
+    markers: PropTypes.any, // eslint-disable-line
+    active: PropTypes.bool,
+    hover: PropTypes.bool,
+    popUp: PropTypes.any, // eslint-disable-line
+    options: PropTypes.string,
   }
 
   static defaultProps = {
@@ -58,8 +52,24 @@ export default class Map extends Component {
 
   shouldComponentUpdate = shouldPureComponentUpdate;
 
+  componentDidUpdate(prevProps) {
+    const didChange = !_.isEqual(this.props.markers, prevProps.markers);
+    if (didChange && prevProps.autoCenter && this.map) {
+      const markers = this.props.markers.filter(x =>
+        (x.latitude && x.longitude)
+      ).map(marker => (
+        new google.maps.LatLng(marker.latitude, marker.longitude) // eslint-disable-line
+      ));
 
-  _onBoundsChange = (center, zoom, bounds, marginBounds) => {
+      if (markers.length && markers.length > 1) {
+        this.map.fitBounds(markers.reduce((bounds, marker) => { // eslint-disable-line
+          return bounds.extend(marker);
+        }, new google.maps.LatLngBounds())); // eslint-disable-line
+      }
+    }
+  }
+
+  onBoundsChange = (center, zoom, bounds, marginBounds) => {
     if (this.props.onBoundsChange) {
       this.props.onBoundsChange({ center, zoom, bounds, marginBounds });
     } else {
@@ -68,13 +78,13 @@ export default class Map extends Component {
     }
   }
 
-  _onChildClick = (key, childProps) => {
+  onChildClick = (key) => {
     const { markers } = this.props;
 
     let marker;
-    for (const _marker of markers) {
-      if (`${_marker.id}` === `${key}`) {
-        marker = _marker;
+    for (const m of markers) {
+      if (`${m.id}` === `${key}`) {
+        marker = m;
         break;
       }
     }
@@ -84,13 +94,13 @@ export default class Map extends Component {
     }
   }
 
-  _onChildMouseEnter = (key, childProps) => {
+  onChildMouseEnter = (key) => {
     const { markers } = this.props;
 
     let marker;
-    for (const _marker of markers) {
-      if (`${_marker.id}` === `${key}`) {
-        marker = _marker;
+    for (const m of markers) {
+      if (`${m.id}` === `${key}`) {
+        marker = m;
         break;
       }
     }
@@ -100,35 +110,17 @@ export default class Map extends Component {
     }
   }
 
-  _onChildMouseLeave = (/* key, childProps */) => {
+  onChildMouseLeave = (/* key, childProps */) => {
     if (this.props.onMarkerHover) {
       this.props.onMarkerHover(-1);
     }
   }
 
-  _onBalloonCloseClick = () => {
+  onBalloonCloseClick = () => {
     if (this.props.onChildClick) {
       this.props.onChildClick(-1);
     }
   }
-
-  componentDidUpdate(prevProps) {
-    const didChange = !_.isEqual(this.props.markers, prevProps.markers);
-    if (didChange && prevProps.autoCenter && this.map) {
-      const markers = this.props.markers.filter((x) => {
-        return x.latitude && x.longitude;
-      }).map(marker => (
-        new google.maps.LatLng(marker.latitude, marker.longitude)
-      ));
-
-      if (markers.length && markers.length > 1) {
-        this.map.fitBounds(markers.reduce((bounds, marker) => {
-          return bounds.extend(marker);
-        }, new google.maps.LatLngBounds()));
-      }
-    }
-  }
-
 
   render() {
     try {
@@ -142,33 +134,33 @@ export default class Map extends Component {
       } else {
         dynamicProps.defaultCenter = defaultCenter;
       }
-      if (typeof window != "undefined" && window != null) {
+      if (typeof window !== "undefined" && window !== null) {
         return (
           <GoogleMap
             {...dynamicProps}
             zoom={this.props.zoom}
             options={this.props.options}
-            onChange={this._onBoundsChange}
-            onChildClick={this._onChildClick}
-            onChildMouseEnter={this._onChildMouseEnter}
-            onChildMouseLeave={this._onChildMouseLeave}
-            distanceToMouse={this._distanceToMouse}
+            onChange={this.onBoundsChange}
+            onChildClick={this.onChildClick}
+            onChildMouseEnter={this.onChildMouseEnter}
+            onChildMouseLeave={this.onChildMouseLeave}
+            distanceToMouse={this.distanceToMouse}
             bootstrapURLKeys={{ key: "AIzaSyCntgrGdfBmzdMxACihPEutGBh_5xsFx8Y" }}
             margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
             hoverDistance={K_HOVER_DISTANCE}
             yesIWantToUseGoogleMapApiInternals
-            onGoogleApiLoaded={({ map, maps }) => {
+            onGoogleApiLoaded={({ map }) => {
               this.map = map;
               const markers = this.props.markers
                 .filter(x => x.latitude && x.longitude)
                 .map(marker => (
-                  new google.maps.LatLng(marker.latitude, marker.longitude)
+                  new google.maps.LatLng(marker.latitude, marker.longitude) // eslint-disable-line
                 ));
 
               if (markers.length > 1) {
-                this.map.fitBounds(markers.reduce((bounds, marker) => {
+                this.map.fitBounds(markers.reduce((bounds, marker) => { // eslint-disable-line
                   return bounds.extend(marker);
-                }, new google.maps.LatLngBounds()));
+                }, new google.maps.LatLngBounds())); // eslint-disable-line
               }
             }}
           >
@@ -186,9 +178,9 @@ export default class Map extends Component {
         );
       }
     } catch (e) {
-      console.log(e);
       return null;
     }
+    return null;
   }
 
 }
