@@ -27,27 +27,18 @@ export default class DiscoverItem extends Component {
   ];
 
   // context from ImageLoader
-  preloader = () => {
-    return (
-      <div
-        className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
-      >
-        {this.children}
-      </div>
-    );
-  }
+  preloader = () => (
+    <div className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}>
+      {this.children}
+    </div>
+  )
 
   // context from ImageLoader
-  renderElement = () => {
-    return (
-      <div
-        className={this.imageclasses.join(" ")}
-        style={this.backgroundStyles}
-      >
-        {this.children}
-      </div>
-    );
-  }
+  renderElement = () => (
+    <div className={this.imageclasses.join(" ")} style={this.backgroundStyles}>
+      {this.children}
+    </div>
+  )
 
   render() {
     return (
@@ -69,5 +60,4 @@ export default class DiscoverItem extends Component {
       </div>
     );
   }
-
 }

@@ -2,8 +2,6 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
-import { modal } from "../../../store";
-
 import Layout from "./Layout";
 
 const mapQueriesToProps = () => ({
@@ -37,6 +35,10 @@ const mapQueriesToProps = () => ({
 });
 @connect({ mapQueriesToProps })
 export default class Discover extends Component {
+
+  propTypes = {
+    discover: PropTypes.func.isRequired,
+  }
 
   render() {
     const { discover } = this.props;
