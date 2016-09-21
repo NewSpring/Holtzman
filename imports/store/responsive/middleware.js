@@ -21,16 +21,18 @@ const responsiveBindings = store => next => (action) => {
     const { responsive } = getState();
 
     const breakpoints = [];
+    // eslint-disable-next-line
     for (const breakpoint in responsive._breakpoints) {
       const name = breakpoint;
+      // eslint-disable-next-line no-underscore-dangle
       const range = responsive._breakpoints[breakpoint];
 
       if (range.min && width < range.min) {
-        continue;
+        continue; // eslint-disable-line no-continue
       }
 
       if (range.max && width > range.max) {
-        continue;
+        continue; // eslint-disable-line no-continue
       }
 
       breakpoints.push(name);
