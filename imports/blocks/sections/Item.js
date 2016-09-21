@@ -15,8 +15,8 @@ const ExternalLinkWrapper = (props) => {
     );
   }
 
-  if (url[0] != "/") {
-    url = "/" + url;
+  if (url[0] !== "/") {
+    url = `/${url}`;
   }
   return (
     <a
@@ -26,6 +26,11 @@ const ExternalLinkWrapper = (props) => {
       {props.children}
     </a>
   );
+};
+
+ExternalLinkWrapper.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.object,
 };
 
 // context from ImageLoader
@@ -79,29 +84,36 @@ const ChildItem = ({ section, go }) => {
         onClick={go}
         id={section.id}
       >
-      <div className="rounded one-whole grid rounded flush background--light-primary">
-        <div className="grid__item two-thirds hard" style={{ verticalAlign: "middle" }}>
-          <h6 className="soft-left text-dark-primary flush-bottom">{section.text}</h6>
+        <div className="rounded one-whole grid rounded flush background--light-primary">
+          <div className="grid__item two-thirds hard" style={{ verticalAlign: "middle" }}>
+            <h6 className="soft-left text-dark-primary flush-bottom">{section.text}</h6>
+          </div>
+          <div className="grid__item one-third hard" style={{ verticalAlign: "middle" }}>
+            <ImageLoader
+              src={section.image}
+              preloader={preloader}
+              renderElement={renderElement}
+              force
+              imageclasses={imageclasses}
+              style={{
+                backgroundImage: `url('${section.image}')`,
+                borderRadius: "0px 6px 6px 0px",
+              }}
+            >
+              <div className="ratio__item" />
+            </ImageLoader>
+          </div>
         </div>
-        <div className="grid__item one-third hard" style={{ verticalAlign: "middle" }}>
-          <ImageLoader
-            src={section.image}
-            preloader={preloader}
-            renderElement={renderElement}
-            force
-            imageclasses={imageclasses}
-            style={{ backgroundImage: `url('${section.image}')`, borderRadius: "0px 6px 6px 0px" }}
-          >
-            <div className="ratio__item" />
-          </ImageLoader>
-        </div>
-      </div>
 
       </ExternalLinkWrapper>
     </div>
   );
 };
 
+ChildItem.propTypes = {
+  section: PropTypes.object,
+  go: PropTypes.func,
+};
 
 const Item = ({ section, go, children }) => {
   if (!section) {
@@ -150,6 +162,12 @@ const Item = ({ section, go, children }) => {
   );
 };
 
+Item.propTypes = {
+  section: PropTypes.object,
+  go: PropTypes.func,
+  children: PropTypes.object,
+};
+
 export default class SectionItem extends Component {
 
   static propTypes = {
@@ -175,17 +193,13 @@ export default class SectionItem extends Component {
           setTimeout(() => {
             this.setState({ section });
           }, 400);
-        }
-
-        // if a section is open and that section is clicked
-        // then close the section clicked
-        else if (this.state.section != null && section.id === id) {
+        } else if (this.state.section != null && section.id === id) {
+          // if a section is open and that section is clicked
+          // then close the section clicked
           this.setState({ section: null });
-        }
-
-        // else nothing is open
-        // and open the section clicked
-        else {
+        } else {
+          // else nothing is open
+          // and open the section clicked
           this.setState({ section });
         }
 
@@ -205,6 +219,7 @@ export default class SectionItem extends Component {
 
     const children = [];
 
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const child in section.children) {
       children.push(section.children[child]);
     }
@@ -231,23 +246,26 @@ export default class SectionItem extends Component {
       return null;
     }
 
-    if (section.id != sectionItem.id) {
+    if (section.id !== sectionItem.id) {
       return null;
     }
 
     return (
-      <div className="locked background--dark-primary" style={{
-        height: 0,
-        width: 0,
-        background: "transparent",
-        borderWidth: "0 15px 10px 15px",
-        borderColor: "transparent transparent #303030 transparent",
-        borderStyle: "solid",
-        marginBottom: "-10px",
-        left: "50%",
-        marginLeft: "-10px",
-        marginTop: "2px",
-      }} />
+      <div
+        className="locked background--dark-primary"
+        style={{
+          height: 0,
+          width: 0,
+          background: "transparent",
+          borderWidth: "0 15px 10px 15px",
+          borderColor: "transparent transparent #303030 transparent",
+          borderStyle: "solid",
+          marginBottom: "-10px",
+          left: "50%",
+          marginLeft: "-10px",
+          marginTop: "2px",
+        }}
+      />
     );
   }
 
