@@ -9,8 +9,8 @@ import Styles from "./live-css";
 
 import liveActions from "../../store/live";
 
-const mapQueriesToProps = ({ ownProps, state }) => {
-  return {
+const mapQueriesToProps = () =>
+  ({
     data: {
       query: gql`query IsLive {
         live {
@@ -22,13 +22,22 @@ const mapQueriesToProps = ({ ownProps, state }) => {
       returnPartialData: false,
       pollInterval: 60000,
     },
-  };
-};
+  });
+
 
 const mapStateToProps = state => ({ live: state.live });
 
 @connect({ mapQueriesToProps, mapStateToProps })
 export default class Live extends Component {
+
+  static propTypes = {
+    live: PropTypes.object, // eslint-disable-line
+    dispatch: PropTypes.func,
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    this.handleLiveChange(nextProps, nextState);
+  }
 
   getClasses = () => {
     const classes = [
@@ -56,10 +65,6 @@ export default class Live extends Component {
     ];
 
     return classes.join(" ");
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    this.handleLiveChange(nextProps, nextState);
   }
 
   handleLiveChange = (nextProps) => {
@@ -92,19 +97,17 @@ export default class Live extends Component {
         defaultStyle={{ height: 0 }}
         style={{ height: spring(40) }}
       >
-        {(interpolatingStyle) => {
-          return (
-            <Link
-              to={`/video/${embedCode}`}
-              className={this.getClasses()}
-              style={interpolatingStyle}
-            >
-              <h7 className={this.getTextClasses()}>
-                NewSpring Church Live, Watch Now!
-              </h7>
-            </Link>
-          );
-        }}
+        {interpolatingStyle =>
+          <Link
+            to={`/video/${embedCode}`}
+            className={this.getClasses()}
+            style={interpolatingStyle}
+          >
+            <h7 className={this.getTextClasses()}>
+              NewSpring Church Live, Watch Now!
+            </h7>
+          </Link>
+        }
       </Motion>
     );
   }
