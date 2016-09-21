@@ -116,7 +116,7 @@ const map = state => ({
   location: state.routing.location,
   modal: state.modal,
 });
-const Global = (props) => (
+const Global = props => (
   <div id="global">
     <App {...props} />
     <GlobalData dispatch={props.dispatch} />
