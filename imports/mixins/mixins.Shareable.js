@@ -35,19 +35,19 @@ const Shareable = {
   },
 
   setShareProps(nextProps) {
-    if (!!this.state.__shareActionSet) return;
+    if (!!this.state.__shareActionSet) return; // eslint-disable-line
     const item = this.getShareableEntry(nextProps);
     if (!item) return;
 
     if (!nextProps.currentSermon) {
       this.setShareAction(item);
-    } else {
-      if (nextProps.currentSermon &&
-          nextProps.series) {
-        this.setShareAction(item, {
-          parentItem: nextProps.series.content,
-        });
-      }
+    } else if (
+      nextProps.currentSermon &&
+      nextProps.series
+    ) {
+      this.setShareAction(item, {
+        parentItem: nextProps.series.content,
+      });
     }
   },
 
