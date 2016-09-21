@@ -57,6 +57,16 @@ To install, clone down this repo and run `npm link`. This will bind `apollos` to
   - `--production`: Run the application in production mode
   - `--debug`: Run the application in debug mode
 
+## Linting
+
+This project includes linting using [ESLint](http://eslint.org/).  To enable linting in Visual Studio Code, you will need to install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
+To install the extension you'll need to press `⌘+P`, paste the following command and press enter.
+
+```
+ext install vscode-eslint
+```
+
 ## Deploys
 
 This project can be automatically deployed by Travis CI using release tags. We have 2 different versions of the application, web and native. We also have 3 different environments to deploy to: alpha, beta, production.
