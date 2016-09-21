@@ -1,5 +1,4 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-redux";
 import { VelocityComponent } from "velocity-react";
 import { css } from "aphrodite";
 
@@ -8,19 +7,21 @@ import offsetStyles from "../nav/offset-css";
 
 export default class SideModal extends Component {
 
-  state = {
-    coverHeader: false,
-  }
-
   static propTypes = {
-    childClasses: PropTypes.array,
+    childClasses: PropTypes.array, // eslint-disable-line
     float: PropTypes.bool,
-    classes: PropTypes.array,
+    classes: PropTypes.array, // eslint-disable-line
     offset: PropTypes.bool,
-    styles: PropTypes.object,
+    styles: PropTypes.object, // eslint-disable-line
     close: PropTypes.func.isRequired,
     component: PropTypes.func,
-    props: PropTypes.object.isRequired,
+    props: PropTypes.object.isRequired, // eslint-disable-line
+    layoutOverride: PropTypes.string,
+    style: PropTypes.object, // eslint-disable-line
+    modalBackground: PropTypes.string,
+    modal: PropTypes.object,
+    theme: PropTypes.string,
+    visible: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -30,6 +31,26 @@ export default class SideModal extends Component {
     offset: true,
     styles: {},
     props: {},
+  }
+
+  state = {
+    coverHeader: false,
+  }
+
+  componentWillUpdate(nextProps) {
+    const coverHeader = !!nextProps.props.coverHeader;
+
+    if (coverHeader !== this.state.coverHeader) {
+      this.setState({ coverHeader });
+    }
+  }
+
+  getContainerStyle() {
+    const mini = this.props.props && this.props.props.coverMiniPlayer;
+    return {
+      zIndex: mini ? 102 : 100,
+      position: "fixed",
+    };
   }
 
   childClasses = () => {
@@ -60,7 +81,7 @@ export default class SideModal extends Component {
 
   layoutClasses = () => {
     const { float, offset } = this.props;
-    const { classes, layoutOverride, coverHeader, modalBackground } = this.props.modal.props;
+    const { classes, layoutOverride, modalBackground } = this.props.modal.props;
 
     const classList = [
       "hard",
@@ -94,28 +115,12 @@ export default class SideModal extends Component {
     return classList.join(" ");
   }
 
-  componentWillUpdate(nextProps) {
-    const coverHeader = !!nextProps.props.coverHeader;
-
-    if (coverHeader != this.state.coverHeader) {
-      this.setState({ coverHeader });
-    }
-  }
-
   styles = () => {
     const style = { ...(this.props.styles || this.props.style) };
     style.top = (process.env.WEB || this.state.coverHeader) ? "0px" : "46px";
 
     return style;
   };
-
-  getContainerStyle() {
-    const mini = this.props.props && this.props.props.coverMiniPlayer;
-    return {
-      zIndex: mini ? 102 : 100,
-      position: "fixed",
-    };
-  }
 
   render() {
     const slide = {
@@ -131,12 +136,12 @@ export default class SideModal extends Component {
       return <div />;
     }
 
-    if (typeof window != "undefined" && window != null) {
+    if (typeof window !== "undefined" && window !== null) {
       window.scrollTo(0, 0);
 
       if (window.matchMedia("(max-width: 481px)").matches) {
         slide.translateY = [0, 80];
-        if (typeof this.props.styles != "undefined") {
+        if (typeof this.props.styles !== "undefined") {
           this.props.styles.transform = "translateY(80px)";
           this.props.styles.opacity = 0;
         } else {
@@ -145,7 +150,7 @@ export default class SideModal extends Component {
         }
       } else {
         slide.translateX = [0, -20];
-        if (typeof this.props.styles != "undefined") {
+        if (typeof this.props.styles !== "undefined") {
           this.props.styles.transform = "translateY(-20px)";
           this.props.styles.opacity = 0;
         } else {
