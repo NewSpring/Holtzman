@@ -30,7 +30,9 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": 0,
     "react/no-string-refs": 0,
-    "react/forbid-prop-types": 0
+    "react/forbid-prop-types": 0,
+    "class-methods-use-this": 0,
+    "jsx-a11y/no-static-element-interactions": 0
   },
   "settings": {
     "import/core-modules": [
