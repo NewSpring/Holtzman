@@ -12,7 +12,7 @@ const initial = {
 
 export default createReducer(initial, {
 
-  ["LIKED.TOGGLE"]: function (state, action) {
+  "LIKED.TOGGLE": (state, action) => {
     const entryId = action.props.entryId;
     const previousLikes = state.likes;
     const nextLikes = _.contains(previousLikes, entryId) ?
@@ -24,10 +24,10 @@ export default createReducer(initial, {
     };
   },
 
-  ["LIKED.SET"]: function (state, action) {
-    return { ...state,
+  "LIKED.SET": (state, action) => (
+    { ...state,
       likes: action.content,
-    };
-  },
+    }
+  ),
 
 });
