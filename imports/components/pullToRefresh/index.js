@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
   show: state.live.show,
 });
 
-const ApollosPullToRefresh = ({ handleRefresh }) => (
+const ApollosPullToRefresh = ({ handleRefresh, children }) => (
   <div>
     <div className="ptr-fake-background" />
 
@@ -36,13 +36,14 @@ const ApollosPullToRefresh = ({ handleRefresh }) => (
       }
       className="relative"
     >
-      {this.props.children}
+      {children}
     </ReactPullToRefresh>
   </div>
 );
 
 ApollosPullToRefresh.propTypes = {
   handleRefresh: PropTypes.func.isRequired,
+  children: PropTypes.object.isRequired,
 };
 
 
