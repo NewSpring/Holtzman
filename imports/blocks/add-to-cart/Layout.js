@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Component, PropTypes } from "react";
 
 import Forms from "../../components/forms";
@@ -76,8 +77,9 @@ export default class Layout extends Component {
 
       // remap ids
       newInstances = newInstances.map((newInstance, i) => {
-        newInstance.id = i;
-        return newInstance;
+        const retInstance = newInstance;
+        retInstance.id = i;
+        return retInstance;
       });
 
       setTimeout(() => {
