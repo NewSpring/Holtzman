@@ -9,6 +9,20 @@ import Layout from "./Layout";
 @connect(null, giveActions)
 export default class SubFund extends Component {
 
+  propTypes = {
+    primary: PropTypes.string,
+    accounts: PropTypes.array, // eslint-disable-line
+    update: PropTypes.func,
+    selectVal: PropTypes.string,
+    inputVal: PropTypes.string,
+    instance: PropTypes.object, // eslint-disable-line
+    clearTransaction: PropTypes.func,
+    addTransactions: PropTypes.func,
+    remove: PropTypes.func,
+    preFill: PropTypes.func,
+    donate: PropTypes.func,
+  }
+
   state = {
     active: false,
     focused: false,
@@ -35,9 +49,16 @@ export default class SubFund extends Component {
     }
   }
 
-  monentize = (value, fixed) => {
-    if (typeof value === "number") {
-      value = `${value}`;
+  getFund = (id) => {
+    const selectedFund = this.props.accounts.filter(fund => fund.value === id);
+    return selectedFund[0];
+  }
+
+  monentize = (amount, fixed) => {
+    let value;
+
+    if (typeof amount === "number") {
+      value = `${amount}`;
     }
 
     if (!value.length) {
@@ -56,13 +77,8 @@ export default class SubFund extends Component {
     return `$${value}`;
   }
 
-  getFund = (id) => {
-    const selectedFund = this.props.accounts.filter(fund => fund.value == id);
-    return selectedFund[0];
-  }
-
   saveFund = (id) => {
-    if (id == this.state.id) return;
+    if (id === this.state.id) return;
 
     // remove old funds transaction
     this.props.clearTransaction(`${this.state.id}`);
@@ -95,8 +111,8 @@ export default class SubFund extends Component {
     }
   }
 
-  saveAmount = (value) => {
-    value = this.monentize(value);
+  saveAmount = (amount) => {
+    const value = this.monentize(amount);
 
     const numberValue = Number(value.replace(/[^\d.-]/g, ""));
 
@@ -117,12 +133,10 @@ export default class SubFund extends Component {
 
         this.props.update(this.props.instance, id, numberValue);
       }
-    } else {
+    } else if (this.state.fund) {
       // remove transaction
-      if (this.state.fund) {
-        this.props.clearTransaction(this.state.id);
-        this.props.remove(this.props.instance, this.state.id);
-      }
+      this.props.clearTransaction(this.state.id);
+      this.props.remove(this.props.instance, this.state.id);
 
       // this.setState({
       //   active: false,
@@ -137,9 +151,9 @@ export default class SubFund extends Component {
   statusClass = () => {
     if (this.state.fund) {
       return "text-dark-tertiary";
-    } else {
-      return "text-light-tertiary";
     }
+
+    return "text-light-tertiary";
   }
 
   render() {

@@ -6,9 +6,7 @@ import Styles from "../../add-schedule/styles-css";
 
 const Layout = ({ classes, accounts, state, preFill, showInputs, format, selectVal, inputVal }) => (
   <div>
-    <div
-      className={`display-inline-block push-half-bottom h3 push-half-right ${classes}`}
-    >
+    <div className={`display-inline-block push-half-bottom h3 push-half-right ${classes}`}>
       and give to
     </div>
 
@@ -49,11 +47,21 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format, selectV
           </div>
         );
       }
+
+      return null;
     })()}
-
-
   </div>
 );
 
+Layout.propTypes = {
+  classes: PropTypes.array, // eslint-disable-line
+  accounts: PropTypes.object, // eslint-disable-line
+  state: PropTypes.object, // eslint-disable-line
+  preFill: PropTypes.func,
+  showInputs: PropTypes.func,
+  format: PropTypes.func,
+  selectVal: PropTypes.func,
+  inputVal: PropTypes.string,
+};
 
 export default Layout;
