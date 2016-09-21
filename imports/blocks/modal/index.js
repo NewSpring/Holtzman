@@ -1,6 +1,5 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { Motion, spring, presets } from "react-motion";
 
 import { modal as modalActions, nav as navActions } from "../../store";
 
@@ -15,20 +14,19 @@ const map = state => ({
 @connect(map)
 export default class SideModalContainer extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func,
+    modal: PropTypes.object, // eslint-disable-line
+    navigation: PropTypes.object, // eslint-disable-line
+    path: PropTypes.string,
+  }
+
   state = {
     previous: null,
   }
 
-  bindEsc = (event) => {
-    // if key hit is `esc` or template is closed is clicked
-    if (event.keyCode === 27) {
-      this.props.dispatch(modalActions.hide());
-    }
-  }
-
   componentDidMount() {
-    if (!this.props.modal.props.keepNav && this.props.modal.visible)
-    {
+    if (!this.props.modal.props.keepNav && this.props.modal.visible) {
       this.props.dispatch(navActions.setLevel("MODAL"));
     }
 
@@ -37,15 +35,8 @@ export default class SideModalContainer extends Component {
     }
   }
 
-  componentWillUnmount() {
-    if (Meteor.isClient) {
-      document.removeEventListener("keyup", this.bindEsc, false);
-    }
-    this.props.dispatch(navActions.resetColor());
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (nextProps.modal.visible && nextProps.navigation.level != "MODAL" && nextProps.navigation.level != "DOWN" && nextProps.modal.props.keepNav != true) {
+    if (nextProps.modal.visible && nextProps.navigation.level !== "MODAL" && nextProps.navigation.level !== "DOWN" && nextProps.modal.props.keepNav !== true) {
       this.props.dispatch(navActions.setLevel("MODAL"));
       this.setState({ previous: this.props.navigation.level });
     } else if (nextProps.modal.visible && nextProps.navigation.level === "DOWN") {
@@ -60,29 +51,43 @@ export default class SideModalContainer extends Component {
       this.props.dispatch(navActions.setLevel(previous));
     }
 
-    if (!nextProps.modal.visible && (this.props.path != nextProps.path)) {
+    if (!nextProps.modal.visible && (this.props.path !== nextProps.path)) {
       this.props.dispatch(modalActions.hide());
     }
   }
 
   componentWillUpdate(nextProps) {
-    if (typeof document != "undefined" && document != null) {
+    if (typeof document !== "undefined" && document !== null) {
       const root = document.documentElement;
 
       if (!nextProps.modal.visible) {
-        root.className = root.className.split(" ").filter((className) => {
-          return className != "modal--opened";
-        }).join(" ");
+        root.className = root.className.split(" ").filter(className =>
+          className !== "modal--opened"
+        ).join(" ");
       } else if (!this.props.modal.visible && nextProps.modal.visible) {
         root.className += " modal--opened";
       }
     }
   }
 
+  componentWillUnmount() {
+    if (Meteor.isClient) {
+      document.removeEventListener("keyup", this.bindEsc, false);
+    }
+    this.props.dispatch(navActions.resetColor());
+  }
+
+  bindEsc = (event) => {
+    // if key hit is `esc` or template is closed is clicked
+    if (event.keyCode === 27) {
+      this.props.dispatch(modalActions.hide());
+    }
+  }
+
   close = (e) => {
     const { target } = e;
     const { id } = target;
-    if (id != "@@modal") {
+    if (id !== "@@modal") {
       return;
     }
 
@@ -90,9 +95,6 @@ export default class SideModalContainer extends Component {
   }
 
   render() {
-    const enter = "fadeIn";
-    const exit = "fadeOut";
-
     const { visible, content, props } = this.props.modal;
     return (
       <Modal
