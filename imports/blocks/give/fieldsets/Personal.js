@@ -1,6 +1,5 @@
 import { Component, PropTypes } from "react";
 
-import Controls from "../../../components/controls";
 import Forms from "../../../components/forms";
 
 import Validate from "../../../util/validate";
@@ -9,24 +8,23 @@ export default class Personal extends Component {
 
   static propTypes = {
     data: PropTypes.object.isRequired,
+    campuses: PropTypes.object.isRequired,
+    header: PropTypes.string,
     save: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired,
     clear: PropTypes.func.isRequired,
     next: PropTypes.func.isRequired,
+    children: PropTypes.object.isRequired,
   }
 
-  header = () => {
-    return (
-      <h4 className="text-center">
-        Personal Details
-      </h4>
-    );
-  }
+  header = () => (
+    <h4 className="text-center">
+      Personal Details
+    </h4>
+  );
 
 
   firstName = (value) => {
-    const isValid = value.length ? true : false;
-    const noError = !this.props.errors.firstName;
+    const isValid = value.length === 1;
 
     if (!isValid) {
       this.props.clear("firstName");
@@ -43,7 +41,6 @@ export default class Personal extends Component {
 
   isEmail = (value) => {
     const isValid = Validate.isEmail(value);
-    const noError = !this.props.errors.email;
 
     if (!isValid) {
       this.props.clear("email");
@@ -55,8 +52,7 @@ export default class Personal extends Component {
   }
 
   lastName = (value) => {
-    const isValid = value.length ? true : false;
-    const noError = !this.props.errors.lastName;
+    const isValid = value.length === 1;
 
     if (!isValid) {
       this.props.clear("lastName");
@@ -67,10 +63,11 @@ export default class Personal extends Component {
     return true;
   }
 
-  campus = (value, target) => {
+  campus = (value) => {
     this.props.save({ personal: { campusId: value } });
     // save name for display
     for (const campus of this.props.campuses) {
+      // eslint-disable-next-line
       if (`${campus.value}` !== value) continue;
       this.props.save({ personal: { campus: campus.label } });
     }
@@ -82,7 +79,9 @@ export default class Personal extends Component {
     const { personal } = this.props.data;
     let { campuses } = this.props;
 
-    campuses || (campuses = []);
+    if (!campuses) {
+      campuses = [];
+    }
 
     if (campuses.length === 0) {
       delete personal.campus;
@@ -149,7 +148,8 @@ export default class Personal extends Component {
 
         <div>
           {/*
-          <a href="#" tabIndex={-1} onClick={this.props.back} className="btn--small btn--dark-tertiary display-inline-block">
+          <a href="#" tabIndex={-1} onClick={this.props.back}
+             className="btn--small btn--dark-tertiary display-inline-block">
             Back
           </a>
           */}
@@ -159,7 +159,8 @@ export default class Personal extends Component {
               // "push-left"
             ];
             let disabled = false;
-            if (personal.email === null || personal.firstName === null || personal.email === null || personal.campusId === null) {
+            if (personal.email === null || personal.firstName === null ||
+                personal.email === null || personal.campusId === null) {
               btnClasses.push("btn--disabled");
               disabled = true;
             } else {
@@ -172,9 +173,7 @@ export default class Personal extends Component {
               </button>
             );
           })()}
-
         </div>
-
       </div>
     );
   }

@@ -1,32 +1,30 @@
 import { Component, PropTypes } from "react";
-import ReactDOM from "react-dom";
 
-import Controls from "../../../components/controls";
 import Forms from "../../../components/forms";
-import { Validate } from "../../../util";
 
 export default class Billing extends Component {
 
   static propTypes = {
     data: PropTypes.object.isRequired,
+    children: PropTypes.object.isRequired,
     save: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired,
     clear: PropTypes.func.isRequired,
+    back: PropTypes.func.isRequired,
     next: PropTypes.func.isRequired,
+    header: PropTypes.string.isRequired,
     states: PropTypes.array,
+    countries: PropTypes.array,
   }
 
 
-  header = () => {
-    return (
-      <h4 className="text-center">
-        Billing Address
-      </h4>
-    );
-  }
+  header = () => (
+    <h4 className="text-center">
+      Billing Address
+    </h4>
+  );
 
   streetAddress = (value) => {
-    const isValid = value.length ? true : false;
+    const isValid = value.length === 1;
 
     if (!isValid) {
       this.props.clear("billing", "streetAddress");
@@ -55,7 +53,7 @@ export default class Billing extends Component {
   }
 
   saveCountry = (value) => {
-    const isValid = value.length ? true : false;
+    const isValid = value.length === 1;
 
     if (!isValid) {
       this.props.clear("billing", "country");
@@ -156,6 +154,7 @@ export default class Billing extends Component {
                   </div>
                 );
               }
+              return null;
             })()}
             {(() => {
               let length = "one-whole";
@@ -184,12 +183,12 @@ export default class Billing extends Component {
 
 
         <div>
-          <a href="#" tabIndex={-1} onClick={this.props.back} className="btn--small btn--dark-tertiary display-inline-block">
+          <a href="" tabIndex={-1} onClick={this.props.back} className="btn--small btn--dark-tertiary display-inline-block">
             Back
           </a>
 
           {(() => {
-            const { billing } = this.props.data;
+            const { billing } = this.props.data; // eslint-disable-line
             const btnClasses = ["push-left"];
             let disabled = false;
             if (!billing.streetAddress || !billing.city) {

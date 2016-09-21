@@ -9,6 +9,21 @@ import Format from "../../../util/format";
 
 export default class Payment extends Component {
 
+  propTypes = {
+    save: PropTypes.func,
+    data: PropTypes.object,
+    savedAccount: PropTypes.object,
+    header: PropTypes.string,
+    children: PropTypes.object,
+    toggles: PropTypes.func,
+    transactionType: PropTypes.string,
+    schedules: PropTypes.array,
+    back: PropTypes.func,
+    next: PropTypes.func,
+
+
+  }
+
   state = {
     save: true,
   }
@@ -29,16 +44,13 @@ export default class Payment extends Component {
     return (value.length > 0);
   }
 
-  header = () => {
-    return (
-      <h4 className="text-center">
-        Payment Details
-      </h4>
-    );
-  }
+  header = () => (
+    <h4 className="text-center">
+      Payment Details
+    </h4>
+  );
 
   icon = () => {
-    const { payment } = this.props.data;
     const { savedAccount } = this.props;
 
     if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
@@ -48,11 +60,10 @@ export default class Payment extends Component {
       );
     }
 
+    const payment = savedAccount.payment;
     const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
 
-    if (!masked) {
-      return null;
-    }
+    if (!masked) return null;
 
     if (payment.type === "ach") {
       return (
@@ -71,6 +82,7 @@ export default class Payment extends Component {
           Discover: d,
         };
 
+        // eslint-disable-next-line
         for (const regex in defaultRegex) {
           if (defaultRegex[regex].test(card.replace(/-/gmi, ""))) {
             return regex;
@@ -85,6 +97,8 @@ export default class Payment extends Component {
         <AccountType width="30px" height="21px" type={getCardType(masked)} />
       );
     }
+
+    return null;
   }
 
 
@@ -141,9 +155,7 @@ export default class Payment extends Component {
             />
           </div>
         </div>
-
       </div>
-
     );
   }
 
@@ -151,7 +163,12 @@ export default class Payment extends Component {
     const { id } = target;
 
     let isValid = false;
-    const notEmpty = value => (value.length > 0);
+    let notEmpty;
+
+    if (value.length > 0) {
+      notEmpty = value;
+    }
+
     const validationMap = {
       accountNumber: notEmpty,
       routingNumber: notEmpty,
@@ -169,7 +186,6 @@ export default class Payment extends Component {
       return true;
     }
 
-
     return isValid;
   }
 
@@ -183,15 +199,18 @@ export default class Payment extends Component {
     }
   }
 
-  formatExp = (str, target, event) => {
+  formatExp = (s, target) => {
     const save = (adjusted) => {
       this.saveData(adjusted, target);
       return adjusted;
     };
 
     let current = this.props.data.payment.expiration;
-    current || (current = "");
-    str = `${str}`;
+    if (!current) {
+      current = "";
+    }
+
+    const str = `${s}`;
 
     if (str.length > 5) {
       return save(str.slice(0, 5));
@@ -205,11 +224,11 @@ export default class Payment extends Component {
       return save(`0${str}/`);
     }
 
-    if (lastNumber === "/" && str.length === 2 && currentLastNumber != "/") {
+    if (lastNumber === "/" && str.length === 2 && currentLastNumber !== "/") {
       return save(`${str}/`);
     }
 
-    if (str.length === 2 && lastNumber != "/" && currentLastNumber != "/") {
+    if (str.length === 2 && lastNumber !== "/" && currentLastNumber !== "/") {
       return save(`${str}/`);
     }
 
@@ -305,15 +324,15 @@ export default class Payment extends Component {
           {(() => {
             if (payment.type === "ach") {
               return this.bankFields();
-            } else {
-              return this.cardFields();
             }
+
+            return this.cardFields();
           })()}
 
           {(() => {
             if (
               !this.props.savedAccount.id &&
-              this.props.transactionType != "guest" &&
+              this.props.transactionType !== "guest" &&
               Object.keys(this.props.schedules).length === 0
             ) {
               return (
@@ -326,6 +345,7 @@ export default class Payment extends Component {
                 </Forms.Checkbox>
               );
             }
+            return null;
           })()}
 
 
@@ -333,7 +353,7 @@ export default class Payment extends Component {
             if (
               this.state.save &&
               !this.props.savedAccount.id &&
-              this.props.transactionType != "guest" &&
+              this.props.transactionType !== "guest" &&
               Object.keys(this.props.schedules).length === 0
             ) {
               return (
@@ -348,18 +368,18 @@ export default class Payment extends Component {
                 />
               );
             }
+            return null;
           })()}
 
         </div>
 
 
         <div>
-          <a href="#" tabIndex={-1} onClick={this.props.back} className="btn--small btn--dark-tertiary display-inline-block">
+          <a href="" tabIndex={-1} onClick={this.props.back} className="btn--small btn--dark-tertiary display-inline-block">
             Back
           </a>
 
           {(() => {
-            const { billing } = this.props.data;
             const btnClasses = ["push-left"];
 
             const ach = (payment.type === "ach" && payment.accountNumber && payment.routingNumber);
