@@ -18,18 +18,19 @@ const Layout = ({ alive, accounts }) => (
       <Split nav classes={["background--light-primary"]}>
 
         <Right
-          background="//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_1x2.jpg"
-          link="/give/schedules"
+            background="//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_1x2.jpg"
+            link="/give/schedules"
         />
 
       </Split>
 
       <Left scroll classes={["background--light-secondary"]} >
-        <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{ overflow: "visible" }}>
+        <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{overflow: "visible"}}>
 
           <div className="text-left soft-double-top@lap-and-up hard-left@lap-and-up soft-half-bottom soft@anchored ">
             <div className="soft-double-ends@palm-wide-and-up soft-ends@palm">
               {(() => {
+
                 if (!alive) {
                   return <Offline />;
                 }
@@ -37,7 +38,7 @@ const Layout = ({ alive, accounts }) => (
                 if (accounts.loading) {
                   return (
                     <div className="one-whole text-center soft-ends">
-                      <Spinner styles={{ width: "40px", height: "40px" }} />
+                      <Spinner styles={{width: "40px", height: "40px"}}/>
                     </div>
                   );
                 }
@@ -49,8 +50,8 @@ const Layout = ({ alive, accounts }) => (
 
         <Link to="/give/schedules" className="visually--hidden@lap-and-up">
           <div className="ratio--landscape@handheld background--fill" style={{
-            backgroundImage: "url(//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_2x1.jpg)",
-          }}>
+              backgroundImage: "url(//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_2x1.jpg)"
+            }}>
             <div className="ratio__item" />
           </div>
         </Link>
@@ -63,12 +64,12 @@ const Layout = ({ alive, accounts }) => (
           <div className="grid">
 
             {(() => {
-              if (!alive) { return null; }
+              if (!alive) { return null }
 
               if (accounts.loading) {
                 return (
                   <div className="one-whole text-center soft-ends">
-                    <Spinner styles={{ width: "40px", height: "40px" }} />
+                    <Spinner styles={{width: "40px", height: "40px"}}/>
                   </div>
                 );
               }
@@ -78,12 +79,13 @@ const Layout = ({ alive, accounts }) => (
               return (
                 <div key={i} className="grid__item one-whole push-half-bottom flush-bottom@handheld hard-bottom">
                   <SideBySide
-                    link={`/give/campaign/${encodeURI(account.name)}`}
-                    linkAll={process.env.NATIVE}
-                    images={account.images}
-                    fallbackImage={account.image}
+                      link={`/give/campaign/${encodeURI(account.name)}`}
+                      linkAll={process.env.NATIVE}
+                      images={account.images}
+                      fallbackImage={account.image}
                   >
                     {(() => {
+
                       if (process.env.NATIVE) {
                         return (
                           <Link className="plain" to={`/give/campaign/${encodeURI(account.name)}`}>
@@ -108,14 +110,15 @@ const Layout = ({ alive, accounts }) => (
                             </h4>
                             <p><small>{account.summary}</small></p>
                             <Link
-                              to={`/give/campaign/${encodeURI(account.name)}`}
-                              className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
+                                to={`/give/campaign/${encodeURI(account.name)}`}
+                                className="h6 btn--small btn--dark-tertiary soft-sides@portable one-whole@handheld"
                             >
                               Learn more
                             </Link>
                           </div>
                         );
                       }
+
                     })()}
 
 
