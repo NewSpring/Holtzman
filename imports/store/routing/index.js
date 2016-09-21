@@ -47,8 +47,12 @@ export function routeReducer(state = initialState, { type, payload: location }) 
 // Syncing
 
 export function syncHistory(history) {
-  let unsubscribeHistory, currentKey, unsubscribeStore;
-  let connected = false, syncing = false;
+  let unsubscribeHistory;
+  let currentKey;
+  let unsubscribeStore;
+
+  let connected = false;
+  let syncing = false;
 
   history.listen((location) => { initialState.location = location; })();
 
@@ -60,13 +64,18 @@ export function syncHistory(history) {
         return;
       }
       const { routing } = store.getState();
-      location.previous || (location.previous = []);
-      routing.location.previous || (routing.location.previous = []);
+      if (!location.previous) {
+        location.previous = []; // eslint-disable-line no-param-reassign
+      }
+      if (!routing.location.previous) {
+        routing.location.previous = [];
+      }
 
       if (routing.location.previous[routing.location.previous.length - 1] === location.pathname) {
         routing.location.previous.splice(-1);
-        location.previous = routing.location.previous;
+        location.previous = routing.location.previous; // eslint-disable-line no-param-reassign
       } else {
+        // eslint-disable-next-line no-param-reassign
         location.previous = [...routing.location.previous, ...[routing.location.pathname]];
       }
 
@@ -76,14 +85,13 @@ export function syncHistory(history) {
 
     connected = true;
 
+    // eslint-disable-next-line consistent-return
     return next => (action) => {
       if (action.type !== TRANSITION || !connected) {
         return next(action);
       }
 
-      const { routing } = store.getState();
-
-      let { payload: { method, args } } = action;
+      const { payload: { method, args } } = action;
 
       history[method](...args);
     };
