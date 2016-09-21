@@ -20,16 +20,16 @@ const initial = {
 
 export default createReducer(initial, {
 
-  ["SHARE.SHARE"]: function (state, action) {
-    return { ...state,
+  "SHARE.SHARE": (state) => (
+    { ...state,
       sharing: !state.sharing,
-    };
-  },
+    }
+  ),
 
-  ["SHARE.SET"]: function (state, action) {
-    return { ...state,
+  "SHARE.SET": (state, action) => (
+    { ...state,
       content: { ...state.content, ...action.content },
-    };
-  },
+    }
+  ),
 
 });
