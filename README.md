@@ -59,7 +59,7 @@ To install, clone down this repo and run `npm link`. This will bind `apollos` to
 
 ## Linting
 
-This project includes linting using ESLint.  To enable linting in Visual Studio Code, you will need to install the ESLint extension.
+This project includes linting using [ESLint](http://eslint.org/).  To enable linting in Visual Studio Code, you will need to install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
 To install the extension you'll need to press `⌘+P`, paste the following command and press enter.
 
