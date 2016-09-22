@@ -32,10 +32,10 @@ export default class ListDetail extends Component {
     dispatch: PropTypes.func.isRequired,
     header: PropTypes.object.isRequired,
     audio: PropTypes.object.isRequired,
-      album: PropTypes.oneOfType([
-          PropTypes.func,
-          PropTypes.object,
-      ]).isRequired,
+    album: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.object,
+    ]).isRequired,
     trackNumber: PropTypes.number.isRequired,
   }
 

@@ -10,7 +10,7 @@ export default class AudioTrack extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    album:  PropTypes.object.isRequired,
+    album: PropTypes.object.isRequired,
     albumTitle: PropTypes.string,
     track: PropTypes.object.isRequired,
     trackNumber: PropTypes.number.isRequired,
