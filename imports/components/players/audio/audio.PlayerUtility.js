@@ -20,7 +20,7 @@ function mapStateToProps(state) {
 export default class AudioPlayerUtility extends Component {
 
   static propTypes = {
-    audio: PropTypes.object, // eslint-disable-line
+    audio: PropTypes.object,
     loading: PropTypes.func,
     ready: PropTypes.func,
     play: PropTypes.func,
@@ -28,12 +28,12 @@ export default class AudioPlayerUtility extends Component {
     next: PropTypes.func,
     restart: PropTypes.func,
     setPlaying: PropTypes.func,
-
   };
 
   componentWillUpdate(nextProps) {
     const nextAudio = nextProps.audio;
     const { audio } = this.props;
+
 
     // change of track to play
     if (audio.playing.track.title !== nextAudio.playing.track.title) {
@@ -43,8 +43,10 @@ export default class AudioPlayerUtility extends Component {
     // change of state
     if (audio.state !== nextAudio.state && audio.state !== "default") {
       // play || pause
-      // eslint-disable-next-line max-len
-      if (((audio.state !== "next" && audio.state !== "previous") && nextAudio.state === "playing") || nextAudio.state === "paused") {
+      if (
+        (audio.state !== "next" && audio.state !== "previous") &&
+        (nextAudio.state === "playing" || nextAudio.state === "paused")
+      ) {
         this.toggle(nextAudio.state);
       }
 
@@ -67,18 +69,20 @@ export default class AudioPlayerUtility extends Component {
 
   tracksWithFiles = () => {
     const { playlist } = this.props.audio;
-    return _.filter(playlist, track =>
+    return _.filter(playlist, track => (
       track.file
-    );
+    ));
   }
 
   createPlayer = (track, autoload) => {
     // only make sweet jams on client side
     if (typeof window === "undefined" || window === null) {
-      return;
+      return null;
     }
 
-    if (!track.file) return;
+    if (!track.file) {
+      return null;
+    }
 
     // if (this.player && this.player.stop) {
     //   this.player.stop();
@@ -86,7 +90,8 @@ export default class AudioPlayerUtility extends Component {
     // }
 
     if (track.file.indexOf("http") === -1) {
-      track.file = `https:${track.file}`; // eslint-disable-line
+      // eslint-disable-next-line no-param-reassign
+      track.file = `https:${track.file}`;
     }
 
     // set loading state
@@ -156,6 +161,8 @@ export default class AudioPlayerUtility extends Component {
     player.ended(() => {
       this.props.next();
     });
+
+    return player;
   }
 
   toggle = (playerState) => {
@@ -199,7 +206,8 @@ export default class AudioPlayerUtility extends Component {
         let next;
 
         switch (order) {
-          case "shuffle": {
+          // eslint-disable-next-line no-case-declarations
+          case "shuffle":
             let randomId = Math.floor(Math.random() * playlist.length);
             while (randomId === index) {
               randomId = Math.floor(Math.random() * playlist.length);
@@ -207,14 +215,12 @@ export default class AudioPlayerUtility extends Component {
 
             next = playlist[randomId];
             break;
-          }
-          default: {
+          default:
             if ((playlist.length - 1) === index) {
               next = playlist[0];
             } else {
               next = playlist[index + 1];
             }
-          }
         }
 
         // This file needs cleanup
@@ -248,7 +254,9 @@ export default class AudioPlayerUtility extends Component {
         this.setState({ force: false });
 
         switch (order) {
-          case "shuffle": {
+          // eslint-disable-next-line no-case-declarations
+          case "shuffle":
+
             let randomId = Math.floor(Math.random() * playlist.length);
             while (randomId === index) {
               randomId = Math.floor(Math.random() * playlist.length);
@@ -256,14 +264,12 @@ export default class AudioPlayerUtility extends Component {
 
             prev = playlist[randomId];
             break;
-          }
-          default: {
+          default:
             if (index === 0) {
               prev = playlist[playlist.length - 1];
             } else {
               prev = playlist[index - 1];
             }
-          }
         }
 
         if (repeat === "repeat-one") {
@@ -287,5 +293,4 @@ export default class AudioPlayerUtility extends Component {
   render() {
     return <span />;
   }
-
 }
