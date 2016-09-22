@@ -3,7 +3,6 @@ import { Component, PropTypes } from "react";
 import gql from "graphql-tag";
 
 import Forms from "../../components/forms";
-import inAppLink from "../../util/inAppLink";
 
 const campusLookup = gql`
   query GeoLocate($origin: String, $destinations: String) {

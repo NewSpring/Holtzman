@@ -116,8 +116,6 @@ class Template extends Component {
   }
 }
 
-
-
 const Routes = [
   { path: "/series", component: Template },
   { path: "/series/:id", component: Single },
