@@ -10,4 +10,4 @@ function makeNewGuid() {
   return guid.toUpperCase();
 }
 
-export default { makeNewGuid };
+export default makeNewGuid;

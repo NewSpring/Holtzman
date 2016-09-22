@@ -2,7 +2,7 @@
 
 import { inherit } from "./inherit";
 import { base64Encode, base64Decode } from "./encode";
-import { makeNewGuid } from "./guid";
+import makeNewGuid from "./guid";
 import XML from "./xml";
 
 import format from "./format";
