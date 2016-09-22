@@ -59,9 +59,7 @@ export default class StoriesSingle extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    story: {
-      content: PropTypes.object,
-    },
+    story: PropTypes.object,
   }
 
   componentWillMount() {

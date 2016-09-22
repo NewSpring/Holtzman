@@ -74,12 +74,8 @@ export default class SeriesSingle extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    live: {
-      live: PropTypes.bool.isRequired,
-    },
-    devotion: {
-      content: PropTypes.object.isRequired,
-    },
+    live: PropTypes.object.isRequired,
+    devotion: PropTypes.object.isRequired,
   }
 
   state = { selectedIndex: 0 }
