@@ -10,12 +10,12 @@ import Layout from "./Layout";
 export default class SubFund extends Component {
 
   static propTypes = {
-    primary: PropTypes.string,
+    primary: PropTypes.bool,
     accounts: PropTypes.array, // eslint-disable-line
     update: PropTypes.func,
-    selectVal: PropTypes.string,
+    selectVal: PropTypes.number,
     inputVal: PropTypes.string,
-    instance: PropTypes.object, // eslint-disable-line
+    instance: PropTypes.number, // eslint-disable-line
     clearTransaction: PropTypes.func,
     addTransactions: PropTypes.func,
     remove: PropTypes.func,

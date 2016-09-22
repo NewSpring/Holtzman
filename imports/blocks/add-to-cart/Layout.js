@@ -12,7 +12,7 @@ export default class Layout extends Component {
   static propTypes = {
     accounts: PropTypes.array, // eslint-disable-line
     preFill: PropTypes.func,
-    total: PropTypes.string,
+    total: PropTypes.number,
     monentize: PropTypes.func,
     donate: PropTypes.func,
   }
