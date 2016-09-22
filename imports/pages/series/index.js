@@ -64,6 +64,11 @@ const mapStateToProps = state => ({ paging: state.paging });
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+  };
+
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     this.headerAction({ title: "All Series" });
@@ -112,13 +117,7 @@ class Template extends Component {
   }
 }
 
-Template.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  data: {
-    refetch: PropTypes.func.isRequired,
-    content: PropTypes.object.isReqruired,
-  },
-};
+
 
 const Routes = [
   { path: "/series", component: Template },

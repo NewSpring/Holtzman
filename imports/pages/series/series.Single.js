@@ -77,12 +77,8 @@ export default class SeriesSingle extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    series: {
-      content: PropTypes.object.isRequired,
-    },
-    params: {
-      id: PropTypes.string.isRequired,
-    },
+    series: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
   }
 
   componentWillMount() {

@@ -81,12 +81,9 @@ export default class Home extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    topics: PropTypes.object.isRequired,
+    topics: PropTypes.array.isRequired,
     paging: PropTypes.object.isRequired,
-    data: {
-      refetch: PropTypes.func.isRequired,
-      feed: PropTypes.array.isRequired,
-    },
+    data: PropTypes.object.isRequired,
   }
 
   componentWillMount() {

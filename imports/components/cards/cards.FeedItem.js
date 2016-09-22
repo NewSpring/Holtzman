@@ -12,7 +12,10 @@ import time from "../../util/time";
 export default class FeedItem extends Component {
 
   static propTypes = {
-    item: PropTypes.object.isRequired // eslint-disable-line
+    item: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object,
+    ]).isRequired, // eslint-disable-line
   }
 
   isLight = () => {
