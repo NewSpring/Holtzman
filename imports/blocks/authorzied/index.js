@@ -14,11 +14,11 @@ const map = state => ({
 @connect(map)
 export default class Authorized extends Component {
 
-  propTypes = {
+  static propTypes = {
     dispatch: PropTypes.func,
-    auth: PropTypes.object, // eslint-disable-line
-    modal: PropTypes.object, // eslint-disable-line
-    children: PropTypes.object, // eslint-disable-line
+    auth: PropTypes.bool,
+    modal: PropTypes.object,
+    children: PropTypes.object,
   }
 
   componentWillMount() {

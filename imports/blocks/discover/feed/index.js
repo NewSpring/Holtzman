@@ -36,8 +36,8 @@ const mapQueriesToProps = () => ({
 @connect({ mapQueriesToProps })
 export default class Discover extends Component {
 
-  propTypes = {
-    discover: PropTypes.func.isRequired,
+  static propTypes = {
+    discover: PropTypes.object.isRequired,
   }
 
   render() {

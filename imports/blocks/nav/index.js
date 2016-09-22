@@ -19,10 +19,10 @@ const map = state => ({
 export default class NavContainer extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.object,
-    liked: PropTypes.bool,
+    dispatch: PropTypes.func,
+    liked: PropTypes.object,
     state: PropTypes.object,
-    modal: PropTypes.string,
+    modal: PropTypes.object,
     path: PropTypes.string,
   }
 
