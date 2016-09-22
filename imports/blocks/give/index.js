@@ -20,19 +20,12 @@ import Success from "./Success";
 const mapQueriesToProps = () => ({
   data: {
     query: gql`
-      fragment DefinedValues on DefinedValue {
-        name: description
-        value
-        id
-        _id
-      }
-
       query GetCheckoutData($state: Int!, $country: Int!) {
         states: definedValues(id: $state, all: true) {
-          ...DefinedValues
+          name: description, value, id, _id
         }
         countries: definedValues(id: $country, all: true) {
-          ...DefinedValues
+          name: description, value, id, _id
         }
         person: currentPerson {
           firstName
