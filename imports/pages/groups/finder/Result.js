@@ -97,10 +97,10 @@ export default class Template extends Component {
   static propTypes = {
     q: PropTypes.string,
     dispatch: PropTypes.func.isRequired,
-    data: PropTypes.array.isRequired,
     tags: PropTypes.string.isRequired,
     location: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
+    data: PropTypes.oneOfType([ PropTypes.array, PropTypes.object])
   }
 
   state = {
