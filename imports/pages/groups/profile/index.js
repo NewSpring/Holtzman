@@ -58,9 +58,7 @@ export default class Template extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    data: {
-      group: PropTypes.object.isRequired,
-    },
+    data: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
