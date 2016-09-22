@@ -26,4 +26,6 @@ fetch.Promise = Promise;
 api.registerEndpoint(Meteor.settings.rock);
 
 // setup collection observations
-Give();
+if (process.env.WEB) {
+  Give();
+}
