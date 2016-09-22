@@ -172,7 +172,6 @@ export default class Layout extends Component {
                       "display-inline-block rounded  push-right card text-left"
                     }
                     style={style}
-                    onClick={inAppLink}
                   >
                     <div className="one-whole soft-sides text-left floating__item">
                       <h4>{campus.name}</h4>
