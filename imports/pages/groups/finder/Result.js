@@ -100,7 +100,7 @@ export default class Template extends Component {
     tags: PropTypes.string.isRequired,
     location: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
-    data: PropTypes.oneOfType([ PropTypes.array, PropTypes.object])
+    data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   }
 
   state = {
