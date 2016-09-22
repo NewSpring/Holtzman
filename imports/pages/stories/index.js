@@ -65,10 +65,7 @@ class Template extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    data: {
-      content: PropTypes.object.isRequired,
-      refetch: PropTypes.func.isRequired,
-    },
+    data: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
