@@ -18,9 +18,8 @@ StoryImage.propTypes = {
   story: PropTypes.object.isRequired,
 };
 
-const StoriesContent = () => {
-  const story = this.props.story;
-
+const StoriesContent = (props) => {
+  const { story } = props;
   return (
     <div>
       <section className="background--light-primary hard-sides hard-top">
@@ -36,8 +35,11 @@ const StoriesContent = () => {
       </section>
       <RelatedContent excludedIds={[story.id]} tags={story.content.tags} />
     </div>
-
   );
+};
+
+StoriesContent.propTypes = {
+  story: PropTypes.object.isRequired,
 };
 
 export default StoriesContent;
