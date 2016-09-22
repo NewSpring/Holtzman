@@ -22,7 +22,7 @@ export default class SplitContainer extends Component {
     theme: PropTypes.string,
     styles: PropTypes.object,
     nav: PropTypes.bool,
-    children: PropTypes.object,
+    children: PropTypes.array,
     navigation: PropTypes.object,
   }
 

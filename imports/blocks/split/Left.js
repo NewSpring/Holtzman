@@ -9,7 +9,7 @@ export default class Left extends Component {
     width: PropTypes.string,
     background: PropTypes.string,
     styles: PropTypes.object,
-    children: PropTypes.object,
+    children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   }
 
   layoutClasses = () => {

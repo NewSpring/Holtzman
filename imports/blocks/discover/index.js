@@ -20,10 +20,10 @@ const mapStateToProps = state => ({ search: state.search });
 @ReactMixin.decorate(Headerable)
 export default class SearchContainer extends Component {
 
-  propTypes = {
-    dispatch: PropTypes.func,
-    search: PropTypes.func,
-    query: PropTypes.string,
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    search: PropTypes.object.isRequired,
+    query: PropTypes.func.isRequired,
   }
 
   componentWillMount() {
