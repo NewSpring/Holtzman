@@ -33,7 +33,7 @@ export default class Filter extends Component {
     attributes: PropTypes.object.isRequired,
     showSearch: PropTypes.bool.isRequired,
     showTags: PropTypes.bool.isRequired,
-    q: PropTypes.string.isRequired,
+    q: PropTypes.string,
   }
 
   state = { query: null }

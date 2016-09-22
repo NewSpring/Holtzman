@@ -67,15 +67,15 @@ const mapStateToProps = state => ({ accounts: state.accounts });
 class AccountsContainer extends Component { // eslint-disable-line
 
   static propTypes = {
-    account: PropTypes.object, // eslint-disable-line
-    accounts: PropTypes.object, // eslint-disable-line
+    account: PropTypes.object,
+    accounts: PropTypes.object,
     authorize: PropTypes.func,
-    completeAccount: PropTypes.func, // eslint-disable-line
+    completeAccount: PropTypes.func,
     hide: PropTypes.func,
     onFinished: PropTypes.func,
-    onSignin: PropTypes.onSignin,
+    onSignin: PropTypes.func,
     remember: PropTypes.func,
-    reset: PropTypes.reset,
+    reset: PropTypes.func,
     resetAccount: PropTypes.func,
     forgot: PropTypes.func,
     setAccount: PropTypes.func,
