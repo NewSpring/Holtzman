@@ -22,8 +22,8 @@ export default class SplitContainer extends Component {
     theme: PropTypes.string,
     styles: PropTypes.object,
     nav: PropTypes.bool,
-    children: PropTypes.array,
     navigation: PropTypes.object,
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   }
 
   static defaultProps = {
