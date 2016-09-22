@@ -7,7 +7,7 @@ import gql from "graphql-tag";
 import { Loading, Error as Err } from "../../components/states";
 import accountsActions from "../../store/accounts";
 import modalActions from "../../store/modal";
-import headerActions from "../../store/header";
+// import headerActions from "../../store/header";
 
 // import Loading from "./Loading"
 import SignIn from "./Signin";
@@ -71,7 +71,6 @@ class AccountsContainer extends Component { // eslint-disable-line
     accounts: PropTypes.object, // eslint-disable-line
     authorize: PropTypes.func,
     completeAccount: PropTypes.func, // eslint-disable-line
-    dispatch: PropTypes.func,
     hide: PropTypes.func,
     onFinished: PropTypes.func,
     onSignin: PropTypes.onSignin,
@@ -91,7 +90,8 @@ class AccountsContainer extends Component { // eslint-disable-line
   }
 
   componentWillMount() {
-    if (process.env.NATIVE) this.props.dispatch(headerActions.hide());
+    // XXX this doesn't work because we are mapping dispatch to props
+    // if (process.env.NATIVE) this.props.dispatch(headerActions.hide());
 
     if (typeof this.props.account !== "undefined") {
       this.setState({ account: this.props.account });
@@ -138,7 +138,8 @@ class AccountsContainer extends Component { // eslint-disable-line
   }
 
   componentWillUnmount() {
-    if (process.env.NATIVE) this.props.dispatch(headerActions.show());
+    // XXX this doesn't work because we are mapping dispatch to props
+    // if (process.env.NATIVE) this.props.dispatch(headerActions.show());
   }
 
   setAccountWrapper = (bool) => {
