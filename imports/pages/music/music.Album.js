@@ -71,11 +71,12 @@ export default class MusicAlbum extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    album: {
-      content: PropTypes.object.isRequired,
-    },
-    modalVisible: PropTypes.bool.isRequired,
-    albumArtist: PropTypes.string.isRequired,
+    album: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.object,
+    ]).isRequired,
+    modalVisible: PropTypes.bool,
+    albumArtist: PropTypes.string,
   }
 
   state = {
