@@ -57,7 +57,7 @@ const mapStateToProps = state => ({
 @connect({ mapStateToProps, mapQueriesToProps })
 export default class Give extends Component {
 
-  propTypes = {
+  static propTypes = {
     give: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
@@ -154,11 +154,7 @@ export default class Give extends Component {
   }
 
   monentize = (amount, fixed) => {
-    let value;
-
-    if (typeof amount === "number") {
-      value = `${amount}`;
-    }
+    let value = typeof amount === "number" ? `${amount}` : amount;
 
     if (!value.length) {
       return "$0.00";

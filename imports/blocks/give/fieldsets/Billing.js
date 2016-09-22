@@ -24,9 +24,7 @@ export default class Billing extends Component {
   );
 
   streetAddress = (value) => {
-    const isValid = value.length === 1;
-
-    if (!isValid) {
+    if (!value.length) {
       this.props.clear("billing", "streetAddress");
     } else {
       this.props.save({ billing: { streetAddress: value } });
@@ -53,9 +51,7 @@ export default class Billing extends Component {
   }
 
   saveCountry = (value) => {
-    const isValid = value.length === 1;
-
-    if (!isValid) {
+    if (!value.length) {
       this.props.clear("billing", "country");
     } else {
       this.props.save({ billing: { country: value } });

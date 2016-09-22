@@ -24,9 +24,7 @@ export default class Personal extends Component {
 
 
   firstName = (value) => {
-    const isValid = value.length === 1;
-
-    if (!isValid) {
+    if (!value.length) {
       this.props.clear("firstName");
     } else {
       this.props.save({
@@ -52,9 +50,7 @@ export default class Personal extends Component {
   }
 
   lastName = (value) => {
-    const isValid = value.length === 1;
-
-    if (!isValid) {
+    if (!value.length) {
       this.props.clear("lastName");
     } else {
       this.props.save({ personal: { lastName: value } });
@@ -168,7 +164,11 @@ export default class Personal extends Component {
             }
 
             return (
-              <button className={btnClasses.join(" ")} disabled={disabled} onClick={this.props.next}>
+              <button
+                className={btnClasses.join(" ")}
+                disabled={disabled}
+                onClick={this.props.next}
+              >
                 Next
               </button>
             );
