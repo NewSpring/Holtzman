@@ -29,7 +29,7 @@ export default class Header extends Component {
     isSearch: PropTypes.bool,
     color: PropTypes.string,
     searching: PropTypes.bool,
-    searchSubmit: PropTypes.bool,
+    searchSubmit: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     text: PropTypes.string,
     subText: PropTypes.string,
   }
