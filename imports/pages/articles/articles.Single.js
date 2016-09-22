@@ -73,9 +73,7 @@ export default class ArticlesSingle extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    article: {
-      content: PropTypes.object.isRequired,
-    },
+    article: PropTypes.object.isRequired,
   }
 
   componentWillMount() {

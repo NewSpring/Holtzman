@@ -110,18 +110,10 @@ export default class SeriesSingleVideo extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    live: {
-      live: PropTypes.bool.isRequired,
-    },
-    currentSermon: {
-      content: PropTypes.object.isRequired,
-    },
-    series: {
-      content: PropTypes.object.isRequired,
-    },
-    params: {
-      id: PropTypes.string.isRequired,
-    },
+    live: PropTypes.object.isRequired,
+    currentSermon: PropTypes.object.isRequired,
+    series: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
