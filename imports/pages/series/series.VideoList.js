@@ -43,13 +43,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
 export default class SeriesVideoList extends Component {
 
   static propTypes = {
-    sermons: {
-      content: {
-        sermons: {
-          length: PropTypes.string.isRequired,
-        },
-      },
-    },
+    sermons: PropTypes.object.isRequired,
   }
 
   dynamicWidth = () => {
