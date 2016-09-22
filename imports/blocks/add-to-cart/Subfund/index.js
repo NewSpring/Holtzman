@@ -9,7 +9,7 @@ import Layout from "./Layout";
 @connect(null, giveActions)
 export default class SubFund extends Component {
 
-  propTypes = {
+  static propTypes = {
     primary: PropTypes.string,
     accounts: PropTypes.array, // eslint-disable-line
     update: PropTypes.func,
@@ -55,11 +55,7 @@ export default class SubFund extends Component {
   }
 
   monentize = (amount, fixed) => {
-    let value;
-
-    if (typeof amount === "number") {
-      value = `${amount}`;
-    }
+    let value = typeof amount === "number" ? `${amount}` : amount;
 
     if (!value.length) {
       return "$0.00";
