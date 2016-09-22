@@ -1,7 +1,7 @@
 /* global __meteor_runtime_config__ serverWatch */
 /* eslint-disable no-param-reassign */
 
-import { makeNewGuid } from "../guid";
+import makeNewGuid from "../guid";
 
 export default function startup(api) {
   if (Meteor.isServer) {
