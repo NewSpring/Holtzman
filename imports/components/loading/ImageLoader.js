@@ -1,8 +1,7 @@
-import { Component, PropTypes } from "react";
-import ReactDOM from "react-dom";
+import React, { Component, PropTypes } from "react";
 import Debouncer from "./../../util/debounce";
 
-const { span } = ReactDOM;
+const { span } = React.DOM;
 
 const Status = {
   PENDING: "pending",
@@ -11,21 +10,19 @@ const Status = {
   FAILED: "failed",
 };
 
-
 export default class ImageLoader extends Component {
   static propTypes = {
     wrapper: PropTypes.func,
     className: PropTypes.string,
-    style: PropTypes.object, // eslint-disable-line
+    style: PropTypes.object,
     preloader: PropTypes.func,
     src: PropTypes.string,
     onLoad: PropTypes.func,
     onError: PropTypes.func,
-    imgProps: PropTypes.object, // eslint-disable-line
+    imgProps: PropTypes.object,
     force: PropTypes.bool,
     renderElement: PropTypes.func,
-    children: PropTypes.any, // eslint-disable-line
-    imgProps: PropTypes.array, // eslint-disable-line
+    children: PropTypes.object,
   };
 
   static defaultProps = {
@@ -84,7 +81,7 @@ export default class ImageLoader extends Component {
 
 
     // lazy load only if in view on client
-    let el = this.node;
+    let el = this.loader;
     el = el.children[0];
 
     const isElementInView = (e) => {
@@ -107,19 +104,15 @@ export default class ImageLoader extends Component {
             makeImage();
             return;
           }
-
           // remove related event listener and add a new one back
           window.removeEventListener("scroll", this.debounce, false);
           window.addEventListener("scroll", this.debounce, false);
           return;
         };
-
         // SetTimeout to prevent false calls on scrolling
         setTimeout(callback, 300);
-
         // remove inital eventlistener to scope a new one inside the timeout function
         window.removeEventListener("scroll", this.debounce, false);
-
         return;
       }
     };
@@ -163,14 +156,15 @@ export default class ImageLoader extends Component {
     const { src, imgProps } = this.props;
     const props = { src };
 
-    imgProps.map((k) => {
-      if ({}.hasOwnProperty.call(imgProps, "k")) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const k in imgProps) {
+      // eslint-disable-next-line no-prototype-builtins
+      if (imgProps.hasOwnProperty(k)) {
         props[k] = imgProps[k];
       }
-      return undefined;
-    });
+    }
 
-    return <img {...props} role="presentation" />;
+    return <img role="presentation" {...props} />;
   }
 
   render() {
@@ -190,7 +184,6 @@ export default class ImageLoader extends Component {
 
     const wrapperArgs = [wrapperProps];
 
-
     switch (this.state.status) {
       case Status.LOADED:
         if (this.props.renderElement) {
@@ -209,6 +202,10 @@ export default class ImageLoader extends Component {
         break;
     }
 
-    return <span ref={node => (this.node = node)}>{this.props.wrapper(...wrapperArgs)}</span>;
+    return (
+      <span ref={(node) => { this.loader = node; }}>
+        {this.props.wrapper(...wrapperArgs)}
+      </span>
+    );
   }
 }
