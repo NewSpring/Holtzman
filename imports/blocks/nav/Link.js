@@ -1,16 +1,21 @@
 import { Component, PropTypes } from "react";
 import { css } from "aphrodite";
 
-// import { routeActions } from "../../store/routing";
+import { routeActions } from "../../store/routing";
 import styles from "./nav-css";
+
+if (Meteor.isClient) {
+  // eslint-disable-next-line no-unused-vars
+  import velocity from "velocity-animate";
+}
 
 export default class NavLink extends Component {
 
   static propTypes = {
     navItem: PropTypes.object.isRequired,
-    handleAction: PropTypes.string,
     fgColor: PropTypes.string,
-    reset: PropTypes,
+    reset: PropTypes.func.isRequired,
+    handleAction: PropTypes.func.isRequired,
   }
 
   linkClasses = () => {
@@ -60,22 +65,26 @@ export default class NavLink extends Component {
       return;
     }
 
-    // function navigate() {
-    //   if (navItem.link &&
-    // (window.location.search || navItem.link !== window.location.pathname)) {
-    //     this.props.handleAction(navigate);
-    //     return routeActions.push(navItem.link);
-    //   }
-    //   return null;
-    // }
+    if (navItem.link && (window.location.search || navItem.link !== window.location.pathname)) {
+      const navigate = () => (
+        routeActions.push(navItem.link)
+      );
+      this.props.handleAction(navigate);
+      return;
+    }
 
     // XXX this was making the nav jump since its in the body...
-    // if (navItem.link && (navItem.link === window.location.pathname)) {
-    //   $("body").velocity("scroll", {
-    //     duration: 350,
-    //     easing: "ease-in",
-    //   }); // smooth scroll to the top
-    // }
+    if (navItem.link && (navItem.link === window.location.pathname)) {
+      const containers = document.querySelectorAll("[data-status-scroll=\"true\"]");
+      if (containers && containers.length) {
+        // eslint-disable-next-line no-undef
+        velocity(containers[0], "scroll", {
+          duration: 350,
+          easing: "ease-in",
+          offset: -80,
+        }); // smooth scroll to the top
+      }
+    }
   }
 
   render() {

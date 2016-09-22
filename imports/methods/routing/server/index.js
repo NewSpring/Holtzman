@@ -1,7 +1,7 @@
 // /*global Meteor, check */
 // import { api } from "../../../util/rock"
 // import { Sessions } from "../../../database/collections"
-// import { makeNewGuid } from "../../../util/guid"
+// import makeNewGuid from "../../../util/guid"
 // import Moment from "moment"
 //
 // Meteor.methods({

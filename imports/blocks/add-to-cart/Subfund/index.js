@@ -9,13 +9,13 @@ import Layout from "./Layout";
 @connect(null, giveActions)
 export default class SubFund extends Component {
 
-  propTypes = {
-    primary: PropTypes.string,
+  static propTypes = {
+    primary: PropTypes.bool,
     accounts: PropTypes.array, // eslint-disable-line
     update: PropTypes.func,
-    selectVal: PropTypes.string,
+    selectVal: PropTypes.number,
     inputVal: PropTypes.string,
-    instance: PropTypes.object, // eslint-disable-line
+    instance: PropTypes.number, // eslint-disable-line
     clearTransaction: PropTypes.func,
     addTransactions: PropTypes.func,
     remove: PropTypes.func,
@@ -50,31 +50,29 @@ export default class SubFund extends Component {
   }
 
   getFund = (id) => {
-    const selectedFund = this.props.accounts.filter(fund => fund.value === id);
+    const selectedFund = this.props.accounts.filter(fund => (
+      Number(fund.value) === Number(id)
+    ));
     return selectedFund[0];
   }
 
-  monentize = (amount, fixed) => {
-    let value;
+  monentize = (value, fixed) => {
+    let amount = typeof value === "number" ? `${value}` : value;
 
-    if (typeof amount === "number") {
-      value = `${amount}`;
-    }
-
-    if (!value.length) {
+    if (!amount.length) {
       return "$0.00";
     }
 
-    value = value.replace(/[^\d.-]/g, "");
+    amount = amount.replace(/[^\d.-]/g, "");
 
-    const decimals = value.split(".")[1];
+    const decimals = amount.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
-      value = Number(value).toFixed(2);
-      value = String(value);
+      amount = Number(amount).toFixed(2);
+      amount = String(amount);
     }
 
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${value}`;
+    amount = amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return `$${amount}`;
   }
 
   saveFund = (id) => {
@@ -102,19 +100,21 @@ export default class SubFund extends Component {
 
     // we have monies, lets update the store
     if (this.state.amount) {
-      this.props.addTransactions({ [id]: {
-        value: Number(`${this.state.amount}`.replace(/[^0-9\.]+/g, "")),
-        label: fund.label,
-      } });
+      this.props.addTransactions({
+        [id]: {
+          value: Number(`${this.state.amount}`.replace(/[^0-9\.]+/g, "")),
+          label: fund.label,
+        },
+      });
 
       this.props.update(this.props.instance, id, this.state.amount);
     }
   }
 
-  saveAmount = (amount) => {
-    const value = this.monentize(amount);
+  saveAmount = (value) => {
+    const amount = this.monentize(value);
 
-    const numberValue = Number(value.replace(/[^\d.-]/g, ""));
+    const numberValue = Number(amount.replace(/[^\d.-]/g, ""));
 
     if (numberValue > 0) {
       this.setState({
@@ -126,10 +126,12 @@ export default class SubFund extends Component {
       if (this.state.fund) {
         const { id } = this.state;
         const fund = this.getFund(id);
-        this.props.addTransactions({ [id]: {
-          value: Number(value.replace(/[^0-9\.]+/g, "")),
-          label: fund.label,
-        } });
+        this.props.addTransactions({
+          [id]: {
+            value: Number(amount.replace(/[^0-9\.]+/g, "")),
+            label: fund.label,
+          },
+        });
 
         this.props.update(this.props.instance, id, numberValue);
       }
@@ -145,14 +147,13 @@ export default class SubFund extends Component {
       // })
     }
 
-    return value;
+    return amount;
   }
 
   statusClass = () => {
     if (this.state.fund) {
       return "text-dark-tertiary";
     }
-
     return "text-light-tertiary";
   }
 

@@ -16,7 +16,7 @@ function mapStateToProps(state) {
 @connect(mapStateToProps, audioActions)
 export default class MiniPlayer extends Component {
 
-  propTypes = {
+  static propTypes = {
     classes: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.array,

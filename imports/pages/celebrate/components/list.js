@@ -105,8 +105,7 @@ ListItem.propTypes = {
 const map = store => ({
   width: store.responsive.width,
 });
-const List = () => {
-  const { items } = this.props;
+const List = ({ items }) => {
   let count = 0;
   return (
     <div
@@ -127,6 +126,10 @@ const List = () => {
       </section>
     </div>
   );
+};
+
+List.propTypes = {
+  items: PropTypes.array.isRequired,
 };
 
 export default connect(map)(List);

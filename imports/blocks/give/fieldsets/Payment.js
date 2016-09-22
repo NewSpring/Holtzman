@@ -9,7 +9,7 @@ import Format from "../../../util/format";
 
 export default class Payment extends Component {
 
-  propTypes = {
+  static propTypes = {
     save: PropTypes.func,
     data: PropTypes.object,
     savedAccount: PropTypes.object,
@@ -20,8 +20,6 @@ export default class Payment extends Component {
     schedules: PropTypes.array,
     back: PropTypes.func,
     next: PropTypes.func,
-
-
   }
 
   state = {
@@ -51,6 +49,7 @@ export default class Payment extends Component {
   );
 
   icon = () => {
+    const { payment } = this.props.data;
     const { savedAccount } = this.props;
 
     if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
@@ -60,10 +59,11 @@ export default class Payment extends Component {
       );
     }
 
-    const payment = savedAccount.payment;
     const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
 
-    if (!masked) return null;
+    if (!masked) {
+      return null;
+    }
 
     if (payment.type === "ach") {
       return (
@@ -82,7 +82,7 @@ export default class Payment extends Component {
           Discover: d,
         };
 
-        // eslint-disable-next-line
+        // eslint-disable-next-line no-restricted-syntax
         for (const regex in defaultRegex) {
           if (defaultRegex[regex].test(card.replace(/-/gmi, ""))) {
             return regex;
@@ -100,7 +100,6 @@ export default class Payment extends Component {
 
     return null;
   }
-
 
   toggles = ["Credit Card", "Bank Account"]
 
@@ -163,12 +162,7 @@ export default class Payment extends Component {
     const { id } = target;
 
     let isValid = false;
-    let notEmpty;
-
-    if (value.length > 0) {
-      notEmpty = value;
-    }
-
+    const notEmpty = inputVal => (inputVal.length > 0);
     const validationMap = {
       accountNumber: notEmpty,
       routingNumber: notEmpty,
@@ -375,7 +369,12 @@ export default class Payment extends Component {
 
 
         <div>
-          <a href="" tabIndex={-1} onClick={this.props.back} className="btn--small btn--dark-tertiary display-inline-block">
+          <a
+            href=""
+            tabIndex={-1}
+            onClick={this.props.back}
+            className="btn--small btn--dark-tertiary display-inline-block"
+          >
             Back
           </a>
 
@@ -383,7 +382,11 @@ export default class Payment extends Component {
             const btnClasses = ["push-left"];
 
             const ach = (payment.type === "ach" && payment.accountNumber && payment.routingNumber);
-            const cc = (payment.type === "cc" && payment.cardNumber && payment.expiration && payment.ccv);
+            const cc = (
+              payment.type === "cc" &&
+                payment.cardNumber &&
+                payment.expiration && payment.ccv
+            );
 
             let submit = this.props.next;
             let disabled = false;
@@ -397,7 +400,12 @@ export default class Payment extends Component {
             }
 
             return (
-              <button className={btnClasses.join(" ")} disabled={disabled} type="submit" onClick={submit}>
+              <button
+                className={btnClasses.join(" ")}
+                disabled={disabled}
+                type="submit"
+                onClick={submit}
+              >
                 Next
               </button>
             );

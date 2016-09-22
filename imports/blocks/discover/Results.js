@@ -49,16 +49,16 @@ const Results = ({ loadMore, search }) => {
 };
 
 LoadingText.propTypes = {
-  search: PropTypes.func,
+  search: PropTypes.object,
 };
 
 LoadMore.propTypes = {
-  search: PropTypes.func,
+  search: PropTypes.object,
   loadMore: PropTypes.func,
 };
 
 Results.propTypes = {
-  search: PropTypes.func,
+  search: PropTypes.object,
   loadMore: PropTypes.func,
 };
 

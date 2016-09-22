@@ -85,16 +85,12 @@ const defaultArray = [];
 export default class Template extends Component {
 
   static propTypes = {
-    q: PropTypes.string.isRequired,
+    q: PropTypes.string,
     dispatch: PropTypes.func.isRequired,
-    data: {
-      groups: {
-        results: PropTypes.array.isRequired,
-      },
-    },
     tags: PropTypes.string.isRequired,
     location: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
+    data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   }
 
   state = {

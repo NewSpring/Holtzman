@@ -64,11 +64,11 @@ const mapStateToProps = state => ({ paging: state.paging });
 class Template extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    data: {
-      refetch: PropTypes.func.isRequired,
-      content: PropTypes.object.isRequired,
-    },
+    dispatch: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.func,
+    ]).isRequired,
+    data: PropTypes.object.isRequired,
   }
 
   componentWillMount() {

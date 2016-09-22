@@ -57,7 +57,7 @@ export default class RelatedContent extends Component {
   }
 
   static propTypes = {
-    content: PropTypes.string,
+    content: PropTypes.object,
     title: PropTypes.string,
   }
 
