@@ -32,7 +32,6 @@ const Layout = ({
         "background--light-primary soft soft-double-left@anchored " +
         "outlined--light outlined--bottom"
       }
-    >
       style={{
         whiteSpace: "nowrap",
         overflowY: "hidden",
