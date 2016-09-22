@@ -68,7 +68,7 @@ export default class GiveNow extends Component {
     hideCard: PropTypes.bool,
     onClick: PropTypes.func,
     savedAccount: PropTypes.object, // eslint-disable-line
-    savedPayments: PropTypes.array, // eslint-disable-line
+    savedPayments: PropTypes.object, // eslint-disable-line
     style: PropTypes.object, // eslint-disable-line
     text: PropTypes.string,
     theme: PropTypes.string,

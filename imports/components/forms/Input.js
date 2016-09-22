@@ -22,9 +22,15 @@ export default class Input extends Component {
       PropTypes.array,
     ]),
     children: PropTypes.any, // eslint-disable-line
-    id: PropTypes.string,
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
     label: PropTypes.string,
-    name: PropTypes.string,
+    name: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
     inputClasses: PropTypes.string, // eslint-disable-line
     hideLabel: PropTypes.bool,
     autofocus: PropTypes.any, // eslint-disable-line

@@ -27,7 +27,7 @@ export default class Select extends Component {
     id: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
-    inputClasses: PropTypes.array, // eslint-disable-line
+    inputClasses: PropTypes.string, // eslint-disable-line
     hideLabel: PropTypes.bool,
     autofocus: PropTypes.any, // eslint-disable-line
     onChange: PropTypes.func,
