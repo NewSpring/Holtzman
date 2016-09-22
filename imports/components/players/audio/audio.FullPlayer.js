@@ -35,7 +35,7 @@ export default class FullPlayer extends Component {
     resetRepeat: PropTypes.func,
     repeatOne: PropTypes.func,
     state: PropTypes.string,
-    repeat: PropTypes.func,
+    repeat: PropTypes.string,
   }
 
   state = {

@@ -28,9 +28,7 @@ const campusLookup = gql`
 export default class Layout extends Component {
 
   static propTypes = {
-    data: {
-      campuses: PropTypes.array.isRequired,
-    },
+    data: PropTypes.object.isRequired,
     query: PropTypes.func.isRequired,
   }
 
