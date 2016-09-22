@@ -13,10 +13,10 @@ export default class Layout extends Component {
 
   static propTypes = {
     schedules: PropTypes.array,
-    accounts: PropTypes.object,
+    accounts: PropTypes.array,
     schedulesReady: PropTypes.bool,
     accountsReady: PropTypes.bool,
-    recoverableSchedules: PropTypes.bool,
+    recoverableSchedules: PropTypes.object,
     person: PropTypes.object,
   }
 
