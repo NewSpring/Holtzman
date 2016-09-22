@@ -30,21 +30,12 @@ export default class ListDetail extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    header: {
-      content: {
-        color: PropTypes.string.isRequired,
-      },
-    },
-    audio: {
-      visibility: PropTypes.string.isRequired,
-    },
-    album: {
-      entryId: PropTypes.string.isRequired,
-      content: {
-        images: PropTypes.array.isRequired,
-        tracks: PropTypes.array.isRequired,
-      },
-    },
+    header: PropTypes.object.isRequired,
+    audio: PropTypes.object.isRequired,
+      album: PropTypes.oneOfType([
+          PropTypes.func,
+          PropTypes.object,
+      ]).isRequired,
     trackNumber: PropTypes.number.isRequired,
   }
 
