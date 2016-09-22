@@ -30,7 +30,7 @@ export default class Right extends Component {
     outsideRatio: PropTypes.string,
     aspect: PropTypes.string,
     children: PropTypes.object,
-    ratioClasses: PropTypes.object,
+    ratioClasses: PropTypes.array,
     blur: PropTypes.bool,
     mobile: PropTypes.bool,
     backgroundFill: PropTypes.bool,

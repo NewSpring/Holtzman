@@ -13,10 +13,10 @@ export default class NavLayout extends React.Component {
     reset: PropTypes.func,
     path: PropTypes.string,
     theme: PropTypes.string,
-    links: PropTypes.object,
-    modal: PropTypes.string,
+    links: PropTypes.array,
+    modal: PropTypes.object,
     handleAction: PropTypes.func,
-    liked: PropTypes.bool,
+    liked: PropTypes.object,
   }
 
   layoutClasses = () => {

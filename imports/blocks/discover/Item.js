@@ -11,7 +11,7 @@ import Styles from "./styles-css";
 
 export default class SearchItem extends Component {
 
-  propTypes = {
+  static propTypes = {
     item: PropTypes.object, // eslint-disable-line
   }
 
