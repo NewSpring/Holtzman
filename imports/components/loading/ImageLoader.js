@@ -22,7 +22,7 @@ export default class ImageLoader extends Component {
     imgProps: PropTypes.object,
     force: PropTypes.bool,
     renderElement: PropTypes.func,
-    children: PropTypes.object,
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   };
 
   static defaultProps = {
