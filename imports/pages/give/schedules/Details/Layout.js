@@ -16,12 +16,12 @@ import { TransactionCard } from "../../history/Layout";
 export default class Layout extends Component {
 
   static propTypes = {
-    schedule: PropTypes.object.isRequired,
+    schedule: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
     stop: PropTypes.func.isRequired,
     active: PropTypes.bool,
     complete: PropTypes.bool,
     ready: PropTypes.bool,
-    entries: PropTypes.array.isRequired,
+    entries: PropTypes.array,
     loadingEntries: PropTypes.bool,
   }
 

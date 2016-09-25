@@ -15,7 +15,7 @@ export default class Layout extends Component {
     saveMonth: PropTypes.func.isRequired,
     days: PropTypes.array.isRequired,
     years: PropTypes.array.isRequired,
-    campuses: PropTypes.array.isRequired,
+    campuses: PropTypes.array,
   }
 
   submit = (e) => {

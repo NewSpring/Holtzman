@@ -64,9 +64,9 @@ export default class Menu extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    data: {
-      refetch: PropTypes.func.isRequired,
-    },
+    data: PropTypes.shape({
+      refetch: PropTypes.func,
+    }),
   }
 
   state = {

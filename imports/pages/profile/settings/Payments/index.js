@@ -30,10 +30,10 @@ export default class GiveNow extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    data: {
-      loading: PropTypes.bool.isRequired,
-      refetch: PropTypes.func.isRequired,
-    },
+    data: PropTypes.shape({
+      loading: PropTypes.bool,
+      refetch: PropTypes.func,
+    }),
   }
 
   state = { accounts: [] }

@@ -18,3 +18,14 @@ export default {
   forceReset,
   recover,
 };
+
+export {
+  available,
+  login,
+  signup,
+  reset,
+  update,
+  updateHome,
+  forceReset,
+  recover,
+};

@@ -14,7 +14,7 @@ export default class Layout extends Component {
     preFill: PropTypes.func,
     total: PropTypes.number,
     monentize: PropTypes.func,
-    donate: PropTypes.func,
+    donate: PropTypes.bool,
   }
 
   state = {

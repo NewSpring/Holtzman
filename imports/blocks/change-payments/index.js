@@ -11,9 +11,9 @@ const map = state => ({
 @connect(map)
 export default class ChangePayments extends Component {
 
-  propTypes = {
+  static propTypes = {
     dispatch: PropTypes.func,
-    savedAccounts: PropTypes.object, // eslint-disable-line
+    savedAccounts: PropTypes.array, // eslint-disable-line
     currentAccount: PropTypes.object, // eslint-disable-line
   }
 
@@ -113,7 +113,6 @@ export default class ChangePayments extends Component {
               </div>
             </div>
           ))}
-          /* eslint-enable */
           <button className="btn one-whole push-double-top soft-sides push-bottom" onClick={this.changeAccounts}>
             Change Account
           </button>

@@ -11,7 +11,7 @@ export default class Billing extends Component {
     clear: PropTypes.func.isRequired,
     back: PropTypes.func.isRequired,
     next: PropTypes.func.isRequired,
-    header: PropTypes.string.isRequired,
+    header: PropTypes.string,
     states: PropTypes.array,
     countries: PropTypes.array,
   }

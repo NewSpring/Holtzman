@@ -46,10 +46,10 @@ export default class HomeAddress extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    data: {
-      refetch: PropTypes.func.isRequired,
-      person: PropTypes.object.isRequired,
-    },
+    data: PropTypes.shape({
+      refetch: PropTypes.func,
+      person: PropTypes.object,
+    }),
   }
 
   state = {

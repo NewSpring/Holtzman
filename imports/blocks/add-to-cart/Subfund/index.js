@@ -14,13 +14,13 @@ export default class SubFund extends Component {
     accounts: PropTypes.array, // eslint-disable-line
     update: PropTypes.func,
     selectVal: PropTypes.number,
-    inputVal: PropTypes.string,
+    inputVal: PropTypes.number,
     instance: PropTypes.number, // eslint-disable-line
     clearTransaction: PropTypes.func,
     addTransactions: PropTypes.func,
     remove: PropTypes.func,
     preFill: PropTypes.func,
-    donate: PropTypes.func,
+    donate: PropTypes.bool,
   }
 
   state = {
@@ -51,7 +51,7 @@ export default class SubFund extends Component {
 
   getFund = (id) => {
     const selectedFund = this.props.accounts.filter(fund => (
-      Number(fund.value) === Number(id)
+      `${fund.value}` === `${id}`
     ));
     return selectedFund[0];
   }
@@ -122,6 +122,7 @@ export default class SubFund extends Component {
         amount: numberValue,
       });
 
+      console.log(this.state)
       // there is also a fund stored, lets update the transactions store
       if (this.state.fund) {
         const { id } = this.state;

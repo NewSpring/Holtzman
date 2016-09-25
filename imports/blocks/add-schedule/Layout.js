@@ -9,17 +9,17 @@ import Styles from "./styles-css";
 export default class Layout extends Component {
 
   static propTypes = {
-    schedules: PropTypes.string,
-    save: PropTypes.string,
+    schedules: PropTypes.array,
+    save: PropTypes.func,
     accounts: PropTypes.array, // eslint-disable-line
     setFund: PropTypes.func,
-    state: PropTypes.string,
-    format: PropTypes.string,
-    total: PropTypes.string,
+    state: PropTypes.object,
+    format: PropTypes.func,
+    total: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     saveDate: PropTypes.func,
     setFrequency: PropTypes.func,
     existing: PropTypes.string,
-    ready: PropTypes.string,
+    ready: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]), // XXX fix
     text: PropTypes.string,
     onSubmitSchedule: PropTypes.func,
     dataId: PropTypes.string,

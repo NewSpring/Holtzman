@@ -78,9 +78,9 @@ class Template extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    schedules: PropTypes.object.isRequired,
-    accounts: PropTypes.object.isRequired,
-    give: PropTypes.object.isRequired,
+    schedules: PropTypes.object,
+    accounts: PropTypes.object,
+    give: PropTypes.object,
   }
 
   componentDidMount(){
