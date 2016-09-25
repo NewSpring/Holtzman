@@ -87,6 +87,22 @@ const GlobalData = createContainer(({ dispatch }) => {
     }
   }
 
+  if (typeof fabric != "undefined") {
+    if (!userId) {
+      fabric.Crashlytics.setUserEmail();
+      fabric.Crashlytics.setUserIdentifier();
+    }
+    if (userId && Meteor.user()) {
+      const person = Meteor.user();
+      const email = person.emails && person.emails[0] && person.emails[0].address;
+      if (email) {
+        fabric.Crashlytics.setUserEmail(email);
+        fabric.Crashlytics.setUserIdentifier(userId);
+        fabric.Answers.sendLogIn("meteor", true);
+      }
+    }
+  }
+
   // XXX create universal store clearing on logout
   if (!userId && hasBeenSignedIn) {
     dispatch(accountsActions.authorize(false));

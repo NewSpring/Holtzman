@@ -27,7 +27,7 @@
     "launch.json": true,
     "LICENSE": true,
     "main.html": true,
-    "mobile-config.js": true,
+    "mobile-config.js": false,
     "NewSpring.xcscheme": true,
     ".travis": true,
     "scripts": true

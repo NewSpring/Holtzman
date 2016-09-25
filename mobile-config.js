@@ -63,3 +63,8 @@ App.setPreference("StatusBarBackgroundColor", "#6bac43");
 App.setPreference("StatusBarStyle", "lightcontent");
 
 App.setPreference("Orientation", "portrait");
+
+App.configurePlugin("cordova-fabric-plugin", {
+  FABRIC_API_KEY: process.env.FABRIC_API_KEY,
+  FABRIC_API_SECRET: process.env.FABRIC_API_SECRET,
+});
