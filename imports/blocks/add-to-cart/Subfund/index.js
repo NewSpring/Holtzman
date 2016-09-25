@@ -122,7 +122,6 @@ export default class SubFund extends Component {
         amount: numberValue,
       });
 
-      console.log(this.state)
       // there is also a fund stored, lets update the transactions store
       if (this.state.fund) {
         const { id } = this.state;

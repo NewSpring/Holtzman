@@ -38,7 +38,7 @@ export default class Input extends Component {
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
     style: PropTypes.object, //eslint-disable-line
-    value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     placeholder: PropTypes.string,
     maxLength: PropTypes.number,
   }

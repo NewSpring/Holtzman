@@ -75,6 +75,7 @@ export default class Details extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.shape({
+      loading: PropTypes.bool,
       transaction: PropTypes.object,
     }),
     entries: PropTypes.object,

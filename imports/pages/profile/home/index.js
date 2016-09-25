@@ -40,9 +40,9 @@ export default class Home extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    data: {
-      person: PropTypes.object.isRequired,
-    },
+    data: PropTypes.shape({
+      person: PropTypes.object,
+    }),
   }
 
   state = { content: 0, photo: null }

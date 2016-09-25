@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 import "regenerator-runtime/runtime";
 import { takeLatest, takeEvery } from "redux-saga";
 import { fork, put, cps, select } from "redux-saga/effects";
