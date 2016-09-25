@@ -11,12 +11,12 @@ const map = state => ({ give: state.give });
 @connect(map, giveActions)
 export default class CartContainer extends Component {
 
-  propTypes = {
+  static propTypes = {
     clearTransactions: PropTypes.func,
-    accounts: PropTypes.object, // eslint-disable-line
+    accounts: PropTypes.array, // eslint-disable-line
     addTransactions: PropTypes.func,
     give: PropTypes.object, // eslint-disable-line
-    donate: PropTypes.func,
+    donate: PropTypes.bool,
   }
 
   componentWillMount() {

@@ -12,10 +12,10 @@ export default class Layout extends Component {
 
   static propTypes = {
     recoverableSchedules: PropTypes.array,
-    accounts: PropTypes.object,
-    cancelSchedule: PropTypes.func.isRequired,
-    confirm: PropTypes.func.isRequired,
-    person: PropTypes.object.isRequired,
+    accounts: PropTypes.array,
+    cancelSchedule: PropTypes.func,
+    confirm: PropTypes.func,
+    person: PropTypes.object,
   }
 
   state = { expandedSchedule: null }

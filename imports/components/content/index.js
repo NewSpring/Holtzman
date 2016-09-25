@@ -6,3 +6,8 @@ export default {
   Tags,
   ComingSoon,
 };
+
+export {
+  Tags,
+  ComingSoon,
+};

@@ -11,3 +11,10 @@ export default {
   toDateString,
   creditCard,
 };
+
+export {
+  capitalize,
+  toCurrency,
+  toDateString,
+  creditCard,
+};

@@ -8,7 +8,7 @@ export default class Personal extends Component {
 
   static propTypes = {
     data: PropTypes.object.isRequired,
-    campuses: PropTypes.object.isRequired,
+    campuses: PropTypes.array.isRequired,
     header: PropTypes.string,
     save: PropTypes.func.isRequired,
     clear: PropTypes.func.isRequired,

@@ -5,7 +5,7 @@ export default class Toggle extends Component {
   static propTypes = {
     items: PropTypes.array.isRequired, // eslint-disable-line
     toggle: PropTypes.func.isRequired,
-    state: PropTypes.number,
+    state: PropTypes.oneOfType([PropTypes.number, PropTypes.boolean]),
 
   }
 

@@ -188,7 +188,7 @@ export default class Layout extends Component {
     changeFamily: PropTypes.func.isRequired,
     changeDates: PropTypes.func.isRequired,
     reloading: PropTypes.bool,
-    family: PropTypes.object.isRequired,
+    family: PropTypes.array.isRequired,
   }
 
   monentize = monentize

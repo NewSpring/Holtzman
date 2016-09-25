@@ -15,13 +15,13 @@ export default class Confirm extends Component {
     total: PropTypes.number.isRequired,
     back: PropTypes.func.isRequired,
     goToStepOne: PropTypes.func.isRequired,
-    header: PropTypes.string.isRequired,
+    header: PropTypes.string,
     url: PropTypes.string.isRequired,
     clearData: PropTypes.func.isRequired,
     savedAccount: PropTypes.object.isRequired,
-    savedAccounts: PropTypes.object.isRequired,
+    savedAccounts: PropTypes.array.isRequired,
     changeSavedAccount: PropTypes.func.isRequired,
-    scheduleToRecover: PropTypes.bool.isRequired,
+    scheduleToRecover: PropTypes.bool,
     schedules: PropTypes.object,
   }
 

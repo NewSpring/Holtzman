@@ -28,5 +28,5 @@ export {
   update,
   updateHome,
   forceReset,
-  recover
+  recover,
 };

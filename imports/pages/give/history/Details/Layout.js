@@ -13,9 +13,9 @@ import AccountType from "../../../../components/accountType";
 export default class Layout extends Component {
 
   static propTypes = {
-    loadingEntries: PropTypes.bool.isRequired,
-    entries: PropTypes.object.isRequired,
-    transaction: PropTypes.object.isRequired,
+    loadingEntries: PropTypes.bool,
+    entries: PropTypes.array,
+    transaction: PropTypes.object,
   }
 
   formatDate = date => (

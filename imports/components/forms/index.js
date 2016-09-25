@@ -20,3 +20,14 @@ export default {
   Date,
   TextArea,
 };
+
+export {
+  Checkbox,
+  Input,
+  Select,
+  Form,
+  Fieldset,
+  Label,
+  Date,
+  TextArea,
+};

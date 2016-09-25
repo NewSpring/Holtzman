@@ -17,7 +17,7 @@ export default class Payment extends Component {
     children: PropTypes.object,
     toggles: PropTypes.func,
     transactionType: PropTypes.string,
-    schedules: PropTypes.array,
+    schedules: PropTypes.object,
     back: PropTypes.func,
     next: PropTypes.func,
   }

@@ -51,14 +51,14 @@ const mapQueriesToProps = () => ({
 class Template extends Component {
 
   static propTypes = {
-    data: {
-      loading: PropTypes.bool.isRequired,
-      transactions: PropTypes.object.isRequired,
-      refetch: PropTypes.func.isRequired,
-    },
-    filter: {
-      family: PropTypes.object.isRequired,
-    },
+    data: PropTypes.shape({
+      loading: PropTypes.bool,
+      transactions: PropTypes.array,
+      refetch: PropTypes.func,
+    }),
+    filter: PropTypes.shape({
+      family: PropTypes.array,
+    }),
   }
 
   state = {

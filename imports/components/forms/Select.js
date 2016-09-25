@@ -6,12 +6,15 @@ import Label from "./components/Label";
 
 import SelectClasses from "./select-css";
 
+// XXX if the options come if after the default value
+// the default value is never correctly set.
 export default class Select extends Component {
 
   static propTypes = {
     defaultValue: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.string,
+      PropTypes.number,
     ]),
     status: PropTypes.string,
     disabled: PropTypes.any, // eslint-disable-line

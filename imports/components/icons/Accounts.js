@@ -103,3 +103,11 @@ export default {
   MasterCard,
   Bank,
 };
+
+export {
+  AmEx,
+  Visa,
+  Discover,
+  MasterCard,
+  Bank,
+};

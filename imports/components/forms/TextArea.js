@@ -24,7 +24,7 @@ export default class TextArea extends Component {
     id: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
-    inputClasses: PropTypes.array, // eslint-disable-line
+    inputClasses: PropTypes.string,
     hideLabel: PropTypes.bool,
     autofocus: PropTypes.any, // eslint-disable-line
     format: PropTypes.func,

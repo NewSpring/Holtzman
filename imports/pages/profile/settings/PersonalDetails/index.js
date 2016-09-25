@@ -52,13 +52,13 @@ export default class PersonalDetails extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    person: {
-      person: PropTypes.object.isRequired,
-      refetch: PropTypes.func.isRequired,
-    },
-    campuses: {
-      campuses: PropTypes.array.isRequired,
-    },
+    person: PropTypes.shape({
+      person: PropTypes.object,
+      refetch: PropTypes.func,
+    }),
+    campuses: PropTypes.shape({
+      campuses: PropTypes.array,
+    }),
   }
 
   state = {

@@ -93,7 +93,7 @@ export default class Details extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
-    entries: PropTypes.object.isRequired,
+    entries: PropTypes.object,
   }
 
   componentWillMount() {

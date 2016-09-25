@@ -39,12 +39,12 @@ class Template extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    data: {
-      person: PropTypes.object.isRequired,
-    },
-    location: {
-      pathname: PropTypes.string.isRequired,
-    },
+    data: PropTypes.shape({
+      person: PropTypes.object,
+    }),
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
     children: PropTypes.object.isRequired,
   }
 
@@ -60,7 +60,7 @@ class Template extends Component {
     const { photo } = this.props;
     const { person } = this.props.data;
 
-    let mobile = process.env.WEB;
+    let mobile = !!process.env.WEB;
     if (this.props.location.pathname.split("/").length > 3) {
       mobile = false;
     }
