@@ -1,5 +1,5 @@
 
-import Format from "../format";
+import { capitalize } from "../format";
 import Validate from "../validate";
 import defaultRegex from "./defaults";
 
@@ -23,7 +23,7 @@ Regex.addRegex = (name, test, validate) => {
   Regex[name] = test;
 
   if (validate) {
-    const funcName = `is${Format.capitalize(name)}`;
+    const funcName = `is${capitalize(name)}`;
     Validate.addValidator(funcName, str => (test.test(str)));
   }
   return;

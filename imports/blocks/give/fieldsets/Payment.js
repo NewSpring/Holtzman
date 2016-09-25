@@ -5,7 +5,7 @@ import AccountType from "../../../components/accountType";
 import Forms from "../../../components/forms";
 
 import Validate from "../../../util/validate";
-import Format from "../../../util/format";
+import { creditCard } from "../../../util/format";
 
 export default class Payment extends Component {
 
@@ -244,7 +244,7 @@ export default class Payment extends Component {
           type="tel"
           errorText="Please enter your card number"
           defaultValue={payment.cardNumber}
-          format={Format.creditCard}
+          format={creditCard}
           onChange={this.saveData}
           validation={this.validate}
           ref="cardNumber"
