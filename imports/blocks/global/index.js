@@ -1,5 +1,5 @@
+import { Component, PropTypes } from "react";
 import { Meteor } from "meteor/meteor";
-import { PropTypes } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 import createContainer from "../meteor/react-meteor-data";
@@ -121,6 +121,10 @@ const map = state => ({
 
 @connect(map)
 export default class Global extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+  }
 
   componentWillMount() {
     if (Meteor.isCordova) document.addEventListener("click", linkListener);

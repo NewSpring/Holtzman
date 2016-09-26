@@ -25,7 +25,11 @@ import Closing from "./closing/index";
 @connect()
 class Template extends Component {
 
-  componentDidMount(){
+  static propTypes = {
+    dispatch: PropTypes.func,
+  }
+
+  componentDidMount() {
     if (process.env.NATIVE) {
       this.props.dispatch(headerActions.set({ title: "Annual Report" }));
     }

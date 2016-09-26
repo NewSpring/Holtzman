@@ -114,9 +114,9 @@ export default class Checkbox extends React.Component {
           style={{ width: 0 }}
         />
 
-        {!this.props.hideLabel) && (
+        {!this.props.hideLabel && (
           <Label
-            labelFor={ this.props.id || this.props.label || this.props.name }
+            labelFor={this.props.id || this.props.label || this.props.name}
           />
         )}
 

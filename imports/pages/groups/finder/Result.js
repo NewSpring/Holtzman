@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import { withRouter } from "react-router";
@@ -41,7 +42,6 @@ const mapStateToProps = ({ routing }) => {
   const { location } = routing;
   const tags = Object.keys(location.query).length && location.query.tags ? location.query.tags : "";
   const q = Object.keys(location.query).length && location.query.q ? location.query.q : null;
-  const campus = Object.keys(location.query).length && location.query.campus ? location.query.campus : null;
   const campuses = (
     Object.keys(location.query).length && location.query.campuses ? location.query.campuses : ""
   );
@@ -101,6 +101,8 @@ export default class Template extends Component {
     location: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
     data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+    campusLocations: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+    campuses: PropTypes.string.isRequired,
   }
 
   state = {
@@ -110,25 +112,6 @@ export default class Template extends Component {
     hover: null,
     groups: [], // XXX after refetchMore lands in apollo client, remove
     offset: 0,
-  }
-
-  paginate = () => {
-    const { q, tags, campuses } = this.props;
-    this.props.data.refetch({
-      tags: tags.split(",").filter(x => x),
-      campuses: campuses.split(",").filter(x => x),
-      query: q,
-      limit: 10,
-      offset: this.state.offset + 10,
-      ip: internalIp,
-    })
-      .then(({ data }) => {
-        const { results } = data.groups;
-        this.setState({
-          groups: this.state.groups.concat(results),
-          offset: this.state.offset + 10,
-        });
-      });
   }
 
   componentWillMount() {
@@ -194,9 +177,10 @@ export default class Template extends Component {
   toggleTags = () => this.setState({ showTags: !this.state.showTags })
 
   paginate = () => {
-    const { q, tags } = this.props;
+    const { q, tags, campuses } = this.props;
     this.props.data.refetch({
       tags: tags.split(",").filter(x => x),
+      campuses: campuses.split(",").filter(x => x),
       query: q,
       limit: 10,
       offset: this.state.offset + 10,
@@ -211,6 +195,7 @@ export default class Template extends Component {
       });
   }
 
+
   removeQueryString = (e) => {
     if (e) e.preventDefault();
     const { location, router } = this.props;
@@ -221,7 +206,7 @@ export default class Template extends Component {
   }
 
   render() {
-    const { data, location, tags, campusLocations, campuses, q } = this.props;
+    const { data, tags, campusLocations, campuses, q } = this.props;
     let count;
     let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
@@ -253,20 +238,20 @@ export default class Template extends Component {
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-              loading={data.loading}
-              groups={groups}
-              count={count}
-              tags={tags && tags.split(",").filter(x => x)}
-              campuses={campuses && campuses.split(",").filter(x => x)}
-              campusLocations={campusLocations}
-              query={q}
-              removeQueryString={this.removeQueryString}
-              showTags={this.state.showTags}
-              toggleTags={this.toggleTags}
-              showSearch={this.state.showSearch}
-              toggleSearch={this.toggleSearch}
-              onCardHover={this.onCardHover}
-              paginate={this.paginate}
+            loading={data.loading}
+            groups={groups}
+            count={count}
+            tags={tags && tags.split(",").filter(x => x)}
+            campuses={campuses && campuses.split(",").filter(x => x)}
+            campusLocations={campusLocations}
+            query={q}
+            removeQueryString={this.removeQueryString}
+            showTags={this.state.showTags}
+            toggleTags={this.toggleTags}
+            showSearch={this.state.showSearch}
+            toggleSearch={this.toggleSearch}
+            onCardHover={this.onCardHover}
+            paginate={this.paginate}
           />
         </Left>
       </div>

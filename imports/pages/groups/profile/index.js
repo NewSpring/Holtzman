@@ -65,8 +65,8 @@ export default class Template extends Component {
     this.headerAction({ title: "Group Profile" });
   }
 
-  componentWillUnmount(){
-    this.props.dispatch(modal.update({onFinished: null}));
+  componentWillUnmount() {
+    this.props.dispatch(modal.update({ onFinished: null }));
   }
 
   closeModal = (e) => {

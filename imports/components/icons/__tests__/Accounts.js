@@ -1,5 +1,5 @@
-import renderer from 'react-test-renderer';
-import AccountIcons from '../Accounts';
+import renderer from "react-test-renderer";
+import AccountIcons from "../Accounts";
 
 describe("Account Icons", () => {
   describe("AmEx Icon", () => {

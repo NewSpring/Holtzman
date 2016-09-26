@@ -5,7 +5,6 @@ import gql from "graphql-tag";
 
 import {
   nav as navActions,
-  transactions as transactionActions,
   header as headerActions,
 } from "../../../../store";
 
@@ -100,18 +99,14 @@ export default class Details extends Component {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (process.env.NATIVE) {
       const item = {
         title: "Contribution Details",
       };
 
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
-
   }
 
   componentWillUnmount() {

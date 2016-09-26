@@ -35,7 +35,6 @@ class Template extends Component {
 
     // store user id to match rock personal
     dispatch(giveActions.setUserId(giveData.userId));
-
   }
 
   onSubmit = (event) => {

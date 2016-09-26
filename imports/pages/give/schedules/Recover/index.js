@@ -63,16 +63,10 @@ export default class Template extends Component {
     accounts: PropTypes.object.isRequired,
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (process.env.NATIVE) {
-      const item = {
-        title: "Schedule Transfer",
-      };
-
+      const item = { title: "Schedule Transfer" };
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
   }
 

@@ -18,20 +18,20 @@ export default class FeedItem extends Component {
     ]).isRequired, // eslint-disable-line
   }
 
-  isLight = () => {
-    if (!this.isSeriesItem()) return true;
-    if (this.props.item.channelName === "sermons") {
-      return this.props.item.parent.content.isLight;
-    }
-    return this.props.item.content.isLight;
-  }
-
   getImage = (item) => {
     if (item.channelName === "sermons" && item.parent) {
       if (item.content.images.length > 0) return backgrounds.image(item);
       return backgrounds.image(item.parent);
     }
     return backgrounds.image(item);
+  }
+
+  isLight = () => {
+    if (!this.isSeriesItem()) return true;
+    if (this.props.item.channelName === "sermons") {
+      return this.props.item.parent.content.isLight;
+    }
+    return this.props.item.content.isLight;
   }
 
   isSeriesItem = () => {
@@ -46,11 +46,10 @@ export default class FeedItem extends Component {
     return styles.overlay(item);
   }
 
-  cardClasses = (item) => {
+  cardClasses = () => {
     let classes = [];
 
     if (this.isSeriesItem()) {
-
       classes = classes.concat([
         "rounded",
       ]);
@@ -78,12 +77,10 @@ export default class FeedItem extends Component {
     return classes.join(" ");
   }
 
-  h4Classes = () => {
-    return [
-      !this.isLight() ? "text-light-primary" : "text-dark-primary",
-      "capitalize",
-    ].join(" ");
-  }
+  h4Classes = () => ([
+    !this.isLight() ? "text-light-primary" : "text-dark-primary",
+    "capitalize",
+  ].join(" "))
 
   categoryClasses = () => (
     !this.isLight() ? "text-light-primary" : "text-dark-secondary"
@@ -106,7 +103,7 @@ export default class FeedItem extends Component {
   }
 
   wrapperClasses = () => {
-    let classes = ["background--fill"];
+    const classes = ["background--fill"];
     if (this.isSeriesItem()) {
       const { item } = this.props;
       let collection;

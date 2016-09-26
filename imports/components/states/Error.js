@@ -1,13 +1,13 @@
 import { PropTypes } from "react";
 import { WindowLoading } from "../loading";
 
-const Err = ({ msg, error, style }, context) => {
+const Err = ({ msg, error, style }) => {
   let errorMessage;
-  if (typeof error != "string") {
+  if (typeof error !== "string") {
     if (error && error.message) {
-      errorMessage; = error.message;
+      errorMessage = error.message;
     } else if (error && error.error && typeof error.error === "string") {
-      errorMessage; = error.error;
+      errorMessage = error.error;
     } else {
       errorMessage = "An unexpected error occured";
     }

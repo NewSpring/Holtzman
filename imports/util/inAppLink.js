@@ -51,10 +51,10 @@ const linkListener = (event) => {
   // aggressively get all clicks of <a></a> links in cordova
   let target = event.target;
 
-  if (target.tagName != "A" && target.fastClickScrollParent) {
+  if (target.tagName !== "A" && target.fastClickScrollParent) {
     target = target.fastClickScrollParent;
   } else if (
-    target.tagName != "A" &&
+    target.tagName !== "A" &&
     target.parentElement &&
     target.parentElement.tagName === "A"
   ) {
@@ -66,7 +66,7 @@ const linkListener = (event) => {
   }
 
   // exterior link
-  if (target.host != window.location.host) {
+  if (target.host !== window.location.host) {
     event.preventDefault();
     event.stopPropagation();
     openUrl(target.href);

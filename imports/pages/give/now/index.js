@@ -1,3 +1,4 @@
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -25,18 +26,16 @@ const mapQueriesToProps = () => ({
 });
 
 class Page extends Component {
-  componentDidMount(){
+
+  static propTypes = {
+    dispatch: PropTypes.func,
+  }
+
+  componentDidMount() {
     if (process.env.NATIVE) {
-      const item = {
-        title: "Give Now",
-      };
-
+      const item = { title: "Give Now" };
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
-
   }
 
   render() {
@@ -50,7 +49,7 @@ const TemplateWithData = createContainer(() => {
   try { alive = serverWatch.isAlive("ROCK"); } catch (e) { /* do nothing */ }
   return { alive };
 },
-  connect({ mapQueriesToProps })(props => <Layout {...props} />)
+  connect({ mapQueriesToProps })(props => <Page {...props} />)
 );
 
 

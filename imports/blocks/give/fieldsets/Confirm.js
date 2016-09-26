@@ -210,7 +210,7 @@ export default class Confirm extends Component {
         savedAccount,
         total,
         data,
-        userId: Meteor.userId()
+        userId: Meteor.userId(),
       })
     );
 

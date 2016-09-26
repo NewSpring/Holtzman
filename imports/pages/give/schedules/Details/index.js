@@ -90,18 +90,11 @@ export default class Details extends Component {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (process.env.NATIVE) {
-      const item = {
-        title: "Schedule Details",
-      };
-
+      const item = { title: "Schedule Details" };
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
-
   }
 
   componentWillUnmount() {

@@ -54,36 +54,38 @@ export default class Join extends Component {
             </button>
           </div>
         );
-    }
-    return (
-      <div className="soft soft-double-ends one-whole text-center">
-        <h4 className="text-center push-ends">
-          Request to Join {group.name}
-        </h4>
-        <Forms.Form
-          id="message-form"
-          classes={["hard"]}
-          submit={this.onClick}
-        >
-          <Forms.TextArea
-            label="Your Message (click message to edit)"
-            name="message"
-            classes={["hard-bottom", "push-half-ends"]}
-            inputClasses="text-dark-secondary"
-            rows={10}
-            defaultValue={message}
-          />
-          <div className="grid">
-            <div className="grid__item one-half">
-              <button className="btn--thin btn--small btn--dark-tertiary one-whole" onClick={onExit}>
-                Cancel
-              </button>
-            </div>
-            <div className="grid__item one-half">
-              <button type="submit" className="one-whole btn" >
-                Send
-              </button>
-            </div>
+      default:
+        return (
+          <div className="soft soft-double-ends one-whole text-center">
+            <h4 className="text-center push-ends">
+              Request to Join {group.name}
+            </h4>
+            <Forms.Form
+              id="message-form"
+              classes={["hard"]}
+              submit={this.onClick}
+            >
+              <Forms.TextArea
+                label="Your Message (click message to edit)"
+                name="message"
+                classes={["hard-bottom", "push-half-ends"]}
+                inputClasses="text-dark-secondary"
+                rows={10}
+                defaultValue={message}
+              />
+              <div className="grid">
+                <div className="grid__item one-half">
+                  <button className="btn--thin btn--small btn--dark-tertiary one-whole" onClick={onExit}>
+                    Cancel
+                  </button>
+                </div>
+                <div className="grid__item one-half">
+                  <button type="submit" className="one-whole btn" >
+                    Send
+                  </button>
+                </div>
+              </div>
+            </Forms.Form>
           </div>
         );
     }

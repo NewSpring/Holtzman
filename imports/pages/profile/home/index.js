@@ -43,11 +43,11 @@ export default class Home extends Component {
     data: PropTypes.shape({
       person: PropTypes.object,
     }),
+    upload: PropTypes.func,
+    photo: PropTypes.string,
   }
 
   state = { content: 0, photo: null }
-
-  content = [<Likes />, <Following />]
 
   componentDidMount() {
     if (process.env.NATIVE) {
@@ -58,10 +58,12 @@ export default class Home extends Component {
     this.props.dispatch(navActions.setLevel("TOP"));
   }
 
-  getContent = () => this.content[this.state.content]
   onToggle = content => this.setState({ content })
+  getContent = () => this.content[this.state.content]
 
-  render () {
+  content = [<Likes />, <Following />]
+
+  render() {
     const { upload } = this.props;
     let { person } = this.props.data;
     if (!person) {

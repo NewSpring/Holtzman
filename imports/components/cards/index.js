@@ -32,6 +32,7 @@ export default class Card extends Component {
     itemTheme: PropTypes.string,
     itemStyles: PropTypes.object, // eslint-disable-line
     mobile: PropTypes.bool,
+    wrapperClasses: PropTypes.string,
   }
 
   itemClasses = () => {
@@ -145,7 +146,8 @@ export default class Card extends Component {
   }
 
   render() {
-    let { link, image, theme, styles, itemTheme, itemStyles, wrapperClasses } = this.props;
+    const { link, theme, styles, itemTheme, itemStyles } = this.props;
+    let { wrapperClasses } = this.props;
 
     wrapperClasses += " plain";
     if (this.props.mobile === false) {

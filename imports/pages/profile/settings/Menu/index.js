@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
@@ -67,10 +68,12 @@ export default class Menu extends Component {
     data: PropTypes.shape({
       refetch: PropTypes.func,
     }),
+    upload: PropTypes.func,
   }
 
   state = {
     upload: "default",
+    capture: "default",
   }
 
   componentWillMount() {
@@ -78,11 +81,6 @@ export default class Menu extends Component {
     this.headerAction({
       title: "Profile",
     });
-  }
-
-  state = {
-    upload: "default",
-    capture: "default",
   }
 
   signout = (e) => {
@@ -115,6 +113,8 @@ export default class Menu extends Component {
         return "icon-check-mark text-primary";
       case "failed":
         return "icon-close text-alert";
+      default:
+        return null;
     }
   }
 
@@ -179,31 +179,32 @@ export default class Menu extends Component {
               <Link to="/profile/settings/home-address" className="plain text-dark-secondary">
                 <RenderCell name="My Address" />
               </Link>
-              <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
+              <button className="plain text-dark-secondary display-inline-block one-whole" style={{ position: "relative" }}>
                 <RenderCell name="Upload Profile Photo" iconFunc={this.uploadIcon}>
                   {(() => {
                     if (!process.env.NATIVE) {
                       return (
-                        <input onChange={e => this.upload(e, "upload")} type="file" className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
-                      )
+                        <input onChange={e => this.upload(e, "upload")} type="file" className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
+                      );
                     }
 
                     return (
-                      <div onClick={e => this.upload(e, "upload")} className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
-                    )
+                      <div onClick={e => this.upload(e, "upload")} className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
+                    );
                   })()}
                 </RenderCell>
               </button>
               {(() => {
                 if (process.env.NATIVE) {
                   return (
-                    <button className="plain text-dark-secondary display-inline-block one-whole" style={{position: "relative"}}>
+                    <button className="plain text-dark-secondary display-inline-block one-whole" style={{ position: "relative" }}>
                       <RenderCell name="Take Profile Photo" iconFunc={this.captureIcon}>
-                        <div onClick={(e) => this.upload(e, "capture", { sourceType: Camera.PictureSourceType.CAMERA})} className="locked-ends locked-sides" style={{opacity: 0, zIndex: 1}} />
+                        <div onClick={e => this.upload(e, "capture", { sourceType: Camera.PictureSourceType.CAMERA })} className="locked-ends locked-sides" style={{ opacity: 0, zIndex: 1 }} />
                       </RenderCell>
                     </button>
-                  )
+                  );
                 }
+                return null;
               })()}
               <Link to="/profile/settings/change-password" className="plain text-dark-secondary">
                 <RenderCell name="Change Password" last />

@@ -135,7 +135,7 @@ export default class SeriesSingleVideo extends Component {
 
   handleHeader = (nextProps) => {
     const content = nextProps.series.content;
-    if(!content) return;
+    if (!content) return;
 
     const { isLight } = nextProps.series.content.content;
     const color = collections.color(content);
@@ -144,7 +144,7 @@ export default class SeriesSingleVideo extends Component {
 
     const options = {
       title: "Series",
-      color: color,
+      color,
       light: !isLight,
     };
 

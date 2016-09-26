@@ -1,17 +1,15 @@
+/* eslint-disable import/imports-first */
+
 import { Component, PropTypes } from "react";
 import { css } from "aphrodite";
-
-if (Meteor.isClient) {
-  import Velocity from "velocity-animate";
-}
-
-import { routeActions } from "../../store/routing";
-import styles from "./nav-css";
 
 if (Meteor.isClient) {
   // eslint-disable-next-line no-unused-vars
   import velocity from "velocity-animate";
 }
+
+import { routeActions } from "../../store/routing";
+import styles from "./nav-css";
 
 export default class NavLink extends Component {
 
@@ -81,6 +79,7 @@ export default class NavLink extends Component {
     if (navItem.link && (navItem.link === window.location.pathname)) {
       const containers = document.querySelectorAll("[data-status-scroll=\"true\"]");
       if (containers && containers.length) {
+        // eslint-disable-next-line no-undef
         velocity(containers[0], "scroll", {
           duration: 350,
           easing: "ease-in",

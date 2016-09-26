@@ -108,7 +108,7 @@ export default class Layout extends Component {
 
     return (
       <div>
-
+        <Meta title="Locations" />
         {/* Search */}
         <div
           className={

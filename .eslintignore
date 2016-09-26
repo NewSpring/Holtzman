@@ -5,3 +5,4 @@
 **/imports/util/xml.js
 **/.meteor/**
 **/packages/**
+**/__tests__/**

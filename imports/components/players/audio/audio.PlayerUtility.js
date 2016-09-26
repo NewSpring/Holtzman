@@ -1,13 +1,10 @@
+/* eslint-disable import/no-named-as-default */
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import { actions as audioActions } from "../../../store/audio";
 
 import Audio from "../../../libraries/players/audio";
-import AudioControls from "./audio.Controls";
-import AudioTitle from "./audio.Title";
-import AudioScrubber from "./audio.Scrubber";
-import Track from "./audio.Track";
 
 // We only care about the audio state
 function mapStateToProps(state) {
@@ -27,6 +24,7 @@ export default class AudioPlayerUtility extends Component {
     setProgress: PropTypes.func,
     next: PropTypes.func,
     restart: PropTypes.func,
+    seek: PropTypes.func,
     setPlaying: PropTypes.func,
   };
 
@@ -97,6 +95,7 @@ export default class AudioPlayerUtility extends Component {
     // set loading state
     this.props.loading();
 
+    // eslint-disable-next-line
     const Player = Meteor.isCordova ? Media : Audio;
     const getProps = () => this.props;
     const player = new Player(track.file, () => {
@@ -187,7 +186,7 @@ export default class AudioPlayerUtility extends Component {
 
     // duration in milliseconds
     const duration = (Number((min * 60)) + Number(sec)) * 1000;
-    const newPos =  duration * (value / 100);
+    const newPos = duration * (value / 100);
 
     this.player.seekTo(newPos);
   }
