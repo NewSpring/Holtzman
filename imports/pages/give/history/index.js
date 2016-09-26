@@ -3,7 +3,7 @@ import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 import Authorized from "../../../blocks/authorzied";
-import { nav as navActions, header as headerActions } from "../../../store";
+import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
 import Details from "./Details";
@@ -59,6 +59,7 @@ class Template extends Component {
     filter: PropTypes.shape({
       family: PropTypes.array,
     }),
+    dispatch: PropTypes.func,
   }
 
   state = {
@@ -79,21 +80,14 @@ class Template extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (process.env.NATIVE) {
-      const item = {
-        title: "Giving History",
-      };
-
+      const item = { title: "Giving History" };
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
-
   }
-  
-  componentWillReceiveProps(nextProps, nextState) {
+
+  componentWillReceiveProps(nextProps) {
     if (this.props.data.loading && !nextProps.data.loading && !this.state.transactions.length) {
       this.setState({ transactions: nextProps.data.transactions });
     }
@@ -136,7 +130,7 @@ class Template extends Component {
           done: transactions.length < 20,
           loaded: true,
           transactions,
-          people
+          people,
         });
       });
   }

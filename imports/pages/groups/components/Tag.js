@@ -44,18 +44,10 @@ export default class Tag extends Component {
     }
   }
 
-  isInQueryString = (props) => {
-    const { val, urlKey } = props;
-    const { query } = props.location;
-    if (!query || !query[urlKey]) return false;
-
-    const tags = query[urlKey].toLowerCase().split(",").filter(x => x);
-    return tags.indexOf(val.toLowerCase()) > -1;
-  }
-
   onClick = (e) => {
     if (e) e.stopPropagation();
-    let { val, onClick, router, location, clickAble, canBeActive, urlKey } = this.props;
+    let { val } = this.props;
+    const { onClick, router, location, clickAble, canBeActive, urlKey } = this.props;
 
     if (!clickAble) return;
 
@@ -91,11 +83,11 @@ export default class Tag extends Component {
   }
 
   isInQueryString = (props) => {
-    const { val } = props;
+    const { val, urlKey } = props;
     const { query } = props.location;
-    if (!query || !query.tags) return false;
+    if (!query || !query[urlKey]) return false;
 
-    const tags = query.tags.toLowerCase().split(",").filter(x => x);
+    const tags = query[urlKey].toLowerCase().split(",").filter(x => x);
     return tags.indexOf(val.toLowerCase()) > -1;
   }
 
@@ -113,10 +105,10 @@ export default class Tag extends Component {
         classes.push("tag--nohover--active");
       } else {
         classes.push("tag--nohover");
-      };
+      }
     } else if (this.state.isActive && canBeActive) {
       classes.push("tag--active");
-    };
+    }
 
     return (
       <span
@@ -124,7 +116,7 @@ export default class Tag extends Component {
         style={style}
         onClick={this.onClick}
       >
-        {label ? label : val}
+        {label || val}
       </span>
     );
   }

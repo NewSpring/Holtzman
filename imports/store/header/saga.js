@@ -19,7 +19,7 @@ function setColor({ color }) {
 }
 
 function* setColorFromHeader() {
-  let { header } = yield select();
+  const { header } = yield select();
   if (canRun()) {
     if (header.content.color) {
       StatusBar.backgroundColorByHexString(header.content.color);

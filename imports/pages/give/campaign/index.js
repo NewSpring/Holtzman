@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
@@ -6,7 +7,6 @@ import Spinner from "../../../components/loading";
 
 import {
   nav as navActions,
-  give as giveActions,
   header as headerActions,
 } from "../../../store";
 
@@ -15,7 +15,7 @@ import Layout from "./Layout";
 const Loading = () => (
   <div className="floating" style={{ position: "fixed", top: 0, bottom: 0, width: "100%" }}>
     <div className="floating__item">
-      <Spinner/>;
+      <Spinner />;
     </div>
   </div>
 );
@@ -57,18 +57,11 @@ class Template extends Component {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (process.env.NATIVE) {
-      const item = {
-        title: decodeURI(this.props.params.name),
-      };
-
+      const item = { title: decodeURI(this.props.params.name) };
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
-
   }
 
   componentWillUnmount() {

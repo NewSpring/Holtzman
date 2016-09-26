@@ -1,4 +1,4 @@
-import { Component } from"react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -30,18 +30,16 @@ const mapQueriesToProps = () => ({
 });
 
 class LayoutWithData extends Component {
-  componentDidMount(){
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+  }
+
+  componentDidMount() {
     if (process.env.NATIVE) {
-      const item = {
-        title: "Locations",
-      };
-
+      const item = { title: "Locations" };
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
-
   }
 
   render() {

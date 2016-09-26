@@ -59,25 +59,25 @@ const Layout = ({ submit, save, state }) => (
         errorText="New password does not match"
         type="password"
       />
-        {(() => {
-          const btnClasses = [];
-          let disabled = true;
-          const { current, newP, newPDup } = state;
-          if (!current || !newP || !newPDup) {
-            btnClasses.push("btn--disabled");
-          } else {
-            btnClasses.push("btn");
-            disabled = false;
-          }
+      {(() => {
+        const btnClasses = [];
+        let disabled = true;
+        const { current, newP, newPDup } = state;
+        if (!current || !newP || !newPDup) {
+          btnClasses.push("btn--disabled");
+        } else {
+          btnClasses.push("btn");
+          disabled = false;
+        }
 
-          return (
-            <button className={btnClasses.join(" ")} disabled={disabled}>
-              Enter
-            </button>
-          );
-        })()}
-      </Forms.Form>
-    </div>
+        return (
+          <button className={btnClasses.join(" ")} disabled={disabled}>
+            Enter
+          </button>
+        );
+      })()}
+    </Forms.Form>
+  </div>
 );
 
 Layout.propTypes = {

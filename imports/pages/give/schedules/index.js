@@ -83,16 +83,10 @@ class Template extends Component {
     give: PropTypes.object,
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (process.env.NATIVE) {
-      const item = {
-        title: "Schedule Your Giving",
-      };
-
+      const item = { title: "Schedule Your Giving" };
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
   }
 

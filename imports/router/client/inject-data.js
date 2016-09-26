@@ -1,10 +1,12 @@
 
 import InjectData from "../shared/inject-data";
 
-FastRender._securityCheck = function(payload) {
-  if(payload && payload.loginToken) {
-    var localStorageLoginToken = Meteor._localStorage.getItem('Meteor.loginToken');
-    if(localStorageLoginToken != payload.loginToken) {
+// eslint-disable-next-line
+FastRender._securityCheck = function securityCheck(payload) {
+  if (payload && payload.loginToken) {
+    // eslint-disable-next-line
+    const localStorageLoginToken = Meteor._localStorage.getItem("Meteor.loginToken");
+    if (localStorageLoginToken !== payload.loginToken) {
       Meteor.logout();
     }
   }

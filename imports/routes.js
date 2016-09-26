@@ -1,4 +1,4 @@
-import Routes from "./pages";
+import ChildrenRoutes from "./pages";
 
 if (process.env.NATIVE) {
   // eslint-disable-next-line no-unused-vars
@@ -33,5 +33,5 @@ export default {
     }
     return cb();
   },
-  childRoutes: Routes,
+  childRoutes: ChildrenRoutes,
 };

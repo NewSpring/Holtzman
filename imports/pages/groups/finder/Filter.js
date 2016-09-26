@@ -28,8 +28,8 @@ const mapQueriesToProps = () => ({
           name
         }
       }
-    `
-  }
+    `,
+  },
 });
 const mapStateToProps = state => ({ location: state.routing.location });
 const defaultTags = [];
@@ -45,6 +45,7 @@ export default class Filter extends Component {
     showSearch: PropTypes.bool.isRequired,
     showTags: PropTypes.bool.isRequired,
     q: PropTypes.string,
+    campusLocations: PropTypes.object,
   }
 
   state = { query: null }
@@ -114,7 +115,7 @@ export default class Filter extends Component {
                 </h4>
                 <div className="two-thirds@anchored display-inline-block soft-ends@anchored">
                   {campuses.map((campus, key) => (
-                    <Tag key={key} val={campus.name} urlKey="campuses"/>
+                    <Tag key={key} val={campus.name} urlKey="campuses" />
                   ))}
                 </div>
               </div>
@@ -133,33 +134,33 @@ export default class Filter extends Component {
             >
 
               <Forms.Form
-                  classes={["hard", "display-inline-block", "one-whole" ]}
-                  submit={(e) => this.findByQuery(e)}
-                  action
+                classes={["hard", "display-inline-block", "one-whole"]}
+                submit={e => this.findByQuery(e)}
+                action
               >
                 <i className="icon-search locked-left soft-half-left" />
                 <span
                   style={{
                     zIndex: 1,
                     padding: "20px 0px",
-                    "marginTop": "-15px",
-                    "cursor": "pointer"
+                    marginTop: "-15px",
+                    cursor: "pointer",
                   }}
                   onClick={this.removeQuery}
                   className="h7 locked-right flush-bottom"
                 >Cancel</span>
                 <Forms.Input
-                    id="search"
-                    name="search"
-                    ref="searchInput"
-                    hideLabel
-                    classes={["hard-bottom", "soft-right", "push-double-right"]}
-                    inputClasses="soft-double-left soft-half-bottom"
-                    placeholder="Type your search here..."
-                    type="text"
-                    defaultValue={q}
-                    onChange={(e) => this.inputOnChange(e)}
-                    autofocus={true}
+                  id="search"
+                  name="search"
+                  ref="searchInput"
+                  hideLabel
+                  classes={["hard-bottom", "soft-right", "push-double-right"]}
+                  inputClasses="soft-double-left soft-half-bottom"
+                  placeholder="Type your search here..."
+                  type="text"
+                  defaultValue={q}
+                  onChange={e => this.inputOnChange(e)}
+                  autoFocus
                 />
 
                 <div className="one-whole text-left">

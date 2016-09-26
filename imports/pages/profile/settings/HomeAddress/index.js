@@ -91,13 +91,13 @@ export default class HomeAddress extends Component {
     switch (state) {
       case "error":
         return (
-          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%" }}>
             <Err error={this.state.err} msg="Looks like there was a problem" />;
           </div>
         );
       case "loading":
         return (
-          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%" }}>
             <Loading msg="Updating your information..." />;
           </div>
         );

@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 import { PropTypes } from "react";
 import Loading from "../../../components/loading";
 import Meta from "../../../components/meta";
@@ -14,7 +16,6 @@ const Layout = ({
   count,
   query,
   campuses,
-  removeQueryString,
   showSearch,
   toggleSearch,
   showTags,
@@ -50,7 +51,7 @@ const Layout = ({
       ))}
       {campuses && campuses.map((campus, key) => (
         <Tag
-          style={{verticalAlign: "bottom"}}
+          style={{ verticalAlign: "bottom" }}
           className="flush-bottom"
           val={campus}
           urlKey="campuses"
@@ -219,6 +220,7 @@ Layout.propTypes = {
   toggleTags: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
   paginate: PropTypes.func.isRequired,
+  campuses: PropTypes.array,
 };
 
 export default Layout;

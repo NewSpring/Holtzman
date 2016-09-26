@@ -25,8 +25,8 @@ export default class Layout extends Component {
     loadingEntries: PropTypes.bool,
   }
 
-  formatDate = (date) => (
-    moment(new Date(date)).add(4, "hours").format("MMM D, YYYY");
+  formatDate = date => (
+    moment(new Date(date)).add(4, "hours").format("MMM D, YYYY")
   )
 
   monentize = (value, fixed) => {

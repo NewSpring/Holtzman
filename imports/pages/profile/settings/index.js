@@ -41,11 +41,14 @@ class Template extends Component {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.shape({
       person: PropTypes.object,
+      refetch: PropTypes.func,
     }),
     location: PropTypes.shape({
       pathname: PropTypes.string,
     }),
     children: PropTypes.object.isRequired,
+    upload: PropTypes.func,
+    photo: PropTypes.string,
   }
 
   componentWillMount() {
@@ -53,7 +56,7 @@ class Template extends Component {
   }
 
   onUpload = (e) => {
-    this.props.upload(e).then(() => this.props.data.refetch())
+    this.props.upload(e).then(() => this.props.data.refetch());
   }
 
   render() {

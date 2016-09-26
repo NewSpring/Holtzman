@@ -21,7 +21,7 @@ function* checkAccount({ data }) {
   inFlight = true;
   try {
     // make call to Rock to check if account is open
-    let {
+    const {
       isAvailable,
       alternateAccounts,
       peopleWithoutAccountEmails,
@@ -33,6 +33,7 @@ function* checkAccount({ data }) {
     yield put(actions.setAlternateAccounts(alternateAccounts));
     yield put(actions.peopleWithoutAccountEmails(peopleWithoutAccountEmails));
   } catch (e) {
+    // eslint-disable-next-line
     console.log(e);
   }
 }

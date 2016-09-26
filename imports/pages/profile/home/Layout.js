@@ -30,13 +30,13 @@ const Layout = ({ photo, person, onToggle, content, onUpload }) => (
             {(() => {
               if (!Meteor.isCordova) {
                 return (
-                  <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
-                )
+                  <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{ opacity: 0 }} />
+                );
               }
 
               return (
-                <div onClick={onUpload} className="locked-ends locked-sides" style={{opacity: 0}} />
-              )
+                <div onClick={onUpload} className="locked-ends locked-sides" style={{ opacity: 0 }} />
+              );
             })()}
           </label>
           <h4

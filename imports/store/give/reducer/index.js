@@ -335,7 +335,7 @@ export default createReducer(initial, {
   },
 
   [types.SET_USERID](state, { userId }) {
-    return { ...state, ... { userId }};
+    return { ...state, ...{ userId } };
   },
 
 

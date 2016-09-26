@@ -9,7 +9,7 @@ import {
 
 import { update } from "../../../../methods/accounts/browser";
 
-import { Loading } from "../../../../components/states";
+import { Loading, Error as Err } from "../../../../components/states";
 
 import Success from "../Success";
 import Layout from "./Layout";
@@ -129,21 +129,21 @@ export default class PersonalDetails extends Component {
 
   render() {
     let { campuses } = this.props.campuses;
-    campuses = campuses && campuses.map(campus => {
-      return { label: campus.name, value: campus.id };
-    });
-    const { state } = this.state;
+    campuses = campuses && campuses.map(campus => ({
+      label: campus.name, value: campus.id,
+    }));
+    const { state, err } = this.state;
 
     switch (state) {
       case "error":
         return (
-          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%" }}>
             <Err error={err} msg="Looks like there was a problem" />;
           </div>
         );
       case "loading":
         return (
-          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%" }}>
             <Loading msg="Updating your information..." />;
           </div>
         );
