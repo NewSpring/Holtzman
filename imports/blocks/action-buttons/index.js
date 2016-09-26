@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import {
@@ -22,26 +22,27 @@ import {
   Guest as TertiaryButton,
 } from "./Buttons";
 
+const SAVED_ACCTS_QUERY = gql`
+  query GetSavedPaymentAccounts {
+    savedPayments(cache: false) {
+      name, id: entityId, date,
+      payment { accountNumber, paymentType }
+    }
+  }
+`;
 
 // XXX remove cache: false when heighliner caching is tested
-const mapQueriesToProps = ({ ownProps }) => ({
-  savedPayments: {
-    query: gql`
-        query GetSavedPaymentAccounts {
-          savedPayments(cache: false) {
-            name, id: entityId, date,
-            payment { accountNumber, paymentType }
-          }
-        }
-      `,
+const getSavedPaymentAccounts = graphql(SAVED_ACCTS_QUERY, {
+  options: (ownProps) => ({
     variables: {
-        // even though this is unused, we include it to trigger a recal when a person
-        // logs in or logs out
-      authorized: ownProps.authorized,
+      // even though this is unused, we include it to trigger a recal when a person
+      // logs in or logs out
+      authorized: ownProps.authorized
     },
     forceFetch: true,
-  },
+  })
 });
+
 /*
 
   The give now button is presented in the following order:
@@ -55,7 +56,8 @@ const mapStateToProps = store => ({
   authorized: store.accounts.authorized,
   savedAccount: store.give.savedAccount,
 });
-@connect({ mapStateToProps, mapQueriesToProps })
+
+@getSavedPaymentAccounts
 export default class GiveNow extends Component {
 
   static propTypes = {
