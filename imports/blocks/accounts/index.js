@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
-import { connect as apolloConnect } from "react-apollo";
+import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
@@ -32,24 +32,18 @@ const PERSON_QUERY = gql`
 
 const withPerson = graphql(PERSON_QUERY, {
   name: "person",
-  options: ({
+  options: ownProps => ({
     variables: {
       ssr: false,
       guid: (
-        state.routing.location && state.routing.location.query && state.routing.location.query.guid
+        ownProps.location && ownProps.location.query && ownProps.location.query.guid
       ),
     },
   }),
 });
-const mapQueriesToProps = ({ state }) => ({
-  data: {
-    // query: ,
 
-
-  },
-});
-
-@apolloConnect({ mapQueriesToProps, mapDispatchToProps })
+@connect(state => ({ location: state.routing.location }), mapDispatchToProps)
+@withPerson
 export default class AccountsWithData extends Component {
 
   static propTypes = {
@@ -72,8 +66,7 @@ export default class AccountsWithData extends Component {
 }
 
 // We only care about the accounts state
-const mapStateToProps = state => ({ accounts: state.accounts });
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(state => ({ accounts: state.accounts }), mapDispatchToProps)
 class AccountsContainer extends Component { // eslint-disable-line
 
   static propTypes = {
