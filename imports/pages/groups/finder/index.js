@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 import { withRouter } from "react-router";
@@ -11,58 +12,63 @@ import { nav as navActions } from "../../../store";
 import Layout from "./Layout";
 import Result from "./Result";
 
-const mapQueriesToProps = () => ({
-  attributes: {
-    query: gql`
-      query GetGroupAttributes {
-        tags: groupAttributes {
-          id
-          description
-          value
+const GROUP_ATTRIBUTES_QUERY = gql`
+  query GetGroupAttributes {
+    tags: groupAttributes {
+      id
+      description
+      value
+    }
+  }
+`;
+
+const withGroupAttributes = graphql(GROUP_ATTRIBUTES_QUERY, { name: "attributes" });
+
+const TAGGED_CONTENT_QUERY = gql`
+  query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
+    entries: taggedContent(
+      tagName: $tagName,
+      limit: $limit,
+      includeChannels: $includeChannels,
+      cache: false
+    ) {
+      entryId: id
+      title
+      channelName
+      meta {
+        date
+        summary
+        urlTitle
+      }
+      content {
+        images(sizes: ["large"]) {
+          fileName
+          fileType
+          fileLabel
+          url
         }
       }
-    `,
-  },
-  content: {
-    query: gql`
-      query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
-        entries: taggedContent(
-          tagName: $tagName,
-          limit: $limit,
-          includeChannels: $includeChannels,
-          cache: false
-        ) {
-          entryId: id
-          title
-          channelName
-          meta {
-            date
-            summary
-            urlTitle
-          }
-          content {
-            images(sizes: ["large"]) {
-              fileName
-              fileType
-              fileLabel
-              url
-            }
-          }
-        }
-      }
-    `,
+    }
+  }
+`;
+
+const withTaggedContent = graphql(TAGGED_CONTENT_QUERY, {
+  name: "content",
+  options: ({
     variables: {
       tagName: "community",
       includeChannels: ["articles"],
       limit: 2,
     },
-  },
+  }),
 });
 
 const defaultArray = [];
 const mapStateToProps = state => ({ location: state.routing.location });
 @withRouter
-@connect({ mapQueriesToProps, mapStateToProps })
+@connect(mapStateToProps)
+@withGroupAttributes
+@withTaggedContent
 @ReactMixin.decorate(Headerable)
 export default class Template extends Component {
 
