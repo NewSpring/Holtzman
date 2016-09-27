@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import Authorized from "../../../blocks/authorzied";
@@ -15,65 +16,67 @@ import Layout from "./Layout";
 import Confirm from "./Details/Confirm";
 import Recover from "./Recover";
 
-const mapQueriesToProps = () => ({
-  schedules: {
-    query: gql`
-      query GetScheduleTransactions {
-        schedules: scheduledTransactions(cache: false) {
-          numberOfPayments
-          next
-          end
-          id
-          reminderDate
-          code
-          gateway
-          start
-          date
-          details {
-            amount
-            account {
-              name
-              description
-            }
-          }
-          payment {
-            paymentType
-            accountNumber
-            id
-          }
-          schedule {
-            value
-            description
-          }
-        }
-      }
-    `,
-    forceFetch: true,
-    ssr: false,
-  },
-  accounts: {
-    query: gql`
-      query GetFinancialAccounts {
-        accounts {
-          description
+const SCHEDULED_TRANSACTIONS_QUERY = gql`
+  query GetScheduleTransactions {
+    schedules: scheduledTransactions(cache: false) {
+      numberOfPayments
+      next
+      end
+      id
+      reminderDate
+      code
+      gateway
+      start
+      date
+      details {
+        amount
+        account {
           name
-          id: entityId
-          summary
-          image
-          order
-          images { fileName, fileType, fileLabel, s3, cloudfront }
+          description
         }
       }
-    `,
-    ssr: true,
-  },
+      payment {
+        paymentType
+        accountNumber
+        id
+      }
+      schedule {
+        value
+        description
+      }
+    }
+  }
+`;
+
+const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY, { name: "schedules" }, {
+  options: { ssr: false },
+});
+
+const FINANCIAL_ACCOUNTS_QUERY = gql`
+  query GetFinancialAccounts {
+    accounts {
+      description
+      name
+      id: entityId
+      summary
+      image
+      order
+      images { fileName, fileType, fileLabel, s3, cloudfront }
+    }
+  }
+`;
+
+const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" }, {
+  options: { ssr: true },
 });
 
 const mapStateToProps = store => ({
   give: store.give,
 });
 
-@connect({ mapStateToProps, mapQueriesToProps })
+@withScheduledTransactions
+@withFinancialAccounts
+@connect(mapStateToProps)
 class Template extends Component {
 
   static propTypes = {
