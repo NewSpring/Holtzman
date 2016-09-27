@@ -1,6 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import {
@@ -32,15 +33,16 @@ const SAVED_ACCTS_QUERY = gql`
 `;
 
 // XXX remove cache: false when heighliner caching is tested
-const getSavedPaymentAccounts = graphql(SAVED_ACCTS_QUERY, {
-  options: (ownProps) => ({
+const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
+  options: ownProps => ({
+    name: "savedPayments",
     variables: {
       // even though this is unused, we include it to trigger a recal when a person
       // logs in or logs out
-      authorized: ownProps.authorized
+      authorized: ownProps.authorized,
     },
     forceFetch: true,
-  })
+  }),
 });
 
 /*
@@ -57,7 +59,8 @@ const mapStateToProps = store => ({
   savedAccount: store.give.savedAccount,
 });
 
-@getSavedPaymentAccounts
+@connect({ mapStateToProps })
+@withSavedPayments
 export default class GiveNow extends Component {
 
   static propTypes = {
