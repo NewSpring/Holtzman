@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 import { graphql } from "react-apollo";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import Loading from "../../components/loading";
@@ -8,6 +8,7 @@ import MiniCard from "../../components/cards/cards.MiniCard";
 
 // XXX add skip if no tags
 
+/* eslint-disable max-len */
 const RELATED_CONTENT_QUERY = gql`
   query GetRelatedContent($tags: [String], $includeChannels: [String], $limit: Int, $excludedIds: [String]) {
     taggedContent(tags: $tags, limit: $limit, includeChannels: $includeChannels, excludedIds: $excludedIds) {
