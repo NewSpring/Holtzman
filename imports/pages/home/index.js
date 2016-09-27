@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import Split, { Left, Right } from "../../blocks/split";
@@ -19,53 +20,52 @@ import content from "../../util/content";
 
 import HomeHero from "./home.Hero";
 
-const mapQueriesToProps = ({ state }) => ({
-  data: {
-    query: gql`
-      fragment ContentForFeed on Content {
-        entryId: id
-        title
-        channelName
-        status
-        meta {
-          siteId
-          date
-          channelId
-        }
-        content {
-          images(sizes: ["large"]) {
-            fileName
-            fileType
-            fileLabel
-            url
-          }
-          isLight
-          colors {
-            id
-            value
-            description
-          }
-        }
+const CONTENT_FEED_QUERY = gql`
+  fragment ContentForFeed on Content {
+    entryId: id
+    title
+    channelName
+    status
+    meta {
+      siteId
+      date
+      channelId
+    }
+    content {
+      images(sizes: ["large"]) {
+        fileName
+        fileType
+        fileLabel
+        url
       }
+      isLight
+      colors {
+        id
+        value
+        description
+      }
+    }
+  }
 
-      query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
-        feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
-          ...ContentForFeed
-          parent {
-            ...ContentForFeed
-          }
-        }
+  query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
+    feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
+      ...ContentForFeed
+      parent {
+        ...ContentForFeed
       }
-    `,
+    }
+  }
+`;
+
+const withFeedContent = graphql(CONTENT_FEED_QUERY, {
+  options: state => ({
     variables: {
       excludeChannels: state.topics.topics,
       limit: state.paging.pageSize * state.paging.page,
       skip: state.paging.skip,
       cache: true,
     },
-    forceFetch: false,
-    returnPartialData: false,
-  },
+  }),
 });
 
 const mapStateToProps = state => ({
@@ -74,7 +74,8 @@ const mapStateToProps = state => ({
   modal: { visible: state.modal.visible },
 });
 
-@connect({ mapQueriesToProps, mapStateToProps })
+@withFeedContent
+@connect(mapStateToProps)
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 export default class Home extends Component {
