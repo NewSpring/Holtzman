@@ -80,7 +80,7 @@ const GROUP_FINDER_QUERY = gql`
 `;
 
 const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
-  options: (ownProps) => ({
+  options: ownProps => ({
     ssr: false,
     variables: {
       tags: ownProps.tags.split(",").filter(x => x),
