@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import Controls from "../../components/controls";
@@ -13,41 +14,44 @@ import Loading from "./Loading";
 import Err from "./Err";
 import Success from "./Success";
 
-const mapQueriesToProps = () => ({
-  data: {
-    query: gql`
-      query GetCheckoutData($state: Int!, $country: Int!) {
-        states: definedValues(id: $state, all: true) {
-          name: description, value, id, _id
-        }
-        countries: definedValues(id: $country, all: true) {
-          name: description, value, id, _id
-        }
-        person: currentPerson {
-          firstName
-          nickName
-          lastName
-          email
-          campus { name, id: entityId }
-          home { street1, street2, city, state, zip, country }
-        }
-        savedPayments {
-          name, id: entityId, date,
-          payment { accountNumber, paymentType }
-        }
-        campuses { name, id: entityId }
-      }
-    `,
+const CHECKOUT_QUERY = gql`
+  query GetCheckoutData($state: Int!, $country: Int!) {
+    states: definedValues(id: $state, all: true) {
+      name: description, value, id, _id
+    }
+    countries: definedValues(id: $country, all: true) {
+      name: description, value, id, _id
+    }
+    person: currentPerson {
+      firstName
+      nickName
+      lastName
+      email
+      campus { name, id: entityId }
+      home { street1, street2, city, state, zip, country }
+    }
+    savedPayments {
+      name, id: entityId, date,
+      payment { accountNumber, paymentType }
+    }
+    campuses { name, id: entityId }
+  }
+`;
+
+const withCheckout = graphql(CHECKOUT_QUERY, {
+  options: () => ({
     variables: { state: 28, country: 45 },
-  },
+  }),
 });
+
 const defaultArray = []; // empty array for usage as default in render
 // We only care about the give state
 const mapStateToProps = state => ({
   give: state.give,
 });
 
-@connect({ mapStateToProps, mapQueriesToProps })
+@connect(mapStateToProps)
+@withCheckout
 export default class Give extends Component {
 
   static propTypes = {
