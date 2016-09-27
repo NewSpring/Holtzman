@@ -64,8 +64,8 @@ const withAlbum = graphql(ALBUM_QUERY, {
   }),
 });
 
+@connect()
 @withAlbum
-@connect(mapQueriesToProps)
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
