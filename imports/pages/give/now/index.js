@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import createContainer from "../../../blocks/meteor/react-meteor-data";
@@ -7,24 +8,24 @@ import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
 
-const mapQueriesToProps = () => ({
-  accounts: {
-    query: gql`
-      query GetFinancialAccounts {
-        accounts {
-          description
-          name
-          id: entityId
-          summary
-          image
-          order
-          images { fileName, fileType, fileLabel, s3, cloudfront }
-        }
-      }
-    `,
-  },
-});
+const ACCOUNTS_QUERY = gql`
+  query GetFinancialAccounts {
+    accounts {
+      description
+      name
+      id: entityId
+      summary
+      image
+      order
+      images { fileName, fileType, fileLabel, s3, cloudfront }
+    }
+  }
+`;
 
+const withAccounts = graphql(ACCOUNTS_QUERY, { name: "accounts" });
+
+@connect()
+@withAccounts
 class Page extends Component {
 
   static propTypes = {
@@ -49,7 +50,7 @@ const TemplateWithData = createContainer(() => {
   try { alive = serverWatch.isAlive("ROCK"); } catch (e) { /* do nothing */ }
   return { alive };
 },
-  connect({ mapQueriesToProps })(props => <Page {...props} />)
+  <Page />
 );
 
 
