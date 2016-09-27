@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import { withRouter } from "react-router";
 import gql from "graphql-tag";
 
@@ -48,36 +49,38 @@ const mapStateToProps = ({ routing }) => {
   return { tags, q, location, campuses };
 };
 
-const mapQueriesToProps = ({ ownProps }) => ({
-  campusLocations: {
-    query: gql`
-      query GetCampuses { campuses { entityId, id, name } }
-    `,
-  },
-  data: {
-    query: gql`
-      query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String]) {
-        groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses) {
-          count
-          results {
-            id
-            name
-            entityId
-            type
-            kidFriendly
-            demographic
-            description
-            photo
-            ageRange
-            distance
-            schedule { description }
-            locations { location { latitude, longitude } }
-            tags { id, value }
-            campus { name, entityId }
-          }
-        }
+const CAMPUS_LOCATION_QUERY = gql`
+  query GetCampuses { campuses { entityId, id, name } }
+`;
+
+const withCampusLocations = graphql(CAMPUS_LOCATION_QUERY, { name: "campusLocations" });
+
+const GROUP_FINDER_QUERY = gql`
+  query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String]) {
+    groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses) {
+      count
+      results {
+        id
+        name
+        entityId
+        type
+        kidFriendly
+        demographic
+        description
+        photo
+        ageRange
+        distance
+        schedule { description }
+        locations { location { latitude, longitude } }
+        tags { id, value }
+        campus { name, entityId }
       }
-    `,
+    }
+  }
+`;
+
+const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
+  options: (ownProps) => ({
     ssr: false,
     variables: {
       tags: ownProps.tags.split(",").filter(x => x),
@@ -87,11 +90,14 @@ const mapQueriesToProps = ({ ownProps }) => ({
       offset: 0,
       campuses: ownProps.campuses.split(",").filter(x => x),
     },
-  },
+  }),
 });
+
 const defaultArray = [];
 @withRouter
-@connect({ mapQueriesToProps, mapStateToProps })
+@withCampusLocations // enables this query to be static
+@connect(mapStateToProps)
+@withGroupFinder
 export default class Template extends Component {
 
   static propTypes = {
