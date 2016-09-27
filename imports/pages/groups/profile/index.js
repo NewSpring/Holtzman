@@ -56,8 +56,8 @@ const withGroup = graphql(GROUP_QUERY, {
 
 const defaultArray = [];
 
-@withGroup
 @connect()
+@withGroup
 @ReactMixin.decorate(Headerable)
 export default class Template extends Component {
 
