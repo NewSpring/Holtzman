@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 import { Link } from "react-router";
 
@@ -46,20 +47,19 @@ RenderCell.propTypes = {
   children: PropTypes.object.isRequired,
 };
 
-const mapQueriesToProps = () => ({
-  data: {
-    query: gql`
-      query GetPhoto {
-        currentPerson(cache: false) {
-          photo
-        }
-      }
-    `,
-    forceFetch: true,
-  },
-});
+const GET_PHOTO_QUERY = gql`
+  query GetPhoto {
+    currentPerson(cache: false) {
+      photo
+    }
+  }
+`;
+
+const withGetPhoto = graphql(GET_PHOTO_QUERY);
+
+@withGetPhoto
 @withProfileUpload
-@connect({ mapQueriesToProps })
+@connect()
 @ReactMixin.decorate(Headerable)
 export default class Menu extends Component {
 
