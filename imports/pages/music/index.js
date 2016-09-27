@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import ApollosPullToRefresh from "../../components/pullToRefresh";
@@ -14,48 +15,48 @@ import { nav as navActions } from "../../store";
 
 import Album from "./music.Album";
 
-const mapQueriesToProps = ({ state }) => ({
-  data: {
-    query: gql`
-      query getAlbums($limit: Int!, $skip: Int!) {
-        content(channel: "newspring_albums", limit: $limit, skip: $skip) {
-          id
-          entryId: id
-          title
-          status
-          channelName
-          meta {
-            urlTitle
-            siteId
-            date
-            channelId
-          }
-          content {
-            images(sizes: ["large"]) {
-              fileName
-              fileType
-              fileLabel
-              url
-            }
-            tracks {
-              file: s3
-            }
-          }
+const ALBUMS_QUERY = gql`
+  query getAlbums($limit: Int!, $skip: Int!) {
+    content(channel: "newspring_albums", limit: $limit, skip: $skip) {
+      id
+      entryId: id
+      title
+      status
+      channelName
+      meta {
+        urlTitle
+        siteId
+        date
+        channelId
+      }
+      content {
+        images(sizes: ["large"]) {
+          fileName
+          fileType
+          fileLabel
+          url
+        }
+        tracks {
+          file: s3
         }
       }
-    `,
+    }
+  }
+`;
+
+const withAlbums = graphql(ALBUMS_QUERY, {
+  options: state => ({
     variables: {
       limit: state.paging.pageSize * state.paging.page,
       skip: state.paging.skip,
     },
-    forceFetch: false,
-    returnPartialData: false,
-  },
+  }),
 });
 
 const mapStateToProps = state => ({ paging: state.paging });
 
-@connect({ mapQueriesToProps, mapStateToProps })
+@withAlbums
+@connect(mapStateToProps)
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
