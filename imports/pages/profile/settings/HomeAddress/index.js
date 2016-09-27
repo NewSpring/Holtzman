@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import {
@@ -12,25 +13,27 @@ import { Error as Err, Loading } from "../../../../components/states";
 import Success from "../Success";
 import Layout from "./Layout";
 
-// XXX remove cache: false once we feel good about caching
-const mapQueriesToProps = () => ({
-  data: {
-    query: gql`
-      query GetPersonsHome($cache: Boolean) {
-        person: currentPerson {
-          home(cache: $cache) {
-            street1
-            street2
-            state
-            city
-            zip
-            country
-          }
-        }
+const PERSON_HOME_QUERY = gql`
+  query GetPersonsHome($cache: Boolean) {
+    person: currentPerson {
+      home(cache: $cache) {
+        street1
+        street2
+        state
+        city
+        zip
+        country
       }
-    `,
-    variables: { cache: true },
-  },
+    }
+  }
+`;
+
+const withPersonHome = graphql(PERSON_HOME_QUERY, {
+  options: () => ({
+    variables: {
+      cache: true,
+    },
+  }),
 });
 
 const defaultHome = {
@@ -41,7 +44,9 @@ const defaultHome = {
   zip: null,
   country: null,
 };
-@connect({ mapQueriesToProps })
+
+@connect()
+@withPersonHome
 export default class HomeAddress extends Component {
 
   static propTypes = {
