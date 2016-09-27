@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 import { css } from "aphrodite";
 import { Link } from "react-router";
@@ -9,25 +10,22 @@ import Styles from "./live-css";
 
 import liveActions from "../../store/live";
 
-const mapQueriesToProps = () =>
-  ({
-    data: {
-      query: gql`query IsLive {
-        live {
-          live
-          embedCode
-        }
-      }`,
-      forceFetch: false,
-      returnPartialData: false,
-      pollInterval: 60000,
-    },
-  });
+const LIVE_QUERY = gql`
+  query IsLive {
+    live {
+      live
+      embedCode
+    }
+  }
+`;
 
+const withLive = graphql(LIVE_QUERY, {
+  name: "live",
+  options: { pollInterval: 60000 },
+});
 
-const mapStateToProps = state => ({ live: state.live });
-
-@connect({ mapQueriesToProps, mapStateToProps })
+@connect()
+@withLive
 export default class Live extends Component {
 
   static propTypes = {
