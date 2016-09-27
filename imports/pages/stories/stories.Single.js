@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 // loading state
@@ -14,44 +15,45 @@ import Shareable from "../../mixins/mixins.Shareable";
 // import content component
 import StoriesContent from "./stories.Content";
 
-const mapQueriesToProps = ({ ownProps }) => ({
-  story: {
-    query: gql`
-      query getStory($id: ID!) {
-        content: node(id: $id) {
-          id
-          ... on Content {
-            entryId: id
-            title
-            status
-            channelName
-            meta {
-              urlTitle
-              siteId
-              date
-              channelId
-            }
-            content {
-              body
-              ooyalaId
-              tags
-              images(sizes: ["large"]) {
-                fileName
-                fileType
-                fileLabel
-                url
-              }
-            }
+const GET_STORY_QUERY = gql`
+  query getStory($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          body
+          ooyalaId
+          tags
+          images(sizes: ["large"]) {
+            fileName
+            fileType
+            fileLabel
+            url
           }
         }
       }
-    `,
+    }
+  }
+`;
+
+const withStory = graphql(GET_STORY_QUERY, { name: "story" }, {
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
-    forceFetch: false,
-    returnPartialData: true,
-  },
+  }),
 });
-@connect({ mapQueriesToProps })
+
+@withStory
+@connect()
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
