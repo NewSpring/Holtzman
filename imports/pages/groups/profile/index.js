@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import ReactMixin from "react-mixin";
 
@@ -16,43 +17,47 @@ import { nav as navActions, modal } from "../../../store";
 import Layout from "./Layout";
 import Join from "./Join";
 
-const mapQueriesToProps = ({ ownProps }) => ({
-  data: {
-    query: gql`
-      query GetGroup($id: ID!) {
-        person: currentPerson {
-          id
-          firstName
-          nickName
-        }
-        group: node(id: $id) {
-          id
-          ... on Group {
-            name
-            entityId
-            type
-            demographic
-            description
-            photo
-            kidFriendly
-            ageRange
-            campus { name }
-            tags { id, value }
-            locations { location { city, state, latitude, longitude } }
-            schedule { description }
-            members {
-              role
-              person { photo, firstName, nickName, lastName }
-            }
-          }
+const GROUP_QUERY = gql`
+  query GetGroup($id: ID!) {
+    person: currentPerson {
+      id
+      firstName
+      nickName
+    }
+    group: node(id: $id) {
+      id
+      ... on Group {
+        name
+        entityId
+        type
+        demographic
+        description
+        photo
+        kidFriendly
+        ageRange
+        campus { name }
+        tags { id, value }
+        locations { location { city, state, latitude, longitude } }
+        schedule { description }
+        members {
+          role
+          person { photo, firstName, nickName, lastName }
         }
       }
-    `,
+    }
+  }
+`;
+
+const withGroup = graphql(GROUP_QUERY, {
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
-  },
+  }),
 });
+
 const defaultArray = [];
-@connect({ mapQueriesToProps })
+
+@withGroup
+@connect()
 @ReactMixin.decorate(Headerable)
 export default class Template extends Component {
 
