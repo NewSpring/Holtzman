@@ -48,13 +48,13 @@ const withDevotionals = graphql(DEVOTIONALS_QUERY, {
       limit: state.paging.pageSize * state.paging.page,
       skip: state.paging.skip,
     },
-  })
-})
+  }),
+});
 
 const mapStateToProps = state => ({ paging: state.paging });
 
-@withDevotionals
 @connect(mapStateToProps)
+@withDevotionals
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Devotions extends Component {
