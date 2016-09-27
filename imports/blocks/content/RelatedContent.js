@@ -1,55 +1,58 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
-import gql from "graphql-tag"; // XXX update to graphql-tag
+import { graphql } from "react-apollo";
+import { connect } from "react-redux"
+import gql from "graphql-tag";
 
 import Loading from "../../components/loading";
 import MiniCard from "../../components/cards/cards.MiniCard";
 
 // XXX add skip if no tags
-const defaultArray = [];
-const mapQueriesToProps = ({ ownProps }) => ({
-  /* eslint-disable */
-  content: {
-    query: gql`
-      query GetRelatedContent($tags: [String], $includeChannels: [String], $limit: Int, $excludedIds: [String]) {
-        taggedContent(tags: $tags, limit: $limit, includeChannels: $includeChannels, excludedIds: $excludedIds) {
-          entryId: id
-          id
-          title
-          channelName
-          parent {
-            entryId: id
-            content {
-              images(sizes: ["medium"]) {
-                url
-                label
-                fileLabel
-                id
-              }
-            }
-          }
-          content {
-            images(sizes: ["medium"]) {
-              url
-              label
-              fileLabel
-              id
-            }
+
+const RELATED_CONTENT_QUERY = gql`
+  query GetRelatedContent($tags: [String], $includeChannels: [String], $limit: Int, $excludedIds: [String]) {
+    taggedContent(tags: $tags, limit: $limit, includeChannels: $includeChannels, excludedIds: $excludedIds) {
+      entryId: id
+      id
+      title
+      channelName
+      parent {
+        entryId: id
+        content {
+          images(sizes: ["medium"]) {
+            url
+            label
+            fileLabel
+            id
           }
         }
       }
-    `,
-    /* eslint-enable */
+      content {
+        images(sizes: ["medium"]) {
+          url
+          label
+          fileLabel
+          id
+        }
+      }
+    }
+  }
+`;
+
+const defaultArray = [];
+const withContent = graphql(RELATED_CONTENT_QUERY, {
+  name: "content",
+  options: ownProps => ({
     variables: {
       tags: ownProps.tags || defaultArray,
       includeChannels: ownProps.includeChannels || defaultArray,
       limit: ownProps.limit || 3,
       excludedIds: ownProps.excludedIds || defaultArray,
     },
-  },
+  }),
 });
 
-@connect({ mapQueriesToProps })
+@connect()
+@withContent
 export default class RelatedContent extends Component {
 
   static defaultProps = {
