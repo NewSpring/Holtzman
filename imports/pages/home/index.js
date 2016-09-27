@@ -74,8 +74,8 @@ const mapStateToProps = state => ({
   modal: { visible: state.modal.visible },
 });
 
-@withFeedContent
 @connect(mapStateToProps)
+@withFeedContent
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 export default class Home extends Component {
