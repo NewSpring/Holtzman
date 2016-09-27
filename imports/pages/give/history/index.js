@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import Authorized from "../../../blocks/authorzied";
@@ -8,46 +9,48 @@ import { header as headerActions } from "../../../store";
 import Layout from "./Layout";
 import Details from "./Details";
 
-const mapQueriesToProps = () => ({
-  filter: {
-    query: gql`
-      query GetFilterContent {
-        family: currentFamily {
-          person { photo, nickName, firstName, lastName, id: entityId }
-        }
+const FILTER_QUERY = gql`
+  query GetFilterContent {
+    family: currentFamily {
+      person { photo, nickName, firstName, lastName, id: entityId }
+    }
+  }
+`;
+const withFilter = graphql(FILTER_QUERY, { name: "filter" });
+
+const TRANSACTIONS_QUERY = gql`
+  query GetTransactions($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
+    transactions(
+      limit: $limit,
+      skip: $skip,
+      people: $people,
+      start: $start,
+      end: $end,
+      cache: false
+    ) {
+      id
+      date
+      status
+      summary
+      person { firstName, lastName, photo }
+      details {
+        id
+        amount
+        account { id, name }
       }
-    `,
-  },
-  data: {
-    // XXX remove cache: false when heighliner caching is tested
-    query: gql`
-      query GetTransactions($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
-        transactions(
-          limit: $limit,
-          skip: $skip,
-          people: $people,
-          start: $start,
-          end: $end,
-          cache: false
-        ) {
-          id
-          date
-          status
-          summary
-          person { firstName, lastName, photo }
-          details {
-            id
-            amount
-            account { id, name }
-          }
-        }
-      }
-    `,
+    }
+  }
+`;
+const withTransactions = graphql(TRANSACTIONS_QUERY, {
+  options: ownProps => ({
     variables: { limit: 20, skip: 0, people: [], start: "", end: "" },
     forceFetch: true,
-  },
+  }),
 });
-@connect({ mapQueriesToProps })
+
+@withFilter
+@connect()
+@withTransactions
 class Template extends Component {
 
   static propTypes = {
