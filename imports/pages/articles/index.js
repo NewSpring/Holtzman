@@ -1,13 +1,13 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import { FeedItemSkeleton } from "../../components/loading";
 
 import Headerable from "../../mixins/mixins.Header";
 import Pageable from "../../mixins/mixins.Pageable";
-
 
 import { nav as navActions } from "../../store";
 import ApollosPullToRefresh from "../../components/pullToRefresh";
@@ -16,49 +16,49 @@ import Single from "./articles.Single";
 
 import FeedItem from "../../components/cards/cards.FeedItem";
 
-const mapQueriesToProps = ({ state }) => ({
-  data: {
-    query: gql`
-      query getArticles($limit: Int!, $skip: Int!) {
-        content(channel: "articles", limit: $limit, skip: $skip) {
-          entryId: id
-          title
-          status
-          channelName
-          meta {
-            urlTitle
-            siteId
-            date
-            channelId
-          }
-          content {
-            body
-            scripture {
-              book
-              passage
-            }
-            images(sizes: ["large"]) {
-              fileName
-              fileType
-              fileLabel
-              url
-            }
-          }
+const ARTICLES_QUERY = gql`
+  query getArticles($limit: Int!, $skip: Int!) {
+    content(channel: "articles", limit: $limit, skip: $skip) {
+      entryId: id
+      title
+      status
+      channelName
+      meta {
+        urlTitle
+        siteId
+        date
+        channelId
+      }
+      content {
+        body
+        scripture {
+          book
+          passage
+        }
+        images(sizes: ["large"]) {
+          fileName
+          fileType
+          fileLabel
+          url
         }
       }
-    `,
+    }
+  }
+`;
+
+const withArticles = graphql(ARTICLES_QUERY, {
+  options: state => ({
     variables: {
       limit: state.paging.pageSize * state.paging.page,
       skip: state.paging.skip,
     },
-    forceFetch: false,
-    returnPartialData: false,
-  },
+  }),
 });
 
 const mapStateToProps = state => ({ paging: state.paging });
 
-@connect({ mapQueriesToProps, mapStateToProps })
+@withArticles
+@connect(mapStateToProps)
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
