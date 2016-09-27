@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import Layout from "./Layout";
@@ -13,29 +14,27 @@ import {
 
 import withProfileUpload from "../profile-photo";
 
-const mapQueriesToProps = () => ({
-  data: {
-    forceFetch: true,
-    query: gql`
-      query GetPerson {
-        person: currentPerson (cache: false) {
-          photo
-          firstName
-          nickName
-          lastName
-          home {
-            city
-          }
-        }
+// XXX Query is duplicated within profile section
+const GET_PERSON_QUERY = gql`
+  query GetPerson {
+    person: currentPerson (cache: false) {
+      photo
+      firstName
+      nickName
+      lastName
+      home {
+        city
       }
-    `,
-  },
-});
+    }
+  }
+`;
 
+const withPerson = graphql(GET_PERSON_QUERY);
 const mapStateToProps = state => ({ authorized: state.accounts.authorized });
 
+@withPerson
 @withProfileUpload
-@connect({ mapQueriesToProps, mapStateToProps })
+@connect(mapStateToProps)
 export default class Home extends Component {
 
   static propTypes = {
