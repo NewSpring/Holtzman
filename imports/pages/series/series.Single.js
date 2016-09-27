@@ -1,7 +1,8 @@
 /* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 // loading state
@@ -23,53 +24,52 @@ import react from "../../util/react";
 import SeriesHero from "./series.Hero";
 import SeriesVideoList from "./series.VideoList";
 
-const mapQueriesToProps = ({ ownProps }) => (
-  {
-    series: {
-      query: gql`
-        query getSeriesSingle($id: ID!) {
-          content: node(id: $id) {
+const SERIES_SINGLE_QUERY = gql`
+  query getSeriesSingle($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          description
+          tags
+          isLight
+          images(sizes: ["large"]) {
+            fileName
+            fileType
+            fileLabel
+            url
+          }
+          ooyalaId
+          colors {
             id
-            ... on Content {
-              entryId: id
-              title
-              status
-              channelName
-              meta {
-                urlTitle
-                siteId
-                date
-                channelId
-              }
-              content {
-                description
-                tags
-                isLight
-                images(sizes: ["large"]) {
-                  fileName
-                  fileType
-                  fileLabel
-                  url
-                }
-                ooyalaId
-                colors {
-                  id
-                  value
-                  description
-                }
-              }
-            }
+            value
+            description
           }
         }
-      `,
-      variables: { id: ownProps.params.id },
-      forceFetch: false,
-      returnPartialData: false,
-    },
+      }
+    }
   }
-);
+`;
 
-@connect({ mapQueriesToProps })
+const withSingleSeries = graphql(SERIES_SINGLE_QUERY, {
+  name: "series",
+  options: ownProps => ({
+    variables: { id: ownProps.params.id },
+  }),
+});
+
+@withSingleSeries
+@connect()
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
