@@ -37,7 +37,7 @@ const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
   name: "savedPayments",
   options: ownProps => ({
     variables: {
-      skip: !!ownProps.authorized,
+      skip: !ownProps.authorized,
     },
     forceFetch: true,
   }),
