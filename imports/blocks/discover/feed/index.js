@@ -28,7 +28,7 @@ const DISCOVER_QUERY = gql`
 
 const withDiscover = graphql(DISCOVER_QUERY, {
   name: "discover",
-  options: ownProps => ({
+  options: () => ({
     variables: {
       // XXX if we want app specfic promos
       // setName: proccess.env.WEB ? "promotions_newspring" : "promotions_newspring_app"
