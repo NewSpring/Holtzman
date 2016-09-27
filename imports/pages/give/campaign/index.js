@@ -1,6 +1,7 @@
 /* eslint-disable import/no-named-as-default */
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo"
 import gql from "graphql-tag";
 
 import Spinner from "../../../components/loading";
@@ -20,31 +21,30 @@ const Loading = () => (
   </div>
 );
 
-const mapQueriesToProps = () => ({
-  accounts: {
-    query: gql`
-      query GetFinancialAccounts {
-        accounts {
-          description
-          name
-          id
-          summary
-          image
-          order
-          images {
-            fileName
-            fileType
-            fileLabel
-            s3
-            cloudfront
-          }
-        }
+const FINANCIAL_ACCOUNTS_QUERY = gql`
+  query GetFinancialAccounts {
+    accounts {
+      description
+      name
+      id
+      summary
+      image
+      order
+      images {
+        fileName
+        fileType
+        fileLabel
+        s3
+        cloudfront
       }
-    `,
-  },
-});
+    }
+  }
+`;
 
-@connect({ mapQueriesToProps })
+const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" })
+
+@withFinancialAccounts
+@connect()
 class Template extends Component {
 
   static propTypes = {
