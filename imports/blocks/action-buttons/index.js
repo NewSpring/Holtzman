@@ -37,9 +37,7 @@ const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
   name: "savedPayments",
   options: ownProps => ({
     variables: {
-      // even though this is unused, we include it to trigger a recal when a person
-      // logs in or logs out
-      authorized: ownProps.authorized,
+      skip: !!ownProps.authorized,
     },
     forceFetch: true,
   }),
