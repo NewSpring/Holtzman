@@ -1,7 +1,8 @@
 /* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import Loading from "../../components/loading";
@@ -23,86 +24,89 @@ import collections from "../../util/collections";
 import SingleVideoPlayer from "../../components/players/video/Player";
 import SeriesVideoList from "./series.VideoList";
 
-const mapQueriesToProps = ({ ownProps }) => ({
-  currentSermon: {
-    query: gql`
-      query getSermon($sermonId: ID!) {
-        content: node(id: $sermonId) {
-          ... on Content {
-            entryId: id
-            title
-            status
-            channelName
-            meta {
-              urlTitle
-              siteId
-              date
-              actualDate
-              channelId
-            }
-            content {
-              audio {
-                duration
-                file: s3
-              }
-              description
-              speaker
-              ooyalaId
-            }
+const CURRENT_SERMON_QUERY = gql`
+  query getSermon($sermonId: ID!) {
+    content: node(id: $sermonId) {
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          actualDate
+          channelId
+        }
+        content {
+          audio {
+            duration
+            file: s3
           }
+          description
+          speaker
+          ooyalaId
         }
       }
-    `,
+    }
+  }
+`;
+const withCurrentSermon = graphql(CURRENT_SERMON_QUERY, {
+  name: "currentSermon",
+  options: ownProps => ({
     variables: { sermonId: ownProps.params.sermonId },
-    forceFetch: false,
-    returnPartialData: false,
-  },
-  series: {
-    query: gql`
-      query getSeriesSingle($id: ID!) {
-        content: node(id: $id) {
-          id
-          ... on Content {
-            entryId: id
-            title
-            status
-            channelName
-            meta {
-              urlTitle
-              siteId
-              date
-              channelId
-            }
-            content {
-              description
-              images(sizes: ["large", "medium", "small"]) {
-                fileName
-                fileType
-                fileLabel
-                url
-                size
-              }
-              ooyalaId
-              colors {
-                id
-                value
-                description
-              }
-              isLight
-            }
+  }),
+});
+
+const SERIES_QUERY = gql`
+  query getSeriesSingle($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          description
+          images(sizes: ["large", "medium", "small"]) {
+            fileName
+            fileType
+            fileLabel
+            url
+            size
           }
+          ooyalaId
+          colors {
+            id
+            value
+            description
+          }
+          isLight
         }
       }
-    `,
+    }
+  }
+`;
+const withSeries = graphql(SERIES_QUERY, {
+  name: "series",
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
-    forceFetch: false,
-    returnPartialData: false,
-  },
+  }),
 });
 
 const mapStateToProps = state => ({ live: state.live });
 
-@connect({ mapQueriesToProps, mapStateToProps })
+@connect(null, mapStateToProps)
+@withCurrentSermon
+@withSeries
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
