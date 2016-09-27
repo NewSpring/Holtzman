@@ -41,7 +41,7 @@ const withEntries = graphql(ENTRIES_QUERY, {
   },
 });
 
-const GET_SCHEDULE_TRANSACTION_QUERY = gql`
+const SCHEDULE_TRANSACTION_QUERY = gql`
   query GetScheduleTransaction($scheduleTransactionId: ID!) {
     transaction: node(id: $scheduleTransactionId) {
       ... on ScheduledTransaction {
@@ -69,7 +69,7 @@ const GET_SCHEDULE_TRANSACTION_QUERY = gql`
   }
 `;
 
-const withGetScheduleTransaction = graphql(GET_SCHEDULE_TRANSACTION_QUERY, {
+const withScheduleTransaction = graphql(SCHEDULE_TRANSACTION_QUERY, {
   options: ownProps => ({
     variables: { scheduleTransactionId: ownProps.params.id },
     forceFetch: true,
@@ -78,7 +78,7 @@ const withGetScheduleTransaction = graphql(GET_SCHEDULE_TRANSACTION_QUERY, {
 
 @connect()
 @withEntries
-@withGetScheduleTransaction
+@withScheduleTransaction
 export default class Details extends Component {
 
   static propTypes = {
