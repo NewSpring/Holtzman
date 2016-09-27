@@ -1,7 +1,7 @@
 /* eslint-disable import/no-named-as-default */
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { graphql } from "react-apollo"
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import Spinner from "../../../components/loading";
@@ -41,10 +41,10 @@ const FINANCIAL_ACCOUNTS_QUERY = gql`
   }
 `;
 
-const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" })
+const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" });
 
-@withFinancialAccounts
 @connect()
+@withFinancialAccounts
 class Template extends Component {
 
   static propTypes = {
