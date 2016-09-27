@@ -52,9 +52,9 @@ const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "account
 const mapStateToProps = store => ({ give: store.give });
 const defaultArray = [];
 
+@connect(mapStateToProps)
 @withScheduledTransactions
 @withFinancialAccounts
-@connect(mapStateToProps)
 export default class Template extends Component {
 
   static propTypes = {
