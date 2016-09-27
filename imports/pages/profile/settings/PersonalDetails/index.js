@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 import moment from "moment";
 
@@ -15,39 +16,43 @@ import Success from "../Success";
 import Layout from "./Layout";
 
 // XXX remove cache: false once we feel good about caching
-const mapQueriesToProps = () => ({
-  campuses: {
-    query: gql`
-      query GetCampuses {
-        campuses {
-          name
-          shortCode
-          id: entityId
-          locationId
-        }
-      }
-    `,
-  },
-  person: {
-    query: gql`
-      query GetPersonForSettings($cache: Boolean) {
-        person: currentPerson(cache: $cache) {
-          campus(cache: $cache) { id: entityId }
-          firstName
-          lastName
-          nickName
-          email
-          birthDay
-          birthMonth
-          birthYear
-        }
-      }
-    `,
+const CAMPUSES_QUERY = gql`
+  query GetCampuses {
+    campuses {
+      name
+      shortCode
+      id: entityId
+      locationId
+    }
+  }
+`;
+const withCampuses = graphql(CAMPUSES_QUERY, { name: "campuses" });
+
+const PERSON_QUERY = gql`
+  query GetPersonForSettings($cache: Boolean) {
+    person: currentPerson(cache: $cache) {
+      campus(cache: $cache) { id: entityId }
+      firstName
+      lastName
+      nickName
+      email
+      birthDay
+      birthMonth
+      birthYear
+    }
+  }
+`;
+const withPerson = graphql(PERSON_QUERY, {
+  name: "person",
+  options: () => ({
     variables: { cache: false },
     forceFetch: true,
-  },
+  }),
 });
-@connect({ mapQueriesToProps })
+
+@withCampuses
+@connect()
+@withPerson
 export default class PersonalDetails extends Component {
 
   static propTypes = {
