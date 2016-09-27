@@ -2,5 +2,9 @@
 import RouteTransition from "./routeTransition";
 
 export default {
-  RouteTransition
+  RouteTransition,
+};
+
+export {
+  RouteTransition,
 };

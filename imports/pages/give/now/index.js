@@ -1,9 +1,8 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
-import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 
-import { createContainer } from "../../../blocks/meteor/react-meteor-data";
+import createContainer from "../../../blocks/meteor/react-meteor-data";
 import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
@@ -22,23 +21,21 @@ const mapQueriesToProps = () => ({
           images { fileName, fileType, fileLabel, s3, cloudfront }
         }
       }
-    `
-  }
+    `,
+  },
 });
 
 class Page extends Component {
-  componentDidMount(){
+
+  static propTypes = {
+    dispatch: PropTypes.func,
+  }
+
+  componentDidMount() {
     if (process.env.NATIVE) {
-      const item = {
-        title: "Give Now",
-      };
-
+      const item = { title: "Give Now" };
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
-
   }
 
   render() {
@@ -48,19 +45,19 @@ class Page extends Component {
 
 // Bind reactive data to component
 const TemplateWithData = createContainer(() => {
-    let alive = true;
-    try { alive = serverWatch.isAlive("ROCK") } catch (e) {}
-    return { alive };
-  },
-  connect({ mapQueriesToProps })((props) => <Page {...props} />)
+  let alive = true;
+  try { alive = serverWatch.isAlive("ROCK"); } catch (e) { /* do nothing */ }
+  return { alive };
+},
+  connect({ mapQueriesToProps })(props => <Page {...props} />)
 );
 
 
 const Routes = [
-  { path: "now", component: TemplateWithData }
+  { path: "now", component: TemplateWithData },
 ];
 
 export default {
   TemplateWithData,
-  Routes
+  Routes,
 };

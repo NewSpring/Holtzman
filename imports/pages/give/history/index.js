@@ -1,14 +1,14 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 import Authorized from "../../../blocks/authorzied";
-import { nav as navActions, header as headerActions } from "../../../store";
+import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
 import Details from "./Details";
 
-const mapQueriesToProps = ({ ownProps }) => ({
+const mapQueriesToProps = () => ({
   filter: {
     query: gql`
       query GetFilterContent {
@@ -16,13 +16,20 @@ const mapQueriesToProps = ({ ownProps }) => ({
           person { photo, nickName, firstName, lastName, id: entityId }
         }
       }
-    `
+    `,
   },
   data: {
     // XXX remove cache: false when heighliner caching is tested
     query: gql`
       query GetTransactions($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
-        transactions(limit: $limit, skip: $skip, people: $people, start: $start, end: $end, cache: false) {
+        transactions(
+          limit: $limit,
+          skip: $skip,
+          people: $people,
+          start: $start,
+          end: $end,
+          cache: false
+        ) {
           id
           date
           status
@@ -40,9 +47,20 @@ const mapQueriesToProps = ({ ownProps }) => ({
     forceFetch: true,
   },
 });
-const defaultArray = [];
 @connect({ mapQueriesToProps })
 class Template extends Component {
+
+  static propTypes = {
+    data: PropTypes.shape({
+      loading: PropTypes.bool,
+      transactions: PropTypes.array,
+      refetch: PropTypes.func,
+    }),
+    filter: PropTypes.shape({
+      family: PropTypes.array,
+    }),
+    dispatch: PropTypes.func,
+  }
 
   state = {
     offset: 0,
@@ -52,17 +70,36 @@ class Template extends Component {
     start: "",
     end: "",
     people: [],
-    transactions: [] // XXX remove after refetchMore has landed in apollo-client
+    transactions: [], // XXX remove after refetchMore has landed in apollo-client
+  }
+
+  componentWillMount() {
+    // coming back to this page with data in the store
+    if (!this.props.data.loading && this.props.data.transactions) {
+      this.setState({ transactions: this.props.data.transactions });
+    }
+  }
+
+  componentDidMount() {
+    if (process.env.NATIVE) {
+      const item = { title: "Giving History" };
+      this.props.dispatch(headerActions.set(item));
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.data.loading && !nextProps.data.loading && !this.state.transactions.length) {
+      this.setState({ transactions: nextProps.data.transactions });
+    }
   }
 
   paginate = () => {
-    const { q, tags } = this.props;
     this.props.data.refetch({
       limit: 20,
       skip: this.state.offset + 20,
       people: this.state.people,
       start: this.state.start,
-      end: this.state.end
+      end: this.state.end,
     })
       .then(({ data }) => {
         const { transactions } = data;
@@ -76,42 +113,15 @@ class Template extends Component {
       });
   }
 
-  componentWillMount(){
-    // coming back to this page with data in the store
-    if (!this.props.data.loading && this.props.data.transactions) {
-      this.setState({ transactions: this.props.data.transactions });
-    }
-  }
-
-  componentDidMount(){
-    if (process.env.NATIVE) {
-      const item = {
-        title: "Giving History",
-      };
-
-      this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
-    }
-
-  }
-  componentWillReceiveProps(nextProps, nextState) {
-    if (this.props.data.loading && !nextProps.data.loading && !this.state.transactions.length) {
-      this.setState({ transactions: nextProps.data.transactions });
-    }
-
-  }
-
   changeFamily = (people) => {
     this.setState({ loaded: false });
     this.props.data.refetch({
-        start: this.state.start,
-        end: this.state.end,
-        limit: 20,
-        skip: 0,
-        people
-      })
+      start: this.state.start,
+      end: this.state.end,
+      limit: 20,
+      skip: 0,
+      people,
+    })
       .then((response) => {
         if (!response || !response.data) return;
         const { transactions } = response.data;
@@ -120,7 +130,7 @@ class Template extends Component {
           done: transactions.length < 20,
           loaded: true,
           transactions,
-          people
+          people,
         });
       });
   }
@@ -128,12 +138,12 @@ class Template extends Component {
   changeDates = (start, end) => {
     this.setState({ loaded: false });
     this.props.data.refetch({
-        people: this.state.people,
-        limit: 20,
-        skip: 0,
-        start,
-        end,
-      })
+      people: this.state.people,
+      limit: 20,
+      skip: 0,
+      start,
+      end,
+    })
       .then((response) => {
         if (!response || !response.data) return;
         const { transactions } = response.data;
@@ -148,19 +158,19 @@ class Template extends Component {
       });
   }
 
-  render () {
+  render() {
     return (
       <Layout
-          paginate={this.paginate}
-          state={this.state}
-          transactions={this.state.transactions}
-          family={this.props.filter.family || []}
-          alive
-          ready={!this.props.data.loading}
-          reloading={!this.state.loaded}
-          done={this.state.done}
-          changeFamily={this.changeFamily}
-          changeDates={this.changeDates}
+        paginate={this.paginate}
+        state={this.state}
+        transactions={this.state.transactions}
+        family={this.props.filter.family || []}
+        alive
+        ready={!this.props.data.loading}
+        reloading={!this.state.loaded}
+        done={this.state.done}
+        changeFamily={this.changeFamily}
+        changeDates={this.changeDates}
       />
     );
   }
@@ -175,13 +185,13 @@ const Routes = [
     childRoutes: [
       {
         path: ":id",
-        component: Details
-      }
-    ]
-  }
+        component: Details,
+      },
+    ],
+  },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

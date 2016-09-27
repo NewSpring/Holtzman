@@ -1,25 +1,20 @@
 
 
 Meteor.methods({
-  "communication/slack/send": function(text, room) {
+  "communication/slack/send": function sendSlack(text, room) {
+    if (!Meteor.settings.slack || !text) return Promise.resolve();
 
-    if (!Meteor.settings.slack || !text) {
-      return;
-    }
-
-    let message = {
+    const message = {
       username: "Apollos",
       icon_emoji: ":newspring:",
-      text
+      text,
     };
 
-    if (room) {
-      message.channel = room;
-    }
+    if (room) message.channel = room;
+
     return fetch(Meteor.settings.slack, {
       method: "POST",
-      body: JSON.stringify(message)
+      body: JSON.stringify(message),
     });
-
-  }
+  },
 });

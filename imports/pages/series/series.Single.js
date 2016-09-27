@@ -1,4 +1,5 @@
-import { Component } from "react";
+/* eslint-disable react/no-danger */
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
@@ -22,9 +23,8 @@ import react from "../../util/react";
 import SeriesHero from "./series.Hero";
 import SeriesVideoList from "./series.VideoList";
 
-const mapQueriesToProps = ({ ownProps, state }) => {
-  const pathParts = state.routing.location.pathname.split("/");
-  return {
+const mapQueriesToProps = ({ ownProps }) => (
+  {
     series: {
       query: gql`
         query getSeriesSingle($id: ID!) {
@@ -66,13 +66,20 @@ const mapQueriesToProps = ({ ownProps, state }) => {
       forceFetch: false,
       returnPartialData: false,
     },
-  };
-};
+  }
+);
+
 @connect({ mapQueriesToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
 export default class SeriesSingle extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    series: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
+  }
 
   componentWillMount() {
     if (process.env.WEB) return;
@@ -83,7 +90,7 @@ export default class SeriesSingle extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction
+      action: this.likeableAction,
     }));
   }
 
@@ -93,12 +100,12 @@ export default class SeriesSingle extends Component {
 
   handleHeaderStyle = (nextProps) => {
     const content = nextProps.series.content;
-    if(!content) return;
+    if (!content) return;
     const { isLight } = nextProps.series.content.content;
     const color = collections.color(content);
     this.props.dispatch(headerActions.set({
       title: "Series",
-      color: color,
+      color,
       light: !isLight,
     }));
   }
@@ -110,7 +117,7 @@ export default class SeriesSingle extends Component {
       left: 0,
       width: "100%",
       height: "100%",
-      zIndex: -1
+      zIndex: -1,
     };
   }
 
@@ -122,7 +129,7 @@ export default class SeriesSingle extends Component {
       return (
         <div className="locked-ends locked-sides floating">
           <div className="floating__item">
-            <Loading/>
+            <Loading />
           </div>
         </div>
       );
@@ -146,4 +153,4 @@ export default class SeriesSingle extends Component {
 
     );
   }
-};
+}

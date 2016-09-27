@@ -17,7 +17,7 @@ export default {
   update,
   updateHome,
   forceReset,
-  recover
+  recover,
 };
 
 export {
@@ -28,5 +28,5 @@ export {
   update,
   updateHome,
   forceReset,
-  recover
+  recover,
 };

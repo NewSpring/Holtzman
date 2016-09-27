@@ -1,4 +1,4 @@
-/*global Meteor */
+/* global Meteor */
 
 const upload = (file, callback) => {
   Meteor.call("file/upload", file, callback);

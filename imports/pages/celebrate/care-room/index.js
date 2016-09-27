@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -15,15 +13,16 @@ import {
 
 import FitText from "../components/fit-text";
 
+/* eslint-disable max-len */
 const CareRoom = () => (
   <div className="display-inline-block text-center one-whole ">
-    <div className="background--primary soft-double-top@lap-and-up" style={{overflow: "visible"}}>
+    <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
       <Stats>
 
         <FitText compressor={1.3}>
           <h3
-              className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
-              style={{
+            className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
+            style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
@@ -31,18 +30,21 @@ const CareRoom = () => (
           </h3>
         </FitText>
 
-        <FitText compressor={.3}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+        <FitText compressor={0.3}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
             13,162
           </h1>
         </FitText>
 
         <FitText compressor={1.3}>
           <h3
-              className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
-              style={{
+            className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
+            style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
@@ -55,30 +57,30 @@ const CareRoom = () => (
 
       <Leaves>
         <SolidLeaf
-            className="locked-bottom locked-right"
-            size="200px"
-            color="text-secondary"
-            style={{
+          className="locked-bottom locked-right"
+          size="200px"
+          color="text-secondary"
+          style={{
             transform: "rotate(-225deg)",
             marginBottom: "-50px",
             marginRight: "-150px",
           }}
         />
         <SolidLeaf
-            className="locked-bottom locked-right"
-            size="130px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-right"
+          size="130px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(-270deg)",
             marginBottom: "-100px",
             marginRight: "-10px",
           }}
         />
         <StripedLeaf
-            className="locked-bottom locked-right"
-            size="90px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-right"
+          size="90px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(180deg)",
             marginBottom: "60px",
             marginRight: "-20px",
@@ -86,10 +88,10 @@ const CareRoom = () => (
         />
 
         <SolidLeaf
-            className="locked-bottom locked-left"
-            size="250px"
-            color="text-secondary"
-            style={{
+          className="locked-bottom locked-left"
+          size="250px"
+          color="text-secondary"
+          style={{
             transform: "rotate(-135deg)",
             marginBottom: "-90px",
             marginLeft: "-150px",
@@ -97,10 +99,10 @@ const CareRoom = () => (
         />
 
         <StripedLeaf
-            className="locked-bottom locked-left"
-            size="120px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-left"
+          size="120px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(-90deg)",
             marginBottom: "-20px",
             marginLeft: "0px",
@@ -124,9 +126,9 @@ const CareRoom = () => (
             "I returned to NewSpring for the first time in years in February 2015. I felt like God said 'Just get to the care room and talk to someone,' so I did. For the first time in my life I opened up and confessed everything — the affair, the suicidal tendencies, and everything else. I told the volunteer I knew the reason I acted the way I did was because I wasn't saved, and he asked 'What are you waiting for?' I accepted Christ into my heart and life. A few months later, my wife and I were remarried."
           </p>
           <h6
-              className="italic text-dark-primary"
-              style={{
-              fontFamily: "ff-meta-serif-web-pro, serif"
+            className="italic text-dark-primary"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
             Jake and Kristy Tilley, Anderson Campus

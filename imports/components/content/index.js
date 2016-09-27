@@ -4,5 +4,10 @@ import ComingSoon from "./content.ComingSoon";
 
 export default {
   Tags,
-  ComingSoon
+  ComingSoon,
+};
+
+export {
+  Tags,
+  ComingSoon,
 };

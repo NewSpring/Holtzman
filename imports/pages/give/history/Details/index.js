@@ -5,7 +5,6 @@ import gql from "graphql-tag";
 
 import {
   nav as navActions,
-  transactions as transactionActions,
   header as headerActions,
 } from "../../../../store";
 
@@ -15,7 +14,12 @@ const mapQueriesToProps = ({ ownProps }) => ({
   entries: {
     query: gql`
       query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
-        entries: taggedContent(tagName: $tagName, limit: $limit, includeChannels: $includeChannels, cache: false) {
+        entries: taggedContent(
+          tagName: $tagName,
+          limit: $limit,
+          includeChannels: $includeChannels,
+          cache: false
+        ) {
           entryId: id
           title
           channelName
@@ -39,7 +43,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
       tagName: "giving",
       limit: 2,
       includeChannels: ["articles"],
-    }
+    },
   },
   data: {
     query: gql`
@@ -77,7 +81,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
       }
     `,
     variables: {
-      transactionId: ownProps.params.id
+      transactionId: ownProps.params.id,
     },
   },
 });
@@ -85,37 +89,39 @@ const mapQueriesToProps = ({ ownProps }) => ({
 @connect({ mapQueriesToProps })
 export default class Details extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+    entries: PropTypes.object,
+  }
+
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (process.env.NATIVE) {
       const item = {
         title: "Contribution Details",
       };
 
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
-
   }
 
   componentWillUnmount() {
     this.props.dispatch(navActions.setLevel("TOP"));
   }
 
-  render () {
-    let { transaction } = this.props.data;
+  render() {
+    const { transaction } = this.props.data;
     const { entries, loading } = this.props.entries;
     // if (loading) return <Loading /> // XXX
 
     return (<Layout
-        transaction={transaction}
-        entries={entries}
-        loadingEntries={loading}
-            />);
+      transaction={transaction}
+      entries={entries}
+      loadingEntries={loading}
+    />);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import { Link } from "react-router";
+// import { Link } from "react-router";
 
 import Card from "./index";
 import styles from "../../util/styles";
@@ -12,20 +12,10 @@ import time from "../../util/time";
 export default class FeedItem extends Component {
 
   static propTypes = {
-    // item: PropTypes.object.isRequired
-  }
-
-  isSeriesItem = () => {
-    const { channelName } = this.props.item;
-    return (channelName === "series_newspring" || channelName === "sermons");
-  }
-
-  isLight = () => {
-    if (!this.isSeriesItem()) return true;
-    if (this.props.item.channelName === "sermons") {
-      return this.props.item.parent.content.isLight;
-    }
-    return this.props.item.content.isLight;
+    item: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object,
+    ]).isRequired, // eslint-disable-line
   }
 
   getImage = (item) => {
@@ -36,6 +26,19 @@ export default class FeedItem extends Component {
     return backgrounds.image(item);
   }
 
+  isLight = () => {
+    if (!this.isSeriesItem()) return true;
+    if (this.props.item.channelName === "sermons") {
+      return this.props.item.parent.content.isLight;
+    }
+    return this.props.item.content.isLight;
+  }
+
+  isSeriesItem = () => {
+    const { channelName } = this.props.item;
+    return (channelName === "series_newspring" || channelName === "sermons");
+  }
+
   overlayStyles = (item) => {
     if (item.channelName === "sermons") {
       return styles.overlay(item.parent);
@@ -43,11 +46,10 @@ export default class FeedItem extends Component {
     return styles.overlay(item);
   }
 
-  cardClasses = (item) => {
+  cardClasses = () => {
     let classes = [];
 
     if (this.isSeriesItem()) {
-
       classes = classes.concat([
         "rounded",
       ]);
@@ -59,12 +61,12 @@ export default class FeedItem extends Component {
   }
 
   itemTheme = () => {
-    let classes = [
+    const classes = [
       "card__item",
       "soft",
       "text-center",
       "soft-bottom",
-      "rounded-bottom"
+      "rounded-bottom",
     ];
 
     if (this.isSeriesItem()) {
@@ -75,24 +77,20 @@ export default class FeedItem extends Component {
     return classes.join(" ");
   }
 
-  h4Classes = () => {
+  h4Classes = () => ([
+    !this.isLight() ? "text-light-primary" : "text-dark-primary",
+    "capitalize",
+  ].join(" "))
 
-    return [
-      !this.isLight() ? "text-light-primary" : "text-dark-primary",
-      "capitalize",
-    ].join(" ");
-  }
-
-  categoryClasses = () => {
-    return !this.isLight() ? "text-light-primary" : "text-dark-secondary";
-  }
+  categoryClasses = () => (
+    !this.isLight() ? "text-light-primary" : "text-dark-secondary"
+  );
 
   timeClasses = () => {
-    let classes = ["text-right", "float-right", "flush-bottom"];
+    const classes = ["text-right", "float-right", "flush-bottom"];
     if (!this.isLight()) {
       classes.push("text-light-primary");
-    }
-    else {
+    } else {
       classes.push("text-dark-secondary");
     }
     return classes.join(" ");
@@ -105,7 +103,7 @@ export default class FeedItem extends Component {
   }
 
   wrapperClasses = () => {
-    let classes = ["background--fill"];
+    const classes = ["background--fill"];
     if (this.isSeriesItem()) {
       const { item } = this.props;
       let collection;
@@ -148,14 +146,14 @@ export default class FeedItem extends Component {
     const item = this.props.item;
     return (
       <Card
-          link={content.links(item)}
-          classes={this.cardClasses(item)}
-          imageclasses={["rounded-top"]}
-          image={{ url: this.getImage(item), ratio: "square", full: this.isSeriesItem() }}
-          itemTheme={this.itemTheme()}
-          wrapperClasses={this.wrapperClasses()}
-          itemStyles={this.itemStyles()}
-          linkAll
+        link={content.links(item)}
+        classes={this.cardClasses(item)}
+        imageclasses={["rounded-top"]}
+        image={{ url: this.getImage(item), ratio: "square", full: this.isSeriesItem() }}
+        itemTheme={this.itemTheme()}
+        wrapperClasses={this.wrapperClasses()}
+        itemStyles={this.itemStyles()}
+        linkAll
       >
         <style>{this.overlayStyles(item)}</style>
 
@@ -163,7 +161,7 @@ export default class FeedItem extends Component {
           <h4 className={this.h4Classes()}>{item.title}</h4>
           <i className={this.iconClasses()} />
           <h7 className={this.categoryClasses()}>{categories.name(item)}</h7>
-          <h7 style={{marginTop: "5px"}} className={this.timeClasses()}>{time.relative(item)}</h7>
+          <h7 style={{ marginTop: "5px" }} className={this.timeClasses()}>{time.relative(item)}</h7>
         </div>
       </Card>
     );

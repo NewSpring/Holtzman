@@ -1,10 +1,9 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 import {
   nav,
-  accounts as accountsActions,
 } from "../../../../store";
 
 import { updateHome } from "../../../../methods/accounts/browser";
@@ -30,11 +29,11 @@ const mapQueriesToProps = () => ({
         }
       }
     `,
-    variables: { cache: true }
-  }
+    variables: { cache: true },
+  },
 });
 
-let defaultHome = {
+const defaultHome = {
   street1: null,
   street2: null,
   state: null,
@@ -45,27 +44,33 @@ let defaultHome = {
 @connect({ mapQueriesToProps })
 export default class HomeAddress extends Component {
 
-  state = {
-    state: "default"
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.shape({
+      refetch: PropTypes.func,
+      person: PropTypes.object,
+    }),
   }
 
-  componentWillMount(){
+  state = {
+    state: "default",
+  }
+
+  componentWillMount() {
     this.props.dispatch(nav.setLevel("BASIC_CONTENT"));
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.props.dispatch(nav.setLevel("TOP"));
   }
 
   updateAddress = (data) => {
-
     this.setState({ state: "loading" });
-    updateHome(data, (err, result) => {
-
+    updateHome(data, (err) => {
       if (err) {
-        this.setState({ state: "error", err: err });
+        this.setState({ state: "error", err });
         setTimeout(() => {
-          this.setState({ state: "default"});
+          this.setState({ state: "default" });
         }, 3000);
         return;
       }
@@ -73,36 +78,33 @@ export default class HomeAddress extends Component {
       this.setState({ state: "success" });
       this.props.data.refetch({ cache: false })
         .then(() => {
-          this.setState({ state: "default"});
+          this.setState({ state: "default" });
         });
     });
-
   }
 
-  render () {
-
+  render() {
     const { person } = this.props.data;
     const { state } = this.state;
-    let home = person && person.home || defaultHome;
+    const home = (person && person.home) || defaultHome;
 
     switch (state) {
       case "error":
         return (
-          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%" }}>
             <Err error={this.state.err} msg="Looks like there was a problem" />;
           </div>
         );
       case "loading":
         return (
-          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%" }}>
             <Loading msg="Updating your information..." />;
           </div>
         );
       case "success":
         return <Success msg="Your information has been updated!" />;
       default:
-        return <Layout home={home} update={this.updateAddress}  />;
+        return <Layout home={home} update={this.updateAddress} />;
     }
-
   }
 }

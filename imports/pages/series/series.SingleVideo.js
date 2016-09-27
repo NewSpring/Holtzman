@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-apollo";
@@ -16,13 +17,13 @@ import Shareable from "../../mixins/mixins.Shareable";
 
 import time from "../../util/time";
 import react from "../../util/react";
-import content from "../../util/content";
+import contentHelpers from "../../util/content";
 import collections from "../../util/collections";
 
 import SingleVideoPlayer from "../../components/players/video/Player";
 import SeriesVideoList from "./series.VideoList";
 
-const mapQueriesToProps = ({ ownProps, state }) => ({
+const mapQueriesToProps = ({ ownProps }) => ({
   currentSermon: {
     query: gql`
       query getSermon($sermonId: ID!) {
@@ -99,13 +100,21 @@ const mapQueriesToProps = ({ ownProps, state }) => ({
   },
 });
 
-const mapStateToProps = (state) => ({ live: state.live });
+const mapStateToProps = state => ({ live: state.live });
 
 @connect({ mapQueriesToProps, mapStateToProps })
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
 export default class SeriesSingleVideo extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    live: PropTypes.object.isRequired,
+    currentSermon: PropTypes.object.isRequired,
+    series: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
+  }
 
   componentWillMount() {
     if (process.env.WEB) return;
@@ -116,17 +125,17 @@ export default class SeriesSingleVideo extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction
+      action: this.likeableAction,
     }));
   }
 
-  componentWillUpdate(nextProps){
+  componentWillUpdate(nextProps) {
     this.handleHeader(nextProps);
   }
 
   handleHeader = (nextProps) => {
     const content = nextProps.series.content;
-    if(!content) return;
+    if (!content) return;
 
     const { isLight } = nextProps.series.content.content;
     const color = collections.color(content);
@@ -135,8 +144,8 @@ export default class SeriesSingleVideo extends Component {
 
     const options = {
       title: "Series",
-      color: color,
-      light: !isLight
+      color,
+      light: !isLight,
     };
 
     if (!live) options.subTitle = content.title;
@@ -152,14 +161,13 @@ export default class SeriesSingleVideo extends Component {
       track: {
         ...currentSermon.content.audio[0],
         title: currentSermon.title,
-        artist: content.speakers(currentSermon),
+        artist: contentHelpers.speakers(currentSermon),
       },
       album: series,
     }));
   }
 
   render() {
-
     const sermonContent = this.props.currentSermon.content;
     const seriesContent = this.props.series.content;
 
@@ -168,32 +176,31 @@ export default class SeriesSingleVideo extends Component {
       return (
         <div className="locked-ends locked-sides floating">
           <div className="floating__item">
-            <Loading/>
+            <Loading />
           </div>
         </div>
       );
     }
 
     const currentSermon = sermonContent;
-    const series = seriesContent;
 
     return (
       <div className="background--light-primary">
         <SingleVideoPlayer ooyalaId={currentSermon.content.ooyalaId} />
         <div
-            className="soft-sides background--light-secondary text-dark-secondary"
-            style={{ paddingTop: "15px", paddingBottom: "15px" }}
-            onClick={this.playAudio}
+          className="soft-sides background--light-secondary text-dark-secondary"
+          style={{ paddingTop: "15px", paddingBottom: "15px" }}
+          onClick={this.playAudio}
         >
           <h7 style={{ verticalAlign: "middle" }}>Listen To Audio</h7>
           <i
-              className="icon-category-audio float-right"
-              style={{ marginTop: "-2px" }}
+            className="icon-category-audio float-right"
+            style={{ marginTop: "-2px" }}
           />
         </div>
         <div className="soft soft-double@palm-wide-and-up push-top">
           <h2 className="push-half-bottom">{currentSermon.title}</h2>
-          <h4>{content.speakers(currentSermon)}</h4>
+          <h4>{contentHelpers.speakers(currentSermon)}</h4>
           <h6 className="text-dark-tertiary">{time.date(currentSermon)}</h6>
           <div dangerouslySetInnerHTML={react.markup(currentSermon, "description")} />
         </div>

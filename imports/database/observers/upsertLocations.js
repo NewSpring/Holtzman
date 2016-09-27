@@ -1,23 +1,21 @@
-import { api, parseEndpoint } from "../../util/rock";
-import { makeNewGuid } from "../../util/guid";
+import { api } from "../../util/rock";
+import makeNewGuid from "../../util/guid";
 
 
 let HomeId = false;
 let BillingAddressId = false;
-export function upsertLocations(PersonId, Location){
-
-  if (!PersonId || !Location) {
-    return;
-  }
+export function upsertLocations(PersonId, doc) { // eslint-disable-line
+  let Location = doc;
+  if (!PersonId || !Location) return;
 
   // verify the defined values are correctly in Rock
   // if they aren't in Rock already add them
   if (!HomeId || !BillingAddressId) {
-    let locationTypes = api.get.sync("DefinedValues?$filter=DefinedTypeId eq 15");
-    for (let loc of locationTypes) {
+    const locationTypes = api.get.sync("DefinedValues?$filter=DefinedTypeId eq 15");
+    for (const loc of locationTypes) {
       if (loc.Value === "Home") {
         HomeId = loc.Id;
-        continue;
+        continue; // eslint-disable-line
       }
 
       if (loc.Value === "Billing Address") {
@@ -27,7 +25,7 @@ export function upsertLocations(PersonId, Location){
 
     // this location type doesn't exist yet
     if (!BillingAddressId) {
-      let BillingLocationDefinedValue = {
+      const BillingLocationDefinedValue = {
         IsSystem: false,
         Guid: makeNewGuid(),
         Value: "Billing Address",
@@ -42,7 +40,7 @@ export function upsertLocations(PersonId, Location){
   }
 
   // get the locations of a person
-  let query = api.parseEndpoint(`
+  const query = api.parseEndpoint(`
     Groups/GetFamilies/${PersonId}?
       $expand=
         GroupLocations,
@@ -57,18 +55,17 @@ export function upsertLocations(PersonId, Location){
   locations = locations[0];
 
   // store the Id for easy upserts / posts
-  let GroupId = locations.Id;
+  const GroupId = locations.Id;
 
   // repurpose the locations variable
   locations = locations.GroupLocations;
 
 
   // see if Street1 of the location matches any on file
-  let home = false,
-      exists = false;
+  let home = false;
+  let exists = false;
 
-  for (let loc of locations) {
-
+  for (const loc of locations) {
     const location = loc.Location;
     // this location is probably already on file
     if (location && location.Street1.trim() === Location.Street1.trim()) {
@@ -88,21 +85,18 @@ export function upsertLocations(PersonId, Location){
   }
 
   // add Guid and IsActive to the location
-  Location = { ...{
-    Guid: makeNewGuid(),
-    IsActive: true
-  }, ...Location };
+  Location = { ...{ Guid: makeNewGuid(), IsActive: true }, ...Location };
 
-  let LocationId = api.post.sync("Locations", Location);
+  const LocationId = api.post.sync("Locations", Location);
 
   if (!LocationId || LocationId.statusText) {
+    // eslint-disable-next-line
     console.error("@@LOCATION_UPDATE_ERROR", Location);
     return;
   }
 
   // if a person has no home, make this locaiton their home
   if (!home) {
-
     const GroupLocation = {
       GroupId,
       LocationId,
@@ -111,14 +105,12 @@ export function upsertLocations(PersonId, Location){
       Guid: makeNewGuid(),
     };
 
-    let result = api.post.sync("GroupLocations", GroupLocation);
-
+    api.post.sync("GroupLocations", GroupLocation);
     return;
   }
 
   // create the location as a custom `Billing Address`
   if (BillingAddressId) {
-
     const GroupLocation = {
       GroupId,
       LocationId,
@@ -127,8 +119,7 @@ export function upsertLocations(PersonId, Location){
       Guid: makeNewGuid(),
     };
 
-    let result = api.post.sync("GroupLocations", GroupLocation);
+    api.post.sync("GroupLocations", GroupLocation);
     return;
   }
-
 }

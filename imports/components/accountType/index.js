@@ -1,29 +1,25 @@
 
-import { PropTypes} from "react";
+import { PropTypes } from "react";
 
 import { Accounts } from "../icons";
 
 const AccountType = ({ width, height, type }) => {
-
-  let bottom = Number(height) / 10;
-  let style = {
+  const bottom = Number(height) / 10;
+  const style = {
     marginBottom: `-${bottom}px`,
     marginRight: "-6px",
-    marginLeft: "6px"
+    marginLeft: "6px",
   };
 
+  let inputType = type;
+
   if (type === "American Express") {
-    type = "AmEx";
+    inputType = "AmEx";
+  } else if (type === "ACH") {
+    inputType = "Bank";
   }
 
-  if (type === "ACH") {
-    type = "Bank";
-  }
-
-  width || (width = 54);
-  height || (height = 40);
-
-  let Icon = Accounts[type];
+  const Icon = Accounts[inputType];
   return <Icon width={width} height={height} style={style} />;
 };
 
@@ -34,8 +30,9 @@ AccountType.propTypes = {
 };
 
 AccountType.defaultProps = {
-  type: "Bank"
+  type: "Bank",
+  width: 54,
+  height: 40,
 };
-
 
 export default AccountType;

@@ -1,10 +1,10 @@
-import { Component, PropTypes} from "react";
+import { PropTypes } from "react";
 import { css } from "aphrodite";
 import Styles from "./spinner-css";
 
 function getClasses(mergeClasses) {
   let classes = [
-    css(Styles.loader)
+    css(Styles.loader),
   ];
 
   if (mergeClasses) {
@@ -16,9 +16,18 @@ function getClasses(mergeClasses) {
 
 const Spinner = ({ theme, styles, classes }) => (
   <div
-      className={theme || getClasses(classes)}
-      style={styles || {}}
+    className={theme || getClasses(classes)}
+    style={styles || {}}
   />
 );
+
+Spinner.propTypes = {
+  theme: PropTypes.string,
+  styles: PropTypes.object, // eslint-disable-line
+  classes: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+  ]),
+};
 
 export default Spinner;

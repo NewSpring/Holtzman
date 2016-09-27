@@ -23,7 +23,7 @@ import reducer from "./reducer";
 import { addReducer } from "../utilities";
 
 addReducer({
-  live: reducer
+  live: reducer,
 });
 
 export default {

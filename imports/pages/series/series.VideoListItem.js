@@ -8,43 +8,46 @@ export default class SeriesVideoListItem extends Component {
 
   static propTypes = {
     sermon: PropTypes.object.isRequired,
-    order: PropTypes.number.isRequired
+    order: PropTypes.number.isRequired,
   }
 
   dynamicWidth = () => {
-
-    if (typeof window != "undefined" || window != null) {
+    if (typeof window !== "undefined" || window !== null) {
       const ratio = window.isTablet ? 0.375 : 0.8;
       const itemSize = (window.innerWidth - 40) * ratio; // four-fifths
       return {
         width: itemSize,
-        height: itemSize
+        height: itemSize,
       };
     }
 
     return {
 
     };
-
   }
 
   render() {
-
     const sermon = this.props.sermon;
     const order = this.props.order;
 
     return (
       <Link
-          to={content.links(sermon)}
-          className="text-dark-secondary floating ratio--square display-inline-block rounded background--light-tertiary push-right"
-          style={this.dynamicWidth()}
+        to={content.links(sermon)}
+        className={
+          "text-dark-secondary floating ratio--square display-inline-block " +
+          "rounded background--light-tertiary push-right"
+        }
+        style={this.dynamicWidth()}
       >
         <div className="one-whole soft-sides text-left floating__item">
-          <div className="background--light-primary floating locked-left locked-top" style={{
-            width: "40px",
-            height: "40px",
-            borderRadius: "6px 0 6px 0",
-          }}>
+          <div
+            className="background--light-primary floating locked-left locked-top"
+            style={{
+              width: "40px",
+              height: "40px",
+              borderRadius: "6px 0 6px 0",
+            }}
+          >
             <h5 className="floating__item flush">{order + 1}</h5>
           </div>
           <h4>{sermon.title}</h4>
@@ -54,7 +57,6 @@ export default class SeriesVideoListItem extends Component {
         </div>
       </Link>
     );
-
   }
 
 }

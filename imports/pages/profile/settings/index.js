@@ -1,16 +1,14 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
 import gql from "graphql-tag";
 
 import {
-  accounts as accountsActions,
   nav as navActions,
 } from "../../../store";
 
 import withProfileUpload from "../profile-photo";
 
 import Layout from "./Layout";
-
 import Menu from "./Menu";
 import ChangePassword from "./ChangePassword";
 import PersonalDetails from "./PersonalDetails";
@@ -39,19 +37,33 @@ const mapQueriesToProps = () => ({
 @connect({ mapQueriesToProps })
 class Template extends Component {
 
-  componentWillMount(){
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.shape({
+      person: PropTypes.object,
+      refetch: PropTypes.func,
+    }),
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
+    children: PropTypes.object.isRequired,
+    upload: PropTypes.func,
+    photo: PropTypes.string,
+  }
+
+  componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
   }
 
   onUpload = (e) => {
-    this.props.upload(e).then(() => this.props.data.refetch())
+    this.props.upload(e).then(() => this.props.data.refetch());
   }
 
   render() {
     const { photo } = this.props;
     const { person } = this.props.data;
 
-    let mobile = process.env.WEB;
+    let mobile = !!process.env.WEB;
     if (this.props.location.pathname.split("/").length > 3) {
       mobile = false;
     }
@@ -71,18 +83,18 @@ const Routes = [
     path: "settings",
     component: Template,
     indexRoute: {
-      component: Menu
+      component: Menu,
     },
     childRoutes: [
       { path: "change-password", component: ChangePassword },
       { path: "personal-details", component: PersonalDetails },
       { path: "home-address", component: HomeAddress },
       { path: "saved-accounts", component: PaymentDetails },
-    ]
-  }
+    ],
+  },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

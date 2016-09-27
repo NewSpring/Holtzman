@@ -4,12 +4,22 @@ export default class Switch extends Component {
 
   static propTypes = {
     id: PropTypes.number.isRequired,
-    changed: PropTypes.func.isRequired
+    changed: PropTypes.func.isRequired,
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    containerClasses: PropTypes.string,
+    containerStyle: PropTypes.object, // eslint-disable-line
+    theme: PropTypes.string,
+    styles: PropTypes.object, // eslint-disable-line
+    name: PropTypes.string,
+    active: PropTypes.bool,
   }
 
   layoutClasses = () => {
     let classes = [
-      "toggle-switch"
+      "toggle-switch",
     ];
 
     if (this.props.classes) {
@@ -24,24 +34,22 @@ export default class Switch extends Component {
   }
 
   render() {
-
     const switchId = `switch-${this.props.id}`;
 
     return (
       <div className={this.props.containerClasses} style={this.props.containerStyle}>
         <input
-            className={this.props.theme || this.layoutClasses()}
-            styles={this.props.styles || {}}
-            type="checkbox"
-            name={this.props.name || switchId || "toggle-switch"}
-            id={switchId}
-            onChange={this.changed}
-            checked={this.props.active}
+          className={this.props.theme || this.layoutClasses()}
+          styles={this.props.styles || {}}
+          type="checkbox"
+          name={this.props.name || switchId || "toggle-switch"}
+          id={switchId}
+          onChange={this.changed}
+          checked={this.props.active}
         />
         <label htmlFor={switchId} className="float-right" />
       </div>
     );
-
   }
 
 }

@@ -1,8 +1,8 @@
-import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
+import { Meteor } from "meteor/meteor";
 import { connect } from "react-redux";
-import { createContainer } from "../meteor/react-meteor-data";
 import { css } from "aphrodite";
+import createContainer from "../meteor/react-meteor-data";
 
 import Modal from "../modal";
 import Meta from "../../components/meta";
@@ -23,31 +23,47 @@ import Styles from "./watermark-css";
 
 const Watermark = () => (
   <div className={css(Styles["global-watermark"])}>
-    <h4 className={`soft-half flush text-light-primary uppercase watermark ${css(Styles["watermark"])} visuallyhidden@handheld`}>
+    <h4
+      className={
+        "soft-half flush text-light-primary uppercase watermark " +
+        `${css(Styles.watermark)} visuallyhidden@handheld`
+      }
+    >
       NewSpring
     </h4>
   </div>
 );
 
 
-export const App = ({ children, className }) => {
-  return (
-    <div
-        className="push-double-bottom@palm soft-half-bottom@palm push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up"
-    >
-      <div className={className}>
-        <Meta />
-        {(() => { if (process.env.NATIVE) return <Header />; })()}
-        <div data-status-scroll>
-          {children}
-        </div>
-        <Modal/>
-        <Nav />
-        <Watermark />
+export const App = ({ children, className }) => (
+  <div
+    className={
+      "push-double-bottom@palm soft-half-bottom@palm " +
+      "push-double-left@palm-wide-and-up soft-double-left@palm-wide-and-up"
+    }
+  >
+    <div className={className}>
+      <Meta />
+      {(() => {
+        if (process.env.NATIVE) {
+          return <Header />;
+        }
+        return null;
+      })()}
+      <div data-status-scroll>
+        {children}
       </div>
-
+      <Modal />
+      <Nav />
+      <Watermark />
     </div>
-  );
+
+  </div>
+);
+
+App.propTypes = {
+  children: PropTypes.object.isRequired,
+  className: PropTypes.string,
 };
 
 
@@ -57,11 +73,10 @@ export const Blank = () => (<div />);
 // it has no children to avoid reredering any child elements on change
 // it pretty much just gives us Tracker + redux together
 let hasBeenSignedIn = false;
-const GlobalData =  createContainer(({ dispatch }) => {
-
+const GlobalData = createContainer(({ dispatch }) => {
   const userId = Meteor.userId();
 
-  if (typeof Raven != "undefined") {
+  if (typeof Raven !== "undefined") {
     if (!userId) Raven.setUserContext();
     if (userId && Meteor.user()) {
       const person = Meteor.user();
@@ -84,7 +99,7 @@ const GlobalData =  createContainer(({ dispatch }) => {
 
     // Load in topics from user profile
     Meteor.subscribe("userData");
-    let topics = Meteor.user() ? Meteor.user().topics : [];
+    const topics = Meteor.user() ? Meteor.user().topics : [];
     if (topics && topics.length) dispatch(topicActions.set(topics));
 
 
@@ -92,27 +107,30 @@ const GlobalData =  createContainer(({ dispatch }) => {
     // XXX remove this section and replace with Heighliner implementation
     Meteor.subscribe("likes");
     Meteor.subscribe("recently-liked");
-    let likes = Likes.find({ userId }).fetch().map((like) => like.entryId);
+    const likes = Likes.find({ userId }).fetch().map(like => like.entryId);
     if (likes.length) dispatch(likedActions.set(likes));
   }
 
   return { userId };
 }, Blank);
 
-const map = (state) => ({
+const map = state => ({
   location: state.routing.location,
   modal: state.modal,
 });
+
 @connect(map)
 export default class Global extends Component {
 
-  componentWillMount() {
-    if (Meteor.isCordova) {
-      document.addEventListener("click", linkListener);
-    }
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
   }
 
-  render(){
+  componentWillMount() {
+    if (Meteor.isCordova) document.addEventListener("click", linkListener);
+  }
+
+  render() {
     const { dispatch } = this.props;
     return (
       <div id="global">
@@ -121,4 +139,4 @@ export default class Global extends Component {
       </div>
     );
   }
-};
+}

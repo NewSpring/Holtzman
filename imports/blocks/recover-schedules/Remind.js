@@ -1,21 +1,22 @@
+/* eslint-disable max-len */
+import { PropTypes } from "react";
 
 import Forms from "../../components/forms";
 
 const Remind = ({ onSubmit, back }) => {
-
   const reminderFrequency = [
     {
       label: "Tomorrow",
-      value: "tomorrow"
+      value: "tomorrow",
     },
     {
       label: "Next Week",
-      value: "nextWeek"
+      value: "nextWeek",
     },
     {
       label: "In Two Weeks",
-      value: "twoWeeks"
-    }
+      value: "twoWeeks",
+    },
   ];
 
   return (
@@ -31,23 +32,23 @@ const Remind = ({ onSubmit, back }) => {
       </p>
 
       <Forms.Form
-          classes={["text-left", "hard", "push-top"]}
-          submit={onSubmit}
-          id="remind"
+        classes={["text-left", "hard", "push-top"]}
+        submit={onSubmit}
+        id="remind"
       >
         <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
           I'd like to be reminded
         </h3>
 
         <Forms.Select
-            items={reminderFrequency}
-            name="frequency"
-            id="remind-frequency"
-            hideLabel
-            classes={["soft-bottom", "display-inline-block"]}
-            inputClasses={"outlined--dotted outlined--light h3 hard-top flush-bottom"}
-            includeBlank={false}
-            defaultValue="tomorrow"
+          items={reminderFrequency}
+          name="frequency"
+          id="remind-frequency"
+          hideLabel
+          classes={["soft-bottom", "display-inline-block"]}
+          inputClasses={"outlined--dotted outlined--light h3 hard-top flush-bottom"}
+          includeBlank={false}
+          defaultValue="tomorrow"
         />
 
         <button className="one-whole btn push-ends">
@@ -55,8 +56,8 @@ const Remind = ({ onSubmit, back }) => {
         </button>
 
         <button
-            className="btn--thin btn--small btn--dark-tertiary one-whole"
-            onClick={back}
+          className="btn--thin btn--small btn--dark-tertiary one-whole"
+          onClick={back}
         >
           Back to Contributions
         </button>
@@ -65,6 +66,11 @@ const Remind = ({ onSubmit, back }) => {
 
     </div>
   );
+};
+
+Remind.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  back: PropTypes.func.isRequired,
 };
 
 export default Remind;

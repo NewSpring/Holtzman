@@ -1,3 +1,4 @@
+import { PropTypes } from "react";
 
 function getStyles(style) {
   const defaults = {
@@ -6,11 +7,10 @@ function getStyles(style) {
     bottom: 0,
     left: 0,
     right: 0,
-    zIndex: 9999
+    zIndex: 9999,
   };
 
-  return {...defaults, ...style};
-
+  return { ...defaults, ...style };
 }
 
 function getClasses(mergeClasses) {
@@ -25,11 +25,21 @@ function getClasses(mergeClasses) {
 
 const Loading = ({ theme, classes, styles, children }) => (
   <div
-      className={theme || getClasses(classes)}
-      style={getStyles(styles)}
+    className={theme || getClasses(classes)}
+    style={getStyles(styles)}
   >
     {children}
   </div>
 );
+
+Loading.propTypes = {
+  theme: PropTypes.string,
+  classes: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+  ]),
+  styles: PropTypes.object, // eslint-disable-line
+  children: PropTypes.any, //eslint-disable-line
+};
 
 export default Loading;

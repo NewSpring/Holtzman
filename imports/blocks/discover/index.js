@@ -15,37 +15,40 @@ import {
 
 import Layout from "./Layout";
 
-const mapStateToProps = (state) => ({ search: state.search });
+const mapStateToProps = state => ({ search: state.search });
 @connect({ mapStateToProps })
 @ReactMixin.decorate(Headerable)
 export default class SearchContainer extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    search: PropTypes.object.isRequired,
+    query: PropTypes.func.isRequired,
+  }
+
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     if (!Meteor.isCordova) {
-      this.props.dispatch(modal.update({keepNav: true}));
+      this.props.dispatch(modal.update({ keepNav: true }));
     }
 
     this.lockHeader("DiscoverModal");
     this.headerAction({
       isSearch: true,
-      searchSubmit: this.searchSubmit
+      searchSubmit: this.searchSubmit,
     }, "DiscoverModal");
   }
 
   componentWillUnmount() {
-    this.props.dispatch(modal.update({keepNav: false, layoutOverride: []}));
+    this.props.dispatch(modal.update({ keepNav: false, layoutOverride: [] }));
     this.props.dispatch(searchActions.searching(false));
     this.unlockHeader();
   }
 
-  hide = () => {
-    return this.props.dispatch(modal.hide());
-  }
 
   getSearch() {
     const { dispatch } = this.props;
-    let { page, pageSize, term } = this.props.search;
+    const { page, pageSize, term } = this.props.search;
     const query = gql`
       query Search($term: String!, $first: Int, $after: Int, $site: String) {
         search(query: $term, first: $first, after: $after, site: $site) {
@@ -86,14 +89,17 @@ export default class SearchContainer extends Component {
           dispatch(searchActions.done(true));
         }
       });
-
   }
+
+  hide = () => (
+    this.props.dispatch(modal.hide())
+  )
 
   searchSubmit = (event) => {
     event.preventDefault();
     document.getElementById("search").blur();
     const { dispatch } = this.props;
-    let term = document.getElementById("search").value;
+    const term = document.getElementById("search").value;
 
     Promise.all([
       dispatch(searchActions.searching(true)),
@@ -118,11 +124,10 @@ export default class SearchContainer extends Component {
 
     return (
       <Layout
-          loadMore={this.loadMore}
-          search={search}
-          hide={this.hide}
+        loadMore={this.loadMore}
+        search={search}
+        hide={this.hide}
       />
     );
-
   }
 }

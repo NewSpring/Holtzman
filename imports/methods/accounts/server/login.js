@@ -1,9 +1,12 @@
-/*global Meteor, check */
+/* global Meteor, check */
+import moment from "moment";
 import { api } from "../../../util/rock";
-import Moment from "moment";
 
 Meteor.methods({
-  "rock/accounts/login": (Username, password) => {
+  "rock/accounts/login": (u, p) => {
+    const password = p;
+    let Username = u;
+
     check(Username, String);
     check(password, String);
 
@@ -14,103 +17,93 @@ Meteor.methods({
       Username = Username.replace(/@newspring.cc/, "");
     }
 
-    let isAuthorized = api.post.sync("Auth/login", { Username, Password: password });
-
-    if (isAuthorized.statusText) {
-      throw new Meteor.Error("Your password is incorrect");
-    }
-
+    const isAuthorized = api.post.sync("Auth/login", { Username, Password: password });
+    if (isAuthorized.statusText) throw new Meteor.Error("Your password is incorrect");
 
     let userAccount = Accounts.findUserByEmail(email);
 
     // ensure the users exists if they tried to login
     if (isAuthorized && !userAccount) {
-      userAccount =  Accounts.createUser({
-        email: email,
-        password: password
+      userAccount = Accounts.createUser({
+        email,
+        password,
       });
 
 
-
-      let user = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`);
+      const user = api.get.sync(`UserLogins?$filter=UserName eq '${Username}'`);
       const { PersonId } = user[0];
       if (!user[0].IsConfirmed) {
-        api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, (err, response) => {
-        });
+        // eslint-disable-next-line
+        api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, () => { });
       }
 
       api.patch(`UserLogins/${user[0].Id}`, {
-        LastLoginDateTime: `${Moment().toISOString()}`
+        LastLoginDateTime: `${moment().toISOString()}`,
       });
 
-      let person = api.get.sync(`People/${PersonId}`);
+      const person = api.get.sync(`People/${PersonId}`);
       const { PrimaryAliasId } = person;
 
       if (userAccount) {
-        Meteor.users.update(userAccount._id || userAccount, {
+        Meteor.users.update(userAccount._id || userAccount, { // eslint-disable-line
           $set: {
-            "services.rock" : {
+            "services.rock": {
               PersonId,
-              PrimaryAliasId
-            }
-          }
+              PrimaryAliasId,
+            },
+          },
         });
       }
 
       if (process.env.NODE_ENV === "production") {
-
         Meteor.setTimeout(() => {
+          const currentCount = Meteor.users.find().count();
+          const missing = `${50000 - currentCount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-          let currentCount = Meteor.users.find().count();
-          let missing = `${50000 - currentCount}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-          let text = `Another user signed up for a NewSpring Account! Only ${missing} to go!`;
+          const text = `Another user signed up for a NewSpring Account! Only ${missing} to go!`;
 
 
           Meteor.call("communication/slack/send", text, "#users");
-
         }, 10);
-
       }
 
       // slack hook here
-
-    }
-    // ensure meteor password is same as rock's
-    else {
+    } else {
+      // eslint-disable-next-line
       Accounts.setPassword(userAccount._id, password, { logout: false });
       api.get(`UserLogins?$filter=UserName eq '${Username}'`, (err, user) => {
         const { PersonId } = user[0];
 
         if (!user[0].IsConfirmed) {
-          api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, (err, response) => {
+          api.post(`UserLogins/${user[0].Id}`, { IsConfirmed: true }, (error, response) => {
+            // eslint-disable-next-line
+            console.log(error, response);
           });
         }
 
         api.patch(`UserLogins/${user[0].Id}`, {
-          LastLoginDateTime: `${Moment().toISOString()}`
+          LastLoginDateTime: `${moment().toISOString()}`,
         });
 
-        api.get(`People/${PersonId}`, (err, person) => {
+        api.get(`People/${PersonId}`, (e, person) => {
           const { PrimaryAliasId } = person;
 
           if (userAccount) {
             const userRock = userAccount.services.rock;
-            if (userRock.PersonId != PersonId || userRock.PrimaryAliasId != PrimaryAliasId) {
+            if (userRock.PersonId !== PersonId || userRock.PrimaryAliasId !== PrimaryAliasId) {
+              // eslint-disable-next-line
               Meteor.users.update(userAccount._id || userAccount, {
                 $set: {
-                  "services.rock" : {
+                  "services.rock": {
                     PersonId,
-                    PrimaryAliasId
-                  }
-                }
+                    PrimaryAliasId,
+                  },
+                },
               });
             }
           }
         });
-
       });
-
     }
 
 

@@ -1,4 +1,6 @@
-import { Component } from "react";
+/* eslint-disable react/prefer-stateless-function */
+import Meteor from "meteor/meteor";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import {
@@ -30,15 +32,22 @@ if (process.env.NATIVE) {
     );
   }
   @scriptLoader(...scripts)
-  @connect((state) => ({ audio: state.audio, pathname: state.routing.location.pathname }))
+  @connect(state => ({ audio: state.audio, pathname: state.routing.location.pathname }))
   class AppGlobal extends Component {
+
+    static propTypes = {
+      pathname: PropTypes.string.isRequired,
+      audio: PropTypes.object.isRequired,
+      children: PropTypes.object.isRequired,
+    }
+
     render() {
       if (this.props.pathname === "/welcome") {
         return <div>{this.props.children}</div>;
       }
       const { visibility, playing } = this.props.audio;
 
-      let classes = [];
+      const classes = [];
 
       if (visibility === "dock" && playing.track.title) {
         classes.push("push-double-bottom");
@@ -48,7 +57,7 @@ if (process.env.NATIVE) {
       return (
         <Global className={classes.join(" ")}>
           {this.props.children}
-          <AudioPlayer propVal={visibility}/>
+          <AudioPlayer propVal={visibility} />
         </Global>
       );
     }
@@ -62,7 +71,7 @@ export const client = {
   wrapperProps: { client: GraphQL },
   props: {
     onUpdate() {
-      if (typeof ga != "undefined") {
+      if (typeof ga !== "undefined") {
         ga("send", "pageview");
       }
     },
@@ -77,5 +86,5 @@ export const server = {
 
 export const routes = {
   component: process.env.NATIVE ? App : Global,
-  childRoutes: [ Routes ],
+  childRoutes: [Routes],
 };

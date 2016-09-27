@@ -18,12 +18,8 @@ const Likes = new Mongo.Collection("likes");
 // Apollos.addSchema("likes", Likes.schema);
 
 Likes.allow({
-  "insert": (userId, doc) => {
-    return userId === doc.userId;
-  },
-  "remove": (userId, doc) => {
-    return userId === doc.userId;
-  }
+  insert: (userId, doc) => userId === doc.userId,
+  remove: (userId, doc) => userId === doc.userId,
 });
 
 export default Likes;

@@ -1,12 +1,12 @@
 
 
 const savedAccount = (state, action) => {
-
-  if (!action.savedAccount && action.savedAccount != "clear") {
+  if (!action.savedAccount && action.savedAccount !== "clear") {
     return state;
   }
 
   if (action.savedAccount === "clear") {
+    // eslint-disable-next-line no-param-reassign
     action.savedAccount = {
       id: null, // Id of saved account to charge
       payment: {
@@ -17,11 +17,11 @@ const savedAccount = (state, action) => {
     };
   }
 
-  return { ...state, ...{
-    savedAccount: action.savedAccount
-  } };
+  return { ...state,
+    ...{
+      savedAccount: action.savedAccount,
+    },
+  };
 };
 
-export {
-  savedAccount
-};
+export default savedAccount;

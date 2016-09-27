@@ -1,18 +1,19 @@
+/* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
 import Loading from "../../components/loading";
+
 export default class ScriptureItem extends Component {
 
   static propTypes = { scripture: PropTypes.string.isRequired }
   state = { scriptureData: null }
 
   componentWillMount() {
-    Meteor.call("getScripture", this.props.scripture, function(err, data) {
+    Meteor.call("getScripture", this.props.scripture, (err, data) => {
       this.setState({ scriptureData: data });
-    }.bind(this));
+    });
   }
 
   render() {
-
     const { scriptureData } = this.state;
     return (
       <div className="soft push-top">
@@ -24,7 +25,6 @@ export default class ScriptureItem extends Component {
         })()}
       </div>
     );
-
   }
 
 }

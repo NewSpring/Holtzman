@@ -1,6 +1,8 @@
-import { Component, PropTypes} from "react";
-import { connect } from "react-apollo";
-import { withRouter, Link } from "react-router";
+/* eslint-disable max-len */
+import { Component, PropTypes } from "react";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
+import { withRouter } from "react-router";
 import gql from "graphql-tag";
 
 import { nav as navActions } from "../../../store";
@@ -15,62 +17,70 @@ import Layout from "./ResultLayout";
 let internalIp = null;
 if (Meteor.isClient) {
   // NOTE: window.RTCPeerConnection is "not a constructor" in FF22/23
-  var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;   //compatibility for firefox and chrome
+  const RTCPeerConnection = window.RTCPeerConnection ||
+    window.mozRTCPeerConnection ||
+    window.webkitRTCPeerConnection;   // compatibility for firefox and chrome
 
   if (RTCPeerConnection) {
-   const pc = new RTCPeerConnection({iceServers:[]}), noop = function(){};
-   pc.createDataChannel("");    //create a bogus data channel
-   pc.createOffer(pc.setLocalDescription.bind(pc), noop);    // create offer and set local description
-   pc.onicecandidate = function(ice){  //listen for candidate events
-     if (!ice || !ice.candidate || !ice.candidate.candidate)  return;
-     const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
-     internalIp = myIP;
-     pc.onicecandidate = noop;
-   };
- }
+    const pc = new RTCPeerConnection({ iceServers: [] });
+    const noop = () => {};
+    // create a bogus data channel
+    pc.createDataChannel("");
+    // create offer and set local description
+    pc.createOffer(pc.setLocalDescription.bind(pc), noop);
+    // listen for candidate events
+    pc.onicecandidate = (ice) => {
+      if (!ice || !ice.candidate || !ice.candidate.candidate) return;
+      const myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/
+        .exec(ice.candidate.candidate)[1];
+      internalIp = myIP;
+      pc.onicecandidate = noop;
+    };
+  }
 }
 
 const mapStateToProps = ({ routing }) => {
   const { location } = routing;
   const tags = Object.keys(location.query).length && location.query.tags ? location.query.tags : "";
   const q = Object.keys(location.query).length && location.query.q ? location.query.q : null;
-  const campus = Object.keys(location.query).length && location.query.campus ? location.query.campus : null;
   const campuses = (
     Object.keys(location.query).length && location.query.campuses ? location.query.campuses : ""
   );
   return { tags, q, location, campuses };
 };
 
-const mapQueriesToProps = ({ ownProps }) => ({
-  campusLocations: {
-    query: gql`
-      query GetCampuses { campuses { entityId, id, name } }
-    `,
-  },
-  data: {
-    query: gql`
-      query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String]) {
-        groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses) {
-          count
-          results {
-            id
-            name
-            entityId
-            type
-            kidFriendly
-            demographic
-            description
-            photo
-            ageRange
-            distance
-            schedule { description }
-            locations { location { latitude, longitude } }
-            tags { id, value }
-            campus { name, entityId }
-          }
-        }
+const CAMPUS_LOCATION_QUERY = gql`
+  query GetCampuses { campuses { entityId, id, name } }
+`;
+
+const withCampusLocations = graphql(CAMPUS_LOCATION_QUERY, { name: "campusLocations" });
+
+const GROUP_FINDER_QUERY = gql`
+  query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String]) {
+    groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses) {
+      count
+      results {
+        id
+        name
+        entityId
+        type
+        kidFriendly
+        demographic
+        description
+        photo
+        ageRange
+        distance
+        schedule { description }
+        locations { location { latitude, longitude } }
+        tags { id, value }
+        campus { name, entityId }
       }
-    `,
+    }
+  }
+`;
+
+const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
+  options: ownProps => ({
     ssr: false,
     variables: {
       tags: ownProps.tags.split(",").filter(x => x),
@@ -80,12 +90,26 @@ const mapQueriesToProps = ({ ownProps }) => ({
       offset: 0,
       campuses: ownProps.campuses.split(",").filter(x => x),
     },
-  },
+  }),
 });
+
 const defaultArray = [];
 @withRouter
-@connect({ mapQueriesToProps, mapStateToProps })
+@withCampusLocations // enables this query to be static
+@connect(mapStateToProps)
+@withGroupFinder
 export default class Template extends Component {
+
+  static propTypes = {
+    q: PropTypes.string,
+    dispatch: PropTypes.func.isRequired,
+    tags: PropTypes.string.isRequired,
+    location: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
+    data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+    campusLocations: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+    campuses: PropTypes.string.isRequired,
+  }
 
   state = {
     markers: [],
@@ -94,25 +118,6 @@ export default class Template extends Component {
     hover: null,
     groups: [], // XXX after refetchMore lands in apollo client, remove
     offset: 0,
-  }
-
-  paginate = () => {
-    const { q, tags, campuses } = this.props;
-    this.props.data.refetch({
-      tags: tags.split(",").filter(x => x),
-      campuses: campuses.split(",").filter(x => x),
-      query: q,
-      limit: 10,
-      offset: this.state.offset + 10,
-      ip: internalIp,
-    })
-      .then(({ data }) => {
-        const { results } = data.groups;
-        this.setState({
-          groups: this.state.groups.concat(results),
-          offset: this.state.offset + 10,
-        });
-      });
   }
 
   componentWillMount() {
@@ -125,18 +130,8 @@ export default class Template extends Component {
     }
   }
 
-  onCardHover = (e) => {
-    const { id } = e.currentTarget;
-    this.setState({ hover: id });
-  }
-
-  onMarkerHover = (marker) => {
-    this.setState({ hover: marker.id });
-  }
-
   componentWillReceiveProps(nextProps) {
-
-    let newState = {};
+    const newState = {};
     let clear = false;
     if (
       this.props.q !== nextProps.q ||
@@ -160,9 +155,14 @@ export default class Template extends Component {
     this.setState(newState);
   }
 
-  toggleTags = () => this.setState({ showTags: !this.state.showTags })
-  toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
+  onCardHover = (e) => {
+    const { id } = e.currentTarget;
+    this.setState({ hover: id });
+  }
 
+  onMarkerHover = (marker) => {
+    this.setState({ hover: marker.id });
+  }
 
   getMarkers = (groups = [], clear = false) => {
     let { markers } = this.state;
@@ -176,8 +176,31 @@ export default class Template extends Component {
         // children: this.createChild(x),
       }))
       .filter(x => x.latitude && x.longitude)
-    ), (x) => x.id);
+    ), x => x.id);
   }
+
+  toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
+  toggleTags = () => this.setState({ showTags: !this.state.showTags })
+
+  paginate = () => {
+    const { q, tags, campuses } = this.props;
+    this.props.data.refetch({
+      tags: tags.split(",").filter(x => x),
+      campuses: campuses.split(",").filter(x => x),
+      query: q,
+      limit: 10,
+      offset: this.state.offset + 10,
+      ip: internalIp,
+    })
+      .then(({ data }) => {
+        const { results } = data.groups;
+        this.setState({
+          groups: this.state.groups.concat(results),
+          offset: this.state.offset + 10,
+        });
+      });
+  }
+
 
   removeQueryString = (e) => {
     if (e) e.preventDefault();
@@ -188,14 +211,15 @@ export default class Template extends Component {
     router.replace(newPath);
   }
 
-  render () {
-    const { data, location, tags, campusLocations, campuses, q } = this.props;
-    let count, groups = defaultArray;
+  render() {
+    const { data, tags, campusLocations, campuses, q } = this.props;
+    let count;
+    let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
     groups = this.state.groups;
 
     let isMobile;
-    if (typeof window != "undefined" && window != null ) {
+    if (typeof window !== "undefined" && window !== null) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
     }
 
@@ -208,11 +232,11 @@ export default class Template extends Component {
               if (isMobile || Meteor.isServer) return null;
               return (
                 <GoogleMap
-                    autoCenter
-                    markers={this.state.markers}
-                    onMarkerHover={this.onMarkerHover}
-                    hover={this.state.hover}
-                    onChildClick={({ id }) => this.props.router.push(`/groups/${id}`)}
+                  autoCenter
+                  markers={this.state.markers}
+                  onMarkerHover={this.onMarkerHover}
+                  hover={this.state.hover}
+                  onChildClick={({ id }) => this.props.router.push(`/groups/${id}`)}
                 />
               );
             })()}
@@ -220,20 +244,20 @@ export default class Template extends Component {
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-              loading={data.loading}
-              groups={groups}
-              count={count}
-              tags={tags && tags.split(",").filter(x => x)}
-              campuses={campuses && campuses.split(",").filter(x => x)}
-              campusLocations={campusLocations}
-              query={q}
-              removeQueryString={this.removeQueryString}
-              showTags={this.state.showTags}
-              toggleTags={this.toggleTags}
-              showSearch={this.state.showSearch}
-              toggleSearch={this.toggleSearch}
-              onCardHover={this.onCardHover}
-              paginate={this.paginate}
+            loading={data.loading}
+            groups={groups}
+            count={count}
+            tags={tags && tags.split(",").filter(x => x)}
+            campuses={campuses && campuses.split(",").filter(x => x)}
+            campusLocations={campusLocations}
+            query={q}
+            removeQueryString={this.removeQueryString}
+            showTags={this.state.showTags}
+            toggleTags={this.toggleTags}
+            showSearch={this.state.showSearch}
+            toggleSearch={this.toggleSearch}
+            onCardHover={this.onCardHover}
+            paginate={this.paginate}
           />
         </Left>
       </div>

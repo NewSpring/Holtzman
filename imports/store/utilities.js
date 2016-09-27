@@ -3,9 +3,9 @@
 const reducers = {};
 
 const addReducer = (obj) => {
-
-  for (let name in obj) {
-    let handler = obj[name];
+  // eslint-disable-next-line no-restricted-syntax, guard-for-in
+  for (const name in obj) {
+    const handler = obj[name];
 
     if (reducers[name]) {
       throw new Error(
@@ -14,7 +14,7 @@ const addReducer = (obj) => {
       );
     }
 
-    if (!handler || typeof(handler) != "function") {
+    if (!handler || typeof (handler) !== "function") {
       throw new Error(
         "Reducer TypeError",
         `Reducer ${name} requires a function`
@@ -25,36 +25,32 @@ const addReducer = (obj) => {
   }
 
   return obj;
-
 };
 
-const createReducer = (initialState, handlers) => {
-  return (state = initialState, action) => {
+const createReducer = (initialState, handlers) => (
+  (state = initialState, action) => {
     // better than switch statement
+    // eslint-disable-next-line no-prototype-builtins
     if (handlers.hasOwnProperty(action.type)) {
       return handlers[action.type](state, action);
-    } else {
-      return state;
     }
-  };
-
-};
+    return state;
+  }
+);
 
 // stored middlewares for use with other packages
 const middlewares = [];
 
 const addMiddleware = (...newWares) => {
-  for (let middleware of newWares) { middlewares.push(middleware) }
+  for (const middleware of newWares) { middlewares.push(middleware); }
 };
 
 // stored sagas for use with other packages
 const sagas = [];
 
 const addSaga = (...newSagas) => {
-  for (let saga of newSagas) { sagas.push(() => saga) }
+  for (const saga of newSagas) { sagas.push(() => saga); }
 };
-
-
 
 
 export {

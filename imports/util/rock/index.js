@@ -5,5 +5,5 @@ import endpoints from "./endpoints";
 export {
   api,
   endpoints,
-  parseEndpoint
+  parseEndpoint,
 };

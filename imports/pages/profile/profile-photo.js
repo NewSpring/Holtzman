@@ -1,9 +1,9 @@
-
+/* eslint-disable */
+// XXX lint file correctly
 import { Component, createElement } from "react";
 import { avatar } from "../../methods/files/browser";
 
 export default (WrappedComponent) => {
-
   class ProfileUpload extends Component {
 
     state = { photo: null }
@@ -15,14 +15,14 @@ export default (WrappedComponent) => {
 
       const options = new FileUploadOptions();
       options.fileKey = "file";
-      options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+      options.fileName = fileURL.substr(fileURL.lastIndexOf("/") + 1);
       options.mimeType = "image/jpeg";
 
       const { baseURL, token, tokenName } = Meteor.settings.public.rock;
       const url = `${baseURL}api/BinaryFiles/Upload?binaryFileTypeId=5`;
       options.headers = { [tokenName]: token };
 
-      var ft = new FileTransfer();
+      const ft = new FileTransfer();
       ft.upload(fileURL, encodeURI(url), s, f, options);
     }
 
@@ -35,12 +35,12 @@ export default (WrappedComponent) => {
         navigator.camera.getPicture(
           (photo) => {
             this.setState({
-              photo: WebAppLocalServer.localFileSystemUrl(photo)
+              photo: WebAppLocalServer.localFileSystemUrl(photo),
             });
             this.nativePost(photo, s, f);
           },
           f,
-          {...{
+          { ...{
             quality: 50,
             destinationType: Camera.DestinationType.FILE_URI,
             correctOrientation: true,
@@ -49,8 +49,8 @@ export default (WrappedComponent) => {
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: false,
             cameraDirection: Camera.Direction.FRONT,
-          }, ...opts}
-        )
+          }, ...opts }
+        );
       })
         .then(({ response }) => {
           return new Promise((s, f) => {
@@ -61,18 +61,17 @@ export default (WrappedComponent) => {
             });
           });
         })
-        .catch((e) => { camera.cleanup(); console.log(e) })
-
+        .catch((e) => { camera.cleanup(); console.log(e); });
     }
 
     webUpload = (e) => {
-      let files = e.target.files;
+      const files = e.target.files;
       if (!Meteor.settings.public.rock) return Promise.reject();
 
       // go ahead and show the photo if we can
       this.preRender(files);
 
-      var data = new FormData();
+      const data = new FormData();
       data.append("file", files[0]);
 
       const { baseURL, token, tokenName } = Meteor.settings.public.rock;
@@ -80,10 +79,10 @@ export default (WrappedComponent) => {
       return fetch(`${baseURL}api/BinaryFiles/Upload?binaryFileTypeId=5`, {
         method: "POST",
         headers: { [tokenName]: token },
-        body: data
+        body: data,
       })
         .then(x => x.json())
-        .then(id => {
+        .then((id) => {
           return new Promise((s, f) => {
             avatar(id, (err, response) => {
               if (err) f(err);
@@ -94,12 +93,12 @@ export default (WrappedComponent) => {
     }
 
     preRender = (files) => {
-      const save = (photo) => this.setState({ photo });
+      const save = photo => this.setState({ photo });
 
-      for (let file in files) {
-        let reader = new FileReader();
+      for (const file in files) {
+        const reader = new FileReader();
         // Closure to capture the file information.
-        reader.onload = ((theFile) => (e) => save(e.target.result))(files[file]);
+        reader.onload = (theFile => e => save(e.target.result))(files[file]);
         // Read in the image file as a data URL.
         reader.readAsDataURL(files[file]);
         break;
@@ -107,10 +106,10 @@ export default (WrappedComponent) => {
     }
 
     render() {
-      const props = {...{
+      const props = { ...{
         upload: process.env.NATIVE ? this.nativeUpload : this.webUpload,
         photo: this.state.photo || this.props.photo,
-      }, ...this.props};
+      }, ...this.props };
       // props.client = this.client;
       return createElement(WrappedComponent, props);
     }

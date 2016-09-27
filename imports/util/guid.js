@@ -6,9 +6,8 @@ function s4() {
 }
 
 function makeNewGuid() {
-  let guid = `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
+  const guid = `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
   return guid.toUpperCase();
-
 }
 
-export { makeNewGuid };
+export default makeNewGuid;

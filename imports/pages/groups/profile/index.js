@@ -1,6 +1,5 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-apollo";
-import { Link } from "react-router";
 import gql from "graphql-tag";
 import ReactMixin from "react-mixin";
 
@@ -49,7 +48,7 @@ const mapQueriesToProps = ({ ownProps }) => ({
         }
       }
     `,
-    variables: { id: ownProps.params.id }
+    variables: { id: ownProps.params.id },
   },
 });
 const defaultArray = [];
@@ -57,12 +56,17 @@ const defaultArray = [];
 @ReactMixin.decorate(Headerable)
 export default class Template extends Component {
 
-  componentWillMount(){
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+  }
+
+  componentWillMount() {
     this.headerAction({ title: "Group Profile" });
   }
 
-  componentWillUnmount(){
-    this.props.dispatch(modal.update({onFinished: null}));
+  componentWillUnmount() {
+    this.props.dispatch(modal.update({ onFinished: null }));
   }
 
   closeModal = (e) => {
@@ -75,7 +79,8 @@ export default class Template extends Component {
     if (e && e.preventDefault) e.preventDefault();
 
     const { currentTarget } = e;
-    let message = currentTarget.querySelectorAll("textarea")[0].value.replace(new RegExp("\\n", "gmi"), "<br/>");
+    const message = currentTarget.querySelectorAll("textarea")[0].value
+      .replace(new RegExp("\\n", "gmi"), "<br/>");
 
     Meteor.call("community/actions/join",
       this.props.data.group.entityId, message, callback
@@ -97,34 +102,38 @@ export default class Template extends Component {
       onFinished: joinModal,
       coverHeader: true,
     }));
+
+    return null;
   }
 
-  render () {
+  render() {
     const { data } = this.props;
 
-    if (data.loading) return (
-      <div>
-        <Split>
-          {/* Map */}
-          <Right mobile={false} classes={["background--left"]} />
-        </Split>
-        <Left scroll classes={["background--light-secondary"]}>
-          <div className="soft-double text-center">
-            <Loading />
-          </div>
-        </Left>
-      </div>
-    );
+    if (data.loading) {
+      return (
+        <div>
+          <Split>
+            {/* Map */}
+            <Right mobile={false} classes={["background--left"]} />
+          </Split>
+          <Left scroll classes={["background--light-secondary"]}>
+            <div className="soft-double text-center">
+              <Loading />
+            </div>
+          </Left>
+        </div>
+      );
+    }
 
 
-
-    let { group, person, errors } = data;
-    let isLeader;
+    const { group, person } = data;
     const leaders = group && group.members && group.members
       .filter(x => x.role.toLowerCase() === "leader");
 
-    isLeader = person && leaders.filter(x => x.id === person.id).length;
-    group.photo || (group.photo = "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png");
+    const isLeader = person && leaders.filter(x => x.id === person.id).length;
+    if (!group.photo) {
+      group.photo = "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png";
+    }
 
     let markers = defaultArray;
     if (group.locations && group.locations.length && group.locations[0].location) {
@@ -132,7 +141,7 @@ export default class Template extends Component {
       markers = [{ latitude, longitude }];
     }
     let isMobile;
-    if (typeof window != "undefined" && window != null ) {
+    if (typeof window !== "undefined" && window !== null) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
     }
     return (
@@ -144,8 +153,8 @@ export default class Template extends Component {
               if (isMobile || Meteor.isServer) return null;
               return (
                 <GoogleMap
-                    autoCenter
-                    markers={markers}
+                  autoCenter
+                  markers={markers}
                 />
               );
             })()}
@@ -153,14 +162,13 @@ export default class Template extends Component {
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-              isLeader={isLeader}
-              group={group}
-              leaders={leaders || defaultArray}
-              join={this.join}
+            isLeader={isLeader}
+            group={group}
+            leaders={leaders || defaultArray}
+            join={this.join}
           />
         </Left>
       </div>
     );
-
   }
 }

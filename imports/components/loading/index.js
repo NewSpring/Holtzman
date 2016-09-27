@@ -11,7 +11,7 @@ export {
   WindowLoading,
   Spinner,
   FeedItemSkeleton,
-  ImageLoader
+  ImageLoader,
 };
 
 export default ParentLoading;

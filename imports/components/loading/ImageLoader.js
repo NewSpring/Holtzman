@@ -1,9 +1,7 @@
-import { Component, PropTypes } from "react";
-import ReactDOM from "react-dom";
-const { span } = React.DOM;
-
-
+import React, { Component, PropTypes } from "react";
 import Debouncer from "./../../util/debounce";
+
+const { span } = React.DOM;
 
 const Status = {
   PENDING: "pending",
@@ -11,7 +9,6 @@ const Status = {
   LOADED: "loaded",
   FAILED: "failed",
 };
-
 
 export default class ImageLoader extends Component {
   static propTypes = {
@@ -23,6 +20,9 @@ export default class ImageLoader extends Component {
     onLoad: PropTypes.func,
     onError: PropTypes.func,
     imgProps: PropTypes.object,
+    force: PropTypes.bool,
+    renderElement: PropTypes.func,
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   };
 
   static defaultProps = {
@@ -31,7 +31,7 @@ export default class ImageLoader extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {status: props.src ? Status.LOADING : Status.PENDING};
+    this.state = { status: props.src ? Status.LOADING : Status.PENDING };
   }
 
   componentDidMount() {
@@ -81,11 +81,11 @@ export default class ImageLoader extends Component {
 
 
     // lazy load only if in view on client
-    let el = ReactDOM.findDOMNode(this.refs["loader"]);
+    let el = this.loader;
     el = el.children[0];
 
     const isElementInView = (e) => {
-      let coords = e.getBoundingClientRect();
+      const coords = e.getBoundingClientRect();
       return (
         // if item is left of the screen's left side
         Math.abs(coords.left) >= 0 &&
@@ -95,35 +95,26 @@ export default class ImageLoader extends Component {
     };
 
     const seeIfInView = () => {
-
       if (isElementInView(el)) {
-
         // callback to make sure user really intends to view content
         // prevents accidental firing on scrolling past
         const callback = () => {
-
           if (isElementInView(el)) {
             window.removeEventListener("scroll", this.debounce, false);
             makeImage();
             return;
           }
-
           // remove related event listener and add a new one back
           window.removeEventListener("scroll", this.debounce, false);
           window.addEventListener("scroll", this.debounce, false);
           return;
-
         };
-
         // SetTimeout to prevent false calls on scrolling
         setTimeout(callback, 300);
-
         // remove inital eventlistener to scope a new one inside the timeout function
         window.removeEventListener("scroll", this.debounce, false);
-
         return;
       }
-
     };
 
     if (isElementInView(el) || this.props.force) {
@@ -133,7 +124,6 @@ export default class ImageLoader extends Component {
 
     this.debounce = new Debouncer(seeIfInView);
     window.addEventListener("scroll", this.debounce, false);
-
   }
 
   destroyLoader() {
@@ -150,38 +140,40 @@ export default class ImageLoader extends Component {
 
   handleLoad(event) {
     this.destroyLoader();
-    this.setState({status: Status.LOADED});
+    this.setState({ status: Status.LOADED });
 
     if (this.props.onLoad) this.props.onLoad(event);
   }
 
   handleError(error) {
     this.destroyLoader();
-    this.setState({status: Status.FAILED});
+    this.setState({ status: Status.FAILED });
 
     if (this.props.onError) this.props.onError(error);
   }
 
   renderImg() {
-    const {src, imgProps} = this.props;
-    let props = {src};
+    const { src, imgProps } = this.props;
+    const props = { src };
 
-    for (let k in imgProps) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const k in imgProps) {
+      // eslint-disable-next-line no-prototype-builtins
       if (imgProps.hasOwnProperty(k)) {
         props[k] = imgProps[k];
       }
     }
 
-    return <img {...props} />;
+    return <img role="presentation" {...props} />;
   }
 
   render() {
-    let wrapperProps = {
+    const wrapperProps = {
       className: this.getClassName(),
     };
 
     if (this.props.style) {
-      let style = {...this.props.style};
+      const style = { ...this.props.style };
       delete style.backgroundImage;
       wrapperProps.style = style;
 
@@ -190,9 +182,7 @@ export default class ImageLoader extends Component {
       }
     }
 
-    let wrapperArgs = [wrapperProps];
-
-
+    const wrapperArgs = [wrapperProps];
 
     switch (this.state.status) {
       case Status.LOADED:
@@ -212,6 +202,10 @@ export default class ImageLoader extends Component {
         break;
     }
 
-    return <span ref="loader">{this.props.wrapper(...wrapperArgs)}</span>;
+    return (
+      <span ref={(node) => { this.loader = node; }}>
+        {this.props.wrapper(...wrapperArgs)}
+      </span>
+    );
   }
 }

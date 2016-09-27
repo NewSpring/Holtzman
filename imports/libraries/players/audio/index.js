@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*
 
   This file unifies the API from the cordova and audio5 depending on env
@@ -6,32 +7,28 @@
 
 if (Meteor.isCordova) {
   document.addEventListener("deviceready", (event) => {
-
-    Media.prototype.timeupdate = function(callback){
+    Media.prototype.timeupdate = function (callback) {
       return setInterval(() => {
-        this.getCurrentPosition(function(position) {
-            if (position > -1) {
+        this.getCurrentPosition((position) => {
+          if (position > -1) {
               // Convert position to minutes and seconds
-              const mins = Math.floor(position / 60);
-              const seconds = (position % 60).toFixed(0);
+            const mins = Math.floor(position / 60);
+            const seconds = (position % 60).toFixed(0);
 
-              const date = `${mins}:${seconds}`;
-              callback(date);
-            }
-
+            const date = `${mins}:${seconds}`;
+            callback(date);
+          }
         });
       }, 1000);
-
     };
 
-    Media.prototype.ended = function(callback) {
-
+    Media.prototype.ended = function (callback) {
       const getDuration = () => {
         return this.getDuration();
       };
 
-      let interval = setInterval(() => {
-        this.getCurrentPosition(function(position) {
+      const interval = setInterval(() => {
+        this.getCurrentPosition((position) => {
           if (position > -1) {
             const duration = getDuration();
             if (position.toFixed(1) === duration.toFixed(1)) {
@@ -44,8 +41,7 @@ if (Meteor.isCordova) {
       }, 10);
     };
 
-    Media.prototype.playPause = function(){
-
+    Media.prototype.playPause = function () {
       if (this.isPlaying) {
         this.pause();
         this.isPlaying = false;
@@ -54,69 +50,66 @@ if (Meteor.isCordova) {
 
       this.isPlaying = true;
       this.play();
-
     };
   });
 }
 
-  class Audio {
+class Audio {
 
-    constructor(src, success, error, status) {
+  constructor(src, success, error, status) {
+    try {
+      this._audio5 = new Audio5({
+        ready(player) {
+          this.load(src);
+        },
 
-      try {
-        this._audio5 = new Audio5({
-          ready: function(player) {
-            this.load(src);
-          }
-
-        });
-      } catch (e) {
-        console.error(e);
-      }
-
-
-      this._audio5.on("canplay", success);
-
-
-      this._audio5.on("timeupdate", () => {
-        this.position = this._audio5.position;
       });
-
-      this.position = null;
-      this.duration = this._audio5.duration;
-
+    } catch (e) {
+      console.error(e);
     }
 
-    getCurrentPosition = () => { this._audio5.position }
 
-    timeupdate = (callback) => {
-      this._audio5.on("timeupdate", () => {
-        callback(this.position);
-      });
-    }
+    this._audio5.on("canplay", success);
 
-    getDuration = () => { this._audio5.duration }
 
-    play = () => { this._audio5.play() }
+    this._audio5.on("timeupdate", () => {
+      this.position = this._audio5.position;
+    });
 
-    pause = () => { this._audio5.pause() }
-    playPause = () => { this._audio5.playPause() }
+    this.position = null;
+    this.duration = this._audio5.duration;
+  }
+
+  getCurrentPosition = () => { this._audio5.position; }
+
+  timeupdate = (callback) => {
+    this._audio5.on("timeupdate", () => {
+      callback(this.position);
+    });
+  }
+
+  getDuration = () => { this._audio5.duration; }
+
+  play = () => { this._audio5.play(); }
+
+  pause = () => { this._audio5.pause(); }
+  playPause = () => { this._audio5.playPause(); }
 
     // native only
-    release(){ return }
+  release() { return; }
 
 
-    seekTo = (pos) => { this._audio5.seek(pos / 1000) }
+  seekTo = (pos) => { this._audio5.seek(pos / 1000); }
 
-    setVolume = (vol) => { this._audio5.volume(vol) }
+  setVolume = (vol) => { this._audio5.volume(vol); }
 
-    startRecord(){ return }
-    stopRecord(){ return }
+  startRecord() { return; }
+  stopRecord() { return; }
 
-    stop = () => { this._audio5.pause() }
-    release = () => { this._audio5.destroy() }
+  stop = () => { this._audio5.pause(); }
+  release = () => { this._audio5.destroy(); }
 
-    ended = (callback) => { this._audio5.on("ended", callback) }
+  ended = (callback) => { this._audio5.on("ended", callback); }
 
   }
 

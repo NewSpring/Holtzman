@@ -1,5 +1,5 @@
-import renderer from 'react-test-renderer';
-import Error from '../Error';
+import renderer from "react-test-renderer";
+import Error from "../Error";
 
 describe("Error Icon", () => {
   it("should exist", () => {

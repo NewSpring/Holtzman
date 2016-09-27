@@ -1,9 +1,10 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-import Loading, { FeedItemSkeleton } from "../../components/loading";
+import { FeedItemSkeleton } from "../../components/loading";
 import ApollosPullToRefresh from "../../components/pullToRefresh";
 import FeedItem from "../../components/cards/cards.FeedItem";
 
@@ -14,54 +15,55 @@ import { nav as navActions } from "../../store";
 
 import Single from "./stories.Single";
 
-
-const mapQueriesToProps = ({ ownProps, state }) => ({
-  data: {
-    query: gql`
-      query getStories($limit: Int!, $skip: Int!) {
-        content(channel: "stories", limit: $limit, skip: $skip) {
-          id
-          entryId: id
-          title
-          status
-          channelName
-          meta {
-            urlTitle
-            siteId
-            date
-            channelId
-          }
-          content {
-            body
-            images(sizes: ["large"]) {
-              fileName
-              fileType
-              fileLabel
-              url
-            }
-            ooyalaId
-          }
-        }
+const STORIES_QUERY = gql`
+  query getStories($limit: Int!, $skip: Int!) {
+    content(channel: "stories", limit: $limit, skip: $skip) {
+      id
+      entryId: id
+      title
+      status
+      channelName
+      meta {
+        urlTitle
+        siteId
+        date
+        channelId
       }
-    `,
+      content {
+        body
+        images(sizes: ["large"]) {
+          fileName
+          fileType
+          fileLabel
+          url
+        }
+        ooyalaId
+      }
+    }
+  }
+`;
+
+const withStories = graphql(STORIES_QUERY, {
+  options: state => ({
     variables: {
       limit: state.paging.pageSize * state.paging.page,
       skip: state.paging.skip,
     },
-    forceFetch: false,
-    returnPartialData: false,
-  },
+  }),
 });
 
-const mapStateToProps = (state) => ({ paging: state.paging });
+const mapStateToProps = state => ({ paging: state.paging });
 
-@connect({
-  mapQueriesToProps,
-  mapStateToProps,
-})
+@connect(mapStateToProps)
+@withStories
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+  }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
@@ -79,16 +81,20 @@ class Template extends Component {
     let items = [1, 2, 3, 4, 5];
     if (content) items = content;
     return (
-      items.map((item, i) => {
-        return (
-          <div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
-            {(() => {
-              if (typeof item === "number") return <FeedItemSkeleton />;
-              return <FeedItem item={item} />;
-            })()}
-          </div>
-        );
-      })
+      items.map((item, i) => (
+        <div
+          className={
+            "grid__item one-half@palm-wide one-third@portable one-quarter@anchored " +
+            "flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          }
+          key={i}
+        >
+          {(() => {
+            if (typeof item === "number") return <FeedItemSkeleton />;
+            return <FeedItem item={item} />;
+          })()}
+        </div>
+      ))
     );
   }
 
@@ -110,10 +116,10 @@ class Template extends Component {
 
 const Routes = [
   { path: "stories", component: Template },
-  { path: "stories/:id", component: Single }
+  { path: "stories/:id", component: Single },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

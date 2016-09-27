@@ -14,12 +14,12 @@ import reducer from "./reducer";
 import { addReducer } from "../utilities";
 
 addReducer({
-  liked: reducer
+  liked: reducer,
 });
 
 export default {
-  toggle: (props) => ({ type: "LIKED.TOGGLE", props }),
+  toggle: props => ({ type: "LIKED.TOGGLE", props }),
 
-  set: (content) => ({ type: "LIKED.SET", content })
+  set: content => ({ type: "LIKED.SET", content }),
 
 };
