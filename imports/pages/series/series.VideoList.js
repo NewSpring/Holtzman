@@ -41,8 +41,8 @@ const withSermons = graphql(SERMONS_QUERY, {
   }),
 });
 
-@withSermons
 @connect()
+@withSermons
 export default class SeriesVideoList extends Component {
 
   static propTypes = {
