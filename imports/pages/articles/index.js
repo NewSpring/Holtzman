@@ -57,8 +57,8 @@ const withArticles = graphql(ARTICLES_QUERY, {
 
 const mapStateToProps = state => ({ paging: state.paging });
 
-@withArticles
 @connect(mapStateToProps)
+@withArticles
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
