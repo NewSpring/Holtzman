@@ -34,8 +34,8 @@ const SAVED_ACCTS_QUERY = gql`
 
 // XXX remove cache: false when heighliner caching is tested
 const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
+  name: "savedPayments",
   options: ownProps => ({
-    name: "savedPayments",
     variables: {
       // even though this is unused, we include it to trigger a recal when a person
       // logs in or logs out
