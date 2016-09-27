@@ -42,7 +42,7 @@ const TRANSACTIONS_QUERY = gql`
   }
 `;
 const withTransactions = graphql(TRANSACTIONS_QUERY, {
-  options: ownProps => ({
+  options: () => ({
     variables: { limit: 20, skip: 0, people: [], start: "", end: "" },
     forceFetch: true,
   }),
