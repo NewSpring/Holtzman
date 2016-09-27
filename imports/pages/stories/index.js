@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import { FeedItemSkeleton } from "../../components/loading";
@@ -14,51 +15,47 @@ import { nav as navActions } from "../../store";
 
 import Single from "./stories.Single";
 
-
-const mapQueriesToProps = ({ state }) => ({
-  data: {
-    query: gql`
-      query getStories($limit: Int!, $skip: Int!) {
-        content(channel: "stories", limit: $limit, skip: $skip) {
-          id
-          entryId: id
-          title
-          status
-          channelName
-          meta {
-            urlTitle
-            siteId
-            date
-            channelId
-          }
-          content {
-            body
-            images(sizes: ["large"]) {
-              fileName
-              fileType
-              fileLabel
-              url
-            }
-            ooyalaId
-          }
-        }
+const STORIES_QUERY = gql`
+  query getStories($limit: Int!, $skip: Int!) {
+    content(channel: "stories", limit: $limit, skip: $skip) {
+      id
+      entryId: id
+      title
+      status
+      channelName
+      meta {
+        urlTitle
+        siteId
+        date
+        channelId
       }
-    `,
+      content {
+        body
+        images(sizes: ["large"]) {
+          fileName
+          fileType
+          fileLabel
+          url
+        }
+        ooyalaId
+      }
+    }
+  }
+`;
+
+const withStories = graphql(STORIES_QUERY, {
+  options: state => ({
     variables: {
       limit: state.paging.pageSize * state.paging.page,
       skip: state.paging.skip,
     },
-    forceFetch: false,
-    returnPartialData: false,
-  },
+  }),
 });
 
 const mapStateToProps = state => ({ paging: state.paging });
 
-@connect({
-  mapQueriesToProps,
-  mapStateToProps,
-})
+@withStories
+@connect(mapStateToProps)
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
