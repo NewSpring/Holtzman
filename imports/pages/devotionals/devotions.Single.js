@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import SwipeViews from "react-swipe-views";
 
@@ -19,55 +20,54 @@ import {
 import DevotionsSingleContent from "./devotions.SingleContent";
 import DevotionsSingleScripture from "./devotions.SingleScripture";
 
-const mapQueriesToProps = ({ ownProps }) => (
-  {
-    devotion: {
-      query: gql`
-        query getDevotional($id: ID!) {
-          content: node(id: $id) {
-            id
-            ... on Content {
-              entryId: id
-              title
-              status
-              channelName
-              meta {
-                urlTitle
-                siteId
-                date
-                channelId
-              }
-              content {
-                body
-                tags
-                scripture {
-                  book
-                  passage
-                }
-                images(sizes: ["large"]) {
-                  fileName
-                  fileType
-                  fileLabel
-                  url
-                }
-              }
-            }
+const DEVOTIONAL_QUERY = gql`
+  query getDevotional($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          body
+          tags
+          scripture {
+            book
+            passage
+          }
+          images(sizes: ["large"]) {
+            fileName
+            fileType
+            fileLabel
+            url
           }
         }
-      `,
-      variables: { id: ownProps.params.id },
-      forceFetch: false,
-      returnPartialData: false,
-    },
+      }
+    }
   }
-);
+`;
+
+const withDevotional = graphql(DEVOTIONAL_QUERY, {
+  name: "devotion",
+  options: ownProps => ({
+    variables: { id: ownProps.params.id },
+  }),
+});
 
 const mapStateToProps = state => ({
   modal: { visible: state.modal.visible },
   live: state.live,
 });
 
-@connect({ mapQueriesToProps, mapStateToProps })
+@connect(mapStateToProps)
+@withDevotional
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 export default class SeriesSingle extends Component {
