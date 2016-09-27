@@ -68,8 +68,8 @@ const withSingleSeries = graphql(SERIES_SINGLE_QUERY, {
   }),
 });
 
-@withSingleSeries
 @connect()
+@withSingleSeries
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
