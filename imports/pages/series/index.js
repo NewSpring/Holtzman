@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import Headerable from "../../mixins/mixins.Header";
@@ -15,51 +16,53 @@ import { nav as navActions } from "../../store";
 import Single from "./series.Single";
 import SingleVideo from "./series.SingleVideo";
 
-const mapQueriesToProps = ({ state }) => ({
-  data: {
-    query: gql`
-      query getSeries($limit: Int!, $skip: Int!){
-        content(channel: "series_newspring", limit: $limit, skip: $skip) {
+const SERIES_QUERY = gql`
+  query getSeries($limit: Int!, $skip: Int!){
+    content(channel: "series_newspring", limit: $limit, skip: $skip) {
+      id
+      entryId: id
+      title
+      status
+      channelName
+      meta {
+        urlTitle
+        siteId
+        date
+        channelId
+      }
+      content {
+        images(sizes: ["large"]) {
+          fileName
+          fileType
+          fileLabel
+          url
+        }
+        isLight
+        colors {
           id
-          entryId: id
-          title
-          status
-          channelName
-          meta {
-            urlTitle
-            siteId
-            date
-            channelId
-          }
-          content {
-            images(sizes: ["large"]) {
-              fileName
-              fileType
-              fileLabel
-              url
-            }
-            isLight
-            colors {
-              id
-              value
-              description
-            }
-          }
+          value
+          description
         }
       }
-    `,
+    }
+  }
+`;
+
+const withSeries = graphql(SERIES_QUERY, {
+  options: ownProps => ({
     variables: {
-      limit: state.paging.pageSize * state.paging.page,
-      skip: state.paging.skip,
+      limit: ownProps.paging.pageSize * ownProps.paging.page,
+      skip: ownProps.paging.skip,
     },
     forceFetch: false,
     returnPartialData: false,
-  },
+  }),
 });
 
 const mapStateToProps = state => ({ paging: state.paging });
 
-@connect({ mapQueriesToProps, mapStateToProps })
+@connect(mapStateToProps)
+@withSeries
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
