@@ -1,45 +1,48 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import SeriesVideoListItem from "./series.VideoListItem";
 import { Spinner } from "../../components/loading";
 
-const mapQueriesToProps = ({ ownProps }) => ({
-  sermons: {
-    query: gql`
-      query GetSermonsFromSeries($id: ID!) {
-        content: node(id: $id) {
-          ... on Content {
-            sermons: children(channels: ["sermons"]) {
-              id
-              entryId: id
-              title
-              status
-              channelName
-              parent {
-                entryId: id
-              }
-              meta {
-                urlTitle
-                siteId
-                date
-                channelId
-              }
-              content {
-                speaker
-              }
-            }
+const SERMONS_QUERY = gql`
+  query GetSermonsFromSeries($id: ID!) {
+    content: node(id: $id) {
+      ... on Content {
+        sermons: children(channels: ["sermons"]) {
+          id
+          entryId: id
+          title
+          status
+          channelName
+          parent {
+            entryId: id
+          }
+          meta {
+            urlTitle
+            siteId
+            date
+            channelId
+          }
+          content {
+            speaker
           }
         }
       }
-    `,
+    }
+  }
+`;
+
+const withSermons = graphql(SERMONS_QUERY, {
+  name: "sermons",
+  options: ownProps => ({
     variables: { id: ownProps.id },
-    forceFetch: false,
-    returnPartialData: false,
-  },
+  }),
 });
-@connect({ mapQueriesToProps })
+
+@withSermons
+@connect()
 export default class SeriesVideoList extends Component {
 
   static propTypes = {
