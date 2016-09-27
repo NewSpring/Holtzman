@@ -55,8 +55,8 @@ const withAlbums = graphql(ALBUMS_QUERY, {
 
 const mapStateToProps = state => ({ paging: state.paging });
 
-@withAlbums
 @connect(mapStateToProps)
+@withAlbums
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
