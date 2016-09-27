@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import gql from "graphql-tag";
 
@@ -7,34 +8,33 @@ import Forms from "../../../components/forms";
 
 import Tag from "../components/Tag";
 
-const mapQueriesToProps = () => ({
-  attributes: {
-    query: gql`
-      query GetGroupAttributes {
-        tags: groupAttributes {
-          id
-          description
-          value
-        }
-      }
-    `,
-  },
-  campusLocations: {
-    query: gql`
-      query GetCampuses {
-        campuses {
-          entityId
-          id
-          name
-        }
-      }
-    `,
-  },
-});
-const mapStateToProps = state => ({ location: state.routing.location });
+const ATTRIBUTES_QUERY = gql`
+  query GetGroupAttributes {
+    tags: groupAttributes {
+      id
+      description
+      value
+    }
+  }
+`;
+const withAttributes = graphql(ATTRIBUTES_QUERY, { name: "attributes" });
+
+const CAMPUS_LOCATIONS_QUERY = gql`
+  query GetCampuses {
+    campuses {
+      entityId
+      id
+      name
+    }
+  }
+`;
+const withCampusLocations = graphql(CAMPUS_LOCATIONS_QUERY, { name: "campusLocations" });
+
 const defaultTags = [];
 @withRouter
-@connect({ mapQueriesToProps, mapStateToProps })
+@withAttributes
+@withCampusLocations
+@connect(null, state => ({ location: state.routing.location }))
 export default class Filter extends Component {
 
   static propTypes = {
