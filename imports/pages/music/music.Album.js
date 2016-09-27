@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 // loading state
@@ -17,53 +18,54 @@ import {
 
 import Track from "./music.Track";
 
-const mapQueriesToProps = ({ ownProps }) => ({
-  album: {
-    query: gql`
-      query getAlbum($id: ID!) {
-        content: node(id: $id) {
-          id
-          ... on Content {
-            entryId: id
+const ALBUM_QUERY = gql`
+  query getAlbum($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          tracks {
             title
-            status
-            channelName
-            meta {
-              urlTitle
-              siteId
-              date
-              channelId
-            }
-            content {
-              tracks {
-                title
-                duration
-                file: s3
-              }
-              images(sizes: ["large", "medium", "small", "xsmall"]) {
-                fileName
-                fileType
-                fileLabel
-                size
-                url
-              }
-              colors {
-                value
-                description
-              }
-              isLight
-            }
+            duration
+            file: s3
           }
+          images(sizes: ["large", "medium", "small", "xsmall"]) {
+            fileName
+            fileType
+            fileLabel
+            size
+            url
+          }
+          colors {
+            value
+            description
+          }
+          isLight
         }
       }
-    `,
+    }
+  }
+`;
+
+const withAlbum = graphql(ALBUM_QUERY, {
+  name: "album",
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
-    forceFetch: false,
-    returnPartialData: false,
-  },
+  }),
 });
 
-@connect({ mapQueriesToProps })
+@withAlbum
+@connect(mapQueriesToProps)
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
