@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 // loading state
@@ -24,49 +25,50 @@ import {
 // import content component
 import Content from "./articles.Content";
 
-const mapQueriesToProps = ({ ownProps }) => ({
-  article: {
-    query: gql`
-      query getArticle($id: ID!) {
-        content: node(id: $id) {
-          id
-          ... on Content {
-            title
-            status
-            channelName
-            authors
-            meta {
-              urlTitle
-              siteId
-              date
-              channelId
-            }
-            content {
-              body
-              ooyalaId
-              tags
-              images(sizes: ["large"]) {
-                fileName
-                fileType
-                fileLabel
-                url
-              }
-            }
+const ARTICLE_QUERY = gql`
+  query getArticle($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        title
+        status
+        channelName
+        authors
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          body
+          ooyalaId
+          tags
+          images(sizes: ["large"]) {
+            fileName
+            fileType
+            fileLabel
+            url
           }
         }
       }
-    `,
+    }
+  }
+`;
+
+const withArticle = graphql(ARTICLE_QUERY, {
+  name: "article",
+  options: ownProps => ({
     variables: { id: ownProps.params.id },
-    forceFetch: false,
-    returnPartialData: false, // XXX can this be true?
-  },
+  }),
 });
 
 const defaultArray = [];
-@connect({ mapQueriesToProps })
-@ReactMixin.decorate(Likeable)
-@ReactMixin.decorate(Shareable)
-@ReactMixin.decorate(Headerable)
+@connect()
+@withArticle
+@ReactMixin.decorate(Likeable) // Depreciated
+@ReactMixin.decorate(Shareable) // Depreciated
+@ReactMixin.decorate(Headerable) // Depreciated
 export default class ArticlesSingle extends Component {
 
   static propTypes = {
