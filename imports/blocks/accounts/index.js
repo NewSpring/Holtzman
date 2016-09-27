@@ -16,26 +16,36 @@ import ForgotPassword from "./ForgotPassword";
 import SuccessCreate from "./SuccessCreate";
 
 const mapDispatchToProps = { ...accountsActions, ...modalActions };
-const mapQueriesToProps = ({ state }) => ({
-  data: {
-    query: gql`
-      query GetPersonByGuid($guid:ID) {
-        person(guid:$guid) {
-          firstName
-          lastName
-          email
-          photo
-          id: entityId
-          personId: entityId
-        }
-      }
-    `,
+
+const PERSON_QUERY = gql`
+  query GetPersonByGuid($guid:ID) {
+    person(guid:$guid) {
+      firstName
+      lastName
+      email
+      photo
+      id: entityId
+      personId: entityId
+    }
+  }
+`;
+
+const withPerson = graphql(PERSON_QUERY, {
+  name: "person",
+  options: ({
     variables: {
+      ssr: false,
       guid: (
         state.routing.location && state.routing.location.query && state.routing.location.query.guid
       ),
     },
-    ssr: false,
+  }),
+});
+const mapQueriesToProps = ({ state }) => ({
+  data: {
+    // query: ,
+
+
   },
 });
 
