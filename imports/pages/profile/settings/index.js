@@ -31,10 +31,11 @@ const PERSON_QUERY = gql`
   }
 `;
 
-const withPerson = graphql(PERSON_QUERY)
+const withPerson = graphql(PERSON_QUERY);
 
 @withProfileUpload
 @connect()
+@withPerson
 class Template extends Component {
 
   static propTypes = {
