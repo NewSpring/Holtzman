@@ -54,8 +54,6 @@ const withSeries = graphql(SERIES_QUERY, {
       limit: ownProps.paging.pageSize * ownProps.paging.page,
       skip: ownProps.paging.skip,
     },
-    forceFetch: false,
-    returnPartialData: false,
   }),
 });
 
