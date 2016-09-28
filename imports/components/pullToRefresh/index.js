@@ -1,5 +1,5 @@
 import { PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
 import ReactPullToRefresh from "react-pull-to-refresh";
 
 const mapStateToProps = state => ({
@@ -47,4 +47,4 @@ ApollosPullToRefresh.propTypes = {
 };
 
 
-export default connect({ mapStateToProps })(ApollosPullToRefresh);
+export default connect(mapStateToProps)(ApollosPullToRefresh);

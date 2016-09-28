@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
 import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 
@@ -16,7 +16,7 @@ import {
 import Layout from "./Layout";
 
 const mapStateToProps = state => ({ search: state.search });
-@connect({ mapStateToProps })
+@connect(mapStateToProps)
 @ReactMixin.decorate(Headerable)
 export default class SearchContainer extends Component {
 
