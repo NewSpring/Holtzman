@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
 import Layout from "./Layout";
 
 import Loading from "../../../blocks/give/Loading";
@@ -8,10 +8,8 @@ import Success from "../../../blocks/give/Success";
 
 import { give as giveActions, nav as navActions } from "../../../store";
 
-const mapStateToProps = state => ({
-  give: state.give,
-});
-@connect({ mapStateToProps })
+const mapStateToProps = state => ({ give: state.give });
+@connect(mapStateToProps)
 class Template extends Component {
 
   static propTypes = {

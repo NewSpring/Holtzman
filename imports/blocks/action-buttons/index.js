@@ -57,7 +57,7 @@ const mapStateToProps = store => ({
   savedAccount: store.give.savedAccount,
 });
 
-@connect({ mapStateToProps })
+@connect(mapStateToProps)
 @withSavedPayments
 export default class GiveNow extends Component {
 
