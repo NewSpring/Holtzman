@@ -48,8 +48,8 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
   }),
 });
 
-@withFilter
 @connect()
+@withFilter
 @withTransactions
 class Template extends Component {
 
