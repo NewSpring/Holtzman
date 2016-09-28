@@ -23,7 +23,7 @@ export default class SearchContainer extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     search: PropTypes.object.isRequired,
-    query: PropTypes.func.isRequired,
+    query: PropTypes.func,
   }
 
   componentWillMount() {
