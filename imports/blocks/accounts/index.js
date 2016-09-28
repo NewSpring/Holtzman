@@ -33,8 +33,8 @@ const PERSON_QUERY = gql`
 const withPerson = graphql(PERSON_QUERY, {
   name: "person",
   options: ownProps => ({
+    ssr: false,
     variables: {
-      ssr: false,
       guid: (
         ownProps.location && ownProps.location.query && ownProps.location.query.guid
       ),
