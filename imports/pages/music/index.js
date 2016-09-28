@@ -45,10 +45,10 @@ const ALBUMS_QUERY = gql`
 `;
 
 const withAlbums = graphql(ALBUMS_QUERY, {
-  options: state => ({
+  options: ownProps => ({
     variables: {
-      limit: state.paging.pageSize * state.paging.page,
-      skip: state.paging.skip,
+      limit: ownProps.paging.pageSize * ownProps.paging.page,
+      skip: ownProps.paging.skip,
     },
   }),
 });
