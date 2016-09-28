@@ -39,9 +39,7 @@ const CHECKOUT_QUERY = gql`
 `;
 
 const withCheckout = graphql(CHECKOUT_QUERY, {
-  options: () => ({
-    variables: { state: 28, country: 45 },
-  }),
+  options: { variables: { state: 28, country: 45 } },
 });
 
 const defaultArray = []; // empty array for usage as default in render
