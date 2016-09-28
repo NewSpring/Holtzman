@@ -43,10 +43,10 @@ const DEVOTIONALS_QUERY = gql`
 `;
 
 const withDevotionals = graphql(DEVOTIONALS_QUERY, {
-  options: state => ({
+  options: ownProps => ({
     variables: {
-      limit: state.paging.pageSize * state.paging.page,
-      skip: state.paging.skip,
+      limit: ownProps.paging.pageSize * ownProps.paging.page,
+      skip: ownProps.paging.skip,
     },
   }),
 });
