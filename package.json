@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "aphrodite": "git+https://github.com/NewSpring/aphrodite.git#release",
-    "apollo-client": "^0.3.27",
+    "apollo-client": "^0.4.19",
     "audio5": "^0.1.10",
     "bcrypt": "^0.8.7",
     "bluebird": "^3.4.6",
