@@ -37,9 +37,11 @@ export const App = ({ children, className }) => {
     >
       <div className={className}>
         <Meta />
-        {(() => { if (process.env.NATIVE) return <Header />; })()}
-        <div data-status-scroll>
-          {children}
+        <div className="locked-ends scrollable">
+          {(() => { if (process.env.NATIVE) return <Header />; })()}
+          <div data-status-scroll>
+            {children}
+          </div>
         </div>
         <Modal/>
         <Nav />
