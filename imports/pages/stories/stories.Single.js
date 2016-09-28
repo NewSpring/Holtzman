@@ -46,14 +46,15 @@ const GET_STORY_QUERY = gql`
   }
 `;
 
-const withStory = graphql(GET_STORY_QUERY, { name: "story" }, {
+const withStory = graphql(GET_STORY_QUERY, {
+  name: "story",
   options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
 
-@withStory
 @connect()
+@withStory
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
@@ -75,6 +76,7 @@ export default class StoriesSingle extends Component {
 
   render() {
     const { content } = this.props.story;
+    console.log(content);
 
     if (!content) {
       // loading
