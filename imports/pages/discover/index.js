@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
 import { css } from "aphrodite";
 
 import liveActions from "../../store/live";
@@ -8,7 +8,7 @@ import styles from "../../blocks/nav/offset-css";
 
 const mapStateToProps = state => ({ audio: state.audio });
 
-@connect({ mapStateToProps })
+@connect(mapStateToProps)
 class Template extends Component {
 
   static propTypes = {

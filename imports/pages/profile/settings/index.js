@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import {
@@ -15,26 +16,25 @@ import PersonalDetails from "./PersonalDetails";
 import HomeAddress from "./HomeAddress";
 import PaymentDetails from "./Payments";
 
-const mapQueriesToProps = () => ({
-  data: {
-    query: gql`
-      query GetPersonForSettings {
-        person: currentPerson(cache: false) {
-          firstName
-          lastName
-          nickName
-          photo
-          home {
-            state
-            city
-          }
-        }
+const PERSON_QUERY = gql`
+  query GetPersonForSettings {
+    person: currentPerson(cache: false) {
+      firstName
+      lastName
+      nickName
+      photo
+      home {
+        state
+        city
       }
-    `,
-  },
-});
+    }
+  }
+`;
+
+const withPerson = graphql(PERSON_QUERY)
+
 @withProfileUpload
-@connect({ mapQueriesToProps })
+@connect()
 class Template extends Component {
 
   static propTypes = {
