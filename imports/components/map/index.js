@@ -31,7 +31,10 @@ export default class Map extends Component {
     active: PropTypes.bool,
     hover: PropTypes.bool,
     popUp: PropTypes.any, // eslint-disable-line
-    options: PropTypes.string,
+    options: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+    ]),
   }
 
   static defaultProps = {
