@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
-import { connect as apolloConnect } from "react-apollo";
+import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
@@ -16,30 +16,34 @@ import ForgotPassword from "./ForgotPassword";
 import SuccessCreate from "./SuccessCreate";
 
 const mapDispatchToProps = { ...accountsActions, ...modalActions };
-const mapQueriesToProps = ({ state }) => ({
-  data: {
-    query: gql`
-      query GetPersonByGuid($guid:ID) {
-        person(guid:$guid) {
-          firstName
-          lastName
-          email
-          photo
-          id: entityId
-          personId: entityId
-        }
-      }
-    `,
+
+const PERSON_QUERY = gql`
+  query GetPersonByGuid($guid:ID) {
+    person(guid:$guid) {
+      firstName
+      lastName
+      email
+      photo
+      id: entityId
+      personId: entityId
+    }
+  }
+`;
+
+const withPerson = graphql(PERSON_QUERY, {
+  name: "person",
+  options: ownProps => ({
+    ssr: false,
     variables: {
       guid: (
-        state.routing.location && state.routing.location.query && state.routing.location.query.guid
+        ownProps.location && ownProps.location.query && ownProps.location.query.guid
       ),
     },
-    ssr: false,
-  },
+  }),
 });
 
-@apolloConnect({ mapQueriesToProps, mapDispatchToProps })
+@connect(state => ({ location: state.routing.location }), mapDispatchToProps)
+@withPerson
 export default class AccountsWithData extends Component {
 
   static propTypes = {
@@ -62,8 +66,7 @@ export default class AccountsWithData extends Component {
 }
 
 // We only care about the accounts state
-const mapStateToProps = state => ({ accounts: state.accounts });
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(state => ({ accounts: state.accounts }), mapDispatchToProps)
 class AccountsContainer extends Component { // eslint-disable-line
 
   static propTypes = {
