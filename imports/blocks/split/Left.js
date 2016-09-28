@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 
 export default class Left extends Component {
 
@@ -8,7 +8,8 @@ export default class Left extends Component {
     scroll: PropTypes.bool,
     width: PropTypes.string,
     background: PropTypes.string,
-    styles: PropTypes.object
+    styles: PropTypes.object,
+    children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   }
 
   layoutClasses = () => {
@@ -16,7 +17,7 @@ export default class Left extends Component {
       // "panel__item--left",
       "relative",
       "hard",
-      "flush"
+      "flush",
     ];
 
     if (this.props.scroll) {
@@ -41,23 +42,26 @@ export default class Left extends Component {
   }
 
   styles = () => {
-    let defaults = {
+    const defaults = {
       // position: "relative"
     };
     if (this.props.background) {
-      return {...defaults, ...{
-        backgroundImage: "url($this.props.image)"
-      }};
+      return {
+        ...defaults,
+        ...{
+          backgroundImage: "url($this.props.image)",
+        },
+      };
     }
 
     return defaults;
   }
 
-  render () {
+  render() {
     return (
       <section
-          className={this.props.theme || this.layoutClasses()}
-          style={this.props.styles || this.styles()}
+        className={this.props.theme || this.layoutClasses()}
+        style={this.props.styles || this.styles()}
       >
         {this.props.children}
       </section>

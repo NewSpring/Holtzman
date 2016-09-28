@@ -2,7 +2,7 @@ import { PropTypes } from "react";
 
 import { WindowLoading, Spinner } from "../../components/loading";
 
-const Loading = ({ account }, context) => (
+const Loading = ({ account }) => (
   <WindowLoading classes={["background--primary"]}>
     <div className="locked-top locked-bottom one-whole floating">
       <div className="floating__item">
@@ -26,15 +26,15 @@ const Loading = ({ account }, context) => (
 );
 
 Loading.propTypes = {
-  account: PropTypes.bool
+  account: PropTypes.bool,
 };
 
 Loading.defaultProps = {
-  account: false
+  account: false,
 };
 
 Loading.contextTypes = {
-  shouldAnimate: PropTypes.bool
+  shouldAnimate: PropTypes.bool,
 };
 
 export default Loading;

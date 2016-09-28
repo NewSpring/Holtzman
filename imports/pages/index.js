@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Util from "./_";
 import Give from "./give";
 import Groups from "./groups";
@@ -47,3 +48,5 @@ Routes = Routes.concat(Signup.Routes, Util.Routes);
 export {
   Routes,
 };
+
+export default Routes;

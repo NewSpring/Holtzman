@@ -16,5 +16,16 @@ export default {
   update,
   updateHome,
   forceReset,
-  recover
+  recover,
+};
+
+export {
+  available,
+  login,
+  signup,
+  reset,
+  update,
+  updateHome,
+  forceReset,
+  recover,
 };

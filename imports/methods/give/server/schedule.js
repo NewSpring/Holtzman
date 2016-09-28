@@ -1,7 +1,4 @@
-/*global Meteor */
-
-import Moment from "moment";
-
+/* global Meteor */
 import { api } from "../../../util/rock";
 import { charge as gatewaySchedule, cancel as gatewayCancel } from "./nmi";
 import createSchedule from "./createSchedule";
@@ -45,7 +42,7 @@ import createSchedule from "./createSchedule";
 */
 
 Meteor.methods({
-  "give/schedule": function(token, accountName, id) {
+  "give/schedule": function schedule(token, accountName, id) {
     let user = null;
     if (this.userId) user = Meteor.users.findOne({ _id: this.userId });
 
@@ -59,15 +56,14 @@ Meteor.methods({
 
 
     return response;
-
-  }
+  },
 });
 
 
 const cancel = ({ id, gateway }) => {
   let response = {};
 
-  let existing = api.get.sync(`FinancialScheduledTransactions/${id}`);
+  const existing = api.get.sync(`FinancialScheduledTransactions/${id}`);
   // only remove if this is an NMI transaction and we have a gateway code
   if (gateway && existing.FinancialGatewayId === api._.give.gateway.id) {
     try {
@@ -81,6 +77,7 @@ const cancel = ({ id, gateway }) => {
   if (existing.GatewayScheduleId) {
     response = api.patch.sync(`FinancialScheduledTransactions/${id}`, { IsActive: false });
     // debug for now
+    // eslint-disable-next-line no-console
     console.log("@@REMOVE_SCHEDULE_DATA", response, id, existing.GatewayScheduleId, existing);
   } else {
     // infellowhsip move over
@@ -88,6 +85,7 @@ const cancel = ({ id, gateway }) => {
   }
 
   if (response.statusText) {
+    // eslint-disable-next-line no-console
     console.error("@@REMOVE_SCHEDULE_ERROR", response, id, existing);
     throw new Meteor.Error(response);
   }

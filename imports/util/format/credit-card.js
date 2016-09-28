@@ -1,7 +1,5 @@
 const creditCard = (value) => {
-
   if (value) {
-
     // remove non numbers
     let newValue = value.replace(/[^\d]+/g, "");
 
@@ -20,4 +18,4 @@ const creditCard = (value) => {
   return value;
 };
 
-export { creditCard };
+export default creditCard;

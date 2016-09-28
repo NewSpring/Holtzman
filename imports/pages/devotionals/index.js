@@ -1,9 +1,10 @@
 import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-import Loading, { FeedItemSkeleton } from "../../components/loading";
+import { FeedItemSkeleton } from "../../components/loading";
 import ApollosPullToRefresh from "../../components/pullToRefresh";
 import FeedItem from "../../components/cards/cards.FeedItem";
 
@@ -14,49 +15,54 @@ import { nav as navActions } from "../../store";
 
 import Single from "./devotions.Single";
 
-const mapQueriesToProps = ({ ownProps, state }) => ({
-  data: {
-    query: gql`
-      query getDevotionals($limit: Int!, $skip: Int!) {
-        content(channel: "devotionals", limit: $limit, skip: $skip) {
-          id
-          entryId: id
-          title
-          status
-          channelName
-          meta {
-            urlTitle
-            siteId
-            date
-            channelId
-          }
-          content {
-            body
-            images(sizes: ["large"]) {
-              fileName
-              fileType
-              fileLabel
-              url
-            }
-          }
+const DEVOTIONALS_QUERY = gql`
+  query getDevotionals($limit: Int!, $skip: Int!) {
+    content(channel: "devotionals", limit: $limit, skip: $skip) {
+      id
+      entryId: id
+      title
+      status
+      channelName
+      meta {
+        urlTitle
+        siteId
+        date
+        channelId
+      }
+      content {
+        body
+        images(sizes: ["large"]) {
+          fileName
+          fileType
+          fileLabel
+          url
         }
       }
-    `,
+    }
+  }
+`;
+
+const withDevotionals = graphql(DEVOTIONALS_QUERY, {
+  options: ownProps => ({
     variables: {
-      limit: state.paging.pageSize * state.paging.page,
-      skip: state.paging.skip,
+      limit: ownProps.paging.pageSize * ownProps.paging.page,
+      skip: ownProps.paging.skip,
     },
-    forceFetch: false,
-    returnPartialData: false,
-  },
+  }),
 });
 
-const mapStateToProps = (state) => ({ paging: state.paging });
+const mapStateToProps = state => ({ paging: state.paging });
 
-@connect({ mapQueriesToProps, mapStateToProps })
+@connect(mapStateToProps)
+@withDevotionals
 @ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Devotions extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+  }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
@@ -74,16 +80,20 @@ class Devotions extends Component {
     let items = [1, 2, 3, 4, 5];
     if (content) items = content;
     return (
-      items.map((item, i) => {
-        return (
-          <div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored" key={i}>
-            {(() => {
-              if (typeof item === "number") return <FeedItemSkeleton />;
-              return <FeedItem item={item}  />;
-            })()}
-          </div>
-        );
-      })
+      items.map((item, i) => (
+        <div
+          className={
+            "grid__item one-half@palm-wide one-third@portable one-quarter@anchored " +
+            "flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          }
+          key={i}
+        >
+          {(() => {
+            if (typeof item === "number") return <FeedItemSkeleton />;
+            return <FeedItem item={item} />;
+          })()}
+        </div>
+      ))
     );
   }
 
@@ -105,10 +115,10 @@ class Devotions extends Component {
 
 const Routes = [
   { path: "devotions", component: Devotions },
-  { path: "devotions/:id", component: Single }
+  { path: "devotions/:id", component: Single },
 ];
 
 export default {
   Devotions,
-  Routes
+  Routes,
 };

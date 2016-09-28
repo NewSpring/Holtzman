@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -21,14 +19,15 @@ const kidspringNumbers = [
   { count: "13,344", label: "First Timers" },
 ];
 
+/* eslint-disable max-len */
 const KidSpring = () => (
   <div className="display-inline-block text-center one-whole ">
-    <div className="background--primary soft-double-top@lap-and-up" style={{overflow: "visible"}}>
+    <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
       <Stats>
         <FitText compressor={1.5}>
           <h3
-              className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
-              style={{
+            className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
+            style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
@@ -36,31 +35,37 @@ const KidSpring = () => (
           </h3>
         </FitText>
 
-        <FitText compressor={.3}>
-        <h1 className="uppercase text-light-primary" style={{
-          fontWeight: "900",
-        }}>
-            6,366
-        </h1>
+        <FitText compressor={0.3}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
+              6,366
+          </h1>
         </FitText>
 
-        <FitText compressor={.25}>
-        <h1 className="uppercase push-back-top text-light-primary" style={{
-          fontWeight: "900",
-        }}>
-            Kids
-        </h1>
+        <FitText compressor={0.25}>
+          <h1
+            className="uppercase push-back-top text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
+              Kids
+          </h1>
         </FitText>
 
         <FitText compressor={1.5}>
-        <h3
+          <h3
             className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
             style={{
-            fontFamily: "ff-meta-serif-web-pro, serif",
-          }}
-        >
-          heard about Jesus on their level
-        </h3>
+              fontFamily: "ff-meta-serif-web-pro, serif",
+            }}
+          >
+            heard about Jesus on their level
+          </h3>
         </FitText>
       </Stats>
 
@@ -68,30 +73,30 @@ const KidSpring = () => (
 
       <Leaves>
         <SolidLeaf
-            className="locked-bottom locked-right"
-            size="200px"
-            color="text-secondary"
-            style={{
+          className="locked-bottom locked-right"
+          size="200px"
+          color="text-secondary"
+          style={{
             transform: "rotate(-225deg)",
             marginBottom: "-50px",
             marginRight: "-150px",
           }}
         />
         <SolidLeaf
-            className="locked-bottom locked-right"
-            size="130px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-right"
+          size="130px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(-270deg)",
             marginBottom: "-100px",
             marginRight: "-10px",
           }}
         />
         <StripedLeaf
-            className="locked-bottom locked-right"
-            size="90px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-right"
+          size="90px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(180deg)",
             marginBottom: "60px",
             marginRight: "-20px",
@@ -99,10 +104,10 @@ const KidSpring = () => (
         />
 
         <SolidLeaf
-            className="locked-bottom locked-left"
-            size="250px"
-            color="text-secondary"
-            style={{
+          className="locked-bottom locked-left"
+          size="250px"
+          color="text-secondary"
+          style={{
             transform: "rotate(-135deg)",
             marginBottom: "-90px",
             marginLeft: "-150px",
@@ -110,10 +115,10 @@ const KidSpring = () => (
         />
 
         <StripedLeaf
-            className="locked-bottom locked-left"
-            size="120px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-left"
+          size="120px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(-90deg)",
             marginBottom: "-20px",
             marginLeft: "0px",
@@ -121,7 +126,6 @@ const KidSpring = () => (
         />
 
       </Leaves>
-
 
 
     </div>
@@ -140,9 +144,9 @@ const KidSpring = () => (
             "Easter 2015 was special for me because I was able to lead my daughter, who is 7, in a prayer of salvation at home that night while we were getting ready for bed. It all stemmed from what she heard at church that day. I was so thankful for the story that KidSpring shared because I knew it was on her level where she understood it, and she knew from the service she wanted to know she would spend eternity with Jesus."
           </p>
           <h6
-              className="italic text-dark-primary"
-              style={{
-              fontFamily: "ff-meta-serif-web-pro, serif"
+            className="italic text-dark-primary"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
             Jada and Ava Barnette, Greenville Campus
@@ -152,20 +156,23 @@ const KidSpring = () => (
 
     </div>
 
-    <div className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
+    <div
+      className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up"
+    >
 
       <h3
-          className="text-center soft-half-top flush-bottom"
+        className="text-center soft-half-top flush-bottom"
       >KidSpring:</h3>
 
       <h5
-          className="text-center soft-half-bottom flush-bottom italic"
-          style={{fontFamily: "ff-meta-serif-web-pro, serif"}}
+        className="text-center soft-half-bottom flush-bottom italic"
+        style={{ fontFamily: "ff-meta-serif-web-pro, serif" }}
       >Meeting Jesus on Their Level</h5>
 
-    <List items={kidspringNumbers} />
+      <List items={kidspringNumbers} />
     </div>
   </div>
 );
+/* eslint-enable max-len */
 
 export default KidSpring;

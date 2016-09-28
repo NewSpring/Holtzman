@@ -1,4 +1,5 @@
 // stolen from https://github.com/kadirahq/flow-router/blob/ssr/server/ssr_context.js
+/* eslint-disable no-underscore-dangle */
 export default class SsrContext {
   constructor() {
     this._collections = {};
@@ -34,7 +35,7 @@ export default class SsrContext {
         collData.forEach((item) => {
           const existingDoc = collection.findOne(item._id);
           if (existingDoc) {
-            const newDoc = {...existingDoc, ...item};
+            const newDoc = { ...existingDoc, ...item };
             delete newDoc._id;
             collection.update(item._id, newDoc);
           } else {

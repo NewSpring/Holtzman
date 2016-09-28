@@ -11,8 +11,12 @@ import Styles from "./styles-css";
 
 export default class SearchItem extends Component {
 
+  static propTypes = {
+    item: PropTypes.object, // eslint-disable-line
+  }
+
   cardClasses = () => {
-    let classes = [
+    const classes = [
       "background--light-primary",
       "push-half-bottom@palm",
       "push-bottom@palm-wide-and-up",
@@ -21,45 +25,45 @@ export default class SearchItem extends Component {
       "text-dark-secondary",
       "display-block",
       "plain",
-      css(Styles.card)
+      css(Styles.card),
     ];
 
     return classes.join(" ");
   }
 
-  gridClasses = () => {
-    return [
+  gridClasses = () => (
+    [
       "grid",
       "flush",
-      css(Styles["height-100"])
-    ].join(" ");
-  }
+      css(Styles["height-100"]),
+    ].join(" ")
+  )
 
-  gridItemClasses = () => {
-    return [
+  gridItemClasses = () => (
+    [
       "grid__item",
       "three-fifths",
       "soft-half",
       "floating--left",
       "one-whole",
-      css(Styles["height-100"])
-    ].join(" ");
-  }
+      css(Styles["height-100"]),
+    ].join(" ")
+  )
 
-  pClasses = () => {
-    return `small ${css(Styles["ellipsis-p"])}`;
-  }
+  pClasses = () => (
+    `small ${css(Styles["ellipsis-p"])}`
+  )
 
-  bgClasses = () => {
-    return [
+  bgClasses = () => (
+    [
       "grid__item",
       "two-fifths",
       "hard",
       "soft-half-left",
       "background--cover",
-      css(Styles["height-100"])
-    ];
-  }
+      css(Styles["height-100"]),
+    ]
+  )
 
   // context from ImageLoader
   preloader() {
@@ -74,14 +78,13 @@ export default class SearchItem extends Component {
   renderElement() {
     return (
       <div
-          className={this.imageclasses.join(" ")}
-          style={this.style}
+        className={this.imageclasses.join(" ")}
+        style={this.style}
       />
     );
   }
 
   render() {
-
     return (
       <Link to={this.props.item.link} className={this.cardClasses()} onClick={inAppLink}>
         <div className={this.gridClasses()}>
@@ -97,31 +100,28 @@ export default class SearchItem extends Component {
 
           {(() => {
             if (this.props.item.image === "null") {
-              let classes = this.bgClasses();
+              const classes = this.bgClasses();
               classes.push(css(Styles["placeholder-img"]));
               return (
                 <div className={classes.join(" ")} />
               );
-            } else {
-              return (
-                <ImageLoader
-                    src={this.props.item.image}
-                    force
-                    preloader={this.preloader}
-                    renderElement={this.renderElement}
-                    imageclasses={this.bgClasses()}
-                    style={{
-                    backgroundImage: `url('${this.props.item.image}')`
-                  }}
-                />
-              );
             }
+            return (
+              <ImageLoader
+                src={this.props.item.image}
+                force
+                preloader={this.preloader}
+                renderElement={this.renderElement}
+                imageclasses={this.bgClasses()}
+                style={{
+                  backgroundImage: `url('${this.props.item.image}')`,
+                }}
+              />
+            );
           })()}
-
         </div>
       </Link>
     );
-
   }
 
 }

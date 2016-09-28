@@ -7,5 +7,5 @@ export {
   order,
   charge,
   schedule,
-  voidTransaction
+  voidTransaction,
 };

@@ -1,9 +1,7 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router";
 import { css } from "aphrodite";
 import { actions as audioActions } from "../../../store/audio";
-import AudioPlayerUtility from "./audio.PlayerUtility";
 import AudioControls from "./audio.Controls";
 
 import Styles from "./audio.styles.miniPlayer";
@@ -18,14 +16,45 @@ function mapStateToProps(state) {
 @connect(mapStateToProps, audioActions)
 export default class MiniPlayer extends Component {
 
+  static propTypes = {
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    audio: PropTypes.object, // eslint-disable-line
+    dispatch: PropTypes.func,
+    header: PropTypes.object, // eslint-disable-line
+    playing: PropTypes.object, // eslint-disable-line
+    audio: PropTypes.object, // eslint-disable-line
+    data: PropTypes.object, // eslint-disable-line
+    play: PropTypes.func,
+    pause: PropTypes.func,
+    hide: PropTypes.func,
+    reset: PropTypes.func,
+    fade: PropTypes.func,
+    theme: PropTypes.string,
+  };
+
   state = {
     lastPercent: 0,
     startX: 0,
     transition: false,
   };
 
+  // show title before artist if sermon
+  // else show artist before title
+  getArtistLine = () => {
+    const { album, track } = this.props.audio.playing;
+    const artistName = track.artist || album.artist || "NewSpring";
+    const collectionTitle = album.title;
+    if (album.channelName === "series_newspring") {
+      return `${collectionTitle} – ${artistName}`;
+    }
+    return `${artistName} – ${collectionTitle}`;
+  }
+
   layoutClasses = () => {
-    let classes = [
+    const classes = [
       "locked-bottom",
       "one-whole",
       "background--light-tertiary",
@@ -49,7 +78,7 @@ export default class MiniPlayer extends Component {
   }
 
   stopClasses = () => {
-    let classes = [
+    const classes = [
       "locked-bottom",
       "one-whole",
       "background--alert",
@@ -66,12 +95,11 @@ export default class MiniPlayer extends Component {
     return classes.join(" ");
   }
 
-  stopH6Classes = () => {
-    return css(Styles["mini-player-stop-h6"]);
-  }
+  stopH6Classes = () =>
+    css(Styles["mini-player-stop-h6"]);
 
   stopH6IconClasses = () => {
-    let classes = [
+    const classes = [
       "icon-close",
       "display-inline-block",
       "push-half-sides",
@@ -81,13 +109,13 @@ export default class MiniPlayer extends Component {
   }
 
   albumClasses = () => {
-    let classes = [
+    const classes = [
       "background--fill",
       "ratio--square",
       "float-left",
       "push-half-right",
       "background--primary",
-      "floating__item"
+      "floating__item",
     ];
     classes.push(css(Styles["mini-album-cover"]));
 
@@ -99,7 +127,7 @@ export default class MiniPlayer extends Component {
     e.stopPropagation();
     const { state } = this.props.audio;
 
-    if (state != "playing") {
+    if (state !== "playing") {
       this.removeHideTimer();
       this.props.play();
       return;
@@ -142,7 +170,7 @@ export default class MiniPlayer extends Component {
     });
   }
 
-  touchEnd = (e) => {
+  touchEnd = () => {
     const decider = 25;
     const stop = this.state.lastPercent > decider;
 
@@ -166,83 +194,70 @@ export default class MiniPlayer extends Component {
   calculatePercent = (targetElement, clickedX) => {
     const range = targetElement.offsetWidth;
     const offsetClicked = clickedX - this.state.startX;
-    const percentClicked = offsetClicked / range * 100;
+    const percentClicked = (offsetClicked / range) * 100;
 
     if (percentClicked > 100) {
       return 100;
-    }
-    else if (percentClicked < 0) {
+    } else if (percentClicked < 0) {
       return 0;
     }
 
     return percentClicked;
   }
 
-  playerStyle = () => {
-    return {
-      left: `${this.state.lastPercent}%`
-    };
-  }
+  playerStyle = () =>
+    ({
+      left: `${this.state.lastPercent}%`,
+    });
+
 
   fadeClass = () => {
     const { visibility } = this.props.audio;
     if (visibility === "fade") {
       return css(Styles["mini-player-fade"]);
     }
+    return undefined;
   }
 
-  // show title before artist if sermon
-  // else show artist before title
-  getArtistLine = () => {
-    const { album, track } = this.props.audio.playing;
-    const artistName = track.artist || album.artist || "NewSpring";
-    const collectionTitle = album.title;
-    if (album.channelName === "series_newspring") {
-      return `${collectionTitle} – ${artistName}`;
-    }
-    return `${artistName} – ${collectionTitle}`;
-  }
-
-  render () {
-
-    const { state, playing, progress } = this.props.audio;
-    const { album, track } = playing;
+  render() {
+    const { playing } = this.props.audio;
+    const { album } = playing;
     const { images } = album.content;
     const smallImage = _.find(images, (image) => {
       if (image.fileLabel && image.size) {
         return image.fileLabel === "1:1" && image.size === "small";
-      } else {
-        return image.size === "small";
       }
+      return image.size === "small";
     });
-    const playlist = [ track ];
 
     const bgImageStyle = {
-      backgroundImage: "url(" + smallImage.url + ")"
+      backgroundImage: `url(${smallImage.url})`,
     };
 
     return (
       <div className={this.fadeClass()}>
         <div
-            className={this.stopClasses()}
-            style={{ left: `${-(100 - this.state.lastPercent)}%` }}
+          className={this.stopClasses()}
+          style={{ left: `${-(100 - this.state.lastPercent)}%` }}
         >
           <h6 className={this.stopH6Classes()}>
             Stop Audio
             <i className={this.stopH6IconClasses()} />
           </h6>
         </div>
+        {/* eslint-disable */}
         <div
-            onClick={this.openFullPlayer}
-            className={this.props.theme || this.layoutClasses()}
-            onTouchStart={this.touchStart}
-            onTouchMove={this.touchMove}
-            onTouchEnd={this.touchEnd}
-            style={this.playerStyle()}
+          onClick={this.openFullPlayer}
+          className={this.props.theme || this.layoutClasses()}
+          onTouchStart={this.touchStart}
+          onTouchMove={this.touchMove}
+          onTouchEnd={this.touchEnd}
+          style={this.playerStyle()}
         >
+        {/* eslint-enable */}
           <div
-              className={this.albumClasses()}
-              style={bgImageStyle}
+            className={this.albumClasses()}
+            style={bgImageStyle}
           />
           <div className="plain floating__item six-eighths truncate">
             <h6 className="display-block text-dark-secondary flush">
@@ -253,8 +268,8 @@ export default class MiniPlayer extends Component {
             </h7>
           </div>
           <AudioControls
-              audio={this.props.audio}
-              isLight
+            audio={this.props.audio}
+            isLight
           />
         </div>
       </div>

@@ -4,7 +4,7 @@
   toDateString
 
 */
-let months = [
+const months = [
   "January",
   "February",
   "March",
@@ -16,7 +16,7 @@ let months = [
   "September",
   "October",
   "November",
-  "December"
+  "December",
 ];
 
 function toDateString(dateObj, abbreviated) {
@@ -34,4 +34,4 @@ function toDateString(dateObj, abbreviated) {
 }
 
 
-export { toDateString };
+export default toDateString;

@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import Moment from "moment";
+import moment from "moment";
 import { Link } from "react-router";
 import { css } from "aphrodite";
 
@@ -11,21 +11,22 @@ import inAppLink from "../../util/inAppLink";
 export default class LikesItem extends Component {
 
   static propTypes = {
-    like: PropTypes.object.isRequired
+    like: PropTypes.object.isRequired,
   }
 
+  // eslint-disable-next-line react/sort-comp
   backgroundStyles = {
-    backgroundImage: `url('${this.props.like.image}')`
-  }
+    backgroundImage: `url('${this.props.like.image}')`,
+  };
 
   imageclasses = [
     "background--fill",
     "card__image",
-    "ratio--landscape"
+    "ratio--landscape",
   ];
 
   containerClasses = () => {
-    let classes = [
+    const classes = [
       "grid__item",
       "one-whole",
     ];
@@ -36,41 +37,23 @@ export default class LikesItem extends Component {
   };
 
   // context from ImageLoader
-  preloader = () => {
-    return (
-      <div
-          className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
-      >
-        {this.children}
-      </div>
-    );
-  }
+  preloader = () => (
+    <div
+      className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}
+    >
+      {this.children}
+    </div>
+  )
 
   // context from ImageLoader
-  renderElement = () => {
-    return (
-      <div
-          className={this.imageclasses.join(" ")}
-          style={this.backgroundStyles}
-      >
-        {this.children}
-      </div>
-    );
-  }
-
-  getDate(entry) {
-    let date = new Date(entry.date);
-
-    let time = Moment(date);
-    let currentTime = new Date();
-
-    if (date.getUTCFullYear() === currentTime.getUTCFullYear())
-      return Moment(time).format("MMM D");
-    else
-      return Moment(time).format("MMM D, YYYY");
-  }
-
-  iconClasses = `${this.props.like.icon} soft-half-right`
+  renderElement = () => (
+    <div
+      className={this.imageclasses.join(" ")}
+      style={this.backgroundStyles}
+    >
+      {this.children}
+    </div>
+  )
 
   onClick = (e) => {
     const targetLink = e.currentTarget.href;
@@ -80,26 +63,39 @@ export default class LikesItem extends Component {
     }
   }
 
-  render() {
+  getDate(entry) {
+    const date = new Date(entry.date);
 
+    const time = moment(date);
+    const currentTime = new Date();
+
+    if (date.getUTCFullYear() === currentTime.getUTCFullYear()) {
+      return moment(time).format("MMM D");
+    }
+    return moment(time).format("MMM D, YYYY");
+  }
+
+  iconClasses = `${this.props.like.icon} soft-half-right`
+
+  render() {
     const like = this.props.like;
 
     return (
       <div className={this.containerClasses()}>
         <div className="card">
           <Link to={like.link} onClick={this.onClick} className="plain">
-              <ImageLoader
-                  src={this.props.like.image}
-                  preloader={this.preloader}
-                  renderElement={this.renderElement}
-                  imageclasses={this.iamgeclasses}
-              />
-              <div className="card__item soft text-dark-tertiary">
-                <h4 className="text-dark-primary capitalize">{like.title}</h4>
-                  <i className={this.iconClasses} />
-                  <h7>{like.category}</h7>
-                <h7 className="text-right float-right">{this.getDate(like)}</h7>
-              </div>
+            <ImageLoader
+              src={this.props.like.image}
+              preloader={this.preloader}
+              renderElement={this.renderElement}
+              imageclasses={this.iamgeclasses}
+            />
+            <div className="card__item soft text-dark-tertiary">
+              <h4 className="text-dark-primary capitalize">{like.title}</h4>
+              <i className={this.iconClasses} />
+              <h7>{like.category}</h7>
+              <h7 className="text-right float-right">{this.getDate(like)}</h7>
+            </div>
           </Link>
         </div>
       </div>

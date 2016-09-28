@@ -1,13 +1,13 @@
-/*global Meteor */
+/* global Meteor */
 import { api } from "../../../util/rock";
 import { order as gatewayOrder } from "./nmi";
 import createSchedule from "./createSchedule";
 
 
-function order(orderData, instant, id){
-
+function order(data, instant, id) {
   let user = null;
-  if (this.userId) user = Meteor.users.findOne({_id: this.userId});
+  const orderData = data;
+  if (this.userId) user = Meteor.users.findOne({ _id: this.userId });
 
   // default to sale
   let method = "sale";
@@ -17,13 +17,13 @@ function order(orderData, instant, id){
   if (orderData["start-date"]) method = "add-subscription";
   if (orderData.amount === 0) method = "validate";
 
-  if (user && user.services.rock && method != "add-subscription") {
+  if (user && user.services.rock && method !== "add-subscription") {
     orderData["customer-id"] = user.services.rock.PrimaryAliasId;
   }
 
 
   if (orderData.savedAccount) {
-    let accountDetails = api.get.sync(
+    const accountDetails = api.get.sync(
       `FinancialPersonSavedAccounts/${orderData.savedAccount}`
     );
 
@@ -35,9 +35,9 @@ function order(orderData, instant, id){
     }
   }
 
-  if (method != "add-subscription") {
+  if (method !== "add-subscription") {
     // add in IP address
-    let { connection } = this;
+    const { connection } = this;
     let ip = connection.clientAddress;
 
     if (connection.httpHeaders && connection.httpHeaders["x-forwarded-for"]) {
@@ -57,7 +57,6 @@ function order(orderData, instant, id){
   } catch (e) {
     throw new Meteor.Error(e.message);
   }
-
 }
 
 Meteor.methods({ "give/order": order });

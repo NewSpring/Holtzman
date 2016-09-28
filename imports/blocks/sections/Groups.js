@@ -1,12 +1,17 @@
-
+import { PropTypes } from "react";
 import Item from "./Item";
 
 const Groups = ({ items, hide }) => (
   <section className="hard-sides soft-half-ends">
-    {items.map((section, i) => {
-      return <Item sections={section} key={i} hide={hide} />;
-    })}
+    {items.map((section, i) => (
+      <Item sections={section} key={i} hide={hide} />
+    ))}
   </section>
 );
+
+Groups.propTypes = {
+  items: PropTypes.array.isRequired,
+  hide: PropTypes.func.isRequired,
+};
 
 export default Groups;

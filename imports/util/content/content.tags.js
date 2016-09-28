@@ -1,11 +1,9 @@
 
 function tags(contentItem) {
-  let tags = contentItem.content.tags;
-  if (typeof tags === "string") tags = tags.split(",");
-  if (tags[0] === "") return [];
-  return tags.map((tag) => {
-    return `#${tag}`;
-  });
+  let contentTags = contentItem.content.contentTags;
+  if (typeof contentTags === "string") contentTags = contentTags.split(",");
+  if (contentTags[0] === "") return [];
+  return contentTags.map(tag => (`#${tag}`));
 }
 
 export default tags;

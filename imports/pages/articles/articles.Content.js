@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
 
 import react from "../../util/react";
@@ -5,7 +6,7 @@ import react from "../../util/react";
 export default class ArticlesContent extends Component {
 
   static propTypes = {
-    article: PropTypes.object.isRequired
+    article: PropTypes.object.isRequired,
   }
 
   render() {

@@ -1,9 +1,8 @@
-/*global Meteor, check */
+/* global Meteor, check */
 import { api } from "../../../util/rock";
 
 Meteor.methods({
-  "rock/accounts/update": function (data) {
-
+  "rock/accounts/update": function updateAccount(data) {
     if (!this.userId) {
       throw new Meteor.Error("You must be logged in to change your information");
     }
@@ -13,7 +12,7 @@ Meteor.methods({
     const Person = { ...data };
 
     // clean up data
-    for (let key in Person) {
+    for (const key in Person) { // eslint-disable-line
       if (!Person[key]) {
         delete Person[key];
       }
@@ -22,7 +21,7 @@ Meteor.methods({
     let result;
 
     if (data.Campus) {
-      let query = api.parseEndpoint(`
+      const query = api.parseEndpoint(`
         Groups/GetFamilies/${user.services.rock.PersonId}?
           $expand=
             GroupLocations,
@@ -36,7 +35,7 @@ Meteor.methods({
 
       let locations = api.get.sync(query);
       locations = locations[0];
-      let GroupId = locations.Id;
+      const GroupId = locations.Id;
       locations = locations.GroupLocations;
 
       // move campus to another call
@@ -46,7 +45,6 @@ Meteor.methods({
       if (GroupId) {
         result = api.patch.sync(`Groups/${GroupId}`, { CampusId: Campus });
       }
-
     }
 
 
@@ -57,6 +55,5 @@ Meteor.methods({
     }
 
     return true;
-
   },
 });

@@ -1,5 +1,5 @@
-import renderer from 'react-test-renderer';
-import Success from '../Success';
+import renderer from "react-test-renderer";
+import Success from "../Success";
 
 describe("Success Icon", () => {
   it("should exist", () => {

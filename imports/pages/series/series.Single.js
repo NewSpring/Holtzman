@@ -1,6 +1,8 @@
-import { Component } from "react";
+/* eslint-disable react/no-danger */
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 // loading state
@@ -22,57 +24,62 @@ import react from "../../util/react";
 import SeriesHero from "./series.Hero";
 import SeriesVideoList from "./series.VideoList";
 
-const mapQueriesToProps = ({ ownProps, state }) => {
-  const pathParts = state.routing.location.pathname.split("/");
-  return {
-    series: {
-      query: gql`
-        query getSeriesSingle($id: ID!) {
-          content: node(id: $id) {
+const SERIES_SINGLE_QUERY = gql`
+  query getSeriesSingle($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          description
+          tags
+          isLight
+          images(sizes: ["large"]) {
+            fileName
+            fileType
+            fileLabel
+            url
+          }
+          ooyalaId
+          colors {
             id
-            ... on Content {
-              entryId: id
-              title
-              status
-              channelName
-              meta {
-                urlTitle
-                siteId
-                date
-                channelId
-              }
-              content {
-                description
-                tags
-                isLight
-                images(sizes: ["large"]) {
-                  fileName
-                  fileType
-                  fileLabel
-                  url
-                }
-                ooyalaId
-                colors {
-                  id
-                  value
-                  description
-                }
-              }
-            }
+            value
+            description
           }
         }
-      `,
-      variables: { id: ownProps.params.id },
-      forceFetch: false,
-      returnPartialData: false,
-    },
-  };
-};
-@connect({ mapQueriesToProps })
+      }
+    }
+  }
+`;
+
+const withSingleSeries = graphql(SERIES_SINGLE_QUERY, {
+  name: "series",
+  options: ownProps => ({
+    variables: { id: ownProps.params.id },
+  }),
+});
+
+@connect()
+@withSingleSeries
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
 export default class SeriesSingle extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    series: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
+  }
 
   componentWillMount() {
     if (process.env.WEB) return;
@@ -83,7 +90,7 @@ export default class SeriesSingle extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction
+      action: this.likeableAction,
     }));
   }
 
@@ -93,12 +100,12 @@ export default class SeriesSingle extends Component {
 
   handleHeaderStyle = (nextProps) => {
     const content = nextProps.series.content;
-    if(!content) return;
+    if (!content) return;
     const { isLight } = nextProps.series.content.content;
     const color = collections.color(content);
     this.props.dispatch(headerActions.set({
       title: "Series",
-      color: color,
+      color,
       light: !isLight,
     }));
   }
@@ -110,7 +117,7 @@ export default class SeriesSingle extends Component {
       left: 0,
       width: "100%",
       height: "100%",
-      zIndex: -1
+      zIndex: -1,
     };
   }
 
@@ -122,7 +129,7 @@ export default class SeriesSingle extends Component {
       return (
         <div className="locked-ends locked-sides floating">
           <div className="floating__item">
-            <Loading/>
+            <Loading />
           </div>
         </div>
       );
@@ -146,4 +153,4 @@ export default class SeriesSingle extends Component {
 
     );
   }
-};
+}

@@ -1,16 +1,17 @@
 
 import "regenerator-runtime/runtime";
 import { takeLatest } from "redux-saga";
-import { fork, put, cps, select } from "redux-saga/effects";
+import { fork, select } from "redux-saga/effects";
 import { addSaga } from "../utilities";
 
 
-function* share({ payload }) {
-  let { share } = yield select();
-  let msg = {};
+function* shareAction() {
+  const { share } = yield select();
+  const msg = {};
 
-  for (let key in share.content) {
-    if (share.content[key] != null ) {
+  // eslint-disable-next-line
+  for (const key in share.content) {
+    if (share.content[key] != null) {
       msg[key] = share.content[key];
     }
   }
@@ -19,21 +20,19 @@ function* share({ payload }) {
   if (msg.image) delete msg.image;
 
   if (
-    typeof window != "undefined" &&
+    typeof window !== "undefined" &&
     window != null &&
     window.socialmessage &&
     Object.keys(msg).length
   ) {
-
     if (msg.image && msg.image[0] === "/") {
-      msg.image = "http:" + msg.image;
+      msg.image = `http:${msg.image}`;
     }
 
     window.socialmessage.send(msg);
   }
-
 }
 
 addSaga(function* shareSaga() {
-  yield fork(takeLatest, "SHARE.SHARE", share);
+  yield fork(takeLatest, "SHARE.SHARE", shareAction);
 });

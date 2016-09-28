@@ -1,57 +1,70 @@
-import { Component } from "react";
-import { connect } from "react-apollo";
+import { Component, PropTypes } from "react";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import {
-  accounts as accountsActions,
   nav as navActions,
 } from "../../../store";
 
 import withProfileUpload from "../profile-photo";
 
 import Layout from "./Layout";
-
 import Menu from "./Menu";
 import ChangePassword from "./ChangePassword";
 import PersonalDetails from "./PersonalDetails";
 import HomeAddress from "./HomeAddress";
 import PaymentDetails from "./Payments";
 
-const mapQueriesToProps = () => ({
-  data: {
-    query: gql`
-      query GetPersonForSettings {
-        person: currentPerson(cache: false) {
-          firstName
-          lastName
-          nickName
-          photo
-          home {
-            state
-            city
-          }
-        }
+const PERSON_QUERY = gql`
+  query GetPersonForSettings {
+    person: currentPerson(cache: false) {
+      firstName
+      lastName
+      nickName
+      photo
+      home {
+        state
+        city
       }
-    `,
-  },
-});
+    }
+  }
+`;
+
+const withPerson = graphql(PERSON_QUERY);
+
 @withProfileUpload
-@connect({ mapQueriesToProps })
+@connect()
+@withPerson
 class Template extends Component {
 
-  componentWillMount(){
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.shape({
+      person: PropTypes.object,
+      refetch: PropTypes.func,
+    }),
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
+    children: PropTypes.object.isRequired,
+    upload: PropTypes.func,
+    photo: PropTypes.string,
+  }
+
+  componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
   }
 
   onUpload = (e) => {
-    this.props.upload(e).then(() => this.props.data.refetch())
+    this.props.upload(e).then(() => this.props.data.refetch());
   }
 
   render() {
     const { photo } = this.props;
     const { person } = this.props.data;
 
-    let mobile = process.env.WEB;
+    let mobile = !!process.env.WEB;
     if (this.props.location.pathname.split("/").length > 3) {
       mobile = false;
     }
@@ -71,18 +84,18 @@ const Routes = [
     path: "settings",
     component: Template,
     indexRoute: {
-      component: Menu
+      component: Menu,
     },
     childRoutes: [
       { path: "change-password", component: ChangePassword },
       { path: "personal-details", component: PersonalDetails },
       { path: "home-address", component: HomeAddress },
       { path: "saved-accounts", component: PaymentDetails },
-    ]
-  }
+    ],
+  },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

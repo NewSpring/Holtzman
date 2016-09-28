@@ -7,8 +7,10 @@ class Welcome extends Component {
   componentWillUnmount() {
     if (typeof NativeStorage === "undefined") return;
     NativeStorage.setItem("welcomed", true,
-      (success) => {},
-      (error) => { console.error("could not set welcomed") },
+      // success
+      () => {},
+      // error
+      () => {},
     );
   }
 
@@ -42,23 +44,75 @@ class Welcome extends Component {
     return (
       <div className="background--primary" style={containerStyles}>
         <Slider
-            ref="welcomeSlider"
-            dots
-            arrows={false}
-            infinite={false}
-            speed={300}
-            edgeFriction={0}
+          ref="welcomeSlider"
+          dots
+          arrows={false}
+          infinite={false}
+          speed={300}
+          edgeFriction={0}
         >
-          <div><img src={`/welcome/${imagePrefix}/onboard-img1.jpg`} onClick={this.next} data-index={0} /></div>
-          <div><img src={`/welcome/${imagePrefix}/onboard-img2.jpg`} onClick={this.next} data-index={1} /></div>
-          <div><img src={`/welcome/${imagePrefix}/onboard-img3.jpg`} onClick={this.next} data-index={2} /></div>
-          <div><img src={`/welcome/${imagePrefix}/onboard-img4.jpg`} onClick={this.next} data-index={3} /></div>
-          <div><img src={`/welcome/${imagePrefix}/onboard-img5.jpg`} onClick={this.next} data-index={4} /></div>
-          <div><img src={`/welcome/${imagePrefix}/onboard-img6.jpg`} onClick={this.next} data-index={5} /></div>
-          <div><img src={`/welcome/${imagePrefix}/onboard-img7.jpg`} onClick={this.next} data-index={6} /></div>
+          <div>
+            <img
+              role="presentation"
+              src={`/welcome/${imagePrefix}/onboard-img1.jpg`}
+              onClick={this.next}
+              data-index={0}
+            />
+          </div>
+          <div>
+            <img
+              role="presentation"
+              src={`/welcome/${imagePrefix}/onboard-img2.jpg`}
+              onClick={this.next}
+              data-index={1}
+            />
+          </div>
+          <div>
+            <img
+              role="presentation"
+              src={`/welcome/${imagePrefix}/onboard-img3.jpg`}
+              onClick={this.next}
+              data-index={2}
+            />
+          </div>
+          <div>
+            <img
+              role="presentation"
+              src={`/welcome/${imagePrefix}/onboard-img4.jpg`}
+              onClick={this.next}
+              data-index={3}
+            />
+          </div>
+          <div>
+            <img
+              role="presentation"
+              src={`/welcome/${imagePrefix}/onboard-img5.jpg`}
+              onClick={this.next}
+              data-index={4}
+            />
+          </div>
+          <div>
+            <img
+              role="presentation"
+              src={`/welcome/${imagePrefix}/onboard-img6.jpg`}
+              onClick={this.next}
+              data-index={5}
+            />
+          </div>
+          <div>
+            <img
+              role="presentation"
+              src={`/welcome/${imagePrefix}/onboard-img7.jpg`}
+              onClick={this.next}
+              data-index={6}
+            />
+          </div>
           <div>
             <Link to="/">
-              <img src={`/welcome/${imagePrefix}/onboard-img8.jpg`} />
+              <img
+                role="presentation"
+                src={`/welcome/${imagePrefix}/onboard-img8.jpg`}
+              />
             </Link>
           </div>
         </Slider>

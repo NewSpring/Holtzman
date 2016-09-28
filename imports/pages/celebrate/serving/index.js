@@ -1,9 +1,7 @@
 
 import {
-  OutlinedLeaf,
   SolidLeaf,
   StripedLeaf,
-  Logo,
 } from "../components/leaves";
 
 import {
@@ -15,15 +13,16 @@ import {
 
 import FitText from "../components/fit-text";
 
+/* eslint-disable max-len */
 const Serving = () => (
   <div className="display-inline-block text-center one-whole ">
-    <div className="background--primary soft-double-top@lap-and-up" style={{overflow: "visible"}}>
+    <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
       <Stats>
 
         <FitText compressor={1.3}>
           <h3
-              className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
-              style={{
+            className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
+            style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
@@ -31,18 +30,21 @@ const Serving = () => (
           </h3>
         </FitText>
 
-        <FitText compressor={.3}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+        <FitText compressor={0.3}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
             5,270
           </h1>
         </FitText>
 
         <FitText compressor={1.3}>
           <h3
-              className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
-              style={{
+            className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
+            style={{
               fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
@@ -50,10 +52,13 @@ const Serving = () => (
           </h3>
         </FitText>
 
-        <FitText compressor={.7}>
-          <h1 className="uppercase text-light-primary" style={{
-            fontWeight: "900",
-          }}>
+        <FitText compressor={0.7}>
+          <h1
+            className="uppercase text-light-primary"
+            style={{
+              fontWeight: "900",
+            }}
+          >
             Volunteer
           </h1>
         </FitText>
@@ -63,30 +68,30 @@ const Serving = () => (
       <div className="soft-double-ends" />
       <Leaves>
         <SolidLeaf
-            className="locked-bottom locked-right"
-            size="200px"
-            color="text-secondary"
-            style={{
+          className="locked-bottom locked-right"
+          size="200px"
+          color="text-secondary"
+          style={{
             transform: "rotate(-225deg)",
             marginBottom: "-50px",
             marginRight: "-150px",
           }}
         />
         <SolidLeaf
-            className="locked-bottom locked-right"
-            size="130px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-right"
+          size="130px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(-270deg)",
             marginBottom: "-100px",
             marginRight: "-10px",
           }}
         />
         <StripedLeaf
-            className="locked-bottom locked-right"
-            size="90px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-right"
+          size="90px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(180deg)",
             marginBottom: "60px",
             marginRight: "-20px",
@@ -94,10 +99,10 @@ const Serving = () => (
         />
 
         <SolidLeaf
-            className="locked-bottom locked-left"
-            size="250px"
-            color="text-secondary"
-            style={{
+          className="locked-bottom locked-left"
+          size="250px"
+          color="text-secondary"
+          style={{
             transform: "rotate(-135deg)",
             marginBottom: "-90px",
             marginLeft: "-150px",
@@ -105,10 +110,10 @@ const Serving = () => (
         />
 
         <StripedLeaf
-            className="locked-bottom locked-left"
-            size="120px"
-            color="text-tertiary"
-            style={{
+          className="locked-bottom locked-left"
+          size="120px"
+          color="text-tertiary"
+          style={{
             transform: "rotate(-90deg)",
             marginBottom: "-20px",
             marginLeft: "0px",
@@ -116,7 +121,6 @@ const Serving = () => (
         />
 
       </Leaves>
-
 
 
     </div>
@@ -130,9 +134,9 @@ const Serving = () => (
             "It’s an indescribable feeling to know that I was a part of setting up a blank room on a Sunday morning and watch families walk in with their kids ready for church"
           </p>
           <h6
-              className="italictext-dark-primary"
-              style={{
-              fontFamily: "ff-meta-serif-web-pro, serif"
+            className="italictext-dark-primary"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
             Kandi Kreiner, Boiling Springs Campus
@@ -144,5 +148,6 @@ const Serving = () => (
 
   </div>
 );
+/* eslint-enable max-len */
 
 export default Serving;

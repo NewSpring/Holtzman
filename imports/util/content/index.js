@@ -8,5 +8,5 @@ export default {
   links,
   siteLink,
   speakers,
-  tags
+  tags,
 };

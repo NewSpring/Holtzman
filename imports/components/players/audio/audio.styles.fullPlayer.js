@@ -3,7 +3,7 @@ import { StyleSheet } from "aphrodite";
 export default StyleSheet.create({
   "player-flex": {
     display: "flex",
-    display: "-webkit-flex",
+    display: "-webkit-flex", // eslint-disable-line
   },
 
   "player-container": {
