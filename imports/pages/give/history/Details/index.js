@@ -45,7 +45,7 @@ const withEntries = graphql(ENTRIES_QUERY, {
     tagName: "giving",
     limit: 2,
     includeChannels: ["articles"],
-  }
+  },
 });
 
 const TRANSACTIONS_QUERY = gql`
@@ -88,8 +88,8 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
     variables: {
       transactionId: ownProps.params.id,
     },
-  })
-})
+  }),
+});
 
 
 @connect()
