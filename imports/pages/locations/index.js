@@ -1,34 +1,35 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import Layout from "./Layout";
 
 import { header as headerActions } from "../../store";
 
-const mapQueriesToProps = () => ({
-  data: {
-    query: gql`
-      query GetCampuses {
-        campuses {
-          id
-          guid
-          name
-          services
-          url
-          location {
-            street1
-            street2
-            city
-            state
-            zip
-          }
-        }
+const CAMPUSES_QUERY = gql`
+  query GetCampuses {
+    campuses {
+      id
+      guid
+      name
+      services
+      url
+      location {
+        street1
+        street2
+        city
+        state
+        zip
       }
-    `,
-  },
-});
+    }
+  }
+`;
 
+const withCampuses = graphql(CAMPUSES_QUERY);
+
+@connect()
+@withCampuses
 class LayoutWithData extends Component {
 
   static propTypes = {
@@ -47,12 +48,10 @@ class LayoutWithData extends Component {
   }
 }
 
-const Template = connect({ mapQueriesToProps })(LayoutWithData);
-
 const Routes = [
   {
     path: "/locations",
-    component: Template,
+    component: LayoutWithData,
   },
 ];
 
