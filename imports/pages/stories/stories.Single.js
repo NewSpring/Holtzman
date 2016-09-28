@@ -76,7 +76,6 @@ export default class StoriesSingle extends Component {
 
   render() {
     const { content } = this.props.story;
-    console.log(content);
 
     if (!content) {
       // loading
