@@ -104,7 +104,7 @@ const withSeries = graphql(SERIES_QUERY, {
 
 const mapStateToProps = state => ({ live: state.live });
 
-@connect(null, mapStateToProps)
+@connect(mapStateToProps)
 @withCurrentSermon
 @withSeries
 @ReactMixin.decorate(Likeable)
