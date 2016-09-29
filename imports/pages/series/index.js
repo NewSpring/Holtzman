@@ -5,7 +5,7 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import Headerable from "../../mixins/mixins.Header";
-import Pageable from "../../mixins/mixins.Pageable";
+import infiniteScroll from "../../decorators/infiniteScroll";
 
 import { FeedItemSkeleton } from "../../components/loading";
 import ApollosPullToRefresh from "../../components/pullToRefresh";
@@ -49,11 +49,19 @@ const SERIES_QUERY = gql`
 `;
 
 const withSeries = graphql(SERIES_QUERY, {
-  options: ownProps => ({
-    variables: {
-      limit: ownProps.paging.pageSize * ownProps.paging.page,
-      skip: ownProps.paging.skip,
-    },
+  options: {
+    variables: { limit: 20, skip: 0 },
+  },
+  props: ({ data }) => ({
+    data,
+    loading: data.loading,
+    fetchMore: () => data.fetchMore({
+      variables: { ...data.variables, skip: data.content.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult.data) return previousResult;
+        return { content: [...previousResult.content, ...fetchMoreResult.data.content] };
+      },
+    }),
   }),
 });
 
@@ -61,7 +69,7 @@ const mapStateToProps = state => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withSeries
-@ReactMixin.decorate(Pageable)
+@infiniteScroll()
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 
