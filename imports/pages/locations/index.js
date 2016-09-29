@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { graphql } from "react-apollo";
+import { graphql, withApollo } from "react-apollo";
 import gql from "graphql-tag";
 
 import Layout from "./Layout";
@@ -29,6 +29,7 @@ const CAMPUSES_QUERY = gql`
 const withCampuses = graphql(CAMPUSES_QUERY);
 
 @connect()
+@withApollo
 @withCampuses
 class LayoutWithData extends Component {
 
