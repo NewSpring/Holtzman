@@ -21,7 +21,6 @@ const Layout = ({
   showTags,
   toggleTags,
   onCardHover,
-  paginate,
 }) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
@@ -168,12 +167,7 @@ const Layout = ({
               </div>
             );
           }
-
-          return (
-            <button onClick={() => paginate()} className="btn--dark-tertiary btn">
-              Load More Groups
-            </button>
-          );
+          return null;
         })()}
       </div>
 
@@ -219,7 +213,6 @@ Layout.propTypes = {
   count: PropTypes.number.isRequired,
   toggleTags: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
-  paginate: PropTypes.func.isRequired,
   campuses: PropTypes.array,
 };
 
