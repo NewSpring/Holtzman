@@ -139,7 +139,6 @@ export default class Template extends Component {
     showTags: false,
     showSearch: false,
     hover: null,
-    offset: 0,
   }
 
   componentWillMount() {
