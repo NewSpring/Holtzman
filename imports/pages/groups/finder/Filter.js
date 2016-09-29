@@ -34,7 +34,7 @@ const defaultTags = [];
 @withRouter
 @withAttributes
 @withCampusLocations
-@connect(null, state => ({ location: state.routing.location }))
+@connect(state => ({ location: state.routing.location }))
 export default class Filter extends Component {
 
   static propTypes = {
