@@ -39,8 +39,7 @@ if (Meteor.isClient) {
   }
 }
 
-const mapStateToProps = ({ routing }) => {
-  const { location } = routing;
+const mapStateToProps = ({ routing: { location } }) => {
   const tags = Object.keys(location.query).length && location.query.tags ? location.query.tags : "";
   const q = Object.keys(location.query).length && location.query.q ? location.query.q : null;
   const campuses = (
@@ -91,6 +90,22 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
       campuses: ownProps.campuses.split(",").filter(x => x),
     },
   }),
+  props: ({ data }) => ({
+    data,
+    paginate: () => data.fetchMore({
+      variables: { offset: data.groups.results.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult.data) { return previousResult; }
+        return {
+          groups: {
+            count: fetchMoreResult.data.groups.count,
+            // Append the new feed results to the old one
+            results: [...previousResult.groups.results, ...fetchMoreResult.data.groups.results],
+          },
+        };
+      },
+    }),
+  }),
 });
 
 const defaultArray = [];
@@ -106,53 +121,30 @@ export default class Template extends Component {
     tags: PropTypes.string.isRequired,
     location: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
-    data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+    /* eslint-disable */
+    data: PropTypes.shape({
+      loading: PropTypes.bool,
+      groups: PropTypes.shape({
+        count: PropTypes.number,
+        results: PropTypes.array,
+      }),
+    }),
+    /* eslint-enable */
     campusLocations: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     campuses: PropTypes.string.isRequired,
+    paginate: PropTypes.func.isRequired,
   }
 
   state = {
-    markers: [],
     showTags: false,
     showSearch: false,
     hover: null,
-    groups: [], // XXX after refetchMore lands in apollo client, remove
     offset: 0,
   }
 
   componentWillMount() {
     if (this.props.q) this.setState({ showSearch: true });
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
-
-    if (this.props.data.groups) {
-      const markers = this.getMarkers(this.props.data.groups.results);
-      this.setState({ markers, groups: this.props.data.groups.results });
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const newState = {};
-    let clear = false;
-    if (
-      this.props.q !== nextProps.q ||
-      this.props.tags !== nextProps.tags ||
-      this.props.campuses !== nextProps.campuses
-    ) {
-      clear = true; // variables have changed
-      if (nextProps.data.groups && nextProps.data.groups) {
-        newState.groups = nextProps.data.groups.results;
-      } else {
-        newState.groups = [];
-      }
-    }
-
-    if (this.props.data.loading && !nextProps.data.loading && !this.state.groups.length) {
-      newState.groups = nextProps.data.groups.results;
-    }
-    newState.markers = this.getMarkers(
-      nextProps.data.groups && nextProps.data.groups.results, clear
-    );
-    this.setState(newState);
   }
 
   onCardHover = (e) => {
@@ -160,13 +152,10 @@ export default class Template extends Component {
     this.setState({ hover: id });
   }
 
-  onMarkerHover = (marker) => {
-    this.setState({ hover: marker.id });
-  }
+  onMarkerHover =marker => this.setState({ hover: marker.id })
 
-  getMarkers = (groups = [], clear = false) => {
-    let { markers } = this.state;
-    if (clear) markers = [];
+  getMarkers = (groups = []) => {
+    const markers = [];
     return _.uniq(markers.concat(groups
       .filter(x => x.locations && x.locations.length && x.locations[0].location)
       .map(x => ({
@@ -182,26 +171,6 @@ export default class Template extends Component {
   toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
   toggleTags = () => this.setState({ showTags: !this.state.showTags })
 
-  paginate = () => {
-    const { q, tags, campuses } = this.props;
-    this.props.data.refetch({
-      tags: tags.split(",").filter(x => x),
-      campuses: campuses.split(",").filter(x => x),
-      query: q,
-      limit: 10,
-      offset: this.state.offset + 10,
-      ip: internalIp,
-    })
-      .then(({ data }) => {
-        const { results } = data.groups;
-        this.setState({
-          groups: this.state.groups.concat(results),
-          offset: this.state.offset + 10,
-        });
-      });
-  }
-
-
   removeQueryString = (e) => {
     if (e) e.preventDefault();
     const { location, router } = this.props;
@@ -216,12 +185,14 @@ export default class Template extends Component {
     let count;
     let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
-    groups = this.state.groups;
+    if (data.groups && data.groups.results) groups = data.groups.results;
 
     let isMobile;
     if (typeof window !== "undefined" && window !== null) {
       isMobile = window.matchMedia("(max-width: 768px)").matches;
     }
+
+    const markers = this.getMarkers(groups);
 
     return (
       <div>
@@ -233,7 +204,7 @@ export default class Template extends Component {
               return (
                 <GoogleMap
                   autoCenter
-                  markers={this.state.markers}
+                  markers={markers}
                   onMarkerHover={this.onMarkerHover}
                   hover={this.state.hover}
                   onChildClick={({ id }) => this.props.router.push(`/groups/${id}`)}
@@ -257,7 +228,7 @@ export default class Template extends Component {
             showSearch={this.state.showSearch}
             toggleSearch={this.toggleSearch}
             onCardHover={this.onCardHover}
-            paginate={this.paginate}
+            paginate={this.props.paginate}
           />
         </Left>
       </div>
