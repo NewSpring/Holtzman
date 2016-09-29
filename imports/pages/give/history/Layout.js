@@ -339,11 +339,7 @@ export default class Layout extends Component {
                 );
               }
 
-              return (
-                <button onClick={paginate} className={btnClasses.join(" ")}>
-                  Load More Contributions
-                </button>
-              );
+              return null;
             })()}
           </div>
 

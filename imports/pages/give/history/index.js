@@ -3,6 +3,8 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
+import infiniteScroll from "../../../decorators/infiniteScroll";
+
 import Authorized from "../../../blocks/authorzied";
 import { header as headerActions } from "../../../store";
 
@@ -53,7 +55,7 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
       data.transactions &&
       data.transactions.length < data.variables.limit + data.variables.skip
     ),
-    paginate: () => data.fetchMore({
+    fetchMore: () => data.fetchMore({
       variables: { ...data.variables, skip: data.transactions.length },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         if (!fetchMoreResult.data) return previousResult;
@@ -81,6 +83,7 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
 @connect()
 @withFilter
 @withTransactions
+@infiniteScroll()
 class Template extends Component {
 
   static propTypes = {
