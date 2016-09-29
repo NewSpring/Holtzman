@@ -3,6 +3,7 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
+import { withApollo } from "react-apollo";
 
 import Headerable from "../../mixins/mixins.Header";
 
@@ -16,6 +17,7 @@ import {
 import Layout from "./Layout";
 
 const mapStateToProps = state => ({ search: state.search });
+@withApollo
 @connect(mapStateToProps)
 @ReactMixin.decorate(Headerable)
 export default class SearchContainer extends Component {
@@ -23,7 +25,7 @@ export default class SearchContainer extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     search: PropTypes.object.isRequired,
-    query: PropTypes.func,
+    client: PropTypes.object,
   }
 
   componentWillMount() {
@@ -76,7 +78,7 @@ export default class SearchContainer extends Component {
       site: "https://newspring.cc",
     };
 
-    this.props.query({ query, variables, forceFetch: true })
+    this.props.client.query({ query, variables, forceFetch: true })
       .then(({ data }) => {
         const { search } = data;
         dispatch(searchActions.toggleLoading());
