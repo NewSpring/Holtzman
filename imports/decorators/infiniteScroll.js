@@ -5,13 +5,11 @@ import Loading from "../components/loading";
 const defaultOptions = { percent: 70 };
 const defaultReducer = x => x;
 
-
 export default (reducer = defaultReducer, options = defaultOptions) => (WrappedComponent) => {
   class InfiniteScrollContainer extends Component {
 
     static propTypes = {
       loading: PropTypes.bool,
-      done: PropTypes.bool,
     }
 
     componentDidMount() {
@@ -40,6 +38,7 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
         // fetch more goodness
         fetchMore();
       }
+      return null;
     }
 
     renderLoading = () => {
