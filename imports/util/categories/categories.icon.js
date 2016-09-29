@@ -12,6 +12,7 @@ function categoryIcon(contentItem) {
     case "articles":
     case "devotionals":
     case "stories":
+    case "news":
       return "icon-category-text";
     default:
       return null;
