@@ -53,6 +53,7 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
     loading: data.loading,
     done: (
       data.transactions &&
+      !data.loading &&
       data.transactions.length < data.variables.limit + data.variables.skip
     ),
     fetchMore: () => data.fetchMore({
@@ -91,7 +92,7 @@ class Template extends Component {
     transactions: PropTypes.array,
     changeDates: PropTypes.func,
     changeFamily: PropTypes.func,
-    paginate: PropTypes.func,
+    Loading: PropTypes.func.isRequired,
     done: PropTypes.bool,
     filter: PropTypes.shape({
       family: PropTypes.array, // eslint-disable-line
@@ -120,18 +121,18 @@ class Template extends Component {
       changeDates,
       changeFamily,
       filter,
-      paginate,
       done,
+      Loading,
     } = this.props;
 
     return (
       <Layout
-        paginate={paginate}
         transactions={transactions}
         family={filter.family || []}
         alive
         ready={!loading}
         reloading={this.state.refetching}
+        Loading={Loading}
         done={done}
         changeFamily={this.wrapRefetch(changeFamily)}
         changeDates={this.wrapRefetch(changeDates)}

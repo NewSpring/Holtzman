@@ -4,11 +4,14 @@ import Loading from "../components/loading";
 
 const defaultOptions = { percent: 70 };
 const defaultReducer = x => x;
+
+
 export default (reducer = defaultReducer, options = defaultOptions) => (WrappedComponent) => {
   class InfiniteScrollContainer extends Component {
 
     static propTypes = {
       loading: PropTypes.bool,
+      done: PropTypes.bool,
     }
 
     componentDidMount() {
@@ -30,9 +33,9 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
       const threshold = options.percent * 0.01;
 
       if ((scrollPosition + deviceHeight) / contentHeight > threshold) {
-        const { loading, fetchMore } = reducer(this.props);
+        const { loading, fetchMore, done } = reducer(this.props);
         // if the query is in flight, hold off
-        if (loading) return;
+        if (loading || done) return null;
 
         // fetch more goodness
         fetchMore();
