@@ -64,7 +64,7 @@ const withFeedContent = graphql(CONTENT_FEED_QUERY, {
   options: ownProps => ({
     fragments: [contentFragment],
     variables: {
-      excludeChannels: ownProps.topics.topics || [],
+      excludeChannels: ownProps.topics,
       limit: 20,
       skip: 0,
       cache: true,
