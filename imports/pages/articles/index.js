@@ -54,6 +54,11 @@ const withArticles = graphql(ARTICLES_QUERY, {
   props: ({ data }) => ({
     data,
     loading: data.loading,
+    done: (
+      data.content &&
+      !data.loading &&
+      data.content.length < data.variables.limit + data.variables.skip
+    ),
     fetchMore: () => data.fetchMore({
       variables: { ...data.variables, skip: data.content.length },
       updateQuery: (previousResult, { fetchMoreResult }) => {
