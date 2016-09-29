@@ -1,11 +1,15 @@
 
-import { Component, createElement } from "react";
+import { Component, createElement, PropTypes } from "react";
 import Loading from "../components/loading";
 
 const defaultOptions = { percent: 70 };
 const defaultReducer = x => x;
 export default (reducer = defaultReducer, options = defaultOptions) => (WrappedComponent) => {
   class InfiniteScrollContainer extends Component {
+
+    static propTypes = {
+      loading: PropTypes.bool,
+    }
 
     componentDidMount() {
       if (typeof window !== "undefined" && window !== null) {
