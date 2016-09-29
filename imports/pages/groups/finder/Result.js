@@ -5,6 +5,8 @@ import { graphql } from "react-apollo";
 import { withRouter } from "react-router";
 import gql from "graphql-tag";
 
+import infiniteScroll from "../../../decorators/infiniteScroll";
+
 import { nav as navActions } from "../../../store";
 // import ReactTooltip from "react-tooltip";
 // import Truncate from "truncate";
@@ -92,7 +94,13 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
   }),
   props: ({ data }) => ({
     data,
-    paginate: () => data.fetchMore({
+    loading: data.loading,
+    done: (
+      data.groups &&
+      !data.loading &&
+      data.groups.count < data.variables.limit + data.variables.offset
+    ),
+    fetchMore: () => data.fetchMore({
       variables: { offset: data.groups.results.length },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         if (!fetchMoreResult.data) { return previousResult; }
@@ -113,6 +121,7 @@ const defaultArray = [];
 @withCampusLocations // enables this query to be static
 @connect(mapStateToProps)
 @withGroupFinder
+@infiniteScroll()
 export default class Template extends Component {
 
   static propTypes = {
@@ -121,6 +130,7 @@ export default class Template extends Component {
     tags: PropTypes.string.isRequired,
     location: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
+    done: PropTypes.bool,
     /* eslint-disable */
     data: PropTypes.shape({
       loading: PropTypes.bool,
@@ -132,7 +142,6 @@ export default class Template extends Component {
     /* eslint-enable */
     campusLocations: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     campuses: PropTypes.string.isRequired,
-    paginate: PropTypes.func.isRequired,
   }
 
   state = {
@@ -180,7 +189,7 @@ export default class Template extends Component {
   }
 
   render() {
-    const { data, tags, campusLocations, campuses, q } = this.props;
+    const { data, tags, campusLocations, campuses, q, done } = this.props;
     let count;
     let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
@@ -221,13 +230,13 @@ export default class Template extends Component {
             campuses={campuses && campuses.split(",").filter(x => x)}
             campusLocations={campusLocations}
             query={q}
+            done={done}
             removeQueryString={this.removeQueryString}
             showTags={this.state.showTags}
             toggleTags={this.toggleTags}
             showSearch={this.state.showSearch}
             toggleSearch={this.toggleSearch}
             onCardHover={this.onCardHover}
-            paginate={this.props.paginate}
           />
         </Left>
       </div>
