@@ -183,7 +183,7 @@ export default class Layout extends Component {
   static propTypes = {
     transactions: PropTypes.array.isRequired,
     ready: PropTypes.bool,
-    paginate: PropTypes.func.isRequired,
+    Loading: PropTypes.func.isRequired,
     done: PropTypes.bool,
     changeFamily: PropTypes.func.isRequired,
     changeDates: PropTypes.func.isRequired,
@@ -198,7 +198,7 @@ export default class Layout extends Component {
     const {
       transactions,
       ready,
-      paginate,
+      Loading,
       done,
       changeFamily,
       changeDates,
@@ -314,32 +314,12 @@ export default class Layout extends Component {
           {/* Load more */}
           <div className="one-whole text-center">
             {(() => {
-              const btnClasses = [
-                "btn--dark-tertiary",
-                "push-top",
-                "push-double-bottom",
-              ];
-
               if (!ready && !transactions.length) return null;
               if (!transactions.length && ready) return null;
+              if (reloading) return null;
 
-              if (done) {
-                return (
-                  <button className="disabled soft-ends push-double-bottom btn" disabled>
-                    No More Contributions
-                  </button>
-                );
-              }
-
-              if (!ready) {
-                return (
-                  <button className="disabled btn push-double-bottom" disabled>
-                    Loading...
-                  </button>
-                );
-              }
-
-              return null;
+              if (done) return <p><small><em>No More Contributions</em></small></p>;
+              return <Loading />;
             })()}
           </div>
 
