@@ -31,7 +31,7 @@ export default class Layout extends Component {
 
   static propTypes = {
     data: PropTypes.object.isRequired,
-    query: PropTypes.func,
+    client: PropTypes.object,
   }
 
   state = { value: null, list: null }
