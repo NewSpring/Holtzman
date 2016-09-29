@@ -9,7 +9,6 @@ import { FeedItemSkeleton } from "../../components/loading";
 import FeedItem from "../../components/cards/cards.FeedItem";
 
 import Headerable from "../../mixins/mixins.Header";
-import Pageable from "../../mixins/mixins.Pageable";
 import infiniteScroll from "../../decorators/infiniteScroll";
 
 import { nav as navActions } from "../../store";
@@ -65,7 +64,6 @@ const mapStateToProps = state => ({ paging: state.paging });
 @connect(mapStateToProps)
 @withAlbums
 @infiniteScroll()
-@ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 
