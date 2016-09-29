@@ -31,7 +31,7 @@ export default class Layout extends Component {
 
   static propTypes = {
     data: PropTypes.object.isRequired,
-    query: PropTypes.func.isRequired,
+    query: PropTypes.func,
   }
 
   state = { value: null, list: null }
@@ -75,7 +75,7 @@ export default class Layout extends Component {
 
     const origin = value;
     // XXX this will break with new react-apollo
-    this.props.query({
+    this.props.client.query({
       query: campusLookup,
       variables: { destinations, origin },
     })
