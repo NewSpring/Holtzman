@@ -1,5 +1,6 @@
 
 import { Component, createElement } from "react";
+import Loading from "../components/loading";
 
 const defaultOptions = { percent: 70 };
 const defaultReducer = x => x;
@@ -34,8 +35,18 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
       }
     }
 
+    renderLoading = () => {
+      if (!this.props.loading) return null;
+      return (
+        <div className="one-whole soft-double text-center display-inline-block">
+          <Loading />
+        </div>
+      );
+    }
+
     render() {
-      return createElement(WrappedComponent, this.props);
+      const mergedProps = { ...this.props, ...{ Loading: this.renderLoading } };
+      return createElement(WrappedComponent, mergedProps);
     }
 
   }
