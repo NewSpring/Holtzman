@@ -2,6 +2,7 @@ import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
+import { createFragment } from "apollo-client";
 import gql from "graphql-tag";
 
 import Split, { Left, Right } from "../../blocks/split";
@@ -13,7 +14,7 @@ import FeedItem from "../../components/cards/cards.FeedItem";
 import { nav as navActions } from "../../store";
 import Headerable from "../../mixins/mixins.Header";
 
-import Pageable from "../../mixins/mixins.Pageable";
+import infiniteScroll from "../../decorators/infiniteScroll";
 
 import backgrounds from "../../util/backgrounds";
 import content from "../../util/content";
@@ -21,6 +22,17 @@ import content from "../../util/content";
 import HomeHero from "./home.Hero";
 
 const CONTENT_FEED_QUERY = gql`
+  query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
+    feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
+      ...ContentForFeed
+      parent {
+        ...ContentForFeed
+      }
+    }
+  }
+`;
+
+const contentFragment = createFragment(gql`
   fragment ContentForFeed on Content {
     entryId: id
     title
@@ -46,64 +58,49 @@ const CONTENT_FEED_QUERY = gql`
       }
     }
   }
-
-  query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
-    feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
-      ...ContentForFeed
-      parent {
-        ...ContentForFeed
-      }
-    }
-  }
-`;
+`);
 
 const withFeedContent = graphql(CONTENT_FEED_QUERY, {
-  options: state => ({
+  options: ownProps => ({
+    fragments: [contentFragment],
     variables: {
-      excludeChannels: state.topics.topics,
-      limit: state.paging.pageSize * state.paging.page,
-      skip: state.paging.skip,
+      excludeChannels: ownProps.topics.topics || [],
+      limit: 20,
+      skip: 0,
       cache: true,
     },
   }),
+  props: ({ data }) => ({
+    data,
+    loading: data.loading,
+    fetchMore: () => data.fetchMore({
+      variables: { ...data.variables, skip: data.feed.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult.data) { return previousResult; }
+        return { feed: [...previousResult.feed, ...fetchMoreResult.data.feed] };
+      },
+    }),
+  }),
 });
 
-const mapStateToProps = state => ({
-  paging: state.paging,
-  topics: state.topics.topics,
-  modal: { visible: state.modal.visible },
-});
-
-@connect(mapStateToProps)
+@connect(state => ({ topics: state.topics.topics }))
 @withFeedContent
-@ReactMixin.decorate(Pageable)
+@infiniteScroll()
 @ReactMixin.decorate(Headerable)
 export default class Home extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    topics: PropTypes.array.isRequired,
-    paging: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({
-      title: "default",
-    });
+    this.headerAction({ title: "default" });
   }
 
   handleRefresh = (resolve, reject) => {
-    const { topics, paging } = this.props;
-    const refetchVariables = {
-      excludeChannels: topics,
-      limit: paging.pageSize * paging.page,
-      skip: paging.skip,
-      cache: false,
-    };
-
-    this.props.data.refetch(refetchVariables)
+    this.props.data.refetch({ cache: false })
       .then(resolve)
       .catch(reject);
   }
@@ -135,7 +132,7 @@ export default class Home extends Component {
   }
 
   render() {
-    const { feed } = this.props.data;
+    const { data: { feed } } = this.props;
 
     let photo;
     let heroItem;
@@ -172,7 +169,7 @@ export default class Home extends Component {
 
           </Right>
         </Split>
-        <Left scroll ref="container">
+        <Left scroll>
           <section
             className={
               "background--light-secondary soft-half@palm " +
