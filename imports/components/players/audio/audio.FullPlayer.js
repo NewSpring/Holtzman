@@ -29,7 +29,7 @@ export default class FullPlayer extends Component {
     setPlaying: PropTypes.func,
     play: PropTypes.func,
     pause: PropTypes.func,
-    seek: PropTypes.func,
+    seek: PropTypes.number,
     resetOrder: PropTypes.func,
     shuffle: PropTypes.func,
     resetRepeat: PropTypes.func,
@@ -156,18 +156,6 @@ export default class FullPlayer extends Component {
       this.props.pause();
       return;
     }
-  }
-
-  seek = (e) => {
-    const ne = e.nativeEvent;
-
-    const xPosition = ne.clientX;
-
-    // get the correct target
-    const width = ne.target.clientWidth;
-    const percent = ((width - (width - xPosition)) / width) * 100;
-
-    this.props.seek(percent);
   }
 
   shuffle = () => {
