@@ -78,14 +78,18 @@ export default class AudioPlayerUtility extends Component {
       return null;
     }
 
+<<<<<<< HEAD
+    if (!track.file) return;
+=======
     if (!track.file) {
       return null;
     }
+>>>>>>> 6b747b264380343d675be1c1a60548f3326a9f3a
 
-    if (this.player && this.player.stop) {
-      this.player.stop();
-      this.player.release();
-    }
+    // if (this.player && this.player.stop) {
+    //   this.player.stop();
+    //   this.player.release();
+    // }
 
     if (track.file.indexOf("http") === -1) {
       // eslint-disable-next-line no-param-reassign
@@ -97,7 +101,7 @@ export default class AudioPlayerUtility extends Component {
 
     // eslint-disable-next-line
     const Player = Meteor.isCordova ? Media : Audio;
-
+    const getProps = () => this.props;
     const player = new Player(track.file, () => {
       // set ready state
       this.props.ready();
@@ -108,6 +112,27 @@ export default class AudioPlayerUtility extends Component {
         player.play();
         return;
       }
+<<<<<<< HEAD
+
+    }, () => {}, function audioEventStream(STATUS) {
+      if (this.done) return;
+      // this === Media object
+      if (STATUS === Media.MEDIA_STOPPED) {
+        const length = this.getDuration();
+        if (length === player.getDuration()) { // reached the end of the song
+          const { audio } = getProps();
+          if (audio.repeat === "repeat-one") {
+            this.seekTo(0);
+            this.play();
+            return;
+          }
+          for (let cb of this.endedCallbacks) cb();
+          delete this.endedCallbacks;
+          this.done = true;
+        }
+      }
+=======
+>>>>>>> 6b747b264380343d675be1c1a60548f3326a9f3a
     });
 
     if (autoload && Meteor.isCordova) {
@@ -205,13 +230,9 @@ export default class AudioPlayerUtility extends Component {
             }
         }
 
+        // This file needs cleanup
+        // repeat one handled in creation of player above
         if (repeat === "repeat-one") {
-          this.props.restart();
-          this.props.play();
-          if (this.player && Meteor.isCordova) {
-            this.props.seek(0);
-            this.player.play();
-          }
           return;
         }
 

@@ -22,6 +22,12 @@ if (Meteor.isCordova) {
       }, 1000);
     };
 
+<<<<<<< HEAD
+
+    Media.prototype.ended = function(callback) {
+      if (!this.endedCallbacks) this.endedCallbacks = [];
+      this.endedCallbacks.push(callback);
+=======
     Media.prototype.ended = function (callback) {
       const getDuration = () => {
         return this.getDuration();
@@ -39,6 +45,7 @@ if (Meteor.isCordova) {
           }
         });
       }, 10);
+>>>>>>> 6b747b264380343d675be1c1a60548f3326a9f3a
     };
 
     Media.prototype.playPause = function () {
