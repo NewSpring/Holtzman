@@ -29,7 +29,6 @@ export default class FullPlayer extends Component {
     setPlaying: PropTypes.func,
     play: PropTypes.func,
     pause: PropTypes.func,
-    seek: PropTypes.number,
     resetOrder: PropTypes.func,
     shuffle: PropTypes.func,
     resetRepeat: PropTypes.func,
