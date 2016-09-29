@@ -40,6 +40,7 @@ const Likeable = {
     if (props.currentSermon) return props.currentSermon.content;
     if (props.series) return props.series.content;
     if (props.album) return props.album.content;
+    if (props.news) return props.news.content;
     return null;
   },
 

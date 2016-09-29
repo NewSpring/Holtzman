@@ -54,6 +54,7 @@ const Header = {
     if (nextProps.currentSermon) item = nextProps.currentSermon;
     if (nextProps.series) item = nextProps.series;
     if (nextProps.album) item = nextProps.album;
+    if (nextProps.news) item = nextProps.news;
 
     if (item) return item.content;
     return null;
@@ -66,6 +67,7 @@ const Header = {
     if (props.currentSermon) return "Series";
     if (props.series) return "Series";
     if (props.album) return "Music";
+    if (props.news) return "News";
     return "";
   },
 

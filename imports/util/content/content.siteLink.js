@@ -17,6 +17,8 @@ function siteLink(contentItem, parentItem) {
       return `${siteUrl}/articles/${slug}`;
     case "stories":
       return `${siteUrl}/stories/${slug}`;
+    case "news":
+      return `${siteUrl}/news/${slug}`;
     default:
       return null;
 
