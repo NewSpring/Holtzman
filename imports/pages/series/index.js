@@ -5,7 +5,7 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import Headerable from "../../mixins/mixins.Header";
-import Pageable from "../../mixins/mixins.Pageable";
+import infiniteScroll from "../../decorators/infiniteScroll";
 
 import { FeedItemSkeleton } from "../../components/loading";
 import ApollosPullToRefresh from "../../components/pullToRefresh";
@@ -49,11 +49,19 @@ const SERIES_QUERY = gql`
 `;
 
 const withSeries = graphql(SERIES_QUERY, {
-  options: ownProps => ({
-    variables: {
-      limit: ownProps.paging.pageSize * ownProps.paging.page,
-      skip: ownProps.paging.skip,
-    },
+  options: {
+    variables: { limit: 20, skip: 0 },
+  },
+  props: ({ data }) => ({
+    data,
+    loading: data.loading,
+    fetchMore: () => data.fetchMore({
+      variables: { ...data.variables, skip: data.content.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult.data) return previousResult;
+        return { content: [...previousResult.content, ...fetchMoreResult.data.content] };
+      },
+    }),
   }),
 });
 
@@ -61,13 +69,14 @@ const mapStateToProps = state => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withSeries
-@ReactMixin.decorate(Pageable)
+@infiniteScroll()
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
+    Loading: PropTypes.func,
   };
 
   componentWillMount() {
@@ -104,12 +113,16 @@ class Template extends Component {
   }
 
   render() {
+    const { Loading } = this.props;
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
         <div className="background--light-secondary">
           <section className="soft-half">
             <div className="grid">
               {this.renderItems()}
+              <div className="grid__item one-whole">
+                <Loading />
+              </div>
             </div>
           </section>
         </div>

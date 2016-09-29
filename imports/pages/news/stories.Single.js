@@ -15,8 +15,8 @@ import Shareable from "../../mixins/mixins.Shareable";
 // import content component
 import StoriesContent from "./stories.Content";
 
-const GET_STORY_QUERY = gql`
-  query getStory($id: ID!) {
+const GET_NEWS_QUERY = gql`
+  query getNews($id: ID!) {
     content: node(id: $id) {
       id
       ... on Content {
@@ -46,15 +46,15 @@ const GET_STORY_QUERY = gql`
   }
 `;
 
-const withStory = graphql(GET_STORY_QUERY, {
-  name: "story",
+const withNews = graphql(GET_NEWS_QUERY, {
+  name: "news",
   options: ownProps => ({
     variables: { id: ownProps.params.id },
   }),
 });
 
 @connect()
-@withStory
+@withNews
 @ReactMixin.decorate(Likeable)
 @ReactMixin.decorate(Shareable)
 @ReactMixin.decorate(Headerable)
@@ -62,7 +62,7 @@ export default class StoriesSingle extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    story: PropTypes.object,
+    news: PropTypes.object,
   }
 
   componentWillMount() {
@@ -75,7 +75,7 @@ export default class StoriesSingle extends Component {
   }
 
   render() {
-    const { content } = this.props.story;
+    const { content } = this.props.news;
 
     if (!content) {
       // loading

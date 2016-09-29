@@ -66,7 +66,7 @@ export default class Live extends Component {
   }
 
   handleLiveChange = (nextProps) => {
-    const { live } = nextProps.data;
+    const { live } = nextProps.live;
     if (!live) return;
 
     const isLive = live.live;

@@ -9,15 +9,15 @@ import ApollosPullToRefresh from "../../components/pullToRefresh";
 import FeedItem from "../../components/cards/cards.FeedItem";
 
 import Headerable from "../../mixins/mixins.Header";
-import infiniteScroll from "../../decorators/infiniteScroll";
+import Pageable from "../../mixins/mixins.Pageable";
 
 import { nav as navActions } from "../../store";
 
-import Single from "./devotions.Single";
+import Single from "./stories.Single";
 
-const DEVOTIONALS_QUERY = gql`
-  query getDevotionals($limit: Int!, $skip: Int!) {
-    content(channel: "devotionals", limit: $limit, skip: $skip) {
+const STORIES_QUERY = gql`
+  query GetNews($limit: Int!, $skip: Int!) {
+    content(channel: "news", limit: $limit, skip: $skip) {
       id
       entryId: id
       title
@@ -37,46 +37,37 @@ const DEVOTIONALS_QUERY = gql`
           fileLabel
           url
         }
+        ooyalaId
       }
     }
   }
 `;
 
-const withDevotionals = graphql(DEVOTIONALS_QUERY, {
-  options: {
-    variables: { limit: 20, skip: 0 },
-  },
-  props: ({ data }) => ({
-    data,
-    loading: data.loading,
-    fetchMore: () => data.fetchMore({
-      variables: { ...data.variables, skip: data.content.length },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!fetchMoreResult.data) return previousResult;
-        return { content: [...previousResult.content, ...fetchMoreResult.data.content] };
-      },
-    }),
+const withNews = graphql(STORIES_QUERY, {
+  options: state => ({
+    variables: {
+      limit: state.paging.pageSize * state.paging.page,
+      skip: state.paging.skip,
+    },
   }),
 });
 
 const mapStateToProps = state => ({ paging: state.paging });
 
 @connect(mapStateToProps)
-@withDevotionals
-@infiniteScroll()
+@withNews
+@ReactMixin.decorate(Pageable)
 @ReactMixin.decorate(Headerable)
-class Devotions extends Component {
+class Template extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
-    Loading: PropTypes.func,
-
   }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({ title: "All Devotionals" });
+    this.headerAction({ title: "All News" });
   }
 
   handleRefresh = (resolve, reject) => {
@@ -109,16 +100,12 @@ class Devotions extends Component {
 
 
   render() {
-    const { Loading } = this.props;
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
         <div className="background--light-secondary">
           <section className="soft-half">
             <div className="grid">
               {this.renderItems()}
-              <div className="grid__item one-whole">
-                <Loading />
-              </div>
             </div>
           </section>
         </div>
@@ -128,11 +115,11 @@ class Devotions extends Component {
 }
 
 const Routes = [
-  { path: "devotions", component: Devotions },
-  { path: "devotions/:id", component: Single },
+  { path: "news", component: Template },
+  { path: "news/:id", component: Single },
 ];
 
 export default {
-  Devotions,
+  Template,
   Routes,
 };

@@ -9,10 +9,11 @@ import topicActions from "../../store/topics/";
 const topics = [
   "Articles",
   "Devotionals",
-  "Stories",
+  "Music",
+  "News",
   "Series",
   "Sermons",
-  "Music",
+  "Stories",
 ];
 
 // XXX make this dynamic via heighliner
