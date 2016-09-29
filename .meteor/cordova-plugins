@@ -8,4 +8,4 @@ cordova-plugin-safariviewcontroller@https://github.com/johnthepink/cordova-plugi
 cordova-plugin-social-message@0.4.0
 cordova-plugin-statusbar@2.1.3
 nl.kingsquare.cordova.background-audio@https://github.com/AubreyHewes/cordova-background-audio.git
-io.lookback.sdk@https://github.com/NewSpring/cordova-lookback.git#62986a48e9701c58b345e47cfe05ae3a722d2525
+# io.lookback.sdk@https://github.com/NewSpring/cordova-lookback.git#62986a48e9701c58b345e47cfe05ae3a722d2525
