@@ -42,9 +42,7 @@ const ENTRIES_QUERY = gql`
 const withEntries = graphql(ENTRIES_QUERY, {
   name: "entries",
   options: {
-    tagName: "giving",
-    limit: 2,
-    includeChannels: ["articles"],
+    variables: { tagName: "giving", limit: 2, includeChannels: ["articles"] },
   },
 });
 
