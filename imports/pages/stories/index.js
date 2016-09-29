@@ -50,6 +50,11 @@ const withStories = graphql(STORIES_QUERY, {
   props: ({ data }) => ({
     data,
     loading: data.loading,
+    done: (
+      data.content &&
+      data.loading && // XXX should probably be !data.loading after a bug in react-apollo is fixed
+      data.content.length < data.variables.limit + data.variables.skip
+    ),
     fetchMore: () => data.fetchMore({
       variables: { ...data.variables, skip: data.content.length },
       updateQuery: (previousResult, { fetchMoreResult }) => {
@@ -71,6 +76,7 @@ class Template extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
+    Loading: PropTypes.func,
   }
 
   componentWillMount() {
@@ -108,12 +114,16 @@ class Template extends Component {
 
 
   render() {
+    const { Loading } = this.props;
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
         <div className="background--light-secondary">
           <section className="soft-half">
             <div className="grid">
               {this.renderItems()}
+              <div className="grid__item one-whole">
+                <Loading />
+              </div>
             </div>
           </section>
         </div>
