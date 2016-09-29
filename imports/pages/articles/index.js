@@ -7,7 +7,8 @@ import gql from "graphql-tag";
 import { FeedItemSkeleton } from "../../components/loading";
 
 import Headerable from "../../mixins/mixins.Header";
-import Pageable from "../../mixins/mixins.Pageable";
+
+import infiniteScroll from "../../decorators/infiniteScroll";
 
 import { nav as navActions } from "../../store";
 import ApollosPullToRefresh from "../../components/pullToRefresh";
@@ -47,11 +48,19 @@ const ARTICLES_QUERY = gql`
 `;
 
 const withArticles = graphql(ARTICLES_QUERY, {
-  options: ownProps => ({
-    variables: {
-      limit: ownProps.paging.pageSize * ownProps.paging.page,
-      skip: ownProps.paging.skip,
-    },
+  options: {
+    variables: { limit: 20, skip: 0 },
+  },
+  props: ({ data }) => ({
+    data,
+    loading: data.loading,
+    fetchMore: () => data.fetchMore({
+      variables: { ...data.variables, skip: data.content.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult.data) return previousResult;
+        return { content: [...previousResult.content, ...fetchMoreResult.data.content]};
+      },
+    }),
   }),
 });
 
@@ -59,7 +68,7 @@ const mapStateToProps = state => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withArticles
-@ReactMixin.decorate(Pageable)
+@infiniteScroll()
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 
@@ -77,7 +86,7 @@ class Template extends Component {
   }
 
   handleRefresh = (resolve, reject) => {
-    this.props.data.refetch()
+    this.props.data.refetch({ cache: false })
       .then(resolve)
       .catch(reject);
   }
