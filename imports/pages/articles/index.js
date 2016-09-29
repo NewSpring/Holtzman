@@ -58,7 +58,7 @@ const withArticles = graphql(ARTICLES_QUERY, {
       variables: { ...data.variables, skip: data.content.length },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         if (!fetchMoreResult.data) return previousResult;
-        return { content: [...previousResult.content, ...fetchMoreResult.data.content]};
+        return { content: [...previousResult.content, ...fetchMoreResult.data.content] };
       },
     }),
   }),
