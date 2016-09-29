@@ -78,6 +78,7 @@ class Template extends Component {
       PropTypes.func,
     ]).isRequired,
     data: PropTypes.object.isRequired,
+    Loading: PropTypes.func,
   }
 
   componentWillMount() {
@@ -114,12 +115,16 @@ class Template extends Component {
   }
 
   render() {
+    const { Loading } = this.props;
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
         <div className="soft@portable soft-double@lap-and-up background--light-secondary">
           <section className="soft-half">
             <div className="grid">
               {this.renderItems()}
+              <div className="grid__item one-whole">
+                <Loading />
+              </div>
             </div>
           </section>
         </div>
