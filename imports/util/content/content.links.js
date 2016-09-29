@@ -17,6 +17,8 @@ function contentLink(contentItem) {
       return `/articles/${entryId}`;
     case "stories":
       return `/stories/${entryId}`;
+    case "news":
+      return `/news/${entryId}`;
     default:
       return null;
 

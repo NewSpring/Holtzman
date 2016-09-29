@@ -14,13 +14,13 @@ export default class Toggle extends Component {
   }
 
   componentWillMount() {
-    if (this.props.state !== null || this.props.state !== undefined) {
+    if (this.props.state !== null && this.props.state !== undefined) {
       this.setState({ active: this.props.state });
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.state !== null || this.props.state !== undefined) {
+    if (nextProps.state !== null && this.props.state !== undefined) {
       this.setState({ active: nextProps.state });
     }
   }
