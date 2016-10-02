@@ -1,29 +1,31 @@
-import { Component, PropTypes } from "react";
+// @flow
+import { Component } from "react";
 
 import Controls from "../../components/controls";
 import Forms from "../../components/forms";
 import Validate from "../../util/validate";
 
-class SignIn extends Component {
+type Props = {
+  setAccount: Function,
+  clear: Function,
+  save: Function,
+  data: Object,
+  forgot: Function,
+  account: bool,
+  header: Object,
+  submit: Function,
+  toggles: [],
+  completeAccount: Function,
+  alternateAccounts: [],
+  peopleWithoutAccountEmails: [],
+};
 
-  static propTypes = {
-    setAccount: PropTypes.func.isRequired,
-    clear: PropTypes.func,
-    save: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired, // eslint-disable-line
-    forgot: PropTypes.func.isRequired,
-    account: PropTypes.bool.isRequired,
-    header: PropTypes.object, // eslint-disable-line
-    submit: PropTypes.func,
-    toggles: PropTypes.array, // eslint-disable-line
-    completeAccount: PropTypes.func,
-    alternateAccounts: PropTypes.array, // eslint-disable-line
-    peopleWithoutAccountEmails: PropTypes.array, // eslint-disable-line
-  }
+class SignIn extends Component {
+  props: Props;
 
   static defaultProps = { toggles: ["Sign In", "Register"] }
 
-  state = { showAlternativePeople: true, selectedPerson: null }
+  state = { showAlternativePeople: true, selectedPerson: undefined }
 
   header = () => (
     <div className="text-center">
@@ -36,9 +38,9 @@ class SignIn extends Component {
     </div>
   )
 
-  toggle = (num) => this.props.setAccount(num === 0)
+  toggle = (num: number) => this.props.setAccount(num === 0)
 
-  isEmail = (value) => {
+  isEmail = (value: string) => {
     const isValid = value.length ? Validate.isEmail(value) : true;
 
     if (!isValid) {
@@ -51,12 +53,12 @@ class SignIn extends Component {
     return isValid;
   }
 
-  savePassword = (value) => {
+  savePassword = (value: string) => {
     this.props.save({ password: value });
     return true;
   }
 
-  liveSavePassword = (value) => {
+  liveSavePassword = (value: string) => {
     const isValid = value.length;
 
     if (!isValid) {
@@ -68,7 +70,7 @@ class SignIn extends Component {
     return value;
   }
 
-  firstName = (value) => {
+  firstName = (value: string) => {
     const isValid = value.length;
 
     if (!isValid) {
@@ -80,7 +82,7 @@ class SignIn extends Component {
     return isValid;
   }
 
-  lastName = (value) => {
+  lastName = (value: string) => {
     const isValid = value.length;
 
     if (!isValid) {
@@ -92,12 +94,14 @@ class SignIn extends Component {
     return isValid;
   }
 
-  saveTerms = (event) => {
-    this.props.save({ terms: event.target.checked });
+  saveTerms = (event: Event) => {
+    if (event.target instanceof HTMLInputElement) {
+      this.props.save({ terms: event.target.checked });
+    }
   }
 
-  changeEmails = (event) => {
-    const { dataset } = event.currentTarget;
+  changeEmails = (event: Event) => {
+    const { dataset } = ((event.currentTarget: any): HTMLElement);
     const { email } = dataset;
 
     this.isEmail(email);
@@ -106,7 +110,7 @@ class SignIn extends Component {
     event.preventDefault();
   }
 
-  submit = (event) => {
+  submit = (event: Event) => {
     event.preventDefault();
     const { refs } = this;
     const data = { ...this.props.data };
@@ -121,8 +125,8 @@ class SignIn extends Component {
     return;
   }
 
-  selectPerson = (id) => {
-    if (this.state.selectPerson === id) {
+  selectPerson = (id: string) => {
+    if (this.state.selectedPerson === id) {
       this.setState({ selectedPerson: null });
       this.props.clear("data");
       return;
@@ -132,13 +136,13 @@ class SignIn extends Component {
     this.props.save({ personId: id });
   }
 
-  createNewPerson = (e) => {
+  createNewPerson = (e: Event) => {
     if (e) e.preventDefault();
     this.setState({ showAlternativePeople: false });
     this.props.clear("data");
   }
 
-  completeAccount = (e) => {
+  completeAccount = (e: Event) => {
     if (e) e.preventDefault();
     this.props.completeAccount();
   }
