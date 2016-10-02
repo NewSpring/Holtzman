@@ -60,7 +60,7 @@ const ALBUM_QUERY = gql`
 
 const withAlbum = graphql(ALBUM_QUERY, {
   name: "album",
-  options: ownProps => ({
+  options: (ownProps) => ({
     variables: { id: ownProps.params.id },
   }),
 });
@@ -163,12 +163,12 @@ export default class MusicAlbum extends Component {
     };
 
     const album = content;
-    const tracks = _.filter(album.content.tracks, track => (!!track.file));
+    const tracks = _.filter(album.content.tracks, (track) => (!!track.file));
 
-    const xsmallBlurImage = _.find(album.content.images, image => (
+    const xsmallBlurImage = _.find(album.content.images, (image) => (
       image.fileName.indexOf("blur") > -1 && image.size === "xsmall"
     ));
-    const mediumImage = _.find(album.content.images, image => (
+    const mediumImage = _.find(album.content.images, (image) => (
       image.fileName.indexOf("blur") === -1 && image.size === "medium"
     ));
 

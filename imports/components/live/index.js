@@ -95,7 +95,7 @@ export default class Live extends Component {
         defaultStyle={{ height: 0 }}
         style={{ height: spring(40) }}
       >
-        {interpolatingStyle =>
+        {(interpolatingStyle) =>
           <Link
             to={`/video/${embedCode}`}
             className={this.getClasses()}

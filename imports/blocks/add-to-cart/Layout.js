@@ -29,7 +29,7 @@ export default class Layout extends Component {
 
   update = (key, value, amount) => {
     const getInstance = () => {
-      const instance = this.state.instances.filter(x => (x.id === key));
+      const instance = this.state.instances.filter((x) => (x.id === key));
 
       return instance && instance[0];
     };
@@ -65,7 +65,7 @@ export default class Layout extends Component {
   }
 
   remove = (key) => {
-    let newInstances = this.state.instances.filter(x => (x.id !== key));
+    let newInstances = this.state.instances.filter((x) => (x.id !== key));
 
     // if an instance is removed and that instance is not at the end
     if (key !== 0 &&
@@ -131,11 +131,11 @@ export default class Layout extends Component {
                 inputVal = existingInstance.amount;
               }
 
-              const instanceAccounts = this.state.instances.map(x => (x.accountId));
+              const instanceAccounts = this.state.instances.map((x) => (x.accountId));
 
               const copiedAccounts = [...accounts].filter((x) => {
                 const alreadySelectedByThisInstance =
-                  this.state.instances.filter(y => (y.id === key));
+                  this.state.instances.filter((y) => (y.id === key));
 
                 if (alreadySelectedByThisInstance.length
                     && Number(alreadySelectedByThisInstance[0].accountId) === x.value) {

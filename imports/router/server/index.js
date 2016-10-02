@@ -70,7 +70,7 @@ function moveStyles(data) {
   return $.html();
 }
 
-const _getCacheKey = url => (`${Meteor.userId()}::${url}`);
+const _getCacheKey = (url) => (`${Meteor.userId()}::${url}`);
 
 function generateSSRData(serverOptions, req, res, renderProps, history) {
   let html;

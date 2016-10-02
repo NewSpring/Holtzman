@@ -55,7 +55,7 @@ export default class GiveNow extends Component {
     e.preventDefault();
     const { id } = e.target;
 
-    const accounts = this.state.accounts.filter(x => x.id !== id);
+    const accounts = this.state.accounts.filter((x) => x.id !== id);
 
     this.setState({ accounts });
     Meteor.call("PaymentAccounts.remove", id, () => {

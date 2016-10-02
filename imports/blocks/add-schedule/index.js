@@ -9,7 +9,7 @@ import Offline from "../../components/status/Offline";
 import Layout from "./Layout";
 
 // We only care about the give state
-const map = state => ({ give: state.give });
+const map = (state) => ({ give: state.give });
 
 @connect(map, giveActions)
 class CartContainer extends Component {
@@ -92,7 +92,7 @@ class CartContainer extends Component {
   }
 
   setFund = (id) => {
-    const selectedFund = this.props.accounts.filter(fund => fund.id === Number(id));
+    const selectedFund = this.props.accounts.filter((fund) => fund.id === Number(id));
 
     const { name } = selectedFund[0];
 
@@ -181,7 +181,7 @@ class CartContainer extends Component {
       { label: "once a month", value: "Monthly" },
     ];
 
-    const mappedAccounts = this.props.accounts.map(x => ({
+    const mappedAccounts = this.props.accounts.map((x) => ({
       value: x.id,
       label: x.name,
     }));

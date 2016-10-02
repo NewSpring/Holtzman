@@ -2,7 +2,7 @@ import { PropTypes } from "react";
 import { connect } from "react-redux";
 import ReactPullToRefresh from "react-pull-to-refresh";
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isLive: state.live.live,
   show: state.live.show,
 });

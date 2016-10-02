@@ -12,7 +12,7 @@ import {
 
 import Groups from "./Groups";
 
-const map = state => ({ sections: state.sections });
+const map = (state) => ({ sections: state.sections });
 
 @connect(map)
 @ReactMixin.decorate(Headerable)

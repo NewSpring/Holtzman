@@ -21,7 +21,7 @@ export default function RouteTransition({ children, pathname }) {
     return null;
   };
 
-  const willEnter = childArgs =>
+  const willEnter = (childArgs) =>
     ({
       childArgs,
       opacity: spring(0),
@@ -50,9 +50,9 @@ export default function RouteTransition({ children, pathname }) {
       willEnter={willEnter}
       willLeave={willLeave}
     >
-      {interpolated =>
+      {(interpolated) =>
         <div>
-          {Object.keys(interpolated).map(key =>
+          {Object.keys(interpolated).map((key) =>
             <div
               key={`${key}-transition`}
               style={{

@@ -12,7 +12,7 @@ export {
   Left,
 };
 
-const map = state => ({ navigation: state.nav });
+const map = (state) => ({ navigation: state.nav });
 
 @connect(map)
 export default class SplitContainer extends Component {

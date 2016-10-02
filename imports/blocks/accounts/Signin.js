@@ -36,7 +36,7 @@ class SignIn extends Component {
     </div>
   )
 
-  toggle = num => this.props.setAccount(num === 0)
+  toggle = (num) => this.props.setAccount(num === 0)
 
   isEmail = (value) => {
     const isValid = value.length ? Validate.isEmail(value) : true;

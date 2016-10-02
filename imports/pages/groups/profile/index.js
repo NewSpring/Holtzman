@@ -49,7 +49,7 @@ const GROUP_QUERY = gql`
 `;
 
 const withGroup = graphql(GROUP_QUERY, {
-  options: ownProps => ({
+  options: (ownProps) => ({
     variables: { id: ownProps.params.id },
   }),
 });
@@ -133,9 +133,9 @@ export default class Template extends Component {
 
     const { group, person } = data;
     const leaders = group && group.members && group.members
-      .filter(x => x.role.toLowerCase() === "leader");
+      .filter((x) => x.role.toLowerCase() === "leader");
 
-    const isLeader = person && leaders.filter(x => x.id === person.id).length;
+    const isLeader = person && leaders.filter((x) => x.id === person.id).length;
     if (!group.photo) {
       group.photo = "//s3.amazonaws.com/ns.assets/apollos/group-profile-placeholder.png";
     }

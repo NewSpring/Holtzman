@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 
 @withRouter
-@connect(state => ({ location: state.routing.location }))
+@connect((state) => ({ location: state.routing.location }))
 export default class Tag extends Component {
 
   static propTypes = {
@@ -71,7 +71,7 @@ export default class Tag extends Component {
       tags.push(val);
     }
 
-    tags = tags.filter(x => x);
+    tags = tags.filter((x) => x);
 
     if (!tags.length && location.query[urlKey]) {
       delete location.query[urlKey];
@@ -87,7 +87,7 @@ export default class Tag extends Component {
     const { query } = props.location;
     if (!query || !query[urlKey]) return false;
 
-    const tags = query[urlKey].toLowerCase().split(",").filter(x => x);
+    const tags = query[urlKey].toLowerCase().split(",").filter((x) => x);
     return tags.indexOf(val.toLowerCase()) > -1;
   }
 

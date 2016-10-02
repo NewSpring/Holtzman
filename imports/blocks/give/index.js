@@ -44,7 +44,7 @@ const withCheckout = graphql(CHECKOUT_QUERY, {
 
 const defaultArray = []; // empty array for usage as default in render
 // We only care about the give state
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   give: state.give,
 });
 
@@ -204,19 +204,19 @@ export default class Give extends Component {
       campuses = defaultArray;
     }
 
-    campuses = campuses.map(x => ({ label: x.name, value: x.id }));
+    campuses = campuses.map((x) => ({ label: x.name, value: x.id }));
 
     if (!states) {
       states = defaultArray;
     }
 
-    states = states.map(x => ({ label: x.name, value: x.value }));
+    states = states.map((x) => ({ label: x.name, value: x.value }));
 
     if (!countries) {
       countries = defaultArray;
     }
 
-    countries = countries.map(x => ({ label: x.name, value: x.value }));
+    countries = countries.map((x) => ({ label: x.name, value: x.value }));
 
     const save = (...args) => { this.props.dispatch(giveActions.save(...args)); };
     const clear = (...args) => { this.props.dispatch(giveActions.clear(...args)); };

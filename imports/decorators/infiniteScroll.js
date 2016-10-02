@@ -3,7 +3,7 @@ import { Component, createElement, PropTypes } from "react";
 import Loading from "../components/loading";
 
 const defaultOptions = { percent: 70 };
-const defaultReducer = x => x;
+const defaultReducer = (x) => x;
 
 export default (reducer = defaultReducer, options) => (WrappedComponent) => {
   const mergedOptions = { ...defaultOptions, ...options };

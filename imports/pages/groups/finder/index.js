@@ -64,7 +64,7 @@ const withTaggedContent = graphql(TAGGED_CONTENT_QUERY, {
 });
 
 const defaultArray = [];
-const mapStateToProps = state => ({ location: state.routing.location });
+const mapStateToProps = (state) => ({ location: state.routing.location });
 @withRouter
 @connect(mapStateToProps)
 @withGroupAttributes

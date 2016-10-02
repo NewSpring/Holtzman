@@ -62,11 +62,11 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
         if (!fetchMoreResult.data) return previousResult;
         const transactions = [...previousResult.transactions, ...fetchMoreResult.data.transactions];
         return {
-          transactions: transactions.filter(x => !!x.id),
+          transactions: transactions.filter((x) => !!x.id),
         };
       },
     }),
-    changeFamily: people => data.fetchMore({
+    changeFamily: (people) => data.fetchMore({
       variables: { ...data.varibles, people },
       updateQuery: (previousResult, { fetchMoreResult }) => (
         !fetchMoreResult.data ? previousResult : fetchMoreResult.data
@@ -106,7 +106,7 @@ class Template extends Component {
     if (process.env.NATIVE) this.props.dispatch(headerActions.set({ title: "Giving History" }));
   }
 
-  wrapRefetch = refetch => (...args) => {
+  wrapRefetch = (refetch) => (...args) => {
     this.setState({ refetching: true });
     return refetch(...args).then((x) => {
       this.setState({ refetching: false });

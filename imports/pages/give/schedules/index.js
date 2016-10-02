@@ -70,7 +70,7 @@ const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "account
   options: { ssr: true },
 });
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   give: store.give,
 });
 

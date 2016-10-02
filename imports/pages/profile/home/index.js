@@ -30,7 +30,7 @@ const GET_PERSON_QUERY = gql`
 `;
 
 const withPerson = graphql(GET_PERSON_QUERY);
-const mapStateToProps = state => ({ authorized: state.accounts.authorized });
+const mapStateToProps = (state) => ({ authorized: state.accounts.authorized });
 
 @withPerson
 @withProfileUpload
@@ -57,7 +57,7 @@ export default class Home extends Component {
     this.props.dispatch(navActions.setLevel("TOP"));
   }
 
-  onToggle = content => this.setState({ content })
+  onToggle = (content) => this.setState({ content })
   getContent = () => this.content[this.state.content]
 
   content = [<Likes />, <Following />]

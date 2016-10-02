@@ -31,7 +31,7 @@ const PERSON_QUERY = gql`
 `;
 
 const withPerson = graphql(PERSON_QUERY, {
-  options: ownProps => ({
+  options: (ownProps) => ({
     ssr: false,
     variables: {
       guid: (
@@ -41,7 +41,7 @@ const withPerson = graphql(PERSON_QUERY, {
   }),
 });
 
-@connect(state => ({ location: state.routing.location }), mapDispatchToProps)
+@connect((state) => ({ location: state.routing.location }), mapDispatchToProps)
 @withPerson
 export default class AccountsWithData extends Component {
 
@@ -65,7 +65,7 @@ export default class AccountsWithData extends Component {
 }
 
 // We only care about the accounts state
-@connect(state => ({ accounts: state.accounts }), mapDispatchToProps)
+@connect((state) => ({ accounts: state.accounts }), mapDispatchToProps)
 class AccountsContainer extends Component { // eslint-disable-line
 
   static propTypes = {

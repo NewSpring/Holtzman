@@ -4,7 +4,7 @@ import backgrounds from "../../util/backgrounds";
 import contentHelper from "../../util/content";
 import categories from "../../util/categories";
 
-const hasImage = content =>
+const hasImage = (content) =>
   content.content.images.length > 0 ||
     (
       content.parent &&

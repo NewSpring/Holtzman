@@ -8,7 +8,7 @@ import {
 import NavLayout from "./Layout";
 
 // We only care about the navigation state
-const map = state => ({
+const map = (state) => ({
   state: state.nav,
   modal: state.modal,
   liked: state.liked,

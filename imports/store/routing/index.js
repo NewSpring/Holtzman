@@ -6,7 +6,7 @@
 const TRANSITION = "@@router/TRANSITION";
 const UPDATE_LOCATION = "@@router/UPDATE_LOCATION";
 
-const SELECT_LOCATION = state => state.routing.location;
+const SELECT_LOCATION = (state) => state.routing.location;
 
 function transition(method) {
   return (...args) => ({
@@ -86,7 +86,7 @@ export function syncHistory(history) {
     connected = true;
 
     // eslint-disable-next-line consistent-return
-    return next => (action) => {
+    return (next) => (action) => {
       if (action.type !== TRANSITION || !connected) {
         return next(action);
       }

@@ -16,7 +16,7 @@ import {
 
 import Layout from "./Layout";
 
-const mapStateToProps = state => ({ search: state.search });
+const mapStateToProps = (state) => ({ search: state.search });
 @withApollo
 @connect(mapStateToProps)
 @ReactMixin.decorate(Headerable)

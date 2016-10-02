@@ -15,7 +15,7 @@ import {
   audio as audioActions,
 } from "../../store";
 
-const mapStateToProps = state => (
+const mapStateToProps = (state) => (
   {
     audio: {
       visibility: state.audio.visibility,
@@ -92,7 +92,7 @@ export default class ListDetail extends Component {
 
   render() {
     const url = `/music/${this.props.album.entryId}`;
-    const smallImage = _.find(this.props.album.content.images, image => (
+    const smallImage = _.find(this.props.album.content.images, (image) => (
       image.fileName.indexOf("blur") === -1 && image.size === "small"
     ));
     return (

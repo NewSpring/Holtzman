@@ -134,7 +134,7 @@ export default class PersonalDetails extends Component {
 
   render() {
     let { campuses } = this.props.campuses;
-    campuses = campuses && campuses.map(campus => ({
+    campuses = campuses && campuses.map((campus) => ({
       label: campus.name, value: campus.id,
     }));
     const { state, err } = this.state;

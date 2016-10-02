@@ -72,7 +72,7 @@ export default class Layout extends Component {
     return text;
   }
 
-  icon = icon => (
+  icon = (icon) => (
     <AccountType width="30px" height="21px" type={icon} />
   )
 

@@ -54,7 +54,7 @@ const CURRENT_SERMON_QUERY = gql`
 `;
 const withCurrentSermon = graphql(CURRENT_SERMON_QUERY, {
   name: "currentSermon",
-  options: ownProps => ({
+  options: (ownProps) => ({
     variables: { sermonId: ownProps.params.sermonId },
   }),
 });
@@ -97,12 +97,12 @@ const SERIES_QUERY = gql`
 `;
 const withSeries = graphql(SERIES_QUERY, {
   name: "series",
-  options: ownProps => ({
+  options: (ownProps) => ({
     variables: { id: ownProps.params.id },
   }),
 });
 
-const mapStateToProps = state => ({ live: state.live });
+const mapStateToProps = (state) => ({ live: state.live });
 
 @connect(mapStateToProps)
 @withCurrentSermon

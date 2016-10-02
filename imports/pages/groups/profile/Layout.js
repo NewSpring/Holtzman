@@ -205,7 +205,7 @@ const Layout = ({ group, leaders, isLeader, join }) => (
             <div className="soft-double-bottom@lap-wide-and-up soft-bottom">
               <h7 className="text-dark-secondary">Members</h7>
               <div className="soft-half-top flush-bottom">
-                {group.members.filter(x => x.person && x.person.photo).map((member, i) => (
+                {group.members.filter((x) => x.person && x.person.photo).map((member, i) => (
                   <div
                     className={
                       "ratio--square round display-inline-block " +

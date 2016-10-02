@@ -25,7 +25,7 @@ export default class Layout extends Component {
     loadingEntries: PropTypes.bool,
   }
 
-  formatDate = date => (
+  formatDate = (date) => (
     moment(new Date(date)).add(4, "hours").format("MMM D, YYYY")
   )
 
@@ -48,7 +48,7 @@ export default class Layout extends Component {
     return `$${strVal}`;
   }
 
-  capitalizeFirstLetter = string => (
+  capitalizeFirstLetter = (string) => (
     string.charAt(0).toUpperCase() + string.slice(1)
   )
 

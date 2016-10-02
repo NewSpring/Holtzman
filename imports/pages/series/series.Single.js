@@ -64,7 +64,7 @@ const SERIES_SINGLE_QUERY = gql`
 
 const withSingleSeries = graphql(SERIES_SINGLE_QUERY, {
   name: "series",
-  options: ownProps => ({
+  options: (ownProps) => ({
     variables: { id: ownProps.params.id },
   }),
 });

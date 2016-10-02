@@ -123,14 +123,14 @@ const GlobalData = createContainer(({ dispatch }) => {
     // XXX remove this section and replace with Heighliner implementation
     Meteor.subscribe("likes");
     Meteor.subscribe("recently-liked");
-    const likes = Likes.find({ userId }).fetch().map(like => like.entryId);
+    const likes = Likes.find({ userId }).fetch().map((like) => like.entryId);
     if (likes.length) dispatch(likedActions.set(likes));
   }
 
   return { userId };
 }, Blank);
 
-const map = state => ({
+const map = (state) => ({
   location: state.routing.location,
   modal: state.modal,
 });

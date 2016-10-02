@@ -30,8 +30,8 @@ export default class Join extends Component {
 
   render() {
     const { group, onExit } = this.props;
-    const leaders = group.members.filter(x => (x.role.toLowerCase() === "leader"));
-    const firstNames = leaders.map(x => (x.person.nickName || x.person.firstName)).join(", ");
+    const leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"));
+    const firstNames = leaders.map((x) => (x.person.nickName || x.person.firstName)).join(", ");
 
     const message = `\nHey ${firstNames},\n\nI'm interested in joining your group and ` +
       "looking forward to hearing from you soon!\n\nThanks!";

@@ -7,7 +7,7 @@ import liveActions from "../../store/live";
 import Discover from "../../blocks/discover";
 import styles from "../../blocks/nav/offset-css";
 
-const mapStateToProps = state => ({ audio: state.audio });
+const mapStateToProps = (state) => ({ audio: state.audio });
 
 @connect(mapStateToProps)
 class Template extends Component {

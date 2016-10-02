@@ -193,7 +193,7 @@ export default class Select extends Component {
         })()}
 
         <select
-          ref={node => (this.node = node)}
+          ref={(node) => (this.node = node)}
           id={this.props.id || this.props.label || this.props.name}
           placeholder={this.props.placeholder || this.props.label}
           name={this.props.name || this.props.label}

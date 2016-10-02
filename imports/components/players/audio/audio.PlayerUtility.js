@@ -67,7 +67,7 @@ export default class AudioPlayerUtility extends Component {
 
   tracksWithFiles = () => {
     const { playlist } = this.props.audio;
-    return _.filter(playlist, track => (
+    return _.filter(playlist, (track) => (
       track.file
     ));
   }

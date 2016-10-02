@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { audio as audioActions } from "../../../store";
 
-@connect(state => ({ audioState: state.audio.state }))
+@connect((state) => ({ audioState: state.audio.state }))
 export default class VideoPlayer extends Component {
 
   static propTypes = {

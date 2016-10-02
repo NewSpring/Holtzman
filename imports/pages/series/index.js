@@ -71,7 +71,7 @@ const withSeries = graphql(SERIES_QUERY, {
   }),
 });
 
-const mapStateToProps = state => ({ paging: state.paging });
+const mapStateToProps = (state) => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withSeries

@@ -66,7 +66,7 @@ const withStories = graphql(STORIES_QUERY, {
   }),
 });
 
-const mapStateToProps = state => ({ paging: state.paging });
+const mapStateToProps = (state) => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withStories

@@ -48,7 +48,7 @@ const GET_STORY_QUERY = gql`
 
 const withStory = graphql(GET_STORY_QUERY, {
   name: "story",
-  options: ownProps => ({
+  options: (ownProps) => ({
     variables: { id: ownProps.params.id },
   }),
 });

@@ -7,7 +7,7 @@ import { search as searchActions } from "../../store";
 
 import Live from "../live";
 
-@connect(state => ({
+@connect((state) => ({
   color: state.header.content.color || "#6BAC43",
   light: state.header.content.light,
   text: state.header.content.title,
@@ -109,7 +109,7 @@ export default class Header extends Component {
                     <i className="icon-search locked-left push-half-top text-light-primary" />
                     <input
                       id="search"
-                      ref={ref => (this.searchInput = ref)}
+                      ref={(ref) => (this.searchInput = ref)}
                       type="text"
                       name="search"
                       className="h5 text-light-primary"
