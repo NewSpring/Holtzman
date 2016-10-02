@@ -58,9 +58,10 @@ const withSeries = graphql(SERIES_QUERY, {
     loading: data.loading,
     done: (
       data.content &&
-      data.loading &&
+      !data.loading &&
       data.content.length < data.variables.limit + data.variables.skip
     ),
+    doneText: "End of Series",
     fetchMore: () => data.fetchMore({
       variables: { ...data.variables, skip: data.content.length },
       updateQuery: (previousResult, { fetchMoreResult }) => {
