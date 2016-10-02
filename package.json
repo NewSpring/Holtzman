@@ -122,6 +122,7 @@
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "git+https://git@github.com/yannickcr/eslint-plugin-react.git#e1697996ff494bf584057418e2974ece7f3d99d8",
+    "flow-bin": "^0.33.0",
     "gagarin": "^0.4.12",
     "github-download": "^0.5.0",
     "jest": "^15.1.1",
