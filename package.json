@@ -8,6 +8,7 @@
     "posttest": "npm run lint",
     "lint-fix": "eslint ./imports ./client ./server --fix",
     "lint": "eslint ./imports ./client ./server",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "coverage": "jest --coverage"
