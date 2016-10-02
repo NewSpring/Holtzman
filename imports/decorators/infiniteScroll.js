@@ -3,6 +3,7 @@ import { Component, createElement, PropTypes } from "react";
 import Loading from "../components/loading";
 
 const defaultOptions = { percent: 70 };
+let mergedOptions;
 const defaultReducer = x => x;
 
 export default (reducer = defaultReducer, options = defaultOptions) => (WrappedComponent) => {
@@ -11,6 +12,10 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
     static propTypes = {
       loading: PropTypes.bool,
       done: PropTypes.bool,
+    }
+
+    componentWillMount() {
+      mergedOptions = { ...defaultOptions, ...options };
     }
 
     componentDidMount() {
@@ -29,7 +34,7 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
       const scrollPosition = window.scrollY;
       const deviceHeight = window.outerHeight;
       const contentHeight = document.body.clientHeight;
-      const threshold = (options.percent || 70) * 0.01;
+      const threshold = (mergedOptions.percent) * 0.01;
 
       if ((scrollPosition + deviceHeight) / contentHeight > threshold) {
         const { loading, fetchMore, done } = reducer(this.props);
@@ -43,10 +48,10 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
     }
 
     renderLoading = () => {
-      if (!this.props.loading && this.props.done && options.doneText) {
+      if (!this.props.loading && this.props.done && mergedOptions.doneText) {
         return (
           <div className="one-whole soft-double text-center display-inline-block">
-            <h4 className="flush">{options.doneText}</h4>
+            <h4 className="flush">{mergedOptions.doneText}</h4>
           </div>
         );
       }
