@@ -11,6 +11,7 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
     static propTypes = {
       loading: PropTypes.bool,
       done: PropTypes.bool,
+      doneText: PropTypes.string,
     }
 
     componentDidMount() {
@@ -43,6 +44,13 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
     }
 
     renderLoading = () => {
+      if (!this.props.loading && this.props.done && this.props.doneText) {
+        return (
+          <div className="one-whole soft-double text-center display-inline-block">
+            <h4>{this.props.doneText}</h4>
+          </div>
+        );
+      }
       if (!this.props.loading || this.props.done) return null;
       return (
         <div className="one-whole soft-double text-center display-inline-block">
