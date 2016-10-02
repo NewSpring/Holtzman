@@ -3,19 +3,15 @@ import { Component, createElement, PropTypes } from "react";
 import Loading from "../components/loading";
 
 const defaultOptions = { percent: 70 };
-let mergedOptions;
 const defaultReducer = x => x;
 
-export default (reducer = defaultReducer, options = defaultOptions) => (WrappedComponent) => {
+export default (reducer = defaultReducer, options) => (WrappedComponent) => {
+  const mergedOptions = { ...defaultOptions, ...options };
   class InfiniteScrollContainer extends Component {
 
     static propTypes = {
       loading: PropTypes.bool,
       done: PropTypes.bool,
-    }
-
-    componentWillMount() {
-      mergedOptions = { ...defaultOptions, ...options };
     }
 
     componentDidMount() {
