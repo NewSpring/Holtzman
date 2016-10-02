@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+// @flow
+import React from "react";
 
 import Forms from "../../components/forms";
 import { Error, Loading, Success } from "../../components/states";
@@ -6,15 +7,16 @@ import { Error, Loading, Success } from "../../components/states";
 import Validate from "../../util/validate";
 import { forceReset } from "../../methods/accounts/browser";
 
-class ForgotPassword extends React.Component {
+type Props = {
+  save: Function,
+  clear: Function,
+  email: string,
+  errors: {},
+  back: Function,
+};
 
-  static propTypes = {
-    save: PropTypes.func.isRequired,
-    clear: PropTypes.func.isRequired,
-    email: PropTypes.string,
-    errors: PropTypes.object.isRequired, // eslint-disable-line
-    back: PropTypes.func.isRequired,
-  }
+class ForgotPassword extends React.Component {
+  props: Props;
 
   static defaultProps = {
     errors: {},
@@ -22,9 +24,10 @@ class ForgotPassword extends React.Component {
 
   state = {
     state: "default",
+    err: null,
   }
 
-  isEmail = (value) => {
+  isEmail = (value: string) => {
     const isValid = Validate.isEmail(value);
 
     if (!isValid) {
@@ -36,7 +39,7 @@ class ForgotPassword extends React.Component {
     return isValid;
   }
 
-  submit = (e) => {
+  submit = (e: Event) => {
     e.preventDefault();
 
     this.setState({
