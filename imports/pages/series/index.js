@@ -61,7 +61,6 @@ const withSeries = graphql(SERIES_QUERY, {
       !data.loading &&
       data.content.length < data.variables.limit + data.variables.skip
     ),
-    doneText: "End of Series",
     fetchMore: () => data.fetchMore({
       variables: { ...data.variables, skip: data.content.length },
       updateQuery: (previousResult, { fetchMoreResult }) => {
@@ -76,7 +75,7 @@ const mapStateToProps = state => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withSeries
-@infiniteScroll()
+@infiniteScroll(x => x, { doneText: "End of Series" })
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 

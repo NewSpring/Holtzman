@@ -11,7 +11,6 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
     static propTypes = {
       loading: PropTypes.bool,
       done: PropTypes.bool,
-      doneText: PropTypes.string,
     }
 
     componentDidMount() {
@@ -30,7 +29,7 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
       const scrollPosition = window.scrollY;
       const deviceHeight = window.outerHeight;
       const contentHeight = document.body.clientHeight;
-      const threshold = options.percent * 0.01;
+      const threshold = (options.percent || 70) * 0.01;
 
       if ((scrollPosition + deviceHeight) / contentHeight > threshold) {
         const { loading, fetchMore, done } = reducer(this.props);
@@ -44,10 +43,10 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
     }
 
     renderLoading = () => {
-      if (!this.props.loading && this.props.done && this.props.doneText) {
+      if (!this.props.loading && this.props.done && options.doneText) {
         return (
           <div className="one-whole soft-double text-center display-inline-block">
-            <h4>{this.props.doneText}</h4>
+            <h4 className="flush">{options.doneText}</h4>
           </div>
         );
       }
