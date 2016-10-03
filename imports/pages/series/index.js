@@ -3,6 +3,7 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import Meta from "../../components/meta";
 
 import Headerable from "../../mixins/mixins.Header";
 import infiniteScroll from "../../decorators/infiniteScroll";
@@ -121,6 +122,7 @@ class Template extends Component {
     const { Loading } = this.props;
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
+        <Meta title="Series" />
         <div className="background--light-secondary">
           <section className="soft-half">
             <div className="grid">
