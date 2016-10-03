@@ -6,6 +6,9 @@ import SingleVideoPlayer from "../../components/players/video/Player";
 import backgrounds from "../../util/backgrounds";
 import react from "../../util/react";
 
+// XXX Since there is only one component in render, meta has to go in this component
+import Meta from "../../components/meta";
+
 const ratio = window.isTablet ? "2:1" : "1:1";
 const StoryImage = ({ story }) => (
   <div
@@ -22,6 +25,15 @@ const StoriesContent = (props) => {
   const { story } = props;
   return (
     <div>
+      <Meta
+        title={story.title}
+        description={story.subtitle}
+        image={
+          story.content.images && story.content.images.length > 0
+            ? story.content.images[0].url
+            : null
+        }
+      />
       <section className="background--light-primary hard-sides hard-top">
         {(() => {
           if (story.content.ooyalaId.length === 0) return <StoryImage story={story} />;
