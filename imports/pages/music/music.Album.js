@@ -3,6 +3,7 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import Meta from "../../components/meta";
 
 // loading state
 import Loading from "../../components/loading";
@@ -173,6 +174,11 @@ export default class MusicAlbum extends Component {
 
     return (
       <section className="hard background--light-primary" style={getStyle()}>
+        <Meta
+          title={album.title}
+          description={`Album by ${this.props.albumArtist || "NewSpring"}`}
+          image={`url(${getUrl(mediumImage)})`}
+        />
         {/* XXX need a get blurred image helper here */}
         <div
           className={
