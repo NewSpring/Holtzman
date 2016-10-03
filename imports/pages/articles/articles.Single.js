@@ -102,7 +102,6 @@ export default class ArticlesSingle extends Component {
 
     const article = content;
     const photo = backgrounds.image(article);
-    console.log(photo);
     return (
       <div>
         <Meta
