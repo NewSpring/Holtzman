@@ -4,6 +4,7 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import Meta from "../../components/meta";
 
 // loading state
 import Loading from "../../components/loading";
@@ -138,6 +139,15 @@ export default class SeriesSingle extends Component {
     const series = content;
     return (
       <div>
+        <Meta
+          title={series.title}
+          description={series.content.description}
+          image={
+            series.content.images && series.content.images.length > 0
+              ? series.content.images[0].url
+              : null
+          }
+        />
         <div className={`${collections.classes(series)} background--light-primary`}>
           <div className={collections.classes(series)} style={this.hackBackgroundStyles()} />
           <style>{styles.overlay(series)}</style>
