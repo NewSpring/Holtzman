@@ -20,17 +20,17 @@ const LIVE_QUERY = gql`
 `;
 
 const withLive = graphql(LIVE_QUERY, {
-  name: "live",
   options: { pollInterval: 60000 },
 });
 
-@connect()
+@connect(state => ({ live: state.live }))
 @withLive
 export default class Live extends Component {
 
   static propTypes = {
     live: PropTypes.object, // eslint-disable-line
     dispatch: PropTypes.func,
+    data: PropTypes.object, // eslint-disable-line
   }
 
   componentWillUpdate(nextProps, nextState) {
