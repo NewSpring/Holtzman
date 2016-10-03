@@ -33,6 +33,9 @@ const StoriesContent = (props) => {
             ? story.content.images[0].url
             : null
         }
+        meta={[
+          { property: "og:type", content: "article" },
+        ]}
       />
       <section className="background--light-primary hard-sides hard-top">
         {(() => {
