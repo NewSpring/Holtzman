@@ -69,13 +69,6 @@ export const client = {
   wrapper,
   createReduxStore,
   wrapperProps: { client: GraphQL },
-  props: {
-    onUpdate() {
-      if (typeof ga !== "undefined") {
-        ga("send", "pageview");
-      }
-    },
-  },
 };
 
 export const server = {
