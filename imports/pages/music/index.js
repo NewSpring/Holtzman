@@ -3,6 +3,7 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import Meta from "../../components/meta";
 
 import ApollosPullToRefresh from "../../components/pullToRefresh";
 import { FeedItemSkeleton } from "../../components/loading";
@@ -122,6 +123,7 @@ class Template extends Component {
     const { Loading } = this.props;
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
+        <Meta title="Music" />
         <div className="background--light-secondary">
           <section className="soft-half">
             <div className="grid">
