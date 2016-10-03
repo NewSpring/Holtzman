@@ -82,10 +82,10 @@ export default class AudioPlayerUtility extends Component {
       return null;
     }
 
-    // if (this.player && this.player.stop) {
-    //   this.player.stop();
-    //   this.player.release();
-    // }
+    if (this.player && this.player.stop) {
+      this.player.stop();
+      // this.player.release();
+    }
 
     if (track.file.indexOf("http") === -1) {
       // eslint-disable-next-line no-param-reassign
@@ -96,8 +96,9 @@ export default class AudioPlayerUtility extends Component {
     this.props.loading();
 
     // eslint-disable-next-line
-    const Player = Meteor.isCordova ? Media : Audio;
+    const Player = (Meteor.isCordova && cordova.platformId === "ios") ? Media : Audio;
     const getProps = () => this.props;
+
     const player = new Player(track.file, () => {
       // set ready state
       this.props.ready();
@@ -192,7 +193,7 @@ export default class AudioPlayerUtility extends Component {
   }
 
   next = () => {
-    this.player.release();
+    // this.player.release();
 
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
@@ -238,7 +239,7 @@ export default class AudioPlayerUtility extends Component {
   }
 
   previous = () => {
-    this.player.release();
+    // this.player.release();
 
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
