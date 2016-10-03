@@ -3,6 +3,7 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import Accounts from "../../blocks/accounts";
 import Loading from "../../components/loading";
+import Meta from "../../components/meta";
 
 @connect(state => ({ breakpoints: state.responsive.breakpoints }))
 class Template extends Component {
@@ -18,6 +19,7 @@ class Template extends Component {
           }
           style={{ backgroundImage: "url('https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/homepage/event.auditorium.2x1_1700_850_c1.png')" }}
         >
+          <Meta title="Sign up" />
           <div className="floating__item" style={{ maxWidth: "460px" }}>
             <div className="card flush-bottom">
               <div
@@ -51,6 +53,7 @@ class Template extends Component {
             backgroundImage: "url('https://dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/homepage/event.auditorium.2x1_1700_850_c1.png')",
           }}
         >
+          <Meta title="Sign up" />
           <div className="floating__item" style={{ maxWidth: "460px" }}>
             <div className="card flush-bottom">
               <div
@@ -69,7 +72,12 @@ class Template extends Component {
       );
     }
 
-    return <Accounts />;
+    return (
+      <div>
+        <Meta title="Sign up" />
+        <Accounts />
+      </div>
+    );
   }
 }
 
