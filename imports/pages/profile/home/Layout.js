@@ -1,5 +1,5 @@
 import { PropTypes } from "react";
-import Meta from "react-helmet";
+import Meta from "../../../components/meta";
 
 import Split, { Left, Right } from "../../../blocks/split";
 import Toggle from "../../../components/controls/toggle";
@@ -11,7 +11,6 @@ const Layout = ({ photo, person, onToggle, content, onUpload }) => (
 
       <Meta
         title={person ? `${person.nickName} ${person.lastName}` : "Sign In"}
-        titleTemplate="%s | NewSpring Church"
       />
 
       <Right
