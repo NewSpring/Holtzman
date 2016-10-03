@@ -3,6 +3,7 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import Meta from "../../components/meta";
 
 // loading state
 import Split, { Left, Right } from "../../blocks/split";
@@ -101,8 +102,16 @@ export default class ArticlesSingle extends Component {
 
     const article = content;
     const photo = backgrounds.image(article);
+    console.log(photo);
     return (
       <div>
+        <Meta
+          title={article.title}
+          image={photo}
+          meta={[
+            { property: "og:type", content: "article" },
+          ]}
+        />
         <Split nav classes={["background--light-primary"]}>
           {(() => {
             if (article.content.ooyalaId.length === 0) {
