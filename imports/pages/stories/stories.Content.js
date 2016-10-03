@@ -6,6 +6,9 @@ import SingleVideoPlayer from "../../components/players/video/Player";
 import backgrounds from "../../util/backgrounds";
 import react from "../../util/react";
 
+// XXX since stories.single only returns a single component, put meta in this one
+import Meta from "../../components/meta";
+
 const ratio = window.isTablet ? "2:1" : "1:1";
 const StoryImage = ({ story }) => (
   <div
@@ -22,6 +25,17 @@ const StoriesContent = (props) => {
   const { story } = props;
   return (
     <div>
+      <Meta
+        title={story.title}
+        image={
+          story.content.images && story.content.images.length > 0
+            ? story.content.images[0].url
+            : null
+        }
+        meta={[
+          { property: "og:type", content: "article" },
+        ]}
+      />
       <section className="background--light-primary hard-sides hard-top">
         {(() => {
           if (story.content.ooyalaId.length === 0) return <StoryImage story={story} />;
