@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import SwipeViews from "react-swipe-views";
+import Meta from "../../components/meta";
 
 import Loading from "../../components/loading";
 
@@ -208,9 +209,19 @@ export default class SeriesSingle extends Component {
     }
 
     const devotion = content;
-
     return (
       <div>
+        <Meta
+          title={devotion.title}
+          image={
+              devotion.content.images && devotion.content.images.length > 0
+                ? devotion.content.images[0].url
+                : null
+          }
+          meta={[
+            { property: "og:type", content: "article" },
+          ]}
+        />
         {this.renderContent(devotion)}
       </div>
     );

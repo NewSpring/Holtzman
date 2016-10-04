@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
+import Meta from "../../components/meta";
 
 import liveActions from "../../store/live";
 import Discover from "../../blocks/discover";
@@ -39,6 +40,7 @@ class Template extends Component {
         }
         data-status-scroll-container
       >
+        <Meta title="Discover" />
         <div
           style={this.containerStyles()}
           data-status-scroll-item

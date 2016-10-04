@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
 import AccountType from "../../../components/accountType";
+import Meta from "../../../components/meta";
 
 export default class Layout extends Component {
 
@@ -87,6 +88,7 @@ export default class Layout extends Component {
 
     return (
       <div>
+        <Meta title="Review Your Contribution" />
         <div className="push-double@lap-and-up push">
           {this.header()}
         </div>
