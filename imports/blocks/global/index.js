@@ -87,7 +87,7 @@ const GlobalData = createContainer(({ dispatch }) => {
     }
   }
 
-  if (typeof fabric != "undefined") {
+  if (typeof fabric !== "undefined") {
     if (!userId) {
       fabric.Crashlytics.setUserEmail();
       fabric.Crashlytics.setUserIdentifier();

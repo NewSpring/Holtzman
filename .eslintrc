@@ -22,7 +22,8 @@
     "RoutePolicy": true,
     "StatusBar": true,
     "OO": true,
-    "RemoteCommand": true
+    "RemoteCommand": true,
+    "fabric": true,
   },
   "rules": {
     "quotes": [2, "double"],
