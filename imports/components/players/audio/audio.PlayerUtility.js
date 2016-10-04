@@ -84,7 +84,7 @@ export default class AudioPlayerUtility extends Component {
 
     if (this.player && this.player.stop) {
       this.player.stop();
-      // this.player.release();
+      this.player.release();
     }
 
     if (track.file.indexOf("http") === -1) {
@@ -193,7 +193,7 @@ export default class AudioPlayerUtility extends Component {
   }
 
   next = () => {
-    // this.player.release();
+    this.player.release();
 
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
@@ -239,7 +239,7 @@ export default class AudioPlayerUtility extends Component {
   }
 
   previous = () => {
-    // this.player.release();
+    this.player.release();
 
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
