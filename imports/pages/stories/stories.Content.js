@@ -32,6 +32,7 @@ const StoriesContent = (props) => {
             ? story.content.images[0].url
             : null
         }
+        id={story.id}
         meta={[
           { property: "og:type", content: "article" },
         ]}
