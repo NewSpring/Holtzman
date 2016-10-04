@@ -213,6 +213,7 @@ export default class SeriesSingle extends Component {
       <div>
         <Meta
           title={devotion.title}
+          id={devotion.id}
           image={
               devotion.content.images && devotion.content.images.length > 0
                 ? devotion.content.images[0].url
