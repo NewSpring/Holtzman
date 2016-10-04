@@ -107,6 +107,7 @@ export default class ArticlesSingle extends Component {
         <Meta
           title={article.title}
           image={photo}
+          id={article.id}
           meta={[
             { property: "og:type", content: "article" },
           ]}
