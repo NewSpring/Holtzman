@@ -147,6 +147,7 @@ export default class SeriesSingle extends Component {
               ? series.content.images[0].url
               : null
           }
+          id={series.id}
         />
         <div className={`${collections.classes(series)} background--light-primary`}>
           <div className={collections.classes(series)} style={this.hackBackgroundStyles()} />
