@@ -53,7 +53,7 @@ const withStories = graphql(STORIES_QUERY, {
     loading: data.loading,
     done: (
       data.content &&
-      data.loading && // XXX should probably be !data.loading after a bug in react-apollo is fixed
+      !data.loading && // XXX should probably be !data.loading after a bug in react-apollo is fixed
       data.content.length < data.variables.limit + data.variables.skip
     ),
     fetchMore: () => data.fetchMore({
@@ -70,7 +70,7 @@ const mapStateToProps = state => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withStories
-@infiniteScroll()
+@infiniteScroll(x => x, { doneText: "End of Stories" })
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 
