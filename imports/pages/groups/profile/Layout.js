@@ -8,7 +8,12 @@ const rockUrl = Meteor.settings.public.rock.baseURL;
 const Layout = ({ group, leaders, isLeader, join }) => (
   <section className="background--light-secondary hard">
     {/* Meta */}
-    <Meta title={group.name} image={group.photo} description={group.description} />
+    <Meta
+      title={group.name}
+      image={group.photo}
+      description={group.description}
+      id={group.id}
+    />
 
     {/* Hero */}
     <div

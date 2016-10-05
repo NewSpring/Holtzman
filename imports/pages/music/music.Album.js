@@ -178,6 +178,7 @@ export default class MusicAlbum extends Component {
           title={album.title}
           description={`Album by ${this.props.albumArtist || "NewSpring"}`}
           image={`url(${getUrl(mediumImage)})`}
+          id={album.id}
         />
         {/* XXX need a get blurred image helper here */}
         <div
