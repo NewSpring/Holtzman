@@ -58,7 +58,7 @@ const withSeries = graphql(SERIES_QUERY, {
     loading: data.loading,
     done: (
       data.content &&
-      data.loading && // XXX This is a bug in react-apollo, make !data.loading after fixed
+      !data.loading &&
       data.content.length < data.variables.limit + data.variables.skip
     ),
     fetchMore: () => data.fetchMore({
@@ -75,7 +75,7 @@ const mapStateToProps = state => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withSeries
-@infiniteScroll()
+@infiniteScroll(x => x, { doneText: "End of Series" })
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 

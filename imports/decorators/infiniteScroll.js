@@ -5,7 +5,8 @@ import Loading from "../components/loading";
 const defaultOptions = { percent: 70 };
 const defaultReducer = x => x;
 
-export default (reducer = defaultReducer, options = defaultOptions) => (WrappedComponent) => {
+export default (reducer = defaultReducer, options) => (WrappedComponent) => {
+  const mergedOptions = { ...defaultOptions, ...options };
   class InfiniteScrollContainer extends Component {
 
     static propTypes = {
@@ -29,7 +30,7 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
       const scrollPosition = window.scrollY;
       const deviceHeight = window.outerHeight;
       const contentHeight = document.body.clientHeight;
-      const threshold = options.percent * 0.01;
+      const threshold = (mergedOptions.percent) * 0.01;
 
       if ((scrollPosition + deviceHeight) / contentHeight > threshold) {
         const { loading, fetchMore, done } = reducer(this.props);
@@ -43,6 +44,13 @@ export default (reducer = defaultReducer, options = defaultOptions) => (WrappedC
     }
 
     renderLoading = () => {
+      if (!this.props.loading && this.props.done && mergedOptions.doneText) {
+        return (
+          <div className="one-whole soft-double text-center display-inline-block">
+            <h4 className="flush">{mergedOptions.doneText}</h4>
+          </div>
+        );
+      }
       if (!this.props.loading || this.props.done) return null;
       return (
         <div className="one-whole soft-double text-center display-inline-block">
