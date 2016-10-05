@@ -51,6 +51,7 @@ const withAlbums = graphql(ALBUMS_QUERY, {
     loading: data.loading,
     done: (
       data.content &&
+      // XXX Pagination is currently broken
       data.loading &&
       data.content.length < data.variables.limit + data.variables.skip
     ),
@@ -68,10 +69,9 @@ const mapStateToProps = state => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withAlbums
-@infiniteScroll()
+@infiniteScroll(x => x, { doneText: "End of Albums" })
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
