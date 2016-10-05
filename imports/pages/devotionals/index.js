@@ -52,7 +52,7 @@ const withDevotionals = graphql(DEVOTIONALS_QUERY, {
     loading: data.loading,
     done: (
       data.content &&
-      !data.loading && // XXX This is a bug in react-apollo, make !data.loading after fixed
+      !data.loading &&
       data.content.length < data.variables.limit + data.variables.skip
     ),
     fetchMore: () => data.fetchMore({
