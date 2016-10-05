@@ -96,7 +96,7 @@ export default class AudioPlayerUtility extends Component {
     this.props.loading();
 
     // eslint-disable-next-line
-    const Player = Meteor.isCordova ? Media : Audio;
+    const Player = (Meteor.isCordova && cordova.platformId === "ios") ? Media : Audio;
 
     const player = new Player(track.file, () => {
       // set ready state
