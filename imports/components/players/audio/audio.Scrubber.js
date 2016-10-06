@@ -58,9 +58,9 @@ export default class AudioScrubber extends Component {
   }
 
   calculatePercent = (targetElement, clickedX) => {
-    const min = targetElement.offsetParent.offsetLeft;
+    const { left } = targetElement.parentElement.getClientRects()[0];
     const range = targetElement.offsetWidth;
-    const offsetClicked = clickedX - min;
+    const offsetClicked = clickedX - left;
     let percentClicked = offsetClicked / range * 100; // eslint-disable-line
 
     if (percentClicked > 100) {
