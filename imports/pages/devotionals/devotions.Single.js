@@ -102,6 +102,16 @@ export default class SeriesSingle extends Component {
     this.props.dispatch(headerActions.hide());
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.selectedIndex !== nextState.selectedIndex) return true;
+    if (nextProps.devotion.content && this.props.devotion.content) {
+      if (nextProps.devotion.content.id === this.props.devotion.content.id) return false;
+      this.setState({ selectedIndex: 0 });
+      return true;
+    }
+    return true;
+  }
+
   componentWillUpdate(nextProps, nextState) {
     this.handleLiveBar(nextProps, nextState);
   }
