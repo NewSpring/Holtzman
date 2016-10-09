@@ -175,7 +175,8 @@ export default class AudioPlayerUtility extends Component {
   }
 
   next = () => {
-    this.player.release();
+    // XXX Warning: leaving this out may break
+    // this.player.release();
 
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
@@ -225,7 +226,7 @@ export default class AudioPlayerUtility extends Component {
   }
 
   previous = () => {
-    this.player.release();
+    // this.player.release();
 
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
