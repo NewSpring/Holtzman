@@ -82,10 +82,10 @@ export default class AudioPlayerUtility extends Component {
       return null;
     }
 
-    if (this.player && this.player.stop) {
-      this.player.stop();
-      this.player.release();
-    }
+    // if (this.player && this.player.stop) {
+    //   this.player.stop();
+    //   this.player.release();
+    // }
 
     if (track.file.indexOf("http") === -1) {
       // eslint-disable-next-line no-param-reassign
