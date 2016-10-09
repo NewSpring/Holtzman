@@ -87,9 +87,7 @@ export default class Live extends Component {
   }
 
   render() {
-    console.log(this.props.data);
     const { live, show, embedCode } = this.props.live;
-    console.log(this.props.live);
     if (!live || !show || !embedCode) return null;
 
     return (
