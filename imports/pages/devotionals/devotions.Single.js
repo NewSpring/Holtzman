@@ -106,6 +106,7 @@ export default class SeriesSingle extends Component {
     if (this.state.selectedIndex !== nextState.selectedIndex) return true;
     if (nextProps.devotion.content && this.props.devotion.content) {
       if (nextProps.devotion.content.id === this.props.devotion.content.id) return false;
+      this.setState({ selectedIndex: 0 });
       return true;
     }
     return true;
