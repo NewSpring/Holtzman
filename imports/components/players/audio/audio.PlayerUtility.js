@@ -121,7 +121,7 @@ export default class AudioPlayerUtility extends Component {
             this.play();
             return;
           }
-          for (let cb of this.endedCallbacks) cb();
+          for (const cb of this.endedCallbacks) cb();
           delete this.endedCallbacks;
           this.done = true;
         }

@@ -23,7 +23,8 @@
     "StatusBar": true,
     "OO": true,
     "RemoteCommand": true,
-    "fabric": true
+    "fabric": true,
+    "Media": true
   },
   "rules": {
     "quotes": [2, "double"],
