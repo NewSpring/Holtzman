@@ -144,7 +144,7 @@
     "norma-bower": "^0.3.8",
     "norma-meteor-run": "jbaxleyiii/norma-meteor-run",
     "raw-loader": "^0.5.1",
-    "react-storybook-addon-backgrounds": "0.0.5",
+    "react-storybook-addon-backgrounds": "0.0.6",
     "react-test-renderer": "^15.3.1",
     "rimraf": "^2.5.2",
     "sass-loader": "^4.0.2",

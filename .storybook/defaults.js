@@ -1,5 +1,5 @@
 const defaultColors = [
-  { name: "light-primary", value: "#ffffff" } ,
+  { name: "light-primary", value: "#ffffff", default: true } ,
   { name: "light-secondary", value: "#f7f7f7" },
   { name: "light-tertiary", value: "#dddddd" },
   { name: "dark-primary", value: "#303030" },
