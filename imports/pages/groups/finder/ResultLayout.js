@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 
 import { PropTypes } from "react";
-import Loading from "../../../components/loading";
 import Meta from "../../../components/meta";
 
 import Tag from "../components/Tag";
