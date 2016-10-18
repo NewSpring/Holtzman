@@ -92,20 +92,20 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
       campuses: ownProps.campuses && ownProps.campuses.split(",").filter(x => x),
     },
   }),
-  props: ({ data }) => {
-    // console.log(data);
-    return {
+  props: ({ data }) => ({
       data,
-      loading: data.loading || typeof data.loading === "undefined",
+      loading: data.loading,
       done: (
         data.groups &&
-        !data.loading &&
-        data.groups.count < data.variables.limit + data.variables.offset
+        data.groups.count === data.groups.results.length
       ),
       fetchMore: () => data.fetchMore({
         variables: { offset: data.groups.results.length },
         updateQuery: (previousResult, { fetchMoreResult }) => {
           if (!fetchMoreResult.data) { return previousResult; }
+          if (fetchMoreResult.data.groups.results === 0) {
+            fetchMoreResult.data.groups.results.push(fetchMoreResult.data.groups.results[fetchMoreResult.data.groups.results.length - 1]);
+          }
           return {
             groups: {
               count: fetchMoreResult.data.groups.count,
@@ -115,30 +115,7 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
           };
         },
       }),
-    };
-  },
-  // props: ({ data }) => ({
-  //   data,
-  //   loading: data.loading,
-  //   done: (
-  //     data.groups &&
-  //     !data.loading &&
-  //     data.groups.count < data.variables.limit + data.variables.offset
-  //   ),
-  //   fetchMore: () => data.fetchMore({
-  //     variables: { offset: data.groups.results.length },
-  //     updateQuery: (previousResult, { fetchMoreResult }) => {
-  //       if (!fetchMoreResult.data) { return previousResult; }
-  //       return {
-  //         groups: {
-  //           count: fetchMoreResult.data.groups.count,
-  //           // Append the new feed results to the old one
-  //           results: [...previousResult.groups.results, ...fetchMoreResult.data.groups.results],
-  //         },
-  //       };
-  //     },
-  //   }),
-  // }),
+  }),
 });
 
 const defaultArray = [];
