@@ -84,36 +84,61 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
   options: ownProps => ({
     ssr: false,
     variables: {
-      tags: ownProps.tags.split(",").filter(x => x),
+      tags: ownProps.tags && ownProps.tags.split(",").filter(x => x),
       query: ownProps.q,
       ip: internalIp,
       limit: 10,
       offset: 0,
-      campuses: ownProps.campuses.split(",").filter(x => x),
+      campuses: ownProps.campuses && ownProps.campuses.split(",").filter(x => x),
     },
   }),
-  props: ({ data }) => ({
-    data,
-    loading: data.loading,
-    done: (
-      data.groups &&
-      !data.loading &&
-      data.groups.count < data.variables.limit + data.variables.offset
-    ),
-    fetchMore: () => data.fetchMore({
-      variables: { offset: data.groups.results.length },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!fetchMoreResult.data) { return previousResult; }
-        return {
-          groups: {
-            count: fetchMoreResult.data.groups.count,
-            // Append the new feed results to the old one
-            results: [...previousResult.groups.results, ...fetchMoreResult.data.groups.results],
-          },
-        };
-      },
-    }),
-  }),
+  props: ({ data }) => {
+    // console.log(data);
+    return {
+      data,
+      loading: data.loading || typeof data.loading === "undefined",
+      done: (
+        data.groups &&
+        !data.loading &&
+        data.groups.count < data.variables.limit + data.variables.offset
+      ),
+      fetchMore: () => data.fetchMore({
+        variables: { offset: data.groups.results.length },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          if (!fetchMoreResult.data) { return previousResult; }
+          return {
+            groups: {
+              count: fetchMoreResult.data.groups.count,
+              // Append the new feed results to the old one
+              results: [...previousResult.groups.results, ...fetchMoreResult.data.groups.results],
+            },
+          };
+        },
+      }),
+    };
+  },
+  // props: ({ data }) => ({
+  //   data,
+  //   loading: data.loading,
+  //   done: (
+  //     data.groups &&
+  //     !data.loading &&
+  //     data.groups.count < data.variables.limit + data.variables.offset
+  //   ),
+  //   fetchMore: () => data.fetchMore({
+  //     variables: { offset: data.groups.results.length },
+  //     updateQuery: (previousResult, { fetchMoreResult }) => {
+  //       if (!fetchMoreResult.data) { return previousResult; }
+  //       return {
+  //         groups: {
+  //           count: fetchMoreResult.data.groups.count,
+  //           // Append the new feed results to the old one
+  //           results: [...previousResult.groups.results, ...fetchMoreResult.data.groups.results],
+  //         },
+  //       };
+  //     },
+  //   }),
+  // }),
 });
 
 const defaultArray = [];
@@ -121,7 +146,7 @@ const defaultArray = [];
 @withCampusLocations // enables this query to be static
 @connect(mapStateToProps)
 @withGroupFinder
-@infiniteScroll()
+@infiniteScroll(x => x, { doneText: "No more groups" })
 export default class Template extends Component {
 
   static propTypes = {
@@ -131,9 +156,10 @@ export default class Template extends Component {
     location: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
     done: PropTypes.bool,
+    loading: PropTypes.bool,
+    Loading: PropTypes.func,
     /* eslint-disable */
     data: PropTypes.shape({
-      loading: PropTypes.bool,
       groups: PropTypes.shape({
         count: PropTypes.number,
         results: PropTypes.array,
@@ -189,7 +215,7 @@ export default class Template extends Component {
   }
 
   render() {
-    const { data, tags, campusLocations, campuses, q, done } = this.props;
+    const { data, tags, campusLocations, campuses, q, done, Loading, loading } = this.props;
     let count;
     let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
@@ -223,7 +249,8 @@ export default class Template extends Component {
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-            loading={data.loading}
+            loading={loading}
+            Loading={Loading}
             groups={groups}
             count={count}
             tags={tags && tags.split(",").filter(x => x)}

@@ -13,6 +13,7 @@ const Layout = ({
   groups,
   tags,
   loading,
+  Loading,
   count,
   query,
   campuses,
@@ -104,16 +105,6 @@ const Layout = ({
         );
       })()}
 
-      {/* Loading */}
-      {(() => {
-        if (!loading) return null;
-        return (
-          <div className="one-whole text-center soft-ends">
-            <Loading />
-          </div>
-        );
-      })()}
-
       {/* Results */}
 
       {groups.map((group, key) => (
@@ -136,38 +127,21 @@ const Layout = ({
         );
       })()}
 
-      {/* Load more */}
+      {/* Loading */}
+      <Loading />
+
       <div className="one-whole text-center push-bottom">
         {(() => {
-          if (loading && !groups.length) return null;
-          if (count === groups.length) {
-            return (
-              <button className="disabled btn" disabled>
-                No more groups
-              </button>
-            );
-          }
-
-          if (loading) {
-            return (
-              <button className="disabled btn" disabled>
-                Loading...
-              </button>
-            );
-          }
-
-          if (!groups.length) {
-            return (
-              <div className="card push-top">
-                <div className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up">
-                  <p className="flush hard"><em><small>
-                    Unfortunately, we didn't find any groups matching your search. You can start a group <a href="https://rock.newspring.cc/workflows/81">here!</a>
-                  </small></em></p>
-                </div>
+          if (loading || groups.length) return null;
+          return (
+            <div className="card push-top">
+              <div className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up">
+                <p className="flush hard"><em><small>
+                  Unfortunately, we didn't find any groups matching your search. You can start a group <a href="https://rock.newspring.cc/workflows/81">here!</a>
+                </small></em></p>
               </div>
-            );
-          }
-          return null;
+            </div>
+          );
         })()}
       </div>
 

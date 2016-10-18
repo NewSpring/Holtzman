@@ -14,6 +14,8 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
       done: PropTypes.bool,
     }
 
+    state = { loading: false }
+
     componentDidMount() {
       if (typeof window !== "undefined" && window !== null) {
         window.addEventListener("scroll", this.bindPageOnScroll); // eslint-disable-line
@@ -36,22 +38,31 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
         const { loading, fetchMore, done } = reducer(this.props);
         // if the query is in flight, hold off
         if (loading || done) return null;
+        if (this.state.loading) return null;
 
+        this.setState({ loading: true });
         // fetch more goodness
-        fetchMore();
+        fetchMore()
+          .then((x) => {
+            this.setState({ loading: false });
+            return x;
+          });
       }
       return null;
     }
 
     renderLoading = () => {
-      if (!this.props.loading && this.props.done && mergedOptions.doneText) {
+      const { loading, done } = reducer(this.props);
+      console.log(loading, done, this.state.loading)
+      // const loading = this.state.loading ? this.state.loading : this.props.loading;
+      if (!loading && done && mergedOptions.doneText) {
         return (
           <div className="one-whole soft-double text-center display-inline-block">
             <h4 className="flush">{mergedOptions.doneText}</h4>
           </div>
         );
       }
-      if (!this.props.loading || this.props.done) return null;
+      if (!loading || done) return null;
       return (
         <div className="one-whole soft-double text-center display-inline-block">
           <Loading />
