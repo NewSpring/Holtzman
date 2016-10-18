@@ -13,7 +13,7 @@ const Layout = ({
   groups,
   tags,
   loading,
-  Loading,
+  LoadingComponent,
   count,
   query,
   campuses,
@@ -128,7 +128,7 @@ const Layout = ({
       })()}
 
       {/* Loading */}
-      <Loading />
+      <LoadingComponent />
 
       <div className="one-whole text-center push-bottom">
         {(() => {
@@ -188,6 +188,7 @@ Layout.propTypes = {
   toggleTags: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
   campuses: PropTypes.array,
+  LoadingComponent: PropTypes.func,
 };
 
 export default Layout;

@@ -53,16 +53,17 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
 
     renderLoading = () => {
       const { loading, done } = reducer(this.props);
-      // console.log(loading, done, this.state.loading);
-      // const loading = this.state.loading ? this.state.loading : this.props.loading;
-      if (!loading && done && mergedOptions.doneText) {
+      let isLoading = loading;
+      if (!isLoading) isLoading = this.state.loading;
+
+      if (!isLoading && done && mergedOptions.doneText) {
         return (
           <div className="one-whole soft-double text-center display-inline-block">
             <h4 className="flush">{mergedOptions.doneText}</h4>
           </div>
         );
       }
-      if (!loading || done) return null;
+      if (!isLoading || done) return null;
       return (
         <div className="one-whole soft-double text-center display-inline-block">
           <Loading />

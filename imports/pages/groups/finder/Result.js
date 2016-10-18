@@ -227,7 +227,7 @@ export default class Template extends Component {
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
             loading={loading}
-            Loading={Loading}
+            LoadingComponent={Loading}
             groups={groups}
             count={count}
             tags={tags && tags.split(",").filter(x => x)}
