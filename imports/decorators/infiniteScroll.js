@@ -59,7 +59,7 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
       if (!isLoading && done && mergedOptions.doneText) {
         return (
           <div className="one-whole soft-double text-center display-inline-block">
-            <h4 className="flush">{mergedOptions.doneText}</h4>
+            <p className="flush"><small><em>{mergedOptions.doneText}</em></small></p>
           </div>
         );
       }
