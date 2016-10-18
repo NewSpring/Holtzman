@@ -10,8 +10,8 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
   class InfiniteScrollContainer extends Component {
 
     static propTypes = {
-      loading: PropTypes.bool,
-      done: PropTypes.bool,
+      loading: PropTypes.bool, // eslint-disable-line
+      done: PropTypes.bool, // eslint-disable-line
     }
 
     state = { loading: false }
@@ -53,7 +53,7 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
 
     renderLoading = () => {
       const { loading, done } = reducer(this.props);
-      console.log(loading, done, this.state.loading)
+      // console.log(loading, done, this.state.loading);
       // const loading = this.state.loading ? this.state.loading : this.props.loading;
       if (!loading && done && mergedOptions.doneText) {
         return (
