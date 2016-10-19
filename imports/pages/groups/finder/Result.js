@@ -123,7 +123,7 @@ const defaultArray = [];
 @withCampusLocations // enables this query to be static
 @connect(mapStateToProps)
 @withGroupFinder
-@infiniteScroll(x => x, { doneText: "No more groups" })
+@infiniteScroll((x) => x, { doneText: "No more groups" })
 export default class Template extends Component {
 
   static propTypes = {

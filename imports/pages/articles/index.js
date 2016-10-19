@@ -74,7 +74,7 @@ const mapStateToProps = (state) => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withArticles
-@infiniteScroll(x => x, { doneText: "End of Articles" })
+@infiniteScroll((x) => x, { doneText: "End of Articles" })
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 

@@ -69,7 +69,7 @@ const mapStateToProps = (state) => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withDevotionals
-@infiniteScroll(x => x, { doneText: "End of Devotionals" })
+@infiniteScroll((x) => x, { doneText: "End of Devotionals" })
 @ReactMixin.decorate(Headerable)
 class Devotions extends Component {
 
