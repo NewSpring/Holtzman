@@ -84,12 +84,12 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
   options: ownProps => ({
     ssr: false,
     variables: {
-      tags: ownProps.tags.split(",").filter(x => x),
+      tags: ownProps.tags && ownProps.tags.split(",").filter(x => x),
       query: ownProps.q,
       ip: internalIp,
       limit: 10,
       offset: 0,
-      campuses: ownProps.campuses.split(",").filter(x => x),
+      campuses: ownProps.campuses && ownProps.campuses.split(",").filter(x => x),
     },
   }),
   props: ({ data }) => ({
@@ -97,13 +97,15 @@ const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
     loading: data.loading,
     done: (
       data.groups &&
-      !data.loading &&
-      data.groups.count < data.variables.limit + data.variables.offset
+      data.groups.count === data.groups.results.length
     ),
     fetchMore: () => data.fetchMore({
       variables: { offset: data.groups.results.length },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         if (!fetchMoreResult.data) { return previousResult; }
+        if (fetchMoreResult.data.groups.results === 0) {
+          fetchMoreResult.data.groups.results.push(fetchMoreResult.data.groups.results[fetchMoreResult.data.groups.results.length - 1]);
+        }
         return {
           groups: {
             count: fetchMoreResult.data.groups.count,
@@ -121,7 +123,7 @@ const defaultArray = [];
 @withCampusLocations // enables this query to be static
 @connect(mapStateToProps)
 @withGroupFinder
-@infiniteScroll()
+@infiniteScroll(x => x, { doneText: "No more groups" })
 export default class Template extends Component {
 
   static propTypes = {
@@ -131,9 +133,10 @@ export default class Template extends Component {
     location: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
     done: PropTypes.bool,
+    loading: PropTypes.bool,
+    Loading: PropTypes.func,
     /* eslint-disable */
     data: PropTypes.shape({
-      loading: PropTypes.bool,
       groups: PropTypes.shape({
         count: PropTypes.number,
         results: PropTypes.array,
@@ -189,7 +192,7 @@ export default class Template extends Component {
   }
 
   render() {
-    const { data, tags, campusLocations, campuses, q, done } = this.props;
+    const { data, tags, campusLocations, campuses, q, done, Loading, loading } = this.props;
     let count;
     let groups = defaultArray;
     if (data.groups && data.groups.count) count = data.groups.count;
@@ -223,7 +226,8 @@ export default class Template extends Component {
         </Split>
         <Left scroll classes={["background--light-secondary"]}>
           <Layout
-            loading={data.loading}
+            loading={loading}
+            LoadingComponent={Loading}
             groups={groups}
             count={count}
             tags={tags && tags.split(",").filter(x => x)}

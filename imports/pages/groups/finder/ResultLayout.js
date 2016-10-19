@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 
 import { PropTypes } from "react";
-import Loading from "../../../components/loading";
 import Meta from "../../../components/meta";
 
 import Tag from "../components/Tag";
@@ -13,6 +12,7 @@ const Layout = ({
   groups,
   tags,
   loading,
+  LoadingComponent,
   count,
   query,
   campuses,
@@ -104,16 +104,6 @@ const Layout = ({
         );
       })()}
 
-      {/* Loading */}
-      {(() => {
-        if (!loading) return null;
-        return (
-          <div className="one-whole text-center soft-ends">
-            <Loading />
-          </div>
-        );
-      })()}
-
       {/* Results */}
 
       {groups.map((group, key) => (
@@ -136,38 +126,21 @@ const Layout = ({
         );
       })()}
 
-      {/* Load more */}
+      {/* Loading */}
+      <LoadingComponent />
+
       <div className="one-whole text-center push-bottom">
         {(() => {
-          if (loading && !groups.length) return null;
-          if (count === groups.length) {
-            return (
-              <button className="disabled btn" disabled>
-                No more groups
-              </button>
-            );
-          }
-
-          if (loading) {
-            return (
-              <button className="disabled btn" disabled>
-                Loading...
-              </button>
-            );
-          }
-
-          if (!groups.length) {
-            return (
-              <div className="card push-top">
-                <div className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up">
-                  <p className="flush hard"><em><small>
-                    Unfortunately, we didn't find any groups matching your search. You can start a group <a href="https://rock.newspring.cc/workflows/81">here!</a>
-                  </small></em></p>
-                </div>
+          if (loading || groups.length) return null;
+          return (
+            <div className="card push-top">
+              <div className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up">
+                <p className="flush hard"><em><small>
+                  Unfortunately, we didn't find any groups matching your search. You can start a group <a href="https://rock.newspring.cc/workflows/81">here!</a>
+                </small></em></p>
               </div>
-            );
-          }
-          return null;
+            </div>
+          );
         })()}
       </div>
 
@@ -214,6 +187,7 @@ Layout.propTypes = {
   toggleTags: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
   campuses: PropTypes.array,
+  LoadingComponent: PropTypes.func,
 };
 
 export default Layout;

@@ -28,6 +28,8 @@ export default function run(routes, clientOptions = {}) {
     if (typeof clientOptions.createReduxStore !== "undefined") {
       InjectData.getData("redux-initial-state", (data) => {
         const initialState = data ? JSON.parse(data) : undefined;
+        // XXX why does this not get mapped correctly in AC?
+        if (initialState) initialState.apollo.queries = {};
         reduxStore = clientOptions.createReduxStore(initialState, history);
       });
     }
