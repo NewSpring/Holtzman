@@ -21,7 +21,7 @@ const voidTransaction = (transactionId, callback) => {
       "Content-Type": "text/xml",
     },
   })
-  .then(response => response.text())
+  .then((response) => response.text())
   .then((response) => {
     let data = response;
     try {

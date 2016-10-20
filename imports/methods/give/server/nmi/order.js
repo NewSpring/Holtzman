@@ -52,7 +52,7 @@ const step2 = (purchaseData, method, callback) => {
       "Content-Type": "text/xml",
     },
   })
-  .then(response => response.text())
+  .then((response) => response.text())
   .then((r) => {
     let data = r;
     try {

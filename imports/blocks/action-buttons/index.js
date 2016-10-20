@@ -35,7 +35,7 @@ const SAVED_ACCTS_QUERY = gql`
 // XXX remove cache: false when heighliner caching is tested
 const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
   name: "savedPayments",
-  options: ownProps => ({
+  options: (ownProps) => ({
     variables: {
       skip: !ownProps.authorized,
     },
@@ -52,7 +52,7 @@ const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
   3. Give as guest (in small text) if not signed in
 
 */
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   authorized: store.accounts.authorized,
   savedAccount: store.give.savedAccount,
 });

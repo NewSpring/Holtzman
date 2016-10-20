@@ -81,15 +81,15 @@ const GROUP_FINDER_QUERY = gql`
 `;
 
 const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
-  options: ownProps => ({
+  options: (ownProps) => ({
     ssr: false,
     variables: {
-      tags: ownProps.tags && ownProps.tags.split(",").filter(x => x),
+      tags: ownProps.tags && ownProps.tags.split(",").filter((x) => x),
       query: ownProps.q,
       ip: internalIp,
       limit: 10,
       offset: 0,
-      campuses: ownProps.campuses && ownProps.campuses.split(",").filter(x => x),
+      campuses: ownProps.campuses && ownProps.campuses.split(",").filter((x) => x),
     },
   }),
   props: ({ data }) => ({
@@ -123,7 +123,7 @@ const defaultArray = [];
 @withCampusLocations // enables this query to be static
 @connect(mapStateToProps)
 @withGroupFinder
-@infiniteScroll(x => x, { doneText: "No more groups" })
+@infiniteScroll((x) => x, { doneText: "No more groups" })
 export default class Template extends Component {
 
   static propTypes = {
@@ -163,20 +163,20 @@ export default class Template extends Component {
     this.setState({ hover: id });
   }
 
-  onMarkerHover =marker => this.setState({ hover: marker.id })
+  onMarkerHover =(marker) => this.setState({ hover: marker.id })
 
   getMarkers = (groups = []) => {
     const markers = [];
     return _.uniq(markers.concat(groups
-      .filter(x => x.locations && x.locations.length && x.locations[0].location)
-      .map(x => ({
+      .filter((x) => x.locations && x.locations.length && x.locations[0].location)
+      .map((x) => ({
         latitude: x.locations[0].location.latitude,
         longitude: x.locations[0].location.longitude,
         id: x.id,
         // children: this.createChild(x),
       }))
-      .filter(x => x.latitude && x.longitude)
-    ), x => x.id);
+      .filter((x) => x.latitude && x.longitude)
+    ), (x) => x.id);
   }
 
   toggleSearch = () => this.setState({ showSearch: !this.state.showSearch })
@@ -230,8 +230,8 @@ export default class Template extends Component {
             LoadingComponent={Loading}
             groups={groups}
             count={count}
-            tags={tags && tags.split(",").filter(x => x)}
-            campuses={campuses && campuses.split(",").filter(x => x)}
+            tags={tags && tags.split(",").filter((x) => x)}
+            campuses={campuses && campuses.split(",").filter((x) => x)}
             campusLocations={campusLocations}
             query={q}
             done={done}

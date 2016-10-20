@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { ImageLoader } from "../loading";
 // import Styles from "../loading/FeedItemSkeleton-css";
 
-const Wrapper = props => (
+const Wrapper = (props) => (
   <div {...props}>
     {props.children}
   </div>

@@ -8,7 +8,7 @@ import AudioPlayerUtility from "./audio.PlayerUtility";
 import { actions as audioActions } from "../../../store/audio";
 import { modal, nav as navActions } from "../../../store";
 
-const mapStateToProps = state =>
+const mapStateToProps = (state) =>
   ({
     audio: state.audio,
     modal: state.modal,

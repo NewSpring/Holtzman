@@ -162,7 +162,7 @@ export default class Payment extends Component {
     const { id } = target;
 
     let isValid = false;
-    const notEmpty = inputVal => (inputVal.length > 0);
+    const notEmpty = (inputVal) => (inputVal.length > 0);
     const validationMap = {
       accountNumber: notEmpty,
       routingNumber: notEmpty,
@@ -264,7 +264,7 @@ export default class Payment extends Component {
               defaultValue={payment.expiration}
               format={this.formatExp}
               onChange={this.saveData}
-              validation={value => (value.length > 0)}
+              validation={(value) => (value.length > 0)}
               ref="expiration"
               data-expiry-input
             />
@@ -396,7 +396,7 @@ export default class Payment extends Component {
             } else {
               btnClasses.push("btn--disabled");
               disabled = true;
-              submit = e => (e.preventDefault());
+              submit = (e) => (e.preventDefault());
             }
 
             return (

@@ -49,7 +49,7 @@ Parser.registerFilters({ ...caseChangedFilter,
     Attribute(variable, key) {
       if (variable === "Global") {
         const global = this.context.findVariable("GlobalAttribute");
-        return global.then(response => response[key]);
+        return global.then((response) => response[key]);
       }
       return null;
     },

@@ -16,10 +16,10 @@ export default class AudioControls extends Component {
     dispatch: PropTypes.func,
   }
 
-  getTertiaryTextColor = dark =>
+  getTertiaryTextColor = (dark) =>
     (dark ? { color: "rgba(255,255,255,.5)" } : { color: "rgba(0,0,0,.5)" });
 
-  getPrimaryTextColor = dark =>
+  getPrimaryTextColor = (dark) =>
     (dark ? { color: "rgba(255,255,255,1)" } : { color: "rgba(0,0,0,1)" });
 
   getTertiaryTextClass = () =>
@@ -92,7 +92,7 @@ export default class AudioControls extends Component {
   listDetail = () => {
     const { album, track } = this.props.audio.playing;
 
-    const trackNumber = album.content.tracks.findIndex(current => current.title === track.title);
+    const trackNumber = album.content.tracks.findIndex((current) => current.title === track.title);
 
     this.props.dispatch(modal.render(ListDetail, {
       color: "background--dark-primary",
@@ -129,7 +129,7 @@ export default class AudioControls extends Component {
       "icon-skip-next",
     ].join(" ");
 
-  toggleClasses = toggleIcon =>
+  toggleClasses = (toggleIcon) =>
     [
       "soft-sides",
       "flush",

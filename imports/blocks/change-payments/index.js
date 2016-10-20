@@ -5,7 +5,7 @@ import { modal, give as giveActions } from "../../store";
 
 import AccountType from "../../components/accountType";
 
-const map = state => ({
+const map = (state) => ({
   savedAccount: state.give.savedAccount,
 });
 @connect(map)

@@ -14,7 +14,7 @@ export default class Filter extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.family.length !== nextProps.family.length) {
-      this.setState({ people: nextProps.family.map(x => x.person.id) });
+      this.setState({ people: nextProps.family.map((x) => x.person.id) });
     }
   }
 
@@ -162,7 +162,7 @@ export default class Filter extends Component {
                     defaultValue={this.state.start}
                     onBlur={this.saveData}
                     errorText="Please enter a start date"
-                    validation={value => (value.length === 0 || value.length === 5)}
+                    validation={(value) => (value.length === 0 || value.length === 5)}
                   />
                 </div>
                 <div
@@ -177,7 +177,7 @@ export default class Filter extends Component {
                     defaultValue={this.state.end}
                     onBlur={this.saveData}
                     errorText="Please enter an end date"
-                    validation={value => (value.length === 0 || value.length === 5)}
+                    validation={(value) => (value.length === 0 || value.length === 5)}
                   />
                 </div>
               </div>

@@ -32,7 +32,7 @@ const step1 = (token, callback) => {
       "Content-Type": "text/xml",
     },
   })
-  .then(response => response.text())
+  .then((response) => response.text())
   .then((response) => {
     let data = response;
     // clean all tags to make sure they are parseable

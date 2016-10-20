@@ -8,7 +8,7 @@ import Success from "../../../blocks/give/Success";
 
 import { give as giveActions, nav as navActions } from "../../../store";
 
-const mapStateToProps = state => ({ give: state.give });
+const mapStateToProps = (state) => ({ give: state.give });
 @connect(mapStateToProps)
 class Template extends Component {
 

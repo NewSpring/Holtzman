@@ -29,6 +29,7 @@
     "transform-decorators-legacy",
     "react-require",
     "react-remove-prop-types",
-    "transform-dead-code-elimination"
+    "transform-dead-code-elimination",
+    "transform-flow-strip-types"
   ]
 }

@@ -27,6 +27,7 @@
     "Media": true
   },
   "rules": {
+    "arrow-parens": [2, "always"],
     "quotes": [2, "double"],
     "import/no-unresolved": [2, { "ignore": [
       "^meteor/*", "^/imports/*"
@@ -36,7 +37,16 @@
     "react/no-string-refs": 0,
     "react/forbid-prop-types": 0,
     "class-methods-use-this": 0,
-    "jsx-a11y/no-static-element-interactions": 0
+    "jsx-a11y/no-static-element-interactions": 0,
+    "react/sort-comp": [1, {
+      order: [
+        'type-annotations',
+        'static-methods',
+        'lifecycle',
+        'everything-else',
+        'render',
+      ],
+    }]
   },
   "settings": {
     "import/core-modules": [

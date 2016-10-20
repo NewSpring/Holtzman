@@ -66,11 +66,11 @@ const withStories = graphql(STORIES_QUERY, {
   }),
 });
 
-const mapStateToProps = state => ({ paging: state.paging });
+const mapStateToProps = (state) => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withStories
-@infiniteScroll(x => x, { doneText: "End of Stories" })
+@infiniteScroll((x) => x, { doneText: "End of Stories" })
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
 

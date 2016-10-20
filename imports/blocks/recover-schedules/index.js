@@ -9,7 +9,7 @@ import Later from "./Later";
 import Remind from "./Remind";
 import Recover from "./Recover";
 
-const map = store => ({ give: store.give });
+const map = (store) => ({ give: store.give });
 @connect(map)
 export default class RecoverSchedules extends Component {
 

@@ -4,7 +4,7 @@ import Debouncer from "../../util/debounce";
 import actions from "./actions";
 
 let bound = false;
-const responsiveBindings = store => next => (action) => {
+const responsiveBindings = (store) => (next) => (action) => {
   if (bound) { return next(action); }
   bound = true;
 

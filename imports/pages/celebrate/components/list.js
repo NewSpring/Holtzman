@@ -102,7 +102,7 @@ ListItem.propTypes = {
 };
 
 
-const map = store => ({
+const map = (store) => ({
   width: store.responsive.width,
 });
 const List = ({ items }) => {

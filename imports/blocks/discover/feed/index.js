@@ -49,8 +49,8 @@ export default class Discover extends Component {
     const { discover } = this.props;
     if (discover.loading) return null; // XXX <Loading />
 
-    const featured = discover.items.filter(x => (x.status.toLowerCase() === "featured"));
-    const open = discover.items.filter(x => (x.status.toLowerCase() === "open"));
+    const featured = discover.items.filter((x) => (x.status.toLowerCase() === "featured"));
+    const open = discover.items.filter((x) => (x.status.toLowerCase() === "open"));
 
     const featuredItem = featured[0];
     const recommendedItems = [...featured.slice(1, featured.length - 1)];

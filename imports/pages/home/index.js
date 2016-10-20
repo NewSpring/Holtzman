@@ -61,7 +61,7 @@ const contentFragment = createFragment(gql`
 `);
 
 const withFeedContent = graphql(CONTENT_FEED_QUERY, {
-  options: ownProps => ({
+  options: (ownProps) => ({
     fragments: [contentFragment],
     variables: {
       excludeChannels: ownProps.topics,
@@ -83,7 +83,7 @@ const withFeedContent = graphql(CONTENT_FEED_QUERY, {
   }),
 });
 
-@connect(state => ({ topics: state.topics.topics }))
+@connect((state) => ({ topics: state.topics.topics }))
 @withFeedContent
 @infiniteScroll()
 @ReactMixin.decorate(Headerable)

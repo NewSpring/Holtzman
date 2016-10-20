@@ -6,7 +6,7 @@ import { give as giveActions } from "../../store";
 import Layout from "./Layout";
 
 // We only care about the give state
-const map = state => ({ give: state.give });
+const map = (state) => ({ give: state.give });
 
 @connect(map, giveActions)
 export default class CartContainer extends Component {
@@ -123,7 +123,7 @@ export default class CartContainer extends Component {
   render() {
     const { total } = this.props.give;
     if (!this.props.accounts) return null;
-    const accounts = this.props.accounts.map(x => ({
+    const accounts = this.props.accounts.map((x) => ({
       label: x.name,
       value: x.id,
     }));

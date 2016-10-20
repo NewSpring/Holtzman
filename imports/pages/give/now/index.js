@@ -50,7 +50,7 @@ const TemplateWithData = createContainer(() => {
   try { alive = serverWatch.isAlive("ROCK"); } catch (e) { /* do nothing */ }
   return { alive };
 },
-  (props => <Page {...props} />)
+  ((props) => <Page {...props} />)
 );
 
 

@@ -50,7 +50,7 @@ export default class SubFund extends Component {
   }
 
   getFund = (id) => {
-    const selectedFund = this.props.accounts.filter(fund => (
+    const selectedFund = this.props.accounts.filter((fund) => (
       `${fund.value}` === `${id}`
     ));
     return selectedFund[0];

@@ -66,11 +66,11 @@ const withAlbums = graphql(ALBUMS_QUERY, {
   }),
 });
 
-const mapStateToProps = state => ({ paging: state.paging });
+const mapStateToProps = (state) => ({ paging: state.paging });
 
 @connect(mapStateToProps)
 @withAlbums
-@infiniteScroll(x => x, { doneText: "End of Albums" })
+@infiniteScroll((x) => x, { doneText: "End of Albums" })
 @ReactMixin.decorate(Headerable)
 class Template extends Component {
   static propTypes = {
@@ -97,8 +97,8 @@ class Template extends Component {
 
     if (content) {
       loading = false;
-      items = _.filter(content, item => (
-        _.any(item.content.tracks, track => !!track.file)
+      items = _.filter(content, (item) => (
+        _.any(item.content.tracks, (track) => !!track.file)
       ));
     }
 

@@ -57,12 +57,12 @@ const DEVOTIONAL_QUERY = gql`
 
 const withDevotional = graphql(DEVOTIONAL_QUERY, {
   name: "devotion",
-  options: ownProps => ({
+  options: (ownProps) => ({
     variables: { id: ownProps.params.id },
   }),
 });
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   modal: { visible: state.modal.visible },
   live: state.live,
 });

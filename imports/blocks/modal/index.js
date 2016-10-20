@@ -5,7 +5,7 @@ import { modal as modalActions, nav as navActions } from "../../store";
 
 import Modal from "./Modal";
 
-const map = state => ({
+const map = (state) => ({
   navigation: state.nav,
   modal: state.modal,
   path: state.routing.path,
@@ -61,7 +61,7 @@ export default class SideModalContainer extends Component {
       const root = document.documentElement;
 
       if (!nextProps.modal.visible) {
-        root.className = root.className.split(" ").filter(className =>
+        root.className = root.className.split(" ").filter((className) =>
           className !== "modal--opened"
         ).join(" ");
       } else if (!this.props.modal.visible && nextProps.modal.visible) {

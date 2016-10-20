@@ -52,7 +52,7 @@ const Layout = ({
         return (
           <button
             disabled={!canSearchTags}
-            onClick={e => submitTags(e)}
+            onClick={(e) => submitTags(e)}
             className={classes.join(" ")}
           >
             Let's Go!
@@ -78,7 +78,7 @@ const Layout = ({
             "display-inline-block",
             "push-bottom",
           ]}
-          submit={e => findByQuery(e)}
+          submit={(e) => findByQuery(e)}
           action
         >
           <Forms.Input
@@ -87,7 +87,7 @@ const Layout = ({
             placeholder="Type your search here..."
             type="text"
             name="search"
-            onChange={e => inputOnChange(e)}
+            onChange={(e) => inputOnChange(e)}
           />
           <div className="one-whole text-center@handheld text-left@lap-and-up">
             <h6><em>Find a group by zipcode, name, campus, or description</em></h6>

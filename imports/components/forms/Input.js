@@ -239,7 +239,7 @@ export default class Input extends Component {
 
 
         <input
-          ref={node => (this.node = node)}
+          ref={(node) => (this.node = node)}
           id={this.props.id || this.props.name || this.props.label}
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}

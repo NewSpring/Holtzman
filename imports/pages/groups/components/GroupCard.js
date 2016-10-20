@@ -55,7 +55,7 @@ export default withRouter(({ group, router, onHover }) => {
 
         {/* Tags */}
         <div className="soft-half-top">
-          {theGroup.tags && theGroup.tags.filter(x => x).map((tag, i) => (
+          {theGroup.tags && theGroup.tags.filter((x) => x).map((tag, i) => (
             <Tag val={tag.value} key={i} />
           ))}
           {(() => {

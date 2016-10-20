@@ -49,7 +49,7 @@ const FINANCIAL_ACCOUNTS_QUERY = gql`
 
 const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" });
 
-const mapStateToProps = store => ({ give: store.give });
+const mapStateToProps = (store) => ({ give: store.give });
 const defaultArray = [];
 
 @connect(mapStateToProps)

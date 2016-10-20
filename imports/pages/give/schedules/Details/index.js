@@ -70,7 +70,7 @@ const SCHEDULE_TRANSACTION_QUERY = gql`
 `;
 
 const withScheduleTransaction = graphql(SCHEDULE_TRANSACTION_QUERY, {
-  options: ownProps => ({
+  options: (ownProps) => ({
     variables: { scheduleTransactionId: ownProps.params.id },
     forceFetch: true,
   }),

@@ -34,7 +34,7 @@ const defaultTags = [];
 @withRouter
 @withAttributes
 @withCampusLocations
-@connect(state => ({ location: state.routing.location }))
+@connect((state) => ({ location: state.routing.location }))
 export default class Filter extends Component {
 
   static propTypes = {
@@ -135,7 +135,7 @@ export default class Filter extends Component {
 
               <Forms.Form
                 classes={["hard", "display-inline-block", "one-whole"]}
-                submit={e => this.findByQuery(e)}
+                submit={(e) => this.findByQuery(e)}
                 action
               >
                 <i className="icon-search locked-left soft-half-left" />
@@ -159,7 +159,7 @@ export default class Filter extends Component {
                   placeholder="Type your search here..."
                   type="text"
                   defaultValue={q}
-                  onChange={e => this.inputOnChange(e)}
+                  onChange={(e) => this.inputOnChange(e)}
                   autoFocus
                 />
 

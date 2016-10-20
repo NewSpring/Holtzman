@@ -10,7 +10,7 @@ import AudioControls from "./audio.Controls";
 import AudioTitle from "./audio.Title";
 import Styles from "./audio.styles.fullPlayer";
 
-const mapStateToProps = state =>
+const mapStateToProps = (state) =>
   ({
     ...state.audio,
     header: state.header,

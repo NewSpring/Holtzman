@@ -17,7 +17,7 @@ const topics = [
 ];
 
 // XXX make this dynamic via heighliner
-const map = state => ({ topics: state.topics.topics });
+const map = (state) => ({ topics: state.topics.topics });
 @connect(map)
 export default class FollowingContainer extends Component {
 
