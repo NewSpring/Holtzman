@@ -58,7 +58,7 @@ URLPREFIX="my"
 TLD="cc"
 ### XXX make this native
 if [ "$DEST" = "native" ]; then URLPREFIX="app"; fi
-if [ "$DEST" = "native" ]; then TLD="io"; fi
+if [ "$CHANNEL" = "alpha" ]; then TLD="io"; fi
 METEOR_SETTINGS_PATH="$TRAVIS_BUILD_DIR/.remote/settings/sites/$APP/$CHANNEL.settings.json"
 ROOT_URL="https://$CHANNEL-$URLPREFIX.newspring.$TLD"
 if [ "$DEST" = "web" ] && [ "$CHANNEL" = "production" ]; then
@@ -140,8 +140,8 @@ yecho "### Building for linux environment https://$CHANNEL-$URLPREFIX.newspring.
 
 if [ "$DEST" = "native" ]; then
   yecho "### Building meteor for env $DEST ###"
-  # XXX pass env vars through launch
-  NATIVE=true meteor build .build --architecture os.linux.x86_64 --server $ROOT_URL --mobile-settings $METEOR_SETTINGS_PATH
+  NATIVE=true launch build $ROOT_URL $METEOR_SETTINGS_PATH
+  # NATIVE=true meteor build .build --architecture os.linux.x86_64 --server $ROOT_URL --mobile-settings $METEOR_SETTINGS_PATH
 fi
 if [ "$DEST" = "web" ]; then
   yecho "### Removing cordova platforms ###"
