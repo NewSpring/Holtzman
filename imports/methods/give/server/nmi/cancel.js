@@ -30,11 +30,17 @@ const cancelTransaction = (transactionId, callback) => {
       callback(e);
       return;
     }
-
     if (data["result-code"] === "100") {
       callback(null, data);
       return;
     }
+
+    // if the subscription isn't found in NMI, thats okay, let the app keep going
+    if (data["result-text"].match(/No recurring subscriptions found/gmi)) {
+      callback(null);
+      return;
+    }
+
     const number = Number(data["result-code"]);
     let err;
     if (ErrorCodes[number] && ErrorCodes[number] !== "result-text") {
@@ -43,7 +49,7 @@ const cancelTransaction = (transactionId, callback) => {
       err = data["result-text"];
     }
 
-    callback(err);
+    callback({ message: err });
   })
   .catch(callback);
 };
