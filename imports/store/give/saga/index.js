@@ -301,9 +301,21 @@ function* submitPersonDetails(give, autoSubmit) {
         DO NOT REMOVE THIS
 
     */
+    // DONT REMOVE
+    // submit empty payment details to nmi
+    // fixes nasty IE / old browser / security bug
+    const form = document.createElement("FORM");
+    // create the fieldset
+    const FieldSet = React.createElement(CreditCardForm, {
+      number: "",
+      exp: "",
+    });
+    // add fieldset to non rendered form
+    ReactDOM.render(FieldSet, form);
+
     const response = yield fetch(url, {
       method: "POST",
-      body: new FormData(),
+      body: new FormData(form),
       mode: "no-cors",
     })
       .then(console.log("i made it"))
