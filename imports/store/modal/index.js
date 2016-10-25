@@ -20,7 +20,7 @@ import reducer from "./reducer";
 import { addReducer } from "../utilities";
 
 addReducer({
-  modal: reducer
+  modal: reducer,
 });
 
 export default {

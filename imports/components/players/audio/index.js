@@ -8,21 +8,26 @@ import AudioPlayerUtility from "./audio.PlayerUtility";
 import { actions as audioActions } from "../../../store/audio";
 import { modal, nav as navActions } from "../../../store";
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) =>
+  ({
     audio: state.audio,
-    modal: state.modal
-  };
-};
+    modal: state.modal,
+  });
 
 @connect(mapStateToProps)
 export default class AudioPlayer extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func,
+    audio: PropTypes.object, // eslint-disable-line
+    modal: PropTypes.object, // eslint-disable-line
+  }
 
   componentWillMount() {
     // Listen for audio commands from the lock screen or command center
     if (typeof RemoteCommand !== "undefined") {
       RemoteCommand.on("command", (command) => {
-        switch(command) {
+        switch (command) {
           case "play":
             this.props.dispatch(audioActions.play());
             break;
@@ -34,6 +39,8 @@ export default class AudioPlayer extends Component {
             break;
           case "previousTrack":
             this.props.dispatch(audioActions.previous());
+            break;
+          default:
             break;
         }
       });
@@ -52,8 +59,6 @@ export default class AudioPlayer extends Component {
 
     const modalClosing = modalVis && !modalNextVis;
 
-    const { current } = this.props.modal;
-
     const triggerModal = () => {
       this.props.dispatch(modal.render(FullPlayer, { coverHeader: true, audioPlayer: true }));
 
@@ -67,11 +72,11 @@ export default class AudioPlayer extends Component {
       }
     };
 
-    if( expanding ) {
+    if (expanding) {
       triggerModal();
     }
 
-    if( expanded && modalClosing ) {
+    if (expanded && modalClosing) {
       if (this.props.modal.retrigger === "FullPlayer") {
         setTimeout(() => {
           triggerModal();
@@ -81,25 +86,25 @@ export default class AudioPlayer extends Component {
         this.props.dispatch(audioActions.setVisibility("dock"));
       }
     }
-
-  };
+  }
 
   shouldDisplayMini = () => {
     const { visibility, playing } = this.props.audio;
     const { track } = playing;
     const { file } = track;
 
-    const show = [ "dock", "fade" ];
+    const show = ["dock", "fade"];
     return (show.indexOf(visibility) >= 0 && file);
   };
 
-  render () {
+  render() {
     return (
       <div>
         {(() => {
-          if(this.shouldDisplayMini()) {
+          if (this.shouldDisplayMini()) {
             return <MiniPlayer {...this.props} />;
           }
+          return undefined;
         })()}
         <AudioPlayerUtility />
       </div>

@@ -1,10 +1,10 @@
-/*global _, Meteor */
+/* global _, Meteor */
+/* eslint-disable no-param-reassign, prefer-rest-params */
 
-import { makeNewGuid } from "./../guid";
 import startup from "./startup";
 
 const api = {
-  _: {}
+  _: {},
 };
 
 // registration of required data for Rock
@@ -13,7 +13,6 @@ api.registerEndpoint = (obj) => {
     api._ = obj;
 
     startup(api);
-
   }
 };
 
@@ -29,18 +28,15 @@ api.registerEndpoint = (obj) => {
   @param callback [Function] callback to run on response
  */
 
-api.call = function (method, endpoint, data, callback) {
-
+api.call = function call(method, endpoint, data, callback) {
   function checkStatus(response) {
-
     if (response.status >= 200 && response.status < 300) {
       return response;
-    } else {
-      return {
-        status: response.status,
-        statusText: response.statusText
-      };
     }
+    return {
+      status: response.status,
+      statusText: response.statusText,
+    };
   }
 
 
@@ -58,17 +54,17 @@ api.call = function (method, endpoint, data, callback) {
 
   const headers = {
     [this._.tokenName]: this._.token,
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   };
 
   const options = {
     method,
     body,
     headers,
-    credentials: "same-origin"
+    credentials: "same-origin",
   };
 
-  endpoint = this._.baseURL + "api/" + endpoint;
+  endpoint = `${this._.baseURL}api/${endpoint}`;
   return fetch(endpoint, options)
     .then(checkStatus)
     .then((response) => {
@@ -81,15 +77,13 @@ api.call = function (method, endpoint, data, callback) {
       }
 
       return response;
-
     })
-    .then((data) => {
+    .then((responseData) => {
       if (callback) {
-        callback(null, data);
+        callback(null, responseData);
       }
 
-      return data;
-
+      return responseData;
     })
     .catch((er) => {
       if (callback) {
@@ -100,55 +94,50 @@ api.call = function (method, endpoint, data, callback) {
 };
 
 
-api.get = function () {
-  let args;
-  args = _.values(arguments);
+api.get = function get() {
+  const args = _.values(arguments);
   args.unshift("GET");
   return api.call.apply(this, args);
 };
 
-api["delete"] = function () {
-  let args;
-  args = _.values(arguments);
+api.delete = function apiDelete() {
+  const args = _.values(arguments);
   args.unshift("DELETE");
   return api.call.apply(this, args);
 };
 
-api.put = function () {
-  let args;
-  args = _.values(arguments);
+api.put = function put() {
+  const args = _.values(arguments);
   args.unshift("PUT");
   return api.call.apply(this, args);
 };
 
-api.post = function () {
-  let args;
-  args = _.values(arguments);
+api.post = function post() {
+  const args = _.values(arguments);
   args.unshift("POST");
   return api.call.apply(this, args);
 };
 
-api.patch = function () {
-  let args;
-  args = _.values(arguments);
+api.patch = function patch() {
+  const args = _.values(arguments);
   args.unshift("PATCH");
   return api.call.apply(this, args);
-
 };
 
-const parseEndpoint = (str) => {
-  return str.split("\n").map((x) => {
+const parseEndpoint = (str) => (
+  str.split("\n").map((x) => {
     let trimmed = x.trim();
-    if ( trimmed.slice(-3) === "and" ||  trimmed.slice(-2) === "or") {
+    if (trimmed.slice(-3) === "and" || trimmed.slice(-2) === "or") {
       trimmed += " ";
     }
 
     return trimmed;
-  }).join("");
-};
+  }).join("")
+);
 api.parseEndpoint = parseEndpoint;
 
 if (Meteor.isServer) {
+  // eslint-disable-next-line
   for (const meth in api) {
     api[meth].sync = Meteor.wrapAsync(api[meth], api);
   }

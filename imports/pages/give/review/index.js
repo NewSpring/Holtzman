@@ -1,5 +1,5 @@
-import { Component } from "react";
-import { connect }from "react-apollo";
+import { Component, PropTypes } from "react";
+import { connect } from "react-redux";
 import Layout from "./Layout";
 
 import Loading from "../../../blocks/give/Loading";
@@ -8,11 +8,14 @@ import Success from "../../../blocks/give/Success";
 
 import { give as giveActions, nav as navActions } from "../../../store";
 
-const mapStateToProps = (state) => ({
-  give: state.give,
-});
-@connect({mapStateToProps})
+const mapStateToProps = (state) => ({ give: state.give });
+@connect(mapStateToProps)
 class Template extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    give: PropTypes.object.isRequired,
+  }
 
   componentWillMount() {
     const giveData = this.getGiveData();
@@ -30,7 +33,11 @@ class Template extends Component {
 
     // store user id to match rock personal
     dispatch(giveActions.setUserId(giveData.userId));
+  }
 
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.props.dispatch(giveActions.submit());
   }
 
   getGiveData = () => {
@@ -45,63 +52,61 @@ class Template extends Component {
           queryString[pair[0]] = decodeURIComponent(pair[1]);
         // If second entry with this name
         } else if (typeof queryString[pair[0]] === "string") {
-          var arr = [queryString[pair[0]], decodeURIComponent(pair[1])];
+          const arr = [queryString[pair[0]], decodeURIComponent(pair[1])];
           queryString[pair[0]] = arr;
         // If third or later entry with this name
         } else {
           queryString[pair[0]].push(decodeURIComponent(pair[1]));
         }
+        return null;
       });
       return JSON.parse(queryString.giveData);
-    } catch (error) { }
+    } catch (error) { /* do nothing */ }
+    return null;
   }
 
   monentize = (value, fixed) => {
+    let strVal = typeof value === "number" ? `${value}` : value;
 
-    if (typeof value === "number") {
-      value = `${value}`;
-    }
-
-    if (!value.length) {
+    if (!strVal.length) {
       return "$0.00";
     }
 
-    value = value.replace(/[^\d.-]/g, "");
+    strVal = strVal.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = strVal.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
-      value = Number(value).toFixed(2);
-      value = String(value);
+      strVal = Number(strVal).toFixed(2);
+      strVal = String(strVal);
     }
 
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${value}`;
-  }
-
-  onSubmit = (event) => {
-    event.preventDefault();
-    this.props.dispatch(giveActions.submit());
+    strVal = strVal.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return `$${strVal}`;
   }
 
   render() {
     const giveData = this.getGiveData();
-    const { state, errors, total, data, transactionType } = this.props.give;
+    const { state, errors, total, data } = this.props.give;
 
     switch (state) {
       case "loading":
         return <Loading msg="We're Processing Your Contribution" />;
       case "error":
         return (<Err
-            msg={errors[Object.keys(errors)[0]].error}
-            additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
-                />);
+          msg={errors[Object.keys(errors)[0]].error}
+          additionalMessage={
+            "Please click 'Done' in the top left of your screen to get back to the app"
+          }
+        />);
       case "success":
         return (<Success
-            total={this.monentize(total.toFixed(2))}
-            email={data.personal.email}
-            guest={false} // prevent showing giving history
-            additionalMessage="Please click 'Done' in the top left of your screen to get back to the app"
-                />);
+          total={this.monentize(total.toFixed(2))}
+          email={data.personal.email}
+          guest={false} // prevent showing giving history
+          additionalMessage={
+            "Please click 'Done' in the top left of your screen to get back to the app"
+          }
+        />);
       default:
         return <Layout {...giveData} onSubmit={this.onSubmit} />;
     }
@@ -109,7 +114,7 @@ class Template extends Component {
 }
 
 const Routes = [
-  { path: "review", component: Template }
+  { path: "review", component: Template },
 ];
 
 export default {

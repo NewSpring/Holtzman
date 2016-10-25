@@ -1,12 +1,8 @@
-/*global Meteor */
+/* global Meteor */
 
 import { voidTransaction } from "./nmi";
 
-const voidPurchase = (transactionId) => {
-
-  return Meteor.wrapAsync(voidTransaction)(transactionId);
-
-};
+const voidPurchase = (transactionId) => Meteor.wrapAsync(voidTransaction)(transactionId);
 
 Meteor.methods({ "Give.void": voidPurchase });
 

@@ -54,7 +54,7 @@ export default {
 
   setPlaylist: (playlist) => ({ type: types.SET_PLAYLIST, playlist }),
 
-  setPlaying: (playing) => ({ type: types.SET_PLAYING, playing, state: "playing"}),
+  setPlaying: (playing) => ({ type: types.SET_PLAYING, playing, state: "playing" }),
 
   repeat: () => ({ type: types.SET_REPEAT, repeat: "repeat" }),
   resetRepeat: () => ({ type: types.SET_REPEAT, repeat: "default" }),

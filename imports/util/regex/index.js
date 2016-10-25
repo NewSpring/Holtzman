@@ -1,11 +1,11 @@
 
-const Regex = {};
-import Format from "../format";
+import { capitalize } from "../format";
 import Validate from "../validate";
 import defaultRegex from "./defaults";
 
-Regex.addRegex = (name, test, validate) => {
+const Regex = {};
 
+Regex.addRegex = (name, test, validate) => {
   if (Regex[name]) {
     throw new Error(
       "Regex assigned",
@@ -13,7 +13,7 @@ Regex.addRegex = (name, test, validate) => {
     );
   }
 
-  if (!test || !test instanceof RegExp) {
+  if (!test || !(test instanceof RegExp)) {
     throw new Error(
       "Regex TypeError",
       `Regexter ${name} requires a regex`
@@ -23,11 +23,10 @@ Regex.addRegex = (name, test, validate) => {
   Regex[name] = test;
 
   if (validate) {
-    const funcName = `is${Format.capitalize(name)}`;
-    Validate.addValidator(funcName, (str) => { return test.test(str) });
+    const funcName = `is${capitalize(name)}`;
+    Validate.addValidator(funcName, (str) => (test.test(str)));
   }
   return;
-
 };
 
 /*
@@ -37,9 +36,10 @@ Regex.addRegex = (name, test, validate) => {
 */
 // such a long regex
 
-for (let name in defaultRegex) {
-  const _regex = defaultRegex[name];
-  Regex.addRegex(name, _regex, true);
+// eslint-disable-next-line
+for (const name in defaultRegex) {
+  const regex = defaultRegex[name];
+  Regex.addRegex(name, regex, true);
 }
 
 export { defaultRegex };

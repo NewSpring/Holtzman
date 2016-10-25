@@ -35,7 +35,7 @@ const initial = {
       image: null, // String (url)
       blurredImage: null, // String (url)
       artist: null, // String
-      id: null // String (of a Number) // probably should convert
+      id: null, // String (of a Number) // probably should convert
     },
 
     // currently playing track
@@ -43,73 +43,84 @@ const initial = {
       title: null, // String
       duration: null, // String (mins:seconds)
       file: null, // String (url)
-      artist: null // String
-    }
+      artist: null, // String
+    },
 
-  }
+  },
 };
 
 export default createReducer(initial, {
 
   [types.SET_VISIBILITY](state, action) {
-
     const visibility = action.visibility.trim();
-    const visiblityTypes = [ "default", "fade", "hide", "dock", "expand" ];
+    const visiblityTypes = ["default", "fade", "hide", "dock", "expand"];
 
     if (visiblityTypes.indexOf(visibility) === -1) {
       return state;
     }
 
-    return {...state, ...{
-      visibility: visibility }
+    return {
+      ...state,
+      ...{
+        visibility,
+      },
     };
   },
 
   [types.SET_ORDER](state, action) {
     const order = action.order.trim();
-    const orderTypes = [ "default", "shuffle" ];
+    const orderTypes = ["default", "shuffle"];
 
     if (orderTypes.indexOf(order) === -1) {
       return state;
     }
 
-    return {...state, ...{
-      order: order }
+    return {
+      ...state,
+      ...{
+        order,
+      },
     };
   },
 
   [types.SET_REPEAT](state, action) {
     const repeat = action.repeat.trim();
-    const repeatTypes = [ "default", "repeat", "repeat-one" ];
+    const repeatTypes = ["default", "repeat", "repeat-one"];
 
     if (repeatTypes.indexOf(repeat) === -1) {
       return state;
     }
 
-    return {...state, ...{
-      repeat: repeat }
+    return {
+      ...state,
+      ...{
+        repeat,
+      },
     };
   },
 
   [types.SET_STATE](state, action) {
     const playerState = action.state.trim();
     const playerStateTypes = [
-      "default", "playing", "paused", "ready", "loading", "next", "previous"
+      "default", "playing", "paused", "ready", "loading", "next", "previous",
     ];
 
     if (playerStateTypes.indexOf(playerState) === -1) {
       return state;
     }
 
-    return {...state, ...{
-      state: playerState }
+    return {
+      ...state,
+      ...{
+        state: playerState,
+      },
     };
   },
 
   [types.SET_SEEK](state, action) {
     let number = action.seek;
 
-    if (typeof number != "number") {
+    if (typeof number !== "number") {
       try {
         number = Number(number.trim());
       } catch (e) {
@@ -117,20 +128,23 @@ export default createReducer(initial, {
       }
     }
 
-    if ( (number < 0) || (number > 100) ) {
+    if ((number < 0) || (number > 100)) {
       return state;
     }
 
-    return {...state, ...{
-      seek: number }
+    return {
+      ...state,
+      ...{
+        seek: number,
+      },
     };
   },
 
   [types.SET_PROGRESS](state, action) {
-    let time = action.time;
+    const time = action.time;
     let number = action.progress;
 
-    if (typeof number != "number") {
+    if (typeof number !== "number") {
       try {
         number = Number(number.trim());
       } catch (e) {
@@ -138,40 +152,49 @@ export default createReducer(initial, {
       }
     }
 
-    if ( (number < 0) || (number > 100) ) {
+    if ((number < 0) || (number > 100)) {
       return state;
     }
 
-    return {...state, ...{
+    return {
+      ...state,
+      ...{
         progress: number,
-        time: time
-      }
+        time,
+      },
     };
   },
 
   [types.SET_PLAYLIST](state, action) {
-    let playlist = action.playlist.map((x) => {
+    const playlist = action.playlist.map((x) => {
       const { title, duration, file } = x;
       return { title, duration, file };
     });
 
-    return {...state, ...{
-      playlist: playlist
-    }};
+    return {
+      ...state,
+      ...{
+        playlist,
+      },
+    };
   },
 
   [types.SET_PLAYING](state, action) {
-
-    return {...state, ...{
-      playing: {...state.playing, ...action.playing},
-      state: action.state || state.state,
-      visibility: state.visibility === "hide" ?
-        "dock" :
-        state.visibility
-    }};
+    return {
+      ...state,
+      ...{
+        playing: {
+          ...state.playing,
+          ...action.playing,
+        },
+        state: action.state || state.state,
+        visibility: state.visibility === "hide" ?
+        "dock" : state.visibility,
+      },
+    };
   },
 
-  [types.RESET_ALL](state, action) {
+  [types.RESET_ALL]() {
     return initial;
   },
 

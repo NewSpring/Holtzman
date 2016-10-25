@@ -1,5 +1,5 @@
 import ToggleSwitch from "../toggle.ToggleSwitch";
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 
 describe("Toggle Switch", () => {
   it("should exist", () => {

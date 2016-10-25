@@ -22,9 +22,15 @@ export default {
   clear: (level, field) => ({ type: types.REMOVE_DATA, level, field }),
   clearData: () => ({ type: types.CLEAR_DATA }),
 
-  setRecoverableSchedule: (recoverableSchedule) => ({ type: types.SET_RECOVERABLE_SCHEDULE, recoverableSchedule }),
+  setRecoverableSchedule: (recoverableSchedule) => ({
+    type: types.SET_RECOVERABLE_SCHEDULE,
+    recoverableSchedule,
+  }),
 
-  saveSchedules: (recoverableSchedules) => ({ type: types.SET_RECOVERABLE_SCHEDULES, recoverableSchedules }),
+  saveSchedules: (recoverableSchedules) => ({
+    type: types.SET_RECOVERABLE_SCHEDULES,
+    recoverableSchedules,
+  }),
   deleteSchedule: (id) => ({ type: types.DELETE_RECOVERABLE_SCHEDULE, id }),
   deleteRecoverableSchedules: (id) => ({ type: types.DELETE_RECOVERABLE_SCHEDULES, id }),
 
@@ -50,6 +56,5 @@ export default {
 
   setReminder: (reminderDate) => ({ type: types.SET_REMINDER_DATE, reminderDate }),
   setUserId: (userId) => ({ type: types.SET_USERID, userId }),
-
 
 };

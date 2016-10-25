@@ -1,6 +1,5 @@
-import { Component, PropTypes } from "react";
-import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { PropTypes } from "react";
+import { connect } from "react-redux";
 import ReactPullToRefresh from "react-pull-to-refresh";
 
 const mapStateToProps = (state) => ({
@@ -8,41 +7,44 @@ const mapStateToProps = (state) => ({
   show: state.live.show,
 });
 
-@connect({ mapStateToProps })
-export default class ApollosPullToRefresh extends Component {
+const ApollosPullToRefresh = ({ handleRefresh, children }) => (
+  <div>
+    <div className="ptr-fake-background" />
 
-  static propTypes = {
-    handleRefresh: PropTypes.func.isRequired,
-  }
+    <ReactPullToRefresh
+      onRefresh={handleRefresh}
+      hammerOptions={{ touchAction: "auto" }}
+      icon={
+        <i
+          className="icon-leaf-outline"
+          style={{
+            transformOrigin: "17px 21px",
+            marginTop: "-8px",
+            marginLeft: "-17px",
+          }}
+        />
+      }
+      loading={
+        <i
+          className="loading icon-leaf-outline"
+          style={{
+            transformOrigin: "17px 21px",
+            marginTop: "-8px",
+            marginLeft: "-17px",
+          }}
+        />
+      }
+      className="relative"
+    >
+      {children}
+    </ReactPullToRefresh>
+  </div>
+);
 
-  render() {
-
-    const liveBannerVisible = this.props.isLive && this.props.show;
-
-    return (
-      <div>
-        <div className="ptr-fake-background" />
-
-        <ReactPullToRefresh
-            onRefresh={this.props.handleRefresh}
-            hammerOptions={{ touchAction: "auto" }}
-            icon={<i className="icon-leaf-outline" style={{
-              transformOrigin: "17px 21px",
-              marginTop: "-8px",
-              marginLeft: "-17px",
-            }} />}
-            loading={<i className="loading icon-leaf-outline" style={{
-              transformOrigin: "17px 21px",
-              marginTop: "-8px",
-              marginLeft: "-17px",
-            }} />}
-            className="relative"
-        >
-          {this.props.children}
-        </ReactPullToRefresh>
-      </div>
-    );
-
-  };
-
+ApollosPullToRefresh.propTypes = {
+  handleRefresh: PropTypes.func.isRequired,
+  children: PropTypes.object.isRequired,
 };
+
+
+export default connect(mapStateToProps)(ApollosPullToRefresh);

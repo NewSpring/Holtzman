@@ -34,12 +34,12 @@ export default {
 
   setAlternateAccounts: (alternateAccounts) => ({
     type: types.SET_ALTERNATE_ACCOUNTS,
-    alternateAccounts
+    alternateAccounts,
   }),
 
   peopleWithoutAccountEmails: (peopleWithoutAccountEmails) => ({
     type: types.SET_PEOPLE_WITHOUT_ACCOUNTS,
-    peopleWithoutAccountEmails
+    peopleWithoutAccountEmails,
   }),
 
   completeAccount: () => ({ type: types.COMPLETE_ACCOUNT }),

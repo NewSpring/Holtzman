@@ -1,11 +1,47 @@
 import { Component, PropTypes } from "react";
-import ReactDOM from "react-dom";
 import StripTags from "striptags";
 
 import Label from "./components/Label";
 
 export default class Input extends Component {
 
+  static propTypes = {
+    defaultValue: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string,
+    ]),
+    status: PropTypes.string,
+    disabled: PropTypes.any, // eslint-disable-line
+    validation: PropTypes.func,
+    errorText: PropTypes.string,
+    theme: PropTypes.string,
+    type: PropTypes.string,
+    error: PropTypes.any, // eslint-disable-line
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    children: PropTypes.any, // eslint-disable-line
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
+    label: PropTypes.string,
+    name: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
+    inputClasses: PropTypes.string, // eslint-disable-line
+    hideLabel: PropTypes.bool,
+    autofocus: PropTypes.any, // eslint-disable-line
+    format: PropTypes.func,
+    onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    style: PropTypes.object, //eslint-disable-line
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    placeholder: PropTypes.string,
+    maxLength: PropTypes.number,
+  }
 
   state = {
     active: false,
@@ -13,127 +49,118 @@ export default class Input extends Component {
     error: false,
     status: "",
     value: null,
-    autofocus: false
+    autofocus: false,
   }
 
-  componentWillMount(){
+  componentWillMount() {
     if (this.props.defaultValue) {
       this.setState({ active: true });
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (this.props.autofocus) {
-      this.refs["apollos-input"].focus();
+      this.node.focus();
     }
 
 
     // one day, I dream of a universal browser auto-fill event
     // until then. I'll keep on checking
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const target = this.node;
     this.interval = setInterval(() => {
-
-      if (this._previousValue === target.value || !target.value) {
+      if (this._previousValue === target.value || !target.value) { // eslint-disable-line
         return;
       }
 
-      if (!this._previousValue && target.value && !this.state.focused) {
+      if (!this._previousValue && target.value && !this.state.focused) { // eslint-disable-line
         this.setValue(target.value);
       }
 
-      this._previousValue = target.value;
-
+      this._previousValue = target.value; // eslint-disable-line
     }, 20);
 
     // set value on re-render
     if (this.props.value) {
       this.setValue(`$${this.props.value}`);
     }
-
   }
 
-  componentWillUpdate(nextProps){
-    if (this.props.defaultValue != nextProps.defaultValue) {
+  componentWillUpdate(nextProps) {
+    if (this.props.defaultValue !== nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue);
-      this.setState({focused: false});
+      this.setState({ focused: false });
     }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     if (this.interval) {
       clearInterval(this.interval);
     }
   }
 
 
-  format = (e) => {
+  format = (e) => { // eslint-disable-line
+    const target = this.node;
+    // let value = this.node.value
+    const value = this.getValue();
 
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    // let value = this.refs["apollos-input"].value
-    let value = this.getValue();
-
-    if (this.props.format && typeof(this.props.format) === "function") {
-
+    if (this.props.format && typeof (this.props.format) === "function") {
       const newValue = this.props.format(value, target, e);
       target.value = newValue;
-
     }
 
-    if (this.props.onChange && typeof(this.props.onChange) === "function" ) {
+    if (this.props.onChange && typeof (this.props.onChange) === "function") {
       this.props.onChange(target.value, target, e);
     }
-
   }
 
   validate = (e) => {
-
-    const target = ReactDOM.findDOMNode(this.refs["apollos-input"]);
+    const target = this.node;
     // const value = target.value
     const value = this.getValue();
 
     if (!value) {
       this.setState({
         active: false,
-        error: false
+        error: false,
       });
     }
 
     this.setState({
-      focused: false
+      focused: false,
     });
 
-    if (this.props.validation && typeof(this.props.validation) === "function") {
+    if (this.props.validation && typeof (this.props.validation) === "function") {
       this.setState({
-        error: !this.props.validation(value, target, e)
+        error: !this.props.validation(value, target, e),
       });
     }
 
-    if (this.props.onBlur && typeof(this.props.onBlur) === "function") {
+    if (this.props.onBlur && typeof (this.props.onBlur) === "function") {
       this.props.onBlur(value, target, e);
     }
-
   }
 
-  focus = (event) => {
+  focus = () => {
     this.setState({
       active: true,
       error: false,
-      focused: true
+      focused: true,
     });
   }
 
   setValue = (value) => {
-    let node = ReactDOM.findDOMNode(this.refs["apollos-input"]);
-    node.value = StripTags(value); // prevent XSS;
+    const node = this.node;
+     // prevent XSS;
+    node.value = StripTags(value); // eslint-disable-line
     this.focus();
     this.validate();
   }
 
-  getValue = () => {
-    // http://stackoverflow.com/questions/5788527/is-strip-tags-vulnerable-to-scripting-attacks/5793453#5793453
-    return StripTags(ReactDOM.findDOMNode(this.refs["apollos-input"]).value); // prevent XSS
-  }
-
+  // http://stackoverflow.com/questions/5788527/is-strip-tags-vulnerable-to-scripting-attacks/5793453#5793453
+    // prevent XSS;
+  getValue = () =>
+    StripTags(this.node.value); // eslint-disable-line
 
   setStatus = (message) => {
     this.props.status = message;
@@ -143,87 +170,88 @@ export default class Input extends Component {
     if (this.props.disabled) {
       return this.props.disabled;
     }
+    return undefined;
   }
 
-  renderHelpText = (message) => {
-
+  renderHelpText = () => {
     if ((this.state.error && this.props.errorText) || this.state.status) {
-
       return (
         <span className="input__status">
           {this.props.errorText || this.state.status}
         </span>
       );
     }
-
+    return undefined;
   }
 
   style = () => {
-
     let style = {};
 
     if (this.props.style) {
-      style = {...style, ...this.props.style};
+      style = { ...style, ...this.props.style };
     }
 
     if (this.props.disabled) {
-      style = {...style, ...{
-        cursor: "inherit"
-      }};
+      style = {
+        ...style,
+        ...{
+          cursor: "inherit",
+        },
+      };
     }
 
     return style;
   }
 
 
-
   render() {
     let inputclasses = [
-      "input"
+      "input",
     ];
 
     // theme overwrite
-    if (this.props.theme) { inputclasses = this.props.theme }
+    if (this.props.theme) { inputclasses = this.props.theme; }
     // state mangaged classes
-    if (this.state.active) { inputclasses.push("input--active") }
-    if (this.state.focused) { inputclasses.push("input--focused") }
-    if (this.state.error) { inputclasses.push("input--alert") }
+    if (this.state.active) { inputclasses.push("input--active"); }
+    if (this.state.focused) { inputclasses.push("input--focused"); }
+    if (this.state.error) { inputclasses.push("input--alert"); }
     // custom added classes
-    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes) }
+    if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
 
     return (
       <div className={inputclasses.join(" ")} style={this.props.style || {}}>
         {(() => {
-          if (!this.props.hideLabel){
+          if (!this.props.hideLabel) {
             return (
               <Label
-                  labelFor={
+                labelFor={
                   this.props.id || this.props.name || this.props.label
                 }
-                  labelName={
+                labelName={
                   this.props.label || this.props.name
                 }
-                  disabed={this.disabled()}
+                disabed={this.disabled()}
               />
             );
           }
+          return undefined;
         })()}
 
 
         <input
-            ref="apollos-input"
-            id={this.props.id || this.props.name || this.props.label}
-            type={this.props.type}
-            placeholder={this.props.placeholder || this.props.label}
-            name={this.props.name || this.props.label}
-            className={this.props.inputClasses}
-            disabled={this.disabled()}
-            onBlur={this.validate}
-            onFocus={this.focus}
-            onChange={this.format}
-            defaultValue={this.props.defaultValue}
-            style={this.style()}
-            maxLength={this.props.maxLength || ""}
+          ref={(node) => (this.node = node)}
+          id={this.props.id || this.props.name || this.props.label}
+          type={this.props.type}
+          placeholder={this.props.placeholder || this.props.label}
+          name={this.props.name || this.props.label}
+          className={this.props.inputClasses}
+          disabled={this.disabled()}
+          onBlur={this.validate}
+          onFocus={this.focus}
+          onChange={this.format}
+          defaultValue={this.props.defaultValue}
+          style={this.style()}
+          maxLength={this.props.maxLength || ""}
         />
 
         {this.props.children}
@@ -232,7 +260,6 @@ export default class Input extends Component {
 
       </div>
     );
-
   }
 
 }

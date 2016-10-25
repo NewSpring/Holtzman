@@ -1,9 +1,18 @@
 import React, { PropTypes } from "react";
 
 export default class FieldSet extends React.Component {
+  static propTypes = {
+    classes: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    theme: PropTypes.string,
+    children: PropTypes.any, // eslint-disable-line
+  }
+
   layoutClasses = () => {
     let classes = [
-      "flush-bottom"
+      "flush-bottom",
     ];
 
     if (this.props.classes) {
@@ -13,7 +22,7 @@ export default class FieldSet extends React.Component {
     return classes.join(" ");
   }
 
-  render () {
+  render() {
     return (
       <fieldset className={this.props.theme || this.layoutClasses()}>
         {this.props.children}

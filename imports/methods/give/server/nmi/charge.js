@@ -1,24 +1,24 @@
-/*global Meteor */
+/* global Meteor */
 
 import { Builder } from "xml2js";
 import { parseXML } from "../../../../util";
 import ErrorCodes from "./language";
 
 const step1 = (token, callback) => {
-
   const complete = {
     "complete-action": {
       "api-key": Meteor.settings.nmi, // replace with settings file
-      "token-id": token
-    }
+      "token-id": token,
+    },
   };
 
   const builder = new Builder();
   const xml = builder.buildObject(complete);
 
   function timeout(ms, promise) {
-    return new Promise(function(resolve, reject) {
-      setTimeout(function() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // eslint-disable-next-line max-len
         reject(new Error("The request to our payment process took longer than expected. For your safety we have cancelled this action. You were not charged and should be able to try again!"));
       }, ms);
       promise.then(resolve, reject);
@@ -29,20 +29,18 @@ const step1 = (token, callback) => {
     method: "POST",
     body: `${xml}`,
     headers: {
-      "Content-Type": "text/xml"
-    }
+      "Content-Type": "text/xml",
+    },
   })
+  .then((response) => response.text())
   .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
-
+    let data = response;
     // clean all tags to make sure they are parseable
-    let matches = data.match(/<([^>]+)>/gmi);
+    const matches = data.match(/<([^>]+)>/gmi);
 
-    for (let match of matches) {
+    for (const match of matches) {
       if (match.indexOf(",") > -1) {
-        let matchRegex = new RegExp(match, "gmi");
+        const matchRegex = new RegExp(match, "gmi");
         data = data.replace(matchRegex, match.replace(/,/gmi, ""));
       }
     }
@@ -72,19 +70,17 @@ const step1 = (token, callback) => {
       number = "430";
     }
 
-    if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
+    if (ErrorCodes[number] && ErrorCodes[number] !== "result-text") {
       err = ErrorCodes[number];
-    } else if (ErrorCodes[number] === "result-text")  {
+    } else if (ErrorCodes[number] === "result-text") {
       err = data["result-text"];
     }
 
+    // eslint-disable-next-line no-console
     console.error("@@CHARGE_ERROR", data, xml);
     callback({ message: err });
-
   })
   .catch(callback));
-
-
 };
 
 export default step1;

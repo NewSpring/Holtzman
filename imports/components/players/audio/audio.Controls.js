@@ -11,16 +11,32 @@ import { modal, nav as navActions } from "../../../store";
 export default class AudioControls extends Component {
 
   static propTypes = {
-    audio: PropTypes.object.isRequired,
-    isLight: PropTypes.bool.isRequired
+    audio: PropTypes.object.isRequired, // eslint-disable-line
+    isLight: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func,
   }
 
+  getTertiaryTextColor = (dark) =>
+    (dark ? { color: "rgba(255,255,255,.5)" } : { color: "rgba(0,0,0,.5)" });
+
+  getPrimaryTextColor = (dark) =>
+    (dark ? { color: "rgba(255,255,255,1)" } : { color: "rgba(0,0,0,1)" });
+
+  getTertiaryTextClass = () =>
+    (this.props.isLight ? "text-dark-tertiary" : "text-light-tertiary");
+
+  getSecondayTextClass = () =>
+    (this.props.isLight ? "text-dark-secondary" : "text-light-secondary");
+
+  getPrimaryTextClass = () =>
+    (this.props.isLight ? "text-dark-primary" : "text-light-primary");
+
   shuffleClasses = () => {
-    let classes = [
+    const classes = [
       "soft-half-right",
       "flush",
       "h5",
-      "icon-shuffle"
+      "icon-shuffle",
     ];
     return classes.join(" ");
   }
@@ -29,18 +45,15 @@ export default class AudioControls extends Component {
     const { isLight } = this.props;
     if (this.props.audio.order === "shuffle") {
       return this.getPrimaryTextColor(!isLight);
-    } else {
-      return this.getTertiaryTextColor(!isLight);
     }
+    return this.getTertiaryTextColor(!isLight);
   };
 
   repeatClasses = () => {
-    const { repeat } = this.props.audio;
-
-    let classes = [
+    const classes = [
       "flush",
       "h5",
-      "icon-repeat"
+      "icon-repeat",
     ];
     return classes.join(" ");
   };
@@ -53,69 +66,88 @@ export default class AudioControls extends Component {
   repeatIcon = () => {
     const { repeat } = this.props.audio;
 
-    let classes = [
+    const classes = [
       this.getPrimaryTextClass(),
       "h3",
       "push-double-left",
-      "soft-left"
+      "soft-left",
     ];
     if (repeat === "repeat") classes.push("icon-repeat-all");
     if (repeat === "repeat-one") classes.push("icon-repeat-one");
 
     return (
-      <i className={classes.join(" ")} onClick={this.repeat} style={this.repeatIconStyles} />
+      <i className={classes.join(" ")} onClick={this.repeat} style={this.repeatIconStyles} /> // eslint-disable-line
     );
   }
 
   activeRepeatStyles = () => {
     const { repeat } = this.props.audio;
     const { isLight } = this.props;
-    if (repeat != "default") {
+    if (repeat !== "default") {
       return this.getPrimaryTextColor(!isLight);
-    } else {
-      return this.getTertiaryTextColor(!isLight);
     }
+    return this.getTertiaryTextColor(!isLight);
   };
 
-  backClasses = () => {
-    return [
+  listDetail = () => {
+    const { album, track } = this.props.audio.playing;
+
+    const trackNumber = album.content.tracks.findIndex((current) => current.title === track.title);
+
+    this.props.dispatch(modal.render(ListDetail, {
+      color: "background--dark-primary",
+      modalBackground: "dark",
+      album,
+      trackNumber,
+      style: {
+        opacity: 0.9,
+      },
+    }));
+    this.props.dispatch(modal.setRetrigger("FullPlayer"));
+    this.props.dispatch(navActions.setColor("#202020", "light"));
+  };
+
+  controlGridStyles = {
+    maxHeight: "30px",
+  }
+
+  backClasses = () =>
+    [
       "soft-sides",
       "flush",
       this.getSecondayTextClass(),
       "h3",
-      "icon-skip-back"
+      "icon-skip-back",
     ].join(" ");
-  };
 
-  nextClasses = () => {
-    return [
+  nextClasses = () =>
+    [
       "soft-sides",
       "flush",
       this.getSecondayTextClass(),
       "h3",
-      "icon-skip-next"
+      "icon-skip-next",
     ].join(" ");
-  };
 
-  toggleClasses = (toggleIcon) => {
-    return [
+  toggleClasses = (toggleIcon) =>
+    [
       "soft-sides",
       "flush",
       this.getPrimaryTextClass(),
       "h1",
-      toggleIcon
+      toggleIcon,
     ].join(" ");
-  };
 
   playIconPosition = () => {
     const { state } = this.props.audio;
 
-    if (state != "playing") { return {
-      left: "6px",
-      position: "relative",
-
+    if (state !== "playing") {
+      return {
+        left: "6px",
+        position: "relative",
       };
-    } else return {
+    }
+    return {
       left: "2px",
       position: "relative",
     };
@@ -164,13 +196,11 @@ export default class AudioControls extends Component {
     e.stopPropagation();
     const { repeat } = this.props.audio;
 
-    if(repeat === "default") {
+    if (repeat === "default") {
       this.props.dispatch(audioActions.repeat());
-    }
-    else if(repeat === "repeat") {
+    } else if (repeat === "repeat") {
       this.props.dispatch(audioActions.repeatOne());
-    }
-    else {
+    } else {
       this.props.dispatch(audioActions.resetRepeat());
     }
   };
@@ -187,52 +217,11 @@ export default class AudioControls extends Component {
     }
   };
 
-  getTertiaryTextColor = (dark) => {
-    return dark ? {color: "rgba(255,255,255,.5)"} : {color: "rgba(0,0,0,.5)"};
-  };
-  getPrimaryTextColor = (dark) => {
-    return dark ? {color: "rgba(255,255,255,1)"} : {color: "rgba(0,0,0,1)"};
-  };
-
-
-  getTertiaryTextClass = () => {
-    return this.props.isLight ? "text-dark-tertiary" : "text-light-tertiary";
-  };
-
-  getSecondayTextClass = () => {
-    return this.props.isLight ? "text-dark-secondary" : "text-light-secondary";
-  };
-
-  getPrimaryTextClass = () => {
-    return this.props.isLight ? "text-dark-primary" : "text-light-primary";
-  };
-
-  listDetail = () => {
-    const { album, track } = this.props.audio.playing;
-
-    const trackNumber = album.content.tracks.findIndex(current => current.title === track.title);
-
-    this.props.dispatch(modal.render(ListDetail, {
-      color: "background--dark-primary",
-      modalBackground: "dark",
-      album: album,
-      trackNumber: trackNumber,
-      style: {
-        opacity: .9
-      }
-    }));
-    this.props.dispatch(modal.setRetrigger("FullPlayer"));
-    this.props.dispatch(navActions.setColor("#202020", "light"));
-  };
-
-  controlGridStyles = {
-    maxHeight: "30px"
-  }
-
   playlistControls = () => {
     const showControls = this.props.audio.playing.album.channelName !== "series_newspring";
     if (!showControls) return null;
     const { isLight } = this.props;
+    /* eslint-disable */
     return (
       <div className="grid one-whole flush" style={this.controlGridStyles}>
         <div className="grid__item one-third text-left hard">
@@ -253,26 +242,26 @@ export default class AudioControls extends Component {
         {this.repeatIcon()}
       </div>
     );
+    /* eslint-enable */
   }
 
   render() {
-    const { state, back, next, visibility } = this.props.audio;
+    const { state, visibility } = this.props.audio;
     const isPlaying = state === "playing";
     const toggleIcon = isPlaying ? "icon-pause" : "icon-play";
-    const { isLight } = this.props;
 
-    if(visibility === "dock") {
+    if (visibility === "dock") {
       const classes = [
         "text-center",
         "h4",
         toggleIcon,
-        this.getPrimaryTextClass()
+        this.getPrimaryTextClass(),
       ];
 
       return (
         <button
-            className="plain float-right"
-            onClick={this.toggle}
+          className="plain float-right"
+          onClick={this.toggle}
         >
           <i className={classes.join(" ")} />
         </button>
@@ -295,14 +284,13 @@ export default class AudioControls extends Component {
         </button>
 
         <AudioScrubber
-            isLight={this.props.isLight}
+          isLight={this.props.isLight}
         />
 
         {this.playlistControls()}
 
       </div>
     );
-
   }
 
 }

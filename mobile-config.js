@@ -6,7 +6,7 @@ App.info({
   email: "web@newspring.cc",
   website: "https://newspring.cc",
   version: "0.0.3",
-  buildNumber: "156"
+  buildNumber: "166",
 });
 
 App.icons({
@@ -27,7 +27,7 @@ App.icons({
   "android_hdpi": "assets/icons/android/icon-72x72-hdpi.png",
   "android_xhdpi": "assets/icons/android/icon-96x96-xhdpi.png",
   "android_xxhdpi": "assets/icons/android/icon-144x144-xxhdpi.png",
-  "android_xxxhdpi": "assets/icons/android/icon-192x192-xxxhpdi.png"
+  "android_xxxhdpi": "assets/icons/android/icon-192x192-xxxhpdi.png",
 });
 
 App.launchScreens({
@@ -50,7 +50,7 @@ App.launchScreens({
   "android_xhdpi_portrait": "assets/splash/android/splash-720x960.png",
   "android_xhdpi_landscape": "assets/splash/android/splash-960x720.png",
   "android_xxhdpi_portrait": "assets/splash/android/splash-1080x1440.png",
-  "android_xxhdpi_landscape": "assets/splash/android/splash-1440x1080.png"
+  "android_xxhdpi_landscape": "assets/splash/android/splash-1440x1080.png",
 });
 
 App.accessRule("*");
@@ -63,3 +63,8 @@ App.setPreference("StatusBarBackgroundColor", "#6bac43");
 App.setPreference("StatusBarStyle", "lightcontent");
 
 App.setPreference("Orientation", "portrait");
+
+App.configurePlugin("cordova-fabric-plugin", {
+  FABRIC_API_KEY: process.env.FABRIC_API_KEY,
+  FABRIC_API_SECRET: process.env.FABRIC_API_SECRET,
+});

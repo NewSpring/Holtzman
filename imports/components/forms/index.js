@@ -18,5 +18,16 @@ export default {
   Fieldset,
   Label,
   Date,
-  TextArea
+  TextArea,
+};
+
+export {
+  Checkbox,
+  Input,
+  Select,
+  Form,
+  Fieldset,
+  Label,
+  Date,
+  TextArea,
 };

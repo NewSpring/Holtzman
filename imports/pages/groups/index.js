@@ -1,48 +1,45 @@
-import { Component, PropTypes} from "react";
-import { connect } from "react-apollo";
-import gql from "graphql-tag";
-
 import Profile from "./profile/index";
 import Finder from "./finder/index";
 
-// const mapQueriesToProps = () => ({
-//   data: {
-//     query: gql`
-//       query GetTransactions($limit: Int, $skip: Int) {
-//         transactions(limit: $limit, skip: $skip) {
+// const TRANSACTIONS_QUERY = gql`
+//   query GetTransactions($limit: Int, $skip: Int) {
+//     transactions(limit: $limit, skip: $skip) {
+//       id
+//       date
+//       status
+//       summary
+//       details {
+//         id
+//         amount
+//         account {
 //           id
-//           date
-//           status
-//           summary
-//           details {
-//             id
-//             amount
-//             account {
-//               id
-//               name
-//             }
-//           }
+//           name
 //         }
 //       }
-//     `,
+//     }
+//   }
+// `;
+
+// const withTransactions(TRANSACTIONS_QUERY, {
+//   options: {
 //     variables: { limit: 20, skip: 0 }
 //   },
 // });
+
 // const defaultArray = [];
-// @connect({ mapQueriesToProps })
-class Template extends Component {
-  render () {
-    return <h1>Lets find some groups!</h1>;
-  }
-}
+// withTransactions
+// @connect()
+const Template = () => (
+  <h1>Lets find some groups!</h1>
+);
 
 const Routes = [
   { path: "groups", component: Template },
   { path: "groups/finder", component: Finder },
-  { path: "groups/:id", component: Profile }
+  { path: "groups/:id", component: Profile },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
+import { PropTypes } from "react";
 
-import Moment from "moment";
+import moment from "moment";
 
 const Later = ({ date, onClick }) => (
   <div className="soft soft-double-ends one-whole text-center">
@@ -10,9 +12,9 @@ const Later = ({ date, onClick }) => (
 
     <p className="text-left">
       We will remind you about your contributions on <strong>
-      {Moment(date).format("dddd, MMMM Do")}
+        {moment(date).format("dddd, MMMM Do")}
       </strong>!
-      If you would like to reset your schedules before then, please contact our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a>
+      If you would like to reset your schedules before then, please contact our Finance Team at 864-965-9990 or <a rel="noopener noreferrer" target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a>
     </p>
 
     <button className="one-whole btn push-ends" onClick={onClick}>
@@ -22,5 +24,9 @@ const Later = ({ date, onClick }) => (
   </div>
 );
 
+Later.propTypes = {
+  date: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default Later;

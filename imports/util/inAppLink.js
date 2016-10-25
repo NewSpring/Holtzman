@@ -1,39 +1,37 @@
+/* global SafariViewController cordova */
+
 function openUrl(url, opened, loaded, closed) {
   try {
-    SafariViewController.isAvailable(function (available) {
+    SafariViewController.isAvailable((available) => {
       if (available) {
         SafariViewController.show({
-              url: url,
-              hidden: false, // default false. You can use this to load cookies etc in the background (see issue #1 for details).
-              animated: true, // default true, note that 'hide' will reuse this preference (the 'Done' button will always animate though)
-              transition: "curl", // unless animated is false you can choose from: curl, flip, fade, slide (default)
-              enterReaderModeIfAvailable: false, // default false
-              tintColor: "#6BAC43" // default to ios blue
-            },
-            // this success handler will be invoked for the lifecycle events 'opened', 'loaded' and 'closed'
-            function(result) {
+          url,
+          hidden: false,
+          animated: true,
+          transition: "curl",
+          enterReaderModeIfAvailable: false,
+          tintColor: "#6BAC43",
+        },
+            (result) => {
               if (result.event === "opened" && opened) {
-                // view has opened
                 opened();
               } else if (result.event === "loaded" && loaded) {
-                // view has loaded
                 loaded();
               } else if (result.event === "closed" && closed) {
-                // view has closed
                 closed();
               }
             },
             // error function?
-            function(msg) {
-              alert("KO: " + msg);
+            (msg) => {
+              // eslint-disable-next-line no-console
+              console.log(`KO: ${msg}`);
             });
       } else {
         // potentially powered by InAppBrowser because that (currently) clobbers window.open
         window.open(url, "_blank", "location=yes");
       }
     });
-  }
-  catch(err) {
+  } catch (err) {
     window.open(url, "_blank", "location=yes");
   }
 }
@@ -53,10 +51,10 @@ const linkListener = (event) => {
   // aggressively get all clicks of <a></a> links in cordova
   let target = event.target;
 
-  if (target.tagName != "A" && target.fastClickScrollParent) {
+  if (target.tagName !== "A" && target.fastClickScrollParent) {
     target = target.fastClickScrollParent;
   } else if (
-    target.tagName != "A" &&
+    target.tagName !== "A" &&
     target.parentElement &&
     target.parentElement.tagName === "A"
   ) {
@@ -68,7 +66,7 @@ const linkListener = (event) => {
   }
 
   // exterior link
-  if (target.host != window.location.host) {
+  if (target.host !== window.location.host) {
     event.preventDefault();
     event.stopPropagation();
     openUrl(target.href);

@@ -5,17 +5,17 @@ const Header = {
   savedDataOptions: null,
   savedDataRequestee: null,
 
-  componentWillMount: function () {
+  componentWillMount() {
     this.headerAction = this.setHeaderDetails.bind(this);
-    this.state = {...this.state, ...{ __headerSet: false }};
+    this.state = { ...this.state, ...{ __headerSet: false } };
     this.getContent(this.props);
   },
 
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.getContent(nextProps);
 
-    if(nextProps.modal && this.props.modal) {
-      if(!nextProps.modal.visible && this.props.modal.visible) {
+    if (nextProps.modal && this.props.modal) {
+      if (!nextProps.modal.visible && this.props.modal.visible) {
         this.unlockHeader();
         this.setHeaderDetails(this.savedDataOptions, this.savedDataRequestee);
       }
@@ -23,7 +23,7 @@ const Header = {
   },
 
   getContent(props) {
-    if (!!this.state.__headerSet) return;
+    if (!!this.state.__headerSet) return; // eslint-disable-line
 
     const item = { ...this.getEntry(props) };
     if (!item) return;
@@ -32,8 +32,7 @@ const Header = {
 
     if (!props.currentSermon) {
       this.setHeaderDetails(item);
-    }
-    else if (props.currentSermon.content && props.series.content) {
+    } else if (props.currentSermon.content && props.series.content) {
       this.setHeaderDetails(item, {
         parentItem: props.series.content,
       });
@@ -47,7 +46,7 @@ const Header = {
     // }))
   },
 
-  getEntry: function(nextProps) {
+  getEntry(nextProps) {
     let item = false;
     if (nextProps.devotion) item = nextProps.devotion;
     if (nextProps.article) item = nextProps.article;
@@ -55,34 +54,36 @@ const Header = {
     if (nextProps.currentSermon) item = nextProps.currentSermon;
     if (nextProps.series) item = nextProps.series;
     if (nextProps.album) item = nextProps.album;
+    if (nextProps.news) item = nextProps.news;
 
     if (item) return item.content;
     return null;
   },
 
-  getHeaderTitle: function(props) {
+  getHeaderTitle(props) {
     if (props.devotion) return "Devotion";
     if (props.article) return "Article";
     if (props.story) return "Story";
     if (props.currentSermon) return "Series";
     if (props.series) return "Series";
     if (props.album) return "Music";
+    if (props.news) return "News";
+    return "";
   },
 
-  lockHeader: function(requestee) {
+  lockHeader(requestee) {
     this.props.dispatch(headerActions.lock(requestee));
   },
 
-  unlockHeader: function() {
+  unlockHeader() {
     this.props.dispatch(headerActions.unlock());
   },
 
-  setHeaderDetails: function(options, requestee) {
-
+  setHeaderDetails(options, requestee) {
     this.savedDataOptions = options;
     this.savedDataRequestee = requestee;
 
-    if(!options) {
+    if (!options) {
       return;
     }
 
@@ -90,7 +91,7 @@ const Header = {
     this.setState({
       __headerSet: true,
     });
-  }
+  },
 
 };
 

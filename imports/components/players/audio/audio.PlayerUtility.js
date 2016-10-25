@@ -1,30 +1,36 @@
+/* eslint-disable import/no-named-as-default */
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import { actions as audioActions } from "../../../store/audio";
 
-import { Audio } from "../../../libraries/players/audio";
-import AudioControls from "./audio.Controls";
-import AudioTitle from "./audio.Title";
-import AudioScrubber from "./audio.Scrubber";
-import Track from "./audio.Track";
+import Audio from "../../../libraries/players/audio";
 
 // We only care about the audio state
 function mapStateToProps(state) {
   return {
-    audio: state.audio
+    audio: state.audio,
   };
 }
 
 @connect(mapStateToProps, audioActions)
 export default class AudioPlayerUtility extends Component {
 
+  static propTypes = {
+    audio: PropTypes.object,
+    loading: PropTypes.func,
+    ready: PropTypes.func,
+    play: PropTypes.func,
+    setProgress: PropTypes.func,
+    next: PropTypes.func,
+    restart: PropTypes.func,
+    seek: PropTypes.func,
+    setPlaying: PropTypes.func,
+  };
 
-  componentWillUpdate(nextProps, nextState) {
-
+  componentWillUpdate(nextProps) {
     const nextAudio = nextProps.audio;
     const { audio } = this.props;
-
 
     // change of track to play
     if (audio.playing.track.title !== nextAudio.playing.track.title) {
@@ -32,9 +38,12 @@ export default class AudioPlayerUtility extends Component {
     }
 
     // change of state
-    if (audio.state != nextAudio.state && audio.state != "default") {
+    if (audio.state !== nextAudio.state && audio.state !== "default") {
       // play || pause
-      if ((audio.state != "next" && audio.state != "previous") && nextAudio.state === "playing" || nextAudio.state === "paused") {
+      if (
+        (audio.state !== "next" && audio.state !== "previous") &&
+        (nextAudio.state === "playing" || nextAudio.state === "paused")
+      ) {
         this.toggle(nextAudio.state);
       }
 
@@ -47,48 +56,48 @@ export default class AudioPlayerUtility extends Component {
         this.previous();
         return;
       }
-
     }
 
     // seeking
-    if (audio.seek != nextAudio.seek) {
+    if (audio.seek !== nextAudio.seek) {
       this.seek(nextAudio.seek);
     }
-
   }
 
   tracksWithFiles = () => {
     const { playlist } = this.props.audio;
-    return _.filter(playlist, (track) => {
-      return track.file;
-    });
+    return _.filter(playlist, (track) => (
+      track.file
+    ));
   }
 
   createPlayer = (track, autoload) => {
-
     // only make sweet jams on client side
     if (typeof window === "undefined" || window === null) {
-      return;
+      return null;
     }
 
-    if (!track.file) return;
+    if (!track.file) {
+      return null;
+    }
 
-    // if (this.player && this.player.stop) {
-    //   this.player.stop();
-    //   this.player.release();
-    // }
+    if (this.player instanceof Audio && this.player.release) {
+      this.player.release();
+    }
 
     if (track.file.indexOf("http") === -1) {
+      // eslint-disable-next-line no-param-reassign
       track.file = `https:${track.file}`;
     }
 
     // set loading state
     this.props.loading();
 
-    const Player = Meteor.isCordova ? Media : Audio;
+    // eslint-disable-next-line
+    const Player = (Meteor.isCordova && cordova.platformId === "ios") ? Media : Audio;
     const getProps = () => this.props;
-    const player = new Player(track.file, () => {
 
+    const player = new Player(track.file, () => {
       // set ready state
       this.props.ready();
 
@@ -98,7 +107,6 @@ export default class AudioPlayerUtility extends Component {
         player.play();
         return;
       }
-
     }, () => {}, function audioEventStream(STATUS) {
       if (this.done) return;
       // this === Media object
@@ -111,7 +119,7 @@ export default class AudioPlayerUtility extends Component {
             this.play();
             return;
           }
-          for (let cb of this.endedCallbacks) cb();
+          for (const cb of this.endedCallbacks) cb();
           delete this.endedCallbacks;
           this.done = true;
         }
@@ -129,7 +137,7 @@ export default class AudioPlayerUtility extends Component {
 
       const [min, sec] = pos.split(":");
       const seekLength = Number((min * 60)) + Number(sec);
-      const width = Number((length - (length - seekLength))/length);
+      const width = Number((length - (length - seekLength)) / length);
 
       // ensure seconds are not greater than 60
       const realSec = Number(sec) % 60;
@@ -156,7 +164,7 @@ export default class AudioPlayerUtility extends Component {
   }
 
   toggle = (playerState) => {
-    if (!this.player || !this.player.playPause) { return }
+    if (!this.player || !this.player.playPause) { return; }
     if (playerState === "playing") {
       this.player.play();
       return;
@@ -171,33 +179,30 @@ export default class AudioPlayerUtility extends Component {
   seek = (value) => {
     // value is percent of how far to scrub
 
-    if (!this.player || !this.player.seekTo) { return }
+    if (!this.player || !this.player.seekTo) { return; }
 
-    let [min, sec] = this.props.audio.playing.track.duration.split(":");
+    const [min, sec] = this.props.audio.playing.track.duration.split(":");
 
     // duration in milliseconds
-
     const duration = (Number((min * 60)) + Number(sec)) * 1000;
-
-    const newPos =  duration * (value / 100);
+    const newPos = duration * (value / 100);
 
     this.player.seekTo(newPos);
   }
 
   next = () => {
-    this.player.release();
-
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
 
-    let currentTrack = playing.track.title;
+    const currentTrack = playing.track.title;
 
-    for (let track of playlist) {
-      let index = playlist.indexOf(track);
+    for (const track of playlist) {
+      const index = playlist.indexOf(track);
       if (track.title === currentTrack) {
         let next;
 
         switch (order) {
+          // eslint-disable-next-line no-case-declarations
           case "shuffle":
             let randomId = Math.floor(Math.random() * playlist.length);
             while (randomId === index) {
@@ -217,11 +222,17 @@ export default class AudioPlayerUtility extends Component {
         // This file needs cleanup
         // repeat one handled in creation of player above
         if (repeat === "repeat-one") {
+          this.props.restart();
+          this.props.play();
+          if (this.player && Meteor.isCordova) {
+            this.props.seek(0);
+            this.player.play();
+          }
           return;
         }
 
         this.props.setPlaying({
-          track: next
+          track: next,
         });
 
         break;
@@ -230,21 +241,20 @@ export default class AudioPlayerUtility extends Component {
   }
 
   previous = () => {
-    this.player.release();
-
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
 
-    let currentTrack = playing.track.title;
+    const currentTrack = playing.track.title;
 
-    for (let track of playlist) {
-      let index = playlist.indexOf(track);
+    for (const track of playlist) {
+      const index = playlist.indexOf(track);
       if (track.title === currentTrack) {
         let prev;
 
-        this.setState({force: false});
+        this.setState({ force: false });
 
         switch (order) {
+          // eslint-disable-next-line no-case-declarations
           case "shuffle":
 
             let randomId = Math.floor(Math.random() * playlist.length);
@@ -273,7 +283,7 @@ export default class AudioPlayerUtility extends Component {
         }
 
         this.props.setPlaying({
-          track: prev
+          track: prev,
         });
         break;
       }
@@ -283,4 +293,4 @@ export default class AudioPlayerUtility extends Component {
   render() {
     return <span />;
   }
-};
+}

@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import { css } from "aphrodite";
 
@@ -12,6 +12,11 @@ const DefaultWrapper = (props) => (
   <section className={props.imageclasses.join(" ")}>{props.children}</section>
 );
 
+DefaultWrapper.propTypes = {
+  imageclasses: PropTypes.object,
+  children: PropTypes.object,
+};
+
 export default class Right extends Component {
 
   static propTypes = {
@@ -20,7 +25,16 @@ export default class Right extends Component {
     scroll: PropTypes.bool,
     width: PropTypes.string,
     background: PropTypes.string,
-    styles: PropTypes.object
+    styles: PropTypes.object,
+    link: PropTypes.string,
+    outsideRatio: PropTypes.string,
+    aspect: PropTypes.string,
+    children: PropTypes.object,
+    ratioClasses: PropTypes.array,
+    blur: PropTypes.bool,
+    mobile: PropTypes.bool,
+    backgroundFill: PropTypes.bool,
+    ratioTheme: PropTypes.object,
   }
 
   shouldComponentUpdate(nextProps) {
@@ -32,7 +46,7 @@ export default class Right extends Component {
       "panel__item--right",
       "hard",
       "flush",
-      css(PanelStyles["panel"]),
+      css(PanelStyles.panel),
     ];
 
     if (this.props.link && process.env.WEB) {
@@ -61,7 +75,7 @@ export default class Right extends Component {
       classes.push("five-twelfths@lap-and-up");
     }
 
-    if (this.props.background && this.props.backgroundFill != false) {
+    if (this.props.background && this.props.backgroundFill !== false) {
       classes.push("background--fill");
     }
 
@@ -75,7 +89,7 @@ export default class Right extends Component {
   styles = () => {
     if (this.props.background) {
       return {
-        backgroundImage: `url('${this.props.background}')`
+        backgroundImage: `url('${this.props.background}')`,
       };
     }
 
@@ -110,62 +124,63 @@ export default class Right extends Component {
     );
   }
 
-  renderInsideRatio(){
-
+  renderInsideRatio() {
     return (
       <div className={this.props.ratioTheme || this.ratioClasses()}>
         {this.props.children}
       </div>
     );
-
   }
-  renderOutSideRatio(){
+  renderOutSideRatio() {
     return (
       <div>
         {(() => {
           if (this.props.outsideRatio) {
             return this.props.outsideRatio();
           }
+          return null;
         })()}
         {(() => {
           let styles = this.styles();
 
-          styles = {...styles, ...{
+          styles = {
+            ...styles,
+            ...{
               WebkitFilter: "blur(10px)",
-              filter: "blur(10px)"
-          }};
+              filter: "blur(10px)",
+            },
+          };
 
           if (this.props.blur) {
             return (
               <div className="locked-sides locked-ends background--fill" style={styles} />
             );
           }
+          return null;
         })()}
       </div>
     );
   }
 
-  render () {
-
-    const { blur } = this.props;
+  render() {
     let Wrapper = DefaultWrapper;
     if (this.props.background) {
       Wrapper = ImageLoader;
     }
 
     if (this.props.link) {
-      let overlay = process.env.NATIVE ? "overlay--gradient" : "";
+      const overlay = process.env.NATIVE ? "overlay--gradient" : "";
       return (
         <Link
-            to={this.props.link}
-            className={this.props.theme || this.layoutClasses().join(" ")}
+          to={this.props.link}
+          className={this.props.theme || this.layoutClasses().join(" ")}
         >
           <Wrapper
-              src={this.props.background}
-              preloader={this.preloader}
-              renderElement={this.renderElement}
-              style={this.props.styles || this.styles()}
-              imageclasses={[
+            src={this.props.background}
+            preloader={this.preloader}
+            renderElement={this.renderElement}
+            style={this.props.styles || this.styles()}
+            imageclasses={[
               "background--fill",
               "locked-ends",
               "locked-sides",
@@ -184,11 +199,11 @@ export default class Right extends Component {
     return (
 
       <Wrapper
-          src={this.props.background}
-          preloader={this.preloader}
-          renderElement={this.renderElement}
-          imageclasses={this.props.theme && this.props.theme.split(" ") || this.layoutClasses()}
-          style={this.props.styles || this.styles()}
+        src={this.props.background}
+        preloader={this.preloader}
+        renderElement={this.renderElement}
+        imageclasses={(this.props.theme && this.props.theme.split(" ")) || this.layoutClasses()}
+        style={this.props.styles || this.styles()}
       >
         {this.renderInsideRatio()}
         {this.renderOutSideRatio()}

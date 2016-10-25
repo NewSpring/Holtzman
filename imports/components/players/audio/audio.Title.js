@@ -11,17 +11,14 @@ export default class AudioTitle extends Component {
     channelName: PropTypes.string.isRequired,
   }
 
-  getTertiaryTextColor = (dark) => {
-    return dark ? {color: "rgba(255,255,255,.5)"} : {color: "rgba(0,0,0,.5)"};
-  };
+  getTertiaryTextColor = (dark) =>
+    (dark ? { color: "rgba(255,255,255,.5)" } : { color: "rgba(0,0,0,.5)" });
 
-  getTertiaryTextClass = () => {
-    return this.props.isLight ? "text-dark-tertiary" : "text-light-tertiary";
-  };
+  getTertiaryTextClass = () =>
+    (this.props.isLight ? "text-dark-tertiary" : "text-light-tertiary");
 
-  getPrimaryTextClass = () => {
-    return this.props.isLight ? "text-dark-primary" : "text-light-primary";
-  };
+  getPrimaryTextClass = () =>
+    (this.props.isLight ? "text-dark-primary" : "text-light-primary");
 
   // show title before artist if sermon
   // else show artist before title
@@ -57,7 +54,7 @@ export default class AudioTitle extends Component {
     if (this.props.isPlaying) {
       return (
         <div>
-          <h5 className={this.getPrimaryTextClass() + " flush"}>
+          <h5 className={`${this.getPrimaryTextClass()} flush`}>
             {this.props.trackTitle}
           </h5>
           <h6 className="push-bottom" style={this.getTertiaryTextColor(!isLight)}>

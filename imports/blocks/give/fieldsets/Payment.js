@@ -5,48 +5,57 @@ import AccountType from "../../../components/accountType";
 import Forms from "../../../components/forms";
 
 import Validate from "../../../util/validate";
-import Format from "../../../util/format";
+import { creditCard } from "../../../util/format";
 
 export default class Payment extends Component {
 
+  static propTypes = {
+    save: PropTypes.func,
+    data: PropTypes.object,
+    savedAccount: PropTypes.object,
+    header: PropTypes.string,
+    children: PropTypes.object,
+    toggles: PropTypes.func,
+    transactionType: PropTypes.string,
+    schedules: PropTypes.object,
+    back: PropTypes.func,
+    next: PropTypes.func,
+  }
+
   state = {
-    save: true
+    save: true,
   }
 
   savePayment = () => {
-    this.setState({save: !this.state.save});
+    this.setState({ save: !this.state.save });
 
     if (this.state.save) {
-      this.props.save({ payment: { name: null }});
+      this.props.save({ payment: { name: null } });
     }
   }
 
   saveName = (value) => {
     if (value.length > 0) {
-      this.props.save({ payment: { name: value }});
+      this.props.save({ payment: { name: value } });
     }
 
     return (value.length > 0);
-
   }
 
-  header = () => {
-    return (
-      <h4 className="text-center">
-        Payment Details
-      </h4>
-    );
-  }
+  header = () => (
+    <h4 className="text-center">
+      Payment Details
+    </h4>
+  );
 
   icon = () => {
-
     const { payment } = this.props.data;
     const { savedAccount } = this.props;
 
     if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
       return (
         // replace with SVG
-        <AccountType width="30px" height="21px" type={savedAccount.payment.paymentType}/>
+        <AccountType width="30px" height="21px" type={savedAccount.payment.paymentType} />
       );
     }
 
@@ -58,41 +67,39 @@ export default class Payment extends Component {
 
     if (payment.type === "ach") {
       return (
-        <AccountType width="30px" height="21px" type="Bank"/>
+        <AccountType width="30px" height="21px" type="Bank" />
       );
     }
 
     if (payment.type === "cc") {
-
       const getCardType = (card) => {
-
         const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi;
 
         const defaultRegex = {
           Visa: /^4[0-9]{0,15}$/gmi,
           MasterCard: /^5$|^5[1-5][0-9]{0,14}$/gmi,
           AmEx: /^3$|^3[47][0-9]{0,13}$/gmi,
-          Discover: d
+          Discover: d,
         };
 
-        for (let regex in defaultRegex) {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const regex in defaultRegex) {
           if (defaultRegex[regex].test(card.replace(/-/gmi, ""))) {
             return regex;
           }
         }
 
         return null;
-
       };
 
       return (
         // replace with SVG
-        <AccountType width="30px" height="21px" type={getCardType(masked)}/>
+        <AccountType width="30px" height="21px" type={getCardType(masked)} />
       );
     }
 
+    return null;
   }
-
 
   toggles = ["Credit Card", "Bank Account"]
 
@@ -101,28 +108,28 @@ export default class Payment extends Component {
     return (
       <div>
         <Forms.Input
-            id="routingNumber"
-            name="billing-routing-number"
-            label="Routing Number"
-            type="tel"
-            errorText="Please enter your routing number"
-            defaultValue={payment.routingNumber}
-            onChange={this.saveData}
-            validation={this.validate}
-            autoFocus
-            ref="routingNumber"
+          id="routingNumber"
+          name="billing-routing-number"
+          label="Routing Number"
+          type="tel"
+          errorText="Please enter your routing number"
+          defaultValue={payment.routingNumber}
+          onChange={this.saveData}
+          validation={this.validate}
+          autoFocus
+          ref="routingNumber"
         />
 
         <Forms.Input
-            id="accountNumber"
-            name="billing-account-number"
-            label="Account Number"
-            type="tel"
-            errorText="Please enter your account number"
-            defaultValue={payment.accountNumber}
-            onChange={this.saveData}
-            validation={this.validate}
-            ref="accountNumber"
+          id="accountNumber"
+          name="billing-account-number"
+          label="Account Number"
+          type="tel"
+          errorText="Please enter your account number"
+          defaultValue={payment.accountNumber}
+          onChange={this.saveData}
+          validation={this.validate}
+          ref="accountNumber"
 
         />
 
@@ -131,25 +138,23 @@ export default class Payment extends Component {
 
           <div className="grid__item one-whole">
             <Forms.Select
-                name="billing-account-type"
-                ref="accountType"
-                id="accountType"
-                label="Account Type"
-                onChange={this.saveData}
-                validation={this.validate}
-                defaultValue={payment.accountType}
-                errorText="Please choose your account type"
-                includeBlank
-                items={[
+              name="billing-account-type"
+              ref="accountType"
+              id="accountType"
+              label="Account Type"
+              onChange={this.saveData}
+              validation={this.validate}
+              defaultValue={payment.accountType}
+              errorText="Please choose your account type"
+              includeBlank
+              items={[
                 { value: "checking", label: "Checking" },
                 { value: "savings", label: "Savings" },
               ]}
             />
           </div>
         </div>
-
       </div>
-
     );
   }
 
@@ -157,7 +162,7 @@ export default class Payment extends Component {
     const { id } = target;
 
     let isValid = false;
-    let notEmpty = (value) => (value.length > 0);
+    const notEmpty = (inputVal) => (inputVal.length > 0);
     const validationMap = {
       accountNumber: notEmpty,
       routingNumber: notEmpty,
@@ -165,7 +170,7 @@ export default class Payment extends Component {
       accountName: notEmpty,
       cardNumber: Validate.isCreditCard,
       expiration: notEmpty,
-      ccv: Validate.isCCV
+      ccv: Validate.isCCV,
     };
 
     isValid = validationMap[id](value);
@@ -175,37 +180,37 @@ export default class Payment extends Component {
       return true;
     }
 
-
     return isValid;
   }
 
   saveData = (value, target) => {
     const { id } = target;
 
-    let isValid = this.validate(value, target);
+    const isValid = this.validate(value, target);
 
     if (isValid) {
-      this.props.save({ payment: { [id]: value }});
+      this.props.save({ payment: { [id]: value } });
     }
-
   }
 
-  formatExp = (str, target, event) => {
-
-    let save = (adjusted) => {
+  formatExp = (s, target) => {
+    const save = (adjusted) => {
       this.saveData(adjusted, target);
       return adjusted;
     };
 
     let current = this.props.data.payment.expiration;
-    current || (current = "");
-    str = `${str}`;
+    if (!current) {
+      current = "";
+    }
+
+    const str = `${s}`;
 
     if (str.length > 5) {
       return save(str.slice(0, 5));
     }
 
-    let copy = str;
+    const copy = str;
     const lastNumber = copy.slice(-1);
     const currentLastNumber = current.slice(-1);
 
@@ -213,11 +218,11 @@ export default class Payment extends Component {
       return save(`0${str}/`);
     }
 
-    if (lastNumber === "/" && str.length === 2 && currentLastNumber != "/") {
+    if (lastNumber === "/" && str.length === 2 && currentLastNumber !== "/") {
       return save(`${str}/`);
     }
 
-    if (str.length === 2 && lastNumber != "/" && currentLastNumber != "/") {
+    if (str.length === 2 && lastNumber !== "/" && currentLastNumber !== "/") {
       return save(`${str}/`);
     }
 
@@ -226,7 +231,6 @@ export default class Payment extends Component {
     }
 
     return save(str);
-
   }
 
   cardFields = () => {
@@ -234,48 +238,48 @@ export default class Payment extends Component {
     return (
       <div>
         <Forms.Input
-            name="billing-cc-number"
-            id="cardNumber"
-            label="Card Number"
-            type="tel"
-            errorText="Please enter your card number"
-            defaultValue={payment.cardNumber}
-            format={Format.creditCard}
-            onChange={this.saveData}
-            validation={this.validate}
-            ref="cardNumber"
+          name="billing-cc-number"
+          id="cardNumber"
+          label="Card Number"
+          type="tel"
+          errorText="Please enter your card number"
+          defaultValue={payment.cardNumber}
+          format={creditCard}
+          onChange={this.saveData}
+          validation={this.validate}
+          ref="cardNumber"
         >
-          <div className="locked locked-right soft-double-right locked-top" style={{top: "-3px"}}>
+          <div className="locked locked-right soft-double-right locked-top" style={{ top: "-3px" }}>
             {this.icon()}
           </div>
         </Forms.Input>
         <div className="grid">
           <div className="grid__item one-half">
             <Forms.Input
-                id="expiration"
-                name="billing-cc-exp"
-                label="Exp (MM/YY)"
-                type="tel"
-                errorText="Please enter a valid expiration number"
-                defaultValue={payment.expiration}
-                format={this.formatExp}
-                onChange={this.saveData}
-                validation={(value) => (value.length > 0)}
-                ref="expiration"
-                data-expiry-input
+              id="expiration"
+              name="billing-cc-exp"
+              label="Exp (MM/YY)"
+              type="tel"
+              errorText="Please enter a valid expiration number"
+              defaultValue={payment.expiration}
+              format={this.formatExp}
+              onChange={this.saveData}
+              validation={(value) => (value.length > 0)}
+              ref="expiration"
+              data-expiry-input
             />
           </div>
           <div className="grid__item one-half">
             <Forms.Input
-                id="ccv"
-                name="billing-cvv"
-                label="CCV"
-                type="tel"
-                errorText="Please enter a valid ccv number"
-                defaultValue={payment.ccv}
-                onChange={this.saveData}
-                validation={this.validate}
-                ref="ccv"
+              id="ccv"
+              name="billing-cvv"
+              label="CCV"
+              type="tel"
+              errorText="Please enter a valid ccv number"
+              defaultValue={payment.ccv}
+              onChange={this.saveData}
+              validation={this.validate}
+              ref="ccv"
             />
           </div>
         </div>
@@ -293,7 +297,7 @@ export default class Payment extends Component {
     this.props.save({ payment: { type } });
   }
 
-  render () {
+  render() {
     const { payment } = this.props.data;
     return (
       <div>
@@ -304,9 +308,9 @@ export default class Payment extends Component {
         {this.props.children}
 
         <Controls.Toggle
-            items={this.props.toggles || this.toggles}
-            state={payment.type === "ach"}
-            toggle={this.toggle}
+          items={this.props.toggles || this.toggles}
+          state={payment.type === "ach"}
+          toggle={this.toggle}
         />
 
 
@@ -314,27 +318,28 @@ export default class Payment extends Component {
           {(() => {
             if (payment.type === "ach") {
               return this.bankFields();
-            } else {
-              return this.cardFields();
             }
+
+            return this.cardFields();
           })()}
 
           {(() => {
             if (
               !this.props.savedAccount.id &&
-              this.props.transactionType != "guest" &&
+              this.props.transactionType !== "guest" &&
               Object.keys(this.props.schedules).length === 0
             ) {
               return (
                 <Forms.Checkbox
-                    name="savePayment"
-                    defaultValue={this.state.save}
-                    clicked={this.savePayment}
+                  name="savePayment"
+                  defaultValue={this.state.save}
+                  clicked={this.savePayment}
                 >
                   Save this payment for future contributions
                 </Forms.Checkbox>
               );
             }
+            return null;
           })()}
 
 
@@ -342,43 +347,50 @@ export default class Payment extends Component {
             if (
               this.state.save &&
               !this.props.savedAccount.id &&
-              this.props.transactionType != "guest" &&
+              this.props.transactionType !== "guest" &&
               Object.keys(this.props.schedules).length === 0
             ) {
               return (
                 <Forms.Input
-                    name="accountName"
-                    label="Saved Account Name"
-                    classes={["soft-bottom", "flush-bttom"]}
-                    errorText="Please enter a name for the account"
-                    validation={this.saveName}
-                    defaultValue={payment.type === "ach" ? "Bank Account" : "Credit Card"}
-                    ref="accountName"
+                  name="accountName"
+                  label="Saved Account Name"
+                  classes={["soft-bottom", "flush-bttom"]}
+                  errorText="Please enter a name for the account"
+                  validation={this.saveName}
+                  defaultValue={payment.type === "ach" ? "Bank Account" : "Credit Card"}
+                  ref="accountName"
                 />
               );
             }
+            return null;
           })()}
 
         </div>
 
 
-
-
         <div>
-          <a href="#" tabIndex={-1} onClick={this.props.back} className="btn--small btn--dark-tertiary display-inline-block">
+          <a
+            href=""
+            tabIndex={-1}
+            onClick={this.props.back}
+            className="btn--small btn--dark-tertiary display-inline-block"
+          >
             Back
           </a>
 
           {(() => {
-            const { billing } = this.props.data;
-            let btnClasses = ["push-left"];
+            const btnClasses = ["push-left"];
 
             const ach = (payment.type === "ach" && payment.accountNumber && payment.routingNumber);
-            const cc = (payment.type === "cc" && payment.cardNumber && payment.expiration && payment.ccv);
+            const cc = (
+              payment.type === "cc" &&
+                payment.cardNumber &&
+                payment.expiration && payment.ccv
+            );
 
             let submit = this.props.next;
             let disabled = false;
-            if (ach || cc){
+            if (ach || cc) {
               btnClasses.push("btn");
               submit = this.props.next;
             } else {
@@ -388,7 +400,12 @@ export default class Payment extends Component {
             }
 
             return (
-              <button  className={btnClasses.join(" ")} disabled={disabled} type="submit" onClick={submit}>
+              <button
+                className={btnClasses.join(" ")}
+                disabled={disabled}
+                type="submit"
+                onClick={submit}
+              >
                 Next
               </button>
             );

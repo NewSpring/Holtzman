@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import ReactMixin from "react-mixin";
 
@@ -7,7 +7,6 @@ import Headerable from "../../mixins/mixins.Header";
 import modal from "../../store/modal";
 
 import {
-  sections as sectionActions,
   nav as navActions,
 } from "../../store";
 
@@ -18,6 +17,11 @@ const map = (state) => ({ sections: state.sections });
 @connect(map)
 @ReactMixin.decorate(Headerable)
 export default class SectionsContainer extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    sections: PropTypes.object.isRequired,
+  }
 
   componentDidMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
@@ -30,30 +34,28 @@ export default class SectionsContainer extends Component {
 
     this.lockHeader("SectionsContainer");
     this.headerAction({
-      title: "Sections"
+      title: "Sections",
     }, "SectionsContainer");
   }
 
   componentWillUnmount() {
-    this.props.dispatch(modal.update({keepNav: false}));
+    this.props.dispatch(modal.update({ keepNav: false }));
     this.unlockHeader();
   }
 
-  hide = () => {
-    return this.props.dispatch(modal.hide());
-  }
+  hide = () => (this.props.dispatch(modal.hide()))
 
-  render(){
-    let count = 0;
-    let { content } = this.props.sections;
+  render() {
+    const { content } = this.props.sections;
 
-    let items = [];
+    const items = [];
 
-    for (let section in content) {
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
+    for (const section in content) {
       items.push(content[section]);
     }
 
-    let chunkedItems = [];
+    const chunkedItems = [];
     while (items.length) {
       chunkedItems.push(items.splice(0, 2));
     }

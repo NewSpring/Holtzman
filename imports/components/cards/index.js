@@ -1,23 +1,38 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
 import { ImageLoader } from "../loading";
-import Styles from "../loading/FeedItemSkeleton-css";
+// import Styles from "../loading/FeedItemSkeleton-css";
 
-let Wrapper = (props) => (
+const Wrapper = (props) => (
   <div {...props}>
     {props.children}
   </div>
 );
 
+Wrapper.propTypes = {
+  children: PropTypes.any, // eslint-disable-line
+};
+
 export default class Card extends Component {
 
   static propTypes = {
-    classes: PropTypes.array,
+    classes: PropTypes.array, // eslint-disable-line
     theme: PropTypes.string,
     link: PropTypes.string,
-    image: PropTypes.object,
-    styles: PropTypes.object
+    image: PropTypes.object, // eslint-disable-line
+    styles: PropTypes.object, // eslint-disable-line
+    children: PropTypes.any, // eslint-disable-line
+    itemClasses: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]),
+    linkAll: PropTypes.any, // eslint-disable-line
+    imageclasses: PropTypes.array, // eslint-disable-line
+    itemTheme: PropTypes.string,
+    itemStyles: PropTypes.object, // eslint-disable-line
+    mobile: PropTypes.bool,
+    wrapperClasses: PropTypes.string,
   }
 
   itemClasses = () => {
@@ -25,7 +40,7 @@ export default class Card extends Component {
       "card__item",
       "soft",
       "text-center",
-      "soft-double-ends"
+      "soft-double-ends",
     ];
 
     if (this.props.itemClasses) {
@@ -52,9 +67,9 @@ export default class Card extends Component {
   }
 
   styles = () => {
-    let defaultStyles = {
+    const defaultStyles = {
       overflow: "hidden",
-      display: "block"
+      display: "block",
     };
 
     if (this.props.linkAll) {
@@ -83,17 +98,7 @@ export default class Card extends Component {
     );
   }
 
-  // context from ImageLoader
-  renderElement() {
-    return (
-      <div className={this.imageclasses.join(" ")} style={this.style}>
-        <div className="ratio__item" />
-      </div>
-    );
-  }
-
   createImage = () => {
-
     const { image } = this.props;
 
     if (image) {
@@ -114,44 +119,54 @@ export default class Card extends Component {
       }
 
       let style;
-      if (image.full != true) {
+      if (image.full !== true) {
         style = { backgroundImage: `url('${image.url}')` };
       }
 
       return (
         <ImageLoader
-            src={image.url}
-            preloader={this.preloader}
-            renderElement={this.renderElement}
-            imageclasses={imageclasses}
-            style={style}
+          src={image.url}
+          preloader={this.preloader}
+          renderElement={this.renderElement}
+          imageclasses={imageclasses}
+          style={style}
         />
       );
     }
+    return undefined;
   }
 
-  render () {
+  // context from ImageLoader
+  renderElement() {
+    return (
+      <div className={this.imageclasses.join(" ")} style={this.style}>
+        <div className="ratio__item" />
+      </div>
+    );
+  }
 
-    let { link, image, theme, styles, itemTheme, itemStyles, wrapperClasses } = this.props;
+  render() {
+    const { link, theme, styles, itemTheme, itemStyles } = this.props;
+    let { wrapperClasses } = this.props;
 
     wrapperClasses += " plain";
-    if (this.props.mobile ===  false) {
+    if (this.props.mobile === false) {
       wrapperClasses += " visuallyhidden@handheld";
     }
 
     if (this.props.linkAll) {
       return (
         <Link
-            className={theme || this.cardClasses()}
-            style={styles || this.styles()}
-            to={link}
+          className={theme || this.cardClasses()}
+          style={styles || this.styles()}
+          to={link}
         >
           <div className={wrapperClasses} style={this.imageStyles()} >
             {this.createImage()}
           </div>
           <div
-              className={itemTheme || this.itemClasses()}
-              style={itemStyles}
+            className={itemTheme || this.itemClasses()}
+            style={itemStyles}
           >
             {this.props.children}
           </div>
@@ -161,8 +176,8 @@ export default class Card extends Component {
 
     return (
       <div
-          className={theme || this.cardClasses()}
-          style={styles || this.styles()}
+        className={theme || this.cardClasses()}
+        style={styles || this.styles()}
       >
         {(() => {
           if (link) {
@@ -179,8 +194,8 @@ export default class Card extends Component {
           );
         })()}
         <div
-            className={itemTheme || this.itemClasses()}
-            style={itemStyles}
+          className={itemTheme || this.itemClasses()}
+          style={itemStyles}
         >
           {this.props.children}
         </div>

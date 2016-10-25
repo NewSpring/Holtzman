@@ -20,9 +20,9 @@ const animation = {
 };
 
 const phaders = {
-  "from": {
+  from: {
     opacity: 0,
-  }
+  },
 };
 
 const textAnimation = {

@@ -1,9 +1,9 @@
 // stolen from https://github.com/kadirahq/flow-router/blob/ssr/server/ssr_data.js
-
-export default function patchSubscribeData (ReactRouterSSR) {
+/* eslint-disable no-underscore-dangle, prefer-rest-params */
+export default function patchSubscribeData(ReactRouterSSR) {
   const originalSubscribe = Meteor.subscribe;
 
-  Meteor.subscribe = function(pubName) {
+  Meteor.subscribe = function subscribe(pubName) {
     const params = Array.prototype.slice.call(arguments, 1);
 
     const ssrContext = ReactRouterSSR.ssrContext.get();
@@ -18,38 +18,38 @@ export default function patchSubscribeData (ReactRouterSSR) {
     }
 
     return {
-      ready: () => true
+      ready: () => true,
     };
   };
 
   const Mongo = Package.mongo.Mongo;
   const originalFind = Mongo.Collection.prototype.find;
 
-  Mongo.Collection.prototype.find = function(selector = {}, options = {}) {
-    selector = selector || {};
+  Mongo.Collection.prototype.find = function find(selector = {}, options = {}) {
     const ssrContext = ReactRouterSSR.ssrContext.get();
     if (ssrContext && !ReactRouterSSR.inSubscription.get()) {
       const collName = this._name;
 
+      const newOptions = options;
       // this line is added just to make sure this works CollectionFS
       if (typeof this._transform === "function") {
-        options.transform = this._transform;
+        newOptions.transform = this._transform;
       }
 
       const collection = ssrContext.getCollection(collName);
-      const cursor = collection.find(selector, options);
+      const cursor = collection.find(selector, newOptions);
       return cursor;
     }
 
-    return originalFind.call(this, selector, options);
+    return originalFind.call(this, selector || {}, options);
   };
 
   // We must implement this. Otherwise, it'll call the origin prototype's
   // find method
-  Mongo.Collection.prototype.findOne = function(selector, options) {
-    options = options || {};
-    options.limit = 1;
-    return this.find(selector, options).fetch()[0];
+  Mongo.Collection.prototype.findOne = function findOne(selector, options) {
+    const newOptions = options || {};
+    newOptions.limit = 1;
+    return this.find(selector, newOptions).fetch()[0];
   };
 
   const originalAutorun = Tracker.autorun;
@@ -72,9 +72,9 @@ export default function patchSubscribeData (ReactRouterSSR) {
   ["call", "apply"].forEach((methodName) => {
     const original = Meteor[methodName];
     Meteor[methodName] = (...args) => {
-      const response = ReactRouterSSR.ssrContext.withValue(null, () => {
-        return original.apply(this, args);
-      });
+      const response = ReactRouterSSR.ssrContext.withValue(null, () => (
+        original.apply(this, args)
+      ));
 
       return response;
     };
@@ -82,7 +82,5 @@ export default function patchSubscribeData (ReactRouterSSR) {
 
   // This is not available in the server. But to make it work with SSR
   // We need to have it.
-  Meteor.loggingIn = () => {
-    return false;
-  };
+  Meteor.loggingIn = () => (false);
 }

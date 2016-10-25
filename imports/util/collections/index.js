@@ -6,5 +6,5 @@ import color from "./collections.color";
 export default {
   backgroundStyles,
   classes,
-  color
+  color,
 };

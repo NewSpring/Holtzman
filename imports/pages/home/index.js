@@ -1,108 +1,111 @@
-import { Component } from "react";
+import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
-import { connect } from "react-apollo";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
+import { createFragment } from "apollo-client";
 import gql from "graphql-tag";
-import { Link } from "react-router";
 
 import Split, { Left, Right } from "../../blocks/split";
 
 import ApollosPullToRefresh from "../../components/pullToRefresh";
-import Loading, { FeedItemSkeleton } from "../../components/loading";
+import { FeedItemSkeleton } from "../../components/loading";
 import FeedItem from "../../components/cards/cards.FeedItem";
 
 import { nav as navActions } from "../../store";
 import Headerable from "../../mixins/mixins.Header";
 
-import Pageable from "../../mixins/mixins.Pageable";
+import infiniteScroll from "../../decorators/infiniteScroll";
 
 import backgrounds from "../../util/backgrounds";
 import content from "../../util/content";
 
 import HomeHero from "./home.Hero";
 
-const mapQueriesToProps = ({ ownProps, state }) => ({
-  data: {
-    query: gql`
-      fragment ContentForFeed on Content {
-        entryId: id
-        title
-        channelName
-        status
-        meta {
-          siteId
-          date
-          channelId
-        }
-        content {
-          images(sizes: ["large"]) {
-            fileName
-            fileType
-            fileLabel
-            url
-          }
-          isLight
-          colors {
-            id
-            value
-            description
-          }
-        }
+const CONTENT_FEED_QUERY = gql`
+  query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
+    feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
+      ...ContentForFeed
+      parent {
+        ...ContentForFeed
       }
+    }
+  }
+`;
 
-      query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
-        feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
-          ...ContentForFeed
-          parent {
-            ...ContentForFeed
-          }
-        }
+const contentFragment = createFragment(gql`
+  fragment ContentForFeed on Content {
+    entryId: id
+    title
+    channelName
+    status
+    meta {
+      siteId
+      date
+      channelId
+    }
+    content {
+      images(sizes: ["large"]) {
+        fileName
+        fileType
+        fileLabel
+        url
       }
-    `,
+      isLight
+      colors {
+        id
+        value
+        description
+      }
+    }
+  }
+`);
+
+const withFeedContent = graphql(CONTENT_FEED_QUERY, {
+  options: (ownProps) => ({
+    fragments: [contentFragment],
     variables: {
-      excludeChannels: state.topics.topics,
-      limit: state.paging.pageSize * state.paging.page,
-      skip: state.paging.skip,
+      excludeChannels: ownProps.topics,
+      limit: 20,
+      skip: 0,
       cache: true,
     },
-    forceFetch: false,
-    returnPartialData: false,
-  },
+  }),
+  props: ({ data }) => ({
+    data,
+    loading: data.loading,
+    fetchMore: () => data.fetchMore({
+      variables: { ...data.variables, skip: data.feed.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult.data) { return previousResult; }
+        return { feed: [...previousResult.feed, ...fetchMoreResult.data.feed] };
+      },
+    }),
+  }),
 });
 
-const mapStateToProps = (state) => ({
-    paging: state.paging,
-    topics: state.topics.topics,
-    modal: { visible: state.modal.visible },
-});
-
-@connect({ mapQueriesToProps, mapStateToProps })
-@ReactMixin.decorate(Pageable)
+@connect((state) => ({ topics: state.topics.topics }))
+@withFeedContent
+@infiniteScroll()
 @ReactMixin.decorate(Headerable)
 export default class Home extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+  }
+
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({
-      title: "default"
-    });
+    this.headerAction({ title: "default" });
   }
 
   handleRefresh = (resolve, reject) => {
-    const { topics, paging } = this.props;
-    let refetchVariables = {
-      excludeChannels: topics,
-      limit: paging.pageSize * paging.page,
-      skip: paging.skip,
-      cache: false,
-    };
-
-    this.props.data.refetch(refetchVariables)
+    this.props.data.refetch({ cache: false })
       .then(resolve)
       .catch(reject);
   }
 
   renderFeed = () => {
-
     const { feed } = this.props.data;
 
     let feedItems = [1, 2, 3, 4, 5];
@@ -111,10 +114,16 @@ export default class Home extends Component {
     }
     return (
       feedItems.map((item, i) => (
-        <div className="grid__item one-half@palm-wide-and-up flush-bottom@palm push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored" key={i}>
+        <div
+          className={
+            "grid__item one-half@palm-wide-and-up flush-bottom@palm " +
+            "push-half-bottom@palm-wide push-bottom@portable push-bottom@anchored"
+          }
+          key={i}
+        >
           {(() => {
             if (typeof item === "number") return <FeedItemSkeleton />;
-            return <FeedItem item={item}  />;
+            return <FeedItem item={item} />;
           })()}
         </div>
       ))
@@ -123,10 +132,11 @@ export default class Home extends Component {
   }
 
   render() {
+    const { data: { feed } } = this.props;
 
-    const { feed } = this.props.data;
-
-    let photo, heroItem, heroLink;
+    let photo;
+    let heroItem;
+    let heroLink;
     if (feed) {
       heroItem = feed[0];
       heroLink = content.links(heroItem);
@@ -135,32 +145,43 @@ export default class Home extends Component {
       } else {
         photo = backgrounds.image(heroItem);
       }
-
     }
     return (
-        <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
-          <Split nav classes={["background--light-primary"]}>
-            <Right
-                mobile
-                background={photo}
-                classes={["floating--bottom", "text-left", "background--dark-primary"]}
-                ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up", "floating--bottom", "text-left"]}
-                aspect="square"
-                link={heroLink}
-            >
+      <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
+        <Split nav classes={["background--light-primary"]}>
+          <Right
+            mobile
+            background={photo}
+            classes={["floating--bottom", "text-left", "background--dark-primary"]}
+            ratioClasses={[
+              "floating__item",
+              "overlay__item",
+              "one-whole",
+              "soft@lap-and-up",
+              "floating--bottom",
+              "text-left",
+            ]}
+            aspect="square"
+            link={heroLink}
+          >
 
-              <HomeHero item={heroItem ? heroItem : {}} />
+            <HomeHero item={heroItem || {}} />
 
-            </Right>
-          </Split>
-          <Left scroll ref="container">
-            <section className="background--light-secondary soft-half@palm soft@palm-wide-and-up soft-double@anchored">
-              <div className="grid">
-                {this.renderFeed()}
-              </div>
-            </section>
-          </Left>
-        </ApollosPullToRefresh>
+          </Right>
+        </Split>
+        <Left scroll>
+          <section
+            className={
+              "background--light-secondary soft-half@palm " +
+              "soft@palm-wide-and-up soft-double@anchored"
+            }
+          >
+            <div className="grid">
+              {this.renderFeed()}
+            </div>
+          </section>
+        </Left>
+      </ApollosPullToRefresh>
     );
   }
 

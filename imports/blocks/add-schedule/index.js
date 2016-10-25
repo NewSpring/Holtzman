@@ -1,8 +1,7 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import ReactMixin from "react-mixin";
-import Moment from "moment";
-import { createContainer } from "../meteor/react-meteor-data";
+import moment from "moment";
+import createContainer from "../meteor/react-meteor-data";
 
 import { give as giveActions } from "../../store";
 import Offline from "../../components/status/Offline";
@@ -15,6 +14,22 @@ const map = (state) => ({ give: state.give });
 @connect(map, giveActions)
 class CartContainer extends Component {
 
+  static propTypes = {
+    accounts: PropTypes.array, // eslint-disable-line
+    addTransactions: PropTypes.func,
+    alive: PropTypes.bool,
+    clearAllSchedulesExcept: PropTypes.func,
+    clearSchedules: PropTypes.func,
+    clearTransactions: PropTypes.func,
+    existing: PropTypes.object, // eslint-disable-line
+    onClick: PropTypes.func,
+    removeSchedule: PropTypes.func,
+    saveSchedule: PropTypes.func,
+    setTransactionType: PropTypes.func,
+    text: PropTypes.string,
+    dataId: PropTypes.string,
+  }
+
   state = {
     fundId: false,
     fundLabel: null,
@@ -23,7 +38,7 @@ class CartContainer extends Component {
     amount: null,
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.props.clearTransactions();
 
     if (this.props.existing) {
@@ -33,111 +48,23 @@ class CartContainer extends Component {
           fundId: Number(existing.details[0].account.id),
           fundLabel: existing.details[0].account.name,
           frequency: existing.frequency,
-          amount: Number(`${existing.details[0].amount}`.replace(/[^0-9\.]+/g, ""))
+          amount: Number(`${existing.details[0].amount}`.replace(/[^0-9\.]+/g, "")),
         });
       }
     }
   }
 
-  componentWillUnmount() {
-    this.props.clearSchedules();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    let { transactions, schedules } = nextProps.give;
+  componentWillReceiveProps(nextProps) { // eslint-disable-line
+    const { transactions, schedules } = nextProps.give;
 
     if (Object.keys(transactions).length === 0 && Object.keys(schedules).length === 0) {
-      let form = document.getElementById("add-to-cart");
+      const form = document.getElementById("add-to-cart");
       if (form) form.reset();
     }
   }
 
-  monentize = (value, fixed) => {
-
-    if (typeof value === "number") {
-      value = `${value}`;
-    }
-
-    if (!value.length) {
-      return "$0.00";
-    }
-
-    value = value.replace(/[^\d.-]/g, "");
-
-    let decimals = value.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      value = Number(value).toFixed(2);
-      value = String(value);
-    }
-
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${value}`;
-  }
-
-  format = (value, target) => {
-    const { id, name } = target;
-
-    value = this.monentize(value);
-
-    this.setState({
-      fundId: id,
-      fundLabel: name,
-      amount: Number(value.replace(/[^0-9\.]+/g, ""))
-    });
-
-    return value;
-  }
-
-  saveData = (value, target) => {
-    const { id, name } = target;
-
-    value = this.monentize(value);
-    this.setState({
-      fundId: id,
-      fundLabel: name,
-      amount: Number(value.replace(/[^0-9\.]+/g, ""))
-    });
-
-    return true;
-  }
-
-  saveDate = (value, target) => {
-
-    const { fundId, fundLabel, frequency } = this.state;
-
-    let date = Moment(new Date(value)).format("YYYYMMDD");
-
-    this.setState({ startDate: date });
-
-    if (fundId ) this.props.saveSchedule(fundId, { start: new Date(value) });
-    return true;
-  }
-
-  setFund = (id) => {
-    let selectedFund = this.props.accounts.filter((fund) => {
-      return fund.id === Number(id);
-    });
-
-    const { name } = selectedFund[0];
-
-    if (this.state.fundId != id) this.props.removeSchedule(this.state.fundId);
-
-    this.setState({fundId: id, fundLabel: name});
-    this.props.saveSchedule(id, {
-      label: name,
-      frequency: this.state.frequency,
-      start: this.state.start
-    });
-
-    this.props.setTransactionType("recurring");
-  }
-
-  setFrequency = (value) => {
-    this.setState({frequency: value});
-    if (this.state.fundId) {
-      this.props.saveSchedule(this.state.fundId, { frequency: value });
-    }
-
+  componentWillUnmount() {
+    this.props.clearSchedules();
   }
 
   onClick = (e) => {
@@ -150,38 +77,113 @@ class CartContainer extends Component {
       this.props.saveSchedule(this.state.fundId, {
         label: this.state.fundLabel,
         frequency: this.state.frequency,
-        start: this.state.startDate
+        start: this.state.startDate,
       });
 
       this.props.clearTransactions();
       this.props.addTransactions({ [this.state.fundId]: {
         value: Number(this.state.amount),
         label: this.state.fundLabel,
-      }});
-
+      } });
     }
 
     if (this.props.onClick) keepGoing = this.props.onClick(e);
     return keepGoing;
-
   }
 
-  render () {
+  setFund = (id) => {
+    const selectedFund = this.props.accounts.filter((fund) => fund.id === Number(id));
 
+    const { name } = selectedFund[0];
+
+    if (this.state.fundId !== id) this.props.removeSchedule(this.state.fundId);
+
+    this.setState({ fundId: id, fundLabel: name });
+    this.props.saveSchedule(id, {
+      label: name,
+      frequency: this.state.frequency,
+      start: this.state.start,
+    });
+
+    this.props.setTransactionType("recurring");
+  }
+
+  setFrequency = (value) => {
+    this.setState({ frequency: value });
+    if (this.state.fundId) {
+      this.props.saveSchedule(this.state.fundId, { frequency: value });
+    }
+  }
+
+  format = (val, target) => {
+    const { id, name } = target;
+
+    const value = this.monentize(val);
+
+    this.setState({
+      fundId: id,
+      fundLabel: name,
+      amount: Number(value.replace(/[^0-9\.]+/g, "")),
+    });
+
+    return value;
+  }
+
+  saveData = (val, target) => {
+    const { id, name } = target;
+
+    const value = this.monentize(val);
+    this.setState({
+      fundId: id,
+      fundLabel: name,
+      amount: Number(value.replace(/[^0-9\.]+/g, "")),
+    });
+
+    return true;
+  }
+
+  saveDate = (value) => {
+    const { fundId } = this.state;
+
+    const date = moment(new Date(value)).format("YYYYMMDD");
+
+    this.setState({ startDate: date });
+
+    if (fundId) this.props.saveSchedule(fundId, { start: new Date(value) });
+    return true;
+  }
+
+
+  monentize = (val, fixed) => {
+    let value = val;
+    if (typeof value === "number") value = `${value}`;
+    if (!value.length) return "$0.00";
+
+    value = value.replace(/[^\d.-]/g, "");
+
+    const decimals = value.split(".")[1];
+    if ((decimals && decimals.length >= 2) || fixed) {
+      value = Number(value).toFixed(2);
+      value = String(value);
+    }
+
+    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return `$${value}`;
+  }
+
+  render() {
     if (!this.props.alive) return <Offline />;
 
-    const { transactions } = this.props.give;
-
-    let schedules = [
+    const schedules = [
       { label: "one time", value: "One-Time" },
       { label: "every week", value: "Weekly" },
       { label: "every two weeks", value: "Bi-Weekly" },
       { label: "once a month", value: "Monthly" },
     ];
 
-    let mappedAccounts = this.props.accounts.map((x) => ({
+    const mappedAccounts = this.props.accounts.map((x) => ({
       value: x.id,
-      label: x.name
+      label: x.name,
     }));
 
     if (!mappedAccounts.length) {
@@ -189,34 +191,30 @@ class CartContainer extends Component {
     }
 
     const { fundId, fundLabel, startDate, frequency } = this.state;
-    try {
-      return (
-        <Layout
-            schedules={schedules}
-            setFrequency={this.setFrequency}
-            accounts={mappedAccounts}
-            setFund={this.setFund}
-            state={this.state}
-            format={this.format}
-            save={this.saveData}
-            saveDate={this.saveDate}
-            total={this.state.amount}
-            existing={this.props.existing}
-            date={this.state.startDate}
-            text={this.props.text}
-            onSubmitSchedule={this.onClick}
-            ready={fundId && fundLabel && startDate && frequency}
-            dataId={this.props.dataId}
-        />
-      );
-    } catch (e) {
-    }
-
+    return (
+      <Layout
+        schedules={schedules}
+        setFrequency={this.setFrequency}
+        accounts={mappedAccounts}
+        setFund={this.setFund}
+        state={this.state}
+        format={this.format}
+        save={this.saveData}
+        saveDate={this.saveDate}
+        total={this.state.amount}
+        existing={this.props.existing}
+        date={this.state.startDate}
+        text={this.props.text}
+        onSubmitSchedule={this.onClick}
+        ready={fundId && fundLabel && startDate && frequency}
+        dataId={this.props.dataId}
+      />
+    );
   }
 }
 
 export default createContainer(() => {
   let alive = true;
-  try { alive = serverWatch.isAlive("ROCK") } catch(e) {};
+  try { alive = serverWatch.isAlive("ROCK"); } catch (e) {} // eslint-disable-line
   return { alive };
 }, CartContainer);

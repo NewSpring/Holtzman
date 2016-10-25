@@ -1,14 +1,12 @@
-import { Component, PropTypes } from "react";
-
 import Sections from "../../blocks/sections";
+import Meta from "../../components/meta";
 
-const Template = () => {
-  return (
-    <div className="background--light-secondary">
-      <Sections />
-    </div>
-  );
-};
+const Template = () => (
+  <div className="background--light-secondary">
+    <Meta title="Sections" />
+    <Sections />
+  </div>
+);
 
 const Routes = [
   {

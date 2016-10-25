@@ -29,7 +29,7 @@ import reducer from "./reducer";
 import { addReducer } from "../utilities";
 
 addReducer({
-  nav: reducer
+  nav: reducer,
 });
 
 export default {
@@ -44,5 +44,5 @@ export default {
   setAction: (level, props) => ({ type: "NAV.SET_ACTION", level, props }),
 
   hide: () => ({ type: "NAV.SET_VISIBILITY", visible: false }),
-  show: () => ({ type: "NAV.SET_VISIBILITY", visible: true })
+  show: () => ({ type: "NAV.SET_VISIBILITY", visible: true }),
 };

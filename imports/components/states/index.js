@@ -7,5 +7,5 @@ import Success from "./Success";
 export {
   Error,
   Loading,
-  Success
+  Success,
 };

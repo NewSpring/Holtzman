@@ -3,7 +3,7 @@
 function categoryIcon(contentItem) {
   const category = contentItem.channelName;
 
-  switch(category) {
+  switch (category) {
     case "series_newspring":
     case "sermons":
       return "icon-category-video";
@@ -12,7 +12,10 @@ function categoryIcon(contentItem) {
     case "articles":
     case "devotionals":
     case "stories":
+    case "news":
       return "icon-category-text";
+    default:
+      return null;
   }
 }
 

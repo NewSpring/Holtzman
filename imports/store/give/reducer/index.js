@@ -8,14 +8,14 @@
 import { createReducer } from "../../utilities";
 import types from "../types";
 
-import { progress } from "./progress";
-import { savedAccount } from "./savedAccounts";
+import progress from "./progress";
+import savedAccount from "./savedAccounts";
 import { addTransaction, clearTransaction, clearTransactions } from "./transactions";
 import {
   setRecoverableSchedule,
   deleteRecoverableSchedule,
   setRecoverableSchedules,
-  deleteRecoverableSchedules
+  deleteRecoverableSchedules,
 } from "./scheduledTransactions";
 
 const initial = {
@@ -92,8 +92,8 @@ const initial = {
       expiration: null, // String
       ccv: null, // Number
       account: null, // String (for safety with international numbers)
-      routing: null // String (for safety with international numbers)
-    }
+      routing: null, // String (for safety with international numbers)
+    },
   },
 
 };
@@ -115,60 +115,69 @@ export default createReducer(initial, {
   [types.DELETE_RECOVERABLE_SCHEDULES]: deleteRecoverableSchedules,
 
   [types.SAVE_DATA](state, action) {
-
     // @TODO validation on new data
-    return { ...state, ...{
-      data: {
-        personal: { ...state.data.personal, ...action.data.personal },
-        billing: { ...state.data.billing, ...action.data.billing },
-        payment: { ...state.data.payment, ...action.data.payment }
-      }
-    } };
+    return { ...state,
+      ...{
+        data: {
+          personal: { ...state.data.personal, ...action.data.personal },
+          billing: { ...state.data.billing, ...action.data.billing },
+          payment: { ...state.data.payment, ...action.data.payment },
+        },
+      },
+    };
   },
 
   [types.REMOVE_DATA](state, action) {
-
     if (!action.field || !state.data[action.level] || !state.data[action.level][action.field]) {
       return state;
     }
 
-    return { ...state, ...{
-      data: { ...state.data, ...{
-        [action.level]: { ...state.data[action.level], ...{
-          [action.field]: null
-        } }
-      } }
-    } };
+    return { ...state,
+      ...{
+        data: {
+          ...state.data,
+          ...{
+            [action.level]: {
+              ...state.data[action.level],
+              ...{
+                [action.field]: null,
+              },
+            },
+          },
+        },
+      },
+    };
   },
 
   [types.CLEAR_DATA](state) {
-
-    return {...state, ...{
-      step: initial.step,
-      total: initial.total,
-      transactions: initial.transactions,
-      schedules: initial.schedules,
-      url: initial.url,
-      data: initial.data,
-      success: initial.success,
-      state: initial.state,
-      errors: initial.errors,
-      savedAccount: initial.savedAccount,
-      recoverableSchedules: initial.recoverableSchedules,
-    } };
+    return {
+      ...state,
+      ...{
+        step: initial.step,
+        total: initial.total,
+        transactions: initial.transactions,
+        schedules: initial.schedules,
+        url: initial.url,
+        data: initial.data,
+        success: initial.success,
+        state: initial.state,
+        errors: initial.errors,
+        savedAccount: initial.savedAccount,
+        recoverableSchedules: initial.recoverableSchedules,
+      },
+    };
   },
 
 
   [types.SAVE_SCHEDULE_DATA](state, action) {
-
     if (!action.id) {
       return state;
     }
 
-    let newState = {...state};
+    const newState = { ...state };
 
     if (newState.schedules[action.id]) {
-      newState.schedules[action.id] = {...newState.schedules[action.id], ...action.schedule};
+      newState.schedules[action.id] = { ...newState.schedules[action.id], ...action.schedule };
     } else {
       newState.schedules[action.id] = action.schedule;
     }
@@ -179,12 +188,11 @@ export default createReducer(initial, {
 
 
   [types.REMOVE_SCHEDULE](state, action) {
-
     if (!action.id) {
       return state;
     }
 
-    let newState = {...state};
+    const newState = { ...state };
 
     delete newState.schedules[action.id];
 
@@ -193,33 +201,45 @@ export default createReducer(initial, {
   },
 
   [types.REMOVE_SCHEDULE_DATA](state, action) {
-
     if (!action.field || !action.id) {
       return state;
     }
 
-    return { ...state, ...{
-      schedules: { ...state.schedules, ...{
-        [action.id]: {...state.schedules[action.id], ...{
-          [state.schedule[action.field]]: null
-        } }
-      } }
-    } };
+    return {
+      ...state,
+      ...{
+        schedules: {
+          ...state.schedules,
+          ...{
+            [action.id]: {
+              ...state.schedules[action.id],
+              ...{
+                [state.schedule[action.field]]: null,
+              },
+            },
+          },
+        },
+      },
+    };
   },
 
-  [types.CLEAR_SCHEDULES](state, action) {
-
-    return { ...state, ...{
-      schedules: { }
-    } };
+  [types.CLEAR_SCHEDULES](state) {
+    return {
+      ...state,
+      ...{
+        schedules: { },
+      },
+    };
   },
 
   [types.CLEAR_SCHEDULES_EXCEPT](state, action) {
-    let newState = {...state};
+    const newState = { ...state };
 
     if (newState.schedules[action.id]) {
-      for (let schedule in newState.schedules){
+      // eslint-disable-next-line no-restricted-syntax
+      for (const schedule in newState.schedules) {
         if (Number(newState.schedules[schedule].id) === Number(action.id)) {
+          // eslint-disable-next-line no-continue
           continue;
         }
 
@@ -231,34 +251,33 @@ export default createReducer(initial, {
   },
 
   [types.SET_STATE](state, action) {
-
     const stateName = action.state.trim();
-    const stateTypes = [ "default", "loading", "submit", "error", "success"];
+    const stateTypes = ["default", "loading", "submit", "error", "success"];
 
     if (stateTypes.indexOf(stateName) === -1) {
       return state;
     }
 
-    return { ...state, ...{
-      state: stateName
-    } };
-
+    return { ...state,
+      ...{
+        state: stateName,
+      },
+    };
   },
 
   [types.SET_ERROR](state, action) {
-
     if (!action.error) {
       return state;
     }
 
-    return { ...state, ...{
-      errors: { ...state.errors, ...action.error }
-    } };
-
+    return { ...state,
+      ...{
+        errors: { ...state.errors, ...action.error },
+      },
+    };
   },
 
   [types.REMOVE_ERROR](state, action) {
-
     if (!action.error || !state.errors[action.error]) {
       return state;
     }
@@ -268,50 +287,55 @@ export default createReducer(initial, {
     delete errors[action.error];
 
     // update the state
-    return { ...state, ...{
-      errors: errors
-    } };
-
+    return { ...state,
+      ...{
+        errors,
+      },
+    };
   },
 
   [types.SET_ERRORS](state, action) {
-
-    return { ...state, ...{
-      errors: { ...state.errors, ...action.errors }
-    } };
-
+    return { ...state,
+      ...{
+        errors: { ...state.errors, ...action.errors },
+      },
+    };
   },
 
   [types.SET_ACCOUNTS](state, action) {
-
-    return { ...state, ... {
-      accounts: {...state.accounts, ...action.accounts}
-    }};
+    return { ...state,
+      ...{
+        accounts: { ...state.accounts, ...action.accounts },
+      },
+    };
   },
 
   [types.SET_TRANSACTION_TYPE](state, action) {
-
-    return { ...state, ... {
-      transactionType: action.transactionType
-    }};
+    return { ...state,
+      ...{
+        transactionType: action.transactionType,
+      },
+    };
   },
 
   [types.SET_TRANSACTION_DETAILS](state, action) {
-
-    return { ...state, ... {
-      url: action.url
-    }};
+    return { ...state,
+      ...{
+        url: action.url,
+      },
+    };
   },
 
   [types.SET_REMINDER_DATE](state, action) {
-
-    return { ...state, ... {
-      reminderDate: action.reminderDate
-    }};
+    return { ...state,
+      ...{
+        reminderDate: action.reminderDate,
+      },
+    };
   },
 
   [types.SET_USERID](state, { userId }) {
-    return { ...state, ... { userId }};
+    return { ...state, ...{ userId } };
   },
 
 

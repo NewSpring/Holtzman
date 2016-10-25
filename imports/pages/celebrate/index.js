@@ -24,18 +24,18 @@ import Closing from "./closing/index";
 
 @connect()
 class Template extends Component {
-  componentDidMount(){
-    if (process.env.NATIVE) {
-      const item = {
-        title: "Annual Report",
-      };
 
-      this.props.dispatch(headerActions.set(item));
-    }
-
+  static propTypes = {
+    dispatch: PropTypes.func,
   }
 
-  render () {
+  componentDidMount() {
+    if (process.env.NATIVE) {
+      this.props.dispatch(headerActions.set({ title: "Annual Report" }));
+    }
+  }
+
+  render() {
     return (
       <div>
         <Meta title="Annual Report" />
@@ -63,7 +63,6 @@ class Template extends Component {
 
         <Closing />
       </div>
-
     );
   }
 }
@@ -78,5 +77,5 @@ const Routes = [
 
 export default {
   Template,
-  Routes
+  Routes,
 };

@@ -1,9 +1,9 @@
 
 import backgroundImage from "./background.image";
 
-function backgroundStyles(contentItem, label="1:1") {
+function backgroundStyles(contentItem, label = "1:1") {
   return {
-    backgroundImage: `url('${backgroundImage(contentItem, { label: label })}')`
+    backgroundImage: `url('${backgroundImage(contentItem, { label })}')`,
   };
 }
 

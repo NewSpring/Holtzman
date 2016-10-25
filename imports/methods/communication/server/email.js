@@ -1,101 +1,89 @@
-/*global Meteor, check */
+/* global Meteor, check */
 
 import toPascalCase from "to-pascal-case";
 import toSnakeCase from "to-snake-case";
-import Moment from "moment";
+import moment from "moment";
+import Liquid from "liquid-node";
 
-import { api, Lava } from "../../../util/rock";
+
+import { api } from "../../../util/rock";
 import { makeNewGuid } from "../../../util";
 
-
 // @TODO abstract
-import Liquid from "liquid-node";
-const Parser = new Liquid.Engine;
+const Parser = new Liquid.Engine();
 
-let StandardFilters = {...Liquid.StandardFilters};
-let caseChangedFilter = {};
-for (let filter in StandardFilters) {
-  let newFilter = toPascalCase(filter);
+const StandardFilters = { ...Liquid.StandardFilters };
+const caseChangedFilter = {};
+for (const filter in StandardFilters) { // eslint-disable-line
+  const newFilter = toPascalCase(filter);
 
 
-  caseChangedFilter[newFilter] = (input, format) => {
+  caseChangedFilter[newFilter] = (i, format) => {
+    let input = i;
     input = toSnakeCase(input);
 
     return StandardFilters[filter](input, format);
   };
-
 }
 
+function toDate(i) {
+  let input = i;
+  if (input == null) return null;
+  if (input instanceof Date) return input;
+  if (input === "now" || input === "Now") return new Date();
 
-function toDate(input) {
-  if (input == null) {
-    return;
-  }
-  if (input instanceof Date) {
-    return input;
-  }
-  if (input === "now" || input === "Now") {
-    return new Date();
-  }
-  if (isNumber(input)) {
-    input = parseInt(input);
+  if (_.isNumber(input)) {
+    input = parseInt(input); // eslint-disable-line
   } else {
     input = toString(input);
-    if (input.length === 0) {
-      return;
-    }
+    if (input.length === 0) return null;
     input = Date.parse(input);
   }
-  if (input != null) {
-    return new Date(input);
-  }
-};
+  if (input != null) return new Date(input);
 
-Parser.registerFilters({...caseChangedFilter, ...{
-  Attribute: function(variable, key){
+  return null;
+}
 
-    if (variable === "Global") {
-      let global = this.context.findVariable("GlobalAttribute");
-      return global.then((response) => {
-        return response[key];
-      });
-    }
+Parser.registerFilters({ ...caseChangedFilter,
+  ...{
+    Attribute(variable, key) {
+      if (variable === "Global") {
+        const global = this.context.findVariable("GlobalAttribute");
+        return global.then((response) => response[key]);
+      }
+      return null;
+    },
+    Format(value, format) {
+      // hardcode number formating for now
+      if (format === "#,##0.00") {
+        return `${Number(value).toFixed(2)}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      return null;
+    },
+    Date(i, f) {
+      let input = i;
+      let format = f;
 
-  },
-  Format: function(value, format){
+      input = toDate(input);
 
-    // hardcode number formating for now
-    if (format === "#,##0.00") {
-      value = Number(value).toFixed(2);
+      if (input == null) return "";
+      if (toString(format).length === 0) return input.toUTCString();
 
-      return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-  },
-  Date: function(input, format) {
-    // console.log(this)
-    input = toDate(input);
-
-    if (input == null) {
-      return "";
-    } else if (toString(format).length === 0) {
-      return input.toUTCString();
-    } else {
       format = format.replace(/y/gmi, "Y");
-      return Moment(input).format(format);
-    }
-
-    // return Liquid.StandardFilters.date(input, format.toLowerCase())
-  }
-}});
-
+      return moment(input).format(format);
+      // return Liquid.StandardFilters.date(input, format.toLowerCase())
+    },
+  },
+});
 
 
 Meteor.methods({
-  "communication/email/send": function(emailId, PersonAliasId, mergeFields){
+  "communication/email/send": function sendEmail(emailId, PersonAliasId, merge) {
+    let mergeFields = merge;
     check(emailId, Number);
     // check(PersonAliasId, Number)
 
-    let Email = api.get.sync(`SystemEmails/${emailId}`);
+    const Email = api.get.sync(`SystemEmails/${emailId}`);
 
     if (!Email.Body || !Email.Subject) {
       throw new Meteor.Error(`No email body or subject found for ${emailId}`);
@@ -109,12 +97,14 @@ Meteor.methods({
 
     */
     const GlobalAttribute = {};
+    // eslint-disable-next-line max-len
     const Globals = api.get.sync("AttributeValues?$filter=Attribute/EntityTypeId eq null&$expand=Attribute&$select=Attribute/Key,Value");
+    // eslint-disable-next-line max-len
     const Defaults = api.get.sync("Attributes?$filter=EntityTypeId eq null&$select=DefaultValue,Key");
 
-    for (let d of Defaults) { GlobalAttribute[d.Key] = d.DefaultValue }
-    for (let g of Globals) { GlobalAttribute[g.Attribute.Key] = g.Value }
-    mergeFields = {...mergeFields, ...{ GlobalAttribute }};
+    for (const d of Defaults) { GlobalAttribute[d.Key] = d.DefaultValue; }
+    for (const g of Globals) { GlobalAttribute[g.Attribute.Key] = g.Value; }
+    mergeFields = { ...mergeFields, ...{ GlobalAttribute } };
 
     return Promise.all([
       // Parser.parse(Email.Subject)
@@ -128,26 +118,23 @@ Meteor.methods({
       //     return template.render(mergeFields)
       //   }),
       Parser.parseAndRender(Email.Subject, mergeFields),
-      Parser.parseAndRender(Email.Body, mergeFields)
+      Parser.parseAndRender(Email.Body, mergeFields),
     ])
       .then(([subject, body]) => {
-
-        let Communication = {
+        const Communication = {
           SenderPersonAliasId: null,
           Status: 3,
           IsBulkCommunication: false,
           Guid: makeNewGuid(),
           Subject: subject,
           MediumData: {
-            HtmlMessage: body
-          }
+            HtmlMessage: body,
+          },
         };
 
         return api.post("Communications", Communication);
-
       })
       .then((CommunicationId) => {
-
         if (CommunicationId.statusText) {
           throw new Meteor.Error(CommunicationId);
         }
@@ -155,35 +142,35 @@ Meteor.methods({
         // this is a bug in core right now. We can't set Mandrill on the initial
         // post because it locks everything up, we can however, patch it
         api.patch.sync(`Communications/${CommunicationId}`, {
-          MediumEntityTypeId: 37 // Mandrill
+          MediumEntityTypeId: 37, // Mandrill
         });
 
 
         if (typeof PersonAliasId === "number") {
-          PersonAliasId = [PersonAliasId];
+          PersonAliasId = [PersonAliasId]; // eslint-disable-line
         }
 
 
-        let ids = [];
-        for (let id of PersonAliasId) {
-          let CommunicationRecipient = {
+        const ids = [];
+        for (const id of PersonAliasId) {
+          const CommunicationRecipient = {
             PersonAliasId: id,
             CommunicationId,
             Status: 0, // Pending
-            Guid: makeNewGuid()
+            Guid: makeNewGuid(),
           };
 
-          let CommunicationRecipientId = api.post.sync("CommunicationRecipients", CommunicationRecipient);
+          const CommunicationRecipientId = api.post.sync(
+            "CommunicationRecipients", CommunicationRecipient
+          );
 
           ids.push(CommunicationRecipientId);
         }
 
         return ids;
-
       })
       .then((communications) => {
-
-        for (let CommunicationRecipientId of communications) {
+        for (const CommunicationRecipientId of communications) {
           if (CommunicationRecipientId.statusText) {
             throw new Meteor.Error(CommunicationRecipientId);
           }
@@ -192,10 +179,9 @@ Meteor.methods({
         return communications;
       })
       .catch((e) => {
+        // eslint-disable-next-line
         console.log(e);
         throw e;
       });
-
-
-  }
+  },
 });

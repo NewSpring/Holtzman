@@ -1,5 +1,4 @@
-import { Component, PropTypes} from "react";
-import { Link } from "react-router";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import { nav } from "../../../../store";
@@ -12,18 +11,22 @@ import Layout from "./Layout";
 @connect()
 export default class ChangePassword extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+  }
+
   state = {
     current: null,
     newP: null,
     newPDup: null,
-    state: "default"
+    state: "default",
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.props.dispatch(nav.setLevel("BASIC_CONTENT"));
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.props.dispatch(nav.setLevel("TOP"));
   }
 
@@ -31,11 +34,11 @@ export default class ChangePassword extends Component {
     e.preventDefault();
     this.setState({ state: "loading" });
 
-    reset(this.state.current, this.state.newP, (err, result) => {
+    reset(this.state.current, this.state.newP, (err) => {
       if (err) {
-        this.setState({ state: "error", err: err });
+        this.setState({ state: "error", err });
         setTimeout(() => {
-          this.setState({ state: "default"});
+          this.setState({ state: "default" });
         }, 5000);
         return;
       }
@@ -44,55 +47,52 @@ export default class ChangePassword extends Component {
       this.setState({ state: "success" });
 
       setTimeout(() => {
-        this.setState({ state: "default"});
+        this.setState({ state: "default" });
       }, 5000);
-
     });
-
-
   }
 
   save = (value, input) => {
     const { id } = input;
 
-    if (id === "newPDup" && this.state.newP && this.state.newP != value) {
+    if (id === "newPDup" && this.state.newP && this.state.newP !== value) {
       return false;
     }
 
-    if (id === "newP" && this.state.newPDup && this.state.newPDup != value) {
+    if (id === "newP" && this.state.newPDup && this.state.newPDup !== value) {
       return false;
     }
 
-    this.setState({[id]: value});
+    this.setState({ [id]: value });
 
     return true;
   }
 
 
-  render () {
+  render() {
     const { state, err } = this.state;
 
     switch (state) {
       case "error":
         return (
-          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%" }}>
             <Err error={err} msg="Looks like there was a problem" />;
           </div>
         );
       case "loading":
         return (
-          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%"}}>
+          <div style={{ position: "fixed", top: 0, bottom: 0, width: "100%" }}>
             <Loading msg="Updating your password..." />;
           </div>
         );
       case "success":
         return <Success msg="Your password has been updated!" />;
       default:
-        return  (
+        return (
           <Layout
-              submit={this.submit}
-              save={this.save}
-              state={this.state}
+            submit={this.submit}
+            save={this.save}
+            state={this.state}
           />
         );
     }

@@ -12,17 +12,17 @@
 
 */
 import reducer from "./reducer";
-import saga from "./saga";
+import "./saga";
 import { addReducer } from "../utilities";
 
 addReducer({
-  sections: reducer
+  sections: reducer,
 });
 
 export default {
   reducer,
 
   set: (content) => ({ type: "SECTIONS.SET_CONTENT", content }),
-  style: (props) => ({ type: "SECTIONS.SET_PROPS", props })
+  style: (props) => ({ type: "SECTIONS.SET_PROPS", props }),
 
 };

@@ -3,7 +3,6 @@ import { creditCVV, creditCard, creditExpiry } from "./credit-card";
 const Validate = {};
 
 Validate.addValidator = (name, handler) => {
-
   if (Validate[name]) {
     throw new Error(
       "Validator assigned",
@@ -11,7 +10,7 @@ Validate.addValidator = (name, handler) => {
     );
   }
 
-  if (!handler || typeof(handler) != "function") {
+  if (!handler || typeof (handler) !== "function") {
     throw new Error(
       "Validator TypeError",
       `Validator ${name} requires a function`

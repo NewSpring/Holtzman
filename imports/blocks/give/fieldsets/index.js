@@ -8,5 +8,5 @@ export {
   Personal,
   Billing,
   Payment,
-  Confirm
+  Confirm,
 };

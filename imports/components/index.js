@@ -8,5 +8,12 @@ export default {
   Cards,
   Content,
   Players,
-  Toggle
+  Toggle,
+};
+
+export {
+  Cards,
+  Content,
+  Players,
+  Toggle,
 };

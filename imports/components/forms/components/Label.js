@@ -1,9 +1,9 @@
+import PropTypes from "react";
 
-
-function style(disabled){
+function style(disabled) {
   if (disabled) {
     return {
-      cursor: "inherit"
+      cursor: "inherit",
     };
   }
 
@@ -16,5 +16,11 @@ const Label = ({ labelFor, labelName, disabled }) => (
     {labelName}
   </label>
 );
+
+Label.propTypes = {
+  labelFor: PropTypes.string,
+  labelName: PropTypes.string,
+  disabled: PropTypes.bool,
+};
 
 export default Label;

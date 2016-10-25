@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
 
 import react from "../../util/react";
@@ -5,7 +6,7 @@ import react from "../../util/react";
 export default class ArticlesContent extends Component {
 
   static propTypes = {
-    article: PropTypes.object.isRequired
+    article: PropTypes.object.isRequired,
   }
 
   render() {
@@ -18,7 +19,7 @@ export default class ArticlesContent extends Component {
           if (!authors || !authors.length) return null;
           return (
             <h6 className="capitalize soft-double-bottom flush">
-              By: {authors.filter(x => x).join(", ")}
+              By: {authors.filter((x) => x).join(", ")}
             </h6>
           );
         })()}

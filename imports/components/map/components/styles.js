@@ -31,8 +31,8 @@ const hover = {
 const active = {
   ...base,
   color: "#6bac43",
-  backgroundColor: "#6bac43"
+  backgroundColor: "#6bac43",
 };
 
 
-export {base, hover, active, K_SIZE};
+export { base, hover, active, K_SIZE };

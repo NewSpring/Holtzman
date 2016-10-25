@@ -11,6 +11,11 @@ import styles from "../../blocks/nav/offset-css";
 @connect()
 class Template extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    params: PropTypes.object.isRequired,
+  }
+
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
     this.props.dispatch(headerActions.set({
@@ -19,12 +24,16 @@ class Template extends Component {
   }
 
   render() {
-    let { embedCode } = this.props.params;
+    const { embedCode } = this.props.params;
 
     return (
-      <div className={`locked-ends locked-sides background--dark-primary floating ${css(styles["offset"])}`}>
+      <div
+        className={
+          `locked-ends locked-sides background--dark-primary floating ${css(styles.offset)}`
+        }
+      >
         <div className="floating__item one-whole">
-          <Video id={embedCode} ref="video"/>
+          <Video id={embedCode} ref="video" />
         </div>
       </div>
     );

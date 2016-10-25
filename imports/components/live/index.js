@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
-import { connect } from "react-apollo";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 import { css } from "aphrodite";
 import { Link } from "react-router";
@@ -9,26 +10,32 @@ import Styles from "./live-css";
 
 import liveActions from "../../store/live";
 
-const mapQueriesToProps = ({ ownProps, state }) => {
-  return {
-    data: {
-      query: gql`query IsLive {
-        live {
-          live
-          embedCode
-        }
-      }`,
-      forceFetch: false,
-      returnPartialData: false,
-      pollInterval: 60000,
-    },
-  };
-};
+const LIVE_QUERY = gql`
+  query IsLive {
+    live {
+      live
+      embedCode
+    }
+  }
+`;
 
-const mapStateToProps = (state) => ({ live: state.live });
+const withLive = graphql(LIVE_QUERY, {
+  options: { pollInterval: 60000 },
+});
 
-@connect({ mapQueriesToProps, mapStateToProps })
+@connect((state) => ({ live: state.live }))
+@withLive
 export default class Live extends Component {
+
+  static propTypes = {
+    live: PropTypes.object, // eslint-disable-line
+    dispatch: PropTypes.func,
+    data: PropTypes.object, // eslint-disable-line
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    this.handleLiveChange(nextProps, nextState);
+  }
 
   getClasses = () => {
     const classes = [
@@ -58,10 +65,6 @@ export default class Live extends Component {
     return classes.join(" ");
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    this.handleLiveChange(nextProps, nextState);
-  }
-
   handleLiveChange = (nextProps) => {
     const { live } = nextProps.data;
     if (!live) return;
@@ -83,28 +86,26 @@ export default class Live extends Component {
     }
   }
 
-  render () {
+  render() {
     const { live, show, embedCode } = this.props.live;
     if (!live || !show || !embedCode) return null;
 
     return (
       <Motion
-          defaultStyle={{height: 0}}
-          style={{height: spring(40)}}
+        defaultStyle={{ height: 0 }}
+        style={{ height: spring(40) }}
       >
-        {interpolatingStyle => {
-          return (
-            <Link
-                to={`/video/${embedCode}`}
-                className={this.getClasses()}
-                style={interpolatingStyle}
-            >
-              <h7 className={this.getTextClasses()}>
-                NewSpring Church Live, Watch Now!
-              </h7>
-            </Link>
-          );
-        }}
+        {(interpolatingStyle) =>
+          <Link
+            to={`/video/${embedCode}`}
+            className={this.getClasses()}
+            style={interpolatingStyle}
+          >
+            <h7 className={this.getTextClasses()}>
+              NewSpring Church Live, Watch Now!
+            </h7>
+          </Link>
+        }
       </Motion>
     );
   }

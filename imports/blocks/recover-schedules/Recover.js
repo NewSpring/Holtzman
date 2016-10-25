@@ -1,8 +1,8 @@
-
-import Forms from "../../components/forms";
+import { PropTypes } from "react";
 import { Link } from "react-router";
+import Forms from "../../components/forms";
 
-const RecoverableSchedule = ({id, account, amount, frequency, removeOnClick}) => (
+const RecoverableSchedule = ({ account, amount, frequency }) => (
   <div>
     <div className="display-inline-block soft-half-ends one-whole">
       <h5 className="flush-bottom float-left">{account}</h5>
@@ -12,19 +12,19 @@ const RecoverableSchedule = ({id, account, amount, frequency, removeOnClick}) =>
 
       <div className="grid__item one-half">
         <Forms.Input
-            label="Amount"
-            defaultValue={"$" + amount}
-            disabled
-            classes={["soft-half-bottom"]}
+          label="Amount"
+          defaultValue={`$${amount}`}
+          disabled
+          classes={["soft-half-bottom"]}
         />
       </div>
 
       <div className="grid__item one-half">
         <Forms.Input
-            label="Frequency"
-            defaultValue={frequency}
-            disabled
-            classes={["soft-half-bottom"]}
+          label="Frequency"
+          defaultValue={frequency}
+          disabled
+          classes={["soft-half-bottom"]}
         />
       </div>
     </div>
@@ -32,7 +32,14 @@ const RecoverableSchedule = ({id, account, amount, frequency, removeOnClick}) =>
   </div>
 );
 
-const Layout = ({ schedules, reminderDate, onClick, hide }) => (
+RecoverableSchedule.propTypes = {
+  account: PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+  frequency: PropTypes.string.isRequired,
+};
+
+/* eslint-disable max-len */
+const Layout = ({ schedules, onClick, hide }) => (
   <div className="soft soft-double-ends one-whole text-center">
     <h4 className="text-center push-ends">
       Transfer Your Schedule
@@ -43,11 +50,11 @@ const Layout = ({ schedules, reminderDate, onClick, hide }) => (
 
     {schedules.map((schedule) => (
       <RecoverableSchedule
-          amount={schedule.details[0].amount}
-          frequency={schedule.schedule.value}
-          account={schedule.details[0].account.name}
-          key={Number(schedule.id)}
-          id={Number(schedule.id)}
+        amount={schedule.details[0].amount}
+        frequency={schedule.schedule.value}
+        account={schedule.details[0].account.name}
+        key={Number(schedule.id)}
+        id={Number(schedule.id)}
       />
     ))}
 
@@ -62,12 +69,19 @@ const Layout = ({ schedules, reminderDate, onClick, hide }) => (
     <p className="push-top text-left">
       <em>
         <small>
-          You can cancel your schedule at any time from the Scheduled Giving page. If you have any questions please call our Finance Team at 864-965-9990 or <a target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a> and someone will be happy to assist you.
+          You can cancel your schedule at any time from the Scheduled Giving page. If you have any questions please call our Finance Team at 864-965-9990 or <a rel="noopener noreferrer" target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a> and someone will be happy to assist you.
         </small>
       </em>
     </p>
 
   </div>
 );
+/* eslint-enable max-len */
+
+Layout.propTypes = {
+  schedules: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+  hide: PropTypes.func.isRequired,
+};
 
 export default Layout;

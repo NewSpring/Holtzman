@@ -12,43 +12,35 @@ import {
   nav as navActions,
   share as shareActions,
   header as headerActions,
-  audio as audioActions
+  audio as audioActions,
 } from "../../store";
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) => (
+  {
     audio: {
-      visibility: state.audio.visibility
+      visibility: state.audio.visibility,
     },
     header: state.header,
-  };
-};
+  }
+);
 
 @connect(mapStateToProps)
 @ReactMixin.decorate(Shareable)
 export default class ListDetail extends Component {
 
-  state = {
-    previousHeaderColor: null,
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    header: PropTypes.object.isRequired,
+    audio: PropTypes.object.isRequired,
+    album: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.object,
+    ]).isRequired,
+    trackNumber: PropTypes.number.isRequired,
   }
 
-  sectionStyles = {
-    position:"absolute",
-    bottom:"60px"
-  };
-
-  closeModal = (e) => {
-    if(this.props.audio.visibility === "expand") {
-      this.props.dispatch(audioActions.setVisibility("dock"));
-      // XXX - When I hide the modal, I need the visibility of dock to have
-      // taken effect. Bwah.
-      setTimeout(() => {
-        this.props.dispatch(modal.hide());
-      }, 250);
-    }
-    else {
-      this.props.dispatch(modal.hide());
-    }
+  state = {
+    previousHeaderColor: null,
   }
 
   componentWillMount() {
@@ -74,39 +66,67 @@ export default class ListDetail extends Component {
     }
   }
 
+  sectionStyles = {
+    position: "absolute",
+    bottom: "60px",
+  };
+
+  closeModal = () => {
+    if (this.props.audio.visibility === "expand") {
+      this.props.dispatch(audioActions.setVisibility("dock"));
+      // XXX - When I hide the modal, I need the visibility of dock to have
+      // taken effect. Bwah.
+      setTimeout(() => {
+        this.props.dispatch(modal.hide());
+      }, 250);
+    } else {
+      this.props.dispatch(modal.hide());
+    }
+  }
+
   share = (event) => {
     event.preventDefault();
     const { dispatch } = this.props;
     dispatch(shareActions.share());
   }
 
-  render () {
-
-    let url = `/music/${this.props.album.entryId}`;
-    const smallImage = _.find(this.props.album.content.images, (image) => {
-      return image.fileName.indexOf("blur") === -1 && image.size === "small";
-    });
+  render() {
+    const url = `/music/${this.props.album.entryId}`;
+    const smallImage = _.find(this.props.album.content.images, (image) => (
+      image.fileName.indexOf("blur") === -1 && image.size === "small"
+    ));
     return (
       <div className="one-whole soft background--dark-primary" style={this.sectionStyles}>
         <div className="text-light-primary">
           <div className="grid floating push-bottom">
-            <div className="grid__item background--fill floating__item text-left hard push-left ratio--square background--light-secondary one-eighth" style={{backgroundImage: `url(${smallImage.url})`}} />
+            <div
+              className={
+                "grid__item background--fill floating__item text-left hard push-left " +
+                "ratio--square background--light-secondary one-eighth"
+              }
+              style={{ backgroundImage: `url(${smallImage.url})` }}
+            />
             <div className="floating__item text-left grid__item eight-tenths">
-              <h5 className="flush">{this.props.album.content.tracks[this.props.trackNumber].title}</h5>
+              <h5 className="flush">
+                {this.props.album.content.tracks[this.props.trackNumber].title}
+              </h5>
               <h7 className="text-light-tertiary">
                 <span>{this.props.album.title} – </span>
                 <span>{this.props.album.artist || "NewSpring"}</span>
               </h7>
             </div>
           </div>
-          <Link to={url} onClick={this.closeModal} className="text-light-primary soft-half-top push-ends plain">
+          <Link
+            to={url}
+            onClick={this.closeModal}
+            className="text-light-primary soft-half-top push-ends plain"
+          >
             <h5>View Album</h5>
           </Link>
           <h5 onClick={this.share} className="push-ends">Share</h5>
         </div>
       </div>
     );
-
   }
 
 }

@@ -5,5 +5,10 @@ import upload from "./upload";
 
 export default {
   avatar,
-  upload
+  upload,
+};
+
+export {
+  avatar,
+  upload,
 };

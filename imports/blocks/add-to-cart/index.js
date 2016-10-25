@@ -1,9 +1,6 @@
-/*global serverWatch */
-import { Component, PropTypes} from "react";
+/* global serverWatch */
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-
-import Loading from "../../components/loading";
-import Forms from "../../components/forms";
 
 import { give as giveActions } from "../../store";
 import Layout from "./Layout";
@@ -14,10 +11,59 @@ const map = (state) => ({ give: state.give });
 @connect(map, giveActions)
 export default class CartContainer extends Component {
 
-  monentize = (value, fixed) => {
+  static propTypes = {
+    clearTransactions: PropTypes.func,
+    accounts: PropTypes.array, // eslint-disable-line
+    addTransactions: PropTypes.func,
+    give: PropTypes.object, // eslint-disable-line
+    donate: PropTypes.bool,
+  }
 
-    if (typeof value === "number") {
-      value = `${value}`;
+  componentWillMount() {
+    this.props.clearTransactions();
+
+    if (typeof window !== "undefined" && window !== null) {
+      let match;
+
+      const pl = /\+/g;  // Regex for replacing addition symbol with a spac
+      const search = /([^&=]+)=?([^&]*)/g;
+      const decode = (s) => { decodeURIComponent(s.replace(pl, " ")); };
+      const query = window.location.search.substring(1);
+
+      const urlParams = {};
+
+      // eslint-disable-next-line
+      while (match = search.exec(query)) {
+        urlParams[decode(match[1])] = decode(match[2]);
+      }
+
+      for (const account of this.props.accounts) {
+        if (urlParams[account.name]) {
+          let value = urlParams[account.name];
+          const id = account.id;
+
+          value = this.monentize(value);
+
+          this.props.addTransactions({ [id]: {
+            value: Number(value.replace(/[^0-9\.]+/g, "")),
+            label: account.name,
+          } });
+        }
+      }
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.give.state === "success" && this.props.give.state === "success") {
+      this.props.clearTransactions();
+    }
+  }
+
+  monentize = (amount, fixed) => {
+    let value;
+
+    if (typeof amount === "number") {
+      value = `${amount}`;
     }
 
     if (!value.length) {
@@ -26,7 +72,7 @@ export default class CartContainer extends Component {
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -36,75 +82,35 @@ export default class CartContainer extends Component {
     return `$${value}`;
   }
 
-  format = (value, target) => {
+  format = (amount, target) => {
     const { id, name } = target;
 
-    value = this.monentize(value);
+    const value = this.monentize(amount);
 
     this.props.addTransactions({ [id]: {
       value: Number(value.replace(/[^0-9\.]+/g, "")),
-      label: name
-    }});
+      label: name,
+    } });
 
     return value;
   }
 
-  saveData = (value, target) => {
+  saveData = (amount, target) => {
     const { id, name } = target;
 
-    value = this.monentize(value);
+    const value = this.monentize(amount);
 
     this.props.addTransactions({ [id]: {
       value: Number(value.replace(/[^0-9\.]+/g, "")),
-      label: name
-    }});
+      label: name,
+    } });
 
     return true;
-
   }
 
-  componentWillMount() {
-
-    this.props.clearTransactions();
-
-    if (typeof window != "undefined" && window != null) {
-      let match,
-          pl     = /\+/g,  // Regex for replacing addition symbol with a space
-          search = /([^&=]+)=?([^&]*)/g,
-          decode = function (s) { return decodeURIComponent(s.replace(pl, " ")) },
-          query  = window.location.search.substring(1);
-
-      let urlParams = {};
-      while (match = search.exec(query))
-         urlParams[decode(match[1])] = decode(match[2]);
-
-      for (let account of this.props.accounts) {
-        if (urlParams[account.name]) {
-          let value = urlParams[account.name];
-          let id = account.id;
-
-          value = this.monentize(value);
-
-          this.props.addTransactions({ [id]: {
-            value: Number(value.replace(/[^0-9\.]+/g, "")),
-            label: account.name
-          }});
-        }
-      }
-    }
-
-
-  }
-
-  componentWillReceiveProps(nextProps){
-    if (nextProps.give.state === "success" && this.props.give.state === "success") {
-      this.props.clearTransactions();
-    }
-
-  }
 
   preFillValue = (id) => {
-    const { total, transactions } = this.props.give;
+    const { transactions } = this.props.give;
 
     if (transactions[id] && transactions[id].value) {
       return `$${transactions[id].value}`;
@@ -114,13 +120,12 @@ export default class CartContainer extends Component {
   }
 
 
-  render () {
-
-    const { total, transactions } = this.props.give;
+  render() {
+    const { total } = this.props.give;
     if (!this.props.accounts) return null;
-    let accounts = this.props.accounts.map((x) => ({
+    const accounts = this.props.accounts.map((x) => ({
       label: x.name,
-      value: x.id
+      value: x.id,
     }));
 
     /*
@@ -132,14 +137,14 @@ export default class CartContainer extends Component {
     */
     return (
       <Layout
-          accounts={accounts}
-          save={this.saveData}
-          monentize={this.monentize}
-          format={this.format}
-          preFill={this.preFillValue}
-          total={total}
-          transactions={{...this.props.give.transactions}}
-          donate={this.props.donate}
+        accounts={accounts}
+        save={this.saveData}
+        monentize={this.monentize}
+        format={this.format}
+        preFill={this.preFillValue}
+        total={total}
+        transactions={{ ...this.props.give.transactions }}
+        donate={this.props.donate}
       />
 
     );

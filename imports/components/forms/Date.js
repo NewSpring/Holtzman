@@ -1,8 +1,8 @@
 
 import { Component, PropTypes } from "react";
 import DayPicker, { DateUtils } from "react-day-picker";
-import Moment from "moment";
-import ReactDOM from "react-dom";
+// import Moment from "moment";
+// import ReactDOM from "react-dom";
 
 import Input from "./Input";
 // global styles
@@ -11,9 +11,16 @@ import Styles from "./date-css";
 
 export default class DateComponent extends Component {
 
+  static propTypes = {
+    format: PropTypes.func,
+    defaultValue: PropTypes.string,
+    today: PropTypes.bool,
+    past: PropTypes.bool,
+  };
+
   state = {
     showDatePicker: false,
-    selectedDay: null
+    selectedDay: null,
   }
 
   componentDidMount() {
@@ -22,6 +29,11 @@ export default class DateComponent extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.fixPickerPosition);
+  }
+
+  onDayClick = (e, day, { selected, disabled }) => {
+    if (disabled) return;
+    this.setState({ selectedDay: selected ? null : day });
   }
 
   fixPickerPosition = () => {
@@ -38,31 +50,25 @@ export default class DateComponent extends Component {
     }
   }
 
-  toggle = (e) => {
+  toggle = () => {
     this.setState({ showDatePicker: !this.state.showDatePicker });
     setTimeout(() => {
       this.fixPickerPosition();
     }, 200);
   }
 
-  onDayClick = (e, day, { selected, disabled }) => {
-    if (disabled) return;
-    this.setState({ selectedDay: selected ? null : day });
-  }
 
-
-  render () {
-
+  render() {
     const { selectedDay } = this.state;
 
     const WEEKDAYS_LONG = {
-      "en": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      en: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     };
     const MONTHS = {
-      "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     };
     const WEEKDAYS_SHORT = {
-      "en": ["S", "M", "T", "W", "T", "F", "S"]
+      en: ["S", "M", "T", "W", "T", "F", "S"],
     };
 
 
@@ -70,8 +76,8 @@ export default class DateComponent extends Component {
       formatMonthTitle: (d, locale) => `${MONTHS[locale][d.getMonth()]} ${d.getFullYear()}`,
       formatWeekdayShort: (i, locale) => WEEKDAYS_SHORT[locale][i],
       formatWeekdayLong: (i, locale) => WEEKDAYS_LONG[locale][i],
-      getFirstDayOfWeek: (d) => 0,
-      formatDay: (d, l) => d.toDateString(),
+      getFirstDayOfWeek: () => 0,
+      formatDay: (d) => d.toDateString(),
     };
 
     let formattedDay = selectedDay && selectedDay.toLocaleDateString();
@@ -85,15 +91,17 @@ export default class DateComponent extends Component {
 
 
     return (
-      <div className="display-inline-block" style={{position: "relative"}}>
+      <div className="display-inline-block" style={{ position: "relative" }}>
         <Styles />
-        <div style={{position: "relative"}}>
+        <div style={{ position: "relative" }}>
           <Input
-              {...this.props}
-              defaultValue={formattedDay}
-              ref="input"
+            {...this.props}
+            defaultValue={formattedDay}
+            ref="input"
           />
-        <div className="locked-ends locked-sides" onClick={this.toggle} />
+          {/* eslint-disable */}
+          <div className="locked-ends locked-sides" onClick={this.toggle} />
+          {/* eslint-enable */}
         </div>
 
 
@@ -101,53 +109,58 @@ export default class DateComponent extends Component {
           if (this.state.showDatePicker) {
             return (
               <div id="datepicker">
-                <div style={{
-                  position: "absolute",
-                  top: 0,
-                  zIndex: 999,
-                  margin: "0 auto",
-                  left: 0,
-                  right: 0,
-                  maxWidth: "300px",
-                  border: "1px solid #ddd",
-                  borderRadius: "4px",
-                  marginTop: "-250px"
-                }}>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    zIndex: 999,
+                    margin: "0 auto",
+                    left: 0,
+                    right: 0,
+                    maxWidth: "300px",
+                    border: "1px solid #ddd",
+                    borderRadius: "4px",
+                    marginTop: "-250px",
+                  }}
+                >
                   <DayPicker
-                      locale="en"
-                      localeUtils={localUtils}
-                      modifiers={{
-                      selected: day => DateUtils.isSameDay(selectedDay, day),
-                      disabled: day => {
-                        return (
+                    locale="en"
+                    localeUtils={localUtils}
+                    modifiers={{
+                      selected: (day) => DateUtils.isSameDay(selectedDay, day),
+                      disabled: (day) =>
+                        (
                           (this.props.past === false && DateUtils.isPastDay(day)) ||
                           (this.props.today === false && DateUtils.isSameDay(day, new Date()))
-                        );
-                      },
+                        )
+                      ,
                     }}
-                      onDayClick={this.onDayClick}
+                    onDayClick={this.onDayClick}
                   />
-                <div className="background--light-secondary soft text-center">
+                  <div className="background--light-secondary soft text-center">
                     <button className="btn flush btn--small" onClick={this.toggle}>Done</button>
                   </div>
                 </div>
 
+                {/* eslint-disable */}
                 <div
-                    style={{
+                  style={{
                     position: "fixed",
                     top: 0,
                     bottom: 0,
                     zIndex: 998,
                     backgroundColor: "rgba(0,0,0,.75)",
                     left: 0,
-                    right: 0
+                    right: 0,
                   }}
-                    onClick={this.toggle}
+                  onClick={this.toggle}
                 />
+                {/* eslint-enable */}
               </div>
 
             );
           }
+          return undefined;
         })()}
       </div>
     );

@@ -13,24 +13,23 @@ const initial = {
     text: null,
     activityTypes: null,
     image: null,
-    url: null
-  }
+    url: null,
+  },
 
 };
 
 export default createReducer(initial, {
 
-  ["SHARE.SHARE"](state, action) {
+  "SHARE.SHARE": (state) => (
+    { ...state,
+      sharing: !state.sharing,
+    }
+  ),
 
-    return {...state,
-      sharing: !state.sharing
-    };
-  },
-
-  ["SHARE.SET"](state, action) {
-    return {...state,
-      content: {...state.content, ...action.content}
-    };
-  }
+  "SHARE.SET": (state, action) => (
+    { ...state,
+      content: { ...state.content, ...action.content },
+    }
+  ),
 
 });

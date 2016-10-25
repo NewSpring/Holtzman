@@ -1,5 +1,5 @@
 
-/*global Meteor */
+/* global Meteor */
 
 import { api, parseEndpoint } from "../../../util/rock";
 
@@ -7,7 +7,6 @@ import { TransactionReciepts } from "../../../database/collections/transactions"
 import { charge as gatewayCharge } from "./nmi";
 
 function charge(token, accountName, userId) {
-
   let response = {};
 
   try {
@@ -38,46 +37,44 @@ function charge(token, accountName, userId) {
       visa: /^4[0-9\*]{0,15}$/gmi,
       masterCard: /^5$|^5[1-5][0-9\*]{0,14}$/gmi,
       amEx: /^3$|^3[47][0-9\*]{0,13}$/gmi,
-      discover: d
+      discover: d,
     };
 
-    let definedTypeMapping = {
+    const definedTypeMapping = {
       visa: 7,
       masterCard: 8,
       // check: 9,
       discover: 160,
-      amEx: 159
+      amEx: 159,
     };
 
-    for (let regex in defaultRegex) {
+    for (const regex in defaultRegex) { // eslint-disable-line
       if (defaultRegex[regex].test(card)) {
         return definedTypeMapping[regex];
       }
     }
 
     return null;
-
   };
 
-  let card = getCardType(response.billing["cc-number"]);
+  const card = getCardType(response.billing["cc-number"]);
 
 
   if (response.result === "1") {
+    user || (user = { services: { rock: {} } }); // eslint-disable-line
 
-    user || (user = { services: { rock: {} } });
-
-    let CC = {
+    const CC = {
       AccountNumberMasked: response.billing["cc-number"],
       CurrencyTypeValueId: 156,
-      CreditCardTypeValueId: card
+      CreditCardTypeValueId: card,
     };
 
-    let Check = {
+    const Check = {
       AccountNumberMasked: response.billing["account-number"],
-      CurrencyTypeValueId: 157
+      CurrencyTypeValueId: 157,
     };
 
-    let formatedTransaction = {
+    const formatedTransaction = {
       TransactionCode: response["transaction-id"],
       TransactionTypeValueId: 53,
       FinancialGatewayId: api._.give.gateway.id,
@@ -90,16 +87,16 @@ function charge(token, accountName, userId) {
           PersonId: user.services.rock.PersonId,
           FirstName: response.billing["first-name"],
           LastName: response.billing["last-name"],
-          Email: response.billing.email
+          Email: response.billing.email,
         },
         Location: {
           Street1: response.billing.address1,
           Street2: response.billing.address2,
           City: response.billing.city,
           State: response.billing.state,
-          Postal: response.billing.postal
-        }
-      }
+          Postal: response.billing.postal,
+        },
+      },
     };
 
 
@@ -108,7 +105,7 @@ function charge(token, accountName, userId) {
         Name: accountName,
         ReferenceNumber: response["customer-vault-id"],
         TransactionCode: response["transaction-id"],
-        FinancialGatewayId: api._.give.gateway.id
+        FinancialGatewayId: api._.give.gateway.id,
       };
     }
 
@@ -119,11 +116,11 @@ function charge(token, accountName, userId) {
     }
 
     if (!Array.isArray(response.product)) {
-      response.product = [ response.product ];
+      response.product = [response.product];
     }
 
-    for (let product of response.product) {
-      let endpoint = parseEndpoint(`
+    for (const product of response.product) {
+      const endpoint = parseEndpoint(`
         FinancialAccounts?
           $filter=ParentAccountId eq ${Number(product["product-code"])} and
           CampusId eq ${Number(response["merchant-defined-field-2"])}
@@ -140,7 +137,7 @@ function charge(token, accountName, userId) {
       formatedTransaction.TransactionDetails.push({
         AccountId,
         AccountName: product.description,
-        Amount: Number(product["total-amount"])
+        Amount: Number(product["total-amount"]),
       });
     }
 
@@ -151,7 +148,6 @@ function charge(token, accountName, userId) {
     "avs-result", "order-id", "cvv-result", "result-code"
   );
   return returnReponse;
-
 }
 
 Meteor.methods({ "give/charge": charge });

@@ -2,6 +2,8 @@
 **/node_modules/*
 **/server.js
 **/webpack.config*.js
-**/core/util/xml.js
+**/imports/util/xml.js
 **/.meteor/**
+**/.types/**
 **/packages/**
+**/__tests__/**

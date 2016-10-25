@@ -1,4 +1,4 @@
-
+import { PropTypes } from "react";
 
 const Leaf = ({ size, color, type, style, className }) => {
   const computedStyles = { ...{ width: size, height: size }, ...style };
@@ -15,20 +15,28 @@ const Leaf = ({ size, color, type, style, className }) => {
   );
 };
 
+Leaf.propTypes = {
+  size: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  style: PropTypes.object,
+  className: PropTypes.string,
+};
+
 const OutlinedLeaf = (props) => (
-  <Leaf type="leaf-outline" {...props}/>
+  <Leaf type="leaf-outline" {...props} />
 );
 
 const SolidLeaf = (props) => (
-  <Leaf type="leaf-solid" {...props}/>
+  <Leaf type="leaf-solid" {...props} />
 );
 
 const StripedLeaf = (props) => (
-  <Leaf type="leaf-striped" {...props}/>
+  <Leaf type="leaf-striped" {...props} />
 );
 
 const Logo = (props) => (
-  <Leaf type="logo" {...props}/>
+  <Leaf type="logo" {...props} />
 );
 
 export {

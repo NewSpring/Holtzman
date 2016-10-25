@@ -1,58 +1,62 @@
-import { Component, PropTypes} from "react";
-import ReactDOM from "react-dom";
-import { connect } from "react-apollo";
+import { Component, PropTypes } from "react";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
-import Moment from "moment";
 
 import Controls from "../../components/controls";
 import Forms from "../../components/forms";
 
 import OnBoard from "../../blocks/accounts";
-import { modal } from "../../store";
-
-import { give as giveActions } from "../../store";
+import { modal, give as giveActions } from "../../store";
 
 import { Personal, Payment, Billing, Confirm } from "./fieldsets";
 import Loading from "./Loading";
 import Err from "./Err";
 import Success from "./Success";
 
-const mapQueriesToProps = () => ({
-  data: {
-    query: gql`
-      query GetCheckoutData($state: Int!, $country: Int!) {
-        states: definedValues(id: $state, all: true) {
-          name: description, value, id, _id
-        }
-        countries: definedValues(id: $country, all: true) {
-          name: description, value, id, _id
-        }
-        person: currentPerson {
-          firstName
-          nickName
-          lastName
-          email
-          campus { name, id: entityId }
-          home { street1, street2, city, state, zip, country }
-        }
-        savedPayments {
-          name, id: entityId, date,
-          payment { accountNumber, paymentType }
-        }
-        campuses { name, id: entityId }
-      }
-    `,
-    variables: { state: 28, country: 45 }
-  },
+const CHECKOUT_QUERY = gql`
+  query GetCheckoutData($state: Int!, $country: Int!) {
+    states: definedValues(id: $state, all: true) {
+      name: description, value, id, _id
+    }
+    countries: definedValues(id: $country, all: true) {
+      name: description, value, id, _id
+    }
+    person: currentPerson {
+      firstName
+      nickName
+      lastName
+      email
+      campus { name, id: entityId }
+      home { street1, street2, city, state, zip, country }
+    }
+    savedPayments {
+      name, id: entityId, date,
+      payment { accountNumber, paymentType }
+    }
+    campuses { name, id: entityId }
+  }
+`;
+
+const withCheckout = graphql(CHECKOUT_QUERY, {
+  options: { variables: { state: 28, country: 45 } },
 });
+
 const defaultArray = []; // empty array for usage as default in render
 // We only care about the give state
 const mapStateToProps = (state) => ({
   give: state.give,
 });
 
-@connect({ mapStateToProps, mapQueriesToProps })
+@connect(mapStateToProps)
+@withCheckout
 export default class Give extends Component {
+
+  static propTypes = {
+    give: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+  }
 
   componentWillMount() {
     this.updateData(this.props);
@@ -63,17 +67,23 @@ export default class Give extends Component {
     this.props.dispatch(giveActions.setProgress(4));
   }
 
-  componentWillUnmount(){
-    if (this.props.give.state != "default") {
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.data.loading && this.props.data.loading) {
+      this.updateData(nextProps);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.give.state !== "default") {
       this.props.dispatch(giveActions.clearData());
       this.props.dispatch(giveActions.clearSchedules());
     }
   }
 
-  componentWillReceiveProps(nextProps){
-    if (!nextProps.data.loading && this.props.data.loading){
-      this.updateData(nextProps);
-    }
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { dispatch } = this.props;
+    dispatch(giveActions.submit());
   }
 
   updateData = ({ data }) => {
@@ -82,8 +92,14 @@ export default class Give extends Component {
     const { person } = data;
 
     let { campus, home } = person;
-    campus || (campus = {});
-    home || (home = {});
+
+    if (!campus) {
+      campus = {};
+    }
+
+    if (!home) {
+      home = {};
+    }
 
     const mappedPerson = {
       personal: {
@@ -91,7 +107,7 @@ export default class Give extends Component {
         lastName: person.lastName,
         email: person.email,
         campus: campus.name,
-        campusId: campus.id
+        campusId: campus.id,
       },
       billing: {
         streetAddress: home.street1,
@@ -99,18 +115,11 @@ export default class Give extends Component {
         city: home.city,
         state: home.state,
         zip: home.zip,
-        country: home.country
-      }
+        country: home.country,
+      },
     };
 
     this.props.dispatch(giveActions.save(mappedPerson));
-
-  }
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    const { dispatch } = this.props;
-    dispatch(giveActions.submit());
   }
 
   next = (e) => {
@@ -139,11 +148,8 @@ export default class Give extends Component {
     this.props.dispatch(giveActions.previous());
   }
 
-  monentize = (value, fixed) => {
-
-    if (typeof value === "number") {
-      value = `${value}`;
-    }
+  monentize = (amount, fixed) => {
+    let value = typeof amount === "number" ? `${amount}` : amount;
 
     if (!value.length) {
       return "$0.00";
@@ -151,7 +157,7 @@ export default class Give extends Component {
 
     value = value.replace(/[^\d.-]/g, "");
 
-    let decimals = value.split(".")[1];
+    const decimals = value.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
       value = Number(value).toFixed(2);
       value = String(value);
@@ -164,21 +170,21 @@ export default class Give extends Component {
   goToaccounts = () => {
     const { data } = this.props.give;
 
-    let props = {
+    const props = {
       coverHeader: true,
       account: false,
       data: {
         email: data.personal.email,
         firstName: data.personal.firstName,
         lastName: data.personal.lastName,
-        terms: true
-      }
+        terms: true,
+      },
     };
     this.props.dispatch(modal.render(OnBoard, props));
   }
 
-  render () {
-    let {
+  render() {
+    const {
       data,
       url,
       errors,
@@ -189,41 +195,50 @@ export default class Give extends Component {
       savedAccount,
       state,
       transactionType,
-      scheduleToRecover
+      scheduleToRecover,
     } = this.props.give;
 
     let { campuses, states, countries } = this.props.data;
 
-    campuses || (campuses = defaultArray);
+    if (!campuses) {
+      campuses = defaultArray;
+    }
+
     campuses = campuses.map((x) => ({ label: x.name, value: x.id }));
 
-    states || (states = defaultArray);
+    if (!states) {
+      states = defaultArray;
+    }
+
     states = states.map((x) => ({ label: x.name, value: x.value }));
 
-    countries || (countries = defaultArray);
+    if (!countries) {
+      countries = defaultArray;
+    }
+
     countries = countries.map((x) => ({ label: x.name, value: x.value }));
 
-
-    let save = (...args) => { this.props.dispatch(giveActions.save(...args)) };
-    let clear = (...args) => { this.props.dispatch(giveActions.clear(...args)) };
-    let clearData = () => {
+    const save = (...args) => { this.props.dispatch(giveActions.save(...args)); };
+    const clear = (...args) => { this.props.dispatch(giveActions.clear(...args)); };
+    const clearData = () => {
       this.props.dispatch(giveActions.clearData());
       this.props.dispatch(modal.hide());
     };
     switch (state) {
       case "loading":
-        this.copiedSchedules = {...schedules};
+        this.copiedSchedules = { ...schedules };
         return <Loading msg="We're Processing Your Contribution" />;
       case "error":
         return <Err msg={errors[Object.keys(errors)[0]].error} goToStepOne={this.goToStepOne} />;
       case "success":
         return (<Success
-            total={this.monentize(total.toFixed(2))}
-            email={data.personal.email}
-            guest={transactionType === "guest"}
-            onClick={this.goToaccounts}
-            schedules={this.copiedSchedules}
-                />);
+          total={this.monentize(total.toFixed(2))}
+          email={data.personal.email}
+          guest={transactionType === "guest"}
+          onClick={this.goToaccounts}
+          schedules={this.copiedSchedules}
+        />);
+      // eslint-disable-next-line
       default:
         let Step;
         switch (step) {
@@ -242,44 +257,42 @@ export default class Give extends Component {
 
         return (
           <Forms.Form
-              id="give"
-              theme="hard"
-              fieldsetTheme="flush soft-top scrollable soft-double-bottom"
-              ref="form"
-              method="POST"
-              submit={this.onSubmit}
+            id="give"
+            theme="hard"
+            fieldsetTheme="flush soft-top scrollable soft-double-bottom"
+            ref="form"
+            method="POST"
+            submit={this.onSubmit}
           >
 
             <Step
-                data={data}
-                url={url}
-                savedAccount={savedAccount}
-                transactions={transactions}
-                transactionType={transactionType}
-                save={save}
-                errors={errors}
-                clear={clear}
-                clearData={clearData}
-                next={this.next}
-                back={this.back}
-                ref="inputs"
-                total={total}
-                campuses={campuses}
-                states={states}
-                countries={countries}
-                schedules={schedules}
-                goToStepOne={this.goToStepOne}
-                savedAccounts={this.props.data.savedPayments || defaultArray} // XXX perf
-                changeSavedAccount={this.changeSavedAccount}
-                scheduleToRecover={scheduleToRecover}
+              data={data}
+              url={url}
+              savedAccount={savedAccount}
+              transactions={transactions}
+              transactionType={transactionType}
+              save={save}
+              errors={errors}
+              clear={clear}
+              clearData={clearData}
+              next={this.next}
+              back={this.back}
+              ref="inputs"
+              total={total}
+              campuses={campuses}
+              states={states}
+              countries={countries}
+              schedules={schedules}
+              goToStepOne={this.goToStepOne}
+              savedAccounts={this.props.data.savedPayments || defaultArray} // XXX perf
+              changeSavedAccount={this.changeSavedAccount}
+              scheduleToRecover={scheduleToRecover}
             >
               <Controls.Progress
-                  steps={4}
-                  active={step}
+                steps={4}
+                active={step}
               />
             </Step>
-
-
           </Forms.Form>
         );
     }

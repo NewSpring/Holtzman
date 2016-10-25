@@ -1,56 +1,57 @@
-import { Component, PropTypes} from "react";
-import { Link } from "react-router";
-import Meta from "react-helmet";
+import { PropTypes } from "react";
+import Meta from "../../../components/meta";
 
 import Split, { Left, Right } from "../../../blocks/split";
 import Toggle from "../../../components/controls/toggle";
 
 
-const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
+const Layout = ({ photo, person, onToggle, content, onUpload }) => (
   <div>
     <Split nav classes={["background--light-primary"]}>
 
       <Meta
-          title={person ? `${person.nickName} ${person.lastName}` : "Sign In"}
-          titleTemplate="%s | NewSpring Church"
+        title={person ? `${person.nickName} ${person.lastName}` : "Sign In"}
       />
 
       <Right
-          mobile
-          classes={["floating", "overlay--solid-dark"]}
-          ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
-          background={photo}
-          blur
+        mobile
+        classes={["floating", "overlay--solid-dark"]}
+        ratioClasses={["floating__item", "overlay__item", "one-whole", "text-center"]}
+        background={photo}
+        blur
       >
         <div className="soft one-whole">
-          <label htmlFor="file"
-              className="background--fill ratio--square round two-fifths display-inline-block"
-              style={{ backgroundImage: `url('${photo}')`, position: "relative"}}
+          <label
+            htmlFor="file"
+            className="background--fill ratio--square round two-fifths display-inline-block"
+            style={{ backgroundImage: `url('${photo}')`, position: "relative" }}
           >
             {(() => {
               if (!Meteor.isCordova) {
                 return (
-                  <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{opacity: 0}} />
-                )
+                  <input onChange={onUpload} type="file" className="locked-ends locked-sides" style={{ opacity: 0 }} />
+                );
               }
 
               return (
-                <div onClick={onUpload} className="locked-ends locked-sides" style={{opacity: 0}} />
-              )
+                <div onClick={onUpload} className="locked-ends locked-sides" style={{ opacity: 0 }} />
+              );
             })()}
-
           </label>
-        <h4 className="text-light-primary soft-half-top flush-bottom">{person.nickName} {person.lastName}</h4>
-        {(() => {
-          if (!person.home || !person.home.city) return null;
-          return (
-            <p className="text-light-primary flush"><em>{person.home.city}</em></p>
-          );
-        })()}
+          <h4
+            className="text-light-primary soft-half-top flush-bottom"
+          >
+            {person.nickName} {person.lastName}
+          </h4>
+          {(() => {
+            if (!person.home || !person.home.city) return null;
+            return (
+              <p className="text-light-primary flush"><em>{person.home.city}</em></p>
+            );
+          })()}
         </div>
 
       </Right>
-
 
 
     </Split>
@@ -64,6 +65,12 @@ const Layout = ({ photo, person, onToggle, content, onUpload }, context) => (
 
 );
 
-Layout.contextTypes = { shouldAnimate: PropTypes.bool };
+Layout.propTypes = {
+  photo: PropTypes.object.isRequired,
+  person: PropTypes.object.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  content: PropTypes.object.isRequired,
+  onUpload: PropTypes.func.isRequired,
+};
 
 export default Layout;

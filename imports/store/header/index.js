@@ -2,11 +2,11 @@
   Share action types
 */
 import reducer from "./reducer";
-import saga from "./saga";
+import "./saga";
 import { addReducer } from "../utilities";
 
 addReducer({
-  header: reducer
+  header: reducer,
 });
 
 export default {
@@ -25,7 +25,10 @@ export default {
   color: (color) => ({ type: "HEADER.SET", content: { color } }),
   title: (title) => ({ type: "HEADER.SET", content: { title } }),
   light: (light) => ({ type: "HEADER.SET", content: { light } }),
-  isSearch: (isSearch, searchSubmit) => ({ type: "HEADER.SET", content: { isSearch, searchSubmit } }),
+  isSearch: (isSearch, searchSubmit) => ({
+    type: "HEADER.SET",
+    content: { isSearch, searchSubmit },
+  }),
 
   lock: (requestee) => ({ type: "HEADER.LOCK", requestee }),
   unlock: () => ({ type: "HEADER.UNLOCK" }),

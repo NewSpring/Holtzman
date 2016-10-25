@@ -1,4 +1,4 @@
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 
@@ -21,36 +21,38 @@ export default class SplitContainer extends Component {
     classes: PropTypes.array,
     theme: PropTypes.string,
     styles: PropTypes.object,
-    nav: PropTypes.bool
+    nav: PropTypes.bool,
+    navigation: PropTypes.object,
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   }
 
   static defaultProps = {
-    styles: {}
+    styles: {},
   }
 
   layoutClasses = () => {
     let classes = [
       "panel",
       "fixed@lap-and-up",
-      css(styles["panel"]),
+      css(styles.panel),
     ];
 
     if (this.props.classes) {
       classes = classes.concat(this.props.classes);
     }
 
-    if (this.props.navigation.visible && this.props.nav != false) {
-      classes.push(css(styles["offset"]));
+    if (this.props.navigation.visible && this.props.nav !== false) {
+      classes.push(css(styles.offset));
     }
 
     return classes.join(" ");
   }
 
-  render () {
+  render() {
     return (
       <div
-          className={this.props.theme || this.layoutClasses()}
-          style={this.props.styles}
+        className={this.props.theme || this.layoutClasses()}
+        style={this.props.styles}
       >
         {this.props.children}
       </div>

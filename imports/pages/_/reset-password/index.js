@@ -1,5 +1,4 @@
-import { Component, PropTypes} from "react";
-import { Link } from "react-router";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import { reset } from "../../../methods/accounts/browser";
@@ -11,10 +10,17 @@ import Layout from "./Layout";
 @connect()
 export default class ChangePassword extends Component {
 
+  static propTypes = {
+    params: {
+      token: PropTypes.string.isRequired,
+    },
+    dispatch: PropTypes.func.isRequired,
+  }
+
   state = {
     newP: null,
     newPDup: null,
-    state: "default"
+    state: "default",
   }
 
   submit = (e) => {
@@ -22,18 +28,18 @@ export default class ChangePassword extends Component {
     this.setState({ state: "loading" });
     Accounts.resetPassword(this.props.params.token, this.state.newP, (err) => {
       if (err) {
-        this.setState({ state: "error", err: err });
+        this.setState({ state: "error", err });
         setTimeout(() => {
-          this.setState({ state: "default"});
+          this.setState({ state: "default" });
         }, 5000);
         return;
       }
 
-      reset(false, this.state.newP, (err, result) => {
-        if (err) {
-          this.setState({ state: "error", err: err });
+      reset(false, this.state.newP, (error) => {
+        if (error) {
+          this.setState({ state: "error", error });
           setTimeout(() => {
-            this.setState({ state: "default"});
+            this.setState({ state: "default" });
           }, 5000);
           return;
         }
@@ -45,37 +51,37 @@ export default class ChangePassword extends Component {
           // this.setState({ state: "default"})
           this.props.dispatch(routeActions.push("/profile"));
         }, 1000);
-
       });
     });
-
-
   }
 
   save = (value, input) => {
     const { id } = input;
 
-    if (id === "newPDup" && this.state.newP && this.state.newP != value) {
+    if (id === "newPDup" && this.state.newP && this.state.newP !== value) {
       return false;
     }
 
-    if (id === "newP" && this.state.newPDup && this.state.newPDup != value) {
+    if (id === "newP" && this.state.newPDup && this.state.newPDup !== value) {
       return false;
     }
 
-    this.setState({[id]: value});
+    this.setState({ [id]: value });
 
     return true;
   }
 
 
-  render () {
+  render() {
     const { state, err } = this.state;
     switch (state) {
       case "error":
         return (
           <div className="fixed-ends fixed-sides">
-            <Error msg="Looks like there was a problem" error={err && err.message ? err.message : " "} />
+            <Error
+              msg="Looks like there was a problem"
+              error={err && err.message ? err.message : " "}
+            />
           </div>
         );
       case "loading":
@@ -91,11 +97,11 @@ export default class ChangePassword extends Component {
           </div>
         );
       default:
-        return  (
+        return (
           <Layout
-              submit={this.submit}
-              save={this.save}
-              state={this.state}
+            submit={this.submit}
+            save={this.save}
+            state={this.state}
           />
         );
     }

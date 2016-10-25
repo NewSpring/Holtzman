@@ -16,6 +16,8 @@ export default class Tag extends Component {
     canBeActive: PropTypes.bool,
     label: PropTypes.string,
     urlKey: PropTypes.string,
+    router: PropTypes.object,
+    location: PropTypes.object,
   }
 
   static defaultProps = {
@@ -42,20 +44,12 @@ export default class Tag extends Component {
     }
   }
 
-  isInQueryString = (props) => {
-    const { val, urlKey } = props;
-    const { query } = props.location;
-    if (!query || !query[urlKey]) return false;
-
-    const tags = query[urlKey].toLowerCase().split(",").filter(x => x);
-    return tags.indexOf(val.toLowerCase()) > -1;
-  }
-
   onClick = (e) => {
     if (e) e.stopPropagation();
-    let { val, onClick, router, location, clickAble, canBeActive, urlKey } = this.props;
+    let { val } = this.props;
+    const { onClick, router, location, clickAble, canBeActive, urlKey } = this.props;
 
-    if (!clickAble) return null;
+    if (!clickAble) return;
 
     if (canBeActive) this.setState({ isActive: !this.state.isActive });
 
@@ -77,7 +71,7 @@ export default class Tag extends Component {
       tags.push(val);
     }
 
-    tags = tags.filter(x => x);
+    tags = tags.filter((x) => x);
 
     if (!tags.length && location.query[urlKey]) {
       delete location.query[urlKey];
@@ -88,11 +82,20 @@ export default class Tag extends Component {
     router.replace(newPath);
   }
 
+  isInQueryString = (props) => {
+    const { val, urlKey } = props;
+    const { query } = props.location;
+    if (!query || !query[urlKey]) return false;
+
+    const tags = query[urlKey].toLowerCase().split(",").filter((x) => x);
+    return tags.indexOf(val.toLowerCase()) > -1;
+  }
+
   render() {
     const { className, style, clickAble, val, canBeActive, label } = this.props;
-    let classes = [
+    const classes = [
       "tag",
-      "push-half-right"
+      "push-half-right",
     ];
     if (clickAble) classes.push("tag--clickable");
 
@@ -102,18 +105,18 @@ export default class Tag extends Component {
         classes.push("tag--nohover--active");
       } else {
         classes.push("tag--nohover");
-      };
+      }
     } else if (this.state.isActive && canBeActive) {
       classes.push("tag--active");
-    };
+    }
 
     return (
       <span
-          className={`${classes.join(" ")} ${className}`}
-          style={style}
-          onClick={this.onClick}
+        className={`${classes.join(" ")} ${className}`}
+        style={style}
+        onClick={this.onClick}
       >
-        {label ? label : val}
+        {label || val}
       </span>
     );
   }

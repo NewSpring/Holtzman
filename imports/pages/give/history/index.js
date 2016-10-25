@@ -1,166 +1,141 @@
-import { Component, PropTypes} from "react";
-import { connect } from "react-apollo";
+import { Component, PropTypes } from "react";
+import { graphql } from "react-apollo";
+import { connect } from "react-redux";
 import gql from "graphql-tag";
 
+import infiniteScroll from "../../../decorators/infiniteScroll";
+
 import Authorized from "../../../blocks/authorzied";
-import { nav as navActions, header as headerActions } from "../../../store";
+import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
 import Details from "./Details";
 
-const mapQueriesToProps = ({ ownProps }) => ({
-  filter: {
-    query: gql`
-      query GetFilterContent {
-        family: currentFamily {
-          person { photo, nickName, firstName, lastName, id: entityId }
-        }
+const FILTER_QUERY = gql`
+  query GetFilterContent {
+    family: currentFamily {
+      person { photo, nickName, firstName, lastName, id: entityId }
+    }
+  }
+`;
+const withFilter = graphql(FILTER_QUERY, { name: "filter" });
+
+const TRANSACTIONS_QUERY = gql`
+  query GetTransactions($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
+    transactions(
+      limit: $limit,
+      skip: $skip,
+      people: $people,
+      start: $start,
+      end: $end,
+      cache: false
+    ) {
+      id
+      date
+      status
+      summary
+      person { firstName, lastName, photo }
+      details {
+        id
+        amount
+        account { id, name }
       }
-    `
-  },
-  data: {
-    // XXX remove cache: false when heighliner caching is tested
-    query: gql`
-      query GetTransactions($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
-        transactions(limit: $limit, skip: $skip, people: $people, start: $start, end: $end, cache: false) {
-          id
-          date
-          status
-          summary
-          person { firstName, lastName, photo }
-          details {
-            id
-            amount
-            account { id, name }
-          }
-        }
-      }
-    `,
+    }
+  }
+`;
+const withTransactions = graphql(TRANSACTIONS_QUERY, {
+  options: {
     variables: { limit: 20, skip: 0, people: [], start: "", end: "" },
     forceFetch: true,
   },
+  props: ({ data }) => ({
+    transactions: data.transactions || [],
+    loading: data.loading,
+    done: (
+      data.transactions &&
+      !data.loading &&
+      data.transactions.length < data.variables.limit + data.variables.skip
+    ),
+    fetchMore: () => data.fetchMore({
+      variables: { ...data.variables, skip: data.transactions.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult.data) return previousResult;
+        const transactions = [...previousResult.transactions, ...fetchMoreResult.data.transactions];
+        return {
+          transactions: transactions.filter((x) => !!x.id),
+        };
+      },
+    }),
+    changeFamily: (people) => data.fetchMore({
+      variables: { ...data.varibles, people },
+      updateQuery: (previousResult, { fetchMoreResult }) => (
+        !fetchMoreResult.data ? previousResult : fetchMoreResult.data
+      ),
+    }),
+    changeDates: (start, end) => data.fetchMore({
+      variables: { ...data.varibles, start, end },
+      updateQuery: (previousResult, { fetchMoreResult }) => (
+        !fetchMoreResult.data ? previousResult : fetchMoreResult.data
+      ),
+    }),
+  }),
 });
-const defaultArray = [];
-@connect({ mapQueriesToProps })
+
+@connect()
+@withFilter
+@withTransactions
+@infiniteScroll()
 class Template extends Component {
 
-  state = {
-    offset: 0,
-    shouldUpdate: true,
-    done: false,
-    loaded: true,
-    start: "",
-    end: "",
-    people: [],
-    transactions: [] // XXX remove after refetchMore has landed in apollo-client
+  static propTypes = {
+    loading: PropTypes.bool,
+    transactions: PropTypes.array,
+    changeDates: PropTypes.func,
+    changeFamily: PropTypes.func,
+    Loading: PropTypes.func.isRequired,
+    done: PropTypes.bool,
+    filter: PropTypes.shape({
+      family: PropTypes.array, // eslint-disable-line
+    }),
+    dispatch: PropTypes.func,
   }
 
-  paginate = () => {
-    const { q, tags } = this.props;
-    this.props.data.refetch({
-      limit: 20,
-      skip: this.state.offset + 20,
-      people: this.state.people,
-      start: this.state.start,
-      end: this.state.end
-    })
-      .then(({ data }) => {
-        const { transactions } = data;
-        let done = false;
-        if (transactions.length < 20) done = true;
-        this.setState({
-          transactions: this.state.transactions.concat(transactions),
-          offset: this.state.offset + 20,
-          done,
-        });
-      });
+  state = { refetching: false }
+
+  componentDidMount() {
+    if (process.env.NATIVE) this.props.dispatch(headerActions.set({ title: "Giving History" }));
   }
 
-  componentWillMount(){
-    // coming back to this page with data in the store
-    if (!this.props.data.loading && this.props.data.transactions) {
-      this.setState({ transactions: this.props.data.transactions });
-    }
+  wrapRefetch = (refetch) => (...args) => {
+    this.setState({ refetching: true });
+    return refetch(...args).then((x) => {
+      this.setState({ refetching: false });
+      return x;
+    });
   }
 
-  componentDidMount(){
-    if (process.env.NATIVE) {
-      const item = {
-        title: "Giving History",
-      };
+  render() {
+    const {
+      transactions,
+      loading,
+      changeDates,
+      changeFamily,
+      filter,
+      done,
+      Loading,
+    } = this.props;
 
-      this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
-    }
-
-  }
-  componentWillReceiveProps(nextProps, nextState) {
-    if (this.props.data.loading && !nextProps.data.loading && !this.state.transactions.length) {
-      this.setState({ transactions: nextProps.data.transactions });
-    }
-
-  }
-
-  changeFamily = (people) => {
-    this.setState({ loaded: false });
-    this.props.data.refetch({
-        start: this.state.start,
-        end: this.state.end,
-        limit: 20,
-        skip: 0,
-        people
-      })
-      .then((response) => {
-        if (!response || !response.data) return;
-        const { transactions } = response.data;
-        this.setState({
-          offset: 0,
-          done: transactions.length < 20,
-          loaded: true,
-          transactions,
-          people
-        });
-      });
-  }
-
-  changeDates = (start, end) => {
-    this.setState({ loaded: false });
-    this.props.data.refetch({
-        people: this.state.people,
-        limit: 20,
-        skip: 0,
-        start,
-        end,
-      })
-      .then((response) => {
-        if (!response || !response.data) return;
-        const { transactions } = response.data;
-        this.setState({
-          offset: 0,
-          done: transactions.length < 20,
-          loaded: true,
-          transactions,
-          start,
-          end,
-        });
-      });
-  }
-
-  render () {
     return (
       <Layout
-          paginate={this.paginate}
-          state={this.state}
-          transactions={this.state.transactions}
-          family={this.props.filter.family || []}
-          alive
-          ready={!this.props.data.loading}
-          reloading={!this.state.loaded}
-          done={this.state.done}
-          changeFamily={this.changeFamily}
-          changeDates={this.changeDates}
+        transactions={transactions}
+        family={filter.family || []}
+        alive
+        ready={!loading}
+        reloading={this.state.refetching}
+        Loading={Loading}
+        done={done}
+        changeFamily={this.wrapRefetch(changeFamily)}
+        changeDates={this.wrapRefetch(changeDates)}
       />
     );
   }
@@ -175,13 +150,13 @@ const Routes = [
     childRoutes: [
       {
         path: ":id",
-        component: Details
-      }
-    ]
-  }
+        component: Details,
+      },
+    ],
+  },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

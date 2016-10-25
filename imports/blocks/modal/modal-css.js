@@ -24,5 +24,5 @@ export default StyleSheet.create({
       paddingBottom: "60px",
     },
 
-  }
+  },
 });

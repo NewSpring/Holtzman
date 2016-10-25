@@ -1,22 +1,17 @@
-import { Component, PropTypes } from "react";
+import { PropTypes } from "react";
 
 import Video from "../video";
 
 // XXX Why does this exist?
-export default class SingleVideoPlayer extends Component {
+// XXX answer: it used to be a lot more complicated
+const SingleVideoPlayer = ({ ooyalaId }) => (
+  <Video
+    id={ooyalaId}
+  />
+);
 
-  static propTypes = {
-    ooyalaId: PropTypes.string.isRequired,
-  }
+SingleVideoPlayer.propTypes = {
+  ooyalaId: PropTypes.string.isRequired,
+};
 
-  render() {
-
-    return (
-      <Video
-          id={this.props.ooyalaId}
-      />
-    );
-
-  }
-
-}
+export default SingleVideoPlayer;

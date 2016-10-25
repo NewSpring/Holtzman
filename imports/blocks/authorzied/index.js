@@ -1,7 +1,6 @@
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes} from "react";
+import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import ReactMixin from "react-mixin";
 
 import { accounts as accountsActions, modal } from "../../store";
 import { routeActions } from "../../store/routing";
@@ -15,10 +14,15 @@ const map = (state) => ({
 @connect(map)
 export default class Authorized extends Component {
 
+  static propTypes = {
+    dispatch: PropTypes.func,
+    auth: PropTypes.bool,
+    modal: PropTypes.object,
+    children: PropTypes.object,
+  }
 
-  componentWillMount(){
-
-    this.props.dispatch(modal.update({modalBackground: "light"}));
+  componentWillMount() {
+    this.props.dispatch(modal.update({ modalBackground: "light" }));
     const authorized = Meteor.userId();
     if (!authorized) {
       this.props.dispatch(modal.render(OnBoard, { coverHeader: true }));
@@ -32,13 +36,12 @@ export default class Authorized extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
     // if the modal is closing, but the user is not authorized
     if (this.props.modal.visible && !nextProps.modal.visible && !nextProps.auth) {
       // use last route instead of goBack() to force update of active nav item
       // handle case where a protected route is the first page visited
       const protectedRegEx = /^\/profile|\/give\/history|\/give\/schedules/gi;
-      let lastRoute = nextProps.previous[nextProps.previous.length-1] || "/";
+      let lastRoute = nextProps.previous[nextProps.previous.length - 1] || "/";
       if (protectedRegEx.test(lastRoute)) lastRoute = "/";
 
       this.props.dispatch(routeActions.push(lastRoute));
@@ -46,7 +49,7 @@ export default class Authorized extends Component {
 
     if (this.props.auth && !nextProps.auth) {
       this.props.dispatch(modal.render(OnBoard, {
-        coverHeader: true
+        coverHeader: true,
       }));
     }
 
@@ -56,7 +59,7 @@ export default class Authorized extends Component {
   }
 
 
-  render () {
+  render() {
     if (Meteor.userId()) return this.props.children;
 
     /*

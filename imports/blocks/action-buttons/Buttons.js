@@ -1,20 +1,38 @@
+import { PropTypes } from "react";
 
 const PrimaryButton = ({ disabled, classes, onClick, text, icon, value, style, dataId }) => (
 
-  <button className={classes} onClick={onClick} disabled={disabled} value={value} data-id={dataId} style={style}>
+  <button
+    className={classes}
+    onClick={onClick}
+    disabled={disabled}
+    value={value}
+    data-id={dataId}
+    style={style}
+  >
     {text} {icon}
   </button>
 
 );
 
-const SecondaryButton = ({ disabled, onClick }) => {
+PrimaryButton.propTypes = {
+  disabled: PropTypes.func,
+  classes: PropTypes.string,
+  onClick: PropTypes.func,
+  text: PropTypes.string,
+  icon: PropTypes.string,
+  value: PropTypes.string,
+  style: PropTypes.string,
+  dataId: PropTypes.string,
+};
 
-  let classes = [
+const SecondaryButton = ({ disabled, onClick }) => {
+  const classes = [
     "btn--thin",
     "btn--small",
     "display-inline-block",
     "push-left@lap-and-up",
-    "push-half-left@handheld"
+    "push-half-left@handheld",
   ];
   let style = {};
 
@@ -22,7 +40,7 @@ const SecondaryButton = ({ disabled, onClick }) => {
     classes.push("btn--disabled");
     // this should be fixed in junction
     style = {
-      backgroundColor: "transparent !important" // handle hover :(
+      backgroundColor: "transparent !important", // handle hover :(
     };
   } else {
     classes.push("btn--dark-tertiary");
@@ -30,34 +48,40 @@ const SecondaryButton = ({ disabled, onClick }) => {
 
   return (
     <button
-        style={style}
-        disabled={disabled}
-        className={classes.join(" ")}
-        onClick={onClick}
+      style={style}
+      disabled={disabled}
+      className={classes.join(" ")}
+      onClick={onClick}
     >
       Register
     </button>
   );
 };
 
+SecondaryButton.propTypes = {
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+};
+
 const Guest = ({ disabled, onClick, text }) => {
-  let classes = [
+  const classes = [
     "outlined--bottom",
-    "outlined--light"
+    "outlined--light",
   ];
 
   let style = {
-    display: "inline"
+    display: "inline",
   };
 
   if (disabled) {
     classes.push("text-light-tertiary");
-    style = {...style, ...{ cursor: "text" } };
+    style = { ...style, ...{ cursor: "text" } };
   } else {
     classes.push("text-dark-tertiary");
-    style = {...style, ...{ cursor: "pointer" } };
+    style = { ...style, ...{ cursor: "pointer" } };
   }
 
+  /* eslint-disable */
   return (
     <div className="display-block soft-half-top">
       <h6 className={classes.join(" ")} style={style} onClick={onClick}>
@@ -66,10 +90,17 @@ const Guest = ({ disabled, onClick, text }) => {
     </div>
   );
 
+  /* eslint-enable */
+};
+
+Guest.propTypes = {
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  text: PropTypes.text,
 };
 
 export {
   PrimaryButton,
   SecondaryButton,
-  Guest
+  Guest,
 };

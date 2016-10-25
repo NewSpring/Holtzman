@@ -1,19 +1,18 @@
-/*global Meteor */
+/* global Meteor */
 
 import { Builder } from "xml2js";
 import { parseXML } from "../../../../util";
 import ErrorCodes from "./language";
 
 const cancelBilling = (customer, callback) => {
-
   const cancelBillingObj = {
     "delete-customer": {
       "api-key": Meteor.settings.nmi,
       // "billing": {
       //   "billing-id": billingId,
       // },
-      "customer-vault-id": customer
-    }
+      "customer-vault-id": customer,
+    },
   };
 
   const builder = new Builder();
@@ -22,13 +21,12 @@ const cancelBilling = (customer, callback) => {
     method: "POST",
     body: `${xml}`,
     headers: {
-      "Content-Type": "text/xml"
-    }
+      "Content-Type": "text/xml",
+    },
   })
+  .then((response) => response.text())
   .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
+    let data = response;
     try {
       data = parseXML(data);
     } catch (e) {
@@ -40,20 +38,17 @@ const cancelBilling = (customer, callback) => {
       callback(null, data);
       return;
     }
-    let number = Number(data["result-code"]);
+    const number = Number(data["result-code"]);
     let err;
-    if (ErrorCodes[number] && ErrorCodes[number] != "result-text") {
+    if (ErrorCodes[number] && ErrorCodes[number] !== "result-text") {
       err = ErrorCodes[number];
-    } else if (ErrorCodes[number] === "result-text")  {
+    } else if (ErrorCodes[number] === "result-text") {
       err = data["result-text"];
     }
 
     callback(err);
-
   })
   .catch(callback);
-
-
 };
 
 export default cancelBilling;

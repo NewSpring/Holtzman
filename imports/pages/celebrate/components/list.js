@@ -1,5 +1,5 @@
 
-import { Component, PropTypes} from "react";
+import { PropTypes } from "react";
 import { connect } from "react-redux";
 
 import FitText from "./fit-text";
@@ -19,17 +19,15 @@ const getRatio = (width) => {
   }
 
   return 0.2;
-
 };
 
 const dynamicWidthContainer = (count) => {
-
-  if (typeof window != "undefined" && window != null) {
+  if (typeof window !== "undefined" && window !== null) {
     let itemSize = (window.innerWidth - 40) * getRatio(window.innerWidth); // four-fifths
     itemSize += 20; // account for margin
     const width = (count * itemSize) + 40;
     return {
-      width: `${width}px`
+      width: `${width}px`,
     };
   }
 
@@ -37,52 +35,55 @@ const dynamicWidthContainer = (count) => {
 };
 
 const dynamicWidth = () => {
-
-  if (typeof window != "undefined" && window != null) {
+  if (typeof window !== "undefined" && window !== null) {
     const itemSize = (window.innerWidth - 40) * getRatio(window.innerWidth); // four-fifths
     return {
       width: itemSize,
-      height: itemSize
+      height: itemSize,
     };
   }
 
   return {};
-
 };
 
 const dynamicSize = (text) => {
-
   if (text.length < 4) {
-    return .2;
+    return 0.2;
   }
 
   if (text.length < 6) {
-    return .35;
+    return 0.35;
   }
 
   if (text.length < 8) {
-    return .4;
+    return 0.4;
   }
 
   if (text.length < 10) {
-    return .5;
+    return 0.5;
   }
 
 
   if (text.length < 12) {
-    return .6;
+    return 0.6;
   }
 
-  return .7;
+  return 0.7;
 };
 
 const ListItem = ({ item, padding }) => (
-  <div className={`card floating display-inline-block ${padding ? "push-right": ""}`} style={dynamicWidth()}>
+  <div
+    className={`card floating display-inline-block ${padding ? "push-right" : ""}`}
+    style={dynamicWidth()}
+  >
     <div className="floating__item one-whole soft" >
       <FitText compressor={dynamicSize(item.count)}>
-        <h1 className="uppercase flush-bottom soft-half-bottom" style={{
-          fontWeight: "900",
-        }}>
+        <h1
+          className="uppercase flush-bottom soft-half-bottom"
+          style={{
+            fontWeight: "900",
+          }}
+        >
           {item.count}
         </h1>
       </FitText>
@@ -95,32 +96,40 @@ const ListItem = ({ item, padding }) => (
   </div>
 );
 
+ListItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  padding: PropTypes.bool,
+};
+
 
 const map = (store) => ({
-  width: store.responsive.width
+  width: store.responsive.width,
 });
-@connect(map)
-export default class List extends Component {
-  render () {
-    const { items } = this.props;
-    let count = 0;
-    return (
-      <div style={{
+const List = ({ items }) => {
+  let count = 0;
+  return (
+    <div
+      style={{
         overflowX: "scroll",
         overflowY: "hidden",
-        "WebkitOverflowScrolling": "touch"
-      }}>
-        <section style={dynamicWidthContainer(items.length)}>
-          {items.map((x, key) => {
-            count ++;
-            return (
-              <ListItem item={x} key={key} padding={items.length != count}/>
-            );
+        WebkitOverflowScrolling: "touch",
+      }}
+    >
+      <section style={dynamicWidthContainer(items.length)}>
+        {items.map((x, key) => {
+          count += 1;
+          return (
+            <ListItem item={x} key={key} padding={items.length !== count} />
+          );
+        })}
 
-          })}
+      </section>
+    </div>
+  );
+};
 
-        </section>
-      </div>
-    );
-  }
-}
+List.propTypes = {
+  items: PropTypes.array.isRequired,
+};
+
+export default connect(map)(List);

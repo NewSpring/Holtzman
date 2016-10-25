@@ -6,15 +6,15 @@
 
 */
 import reducer from "./reducer";
-import saga from "./saga";
+import "./saga";
 import { addReducer } from "../utilities";
 
 addReducer({
-  share: reducer
+  share: reducer,
 });
 
 export default {
   set: (content) => ({ type: "SHARE.SET", content }),
 
-  share: () => ({ type: "SHARE.SHARE" })
+  share: () => ({ type: "SHARE.SHARE" }),
 };

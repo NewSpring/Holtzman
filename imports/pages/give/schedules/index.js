@@ -1,95 +1,96 @@
-import { Component, PropTypes} from "react";
-import { connect } from "react-apollo";
+import { Component, PropTypes } from "react";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import Authorized from "../../../blocks/authorzied";
 
 import {
-  nav as navActions,
   modal as modalActions,
   header as headerActions,
+  give as giveActions,
 } from "../../../store";
-
-import { give as giveActions } from "../../../store";
 
 import Details from "./Details";
 import Layout from "./Layout";
 import Confirm from "./Details/Confirm";
 import Recover from "./Recover";
 
-const mapQueriesToProps = () => ({
-  schedules: {
-    query: gql`
-      query GetScheduleTransactions {
-        schedules: scheduledTransactions(cache: false) {
-          numberOfPayments
-          next
-          end
-          id
-          reminderDate
-          code
-          gateway
-          start
-          date
-          details {
-            amount
-            account {
-              name
-              description
-            }
-          }
-          payment {
-            paymentType
-            accountNumber
-            id
-          }
-          schedule {
-            value
-            description
-          }
-        }
-      }
-    `,
-    forceFetch: true,
-    ssr: false,
-  },
-  accounts: {
-    query: gql`
-      query GetFinancialAccounts {
-        accounts {
-          description
+const SCHEDULED_TRANSACTIONS_QUERY = gql`
+  query GetScheduleTransactions {
+    schedules: scheduledTransactions(cache: false) {
+      numberOfPayments
+      next
+      end
+      id
+      reminderDate
+      code
+      gateway
+      start
+      date
+      details {
+        amount
+        account {
           name
-          id: entityId
-          summary
-          image
-          order
-          images { fileName, fileType, fileLabel, s3, cloudfront }
+          description
         }
       }
-    `,
-    ssr: true,
+      payment {
+        paymentType
+        accountNumber
+        id
+      }
+      schedule {
+        value
+        description
+      }
+    }
   }
+`;
+
+const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY, { name: "schedules" }, {
+  options: { ssr: false },
+});
+
+const FINANCIAL_ACCOUNTS_QUERY = gql`
+  query GetFinancialAccounts {
+    accounts {
+      description
+      name
+      id: entityId
+      summary
+      image
+      order
+      images { fileName, fileType, fileLabel, s3, cloudfront }
+    }
+  }
+`;
+
+const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" }, {
+  options: { ssr: true },
 });
 
 const mapStateToProps = (store) => ({
   give: store.give,
 });
 
-@connect({ mapStateToProps, mapQueriesToProps })
+@withScheduledTransactions
+@withFinancialAccounts
+@connect(mapStateToProps)
 class Template extends Component {
 
-  componentDidMount(){
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    schedules: PropTypes.object,
+    accounts: PropTypes.object,
+    give: PropTypes.object,
+  }
+
+  componentDidMount() {
     if (process.env.NATIVE) {
-      const item = {
-        title: "Schedule Your Giving",
-      };
-
+      const item = { title: "Schedule Your Giving" };
       this.props.dispatch(headerActions.set(item));
-      this.setState({
-        __headerSet: true,
-      });
     }
-
   }
 
   confirm = (e) => {
@@ -109,27 +110,26 @@ class Template extends Component {
       onFinished: () => {
         dispatch(giveActions.deleteSchedule(id));
 
-        Meteor.call("give/schedule/cancel", { id }, (err, response) => {
-        });
-      }
+        // eslint-disable-next-line
+        Meteor.call("give/schedule/cancel", { id }, () => { });
+      },
     }));
-
   }
 
 
-  render () {
+  render() {
     const { schedules, accounts, give } = this.props;
     const { recoverableSchedules } = give;
 
     return (
       <Layout
-          accountsReady={!accounts.loading}
-          schedules={schedules.schedules}
-          schedulesReady={!schedules.loading}
-          accounts={accounts.accounts}
-          cancelSchedule={this.cancel}
-          recoverableSchedules={recoverableSchedules}
-          confirm={this.confirm}
+        accountsReady={!accounts.loading}
+        schedules={schedules.schedules}
+        schedulesReady={!schedules.loading}
+        accounts={accounts.accounts}
+        cancelSchedule={this.cancel}
+        recoverableSchedules={recoverableSchedules}
+        confirm={this.confirm}
       />
     );
   }
@@ -141,16 +141,16 @@ const Routes = [
   {
     path: "schedules/transfer",
     component: Authorized,
-    indexRoute: { component: Recover }
+    indexRoute: { component: Recover },
   },
   {
     path: "schedules/:id",
     component: Authorized,
-    indexRoute: { component: Details }
-  }
+    indexRoute: { component: Details },
+  },
 ];
 
 export default {
   Template,
-  Routes
+  Routes,
 };

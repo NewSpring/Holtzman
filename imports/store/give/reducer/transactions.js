@@ -1,58 +1,65 @@
 
 const addTransaction = (state, action) => {
-
   let total = 0;
 
-  let mergedTransactions = { ...state.transactions, ...action.transactions };
+  const mergedTransactions = { ...state.transactions, ...action.transactions };
 
-  for (let fund in mergedTransactions) {
-    if (typeof mergedTransactions[fund].value != "number") {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const fund in mergedTransactions) {
+    if (typeof mergedTransactions[fund].value !== "number") {
       delete mergedTransactions[fund];
     }
 
-    total = total + mergedTransactions[fund].value;
+    total += mergedTransactions[fund].value;
   }
 
-  return { ...state, ...{
-    transactions: mergedTransactions,
-    total: total
-  } };
+  return { ...state,
+    ...{
+      transactions: mergedTransactions,
+      total,
+    },
+  };
 };
 
 const clearTransaction = (state, action) => {
-
   let total = 0;
 
   if (!action.transactionId || !state.transactions[action.transactionId]) {
     return state;
   }
 
+  // eslint-disable-next-line no-param-reassign
   delete state.transactions[action.transactionId];
 
-  for (let fund in state.transactions) {
-    if (typeof state.transactions[fund].value != "number") {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const fund in state.transactions) {
+    if (typeof state.transactions[fund].value !== "number") {
+      // eslint-disable-next-line no-param-reassign
       delete state.transactions[fund];
     }
 
-    total = total + state.transactions[fund].value;
+    total += state.transactions[fund].value;
   }
 
-  return { ...state, ...{
-    transactions: state.transactions,
-    total: total
-  } };
+  return { ...state,
+    ...{
+      transactions: state.transactions,
+      total,
+    },
+  };
 };
 
-const clearTransactions = (state) => {
-
-  return { ...state, ...{
-    total: 0,
-    transactions: {}
-  } };
-};
+const clearTransactions = (state) => (
+  { ...state,
+    ...{
+      total: 0,
+      transactions: {},
+    },
+  }
+);
 
 export {
   addTransaction,
   clearTransaction,
-  clearTransactions
+  clearTransactions,
 };
