@@ -1,17 +1,17 @@
 import { PropTypes } from "react";
 
-const CreditCardForm = ({ number, exp, ccv }) => (
+const CreditCardForm = ({ num, exp, ccv }) => (
   <fieldset>
-    <input readOnly name="billing-cc-number" value={number} />
+    <input readOnly name="billing-cc-number" value={num} />
     <input readOnly name="billing-cc-exp" value={exp} />
-    <input readOnly name="billing-cvv" value={ccv} />
+    {ccv && <input readOnly name="billing-cvv" value={ccv} />}
   </fieldset>
 );
 
 CreditCardForm.propTypes = {
-  number: PropTypes.string.isRequired,
+  num: PropTypes.string.isRequired,
   exp: PropTypes.string.isRequired,
-  ccv: PropTypes.string.isRequired,
+  ccv: PropTypes.string,
 };
 
 const AchForm = ({ account, routing, name, type }) => (
