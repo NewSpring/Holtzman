@@ -32,7 +32,6 @@ export default class AudioPlayerUtility extends Component {
     const nextAudio = nextProps.audio;
     const { audio } = this.props;
 
-
     // change of track to play
     if (audio.playing.track.title !== nextAudio.playing.track.title) {
       this.player = this.createPlayer(nextAudio.playing.track, nextAudio.state === "playing");
@@ -82,8 +81,8 @@ export default class AudioPlayerUtility extends Component {
       return null;
     }
 
-    if (this.player instanceof Audio && this.player.stop) {
-      this.player.stop();
+    if (this.player instanceof Audio && this.player.release) {
+      this.player.release();
     }
 
     if (track.file.indexOf("http") === -1) {
@@ -192,9 +191,6 @@ export default class AudioPlayerUtility extends Component {
   }
 
   next = () => {
-    // XXX Warning: leaving this out may break
-    // this.player.release();
-
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
 
@@ -245,8 +241,6 @@ export default class AudioPlayerUtility extends Component {
   }
 
   previous = () => {
-    // this.player.release();
-
     const { playing, order, repeat } = this.props.audio;
     const playlist = this.tracksWithFiles();
 
