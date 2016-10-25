@@ -226,6 +226,12 @@ export default class AudioPlayerUtility extends Component {
         // This file needs cleanup
         // repeat one handled in creation of player above
         if (repeat === "repeat-one") {
+          this.props.restart();
+          this.props.play();
+          if (this.player && Meteor.isCordova) {
+            this.props.seek(0);
+            this.player.play();
+          }
           return;
         }
 
