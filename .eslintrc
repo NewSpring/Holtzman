@@ -46,7 +46,8 @@
         'everything-else',
         'render',
       ],
-    }]
+    }],
+    "import/no-extraneous-dependencies": [1]
   },
   "settings": {
     "import/core-modules": [
