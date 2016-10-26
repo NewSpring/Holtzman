@@ -10,7 +10,7 @@
     "lint": "eslint ./imports ./client ./server",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "node ./.bin/index.js setup && build-storybook -s public -o docs",
     "coverage": "jest --coverage"
   },
   "repository": {
