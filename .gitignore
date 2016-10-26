@@ -62,3 +62,4 @@ launch.json
 *.crt
 
 storybook-static
+docs
