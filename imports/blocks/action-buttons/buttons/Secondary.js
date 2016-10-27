@@ -1,6 +1,11 @@
-import { PropTypes } from "react";
+// @flow
 
-const SecondaryButton = ({ disabled, onClick }) => {
+type ISecondaryButton = {
+  disabled: boolean,
+  onClick: Function,
+};
+
+const SecondaryButton = ({ disabled, onClick }: ISecondaryButton) => {
   const classes = [
     "btn--thin",
     "btn--small",
@@ -33,8 +38,6 @@ const SecondaryButton = ({ disabled, onClick }) => {
 };
 
 SecondaryButton.propTypes = {
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
 };
 
 export default SecondaryButton;
