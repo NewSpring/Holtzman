@@ -12,7 +12,7 @@ import defaultColors from "/.storybook/defaults";
 import Readme from "./Secondary.md";
 import SecondaryButton from "../Secondary";
 
-const story = storiesOf("Action Buttons", module)
+const story = storiesOf("Buttons", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
   .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
