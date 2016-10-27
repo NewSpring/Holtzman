@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "posttest": "npm run lint && npm run flow",
     "lint-fix": "eslint ./imports ./client ./server --fix",
     "lint": "eslint ./imports ./client ./server",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
