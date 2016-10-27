@@ -21,24 +21,24 @@ const buttonClasses = (savedPayments, disabled, additionalClasses) => {
   return classes.join(" ");
 };
 
-const buttonText = (overrideText, savedPayments, hideCard, getAccount) => {
-  if (!Meteor.userId()) return "Sign In";
+const ButtonText = ({ overrideText, savedPayments, hideCard, getAccount }) => {
+  let text = overrideText || "Give Now";
 
-  const text = overrideText || "Give Now";
+  if (!Meteor.userId()) text = "Sign In";
 
   if (savedPayments && savedPayments.length && !hideCard) {
     const details = getAccount();
     if (details && details.payment && details.payment.accountNumber) {
       let { accountNumber } = details.payment;
       accountNumber = accountNumber.slice(-4).trim();
-      return `Review Using ${accountNumber}`;
+      text = `Review Using ${accountNumber}`;
     }
   }
 
-  return text;
+  return <span>{text}</span>;
 };
 
-const getIcon = (savedPayments, hideCard, getAccount) => {
+const Icon = ({ savedPayments, hideCard, getAccount }) => {
   if (savedPayments && !hideCard) {
     // const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
     const detail = getAccount();
@@ -72,12 +72,14 @@ const PrimaryButton = ({
   <button
     className={theme || buttonClasses(savedPayments, disabled, classes)}
     onClick={onClick}
-    disabled={disabled}
+    disabled={Meteor.userId() && disabled}
     value={value}
     data-id={dataId}
     style={style}
   >
-    {buttonText(text, savedPayments, hideCard, getAccount)} {getIcon(savedPayments, hideCard, getAccount)}
+    <ButtonText {...{ overrideText: text, savedPayments, hideCard, getAccount }} />
+    {" "}
+    <Icon {...{ savedPayments, hideCard, getAccount }} />
   </button>
 
 );
