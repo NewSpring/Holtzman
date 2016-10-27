@@ -16,9 +16,6 @@ const story = storiesOf("Status", module)
   ;
 
 story
-  .add("Offline", withReadme(Readme, () => <Offline />));
-
-story
-  .add("Offline with custom link", withReadme(Readme,
+  .add("Offline", withReadme(Readme,
     () => <Offline link={text("Link", "hello@newspring.cc")} />
   ));
