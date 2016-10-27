@@ -13,7 +13,7 @@ import "!style!css!sass!../stylesheets/icons.css";
 import "!style!css!sass!../stylesheets/masters.scss";
 
 
-const req = require.context('../imports/', true, /\.story.js$/);
+const req = require.context('../imports/', true, /\__stories__\/.*.js$/);
 
 addDecorator((story) => (
   <div className="floating locked-sides locked-ends scrollable">
