@@ -54,6 +54,7 @@ const Layout = (props) => (
       savedPayments={props.savedPayments}
       hideCard={props.hideCard}
       getAccount={props.getAccount}
+      disabled={props.disabled}
     />
     <SecondaryLayout
       authorized={props.authorized}
