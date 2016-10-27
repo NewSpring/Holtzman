@@ -3,7 +3,7 @@
 ### Usage
 
 ```js
-import { Guest } from "/imports/blocks/action-buttons/buttons";
+import { Guest } from "/imports/blocks/checkout-buttons/buttons";
 
 <Guest
   disable={false}

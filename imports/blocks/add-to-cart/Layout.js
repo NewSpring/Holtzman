@@ -3,7 +3,7 @@ import { Component, PropTypes } from "react";
 
 import Forms from "../../components/forms";
 
-import GiveNow from "../action-buttons";
+import CheckoutButtons from "../checkout-buttons";
 
 import SubFund from "./Subfund";
 
@@ -178,7 +178,7 @@ export default class Layout extends Component {
           </div>
 
           <div className="push-top">
-            <GiveNow
+            <CheckoutButtons
               disabled={total <= 0}
             />
           </div>

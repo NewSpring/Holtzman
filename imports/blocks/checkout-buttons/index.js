@@ -55,7 +55,7 @@ const mapStateToProps = (store) => ({
 
 @connect(mapStateToProps)
 @withSavedPayments
-export default class GiveNow extends Component {
+export default class CheckoutButtons extends Component {
 
   static propTypes = {
     authorized: PropTypes.bool,

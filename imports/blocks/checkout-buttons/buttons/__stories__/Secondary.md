@@ -3,7 +3,7 @@
 ### Usage
 
 ```js
-import { SecondaryButton } from "/imports/blocks/action-buttons/buttons";
+import { SecondaryButton } from "/imports/blocks/checkout-buttons/buttons";
 
 <SecondaryButton
   disable={false}

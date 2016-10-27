@@ -3,7 +3,7 @@ import Moment from "moment";
 import { css } from "aphrodite";
 
 import Forms from "../../components/forms";
-import GiveNow from "../action-buttons";
+import CheckoutButtons from "../checkout-buttons";
 import Styles from "./styles-css";
 
 export default class Layout extends Component {
@@ -131,7 +131,7 @@ export default class Layout extends Component {
           />
 
           <div className="push-top">
-            <GiveNow
+            <CheckoutButtons
               disabled={total <= 0 || !ready}
               disabledGuest
               text={this.props.text || "Schedule Now"}
