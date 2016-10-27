@@ -21,3 +21,12 @@
 .types/
 
 [options]
+module.name_mapper='^\/\(.*\)$' -> '<PROJECT_ROOT>/\1'
+
+# Meteor core package support
+# e.g. "meteor/meteor"
+module.name_mapper='^meteor\/\(.*\)$' -> '<PROJECT_ROOT>/.meteor/local/build/programs/server/packages/\1'
+
+
+# Meteor ignore
+suppress_comment= \\(.\\|\n\\)*\\$FlowMeteor
