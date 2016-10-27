@@ -1,6 +1,12 @@
-import { PropTypes } from "react";
+// @flow
 
-const Guest = ({ disabled, onClick, text }) => {
+type IGuest = {
+  disabled: boolean,
+  onClick: Function,
+  text: string,
+};
+
+const Guest = ({ disabled, onClick, text }: IGuest) => {
   const classes = [
     "outlined--bottom",
     "outlined--light",
@@ -25,12 +31,6 @@ const Guest = ({ disabled, onClick, text }) => {
       </h6>
     </div>
   );
-};
-
-Guest.propTypes = {
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  text: PropTypes.text,
 };
 
 export default Guest;
