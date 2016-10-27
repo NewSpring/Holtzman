@@ -6,7 +6,7 @@ import AccountType from "../../../components/accountType";
 const buttonClasses = (savedPayments, disabled, additionalClasses) => {
   let classes = ["btn"];
 
-  if (savedPayments.savedPayments) {
+  if (savedPayments) {
     classes.push("has-card");
   }
 
@@ -39,7 +39,7 @@ const buttonText = (overrideText, savedPayments, hideCard, getAccount) => {
 };
 
 const getIcon = (savedPayments, hideCard, getAccount) => {
-  if (savedPayments.savedPayments && !hideCard) {
+  if (savedPayments && !hideCard) {
     // const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
     const detail = getAccount();
     if (detail.payment && detail.payment.paymentType === "ACH") {
@@ -77,7 +77,7 @@ const PrimaryButton = ({
     data-id={dataId}
     style={style}
   >
-    {buttonText(text, savedPayments.savedPayments, hideCard, getAccount)} {getIcon(savedPayments, hideCard, getAccount)}
+    {buttonText(text, savedPayments, hideCard, getAccount)} {getIcon(savedPayments, hideCard, getAccount)}
   </button>
 
 );
