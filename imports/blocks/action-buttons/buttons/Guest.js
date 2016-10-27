@@ -18,7 +18,6 @@ const Guest = ({ disabled, onClick, text }) => {
     style = { ...style, ...{ cursor: "pointer" } };
   }
 
-  /* eslint-disable */
   return (
     <div className="display-block soft-half-top">
       <h6 className={classes.join(" ")} style={style} onClick={onClick}>
@@ -26,8 +25,6 @@ const Guest = ({ disabled, onClick, text }) => {
       </h6>
     </div>
   );
-
-  /* eslint-enable */
 };
 
 Guest.propTypes = {
