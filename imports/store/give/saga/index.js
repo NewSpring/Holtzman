@@ -20,7 +20,7 @@ import formatPersonDetails from "./formatPersonDetails";
 import { order, schedule, charge } from "../../../methods/give/browser";
 import RecoverSchedules from "../../../blocks/recover-schedules";
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // XXX break this file up into smaller files
 

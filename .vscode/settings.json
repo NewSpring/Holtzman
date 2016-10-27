@@ -33,7 +33,7 @@
     "scripts": true,
     ".bin": true,
     ".github": true,
-    ".meteor": true,
+    ".meteor": false,
     ".storybook": true,
     ".types": true,
     ".babelrc": true,
