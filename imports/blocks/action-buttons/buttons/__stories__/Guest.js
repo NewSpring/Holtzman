@@ -13,7 +13,7 @@ import defaultColors from "/.storybook/defaults";
 import Readme from "./Guest.md";
 import Guest from "../Guest";
 
-const story = storiesOf("Action Buttons", module)
+const story = storiesOf("Buttons", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
   .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
