@@ -10,8 +10,8 @@
   "files.exclude": {
     "**/.git": true,
     "**/.DS_Store": true,
-    "**/node_modules": false,
-    "**/dist": false,
+    "**/node_modules": true,
+    "**/dist": true,
     "**/.gagarin": true,
     "**/.ecs": true,
     "**/.es*": true,
@@ -27,9 +27,18 @@
     "launch.json": true,
     "LICENSE": true,
     "main.html": true,
-    "mobile-config.js": false,
+    "mobile-config.js": true,
     "NewSpring.xcscheme": true,
     ".travis": true,
-    "scripts": true
+    "scripts": true,
+    ".bin": true,
+    ".github": true,
+    ".meteor": true,
+    ".storybook": true,
+    ".types": true,
+    ".babelrc": true,
+    ".flowconfig": true,
+    ".gitignore": true,
+    ".remote": true
   }
 }
