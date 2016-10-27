@@ -45,7 +45,6 @@ const Layout = (props) => (
     <PrimaryButton
       theme={props.theme}
       classes={props.classes}
-      icon={props.icon}
       text={props.text}
       onClick={props.onClick}
       value={props.value}
