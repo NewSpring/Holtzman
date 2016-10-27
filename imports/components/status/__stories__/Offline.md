@@ -3,7 +3,7 @@
 ### Usage
 
 ```js
-import Offline form '/imports/components/status/Offline';
+import Offline from '/imports/components/status/Offline';
 ```
 
 ### Properties
