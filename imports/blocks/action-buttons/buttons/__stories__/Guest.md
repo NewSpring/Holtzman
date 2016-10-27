@@ -4,6 +4,12 @@
 
 ```js
 import { Guest } from "/imports/blocks/action-buttons/buttons";
+
+<Guest
+  disable={false}
+  onClick={() => { alert("clicked"); }}
+  text="Give as guest"
+/>
 ```
 
 ### Properties
@@ -12,6 +18,6 @@ import { Guest } from "/imports/blocks/action-buttons/buttons";
 * **onClick** - function to be run on click of button
 * **text** - text to be displayed in button
 
-### Usage
+### Purpose
 
 This is currently designed to be used as a tertiary button on Give related forms, such as "Give As Guest" and "Change Payment Options".
