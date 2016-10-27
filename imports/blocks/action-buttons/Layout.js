@@ -1,3 +1,5 @@
+import { PropTypes } from "react";
+
 import {
   PrimaryButton,
   SecondaryButton,
@@ -8,13 +10,17 @@ const SecondaryLayout = ({ authorized, register }) => {
   if (!authorized && !Meteor.userId()) {
     return (
       <SecondaryButton
-
         onClick={register}
       />
     );
   }
   return null;
-}
+};
+
+SecondaryLayout.propTypes = {
+  authorized: PropTypes.bool,
+  register: PropTypes.func,
+};
 
 const TertiaryLayout = ({ disabledGuest, disabled, giveAsGuest }) => {
   if (!disabledGuest && !Meteor.userId()) {
@@ -26,7 +32,13 @@ const TertiaryLayout = ({ disabledGuest, disabled, giveAsGuest }) => {
     );
   }
   return null;
-}
+};
+
+TertiaryLayout.propTypes = {
+  disabled: PropTypes.bool,
+  disabledGuest: PropTypes.bool,
+  giveAsGuest: PropTypes.func,
+};
 
 const ChangePaymentsLayout = ({ savedPayments, hideCard, changePayments }) => {
   if (savedPayments && savedPayments.length && !hideCard && Meteor.userId()) {
@@ -38,41 +50,80 @@ const ChangePaymentsLayout = ({ savedPayments, hideCard, changePayments }) => {
     );
   }
   return null;
-}
+};
 
-const Layout = (props) => (
+ChangePaymentsLayout.propTypes = {
+  changePayments: PropTypes.func,
+  hideCard: PropTypes.bool,
+  savedPayments: PropTypes.array,
+};
+
+const Layout = ({
+  authorized,
+  changePayments,
+  classes,
+  dataId,
+  disabled,
+  disabledGuest,
+  getAccount,
+  giveAsGuest,
+  hideCard,
+  onClick,
+  register,
+  savedPayments,
+  style,
+  theme,
+  text,
+  value,
+}) => (
   <span>
     <PrimaryButton
-      theme={props.theme}
-      classes={props.classes}
-      text={props.text}
-      onClick={props.onClick}
-      value={props.value}
-      style={props.style || {}}
-      dataId={props.dataId}
-      savedPayments={props.savedPayments}
-      hideCard={props.hideCard}
-      getAccount={props.getAccount}
-      disabled={props.disabled}
+      theme={theme}
+      classes={classes}
+      text={text}
+      onClick={onClick}
+      value={value}
+      style={style || {}}
+      dataId={dataId}
+      savedPayments={savedPayments}
+      hideCard={hideCard}
+      getAccount={getAccount}
+      disabled={disabled}
     />
     <SecondaryLayout
-      authorized={props.authorized}
-      register={props.register}
+      authorized={authorized}
+      register={register}
     />
     <TertiaryLayout
-      disabledGuest={props.disabledGuest}
-      disabled={props.disabled}
-      giveAsGuest={props.giveAsGuest}
+      disabledGuest={disabledGuest}
+      disabled={disabled}
+      giveAsGuest={giveAsGuest}
     />
     <ChangePaymentsLayout
-      savedPayments={props.savedPayments}
-      hideCard={props.hideCard}
-      changePayments={props.changePayments}
+      savedPayments={savedPayments}
+      hideCard={hideCard}
+      changePayments={changePayments}
     />
   </span>
 );
 
+Layout.propTypes = {
+  authorized: PropTypes.bool,
+  changePayments: PropTypes.func,
+  classes: PropTypes.array,
+  dataId: PropTypes.string,
+  disabled: PropTypes.bool,
+  disabledGuest: PropTypes.bool,
+  getAccount: PropTypes.func,
+  giveAsGuest: PropTypes.func,
+  hideCard: PropTypes.bool,
+  onClick: PropTypes.func,
+  register: PropTypes.func,
+  savedPayments: PropTypes.array,
+  style: PropTypes.object,
+  theme: PropTypes.string,
+  text: PropTypes.string,
+  value: PropTypes.string,
+};
+
 export default Layout;
-
-
-
