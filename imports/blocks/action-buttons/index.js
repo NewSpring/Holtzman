@@ -18,8 +18,8 @@ import ChangePayments from "../change-payments";
 import Layout from "./Layout";
 
 const SAVED_ACCTS_QUERY = gql`
-  query GetSavedPaymentAccounts {
-    savedPayments(cache: false) {
+  query GetSavedPaymentAccounts($cache: Boolean) {
+    savedPayments(cache: $cache) {
       name, id: entityId, date,
       payment { accountNumber, paymentType }
     }
@@ -31,8 +31,10 @@ const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
   name: "savedPayments",
   options: (ownProps) => ({
     variables: {
-      skip: !ownProps.authorized,
+      cache: false,
     },
+    // XXX make redux `accounts.authorized` work mo betta
+    // skip: !ownProps.authorized,
     forceFetch: true,
   }),
 });
