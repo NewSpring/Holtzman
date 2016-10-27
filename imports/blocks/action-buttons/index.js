@@ -29,7 +29,7 @@ const SAVED_ACCTS_QUERY = gql`
 // XXX remove cache: false when heighliner caching is tested
 const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
   name: "savedPayments",
-  options: (ownProps) => ({
+  options: () => ({
     variables: {
       cache: false,
     },
