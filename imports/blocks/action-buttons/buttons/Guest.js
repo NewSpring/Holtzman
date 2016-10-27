@@ -6,7 +6,7 @@ type IGuest = {
   text: string,
 };
 
-const Guest = ({ disabled, onClick, text }: IGuest) => {
+const Guest = ({ disabled, onClick, text }: IGuest): Object => {
   const classes = [
     "outlined--bottom",
     "outlined--light",
