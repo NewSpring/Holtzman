@@ -37,7 +37,4 @@ const SecondaryButton = ({ disabled, onClick }: ISecondaryButton) => {
   );
 };
 
-SecondaryButton.propTypes = {
-};
-
 export default SecondaryButton;
