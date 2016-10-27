@@ -155,21 +155,17 @@ export default class GiveNow extends Component {
   }
 
   render() {
-    try {
-      return (
-        <Layout
-          {...this.props}
-          onClick={this.onClick}
-          getAccount={this.getAccount}
-          giveAsGuest={this.giveAsGuest}
-          register={this.register}
-          changePayments={this.changePayments}
-          renderAfterLogin={this.renderAfterLogin}
-          savedPayments={this.props.savedPayments.savedPayments}
-        />
-      );
-    } catch (e) {
-      return null;
-    }
+    return (
+      <Layout
+        {...this.props}
+        onClick={this.onClick}
+        getAccount={this.getAccount}
+        giveAsGuest={this.giveAsGuest}
+        register={this.register}
+        changePayments={this.changePayments}
+        renderAfterLogin={this.renderAfterLogin}
+        savedPayments={this.props.savedPayments.savedPayments}
+      />
+    );
   }
 }
