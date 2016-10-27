@@ -38,6 +38,13 @@ const ButtonText = ({ overrideText, savedPayments, hideCard, getAccount }) => {
   return <span>{text}</span>;
 };
 
+ButtonText.propTypes = {
+  overrideText: PropTypes.string,
+  savedPayments: PropTypes.array,
+  hideCard: PropTypes.bool,
+  getAccount: PropTypes.func,
+};
+
 const Icon = ({ savedPayments, hideCard, getAccount }) => {
   if (savedPayments && !hideCard) {
     // const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
@@ -53,6 +60,12 @@ const Icon = ({ savedPayments, hideCard, getAccount }) => {
     }
   }
   return null;
+};
+
+Icon.propTypes = {
+  getAccount: PropTypes.func,
+  hideCard: PropTypes.bool,
+  savedPayments: PropTypes.array,
 };
 
 const PrimaryButton = ({
@@ -85,13 +98,17 @@ const PrimaryButton = ({
 );
 
 PrimaryButton.propTypes = {
-  disabled: PropTypes.func,
   classes: PropTypes.string,
-  onClick: PropTypes.func,
-  text: PropTypes.string,
-  value: PropTypes.string,
-  style: PropTypes.string,
   dataId: PropTypes.string,
+  disabled: PropTypes.func,
+  hideCard: PropTypes.bool,
+  getAccount: PropTypes.func,
+  onClick: PropTypes.func,
+  savedPayments: PropTypes.array,
+  style: PropTypes.string,
+  text: PropTypes.string,
+  theme: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default PrimaryButton;
