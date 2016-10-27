@@ -158,13 +158,14 @@ export default class GiveNow extends Component {
     try {
       return (
         <Layout
+          {...this.props}
           onClick={this.onClick}
           getAccount={this.getAccount}
           giveAsGuest={this.giveAsGuest}
           register={this.register}
           changePayments={this.changePayments}
           renderAfterLogin={this.renderAfterLogin}
-          {...this.props}
+          savedPayments={this.props.savedPayments.savedPayments}
         />
       );
     } catch (e) {
