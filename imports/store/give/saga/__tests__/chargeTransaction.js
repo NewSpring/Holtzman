@@ -71,7 +71,7 @@ describe("successful charge saved payment and schedules", () => {
     give: {
       ...initial,
       savedAccount: { id: 1 },
-      schedules: { 1: { } },
+      schedules: { 1: { start: "20200101" } },
     },
   };
 
@@ -103,8 +103,8 @@ describe("successful charge saved payment and schedules", () => {
         },
         "merchant-defined-field-2": null,
         plan: { payments: 0, amount: 0 },
-        "start-date": "20161028",
-        "merchant-defined-field-3": "20161028",
+        "start-date": "20200101",
+        "merchant-defined-field-3": "20200101",
         savedAccount: 1,
         savedAccountName: undefined,
       },
