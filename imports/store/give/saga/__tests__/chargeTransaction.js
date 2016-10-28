@@ -24,7 +24,10 @@ describe("successful charge without saved payment", () => {
     },
   };
 
-  it("reads the state from the store", () => (initalState));
+  it("reads the state from the store", result => {
+    expect(result.SELECT).toBeTruthy();
+    return initalState;
+  });
 
   it("sets the loading state", ({ PUT: { action }}) => {
     expect(action).toEqual(actions.loading());
