@@ -471,7 +471,7 @@ function* watchRoute({ payload }) {
 
 
 // clear out data on user change
-function* clearGiveData({ authorized }) {
+export function* clearGiveData({ authorized }) {
   if (!authorized) yield put(actions.clearData());
 }
 
