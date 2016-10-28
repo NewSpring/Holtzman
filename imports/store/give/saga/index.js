@@ -205,7 +205,7 @@ export function* chargeTransaction({ state }) {
 }
 
 
-function* submitPaymentDetails(data, url) {
+export function* submitPaymentDetails(data, url) {
   /*
 
     Oddity with NMI, when using a saved account for a subscription,
