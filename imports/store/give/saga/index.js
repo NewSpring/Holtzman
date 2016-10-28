@@ -95,7 +95,6 @@ export function* chargeTransaction({ state }) {
 
   // set loading state
   yield put(actions.loading());
-
   // personal info is ready to be submitted
   const formattedData = formatPersonDetails(give);
 
@@ -103,7 +102,6 @@ export function* chargeTransaction({ state }) {
   // instead of order + charge
   if (formattedData.savedAccount && Object.keys(give.schedules).length) {
     // wrap the function for the same api
-    // XXX this isn't really testable as is
     action = (token, name, id, callback) => {
       Meteor.call("give/order", formattedData, true, id, callback);
     };

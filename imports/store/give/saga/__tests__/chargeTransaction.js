@@ -126,3 +126,72 @@ describe("successful charge saved payment and schedules", () => {
   });
 
 });
+
+describe("successful charge using a saved payment", () => {
+  const it = sagaHelper(chargeTransaction({ state: "submit" }));
+  const initalState = {
+    give: {
+      ...initial,
+      savedAccount: { id: 1 },
+    },
+  };
+
+  it("reads the state from the store", result => {
+    expect(result.SELECT).toBeTruthy();
+    return initalState;
+  });
+
+  it("sets the loading state", ({ PUT: { action }}) => {
+    expect(action).toEqual(actions.loading());
+  });
+
+  it("reads from the store again if no saved account and not a schedule", result => {
+    expect(result.SELECT).toBeTruthy();
+    return initalState;
+  });
+
+
+  it("tries to submit person details to ensure a url", result => {
+    expect(result.CPS.args[0]).toEqual({
+      amount: 0,
+      billing: {
+        'first-name': null,
+        'last-name': null,
+        email: null,
+        address1: null,
+        address2: '',
+        city: null,
+        state: null,
+        postal: null
+      },
+      'merchant-defined-field-2': null,
+      savedAccount: 1,
+      savedAccountName: undefined
+    });
+    return { url: "http://example.com/TOKEN" }
+  });
+
+  // BELOW IS TESTED IN ./submitPersonDetails
+  it("submits a form", result => true);
+  it("waits for a delay", result => {});
+  it("sets a url", result => {});
+
+  it("reads from the store again after submitting person details", result => {
+    expect(result.SELECT).toBeTruthy();
+    return { ...{ give: { ...initalState.give, ...{  url: "http://example.com/TOKEN" }} } };
+  });
+
+  it("tries to submit a transaction with the correct token", result => {
+    expect(result.CPS.args).toEqual(["TOKEN", null, undefined ]);
+    return true;
+  });
+
+  it("puts a success state", result => {
+    expect(result).toEqual(put(actions.setState("success")));
+  });
+
+  it("ends after a normal charge", result => {
+    expect(result).toBeUndefined();
+  });
+
+});
