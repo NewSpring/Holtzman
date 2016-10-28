@@ -265,7 +265,7 @@ export function* submitPaymentDetails(data, url) {
   return;
 }
 
-function* submitPersonDetails(give, autoSubmit) {
+export function* submitPersonDetails(give, autoSubmit) {
   // personal info is ready to be submitted
   const formattedData = formatPersonDetails(give);
 
