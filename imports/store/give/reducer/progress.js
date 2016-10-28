@@ -1,5 +1,7 @@
 
 const progress = (state, action) => {
+  if (!action.step && !action.increment) return state;
+
   if (action.increment) {
     if (typeof action.increment !== "number") {
       return state;
