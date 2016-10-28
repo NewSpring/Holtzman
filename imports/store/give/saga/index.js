@@ -1,5 +1,6 @@
 /* eslint-disable */
 import "regenerator-runtime/runtime";
+import { Meteor } from "meteor/meteor";
 import React from "react";
 import ReactDOM from "react-dom";
 import Moment from "moment";
@@ -102,6 +103,7 @@ export function* chargeTransaction({ state }) {
   // instead of order + charge
   if (formattedData.savedAccount && Object.keys(give.schedules).length) {
     // wrap the function for the same api
+    // XXX this isn't really testable as is
     action = (token, name, id, callback) => {
       Meteor.call("give/order", formattedData, true, id, callback);
     };

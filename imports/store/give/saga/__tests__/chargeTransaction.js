@@ -3,6 +3,8 @@ import sagaHelper from "redux-saga-testing";
 import { takeLatest } from "redux-saga";
 import { put, select, call, cps, take } from "redux-saga/effects";
 
+import { Meteor } from "meteor/meteor";
+
 import { initial } from "../../reducer";
 import actions from "../../actions";
 import types from "../../types";
@@ -61,5 +63,66 @@ describe("successful charge without saved payment", () => {
     expect(result).toBeUndefined();
   });
 
+});
+
+describe("successful charge saved payment and schedules", () => {
+  const it = sagaHelper(chargeTransaction({ state: "submit" }));
+  const initalState = {
+    give: {
+      ...initial,
+      savedAccount: { id: 1 },
+      schedules: { 1: { } },
+    },
+  };
+
+  it("reads the state from the store", result => {
+    expect(result.SELECT).toBeTruthy();
+    return initalState;
+  });
+
+  it("sets the loading state", ({ PUT: { action }}) => {
+    expect(action).toEqual(actions.loading());
+  });
+
+  it("tries to call 'give/order'", result => {
+    result.CPS.fn.call(null, ...result.CPS.args);
+    expect(Meteor.call).toHaveBeenCalledTimes(1);
+    const args = Meteor.call.mock.calls[0];
+    expect(args).toEqual([
+      "give/order",
+      {
+        billing: {
+          "first-name": null,
+          "last-name": null,
+          email: null,
+          address1: null,
+          address2: "",
+          city: null,
+          state: null,
+          postal: null,
+        },
+        "merchant-defined-field-2": null,
+        plan: { payments: 0, amount: 0 },
+        "start-date": "20161028",
+        "merchant-defined-field-3": "20161028",
+        savedAccount: 1,
+        savedAccountName: undefined,
+      },
+      true,
+      undefined,
+      undefined,
+    ]);
+
+    expect(result.CPS.args).toEqual([ "", null, undefined ]);
+    return true;
+  });
+
+  it("puts a success state", result => {
+    expect(result).toEqual(put(actions.setState("success")));
+  });
+
+  it("ends after a normal charge", result => {
+    expect(result).toBeUndefined();
+  });
 
 });
