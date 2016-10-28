@@ -29,7 +29,7 @@ export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 // this validation process is required to ensure that the account
 // that is being used to make payments, is actually valid
 // see https://github.com/NewSpring/Apollos/issues/439 for discussion
-function* validate() {
+export function* validate() {
   const { give } = yield select(),
     name = give.data.payment.name;
 
@@ -59,7 +59,7 @@ function* validate() {
     url = response.url;
   } catch (e) { error = e; }
 
-  // step 2 (sumbit payment details)
+  // step 2 (submit payment details)
   yield submitPaymentDetails(modifiedGive.data, url);
 
   if (url) {

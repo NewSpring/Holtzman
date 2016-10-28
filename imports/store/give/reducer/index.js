@@ -18,7 +18,7 @@ import {
   deleteRecoverableSchedules,
 } from "./scheduledTransactions";
 
-const initial = {
+export const initial = {
 
   userId: null, // used in native => web transactions
 
