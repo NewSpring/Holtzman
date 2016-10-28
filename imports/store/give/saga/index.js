@@ -83,7 +83,7 @@ export function* validate() {
 }
 
 // handle the transactions
-function* chargeTransaction({ state }) {
+export function* chargeTransaction({ state }) {
   if (state !== "submit") return;
 
   let { give } = yield select(),
