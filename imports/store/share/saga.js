@@ -4,8 +4,8 @@ import { takeLatest } from "redux-saga";
 import { fork, select } from "redux-saga/effects";
 import { addSaga } from "../utilities";
 
-
-function* shareAction() {
+// eslint-disable-next-line
+export function* shareAction() {
   const { share } = yield select();
   const msg = {};
 
@@ -33,6 +33,8 @@ function* shareAction() {
   }
 }
 
-addSaga(function* shareSaga() {
+export default function* shareSaga() {
   yield fork(takeLatest, "SHARE.SHARE", shareAction);
-});
+}
+
+addSaga(shareSaga);
