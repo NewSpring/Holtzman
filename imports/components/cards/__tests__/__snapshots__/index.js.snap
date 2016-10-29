@@ -1,0 +1,1 @@
+exports[`test should render 1`] = `"<div class=\"card\" style=\"overflow: hidden; display: block;\"><div class=\"undefined plain\"></div><div class=\"card__item soft text-center soft-double-ends\"></div></div>"`;
