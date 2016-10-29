@@ -157,6 +157,7 @@ export default class Card extends Component {
     if (this.props.linkAll) {
       return (
         <Link
+          data-spec="card-wrapper"
           className={theme || this.cardClasses()}
           style={styles || this.styles()}
           to={link}
@@ -176,6 +177,7 @@ export default class Card extends Component {
 
     return (
       <div
+        data-spec="card-wrapper"
         className={theme || this.cardClasses()}
         style={styles || this.styles()}
       >
