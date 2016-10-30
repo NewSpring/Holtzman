@@ -1,0 +1,208 @@
+exports[`regular transactions handles a single fund gift 1`] = `
+Object {
+  "amount": 0,
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC"
+  },
+  "merchant-defined-field-2": 1,
+  "product": Array [
+    Object {
+      "description": "General Fund",
+      "product-code": "1",
+      "quantity": 1,
+      "total-amount": 10
+    }
+  ]
+}
+`;
+
+exports[`regular transactions handles multiple fund gifts 1`] = `
+Object {
+  "amount": 0,
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC"
+  },
+  "merchant-defined-field-2": 1,
+  "product": Array [
+    Object {
+      "description": "General Fund",
+      "product-code": "1",
+      "quantity": 1,
+      "total-amount": 10
+    },
+    Object {
+      "description": "Tesla Fund",
+      "product-code": "2",
+      "quantity": 1,
+      "total-amount": 100000000
+    }
+  ]
+}
+`;
+
+exports[`savedAccount adds saved account info with a name 1`] = `
+Object {
+  "amount": 0,
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC"
+  },
+  "merchant-defined-field-2": 1,
+  "savedAccount": 4,
+  "savedAccountName": "TEST"
+}
+`;
+
+exports[`savedAccount adds saved account info without a name 1`] = `
+Object {
+  "amount": 0,
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC"
+  },
+  "merchant-defined-field-2": 1,
+  "savedAccount": 4,
+  "savedAccountName": undefined
+}
+`;
+
+exports[`schedule shapes handles a bi-weekly gift 1`] = `
+Object {
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC"
+  },
+  "merchant-defined-field-1": "1",
+  "merchant-defined-field-2": 1,
+  "merchant-defined-field-3": "20200101",
+  "plan": Object {
+    "amount": 0,
+    "day-frequency": 14,
+    "payments": 0
+  },
+  "start-date": "20200101"
+}
+`;
+
+exports[`schedule shapes handles a monthly gift 1`] = `
+Object {
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC"
+  },
+  "merchant-defined-field-1": "1",
+  "merchant-defined-field-2": 1,
+  "merchant-defined-field-3": "20200101",
+  "plan": Object {
+    "amount": 0,
+    "day-of-month": 1,
+    "month-frequency": 1,
+    "payments": 0
+  },
+  "start-date": "20200101"
+}
+`;
+
+exports[`schedule shapes handles a one-time gift 1`] = `
+Object {
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC"
+  },
+  "merchant-defined-field-1": "1",
+  "merchant-defined-field-2": 1,
+  "merchant-defined-field-3": "20200101",
+  "plan": Object {
+    "amount": 0,
+    "day-of-month": 1,
+    "month-frequency": 12,
+    "payments": 1
+  },
+  "start-date": "20200101"
+}
+`;
+
+exports[`schedule shapes handles a weekly gift 1`] = `
+Object {
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC"
+  },
+  "merchant-defined-field-1": "1",
+  "merchant-defined-field-2": 1,
+  "merchant-defined-field-3": "20200101",
+  "plan": Object {
+    "amount": 0,
+    "day-frequency": 7,
+    "payments": 0
+  },
+  "start-date": "20200101"
+}
+`;
+
+exports[`test returns a default shape with inital state data 1`] = `
+Object {
+  "amount": 0,
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC"
+  },
+  "merchant-defined-field-2": 1
+}
+`;

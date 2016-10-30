@@ -29,7 +29,7 @@ before_install:
 - rvm install 2.2.5
 - rvm use 2.2.5
 script:
-  - npm i && npm link
+  - npm link
   - npm test
   - "./scripts/prepare/app.sh"
   - "./scripts/deploy/app.sh"

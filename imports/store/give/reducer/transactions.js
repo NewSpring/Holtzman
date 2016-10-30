@@ -8,6 +8,8 @@ const addTransaction = (state, action) => {
   for (const fund in mergedTransactions) {
     if (typeof mergedTransactions[fund].value !== "number") {
       delete mergedTransactions[fund];
+      // eslint-disable-next-line
+      continue;
     }
 
     total += mergedTransactions[fund].value;
@@ -36,6 +38,8 @@ const clearTransaction = (state, action) => {
     if (typeof state.transactions[fund].value !== "number") {
       // eslint-disable-next-line no-param-reassign
       delete state.transactions[fund];
+      // eslint-disable-next-line
+      continue;
     }
 
     total += state.transactions[fund].value;

@@ -1,6 +1,7 @@
 
 
 const savedAccount = (state, action) => {
+  // XXX this will never work?
   if (!action.savedAccount && action.savedAccount !== "clear") {
     return state;
   }

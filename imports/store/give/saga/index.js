@@ -1,5 +1,6 @@
 /* eslint-disable */
 import "regenerator-runtime/runtime";
+import { Meteor } from "meteor/meteor";
 import React from "react";
 import ReactDOM from "react-dom";
 import Moment from "moment";
@@ -20,7 +21,7 @@ import formatPersonDetails from "./formatPersonDetails";
 import { order, schedule, charge } from "../../../methods/give/browser";
 import RecoverSchedules from "../../../blocks/recover-schedules";
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // XXX break this file up into smaller files
 
@@ -29,7 +30,7 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 // this validation process is required to ensure that the account
 // that is being used to make payments, is actually valid
 // see https://github.com/NewSpring/Apollos/issues/439 for discussion
-function* validate() {
+export function* validate() {
   const { give } = yield select(),
     name = give.data.payment.name;
 
@@ -59,7 +60,7 @@ function* validate() {
     url = response.url;
   } catch (e) { error = e; }
 
-  // step 2 (sumbit payment details)
+  // step 2 (submit payment details)
   yield submitPaymentDetails(modifiedGive.data, url);
 
   if (url) {
@@ -83,7 +84,7 @@ function* validate() {
 }
 
 // handle the transactions
-function* chargeTransaction({ state }) {
+export function* chargeTransaction({ state }) {
   if (state !== "submit") return;
 
   let { give } = yield select(),
@@ -94,7 +95,6 @@ function* chargeTransaction({ state }) {
 
   // set loading state
   yield put(actions.loading());
-
   // personal info is ready to be submitted
   const formattedData = formatPersonDetails(give);
 
@@ -205,7 +205,7 @@ function* chargeTransaction({ state }) {
 }
 
 
-function* submitPaymentDetails(data, url) {
+export function* submitPaymentDetails(data, url) {
   /*
 
     Oddity with NMI, when using a saved account for a subscription,
@@ -265,7 +265,7 @@ function* submitPaymentDetails(data, url) {
   return;
 }
 
-function* submitPersonDetails(give, autoSubmit) {
+export function* submitPersonDetails(give, autoSubmit) {
   // personal info is ready to be submitted
   const formattedData = formatPersonDetails(give);
 
@@ -471,7 +471,7 @@ function* watchRoute({ payload }) {
 
 
 // clear out data on user change
-function* clearGiveData({ authorized }) {
+export function* clearGiveData({ authorized }) {
   if (!authorized) yield put(actions.clearData());
 }
 
