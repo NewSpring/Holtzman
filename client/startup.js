@@ -62,8 +62,6 @@ if (process.env.NATIVE) {
         hockeyapp.start(null, null, Meteor.settings.public.hockey);
       }
 
-      window.Lookback.setupWithAppToken(Meteor.settings.public.lookback);
-      window.Lookback.shakeToRecord(true);
       window.open = cordova.InAppBrowser.open;
 
       document.addEventListener("click", (event) => {
