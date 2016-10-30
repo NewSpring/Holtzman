@@ -4,11 +4,12 @@ import {
 } from "../";
 
 describe("delay", () => {
-  it("delays a result", async () => {
+  it("delays a result", () => {
     let success = false;
     setTimeout(() => { success = true }, 10);
-    await delay(11);
-    expect(success).toBe(true);
+    return delay(11).then(() => {
+      expect(success).toBe(true);
+    });
   });
 });
 
