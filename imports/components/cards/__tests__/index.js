@@ -64,12 +64,12 @@ it ('should accept theme prop', () => {
 });
 
 it ('should accept style prop', () => {
-  const wrapper = shallow(generateComponent({
+  const wrapper = mount(generateComponent({
     link: "http://example.com",
     children: "hello world",
     styles: {backgroundColor: "red"}
   }));
-  const linked = shallow(generateComponent({
+  const linked = mount(generateComponent({
     link: "http://example.com",
     children: "hello world",
     linkAll: true,
@@ -79,21 +79,21 @@ it ('should accept style prop', () => {
   const cardWrapper = getSingleSpecWrapper(wrapper, "card");
   const linkedCardWrapper = getSingleSpecWrapper(linked, "card");
 
-  expect(cardWrapper.html().indexOf("style=\"background-color:red;\"")).toBeGreaterThan(0);
-  expect(linkedCardWrapper.html().indexOf("style=\"background-color:red;\"")).toBeGreaterThan(0);
+  expect(cardWrapper.html().indexOf("style=\"background-color: red;\"")).toBeGreaterThan(0);
+  expect(linkedCardWrapper.html().indexOf("style=\"background-color: red;\"")).toBeGreaterThan(0);
 });
 
 it ('should accept wrapperClasses prop', () => {
-  const wrapper = shallow(generateComponent({
+  const wrapper = mount(generateComponent({
     children: "hello world",
     wrapperClasses: "test1 test2"
   }));
-  const linkedWrapper = shallow(generateComponent({
+  const linkedWrapper = mount(generateComponent({
     link: "http://example.com",
     children: "hello world",
     wrapperClasses: "test1 test2"
   }));
-  const linkedAllWrapper = shallow(generateComponent({
+  const linkedAllWrapper = mount(generateComponent({
     link: "http://example.com",
     children: "hello world",
     linkAll: true,
