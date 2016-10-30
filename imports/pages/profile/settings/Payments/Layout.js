@@ -2,9 +2,10 @@ import { PropTypes } from "react";
 
 import Meta from "../../../../components/meta";
 import Loading from "../../../../components/loading";
-import AccountType from "../../../../components/accountType";
 
 import Back from "../Back";
+
+import SavedPayment from "./SavedPayment";
 
 const styles = {
   overflow: "visible",
@@ -24,52 +25,15 @@ const Layout = ({ details, remove, loading }) => (
     <div className="one-whole two-thirds@anchored display-inline-block push-double-top">
       <h3>Saved Accounts</h3>
       <div className="soft-sides soft-double-sides@lap-and-up text-center">
-        {(() => {
-          if (!loading) return null;
-          return <Loading />;
-        })()}
-        {details && details.map((account, key) => (
-          <div
-            key={key}
-            className={
-              "soft-ends text-left hard-sides outlined--light " +
-              "outlined--bottom constrain-mobile"
-            }
-          >
-            <div className="display-inline-block soft-half-ends one-whole">
-              <h6 className="flush-bottom float-left">{account.name}</h6>
-              <button
-                className="h6 flush-bottom float-right text-alert"
-                id={account.id}
-                onClick={remove}
-              >
-                Remove
-              </button>
-            </div>
-
-
-            <h5 className="hard one-whole flush-bottom">
-              {account.payment.accountNumber.slice(
-                0, account.payment.accountNumber.length - 5
-              ).replace(/./gmi, "*")}{account.payment.accountNumber.slice(-4)}
-              <span className="float-right ">
-                <AccountType width="30px" height="20px" type={account.payment.paymentType} />
-
-              </span>
-
-            </h5>
-
-
-          </div>
+        {loading && <Loading />}
+        {!loading && details && details.map((account, key) => (
+          <SavedPayment account={account} remove={remove} key={key} />
         ))}
-
         <p className="soft-ends text-left">
           To add a saved account, click the option to save account on your next gift!
         </p>
       </div>
-
     </div>
-
   </div>
 );
 
