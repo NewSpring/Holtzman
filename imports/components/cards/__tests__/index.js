@@ -18,12 +18,10 @@ it ('should accept linkAll prop', () => {
   //shallow here because meteor in imageloader is undefined
   const wrapper = shallow(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world"
   }));
   const linked = shallow(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     linkAll: true
   }));
@@ -66,16 +64,13 @@ it ('should accept theme prop', () => {
 });
 
 it ('should accept style prop', () => {
-  //shallow here because meteor in imageloader is undefined
   const wrapper = shallow(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     styles: {backgroundColor: "red"}
   }));
   const linked = shallow(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     linkAll: true,
     styles: {backgroundColor: "red"}
@@ -89,21 +84,17 @@ it ('should accept style prop', () => {
 });
 
 it ('should accept wrapperClasses prop', () => {
-  //shallow here because meteor in imageloader is undefined
   const wrapper = shallow(generateComponent({
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     wrapperClasses: "test1 test2"
   }));
   const linkedWrapper = shallow(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     wrapperClasses: "test1 test2"
   }));
   const linkedAllWrapper = shallow(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     linkAll: true,
     wrapperClasses: "test1 test2"
@@ -119,9 +110,7 @@ it ('should accept wrapperClasses prop', () => {
 });
 
 it ('should accept mobile prop', () => {
-  //shallow here because meteor in imageloader is undefined
-  const wrapper = shallow(generateComponent({
-    image: {url: "http://placehold.it/100x100"},
+  const wrapper = mount(generateComponent({
     children: "hello world",
     wrapperClasses: "test1 test2",
     mobile: false
@@ -130,19 +119,15 @@ it ('should accept mobile prop', () => {
   const imageWrapper = getSingleSpecWrapper(wrapper, "card-image-wrapper");
 
   expect(imageWrapper.hasClass("visuallyhidden@handheld")).toEqual(true);
-
 });
 
 it ('should accept children prop', () => {
-  //shallow here because meteor in imageloader is undefined
-  const wrapper = shallow(generateComponent({
+  const wrapper = mount(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world"
   }));
-  const linked = shallow(generateComponent({
+  const linked = mount(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     linkAll: true
   }));
@@ -155,16 +140,13 @@ it ('should accept children prop', () => {
 });
 
 it ('should accept itemClasses prop', () => {
-  //shallow here because meteor in imageloader is undefined
-  const wrapper = shallow(generateComponent({
+  const wrapper = mount(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     itemClasses: "test"
   }));
-  const linked = shallow(generateComponent({
+  const linked = mount(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     linkAll: true,
     itemClasses: "test"
@@ -179,15 +161,13 @@ it ('should accept itemClasses prop', () => {
 
 it ('should accept itemTheme prop', () => {
   //shallow here because meteor in imageloader is undefined
-  const wrapper = shallow(generateComponent({
+  const wrapper = mount(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     itemTheme: "test"
   }));
-  const linked = shallow(generateComponent({
+  const linked = mount(generateComponent({
     link: "http://example.com",
-    image: {url: "http://placehold.it/100x100"},
     children: "hello world",
     linkAll: true,
     itemTheme: "test"
@@ -219,6 +199,40 @@ it ('should accept itemStyles prop', () => {
 
   expect(cardItem.html().indexOf("style=\"background-color: red;\"")).toBeGreaterThan(0);
   expect(linkedCardItem.html().indexOf("style=\"background-color: red;\"")).toBeGreaterThan(0);
+});
+
+it ('should accept background images option', () => {
+  //shallow here because meteor in imageloader is undefined
+  const wrapper = shallow(generateComponent({
+    link: "http://example.com",
+    image: {url: "http://placehold.it/100x100", full: true},
+    children: "hello world",
+    itemTheme: "test",
+    linkAll: true
+  }));
+
+  const cardImage = getSingleSpecWrapper(wrapper, "card-image-wrapper");
+
+  expect(
+    cardImage
+      .html()
+      .indexOf("background-image:url(&#x27;http://placehold.it/100x100&#x27;);")
+  ).toBeGreaterThan(0);
+});
+
+it ('should accept image ratio', () => {
+  //shallow here because meteor in imageloader is undefined
+  const wrapper = shallow(generateComponent({
+    link: "http://example.com",
+    image: {url: "http://placehold.it/100x100", ratio: "square"},
+    children: "hello world",
+    itemTheme: "test",
+    linkAll: true
+  }));
+
+  const cardImage = getSingleSpecWrapper(wrapper, "card-image-wrapper");
+
+  expect(cardImage.html().indexOf("ratio--square")).toBeGreaterThan(0);
 });
 
 // XXX Need to import meteor for this to work
