@@ -15,35 +15,7 @@ import Success from "./Success";
 import ForgotPassword from "./ForgotPassword";
 import SuccessCreate from "./SuccessCreate";
 
-const mapDispatchToProps = { ...accountsActions, ...modalActions };
-
-const PERSON_QUERY = gql`
-  query GetPersonByGuid($guid:ID) {
-    person(guid:$guid) {
-      firstName
-      lastName
-      email
-      photo
-      id: entityId
-      personId: entityId
-    }
-  }
-`;
-
-const withPerson = graphql(PERSON_QUERY, {
-  options: (ownProps) => ({
-    ssr: false,
-    variables: {
-      guid: (
-        ownProps.location && ownProps.location.query && ownProps.location.query.guid
-      ),
-    },
-  }),
-});
-
-@connect((state) => ({ location: state.routing.location }), mapDispatchToProps)
-@withPerson
-export default class AccountsWithData extends Component {
+class Accounts extends Component {
 
   static propTypes = {
     setAccount: PropTypes.func.isRequired,
@@ -60,12 +32,10 @@ export default class AccountsWithData extends Component {
   }
 
   render() {
-    return <AccountsContainer {...this.props} />;
+    return <AccountsContainerWithData {...this.props} />;
   }
 }
 
-// We only care about the accounts state
-@connect((state) => ({ accounts: state.accounts }), mapDispatchToProps)
 class AccountsContainer extends Component { // eslint-disable-line
 
   static propTypes = {
@@ -270,3 +240,46 @@ class AccountsContainer extends Component { // eslint-disable-line
     );
   }
 }
+
+const mapDispatchToProps = { ...accountsActions, ...modalActions };
+
+const PERSON_QUERY = gql`
+  query GetPersonByGuid($guid:ID) {
+    person(guid:$guid) {
+      firstName
+      lastName
+      email
+      photo
+      id: entityId
+      personId: entityId
+    }
+  }
+`;
+
+const withPerson = graphql(PERSON_QUERY, {
+  options: (ownProps) => ({
+    ssr: false,
+    variables: {
+      guid: (
+        ownProps.location && ownProps.location.query && ownProps.location.query.guid
+      ),
+    },
+  }),
+});
+
+const AccountsContainerWithData = connect((state) => ({
+  accounts: state.accounts,
+}), mapDispatchToProps
+)(AccountsContainer);
+
+export default withPerson(
+  connect((state) => ({
+    location: state.routing.location,
+  }), mapDispatchToProps
+  )(Accounts)
+);
+
+export {
+  Accounts,
+  AccountsContainer,
+};
