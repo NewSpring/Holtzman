@@ -9,7 +9,6 @@
     "babel-root-slash-import",
     "transform-react-router-optimize",
     "transform-inline-environment-variables",
-    "transform-react-constant-elements",
     "transform-decorators-legacy",
     "react-require",
     "react-remove-prop-types",
