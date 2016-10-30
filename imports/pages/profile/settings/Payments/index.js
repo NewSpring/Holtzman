@@ -7,9 +7,9 @@ import { nav } from "../../../../store";
 
 import Layout from "./Layout";
 
-const PAYMENT_DETAILS_QUERY = gql`
-  query PaymentDetails {
-    accounts: savedPayments(cache: false) {
+export const PAYMENT_DETAILS_QUERY = gql`
+  query PaymentDetails($cache: Boolean) {
+    accounts: savedPayments(cache: $cache) {
       id: entityId
       name
       payment {
@@ -21,30 +21,25 @@ const PAYMENT_DETAILS_QUERY = gql`
   }
 `;
 
-const withPaymentDetails = graphql(PAYMENT_DETAILS_QUERY);
+export const withPaymentDetails = graphql(PAYMENT_DETAILS_QUERY, {
+  options: { forceFetch: true, variables: { cache: false } },
+});
 
-@withPaymentDetails
-@connect()
-export default class GiveNow extends Component {
+export class GiveNow extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.shape({
       loading: PropTypes.bool,
       refetch: PropTypes.func,
+      accounts: PropTypes.array,
     }),
   }
 
-  state = { accounts: [] }
+  state = { accounts: null, loading: null };
 
   componentWillMount() {
     this.props.dispatch(nav.setLevel("BASIC_CONTENT"));
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.data.loading && !nextProps.data.loading) {
-      this.setState({ accounts: nextProps.data.accounts });
-    }
   }
 
   componentWillUnmount() {
@@ -55,17 +50,28 @@ export default class GiveNow extends Component {
     e.preventDefault();
     const { id } = e.target;
 
-    const accounts = this.state.accounts.filter((x) => x.id !== id);
+    const accounts = this.props.data ? this.props.data.accounts.filter((x) => x.id !== id) : null;
+    if (!accounts) return;
 
-    this.setState({ accounts });
+    this.setState({ loading: true, accounts: [] });
     Meteor.call("PaymentAccounts.remove", id, () => {
       // XXX mutation
-      this.props.data.refetch(); // clear out data store for newly missing account
+      this.props.data.refetch()
+        .then(() => {
+          this.setState({ loading: false, accounts: null });
+        });
     });
   }
 
   render() {
-    const { accounts } = this.state;
-    return <Layout loading={this.props.data.loading} details={accounts} remove={this.remove} />;
+    let { accounts, loading } = this.props.data;
+
+    if (this.state.accounts !== null) accounts = this.state.accounts;
+    if (this.state.loading !== null) loading = this.state.loading;
+
+    return <Layout loading={loading} details={accounts} remove={this.remove} />;
   }
 }
+
+export default withPaymentDetails(connect()(GiveNow));
+

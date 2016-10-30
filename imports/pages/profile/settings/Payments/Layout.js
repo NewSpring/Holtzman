@@ -24,10 +24,7 @@ const Layout = ({ details, remove, loading }) => (
     <div className="one-whole two-thirds@anchored display-inline-block push-double-top">
       <h3>Saved Accounts</h3>
       <div className="soft-sides soft-double-sides@lap-and-up text-center">
-        {(() => {
-          if (!loading) return null;
-          return <Loading />;
-        })()}
+        {loading && <Loading />}
         {details && details.map((account, key) => (
           <div
             key={key}
@@ -41,7 +38,7 @@ const Layout = ({ details, remove, loading }) => (
               <button
                 className="h6 flush-bottom float-right text-alert"
                 id={account.id}
-                onClick={remove}
+                onClick={(e) => remove(e)}
               >
                 Remove
               </button>
