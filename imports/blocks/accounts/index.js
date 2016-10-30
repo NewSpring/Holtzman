@@ -54,6 +54,7 @@ class AccountsContainer extends Component { // eslint-disable-line
     save: PropTypes.func,
     clear: PropTypes.func,
     submit: PropTypes.func,
+    location: PropTypes.object,
   }
 
   state = {
@@ -83,6 +84,12 @@ class AccountsContainer extends Component { // eslint-disable-line
         this.setState({ loading: false });
         // follow up action
         if (this.props.onFinished) return this.props.onFinished();
+
+        // redirect after signin or register
+        const { redirect } = this.props.location.query;
+        if (redirect) {
+          window.location.href = redirect;
+        }
 
         // close the modal
         this.props.hide();
@@ -280,6 +287,5 @@ export default withPerson(
 );
 
 export {
-  Accounts,
   AccountsContainer,
 };
