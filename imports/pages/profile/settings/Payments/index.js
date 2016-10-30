@@ -1,3 +1,5 @@
+
+import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -46,19 +48,13 @@ export class GiveNow extends Component {
     this.props.dispatch(nav.setLevel("TOP"));
   }
 
-  remove = (e) => {
-    e.preventDefault();
-    const { id } = e.target;
-
-    const accounts = this.props.data ? this.props.data.accounts.filter((x) => x.id !== id) : null;
-    if (!accounts) return;
-
+  remove = (id) => {
     this.setState({ loading: true, accounts: [] });
     Meteor.call("PaymentAccounts.remove", id, () => {
       // XXX mutation
       this.props.data.refetch()
         .then(() => {
-          this.setState({ loading: false, accounts: null });
+          this.setState({ loading: null, accounts: null });
         });
     });
   }
