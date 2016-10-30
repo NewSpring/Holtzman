@@ -130,6 +130,7 @@ export default class Card extends Component {
           renderElement={this.renderElement}
           imageclasses={imageclasses}
           style={style}
+          data-spec="card-image-loader"
         />
       );
     }
@@ -157,16 +158,18 @@ export default class Card extends Component {
     if (this.props.linkAll) {
       return (
         <Link
+          data-spec="card"
           className={theme || this.cardClasses()}
           style={styles || this.styles()}
           to={link}
         >
-          <div className={wrapperClasses} style={this.imageStyles()} >
+          <div className={wrapperClasses} style={this.imageStyles()} data-spec="card-image-wrapper">
             {this.createImage()}
           </div>
           <div
             className={itemTheme || this.itemClasses()}
             style={itemStyles}
+            data-spec="card-item"
           >
             {this.props.children}
           </div>
@@ -176,19 +179,20 @@ export default class Card extends Component {
 
     return (
       <div
+        data-spec="card"
         className={theme || this.cardClasses()}
         style={styles || this.styles()}
       >
         {(() => {
           if (link) {
             return (
-              <Link className={wrapperClasses} to={link}>
+              <Link className={wrapperClasses} to={link} data-spec="card-image-wrapper">
                 {this.createImage()}
               </Link>
             );
           }
           return (
-            <Wrapper className={wrapperClasses}>
+            <Wrapper className={wrapperClasses} data-spec="card-image-wrapper">
               {this.createImage()}
             </Wrapper>
           );
@@ -196,6 +200,7 @@ export default class Card extends Component {
         <div
           className={itemTheme || this.itemClasses()}
           style={itemStyles}
+          data-spec="card-item"
         >
           {this.props.children}
         </div>
