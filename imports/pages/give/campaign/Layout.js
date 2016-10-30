@@ -53,7 +53,7 @@ const Layout = ({ account }) => (
         />
         <span
           className="display-inline-block"
-          style={{ verticalAlign: "middle", marginBottom: "5px" }}
+          style={{ verticalAlign: "middle", marginTop: "5px" }}
         >
           Back
         </span>
