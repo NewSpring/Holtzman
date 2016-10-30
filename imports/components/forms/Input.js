@@ -151,16 +151,22 @@ export default class Input extends Component {
 
   setValue = (value) => {
     const node = this.node;
-     // prevent XSS;
-    node.value = StripTags(value); // eslint-disable-line
+    // prevent XSS;
+    if (this.props.type === "password") {
+      node.value = value;
+    } else {
+      node.value = StripTags(value); // eslint-disable-line
+    }
     this.focus();
     this.validate();
   }
 
   // http://stackoverflow.com/questions/5788527/is-strip-tags-vulnerable-to-scripting-attacks/5793453#5793453
     // prevent XSS;
-  getValue = () =>
-    StripTags(this.node.value); // eslint-disable-line
+  getValue = () => {
+    if (this.props.type === "password") return this.node.value;
+    return StripTags(this.node.value); // eslint-disable-line
+  }
 
   setStatus = (message) => {
     this.props.status = message;
