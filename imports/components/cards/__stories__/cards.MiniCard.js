@@ -13,7 +13,7 @@ import defaultColors from "/.storybook/defaults";
 import Readme from "./cards.MiniCard.md";
 import MiniCard from "../cards.MiniCard";
 
-const story = storiesOf("Components", module)
+const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
   .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary", "dark-primary", "dark-secondary")))
@@ -56,8 +56,10 @@ story
     const title = text("title", content.title);
 
     return (
-      <MiniCard
-        title={title}
-        content={content}
-      />);
+      <div style={{ maxWidth: "480px" }}>
+        <MiniCard
+          title={title}
+          content={content}
+        />
+      </div>);
   }));
