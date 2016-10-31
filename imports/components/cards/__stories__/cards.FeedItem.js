@@ -30,13 +30,9 @@ story
       articles: "Articles",
       devotionals: "Devotionals",
       news: "News",
-      // sermons: "Sermons",
+      series_newspring: "Series",
       stories: "Stories",
-      series_newspring: "NewSpring Series",
     };
-
-    // setup the channel name to get info from the "Type" knob. Default is Articles.
-    // const channelName = select("type", channelOptions, "articles");
 
     const content = {
       channelName: "articles",
