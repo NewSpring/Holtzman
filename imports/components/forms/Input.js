@@ -13,7 +13,7 @@ export default class Input extends Component {
     errorText: PropTypes.string,
     theme: PropTypes.string,
     type: PropTypes.string,
-    error: PropTypes.any, // eslint-disable-line
+    // error: PropTypes.any, -- UNUSED
     classes: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.array,
