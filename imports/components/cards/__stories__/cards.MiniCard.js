@@ -34,29 +34,30 @@ story
       stories: "Stories",
     };
 
-    // setup the channel name to get info from the "Type" knob. Default is Articles.
-    const channelName = select("type", channelOptions, "articles");
-
     const content = {
-      channelName,
+      channelName: "articles",
       content: {
-        images: [],
+        images: [{
+          fileLabel: "2:1",
+          url: "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg",
+        }],
       },
       title: "MiniCard Title",
     };
 
-    const imageObject = {
-      fileLabel: "2:1",
-      url: "http://www.thefashionisto.com/wp-content/uploads/2016/07/Jeff-Goldblum-2016-Photo-Shoot-El-Pais-Icon-004.jpg",
-    };
-    content.content.images.push(imageObject);
+    // Channel Name
+    content.channelName = select("type", channelOptions, "articles");
 
-    const defaultImageURL = "http://www.thefashionisto.com/wp-content/uploads/2016/07/Jeff-Goldblum-2016-Photo-Shoot-El-Pais-Icon-004.jpg";
+    // Image
+    const defaultImageURL = "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg";
     content.content.images[0].url = text("image link", defaultImageURL);
+
+    // Title
+    const title = text("title", content.title);
 
     return (
       <MiniCard
-        title={text("title", content.title)}
+        title={title}
         content={content}
       />);
   }));
