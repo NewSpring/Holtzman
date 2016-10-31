@@ -13,7 +13,7 @@ import defaultColors from "/.storybook/defaults";
 import Readme from "./cards.FeedItem.md";
 import FeedItem from "../cards.FeedItem";
 
-const story = storiesOf("Components", module)
+const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
   .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary", "dark-primary", "dark-secondary")))
@@ -64,7 +64,9 @@ story
     content.content.images[0].url = text("image link", defaultImageURL);
 
     return (
-      <FeedItem
-        item={content}
-      />);
+      <div style={{ maxWidth: "480px" }}>
+        <FeedItem
+          item={content}
+        />
+      </div>);
   }));
