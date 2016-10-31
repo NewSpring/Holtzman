@@ -4,6 +4,7 @@ import {
   withKnobs,
   text,
   select,
+  boolean,
 } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
@@ -54,6 +55,12 @@ story
 
     // Title
     const title = text("title", content.title);
+
+    // Turn Off Image
+    const hideImage = boolean("Hide Image?", false);
+    if (hideImage) {
+      content.content.images[0].url = "";
+    }
 
     return (
       <div style={{ maxWidth: "480px" }}>
