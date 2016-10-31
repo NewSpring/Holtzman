@@ -22,7 +22,7 @@ story
       const title = text('Title', 'Step Up Fund');
       const summary = text('Summary', 'In 2013 we began a new giving campaign as a part of our mission to reach 100,000 people. Step Up exists to put permanent facilities all over South Carolina and create campuses in more cities so that thousands of people will have a place to hear about Jesus!');
       const button = text('Button', 'Learn More');
-      const url = text('Image', "https://aff5fa4925746bf9c161-fb36f18ca122a30f6899af8eef8fa39b.ssl.cf5.rackcdn.com/images/Profile_Mario.aead314d435d8e52d9a4e92a6f799c4eee08081e.jpg");
+      const url = text('Image', "http://media2.fdncms.com/portmerc/imager/u/large/18265349/film-goldblumandrew.jpg");
       const images = [
         { fileLabel: "2:1", url },
         { fileLabel: "1:2", url },
