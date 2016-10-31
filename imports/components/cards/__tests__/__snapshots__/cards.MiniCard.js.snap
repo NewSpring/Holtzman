@@ -1,0 +1,39 @@
+exports[`test has a channelName of 'articles', an image from Unsplash, and a title of 'MiniCard Title' 1`] = `
+<a
+  className="plain"
+  onClick={[Function bound handleClick]}
+  style={Object {}}>
+  <div
+    className="card">
+    <div
+      className="card__item soft push-half-ends two-thirds"
+      style={
+        Object {
+          "verticalAlign": "middle"
+        }
+      }>
+      <h6
+        className="text-dark-primary capitalize">
+        MiniCard Title
+      </h6>
+      <div
+        className="display-inline-block">
+        <span
+          className="icon-category-text text-dark-tertiary" />
+        <h7
+          className="text-dark-tertiary soft-half-left">
+          Articles
+        </h7>
+      </div>
+    </div>
+    <div
+      className="locked-ends locked-right card__image one-third background--fill"
+      style={
+        Object {
+          "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
+          "verticalAlign": "middle"
+        }
+      } />
+  </div>
+</a>
+`;
