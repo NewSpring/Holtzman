@@ -7,11 +7,11 @@ export default class Input extends Component {
 
   static propTypes = {
     defaultValue: PropTypes.string,
-    status: PropTypes.string,
+    status: PropTypes.string, // DEPRECATED
     disabled: PropTypes.any, // eslint-disable-line
     validation: PropTypes.func,
     errorText: PropTypes.string,
-    theme: PropTypes.string,
+    theme: PropTypes.string, // DEPRECATED
     type: PropTypes.string,
     // error: PropTypes.any, -- UNUSED
     classes: PropTypes.oneOfType([
