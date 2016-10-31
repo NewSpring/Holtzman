@@ -24,7 +24,7 @@ const story = storiesOf("Components", module)
 // description={text("description", "MiniCard description")}
 
 story
-  .add("MiniCard with KNOBS", withReadme(Readme, () => {
+  .add("MiniCard", withReadme(Readme, () => {
     // set channel name options
     const channelOptions = {
       articles: "Articles",
