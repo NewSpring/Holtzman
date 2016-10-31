@@ -47,7 +47,8 @@
         'render',
       ],
     }],
-    "import/no-extraneous-dependencies": [1]
+    "import/no-extraneous-dependencies": [1],
+    "no-useless-escape": 0,
   },
   "settings": {
     "import/core-modules": [

@@ -136,7 +136,7 @@ const Fuse = () => (
 
         <Body rev>
           <p>
-            "My parents were in the middle of a huge divorce in 2015.  Fuse was the best environment for me, my sister, and my brother. Fuse held us together, and stopped us from falling apart. Everybody was so fun and loving all the time. I felt like I actually belonged. Meeting Jesus helped me see that God actually loves me at a time when I was questioning what real love looked like."
+            &quot;My parents were in the middle of a huge divorce in 2015.  Fuse was the best environment for me, my sister, and my brother. Fuse held us together, and stopped us from falling apart. Everybody was so fun and loving all the time. I felt like I actually belonged. Meeting Jesus helped me see that God actually loves me at a time when I was questioning what real love looked like.&quot;
           </p>
           <h6
             className="italic text-dark-primary"

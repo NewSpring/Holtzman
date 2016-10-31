@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies, import/no-unresolved, no-alert */
+/* eslint-disable */
 import { storiesOf } from "@kadira/storybook";
 import {
   withKnobs,

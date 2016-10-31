@@ -123,7 +123,7 @@ const CareRoom = () => (
             </p>
           </blockquote>
           <p>
-            "I returned to NewSpring for the first time in years in February 2015. I felt like God said 'Just get to the care room and talk to someone,' so I did. For the first time in my life I opened up and confessed everything — the affair, the suicidal tendencies, and everything else. I told the volunteer I knew the reason I acted the way I did was because I wasn't saved, and he asked 'What are you waiting for?' I accepted Christ into my heart and life. A few months later, my wife and I were remarried."
+            &quot;I returned to NewSpring for the first time in years in February 2015. I felt like God said &#39;Just get to the care room and talk to someone,&#39; so I did. For the first time in my life I opened up and confessed everything — the affair, the suicidal tendencies, and everything else. I told the volunteer I knew the reason I acted the way I did was because I wasn&#39;t saved, and he asked &#39;What are you waiting for?&#39; I accepted Christ into my heart and life. A few months later, my wife and I were remarried.&quot;
           </p>
           <h6
             className="italic text-dark-primary"

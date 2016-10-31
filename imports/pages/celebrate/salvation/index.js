@@ -22,7 +22,7 @@ const Salvation = () => (
 
         <Body>
           <p >
-            "The year 2015 was the worst year and best year of my life. I went through a divorce, a lot of depression and lost my job. I thought my world was crashing down. When I started going to church it was hard to believe that Jesus loves all people, even somebody as messed up as me. I realized that I couldn’t do things by myself anymore, and I couldn’t live life on my own. At Easter, I felt like it was time to ask Jesus into my life."
+            &quot;The year 2015 was the worst year and best year of my life. I went through a divorce, a lot of depression and lost my job. I thought my world was crashing down. When I started going to church it was hard to believe that Jesus loves all people, even somebody as messed up as me. I realized that I couldn’t do things by myself anymore, and I couldn’t live life on my own. At Easter, I felt like it was time to ask Jesus into my life.&quot;
           </p>
           <h6
             className="italic text-dark-primary text-left"

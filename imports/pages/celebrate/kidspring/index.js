@@ -141,7 +141,7 @@ const KidSpring = () => (
             </p>
           </blockquote>
           <p>
-            "Easter 2015 was special for me because I was able to lead my daughter, who is 7, in a prayer of salvation at home that night while we were getting ready for bed. It all stemmed from what she heard at church that day. I was so thankful for the story that KidSpring shared because I knew it was on her level where she understood it, and she knew from the service she wanted to know she would spend eternity with Jesus."
+            &quot;Easter 2015 was special for me because I was able to lead my daughter, who is 7, in a prayer of salvation at home that night while we were getting ready for bed. It all stemmed from what she heard at church that day. I was so thankful for the story that KidSpring shared because I knew it was on her level where she understood it, and she knew from the service she wanted to know she would spend eternity with Jesus.&quot;
           </p>
           <h6
             className="italic text-dark-primary"

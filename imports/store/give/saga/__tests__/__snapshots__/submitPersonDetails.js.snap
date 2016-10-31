@@ -5,15 +5,15 @@ FormData {
       Object {
         "name": "billing-cc-number",
         "type": "text",
-        "value": ""
+        "value": "",
       },
       Object {
         "name": "billing-cc-exp",
         "type": "text",
-        "value": ""
-      }
+        "value": "",
+      },
     ],
-    Symbol(wrapper): [Circular]
-  }
+    Symbol(wrapper): [Circular],
+  },
 }
 `;

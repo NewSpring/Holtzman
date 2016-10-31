@@ -37,7 +37,7 @@ const Remind = ({ onSubmit, back }) => {
         id="remind"
       >
         <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-          I'd like to be reminded
+          I&#39;d like to be reminded
         </h3>
 
         <Forms.Select
