@@ -8,7 +8,7 @@ import Styles from "../../add-schedule/styles-css";
 const Primary = ({ classes, accounts, state, preFill, saveFund, format, selectVal }) => (
   <div>
     <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-      I'd like to give
+      I&#39;d like to give
     </h3>
 
     <Forms.Input

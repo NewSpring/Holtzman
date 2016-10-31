@@ -151,7 +151,7 @@ class ForgotPassword extends React.Component {
                   <button className={btnClasses.join(" ")} type="submit">
                     Enter
                   </button>
-              );
+                );
               })()}
 
             </div>

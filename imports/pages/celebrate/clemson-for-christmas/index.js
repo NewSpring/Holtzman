@@ -150,7 +150,7 @@ const ClemsonForChristmas = () => (
       <h5
         className="text-center soft-half-bottom flush-bottom italic"
         style={{ fontFamily: "ff-meta-serif-web-pro, serif" }}
-      >You Can't Outgive God</h5>
+      >You Can&#39;t Outgive God</h5>
 
       <List items={giveNumbers} />
     </div>

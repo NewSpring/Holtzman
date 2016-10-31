@@ -154,7 +154,7 @@ const Fuse = () => (
             </p>
           </blockquote>
           <p>
-            "When the flood hit in 2015, I was overwhelmed. I couldn’t handle it by myself. What impressed me was that a NewSpring volunteer came on his own to help us with the mold and flooding in the basement. He prayed with me, and the next Sunday I went to church. The week after that, I gave my life to Jesus. It’s been completely different. I smile more. I am more relaxed. I know I can have a relationship with the Lord, and he will guide me through the darkness of the world in which we live."
+            &quot;When the flood hit in 2015, I was overwhelmed. I couldn’t handle it by myself. What impressed me was that a NewSpring volunteer came on his own to help us with the mold and flooding in the basement. He prayed with me, and the next Sunday I went to church. The week after that, I gave my life to Jesus. It’s been completely different. I smile more. I am more relaxed. I know I can have a relationship with the Lord, and he will guide me through the darkness of the world in which we live.&quot;
           </p>
           <h6
             className="italic text-dark-primary"
