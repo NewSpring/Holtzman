@@ -16,6 +16,7 @@ import "!style!css!sass!../stylesheets/fonts.css";
 import "!style!css!sass!../stylesheets/icons.css";
 import "!style!css!sass!../stylesheets/masters.scss";
 
+window.Meteor = { isServer: false };
 
 const req = require.context('../imports/', true, /\__stories__\/.*.js$/);
 
