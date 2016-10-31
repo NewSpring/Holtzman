@@ -6,10 +6,7 @@ import Label from "./components/Label";
 export default class Input extends Component {
 
   static propTypes = {
-    defaultValue: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.string,
-    ]),
+    defaultValue: PropTypes.string,
     status: PropTypes.string,
     disabled: PropTypes.any, // eslint-disable-line
     validation: PropTypes.func,
@@ -258,6 +255,7 @@ export default class Input extends Component {
           defaultValue={this.props.defaultValue}
           style={this.style()}
           maxLength={this.props.maxLength || ""}
+          data-spec="input"
         />
 
         {this.props.children}
