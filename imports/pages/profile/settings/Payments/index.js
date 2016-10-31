@@ -38,7 +38,7 @@ export class GiveNow extends Component {
     }),
   }
 
-  state = { accounts: null, loading: null };
+  state = { accounts: null, loading: null, error: null };
 
   componentWillMount() {
     this.props.dispatch(nav.setLevel("BASIC_CONTENT"));
@@ -49,12 +49,20 @@ export class GiveNow extends Component {
   }
 
   remove = (id) => {
-    this.setState({ loading: true, accounts: [] });
-    Meteor.call("PaymentAccounts.remove", id, () => {
+    this.setState({ loading: true, accounts: [], error: null });
+    Meteor.call("PaymentAccounts.remove", id, (err) => {
+      if (err) {
+        this.setState({ error: err.message, loading: null, accounts: null });
+        setTimeout(() => {
+          this.setState({ error: null, loading: null, accounts: null });
+        }, 500);
+        return;
+      }
+
       // XXX mutation
       this.props.data.refetch()
         .then(() => {
-          this.setState({ loading: null, accounts: null });
+          this.setState({ loading: null, accounts: null, error: null });
         });
     });
   }
@@ -65,7 +73,14 @@ export class GiveNow extends Component {
     if (this.state.accounts !== null) accounts = this.state.accounts;
     if (this.state.loading !== null) loading = this.state.loading;
 
-    return <Layout loading={loading} details={accounts} remove={this.remove} />;
+    return (
+      <Layout
+        loading={loading}
+        details={accounts}
+        remove={this.remove}
+        error={this.state.error}
+      />
+    );
   }
 }
 

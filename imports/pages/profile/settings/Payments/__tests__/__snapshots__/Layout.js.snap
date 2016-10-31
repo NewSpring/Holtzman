@@ -85,6 +85,61 @@ exports[`test correctly renders account info 1`] = `
 </div>
 `;
 
+exports[`test correctly renders an error 1`] = `
+<div
+  className="background--light-primary text-center soft-double-top push-double-bottom push-top push-double-top@lap-and-up soft-double-sides@palm-wide"
+  style={
+    Object {
+      "overflow": "visible",
+      "zIndex": 1
+    }
+  }>
+  <a
+    className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain"
+    onClick={[Function bound handleClick]}
+    style={
+      Object {
+        "zIndex": 10
+      }
+    }>
+    <i
+      className="icon-arrow-back soft-half-right display-inline-block"
+      style={
+        Object {
+          "verticalAlign": "middle"
+        }
+      } />
+    <span
+      className="display-inline-block"
+      style={
+        Object {
+          "marginTop": "3px",
+          "verticalAlign": "middle"
+        }
+      }>
+      Back
+    </span>
+  </a>
+  <div
+    className="one-whole two-thirds@anchored display-inline-block push-double-top">
+    <h3>
+      Saved Accounts
+    </h3>
+    <div
+      className="soft-sides soft-double-sides@lap-and-up text-center">
+      <h5
+        className="soft-ends text-alert">
+        This is a string James
+      </h5>
+      <p
+        className="soft-ends text-left">
+        To add a saved account, click the option to save account on your next gift!
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`test correctly renders empty accounts 1`] = `
 <div
   className="background--light-primary text-center soft-double-top push-double-bottom push-top push-double-top@lap-and-up soft-double-sides@palm-wide"

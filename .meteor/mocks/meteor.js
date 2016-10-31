@@ -12,5 +12,7 @@ exports.Meteor = {
     public: {
       heighliner: "/graphql",
     },
-  }
+  },
+  wrapAsync: jest.fn(() => jest.fn(() => {})),
+  Error: Error,
 };

@@ -12,7 +12,7 @@ const styles = {
   zIndex: 1,
 };
 
-const Layout = ({ details, remove, loading }) => (
+const Layout = ({ details, remove, loading, error }) => (
   <div
     className={
       "background--light-primary text-center soft-double-top " +
@@ -26,7 +26,8 @@ const Layout = ({ details, remove, loading }) => (
       <h3>Saved Accounts</h3>
       <div className="soft-sides soft-double-sides@lap-and-up text-center">
         {loading && <Loading />}
-        {!loading && details && details.map((account, key) => (
+        {error && <h5 className="soft-ends text-alert">{error}</h5>}
+        {(!loading && !error) && details && details.map((account, key) => (
           <SavedPayment account={account} remove={remove} key={key} />
         ))}
         <p className="soft-ends text-left">
@@ -41,6 +42,7 @@ Layout.propTypes = {
   details: PropTypes.array.isRequired,
   remove: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
 };
 
 export default Layout;
