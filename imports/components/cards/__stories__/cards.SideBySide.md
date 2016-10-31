@@ -1,4 +1,4 @@
-## Offline component
+## Side By Side Card Component
 
 ### Usage
 
@@ -6,16 +6,21 @@
 import SideBySide from "../../components/cards/cards.SideBySide";
 
 <SideBySide
-  title={content.title}
-  content={content}
-/>
+  images={images}
+>
+  <h3>{title}</h3>
+  <p>{summary}</p>
+  <div className="btn--dark-tertiary btn--small">{button}</div>
+</SideBySide>
 ```
 
 ### Properties
 
 * **title** - card title
-* **content** - the content of the card. This can include an image and the type/category of the content shown in the card.
+* **summary** - the content of the card.
+* **button** - the call to action associated with the card.
+* **image** - the background image with the card.
 
 ### Purpose
 
-This is currently designed to be used to show related content on things like articles, devotionals, news, sermons, and stories.
+This is currently designed to be used to show the different giving funds available and to allow a user to learn more by clicking on the card.
