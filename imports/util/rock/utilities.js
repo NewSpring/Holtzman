@@ -1,5 +1,6 @@
-/* global _, Meteor */
 /* eslint-disable no-param-reassign, prefer-rest-params */
+
+import { Meteor } from "meteor/meteor";
 
 import startup from "./startup";
 

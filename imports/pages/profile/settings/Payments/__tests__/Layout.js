@@ -59,3 +59,18 @@ it("correctly renders account info", () => {
   );
   expect(tree).toMatchSnapshot();
 });
+
+it("correctly renders an error", () => {
+  window.__meteor_runtime_config__ = {};
+
+  const tree = renderer.create(
+    <Layout
+     loading={false}
+     remove={jest.fn()}
+     details={details}
+     error={"This is a string James"}
+    />
+  );
+  expect(tree).toMatchSnapshot();
+});
+
