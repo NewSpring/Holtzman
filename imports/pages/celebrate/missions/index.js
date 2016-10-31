@@ -142,7 +142,7 @@ const Missions = () => (
 
         <Body>
           <p>
-            "My daughter Quintasia was telling me that the church was giving away some book bags, and I didn’t want them to go without because I couldn’t afford a book bag. If I hadn't gone to the school that day, I would never have started going to NewSpring, and I wouldn’t have given my life to God. I can feel God working in my life because a lot of things have changed. I know I have people who care about me, and if I need to talk to someone I can. I don’t feel alone."
+            &quot;My daughter Quintasia was telling me that the church was giving away some book bags, and I didn’t want them to go without because I couldn’t afford a book bag. If I hadn&#39;t gone to the school that day, I would never have started going to NewSpring, and I wouldn’t have given my life to God. I can feel God working in my life because a lot of things have changed. I know I have people who care about me, and if I need to talk to someone I can. I don’t feel alone.&quot;
           </p>
           <h6
             className="italic text-dark-primary"

@@ -64,7 +64,7 @@ export default class Layout extends Component {
         >
 
           <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-            I'd like to give &nbsp;
+            I&#39;d like to give &nbsp;
           </h3>
           <Forms.Input
             id={state.fundId || -1}

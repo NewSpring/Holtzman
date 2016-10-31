@@ -34,6 +34,7 @@ export default function run(routes, clientOptions = {}) {
       });
     }
 
+    /* eslint-disable react/no-children-prop */
     let app = (
       <Router
         history={history}
@@ -42,6 +43,7 @@ export default function run(routes, clientOptions = {}) {
         {...clientOptions.props}
       />
     );
+    /* eslint-enable react/no-children-prop */
 
     if (clientOptions.wrapper) {
       const wrapperProps = clientOptions.wrapperProps || {};

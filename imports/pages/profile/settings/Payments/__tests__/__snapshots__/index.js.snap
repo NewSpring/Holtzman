@@ -6,7 +6,7 @@ Object {
       "kind": "OperationDefinition",
       "name": Object {
         "kind": "Name",
-        "value": "PaymentDetails"
+        "value": "PaymentDetails",
       },
       "operation": "query",
       "selectionSet": Object {
@@ -15,29 +15,29 @@ Object {
           Object {
             "alias": Object {
               "kind": "Name",
-              "value": "accounts"
+              "value": "accounts",
             },
             "arguments": Array [
               Object {
                 "kind": "Argument",
                 "name": Object {
                   "kind": "Name",
-                  "value": "cache"
+                  "value": "cache",
                 },
                 "value": Object {
                   "kind": "Variable",
                   "name": Object {
                     "kind": "Name",
-                    "value": "cache"
-                  }
-                }
-              }
+                    "value": "cache",
+                  },
+                },
+              },
             ],
             "directives": Array [],
             "kind": "Field",
             "name": Object {
               "kind": "Name",
-              "value": "savedPayments"
+              "value": "savedPayments",
             },
             "selectionSet": Object {
               "kind": "SelectionSet",
@@ -45,16 +45,16 @@ Object {
                 Object {
                   "alias": Object {
                     "kind": "Name",
-                    "value": "id"
+                    "value": "id",
                   },
                   "arguments": Array [],
                   "directives": Array [],
                   "kind": "Field",
                   "name": Object {
                     "kind": "Name",
-                    "value": "entityId"
+                    "value": "entityId",
                   },
-                  "selectionSet": null
+                  "selectionSet": null,
                 },
                 Object {
                   "alias": null,
@@ -63,9 +63,9 @@ Object {
                   "kind": "Field",
                   "name": Object {
                     "kind": "Name",
-                    "value": "name"
+                    "value": "name",
                   },
-                  "selectionSet": null
+                  "selectionSet": null,
                 },
                 Object {
                   "alias": null,
@@ -74,7 +74,7 @@ Object {
                   "kind": "Field",
                   "name": Object {
                     "kind": "Name",
-                    "value": "payment"
+                    "value": "payment",
                   },
                   "selectionSet": Object {
                     "kind": "SelectionSet",
@@ -86,9 +86,9 @@ Object {
                         "kind": "Field",
                         "name": Object {
                           "kind": "Name",
-                          "value": "id"
+                          "value": "id",
                         },
-                        "selectionSet": null
+                        "selectionSet": null,
                       },
                       Object {
                         "alias": null,
@@ -97,9 +97,9 @@ Object {
                         "kind": "Field",
                         "name": Object {
                           "kind": "Name",
-                          "value": "accountNumber"
+                          "value": "accountNumber",
                         },
-                        "selectionSet": null
+                        "selectionSet": null,
                       },
                       Object {
                         "alias": null,
@@ -108,17 +108,17 @@ Object {
                         "kind": "Field",
                         "name": Object {
                           "kind": "Name",
-                          "value": "paymentType"
+                          "value": "paymentType",
                         },
-                        "selectionSet": null
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          }
-        ]
+                        "selectionSet": null,
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
       },
       "variableDefinitions": Array [
         Object {
@@ -128,20 +128,20 @@ Object {
             "kind": "NamedType",
             "name": Object {
               "kind": "Name",
-              "value": "Boolean"
-            }
+              "value": "Boolean",
+            },
           },
           "variable": Object {
             "kind": "Variable",
             "name": Object {
               "kind": "Name",
-              "value": "cache"
-            }
-          }
-        }
-      ]
-    }
+              "value": "cache",
+            },
+          },
+        },
+      ],
+    },
   ],
-  "kind": "Document"
+  "kind": "Document",
 }
 `;

@@ -3,11 +3,11 @@ exports[`test has dark styles if not disabled 1`] = `
   className="display-block soft-half-top">
   <h6
     className="outlined--bottom outlined--light text-dark-tertiary"
-    onClick={[Function onClick]}
+    onClick={[Function]}
     style={
       Object {
         "cursor": "pointer",
-        "display": "inline"
+        "display": "inline",
       }
     }>
     meow
@@ -20,11 +20,11 @@ exports[`test has light styles if disabled 1`] = `
   className="display-block soft-half-top">
   <h6
     className="outlined--bottom outlined--light text-light-tertiary"
-    onClick={[Function onClick]}
+    onClick={[Function]}
     style={
       Object {
         "cursor": "text",
-        "display": "inline"
+        "display": "inline",
       }
     }>
     meow

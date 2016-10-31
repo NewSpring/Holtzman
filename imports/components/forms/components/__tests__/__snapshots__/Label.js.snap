@@ -3,7 +3,7 @@ exports[`test disables the label 1`] = `
   htmlFor={undefined}
   style={
     Object {
-      "cursor": "inherit"
+      "cursor": "inherit",
     }
   } />
 `;
