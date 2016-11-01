@@ -134,7 +134,7 @@ const Baptism = () => (
 
         <Body rev>
           <p>
-            "My husband met Jesus at NewSpring in Florence and he tried to convince me for four years to come. I attended a Presbyterian church my whole life, but in 2015, I finally gave in and we started attending NewSpring as a family. I prayed with my two children to ask Jesus into their lives, and they wanted to be baptized with their father. I realized baptism by immersion was my next step, too. Baptism was our way of saying, 'We are a family, and we are following Jesus no matter what.'"
+            &quot;My husband met Jesus at NewSpring in Florence and he tried to convince me for four years to come. I attended a Presbyterian church my whole life, but in 2015, I finally gave in and we started attending NewSpring as a family. I prayed with my two children to ask Jesus into their lives, and they wanted to be baptized with their father. I realized baptism by immersion was my next step, too. Baptism was our way of saying, &#39;We are a family, and we are following Jesus no matter what.&#39;&quot;
           </p>
           <h6
             className="italictext-dark-primary"

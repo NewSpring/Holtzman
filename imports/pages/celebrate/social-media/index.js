@@ -53,7 +53,7 @@ const SocialMedia = () => (
               fontWeight: "900",
             }}
           >
-            Ashleigh's
+            Ashleigh&#39;s
           </h1>
         </FitText>
 
@@ -136,12 +136,12 @@ const SocialMedia = () => (
         <Body>
           <blockquote>
             <p>
-              It just clicked in me, "Jesus is real."
+              It just clicked in me, &quot;Jesus is real.&quot;
             </p>
           </blockquote>
 
           <p>
-            "Everyone was posting on social media about NewSpring all the time. As a single mom of twins, my life at that point was overwhelming, so I decided to go to NewSpring Spartanburg. During a dating and relationships series in 2015, it just clicked in me, 'Jesus is real.' God saved me, and I feel like I’m a lot more positive and hopeful about my future now because I’m building a relationship with Jesus every day."
+            &quot;Everyone was posting on social media about NewSpring all the time. As a single mom of twins, my life at that point was overwhelming, so I decided to go to NewSpring Spartanburg. During a dating and relationships series in 2015, it just clicked in me, &#39;Jesus is real.&#39; God saved me, and I feel like I’m a lot more positive and hopeful about my future now because I’m building a relationship with Jesus every day.&quot;
           </p>
           <h6
             className="italic text-dark-primary"

@@ -142,7 +142,7 @@ const Web = () => (
 
         <Body rev>
           <p>
-            "I was talking with a childhood friend in South Carolina who I reconnected with through Facebook, and she told me about NewSpring.  I checked out the website right after we spoke, and I have watched online live (almost!) every Sunday since then. On the morning of the Feb. 22, 2015, I realized that I didn’t know Christ and I bowed my head and prayed to Jesus. I can honestly say that my life hasn’t been the same since then."
+            &quot;I was talking with a childhood friend in South Carolina who I reconnected with through Facebook, and she told me about NewSpring.  I checked out the website right after we spoke, and I have watched online live (almost!) every Sunday since then. On the morning of the Feb. 22, 2015, I realized that I didn’t know Christ and I bowed my head and prayed to Jesus. I can honestly say that my life hasn’t been the same since then.&quot;
           </p>
           <h6
             className="italic text-dark-primary"

@@ -9,7 +9,7 @@ Object {
       "state": null,
       "streetAddress": null,
       "streetAddress2": null,
-      "zip": null
+      "zip": null,
     },
     "payment": Object {
       "account": null,
@@ -18,15 +18,15 @@ Object {
       "expiration": null,
       "name": null,
       "routing": null,
-      "type": "cc"
+      "type": "cc",
     },
     "personal": Object {
       "campus": null,
       "campusId": null,
       "email": null,
       "firstName": null,
-      "lastName": null
-    }
+      "lastName": null,
+    },
   },
   "errors": Object {},
   "recoverableSchedules": Object {},
@@ -36,8 +36,8 @@ Object {
     "name": null,
     "payment": Object {
       "accountNumber": null,
-      "paymentType": null
-    }
+      "paymentType": null,
+    },
   },
   "scheduleToRecover": null,
   "schedules": Object {},
@@ -48,7 +48,7 @@ Object {
   "transactionType": "default",
   "transactions": Object {},
   "url": "",
-  "userId": null
+  "userId": null,
 }
 `;
 
@@ -64,7 +64,7 @@ Object {
       "state": null,
       "streetAddress": null,
       "streetAddress2": null,
-      "zip": null
+      "zip": null,
     },
     "payment": Object {
       "account": null,
@@ -74,15 +74,15 @@ Object {
       "expiration": null,
       "name": null,
       "routing": null,
-      "type": "cc"
+      "type": "cc",
     },
     "personal": Object {
       "campus": null,
       "campusId": null,
       "email": null,
       "firstName": null,
-      "lastName": null
-    }
+      "lastName": null,
+    },
   },
   "errors": Object {},
   "recoverableSchedules": Object {},
@@ -92,8 +92,8 @@ Object {
     "name": null,
     "payment": Object {
       "accountNumber": null,
-      "paymentType": null
-    }
+      "paymentType": null,
+    },
   },
   "scheduleToRecover": null,
   "schedules": Object {},
@@ -103,7 +103,7 @@ Object {
   "transactionType": "default",
   "transactions": Object {},
   "url": "",
-  "userId": null
+  "userId": null,
 }
 `;
 
@@ -119,7 +119,7 @@ Object {
       "state": null,
       "streetAddress": null,
       "streetAddress2": null,
-      "zip": null
+      "zip": null,
     },
     "payment": Object {
       "account": null,
@@ -129,15 +129,15 @@ Object {
       "expiration": null,
       "name": null,
       "routing": null,
-      "type": "cc"
+      "type": "cc",
     },
     "personal": Object {
       "campus": null,
       "campusId": null,
       "email": null,
       "firstName": "James",
-      "lastName": null
-    }
+      "lastName": null,
+    },
   },
   "errors": Object {},
   "recoverableSchedules": Object {},
@@ -147,8 +147,8 @@ Object {
     "name": null,
     "payment": Object {
       "accountNumber": null,
-      "paymentType": null
-    }
+      "paymentType": null,
+    },
   },
   "scheduleToRecover": null,
   "schedules": Object {},
@@ -158,7 +158,7 @@ Object {
   "transactionType": "default",
   "transactions": Object {},
   "url": "",
-  "userId": null
+  "userId": null,
 }
 `;
 
@@ -174,7 +174,7 @@ Object {
       "state": null,
       "streetAddress": null,
       "streetAddress2": null,
-      "zip": null
+      "zip": null,
     },
     "payment": Object {
       "account": null,
@@ -184,15 +184,15 @@ Object {
       "expiration": null,
       "name": null,
       "routing": null,
-      "type": "cc"
+      "type": "cc",
     },
     "personal": Object {
       "campus": null,
       "campusId": null,
       "email": null,
       "firstName": "James",
-      "lastName": null
-    }
+      "lastName": null,
+    },
   },
   "errors": Object {},
   "recoverableSchedules": Object {},
@@ -202,8 +202,8 @@ Object {
     "name": null,
     "payment": Object {
       "accountNumber": null,
-      "paymentType": null
-    }
+      "paymentType": null,
+    },
   },
   "scheduleToRecover": null,
   "schedules": Object {},
@@ -213,7 +213,7 @@ Object {
   "transactionType": "default",
   "transactions": Object {},
   "url": "",
-  "userId": null
+  "userId": null,
 }
 `;
 
@@ -228,7 +228,7 @@ Object {
       "state": null,
       "streetAddress": null,
       "streetAddress2": null,
-      "zip": null
+      "zip": null,
     },
     "payment": Object {
       "account": null,
@@ -237,15 +237,15 @@ Object {
       "expiration": null,
       "name": null,
       "routing": null,
-      "type": "cc"
+      "type": "cc",
     },
     "personal": Object {
       "campus": null,
       "campusId": null,
       "email": null,
       "firstName": null,
-      "lastName": null
-    }
+      "lastName": null,
+    },
   },
   "errors": Object {},
   "recoverableSchedules": Object {},
@@ -255,8 +255,8 @@ Object {
     "name": null,
     "payment": Object {
       "accountNumber": null,
-      "paymentType": null
-    }
+      "paymentType": null,
+    },
   },
   "scheduleToRecover": null,
   "schedules": Object {},
@@ -266,6 +266,6 @@ Object {
   "transactionType": "default",
   "transactions": Object {},
   "url": "",
-  "userId": null
+  "userId": null,
 }
 `;

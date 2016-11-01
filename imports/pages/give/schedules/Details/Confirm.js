@@ -35,7 +35,7 @@ export default class Err extends Component {
           <Error />
           <h3 className="text-alert push-ends">Are you sure?</h3>
           <p className="text-left">
-            Want to stop your scheduled contributions? You can always create another when you're ready.
+            Want to stop your scheduled contributions? You can always create another when you&#39;re ready.
           </p>
           <button className="one-whole btn push-ends btn--alert" onClick={this.onClick}>
             Cancel Schedule

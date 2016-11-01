@@ -17,7 +17,7 @@ const step2 = (purchaseData, method, callback) => {
       "order-id": `apollos_${Date.now()}_${Math.ceil(Math.random() * 100000)}` ||
         purchaseData.orderId,
     },
-    ...purchaseData },
+      ...purchaseData },
   };
 
   if (!purchaseData["customer-vault-id"] && method === "sale") {

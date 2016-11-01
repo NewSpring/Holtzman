@@ -2,7 +2,7 @@ exports[`test has dark styles if not disabled 1`] = `
 <button
   className="btn--thin btn--small display-inline-block push-left@lap-and-up push-half-left@handheld btn--dark-tertiary"
   disabled={false}
-  onClick={[Function onClick]}
+  onClick={[Function]}
   style={Object {}}>
   Register
 </button>
@@ -12,10 +12,10 @@ exports[`test has disabled styles if disabled 1`] = `
 <button
   className="btn--thin btn--small display-inline-block push-left@lap-and-up push-half-left@handheld btn--disabled"
   disabled={true}
-  onClick={[Function onClick]}
+  onClick={[Function]}
   style={
     Object {
-      "backgroundColor": "transparent !important"
+      "backgroundColor": "transparent !important",
     }
   }>
   Register

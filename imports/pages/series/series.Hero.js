@@ -87,7 +87,7 @@ export default class SeriesHero extends Component {
                   success={this.ready}
                   hide
                 />
-            );
+              );
             })()}
 
           </div>
@@ -101,7 +101,7 @@ export default class SeriesHero extends Component {
               success={this.ready}
               hide
             />
-        );
+          );
         })()}
         <div
           className={this.backgroundClasses()}

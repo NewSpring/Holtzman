@@ -131,7 +131,7 @@ const Serving = () => (
 
         <Body>
           <p>
-            "It’s an indescribable feeling to know that I was a part of setting up a blank room on a Sunday morning and watch families walk in with their kids ready for church"
+            &quot;It’s an indescribable feeling to know that I was a part of setting up a blank room on a Sunday morning and watch families walk in with their kids ready for church&quot;
           </p>
           <h6
             className="italictext-dark-primary"
