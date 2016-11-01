@@ -1,4 +1,7 @@
-import { PropTypes } from "react";
+// @flow
+
+// $FlowMeteor
+import { Meteor } from "meteor/meteor";
 
 import {
   PrimaryButton,
@@ -6,7 +9,12 @@ import {
   Guest as TertiaryButton,
 } from "./buttons";
 
-const SecondaryLayout = ({ authorized, register }) => {
+type ISecondaryLayout = {
+  authorized: boolean,
+  register: Function,
+};
+
+const SecondaryLayout = ({ authorized, register }: ISecondaryLayout) => {
   if (!authorized && !Meteor.userId()) {
     return (
       <SecondaryButton
@@ -17,12 +25,17 @@ const SecondaryLayout = ({ authorized, register }) => {
   return null;
 };
 
-SecondaryLayout.propTypes = {
-  authorized: PropTypes.bool,
-  register: PropTypes.func,
+type ITertiaryLayout = {
+  disabled: boolean,
+  disabledGuest: boolean,
+  giveAsGuest: Function,
 };
 
-const TertiaryLayout = ({ disabledGuest, disabled, giveAsGuest }) => {
+const TertiaryLayout = ({
+  disabledGuest,
+  disabled,
+  giveAsGuest,
+}: ITertiaryLayout) => {
   if (!disabledGuest && !Meteor.userId()) {
     return (
       <TertiaryButton
@@ -34,13 +47,17 @@ const TertiaryLayout = ({ disabledGuest, disabled, giveAsGuest }) => {
   return null;
 };
 
-TertiaryLayout.propTypes = {
-  disabled: PropTypes.bool,
-  disabledGuest: PropTypes.bool,
-  giveAsGuest: PropTypes.func,
+type IChangePaymentsLayout = {
+  changePayments: Function,
+  hideCard: boolean,
+  savedPayments: Object[],
 };
 
-const ChangePaymentsLayout = ({ savedPayments, hideCard, changePayments }) => {
+const ChangePaymentsLayout = ({
+  savedPayments,
+  hideCard,
+  changePayments,
+}: IChangePaymentsLayout) => {
   if (savedPayments && savedPayments.length && !hideCard && Meteor.userId()) {
     return (
       <TertiaryButton
@@ -52,10 +69,23 @@ const ChangePaymentsLayout = ({ savedPayments, hideCard, changePayments }) => {
   return null;
 };
 
-ChangePaymentsLayout.propTypes = {
-  changePayments: PropTypes.func,
-  hideCard: PropTypes.bool,
-  savedPayments: PropTypes.array,
+type ILayout = {
+  authorized: boolean,
+  changePayments: Function,
+  classes: string,
+  dataId: string,
+  disabled: boolean,
+  disabledGuest: boolean,
+  getAccount: Function,
+  giveAsGuest: Function,
+  hideCard: boolean,
+  onClick: Function,
+  register: Function,
+  savedPayments: Object[],
+  style: Object,
+  theme: string,
+  text: string,
+  value: string,
 };
 
 const Layout = ({
@@ -75,7 +105,7 @@ const Layout = ({
   theme,
   text,
   value,
-}) => (
+}: ILayout) => (
   <span>
     <PrimaryButton
       theme={theme}
@@ -107,23 +137,5 @@ const Layout = ({
   </span>
 );
 
-Layout.propTypes = {
-  authorized: PropTypes.bool,
-  changePayments: PropTypes.func,
-  classes: PropTypes.array,
-  dataId: PropTypes.string,
-  disabled: PropTypes.bool,
-  disabledGuest: PropTypes.bool,
-  getAccount: PropTypes.func,
-  giveAsGuest: PropTypes.func,
-  hideCard: PropTypes.bool,
-  onClick: PropTypes.func,
-  register: PropTypes.func,
-  savedPayments: PropTypes.array,
-  style: PropTypes.object,
-  theme: PropTypes.string,
-  text: PropTypes.string,
-  value: PropTypes.string,
-};
 
 export default Layout;
