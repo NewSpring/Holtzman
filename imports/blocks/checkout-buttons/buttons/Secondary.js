@@ -1,11 +1,11 @@
 // @flow
 
 type ISecondaryButton = {
-  disabled: boolean,
   onClick: Function,
+  disabled?: boolean,
 };
 
-const SecondaryButton = ({ disabled, onClick }: ISecondaryButton) => {
+const SecondaryButton = ({ disabled = false, onClick }: ISecondaryButton) => {
   const classes = [
     "btn--thin",
     "btn--small",
