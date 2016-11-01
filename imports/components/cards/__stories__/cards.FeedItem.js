@@ -4,15 +4,14 @@ import {
   withKnobs,
   text,
   select,
-  boolean,
 } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
-import Readme from "./cards.MiniCard.md";
-import MiniCard from "../cards.MiniCard";
+import Readme from "./cards.FeedItem.md";
+import FeedItem from "../cards.FeedItem";
 
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)
@@ -25,48 +24,49 @@ const story = storiesOf("Cards", module)
 // description={text("description", "MiniCard description")}
 
 story
-  .add("MiniCard", withReadme(Readme, () => {
+  .add("FeedItem", withReadme(Readme, () => {
     // set channel name options
     const channelOptions = {
       articles: "Articles",
       devotionals: "Devotionals",
       news: "News",
-      sermons: "Sermons",
+      series_newspring: "Series",
       stories: "Stories",
     };
 
     const content = {
       channelName: "articles",
       content: {
-        images: [{
-          fileLabel: "2:1",
-          url: "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg",
-        }],
+        colors: [
+          { description: "primary", id: null, value: "303030" },
+        ],
+        images: [
+          { fileLabel: "2:1", url: "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg" },
+        ],
       },
-      title: "MiniCard Title",
+      meta: {
+        date: "10/31/2016",
+      },
+      title: "FeedItem Title",
     };
+
+    // Title
+    content.title = text("Title", "FeedItem Title");
 
     // Channel Name
     content.channelName = select("type", channelOptions, "articles");
+
+    // Date
+    content.meta.date = text("Date", "10/31/2016");
 
     // Image
     const defaultImageURL = "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg";
     content.content.images[0].url = text("image link", defaultImageURL);
 
-    // Title
-    const title = text("title", content.title);
-
-    // Turn Off Image
-    const hideImage = boolean("Hide Image?", false);
-    if (hideImage) {
-      content.content.images[0].url = "";
-    }
-
     return (
       <div style={{ maxWidth: "480px" }}>
-        <MiniCard
-          title={title}
-          content={content}
+        <FeedItem
+          item={content}
         />
       </div>);
   }));
