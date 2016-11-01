@@ -91,7 +91,7 @@ type IPrimaryButton = {
   getAccount: Function,
   onClick: Function,
   savedPayments: Object[],
-  style: string,
+  style: Object,
   text: string,
   theme: string,
   value: string,
