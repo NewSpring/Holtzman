@@ -227,7 +227,7 @@ it ("should accept onBlur prop", () => {
   let component = mount(generateComponent({
     label: "test label",
     type: "text",
-    onChange: spy
+    onBlur: spy
   }));
 
   const input = getSingleSpecWrapper(component, "input");
@@ -237,13 +237,42 @@ it ("should accept onBlur prop", () => {
   expect(spy).toBeCalled();
 });
 
+it ("should accept validation prop", () => {
+  const spy = jest.fn();
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    validation: spy
+  }));
+
+  const input = getSingleSpecWrapper(component, "input");
+
+  input.simulate("focus");
+  input.simulate("blur");
+  expect(spy).toBeCalled();
+});
+
+it ("should accept format prop", () => {
+  const spy = jest.fn();
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    format: spy
+  }));
+
+  const input = getSingleSpecWrapper(component, "input");
+
+  input.simulate("change");
+  expect(spy).toBeCalled();
+});
+
 
 /* ==== PROPS ====
 
 DONE  defaultValue: PropTypes.string,
-      status: PropTypes.string,
+DEPR  status: PropTypes.string,
 DONE  disabled: PropTypes.any, // eslint-disable-line
-      validation: PropTypes.func,
+DONE  validation: PropTypes.func,
       errorText: PropTypes.string,
 DEPR  theme: PropTypes.string,
 DONE  type: PropTypes.string,
@@ -265,13 +294,14 @@ DONE  name: PropTypes.oneOfType([
 DONE  inputClasses: PropTypes.string, // eslint-disable-line
 DONE  hideLabel: PropTypes.bool,
 DONE  autofocus: PropTypes.any, // eslint-disable-line
-      format: PropTypes.func,
+DONE  format: PropTypes.func,
 DONE  onChange: PropTypes.func,
 DONE  onBlur: PropTypes.func,
 DONE  style: PropTypes.object, //eslint-disable-line
 ????  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 DONE  placeholder: PropTypes.string,
 DONE  maxLength: PropTypes.number,
+*/
 
 // TODO
 it ("should accept value prop", () => {
@@ -281,12 +311,11 @@ it ("should accept value prop", () => {
     value: "harambe"
   }));
 
-  // component.unmount();
-  // component.mount();
-  // console.log(component.html());
-  const wrapperHTML = getSingleSpecWrapper(component, "input-wrapper").html();
+  component.simulate("focus");
+  component.simulate("change");
+  component.simulate("blur");
+  console.log(component.html());
+  // const wrapperHTML = getSingleSpecWrapper(component, "input-wrapper").html();
 
   // expect(wrapperHTML).toContain("background-color: red");
 });
-
-*/

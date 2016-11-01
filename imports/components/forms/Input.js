@@ -80,6 +80,7 @@ export default class Input extends Component {
 
     // set value on re-render
     if (this.props.value) {
+      console.log(this.props.value);
       this.setValue(`${this.props.value}`);
     }
   }
@@ -149,7 +150,6 @@ export default class Input extends Component {
   }
 
   setValue = (value) => {
-    // console.log("VAL",value);
     const node = this.node;
     // prevent XSS;
     if (this.props.name === "password") {
