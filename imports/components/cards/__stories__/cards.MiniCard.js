@@ -47,11 +47,11 @@ story
 
     const imageObject = {
       fileLabel: "2:1",
-      url: "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg",
+      url: "http://www.thefashionisto.com/wp-content/uploads/2016/07/Jeff-Goldblum-2016-Photo-Shoot-El-Pais-Icon-004.jpg",
     };
     content.content.images.push(imageObject);
 
-    const defaultImageURL = "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg";
+    const defaultImageURL = "http://www.thefashionisto.com/wp-content/uploads/2016/07/Jeff-Goldblum-2016-Photo-Shoot-El-Pais-Icon-004.jpg";
     content.content.images[0].url = text("image link", defaultImageURL);
 
     return (
