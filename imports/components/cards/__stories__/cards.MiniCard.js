@@ -63,10 +63,12 @@ story
     }
 
     return (
-      <div style={{ maxWidth: "480px" }}>
-        <MiniCard
-          title={title}
-          content={content}
-        />
+      <div className={"floating"}>
+        <div className={"grid__item text-left"} style={{ maxWidth: "480px" }}>
+          <MiniCard
+            title={title}
+            content={content}
+          />
+        </div>
       </div>);
   }));

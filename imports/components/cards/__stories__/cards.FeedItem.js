@@ -64,9 +64,11 @@ story
     content.content.images[0].url = text("image link", defaultImageURL);
 
     return (
-      <div style={{ maxWidth: "480px" }}>
-        <FeedItem
-          item={content}
-        />
+      <div className={"floating"}>
+        <div className={"grid__item"} style={{ maxWidth: "480px" }}>
+          <FeedItem
+            item={content}
+          />
+        </div>
       </div>);
   }));
