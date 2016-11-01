@@ -2,10 +2,11 @@
 
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
+import { sortBy } from "underscore";
 
 import {
   modal,
@@ -56,32 +57,34 @@ const mapStateToProps = (store) => ({
   savedAccount: store.give.savedAccount,
 });
 
+type ICheckoutButtons = {
+  authorized: boolean,
+  classes: string,
+  dataId: string,
+  disabled: boolean,
+  disabledGuest: boolean,
+  dispatch: Function,
+  hideCard: boolean,
+  onClick: Function,
+  savedAccount: Object,
+  savedPayments: Object,
+  style: Object,
+  text: string,
+  theme: string,
+  value: string,
+};
+
+// $FlowMeteor
 @connect(mapStateToProps)
 @withSavedPayments
 export default class CheckoutButtons extends Component {
-
-  static propTypes = {
-    authorized: PropTypes.bool,
-    classes: PropTypes.array, // eslint-disable-line
-    dataId: PropTypes.string,
-    disabled: PropTypes.bool,
-    disabledGuest: PropTypes.bool,
-    dispatch: PropTypes.func,
-    hideCard: PropTypes.bool,
-    onClick: PropTypes.func,
-    savedAccount: PropTypes.object, // eslint-disable-line
-    savedPayments: PropTypes.object, // eslint-disable-line
-    style: PropTypes.object, // eslint-disable-line
-    text: PropTypes.string,
-    theme: PropTypes.string,
-    value: PropTypes.string,
-  }
+  props: ICheckoutButtons;
 
   state = {
     paymentDetails: false,
   }
 
-  onClick = (e) => {
+  onClick = (e: Event) => {
     let keepGoing = true;
     if (this.props.onClick) {
       keepGoing = this.props.onClick(e);
@@ -103,7 +106,8 @@ export default class CheckoutButtons extends Component {
       this.props.dispatch(modal.render(Give));
     } else if (!Meteor.userId()) {
       this.props.dispatch(modal.render(OnBoard, {
-        onSignin: this.getPaymentDetailsAfterLogin,
+        // XXX getPaymentDetailsAfterLogin doesn't exist
+        // onSignin: this.getPaymentDetailsAfterLogin,
         onFinished: this.renderAfterLogin,
         coverHeader: true,
       }));
@@ -123,7 +127,7 @@ export default class CheckoutButtons extends Component {
     const { savedPayments } = this.props.savedPayments;
     if (!savedPayments || !savedPayments.length) return {};
 
-    return _.sortBy(savedPayments, "date")[savedPayments.length - 1];
+    return sortBy(savedPayments, "date")[savedPayments.length - 1];
   }
 
   giveAsGuest = () => {
@@ -143,7 +147,7 @@ export default class CheckoutButtons extends Component {
     // this.props.dispatch(navActions.setLevel("MODAL"))
   }
 
-  changePayments = (e) => {
+  changePayments = (e: Event) => {
     e.preventDefault();
 
     this.props.dispatch(modal.render(ChangePayments, {
