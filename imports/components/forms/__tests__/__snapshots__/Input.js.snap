@@ -1,0 +1,1 @@
+exports[`test should render with no props 1`] = `"<div class=\"input\" data-spec=\"input-wrapper\"><label></label><input maxlength=\"\" data-spec=\"input\"></div>"`;

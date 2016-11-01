@@ -56,6 +56,8 @@ export default class Input extends Component {
   }
 
   componentDidMount() {
+
+    console.log("helllllo");
     if (this.props.autofocus) {
       this.node.focus();
     }
@@ -147,6 +149,7 @@ export default class Input extends Component {
   }
 
   setValue = (value) => {
+    console.log("VAL",value);
     const node = this.node;
     // prevent XSS;
     if (this.props.name === "password") {
@@ -222,7 +225,11 @@ export default class Input extends Component {
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
 
     return (
-      <div className={inputclasses.join(" ")} style={this.props.style || {}}>
+      <div
+        className={inputclasses.join(" ")}
+        style={this.props.style || {}}
+        data-spec="input-wrapper"
+      >
         {(() => {
           if (!this.props.hideLabel) {
             return (

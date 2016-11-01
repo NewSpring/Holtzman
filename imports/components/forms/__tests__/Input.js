@@ -3,6 +3,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Input from '../Input.js';
+import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
+
+const generateComponent = (additionalProps={}) => (
+    <Input {...additionalProps} />
+);
 
 it('Password input allows <> in field', () => {
   // Render a password with <> in the value
@@ -21,3 +26,184 @@ it('Name input does not allow <> in field', () => {
 
   expect(passwordInput.instance().getValue()).toEqual("1234");
 });
+
+it ("should render with no props", () => {
+  let component = mount(generateComponent());
+  expect(component.html()).toMatchSnapshot();
+});
+
+// XXX should input ID be the label? Can contain spaces
+it ("should accept label prop", () => {
+  let component = mount(generateComponent({
+    label: "test label"
+  }));
+  expect(component.find("label").text()).toEqual("test label");
+});
+
+it ("should accept name prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    name: "myname"
+  }));
+
+  const labelHTML = component.find("label").html();
+  const inputHTML = getSingleSpecWrapper(component, "input").html();
+
+  expect(labelHTML).toContain("for=\"myname\"");
+  expect(inputHTML).toContain("name=\"myname\"");
+  expect(inputHTML).toContain("id=\"myname\"");
+});
+
+it ("should accept id prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    name: "myname",
+    id: "myid"
+  }));
+
+  const labelHTML = component.find("label").html();
+  const inputHTML = getSingleSpecWrapper(component, "input").html();
+
+  expect(labelHTML).toContain("for=\"myid\"");
+  expect(inputHTML).toContain("id=\"myid\"");
+});
+
+it ("should accept hideLabel prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    hideLabel: true
+  }));
+
+  expect(component.find("label").length).toEqual(0);
+});
+
+it ("should accept defaultValue", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    hideLabel: true,
+    defaultValue: "test value"
+  }));
+
+  const inputHTML = getSingleSpecWrapper(component, "input").html();
+
+  expect(inputHTML).toContain("value=\"test value\"");
+});
+
+// XXX Need to test label has disabled prop.
+it ("should accept disabled prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    disabled: true
+  }));
+
+  const inputHTML = getSingleSpecWrapper(component, "input").html();
+
+  expect(inputHTML).toContain("disabled=\"\"");
+  expect(inputHTML).toContain("cursor: inherit");
+});
+
+it ("should accept type prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text"
+  }));
+
+  const inputHTML = getSingleSpecWrapper(component, "input").html();
+
+  expect(inputHTML).toContain("type=\"text\"");
+});
+
+it ("should accept classes prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    classes: "testClass"
+  }));
+
+  let componentArr = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    classes: ["test1", "test2"]
+  }));
+
+  const wrapper = getSingleSpecWrapper(component, "input-wrapper");
+  const wrapper2 = getSingleSpecWrapper(componentArr, "input-wrapper");
+
+  expect(wrapper.hasClass("testClass")).toEqual(true);
+  expect(wrapper2.hasClass("test2")).toEqual(true);
+});
+
+it ("should accept inputClasses prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    inputClasses: "testClass"
+  }));
+
+  const input = getSingleSpecWrapper(component, "input");
+
+  expect(input.hasClass("testClass")).toEqual(true);
+});
+
+it ("should accept style prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    style: {backgroundColor: "red"}
+  }));
+
+  const wrapperHTML = getSingleSpecWrapper(component, "input-wrapper").html();
+
+  expect(wrapperHTML).toContain("background-color: red");
+});
+
+it ("should accept value prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    value: "harambe"
+  }));
+
+  component.unmount();
+  component.mount();
+  console.log(component.html());
+  const wrapperHTML = getSingleSpecWrapper(component, "input-wrapper").html();
+
+  // expect(wrapperHTML).toContain("background-color: red");
+});
+
+/* ==== PROPS ====
+
+DONE  defaultValue: PropTypes.string,
+      status: PropTypes.string,
+DONE  disabled: PropTypes.any, // eslint-disable-line
+      validation: PropTypes.func,
+      errorText: PropTypes.string,
+DEPR  theme: PropTypes.string,
+DONE  type: PropTypes.string,
+XXXX  error: PropTypes.any, // eslint-disable-line
+DONE  classes: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.array,
+      ]),
+      children: PropTypes.any, // eslint-disable-line
+DONE  id: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
+DONE  label: PropTypes.string,
+DONE  name: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool,
+      ]),
+DONE  inputClasses: PropTypes.string, // eslint-disable-line
+DONE  hideLabel: PropTypes.bool,
+      autofocus: PropTypes.any, // eslint-disable-line
+      format: PropTypes.func,
+      onChange: PropTypes.func,
+      onBlur: PropTypes.func,
+DONE  style: PropTypes.object, //eslint-disable-line
+DONE  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      placeholder: PropTypes.string,
+      maxLength: PropTypes.number,
+*/
