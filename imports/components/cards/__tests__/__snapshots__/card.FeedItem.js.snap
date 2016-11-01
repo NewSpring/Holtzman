@@ -2,13 +2,13 @@ exports[`test should have styles based on a channelName of 'articles' 1`] = `
 <a
   className="card rounded"
   data-spec="card"
-  onClick={[Function bound handleClick]}
+  onClick={[Function]}
   style={
     Object {
       "color": "inherit",
       "display": "block",
       "overflow": "hidden",
-      "textDecoration": "none"
+      "textDecoration": "none",
     }
   }>
   <div
@@ -16,7 +16,7 @@ exports[`test should have styles based on a channelName of 'articles' 1`] = `
     data-spec="card-image-wrapper"
     style={
       Object {
-        "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')"
+        "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
       }
     }>
     <span>
@@ -36,7 +36,7 @@ exports[`test should have styles based on a channelName of 'articles' 1`] = `
     data-spec="card-item"
     style={
       Object {
-        "backgroundColor": "#303030"
+        "backgroundColor": "#303030",
       }
     }>
     <style>
@@ -64,10 +64,10 @@ exports[`test should have styles based on a channelName of 'articles' 1`] = `
         className="text-right float-right flush-bottom text-light-primary"
         style={
           Object {
-            "marginTop": "5px"
+            "marginTop": "5px",
           }
         }>
-        16h
+        2d
       </h7>
     </div>
   </div>
@@ -78,13 +78,13 @@ exports[`test should have styles based on a channelName of 'series_newspring' 1`
 <a
   className="card rounded"
   data-spec="card"
-  onClick={[Function bound handleClick]}
+  onClick={[Function]}
   style={
     Object {
       "color": "inherit",
       "display": "block",
       "overflow": "hidden",
-      "textDecoration": "none"
+      "textDecoration": "none",
     }
   }>
   <div
@@ -92,7 +92,7 @@ exports[`test should have styles based on a channelName of 'series_newspring' 1`
     data-spec="card-image-wrapper"
     style={
       Object {
-        "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')"
+        "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
       }
     }>
     <span>
@@ -112,7 +112,7 @@ exports[`test should have styles based on a channelName of 'series_newspring' 1`
     data-spec="card-item"
     style={
       Object {
-        "backgroundColor": "#303030"
+        "backgroundColor": "#303030",
       }
     }>
     <style>
@@ -140,10 +140,10 @@ exports[`test should have styles based on a channelName of 'series_newspring' 1`
         className="text-right float-right flush-bottom text-light-primary"
         style={
           Object {
-            "marginTop": "5px"
+            "marginTop": "5px",
           }
         }>
-        16h
+        2d
       </h7>
     </div>
   </div>

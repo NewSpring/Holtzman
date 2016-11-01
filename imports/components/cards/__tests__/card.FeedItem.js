@@ -1,6 +1,9 @@
 import renderer from "react-test-renderer";
 import FeedItem from "../cards.FeedItem";
 
+// MOMENT IS AWESOME
+const today = Moment().add(-1, "days").format("LL");
+
 const content = {
   channelName: "articles",
   content: {
@@ -12,7 +15,7 @@ const content = {
     ],
   },
   meta: {
-    date: "10/31/2016",
+    date: today,
   },
   title: "FeedItem Title",
 };
