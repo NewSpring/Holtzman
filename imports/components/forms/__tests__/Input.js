@@ -164,6 +164,115 @@ it ("should accept style prop", () => {
   expect(wrapperProps.style).toEqual({"backgroundColor": "red"});
 });
 
+it ("should accept placeholder prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    placeholder: "harambe"
+  }));
+
+  const inputProps = getSingleSpecWrapper(component,"input").props();
+
+  expect(inputProps.placeholder).toEqual("harambe");
+});
+
+it ("should accept children", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    children: "hey there!"
+  }));
+
+  expect(component.html()).toContain("hey there!");
+});
+
+it ("should accept maxLength prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    maxLength: 10
+  }));
+
+  const inputProps = getSingleSpecWrapper(component, "input").props();
+
+  expect(inputProps.maxLength).toEqual(10);
+});
+
+it ("should accept autofocus prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    autofocus: true
+  }));
+
+  expect(component.state("focused")).toEqual(true);
+});
+
+it ("should accept onChange prop", () => {
+  const spy = jest.fn();
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    onChange: spy
+  }));
+
+  const input = getSingleSpecWrapper(component, "input");
+
+  input.simulate("change");
+  expect(spy).toBeCalled();
+});
+
+it ("should accept onBlur prop", () => {
+  const spy = jest.fn();
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    onChange: spy
+  }));
+
+  const input = getSingleSpecWrapper(component, "input");
+
+  input.simulate("focus");
+  input.simulate("blur");
+  expect(spy).toBeCalled();
+});
+
+
+/* ==== PROPS ====
+
+DONE  defaultValue: PropTypes.string,
+      status: PropTypes.string,
+DONE  disabled: PropTypes.any, // eslint-disable-line
+      validation: PropTypes.func,
+      errorText: PropTypes.string,
+DEPR  theme: PropTypes.string,
+DONE  type: PropTypes.string,
+XXXX  error: PropTypes.any, // eslint-disable-line
+DONE  classes: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.array,
+      ]),
+DONE  children: PropTypes.any, // eslint-disable-line
+DONE  id: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
+DONE  label: PropTypes.string,
+DONE  name: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool,
+      ]),
+DONE  inputClasses: PropTypes.string, // eslint-disable-line
+DONE  hideLabel: PropTypes.bool,
+DONE  autofocus: PropTypes.any, // eslint-disable-line
+      format: PropTypes.func,
+DONE  onChange: PropTypes.func,
+DONE  onBlur: PropTypes.func,
+DONE  style: PropTypes.object, //eslint-disable-line
+????  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+DONE  placeholder: PropTypes.string,
+DONE  maxLength: PropTypes.number,
+
 // TODO
 it ("should accept value prop", () => {
   let component = mount(generateComponent({
@@ -180,50 +289,4 @@ it ("should accept value prop", () => {
   // expect(wrapperHTML).toContain("background-color: red");
 });
 
-it ("should accept placeholder prop", () => {
-  let component = mount(generateComponent({
-    label: "test label",
-    type: "text",
-    placeholder: "harambe"
-  }));
-
-  const inputProps = getSingleSpecWrapper(component,"input").props();
-
-  expect(inputProps.placeholder).toEqual("harambe");
-});
-
-/* ==== PROPS ====
-
-DONE  defaultValue: PropTypes.string,
-      status: PropTypes.string,
-DONE  disabled: PropTypes.any, // eslint-disable-line
-      validation: PropTypes.func,
-      errorText: PropTypes.string,
-DEPR  theme: PropTypes.string,
-DONE  type: PropTypes.string,
-XXXX  error: PropTypes.any, // eslint-disable-line
-DONE  classes: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.array,
-      ]),
-      children: PropTypes.any, // eslint-disable-line
-DONE  id: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]),
-DONE  label: PropTypes.string,
-DONE  name: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.bool,
-      ]),
-DONE  inputClasses: PropTypes.string, // eslint-disable-line
-DONE  hideLabel: PropTypes.bool,
-      autofocus: PropTypes.any, // eslint-disable-line
-      format: PropTypes.func,
-      onChange: PropTypes.func,
-      onBlur: PropTypes.func,
-DONE  style: PropTypes.object, //eslint-disable-line
-DONE  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-DONE  placeholder: PropTypes.string,
-      maxLength: PropTypes.number,
 */

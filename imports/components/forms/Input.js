@@ -57,9 +57,9 @@ export default class Input extends Component {
 
   componentDidMount() {
 
-    // console.log("helllllo");
     if (this.props.autofocus) {
       this.node.focus();
+      this.focus();
     }
 
 
@@ -80,7 +80,7 @@ export default class Input extends Component {
 
     // set value on re-render
     if (this.props.value) {
-      this.setValue(`$${this.props.value}`);
+      this.setValue(`${this.props.value}`);
     }
   }
 
