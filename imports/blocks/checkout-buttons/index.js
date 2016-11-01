@@ -1,3 +1,6 @@
+// @flow
+
+// $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { graphql } from "react-apollo";
