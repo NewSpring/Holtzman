@@ -7,7 +7,7 @@ import AccountType from "../../../components/accountType";
 
 const buttonClasses = (
   savedPayments: Object[],
-  disabled: Function,
+  disabled: boolean,
   additionalClasses: string
 ): string => {
   let classes = ["btn"];
@@ -86,7 +86,7 @@ const Icon = ({
 type IPrimaryButton = {
   classes: string,
   dataId: string,
-  disabled: Function,
+  disabled: boolean,
   hideCard: boolean,
   getAccount: Function,
   onClick: Function,

@@ -1,12 +1,16 @@
 // @flow
 
 type IGuest = {
-  disabled: boolean,
+  disabled?: boolean,
   onClick: Function,
-  text: string,
+  text?: string,
 };
 
-const Guest = ({ disabled, onClick, text }: IGuest): Object => {
+const Guest = ({
+  disabled = false,
+  onClick,
+  text = "Give as Guest",
+}: IGuest): Object => {
   const classes = [
     "outlined--bottom",
     "outlined--light",
@@ -27,7 +31,7 @@ const Guest = ({ disabled, onClick, text }: IGuest): Object => {
   return (
     <div className="display-block soft-half-top">
       <h6 className={classes.join(" ")} style={style} onClick={onClick}>
-        {text || "Give as Guest"}
+        {text}
       </h6>
     </div>
   );
