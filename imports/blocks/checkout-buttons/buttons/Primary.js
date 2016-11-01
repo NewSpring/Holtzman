@@ -1,9 +1,15 @@
+// @flow
 
-import { PropTypes } from "react";
+// $FlowMeteor
+import { Meteor } from "meteor/meteor";
 
 import AccountType from "../../../components/accountType";
 
-const buttonClasses = (savedPayments, disabled, additionalClasses) => {
+const buttonClasses = (
+  savedPayments: Object[],
+  disabled: Function,
+  additionalClasses: string
+): string => {
   let classes = ["btn"];
 
   if (savedPayments) {
@@ -21,15 +27,27 @@ const buttonClasses = (savedPayments, disabled, additionalClasses) => {
   return classes.join(" ");
 };
 
-const ButtonText = ({ overrideText, savedPayments, hideCard, getAccount }) => {
-  let text = overrideText || "Give Now";
+type IButtonText = {
+  overrideText: string,
+  savedPayments: Object[],
+  hideCard: boolean,
+  getAccount: Function,
+};
+
+const ButtonText = ({
+  overrideText,
+  savedPayments,
+  hideCard,
+  getAccount,
+}: IButtonText) => {
+  let text: string = overrideText || "Give Now";
 
   if (!Meteor.userId()) text = "Sign In";
 
   if (savedPayments && savedPayments.length && !hideCard) {
-    const details = getAccount();
+    const details: Object = getAccount();
     if (details && details.payment && details.payment.accountNumber) {
-      let { accountNumber } = details.payment;
+      let { accountNumber }: { accountNumber: string } = details.payment;
       accountNumber = accountNumber.slice(-4).trim();
       text = `Review Using ${accountNumber}`;
     }
@@ -38,14 +56,17 @@ const ButtonText = ({ overrideText, savedPayments, hideCard, getAccount }) => {
   return <span>{text}</span>;
 };
 
-ButtonText.propTypes = {
-  overrideText: PropTypes.string,
-  savedPayments: PropTypes.array,
-  hideCard: PropTypes.bool,
-  getAccount: PropTypes.func,
+type IIcon = {
+  getAccount: Function,
+  hideCard: boolean,
+  savedPayments: Object[],
 };
 
-const Icon = ({ savedPayments, hideCard, getAccount }) => {
+const Icon = ({
+  savedPayments,
+  hideCard,
+  getAccount,
+}: IIcon) => {
   if (savedPayments && !hideCard) {
     // const detail = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
     const detail = getAccount();
@@ -62,10 +83,18 @@ const Icon = ({ savedPayments, hideCard, getAccount }) => {
   return null;
 };
 
-Icon.propTypes = {
-  getAccount: PropTypes.func,
-  hideCard: PropTypes.bool,
-  savedPayments: PropTypes.array,
+type IPrimaryButton = {
+  classes: string,
+  dataId: string,
+  disabled: Function,
+  hideCard: boolean,
+  getAccount: Function,
+  onClick: Function,
+  savedPayments: Object[],
+  style: string,
+  text: string,
+  theme: string,
+  value: string,
 };
 
 const PrimaryButton = ({
@@ -80,7 +109,7 @@ const PrimaryButton = ({
   theme,
   hideCard,
   getAccount,
-}) => (
+}: IPrimaryButton) => (
 
   <button
     className={theme || buttonClasses(savedPayments, disabled, classes)}
@@ -96,19 +125,5 @@ const PrimaryButton = ({
   </button>
 
 );
-
-PrimaryButton.propTypes = {
-  classes: PropTypes.string,
-  dataId: PropTypes.string,
-  disabled: PropTypes.func,
-  hideCard: PropTypes.bool,
-  getAccount: PropTypes.func,
-  onClick: PropTypes.func,
-  savedPayments: PropTypes.array,
-  style: PropTypes.string,
-  text: PropTypes.string,
-  theme: PropTypes.string,
-  value: PropTypes.string,
-};
 
 export default PrimaryButton;
