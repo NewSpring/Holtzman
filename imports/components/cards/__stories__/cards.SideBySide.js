@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies, import/no-unresolved */
+/* eslint-disable */
 import { storiesOf } from "@kadira/storybook";
 import { withKnobs, text } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
