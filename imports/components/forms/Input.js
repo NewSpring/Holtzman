@@ -57,7 +57,7 @@ export default class Input extends Component {
 
   componentDidMount() {
 
-    console.log("helllllo");
+    // console.log("helllllo");
     if (this.props.autofocus) {
       this.node.focus();
     }
@@ -149,7 +149,7 @@ export default class Input extends Component {
   }
 
   setValue = (value) => {
-    console.log("VAL",value);
+    // console.log("VAL",value);
     const node = this.node;
     // prevent XSS;
     if (this.props.name === "password") {

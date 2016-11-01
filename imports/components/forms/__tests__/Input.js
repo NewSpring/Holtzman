@@ -46,12 +46,12 @@ it ("should accept name prop", () => {
     name: "myname"
   }));
 
-  const labelHTML = component.find("label").html();
-  const inputHTML = getSingleSpecWrapper(component, "input").html();
+  const labelProps = component.find("label").props();
+  const inputProps = getSingleSpecWrapper(component, "input").props();
 
-  expect(labelHTML).toContain("for=\"myname\"");
-  expect(inputHTML).toContain("name=\"myname\"");
-  expect(inputHTML).toContain("id=\"myname\"");
+  expect(labelProps.htmlFor).toEqual("myname");
+  expect(inputProps.name).toEqual("myname");
+  expect(inputProps.id).toEqual("myname");
 });
 
 it ("should accept id prop", () => {
@@ -61,11 +61,11 @@ it ("should accept id prop", () => {
     id: "myid"
   }));
 
-  const labelHTML = component.find("label").html();
-  const inputHTML = getSingleSpecWrapper(component, "input").html();
+  const labelProps = component.find("label").props();
+  const inputProps = getSingleSpecWrapper(component, "input").props();
 
-  expect(labelHTML).toContain("for=\"myid\"");
-  expect(inputHTML).toContain("id=\"myid\"");
+  expect(labelProps.htmlFor).toEqual("myid");
+  expect(inputProps.id).toEqual("myid");
 });
 
 it ("should accept hideLabel prop", () => {
@@ -84,9 +84,9 @@ it ("should accept defaultValue", () => {
     defaultValue: "test value"
   }));
 
-  const inputHTML = getSingleSpecWrapper(component, "input").html();
+  const inputProps = getSingleSpecWrapper(component, "input").props();
 
-  expect(inputHTML).toContain("value=\"test value\"");
+  expect(inputProps.defaultValue).toEqual("test value");
 });
 
 // XXX Need to test label has disabled prop.
@@ -96,10 +96,13 @@ it ("should accept disabled prop", () => {
     disabled: true
   }));
 
-  const inputHTML = getSingleSpecWrapper(component, "input").html();
+  // const inputHTML = getSingleSpecWrapper(component, "input").html();
+  const inputProps = getSingleSpecWrapper(component, "input").props();
 
-  expect(inputHTML).toContain("disabled=\"\"");
-  expect(inputHTML).toContain("cursor: inherit");
+  // expect(inputHTML).toContain("disabled=\"\"");
+  // expect(inputHTML).toContain("cursor: inherit");
+  expect(inputProps.disabled).toEqual(true);
+  expect(inputProps.style).toEqual({"cursor": "inherit"});
 });
 
 it ("should accept type prop", () => {
@@ -108,9 +111,11 @@ it ("should accept type prop", () => {
     type: "text"
   }));
 
-  const inputHTML = getSingleSpecWrapper(component, "input").html();
+  // const inputHTML = getSingleSpecWrapper(component, "input").html();
+  const inputProps = getSingleSpecWrapper(component, "input").props();
 
-  expect(inputHTML).toContain("type=\"text\"");
+  // expect(inputHTML).toContain("type=\"text\"");
+  expect(inputProps.type).toEqual("text");
 });
 
 it ("should accept classes prop", () => {
@@ -152,11 +157,14 @@ it ("should accept style prop", () => {
     style: {backgroundColor: "red"}
   }));
 
-  const wrapperHTML = getSingleSpecWrapper(component, "input-wrapper").html();
+  // const wrapperHTML = getSingleSpecWrapper(component, "input-wrapper").html();
+  const wrapperProps = getSingleSpecWrapper(component, "input-wrapper").props();
 
-  expect(wrapperHTML).toContain("background-color: red");
+  // expect(wrapperHTML).toContain("background-color: red");
+  expect(wrapperProps.style).toEqual({"backgroundColor": "red"});
 });
 
+// TODO
 it ("should accept value prop", () => {
   let component = mount(generateComponent({
     label: "test label",
@@ -164,12 +172,24 @@ it ("should accept value prop", () => {
     value: "harambe"
   }));
 
-  component.unmount();
-  component.mount();
-  console.log(component.html());
+  // component.unmount();
+  // component.mount();
+  // console.log(component.html());
   const wrapperHTML = getSingleSpecWrapper(component, "input-wrapper").html();
 
   // expect(wrapperHTML).toContain("background-color: red");
+});
+
+it ("should accept placeholder prop", () => {
+  let component = mount(generateComponent({
+    label: "test label",
+    type: "text",
+    placeholder: "harambe"
+  }));
+
+  const inputProps = getSingleSpecWrapper(component,"input").props();
+
+  expect(inputProps.placeholder).toEqual("harambe");
 });
 
 /* ==== PROPS ====
@@ -204,6 +224,6 @@ DONE  hideLabel: PropTypes.bool,
       onBlur: PropTypes.func,
 DONE  style: PropTypes.object, //eslint-disable-line
 DONE  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      placeholder: PropTypes.string,
+DONE  placeholder: PropTypes.string,
       maxLength: PropTypes.number,
 */
