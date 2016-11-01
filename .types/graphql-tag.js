@@ -1,3 +1,3 @@
 declare module "graphql-tag" {
-  declare var gql: Function;
+  declare var exports: any;
 }
