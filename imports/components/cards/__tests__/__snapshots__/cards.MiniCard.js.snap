@@ -1,7 +1,7 @@
 exports[`test has a channelName of 'articles', an image from Unsplash, and a title of 'MiniCard Title' 1`] = `
 <a
   className="plain"
-  onClick={[Function bound handleClick]}
+  onClick={[Function]}
   style={Object {}}>
   <div
     className="card">
@@ -9,7 +9,7 @@ exports[`test has a channelName of 'articles', an image from Unsplash, and a tit
       className="card__item soft push-half-ends two-thirds"
       style={
         Object {
-          "verticalAlign": "middle"
+          "verticalAlign": "middle",
         }
       }>
       <h6
@@ -30,8 +30,8 @@ exports[`test has a channelName of 'articles', an image from Unsplash, and a tit
       className="locked-ends locked-right card__image one-third background--fill"
       style={
         Object {
-          "backgroundImage": "url('https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg')",
-          "verticalAlign": "middle"
+          "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+          "verticalAlign": "middle",
         }
       } />
   </div>
