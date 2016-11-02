@@ -36,7 +36,9 @@
     "moduleNameMapper": {
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
-    "setupFiles": ["scripts/before_test.js"]
+    "setupFiles": [
+      "scripts/before_test.js"
+    ]
   },
   "apollos": {
     "settings": "./.meteor/settings.json",
@@ -53,7 +55,7 @@
     }
   },
   "dependencies": {
-    "aphrodite": "git+https://github.com/NewSpring/aphrodite.git#release",
+    "aphrodite": "^1.0.0",
     "apollo-client": "^0.4.21",
     "audio5": "^0.1.10",
     "bcrypt": "^0.8.7",
