@@ -127,3 +127,9 @@ const PrimaryButton = ({
 );
 
 export default PrimaryButton;
+
+export {
+  buttonClasses,
+  ButtonText,
+  Icon,
+};

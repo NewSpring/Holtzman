@@ -139,3 +139,9 @@ const Layout = ({
 
 
 export default Layout;
+
+export {
+  SecondaryLayout,
+  TertiaryLayout,
+  ChangePaymentsLayout,
+};
