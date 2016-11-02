@@ -12,7 +12,7 @@ const content = {
   title: "MiniCard Title",
 };
 
-it("has a channelName of 'articles', an image from Unsplash, and a title of 'MiniCard Title'", () => {
+it("has a channelName of 'articles', an image, and a title of 'MiniCard Title'", () => {
   const tree = renderer.create(
     <MiniCard
       title={content.title}
