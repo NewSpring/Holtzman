@@ -1,4 +1,4 @@
-## Offline component
+## FeedItem component
 
 ### Usage
 
@@ -12,7 +12,7 @@ import FeedItem from "../../components/cards/cards.FeedItem";
 
 ### Properties
 
-* **item** - an object that contains the information about the item the card should display. For example:
+* **item** - an object that contains the information the card should display. For example:
 
 ```js
 const item = {
