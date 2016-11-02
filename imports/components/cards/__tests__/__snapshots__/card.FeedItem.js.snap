@@ -68,7 +68,7 @@ exports[`test should have styles based on a channelName of 'articles' 1`] = `
             "marginTop": "5px",
           }
         }>
-        2d
+        1d
       </h7>
     </div>
   </div>
@@ -144,7 +144,7 @@ exports[`test should have styles based on a channelName of 'series_newspring' 1`
             "marginTop": "5px",
           }
         }>
-        2d
+        1d
       </h7>
     </div>
   </div>

@@ -2,7 +2,7 @@ import renderer from "react-test-renderer";
 import FeedItem from "../cards.FeedItem";
 
 // MOMENT IS AWESOME
-const today = Moment().add(-1, "days").format("LL");
+const today = Moment().subtract(1, "days").format("L");
 
 const content = {
   channelName: "articles",
