@@ -54,3 +54,5 @@ it("should have styles based on a channelName of 'series_newspring'", () => {
   );
   expect(tree).toMatchSnapshot();
 });
+
+afterEach(() => new Promise(resolve => process.nextTick(resolve)));
