@@ -266,56 +266,38 @@ it ("should accept format prop", () => {
   expect(spy).toBeCalled();
 });
 
-
-/* ==== PROPS ====
-
-DONE  defaultValue: PropTypes.string,
-DEPR  status: PropTypes.string,
-DONE  disabled: PropTypes.any, // eslint-disable-line
-DONE  validation: PropTypes.func,
-      errorText: PropTypes.string,
-DEPR  theme: PropTypes.string,
-DONE  type: PropTypes.string,
-XXXX  error: PropTypes.any, // eslint-disable-line
-DONE  classes: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.array,
-      ]),
-DONE  children: PropTypes.any, // eslint-disable-line
-DONE  id: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]),
-DONE  label: PropTypes.string,
-DONE  name: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.bool,
-      ]),
-DONE  inputClasses: PropTypes.string, // eslint-disable-line
-DONE  hideLabel: PropTypes.bool,
-DONE  autofocus: PropTypes.any, // eslint-disable-line
-DONE  format: PropTypes.func,
-DONE  onChange: PropTypes.func,
-DONE  onBlur: PropTypes.func,
-DONE  style: PropTypes.object, //eslint-disable-line
-????  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-DONE  placeholder: PropTypes.string,
-DONE  maxLength: PropTypes.number,
-*/
-
-// TODO
-it ("should accept value prop", () => {
+it ("should accept errorText prop", () => {
+  //simulate error in validation
+  const spy = jest.fn().mockReturnValue(false);
   let component = mount(generateComponent({
     label: "test label",
     type: "text",
-    value: "harambe"
+    validation: spy,
+    errorText: "my text"
   }));
 
-  component.simulate("focus");
-  component.simulate("change");
-  component.simulate("blur");
-  console.log(component.html());
-  // const wrapperHTML = getSingleSpecWrapper(component, "input-wrapper").html();
+  const input = getSingleSpecWrapper(component, "input");
 
-  // expect(wrapperHTML).toContain("background-color: red");
+  input.simulate("focus");
+  input.simulate("blur"); //validation calls after blur
+  expect(spy).toBeCalled();
+
+  const help = getSingleSpecWrapper(component, "help");
+
+  expect(help.text()).toEqual("my text");
 });
+
+// TODO
+// it ("should accept value prop", () => {
+//   let component = mount(generateComponent({
+//     label: "test label",
+//     type: "text",
+//     value: "harambe"
+//   }));
+
+//   component.simulate("focus");
+//   component.simulate("change");
+//   component.simulate("blur");
+//   console.log(component.html());
+//   const wrapperHTML = getSingleSpecWrapper(component, "input-wrapper").html();
+// });

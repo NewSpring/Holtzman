@@ -80,7 +80,6 @@ export default class Input extends Component {
 
     // set value on re-render
     if (this.props.value) {
-      console.log(this.props.value);
       this.setValue(`${this.props.value}`);
     }
   }
@@ -182,7 +181,7 @@ export default class Input extends Component {
   renderHelpText = () => {
     if ((this.state.error && this.props.errorText) || this.state.status) {
       return (
-        <span className="input__status">
+        <span className="input__status" data-spec="help">
           {this.props.errorText || this.state.status}
         </span>
       );
