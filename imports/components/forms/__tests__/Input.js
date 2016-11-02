@@ -96,11 +96,8 @@ it ("should accept disabled prop", () => {
     disabled: true
   }));
 
-  // const inputHTML = getSingleSpecWrapper(component, "input").html();
   const inputProps = getSingleSpecWrapper(component, "input").props();
 
-  // expect(inputHTML).toContain("disabled=\"\"");
-  // expect(inputHTML).toContain("cursor: inherit");
   expect(inputProps.disabled).toEqual(true);
   expect(inputProps.style).toEqual({"cursor": "inherit"});
 });
@@ -111,10 +108,8 @@ it ("should accept type prop", () => {
     type: "text"
   }));
 
-  // const inputHTML = getSingleSpecWrapper(component, "input").html();
   const inputProps = getSingleSpecWrapper(component, "input").props();
 
-  // expect(inputHTML).toContain("type=\"text\"");
   expect(inputProps.type).toEqual("text");
 });
 
@@ -157,10 +152,8 @@ it ("should accept style prop", () => {
     style: {backgroundColor: "red"}
   }));
 
-  // const wrapperHTML = getSingleSpecWrapper(component, "input-wrapper").html();
   const wrapperProps = getSingleSpecWrapper(component, "input-wrapper").props();
 
-  // expect(wrapperHTML).toContain("background-color: red");
   expect(wrapperProps.style).toEqual({"backgroundColor": "red"});
 });
 
