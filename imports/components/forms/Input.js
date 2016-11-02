@@ -53,12 +53,6 @@ type IInputProps = {
   maxLength: number,
 };
 
-// type IInput = {
-//   node: Object,
-//   interval: number,
-//   _previousValue: string,
-// };
-
 export default class Input extends Component {
   node: Object;
   interval: number;
