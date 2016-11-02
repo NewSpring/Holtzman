@@ -54,7 +54,7 @@ story
     content.title = text("Title", "FeedItem Title");
 
     // Channel Name
-    content.channelName = select("type", channelOptions, "articles");
+    content.channelName = select("Type", channelOptions, "articles");
 
     // Date
     content.meta.date = text("Date", "10/31/2016");
@@ -62,6 +62,11 @@ story
     // Image
     const defaultImageURL = "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg";
     content.content.images[0].url = text("image link", defaultImageURL);
+
+    // Background Color For Series
+    if (content.channelName === "series_newspring") {
+      content.content.colors[0].value = text("HEX Color", "303030");
+    }
 
     return (
       <div className={"floating"}>
