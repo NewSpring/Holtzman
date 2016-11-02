@@ -1,4 +1,4 @@
-exports[`test has a channelName of 'articles', an image from Unsplash, and a title of 'MiniCard Title' 1`] = `
+exports[`test has a channelName of 'articles', an image, and a title of 'MiniCard Title' 1`] = `
 <a
   className="plain"
   onClick={[Function]}

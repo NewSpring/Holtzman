@@ -2,7 +2,7 @@ import renderer from "react-test-renderer";
 import FeedItem from "../cards.FeedItem";
 
 // MOMENT IS AWESOME
-const today = Moment().add(-1, "days").format("LL");
+const oneDayAgo = Moment().subtract(1, "days").format("LLL");
 
 const content = {
   channelName: "articles",
@@ -15,7 +15,7 @@ const content = {
     ],
   },
   meta: {
-    date: today,
+    date: oneDayAgo,
   },
   title: "FeedItem Title",
 };
@@ -29,13 +29,27 @@ it("should have styles based on a channelName of 'articles'", () => {
   expect(tree).toMatchSnapshot();
 });
 
-content.channelName = "series_newspring";
+const content2 = {
+  channelName: "series_newspring",
+  content: {
+    colors: [
+      { description: "primary", id: null, value: "303030" },
+    ],
+    images: [
+      { fileLabel: "2:1", url: "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg" },
+    ],
+  },
+  meta: {
+    date: oneDayAgo,
+  },
+  title: "FeedItem Title",
+};
 
 // this one should have different styles
 it("should have styles based on a channelName of 'series_newspring'", () => {
   const tree = renderer.create(
     <FeedItem
-      item={content}
+      item={content2}
     />
   );
   expect(tree).toMatchSnapshot();
