@@ -1,9 +1,25 @@
-import { Component, PropTypes } from "react";
+// @flow
+
+import { Component } from "react";
 import StripTags from "striptags";
 
 import Label from "./components/Label";
 
-const RenderLabel = ({ hideLabel, id, name, label, disabled }) => {
+type IRenderLabel = {
+  hideLabel?: boolean,
+  id: string,
+  name: string,
+  label: string,
+  disabled?: boolean,
+};
+
+const RenderLabel = ({
+  hideLabel = false,
+  id,
+  name,
+  label,
+  disabled = false,
+}: IRenderLabel) => {
   if (hideLabel) return null;
   return (
     <Label
@@ -14,48 +30,41 @@ const RenderLabel = ({ hideLabel, id, name, label, disabled }) => {
   );
 };
 
-RenderLabel.propTypes = {
-  hideLabel: PropTypes.bool,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  label: PropTypes.string,
-  disabled: PropTypes.bool,
+type IInputProps = {
+  defaultValue: string,
+  disabled?: boolean,
+  validation: Function,
+  errorText: string,
+  type: string,
+  classes: string | string[],
+  children: any,
+  id: string,
+  label: string,
+  name: string,
+  inputClasses: string,
+  hideLabel?: boolean,
+  autofocus?: boolean,
+  format: Function,
+  onChange: Function,
+  onBlur: Function,
+  style: Object,
+  value: string,
+  placeholder: string,
+  maxLength: number,
 };
 
+// type IInput = {
+//   node: Object,
+//   interval: number,
+//   _previousValue: string,
+// };
+
 export default class Input extends Component {
-
-  static propTypes = {
-    defaultValue: PropTypes.string,
-    disabled: PropTypes.any, // eslint-disable-line
-    validation: PropTypes.func,
-    errorText: PropTypes.string,
-    type: PropTypes.string,
-
-    classes: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.array,
-    ]),
-    children: PropTypes.any, // eslint-disable-line
-    id: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
-    label: PropTypes.string,
-    name: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.bool,
-    ]),
-    inputClasses: PropTypes.string, // eslint-disable-line
-    hideLabel: PropTypes.bool,
-    autofocus: PropTypes.any, // eslint-disable-line
-    format: PropTypes.func,
-    onChange: PropTypes.func,
-    onBlur: PropTypes.func,
-    style: PropTypes.object, //eslint-disable-line
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    placeholder: PropTypes.string,
-    maxLength: PropTypes.number,
-  }
+  node: Object;
+  interval: number;
+  // this: IInput;
+  _previousValue: string;
+  props: IInputProps;
 
   state = {
     active: false,
@@ -98,7 +107,7 @@ export default class Input extends Component {
     }
   }
 
-  componentWillUpdate(nextProps) {
+  componentWillUpdate(nextProps: Object) {
     if (this.props.defaultValue !== nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue);
       this.setState({ focused: false });
@@ -111,7 +120,7 @@ export default class Input extends Component {
     }
   }
 
-  format = (e) => {
+  format = (e: Event) => {
     const target = this.node;
     // let value = this.node.value
     const value = this.getValue();
@@ -126,7 +135,7 @@ export default class Input extends Component {
     }
   }
 
-  validate = (e) => {
+  validate = (e?: Event) => {
     const target = this.node;
     // const value = target.value
     const value = this.getValue();
@@ -161,7 +170,7 @@ export default class Input extends Component {
     });
   }
 
-  setValue = (value) => {
+  setValue = (value: string) => {
     const node = this.node;
     // prevent XSS;
     if (this.props.name === "password") {
