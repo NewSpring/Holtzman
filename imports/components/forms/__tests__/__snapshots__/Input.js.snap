@@ -11,9 +11,9 @@ exports[`test should render with no props 1`] = `
     <input
       data-spec="input"
       maxLength=""
-      onBlur={[Function anonymous]}
-      onChange={[Function anonymous]}
-      onFocus={[Function anonymous]}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
       style={Object {}} />
   </div>
 </Input>
