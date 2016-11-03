@@ -41,7 +41,7 @@ export default class Checkbox extends React.Component {
 
   disabled = () => {
     if (this.props.disabled) {
-      return disabled; // eslint-disable-line
+      return this.props.disabled; // eslint-disable-line
     }
     return undefined;
   }
@@ -112,6 +112,7 @@ export default class Checkbox extends React.Component {
           defaultChecked={this.props.defaultValue ? "checked" : ""}
           onClick={this.props.clicked}
           style={{ width: 0 }}
+          data-spec="input"
         />
 
         {!this.props.hideLabel && (
