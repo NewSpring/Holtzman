@@ -1,5 +1,9 @@
-import PropTypes from "react";
+// @flow
+
+// NPM based imports
 import { Link } from "react-router";
+
+// Project based imports
 import backgrounds from "../../util/backgrounds";
 import contentHelper from "../../util/content";
 import categories from "../../util/categories";
@@ -12,10 +16,24 @@ const hasImage = (content) =>
       content.parent.content.images.length > 0
     );
 
+type IMiniCard = {
+  title: string,
+  description: string,
+  content: Object,
+  icon: string,
+  category: string,
+};
+
 // XXX right now this uses the content prop for everything
 // it should less intelligent and use the other props directly
 // Unused props: icon, link, type, images
-const MiniCard = ({ title, description, content, icon, category }) => (
+const MiniCard = ({
+  title,
+  description,
+  content,
+  icon,
+  category,
+}: IMiniCard) => (
   <Link to={contentHelper.links(content)} className="plain">
     <div className="card">
       <div className={`card__item soft push-half-ends ${hasImage(content) ? "two-thirds" : "one-whole"}`} style={{ verticalAlign: "middle" }}>
@@ -40,13 +58,5 @@ const MiniCard = ({ title, description, content, icon, category }) => (
 
   </Link>
 );
-
-MiniCard.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  content: PropTypes.object.isRequired, // eslint-disable-line
-  icon: PropTypes.string,
-  category: PropTypes.string,
-};
 
 export default MiniCard;
