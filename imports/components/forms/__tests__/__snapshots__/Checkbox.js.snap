@@ -6,7 +6,8 @@ exports[`test should accept a default value 1`] = `
     data-spec="input-wrapper">
     <h6
       className="soft-left push-half-left flush-bottom text-left float-left locked-top">
-      <small />
+      <small
+        data-spec="input-label" />
     </h6>
     <input
       data-spec="input"
@@ -19,6 +20,101 @@ exports[`test should accept a default value 1`] = `
       type="checkbox" />
     <Label>
       <label
+        style={Object {}} />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`test should accept an id 1`] = `
+<Checkbox
+  id="harambe">
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper">
+    <h6
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      <small
+        data-spec="input-label" />
+    </h6>
+    <input
+      data-spec="input"
+      defaultChecked=""
+      id="harambe"
+      style={
+        Object {
+          "width": 0
+        }
+      }
+      type="checkbox" />
+    <Label
+      labelFor="harambe">
+      <label
+        htmlFor="harambe"
+        style={Object {}} />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`test should accept label 1`] = `
+<Checkbox
+  label="harambe">
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper">
+    <h6
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      <small
+        data-spec="input-label" />
+    </h6>
+    <input
+      data-spec="input"
+      defaultChecked=""
+      id="harambe"
+      name="harambe"
+      style={
+        Object {
+          "width": 0
+        }
+      }
+      type="checkbox" />
+    <Label
+      labelFor="harambe">
+      <label
+        htmlFor="harambe"
+        style={Object {}} />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`test should accept name prop 1`] = `
+<Checkbox
+  name="harambe">
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper">
+    <h6
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      <small
+        data-spec="input-label" />
+    </h6>
+    <input
+      data-spec="input"
+      defaultChecked=""
+      id="harambe"
+      name="harambe"
+      style={
+        Object {
+          "width": 0
+        }
+      }
+      type="checkbox" />
+    <Label
+      labelFor="harambe">
+      <label
+        htmlFor="harambe"
         style={Object {}} />
     </Label>
   </div>
@@ -38,7 +134,8 @@ exports[`test should add classes with classes prop 1`] = `
     data-spec="input-wrapper">
     <h6
       className="soft-left push-half-left flush-bottom text-left float-left locked-top">
-      <small />
+      <small
+        data-spec="input-label" />
     </h6>
     <input
       data-spec="input"
@@ -65,9 +162,39 @@ exports[`test should add classes with classes prop 2`] = `
     data-spec="input-wrapper">
     <h6
       className="soft-left push-half-left flush-bottom text-left float-left locked-top">
-      <small />
+      <small
+        data-spec="input-label" />
     </h6>
     <input
+      data-spec="input"
+      defaultChecked=""
+      style={
+        Object {
+          "width": 0
+        }
+      }
+      type="checkbox" />
+    <Label>
+      <label
+        style={Object {}} />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`test should add inputClasses with inputClasses prop 1`] = `
+<Checkbox
+  inputClasses="test1 harambe">
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper">
+    <h6
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      <small
+        data-spec="input-label" />
+    </h6>
+    <input
+      className="test1 harambe"
       data-spec="input"
       defaultChecked=""
       style={
@@ -92,7 +219,8 @@ exports[`test should disable input with disabled prop 1`] = `
     data-spec="input-wrapper">
     <h6
       className="soft-left push-half-left flush-bottom text-left float-left locked-top">
-      <small />
+      <small
+        data-spec="input-label" />
     </h6>
     <input
       data-spec="input"
@@ -112,6 +240,59 @@ exports[`test should disable input with disabled prop 1`] = `
 </Checkbox>
 `;
 
+exports[`test should display children 1`] = `
+<Checkbox>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper">
+    <h6
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      <small
+        data-spec="input-label">
+        this is a test
+      </small>
+    </h6>
+    <input
+      data-spec="input"
+      defaultChecked=""
+      style={
+        Object {
+          "width": 0
+        }
+      }
+      type="checkbox" />
+    <Label>
+      <label
+        style={Object {}} />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`test should hide label with hideLabel prop 1`] = `
+<Checkbox
+  hideLabel={true}>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper">
+    <h6
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      <small
+        data-spec="input-label" />
+    </h6>
+    <input
+      data-spec="input"
+      defaultChecked=""
+      style={
+        Object {
+          "width": 0
+        }
+      }
+      type="checkbox" />
+  </div>
+</Checkbox>
+`;
+
 exports[`test should render with minimal props 1`] = `
 <Checkbox>
   <div
@@ -119,11 +300,41 @@ exports[`test should render with minimal props 1`] = `
     data-spec="input-wrapper">
     <h6
       className="soft-left push-half-left flush-bottom text-left float-left locked-top">
-      <small />
+      <small
+        data-spec="input-label" />
     </h6>
     <input
       data-spec="input"
       defaultChecked=""
+      style={
+        Object {
+          "width": 0
+        }
+      }
+      type="checkbox" />
+    <Label>
+      <label
+        style={Object {}} />
+    </Label>
+  </div>
+</Checkbox>
+`;
+
+exports[`test should respond to onclick prop 1`] = `
+<Checkbox
+  clicked={[Function mockConstructor]}>
+  <div
+    className="input checkbox"
+    data-spec="input-wrapper">
+    <h6
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      <small
+        data-spec="input-label" />
+    </h6>
+    <input
+      data-spec="input"
+      defaultChecked=""
+      onClick={[Function mockConstructor]}
       style={
         Object {
           "width": 0

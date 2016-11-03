@@ -1,3 +1,4 @@
+
 import { mount } from 'enzyme';
 import Checkbox from '../Checkbox.js';
 import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
@@ -48,30 +49,78 @@ it ("should add classes with classes prop", () => {
   const wrapper2 = getSingleSpecWrapper(component2, "input-wrapper");
 
   expect(wrapper.hasClass("harambe")).toEqual(true);
-  expect(wrapper.hasClass("harambe")).toEqual(true);
+  expect(wrapper2.hasClass("harambe")).toEqual(true);
 });
 
-/*
-DONE  defaultValue: PropTypes.oneOfType([
-        PropTypes.bool,
-        PropTypes.string,
-      ]),
-DEPR  status: PropTypes.string,
-DONE  disabled: PropTypes.any, // eslint-disable-line
-DEPR  validation: PropTypes.func,
-      errorText: PropTypes.string,
-DEPR  theme: PropTypes.string,
-DEPR  type: PropTypes.string,
-      error: PropTypes.any, // eslint-disable-line
-      classes: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.array,
-      ]),
-      children: PropTypes.any, // eslint-disable-line
-      id: PropTypes.string,
-      label: PropTypes.string,
-      name: PropTypes.string,
-      inputClasses: PropTypes.array, // eslint-disable-line
-      clicked: PropTypes.func,
-      hideLabel: PropTypes.bool,
-*/
+it ("should display children", () => {
+  let component = mount(generateComponent({
+    children: "this is a test",
+  }));
+  expect(mountToJson(component)).toMatchSnapshot();
+
+  const labelProps = getSingleSpecWrapper(component, "input-label").props();
+
+  expect(labelProps.children).toEqual("this is a test");
+});
+
+it ("should accept an id", () => {
+  let component = mount(generateComponent({
+    id: "harambe",
+  }));
+  expect(mountToJson(component)).toMatchSnapshot();
+
+  const inputProps = getSingleSpecWrapper(component, "input").props();
+
+  expect(inputProps.id).toEqual("harambe");
+});
+
+// XXX Label doesn't actually display anything. Is that right?
+it ("should accept label", () => {
+  let component = mount(generateComponent({
+    label: "harambe",
+  }));
+  expect(mountToJson(component)).toMatchSnapshot();
+});
+
+it ("should accept name prop", () => {
+  let component = mount(generateComponent({
+    name: "harambe",
+  }));
+  expect(mountToJson(component)).toMatchSnapshot();
+});
+
+it ("should add inputClasses with inputClasses prop", () => {
+  let component = mount(generateComponent({
+    inputClasses: "test1 harambe",
+  }));
+
+  expect(mountToJson(component)).toMatchSnapshot();
+
+  const input = getSingleSpecWrapper(component, "input");
+
+  expect(input.hasClass("harambe")).toEqual(true);
+});
+
+it ("should respond to onclick prop", () => {
+  const spy = jest.fn();
+  let component = mount(generateComponent({
+    clicked: spy,
+  }));
+
+  expect(mountToJson(component)).toMatchSnapshot();
+
+  const input = getSingleSpecWrapper(component, "input");
+  input.simulate("click");
+
+  expect(spy).toBeCalled();
+});
+
+it ("should hide label with hideLabel prop", () => {
+  let component = mount(generateComponent({
+    hideLabel: true,
+  }));
+
+  expect(mountToJson(component)).toMatchSnapshot();
+
+  expect(component.find("label").length).toEqual(0);
+});
