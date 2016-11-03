@@ -2,12 +2,12 @@ exports[`test correctly throws if call to NMI fails and includes messages 1`] = 
 
 exports[`test throws a helpful error if account can't be removed 1`] = `
 [Error: 
-      Something when wrong when removing your payment account, please try again
+      Something went wrong while removing your payment account, please try again.
     ]
 `;
 
 exports[`test throws a helpful error if account lookup fails 1`] = `
 [Error: 
-      Something when wrong when removing your payment account, please try again
+      Something went wrong while removing your payment account, please try again.
     ]
 `;

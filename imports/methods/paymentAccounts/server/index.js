@@ -9,7 +9,7 @@ const remove = (id) => {
 
   if (!result || result.status) {
     throw new Meteor.Error(`
-      Something when wrong when removing your payment account, please try again
+      Something went wrong while removing your payment account, please try again.
     `);
   }
 
