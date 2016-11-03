@@ -1,10 +1,11 @@
-import { Component, PropTypes } from "react";
+// @flow
+
+import { Component } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
-import Loading from "../../components/loading";
-import MiniCard from "../../components/cards/cards.MiniCard";
+import Layout from "./Layout";
 
 // XXX add skip if no tags
 
@@ -52,55 +53,31 @@ const withContent = graphql(RELATED_CONTENT_QUERY, {
   }),
 });
 
+type IRelatedContent = {
+  content: Object,
+  title: string,
+};
+
+// $FlowMeteor
 @connect()
 @withContent
 export default class RelatedContent extends Component {
+  props: IRelatedContent
 
   static defaultProps = {
     title: "More Like This",
   }
 
-  static propTypes = {
-    content: PropTypes.object,
-    title: PropTypes.string,
-  }
-
   render() {
     const { taggedContent, loading } = this.props.content;
     if (!loading && (taggedContent && !taggedContent.length)) return null;
+
     return (
-      <section className="soft-half-sides@palm soft-double@palm-wide soft-top soft-half-bottom background--light-secondary">
-        <div className="one-whole text-center">
-          <h5 className="flush soft-bottom">{this.props.title}</h5>
-        </div>
-        <div>
-          {(() => {
-            if (!this.props.content.loading) return null;
-            return (
-              <div className="one-whole text-center soft">
-                <Loading />
-              </div>
-            );
-          })()}
-          {taggedContent && taggedContent.map((content, key) => (
-            <div
-              key={key}
-              className="soft-half-bottom@palm-wide"
-              style={{
-                maxWidth: "480px",
-                margin: "0 auto",
-              }}
-            >
-              <MiniCard
-                title={content.title}
-                images={content.content.images}
-                type={content.channel}
-                content={content}
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+      <Layout
+        title={this.props.title}
+        content={taggedContent}
+        loading={loading}
+      />
     );
   }
 }
