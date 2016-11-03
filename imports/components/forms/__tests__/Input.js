@@ -4,6 +4,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Input from '../Input.js';
 import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
+import { mountToJson } from "enzyme-to-json";
 
 const generateComponent = (additionalProps={}) => (
     <Input {...additionalProps} />
@@ -29,7 +30,7 @@ it('Name input does not allow <> in field', () => {
 
 it ("should render with no props", () => {
   let component = mount(generateComponent());
-  expect(component.html()).toMatchSnapshot();
+  expect(mountToJson(component)).toMatchSnapshot();
 });
 
 // XXX should input ID be the label? Can contain spaces
