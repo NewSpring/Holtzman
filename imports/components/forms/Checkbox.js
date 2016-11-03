@@ -95,7 +95,10 @@ export default class Checkbox extends React.Component {
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
 
     return (
-      <div className={inputclasses.join(" ")}>
+      <div
+        className={inputclasses.join(" ")}
+        data-spec="input-wrapper"
+      >
 
         <h6 className="soft-left push-half-left flush-bottom text-left float-left locked-top">
           <small>
