@@ -110,6 +110,7 @@ Vorpal
     var packageFile = require(Path.join(app, "package.json"));
 
     var env = process.env;
+    env.METEOR_DISABLE_FS_FIBERS = 1; // https://github.com/meteor/meteor/pull/7668#issuecomment-256230102
     if (options.debug) env.METEOR_PROFILE = 200;
     if (options.production) env.NODE_ENV = "production";
     if (!options.ios && !options.android && !options.native) env.WEB = true;
