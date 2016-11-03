@@ -56,7 +56,6 @@ export default class Input extends Component {
   }
 
   componentDidMount() {
-
     if (this.props.autofocus) {
       this.node.focus();
       this.focus();
