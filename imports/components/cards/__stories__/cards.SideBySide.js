@@ -30,13 +30,17 @@ story
       ];
 
       return (
-        <SideBySide
-          images={images}
-        >
-          <h3>{title}</h3>
-          <p>{summary}</p>
-          <div className="btn--dark-tertiary btn--small">{button}</div>
-        </SideBySide>
+        <div className={"floating"}>
+          <div className={"grid__item text-left"} style={{ maxWidth: "960px" }}>
+            <SideBySide
+              images={images}
+            >
+              <h3>{title}</h3>
+              <p>{summary}</p>
+              <div className="btn--dark-tertiary btn--small">{button}</div>
+            </SideBySide>
+          </div>
+        </div>
       );
     }
   ));

@@ -40,7 +40,7 @@ story
       content: {
         images: [{
           fileLabel: "2:1",
-          url: "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg",
+          url: "http://www.adweek.com/files/blogs/jeff-goldblum-apartments-hed-2015.jpg",
         }],
       },
       title: "MiniCard Title",
@@ -50,7 +50,7 @@ story
     content.channelName = select("type", channelOptions, "articles");
 
     // Image
-    const defaultImageURL = "https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg";
+    const defaultImageURL = "http://www.adweek.com/files/blogs/jeff-goldblum-apartments-hed-2015.jpg";
     content.content.images[0].url = text("image link", defaultImageURL);
 
     // Title
