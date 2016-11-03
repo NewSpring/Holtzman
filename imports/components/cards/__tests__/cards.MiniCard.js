@@ -1,7 +1,17 @@
 import renderer from "react-test-renderer";
+import { reset, startBuffering } from "aphrodite/lib/inject";
 import MiniCard from "../cards.MiniCard";
 
 describe("MiniCard", () => {
+  beforeEach(() => {
+    reset();
+    startBuffering();
+  });
+
+  afterEach(() => {
+    reset();
+  });
+
   it("has a channelName of 'articles', an image, and a title of 'MiniCard Title'", () => {
     const content = {
       channelName: "articles",
