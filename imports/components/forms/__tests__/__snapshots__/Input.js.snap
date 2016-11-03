@@ -1,0 +1,20 @@
+exports[`test should render with no props 1`] = `
+<Input>
+  <div
+    className="input"
+    data-spec="input-wrapper"
+    style={Object {}}>
+    <Label>
+      <label
+        style={Object {}} />
+    </Label>
+    <input
+      data-spec="input"
+      maxLength=""
+      onBlur={[Function anonymous]}
+      onChange={[Function anonymous]}
+      onFocus={[Function anonymous]}
+      style={Object {}} />
+  </div>
+</Input>
+`;

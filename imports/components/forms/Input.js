@@ -6,17 +6,14 @@ import Label from "./components/Label";
 export default class Input extends Component {
 
   static propTypes = {
-    defaultValue: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.string,
-    ]),
-    status: PropTypes.string,
+    defaultValue: PropTypes.string,
+    status: PropTypes.string, // DEPRECATED
     disabled: PropTypes.any, // eslint-disable-line
     validation: PropTypes.func,
     errorText: PropTypes.string,
-    theme: PropTypes.string,
+    theme: PropTypes.string, // DEPRECATED
     type: PropTypes.string,
-    error: PropTypes.any, // eslint-disable-line
+    // error: PropTypes.any, -- UNUSED
     classes: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.array,
@@ -59,8 +56,10 @@ export default class Input extends Component {
   }
 
   componentDidMount() {
+
     if (this.props.autofocus) {
       this.node.focus();
+      this.focus();
     }
 
 
@@ -81,7 +80,7 @@ export default class Input extends Component {
 
     // set value on re-render
     if (this.props.value) {
-      this.setValue(`$${this.props.value}`);
+      this.setValue(`${this.props.value}`);
     }
   }
 
@@ -182,7 +181,7 @@ export default class Input extends Component {
   renderHelpText = () => {
     if ((this.state.error && this.props.errorText) || this.state.status) {
       return (
-        <span className="input__status">
+        <span className="input__status" data-spec="help">
           {this.props.errorText || this.state.status}
         </span>
       );
@@ -225,7 +224,11 @@ export default class Input extends Component {
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
 
     return (
-      <div className={inputclasses.join(" ")} style={this.props.style || {}}>
+      <div
+        className={inputclasses.join(" ")}
+        style={this.props.style || {}}
+        data-spec="input-wrapper"
+      >
         {(() => {
           if (!this.props.hideLabel) {
             return (
@@ -258,6 +261,7 @@ export default class Input extends Component {
           defaultValue={this.props.defaultValue}
           style={this.style()}
           maxLength={this.props.maxLength || ""}
+          data-spec="input"
         />
 
         {this.props.children}
