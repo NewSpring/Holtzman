@@ -6,11 +6,12 @@ type IGuest = {
   text?: string,
 };
 
-const Guest = ({
+// must use named function for default destructured parameters
+const Guest = function Guest({
   disabled = false,
   onClick,
   text = "Give as Guest",
-}: IGuest): Object => {
+}: IGuest): Object {
   const classes = [
     "outlined--bottom",
     "outlined--light",
