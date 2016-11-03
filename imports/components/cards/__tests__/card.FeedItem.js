@@ -1,10 +1,20 @@
 import renderer from "react-test-renderer";
+import { reset, startBuffering } from "aphrodite/lib/inject";
 import FeedItem from "../cards.FeedItem";
 
 // MOMENT IS AWESOME
 const oneDayAgo = Moment().subtract(1, "days").format("LLL");
 
 describe("FeedItem", () => {
+  beforeEach(() => {
+    reset();
+    startBuffering();
+  });
+
+  afterEach(() => {
+    reset();
+  });
+
   it("should have styles based on a channelName of 'articles'", () => {
     const content = {
       channelName: "articles",
