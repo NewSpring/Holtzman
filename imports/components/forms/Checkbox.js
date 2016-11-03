@@ -24,7 +24,7 @@ export default class Checkbox extends React.Component {
     id: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
-    inputClasses: PropTypes.array, // eslint-disable-line
+    inputClasses: PropTypes.string, // eslint-disable-line
     clicked: PropTypes.func,
     hideLabel: PropTypes.bool,
   }
@@ -101,7 +101,7 @@ export default class Checkbox extends React.Component {
       >
 
         <h6 className="soft-left push-half-left flush-bottom text-left float-left locked-top">
-          <small>
+          <small data-spec="input-label">
             {this.props.children}
           </small>
         </h6>
