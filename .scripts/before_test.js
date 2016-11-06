@@ -4,3 +4,5 @@ global.Moment = require("moment");
 
 window.Meteor = { isServer: true };
 window.Moment = global.Moment;
+
+global.__meteor_runtime_config__ = true;
