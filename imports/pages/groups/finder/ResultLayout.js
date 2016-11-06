@@ -136,7 +136,7 @@ const Layout = ({
             <div className="card push-top">
               <div className="card__item soft-ends soft-half-sides soft-double@palm-wide-and-up">
                 <p className="flush hard"><em><small>
-                  Unfortunately, we didn't find any groups matching your search. You can start a group <a href="https://rock.newspring.cc/workflows/81">here!</a>
+                  Unfortunately, we didn&#39;t find any groups matching your search. You can start a group <a href="https://rock.newspring.cc/workflows/81">here!</a>
                 </small></em></p>
               </div>
             </div>
@@ -156,7 +156,7 @@ const Layout = ({
             <div className="one-whole text-center@handheld">
               {/* Name */}
               <h4 className="soft-half-top push-top@anchored capitalize">
-                Can't find what you're looking for, or want to start your own group?
+                Can&#39;t find what you&#39;re looking for, or want to start your own group?
               </h4>
 
               {/* CTA */}

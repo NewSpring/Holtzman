@@ -1,0 +1,195 @@
+exports[`ButtonText overrides if signed in and override 1`] = `
+<span>
+  Give Later
+</span>
+`;
+
+exports[`ButtonText says \`Give Now\` if signed in and no override 1`] = `
+<span>
+  Give Now
+</span>
+`;
+
+exports[`ButtonText says \`Review Using 6789\` if signed in and has saved account 1`] = `
+<span>
+  Review Using 6789
+</span>
+`;
+
+exports[`ButtonText says \`Sign In\` if not userId 1`] = `
+<span>
+  Sign In
+</span>
+`;
+
+exports[`ButtonText still says \`Give Now\` if hideCard is true 1`] = `
+<span>
+  Give Now
+</span>
+`;
+
+exports[`Icon does nothing if no saved payments 1`] = `null`;
+
+exports[`Icon does nothing if saved payment and hideCard is true 1`] = `null`;
+
+exports[`Icon renders AmEx if AmEx 1`] = `
+<div
+  className="background--fill display-inline-block"
+  style={
+    Object {
+      "backgroundImage": "url(\'data:image/png;base64,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\')",
+      "borderRadius": "3px",
+      "height": "21px",
+      "position": "inherit",
+      "top": "3px",
+      "width": "30px",
+    }
+  } />
+`;
+
+exports[`Icon renders bank icon if paymentType ACH 1`] = `
+<div
+  className="background--fill display-inline-block"
+  style={
+    Object {
+      "backgroundImage": "url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=\')",
+      "borderRadius": "3px",
+      "height": "21px",
+      "position": "inherit",
+      "top": "3px",
+      "width": "30px",
+    }
+  } />
+`;
+
+exports[`PrimaryButton has default styles when disabled but not logged in 1`] = `
+<button
+  className="btn"
+  data-id={undefined}
+  disabled={undefined}
+  onClick={undefined}
+  style={undefined}
+  value={undefined}>
+  <span>
+    Sign In
+  </span>
+   
+</button>
+`;
+
+exports[`PrimaryButton has disabled style when disabled and logged in 1`] = `
+<button
+  className="btn btn--disabled"
+  data-id={undefined}
+  disabled={true}
+  onClick={undefined}
+  style={undefined}
+  value={undefined}>
+  <span>
+    Give Now
+  </span>
+   
+</button>
+`;
+
+exports[`PrimaryButton has enabled styles when enabled 1`] = `
+<button
+  className="btn"
+  data-id={undefined}
+  disabled={undefined}
+  onClick={undefined}
+  style={undefined}
+  value={undefined}>
+  <span>
+    Sign In
+  </span>
+   
+</button>
+`;
+
+exports[`PrimaryButton overrides classes with theme if theme 1`] = `
+<button
+  className="my cool theme"
+  data-id={undefined}
+  disabled={undefined}
+  onClick={undefined}
+  style={undefined}
+  value={undefined}>
+  <span>
+    Sign In
+  </span>
+   
+</button>
+`;
+
+exports[`PrimaryButton passes a style object 1`] = `
+<button
+  className="btn"
+  data-id={undefined}
+  disabled={undefined}
+  onClick={undefined}
+  style={
+    Object {
+      "background": "red",
+    }
+  }
+  value={undefined}>
+  <span>
+    Sign In
+  </span>
+   
+</button>
+`;
+
+exports[`PrimaryButton passes a value 1`] = `
+<button
+  className="btn"
+  data-id={undefined}
+  disabled={undefined}
+  onClick={undefined}
+  style={undefined}
+  value="test">
+  <span>
+    Sign In
+  </span>
+   
+</button>
+`;
+
+exports[`PrimaryButton passes the onClick function 1`] = `
+<button
+  className="btn"
+  data-id={undefined}
+  disabled={undefined}
+  onClick={[Function]}
+  style={undefined}
+  value={undefined}>
+  <span>
+    Sign In
+  </span>
+   
+</button>
+`;
+
+exports[`PrimaryButton renders with minimum props 1`] = `
+<button
+  className="btn"
+  data-id={undefined}
+  disabled={undefined}
+  onClick={undefined}
+  style={undefined}
+  value={undefined}>
+  <span>
+    Sign In
+  </span>
+   
+</button>
+`;
+
+exports[`buttonClasses has additionalClasses if passed 1`] = `"btn additional class names"`;
+
+exports[`buttonClasses has btn at least 1`] = `"btn"`;
+
+exports[`buttonClasses has btn--disabled if disabled and userId 1`] = `"btn btn--disabled"`;
+
+exports[`buttonClasses has has-card if saved payments 1`] = `"btn has-card"`;

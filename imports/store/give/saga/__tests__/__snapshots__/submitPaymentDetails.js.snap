@@ -5,16 +5,16 @@ FormData {
       Object {
         "name": "billing-cc-number",
         "type": "text",
-        "value": ""
+        "value": "",
       },
       Object {
         "name": "billing-cc-exp",
         "type": "text",
-        "value": ""
-      }
+        "value": "",
+      },
     ],
-    Symbol(wrapper): [Circular]
-  }
+    Symbol(wrapper): [Circular],
+  },
 }
 `;
 
@@ -25,20 +25,20 @@ FormData {
       Object {
         "name": "billing-cc-number",
         "type": "text",
-        "value": "4111111111111111"
+        "value": "4111111111111111",
       },
       Object {
         "name": "billing-cc-exp",
         "type": "text",
-        "value": "07/19"
+        "value": "07/19",
       },
       Object {
         "name": "billing-cvv",
         "type": "text",
-        "value": "001"
-      }
+        "value": "001",
+      },
     ],
-    Symbol(wrapper): [Circular]
-  }
+    Symbol(wrapper): [Circular],
+  },
 }
 `;

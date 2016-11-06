@@ -4,22 +4,22 @@ exports[`test correctly renders account info 1`] = `
   style={
     Object {
       "overflow": "visible",
-      "zIndex": 1
+      "zIndex": 1,
     }
   }>
   <a
     className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain"
-    onClick={[Function bound handleClick]}
+    onClick={[Function]}
     style={
       Object {
-        "zIndex": 10
+        "zIndex": 10,
       }
     }>
     <i
       className="icon-arrow-back soft-half-right display-inline-block"
       style={
         Object {
-          "verticalAlign": "middle"
+          "verticalAlign": "middle",
         }
       } />
     <span
@@ -27,7 +27,7 @@ exports[`test correctly renders account info 1`] = `
       style={
         Object {
           "marginTop": "3px",
-          "verticalAlign": "middle"
+          "verticalAlign": "middle",
         }
       }>
       Back
@@ -51,7 +51,7 @@ exports[`test correctly renders account info 1`] = `
           <button
             className="h6 flush-bottom float-right text-alert"
             id="TEST"
-            onClick={[Function onClick]}>
+            onClick={[Function]}>
             Remove
           </button>
         </div>
@@ -70,7 +70,7 @@ exports[`test correctly renders account info 1`] = `
                   "height": "20px",
                   "position": "inherit",
                   "top": "3px",
-                  "width": "30px"
+                  "width": "30px",
                 }
               } />
           </span>
@@ -91,22 +91,22 @@ exports[`test correctly renders an error 1`] = `
   style={
     Object {
       "overflow": "visible",
-      "zIndex": 1
+      "zIndex": 1,
     }
   }>
   <a
     className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain"
-    onClick={[Function bound handleClick]}
+    onClick={[Function]}
     style={
       Object {
-        "zIndex": 10
+        "zIndex": 10,
       }
     }>
     <i
       className="icon-arrow-back soft-half-right display-inline-block"
       style={
         Object {
-          "verticalAlign": "middle"
+          "verticalAlign": "middle",
         }
       } />
     <span
@@ -114,7 +114,7 @@ exports[`test correctly renders an error 1`] = `
       style={
         Object {
           "marginTop": "3px",
-          "verticalAlign": "middle"
+          "verticalAlign": "middle",
         }
       }>
       Back
@@ -146,22 +146,22 @@ exports[`test correctly renders empty accounts 1`] = `
   style={
     Object {
       "overflow": "visible",
-      "zIndex": 1
+      "zIndex": 1,
     }
   }>
   <a
     className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain"
-    onClick={[Function bound handleClick]}
+    onClick={[Function]}
     style={
       Object {
-        "zIndex": 10
+        "zIndex": 10,
       }
     }>
     <i
       className="icon-arrow-back soft-half-right display-inline-block"
       style={
         Object {
-          "verticalAlign": "middle"
+          "verticalAlign": "middle",
         }
       } />
     <span
@@ -169,7 +169,7 @@ exports[`test correctly renders empty accounts 1`] = `
       style={
         Object {
           "marginTop": "3px",
-          "verticalAlign": "middle"
+          "verticalAlign": "middle",
         }
       }>
       Back
@@ -197,22 +197,22 @@ exports[`test renders a loading state while waiting on data 1`] = `
   style={
     Object {
       "overflow": "visible",
-      "zIndex": 1
+      "zIndex": 1,
     }
   }>
   <a
     className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain"
-    onClick={[Function bound handleClick]}
+    onClick={[Function]}
     style={
       Object {
-        "zIndex": 10
+        "zIndex": 10,
       }
     }>
     <i
       className="icon-arrow-back soft-half-right display-inline-block"
       style={
         Object {
-          "verticalAlign": "middle"
+          "verticalAlign": "middle",
         }
       } />
     <span
@@ -220,7 +220,7 @@ exports[`test renders a loading state while waiting on data 1`] = `
       style={
         Object {
           "marginTop": "3px",
-          "verticalAlign": "middle"
+          "verticalAlign": "middle",
         }
       }>
       Back

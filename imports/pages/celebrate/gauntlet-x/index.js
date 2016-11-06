@@ -156,7 +156,7 @@ const Fuse = () => (
           </blockquote>
 
           <p>
-            "People thought I had been saved and I knew Jesus, but the reality was that I didn’t. At Gauntlet X, I realized I knew Him in my head but not in my heart. I prayed to receive Christ and was baptized in the ocean. I am really a different person. I was really insecure all throughout high school, but I have a lot more joy in my life now."
+            &quot;People thought I had been saved and I knew Jesus, but the reality was that I didn’t. At Gauntlet X, I realized I knew Him in my head but not in my heart. I prayed to receive Christ and was baptized in the ocean. I am really a different person. I was really insecure all throughout high school, but I have a lot more joy in my life now.&quot;
           </p>
           <h6
             className="italic text-dark-primary"

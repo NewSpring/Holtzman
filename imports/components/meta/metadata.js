@@ -123,5 +123,5 @@ export default function generateData(newData) {
       },
     ],
   },
-  ...data };
+    ...data };
 }

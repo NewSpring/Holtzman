@@ -3,7 +3,7 @@ import Moment from "moment";
 import { css } from "aphrodite";
 
 import Forms from "../../components/forms";
-import GiveNow from "../action-buttons";
+import CheckoutButtons from "../checkout-buttons";
 import Styles from "./styles-css";
 
 export default class Layout extends Component {
@@ -64,7 +64,7 @@ export default class Layout extends Component {
         >
 
           <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-            I'd like to give &nbsp;
+            I&#39;d like to give &nbsp;
           </h3>
           <Forms.Input
             id={state.fundId || -1}
@@ -131,7 +131,7 @@ export default class Layout extends Component {
           />
 
           <div className="push-top">
-            <GiveNow
+            <CheckoutButtons
               disabled={total <= 0 || !ready}
               disabledGuest
               text={this.props.text || "Schedule Now"}

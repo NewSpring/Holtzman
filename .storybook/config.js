@@ -1,5 +1,9 @@
 import { configure, addDecorator } from '@kadira/storybook';
 import { setOptions } from '@kadira/storybook-addon-options';
+import _ from 'underscore';
+
+window._ = _;
+
 
 setOptions({
   name: 'Holtzmann',
@@ -12,8 +16,9 @@ import "!style!css!sass!../stylesheets/fonts.css";
 import "!style!css!sass!../stylesheets/icons.css";
 import "!style!css!sass!../stylesheets/masters.scss";
 
+window.Meteor = { isServer: false };
 
-const req = require.context('../imports/', true, /\.story.js$/);
+const req = require.context('../imports/', true, /\__stories__\/.*.js$/);
 
 addDecorator((story) => (
   <div className="floating locked-sides locked-ends scrollable">

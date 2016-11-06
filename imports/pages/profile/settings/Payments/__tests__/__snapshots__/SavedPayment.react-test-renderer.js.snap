@@ -10,7 +10,7 @@ exports[`test renders out a full card when all data is provided 1`] = `
     <button
       className="h6 flush-bottom float-right text-alert"
       id="TEST"
-      onClick={[Function onClick]}>
+      onClick={[Function]}>
       Remove
     </button>
   </div>
@@ -29,7 +29,7 @@ exports[`test renders out a full card when all data is provided 1`] = `
             "height": "20px",
             "position": "inherit",
             "top": "3px",
-            "width": "30px"
+            "width": "30px",
           }
         } />
     </span>

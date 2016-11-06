@@ -55,7 +55,7 @@ const Layout = ({
             onClick={(e) => submitTags(e)}
             className={classes.join(" ")}
           >
-            Let's Go!
+            Let&#39;s Go!
           </button>
         );
       })()}
@@ -67,7 +67,7 @@ const Layout = ({
     >
       <div>
         <h3 className="soft-ends@anchored push-top@lap-and-up flush-bottom">
-          Don't see what you're looking for?
+          Don&#39;t see what you&#39;re looking for?
         </h3>
         <Forms.Form
           classes={[
@@ -103,7 +103,7 @@ const Layout = ({
         "soft-double@lap-wide-and-up text-center"
       }
     >
-      <h3 className="push-top">You Can't Do Life Alone</h3>
+      <h3 className="push-top">You Can&#39;t Do Life Alone</h3>
       <div className="grid">
         {content && content.map((entry, key) => {
           if (process.env.WEB) {

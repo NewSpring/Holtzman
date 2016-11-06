@@ -11,7 +11,7 @@
     "transform-inline-environment-variables",
     "transform-decorators-legacy",
     "react-require",
-    "react-remove-prop-types",
+    "transform-react-remove-prop-types",
     "transform-dead-code-elimination",
     "transform-flow-strip-types"
   ]

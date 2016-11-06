@@ -9,7 +9,7 @@ Object {
     "first-name": "James",
     "last-name": "Baxley",
     "postal": 29621,
-    "state": "SC"
+    "state": "SC",
   },
   "merchant-defined-field-2": 1,
   "product": Array [
@@ -17,9 +17,9 @@ Object {
       "description": "General Fund",
       "product-code": "1",
       "quantity": 1,
-      "total-amount": 10
-    }
-  ]
+      "total-amount": 10,
+    },
+  ],
 }
 `;
 
@@ -34,7 +34,7 @@ Object {
     "first-name": "James",
     "last-name": "Baxley",
     "postal": 29621,
-    "state": "SC"
+    "state": "SC",
   },
   "merchant-defined-field-2": 1,
   "product": Array [
@@ -42,15 +42,15 @@ Object {
       "description": "General Fund",
       "product-code": "1",
       "quantity": 1,
-      "total-amount": 10
+      "total-amount": 10,
     },
     Object {
       "description": "Tesla Fund",
       "product-code": "2",
       "quantity": 1,
-      "total-amount": 100000000
-    }
-  ]
+      "total-amount": 100000000,
+    },
+  ],
 }
 `;
 
@@ -65,11 +65,11 @@ Object {
     "first-name": "James",
     "last-name": "Baxley",
     "postal": 29621,
-    "state": "SC"
+    "state": "SC",
   },
   "merchant-defined-field-2": 1,
   "savedAccount": 4,
-  "savedAccountName": "TEST"
+  "savedAccountName": "TEST",
 }
 `;
 
@@ -84,11 +84,11 @@ Object {
     "first-name": "James",
     "last-name": "Baxley",
     "postal": 29621,
-    "state": "SC"
+    "state": "SC",
   },
   "merchant-defined-field-2": 1,
   "savedAccount": 4,
-  "savedAccountName": undefined
+  "savedAccountName": undefined,
 }
 `;
 
@@ -102,7 +102,7 @@ Object {
     "first-name": "James",
     "last-name": "Baxley",
     "postal": 29621,
-    "state": "SC"
+    "state": "SC",
   },
   "merchant-defined-field-1": "1",
   "merchant-defined-field-2": 1,
@@ -110,9 +110,9 @@ Object {
   "plan": Object {
     "amount": 0,
     "day-frequency": 14,
-    "payments": 0
+    "payments": 0,
   },
-  "start-date": "20200101"
+  "start-date": "20200101",
 }
 `;
 
@@ -126,7 +126,7 @@ Object {
     "first-name": "James",
     "last-name": "Baxley",
     "postal": 29621,
-    "state": "SC"
+    "state": "SC",
   },
   "merchant-defined-field-1": "1",
   "merchant-defined-field-2": 1,
@@ -135,9 +135,9 @@ Object {
     "amount": 0,
     "day-of-month": 1,
     "month-frequency": 1,
-    "payments": 0
+    "payments": 0,
   },
-  "start-date": "20200101"
+  "start-date": "20200101",
 }
 `;
 
@@ -151,7 +151,7 @@ Object {
     "first-name": "James",
     "last-name": "Baxley",
     "postal": 29621,
-    "state": "SC"
+    "state": "SC",
   },
   "merchant-defined-field-1": "1",
   "merchant-defined-field-2": 1,
@@ -160,9 +160,9 @@ Object {
     "amount": 0,
     "day-of-month": 1,
     "month-frequency": 12,
-    "payments": 1
+    "payments": 1,
   },
-  "start-date": "20200101"
+  "start-date": "20200101",
 }
 `;
 
@@ -176,7 +176,7 @@ Object {
     "first-name": "James",
     "last-name": "Baxley",
     "postal": 29621,
-    "state": "SC"
+    "state": "SC",
   },
   "merchant-defined-field-1": "1",
   "merchant-defined-field-2": 1,
@@ -184,9 +184,9 @@ Object {
   "plan": Object {
     "amount": 0,
     "day-frequency": 7,
-    "payments": 0
+    "payments": 0,
   },
-  "start-date": "20200101"
+  "start-date": "20200101",
 }
 `;
 
@@ -201,8 +201,8 @@ Object {
     "first-name": "James",
     "last-name": "Baxley",
     "postal": 29621,
-    "state": "SC"
+    "state": "SC",
   },
-  "merchant-defined-field-2": 1
+  "merchant-defined-field-2": 1,
 }
 `;

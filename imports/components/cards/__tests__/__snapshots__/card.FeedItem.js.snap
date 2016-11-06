@@ -1,0 +1,380 @@
+exports[`FeedItem should have styles based on a channelName of 'articles' 1`] = `
+<a
+  className="card rounded-top"
+  data-spec="card"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "inherit",
+      "display": "block",
+      "overflow": "hidden",
+      "textDecoration": "none",
+    }
+  }>
+  <div
+    className="background--fill plain"
+    data-spec="card-image-wrapper"
+    style={Object {}}>
+    <span>
+      <span
+        className="imageloader loaded"
+        style={
+          Object {
+            "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+          }
+        }>
+        <div
+          className="background--fill card__image background-light-tertiary ratio--square rounded-top"
+          style={
+            Object {
+              "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+            }
+          }>
+          <div
+            className="ratio__item" />
+        </div>
+      </span>
+    </span>
+  </div>
+  <div
+    className="card__item soft text-center soft-bottom rounded-bottom soft-top"
+    data-spec="card-item"
+    style={Object {}}>
+    <style>
+      
+          .overlay-color--303030:after{
+            background: linear-gradient(
+              to bottom, rgba(48, 48, 48, 0) 0%, #303030 100%
+            );
+          }
+        
+    </style>
+    <div
+      className="text-left">
+      <h4
+        className="text-dark-primary capitalize">
+        FeedItem Title
+      </h4>
+      <i
+        className="soft-half-right icon-category-text text-dark-secondary" />
+      <h7
+        className="text-dark-secondary">
+        Articles
+      </h7>
+      <h7
+        className="text-right float-right flush-bottom text-dark-secondary"
+        style={
+          Object {
+            "marginTop": "5px",
+          }
+        }>
+        1d
+      </h7>
+    </div>
+  </div>
+</a>
+`;
+
+exports[`FeedItem should have styles based on a channelName of 'series_newspring' 1`] = `
+<a
+  className="card rounded"
+  data-spec="card"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "inherit",
+      "display": "block",
+      "overflow": "hidden",
+      "textDecoration": "none",
+    }
+  }>
+  <div
+    className="background--fill overlay-color--303030 overlay--gradient plain"
+    data-spec="card-image-wrapper"
+    style={
+      Object {
+        "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+      }
+    }>
+    <span>
+      <span
+        className="imageloader loaded">
+        <div
+          className="background--fill card__image background-light-tertiary ratio--square rounded-top"
+          style={undefined}>
+          <div
+            className="ratio__item" />
+        </div>
+      </span>
+    </span>
+  </div>
+  <div
+    className="card__item soft text-center soft-bottom rounded-bottom overlay__item outlined--none soft-half-top"
+    data-spec="card-item"
+    style={
+      Object {
+        "backgroundColor": "#303030",
+      }
+    }>
+    <style>
+      
+          .overlay-color--303030:after{
+            background: linear-gradient(
+              to bottom, rgba(48, 48, 48, 0) 0%, #303030 100%
+            );
+          }
+        
+    </style>
+    <div
+      className="text-left">
+      <h4
+        className="text-light-primary capitalize">
+        FeedItem Title
+      </h4>
+      <i
+        className="soft-half-right icon-category-video text-light-primary" />
+      <h7
+        className="text-light-primary">
+        Series
+      </h7>
+      <h7
+        className="text-right float-right flush-bottom text-light-primary"
+        style={
+          Object {
+            "marginTop": "5px",
+          }
+        }>
+        1d
+      </h7>
+    </div>
+  </div>
+</a>
+`;
+
+exports[`FeedItem should pull the parent color if the channelName is 'sermons' 1`] = `
+<a
+  className="card rounded"
+  data-spec="card"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "inherit",
+      "display": "block",
+      "overflow": "hidden",
+      "textDecoration": "none",
+    }
+  }>
+  <div
+    className="background--fill overlay-color--030303 overlay--gradient plain"
+    data-spec="card-image-wrapper"
+    style={
+      Object {
+        "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+      }
+    }>
+    <span>
+      <span
+        className="imageloader loaded">
+        <div
+          className="background--fill card__image background-light-tertiary ratio--square rounded-top"
+          style={undefined}>
+          <div
+            className="ratio__item" />
+        </div>
+      </span>
+    </span>
+  </div>
+  <div
+    className="card__item soft text-center soft-bottom rounded-bottom overlay__item outlined--none soft-half-top"
+    data-spec="card-item"
+    style={
+      Object {
+        "backgroundColor": "#030303",
+      }
+    }>
+    <style>
+      
+          .overlay-color--030303:after{
+            background: linear-gradient(
+              to bottom, rgba(3, 3, 3, 0) 0%, #030303 100%
+            );
+          }
+        
+    </style>
+    <div
+      className="text-left">
+      <h4
+        className="text-light-primary capitalize">
+        FeedItem Title
+      </h4>
+      <i
+        className="soft-half-right icon-category-video text-light-primary" />
+      <h7
+        className="text-light-primary">
+        Sermons
+      </h7>
+      <h7
+        className="text-right float-right flush-bottom text-light-primary"
+        style={
+          Object {
+            "marginTop": "5px",
+          }
+        }>
+        1d
+      </h7>
+    </div>
+  </div>
+</a>
+`;
+
+exports[`FeedItem should pull the parent image if the channelName is 'sermons' and there is an parent image 1`] = `
+<a
+  className="card rounded"
+  data-spec="card"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "inherit",
+      "display": "block",
+      "overflow": "hidden",
+      "textDecoration": "none",
+    }
+  }>
+  <div
+    className="background--fill overlay-color--030303 overlay--gradient plain"
+    data-spec="card-image-wrapper"
+    style={
+      Object {
+        "backgroundImage": "url(\'https://images.unsplash.com/photo-1418985991508-e47386d96a71\')",
+      }
+    }>
+    <span>
+      <span
+        className="imageloader loaded">
+        <div
+          className="background--fill card__image background-light-tertiary ratio--square rounded-top"
+          style={undefined}>
+          <div
+            className="ratio__item" />
+        </div>
+      </span>
+    </span>
+  </div>
+  <div
+    className="card__item soft text-center soft-bottom rounded-bottom overlay__item outlined--none soft-half-top"
+    data-spec="card-item"
+    style={
+      Object {
+        "backgroundColor": "#030303",
+      }
+    }>
+    <style>
+      
+          .overlay-color--030303:after{
+            background: linear-gradient(
+              to bottom, rgba(3, 3, 3, 0) 0%, #030303 100%
+            );
+          }
+        
+    </style>
+    <div
+      className="text-left">
+      <h4
+        className="text-light-primary capitalize">
+        FeedItem Title
+      </h4>
+      <i
+        className="soft-half-right icon-category-video text-light-primary" />
+      <h7
+        className="text-light-primary">
+        Sermons
+      </h7>
+      <h7
+        className="text-right float-right flush-bottom text-light-primary"
+        style={
+          Object {
+            "marginTop": "5px",
+          }
+        }>
+        1d
+      </h7>
+    </div>
+  </div>
+</a>
+`;
+
+exports[`FeedItem should pull the regular image if the channelName is 'sermons' and there is an parent image AND a regular image 1`] = `
+<a
+  className="card rounded"
+  data-spec="card"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "inherit",
+      "display": "block",
+      "overflow": "hidden",
+      "textDecoration": "none",
+    }
+  }>
+  <div
+    className="background--fill overlay-color--030303 overlay--gradient plain"
+    data-spec="card-image-wrapper"
+    style={
+      Object {
+        "backgroundImage": "url(\'https://images.unsplash.com/24/5895672523_2e8ce56485_o.jpg\')",
+      }
+    }>
+    <span>
+      <span
+        className="imageloader loaded">
+        <div
+          className="background--fill card__image background-light-tertiary ratio--square rounded-top"
+          style={undefined}>
+          <div
+            className="ratio__item" />
+        </div>
+      </span>
+    </span>
+  </div>
+  <div
+    className="card__item soft text-center soft-bottom rounded-bottom overlay__item outlined--none soft-half-top"
+    data-spec="card-item"
+    style={
+      Object {
+        "backgroundColor": "#030303",
+      }
+    }>
+    <style>
+      
+          .overlay-color--030303:after{
+            background: linear-gradient(
+              to bottom, rgba(3, 3, 3, 0) 0%, #030303 100%
+            );
+          }
+        
+    </style>
+    <div
+      className="text-left">
+      <h4
+        className="text-light-primary capitalize">
+        FeedItem Title
+      </h4>
+      <i
+        className="soft-half-right icon-category-video text-light-primary" />
+      <h7
+        className="text-light-primary">
+        Sermons
+      </h7>
+      <h7
+        className="text-right float-right flush-bottom text-light-primary"
+        style={
+          Object {
+            "marginTop": "5px",
+          }
+        }>
+        1d
+      </h7>
+    </div>
+  </div>
+</a>
+`;
