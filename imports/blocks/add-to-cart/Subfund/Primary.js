@@ -4,7 +4,7 @@ import { css } from "aphrodite";
 import Forms from "../../../components/forms";
 import Styles from "../../add-schedule/styles-css";
 
-//
+// classes proptype is array. implemented as string
 const Primary = ({ classes, accounts, state, preFill, saveFund, format, selectVal }) => (
   <div>
     <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
@@ -34,7 +34,7 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format, selectVa
       id={`${state.id}_select`}
       hideLabel
       classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
-      inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
+      inputClasses={`${Array.isArray(classes) ? classes.join(" ") : classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
       placeholder="select fund"
       onChange={saveFund}
       selected={selectVal}
