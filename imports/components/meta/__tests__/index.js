@@ -1,16 +1,17 @@
-import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
+import { shallowToJson } from "enzyme-to-json";
 import Meta from "../index";
 import generateData from "../metadata";
 
 describe("Meta", () => {
   it("should have default data if nothing is passed to it.", () => {
-    const tree = renderer.create(
+    const wrapper = shallow(
       <Meta />
     );
-    expect(tree).toMatchSnapshot();
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
   it("should have some stuff in it.", () => {
-    const tree = renderer.create(
+    const wrapper = shallow(
       <Meta
         title={"article.title"}
         image={"photo"}
@@ -20,16 +21,6 @@ describe("Meta", () => {
         ]}
       />
     );
-    expect(tree).toMatchSnapshot();
-  });
-  it("should have default data if nothing is passed to it.", () => {
-    const props = {};
-    const tree = generateData(props);
-    expect(tree).toMatchSnapshot();
-  });
-  it("should have a different title.", () => {
-    const props = {title: "Some Test Title"};
-    const tree = generateData(props);
-    expect(tree).toMatchSnapshot();
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 });
