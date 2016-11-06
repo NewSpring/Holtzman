@@ -1,191 +1,122 @@
-exports[`Meta should have a different title. 1`] = `
-Object {
-  "link": Array [
-    Object {
-      "href": "https://plus.google.com/+newspringchurch/posts",
-      "rel": "author",
-    },
-    Object {
-      "href": "https://plus.google.com/+newspringchurch",
-      "rel": "publisher",
-    },
-  ],
-  "meta": Array [
-    Object {
-      "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
-      "name": "description",
-    },
-    Object {
-      "content": "Some Test Title | NewSpring Church",
-      "itemprop": "name",
-    },
-    Object {
-      "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
-      "itemprop": "description",
-    },
-    Object {
-      "content": "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
-      "itemprop": "image",
-    },
-    Object {
-      "content": "UNk6frcn4tNFIJoQQhjFc2Rx_Pmb1SXXsyYBKUrDgXg",
-      "name": "google-site-verification",
-    },
-    Object {
-      "content": "611077482F129A86B86095000B59B955",
-      "name": "msvalidate.01",
-    },
-    Object {
-      "content": "summary_large_image",
-      "name": "twitter:card",
-    },
-    Object {
-      "content": "Some Test Title | NewSpring Church",
-      "name": "twitter:title",
-    },
-    Object {
-      "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
-      "name": "twitter:description",
-    },
-    Object {
-      "content": "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
-      "name": "twitter:image:src",
-    },
-    Object {
-      "content": "@newspring",
-      "name": "twitter:site",
-    },
-    Object {
-      "content": "@newspring",
-      "name": "twitter:creator",
-    },
-    Object {
-      "content": "Some Test Title | NewSpring Church",
-      "name": "og:title",
-    },
-    Object {
-      "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
-      "name": "og:description",
-    },
-    Object {
-      "content": "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
-      "name": "og:image",
-    },
-    Object {
-      "content": undefined,
-      "name": "og:url",
-    },
-    Object {
-      "content": "NewSpring Church",
-      "name": "og:site_name",
-    },
-    Object {
-      "content": "167012243402263",
-      "name": "og:app_id",
-    },
-    Object {
-      "content": "167012243402263",
-      "name": "fb:app_id",
-    },
-  ],
-  "title": "Some Test Title | NewSpring Church",
-}
+exports[`Meta should have default data if nothing is passed to it. 1`] = `
+<HelmetWrapper
+  link={
+    Array [
+      Object {
+        "href": "https://plus.google.com/+newspringchurch/posts",
+        "rel": "author",
+      },
+      Object {
+        "href": "https://plus.google.com/+newspringchurch",
+        "rel": "publisher",
+      },
+    ]
+  }
+  meta={
+    Array [
+      Object {
+        "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
+        "name": "description",
+      },
+      Object {
+        "content": "Welcome | NewSpring Church",
+        "itemprop": "name",
+      },
+      Object {
+        "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
+        "itemprop": "description",
+      },
+      Object {
+        "content": "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
+        "itemprop": "image",
+      },
+      Object {
+        "content": "UNk6frcn4tNFIJoQQhjFc2Rx_Pmb1SXXsyYBKUrDgXg",
+        "name": "google-site-verification",
+      },
+      Object {
+        "content": "611077482F129A86B86095000B59B955",
+        "name": "msvalidate.01",
+      },
+      Object {
+        "content": "summary_large_image",
+        "name": "twitter:card",
+      },
+      Object {
+        "content": "Welcome | NewSpring Church",
+        "name": "twitter:title",
+      },
+      Object {
+        "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
+        "name": "twitter:description",
+      },
+      Object {
+        "content": "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
+        "name": "twitter:image:src",
+      },
+      Object {
+        "content": "@newspring",
+        "name": "twitter:site",
+      },
+      Object {
+        "content": "@newspring",
+        "name": "twitter:creator",
+      },
+      Object {
+        "content": "Welcome | NewSpring Church",
+        "name": "og:title",
+      },
+      Object {
+        "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
+        "name": "og:description",
+      },
+      Object {
+        "content": "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
+        "name": "og:image",
+      },
+      Object {
+        "content": undefined,
+        "name": "og:url",
+      },
+      Object {
+        "content": "NewSpring Church",
+        "name": "og:site_name",
+      },
+      Object {
+        "content": "167012243402263",
+        "name": "og:app_id",
+      },
+      Object {
+        "content": "167012243402263",
+        "name": "fb:app_id",
+      },
+    ]
+  }
+  title="Welcome | NewSpring Church" />
 `;
 
-exports[`Meta should have default data if nothing is passed to it. 1`] = `null`;
-
-exports[`Meta should have default data if nothing is passed to it. 2`] = `
-Object {
-  "link": Array [
-    Object {
-      "href": "https://plus.google.com/+newspringchurch/posts",
-      "rel": "author",
-    },
-    Object {
-      "href": "https://plus.google.com/+newspringchurch",
-      "rel": "publisher",
-    },
-  ],
-  "meta": Array [
-    Object {
-      "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
-      "name": "description",
-    },
-    Object {
-      "content": "Welcome | NewSpring Church",
-      "itemprop": "name",
-    },
-    Object {
-      "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
-      "itemprop": "description",
-    },
-    Object {
-      "content": "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
-      "itemprop": "image",
-    },
-    Object {
-      "content": "UNk6frcn4tNFIJoQQhjFc2Rx_Pmb1SXXsyYBKUrDgXg",
-      "name": "google-site-verification",
-    },
-    Object {
-      "content": "611077482F129A86B86095000B59B955",
-      "name": "msvalidate.01",
-    },
-    Object {
-      "content": "summary_large_image",
-      "name": "twitter:card",
-    },
-    Object {
-      "content": "Welcome | NewSpring Church",
-      "name": "twitter:title",
-    },
-    Object {
-      "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
-      "name": "twitter:description",
-    },
-    Object {
-      "content": "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
-      "name": "twitter:image:src",
-    },
-    Object {
-      "content": "@newspring",
-      "name": "twitter:site",
-    },
-    Object {
-      "content": "@newspring",
-      "name": "twitter:creator",
-    },
-    Object {
-      "content": "Welcome | NewSpring Church",
-      "name": "og:title",
-    },
-    Object {
-      "content": "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
-      "name": "og:description",
-    },
-    Object {
-      "content": "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
-      "name": "og:image",
-    },
-    Object {
-      "content": undefined,
-      "name": "og:url",
-    },
-    Object {
-      "content": "NewSpring Church",
-      "name": "og:site_name",
-    },
-    Object {
-      "content": "167012243402263",
-      "name": "og:app_id",
-    },
-    Object {
-      "content": "167012243402263",
-      "name": "fb:app_id",
-    },
-  ],
-  "title": "Welcome | NewSpring Church",
-}
+exports[`Meta should have some stuff in it. 1`] = `
+<HelmetWrapper
+  id="article.id"
+  link={
+    Array [
+      Object {
+        "href": "https://plus.google.com/+newspringchurch/posts",
+        "rel": "author",
+      },
+      Object {
+        "href": "https://plus.google.com/+newspringchurch",
+        "rel": "publisher",
+      },
+    ]
+  }
+  meta={
+    Array [
+      Object {
+        "content": "article",
+        "property": "og:type",
+      },
+    ]
+  }
+  title="article.title | NewSpring Church" />
 `;
-
-exports[`Meta should have some stuff in it. 1`] = `null`;
