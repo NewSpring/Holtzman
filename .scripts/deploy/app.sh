@@ -113,8 +113,9 @@ if [ "$DEST" = "native" ]; then
   yecho "### Updating fastlane ###"
   gem install fastlane --no-ri --no-rdoc
 
-  yecho "### Installing python ###"
-  brew install python
+  yecho "### python already installed ###"
+  # yecho "### Installing python ###"
+  # brew install python
 
   yecho "### Installing jq ###"
   brew install jq
