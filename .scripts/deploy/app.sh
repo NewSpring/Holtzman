@@ -222,9 +222,17 @@ if [ "$DEST" = "web" ]; then
   exit 0
 fi
 
+ensure_android_apks() {
+  ./.build/android/project/cordova/build --release
+  mv ./.build/android/project/build/outputs/apk/project-armv7-release-unsigned.apk ./.build/android/project/build/outputs/apk/android-armv7-release-unsigned.apk
+  mv ./.build/android/project/build/outputs/apk/project-x86-release-unsigned.apk ./.build/android/project/build/outputs/apk/android-x86-release-unsigned.apk
+  return 0
+}
+
 yecho "### Deploying app bundle ###"
 if [ "$CHANNEL" = "alpha" ]; then
   yecho "### Deploying to Hockey ###"
+  ensure_android_apks
   launch hockey ROOT_URL $METEOR_SETTINGS_PATH
 fi
 
