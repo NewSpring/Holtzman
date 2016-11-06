@@ -31,7 +31,7 @@ before_install:
 - rvm install 2.2.5
 - rvm use 2.2.5
 - npm install -g coveralls
-- 'if [[ "$TRAVIS_OS_NAME" == "osx" && "$CC" == "gcc" ]]; then brew install gcc; CC=gcc-5; fi'
+- 'if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gcc; CC=gcc-5; fi'
 script:
   - npm link
   - npm test
