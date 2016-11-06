@@ -39,7 +39,9 @@
     "moduleNameMapper": {
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
-    "setupFiles": ["<rootDir>/.scripts/before_test.js"]
+    "setupFiles": [
+      "<rootDir>/.scripts/before_test.js"
+    ]
   },
   "apollos": {
     "settings": "./.meteor/settings.json",
