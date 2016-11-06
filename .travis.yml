@@ -1,6 +1,6 @@
 sudo: required # force to run in container
-env: # required for node_bcrypt
-  - CXX=g++-4.8
+# env: # required for node_bcrypt
+#   - CXX=g++-4.8
 os:
 # - linux
 - osx
