@@ -18,6 +18,15 @@ const generateComponent = (additionalProps={}) => {
   return <Primary {...defaultProps} {...additionalProps} />
 };
 
+beforeEach(() => {
+  reset();
+  startBuffering();
+});
+
+afterEach(() => {
+  reset();
+});
+
 it ("should render with minimal props", () => {
   const component = mount(generateComponent());
   expect(mountToJson(component)).toMatchSnapshot();
