@@ -34,7 +34,7 @@ const Primary = ({ classes, accounts, state, preFill, saveFund, format, selectVa
       id={`${state.id}_select`}
       hideLabel
       classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
-      inputClasses={`${Array.isArray(classes) ? classes.join(" ") : classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
+      inputClasses={`${Array.isArray(classes) ? classes.join(" ") : classes || ""} outlined--dotted outlined--light h3 hard-top flush-bottom`}
       placeholder="select fund"
       onChange={saveFund}
       selected={selectVal}
