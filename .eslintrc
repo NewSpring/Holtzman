@@ -24,7 +24,8 @@
     "OO": true,
     "RemoteCommand": true,
     "fabric": true,
-    "Media": true
+    "Media": true,
+    "FormElement": true
   },
   "rules": {
     "arrow-parens": [2, "always"],
@@ -54,7 +55,8 @@
     "import/core-modules": [
       "meteor/meteor",
       "meteor/accounts-base",
-      "meteor/mongo"
+      "meteor/mongo",
+      "meteor/bjwiley2:server-watch",
     ]
   }
 }
