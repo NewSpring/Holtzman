@@ -3,6 +3,7 @@ import moment from "moment";
 import { Link } from "react-router";
 import { css } from "aphrodite";
 
+import { ImageLoader } from "../../components/loading";
 import LoadingStyles from "../../components/loading/FeedItemSkeleton-css";
 
 import inAppLink from "../../util/inAppLink";
@@ -81,19 +82,22 @@ export default class LikesItem extends Component {
 
     return (
       <div className={this.containerClasses()}>
-        <Link to={like.link} onClick={this.onClick} className="plain">
-          <div className="card">
-            <div
-              className="locked-ends locked-right card__image one-third background--fill"
-              style={{ verticalAlign: "middle", backgroundImage: `url('${this.props.like.image}')` }}
+        <div className="card">
+          <Link to={like.link} onClick={this.onClick} className="plain">
+            <ImageLoader
+              src={this.props.like.image}
+              preloader={this.preloader}
+              renderElement={this.renderElement}
+              imageclasses={this.iamgeclasses}
             />
-            <div className="card__item soft text-dark-tertiary two-thirds push-half-ends">
-              <h6 className="text-dark-primary capitalize">{like.title}</h6>
+            <div className="card__item soft text-dark-tertiary">
+              <h4 className="text-dark-primary capitalize">{like.title}</h4>
               <i className={this.iconClasses} />
               <h7>{like.category}</h7>
+              <h7 className="text-right float-right">{this.getDate(like)}</h7>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
     );
   }
