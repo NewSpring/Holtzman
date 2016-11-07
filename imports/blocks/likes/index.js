@@ -1,66 +1,95 @@
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes } from "react";
+import { PropTypes } from "react";
 import createContainer from "../../blocks/meteor/react-meteor-data";
 import Likes from "../../database/collections/likes";
 import Loading from "../../components/loading";
+import MiniCard from "../../components/cards/cards.MiniCard";
 
-import LikesItem from "./Item";
+const RenderLikes = ({ likes }) => {
+  if (!likes || !likes.length) return null;
+
+  return (
+    <div>
+      {
+        likes.map((like, i) => (
+          <div
+            key={i}
+            className="soft-half-bottom@palm-wide"
+            style={{
+              maxWidth: "480px",
+              margin: "0 auto",
+            }}
+          >
+            <MiniCard
+              key={i}
+              title={like.title}
+              content={{
+                channelName: like.category.toLowerCase(),
+                content: {
+                  images: [{
+                    url: like.image,
+                  }],
+                },
+                entryId: like.entryId,
+                icon: like.icon,
+              }}
+            />
+          </div>
+        ))
+      }
+    </div>
+  );
+};
+
+RenderLikes.propTypes = {
+  likes: PropTypes.object, // eslint-disable-line
+};
+
+const RenderRecents = ({ likes, recentLikes }) => {
+  if (likes && likes.length > 0) return null;
+  return (
+    <div>
+      <p className="soft text-center">
+        <em>
+          <small>
+            Check out some of the latest things from NewSpring
+          </small>
+        </em>
+      </p>
+      <RenderLikes likes={recentLikes} />
+    </div>
+  );
+};
+
+RenderRecents.propTypes = {
+  likes: PropTypes.array,
+  recentLikes: PropTypes.array,
+};
 
 // XXX make this dynamic via heighliner
-class LikesContainer extends Component {
+const LikesContainer = (props) => {
+  if (!props.likes) return <Loading />;
 
-  static propTypes = {
-    likes: PropTypes.array,
-    recentLikes: PropTypes.array,
-  }
+  const { likes, recentLikes } = props;
 
-  render() {
-    if (!this.props.likes) return <Loading />;
+  return (
+    <div
+      className={
+        "soft-half-sides@palm soft-double@palm-wide soft-sides soft-top soft-half-bottom " +
+        "background--light-secondary"
+      }
+      style={{ marginTop: "-20px" }}
+    >
+      <RenderLikes likes={likes} />
+      <RenderRecents likes={likes} recentLikes={recentLikes} />
+    </div>
+  );
+};
 
-    const { likes, recentLikes } = this.props;
-
-    const ids = [];
-    return (
-      <div
-        className={
-          "grid soft-top background--light-secondary " +
-          "soft-half-sides soft-double@lap-and-up"
-        }
-        style={{ marginTop: "-20px" }}
-      >
-        {likes.map((like, i) => (
-          <LikesItem like={like} key={i} />
-        ))}
-        {(() => {
-          if (!likes.length) {
-            return (
-              <div>
-                <p className="soft text-center">
-                  <em>
-                    <small>
-                      Check out some of the latest things from NewSpring
-                    </small>
-                  </em>
-                </p>
-
-                {recentLikes.map((like, i) => {
-                  if (ids.indexOf(like.entryId) > -1) {
-                    return null;
-                  }
-
-                  ids.push(like.entryId);
-                  return <LikesItem like={like} key={i} />;
-                })}
-              </div>
-
-            );
-          }
-          return null;
-        })()}
-      </div>
-    );
-  }
-}
+LikesContainer.propTypes = {
+  likes: PropTypes.array,
+  recentLikes: PropTypes.array,
+};
 
 export default createContainer(() => {
   Meteor.subscribe("likes");
