@@ -34,7 +34,7 @@ it ("should render with minimal props", () => {
 });
 
 it ("should accept custom classes thru classes prop", () => {
-  const component = mount(generateComponent({classes: ["test1", "test2"]}));
+  const component = mount(generateComponent({classes: "test1 test2"}));
   expect(mountToJson(component)).toMatchSnapshot();
 });
 

@@ -7,12 +7,7 @@ exports[`test should accept custom classes thru classes prop 1`] = `
       },
     ]
   }
-  classes={
-    Array [
-      "test1",
-      "test2",
-    ]
-  }
+  classes="test1 test2"
   preFill={[Function]}
   state={
     Object {
