@@ -2,7 +2,7 @@ import { Component, PropTypes } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
-import { css } from "aphrodite";
+import { css } from "aphrodite/no-important";
 import { Link } from "react-router";
 import { Motion, spring } from "react-motion";
 

@@ -1,3 +1,3 @@
-declare module "aphrodite" {
-  declare function css(value: string): string;
+declare module "aphrodite/no-important" {
+  declare var exports: any;
 }

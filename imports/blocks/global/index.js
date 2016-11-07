@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 import { Meteor } from "meteor/meteor";
 import { connect } from "react-redux";
-import { css } from "aphrodite";
+import { css } from "aphrodite/no-important";
 import createContainer from "../meteor/react-meteor-data";
 
 import Modal from "../modal";

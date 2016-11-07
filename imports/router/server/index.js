@@ -2,7 +2,7 @@
 import { match, createMemoryHistory, RouterContext } from "react-router";
 import compress from "compression";
 import cookieParser from "cookie-parser";
-import { StyleSheetServer } from "aphrodite";
+import { StyleSheetServer } from "aphrodite/no-important";
 import ReactHelmet from "react-helmet";
 import Cheerio from "cheerio/lib/cheerio";
 import MinReact from "react/dist/react.min";

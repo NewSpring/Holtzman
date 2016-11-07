@@ -3,9 +3,9 @@
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import Moment from "moment";
-import { css } from "aphrodite";
+import { css } from "aphrodite/no-important";
 
-import TertiaryHeader from "./headers";
+import TertiaryPhrase from "./phrases";
 import Forms from "../../components/forms";
 import CheckoutButtons from "../checkout-buttons";
 import Styles from "./styles-css";
@@ -67,7 +67,7 @@ const Layout = ({
          submit={(e) => { e.preventDefault(); }}
          id="add-to-cart"
        >
-         <TertiaryHeader
+         <TertiaryPhrase
            additionalClasses="push-half-right"
            text="I'd like to give "
          />
@@ -85,7 +85,7 @@ const Layout = ({
            style={{ width: "200px" }}
            defaultValue={existing && existing.details && existing.details.length && existing.details[0].amount ? `$${existing.details[0].amount}` : null}
          />
-         <TertiaryHeader
+         <TertiaryPhrase
            text="to "
          />
          <Forms.Select
@@ -100,7 +100,7 @@ const Layout = ({
            onChange={setFund}
            defaultValue={prefillFund}
          />
-         <TertiaryHeader
+         <TertiaryPhrase
            text=" "
          />
          <Forms.Select
@@ -116,7 +116,7 @@ const Layout = ({
            onChange={setFrequency}
            defaultValue={existing && existing.schedule ? existing.schedule.value : null}
          />
-         <TertiaryHeader
+         <TertiaryPhrase
            text=" starting "
          />
          <Forms.Date
@@ -136,9 +136,8 @@ const Layout = ({
          <div className="push-top">
            <CheckoutButtons
              disabled={total <= 0 || !ready}
-             disabledGuest
-             text={text || "Schedule Now"}
              onClick={onSubmitSchedule}
+             text={text || "Schedule Now"}
            />
          </div>
        </Forms.Form>

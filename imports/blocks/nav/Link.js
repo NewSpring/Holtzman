@@ -1,7 +1,7 @@
 /* eslint-disable import/imports-first */
 
 import { Component, PropTypes } from "react";
-import { css } from "aphrodite";
+import { css } from "aphrodite/no-important";
 
 if (Meteor.isClient) {
   // eslint-disable-next-line no-unused-vars

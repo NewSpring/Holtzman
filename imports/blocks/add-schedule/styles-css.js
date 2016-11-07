@@ -1,4 +1,6 @@
-import { StyleSheet } from "aphrodite";
+// @flow
+
+import { StyleSheet } from "aphrodite/no-important";
 
 export default StyleSheet.create({
   "select": { // eslint-disable-line

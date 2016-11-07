@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { css } from "aphrodite";
+import { css } from "aphrodite/no-important";
 import Styles from "./FeedItemSkeleton-css";
 
 export default class FeedItemSkeleton extends Component {

@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { css } from "aphrodite";
+import { css } from "aphrodite/no-important";
 import Meta from "../../components/meta";
 
 import liveActions from "../../store/live";

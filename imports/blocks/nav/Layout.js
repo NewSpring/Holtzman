@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import { css } from "aphrodite";
+import { css } from "aphrodite/no-important";
 
 import NavLink from "./Link";
 import styles from "./nav-css";

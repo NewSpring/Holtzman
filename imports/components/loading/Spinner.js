@@ -1,5 +1,5 @@
 import { PropTypes } from "react";
-import { css } from "aphrodite";
+import { css } from "aphrodite/no-important";
 import Styles from "./spinner-css";
 
 function getClasses(mergeClasses) {

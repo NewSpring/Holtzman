@@ -1,5 +1,5 @@
 import { PropTypes } from "react";
-import { css } from "aphrodite";
+import { css } from "aphrodite/no-important";
 
 import Forms from "../../../components/forms";
 import Styles from "../../add-schedule/styles-css";

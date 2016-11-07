@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 import moment from "moment";
 import { Link } from "react-router";
-import { css } from "aphrodite";
+import { css } from "aphrodite/no-important";
 
 import { ImageLoader } from "../../components/loading";
 import LoadingStyles from "../../components/loading/FeedItemSkeleton-css";
