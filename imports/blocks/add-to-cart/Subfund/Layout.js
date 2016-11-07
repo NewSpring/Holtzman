@@ -54,7 +54,7 @@ const Layout = ({ classes, accounts, state, preFill, showInputs, format, selectV
 );
 
 Layout.propTypes = {
-  classes: PropTypes.array, // eslint-disable-line
+  classes: PropTypes.string, // eslint-disable-line
   accounts: PropTypes.object, // eslint-disable-line
   state: PropTypes.object, // eslint-disable-line
   preFill: PropTypes.func,
