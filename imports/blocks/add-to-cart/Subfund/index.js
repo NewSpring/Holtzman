@@ -6,8 +6,9 @@ import { give as giveActions } from "../../../store";
 import Primary from "./Primary";
 import Layout from "./Layout";
 
-@connect(null, giveActions)
-export default class SubFund extends Component {
+export const withRedux = connect(null, giveActions);
+
+export class SubFund extends Component {
 
   static propTypes = {
     primary: PropTypes.bool,
@@ -216,3 +217,5 @@ export default class SubFund extends Component {
     );
   }
 }
+
+export default withRedux(SubFund);
