@@ -249,6 +249,132 @@ exports[`test should accept format function thru prop 1`] = `
 </Layout>
 `;
 
+exports[`test should accept inputVal thru prop 1`] = `
+<Layout
+  accounts={
+    Array [
+      Object {
+        "value": "main fund",
+      },
+    ]
+  }
+  inputVal="5.00"
+  preFill={[Function]}
+  state={
+    Object {
+      "fund": "main",
+      "id": "test",
+    }
+  }>
+  <div>
+    <div
+      className="display-inline-block push-half-bottom h3 push-half-right undefined">
+      and give to
+    </div>
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      deselect={true}
+      hideLabel={true}
+      id="test_select"
+      includeBlank={true}
+      inputClasses="undefined outlined--dotted outlined--light h3 hard-top flush-bottom"
+      items={
+        Array [
+          Object {
+            "value": "main fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund">
+      <div
+        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+        <select
+          className="undefined outlined--dotted outlined--light h3 hard-top flush-bottom"
+          id="test_select"
+          name="select-account"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="select fund">
+          <option
+            style={
+              Object {
+                "display": "none",
+              }
+            }>
+            select fund
+          </option>
+          <option />
+          <option
+            value="main fund">
+            main fund
+          </option>
+        </select>
+      </div>
+    </Select>
+    <div
+      className="display-block">
+      <h3
+        className="undefined push-half-bottom push-half-right display-inline-block">
+        with
+      </h3>
+      <Input
+        classes={
+          Array [
+            "soft-bottom",
+            "input--active",
+            "display-inline-block",
+          ]
+        }
+        hideLabel={true}
+        id="test"
+        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+        name="main"
+        placeholder="$0.00"
+        style={
+          Object {
+            "maxWidth": "150px",
+          }
+        }
+        type="tel"
+        value="5.00">
+        <div
+          className="input input--active soft-bottom input--active display-inline-block"
+          data-spec="input-wrapper"
+          style={
+            Object {
+              "maxWidth": "150px",
+            }
+          }>
+          <input
+            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+            data-spec="input"
+            id="test"
+            maxLength=""
+            name="main"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="$0.00"
+            style={
+              Object {
+                "maxWidth": "150px",
+              }
+            }
+            type="tel" />
+        </div>
+      </Input>
+    </div>
+  </div>
+</Layout>
+`;
+
 exports[`test should accept multiple accounts through accounts prop 1`] = `
 <Layout
   accounts={

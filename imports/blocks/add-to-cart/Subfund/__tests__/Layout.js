@@ -109,3 +109,13 @@ it ("should accept selectVal function thru prop", () => {
 
   expect(selectProps.selected).toEqual("hi");
 });
+
+it ("should accept inputVal thru prop", () => {
+
+  const component = mount(generateComponent({inputVal: "5.00"}));
+  expect(mountToJson(component)).toMatchSnapshot();
+
+  const inputProps = component.find("Input").props();
+
+  expect(inputProps.value).toEqual("5.00");
+});
