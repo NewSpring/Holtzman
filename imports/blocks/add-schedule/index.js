@@ -1,4 +1,6 @@
-import { Component, PropTypes } from "react";
+// @flow
+
+import { Component } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 import createContainer from "../meteor/react-meteor-data";
@@ -11,24 +13,26 @@ import Layout from "./Layout";
 // We only care about the give state
 const map = (state) => ({ give: state.give });
 
-@connect(map, giveActions)
-class CartContainer extends Component {
+type ICartContainer = {
+    accounts: Object,
+    addTransactions: Function,
+    alive: boolean,
+    clearAllSchedulesExcept: Function,
+    clearSchedules: Function,
+    clearTransactions: Function,
+    existing: Object, // eslint-disable-line
+    onClick: Function,
+    removeSchedule: Function,
+    saveSchedule: Function,
+    setTransactionType: Function,
+    text: string,
+    dataId: string,
+};
 
-  static propTypes = {
-    accounts: PropTypes.array, // eslint-disable-line
-    addTransactions: PropTypes.func,
-    alive: PropTypes.bool,
-    clearAllSchedulesExcept: PropTypes.func,
-    clearSchedules: PropTypes.func,
-    clearTransactions: PropTypes.func,
-    existing: PropTypes.object, // eslint-disable-line
-    onClick: PropTypes.func,
-    removeSchedule: PropTypes.func,
-    saveSchedule: PropTypes.func,
-    setTransactionType: PropTypes.func,
-    text: PropTypes.string,
-    dataId: PropTypes.string,
-  }
+// $FlowMeteor
+@connect(map, giveActions)
+export class CartContainer extends Component {
+  props: ICartContainer;
 
   state = {
     fundId: false,
@@ -181,7 +185,7 @@ class CartContainer extends Component {
       { label: "once a month", value: "Monthly" },
     ];
 
-    const mappedAccounts = this.props.accounts.map((x) => ({
+    const mappedAccounts = this.props.accounts.map((x: Object) => ({
       value: x.id,
       label: x.name,
     }));
