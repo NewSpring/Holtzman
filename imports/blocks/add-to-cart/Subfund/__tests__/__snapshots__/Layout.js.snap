@@ -67,58 +67,68 @@ exports[`test should accept custom classes thru classes prop 1`] = `
         </select>
       </div>
     </Select>
-    <div
-      className="display-block">
-      <h3
-        className="test1 test2 push-half-bottom push-half-right display-inline-block">
-        with
-      </h3>
-      <Input
-        classes={
-          Array [
-            "soft-bottom",
-            "input--active",
-            "display-inline-block",
-          ]
+    <RenderAmountInput
+      classes="test1 test2"
+      preFill={[Function]}
+      state={
+        Object {
+          "fund": "main",
+          "id": "test",
         }
-        hideLabel={true}
-        id="test"
-        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-        name="main"
-        placeholder="$0.00"
-        style={
-          Object {
-            "maxWidth": "150px",
+      }>
+      <div
+        className="display-block">
+        <h3
+          className="test1 test2 push-half-bottom push-half-right display-inline-block">
+          with
+        </h3>
+        <Input
+          classes={
+            Array [
+              "soft-bottom",
+              "input--active",
+              "display-inline-block",
+            ]
           }
-        }
-        type="tel">
-        <div
-          className="input soft-bottom input--active display-inline-block"
-          data-spec="input-wrapper"
+          hideLabel={true}
+          id="test"
+          inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+          name="main"
+          placeholder="$0.00"
           style={
             Object {
               "maxWidth": "150px",
             }
-          }>
-          <input
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-            data-spec="input"
-            id="test"
-            maxLength=""
-            name="main"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+          }
+          type="tel">
+          <div
+            className="input soft-bottom input--active display-inline-block"
+            data-spec="input-wrapper"
             style={
               Object {
                 "maxWidth": "150px",
               }
-            }
-            type="tel" />
-        </div>
-      </Input>
-    </div>
+            }>
+            <input
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+              data-spec="input"
+              id="test"
+              maxLength=""
+              name="main"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="$0.00"
+              style={
+                Object {
+                  "maxWidth": "150px",
+                }
+              }
+              type="tel" />
+          </div>
+        </Input>
+      </div>
+    </RenderAmountInput>
   </div>
 </Layout>
 `;
@@ -192,59 +202,69 @@ exports[`test should accept format function thru prop 1`] = `
         </select>
       </div>
     </Select>
-    <div
-      className="display-block">
-      <h3
-        className="undefined push-half-bottom push-half-right display-inline-block">
-        with
-      </h3>
-      <Input
-        classes={
-          Array [
-            "soft-bottom",
-            "input--active",
-            "display-inline-block",
-          ]
+    <RenderAmountInput
+      format={[Function]}
+      preFill={[Function]}
+      state={
+        Object {
+          "fund": "main",
+          "id": "test",
         }
-        format={[Function]}
-        hideLabel={true}
-        id="test"
-        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-        name="main"
-        placeholder="$0.00"
-        style={
-          Object {
-            "maxWidth": "150px",
+      }>
+      <div
+        className="display-block">
+        <h3
+          className="undefined push-half-bottom push-half-right display-inline-block">
+          with
+        </h3>
+        <Input
+          classes={
+            Array [
+              "soft-bottom",
+              "input--active",
+              "display-inline-block",
+            ]
           }
-        }
-        type="tel">
-        <div
-          className="input soft-bottom input--active display-inline-block"
-          data-spec="input-wrapper"
+          format={[Function]}
+          hideLabel={true}
+          id="test"
+          inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+          name="main"
+          placeholder="$0.00"
           style={
             Object {
               "maxWidth": "150px",
             }
-          }>
-          <input
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-            data-spec="input"
-            id="test"
-            maxLength=""
-            name="main"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+          }
+          type="tel">
+          <div
+            className="input soft-bottom input--active display-inline-block"
+            data-spec="input-wrapper"
             style={
               Object {
                 "maxWidth": "150px",
               }
-            }
-            type="tel" />
-        </div>
-      </Input>
-    </div>
+            }>
+            <input
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+              data-spec="input"
+              id="test"
+              maxLength=""
+              name="main"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="$0.00"
+              style={
+                Object {
+                  "maxWidth": "150px",
+                }
+              }
+              type="tel" />
+          </div>
+        </Input>
+      </div>
+    </RenderAmountInput>
   </div>
 </Layout>
 `;
@@ -318,59 +338,69 @@ exports[`test should accept inputVal thru prop 1`] = `
         </select>
       </div>
     </Select>
-    <div
-      className="display-block">
-      <h3
-        className="undefined push-half-bottom push-half-right display-inline-block">
-        with
-      </h3>
-      <Input
-        classes={
-          Array [
-            "soft-bottom",
-            "input--active",
-            "display-inline-block",
-          ]
+    <RenderAmountInput
+      inputVal="5.00"
+      preFill={[Function]}
+      state={
+        Object {
+          "fund": "main",
+          "id": "test",
         }
-        hideLabel={true}
-        id="test"
-        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-        name="main"
-        placeholder="$0.00"
-        style={
-          Object {
-            "maxWidth": "150px",
+      }>
+      <div
+        className="display-block">
+        <h3
+          className="undefined push-half-bottom push-half-right display-inline-block">
+          with
+        </h3>
+        <Input
+          classes={
+            Array [
+              "soft-bottom",
+              "input--active",
+              "display-inline-block",
+            ]
           }
-        }
-        type="tel"
-        value="5.00">
-        <div
-          className="input input--active soft-bottom input--active display-inline-block"
-          data-spec="input-wrapper"
+          hideLabel={true}
+          id="test"
+          inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+          name="main"
+          placeholder="$0.00"
           style={
             Object {
               "maxWidth": "150px",
             }
-          }>
-          <input
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-            data-spec="input"
-            id="test"
-            maxLength=""
-            name="main"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+          }
+          type="tel"
+          value="5.00">
+          <div
+            className="input input--active soft-bottom input--active display-inline-block"
+            data-spec="input-wrapper"
             style={
               Object {
                 "maxWidth": "150px",
               }
-            }
-            type="tel" />
-        </div>
-      </Input>
-    </div>
+            }>
+            <input
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+              data-spec="input"
+              id="test"
+              maxLength=""
+              name="main"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="$0.00"
+              style={
+                Object {
+                  "maxWidth": "150px",
+                }
+              }
+              type="tel" />
+          </div>
+        </Input>
+      </div>
+    </RenderAmountInput>
   </div>
 </Layout>
 `;
@@ -453,58 +483,67 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
         </select>
       </div>
     </Select>
-    <div
-      className="display-block">
-      <h3
-        className="undefined push-half-bottom push-half-right display-inline-block">
-        with
-      </h3>
-      <Input
-        classes={
-          Array [
-            "soft-bottom",
-            "input--active",
-            "display-inline-block",
-          ]
+    <RenderAmountInput
+      preFill={[Function]}
+      state={
+        Object {
+          "fund": "main",
+          "id": "test",
         }
-        hideLabel={true}
-        id="test"
-        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-        name="main"
-        placeholder="$0.00"
-        style={
-          Object {
-            "maxWidth": "150px",
+      }>
+      <div
+        className="display-block">
+        <h3
+          className="undefined push-half-bottom push-half-right display-inline-block">
+          with
+        </h3>
+        <Input
+          classes={
+            Array [
+              "soft-bottom",
+              "input--active",
+              "display-inline-block",
+            ]
           }
-        }
-        type="tel">
-        <div
-          className="input soft-bottom input--active display-inline-block"
-          data-spec="input-wrapper"
+          hideLabel={true}
+          id="test"
+          inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+          name="main"
+          placeholder="$0.00"
           style={
             Object {
               "maxWidth": "150px",
             }
-          }>
-          <input
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-            data-spec="input"
-            id="test"
-            maxLength=""
-            name="main"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+          }
+          type="tel">
+          <div
+            className="input soft-bottom input--active display-inline-block"
+            data-spec="input-wrapper"
             style={
               Object {
                 "maxWidth": "150px",
               }
-            }
-            type="tel" />
-        </div>
-      </Input>
-    </div>
+            }>
+            <input
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+              data-spec="input"
+              id="test"
+              maxLength=""
+              name="main"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="$0.00"
+              style={
+                Object {
+                  "maxWidth": "150px",
+                }
+              }
+              type="tel" />
+          </div>
+        </Input>
+      </div>
+    </RenderAmountInput>
   </div>
 </Layout>
 `;
@@ -577,60 +616,69 @@ exports[`test should accept preFill function thru prop 1`] = `
         </select>
       </div>
     </Select>
-    <div
-      className="display-block">
-      <h3
-        className="undefined push-half-bottom push-half-right display-inline-block">
-        with
-      </h3>
-      <Input
-        classes={
-          Array [
-            "soft-bottom",
-            "input--active",
-            "display-inline-block",
-          ]
+    <RenderAmountInput
+      preFill={[Function]}
+      state={
+        Object {
+          "fund": "main",
+          "id": "test",
         }
-        defaultValue="returned"
-        hideLabel={true}
-        id="test"
-        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-        name="main"
-        placeholder="$0.00"
-        style={
-          Object {
-            "maxWidth": "150px",
+      }>
+      <div
+        className="display-block">
+        <h3
+          className="undefined push-half-bottom push-half-right display-inline-block">
+          with
+        </h3>
+        <Input
+          classes={
+            Array [
+              "soft-bottom",
+              "input--active",
+              "display-inline-block",
+            ]
           }
-        }
-        type="tel">
-        <div
-          className="input input--active soft-bottom input--active display-inline-block"
-          data-spec="input-wrapper"
+          defaultValue="returned"
+          hideLabel={true}
+          id="test"
+          inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+          name="main"
+          placeholder="$0.00"
           style={
             Object {
               "maxWidth": "150px",
             }
-          }>
-          <input
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-            data-spec="input"
-            defaultValue="returned"
-            id="test"
-            maxLength=""
-            name="main"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+          }
+          type="tel">
+          <div
+            className="input input--active soft-bottom input--active display-inline-block"
+            data-spec="input-wrapper"
             style={
               Object {
                 "maxWidth": "150px",
               }
-            }
-            type="tel" />
-        </div>
-      </Input>
-    </div>
+            }>
+            <input
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+              data-spec="input"
+              defaultValue="returned"
+              id="test"
+              maxLength=""
+              name="main"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="$0.00"
+              style={
+                Object {
+                  "maxWidth": "150px",
+                }
+              }
+              type="tel" />
+          </div>
+        </Input>
+      </div>
+    </RenderAmountInput>
   </div>
 </Layout>
 `;
@@ -704,58 +752,67 @@ exports[`test should accept saveFund function thru prop 1`] = `
         </select>
       </div>
     </Select>
-    <div
-      className="display-block">
-      <h3
-        className="undefined push-half-bottom push-half-right display-inline-block">
-        with
-      </h3>
-      <Input
-        classes={
-          Array [
-            "soft-bottom",
-            "input--active",
-            "display-inline-block",
-          ]
+    <RenderAmountInput
+      preFill={[Function]}
+      state={
+        Object {
+          "fund": "main",
+          "id": "test",
         }
-        hideLabel={true}
-        id="test"
-        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-        name="main"
-        placeholder="$0.00"
-        style={
-          Object {
-            "maxWidth": "150px",
+      }>
+      <div
+        className="display-block">
+        <h3
+          className="undefined push-half-bottom push-half-right display-inline-block">
+          with
+        </h3>
+        <Input
+          classes={
+            Array [
+              "soft-bottom",
+              "input--active",
+              "display-inline-block",
+            ]
           }
-        }
-        type="tel">
-        <div
-          className="input soft-bottom input--active display-inline-block"
-          data-spec="input-wrapper"
+          hideLabel={true}
+          id="test"
+          inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+          name="main"
+          placeholder="$0.00"
           style={
             Object {
               "maxWidth": "150px",
             }
-          }>
-          <input
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-            data-spec="input"
-            id="test"
-            maxLength=""
-            name="main"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+          }
+          type="tel">
+          <div
+            className="input soft-bottom input--active display-inline-block"
+            data-spec="input-wrapper"
             style={
               Object {
                 "maxWidth": "150px",
               }
-            }
-            type="tel" />
-        </div>
-      </Input>
-    </div>
+            }>
+            <input
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+              data-spec="input"
+              id="test"
+              maxLength=""
+              name="main"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="$0.00"
+              style={
+                Object {
+                  "maxWidth": "150px",
+                }
+              }
+              type="tel" />
+          </div>
+        </Input>
+      </div>
+    </RenderAmountInput>
   </div>
 </Layout>
 `;
@@ -831,58 +888,67 @@ exports[`test should accept selectVal function thru prop 1`] = `
         </select>
       </div>
     </Select>
-    <div
-      className="display-block">
-      <h3
-        className="undefined push-half-bottom push-half-right display-inline-block">
-        with
-      </h3>
-      <Input
-        classes={
-          Array [
-            "soft-bottom",
-            "input--active",
-            "display-inline-block",
-          ]
+    <RenderAmountInput
+      preFill={[Function]}
+      state={
+        Object {
+          "fund": "main",
+          "id": "test",
         }
-        hideLabel={true}
-        id="test"
-        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-        name="main"
-        placeholder="$0.00"
-        style={
-          Object {
-            "maxWidth": "150px",
+      }>
+      <div
+        className="display-block">
+        <h3
+          className="undefined push-half-bottom push-half-right display-inline-block">
+          with
+        </h3>
+        <Input
+          classes={
+            Array [
+              "soft-bottom",
+              "input--active",
+              "display-inline-block",
+            ]
           }
-        }
-        type="tel">
-        <div
-          className="input soft-bottom input--active display-inline-block"
-          data-spec="input-wrapper"
+          hideLabel={true}
+          id="test"
+          inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+          name="main"
+          placeholder="$0.00"
           style={
             Object {
               "maxWidth": "150px",
             }
-          }>
-          <input
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-            data-spec="input"
-            id="test"
-            maxLength=""
-            name="main"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+          }
+          type="tel">
+          <div
+            className="input soft-bottom input--active display-inline-block"
+            data-spec="input-wrapper"
             style={
               Object {
                 "maxWidth": "150px",
               }
-            }
-            type="tel" />
-        </div>
-      </Input>
-    </div>
+            }>
+            <input
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+              data-spec="input"
+              id="test"
+              maxLength=""
+              name="main"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="$0.00"
+              style={
+                Object {
+                  "maxWidth": "150px",
+                }
+              }
+              type="tel" />
+          </div>
+        </Input>
+      </div>
+    </RenderAmountInput>
   </div>
 </Layout>
 `;
@@ -955,58 +1021,67 @@ exports[`test should accept state prop with id and fund 1`] = `
         </select>
       </div>
     </Select>
-    <div
-      className="display-block">
-      <h3
-        className="undefined push-half-bottom push-half-right display-inline-block">
-        with
-      </h3>
-      <Input
-        classes={
-          Array [
-            "soft-bottom",
-            "input--active",
-            "display-inline-block",
-          ]
+    <RenderAmountInput
+      preFill={[Function]}
+      state={
+        Object {
+          "fund": "dis-cool-account",
+          "id": "dis-account",
         }
-        hideLabel={true}
-        id="dis-account"
-        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-        name="dis-cool-account"
-        placeholder="$0.00"
-        style={
-          Object {
-            "maxWidth": "150px",
+      }>
+      <div
+        className="display-block">
+        <h3
+          className="undefined push-half-bottom push-half-right display-inline-block">
+          with
+        </h3>
+        <Input
+          classes={
+            Array [
+              "soft-bottom",
+              "input--active",
+              "display-inline-block",
+            ]
           }
-        }
-        type="tel">
-        <div
-          className="input soft-bottom input--active display-inline-block"
-          data-spec="input-wrapper"
+          hideLabel={true}
+          id="dis-account"
+          inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+          name="dis-cool-account"
+          placeholder="$0.00"
           style={
             Object {
               "maxWidth": "150px",
             }
-          }>
-          <input
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-            data-spec="input"
-            id="dis-account"
-            maxLength=""
-            name="dis-cool-account"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+          }
+          type="tel">
+          <div
+            className="input soft-bottom input--active display-inline-block"
+            data-spec="input-wrapper"
             style={
               Object {
                 "maxWidth": "150px",
               }
-            }
-            type="tel" />
-        </div>
-      </Input>
-    </div>
+            }>
+            <input
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+              data-spec="input"
+              id="dis-account"
+              maxLength=""
+              name="dis-cool-account"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="$0.00"
+              style={
+                Object {
+                  "maxWidth": "150px",
+                }
+              }
+              type="tel" />
+          </div>
+        </Input>
+      </div>
+    </RenderAmountInput>
   </div>
 </Layout>
 `;
@@ -1079,58 +1154,67 @@ exports[`test should render with minimal props 1`] = `
         </select>
       </div>
     </Select>
-    <div
-      className="display-block">
-      <h3
-        className="undefined push-half-bottom push-half-right display-inline-block">
-        with
-      </h3>
-      <Input
-        classes={
-          Array [
-            "soft-bottom",
-            "input--active",
-            "display-inline-block",
-          ]
+    <RenderAmountInput
+      preFill={[Function]}
+      state={
+        Object {
+          "fund": "main",
+          "id": "test",
         }
-        hideLabel={true}
-        id="test"
-        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-        name="main"
-        placeholder="$0.00"
-        style={
-          Object {
-            "maxWidth": "150px",
+      }>
+      <div
+        className="display-block">
+        <h3
+          className="undefined push-half-bottom push-half-right display-inline-block">
+          with
+        </h3>
+        <Input
+          classes={
+            Array [
+              "soft-bottom",
+              "input--active",
+              "display-inline-block",
+            ]
           }
-        }
-        type="tel">
-        <div
-          className="input soft-bottom input--active display-inline-block"
-          data-spec="input-wrapper"
+          hideLabel={true}
+          id="test"
+          inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+          name="main"
+          placeholder="$0.00"
           style={
             Object {
               "maxWidth": "150px",
             }
-          }>
-          <input
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-            data-spec="input"
-            id="test"
-            maxLength=""
-            name="main"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="$0.00"
+          }
+          type="tel">
+          <div
+            className="input soft-bottom input--active display-inline-block"
+            data-spec="input-wrapper"
             style={
               Object {
                 "maxWidth": "150px",
               }
-            }
-            type="tel" />
-        </div>
-      </Input>
-    </div>
+            }>
+            <input
+              className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
+              data-spec="input"
+              id="test"
+              maxLength=""
+              name="main"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="$0.00"
+              style={
+                Object {
+                  "maxWidth": "150px",
+                }
+              }
+              type="tel" />
+          </div>
+        </Input>
+      </div>
+    </RenderAmountInput>
   </div>
 </Layout>
 `;
