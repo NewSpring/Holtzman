@@ -4,10 +4,13 @@ exports[`test should render with no props 1`] = `
     className="input"
     data-spec="input-wrapper"
     style={Object {}}>
-    <Label>
-      <label
-        style={Object {}} />
-    </Label>
+    <RenderLabel>
+      <Label
+        disabed={false}>
+        <label
+          style={Object {}} />
+      </Label>
+    </RenderLabel>
     <input
       data-spec="input"
       maxLength=""

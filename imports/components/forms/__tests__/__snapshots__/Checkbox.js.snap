@@ -14,7 +14,7 @@ exports[`test should accept a default value 1`] = `
       defaultChecked="checked"
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -43,7 +43,7 @@ exports[`test should accept an id 1`] = `
       id="harambe"
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -75,7 +75,7 @@ exports[`test should accept label 1`] = `
       name="harambe"
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -107,7 +107,7 @@ exports[`test should accept name prop 1`] = `
       name="harambe"
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -126,7 +126,7 @@ exports[`test should add classes with classes prop 1`] = `
   classes={
     Array [
       "test1",
-      "harambe"
+      "harambe",
     ]
   }>
   <div
@@ -142,7 +142,7 @@ exports[`test should add classes with classes prop 1`] = `
       defaultChecked=""
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -170,7 +170,7 @@ exports[`test should add classes with classes prop 2`] = `
       defaultChecked=""
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -199,7 +199,7 @@ exports[`test should add inputClasses with inputClasses prop 1`] = `
       defaultChecked=""
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -228,7 +228,7 @@ exports[`test should disable input with disabled prop 1`] = `
       disabled={true}
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -257,7 +257,7 @@ exports[`test should display children 1`] = `
       defaultChecked=""
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -285,7 +285,7 @@ exports[`test should hide label with hideLabel prop 1`] = `
       defaultChecked=""
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -308,7 +308,7 @@ exports[`test should render with minimal props 1`] = `
       defaultChecked=""
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
@@ -322,7 +322,7 @@ exports[`test should render with minimal props 1`] = `
 
 exports[`test should respond to onclick prop 1`] = `
 <Checkbox
-  clicked={[Function mockConstructor]}>
+  clicked={[Function]}>
   <div
     className="input checkbox"
     data-spec="input-wrapper">
@@ -334,10 +334,10 @@ exports[`test should respond to onclick prop 1`] = `
     <input
       data-spec="input"
       defaultChecked=""
-      onClick={[Function mockConstructor]}
+      onClick={[Function]}
       style={
         Object {
-          "width": 0
+          "width": 0,
         }
       }
       type="checkbox" />
