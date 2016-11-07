@@ -73,7 +73,6 @@ type ILayout = {
   authorized: boolean,
   changePayments: Function,
   classes: string,
-  dataId: string,
   disabled: boolean,
   disabledGuest: boolean,
   getAccount: Function,
@@ -92,7 +91,6 @@ const Layout = ({
   authorized,
   changePayments,
   classes,
-  dataId,
   disabled,
   disabledGuest,
   getAccount,
@@ -114,7 +112,6 @@ const Layout = ({
       onClick={onClick}
       value={value}
       style={style || {}}
-      dataId={dataId}
       savedPayments={savedPayments}
       hideCard={hideCard}
       getAccount={getAccount}
