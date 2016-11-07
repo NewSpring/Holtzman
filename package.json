@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "posttest": "npm run lint && npm run flow",
+    "coverage": "jest --coverage",
     "lint-fix": "eslint ./imports ./client ./server --fix",
     "lint": "eslint ./imports ./client ./server",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
@@ -28,7 +29,9 @@
   },
   "homepage": "https://github.com/NewSpring/my.newspring.cc",
   "jest": {
+    "scriptPreprocessor": "./.scripts/jestPreprocessor.js",
     "coverageDirectory": "./.coverage",
+    "collectCoverageFrom": ["client/**/*.{js,jsx}", "server/**/*.{js,jsx}", "imports/**/*.{js,jsx}"],
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/.meteor/"
