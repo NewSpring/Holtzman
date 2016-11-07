@@ -24,7 +24,7 @@ export default class Checkbox extends React.Component {
     id: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
-    inputClasses: PropTypes.array, // eslint-disable-line
+    inputClasses: PropTypes.string, // eslint-disable-line
     clicked: PropTypes.func,
     hideLabel: PropTypes.bool,
   }
@@ -41,7 +41,7 @@ export default class Checkbox extends React.Component {
 
   disabled = () => {
     if (this.props.disabled) {
-      return disabled; // eslint-disable-line
+      return this.props.disabled; // eslint-disable-line
     }
     return undefined;
   }
@@ -95,10 +95,13 @@ export default class Checkbox extends React.Component {
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
 
     return (
-      <div className={inputclasses.join(" ")}>
+      <div
+        className={inputclasses.join(" ")}
+        data-spec="input-wrapper"
+      >
 
         <h6 className="soft-left push-half-left flush-bottom text-left float-left locked-top">
-          <small>
+          <small data-spec="input-label">
             {this.props.children}
           </small>
         </h6>
@@ -112,6 +115,7 @@ export default class Checkbox extends React.Component {
           defaultChecked={this.props.defaultValue ? "checked" : ""}
           onClick={this.props.clicked}
           style={{ width: 0 }}
+          data-spec="input"
         />
 
         {!this.props.hideLabel && (
