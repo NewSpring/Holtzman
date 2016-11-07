@@ -1,50 +1,69 @@
-import { Component, PropTypes } from "react";
+// @flow
+
+import { Component } from "react";
 import StripTags from "striptags";
 
 import Label from "./components/Label";
 
-export default class Input extends Component {
+type IRenderLabel = {
+  hideLabel?: boolean,
+  id: string,
+  name: string,
+  label: string,
+  disabled?: boolean,
+};
 
-  static propTypes = {
-    defaultValue: PropTypes.string,
-    status: PropTypes.string, // DEPRECATED
-    disabled: PropTypes.any, // eslint-disable-line
-    validation: PropTypes.func,
-    errorText: PropTypes.string,
-    theme: PropTypes.string, // DEPRECATED
-    type: PropTypes.string,
-    // error: PropTypes.any, -- UNUSED
-    classes: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.array,
-    ]),
-    children: PropTypes.any, // eslint-disable-line
-    id: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
-    label: PropTypes.string,
-    name: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.bool,
-    ]),
-    inputClasses: PropTypes.string, // eslint-disable-line
-    hideLabel: PropTypes.bool,
-    autofocus: PropTypes.any, // eslint-disable-line
-    format: PropTypes.func,
-    onChange: PropTypes.func,
-    onBlur: PropTypes.func,
-    style: PropTypes.object, //eslint-disable-line
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    placeholder: PropTypes.string,
-    maxLength: PropTypes.number,
-  }
+const RenderLabel = ({
+  hideLabel = false,
+  id,
+  name,
+  label,
+  disabled = false,
+}: IRenderLabel) => {
+  if (hideLabel) return null;
+  return (
+    <Label
+      labelFor={id || name || label}
+      labelName={label || name}
+      disabed={disabled}
+    />
+  );
+};
+
+type IInputProps = {
+  defaultValue: string,
+  disabled?: boolean,
+  validation: Function,
+  errorText: string,
+  type: string,
+  classes: string | string[],
+  children: any,
+  id: string,
+  label: string,
+  name: string,
+  inputClasses: string,
+  hideLabel?: boolean,
+  autofocus?: boolean,
+  format: Function,
+  onChange: Function,
+  onBlur: Function,
+  style: Object,
+  value: string,
+  placeholder: string,
+  maxLength: number,
+};
+
+export default class Input extends Component {
+  node: Object;
+  interval: number;
+  // this: IInput;
+  _previousValue: string;
+  props: IInputProps;
 
   state = {
     active: false,
     focused: false,
     error: false,
-    status: "",
     value: null,
     autofocus: false,
   }
@@ -60,7 +79,6 @@ export default class Input extends Component {
       this.node.focus();
       this.focus();
     }
-
 
     // one day, I dream of a universal browser auto-fill event
     // until then. I'll keep on checking
@@ -83,7 +101,7 @@ export default class Input extends Component {
     }
   }
 
-  componentWillUpdate(nextProps) {
+  componentWillUpdate(nextProps: Object) {
     if (this.props.defaultValue !== nextProps.defaultValue) {
       this.setValue(nextProps.defaultValue);
       this.setState({ focused: false });
@@ -96,8 +114,7 @@ export default class Input extends Component {
     }
   }
 
-
-  format = (e) => { // eslint-disable-line
+  format = (e: Event) => {
     const target = this.node;
     // let value = this.node.value
     const value = this.getValue();
@@ -112,7 +129,7 @@ export default class Input extends Component {
     }
   }
 
-  validate = (e) => {
+  validate = (e?: Event) => {
     const target = this.node;
     // const value = target.value
     const value = this.getValue();
@@ -147,7 +164,7 @@ export default class Input extends Component {
     });
   }
 
-  setValue = (value) => {
+  setValue = (value: string) => {
     const node = this.node;
     // prevent XSS;
     if (this.props.name === "password") {
@@ -166,10 +183,6 @@ export default class Input extends Component {
     return StripTags(this.node.value); // eslint-disable-line
   }
 
-  setStatus = (message) => {
-    this.props.status = message;
-  }
-
   disabled = () => {
     if (this.props.disabled) {
       return this.props.disabled;
@@ -178,10 +191,10 @@ export default class Input extends Component {
   }
 
   renderHelpText = () => {
-    if ((this.state.error && this.props.errorText) || this.state.status) {
+    if (this.state.error && this.props.errorText) {
       return (
         <span className="input__status" data-spec="help">
-          {this.props.errorText || this.state.status}
+          {this.props.errorText}
         </span>
       );
     }
@@ -207,14 +220,11 @@ export default class Input extends Component {
     return style;
   }
 
-
-  render() {
+  classes = () => {
     let inputclasses = [
       "input",
     ];
 
-    // theme overwrite
-    if (this.props.theme) { inputclasses = this.props.theme; }
     // state mangaged classes
     if (this.state.active) { inputclasses.push("input--active"); }
     if (this.state.focused) { inputclasses.push("input--focused"); }
@@ -222,48 +232,48 @@ export default class Input extends Component {
     // custom added classes
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
 
+    return inputclasses.join(" ");
+  }
+
+  render() {
+    const {
+      style, hideLabel, id, name, label, type, placeholder,
+      inputClasses, defaultValue, maxLength, children,
+    } = this.props;
+
     return (
       <div
-        className={inputclasses.join(" ")}
-        style={this.props.style || {}}
+        className={this.classes()}
+        style={style || {}}
         data-spec="input-wrapper"
       >
-        {(() => {
-          if (!this.props.hideLabel) {
-            return (
-              <Label
-                labelFor={
-                  this.props.id || this.props.name || this.props.label
-                }
-                labelName={
-                  this.props.label || this.props.name
-                }
-                disabed={this.disabled()}
-              />
-            );
-          }
-          return undefined;
-        })()}
 
+        <RenderLabel
+          hideLabel={hideLabel}
+          id={id}
+          name={name}
+          label={label}
+          disabled={this.disabled()}
+        />
 
         <input
           ref={(node) => (this.node = node)}
-          id={this.props.id || this.props.name || this.props.label}
-          type={this.props.type}
-          placeholder={this.props.placeholder || this.props.label}
-          name={this.props.name || this.props.label}
-          className={this.props.inputClasses}
+          id={id || name || label}
+          type={type}
+          placeholder={placeholder || label}
+          name={name || label}
+          className={inputClasses}
           disabled={this.disabled()}
           onBlur={this.validate}
           onFocus={this.focus}
           onChange={this.format}
-          defaultValue={this.props.defaultValue}
+          defaultValue={defaultValue}
           style={this.style()}
-          maxLength={this.props.maxLength || ""}
+          maxLength={maxLength || ""}
           data-spec="input"
         />
 
-        {this.props.children}
+        {children}
 
         {this.renderHelpText()}
 

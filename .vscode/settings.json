@@ -10,7 +10,7 @@
   "files.exclude": {
     "**/.git": true,
     "**/.DS_Store": true,
-    "**/node_modules": true,
+    "**/node_modules": false,
     "**/dist": true,
     "**/.gagarin": true,
     "**/.ecs": true,
@@ -35,7 +35,7 @@
     ".github": true,
     ".meteor": false,
     ".storybook": true,
-    ".types": true,
+    ".types": false,
     ".babelrc": true,
     ".flowconfig": true,
     ".gitignore": true,
