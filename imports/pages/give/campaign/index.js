@@ -1,12 +1,11 @@
+/* eslint-disable import/no-named-as-default */
 // @flow
 import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-/* eslint-disable */
 import Spinner from "../../../components/loading";
-/* eslint-enable */
 
 import {
   nav as navActions,
@@ -90,13 +89,13 @@ class Template extends Component {
   }
 }
 
-export default withFinancialAccounts(connect()(Template));
+const TemplateWithData = withFinancialAccounts(connect()(Template));
 
 const Routes = [
-  { path: "campaign/:name", component: Template },
+  { path: "campaign/:name", component: TemplateWithData },
 ];
 
-export {
+export default {
   Template,
   Routes,
 };
