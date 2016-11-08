@@ -83,4 +83,29 @@ describe ("SubFund", () => {
     expect(component.find("Primary").length).toEqual(1);
   });
 
+  it ("should have dark text on primary fund", () => {
+    const component = mount(generateComponent({
+      primary: true,
+      update: () => {},
+      preFill: () => {},
+    }));
+    const secComponent = mount(generateComponent({
+      primary: false,
+      update: () => {},
+      preFill: () => {},
+    }));
+
+    //must reset the id state. It's based off the datetime
+    component.setState({id: "test-id-reset"});
+    secComponent.setState({id: "test-id-reset"});
+
+    const primaryProps = component.find("Primary").props();
+    const secProps = secComponent.find("Layout").props();
+
+    expect(mountToJson(component)).toMatchSnapshot();
+    expect(mountToJson(secComponent)).toMatchSnapshot();
+    expect(primaryProps.classes.indexOf("text-dark-tertiary")).toBeGreaterThan(-1);
+    expect(secProps.classes.indexOf("text-light-tertiary")).toBeGreaterThan(-1);
+  });
+
 });
