@@ -24,8 +24,7 @@
     "OO": true,
     "RemoteCommand": true,
     "fabric": true,
-    "Media": true,
-    "FormElement": true
+    "Media": true
   },
   "rules": {
     "arrow-parens": [2, "always"],
