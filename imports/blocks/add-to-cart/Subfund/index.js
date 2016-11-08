@@ -1,6 +1,8 @@
 
 // @Flow
 
+// XXX We need to figure out how to best move the logic out of this
+
 import { Component } from "react";
 import { connect } from "react-redux";
 
