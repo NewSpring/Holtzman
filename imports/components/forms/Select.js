@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import { css } from "aphrodite/no-important";
+import { css } from "aphrodite";
 // import ReactSelect from "react-select";
 
 import Label from "./components/Label";

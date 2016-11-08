@@ -1,4 +1,4 @@
-import { StyleSheet } from "aphrodite/no-important";
+import { StyleSheet } from "aphrodite";
 
 export default StyleSheet.create({
   "play-bar": {

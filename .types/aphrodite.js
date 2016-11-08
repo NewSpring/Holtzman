@@ -1,3 +1,3 @@
-declare module "aphrodite/no-important" {
+declare module "aphrodite" {
   declare var exports: any;
 }

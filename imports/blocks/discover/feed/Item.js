@@ -1,5 +1,5 @@
 import { Component, PropTypes } from "react";
-import { css } from "aphrodite/no-important";
+import { css } from "aphrodite";
 
 import { ImageLoader } from "../../../components/loading";
 import LoadingStyles from "../../../components/loading/FeedItemSkeleton-css";

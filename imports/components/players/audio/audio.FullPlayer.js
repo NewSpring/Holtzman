@@ -1,7 +1,7 @@
 
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { css } from "aphrodite/no-important";
+import { css } from "aphrodite";
 import collections from "../../../util/collections";
 import styles from "../../../util/styles";
 import backgrounds from "../../../util/backgrounds";

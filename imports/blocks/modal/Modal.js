@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 import { VelocityComponent } from "velocity-react";
-import { css } from "aphrodite/no-important";
+import { css } from "aphrodite";
 
 import styles from "./modal-css";
 import offsetStyles from "../nav/offset-css";

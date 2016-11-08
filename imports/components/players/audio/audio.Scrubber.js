@@ -2,7 +2,7 @@
 // XXX lint correctly
 import { PropTypes, Component } from "react";
 import { connect } from "react-redux";
-import { css } from "aphrodite/no-important";
+import { css } from "aphrodite";
 
 import Styles from "./audio.styles.scrubber";
 

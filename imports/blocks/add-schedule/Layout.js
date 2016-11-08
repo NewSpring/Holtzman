@@ -3,7 +3,7 @@
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import Moment from "moment";
-import { css } from "aphrodite/no-important";
+import { css } from "aphrodite";
 
 import TertiaryPhrase from "./phrases";
 import Forms from "../../components/forms";

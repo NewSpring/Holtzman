@@ -1,4 +1,4 @@
-import { StyleSheet } from "aphrodite/no-important";
+import { StyleSheet } from "aphrodite";
 
 const keyframes = {
   "0%": {
