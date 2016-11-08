@@ -12,10 +12,10 @@ jest.mock("react-redux", () => ({
 }));
 
 const additionalAccounts = [
-  {value: "test fund 1", testId: 0},
-  {value: "test fund 2", testId: 1},
-  {value: "RIP harambe fund", testId: 2},
-  {value: "my account", testId: 3},
+  {value: "test fund 1", label: "test fund 1", testId: 0},
+  {value: "test fund 2", label: "test fund 2", testId: 1},
+  {value: "RIP harambe fund", label: "RIP harambe fund", testId: 2},
+  {value: "my account", label:"my account", testId: 3},
 ];
 
 const generateComponent = (additionalProps={}) => {
@@ -170,7 +170,7 @@ describe ("SubFund Helpers", () => {
     const monetize = monentize;
 
     expect(monetize("")).toEqual("$0.00");
-    expect(monetize()).toEqual("$0.00"); //unhandled
+    expect(monetize()).toEqual("$0.00");
 
     expect(monetize("100")).toEqual("$100");
     expect(monetize(100)).toEqual("$100");
@@ -189,7 +189,93 @@ describe ("SubFund Helpers", () => {
 
   });
 
+  it ("should run save fund properly", () => {
+    const clearTransaction = jest.fn();
+    const remove = jest.fn();
+    const update = jest.fn();
+    const addTransactions = jest.fn();
+
+    const component = shallow(generateComponent({
+      primary: true,
+      update: () => {},
+      preFill: () => {},
+      accounts: additionalAccounts,
+      clearTransaction: clearTransaction,
+      remove: remove,
+      update: update,
+      addTransactions: addTransactions,
+    }));
+
+    component.setState({id: "test-id-reset"});
+
+    const { saveFund } = component.instance();
+
+    //if passed id is the same, it should short circuit
+    saveFund("test-id-reset");
+    expect(clearTransaction).not.toBeCalled();
+
+    //invalid fund. Check state after
+    saveFund("test");
+    expect(clearTransaction).toBeCalled();
+    expect(component.state().id).toEqual(null);
+    expect(component.state().fund).toEqual(false);
+    expect(component.state().amount).toEqual(null);
+
+    //valid fund with no amount set. should fail before update
+    saveFund("RIP harambe fund");
+    expect(component.state().id).toEqual("RIP harambe fund");
+    expect(component.state().fund).toEqual(true);
+    expect(update).toHaveBeenCalledTimes(1);
+
+    //make sure it calls update
+    saveFund("test"); // reset the state
+    component.setState({amount: "$1.00"});
+    saveFund("RIP harambe fund");
+    expect(update).toHaveBeenCalledTimes(2);
+    expect(update.mock.calls[1]).toEqual([undefined, "RIP harambe fund", "$1.00"]);
+    expect(addTransactions).toBeCalledWith({
+      "RIP harambe fund": {
+        value: 1, label: "RIP harambe fund"
+      }
+    });
+  });
+
+  it ("should properly save the amount", () => {
+    const clearTransaction = jest.fn();
+    const remove = jest.fn();
+    const update = jest.fn();
+    const addTransactions = jest.fn();
+
+    const component = shallow(generateComponent({
+      primary: true,
+      update: () => {},
+      preFill: () => {},
+      accounts: additionalAccounts,
+      clearTransaction: clearTransaction,
+      remove: remove,
+      update: update,
+      addTransactions: addTransactions,
+    }));
+
+    component.setState({id: "test-id-reset"});
+
+    const { saveAmount } = component.instance();
+
+    expect(saveAmount("0")).toEqual("$0");
+    expect(clearTransaction).toHaveBeenCalledTimes(1);
+    expect(remove).toHaveBeenCalledTimes(1);
+
+    //this would normally be set by saveFund
+    component.setState({fund: "RIP harambe fund", id: "RIP harambe fund"});
+    expect(saveAmount("1")).toEqual("$1");
+    expect(component.state().active).toEqual(true);
+    expect(component.state().amount).toEqual(1);
+    expect(addTransactions).toBeCalledWith({
+      "RIP harambe fund": {
+        value: 1, label: "RIP harambe fund"
+      }
+    });
+    expect(update.mock.calls[1]).toEqual([undefined, "RIP harambe fund", 1]);
+  });
 });
 
-    // const wrapper = shallow( <GiveNow {...sampleProps} />);
-    // const { remove } = wrapper.instance();

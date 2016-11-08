@@ -82,7 +82,7 @@ export class SubFund extends Component {
     return `$${amount}`;
   }
 
-  saveFund = (id: string): null => {
+  saveFund = (id: string) => {
     if (id === this.state.id) return;
 
     // remove old funds transaction
