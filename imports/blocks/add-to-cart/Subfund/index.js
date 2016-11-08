@@ -89,7 +89,7 @@ export class SubFund extends Component {
     this.props.clearTransaction(`${this.state.id}`);
     this.props.remove(this.props.instance, this.state.id);
 
-    const fund: ?Object = this.getFund(id);
+    const fund = this.getFund(id);
 
     if (!fund) {
       this.setState({
