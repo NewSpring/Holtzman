@@ -5,7 +5,7 @@ import Forms from "../../components/forms";
 
 import CheckoutButtons from "../checkout-buttons";
 
-import SubFund from "./Subfund";
+import SubFund from "./Subfund"; //eslint-disable-line
 
 export default class Layout extends Component {
 

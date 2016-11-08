@@ -13,11 +13,6 @@ jest.mock("react-redux", () => ({
 
 const generateComponent = (additionalProps={}) => {
   const defaultProps = {
-    // state: {
-    //   id: "test",
-    //   fund: "main",
-    // },
-    // preFill: () => {},
     accounts: [{value: "main fund"}],
   };
 
@@ -87,11 +82,5 @@ describe ("SubFund", () => {
     expect(component.find("Layout").length).toEqual(0);
     expect(component.find("Primary").length).toEqual(1);
   });
-
-
-
-
-
-
 
 });
