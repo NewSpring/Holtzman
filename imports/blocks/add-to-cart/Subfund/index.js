@@ -7,6 +7,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 
 import { give as giveActions } from "../../../store";
+import { monetize } from "../../../util/format";
 
 import Primary from "./Primary";
 import Layout from "./Layout";
@@ -63,25 +64,6 @@ export class SubFund extends Component {
     return selectedFund[0];
   }
 
-  monentize = (value: string | number, fixed: boolean): string => {
-    let amount = typeof value === "number" ? `${value}` : value;
-
-    if (!amount || !amount.length) {
-      return "$0.00";
-    }
-
-    amount = amount.replace(/[^\d.-]/g, "");
-
-    const decimals = amount.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      amount = Number(amount).toFixed(2);
-      amount = String(amount);
-    }
-
-    amount = amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${amount}`;
-  }
-
   saveFund = (id: string) => {
     if (id === this.state.id) return;
 
@@ -119,7 +101,7 @@ export class SubFund extends Component {
   }
 
   saveAmount = (value: string | number): string => {
-    const amount: string = this.monentize(value);
+    const amount: string = monetize(value);
 
     const numberValue = Number(amount.replace(/[^\d.-]/g, ""));
 
