@@ -56,7 +56,7 @@ export class SubFund extends Component {
     }
   }
 
-  getFund = (id: string) => {
+  getFund = (id: string): ?Object => {
     const selectedFund = this.props.accounts.filter((fund) => (
       `${fund.value}` === `${id}`
     ));
@@ -66,7 +66,7 @@ export class SubFund extends Component {
   monentize = (value: string | number, fixed: boolean): string => {
     let amount = typeof value === "number" ? `${value}` : value;
 
-    if (!amount.length) {
+    if (!amount || !amount.length) {
       return "$0.00";
     }
 

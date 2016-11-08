@@ -1,3 +1,23 @@
+exports[`SubFund should have correct default state for primary and secondary 1`] = `
+Object {
+  "active": false,
+  "amount": null,
+  "focused": false,
+  "fund": false,
+  "id": "test-id-reset",
+}
+`;
+
+exports[`SubFund should have correct default state for primary and secondary 2`] = `
+Object {
+  "active": false,
+  "amount": null,
+  "focused": false,
+  "fund": true,
+  "id": "test-id-reset",
+}
+`;
+
 exports[`SubFund should have dark text on primary fund 1`] = `
 <SubFund
   accounts={
