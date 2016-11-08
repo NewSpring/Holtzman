@@ -30,8 +30,6 @@ class RecoverSchedules extends Component {
     const input: HTMLInputElement = (document.getElementById("remind-frequency"): any);
     const value = input.value;
 
-    // const test = (<HTMLInputElement>document.getElementById("remind-frequency")).value;
-
     const time = {
       tomorrow: moment().add(1, "days").toDate(),
       nextWeek: moment().add(7, "days").toDate(),
