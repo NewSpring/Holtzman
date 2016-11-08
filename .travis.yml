@@ -33,6 +33,6 @@ script:
   - npm link
   - npm test
   - npm run coverage
-  - coveralls < ./coverage/lcov.info || true # ignore coveralls error
+  - coveralls < ./.coverage/lcov.info || true # ignore coveralls error
   - "./.scripts/prepare/app.sh"
   - "./.scripts/deploy/app.sh"
