@@ -1,9 +1,13 @@
-/* eslint-disable max-len */
-import { PropTypes } from "react";
-
+// @flow
 import Forms from "../../components/forms";
 
-const Remind = ({ onSubmit, back }) => {
+type IRemind = {
+  onSubmit: Function,
+  back: Function,
+};
+
+/* eslint-disable max-len */
+const Remind = ({ onSubmit, back }: IRemind) => {
   const reminderFrequency = [
     {
       label: "Tomorrow",
@@ -66,11 +70,6 @@ const Remind = ({ onSubmit, back }) => {
 
     </div>
   );
-};
-
-Remind.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  back: PropTypes.func.isRequired,
 };
 
 export default Remind;
