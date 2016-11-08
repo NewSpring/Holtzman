@@ -1,6 +1,6 @@
 import { monetize } from "../currency";
 
-describe ("SubFund > Monetize", () => {
+describe ("Monetize", () => {
   it("should handle blank and null input", () => {
     expect(monetize("")).toEqual("$0.00");
     expect(monetize()).toEqual("$0.00");
