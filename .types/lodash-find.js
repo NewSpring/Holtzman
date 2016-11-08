@@ -1,3 +1,4 @@
 declare module "lodash.find" {
-  declare var exports: any;
-};
+  declare function find(): Object;
+  declare var exports : typeof find;
+}
