@@ -4,11 +4,6 @@ import Meta from "../index";
 // import generateData from "../metadata";
 
 describe("Meta", () => {
-  // beforeEach(() => {
-  //   global.ga = "UA-7130289-25";
-  //   ga = jest.fn();
-  // });
-
   it("should have default data if nothing is passed to it", () => {
     const wrapper = shallow(
       <Meta />
@@ -55,6 +50,19 @@ describe("Meta", () => {
       <Meta />
     );
     expect(ga).toHaveBeenCalledTimes(1);
+    delete global.ga;
+  });
+  it("should not call the ga function if it's the iOS review page", () => {
+    Object.defineProperty(window.location, "pathname", {
+      writable: true,
+      value: "/give/review"
+    });
+    global.ga = jest.fn();
+    // window.location.pathname = "/give/review";
+    const wrapper = mount(
+      <Meta />
+    );
+    expect(ga).not.toHaveBeenCalled();
     delete global.ga;
   });
   it("should call the fabric function", () => {
