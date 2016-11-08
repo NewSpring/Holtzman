@@ -109,6 +109,10 @@ exports[`test should accept custom classes thru classes prop 1`] = `
                 "maxWidth": "150px",
               }
             }>
+            <RenderLabel
+              hideLabel={true}
+              id="test"
+              name="main" />
             <input
               className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
               data-spec="input"
@@ -245,6 +249,10 @@ exports[`test should accept format function thru prop 1`] = `
                 "maxWidth": "150px",
               }
             }>
+            <RenderLabel
+              hideLabel={true}
+              id="test"
+              name="main" />
             <input
               className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
               data-spec="input"
@@ -381,6 +389,10 @@ exports[`test should accept inputVal thru prop 1`] = `
                 "maxWidth": "150px",
               }
             }>
+            <RenderLabel
+              hideLabel={true}
+              id="test"
+              name="main" />
             <input
               className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
               data-spec="input"
@@ -524,6 +536,10 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
                 "maxWidth": "150px",
               }
             }>
+            <RenderLabel
+              hideLabel={true}
+              id="test"
+              name="main" />
             <input
               className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
               data-spec="input"
@@ -658,6 +674,10 @@ exports[`test should accept preFill function thru prop 1`] = `
                 "maxWidth": "150px",
               }
             }>
+            <RenderLabel
+              hideLabel={true}
+              id="test"
+              name="main" />
             <input
               className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
               data-spec="input"
@@ -793,6 +813,10 @@ exports[`test should accept saveFund function thru prop 1`] = `
                 "maxWidth": "150px",
               }
             }>
+            <RenderLabel
+              hideLabel={true}
+              id="test"
+              name="main" />
             <input
               className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
               data-spec="input"
@@ -929,6 +953,10 @@ exports[`test should accept selectVal function thru prop 1`] = `
                 "maxWidth": "150px",
               }
             }>
+            <RenderLabel
+              hideLabel={true}
+              id="test"
+              name="main" />
             <input
               className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
               data-spec="input"
@@ -1062,6 +1090,10 @@ exports[`test should accept state prop with id and fund 1`] = `
                 "maxWidth": "150px",
               }
             }>
+            <RenderLabel
+              hideLabel={true}
+              id="dis-account"
+              name="dis-cool-account" />
             <input
               className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
               data-spec="input"
@@ -1195,6 +1227,10 @@ exports[`test should render with minimal props 1`] = `
                 "maxWidth": "150px",
               }
             }>
+            <RenderLabel
+              hideLabel={true}
+              id="test"
+              name="main" />
             <input
               className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
               data-spec="input"
