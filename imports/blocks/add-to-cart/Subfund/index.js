@@ -218,4 +218,5 @@ export class SubFund extends Component {
   }
 }
 
+
 export default withRedux(SubFund);
