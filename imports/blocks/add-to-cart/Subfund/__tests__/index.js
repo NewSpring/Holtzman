@@ -132,10 +132,12 @@ describe ("SubFund", () => {
 
 });
 
-describe ("SubFund Helpers", () => {
+describe ("SubFund > getFund", () => {
+  let component = null;
+  let getFundFunc = null;
 
-  it ("should return the correct fund from getFund", () => {
-    const component = shallow(generateComponent({
+  beforeEach (() => {
+    component = shallow(generateComponent({
       primary: true,
       update: () => {},
       preFill: () => {},
@@ -143,23 +145,29 @@ describe ("SubFund Helpers", () => {
     }));
 
     const { getFund } = component.instance();
-
-    //regular calls
-    expect(getFund("test fund 1").testId).toEqual(0);
-    expect(getFund("should be und")).toBeUndefined();
-
-    //must be exact match, not substring
-    expect(getFund("harambe")).toBeUndefined();
-    expect(getFund("RIP harambe fund").testId).toEqual(2);
-
-    //is case sensitive
-    expect(getFund("RIP Harambe fund")).toBeUndefined();
-
-    //handles null passed in
-    expect(getFund()).toBeUndefined();
+    getFundFunc = getFund;
   });
 
-  it ("should return the correct monetized string from monetize", () => {
+  it("should return funds normally with corrent input", () => {
+    expect(getFundFunc("test fund 1").testId).toEqual(0);
+    expect(getFundFunc("should be und")).toBeUndefined();
+  });
+
+  it ("should lookup by exact match. not substring or case-variations", () => {
+    expect(getFundFunc("harambe")).toBeUndefined();
+    expect(getFundFunc("RIP Harambe fund")).toBeUndefined();
+    expect(getFundFunc("RIP harambe fund").testId).toEqual(2);
+  });
+
+  it ("handles null args", () => {
+    expect(getFundFunc()).toBeUndefined();
+  });
+});
+
+describe ("SubFund > Monetize", () => {
+  let monetize = null;
+
+  beforeEach(() => {
     const component = shallow(generateComponent({
       primary: true,
       update: () => {},
@@ -167,35 +175,51 @@ describe ("SubFund Helpers", () => {
     }));
 
     const { monentize } = component.instance();
-    const monetize = monentize;
+    monetize = monentize;
+  });
 
+  it("should handle blank and null input", () => {
     expect(monetize("")).toEqual("$0.00");
     expect(monetize()).toEqual("$0.00");
+  });
 
+  it ("should handle normal string inputs with", () => {
     expect(monetize("100")).toEqual("$100");
-    expect(monetize(100)).toEqual("$100");
     expect(monetize("100.50")).toEqual("$100.50");
-    expect(monetize(100.5)).toEqual("$100.5");
     expect(monetize("0")).toEqual("$0");
-    expect(monetize(0.0)).toEqual("$0");
+  });
 
-    // "fixed" modifier
+  it ("should handle normal number inputs", () => {
+    expect(monetize(100)).toEqual("$100");
+    expect(monetize(100.5)).toEqual("$100.5");
+    expect(monetize(0.0)).toEqual("$0");
+  });
+
+  it ("should return 2 decimal places with fixed arg set", () => {
     expect(monetize("100", true)).toEqual("$100.00");
     expect(monetize(100, true)).toEqual("$100.00");
     expect(monetize("100.50", true)).toEqual("$100.50");
     expect(monetize(100.5, true)).toEqual("$100.50");
     expect(monetize("0", true)).toEqual("$0.00");
     expect(monetize(0.0, true)).toEqual("$0.00");
-
   });
+});
 
-  it ("should run save fund properly", () => {
-    const clearTransaction = jest.fn();
-    const remove = jest.fn();
-    const update = jest.fn();
-    const addTransactions = jest.fn();
+describe ("SubFund > saveFund", () => {
+  let component = null;
+  let saveFundFunc = null;
+  let clearTransaction = null;
+  let remove = null;
+  let update = null;
+  let addTransactions = null;
 
-    const component = shallow(generateComponent({
+  beforeEach(() => {
+    clearTransaction = jest.fn();
+    remove = jest.fn();
+    update = jest.fn();
+    addTransactions = jest.fn();
+
+    component = shallow(generateComponent({
       primary: true,
       update: () => {},
       preFill: () => {},
@@ -205,32 +229,35 @@ describe ("SubFund Helpers", () => {
       update: update,
       addTransactions: addTransactions,
     }));
-
     component.setState({id: "test-id-reset"});
 
     const { saveFund } = component.instance();
+    saveFundFunc = saveFund;
+  });
 
-    //if passed id is the same, it should short circuit
-    saveFund("test-id-reset");
+  it("should fail early if the passed id is same as current", () => {
+    saveFundFunc("test-id-reset");
     expect(clearTransaction).not.toBeCalled();
+  });
 
-    //invalid fund. Check state after
-    saveFund("test");
+  it ("should fail and reset state if invalid fund passed in", () => {
+    saveFundFunc("test");
     expect(clearTransaction).toBeCalled();
     expect(component.state().id).toEqual(null);
     expect(component.state().fund).toEqual(false);
     expect(component.state().amount).toEqual(null);
+  });
 
-    //valid fund with no amount set. should fail before update
-    saveFund("RIP harambe fund");
+  it ("should set fund state and then fail with valid fund and no amount", () => {
+    saveFundFunc("RIP harambe fund");
     expect(component.state().id).toEqual("RIP harambe fund");
     expect(component.state().fund).toEqual(true);
     expect(update).toHaveBeenCalledTimes(1);
+  });
 
-    //make sure it calls update
-    saveFund("test"); // reset the state
+  it ("should set state and call update with valid amount and fund", () => {
     component.setState({amount: "$1.00"});
-    saveFund("RIP harambe fund");
+    saveFundFunc("RIP harambe fund");
     expect(update).toHaveBeenCalledTimes(2);
     expect(update.mock.calls[1]).toEqual([undefined, "RIP harambe fund", "$1.00"]);
     expect(addTransactions).toBeCalledWith({
@@ -239,14 +266,24 @@ describe ("SubFund Helpers", () => {
       }
     });
   });
+});
 
-  it ("should properly save the amount", () => {
-    const clearTransaction = jest.fn();
-    const remove = jest.fn();
-    const update = jest.fn();
-    const addTransactions = jest.fn();
 
-    const component = shallow(generateComponent({
+describe ("SubFund > saveAmount", () => {
+  let component = null;
+  let saveAmountFunc = null;
+  let clearTransaction = null;
+  let remove = null;
+  let update = null;
+  let addTransactions = null;
+
+  beforeEach(() => {
+    clearTransaction = jest.fn();
+    remove = jest.fn();
+    update = jest.fn();
+    addTransactions = jest.fn();
+
+    component = shallow(generateComponent({
       primary: true,
       update: () => {},
       preFill: () => {},
@@ -260,14 +297,19 @@ describe ("SubFund Helpers", () => {
     component.setState({id: "test-id-reset"});
 
     const { saveAmount } = component.instance();
+    saveAmountFunc = saveAmount;
+  });
 
-    expect(saveAmount("0")).toEqual("$0");
+  it ("should return $0, and remove the failed transaction", () => {
+    expect(saveAmountFunc("0")).toEqual("$0");
     expect(clearTransaction).toHaveBeenCalledTimes(1);
     expect(remove).toHaveBeenCalledTimes(1);
+  });
 
+  it ("should set state and call addTransactions, update on success", () => {
     //this would normally be set by saveFund
     component.setState({fund: "RIP harambe fund", id: "RIP harambe fund"});
-    expect(saveAmount("1")).toEqual("$1");
+    expect(saveAmountFunc("1")).toEqual("$1");
     expect(component.state().active).toEqual(true);
     expect(component.state().amount).toEqual(1);
     expect(addTransactions).toBeCalledWith({
@@ -278,4 +320,3 @@ describe ("SubFund Helpers", () => {
     expect(update.mock.calls[1]).toEqual([undefined, "RIP harambe fund", 1]);
   });
 });
-
