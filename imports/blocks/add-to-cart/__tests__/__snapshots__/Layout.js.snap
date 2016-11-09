@@ -1,0 +1,128 @@
+exports[`test should handle multiple accounts 1`] = `
+<Layout
+  accounts={
+    Array [
+      Object {
+        "label": "TEST 1",
+        "value": 1,
+      },
+      Object {
+        "label": "TEST 2",
+        "value": 2,
+      },
+      Object {
+        "label": "TEST 3",
+        "value": 3,
+      },
+    ]
+  }
+  monentize={[Function]}
+  preFill={[Function]}>
+  <div
+    className="push-top@handheld soft-half-top@lap-and-up">
+    <Form
+      classes={
+        Array [
+          "text-left",
+          "hard",
+        ]
+      }
+      id="add-to-cart"
+      submit={[Function]}>
+      <form
+        className="hard-ends text-left hard"
+        id="add-to-cart"
+        onSubmit={[Function]}>
+        <FieldSet>
+          <fieldset
+            className="flush-bottom">
+            <div
+              className="display-inline-block">
+              <mockConstructor
+                accounts={
+                  Array [
+                    Object {
+                      "label": "TEST 1",
+                      "value": 1,
+                    },
+                    Object {
+                      "label": "TEST 2",
+                      "value": 2,
+                    },
+                    Object {
+                      "label": "TEST 3",
+                      "value": 3,
+                    },
+                  ]
+                }
+                instance={0}
+                preFill={[Function]}
+                primary={true}
+                remove={[Function]}
+                update={[Function]}>
+                <div />
+              </mockConstructor>
+              <h3
+                className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
+                so my total is
+              </h3>
+              <h3
+                className="display-inline-block text-brand push-half-bottom" />
+            </div>
+            <div
+              className="push-top">
+              <mockConstructor
+                disabled={false}>
+                <div />
+              </mockConstructor>
+            </div>
+          </fieldset>
+        </FieldSet>
+      </form>
+    </Form>
+  </div>
+</Layout>
+`;
+
+exports[`test should render with minimal props 1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <div
+      className="display-inline-block">
+      <mockConstructor
+        accounts={
+          Array [
+            Object {
+              "value": "test",
+            },
+          ]
+        }
+        instance={0}
+        preFill={[Function]}
+        primary={true}
+        remove={[Function]}
+        update={[Function]} />
+      <h3
+        className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
+        so my total is
+      </h3>
+      <h3
+        className="display-inline-block text-brand push-half-bottom" />
+    </div>
+    <div
+      className="push-top">
+      <mockConstructor
+        disabled={false} />
+    </div>
+  </Form>
+</div>
+`;

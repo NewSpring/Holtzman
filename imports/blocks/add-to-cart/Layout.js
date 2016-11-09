@@ -125,14 +125,18 @@ export default class Layout extends Component {
               let selectVal;
               let inputVal;
 
+              // checks if account.key is in state.instances[]
               const existingInstance = this.state.instances[key];
+              // if so, pull out the account id and $ value
               if (existingInstance) {
                 selectVal = existingInstance.accountId;
                 inputVal = existingInstance.amount;
               }
 
+              // array of account ids in state.instances
               const instanceAccounts = this.state.instances.map((x) => (x.accountId));
 
+              // array of
               const copiedAccounts = [...accounts].filter((x) => {
                 const alreadySelectedByThisInstance =
                   this.state.instances.filter((y) => (y.id === key));
