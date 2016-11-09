@@ -1,0 +1,11 @@
+exports[`RecoverSchedules should be default if nothing is passed 1`] = `
+<Layout
+  back={[Function]}
+  closeFunction={[Function]}
+  hide={[Function]}
+  onSubmit={[Function]}
+  recoverOnClick={[Function]}
+  reminderDate="20170101"
+  schedules={Array []}
+  state="default" />
+`;

@@ -17,14 +17,14 @@ type IRecoverSchedules = {
   give: Object,
 }
 
-class RecoverSchedules extends Component {
+export class RecoverSchedules extends Component {
   props: IRecoverSchedules;
 
   state = {
     state: "default", // default, remind, later
   }
 
-  onRemind = (e) => {
+  onRemind = (e: Event) => {
     e.preventDefault();
 
     const input: HTMLInputElement = (document.getElementById("remind-frequency"): any);
@@ -50,7 +50,7 @@ class RecoverSchedules extends Component {
     this.setState({ state: "later" });
   }
 
-  back = (e) => {
+  back = (e: Event) => {
     e.preventDefault();
 
     this.setState({ state: "default" });
