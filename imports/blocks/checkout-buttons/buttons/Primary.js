@@ -85,6 +85,7 @@ const Icon = ({
 
 type IPrimaryButton = {
   classes: string,
+  dataId: string,
   disabled: boolean,
   hideCard: boolean,
   getAccount: Function,
@@ -103,6 +104,7 @@ const PrimaryButton = ({
   text,
   value,
   style,
+  dataId,
   savedPayments,
   theme,
   hideCard,
@@ -114,6 +116,7 @@ const PrimaryButton = ({
     onClick={onClick}
     disabled={Meteor.userId() && disabled}
     value={value}
+    data-id={dataId}
     style={style}
   >
     <ButtonText {...{ overrideText: text, savedPayments, hideCard, getAccount }} />
