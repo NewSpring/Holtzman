@@ -1,3 +1,5 @@
+// @flow
+
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import Moment from "moment";
