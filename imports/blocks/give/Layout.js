@@ -28,6 +28,13 @@ const monetize = (amount, fixed) => {
   return `$${value}`;
 };
 
+const FORM_STEPS = {
+  1: Personal,
+  2: Billing,
+  3: Payment,
+  4: Confirm,
+};
+
 const Layout = ({
   back,
   campuses,
@@ -58,78 +65,69 @@ const Layout = ({
     scheduleToRecover,
   } = give;
 
-  let copiedSchedules;
+  if (["loading", "error", "success"].indexOf(state) > -1) {
+    let copiedSchedules;
 
-  switch (state) {
-    case "loading":
-      copiedSchedules = { ...schedules };
-      return <Loading msg="We're Processing Your Contribution" />;
-    case "error":
-      return <Err msg={errors[Object.keys(errors)[0]].error} goToStepOne={goToStepOne} />;
-    case "success":
-      return (<Success
-        total={monetize(total.toFixed(2))}
-        email={data.personal.email}
-        guest={transactionType === "guest"}
-        onClick={goToAccounts}
-        schedules={copiedSchedules}
-      />);
-    // eslint-disable-next-line
-    default:
-      let Step;
-      switch (step) {
-        case 4:
-          Step = Confirm;
-          break;
-        case 3:
-          Step = Payment;
-          break;
-        case 2:
-          Step = Billing;
-          break;
-        default:
-          Step = Personal;
-      }
-
-      return (
-        <Forms.Form
-          id="give"
-          theme="hard"
-          fieldsetTheme="flush soft-top scrollable soft-double-bottom"
-          method="POST"
-          submit={onSubmit}
-        >
-
-          <Step
-            data={data}
-            url={url}
-            savedAccount={savedAccount}
-            transactions={transactions}
-            transactionType={transactionType}
-            save={save}
-            errors={errors}
-            clear={clear}
-            clearData={clearData}
-            next={next}
-            back={back}
-            total={total}
-            campuses={campuses}
-            states={states}
-            countries={countries}
-            schedules={schedules}
-            goToStepOne={goToStepOne}
-            savedAccounts={savedPayments}
-            changeSavedAccount={changeSavedAccount}
-            scheduleToRecover={scheduleToRecover}
-          >
-            <Controls.Progress
-              steps={4}
-              active={step}
-            />
-          </Step>
-        </Forms.Form>
-      );
+    switch (state) {
+      case "loading":
+        copiedSchedules = { ...schedules };
+        return <Loading msg="We're Processing Your Contribution" />;
+      case "error":
+        return <Err msg={errors[Object.keys(errors)[0]].error} goToStepOne={goToStepOne} />;
+      case "success":
+        return (
+          <Success
+            total={monetize(total.toFixed(2))}
+            email={data.personal.email}
+            guest={transactionType === "guest"}
+            onClick={goToAccounts}
+            schedules={copiedSchedules}
+          />
+        );
+      default:
+        return null;
+    }
   }
+
+  const Step = FORM_STEPS[step];
+
+  return (
+    <Forms.Form
+      id="give"
+      theme="hard"
+      fieldsetTheme="flush soft-top scrollable soft-double-bottom"
+      method="POST"
+      submit={onSubmit}
+    >
+      <Step
+        data={data}
+        url={url}
+        savedAccount={savedAccount}
+        transactions={transactions}
+        transactionType={transactionType}
+        save={save}
+        errors={errors}
+        clear={clear}
+        clearData={clearData}
+        next={next}
+        back={back}
+        total={total}
+        campuses={campuses}
+        states={states}
+        countries={countries}
+        schedules={schedules}
+        goToStepOne={goToStepOne}
+        savedAccounts={savedPayments}
+        changeSavedAccount={changeSavedAccount}
+        scheduleToRecover={scheduleToRecover}
+      >
+        <Controls.Progress
+          steps={4}
+          active={step}
+        />
+      </Step>
+    </Forms.Form>
+  );
 };
 
 Layout.propTypes = {
