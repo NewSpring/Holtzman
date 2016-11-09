@@ -8,7 +8,7 @@ type IRecoverableSchedule = {
   frequency: string,
 };
 
-const RecoverableSchedule = ({ account, amount, frequency }: IRecoverableSchedule) => (
+export const RecoverableSchedule = ({ account, amount, frequency }: IRecoverableSchedule) => (
   <div>
     <div className="display-inline-block soft-half-ends one-whole">
       <h5 className="flush-bottom float-left">{account}</h5>
