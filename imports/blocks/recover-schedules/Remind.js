@@ -55,11 +55,12 @@ const Remind = ({ onSubmit, back }: IRemind) => {
           defaultValue="tomorrow"
         />
 
-        <button className="one-whole btn push-ends">
+        <button data-spec="remind-me" className="one-whole btn push-ends">
           Remind Me Later
         </button>
 
         <button
+          data-spec="back-button"
           className="btn--thin btn--small btn--dark-tertiary one-whole"
           onClick={back}
         >
