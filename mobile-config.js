@@ -61,6 +61,7 @@ App.setPreference("SplashMaintainAspectRatio", true);
 
 App.setPreference("StatusBarBackgroundColor", "#6bac43");
 App.setPreference("StatusBarStyle", "lightcontent");
+App.setPreference("StatusBarOverlaysWebView", false);
 
 App.setPreference("Orientation", "portrait");
 
