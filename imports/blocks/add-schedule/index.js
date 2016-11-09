@@ -27,7 +27,6 @@ class CartContainer extends Component {
     saveSchedule: PropTypes.func,
     setTransactionType: PropTypes.func,
     text: PropTypes.string,
-    dataId: PropTypes.string,
   }
 
   state = {
@@ -193,28 +192,26 @@ class CartContainer extends Component {
     const { fundId, fundLabel, startDate, frequency } = this.state;
     return (
       <Layout
-        schedules={schedules}
-        setFrequency={this.setFrequency}
         accounts={mappedAccounts}
-        setFund={this.setFund}
-        state={this.state}
-        format={this.format}
-        save={this.saveData}
-        saveDate={this.saveDate}
-        total={this.state.amount}
         existing={this.props.existing}
-        date={this.state.startDate}
-        text={this.props.text}
+        format={this.format}
         onSubmitSchedule={this.onClick}
         ready={fundId && fundLabel && startDate && frequency}
-        dataId={this.props.dataId}
+        save={this.saveData}
+        saveDate={this.saveDate}
+        schedules={schedules}
+        setFrequency={this.setFrequency}
+        setFund={this.setFund}
+        state={this.state}
+        text={this.props.text}
+        total={this.state.amount}
       />
     );
   }
 }
 
 export default createContainer(() => {
-  const alive = true;
-  // try { alive = serverWatch.isAlive("ROCK"); } catch (e) {} // eslint-disable-line
+  let alive = true;
+  try { alive = serverWatch.isAlive("ROCK"); } catch (e) {} // eslint-disable-line
   return { alive };
 }, CartContainer);
