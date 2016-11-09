@@ -1,3 +1,5 @@
+// @flow
+
 import AccountType from "../../../components/accountType";
 
 type IPaymentCard = {
