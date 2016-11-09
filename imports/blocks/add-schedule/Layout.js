@@ -2,7 +2,7 @@
 import { Meteor } from "meteor/meteor";
 import Moment from "moment";
 import { css } from "aphrodite";
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 
 import TertiaryPhrase from "./phrases";
 import Forms from "../../components/forms";
@@ -45,7 +45,7 @@ type ILayout = {
 // this definition of Layout works
 class Layout extends Component {
 
-  static propTypes: ILayout;
+  propTypes: ILayout;
 
   render() {
     const {
@@ -65,6 +65,13 @@ class Layout extends Component {
     } = this.props;
 
 /* end flip flop comment section */
+    const formClasses = [
+      "flush-bottom",
+      "h3",
+      "hard-top",
+      "outlined--dotted",
+      "outlined--light",
+    ];
 
     let disableCheckout = false;
     if (!total || total <= 0 || !ready) {
@@ -76,8 +83,8 @@ class Layout extends Component {
       prefillFund = existing.details[0].account.id;
     }
 
-      // XXX: this was already commented out, should it be?
-      // let defaultDate = Moment().add(1, "days")
+  // XXX: this was already commented out, should it be?
+  // let defaultDate = Moment().add(1, "days")
     let defaultDate = null;
     if (existing && existing.next && new Date(existing.next) > new Date()) {
       defaultDate = new Date(existing.next);
@@ -102,7 +109,7 @@ class Layout extends Component {
         >
           <TertiaryPhrase
             additionalClasses="push-half-right"
-            text="I'd like to give "
+            text="I'd like to give&nbsp;"
           />
           <Forms.Input
             id={state.fundId || -1}
@@ -111,7 +118,7 @@ class Layout extends Component {
             type={Meteor.isCordova ? "text" : "tel"}
             ref="primary-account"
             classes={["soft-bottom", "input--active", "display-inline-block"]}
-            inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
+            inputClasses={`${formClasses.join(" ")} text-dark-primary ${css(Styles["show-placeholder"])}`}
             placeholder="$0.00"
             validate={save}
             format={format}
@@ -119,7 +126,7 @@ class Layout extends Component {
             defaultValue={formInputDefaultValue}
           />
           <TertiaryPhrase
-            text="to "
+            text="to&nbsp;"
           />
           <Forms.Select
             items={accounts}
@@ -128,13 +135,13 @@ class Layout extends Component {
             hideLabel
             ref="select-account"
             classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
-            inputClasses={"outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary"}
+            inputClasses={`${formClasses.join(" ")} text-light-tertiary`}
             placeholder="select fund here"
             onChange={setFund}
             defaultValue={prefillFund}
           />
           <TertiaryPhrase
-            text=" "
+            text="&nbsp;"
           />
           <Forms.Select
             items={schedules}
@@ -143,14 +150,14 @@ class Layout extends Component {
             hideLabel
             ref="schedules"
             classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
-            inputClasses={"outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary"}
+            inputClasses={`${formClasses.join(" ")} text-light-tertiary`}
             includeBlank
             placeholder="choose frequency"
             onChange={setFrequency}
             defaultValue={formSelectDefaultValue}
           />
           <TertiaryPhrase
-            text=" starting "
+            text="&nbsp;starting&nbsp;"
           />
           <Forms.Date
             id="start-date"
@@ -158,11 +165,11 @@ class Layout extends Component {
             hideLabel
             ref="start-date"
             classes={["soft-bottom", "input--active", "display-inline-block"]}
-            inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
+            inputClasses={`${formClasses.join(" ")} text-dark-primary ${css(Styles["show-placeholder"])}`}
             placeholder="select date"
             past={false}
             today={false}
-            format={value => (Moment(value).format("MMM D, YYYY"))} // eslint-disable-line
+              format={value => (Moment(value).format("MMM D, YYYY"))} // eslint-disable-line
             validation={saveDate}
             defaultValue={defaultDate}
           />
@@ -178,5 +185,6 @@ class Layout extends Component {
     );
   }
 }
+
 
 export default Layout;
