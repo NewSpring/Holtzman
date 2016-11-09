@@ -19,7 +19,7 @@ export default toCurrency;
   @param fixed: whether or not to enforce decimal places
 
 */
-const monetize = (value: string | number, fixed: boolean): string => {
+const monetize = (value: string | number, fixed?: boolean): string => {
   let amount = typeof value === "number" ? `${value}` : value;
 
   if (!amount || !amount.length) {
