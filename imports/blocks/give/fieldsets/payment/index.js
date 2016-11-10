@@ -1,11 +1,7 @@
 import { Component, PropTypes } from "react";
 
-import Controls from "../../../components/controls";
-import AccountType from "../../../components/accountType";
-import Forms from "../../../components/forms";
-
-import Validate from "../../../util/validate";
-import { creditCard } from "../../../util/format";
+import Validate from "../../../../util/validate";
+import { creditCard } from "../../../../util/format";
 
 export default class Payment extends Component {
 
@@ -300,120 +296,9 @@ export default class Payment extends Component {
   render() {
     const { payment } = this.props.data;
     return (
-      <div>
-        <div className="push-double@lap-and-up push">
-          {this.props.header || this.header()}
-        </div>
-
-        {this.props.children}
-
-        <Controls.Toggle
-          items={this.props.toggles || this.toggles}
-          state={payment.type === "ach"}
-          toggle={this.toggle}
-        />
-
-
-        <div className="soft">
-          {(() => {
-            if (payment.type === "ach") {
-              return this.bankFields();
-            }
-
-            return this.cardFields();
-          })()}
-
-          {(() => {
-            if (
-              !this.props.savedAccount.id &&
-              this.props.transactionType !== "guest" &&
-              Object.keys(this.props.schedules).length === 0
-            ) {
-              return (
-                <Forms.Checkbox
-                  name="savePayment"
-                  defaultValue={this.state.save}
-                  clicked={this.savePayment}
-                >
-                  Save this payment for future contributions
-                </Forms.Checkbox>
-              );
-            }
-            return null;
-          })()}
-
-
-          {(() => {
-            if (
-              this.state.save &&
-              !this.props.savedAccount.id &&
-              this.props.transactionType !== "guest" &&
-              Object.keys(this.props.schedules).length === 0
-            ) {
-              return (
-                <Forms.Input
-                  name="accountName"
-                  label="Saved Account Name"
-                  classes={["soft-bottom", "flush-bttom"]}
-                  errorText="Please enter a name for the account"
-                  validation={this.saveName}
-                  defaultValue={payment.type === "ach" ? "Bank Account" : "Credit Card"}
-                  ref="accountName"
-                />
-              );
-            }
-            return null;
-          })()}
-
-        </div>
-
-
-        <div>
-          <a
-            href=""
-            tabIndex={-1}
-            onClick={this.props.back}
-            className="btn--small btn--dark-tertiary display-inline-block"
-          >
-            Back
-          </a>
-
-          {(() => {
-            const btnClasses = ["push-left"];
-
-            const ach = (payment.type === "ach" && payment.accountNumber && payment.routingNumber);
-            const cc = (
-              payment.type === "cc" &&
-                payment.cardNumber &&
-                payment.expiration && payment.ccv
-            );
-
-            let submit = this.props.next;
-            let disabled = false;
-            if (ach || cc) {
-              btnClasses.push("btn");
-              submit = this.props.next;
-            } else {
-              btnClasses.push("btn--disabled");
-              disabled = true;
-              submit = (e) => (e.preventDefault());
-            }
-
-            return (
-              <button
-                className={btnClasses.join(" ")}
-                disabled={disabled}
-                type="submit"
-                onClick={submit}
-              >
-                Next
-              </button>
-            );
-          })()}
-
-        </div>
-
-      </div>
+      <Layout
+        payment={payment}
+      />
     );
   }
 }
