@@ -33,6 +33,7 @@ const RenderLikes = ({ likes }) => {
                 entryId: like.entryId,
                 icon: like.icon,
               }}
+              link={like.link || ""}
             />
           </div>
         ))
