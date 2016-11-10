@@ -84,7 +84,12 @@ const NextButton = ({
   }
 
   return (
-    <button className={btnClasses.join(" ")} disabled={disabled} type="submit" onClick={next}>
+    <button
+      className={btnClasses.join(" ")}
+      disabled={disabled}
+      type="submit"
+      onClick={next}
+    >
       Next
     </button>
   );
@@ -166,7 +171,12 @@ const Layout = ({
     </div>
 
     <div>
-      <a href="" tabIndex={-1} onClick={back} className="btn--small btn--dark-tertiary display-inline-block">
+      <a
+        href=""
+        tabIndex={-1}
+        onClick={back}
+        className="btn--small btn--dark-tertiary display-inline-block"
+      >
         Back
       </a>
 
