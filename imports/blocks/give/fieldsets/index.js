@@ -1,5 +1,5 @@
 
-import Personal from "./Personal";
+import Personal from "./personal";
 import Billing from "./Billing";
 import Payment from "./Payment";
 import Confirm from "./Confirm";
