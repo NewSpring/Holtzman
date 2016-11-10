@@ -70,6 +70,31 @@ Zip.propTypes = {
   zip: PropTypes.func,
 };
 
+const NextButton = ({
+  billing,
+  next,
+}) => {
+  const btnClasses = ["push-left"];
+  let disabled = false;
+  if (!billing.streetAddress || !billing.city) {
+    btnClasses.push("btn--disabled");
+    disabled = true;
+  } else {
+    btnClasses.push("btn");
+  }
+
+  return (
+    <button className={btnClasses.join(" ")} disabled={disabled} type="submit" onClick={next}>
+      Next
+    </button>
+  );
+};
+
+NextButton.propTypes = {
+  billing: PropTypes.object,
+  next: PropTypes.func,
+};
+
 const Layout = ({
   back,
   billing,
@@ -145,23 +170,10 @@ const Layout = ({
         Back
       </a>
 
-      {(() => {
-        const btnClasses = ["push-left"];
-        let disabled = false;
-        if (!billing.streetAddress || !billing.city) {
-          btnClasses.push("btn--disabled");
-          disabled = true;
-        } else {
-          btnClasses.push("btn");
-        }
-
-        return (
-          <button className={btnClasses.join(" ")} disabled={disabled} type="submit" onClick={next}>
-            Next
-          </button>
-        );
-      })()}
-
+      <NextButton
+        billing={billing}
+        next={next}
+      />
     </div>
 
   </div>
