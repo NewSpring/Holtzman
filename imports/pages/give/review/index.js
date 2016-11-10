@@ -42,10 +42,10 @@ export class Template extends Component {
     dispatch(giveActions.setUserId(giveData.userId));
   }
 
-  // onSubmit = (event: Function) => {
-  //   event.preventDefault();
-  //   this.props.dispatch(giveActions.submit());
-  // }
+  onSubmit = (event: Function) => {
+    event.preventDefault();
+    this.props.dispatch(giveActions.submit());
+  }
 
   getGiveData = () => {
     try {

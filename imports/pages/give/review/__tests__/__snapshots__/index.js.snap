@@ -1,0 +1,38 @@
+exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `
+<Err
+  additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
+  msg="must go faster!" />
+`;
+
+exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `
+<Layout
+  payment={
+    Object {
+      "icon": "Visa",
+      "last4": "1112",
+      "type": "cc",
+    }
+  }
+  personal={
+    Object {
+      "campus": "Web",
+      "campusId": 20,
+      "email": "web@newspring.cc",
+      "firstName": "Jeff",
+      "lastName": "Goldblumm",
+    }
+  } />
+`;
+
+exports[`GiveReviewTemplate returns <Loading /> component based on state 1`] = `
+<Loading
+  msg="We\'re Processing Your Contribution" />
+`;
+
+exports[`GiveReviewTemplate returns <Success /> component based on state 1`] = `
+<Success
+  additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
+  email="web@newspring.cc"
+  guest={false}
+  total="$1.00" />
+`;
