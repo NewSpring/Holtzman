@@ -27,6 +27,7 @@ export class RecoverSchedules extends Component {
   onRemind = (e: Event) => {
     e.preventDefault();
 
+    // XXX deprecate id based find for node reference on element
     const input: HTMLInputElement = (document.getElementById("remind-frequency"): any);
     const value = input.value;
 
