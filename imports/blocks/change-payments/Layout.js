@@ -11,7 +11,7 @@ const paymentAccount = (account) => {
 
 type ILayout = {
   savedAccounts: Object[],
-  selectedAccount: string,
+  selectedAccount: Object,
   chooseAccount: Function,
   changeAccounts: Function,
 }
@@ -28,7 +28,6 @@ const Layout = ({
         Change Payment Account
       </h4>
     </div>
-
     <div className="soft">
       { savedAccounts.map((account, key) => (
         <PaymentCard
