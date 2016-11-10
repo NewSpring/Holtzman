@@ -1,21 +1,27 @@
-import { Component, PropTypes } from "react";
+// @flow
+
+import { Component } from "react";
 import { connect } from "react-redux";
 
-import { modal, give as giveActions } from "../../store";
+import {
+  modal,
+  give as giveActions,
+} from "../../store";
 
 import Layout from "./Layout";
+
+type IChangePayments = {
+  dispatch: Function,
+  savedAccounts: Array,
+  currentAccount: Object,
+};
 
 const map = (state) => ({
   savedAccount: state.give.savedAccount,
 });
 @connect(map)
 export default class ChangePayments extends Component {
-
-  static propTypes = {
-    dispatch: PropTypes.func,
-    savedAccounts: PropTypes.array, // eslint-disable-line
-    currentAccount: PropTypes.object, // eslint-disable-line
-  }
+  props: IChangePayments;
 
   state = {
     savedAccount: null,
