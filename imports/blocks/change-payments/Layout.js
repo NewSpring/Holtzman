@@ -34,6 +34,7 @@ const Layout = ({
         <PaymentCard
           key={key}
           onClick={chooseAccount}
+          accountName={account.name}
           accountId={account.id}
           paymentAccount={paymentAccount(account)}
           paymentType={account.payment.paymentType}
