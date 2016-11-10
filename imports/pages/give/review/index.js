@@ -1,4 +1,6 @@
-import { Component, PropTypes } from "react";
+// @flow
+
+import { Component } from "react";
 import { connect } from "react-redux";
 import Layout from "./Layout";
 
@@ -8,21 +10,26 @@ import Success from "../../../blocks/give/Success";
 
 import { give as giveActions, nav as navActions } from "../../../store";
 
-const mapStateToProps = (state) => ({ give: state.give });
-@connect(mapStateToProps)
-class Template extends Component {
+type ITemplate = {
+  dispatch: Function,
+  give: Object,
+};
 
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    give: PropTypes.object.isRequired,
-  }
+const mapStateToProps = (state) => ({ give: state.give });
+
+export class Template extends Component {
+
+  props: ITemplate;
 
   componentWillMount() {
     const giveData = this.getGiveData();
+
+    if (!giveData) return;
+
     const { dispatch } = this.props;
-    // hide nav
+  //   // // hide nav
     dispatch(navActions.hide());
-    // store payment personal and billing
+    // // store payment personal and billing
     dispatch(giveActions.save(giveData.data));
     // store url
     dispatch(giveActions.setDetails(giveData.url));
@@ -35,10 +42,10 @@ class Template extends Component {
     dispatch(giveActions.setUserId(giveData.userId));
   }
 
-  onSubmit = (event) => {
-    event.preventDefault();
-    this.props.dispatch(giveActions.submit());
-  }
+  // onSubmit = (event: Function) => {
+  //   event.preventDefault();
+  //   this.props.dispatch(giveActions.submit());
+  // }
 
   getGiveData = () => {
     try {
@@ -65,27 +72,28 @@ class Template extends Component {
     return null;
   }
 
-  monentize = (value, fixed) => {
-    let strVal = typeof value === "number" ? `${value}` : value;
+  // XXX replace the function in PR 1431 with this one
+  monetize = (value: string | number, fixed?: boolean): string => {
+    let amount = typeof value === "number" ? `${value}` : value;
 
-    if (!strVal.length) {
+    if (!amount || !amount.length) {
       return "$0.00";
     }
 
-    strVal = strVal.replace(/[^\d.-]/g, "");
+    amount = amount.replace(/[^\d.-]/g, "");
 
-    const decimals = strVal.split(".")[1];
+    const decimals = amount.split(".")[1];
     if ((decimals && decimals.length >= 2) || fixed) {
-      strVal = Number(strVal).toFixed(2);
-      strVal = String(strVal);
+      amount = Number(amount).toFixed(2);
+      amount = String(amount);
     }
 
-    strVal = strVal.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${strVal}`;
+    amount = amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return `$${amount}`;
   }
 
   render() {
-    const giveData = this.getGiveData();
+    // const giveData = this.getGiveData();
     const { state, errors, total, data } = this.props.give;
 
     switch (state) {
@@ -100,7 +108,7 @@ class Template extends Component {
         />);
       case "success":
         return (<Success
-          total={this.monentize(total.toFixed(2))}
+          total={this.monetize(total.toFixed(2))}
           email={data.personal.email}
           guest={false} // prevent showing giving history
           additionalMessage={
@@ -108,13 +116,15 @@ class Template extends Component {
           }
         />);
       default:
-        return <Layout {...giveData} onSubmit={this.onSubmit} />;
+        return <Layout {...data} onSubmit={this.onSubmit} />;
     }
   }
 }
 
+const TemplateWithData = connect(mapStateToProps)(Template);
+
 const Routes = [
-  { path: "review", component: Template },
+  { path: "review", component: TemplateWithData },
 ];
 
 export default {
