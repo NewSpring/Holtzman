@@ -60,6 +60,7 @@ const mapStateToProps = (store) => ({
 type ICheckoutButtons = {
   authorized: boolean,
   classes: string,
+  dataId: string,
   disabled: boolean,
   disabledGuest: boolean,
   dispatch: Function,
@@ -174,6 +175,7 @@ class CheckoutButtons extends Component {
         disabled={this.props.disabled}
         disabledGuest={this.props.disabledGuest}
         hideCard={this.props.hideCard}
+        dataId={this.props.dataId}
         savedPayments={this.props.savedPayments.savedPayments}
         style={this.props.style}
         text={this.props.text}
