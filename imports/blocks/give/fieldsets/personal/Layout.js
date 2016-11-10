@@ -1,11 +1,52 @@
 import { PropTypes } from "react";
 import Forms from "../../../../components/forms";
 
-const Header = () => (
-  <h4 className="text-center">
-    Personal Details
-  </h4>
-);
+const Header = ({ override }) => {
+  if (override) return override;
+  return (
+    <h4 className="text-center">
+      Personal Details
+    </h4>
+  );
+};
+
+Header.propTypes = {
+  override: PropTypes.object,
+};
+
+const NextButton = ({
+  personal,
+  next,
+}) => {
+  const btnClasses = [];
+  let disabled = false;
+  if (
+    personal.email === null || personal.firstName === null ||
+    personal.email === null || personal.campusId === null
+  ) {
+    btnClasses.push("btn--disabled");
+    disabled = true;
+  } else {
+    btnClasses.push("btn");
+  }
+
+  return (
+    <div>
+      <button
+        className={btnClasses.join(" ")}
+        disabled={disabled}
+        onClick={next}
+      >
+        Next
+      </button>
+    </div>
+  );
+};
+
+NextButton.propTypes = {
+  personal: PropTypes.object,
+  next: PropTypes.func,
+};
 
 const Layout = ({
   campus,
@@ -20,11 +61,12 @@ const Layout = ({
 }) => (
   <div>
     <div className="push-double@lap-and-up push">
-      {header || <Header />}
+      <Header override={header} />
     </div>
-    {children}
-    <div className="soft">
 
+    {children}
+
+    <div className="soft">
 
       <div className="grid">
         <div className="grid__item one-half">
@@ -45,9 +87,8 @@ const Layout = ({
             defaultValue={personal.lastName}
           />
         </div>
-
-
       </div>
+
       <Forms.Input
         name="email"
         placeholder="user@email.com"
@@ -70,39 +111,10 @@ const Layout = ({
       />
     </div>
 
-
-    <div>
-      {/*
-      <a href="#" tabIndex={-1} onClick={this.props.back}
-         className="btn--small btn--dark-tertiary display-inline-block">
-        Back
-      </a>
-      */}
-
-      {(() => {
-        const btnClasses = [
-          // "push-left"
-        ];
-        let disabled = false;
-        if (personal.email === null || personal.firstName === null ||
-            personal.email === null || personal.campusId === null) {
-          btnClasses.push("btn--disabled");
-          disabled = true;
-        } else {
-          btnClasses.push("btn");
-        }
-
-        return (
-          <button
-            className={btnClasses.join(" ")}
-            disabled={disabled}
-            onClick={next}
-          >
-            Next
-          </button>
-        );
-      })()}
-    </div>
+    <NextButton
+      personal={personal}
+      next={next}
+    />
   </div>
 );
 
