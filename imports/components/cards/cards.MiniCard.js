@@ -22,6 +22,7 @@ type IMiniCard = {
   content: Object,
   icon: string,
   category: string,
+  link: string,
 };
 
 // XXX right now this uses the content prop for everything
@@ -33,8 +34,9 @@ const MiniCard = ({
   content,
   icon,
   category,
+  link,
 }: IMiniCard) => (
-  <Link to={contentHelper.links(content)} className="plain">
+  <Link to={link || contentHelper.links(content)} className="plain">
     <div className="card">
       <div className={`card__item soft push-half-ends ${hasImage(content) ? "two-thirds" : "one-whole"}`} style={{ verticalAlign: "middle" }}>
         <h6 className="text-dark-primary capitalize">{title}</h6>
