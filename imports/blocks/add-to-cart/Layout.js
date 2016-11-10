@@ -18,7 +18,7 @@ export default class Layout extends Component {
   }
 
   state = {
-    SubFundInstances: 1,
+    SubFundInstances: 1, //number of subfunds to show
     instances: [
       // {
       //   id: Number,
@@ -27,14 +27,18 @@ export default class Layout extends Component {
     ],
   }
 
+  // :boolean || undefined
+  getInstance = () => {
+    const instance = this.state.instances.filter((x) => (x.id === key));
+    return instance && instance[0];
+  }
+
   update = (key, value, amount) => {
-    const getInstance = () => {
-      const instance = this.state.instances.filter((x) => (x.id === key));
+    console.log("instances", this.state.instances);
 
-      return instance && instance[0];
-    };
-
-    const instance = getInstance();
+    const instance = this.getInstance();
+    console.log("test instance:", instance);
+    // updates the array of accounts.
     if (instance) {
       const current = [...this.state.instances];
       const updated = current.map((x) => {
@@ -54,13 +58,21 @@ export default class Layout extends Component {
         instances: updated,
       });
     } else {
+      console.log("accounts len:", this.props.accounts.length, "subFundInstances:", this.state.SubFundInstances);
+
+      //cant have more sf instances than funds
       if (this.props.accounts.length === this.state.SubFundInstances) return;
+
+      // less sf instances than funds, so add another instance
+      // add the new fund
       this.setState({
         SubFundInstances: this.state.SubFundInstances + 1,
         instances: [...this.state.instances, ...[
           { id: key, accountId: Number(value), amount },
         ]],
       });
+
+      console.log("accounts len:", this.props.accounts.length, "subFundInstances:", this.state.SubFundInstances);
     }
   }
 
