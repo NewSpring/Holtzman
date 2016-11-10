@@ -18,7 +18,7 @@ export default class Layout extends Component {
   }
 
   state = {
-    SubFundInstances: 1, //number of subfunds to show
+    SubFundInstances: 1, // number of subfunds to show
     instances: [ // the tracked funds. The props.accounts which have had updates to value
       // {
       //   id: Number,

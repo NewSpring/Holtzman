@@ -107,7 +107,7 @@ describe ("Update", () => {
     expect(mountToJson(component)).toMatchSnapshot();
   });
 
-    it ("should allow change of fund for an instance of SubFund", () => {
+  it ("should allow change of fund for an instance of SubFund", () => {
     const component = mount(generateComponent({accounts: additionalAccounts}));
     const { update } = component.instance();
     update(0, 1, 10);
