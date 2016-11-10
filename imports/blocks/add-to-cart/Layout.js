@@ -19,7 +19,7 @@ export default class Layout extends Component {
 
   state = {
     SubFundInstances: 1, //number of subfunds to show
-    instances: [
+    instances: [ // the tracked funds. The props.accounts which have had updates to value
       // {
       //   id: Number,
       //   accountId: Number
@@ -34,52 +34,42 @@ export default class Layout extends Component {
   }
 
   /**
-   * key:
-   * value:
-   * amount:
+   * update
+   * key: the index of the funds shown on the page (primary is 0)
+   * accountId: the account identifier
+   * amount: the amount to update the fund to
    */
-  update = (key, value, amount) => {
-    // console.log("instances", this.state.instances);
-    console.log(key, value, amount);
-    console.log(this.props.accounts);
-
-    // const instance = this.instanceExists(key);
-    // console.log("test instance:", instance);
-    // updates the array of accounts.
+  update = (key, accountId, amount) => {
     if (this.instanceExists(key)) {
       const current = [...this.state.instances];
       const updated = current.map((x) => {
         if (x.id === key) {
-          return {
+          return { // update the one instance only
             id: key,
-            accountId: Number(value),
+            accountId: Number(accountId),
             amount,
           };
         }
 
+        // return the ones that aren't chaning
         return x;
       });
 
       this.setState({
         SubFundInstances: updated.length + 1,
-        instances: updated,
+        instances: updated, // updates with new amount
       });
     } else {
-      console.log("accounts len:", this.props.accounts.length, "subFundInstances:", this.state.SubFundInstances);
-
-      // cant have more sf instances than funds
+      // cant have more SubFund instances than funds
       if (this.props.accounts.length === this.state.SubFundInstances) return;
 
-      // less sf instances than funds, so add another instance
-      // add the new fund
+      // less SubFund instances than funds, so add another instance
       this.setState({
-        SubFundInstances: this.state.SubFundInstances + 1,
-        instances: [...this.state.instances, ...[
-          { id: key, accountId: Number(value), amount },
+        SubFundInstances: this.state.SubFundInstances + 1, // add a new SubFund component
+        instances: [...this.state.instances, ...[ // add here to track changes to the account value
+          { id: key, accountId: Number(accountId), amount },
         ]],
       });
-
-      console.log("accounts len:", this.props.accounts.length, "subFundInstances:", this.state.SubFundInstances);
     }
   }
 
