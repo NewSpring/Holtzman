@@ -12,7 +12,7 @@ import Layout from "./Layout";
 
 type IChangePayments = {
   dispatch: Function,
-  savedAccounts: Object,
+  savedAccounts: Object[],
   currentAccount: Object,
 };
 
@@ -27,21 +27,14 @@ export default class ChangePayments extends Component {
     savedAccount: null,
   }
 
-  paymentAccount = (account) => {
-    const accountFistEight = account.payment.accountNumber.slice(0, account.payment.accountNumber.length - 5).replace(/./gmi, "*");
-    const accountLastFour = account.payment.accountNumber.slice(-4);
-
-    return accountFistEight + accountLastFour;
-  }
-
-  changeAccounts = (e) => {
+  changeAccounts = (e: Event) => {
     e.preventDefault();
 
     this.props.dispatch(giveActions.setAccount(this.state.savedAccount));
     this.props.dispatch(modal.hide());
   }
 
-  choose = (e) => {
+  choose = (e: SyntheticEvent) => {
     e.preventDefault();
 
     const { id } = e.currentTarget;
