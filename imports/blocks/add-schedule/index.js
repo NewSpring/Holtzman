@@ -5,19 +5,9 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 import createContainer from "../meteor/react-meteor-data";
-
 import { give as giveActions } from "../../store";
 import Offline from "../../components/status/Offline";
-
 import Layout from "./Layout";
-
-// XXX move this to a global constructs file?
-const GIVING_SCHEDULES = [
-    { label: "one time", value: "One-Time" },
-    { label: "every week", value: "Weekly" },
-    { label: "every two weeks", value: "Bi-Weekly" },
-    { label: "once a month", value: "Monthly" },
-];
 
 type ICartContainer = {
     accounts: Object,
@@ -26,7 +16,7 @@ type ICartContainer = {
     clearAllSchedulesExcept: Function,
     clearSchedules: Function,
     clearTransactions: Function,
-    existing: Object, // eslint-disable-line
+    existing: Object,
     onClick: Function,
     removeSchedule: Function,
     saveSchedule: Function,
@@ -42,8 +32,13 @@ type IState = {
   startDate: ?string,
 };
 
-// We only care about the give state
-const map = (state) => ({ give: state.give });
+// XXX move this to a global constructs file?
+const GIVING_SCHEDULES = [
+    { label: "one time", value: "One-Time" },
+    { label: "every week", value: "Weekly" },
+    { label: "every two weeks", value: "Bi-Weekly" },
+    { label: "once a month", value: "Monthly" },
+];
 
 class CartContainer extends Component {
   props: ICartContainer;
@@ -72,7 +67,7 @@ class CartContainer extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps: Object) { // eslint-disable-line
+  componentWillReceiveProps(nextProps: Object) {
     const { transactions, schedules } = nextProps.give;
 
     if (Object.keys(transactions).length === 0 && Object.keys(schedules).length === 0) {
@@ -85,7 +80,7 @@ class CartContainer extends Component {
     this.props.clearSchedules();
   }
 
-  // XXX: should remove fixed since it's not being used? DS
+  // XXX: should remove fixed since it's not being used?
   monetize = (val: string, fixed?: boolean) => {
     let value = val;
     if (typeof value === "number") value = `${value}`;
@@ -233,9 +228,16 @@ class CartContainer extends Component {
   }
 }
 
+// We only care about the give state
+const map = (state) => ({ give: state.give });
+
 // spins up a cart with the give state if Rock is online
 export default createContainer(() => {
   let alive = true;
   try { alive = serverWatch.isAlive("ROCK"); } catch (e) {} // eslint-disable-line
   return { alive };
 }, connect(map, giveActions)(CartContainer));
+
+export {
+  CartContainer,
+};
