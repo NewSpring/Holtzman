@@ -73,7 +73,7 @@ class CartContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps: Object) { // eslint-disable-line
-    const { transactions, schedules }: { transactions: Object, schedules: Object } = nextProps.give;
+    const { transactions, schedules } = nextProps.give;
 
     if (Object.keys(transactions).length === 0 && Object.keys(schedules).length === 0) {
       const form: FormElement = (document.getElementById("add-to-cart"): any);

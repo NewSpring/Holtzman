@@ -80,6 +80,10 @@ class Layout extends Component {
       disableCheckout = true;
     }
 
+    if (!accounts || accounts.length === 0) {
+      return null;
+    }
+
     let prefillFund = accounts[0].value;
     if (existing && existing.details && existing.details.length && existing.details[0].account) {
       prefillFund = existing.details[0].account.id;
@@ -171,7 +175,7 @@ class Layout extends Component {
             placeholder="select date"
             past={false}
             today={false}
-              format={value => (Moment(value).format("MMM D, YYYY"))} // eslint-disable-line
+            format={value => (Moment(value).format("MMM D, YYYY"))} // eslint-disable-line
             validation={saveDate}
             defaultValue={defaultDate}
           />
@@ -187,6 +191,5 @@ class Layout extends Component {
     );
   }
 }
-
 
 export default Layout;

@@ -12,8 +12,7 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flow:stop": "flow stop",
     "storybook": "start-storybook -p 6006 -s ./public",
-    "build-storybook": "node ./.bin/index.js setup && build-storybook -s public -o docs",
-    "coverage": "jest --coverage"
+    "build-storybook": "node ./.bin/index.js setup && build-storybook -s public -o docs"
   },
   "repository": {
     "type": "git",
