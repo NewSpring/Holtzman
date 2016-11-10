@@ -41,7 +41,7 @@ story
           { description: "primary", id: null, value: "303030" },
         ],
         images: [
-          { fileLabel: "2:1", url: "https://www.picsofcelebrities.com/celebrity/jeff-goldblum/pictures/large/jeff-goldblum-movies.jpg" },
+          { fileLabel: "2:1", url: "http://i.huffpost.com/gen/1647376/images/o-JEFF-GOLDBLUM-facebook.jpg" },
         ],
       },
       meta: {
@@ -60,7 +60,7 @@ story
     content.meta.date = text("Date", "10/31/2016");
 
     // Image
-    const defaultImageURL = "https://www.picsofcelebrities.com/celebrity/jeff-goldblum/pictures/large/jeff-goldblum-movies.jpg";
+    const defaultImageURL = "http://i.huffpost.com/gen/1647376/images/o-JEFF-GOLDBLUM-facebook.jpg";
     content.content.images[0].url = text("image link", defaultImageURL);
 
     // Background Color For Series
