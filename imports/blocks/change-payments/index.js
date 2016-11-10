@@ -10,18 +10,25 @@ import {
 
 import Layout from "./Layout";
 
+const map = (state) => ({
+  savedAccount: state.give.savedAccount,
+});
+
+export const withRedux = connect(map);
+
 type IChangePayments = {
   dispatch: Function,
   savedAccounts: Object[],
   currentAccount: Object,
 };
 
-const map = (state) => ({
-  savedAccount: state.give.savedAccount,
-});
-@connect(map)
-export default class ChangePayments extends Component {
+type IChangePaymentsState = {
+  savedAccount: Object,
+}
+
+export class ChangePayments extends Component {
   props: IChangePayments;
+  state: IChangePaymentsState;
 
   state = {
     savedAccount: null,
@@ -34,11 +41,12 @@ export default class ChangePayments extends Component {
     this.props.dispatch(modal.hide());
   }
 
-  choose = (e: SyntheticEvent) => {
+  choose = (e: SyntheticInputEvent) => {
     e.preventDefault();
 
     const { id } = e.currentTarget;
-    let act = {};
+    // XXX This is wrong, and needs to be changed...eventaully
+    let act: any = {};
     for (const account of this.props.savedAccounts) {
       if (Number(account.id) === Number(id)) {
         act = account;
@@ -67,3 +75,5 @@ export default class ChangePayments extends Component {
     );
   }
 }
+
+export default withRedux(ChangePayments);
