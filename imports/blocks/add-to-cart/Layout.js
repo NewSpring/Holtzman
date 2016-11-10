@@ -28,18 +28,25 @@ export default class Layout extends Component {
   }
 
   // :boolean || undefined
-  getInstance = () => {
+  instanceExists = (key) => {
     const instance = this.state.instances.filter((x) => (x.id === key));
     return instance && instance[0];
   }
 
+  /**
+   * key:
+   * value:
+   * amount:
+   */
   update = (key, value, amount) => {
-    console.log("instances", this.state.instances);
+    // console.log("instances", this.state.instances);
+    console.log(key, value, amount);
+    console.log(this.props.accounts);
 
-    const instance = this.getInstance();
-    console.log("test instance:", instance);
+    // const instance = this.instanceExists(key);
+    // console.log("test instance:", instance);
     // updates the array of accounts.
-    if (instance) {
+    if (this.instanceExists(key)) {
       const current = [...this.state.instances];
       const updated = current.map((x) => {
         if (x.id === key) {
@@ -60,7 +67,7 @@ export default class Layout extends Component {
     } else {
       console.log("accounts len:", this.props.accounts.length, "subFundInstances:", this.state.SubFundInstances);
 
-      //cant have more sf instances than funds
+      // cant have more sf instances than funds
       if (this.props.accounts.length === this.state.SubFundInstances) return;
 
       // less sf instances than funds, so add another instance
