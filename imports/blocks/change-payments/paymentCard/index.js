@@ -24,10 +24,7 @@ const PaymentCard = ({
 
       <div className="display-inline-block soft-half-ends one-whole">
         <h6 className="flush-bottom float-left text-dark-tertiary">{accountName}</h6>
-        {/* <button className="h6 flush-bottom float-right text-primary" id={accountId}
-          onClick={onClickChoose}>Choose</button>*/}
       </div>
-
 
       <h5 className="hard one-whole flush-bottom text-dark-tertiary">
         {paymentAccount}
@@ -38,11 +35,10 @@ const PaymentCard = ({
             type={paymentType}
           />
         </span>
-
       </h5>
 
-
     </div>
+
     <div className="locked-ends locked-sides">
       <input
         type="checkbox"
