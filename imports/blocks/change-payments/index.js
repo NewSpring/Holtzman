@@ -12,7 +12,7 @@ import Layout from "./Layout";
 
 type IChangePayments = {
   dispatch: Function,
-  savedAccounts: Array,
+  savedAccounts: Object,
   currentAccount: Object,
 };
 
