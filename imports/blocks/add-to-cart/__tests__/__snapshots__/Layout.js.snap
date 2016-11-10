@@ -55,9 +55,30 @@ exports[`test should handle multiple accounts 1`] = `
                     },
                   ]
                 }
+                inputVal={null}
                 instance={0}
                 preFill={[Function]}
                 primary={true}
+                remove={[Function]}
+                selectVal={1}
+                update={[Function]}>
+                <div />
+              </mockConstructor>
+              <mockConstructor
+                accounts={
+                  Array [
+                    Object {
+                      "label": "TEST 2",
+                      "value": 2,
+                    },
+                    Object {
+                      "label": "TEST 3",
+                      "value": 3,
+                    },
+                  ]
+                }
+                instance={1}
+                preFill={[Function]}
                 remove={[Function]}
                 update={[Function]}>
                 <div />
