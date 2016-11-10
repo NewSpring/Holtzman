@@ -19,7 +19,7 @@ describe("RecoverSchedules", () => {
     dispatch: jest.fn(),
     give: {
       recoverableSchedules: {},
-      reminderDate: "20170101",
+      reminderDate: "20200101",
     },
   };
 
@@ -38,6 +38,18 @@ describe("RecoverSchedules", () => {
     expect(component.back).toBeTruthy();
   });
 
+  it("calls the back method", () => {
+    const wrapper = shallow(
+      <RecoverSchedules {...sampleProps} />
+    );
+    const component = wrapper.instance();
+    const mockedEvent = {
+      preventDefault: jest.fn(),
+    };
+    component.back(mockedEvent);
+    expect(mockedEvent.preventDefault).toBeCalled();
+  });
+
   it("has a close method", () => {
     const wrapper = shallow(
       <RecoverSchedules {...sampleProps} />
@@ -46,7 +58,17 @@ describe("RecoverSchedules", () => {
     expect(component.close).toBeTruthy();
   });
 
-  it("has a onRemind method", () => {
+  it("calls the close method", () => {
+    const wrapper = shallow(
+      <RecoverSchedules {...sampleProps} />
+    );
+    const component = wrapper.instance();
+    component.close = jest.fn();
+    component.close();
+    expect(component.close).toBeCalled();
+  });
+
+  it("has an onRemind method", () => {
     const wrapper = shallow(
       <RecoverSchedules {...sampleProps} />
     );

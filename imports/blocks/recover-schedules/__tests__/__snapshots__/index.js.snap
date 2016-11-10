@@ -5,7 +5,7 @@ exports[`RecoverSchedules should be default if nothing is passed 1`] = `
   hide={[Function]}
   onSubmit={[Function]}
   recoverOnClick={[Function]}
-  reminderDate="20170101"
+  reminderDate="20200101"
   schedules={Array []}
   state="default" />
 `;
