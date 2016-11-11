@@ -3,9 +3,16 @@ import { Component, PropTypes } from "react";
 import Moment from "moment";
 import cloneDeep from "lodash.clonedeep";
 
-import AccountType from "../../../components/accountType";
+import AccountType from "../../../../components/accountType";
 
-import { openUrl } from "../../../util/inAppLink";
+import { openUrl } from "../../../../util/inAppLink";
+
+import {
+  ButtonText,
+  monetize,
+  PaymentOptions,
+} from "./shared";
+import Layout from "./Layout";
 
 export default class Confirm extends Component {
 
@@ -65,68 +72,15 @@ export default class Confirm extends Component {
     <AccountType width="30px" height="21px" type={this.getCardType()} />
   )
 
-  monentize = (amount, fixed) => {
-    let value;
-
-    if (typeof amount === "number") {
-      value = `${amount}`;
-    }
-
-    if (!value.length) {
-      return "$0.00";
-    }
-
-    value = value.replace(/[^\d.-]/g, "");
-
-    const decimals = value.split(".")[1];
-    if ((decimals && decimals.length >= 1) || fixed) {
-      value = Number(value).toFixed(2);
-      value = String(value);
-    }
-
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${value}`;
-  }
-
-  listItem = (transaction, key) => (
-    <div key={key} className="soft-half-ends hard-sides">
-
-      <div className="grid" style={{ verticalAlign: "middle" }}>
-
-        <div className="grid__item two-thirds" style={{ verticalAlign: "middle" }}>
-          <h5 className="text-dark-secondary flush text-left">
-            {transaction.label}
-          </h5>
-        </div>
-
-        <div className="grid__item one-third text-right" style={{ verticalAlign: "middle" }}>
-          <h5 className="text-dark-secondary flush">
-            {this.monentize(transaction.value)}
-          </h5>
-        </div>
-
-      </div>
-    </div>
-  );
-
   /* eslint-disable */
   scheduleItem = (schedule, key) => (
     <div className="display-inline-block one-whole" key={key}>
       <h5 className="text-dark-secondary text-left">
-        Starting on { Moment(schedule.start).format("MMM D, YYYY")}, I will give <span className="text-primary">{this.monentize(this.props.total)}</span> to {schedule.label}. This will occur {schedule.frequency.toLowerCase()}.
+        Starting on { Moment(schedule.start).format("MMM D, YYYY")}, I will give <span className="text-primary">{monetize(this.props.total)}</span> to {schedule.label}. This will occur {schedule.frequency.toLowerCase()}.
       </h5>
     </div>
   );
   /* eslint-enable */
-
-  header = () => {
-    const { personal } = this.props.data;
-    return (
-      <h4 className="text-center">
-        Hi {personal.firstName}! Here are your contribution details.
-      </h4>
-    );
-  }
 
   scheduleHeader = () => {
     if (this.props.scheduleToRecover) {
@@ -150,31 +104,6 @@ export default class Confirm extends Component {
     </h4>
   );
 
-  buttonText = () => {
-    let { payment } = this.props.data;
-
-    if (!payment.accountNumber && !payment.cardNumber) {
-      payment = { ...this.props.savedAccount.payment };
-      payment.type = "ach";
-    }
-
-    let text = "Give Now";
-
-    if (Object.keys(this.props.schedules).length) {
-      text = "Schedule Now";
-    }
-
-    if (this.props.scheduleToRecover) {
-      text = "Transfer Now";
-    }
-
-    if (payment.accountNumber || payment.cardNumber) {
-      const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
-      text += ` using ${masked.slice(-4)}`;
-    }
-
-    return text;
-  }
 
   completeGift = (e) => {
     e.preventDefault();
@@ -240,10 +169,6 @@ export default class Confirm extends Component {
     });
   }
 
-  isIOS = () => (
-    typeof cordova !== "undefined" && cordova.platformId === "ios" // eslint-disable-line
-  )
-
   renderScheduleConfirm = () => {
     const schedules = [];
 
@@ -264,57 +189,28 @@ export default class Confirm extends Component {
           ))}
 
           <button className="btn one-whole push-top soft-sides" type="submit">
-            {this.buttonText()} {this.icon()}
+            <ButtonText
+              payment={this.props.data.payment}
+              savedAccount={this.props.savedAccount}
+              schedules={schedules}
+              scheduleToRecover={this.props.scheduleToRecover}
+            />
+            {this.icon()}
           </button>
 
-          {this.renderPaymentOptions()}
+          <PaymentOptions
+            changeAccounts={this.changeAccounts}
+
+            back={this.props.back}
+            goToStepOne={this.props.goToStepOne}
+            savedAccount={this.props.savedAccount}
+          />
         </div>
 
 
       </div>
     );
   }
-
-  renderPaymentOptions = () => (
-    <div>
-      {(() => {
-        if (this.props.savedAccount.id === null) {
-          /* eslint-disable */
-          return (
-            <div className="display-block soft-top text-left">
-              <h6
-                className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
-                style={{ cursor: "pointer" }}
-                onClick={this.props.back}
-              >
-                Edit Contribution Details
-              </h6>
-            </div>
-          );
-        }
-        return (
-          <div className="display-block soft-top text-left">
-            <h6
-              className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
-              style={{ cursor: "pointer" }}
-              onClick={this.changeAccounts}
-            >
-              Change Payment Accounts
-            </h6>
-            <br />
-            <h6
-              className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
-              style={{ cursor: "pointer" }}
-              onClick={this.props.goToStepOne}
-            >
-              Enter New Payment
-            </h6>
-          </div>
-        );
-      /* eslint-enable */
-      })()}
-    </div>
-  );
 
   renderPaymentOptionsSelect = () => (
     <div>
@@ -385,33 +281,6 @@ export default class Confirm extends Component {
     </div>
   );
 
-  renderActionButton = () => {
-    if (this.isIOS()) {
-      return (
-        <div>
-          <p className="text-dark-secondary">
-            <small>
-              <em>
-                Due to restrictions with your operating system,
-                you must complete your gift in the browser.
-              </em>
-            </small>
-          </p>
-          <button
-            className="btn soft-half-top one-whole"
-            onClick={this.completeGift}
-          >
-            Complete Gift in Browser
-          </button>
-        </div>
-      );
-    }
-    return (
-      <button className="btn soft-half-top one-whole" type="submit">
-        {this.buttonText()} {this.icon()}
-      </button>
-    );
-  }
 
   render() {
     const transactions = [];
@@ -429,52 +298,22 @@ export default class Confirm extends Component {
       return this.renderScheduleConfirm();
     }
 
-    const { personal } = this.props.data;
-
     return (
-      <div>
-        <div className="push-double@lap-and-up push">
-          {this.props.header || this.header()}
-        </div>
+      <Layout
+        changeAccounts={this.changeAccounts}
+        completeGift={this.completeGift}
 
-        <div className="soft">
-          <h5 className="text-dark-secodary text-left">
-            <small><em>{personal.campus} Campus</em></small>
-          </h5>
-          <div className="outlined--light outlined--bottom one-whole push-bottom" />
-          {transactions.map((transaction, key) => (
-            this.listItem(transaction, key)
-          ))}
-
-          <div className="soft-ends hard-sides">
-
-            <div className="grid" style={{ verticalAlign: "middle" }}>
-
-              <div className="grid__item one-half" style={{ verticalAlign: "middle" }}>
-                <h5 className="text-dark-secondary flush text-left">
-                  Total
-                </h5>
-              </div>
-
-              <div className="grid__item one-half text-right" style={{ verticalAlign: "middle" }}>
-                <h3 className="text-primary flush">
-                  {this.monentize(this.props.total)}
-                </h3>
-              </div>
-
-            </div>
-          </div>
-
-
-          {this.renderActionButton()}
-
-          {this.renderPaymentOptions()}
-
-
-        </div>
-
-
-      </div>
+        back={this.props.back}
+        goToStepOne={this.props.goToStepOne}
+        header={this.props.header}
+        payment={this.props.data.payment}
+        personal={this.props.data.personal}
+        savedAccount={this.props.savedAccount}
+        schedules={this.props.schedules}
+        scheduleToRecover={this.props.scheduleToRecover}
+        total={this.props.total}
+        transactions={transactions}
+      />
     );
   }
 }

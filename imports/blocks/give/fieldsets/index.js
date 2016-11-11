@@ -2,7 +2,7 @@
 import Personal from "./personal";
 import Billing from "./billing";
 import Payment from "./payment";
-import Confirm from "./Confirm";
+import Confirm from "./confirm";
 
 export {
   Personal,
