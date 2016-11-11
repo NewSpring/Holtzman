@@ -2,8 +2,6 @@
 import { storiesOf } from "@kadira/storybook";
 import {
   withKnobs,
-  text,
-  boolean,
 } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
