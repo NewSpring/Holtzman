@@ -14,13 +14,13 @@ import Remind from "../Remind";
 const story = storiesOf("Schedules", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
+  .addDecorator(backgrounds([{ name: "light-secondary", value: "#f7f7f7", default: true }]))
   ;
 
 story
   .add("Remind Me Later", withReadme(Readme, () => (
     <div className={"floating"}>
-      <div className={"grid__item"} style={{ maxWidth: "375px" }}>
+      <div className={"grid__item soft background--light-primary"} style={{ maxWidth: "375px" }}>
         <Remind
           onSubmit={(e) => {
             e.preventDefault();

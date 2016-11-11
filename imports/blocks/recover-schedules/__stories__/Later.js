@@ -14,14 +14,14 @@ import Later from "../Later";
 const story = storiesOf("Schedules", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
+  .addDecorator(backgrounds([{ name: "light-secondary", value: "#f7f7f7", default: true }]))
   ;
 
 story
   .add("Later", withReadme(Readme, () => {
     return(
       <div className={"floating"}>
-        <div className={"grid__item"} style={{ maxWidth: "375px" }}>
+        <div className={"grid__item soft background--light-primary"} style={{ maxWidth: "375px" }}>
           <Later
             date={"20200101"}
             onClick={(e) => {
