@@ -1,7 +1,8 @@
 import { Component, PropTypes } from "react";
 
 import Validate from "../../../../util/validate";
-import { creditCard } from "../../../../util/format";
+
+import Layout from "./Layout";
 
 export default class Payment extends Component {
 
@@ -36,122 +37,6 @@ export default class Payment extends Component {
     }
 
     return (value.length > 0);
-  }
-
-  header = () => (
-    <h4 className="text-center">
-      Payment Details
-    </h4>
-  );
-
-  icon = () => {
-    const { payment } = this.props.data;
-    const { savedAccount } = this.props;
-
-    if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
-      return (
-        // replace with SVG
-        <AccountType width="30px" height="21px" type={savedAccount.payment.paymentType} />
-      );
-    }
-
-    const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
-
-    if (!masked) {
-      return null;
-    }
-
-    if (payment.type === "ach") {
-      return (
-        <AccountType width="30px" height="21px" type="Bank" />
-      );
-    }
-
-    if (payment.type === "cc") {
-      const getCardType = (card) => {
-        const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi;
-
-        const defaultRegex = {
-          Visa: /^4[0-9]{0,15}$/gmi,
-          MasterCard: /^5$|^5[1-5][0-9]{0,14}$/gmi,
-          AmEx: /^3$|^3[47][0-9]{0,13}$/gmi,
-          Discover: d,
-        };
-
-        // eslint-disable-next-line no-restricted-syntax
-        for (const regex in defaultRegex) {
-          if (defaultRegex[regex].test(card.replace(/-/gmi, ""))) {
-            return regex;
-          }
-        }
-
-        return null;
-      };
-
-      return (
-        // replace with SVG
-        <AccountType width="30px" height="21px" type={getCardType(masked)} />
-      );
-    }
-
-    return null;
-  }
-
-  toggles = ["Credit Card", "Bank Account"]
-
-  bankFields = () => {
-    const { payment } = this.props.data;
-    return (
-      <div>
-        <Forms.Input
-          id="routingNumber"
-          name="billing-routing-number"
-          label="Routing Number"
-          type="tel"
-          errorText="Please enter your routing number"
-          defaultValue={payment.routingNumber}
-          onChange={this.saveData}
-          validation={this.validate}
-          autoFocus
-          ref="routingNumber"
-        />
-
-        <Forms.Input
-          id="accountNumber"
-          name="billing-account-number"
-          label="Account Number"
-          type="tel"
-          errorText="Please enter your account number"
-          defaultValue={payment.accountNumber}
-          onChange={this.saveData}
-          validation={this.validate}
-          ref="accountNumber"
-
-        />
-
-
-        <div className="grid">
-
-          <div className="grid__item one-whole">
-            <Forms.Select
-              name="billing-account-type"
-              ref="accountType"
-              id="accountType"
-              label="Account Type"
-              onChange={this.saveData}
-              validation={this.validate}
-              defaultValue={payment.accountType}
-              errorText="Please choose your account type"
-              includeBlank
-              items={[
-                { value: "checking", label: "Checking" },
-                { value: "savings", label: "Savings" },
-              ]}
-            />
-          </div>
-        </div>
-      </div>
-    );
   }
 
   validate = (value, target) => {
@@ -189,6 +74,7 @@ export default class Payment extends Component {
     }
   }
 
+  // XXX move to layout, but changes to input are needed
   formatExp = (s, target) => {
     const save = (adjusted) => {
       this.saveData(adjusted, target);
@@ -229,61 +115,6 @@ export default class Payment extends Component {
     return save(str);
   }
 
-  cardFields = () => {
-    const { payment } = this.props.data;
-    return (
-      <div>
-        <Forms.Input
-          name="billing-cc-number"
-          id="cardNumber"
-          label="Card Number"
-          type="tel"
-          errorText="Please enter your card number"
-          defaultValue={payment.cardNumber}
-          format={creditCard}
-          onChange={this.saveData}
-          validation={this.validate}
-          ref="cardNumber"
-        >
-          <div className="locked locked-right soft-double-right locked-top" style={{ top: "-3px" }}>
-            {this.icon()}
-          </div>
-        </Forms.Input>
-        <div className="grid">
-          <div className="grid__item one-half">
-            <Forms.Input
-              id="expiration"
-              name="billing-cc-exp"
-              label="Exp (MM/YY)"
-              type="tel"
-              errorText="Please enter a valid expiration number"
-              defaultValue={payment.expiration}
-              format={this.formatExp}
-              onChange={this.saveData}
-              validation={(value) => (value.length > 0)}
-              ref="expiration"
-              data-expiry-input
-            />
-          </div>
-          <div className="grid__item one-half">
-            <Forms.Input
-              id="ccv"
-              name="billing-cvv"
-              label="CCV"
-              type="tel"
-              errorText="Please enter a valid ccv number"
-              defaultValue={payment.ccv}
-              onChange={this.saveData}
-              validation={this.validate}
-              ref="ccv"
-            />
-          </div>
-        </div>
-      </div>
-
-    );
-  }
-
   toggle = () => {
     let type = "ach";
     if (this.props.data.payment.type === type) {
@@ -294,11 +125,28 @@ export default class Payment extends Component {
   }
 
   render() {
-    const { payment } = this.props.data;
     return (
       <Layout
-        payment={payment}
-      />
+        formatExp={this.formatExp}
+        saveData={this.saveData}
+        saveName={this.saveName}
+        savePayment={this.savePayment}
+        toggle={this.toggle}
+        validate={this.validate}
+
+        shouldSaveState={this.state.save}
+
+        back={this.props.back}
+        header={this.props.header}
+        next={this.props.next}
+        payment={this.props.data.payment}
+        savedAccount={this.props.savedAccount}
+        schedules={this.props.schedules}
+        toggles={this.props.toggles}
+        transactionType={this.props.transactionType}
+      >
+        {this.props.children}
+      </Layout>
     );
   }
 }
