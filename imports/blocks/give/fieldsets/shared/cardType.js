@@ -1,3 +1,4 @@
+// XXX adjust so can take card number directly
 const cardType = (payment, savedAccount) => {
   if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
     return savedAccount.payment.paymentType;
