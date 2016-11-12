@@ -17,12 +17,13 @@ const cardType = (payment, savedAccount) => {
       Discover: d,
     };
 
-    // eslint-disable-next-line
-    for (const regex in defaultRegex) {
+    const result = Object.keys(defaultRegex).map((regex) => {
       if (defaultRegex[regex].test(payment.cardNumber.replace(/-/gmi, ""))) {
         return regex;
       }
-    }
+      return null;
+    });
+    if (result) return result;
   }
 
   return null;
