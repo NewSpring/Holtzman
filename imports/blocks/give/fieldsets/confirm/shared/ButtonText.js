@@ -28,7 +28,7 @@ const ButtonText = ({
     text += ` using ${masked.slice(-4)}`;
   }
 
-  return text;
+  return <span>{text}</span>;
 };
 
 ButtonText.propTypes = {

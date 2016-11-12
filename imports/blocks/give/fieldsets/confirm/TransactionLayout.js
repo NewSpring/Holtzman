@@ -1,6 +1,8 @@
 import { PropTypes } from "react";
 import {
   ButtonText,
+  cardType,
+  Icon,
   isIOS,
   monetize,
   PaymentOptions,
@@ -82,7 +84,12 @@ const ActionButton = ({
         schedules={schedules}
         scheduleToRecover={scheduleToRecover}
       />
-      {this.icon()}
+      &nbsp;
+      <Icon
+        cardType={
+          cardType(payment, savedAccount)
+        }
+      />
     </button>
   );
 };
@@ -95,7 +102,7 @@ ActionButton.propTypes = {
   scheduleToRecover: PropTypes.bool,
 };
 
-const Layout = ({
+const TransactionLayout = ({
   back,
   completeGift,
   changeAccounts,
@@ -168,7 +175,7 @@ const Layout = ({
   </div>
 );
 
-Layout.propTypes = {
+TransactionLayout.propTypes = {
   back: PropTypes.func,
   changeAccounts: PropTypes.func,
   completeGift: PropTypes.func,
@@ -183,4 +190,4 @@ Layout.propTypes = {
   transactions: PropTypes.array,
 };
 
-export default Layout;
+export default TransactionLayout;

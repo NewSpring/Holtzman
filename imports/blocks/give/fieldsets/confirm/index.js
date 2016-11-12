@@ -9,10 +9,13 @@ import { openUrl } from "../../../../util/inAppLink";
 
 import {
   ButtonText,
+  cardType,
+  Icon,
   monetize,
   PaymentOptions,
 } from "./shared";
-import Layout from "./Layout";
+
+import TransactionLayout from "./TransactionLayout";
 
 export default class Confirm extends Component {
 
@@ -35,42 +38,6 @@ export default class Confirm extends Component {
   state = {
     changePayments: false,
   }
-
-  getCardType = () => {
-    const { payment } = this.props.data;
-    const { savedAccount } = this.props;
-    if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
-      return savedAccount.payment.paymentType;
-    }
-
-    if (payment.type === "ach") {
-      return "Bank";
-    }
-
-    if (payment.type === "cc") {
-      const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi;
-
-      const defaultRegex = {
-        Visa: /^4[0-9]{0,15}$/gmi,
-        MasterCard: /^5$|^5[1-5][0-9]{0,14}$/gmi,
-        AmEx: /^3$|^3[47][0-9]{0,13}$/gmi,
-        Discover: d,
-      };
-
-      // eslint-disable-next-line
-      for (const regex in defaultRegex) {
-        if (defaultRegex[regex].test(payment.cardNumber.replace(/-/gmi, ""))) {
-          return regex;
-        }
-      }
-    }
-
-    return null;
-  }
-
-  icon = () => (
-    <AccountType width="30px" height="21px" type={this.getCardType()} />
-  )
 
   /* eslint-disable */
   scheduleItem = (schedule, key) => (
@@ -195,7 +162,11 @@ export default class Confirm extends Component {
               schedules={schedules}
               scheduleToRecover={this.props.scheduleToRecover}
             />
-            {this.icon()}
+            <Icon
+              cardType={
+                cardType(this.props.data.payment, this.props.savedAccount)
+              }
+            />
           </button>
 
           <PaymentOptions
@@ -299,7 +270,7 @@ export default class Confirm extends Component {
     }
 
     return (
-      <Layout
+      <TransactionLayout
         changeAccounts={this.changeAccounts}
         completeGift={this.completeGift}
 
