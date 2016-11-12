@@ -7,7 +7,6 @@ const PaymentOptions = ({
   savedAccount,
 }) => {
   if (savedAccount.id === null) {
-    /* eslint-disable */
     return (
       <div className="display-block soft-top text-left">
         <h6
