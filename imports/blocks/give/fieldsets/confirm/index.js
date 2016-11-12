@@ -1,21 +1,15 @@
 import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
-import Moment from "moment";
 import cloneDeep from "lodash.clonedeep";
 
 import AccountType from "../../../../components/accountType";
 
 import { openUrl } from "../../../../util/inAppLink";
 
-import {
-  ButtonText,
-  cardType,
-  Icon,
-  monetize,
-  PaymentOptions,
-} from "./shared";
+import { cardType } from "./shared";
 
 import TransactionLayout from "./TransactionLayout";
+import ScheduleLayout from "./ScheduleLayout";
 
 export default class Confirm extends Component {
 
@@ -37,32 +31,6 @@ export default class Confirm extends Component {
 
   state = {
     changePayments: false,
-  }
-
-  /* eslint-disable */
-  scheduleItem = (schedule, key) => (
-    <div className="display-inline-block one-whole" key={key}>
-      <h5 className="text-dark-secondary text-left">
-        Starting on { Moment(schedule.start).format("MMM D, YYYY")}, I will give <span className="text-primary">{monetize(this.props.total)}</span> to {schedule.label}. This will occur {schedule.frequency.toLowerCase()}.
-      </h5>
-    </div>
-  );
-  /* eslint-enable */
-
-  scheduleHeader = () => {
-    if (this.props.scheduleToRecover) {
-      return (
-        <h4 className="text-center">
-          Transfer Your Schedule
-        </h4>
-      );
-    }
-
-    return (
-      <h4 className="text-center">
-        Review Your Schedule
-      </h4>
-    );
   }
 
   changePaymentHeader = () => (
@@ -134,53 +102,6 @@ export default class Confirm extends Component {
     this.setState({
       changePayments: !this.state.changePayments,
     });
-  }
-
-  renderScheduleConfirm = () => {
-    const schedules = [];
-
-    // eslint-disable-next-line
-    for (const schedule in this.props.schedules) {
-      schedules.push(this.props.schedules[schedule]);
-    }
-
-    return (
-      <div>
-        <div className="push-double@lap-and-up push">
-          {this.props.header || this.scheduleHeader()}
-        </div>
-
-        <div className="soft">
-          {schedules.map((schedule, key) => (
-            this.scheduleItem(schedule, key)
-          ))}
-
-          <button className="btn one-whole push-top soft-sides" type="submit">
-            <ButtonText
-              payment={this.props.data.payment}
-              savedAccount={this.props.savedAccount}
-              schedules={schedules}
-              scheduleToRecover={this.props.scheduleToRecover}
-            />
-            <Icon
-              cardType={
-                cardType(this.props.data.payment, this.props.savedAccount)
-              }
-            />
-          </button>
-
-          <PaymentOptions
-            changeAccounts={this.changeAccounts}
-
-            back={this.props.back}
-            goToStepOne={this.props.goToStepOne}
-            savedAccount={this.props.savedAccount}
-          />
-        </div>
-
-
-      </div>
-    );
   }
 
   renderPaymentOptionsSelect = () => (
@@ -266,7 +187,20 @@ export default class Confirm extends Component {
     }
 
     if (Object.keys(this.props.schedules).length) {
-      return this.renderScheduleConfirm();
+      return (
+        <ScheduleLayout
+          changeAccounts={this.changeAccounts}
+
+          back={this.props.back}
+          goToStepOne={this.props.goToStepOne}
+          header={this.props.header}
+          payment={this.props.data.payment}
+          savedAccount={this.props.savedAccount}
+          schedules={this.props.schedules}
+          scheduleToRecover={this.props.scheduleToRecover}
+          total={this.props.total}
+        />
+      );
     }
 
     return (
