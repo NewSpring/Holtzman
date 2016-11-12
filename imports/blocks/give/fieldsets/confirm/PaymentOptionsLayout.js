@@ -7,6 +7,20 @@ const Header = () => (
   </h4>
 );
 
+const AccountNumber = ({ accountNumber }) => (
+  <span>
+    {accountNumber
+      .slice(0, accountNumber.length - 5)
+      .replace(/./gmi, "*")
+    }
+    {accountNumber.slice(-4)}
+  </span>
+);
+
+AccountNumber.propTypes = {
+  accountNumber: PropTypes.string,
+};
+
 const SavedAccount = ({
   account,
   choose,
@@ -30,7 +44,7 @@ const SavedAccount = ({
       </div>
 
       <h5 className="hard one-whole flush-bottom text-dark-tertiary">
-        {account.payment.accountNumber.slice(0, account.payment.accountNumber.length - 5).replace(/./gmi, "*")}{account.payment.accountNumber.slice(-4)}
+        <AccountNumber accountNumber={account.payment.accountNumber} />
         <span className="float-right soft-half-left">
           <AccountType
             width="40px"
