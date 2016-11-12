@@ -175,12 +175,9 @@ export default class Confirm extends Component {
 
 
   render() {
-    const transactions = [];
-
-    // eslint-disable-next-line
-    for (const transaction in this.props.transactions) {
-      transactions.push(this.props.transactions[transaction]);
-    }
+    const transactions = Object.keys(this.props.transactions).map((t) => (
+      this.props.transactions[t]
+    ));
 
     if (this.state.changePayments) {
       return this.renderPaymentOptionsSelect();
