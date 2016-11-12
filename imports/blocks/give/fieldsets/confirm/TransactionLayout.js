@@ -6,7 +6,7 @@ import {
   isIOS,
   monetize,
   PaymentOptions,
-} from "./shared";
+} from "../shared";
 
 const Header = ({ override, personal }) => {
   if (override) return override;
