@@ -60,12 +60,9 @@ const ScheduleLayout = ({
   scheduleToRecover,
   total,
 }) => {
-  const scheduleList = [];
-
-  // eslint-disable-next-line
-  for (const schedule in schedules) {
-    scheduleList.push(schedules[schedule]);
-  }
+  const scheduleList = Object.keys(schedules).map((schedule) => (
+    schedules[schedule]
+  ));
 
   return (
     <div>
