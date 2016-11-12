@@ -4,7 +4,7 @@ import cloneDeep from "lodash.clonedeep";
 
 import { openUrl } from "../../../../util/inAppLink";
 
-import { cardType } from "./shared";
+import { cardType } from "../shared";
 
 import TransactionLayout from "./TransactionLayout";
 import ScheduleLayout from "./ScheduleLayout";

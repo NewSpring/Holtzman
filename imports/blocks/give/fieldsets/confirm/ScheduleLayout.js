@@ -6,7 +6,7 @@ import {
   Icon,
   monetize,
   PaymentOptions,
-} from "./shared";
+} from "../shared";
 
 const Header = ({
   override,
