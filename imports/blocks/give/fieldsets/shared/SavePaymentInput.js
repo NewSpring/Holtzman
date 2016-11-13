@@ -1,5 +1,14 @@
-import { PropTypes } from "react";
+// @flow
 import Forms from "../../../../components/forms";
+
+type ISavePaymentInput = {
+  saveName: Function,
+  savedAccount: Object,
+  schedules: Object,
+  shouldSaveState: boolean,
+  payment: Object,
+  transactionType: string,
+};
 
 const SavePaymentInput = ({
   saveName,
@@ -8,7 +17,7 @@ const SavePaymentInput = ({
   shouldSaveState,
   payment,
   transactionType,
-}) => {
+}: ISavePaymentInput) => {
   if (
     shouldSaveState &&
     !savedAccount.id &&
@@ -27,15 +36,6 @@ const SavePaymentInput = ({
     );
   }
   return null;
-};
-
-SavePaymentInput.propTypes = {
-  saveName: PropTypes.func,
-  savedAccount: PropTypes.object,
-  schedules: PropTypes.array,
-  shouldSaveState: PropTypes.bool,
-  payment: PropTypes.object,
-  transactionType: PropTypes.string,
 };
 
 export default SavePaymentInput;
