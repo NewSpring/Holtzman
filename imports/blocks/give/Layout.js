@@ -16,6 +16,8 @@ const FORM_STEPS = {
   4: Confirm,
 };
 
+let copiedSchedules;
+
 const Layout = ({
   back,
   campuses,
@@ -47,8 +49,6 @@ const Layout = ({
   } = give;
 
   if (["loading", "error", "success"].indexOf(state) > -1) {
-    let copiedSchedules;
-
     switch (state) {
       case "loading":
         copiedSchedules = { ...schedules };
