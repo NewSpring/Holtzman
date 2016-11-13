@@ -36,6 +36,17 @@ const CHECKOUT_QUERY = gql`
 
 const withCheckout = graphql(CHECKOUT_QUERY, {
   options: { variables: { state: 28, country: 45 } },
+  props: ({ data, data: { campuses, countries, states } }) => ({
+    data: {
+      ...data,
+      campuses: campuses ?
+        campuses.map((x) => ({ label: x.name, value: x.id })) : defaultArray,
+      countries: countries ?
+        countries.map((x) => ({ label: x.name, value: x.value })) : defaultArray,
+      states: states ?
+        states.map((x) => ({ label: x.name, value: x.value })) : defaultArray,
+    },
+  }),
 });
 
 // We only care about the give state
@@ -173,18 +184,6 @@ export default class Give extends Component {
   }
 
   render() {
-    let {
-      campuses = defaultArray,
-      countries = defaultArray,
-      states = defaultArray,
-    } = this.props.data;
-
-    const { savedPayments = defaultArray } = this.props.data;
-
-    campuses = campuses.map((x) => ({ label: x.name, value: x.id }));
-    countries = countries.map((x) => ({ label: x.name, value: x.value }));
-    states = states.map((x) => ({ label: x.name, value: x.value }));
-
     return (
       <Layout
         back={this.back}
@@ -197,12 +196,12 @@ export default class Give extends Component {
         onSubmit={this.onSubmit}
         save={this.save}
 
-        campuses={campuses}
-        countries={countries}
+        campuses={this.props.data.campuses}
+        countries={this.props.data.countries}
         data={this.props.data}
         give={this.props.give}
-        savedPayments={savedPayments}
-        states={states}
+        savedPayments={this.props.data.savedPayments || defaultArray}
+        states={this.props.data.states}
       />
     );
   }
