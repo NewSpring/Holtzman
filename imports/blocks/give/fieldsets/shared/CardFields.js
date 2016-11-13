@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+// @flow
 import Forms from "../../../../components/forms";
 import { creditCard } from "../../../../util/format";
 import {
@@ -6,10 +6,15 @@ import {
   Icon,
 } from "./";
 
+type IRenderIcon = {
+  payment: Object,
+  savedAccount: Object,
+};
+
 const RenderIcon = ({
   payment,
   savedAccount,
-}) => {
+}: IRenderIcon) => {
   const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
   if (!masked) return null;
 
@@ -20,9 +25,12 @@ const RenderIcon = ({
   return <Icon cardType={paymentType} />;
 };
 
-RenderIcon.propTypes = {
-  payment: PropTypes.object,
-  savedAccount: PropTypes.object,
+type ICardFields = {
+  formatExp: Function,
+  payment: Object,
+  saveData: Function,
+  savedAccount: Object,
+  validate: Function,
 };
 
 const CardFields = ({
@@ -31,7 +39,7 @@ const CardFields = ({
   saveData,
   savedAccount,
   validate,
-}) => {
+}: ICardFields) => {
   if (payment.type === "ach") return null;
   return (
     <div>
@@ -83,14 +91,6 @@ const CardFields = ({
       </div>
     </div>
   );
-};
-
-CardFields.propTypes = {
-  formatExp: PropTypes.func,
-  payment: PropTypes.object,
-  saveData: PropTypes.func,
-  savedAccount: PropTypes.object,
-  validate: PropTypes.func,
 };
 
 export default CardFields;
