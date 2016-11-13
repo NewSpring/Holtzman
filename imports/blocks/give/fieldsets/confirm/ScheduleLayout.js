@@ -1,4 +1,5 @@
-import { PropTypes } from "react";
+// @flow
+
 import {
   ButtonText,
   cardType,
@@ -7,10 +8,15 @@ import {
   ScheduleItem,
 } from "../shared";
 
+type IHeader = {
+  override?: Object,
+  scheduleToRecover: boolean,
+};
+
 const Header = ({
   override,
   scheduleToRecover,
-}) => {
+}: IHeader) => {
   if (override) return override;
   if (scheduleToRecover) {
     return (
@@ -27,9 +33,16 @@ const Header = ({
   );
 };
 
-Header.propTypes = {
-  override: PropTypes.object,
-  scheduleToRecover: PropTypes.bool,
+type IScheduleLayout = {
+  back: Function,
+  changeAccounts: Function,
+  goToStepOne: Function,
+  header?: Object,
+  payment: Object,
+  savedAccount: Object,
+  schedules: Object,
+  scheduleToRecover: boolean,
+  total: number,
 };
 
 const ScheduleLayout = ({
@@ -42,7 +55,7 @@ const ScheduleLayout = ({
   schedules,
   scheduleToRecover,
   total,
-}) => {
+}: IScheduleLayout) => {
   const scheduleList = Object.keys(schedules).map((schedule) => (
     schedules[schedule]
   ));
@@ -90,18 +103,6 @@ const ScheduleLayout = ({
 
     </div>
   );
-};
-
-ScheduleLayout.propTypes = {
-  back: PropTypes.func,
-  changeAccounts: PropTypes.func,
-  goToStepOne: PropTypes.func,
-  header: PropTypes.object,
-  payment: PropTypes.object,
-  savedAccount: PropTypes.object,
-  schedules: PropTypes.object,
-  scheduleToRecover: PropTypes.bool,
-  total: PropTypes.number,
 };
 
 export default ScheduleLayout;
