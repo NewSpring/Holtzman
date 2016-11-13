@@ -82,7 +82,7 @@ const ScheduleLayout = ({
           <ButtonText
             payment={payment}
             savedAccount={savedAccount}
-            schedules={scheduleList}
+            schedules={schedules}
             scheduleToRecover={scheduleToRecover}
           />
           &nbsp;

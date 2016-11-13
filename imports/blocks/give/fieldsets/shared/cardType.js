@@ -1,5 +1,5 @@
 // @flow
-const cardType = (payment: Object, savedAccount: Object): string | null => {
+const cardType = (payment: Object, savedAccount?: Object): string | null => {
   if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
     return savedAccount.payment.paymentType;
   }

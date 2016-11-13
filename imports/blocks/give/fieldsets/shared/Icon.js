@@ -2,7 +2,7 @@
 import AccountType from "../../../../components/accountType";
 
 type IIcon = {
-  cardType: string,
+  cardType: ?string,
 };
 
 const Icon = ({ cardType }: IIcon) => (
