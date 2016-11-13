@@ -1,3 +1,4 @@
+// @flow
 
 import Personal from "./personal";
 import Billing from "./billing";
