@@ -60,18 +60,6 @@ export default class Layout extends Component {
     return `$${strVal}`;
   }
 
-  buttonText = () => {
-    const { payment } = this.props.data;
-
-    let text = "Give Now";
-
-    if (payment.last4) {
-      text += ` using ${payment.last4}`;
-    }
-
-    return text;
-  }
-
   icon = (icon) => (
     <AccountType width="30px" height="21px" type={icon} />
   )
@@ -84,7 +72,7 @@ export default class Layout extends Component {
       transactions.push(this.props.transactions[transaction]);
     }
 
-    const { personal, payment } = this.props.data;
+    const { personal } = this.props.data;
 
     return (
       <div>
@@ -122,7 +110,7 @@ export default class Layout extends Component {
           </div>
 
           <button className="btn soft-half-top one-whole" onClick={this.props.onSubmit}>
-            {this.buttonText()} {this.icon(payment.icon)}
+            {"Give Now"}
           </button>
 
         </div>
