@@ -74,8 +74,6 @@ export default class Billing extends Component {
   }
 
   render() {
-    const { billing } = this.props.data;
-    const { states, countries } = this.props;
     return (
       <Layout
         city={this.city}
@@ -86,11 +84,11 @@ export default class Billing extends Component {
         zip={this.zip}
 
         back={this.props.back}
-        billing={billing}
-        countries={countries}
+        billing={this.props.data.billing}
+        countries={this.props.countries}
         header={this.props.header}
         next={this.props.next}
-        states={states}
+        states={this.props.states}
       >
         {this.props.children}
       </Layout>
