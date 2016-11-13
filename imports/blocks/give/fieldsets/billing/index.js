@@ -1,21 +1,24 @@
-import { Component, PropTypes } from "react";
+// @flow
+
+import { Component } from "react";
 import Layout from "./Layout";
 
+type IBilling = {
+  data: Object,
+  children?: Object,
+  save: Function,
+  clear: Function,
+  back: Function,
+  next: Function,
+  header?: Object,
+  states: Object[],
+  countries: Object[],
+};
+
 export default class Billing extends Component {
+  props: IBilling;
 
-  static propTypes = {
-    data: PropTypes.object.isRequired,
-    children: PropTypes.object.isRequired,
-    save: PropTypes.func.isRequired,
-    clear: PropTypes.func.isRequired,
-    back: PropTypes.func.isRequired,
-    next: PropTypes.func.isRequired,
-    header: PropTypes.string,
-    states: PropTypes.array,
-    countries: PropTypes.array,
-  }
-
-  streetAddress = (value) => {
+  streetAddress = (value: string): boolean => {
     if (!value.length) {
       this.props.clear("billing", "streetAddress");
     } else {
@@ -25,12 +28,12 @@ export default class Billing extends Component {
     return true;
   }
 
-  streetAddress2 = (value) => {
+  streetAddress2 = (value: string): boolean => {
     this.props.save({ billing: { streetAddress2: value } });
     return true;
   }
 
-  saveState = (value) => {
+  saveState = (value: string): boolean => {
     // we can't require city for international giving
 
     if (!value.length) {
@@ -42,7 +45,7 @@ export default class Billing extends Component {
     return true;
   }
 
-  saveCountry = (value) => {
+  saveCountry = (value: string): boolean => {
     if (!value.length) {
       this.props.clear("billing", "country");
     } else {
@@ -52,7 +55,7 @@ export default class Billing extends Component {
     return true;
   }
 
-  city = (value) => {
+  city = (value: string): boolean => {
     if (!value.length) {
       this.props.clear("billing", "city");
     } else {
@@ -62,7 +65,7 @@ export default class Billing extends Component {
     return true;
   }
 
-  zip = (value) => {
+  zip = (value: string):boolean => {
     // we can't require zip for international giving
     if (!value.length) {
       this.props.clear("billing", "zip");
