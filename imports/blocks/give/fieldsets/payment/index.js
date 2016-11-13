@@ -79,15 +79,11 @@ export default class Payment extends Component {
     };
 
     let current = this.props.data.payment.expiration;
-    if (!current) {
-      current = "";
-    }
+    if (!current) current = "";
 
     const str = `${s}`;
 
-    if (str.length > 5) {
-      return save(str.slice(0, 5));
-    }
+    if (str.length > 5) return save(str.slice(0, 5));
 
     const copy = str;
     const lastNumber = copy.slice(-1);
