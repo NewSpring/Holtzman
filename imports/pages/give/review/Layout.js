@@ -1,15 +1,18 @@
-import { Component, PropTypes } from "react";
+// @flow
+
+import { Component } from "react";
 import AccountType from "../../../components/accountType";
 import Meta from "../../../components/meta";
 
-export default class Layout extends Component {
+type ILayout = {
+  transactions: Object,
+  total: number,
+  data: Object,
+  onSubmit: Function,
+};
 
-  static propTypes = {
-    transactions: PropTypes.object.isRequired,
-    total: PropTypes.number.isRequired,
-    data: PropTypes.object.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-  }
+export default class Layout extends Component {
+  props: ILayout;
 
   header = () => {
     const { personal } = this.props.data;
@@ -20,7 +23,7 @@ export default class Layout extends Component {
     );
   }
 
-  listItem = (transaction, key) => (
+  listItem = (transaction: Object, key: number) => (
     <div key={key} className="soft-half-ends hard-sides">
 
       <div className="grid" style={{ verticalAlign: "middle" }}>
@@ -33,7 +36,7 @@ export default class Layout extends Component {
 
         <div className="grid__item one-third text-right" style={{ verticalAlign: "middle" }}>
           <h5 className="text-dark-secondary flush">
-            {this.monentize(transaction.value)}
+            {this.monetize(transaction.value)}
           </h5>
         </div>
 
@@ -41,30 +44,47 @@ export default class Layout extends Component {
     </div>
   )
 
-  monentize = (value, fixed) => {
-    let strVal = typeof value === "number" ? `${value}` : value;
+  // XXX replace the function in PR 1431 with this one
+  monetize = (value: string | number, fixed?: boolean): string => {
+    let amount = (typeof value === "number") ? `${value}` : value;
 
-    if (!strVal.length) {
+    if (!amount || !amount.length) {
       return "$0.00";
     }
 
-    strVal = strVal.replace(/[^\d.-]/g, "");
+    amount = amount.replace(/[^\d.-]/g, "");
 
-    const decimals = strVal.split(".")[1];
-    if ((decimals && decimals.length >= 1) || fixed) {
-      strVal = Number(strVal).toFixed(2);
-      strVal = String(strVal);
+    const decimals = amount.split(".")[1];
+    if ((decimals && decimals.length >= 2) || fixed) {
+      amount = Number(amount).toFixed(2);
+      amount = String(amount);
     }
 
-    strVal = strVal.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${strVal}`;
+    amount = amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return `$${amount}`;
   }
 
-  icon = (icon) => (
+  buttonText = () => {
+    const { payment } = this.props.data;
+
+    let text = "Give Now";
+
+    if (payment.last4) {
+      text += ` using ${payment.last4}`;
+    }
+
+    return text;
+  }
+
+  icon = (icon: string): any => (
     <AccountType width="30px" height="21px" type={icon} />
   )
 
   render() {
+    if (!this.props.data) {
+      return null;
+    }
+
     const transactions = [];
 
     // eslint-disable-next-line
@@ -102,7 +122,7 @@ export default class Layout extends Component {
 
               <div className="grid__item one-half text-right" style={{ verticalAlign: "middle" }}>
                 <h3 className="text-primary flush">
-                  {this.monentize(this.props.total)}
+                  {this.monetize(this.props.total)}
                 </h3>
               </div>
 
@@ -117,5 +137,4 @@ export default class Layout extends Component {
       </div>
     );
   }
-
 }
