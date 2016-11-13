@@ -27,9 +27,9 @@ export class Template extends Component {
     if (!giveData) return;
 
     const { dispatch } = this.props;
-  //   // // hide nav
+    // hide nav
     dispatch(navActions.hide());
-    // // store payment personal and billing
+    // store payment personal and billing
     dispatch(giveActions.save(giveData.data));
     // store url
     dispatch(giveActions.setDetails(giveData.url));
@@ -42,7 +42,7 @@ export class Template extends Component {
     dispatch(giveActions.setUserId(giveData.userId));
   }
 
-  onSubmit = (event: Function) => {
+  onSubmit = (event: Event) => {
     event.preventDefault();
     this.props.dispatch(giveActions.submit());
   }
@@ -93,7 +93,6 @@ export class Template extends Component {
   }
 
   render() {
-    // const giveData = this.getGiveData();
     const { state, errors, total, data } = this.props.give;
 
     switch (state) {
