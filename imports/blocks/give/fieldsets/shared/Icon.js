@@ -1,12 +1,12 @@
-import { PropTypes } from "react";
+// @flow
 import AccountType from "../../../../components/accountType";
 
-const Icon = ({ cardType }) => (
+type IIcon = {
+  cardType: string,
+};
+
+const Icon = ({ cardType }: IIcon) => (
   <AccountType width="30px" height="21px" type={cardType} />
 );
-
-Icon.propTypes = {
-  cardType: PropTypes.string,
-};
 
 export default Icon;
