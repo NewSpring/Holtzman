@@ -45,7 +45,7 @@ export class ChangePayments extends Component {
     e.preventDefault();
 
     const { id } = e.currentTarget;
-    // XXX This is wrong, and needs to be changed...eventaully
+    // XXX 'any' is not a specific enough type
     let act: any = {};
     for (const account of this.props.savedAccounts) {
       if (Number(account.id) === Number(id)) {
