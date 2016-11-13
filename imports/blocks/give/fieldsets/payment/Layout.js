@@ -1,11 +1,13 @@
 import { PropTypes } from "react";
 
-import AccountType from "../../../../components/accountType";
 import Controls from "../../../../components/controls";
 import Forms from "../../../../components/forms";
 import { creditCard } from "../../../../util/format";
 
-import { cardType } from "../shared";
+import {
+  cardType,
+  Icon,
+} from "../shared";
 
 const DEFAULT_TOGGLES = ["Credit Card", "Bank Account"];
 
@@ -107,7 +109,7 @@ const CardFields = ({
         validation={validate}
       >
         <div className="locked locked-right soft-double-right locked-top" style={{ top: "-3px" }}>
-          <Icon
+          <RenderIcon
             payment={payment}
             savedAccount={savedAccount}
           />
@@ -153,7 +155,7 @@ CardFields.propTypes = {
   validate: PropTypes.func,
 };
 
-const Icon = ({
+const RenderIcon = ({
   payment,
   savedAccount,
 }) => {
@@ -164,10 +166,10 @@ const Icon = ({
   if (!paymentType) return null;
 
   // replace with SVG
-  return <AccountType width="30px" height="21px" type={paymentType} />;
+  return <Icon cardType={paymentType} />;
 };
 
-Icon.propTypes = {
+RenderIcon.propTypes = {
   payment: PropTypes.object,
   savedAccount: PropTypes.object,
 };
