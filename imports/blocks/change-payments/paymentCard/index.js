@@ -2,6 +2,17 @@
 
 import AccountType from "../../../components/accountType";
 
+const cardStyle = {
+  position: "relative",
+  cursor: "pointer",
+};
+
+const labelStyle = {
+  position: "absolute",
+  top: "50%",
+  left: 0,
+};
+
 type IPaymentCard = {
   onClick: Function,
   accountName: string,
@@ -19,7 +30,7 @@ const PaymentCard = ({
   paymentType,
   onClick,
 }: IPaymentCard) => (
-  <div style={{ position: "relative", cursor: "pointer" }} id={accountId} onClick={onClick}>
+  <div style={cardStyle} id={accountId} onClick={onClick}>
     <div className="soft-ends push-double-left text-left hard-right outlined--light outlined--bottom relative">
 
       <div className="display-inline-block soft-half-ends one-whole">
@@ -55,11 +66,7 @@ const PaymentCard = ({
       />
       <label
         htmlFor={`label${accountId}`}
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: 0,
-        }}
+        style={labelStyle}
       />
     </div>
   </div>
