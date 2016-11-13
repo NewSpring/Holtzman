@@ -5,6 +5,8 @@ import Controls from "../../../../components/controls";
 import Forms from "../../../../components/forms";
 import { creditCard } from "../../../../util/format";
 
+import { cardType } from "../shared";
+
 const DEFAULT_TOGGLES = ["Credit Card", "Bank Account"];
 
 const Header = ({
@@ -155,54 +157,14 @@ const Icon = ({
   payment,
   savedAccount,
 }) => {
-  if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
-    return (
-      // replace with SVG
-      <AccountType width="30px" height="21px" type={savedAccount.payment.paymentType} />
-    );
-  }
-
   const masked = payment.type === "ach" ? payment.accountNumber : payment.cardNumber;
+  if (!masked) return null;
 
-  if (!masked) {
-    return null;
-  }
+  const paymentType = cardType(payment, savedAccount);
+  if (!paymentType) return null;
 
-  if (payment.type === "ach") {
-    return (
-      <AccountType width="30px" height="21px" type="Bank" />
-    );
-  }
-
-  // XXX call cardType shared function
-  if (payment.type === "cc") {
-    const getCardType = (card) => {
-      const d = /^6$|^6[05]$|^601[1]?$|^65[0-9][0-9]?$|^6(?:011|5[0-9]{2})[0-9]{0,12}$/gmi;
-
-      const defaultRegex = {
-        Visa: /^4[0-9]{0,15}$/gmi,
-        MasterCard: /^5$|^5[1-5][0-9]{0,14}$/gmi,
-        AmEx: /^3$|^3[47][0-9]{0,13}$/gmi,
-        Discover: d,
-      };
-
-      // eslint-disable-next-line no-restricted-syntax
-      for (const regex in defaultRegex) {
-        if (defaultRegex[regex].test(card.replace(/-/gmi, ""))) {
-          return regex;
-        }
-      }
-
-      return null;
-    };
-
-    return (
-      // replace with SVG
-      <AccountType width="30px" height="21px" type={getCardType(masked)} />
-    );
-  }
-
-  return null;
+  // replace with SVG
+  return <AccountType width="30px" height="21px" type={paymentType} />;
 };
 
 Icon.propTypes = {
