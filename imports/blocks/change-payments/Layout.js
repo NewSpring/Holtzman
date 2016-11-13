@@ -29,7 +29,7 @@ const Layout = ({
       </h4>
     </div>
     <div className="soft">
-      { savedAccounts.map((account, key) => (
+      {savedAccounts.map((account, key) => (
         <PaymentCard
           key={key}
           onClick={chooseAccount}
