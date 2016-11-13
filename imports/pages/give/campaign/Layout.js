@@ -1,5 +1,5 @@
+// @flow
 /* eslint-disable react/no-danger */
-import { PropTypes } from "react";
 import find from "lodash.find";
 import { Link } from "react-router";
 
@@ -7,7 +7,11 @@ import Split, { Left, Right } from "../../../blocks/split";
 import Meta from "../../../components/meta";
 import AddToCart from "../../../blocks/add-to-cart";
 
-const Layout = ({ account }) => (
+type ILayout = {
+  account: Object,
+};
+
+const Layout = ({ account }: ILayout) => (
   <div>
     <Split nav classes={["background--light-primary"]}>
       <Meta
@@ -76,11 +80,6 @@ const Layout = ({ account }) => (
 
     </Left>
   </div>
-
 );
-
-Layout.propTypes = {
-  account: PropTypes.object.isRequired,
-};
 
 export default Layout;

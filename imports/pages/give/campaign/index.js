@@ -1,5 +1,6 @@
 /* eslint-disable import/no-named-as-default */
-import { Component, PropTypes } from "react";
+// @flow
+import { Component } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
@@ -43,15 +44,14 @@ const FINANCIAL_ACCOUNTS_QUERY = gql`
 
 const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" });
 
-@connect()
-@withFinancialAccounts
-class Template extends Component {
+type ITemplate = {
+  dispatch: Function,
+  accounts: Object,
+  params: Object,
+};
 
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    accounts: PropTypes.object.isRequired,
-    params: PropTypes.object.isRequired,
-  }
+class Template extends Component {
+  props: ITemplate;
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
@@ -89,9 +89,10 @@ class Template extends Component {
   }
 }
 
+const TemplateWithData = withFinancialAccounts(connect()(Template));
 
 const Routes = [
-  { path: "campaign/:name", component: Template },
+  { path: "campaign/:name", component: TemplateWithData },
 ];
 
 export default {
