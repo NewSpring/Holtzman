@@ -1,4 +1,5 @@
-import { PropTypes } from "react";
+// @flow
+
 import {
   ActionButton,
   ListItem,
@@ -6,7 +7,12 @@ import {
   PaymentOptions,
 } from "../shared";
 
-const Header = ({ override, personal }) => {
+type IHeader = {
+  override?: Object,
+  personal: Object,
+};
+
+const Header = ({ override, personal }: IHeader) => {
   if (override) return override;
   return (
     <h4 className="text-center">
@@ -15,9 +21,19 @@ const Header = ({ override, personal }) => {
   );
 };
 
-Header.propTypes = {
-  override: PropTypes.object,
-  personal: PropTypes.object,
+type ITransactionLayout = {
+  back: Function,
+  changeAccounts: Function,
+  completeGift: Function,
+  goToStepOne: Function,
+  header?: Object,
+  payment: Object,
+  personal: Object,
+  savedAccount: Object,
+  schedules: Object,
+  scheduleToRecover: boolean,
+  total: number,
+  transactions: Object[],
 };
 
 const TransactionLayout = ({
@@ -33,7 +49,7 @@ const TransactionLayout = ({
   scheduleToRecover,
   total,
   transactions,
-}) => (
+}: ITransactionLayout) => (
   <div>
     <div className="push-double@lap-and-up push">
       <Header
@@ -92,20 +108,5 @@ const TransactionLayout = ({
     </div>
   </div>
 );
-
-TransactionLayout.propTypes = {
-  back: PropTypes.func,
-  changeAccounts: PropTypes.func,
-  completeGift: PropTypes.func,
-  goToStepOne: PropTypes.func,
-  header: PropTypes.object,
-  payment: PropTypes.object,
-  personal: PropTypes.object,
-  savedAccount: PropTypes.object,
-  schedules: PropTypes.array,
-  scheduleToRecover: PropTypes.bool,
-  total: PropTypes.number,
-  transactions: PropTypes.array,
-};
 
 export default TransactionLayout;
