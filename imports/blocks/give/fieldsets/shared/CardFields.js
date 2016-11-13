@@ -94,3 +94,7 @@ const CardFields = ({
 };
 
 export default CardFields;
+
+export {
+  RenderIcon,
+};
