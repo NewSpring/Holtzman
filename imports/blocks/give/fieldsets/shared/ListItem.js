@@ -1,9 +1,13 @@
-import { PropTypes } from "react";
+// @flow
 import { monetize } from "./";
+
+type IListItem = {
+  transaction: Object,
+};
 
 const ListItem = ({
   transaction,
-}) => (
+}: IListItem) => (
   <div className="soft-half-ends hard-sides">
 
     <div className="grid" style={{ verticalAlign: "middle" }}>
@@ -23,9 +27,5 @@ const ListItem = ({
     </div>
   </div>
 );
-
-ListItem.propTypes = {
-  transaction: PropTypes.object,
-};
 
 export default ListItem;
