@@ -1,8 +1,14 @@
+// @flow
+
 import moment from "moment";
-import { PropTypes } from "react";
 import { Success as SuccessIcon } from "../../components/icons";
 
-const ScheduleThanks = ({ total, schedule }) => {
+type IScheduleThanks = {
+  total: string,
+  schedule: Object | false,
+};
+
+const ScheduleThanks = ({ total, schedule }: IScheduleThanks) => {
   if (!schedule) return null;
   return (
     <p className="text-left">
@@ -13,12 +19,13 @@ const ScheduleThanks = ({ total, schedule }) => {
   );
 };
 
-ScheduleThanks.propTypes = {
-  total: PropTypes.string.isRequired,
-  schedule: PropTypes.object,
+type IOneTimeThanks = {
+  total: string,
+  email: string,
+  schedule: Object | boolean,
 };
 
-const OneTimeThanks = ({ total, email, schedule }) => {
+const OneTimeThanks = ({ total, email, schedule }: IOneTimeThanks) => {
   if (schedule) return null;
   return (
     <p className="text-left">
@@ -28,22 +35,21 @@ const OneTimeThanks = ({ total, email, schedule }) => {
   );
 };
 
-OneTimeThanks.propTypes = {
-  total: PropTypes.string,
-  email: PropTypes.string,
-  schedule: PropTypes.object,
+type IAdditionalMessage = {
+  additionalMessage?: string,
 };
 
-const AdditionalMessage = ({ additionalMessage }) => {
+const AdditionalMessage = ({ additionalMessage }: IAdditionalMessage) => {
   if (!additionalMessage) return null;
   return <h5>{additionalMessage}</h5>;
 };
 
-AdditionalMessage.propTypes = {
-  additionalMessage: PropTypes.string,
+type ICreateAccountFromGuest = {
+  guest: boolean,
+  onClick: Function,
 };
 
-const CreateAccountFromGuest = ({ guest, onClick }) => {
+const CreateAccountFromGuest = ({ guest, onClick }: ICreateAccountFromGuest) => {
   if (!guest) return null;
   return (
     <div>
@@ -56,11 +62,6 @@ const CreateAccountFromGuest = ({ guest, onClick }) => {
       </button>
     </div>
   );
-};
-
-CreateAccountFromGuest.propTypes = {
-  guest: PropTypes.bool,
-  onClick: PropTypes.func,
 };
 
 const CONTACT_MESSAGE_1 = "If you have any questions please call our Finance Team at 864-965-9990 or";
@@ -84,6 +85,15 @@ const ContactUs = () => (
   </p>
 );
 
+type ISuccess = {
+  total: string,
+  email: string,
+  guest: boolean,
+  onClick: Function,
+  schedules?: Object[],
+  additionalMessage?: string,
+};
+
 const Success = ({
   total,
   email,
@@ -91,7 +101,7 @@ const Success = ({
   onClick,
   schedules,
   additionalMessage,
-}) => {
+}: ISuccess) => {
   const schedule = (schedules && schedules.length > 0) ? schedules[0] : false;
   return (
     <div className="soft soft-double-ends push-double-top one-whole text-center">
@@ -101,7 +111,7 @@ const Success = ({
 
         <ScheduleThanks total={total} schedule={schedule} />
 
-        <OneTimeThanks total={total} email={email} />
+        <OneTimeThanks total={total} email={email} schedule={schedule} />
 
         <AdditionalMessage additionalMessage={additionalMessage} />
 
@@ -111,15 +121,6 @@ const Success = ({
       </div>
     </div>
   );
-};
-
-Success.propTypes = {
-  total: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  guest: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
-  schedules: PropTypes.array.isRequired,
-  additionalMessage: PropTypes.string.isRequired,
 };
 
 export default Success;
