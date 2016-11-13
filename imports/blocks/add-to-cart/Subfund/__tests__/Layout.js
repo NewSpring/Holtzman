@@ -6,7 +6,7 @@ import { getSingleSpecWrapper } from "../../../../util/tests/data-spec.js";
 
 import Layout from "../Layout";
 
-const generateComponent = (additionalProps={}) => {
+const generateComponent = (additionalProps = {}) => {
   const defaultProps = {
     state: {
       id: "test",
