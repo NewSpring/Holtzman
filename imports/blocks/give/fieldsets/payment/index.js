@@ -24,7 +24,7 @@ export default class Payment extends Component {
   }
 
   savePayment = () => {
-    this.setState({ save: !this.state.save });
+    this.setState(({ save }) => ({ save: !save }));
 
     if (this.state.save) {
       this.props.save({ payment: { name: null } });
