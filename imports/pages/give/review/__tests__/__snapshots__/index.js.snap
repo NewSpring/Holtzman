@@ -6,6 +6,7 @@ exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `
 
 exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `
 <Layout
+  onSubmit={[Function]}
   payment={
     Object {
       "icon": "Visa",
@@ -29,29 +30,6 @@ exports[`GiveReviewTemplate returns <Loading /> component based on state 1`] = `
   msg="We\'re Processing Your Contribution" />
 `;
 
-<<<<<<< HEAD
-=======
-exports[`GiveReviewTemplate returns <Loading /> component based on state 2`] = `
-<Layout
-  payment={
-    Object {
-      "icon": "Visa",
-      "last4": "1112",
-      "type": "cc",
-    }
-  }
-  personal={
-    Object {
-      "campus": "Web",
-      "campusId": 20,
-      "email": "web@newspring.cc",
-      "firstName": "Jeff",
-      "lastName": "Goldblumm",
-    }
-  } />
-`;
-
->>>>>>> 48d0c7b... added give/review tests and snapshots
 exports[`GiveReviewTemplate returns <Success /> component based on state 1`] = `
 <Success
   additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
