@@ -21,8 +21,9 @@ const NextButton = ({
   const btnClasses = [];
   let disabled = false;
   if (
-    personal.email === null || personal.firstName === null ||
-    personal.email === null || personal.campusId === null
+    personal.email === null ||
+    personal.firstName === null ||
+    personal.campusId === null
   ) {
     btnClasses.push("btn--disabled");
     disabled = true;
