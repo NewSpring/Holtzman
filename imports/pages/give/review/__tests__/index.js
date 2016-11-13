@@ -10,7 +10,6 @@ export const sampleData = {
   "data": {
     "payment": {
       "icon": "Visa",
-      "last4": "1112",
       "type": "cc"
     },
     "personal": {

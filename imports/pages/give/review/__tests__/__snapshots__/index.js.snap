@@ -10,7 +10,6 @@ exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `
   payment={
     Object {
       "icon": "Visa",
-      "last4": "1112",
       "type": "cc",
     }
   }
