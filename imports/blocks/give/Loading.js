@@ -1,3 +1,5 @@
+// @flow
+
 import { WindowLoading, Spinner } from "../../components/loading";
 
 const LOADING_HEADER = "We're Processing Your Contribution";
