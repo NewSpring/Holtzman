@@ -1,11 +1,18 @@
-import { PropTypes } from "react";
+// @flow
+
+type IPaymentOptions = {
+  back: Function,
+  changeAccounts: Function,
+  goToStepOne: Function,
+  savedAccount: Object,
+};
 
 const PaymentOptions = ({
   back,
   changeAccounts,
   goToStepOne,
   savedAccount,
-}) => {
+}: IPaymentOptions) => {
   if (savedAccount.id === null) {
     return (
       <div className="display-block soft-top text-left">
@@ -38,13 +45,6 @@ const PaymentOptions = ({
       </h6>
     </div>
   );
-};
-
-PaymentOptions.propTypes = {
-  back: PropTypes.func,
-  changeAccounts: PropTypes.func,
-  goToStepOne: PropTypes.func,
-  savedAccount: PropTypes.object,
 };
 
 export default PaymentOptions;
