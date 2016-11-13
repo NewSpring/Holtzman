@@ -7,26 +7,7 @@ import { Personal, Payment, Billing, Confirm } from "./fieldsets";
 import Loading from "./Loading";
 import Err from "./Err";
 import Success from "./Success";
-
-// XXX move to util
-const monetize = (amount, fixed) => {
-  let value = typeof amount === "number" ? `${amount}` : amount;
-
-  if (!value.length) {
-    return "$0.00";
-  }
-
-  value = value.replace(/[^\d.-]/g, "");
-
-  const decimals = value.split(".")[1];
-  if ((decimals && decimals.length >= 2) || fixed) {
-    value = Number(value).toFixed(2);
-    value = String(value);
-  }
-
-  value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return `$${value}`;
-};
+import { monetize } from "./fieldsets/shared";
 
 const FORM_STEPS = {
   1: Personal,

@@ -1,5 +1,9 @@
 import { PropTypes } from "react";
 import Forms from "../../../../components/forms";
+import {
+  StateOrTerritory,
+  Zip,
+} from "../shared";
 
 const Header = ({ override }) => {
   if (override) return override;
@@ -12,62 +16,6 @@ const Header = ({ override }) => {
 
 Header.propTypes = {
   override: PropTypes.object,
-};
-
-const StateOrTerritory = ({
-  billing,
-  states,
-  saveState,
-}) => {
-  if (!billing.country || billing.country === "US" || billing.country === "CA") {
-    return (
-      <div className="grid__item one-half">
-        <Forms.Select
-          name="state"
-          label="State/Territory"
-          errorText="Please enter your state"
-          defaultValue={billing.state ? billing.state : "SC"}
-          items={states}
-          validation={saveState}
-          includeBlank
-        />
-      </div>
-    );
-  }
-  return null;
-};
-
-StateOrTerritory.propTypes = {
-  billing: PropTypes.object,
-  states: PropTypes.array,
-  saveState: PropTypes.func,
-};
-
-const Zip = ({
-  billing,
-  zip,
-}) => {
-  let length = "one-whole";
-  if (!billing.country || billing.country === "US" || billing.country === "CA") {
-    length = "one-half";
-  }
-  return (
-    <div className={`grid__item ${length}`}>
-      <Forms.Input
-        name="zip"
-        label="Zip/Postal"
-        errorText="Please enter your zip"
-        defaultValue={billing.zip}
-        onChange={zip}
-        validation={zip}
-      />
-    </div>
-  );
-};
-
-Zip.propTypes = {
-  billing: PropTypes.object,
-  zip: PropTypes.func,
 };
 
 const NextButton = ({
