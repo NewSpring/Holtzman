@@ -156,7 +156,7 @@ fi
 
 
 yecho "### Uploading bundle to S3 ###"
-aws s3 cp .build/Holtzmann.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+aws s3 cp .build/Holtzman.tar.gz s3://ns.ops/apollos/$CURRENT_TAG-$TRAVIS_COMMIT.tar.gz --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
 yecho "### Updating ECS ###"
 # more bash-friendly output for jq
