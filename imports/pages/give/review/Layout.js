@@ -81,9 +81,7 @@ export default class Layout extends Component {
   )
 
   render() {
-    if (!this.props.data) {
-      return null;
-    }
+    if (!this.props.data) return null;
 
     const transactions = [];
 
