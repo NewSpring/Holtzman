@@ -1,10 +1,15 @@
-import { PropTypes } from "react";
+// @flow
 import Forms from "../../../../components/forms";
+
+type IZip = {
+  billing: Object,
+  zip: Function,
+};
 
 const Zip = ({
   billing,
   zip,
-}) => {
+}: IZip) => {
   let length = "one-whole";
   if (!billing.country || billing.country === "US" || billing.country === "CA") {
     length = "one-half";
@@ -21,11 +26,6 @@ const Zip = ({
       />
     </div>
   );
-};
-
-Zip.propTypes = {
-  billing: PropTypes.object,
-  zip: PropTypes.func,
 };
 
 export default Zip;
