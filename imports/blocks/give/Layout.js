@@ -86,7 +86,7 @@ const Layout = ({
     }
   }
 
-  const Step = FORM_STEPS[step];
+  const Step = FORM_STEPS[step - 1];
 
   return (
     <Forms.Form
