@@ -1,4 +1,5 @@
-import { PropTypes } from "react";
+// @flow
+
 import { SavedAccount } from "../shared";
 
 const Header = () => (
@@ -7,13 +8,21 @@ const Header = () => (
   </h4>
 );
 
+type IPaymentOptionsLayout = {
+  changeAccounts: Function,
+  choose: Function,
+  goToStepOne: Function,
+  savedAccount: Object,
+  savedAccounts: Object[],
+};
+
 const PaymentOptionsLayout = ({
   changeAccounts,
   choose,
   goToStepOne,
   savedAccount,
   savedAccounts,
-}) => (
+}: IPaymentOptionsLayout) => (
   <div>
     <div className="soft-sides flush-bottom push-double-top@lap-and-up">
       <Header />
@@ -40,13 +49,5 @@ const PaymentOptionsLayout = ({
     </div>
   </div>
 );
-
-PaymentOptionsLayout.propTypes = {
-  changeAccounts: PropTypes.func,
-  choose: PropTypes.func,
-  goToStepOne: PropTypes.func,
-  savedAccount: PropTypes.object,
-  savedAccounts: PropTypes.array,
-};
 
 export default PaymentOptionsLayout;
