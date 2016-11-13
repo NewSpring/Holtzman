@@ -15,13 +15,8 @@ const ButtonText = ({
 
   let text = "Give Now";
 
-  if (Object.keys(schedules).length) {
-    text = "Schedule Now";
-  }
-
-  if (scheduleToRecover) {
-    text = "Transfer Now";
-  }
+  if (Object.keys(schedules).length) text = "Schedule Now";
+  if (scheduleToRecover) text = "Transfer Now";
 
   if (paymentInfo.accountNumber || paymentInfo.cardNumber) {
     const masked = paymentInfo.type === "ach" ? paymentInfo.accountNumber : paymentInfo.cardNumber;
