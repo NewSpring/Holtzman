@@ -1,4 +1,6 @@
-import { Component, PropTypes } from "react";
+// @flow
+
+import { Component } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
@@ -10,59 +12,13 @@ import Layout from "./Layout";
 
 const defaultArray = []; // empty array for usage as default in render
 
-const CHECKOUT_QUERY = gql`
-  query GetCheckoutData($state: Int!, $country: Int!) {
-    states: definedValues(id: $state, all: true) {
-      name: description, value, id, _id
-    }
-    countries: definedValues(id: $country, all: true) {
-      name: description, value, id, _id
-    }
-    person: currentPerson {
-      firstName
-      nickName
-      lastName
-      email
-      campus { name, id: entityId }
-      home { street1, street2, city, state, zip, country }
-    }
-    savedPayments {
-      name, id: entityId, date,
-      payment { accountNumber, paymentType }
-    }
-    campuses { name, id: entityId }
-  }
-`;
-
-const withCheckout = graphql(CHECKOUT_QUERY, {
-  options: { variables: { state: 28, country: 45 } },
-  props: ({ data, data: { campuses, countries, states } }) => ({
-    data: {
-      ...data,
-      campuses: campuses ?
-        campuses.map((x) => ({ label: x.name, value: x.id })) : defaultArray,
-      countries: countries ?
-        countries.map((x) => ({ label: x.name, value: x.value })) : defaultArray,
-      states: states ?
-        states.map((x) => ({ label: x.name, value: x.value })) : defaultArray,
-    },
-  }),
-});
-
-// We only care about the give state
-const mapStateToProps = (state) => ({
-  give: state.give,
-});
-
-@connect(mapStateToProps)
-@withCheckout
-export default class Give extends Component {
-
-  static propTypes = {
-    give: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
-  }
+type IGive = {
+  give: Object,
+  dispatch: Function,
+  data: Object,
+};
+class Give extends Component {
+  props: IGive;
 
   componentWillMount() {
     this.updateData(this.props);
@@ -86,13 +42,13 @@ export default class Give extends Component {
     }
   }
 
-  onSubmit = (e) => {
+  onSubmit = (e: Event) => {
     e.preventDefault();
     const { dispatch } = this.props;
     dispatch(giveActions.submit());
   }
 
-  updateData = ({ data }) => {
+  updateData = ({ data }: { data: Object }) => {
     if (data.loading || !data.person) return;
 
     const { person } = data;
@@ -128,23 +84,23 @@ export default class Give extends Component {
     this.props.dispatch(giveActions.save(mappedPerson));
   }
 
-  next = (e) => {
+  next = (e: Event) => {
     e.preventDefault();
     this.props.dispatch(giveActions.next());
   }
 
-  goToStepOne = (e) => {
+  goToStepOne = (e: Event) => {
     e.preventDefault();
     this.props.dispatch(giveActions.clearAccount());
     this.props.dispatch(giveActions.setState("default"));
     this.props.dispatch(giveActions.setProgress(1));
   }
 
-  changeSavedAccount = (account) => {
+  changeSavedAccount = (account: Object) => {
     this.props.dispatch(giveActions.setAccount(account));
   }
 
-  back = (e) => {
+  back = (e: Event) => {
     e.preventDefault();
     if (this.props.give.step === 1) {
       this.props.dispatch(modal.hide());
@@ -206,3 +162,49 @@ export default class Give extends Component {
     );
   }
 }
+
+const CHECKOUT_QUERY = gql`
+  query GetCheckoutData($state: Int!, $country: Int!) {
+    states: definedValues(id: $state, all: true) {
+      name: description, value, id, _id
+    }
+    countries: definedValues(id: $country, all: true) {
+      name: description, value, id, _id
+    }
+    person: currentPerson {
+      firstName
+      nickName
+      lastName
+      email
+      campus { name, id: entityId }
+      home { street1, street2, city, state, zip, country }
+    }
+    savedPayments {
+      name, id: entityId, date,
+      payment { accountNumber, paymentType }
+    }
+    campuses { name, id: entityId }
+  }
+`;
+
+const withCheckout = graphql(CHECKOUT_QUERY, {
+  options: { variables: { state: 28, country: 45 } },
+  props: ({ data, data: { campuses, countries, states } }) => ({
+    data: {
+      ...data,
+      campuses: campuses ?
+        campuses.map((x) => ({ label: x.name, value: x.id })) : defaultArray,
+      countries: countries ?
+        countries.map((x) => ({ label: x.name, value: x.value })) : defaultArray,
+      states: states ?
+        states.map((x) => ({ label: x.name, value: x.value })) : defaultArray,
+    },
+  }),
+});
+
+// We only care about the give state
+const mapStateToProps = (state) => ({
+  give: state.give,
+});
+
+export default withCheckout(connect(mapStateToProps)(Give));
