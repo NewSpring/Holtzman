@@ -1,11 +1,17 @@
-import { PropTypes } from "react";
+// @flow
 import Forms from "../../../../components/forms";
+
+type IBankFields = {
+  payment: Object,
+  saveData: Function,
+  validate: Function,
+};
 
 const BankFields = ({
   payment,
   saveData,
   validate,
-}) => {
+}: IBankFields) => {
   if (payment.type !== "ach") return null;
   return (
     <div>
@@ -54,12 +60,6 @@ const BankFields = ({
       </div>
     </div>
   );
-};
-
-BankFields.propTypes = {
-  payment: PropTypes.object,
-  saveData: PropTypes.func,
-  validate: PropTypes.func,
 };
 
 export default BankFields;
