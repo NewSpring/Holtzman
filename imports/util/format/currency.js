@@ -22,9 +22,7 @@ export default toCurrency;
 const monetize = (value: string | number, fixed?: boolean): string => {
   let amount = typeof value === "number" ? `${value}` : value;
 
-  if (!amount || !amount.length) {
-    return "$0.00";
-  }
+  if (!amount || !amount.length) return "$0.00";
 
   amount = amount.replace(/[^\d.-]/g, "");
 
