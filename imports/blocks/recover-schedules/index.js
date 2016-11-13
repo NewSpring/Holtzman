@@ -1,31 +1,34 @@
-import { Component, PropTypes } from "react";
+// @flow
+import { Component } from "react";
 import { connect } from "react-redux";
+// $FlowMeteor
+import { Meteor } from "meteor/meteor";
 import moment from "moment";
 
 import modalActions from "../../store/modal";
 import giveActions from "../../store/give";
 
-import Later from "./Later";
-import Remind from "./Remind";
-import Recover from "./Recover";
+import Layout from "./Layout";
 
 const map = (store) => ({ give: store.give });
-@connect(map)
-export default class RecoverSchedules extends Component {
 
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    give: PropTypes.object,
-  }
+type IRecoverSchedules = {
+  dispatch: Function,
+  give: Object,
+}
+
+export class RecoverSchedules extends Component {
+  props: IRecoverSchedules;
 
   state = {
     state: "default", // default, remind, later
   }
 
-  onRemind = (e) => {
+  onRemind = (e: Event) => {
     e.preventDefault();
 
-    const input = document.getElementById("remind-frequency");
+    // XXX deprecate id based find for node reference on element
+    const input: HTMLInputElement = (document.getElementById("remind-frequency"): any);
     const value = input.value;
 
     const time = {
@@ -48,7 +51,7 @@ export default class RecoverSchedules extends Component {
     this.setState({ state: "later" });
   }
 
-  back = (e) => {
+  back = (e: Event) => {
     e.preventDefault();
 
     this.setState({ state: "default" });
@@ -62,36 +65,27 @@ export default class RecoverSchedules extends Component {
 
   render() {
     const { state } = this.state;
-
     const arr = [];
     const { recoverableSchedules, reminderDate } = this.props.give;
+
     // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const schedule in recoverableSchedules) {
       arr.push(recoverableSchedules[schedule]);
     }
 
-    if (state === "later") {
-      return <Later date={reminderDate} onClick={this.close} />;
-    }
-
-    if (state === "remind") {
-      return (
-        <Remind
-          onSubmit={this.onRemind}
-          onChange={this.onFrequencyChange}
-          back={this.back}
-        />
-      );
-    }
-
-
     return (
-      <Recover
+      <Layout
+        reminderDate={reminderDate}
+        closeFunction={this.close}
+        onSubmit={this.onRemind}
+        back={this.back}
         schedules={arr}
         hide={this.close}
-        onClick={() => { this.setState({ state: "remind" }); }}
+        recoverOnClick={() => { this.setState({ state: "remind" }); }}
+        state={state}
       />
     );
   }
-
 }
+
+export default connect(map)(RecoverSchedules);

@@ -1,8 +1,14 @@
-import { PropTypes } from "react";
+// @flow
 import { Link } from "react-router";
 import Forms from "../../components/forms";
 
-const RecoverableSchedule = ({ account, amount, frequency }) => (
+type IRecoverableSchedule = {
+  account: string,
+  amount: string,
+  frequency: string,
+};
+
+export const RecoverableSchedule = ({ account, amount, frequency }: IRecoverableSchedule) => (
   <div>
     <div className="display-inline-block soft-half-ends one-whole">
       <h5 className="flush-bottom float-left">{account}</h5>
@@ -32,14 +38,14 @@ const RecoverableSchedule = ({ account, amount, frequency }) => (
   </div>
 );
 
-RecoverableSchedule.propTypes = {
-  account: PropTypes.string.isRequired,
-  amount: PropTypes.string.isRequired,
-  frequency: PropTypes.string.isRequired,
+type IRecover = {
+  schedules: Object[],
+  onClick: Function,
+  hide: Function,
 };
 
 /* eslint-disable max-len */
-const Layout = ({ schedules, onClick, hide }) => (
+const Recover = ({ schedules, onClick, hide }: IRecover) => (
   <div className="soft soft-double-ends one-whole text-center">
     <h4 className="text-center push-ends">
       Transfer Your Schedule
@@ -76,12 +82,5 @@ const Layout = ({ schedules, onClick, hide }) => (
 
   </div>
 );
-/* eslint-enable max-len */
 
-Layout.propTypes = {
-  schedules: PropTypes.object.isRequired,
-  onClick: PropTypes.func.isRequired,
-  hide: PropTypes.func.isRequired,
-};
-
-export default Layout;
+export default Recover;

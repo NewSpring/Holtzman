@@ -1,0 +1,32 @@
+exports[`RecoverSchedules has and calls the close method 1`] = `
+Array [
+  Object {
+    "type": "MODAL.SET_VISIBILITY",
+    "visible": false,
+  },
+]
+`;
+
+exports[`RecoverSchedules has and calls the onRemind method 1`] = `
+<Layout
+  back={[Function]}
+  closeFunction={[Function]}
+  hide={[Function]}
+  onSubmit={[Function]}
+  recoverOnClick={[Function]}
+  reminderDate="20200101"
+  schedules={Array []}
+  state="remind" />
+`;
+
+exports[`RecoverSchedules should be default if default props are passed 1`] = `
+<Layout
+  back={[Function]}
+  closeFunction={[Function]}
+  hide={[Function]}
+  onSubmit={[Function]}
+  recoverOnClick={[Function]}
+  reminderDate="20200101"
+  schedules={Array []}
+  state="default" />
+`;
