@@ -76,19 +76,22 @@ export default class Confirm extends Component {
     );
   }
 
-  choose = (e: SyntheticInputEvent) => {
+  choose = (e: Event) => {
     e.preventDefault();
 
-    const { id } = e.currentTarget;
-    let act = {};
-    for (const account of this.props.savedAccounts) {
-      if (Number(account.id) === Number(id)) {
-        act = account;
-        break;
+    const target = e.currentTarget;
+    if (target instanceof HTMLInputElement) {
+      const { id } = target;
+      let act = {};
+      for (const account of this.props.savedAccounts) {
+        if (Number(account.id) === Number(id)) {
+          act = account;
+          break;
+        }
       }
-    }
 
-    this.props.changeSavedAccount(act);
+      this.props.changeSavedAccount(act);
+    }
   }
 
   changeAccounts = (e: Event) => {
