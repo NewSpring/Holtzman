@@ -41,6 +41,8 @@ export default class Payment extends Component {
 
   validate = (value, target) => {
     const { id } = target;
+    // special case for intial repaint
+    if ((id === "cardNumber" || id === "routingNumber") && !value) return true;
 
     let isValid = false;
     const notEmpty = (inputVal) => (inputVal.length > 0);
@@ -55,11 +57,6 @@ export default class Payment extends Component {
     };
 
     isValid = validationMap[id](value);
-
-    // special case for intial repaint
-    if ((id === "cardNumber" || id === "routingNumber") && !value) {
-      return true;
-    }
 
     return isValid;
   }
