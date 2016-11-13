@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+// @flow
 
 import Controls from "../../../../components/controls";
 
@@ -11,9 +11,13 @@ import {
 
 const DEFAULT_TOGGLES = ["Credit Card", "Bank Account"];
 
+type IHeader = {
+  override?: Object,
+};
+
 const Header = ({
   override,
-}) => {
+}: IHeader) => {
   if (override) return override;
   return (
     <h4 className="text-center">
@@ -22,14 +26,15 @@ const Header = ({
   );
 };
 
-Header.propTypes = {
-  override: PropTypes.object,
+type INextButton = {
+  next: Function,
+  payment: Object,
 };
 
 const NextButton = ({
   payment,
   next,
-}) => {
+}: INextButton) => {
   const btnClasses = ["push-left"];
 
   const ach = (payment.type === "ach" && payment.accountNumber && payment.routingNumber);
@@ -62,9 +67,23 @@ const NextButton = ({
   );
 };
 
-NextButton.propTypes = {
-  next: PropTypes.func,
-  payment: PropTypes.object,
+type ILayout = {
+  back: Function,
+  children?: Object,
+  header?: Object,
+  formatExp: Function,
+  next: Function,
+  payment: Object,
+  saveData: Function,
+  saveName: Function,
+  savedAccount: Object,
+  savePayment: Function,
+  shouldSaveState: boolean,
+  schedules: Object,
+  toggle: Function,
+  toggles?: string[],
+  transactionType: string,
+  validate: Function,
 };
 
 const Layout = ({
@@ -84,7 +103,7 @@ const Layout = ({
   toggles,
   transactionType,
   validate,
-}) => (
+}: ILayout) => (
   <div>
     <div className="push-double@lap-and-up push">
       <Header override={header} />
@@ -147,24 +166,5 @@ const Layout = ({
 
   </div>
 );
-
-Layout.propTypes = {
-  back: PropTypes.func,
-  children: PropTypes.object,
-  header: PropTypes.object,
-  formatExp: PropTypes.func,
-  next: PropTypes.func,
-  payment: PropTypes.object,
-  saveData: PropTypes.func,
-  saveName: PropTypes.func,
-  savedAccount: PropTypes.object,
-  savePayment: PropTypes.func,
-  shouldSaveState: PropTypes.bool,
-  schedules: PropTypes.array,
-  toggle: PropTypes.func,
-  toggles: PropTypes.object,
-  transactionType: PropTypes.string,
-  validate: PropTypes.func,
-};
 
 export default Layout;
