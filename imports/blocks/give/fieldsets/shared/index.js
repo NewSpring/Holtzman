@@ -5,7 +5,6 @@ import ButtonText from "./ButtonText";
 import CardFields from "./CardFields";
 import cardType from "./cardType";
 import Icon from "./Icon";
-import isIOS from "./isIOS";
 import ListItem from "./ListItem";
 import monetize from "./monetize";
 import PaymentOptions from "./PaymentOptions";
@@ -24,7 +23,6 @@ export {
   CardFields,
   cardType,
   Icon,
-  isIOS,
   ListItem,
   monetize,
   PaymentOptions,

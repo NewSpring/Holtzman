@@ -3,8 +3,9 @@ import {
   ButtonText,
   cardType,
   Icon,
-  isIOS,
 } from "./";
+
+import { isIOS } from "../../../../util";
 
 const ActionButton = ({
   completeGift,
