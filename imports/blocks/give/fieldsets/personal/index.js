@@ -1,20 +1,23 @@
-import { Component, PropTypes } from "react";
+// @flow
+
+import { Component } from "react";
 import Layout from "./Layout";
 import Validate from "../../../../util/validate";
 
+type IPersonal = {
+  data: Object,
+  campuses: Object[],
+  header?: Object,
+  save: Function,
+  clear: Function,
+  next: Function,
+  children?: Object,
+};
+
 export default class Personal extends Component {
+  props: IPersonal;
 
-  static propTypes = {
-    data: PropTypes.object.isRequired,
-    campuses: PropTypes.array.isRequired,
-    header: PropTypes.string,
-    save: PropTypes.func.isRequired,
-    clear: PropTypes.func.isRequired,
-    next: PropTypes.func.isRequired,
-    children: PropTypes.object.isRequired,
-  }
-
-  firstName = (value) => {
+  firstName = (value: string): boolean => {
     if (!value.length) {
       this.props.clear("firstName");
     } else {
@@ -28,7 +31,7 @@ export default class Personal extends Component {
     return true;
   }
 
-  isEmail = (value) => {
+  isEmail = (value: string): boolean => {
     const isValid = Validate.isEmail(value);
 
     if (!isValid) {
@@ -40,7 +43,7 @@ export default class Personal extends Component {
     return isValid;
   }
 
-  lastName = (value) => {
+  lastName = (value: string): boolean => {
     if (!value.length) {
       this.props.clear("lastName");
     } else {
@@ -50,7 +53,7 @@ export default class Personal extends Component {
     return true;
   }
 
-  campus = (value) => {
+  campus = (value: string): boolean => {
     this.props.save({ personal: { campusId: value } });
     // save name for display
     for (const campus of this.props.campuses) {
