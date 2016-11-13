@@ -1,11 +1,12 @@
-const monetize = (amount, fixed) => {
+// @flow
+const monetize = (amount: number | string, fixed: boolean) => {
   let value;
 
   if (typeof amount === "number") {
     value = `${amount}`;
   }
 
-  if (!value.length) {
+  if (!value || !value.length) {
     return "$0.00";
   }
 
