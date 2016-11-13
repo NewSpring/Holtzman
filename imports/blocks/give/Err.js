@@ -22,7 +22,7 @@ const StepOneAction = ({ goToStepOne }: IStepOneAction) => {
 };
 
 type IAdditionalMessage = {
-  additionalMessage: string,
+  additionalMessage?: string,
 };
 
 const AdditionalMessage = ({ additionalMessage }: IAdditionalMessage) => {
@@ -51,7 +51,7 @@ const ContactUs = () => (
 type IErr = {
   msg: string,
   goToStepOne: Function,
-  additionalMessage: string,
+  additionalMessage?: string,
 };
 
 const Err = ({ msg, goToStepOne, additionalMessage }: IErr) => (
