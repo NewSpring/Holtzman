@@ -1,4 +1,3 @@
-// XXX adjust so can take card number directly
 const cardType = (payment, savedAccount) => {
   if (savedAccount && savedAccount.payment && savedAccount.payment.paymentType) {
     return savedAccount.payment.paymentType;
@@ -18,9 +17,10 @@ const cardType = (payment, savedAccount) => {
       Discover: d,
     };
 
-    const result = Object.keys(defaultRegex).map((regex) => {
+    let result;
+    Object.keys(defaultRegex).map((regex) => {
       if (defaultRegex[regex].test(payment.cardNumber.replace(/-/gmi, ""))) {
-        return regex;
+        result = regex;
       }
       return null;
     });
