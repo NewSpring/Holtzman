@@ -3,7 +3,6 @@ import { CardFields } from "../";
 import { RenderIcon } from "../CardFields";
 
 describe("RenderIcon", () => {
-
   const defaultProps = {
     payment: {},
     savedAccount: {},
@@ -65,6 +64,44 @@ describe("RenderIcon", () => {
       payment: {
         type: "cc",
         cardNumber: "4111-1111-1111-1111",
+      },
+    }));
+    expect(result).toMatchSnapshot();
+  });
+});
+
+describe("CardFields", () => {
+  const defaultProps = {
+    format: () => {},
+    payment: {},
+    saveData: () => {},
+    savedAccount: {},
+    validate: () => {},
+  };
+
+  const generateComponent = (additionalProps = {}) => {
+    const newProps = {
+      ...defaultProps,
+      ...additionalProps,
+    };
+    return <CardFields { ...newProps } />;
+  };
+
+  it("should not render if type is ach", () => {
+    const result = renderer.create(generateComponent({
+      payment: {
+        type: "ach",
+      },
+    }));
+    expect(result).toMatchSnapshot();
+  });
+  it("should render with props", () => {
+    const result = renderer.create(generateComponent({
+      payment: {
+        type: "cc",
+        cardNumber: "4111-1111-1111-1111",
+        expiration: "11/22",
+        ccv: "111",
       },
     }));
     expect(result).toMatchSnapshot();
