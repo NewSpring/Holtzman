@@ -1,0 +1,37 @@
+exports[`test should render with props 1`] = `
+<div
+  className="soft-half-ends hard-sides">
+  <div
+    className="grid"
+    style={
+      Object {
+        "verticalAlign": "middle",
+      }
+    }>
+    <div
+      className="grid__item two-thirds"
+      style={
+        Object {
+          "verticalAlign": "middle",
+        }
+      }>
+      <h5
+        className="text-dark-secondary flush text-left">
+        label
+      </h5>
+    </div>
+    <div
+      className="grid__item one-third text-right"
+      style={
+        Object {
+          "verticalAlign": "middle",
+        }
+      }>
+      <h5
+        className="text-dark-secondary flush">
+        $24
+      </h5>
+    </div>
+  </div>
+</div>
+`;
