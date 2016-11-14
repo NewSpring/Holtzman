@@ -16,11 +16,11 @@ export const withRedux = connect(null, giveActions);
 
 type ISubFund = {
   primary: boolean,
-  accounts: Object[], // eslint-disable-line
+  accounts: Object[],
   update: Function,
   selectVal: number,
   inputVal: number,
-  instance: number, // eslint-disable-line
+  instance: number,
   clearTransaction: Function,
   addTransactions: Function,
   remove: Function,
