@@ -73,3 +73,10 @@ const Err = ({ msg, goToStepOne, additionalMessage }: IErr) => (
 );
 
 export default Err;
+
+export {
+  StepOneAction,
+  AdditionalMessage,
+  ContactLink,
+  ContactUs,
+};
