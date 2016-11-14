@@ -110,3 +110,7 @@ const TransactionLayout = ({
 );
 
 export default TransactionLayout;
+
+export {
+  Header,
+};
