@@ -1,27 +1,35 @@
-import { Component, PropTypes } from "react";
+
+// @Flow
+
+// XXX We need to figure out how to best move the logic out of this
+
+import { Component } from "react";
 import { connect } from "react-redux";
 
 import { give as giveActions } from "../../../store";
+import { monetize } from "../../../util/format";
 
 import Primary from "./Primary";
 import Layout from "./Layout";
 
-@connect(null, giveActions)
-export default class SubFund extends Component {
+export const withRedux = connect(null, giveActions);
 
-  static propTypes = {
-    primary: PropTypes.bool,
-    accounts: PropTypes.array, // eslint-disable-line
-    update: PropTypes.func,
-    selectVal: PropTypes.number,
-    inputVal: PropTypes.number,
-    instance: PropTypes.number, // eslint-disable-line
-    clearTransaction: PropTypes.func,
-    addTransactions: PropTypes.func,
-    remove: PropTypes.func,
-    preFill: PropTypes.func,
-    donate: PropTypes.bool,
-  }
+type ISubFund = {
+  primary: boolean,
+  accounts: Object[], // eslint-disable-line
+  update: Function,
+  selectVal: number,
+  inputVal: number,
+  instance: number, // eslint-disable-line
+  clearTransaction: Function,
+  addTransactions: Function,
+  remove: Function,
+  preFill: Function,
+  donate: boolean,
+};
+
+export class SubFund extends Component {
+  props: ISubFund;
 
   state = {
     active: false,
@@ -49,33 +57,14 @@ export default class SubFund extends Component {
     }
   }
 
-  getFund = (id) => {
+  getFund = (id: string): ?Object => {
     const selectedFund = this.props.accounts.filter((fund) => (
       `${fund.value}` === `${id}`
     ));
     return selectedFund[0];
   }
 
-  monentize = (value, fixed) => {
-    let amount = typeof value === "number" ? `${value}` : value;
-
-    if (!amount.length) {
-      return "$0.00";
-    }
-
-    amount = amount.replace(/[^\d.-]/g, "");
-
-    const decimals = amount.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      amount = Number(amount).toFixed(2);
-      amount = String(amount);
-    }
-
-    amount = amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${amount}`;
-  }
-
-  saveFund = (id) => {
+  saveFund = (id: string) => {
     if (id === this.state.id) return;
 
     // remove old funds transaction
@@ -111,8 +100,8 @@ export default class SubFund extends Component {
     }
   }
 
-  saveAmount = (value) => {
-    const amount = this.monentize(value);
+  saveAmount = (value: string | number): string => {
+    const amount: string = monetize(value);
 
     const numberValue = Number(amount.replace(/[^\d.-]/g, ""));
 
@@ -150,7 +139,7 @@ export default class SubFund extends Component {
     return amount;
   }
 
-  statusClass = () => {
+  statusClass = (): string => {
     if (this.state.fund) {
       return "text-dark-tertiary";
     }
@@ -216,3 +205,6 @@ export default class SubFund extends Component {
     );
   }
 }
+
+
+export default withRedux(SubFund);
