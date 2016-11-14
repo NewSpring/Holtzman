@@ -7,11 +7,11 @@ import Validate from "../../../../util/validate";
 type IPersonal = {
   data: Object,
   campuses: Object[],
-  header?: Object,
+  header?: React$Element<any>,
   save: Function,
   clear: Function,
   next: Function,
-  children?: Object,
+  children?: React$Element<any>,
 };
 
 export default class Personal extends Component {

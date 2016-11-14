@@ -9,7 +9,7 @@ import {
 } from "../shared";
 
 type IHeader = {
-  override?: Object,
+  override?: React$Element<any>,
   scheduleToRecover: boolean,
 };
 
@@ -37,7 +37,7 @@ type IScheduleLayout = {
   back: Function,
   changeAccounts: Function,
   goToStepOne: Function,
-  header?: Object,
+  header?: React$Element<any>,
   payment: Object,
   savedAccount: Object,
   schedules: Object,

@@ -17,7 +17,7 @@ type IConfirm = {
   total: number,
   back: Function,
   goToStepOne: Function,
-  header?: Object,
+  header?: React$Element<any>,
   url: string,
   clearData: Function,
   savedAccount: Object,

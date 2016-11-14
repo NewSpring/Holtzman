@@ -8,7 +8,7 @@ import {
 } from "../shared";
 
 type IHeader = {
-  override?: Object,
+  override?: React$Element<any>,
   personal: Object,
 };
 
@@ -26,7 +26,7 @@ type ITransactionLayout = {
   changeAccounts: Function,
   completeGift: Function,
   goToStepOne: Function,
-  header?: Object,
+  header?: React$Element<any>,
   payment: Object,
   personal: Object,
   savedAccount: Object,

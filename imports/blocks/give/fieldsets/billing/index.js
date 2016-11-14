@@ -5,12 +5,12 @@ import Layout from "./Layout";
 
 type IBilling = {
   data: Object,
-  children?: Object,
+  children?: React$Element<any>,
   save: Function,
   clear: Function,
   back: Function,
   next: Function,
-  header?: Object,
+  header?: React$Element<any>,
   states: Object[],
   countries: Object[],
 };

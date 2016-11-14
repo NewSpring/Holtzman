@@ -12,7 +12,7 @@ import {
 const DEFAULT_TOGGLES = ["Credit Card", "Bank Account"];
 
 type IHeader = {
-  override?: Object,
+  override?: React$Element<any>,
 };
 
 const Header = ({
@@ -69,8 +69,8 @@ const NextButton = ({
 
 type ILayout = {
   back: Function,
-  children?: Object,
-  header?: Object,
+  children?: React$Element<any>,
+  header?: React$Element<any>,
   formatExp: Function,
   next: Function,
   payment: Object,

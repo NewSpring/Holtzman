@@ -3,7 +3,7 @@
 import Forms from "../../../../components/forms";
 
 type IHeader = {
-  override?: Object,
+  override?: React$Element<any>,
 };
 
 const Header = ({ override }: IHeader) => {
@@ -53,9 +53,9 @@ const NextButton = ({
 type ILayout = {
   campus: Function,
   campuses: Object[],
-  children?: Object,
+  children?: React$Element<any>,
   firstName: Function,
-  header?: Object,
+  header?: React$Element<any>,
   isEmail: Function,
   lastName: Function,
   next: Function,

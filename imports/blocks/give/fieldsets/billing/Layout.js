@@ -52,10 +52,10 @@ const NextButton = ({
 type ILayout = {
   back: Function,
   billing: Object,
-  children?: Object,
+  children?: React$Element<any>,
   city: Function,
   countries: Object[],
-  header?: Object,
+  header?: React$Element<any>,
   next: Function,
   saveCountry: Function,
   saveState: Function,
