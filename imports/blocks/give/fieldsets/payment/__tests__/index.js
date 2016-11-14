@@ -237,6 +237,22 @@ it("formatExp returns 5 characters if greater than 5", () => {
   expect(result).toBe("12/12");
 });
 
+it("formatExp updates 1/ if current last number isn't a /", () => {
+  const wrapper = shallow(generateComponent({
+    data: {
+      payment: {
+        expiration: "1",
+      },
+    },
+  }));
+  const mockTarget = document.createElement("input");
+  mockTarget.id = "expiration";
+
+  const result = wrapper.instance().formatExp("1/", mockTarget);
+  expect(result.length).toBe(3);
+  expect(result).toBe("1//");
+});
+
 // XXX i'm not sure how this is useful.
 // seems like unintended functionality
 it("formatExp prepends `0` and appends `/` when only `/`", () => {
@@ -267,6 +283,16 @@ it("formatExp removes trailing slash when 4 numbers", () => {
   const result = wrapper.instance().formatExp("123/", mockTarget);
   expect(result.length).toBe(3);
   expect(result).toBe("123");
+});
+
+it("formatExp leaves it alone if fine", () => {
+  const wrapper = shallow(generateComponent());
+  const mockTarget = document.createElement("input");
+  mockTarget.id = "expiration";
+
+  const result = wrapper.instance().formatExp("12/34", mockTarget);
+  expect(result.length).toBe(5);
+  expect(result).toBe("12/34");
 });
 
 it("toggle changes the payment type to ach if not ach", () => {
