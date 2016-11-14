@@ -1,0 +1,42 @@
+exports[`test renders \`Change Payment Accounts\` and \`Enter New Payment\` if savedAccount 1`] = `
+<div
+  className="display-block soft-top text-left">
+  <h6
+    className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }>
+    Change Payment Accounts
+  </h6>
+  <br />
+  <h6
+    className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }>
+    Enter New Payment
+  </h6>
+</div>
+`;
+
+exports[`test renders \`Edit Contribution Details\` if no saved account 1`] = `
+<div
+  className="display-block soft-top text-left">
+  <h6
+    className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }>
+    Edit Contribution Details
+  </h6>
+</div>
+`;
