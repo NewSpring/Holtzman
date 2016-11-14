@@ -18,8 +18,8 @@ export default class Layout extends Component {
   }
 
   state = {
-    SubFundInstances: 1,
-    instances: [
+    SubFundInstances: 1, // number of subfunds to show
+    instances: [ // the tracked funds. The props.accounts which have had updates to value
       // {
       //   id: Number,
       //   accountId: Number
@@ -27,38 +27,47 @@ export default class Layout extends Component {
     ],
   }
 
-  update = (key, value, amount) => {
-    const getInstance = () => {
-      const instance = this.state.instances.filter((x) => (x.id === key));
+  // :boolean || undefined
+  instanceExists = (key) => {
+    const instance = this.state.instances.filter((x) => (x.id === key));
+    return instance && instance[0];
+  }
 
-      return instance && instance[0];
-    };
-
-    const instance = getInstance();
-    if (instance) {
+  /**
+   * update
+   * key: the index of the funds shown on the page (primary is 0)
+   * accountId: the account identifier
+   * amount: the amount to update the fund to
+   */
+  update = (key, accountId, amount) => {
+    if (this.instanceExists(key)) {
       const current = [...this.state.instances];
       const updated = current.map((x) => {
         if (x.id === key) {
-          return {
+          return { // update the one instance only
             id: key,
-            accountId: Number(value),
+            accountId: Number(accountId),
             amount,
           };
         }
 
+        // return the ones that aren't chaning
         return x;
       });
 
       this.setState({
         SubFundInstances: updated.length + 1,
-        instances: updated,
+        instances: updated, // updates with new amount
       });
     } else {
+      // cant have more SubFund instances than funds
       if (this.props.accounts.length === this.state.SubFundInstances) return;
+
+      // less SubFund instances than funds, so add another instance
       this.setState({
-        SubFundInstances: this.state.SubFundInstances + 1,
-        instances: [...this.state.instances, ...[
-          { id: key, accountId: Number(value), amount },
+        SubFundInstances: this.state.SubFundInstances + 1, // add a new SubFund component
+        instances: [...this.state.instances, ...[ // add here to track changes to the account value
+          { id: key, accountId: Number(accountId), amount },
         ]],
       });
     }
@@ -125,14 +134,18 @@ export default class Layout extends Component {
               let selectVal;
               let inputVal;
 
+              // checks if account.key is in state.instances[]
               const existingInstance = this.state.instances[key];
+              // if so, pull out the account id and $ value
               if (existingInstance) {
                 selectVal = existingInstance.accountId;
                 inputVal = existingInstance.amount;
               }
 
+              // array of account ids in state.instances
               const instanceAccounts = this.state.instances.map((x) => (x.accountId));
 
+              // array of
               const copiedAccounts = [...accounts].filter((x) => {
                 const alreadySelectedByThisInstance =
                   this.state.instances.filter((y) => (y.id === key));
