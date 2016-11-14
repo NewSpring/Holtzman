@@ -4,7 +4,11 @@ import Payment from "../";
 
 const defaultProps = {
   save: jest.fn(),
-  data: {},
+  data: {
+    payment: {
+      expiration: null,
+    },
+  },
   savedAccount: {},
   header: <span>header</span>,
   children: <span>child</span>,
@@ -192,4 +196,108 @@ it("validate ccv returns false if empty", () => {
 
   const result = wrapper.instance().validate("", mockTarget);
   expect(result).toBeFalsy();
+});
+
+it("saveData calls save if valid", () => {
+  const mockSave = jest.fn();
+  const wrapper = shallow(generateComponent({
+    save: mockSave,
+  }));
+  const mockTarget = document.createElement("input");
+  mockTarget.id = "accountNumber";
+
+  const result = wrapper.instance().saveData("test", mockTarget);
+  expect(mockSave).toHaveBeenCalledTimes(1);
+  expect(mockSave).toHaveBeenCalledWith({
+    payment: {
+      "accountNumber": "test",
+    }
+  });
+});
+
+it("saveData does not call save if invalid", () => {
+  const mockSave = jest.fn();
+  const wrapper = shallow(generateComponent({
+    save: mockSave,
+  }));
+  const mockTarget = document.createElement("input");
+  mockTarget.id = "accountNumber";
+
+  const result = wrapper.instance().saveData("", mockTarget);
+  expect(mockSave).toHaveBeenCalledTimes(0);
+});
+
+it("formatExp returns 5 characters if greater than 5", () => {
+  const wrapper = shallow(generateComponent());
+  const mockTarget = document.createElement("input");
+  mockTarget.id = "expiration";
+
+  const result = wrapper.instance().formatExp("12/123", mockTarget);
+  expect(result.length).toBe(5);
+  expect(result).toBe("12/12");
+});
+
+// XXX i'm not sure how this is useful.
+// seems like unintended functionality
+it("formatExp prepends `0` and appends `/` when only `/`", () => {
+  const wrapper = shallow(generateComponent());
+  const mockTarget = document.createElement("input");
+  mockTarget.id = "expiration";
+
+  const result = wrapper.instance().formatExp("/", mockTarget);
+  expect(result.length).toBe(3);
+  expect(result).toBe("0//");
+});
+
+it("formatExp appends trailing slash when 2 numbers", () => {
+  const wrapper = shallow(generateComponent());
+  const mockTarget = document.createElement("input");
+  mockTarget.id = "expiration";
+
+  const result = wrapper.instance().formatExp("12", mockTarget);
+  expect(result.length).toBe(3);
+  expect(result).toBe("12/");
+});
+
+it("formatExp removes trailing slash when 4 numbers", () => {
+  const wrapper = shallow(generateComponent());
+  const mockTarget = document.createElement("input");
+  mockTarget.id = "expiration";
+
+  const result = wrapper.instance().formatExp("123/", mockTarget);
+  expect(result.length).toBe(3);
+  expect(result).toBe("123");
+});
+
+it("toggle changes the payment type to ach if not ach", () => {
+  const mockSave = jest.fn();
+  const wrapper = shallow(generateComponent({
+    save: mockSave,
+  }));
+  wrapper.instance().toggle();
+  expect(mockSave).toHaveBeenCalledTimes(1);
+  expect(mockSave).toHaveBeenCalledWith({
+    payment: {
+      type: "ach",
+    },
+  });
+});
+
+it("toggle changes the payment type to cc if ach", () => {
+  const mockSave = jest.fn();
+  const wrapper = shallow(generateComponent({
+    data: {
+      payment: {
+        type: "ach",
+      },
+    },
+    save: mockSave,
+  }));
+  wrapper.instance().toggle();
+  expect(mockSave).toHaveBeenCalledTimes(1);
+  expect(mockSave).toHaveBeenCalledWith({
+    payment: {
+      type: "cc",
+    },
+  });
 });
