@@ -28,7 +28,7 @@ type ISubFund = {
   donate: boolean,
 };
 
-export class SubFund extends Component {
+class SubFund extends Component {
   props: ISubFund;
 
   state = {
@@ -208,3 +208,7 @@ export class SubFund extends Component {
 
 
 export default withRedux(SubFund);
+
+export {
+  SubFund as SubFundWithoutData,
+};
