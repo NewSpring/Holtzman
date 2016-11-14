@@ -1,0 +1,424 @@
+exports[`Header renders default if no override 1`] = `
+<h4
+  className="text-center">
+  Payment Details
+</h4>
+`;
+
+exports[`Header renders override if override 1`] = `
+<span>
+  header
+</span>
+`;
+
+exports[`Layout renders custom toggles if passed 1`] = `
+<div>
+  <div
+    className="push-double@lap-and-up push">
+    <span>
+      header
+    </span>
+  </div>
+  <span>
+    children
+  </span>
+  <div
+    className="toggle push-bottom soft-sides"
+    style={
+      Object {
+        "backgroundColor": "#fff",
+      }
+    }>
+    <div
+      className="transition text-center toggle__item"
+      data-toggle={0}
+      onClick={[Function]}
+      style={
+        Object {
+          "width": "50%",
+        }
+      }>
+      Meow
+    </div>
+    <div
+      className="transition text-center toggle__item"
+      data-toggle={1}
+      onClick={[Function]}
+      style={
+        Object {
+          "width": "50%",
+        }
+      }>
+      Woof
+    </div>
+    <div
+      className="grid text-left toggle-arrow soft-sides">
+      <div
+        className="transition grid__item hard one-half toggle-arrow__item"
+        style={
+          Object {
+            "marginLeft": "0%",
+          }
+        } />
+    </div>
+  </div>
+  <div
+    className="soft">
+    <div>
+      <div
+        className="input"
+        data-spec="input-wrapper"
+        style={Object {}}>
+        <label
+          htmlFor="cardNumber"
+          style={Object {}}>
+          Card Number
+        </label>
+        <input
+          className={undefined}
+          data-spec="input"
+          defaultValue={undefined}
+          disabled={undefined}
+          id="cardNumber"
+          maxLength=""
+          name="billing-cc-number"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Card Number"
+          style={Object {}}
+          type="tel" />
+        <div
+          className="locked locked-right soft-double-right locked-top"
+          style={
+            Object {
+              "top": "-3px",
+            }
+          } />
+      </div>
+      <div
+        className="grid">
+        <div
+          className="grid__item one-half">
+          <div
+            className="input"
+            data-spec="input-wrapper"
+            style={Object {}}>
+            <label
+              htmlFor="expiration"
+              style={Object {}}>
+              Exp (MM/YY)
+            </label>
+            <input
+              className={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id="expiration"
+              maxLength=""
+              name="billing-cc-exp"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Exp (MM/YY)"
+              style={Object {}}
+              type="tel" />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half">
+          <div
+            className="input"
+            data-spec="input-wrapper"
+            style={Object {}}>
+            <label
+              htmlFor="ccv"
+              style={Object {}}>
+              CCV
+            </label>
+            <input
+              className={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id="ccv"
+              maxLength=""
+              name="billing-cvv"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="CCV"
+              style={Object {}}
+              type="tel" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="input checkbox"
+      data-spec="input-wrapper">
+      <h6
+        className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+        <small
+          data-spec="input-label">
+          Save this payment for future contributions
+        </small>
+      </h6>
+      <input
+        className={undefined}
+        data-spec="input"
+        defaultChecked=""
+        disabled={undefined}
+        id="savePayment"
+        name="savePayment"
+        onClick={[Function]}
+        style={
+          Object {
+            "width": 0,
+          }
+        }
+        type="checkbox" />
+      <label
+        htmlFor="savePayment"
+        style={Object {}} />
+    </div>
+  </div>
+  <div>
+    <a
+      className="btn--small btn--dark-tertiary display-inline-block"
+      href=""
+      onClick={[Function]}
+      tabIndex={-1}>
+      Back
+    </a>
+    <button
+      className="push-left btn--disabled"
+      disabled={true}
+      onClick={[Function]}
+      type="submit">
+      Next
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Layout renders default toggles by default 1`] = `
+<div>
+  <div
+    className="push-double@lap-and-up push">
+    <span>
+      header
+    </span>
+  </div>
+  <span>
+    children
+  </span>
+  <div
+    className="toggle push-bottom soft-sides"
+    style={
+      Object {
+        "backgroundColor": "#fff",
+      }
+    }>
+    <div
+      className="transition text-center toggle__item"
+      data-toggle={0}
+      onClick={[Function]}
+      style={
+        Object {
+          "width": "50%",
+        }
+      }>
+      Credit Card
+    </div>
+    <div
+      className="transition text-center toggle__item"
+      data-toggle={1}
+      onClick={[Function]}
+      style={
+        Object {
+          "width": "50%",
+        }
+      }>
+      Bank Account
+    </div>
+    <div
+      className="grid text-left toggle-arrow soft-sides">
+      <div
+        className="transition grid__item hard one-half toggle-arrow__item"
+        style={
+          Object {
+            "marginLeft": "0%",
+          }
+        } />
+    </div>
+  </div>
+  <div
+    className="soft">
+    <div>
+      <div
+        className="input"
+        data-spec="input-wrapper"
+        style={Object {}}>
+        <label
+          htmlFor="cardNumber"
+          style={Object {}}>
+          Card Number
+        </label>
+        <input
+          className={undefined}
+          data-spec="input"
+          defaultValue={undefined}
+          disabled={undefined}
+          id="cardNumber"
+          maxLength=""
+          name="billing-cc-number"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Card Number"
+          style={Object {}}
+          type="tel" />
+        <div
+          className="locked locked-right soft-double-right locked-top"
+          style={
+            Object {
+              "top": "-3px",
+            }
+          } />
+      </div>
+      <div
+        className="grid">
+        <div
+          className="grid__item one-half">
+          <div
+            className="input"
+            data-spec="input-wrapper"
+            style={Object {}}>
+            <label
+              htmlFor="expiration"
+              style={Object {}}>
+              Exp (MM/YY)
+            </label>
+            <input
+              className={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id="expiration"
+              maxLength=""
+              name="billing-cc-exp"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Exp (MM/YY)"
+              style={Object {}}
+              type="tel" />
+          </div>
+        </div>
+        <div
+          className="grid__item one-half">
+          <div
+            className="input"
+            data-spec="input-wrapper"
+            style={Object {}}>
+            <label
+              htmlFor="ccv"
+              style={Object {}}>
+              CCV
+            </label>
+            <input
+              className={undefined}
+              data-spec="input"
+              defaultValue={undefined}
+              disabled={undefined}
+              id="ccv"
+              maxLength=""
+              name="billing-cvv"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="CCV"
+              style={Object {}}
+              type="tel" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="input checkbox"
+      data-spec="input-wrapper">
+      <h6
+        className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+        <small
+          data-spec="input-label">
+          Save this payment for future contributions
+        </small>
+      </h6>
+      <input
+        className={undefined}
+        data-spec="input"
+        defaultChecked=""
+        disabled={undefined}
+        id="savePayment"
+        name="savePayment"
+        onClick={[Function]}
+        style={
+          Object {
+            "width": 0,
+          }
+        }
+        type="checkbox" />
+      <label
+        htmlFor="savePayment"
+        style={Object {}} />
+    </div>
+  </div>
+  <div>
+    <a
+      className="btn--small btn--dark-tertiary display-inline-block"
+      href=""
+      onClick={[Function]}
+      tabIndex={-1}>
+      Back
+    </a>
+    <button
+      className="push-left btn--disabled"
+      disabled={true}
+      onClick={[Function]}
+      type="submit">
+      Next
+    </button>
+  </div>
+</div>
+`;
+
+exports[`NextButton renders disabled styles if no ach or cc 1`] = `
+<button
+  className="push-left btn--disabled"
+  disabled={true}
+  onClick={[Function]}
+  type="submit">
+  Next
+</button>
+`;
+
+exports[`NextButton renders enabled styles if ach 1`] = `
+<button
+  className="push-left btn"
+  disabled={false}
+  onClick={[Function]}
+  type="submit">
+  Next
+</button>
+`;
+
+exports[`NextButton renders enabled styles if cc 1`] = `
+<button
+  className="push-left btn"
+  disabled={false}
+  onClick={[Function]}
+  type="submit">
+  Next
+</button>
+`;

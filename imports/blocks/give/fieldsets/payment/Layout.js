@@ -168,3 +168,8 @@ const Layout = ({
 );
 
 export default Layout;
+
+export {
+  Header,
+  NextButton,
+};
