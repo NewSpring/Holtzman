@@ -77,6 +77,7 @@ type ICheckoutButtons = {
 };
 
 export class CheckoutButton extends Component {
+
   props: ICheckoutButtons;
 
   state = {
