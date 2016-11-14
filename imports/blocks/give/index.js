@@ -29,7 +29,7 @@ class Give extends Component {
     this.props.dispatch(giveActions.setProgress(4));
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Object) {
     if (!nextProps.data.loading && this.props.data.loading) {
       this.updateData(nextProps);
     }
@@ -126,11 +126,11 @@ class Give extends Component {
     this.props.dispatch(modal.render(OnBoard, props));
   }
 
-  save = (...args) => {
+  save = (...args: any) => {
     this.props.dispatch(giveActions.save(...args));
   }
 
-  clear = (...args) => {
+  clear = (...args: any) => {
     this.props.dispatch(giveActions.clear(...args));
   }
 
@@ -208,3 +208,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default withCheckout(connect(mapStateToProps)(Give));
+
+export {
+  Give,
+};
