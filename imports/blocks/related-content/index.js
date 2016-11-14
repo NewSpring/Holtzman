@@ -16,6 +16,7 @@ const RELATED_CONTENT_QUERY = gql`
       entryId: id
       id
       title
+      channel: channelName
       channelName
       parent {
         entryId: id
@@ -58,10 +59,7 @@ type IRelatedContent = {
   title: string,
 };
 
-// $FlowMeteor
-@connect()
-@withContent
-export default class RelatedContent extends Component {
+export class Template extends Component {
   props: IRelatedContent
 
   static defaultProps = {
@@ -81,3 +79,6 @@ export default class RelatedContent extends Component {
     );
   }
 }
+
+const RelatedContent = withContent(connect()(Template));
+export default RelatedContent;
