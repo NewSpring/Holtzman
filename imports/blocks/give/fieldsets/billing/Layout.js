@@ -7,7 +7,7 @@ import {
 } from "../shared";
 
 type IHeader = {
-  override?: Object,
+  override?: React$Element<any>,
 };
 
 const Header = ({ override }: IHeader) => {
@@ -155,3 +155,8 @@ const Layout = ({
 );
 
 export default Layout;
+
+export {
+  Header,
+  NextButton,
+};
