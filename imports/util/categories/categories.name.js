@@ -9,6 +9,8 @@ function categoryName(contentItem) {
     case "newspring_albums":
       return "Albums";
     default:
+      // XXX this handles the case of `articless` but not `articles`
+      // i think this is wrong
       if (category.charAt(category.length - 2) === "s") {
         // capitlize first letter and remove "s" from end
         contentCategory += category.substr(1, category.length - 2);
