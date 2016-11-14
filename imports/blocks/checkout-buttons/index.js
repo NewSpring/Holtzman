@@ -74,10 +74,9 @@ type ICheckoutButtons = {
   value: string,
 };
 
-// $FlowMeteor
-@connect(mapStateToProps)
-@withSavedPayments
-export default class CheckoutButtons extends Component {
+export const withState = connect(mapStateToProps);
+
+class CheckoutButtons extends Component {
   props: ICheckoutButtons;
 
   state = {
@@ -188,3 +187,9 @@ export default class CheckoutButtons extends Component {
     );
   }
 }
+
+export default withSavedPayments(withState(CheckoutButtons));
+
+export {
+  CheckoutButtons as CheckoutButtonsWithoutData,
+};
