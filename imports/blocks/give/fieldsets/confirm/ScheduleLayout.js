@@ -106,3 +106,7 @@ const ScheduleLayout = ({
 };
 
 export default ScheduleLayout;
+
+export {
+  Header,
+};
