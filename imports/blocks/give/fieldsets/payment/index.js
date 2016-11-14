@@ -90,24 +90,32 @@ export default class Payment extends Component {
 
     const str = `${s}`;
 
+    // prevent input longer than 5 characters
+    // 12/123 becomes 12/12
     if (str.length > 5) return save(str.slice(0, 5));
 
     const copy = str;
     const lastNumber = copy.slice(-1);
     const currentLastNumber = current.slice(-1);
 
+    // prepend 0 if only character is `/`
+    // XXX i'm not sure how this is useful?
     if (lastNumber === "/" && str.length === 1) {
       return save(`0${str}/`);
     }
 
+    // 1/ becomes 1/
     if (lastNumber === "/" && str.length === 2 && currentLastNumber !== "/") {
       return save(`${str}/`);
     }
 
+    // append `/` if two numbers present
+    // 12 becomes 12/
     if (str.length === 2 && lastNumber !== "/" && currentLastNumber !== "/") {
       return save(`${str}/`);
     }
 
+    // remove trailing `/`
     if (str.length === 4 && (lastNumber === "/")) {
       return save(str.slice(0, 3));
     }
