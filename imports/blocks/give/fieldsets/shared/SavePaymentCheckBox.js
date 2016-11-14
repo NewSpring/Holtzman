@@ -1,5 +1,13 @@
-import { PropTypes } from "react";
+// @flow
 import Forms from "../../../../components/forms";
+
+type ISavePaymentCheckBox = {
+  savedAccount: Object,
+  savePayment: Function,
+  shouldSaveState: boolean,
+  schedules: Object,
+  transactionType: string,
+};
 
 const SavePaymentCheckBox = ({
   savedAccount,
@@ -7,7 +15,7 @@ const SavePaymentCheckBox = ({
   shouldSaveState,
   schedules,
   transactionType,
-}) => {
+}: ISavePaymentCheckBox) => {
   if (
     !savedAccount.id &&
     transactionType !== "guest" &&
@@ -24,14 +32,6 @@ const SavePaymentCheckBox = ({
     );
   }
   return null;
-};
-
-SavePaymentCheckBox.propTypes = {
-  savedAccount: PropTypes.object,
-  savePayment: PropTypes.func,
-  shouldSaveState: PropTypes.bool,
-  schedules: PropTypes.array,
-  transactionType: PropTypes.string,
 };
 
 export default SavePaymentCheckBox;

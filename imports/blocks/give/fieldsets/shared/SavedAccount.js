@@ -1,12 +1,18 @@
-import { PropTypes } from "react";
+// @flow
 import AccountType from "../../../../components/accountType";
 import { AccountNumber } from "./";
+
+type ISavedAccount = {
+  account: Object,
+  choose: Function,
+  savedAccount: Object,
+};
 
 const SavedAccount = ({
   account,
   choose,
   savedAccount,
-}) => (
+}: ISavedAccount) => (
   <div
     style={{ position: "relative", cursor: "pointer" }}
     id={account.id}
@@ -60,11 +66,5 @@ const SavedAccount = ({
     </div>
   </div>
 );
-
-SavedAccount.propTypes = {
-  account: PropTypes.object,
-  choose: PropTypes.func,
-  savedAccount: PropTypes.object,
-};
 
 export default SavedAccount;

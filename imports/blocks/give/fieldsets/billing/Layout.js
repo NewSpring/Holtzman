@@ -1,11 +1,16 @@
-import { PropTypes } from "react";
+// @flow
+
 import Forms from "../../../../components/forms";
 import {
   StateOrTerritory,
   Zip,
 } from "../shared";
 
-const Header = ({ override }) => {
+type IHeader = {
+  override?: Object,
+};
+
+const Header = ({ override }: IHeader) => {
   if (override) return override;
   return (
     <h4 className="text-center">
@@ -14,14 +19,15 @@ const Header = ({ override }) => {
   );
 };
 
-Header.propTypes = {
-  override: PropTypes.object,
+type INextButton = {
+  billing: Object,
+  next: Function,
 };
 
 const NextButton = ({
   billing,
   next,
-}) => {
+}: INextButton) => {
   const btnClasses = ["push-left"];
   let disabled = false;
   if (!billing.streetAddress || !billing.city) {
@@ -43,9 +49,20 @@ const NextButton = ({
   );
 };
 
-NextButton.propTypes = {
-  billing: PropTypes.object,
-  next: PropTypes.func,
+type ILayout = {
+  back: Function,
+  billing: Object,
+  children?: React$Element<any>,
+  city: Function,
+  countries: Object[],
+  header?: React$Element<any>,
+  next: Function,
+  saveCountry: Function,
+  saveState: Function,
+  states: Object[],
+  streetAddress: Function,
+  streetAddress2: Function,
+  zip: Function,
 };
 
 const Layout = ({
@@ -62,7 +79,7 @@ const Layout = ({
   streetAddress,
   streetAddress2,
   zip,
-}) => (
+}: ILayout) => (
   <div>
     <div className="push-double@lap-and-up push">
       <Header override={header} />
@@ -136,21 +153,5 @@ const Layout = ({
 
   </div>
 );
-
-Layout.propTypes = {
-  back: PropTypes.func,
-  billing: PropTypes.object,
-  children: PropTypes.object,
-  city: PropTypes.func,
-  countries: PropTypes.array,
-  header: PropTypes.object,
-  next: PropTypes.func,
-  saveCountry: PropTypes.func,
-  saveState: PropTypes.func,
-  states: PropTypes.array,
-  streetAddress: PropTypes.func,
-  streetAddress2: PropTypes.func,
-  zip: PropTypes.func,
-};
 
 export default Layout;

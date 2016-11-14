@@ -1,11 +1,18 @@
-import { PropTypes } from "react";
+// @flow
+
+type IButtonText = {
+  payment: Object,
+  savedAccount: Object,
+  schedules: Object,
+  scheduleToRecover: boolean,
+};
 
 const ButtonText = ({
   payment,
   savedAccount,
   schedules,
   scheduleToRecover,
-}) => {
+}: IButtonText) => {
   let paymentInfo = payment;
 
   if (!paymentInfo.accountNumber && !paymentInfo.cardNumber) {
@@ -24,13 +31,6 @@ const ButtonText = ({
   }
 
   return <span>{text}</span>;
-};
-
-ButtonText.propTypes = {
-  payment: PropTypes.object,
-  savedAccount: PropTypes.object,
-  schedules: PropTypes.object,
-  scheduleToRecover: PropTypes.bool,
 };
 
 export default ButtonText;

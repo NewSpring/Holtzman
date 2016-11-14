@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+// @flow
 import {
   ButtonText,
   cardType,
@@ -7,13 +7,21 @@ import {
 
 import { isIOS } from "../../../../util";
 
+type IActionButton = {
+  completeGift: Function,
+  payment: Object,
+  savedAccount: Object,
+  schedules: Object,
+  scheduleToRecover: boolean,
+};
+
 const ActionButton = ({
   completeGift,
   payment,
   savedAccount,
   schedules,
   scheduleToRecover,
-}) => {
+}: IActionButton) => {
   if (isIOS()) {
     return (
       <div>
@@ -50,14 +58,6 @@ const ActionButton = ({
       />
     </button>
   );
-};
-
-ActionButton.propTypes = {
-  completeGift: PropTypes.func,
-  payment: PropTypes.object,
-  savedAccount: PropTypes.object,
-  schedules: PropTypes.array,
-  scheduleToRecover: PropTypes.bool,
 };
 
 export default ActionButton;

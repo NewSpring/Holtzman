@@ -1,5 +1,4 @@
-import { PropTypes } from "react";
-
+// @flow
 import Controls from "../../components/controls";
 import Forms from "../../components/forms";
 
@@ -9,11 +8,28 @@ import Err from "./Err";
 import Success from "./Success";
 import { monetize } from "./fieldsets/shared";
 
-const FORM_STEPS = {
-  1: Personal,
-  2: Billing,
-  3: Payment,
-  4: Confirm,
+const FORM_STEPS = [
+  Personal,
+  Billing,
+  Payment,
+  Confirm,
+];
+
+type ILayout = {
+  back: Function,
+  campuses: Object[],
+  changeSavedAccount: Function,
+  countries: Object[],
+  clear: Function,
+  clearData: Function,
+  give: Object,
+  goToAccounts: Function,
+  goToStepOne: Function,
+  next: Function,
+  onSubmit: Function,
+  save: Function,
+  savedPayments: Object[],
+  states: Object[],
 };
 
 let copiedSchedules;
@@ -33,7 +49,7 @@ const Layout = ({
   save,
   savedPayments,
   states,
-}) => {
+}: ILayout) => {
   const {
     data,
     url,
@@ -70,7 +86,7 @@ const Layout = ({
     }
   }
 
-  const Step = FORM_STEPS[step];
+  const Step = FORM_STEPS[step - 1];
 
   return (
     <Forms.Form
@@ -109,23 +125,6 @@ const Layout = ({
       </Step>
     </Forms.Form>
   );
-};
-
-Layout.propTypes = {
-  back: PropTypes.func,
-  campuses: PropTypes.array,
-  changeSavedAccount: PropTypes.func,
-  countries: PropTypes.array,
-  clear: PropTypes.func,
-  clearData: PropTypes.func,
-  give: PropTypes.object,
-  goToAccounts: PropTypes.func,
-  goToStepOne: PropTypes.func,
-  next: PropTypes.func,
-  onSubmit: PropTypes.func,
-  save: PropTypes.func,
-  savedPayments: PropTypes.object,
-  states: PropTypes.array,
 };
 
 export default Layout;
