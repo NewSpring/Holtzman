@@ -2,7 +2,7 @@ import { shallow, mount } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { modal, give as giveActions } from "../../../store";
 import OnBoard from "../../../blocks/accounts";
-import { Give } from "../";
+import { GiveWithoutData as Give } from "../";
 
 const defaultProps = {
   give: {

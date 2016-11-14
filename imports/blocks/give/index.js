@@ -210,5 +210,5 @@ const mapStateToProps = (state) => ({
 export default withCheckout(connect(mapStateToProps)(Give));
 
 export {
-  Give,
+  Give as GiveWithoutData,
 };
