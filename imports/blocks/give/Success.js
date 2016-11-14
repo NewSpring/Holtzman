@@ -124,3 +124,12 @@ const Success = ({
 };
 
 export default Success;
+
+export {
+  ScheduleThanks,
+  OneTimeThanks,
+  AdditionalMessage,
+  CreateAccountFromGuest,
+  ContactLink,
+  ContactUs,
+};
