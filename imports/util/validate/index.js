@@ -2,6 +2,7 @@ import { creditCVV, creditCard, creditExpiry } from "./credit-card";
 
 const Validate = {};
 
+// XXX deprecated loading method
 Validate.addValidator = (name, handler) => {
   if (Validate[name]) {
     throw new Error(
