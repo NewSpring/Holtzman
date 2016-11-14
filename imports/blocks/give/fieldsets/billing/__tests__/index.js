@@ -106,6 +106,32 @@ it("saveState calls save when value", () => {
   });
 });
 
+it("saveCountry calls clear when no value", () => {
+  const mockClear = jest.fn();
+  const wrapper = shallow(generateComponent({
+    clear: mockClear,
+  }));
+  const result = wrapper.instance().saveCountry("");
+  expect(result).toBeTruthy();
+  expect(mockClear).toHaveBeenCalledTimes(1);
+  expect(mockClear).toHaveBeenCalledWith("billing", "country");
+});
+
+it("saveCountry calls save when value", () => {
+  const mockSave = jest.fn();
+  const wrapper = shallow(generateComponent({
+    save: mockSave,
+  }));
+  const result = wrapper.instance().saveCountry("test");
+  expect(result).toBeTruthy();
+  expect(mockSave).toHaveBeenCalledTimes(1);
+  expect(mockSave).toHaveBeenCalledWith({
+    billing: {
+      country: "test",
+    },
+  });
+});
+
 it("city calls clear when no value", () => {
   const mockClear = jest.fn();
   const wrapper = shallow(generateComponent({
