@@ -84,7 +84,7 @@ export default class Confirm extends Component {
       const { id } = target;
       let act = {};
       for (const account of this.props.savedAccounts) {
-        if (Number(account.id) === Number(id)) {
+        if (String(account.id) === String(id)) {
           act = account;
           break;
         }
