@@ -4,23 +4,41 @@ import { reset, startBuffering } from "aphrodite/lib/inject";
 import { Meteor } from "meteor/meteor";
 import { CartContainer } from "../index";
 
-beforeEach(() => {
-  reset();
-  startBuffering();
-});
-
-afterEach(() => {
-  reset();
-});
+export const sampleAccount = {
+  id: 180,
+  name: "Step Up",
+}
 
 describe("CartContainer", () => {
 
-  it("renders the default component", () => {
+  beforeEach(() => {
+    reset();
+    startBuffering();
+  });
+
+  afterEach(() => {
+    reset();
+  });
+
+  it( "renders offline if no props exist", () => {
     const functionMock = jest.fn();
 
     const tree = shallow(
       <CartContainer
-        accounts={{map: functionMock}}
+        // first thing called on new CartContainers
+        clearTransactions={functionMock}
+      />
+    );
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
+  it("renders the default component", () => {
+    const functionMock = jest.fn();
+    const accountsMapMock = jest.fn();
+
+    const wrapper = shallow(
+      <CartContainer
+        accounts={functionMock}
         alive={true}
         addTransactions={functionMock}
         clearAllSchedulesExcept={functionMock}
@@ -30,38 +48,27 @@ describe("CartContainer", () => {
         removeSchedule={functionMock}
         saveSchedule={functionMock}
         setTransactionType={functionMock}
-        text=""
+        text={""}
       />
     );
 
-    // wrapper.setProps({
-    //   accounts: {
-    //     ...accountsMock,
-    //     authorized: true,
-    //   },
-    // });
+    wrapper.setProps({
+      map: accountsMock.mockReturnValue({...sampleAccount}),
+    });
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
 });
 
-const mockAccountsStore = (overrides) => {
-  const defaults = {
-    data: {},
-    errors: {},
-    success: false,
-    forgot: false,
-    authorized: false,
-    person: {},
-    showWelcome: false,
-    alternateAccounts: {},
-    peopleWithoutAccountEmails: {},
-    resettingAccount: false,
-  };
+// const mockAccountMap = (overrides) => {
+//   const defaults = {
+//     id: 180,
+//     name: "Step Up",
+//   };
 
-  return {
-    ...defaults,
-    ...overrides,
-  };
-};
+//   return {
+//     ...defaults,
+//     ...overrides,
+//   };
+// };
