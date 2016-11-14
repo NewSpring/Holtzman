@@ -1,21 +1,20 @@
-/* eslint-disable max-len */
-import { Component, PropTypes } from "react";
-
+// @flow
+import { Component } from "react";
+import { monetize } from "../../util/format/currency";
 import Forms from "../../components/forms";
-
 import CheckoutButtons from "../checkout-buttons";
+import SubFund from "./Subfund";
 
-import SubFund from "./Subfund"; //eslint-disable-line
+type ILayout = {
+  accounts: Object[],
+  preFill: Function,
+  total: number,
+  donate: boolean,
+}
 
 export default class Layout extends Component {
 
-  static propTypes = {
-    accounts: PropTypes.array, // eslint-disable-line
-    preFill: PropTypes.func,
-    total: PropTypes.number,
-    monentize: PropTypes.func,
-    donate: PropTypes.bool,
-  }
+  props: ILayout;
 
   state = {
     SubFundInstances: 1,
@@ -27,7 +26,7 @@ export default class Layout extends Component {
     ],
   }
 
-  update = (key, value, amount) => {
+  update = (key: number, value: string, amount: number) => {
     const getInstance = () => {
       const instance = this.state.instances.filter((x) => (x.id === key));
 
@@ -64,7 +63,7 @@ export default class Layout extends Component {
     }
   }
 
-  remove = (key) => {
+  remove = (key: number) => {
     let newInstances = this.state.instances.filter((x) => (x.id !== key));
 
     // if an instance is removed and that instance is not at the end
@@ -102,7 +101,6 @@ export default class Layout extends Component {
       accounts,
       preFill,
       total,
-      monentize,
       donate,
     } = this.props;
 
@@ -174,7 +172,7 @@ export default class Layout extends Component {
               );
             })}
             <h3 className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">so my total is</h3>
-            <h3 className="display-inline-block text-brand push-half-bottom">{monentize(total, true)}</h3>
+            <h3 className="display-inline-block text-brand push-half-bottom">{monetize(total, true)}</h3>
           </div>
 
           <div className="push-top">
