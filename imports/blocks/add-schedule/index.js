@@ -62,6 +62,8 @@ class CartContainer extends Component {
           fundLabel: existing.details[0].account.name,
           frequency: existing.frequency,
           amount: Number(`${existing.details[0].amount}`.replace(/[^0-9\.]+/g, "")),
+          // XXX add type for {existing}
+          startDate: existing.start,
         });
       }
     }
