@@ -1,4 +1,3 @@
-import renderer from "react-test-renderer";
 import { cardType } from "../";
 
 it("should return null if nothing found", () => {
