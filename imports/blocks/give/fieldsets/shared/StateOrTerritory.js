@@ -1,11 +1,17 @@
-import { PropTypes } from "react";
+// @flow
 import Forms from "../../../../components/forms";
+
+type IStateOrTerritory = {
+  billing: Object,
+  states: Object[],
+  saveState: Function,
+};
 
 const StateOrTerritory = ({
   billing,
   states,
   saveState,
-}) => {
+}: IStateOrTerritory) => {
   if (!billing.country || billing.country === "US" || billing.country === "CA") {
     return (
       <div className="grid__item one-half">
@@ -22,12 +28,6 @@ const StateOrTerritory = ({
     );
   }
   return null;
-};
-
-StateOrTerritory.propTypes = {
-  billing: PropTypes.object,
-  states: PropTypes.array,
-  saveState: PropTypes.func,
 };
 
 export default StateOrTerritory;

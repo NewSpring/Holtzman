@@ -1,11 +1,16 @@
-import { PropTypes } from "react";
+// @flow
+
 import { Error } from "../../components/icons";
 
 const ERROR_HEADING = "Uh Oh! Looks like there was a problem processing your contribution!";
 const STEP_ONE_MESSAGE = "Try Again";
 const CONTACT_MESSAGE = "If you would like a member of our customer support team to follow up with you regarding this error, click";
 
-const StepOneAction = ({ goToStepOne }) => {
+type IStepOneAction = {
+  goToStepOne: Function,
+};
+
+const StepOneAction = ({ goToStepOne }: IStepOneAction) => {
   if (!goToStepOne) return null;
   return (
     <div className="one-whole text-center soft-ends">
@@ -16,17 +21,13 @@ const StepOneAction = ({ goToStepOne }) => {
   );
 };
 
-StepOneAction.propTypes = {
-  goToStepOne: PropTypes.function,
+type IAdditionalMessage = {
+  additionalMessage?: string,
 };
 
-const AdditionalMessage = ({ additionalMessage }) => {
+const AdditionalMessage = ({ additionalMessage }: IAdditionalMessage) => {
   if (!additionalMessage) return null;
   return <h5>{additionalMessage}</h5>;
-};
-
-AdditionalMessage.propTypes = {
-  additionalMessage: PropTypes.string,
 };
 
 const ContactLink = () => (
@@ -47,7 +48,13 @@ const ContactUs = () => (
   </p>
 );
 
-const Err = ({ msg, goToStepOne, additionalMessage }) => (
+type IErr = {
+  msg: string,
+  goToStepOne: Function,
+  additionalMessage?: string,
+};
+
+const Err = ({ msg, goToStepOne, additionalMessage }: IErr) => (
   <div className="soft soft-double-ends push-double-top one-whole text-center">
     <div className="push-double-top">
       <Error />
@@ -64,11 +71,5 @@ const Err = ({ msg, goToStepOne, additionalMessage }) => (
     </div>
   </div>
 );
-
-Err.propTypes = {
-  msg: PropTypes.string.isRequired,
-  goToStepOne: PropTypes.func.isRequired,
-  additionalMessage: PropTypes.string.isRequired,
-};
 
 export default Err;

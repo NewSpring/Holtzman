@@ -1,7 +1,12 @@
-import { PropTypes } from "react";
+// @flow
+
 import Forms from "../../../../components/forms";
 
-const Header = ({ override }) => {
+type IHeader = {
+  override?: React$Element<any>,
+};
+
+const Header = ({ override }: IHeader) => {
   if (override) return override;
   return (
     <h4 className="text-center">
@@ -10,14 +15,15 @@ const Header = ({ override }) => {
   );
 };
 
-Header.propTypes = {
-  override: PropTypes.object,
+type INextButton = {
+  personal: Object,
+  next: Function,
 };
 
 const NextButton = ({
   personal,
   next,
-}) => {
+}: INextButton) => {
   const btnClasses = [];
   let disabled = false;
   if (
@@ -44,9 +50,16 @@ const NextButton = ({
   );
 };
 
-NextButton.propTypes = {
-  personal: PropTypes.object,
-  next: PropTypes.func,
+type ILayout = {
+  campus: Function,
+  campuses: Object[],
+  children?: React$Element<any>,
+  firstName: Function,
+  header?: React$Element<any>,
+  isEmail: Function,
+  lastName: Function,
+  next: Function,
+  personal: Object,
 };
 
 const Layout = ({
@@ -59,7 +72,7 @@ const Layout = ({
   lastName,
   next,
   personal,
-}) => (
+}: ILayout) => (
   <div>
     <div className="push-double@lap-and-up push">
       <Header override={header} />
@@ -118,17 +131,5 @@ const Layout = ({
     />
   </div>
 );
-
-Layout.propTypes = {
-  campus: PropTypes.func,
-  campuses: PropTypes.array,
-  children: PropTypes.object,
-  firstName: PropTypes.func,
-  header: PropTypes.func,
-  isEmail: PropTypes.func,
-  lastName: PropTypes.func,
-  next: PropTypes.func,
-  personal: PropTypes.object,
-};
 
 export default Layout;

@@ -1,5 +1,8 @@
+// @flow
+
+// $FlowMeteor
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 import cloneDeep from "lodash.clonedeep";
 
 import { openUrl } from "../../../../util/inAppLink";
@@ -8,29 +11,30 @@ import TransactionLayout from "./TransactionLayout";
 import ScheduleLayout from "./ScheduleLayout";
 import PaymentOptionsLayout from "./PaymentOptionsLayout";
 
-export default class Confirm extends Component {
+type IConfirm = {
+  data: Object,
+  transactions: Object,
+  total: number,
+  back: Function,
+  goToStepOne: Function,
+  header?: React$Element<any>,
+  url: string,
+  clearData: Function,
+  savedAccount: Object,
+  savedAccounts: Object[],
+  changeSavedAccount: Function,
+  scheduleToRecover: boolean,
+  schedules: Object,
+}
 
-  static propTypes = {
-    data: PropTypes.object.isRequired,
-    transactions: PropTypes.object.isRequired,
-    total: PropTypes.number.isRequired,
-    back: PropTypes.func.isRequired,
-    goToStepOne: PropTypes.func.isRequired,
-    header: PropTypes.string,
-    url: PropTypes.string.isRequired,
-    clearData: PropTypes.func.isRequired,
-    savedAccount: PropTypes.object.isRequired,
-    savedAccounts: PropTypes.array.isRequired,
-    changeSavedAccount: PropTypes.func.isRequired,
-    scheduleToRecover: PropTypes.bool,
-    schedules: PropTypes.object,
-  }
+export default class Confirm extends Component {
+  props: IConfirm;
 
   state = {
     changePayments: false,
   }
 
-  completeGift = (e) => {
+  completeGift = (e: Event) => {
     e.preventDefault();
     // deep clone
     const props = cloneDeep(this.props);
@@ -57,6 +61,7 @@ export default class Confirm extends Component {
     );
 
     // ensure trailing slash
+    // $FlowMeteor
     let rootUrl = __meteor_runtime_config__.ROOT_URL;
     if (rootUrl[rootUrl.length - 1] !== "/") {
       rootUrl = `${rootUrl}/`;
@@ -71,22 +76,25 @@ export default class Confirm extends Component {
     );
   }
 
-  choose = (e) => {
+  choose = (e: Event) => {
     e.preventDefault();
 
-    const { id } = e.currentTarget;
-    let act = {};
-    for (const account of this.props.savedAccounts) {
-      if (Number(account.id) === Number(id)) {
-        act = account;
-        break;
+    const target = e.currentTarget;
+    if (target instanceof HTMLInputElement) {
+      const { id } = target;
+      let act = {};
+      for (const account of this.props.savedAccounts) {
+        if (String(account.id) === String(id)) {
+          act = account;
+          break;
+        }
       }
-    }
 
-    this.props.changeSavedAccount(act);
+      this.props.changeSavedAccount(act);
+    }
   }
 
-  changeAccounts = (e) => {
+  changeAccounts = (e: Event) => {
     e.preventDefault();
 
     this.setState({

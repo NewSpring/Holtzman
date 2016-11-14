@@ -1,6 +1,10 @@
-import { PropTypes } from "react";
+// @flow
 
-const AccountNumber = ({ accountNumber }) => (
+type IAccountNumber = {
+  accountNumber: string,
+};
+
+const AccountNumber = ({ accountNumber }: IAccountNumber) => (
   <span>
     {accountNumber
       .slice(0, accountNumber.length - 5)
@@ -9,9 +13,5 @@ const AccountNumber = ({ accountNumber }) => (
     {accountNumber.slice(-4)}
   </span>
 );
-
-AccountNumber.propTypes = {
-  accountNumber: PropTypes.string,
-};
 
 export default AccountNumber;

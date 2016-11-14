@@ -1,3 +1,4 @@
+// @flow
 import AccountNumber from "./AccountNumber";
 import ActionButton from "./ActionButton";
 import BankFields from "./BankFields";

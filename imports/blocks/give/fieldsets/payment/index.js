@@ -1,29 +1,36 @@
-import { Component, PropTypes } from "react";
+// @flow
+import { Component } from "react";
 
 import Validate from "../../../../util/validate";
 
 import Layout from "./Layout";
 
-export default class Payment extends Component {
+type IPayment = {
+  save: Function,
+  data: Object,
+  savedAccount: Object,
+  header?: React$Element<any>,
+  children?: React$Element<any>,
+  toggles?: string[],
+  transactionType: string,
+  schedules: Object,
+  back: Function,
+  next: Function,
+}
 
-  static propTypes = {
-    save: PropTypes.func,
-    data: PropTypes.object,
-    savedAccount: PropTypes.object,
-    header: PropTypes.string,
-    children: PropTypes.object,
-    toggles: PropTypes.func,
-    transactionType: PropTypes.string,
-    schedules: PropTypes.object,
-    back: PropTypes.func,
-    next: PropTypes.func,
-  }
+type IPaymentState = {
+  save: boolean,
+};
+
+export default class Payment extends Component {
+  props: IPayment;
+  state: IPaymentState;
 
   state = {
     save: true,
   }
 
-  savePayment = () => {
+  savePayment = (): void => {
     this.setState(({ save }) => ({ save: !save }));
 
     if (this.state.save) {
@@ -31,7 +38,7 @@ export default class Payment extends Component {
     }
   }
 
-  saveName = (value) => {
+  saveName = (value: string): boolean => {
     if (value.length > 0) {
       this.props.save({ payment: { name: value } });
     }
@@ -39,7 +46,7 @@ export default class Payment extends Component {
     return (value.length > 0);
   }
 
-  validate = (value, target) => {
+  validate = (value: string, target: HTMLElement): boolean => {
     const { id } = target;
     // special case for intial repaint
     if ((id === "cardNumber" || id === "routingNumber") && !value) return true;
@@ -61,7 +68,7 @@ export default class Payment extends Component {
     return isValid;
   }
 
-  saveData = (value, target) => {
+  saveData = (value: string, target: HTMLElement) => {
     const { id } = target;
 
     const isValid = this.validate(value, target);
@@ -72,7 +79,7 @@ export default class Payment extends Component {
   }
 
   // XXX move to layout, but changes to input are needed
-  formatExp = (s, target) => {
+  formatExp = (s: string, target: HTMLInputElement): string => {
     const save = (adjusted) => {
       this.saveData(adjusted, target);
       return adjusted;
@@ -108,7 +115,7 @@ export default class Payment extends Component {
     return save(str);
   }
 
-  toggle = () => {
+  toggle = (): void => {
     let type = "ach";
     if (this.props.data.payment.type === type) {
       type = "cc";
