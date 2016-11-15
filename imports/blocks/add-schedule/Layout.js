@@ -1,7 +1,5 @@
 // @flow
 
-// $FlowMeteor
-import { Meteor } from "meteor/meteor";
 import Moment from "moment";
 import { css } from "aphrodite";
 import { Component } from "react";
