@@ -1,0 +1,89 @@
+exports[`Body renders non rev version 1`] = `
+<div
+  className="grid__item one-whole one-half@lap-wide-and-up soft-double-right@lap-and-up"
+  style={
+    Object {
+      "verticalAlign": "middle",
+    }
+  }>
+  <div
+    className="soft-double-sides@lap soft-double-right@lap-and-up soft-double-ends text-left">
+    <h1>
+      test
+    </h1>
+  </div>
+</div>
+`;
+
+exports[`Body renders rev version 1`] = `
+<div
+  className="grid__item one-whole one-half@lap-wide-and-up soft-double-left@lap-and-up"
+  style={
+    Object {
+      "verticalAlign": "middle",
+    }
+  }>
+  <div
+    className="soft-double-sides@lap soft-double-left@lap-and-up soft-double-ends text-left">
+    <h1>
+      test
+    </h1>
+  </div>
+</div>
+`;
+
+exports[`Image renders with props 1`] = `
+<div
+  className="grid__item one-whole one-half@lap-wide-and-up"
+  style={
+    Object {
+      "verticalAlign": "middle",
+    }
+  }>
+  <div
+    className="text-center push-double-top">
+    <div
+      className="three-quarters one-half@lap ratio--square display-inline-block">
+      <ImageLoader
+        imageclasses={
+          Array [
+            "ratio__item",
+            "one-whole",
+            "round",
+            "background--fill",
+          ]
+        }
+        preloader={[Function]}
+        renderElement={[Function]}
+        src="http://test.com/test.jpg"
+        style={
+          Object {
+            "backgroundImage": "url(http://test.com/test.jpg)",
+          }
+        }
+        wrapper={[Function]} />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Leaves renders with props 1`] = `
+<div
+  className="relative one-whole soft-double-top soft-bottom push-double-top">
+  <h1>
+    test
+  </h1>
+</div>
+`;
+
+exports[`Stats renders with props 1`] = `
+<div
+  className="soft-top soft-sides soft-double-top@lap-and-up test">
+  <div
+    className="text-center one-whole two-thirds@lap one-half@lap-wide-and-up display-inline-block">
+    <h1>
+      test
+    </h1>
+  </div>
+</div>
+`;
