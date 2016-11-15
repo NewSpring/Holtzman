@@ -85,6 +85,7 @@ exports[`test renders with scripture 1`] = `
 exports[`test renders without scripture or image 1`] = `
 <div>
   <Meta
+    id="1"
     image={null}
     meta={
       Array [
@@ -104,6 +105,7 @@ exports[`test renders without scripture or image 1`] = `
             "body": "<h1>devotion</h1>",
             "images": Array [],
           },
+          "id": "1",
         }
       }
       onClickLink={[Function]} />
