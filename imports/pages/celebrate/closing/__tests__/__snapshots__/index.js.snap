@@ -7,7 +7,7 @@ exports[`test renders 1`] = `
     }
   }>
   <Stats>
-    <Connect(FitText)
+    <Connect(FitTextWithoutData)
       compressor={1.1}>
       <h3
         className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
@@ -19,8 +19,8 @@ exports[`test renders 1`] = `
         }>
         Because you listened to
       </h3>
-    </Connect(FitText)>
-    <Connect(FitText)
+    </Connect(FitTextWithoutData)>
+    <Connect(FitTextWithoutData)
       compressor={0.35}>
       <h1
         className="uppercase flush-bottom text-light-primary"
@@ -32,8 +32,8 @@ exports[`test renders 1`] = `
         }>
         Jesus
       </h1>
-    </Connect(FitText)>
-    <Connect(FitText)
+    </Connect(FitTextWithoutData)>
+    <Connect(FitTextWithoutData)
       compressor={1.1}>
       <h3
         className="flush-bottom push-double-bottom text-tertiary italic"
@@ -45,8 +45,8 @@ exports[`test renders 1`] = `
         }>
         and did what He said,
       </h3>
-    </Connect(FitText)>
-    <Connect(FitText)
+    </Connect(FitTextWithoutData)>
+    <Connect(FitTextWithoutData)
       compressor={1.1}>
       <h3
         className="flush-bottom soft-half-bottom text-tertiary italic"
@@ -58,8 +58,8 @@ exports[`test renders 1`] = `
         }>
         we impacted our
       </h3>
-    </Connect(FitText)>
-    <Connect(FitText)
+    </Connect(FitTextWithoutData)>
+    <Connect(FitTextWithoutData)
       compressor={0.33}>
       <h1
         className="uppercase flush-bottom text-light-primary"
@@ -71,7 +71,7 @@ exports[`test renders 1`] = `
         }>
         State
       </h1>
-    </Connect(FitText)>
+    </Connect(FitTextWithoutData)>
     <div
       className="soft-top display-inline-block">
       <Logo

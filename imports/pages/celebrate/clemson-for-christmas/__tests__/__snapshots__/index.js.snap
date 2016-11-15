@@ -9,7 +9,7 @@ exports[`test renders 1`] = `
       }
     }>
     <Stats>
-      <Connect(FitText)
+      <Connect(FitTextWithoutData)
         compressor={1.2}>
         <h3
           className="flush-bottom soft-half-bottom soft-double-top text-dark-secondary italic"
@@ -20,8 +20,8 @@ exports[`test renders 1`] = `
           }>
           Because of your generosity, we raised
         </h3>
-      </Connect(FitText)>
-      <Connect(FitText)
+      </Connect(FitTextWithoutData)>
+      <Connect(FitTextWithoutData)
         compressor={0.5}>
         <h1
           className="uppercase text-primary"
@@ -32,8 +32,8 @@ exports[`test renders 1`] = `
           }>
           $3,165,713
         </h1>
-      </Connect(FitText)>
-      <Connect(FitText)
+      </Connect(FitTextWithoutData)>
+      <Connect(FitTextWithoutData)
         compressor={1.2}>
         <h3
           className="flush-bottom push-back-half-top soft-bottom text-dark-secondary italic"
@@ -44,7 +44,7 @@ exports[`test renders 1`] = `
           }>
           during our year end offering - Clemson for Christmas
         </h3>
-      </Connect(FitText)>
+      </Connect(FitTextWithoutData)>
     </Stats>
     <div
       className="soft-double-top push-double-top@lap-wide-and-up push-top" />

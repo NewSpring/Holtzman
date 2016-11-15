@@ -1,0 +1,25 @@
+exports[`test calculates font size based on props 1`] = `
+<FitTextWithoutData
+  compressor={2}
+  maxFontSize={20}
+  minFontSize={10}>
+  <div>
+    <h1>
+      test
+    </h1>
+  </div>
+</FitTextWithoutData>
+`;
+
+exports[`test renders 1`] = `
+<FitTextWithoutData
+  compressor={1}
+  maxFontSize={Infinity}
+  minFontSize={-Infinity}>
+  <div>
+    <h1>
+      test
+    </h1>
+  </div>
+</FitTextWithoutData>
+`;

@@ -9,7 +9,7 @@ exports[`test renders 1`] = `
       }
     }>
     <Stats>
-      <Connect(FitText)
+      <Connect(FitTextWithoutData)
         compressor={1.3}>
         <h3
           className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
@@ -20,8 +20,8 @@ exports[`test renders 1`] = `
           }>
           With your help,
         </h3>
-      </Connect(FitText)>
-      <Connect(FitText)
+      </Connect(FitTextWithoutData)>
+      <Connect(FitTextWithoutData)
         compressor={0.3}>
         <h1
           className="uppercase text-light-primary"
@@ -32,8 +32,8 @@ exports[`test renders 1`] = `
           }>
           13,162
         </h1>
-      </Connect(FitText)>
-      <Connect(FitText)
+      </Connect(FitTextWithoutData)>
+      <Connect(FitTextWithoutData)
         compressor={1.3}>
         <h3
           className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
@@ -44,7 +44,7 @@ exports[`test renders 1`] = `
           }>
           people received care at a NewSpring Campus
         </h3>
-      </Connect(FitText)>
+      </Connect(FitTextWithoutData)>
     </Stats>
     <div
       className="soft-double-ends" />

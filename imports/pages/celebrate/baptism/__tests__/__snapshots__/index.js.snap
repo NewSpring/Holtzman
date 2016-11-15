@@ -7,7 +7,7 @@ exports[`test renders 1`] = `
     }
   }>
   <Stats>
-    <Connect(FitText)
+    <Connect(FitTextWithoutData)
       compressor={1.4}>
       <h3
         className="flush-bottom soft-half-bottom soft-double-top text-tertiary italic"
@@ -18,8 +18,8 @@ exports[`test renders 1`] = `
         }>
         We saw
       </h3>
-    </Connect(FitText)>
-    <Connect(FitText)
+    </Connect(FitTextWithoutData)>
+    <Connect(FitTextWithoutData)
       compressor={0.3}>
       <h1
         className="uppercase text-light-primary"
@@ -31,8 +31,8 @@ exports[`test renders 1`] = `
         }>
         5,253
       </h1>
-    </Connect(FitText)>
-    <Connect(FitText)
+    </Connect(FitTextWithoutData)>
+    <Connect(FitTextWithoutData)
       compressor={1.6}>
       <h3
         className="flush-bottom push-back-half-top soft-bottom text-tertiary italic"
@@ -43,8 +43,8 @@ exports[`test renders 1`] = `
         }>
         people go public for Jesus through
       </h3>
-    </Connect(FitText)>
-    <Connect(FitText)
+    </Connect(FitTextWithoutData)>
+    <Connect(FitTextWithoutData)
       compressor={0.55}>
       <h1
         className="uppercase text-light-primary"
@@ -56,7 +56,7 @@ exports[`test renders 1`] = `
         }>
         Baptisms
       </h1>
-    </Connect(FitText)>
+    </Connect(FitTextWithoutData)>
   </Stats>
   <div
     className="soft-double-ends" />
