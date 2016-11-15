@@ -3,6 +3,9 @@ import { setOptions } from '@kadira/storybook-addon-options';
 import _ from 'underscore';
 
 window._ = _;
+window.jest = {
+  fn: (method) => method
+}
 
 
 setOptions({
