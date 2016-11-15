@@ -15,6 +15,7 @@ module.exports = function(base, configType) {
     base.resolve.alias,
     {
       "meteor/meteor": path.join(__dirname, "../.meteor/mocks/meteor"),
+      "meteor/accounts-base": path.join(__dirname, "../.meteor/mocks/accounts-base"),
     }
   );
 
