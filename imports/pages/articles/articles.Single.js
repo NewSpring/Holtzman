@@ -26,51 +26,9 @@ import {
 // import content component
 import Content from "./articles.Content";
 
-const ARTICLE_QUERY = gql`
-  query getArticle($id: ID!) {
-    content: node(id: $id) {
-      id
-      ... on Content {
-        title
-        status
-        channelName
-        authors
-        meta {
-          urlTitle
-          siteId
-          date
-          channelId
-        }
-        content {
-          body
-          ooyalaId
-          tags
-          images(sizes: ["large"]) {
-            fileName
-            fileType
-            fileLabel
-            url
-          }
-        }
-      }
-    }
-  }
-`;
-
-const withArticle = graphql(ARTICLE_QUERY, {
-  name: "article",
-  options: (ownProps) => ({
-    variables: { id: ownProps.params.id },
-  }),
-});
-
 const defaultArray = [];
-@connect()
-@withArticle
-@ReactMixin.decorate(Likeable) // Depreciated
-@ReactMixin.decorate(Shareable) // Depreciated
-@ReactMixin.decorate(Headerable) // Depreciated
-export default class ArticlesSingle extends Component {
+
+class ArticlesSingle extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -148,3 +106,57 @@ export default class ArticlesSingle extends Component {
     );
   }
 }
+
+const ARTICLE_QUERY = gql`
+  query getArticle($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        title
+        status
+        channelName
+        authors
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          body
+          ooyalaId
+          tags
+          images(sizes: ["large"]) {
+            fileName
+            fileType
+            fileLabel
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+
+const withArticle = graphql(ARTICLE_QUERY, {
+  name: "article",
+  options: (ownProps) => ({
+    variables: { id: ownProps.params.id },
+  }),
+});
+
+export default connect()(
+  withArticle(
+    ReactMixin.decorate(Likeable)(
+      ReactMixin.decorate(Shareable)(
+        ReactMixin.decorate(Headerable)(
+          ArticlesSingle
+        )
+      )
+    )
+  )
+);
+
+export {
+  ArticlesSingle as ArticlesSingleWithoutData,
+};
