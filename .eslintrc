@@ -51,6 +51,7 @@
     }],
     "import/no-extraneous-dependencies": [1],
     "no-useless-escape": 0,
+    "no-cond-assign": 0,
   },
   "settings": {
     "import/core-modules": [
