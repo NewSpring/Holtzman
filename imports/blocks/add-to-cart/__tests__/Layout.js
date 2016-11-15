@@ -25,7 +25,6 @@ const generateComponent = (additionalProps = {}) => {
     accounts: [
       { value: "test" }
     ],
-    monentize: jest.fn(),
     preFill: () => {},
   };
   return (
