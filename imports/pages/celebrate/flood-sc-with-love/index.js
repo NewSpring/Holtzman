@@ -27,7 +27,7 @@ const primary = "#0088BB";
 const secondary = "#006290";
 
 /* eslint-disable max-len */
-const Fuse = () => (
+const FloodSCWithLove = () => (
   <div className="display-inline-block text-center one-whole ">
     <div
       className="background--light-primary soft-double-top@lap-and-up"
@@ -188,4 +188,4 @@ const Fuse = () => (
 );
 /* eslint-enable max-len */
 
-export default Fuse;
+export default FloodSCWithLove;
