@@ -1,23 +1,27 @@
+// @flow
 /* global serverWatch */
-import { Component, PropTypes } from "react";
+import { Component } from "react";
 import { connect } from "react-redux";
 
 import { give as giveActions } from "../../store";
+import { monetize } from "../../util/format/currency";
 import Layout from "./Layout";
 
 // We only care about the give state
 const map = (state) => ({ give: state.give });
+export const withGiveActions = connect(map, giveActions);
 
-@connect(map, giveActions)
-export default class CartContainer extends Component {
+type ICartContainer = {
+  clearTransactions: Function,
+  accounts: Object[],
+  addTransactions: Function,
+  give: Object,
+  donate: boolean,
+};
 
-  static propTypes = {
-    clearTransactions: PropTypes.func,
-    accounts: PropTypes.array, // eslint-disable-line
-    addTransactions: PropTypes.func,
-    give: PropTypes.object, // eslint-disable-line
-    donate: PropTypes.bool,
-  }
+class CartContainer extends Component {
+
+  props: ICartContainer;
 
   componentWillMount() {
     this.props.clearTransactions();
@@ -32,9 +36,11 @@ export default class CartContainer extends Component {
 
       const urlParams = {};
 
-      // eslint-disable-next-line
       while (match = search.exec(query)) {
-        urlParams[decode(match[1])] = decode(match[2]);
+        const thing = decode(match[1]);
+        if (thing !== undefined) {
+          urlParams[thing] = decode(match[2]);
+        }
       }
 
       for (const account of this.props.accounts) {
@@ -42,7 +48,7 @@ export default class CartContainer extends Component {
           let value = urlParams[account.name];
           const id = account.id;
 
-          value = this.monentize(value);
+          value = monetize(value);
 
           this.props.addTransactions({ [id]: {
             value: Number(value.replace(/[^0-9\.]+/g, "")),
@@ -53,39 +59,16 @@ export default class CartContainer extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Object) {
     if (nextProps.give.state === "success" && this.props.give.state === "success") {
       this.props.clearTransactions();
     }
   }
 
-  monentize = (amount, fixed) => {
-    let value;
-
-    if (typeof amount === "number") {
-      value = `${amount}`;
-    }
-
-    if (!value.length) {
-      return "$0.00";
-    }
-
-    value = value.replace(/[^\d.-]/g, "");
-
-    const decimals = value.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      value = Number(value).toFixed(2);
-      value = String(value);
-    }
-
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${value}`;
-  }
-
-  format = (amount, target) => {
+  format = (amount: number, target: Object) => {
     const { id, name } = target;
 
-    const value = this.monentize(amount);
+    const value = monetize(amount);
 
     this.props.addTransactions({ [id]: {
       value: Number(value.replace(/[^0-9\.]+/g, "")),
@@ -95,10 +78,10 @@ export default class CartContainer extends Component {
     return value;
   }
 
-  saveData = (amount, target) => {
+  saveData = (amount: number, target: Object) => {
     const { id, name } = target;
 
-    const value = this.monentize(amount);
+    const value = monetize(amount);
 
     this.props.addTransactions({ [id]: {
       value: Number(value.replace(/[^0-9\.]+/g, "")),
@@ -109,7 +92,7 @@ export default class CartContainer extends Component {
   }
 
 
-  preFillValue = (id) => {
+  preFillValue = (id: string) => {
     const { transactions } = this.props.give;
 
     if (transactions[id] && transactions[id].value) {
@@ -139,7 +122,7 @@ export default class CartContainer extends Component {
       <Layout
         accounts={accounts}
         save={this.saveData}
-        monentize={this.monentize}
+        monentize={monetize}
         format={this.format}
         preFill={this.preFillValue}
         total={total}
@@ -150,3 +133,9 @@ export default class CartContainer extends Component {
     );
   }
 }
+
+export default withGiveActions(CartContainer);
+
+export {
+  CartContainer as CartContainerWithoutData,
+};
