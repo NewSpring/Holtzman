@@ -1,0 +1,21 @@
+exports[`test renders 1`] = `
+<div>
+  <Meta
+    title="Annual Report" />
+  <Intro />
+  <Salvation />
+  <Baptism />
+  <CareRoom />
+  <Serving />
+  <KidSpring />
+  <Fuse />
+  <GauntletX />
+  <FloodSCWithLove />
+  <ClemsonForChristmas />
+  <Missions />
+  <Web />
+  <SocialMedia />
+  <NewSpringNetwork />
+  <Closing />
+</div>
+`;

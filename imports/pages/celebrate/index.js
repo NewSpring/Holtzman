@@ -22,8 +22,7 @@ import NewSpringNetwork from "./newspring-network/index";
 
 import Closing from "./closing/index";
 
-@connect()
-class Template extends Component {
+class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
@@ -67,6 +66,7 @@ class Template extends Component {
   }
 }
 
+const Template = connect()(TemplateWithoutData);
 
 const Routes = [
   {
@@ -78,4 +78,8 @@ const Routes = [
 export default {
   Template,
   Routes,
+};
+
+export {
+  TemplateWithoutData,
 };
