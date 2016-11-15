@@ -89,8 +89,7 @@ class Layout extends Component {
       prefillFund = existing.details[0].account.id;
     }
 
-  // XXX: this was already commented out, should it be?
-  // let defaultDate = Moment().add(1, "days")
+    // require the user to choose a date instead of assuming current day
     let defaultDate = null;
     if (existing && existing.next && new Date(existing.next) > new Date()) {
       defaultDate = new Date(existing.next);
