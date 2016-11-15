@@ -1,8 +1,6 @@
-/* eslint-disable */
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import Layout from "../Layout";
-// import { reset, startBuffering } from "aphrodite/lib/inject";
 
 const account1 = [
   {

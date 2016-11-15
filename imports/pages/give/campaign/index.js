@@ -50,7 +50,7 @@ type ITemplate = {
   params: Object,
 };
 
-class Template extends Component {
+class TemplateWithoutData extends Component {
   props: ITemplate;
 
   componentWillMount() {
@@ -89,13 +89,17 @@ class Template extends Component {
   }
 }
 
-const TemplateWithData = withFinancialAccounts(connect()(Template));
+const Template = withFinancialAccounts(connect()(TemplateWithoutData));
 
 const Routes = [
-  { path: "campaign/:name", component: TemplateWithData },
+  { path: "campaign/:name", component: Template },
 ];
 
 export default {
   Template,
   Routes,
+};
+
+export {
+  TemplateWithoutData,
 };
