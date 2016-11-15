@@ -81,7 +81,6 @@ exports[`test should accept custom classes thru classes prop 1`] = `
           "select_1rryh47",
         ]
       }
-      defaultValue="main fund"
       hideLabel={true}
       id="test_select"
       inputClasses="test1 test2 outlined--dotted outlined--light h3 hard-top flush-bottom"
@@ -93,12 +92,12 @@ exports[`test should accept custom classes thru classes prop 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund">
+      placeholder="select fund"
+      value="main fund">
       <div
-        className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
         <select
           className="test1 test2 outlined--dotted outlined--light h3 hard-top flush-bottom"
-          defaultValue="main fund"
           id="test_select"
           name="select-account"
           onChange={[Function]}
@@ -207,7 +206,6 @@ exports[`test should accept format function thru prop 1`] = `
           "select_1rryh47",
         ]
       }
-      defaultValue="main fund"
       hideLabel={true}
       id="test_select"
       inputClasses=" outlined--dotted outlined--light h3 hard-top flush-bottom"
@@ -219,12 +217,12 @@ exports[`test should accept format function thru prop 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund">
+      placeholder="select fund"
+      value="main fund">
       <div
-        className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
         <select
           className=" outlined--dotted outlined--light h3 hard-top flush-bottom"
-          defaultValue="main fund"
           id="test_select"
           name="select-account"
           onChange={[Function]}
@@ -334,7 +332,6 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
           "select_1rryh47",
         ]
       }
-      defaultValue={null}
       hideLabel={true}
       id="test_select"
       inputClasses=" outlined--dotted outlined--light h3 hard-top flush-bottom"
@@ -349,12 +346,12 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund">
+      placeholder="select fund"
+      value={null}>
       <div
         className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
         <select
           className=" outlined--dotted outlined--light h3 hard-top flush-bottom"
-          defaultValue={null}
           id="test_select"
           name="select-account"
           onChange={[Function]}
@@ -467,7 +464,6 @@ exports[`test should accept preFill function thru prop 1`] = `
           "select_1rryh47",
         ]
       }
-      defaultValue="main fund"
       hideLabel={true}
       id="test_select"
       inputClasses=" outlined--dotted outlined--light h3 hard-top flush-bottom"
@@ -479,12 +475,12 @@ exports[`test should accept preFill function thru prop 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund">
+      placeholder="select fund"
+      value="main fund">
       <div
-        className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
         <select
           className=" outlined--dotted outlined--light h3 hard-top flush-bottom"
-          defaultValue="main fund"
           id="test_select"
           name="select-account"
           onChange={[Function]}
@@ -592,7 +588,6 @@ exports[`test should accept saveFund function thru prop 1`] = `
           "select_1rryh47",
         ]
       }
-      defaultValue="main fund"
       hideLabel={true}
       id="test_select"
       inputClasses=" outlined--dotted outlined--light h3 hard-top flush-bottom"
@@ -605,12 +600,12 @@ exports[`test should accept saveFund function thru prop 1`] = `
       }
       name="select-account"
       onChange={[Function]}
-      placeholder="select fund">
+      placeholder="select fund"
+      value="main fund">
       <div
-        className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
         <select
           className=" outlined--dotted outlined--light h3 hard-top flush-bottom"
-          defaultValue="main fund"
           id="test_select"
           name="select-account"
           onChange={[Function]}
@@ -718,7 +713,6 @@ exports[`test should accept selectVal function thru prop 1`] = `
           "select_1rryh47",
         ]
       }
-      defaultValue="main fund"
       hideLabel={true}
       id="test_select"
       inputClasses=" outlined--dotted outlined--light h3 hard-top flush-bottom"
@@ -731,12 +725,12 @@ exports[`test should accept selectVal function thru prop 1`] = `
       }
       name="select-account"
       placeholder="select fund"
-      selected="hi">
+      selected="hi"
+      value="main fund">
       <div
-        className="input input--active soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 input--active select_15p0e27">
         <select
           className=" outlined--dotted outlined--light h3 hard-top flush-bottom"
-          defaultValue="main fund"
           id="test_select"
           name="select-account"
           onChange={[Function]}
@@ -844,7 +838,6 @@ exports[`test should accept state prop with id and fund 1`] = `
           "select_1rryh47",
         ]
       }
-      defaultValue="main fund"
       hideLabel={true}
       id="dis-account_select"
       inputClasses=" outlined--dotted outlined--light h3 hard-top flush-bottom"
@@ -856,12 +849,12 @@ exports[`test should accept state prop with id and fund 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund">
+      placeholder="select fund"
+      value="main fund">
       <div
-        className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
         <select
           className=" outlined--dotted outlined--light h3 hard-top flush-bottom"
-          defaultValue="main fund"
           id="dis-account_select"
           name="select-account"
           onChange={[Function]}
@@ -968,7 +961,6 @@ exports[`test should render with minimal props 1`] = `
           "select_1rryh47",
         ]
       }
-      defaultValue="main fund"
       hideLabel={true}
       id="test_select"
       inputClasses=" outlined--dotted outlined--light h3 hard-top flush-bottom"
@@ -980,12 +972,12 @@ exports[`test should render with minimal props 1`] = `
         ]
       }
       name="select-account"
-      placeholder="select fund">
+      placeholder="select fund"
+      value="main fund">
       <div
-        className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
         <select
           className=" outlined--dotted outlined--light h3 hard-top flush-bottom"
-          defaultValue="main fund"
           id="test_select"
           name="select-account"
           onChange={[Function]}

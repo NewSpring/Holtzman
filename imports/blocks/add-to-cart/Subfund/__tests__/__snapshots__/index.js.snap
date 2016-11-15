@@ -118,7 +118,6 @@ exports[`SubFund should have dark text on primary fund 1`] = `
             "select_1rryh47",
           ]
         }
-        defaultValue="main fund"
         hideLabel={true}
         id="test-id-reset_select"
         inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
@@ -131,12 +130,12 @@ exports[`SubFund should have dark text on primary fund 1`] = `
         }
         name="select-account"
         onChange={[Function]}
-        placeholder="select fund">
+        placeholder="select fund"
+        value="main fund">
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-            defaultValue="main fund"
             id="test-id-reset_select"
             name="select-account"
             onChange={[Function]}
@@ -366,7 +365,6 @@ exports[`SubFund should render primary fund 1`] = `
             "select_1rryh47",
           ]
         }
-        defaultValue="main fund"
         hideLabel={true}
         id="test-id-reset_select"
         inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
@@ -379,12 +377,12 @@ exports[`SubFund should render primary fund 1`] = `
         }
         name="select-account"
         onChange={[Function]}
-        placeholder="select fund">
+        placeholder="select fund"
+        value="main fund">
         <div
-          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
           <select
             className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-            defaultValue="main fund"
             id="test-id-reset_select"
             name="select-account"
             onChange={[Function]}
