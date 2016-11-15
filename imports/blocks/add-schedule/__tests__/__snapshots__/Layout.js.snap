@@ -709,7 +709,7 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
           "display-inline-block",
         ]
       }
-      defaultValue={2025-02-01T05:00:00.000Z}
+      defaultValue={2025-02-01T00:00:00.000Z}
       format={[Function]}
       hideLabel={true}
       id="start-date"
