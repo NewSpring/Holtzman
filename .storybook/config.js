@@ -1,10 +1,12 @@
+import "regenerator-runtime/runtime";
+
 import { configure, addDecorator } from '@kadira/storybook';
 import { setOptions } from '@kadira/storybook-addon-options';
 import _ from 'underscore';
 
 window._ = _;
 window.jest = {
-  fn: (method) => method
+  fn: (method = () => {}) => method
 }
 
 

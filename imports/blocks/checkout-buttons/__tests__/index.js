@@ -3,7 +3,7 @@ import { Component } from "react";
 import { print } from "graphql-tag/printer";
 import { graphql } from "react-apollo";
 import { MockedProvider } from "react-apollo/test-utils";
-import { addTypenameToDocument } from "apollo-client/queries/queryTransform";
+// import { addTypenameToDocument } from "apollo-client/queries/queryTransform";
 
 import { mount } from "enzyme";
 
@@ -14,6 +14,7 @@ it("has a known query shape", () => {
 });
 
 describe("graphql integration", () => {
+  // XXX mocking react-apollo causes errors when using it later
   // let calls;
   // beforeEach(() => {
   //   calls = graphql.mock.calls[graphql.mock.calls.length - 1];
@@ -51,7 +52,8 @@ describe("graphql integration", () => {
 
   it("correctly delivers props to child component", (done) => {
 
-    const query = addTypenameToDocument(SAVED_ACCTS_QUERY);
+    // const query = addTypenameToDocument(SAVED_ACCTS_QUERY);
+    const query = SAVED_ACCTS_QUERY;
     const variables = { cache: false };
 
     const mockedData = {
@@ -85,7 +87,8 @@ describe("graphql integration", () => {
 
   it("correctly delivers props to child component", (done) => {
 
-    const query = addTypenameToDocument(SAVED_ACCTS_QUERY);
+    // const query = addTypenameToDocument(SAVED_ACCTS_QUERY);
+    const query = SAVED_ACCTS_QUERY;
     const variables = { cache: false };
 
     const mockedData = {
@@ -118,7 +121,8 @@ describe("graphql integration", () => {
 
   it("correctly delivers props to child component", (done) => {
 
-    const query = addTypenameToDocument(SAVED_ACCTS_QUERY);
+    // const query = addTypenameToDocument(SAVED_ACCTS_QUERY);
+    const query = SAVED_ACCTS_QUERY;
     const variables = { cache: false };
 
     const mockedData = {
@@ -127,11 +131,11 @@ describe("graphql integration", () => {
           name: "Gold Card",
           id: 10,
           date: "date",
-          __typename: "SavedPayment",
+          // __typename: "SavedPayment",
           payment: {
             accountNumber: "4111111111111111",
             paymentType: "Visa",
-            __typename: "Card"
+            // __typename: "Card"
           }
         }
       ],
