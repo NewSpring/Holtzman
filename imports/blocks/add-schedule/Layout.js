@@ -27,7 +27,7 @@ type ILayout = {
     total: number,
 };
 
-// this definition of Layout doesn't work
+// this definition of Layout won't render
 // const Layout = ({
 //   accounts,
 //   existing,
@@ -47,7 +47,7 @@ type ILayout = {
 // this definition of Layout works
 class Layout extends Component {
 
-  propTypes: ILayout;
+  props: ILayout;
 
   render() {
     const {
@@ -174,7 +174,7 @@ class Layout extends Component {
             placeholder="select date"
             past={false}
             today={false}
-            format={value => (Moment(value).format("MMM D, YYYY"))} // eslint-disable-line
+          format={value => (Moment(value).format("MMM D, YYYY"))} // eslint-disable-line
             validation={saveDate}
             defaultValue={defaultDate}
           />
@@ -189,6 +189,6 @@ class Layout extends Component {
       </div>
     );
   }
-}
+ }
 
 export default Layout;
