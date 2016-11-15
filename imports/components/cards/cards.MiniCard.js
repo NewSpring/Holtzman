@@ -18,11 +18,11 @@ const hasImage = (content) =>
 
 type IMiniCard = {
   title: string,
-  description: string,
   content: Object,
-  icon: string,
-  category: string,
-  link: string,
+  description?: string,
+  icon?: string,
+  category?: string,
+  link?: string,
 };
 
 // XXX right now this uses the content prop for everything
