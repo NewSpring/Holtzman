@@ -4,6 +4,7 @@ import serverWatch from "meteor/bjwiley2:server-watch";
 import { Component } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
+import { monetize } from "../../util/format";
 import createContainer from "../meteor/react-meteor-data";
 import { give as giveActions } from "../../store";
 import Offline from "../../components/status/Offline";
@@ -82,24 +83,6 @@ class CartContainer extends Component {
     this.props.clearSchedules();
   }
 
-  // XXX: should remove fixed since it's not being used?
-  monetize = (val: string, fixed?: boolean) => {
-    let value = val;
-    if (typeof value === "number") value = `${value}`;
-    if (!value.length) return "$0.00";
-
-    value = value.replace(/[^\d.-]/g, "");
-
-    const decimals = value.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      value = Number(value).toFixed(2);
-      value = String(value);
-    }
-
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${value}`;
-  }
-
   onClick = (e: Event) => {
     e.preventDefault();
 
@@ -157,7 +140,7 @@ class CartContainer extends Component {
   format = (val: string, target: Object) => {
     const { id, name } = target;
 
-    const value = this.monetize(val);
+    const value = monetize(val);
 
     this.setState({
       fundId: id,
@@ -171,7 +154,7 @@ class CartContainer extends Component {
   saveData = (val: string, target: Object) => {
     const { id, name } = target;
 
-    const value = this.monetize(val);
+    const value = monetize(val);
     this.setState({
       fundId: id,
       fundLabel: name,
@@ -233,7 +216,7 @@ class CartContainer extends Component {
 // We only care about the give state
 const map = (state) => ({ give: state.give });
 
-// spins up a cart with the give state if Rock is online
+// spins up a cart if Rock is online
 export default createContainer(() => {
   let alive = true;
   try { alive = serverWatch.isAlive("ROCK"); } catch (e) {} // eslint-disable-line
