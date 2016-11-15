@@ -18,6 +18,75 @@ import Single from "./articles.Single";
 
 import FeedItem from "../../components/cards/cards.FeedItem";
 
+class ArticlesWithoutData extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.func,
+    ]).isRequired,
+    data: PropTypes.object.isRequired,
+    Loading: PropTypes.func,
+  }
+
+  componentWillMount() {
+    this.props.dispatch(navActions.setLevel("TOP"));
+    if (this.headerAction) {
+      this.headerAction({ title: "All Articles" });
+    }
+  }
+
+  handleRefresh = (resolve, reject) => {
+    this.props.data.refetch({ cache: false })
+      .then(resolve)
+      .catch(reject);
+  }
+
+  renderItems = () => {
+    const { content } = this.props.data;
+    let articles = [1, 2, 3, 4, 5];
+    if (content) articles = content;
+    return (
+      articles.map((article, i) => (
+        <div
+          className={
+            "grid__item one-half@palm-wide one-third@portable one-quarter@anchored " +
+            "flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          }
+          key={i}
+        >
+          {(() => {
+            if (typeof article === "number") return <FeedItemSkeleton />;
+            return <FeedItem item={article} />;
+          })()}
+        </div>
+      ))
+    );
+  }
+
+  render() {
+    const { Loading } = this.props;
+    return (
+      <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
+        <Meta
+          title="Articles"
+        />
+        <div className="soft@portable soft-double@lap-and-up background--light-secondary">
+          <section className="soft-half">
+            <div className="grid">
+              {this.renderItems()}
+              <div className="grid__item one-whole">
+                <Loading />
+              </div>
+            </div>
+          </section>
+        </div>
+      </ApollosPullToRefresh>
+    );
+  }
+
+}
+
 const ARTICLES_QUERY = gql`
   query getArticles($limit: Int!, $skip: Int!) {
     content(channel: "articles", limit: $limit, skip: $skip) {
@@ -72,76 +141,15 @@ const withArticles = graphql(ARTICLES_QUERY, {
 
 const mapStateToProps = (state) => ({ paging: state.paging });
 
-@connect(mapStateToProps)
-@withArticles
-@infiniteScroll((x) => x, { doneText: "End of Articles" })
-@ReactMixin.decorate(Headerable)
-class Template extends Component {
-
-  static propTypes = {
-    dispatch: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.func,
-    ]).isRequired,
-    data: PropTypes.object.isRequired,
-    Loading: PropTypes.func,
-  }
-
-  componentWillMount() {
-    this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({ title: "All Articles" });
-  }
-
-  handleRefresh = (resolve, reject) => {
-    this.props.data.refetch({ cache: false })
-      .then(resolve)
-      .catch(reject);
-  }
-
-  renderItems = () => {
-    const { content } = this.props.data;
-    let articles = [1, 2, 3, 4, 5];
-    if (content) articles = content;
-    return (
-      articles.map((article, i) => (
-        <div
-          className={
-            "grid__item one-half@palm-wide one-third@portable one-quarter@anchored " +
-            "flush-bottom@handheld push-bottom@portable push-bottom@anchored"
-          }
-          key={i}
-        >
-          {(() => {
-            if (typeof article === "number") return <FeedItemSkeleton />;
-            return <FeedItem item={article} />;
-          })()}
-        </div>
-      ))
-    );
-  }
-
-  render() {
-    const { Loading } = this.props;
-    return (
-      <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
-        <Meta
-          title="Articles"
-        />
-        <div className="soft@portable soft-double@lap-and-up background--light-secondary">
-          <section className="soft-half">
-            <div className="grid">
-              {this.renderItems()}
-              <div className="grid__item one-whole">
-                <Loading />
-              </div>
-            </div>
-          </section>
-        </div>
-      </ApollosPullToRefresh>
-    );
-  }
-
-}
+const Template = connect(mapStateToProps)(
+  withArticles(
+    infiniteScroll((x) => x, { doneText: "End of Articles" })(
+      ReactMixin.decorate(Headerable)(
+        ArticlesWithoutData
+      )
+    )
+  )
+);
 
 const Routes = [
   { path: "articles", component: Template },
@@ -151,4 +159,8 @@ const Routes = [
 export default {
   Template,
   Routes,
+};
+
+export {
+  ArticlesWithoutData,
 };
