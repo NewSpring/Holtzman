@@ -16,7 +16,7 @@ import Likeable from "../../mixins/mixins.Likeable";
 import Shareable from "../../mixins/mixins.Shareable";
 
 
-import RelatedContent from "../../blocks/content/RelatedContent";
+import RelatedContent from "../../blocks/related-content";
 
 import collections from "../../util/collections";
 import styles from "../../util/styles";

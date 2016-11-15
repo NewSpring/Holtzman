@@ -1,0 +1,104 @@
+exports[`GiveReview renders a transaction review 1`] = `
+<div>
+  <div
+    className="push-double@lap-and-up push">
+    <h4
+      className="text-center">
+      Hi 
+      Jeff
+      ! Here are your contribution details.
+    </h4>
+  </div>
+  <div
+    className="soft">
+    <h5
+      className="text-dark-secodary text-left">
+      <small>
+        <em>
+          Web
+           Campus
+        </em>
+      </small>
+    </h5>
+    <div
+      className="outlined--light outlined--bottom one-whole push-bottom" />
+    <div
+      className="soft-half-ends hard-sides">
+      <div
+        className="grid"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        <div
+          className="grid__item two-thirds"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          <h5
+            className="text-dark-secondary flush text-left">
+            General%20Fund
+          </h5>
+        </div>
+        <div
+          className="grid__item one-third text-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          <h5
+            className="text-dark-secondary flush">
+            $1
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div
+      className="soft-ends hard-sides">
+      <div
+        className="grid"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        <div
+          className="grid__item one-half"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          <h5
+            className="text-dark-secondary flush text-left">
+            Total
+          </h5>
+        </div>
+        <div
+          className="grid__item one-half text-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          <h3
+            className="text-primary flush">
+            $1
+          </h3>
+        </div>
+      </div>
+    </div>
+    <button
+      className="btn soft-half-top one-whole"
+      onClick={[Function]}>
+      Give Now
+    </button>
+  </div>
+</div>
+`;
+
+exports[`GiveReview renders with no data 1`] = `null`;

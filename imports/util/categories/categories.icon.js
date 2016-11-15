@@ -5,6 +5,7 @@ function categoryIcon(contentItem) {
 
   switch (category) {
     case "series_newspring":
+    case "series":
     case "sermons":
       return "icon-category-video";
     case "newspring_albums":

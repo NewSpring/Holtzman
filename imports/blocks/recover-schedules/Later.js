@@ -1,9 +1,13 @@
-/* eslint-disable max-len */
-import { PropTypes } from "react";
-
+// @flow
 import moment from "moment";
 
-const Later = ({ date, onClick }) => (
+type ILater = {
+  date: string,
+  onClick: Function
+};
+
+/* eslint-disable max-len */
+const Later = ({ date, onClick }: ILater) => (
   <div className="soft soft-double-ends one-whole text-center">
 
     <h4 className="text-center push-ends">
@@ -23,10 +27,5 @@ const Later = ({ date, onClick }) => (
 
   </div>
 );
-
-Later.propTypes = {
-  date: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
 
 export default Later;

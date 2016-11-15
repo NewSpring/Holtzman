@@ -2,7 +2,7 @@
 export default function generateData(newData) {
   const defaultData = {
     title: "Welcome | NewSpring Church",
-    description: "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 11 campuses across the state of South Carolina.",
+    description: "NewSpring Church exists to reach people far from God and teach them how to follow Jesus step by step. We currently have 16 campuses across the state of South Carolina.",
     image: "http://ns.images.s3.amazonaws.com/newspring/site/empty-tomb.jpg",
   };
 

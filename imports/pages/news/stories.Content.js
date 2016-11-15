@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import { PropTypes } from "react";
 
-import RelatedContent from "../../blocks/content/RelatedContent";
+import RelatedContent from "../../blocks/related-content";
 import SingleVideoPlayer from "../../components/players/video/Player";
 import backgrounds from "../../util/backgrounds";
 import react from "../../util/react";

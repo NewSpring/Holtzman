@@ -1,4 +1,4 @@
-
+// @flow
 import Campaign from "./campaign";
 import History from "./history";
 import Now from "./now";

@@ -182,24 +182,12 @@ export default class Confirm extends Component {
     const props = cloneDeep(this.props);
     let { url } = props;
     const { transactions, total, data, savedAccount } = props;
-    const { cardNumber, type, accountNumber } = data.payment;
 
     // remove sensitive information
     delete data.billing; delete data.payment;
 
     // add last 4 in
-    data.payment = {
-      icon: this.getCardType(),
-      type,
-    };
-
-    if (props.savedAccount && props.savedAccount.id) {
-      data.payment.last4 = props.savedAccount.payment.accountNumber.slice(-4);
-    } else if (type === "cc") {
-      data.payment.last4 = cardNumber.slice(-4);
-    } else {
-      data.payment.last4 = accountNumber.slice(-4);
-    }
+    data.payment = {};
 
     if (url.length === 0) url = false;
 
