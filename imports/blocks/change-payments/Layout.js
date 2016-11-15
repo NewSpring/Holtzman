@@ -2,13 +2,6 @@
 
 import PaymentCard from "./paymentCard";
 
-const paymentAccount = (account) => {
-  const accountFistEight = account.payment.accountNumber.slice(0, account.payment.accountNumber.length - 5).replace(/./gmi, "*");
-  const accountLastFour = account.payment.accountNumber.slice(-4);
-
-  return accountFistEight + accountLastFour;
-};
-
 type ILayout = {
   savedAccounts: Object[],
   selectedAccount: Object,
@@ -35,7 +28,7 @@ const Layout = ({
           onClick={chooseAccount}
           accountName={account.name}
           accountId={account.id}
-          paymentAccount={paymentAccount(account)}
+          paymentAccount={account.payment.accountNumber}
           paymentType={account.payment.paymentType}
           selectedAccountId={selectedAccount.id}
         />
