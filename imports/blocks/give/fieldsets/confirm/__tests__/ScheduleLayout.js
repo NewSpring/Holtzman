@@ -47,8 +47,8 @@ describe("ScheduleLayout", () => {
     },
     savedAccount: {},
     schedules: {
-      "123": { label: "123", frequency: "Now" },
-      "234": { label: "234", frequency: "Later" },
+      "123": { label: "123", frequency: "Now", start: "2016-11-18T00:26:48+00:00" },
+      "234": { label: "234", frequency: "Later", start: "2016-11-18T00:26:48+00:00" },
     },
     scheduleToRecover: false,
     total: 12,
