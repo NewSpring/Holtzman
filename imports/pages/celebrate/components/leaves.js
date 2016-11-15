@@ -44,4 +44,5 @@ export {
   SolidLeaf,
   StripedLeaf,
   Logo,
+  Leaf,
 };
