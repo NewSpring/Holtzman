@@ -14,6 +14,10 @@ exports[`Update should allow change of fund for an instance of SubFund 1`] = `
         "label": "TEST 3",
         "value": 3,
       },
+      Object {
+        "label": "TEST 4",
+        "value": 4,
+      },
     ]
   }
   preFill={[Function]}>
@@ -48,6 +52,10 @@ exports[`Update should allow change of fund for an instance of SubFund 1`] = `
                       "label": "TEST 3",
                       "value": 3,
                     },
+                    Object {
+                      "label": "TEST 4",
+                      "value": 4,
+                    },
                   ]
                 }
                 inputVal={10}
@@ -70,6 +78,10 @@ exports[`Update should allow change of fund for an instance of SubFund 1`] = `
                       "label": "TEST 3",
                       "value": 3,
                     },
+                    Object {
+                      "label": "TEST 4",
+                      "value": 4,
+                    },
                   ]
                 }
                 inputVal={20}
@@ -86,6 +98,10 @@ exports[`Update should allow change of fund for an instance of SubFund 1`] = `
                     Object {
                       "label": "TEST 3",
                       "value": 3,
+                    },
+                    Object {
+                      "label": "TEST 4",
+                      "value": 4,
                     },
                   ]
                 }
@@ -135,6 +151,10 @@ exports[`Update should allow for multiple updates on separate instances of SubFu
         "label": "TEST 3",
         "value": 3,
       },
+      Object {
+        "label": "TEST 4",
+        "value": 4,
+      },
     ]
   }
   preFill={[Function]}>
@@ -169,6 +189,10 @@ exports[`Update should allow for multiple updates on separate instances of SubFu
                       "label": "TEST 2",
                       "value": 2,
                     },
+                    Object {
+                      "label": "TEST 4",
+                      "value": 4,
+                    },
                   ]
                 }
                 inputVal={10}
@@ -191,6 +215,10 @@ exports[`Update should allow for multiple updates on separate instances of SubFu
                       "label": "TEST 3",
                       "value": 3,
                     },
+                    Object {
+                      "label": "TEST 4",
+                      "value": 4,
+                    },
                   ]
                 }
                 inputVal={30}
@@ -207,6 +235,10 @@ exports[`Update should allow for multiple updates on separate instances of SubFu
                     Object {
                       "label": "TEST 2",
                       "value": 2,
+                    },
+                    Object {
+                      "label": "TEST 4",
+                      "value": 4,
                     },
                   ]
                 }
@@ -256,6 +288,10 @@ exports[`Update should update state to reflect one fund update 1`] = `
         "label": "TEST 3",
         "value": 3,
       },
+      Object {
+        "label": "TEST 4",
+        "value": 4,
+      },
     ]
   }
   preFill={[Function]}>
@@ -294,6 +330,10 @@ exports[`Update should update state to reflect one fund update 1`] = `
                       "label": "TEST 3",
                       "value": 3,
                     },
+                    Object {
+                      "label": "TEST 4",
+                      "value": 4,
+                    },
                   ]
                 }
                 inputVal={10}
@@ -315,6 +355,10 @@ exports[`Update should update state to reflect one fund update 1`] = `
                     Object {
                       "label": "TEST 3",
                       "value": 3,
+                    },
+                    Object {
+                      "label": "TEST 4",
+                      "value": 4,
                     },
                   ]
                 }
@@ -364,6 +408,10 @@ exports[`test should handle multiple accounts 1`] = `
         "label": "TEST 3",
         "value": 3,
       },
+      Object {
+        "label": "TEST 4",
+        "value": 4,
+      },
     ]
   }
   preFill={[Function]}>
@@ -402,6 +450,10 @@ exports[`test should handle multiple accounts 1`] = `
                       "label": "TEST 3",
                       "value": 3,
                     },
+                    Object {
+                      "label": "TEST 4",
+                      "value": 4,
+                    },
                   ]
                 }
                 inputVal={null}
@@ -423,6 +475,10 @@ exports[`test should handle multiple accounts 1`] = `
                     Object {
                       "label": "TEST 3",
                       "value": 3,
+                    },
+                    Object {
+                      "label": "TEST 4",
+                      "value": 4,
                     },
                   ]
                 }
