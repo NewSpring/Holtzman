@@ -174,7 +174,7 @@ class Layout extends Component {
             placeholder="select date"
             past={false}
             today={false}
-          format={value => (Moment(value).format("MMM D, YYYY"))} // eslint-disable-line
+            format={value => (Moment(value).format("MMM D, YYYY"))} // eslint-disable-line
             validation={saveDate}
             defaultValue={defaultDate}
           />
@@ -189,6 +189,6 @@ class Layout extends Component {
       </div>
     );
   }
- }
+}
 
 export default Layout;
