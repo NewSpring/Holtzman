@@ -16,62 +16,7 @@ import { nav as navActions } from "../../store";
 
 import Single from "./devotions.Single";
 
-const DEVOTIONALS_QUERY = gql`
-  query getDevotionals($limit: Int!, $skip: Int!) {
-    content(channel: "devotionals", limit: $limit, skip: $skip) {
-      id
-      entryId: id
-      title
-      status
-      channelName
-      meta {
-        urlTitle
-        siteId
-        date
-        channelId
-      }
-      content {
-        body
-        images(sizes: ["large"]) {
-          fileName
-          fileType
-          fileLabel
-          url
-        }
-      }
-    }
-  }
-`;
-
-const withDevotionals = graphql(DEVOTIONALS_QUERY, {
-  options: {
-    variables: { limit: 20, skip: 0 },
-  },
-  props: ({ data }) => ({
-    data,
-    loading: data.loading,
-    done: (
-      data.content &&
-      !data.loading &&
-      data.content.length < data.variables.limit + data.variables.skip
-    ),
-    fetchMore: () => data.fetchMore({
-      variables: { ...data.variables, skip: data.content.length },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!fetchMoreResult.data) return previousResult;
-        return { content: [...previousResult.content, ...fetchMoreResult.data.content] };
-      },
-    }),
-  }),
-});
-
-const mapStateToProps = (state) => ({ paging: state.paging });
-
-@connect(mapStateToProps)
-@withDevotionals
-@infiniteScroll((x) => x, { doneText: "End of Devotionals" })
-@ReactMixin.decorate(Headerable)
-class Devotions extends Component {
+class DevotionsWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -81,7 +26,9 @@ class Devotions extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({ title: "All Devotionals" });
+    if (this.headerAction) {
+      this.headerAction({ title: "All Devotionals" });
+    }
   }
 
   handleRefresh = (resolve, reject) => {
@@ -133,6 +80,67 @@ class Devotions extends Component {
   }
 }
 
+const DEVOTIONALS_QUERY = gql`
+  query getDevotionals($limit: Int!, $skip: Int!) {
+    content(channel: "devotionals", limit: $limit, skip: $skip) {
+      id
+      entryId: id
+      title
+      status
+      channelName
+      meta {
+        urlTitle
+        siteId
+        date
+        channelId
+      }
+      content {
+        body
+        images(sizes: ["large"]) {
+          fileName
+          fileType
+          fileLabel
+          url
+        }
+      }
+    }
+  }
+`;
+
+const withDevotionals = graphql(DEVOTIONALS_QUERY, {
+  options: {
+    variables: { limit: 20, skip: 0 },
+  },
+  props: ({ data }) => ({
+    data,
+    loading: data.loading,
+    done: (
+      data.content &&
+      !data.loading &&
+      data.content.length < data.variables.limit + data.variables.skip
+    ),
+    fetchMore: () => data.fetchMore({
+      variables: { ...data.variables, skip: data.content.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult.data) return previousResult;
+        return { content: [...previousResult.content, ...fetchMoreResult.data.content] };
+      },
+    }),
+  }),
+});
+
+const mapStateToProps = (state) => ({ paging: state.paging });
+
+const Devotions = connect(mapStateToProps)(
+  withDevotionals(
+    infiniteScroll((x) => x, { doneText: "End of Devotionals" })(
+      ReactMixin.decorate(Headerable)(
+        DevotionsWithoutData
+      )
+    )
+  )
+);
+
 const Routes = [
   { path: "devotions", component: Devotions },
   { path: "devotions/:id", component: Single },
@@ -141,4 +149,8 @@ const Routes = [
 export default {
   Devotions,
   Routes,
+};
+
+export {
+  DevotionsWithoutData,
 };

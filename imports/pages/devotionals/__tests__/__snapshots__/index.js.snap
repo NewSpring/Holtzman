@@ -1,0 +1,28 @@
+exports[`test renders loading if no content 1`] = `
+<DevotionsWithoutData
+  Loading={[Function]}
+  data={
+    Object {
+      "content": Array [],
+      "loading": false,
+      "refetch": [Function],
+    }
+  }
+  dispatch={[Function]} />
+`;
+
+exports[`test renders with props 1`] = `
+<DevotionsWithoutData
+  Loading={[Function]}
+  data={
+    Object {
+      "content": Array [
+        Object {},
+        Object {},
+      ],
+      "loading": false,
+      "refetch": [Function],
+    }
+  }
+  dispatch={[Function]} />
+`;
