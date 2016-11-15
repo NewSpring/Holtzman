@@ -140,5 +140,5 @@ export {
   dynamicWidth,
   dynamicSize,
   ListItem,
-  List,
+  List as ListWithoutData,
 };

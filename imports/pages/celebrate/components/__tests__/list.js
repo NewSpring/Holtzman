@@ -6,7 +6,7 @@ import {
   dynamicWidth,
   dynamicSize,
   ListItem,
-  List,
+  ListWithoutData as List,
 } from "../list";
 
 describe("getRatio", () => {
