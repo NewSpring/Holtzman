@@ -15,4 +15,5 @@ exports.Meteor = {
   },
   wrapAsync: jest.fn(() => jest.fn(() => {})),
   Error: Error,
+  userId: jest.fn(),
 };
