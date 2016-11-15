@@ -16,7 +16,6 @@ exports[`Update should allow change of fund for an instance of SubFund 1`] = `
       },
     ]
   }
-  monentize={[Function]}
   preFill={[Function]}>
   <div
     className="push-top@handheld soft-half-top@lap-and-up">
@@ -138,7 +137,6 @@ exports[`Update should allow for multiple updates on separate instances of SubFu
       },
     ]
   }
-  monentize={[Function]}
   preFill={[Function]}>
   <div
     className="push-top@handheld soft-half-top@lap-and-up">
@@ -260,7 +258,6 @@ exports[`Update should update state to reflect one fund update 1`] = `
       },
     ]
   }
-  monentize={[Function]}
   preFill={[Function]}>
   <div
     className="push-top@handheld soft-half-top@lap-and-up">
@@ -369,7 +366,6 @@ exports[`test should handle multiple accounts 1`] = `
       },
     ]
   }
-  monentize={[Function]}
   preFill={[Function]}>
   <div
     className="push-top@handheld soft-half-top@lap-and-up">
