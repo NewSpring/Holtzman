@@ -13,11 +13,13 @@ import Subfund from "../Subfund";
 
 jest.mock("../Subfund", () => jest.fn(() => <div />));
 jest.mock("../../checkout-buttons", () => jest.fn(() => <div />));
+jest.useFakeTimers();
 
 const additionalAccounts = [
   { value: 1, label: "TEST 1" },
   { value: 2, label: "TEST 2" },
   { value: 3, label: "TEST 3" },
+  { value: 4, label: "TEST 4" },
 ];
 
 const generateComponent = (additionalProps = {}) => {
@@ -72,11 +74,24 @@ it("should handle multiple accounts", () => {
   expect(component.find("mockConstructor").length).toEqual(3);
 
   // make sure not all accouts are passed to the secondary subfund
-  expect(component.find("mockConstructor").get(1).props.accounts.length).toEqual(2);
+  expect(component.find("mockConstructor").get(1).props.accounts.length).toEqual(3);
 });
 
 describe ("Update", () => {
-  it('should update state to reflect one fund update', () => {
+  it("should return true if an instance exists", () => {
+    const component = mount(generateComponent({accounts: additionalAccounts}));
+    const { instanceExists, update } = component.instance();
+    update(0,1,10);
+    expect(instanceExists(0)).toBeTruthy();
+  });
+
+  it("should return undefined if an instance doesn't exist", () => {
+    const component = mount(generateComponent({accounts: additionalAccounts}));
+    const { instanceExists } = component.instance();
+    expect(instanceExists(0)).toBe(undefined);
+  });
+
+  it("should update state to reflect one fund update", () => {
     const component = mount(generateComponent({accounts: additionalAccounts}));
     const { update } = component.instance();
     update(0, 1, 10);
@@ -120,4 +135,60 @@ describe ("Update", () => {
 
     expect(mountToJson(component)).toMatchSnapshot();
   });
+});
+
+describe("Remove", () => {
+  it("should remove the first instance", () => {
+    const component = mount(generateComponent({accounts: additionalAccounts}));
+    const { update, remove } = component.instance();
+    // seed our instances
+    update(0, 1, 10);
+    update(1, 3, 30);
+    expect(component.state().SubFundInstances).toEqual(3);
+
+    // now remove the first instance
+    remove(0);
+    expect(component.state().SubFundInstances).toEqual(2);
+    // the first subfund now should be the second one we added.
+    expect(component.state().instances[0]).toEqual({id: 1, accountId: 3, amount: 30});
+  });
+
+  it("should remove the second instance", () => {
+    const component = mount(generateComponent({accounts: additionalAccounts}));
+    const { update, remove } = component.instance();
+    // seed our instances
+    update(0, 1, 10);
+    update(1, 3, 30);
+    expect(component.state().SubFundInstances).toEqual(3);
+
+    // now remove the first instance
+    remove(1);
+    expect(component.state().SubFundInstances).toEqual(2);
+    // the first subfund now should still be the first one we added.
+    expect(component.state().instances[0]).toEqual({id: 0, accountId: 1, amount: 10});
+  });
+
+  it("should remove the middle instance", () => {
+    const component = mount(generateComponent({accounts: additionalAccounts}));
+    const { update, remove } = component.instance();
+    // seed our instances
+    // update(key, id, amount);
+    update(0, 1, 10);
+    update(1, 2, 30);
+    update(2, 3, 50);
+    expect(component.state().SubFundInstances).toEqual(4);
+
+    // now remove the first instance
+    // remove(key);
+    remove(1);
+    jest.runAllTimers();
+    expect(component.state().SubFundInstances).toEqual(3);
+    // the first subfund now should still be the first one we added.
+    expect(component.state().instances[0]).toEqual({id: 0, accountId: 1, amount: 10});
+    expect(component.state().instances[1]).toEqual({id: 1, accountId: 3, amount: 50});
+  });
+
+  // XXX not sure how to test this version of the submit function.
+  // it("should click the submit button one time", () => {
+  // });
 });
