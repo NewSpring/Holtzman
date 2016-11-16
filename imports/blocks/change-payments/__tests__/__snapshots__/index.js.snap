@@ -1,3 +1,21 @@
+exports[`changeAccounts dispatches an change to setAccount 1`] = `
+Array [
+  Object {
+    "savedAccount": null,
+    "type": "GIVE.SET_SAVED_ACCOUNT",
+  },
+]
+`;
+
+exports[`changeAccounts dispatches modal.hide() 1`] = `
+Array [
+  Object {
+    "type": "MODAL.SET_VISIBILITY",
+    "visible": false,
+  },
+]
+`;
+
 exports[`changeAccounts takes an event 1`] = `
 <Layout
   changeAccounts={[Function]}
@@ -35,6 +53,27 @@ exports[`changeAccounts takes an event 1`] = `
       },
     }
   } />
+`;
+
+exports[`changeAccounts takes an event 2`] = `
+Array [
+  Object {
+    "type": "MODAL.SET_VISIBILITY",
+    "visible": false,
+  },
+]
+`;
+
+exports[`choose set's a savedAccount state 1`] = `
+Object {
+  "date": "2016-11-16T21:45:41.275Z",
+  "id": 1,
+  "name": "Test Card 1",
+  "payment": Object {
+    "accountNumber": "4111111111111111",
+    "paymentType": "Visa",
+  },
+}
 `;
 
 exports[`test correctly delivers props to child component 1`] = `
