@@ -116,7 +116,6 @@ describe("GiveReviewTemplate", () => {
     };
 
     window.location = { "search": `giveData=${sampleData}`};
-
     const tree = shallow(
       <Template {...giveData} />
     );

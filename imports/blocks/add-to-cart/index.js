@@ -31,9 +31,8 @@ class CartContainer extends Component {
 
       const pl = /\+/g;  // Regex for replacing addition symbol with a spac
       const search = /([^&=]+)=?([^&]*)/g;
-      const decode = (s) => { decodeURIComponent(s.replace(pl, " ")); };
+      const decode = (s) => decodeURIComponent(s.replace(pl, " "));
       const query = window.location.search.substring(1);
-
       const urlParams = {};
 
       while (match = search.exec(query)) {
@@ -105,7 +104,7 @@ class CartContainer extends Component {
 
   render() {
     const { total } = this.props.give;
-    if (!this.props.accounts) return null;
+    if (!this.props.accounts || this.props.accounts.length === 0) return null;
     const accounts = this.props.accounts.map((x) => ({
       label: x.name,
       value: x.id,
