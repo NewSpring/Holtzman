@@ -34,7 +34,7 @@
     ".bin": true,
     ".github": true,
     ".meteor": false,
-    ".storybook": true,
+    ".storybook": false,
     ".types": false,
     ".babelrc": true,
     ".remote": true

@@ -10,9 +10,10 @@ exports.Meteor = {
   isCordova: false,
   settings: {
     public: {
-      heighliner: "/graphql",
+      heighliner: "https://api.newspring.cc/graphql",
     },
   },
   wrapAsync: jest.fn(() => jest.fn(() => {})),
   Error: Error,
+  userId: jest.fn(),
 };
