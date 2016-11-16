@@ -24,10 +24,10 @@ const generateComponent = (additionalProps = {}) => {
 };
 
 const additionalAccounts = [
-  { value: 1, label: "TEST 1" },
-  { value: 2, label: "TEST 2" },
-  { value: 3, label: "TEST 3" },
-  { value: 4, label: "TEST 4" },
+  { id: 1, name: "TEST 1" },
+  { id: 2, name: "TEST 2" },
+  { id: 3, name: "TEST 3" },
+  { id: 4, name: "TEST 4" },
 ];
 
 it("should render with minimal props", () => {

@@ -98,20 +98,20 @@ exports[`test should properly render with multiple accounts 1`] = `
   accounts={
     Array [
       Object {
-        "label": "TEST 1",
-        "value": 1,
+        "id": 1,
+        "name": "TEST 1",
       },
       Object {
-        "label": "TEST 2",
-        "value": 2,
+        "id": 2,
+        "name": "TEST 2",
       },
       Object {
-        "label": "TEST 3",
-        "value": 3,
+        "id": 3,
+        "name": "TEST 3",
       },
       Object {
-        "label": "TEST 4",
-        "value": 4,
+        "id": 4,
+        "name": "TEST 4",
       },
     ]
   }
@@ -122,20 +122,20 @@ exports[`test should properly render with multiple accounts 1`] = `
     accounts={
       Array [
         Object {
-          "label": undefined,
-          "value": undefined,
+          "label": "TEST 1",
+          "value": 1,
         },
         Object {
-          "label": undefined,
-          "value": undefined,
+          "label": "TEST 2",
+          "value": 2,
         },
         Object {
-          "label": undefined,
-          "value": undefined,
+          "label": "TEST 3",
+          "value": 3,
         },
         Object {
-          "label": undefined,
-          "value": undefined,
+          "label": "TEST 4",
+          "value": 4,
         },
       ]
     }
@@ -167,20 +167,20 @@ exports[`test should properly render with multiple accounts 1`] = `
                   accounts={
                     Array [
                       Object {
-                        "label": undefined,
-                        "value": undefined,
+                        "label": "TEST 1",
+                        "value": 1,
                       },
                       Object {
-                        "label": undefined,
-                        "value": undefined,
+                        "label": "TEST 2",
+                        "value": 2,
                       },
                       Object {
-                        "label": undefined,
-                        "value": undefined,
+                        "label": "TEST 3",
+                        "value": 3,
                       },
                       Object {
-                        "label": undefined,
-                        "value": undefined,
+                        "label": "TEST 4",
+                        "value": 4,
                       },
                     ]
                   }
