@@ -1,4 +1,5 @@
 import { monetize } from "../currency";
+import toCurrency from "../currency";
 
 describe ("Monetize", () => {
   it("should handle blank and null input", () => {
@@ -25,5 +26,16 @@ describe ("Monetize", () => {
     expect(monetize(100.5, true)).toEqual("$100.50");
     expect(monetize("0", true)).toEqual("$0.00");
     expect(monetize(0.0, true)).toEqual("$0.00");
+  });
+});
+
+describe("toCurrency", () => {
+  it("should convert number in to string representation of money", () => {
+    expect(toCurrency(24.35)).toBe("$24.35");
+  });
+  it("should always fix to two decimal places", () => {
+    expect(toCurrency(24)).toBe("$24.00");
+    expect(toCurrency(24.3567)).toBe("$24.36");
+    expect(toCurrency(24.3)).toBe("$24.30");
   });
 });

@@ -24,7 +24,9 @@
     "OO": true,
     "RemoteCommand": true,
     "fabric": true,
-    "Media": true
+    "Media": true,
+    "SyntheticInputEvent": true,
+    "React$Element": true
   },
   "rules": {
     "arrow-parens": [2, "always"],

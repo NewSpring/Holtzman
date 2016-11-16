@@ -5,6 +5,7 @@ import defaultRegex from "./defaults";
 
 const Regex = {};
 
+// XXX refactor this
 Regex.addRegex = (name, test, validate) => {
   if (Regex[name]) {
     throw new Error(

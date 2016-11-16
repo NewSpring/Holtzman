@@ -15,7 +15,7 @@ import Loading from "../../components/loading";
 
 // import editorial collection for lookup
 import backgrounds from "../../util/backgrounds";
-import RelatedContent from "../../blocks/content/RelatedContent";
+import RelatedContent from "../../blocks/related-content";
 
 import SingleVideoPlayer from "../../components/players/video/Player";
 

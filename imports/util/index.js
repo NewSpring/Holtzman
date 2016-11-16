@@ -10,6 +10,7 @@ import regex from "./regex";
 import rock from "./rock";
 import validate from "./validate";
 import Debouncer from "./debounce";
+import isIOS from "./isIOS";
 
 const parseXML = XML.parse;
 
@@ -24,4 +25,5 @@ export {
   rock,
   Debouncer,
   validate,
+  isIOS,
 };

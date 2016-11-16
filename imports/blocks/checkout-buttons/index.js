@@ -21,7 +21,7 @@ import ChangePayments from "../change-payments";
 
 import Layout from "./Layout";
 
-const SAVED_ACCTS_QUERY = gql`
+export const SAVED_ACCTS_QUERY = gql`
   query GetSavedPaymentAccounts($cache: Boolean) {
     savedPayments(cache: $cache) {
       name, id: entityId, date,
@@ -31,7 +31,7 @@ const SAVED_ACCTS_QUERY = gql`
 `;
 
 // XXX remove cache: false when heighliner caching is tested
-const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
+export const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
   name: "savedPayments",
   options: () => ({
     variables: {
@@ -52,10 +52,12 @@ const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
   3. Give as guest (in small text) if not signed in
 
 */
-const mapStateToProps = (store) => ({
+export const mapStateToProps = (store: Object) => ({
   authorized: store.accounts.authorized,
   savedAccount: store.give.savedAccount,
 });
+
+export const withState = connect(mapStateToProps);
 
 type ICheckoutButtons = {
   authorized: boolean,
@@ -73,8 +75,6 @@ type ICheckoutButtons = {
   theme: string,
   value: string,
 };
-
-export const withState = connect(mapStateToProps);
 
 class CheckoutButtons extends Component {
   props: ICheckoutButtons;
