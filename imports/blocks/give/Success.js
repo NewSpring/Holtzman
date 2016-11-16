@@ -46,11 +46,11 @@ const AdditionalMessage = ({ additionalMessage }: IAdditionalMessage) => {
 
 type ICreateAccountFromGuest = {
   guest: boolean,
-  onClick: Function,
+  onClick?: Function,
 };
 
 const CreateAccountFromGuest = ({ guest, onClick }: ICreateAccountFromGuest) => {
-  if (!guest) return null;
+  if (!guest || !onClick) return null;
   return (
     <div>
       <p className="text-left">
@@ -89,7 +89,7 @@ type ISuccess = {
   total: string,
   email: string,
   guest: boolean,
-  onClick: Function,
+  onClick?: Function,
   schedules?: Object[],
   additionalMessage?: string,
 };

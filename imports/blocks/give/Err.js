@@ -7,7 +7,7 @@ const STEP_ONE_MESSAGE = "Try Again";
 const CONTACT_MESSAGE = "If you would like a member of our customer support team to follow up with you regarding this error, click";
 
 type IStepOneAction = {
-  goToStepOne: Function,
+  goToStepOne?: Function,
 };
 
 const StepOneAction = ({ goToStepOne }: IStepOneAction) => {
@@ -50,7 +50,7 @@ const ContactUs = () => (
 
 type IErr = {
   msg: string,
-  goToStepOne: Function,
+  goToStepOne?: Function,
   additionalMessage?: string,
 };
 
