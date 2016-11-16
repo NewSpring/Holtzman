@@ -9,6 +9,9 @@ window.jest = {
   fn: (method = () => {}) => method
 }
 
+window.jest = {
+  fn: (method = () => {}) => method
+}
 
 setOptions({
   name: 'Holtzmann',

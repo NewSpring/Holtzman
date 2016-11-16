@@ -1,5 +1,4 @@
 // @flow
-
 import { Component } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
@@ -10,12 +9,13 @@ import Layout from "./Layout";
 // XXX add skip if no tags
 
 /* eslint-disable max-len */
-const RELATED_CONTENT_QUERY = gql`
+export const RELATED_CONTENT_QUERY = gql`
   query GetRelatedContent($tags: [String], $includeChannels: [String], $limit: Int, $excludedIds: [String]) {
     taggedContent(tags: $tags, limit: $limit, includeChannels: $includeChannels, excludedIds: $excludedIds) {
       entryId: id
       id
       title
+      channel: channelName
       channelName
       parent {
         entryId: id
@@ -41,7 +41,7 @@ const RELATED_CONTENT_QUERY = gql`
 `;
 
 const defaultArray = [];
-const withContent = graphql(RELATED_CONTENT_QUERY, {
+export const withRelatedContent = graphql(RELATED_CONTENT_QUERY, {
   name: "content",
   options: (ownProps) => ({
     variables: {
@@ -53,16 +53,13 @@ const withContent = graphql(RELATED_CONTENT_QUERY, {
   }),
 });
 
-type IRelatedContent = {
+type ITemplate = {
   content: Object,
   title: string,
 };
 
-// $FlowMeteor
-@connect()
-@withContent
-export default class RelatedContent extends Component {
-  props: IRelatedContent
+export class Template extends Component {
+  props: ITemplate
 
   static defaultProps = {
     title: "More Like This",
@@ -81,3 +78,5 @@ export default class RelatedContent extends Component {
     );
   }
 }
+
+export default withRelatedContent(connect()(Template));

@@ -12,8 +12,7 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flow:stop": "flow stop",
     "storybook": "start-storybook -p 6006 -s ./public",
-    "build-storybook": "node ./.bin/index.js setup && build-storybook -s public -o docs",
-    "coverage": "jest --coverage"
+    "build-storybook": "node ./.bin/index.js setup && build-storybook -s public -o docs"
   },
   "repository": {
     "type": "git",
@@ -39,7 +38,9 @@
     "moduleNameMapper": {
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
-    "setupFiles": ["<rootDir>/.scripts/before_test.js"]
+    "setupFiles": [
+      "<rootDir>/.scripts/before_test.js"
+    ]
   },
   "apollos": {
     "settings": "./.meteor/settings.json",
@@ -75,7 +76,7 @@
   },
   "dependencies": {
     "aphrodite": "https://github.com/NewSpring/aphrodite.git#release",
-    "apollo-client": "^0.4.21",
+    "apollo-client": "^0.5.3",
     "audio5": "^0.1.10",
     "bcrypt": "^0.8.7",
     "bluebird": "^3.4.6",
@@ -92,10 +93,9 @@
     "lodash.find": "^4.4.0",
     "meteor-node-stubs": "^0.2.3",
     "moment": "^2.14.1",
-    "node-sass": "3.4.2",
     "react": "^15.0.0",
     "react-addons-pure-render-mixin": "^15.1.0",
-    "react-apollo": "^0.5.11",
+    "react-apollo": "^0.6.0",
     "react-async-script-loader": "^0.2.1",
     "react-controllables": "^0.6.0",
     "react-day-picker": "^2.3.3",
@@ -169,7 +169,7 @@
     "jest-cli": "^16.0.2",
     "json-loader": "^0.5.4",
     "mkdirp": "^0.5.1",
-    "node-sass": "^3.5.1",
+    "node-sass": "^3.4.2",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.3.2",
     "react-storybook-addon-backgrounds": "0.0.7",
