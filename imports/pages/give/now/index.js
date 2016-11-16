@@ -8,25 +8,7 @@ import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
 
-const ACCOUNTS_QUERY = gql`
-  query GetFinancialAccounts {
-    accounts {
-      description
-      name
-      id: entityId
-      summary
-      image
-      order
-      images { fileName, fileType, fileLabel, s3, cloudfront }
-    }
-  }
-`;
-
-const withAccounts = graphql(ACCOUNTS_QUERY, { name: "accounts" });
-
-@connect()
-@withAccounts
-class Page extends Component {
+class PageWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
@@ -44,6 +26,28 @@ class Page extends Component {
   }
 }
 
+const ACCOUNTS_QUERY = gql`
+  query GetFinancialAccounts {
+    accounts {
+      description
+      name
+      id: entityId
+      summary
+      image
+      order
+      images { fileName, fileType, fileLabel, s3, cloudfront }
+    }
+  }
+`;
+
+const withAccounts = graphql(ACCOUNTS_QUERY, { name: "accounts" });
+
+const Page = connect()(
+  withAccounts(
+    PageWithoutData
+  )
+);
+
 // Bind reactive data to component
 const TemplateWithData = createContainer(() => {
   let alive = true;
@@ -53,7 +57,6 @@ const TemplateWithData = createContainer(() => {
   ((props) => <Page {...props} />)
 );
 
-
 const Routes = [
   { path: "now", component: TemplateWithData },
 ];
@@ -61,4 +64,8 @@ const Routes = [
 export default {
   TemplateWithData,
   Routes,
+};
+
+export {
+  PageWithoutData,
 };
