@@ -24,10 +24,6 @@ const story = storiesOf("Add To Cart", module)
   .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
   ;
 
-// We don't use description quite yet. As such, it's not really styled.
-// So let's not pass it on this story.
-// description={text("description", "MiniCard description")}
-
 story
   .add("With one account", withReadme(Readme, () => {
     const name = text("Fund", "General Fund");
