@@ -1,0 +1,15 @@
+exports[`test should render with minimal props 1`] = `
+<Layout
+  accounts={
+    Array [
+      Object {
+        "label": "test",
+        "value": "1",
+      },
+    ]
+  }
+  format={[Function]}
+  preFill={[Function]}
+  save={[Function]}
+  transactions={Object {}} />
+`;

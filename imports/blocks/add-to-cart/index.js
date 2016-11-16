@@ -122,7 +122,6 @@ class CartContainer extends Component {
       <Layout
         accounts={accounts}
         save={this.saveData}
-        monentize={monetize}
         format={this.format}
         preFill={this.preFillValue}
         total={total}
