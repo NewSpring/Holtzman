@@ -1,7 +1,7 @@
 
 // import renderer from "react-test-renderer";
-import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
+import { shallow, mount } from "enzyme";
+import { mountToJson } from "enzyme-to-json";
 import { ChangePaymentsWithoutData as ChangePayments, map } from "../";
 
 it("maps savedAccount to state", () => {
@@ -38,7 +38,7 @@ const accountShape = [
 const currentAccount = {
     name: "Test Card 1",
     id: 1,
-    date: new Date().toISOString(),
+    date: "2016-11-16T21:45:41.275Z",
     payment: {
       accountNumber: "4111111111111111",
       paymentType: "Visa",
@@ -116,5 +116,34 @@ describe("choose", () => {
     choose(mockedEvent);
     const savedAccountState = component.instance().state.savedAccount;
     expect(savedAccountState).toMatchSnapshot();
+  });
+});
+
+describe("renders layout", () => {
+
+  it("sets selectedAccount", () => {
+    const renderedLayout = mount(
+      <ChangePayments
+        savedAccounts={accountShape}
+        currentAccount={currentAccount}
+        dispatch={jest.fn()}
+      />
+    );
+
+    const selectedAccount = renderedLayout.find("Layout").get(0).props.selectedAccount;
+    expect(selectedAccount).toMatchSnapshot();
+  });
+
+  it("correctly delivers props to layout", () => {
+
+    const renderedLayout = mount(
+      <ChangePayments
+        savedAccounts={accountShape}
+        currentAccount={currentAccount}
+        dispatch={jest.fn()}
+      />
+    );
+
+    expect(mountToJson(renderedLayout)).toMatchSnapshot();
   });
 });

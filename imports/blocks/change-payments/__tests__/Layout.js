@@ -3,7 +3,7 @@ import Layout from "../Layout";
 import PaymentCard from "../paymentCard";
 
 // // Mock the payment card
-// jest.mock("../paymentCard")
+jest.mock("../paymentCard")
 
 let accountResponse;
 
@@ -12,7 +12,7 @@ beforeEach(() => {
     {
       name: "Test Card 1",
       id: 1,
-      date: new Date().toISOString(),
+      date: "2016-11-16T21:45:41.275Z",
       payment: {
         accountNumber: "4111111111111111",
         paymentType: "Visa",
@@ -21,7 +21,7 @@ beforeEach(() => {
     {
       name: "Test Card 2",
       id: 2,
-      date: new Date().toISOString(),
+      date: "2016-11-16T21:45:41.275Z",
       payment: {
         accountNumber: "4111111111111111",
         paymentType: "Visa",
@@ -35,32 +35,30 @@ afterEach(() => {
 });
 
 it("correctly delivers props to child component", () => {
-  // Mock the implimentation of payment card
-  // PaymentCard.mockImplementation(props => null);
+  PaymentCard.mockImplementation(props => null);
 
-  // const layout = renderer.create(
-  //   <Layout
-  //     savedAccounts={accountResponse}
-  //     selectedAccount="1"
-  //     chooseAccount={() => {}}
-  //     changeAccounts={() => {}}
-  //   />
-  // );
+  const layout = renderer.create(
+    <Layout
+      savedAccounts={accountResponse}
+      selectedAccount="1"
+      chooseAccount={() => {}}
+      changeAccounts={() => {}}
+    />
+  );
 
-  // expect(PaymentCard).toHaveBeenCalledTimes(2);
-  expect(true).toBe(true);
+  expect(PaymentCard).toHaveBeenCalledTimes(2);
 });
 
-// it("correctly delivers props to the layout", () => {
+it("correctly delivers props to the layout", () => {
 
-//   const layout = renderer.create(
-//     <Layout
-//       savedAccounts={accountResponse}
-//       selectedAccount="1"
-//       chooseAccount={() => {}}
-//       changeAccounts={() => {}}
-//     />
-//   );
+  const layout = renderer.create(
+    <Layout
+      savedAccounts={accountResponse}
+      selectedAccount="1"
+      chooseAccount={() => {}}
+      changeAccounts={() => {}}
+    />
+  );
 
-//   expect(layout).toMatchSnapshot();
-// });
+  expect(layout).toMatchSnapshot();
+});
