@@ -1,39 +1,82 @@
-import { PropTypes } from "react";
+// @flow
+
 import { Error } from "../../components/icons";
 
-const Err = ({ msg, goToStepOne, additionalMessage }) => (
+const ERROR_HEADING = "Uh Oh! Looks like there was a problem processing your contribution!";
+const STEP_ONE_MESSAGE = "Try Again";
+const CONTACT_MESSAGE = "If you would like a member of our customer support team to follow up with you regarding this error, click";
+
+type IStepOneAction = {
+  goToStepOne: Function,
+};
+
+const StepOneAction = ({ goToStepOne }: IStepOneAction) => {
+  if (!goToStepOne) return null;
+  return (
+    <div className="one-whole text-center soft-ends">
+      <button onClick={goToStepOne} className="btn--small btn--dark-tertiary one-whole">
+        {STEP_ONE_MESSAGE}
+      </button>
+    </div>
+  );
+};
+
+type IAdditionalMessage = {
+  additionalMessage?: string,
+};
+
+const AdditionalMessage = ({ additionalMessage }: IAdditionalMessage) => {
+  if (!additionalMessage) return null;
+  return <h5>{additionalMessage}</h5>;
+};
+
+const ContactLink = () => (
+  <a
+    target="_blank"
+    rel="noopener noreferrer"
+    href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
+  >
+    here
+  </a>
+);
+
+const ContactUs = () => (
+  <p className="test-dark-tertiary text-left">
+    <em>
+      {CONTACT_MESSAGE} <ContactLink />
+    </em>
+  </p>
+);
+
+type IErr = {
+  msg: string,
+  goToStepOne: Function,
+  additionalMessage?: string,
+};
+
+const Err = ({ msg, goToStepOne, additionalMessage }: IErr) => (
   <div className="soft soft-double-ends push-double-top one-whole text-center">
     <div className="push-double-top">
       <Error />
-      <h3 className="text-alert push-ends">Uh Oh! Looks like there was a problem processing your contribution!</h3>
+      <h3 className="text-alert push-ends">{ERROR_HEADING}</h3>
       <p className="text-left">
         {msg}
       </p>
 
-      {goToStepOne && (
-        <div className="one-whole text-center soft-ends">
-          <button onClick={goToStepOne} className="btn--small btn--dark-tertiary one-whole">
-            Try Again
-          </button>
-        </div>
-        )
-      }
+      <StepOneAction goToStepOne={goToStepOne} />
 
-      { additionalMessage &&
-        (<h5>{additionalMessage}</h5>)
-      }
+      <AdditionalMessage additionalMessage={additionalMessage} />
 
-      <p className="test-dark-tertiary text-left"><em>
-        If you would like a member of our customer support team to follow up with you regarding this error, click <a target="_blank" rel="noopener noreferrer" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">here</a>
-      </em></p>
+      <ContactUs />
     </div>
   </div>
 );
 
-Err.propTypes = {
-  msg: PropTypes.string.isRequired,
-  goToStepOne: PropTypes.func.isRequired,
-  additionalMessage: PropTypes.string.isRequired,
-};
-
 export default Err;
+
+export {
+  StepOneAction,
+  AdditionalMessage,
+  ContactLink,
+  ContactUs,
+};

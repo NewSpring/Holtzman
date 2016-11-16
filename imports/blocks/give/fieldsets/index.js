@@ -1,8 +1,9 @@
+// @flow
 
-import Personal from "./Personal";
-import Billing from "./Billing";
-import Payment from "./Payment";
-import Confirm from "./Confirm";
+import Personal from "./personal";
+import Billing from "./billing";
+import Payment from "./payment";
+import Confirm from "./confirm";
 
 export {
   Personal,
