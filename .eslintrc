@@ -25,6 +25,7 @@
     "RemoteCommand": true,
     "fabric": true,
     "Media": true,
+    "FormElement": true,
     "SyntheticInputEvent": true,
     "React$Element": true
   },
@@ -56,7 +57,8 @@
     "import/core-modules": [
       "meteor/meteor",
       "meteor/accounts-base",
-      "meteor/mongo"
+      "meteor/mongo",
+      "meteor/bjwiley2:server-watch",
     ]
   }
 }

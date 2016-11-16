@@ -1,47 +1,85 @@
-import { Component, PropTypes } from "react";
+// @flow
+
 import Moment from "moment";
 import { css } from "aphrodite";
+import { Component } from "react";
 
+import TertiaryPhrase from "./phrases";
 import Forms from "../../components/forms";
 import CheckoutButtons from "../checkout-buttons";
 import Styles from "./styles-css";
 
-export default class Layout extends Component {
+type ILayout = {
+    accounts: Object[],
+    existing: Object,
+    format: Function,
+    onSubmitSchedule: Function,
+    ready: boolean,
+    save: Function,
+    saveDate: Function,
+    schedules: Object[],
+    setFrequency: Function,
+    setFund: Function,
+    state: Object,
+    text: string,
+    total: number,
+};
 
-  static propTypes = {
-    schedules: PropTypes.array,
-    save: PropTypes.func,
-    accounts: PropTypes.array, // eslint-disable-line
-    setFund: PropTypes.func,
-    state: PropTypes.object,
-    format: PropTypes.func,
-    total: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    saveDate: PropTypes.func,
-    setFrequency: PropTypes.func,
-    existing: PropTypes.string,
-    ready: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]), // XXX fix
-    text: PropTypes.string,
-    onSubmitSchedule: PropTypes.func,
-    dataId: PropTypes.string,
-  }
+// this definition of Layout won't render
+// const Layout = ({
+//   accounts,
+//   existing,
+//   format,
+//   onSubmitSchedule,
+//   ready,
+//   save,
+//   saveDate,
+//   schedules,
+//   setFrequency,
+//   setFund,
+//   state,
+//   text,
+//   total,
+// }: ILayout) => {
+
+// this definition of Layout works
+class Layout extends Component {
+
+  props: ILayout;
 
   render() {
-    let { total } = this.props;
     const {
+      accounts,
+      existing,
+      format,
+      onSubmitSchedule,
+      ready,
+      save,
+      saveDate,
       schedules,
       setFrequency,
-      accounts,
       setFund,
       state,
-      save,
-      format,
-      saveDate,
-      existing,
-      ready,
+      text,
+      total,
     } = this.props;
 
-    if (!total) {
-      total = 0;
+/* end flip flop comment section */
+    const formClasses = [
+      "flush-bottom",
+      "h3",
+      "hard-top",
+      "outlined--dotted",
+      "outlined--light",
+    ];
+
+    let disableCheckout = false;
+    if (!total || total <= 0 || !ready) {
+      disableCheckout = true;
+    }
+
+    if (!accounts || accounts.length === 0) {
+      return null;
     }
 
     let prefillFund = accounts[0].value;
@@ -49,10 +87,20 @@ export default class Layout extends Component {
       prefillFund = existing.details[0].account.id;
     }
 
-    // let defaultDate = Moment().add(1, "days")
-    let defaultDate;
+    // require the user to choose a date instead of assuming current day
+    let defaultDate = null;
     if (existing && existing.next && new Date(existing.next) > new Date()) {
       defaultDate = new Date(existing.next);
+    }
+
+    let formInputDefaultValue = null;
+    if (existing && existing.details && existing.details.length && existing.details[0].amount) {
+      formInputDefaultValue = `$${existing.details[0].amount}`;
+    }
+
+    let formSelectDefaultValue = null;
+    if (existing && existing.schedule) {
+      formSelectDefaultValue = existing.schedule.value;
     }
 
     return (
@@ -62,10 +110,10 @@ export default class Layout extends Component {
           submit={(e) => { e.preventDefault(); }}
           id="add-to-cart"
         >
-
-          <h3 className="text-dark-tertiary display-inline-block push-half-bottom push-half-right">
-            I&#39;d like to give &nbsp;
-          </h3>
+          <TertiaryPhrase
+            additionalClasses="push-half-right"
+            text="I'd like to give&nbsp;"
+          />
           <Forms.Input
             id={state.fundId || -1}
             name={state.fundLabel || "primary-account"}
@@ -73,16 +121,16 @@ export default class Layout extends Component {
             type={Meteor.isCordova ? "text" : "tel"}
             ref="primary-account"
             classes={["soft-bottom", "input--active", "display-inline-block"]}
-            inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
+            inputClasses={`${formClasses.join(" ")} text-dark-primary ${css(Styles["show-placeholder"])}`}
             placeholder="$0.00"
             validate={save}
             format={format}
             style={{ width: "200px" }}
-            defaultValue={existing && existing.details && existing.details.length && existing.details[0].amount ? `$${existing.details[0].amount}` : null}
+            defaultValue={formInputDefaultValue}
           />
-          <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
-            to&nbsp;
-          </h3>
+          <TertiaryPhrase
+            text="to&nbsp;"
+          />
           <Forms.Select
             items={accounts}
             name="select-account"
@@ -90,14 +138,14 @@ export default class Layout extends Component {
             hideLabel
             ref="select-account"
             classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
-            inputClasses={"outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary"}
+            inputClasses={`${formClasses.join(" ")} text-light-tertiary`}
             placeholder="select fund here"
             onChange={setFund}
             defaultValue={prefillFund}
           />
-          <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
-            &nbsp;
-          </h3>
+          <TertiaryPhrase
+            text="&nbsp;"
+          />
           <Forms.Select
             items={schedules}
             name="schedules"
@@ -105,23 +153,22 @@ export default class Layout extends Component {
             hideLabel
             ref="schedules"
             classes={["soft-bottom", "display-inline-block", css(Styles.select)]}
-            inputClasses={"outlined--dotted outlined--light h3 hard-top flush-bottom text-light-tertiary"}
+            inputClasses={`${formClasses.join(" ")} text-light-tertiary`}
             includeBlank
             placeholder="choose frequency"
             onChange={setFrequency}
-            defaultValue={existing && existing.schedule ? existing.schedule.value : null}
+            defaultValue={formSelectDefaultValue}
           />
-          <h3 className="text-dark-tertiary display-inline-block push-half-bottom">
-            &nbsp; starting &nbsp;
-          </h3>
-
+          <TertiaryPhrase
+            text="&nbsp;starting&nbsp;"
+          />
           <Forms.Date
             id="start-date"
             name="start-date"
             hideLabel
             ref="start-date"
             classes={["soft-bottom", "input--active", "display-inline-block"]}
-            inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
+            inputClasses={`${formClasses.join(" ")} text-dark-primary ${css(Styles["show-placeholder"])}`}
             placeholder="select date"
             past={false}
             today={false}
@@ -129,19 +176,17 @@ export default class Layout extends Component {
             validation={saveDate}
             defaultValue={defaultDate}
           />
-
           <div className="push-top">
             <CheckoutButtons
-              disabled={total <= 0 || !ready}
-              disabledGuest
-              text={this.props.text || "Schedule Now"}
-              onClick={this.props.onSubmitSchedule}
-              dataId={this.props.dataId}
+              disabled={disableCheckout}
+              onClick={onSubmitSchedule}
+              text={text || "Schedule Now"}
             />
           </div>
-
         </Forms.Form>
       </div>
     );
   }
 }
+
+export default Layout;

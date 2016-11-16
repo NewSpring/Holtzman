@@ -1,0 +1,1145 @@
+exports[`Layout disables checkout when not ready 1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="General Fund"
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={true}
+        text="Schedule Now" />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`Layout disables checkout when total is negative 1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="General Fund"
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={true}
+        text="Schedule Now" />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`Layout disables checkout when total is positive but not ready 1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="General Fund"
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={true}
+        text="Schedule Now" />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`Layout disables checkout when total is undefined 1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="General Fund"
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={true}
+        text="Schedule Now" />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`Layout enables checkout when total is positive and ready 1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="General Fund"
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={false}
+        text="Schedule Now" />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`Layout renders null if no accounts exist 1`] = `null`;
+
+exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue="$10"
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="General Fund"
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={false}
+        text="Schedule Now" />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`Layout renders the prefilled date for an existing schedule  1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="General Fund"
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={2025-02-01T05:00:00.000Z}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={false}
+        text="Schedule Now" />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`Layout renders the prefilled frequency for an existing schedule  1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="General Fund"
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="Monthly"
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={false}
+        text="Schedule Now" />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={180}
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={false}
+        text="Schedule Now" />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`Layout renders when accounts & state exist 1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="General Fund"
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={true}
+        text="Schedule Now" />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`Layout renders with custom text 1`] = `
+<div
+  className="push-top@handheld soft-half-top@lap-and-up">
+  <Form
+    classes={
+      Array [
+        "text-left",
+        "hard",
+      ]
+    }
+    id="add-to-cart"
+    submit={[Function]}>
+    <TertiaryPhrase
+      additionalClasses="push-half-right"
+      text="I\'d like to give " />
+    <Input
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id={-1}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="primary-account"
+      placeholder="$0.00"
+      style={
+        Object {
+          "width": "200px",
+        }
+      }
+      type="tel" />
+    <TertiaryPhrase
+      text="to " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue="General Fund"
+      hideLabel={true}
+      id="select"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      items={
+        Array [
+          Object {
+            "value": "General Fund",
+          },
+        ]
+      }
+      name="select-account"
+      placeholder="select fund here" />
+    <TertiaryPhrase
+      text=" " />
+    <Select
+      classes={
+        Array [
+          "soft-bottom",
+          "display-inline-block",
+          "select_1rryh47",
+        ]
+      }
+      defaultValue={null}
+      hideLabel={true}
+      id="schedules"
+      includeBlank={true}
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-light-tertiary"
+      name="schedules"
+      placeholder="choose frequency" />
+    <TertiaryPhrase
+      text=" starting " />
+    <DateComponent
+      classes={
+        Array [
+          "soft-bottom",
+          "input--active",
+          "display-inline-block",
+        ]
+      }
+      defaultValue={null}
+      format={[Function]}
+      hideLabel={true}
+      id="start-date"
+      inputClasses="flush-bottom h3 hard-top outlined--dotted outlined--light text-dark-primary show-placeholder_1bkmqm1"
+      name="start-date"
+      past={false}
+      placeholder="select date"
+      today={false} />
+    <div
+      className="push-top">
+      <Connect(Apollo(CheckoutButton))
+        disabled={true}
+        text="Make Schedules Now" />
+    </div>
+  </Form>
+</div>
+`;

@@ -77,6 +77,7 @@ type ICheckoutButtons = {
 };
 
 export class CheckoutButton extends Component {
+
   props: ICheckoutButtons;
 
   state = {
@@ -174,10 +175,10 @@ export class CheckoutButton extends Component {
 
         authorized={this.props.authorized}
         classes={this.props.classes}
-        dataId={this.props.dataId}
         disabled={this.props.disabled}
         disabledGuest={this.props.disabledGuest}
         hideCard={this.props.hideCard}
+        dataId={this.props.dataId}
         savedPayments={this.props.savedPayments.savedPayments}
         style={this.props.style}
         text={this.props.text}
