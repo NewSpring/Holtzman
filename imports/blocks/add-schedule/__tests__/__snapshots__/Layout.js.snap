@@ -94,7 +94,7 @@ exports[`Layout disables checkout when not ready 1`] = `
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={true}
         text="Schedule Now" />
     </div>
@@ -198,7 +198,7 @@ exports[`Layout disables checkout when total is negative 1`] = `
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={true}
         text="Schedule Now" />
     </div>
@@ -302,7 +302,7 @@ exports[`Layout disables checkout when total is positive but not ready 1`] = `
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={true}
         text="Schedule Now" />
     </div>
@@ -406,7 +406,7 @@ exports[`Layout disables checkout when total is undefined 1`] = `
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={true}
         text="Schedule Now" />
     </div>
@@ -510,7 +510,7 @@ exports[`Layout enables checkout when total is positive and ready 1`] = `
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={false}
         text="Schedule Now" />
     </div>
@@ -616,7 +616,7 @@ exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={false}
         text="Schedule Now" />
     </div>
@@ -709,7 +709,7 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
           "display-inline-block",
         ]
       }
-      defaultValue={2025-02-01T00:00:00.000Z}
+      defaultValue={2025-02-01T05:00:00.000Z}
       format={[Function]}
       hideLabel={true}
       id="start-date"
@@ -720,7 +720,7 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={false}
         text="Schedule Now" />
     </div>
@@ -824,7 +824,7 @@ exports[`Layout renders the prefilled frequency for an existing schedule  1`] = 
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={false}
         text="Schedule Now" />
     </div>
@@ -928,7 +928,7 @@ exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={false}
         text="Schedule Now" />
     </div>
@@ -1032,7 +1032,7 @@ exports[`Layout renders when accounts & state exist 1`] = `
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={true}
         text="Schedule Now" />
     </div>
@@ -1136,7 +1136,7 @@ exports[`Layout renders with custom text 1`] = `
       today={false} />
     <div
       className="push-top">
-      <Apollo(Connect(CheckoutButtons))
+      <Connect(Apollo(CheckoutButton))
         disabled={true}
         text="Make Schedules Now" />
     </div>

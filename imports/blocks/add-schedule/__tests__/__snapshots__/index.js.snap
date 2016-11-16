@@ -8,7 +8,7 @@ exports[`CartContainer receives props and resets the form 1`] = `
       },
     ]
   }
-  date={2025-02-01T00:00:00.000Z}
+  date={2025-02-01T05:00:00.000Z}
   existing={
     Object {
       "details": Array [
@@ -21,7 +21,7 @@ exports[`CartContainer receives props and resets the form 1`] = `
         },
       ],
       "frequency": "Monthly",
-      "start": 2025-02-01T00:00:00.000Z,
+      "start": 2025-02-01T05:00:00.000Z,
     }
   }
   format={[Function]}
@@ -57,7 +57,7 @@ exports[`CartContainer receives props and resets the form 1`] = `
       "frequency": "Monthly",
       "fundId": 180,
       "fundLabel": "Step Up",
-      "startDate": 2025-02-01T00:00:00.000Z,
+      "startDate": 2025-02-01T05:00:00.000Z,
     }
   }
   text=""
@@ -74,7 +74,7 @@ exports[`CartContainer renders checkout ready when schedule is valid 1`] = `
       },
     ]
   }
-  date={2025-02-01T00:00:00.000Z}
+  date={2025-02-01T05:00:00.000Z}
   existing={
     Object {
       "details": Array [
@@ -87,7 +87,7 @@ exports[`CartContainer renders checkout ready when schedule is valid 1`] = `
         },
       ],
       "frequency": "Monthly",
-      "start": 2025-02-01T00:00:00.000Z,
+      "start": 2025-02-01T05:00:00.000Z,
     }
   }
   format={[Function]}
@@ -123,7 +123,7 @@ exports[`CartContainer renders checkout ready when schedule is valid 1`] = `
       "frequency": "Monthly",
       "fundId": 180,
       "fundLabel": "Step Up",
-      "startDate": 2025-02-01T00:00:00.000Z,
+      "startDate": 2025-02-01T05:00:00.000Z,
     }
   }
   text=""
