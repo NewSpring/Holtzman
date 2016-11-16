@@ -1,5 +1,6 @@
 import { PropTypes } from "react";
 import { Link } from "react-router";
+import { Meteor } from "meteor/meteor";
 
 import Meta from "../../../components/meta";
 

@@ -1,0 +1,198 @@
+exports[`test renders loading 1`] = `
+<div>
+  <Connect(SplitContainer)>
+    <Right
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false} />
+  </Connect(SplitContainer)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}>
+    <div
+      className="soft-double text-center">
+      <Loading />
+    </div>
+  </Left>
+</div>
+`;
+
+exports[`test renders with props 1`] = `
+<div>
+  <Connect(SplitContainer)>
+    <Right
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false}>
+      <ControllableWrapper
+        autoCenter={true}
+        markers={
+          Array [
+            Object {
+              "latitude": 2,
+              "longitude": 2,
+            },
+          ]
+        } />
+    </Right>
+  </Connect(SplitContainer)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}>
+    <Layout
+      group={
+        Object {
+          "entityId": "1",
+          "locations": Array [
+            Object {
+              "location": Object {
+                "latitude": 2,
+                "longitude": 2,
+              },
+            },
+          ],
+          "members": Array [
+            Object {
+              "role": "default",
+            },
+            Object {
+              "role": "leader",
+            },
+          ],
+          "photo": "http://test.com/test.jpg",
+        }
+      }
+      isLeader={1}
+      join={[Function]}
+      leaders={
+        Array [
+          Object {
+            "role": "leader",
+          },
+        ]
+      } />
+  </Left>
+</div>
+`;
+
+exports[`test renders without map on mobile 1`] = `
+<div>
+  <Connect(SplitContainer)>
+    <Right
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false} />
+  </Connect(SplitContainer)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}>
+    <Layout
+      group={
+        Object {
+          "entityId": "1",
+          "locations": Array [
+            Object {
+              "location": Object {
+                "latitude": 2,
+                "longitude": 2,
+              },
+            },
+          ],
+          "members": Array [
+            Object {
+              "role": "default",
+            },
+            Object {
+              "role": "leader",
+            },
+          ],
+          "photo": "http://test.com/test.jpg",
+        }
+      }
+      isLeader={1}
+      join={[Function]}
+      leaders={
+        Array [
+          Object {
+            "role": "leader",
+          },
+        ]
+      } />
+  </Left>
+</div>
+`;
+
+exports[`test renders without map on server 1`] = `
+<div>
+  <Connect(SplitContainer)>
+    <Right
+      classes={
+        Array [
+          "background--left",
+        ]
+      }
+      mobile={false} />
+  </Connect(SplitContainer)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}>
+    <Layout
+      group={
+        Object {
+          "entityId": "1",
+          "locations": Array [
+            Object {
+              "location": Object {
+                "latitude": 2,
+                "longitude": 2,
+              },
+            },
+          ],
+          "members": Array [
+            Object {
+              "role": "default",
+            },
+            Object {
+              "role": "leader",
+            },
+          ],
+          "photo": "http://test.com/test.jpg",
+        }
+      }
+      isLeader={1}
+      join={[Function]}
+      leaders={
+        Array [
+          Object {
+            "role": "leader",
+          },
+        ]
+      } />
+  </Left>
+</div>
+`;
