@@ -15,7 +15,10 @@ const defaultProps = {
   dispatch: jest.fn(),
   tags: "one,two",
   location: {},
-  router: {},
+  router: {
+    createPath: jest.fn(),
+    replace: jest.fn(),
+  },
   done: false,
   loading: false,
   Loading: jest.fn(),
@@ -133,4 +136,47 @@ it("getMarkers returns markers", () => {
       id: group2.id,
     },
   ]);
+});
+
+it("toggleSearch change show search state", () => {
+  const wrapper = shallow(generateComponent());
+  expect(wrapper.state().showSearch).toBe(true);
+  wrapper.instance().toggleSearch();
+  expect(wrapper.state().showSearch).toBe(false);
+  wrapper.instance().toggleSearch();
+  expect(wrapper.state().showSearch).toBe(true);
+});
+
+it("toggleSearch change show search state", () => {
+  const wrapper = shallow(generateComponent());
+  expect(wrapper.state().showTags).toBe(false);
+  wrapper.instance().toggleTags();
+  expect(wrapper.state().showTags).toBe(true);
+  wrapper.instance().toggleTags();
+  expect(wrapper.state().showTags).toBe(false);
+});
+
+it("removeQueryString calls preventDefault", () => {
+  const wrapper = shallow(generateComponent());
+  const mockPreventDefault = jest.fn();
+  wrapper.instance().removeQueryString({
+    preventDefault: mockPreventDefault,
+  });
+  expect(mockPreventDefault).toHaveBeenCalledTimes(1);
+});
+
+it("removeQueryString updates router with blank object", () => {
+  const mockCreatePath = jest.fn().mockReturnValue("newPath");
+  const mockReplace = jest.fn();
+  const wrapper = shallow(generateComponent({
+    router: {
+      createPath: mockCreatePath,
+      replace: mockReplace,
+    },
+  }));
+  wrapper.instance().removeQueryString();
+  expect(mockCreatePath).toHaveBeenCalledTimes(1);
+  expect(mockCreatePath).toHaveBeenCalledWith({});
+  expect(mockReplace).toHaveBeenCalledTimes(1);
+  expect(mockReplace).toHaveBeenCalledWith("newPath");
 });
