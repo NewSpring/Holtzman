@@ -4,7 +4,7 @@ import { Accounts } from "meteor/accounts-base";
 
 import ApolloClient, { createNetworkInterface } from "apollo-client";
 
-const networkInterface = createNetworkInterface(Meteor.settings.public.heighliner);
+const networkInterface = createNetworkInterface({ uri: Meteor.settings.public.heighliner });
 
 networkInterface.use([{
   applyMiddleware(req, next) {
