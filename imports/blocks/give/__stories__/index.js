@@ -20,7 +20,7 @@ const story = storiesOf("Give", module)
   ;
 
 story
-  .add("Give Sign Up", withReadme(Readme, () => {
+  .add("Give Block", withReadme(Readme, () => {
     return (
       <div className="background--light-primary" style={{ maxWidth: "480px", margin: "0 auto" }} >
         <Provider>
