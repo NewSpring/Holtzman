@@ -16,27 +16,16 @@ import Give from "../";
 const story = storiesOf("Give", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
+  .addDecorator(backgrounds(defaultColors("light-secondary", "light-primary")))
   ;
-
-const defaultProps = {
-  give: {
-    savedAccount: {}
-  },
-  dispatch: () => {},
-  data: {
-    campuses: [],
-    countries: [],
-    savedPayments: [],
-    states: [],
-  },
-};
 
 story
   .add("Give Sign Up", withReadme(Readme, () => {
     return (
-      <Provider>
-        <Give {...defaultProps} />
-      </Provider>
+      <div className="background--light-primary" style={{ maxWidth: "480px", margin: "0 auto" }} >
+        <Provider>
+          <Give />
+        </Provider>
+      </div>
     )
   }));
