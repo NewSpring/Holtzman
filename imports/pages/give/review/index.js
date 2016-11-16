@@ -84,6 +84,7 @@ export class Template extends Component {
           additionalMessage={
             "Please click 'Done' in the top left of your screen to get back to the app"
           }
+          goToStepOne={() => {}}
         />);
       case "success":
         return (<Success
@@ -93,6 +94,7 @@ export class Template extends Component {
           additionalMessage={
             "Please click 'Done' in the top left of your screen to get back to the app"
           }
+          onClick={() => {}}
         />);
       default:
         return <Layout {...data} onSubmit={this.onSubmit} />;
