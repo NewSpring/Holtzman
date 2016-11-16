@@ -169,7 +169,7 @@
     "jest-cli": "^16.0.2",
     "json-loader": "^0.5.4",
     "mkdirp": "^0.5.1",
-    "node-sass": "^3.4.2",
+    "node-sass": "3.4.2",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.3.2",
     "react-storybook-addon-backgrounds": "0.0.7",
