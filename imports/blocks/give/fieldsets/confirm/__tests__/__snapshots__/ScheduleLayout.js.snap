@@ -33,7 +33,7 @@ exports[`ScheduleLayout renders with props 1`] = `
       <h5
         className="text-dark-secondary text-left">
         Starting on 
-        Nov 17, 2016
+        2016-11-18T00:26:48+00:00 formatted as MMM D, YYYY
         , I will give 
         <span
           className="text-primary">
@@ -53,7 +53,7 @@ exports[`ScheduleLayout renders with props 1`] = `
       <h5
         className="text-dark-secondary text-left">
         Starting on 
-        Nov 17, 2016
+        2016-11-18T00:26:48+00:00 formatted as MMM D, YYYY
         , I will give 
         <span
           className="text-primary">

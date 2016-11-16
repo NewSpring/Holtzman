@@ -1,6 +1,13 @@
 import renderer from "react-test-renderer";
 import ScheduleLayout, { Header } from "../ScheduleLayout";
 
+
+jest.mock("moment", () => {
+  return jest.fn((date) => ({
+    format: (shape) => `${date} formatted as ${shape}`,
+  }))
+});
+
 describe("Header", () => {
   const defaultProps = {
     override: null,
@@ -36,6 +43,7 @@ describe("Header", () => {
 });
 
 describe("ScheduleLayout", () => {
+
   const defaultProps = {
     back: jest.fn(),
     changeAccounts: jest.fn(),
