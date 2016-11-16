@@ -11,6 +11,8 @@ import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
 
 import { MockedProvider } from "react-apollo/test-utils";
+import { addTypenameToDocument } from "apollo-client/queries/queryTransform";
+
 import Provider, { ReduxProvider } from "/.storybook/mocks/Provider";
 
 import centered from "/.storybook/decorators/centered";
@@ -53,7 +55,7 @@ story
     );
   }))
   .add("With a Card", withReadme(Readme, () => {
-    const query = SAVED_ACCTS_QUERY;
+    const query = addTypenameToDocument(SAVED_ACCTS_QUERY);
     const variables = { cache: false };
 
     const mockedData = {
@@ -62,11 +64,11 @@ story
           name: "Gold Card",
           id: 10,
           date: "date",
-          // __typename: "SavedPayment",
+          __typename: "SavedPayment",
           payment: {
             accountNumber: "4111111111111111",
             paymentType: "Visa",
-            // __typename: "Card"
+            __typename: "Card"
           }
         }
       ],
