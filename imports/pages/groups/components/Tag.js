@@ -1,10 +1,9 @@
 import { Component, PropTypes } from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
+import { Meteor } from "meteor/meteor";
 
-@withRouter
-@connect((state) => ({ location: state.routing.location }))
-export default class Tag extends Component {
+class TagWithoutData extends Component {
 
   static propTypes = {
     className: PropTypes.string,
@@ -121,3 +120,13 @@ export default class Tag extends Component {
     );
   }
 }
+
+export default withRouter(
+  connect((state) => ({ location: state.routing.location }))(
+    TagWithoutData
+  )
+);
+
+export {
+  TagWithoutData,
+};

@@ -35,15 +35,15 @@ exports[`test doesn't render campus tag if no campus 1`] = `
       className="plain text-dark-primary" />
     <div
       className="soft-half-top">
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="one" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="two" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test type" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="kid friendly" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test demographic" />
     </div>
   </Card>
@@ -87,15 +87,15 @@ exports[`test doesn't render campus tag if no campus name 1`] = `
       className="plain text-dark-primary" />
     <div
       className="soft-half-top">
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="one" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="two" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test type" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="kid friendly" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test demographic" />
     </div>
   </Card>
@@ -139,15 +139,15 @@ exports[`test doesn't render demographic tag if no 1`] = `
       className="plain text-dark-primary" />
     <div
       className="soft-half-top">
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="one" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="two" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test type" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="kid friendly" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         urlKey="campuses"
         val="Anderson" />
     </div>
@@ -192,15 +192,15 @@ exports[`test doesn't render kid friendly tag if no 1`] = `
       className="plain text-dark-primary" />
     <div
       className="soft-half-top">
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="one" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="two" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test type" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test demographic" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         urlKey="campuses"
         val="Anderson" />
     </div>
@@ -245,15 +245,15 @@ exports[`test doesn't render tag for type \`Interests\` 1`] = `
       className="plain text-dark-primary" />
     <div
       className="soft-half-top">
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="one" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="two" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="kid friendly" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test demographic" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         urlKey="campuses"
         val="Anderson" />
     </div>
@@ -298,17 +298,17 @@ exports[`test renders default photo 1`] = `
       className="plain text-dark-primary" />
     <div
       className="soft-half-top">
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="one" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="two" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test type" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="kid friendly" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test demographic" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         urlKey="campuses"
         val="Anderson" />
     </div>
@@ -353,17 +353,17 @@ exports[`test renders with props 1`] = `
       className="plain text-dark-primary" />
     <div
       className="soft-half-top">
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="one" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="two" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test type" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="kid friendly" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test demographic" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         urlKey="campuses"
         val="Anderson" />
     </div>
@@ -403,17 +403,17 @@ exports[`test renders without distance 1`] = `
       className="plain text-dark-primary" />
     <div
       className="soft-half-top">
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="one" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="two" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test type" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="kid friendly" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test demographic" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         urlKey="campuses"
         val="Anderson" />
     </div>
@@ -454,17 +454,17 @@ exports[`test renders without schedule 1`] = `
       className="plain text-dark-primary" />
     <div
       className="soft-half-top">
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="one" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="two" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test type" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="kid friendly" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test demographic" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         urlKey="campuses"
         val="Anderson" />
     </div>
@@ -505,17 +505,17 @@ exports[`test renders without schedule description 1`] = `
       className="plain text-dark-primary" />
     <div
       className="soft-half-top">
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="one" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="two" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test type" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="kid friendly" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         val="test demographic" />
-      <withRouter(Connect(Tag))
+      <withRouter(Connect(TagWithoutData))
         urlKey="campuses"
         val="Anderson" />
     </div>
