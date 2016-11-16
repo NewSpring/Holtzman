@@ -10,8 +10,8 @@ import {
 
 import Layout from "./Layout";
 
-const map = (state) => ({
-  savedAccount: state.give.savedAccount,
+export const map = ({ give }) => ({
+  savedAccount: give.savedAccount,
 });
 
 export const withRedux = connect(map);
@@ -26,7 +26,7 @@ type IChangePaymentsState = {
   savedAccount: Object,
 }
 
-export class ChangePayments extends Component {
+class ChangePayments extends Component {
   props: IChangePayments;
   state: IChangePaymentsState;
 
@@ -77,3 +77,7 @@ export class ChangePayments extends Component {
 }
 
 export default withRedux(ChangePayments);
+
+export {
+  ChangePayments as ChangePaymentsWithoutData,
+};
