@@ -33,7 +33,7 @@ const defaultProps = {
 };
 
 story
-  .add("Give Sign Up", withReadme(Readme, () => {
+  .add("Give Block", withReadme(Readme, () => {
     return (
       <Provider>
         <Give {...defaultProps} />
