@@ -136,7 +136,7 @@ const Layout = ({ alive, accounts }) => (
 
 Layout.propTypes = {
   alive: PropTypes.bool,
-  accounts: PropTypes.array,
+  accounts: PropTypes.object,
 };
 
 export default Layout;
