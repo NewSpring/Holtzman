@@ -52,9 +52,15 @@ export const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
   3. Give as guest (in small text) if not signed in
 
 */
-export const mapStateToProps = (store) => ({
-  authorized: store.accounts.authorized,
-  savedAccount: store.give.savedAccount,
+
+type IStore = {
+  accounts: Object;
+  give: Object;
+}
+
+export const mapStateToProps = ({ accounts, give }: IStore) => ({
+  authorized: accounts.authorized,
+  savedAccount: give.savedAccount,
 });
 
 export const withState = connect(mapStateToProps);

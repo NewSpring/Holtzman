@@ -1,10 +1,12 @@
 exports[`graphql integration correctly delivers props to child component 1`] = `
 Array [
   Object {
+    "__typename": "SavedPayment",
     "date": "date",
     "id": 10,
     "name": "Gold Card",
     "payment": Object {
+      "__typename": "Card",
       "accountNumber": "4111111111111111",
       "paymentType": "Visa",
     },
