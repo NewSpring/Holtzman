@@ -2,6 +2,7 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import { Meteor } from "meteor/meteor";
 
 import {
   modal as modalActions,
@@ -12,50 +13,9 @@ import {
 import Layout from "./Layout";
 import Confirm from "./../Details/Confirm";
 
-const SCHEDULED_TRANSACTIONS_QUERY = gql`
-  query GetScheduleTransactions {
-    transactions: scheduledTransactions(isActive: false, cache: false) {
-      numberOfPayments
-      next
-      end
-      id: entityId
-      reminderDate
-      gateway
-      start
-      date
-      details { amount, account { name, description, id: entityId } }
-      payment { paymentType, accountNumber, id }
-      schedule { value, description }
-    }
-    person: currentPerson { firstName, lastName }
-  }
-`;
-
-const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY);
-
-const FINANCIAL_ACCOUNTS_QUERY = gql`
-  query GetFinancialAccounts {
-    accounts {
-      description
-      name
-      id: entityId
-      summary
-      image
-      order
-      images { fileName, fileType, fileLabel, s3, cloudfront }
-    }
-  }
-`;
-
-const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" });
-
-const mapStateToProps = (store) => ({ give: store.give });
 const defaultArray = [];
 
-@connect(mapStateToProps)
-@withScheduledTransactions
-@withFinancialAccounts
-export default class Template extends Component {
+class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -112,3 +72,54 @@ export default class Template extends Component {
     );
   }
 }
+
+const SCHEDULED_TRANSACTIONS_QUERY = gql`
+  query GetScheduleTransactions {
+    transactions: scheduledTransactions(isActive: false, cache: false) {
+      numberOfPayments
+      next
+      end
+      id: entityId
+      reminderDate
+      gateway
+      start
+      date
+      details { amount, account { name, description, id: entityId } }
+      payment { paymentType, accountNumber, id }
+      schedule { value, description }
+    }
+    person: currentPerson { firstName, lastName }
+  }
+`;
+
+const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY);
+
+const FINANCIAL_ACCOUNTS_QUERY = gql`
+  query GetFinancialAccounts {
+    accounts {
+      description
+      name
+      id: entityId
+      summary
+      image
+      order
+      images { fileName, fileType, fileLabel, s3, cloudfront }
+    }
+  }
+`;
+
+const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" });
+
+const mapStateToProps = (store) => ({ give: store.give });
+
+export default connect(mapStateToProps)(
+  withScheduledTransactions(
+    withFinancialAccounts(
+      TemplateWithoutData
+    )
+  )
+);
+
+export {
+  TemplateWithoutData,
+};
