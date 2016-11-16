@@ -2,6 +2,7 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import { Meteor } from "meteor/meteor";
 
 import {
   nav as navActions,
@@ -13,73 +14,7 @@ import {
 import Confirm from "./Confirm";
 import Layout from "./Layout";
 
-const ENTRIES_QUERY = gql`
-  query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
-    entries: taggedContent(
-      tagName: $tagName,
-      limit: $limit,
-      includeChannels: $includeChannels
-    ) {
-      entryId: id
-      title
-      channelName
-      status
-      meta { summary, urlTitle }
-      content { images(sizes: ["large"]) { fileName, fileType, fileLabel, url } }
-    }
-  }
-`;
-
-const withEntries = graphql(ENTRIES_QUERY, {
-  name: "entries",
-  options: {
-    variables: {
-      tagName: "giving",
-      limit: 2,
-      includeChannels: ["articles"],
-    },
-  },
-});
-
-const SCHEDULE_TRANSACTION_QUERY = gql`
-  query GetScheduleTransaction($scheduleTransactionId: ID!) {
-    transaction: node(id: $scheduleTransactionId) {
-      ... on ScheduledTransaction {
-        numberOfPayments
-        next
-        end
-        id: entityId
-        reminderDate
-        gateway
-        start
-        date
-        details { amount, account { name, description } }
-        payment { paymentType, accountNumber, id }
-        schedule { value, description }
-        transactions {
-          id
-          date
-          status
-          summary
-          person { firstName, lastName, photo }
-          details { id, amount, account { id, name } }
-        }
-      }
-    }
-  }
-`;
-
-const withScheduleTransaction = graphql(SCHEDULE_TRANSACTION_QUERY, {
-  options: (ownProps) => ({
-    variables: { scheduleTransactionId: ownProps.params.id },
-    forceFetch: true,
-  }),
-});
-
-@connect()
-@withEntries
-@withScheduleTransaction
-export default class Details extends Component {
+class DetailsWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -154,3 +89,78 @@ export default class Details extends Component {
     );
   }
 }
+
+const ENTRIES_QUERY = gql`
+  query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
+    entries: taggedContent(
+      tagName: $tagName,
+      limit: $limit,
+      includeChannels: $includeChannels
+    ) {
+      entryId: id
+      title
+      channelName
+      status
+      meta { summary, urlTitle }
+      content { images(sizes: ["large"]) { fileName, fileType, fileLabel, url } }
+    }
+  }
+`;
+
+const withEntries = graphql(ENTRIES_QUERY, {
+  name: "entries",
+  options: {
+    variables: {
+      tagName: "giving",
+      limit: 2,
+      includeChannels: ["articles"],
+    },
+  },
+});
+
+const SCHEDULE_TRANSACTION_QUERY = gql`
+  query GetScheduleTransaction($scheduleTransactionId: ID!) {
+    transaction: node(id: $scheduleTransactionId) {
+      ... on ScheduledTransaction {
+        numberOfPayments
+        next
+        end
+        id: entityId
+        reminderDate
+        gateway
+        start
+        date
+        details { amount, account { name, description } }
+        payment { paymentType, accountNumber, id }
+        schedule { value, description }
+        transactions {
+          id
+          date
+          status
+          summary
+          person { firstName, lastName, photo }
+          details { id, amount, account { id, name } }
+        }
+      }
+    }
+  }
+`;
+
+const withScheduleTransaction = graphql(SCHEDULE_TRANSACTION_QUERY, {
+  options: (ownProps) => ({
+    variables: { scheduleTransactionId: ownProps.params.id },
+    forceFetch: true,
+  }),
+});
+
+export default connect()(
+  withEntries(
+    withScheduleTransaction(
+      DetailsWithoutData
+    )
+  )
+);
+
+export {
+  DetailsWithoutData,
+};
