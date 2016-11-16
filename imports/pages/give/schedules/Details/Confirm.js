@@ -5,8 +5,7 @@ import { Error } from "../../../../components/icons";
 
 import { modal as modalActions } from "../../../../store";
 
-@connect()
-export default class Err extends Component {
+class ConfirmWithoutData extends Component {
 
   static propTypes = {
     onFinished: PropTypes.func.isRequired,
@@ -59,3 +58,9 @@ export default class Err extends Component {
   }
   /* eslint-enable max-len */
 }
+
+export default connect()(ConfirmWithoutData);
+
+export {
+  ConfirmWithoutData,
+};
