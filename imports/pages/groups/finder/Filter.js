@@ -8,34 +8,8 @@ import Forms from "../../../components/forms";
 
 import Tag from "../components/Tag";
 
-const ATTRIBUTES_QUERY = gql`
-  query GetGroupAttributes {
-    tags: groupAttributes {
-      id
-      description
-      value
-    }
-  }
-`;
-const withAttributes = graphql(ATTRIBUTES_QUERY, { name: "attributes" });
-
-const CAMPUS_LOCATIONS_QUERY = gql`
-  query GetCampuses {
-    campuses {
-      entityId
-      id
-      name
-    }
-  }
-`;
-const withCampusLocations = graphql(CAMPUS_LOCATIONS_QUERY, { name: "campusLocations" });
-
 const defaultTags = [];
-@withRouter
-@withAttributes
-@withCampusLocations
-@connect((state) => ({ location: state.routing.location }))
-export default class Filter extends Component {
+class FilterWithoutData extends Component {
 
   static propTypes = {
     router: PropTypes.object.isRequired,
@@ -176,3 +150,39 @@ export default class Filter extends Component {
   }
 
 }
+
+const ATTRIBUTES_QUERY = gql`
+  query GetGroupAttributes {
+    tags: groupAttributes {
+      id
+      description
+      value
+    }
+  }
+`;
+const withAttributes = graphql(ATTRIBUTES_QUERY, { name: "attributes" });
+
+const CAMPUS_LOCATIONS_QUERY = gql`
+  query GetCampuses {
+    campuses {
+      entityId
+      id
+      name
+    }
+  }
+`;
+const withCampusLocations = graphql(CAMPUS_LOCATIONS_QUERY, { name: "campusLocations" });
+
+export default withRouter(
+  withAttributes(
+    withCampusLocations(
+      connect((state) => ({ location: state.routing.location }))(
+        FilterWithoutData
+      )
+    )
+  )
+);
+
+export {
+  FilterWithoutData,
+};
