@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import cloneDeep from "lodash.cloneDeep";
+import cloneDeep from "lodash.clonedeep";
 import Layout from "../Layout";
 
 const defaultProps = {
