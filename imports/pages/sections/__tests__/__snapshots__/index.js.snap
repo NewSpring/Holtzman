@@ -1,0 +1,8 @@
+exports[`test renders 1`] = `
+<div
+  className="background--light-secondary">
+  <Meta
+    title="Sections" />
+  <Connect(SectionsContainer) />
+</div>
+`;
