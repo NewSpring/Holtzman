@@ -8,8 +8,7 @@ import { Error as Err, Loading } from "../../../../components/states";
 import Success from "../Success";
 import Layout from "./Layout";
 
-@connect()
-export default class ChangePassword extends Component {
+class ChangePasswordWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -98,3 +97,9 @@ export default class ChangePassword extends Component {
     }
   }
 }
+
+export default connect()(ChangePasswordWithoutData);
+
+export {
+  ChangePasswordWithoutData,
+};
