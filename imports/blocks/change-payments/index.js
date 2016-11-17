@@ -10,7 +10,11 @@ import {
 
 import Layout from "./Layout";
 
-export const map = ({ give }) => ({
+type IState = {
+  give: Object,
+};
+
+export const map = ({ give }: IState) => ({
   savedAccount: give.savedAccount,
 });
 
