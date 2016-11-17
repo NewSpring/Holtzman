@@ -8,7 +8,7 @@
 import { createReducer } from "../utilities";
 import types from "./types";
 
-const initial = {
+export const initial = {
 
   account: true, // has an account
   authorized: false, // is logged in
