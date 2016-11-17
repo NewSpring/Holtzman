@@ -16,27 +16,7 @@ import PersonalDetails from "./PersonalDetails";
 import HomeAddress from "./HomeAddress";
 import PaymentDetails from "./Payments";
 
-const PERSON_QUERY = gql`
-  query GetPersonForSettings {
-    person: currentPerson(cache: false) {
-      firstName
-      lastName
-      nickName
-      photo
-      home {
-        state
-        city
-      }
-    }
-  }
-`;
-
-const withPerson = graphql(PERSON_QUERY);
-
-@withProfileUpload
-@connect()
-@withPerson
-class Template extends Component {
+class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -78,6 +58,30 @@ class Template extends Component {
   }
 }
 
+const PERSON_QUERY = gql`
+  query GetPersonForSettings {
+    person: currentPerson(cache: false) {
+      firstName
+      lastName
+      nickName
+      photo
+      home {
+        state
+        city
+      }
+    }
+  }
+`;
+
+const withPerson = graphql(PERSON_QUERY);
+
+const Template = withProfileUpload(
+  connect()(
+    withPerson(
+      TemplateWithoutData
+    )
+  )
+);
 
 const Routes = [
   {
@@ -98,4 +102,9 @@ const Routes = [
 export default {
   Template,
   Routes,
+};
+
+export {
+  TemplateWithoutData,
+  PERSON_QUERY,
 };
