@@ -30,6 +30,11 @@ type IChangePaymentsState = {
   savedAccount: Object,
 }
 
+type IInputEvent = {
+  preventDefault: Function,
+  currentTarget: HTMLInputElement,
+}
+
 class ChangePayments extends Component {
   props: IChangePayments;
   state: IChangePaymentsState;
@@ -45,10 +50,11 @@ class ChangePayments extends Component {
     this.props.dispatch(modal.hide());
   }
 
-  choose = (e: SyntheticInputEvent) => {
-    e.preventDefault();
+  choose = (e: IInputEvent) => {
+    const { preventDefault, currentTarget } = e;
+    preventDefault();
 
-    const { id } = e.currentTarget;
+    const { id } = currentTarget;
     // XXX 'any' is not a specific enough type
     let act: any = {};
     for (const account of this.props.savedAccounts) {
@@ -65,9 +71,7 @@ class ChangePayments extends Component {
 
   render() {
     let selectedAccount = this.props.currentAccount;
-    if (this.state.savedAccount) {
-      selectedAccount = this.state.savedAccount;
-    }
+    if (this.state.savedAccount) selectedAccount = this.state.savedAccount;
 
     return (
       <Layout
