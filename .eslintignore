@@ -1,9 +1,0 @@
-**/dist/*
-**/node_modules/*
-**/server.js
-**/webpack.config*.js
-**/imports/util/xml.js
-**/.meteor/**
-**/.types/**
-**/packages/**
-**/__tests__/**

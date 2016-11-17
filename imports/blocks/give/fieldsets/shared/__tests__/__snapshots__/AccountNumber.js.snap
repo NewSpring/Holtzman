@@ -1,6 +1,0 @@
-exports[`test should slice a masked account number 1`] = `
-<span>
-  *********
-  1234
-</span>
-`;
