@@ -14,28 +14,7 @@ import {
 
 import withProfileUpload from "../profile-photo";
 
-// XXX Query is duplicated within profile section
-const GET_PERSON_QUERY = gql`
-  query GetPerson {
-    person: currentPerson (cache: false) {
-      photo
-      firstName
-      nickName
-      lastName
-      home {
-        city
-      }
-    }
-  }
-`;
-
-const withPerson = graphql(GET_PERSON_QUERY);
-const mapStateToProps = (state) => ({ authorized: state.accounts.authorized });
-
-@withPerson
-@withProfileUpload
-@connect(mapStateToProps)
-export default class Home extends Component {
+class HomeWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -84,3 +63,34 @@ export default class Home extends Component {
     );
   }
 }
+
+// XXX Query is duplicated within profile section
+const GET_PERSON_QUERY = gql`
+  query GetPerson {
+    person: currentPerson (cache: false) {
+      photo
+      firstName
+      nickName
+      lastName
+      home {
+        city
+      }
+    }
+  }
+`;
+
+const withPerson = graphql(GET_PERSON_QUERY);
+const mapStateToProps = (state) => ({ authorized: state.accounts.authorized });
+
+export default withPerson(
+  withProfileUpload(
+    connect(mapStateToProps)(
+      HomeWithoutData
+    )
+  )
+);
+
+export {
+  HomeWithoutData,
+  GET_PERSON_QUERY,
+};
