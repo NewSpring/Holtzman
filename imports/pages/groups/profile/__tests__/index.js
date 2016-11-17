@@ -55,6 +55,7 @@ window.matchMedia = jest.fn().mockReturnValue({
 });
 
 Meteor.isServer = false;
+Meteor.settings.public.rock.baseURL = "http://rock.rock";
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());

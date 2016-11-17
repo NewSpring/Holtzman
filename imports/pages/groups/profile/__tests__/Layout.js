@@ -1,7 +1,10 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
+import { Meteor } from "meteor/meteor";
 import Layout from "../Layout";
+
+Meteor.settings.public.rock.baseURL = "http://rock.rock";
 
 const defaultProps = {
   group: {
