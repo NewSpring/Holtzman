@@ -1,4 +1,5 @@
 import { PropTypes } from "react";
+import { Meteor } from "meteor/meteor";
 import Meta from "../../../components/meta";
 
 import Split, { Left, Right } from "../../../blocks/split";
