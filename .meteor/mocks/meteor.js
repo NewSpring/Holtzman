@@ -12,7 +12,7 @@ exports.Meteor = {
     public: {
       heighliner: "https://api.newspring.cc/graphql",
       rock: {
-        baseUrl: "http://rock.rock",
+        baseURL: "http://rock.rock",
       },
     },
   },
