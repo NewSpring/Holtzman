@@ -7,7 +7,7 @@ import Layout from "./Layout";
 import Loading from "../../../blocks/give/Loading";
 import Err from "../../../blocks/give/Err";
 import Success from "../../../blocks/give/Success";
-
+import { monetize } from "../../../util/format";
 import { give as giveActions, nav as navActions } from "../../../store";
 
 type ITemplate = {
@@ -72,26 +72,6 @@ export class Template extends Component {
     return null;
   }
 
-  // XXX replace the function in PR 1431 with this one
-  monetize = (value: string | number, fixed?: boolean): string => {
-    let amount = typeof value === "number" ? `${value}` : value;
-
-    if (!amount || !amount.length) {
-      return "$0.00";
-    }
-
-    amount = amount.replace(/[^\d.-]/g, "");
-
-    const decimals = amount.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      amount = Number(amount).toFixed(2);
-      amount = String(amount);
-    }
-
-    amount = amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${amount}`;
-  }
-
   render() {
     const { state, errors, total, data } = this.props.give;
 
@@ -104,15 +84,17 @@ export class Template extends Component {
           additionalMessage={
             "Please click 'Done' in the top left of your screen to get back to the app"
           }
+          goToStepOne={() => {}}
         />);
       case "success":
         return (<Success
-          total={this.monetize(total.toFixed(2))}
+          total={monetize(total.toFixed(2))}
           email={data.personal.email}
           guest={false} // prevent showing giving history
           additionalMessage={
             "Please click 'Done' in the top left of your screen to get back to the app"
           }
+          onClick={() => {}}
         />);
       default:
         return <Layout {...data} onSubmit={this.onSubmit} />;

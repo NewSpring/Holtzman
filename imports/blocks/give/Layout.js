@@ -6,7 +6,7 @@ import { Personal, Payment, Billing, Confirm } from "./fieldsets";
 import Loading from "./Loading";
 import Err from "./Err";
 import Success from "./Success";
-import { monetize } from "./fieldsets/shared";
+import { monetize } from "../../util/format";
 
 const FORM_STEPS = [
   Personal,

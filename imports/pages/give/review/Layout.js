@@ -3,6 +3,7 @@
 import { Component } from "react";
 import AccountType from "../../../components/accountType";
 import Meta from "../../../components/meta";
+import { monetize } from "../../../util/format/";
 
 type ILayout = {
   transactions: Object,
@@ -36,45 +37,13 @@ export default class Layout extends Component {
 
         <div className="grid__item one-third text-right" style={{ verticalAlign: "middle" }}>
           <h5 className="text-dark-secondary flush">
-            {this.monetize(transaction.value)}
+            {monetize(transaction.value)}
           </h5>
         </div>
 
       </div>
     </div>
   )
-
-  // XXX replace the function in PR 1431 with this one
-  monetize = (value: string | number, fixed?: boolean): string => {
-    let amount = (typeof value === "number") ? `${value}` : value;
-
-    if (!amount || !amount.length) {
-      return "$0.00";
-    }
-
-    amount = amount.replace(/[^\d.-]/g, "");
-
-    const decimals = amount.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      amount = Number(amount).toFixed(2);
-      amount = String(amount);
-    }
-
-    amount = amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${amount}`;
-  }
-
-  buttonText = () => {
-    const { payment } = this.props.data;
-
-    let text = "Give Now";
-
-    if (payment.last4) {
-      text += ` using ${payment.last4}`;
-    }
-
-    return text;
-  }
 
   icon = (icon: string): any => (
     <AccountType width="30px" height="21px" type={icon} />
@@ -120,7 +89,7 @@ export default class Layout extends Component {
 
               <div className="grid__item one-half text-right" style={{ verticalAlign: "middle" }}>
                 <h3 className="text-primary flush">
-                  {this.monetize(this.props.total)}
+                  {monetize(this.props.total)}
                 </h3>
               </div>
 

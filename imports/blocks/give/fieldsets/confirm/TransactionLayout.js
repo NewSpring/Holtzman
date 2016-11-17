@@ -1,9 +1,10 @@
 // @flow
 
+import { monetize } from "../../../../util/format";
+
 import {
   ActionButton,
   ListItem,
-  monetize,
   PaymentOptions,
 } from "../shared";
 

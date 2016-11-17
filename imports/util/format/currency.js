@@ -19,21 +19,21 @@ export default toCurrency;
   @param fixed: whether or not to enforce decimal places
 
 */
-const monetize = (value: string | number, fixed?: boolean): string => {
-  let amount = typeof value === "number" ? `${value}` : value;
+const monetize = (amount: number | string, fixed?: boolean): string => {
+  let value = typeof amount === "number" ? `${amount}` : amount;
 
-  if (!amount || !amount.length) return "$0.00";
+  if (!value || !value.length) return "$0.00";
 
-  amount = amount.replace(/[^\d.-]/g, "");
+  value = value.replace(/[^\d.-]/g, "");
 
-  const decimals = amount.split(".")[1];
-  if ((decimals && decimals.length >= 2) || fixed) {
-    amount = Number(amount).toFixed(2);
-    amount = String(amount);
+  const decimals = value.split(".")[1];
+  if ((decimals && decimals.length >= 1) || fixed) {
+    value = Number(value).toFixed(2);
+    value = String(value);
   }
 
-  amount = amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return `$${amount}`;
+  value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return `$${value}`;
 };
 
 export { monetize };

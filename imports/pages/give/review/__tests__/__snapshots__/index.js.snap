@@ -1,6 +1,7 @@
 exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `
 <Err
   additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
+  goToStepOne={[Function]}
   msg="must go faster!" />
 `;
 
@@ -34,5 +35,6 @@ exports[`GiveReviewTemplate returns <Success /> component based on state 1`] = `
   additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
   email="web@newspring.cc"
   guest={false}
+  onClick={[Function]}
   total="$1.00" />
 `;

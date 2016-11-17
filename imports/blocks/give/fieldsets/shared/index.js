@@ -7,7 +7,6 @@ import CardFields from "./CardFields";
 import cardType from "./cardType";
 import Icon from "./Icon";
 import ListItem from "./ListItem";
-import monetize from "./monetize";
 import PaymentOptions from "./PaymentOptions";
 import SavedAccount from "./SavedAccount";
 import SavePaymentCheckBox from "./SavePaymentCheckBox";
@@ -25,7 +24,6 @@ export {
   cardType,
   Icon,
   ListItem,
-  monetize,
   PaymentOptions,
   SavedAccount,
   SavePaymentCheckBox,
