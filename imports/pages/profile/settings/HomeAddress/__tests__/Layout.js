@@ -37,6 +37,7 @@ it("submit calls update with values from inputs", () => {
   });
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
   expect(mockUpdate).toHaveBeenCalledTimes(1);
+  // slightly different than props
   expect(mockUpdate).toHaveBeenCalledWith({
     City: "anderson",
     PostalCode: 22222,
