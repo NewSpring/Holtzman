@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import mockDate from "mockDate";
+import mockDate from "mockdate";
 import {
   nav,
 } from "../../../../../store";
