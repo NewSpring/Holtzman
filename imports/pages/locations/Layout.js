@@ -7,7 +7,7 @@ import { Link } from "react-router";
 import Meta from "../../components/meta";
 import Forms from "../../components/forms";
 
-const campusLookup = gql`
+export const campusLookup = gql`
   query GeoLocate($origin: String, $destinations: String) {
     geolocate(origin: $origin, destinations: $destinations) {
       rows {
