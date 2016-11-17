@@ -1,5 +1,5 @@
 // @flow
-import { monetize } from "./";
+import { monetize } from "../../../../util/format";
 
 type IListItem = {
   transaction: Object,
