@@ -4,7 +4,7 @@ import { mountToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { getSingleSpecWrapper } from "../../../../util/tests/data-spec.js";
 
-import { SubFund, withRedux } from "../";
+import { SubFundWithoutData, withRedux } from "../";
 
 // see the first test
 jest.mock("react-redux", () => ({
@@ -23,7 +23,7 @@ const generateComponent = (additionalProps={}) => {
     accounts: [{value: "main fund"}],
   };
 
-  return <SubFund {...defaultProps} {...additionalProps} />
+  return <SubFundWithoutData {...defaultProps} {...additionalProps} />
 };
 
 beforeEach(() => {

@@ -98,7 +98,6 @@ it ("should accept format function thru prop", () => {
   expect(inputProps.format).toBeDefined();
 });
 
-// XXX causes js warning on the select element
 it ("should accept selectVal function thru prop", () => {
 
   const component = mount(generateComponent({selectVal: "hi"}));

@@ -16,11 +16,11 @@ export const withRedux = connect(null, giveActions);
 
 type ISubFund = {
   primary: boolean,
-  accounts: Object[], // eslint-disable-line
+  accounts: Object[],
   update: Function,
   selectVal: number,
   inputVal: number,
-  instance: number, // eslint-disable-line
+  instance: number,
   clearTransaction: Function,
   addTransactions: Function,
   remove: Function,
@@ -28,7 +28,7 @@ type ISubFund = {
   donate: boolean,
 };
 
-export class SubFund extends Component {
+class SubFund extends Component {
   props: ISubFund;
 
   state = {
@@ -208,3 +208,7 @@ export class SubFund extends Component {
 
 
 export default withRedux(SubFund);
+
+export {
+  SubFund as SubFundWithoutData,
+};
