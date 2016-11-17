@@ -35,7 +35,7 @@ exports[`test adjust style if modal visible 1`] = `
     className="background--light-primary one-whole">
     <div
       className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
-      <Connect(AudioTrack)
+      <Connect(AudioTrackWithoutData)
         album={
           Object {
             "content": Object {
@@ -73,7 +73,7 @@ exports[`test adjust style if modal visible 1`] = `
           }
         }
         trackNumber={0} />
-      <Connect(AudioTrack)
+      <Connect(AudioTrackWithoutData)
         album={
           Object {
             "content": Object {
@@ -111,7 +111,7 @@ exports[`test adjust style if modal visible 1`] = `
           }
         }
         trackNumber={1} />
-      <Connect(AudioTrack)
+      <Connect(AudioTrackWithoutData)
         album={
           Object {
             "content": Object {
@@ -621,7 +621,7 @@ exports[`test renders with props 1`] = `
     className="background--light-primary one-whole">
     <div
       className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
-      <Connect(AudioTrack)
+      <Connect(AudioTrackWithoutData)
         album={
           Object {
             "content": Object {
@@ -659,7 +659,7 @@ exports[`test renders with props 1`] = `
           }
         }
         trackNumber={0} />
-      <Connect(AudioTrack)
+      <Connect(AudioTrackWithoutData)
         album={
           Object {
             "content": Object {
@@ -697,7 +697,7 @@ exports[`test renders with props 1`] = `
           }
         }
         trackNumber={1} />
-      <Connect(AudioTrack)
+      <Connect(AudioTrackWithoutData)
         album={
           Object {
             "content": Object {
@@ -773,7 +773,7 @@ exports[`test renders without album artist 1`] = `
     className="background--light-primary one-whole">
     <div
       className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
-      <Connect(AudioTrack)
+      <Connect(AudioTrackWithoutData)
         album={
           Object {
             "content": Object {
@@ -811,7 +811,7 @@ exports[`test renders without album artist 1`] = `
           }
         }
         trackNumber={0} />
-      <Connect(AudioTrack)
+      <Connect(AudioTrackWithoutData)
         album={
           Object {
             "content": Object {
@@ -849,7 +849,7 @@ exports[`test renders without album artist 1`] = `
           }
         }
         trackNumber={1} />
-      <Connect(AudioTrack)
+      <Connect(AudioTrackWithoutData)
         album={
           Object {
             "content": Object {
