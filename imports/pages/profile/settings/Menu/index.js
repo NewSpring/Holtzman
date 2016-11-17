@@ -5,6 +5,7 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 import { Link } from "react-router";
+import { Meteor } from "meteor/meteor";
 
 import Headerable from "../../../../mixins/mixins.Header";
 
@@ -47,21 +48,7 @@ RenderCell.propTypes = {
   children: PropTypes.object.isRequired,
 };
 
-const GET_PHOTO_QUERY = gql`
-  query GetPhoto {
-    currentPerson(cache: false) {
-      photo
-    }
-  }
-`;
-
-const withGetPhoto = graphql(GET_PHOTO_QUERY);
-
-@withGetPhoto
-@withProfileUpload
-@connect()
-@ReactMixin.decorate(Headerable)
-export default class Menu extends Component {
+class MenuWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -78,9 +65,11 @@ export default class Menu extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({
-      title: "Profile",
-    });
+    if (this.headerAction) {
+      this.headerAction({
+        title: "Profile",
+      });
+    }
   }
 
   signout = (e) => {
@@ -265,3 +254,29 @@ export default class Menu extends Component {
     );
   }
 }
+
+const GET_PHOTO_QUERY = gql`
+  query GetPhoto {
+    currentPerson(cache: false) {
+      photo
+    }
+  }
+`;
+
+const withGetPhoto = graphql(GET_PHOTO_QUERY);
+
+export default withGetPhoto(
+  withProfileUpload(
+    connect()(
+      ReactMixin.decorate(Headerable)(
+        MenuWithoutData
+      )
+    )
+  )
+);
+
+export {
+  MenuWithoutData,
+  RenderCell,
+  GET_PHOTO_QUERY,
+};
