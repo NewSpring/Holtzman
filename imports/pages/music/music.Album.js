@@ -19,58 +19,7 @@ import {
 
 import Track from "./music.Track";
 
-const ALBUM_QUERY = gql`
-  query getAlbum($id: ID!) {
-    content: node(id: $id) {
-      id
-      ... on Content {
-        entryId: id
-        title
-        status
-        channelName
-        meta {
-          urlTitle
-          siteId
-          date
-          channelId
-        }
-        content {
-          tracks {
-            title
-            duration
-            file: s3
-          }
-          images(sizes: ["large", "medium", "small", "xsmall"]) {
-            fileName
-            fileType
-            fileLabel
-            size
-            url
-          }
-          colors {
-            value
-            description
-          }
-          isLight
-        }
-      }
-    }
-  }
-`;
-
-const withAlbum = graphql(ALBUM_QUERY, {
-  name: "album",
-  options: (ownProps) => ({
-    variables: { id: ownProps.params.id },
-  }),
-});
-
-@connect()
-@withAlbum
-@ReactMixin.decorate(Likeable)
-@ReactMixin.decorate(Shareable)
-@ReactMixin.decorate(Headerable)
-export default class MusicAlbum extends Component {
+class MusicAlbumWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -226,3 +175,66 @@ export default class MusicAlbum extends Component {
     );
   }
 }
+
+const ALBUM_QUERY = gql`
+  query getAlbum($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          tracks {
+            title
+            duration
+            file: s3
+          }
+          images(sizes: ["large", "medium", "small", "xsmall"]) {
+            fileName
+            fileType
+            fileLabel
+            size
+            url
+          }
+          colors {
+            value
+            description
+          }
+          isLight
+        }
+      }
+    }
+  }
+`;
+
+const withAlbum = graphql(ALBUM_QUERY, {
+  name: "album",
+  options: (ownProps) => ({
+    variables: { id: ownProps.params.id },
+  }),
+});
+
+export default connect()(
+  withAlbum(
+    ReactMixin.decorate(Likeable)(
+      ReactMixin.decorate(Shareable)(
+        ReactMixin.decorate(Headerable)(
+          MusicAlbumWithoutData
+        )
+      )
+    )
+  )
+);
+
+export {
+  MusicAlbumWithoutData,
+  ALBUM_QUERY,
+};
