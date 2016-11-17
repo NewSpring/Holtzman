@@ -6,53 +6,37 @@
 import { CartContainer } from "/imports/blocks/add-schedule/index";
 
 <CartContainer
-      accounts={[{ id: 180, name: "Step Up" }]}
-      alive={true}
-      addTransactions={() => { alert("added transaction"); }}
-      clearAllSchedulesExcept={() => {}}
-      clearSchedules={() => {}}
-      clearTransactions={() => {}}
-      onClick={() => { alert("clicked"); }}
-      removeSchedule={() => { alert("removed schedule"); }}
-      saveSchedule={() => { alert("saved schedule"); }}
-      setTransactionType={() => { alert("set type"); }}
-      text={"Give Now!"}
-    />
+    accounts={[{ id: 180, name: "Step Up" }]}
+    alive={true}
+    addTransactions={() => { alert("added transaction"); }}
+    clearAllSchedulesExcept={() => {}}
+    clearSchedules={() => {}}
+    clearTransactions={() => {}}
+    onClick={() => { alert("clicked"); }}
+    removeSchedule={() => { alert("removed schedule"); }}
+    saveSchedule={() => { alert("saved schedule"); }}
+    setTransactionType={() => { alert("set type"); }}
+    text={"Give Now!"}
+  />
 ```
 
 ### Properties
 
-<!--accounts: Object,
-addTransactions: Function,
-alive: boolean,
-clearAllSchedulesExcept: Function,
-clearSchedules: Function,
-clearTransactions: Function,
-existing: Object,
-onClick: Function,
-removeSchedule: Function,
-saveSchedule: Function,
-setTransactionType: Function,
-text: string,-->
-
-* **accounts** - list of accounts for the user to choose from
-* **existing** - an existing schedule to render on the form
-* **format** - formats the user inputted amount
-* **onSubmitSchedule** - function to be run on click of submit
-* **ready** - sets whether checkout is ready
-* **save** - validates and saves the user inputted amount
-* **saveDate**  - validates and saves the user inputted date
-* **schedules** - provides a way to override the default/predefined schedules
-* **setFrequency** - saves the user selected schedule
-* **setFund** - saves the user selected fund
-* **state** - the user's current app state
+* **accounts** -
+* **addTransactions** - adds a transaction to the cart
+* **alive** - indicates whether the giving service is online
+* **clearAllSchedulesExcept** - removes other schedules from the cart
+* **clearSchedules** - removes all schedules from the cart
+* **clearTransactions** - removes all transactions from the cart
+* **existing** - an existing schedule to load in the cart
+* **onClick** - function to be run on click of checkout
+* **removeSchedule** - removes an existing schedule
+* **saveSchedule** - saves the selected fund, frequency, and start date
+* **setTransactionType** - sets the payment type (one-time/recurring)
 * **text** - text to be displayed on checkout
-* **total** - the total of all items in the cart
-
 
 ### Purpose
 
-This will display UI for creating or editing scheduled giving, i.e. ["Schedule Your Giving"](/give/schedules).
+This component wires up a cart for processing scheduled payments.
 
-Due to limitations on editing schedules, an "Edit Your Giving" form does not currently exist.
-
+The cart will save schedules once the user checks out.
