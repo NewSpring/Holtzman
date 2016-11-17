@@ -1,8 +1,11 @@
 /* eslint-disable */
+
 import { storiesOf } from "@kadira/storybook";
 import {
   withKnobs,
   text,
+  select,
+  object,
   boolean,
 } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
@@ -13,16 +16,22 @@ import defaultColors from "/.storybook/defaults";
 import Readme from "./Layout.md";
 import Layout from "../Layout";
 
-const story = storiesOf("AddSchedule", module)
+const story = storiesOf("Schedules", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
+  .addDecorator(backgrounds([{ name: "light-secondary", value: "#f7f7f7", default: true }]))
   ;
 
 story
-  .add("Layout", withReadme(Readme, () => (
+  .add("Schedule Your Giving", withReadme(Readme, () => (
+    // <Layout
+    //     accounts={[{value: "General Fund"}]}
+    //     state={{}}
+    //     text="Make Schedules Now"
+    //   />
     <Layout
       accounts={[{value: "General Fund"}]}
+      date={{}}
       existing={{
         amount: 10,
         details: [{
@@ -31,6 +40,7 @@ story
         next: new Date("2025", "01", "01"),
         schedule: {value: "Monthly"},
       }}
+      format={() => {}}
       onSubmitSchedule={() => { alert("clicked"); }}
       ready={true}
       state={{}}
