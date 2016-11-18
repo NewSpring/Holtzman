@@ -24,93 +24,7 @@ import collections from "../../util/collections";
 import SingleVideoPlayer from "../../components/players/video/Player";
 import SeriesVideoList from "./series.VideoList";
 
-const CURRENT_SERMON_QUERY = gql`
-  query getSermon($sermonId: ID!) {
-    content: node(id: $sermonId) {
-      ... on Content {
-        entryId: id
-        title
-        status
-        channelName
-        meta {
-          urlTitle
-          siteId
-          date
-          actualDate
-          channelId
-        }
-        content {
-          audio {
-            duration
-            file: s3
-          }
-          description
-          speaker
-          ooyalaId
-        }
-      }
-    }
-  }
-`;
-const withCurrentSermon = graphql(CURRENT_SERMON_QUERY, {
-  name: "currentSermon",
-  options: (ownProps) => ({
-    variables: { sermonId: ownProps.params.sermonId },
-  }),
-});
-
-const SERIES_QUERY = gql`
-  query getSeriesSingle($id: ID!) {
-    content: node(id: $id) {
-      id
-      ... on Content {
-        entryId: id
-        title
-        status
-        channelName
-        meta {
-          urlTitle
-          siteId
-          date
-          channelId
-        }
-        content {
-          description
-          images(sizes: ["large", "medium", "small"]) {
-            fileName
-            fileType
-            fileLabel
-            url
-            size
-          }
-          ooyalaId
-          colors {
-            id
-            value
-            description
-          }
-          isLight
-        }
-      }
-    }
-  }
-`;
-const withSeries = graphql(SERIES_QUERY, {
-  name: "series",
-  options: (ownProps) => ({
-    variables: { id: ownProps.params.id },
-  }),
-});
-
-const mapStateToProps = (state) => ({ live: state.live });
-
-@connect(mapStateToProps)
-@withCurrentSermon
-@withSeries
-@ReactMixin.decorate(Likeable)
-@ReactMixin.decorate(Shareable)
-@ReactMixin.decorate(Headerable)
-export default class SeriesSingleVideo extends Component {
+class SeriesSingleVideoWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -213,3 +127,103 @@ export default class SeriesSingleVideo extends Component {
     );
   }
 }
+
+const CURRENT_SERMON_QUERY = gql`
+  query getSermon($sermonId: ID!) {
+    content: node(id: $sermonId) {
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          actualDate
+          channelId
+        }
+        content {
+          audio {
+            duration
+            file: s3
+          }
+          description
+          speaker
+          ooyalaId
+        }
+      }
+    }
+  }
+`;
+const withCurrentSermon = graphql(CURRENT_SERMON_QUERY, {
+  name: "currentSermon",
+  options: (ownProps) => ({
+    variables: { sermonId: ownProps.params.sermonId },
+  }),
+});
+
+const SERIES_QUERY = gql`
+  query getSeriesSingle($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          description
+          images(sizes: ["large", "medium", "small"]) {
+            fileName
+            fileType
+            fileLabel
+            url
+            size
+          }
+          ooyalaId
+          colors {
+            id
+            value
+            description
+          }
+          isLight
+        }
+      }
+    }
+  }
+`;
+const withSeries = graphql(SERIES_QUERY, {
+  name: "series",
+  options: (ownProps) => ({
+    variables: { id: ownProps.params.id },
+  }),
+});
+
+const mapStateToProps = (state) => ({ live: state.live });
+
+export default connect(mapStateToProps)(
+  withCurrentSermon(
+    withSeries(
+      ReactMixin.decorate(Likeable)(
+        ReactMixin.decorate(Shareable)(
+          ReactMixin.decorate(Headerable)(
+            SeriesSingleVideoWithoutData
+          )
+        )
+      )
+    )
+  )
+);
+
+export {
+  SeriesSingleVideoWithoutData,
+  CURRENT_SERMON_QUERY,
+  SERIES_QUERY,
+};
