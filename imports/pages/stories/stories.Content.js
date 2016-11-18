@@ -58,3 +58,7 @@ StoriesContent.propTypes = {
 };
 
 export default StoriesContent;
+
+export {
+  StoryImage,
+};
