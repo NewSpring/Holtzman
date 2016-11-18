@@ -85,7 +85,9 @@ TemplateWithoutData.propTypes = {
   breakpoints: PropTypes.array.isRequired,
 };
 
-const Template = connect((state) => ({ breakpoints: state.responsive.breakpoints }))(TemplateWithoutData);
+const Template = connect((state) => ({ breakpoints: state.responsive.breakpoints }))(
+  TemplateWithoutData
+);
 
 const Routes = [
   { path: "/signup", component: Template },
