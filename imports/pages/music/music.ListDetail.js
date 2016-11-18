@@ -15,18 +15,7 @@ import {
   audio as audioActions,
 } from "../../store";
 
-const mapStateToProps = (state) => (
-  {
-    audio: {
-      visibility: state.audio.visibility,
-    },
-    header: state.header,
-  }
-);
-
-@connect(mapStateToProps)
-@ReactMixin.decorate(Shareable)
-export default class ListDetail extends Component {
+class ListDetailWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -130,3 +119,22 @@ export default class ListDetail extends Component {
   }
 
 }
+
+const mapStateToProps = (state) => (
+  {
+    audio: {
+      visibility: state.audio.visibility,
+    },
+    header: state.header,
+  }
+);
+
+export default connect(mapStateToProps)(
+  ReactMixin.decorate(Shareable)(
+    ListDetailWithoutData
+  )
+);
+
+export {
+  ListDetailWithoutData,
+};

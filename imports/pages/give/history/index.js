@@ -11,6 +11,62 @@ import { header as headerActions } from "../../../store";
 import Layout from "./Layout";
 import Details from "./Details";
 
+class TemplateWithoutData extends Component {
+
+  static propTypes = {
+    loading: PropTypes.bool,
+    transactions: PropTypes.array,
+    changeDates: PropTypes.func,
+    changeFamily: PropTypes.func,
+    Loading: PropTypes.func.isRequired,
+    done: PropTypes.bool,
+    filter: PropTypes.shape({
+      family: PropTypes.array, // eslint-disable-line
+    }),
+    dispatch: PropTypes.func,
+  }
+
+  state = { refetching: false }
+
+  componentDidMount() {
+    if (process.env.NATIVE) this.props.dispatch(headerActions.set({ title: "Giving History" }));
+  }
+
+  wrapRefetch = (refetch) => (...args) => {
+    this.setState({ refetching: true });
+    return refetch(...args).then((x) => {
+      this.setState({ refetching: false });
+      return x;
+    });
+  }
+
+  render() {
+    const {
+      transactions,
+      loading,
+      changeDates,
+      changeFamily,
+      filter,
+      done,
+      Loading,
+    } = this.props;
+
+    return (
+      <Layout
+        transactions={transactions}
+        family={filter.family || []}
+        alive
+        ready={!loading}
+        reloading={this.state.refetching}
+        Loading={Loading}
+        done={done}
+        changeFamily={this.wrapRefetch(changeFamily)}
+        changeDates={this.wrapRefetch(changeDates)}
+      />
+    );
+  }
+}
+
 const FILTER_QUERY = gql`
   query GetFilterContent {
     family: currentFamily {
@@ -81,66 +137,15 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
   }),
 });
 
-@connect()
-@withFilter
-@withTransactions
-@infiniteScroll()
-class Template extends Component {
-
-  static propTypes = {
-    loading: PropTypes.bool,
-    transactions: PropTypes.array,
-    changeDates: PropTypes.func,
-    changeFamily: PropTypes.func,
-    Loading: PropTypes.func.isRequired,
-    done: PropTypes.bool,
-    filter: PropTypes.shape({
-      family: PropTypes.array, // eslint-disable-line
-    }),
-    dispatch: PropTypes.func,
-  }
-
-  state = { refetching: false }
-
-  componentDidMount() {
-    if (process.env.NATIVE) this.props.dispatch(headerActions.set({ title: "Giving History" }));
-  }
-
-  wrapRefetch = (refetch) => (...args) => {
-    this.setState({ refetching: true });
-    return refetch(...args).then((x) => {
-      this.setState({ refetching: false });
-      return x;
-    });
-  }
-
-  render() {
-    const {
-      transactions,
-      loading,
-      changeDates,
-      changeFamily,
-      filter,
-      done,
-      Loading,
-    } = this.props;
-
-    return (
-      <Layout
-        transactions={transactions}
-        family={filter.family || []}
-        alive
-        ready={!loading}
-        reloading={this.state.refetching}
-        Loading={Loading}
-        done={done}
-        changeFamily={this.wrapRefetch(changeFamily)}
-        changeDates={this.wrapRefetch(changeDates)}
-      />
-    );
-  }
-}
-
+const Template = connect()(
+  withFilter(
+    withTransactions(
+      infiniteScroll()(
+        TemplateWithoutData
+      )
+    )
+  )
+);
 
 const Routes = [
   {
@@ -159,4 +164,8 @@ const Routes = [
 export default {
   Template,
   Routes,
+};
+
+export {
+  TemplateWithoutData,
 };

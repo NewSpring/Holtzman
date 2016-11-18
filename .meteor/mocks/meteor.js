@@ -11,6 +11,9 @@ exports.Meteor = {
   settings: {
     public: {
       heighliner: "https://api.newspring.cc/graphql",
+      rock: {
+        baseURL: "http://rock.rock",
+      },
     },
   },
   wrapAsync: jest.fn(() => jest.fn(() => {})),

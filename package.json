@@ -30,7 +30,16 @@
   "jest": {
     "scriptPreprocessor": "./.scripts/jestPreprocessor.js",
     "coverageDirectory": "./.coverage",
-    "collectCoverageFrom": ["client/**/*.{js,jsx}", "server/**/*.{js,jsx}", "imports/**/*.{js,jsx}"],
+    "collectCoverageFrom": [
+      "client/**/*.{js,jsx}",
+      "server/**/*.{js,jsx}",
+      "imports/**/*.{js,jsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "__stories__/",
+      "<rootDir>/imports/methods/",
+      "<rootDir>/imports/database/"
+    ],
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/.meteor/"
@@ -169,6 +178,7 @@
     "jest-cli": "^16.0.2",
     "json-loader": "^0.5.4",
     "mkdirp": "^0.5.1",
+    "mockdate": "^2.0.0",
     "node-sass": "3.4.2",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.3.2",

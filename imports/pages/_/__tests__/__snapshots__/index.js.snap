@@ -1,0 +1,33 @@
+exports[`test renders with children 1`] = `
+<div>
+  <Connect(SplitContainer)
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    nav={true}>
+    <Right
+      background="https://s3.amazonaws.com/ns.assets/apollos/leaves.png"
+      backgroundFill={false}
+      classes={
+        Array [
+          "background--right",
+          "background--bottom",
+        ]
+      }
+      mobile={false} />
+  </Connect(SplitContainer)>
+  <Left
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    scroll={true}>
+    <h1>
+      test
+    </h1>
+  </Left>
+</div>
+`;

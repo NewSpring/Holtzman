@@ -7,6 +7,24 @@ import Layout from "./Layout";
 
 import { header as headerActions } from "../../store";
 
+class LayoutWithoutData extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+  }
+
+  componentDidMount() {
+    if (process.env.NATIVE) {
+      const item = { title: "Locations" };
+      this.props.dispatch(headerActions.set(item));
+    }
+  }
+
+  render() {
+    return <Layout {...this.props} />;
+  }
+}
+
 const CAMPUSES_QUERY = gql`
   query GetCampuses {
     campuses {
@@ -28,26 +46,13 @@ const CAMPUSES_QUERY = gql`
 
 const withCampuses = graphql(CAMPUSES_QUERY);
 
-@connect()
-@withApollo
-@withCampuses
-class LayoutWithData extends Component {
-
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-  }
-
-  componentDidMount() {
-    if (process.env.NATIVE) {
-      const item = { title: "Locations" };
-      this.props.dispatch(headerActions.set(item));
-    }
-  }
-
-  render() {
-    return <Layout {...this.props} />;
-  }
-}
+const LayoutWithData = connect()(
+  withApollo(
+    withCampuses(
+      LayoutWithoutData
+    )
+  )
+);
 
 const Routes = [
   {
@@ -58,4 +63,9 @@ const Routes = [
 
 export default {
   Routes,
+};
+
+export {
+  LayoutWithoutData,
+  CAMPUSES_QUERY,
 };

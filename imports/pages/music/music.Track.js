@@ -5,8 +5,7 @@ import { connect } from "react-redux";
 import { modal, audio as audioActions } from "../../store";
 import ListDetail from "./music.ListDetail";
 
-@connect()
-export default class AudioTrack extends Component {
+class AudioTrackWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -30,6 +29,7 @@ export default class AudioTrack extends Component {
     }));
   }
 
+  // XXX unused
   trackClasses = () => {
     const classes = [
       "background--primary",
@@ -43,6 +43,7 @@ export default class AudioTrack extends Component {
     return classes.join(" ");
   }
 
+  // XXX unused
   textClasses = () => {
     const classes = [
       "float-left",
@@ -102,3 +103,9 @@ export default class AudioTrack extends Component {
   }
 
 }
+
+export default connect()(AudioTrackWithoutData);
+
+export {
+  AudioTrackWithoutData,
+};

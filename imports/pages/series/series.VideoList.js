@@ -6,44 +6,7 @@ import gql from "graphql-tag";
 import SeriesVideoListItem from "./series.VideoListItem";
 import { Spinner } from "../../components/loading";
 
-const SERMONS_QUERY = gql`
-  query GetSermonsFromSeries($id: ID!) {
-    content: node(id: $id) {
-      ... on Content {
-        sermons: children(channels: ["sermons"]) {
-          id
-          entryId: id
-          title
-          status
-          channelName
-          parent {
-            entryId: id
-          }
-          meta {
-            urlTitle
-            siteId
-            date
-            channelId
-          }
-          content {
-            speaker
-          }
-        }
-      }
-    }
-  }
-`;
-
-const withSermons = graphql(SERMONS_QUERY, {
-  name: "sermons",
-  options: (ownProps) => ({
-    variables: { id: ownProps.id },
-  }),
-});
-
-@connect()
-@withSermons
-export default class SeriesVideoList extends Component {
+class SeriesVideoListWithoutData extends Component {
 
   static propTypes = {
     sermons: PropTypes.object.isRequired,
@@ -100,3 +63,49 @@ export default class SeriesVideoList extends Component {
     );
   }
 }
+
+const SERMONS_QUERY = gql`
+  query GetSermonsFromSeries($id: ID!) {
+    content: node(id: $id) {
+      ... on Content {
+        sermons: children(channels: ["sermons"]) {
+          id
+          entryId: id
+          title
+          status
+          channelName
+          parent {
+            entryId: id
+          }
+          meta {
+            urlTitle
+            siteId
+            date
+            channelId
+          }
+          content {
+            speaker
+          }
+        }
+      }
+    }
+  }
+`;
+
+const withSermons = graphql(SERMONS_QUERY, {
+  name: "sermons",
+  options: (ownProps) => ({
+    variables: { id: ownProps.id },
+  }),
+});
+
+export default connect()(
+  withSermons(
+    SeriesVideoListWithoutData
+  )
+);
+
+export {
+  SeriesVideoListWithoutData,
+  SERMONS_QUERY,
+};

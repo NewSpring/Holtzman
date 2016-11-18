@@ -16,50 +16,7 @@ import { nav as navActions } from "../../store";
 
 import Single from "./stories.Single";
 
-const STORIES_QUERY = gql`
-  query GetNews($limit: Int!, $skip: Int!) {
-    content(channel: "news", limit: $limit, skip: $skip) {
-      id
-      entryId: id
-      title
-      status
-      channelName
-      meta {
-        urlTitle
-        siteId
-        date
-        channelId
-      }
-      content {
-        body
-        images(sizes: ["large"]) {
-          fileName
-          fileType
-          fileLabel
-          url
-        }
-        ooyalaId
-      }
-    }
-  }
-`;
-
-const withNews = graphql(STORIES_QUERY, {
-  options: (state) => ({
-    variables: {
-      limit: state.paging.pageSize * state.paging.page,
-      skip: state.paging.skip,
-    },
-  }),
-});
-
-const mapStateToProps = (state) => ({ paging: state.paging });
-
-@connect(mapStateToProps)
-@withNews
-@ReactMixin.decorate(Pageable)
-@ReactMixin.decorate(Headerable)
-class Template extends Component {
+class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -68,7 +25,9 @@ class Template extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({ title: "All News" });
+    if (this.headerAction) {
+      this.headerAction({ title: "All News" });
+    }
   }
 
   handleRefresh = (resolve, reject) => {
@@ -116,6 +75,55 @@ class Template extends Component {
   }
 }
 
+const STORIES_QUERY = gql`
+  query GetNews($limit: Int!, $skip: Int!) {
+    content(channel: "news", limit: $limit, skip: $skip) {
+      id
+      entryId: id
+      title
+      status
+      channelName
+      meta {
+        urlTitle
+        siteId
+        date
+        channelId
+      }
+      content {
+        body
+        images(sizes: ["large"]) {
+          fileName
+          fileType
+          fileLabel
+          url
+        }
+        ooyalaId
+      }
+    }
+  }
+`;
+
+const withNews = graphql(STORIES_QUERY, {
+  options: (state) => ({
+    variables: {
+      limit: state.paging.pageSize * state.paging.page,
+      skip: state.paging.skip,
+    },
+  }),
+});
+
+const mapStateToProps = (state) => ({ paging: state.paging });
+
+const Template = connect(mapStateToProps)(
+  withNews(
+    ReactMixin.decorate(Pageable)(
+      ReactMixin.decorate(Headerable)(
+        TemplateWithoutData
+      )
+    )
+  )
+);
+
 const Routes = [
   { path: "news", component: Template },
   { path: "news/:id", component: Single },
@@ -124,4 +132,9 @@ const Routes = [
 export default {
   Template,
   Routes,
+};
+
+export {
+  TemplateWithoutData,
+  STORIES_QUERY,
 };

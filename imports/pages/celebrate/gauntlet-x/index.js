@@ -22,7 +22,7 @@ const fuseNumbers = [
 ];
 
 /* eslint-disable max-len */
-const Fuse = () => (
+const GauntletX = () => (
   <div className="display-inline-block text-center one-whole ">
     <div className="background--primary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
       <Stats>
@@ -190,4 +190,4 @@ const Fuse = () => (
 );
 /* eslint-enable max-len */
 
-export default Fuse;
+export default GauntletX;

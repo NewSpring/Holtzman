@@ -133,3 +133,12 @@ List.propTypes = {
 };
 
 export default connect(map)(List);
+
+export {
+  getRatio,
+  dynamicWidthContainer,
+  dynamicWidth,
+  dynamicSize,
+  ListItem,
+  List as ListWithoutData,
+};

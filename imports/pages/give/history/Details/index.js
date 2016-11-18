@@ -11,6 +11,45 @@ import {
 
 import Layout from "./Layout";
 
+class DetailsWithoutData extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+    entries: PropTypes.object,
+  }
+
+  componentWillMount() {
+    this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
+  }
+
+  componentDidMount() {
+    if (process.env.NATIVE) {
+      const item = {
+        title: "Contribution Details",
+      };
+
+      this.props.dispatch(headerActions.set(item));
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(navActions.setLevel("TOP"));
+  }
+
+  render() {
+    const { transaction } = this.props.data;
+    const { entries, loading } = this.props.entries;
+    // if (loading) return <Loading /> // XXX
+
+    return (<Layout
+      transaction={transaction}
+      entries={entries}
+      loadingEntries={loading}
+    />);
+  }
+}
+
 const ENTRIES_QUERY = gql`
   query GetTaggedContent($tagName: String!, $limit: Int, $includeChannels: [String]) {
     entries: taggedContent(
@@ -89,45 +128,16 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
   }),
 });
 
+const Details = connect()(
+  withEntries(
+    withTransactions(
+      DetailsWithoutData
+    )
+  )
+);
 
-@connect()
-@withEntries
-@withTransactions
-export default class Details extends Component {
+export default Details;
 
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
-    entries: PropTypes.object,
-  }
-
-  componentWillMount() {
-    this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
-  }
-
-  componentDidMount() {
-    if (process.env.NATIVE) {
-      const item = {
-        title: "Contribution Details",
-      };
-
-      this.props.dispatch(headerActions.set(item));
-    }
-  }
-
-  componentWillUnmount() {
-    this.props.dispatch(navActions.setLevel("TOP"));
-  }
-
-  render() {
-    const { transaction } = this.props.data;
-    const { entries, loading } = this.props.entries;
-    // if (loading) return <Loading /> // XXX
-
-    return (<Layout
-      transaction={transaction}
-      entries={entries}
-      loadingEntries={loading}
-    />);
-  }
-}
+export {
+  DetailsWithoutData,
+};

@@ -21,73 +21,7 @@ import content from "../../util/content";
 
 import HomeHero from "./home.Hero";
 
-const CONTENT_FEED_QUERY = gql`
-  query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
-    feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
-      ...ContentForFeed
-      parent {
-        ...ContentForFeed
-      }
-    }
-  }
-`;
-
-const contentFragment = createFragment(gql`
-  fragment ContentForFeed on Content {
-    entryId: id
-    title
-    channelName
-    status
-    meta {
-      siteId
-      date
-      channelId
-    }
-    content {
-      images(sizes: ["large"]) {
-        fileName
-        fileType
-        fileLabel
-        url
-      }
-      isLight
-      colors {
-        id
-        value
-        description
-      }
-    }
-  }
-`);
-
-const withFeedContent = graphql(CONTENT_FEED_QUERY, {
-  options: (ownProps) => ({
-    fragments: [contentFragment],
-    variables: {
-      excludeChannels: ownProps.topics,
-      limit: 20,
-      skip: 0,
-      cache: true,
-    },
-  }),
-  props: ({ data }) => ({
-    data,
-    loading: data.loading,
-    fetchMore: () => data.fetchMore({
-      variables: { ...data.variables, skip: data.feed.length },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!fetchMoreResult.data) { return previousResult; }
-        return { feed: [...previousResult.feed, ...fetchMoreResult.data.feed] };
-      },
-    }),
-  }),
-});
-
-@connect((state) => ({ topics: state.topics.topics }))
-@withFeedContent
-@infiniteScroll()
-@ReactMixin.decorate(Headerable)
-export default class Home extends Component {
+class HomeWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -96,7 +30,9 @@ export default class Home extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({ title: "default" });
+    if (this.headerAction) {
+      this.headerAction({ title: "default" });
+    }
   }
 
   handleRefresh = (resolve, reject) => {
@@ -186,3 +122,79 @@ export default class Home extends Component {
   }
 
 }
+
+const CONTENT_FEED_QUERY = gql`
+  query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
+    feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
+      ...ContentForFeed
+      parent {
+        ...ContentForFeed
+      }
+    }
+  }
+`;
+
+const contentFragment = createFragment(gql`
+  fragment ContentForFeed on Content {
+    entryId: id
+    title
+    channelName
+    status
+    meta {
+      siteId
+      date
+      channelId
+    }
+    content {
+      images(sizes: ["large"]) {
+        fileName
+        fileType
+        fileLabel
+        url
+      }
+      isLight
+      colors {
+        id
+        value
+        description
+      }
+    }
+  }
+`);
+
+const withFeedContent = graphql(CONTENT_FEED_QUERY, {
+  options: (ownProps) => ({
+    fragments: [contentFragment],
+    variables: {
+      excludeChannels: ownProps.topics,
+      limit: 20,
+      skip: 0,
+      cache: true,
+    },
+  }),
+  props: ({ data }) => ({
+    data,
+    loading: data.loading,
+    fetchMore: () => data.fetchMore({
+      variables: { ...data.variables, skip: data.feed.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult.data) { return previousResult; }
+        return { feed: [...previousResult.feed, ...fetchMoreResult.data.feed] };
+      },
+    }),
+  }),
+});
+
+export default connect((state) => ({ topics: state.topics.topics }))(
+  withFeedContent(
+    infiniteScroll()(
+      ReactMixin.decorate(Headerable)(
+        HomeWithoutData
+      )
+    )
+  )
+);
+
+export {
+  HomeWithoutData,
+};

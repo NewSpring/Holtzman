@@ -1,0 +1,90 @@
+exports[`test renders 1`] = `
+<div
+  className="display-inline-block text-center one-whole ">
+  <div
+    className="soft-double-top@lap-and-up"
+    style={
+      Object {
+        "overflow": "visible",
+      }
+    }>
+    <Stats>
+      <Connect(FitTextWithoutData)
+        compressor={1.2}>
+        <h3
+          className="flush-bottom soft-half-bottom soft-double-top text-dark-secondary italic"
+          style={
+            Object {
+              "fontFamily": "ff-meta-serif-web-pro, serif",
+            }
+          }>
+          Because of your generosity, we raised
+        </h3>
+      </Connect(FitTextWithoutData)>
+      <Connect(FitTextWithoutData)
+        compressor={0.5}>
+        <h1
+          className="uppercase text-primary"
+          style={
+            Object {
+              "fontWeight": "900",
+            }
+          }>
+          $3,165,713
+        </h1>
+      </Connect(FitTextWithoutData)>
+      <Connect(FitTextWithoutData)
+        compressor={1.2}>
+        <h3
+          className="flush-bottom push-back-half-top soft-bottom text-dark-secondary italic"
+          style={
+            Object {
+              "fontFamily": "ff-meta-serif-web-pro, serif",
+            }
+          }>
+          during our year end offering - Clemson for Christmas
+        </h3>
+      </Connect(FitTextWithoutData)>
+    </Stats>
+    <div
+      className="soft-double-top push-double-top@lap-wide-and-up push-top" />
+  </div>
+  <div
+    className="hard-sides soft-ends background--light-secondary soft-double-ends@lap-wide-and-up">
+    <h3
+      className="text-center soft-half-top flush-bottom">
+      Giving:
+    </h3>
+    <h5
+      className="text-center soft-half-bottom flush-bottom italic"
+      style={
+        Object {
+          "fontFamily": "ff-meta-serif-web-pro, serif",
+        }
+      }>
+      You Can\'t Outgive God
+    </h5>
+    <Connect(List)
+      items={
+        Array [
+          Object {
+            "count": "$64,297,130",
+            "label": "Total Income",
+          },
+          Object {
+            "count": "$7,602,781",
+            "label": "Step Up Offering",
+          },
+          Object {
+            "count": "$3,819,908",
+            "label": "Total Given to Missions",
+          },
+          Object {
+            "count": "$3,165,713",
+            "label": "Clemson For Christmas",
+          },
+        ]
+      } />
+  </div>
+</div>
+`;

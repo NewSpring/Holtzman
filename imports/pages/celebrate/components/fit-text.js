@@ -2,12 +2,7 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-const map = (store) => ({
-  width: store.responsive.width,
-});
-
-@connect(map)
-export default class FitText extends Component {
+class FitTextWithoutData extends Component {
   static propTypes = {
     compressor: PropTypes.number.isRequired,
     maxFontSize: PropTypes.number.isRequired,
@@ -45,3 +40,14 @@ export default class FitText extends Component {
     return <div ref={(node) => { this.element = node; }}>{this.props.children}</div>;
   }
 }
+
+const map = (store) => ({
+  width: store.responsive.width,
+});
+
+const FitText = connect(map)(FitTextWithoutData);
+export default FitText;
+
+export {
+  FitTextWithoutData,
+};

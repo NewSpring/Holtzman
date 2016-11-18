@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import { withRouter } from "react-router";
 import gql from "graphql-tag";
+import { Meteor } from "meteor/meteor";
 
 import infiniteScroll from "../../../decorators/infiniteScroll";
 
@@ -40,91 +41,8 @@ if (Meteor.isClient) {
     };
   }
 }
-
-const mapStateToProps = ({ routing: { location } }) => {
-  const tags = Object.keys(location.query).length && location.query.tags ? location.query.tags : "";
-  const q = Object.keys(location.query).length && location.query.q ? location.query.q : null;
-  const campuses = (
-    Object.keys(location.query).length && location.query.campuses ? location.query.campuses : ""
-  );
-  return { tags, q, location, campuses };
-};
-
-const CAMPUS_LOCATION_QUERY = gql`
-  query GetCampuses { campuses { entityId, id, name } }
-`;
-
-const withCampusLocations = graphql(CAMPUS_LOCATION_QUERY, { name: "campusLocations" });
-
-const GROUP_FINDER_QUERY = gql`
-  query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String]) {
-    groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses) {
-      count
-      results {
-        id
-        name
-        entityId
-        type
-        kidFriendly
-        demographic
-        description
-        photo
-        ageRange
-        distance
-        schedule { description }
-        locations { location { latitude, longitude } }
-        tags { id, value }
-        campus { name, entityId }
-      }
-    }
-  }
-`;
-
-const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
-  options: (ownProps) => ({
-    ssr: false,
-    variables: {
-      tags: ownProps.tags && ownProps.tags.split(",").filter((x) => x),
-      query: ownProps.q,
-      ip: internalIp,
-      limit: 10,
-      offset: 0,
-      campuses: ownProps.campuses && ownProps.campuses.split(",").filter((x) => x),
-    },
-  }),
-  props: ({ data }) => ({
-    data,
-    loading: data.loading,
-    done: (
-      data.groups &&
-      data.groups.count === data.groups.results.length
-    ),
-    fetchMore: () => data.fetchMore({
-      variables: { offset: data.groups.results.length },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!fetchMoreResult.data) { return previousResult; }
-        if (fetchMoreResult.data.groups.results === 0) {
-          fetchMoreResult.data.groups.results.push(fetchMoreResult.data.groups.results[fetchMoreResult.data.groups.results.length - 1]);
-        }
-        return {
-          groups: {
-            count: fetchMoreResult.data.groups.count,
-            // Append the new feed results to the old one
-            results: [...previousResult.groups.results, ...fetchMoreResult.data.groups.results],
-          },
-        };
-      },
-    }),
-  }),
-});
-
 const defaultArray = [];
-@withRouter
-@withCampusLocations // enables this query to be static
-@connect(mapStateToProps)
-@withGroupFinder
-@infiniteScroll((x) => x, { doneText: "No more groups" })
-export default class Template extends Component {
+class TemplateWithoutData extends Component {
 
   static propTypes = {
     q: PropTypes.string,
@@ -247,3 +165,96 @@ export default class Template extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ routing: { location } }) => {
+  const tags = Object.keys(location.query).length && location.query.tags ? location.query.tags : "";
+  const q = Object.keys(location.query).length && location.query.q ? location.query.q : null;
+  const campuses = (
+    Object.keys(location.query).length && location.query.campuses ? location.query.campuses : ""
+  );
+  return { tags, q, location, campuses };
+};
+
+const CAMPUS_LOCATION_QUERY = gql`
+  query GetCampuses { campuses { entityId, id, name } }
+`;
+
+const withCampusLocations = graphql(CAMPUS_LOCATION_QUERY, { name: "campusLocations" });
+
+const GROUP_FINDER_QUERY = gql`
+  query GroupFinder($query: String, $tags: [String], $limit: Int, $offset: Int, $ip: String, $campuses: [String]) {
+    groups(query: $query, attributes: $tags, limit: $limit, offset: $offset, clientIp: $ip, campuses: $campuses) {
+      count
+      results {
+        id
+        name
+        entityId
+        type
+        kidFriendly
+        demographic
+        description
+        photo
+        ageRange
+        distance
+        schedule { description }
+        locations { location { latitude, longitude } }
+        tags { id, value }
+        campus { name, entityId }
+      }
+    }
+  }
+`;
+
+const withGroupFinder = graphql(GROUP_FINDER_QUERY, {
+  options: (ownProps) => ({
+    ssr: false,
+    variables: {
+      tags: ownProps.tags && ownProps.tags.split(",").filter((x) => x),
+      query: ownProps.q,
+      ip: internalIp,
+      limit: 10,
+      offset: 0,
+      campuses: ownProps.campuses && ownProps.campuses.split(",").filter((x) => x),
+    },
+  }),
+  props: ({ data }) => ({
+    data,
+    loading: data.loading,
+    done: (
+      data.groups &&
+      data.groups.count === data.groups.results.length
+    ),
+    fetchMore: () => data.fetchMore({
+      variables: { offset: data.groups.results.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult.data) { return previousResult; }
+        if (fetchMoreResult.data.groups.results === 0) {
+          fetchMoreResult.data.groups.results.push(fetchMoreResult.data.groups.results[fetchMoreResult.data.groups.results.length - 1]);
+        }
+        return {
+          groups: {
+            count: fetchMoreResult.data.groups.count,
+            // Append the new feed results to the old one
+            results: [...previousResult.groups.results, ...fetchMoreResult.data.groups.results],
+          },
+        };
+      },
+    }),
+  }),
+});
+
+export default withRouter(
+  withCampusLocations(
+    connect(mapStateToProps)(
+      withGroupFinder(
+        infiniteScroll((x) => x, { doneText: "No more groups" })(
+          TemplateWithoutData
+        )
+      )
+    )
+  )
+);
+
+export {
+  TemplateWithoutData,
+};

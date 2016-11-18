@@ -77,3 +77,7 @@ export default {
   Template,
   Routes,
 };
+
+export {
+  Template,
+};

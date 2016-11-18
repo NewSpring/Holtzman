@@ -1,12 +1,12 @@
 /* eslint-disable react/prefer-stateless-function */
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
+import { Meteor } from "meteor/meteor";
 import Accounts from "../../blocks/accounts";
 import Loading from "../../components/loading";
 import Meta from "../../components/meta";
 
-@connect((state) => ({ breakpoints: state.responsive.breakpoints }))
-class Template extends Component {
+class TemplateWithoutData extends Component {
 
   render() {
     if (Meteor.isServer) {
@@ -81,9 +81,13 @@ class Template extends Component {
   }
 }
 
-Template.propTypes = {
+TemplateWithoutData.propTypes = {
   breakpoints: PropTypes.array.isRequired,
 };
+
+const Template = connect((state) => ({ breakpoints: state.responsive.breakpoints }))(
+  TemplateWithoutData
+);
 
 const Routes = [
   { path: "/signup", component: Template },
@@ -91,4 +95,8 @@ const Routes = [
 
 export default {
   Routes,
+};
+
+export {
+  TemplateWithoutData,
 };

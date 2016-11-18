@@ -15,45 +15,7 @@ import { Loading, Error as Err } from "../../../../components/states";
 import Success from "../Success";
 import Layout from "./Layout";
 
-// XXX remove cache: false once we feel good about caching
-const CAMPUSES_QUERY = gql`
-  query GetCampuses {
-    campuses {
-      name
-      shortCode
-      id: entityId
-      locationId
-    }
-  }
-`;
-const withCampuses = graphql(CAMPUSES_QUERY, { name: "campuses" });
-
-const PERSON_QUERY = gql`
-  query GetPersonForSettings($cache: Boolean) {
-    person: currentPerson(cache: $cache) {
-      campus(cache: $cache) { id: entityId }
-      firstName
-      lastName
-      nickName
-      email
-      birthDay
-      birthMonth
-      birthYear
-    }
-  }
-`;
-const withPerson = graphql(PERSON_QUERY, {
-  name: "person",
-  options: () => ({
-    variables: { cache: false },
-    forceFetch: true,
-  }),
-});
-
-@withCampuses
-@connect()
-@withPerson
-export default class PersonalDetails extends Component {
+class PersonalDetailsWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -169,3 +131,52 @@ export default class PersonalDetails extends Component {
     }
   }
 }
+
+// XXX remove cache: false once we feel good about caching
+const CAMPUSES_QUERY = gql`
+  query GetCampuses {
+    campuses {
+      name
+      shortCode
+      id: entityId
+      locationId
+    }
+  }
+`;
+const withCampuses = graphql(CAMPUSES_QUERY, { name: "campuses" });
+
+const PERSON_QUERY = gql`
+  query GetPersonForSettings($cache: Boolean) {
+    person: currentPerson(cache: $cache) {
+      campus(cache: $cache) { id: entityId }
+      firstName
+      lastName
+      nickName
+      email
+      birthDay
+      birthMonth
+      birthYear
+    }
+  }
+`;
+const withPerson = graphql(PERSON_QUERY, {
+  name: "person",
+  options: () => ({
+    variables: { cache: false },
+    forceFetch: true,
+  }),
+});
+
+export default withCampuses(
+  connect()(
+    withPerson(
+      PersonalDetailsWithoutData
+    )
+  )
+);
+
+export {
+  PersonalDetailsWithoutData,
+  CAMPUSES_QUERY,
+  PERSON_QUERY,
+};

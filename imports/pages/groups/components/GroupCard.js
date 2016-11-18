@@ -1,3 +1,4 @@
+import { PropTypes } from "react";
 import truncate from "truncate";
 import { withRouter } from "react-router";
 
@@ -5,7 +6,7 @@ import SideBySide from "../../../components/cards/SideBySide";
 
 import Tag from "../components/Tag";
 
-export default withRouter(({ group, router, onHover }) => {
+export const GroupCardWithoutData = ({ group, router, onHover }) => {
   const theGroup = group || {};
 
   return (
@@ -79,4 +80,15 @@ export default withRouter(({ group, router, onHover }) => {
       </SideBySide>
     </button>
   );
-});
+};
+
+GroupCardWithoutData.propTypes = {
+  group: PropTypes.object,
+  router: PropTypes.object,
+  onHover: PropTypes.func,
+};
+
+export default withRouter(({ group, router, onHover }) => (
+  <GroupCardWithoutData group={group} router={router} onHover={onHover} />
+));
+

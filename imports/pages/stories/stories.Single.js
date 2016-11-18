@@ -15,6 +15,41 @@ import Shareable from "../../mixins/mixins.Shareable";
 // import content component
 import StoriesContent from "./stories.Content";
 
+class StoriesSingleWithoutData extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    story: PropTypes.object,
+  }
+
+  componentWillMount() {
+    if (process.env.WEB) return;
+    this.props.dispatch(navActions.setLevel("CONTENT"));
+    this.props.dispatch(navActions.setAction("CONTENT", {
+      id: 2,
+      action: this.likeableAction,
+    }));
+  }
+
+  render() {
+    const { content } = this.props.story;
+
+    if (!content) {
+      // loading
+      return (
+        <div className="locked-ends locked-sides floating">
+          <div className="floating__item">
+            <Loading />
+          </div>
+        </div>
+      );
+    }
+
+    const story = content;
+    return <StoriesContent story={story} />;
+  }
+}
+
 const GET_STORY_QUERY = gql`
   query getStory($id: ID!) {
     content: node(id: $id) {
@@ -53,42 +88,19 @@ const withStory = graphql(GET_STORY_QUERY, {
   }),
 });
 
-@connect()
-@withStory
-@ReactMixin.decorate(Likeable)
-@ReactMixin.decorate(Shareable)
-@ReactMixin.decorate(Headerable)
-export default class StoriesSingle extends Component {
+export default connect()(
+  withStory(
+    ReactMixin.decorate(Likeable)(
+      ReactMixin.decorate(Shareable)(
+        ReactMixin.decorate(Headerable)(
+          StoriesSingleWithoutData
+        )
+      )
+    )
+  )
+);
 
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    story: PropTypes.object,
-  }
-
-  componentWillMount() {
-    if (process.env.WEB) return;
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction,
-    }));
-  }
-
-  render() {
-    const { content } = this.props.story;
-
-    if (!content) {
-      // loading
-      return (
-        <div className="locked-ends locked-sides floating">
-          <div className="floating__item">
-            <Loading />
-          </div>
-        </div>
-      );
-    }
-
-    const story = content;
-    return <StoriesContent story={story} />;
-  }
-}
+export {
+  StoriesSingleWithoutData,
+  GET_STORY_QUERY,
+};

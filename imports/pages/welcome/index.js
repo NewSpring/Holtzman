@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Link } from "react-router";
 import Slider from "react-slick";
 
-class Welcome extends Component {
+class Template extends Component {
 
   componentWillUnmount() {
     if (typeof NativeStorage === "undefined") return;
@@ -126,10 +126,14 @@ class Welcome extends Component {
 const Routes = [
   {
     path: "/welcome",
-    component: Welcome,
+    component: Template,
   },
 ];
 
 export default {
   Routes,
+};
+
+export {
+  Template,
 };

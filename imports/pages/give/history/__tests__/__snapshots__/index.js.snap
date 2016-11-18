@@ -1,0 +1,12 @@
+exports[`test renders with props 1`] = `
+<Layout
+  Loading={[Function]}
+  alive={true}
+  changeDates={[Function]}
+  changeFamily={[Function]}
+  done={false}
+  family={Array []}
+  ready={true}
+  reloading={false}
+  transactions={Array []} />
+`;

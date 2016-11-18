@@ -21,57 +21,7 @@ import {
 import DevotionsSingleContent from "./devotions.SingleContent";
 import DevotionsSingleScripture from "./devotions.SingleScripture";
 
-const DEVOTIONAL_QUERY = gql`
-  query getDevotional($id: ID!) {
-    content: node(id: $id) {
-      id
-      ... on Content {
-        entryId: id
-        title
-        status
-        channelName
-        meta {
-          urlTitle
-          siteId
-          date
-          channelId
-        }
-        content {
-          body
-          tags
-          scripture {
-            book
-            passage
-          }
-          images(sizes: ["large"]) {
-            fileName
-            fileType
-            fileLabel
-            url
-          }
-        }
-      }
-    }
-  }
-`;
-
-const withDevotional = graphql(DEVOTIONAL_QUERY, {
-  name: "devotion",
-  options: (ownProps) => ({
-    variables: { id: ownProps.params.id },
-  }),
-});
-
-const mapStateToProps = (state) => ({
-  modal: { visible: state.modal.visible },
-  live: state.live,
-});
-
-@connect(mapStateToProps)
-@withDevotional
-@ReactMixin.decorate(Likeable)
-@ReactMixin.decorate(Shareable)
-export default class SeriesSingle extends Component {
+class DevotionsSingle extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -239,3 +189,63 @@ export default class SeriesSingle extends Component {
   }
 
 }
+
+const DEVOTIONAL_QUERY = gql`
+  query getDevotional($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          body
+          tags
+          scripture {
+            book
+            passage
+          }
+          images(sizes: ["large"]) {
+            fileName
+            fileType
+            fileLabel
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+
+const withDevotional = graphql(DEVOTIONAL_QUERY, {
+  name: "devotion",
+  options: (ownProps) => ({
+    variables: { id: ownProps.params.id },
+  }),
+});
+
+const mapStateToProps = (state) => ({
+  modal: { visible: state.modal.visible },
+  live: state.live,
+});
+
+export default connect(mapStateToProps)(
+  withDevotional(
+    ReactMixin.decorate(Likeable)(
+      ReactMixin.decorate(Shareable)(
+        DevotionsSingle
+      )
+    )
+  )
+);
+
+export {
+  DevotionsSingle as DevotionsSingleWithoutData,
+};

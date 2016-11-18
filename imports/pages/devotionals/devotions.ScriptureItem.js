@@ -1,5 +1,6 @@
 /* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
+import { Meteor } from "meteor/meteor";
 import Loading from "../../components/loading";
 
 export default class ScriptureItem extends Component {

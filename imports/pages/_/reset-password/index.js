@@ -7,8 +7,7 @@ import { Error, Loading } from "../../../components/states";
 import Success from "./Success";
 import Layout from "./Layout";
 
-@connect()
-export default class ChangePassword extends Component {
+class ChangePassword extends Component {
 
   static propTypes = {
     params: {
@@ -107,3 +106,9 @@ export default class ChangePassword extends Component {
     }
   }
 }
+
+export default connect()(ChangePassword);
+
+export {
+  ChangePassword as ChangePasswordWithoutData,
+};

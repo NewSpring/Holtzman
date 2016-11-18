@@ -8,11 +8,11 @@ import { Spinner } from "../../../components/loading";
 import Split, { Left, Right } from "../../../blocks/split";
 import Meta from "../../../components/meta";
 
-function formatDate(date) {
+export function formatDate(date) {
   return moment(date).format("MMM D, YYYY");
 }
 
-function monentize(value, fixed) {
+export function monentize(value, fixed) {
   let strVal = typeof value === "number" ? `${value}` : value;
 
   if (!strVal.length) {
@@ -31,7 +31,14 @@ function monentize(value, fixed) {
   return `$${strVal}`;
 }
 
-const TransactionDetail = ({ transactionDetail, transaction, icon, status, failure, person }) => (
+export const TransactionDetail = ({
+  transactionDetail,
+  transaction,
+  icon,
+  status,
+  failure,
+  person,
+}) => (
   <div className="grid" style={{ verticalAlign: "middle" }}>
     <div className="grid__item three-fifths" style={{ verticalAlign: "middle" }}>
       <div className="relative">

@@ -17,6 +17,69 @@ import { nav as navActions } from "../../store";
 import Single from "./series.Single";
 import SingleVideo from "./series.SingleVideo";
 
+class TemplateWithoutData extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+    Loading: PropTypes.func,
+  };
+
+  componentWillMount() {
+    this.props.dispatch(navActions.setLevel("TOP"));
+    if (this.headerAction) {
+      this.headerAction({ title: "All Series" });
+    }
+  }
+
+  handleRefresh = (resolve, reject) => {
+    this.props.data.refetch()
+      .then(resolve)
+      .catch(reject);
+  }
+
+  renderItems = () => {
+    const { content } = this.props.data;
+    let items = [1, 2, 3, 4, 5];
+    if (content) items = content;
+    return (
+      items.map((item, i) => (
+        <div
+          className={
+            "grid__item one-half@palm-wide one-third@portable " +
+              "one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+          }
+          key={i}
+        >
+          {(() => {
+            if (typeof item === "number") return <FeedItemSkeleton />;
+            return <FeedItem item={item} />;
+          })()}
+        </div>
+      ))
+    );
+  }
+
+  render() {
+    const { Loading } = this.props;
+    return (
+      <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
+        <Meta title="Series" />
+        <div className="background--light-secondary">
+          <section className="soft-half">
+            <div className="grid">
+              {this.renderItems()}
+              <div className="grid__item one-whole">
+                <Loading />
+              </div>
+            </div>
+          </section>
+        </div>
+      </ApollosPullToRefresh>
+    );
+  }
+}
+
 const SERIES_QUERY = gql`
   query getSeries($limit: Int!, $skip: Int!){
     content(channel: "series_newspring", limit: $limit, skip: $skip) {
@@ -73,70 +136,15 @@ const withSeries = graphql(SERIES_QUERY, {
 
 const mapStateToProps = (state) => ({ paging: state.paging });
 
-@connect(mapStateToProps)
-@withSeries
-@infiniteScroll((x) => x, { doneText: "End of Series" })
-@ReactMixin.decorate(Headerable)
-class Template extends Component {
-
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
-    Loading: PropTypes.func,
-  };
-
-  componentWillMount() {
-    this.props.dispatch(navActions.setLevel("TOP"));
-    this.headerAction({ title: "All Series" });
-  }
-
-  handleRefresh = (resolve, reject) => {
-    this.props.data.refetch()
-      .then(resolve)
-      .catch(reject);
-  }
-
-  renderItems = () => {
-    const { content } = this.props.data;
-    let items = [1, 2, 3, 4, 5];
-    if (content) items = content;
-    return (
-      items.map((item, i) => (
-        <div
-          className={
-            "grid__item one-half@palm-wide one-third@portable " +
-              "one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
-          }
-          key={i}
-        >
-          {(() => {
-            if (typeof item === "number") return <FeedItemSkeleton />;
-            return <FeedItem item={item} />;
-          })()}
-        </div>
-      ))
-    );
-  }
-
-  render() {
-    const { Loading } = this.props;
-    return (
-      <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
-        <Meta title="Series" />
-        <div className="background--light-secondary">
-          <section className="soft-half">
-            <div className="grid">
-              {this.renderItems()}
-              <div className="grid__item one-whole">
-                <Loading />
-              </div>
-            </div>
-          </section>
-        </div>
-      </ApollosPullToRefresh>
-    );
-  }
-}
+const Template = connect(mapStateToProps)(
+  withSeries(
+    infiniteScroll((x) => x, { doneText: "End of Series" })(
+      ReactMixin.decorate(Headerable)(
+        TemplateWithoutData
+      )
+    )
+  )
+);
 
 const Routes = [
   { path: "/series", component: Template },
@@ -147,4 +155,9 @@ const Routes = [
 export default {
   Template,
   Routes,
+};
+
+export {
+  TemplateWithoutData,
+  SERIES_QUERY,
 };

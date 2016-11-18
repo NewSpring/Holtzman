@@ -2,6 +2,7 @@
 import { Component, PropTypes } from "react";
 import moment from "moment";
 import { Link } from "react-router";
+import { Meteor } from "meteor/meteor";
 
 import AddSchedule from "../../../blocks/add-schedule";
 import Split, { Left, Right } from "../../../blocks/split";

@@ -159,7 +159,7 @@ Layout.propTypes = {
   canSearchTags: PropTypes.bool.isRequired,
   findByQuery: PropTypes.func.isRequired,
   inputOnChange: PropTypes.func.isRequired,
-  content: PropTypes.object.isRequired,
+  content: PropTypes.array.isRequired,
 };
 
 export default Layout;

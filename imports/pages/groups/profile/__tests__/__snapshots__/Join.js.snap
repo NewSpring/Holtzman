@@ -1,0 +1,55 @@
+exports[`test renders with props 1`] = `
+<div
+  className="soft soft-double-ends one-whole text-center">
+  <h4
+    className="text-center push-ends">
+    Request to Join 
+    happy group
+  </h4>
+  <Form
+    classes={
+      Array [
+        "hard",
+      ]
+    }
+    id="message-form"
+    submit={[Function]}>
+    <TextArea
+      classes={
+        Array [
+          "hard-bottom",
+          "push-half-ends",
+        ]
+      }
+      defaultValue="
+    Hey jim, bob,
+    
+    I\'m interested in joining your group and looking forward to hearing from you soon!
+    
+    Thanks!"
+      inputClasses="text-dark-secondary"
+      label="Your Message (click message to edit)"
+      name="message"
+      rows={10} />
+    <div
+      className="grid">
+      <div
+        className="grid__item one-half">
+        <button
+          className="btn--thin btn--small btn--dark-tertiary one-whole"
+          onClick={[Function]}>
+          Cancel
+        </button>
+      </div>
+      <div
+        className="grid__item one-half">
+        <button
+          className="one-whole btn"
+          type="submit">
+          Send
+        </button>
+      </div>
+    </div>
+  </Form>
+</div>
+`;

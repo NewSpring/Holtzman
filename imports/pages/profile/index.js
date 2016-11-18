@@ -29,3 +29,7 @@ export default {
     ...Settings.Routes,
   ],
 };
+
+export {
+  Root,
+};
