@@ -8,8 +8,7 @@ import Video from "../../components/players/video";
 
 import styles from "../../blocks/nav/offset-css";
 
-@connect()
-class Template extends Component {
+class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -40,6 +39,8 @@ class Template extends Component {
   }
 }
 
+const Template = connect()(TemplateWithoutData);
+
 const Routes = [
   {
     path: "/video/:embedCode",
@@ -49,4 +50,8 @@ const Routes = [
 
 export default {
   Routes,
+};
+
+export {
+  TemplateWithoutData,
 };
