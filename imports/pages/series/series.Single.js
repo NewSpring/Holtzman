@@ -25,56 +25,7 @@ import react from "../../util/react";
 import SeriesHero from "./series.Hero";
 import SeriesVideoList from "./series.VideoList";
 
-const SERIES_SINGLE_QUERY = gql`
-  query getSeriesSingle($id: ID!) {
-    content: node(id: $id) {
-      id
-      ... on Content {
-        entryId: id
-        title
-        status
-        channelName
-        meta {
-          urlTitle
-          siteId
-          date
-          channelId
-        }
-        content {
-          description
-          tags
-          isLight
-          images(sizes: ["large"]) {
-            fileName
-            fileType
-            fileLabel
-            url
-          }
-          ooyalaId
-          colors {
-            id
-            value
-            description
-          }
-        }
-      }
-    }
-  }
-`;
-
-const withSingleSeries = graphql(SERIES_SINGLE_QUERY, {
-  name: "series",
-  options: (ownProps) => ({
-    variables: { id: ownProps.params.id },
-  }),
-});
-
-@connect()
-@withSingleSeries
-@ReactMixin.decorate(Likeable)
-@ReactMixin.decorate(Shareable)
-@ReactMixin.decorate(Headerable)
-export default class SeriesSingle extends Component {
+class SeriesSingleWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -165,3 +116,64 @@ export default class SeriesSingle extends Component {
     );
   }
 }
+
+const SERIES_SINGLE_QUERY = gql`
+  query getSeriesSingle($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          description
+          tags
+          isLight
+          images(sizes: ["large"]) {
+            fileName
+            fileType
+            fileLabel
+            url
+          }
+          ooyalaId
+          colors {
+            id
+            value
+            description
+          }
+        }
+      }
+    }
+  }
+`;
+
+const withSingleSeries = graphql(SERIES_SINGLE_QUERY, {
+  name: "series",
+  options: (ownProps) => ({
+    variables: { id: ownProps.params.id },
+  }),
+});
+
+export default connect()(
+  withSingleSeries(
+    ReactMixin.decorate(Likeable)(
+      ReactMixin.decorate(Shareable)(
+        ReactMixin.decorate(Headerable)(
+          SeriesSingleWithoutData
+        )
+      )
+    )
+  )
+);
+
+export {
+  SeriesSingleWithoutData,
+  SERIES_SINGLE_QUERY,
+};
