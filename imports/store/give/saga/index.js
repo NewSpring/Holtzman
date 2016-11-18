@@ -30,6 +30,18 @@ export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 // this validation process is required to ensure that the account
 // that is being used to make payments, is actually valid
 // see https://github.com/NewSpring/Apollos/issues/439 for discussion
+const ORDER_MUTATION = gql`
+  mutation order($data: String!, $id: ID, $instant: Boolean) {
+    response: createOrder(data: $data, id: $id, instant: $instant) {
+      url
+      error
+      success
+      code
+      transactionId
+    }
+  }
+`;
+
 export function* validate() {
   const { give } = yield select(),
     name = give.data.payment.name;
@@ -56,7 +68,14 @@ export function* validate() {
   let error, url;
   try {
     // call the Meteor method to submit data to NMI
-    const response = yield cps(order, formattedData);
+    const { data: { response } } = yield GraphQL.mutate({
+      mutation: ORDER_MUTATION,
+      variables: {
+        data: JSON.stringify(formattedData),
+        id: null,
+        instant: false,
+      },
+    });
     url = response.url;
   } catch (e) { error = e; }
 
@@ -101,10 +120,21 @@ export function* chargeTransaction({ state }) {
   // if you have a saved account, NMI lets you "order" a schedule
   // instead of order + charge
   if (formattedData.savedAccount && Object.keys(give.schedules).length) {
+
     // wrap the function for the same api
     action = (token, name, id, callback) => {
-      Meteor.call("give/order", formattedData, true, id, callback);
+      GraphQL.mutate({
+        mutation: ORDER_MUTATION,
+        variables: {
+          data: JSON.stringify(formattedData),
+          instant: true,
+          id,
+        },
+      })
+        .then(x => callback(null, x))
+        .catch(callback);
     };
+
   } else {
     let store = yield select();
     give = store.give;
@@ -182,7 +212,6 @@ export function* chargeTransaction({ state }) {
     // hacky work around. I think this can wait until Apollo is closer
     // to revist
     if (name) {
-      const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
       const query = gql`
         query GetSavedPayments {
           savedPayments {
@@ -197,8 +226,6 @@ export function* chargeTransaction({ state }) {
         }
       `;
 
-      // wait one second before calling this
-      yield call(delay, 1000);
       yield GraphQL.query({ query });
     }
   }
@@ -268,7 +295,6 @@ export function* submitPaymentDetails(data, url) {
 export function* submitPersonDetails(give, autoSubmit) {
   // personal info is ready to be submitted
   const formattedData = formatPersonDetails(give);
-
   /*
 
     Oddity with NMI, when using a saved account for a subscription,
@@ -282,7 +308,15 @@ export function* submitPersonDetails(give, autoSubmit) {
   let error, url;
   try {
     // call the Meteor method to submit data to NMI
-    const response = yield cps(order, formattedData);
+    const { data: { response } } = yield GraphQL.mutate({
+      mutation: ORDER_MUTATION,
+      variables: {
+        data: JSON.stringify(formattedData),
+        id: null,
+        instant: false,
+      },
+    });
+    if (response.error) error = response.error;
     url = response.url;
   } catch (e) { error = e; }
 
