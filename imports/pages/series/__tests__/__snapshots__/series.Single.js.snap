@@ -486,7 +486,7 @@ exports[`test renders with props 1`] = `
           }
         } />
     </section>
-    <Connect(Apollo(SeriesVideoList))
+    <Connect(Apollo(SeriesVideoListWithoutData))
       id="1" />
   </div>
   <Apollo(Connect(Template))
