@@ -1,4 +1,4 @@
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { modal as modalActions, nav as navActions } from "../../../store";
 import {
@@ -61,17 +61,17 @@ it("updates nav if not keeping the nav and modal visible", () => {
   expect(navActions.setLevel).toHaveBeenCalledWith("MODAL");
 });
 
-it("adds escape listern if client", () => {
-  document.addEventListener = jest.fn();
-  const wrapper = shallow(generateComponent());
-  wrapper.instance().componentDidMount();
-  expect(document.addEventListener).toHaveBeenCalledTimes(1);
-  expect(document.addEventListener).toHaveBeenCalledWith(
-    "keyup",
-    wrapper.instance().bindEsc,
-    false
-  );
-});
+// it("adds escape listern if client", () => {
+//   document.addEventListener = jest.fn();
+//   const wrapper = shallow(generateComponent());
+//   wrapper.instance().componentDidMount();
+//   expect(document.addEventListener).toHaveBeenCalledTimes(1);
+//   expect(document.addEventListener).toHaveBeenCalledWith(
+//     "keyup",
+//     wrapper.instance().bindEsc,
+//     false
+//   );
+// });
 
 it("updates nav and state if visible, not level modal or down, and not keeping nav", () => {
   navActions.setLevel = jest.fn();
@@ -198,15 +198,6 @@ it("removes key bind and resets color on unmount", () => {
   expect(navActions.resetColor).toHaveBeenCalledTimes(1);
 });
 
-it("bindEsc hides modal if escape key event", () => {
-  modalActions.hide = jest.fn();
-  const wrapper = shallow(generateComponent());
-  wrapper.instance().bindEsc({
-    keyCode: 27,
-  });
-  expect(modalActions.hide).toHaveBeenCalledTimes(1);
-});
-
 it("close hides the modal if modal is the target", () => {
   modalActions.hide = jest.fn();
   const wrapper = shallow(generateComponent());
@@ -229,4 +220,55 @@ it("close does not hide the modal if modal is not the target", () => {
   };
   wrapper.instance().close(mockEvent);
   expect(modalActions.hide).not.toHaveBeenCalled();
+});
+
+it("handles esc key to dispatch closing the modal", () => {
+  Meteor.isClient = true;
+  const mockDispatch = jest.fn();
+
+  const wrapper = mount(generateComponent({
+    dispatch: mockDispatch,
+  }));
+
+  const esc =  new CustomEvent("keydown");
+  esc.keyCode = 27;
+
+  document.dispatchEvent(esc);
+  expect(mockDispatch).toBeCalledWith(modalActions.hide());
+});
+
+it("handles esc key to dispatch closing the modal", () => {
+  const mockDispatch = jest.fn();
+  const wrapper = mount(generateComponent({
+    dispatch: mockDispatch,
+  }));
+
+  const { handleKeyPress } = wrapper.instance();
+
+  handleKeyPress({ keyCode: 27 });
+   expect(mockDispatch).toBeCalledWith(modalActions.hide());
+});
+
+it("handles down key to scroll within the component", () => {
+  const scrollElement = { scrollTop: 0 };
+
+  const wrapper = shallow(generateComponent());
+
+  const { handleKeyPress, captureRef } = wrapper.instance();
+  captureRef(scrollElement);
+
+  handleKeyPress({ keyCode: 40 });
+  expect(scrollElement.scrollTop).toBe(10);
+});
+
+it("handles down key to scroll within the component", () => {
+  const scrollElement = { scrollTop: 0 };
+
+  const wrapper = shallow(generateComponent());
+
+  const { handleKeyPress, captureRef } = wrapper.instance();
+  captureRef(scrollElement);
+
+  handleKeyPress({ keyCode: 38 });
+  expect(scrollElement.scrollTop).toBe(-10);
 });

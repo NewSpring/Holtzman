@@ -23,6 +23,7 @@ exports[`test layoutClasses returns default 1`] = `"hard flush side-panel_x7puo 
 exports[`test overrides with theme 1`] = `
 <div
   className="panel overlay--solid-dark fixed"
+  data-side-modal={true}
   id="@@modal"
   onClick={[Function]}
   style={
@@ -74,6 +75,7 @@ exports[`test overrides with theme 1`] = `
 exports[`test renders with props 1`] = `
 <div
   className="panel overlay--solid-dark fixed"
+  data-side-modal={true}
   id="@@modal"
   onClick={[Function]}
   style={
@@ -142,6 +144,7 @@ Object {
 exports[`test updates styles with mobile styles 1`] = `
 <div
   className="panel overlay--solid-dark fixed"
+  data-side-modal={true}
   id="@@modal"
   onClick={[Function]}
   style={
@@ -193,6 +196,7 @@ exports[`test updates styles with mobile styles 1`] = `
 exports[`test updates styles with non mobile styles 1`] = `
 <div
   className="panel overlay--solid-dark fixed"
+  data-side-modal={true}
   id="@@modal"
   onClick={[Function]}
   style={

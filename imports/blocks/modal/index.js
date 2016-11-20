@@ -1,6 +1,7 @@
+
+import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { Meteor } from "meteor/meteor";
 
 import { modal as modalActions, nav as navActions } from "../../store";
 
@@ -14,6 +15,7 @@ class SideModalContainerWithoutData extends Component {
     navigation: PropTypes.object, // eslint-disable-line
     path: PropTypes.string,
   }
+
 
   state = {
     previous: null,
