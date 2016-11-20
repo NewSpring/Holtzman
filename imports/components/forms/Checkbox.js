@@ -34,11 +34,6 @@ export default class Checkbox extends React.Component {
     error: false,
   }
 
-  setStatus = (message) => {
-    this.props.status = message;
-    return undefined;
-  }
-
   disabled = () => {
     if (this.props.disabled) {
       return this.props.disabled; // eslint-disable-line
