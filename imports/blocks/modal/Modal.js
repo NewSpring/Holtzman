@@ -178,7 +178,7 @@ export default class SideModal extends Component {
     }
 
     return (
-      <div className="panel overlay--solid-dark fixed" id="@@modal" onClick={close} style={this.getContainerStyle()}>
+      <div className="panel overlay--solid-dark fixed" data-side-modal id="@@modal" onClick={close} style={this.getContainerStyle()}>
         <VelocityComponent
           animation={slide}
           duration={300}

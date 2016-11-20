@@ -55,7 +55,7 @@ type IErr = {
 };
 
 const Err = ({ msg, goToStepOne, additionalMessage }: IErr) => (
-  <div className="soft soft-double-ends push-double-top one-whole text-center">
+  <div className="soft soft-double-ends push-double-top@anchored one-whole text-center">
     <div className="push-double-top">
       <Error />
       <h3 className="text-alert push-ends">{ERROR_HEADING}</h3>

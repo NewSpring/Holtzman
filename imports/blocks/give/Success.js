@@ -104,7 +104,7 @@ const Success = ({
 }: ISuccess) => {
   const schedule = (schedules && schedules.length > 0) ? schedules[0] : false;
   return (
-    <div className="soft soft-double-ends push-double-top one-whole text-center">
+    <div className="soft soft-double-ends push-double-top@anchored one-whole text-center">
       <div className="push-double-top">
         <SuccessIcon />
         <h3 className="text-primary push-ends">Success!</h3>
