@@ -16,7 +16,6 @@ export default class Select extends Component {
       PropTypes.string,
       PropTypes.number,
     ]),
-    status: PropTypes.string,
     disabled: PropTypes.any, // eslint-disable-line
     validation: PropTypes.func,
     errorText: PropTypes.string,
@@ -26,7 +25,6 @@ export default class Select extends Component {
       PropTypes.string,
       PropTypes.array,
     ]),
-    children: PropTypes.any, // eslint-disable-line
     id: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
@@ -37,8 +35,8 @@ export default class Select extends Component {
     style: PropTypes.object, // eslint-disable-line
     placeholder: PropTypes.string,
     selected: PropTypes.any, // eslint-disable-line
-    includeBlank: PropTypes.any, // eslint-disable-line
-    deselect: PropTypes.any, // eslint-disable-line
+    includeBlank: PropTypes.bool, // eslint-disable-line
+    deselect: PropTypes.bool, // eslint-disable-line
     items: PropTypes.array, // eslint-disable-line
     optionClasses: PropTypes.string,
   }
@@ -102,9 +100,10 @@ export default class Select extends Component {
     this.node.value;
 
 
-  setStatus = (message) => {
-    this.props.status = message;
-  }
+  // XXX unused?
+  // setStatus = (message) => {
+  //   this.props.status = message;
+  // }
 
   disabled = () => {
     if (this.props.disabled) {

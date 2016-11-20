@@ -1,3 +1,39 @@
+exports[`test pushes type prop to inputclasses 1`] = `
+<div
+  className="input mytype"
+  data-spec="input-wrapper">
+  <h6
+    className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+    <small
+      data-spec="input-label" />
+  </h6>
+  <input
+    data-spec="input"
+    defaultChecked=""
+    style={
+      Object {
+        "width": 0,
+      }
+    }
+    type="mytype" />
+  <Label />
+</div>
+`;
+
+exports[`test renderHelpText renders when error and errorText 1`] = `
+<span
+  className="input__status">
+  test
+</span>
+`;
+
+exports[`test renderHelpText renders when status 1`] = `
+<span
+  className="input__status">
+  this is my status
+</span>
+`;
+
 exports[`test should accept a default value 1`] = `
 <Checkbox
   defaultValue={true}>

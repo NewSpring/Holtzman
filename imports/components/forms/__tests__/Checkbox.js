@@ -1,8 +1,8 @@
 
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Checkbox from '../Checkbox.js';
 import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
-import { mountToJson } from "enzyme-to-json";
+import { mountToJson, shallowToJson } from "enzyme-to-json";
 
 const generateComponent = (additionalProps={}) => (
     <Checkbox {...additionalProps} />
@@ -123,4 +123,77 @@ it ("should hide label with hideLabel prop", () => {
   expect(mountToJson(component)).toMatchSnapshot();
 
   expect(component.find("label").length).toEqual(0);
+});
+
+it("validate does not set error if validated", () => {
+  const mockEvent = {
+    target: {
+      value: "test",
+    },
+  };
+  const mockValidation = jest.fn(() => true);
+  const wrapper = shallow(generateComponent({
+    validation: mockValidation,
+  }));
+  wrapper.instance().validate(mockEvent);
+  expect(wrapper.state().error).toBe(false);
+});
+
+it("validate sets error if not validated", () => {
+  const mockEvent = {
+    target: {
+      value: "test",
+    },
+  };
+  const mockValidation = jest.fn(() => false);
+  const wrapper = shallow(generateComponent({
+    validation: mockValidation,
+  }));
+  wrapper.instance().validate(mockEvent);
+  expect(wrapper.state().error).toBe(true);
+});
+
+it("validate removes active and error if no value", () => {
+  const mockEvent = {
+    target: {
+      value: null,
+    },
+  };
+  const mockValidation = jest.fn(() => true);
+  const wrapper = shallow(generateComponent({
+    validation: mockValidation,
+  }));
+  wrapper.setState({ active: true, error: true });
+  wrapper.instance().validate(mockEvent);
+  expect(wrapper.state().active).toBe(false);
+  expect(wrapper.state().error).toBe(false);
+});
+
+it("renderHelpText does nothing if no error", () => {
+  const wrapper = shallow(generateComponent());
+  const result = wrapper.instance().renderHelpText();
+  expect(result).toBe(undefined);
+});
+
+it("renderHelpText renders when error and errorText", () => {
+  const wrapper = shallow(generateComponent({
+    errorText: "test",
+  }));
+  wrapper.setState({ error: true });
+  const result = wrapper.instance().renderHelpText();
+  expect(result).toMatchSnapshot();
+});
+
+it("renderHelpText renders when status", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({ status: "this is my status" });
+  const result = wrapper.instance().renderHelpText();
+  expect(result).toMatchSnapshot();
+});
+
+it("pushes type prop to inputclasses", () => {
+  const wrapper = shallow(generateComponent({
+    type: "mytype",
+  }));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
 });

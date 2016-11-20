@@ -9,7 +9,6 @@ export default class File extends Component {
     autofocus: PropTypes.bool,
     format: PropTypes.func,
     validation: PropTypes.func,
-    status: PropTypes.string,
     disabled: PropTypes.bool,
     errorText: PropTypes.string,
     theme: PropTypes.string,
@@ -102,10 +101,6 @@ export default class File extends Component {
 
   getValue = () =>
     this.node.value;
-
-  setStatus = (message) => {
-    this.props.status = message;
-  }
 
   renderHelpText = () => {
     if ((this.state.error && this.props.errorText) || this.state.status) {
