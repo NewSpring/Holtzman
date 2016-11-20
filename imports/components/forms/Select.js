@@ -101,9 +101,10 @@ export default class Select extends Component {
     this.node.value;
 
 
-  setStatus = (message) => {
-    this.props.status = message;
-  }
+  // XXX unused?
+  // setStatus = (message) => {
+  //   this.props.status = message;
+  // }
 
   disabled = () => {
     if (this.props.disabled) {
