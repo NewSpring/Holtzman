@@ -158,6 +158,31 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 200,
+    "source": Source {
+      "body": "
+  query GetCampuses {
+    campuses {
+      id
+      guid
+      name
+      services
+      url
+      location {
+        street1
+        street2
+        city
+        state
+        zip
+      }
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 

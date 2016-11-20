@@ -129,6 +129,27 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 190,
+    "source": Source {
+      "body": "
+  query GetPersonForSettings {
+    person: currentPerson(cache: false) {
+      firstName
+      lastName
+      nickName
+      photo
+      home {
+        state
+        city
+      }
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 

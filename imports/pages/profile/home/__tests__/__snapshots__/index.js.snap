@@ -118,6 +118,26 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 166,
+    "source": Source {
+      "body": "
+  query GetPerson {
+    person: currentPerson (cache: false) {
+      photo
+      firstName
+      nickName
+      lastName
+      home {
+        city
+      }
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 
