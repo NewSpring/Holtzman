@@ -353,6 +353,41 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 470,
+    "source": Source {
+      "body": "
+  query getAlbums($limit: Int!, $skip: Int!) {
+    content(channel: \"newspring_albums\", limit: $limit, skip: $skip) {
+      id
+      entryId: id
+      title
+      status
+      channelName
+      meta {
+        urlTitle
+        siteId
+        date
+        channelId
+      }
+      content {
+        images(sizes: [\"large\"]) {
+          fileName
+          fileType
+          fileLabel
+          url
+        }
+        tracks {
+          file: s3
+        }
+      }
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 

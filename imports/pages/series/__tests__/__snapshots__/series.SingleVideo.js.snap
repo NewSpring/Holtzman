@@ -397,6 +397,49 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 621,
+    "source": Source {
+      "body": "
+  query getSeriesSingle($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          description
+          images(sizes: [\"large\", \"medium\", \"small\"]) {
+            fileName
+            fileType
+            fileLabel
+            url
+            size
+          }
+          ooyalaId
+          colors {
+            id
+            value
+            description
+          }
+          isLight
+        }
+      }
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 
@@ -696,6 +739,41 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 458,
+    "source": Source {
+      "body": "
+  query getSermon($sermonId: ID!) {
+    content: node(id: $sermonId) {
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          actualDate
+          channelId
+        }
+        content {
+          audio {
+            duration
+            file: s3
+          }
+          description
+          speaker
+          ooyalaId
+        }
+      }
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 
