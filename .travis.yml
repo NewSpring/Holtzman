@@ -33,8 +33,7 @@ before_install:
   - npm install -g coveralls
 script:
   - npm link
-  - npm test
-  - npm run coverage
+  - npm test -- --coverage
   - coveralls < ./.coverage/lcov.info || true # ignore coveralls error
   - "./.scripts/prepare/app.sh"
   - "./.scripts/deploy/app.sh"
