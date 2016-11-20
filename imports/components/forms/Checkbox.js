@@ -9,7 +9,6 @@ export default class Checkbox extends React.Component {
       PropTypes.bool,
       PropTypes.string,
     ]),
-    status: PropTypes.string,
     disabled: PropTypes.any, // eslint-disable-line
     validation: PropTypes.func,
     errorText: PropTypes.string,
