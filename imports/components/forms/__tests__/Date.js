@@ -63,3 +63,41 @@ it("toggle updates state", () => {
   wrapper.instance().toggle();
   expect(wrapper.state().showDatePicker).toBe(false);
 });
+
+it("fixPickerPosition sets style to -250 if global 0 or greater", () => {
+  const mockChild = {
+    getBoundingClientRect: jest.fn(() => ({
+      top: 0
+    })),
+    style: {
+      marginTop: null,
+    },
+  };
+  document.getElementById = jest.fn(() => ({
+    children: [
+      mockChild,
+    ],
+  }));
+  const wrapper = shallow(generateComponent());
+  wrapper.instance().fixPickerPosition();
+  expect(mockChild.style.marginTop).toBe("-250px");
+});
+
+it("fixPickerPosition adjust style based on current margin if global less than 0", () => {
+  const mockChild = {
+    getBoundingClientRect: jest.fn(() => ({
+      top: -10,
+    })),
+    style: {
+      marginTop: "100px",
+    },
+  };
+  document.getElementById = jest.fn(() => ({
+    children: [
+      mockChild,
+    ],
+  }));
+  const wrapper = shallow(generateComponent());
+  wrapper.instance().fixPickerPosition();
+  expect(mockChild.style.marginTop).toBe("110px");
+});
