@@ -11,7 +11,11 @@ exports[`test appends classes if present 1`] = `
     }
   }>
   <FieldSet
-    theme="fieldsetTheme" />
+    theme="fieldsetTheme">
+    <h1>
+      test
+    </h1>
+  </FieldSet>
 </form>
 `;
 
@@ -28,7 +32,11 @@ exports[`test overrides with theme if theme 1`] = `
     }
   }>
   <FieldSet
-    theme="fieldsetTheme" />
+    theme="fieldsetTheme">
+    <h1>
+      test
+    </h1>
+  </FieldSet>
 </form>
 `;
 
@@ -45,6 +53,10 @@ exports[`test renders with props 1`] = `
     }
   }>
   <FieldSet
-    theme="fieldsetTheme" />
+    theme="fieldsetTheme">
+    <h1>
+      test
+    </h1>
+  </FieldSet>
 </form>
 `;

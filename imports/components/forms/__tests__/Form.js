@@ -20,7 +20,11 @@ const generateComponent = (additionalProps = {}) => {
     ...defaultProps,
     ...additionalProps,
   };
-  return <Form { ...newProps } />;
+  return (
+    <Form { ...newProps }>
+      <h1>test</h1>
+    </Form>
+  );
 };
 
 it("renders with props", () => {
