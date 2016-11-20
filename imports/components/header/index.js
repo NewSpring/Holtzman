@@ -177,7 +177,7 @@ class HeaderWithoutData extends Component {
   }
 }
 
-export default connect((state) => ({
+const Header = connect((state) => ({
   color: state.header.content.color || "#6BAC43",
   light: state.header.content.light,
   text: state.header.content.title,
@@ -189,6 +189,8 @@ export default connect((state) => ({
   searchTerm: state.search.term,
   searching: state.search.searching,
 }))(HeaderWithoutData);
+
+export default Header;
 
 export {
   HeaderWithoutData,
