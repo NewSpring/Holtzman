@@ -9,7 +9,6 @@ export default class File extends Component {
     autofocus: PropTypes.bool,
     format: PropTypes.func,
     validation: PropTypes.func,
-    status: PropTypes.string,
     disabled: PropTypes.bool,
     errorText: PropTypes.string,
     theme: PropTypes.string,

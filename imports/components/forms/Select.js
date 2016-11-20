@@ -16,7 +16,6 @@ export default class Select extends Component {
       PropTypes.string,
       PropTypes.number,
     ]),
-    status: PropTypes.string,
     disabled: PropTypes.any, // eslint-disable-line
     validation: PropTypes.func,
     errorText: PropTypes.string,
