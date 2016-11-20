@@ -71,6 +71,20 @@ it("renders subtext if present", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
+it("renders live version", () => {
+  const wrapper = shallow(generateComponent({
+    visible: false,
+  }));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("renders light version", () => {
+  const wrapper = shallow(generateComponent({
+    light: true,
+  }));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
 it("showSettings return undefined if not showSettings", () => {
   const wrapper = shallow(generateComponent({
     showSettings: false,

@@ -111,6 +111,43 @@ exports[`test renders isSearch version 1`] = `
 </div>
 `;
 
+exports[`test renders light version 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+      "zIndex": 100,
+    }
+  }>
+  <div
+    className="text-center"
+    style={
+      Object {
+        "backgroundColor": "green",
+        "borderBottom": "1px solid rgba(0,0,0, 0.1)",
+        "paddingBottom": "15px",
+        "paddingTop": "15px",
+      }
+    }>
+    <h6
+      className="flush-bottom soft-sides text-light-primary"
+      style={
+        Object {
+          "fontWeight": 700,
+          "overflow": "hidden",
+          "textOverflow": "ellipsis",
+          "whiteSpace": "nowrap",
+        }
+      }>
+      test
+    </h6>
+  </div>
+  <Connect(Apollo(Live)) />
+</div>
+`;
+
+exports[`test renders live version 1`] = `<Connect(Apollo(Live)) />`;
+
 exports[`test renders searching version 1`] = `
 <div
   style={
