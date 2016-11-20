@@ -10,6 +10,16 @@ exports[`test getClasses returns float version 1`] = `"text-center soft-half-end
 
 exports[`test getTextClasses returns default classes 1`] = `"flush hard text-light-primary live-text_sb3i5d"`;
 
+exports[`test parses query 1`] = `
+"query IsLive {
+  live {
+    live
+    embedCode
+  }
+}
+"
+`;
+
 exports[`test renders float version 1`] = `
 <mockConstructor
   defaultStyle={

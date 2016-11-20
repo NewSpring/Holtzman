@@ -1,8 +1,12 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
+import { print } from "graphql-tag/printer";
 import liveActions from "../../../store/live";
-import { LiveWithoutData as Live } from "../";
+import {
+  LiveWithoutData as Live,
+  LIVE_QUERY,
+} from "../";
 
 jest.mock("../../../store/live", () => ({
   set: jest.fn(),
@@ -204,4 +208,8 @@ it("handleLive updates store when data is not live and props live is", () => {
   });
   expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(liveActions.reset).toHaveBeenCalledTimes(1);
+});
+
+it("parses query", () => {
+  expect(print(LIVE_QUERY)).toMatchSnapshot();
 });

@@ -117,4 +117,5 @@ export default connect((state) => ({ live: state.live }))(
 
 export {
   LiveWithoutData,
+  LIVE_QUERY,
 };
