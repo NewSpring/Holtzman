@@ -7,8 +7,7 @@ import AudioScrubber from "./audio.Scrubber";
 import { actions as audioActions } from "../../../store/audio";
 import { modal, nav as navActions } from "../../../store";
 
-@connect()
-export default class AudioControls extends Component {
+class AudioControlsWithoutData extends Component {
 
   static propTypes = {
     audio: PropTypes.object.isRequired, // eslint-disable-line
@@ -294,3 +293,11 @@ export default class AudioControls extends Component {
   }
 
 }
+
+const AudioControls = connect()(AudioControlsWithoutData);
+
+export default AudioControls;
+
+export {
+  AudioControlsWithoutData,
+};
