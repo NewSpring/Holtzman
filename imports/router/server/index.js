@@ -5,14 +5,13 @@ import cookieParser from "cookie-parser";
 import { StyleSheetServer } from "aphrodite";
 import ReactHelmet from "react-helmet";
 import Cheerio from "cheerio/lib/cheerio";
-import MinReact from "react/dist/react.min";
+import ReactDOMServer from "react-dom/server";
 import { getDataFromTree } from "react-apollo/server";
 import { GraphQL } from "../../graphql";
 import InjectData from "./inject-data";
 import SSRContext from "./context";
 import patchSubscribeData from "./data";
 
-const ReactDOMServer = MinReact.__SECRET_DOM_SERVER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 
 const ReactRouterSSR = {};
 const cache = {}; // in memory cache of static markup
