@@ -34,6 +34,7 @@ export default class SideModal extends Component {
     modal: PropTypes.object,
     theme: PropTypes.string,
     visible: PropTypes.bool,
+    captureRef: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -188,7 +189,7 @@ export default class SideModal extends Component {
             className={this.props.theme || this.layoutClasses()}
             style={this.styles()}
           >
-            <div className={this.childClasses()} style={{ height: "100%" }}>
+            <div ref={this.props.captureRef} className={this.childClasses()} style={{ height: "100%" }}>
               <ChildComponent {...props} />
             </div>
           </section>
