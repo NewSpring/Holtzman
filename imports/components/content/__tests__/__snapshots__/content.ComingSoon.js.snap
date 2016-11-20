@@ -1,0 +1,20 @@
+exports[`test render 1`] = `
+<div
+  className="one-whole soft-double-top floating--top"
+  style={
+    Object {
+      "backgroundColor": "rgba(0,0,0,0.5)",
+      "height": "100%",
+      "position": "fixed",
+      "zIndex": "2",
+    }
+  }>
+  <div
+    className="background--light-secondary rounded three-quarters soft floating__item push-double-top">
+    <h3
+      className="text-dark-secondary">
+      Discover Is Coming Soon!
+    </h3>
+  </div>
+</div>
+`;
