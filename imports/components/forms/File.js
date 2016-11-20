@@ -103,10 +103,6 @@ export default class File extends Component {
   getValue = () =>
     this.node.value;
 
-  setStatus = (message) => {
-    this.props.status = message;
-  }
-
   renderHelpText = () => {
     if ((this.state.error && this.props.errorText) || this.state.status) {
       return (
