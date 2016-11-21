@@ -105,23 +105,19 @@ const LIVE_QUERY = gql`
   }
 `;
 
+const map = ({ live }) => ({ live });
+
+const withRedux = connect(map);
+
 const withLive = graphql(LIVE_QUERY, {
   options: { pollInterval: 60000 },
 });
 
-const withData = (Component) => (
-  connect((state) => ({ live: state.live }))(
-    withLive(
-      Component
-    )
-  )
-);
-
-export default withData(LiveWithoutData);
+export default withRedux(withLive(LiveWithoutData));
 
 export {
   LiveWithoutData,
   LIVE_QUERY,
-  withData,
+  withRedux,
   withLive,
 };
