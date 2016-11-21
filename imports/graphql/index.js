@@ -34,4 +34,5 @@ export default GraphQL;
 
 export {
   GraphQL,
+  networkInterface,
 };
