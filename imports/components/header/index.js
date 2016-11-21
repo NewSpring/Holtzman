@@ -177,24 +177,25 @@ class HeaderWithoutData extends Component {
   }
 }
 
-const withData = (Header) => (
-  connect((state) => ({
-    color: state.header.content.color || "#6BAC43",
-    light: state.header.content.light,
-    text: state.header.content.title,
-    subText: state.header.content.subTitle,
-    visible: state.header.visible,
-    isSearch: state.header.content.isSearch,
-    showSettings: state.header.content.showSettings,
-    searchSubmit: state.header.content.searchSubmit,
-    searchTerm: state.search.term,
-    searching: state.search.searching,
-  })
-))(Header);
+const map = ({ header, search }) => ({
+  color: header.content.color || "#6BAC43",
+  light: header.content.light,
+  text: header.content.title,
+  subText: header.content.subTitle,
+  visible: header.visible,
+  isSearch: header.content.isSearch,
+  showSettings: header.content.showSettings,
+  searchSubmit: header.content.searchSubmit,
+  searchTerm: search.term,
+  searching: search.searching,
+});
 
-export default withData(HeaderWithoutData);
+const withRedux = connect(map);
+
+export default withRedux(HeaderWithoutData);
 
 export {
   HeaderWithoutData,
-  withData,
+  map,
+  withRedux,
 };
