@@ -90,6 +90,18 @@ it("getDivId returns ooyala player id", () => {
   expect(result).toBe("ooyala-player-2");
 });
 
+it("createPlayer sets timeout to try again if no OO", () => {
+  jest.useFakeTimers();
+  window.OO = null;
+  const mockCallback = jest.fn();
+  const wrapper = shallow(generateComponent());
+  wrapper.instance().createPlayer("2", mockCallback);
+  const mockCreatePlayer = jest.fn();
+  wrapper.instance().createPlayer = mockCreatePlayer;
+  jest.runAllTimers();
+  expect(mockCreatePlayer).toHaveBeenCalledTimes(1);
+});
+
 // XXX yep
 it("createPlayer sets up player", () => {
   jest.useFakeTimers();
