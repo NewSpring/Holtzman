@@ -10,22 +10,7 @@ import Styles from "./live-css";
 
 import liveActions from "../../store/live";
 
-const LIVE_QUERY = gql`
-  query IsLive {
-    live {
-      live
-      embedCode
-    }
-  }
-`;
-
-const withLive = graphql(LIVE_QUERY, {
-  options: { pollInterval: 60000 },
-});
-
-@connect((state) => ({ live: state.live }))
-@withLive
-export default class Live extends Component {
+class LiveWithoutData extends Component {
 
   static propTypes = {
     live: PropTypes.object, // eslint-disable-line
@@ -110,3 +95,29 @@ export default class Live extends Component {
     );
   }
 }
+
+const LIVE_QUERY = gql`
+  query IsLive {
+    live {
+      live
+      embedCode
+    }
+  }
+`;
+
+const map = ({ live }) => ({ live });
+
+const withRedux = connect(map);
+
+const withLive = graphql(LIVE_QUERY, {
+  options: { pollInterval: 60000 },
+});
+
+export default withRedux(withLive(LiveWithoutData));
+
+export {
+  LiveWithoutData,
+  LIVE_QUERY,
+  withRedux,
+  withLive,
+};
