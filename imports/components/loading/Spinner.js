@@ -31,3 +31,7 @@ Spinner.propTypes = {
 };
 
 export default Spinner;
+
+export {
+  getClasses,
+};
