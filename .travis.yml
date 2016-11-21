@@ -21,6 +21,7 @@ cache:
   directories:
   - $TRAVIS_BUILD_DIR/node_modules
   - $TRAVIS_BUILD_DIR/.meteor
+  - $HOME/.yarn-cache
 before_install:
   - echo 'America/New_York' | sudo tee /etc/timezone
   - sudo dpkg-reconfigure --frontend noninteractive tzdata
