@@ -2,14 +2,13 @@ import { Component, PropTypes } from "react";
 import { Meteor } from "meteor/meteor";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
+import { withApollo } from "react-apollo";
 import createContainer from "../meteor/react-meteor-data";
 
 import Modal from "../modal";
 import Meta from "../../components/meta";
 import Nav from "../nav";
 import Header from "../../components/header";
-
-import { withApollo } from "react-apollo";
 
 import Likes from "../../database/collections/likes";
 
