@@ -294,13 +294,11 @@ class AudioControlsWithoutData extends Component {
 
 }
 
-const withData = (Component) => (
-  connect()(Component)
-);
+const withRedux = connect();
 
-export default withData(AudioControlsWithoutData);
+export default withRedux(AudioControlsWithoutData);
 
 export {
   AudioControlsWithoutData,
-  withData,
+  withRedux,
 };
