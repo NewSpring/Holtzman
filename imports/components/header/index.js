@@ -177,21 +177,24 @@ class HeaderWithoutData extends Component {
   }
 }
 
-const Header = connect((state) => ({
-  color: state.header.content.color || "#6BAC43",
-  light: state.header.content.light,
-  text: state.header.content.title,
-  subText: state.header.content.subTitle,
-  visible: state.header.visible,
-  isSearch: state.header.content.isSearch,
-  showSettings: state.header.content.showSettings,
-  searchSubmit: state.header.content.searchSubmit,
-  searchTerm: state.search.term,
-  searching: state.search.searching,
-}))(HeaderWithoutData);
+const withData = (Component) => (
+  connect((state) => ({
+    color: state.header.content.color || "#6BAC43",
+    light: state.header.content.light,
+    text: state.header.content.title,
+    subText: state.header.content.subTitle,
+    visible: state.header.visible,
+    isSearch: state.header.content.isSearch,
+    showSettings: state.header.content.showSettings,
+    searchSubmit: state.header.content.searchSubmit,
+    searchTerm: state.search.term,
+    searching: state.search.searching,
+  })
+))(Component);
 
-export default Header;
+export default withData(HeaderWithoutData);
 
 export {
   HeaderWithoutData,
+  withData,
 };
