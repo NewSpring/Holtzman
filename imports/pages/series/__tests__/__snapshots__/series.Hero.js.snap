@@ -13,13 +13,13 @@ exports[`test renders close trailer button when playing 1`] = `
     }>
     <div
       className="ratio__item">
-      <Connect(VideoPlayer)
+      <Connect(VideoPlayerWithoutData)
         hide={true}
         id="testid"
         success={[Function]} />
     </div>
   </div>
-  <Connect(VideoPlayer)
+  <Connect(VideoPlayerWithoutData)
     hide={true}
     id="testid"
     success={[Function]} />
@@ -57,13 +57,13 @@ exports[`test renders with props 1`] = `
     }>
     <div
       className="ratio__item">
-      <Connect(VideoPlayer)
+      <Connect(VideoPlayerWithoutData)
         hide={true}
         id="testid"
         success={[Function]} />
     </div>
   </div>
-  <Connect(VideoPlayer)
+  <Connect(VideoPlayerWithoutData)
     hide={true}
     id="testid"
     success={[Function]} />
