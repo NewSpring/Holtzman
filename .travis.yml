@@ -18,10 +18,10 @@ addons:
     - gcc-4.8
     - g++-4.8
 cache:
+  yarn: true
   directories:
   - $TRAVIS_BUILD_DIR/node_modules
   - $TRAVIS_BUILD_DIR/.meteor
-  - $HOME/.yarn-cache
 before_install:
   - echo 'America/New_York' | sudo tee /etc/timezone
   - sudo dpkg-reconfigure --frontend noninteractive tzdata
