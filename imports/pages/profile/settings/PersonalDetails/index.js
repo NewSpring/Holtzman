@@ -161,14 +161,19 @@ const PERSON_QUERY = gql`
 `;
 const withPerson = graphql(PERSON_QUERY, {
   name: "person",
+  skip: (ownProps) => !ownProps.authorized,
   options: () => ({
     variables: { cache: false },
     forceFetch: true,
   }),
 });
 
+export const mapStateToProps = ({ accounts }) => ({
+  authorized: accounts.authorized,
+});
+
 export default withCampuses(
-  connect()(
+  connect(mapStateToProps)(
     withPerson(
       PersonalDetailsWithoutData
     )
