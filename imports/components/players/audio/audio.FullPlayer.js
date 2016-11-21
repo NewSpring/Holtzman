@@ -10,14 +10,7 @@ import AudioControls from "./audio.Controls";
 import AudioTitle from "./audio.Title";
 import Styles from "./audio.styles.fullPlayer";
 
-const mapStateToProps = (state) =>
-  ({
-    ...state.audio,
-    header: state.header,
-  });
-
-@connect(mapStateToProps)
-export default class FullPlayer extends Component {
+class FullPlayerWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
@@ -70,11 +63,12 @@ export default class FullPlayer extends Component {
     return track.artist || album.artist || "NewSpring";
   }
 
-  getImageUrl = (images, blurred = false) => {
-    const image = blurred ? images[1] : images[0];
+  // XXX unused
+  // getImageUrl = (images, blurred = false) => {
+  //   const image = blurred ? images[1] : images[0];
 
-    return image.url;
-  };
+  //   return image.url;
+  // };
 
 
   getArtworkStyles = (album) => {
@@ -258,3 +252,19 @@ export default class FullPlayer extends Component {
     );
   }
 }
+
+const map = ({ audio, header }) =>
+  ({
+    ...audio,
+    header,
+  });
+
+const withRedux = connect(map);
+
+export default withRedux(FullPlayerWithoutData);
+
+export {
+  FullPlayerWithoutData,
+  map,
+  withRedux,
+};
