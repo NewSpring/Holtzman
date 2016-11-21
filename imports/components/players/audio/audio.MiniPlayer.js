@@ -6,15 +6,7 @@ import AudioControls from "./audio.Controls";
 
 import Styles from "./audio.styles.miniPlayer";
 
-// We only care about the audio state
-function mapStateToProps(state) {
-  return {
-    audio: state.audio,
-  };
-}
-
-@connect(mapStateToProps, audioActions)
-export default class MiniPlayer extends Component {
+class MiniPlayerWithoutData extends Component {
 
   static propTypes = {
     classes: PropTypes.oneOfType([
@@ -23,10 +15,6 @@ export default class MiniPlayer extends Component {
     ]),
     audio: PropTypes.object, // eslint-disable-line
     dispatch: PropTypes.func,
-    header: PropTypes.object, // eslint-disable-line
-    playing: PropTypes.object, // eslint-disable-line
-    audio: PropTypes.object, // eslint-disable-line
-    data: PropTypes.object, // eslint-disable-line
     play: PropTypes.func,
     pause: PropTypes.func,
     hide: PropTypes.func,
@@ -54,7 +42,7 @@ export default class MiniPlayer extends Component {
   }
 
   layoutClasses = () => {
-    const classes = [
+    let classes = [
       "locked-bottom",
       "one-whole",
       "background--light-tertiary",
@@ -65,7 +53,7 @@ export default class MiniPlayer extends Component {
 
 
     if (this.props.classes) {
-      classes.concat(this.props.classes);
+      classes = classes.concat(this.props.classes);
     } else {
       classes.push(css(Styles["mini-player"]));
     }
@@ -276,3 +264,15 @@ export default class MiniPlayer extends Component {
     );
   }
 }
+
+const map = ({ audio }) => ({ audio });
+
+const withRedux = connect(map, audioActions);
+
+export default withRedux(MiniPlayerWithoutData);
+
+export {
+  MiniPlayerWithoutData,
+  map,
+  withRedux,
+};
