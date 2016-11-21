@@ -109,15 +109,19 @@ const withLive = graphql(LIVE_QUERY, {
   options: { pollInterval: 60000 },
 });
 
-const Live = connect((state) => ({ live: state.live }))(
-  withLive(
-    LiveWithoutData,
+const withData = (Component) => (
+  connect((state) => ({ live: state.live }))(
+    withLive(
+      Component
+    )
   )
 );
 
-export default Live;
+export default withData(LiveWithoutData);
 
 export {
   LiveWithoutData,
   LIVE_QUERY,
+  withData,
+  withLive,
 };
