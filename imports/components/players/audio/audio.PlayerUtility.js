@@ -1,20 +1,13 @@
 /* eslint-disable import/no-named-as-default */
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
+import { Meteor } from "meteor/meteor";
 
 import { actions as audioActions } from "../../../store/audio";
 
 import Audio from "../../../libraries/players/audio";
 
-// We only care about the audio state
-function mapStateToProps(state) {
-  return {
-    audio: state.audio,
-  };
-}
-
-@connect(mapStateToProps, audioActions)
-export default class AudioPlayerUtility extends Component {
+class AudioPlayerUtilityWithoutData extends Component {
 
   static propTypes = {
     audio: PropTypes.object,
@@ -294,3 +287,15 @@ export default class AudioPlayerUtility extends Component {
     return <span />;
   }
 }
+
+const map = ({ audio }) => ({ audio });
+
+const withRedux = connect(map, audioActions);
+
+export default withRedux(AudioPlayerUtilityWithoutData);
+
+export {
+  AudioPlayerUtilityWithoutData,
+  map,
+  withRedux,
+};
