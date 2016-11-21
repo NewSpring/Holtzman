@@ -1,6 +1,6 @@
 exports[`test renders with mini player 1`] = `
 <div>
-  <Connect(MiniPlayer)
+  <Connect(MiniPlayerWithoutData)
     audio={
       Object {
         "playing": Object {
