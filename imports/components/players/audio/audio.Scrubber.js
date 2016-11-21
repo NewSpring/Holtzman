@@ -8,8 +8,7 @@ import Styles from "./audio.styles.scrubber";
 
 import { actions as audioActions } from "../../../store/audio";
 
-@connect(state => state.audio, audioActions)
-export default class AudioScrubber extends Component {
+class AudioScrubberWithoutData extends Component {
 
   static propTypes = {
     isLight: PropTypes.bool.isRequired,
@@ -214,3 +213,15 @@ export default class AudioScrubber extends Component {
     );
   }
 }
+
+const map = ({ audio }) => ({ audio });
+
+const withRedux = connect(map, audioActions);
+
+export default withRedux(AudioScrubberWithoutData);
+
+export {
+  AudioScrubberWithoutData,
+  map,
+  withRedux,
+};

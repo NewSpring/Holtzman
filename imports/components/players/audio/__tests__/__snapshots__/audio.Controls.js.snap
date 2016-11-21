@@ -86,7 +86,7 @@ exports[`test renders with props 1`] = `
     <i
       className="soft-sides flush text-light-secondary h3 icon-skip-next" />
   </button>
-  <Connect(AudioScrubber)
+  <Connect(AudioScrubberWithoutData)
     isLight={false} />
   <div
     className="grid one-whole flush"
