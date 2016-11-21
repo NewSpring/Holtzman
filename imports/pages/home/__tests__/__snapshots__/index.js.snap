@@ -1,5 +1,5 @@
 exports[`test renders feed skeleton if loading 1`] = `
-<Connect(ApollosPullToRefresh)
+<Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
   <Connect(SplitContainer)
     classes={
@@ -61,11 +61,11 @@ exports[`test renders feed skeleton if loading 1`] = `
       </div>
     </section>
   </Left>
-</Connect(ApollosPullToRefresh)>
+</Connect(ApollosPullToRefreshWithoutData)>
 `;
 
 exports[`test renders with props 1`] = `
-<Connect(ApollosPullToRefresh)
+<Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
   <Connect(SplitContainer)
     classes={
@@ -140,5 +140,5 @@ exports[`test renders with props 1`] = `
       </div>
     </section>
   </Left>
-</Connect(ApollosPullToRefresh)>
+</Connect(ApollosPullToRefreshWithoutData)>
 `;

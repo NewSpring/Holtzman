@@ -2,12 +2,7 @@ import { PropTypes } from "react";
 import { connect } from "react-redux";
 import ReactPullToRefresh from "react-pull-to-refresh";
 
-const mapStateToProps = (state) => ({
-  isLive: state.live.live,
-  show: state.live.show,
-});
-
-const ApollosPullToRefresh = ({ handleRefresh, children }) => (
+const ApollosPullToRefreshWithoutData = ({ handleRefresh, children }) => (
   <div>
     <div className="ptr-fake-background" />
 
@@ -41,10 +36,22 @@ const ApollosPullToRefresh = ({ handleRefresh, children }) => (
   </div>
 );
 
-ApollosPullToRefresh.propTypes = {
+ApollosPullToRefreshWithoutData.propTypes = {
   handleRefresh: PropTypes.func.isRequired,
   children: PropTypes.object.isRequired,
 };
 
+const map = ({ live }) => ({
+  isLive: live.live,
+  show: live.show,
+});
 
-export default connect(mapStateToProps)(ApollosPullToRefresh);
+const withRedux = connect(map);
+
+export default withRedux(ApollosPullToRefreshWithoutData);
+
+export {
+  ApollosPullToRefreshWithoutData,
+  map,
+  withRedux,
+};
