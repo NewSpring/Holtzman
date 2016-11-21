@@ -6,7 +6,10 @@ import MiniPlayer from "./audio.MiniPlayer";
 import AudioPlayerUtility from "./audio.PlayerUtility";
 
 import { actions as audioActions } from "../../../store/audio";
-import { modal, nav as navActions } from "../../../store";
+import {
+  modal as modalActions,
+  nav as navActions,
+} from "../../../store";
 
 class AudioPlayerWithoutData extends Component {
 
@@ -54,7 +57,10 @@ class AudioPlayerWithoutData extends Component {
     const modalClosing = modalVis && !modalNextVis;
 
     const triggerModal = () => {
-      this.props.dispatch(modal.render(FullPlayer, { coverHeader: true, audioPlayer: true }));
+      this.props.dispatch(modalActions.render(FullPlayer, {
+        coverHeader: true,
+        audioPlayer: true,
+      }));
 
       // if phone, change to down arrow and make nav transparent
       if (window.isPhone) {
@@ -75,7 +81,7 @@ class AudioPlayerWithoutData extends Component {
         setTimeout(() => {
           triggerModal();
         }, 250);
-        this.props.dispatch(modal.setRetrigger(null));
+        this.props.dispatch(modalActions.setRetrigger(null));
       } else {
         this.props.dispatch(audioActions.setVisibility("dock"));
       }
