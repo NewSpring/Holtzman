@@ -1,11 +1,13 @@
 /* eslint-disable */
+import { Meteor } from "meteor/meteor";
 /*
 
   This file unifies the API from the cordova and audio5 depending on env
 
 */
 
-if (Meteor.isCordova) {
+const addMediaListeners = () => {
+  if (!Meteor.isCordova) return;
   document.addEventListener("deviceready", (event) => {
     Media.prototype.timeupdate = function (callback) {
       return setInterval(() => {
@@ -38,7 +40,9 @@ if (Meteor.isCordova) {
       this.play();
     };
   });
-}
+};
+
+addMediaListeners();
 
 class Audio {
 
@@ -101,6 +105,7 @@ class Audio {
 
 export {
   Audio,
+  addMediaListeners,
 };
 
 export default Audio;
