@@ -73,10 +73,19 @@ const PERSON_QUERY = gql`
   }
 `;
 
-const withPerson = graphql(PERSON_QUERY);
+const withPerson = graphql(PERSON_QUERY, {
+  skip: (ownProps) => !ownProps.authorized,
+  options: {
+    forceFetch: true,
+  },
+});
+
+export const mapStateToProps = ({ accounts }) => ({
+  authorized: accounts.authorized,
+});
 
 const Template = withProfileUpload(
-  connect()(
+  connect(mapStateToProps)(
     withPerson(
       TemplateWithoutData
     )

@@ -79,7 +79,9 @@ const GET_PERSON_QUERY = gql`
   }
 `;
 
-const withPerson = graphql(GET_PERSON_QUERY);
+const withPerson = graphql(GET_PERSON_QUERY, {
+  skip: (ownProps) => !ownProps.authorized,
+});
 const mapStateToProps = (state) => ({ authorized: state.accounts.authorized });
 
 export default withPerson(

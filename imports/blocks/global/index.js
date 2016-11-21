@@ -2,6 +2,7 @@ import { Component, PropTypes } from "react";
 import { Meteor } from "meteor/meteor";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
+import { withApollo } from "react-apollo";
 import createContainer from "../meteor/react-meteor-data";
 
 import Modal from "../modal";
@@ -73,7 +74,7 @@ export const Blank = () => (<div />);
 // it has no children to avoid reredering any child elements on change
 // it pretty much just gives us Tracker + redux together
 let hasBeenSignedIn = false;
-const GlobalData = createContainer(({ dispatch }) => {
+const GlobalData = createContainer(({ dispatch, client }) => {
   const userId = Meteor.userId();
 
   if (typeof Raven !== "undefined") {
@@ -107,6 +108,7 @@ const GlobalData = createContainer(({ dispatch }) => {
   if (!userId && hasBeenSignedIn) {
     dispatch(accountsActions.authorize(false));
     dispatch(accountsActions.signout());
+    client.resetStore();
     hasBeenSignedIn = false;
   }
 
@@ -136,10 +138,12 @@ const map = (state) => ({
 });
 
 @connect(map)
+@withApollo
 export default class Global extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    client: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
@@ -147,11 +151,11 @@ export default class Global extends Component {
   }
 
   render() {
-    const { dispatch } = this.props;
+    const { dispatch, client } = this.props;
     return (
       <div id="global">
         <App {...this.props} />
-        <GlobalData dispatch={dispatch} />
+        <GlobalData dispatch={dispatch} client={client} />
       </div>
     );
   }
