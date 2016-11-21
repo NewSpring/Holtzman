@@ -177,7 +177,7 @@ class HeaderWithoutData extends Component {
   }
 }
 
-const withData = (Component) => (
+const withData = (Header) => (
   connect((state) => ({
     color: state.header.content.color || "#6BAC43",
     light: state.header.content.light,
@@ -190,7 +190,7 @@ const withData = (Component) => (
     searchTerm: state.search.term,
     searching: state.search.searching,
   })
-))(Component);
+))(Header);
 
 export default withData(HeaderWithoutData);
 
