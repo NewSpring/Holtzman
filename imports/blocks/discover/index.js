@@ -16,6 +16,26 @@ import {
 
 import Layout from "./Layout";
 
+const SEARCH_QUERY = gql`
+  query Search($term: String!, $first: Int, $after: Int, $site: String) {
+    search(query: $term, first: $first, after: $after, site: $site) {
+      total
+      items {
+        id
+        title
+        htmlTitle
+        htmlDescription
+        link
+        image
+        displayLink
+        description
+        type
+        section
+      }
+    }
+  }
+`;
+
 class SearchContainerWithoutData extends Component {
 
   static propTypes = {
@@ -117,26 +137,6 @@ class SearchContainerWithoutData extends Component {
   }
 }
 
-const SEARCH_QUERY = gql`
-  query Search($term: String!, $first: Int, $after: Int, $site: String) {
-    search(query: $term, first: $first, after: $after, site: $site) {
-      total
-      items {
-        id
-        title
-        htmlTitle
-        htmlDescription
-        link
-        image
-        displayLink
-        description
-        type
-        section
-      }
-    }
-  }
-`;
-
 const map = (state) => ({ search: state.search });
 const withRedux = connect(map);
 const withHeader = ReactMixin.decorate(Headerable);
@@ -148,5 +148,5 @@ export {
   SEARCH_QUERY,
   map,
   withRedux,
-  withHeader
+  withHeader,
 };
