@@ -5,14 +5,7 @@ import { modal as modalActions, nav as navActions } from "../../store";
 
 import Modal from "./Modal";
 
-const map = (state) => ({
-  navigation: state.nav,
-  modal: state.modal,
-  path: state.routing.path,
-});
-
-@connect(map)
-export default class SideModalContainer extends Component {
+class SideModalContainerWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
@@ -107,3 +100,19 @@ export default class SideModalContainer extends Component {
     );
   }
 }
+
+const map = (state) => ({
+  navigation: state.nav,
+  modal: state.modal,
+  path: state.routing.path,
+});
+
+const withRedux = connect(map);
+
+export default withRedux(SideModalContainerWithoutData);
+
+export {
+  SideModalContainerWithoutData,
+  map,
+  withRedux,
+};
