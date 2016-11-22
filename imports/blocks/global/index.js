@@ -36,7 +36,7 @@ const Watermark = () => (
 );
 
 
-const App = ({ children, className }) => (
+const App = ({ children, className, native }) => (
   <div
     className={
       "push-double-bottom@palm soft-half-bottom@palm " +
@@ -46,7 +46,7 @@ const App = ({ children, className }) => (
     <div className={className}>
       <Meta />
       {(() => {
-        if (process.env.NATIVE) {
+        if (process.env.NATIVE || native) {
           return <Header />;
         }
         return null;
@@ -65,6 +65,7 @@ const App = ({ children, className }) => (
 App.propTypes = {
   children: PropTypes.object.isRequired,
   className: PropTypes.string,
+  native: PropTypes.bool,
 };
 
 
