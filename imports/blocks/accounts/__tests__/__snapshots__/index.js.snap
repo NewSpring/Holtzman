@@ -1,0 +1,6 @@
+exports[`Accounts renders with props 1`] = `
+<Connect(AccountsContainer)
+  peopleWithoutAccountEmails={[Function]}
+  save={[Function]}
+  setAccount={[Function]} />
+`;
