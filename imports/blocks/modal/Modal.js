@@ -61,7 +61,7 @@ export default class SideModal extends Component {
     ];
 
     if (childClasses.length) {
-      classes.concat(childClasses);
+      classes = classes.concat(childClasses);
     }
 
     if (float) {
