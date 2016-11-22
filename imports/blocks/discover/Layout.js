@@ -37,3 +37,8 @@ SearchLayout.propTypes = {
 };
 
 export default SearchLayout;
+
+export {
+  Content,
+  getStyle,
+};
