@@ -1,0 +1,317 @@
+exports[`ChildItem does not render if no section 1`] = `
+<div
+  className="one-whole grid__item">
+  <div
+    className="rounded ratio--landscape soft-ends">
+    <div
+      className="ratio__item" />
+  </div>
+</div>
+`;
+
+exports[`ChildItem render with props 1`] = `
+<div
+  className="one-whole soft-half-left grid__item push-half-bottom">
+  <ExternalLinkWrapper
+    className="plain"
+    id="1"
+    onClick={[Function]}
+    to="http://test.com">
+    <div
+      className="rounded one-whole grid rounded flush background--light-primary">
+      <div
+        className="grid__item two-thirds hard"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        <h6
+          className="soft-left text-dark-primary flush-bottom">
+          test text
+        </h6>
+      </div>
+      <div
+        className="grid__item one-third hard"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        <ImageLoader
+          force={true}
+          imageclasses={
+            Array [
+              "background--fill",
+              "background--dark-tertiary",
+              "ratio--landscape",
+              "soft-ends",
+            ]
+          }
+          preloader={[Function]}
+          renderElement={[Function]}
+          src="http://test.com/test.jpg"
+          style={
+            Object {
+              "backgroundImage": "url(\'http://test.com/test.jpg\')",
+              "borderRadius": "0px 6px 6px 0px",
+            }
+          }
+          wrapper={[Function]}>
+          <div
+            className="ratio__item" />
+        </ImageLoader>
+      </div>
+    </div>
+  </ExternalLinkWrapper>
+</div>
+`;
+
+exports[`ExternalLinkWrapper renders external link 1`] = `
+<a
+  href="//test.com"
+  to="//test.com">
+  <h1>
+    test
+  </h1>
+</a>
+`;
+
+exports[`ExternalLinkWrapper renders internal link 1`] = `
+<Link
+  onlyActiveOnIndex={false}
+  style={Object {}}
+  to="/test">
+  <h1>
+    test
+  </h1>
+</Link>
+`;
+
+exports[`SectionItem renderArrow renders if state id matches section id 1`] = `
+<div
+  className="locked background--dark-primary"
+  style={
+    Object {
+      "background": "transparent",
+      "borderColor": "transparent transparent #303030 transparent",
+      "borderStyle": "solid",
+      "borderWidth": "0 15px 10px 15px",
+      "height": 0,
+      "left": "50%",
+      "marginBottom": "-10px",
+      "marginLeft": "-10px",
+      "marginTop": "2px",
+      "width": 0,
+    }
+  } />
+`;
+
+exports[`SectionItem renderChildren renders children of a section 1`] = `
+<div
+  className="soft-half-right soft-left soft-top background--dark-primary push-bottom">
+  <div
+    className="grid ">
+    <ChildItem
+      go={[Function]}
+      section={
+        Object {
+          "description": "test description",
+          "id": "3",
+          "image": "http://test.com/test.jpg",
+          "link": "http://test.com",
+          "text": "test text",
+        }
+      } />
+    <ChildItem
+      go={[Function]}
+      section={
+        Object {
+          "description": "test description",
+          "id": "4",
+          "image": "http://test.com/test.jpg",
+          "link": "http://test.com",
+          "text": "test text",
+        }
+      } />
+  </div>
+</div>
+`;
+
+exports[`SectionItem renders with props 1`] = `
+<div>
+  <div
+    className="soft-half-right soft-left">
+    <div
+      className="grid">
+      <div
+        className="grid__item one-whole">
+        <div
+          className="grid">
+          <SingleItem
+            go={[Function]}
+            section={
+              Object {
+                "children": Array [
+                  Object {
+                    "description": "test description",
+                    "id": "3",
+                    "image": "http://test.com/test.jpg",
+                    "link": "http://test.com",
+                    "text": "test text",
+                  },
+                  Object {
+                    "description": "test description",
+                    "id": "4",
+                    "image": "http://test.com/test.jpg",
+                    "link": "http://test.com",
+                    "text": "test text",
+                  },
+                ],
+                "description": "test description",
+                "id": "1",
+                "image": "http://test.com/test.jpg",
+                "link": "http://test.com",
+                "text": "test text",
+              }
+            } />
+          <SingleItem
+            go={[Function]}
+            section={
+              Object {
+                "children": Array [
+                  Object {
+                    "description": "test description",
+                    "id": "3",
+                    "image": "http://test.com/test.jpg",
+                    "link": "http://test.com",
+                    "text": "test text",
+                  },
+                  Object {
+                    "description": "test description",
+                    "id": "4",
+                    "image": "http://test.com/test.jpg",
+                    "link": "http://test.com",
+                    "text": "test text",
+                  },
+                ],
+                "description": "test description",
+                "id": "2",
+                "image": "http://test.com/test.jpg",
+                "link": "http://test.com",
+                "text": "test text",
+              }
+            } />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="one-whole">
+    <VelocityTransitionGroup
+      enter={
+        Object {
+          "animation": "slideDown",
+          "duration": 250,
+        }
+      }
+      enterHideStyle={
+        Object {
+          "display": "none",
+        }
+      }
+      enterShowStyle={
+        Object {
+          "display": "",
+        }
+      }
+      leave={
+        Object {
+          "animation": "slideUp",
+          "duration": 250,
+        }
+      }
+      runOnMount={false} />
+  </div>
+</div>
+`;
+
+exports[`SingleItem does not render if no section 1`] = `
+<div
+  className="one-half grid__item">
+  <div
+    className="rounded ratio--landscape">
+    <div
+      className="ratio__item" />
+  </div>
+</div>
+`;
+
+exports[`SingleItem renders with props 1`] = `
+<div
+  className="one-half soft-half-left grid__item push-half-bottom">
+  <ExternalLinkWrapper
+    className="plain"
+    id="1"
+    onClick={[Function]}
+    to="http://test.com">
+    <ImageLoader
+      imageclasses={
+        Array [
+          "overlay--gradient",
+          "background--fill",
+          "background--dark-tertiary",
+          "rounded",
+          "ratio--square",
+          "floating--bottom",
+          "floating--left",
+        ]
+      }
+      preloader={[Function]}
+      renderElement={[Function]}
+      src="http://test.com/test.jpg"
+      style={
+        Object {
+          "backgroundImage": "url(\'http://test.com/test.jpg\')",
+        }
+      }
+      wrapper={[Function]}>
+      <div
+        className="overlay__item floating__item ratio__item">
+        <h6
+          className="text-light-primary soft-left">
+          test text
+        </h6>
+      </div>
+    </ImageLoader>
+  </ExternalLinkWrapper>
+  <h1>
+    test
+  </h1>
+</div>
+`;
+
+exports[`preloader renders 1`] = `
+<div
+  className="one two"
+  id="2">
+  <h1>
+    test
+  </h1>
+</div>
+`;
+
+exports[`renderElement renders 1`] = `
+<div
+  className="one two"
+  id="2"
+  style={
+    Object {
+      "color": "red",
+    }
+  }>
+  <h1>
+    test
+  </h1>
+</div>
+`;
