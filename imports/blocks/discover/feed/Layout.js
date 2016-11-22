@@ -112,3 +112,7 @@ Layout.propTypes = {
 };
 
 export default Layout;
+
+export {
+  getImage,
+};
