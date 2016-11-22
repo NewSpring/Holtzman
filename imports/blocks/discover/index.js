@@ -30,11 +30,15 @@ class SearchContainerWithoutData extends Component {
       this.props.dispatch(modal.update({ keepNav: true }));
     }
 
-    this.lockHeader("DiscoverModal");
-    this.headerAction({
-      isSearch: true,
-      searchSubmit: this.searchSubmit,
-    }, "DiscoverModal");
+    if (this.lockHeader) {
+      this.lockHeader("DiscoverModal");
+    }
+    if (this.headerAction) {
+      this.headerAction({
+        isSearch: true,
+        searchSubmit: this.searchSubmit,
+      }, "DiscoverModal");
+    }
   }
 
   componentWillUnmount() {
