@@ -66,7 +66,7 @@ class SectionsContainerWithoutData extends Component {
 
 const map = (state) => ({ sections: state.sections });
 const withRedux = connect(map);
-const withHeader = ReactMixin.decorate(Headerable)
+const withHeader = ReactMixin.decorate(Headerable);
 export default withRedux(withHeader(SectionsContainerWithoutData));
 
 export {
