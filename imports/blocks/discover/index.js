@@ -44,7 +44,9 @@ class SearchContainerWithoutData extends Component {
   componentWillUnmount() {
     this.props.dispatch(modal.update({ keepNav: false, layoutOverride: [] }));
     this.props.dispatch(searchActions.searching(false));
-    this.unlockHeader();
+    if (this.unlockHeader) {
+      this.unlockHeader();
+    }
   }
 
 
