@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+// $FlowMeteor
 import { Accounts } from "meteor/accounts-base";
 
 import Forms from "../../components/forms";
