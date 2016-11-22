@@ -1,0 +1,21 @@
+exports[`Content renders search 1`] = `
+<Results
+  loadMore={[Function]}
+  search={
+    Object {
+      "searching": true,
+    }
+  } />
+`;
+
+exports[`Content renders with props 1`] = `<Connect(Apollo(DiscoverWithoutData)) />`;
+
+exports[`SearchLayout renders 1`] = `
+<section
+  className="hard"
+  style={Object {}}>
+  <Content
+    loadMore={[Function]}
+    search={Object {}} />
+</section>
+`;
