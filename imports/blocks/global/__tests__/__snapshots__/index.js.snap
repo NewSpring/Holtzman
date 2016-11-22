@@ -24,7 +24,6 @@ exports[`App renders with props 1`] = `
   <div
     className="one two">
     <Meta />
-    <Connect(HeaderWithoutData) />
     <div
       data-status-scroll={true}>
       <h1>

@@ -65,11 +65,18 @@ describe("App", () => {
     native: false,
   };
 
-  const generateComponent = () => (
-    <App { ...defaultProps }>
-      <h1>test</h1>
-    </App>
-  );
+  const generateComponent = (additionalProps = {}) => {
+    const newProps = {
+      ...defaultProps,
+      ...additionalProps,
+    };
+
+    return (
+      <App { ...newProps }>
+        <h1>test</h1>
+      </App>
+    );
+  };
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());

@@ -46,7 +46,7 @@ const App = ({ children, className, native }) => (
     <div className={className}>
       <Meta />
       {(() => {
-        if (process.env.NATIVE || native) {
+        if (native || process.env.NATIVE) {
           return <Header />;
         }
         return null;
