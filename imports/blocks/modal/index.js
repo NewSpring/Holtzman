@@ -1,5 +1,6 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
+import { Meteor } from "meteor/meteor";
 
 import { modal as modalActions, nav as navActions } from "../../store";
 
