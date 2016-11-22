@@ -113,7 +113,9 @@ export default class SideModal extends Component {
   }
 
   styles = () => {
-    const style = { ...(this.props.styles || this.props.style) };
+    // XXX there will never not be styles since defaultProps
+    // const style = { ...(this.props.styles || this.props.style) };
+    const style = { ...this.props.styles };
     style.top = (process.env.WEB || this.state.coverHeader) ? "0px" : "46px";
 
     return style;
