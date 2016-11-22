@@ -288,4 +288,5 @@ export default withPerson(
 
 export {
   AccountsContainer,
+  Accounts,
 };
