@@ -10,15 +10,12 @@ export default class SideModal extends Component {
   static propTypes = {
     childClasses: PropTypes.array, // eslint-disable-line
     float: PropTypes.bool,
-    classes: PropTypes.array, // eslint-disable-line
     offset: PropTypes.bool,
     styles: PropTypes.object, // eslint-disable-line
     close: PropTypes.func.isRequired,
     component: PropTypes.func,
     props: PropTypes.object.isRequired, // eslint-disable-line
-    layoutOverride: PropTypes.string,
     style: PropTypes.object, // eslint-disable-line
-    modalBackground: PropTypes.string,
     modal: PropTypes.object,
     theme: PropTypes.string,
     visible: PropTypes.bool,
