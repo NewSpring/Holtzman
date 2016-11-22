@@ -7,16 +7,7 @@ import {
 
 import NavLayout from "./Layout";
 
-// We only care about the navigation state
-const map = (state) => ({
-  state: state.nav,
-  modal: state.modal,
-  liked: state.liked,
-  path: state.routing.location.pathname,
-});
-
-@connect(map)
-export default class NavContainer extends Component {
+class NavContainerWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
@@ -55,3 +46,17 @@ export default class NavContainer extends Component {
     );
   }
 }
+
+const map = (state) => ({
+  state: state.nav,
+  modal: state.modal,
+  liked: state.liked,
+  path: state.routing.location.pathname,
+});
+const withRedux = connect(map);
+
+export default withRedux(NavContainerWithoutData);
+
+export {
+  NavContainerWithoutData,
+};
