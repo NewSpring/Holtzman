@@ -109,3 +109,9 @@ export default createContainer(() => {
     recentLikes,
   };
 }, LikesContainer);
+
+export {
+  LikesContainer,
+  RenderRecents,
+  RenderLikes,
+};
