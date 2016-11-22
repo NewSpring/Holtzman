@@ -23,7 +23,7 @@ const Success = ({ email, goBack }) => (
 
 Success.propTypes = {
   email: PropTypes.string,
-  goBack: PropTypes.string,
+  goBack: PropTypes.function,
 };
 
 export default Success;
