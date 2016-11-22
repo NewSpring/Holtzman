@@ -115,7 +115,7 @@ ChildItem.propTypes = {
   go: PropTypes.func,
 };
 
-export const Item = ({ section, go, children }) => {
+export const SingleItem = ({ section, go, children }) => {
   if (!section) {
     return (
       <div className="one-half grid__item">
@@ -162,7 +162,7 @@ export const Item = ({ section, go, children }) => {
   );
 };
 
-Item.propTypes = {
+SingleItem.propTypes = {
   section: PropTypes.object,
   go: PropTypes.func,
   children: PropTypes.object,
@@ -279,9 +279,9 @@ export default class SectionItem extends Component {
             <div className="grid__item one-whole" >
               <div className="grid">
                 {sections.map((sectionItem, i) => (
-                  <Item section={sectionItem} key={i} go={this.expandOrGo}>
+                  <SingleItem section={sectionItem} key={i} go={this.expandOrGo}>
                     {this.renderArrow(sectionItem)}
-                  </Item>
+                  </SingleItem>
                 ))}
               </div>
 
