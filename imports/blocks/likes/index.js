@@ -43,7 +43,7 @@ const RenderLikes = ({ likes }) => {
 };
 
 RenderLikes.propTypes = {
-  likes: PropTypes.object, // eslint-disable-line
+  likes: PropTypes.array,
 };
 
 const RenderRecents = ({ likes, recentLikes }) => {
