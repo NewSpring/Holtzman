@@ -1,0 +1,52 @@
+exports[`test doesn't render if loading 1`] = `null`;
+
+exports[`test parses query correctly 1`] = `
+"query GetPromotions($setName: String!) {
+  items: lowReorderSets(setName: $setName) {
+    title
+    id
+    status
+    meta {
+      urlTitle
+      date
+    }
+    content {
+      images(sizes: [\"large\"]) {
+        fileName
+        fileLabel
+        url
+      }
+    }
+  }
+}
+"
+`;
+
+exports[`test renders with props 1`] = `
+<Layout
+  featuredItem={
+    Object {
+      "status": "featured",
+    }
+  }
+  recommendedItems={
+    Array [
+      Object {
+        "status": "featured",
+      },
+    ]
+  }
+  textItems={
+    Array [
+      Object {
+        "status": "open",
+      },
+      Object {
+        "status": "open",
+      },
+      Object {
+        "status": "open",
+      },
+    ]
+  } />
+`;
