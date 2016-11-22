@@ -6,6 +6,7 @@ exports.Meteor = {
   call: jest.fn(),
   subscribe: jest.fn(),
   publish: jest.fn(),
+  isClient: true,
   isServer: false,
   isCordova: false,
   settings: {
