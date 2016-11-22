@@ -16,6 +16,21 @@ export default class SideModal extends Component {
     component: PropTypes.func,
     props: PropTypes.object.isRequired, // eslint-disable-line
     style: PropTypes.object, // eslint-disable-line
+
+    // XXX these really be on
+    // modal {
+    //   props: {
+    //     classes: PropTypes.array,
+    //     layoutOverride: PropTypes.string,
+    //     modalBackground: PropTypes.string,
+    //   }
+    // }
+    // but seems there is an issue with eslint
+    // since we using the workd `props` inside `modal`
+    classes: PropTypes.array,
+    layoutOverride: PropTypes.string,
+    modalBackground: PropTypes.string,
+
     modal: PropTypes.object,
     theme: PropTypes.string,
     visible: PropTypes.bool,
@@ -24,7 +39,6 @@ export default class SideModal extends Component {
   static defaultProps = {
     childClasses: [],
     float: false,
-    classes: [],
     offset: true,
     styles: {},
     props: {},
@@ -154,7 +168,7 @@ export default class SideModal extends Component {
         if (typeof this.props.styles !== "undefined") {
           this.props.styles.transform = "translateY(-20px)";
           this.props.styles.opacity = 0;
-        } 
+        }
         // XXX unused because defaultProps
         // else {
         //   this.props.style.transform = "translateY(-20px)";
