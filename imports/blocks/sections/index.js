@@ -12,11 +12,7 @@ import {
 
 import Groups from "./Groups";
 
-const map = (state) => ({ sections: state.sections });
-
-@connect(map)
-@ReactMixin.decorate(Headerable)
-export default class SectionsContainer extends Component {
+class SectionsContainerWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -67,3 +63,15 @@ export default class SectionsContainer extends Component {
     );
   }
 }
+
+const map = (state) => ({ sections: state.sections });
+const withRedux = connect(map);
+const withHeader = ReactMixin.decorate(Headerable)
+export default withRedux(withHeader(SectionsContainerWithoutData));
+
+export {
+  SectionsContainerWithoutData,
+  map,
+  withRedux,
+  withHeader,
+};
