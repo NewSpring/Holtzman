@@ -17,11 +17,12 @@ class SectionsContainerWithoutData extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     sections: PropTypes.object.isRequired,
+    web: PropTypes.bool,
   }
 
   componentDidMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    if (process.env.WEB) {
+    if (this.props.web || process.env.WEB) {
       this.props.dispatch(modal.update({
         keepNav: true,
         modalBackground: "light",
