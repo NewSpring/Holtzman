@@ -20,7 +20,7 @@ export default class NavLayout extends React.Component {
   }
 
   layoutClasses = () => {
-    const classes = [
+    let classes = [
       // "background--dark-primary",
       "one-whole",
       "floating",
@@ -34,7 +34,7 @@ export default class NavLayout extends React.Component {
 
 
     if (this.props.classes) {
-      classes.concat(this.props.classes);
+      classes = classes.concat(this.props.classes);
     } else {
       classes.push(css(styles["nav-bar"]));
     }
