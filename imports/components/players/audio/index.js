@@ -6,16 +6,12 @@ import MiniPlayer from "./audio.MiniPlayer";
 import AudioPlayerUtility from "./audio.PlayerUtility";
 
 import { actions as audioActions } from "../../../store/audio";
-import { modal, nav as navActions } from "../../../store";
+import {
+  modal as modalActions,
+  nav as navActions,
+} from "../../../store";
 
-const mapStateToProps = (state) =>
-  ({
-    audio: state.audio,
-    modal: state.modal,
-  });
-
-@connect(mapStateToProps)
-export default class AudioPlayer extends Component {
+class AudioPlayerWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
@@ -24,27 +20,28 @@ export default class AudioPlayer extends Component {
   }
 
   componentWillMount() {
+    // XXX currently unused
     // Listen for audio commands from the lock screen or command center
-    if (typeof RemoteCommand !== "undefined") {
-      RemoteCommand.on("command", (command) => {
-        switch (command) {
-          case "play":
-            this.props.dispatch(audioActions.play());
-            break;
-          case "pause":
-            this.props.dispatch(audioActions.pause());
-            break;
-          case "nextTrack":
-            this.props.dispatch(audioActions.next());
-            break;
-          case "previousTrack":
-            this.props.dispatch(audioActions.previous());
-            break;
-          default:
-            break;
-        }
-      });
-    }
+    // if (typeof RemoteCommand !== "undefined") {
+    //   RemoteCommand.on("command", (command) => {
+    //     switch (command) {
+    //       case "play":
+    //         this.props.dispatch(audioActions.play());
+    //         break;
+    //       case "pause":
+    //         this.props.dispatch(audioActions.pause());
+    //         break;
+    //       case "nextTrack":
+    //         this.props.dispatch(audioActions.next());
+    //         break;
+    //       case "previousTrack":
+    //         this.props.dispatch(audioActions.previous());
+    //         break;
+    //       default:
+    //         break;
+    //     }
+    //   });
+    // }
   }
 
   componentWillUpdate(nextProps) {
@@ -60,7 +57,10 @@ export default class AudioPlayer extends Component {
     const modalClosing = modalVis && !modalNextVis;
 
     const triggerModal = () => {
-      this.props.dispatch(modal.render(FullPlayer, { coverHeader: true, audioPlayer: true }));
+      this.props.dispatch(modalActions.render(FullPlayer, {
+        coverHeader: true,
+        audioPlayer: true,
+      }));
 
       // if phone, change to down arrow and make nav transparent
       if (window.isPhone) {
@@ -81,7 +81,7 @@ export default class AudioPlayer extends Component {
         setTimeout(() => {
           triggerModal();
         }, 250);
-        this.props.dispatch(modal.setRetrigger(null));
+        this.props.dispatch(modalActions.setRetrigger(null));
       } else {
         this.props.dispatch(audioActions.setVisibility("dock"));
       }
@@ -111,3 +111,12 @@ export default class AudioPlayer extends Component {
     );
   }
 }
+
+const map = ({ audio, modal }) => ({ audio, modal });
+const withRedux = connect(map);
+
+export default withRedux(AudioPlayerWithoutData);
+
+export {
+  AudioPlayerWithoutData,
+};
