@@ -1,5 +1,5 @@
 exports[`test renders loading if no content 1`] = `
-<Connect(ApollosPullToRefresh)
+<Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
   <Meta
     title="Articles" />
@@ -36,11 +36,11 @@ exports[`test renders loading if no content 1`] = `
       </div>
     </section>
   </div>
-</Connect(ApollosPullToRefresh)>
+</Connect(ApollosPullToRefreshWithoutData)>
 `;
 
 exports[`test renders with props 1`] = `
-<Connect(ApollosPullToRefresh)
+<Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
   <Meta
     title="Articles" />
@@ -67,5 +67,5 @@ exports[`test renders with props 1`] = `
       </div>
     </section>
   </div>
-</Connect(ApollosPullToRefresh)>
+</Connect(ApollosPullToRefreshWithoutData)>
 `;

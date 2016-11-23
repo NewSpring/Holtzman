@@ -384,7 +384,7 @@ Object {
 `;
 
 exports[`test renders loading state 1`] = `
-<Connect(ApollosPullToRefresh)
+<Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
   <Meta
     title="Stories" />
@@ -421,11 +421,11 @@ exports[`test renders loading state 1`] = `
       </div>
     </section>
   </div>
-</Connect(ApollosPullToRefresh)>
+</Connect(ApollosPullToRefreshWithoutData)>
 `;
 
 exports[`test renders with props 1`] = `
-<Connect(ApollosPullToRefresh)
+<Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
   <Meta
     title="Stories" />
@@ -452,5 +452,5 @@ exports[`test renders with props 1`] = `
       </div>
     </section>
   </div>
-</Connect(ApollosPullToRefresh)>
+</Connect(ApollosPullToRefreshWithoutData)>
 `;

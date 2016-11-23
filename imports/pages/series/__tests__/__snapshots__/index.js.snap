@@ -425,7 +425,7 @@ Object {
 `;
 
 exports[`test renders loading 1`] = `
-<Connect(ApollosPullToRefresh)
+<Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
   <Meta
     title="Series" />
@@ -462,11 +462,11 @@ exports[`test renders loading 1`] = `
       </div>
     </section>
   </div>
-</Connect(ApollosPullToRefresh)>
+</Connect(ApollosPullToRefreshWithoutData)>
 `;
 
 exports[`test renders with props 1`] = `
-<Connect(ApollosPullToRefresh)
+<Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
   <Meta
     title="Series" />
@@ -493,5 +493,5 @@ exports[`test renders with props 1`] = `
       </div>
     </section>
   </div>
-</Connect(ApollosPullToRefresh)>
+</Connect(ApollosPullToRefreshWithoutData)>
 `;
