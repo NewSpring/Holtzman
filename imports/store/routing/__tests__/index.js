@@ -159,3 +159,40 @@ describe("listenForReplays", () => {
     });
   });
 });
+
+describe("unsubscribe", () => {
+  it("calls unsubscribe history", () => {
+    const mockListenReturn = jest.fn();
+    const history = {
+      listen: jest.fn(() => mockListenReturn),
+      test: jest.fn(),
+      replace: jest.fn(),
+      transitionTo: jest.fn(),
+    };
+    const middleware = syncHistory(history);
+    const mockSubscribeReturn = jest.fn();
+    const mockStore = {
+      getState: jest.fn(() => ({
+        routing: {
+          location: {
+            previous: [
+              "thing",
+            ],
+          },
+        },
+      })),
+      subscribe: jest.fn(() => mockSubscribeReturn),
+    };
+    const returnedNext = middleware(mockStore);
+    mockListenReturn.mockClear();
+    const mockLocation = {};
+    // simulate history.listen callback
+    history.listen.mock.calls[0][0](mockLocation);
+
+    middleware.listenForReplays(mockStore);
+
+    middleware.unsubscribe();
+    expect(mockListenReturn).toHaveBeenCalledTimes(1);
+    expect(mockSubscribeReturn).toHaveBeenCalledTimes(1);
+  });
+});
