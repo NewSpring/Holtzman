@@ -1,0 +1,1 @@
+exports[`test renders nothing but span 1`] = `<span />`;
