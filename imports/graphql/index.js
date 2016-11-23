@@ -6,7 +6,7 @@ import ApolloClient, { createNetworkInterface } from "apollo-client";
 
 const networkInterface = createNetworkInterface({ uri: Meteor.settings.public.heighliner });
 
-networkInterface.use([{
+const authMiddleware = {
   applyMiddleware(req, next) {
     const request = req;
 
@@ -22,7 +22,11 @@ networkInterface.use([{
 
     next();
   },
-}]);
+};
+
+networkInterface.use([
+  authMiddleware,
+]);
 
 const GraphQL = new ApolloClient({
   networkInterface,
@@ -34,4 +38,6 @@ export default GraphQL;
 
 export {
   GraphQL,
+  networkInterface,
+  authMiddleware,
 };
