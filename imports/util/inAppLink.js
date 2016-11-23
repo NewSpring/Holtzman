@@ -1,5 +1,7 @@
 /* global SafariViewController cordova */
 
+import { Meteor } from "meteor/meteor";
+
 function openUrl(url, opened, loaded, closed) {
   try {
     SafariViewController.isAvailable((available) => {
