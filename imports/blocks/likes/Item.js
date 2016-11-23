@@ -12,6 +12,7 @@ export default class LikesItem extends Component {
 
   static propTypes = {
     like: PropTypes.object.isRequired,
+    native: PropTypes.bool,
   }
 
   // eslint-disable-next-line react/sort-comp
@@ -30,7 +31,7 @@ export default class LikesItem extends Component {
       "grid__item",
       "one-whole",
     ];
-    if (process.env.NATIVE) {
+    if (this.props.native || process.env.NATIVE) {
       classes.push("one-half@palm-wide-and-up");
     }
     return classes.join(" ");
