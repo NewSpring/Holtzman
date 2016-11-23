@@ -33,6 +33,35 @@ Template.propTypes = {
   children: PropTypes.object.isRequired,
 };
 
+const CASH_TAG_QUERY = gql`
+  query CashTag($tag: String!) {
+    account: accountFromCashTag(cashTag: $tag) {
+      name
+    }
+  }
+`;
+
+const matchAccountToCashTag = (location, replaceState, callback) => {
+  const url = location.params.splat
+    .replace(/\s+/g, "")
+    .toLowerCase();
+
+  const [fund, amount] = url.split("/");
+
+  const variables = { tag: fund };
+
+  GraphQL.query({ query: CASH_TAG_QUERY, variables })
+    .then(({ data }) => {
+      const { account } = data;
+      let dest = `/give/campaign/${account.name}`;
+
+      if (amount) dest += `?${account.name}=${amount}`;
+
+      replaceState(null, dest);
+      callback();
+    });
+};
+
 const Routes = [
   {
     path: "/_",
@@ -43,33 +72,7 @@ const Routes = [
   },
   {
     path: "/$*",
-    onEnter: (location, replaceState, callback) => {
-      const url = location.params.splat
-        .replace(/\s+/g, "")
-        .toLowerCase();
-
-      const [fund, amount] = url.split("/");
-
-      const query = gql`
-        query CashTag($tag: String!) {
-          account: accountFromCashTag(cashTag: $tag) {
-            name
-          }
-        }
-      `;
-      const variables = { tag: fund };
-
-      GraphQL.query({ query, variables })
-        .then(({ data }) => {
-          const { account } = data;
-          let dest = `/give/campaign/${account.name}`;
-
-          if (amount) dest += `?${account.name}=${amount}`;
-
-          replaceState(null, dest);
-          callback();
-        });
-    },
+    onEnter: matchAccountToCashTag,
   },
 ];
 
@@ -80,4 +83,6 @@ export default {
 
 export {
   Template,
+  CASH_TAG_QUERY,
+  matchAccountToCashTag,
 };
