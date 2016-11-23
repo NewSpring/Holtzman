@@ -173,7 +173,6 @@ describe("successful charge using a saved payment", () => {
 
   // BELOW IS TESTED IN ./submitPersonDetails
   it("submits a form", result => true);
-  it("waits for a delay", result => {});
   it("sets a url", result => {});
 
   it("reads from the store again after submitting person details", result => {
