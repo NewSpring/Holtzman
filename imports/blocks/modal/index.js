@@ -1,18 +1,12 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
+import { Meteor } from "meteor/meteor";
 
 import { modal as modalActions, nav as navActions } from "../../store";
 
 import Modal from "./Modal";
 
-const map = (state) => ({
-  navigation: state.nav,
-  modal: state.modal,
-  path: state.routing.path,
-});
-
-@connect(map)
-export default class SideModalContainer extends Component {
+class SideModalContainerWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
@@ -36,14 +30,26 @@ export default class SideModalContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.modal.visible && nextProps.navigation.level !== "MODAL" && nextProps.navigation.level !== "DOWN" && nextProps.modal.props.keepNav !== true) {
+    if (
+      nextProps.modal.visible &&
+      nextProps.navigation.level !== "MODAL" &&
+      nextProps.navigation.level !== "DOWN" &&
+      nextProps.modal.props.keepNav !== true
+    ) {
       this.props.dispatch(navActions.setLevel("MODAL"));
       this.setState({ previous: this.props.navigation.level });
-    } else if (nextProps.modal.visible && nextProps.navigation.level === "DOWN") {
+    } else if (
+      nextProps.modal.visible &&
+      nextProps.navigation.level === "DOWN"
+    ) {
       this.setState({ previous: this.props.navigation.level });
     }
 
-    if (!nextProps.modal.visible && (nextProps.navigation.level === "MODAL" || nextProps.navigation.level === "DOWN") && !this.props.modal.props.keepNav) {
+    if (
+      !nextProps.modal.visible &&
+      (nextProps.navigation.level === "MODAL" || nextProps.navigation.level === "DOWN") &&
+      !this.props.modal.props.keepNav
+    ) {
       let previous = this.state.previous;
       if (previous === "MODAL" || previous === "DOWN" || !previous) {
         previous = "TOP";
@@ -107,3 +113,19 @@ export default class SideModalContainer extends Component {
     );
   }
 }
+
+const map = (state) => ({
+  navigation: state.nav,
+  modal: state.modal,
+  path: state.routing.path,
+});
+
+const withRedux = connect(map);
+
+export default withRedux(SideModalContainerWithoutData);
+
+export {
+  SideModalContainerWithoutData,
+  map,
+  withRedux,
+};

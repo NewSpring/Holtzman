@@ -10,15 +10,27 @@ export default class SideModal extends Component {
   static propTypes = {
     childClasses: PropTypes.array, // eslint-disable-line
     float: PropTypes.bool,
-    classes: PropTypes.array, // eslint-disable-line
     offset: PropTypes.bool,
     styles: PropTypes.object, // eslint-disable-line
     close: PropTypes.func.isRequired,
     component: PropTypes.func,
     props: PropTypes.object.isRequired, // eslint-disable-line
-    layoutOverride: PropTypes.string,
     style: PropTypes.object, // eslint-disable-line
+
+    // XXX these really be on
+    // modal {
+    //   props: {
+    //     classes: PropTypes.array,
+    //     layoutOverride: PropTypes.string,
+    //     modalBackground: PropTypes.string,
+    //   }
+    // }
+    // but seems there is an issue with eslint
+    // since we using the workd `props` inside `modal`
+    classes: PropTypes.array,
+    layoutOverride: PropTypes.string,
     modalBackground: PropTypes.string,
+
     modal: PropTypes.object,
     theme: PropTypes.string,
     visible: PropTypes.bool,
@@ -27,7 +39,6 @@ export default class SideModal extends Component {
   static defaultProps = {
     childClasses: [],
     float: false,
-    classes: [],
     offset: true,
     styles: {},
     props: {},
@@ -64,7 +75,7 @@ export default class SideModal extends Component {
     ];
 
     if (childClasses.length) {
-      classes.concat(childClasses);
+      classes = classes.concat(childClasses);
     }
 
     if (float) {
@@ -83,13 +94,13 @@ export default class SideModal extends Component {
     const { float, offset } = this.props;
     const { classes, layoutOverride, modalBackground } = this.props.modal.props;
 
-    const classList = [
+    let classList = [
       "hard",
       "flush",
     ];
 
     if (classes && classes.length) {
-      classList.concat(classes);
+      classList = classList.concat(classes);
     } else {
       classList.push(css(styles["side-panel"]));
     }
@@ -116,7 +127,9 @@ export default class SideModal extends Component {
   }
 
   styles = () => {
-    const style = { ...(this.props.styles || this.props.style) };
+    // XXX there will never not be styles since defaultProps
+    // const style = { ...(this.props.styles || this.props.style) };
+    const style = { ...this.props.styles };
     style.top = (process.env.WEB || this.state.coverHeader) ? "0px" : "46px";
 
     return style;
@@ -144,19 +157,23 @@ export default class SideModal extends Component {
         if (typeof this.props.styles !== "undefined") {
           this.props.styles.transform = "translateY(80px)";
           this.props.styles.opacity = 0;
-        } else {
-          this.props.style.transform = "translateY(80px)";
-          this.props.style.opacity = 0;
         }
+        // XXX unused because defaultProps
+        // else {
+        //   this.props.style.transform = "translateY(80px)";
+        //   this.props.style.opacity = 0;
+        // }
       } else {
         slide.translateX = [0, -20];
         if (typeof this.props.styles !== "undefined") {
           this.props.styles.transform = "translateY(-20px)";
           this.props.styles.opacity = 0;
-        } else {
-          this.props.style.transform = "translateY(-20px)";
-          this.props.style.opacity = 0;
         }
+        // XXX unused because defaultProps
+        // else {
+        //   this.props.style.transform = "translateY(-20px)";
+        //   this.props.style.opacity = 0;
+        // }
       }
     }
 
