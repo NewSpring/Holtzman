@@ -23,12 +23,12 @@ exports[`test renders with mini player 1`] = `
         "visible": false,
       }
     } />
-  <Connect(AudioPlayerUtility) />
+  <Connect(AudioPlayerUtilityWithoutData) />
 </div>
 `;
 
 exports[`test renders with props 1`] = `
 <div>
-  <Connect(AudioPlayerUtility) />
+  <Connect(AudioPlayerUtilityWithoutData) />
 </div>
 `;
