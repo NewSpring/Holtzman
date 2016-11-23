@@ -1,3 +1,4 @@
+import { Meteor } from "meteor/meteor";
 import Likes from "../database/collections/likes";
 import { liked as likedActions, modal } from "../store";
 import OnBoard from "../blocks/accounts";
