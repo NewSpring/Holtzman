@@ -1,6 +1,6 @@
 exports[`test renders with children 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -17,7 +17,7 @@ exports[`test renders with children 1`] = `
         ]
       }
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [

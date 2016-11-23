@@ -12,10 +12,7 @@ export {
   Left,
 };
 
-const map = (state) => ({ navigation: state.nav });
-
-@connect(map)
-export default class SplitContainer extends Component {
+class SplitContainerWithoutData extends Component {
 
   static propTypes = {
     classes: PropTypes.array,
@@ -59,3 +56,12 @@ export default class SplitContainer extends Component {
     );
   }
 }
+
+const map = (state) => ({ navigation: state.nav });
+const withRedux = connect(map);
+export default withRedux(SplitContainerWithoutData);
+
+export {
+  SplitContainerWithoutData,
+  map,
+};

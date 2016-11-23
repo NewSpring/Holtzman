@@ -1,6 +1,6 @@
 exports[`test does not render recoverableSchedule if it has a gateway 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-secondary",
@@ -12,7 +12,7 @@ exports[`test does not render recoverableSchedule if it has a gateway 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/29516.marketing.cen.webad.thebestisyettocome_1x2.png"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -76,7 +76,7 @@ exports[`test does not render recoverableSchedule if it has a gateway 1`] = `
 
 exports[`test does not render recoverableSchedule if no account 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-secondary",
@@ -88,7 +88,7 @@ exports[`test does not render recoverableSchedule if no account 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/29516.marketing.cen.webad.thebestisyettocome_1x2.png"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -160,7 +160,7 @@ exports[`test does not render recoverableSchedule if no account 1`] = `
 
 exports[`test does not render recoverableSchedule if no details 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-secondary",
@@ -172,7 +172,7 @@ exports[`test does not render recoverableSchedule if no details 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/29516.marketing.cen.webad.thebestisyettocome_1x2.png"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -244,7 +244,7 @@ exports[`test does not render recoverableSchedule if no details 1`] = `
 
 exports[`test expands the schedule if it matches state 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-secondary",
@@ -256,7 +256,7 @@ exports[`test expands the schedule if it matches state 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/29516.marketing.cen.webad.thebestisyettocome_1x2.png"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -450,7 +450,7 @@ exports[`test expands the schedule if it matches state 1`] = `
 
 exports[`test renders with props 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-secondary",
@@ -462,7 +462,7 @@ exports[`test renders with props 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/29516.marketing.cen.webad.thebestisyettocome_1x2.png"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -656,7 +656,7 @@ exports[`test renders with props 1`] = `
 
 exports[`test renders without recoverableSchedules 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -668,7 +668,7 @@ exports[`test renders without recoverableSchedules 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/29516.marketing.cen.webad.thebestisyettocome_1x2.png"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -732,7 +732,7 @@ exports[`test renders without recoverableSchedules 1`] = `
 
 exports[`test works with nickName 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-secondary",
@@ -744,7 +744,7 @@ exports[`test works with nickName 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/29516.marketing.cen.webad.thebestisyettocome_1x2.png"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [

@@ -1,6 +1,6 @@
 exports[`test renders complete message 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -12,7 +12,7 @@ exports[`test renders complete message 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -204,7 +204,7 @@ exports[`test renders complete message 1`] = `
 
 exports[`test renders loading if no entries 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -216,7 +216,7 @@ exports[`test renders loading if no entries 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -355,7 +355,7 @@ exports[`test renders loading if no entries 1`] = `
 
 exports[`test renders loading if no schedule 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -367,7 +367,7 @@ exports[`test renders loading if no schedule 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -472,7 +472,7 @@ exports[`test renders loading if no schedule 1`] = `
 
 exports[`test renders loading if not ready 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -484,7 +484,7 @@ exports[`test renders loading if not ready 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -647,7 +647,7 @@ exports[`test renders loading if not ready 1`] = `
 
 exports[`test renders no contributions message 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -659,7 +659,7 @@ exports[`test renders no contributions message 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -817,7 +817,7 @@ exports[`test renders no contributions message 1`] = `
 
 exports[`test renders stopped message 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -829,7 +829,7 @@ exports[`test renders stopped message 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -1021,7 +1021,7 @@ exports[`test renders stopped message 1`] = `
 
 exports[`test renders with props 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -1033,7 +1033,7 @@ exports[`test renders with props 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -1231,7 +1231,7 @@ exports[`test renders with props 1`] = `
 
 exports[`test renders without schedule 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -1243,7 +1243,7 @@ exports[`test renders without schedule 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -1348,7 +1348,7 @@ exports[`test renders without schedule 1`] = `
 
 exports[`test renders without schedule payment 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -1360,7 +1360,7 @@ exports[`test renders without schedule payment 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -1549,7 +1549,7 @@ exports[`test renders without schedule payment 1`] = `
 
 exports[`test works with credit card 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -1561,7 +1561,7 @@ exports[`test works with credit card 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [

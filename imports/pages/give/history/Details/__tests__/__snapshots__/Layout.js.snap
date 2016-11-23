@@ -1,6 +1,6 @@
 exports[`test doesn't render account type if none 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -12,7 +12,7 @@ exports[`test doesn't render account type if none 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -137,7 +137,7 @@ exports[`test doesn't render account type if none 1`] = `
 
 exports[`test doesn't render entries if there are none 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -149,7 +149,7 @@ exports[`test doesn't render entries if there are none 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -217,7 +217,7 @@ exports[`test doesn't render entries if there are none 1`] = `
 
 exports[`test renders loading if loadingEntries 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -229,7 +229,7 @@ exports[`test renders loading if loadingEntries 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -299,7 +299,7 @@ exports[`test renders loading if loadingEntries 1`] = `
 
 exports[`test renders loading if no transaction 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -311,7 +311,7 @@ exports[`test renders loading if no transaction 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -414,7 +414,7 @@ exports[`test renders loading if no transaction 1`] = `
 
 exports[`test renders with props 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -426,7 +426,7 @@ exports[`test renders with props 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -555,7 +555,7 @@ exports[`test renders with props 1`] = `
 
 exports[`test works with credit card 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -567,7 +567,7 @@ exports[`test works with credit card 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -696,7 +696,7 @@ exports[`test works with credit card 1`] = `
 
 exports[`test works with nickname 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -708,7 +708,7 @@ exports[`test works with nickname 1`] = `
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [

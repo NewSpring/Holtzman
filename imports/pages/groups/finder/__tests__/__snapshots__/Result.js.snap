@@ -1,6 +1,6 @@
 exports[`test renders with props 1`] = `
 <div>
-  <Connect(SplitContainer)>
+  <Connect(SplitContainerWithoutData)>
     <Right
       classes={
         Array [
@@ -28,7 +28,7 @@ exports[`test renders with props 1`] = `
         onChildClick={[Function]}
         onMarkerHover={[Function]} />
     </Right>
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -93,7 +93,7 @@ exports[`test renders with props 1`] = `
 
 exports[`test renders without map on mobile 1`] = `
 <div>
-  <Connect(SplitContainer)>
+  <Connect(SplitContainerWithoutData)>
     <Right
       classes={
         Array [
@@ -101,7 +101,7 @@ exports[`test renders without map on mobile 1`] = `
         ]
       }
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -166,7 +166,7 @@ exports[`test renders without map on mobile 1`] = `
 
 exports[`test renders without map on server 1`] = `
 <div>
-  <Connect(SplitContainer)>
+  <Connect(SplitContainerWithoutData)>
     <Right
       classes={
         Array [
@@ -174,7 +174,7 @@ exports[`test renders without map on server 1`] = `
         ]
       }
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [

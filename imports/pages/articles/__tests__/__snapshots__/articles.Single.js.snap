@@ -21,7 +21,7 @@ exports[`test renders video if ooyalaId 1`] = `
         },
       ]
     } />
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -30,7 +30,7 @@ exports[`test renders video if ooyalaId 1`] = `
     nav={true}>
     <SingleVideoPlayer
       ooyalaId="id" />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     scroll={true}>
     <div
@@ -74,7 +74,7 @@ exports[`test renders with props 1`] = `
         },
       ]
     } />
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -99,7 +99,7 @@ exports[`test renders with props 1`] = `
           "soft@lap-and-up",
         ]
       } />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     scroll={true}>
     <div

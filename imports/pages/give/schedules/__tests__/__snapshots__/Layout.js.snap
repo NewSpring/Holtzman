@@ -1,6 +1,6 @@
 exports[`test renders loading if accounts not ready 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -13,7 +13,7 @@ exports[`test renders loading if accounts not ready 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -170,7 +170,7 @@ exports[`test renders loading if accounts not ready 1`] = `
 
 exports[`test renders loading if no accounts 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -183,7 +183,7 @@ exports[`test renders loading if no accounts 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -340,7 +340,7 @@ exports[`test renders loading if no accounts 1`] = `
 
 exports[`test renders loading if no accounts 2`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -353,7 +353,7 @@ exports[`test renders loading if no accounts 2`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -510,7 +510,7 @@ exports[`test renders loading if no accounts 2`] = `
 
 exports[`test renders loading if no schedules 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -523,7 +523,7 @@ exports[`test renders loading if no schedules 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -597,7 +597,7 @@ exports[`test renders loading if no schedules 1`] = `
 
 exports[`test renders no schedules message 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -610,7 +610,7 @@ exports[`test renders no schedules message 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -682,7 +682,7 @@ exports[`test renders no schedules message 1`] = `
 
 exports[`test renders sign in message if no user 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -695,7 +695,7 @@ exports[`test renders sign in message if no user 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -767,7 +767,7 @@ exports[`test renders sign in message if no user 1`] = `
 
 exports[`test renders with props 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -780,7 +780,7 @@ exports[`test renders with props 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -933,7 +933,7 @@ exports[`test renders with props 1`] = `
 
 exports[`test renders without schedule details 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -946,7 +946,7 @@ exports[`test renders without schedule details 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -1099,7 +1099,7 @@ exports[`test renders without schedule details 1`] = `
 
 exports[`test renders without schedule details account 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -1112,7 +1112,7 @@ exports[`test renders without schedule details account 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -1265,7 +1265,7 @@ exports[`test renders without schedule details account 1`] = `
 
 exports[`test works with nickName 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -1278,7 +1278,7 @@ exports[`test works with nickName 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -1431,7 +1431,7 @@ exports[`test works with nickName 1`] = `
 
 exports[`test works without recoverableSchedules 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -1444,7 +1444,7 @@ exports[`test works without recoverableSchedules 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/give_now-schedules1x2.jpg"
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
