@@ -1,10 +1,10 @@
 
-import RouteTransition from "./routeTransition";
+// import RouteTransition from "./routeTransition";
 
-export default {
-  RouteTransition,
-};
+// export default {
+//   RouteTransition,
+// };
 
-export {
-  RouteTransition,
-};
+// export {
+//   RouteTransition,
+// };
