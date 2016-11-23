@@ -8,6 +8,7 @@ export default class Left extends Component {
     scroll: PropTypes.bool,
     width: PropTypes.string,
     background: PropTypes.string,
+    image: PropTypes.string,
     styles: PropTypes.object,
     children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   }
@@ -49,7 +50,7 @@ export default class Left extends Component {
       return {
         ...defaults,
         ...{
-          backgroundImage: "url($this.props.image)",
+          backgroundImage: `url('${this.props.image}')`,
         },
       };
     }

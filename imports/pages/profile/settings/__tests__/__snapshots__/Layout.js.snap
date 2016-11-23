@@ -3,7 +3,7 @@ exports[`test renders with props 1`] = `
   <Meta
     image="http://test.com/test.jpg"
     title="jimothy bob" />
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -65,7 +65,7 @@ exports[`test renders with props 1`] = `
         </p>
       </div>
     </Right>
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -85,7 +85,7 @@ exports[`test says \`Profile\` if no nick name 1`] = `
   <Meta
     image="http://test.com/test.jpg"
     title="Profile" />
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -147,7 +147,7 @@ exports[`test says \`Profile\` if no nick name 1`] = `
         </p>
       </div>
     </Right>
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -167,7 +167,7 @@ exports[`test works without a photo 1`] = `
   <Meta
     image={null}
     title="jimothy bob" />
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -229,7 +229,7 @@ exports[`test works without a photo 1`] = `
         </p>
       </div>
     </Right>
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [

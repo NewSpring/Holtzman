@@ -3,7 +3,7 @@ exports[`test renders loading version 1`] = `
   <Meta
     image="//s3.amazonaws.com/ns.assets/apollos/you_cant_outgive_god2x1.jpg"
     title="Give" />
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -13,7 +13,7 @@ exports[`test renders loading version 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_1x2.jpg"
       link="/give/schedules" />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -90,7 +90,7 @@ exports[`test renders not alive version 1`] = `
   <Meta
     image="//s3.amazonaws.com/ns.assets/apollos/you_cant_outgive_god2x1.jpg"
     title="Give" />
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -100,7 +100,7 @@ exports[`test renders not alive version 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_1x2.jpg"
       link="/give/schedules" />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -172,7 +172,7 @@ exports[`test renders with props 1`] = `
   <Meta
     image="//s3.amazonaws.com/ns.assets/apollos/you_cant_outgive_god2x1.jpg"
     title="Give" />
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -182,7 +182,7 @@ exports[`test renders with props 1`] = `
     <Right
       background="//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_1x2.jpg"
       link="/give/schedules" />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [

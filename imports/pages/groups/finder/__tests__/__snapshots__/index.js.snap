@@ -1,6 +1,6 @@
 exports[`test renders if content loading 1`] = `
 <div>
-  <Connect(SplitContainer)>
+  <Connect(SplitContainerWithoutData)>
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
       classes={
@@ -9,7 +9,7 @@ exports[`test renders if content loading 1`] = `
         ]
       }
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -42,7 +42,7 @@ exports[`test renders result if tags 1`] = `<withRouter(Apollo(Connect(Apollo(In
 
 exports[`test renders with props 1`] = `
 <div>
-  <Connect(SplitContainer)>
+  <Connect(SplitContainerWithoutData)>
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
       classes={
@@ -51,7 +51,7 @@ exports[`test renders with props 1`] = `
         ]
       }
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -83,7 +83,7 @@ exports[`test renders with props 1`] = `
 
 exports[`test renders without attributes 1`] = `
 <div>
-  <Connect(SplitContainer)>
+  <Connect(SplitContainerWithoutData)>
     <Right
       background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/groups/groups.1x1_1700_1700_90_c1.jpg"
       classes={
@@ -92,7 +92,7 @@ exports[`test renders without attributes 1`] = `
         ]
       }
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [

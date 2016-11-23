@@ -1,7 +1,7 @@
 exports[`test renders feed skeleton if loading 1`] = `
 <Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -31,7 +31,7 @@ exports[`test renders feed skeleton if loading 1`] = `
       <HomeHero
         item={Object {}} />
     </Right>
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     scroll={true}>
     <section
@@ -67,7 +67,7 @@ exports[`test renders feed skeleton if loading 1`] = `
 exports[`test renders with props 1`] = `
 <Connect(ApollosPullToRefreshWithoutData)
   handleRefresh={[Function]}>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -112,7 +112,7 @@ exports[`test renders with props 1`] = `
           }
         } />
     </Right>
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     scroll={true}>
     <section

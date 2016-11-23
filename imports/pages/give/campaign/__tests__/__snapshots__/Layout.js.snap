@@ -1,6 +1,6 @@
 exports[`Template accepts account object with complete data 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -20,7 +20,7 @@ exports[`Template accepts account object with complete data 1`] = `
       mobile={true} />
     <Right
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -102,7 +102,7 @@ exports[`Template accepts account object with complete data 1`] = `
 
 exports[`Template accepts account object without image data 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -122,7 +122,7 @@ exports[`Template accepts account object without image data 1`] = `
       mobile={true} />
     <Right
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
@@ -197,7 +197,7 @@ exports[`Template accepts account object without image data 1`] = `
 
 exports[`Template looks empty with no props 1`] = `
 <div>
-  <Connect(SplitContainer)
+  <Connect(SplitContainerWithoutData)
     classes={
       Array [
         "background--light-primary",
@@ -217,7 +217,7 @@ exports[`Template looks empty with no props 1`] = `
       mobile={true} />
     <Right
       mobile={false} />
-  </Connect(SplitContainer)>
+  </Connect(SplitContainerWithoutData)>
   <Left
     classes={
       Array [
