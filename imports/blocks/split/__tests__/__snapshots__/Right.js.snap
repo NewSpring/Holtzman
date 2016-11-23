@@ -1,0 +1,357 @@
+exports[`DefaultWrapper renders with props 1`] = `
+<section
+  className="one two">
+  <h1>
+    test
+  </h1>
+</section>
+`;
+
+exports[`Right layoutClasses adds hover classes for web links 1`] = `
+Array [
+  "panel__item--right",
+  "hard",
+  "flush",
+  "panel_s3huuu",
+  "right_uzdxl3",
+  "transition",
+  "visuallyhidden@handheld",
+  "five-twelfths@lap-and-up",
+]
+`;
+
+exports[`Right layoutClasses adds ratio class for mobile and not aspect 1`] = `
+Array [
+  "panel__item--right",
+  "hard",
+  "flush",
+  "panel_s3huuu",
+  "ratio--landscape@handheld",
+  "five-twelfths@lap-and-up",
+]
+`;
+
+exports[`Right layoutClasses adds ratio classes for mobil and aspect 1`] = `
+Array [
+  "panel__item--right",
+  "hard",
+  "flush",
+  "panel_s3huuu",
+  "ratio--my-aspect@palm",
+  "ratio--landscape@palm-wide",
+  "five-twelfths@lap-and-up",
+]
+`;
+
+exports[`Right layoutClasses adds scrollable class 1`] = `
+Array [
+  "panel__item--right",
+  "hard",
+  "flush",
+  "panel_s3huuu",
+  "visuallyhidden@handheld",
+  "scrollable",
+  "five-twelfths@lap-and-up",
+]
+`;
+
+exports[`Right layoutClasses adds width class 1`] = `
+Array [
+  "panel__item--right",
+  "hard",
+  "flush",
+  "panel_s3huuu",
+  "visuallyhidden@handheld",
+  "my-width",
+]
+`;
+
+exports[`Right layoutClasses appends additional classes 1`] = `
+Array [
+  "panel__item--right",
+  "hard",
+  "flush",
+  "panel_s3huuu",
+  "visuallyhidden@handheld",
+  "five-twelfths@lap-and-up",
+  "three",
+  "four",
+]
+`;
+
+exports[`Right layoutClasses background fill class 1`] = `
+Array [
+  "panel__item--right",
+  "hard",
+  "flush",
+  "panel_s3huuu",
+  "visuallyhidden@handheld",
+  "five-twelfths@lap-and-up",
+  "background--fill",
+]
+`;
+
+exports[`Right layoutClasses returns default 1`] = `
+Array [
+  "panel__item--right",
+  "hard",
+  "flush",
+  "panel_s3huuu",
+  "visuallyhidden@handheld",
+  "five-twelfths@lap-and-up",
+]
+`;
+
+exports[`Right overrides styles 1`] = `
+<DefaultWrapper
+  imageclasses={
+    Array [
+      "panel__item--right",
+      "hard",
+      "flush",
+      "panel_s3huuu",
+      "visuallyhidden@handheld",
+      "five-twelfths@lap-and-up",
+    ]
+  }
+  preloader={[Function]}
+  renderElement={[Function]}
+  src={null}
+  style={
+    Object {
+      "color": "red",
+    }
+  }>
+  <div
+    className="ratio__item">
+    <h1>
+      test
+    </h1>
+  </div>
+  <div />
+</DefaultWrapper>
+`;
+
+exports[`Right overrides with theme 1`] = `
+<DefaultWrapper
+  imageclasses={
+    Array [
+      "override",
+      "me",
+    ]
+  }
+  preloader={[Function]}
+  renderElement={[Function]}
+  src={null}
+  style={Object {}}>
+  <div
+    className="ratio__item">
+    <h1>
+      test
+    </h1>
+  </div>
+  <div />
+</DefaultWrapper>
+`;
+
+exports[`Right renderInsideRatio can be overrided with theme 1`] = `
+<div
+  className="override ratio">
+  <h1>
+    test
+  </h1>
+</div>
+`;
+
+exports[`Right renderInsideRatio renders 1`] = `
+<div
+  className="ratio__item">
+  <h1>
+    test
+  </h1>
+</div>
+`;
+
+exports[`Right renderOutSideRatio renders blur styles if blur 1`] = `
+<div>
+  <div
+    className="locked-sides locked-ends background--fill"
+    style={
+      Object {
+        "WebkitFilter": "blur(10px)",
+        "filter": "blur(10px)",
+      }
+    } />
+</div>
+`;
+
+exports[`Right renderOutSideRatio renders outsideRatio prop 1`] = `
+<div>
+  <h1>
+    outside
+  </h1>
+</div>
+`;
+
+exports[`Right renderOutSideRatio returns blank div if no outsideRatio and no blur 1`] = `
+<div>
+  
+</div>
+`;
+
+exports[`Right renders background image version 1`] = `
+<ImageLoader
+  imageclasses={
+    Array [
+      "panel__item--right",
+      "hard",
+      "flush",
+      "panel_s3huuu",
+      "visuallyhidden@handheld",
+      "five-twelfths@lap-and-up",
+    ]
+  }
+  preloader={[Function]}
+  renderElement={[Function]}
+  src="//test.com/background.jpg"
+  style={
+    Object {
+      "backgroundImage": "url(\'//test.com/background.jpg\')",
+    }
+  }
+  wrapper={[Function]}>
+  <div
+    className="ratio__item">
+    <h1>
+      test
+    </h1>
+  </div>
+  <div />
+</ImageLoader>
+`;
+
+exports[`Right renders linked version 1`] = `
+<Link
+  className="panel__item--right hard flush panel_s3huuu visuallyhidden@handheld five-twelfths@lap-and-up"
+  onlyActiveOnIndex={false}
+  style={Object {}}
+  to="http://test.com">
+  <DefaultWrapper
+    imageclasses={
+      Array [
+        "background--fill",
+        "locked-ends",
+        "locked-sides",
+        "hard",
+        "floating",
+        "",
+      ]
+    }
+    preloader={[Function]}
+    renderElement={[Function]}
+    src={null}
+    style={Object {}}>
+    <div
+      className="ratio__item">
+      <h1>
+        test
+      </h1>
+    </div>
+    <div />
+  </DefaultWrapper>
+</Link>
+`;
+
+exports[`Right renders linked version with style override 1`] = `
+<Link
+  className="panel__item--right hard flush panel_s3huuu visuallyhidden@handheld five-twelfths@lap-and-up"
+  onlyActiveOnIndex={false}
+  style={Object {}}
+  to="http://test.com">
+  <DefaultWrapper
+    imageclasses={
+      Array [
+        "background--fill",
+        "locked-ends",
+        "locked-sides",
+        "hard",
+        "floating",
+        "",
+      ]
+    }
+    preloader={[Function]}
+    renderElement={[Function]}
+    src={null}
+    style={
+      Object {
+        "color": "blue",
+      }
+    }>
+    <div
+      className="ratio__item">
+      <h1>
+        test
+      </h1>
+    </div>
+    <div />
+  </DefaultWrapper>
+</Link>
+`;
+
+exports[`Right renders linked version with theme override 1`] = `
+<Link
+  className="override link"
+  onlyActiveOnIndex={false}
+  style={Object {}}
+  to="http://test.com">
+  <DefaultWrapper
+    imageclasses={
+      Array [
+        "background--fill",
+        "locked-ends",
+        "locked-sides",
+        "hard",
+        "floating",
+        "",
+      ]
+    }
+    preloader={[Function]}
+    renderElement={[Function]}
+    src={null}
+    style={Object {}}>
+    <div
+      className="ratio__item">
+      <h1>
+        test
+      </h1>
+    </div>
+    <div />
+  </DefaultWrapper>
+</Link>
+`;
+
+exports[`Right renders with props 1`] = `
+<DefaultWrapper
+  imageclasses={
+    Array [
+      "panel__item--right",
+      "hard",
+      "flush",
+      "panel_s3huuu",
+      "visuallyhidden@handheld",
+      "five-twelfths@lap-and-up",
+    ]
+  }
+  preloader={[Function]}
+  renderElement={[Function]}
+  src={null}
+  style={Object {}}>
+  <div
+    className="ratio__item">
+    <h1>
+      test
+    </h1>
+  </div>
+  <div />
+</DefaultWrapper>
+`;
