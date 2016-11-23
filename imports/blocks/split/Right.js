@@ -35,6 +35,7 @@ export default class Right extends Component {
     mobile: PropTypes.bool,
     backgroundFill: PropTypes.bool,
     ratioTheme: PropTypes.object,
+    web: PropTypes.bool,
   }
 
   shouldComponentUpdate(nextProps) {
@@ -49,7 +50,7 @@ export default class Right extends Component {
       css(PanelStyles.panel),
     ];
 
-    if (this.props.link && process.env.WEB) {
+    if (this.props.link && (this.props.web || process.env.WEB)) {
       classes.push(
         css(Hover.right),
         "transition",
