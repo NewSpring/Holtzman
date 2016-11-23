@@ -36,7 +36,7 @@ const Watermark = () => (
 );
 
 
-export const App = ({ children, className }) => (
+const App = ({ children, className, native }) => (
   <div
     className={
       "push-double-bottom@palm soft-half-bottom@palm " +
@@ -46,7 +46,7 @@ export const App = ({ children, className }) => (
     <div className={className}>
       <Meta />
       {(() => {
-        if (process.env.NATIVE) {
+        if (native || process.env.NATIVE) {
           return <Header />;
         }
         return null;
@@ -65,10 +65,11 @@ export const App = ({ children, className }) => (
 App.propTypes = {
   children: PropTypes.object.isRequired,
   className: PropTypes.string,
+  native: PropTypes.bool,
 };
 
 
-export const Blank = () => (<div />);
+const Blank = () => (<div />);
 
 // Global Data is a Tracker aware data fetching container
 // it has no children to avoid reredering any child elements on change
@@ -136,10 +137,9 @@ const map = (state) => ({
   location: state.routing.location,
   modal: state.modal,
 });
+const withRedux = connect(map);
 
-@connect(map)
-@withApollo
-export default class Global extends Component {
+class GlobalWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -160,3 +160,15 @@ export default class Global extends Component {
     );
   }
 }
+
+export default withRedux(withApollo(GlobalWithoutData));
+
+export {
+  GlobalWithoutData,
+  map,
+  withRedux,
+  Watermark,
+  App,
+  Blank,
+  GlobalData,
+};
