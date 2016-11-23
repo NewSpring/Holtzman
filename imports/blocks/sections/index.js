@@ -12,20 +12,17 @@ import {
 
 import Groups from "./Groups";
 
-const map = (state) => ({ sections: state.sections });
-
-@connect(map)
-@ReactMixin.decorate(Headerable)
-export default class SectionsContainer extends Component {
+class SectionsContainerWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     sections: PropTypes.object.isRequired,
+    web: PropTypes.bool,
   }
 
   componentDidMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
-    if (process.env.WEB) {
+    if (this.props.web || process.env.WEB) {
       this.props.dispatch(modal.update({
         keepNav: true,
         modalBackground: "light",
@@ -67,3 +64,15 @@ export default class SectionsContainer extends Component {
     );
   }
 }
+
+const map = (state) => ({ sections: state.sections });
+const withRedux = connect(map);
+const withHeader = ReactMixin.decorate(Headerable);
+export default withRedux(withHeader(SectionsContainerWithoutData));
+
+export {
+  SectionsContainerWithoutData,
+  map,
+  withRedux,
+  withHeader,
+};
