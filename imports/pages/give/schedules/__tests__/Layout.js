@@ -1,8 +1,12 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
+import mockDate from "mockdate";
 import { Meteor } from "meteor/meteor";
 import Layout from "../Layout";
+
+// XXX god bless you
+mockDate.set("1/1/2000");
 
 Meteor.user = jest.fn(() => true);
 
@@ -121,6 +125,198 @@ it("renders without schedule details account", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
+it("doesn't render schedule if no details", () => {
+  const props = {
+    schedules: [
+      {
+        id: "1",
+        details: null,
+        start: "2012-12-12",
+        schedule: {
+          description: "test",
+          value: "test",
+        },
+      },
+    ],
+  };
+  const wrapper = shallow(generateComponent(props));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("doesn't render schedule if no details account", () => {
+  const props = {
+    schedules: [
+      {
+        id: "1",
+        details: [
+          {
+            amount: 2,
+            account: null,
+          },
+        ],
+        start: "2012-12-12",
+        schedule: {
+          description: "test",
+          value: "test",
+        },
+      },
+    ],
+  };
+  const wrapper = shallow(generateComponent(props));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("renders one time completed schedules", () => {
+  const props = {
+    schedules: [
+      {
+        id: "1",
+        details: [
+          {
+            amount: 2,
+            account: {
+              name: "test account",
+            },
+          },
+        ],
+        start: "1999-12-12",
+        next: "1999-12-12",
+        schedule: {
+          description: "test",
+          value: "One-Time",
+        },
+      },
+    ],
+  };
+  const wrapper = shallow(generateComponent(props));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("doesn't render one time completed schedule if no details", () => {
+  const props = {
+    schedules: [
+      // will render
+      {
+        id: "1",
+        details: [
+          {
+            amount: 2,
+            account: {
+              name: "test account",
+            },
+          },
+        ],
+        start: "1999-12-12",
+        next: "1999-12-12",
+        schedule: {
+          description: "test",
+          value: "One-Time",
+        },
+      },
+      // won't render
+      {
+        id: "2",
+        details: null,
+        start: "1999-12-12",
+        next: "1999-12-12",
+        schedule: {
+          description: "test",
+          value: "One-Time",
+        },
+      },
+    ],
+  };
+  const wrapper = shallow(generateComponent(props));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("doesn't render one time completed schedule if no details account", () => {
+  const props = {
+    schedules: [
+      // will render
+      {
+        id: "1",
+        details: [
+          {
+            amount: 2,
+            account: {
+              name: "test account",
+            },
+          },
+        ],
+        start: "1999-12-12",
+        next: "1999-12-12",
+        schedule: {
+          description: "test",
+          value: "One-Time",
+        },
+      },
+      // won't render
+      {
+        id: "2",
+        details: [
+          {
+            amount: 2,
+            account: null,
+          },
+        ],
+        start: "1999-12-12",
+        next: "1999-12-12",
+        schedule: {
+          description: "test",
+          value: "One-Time",
+        },
+      },
+    ],
+  };
+  const wrapper = shallow(generateComponent(props));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+
+it("doesn't render incompleted schedule as completed schedule", () => {
+  const props = {
+    schedules: [
+      // incomplete
+      {
+        id: "1",
+        details: [
+          {
+            amount: 2,
+            account: {
+              name: "test account",
+            },
+          },
+        ],
+        start: "2012-12-12",
+        schedule: {
+          description: "test",
+          value: "test",
+        },
+      },
+      // complete
+      {
+        id: "2",
+        details: [
+          {
+            amount: 2,
+            account: {
+              name: "test name",
+            },
+          },
+        ],
+        start: "1999-12-12",
+        next: "1999-12-12",
+        schedule: {
+          description: "test",
+          value: "One-Time",
+        },
+      },
+    ],
+  };
+  const wrapper = shallow(generateComponent(props));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
 it("expandedSchedule collapses the schedule if already expanded", () => {
   const mockEvent = {
     preventDefault: jest.fn(),
@@ -165,6 +361,11 @@ it("formatDate returns a formatted data", () => {
 });
 
 const DEFAULT_VALUE = "$0.00";
+
+it("returns $0.00 if no value", () => {
+  const wrapper = shallow(generateComponent());
+  expect(wrapper.instance().monentize("")).toBe("$0.00");
+});
 
 it("returns `$12.34` if number 12.34", () => {
   const wrapper = shallow(generateComponent());
