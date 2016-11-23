@@ -201,6 +201,26 @@ describe("Layout", () => {
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 
+  it("renders with negative transactions", () => {
+    const transactions = [
+      {
+        date: "2012-12-12",
+        details: [
+          { account: "test", amount: -1 },
+        ],
+      },
+      {
+        date: "2012-12-12",
+        details: [
+          { account: "Other Test", amount: 2 },
+          { account: "Third Test", amount: 2 },
+        ],
+      },
+    ];
+    const wrapper = shallow(generateComponent({ transactions }));
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+
   it("renders reloading version", () => {
     const wrapper = shallow(generateComponent({
       reloading: true,

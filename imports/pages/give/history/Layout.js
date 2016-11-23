@@ -281,7 +281,7 @@ export default class Layout extends Component {
                         {details.map((transactionDetail, i) => {
                           if (!transactionDetail.account) return null;
 
-                          if (Number(transactionDetail.amount) <= 0) return null;
+                          if (Number(transactionDetail.amount) === 0) return null;
 
                           const year = moment(transaction.date).year();
                           if (year !== lastYear) {

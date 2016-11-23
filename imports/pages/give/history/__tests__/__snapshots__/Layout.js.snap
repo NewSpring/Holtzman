@@ -177,6 +177,129 @@ exports[`Layout renders reloading version 1`] = `
 </div>
 `;
 
+exports[`Layout renders with negative transactions 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    nav={true}>
+    <Meta
+      title="Giving History" />
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg"
+      mobile={false} />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}>
+    <div
+      className="soft-double-sides@lap-and-up soft-ends@lap-and-up background--light-primary">
+      <div
+        className="soft soft-double-ends hard-left@lap-and-up">
+        <h2
+          className="flush hard">
+          Giving History
+        </h2>
+      </div>
+    </div>
+    <Filter
+      changeDates={[Function]}
+      changeFamily={[Function]}
+      family={Array []} />
+    <div
+      className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+      <div>
+        <div>
+          <div>
+            <div
+              className="soft soft-half-left text-left">
+              <h5>
+                2012
+              </h5>
+            </div>
+            <TransactionCard
+              transaction={
+                Object {
+                  "date": "2012-12-12",
+                  "details": Array [
+                    Object {
+                      "account": "test",
+                      "amount": -1,
+                    },
+                  ],
+                }
+              }
+              transactionDetail={
+                Object {
+                  "account": "test",
+                  "amount": -1,
+                }
+              } />
+          </div>
+        </div>
+        <div>
+          <TransactionCard
+            transaction={
+              Object {
+                "date": "2012-12-12",
+                "details": Array [
+                  Object {
+                    "account": "Other Test",
+                    "amount": 2,
+                  },
+                  Object {
+                    "account": "Third Test",
+                    "amount": 2,
+                  },
+                ],
+              }
+            }
+            transactionDetail={
+              Object {
+                "account": "Other Test",
+                "amount": 2,
+              }
+            } />
+          <TransactionCard
+            transaction={
+              Object {
+                "date": "2012-12-12",
+                "details": Array [
+                  Object {
+                    "account": "Other Test",
+                    "amount": 2,
+                  },
+                  Object {
+                    "account": "Third Test",
+                    "amount": 2,
+                  },
+                ],
+              }
+            }
+            transactionDetail={
+              Object {
+                "account": "Third Test",
+                "amount": 2,
+              }
+            } />
+        </div>
+      </div>
+    </div>
+    <div
+      className="one-whole text-center">
+      <mockConstructor />
+    </div>
+  </Left>
+</div>
+`;
+
 exports[`Layout renders with props 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
