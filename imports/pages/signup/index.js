@@ -2,7 +2,7 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
-import Accounts from "../../blocks/accounts";
+import AccountsWithData from "../../blocks/accounts";
 import Loading from "../../components/loading";
 import Meta from "../../components/meta";
 
@@ -63,7 +63,7 @@ class TemplateWithoutData extends Component {
                   minHeight: "500px",
                 }}
               >
-                <Accounts />
+                <AccountsWithData />
               </div>
             </div>
 
@@ -75,7 +75,7 @@ class TemplateWithoutData extends Component {
     return (
       <div>
         <Meta title="Sign up" />
-        <Accounts />
+        <AccountsWithData />
       </div>
     );
   }

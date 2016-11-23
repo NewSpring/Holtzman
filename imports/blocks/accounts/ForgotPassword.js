@@ -1,5 +1,7 @@
 // @flow
 import React from "react";
+// $FlowMeteor
+import { Accounts } from "meteor/accounts-base";
 
 import Forms from "../../components/forms";
 import { Error, Loading, Success } from "../../components/states";
