@@ -91,3 +91,71 @@ describe("middleware", () => {
     history.listen.mock.calls[0][0](mockLocation);
   });
 });
+
+describe("listenForReplays", () => {
+  it("calls replace if same key", () => {
+    const mockListenReturn = jest.fn();
+    const history = {
+      listen: jest.fn(() => mockListenReturn),
+      test: jest.fn(),
+      replace: jest.fn(),
+      transitionTo: jest.fn(),
+    };
+    const middleware = syncHistory(history);
+    const mockStore = {
+      getState: jest.fn(() => ({
+        routing: {
+          location: {
+            key: "1",
+          },
+        },
+      })),
+      subscribe: jest.fn(),
+    };
+    middleware.listenForReplays(mockStore);
+    expect(mockStore.getState).toHaveBeenCalledTimes(1);
+    expect(mockStore.subscribe).toHaveBeenCalledTimes(1);
+    // simulate store subscribe callback
+    mockStore.subscribe.mock.calls[0][0]();
+    expect(history.replace).toHaveBeenCalledTimes(1);
+    expect(history.replace).toHaveBeenCalledWith({
+      key: "1"
+    });
+  });
+
+  it("calls transitionTo if different key", () => {
+    const mockListenReturn = jest.fn();
+    const history = {
+      listen: jest.fn(() => mockListenReturn),
+      test: jest.fn(),
+      replace: jest.fn(),
+      transitionTo: jest.fn(),
+    };
+    const middleware = syncHistory(history);
+    const mockStore = {
+      getState: jest.fn(() => ({
+        routing: {
+          location: {
+            key: "1",
+          },
+        },
+      })),
+      subscribe: jest.fn(),
+    };
+    middleware.listenForReplays(mockStore);
+    // change keys
+    mockStore.getState = jest.fn(() => ({
+      routing: {
+        location: {
+          key: "2",
+        },
+      },
+    }));
+    // simulate store subscribe callback
+    mockStore.subscribe.mock.calls[0][0]();
+    expect(history.transitionTo).toHaveBeenCalledTimes(1);
+    expect(history.transitionTo).toHaveBeenCalledWith({
+      key: "2"
+    });
+  });
+});
