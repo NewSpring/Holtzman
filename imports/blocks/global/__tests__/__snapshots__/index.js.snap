@@ -11,7 +11,7 @@ exports[`App renders header when native 1`] = `
         test
       </h1>
     </div>
-    <Connect(SideModalContainer) />
+    <Connect(SideModalContainerWithoutData) />
     <mockConstructor />
     <Watermark />
   </div>
@@ -30,7 +30,7 @@ exports[`App renders with props 1`] = `
         test
       </h1>
     </div>
-    <Connect(SideModalContainer) />
+    <Connect(SideModalContainerWithoutData) />
     <mockConstructor />
     <Watermark />
   </div>
