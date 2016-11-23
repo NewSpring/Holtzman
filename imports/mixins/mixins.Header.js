@@ -26,7 +26,7 @@ const Header = {
     if (!!this.state.__headerSet) return; // eslint-disable-line
 
     const item = { ...this.getEntry(props) };
-    if (!item) return;
+    if (!Object.keys(item).length) return;
 
     item.title = this.getHeaderTitle(props);
 
