@@ -63,3 +63,8 @@ Results.propTypes = {
 };
 
 export default Results;
+
+export {
+  LoadingText,
+  LoadMore,
+};

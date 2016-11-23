@@ -16,11 +16,27 @@ import {
 
 import Layout from "./Layout";
 
-const mapStateToProps = (state) => ({ search: state.search });
-@withApollo
-@connect(mapStateToProps)
-@ReactMixin.decorate(Headerable)
-export default class SearchContainer extends Component {
+const SEARCH_QUERY = gql`
+  query Search($term: String!, $first: Int, $after: Int, $site: String) {
+    search(query: $term, first: $first, after: $after, site: $site) {
+      total
+      items {
+        id
+        title
+        htmlTitle
+        htmlDescription
+        link
+        image
+        displayLink
+        description
+        type
+        section
+      }
+    }
+  }
+`;
+
+class SearchContainerWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -34,42 +50,29 @@ export default class SearchContainer extends Component {
       this.props.dispatch(modal.update({ keepNav: true }));
     }
 
-    this.lockHeader("DiscoverModal");
-    this.headerAction({
-      isSearch: true,
-      searchSubmit: this.searchSubmit,
-    }, "DiscoverModal");
+    if (this.lockHeader) {
+      this.lockHeader("DiscoverModal");
+    }
+    if (this.headerAction) {
+      this.headerAction({
+        isSearch: true,
+        searchSubmit: this.searchSubmit,
+      }, "DiscoverModal");
+    }
   }
 
   componentWillUnmount() {
     this.props.dispatch(modal.update({ keepNav: false, layoutOverride: [] }));
     this.props.dispatch(searchActions.searching(false));
-    this.unlockHeader();
+    if (this.unlockHeader) {
+      this.unlockHeader();
+    }
   }
 
 
   getSearch() {
     const { dispatch } = this.props;
     const { page, pageSize, term } = this.props.search;
-    const query = gql`
-      query Search($term: String!, $first: Int, $after: Int, $site: String) {
-        search(query: $term, first: $first, after: $after, site: $site) {
-          total
-          items {
-            id
-            title
-            htmlTitle
-            htmlDescription
-            link
-            image
-            displayLink
-            description
-            type
-            section
-          }
-        }
-      }
-    `;
 
     const variables = {
       term,
@@ -78,7 +81,7 @@ export default class SearchContainer extends Component {
       site: "https://newspring.cc",
     };
 
-    this.props.client.query({ query, variables, forceFetch: true })
+    this.props.client.query({ query: SEARCH_QUERY, variables, forceFetch: true })
       .then(({ data }) => {
         const { search } = data;
         dispatch(searchActions.toggleLoading());
@@ -133,3 +136,17 @@ export default class SearchContainer extends Component {
     );
   }
 }
+
+const map = (state) => ({ search: state.search });
+const withRedux = connect(map);
+const withHeader = ReactMixin.decorate(Headerable);
+
+export default withApollo(withRedux(withHeader(SearchContainerWithoutData)));
+
+export {
+  SearchContainerWithoutData,
+  SEARCH_QUERY,
+  map,
+  withRedux,
+  withHeader,
+};

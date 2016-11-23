@@ -107,8 +107,12 @@ const Layout = ({ featuredItem, recommendedItems, textItems }) => (
 
 Layout.propTypes = {
   featuredItem: PropTypes.object,
-  recommendedItems: PropTypes.object,
-  textItems: PropTypes.object,
+  recommendedItems: PropTypes.array,
+  textItems: PropTypes.array,
 };
 
 export default Layout;
+
+export {
+  getImage,
+};

@@ -28,12 +28,17 @@ const SearchLayout = ({ loadMore, search }) => (
 
 Content.propTypes = {
   loadMore: PropTypes.func,
-  search: PropTypes.func,
+  search: PropTypes.object,
 };
 
 SearchLayout.propTypes = {
   loadMore: PropTypes.func,
-  search: PropTypes.func,
+  search: PropTypes.object,
 };
 
 export default SearchLayout;
+
+export {
+  Content,
+  getStyle,
+};

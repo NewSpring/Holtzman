@@ -5,6 +5,33 @@ import gql from "graphql-tag";
 
 import Layout from "./Layout";
 
+class DiscoverWithoutData extends Component {
+
+  static propTypes = {
+    discover: PropTypes.object.isRequired,
+  }
+
+  render() {
+    const { discover } = this.props;
+    if (discover.loading) return null; // XXX <Loading />
+
+    const featured = discover.items.filter((x) => (x.status.toLowerCase() === "featured"));
+    const open = discover.items.filter((x) => (x.status.toLowerCase() === "open"));
+
+    const featuredItem = featured[0];
+    const recommendedItems = [...featured.slice(1, featured.length - 1)];
+
+    return (
+      <Layout
+        featuredItem={featuredItem}
+        recommendedItems={recommendedItems}
+        textItems={open}
+      />
+    );
+  }
+
+}
+
 const DISCOVER_QUERY = gql`
   query GetPromotions($setName: String!) {
     items: lowReorderSets(setName: $setName) {
@@ -37,31 +64,13 @@ const withDiscover = graphql(DISCOVER_QUERY, {
   }),
 });
 
-@connect()
-@withDiscover
-export default class Discover extends Component {
+const withRedux = connect();
 
-  static propTypes = {
-    discover: PropTypes.object.isRequired,
-  }
+export default withRedux(withDiscover(DiscoverWithoutData));
 
-  render() {
-    const { discover } = this.props;
-    if (discover.loading) return null; // XXX <Loading />
-
-    const featured = discover.items.filter((x) => (x.status.toLowerCase() === "featured"));
-    const open = discover.items.filter((x) => (x.status.toLowerCase() === "open"));
-
-    const featuredItem = featured[0];
-    const recommendedItems = [...featured.slice(1, featured.length - 1)];
-
-    return (
-      <Layout
-        featuredItem={featuredItem}
-        recommendedItems={recommendedItems}
-        textItems={open}
-      />
-    );
-  }
-
-}
+export {
+  DiscoverWithoutData,
+  DISCOVER_QUERY,
+  withDiscover,
+  withRedux,
+};
