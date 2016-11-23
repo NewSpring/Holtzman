@@ -1,3 +1,12 @@
+exports[`test parses query 1`] = `
+"query CashTag($tag: String!) {
+  account: accountFromCashTag(cashTag: $tag) {
+    name
+  }
+}
+"
+`;
+
 exports[`test renders with children 1`] = `
 <div>
   <Connect(SplitContainerWithoutData)
