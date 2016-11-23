@@ -1,16 +1,48 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { PageWithoutData as Page } from "../";
+import { serverWatch } from "meteor/bjwiley2:server-watch";
+import {
+  PageWithoutData as Page,
+  IsAlive,
+} from "../";
 
-const defaultProps = {
-  dispatch: jest.fn(),
-};
+describe("Page", () => {
+  const defaultProps = {
+    dispatch: jest.fn(),
+  };
 
-const generateComponent = () => (
-  <Page { ...defaultProps } />
-);
+  const generateComponent = () => (
+    <Page { ...defaultProps } />
+  );
 
-it("renders with props", () => {
-  const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  it("renders with props", () => {
+    const wrapper = shallow(generateComponent());
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+});
+
+describe("TemplateWithData", () => {
+  it("returns true from serverWatch", () => {
+    serverWatch.isAlive = jest.fn(() => false);
+    const result = IsAlive();
+    expect(result).toEqual({
+      alive: false,
+    });
+  });
+
+  it("returns false from serverWatch", () => {
+    serverWatch.isAlive = jest.fn(() => true);
+    const result = IsAlive();
+    expect(result).toEqual({
+      alive: true,
+    });
+  });
+
+  it("catches errros from serverWatch", () => {
+    serverWatch.isAlive = jest.fn(() => { throw "Error" });
+    const result = IsAlive();
+    expect(result).toEqual({
+      alive: true,
+    });
+  });
 });

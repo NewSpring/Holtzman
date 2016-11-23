@@ -2,6 +2,7 @@ import { Component, PropTypes } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
+import { serverWatch } from "meteor/bjwiley2:server-watch";
 
 import createContainer from "../../../blocks/meteor/react-meteor-data";
 import { header as headerActions } from "../../../store";
@@ -48,12 +49,14 @@ const Page = connect()(
   )
 );
 
-// Bind reactive data to component
-const TemplateWithData = createContainer(() => {
+const IsAlive = () => {
   let alive = true;
   try { alive = serverWatch.isAlive("ROCK"); } catch (e) { /* do nothing */ }
   return { alive };
-},
+};
+
+// Bind reactive data to component
+const TemplateWithData = createContainer(IsAlive,
   ((props) => <Page {...props} />)
 );
 
@@ -68,4 +71,5 @@ export default {
 
 export {
   PageWithoutData,
+  IsAlive,
 };
