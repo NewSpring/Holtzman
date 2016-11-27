@@ -2,7 +2,6 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import { Meteor } from "meteor/meteor";
 
 import {
   nav as navActions,

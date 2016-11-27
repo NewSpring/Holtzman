@@ -17,8 +17,8 @@ export default function* submitPaymentDetails(data, url) {
 
   const form = document.createElement("FORM");
 
-  let Component,
-    obj;
+  let Component;
+  let obj;
 
   const { payment, personal } = data;
 

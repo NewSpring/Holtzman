@@ -1,6 +1,5 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { Meteor } from "meteor/meteor";
 import { DetailsWithoutData as Details } from "../";
 import Confirm from "../Confirm";
 

@@ -2,7 +2,6 @@
 import "regenerator-runtime/runtime";
 import { take, put, call, select } from "redux-saga/effects";
 
-import { schedule, charge } from "../../../methods/give/browser";
 import { GraphQL } from "../../../graphql";
 
 import types from "./../types";
@@ -59,7 +58,7 @@ export default function* chargeTransaction({ state }) {
   if (Object.keys(give.schedules).length) {
     // if there is not a saved account, charge the order
     if (!formattedData.savedAccount) {
-      // schedule = true;
+      schedule = true;
       // XXX schedule action
 
       if (give.data.payment.type === "cc") {
