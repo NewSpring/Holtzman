@@ -84,31 +84,26 @@ export default class Layout extends Component {
               "soft background--light-primary"
             }
           >
-            {(() => {
-              if (process.env.WEB) {
-                return (
-                  <Link
-                    to="/give/schedules"
-                    className={
-                      "locked-top locked-left soft-double@lap-and-up " +
-                      "soft h7 text-dark-secondary plain"
-                    }
-                  >
-                    <i
-                      className="icon-arrow-back soft-half-right display-inline-block"
-                      style={{ verticalAlign: "middle" }}
-                    />
-                    <span
-                      className="display-inline-block"
-                      style={{ verticalAlign: "middle", marginTop: "3px" }}
-                    >
-                      Back
-                    </span>
-                  </Link>
-                );
-              }
-              return null;
-            })()}
+            {process.env.WEB && (
+              <Link
+                to="/give/schedules"
+                className={
+                  "locked-top locked-left soft-double@lap-and-up " +
+                  "soft h7 text-dark-secondary plain"
+                }
+              >
+                <i
+                  className="icon-arrow-back soft-half-right display-inline-block"
+                  style={{ verticalAlign: "middle" }}
+                />
+                <span
+                  className="display-inline-block"
+                  style={{ verticalAlign: "middle", marginTop: "3px" }}
+                >
+                  Back
+                </span>
+              </Link>
+            )}
             <div
               className={
                 "text-left soft-double-top hard-left@lap-and-up " +
@@ -142,63 +137,44 @@ export default class Layout extends Component {
                       </h1>
 
 
-                      {(() => {
-                        const detail = schedule.payment;
-                        if (detail && detail.accountNumber) {
-                          return (
-                            <h4 className="text-dark-secondary soft-half-top">
-                              {detail.accountNumber.slice(-4)}&nbsp;
+                      {schedule.payment && schedule.payment.accountNumber && (
+                        <h4 className="text-dark-secondary soft-half-top">
+                          {schedule.payment.accountNumber.slice(-4)}&nbsp;
 
-                              {(() => {
-                                if (detail.paymentType && detail.paymentType === "ACH") {
-                                  return (
-                                    <AccountType
-                                      width="30px"
-                                      height="20px"
-                                      type="Bank"
-                                    />
-                                  );
-                                } else if (detail.paymentType) {
-                                  return (
-                                    <AccountType
-                                      width="30px"
-                                      height="20px"
-                                      type={detail.paymentType}
-                                    />
-                                  );
-                                }
-                                return null;
-                              })()}
+                          {
+                            schedule.payment.paymentType &&
+                            schedule.payment.paymentType === "ACH" &&
+                            <AccountType width="30px" height="20px" type="Bank" />
+                          }
+                          {
+                            schedule.payment.paymentType &&
+                            schedule.payment.paymentType !== "ACH" &&
+                            (
+                              <AccountType
+                                width="30px"
+                                height="20px"
+                                type={schedule.payment.paymentType}
+                              />
+                            )
+                          }
+                        </h4>
+                      )}
+                      {complete && (
+                        <h6 className="text-brand">
+                          Schedule Completed
+                        </h6>
+                      )}
+                      {!complete && active && (
+                        <h6 className="text-alert" onClick={stop} style={{ cursor: "pointer" }}>
+                          Stop Contribution
+                        </h6>
+                      )}
 
-                            </h4>
-                          );
-                        }
-                        return null;
-                      })()}
-                      {(() => {
-                        if (complete) {
-                          return (
-                            <h6 className="text-brand">
-                              Schedule Completed
-                            </h6>
-                          );
-                        }
-
-                        if (active) {
-                          return (
-                            <h6 className="text-alert" onClick={stop} style={{ cursor: "pointer" }}>
-                              Stop Contribution
-                            </h6>
-                          );
-                        }
-
-                        return (
-                          <h6 className="text-brand">
+                      {!complete && !active && (
+                        <h6 className="text-brand">
                             Contribution Stopped
                           </h6>
-                        );
-                      })()}
-
+                      )}
                       <p
                         className={
                           "text-center soft-ends soft-double@anchored " +
@@ -357,34 +333,3 @@ export default class Layout extends Component {
   }
   /* eslint-enable max-len */
 }
-
-/* eslint-disable */
-  // <div className="soft-ends push-half-ends hard-sides constrain-mobile">
-  //
-  //
-  //   <h3 className="text-dark-tertiary" style={{lineHeight: "1.75"}}>
-  //     <span className="text-dark-secondary">
-  //       {this.capitalizeFirstLetter(schedule.schedule.description.toLowerCase())}
-  //
-  //
-  //     </span> using my <span className="text-dark-secondary">
-  //       {schedule.payment.paymentType.toLowerCase()}
-  //     </span> ending in <span className="text-dark-secondary">
-  //       {schedule.payment.accountNumber.slice(-4)}
-  //     </span>
-  //   </h3>
-  //   {(() => {
-  //     if (state.isActive) {
-  //       return (
-  //         <button className="btn--alert btn--thin btn--small" onClick={stop}>
-  //           Cancel gift
-  //         </button>
-  //       )
-  //     }
-  //   })()}
-  // </div>
-  //
-  // <p className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-  //   Thank you so much for your gift! It is because of your generosity we are able to continue telling stories of the greatness of Jesus and seeing peoples lives changed.
-  // </p>
-/* eslint-enable */

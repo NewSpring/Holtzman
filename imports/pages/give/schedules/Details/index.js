@@ -23,6 +23,7 @@ class DetailsWithoutData extends Component {
       transaction: PropTypes.object,
     }),
     entries: PropTypes.object,
+    cancel: PropTypes.func.isRequired,
   }
 
   state = {
@@ -54,11 +55,11 @@ class DetailsWithoutData extends Component {
 
     this.props.dispatch(modalActions.render(Confirm, {
       onFinished: () => {
-        const { id, gateway } = this.props.data.transaction;
+        const { id } = this.props.data.transaction;
 
         this.setState({ isActive: false, removed: id });
-        Meteor.call("give/schedule/cancel", { id, gateway }, () => {
-        });
+        // XXX error states
+        this.props.cancel(id);
       },
     }));
   }
@@ -153,10 +154,33 @@ const withScheduleTransaction = graphql(SCHEDULE_TRANSACTION_QUERY, {
   }),
 });
 
+const CANCEL_SCHEDULE_QUERY = gql`
+  mutation CancelSchedule($id: Int!) {
+    cancelSchedule(entityId: $id) {
+      code
+      success
+      error
+      schedule {
+        entityId
+      }
+    }
+  }
+`;
+
+const withCancelSchedule = graphql(CANCEL_SCHEDULE_QUERY, {
+  props: ({ mutate }) => ({
+    // XXX add in optimistic reponse and remove need for state management
+    // XXX add in updateQueries to remove need for refetch on schedules pages
+    cancel: (id) => mutate({ variables: { id } }),
+  }),
+});
+
 export default connect()(
   withEntries(
     withScheduleTransaction(
-      DetailsWithoutData
+      withCancelSchedule(
+        DetailsWithoutData
+      )
     )
   )
 );

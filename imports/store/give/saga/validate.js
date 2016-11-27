@@ -1,6 +1,6 @@
 
 import "regenerator-runtime/runtime";
-import { cps, select } from "redux-saga/effects";
+import { cps, select, call } from "redux-saga/effects";
 
 import { GraphQL } from "../../../graphql";
 import { charge } from "../../../methods/give/browser";
@@ -41,7 +41,7 @@ export default function* validate() {
   let url;
   try {
     // call the Meteor method to submit data to NMI
-    const { data: { response } } = yield GraphQL.mutate({
+    const { data: { response } } = yield call(GraphQL.mutate, {
       mutation: CREATE_ORDER_MUTATION,
       variables: {
         data: JSON.stringify(formattedData),

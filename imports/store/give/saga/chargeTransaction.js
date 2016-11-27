@@ -1,7 +1,6 @@
 
 import "regenerator-runtime/runtime";
-import { take, put, cps, select } from "redux-saga/effects";
-import gql from "graphql-tag";
+import { take, put, call, select } from "redux-saga/effects";
 
 import { schedule, charge } from "../../../methods/give/browser";
 import { GraphQL } from "../../../graphql";
@@ -22,10 +21,9 @@ export default function* chargeTransaction({ state }) {
 
   let { give } = yield select();
   const name = give.data.payment.name;
-  let action = charge;
   let error = false;
   let id;
-  let saved = false;
+  let schedule = false;
 
   // set loading state
   yield put(actions.loading());
@@ -35,7 +33,7 @@ export default function* chargeTransaction({ state }) {
   // if you have a saved account, NMI lets you "order" a schedule
   // instead of order + charge
   if (formattedData.savedAccount && Object.keys(give.schedules).length) {
-    saved = true;
+    schedule = true;
   } else {
     let store = yield select();
     give = store.give;
@@ -61,7 +59,8 @@ export default function* chargeTransaction({ state }) {
   if (Object.keys(give.schedules).length) {
     // if there is not a saved account, charge the order
     if (!formattedData.savedAccount) {
-      action = schedule;
+      // schedule = true;
+      // XXX schedule action
 
       if (give.data.payment.type === "cc") {
         // saved accounts don't validate the payment by default
@@ -85,19 +84,20 @@ export default function* chargeTransaction({ state }) {
   if (!error) {
     // submit transaction
     try {
-      if (saved) {
+      let data = {};
+      if (!schedule) {
         // XXX update data if returned
-        yield GraphQL.mutate({
+        data = yield call(GraphQL.mutate, {
           mutation: COMPLETE_ORDER_MUTATION,
           variables: { token, name, id },
-        })
-          .then(x => { console.log(x); });
+        });
       } else {
-        yield GraphQL.mutate({
+        data = yield call(GraphQL.mutate, {
           mutation: CREATE_ORDER_MUTATION,
           variables: { data: JSON.stringify(formattedData), instant: true, id },
         });
       }
+      if (data && data.error) error = data.error;
     } catch (e) { error = e; }
   }
   // set error states

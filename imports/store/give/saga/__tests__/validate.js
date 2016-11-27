@@ -14,25 +14,27 @@ describe("successful validation", () => {
   }));
 
   it("formats the data in the store", result => {
-    const mockedOrder = cps(() => {}, {
-      amount: 0,
-      billing: {
-        'first-name': null,
-        'last-name': null,
-        email: null,
-        address1: null,
-        address2: '',
-        city: null,
-        state: null,
-        postal: null
-      },
-      'merchant-defined-field-2': null
+
+    expect(result.CALL.args[0].variables).toEqual({
+      data: JSON.stringify({
+        amount: 0,
+        billing: {
+          'first-name': null,
+          'last-name': null,
+          email: null,
+          address1: null,
+          address2: '',
+          city: null,
+          state: null,
+          postal: null
+        },
+        'merchant-defined-field-2': null
+      }),
+      id: null,
+      instant: false,
     });
 
-    expect(result.CPS.fn.name).toBe("order");
-    expect(result.CPS.args[0]).toEqual(mockedOrder.CPS.args[0]);
-
-    return { url: "http://test.com/TOKEN" };
+    return { data: { response: { url: "http://test.com/TOKEN" } } };
   });
 
   // XXX how to test the args of this
@@ -62,24 +64,24 @@ describe("failure in order", () => {
   }));
 
   it("formats the data in the store", result => {
-    const mockedOrder = cps(() => {}, {
-      amount: 0,
-      billing: {
-        'first-name': null,
-        'last-name': null,
-        email: null,
-        address1: null,
-        address2: '',
-        city: null,
-        state: null,
-        postal: null
-      },
-      'merchant-defined-field-2': null
+    expect(result.CALL.args[0].variables).toEqual({
+      data: JSON.stringify({
+        amount: 0,
+        billing: {
+          'first-name': null,
+          'last-name': null,
+          email: null,
+          address1: null,
+          address2: '',
+          city: null,
+          state: null,
+          postal: null
+        },
+        'merchant-defined-field-2': null
+      }),
+      id: null,
+      instant: false,
     });
-
-    expect(result.CPS.fn.name).toBe("order");
-    expect(result.CPS.args[0]).toEqual(mockedOrder.CPS.args[0]);
-
     return new Error("SAMPLE ERROR");
   });
 
@@ -103,25 +105,26 @@ describe("failure in charge", () => {
   }));
 
   it("formats the data in the store", result => {
-    const mockedOrder = cps(() => {}, {
-      amount: 0,
-      billing: {
-        'first-name': null,
-        'last-name': null,
-        email: null,
-        address1: null,
-        address2: '',
-        city: null,
-        state: null,
-        postal: null
-      },
-      'merchant-defined-field-2': null
+    expect(result.CALL.args[0].variables).toEqual({
+      data: JSON.stringify({
+        amount: 0,
+        billing: {
+          'first-name': null,
+          'last-name': null,
+          email: null,
+          address1: null,
+          address2: '',
+          city: null,
+          state: null,
+          postal: null
+        },
+        'merchant-defined-field-2': null
+      }),
+      id: null,
+      instant: false,
     });
 
-    expect(result.CPS.fn.name).toBe("order");
-    expect(result.CPS.args[0]).toEqual(mockedOrder.CPS.args[0]);
-
-    return { url: "http://test.com/TOKEN" };
+    return { data: { response: { url: "http://test.com/TOKEN" } } };
   });
 
   // XXX how to test the args of this

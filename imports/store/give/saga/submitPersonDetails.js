@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 import React from "react";
 import ReactDOM from "react-dom";
-import { put } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 
 import { GraphQL } from "../../../graphql";
 
@@ -27,8 +27,8 @@ export default function* submitPersonDetails(give, autoSubmit) {
 
   let url;
   try {
-    // call the Meteor method to submit data to NMI
-    const { data: { response } } = yield GraphQL.mutate({
+    // call the Heighliner mutation to submit data to NMI
+    const { data: { response } } = yield call(GraphQL.mutate, {
       mutation: CREATE_ORDER_MUTATION,
       variables: {
         data: JSON.stringify(formattedData),
