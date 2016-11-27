@@ -1,8 +1,18 @@
 
-const Error = () => (
-  <svg width="60px" height="61px" viewBox="0 0 60 61" version="1.1">
+type IError = {
+  width: string,
+  height: string,
+  fill: string,
+};
+
+const Error = ({
+  width,
+  height,
+  fill,
+}: IError) => (
+  <svg width={width} height={height} viewBox="0 0 60 61" version="1.1">
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g transform="translate(-90.000000, -163.000000)" fill="#C64F55">
+      <g transform="translate(-90.000000, -163.000000)" fill={fill}>
         <g transform="translate(60.000000, 0.000000)">
           <g transform="translate(30.000000, 163.000000)">
             <path d="M30,54.33 L30,54.33 C43.254834,54.33 54,43.584834 54,30.33 C54,17.075166 43.254834,6.33 30,6.33 C16.745166,6.33 6,17.075166 6,30.33 C6,43.584834 16.745166,54.33 30,54.33 L30,54.33 Z M30,60.33 L30,60.33 C13.4314575,60.33 0,46.8985425 0,30.33 C0,13.7614575 13.4314575,0.33 30,0.33 C46.5685425,0.33 60,13.7614575 60,30.33 C60,46.8985425 46.5685425,60.33 30,60.33 L30,60.33 Z" id="Shape" />
@@ -13,5 +23,11 @@ const Error = () => (
     </g>
   </svg>
 );
+
+Error.defaultProps = {
+  width: "60px",
+  height: "61px",
+  fill: "#C64F55",
+};
 
 export default Error;
