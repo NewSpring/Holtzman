@@ -77,20 +77,21 @@ export default class Activity extends Component {
     return icon;
   };
 
-  getMessage = (status: string, amount: string, fundName: string, savedAccount: string) => {
+  // getMessage = (status: string, amount: string, fundName: string, savedAccount: string) => {
+  getMessage = (props: Object) => {
     let message;
     if (status === "failed") {
       // eslint-disable-next-line
-      message = <Paragraph>Your contribution to <Strong>{fundName}</Strong> failed. Unfortunately there were insufficient funds to process it.</Paragraph>;
+      message = <Paragraph>Your contribution to <Strong>{props.fundName}</Strong> failed. Unfortunately there were insufficient funds to process it.</Paragraph>;
       // const bolded = "General Fund";
       // message += bolded.bold();
       // message += "failed. Unfortunately there were insufficient funds to process it.";
     } else if (status === "success") {
       // eslint-disable-next-line
-      message = <Paragraph>Your scheduled gift of <Strong>{amount}</Strong> to <Strong>{fundName}</Strong> was successful.</Paragraph>;
+      message = <Paragraph>Your scheduled gift of <Strong>{props.amount}</Strong> to <Strong>{props.fundName}</Strong> was successful.</Paragraph>;
     } else {
       // eslint-disable-next-line
-      message = <Paragraph>Your saved payment <Strong>{savedAccount}</Strong> is expiring soon.</Paragraph>;
+      message = <Paragraph>Your saved payment <Strong>{props.savedAccount}</Strong> is expiring soon.</Paragraph>;
     }
     return message;
   };
@@ -112,7 +113,7 @@ export default class Activity extends Component {
       <div className={this.getClasses()} style={this.getStyles(this.props.status)}>
         <i className="soft-half-right">{this.getIcon(this.props.status)}</i>
         <BoldedDate className="flush-bottom">{ moment(this.props.date).format("MMM D, YYYY") }</BoldedDate>
-        <div>{this.getMessage(this.props.status, this.props.amount, this.props.fundName, this.props.savedAccount)}</div>
+        <div>{this.getMessage(this.props)}</div>
         <div onClick={this.props.onClick}>{this.getLink(this.props.status)}<span className="icon-arrow-next soft-half-left" /></div>
       </div>
     );
