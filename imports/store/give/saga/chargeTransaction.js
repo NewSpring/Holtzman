@@ -22,7 +22,7 @@ export default function* chargeTransaction({ state }) {
   const name = give.data.payment.name;
   let error = false;
   let id;
-  let schedule = false;
+  let saved = false;
 
   // set loading state
   yield put(actions.loading());
@@ -32,7 +32,7 @@ export default function* chargeTransaction({ state }) {
   // if you have a saved account, NMI lets you "order" a schedule
   // instead of order + charge
   if (formattedData.savedAccount && Object.keys(give.schedules).length) {
-    schedule = true;
+    saved = true;
   } else {
     let store = yield select();
     give = store.give;
@@ -58,8 +58,6 @@ export default function* chargeTransaction({ state }) {
   if (Object.keys(give.schedules).length) {
     // if there is not a saved account, charge the order
     if (!formattedData.savedAccount) {
-      schedule = true;
-      // XXX schedule action
 
       if (give.data.payment.type === "cc") {
         // saved accounts don't validate the payment by default
@@ -84,7 +82,7 @@ export default function* chargeTransaction({ state }) {
     // submit transaction
     try {
       let data = {};
-      if (!schedule) {
+      if (!saved) {
         // XXX update data if returned
         data = yield call(GraphQL.mutate, {
           mutation: COMPLETE_ORDER_MUTATION,
@@ -96,9 +94,11 @@ export default function* chargeTransaction({ state }) {
           variables: { data: JSON.stringify(formattedData), instant: true, id },
         });
       }
+      if (data && data.data && data.data.response) data = data.data.response;
       if (data && data.error) error = data.error;
     } catch (e) { error = e; }
   }
+
   // set error states
   if (error) {
     yield put(actions.error({ transaction: error }));

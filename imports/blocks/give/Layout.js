@@ -70,7 +70,7 @@ const Layout = ({
         copiedSchedules = { ...schedules };
         return <Loading msg="We're Processing Your Contribution" />;
       case "error":
-        return <Err msg={errors[Object.keys(errors)[0]].error} goToStepOne={goToStepOne} />;
+        return <Err msg={errors[Object.keys(errors)[0]]} goToStepOne={goToStepOne} />;
       case "success":
         return (
           <Success

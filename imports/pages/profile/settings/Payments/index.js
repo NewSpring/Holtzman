@@ -1,5 +1,4 @@
 
-import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -27,6 +26,25 @@ export const withPaymentDetails = graphql(PAYMENT_DETAILS_QUERY, {
   options: { forceFetch: true, variables: { cache: false } },
 });
 
+export const REMOVE_PAYMENT_MUTATION = gql`
+  mutation RemoveSavedPayment($id: Int!) {
+    cancelSavedPayment(entityId: $id) {
+      error
+      code
+      success
+    }
+  }
+`;
+
+export const withPaymentRemove = graphql(REMOVE_PAYMENT_MUTATION, {
+  props: ({ mutate }) => ({
+    remove: (id) => mutate({
+      variables: { id },
+      // updateQueries
+    }),
+  }),
+});
+
 export class GiveNow extends Component {
 
   static propTypes = {
@@ -36,6 +54,7 @@ export class GiveNow extends Component {
       refetch: PropTypes.func,
       accounts: PropTypes.array,
     }),
+    remove: PropTypes.func.isRequired,
   }
 
   state = { accounts: null, loading: null, error: null };
@@ -50,21 +69,21 @@ export class GiveNow extends Component {
 
   remove = (id) => {
     this.setState({ loading: true, accounts: [], error: null });
-    Meteor.call("PaymentAccounts.remove", id, (err) => {
-      if (err) {
-        this.setState({ error: err.message, loading: null, accounts: null });
-        setTimeout(() => {
-          this.setState({ error: null, loading: null, accounts: null });
-        }, 500);
-        return;
-      }
-
-      // XXX mutation
-      this.props.data.refetch()
-        .then(() => {
-          this.setState({ loading: null, accounts: null, error: null });
-        });
-    });
+    this.props.remove(id)
+      .then(({ data }) => {
+        if (data.error) {
+          this.setState({ error: data.error, loading: null, accounts: null });
+          setTimeout(() => {
+            this.setState({ error: null, loading: null, accounts: null });
+          }, 500);
+          return;
+        }
+      })
+      // XXX use updateQueries instead of refetch to remove the id
+      .then(() => this.props.data.refetch())
+      .then(() => {
+        this.setState({ loading: null, accounts: null, error: null });
+      });
   }
 
   render() {
@@ -84,5 +103,9 @@ export class GiveNow extends Component {
   }
 }
 
-export default withPaymentDetails(connect()(GiveNow));
+export default withPaymentDetails(
+  withPaymentRemove(
+    connect()(GiveNow)
+  )
+);
 

@@ -1,12 +1,12 @@
 
 import "regenerator-runtime/runtime";
-import { cps, select, call } from "redux-saga/effects";
+import { select, call } from "redux-saga/effects";
 
 import { GraphQL } from "../../../graphql";
-import { charge } from "../../../methods/give/browser";
 
 import formatPersonDetails from "./formatPersonDetails";
 import CREATE_ORDER_MUTATION from "./createOrderMutation";
+import VALIDATE_CARD_MUTATON from "./validatePaymentMutation";
 import submitPaymentDetails from "./submitPaymentDetails";
 
 // at this point in time we have to do steps 1 - 3 of the
@@ -17,7 +17,6 @@ import submitPaymentDetails from "./submitPaymentDetails";
 
 export default function* validate() {
   const { give } = yield select();
-  const name = give.data.payment.name;
 
   let success = true;
   let validationError = false;
@@ -34,7 +33,7 @@ export default function* validate() {
   const formattedData = formatPersonDetails(modifiedGive);
 
   // in order to make this a validation call, we need to set the amount
-  // to be 9
+  // to be 0
   formattedData.amount = 0;
 
   let error;
@@ -58,10 +57,12 @@ export default function* validate() {
   if (url) {
     // step 3 (trigger validation)
     const token = url.split("/").pop();
-    try {
-      yield cps(charge, token, name, null);
-    } catch (e) {
-      validationError = e;
+    const { data: { response } } = yield call(GraphQL.mutate, {
+      mutation: VALIDATE_CARD_MUTATON,
+      variables: { token },
+    });
+    if (response.error) {
+      validationError = response.error;
       success = false;
     }
   } else {
