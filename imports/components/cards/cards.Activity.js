@@ -52,59 +52,56 @@ export default class Activity extends Component {
     const styles = {
       color: "#FFFFFF",
       fontFamily: "colfax-web, sans-serif",
-      backgroundColor: "#FFFFFF",
+      backgroundColor: "#242424",
       fill: "#FFFFFF",
     };
+
     if (status === "failed") {
       styles.backgroundColor = "#BA3841";
     } else if (status === "success") {
       styles.backgroundColor = "#59A12E";
-    } else {
-      styles.backgroundColor = "#242424";
     }
+
     return styles;
   };
 
   getIcon = (status: string) => {
-    let icon;
+    let icon = <Error width="30px" height="31px" fill="#FFFFFF" />;
+
     if (status === "failed") {
       icon = "";
     } else if (status === "success") {
       icon = <Success width="30px" height="31px" fill="#FFFFFF" />;
-    } else {
-      icon = <Error width="30px" height="31px" fill="#FFFFFF" />;
     }
+
     return icon;
   };
 
   // getMessage = (status: string, amount: string, fundName: string, savedAccount: string) => {
   getMessage = (props: Object) => {
-    let message;
-    if (status === "failed") {
+    // eslint-disable-next-line
+    let message = <Paragraph>Your saved payment <Strong>{props.savedAccount}</Strong> is expiring soon.</Paragraph>;
+
+    if (props.status === "failed") {
       // eslint-disable-next-line
       message = <Paragraph>Your contribution to <Strong>{props.fundName}</Strong> failed. Unfortunately there were insufficient funds to process it.</Paragraph>;
-      // const bolded = "General Fund";
-      // message += bolded.bold();
-      // message += "failed. Unfortunately there were insufficient funds to process it.";
-    } else if (status === "success") {
+    } else if (props.status === "success") {
       // eslint-disable-next-line
       message = <Paragraph>Your scheduled gift of <Strong>{props.amount}</Strong> to <Strong>{props.fundName}</Strong> was successful.</Paragraph>;
-    } else {
-      // eslint-disable-next-line
-      message = <Paragraph>Your saved payment <Strong>{props.savedAccount}</Strong> is expiring soon.</Paragraph>;
     }
+
     return message;
   };
 
   getLink = (status: string) => {
-    let link;
+    let link = <Link href="#">Update It Now</Link>;
+
     if (status === "failed") {
       link = <Link href="#">Fix It Now</Link>;
     } else if (status === "success") {
       link = <Link href="#">View Transaction</Link>;
-    } else {
-      link = <Link href="#">Update It Now</Link>;
     }
+
     return link;
   };
 
