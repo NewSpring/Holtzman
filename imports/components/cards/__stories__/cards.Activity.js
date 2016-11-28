@@ -30,33 +30,29 @@ story
     };
     const defaultStatusValue = "success";
     const status = select("Status", statusOptions, defaultStatusValue);
-
-    // date
     const defaultDate = moment().format("L");
-    const date = text("Date", defaultDate);
-
-    // amount
     const defaultAmount = "$50";
-    const amount = text("Amount", defaultAmount);
-
-    // fund name
     const defaultFundName = "General Fund";
-    const fundName = text("Fund Name", defaultFundName);
-
-    // saved account
     const defaultSavedAccount = "Credit Card";
-    const savedAccount = text("Saved Account", defaultSavedAccount);
+
+    const transaction = {
+      id: "1234",
+      date: text("Date", defaultDate),
+      fund: {
+        name: text("Fund Name", defaultFundName),
+      },
+      amount: text("Amount", defaultAmount),
+      savedAccount: {
+        name: text("Saved Account", defaultSavedAccount),
+      },
+    };
 
     return (
       <div className={"floating"}>
         <div className={"grid__item"} style={{ maxWidth: "480px" }}>
           <Activity
             status={status}
-            date={date}
-            amount={amount}
-            fundName={fundName}
-            savedAccount={savedAccount}
-            onClick={() => { alert("clicked"); }}
+            transaction={transaction}
           />
         </div>
       </div>);
