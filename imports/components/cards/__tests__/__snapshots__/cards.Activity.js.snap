@@ -24,12 +24,18 @@ exports[`Activity should render the failed status component 1`] = `
        failed. Unfortunately there were insufficient funds to process it.
     </styled.p>
   </div>
-  <div
-    onClick={[Function]}>
-    <styled.a
-      href="#">
+  <div>
+    <Link
+      onlyActiveOnIndex={false}
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "fontWeight": "bold",
+        }
+      }
+      to="/give/history/1234">
       Fix It Now
-    </styled.a>
+    </Link>
     <span
       className="icon-arrow-next soft-half-left" />
   </div>
@@ -67,12 +73,18 @@ exports[`Activity should render the warning status component 1`] = `
        is expiring soon.
     </styled.p>
   </div>
-  <div
-    onClick={[Function]}>
-    <styled.a
-      href="#">
+  <div>
+    <Link
+      onlyActiveOnIndex={false}
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "fontWeight": "bold",
+        }
+      }
+      to="/give/now">
       Update It Now
-    </styled.a>
+    </Link>
     <span
       className="icon-arrow-next soft-half-left" />
   </div>
@@ -114,12 +126,18 @@ exports[`Activity should render with the default set of props 1`] = `
        was successful.
     </styled.p>
   </div>
-  <div
-    onClick={[Function]}>
-    <styled.a
-      href="#">
+  <div>
+    <Link
+      onlyActiveOnIndex={false}
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "fontWeight": "bold",
+        }
+      }
+      to="/give/history/1234">
       View Transaction
-    </styled.a>
+    </Link>
     <span
       className="icon-arrow-next soft-half-left" />
   </div>

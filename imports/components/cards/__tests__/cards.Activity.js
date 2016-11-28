@@ -8,11 +8,17 @@ describe("Activity", () => {
   const generateComponent = (additionalProps = {}) => {
     const defaultProps = {
       status: "success",
-      date: moment("2016-12-25"),
-      amount: "$50",
-      fundName: "General Fun",
-      savedAccount: "Credit Card",
-      onClick: () => {},
+      transaction: {
+        id: "1234",
+        date: moment("2016-12-25"),
+        fund: {
+          name: "General Fun",
+        },
+        amount: "$50",
+        savedAccount: {
+          name: "Credit Card",
+        },
+      },
     };
 
     return (
