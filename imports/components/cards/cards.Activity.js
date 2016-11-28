@@ -20,12 +20,6 @@ const Strong = styled.strong`
   font-family: colfax-web, sans-serif;
 `;
 
-// const Link2 = styled.a`
-//   text-decoration: none;
-//   color: #FFFFFF;
-//   font-weight: bold;
-// `;
-
 type IActivity = {
   status: string,
   transaction: Object,
@@ -74,21 +68,19 @@ export default class Activity extends Component {
     return icon;
   };
 
-  // getMessage = (status: string, amount: string, fundName: string, savedAccount: string) => {
+  /* eslint-disable max-len */
   getMessage = (props: Object) => {
-    // eslint-disable-next-line
     let message = <Paragraph>Your saved payment <Strong>{props.transaction.savedAccount.name}</Strong> is expiring soon.</Paragraph>;
 
     if (props.status === "failed") {
-      // eslint-disable-next-line
       message = <Paragraph>Your contribution to <Strong>{props.transaction.fund.name}</Strong> failed. Unfortunately there were insufficient funds to process it.</Paragraph>;
     } else if (props.status === "success") {
-      // eslint-disable-next-line
       message = <Paragraph>Your scheduled gift of <Strong>{props.transaction.amount}</Strong> to <Strong>{props.transaction.fund.name}</Strong> was successful.</Paragraph>;
     }
 
     return message;
   };
+  /* eslint-enable max-len */
 
   getLink = (props: Object) => {
     let link = <Link to={"/give/now"} style={{ color: "#FFFFFF", fontWeight: "bold" }}>Update It Now</Link>;
