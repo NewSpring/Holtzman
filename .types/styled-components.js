@@ -1,3 +1,3 @@
 declare module "styled-components" {
-  declare function styled(): Object;
+  declare var exports: any;
 }
