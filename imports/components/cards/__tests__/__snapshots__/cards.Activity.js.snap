@@ -1,0 +1,127 @@
+exports[`Activity should render the failed status component 1`] = `
+<div
+  className="card__item soft text-left soft-bottom rounded"
+  style={
+    Object {
+      "backgroundColor": "#BA3841",
+      "color": "#FFFFFF",
+      "fill": "#FFFFFF",
+      "fontFamily": "colfax-web, sans-serif",
+    }
+  }>
+  <i
+    className="soft-half-right" />
+  <styled.p
+    className="flush-bottom">
+    Dec 25, 2016
+  </styled.p>
+  <div>
+    <styled.p>
+      Your contribution to 
+      <styled.strong>
+        General Fun
+      </styled.strong>
+       failed. Unfortunately there were insufficient funds to process it.
+    </styled.p>
+  </div>
+  <div
+    onClick={[Function]}>
+    <styled.a
+      href="#">
+      Fix It Now
+    </styled.a>
+    <span
+      className="icon-arrow-next soft-half-left" />
+  </div>
+</div>
+`;
+
+exports[`Activity should render the warning status component 1`] = `
+<div
+  className="card__item soft text-left soft-bottom rounded"
+  style={
+    Object {
+      "backgroundColor": "#242424",
+      "color": "#FFFFFF",
+      "fill": "#FFFFFF",
+      "fontFamily": "colfax-web, sans-serif",
+    }
+  }>
+  <i
+    className="soft-half-right">
+    <Error
+      fill="#FFFFFF"
+      height="31px"
+      width="30px" />
+  </i>
+  <styled.p
+    className="flush-bottom">
+    Dec 25, 2016
+  </styled.p>
+  <div>
+    <styled.p>
+      Your saved payment 
+      <styled.strong>
+        Credit Card
+      </styled.strong>
+       is expiring soon.
+    </styled.p>
+  </div>
+  <div
+    onClick={[Function]}>
+    <styled.a
+      href="#">
+      Update It Now
+    </styled.a>
+    <span
+      className="icon-arrow-next soft-half-left" />
+  </div>
+</div>
+`;
+
+exports[`Activity should render with the default set of props 1`] = `
+<div
+  className="card__item soft text-left soft-bottom rounded"
+  style={
+    Object {
+      "backgroundColor": "#59A12E",
+      "color": "#FFFFFF",
+      "fill": "#FFFFFF",
+      "fontFamily": "colfax-web, sans-serif",
+    }
+  }>
+  <i
+    className="soft-half-right">
+    <Success
+      fill="#FFFFFF"
+      height="31px"
+      width="30px" />
+  </i>
+  <styled.p
+    className="flush-bottom">
+    Dec 25, 2016
+  </styled.p>
+  <div>
+    <styled.p>
+      Your scheduled gift of 
+      <styled.strong>
+        $50
+      </styled.strong>
+       to 
+      <styled.strong>
+        General Fun
+      </styled.strong>
+       was successful.
+    </styled.p>
+  </div>
+  <div
+    onClick={[Function]}>
+    <styled.a
+      href="#">
+      View Transaction
+    </styled.a>
+    <span
+      className="icon-arrow-next soft-half-left" />
+  </div>
+</div>
+`;
