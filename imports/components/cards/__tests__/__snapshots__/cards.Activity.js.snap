@@ -1,10 +1,9 @@
 exports[`Activity should render the failed status component 1`] = `
 <div
-  className="card__item soft text-left soft-bottom rounded"
+  className="card__item soft text-left soft-bottom rounded text-light-primary"
   style={
     Object {
       "backgroundColor": "#BA3841",
-      "color": "#FFFFFF",
       "fill": "#FFFFFF",
       "fontFamily": "colfax-web, sans-serif",
     }
@@ -16,20 +15,23 @@ exports[`Activity should render the failed status component 1`] = `
       height="31px"
       width="30px" />
   </i>
-  <p
+  <h5
+    className="display-inline-block"
     style={
       Object {
-        "display": "inline-block",
-        "fontFamily": "colfax-web, sans-serif",
-        "fontWeight": "bold",
-        "verticalAlign": "top",
+        "verticalAlign": "super",
       }
     }>
     Dec 25, 2016
-  </p>
-  <div>
+  </h5>
+  <p
+    style={
+      Object {
+        "fontFamily": "colfax-web, sans-serif",
+      }
+    }>
     You did something awesome and I\'ve never been more proud.
-  </div>
+  </p>
   <Link
     onlyActiveOnIndex={false}
     style={
@@ -48,11 +50,10 @@ exports[`Activity should render the failed status component 1`] = `
 
 exports[`Activity should render the warning status component 1`] = `
 <div
-  className="card__item soft text-left soft-bottom rounded"
+  className="card__item soft text-left soft-bottom rounded text-light-primary"
   style={
     Object {
       "backgroundColor": "#242424",
-      "color": "#FFFFFF",
       "fill": "#FFFFFF",
       "fontFamily": "colfax-web, sans-serif",
     }
@@ -64,20 +65,23 @@ exports[`Activity should render the warning status component 1`] = `
       height="31px"
       width="30px" />
   </i>
-  <p
+  <h5
+    className="display-inline-block"
     style={
       Object {
-        "display": "inline-block",
-        "fontFamily": "colfax-web, sans-serif",
-        "fontWeight": "bold",
-        "verticalAlign": "top",
+        "verticalAlign": "super",
       }
     }>
     Dec 25, 2016
-  </p>
-  <div>
+  </h5>
+  <p
+    style={
+      Object {
+        "fontFamily": "colfax-web, sans-serif",
+      }
+    }>
     You did something awesome and I\'ve never been more proud.
-  </div>
+  </p>
   <Link
     onlyActiveOnIndex={false}
     style={
@@ -96,11 +100,10 @@ exports[`Activity should render the warning status component 1`] = `
 
 exports[`Activity should render with the default set of props 1`] = `
 <div
-  className="card__item soft text-left soft-bottom rounded"
+  className="card__item soft text-left soft-bottom rounded text-light-primary"
   style={
     Object {
       "backgroundColor": "#59A12E",
-      "color": "#FFFFFF",
       "fill": "#FFFFFF",
       "fontFamily": "colfax-web, sans-serif",
     }
@@ -112,20 +115,23 @@ exports[`Activity should render with the default set of props 1`] = `
       height="31px"
       width="30px" />
   </i>
-  <p
+  <h5
+    className="display-inline-block"
     style={
       Object {
-        "display": "inline-block",
-        "fontFamily": "colfax-web, sans-serif",
-        "fontWeight": "bold",
-        "verticalAlign": "top",
+        "verticalAlign": "super",
       }
     }>
     Dec 25, 2016
-  </p>
-  <div>
+  </h5>
+  <p
+    style={
+      Object {
+        "fontFamily": "colfax-web, sans-serif",
+      }
+    }>
     You did something awesome and I\'ve never been more proud.
-  </div>
+  </p>
   <Link
     onlyActiveOnIndex={false}
     style={

@@ -18,7 +18,6 @@ export default class Activity extends Component {
 
   getStyles = (status: string) => {
     const styles = {
-      color: "#FFFFFF",
       fontFamily: "colfax-web, sans-serif",
       backgroundColor: "#242424",
       fill: "#FFFFFF",
@@ -35,7 +34,6 @@ export default class Activity extends Component {
 
   getIcon = (status: string) => {
     const props = { width: "30px", height: "31px", fill: "#FFFFFF" };
-
     if (status === "failed") return <Error {...props} />;
     if (status === "success") return <Success {...props} />;
     return <Error {...props} />;
@@ -43,15 +41,31 @@ export default class Activity extends Component {
 
   render() {
     return (
-      <div className="card__item soft text-left soft-bottom rounded" style={this.getStyles(this.props.status)}>
+      <div className="card__item soft text-left soft-bottom rounded text-light-primary" style={this.getStyles(this.props.status)}>
         <i className="soft-half-right">{this.getIcon(this.props.status)}</i>
-        <p style={{ fontFamily: "colfax-web, sans-serif", fontWeight: "bold", display: "inline-block", verticalAlign: "top" }}>
-          { moment(this.props.date).format("MMM D, YYYY") }
-        </p>
-        <div>{this.props.message}</div>
-        <Link to={this.props.linkUrl} style={{ color: "#FFFFFF", fontWeight: "bold" }}>
-          {this.props.linkText}<span className="icon-arrow-next soft-half-left" />
-        </Link>
+        {(() => {
+          if (this.props.date) {
+            return (
+              <h5 className="display-inline-block" style={{ verticalAlign: "super" }}>{ moment(this.props.date).format("MMM D, YYYY") }</h5>
+            );
+          }
+          return (
+            <p className="display-inline-block" />
+          );
+        })()}
+        <p style={{ fontFamily: "colfax-web, sans-serif" }}>{this.props.message}</p>
+        {(() => {
+          if (this.props.linkText) {
+            return (
+              <Link to={this.props.linkUrl} style={{ color: "#FFFFFF", fontWeight: "bold" }}>
+                {this.props.linkText}<span className="icon-arrow-next soft-half-left" />
+              </Link>
+            );
+          }
+          return (
+            <p />
+          );
+        })()}
       </div>
     );
   }
