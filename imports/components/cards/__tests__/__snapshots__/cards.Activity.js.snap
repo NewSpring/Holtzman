@@ -1,149 +1,143 @@
 exports[`Activity should render the failed status component 1`] = `
 <div
-  className="card__item soft text-left soft-bottom rounded text-light-primary"
-  style={
-    Object {
-      "backgroundColor": "#BA3841",
-      "fill": "#FFFFFF",
-      "fontFamily": "colfax-web, sans-serif",
-    }
-  }>
-  <i
-    className="soft-half-right">
-    <Error
-      fill="#FFFFFF"
-      height="31px"
-      width="30px" />
-  </i>
-  <h5
-    className="display-inline-block"
+  className="card">
+  <div
+    className="card__item soft text-left soft-bottom rounded text-light-primary"
     style={
       Object {
-        "verticalAlign": "super",
-      }
-    }>
-    Dec 25, 2016
-  </h5>
-  <p
-    style={
-      Object {
+        "backgroundColor": "#BA3841",
+        "fill": "#FFFFFF",
         "fontFamily": "colfax-web, sans-serif",
       }
     }>
-    You did something awesome and I\'ve never been more proud.
-  </p>
-  <Link
-    onlyActiveOnIndex={false}
-    style={
-      Object {
-        "color": "#FFFFFF",
-        "fontWeight": "bold",
+    <i
+      className="soft-half-right">
+      <Error
+        fill="#FFFFFF"
+        height="31px"
+        width="30px" />
+    </i>
+    <h5
+      className="display-inline-block"
+      style={
+        Object {
+          "verticalAlign": "super",
+        }
+      }>
+      Dec 25, 2016
+    </h5>
+    <p>
+      You did something awesome and I\'ve never been more proud.
+    </p>
+    <Link
+      onlyActiveOnIndex={false}
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "fontWeight": "bold",
+        }
       }
-    }
-    to="https://my.newspring.cc/give/now">
-    Click This Link
-    <span
-      className="icon-arrow-next soft-half-left" />
-  </Link>
+      to="https://my.newspring.cc/give/now">
+      Click This Link
+      <span
+        className="icon-arrow-next soft-half-left" />
+    </Link>
+  </div>
 </div>
 `;
 
 exports[`Activity should render the warning status component 1`] = `
 <div
-  className="card__item soft text-left soft-bottom rounded text-light-primary"
-  style={
-    Object {
-      "backgroundColor": "#242424",
-      "fill": "#FFFFFF",
-      "fontFamily": "colfax-web, sans-serif",
-    }
-  }>
-  <i
-    className="soft-half-right">
-    <Error
-      fill="#FFFFFF"
-      height="31px"
-      width="30px" />
-  </i>
-  <h5
-    className="display-inline-block"
+  className="card">
+  <div
+    className="card__item soft text-left soft-bottom rounded text-light-primary"
     style={
       Object {
-        "verticalAlign": "super",
-      }
-    }>
-    Dec 25, 2016
-  </h5>
-  <p
-    style={
-      Object {
+        "backgroundColor": "#242424",
+        "fill": "#FFFFFF",
         "fontFamily": "colfax-web, sans-serif",
       }
     }>
-    You did something awesome and I\'ve never been more proud.
-  </p>
-  <Link
-    onlyActiveOnIndex={false}
-    style={
-      Object {
-        "color": "#FFFFFF",
-        "fontWeight": "bold",
+    <i
+      className="soft-half-right">
+      <Error
+        fill="#FFFFFF"
+        height="31px"
+        width="30px" />
+    </i>
+    <h5
+      className="display-inline-block"
+      style={
+        Object {
+          "verticalAlign": "super",
+        }
+      }>
+      Dec 25, 2016
+    </h5>
+    <p>
+      You did something awesome and I\'ve never been more proud.
+    </p>
+    <Link
+      onlyActiveOnIndex={false}
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "fontWeight": "bold",
+        }
       }
-    }
-    to="https://my.newspring.cc/give/now">
-    Click This Link
-    <span
-      className="icon-arrow-next soft-half-left" />
-  </Link>
+      to="https://my.newspring.cc/give/now">
+      Click This Link
+      <span
+        className="icon-arrow-next soft-half-left" />
+    </Link>
+  </div>
 </div>
 `;
 
 exports[`Activity should render with the default set of props 1`] = `
 <div
-  className="card__item soft text-left soft-bottom rounded text-light-primary"
-  style={
-    Object {
-      "backgroundColor": "#59A12E",
-      "fill": "#FFFFFF",
-      "fontFamily": "colfax-web, sans-serif",
-    }
-  }>
-  <i
-    className="soft-half-right">
-    <Success
-      fill="#FFFFFF"
-      height="31px"
-      width="30px" />
-  </i>
-  <h5
-    className="display-inline-block"
+  className="card">
+  <div
+    className="card__item soft text-left soft-bottom rounded text-light-primary"
     style={
       Object {
-        "verticalAlign": "super",
-      }
-    }>
-    Dec 25, 2016
-  </h5>
-  <p
-    style={
-      Object {
+        "backgroundColor": "#59A12E",
+        "fill": "#FFFFFF",
         "fontFamily": "colfax-web, sans-serif",
       }
     }>
-    You did something awesome and I\'ve never been more proud.
-  </p>
-  <Link
-    onlyActiveOnIndex={false}
-    style={
-      Object {
-        "color": "#FFFFFF",
-        "fontWeight": "bold",
+    <i
+      className="soft-half-right">
+      <Success
+        fill="#FFFFFF"
+        height="31px"
+        width="30px" />
+    </i>
+    <h5
+      className="display-inline-block"
+      style={
+        Object {
+          "verticalAlign": "super",
+        }
+      }>
+      Dec 25, 2016
+    </h5>
+    <p>
+      You did something awesome and I\'ve never been more proud.
+    </p>
+    <Link
+      onlyActiveOnIndex={false}
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "fontWeight": "bold",
+        }
       }
-    }
-    to="https://my.newspring.cc/give/now">
-    Click This Link
-    <span
-      className="icon-arrow-next soft-half-left" />
-  </Link>
+      to="https://my.newspring.cc/give/now">
+      Click This Link
+      <span
+        className="icon-arrow-next soft-half-left" />
+    </Link>
+  </div>
 </div>
 `;
