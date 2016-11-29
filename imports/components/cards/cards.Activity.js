@@ -16,17 +16,6 @@ type IActivity = {
 export default class Activity extends Component {
   props: IActivity;
 
-  getClasses = () => {
-    const classes = [
-      "card__item",
-      "soft",
-      "text-left",
-      "soft-bottom",
-      "rounded",
-    ];
-    return classes.join(" ");
-  };
-
   getStyles = (status: string) => {
     const styles = {
       color: "#FFFFFF",
@@ -54,13 +43,15 @@ export default class Activity extends Component {
 
   render() {
     return (
-      <div className={this.getClasses()} style={this.getStyles(this.props.status)}>
+      <div className="card__item soft text-left soft-bottom rounded" style={this.getStyles(this.props.status)}>
         <i className="soft-half-right">{this.getIcon(this.props.status)}</i>
         <p style={{ fontFamily: "colfax-web, sans-serif", fontWeight: "bold", display: "inline-block", verticalAlign: "top" }}>
           { moment(this.props.date).format("MMM D, YYYY") }
         </p>
         <div>{this.props.message}</div>
-        <Link to={this.props.linkUrl} style={{ color: "#FFFFFF", fontWeight: "bold" }}>{this.props.linkText}<span className="icon-arrow-next soft-half-left" /></Link>
+        <Link to={this.props.linkUrl} style={{ color: "#FFFFFF", fontWeight: "bold" }}>
+          {this.props.linkText}<span className="icon-arrow-next soft-half-left" />
+        </Link>
       </div>
     );
   }
