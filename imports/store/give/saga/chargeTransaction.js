@@ -58,7 +58,6 @@ export default function* chargeTransaction({ state }) {
   if (Object.keys(give.schedules).length) {
     // if there is not a saved account, charge the order
     if (!formattedData.savedAccount) {
-
       if (give.data.payment.type === "cc") {
         // saved accounts don't validate the payment by default
         // so we make 3 blocking requests to validate the card :(

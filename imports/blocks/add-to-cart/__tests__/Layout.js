@@ -43,13 +43,13 @@ afterEach(() => {
   reset();
 });
 
-it("should render with minimal props", () => {
+xit("should render with minimal props", () => {
   const component = shallow(generateComponent());
   expect(shallowToJson(component)).toMatchSnapshot();
 });
 
 // XXX this will work fully when the stuff isn't mocked'
-it("should handle multiple accounts", () => {
+xit("should handle multiple accounts", () => {
   // Mock the subfund lifecycle where it updates the parent component
   // this lets it set the second input on load
   // XXX it would be nice if we could do this without the immediate rerender for SSR
@@ -78,20 +78,20 @@ it("should handle multiple accounts", () => {
 });
 
 describe ("Update", () => {
-  it("should return true if an instance exists", () => {
+  xit("should return true if an instance exists", () => {
     const component = mount(generateComponent({accounts: additionalAccounts}));
     const { instanceExists, update } = component.instance();
     update(0,1,10);
     expect(instanceExists(0)).toBeTruthy();
   });
 
-  it("should return undefined if an instance doesn't exist", () => {
+  xit("should return undefined if an instance doesn't exist", () => {
     const component = mount(generateComponent({accounts: additionalAccounts}));
     const { instanceExists } = component.instance();
     expect(instanceExists(0)).toBe(undefined);
   });
 
-  it("should update state to reflect one fund update", () => {
+  xit("should update state to reflect one fund update", () => {
     const component = mount(generateComponent({accounts: additionalAccounts}));
     const { update } = component.instance();
     update(0, 1, 10);
@@ -105,7 +105,7 @@ describe ("Update", () => {
     expect(mountToJson(component)).toMatchSnapshot();
   });
 
-  it ("should allow for multiple updates on separate instances of SubFund", () => {
+  xit("should allow for multiple updates on separate instances of SubFund", () => {
     const component = mount(generateComponent({accounts: additionalAccounts}));
     const { update } = component.instance();
     update(0, 1, 10);
@@ -121,7 +121,7 @@ describe ("Update", () => {
     expect(mountToJson(component)).toMatchSnapshot();
   });
 
-  it ("should allow change of fund for an instance of SubFund", () => {
+  xit("should allow change of fund for an instance of SubFund", () => {
     const component = mount(generateComponent({accounts: additionalAccounts}));
     const { update } = component.instance();
     update(0, 1, 10);
@@ -138,7 +138,7 @@ describe ("Update", () => {
 });
 
 describe("Remove", () => {
-  it("should remove the first instance", () => {
+  xit("should remove the first instance", () => {
     const component = mount(generateComponent({accounts: additionalAccounts}));
     const { update, remove } = component.instance();
     // seed our instances
@@ -153,7 +153,7 @@ describe("Remove", () => {
     expect(component.state().instances[0]).toEqual({id: 1, accountId: 3, amount: 30});
   });
 
-  it("should remove the second instance", () => {
+  xit("should remove the second instance", () => {
     const component = mount(generateComponent({accounts: additionalAccounts}));
     const { update, remove } = component.instance();
     // seed our instances
@@ -168,7 +168,7 @@ describe("Remove", () => {
     expect(component.state().instances[0]).toEqual({id: 0, accountId: 1, amount: 10});
   });
 
-  it("should remove the middle instance", () => {
+  xit("should remove the middle instance", () => {
     const component = mount(generateComponent({accounts: additionalAccounts}));
     const { update, remove } = component.instance();
     // seed our instances
@@ -189,6 +189,6 @@ describe("Remove", () => {
   });
 
   // XXX not sure how to test this version of the submit function.
-  // it("should click the submit button one time", () => {
+  // xit("should click the submit button one time", () => {
   // });
 });

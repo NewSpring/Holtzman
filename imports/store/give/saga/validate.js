@@ -57,13 +57,16 @@ export default function* validate() {
   if (url) {
     // step 3 (trigger validation)
     const token = url.split("/").pop();
-    const { data: { response } } = yield call(GraphQL.mutate, {
+    const result = yield call(GraphQL.mutate, {
       mutation: VALIDATE_CARD_MUTATON,
       variables: { token },
     });
-    if (response.error) {
-      validationError = response.error;
-      success = false;
+    if (result && result.data) {
+      const { response } = result.data;
+      if (response.error) {
+        validationError = new Error(response.error);
+        success = false;
+      }
     }
   } else {
     success = false;

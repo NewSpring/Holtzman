@@ -44,9 +44,7 @@ describe("successful validation", () => {
   });
 
   it("tries to submit payment details with the data and url", result => {
-    const mockedOrder = cps(() => {}, "TOKEN", null, null);
-    expect(result.CPS.fn.name).toBe("charge");
-    expect(result.CPS.args).toEqual(mockedOrder.CPS.args);
+    expect(result.CALL.args[0].variables).toEqual({ token: "TOKEN" });
     return { };
   });
 
@@ -134,10 +132,8 @@ describe("failure in charge", () => {
   });
 
   it("tries to submit payment details with the data and url", result => {
-    const mockedOrder = cps(() => {}, "TOKEN", null, null);
-    expect(result.CPS.fn.name).toBe("charge");
-    expect(result.CPS.args).toEqual(mockedOrder.CPS.args);
-    return new Error("SAMPLE ERROR");
+    expect(result.CALL.args[0].variables).toEqual({ token: "TOKEN" });
+    return { data: { response: { error: "SAMPLE ERROR" } } };
   });
 
   it("finally returns an object with faling status", ({ success, validationError }) => {

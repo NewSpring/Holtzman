@@ -8,91 +8,60 @@ import { css } from "aphrodite";
 import Forms from "../../../components/forms";
 import Styles from "../../add-schedule/styles-css";
 
-type IRenderAmountInput = {
-  classes: string,
-  state: Object,
-  preFill: Function,
-  format: Function,
-  inputVal: string,
-};
-
-const RenderAmountInput = ({
-  state,
-  classes,
-  format,
-  preFill,
-  inputVal,
-}: IRenderAmountInput) => {
-  if (!state.fund) return null;
-  return (
-    <div className="display-block">
-      <h3 className={`${classes} push-half-bottom push-half-right display-inline-block`}>
-        with
-      </h3>
-      <Forms.Input
-        id={state.id}
-        name={state.fund || "secondary-account"}
-        hideLabel
-        type={Meteor.isCordova ? "text" : "tel"}
-        classes={["soft-bottom", "input--active", "display-inline-block"]}
-        inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
-        placeholder="$0.00"
-        format={format}
-        defaultValue={preFill(state.id)}
-        style={{ maxWidth: "150px" }}
-        value={inputVal}
-      />
-    </div>
-  );
-};
-
 type ILayout = {
-  classes: string,
   accounts: Object,
-  state: Object,
-  preFill: Function,
-  showInputs: Function,
-  format: Function,
-  selectVal: Function,
+  active: boolean,
+  changeAmount: Function,
+  changeFund: Function,
+  fundId: number,
   inputVal: string,
+  preFill: Function,
 }
 
 const Layout = ({
-  classes,
   accounts,
-  state,
-  preFill,
-  showInputs,
-  format,
-  selectVal,
+  active,
+  changeAmount,
+  changeFund,
+  fundId,
   inputVal,
+  preFill,
 }: ILayout) => (
   <div>
-    <div className={`display-inline-block push-half-bottom h3 push-half-right ${classes}`}>
+    <div className={`display-inline-block push-half-bottom h3 push-half-right ${active ? "text-dark-tertiary" : "text-light-tertiary"}`}>
       and give to
     </div>
 
     <Forms.Select
-      items={accounts}
-      name="select-account"
-      id={`${state.id}_select`}
-      hideLabel
       classes={["soft-bottom", "display-inline-block", `${css(Styles.select)}`]}
-      inputClasses={`${classes} outlined--dotted outlined--light h3 hard-top flush-bottom`}
+      inputClasses={`${active ? "text-dark-tertiary" : "text-light-tertiary"} outlined--dotted outlined--light h3 hard-top flush-bottom`}
+      items={accounts}
+      onChange={changeFund}
       placeholder="select fund"
-      onChange={showInputs}
-      includeBlank
+      selected={fundId}
       deselect
-      selected={selectVal}
+      hideLabel
+      includeBlank
     />
 
-    <RenderAmountInput
-      state={state}
-      classes={classes}
-      format={format}
-      preFill={preFill}
-      inputVal={inputVal}
-    />
+    {active && (
+      <div className="display-block">
+        <h3 className={`${active ? "text-dark-tertiary" : "text-light-tertiary"} push-half-bottom push-half-right display-inline-block`}>
+          with
+        </h3>
+        <Forms.Input
+          classes={["soft-bottom", "input--active", "display-inline-block"]}
+          defaultValue={preFill(fundId)}
+          format={changeAmount}
+          hideLabel
+          inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
+          placeholder="$0.00"
+          style={{ maxWidth: "150px" }}
+          type={Meteor.isCordova ? "text" : "tel"}
+          value={inputVal}
+        />
+      </div>
+    )}
   </div>
 );
 

@@ -40,7 +40,7 @@ describe("withRedux", () => {
   *   SubFund relies on give actions to be passed in using withRedux.
   *   This tests to make sure that this is happening on a stub component
   */
-  it ("should include all the give actions", () => {
+  xit("should include all the give actions", () => {
     const Stub = (dispatch) => {
       expect(dispatch).toMatchSnapshot();
       return null;
@@ -53,7 +53,7 @@ describe("withRedux", () => {
   *  if mapStateToProps existed...
   */
   // export const withRedux = connect((state) => ({ foo: state.give }), giveActions);
-  // it("has the correct mapStateToProps", () => {
+  // xit("has the correct mapStateToProps", () => {
   //   // some kind of reset mocks should fix this to be [0][0]
   //   const mapStateToProps = connect.mock.calls[4][0]
   //   // console.log(connect.mock.calls[4][0])
@@ -64,7 +64,7 @@ describe("withRedux", () => {
 describe ("SubFund", () => {
 
   //this renders a non-primary input
-  it("should render with minimal props", () => {
+  xit("should render with minimal props", () => {
     const component = mount(generateComponent());
 
     //must reset the id state. It's based off the datetime
@@ -75,7 +75,7 @@ describe ("SubFund", () => {
     expect(component.find("Primary").length).toEqual(0);
   });
 
-  it ("should have correct default state for primary and secondary", () => {
+  xit("should have correct default state for primary and secondary", () => {
     const secComponent = shallow(generateComponent());
     const primComponent = shallow(generateComponent({
       primary: true,
@@ -90,7 +90,7 @@ describe ("SubFund", () => {
     expect(primComponent.state()).toMatchSnapshot();
   });
 
-  it ("should render primary fund", () => {
+  xit("should render primary fund", () => {
     const component = mount(generateComponent({
       primary: true,
       update: () => {},
@@ -105,7 +105,7 @@ describe ("SubFund", () => {
     expect(component.find("Primary").length).toEqual(1);
   });
 
-  it ("should have dark text on primary fund", () => {
+  xit("should have dark text on primary fund", () => {
     const component = mount(generateComponent({
       primary: true,
       update: () => {},
@@ -148,18 +148,18 @@ describe ("SubFund > getFund", () => {
     getFundFunc = getFund;
   });
 
-  it("should return funds normally with corrent input", () => {
+  xit("should return funds normally with corrent input", () => {
     expect(getFundFunc("test fund 1").testId).toEqual(0);
     expect(getFundFunc("should be und")).toBeUndefined();
   });
 
-  it ("should lookup by exact match. not substring or case-variations", () => {
+  xit("should lookup by exact match. not substring or case-variations", () => {
     expect(getFundFunc("harambe")).toBeUndefined();
     expect(getFundFunc("RIP Harambe fund")).toBeUndefined();
     expect(getFundFunc("RIP harambe fund").testId).toEqual(2);
   });
 
-  it ("handles null args", () => {
+  xit("handles null args", () => {
     expect(getFundFunc()).toBeUndefined();
   });
 });
@@ -194,12 +194,12 @@ describe ("SubFund > saveFund", () => {
     saveFundFunc = saveFund;
   });
 
-  it("should fail early if the passed id is same as current", () => {
+  xit("should fail early if the passed id is same as current", () => {
     saveFundFunc("test-id-reset");
     expect(clearTransaction).not.toBeCalled();
   });
 
-  it ("should fail and reset state if invalid fund passed in", () => {
+  xit("should fail and reset state if invalid fund passed in", () => {
     saveFundFunc("test");
     expect(clearTransaction).toBeCalled();
     expect(component.state().id).toEqual(null);
@@ -207,14 +207,14 @@ describe ("SubFund > saveFund", () => {
     expect(component.state().amount).toEqual(null);
   });
 
-  it ("should set fund state and then fail with valid fund and no amount", () => {
+  xit("should set fund state and then fail with valid fund and no amount", () => {
     saveFundFunc("RIP harambe fund");
     expect(component.state().id).toEqual("RIP harambe fund");
     expect(component.state().fund).toEqual(true);
     expect(update).toHaveBeenCalledTimes(1);
   });
 
-  it ("should set state and call update with valid amount and fund", () => {
+  xit("should set state and call update with valid amount and fund", () => {
     component.setState({amount: "$1.00"});
     saveFundFunc("RIP harambe fund");
     expect(update).toHaveBeenCalledTimes(2);
@@ -258,13 +258,13 @@ describe ("SubFund > saveAmount", () => {
     saveAmountFunc = saveAmount;
   });
 
-  it ("should return $0, and remove the failed transaction", () => {
+  xit("should return $0, and remove the failed transaction", () => {
     expect(saveAmountFunc("0")).toEqual("$0");
     expect(clearTransaction).toHaveBeenCalledTimes(1);
     expect(remove).toHaveBeenCalledTimes(1);
   });
 
-  it ("should set state and call addTransactions, update on success", () => {
+  xit("should set state and call addTransactions, update on success", () => {
     //this would normally be set by saveFund
     component.setState({fund: "RIP harambe fund", id: "RIP harambe fund"});
     expect(saveAmountFunc("1")).toEqual("$1");

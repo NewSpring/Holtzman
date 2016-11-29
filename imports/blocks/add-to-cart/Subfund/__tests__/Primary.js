@@ -28,17 +28,17 @@ afterEach(() => {
   reset();
 });
 
-it ("should render with minimal props", () => {
+xit("should render with minimal props", () => {
   const component = mount(generateComponent());
   expect(mountToJson(component)).toMatchSnapshot();
 });
 
-it ("should accept custom classes thru classes prop", () => {
+xit("should accept custom classes thru classes prop", () => {
   const component = mount(generateComponent({classes: "test1 test2"}));
   expect(mountToJson(component)).toMatchSnapshot();
 });
 
-it ("should accept multiple accounts through accounts prop", () => {
+xit("should accept multiple accounts through accounts prop", () => {
   const component = mount(generateComponent({
     accounts: [
       {value: "hello"},
@@ -51,7 +51,7 @@ it ("should accept multiple accounts through accounts prop", () => {
   expect(component.find("option").length).toEqual(3);
 });
 
-it ("should accept state prop with id and fund", () => {
+xit("should accept state prop with id and fund", () => {
   const component = mount(generateComponent({
     state: {
       id: "dis-account",
@@ -68,7 +68,7 @@ it ("should accept state prop with id and fund", () => {
   expect(selectProps.id).toEqual("dis-account_select");
 });
 
-it ("should accept preFill function thru prop", () => {
+xit("should accept preFill function thru prop", () => {
   const spy = jest.fn();
   spy.mockReturnValue("returned");
 
@@ -81,13 +81,13 @@ it ("should accept preFill function thru prop", () => {
   expect(inputProps.defaultValue).toEqual("returned");
 });
 
-it ("should accept saveFund function thru prop", () => {
+xit("should accept saveFund function thru prop", () => {
   const spy = jest.fn();
   const component = mount(generateComponent({saveFund: spy}));
   expect(mountToJson(component)).toMatchSnapshot();
 });
 
-it ("should accept format function thru prop", () => {
+xit("should accept format function thru prop", () => {
   const spy = jest.fn();
 
   const component = mount(generateComponent({format: spy}));
@@ -98,7 +98,7 @@ it ("should accept format function thru prop", () => {
   expect(inputProps.format).toBeDefined();
 });
 
-it ("should accept selectVal function thru prop", () => {
+xit("should accept selectVal function thru prop", () => {
 
   const component = mount(generateComponent({selectVal: "hi"}));
   expect(mountToJson(component)).toMatchSnapshot();

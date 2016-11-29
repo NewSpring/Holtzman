@@ -19,7 +19,7 @@ export default toCurrency;
   @param fixed: whether or not to enforce decimal places
 
 */
-const monetize = (amount: number | string, fixed?: boolean): string => {
+const monetize = (amount: number | string, fixed?: boolean, decimalLength?: number = 1): string => {
   let value = typeof amount === "number" ? `${amount}` : amount;
 
   if (!value || !value.length) return "$0.00";
@@ -27,7 +27,7 @@ const monetize = (amount: number | string, fixed?: boolean): string => {
   value = value.replace(/[^\d.-]/g, "");
 
   const decimals = value.split(".")[1];
-  if ((decimals && decimals.length >= 1) || fixed) {
+  if ((decimals && decimals.length >= decimalLength) || fixed) {
     value = Number(value).toFixed(2);
     value = String(value);
   }

@@ -27,20 +27,13 @@ const Layout = ({ alive, accounts }) => (
 
         <div className="text-left soft-double-top@lap-and-up hard-left@lap-and-up soft-half-bottom soft@anchored ">
           <div className="soft-double-ends@palm-wide-and-up soft-ends@palm">
-            {(() => {
-              if (!alive) {
-                return <Offline />;
-              }
-
-              if (accounts.loading) {
-                return (
-                  <div className="one-whole text-center soft-ends">
-                    <Spinner styles={{ width: "40px", height: "40px" }} />
-                  </div>
-                );
-              }
-              return <AddToCart accounts={accounts.accounts} />;
-            })()}
+            {!alive && <Offline />}
+            {alive && accounts.loading && (
+              <div className="one-whole text-center soft-ends">
+                <Spinner styles={{ width: "40px", height: "40px" }} />
+              </div>
+            )}
+            {alive && !accounts.loading && <AddToCart accounts={accounts.accounts} />}
           </div>
         </div>
       </div>
@@ -63,19 +56,11 @@ const Layout = ({ alive, accounts }) => (
         </h4>
         <div className="grid">
 
-          {(() => {
-            if (!alive) return null;
-
-            if (accounts.loading) {
-              return (
-                <div className="one-whole text-center soft-ends">
-                  <Spinner styles={{ width: "40px", height: "40px" }} />
-                </div>
-              );
-            }
-
-            return null;
-          })()}
+          {accounts.loading && (
+            <div className="one-whole text-center soft-ends">
+              <Spinner styles={{ width: "40px", height: "40px" }} />
+            </div>
+          )}
 
           {accounts.accounts && accounts.accounts.map((account, i) => (
             <div key={i} className="grid__item one-whole push-half-bottom flush-bottom@handheld hard-bottom">
