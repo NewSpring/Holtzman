@@ -58,7 +58,7 @@ const Activity = ({
       {(() => {
         if (linkText) {
           return (
-            <Link to={linkUrl} style={{ color: "#FFFFFF", fontWeight: "bold" }}>
+            <Link to={linkUrl} className="text-light-primary">
               <h5 className="display-inline-block">{linkText}</h5><span className="icon-arrow-next soft-half-left" />
             </Link>
           );

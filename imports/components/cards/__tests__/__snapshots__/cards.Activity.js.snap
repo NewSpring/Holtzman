@@ -29,13 +29,9 @@ exports[`Activity should render the failed status component 1`] = `
       You did something awesome and I\'ve never been more proud.
     </p>
     <Link
+      className="text-light-primary"
       onlyActiveOnIndex={false}
-      style={
-        Object {
-          "color": "#FFFFFF",
-          "fontWeight": "bold",
-        }
-      }
+      style={Object {}}
       to="https://my.newspring.cc/give/now">
       <h5
         className="display-inline-block">
@@ -79,13 +75,9 @@ exports[`Activity should render the warning status component 1`] = `
       You did something awesome and I\'ve never been more proud.
     </p>
     <Link
+      className="text-light-primary"
       onlyActiveOnIndex={false}
-      style={
-        Object {
-          "color": "#FFFFFF",
-          "fontWeight": "bold",
-        }
-      }
+      style={Object {}}
       to="https://my.newspring.cc/give/now">
       <h5
         className="display-inline-block">
@@ -129,13 +121,9 @@ exports[`Activity should render with the default set of props 1`] = `
       You did something awesome and I\'ve never been more proud.
     </p>
     <Link
+      className="text-light-primary"
       onlyActiveOnIndex={false}
-      style={
-        Object {
-          "color": "#FFFFFF",
-          "fontWeight": "bold",
-        }
-      }
+      style={Object {}}
       to="https://my.newspring.cc/give/now">
       <h5
         className="display-inline-block">
