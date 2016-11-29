@@ -7,7 +7,6 @@ exports[`Activity should render the failed status component 1`] = `
       Object {
         "backgroundColor": "#BA3841",
         "fill": "#FFFFFF",
-        "fontFamily": "colfax-web, sans-serif",
       }
     }>
     <i
@@ -38,7 +37,10 @@ exports[`Activity should render the failed status component 1`] = `
         }
       }
       to="https://my.newspring.cc/give/now">
-      Click This Link
+      <h5
+        className="display-inline-block">
+        Click This Link
+      </h5>
       <span
         className="icon-arrow-next soft-half-left" />
     </Link>
@@ -55,7 +57,6 @@ exports[`Activity should render the warning status component 1`] = `
       Object {
         "backgroundColor": "#242424",
         "fill": "#FFFFFF",
-        "fontFamily": "colfax-web, sans-serif",
       }
     }>
     <i
@@ -86,7 +87,10 @@ exports[`Activity should render the warning status component 1`] = `
         }
       }
       to="https://my.newspring.cc/give/now">
-      Click This Link
+      <h5
+        className="display-inline-block">
+        Click This Link
+      </h5>
       <span
         className="icon-arrow-next soft-half-left" />
     </Link>
@@ -103,7 +107,6 @@ exports[`Activity should render with the default set of props 1`] = `
       Object {
         "backgroundColor": "#59A12E",
         "fill": "#FFFFFF",
-        "fontFamily": "colfax-web, sans-serif",
       }
     }>
     <i
@@ -134,7 +137,10 @@ exports[`Activity should render with the default set of props 1`] = `
         }
       }
       to="https://my.newspring.cc/give/now">
-      Click This Link
+      <h5
+        className="display-inline-block">
+        Click This Link
+      </h5>
       <span
         className="icon-arrow-next soft-half-left" />
     </Link>

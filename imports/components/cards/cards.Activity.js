@@ -6,7 +6,6 @@ import { Error, Success } from "../icons";
 
 const getStyles = (status: string) => {
   const styles = {
-    fontFamily: "colfax-web, sans-serif",
     backgroundColor: "#242424",
     fill: "#FFFFFF",
   };
@@ -60,7 +59,7 @@ const Activity = ({
         if (linkText) {
           return (
             <Link to={linkUrl} style={{ color: "#FFFFFF", fontWeight: "bold" }}>
-              {linkText}<span className="icon-arrow-next soft-half-left" />
+              <h5 className="display-inline-block">{linkText}</h5><span className="icon-arrow-next soft-half-left" />
             </Link>
           );
         }
