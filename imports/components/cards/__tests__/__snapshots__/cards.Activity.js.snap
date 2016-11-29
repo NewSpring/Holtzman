@@ -10,7 +10,12 @@ exports[`Activity should render the failed status component 1`] = `
     }
   }>
   <i
-    className="soft-half-right" />
+    className="soft-half-right">
+    <Error
+      fill="#FFFFFF"
+      height="31px"
+      width="30px" />
+  </i>
   <styled.p
     className="flush-bottom">
     Dec 25, 2016
@@ -18,11 +23,19 @@ exports[`Activity should render the failed status component 1`] = `
   <div>
     You did something awesome and I\'ve never been more proud.
   </div>
-  <div>
+  <Link
+    onlyActiveOnIndex={false}
+    style={
+      Object {
+        "color": "#FFFFFF",
+        "fontWeight": "bold",
+      }
+    }
+    to="https://my.newspring.cc/give/now">
     Click This Link
     <span
       className="icon-arrow-next soft-half-left" />
-  </div>
+  </Link>
 </div>
 `;
 
@@ -51,11 +64,19 @@ exports[`Activity should render the warning status component 1`] = `
   <div>
     You did something awesome and I\'ve never been more proud.
   </div>
-  <div>
+  <Link
+    onlyActiveOnIndex={false}
+    style={
+      Object {
+        "color": "#FFFFFF",
+        "fontWeight": "bold",
+      }
+    }
+    to="https://my.newspring.cc/give/now">
     Click This Link
     <span
       className="icon-arrow-next soft-half-left" />
-  </div>
+  </Link>
 </div>
 `;
 
@@ -84,10 +105,18 @@ exports[`Activity should render with the default set of props 1`] = `
   <div>
     You did something awesome and I\'ve never been more proud.
   </div>
-  <div>
+  <Link
+    onlyActiveOnIndex={false}
+    style={
+      Object {
+        "color": "#FFFFFF",
+        "fontWeight": "bold",
+      }
+    }
+    to="https://my.newspring.cc/give/now">
     Click This Link
     <span
       className="icon-arrow-next soft-half-left" />
-  </div>
+  </Link>
 </div>
 `;

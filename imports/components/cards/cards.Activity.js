@@ -56,26 +56,11 @@ export default class Activity extends Component {
   };
 
   getIcon = (status: string) => {
-    let icon = <Error width="30px" height="31px" fill="#FFFFFF" />;
+    const props = { width: "30px", height: "31px", fill: "#FFFFFF" };
 
-    if (status === "failed") {
-      icon = "";
-    } else if (status === "success") {
-      icon = <Success width="30px" height="31px" fill="#FFFFFF" />;
-    }
-
-    return icon;
-  };
-
-  getLink = (props: Object) => {
-    let link = <Link to={"/give/now"} style={{ color: "#FFFFFF", fontWeight: "bold" }}>Update It Now</Link>;
-    if (props.status === "failed") {
-      link = <Link to={`/give/history/${props.transaction.id}`} style={{ color: "#FFFFFF", fontWeight: "bold" }}>Fix It Now</Link>;
-    } else if (props.status === "success") {
-      link = <Link to={`/give/history/${props.transaction.id}`} style={{ color: "#FFFFFF", fontWeight: "bold" }}>View Transaction</Link>;
-    }
-
-    return link;
+    if (status === "failed") return <Error {...props} />;
+    if (status === "success") return <Success {...props} />;
+    return <Error {...props} />;
   };
 
   render() {
@@ -84,7 +69,7 @@ export default class Activity extends Component {
         <i className="soft-half-right">{this.getIcon(this.props.status)}</i>
         <BoldedDate className="flush-bottom">{ moment(this.props.date).format("MMM D, YYYY") }</BoldedDate>
         <div>{this.props.message}</div>
-        <div>{this.props.linkText}<span className="icon-arrow-next soft-half-left" /></div>
+        <Link to={this.props.linkUrl} style={{ color: "#FFFFFF", fontWeight: "bold" }}>{this.props.linkText}<span className="icon-arrow-next soft-half-left" /></Link>
       </div>
     );
   }
