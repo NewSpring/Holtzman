@@ -16,10 +16,17 @@ exports[`Activity should render the failed status component 1`] = `
       height="31px"
       width="30px" />
   </i>
-  <styled.p
-    className="flush-bottom">
+  <p
+    style={
+      Object {
+        "display": "inline-block",
+        "fontFamily": "colfax-web, sans-serif",
+        "fontWeight": "bold",
+        "verticalAlign": "top",
+      }
+    }>
     Dec 25, 2016
-  </styled.p>
+  </p>
   <div>
     You did something awesome and I\'ve never been more proud.
   </div>
@@ -57,10 +64,17 @@ exports[`Activity should render the warning status component 1`] = `
       height="31px"
       width="30px" />
   </i>
-  <styled.p
-    className="flush-bottom">
+  <p
+    style={
+      Object {
+        "display": "inline-block",
+        "fontFamily": "colfax-web, sans-serif",
+        "fontWeight": "bold",
+        "verticalAlign": "top",
+      }
+    }>
     Dec 25, 2016
-  </styled.p>
+  </p>
   <div>
     You did something awesome and I\'ve never been more proud.
   </div>
@@ -98,10 +112,17 @@ exports[`Activity should render with the default set of props 1`] = `
       height="31px"
       width="30px" />
   </i>
-  <styled.p
-    className="flush-bottom">
+  <p
+    style={
+      Object {
+        "display": "inline-block",
+        "fontFamily": "colfax-web, sans-serif",
+        "fontWeight": "bold",
+        "verticalAlign": "top",
+      }
+    }>
     Dec 25, 2016
-  </styled.p>
+  </p>
   <div>
     You did something awesome and I\'ve never been more proud.
   </div>

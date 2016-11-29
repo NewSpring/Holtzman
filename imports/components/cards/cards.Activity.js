@@ -1,20 +1,9 @@
 // @flow
 
 import { Component } from "react";
-import styled from "styled-components";
 import moment from "moment";
 import { Link } from "react-router";
 import { Error, Success } from "../icons";
-
-const Paragraph = styled.p`
-  font-family: colfax-web, sans-serif;
-`;
-
-const BoldedDate = styled(Paragraph)`
-  font-weight: bold;
-  display: inline-block;
-  vertical-align: top;
-`;
 
 type IActivity = {
   status: string,
@@ -67,7 +56,9 @@ export default class Activity extends Component {
     return (
       <div className={this.getClasses()} style={this.getStyles(this.props.status)}>
         <i className="soft-half-right">{this.getIcon(this.props.status)}</i>
-        <BoldedDate className="flush-bottom">{ moment(this.props.date).format("MMM D, YYYY") }</BoldedDate>
+        <p style={{ fontFamily: "colfax-web, sans-serif", fontWeight: "bold", display: "inline-block", verticalAlign: "top" }}>
+          { moment(this.props.date).format("MMM D, YYYY") }
+        </p>
         <div>{this.props.message}</div>
         <Link to={this.props.linkUrl} style={{ color: "#FFFFFF", fontWeight: "bold" }}>{this.props.linkText}<span className="icon-arrow-next soft-half-left" /></Link>
       </div>
