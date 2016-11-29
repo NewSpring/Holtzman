@@ -44,29 +44,13 @@ const Activity = ({
   <div className="card">
     <div className="card__item soft text-left soft-bottom rounded text-light-primary" style={getStyles(status)}>
       <i className="soft-half-right">{getIcon(status)}</i>
-      {(() => {
-        if (date) {
-          return (
-            <h5 className="display-inline-block" style={{ verticalAlign: "super" }}>{ moment(date).format("MMM D, YYYY") }</h5>
-          );
-        }
-        return (
-          <p className="display-inline-block" />
-        );
-      })()}
+      {date && <h5 className="display-inline-block" style={{ verticalAlign: "super" }}>{ moment(date).format("MMM D, YYYY") }</h5>}
       <p>{message}</p>
-      {(() => {
-        if (linkText) {
-          return (
-            <Link to={linkUrl} className="text-light-primary">
-              <h5 className="display-inline-block">{linkText}</h5><span className="icon-arrow-next soft-half-left" />
-            </Link>
-          );
-        }
-        return (
-          <p />
-        );
-      })()}
+      {linkText && linkUrl &&
+        <Link to={linkUrl} className="text-light-primary">
+          <h5 className="display-inline-block">{linkText}</h5><span className="icon-arrow-next soft-half-left" />
+        </Link>
+      }
     </div>
   </div>
 );
