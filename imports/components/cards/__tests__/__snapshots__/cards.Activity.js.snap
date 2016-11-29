@@ -16,26 +16,10 @@ exports[`Activity should render the failed status component 1`] = `
     Dec 25, 2016
   </styled.p>
   <div>
-    <styled.p>
-      Your contribution to 
-      <styled.strong>
-        General Fun
-      </styled.strong>
-       failed. Unfortunately there were insufficient funds to process it.
-    </styled.p>
+    You did something awesome and I\'ve never been more proud.
   </div>
   <div>
-    <Link
-      onlyActiveOnIndex={false}
-      style={
-        Object {
-          "color": "#FFFFFF",
-          "fontWeight": "bold",
-        }
-      }
-      to="/give/history/1234">
-      Fix It Now
-    </Link>
+    Click This Link
     <span
       className="icon-arrow-next soft-half-left" />
   </div>
@@ -65,26 +49,10 @@ exports[`Activity should render the warning status component 1`] = `
     Dec 25, 2016
   </styled.p>
   <div>
-    <styled.p>
-      Your saved payment 
-      <styled.strong>
-        Credit Card
-      </styled.strong>
-       is expiring soon.
-    </styled.p>
+    You did something awesome and I\'ve never been more proud.
   </div>
   <div>
-    <Link
-      onlyActiveOnIndex={false}
-      style={
-        Object {
-          "color": "#FFFFFF",
-          "fontWeight": "bold",
-        }
-      }
-      to="/give/now">
-      Update It Now
-    </Link>
+    Click This Link
     <span
       className="icon-arrow-next soft-half-left" />
   </div>
@@ -114,30 +82,10 @@ exports[`Activity should render with the default set of props 1`] = `
     Dec 25, 2016
   </styled.p>
   <div>
-    <styled.p>
-      Your scheduled gift of 
-      <styled.strong>
-        $50
-      </styled.strong>
-       to 
-      <styled.strong>
-        General Fun
-      </styled.strong>
-       was successful.
-    </styled.p>
+    You did something awesome and I\'ve never been more proud.
   </div>
   <div>
-    <Link
-      onlyActiveOnIndex={false}
-      style={
-        Object {
-          "color": "#FFFFFF",
-          "fontWeight": "bold",
-        }
-      }
-      to="/give/history/1234">
-      View Transaction
-    </Link>
+    Click This Link
     <span
       className="icon-arrow-next soft-half-left" />
   </div>

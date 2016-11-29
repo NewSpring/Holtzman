@@ -16,13 +16,12 @@ const BoldedDate = styled(Paragraph)`
   vertical-align: top;
 `;
 
-const Strong = styled.strong`
-  font-family: colfax-web, sans-serif;
-`;
-
 type IActivity = {
   status: string,
-  transaction: Object,
+  date: ?string,
+  message: string,
+  linkText: ?string,
+  linkUrl: ?string,
 };
 
 export default class Activity extends Component {
@@ -68,20 +67,6 @@ export default class Activity extends Component {
     return icon;
   };
 
-  /* eslint-disable max-len */
-  getMessage = (props: Object) => {
-    let message = <Paragraph>Your saved payment <Strong>{props.transaction.savedAccount.name}</Strong> is expiring soon.</Paragraph>;
-
-    if (props.status === "failed") {
-      message = <Paragraph>Your contribution to <Strong>{props.transaction.fund.name}</Strong> failed. Unfortunately there were insufficient funds to process it.</Paragraph>;
-    } else if (props.status === "success") {
-      message = <Paragraph>Your scheduled gift of <Strong>{props.transaction.amount}</Strong> to <Strong>{props.transaction.fund.name}</Strong> was successful.</Paragraph>;
-    }
-
-    return message;
-  };
-  /* eslint-enable max-len */
-
   getLink = (props: Object) => {
     let link = <Link to={"/give/now"} style={{ color: "#FFFFFF", fontWeight: "bold" }}>Update It Now</Link>;
     if (props.status === "failed") {
@@ -97,9 +82,9 @@ export default class Activity extends Component {
     return (
       <div className={this.getClasses()} style={this.getStyles(this.props.status)}>
         <i className="soft-half-right">{this.getIcon(this.props.status)}</i>
-        <BoldedDate className="flush-bottom">{ moment(this.props.transaction.date).format("MMM D, YYYY") }</BoldedDate>
-        <div>{this.getMessage(this.props)}</div>
-        <div>{this.getLink(this.props)}<span className="icon-arrow-next soft-half-left" /></div>
+        <BoldedDate className="flush-bottom">{ moment(this.props.date).format("MMM D, YYYY") }</BoldedDate>
+        <div>{this.props.message}</div>
+        <div>{this.props.linkText}<span className="icon-arrow-next soft-half-left" /></div>
       </div>
     );
   }

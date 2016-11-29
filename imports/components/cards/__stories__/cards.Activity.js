@@ -30,29 +30,32 @@ story
     };
     const defaultStatusValue = "success";
     const status = select("Status", statusOptions, defaultStatusValue);
-    const defaultDate = moment().format("L");
-    const defaultAmount = "$50";
-    const defaultFundName = "General Fund";
-    const defaultSavedAccount = "Credit Card";
 
-    const transaction = {
-      id: "1234",
-      date: text("Date", defaultDate),
-      fund: {
-        name: text("Fund Name", defaultFundName),
-      },
-      amount: text("Amount", defaultAmount),
-      savedAccount: {
-        name: text("Saved Account", defaultSavedAccount),
-      },
-    };
+    // date
+    const defaultDate = moment().format("L");
+    const date = text("Date", defaultDate);
+
+    // message
+    const defaultMessage = "You did something really cool. Proud of you!";
+    const message = text("Message", defaultMessage);
+
+    // linkText
+    const defaultLinkText = "Click This Link";
+    const linkText = text("Link Text", defaultLinkText);
+
+    // linkUrl
+    const defaultLinkUrl = "https://my.newspring.cc/give/now";
+    const linkUrl = text("Link URL", defaultLinkUrl);
 
     return (
       <div className={"floating"}>
         <div className={"grid__item"} style={{ maxWidth: "480px" }}>
           <Activity
             status={status}
-            transaction={transaction}
+            date={date}
+            message={message}
+            linkText={linkText}
+            linkUrl={linkUrl}
           />
         </div>
       </div>);

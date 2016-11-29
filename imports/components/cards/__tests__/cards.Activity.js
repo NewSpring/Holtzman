@@ -8,17 +8,10 @@ describe("Activity", () => {
   const generateComponent = (additionalProps = {}) => {
     const defaultProps = {
       status: "success",
-      transaction: {
-        id: "1234",
-        date: moment("2016-12-25"),
-        fund: {
-          name: "General Fun",
-        },
-        amount: "$50",
-        savedAccount: {
-          name: "Credit Card",
-        },
-      },
+      date: moment("2016-12-25"),
+      message: "You did something awesome and I've never been more proud.",
+      linkText: "Click This Link",
+      linkUrl: "https://my.newspring.cc/give/now",
     };
 
     return (
