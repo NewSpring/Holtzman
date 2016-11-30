@@ -73,6 +73,8 @@ story
       },
     ];
 
+    const tickFormat=["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+
     // knobs for changing data
     data[0].amount = number("January", data[0].amount);
     data[1].amount = number("February", data[1].amount);
@@ -88,6 +90,6 @@ story
     data[11].amount = number("December", data[11].amount);
 
     return (
-      <LineGraph data={data} />
+      <LineGraph data={data} tickFormat={tickFormat} />
     );
   }));

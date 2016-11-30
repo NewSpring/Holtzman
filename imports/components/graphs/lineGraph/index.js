@@ -26,16 +26,18 @@ const styles = {
 
 type ILineGraph = {
   data: Object,
+  tickFormat: string[],
 };
 
 const LineGraph = ({
   data,
+  tickFormat,
 }: ILineGraph) => (
   <div className="push soft-half">
     <VictoryChart>
       <VictoryAxis
         style={styles.axis}
-        tickFormat={["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]}
+        tickFormat={tickFormat}
       />
       <VictoryScatter
         data={data}
