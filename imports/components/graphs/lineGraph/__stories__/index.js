@@ -8,13 +8,11 @@ import {
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
 
-// import Provider from "/.storybook/mocks/Provider";
-
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
 import Readme from "./index.md";
-import LineGraph from "../lineGraph/";
+import LineGraph from "../";
 
 const story = storiesOf("Graphs", module)
   .addDecorator(withKnobs)
