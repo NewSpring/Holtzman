@@ -18,7 +18,7 @@ const styles = {
     tickLabels: {
       fontFamily: "colfax-web, sans-serif",
       fontSize: 10,
-      padding: 5,
+      padding: 20,
       fill: "#858585",
     },
   },
