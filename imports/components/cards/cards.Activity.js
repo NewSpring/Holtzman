@@ -43,8 +43,10 @@ const Activity = ({
 }: IActivity) => (
   <div className="card">
     <div className="card__item soft text-left soft-bottom rounded text-light-primary" style={getStyles(status)}>
-      <i className="soft-half-right">{getIcon(status)}</i>
-      {date && <h5 className="display-inline-block" style={{ verticalAlign: "super" }}>{ moment(date).format("MMM D, YYYY") }</h5>}
+      <div className="floating text-left">
+        <i className="soft-half-right">{getIcon(status)}</i>
+        {date && <h5 className="display-inline-block floating__item soft-half-bottom">{ moment(date).format("MMM D, YYYY") }</h5>}
+      </div>
       <p>{message}</p>
       {linkText && linkUrl &&
         <Link to={linkUrl} className="text-light-primary">
