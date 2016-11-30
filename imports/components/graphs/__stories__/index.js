@@ -4,8 +4,6 @@ import { storiesOf } from "@kadira/storybook";
 import {
   withKnobs,
   text,
-  select,
-  boolean,
 } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
@@ -26,11 +24,58 @@ const story = storiesOf("Graphs", module)
 
 story
   .add("Line Graph", withReadme(Readme, () => {
-    // const accounts = [
-      // { name: text("Fund 1", "General Fund"), id: 1 },
-      // { name: text("Fund 2", "Building Fund"), id: 2 }
-    // ]
+    const data = [
+      {
+        month: "January",
+        amount: 100,
+      },
+      {
+        month: "Febuary",
+        amount: 200,
+      },
+      {
+        month: "March",
+        amount: 100,
+      },
+      {
+        month: "April",
+        amount: 0,
+      },
+      {
+        month: "May",
+        amount: 150,
+      },
+      {
+        month: "June",
+        amount: 100,
+      },
+      {
+        month: "July",
+        amount: 200,
+      },
+      {
+        month: "August",
+        amount: 100,
+      },
+      {
+        month: "September",
+        amount: 300,
+      },
+      {
+        month: "October",
+        amount: 100,
+      },
+      {
+        month: "November",
+        amount: 100,
+      },
+      {
+        month: "December",
+        amount: 500,
+      },
+    ];
+
     return (
-      <LineGraph />
+      <LineGraph data={data} />
     );
   }));
