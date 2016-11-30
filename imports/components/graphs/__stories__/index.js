@@ -13,7 +13,7 @@ import backgrounds from "react-storybook-addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
-import Readme from "../README.md";
+import Readme from "./index.md";
 import LineGraph from "../lineGraph/";
 
 const story = storiesOf("Graphs", module)

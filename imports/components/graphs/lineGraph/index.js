@@ -19,6 +19,7 @@ const styles = {
       fontFamily: "colfax-web, sans-serif",
       fontSize: 10,
       padding: 5,
+      fill: "#858585",
     },
   },
 };
