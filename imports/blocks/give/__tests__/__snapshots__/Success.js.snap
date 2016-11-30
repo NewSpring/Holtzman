@@ -43,7 +43,7 @@ exports[`CreateAccountFromGuest renders with props 1`] = `
   </p>
   <button
     className="btn one-whole push-bottom"
-    onClick={undefined}>
+    onClick={[Function]}>
     Create Account
   </button>
 </div>
