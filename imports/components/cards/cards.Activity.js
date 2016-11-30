@@ -4,19 +4,25 @@ import moment from "moment";
 import { Link } from "react-router";
 import { Error, Success } from "../icons";
 
-const getStyles = (status: string) => {
-  const styles = {
-    backgroundColor: "#242424",
-    fill: "#FFFFFF",
-  };
+const getClasses = (status: string) => {
+  const classes = [
+    "card__item",
+    "soft",
+    "text-left",
+    "soft-bottom",
+    "rounded",
+    "text-light-primary",
+  ];
 
+  let backgroundColor = "background--dark-primary";
   if (status === "failed") {
-    styles.backgroundColor = "#BA3841";
+    backgroundColor = "background--alert";
   } else if (status === "success") {
-    styles.backgroundColor = "#59A12E";
+    backgroundColor = "background--primary";
   }
 
-  return styles;
+  classes.push(backgroundColor);
+  return classes.join(" ");
 };
 
 const getIcon = (status: string) => {
@@ -42,7 +48,7 @@ const Activity = ({
   linkUrl,
 }: IActivity) => (
   <div className="card">
-    <div className="card__item soft text-left soft-bottom rounded text-light-primary" style={getStyles(status)}>
+    <div className={getClasses(status)}>
       <div className="floating text-left">
         <i className="soft-half-right">{getIcon(status)}</i>
         {date && <h5 className="display-inline-block floating__item soft-half-bottom">{ moment(date).format("MMM D, YYYY") }</h5>}

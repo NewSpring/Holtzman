@@ -2,13 +2,7 @@ exports[`Activity should render the failed status component 1`] = `
 <div
   className="card">
   <div
-    className="card__item soft text-left soft-bottom rounded text-light-primary"
-    style={
-      Object {
-        "backgroundColor": "#BA3841",
-        "fill": "#FFFFFF",
-      }
-    }>
+    className="card__item soft text-left soft-bottom rounded text-light-primary background--alert">
     <div
       className="floating text-left">
       <i
@@ -46,13 +40,7 @@ exports[`Activity should render the warning status component 1`] = `
 <div
   className="card">
   <div
-    className="card__item soft text-left soft-bottom rounded text-light-primary"
-    style={
-      Object {
-        "backgroundColor": "#242424",
-        "fill": "#FFFFFF",
-      }
-    }>
+    className="card__item soft text-left soft-bottom rounded text-light-primary background--dark-primary">
     <div
       className="floating text-left">
       <i
@@ -90,13 +78,7 @@ exports[`Activity should render with the default set of props 1`] = `
 <div
   className="card">
   <div
-    className="card__item soft text-left soft-bottom rounded text-light-primary"
-    style={
-      Object {
-        "backgroundColor": "#59A12E",
-        "fill": "#FFFFFF",
-      }
-    }>
+    className="card__item soft text-left soft-bottom rounded text-light-primary background--primary">
     <div
       className="floating text-left">
       <i
