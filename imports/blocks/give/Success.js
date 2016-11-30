@@ -57,7 +57,7 @@ const CreateAccountFromGuest = ({ guest, onClick }: ICreateAccountFromGuest) => 
         If you would like to view your giving history,
         make it easier to give, and more, create a NewSpring Account!
       </p>
-      <button className="btn one-whole push-bottom" onClick={onClick()}>
+      <button className="btn one-whole push-bottom" onClick={onClick}>
         Create Account
       </button>
     </div>
