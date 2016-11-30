@@ -124,3 +124,10 @@ blockquote p {
     background-color: map-get($colors, "dark-secondary");
   }
 }
+
+// inputs in modals are too spaced out
+[data-side-modal] {
+  .input {
+    padding-bottom: 40px;
+  }
+}

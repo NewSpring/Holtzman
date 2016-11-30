@@ -87,7 +87,7 @@ const Layout = ({
 
     {children}
 
-    <div className="soft">
+    <div className="soft-sides">
 
       <Forms.Input
         name="streetAddress"

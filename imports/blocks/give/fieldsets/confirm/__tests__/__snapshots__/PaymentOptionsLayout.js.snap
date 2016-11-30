@@ -8,7 +8,7 @@ exports[`test should render with props 1`] = `
     </h4>
   </div>
   <div
-    className="soft">
+    className="soft-sides">
     <div
       id={undefined}
       onClick={[Function]}

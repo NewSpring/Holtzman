@@ -33,7 +33,7 @@ exports[`ContactUs renders 1`] = `
 
 exports[`Err renders 1`] = `
 <div
-  className="soft soft-double-ends push-double-top one-whole text-center">
+  className="soft soft-double-ends push-double-top@anchored one-whole text-center">
   <div
     className="push-double-top">
     <svg

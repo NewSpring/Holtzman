@@ -92,7 +92,7 @@ const Layout = ({
     <Forms.Form
       id="give"
       theme="hard"
-      fieldsetTheme="flush soft-top scrollable soft-double-bottom"
+      fieldsetTheme="flush soft-top@handheld scrollable soft-double-bottom"
       method="POST"
       submit={onSubmit}
     >

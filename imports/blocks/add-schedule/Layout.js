@@ -181,6 +181,7 @@ class Layout extends Component {
               disabled={disableCheckout}
               onClick={onSubmitSchedule}
               text={text || "Schedule Now"}
+              disabledGuest
             />
           </div>
         </Forms.Form>

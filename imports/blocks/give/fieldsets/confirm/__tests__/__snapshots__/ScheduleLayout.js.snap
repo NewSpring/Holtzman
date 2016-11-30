@@ -27,7 +27,7 @@ exports[`ScheduleLayout renders with props 1`] = `
     </span>
   </div>
   <div
-    className="soft">
+    className="soft-sides">
     <div
       className="display-inline-block one-whole">
       <h5

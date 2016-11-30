@@ -59,7 +59,7 @@ const TransactionLayout = ({
       />
     </div>
 
-    <div className="soft">
+    <div className="soft-sides">
       <h5 className="text-dark-secodary text-left">
         <small><em>{personal.campus} Campus</em></small>
       </h5>
