@@ -2,6 +2,11 @@ exports[`Line Graph renders correctly with default props 1`] = `
 <div
   className="push soft-half">
   <VictoryChart
+    animate={
+      Object {
+        "duration": 2000,
+      }
+    }
     containerComponent={
       <VictoryContainer
         desc=""

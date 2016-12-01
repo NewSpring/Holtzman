@@ -6,18 +6,6 @@ import {
   VictoryScatter,
 } from "victory";
 
-// const styles = {
-//   axis: {
-//     axis: { stroke: "transparent", strokeWidth: "0" },
-//     tickLabels: {
-//       fontFamily: "colfax-web, sans-serif",
-//       fontSize: 10,
-//       padding: 20,
-//       fill: "#858585",
-//     },
-//   },
-// };
-
 type ILineGraph = {
   data: Object,
   lineColor: string,
@@ -39,7 +27,7 @@ const LineGraph = ({
   axisStyles,
 }: ILineGraph) => (
   <div className="push soft-half">
-    <VictoryChart>
+    <VictoryChart animate={{ duration: 2000 }}>
       <VictoryAxis
         style={{
           axis: {
