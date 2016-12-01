@@ -28,7 +28,9 @@
   },
   "homepage": "https://github.com/NewSpring/my.newspring.cc",
   "jest": {
-    "scriptPreprocessor": "./.scripts/jestPreprocessor.js",
+    "transform": {
+      ".*": "./.scripts/jestPreprocessor.js"
+    },
     "coverageDirectory": "./.coverage",
     "collectCoverageFrom": [
       "client/**/*.{js,jsx}",

@@ -1,4 +1,157 @@
-exports[`CartContainer > Lifecycle functions accepts query string and calls addTransaction with the right info 1`] = `
+exports[`CartContainer > Class Methods changeFund handles deselecting a fund 1`] = `
+Object {
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": null,
+      "fundId": undefined,
+      "id": 1,
+      "primary": true,
+    },
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": null,
+      "fundId": undefined,
+      "id": 2,
+      "primary": false,
+    },
+  ],
+}
+`;
+
+exports[`CartContainer > Class Methods changeFund handles deselecting a fund with an amount 1`] = `
+Object {
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": 10,
+      "fundId": 2,
+      "id": 1,
+      "primary": true,
+    },
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": null,
+      "fundId": undefined,
+      "id": 2,
+      "primary": false,
+    },
+  ],
+}
+`;
+
+exports[`CartContainer > Class Methods changeFund update the state correctly 1`] = `
+Object {
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": null,
+      "fundId": 2,
+      "id": 1,
+      "primary": true,
+    },
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": null,
+      "fundId": undefined,
+      "id": 2,
+      "primary": false,
+    },
+  ],
+}
+`;
+
+exports[`CartContainer > Lifecycle functions accepts query string prefills the fund 1`] = `
 <CartContainer
   accounts={
     Array [
@@ -9,21 +162,31 @@ exports[`CartContainer > Lifecycle functions accepts query string and calls addT
     ]
   }
   addTransactions={[Function]}
+  clearTransaction={[Function]}
   clearTransactions={[Function]}
-  give="5">
-  <Layout
-    accounts={
+  give="5"
+  query={Object {}}>
+  <Component
+    changeAmount={[Function]}
+    changeFund={[Function]}
+    preFill={[Function]}
+    subfunds={
       Array [
         Object {
-          "label": "test",
-          "value": "1",
+          "accounts": Array [
+            Object {
+              "label": "test",
+              "value": "1",
+            },
+          ],
+          "amount": 10,
+          "fundId": "1",
+          "id": 1,
+          "primary": true,
         },
       ]
     }
-    format={[Function]}
-    preFill={[Function]}
-    save={[Function]}
-    transactions={Object {}}>
+    total={10}>
     <div
       className="push-top@handheld soft-half-top@lap-and-up">
       <Form
@@ -53,11 +216,13 @@ exports[`CartContainer > Lifecycle functions accepts query string and calls addT
                       },
                     ]
                   }
-                  instance={0}
+                  amount={10}
+                  changeAmount={[Function]}
+                  changeFund={[Function]}
+                  fundId="1"
+                  id={1}
                   preFill={[Function]}
-                  primary={true}
-                  remove={[Function]}
-                  update={[Function]}>
+                  primary={true}>
                   <div />
                 </mockConstructor>
                 <h3
@@ -66,7 +231,7 @@ exports[`CartContainer > Lifecycle functions accepts query string and calls addT
                 </h3>
                 <h3
                   className="display-inline-block text-brand push-half-bottom">
-                  $0.00
+                  $10.00
                 </h3>
               </div>
               <div
@@ -81,16 +246,56 @@ exports[`CartContainer > Lifecycle functions accepts query string and calls addT
         </form>
       </Form>
     </div>
-  </Layout>
+  </Component>
 </CartContainer>
+`;
+
+exports[`CartContainer > Lifecycle functions calls clearTransactions 1`] = `
+Object {
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "test",
+          "value": "1",
+        },
+      ],
+      "amount": null,
+      "fundId": "1",
+      "id": 1,
+      "primary": true,
+    },
+  ],
+}
+`;
+
+exports[`CartContainer > Lifecycle functions should clear transactions on success 1`] = `
+Object {
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "test",
+          "value": "1",
+        },
+      ],
+      "amount": null,
+      "fundId": "1",
+      "id": 1,
+      "primary": true,
+    },
+  ],
+}
 `;
 
 exports[`test should not render if no accounts 1`] = `
 <CartContainer
   accounts={Array []}
   addTransactions={[Function]}
+  clearTransaction={[Function]}
   clearTransactions={[Function]}
-  give="5" />
+  give="5"
+  query={Object {}} />
 `;
 
 exports[`test should properly render with multiple accounts 1`] = `
@@ -116,33 +321,63 @@ exports[`test should properly render with multiple accounts 1`] = `
     ]
   }
   addTransactions={[Function]}
+  clearTransaction={[Function]}
   clearTransactions={[Function]}
-  give="5">
-  <Layout
-    accounts={
+  give="5"
+  query={Object {}}>
+  <Component
+    changeAmount={[Function]}
+    changeFund={[Function]}
+    preFill={[Function]}
+    subfunds={
       Array [
         Object {
-          "label": "TEST 1",
-          "value": 1,
+          "accounts": Array [
+            Object {
+              "label": "TEST 1",
+              "value": 1,
+            },
+            Object {
+              "label": "TEST 2",
+              "value": 2,
+            },
+            Object {
+              "label": "TEST 3",
+              "value": 3,
+            },
+            Object {
+              "label": "TEST 4",
+              "value": 4,
+            },
+          ],
+          "amount": null,
+          "fundId": 1,
+          "id": 1,
+          "primary": true,
         },
         Object {
-          "label": "TEST 2",
-          "value": 2,
-        },
-        Object {
-          "label": "TEST 3",
-          "value": 3,
-        },
-        Object {
-          "label": "TEST 4",
-          "value": 4,
+          "accounts": Array [
+            Object {
+              "label": "TEST 2",
+              "value": 2,
+            },
+            Object {
+              "label": "TEST 3",
+              "value": 3,
+            },
+            Object {
+              "label": "TEST 4",
+              "value": 4,
+            },
+          ],
+          "amount": null,
+          "fundId": undefined,
+          "id": 2,
+          "primary": false,
         },
       ]
     }
-    format={[Function]}
-    preFill={[Function]}
-    save={[Function]}
-    transactions={Object {}}>
+    total={0}>
     <div
       className="push-top@handheld soft-half-top@lap-and-up">
       <Form
@@ -184,11 +419,38 @@ exports[`test should properly render with multiple accounts 1`] = `
                       },
                     ]
                   }
-                  instance={0}
+                  amount={null}
+                  changeAmount={[Function]}
+                  changeFund={[Function]}
+                  fundId={1}
+                  id={1}
                   preFill={[Function]}
-                  primary={true}
-                  remove={[Function]}
-                  update={[Function]}>
+                  primary={true}>
+                  <div />
+                </mockConstructor>
+                <mockConstructor
+                  accounts={
+                    Array [
+                      Object {
+                        "label": "TEST 2",
+                        "value": 2,
+                      },
+                      Object {
+                        "label": "TEST 3",
+                        "value": 3,
+                      },
+                      Object {
+                        "label": "TEST 4",
+                        "value": 4,
+                      },
+                    ]
+                  }
+                  amount={null}
+                  changeAmount={[Function]}
+                  changeFund={[Function]}
+                  id={2}
+                  preFill={[Function]}
+                  primary={false}>
                   <div />
                 </mockConstructor>
                 <h3
@@ -203,7 +465,7 @@ exports[`test should properly render with multiple accounts 1`] = `
               <div
                 className="push-top">
                 <mockConstructor
-                  disabled={false}>
+                  disabled={true}>
                   <div />
                 </mockConstructor>
               </div>
@@ -212,22 +474,30 @@ exports[`test should properly render with multiple accounts 1`] = `
         </form>
       </Form>
     </div>
-  </Layout>
+  </Component>
 </CartContainer>
 `;
 
 exports[`test should render with minimal props 1`] = `
-<Layout
-  accounts={
+<Component
+  changeAmount={[Function]}
+  changeFund={[Function]}
+  preFill={[Function]}
+  subfunds={
     Array [
       Object {
-        "label": "test",
-        "value": "1",
+        "accounts": Array [
+          Object {
+            "label": "test",
+            "value": "1",
+          },
+        ],
+        "amount": null,
+        "fundId": "1",
+        "id": 1,
+        "primary": true,
       },
     ]
   }
-  format={[Function]}
-  preFill={[Function]}
-  save={[Function]}
-  transactions={Object {}} />
+  total={0} />
 `;

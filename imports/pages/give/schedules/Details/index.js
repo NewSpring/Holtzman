@@ -153,7 +153,7 @@ const withScheduleTransaction = graphql(SCHEDULE_TRANSACTION_QUERY, {
   }),
 });
 
-const CANCEL_SCHEDULE_QUERY = gql`
+export const CANCEL_SCHEDULE_QUERY = gql`
   mutation CancelSchedule($id: Int!) {
     cancelSchedule(entityId: $id) {
       code

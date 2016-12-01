@@ -228,6 +228,8 @@ class CartContainer extends Component {
       .map(({ amount }) => amount || 0)
       .reduce((x: number, y: number) => x + y, 0);
 
+    const { accounts } = this.props;
+    if (!accounts || !accounts.length) return null;
     return (
       <Layout
         subfunds={this.state.subfunds}
