@@ -31,7 +31,7 @@ const ScheduleOverviewCard = ({
       <div className="floating text-left text-dark-primary">
         <h4 className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(amount) || "$"}</h4>
         {getNegative(amount) && <h4 className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(amount)}</h4>}
-        <h2 className="floating__item flush">{getDollars(amount)}</h2>
+        <h2 className="floating__item flush">{getDollars(amount) || "0"}</h2>
         <h4 className="floating__item flush">.{getCents(amount) || "00"}</h4>
       </div>
       <div className="floating text-left push-bottom">
