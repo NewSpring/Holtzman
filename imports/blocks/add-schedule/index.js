@@ -141,7 +141,7 @@ class CartContainer extends Component {
   format = (val: string, target: Object) => {
     const { id, name } = target;
 
-    const value = monetize(val);
+    const value = monetize(val, false, 2);
 
     this.setState({
       fundId: id,
@@ -155,7 +155,7 @@ class CartContainer extends Component {
   saveData = (val: string, target: Object) => {
     const { id, name } = target;
 
-    const value = monetize(val);
+    const value = monetize(val, false, 2);
     this.setState({
       fundId: id,
       fundLabel: name,

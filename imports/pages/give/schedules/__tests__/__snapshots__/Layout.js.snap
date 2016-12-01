@@ -135,7 +135,7 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -232,7 +232,7 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -408,7 +408,7 @@ exports[`test doesn't render one time completed schedule if no details 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -584,7 +584,7 @@ exports[`test doesn't render one time completed schedule if no details account 1
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -920,7 +920,7 @@ exports[`test renders loading if accounts not ready 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -1090,7 +1090,7 @@ exports[`test renders loading if no accounts 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -1260,7 +1260,7 @@ exports[`test renders loading if no accounts 2`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -1616,7 +1616,7 @@ exports[`test renders one time completed schedules 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -1859,7 +1859,7 @@ exports[`test renders with props 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -2025,7 +2025,7 @@ exports[`test renders without schedule details 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -2191,7 +2191,7 @@ exports[`test renders without schedule details account 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -2357,7 +2357,7 @@ exports[`test works with nickName 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={
@@ -2500,7 +2500,7 @@ exports[`test works without recoverableSchedules 1`] = `
                         "whiteSpace": "nowrap",
                       }
                     }>
-                    $2
+                    $2.00
                     <span
                       className="text-primary icon-arrow-next locked"
                       style={

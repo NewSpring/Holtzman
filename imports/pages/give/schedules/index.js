@@ -61,7 +61,6 @@ class TemplateWithoutData extends Component {
   render() {
     const { schedules, accounts, give } = this.props;
     const { recoverableSchedules } = give;
-
     return (
       <Layout
         accountsReady={!accounts.loading}
