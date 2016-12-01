@@ -129,11 +129,6 @@ const Layout = ({
       disabled={disabled}
       giveAsGuest={giveAsGuest}
     />
-    <ChangePaymentsLayout
-      savedPayments={savedPayments}
-      hideCard={hideCard}
-      changePayments={changePayments}
-    />
   </span>
 );
 
