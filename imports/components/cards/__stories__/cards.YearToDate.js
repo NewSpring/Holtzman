@@ -3,6 +3,7 @@ import { Meteor } from "meteor/meteor";
 import { storiesOf } from "@kadira/storybook";
 import {
   withKnobs,
+  text,
 } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
@@ -87,6 +88,7 @@ story
       lineColor: "#6BAC43",
       lineWidth: "3",
       dotColor: "#6BAC43",
+      dotSize: "5",
       axisStyles: {
         axis: {
           lineColor: "transparent",
@@ -99,11 +101,14 @@ story
         },
       },
     };
+    const amount = text("Amount", "2017");
     return (
       <div className={"floating"}>
         <div className={"grid__item"} style={{ maxWidth: "480px" }}>
           <YearToDate
+            amount={amount}
             graphData={graphData}
+            linkUrl="https://my.newspring.cc"
           />
         </div>
       </div>
