@@ -852,8 +852,8 @@ exports[`Line Graph renders correctly with default props 1`] = `
     padding={
       Object {
         "bottom": 50,
-        "left": 5,
-        "right": 5,
+        "left": 10,
+        "right": 10,
         "top": 5,
       }
     }

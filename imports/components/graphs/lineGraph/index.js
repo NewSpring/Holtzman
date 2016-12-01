@@ -7,11 +7,12 @@ import {
 } from "victory";
 
 type ILineGraph = {
+  axisStyles: Object,
   data: Object[],
+  dotColor: string,
+  dotSize: string,
   lineColor: string,
   lineWidth: string,
-  dotColor: string,
-  axisStyles: Object,
 };
 
 const getTickFormat = (data: Object[]) => {
@@ -20,15 +21,16 @@ const getTickFormat = (data: Object[]) => {
 };
 
 const LineGraph = ({
-  data,
-  lineColor,
-  dotColor,
-  lineWidth,
   axisStyles,
+  data,
+  dotColor,
+  dotSize,
+  lineColor,
+  lineWidth,
 }: ILineGraph) => (
   <div className="">
     <VictoryChart
-      padding={{ top: 5, left: 5, right: 5, bottom: 50 }}
+      padding={{ top: 5, left: 10, right: 10, bottom: 50 }}
       animate={{ duration: 2000 }}
     >
       <VictoryAxis
@@ -50,6 +52,7 @@ const LineGraph = ({
         data={data}
         x="month"
         y="amount"
+        size={dotSize}
         style={{
           data: { fill: `${dotColor}` },
         }}
