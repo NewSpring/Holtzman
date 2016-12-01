@@ -30,7 +30,7 @@ story
           tick: "J",
         },
         {
-          month: "Febuary",
+          month: "February",
           amount: 275,
           tick: "F",
         },
