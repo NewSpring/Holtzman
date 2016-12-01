@@ -848,6 +848,14 @@ exports[`Line Graph renders correctly with default props 1`] = `
           } />,
       }
     }
+    domainPadding={
+      Object {
+        "y": Array [
+          100,
+          100,
+        ],
+      }
+    }
     groupComponent={<g />}
     padding={
       Object {
