@@ -143,25 +143,5 @@ Object {
     },
   ],
   "kind": "Document",
-  "loc": Object {
-    "end": 205,
-    "source": Source {
-      "body": "
-  query PaymentDetails($cache: Boolean) {
-    accounts: savedPayments(cache: $cache) {
-      id: entityId
-      name
-      payment {
-        id
-        accountNumber
-        paymentType
-      }
-    }
-  }
-",
-      "name": "GraphQL",
-    },
-    "start": 3,
-  },
 }
 `;
