@@ -1,7 +1,12 @@
 exports[`Line Graph renders correctly with default props 1`] = `
 <div
-  className="push soft-half">
+  className="">
   <VictoryChart
+    animate={
+      Object {
+        "duration": 2000,
+      }
+    }
     containerComponent={
       <VictoryContainer
         desc=""
@@ -844,6 +849,14 @@ exports[`Line Graph renders correctly with default props 1`] = `
       }
     }
     groupComponent={<g />}
+    padding={
+      Object {
+        "bottom": 50,
+        "left": 5,
+        "right": 5,
+        "top": 5,
+      }
+    }
     standalone={true}
     theme={
       Object {
