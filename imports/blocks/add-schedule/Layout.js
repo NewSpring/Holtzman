@@ -10,19 +10,20 @@ import CheckoutButtons from "../checkout-buttons";
 import Styles from "./styles-css";
 
 type ILayout = {
-    accounts: Object[],
-    existing: Object,
-    format: Function,
-    onSubmitSchedule: Function,
-    ready: boolean,
-    save: Function,
-    saveDate: Function,
-    schedules: Object[],
-    setFrequency: Function,
-    setFund: Function,
-    state: Object,
-    text: string,
-    total: number,
+  accounts: Object[],
+  existing: Object,
+  format: Function,
+  onSubmitSchedule: Function,
+  ready: boolean,
+  save: Function,
+  saveDate: Function,
+  schedules: Object[],
+  setFrequency: Function,
+  setFund: Function,
+  state: Object,
+  text: string,
+  total: number,
+  dataId: string | number,
 };
 
 // this definition of Layout won't render
