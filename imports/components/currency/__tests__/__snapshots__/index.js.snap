@@ -1,0 +1,128 @@
+exports[`Currency correctly returns a negative value. 1`] = `
+<div
+  className="floating text-left text-dark-primary">
+  <h4
+    className="floating__item flush"
+    style={
+      Object {
+        "paddingRight": "5px",
+      }
+    }>
+    $
+  </h4>
+  <h4
+    className="floating__item flush"
+    style={
+      Object {
+        "paddingRight": "3px",
+      }
+    }>
+    -
+  </h4>
+  <h2
+    className="floating__item flush">
+    420
+  </h2>
+  <h4
+    className="floating__item flush">
+    .
+    00
+  </h4>
+</div>
+`;
+
+exports[`Currency correctly returns when no amount is provided. 1`] = `
+<div
+  className="floating text-left text-dark-primary">
+  <h4
+    className="floating__item flush"
+    style={
+      Object {
+        "paddingRight": "5px",
+      }
+    }>
+    $
+  </h4>
+  <h2
+    className="floating__item flush">
+    0
+  </h2>
+  <h4
+    className="floating__item flush">
+    .
+    00
+  </h4>
+</div>
+`;
+
+exports[`Currency correctly returns when no cents are provided. 1`] = `
+<div
+  className="floating text-left text-dark-primary">
+  <h4
+    className="floating__item flush"
+    style={
+      Object {
+        "paddingRight": "5px",
+      }
+    }>
+    $
+  </h4>
+  <h2
+    className="floating__item flush">
+    420
+  </h2>
+  <h4
+    className="floating__item flush">
+    .
+    00
+  </h4>
+</div>
+`;
+
+exports[`Currency correctly returns when no currency symbol is provided. 1`] = `
+<div
+  className="floating text-left text-dark-primary">
+  <h4
+    className="floating__item flush"
+    style={
+      Object {
+        "paddingRight": "5px",
+      }
+    }>
+    $
+  </h4>
+  <h2
+    className="floating__item flush">
+    420
+  </h2>
+  <h4
+    className="floating__item flush">
+    .
+    00
+  </h4>
+</div>
+`;
+
+exports[`Currency properly returns a positive number 1`] = `
+<div
+  className="floating text-left text-dark-primary">
+  <h4
+    className="floating__item flush"
+    style={
+      Object {
+        "paddingRight": "5px",
+      }
+    }>
+    $
+  </h4>
+  <h2
+    className="floating__item flush">
+    420
+  </h2>
+  <h4
+    className="floating__item flush">
+    .
+    00
+  </h4>
+</div>
+`;
