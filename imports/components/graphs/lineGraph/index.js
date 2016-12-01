@@ -7,14 +7,14 @@ import {
 } from "victory";
 
 type ILineGraph = {
-  data: Object,
+  data: Object[],
   lineColor: string,
   lineWidth: string,
   dotColor: string,
   axisStyles: Object,
 };
 
-const getTickFormat = (data: Object) => {
+const getTickFormat = (data: Object[]) => {
   const ticks = data.map((x) => (x.tick));
   return ticks;
 };
@@ -26,8 +26,11 @@ const LineGraph = ({
   lineWidth,
   axisStyles,
 }: ILineGraph) => (
-  <div className="push soft-half">
-    <VictoryChart animate={{ duration: 2000 }}>
+  <div className="">
+    <VictoryChart
+      padding={{ top: 5, left: 5, right: 5, bottom: 50 }}
+      animate={{ duration: 2000 }}
+    >
       <VictoryAxis
         style={{
           axis: {
