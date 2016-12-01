@@ -52,4 +52,46 @@ describe("ScheduleOverview", () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  it("falls back correctly if currency symbol isn't present.", () => {
+    const tree = renderer.create(
+      <ScheduleOverview
+        amount="420.00"
+        fund="Step Up Fund"
+        frequency="Once A Month"
+        started="Jun 15, 2015"
+        onEditClick={jest.fn()}
+      />
+    )
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("falls back correctly if there isn't any cents.", () => {
+    const tree = renderer.create(
+      <ScheduleOverview
+        amount="$420"
+        fund="Step Up Fund"
+        frequency="Once A Month"
+        started="Jun 15, 2015"
+        onEditClick={jest.fn()}
+      />
+    )
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("falls back correctly if there isn't an amount.", () => {
+    const tree = renderer.create(
+      <ScheduleOverview
+        amount=""
+        fund="Step Up Fund"
+        frequency="Once A Month"
+        started="Jun 15, 2015"
+        onEditClick={jest.fn()}
+      />
+    )
+
+    expect(tree).toMatchSnapshot();
+  });
 });
