@@ -29,10 +29,10 @@ const ScheduleOverviewCard = ({
     <div className="card__item soft push-half-ends one-whole">
       <button className="float-right h6 text-dark-tertiary outlined--bottom" style={{ borderColor: "inherit", borderWidth: "2px" }} onClick={onEditClick}>Edit</button>
       <div className="floating text-left text-dark-primary">
-        <h4 className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(amount)}</h4>
+        <h4 className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(amount) || "$"}</h4>
         {getNegative(amount) && <h4 className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(amount)}</h4>}
         <h2 className="floating__item flush">{getDollars(amount)}</h2>
-        <h4 className="floating__item flush">.{getCents(amount)}</h4>
+        <h4 className="floating__item flush">.{getCents(amount) || "00"}</h4>
       </div>
       <div className="floating text-left push-bottom">
         <h5 className="floating__item soft-half-right flush text-dark-primary">{fund}</h5>
