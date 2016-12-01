@@ -86,9 +86,9 @@ story
         },
       ],
       lineColor: "#6BAC43",
-      lineWidth: "3",
+      lineWidth: "2",
       dotColor: "#6BAC43",
-      dotSize: "5",
+      dotSize: "8",
       axisStyles: {
         axis: {
           lineColor: "transparent",
