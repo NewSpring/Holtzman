@@ -71,7 +71,6 @@ const ChangePaymentsLayout = ({
 
 type ILayout = {
   authorized: boolean,
-  changePayments: Function,
   classes: string,
   dataId: string,
   disabled: boolean,
