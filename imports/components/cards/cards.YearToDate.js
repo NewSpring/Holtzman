@@ -36,7 +36,7 @@ const YearToDate = ({
       <div className="floating text-left text-dark-primary">
         <h4 className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(amount)}</h4>
         {getNegative(amount) && <h4 className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(amount)}</h4>}
-        <h2 className="floating__item flush">{getDollars(amount)}</h2>
+        <h1 className="floating__item flush">{getDollars(amount)}</h1>
         <h4 className="floating__item flush">.{getCents(amount)}</h4>
       </div>
       <p className="text-dark-primary italic text-left">Contributed so far this year</p>
