@@ -1257,8 +1257,8 @@ exports[`Line Graph renders correctly with default props 1`] = `
           "tickLabels": Object {
             "fill": "#858585",
             "fontFamily": "colfax-web, sans-serif",
-            "fontSize": 10,
-            "padding": 20,
+            "fontSize": "10",
+            "padding": "5",
           },
         }
       }
@@ -1739,7 +1739,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
       style={
         Object {
           "data": Object {
-            "fill": "#6bac43",
+            "fill": "#6BAC43",
           },
         }
       }
@@ -2211,7 +2211,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
       style={
         Object {
           "data": Object {
-            "stroke": "#6bac43",
+            "stroke": "#6BAC43",
             "strokeWidth": "3",
           },
         }

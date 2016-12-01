@@ -55,6 +55,20 @@ const generateComponent = (additionalProps = {}) => {
       },
     ],
     tickFormat: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    lineColor: "#6BAC43",
+    lineWidth: "3",
+    dotColor: "#6BAC43",
+    axisStyles: {
+      axis: {
+        lineColor: "transparent",
+        lineWidth: "0",
+      },
+      tickLabels: {
+        fontSize: "10",
+        padding: "5",
+        fill: "#858585",
+      },
+    },
   };
 
   return (

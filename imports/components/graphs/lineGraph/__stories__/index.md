@@ -7,6 +7,11 @@ import LineGraph from "../../components/graphs/lineGraph";
 
 <LineGraph
   data={data}
+  tickFormat={tickFormat}
+  lineColor={lineColor}
+  lineWidth={lineWidth}
+  dotColor={dotColor}
+  axisStyles={axisStyles}
 />
 ```
 
@@ -26,6 +31,30 @@ data = [
   }
   ...
 ]
+```
+* **tickFormat** - an object that contains the format of the axis markers. For example:
+
+```js
+const tickFormat=["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+```
+
+* **lineColor** - the color of the line in the graph.
+* **lineWidth** - the width of the line in the graph.
+* **dotColor** - the color of the dots on the graph.
+* **axisStyles** - an object containing styles for the axis. An example:
+
+```js
+const axisStyles = {
+  axis: {
+    lineColor: "transparent",
+    lineWidth: "0",
+  },
+  tickLabels: {
+    fontSize: "10",
+    padding: "5",
+    fill: "#858585",
+  },
+};
 ```
 
 ### Purpose

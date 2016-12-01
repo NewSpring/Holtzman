@@ -4,6 +4,7 @@ import { storiesOf } from "@kadira/storybook";
 import {
   withKnobs,
   number,
+  text,
 } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
@@ -89,7 +90,34 @@ story
     data[10].amount = number("November", data[10].amount);
     data[11].amount = number("December", data[11].amount);
 
+    const lineColor = text("Line Color", "#6BAC43");
+    const lineWidth = text("Line Width", "3");
+    const dotColor = text("Dot Color", "#6BAC43");
+    const axisStyles = {
+      axis: {
+        lineColor: "transparent",
+        lineWidth: "0",
+      },
+      tickLabels: {
+        fontSize: "10",
+        padding: "5",
+        fill: "#858585",
+      },
+    };
+    axisStyles.axis.lineColor = text("Axis Line Color", axisStyles.axis.lineColor);
+    axisStyles.axis.lineWidth = text("Axis Line Width", axisStyles.axis.lineWidth);
+    axisStyles.tickLabels.fontSize = number("Axis Font Size", axisStyles.tickLabels.fontSize);
+    axisStyles.tickLabels.padding = text("Axis Padding", axisStyles.tickLabels.padding);
+    axisStyles.tickLabels.fill = text("Axis Text Color", axisStyles.tickLabels.fill);
+
     return (
-      <LineGraph data={data} tickFormat={tickFormat} />
+      <LineGraph
+        data={data}
+        tickFormat={tickFormat}
+        lineColor={lineColor}
+        lineWidth={lineWidth}
+        dotColor={dotColor}
+        axisStyles={axisStyles}
+      />
     );
   }));
