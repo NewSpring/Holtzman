@@ -1696,7 +1696,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
           },
           Object {
             "amount": 20,
-            "month": "Febuary",
+            "month": "February",
             "tick": "F",
           },
           Object {
@@ -1760,6 +1760,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
       }
       samples={50}
       scale="linear"
+      size="5"
       standalone={true}
       style={
         Object {
@@ -2165,7 +2166,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
           },
           Object {
             "amount": 20,
-            "month": "Febuary",
+            "month": "February",
             "tick": "F",
           },
           Object {
