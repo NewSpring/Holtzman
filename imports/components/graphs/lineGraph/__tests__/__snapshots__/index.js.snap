@@ -1679,50 +1679,62 @@ exports[`Line Graph renders correctly with default props 1`] = `
           Object {
             "amount": 10,
             "month": "January",
+            "tick": "J",
           },
           Object {
             "amount": 20,
             "month": "Febuary",
+            "tick": "F",
           },
           Object {
             "amount": 30,
             "month": "March",
+            "tick": "M",
           },
           Object {
             "amount": 40,
             "month": "April",
+            "tick": "A",
           },
           Object {
             "amount": 50,
             "month": "May",
+            "tick": "M",
           },
           Object {
             "amount": 60,
             "month": "June",
+            "tick": "J",
           },
           Object {
             "amount": 70,
             "month": "July",
+            "tick": "J",
           },
           Object {
             "amount": 80,
             "month": "August",
+            "tick": "A",
           },
           Object {
             "amount": 90,
             "month": "September",
+            "tick": "S",
           },
           Object {
             "amount": 100,
             "month": "October",
+            "tick": "O",
           },
           Object {
             "amount": 110,
             "month": "November",
+            "tick": "N",
           },
           Object {
             "amount": 120,
             "month": "December",
+            "tick": "D",
           },
         ]
       }
@@ -2136,50 +2148,62 @@ exports[`Line Graph renders correctly with default props 1`] = `
           Object {
             "amount": 10,
             "month": "January",
+            "tick": "J",
           },
           Object {
             "amount": 20,
             "month": "Febuary",
+            "tick": "F",
           },
           Object {
             "amount": 30,
             "month": "March",
+            "tick": "M",
           },
           Object {
             "amount": 40,
             "month": "April",
+            "tick": "A",
           },
           Object {
             "amount": 50,
             "month": "May",
+            "tick": "M",
           },
           Object {
             "amount": 60,
             "month": "June",
+            "tick": "J",
           },
           Object {
             "amount": 70,
             "month": "July",
+            "tick": "J",
           },
           Object {
             "amount": 80,
             "month": "August",
+            "tick": "A",
           },
           Object {
             "amount": 90,
             "month": "September",
+            "tick": "S",
           },
           Object {
             "amount": 100,
             "month": "October",
+            "tick": "O",
           },
           Object {
             "amount": 110,
             "month": "November",
+            "tick": "N",
           },
           Object {
             "amount": 120,
             "month": "December",
+            "tick": "D",
           },
         ]
       }

@@ -27,54 +27,64 @@ story
       {
         month: "January",
         amount: 100,
+        tick: "J",
       },
       {
         month: "Febuary",
         amount: 200,
+        tick: "F",
       },
       {
         month: "March",
         amount: 100,
+        tick: "M",
       },
       {
         month: "April",
         amount: 0,
+        tick: "A",
       },
       {
         month: "May",
         amount: 150,
+        tick: "M",
       },
       {
         month: "June",
         amount: 100,
+        tick: "J",
       },
       {
         month: "July",
         amount: 200,
+        tick: "J",
       },
       {
         month: "August",
         amount: 100,
+        tick: "A",
       },
       {
         month: "September",
         amount: 300,
+        tick: "S",
       },
       {
         month: "October",
         amount: 100,
+        tick: "O",
       },
       {
         month: "November",
         amount: 100,
+        tick: "N",
       },
       {
         month: "December",
         amount: 500,
+        tick: "D",
       },
     ];
-
-    const tickFormat=["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
 
     // knobs for changing data
     data[0].amount = number("January", data[0].amount);
@@ -113,7 +123,6 @@ story
     return (
       <LineGraph
         data={data}
-        tickFormat={tickFormat}
         lineColor={lineColor}
         lineWidth={lineWidth}
         dotColor={dotColor}

@@ -8,53 +8,64 @@ const generateComponent = (additionalProps = {}) => {
       {
         month: "January",
         amount: 10,
+        tick: "J",
       },
       {
         month: "Febuary",
         amount: 20,
+        tick: "F",
       },
       {
         month: "March",
         amount: 30,
+        tick: "M",
       },
       {
         month: "April",
         amount: 40,
+        tick: "A",
       },
       {
         month: "May",
         amount: 50,
+        tick: "M",
       },
       {
         month: "June",
         amount: 60,
+        tick: "J",
       },
       {
         month: "July",
         amount: 70,
+        tick: "J",
       },
       {
         month: "August",
         amount: 80,
+        tick: "A",
       },
       {
         month: "September",
         amount: 90,
+        tick: "S",
       },
       {
         month: "October",
         amount: 100,
+        tick: "O",
       },
       {
         month: "November",
         amount: 110,
+        tick: "N",
       },
       {
         month: "December",
         amount: 120,
+        tick: "D",
       },
     ],
-    tickFormat: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
     lineColor: "#6BAC43",
     lineWidth: "3",
     dotColor: "#6BAC43",

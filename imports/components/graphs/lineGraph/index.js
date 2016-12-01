@@ -20,16 +20,19 @@ import {
 
 type ILineGraph = {
   data: Object,
-  tickFormat: string[],
   lineColor: string,
   lineWidth: string,
   dotColor: string,
   axisStyles: Object,
 };
 
+const getTickFormat = (data: Object) => {
+  const ticks = data.map((x) => (x.tick));
+  return ticks;
+};
+
 const LineGraph = ({
   data,
-  tickFormat,
   lineColor,
   dotColor,
   lineWidth,
@@ -50,7 +53,7 @@ const LineGraph = ({
             fill: `${axisStyles.tickLabels.fill}`,
           },
         }}
-        tickFormat={tickFormat}
+        tickFormat={getTickFormat(data)}
       />
       <VictoryScatter
         data={data}

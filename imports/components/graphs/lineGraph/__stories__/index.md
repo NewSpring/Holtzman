@@ -24,18 +24,15 @@ data = [
   {
     month: "January",
     amount: 100,
+    tick: "J",
   },
   {
     month: "February",
     amount: 200,
+    tick: "F",
   }
   ...
 ]
-```
-* **tickFormat** - an object that contains the format of the axis markers. For example:
-
-```js
-const tickFormat=["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
 ```
 
 * **lineColor** - the color of the line in the graph.
