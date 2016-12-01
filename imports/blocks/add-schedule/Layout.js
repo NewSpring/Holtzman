@@ -62,6 +62,7 @@ class Layout extends Component {
       state,
       text,
       total,
+      dataId,
     } = this.props;
 
 /* end flip flop comment section */
@@ -181,6 +182,7 @@ class Layout extends Component {
               disabled={disableCheckout}
               onClick={onSubmitSchedule}
               text={text || "Schedule Now"}
+              dataId={dataId}
               disabledGuest
             />
           </div>

@@ -50,6 +50,7 @@ class TemplateWithoutData extends Component {
       onFinished: () => {
         dispatch(giveActions.deleteSchedule(id));
 
+        // XXX update to use graphql
         // eslint-disable-next-line
         Meteor.call("give/schedule/cancel", { id }, () => { });
       },
