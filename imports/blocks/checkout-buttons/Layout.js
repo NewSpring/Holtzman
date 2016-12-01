@@ -90,7 +90,6 @@ type ILayout = {
 
 const Layout = ({
   authorized,
-  changePayments,
   classes,
   dataId,
   disabled,
