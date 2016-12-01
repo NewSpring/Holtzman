@@ -59,6 +59,7 @@ describe("authMiddleware", () => {
       connection: { id: "4" }
     });
     Accounts._getLoginToken = jest.fn(() => "new token");
+    fetch.Headers = Headers;
     delete Accounts._storedLoginToken;
     const mockRequest = {
       options: {
@@ -75,6 +76,7 @@ describe("authMiddleware", () => {
     expect(Accounts._getLoginToken).toBeCalledWith("4");
     expect(DDP._CurrentInvocation.get).toHaveBeenCalledTimes(1);
     expect(mockNext).toHaveBeenCalledTimes(1);
+    delete fetch.Headers;
   });
 
   it("works if no headers attribute yet", () => {
