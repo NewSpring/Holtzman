@@ -40,6 +40,7 @@
     "coveragePathIgnorePatterns": [
       "__stories__/",
       "<rootDir>/imports/methods/",
+      "<rootDir>/server/deprecated/",
       "<rootDir>/imports/database/",
       "<rootDir>/imports/util/xml.js"
     ],
