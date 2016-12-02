@@ -18,9 +18,21 @@ const getLinkClasses = (isActive: Boolean) => {
   return classes.join(" ");
 };
 
+const getLinks = (subNav: Object[]) => {
+  const links = subNav.map((x) => (
+    <Link
+      to={x.linkUrl}
+      className={getLinkClasses(x.isActive)}
+    >
+      <h6>{x.title}</h6>
+    </Link>
+  ));
+  return links;
+};
+
 type IDashboard = {
   title: string,
-  subNav: Object,
+  subNav: Object[],
   children?: React$Element<any>,
 };
 
@@ -32,24 +44,7 @@ const Dashboard = ({
   <div>
     <h2 className="soft-bottom">{title}</h2>
     <div className="floating text-left">
-      <Link
-        to={subNav.item1.linkUrl}
-        className={getLinkClasses(subNav.item1.isActive)}
-      >
-        <h6>{subNav.item1.title}</h6>
-      </Link>
-      <Link
-        to={subNav.item2.linkUrl}
-        className={getLinkClasses(subNav.item2.isActive)}
-      >
-        <h6>{subNav.item2.title}</h6>
-      </Link>
-      <Link
-        to={subNav.item3.linkUrl}
-        className={getLinkClasses(subNav.item3.isActive)}
-      >
-        <h6>{subNav.item3.title}</h6>
-      </Link>
+      {getLinks(subNav)}
     </div>
     <div className="background--light-secondary" style={{ borderTop: "1px solid #dddddd" }}>
       <div className="soft push">

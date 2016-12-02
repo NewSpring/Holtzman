@@ -24,30 +24,31 @@ const story = storiesOf("Dashboard", module)
 story
   .add("Dashboard", withReadme(Readme, () => {
     const title = text("Title", "Your Giving");
-    const subNav = {
-      item1: {
+
+    const subNav = [
+      {
         linkUrl: "https://my.newspring.cc/give",
         onClick: () => {},
         title: "Home",
         isActive: true,
       },
-      item2: {
+      {
         linkUrl: "https://my.newspring.cc/give/now",
         onClick: () => {},
         title: "Give Now",
         isActive: false,
       },
-      item3: {
+      {
         linkUrl: "https://my.newspring.cc/give/history",
         onClick: () => {},
         title: "History",
         isActive: false,
       },
-    };
+    ];
 
-    subNav.item1.title = text("Menu Item 1", subNav.item1.title);
-    subNav.item2.title = text("Menu Item 2", subNav.item2.title);
-    subNav.item3.title = text("Menu Item 3", subNav.item3.title);
+    subNav[0].title = text("Menu Item 1", subNav[0].title);
+    subNav[1].title = text("Menu Item 2", subNav[1].title);
+    subNav[2].title = text("Menu Item 3", subNav[2].title);
 
     const activeOptions = {
       item1: "Menu Item 1",
@@ -56,9 +57,9 @@ story
     }
     const defaultActiveValue = "item1";
     const active = select("Active", activeOptions, defaultActiveValue);
-    subNav.item1.isActive = active === "item1" ? true : false;
-    subNav.item2.isActive = active === "item2" ? true : false;
-    subNav.item3.isActive = active === "item3" ? true : false;
+    subNav[0].isActive = active === "item1" ? true : false;
+    subNav[1].isActive = active === "item2" ? true : false;
+    subNav[2].isActive = active === "item3" ? true : false;
 
     return (
       <Dashboard
