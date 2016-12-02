@@ -19,8 +19,9 @@ const getLinkClasses = (isActive: Boolean) => {
 };
 
 const getLinks = (subNav: Object[]) => {
-  const links = subNav.map((x) => (
+  const links = subNav.map((x, index) => (
     <Link
+      key={index}
       to={x.linkUrl}
       className={getLinkClasses(x.isActive)}
     >

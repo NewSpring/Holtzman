@@ -1,0 +1,104 @@
+exports[`Dashboard should render with the children 1`] = `
+<div>
+  <h2
+    className="soft-bottom">
+    Your Giving
+  </h2>
+  <div
+    className="floating text-left">
+    <Link
+      className="floating__item soft-half-sides push-right text-center outlined--bottom"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="https://my.newspring.cc/give">
+      <h6>
+        Home
+      </h6>
+    </Link>
+    <Link
+      className="floating__item soft-half-sides push-right text-center text-dark-primary"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="https://my.newspring.cc/give/now">
+      <h6>
+        Give Now
+      </h6>
+    </Link>
+    <Link
+      className="floating__item soft-half-sides push-right text-center text-dark-primary"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="https://my.newspring.cc/give/history">
+      <h6>
+        History
+      </h6>
+    </Link>
+  </div>
+  <div
+    className="background--light-secondary"
+    style={
+      Object {
+        "borderTop": "1px solid #dddddd",
+      }
+    }>
+    <div
+      className="soft push">
+      <Activity
+        date="2016-12-25"
+        linkText="You KNOW You Want To Click This"
+        linkUrl="https://my.newspring.cc"
+        message="Yay! This is so great for you!"
+        status="success" />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dashboard should render with the default set of props 1`] = `
+<div>
+  <h2
+    className="soft-bottom">
+    Your Giving
+  </h2>
+  <div
+    className="floating text-left">
+    <Link
+      className="floating__item soft-half-sides push-right text-center outlined--bottom"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="https://my.newspring.cc/give">
+      <h6>
+        Home
+      </h6>
+    </Link>
+    <Link
+      className="floating__item soft-half-sides push-right text-center text-dark-primary"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="https://my.newspring.cc/give/now">
+      <h6>
+        Give Now
+      </h6>
+    </Link>
+    <Link
+      className="floating__item soft-half-sides push-right text-center text-dark-primary"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="https://my.newspring.cc/give/history">
+      <h6>
+        History
+      </h6>
+    </Link>
+  </div>
+  <div
+    className="background--light-secondary"
+    style={
+      Object {
+        "borderTop": "1px solid #dddddd",
+      }
+    }>
+    <div
+      className="soft push" />
+  </div>
+</div>
+`;
