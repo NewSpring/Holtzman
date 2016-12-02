@@ -174,7 +174,7 @@ export class CheckoutButton extends Component {
     this.props.savedPayments.refetch()
       .then(({ data }) => {
         if (data.savedPayments && data.savedPayments.length) {
-          const details = sortBy(data.savedPayments, "date")[data.savedPayments.length - 1]
+          const details = sortBy(data.savedPayments, "date")[data.savedPayments.length - 1];
           this.props.dispatch(giveActions.setAccount(details));
         }
         this.props.dispatch(modal.render(Give));
