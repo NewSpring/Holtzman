@@ -30,7 +30,7 @@ story
         tick: "J",
       },
       {
-        month: "Febuary",
+        month: "February",
         amount: 200,
         tick: "F",
       },
@@ -103,6 +103,7 @@ story
     const lineColor = text("Line Color", "#6BAC43");
     const lineWidth = text("Line Width", "3");
     const dotColor = text("Dot Color", "#6BAC43");
+    const dotSize = text("Dot Size", "5");
     const axisStyles = {
       axis: {
         lineColor: "transparent",
@@ -126,6 +127,7 @@ story
         lineColor={lineColor}
         lineWidth={lineWidth}
         dotColor={dotColor}
+        dotSize={dotSize}
         axisStyles={axisStyles}
       />
     );

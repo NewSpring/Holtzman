@@ -1,6 +1,6 @@
 exports[`Line Graph renders correctly with default props 1`] = `
 <div
-  className="push soft-half">
+  className="">
   <VictoryChart
     animate={
       Object {
@@ -848,7 +848,23 @@ exports[`Line Graph renders correctly with default props 1`] = `
           } />,
       }
     }
+    domainPadding={
+      Object {
+        "y": Array [
+          100,
+          100,
+        ],
+      }
+    }
     groupComponent={<g />}
+    padding={
+      Object {
+        "bottom": 50,
+        "left": 10,
+        "right": 10,
+        "top": 5,
+      }
+    }
     standalone={true}
     theme={
       Object {
@@ -1688,7 +1704,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
           },
           Object {
             "amount": 20,
-            "month": "Febuary",
+            "month": "February",
             "tick": "F",
           },
           Object {
@@ -1752,6 +1768,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
       }
       samples={50}
       scale="linear"
+      size="5"
       standalone={true}
       style={
         Object {
@@ -2157,7 +2174,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
           },
           Object {
             "amount": 20,
-            "month": "Febuary",
+            "month": "February",
             "tick": "F",
           },
           Object {

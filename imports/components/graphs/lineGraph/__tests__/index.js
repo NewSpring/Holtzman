@@ -11,7 +11,7 @@ const generateComponent = (additionalProps = {}) => {
         tick: "J",
       },
       {
-        month: "Febuary",
+        month: "February",
         amount: 20,
         tick: "F",
       },
@@ -69,6 +69,7 @@ const generateComponent = (additionalProps = {}) => {
     lineColor: "#6BAC43",
     lineWidth: "3",
     dotColor: "#6BAC43",
+    dotSize: "5",
     axisStyles: {
       axis: {
         lineColor: "transparent",
