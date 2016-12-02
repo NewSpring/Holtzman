@@ -126,6 +126,7 @@ describe("successful charge saved payment and schedules", () => {
 
 });
 
+window.ga = jest.fn();
 describe("successful charge using a saved payment", () => {
   const it = sagaHelper(chargeTransaction({ state: "submit" }));
   const initalState = {
@@ -193,10 +194,14 @@ describe("successful charge using a saved payment", () => {
   });
 
   it("puts a success state", result => {
+    ga.mockClear();
     expect(result).toEqual(put(actions.setState("success")));
   });
 
   it("ends after a normal charge", result => {
+    expect(window.ga.mock.calls).toMatchSnapshot();
+    expect(window.ga).toHaveBeenCalledTimes(2)
+    delete window.ga;
     expect(result).toBeUndefined();
   });
 

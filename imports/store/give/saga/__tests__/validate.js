@@ -138,6 +138,6 @@ describe("failure in charge", () => {
 
   it("finally returns an object with faling status", ({ success, validationError }) => {
     expect(success).toBe(false);
-    expect(validationError.message).toBe("SAMPLE ERROR");
+    expect(validationError).toBe("SAMPLE ERROR");
   });
 });

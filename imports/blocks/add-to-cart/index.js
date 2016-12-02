@@ -45,6 +45,10 @@ class CartContainer extends Component {
   props: ICartContainer;
   state: ICartContainerState;
 
+  static defaultProps = {
+    accounts: [],
+  }
+
   state = { subfunds: [] }
 
   componentWillMount() {

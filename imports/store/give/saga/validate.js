@@ -64,7 +64,7 @@ export default function* validate() {
     if (result && result.data) {
       const { response } = result.data;
       if (response.error) {
-        validationError = new Error(response.error);
+        validationError = response.error;
         success = false;
       }
     }

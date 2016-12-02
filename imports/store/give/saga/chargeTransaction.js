@@ -108,6 +108,28 @@ export default function* chargeTransaction({ state }) {
     // remove loading state
     yield put(actions.setState("success"));
 
+    if (typeof ga !== "undefined") {
+      const txns = {
+        id: `${give.url.split("/").pop()}`,
+        affiliation: "NewSpring Church",
+        revenue: `${give.total}`,
+      };
+      ga("ecommerce:addTransaction", txns);
+
+      if (Object.keys(give.transactions)) {
+        // eslint-disable-next-line
+        for (const item in give.transactions) {
+          const itemData = {
+            id: item,
+            name: give.transactions[item].label,
+            price: `${give.transactions[item].value}`,
+          };
+          ga("ecommerce:addItem", itemData);
+        }
+      }
+      ga("ecommerce:send");
+    }
+
     // if we activated an inactive schedule, remove it
     if (give.scheduleToRecover && give.recoverableSchedules[give.scheduleToRecover]) {
       yield put(actions.deleteSchedule(give.scheduleToRecover));
