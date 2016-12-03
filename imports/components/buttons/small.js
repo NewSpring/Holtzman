@@ -1,15 +1,5 @@
-/*
-* small button
-*
-* <SmallButton
-*   linkUrl={?string}
-*   onClick={?Function}
-*   disabled={Boolean}
-*   text={string}
-*   className={?string}
-*   style={?Object}
-* />
-*/
+
+// @flow
 
 import { Link } from "react-router";
 
@@ -42,7 +32,16 @@ const disabledStyles = `
 const SmallButtonWrapper = styled.button`${defaultStyles}`;
 const StyledLink = styled(Link)`${defaultStyles}`;
 
-const SmallButton = (props) => {
+type ISmallButton = {
+  linkUrl?: String,
+  onClick?: Function,
+  disabled?: Boolean,
+  text: String,
+  className?: String,
+  style?: Object,
+};
+
+const SmallButton = (props: ISmallButton) => {
   let ButtonWrapper;
 
   // if there's a url, we need a react-router Link component
