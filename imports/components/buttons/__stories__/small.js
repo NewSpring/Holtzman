@@ -21,19 +21,43 @@ import defaultColors from "/.storybook/defaults";
 import SmallButton from "../small";
 import Readme from "./small-button.md";
 
-const story = storiesOf("Buttons", module)
+const story = storiesOf("SmallButton", module)
   .addDecorator(centered)
   .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
   ;
 
 story
-  .add("Small", withReadme(
+  .add("Basic Small Button", withReadme(
     Readme,
     () => (
-      <div>
-        <SmallButton className="btn" disabled>
-
-        </SmallButton>
-      </div>
+      <SmallButton text="See All"/>
+    )
+  ))
+  .add("With Link", withReadme(
+    Readme,
+    () => (
+      <SmallButton linkUrl="http://newspring.cc" text="See All"/>
+    )
+  ))
+  .add("Disabled (no link)", withReadme(
+    Readme,
+    () => (
+      <SmallButton disabled text="See All"/>
+    )
+  ))
+  .add("Disabled (with link)", withReadme(
+    Readme,
+    () => (
+      <SmallButton disabled linkUrl="http://newspring.cc" text="See All"/>
+    )
+  ))
+  .add("With onClick Action", withReadme(
+    Readme,
+    () => (
+      <SmallButton
+        linkUrl="http://newspring.cc"
+        text="See All"
+        onClick={() => alert("button clicked!")}
+      />
     )
   ));

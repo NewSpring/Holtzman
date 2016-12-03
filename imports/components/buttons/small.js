@@ -13,6 +13,7 @@ const defaultStyles = `
   border: 2px solid #858585;
   color: #858585;
   border-radius: 25px;
+  cursor: pointer;
   &:hover {
     background-color: transparent;
     color: #505050;
@@ -53,10 +54,8 @@ const SmallButton = (props: ISmallButton) => {
   if (props.disabled) {
     return (
       <DisabledButtonWrapper
-        onClick={props.onClick}
         className={props.className || ""}
         style={props.style || {}}
-        to={props.linkUrl || "yo"}
       >
         {props.text || "See All"}
       </DisabledButtonWrapper>
@@ -65,7 +64,9 @@ const SmallButton = (props: ISmallButton) => {
     return (
       <ButtonWrapper
         className={props.className || ""}
+        onClick={props.onClick}
         style={props.style || {}}
+        to={props.linkUrl || "yo"}
       >
         {props.text || "See All"}
       </ButtonWrapper>
