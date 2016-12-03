@@ -66,7 +66,7 @@ const SmallButton = (props: ISmallButton) => {
         className={props.className || ""}
         onClick={props.onClick}
         style={props.style || {}}
-        to={props.linkUrl || "yo"}
+        to={props.linkUrl || ""}
       >
         {props.text || "See All"}
       </ButtonWrapper>
