@@ -1,15 +1,3 @@
-/*
-* small button
-*
-* <SmallButton
-*   linkUrl={?string}
-*   onClick={?Function}
-*   disabled={Boolean}
-*   text={string}
-*   className={?string}
-*   style={?Object}
-* />
-*/
 
 /* eslint-disable */
 import { storiesOf } from "@kadira/storybook";
