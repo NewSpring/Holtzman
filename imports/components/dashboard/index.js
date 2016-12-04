@@ -50,9 +50,11 @@ const Dashboard = ({
   children,
 }: IDashboard) => (
   <div>
-    <h2 className="soft-bottom">{title}</h2>
-    <div className="floating text-left">
-      {getLinks(subNav)}
+    <div className="soft-half@handheld hard-bottom soft-double@lap-and-up soft-double-top@lap-wide-and-up">
+      <h1 className="soft-bottom">{title}</h1>
+      <div className="floating text-left">
+        {getLinks(subNav)}
+      </div>
     </div>
     <div className="background--light-secondary" style={{ borderTop: "1px solid #dddddd" }}>
       <div className="soft push">
