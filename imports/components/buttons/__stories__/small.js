@@ -24,7 +24,7 @@ const classes=[
   "btn--alert",
 ];
 
-const story = storiesOf("SmallButton", module)
+const story = storiesOf("Buttons", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
   .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
@@ -40,19 +40,7 @@ story
       />
     )
   ))
-  .add("With Link", withReadme(
-    Readme,
-    () => (
-      <SmallButton linkUrl="http://newspring.cc" text="See All"/>
-    )
-  ))
-  .add("Disabled", withReadme(
-    Readme,
-    () => (
-      <SmallButton disabled text="See All"/>
-    )
-  ))
-  .add("With onClick Action", withReadme(
+  .add("Small Button With onClick", withReadme(
     Readme,
     () => (
       <SmallButton
