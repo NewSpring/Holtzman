@@ -1,7 +1,7 @@
 exports[`Dashboard should render with the children 1`] = `
 <div>
   <div
-    className="soft-half@handheld hard-bottom soft-double@lap-and-up soft-double-top@lap-wide-and-up">
+    className="soft-half@handheld hard-bottom soft-double@lap-and-up soft-double-top@lap-wide-and-up background--light-primary">
     <h1
       className="soft-bottom">
       Your Giving
@@ -38,12 +38,7 @@ exports[`Dashboard should render with the children 1`] = `
     </div>
   </div>
   <div
-    className="background--light-secondary"
-    style={
-      Object {
-        "borderTop": "1px solid #dddddd",
-      }
-    }>
+    className="background--light-secondary outlined--top outlined--light">
     <div
       className="soft push">
       <Activity
@@ -60,7 +55,7 @@ exports[`Dashboard should render with the children 1`] = `
 exports[`Dashboard should render with the default set of props 1`] = `
 <div>
   <div
-    className="soft-half@handheld hard-bottom soft-double@lap-and-up soft-double-top@lap-wide-and-up">
+    className="soft-half@handheld hard-bottom soft-double@lap-and-up soft-double-top@lap-wide-and-up background--light-primary">
     <h1
       className="soft-bottom">
       Your Giving
@@ -97,12 +92,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
     </div>
   </div>
   <div
-    className="background--light-secondary"
-    style={
-      Object {
-        "borderTop": "1px solid #dddddd",
-      }
-    }>
+    className="background--light-secondary outlined--top outlined--light">
     <div
       className="soft push" />
   </div>
