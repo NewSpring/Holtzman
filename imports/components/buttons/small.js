@@ -14,7 +14,7 @@ type ISmallButton = {
 
 const SmallButton = (props: ISmallButton) => {
   const classes = `
-    btn btn--small
+    btn btn--small@next
     ${props.disabled ? "btn--disabled" : ""}
     ${props.className || ""}
   `;
