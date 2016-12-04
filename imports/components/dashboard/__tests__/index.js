@@ -9,22 +9,22 @@ describe("Dashboard", () => {
     title: "Your Giving",
     subNav: [
       {
+        isActive: true,
         linkUrl: "https://my.newspring.cc/give",
         onClick: () => {},
         title: "Home",
-        isActive: true,
       },
       {
+        isActive: false,
         linkUrl: "https://my.newspring.cc/give/now",
         onClick: () => {},
         title: "Give Now",
-        isActive: false,
       },
       {
+        isActive: false,
         linkUrl: "https://my.newspring.cc/give/history",
         onClick: () => {},
         title: "History",
-        isActive: false,
       },
     ],
   };

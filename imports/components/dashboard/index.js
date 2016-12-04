@@ -1,6 +1,13 @@
 // @flow
 import { Link } from "react-router";
 
+type ISubNav = [{
+  isActive: Boolean,
+  linkUrl: string,
+  onClick: Function,
+  title: string,
+}];
+
 const getLinkClasses = (isActive: Boolean) => {
   const classes = [
     "floating__item",
@@ -18,7 +25,7 @@ const getLinkClasses = (isActive: Boolean) => {
   return classes.join(" ");
 };
 
-const getLinks = (subNav: Object[]) => {
+const getLinks = (subNav: ISubNav) => {
   const links = subNav.map((x, index) => (
     <Link
       key={index}
@@ -33,7 +40,7 @@ const getLinks = (subNav: Object[]) => {
 
 type IDashboard = {
   title: string,
-  subNav: Object[],
+  subNav: ISubNav,
   children?: React$Element<any>,
 };
 
