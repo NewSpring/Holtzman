@@ -24,7 +24,7 @@ story
         title="Activity"
         link={
           <SmallButton
-            className="floating__item btn--dark-tertiary flush"
+            className="floating__item btn--dark-primary flush"
             text="See All"
           />
         }
