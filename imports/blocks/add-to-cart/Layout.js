@@ -13,7 +13,13 @@ type ILayout = {
   changeFund: Function,
 }
 
-export default ({ subfunds, preFill, total, changeAmount, changeFund }: ILayout) => (
+export default ({
+  subfunds,
+  preFill,
+  total,
+  changeAmount,
+  changeFund,
+}: ILayout) => (
   <div className="push-top@handheld soft-half-top@lap-and-up">
     <Forms.Form
       classes={["text-left", "hard"]}
