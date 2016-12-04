@@ -7,7 +7,7 @@ exports[`test renders Billing form 1`] = `
   onSubmit={[Function]}
   style={undefined}>
   <fieldset
-    className="flush soft-top scrollable soft-double-bottom">
+    className="flush soft-top@handheld scrollable soft-double-bottom">
     <div>
       <div
         className="push-double@lap-and-up push">
@@ -61,7 +61,7 @@ exports[`test renders Billing form 1`] = `
         </p>
       </div>
       <div
-        className="soft">
+        className="soft-sides">
         <div
           className="input"
           data-spec="input-wrapper"
@@ -252,7 +252,7 @@ exports[`test renders Confirm form 1`] = `
   onSubmit={[Function]}
   style={undefined}>
   <fieldset
-    className="flush soft-top scrollable soft-double-bottom">
+    className="flush soft-top@handheld scrollable soft-double-bottom">
     <div>
       <div
         className="push-double@lap-and-up push">
@@ -263,7 +263,7 @@ exports[`test renders Confirm form 1`] = `
         </h4>
       </div>
       <div
-        className="soft">
+        className="soft-sides">
         <h5
           className="text-dark-secodary text-left">
           <small>
@@ -361,7 +361,7 @@ exports[`test renders Confirm form 1`] = `
 
 exports[`test renders Error 1`] = `
 <div
-  className="soft soft-double-ends push-double-top one-whole text-center">
+  className="soft soft-double-ends push-double-top@anchored one-whole text-center">
   <div
     className="push-double-top">
     <svg
@@ -472,7 +472,7 @@ exports[`test renders Payment form 1`] = `
   onSubmit={[Function]}
   style={undefined}>
   <fieldset
-    className="flush soft-top scrollable soft-double-bottom">
+    className="flush soft-top@handheld scrollable soft-double-bottom">
     <div>
       <div
         className="push-double@lap-and-up push">
@@ -740,7 +740,7 @@ exports[`test renders Personal form 1`] = `
   onSubmit={[Function]}
   style={undefined}>
   <fieldset
-    className="flush soft-top scrollable soft-double-bottom">
+    className="flush soft-top@handheld scrollable soft-double-bottom">
     <div>
       <div
         className="push-double@lap-and-up push">
@@ -794,7 +794,7 @@ exports[`test renders Personal form 1`] = `
         </p>
       </div>
       <div
-        className="soft">
+        className="soft-sides">
         <div
           className="grid">
           <div
@@ -919,7 +919,7 @@ exports[`test renders Personal form 1`] = `
 
 exports[`test renders Success 1`] = `
 <div
-  className="soft soft-double-ends push-double-top one-whole text-center">
+  className="soft soft-double-ends push-double-top@anchored one-whole text-center">
   <div
     className="push-double-top">
     <svg

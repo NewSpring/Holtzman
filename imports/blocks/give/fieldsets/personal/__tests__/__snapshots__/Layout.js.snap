@@ -23,7 +23,7 @@ exports[`Layout renders with props 1`] = `
     child
   </span>
   <div
-    className="soft">
+    className="soft-sides">
     <div
       className="grid">
       <div

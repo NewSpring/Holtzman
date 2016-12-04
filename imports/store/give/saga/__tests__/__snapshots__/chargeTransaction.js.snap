@@ -1,0 +1,15 @@
+exports[`successful charge using a saved payment ends after a normal charge 1`] = `
+Array [
+  Array [
+    "ecommerce:addTransaction",
+    Object {
+      "affiliation": "NewSpring Church",
+      "id": "TOKEN",
+      "revenue": "0",
+    },
+  ],
+  Array [
+    "ecommerce:send",
+  ],
+]
+`;

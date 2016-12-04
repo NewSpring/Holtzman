@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import renderer from "react-test-renderer";
-import PrimaryButton, { buttonClasses, ButtonText, Icon } from "../Primary";
+import PrimaryButton, { buttonClasses } from "../Primary";
 
 const generateComponent = (additionalProps={}) => (
   <PrimaryButton { ...additionalProps } />
@@ -96,115 +96,22 @@ describe("buttonClasses", () => {
 
 describe("ButtonText", () => {
   it("says `Sign In` if not userId", () => {
-    const tree = renderer.create(
-      <ButtonText />
-    );
+    const tree = renderer.create(generateComponent());
     expect(tree).toMatchSnapshot();
   });
   it("says `Give Now` if signed in and no override", () => {
     Meteor.userId = jest.fn(() => "test");
-    const tree = renderer.create(
-      <ButtonText />
-    );
+    const tree = renderer.create(generateComponent());
     expect(tree).toMatchSnapshot();
   });
   it("overrides if signed in and override", () => {
     Meteor.userId = jest.fn(() => "test");
-    const tree = renderer.create(
-      <ButtonText
-        overrideText="Give Later"
-      />
-    );
+    const tree = renderer.create(generateComponent({ text: "Give Later" }));
     expect(tree).toMatchSnapshot();
   });
-  it("says `Review Using 6789` if signed in and has saved account", () => {
+  it("says `Review Your Gift` if signed in", () => {
     Meteor.userId = jest.fn(() => "test");
-    const mockSavedPayments = [{}];
-    const mockGetAccount = jest.fn(() => {
-      return {
-        payment: {
-          accountNumber: "123456789",
-        },
-      }
-    });
-    const tree = renderer.create(
-      <ButtonText
-        savedPayments={mockSavedPayments}
-        getAccount={mockGetAccount}
-        hideCard={false}
-      />
-    );
-    expect(tree).toMatchSnapshot();
-  });
-  it("still says `Give Now` if hideCard is true", () => {
-    Meteor.userId = jest.fn(() => "test");
-    const mockSavedPayments = [{}];
-    const mockGetAccount = jest.fn(() => {
-      return {
-        payment: {
-          accountNumber: "123456789",
-        },
-      }
-    });
-    const tree = renderer.create(
-      <ButtonText
-        savedPayments={mockSavedPayments}
-        getAccount={mockGetAccount}
-        hideCard={true}
-      />
-    );
-    expect(tree).toMatchSnapshot();
-  });
-});
-
-describe("Icon", () => {
-  it("does nothing if no saved payments", () => {
-    const tree = renderer.create(
-      <Icon />
-    );
-    expect(tree).toMatchSnapshot();
-  });
-  it("does nothing if saved payment and hideCard is true", () => {
-    const tree = renderer.create(
-      <Icon
-        savedPayments={[{}]}
-        hideCard={true}
-      />
-    );
-    expect(tree).toMatchSnapshot();
-  });
-  it("renders bank icon if paymentType ACH", () => {
-    const mockGetAccount = jest.fn(() => {
-      return {
-        payment: {
-          paymentType: "ACH",
-        },
-      };
-    });
-    const tree = renderer.create(
-      <Icon
-        savedPayments={[{}]}
-        hideCard={false}
-        getAccount={mockGetAccount}
-      />
-    );
-    expect(tree).toMatchSnapshot();
-  });
-  it("renders AmEx if AmEx", () => {
-    const mockGetAccount = jest.fn(() => {
-      return {
-        payment: {
-          paymentType: "AmEx",
-        },
-      };
-    });
-    const tree = renderer.create(
-      <Icon
-        savedPayments={[{}]}
-        hideCard={false}
-        getAccount={mockGetAccount}
-      />
-    );
+    const tree = renderer.create(generateComponent());
     expect(tree).toMatchSnapshot();
   });
 });

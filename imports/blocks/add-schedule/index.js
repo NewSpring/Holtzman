@@ -11,18 +11,19 @@ import Offline from "../../components/status/Offline";
 import Layout from "./Layout";
 
 type ICartContainer = {
-    accounts: Object,
-    addTransactions: Function,
-    alive: boolean,
-    clearAllSchedulesExcept: Function,
-    clearSchedules: Function,
-    clearTransactions: Function,
-    existing: Object,
-    onClick: Function,
-    removeSchedule: Function,
-    saveSchedule: Function,
-    setTransactionType: Function,
-    text: string,
+  accounts: Object,
+  addTransactions: Function,
+  alive: boolean,
+  clearAllSchedulesExcept: Function,
+  clearSchedules: Function,
+  clearTransactions: Function,
+  existing: Object,
+  onClick: Function,
+  removeSchedule: Function,
+  saveSchedule: Function,
+  setTransactionType: Function,
+  text: string,
+  dataId: number,
 };
 
 type IState = {
@@ -140,7 +141,7 @@ class CartContainer extends Component {
   format = (val: string, target: Object) => {
     const { id, name } = target;
 
-    const value = monetize(val);
+    const value = monetize(val, false, 2);
 
     this.setState({
       fundId: id,
@@ -154,7 +155,7 @@ class CartContainer extends Component {
   saveData = (val: string, target: Object) => {
     const { id, name } = target;
 
-    const value = monetize(val);
+    const value = monetize(val, false, 2);
     this.setState({
       fundId: id,
       fundLabel: name,
@@ -208,6 +209,7 @@ class CartContainer extends Component {
         state={this.state}
         text={this.props.text}
         total={Number(this.state.amount)}
+        dataId={this.props.dataId}
       />
     );
   }

@@ -71,7 +71,6 @@ const ChangePaymentsLayout = ({
 
 type ILayout = {
   authorized: boolean,
-  changePayments: Function,
   classes: string,
   dataId: string,
   disabled: boolean,
@@ -90,7 +89,6 @@ type ILayout = {
 
 const Layout = ({
   authorized,
-  changePayments,
   classes,
   dataId,
   disabled,
@@ -128,11 +126,6 @@ const Layout = ({
       disabledGuest={disabledGuest}
       disabled={disabled}
       giveAsGuest={giveAsGuest}
-    />
-    <ChangePaymentsLayout
-      savedPayments={savedPayments}
-      hideCard={hideCard}
-      changePayments={changePayments}
     />
   </span>
 );

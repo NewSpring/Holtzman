@@ -43,7 +43,7 @@ exports[`CreateAccountFromGuest renders with props 1`] = `
   </p>
   <button
     className="btn one-whole push-bottom"
-    onClick={undefined}>
+    onClick={[Function]}>
     Create Account
   </button>
 </div>
@@ -76,7 +76,7 @@ exports[`ScheduleThanks renders with props 1`] = `
 
 exports[`Success renders with props 1`] = `
 <div
-  className="soft soft-double-ends push-double-top one-whole text-center">
+  className="soft soft-double-ends push-double-top@anchored one-whole text-center">
   <div
     className="push-double-top">
     <svg

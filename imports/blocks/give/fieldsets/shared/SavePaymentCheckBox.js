@@ -1,5 +1,6 @@
 // @flow
 import Forms from "../../../../components/forms";
+import { isIOS } from "../../../../util";
 
 type ISavePaymentCheckBox = {
   savedAccount: Object,
@@ -19,7 +20,8 @@ const SavePaymentCheckBox = ({
   if (
     !savedAccount.id &&
     transactionType !== "guest" &&
-    Object.keys(schedules).length === 0
+    Object.keys(schedules).length === 0 &&
+    !isIOS()
   ) {
     return (
       <Forms.Checkbox

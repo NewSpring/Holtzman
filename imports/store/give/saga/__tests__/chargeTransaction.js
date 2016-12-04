@@ -51,7 +51,11 @@ describe("successful charge without saved payment", () => {
   });
 
   it("tries to submit a transaction with the correct token", result => {
-    expect(result.CPS.args).toEqual(["TOKEN", null, undefined ]);
+    expect(result.CALL.args[0].variables).toEqual({
+      token: "TOKEN",
+      name: null,
+      id: undefined
+    });
     return true;
   });
 
@@ -84,13 +88,10 @@ describe("successful charge saved payment and schedules", () => {
     expect(action).toEqual(actions.loading());
   });
 
-  it("tries to call 'give/order'", result => {
-    result.CPS.fn.call(null, ...result.CPS.args);
-    expect(Meteor.call).toHaveBeenCalledTimes(1);
-    const args = Meteor.call.mock.calls[0];
-    expect(args).toEqual([
-      "give/order",
-      {
+  it("tries to call create order mutation", result => {
+    const variables = result.CALL.args[0].variables;
+    expect(variables).toEqual({
+      data: JSON.stringify({
         billing: {
           "first-name": null,
           "last-name": null,
@@ -107,13 +108,11 @@ describe("successful charge saved payment and schedules", () => {
         "merchant-defined-field-3": "20200101",
         savedAccount: 1,
         savedAccountName: undefined,
-      },
-      true,
-      undefined,
-      undefined,
-    ]);
+      }),
+      instant: true,
+      id: undefined,
+    });
 
-    expect(result.CPS.args).toEqual([ "", null, undefined ]);
     return true;
   });
 
@@ -127,6 +126,7 @@ describe("successful charge saved payment and schedules", () => {
 
 });
 
+window.ga = jest.fn();
 describe("successful charge using a saved payment", () => {
   const it = sagaHelper(chargeTransaction({ state: "submit" }));
   const initalState = {
@@ -152,28 +152,31 @@ describe("successful charge using a saved payment", () => {
 
 
   it("tries to submit person details to ensure a url", result => {
-    expect(result.CPS.args[0]).toEqual({
-      amount: 0,
-      billing: {
-        'first-name': null,
-        'last-name': null,
-        email: null,
-        address1: null,
-        address2: '',
-        city: null,
-        state: null,
-        postal: null
-      },
-      'merchant-defined-field-2': null,
-      savedAccount: 1,
-      savedAccountName: undefined
+    expect(result.CALL.args[0].variables).toEqual({
+      data: JSON.stringify({
+        amount: 0,
+        billing: {
+          'first-name': null,
+          'last-name': null,
+          email: null,
+          address1: null,
+          address2: '',
+          city: null,
+          state: null,
+          postal: null
+        },
+        'merchant-defined-field-2': null,
+        savedAccount: 1,
+        savedAccountName: undefined
+      }),
+      id: null,
+      instant: false,
     });
-    return { url: "http://example.com/TOKEN" }
+    return { data: { response: { url: "http://example.com/TOKEN" }}};
   });
 
   // BELOW IS TESTED IN ./submitPersonDetails
   it("submits a form", result => true);
-  it("waits for a delay", result => {});
   it("sets a url", result => {});
 
   it("reads from the store again after submitting person details", result => {
@@ -182,15 +185,23 @@ describe("successful charge using a saved payment", () => {
   });
 
   it("tries to submit a transaction with the correct token", result => {
-    expect(result.CPS.args).toEqual(["TOKEN", null, undefined ]);
+    expect(result.CALL.args[0].variables).toEqual({
+      token: "TOKEN",
+      id: undefined,
+      name: null
+    });
     return true;
   });
 
   it("puts a success state", result => {
+    ga.mockClear();
     expect(result).toEqual(put(actions.setState("success")));
   });
 
   it("ends after a normal charge", result => {
+    expect(window.ga.mock.calls).toMatchSnapshot();
+    expect(window.ga).toHaveBeenCalledTimes(2)
+    delete window.ga;
     expect(result).toBeUndefined();
   });
 

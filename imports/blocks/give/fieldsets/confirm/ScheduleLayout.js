@@ -69,7 +69,7 @@ const ScheduleLayout = ({
         />
       </div>
 
-      <div className="soft">
+      <div className="soft-sides">
         {scheduleList.map((schedule, key) => (
           <ScheduleItem
             key={key}

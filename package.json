@@ -28,7 +28,9 @@
   },
   "homepage": "https://github.com/NewSpring/my.newspring.cc",
   "jest": {
-    "scriptPreprocessor": "./.scripts/jestPreprocessor.js",
+    "transform": {
+      ".*": "./.scripts/jestPreprocessor.js"
+    },
     "coverageDirectory": "./.coverage",
     "collectCoverageFrom": [
       "client/**/*.{js,jsx}",
@@ -38,6 +40,7 @@
     "coveragePathIgnorePatterns": [
       "__stories__/",
       "<rootDir>/imports/methods/",
+      "<rootDir>/server/deprecated/",
       "<rootDir>/imports/database/",
       "<rootDir>/imports/util/xml.js"
     ],
@@ -144,7 +147,7 @@
     "@kadira/storybook-addon-options": "^1.0.1",
     "@kadira/storybook-database-cloud": "^2.3.1",
     "babel-eslint": "^7.1.0",
-    "babel-jest": "^16.0.0",
+    "babel-jest": "^17.0.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-react-require": "^3.0.0",
     "babel-plugin-react-transform": "^2.0.2",
@@ -176,8 +179,8 @@
     "flow-bin": "^0.34.0",
     "gagarin": "^0.4.12",
     "github-download": "^0.5.0",
-    "jest": "^16.0.2",
-    "jest-cli": "^16.0.2",
+    "jest": "^17.0.3",
+    "jest-cli": "^17.0.3",
     "json-loader": "^0.5.4",
     "mkdirp": "^0.5.1",
     "mockdate": "^2.0.0",

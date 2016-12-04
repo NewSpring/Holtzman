@@ -28,14 +28,15 @@ it("renders with props", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
-it("wrapRefetch updates refetching state", () => {
+it("wrapRefetch updates refetching state", (done) => {
   const wrapper = shallow(generateComponent());
   const mockRefetch = jest.fn().mockReturnValue(new Promise((r) => r("test")));
   // call function returned by wrapRefetch
   wrapper.instance().wrapRefetch(mockRefetch)().then((x) => {
-    expect(x).toBe("xest");
+    expect(x).toBe("test");
     expect(mockRefetch).toHaveBeenCalledTimes(1);
     expect(wrapper.state().refetching).toBe(false);
+    done();
   });
   expect(wrapper.state().refetching).toBe(true);
 });

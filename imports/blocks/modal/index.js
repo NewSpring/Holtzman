@@ -1,6 +1,7 @@
+
+import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { Meteor } from "meteor/meteor";
 
 import { modal as modalActions, nav as navActions } from "../../store";
 
@@ -15,6 +16,7 @@ class SideModalContainerWithoutData extends Component {
     path: PropTypes.string,
   }
 
+
   state = {
     previous: null,
   }
@@ -25,7 +27,7 @@ class SideModalContainerWithoutData extends Component {
     }
 
     if (Meteor.isClient) {
-      document.addEventListener("keyup", this.bindEsc, false);
+      document.addEventListener("keydown", this.handleKeyPress, false);
     }
   }
 
@@ -83,21 +85,27 @@ class SideModalContainerWithoutData extends Component {
     this.props.dispatch(navActions.resetColor());
   }
 
-  bindEsc = (event) => {
+  handleKeyPress = ({ keyCode }) => {
     // if key hit is `esc` or template is closed is clicked
-    if (event.keyCode === 27) {
-      this.props.dispatch(modalActions.hide());
-    }
+    if (keyCode === 27) this.props.dispatch(modalActions.hide());
+
+    // down arrow
+    if (keyCode === 40 && this.scrollElement) this.scrollElement.scrollTop += 10;
+
+    // up arrow
+    if (keyCode === 38 && this.scrollElement) this.scrollElement.scrollTop -= 10;
   }
 
   close = (e) => {
     const { target } = e;
     const { id } = target;
-    if (id !== "@@modal") {
-      return;
-    }
+    if (id !== "@@modal") return;
 
     this.props.dispatch(modalActions.hide());
+  }
+
+  captureRef = (ref) => {
+    this.scrollElement = ref;
   }
 
   render() {
@@ -108,6 +116,7 @@ class SideModalContainerWithoutData extends Component {
         component={content}
         props={props}
         visible={visible}
+        captureRef={this.captureRef}
         {...this.props}
       />
     );

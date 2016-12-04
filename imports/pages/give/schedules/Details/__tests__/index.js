@@ -1,6 +1,5 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { Meteor } from "meteor/meteor";
 import { DetailsWithoutData as Details } from "../";
 import Confirm from "../Confirm";
 
@@ -28,6 +27,7 @@ jest.mock("../../../../../store", () => ({
 
 const defaultProps = {
   dispatch: jest.fn(),
+  cancel: jest.fn(),
   data: {
     loading: false,
     transaction: {
@@ -119,10 +119,12 @@ it("adjusts state on unmount if removed", () => {
 it("stop renders the modal with Confirm", () => {
   const mockPreventDefault = jest.fn();
   const mockDispatch = jest.fn();
+  const mockCancel = jest.fn();
   modalActions.render = jest.fn();
-  Meteor.call = jest.fn();
+
   const wrapper = shallow(generateComponent({
     dispatch: mockDispatch,
+    cancel: mockCancel
   }));
 
   wrapper.instance().stop({
@@ -137,9 +139,5 @@ it("stop renders the modal with Confirm", () => {
   modalActions.render.mock.calls[0][1].onFinished();
   expect(wrapper.state().isActive).toBe(false);
   expect(wrapper.state().removed).toBe(defaultProps.data.transaction.id);
-  expect(Meteor.call.mock.calls[0][0]).toBe("give/schedule/cancel");
-  expect(Meteor.call.mock.calls[0][1]).toEqual({
-    id: defaultProps.data.transaction.id,
-    gateway: defaultProps.data.transaction.gateway,
-  });
+  expect(mockCancel).toHaveBeenCalledWith(defaultProps.data.transaction.id);
 });

@@ -57,7 +57,7 @@ const CreateAccountFromGuest = ({ guest, onClick }: ICreateAccountFromGuest) => 
         If you would like to view your giving history,
         make it easier to give, and more, create a NewSpring Account!
       </p>
-      <button className="btn one-whole push-bottom" onClick={onClick()}>
+      <button className="btn one-whole push-bottom" onClick={onClick}>
         Create Account
       </button>
     </div>
@@ -104,7 +104,7 @@ const Success = ({
 }: ISuccess) => {
   const schedule = (schedules && schedules.length > 0) ? schedules[0] : false;
   return (
-    <div className="soft soft-double-ends push-double-top one-whole text-center">
+    <div className="soft soft-double-ends push-double-top@anchored one-whole text-center">
       <div className="push-double-top">
         <SuccessIcon />
         <h3 className="text-primary push-ends">Success!</h3>

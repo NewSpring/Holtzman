@@ -7,6 +7,8 @@ import { Meteor } from "meteor/meteor";
 import AddSchedule from "../../../blocks/add-schedule";
 import Split, { Left, Right } from "../../../blocks/split";
 
+import { monetize } from "../../../util/format/currency";
+
 import { Spinner } from "../../../components/loading";
 import Meta from "../../../components/meta";
 
@@ -51,25 +53,6 @@ export default class Layout extends Component {
     moment(new Date(date)).add(4, "hours").format("MMM D, YYYY")
   )
 
-  monentize = (value, fixed) => {
-    let strVal = typeof value === "number" ? `${value}` : value;
-
-    if (!strVal.length) {
-      return "$0.00";
-    }
-
-    strVal = strVal.replace(/[^\d.-]/g, "");
-
-    const decimals = strVal.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      strVal = Number(strVal).toFixed(2);
-      strVal = String(strVal);
-    }
-
-    strVal = strVal.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${strVal}`;
-  }
-
   capitalizeFirstLetter = (string) => (
     string.charAt(0).toUpperCase() + string.slice(1)
   )
@@ -103,37 +86,31 @@ export default class Layout extends Component {
         <Left scroll classes={["background--light-secondary"]} ref="container">
 
 
-          {(() => {
-            if (recoverableSchedules.length) {
-              return (
-                <div
-                  className={
-                    "background--primary soft-half soft-sides@portable soft-double-sides@anchored"
-                  }
+          {recoverableSchedules.length && (
+            <div
+              className={
+                "background--primary soft-half soft-sides@portable soft-double-sides@anchored"
+              }
+            >
+              <div className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
+                <h4 className="text-light-primary soft-half-sides soft-half-bottom">
+                  Hey { person.nickName || person.firstName }!
+                </h4>
+                <h5 className="text-light-primary soft-half-sides soft-bottom">
+                    We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
+                </h5>
+
+                <Link
+                  to="/give/schedules/transfer"
+                  className="btn--light"
                 >
+                  Transfer Schedules
+                </Link>
+              </div>
 
-                  <div className="soft-ends soft-double-ends@lap-and-up soft-side@lap-and-up">
-                    <h4 className="text-light-primary soft-half-sides soft-half-bottom">
-                      Hey { person.nickName || person.firstName }!
-                    </h4>
-                    <h5 className="text-light-primary soft-half-sides soft-bottom">
-                       We have found giving schedules from our previous system that need to be transferred! To transfer a schedule, click below.
-                    </h5>
+            </div>
 
-                    <Link
-                      to="/give/schedules/transfer"
-                      className="btn--light"
-                    >
-                      Transfer Schedules
-                    </Link>
-                  </div>
-
-                </div>
-
-              );
-            }
-            return null;
-          })()}
+          )}
 
           <div
             className={
@@ -156,16 +133,14 @@ export default class Layout extends Component {
                 Schedule Your Giving
               </h2>
               <div className="soft-double-ends@anchored">
-                {(() => {
-                  if (!accountsReady || !accounts || !accounts.length) {
-                    return (
-                      <div className="text-center soft">
-                        <Spinner styles={{ width: "40px", height: "40px" }} />
-                      </div>
-                    );
-                  }
-                  return <AddSchedule accounts={accounts} />;
-                })()}
+                {(!accountsReady || !accounts || !accounts.length) && (
+                  <div className="text-center soft">
+                    <Spinner styles={{ width: "40px", height: "40px" }} />
+                  </div>
+                )}
+                {(accountsReady && accounts && accounts.length) && (
+                  <AddSchedule accounts={accounts} />
+                )}
 
               </div>
             </div>
@@ -282,7 +257,7 @@ export default class Layout extends Component {
                                     whiteSpace: "nowrap",
                                   }}
                                 >
-                                  {this.monentize(schedule.details[0].amount)}
+                                  {monetize(schedule.details[0].amount, true)}
                                   <span
                                     className="text-primary icon-arrow-next locked"
                                     style={{
@@ -394,7 +369,7 @@ export default class Layout extends Component {
                                       whiteSpace: "nowrap",
                                     }}
                                   >
-                                    {this.monentize(schedule.details[0].amount)}
+                                    {monetize(schedule.details[0].amount, true)}
                                     <span
                                       className="text-primary icon-arrow-next locked"
                                       style={{

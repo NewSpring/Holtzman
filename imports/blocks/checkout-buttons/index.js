@@ -33,6 +33,7 @@ export const SAVED_ACCTS_QUERY = gql`
 // XXX remove cache: false when heighliner caching is tested
 export const withSavedPayments = graphql(SAVED_ACCTS_QUERY, {
   name: "savedPayments",
+  // skip: (ownProps) => !ownProps.authorized,
   options: () => ({
     variables: {
       cache: false,
@@ -80,11 +81,16 @@ type ICheckoutButtons = {
   text: string,
   theme: string,
   value: string,
+  refetch: Function,
 };
 
 export class CheckoutButton extends Component {
 
   props: ICheckoutButtons;
+
+  static defaultProps = {
+    savedPayments: {},
+  }
 
   state = {
     paymentDetails: false,
@@ -103,7 +109,6 @@ export class CheckoutButton extends Component {
     this.props.dispatch(giveActions.setTransactionType("default"));
 
     if (this.props.savedPayments.savedPayments) {
-      // const details = this.props.savedAccount[Object.keys(this.props.savedAccount)[0]]
       const details = this.getAccount();
       this.props.dispatch(giveActions.setAccount(details));
     }
@@ -165,7 +170,15 @@ export class CheckoutButton extends Component {
 
   renderAfterLogin = () => {
     if (this.props.disabled) return this.props.dispatch(modal.hide());
-    this.props.dispatch(modal.render(Give));
+    // get the payment details before finishing payment
+    this.props.savedPayments.refetch()
+      .then(({ data }) => {
+        if (data.savedPayments && data.savedPayments.length) {
+          const details = sortBy(data.savedPayments, "date")[data.savedPayments.length - 1];
+          this.props.dispatch(giveActions.setAccount(details));
+        }
+        this.props.dispatch(modal.render(Give));
+      });
     return null;
   }
 

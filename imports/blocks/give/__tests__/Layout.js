@@ -109,7 +109,7 @@ it("renders Error", () => {
   const result = renderer.create(generateComponent({
     give: {
       state: "error",
-      errors: { "123": { error: "error" } },
+      errors: { "123": "error" },
     },
   }));
   expect(result).toMatchSnapshot();

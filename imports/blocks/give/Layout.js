@@ -70,7 +70,7 @@ const Layout = ({
         copiedSchedules = { ...schedules };
         return <Loading msg="We're Processing Your Contribution" />;
       case "error":
-        return <Err msg={errors[Object.keys(errors)[0]].error} goToStepOne={goToStepOne} />;
+        return <Err msg={errors[Object.keys(errors)[0]]} goToStepOne={goToStepOne} />;
       case "success":
         return (
           <Success
@@ -92,7 +92,7 @@ const Layout = ({
     <Forms.Form
       id="give"
       theme="hard"
-      fieldsetTheme="flush soft-top scrollable soft-double-bottom"
+      fieldsetTheme="flush soft-top@handheld scrollable soft-double-bottom"
       method="POST"
       submit={onSubmit}
     >

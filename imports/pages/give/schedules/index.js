@@ -50,6 +50,7 @@ class TemplateWithoutData extends Component {
       onFinished: () => {
         dispatch(giveActions.deleteSchedule(id));
 
+        // XXX update to use graphql
         // eslint-disable-next-line
         Meteor.call("give/schedule/cancel", { id }, () => { });
       },
@@ -60,7 +61,6 @@ class TemplateWithoutData extends Component {
   render() {
     const { schedules, accounts, give } = this.props;
     const { recoverableSchedules } = give;
-
     return (
       <Layout
         accountsReady={!accounts.loading}

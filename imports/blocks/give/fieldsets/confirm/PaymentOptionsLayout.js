@@ -28,7 +28,7 @@ const PaymentOptionsLayout = ({
       <Header />
     </div>
 
-    <div className="soft">
+    <div className="soft-sides">
       {savedAccounts.map((account, key) => (
         <SavedAccount
           account={account}

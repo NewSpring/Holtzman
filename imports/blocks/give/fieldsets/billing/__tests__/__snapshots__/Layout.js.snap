@@ -23,7 +23,7 @@ exports[`Layout renders US by default 1`] = `
     child
   </span>
   <div
-    className="soft">
+    className="soft-sides">
     <div
       className="input input--active"
       data-spec="input-wrapper"
@@ -227,7 +227,7 @@ exports[`Layout renders your country instead 1`] = `
     child
   </span>
   <div
-    className="soft">
+    className="soft-sides">
     <div
       className="input input--active"
       data-spec="input-wrapper"

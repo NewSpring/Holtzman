@@ -43,9 +43,12 @@ describe("normal submit", () => {
       },
       "merchant-defined-field-2": null,
     };
-    expect(result.CPS.fn.name).toBe("order");
-    expect(result.CPS.args).toEqual([ formattedData ]);
-    return { url: "http://example.com/TOKEN" };
+    expect(result.CALL.args[0].variables).toEqual({
+      data: JSON.stringify(formattedData),
+      id: null,
+      instant: false,
+    });
+    return { data: { response: { url: "http://example.com/TOKEN" } } };
   });
 
   it("should try and store the url in the store", result => {
@@ -64,6 +67,7 @@ describe("normal submit with an error", () => {
   const it = sagaHelper(submitPersonDetails(initalState));
 
   it("should try and call 'order' with the formated data", result => {
+
     const formattedData = {
       amount: 0,
       billing: {
@@ -78,8 +82,11 @@ describe("normal submit with an error", () => {
       },
       "merchant-defined-field-2": null,
     };
-    expect(result.CPS.fn.name).toBe("order");
-    expect(result.CPS.args).toEqual([ formattedData ]);
+    expect(result.CALL.args[0].variables).toEqual({
+      data: JSON.stringify(formattedData),
+      id: null,
+      instant: false,
+    });
     return new Error("ERROR");
   });
 
@@ -112,9 +119,12 @@ describe("submit with a saved payment", () => {
       },
       "merchant-defined-field-2": null,
     };
-    expect(result.CPS.fn.name).toBe("order");
-    expect(result.CPS.args).toEqual([ formattedData ]);
-    return { url: "http://example.com/TOKEN" };
+    expect(result.CALL.args[0].variables).toEqual({
+      data: JSON.stringify(formattedData),
+      id: null,
+      instant: false,
+    });
+    return { data: { response: { url: "http://example.com/TOKEN" } } };
   });
 
   window.fetch = jest.fn(() => new Promise(resolve => resolve()));
@@ -130,8 +140,6 @@ describe("submit with a saved payment", () => {
     expect(body).toMatchSnapshot();
     window.fetch.mockClear();
   });
-
-  it("should wait for 300 ms", () => {});
 
   it("should try and store the url in the store", result => {
     expect(result).toEqual(put(actions.setDetails("http://example.com/TOKEN")));

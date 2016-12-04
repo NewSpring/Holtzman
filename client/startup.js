@@ -206,6 +206,7 @@ Meteor.startup(() => {
 
       ga("create", Meteor.settings.public.ga, "auto");
       ga("send", "pageview");
+      ga("require", "ecommerce");
     }
 
     if (Meteor.settings.public.hotjar) {
