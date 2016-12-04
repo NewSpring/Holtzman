@@ -1,0 +1,249 @@
+exports[`SmallButton should accept a className prop 1`] = `
+<SmallButton
+  className="harambe"
+  text="See All">
+  <button
+    className="
+      btn btn--small@next
+      
+      harambe
+    "
+    style={Object {}}>
+    See All
+  </button>
+</SmallButton>
+`;
+
+exports[`SmallButton should accept a className prop 2`] = `
+<SmallButton
+  className="harambe"
+  linkUrl="http://example.com"
+  text="See All">
+  <Link
+    className="
+      btn btn--small@next
+      
+      harambe
+    "
+    onlyActiveOnIndex={false}
+    style={Object {}}
+    to="http://example.com">
+    <a
+      className="
+        btn btn--small@next
+        
+        harambe
+      "
+      onClick={[Function]}
+      style={Object {}}>
+      See All
+    </a>
+  </Link>
+</SmallButton>
+`;
+
+exports[`SmallButton should accept a linkUrl and render an anchor instead of button 1`] = `
+<SmallButton
+  linkUrl="http://example.com"
+  text="See All">
+  <Link
+    className="
+      btn btn--small@next
+      
+      
+    "
+    onlyActiveOnIndex={false}
+    style={Object {}}
+    to="http://example.com">
+    <a
+      className="
+        btn btn--small@next
+        
+        
+      "
+      onClick={[Function]}
+      style={Object {}}>
+      See All
+    </a>
+  </Link>
+</SmallButton>
+`;
+
+exports[`SmallButton should accept a style prop 1`] = `
+<SmallButton
+  style={
+    Object {
+      "textTransform": "capitalize",
+    }
+  }
+  text="See All">
+  <button
+    className="
+      btn btn--small@next
+      
+      
+    "
+    style={
+      Object {
+        "textTransform": "capitalize",
+      }
+    }>
+    See All
+  </button>
+</SmallButton>
+`;
+
+exports[`SmallButton should accept a style prop 2`] = `
+<SmallButton
+  linkUrl="http://example.com"
+  style={
+    Object {
+      "textTransform": "capitalize",
+    }
+  }
+  text="See All">
+  <Link
+    className="
+      btn btn--small@next
+      
+      
+    "
+    onlyActiveOnIndex={false}
+    style={
+      Object {
+        "textTransform": "capitalize",
+      }
+    }
+    to="http://example.com">
+    <a
+      className="
+        btn btn--small@next
+        
+        
+      "
+      onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }>
+      See All
+    </a>
+  </Link>
+</SmallButton>
+`;
+
+exports[`SmallButton should accept an onClick handler 1`] = `
+<SmallButton
+  onClick={[Function]}
+  text="See All">
+  <button
+    className="
+      btn btn--small@next
+      
+      
+    "
+    onClick={[Function]}
+    style={Object {}}>
+    See All
+  </button>
+</SmallButton>
+`;
+
+exports[`SmallButton should accept disabled prop 1`] = `
+<SmallButton
+  disabled={true}
+  text="See All">
+  <button
+    className="
+      btn btn--small@next
+      btn--disabled
+      
+    "
+    style={Object {}}>
+    See All
+  </button>
+</SmallButton>
+`;
+
+exports[`SmallButton should accept disabled prop 2`] = `
+<SmallButton
+  disabled={true}
+  linkUrl="http://example.com"
+  text="See All">
+  <Link
+    className="
+      btn btn--small@next
+      btn--disabled
+      
+    "
+    onlyActiveOnIndex={false}
+    style={Object {}}
+    to="http://example.com">
+    <a
+      className="
+        btn btn--small@next
+        btn--disabled
+        
+      "
+      onClick={[Function]}
+      style={Object {}}>
+      See All
+    </a>
+  </Link>
+</SmallButton>
+`;
+
+exports[`SmallButton should accept text prop 1`] = `
+<SmallButton
+  text="See All">
+  <button
+    className="
+      btn btn--small@next
+      
+      
+    "
+    style={Object {}}>
+    See All
+  </button>
+</SmallButton>
+`;
+
+exports[`SmallButton should accept text prop 2`] = `
+<SmallButton
+  linkUrl="http://example.com"
+  text="See All">
+  <Link
+    className="
+      btn btn--small@next
+      
+      
+    "
+    onlyActiveOnIndex={false}
+    style={Object {}}
+    to="http://example.com">
+    <a
+      className="
+        btn btn--small@next
+        
+        
+      "
+      onClick={[Function]}
+      style={Object {}}>
+      See All
+    </a>
+  </Link>
+</SmallButton>
+`;
+
+exports[`SmallButton should render with minimal props 1`] = `
+<SmallButton>
+  <button
+    className="
+      btn btn--small@next
+      
+      
+    "
+    style={Object {}} />
+</SmallButton>
+`;
