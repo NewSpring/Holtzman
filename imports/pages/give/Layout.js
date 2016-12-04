@@ -23,13 +23,7 @@ const subNav = [
   },
 ];
 
-type ILayout = {
-  title: string,
-};
-
-const Layout = ({
-  title,
-}: ILayout) => (
+const Layout = () => (
   <div>
     <Split>
       <Right
