@@ -13,7 +13,6 @@ type ISmallButton = {
 };
 
 const SmallButton = (props: ISmallButton) => {
-
   const classes = `
     btn btn--small
     ${props.disabled ? "btn--disabled" : ""}
@@ -31,17 +30,16 @@ const SmallButton = (props: ISmallButton) => {
         {props.text}
       </Link>
     );
-  } else {
-    return (
-      <button
-        className={classes}
-        style={props.style || {}}
-        onClick={props.onClick}
-      >
-        {props.text}
-      </button>
-    );
   }
+  return (
+    <button
+      className={classes}
+      style={props.style || {}}
+      onClick={props.onClick}
+    >
+      {props.text}
+    </button>
+  );
 };
 
 export default SmallButton;
