@@ -5,7 +5,6 @@ import moment from "moment";
 import Filter from "./Filter";
 
 import { Spinner } from "../../../components/loading";
-import Split, { Left, Right } from "../../../blocks/split";
 import Meta from "../../../components/meta";
 
 export function formatDate(date) {
@@ -217,121 +216,99 @@ export default class Layout extends Component {
     return (
 
       <div>
-        <Split nav classes={["background--light-primary"]}>
-
-          <Meta title="Giving History" />
-
-          <Right
-            background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg"
-            mobile={false}
-          />
-
-
-        </Split>
-        <Left scroll ref="container" classes={["background--light-secondary"]}>
-
-
-          <div
-            className="soft-double-sides@lap-and-up soft-ends@lap-and-up background--light-primary"
-          >
-            <div className="soft soft-double-ends hard-left@lap-and-up">
-              <h2 className="flush hard">Giving History</h2>
-            </div>
-          </div>
-
-          <Filter
-            family={this.props.family}
-            changeFamily={changeFamily}
-            changeDates={changeDates}
-          />
-          <div
-            className={
-              "soft-half soft@portable soft-double@anchored " +
-              "soft-double-bottom@anchored soft-bottom@portable"
-            }
-            ref="history"
-          >
-            {(() => {
-              if (reloading || (!transactions.length && !ready)) {
-                // loading
-                return (
-                  <div className="text-center soft">
-                    <Spinner styles={{ width: "40px", height: "40px" }} />
-                  </div>
-
-                );
-              } else if (!transactions.length && ready) {
-                return (
-                  <div className="text-left soft-ends soft-half-sides">
-                    <p>
-                      We didn&#39;t find any contributions associated with your account. If you would like to start giving, click <Link to="/give/now">here</Link>
-                    </p>
-                    <p><em>If you have any questions, please call our Finance Team at 864-965-9990 or <a rel="noopener noreferrer" target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a> and someone will be happy to assist you.</em></p>
-                  </div>
-                );
-              }
-
-              let lastYear = null;
+        <Meta title="Giving History" />
+        <Filter
+          family={this.props.family}
+          changeFamily={changeFamily}
+          changeDates={changeDates}
+        />
+        <div
+          className={
+            "soft-half soft@portable soft-double@anchored " +
+            "soft-double-bottom@anchored soft-bottom@portable"
+          }
+          ref="history"
+        >
+          {(() => {
+            if (reloading || (!transactions.length && !ready)) {
+              // loading
               return (
-                <div>
-                  {transactions.map((transaction, key) => {
-                    const { details, person } = transaction;
-                    return (
-                      <div key={key}>
-                        {details.map((transactionDetail, i) => {
-                          if (!transactionDetail.account) return null;
+                <div className="text-center soft">
+                  <Spinner styles={{ width: "40px", height: "40px" }} />
+                </div>
 
-                          if (Number(transactionDetail.amount) === 0) return null;
-
-                          const year = moment(transaction.date).year();
-                          if (year !== lastYear) {
-                            lastYear = year;
-                            return (
-                              <div key={i}>
-                                <div className="soft soft-half-left text-left">
-                                  <h5>{year}</h5>
-                                </div>
-                                <TransactionCard
-                                  transaction={transaction}
-                                  transactionDetail={transactionDetail}
-                                  person={person}
-                                />
-                              </div>
-                            );
-                          }
-
-                          return (
-                            <TransactionCard
-                              transaction={transaction}
-                              transactionDetail={transactionDetail}
-                              person={person}
-                              key={i}
-                            />
-                          );
-                        })}
-                      </div>
-
-                    );
-                  })}
+              );
+            } else if (!transactions.length && ready) {
+              return (
+                <div className="text-left soft-ends soft-half-sides">
+                  <p>
+                    We didn&#39;t find any contributions associated with your account. If you would like to start giving, click <Link to="/give/now">here</Link>
+                  </p>
+                  <p><em>If you have any questions, please call our Finance Team at 864-965-9990 or <a rel="noopener noreferrer" target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">contact us </a> and someone will be happy to assist you.</em></p>
                 </div>
               );
-            })()}
-          </div>
+            }
 
-          {/* Load more */}
-          <div className="one-whole text-center">
-            {(() => {
-              if (!ready && !transactions.length) return null;
-              if (!transactions.length && ready) return null;
-              if (reloading) return null;
+            let lastYear = null;
+            return (
+              <div>
+                {transactions.map((transaction, key) => {
+                  const { details, person } = transaction;
+                  return (
+                    <div key={key}>
+                      {details.map((transactionDetail, i) => {
+                        if (!transactionDetail.account) return null;
 
-              if (done) return <p><small><em>No More Contributions</em></small></p>;
-              return <Loading />;
-            })()}
-          </div>
+                        if (Number(transactionDetail.amount) === 0) return null;
+
+                        const year = moment(transaction.date).year();
+                        if (year !== lastYear) {
+                          lastYear = year;
+                          return (
+                            <div key={i}>
+                              <div className="soft soft-half-left text-left">
+                                <h5>{year}</h5>
+                              </div>
+                              <TransactionCard
+                                transaction={transaction}
+                                transactionDetail={transactionDetail}
+                                person={person}
+                              />
+                            </div>
+                          );
+                        }
+
+                        return (
+                          <TransactionCard
+                            transaction={transaction}
+                            transactionDetail={transactionDetail}
+                            person={person}
+                            key={i}
+                          />
+                        );
+                      })}
+                    </div>
+
+                  );
+                })}
+              </div>
+            );
+          })()}
+        </div>
+
+        {/* Load more */}
+        <div className="one-whole text-center">
+          {(() => {
+            if (!ready && !transactions.length) return null;
+            if (!transactions.length && ready) return null;
+            if (reloading) return null;
+
+            if (done) return <p><small><em>No More Contributions</em></small></p>;
+            return <Loading />;
+          })()}
+        </div>
 
 
-        </Left>
       </div>
     );
     /* eslint-enable max-len */

@@ -8,7 +8,7 @@ import Layout from "./Layout";
 
 export default {
   path: "give",
-  indexRoute: { component: Layout },
+  component: Layout,
   childRoutes: [
     ...Campaign.Routes,
     ...History.Routes,
