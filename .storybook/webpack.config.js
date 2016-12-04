@@ -16,6 +16,7 @@ module.exports = function(base, configType) {
     {
       "meteor/meteor": path.join(__dirname, "../.meteor/mocks/meteor"),
       "meteor/accounts-base": path.join(__dirname, "../.meteor/mocks/accounts-base"),
+      "meteor/ddp": path.join(__dirname, "../.meteor/mocks/ddp"),
     }
   );
 
