@@ -33,7 +33,7 @@ type ISubFund = {
   primary: boolean,
   id: number,
   fundId: ?number,
-  amount: ?number,
+  amount: ?number | string,
 };
 
 type ICartContainerState = {
@@ -132,7 +132,38 @@ class CartContainer extends Component {
   getFund = (id: number) => this.props.accounts.filter((x) => x.id === id)[0]
 
   changeAmount = (amount: number, id: number) => {
-    const value = Number(`${amount}`.replace(/[^0-9\.]+/g, ""));
+    let newAmount = `${amount}`;
+
+    // starting with a decimal
+    if (newAmount === ".") newAmount = "0.00";
+
+    let decimals = newAmount.split(".")[1];
+    if (decimals && decimals[0] === "0" && decimals.length > 2) {
+      const newDecimals = decimals.split(""); // turn into an array
+      newDecimals.splice(0, 1); // remove extra 0
+      newAmount = `${newAmount.split(".")[0]}.${newDecimals[0]}${newDecimals[1]}`;
+    }
+
+    // XXX this is a hack becuase our components are not truely controlled right now
+    // I'm not even sure how onBlur works on controlled components tbh
+    // handles live typing of amounts with 0 in the decimal place or longer than 2 figures
+    decimals = newAmount.split(".")[1];
+    if (decimals && decimals[1] === "0") {
+      const newDecimals = decimals.split(""); // turn into an array
+      newDecimals.splice(1, 1); // remove extra 0
+      newAmount = `${newAmount.split(".")[0]}.${newDecimals[0]}${newDecimals[1]}`;
+    }
+
+    // make sure the amount isn't longer than 2 decimals after the inline replacement
+    decimals = newAmount.split(".")[1];
+    if (decimals && `${decimals}`.length > 2) {
+      const newDecimals = `${decimals}`.split(""); // turn into an array
+      newAmount = `${newAmount.split(".")[0]}.${newDecimals[0]}${newDecimals[1]}`;
+    }
+
+    const value = Number(`${newAmount}`.replace(/[^0-9\.]+/g, ""));
+
+    if (isNaN(value)) return 0;
 
     // this will rerender the component and rebuild
     // the subfunds as needed
@@ -148,11 +179,13 @@ class CartContainer extends Component {
     });
 
     const fund = this.getFund(id);
-    // this won't rerender but will update the store
-    // consider it a side effect
-    this.props.addTransactions({ [id]: { label: fund.name, value } });
+    if (fund && fund.name) {
+      // this won't rerender but will update the store
+      // consider it a side effect
+      this.props.addTransactions({ [id]: { label: fund.name, value } });
+    }
 
-    return monetize(amount, false, 2);
+    return `$${newAmount.replace(/[^0-9\.]+/g, "")}`;
   }
 
   changeFund = (id: number, subfundId: number) => {
@@ -222,14 +255,14 @@ class CartContainer extends Component {
   preFillValue = (id: string) => {
     if (!this.state.subfunds.length) return null;
     const fund = this.state.subfunds.filter(({ fundId }) => fundId === id);
-    return fund[0] && fund[0].amount && `$${fund[0].amount}`;
+    return fund[0] && fund[0].amount && monetize(`${fund[0].amount}`.replace(/[^0-9\.]+/g, ""));
   }
 
   render() {
     // we could pull from the redux store, but we would end up
     // overrendering from local state and store updates
     const total = this.state.subfunds
-      .map(({ amount }) => amount || 0)
+      .map(({ amount }) => Number(amount) || 0)
       .reduce((x: number, y: number) => x + y, 0);
 
     const { accounts } = this.props;

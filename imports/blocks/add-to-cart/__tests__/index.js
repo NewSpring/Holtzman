@@ -122,6 +122,27 @@ describe ("CartContainer > Class Methods", () => {
       const amount = changeAmount(10, 1);
       expect(amount).toBe("$10");
     });
+
+    it("handles cents as the only amount", () => {
+      const component = mount(generateComponent({ accounts: additionalAccounts }));
+      const changeAmount = component.instance().changeAmount;
+      const amount = changeAmount(.0, 1);
+      expect(amount).toBe("$0");
+    });
+
+    it("handles cents as the only amount with added amounts", () => {
+      const component = mount(generateComponent({ accounts: additionalAccounts }));
+      const changeAmount = component.instance().changeAmount;
+      const amount = changeAmount(.05, 1);
+      expect(amount).toBe("$0.05");
+    });
+
+    it("replaces typeahead currency formatting", () => {
+      const component = mount(generateComponent({ accounts: additionalAccounts }));
+      const changeAmount = component.instance().changeAmount;
+      const amount = changeAmount(.505, 1);
+      expect(amount).toBe("$0.55");
+    });
   });
 
   describe("changeFund", () => {
