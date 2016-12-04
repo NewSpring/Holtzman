@@ -1,6 +1,7 @@
 import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import { css } from "aphrodite";
+import styled from "styled-components";
 
 import { ImageLoader } from "../../components/loading";
 import LoadingStyles from "../../components/loading/FeedItemSkeleton-css";
@@ -15,60 +16,38 @@ export default class SearchItem extends Component {
     item: PropTypes.object, // eslint-disable-line
   }
 
-  cardClasses = () => {
-    const classes = [
-      "background--light-primary",
-      "push-half-bottom@palm",
-      "push-bottom@palm-wide-and-up",
-      "card",
-      "rounded",
-      "text-dark-secondary",
-      "display-block",
-      "plain",
-      css(Styles.card),
-    ];
+  cardClasses = `
+    background--light-primary
+    push-half-bottom@palm
+    push-bottom@palm-wide-and-up
+    card
+    rounded
+    text-dark-secondary
+    display-block
+    plain
+  `;
 
-    return classes.join(" ");
-  }
+  gridItemClasses = `
+    grid__item
+    three-fifths
+    soft-half
+    floating--left
+    one-whole
+  `;
 
-  gridClasses = () => (
-    [
-      "grid",
-      "flush",
-      css(Styles["height-100"]),
-    ].join(" ")
-  )
-
-  gridItemClasses = () => (
-    [
-      "grid__item",
-      "three-fifths",
-      "soft-half",
-      "floating--left",
-      "one-whole",
-      css(Styles["height-100"]),
-    ].join(" ")
-  )
-
-  pClasses = () => (
-    `small ${css(Styles["ellipsis-p"])}`
-  )
-
-  bgClasses = () => (
-    [
-      "grid__item",
-      "two-fifths",
-      "hard",
-      "soft-half-left",
-      "background--cover",
-      css(Styles["height-100"]),
-    ]
-  )
+  // css(Styles["height-100"]),
+  bgClasses = `
+    grid__item
+    two-fifths
+    hard
+    soft-half-left
+    background--cover
+  `;
 
   // context from ImageLoader
   preloader() {
     return (
-      <div className={`${this.imageclasses.join(" ")} ${css(LoadingStyles["load-item"])}`}>
+      <div className={`${this.imageclasses} ${css(LoadingStyles["load-item"])}`}>
         <div className="ratio--square" />
       </div>
     );
@@ -78,49 +57,75 @@ export default class SearchItem extends Component {
   renderElement() {
     return (
       <div
-        className={this.imageclasses.join(" ")}
+        className={this.imageclasses}
         style={this.style}
       />
     );
   }
 
   render() {
-    return (
-      <Link to={this.props.item.link} className={this.cardClasses()} onClick={inAppLink}>
-        <div className={this.gridClasses()}>
+    const StyledLink = styled(Link)`
+      height: 144px;
+      transition: all 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+      &:hover {
+        opacity: 0.8;
+      }
+    `;
 
-          <div className={this.gridItemClasses()}>
+    const StyledP = styled.p`
+      height: 1.75em;
+      overflow: hidden;
+      textOverflow: ellipsis;
+      wordBreak: break-word;
+      whiteSpace: nowrap;
+      marginBottom: 0;
+    `;
+
+    const StyledGrid = styled.div`
+      height: 100%;
+    `;
+
+    const StyledGridItem = styled.div`
+      height: 100%;
+    `;
+
+    const StyledImageLoader = styled(ImageLoader)`
+      background-image: url('${this.props.item.image}');
+    `;
+
+    return (
+      <StyledLink to={this.props.item.link} className={this.cardClasses} onClick={inAppLink}>
+        <StyledGrid className="grid flush">
+
+          <StyledGridItem className={this.gridItemClasses}>
             <div className="floating__item one-whole soft-half-sides">
               <h6>{this.props.item.title}</h6>
-              <p className={this.pClasses()}>
+              <StyledP className="small">
                 {this.props.item.description}
-              </p>
+              </StyledP>
             </div>
-          </div>
+          </StyledGridItem>
 
           {(() => {
             if (this.props.item.image === "null") {
-              const classes = this.bgClasses();
+              const classes = this.bgClasses;
               classes.push(css(Styles["placeholder-img"]));
               return (
                 <div className={classes.join(" ")} />
               );
             }
             return (
-              <ImageLoader
+              <StyledImageLoader
                 src={this.props.item.image}
                 force
                 preloader={this.preloader}
                 renderElement={this.renderElement}
-                imageclasses={this.bgClasses()}
-                style={{
-                  backgroundImage: `url('${this.props.item.image}')`,
-                }}
+                imageclasses={this.bgClasses}
               />
             );
           })()}
-        </div>
-      </Link>
+        </StyledGrid>
+      </StyledLink>
     );
   }
 

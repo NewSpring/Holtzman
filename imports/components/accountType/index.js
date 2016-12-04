@@ -1,15 +1,16 @@
 
 import { PropTypes } from "react";
+import styled from "styled-components";
 
 import { Accounts } from "../icons";
 
 const AccountType = ({ width, height, type }) => {
   const bottom = Number(height) / 10;
-  const style = {
-    marginBottom: `-${bottom}px`,
-    marginRight: "-6px",
-    marginLeft: "6px",
-  };
+  // const style = {
+  //   marginBottom: `-${bottom}px`,
+  //   marginRight: "-6px",
+  //   marginLeft: "6px",
+  // };
 
   let inputType = type;
 
@@ -20,7 +21,13 @@ const AccountType = ({ width, height, type }) => {
   }
 
   const Icon = Accounts[inputType];
-  return <Icon width={width} height={height} style={style} />;
+  const StyledIcon = styled(Icon)`
+    margin-bottom: -${bottom}px;
+    margin-right: -6px;
+    margin-left: 6px;
+  `;
+
+  return <StyledIcon width={width} height={height} />;
 };
 
 AccountType.propTypes = {
