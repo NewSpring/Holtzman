@@ -2,13 +2,13 @@
 import { Link } from "react-router";
 
 type ISubNav = [{
-  isActive: Boolean,
+  isActive: boolean,
   linkUrl: string,
   onClick: Function,
   title: string,
 }];
 
-const getLinkClasses = (isActive: Boolean) => {
+const getLinkClasses = (isActive: boolean) => {
   const classes = [
     "floating__item",
     "soft-half-sides",
