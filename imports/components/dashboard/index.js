@@ -2,13 +2,13 @@
 import { Link } from "react-router";
 
 type ISubNav = [{
-  isActive: Boolean,
+  isActive: boolean,
   linkUrl: string,
   onClick: Function,
   title: string,
 }];
 
-const getLinkClasses = (isActive: Boolean) => {
+const getLinkClasses = (isActive: boolean) => {
   const classes = [
     "floating__item",
     "soft-half-sides",
@@ -50,8 +50,8 @@ const Dashboard = ({
   children,
 }: IDashboard) => (
   <div>
-    <div className="soft-half@handheld hard-bottom soft-double@lap-and-up soft-double-top@lap-wide-and-up background--light-primary">
-      <h1 className="soft-bottom">{title}</h1>
+    <div className="push-top soft-left@handheld soft-top@handheld soft-double-left soft-double-top background--light-primary">
+      <h1 className="soft-half-bottom@handheld soft-bottom">{title}</h1>
       <div className="floating text-left">
         {getLinks(subNav)}
       </div>
