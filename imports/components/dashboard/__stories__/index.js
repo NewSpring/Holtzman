@@ -66,13 +66,15 @@ story
         title={title}
         subNav={subNav}
       >
-        <Activity
-          status="success"
-          date="2016-12-25"
-          message="Yay! This is so great for you!"
-          linkText="You KNOW You Want To Click This"
-          linkUrl="https://my.newspring.cc"
-        />
+        <div className="soft-double">
+          <Activity
+            status="success"
+            date="2016-12-25"
+            message="Yay! This is so great for you!"
+            linkText="You KNOW You Want To Click This"
+            linkUrl="https://my.newspring.cc"
+          />
+        </div>
       </Dashboard>
     );
   }));

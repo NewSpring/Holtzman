@@ -38,7 +38,12 @@ exports[`Dashboard should render with the children 1`] = `
     </div>
   </div>
   <div
-    className="background--light-secondary outlined--top outlined--light">
+    className="background--light-secondary outlined--top outlined--light"
+    style={
+      Object {
+        "borderWidth": "1px",
+      }
+    }>
     <div>
       <Activity
         date="2016-12-25"
@@ -91,7 +96,12 @@ exports[`Dashboard should render with the default set of props 1`] = `
     </div>
   </div>
   <div
-    className="background--light-secondary outlined--top outlined--light">
+    className="background--light-secondary outlined--top outlined--light"
+    style={
+      Object {
+        "borderWidth": "1px",
+      }
+    }>
     <div />
   </div>
 </div>

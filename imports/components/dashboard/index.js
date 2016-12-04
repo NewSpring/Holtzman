@@ -56,7 +56,7 @@ const Dashboard = ({
         {getLinks(subNav)}
       </div>
     </div>
-    <div className="background--light-secondary outlined--top outlined--light">
+    <div className="background--light-secondary outlined--top outlined--light" style={{ borderWidth: "1px" }}>
       <div>
         {children}
       </div>
