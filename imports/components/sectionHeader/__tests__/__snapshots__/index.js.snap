@@ -1,0 +1,83 @@
+exports[`SectionHeader should accept a link prop 1`] = `
+<SectionHeader
+  link={
+    <a>
+      More...
+    </a>
+  }>
+  <div
+    className="background--light-secondary one-whole">
+    <div
+      className="one-half floating display-inline-block soft-half floating--left">
+      <h6
+        className="floating__item text-dark-primary flush" />
+    </div>
+    <div
+      className="one-half floating display-inline-block soft-half floating--right">
+      <a>
+        More...
+      </a>
+    </div>
+  </div>
+</SectionHeader>
+`;
+
+exports[`SectionHeader should accept a title prop 1`] = `
+<SectionHeader
+  title="hello world">
+  <div
+    className="background--light-secondary one-whole">
+    <div
+      className="one-half floating display-inline-block soft-half floating--left">
+      <h6
+        className="floating__item text-dark-primary flush">
+        hello world
+      </h6>
+    </div>
+    <div
+      className="one-half floating display-inline-block soft-half floating--right" />
+  </div>
+</SectionHeader>
+`;
+
+exports[`SectionHeader should render properly with all props 1`] = `
+<SectionHeader
+  link={
+    <a>
+      More...
+    </a>
+  }
+  title="Harambe">
+  <div
+    className="background--light-secondary one-whole">
+    <div
+      className="one-half floating display-inline-block soft-half floating--left">
+      <h6
+        className="floating__item text-dark-primary flush">
+        Harambe
+      </h6>
+    </div>
+    <div
+      className="one-half floating display-inline-block soft-half floating--right">
+      <a>
+        More...
+      </a>
+    </div>
+  </div>
+</SectionHeader>
+`;
+
+exports[`SectionHeader should render with minimal props 1`] = `
+<SectionHeader>
+  <div
+    className="background--light-secondary one-whole">
+    <div
+      className="one-half floating display-inline-block soft-half floating--left">
+      <h6
+        className="floating__item text-dark-primary flush" />
+    </div>
+    <div
+      className="one-half floating display-inline-block soft-half floating--right" />
+  </div>
+</SectionHeader>
+`;
