@@ -1,40 +1,50 @@
 /* eslint-disable */
-// import { storiesOf } from "@kadira/storybook";
-// import {
-//   withKnobs,
-//   text,
-//   boolean,
-// } from "@kadira/storybook-addon-knobs";
-// import withReadme from "storybook-readme/with-readme";
-// import backgrounds from "react-storybook-addon-backgrounds";
-// import centered from "/.storybook/decorators/centered";
-// import defaultColors from "/.storybook/defaults";
 
-// import Readme from "./Layout.md";
-// import Layout from "../Layout";
+import { storiesOf } from "@kadira/storybook";
+import {
+  withKnobs,
+  text,
+  select,
+  object,
+  boolean,
+} from "@kadira/storybook-addon-knobs";
+import withReadme from "storybook-readme/with-readme";
+import backgrounds from "react-storybook-addon-backgrounds";
+import centered from "/.storybook/decorators/centered";
+import defaultColors from "/.storybook/defaults";
 
-// const story = storiesOf("AddSchedule", module)
-//   .addDecorator(withKnobs)
-//   .addDecorator(centered)
-//   .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
-//   ;
+import Readme from "./Layout.md";
+import Layout from "../Layout";
 
-// story
-//   .add("Layout", withReadme(Readme, () => (
-//     <Layout
-//       accounts={[{value: "General Fund"}]}
-//       existing={{
-//         amount: 10,
-//         details: [{
-//           account: { name: "Step Up", id: 180}
-//         }],
-//         next: new Date("2025", "01", "01"),
-//         schedule: {value: "Monthly"},
-//       }}
-//       onClick={() => { alert("clicked"); }}
-//       ready={true}
-//       state={{}}
-//       text="Make Schedule Now!"
-//       total={10}
-//     />
-//   )));
+const story = storiesOf("Schedules", module)
+  .addDecorator(withKnobs)
+  .addDecorator(centered)
+  .addDecorator(backgrounds([{ name: "light-secondary", value: "#f7f7f7", default: true }]))
+  ;
+
+story
+  .add("Schedule Your Giving", withReadme(Readme, () => (
+    // <Layout
+    //     accounts={[{value: "General Fund"}]}
+    //     state={{}}
+    //     text="Make Schedules Now"
+    //   />
+    <Layout
+      accounts={[{value: "General Fund"}]}
+      date={{}}
+      existing={{
+        amount: 10,
+        details: [{
+          account: { name: "Step Up", id: 180}
+        }],
+        next: new Date("2025", "01", "01"),
+        schedule: {value: "Monthly"},
+      }}
+      format={() => {}}
+      onSubmitSchedule={() => { alert("clicked"); }}
+      ready={true}
+      state={{}}
+      text="Make Schedule Now!"
+      total={10}
+    />
+  )));
