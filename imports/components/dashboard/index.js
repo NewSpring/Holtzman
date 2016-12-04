@@ -57,7 +57,7 @@ const Dashboard = ({
       </div>
     </div>
     <div className="background--light-secondary outlined--top outlined--light">
-      <div className="soft push">
+      <div>
         {children}
       </div>
     </div>

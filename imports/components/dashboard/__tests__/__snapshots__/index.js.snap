@@ -39,8 +39,7 @@ exports[`Dashboard should render with the children 1`] = `
   </div>
   <div
     className="background--light-secondary outlined--top outlined--light">
-    <div
-      className="soft push">
+    <div>
       <Activity
         date="2016-12-25"
         linkText="You KNOW You Want To Click This"
@@ -93,8 +92,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
   </div>
   <div
     className="background--light-secondary outlined--top outlined--light">
-    <div
-      className="soft push" />
+    <div />
   </div>
 </div>
 `;
