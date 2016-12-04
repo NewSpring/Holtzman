@@ -151,6 +151,27 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 204,
+    "source": Source {
+      "body": "
+  query GetPersonsHome($cache: Boolean) {
+    person: currentPerson {
+      home(cache: $cache) {
+        street1
+        street2
+        state
+        city
+        zip
+        country
+      }
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 

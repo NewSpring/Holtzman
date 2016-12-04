@@ -222,6 +222,32 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 336,
+    "source": Source {
+      "body": "
+  query GeoLocate($origin: String, $destinations: String) {
+    geolocate(origin: $origin, destinations: $destinations) {
+      rows {
+        elements {
+          distance {
+            text
+            value
+          }
+          duration {
+            text
+            value
+          }
+          status
+        }
+      }
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 

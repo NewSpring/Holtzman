@@ -992,6 +992,23 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 111,
+    "source": Source {
+      "body": "
+  query GetCampuses {
+    campuses {
+      name
+      shortCode
+      id: entityId
+      locationId
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 
@@ -1188,6 +1205,27 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 253,
+    "source": Source {
+      "body": "
+  query GetPersonForSettings($cache: Boolean) {
+    person: currentPerson(cache: $cache) {
+      campus(cache: $cache) { id: entityId }
+      firstName
+      lastName
+      nickName
+      email
+      birthDay
+      birthMonth
+      birthYear
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 

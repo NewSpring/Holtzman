@@ -575,6 +575,51 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 659,
+    "source": Source {
+      "body": "
+  query getAlbum($id: ID!) {
+    content: node(id: $id) {
+      id
+      ... on Content {
+        entryId: id
+        title
+        status
+        channelName
+        meta {
+          urlTitle
+          siteId
+          date
+          channelId
+        }
+        content {
+          tracks {
+            title
+            duration
+            file: s3
+          }
+          images(sizes: [\"large\", \"medium\", \"small\", \"xsmall\"]) {
+            fileName
+            fileType
+            fileLabel
+            size
+            url
+          }
+          colors {
+            value
+            description
+          }
+          isLight
+        }
+      }
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 

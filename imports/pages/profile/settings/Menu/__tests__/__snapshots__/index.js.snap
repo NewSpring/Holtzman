@@ -58,6 +58,20 @@ Object {
     },
   ],
   "kind": "Document",
+  "loc": Object {
+    "end": 76,
+    "source": Source {
+      "body": "
+  query GetPhoto {
+    currentPerson(cache: false) {
+      photo
+    }
+  }
+",
+      "name": "GraphQL",
+    },
+    "start": 3,
+  },
 }
 `;
 
