@@ -4,10 +4,11 @@ import History from "./history";
 import Now from "./now";
 import Review from "./review";
 import Schedules from "./schedules";
+import Layout from "./Layout";
 
 export default {
   path: "give",
-  // indexRoute: { component: Home },
+  indexRoute: { component: Layout },
   childRoutes: [
     ...Campaign.Routes,
     ...History.Routes,
