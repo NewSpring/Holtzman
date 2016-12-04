@@ -4,7 +4,7 @@ exports[`SmallButton should accept a className prop 1`] = `
   text="See All">
   <button
     className="
-      btn btn--small
+      btn btn--small@next
       
       harambe
     "
@@ -21,7 +21,7 @@ exports[`SmallButton should accept a className prop 2`] = `
   text="See All">
   <Link
     className="
-      btn btn--small
+      btn btn--small@next
       
       harambe
     "
@@ -30,7 +30,7 @@ exports[`SmallButton should accept a className prop 2`] = `
     to="http://example.com">
     <a
       className="
-        btn btn--small
+        btn btn--small@next
         
         harambe
       "
@@ -48,7 +48,7 @@ exports[`SmallButton should accept a linkUrl and render an anchor instead of but
   text="See All">
   <Link
     className="
-      btn btn--small
+      btn btn--small@next
       
       
     "
@@ -57,7 +57,7 @@ exports[`SmallButton should accept a linkUrl and render an anchor instead of but
     to="http://example.com">
     <a
       className="
-        btn btn--small
+        btn btn--small@next
         
         
       "
@@ -79,7 +79,7 @@ exports[`SmallButton should accept a style prop 1`] = `
   text="See All">
   <button
     className="
-      btn btn--small
+      btn btn--small@next
       
       
     "
@@ -104,7 +104,7 @@ exports[`SmallButton should accept a style prop 2`] = `
   text="See All">
   <Link
     className="
-      btn btn--small
+      btn btn--small@next
       
       
     "
@@ -117,7 +117,7 @@ exports[`SmallButton should accept a style prop 2`] = `
     to="http://example.com">
     <a
       className="
-        btn btn--small
+        btn btn--small@next
         
         
       "
@@ -139,7 +139,7 @@ exports[`SmallButton should accept an onClick handler 1`] = `
   text="See All">
   <button
     className="
-      btn btn--small
+      btn btn--small@next
       
       
     "
@@ -156,7 +156,7 @@ exports[`SmallButton should accept disabled prop 1`] = `
   text="See All">
   <button
     className="
-      btn btn--small
+      btn btn--small@next
       btn--disabled
       
     "
@@ -173,7 +173,7 @@ exports[`SmallButton should accept disabled prop 2`] = `
   text="See All">
   <Link
     className="
-      btn btn--small
+      btn btn--small@next
       btn--disabled
       
     "
@@ -182,7 +182,7 @@ exports[`SmallButton should accept disabled prop 2`] = `
     to="http://example.com">
     <a
       className="
-        btn btn--small
+        btn btn--small@next
         btn--disabled
         
       "
@@ -199,7 +199,7 @@ exports[`SmallButton should accept text prop 1`] = `
   text="See All">
   <button
     className="
-      btn btn--small
+      btn btn--small@next
       
       
     "
@@ -215,7 +215,7 @@ exports[`SmallButton should accept text prop 2`] = `
   text="See All">
   <Link
     className="
-      btn btn--small
+      btn btn--small@next
       
       
     "
@@ -224,7 +224,7 @@ exports[`SmallButton should accept text prop 2`] = `
     to="http://example.com">
     <a
       className="
-        btn btn--small
+        btn btn--small@next
         
         
       "
@@ -240,7 +240,7 @@ exports[`SmallButton should render with minimal props 1`] = `
 <SmallButton>
   <button
     className="
-      btn btn--small
+      btn btn--small@next
       
       
     "
