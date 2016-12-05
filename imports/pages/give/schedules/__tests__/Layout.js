@@ -357,7 +357,7 @@ it("collapseSchedule sets state to null", () => {
 it("formatDate returns a formatted data", () => {
   const wrapper = shallow(generateComponent());
   const result = wrapper.instance().formatDate("12-12-2012");
-  expect(result).toBe("Dec 12, 2012");
+  expect(result).toBe("Dec 13, 2012");
 });
 
 it("capitalizeFirstLetter does that", () => {

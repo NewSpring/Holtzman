@@ -112,7 +112,7 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 2012
+                      Dec 13, 2012
                     </em>
                   </small>
                 </p>
@@ -209,7 +209,7 @@ exports[`test doesn't render incompleted schedule as completed schedule 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 1999
+                      Dec 13, 1999
                     </em>
                   </small>
                 </p>
@@ -385,7 +385,7 @@ exports[`test doesn't render one time completed schedule if no details 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 1999
+                      Dec 13, 1999
                     </em>
                   </small>
                 </p>
@@ -561,7 +561,7 @@ exports[`test doesn't render one time completed schedule if no details account 1
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 1999
+                      Dec 13, 1999
                     </em>
                   </small>
                 </p>
@@ -897,7 +897,7 @@ exports[`test renders loading if accounts not ready 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 2012
+                      Dec 13, 2012
                     </em>
                   </small>
                 </p>
@@ -1067,7 +1067,7 @@ exports[`test renders loading if no accounts 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 2012
+                      Dec 13, 2012
                     </em>
                   </small>
                 </p>
@@ -1237,7 +1237,7 @@ exports[`test renders loading if no accounts 2`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 2012
+                      Dec 13, 2012
                     </em>
                   </small>
                 </p>
@@ -1593,7 +1593,7 @@ exports[`test renders one time completed schedules 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 1999
+                      Dec 13, 1999
                     </em>
                   </small>
                 </p>
@@ -1836,7 +1836,7 @@ exports[`test renders with props 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 2012
+                      Dec 13, 2012
                     </em>
                   </small>
                 </p>
@@ -2002,7 +2002,7 @@ exports[`test renders without schedule details 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 2012
+                      Dec 13, 2012
                     </em>
                   </small>
                 </p>
@@ -2168,7 +2168,7 @@ exports[`test renders without schedule details account 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 2012
+                      Dec 13, 2012
                     </em>
                   </small>
                 </p>
@@ -2334,7 +2334,7 @@ exports[`test works with nickName 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 2012
+                      Dec 13, 2012
                     </em>
                   </small>
                 </p>
@@ -2477,7 +2477,7 @@ exports[`test works without recoverableSchedules 1`] = `
                   className="flush soft-half-top text-dark-tertiary">
                   <small>
                     <em>
-                      Dec 11, 2012
+                      Dec 13, 2012
                     </em>
                   </small>
                 </p>

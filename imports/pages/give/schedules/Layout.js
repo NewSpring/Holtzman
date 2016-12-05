@@ -49,8 +49,10 @@ export default class Layout extends Component {
     });
   }
 
+  // XXX this is a timezone related formatting issue
+  // so add a day to show correct dates
   formatDate = (date) => (
-    moment(new Date(date)).add(4, "hours").format("MMM D, YYYY")
+    moment(date).add(1, "day").format("MMM D, YYYY")
   )
 
   capitalizeFirstLetter = (string) => (
@@ -191,10 +193,9 @@ export default class Layout extends Component {
                     if (!schedule.details || !schedule.details[0].account) {
                       return null;
                     }
-
                     const complete = false;
                     if (
-                      new Date(schedule.next) < moment().add(1, "day") &&
+                      moment(schedule.next).add(1, "day") < moment().add(1, "day") &&
                       schedule.schedule.value === "One-Time"
                     ) {
                       hasCompletedSchedules = true;
