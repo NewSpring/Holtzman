@@ -1,0 +1,58 @@
+exports[`ProgressBar should render with minimal props 1`] = `
+<ProgressBar>
+  <div
+    className="soft-half"
+    style={
+      Object {
+        "color": "#fff",
+      }
+    }>
+    <div
+      className="floating floating--left one-half"
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }>
+      <h6
+        className="floating--item"
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        } />
+    </div>
+    <div
+      className="floating floating--right one-half"
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }>
+      <h5
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        } />
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#2a4930",
+          "height": "3px",
+          "width": "100%",
+        }
+      }>
+      <div
+        style={
+          Object {
+            "backgroundColor": "white",
+            "height": "100%",
+            "width": "0%",
+          }
+        } />
+    </div>
+  </div>
+</ProgressBar>
+`;

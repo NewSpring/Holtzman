@@ -15,16 +15,6 @@ const story = storiesOf("ProgressBar", module)
   ;
 
 story
-  .add("Dark", withReadme(
-    Readme,
-    () => (
-      <ProgressBar
-        title="My Fund"
-        total="1000"
-        percentDone="35"
-      />
-    )
-  ))
   .add("Light", withReadme(
     Readme,
     () => (
@@ -33,6 +23,16 @@ story
         total="1000"
         percentDone="35"
         theme="light"
+      />
+    )
+  ))
+  .add("Dark", withReadme(
+    Readme,
+    () => (
+      <ProgressBar
+        title="My Fund"
+        total="1000"
+        percentDone="35"
       />
     )
   ));
