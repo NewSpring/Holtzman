@@ -138,21 +138,21 @@ class CartContainer extends Component {
     if (newAmount === ".") newAmount = "0.0";
 
     let decimals = newAmount.split(".")[1];
-    if (decimals && decimals[0] === "0" && decimals.length > 2) {
-      const newDecimals = decimals.split(""); // turn into an array
-      newDecimals.splice(0, 1); // remove extra 0
-      newAmount = `${newAmount.split(".")[0]}.${newDecimals[0]}${newDecimals[1]}`;
-    }
+    // if (decimals && decimals[0] === "0" && decimals.length > 2) {
+    //   const newDecimals = decimals.split(""); // turn into an array
+    //   newDecimals.splice(0, 1); // remove extra 0
+    //   newAmount = `${newAmount.split(".")[0]}.${newDecimals[0]}${newDecimals[1]}`;
+    // }
 
     // XXX this is a hack becuase our components are not truely controlled right now
     // I'm not even sure how onBlur works on controlled components tbh
     // handles live typing of amounts with 0 in the decimal place or longer than 2 figures
-    decimals = newAmount.split(".")[1];
-    if (decimals && decimals[1] === "0") {
-      const newDecimals = decimals.split(""); // turn into an array
-      newDecimals.splice(1, 1); // remove extra 0
-      newAmount = `${newAmount.split(".")[0]}.${newDecimals[0]}${newDecimals[1]}`;
-    }
+    // decimals = newAmount.split(".")[1];
+    // if (decimals && decimals[1] === "0") {
+    //   const newDecimals = decimals.split(""); // turn into an array
+    //   newDecimals.splice(1, 1); // remove extra 0
+    //   newAmount = `${newAmount.split(".")[0]}.${newDecimals[0]}${newDecimals[1]}`;
+    // }
 
     // make sure the amount isn't longer than 2 decimals after the inline replacement
     decimals = newAmount.split(".")[1];
