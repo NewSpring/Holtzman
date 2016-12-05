@@ -23,6 +23,10 @@ export default class Layout extends Component {
     person: PropTypes.object,
   }
 
+  static defaultProps = {
+    schedules: [],
+  }
+
   state = {
     expandedSchedule: null,
   }

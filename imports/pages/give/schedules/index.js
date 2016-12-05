@@ -26,6 +26,12 @@ class TemplateWithoutData extends Component {
     give: PropTypes.object,
   }
 
+  static defaultProps = {
+    schedules: {
+      schedules: [],
+    },
+  }
+
   componentDidMount() {
     if (process.env.NATIVE) {
       const item = { title: "Schedule Your Giving" };
@@ -109,6 +115,7 @@ const SCHEDULED_TRANSACTIONS_QUERY = gql`
 `;
 
 const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY, {
+  skip: (ownProps) => !ownProps.authorized,
   options: { ssr: false, forceFetch: true },
   name: "schedules",
 });
@@ -132,13 +139,14 @@ const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, {
   name: "accounts",
 });
 
-const mapStateToProps = (store) => ({
-  give: store.give,
+const mapStateToProps = ({ give, accounts }) => ({
+  give,
+  authorized: accounts.authorized,
 });
 
-const Template = withFinancialAccounts(
-  withScheduledTransactions(
-    connect(mapStateToProps)(
+const Template = connect(mapStateToProps)(
+  withFinancialAccounts(
+    withScheduledTransactions(
       TemplateWithoutData
     )
   )
