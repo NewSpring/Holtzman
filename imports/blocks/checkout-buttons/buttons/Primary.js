@@ -49,7 +49,7 @@ const PrimaryButton = ({
   savedPayments,
   theme,
 }: IPrimaryButton) => {
-  let message: string = text || "Review Your Gift";
+  let message: string = text || "Review Contribution";
   if (!Meteor.userId()) message = "Sign In";
   return (
     <button
@@ -60,7 +60,7 @@ const PrimaryButton = ({
       data-id={dataId}
       style={style}
     >
-      {message}{" "}
+      {message}
     </button>
 
   );
