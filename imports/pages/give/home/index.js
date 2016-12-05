@@ -1,4 +1,5 @@
 // @flow
+// $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import Layout from "./Layout";
 
