@@ -313,7 +313,7 @@ exports[`test renders Confirm form 1`] = `
           className="btn soft-half-top one-whole"
           type="submit">
           <span>
-            Give Now
+            Give
           </span>
            
           <div
