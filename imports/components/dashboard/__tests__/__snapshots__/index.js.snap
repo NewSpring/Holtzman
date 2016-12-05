@@ -9,7 +9,7 @@ exports[`Dashboard should render with the children 1`] = `
     <div
       className="floating text-left">
       <Link
-        className="floating__item soft-half-sides push-right text-center outlined--bottom"
+        className="floating__item soft-half-sides push-right text-center plain outlined--bottom"
         onlyActiveOnIndex={false}
         style={Object {}}
         to="https://my.newspring.cc/give">
@@ -18,7 +18,7 @@ exports[`Dashboard should render with the children 1`] = `
         </h6>
       </Link>
       <Link
-        className="floating__item soft-half-sides push-right text-center text-dark-primary"
+        className="floating__item soft-half-sides push-right text-center plain text-dark-primary"
         onlyActiveOnIndex={false}
         style={Object {}}
         to="https://my.newspring.cc/give/now">
@@ -27,7 +27,7 @@ exports[`Dashboard should render with the children 1`] = `
         </h6>
       </Link>
       <Link
-        className="floating__item soft-half-sides push-right text-center text-dark-primary"
+        className="floating__item soft-half-sides push-right text-center plain text-dark-primary"
         onlyActiveOnIndex={false}
         style={Object {}}
         to="https://my.newspring.cc/give/history">
@@ -67,7 +67,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
     <div
       className="floating text-left">
       <Link
-        className="floating__item soft-half-sides push-right text-center outlined--bottom"
+        className="floating__item soft-half-sides push-right text-center plain outlined--bottom"
         onlyActiveOnIndex={false}
         style={Object {}}
         to="https://my.newspring.cc/give">
@@ -76,7 +76,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
         </h6>
       </Link>
       <Link
-        className="floating__item soft-half-sides push-right text-center text-dark-primary"
+        className="floating__item soft-half-sides push-right text-center plain text-dark-primary"
         onlyActiveOnIndex={false}
         style={Object {}}
         to="https://my.newspring.cc/give/now">
@@ -85,7 +85,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
         </h6>
       </Link>
       <Link
-        className="floating__item soft-half-sides push-right text-center text-dark-primary"
+        className="floating__item soft-half-sides push-right text-center plain text-dark-primary"
         onlyActiveOnIndex={false}
         style={Object {}}
         to="https://my.newspring.cc/give/history">
