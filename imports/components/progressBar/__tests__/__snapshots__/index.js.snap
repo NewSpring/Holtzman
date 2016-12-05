@@ -35,7 +35,6 @@ Object {
 exports[`ProgressBar should render with minimal props 1`] = `
 <ProgressBar>
   <div
-    className="soft-half"
     style={
       Object {
         "color": "#fff",
@@ -44,7 +43,7 @@ exports[`ProgressBar should render with minimal props 1`] = `
     <div
       className="floating floating--left one-half display-inline-block">
       <h5
-        className="floating--item display-inline-block"
+        className="floating__item display-inline-block"
         data-spec="title" />
     </div>
     <div

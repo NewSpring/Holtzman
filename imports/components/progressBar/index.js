@@ -43,9 +43,9 @@ export const themeStyles = (theme, percentDone) => {
 
 const ProgressBar = (props) => {
   return (
-    <div className="soft-half" style={{ ...themeStyles(props.theme).wrapper, ...props.style }}>
+    <div style={{ ...themeStyles(props.theme).wrapper, ...props.style }}>
       <div className="floating floating--left one-half display-inline-block">
-        <h5 className="floating--item display-inline-block" data-spec="title">
+        <h5 className="floating__item display-inline-block" data-spec="title">
           {props.title}
         </h5>
       </div>
