@@ -1,5 +1,6 @@
 // @flow
 import { Component } from "react";
+import { Meteor } from "meteor/meteor";
 import Layout from "./Layout";
 
 class Home extends Component {
@@ -17,7 +18,15 @@ export const Hai = () => (
 );
 
 const Routes = [
-  { path: "home", component: Home, rightComponent: <Hai /> },
+  { path: "home",
+    component: Home,
+    rightComponent: <Hai />,
+    onEnter: (nextState: Object, replace: Function) => {
+      if (!Meteor.userId()) {
+        replace("/give/now");
+      }
+    },
+  },
 ];
 
 export default {
