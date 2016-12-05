@@ -8,7 +8,7 @@
 />
 */
 
-const themeStyles = (theme, percentDone) => {
+export const themeStyles = (theme, percentDone) => {
   if (theme === "light") {
     return {
       wrapper: {
@@ -43,20 +43,22 @@ const themeStyles = (theme, percentDone) => {
 
 const ProgressBar = (props) => {
   return (
-    <div className="soft-half" style={themeStyles(props.theme).wrapper}>
+    <div className="soft-half" style={{ ...themeStyles(props.theme).wrapper, ...props.style }}>
       <div className="floating floating--left one-half display-inline-block">
-        <h5 className="floating--item display-inline-block">
+        <h5 className="floating--item display-inline-block" data-spec="title">
           {props.title}
         </h5>
       </div>
       <div className="floating floating--middle text-right one-half display-inline-block">
         <h6 className="display-inline-block floating__item">$</h6>
-        <h4 className="display-inline-block floating__item">
+        <h4 className="display-inline-block floating__item" data-spec="total">
           {props.total}
         </h4>
       </div>
       <div className="one-whole" style={themeStyles(props.theme).progressBackground}>
-        <div style={themeStyles(props.theme, props.percentDone).progress} />
+        <div
+          style={themeStyles(props.theme, props.percentDone).progress}
+        />
       </div>
     </div>
   );
