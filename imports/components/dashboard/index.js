@@ -14,6 +14,7 @@ const getLinkClasses = (isActive: boolean) => {
     "soft-half-sides",
     "push-right",
     "text-center",
+    "plain",
   ];
 
   if (isActive) {
