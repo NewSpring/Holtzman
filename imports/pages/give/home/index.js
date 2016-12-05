@@ -1,15 +1,10 @@
 // @flow
-import { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import Layout from "./Layout";
 
-class Home extends Component {
-  render() {
-    return (
-      <Layout />
-    );
-  }
-}
+const Home = () => (
+  <Layout />
+);
 
 export const Hai = () => (
   <div className="locked-ends locked-sides background--primary">
