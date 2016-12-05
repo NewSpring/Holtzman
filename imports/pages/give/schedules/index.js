@@ -153,7 +153,7 @@ const Template = connect(mapStateToProps)(
 );
 
 const Routes = [
-  { path: "schedules", component: Template },
+  { path: "schedules", component: Template, onEnter: (nextState: Object, replace: Function) => replace("/give/home") },
   {
     path: "schedules/transfer",
     component: Authorized,
