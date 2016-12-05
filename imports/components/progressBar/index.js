@@ -8,18 +8,15 @@
 />
 */
 
-const inlineBlock = { display: "inline-block" };
-
 const themeStyles = (theme, percentDone) => {
   if (theme === "light") {
     return {
       wrapper: {
-        color: "#6bac43",
+        color: "#303030",
       },
       progressBackground: {
-        width: "100%",
-        height: "3px",
-        backgroundColor: "#f7f7f7",
+        height: "6px",
+        backgroundColor: "#dddddd",
       },
       progress: {
         height: "100%",
@@ -33,8 +30,7 @@ const themeStyles = (theme, percentDone) => {
       color: "#fff",
     },
     progressBackground: {
-      width: "100%",
-      height: "3px",
+      height: "6px",
       backgroundColor: "#2a4930",
     },
     progress: {
@@ -48,13 +44,18 @@ const themeStyles = (theme, percentDone) => {
 const ProgressBar = (props) => {
   return (
     <div className="soft-half" style={themeStyles(props.theme).wrapper}>
-      <div className="floating floating--left one-half" style={inlineBlock}>
-        <h6 className="floating--item" style={inlineBlock}>{props.title}</h6>
+      <div className="floating floating--left one-half display-inline-block">
+        <h5 className="floating--item display-inline-block">
+          {props.title}
+        </h5>
       </div>
-      <div className="floating floating--right one-half" style={inlineBlock}>
-        <h5 style={inlineBlock}>${props.total}</h5>
+      <div className="floating floating--middle text-right one-half display-inline-block">
+        <h6 className="display-inline-block floating__item">$</h6>
+        <h4 className="display-inline-block floating__item">
+          {props.total}
+        </h4>
       </div>
-      <div style={themeStyles(props.theme).progressBackground}>
+      <div className="one-whole" style={themeStyles(props.theme).progressBackground}>
         <div style={themeStyles(props.theme, props.percentDone).progress} />
       </div>
     </div>
