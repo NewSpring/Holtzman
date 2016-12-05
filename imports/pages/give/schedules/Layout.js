@@ -304,7 +304,7 @@ export default class Layout extends Component {
 
                       let complete = false;
                       if (
-                        new Date(schedule.next) < moment().add(1, "day") &&
+                        moment(schedule.next).add(1, "day") < moment().add(1, "day") &&
                         schedule.schedule.value === "One-Time"
                       ) {
                         complete = true;

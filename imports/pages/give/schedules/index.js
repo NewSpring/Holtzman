@@ -82,6 +82,7 @@ const SCHEDULED_TRANSACTIONS_QUERY = gql`
       next
       end
       id
+      entityId
       reminderDate
       code
       gateway
@@ -107,8 +108,9 @@ const SCHEDULED_TRANSACTIONS_QUERY = gql`
   }
 `;
 
-const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY, { name: "schedules" }, {
-  options: { ssr: false },
+const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY, {
+  options: { ssr: false, forceFetch: true },
+  name: "schedules",
 });
 
 const FINANCIAL_ACCOUNTS_QUERY = gql`
@@ -125,16 +127,17 @@ const FINANCIAL_ACCOUNTS_QUERY = gql`
   }
 `;
 
-const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" }, {
+const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, {
   options: { ssr: true },
+  name: "accounts",
 });
 
 const mapStateToProps = (store) => ({
   give: store.give,
 });
 
-const Template = withScheduledTransactions(
-  withFinancialAccounts(
+const Template = withFinancialAccounts(
+  withScheduledTransactions(
     connect(mapStateToProps)(
       TemplateWithoutData
     )
