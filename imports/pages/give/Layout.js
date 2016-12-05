@@ -57,9 +57,7 @@ class Layout extends Component {
 
   getActive = (props: Object) => {
     const active = props.location.pathname.split("/");
-    active.shift();
-    active.shift();
-    return find(props.routes, { path: active[0] });
+    return find(props.routes, { path: active[2] });
   }
 
   getRightComponent = (props: Object) => {
