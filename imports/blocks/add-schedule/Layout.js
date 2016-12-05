@@ -182,7 +182,7 @@ class Layout extends Component {
             <CheckoutButtons
               disabled={disableCheckout}
               onClick={onSubmitSchedule}
-              text={text || "Schedule Now"}
+              text={text || "Review Schedule"}
               dataId={dataId}
               disabledGuest
             />
