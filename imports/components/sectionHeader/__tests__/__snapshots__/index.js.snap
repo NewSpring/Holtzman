@@ -6,14 +6,14 @@ exports[`SectionHeader should accept a link prop 1`] = `
     </a>
   }>
   <div
-    className="background--light-secondary one-whole">
+    className="one-whole">
     <div
-      className="one-half floating display-inline-block soft-half floating--left">
+      className="one-half floating display-inline-block floating--left soft">
       <h6
-        className="floating__item text-dark-primary flush" />
+        className="floating__item text-dark-tertiary flush" />
     </div>
     <div
-      className="one-half floating display-inline-block soft-half floating--right">
+      className="one-half floating display-inline-block floating--right soft soft-half-right">
       <a>
         More...
       </a>
@@ -26,16 +26,16 @@ exports[`SectionHeader should accept a title prop 1`] = `
 <SectionHeader
   title="hello world">
   <div
-    className="background--light-secondary one-whole">
+    className="one-whole">
     <div
-      className="one-half floating display-inline-block soft-half floating--left">
+      className="one-half floating display-inline-block floating--left soft">
       <h6
-        className="floating__item text-dark-primary flush">
+        className="floating__item text-dark-tertiary flush">
         hello world
       </h6>
     </div>
     <div
-      className="one-half floating display-inline-block soft-half floating--right" />
+      className="one-half floating display-inline-block floating--right soft soft-half-right" />
   </div>
 </SectionHeader>
 `;
@@ -49,16 +49,16 @@ exports[`SectionHeader should render properly with all props 1`] = `
   }
   title="Harambe">
   <div
-    className="background--light-secondary one-whole">
+    className="one-whole">
     <div
-      className="one-half floating display-inline-block soft-half floating--left">
+      className="one-half floating display-inline-block floating--left soft">
       <h6
-        className="floating__item text-dark-primary flush">
+        className="floating__item text-dark-tertiary flush">
         Harambe
       </h6>
     </div>
     <div
-      className="one-half floating display-inline-block soft-half floating--right">
+      className="one-half floating display-inline-block floating--right soft soft-half-right">
       <a>
         More...
       </a>
@@ -70,14 +70,14 @@ exports[`SectionHeader should render properly with all props 1`] = `
 exports[`SectionHeader should render with minimal props 1`] = `
 <SectionHeader>
   <div
-    className="background--light-secondary one-whole">
+    className="one-whole">
     <div
-      className="one-half floating display-inline-block soft-half floating--left">
+      className="one-half floating display-inline-block floating--left soft">
       <h6
-        className="floating__item text-dark-primary flush" />
+        className="floating__item text-dark-tertiary flush" />
     </div>
     <div
-      className="one-half floating display-inline-block soft-half floating--right" />
+      className="one-half floating display-inline-block floating--right soft soft-half-right" />
   </div>
 </SectionHeader>
 `;

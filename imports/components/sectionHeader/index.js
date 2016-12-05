@@ -1,5 +1,5 @@
 
-const halvesClasses = "one-half floating display-inline-block soft-half";
+const halvesClasses = "one-half floating display-inline-block";
 
 type ISectionHeader = {
   title?: string,
@@ -7,13 +7,13 @@ type ISectionHeader = {
 };
 
 const SectionHeader = ({ title, link }: ISectionHeader) =>
-  <div className="background--light-secondary one-whole">
-    <div className={`${halvesClasses} floating--left`}>
-      <h6 className="floating__item text-dark-primary flush">
+  <div className="one-whole">
+    <div className={`${halvesClasses} floating--left soft`}>
+      <h6 className="floating__item text-dark-tertiary flush">
         {title}
       </h6>
     </div>
-    <div className={`${halvesClasses} floating--right`}>
+    <div className={`${halvesClasses} floating--right soft soft-half-right`}>
       {link}
     </div>
   </div>
