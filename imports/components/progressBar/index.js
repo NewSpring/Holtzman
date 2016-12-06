@@ -50,27 +50,25 @@ const ProgressBar = ({
   total,
   percentDone,
   style,
-}: IProgressBar) => {
-  return (
-    <div style={{ ...themeStyles(theme).wrapper, ...style }}>
-      <div className="floating floating--left one-half display-inline-block">
-        <h5 className="floating__item display-inline-block" data-spec="title">
-          {title}
-        </h5>
-      </div>
-      <div className="floating floating--middle text-right one-half display-inline-block">
-        <h6 className="display-inline-block floating__item">$</h6>
-        <h4 className="display-inline-block floating__item" data-spec="total">
-          {total}
-        </h4>
-      </div>
-      <div className="one-whole" style={themeStyles(theme).progressBackground}>
-        <div
-          style={themeStyles(theme, percentDone).progress}
-        />
-      </div>
+}: IProgressBar) =>
+  <div style={{ ...themeStyles(theme).wrapper, ...style }}>
+    <div className="floating floating--left one-half display-inline-block">
+      <h5 className="floating__item display-inline-block" data-spec="title">
+        {title}
+      </h5>
     </div>
-  );
-};
+    <div className="floating floating--middle text-right one-half display-inline-block">
+      <h6 className="display-inline-block floating__item">$</h6>
+      <h4 className="display-inline-block floating__item" data-spec="total">
+        {total}
+      </h4>
+    </div>
+    <div className="one-whole" style={themeStyles(theme).progressBackground}>
+      <div
+        style={themeStyles(theme, percentDone).progress}
+      />
+    </div>
+  </div>
+  ;
 
 export default ProgressBar;
