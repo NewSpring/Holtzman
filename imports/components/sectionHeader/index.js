@@ -1,4 +1,6 @@
 
+// @flow
+
 const halvesClasses = "one-half floating display-inline-block";
 
 type ISectionHeader = {
