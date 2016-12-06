@@ -2,8 +2,8 @@
 
 export const themeStyles = (
   theme: string,
-  percentDone: number,
-) => {
+  percentDone?: number,
+): Object => {
   if (theme === "light") {
     return {
       wrapper: {
