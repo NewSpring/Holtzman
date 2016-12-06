@@ -74,7 +74,6 @@ export class Template extends Component {
 
   render() {
     const { state, errors, total, data } = this.props.give;
-
     switch (state) {
       case "loading":
         return <Loading msg="We're Processing Your Contribution" />;
@@ -97,7 +96,7 @@ export class Template extends Component {
           onClick={() => {}}
         />);
       default:
-        return <Layout {...data} onSubmit={this.onSubmit} />;
+        return <Layout {...this.props.give} onSubmit={this.onSubmit} />;
     }
   }
 }
