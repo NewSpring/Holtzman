@@ -1,14 +1,9 @@
-/*
-<ProgressBar
-  title={string}
-  total={string}
-  percentDone={?number}
-  theme={?string = "light" || "dark" } // default dark
-  style={?object}
-/>
-*/
+// @flow
 
-export const themeStyles = (theme, percentDone) => {
+export const themeStyles = (
+  theme: string,
+  percentDone: number,
+) => {
   if (theme === "light") {
     return {
       wrapper: {
@@ -41,23 +36,37 @@ export const themeStyles = (theme, percentDone) => {
   };
 };
 
-const ProgressBar = (props) => {
+type IProgressBar = {
+  theme: string,
+  title: string,
+  total: string,
+  percentDone: number,
+  style: Object,
+};
+
+const ProgressBar = ({
+  theme,
+  title,
+  total,
+  percentDone,
+  style,
+}: IProgressBar) => {
   return (
-    <div style={{ ...themeStyles(props.theme).wrapper, ...props.style }}>
+    <div style={{ ...themeStyles(theme).wrapper, ...style }}>
       <div className="floating floating--left one-half display-inline-block">
         <h5 className="floating__item display-inline-block" data-spec="title">
-          {props.title}
+          {title}
         </h5>
       </div>
       <div className="floating floating--middle text-right one-half display-inline-block">
         <h6 className="display-inline-block floating__item">$</h6>
         <h4 className="display-inline-block floating__item" data-spec="total">
-          {props.total}
+          {total}
         </h4>
       </div>
-      <div className="one-whole" style={themeStyles(props.theme).progressBackground}>
+      <div className="one-whole" style={themeStyles(theme).progressBackground}>
         <div
-          style={themeStyles(props.theme, props.percentDone).progress}
+          style={themeStyles(theme, percentDone).progress}
         />
       </div>
     </div>
