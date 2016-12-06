@@ -7,22 +7,45 @@ exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `
 
 exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `
 <Layout
-  onSubmit={[Function]}
-  payment={
+  data={
     Object {
-      "icon": "Visa",
-      "type": "cc",
+      "payment": Object {
+        "icon": "Visa",
+        "type": "cc",
+      },
+      "personal": Object {
+        "campus": "Web",
+        "campusId": 20,
+        "email": "web@newspring.cc",
+        "firstName": "Jeff",
+        "lastName": "Goldblumm",
+      },
     }
   }
-  personal={
+  onSubmit={[Function]}
+  savedAccount={
     Object {
-      "campus": "Web",
-      "campusId": 20,
-      "email": "web@newspring.cc",
-      "firstName": "Jeff",
-      "lastName": "Goldblumm",
+      "date": null,
+      "id": 18376,
+      "name": "Jeff%27s%20NS%20Visa",
+      "payment": Object {
+        "accountNumber": "411111******1112",
+        "paymentType": "Visa",
+      },
     }
-  } />
+  }
+  state="done"
+  total={1}
+  transactions={
+    Object {
+      "125": Object {
+        "label": "General%20Fund",
+        "value": 1,
+      },
+    }
+  }
+  url={false}
+  userId="jY4RT2WK55yKYtj4y" />
 `;
 
 exports[`GiveReviewTemplate returns <Loading /> component based on state 1`] = `
