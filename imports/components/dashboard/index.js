@@ -26,12 +26,25 @@ const getLinkClasses = (isActive: boolean) => {
   return classes.join(" ");
 };
 
+const getLinkStyles = (isActive: boolean) => {
+  const styles = {
+    borderBottom: "3px solid #FFFFFF",
+  };
+
+  if (isActive) {
+    styles.borderBottom = "";
+  }
+
+  return styles;
+};
+
 const getLinks = (subNav: ISubNav) => {
   const links = subNav.map((x, index) => (
     <Link
       key={index}
       to={x.linkUrl}
       className={getLinkClasses(x.isActive)}
+      style={getLinkStyles(x.isActive)}
     >
       <h6>{x.title}</h6>
     </Link>
