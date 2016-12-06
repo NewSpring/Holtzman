@@ -97,7 +97,7 @@ exports[`Layout disables checkout when not ready 1`] = `
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Schedule Now" />
+        text="Review Schedule" />
     </div>
   </Form>
 </div>
@@ -202,7 +202,7 @@ exports[`Layout disables checkout when total is negative 1`] = `
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Schedule Now" />
+        text="Review Schedule" />
     </div>
   </Form>
 </div>
@@ -307,7 +307,7 @@ exports[`Layout disables checkout when total is positive but not ready 1`] = `
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Schedule Now" />
+        text="Review Schedule" />
     </div>
   </Form>
 </div>
@@ -412,7 +412,7 @@ exports[`Layout disables checkout when total is undefined 1`] = `
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Schedule Now" />
+        text="Review Schedule" />
     </div>
   </Form>
 </div>
@@ -517,7 +517,7 @@ exports[`Layout enables checkout when total is positive and ready 1`] = `
       <Connect(Apollo(CheckoutButton))
         disabled={false}
         disabledGuest={true}
-        text="Schedule Now" />
+        text="Review Schedule" />
     </div>
   </Form>
 </div>
@@ -624,7 +624,7 @@ exports[`Layout renders the prefilled amount for an existing schedule 1`] = `
       <Connect(Apollo(CheckoutButton))
         disabled={false}
         disabledGuest={true}
-        text="Schedule Now" />
+        text="Review Schedule" />
     </div>
   </Form>
 </div>
@@ -729,7 +729,7 @@ exports[`Layout renders the prefilled date for an existing schedule  1`] = `
       <Connect(Apollo(CheckoutButton))
         disabled={false}
         disabledGuest={true}
-        text="Schedule Now" />
+        text="Review Schedule" />
     </div>
   </Form>
 </div>
@@ -834,7 +834,7 @@ exports[`Layout renders the prefilled frequency for an existing schedule  1`] = 
       <Connect(Apollo(CheckoutButton))
         disabled={false}
         disabledGuest={true}
-        text="Schedule Now" />
+        text="Review Schedule" />
     </div>
   </Form>
 </div>
@@ -939,7 +939,7 @@ exports[`Layout renders the prefilled fund for an existing schedule  1`] = `
       <Connect(Apollo(CheckoutButton))
         disabled={false}
         disabledGuest={true}
-        text="Schedule Now" />
+        text="Review Schedule" />
     </div>
   </Form>
 </div>
@@ -1044,7 +1044,7 @@ exports[`Layout renders when accounts & state exist 1`] = `
       <Connect(Apollo(CheckoutButton))
         disabled={true}
         disabledGuest={true}
-        text="Schedule Now" />
+        text="Review Schedule" />
     </div>
   </Form>
 </div>

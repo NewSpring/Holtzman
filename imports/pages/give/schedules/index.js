@@ -26,6 +26,12 @@ class TemplateWithoutData extends Component {
     give: PropTypes.object,
   }
 
+  static defaultProps = {
+    schedules: {
+      schedules: [],
+    },
+  }
+
   componentDidMount() {
     if (process.env.NATIVE) {
       const item = { title: "Schedule Your Giving" };
@@ -82,6 +88,7 @@ const SCHEDULED_TRANSACTIONS_QUERY = gql`
       next
       end
       id
+      entityId
       reminderDate
       code
       gateway
@@ -107,8 +114,10 @@ const SCHEDULED_TRANSACTIONS_QUERY = gql`
   }
 `;
 
-const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY, { name: "schedules" }, {
-  options: { ssr: false },
+const withScheduledTransactions = graphql(SCHEDULED_TRANSACTIONS_QUERY, {
+  skip: (ownProps) => !ownProps.authorized,
+  options: { ssr: false, forceFetch: true },
+  name: "schedules",
 });
 
 const FINANCIAL_ACCOUNTS_QUERY = gql`
@@ -125,17 +134,19 @@ const FINANCIAL_ACCOUNTS_QUERY = gql`
   }
 `;
 
-const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "accounts" }, {
+const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, {
   options: { ssr: true },
+  name: "accounts",
 });
 
-const mapStateToProps = (store) => ({
-  give: store.give,
+const mapStateToProps = ({ give, accounts }) => ({
+  give,
+  authorized: accounts.authorized,
 });
 
-const Template = withScheduledTransactions(
+const Template = connect(mapStateToProps)(
   withFinancialAccounts(
-    connect(mapStateToProps)(
+    withScheduledTransactions(
       TemplateWithoutData
     )
   )

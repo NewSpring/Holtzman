@@ -48,7 +48,7 @@ const BankFields = ({
             label="Account Type"
             onChange={saveData}
             validation={validate}
-            defaultValue={payment.accountType}
+            defaultValue={payment.accountType || "checking"}
             errorText="Please choose your account type"
             includeBlank
             items={[

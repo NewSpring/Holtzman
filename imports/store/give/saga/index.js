@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime";
 import { Meteor } from "meteor/meteor";
 import moment from "moment";
 import { takeLatest, takeEvery } from "redux-saga";
-import { fork, take, put, select } from "redux-saga/effects";
+import { fork, take, put, select, call } from "redux-saga/effects";
 import gql from "graphql-tag";
 
 import { GraphQL } from "../../../graphql";
@@ -85,12 +85,6 @@ function* recoverTransactions() {
 
   if (!user) yield take("ACCOUNTS.IS_AUTHORIZED");
 
-  user = Meteor.user();
-
-  if (user && user.profile && user.profile.reminderDate) {
-    yield put(actions.setReminder(user.profile.reminderDate));
-  }
-
   const query = gql`
     query GetInActiveSchedules($isActive: Boolean, $cache: Boolean) {
       schedules: scheduledTransactions(isActive: $isActive, cache: $cache) {
@@ -134,16 +128,18 @@ function* recoverTransactions() {
       };
     }
 
-    let time = new Date();
-    if (user && user.profile && user.profile.reminderDate) {
-      time = user.profile.reminderDate;
-    }
-    const now = new Date();
-
     yield put(actions.saveSchedules(bulkUpdate));
 
-    // only update the store if it is past the reminder date
-    if (now < time) return;
+    // delay to wait for published meteor user
+    yield call(() => new Promise((r) => setTimeout(r, 1000)));
+    user = Meteor.user();
+    if (user && user.profile && user.profile.reminderDate) {
+      yield put(actions.setReminder(user.profile.reminderDate));
+      const time = new Date(user.profile.reminderDate);
+      const now = new Date();
+      // only update the store if it is past the reminder date
+      if (now < time) return;
+    }
 
     const state = yield select();
     const { pathname } = state.routing.location;

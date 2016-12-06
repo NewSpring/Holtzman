@@ -88,7 +88,7 @@ const SCHEDULED_TRANSACTIONS_QUERY = gql`
       payment { paymentType, accountNumber, id }
       schedule { value, description }
     }
-    person: currentPerson { firstName, lastName }
+    person: currentPerson { nickName, firstName, lastName }
   }
 `;
 

@@ -1,53 +1,53 @@
 exports[`test should say \`Give Now using 4321\` if cardNumber 1`] = `
 <span>
-  Give Now using 4321
+  Give using 4321
 </span>
 `;
 
 exports[`test should say \`Give Now using 6789\` if accountNumber 1`] = `
 <span>
-  Give Now using 6789
+  Give using 6789
 </span>
 `;
 
 exports[`test should say \`Give Now\` with minimal props 1`] = `
 <span>
-  Give Now
+  Give
 </span>
 `;
 
 exports[`test should say \`Schedule Now using 4321\` if schedule and cardNumber 1`] = `
 <span>
-  Schedule Now using 4321
+  Schedule using 4321
 </span>
 `;
 
 exports[`test should say \`Schedule Now using 6789\` if schedule and accountNumber 1`] = `
 <span>
-  Schedule Now using 6789
+  Schedule using 6789
 </span>
 `;
 
 exports[`test should say \`Schedule Now\` if schedule present 1`] = `
 <span>
-  Schedule Now
+  Schedule
 </span>
 `;
 
 exports[`test should say \`Transfer Now using 4321\` if schedule and cardNumber 1`] = `
 <span>
-  Transfer Now using 4321
+  Transfer using 4321
 </span>
 `;
 
 exports[`test should say \`Transfer Now using 6789\` if recoverable schedule and accountNumber 1`] = `
 <span>
-  Transfer Now using 6789
+  Transfer using 6789
 </span>
 `;
 
 exports[`test should say \`Transfer Now\` if recoverable schedule 1`] = `
 <span>
-  Transfer Now
+  Transfer
 </span>
 `;

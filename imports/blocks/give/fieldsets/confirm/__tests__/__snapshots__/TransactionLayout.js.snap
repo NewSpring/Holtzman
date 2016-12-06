@@ -142,7 +142,7 @@ exports[`TransactionLayout should render with props 1`] = `
       className="btn soft-half-top one-whole"
       type="submit">
       <span>
-        Give Now using 6789
+        Give using 6789
       </span>
        
       <div
