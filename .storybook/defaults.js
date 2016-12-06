@@ -12,7 +12,7 @@ const defaultColors = [
 ];
 
 export default (...colors) => {
-  if (!colors) return [...defaultColors];
+  if (!colors.length) return [...defaultColors];
   return [...defaultColors]
     .filter(x => colors.indexOf(x.name) > -1);
 };

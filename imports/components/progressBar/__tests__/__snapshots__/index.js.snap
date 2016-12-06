@@ -1,0 +1,78 @@
+exports[`ProgressBar should generate a proper percentDone style 1`] = `
+Object {
+  "progress": Object {
+    "backgroundColor": "white",
+    "height": "100%",
+    "width": "25%",
+  },
+  "progressBackground": Object {
+    "backgroundColor": "#2a4930",
+    "height": "6px",
+  },
+  "wrapper": Object {
+    "color": "#fff",
+  },
+}
+`;
+
+exports[`ProgressBar should generate a proper percentDone style 2`] = `
+Object {
+  "progress": Object {
+    "backgroundColor": "#6bac43",
+    "height": "100%",
+    "width": "20%",
+  },
+  "progressBackground": Object {
+    "backgroundColor": "#dddddd",
+    "height": "6px",
+  },
+  "wrapper": Object {
+    "color": "#303030",
+  },
+}
+`;
+
+exports[`ProgressBar should render with minimal props 1`] = `
+<ProgressBar>
+  <div
+    style={
+      Object {
+        "color": "#fff",
+      }
+    }>
+    <div
+      className="floating floating--left one-half display-inline-block">
+      <h5
+        className="floating__item display-inline-block"
+        data-spec="title" />
+    </div>
+    <div
+      className="floating floating--middle text-right one-half display-inline-block">
+      <h6
+        className="display-inline-block floating__item">
+        $
+      </h6>
+      <h4
+        className="display-inline-block floating__item"
+        data-spec="total" />
+    </div>
+    <div
+      className="one-whole"
+      style={
+        Object {
+          "backgroundColor": "#2a4930",
+          "height": "6px",
+        }
+      }>
+      <div
+        style={
+          Object {
+            "backgroundColor": "white",
+            "height": "100%",
+            "width": "0%",
+          }
+        } />
+    </div>
+  </div>
+</ProgressBar>
+`;
