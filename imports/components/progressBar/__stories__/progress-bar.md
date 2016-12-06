@@ -6,7 +6,7 @@
 <ProgressBar
   title="My Fund"
   total="100"
-  percentDone= 50
+  percentDone=50
   theme="light"
   style={{backgroundColor: "#cccccc"}}
 />
