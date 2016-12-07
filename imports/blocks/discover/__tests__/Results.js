@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Results, {
   LoadingText,
   LoadMore,
@@ -16,7 +15,7 @@ describe("LoadingText", () => {
         loading: false,
       },
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders loading", () => {
@@ -25,7 +24,7 @@ describe("LoadingText", () => {
         loading: true,
       },
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -41,7 +40,7 @@ describe("LoadMore", () => {
       },
       loadMore: jest.fn(),
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("doesn't render if done", () => {
@@ -51,7 +50,7 @@ describe("LoadMore", () => {
       },
       loadMore: jest.fn(),
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -68,7 +67,7 @@ describe("Results", () => {
       },
       loadMore: jest.fn(),
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders no results", () => {
@@ -79,7 +78,7 @@ describe("Results", () => {
       },
       loadMore: jest.fn(),
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders loading", () => {
@@ -90,6 +89,6 @@ describe("Results", () => {
       },
       loadMore: jest.fn(),
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

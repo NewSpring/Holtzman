@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import SectionItem, {
   ExternalLinkWrapper,
   preloader,
@@ -27,14 +26,14 @@ describe("ExternalLinkWrapper", () => {
 
   it("renders external link", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders internal link", () => {
     const wrapper = shallow(generateComponent({
       to: "/test",
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -87,14 +86,14 @@ describe("ChildItem", () => {
 
   it("render with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("does not render if no section", () => {
     const wrapper = shallow(generateComponent({
       section: null,
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -124,14 +123,14 @@ describe("SingleItem", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("does not render if no section", () => {
     const wrapper = shallow(generateComponent({
       section: null,
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -198,7 +197,7 @@ describe("SectionItem", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("expandOrGo expands child sections", () => {

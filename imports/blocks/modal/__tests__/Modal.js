@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import SideModal from "../Modal";
 
@@ -42,28 +41,28 @@ afterEach(() => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("does not render if not visible", () => {
   const wrapper = shallow(generateComponent({
     visible: false,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("does not render if no component", () => {
   const wrapper = shallow(generateComponent({
     component: null,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("overrides with theme", () => {
   const wrapper = shallow(generateComponent({
     theme: "mytheme",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("scrolls window on render", () => {
@@ -80,7 +79,7 @@ it("updates styles with mobile styles", () => {
   const wrapper = shallow(generateComponent());
   expect(wrapper.instance().props.styles.transform).toBe("translateY(80px)");
   expect(wrapper.instance().props.styles.opacity).toBe(0);
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("updates styles with non mobile styles", () => {
@@ -90,7 +89,7 @@ it("updates styles with non mobile styles", () => {
   const wrapper = shallow(generateComponent());
   expect(wrapper.instance().props.styles.transform).toBe("translateY(-20px)");
   expect(wrapper.instance().props.styles.opacity).toBe(0);
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("updates cover header if state is different", () => {

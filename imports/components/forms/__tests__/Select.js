@@ -1,5 +1,4 @@
 import { shallow, mount } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import cloneDeep from "lodash.clonedeep";
 import Select from "../Select";
@@ -59,74 +58,74 @@ afterEach(() => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("overrides with theme if present", () => {
   const wrapper = shallow(generateComponent({
     theme: ["override"],
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("has active state", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ active: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("has focused state", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ focused: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("has error state", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ error: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("appends extra classes", () => {
   const wrapper = shallow(generateComponent({
     classes: ["append", "me"],
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("is active if selected prop", () => {
   const wrapper = shallow(generateComponent({
     selected: "2",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("can hide the label", () => {
   const wrapper = shallow(generateComponent({
     hideLabel: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("includes placeholder", () => {
   const wrapper = shallow(generateComponent({
     placeholder: "myPlaceholder",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("includes blank", () => {
   const wrapper = shallow(generateComponent({
     includeBlank: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("allows deselect", () => {
   const wrapper = shallow(generateComponent({
     deselect: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("updates state on mount if default value", () => {

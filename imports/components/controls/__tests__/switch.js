@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Switch from "../switch";
 
 const defaultProps = {
@@ -26,7 +25,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders with styles", () => {
@@ -35,28 +34,28 @@ it("renders with styles", () => {
       color: "red",
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("overrides with theme", () => {
   const wrapper = shallow(generateComponent({
     theme: "my theme",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("overrides with name", () => {
   const wrapper = shallow(generateComponent({
     name: "my name",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("appends with classes", () => {
   const wrapper = shallow(generateComponent({
     classes: ["one", "two"],
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("changed calls changed", () => {

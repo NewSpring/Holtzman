@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 
 import Recover, { RecoverableSchedule } from "../Recover";
 
@@ -12,7 +11,7 @@ describe("Recover", () => {
     const tree = shallow(
       <Recover schedules={schedules} />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });
 
@@ -25,6 +24,6 @@ describe("RecoverableSchedule", () => {
     const tree = shallow(
       <RecoverableSchedule amount={amount} account={account} frequency={frequency} />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });

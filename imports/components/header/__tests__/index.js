@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { search as searchActions } from "../../../store";
 import { HeaderWithoutData as Header } from "../"
 
@@ -33,56 +32,56 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders searching version", () => {
   const wrapper = shallow(generateComponent({
     searching: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders isSearch version", () => {
   const wrapper = shallow(generateComponent({
     isSearch: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders default text version", () => {
   const wrapper = shallow(generateComponent({
     text: "default",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders NewSpring text version", () => {
   const wrapper = shallow(generateComponent({
     text: "NewSpring",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders subtext if present", () => {
   const wrapper = shallow(generateComponent({
     subText: "some subtext",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders live version", () => {
   const wrapper = shallow(generateComponent({
     visible: false,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders light version", () => {
   const wrapper = shallow(generateComponent({
     light: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("showSettings return undefined if not showSettings", () => {

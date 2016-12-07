@@ -19,15 +19,4 @@ exports[`test parses query 1`] = `
 "
 `;
 
-exports[`test renders with props 1`] = `
-<SearchLayout
-  hide={[Function]}
-  loadMore={[Function]}
-  search={
-    Object {
-      "page": 1,
-      "pageSize": 10,
-      "term": "hey",
-    }
-  } />
-`;
+exports[`test renders with props 1`] = `<SearchLayout loadMore={[Function]} search={{...}} hide={[Function]} />`;

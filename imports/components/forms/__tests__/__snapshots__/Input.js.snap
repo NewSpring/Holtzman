@@ -1,23 +1,12 @@
 exports[`test should render with no props 1`] = `
 <Input>
-  <div
-    className="input"
-    data-spec="input-wrapper"
-    style={Object {}}>
-    <RenderLabel>
-      <Label
-        disabed={false}>
-        <label
-          style={Object {}} />
+  <div className="input" style={{...}} data-spec="input-wrapper">
+    <RenderLabel hideLabel={[undefined]} id={[undefined]} name={[undefined]} label={[undefined]} disabled={[undefined]}>
+      <Label labelFor={[undefined]} labelName={[undefined]} disabed={false}>
+        <label htmlFor={[undefined]} style={{...}} />
       </Label>
     </RenderLabel>
-    <input
-      data-spec="input"
-      maxLength=""
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      style={Object {}} />
+    <input id={[undefined]} type={[undefined]} placeholder={[undefined]} name={[undefined]} className={[undefined]} disabled={[undefined]} onBlur={[Function]} onFocus={[Function]} onChange={[Function]} defaultValue={[undefined]} style={{...}} maxLength="" data-spec="input" />
   </div>
 </Input>
 `;

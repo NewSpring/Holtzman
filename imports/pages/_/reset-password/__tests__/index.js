@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset } from "../../../../methods/accounts/browser";
 import { ChangePasswordWithoutData as ChangePassword } from "../";
 
@@ -20,7 +19,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders Layout by default", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders error when error", () => {
@@ -31,7 +30,7 @@ it("renders error when error", () => {
       message: "test error",
     },
   });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading when loading", () => {
@@ -39,7 +38,7 @@ it("renders loading when loading", () => {
   wrapper.setState({
     state: "loading",
   });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders success when success", () => {
@@ -47,7 +46,7 @@ it("renders success when success", () => {
   wrapper.setState({
     state: "success",
   });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("submit calls Accounts.resetPassword", () => {

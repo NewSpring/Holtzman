@@ -1,35 +1,7 @@
 exports[`test should render with props 1`] = `
-<Layout
-  back={[Function]}
-  formatExp={[Function]}
-  header={
-    <span>
-      header
-    </span>
-  }
-  next={[Function]}
-  payment={
-    Object {
-      "expiration": null,
-    }
-  }
-  saveData={[Function]}
-  saveName={[Function]}
-  savePayment={[Function]}
-  savedAccount={Object {}}
-  schedules={Object {}}
-  shouldSaveState={true}
-  toggle={[Function]}
-  toggles={
-    Array [
-      "one",
-      "two",
-    ]
-  }
-  transactionType="default"
-  validate={[Function]}>
-  <span>
-    child
-  </span>
+<Layout formatExp={[Function]} saveData={[Function]} saveName={[Function]} savePayment={[Function]} toggle={[Function]} validate={[Function]} shouldSaveState={true} back={[Function]} header={{...}} next={[Function]} payment={{...}} savedAccount={{...}} schedules={{...}} toggles={{...}} transactionType="default">
+<span>
+child
+</span>
 </Layout>
 `;

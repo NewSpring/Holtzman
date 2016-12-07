@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 
 import SideBySide from "../SideBySide";
@@ -46,14 +45,14 @@ afterEach(() => {
 
 it("should render with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("overrides with theme", () => {
   const wrapper = shallow(generateComponent({
     theme: "override me",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("overrides with styles", () => {
@@ -62,21 +61,21 @@ it("overrides with styles", () => {
       color: "orange",
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("overrides item theme", () => {
   const wrapper = shallow(generateComponent({
     itemTheme: "myItem",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders link version", () => {
   const wrapper = shallow(generateComponent({
     link: "http://test.com/link",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders link version with theme override", () => {
@@ -84,7 +83,7 @@ it("renders link version with theme override", () => {
     link: "http://test.com/link",
     theme: "override link",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders link version with style override", () => {
@@ -94,7 +93,7 @@ it("renders link version with style override", () => {
       color: "blue",
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders link version with item theme override", () => {
@@ -102,7 +101,7 @@ it("renders link version with item theme override", () => {
     link: "http://test.com/link",
     itemTheme: "myOtherItem",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("itemClasses renders defaults", () => {

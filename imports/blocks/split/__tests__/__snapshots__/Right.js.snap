@@ -1,9 +1,8 @@
 exports[`DefaultWrapper renders with props 1`] = `
-<section
-  className="one two">
-  <h1>
-    test
-  </h1>
+<section className="one two">
+<h1>
+test
+</h1>
 </section>
 `;
 
@@ -103,54 +102,24 @@ Array [
 `;
 
 exports[`Right overrides styles 1`] = `
-<DefaultWrapper
-  imageclasses={
-    Array [
-      "panel__item--right",
-      "hard",
-      "flush",
-      "panel_s3huuu",
-      "visuallyhidden@handheld",
-      "five-twelfths@lap-and-up",
-    ]
-  }
-  preloader={[Function]}
-  renderElement={[Function]}
-  src={null}
-  style={
-    Object {
-      "color": "red",
-    }
-  }>
-  <div
-    className="ratio__item">
-    <h1>
-      test
-    </h1>
-  </div>
-  <div />
+<DefaultWrapper src={{...}} preloader={[Function]} renderElement={[Function]} imageclasses={{...}} style={{...}}>
+<div className="ratio__item">
+<h1>
+test
+</h1>
+</div>
+<div />
 </DefaultWrapper>
 `;
 
 exports[`Right overrides with theme 1`] = `
-<DefaultWrapper
-  imageclasses={
-    Array [
-      "override",
-      "me",
-    ]
-  }
-  preloader={[Function]}
-  renderElement={[Function]}
-  src={null}
-  style={Object {}}>
-  <div
-    className="ratio__item">
-    <h1>
-      test
-    </h1>
-  </div>
-  <div />
+<DefaultWrapper src={{...}} preloader={[Function]} renderElement={[Function]} imageclasses={{...}} style={{...}}>
+<div className="ratio__item">
+<h1>
+test
+</h1>
+</div>
+<div />
 </DefaultWrapper>
 `;
 
@@ -200,158 +169,62 @@ exports[`Right renderOutSideRatio returns blank div if no outsideRatio and no bl
 `;
 
 exports[`Right renders background image version 1`] = `
-<ImageLoader
-  imageclasses={
-    Array [
-      "panel__item--right",
-      "hard",
-      "flush",
-      "panel_s3huuu",
-      "visuallyhidden@handheld",
-      "five-twelfths@lap-and-up",
-    ]
-  }
-  preloader={[Function]}
-  renderElement={[Function]}
-  src="//test.com/background.jpg"
-  style={
-    Object {
-      "backgroundImage": "url(\'//test.com/background.jpg\')",
-    }
-  }
-  wrapper={[Function]}>
-  <div
-    className="ratio__item">
-    <h1>
-      test
-    </h1>
-  </div>
-  <div />
+<ImageLoader src="//test.com/background.jpg" preloader={[Function]} renderElement={[Function]} imageclasses={{...}} style={{...}} wrapper={[Function]}>
+<div className="ratio__item">
+<h1>
+test
+</h1>
+</div>
+<div />
 </ImageLoader>
 `;
 
 exports[`Right renders linked version 1`] = `
-<Link
-  className="panel__item--right hard flush panel_s3huuu visuallyhidden@handheld five-twelfths@lap-and-up"
-  onlyActiveOnIndex={false}
-  style={Object {}}
-  to="http://test.com">
-  <DefaultWrapper
-    imageclasses={
-      Array [
-        "background--fill",
-        "locked-ends",
-        "locked-sides",
-        "hard",
-        "floating",
-        "",
-      ]
-    }
-    preloader={[Function]}
-    renderElement={[Function]}
-    src={null}
-    style={Object {}}>
-    <div
-      className="ratio__item">
-      <h1>
-        test
-      </h1>
-    </div>
-    <div />
-  </DefaultWrapper>
+<Link to="http://test.com" className="panel__item--right hard flush panel_s3huuu visuallyhidden@handheld five-twelfths@lap-and-up" onlyActiveOnIndex={false} style={{...}}>
+<DefaultWrapper src={{...}} preloader={[Function]} renderElement={[Function]} style={{...}} imageclasses={{...}}>
+<div className="ratio__item">
+<h1>
+test
+</h1>
+</div>
+<div />
+</DefaultWrapper>
 </Link>
 `;
 
 exports[`Right renders linked version with style override 1`] = `
-<Link
-  className="panel__item--right hard flush panel_s3huuu visuallyhidden@handheld five-twelfths@lap-and-up"
-  onlyActiveOnIndex={false}
-  style={Object {}}
-  to="http://test.com">
-  <DefaultWrapper
-    imageclasses={
-      Array [
-        "background--fill",
-        "locked-ends",
-        "locked-sides",
-        "hard",
-        "floating",
-        "",
-      ]
-    }
-    preloader={[Function]}
-    renderElement={[Function]}
-    src={null}
-    style={
-      Object {
-        "color": "blue",
-      }
-    }>
-    <div
-      className="ratio__item">
-      <h1>
-        test
-      </h1>
-    </div>
-    <div />
-  </DefaultWrapper>
+<Link to="http://test.com" className="panel__item--right hard flush panel_s3huuu visuallyhidden@handheld five-twelfths@lap-and-up" onlyActiveOnIndex={false} style={{...}}>
+<DefaultWrapper src={{...}} preloader={[Function]} renderElement={[Function]} style={{...}} imageclasses={{...}}>
+<div className="ratio__item">
+<h1>
+test
+</h1>
+</div>
+<div />
+</DefaultWrapper>
 </Link>
 `;
 
 exports[`Right renders linked version with theme override 1`] = `
-<Link
-  className="override link"
-  onlyActiveOnIndex={false}
-  style={Object {}}
-  to="http://test.com">
-  <DefaultWrapper
-    imageclasses={
-      Array [
-        "background--fill",
-        "locked-ends",
-        "locked-sides",
-        "hard",
-        "floating",
-        "",
-      ]
-    }
-    preloader={[Function]}
-    renderElement={[Function]}
-    src={null}
-    style={Object {}}>
-    <div
-      className="ratio__item">
-      <h1>
-        test
-      </h1>
-    </div>
-    <div />
-  </DefaultWrapper>
+<Link to="http://test.com" className="override link" onlyActiveOnIndex={false} style={{...}}>
+<DefaultWrapper src={{...}} preloader={[Function]} renderElement={[Function]} style={{...}} imageclasses={{...}}>
+<div className="ratio__item">
+<h1>
+test
+</h1>
+</div>
+<div />
+</DefaultWrapper>
 </Link>
 `;
 
 exports[`Right renders with props 1`] = `
-<DefaultWrapper
-  imageclasses={
-    Array [
-      "panel__item--right",
-      "hard",
-      "flush",
-      "panel_s3huuu",
-      "visuallyhidden@handheld",
-      "five-twelfths@lap-and-up",
-    ]
-  }
-  preloader={[Function]}
-  renderElement={[Function]}
-  src={null}
-  style={Object {}}>
-  <div
-    className="ratio__item">
-    <h1>
-      test
-    </h1>
-  </div>
-  <div />
+<DefaultWrapper src={{...}} preloader={[Function]} renderElement={[Function]} imageclasses={{...}} style={{...}}>
+<div className="ratio__item">
+<h1>
+test
+</h1>
+</div>
+<div />
 </DefaultWrapper>
 `;

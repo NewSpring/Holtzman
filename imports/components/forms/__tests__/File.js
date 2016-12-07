@@ -1,5 +1,4 @@
 import { shallow, mount } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import File from "../File";
 
 const defaultProps = {
@@ -31,40 +30,40 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("overrides with theme", () => {
   const wrapper = shallow(generateComponent({
     theme: ["mytheme"],
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("has focused state", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ focused: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("has error state", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ error: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("appends classes", () => {
   const wrapper = shallow(generateComponent({
     classes: ["append", "me"],
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("hides the label", () => {
   const wrapper = shallow(generateComponent({
     hideLabel: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("makes active on mount if defaultValue", () => {

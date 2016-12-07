@@ -1,65 +1,42 @@
 exports[`LoadMore doesn't render if done 1`] = `<div />`;
 
 exports[`LoadMore renders with props 1`] = `
-<div
-  className="text-center push-double-top">
-  <button
-    className="btn--dark-tertiary"
-    onClick={[Function]}>
-    <LoadingText
-      search={
-        Object {
-          "done": false,
-        }
-      } />
-  </button>
+<div className="text-center push-double-top">
+<button className="btn--dark-tertiary" onClick={[Function]}>
+<LoadingText search={{...}} />
+</button>
 </div>
 `;
 
 exports[`LoadingText renders loading 1`] = `
 <span>
-  Loading...
+Loading...
 </span>
 `;
 
 exports[`LoadingText renders non loading 1`] = `
 <span>
-  Load More Results
+Load More Results
 </span>
 `;
 
 exports[`Results renders loading 1`] = `
-<div
-  className="one-whole text-center soft">
-  <Loading />
+<div className="one-whole text-center soft">
+<Loading />
 </div>
 `;
 
 exports[`Results renders no results 1`] = `
-<h6
-  className="soft">
-  No results for 
-  !
+<h6 className="soft">
+No results for 
+!
 </h6>
 `;
 
 exports[`Results renders with props 1`] = `
-<section
-  className="background--light-secondary soft-half@palm soft@palm-wide-and-up">
-  <SearchItem
-    item={Object {}} />
-  <SearchItem
-    item={Object {}} />
-  <LoadMore
-    loadMore={[Function]}
-    search={
-      Object {
-        "items": Array [
-          Object {},
-          Object {},
-        ],
-        "none": false,
-      }
-    } />
+<section className="background--light-secondary soft-half@palm soft@palm-wide-and-up">
+<SearchItem item={{...}} />
+<SearchItem item={{...}} />
+<LoadMore loadMore={[Function]} search={{...}} />
 </section>
 `;

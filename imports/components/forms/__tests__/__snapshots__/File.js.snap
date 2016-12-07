@@ -1,170 +1,34 @@
 exports[`test appends classes 1`] = `
-<div
-  className="input append me"
-  style={Object {}}>
-  <Label
-    disabed={false}
-    labelFor="2"
-    labelName="Test Name" />
-  <input
-    autofocus={false}
-    className={null}
-    classes={
-      Array [
-        "append",
-        "me",
-      ]
-    }
-    defaultValue={null}
-    disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={false}
-    id="2"
-    inputClasses={null}
-    label="Test Name"
-    name="testname"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="testholder"
-    status={null}
-    style={null}
-    theme={null}
-    type="file"
-    validation={[Function]} />
+<div className="input append me" style={{...}}>
+<Label labelFor="2" labelName="Test Name" disabed={false} />
+<input id="2" type="file" placeholder="testholder" name="testname" className={{...}} disabled={false} onBlur={[Function]} onFocus={[Function]} onChange={[Function]} defaultValue={{...}} style={{...}} autofocus={false} format={[Function]} validation={[Function]} status={{...}} errorTest={{...}} theme={{...}} classes={{...}} label="Test Name" hideLabel={false} inputClasses={{...}} />
 </div>
 `;
 
 exports[`test has error state 1`] = `
-<div
-  className="input input--alert"
-  style={Object {}}>
-  <Label
-    disabed={false}
-    labelFor="2"
-    labelName="Test Name" />
-  <input
-    autofocus={false}
-    className={null}
-    classes={null}
-    defaultValue={null}
-    disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={false}
-    id="2"
-    inputClasses={null}
-    label="Test Name"
-    name="testname"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="testholder"
-    status={null}
-    style={null}
-    theme={null}
-    type="file"
-    validation={[Function]} />
+<div className="input input--alert" style={{...}}>
+<Label labelFor="2" labelName="Test Name" disabed={false} />
+<input id="2" type="file" placeholder="testholder" name="testname" className={{...}} disabled={false} onBlur={[Function]} onFocus={[Function]} onChange={[Function]} defaultValue={{...}} style={{...}} autofocus={false} format={[Function]} validation={[Function]} status={{...}} errorTest={{...}} theme={{...}} classes={{...}} label="Test Name" hideLabel={false} inputClasses={{...}} />
 </div>
 `;
 
 exports[`test has focused state 1`] = `
-<div
-  className="input input--focused"
-  style={Object {}}>
-  <Label
-    disabed={false}
-    labelFor="2"
-    labelName="Test Name" />
-  <input
-    autofocus={false}
-    className={null}
-    classes={null}
-    defaultValue={null}
-    disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={false}
-    id="2"
-    inputClasses={null}
-    label="Test Name"
-    name="testname"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="testholder"
-    status={null}
-    style={null}
-    theme={null}
-    type="file"
-    validation={[Function]} />
+<div className="input input--focused" style={{...}}>
+<Label labelFor="2" labelName="Test Name" disabed={false} />
+<input id="2" type="file" placeholder="testholder" name="testname" className={{...}} disabled={false} onBlur={[Function]} onFocus={[Function]} onChange={[Function]} defaultValue={{...}} style={{...}} autofocus={false} format={[Function]} validation={[Function]} status={{...}} errorTest={{...}} theme={{...}} classes={{...}} label="Test Name" hideLabel={false} inputClasses={{...}} />
 </div>
 `;
 
 exports[`test hides the label 1`] = `
-<div
-  className="input"
-  style={Object {}}>
-  <input
-    autofocus={false}
-    className={null}
-    classes={null}
-    defaultValue={null}
-    disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={true}
-    id="2"
-    inputClasses={null}
-    label="Test Name"
-    name="testname"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="testholder"
-    status={null}
-    style={null}
-    theme={null}
-    type="file"
-    validation={[Function]} />
+<div className="input" style={{...}}>
+<input id="2" type="file" placeholder="testholder" name="testname" className={{...}} disabled={false} onBlur={[Function]} onFocus={[Function]} onChange={[Function]} defaultValue={{...}} style={{...}} autofocus={false} format={[Function]} validation={[Function]} status={{...}} errorTest={{...}} theme={{...}} classes={{...}} label="Test Name" hideLabel={true} inputClasses={{...}} />
 </div>
 `;
 
 exports[`test overrides with theme 1`] = `
-<div
-  className="mytheme"
-  style={Object {}}>
-  <Label
-    disabed={false}
-    labelFor="2"
-    labelName="Test Name" />
-  <input
-    autofocus={false}
-    className={null}
-    classes={null}
-    defaultValue={null}
-    disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={false}
-    id="2"
-    inputClasses={null}
-    label="Test Name"
-    name="testname"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="testholder"
-    status={null}
-    style={null}
-    theme={
-      Array [
-        "mytheme",
-      ]
-    }
-    type="file"
-    validation={[Function]} />
+<div className="mytheme" style={{...}}>
+<Label labelFor="2" labelName="Test Name" disabed={false} />
+<input id="2" type="file" placeholder="testholder" name="testname" className={{...}} disabled={false} onBlur={[Function]} onFocus={[Function]} onChange={[Function]} defaultValue={{...}} style={{...}} autofocus={false} format={[Function]} validation={[Function]} status={{...}} errorTest={{...}} theme={{...}} classes={{...}} label="Test Name" hideLabel={false} inputClasses={{...}} />
 </div>
 `;
 
@@ -183,34 +47,8 @@ exports[`test renderHelpText renders if status 1`] = `
 `;
 
 exports[`test renders with props 1`] = `
-<div
-  className="input"
-  style={Object {}}>
-  <Label
-    disabed={false}
-    labelFor="2"
-    labelName="Test Name" />
-  <input
-    autofocus={false}
-    className={null}
-    classes={null}
-    defaultValue={null}
-    disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={false}
-    id="2"
-    inputClasses={null}
-    label="Test Name"
-    name="testname"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="testholder"
-    status={null}
-    style={null}
-    theme={null}
-    type="file"
-    validation={[Function]} />
+<div className="input" style={{...}}>
+<Label labelFor="2" labelName="Test Name" disabed={false} />
+<input id="2" type="file" placeholder="testholder" name="testname" className={{...}} disabled={false} onBlur={[Function]} onFocus={[Function]} onChange={[Function]} defaultValue={{...}} style={{...}} autofocus={false} format={[Function]} validation={[Function]} status={{...}} errorTest={{...}} theme={{...}} classes={{...}} label="Test Name" hideLabel={false} inputClasses={{...}} />
 </div>
 `;

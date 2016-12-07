@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import moment from "moment";
 import Later from "../Later";
 
@@ -9,7 +8,7 @@ describe("Later", () => {
     const tree = shallow(
       <Later date={dateToUse} />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("should call onClick if it's clicked", () => {

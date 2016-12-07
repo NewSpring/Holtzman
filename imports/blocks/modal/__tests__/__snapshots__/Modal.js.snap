@@ -21,106 +21,26 @@ exports[`test layoutClasses has dark version 1`] = `"hard flush side-panel_x7puo
 exports[`test layoutClasses returns default 1`] = `"hard flush side-panel_x7puo background--light-primary"`;
 
 exports[`test overrides with theme 1`] = `
-<div
-  className="panel overlay--solid-dark fixed"
-  data-side-modal={true}
-  id="@@modal"
-  onClick={[Function]}
-  style={
-    Object {
-      "position": "fixed",
-      "zIndex": 100,
-    }
-  }>
-  <VelocityComponent
-    animation={
-      Object {
-        "opacity": Array [
-          1,
-          0,
-        ],
-        "translateX": Array [
-          0,
-          -20,
-        ],
-        "translateZ": 0,
-      }
-    }
-    duration={300}
-    runOnMount={true}
-    targetQuerySelector={null}>
-    <section
-      className="mytheme"
-      style={
-        Object {
-          "opacity": 0,
-          "top": "46px",
-          "transform": "translateY(-20px)",
-        }
-      }>
-      <div
-        className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
-        style={
-          Object {
-            "height": "100%",
-          }
-        }>
-        <component />
-      </div>
-    </section>
-  </VelocityComponent>
+<div className="panel overlay--solid-dark fixed" data-side-modal={true} id="@@modal" onClick={[Function]} style={{...}}>
+<VelocityComponent animation={{...}} duration={300} runOnMount={true} targetQuerySelector={{...}}>
+<section className="mytheme" style={{...}}>
+<div className="hard one-whole interior_9nddxf scrollable inline-block locked-top" style={{...}}>
+<component />
+</div>
+</section>
+</VelocityComponent>
 </div>
 `;
 
 exports[`test renders with props 1`] = `
-<div
-  className="panel overlay--solid-dark fixed"
-  data-side-modal={true}
-  id="@@modal"
-  onClick={[Function]}
-  style={
-    Object {
-      "position": "fixed",
-      "zIndex": 100,
-    }
-  }>
-  <VelocityComponent
-    animation={
-      Object {
-        "opacity": Array [
-          1,
-          0,
-        ],
-        "translateX": Array [
-          0,
-          -20,
-        ],
-        "translateZ": 0,
-      }
-    }
-    duration={300}
-    runOnMount={true}
-    targetQuerySelector={null}>
-    <section
-      className="hard flush side-panel_x7puo background--light-primary"
-      style={
-        Object {
-          "opacity": 0,
-          "top": "46px",
-          "transform": "translateY(-20px)",
-        }
-      }>
-      <div
-        className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
-        style={
-          Object {
-            "height": "100%",
-          }
-        }>
-        <component />
-      </div>
-    </section>
-  </VelocityComponent>
+<div className="panel overlay--solid-dark fixed" data-side-modal={true} id="@@modal" onClick={[Function]} style={{...}}>
+<VelocityComponent animation={{...}} duration={300} runOnMount={true} targetQuerySelector={{...}}>
+<section className="hard flush side-panel_x7puo background--light-primary" style={{...}}>
+<div className="hard one-whole interior_9nddxf scrollable inline-block locked-top" style={{...}}>
+<component />
+</div>
+</section>
+</VelocityComponent>
 </div>
 `;
 
@@ -142,105 +62,25 @@ Object {
 `;
 
 exports[`test updates styles with mobile styles 1`] = `
-<div
-  className="panel overlay--solid-dark fixed"
-  data-side-modal={true}
-  id="@@modal"
-  onClick={[Function]}
-  style={
-    Object {
-      "position": "fixed",
-      "zIndex": 100,
-    }
-  }>
-  <VelocityComponent
-    animation={
-      Object {
-        "opacity": Array [
-          1,
-          0,
-        ],
-        "translateY": Array [
-          0,
-          80,
-        ],
-        "translateZ": 0,
-      }
-    }
-    duration={300}
-    runOnMount={true}
-    targetQuerySelector={null}>
-    <section
-      className="hard flush side-panel_x7puo background--light-primary"
-      style={
-        Object {
-          "opacity": 0,
-          "top": "46px",
-          "transform": "translateY(80px)",
-        }
-      }>
-      <div
-        className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
-        style={
-          Object {
-            "height": "100%",
-          }
-        }>
-        <component />
-      </div>
-    </section>
-  </VelocityComponent>
+<div className="panel overlay--solid-dark fixed" data-side-modal={true} id="@@modal" onClick={[Function]} style={{...}}>
+<VelocityComponent animation={{...}} duration={300} runOnMount={true} targetQuerySelector={{...}}>
+<section className="hard flush side-panel_x7puo background--light-primary" style={{...}}>
+<div className="hard one-whole interior_9nddxf scrollable inline-block locked-top" style={{...}}>
+<component />
+</div>
+</section>
+</VelocityComponent>
 </div>
 `;
 
 exports[`test updates styles with non mobile styles 1`] = `
-<div
-  className="panel overlay--solid-dark fixed"
-  data-side-modal={true}
-  id="@@modal"
-  onClick={[Function]}
-  style={
-    Object {
-      "position": "fixed",
-      "zIndex": 100,
-    }
-  }>
-  <VelocityComponent
-    animation={
-      Object {
-        "opacity": Array [
-          1,
-          0,
-        ],
-        "translateX": Array [
-          0,
-          -20,
-        ],
-        "translateZ": 0,
-      }
-    }
-    duration={300}
-    runOnMount={true}
-    targetQuerySelector={null}>
-    <section
-      className="hard flush side-panel_x7puo background--light-primary"
-      style={
-        Object {
-          "opacity": 0,
-          "top": "46px",
-          "transform": "translateY(-20px)",
-        }
-      }>
-      <div
-        className="hard one-whole interior_9nddxf scrollable inline-block locked-top"
-        style={
-          Object {
-            "height": "100%",
-          }
-        }>
-        <component />
-      </div>
-    </section>
-  </VelocityComponent>
+<div className="panel overlay--solid-dark fixed" data-side-modal={true} id="@@modal" onClick={[Function]} style={{...}}>
+<VelocityComponent animation={{...}} duration={300} runOnMount={true} targetQuerySelector={{...}}>
+<section className="hard flush side-panel_x7puo background--light-primary" style={{...}}>
+<div className="hard one-whole interior_9nddxf scrollable inline-block locked-top" style={{...}}>
+<component />
+</div>
+</section>
+</VelocityComponent>
 </div>
 `;

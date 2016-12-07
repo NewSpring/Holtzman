@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import {
   SplitContainerWithoutData as SplitContainer,
@@ -40,21 +39,21 @@ afterEach(() => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("overrides with theme", () => {
   const wrapper = shallow(generateComponent({
     theme: "override",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("appends additional classes", () => {
   const wrapper = shallow(generateComponent({
     classes: ["one", "two"],
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("adds nav styles if nav visible", () => {
@@ -64,5 +63,5 @@ it("adds nav styles if nav visible", () => {
       visible: true,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

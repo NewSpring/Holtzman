@@ -51,100 +51,41 @@ Object {
 exports[`test nextClasses matches defaults 1`] = `"soft-sides flush text-light-secondary h3 icon-skip-next"`;
 
 exports[`test renders dock version 1`] = `
-<button
-  className="plain float-right"
-  onClick={[Function]}>
-  <i
-    className="text-center h4 icon-play text-light-primary" />
+<button className="plain float-right" onClick={[Function]}>
+<i className="text-center h4 icon-play text-light-primary" />
 </button>
 `;
 
 exports[`test renders with props 1`] = `
-<div
-  className="floating audio-controls">
-  <button
-    className="plain floating__item"
-    onClick={[Function]}>
-    <i
-      className="soft-sides flush text-light-secondary h3 icon-skip-back" />
-  </button>
-  <button
-    className="plain floating__item"
-    onClick={[Function]}>
-    <i
-      className="soft-sides flush text-light-primary h1 icon-play"
-      style={
-        Object {
-          "left": "6px",
-          "position": "relative",
-        }
-      } />
-  </button>
-  <button
-    className="plain floating__item"
-    onClick={[Function]}>
-    <i
-      className="soft-sides flush text-light-secondary h3 icon-skip-next" />
-  </button>
-  <Connect(AudioScrubberWithoutData)
-    isLight={false} />
-  <div
-    className="grid one-whole flush"
-    style={
-      Object {
-        "maxHeight": "30px",
-      }
-    }>
-    <div
-      className="grid__item one-third text-left hard">
-      <button
-        className="plain floating__item"
-        onClick={[Function]}>
-        <i
-          className="soft-half-right flush h5 icon-shuffle"
-          style={
-            Object {
-              "color": "rgba(255,255,255,.5)",
-            }
-          } />
-      </button>
-    </div>
-    <div
-      className="grid__item one-third hard-ends hard">
-      <button
-        className="plain floating__item"
-        onClick={[Function]}>
-        <i
-          className="flush h5 icon-repeat"
-          style={
-            Object {
-              "color": "rgba(255,255,255,.5)",
-            }
-          } />
-      </button>
-    </div>
-    <div
-      className="grid__item one-third text-right hard-sides">
-      <h5
-        onClick={[Function]}
-        style={
-          Object {
-            "color": "rgba(255,255,255,.5)",
-          }
-        }>
-        •••
-      </h5>
-    </div>
-    <i
-      className="text-light-primary h3 push-double-left soft-left"
-      onClick={[Function]}
-      style={
-        Object {
-          "position": "relative",
-          "top": "-38px",
-        }
-      } />
-  </div>
+<div className="floating audio-controls">
+<button className="plain floating__item" onClick={[Function]}>
+<i className="soft-sides flush text-light-secondary h3 icon-skip-back" />
+</button>
+<button className="plain floating__item" onClick={[Function]}>
+<i className="soft-sides flush text-light-primary h1 icon-play" style={{...}} />
+</button>
+<button className="plain floating__item" onClick={[Function]}>
+<i className="soft-sides flush text-light-secondary h3 icon-skip-next" />
+</button>
+<Connect(AudioScrubberWithoutData) isLight={false} />
+<div className="grid one-whole flush" style={{...}}>
+<div className="grid__item one-third text-left hard">
+<button className="plain floating__item" onClick={[Function]}>
+<i className="soft-half-right flush h5 icon-shuffle" style={{...}} />
+</button>
+</div>
+<div className="grid__item one-third hard-ends hard">
+<button className="plain floating__item" onClick={[Function]}>
+<i className="flush h5 icon-repeat" style={{...}} />
+</button>
+</div>
+<div className="grid__item one-third text-right hard-sides">
+<h5 onClick={[Function]} style={{...}}>
+•••
+</h5>
+</div>
+<i className="text-light-primary h3 push-double-left soft-left" onClick={[Function]} style={{...}} />
+</div>
 </div>
 `;
 

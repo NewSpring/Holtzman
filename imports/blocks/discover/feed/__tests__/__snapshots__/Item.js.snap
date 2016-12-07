@@ -14,36 +14,15 @@ exports[`test renderElement renders image component 1`] = `
 `;
 
 exports[`test renders with props 1`] = `
-<div
-  className="push-half-bottom card">
-  <a
-    href="http://test.com"
-    onClick={[Function]}>
-    <ImageLoader
-      force={true}
-      imageclasses={
-        Array [
-          "overlay",
-          "rounded",
-          "background--fill",
-          "ratio--landscape",
-          "floating--bottom",
-          "floating--left",
-          "card__image",
-        ]
-      }
-      preloader={[Function]}
-      renderElement={[Function]}
-      src="http://test.com/test.jpg"
-      wrapper={[Function]}>
-      <div
-        className="overlay__item floating__item soft-left soft-bottom text-light-primary card__item">
-        <h5
-          className="flush">
-          test topic
-        </h5>
-      </div>
-    </ImageLoader>
-  </a>
+<div className="push-half-bottom card">
+<a href="http://test.com" onClick={[Function]}>
+<ImageLoader src="http://test.com/test.jpg" preloader={[Function]} renderElement={[Function]} imageclasses={{...}} force={true} wrapper={[Function]}>
+<div className="overlay__item floating__item soft-left soft-bottom text-light-primary card__item">
+<h5 className="flush">
+test topic
+</h5>
+</div>
+</ImageLoader>
+</a>
 </div>
 `;

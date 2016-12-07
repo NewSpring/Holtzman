@@ -5,44 +5,10 @@ exports[`test layoutClasses appends additional classes 1`] = `"one-whole floatin
 exports[`test layoutClasses returns default 1`] = `"one-whole floating soft-half locked-left locked-bottom hard-ends@palm hard-sides@palm-wide-and-up soft-half-top@palm-wide-and-up nav-bar_7julxg"`;
 
 exports[`test renders with props 1`] = `
-<section
-  className="one-whole floating soft-half locked-left locked-bottom hard-ends@palm hard-sides@palm-wide-and-up soft-half-top@palm-wide-and-up nav-bar_7julxg"
-  style={
-    Object {
-      "backgroundColor": "red",
-    }
-  }>
-  <mockConstructor
-    fgColor="orange"
-    handleAction={[Function]}
-    liked={false}
-    modal={Object {}}
-    navItem={Object {}}
-    path="/path"
-    reset={[Function]} />
-  <mockConstructor
-    fgColor="orange"
-    handleAction={[Function]}
-    liked={false}
-    modal={Object {}}
-    navItem={Object {}}
-    path="/path"
-    reset={[Function]} />
-  <mockConstructor
-    fgColor="orange"
-    handleAction={[Function]}
-    liked={false}
-    modal={Object {}}
-    navItem={Object {}}
-    path="/path"
-    reset={[Function]} />
-  <mockConstructor
-    fgColor="orange"
-    handleAction={[Function]}
-    liked={false}
-    modal={Object {}}
-    navItem={Object {}}
-    path="/path"
-    reset={[Function]} />
+<section className="one-whole floating soft-half locked-left locked-bottom hard-ends@palm hard-sides@palm-wide-and-up soft-half-top@palm-wide-and-up nav-bar_7julxg" style={{...}}>
+<mockConstructor navItem={{...}} handleAction={[Function]} reset={[Function]} modal={{...}} liked={false} path="/path" fgColor="orange" />
+<mockConstructor navItem={{...}} handleAction={[Function]} reset={[Function]} modal={{...}} liked={false} path="/path" fgColor="orange" />
+<mockConstructor navItem={{...}} handleAction={[Function]} reset={[Function]} modal={{...}} liked={false} path="/path" fgColor="orange" />
+<mockConstructor navItem={{...}} handleAction={[Function]} reset={[Function]} modal={{...}} liked={false} path="/path" fgColor="orange" />
 </section>
 `;

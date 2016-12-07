@@ -1,15 +1,5 @@
 exports[`test renders with props 1`] = `
-<section
-  className="hard">
-  <Groups
-    hide={[Function]}
-    items={
-      Array [
-        Array [
-          Object {},
-          Object {},
-        ],
-      ]
-    } />
+<section className="hard">
+<Groups items={{...}} hide={[Function]} />
 </section>
 `;

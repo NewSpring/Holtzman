@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Tags from "../content.Tags";
 
 const defaultProps = {
@@ -16,5 +15,5 @@ const generateComponent = () => (
 
 it("render with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

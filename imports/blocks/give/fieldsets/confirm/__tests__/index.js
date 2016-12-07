@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import { openUrl } from "../../../../../util/inAppLink";
 import Confirm from "../";
@@ -30,20 +29,20 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders TransactionLayout by default", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders PaymentOptionsLayout when state is true", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ changePayments: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders ScheduleLayout if schedules", () => {
   const wrapper = shallow(generateComponent({
     schedules: { "123": "123" },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 // XXX i can't get the openUrl mock to work

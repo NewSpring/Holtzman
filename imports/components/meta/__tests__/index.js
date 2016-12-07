@@ -1,5 +1,4 @@
 import { shallow, mount } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Meta from "../index";
 // import generateData from "../metadata";
 
@@ -8,7 +7,7 @@ describe("Meta", () => {
     const wrapper = shallow(
       <Meta />
     );
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
   it("should override the default title", () => {
     const wrapper = shallow(
@@ -16,7 +15,7 @@ describe("Meta", () => {
         title={"This is a Test Title"}
       />
     );
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
   it("should override the default image", () => {
     const wrapper = shallow(
@@ -24,7 +23,7 @@ describe("Meta", () => {
         image={"link to the test image"}
       />
     );
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
   it("should have an id", () => {
     const wrapper = shallow(
@@ -32,7 +31,7 @@ describe("Meta", () => {
         id={"article.id"}
       />
     );
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
   it("should have an og:type meta property", () => {
     const wrapper = shallow(
@@ -42,7 +41,7 @@ describe("Meta", () => {
         ]}
       />
     );
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
   it("should call the ga function one time", () => {
     global.ga = jest.fn();

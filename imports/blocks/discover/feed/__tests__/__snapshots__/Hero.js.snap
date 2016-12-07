@@ -15,26 +15,10 @@ exports[`test renderElement renders image component 1`] = `
 
 exports[`test renders with props 1`] = `
 <div>
-  <a
-    href="http://test.com"
-    onClick={[Function]}>
-    <ImageLoader
-      force={true}
-      imageclasses={
-        Array [
-          "background--fill",
-          "ratio--square",
-          "floating--bottom",
-          "floating--left",
-        ]
-      }
-      preloader={[Function]}
-      renderElement={[Function]}
-      src="http://test.com/test.jpg"
-      wrapper={[Function]}>
-      <div
-        className="floating__item soft-left soft-bottom text-light-primary" />
-    </ImageLoader>
-  </a>
+<a href="http://test.com" onClick={[Function]}>
+<ImageLoader src="http://test.com/test.jpg" preloader={[Function]} force={true} renderElement={[Function]} imageclasses={{...}} wrapper={[Function]}>
+<div className="floating__item soft-left soft-bottom text-light-primary" />
+</ImageLoader>
+</a>
 </div>
 `;

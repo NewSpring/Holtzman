@@ -1,33 +1,7 @@
 exports[`test renders with props 1`] = `
-<Layout
-  back={[Function]}
-  billing={Object {}}
-  city={[Function]}
-  countries={
-    Array [
-      "USA",
-      "CA",
-    ]
-  }
-  header={
-    <span>
-      header
-    </span>
-  }
-  next={[Function]}
-  saveCountry={[Function]}
-  saveState={[Function]}
-  states={
-    Array [
-      "SC",
-      "NC",
-    ]
-  }
-  streetAddress={[Function]}
-  streetAddress2={[Function]}
-  zip={[Function]}>
-  <span>
-    hey
-  </span>
+<Layout city={[Function]} saveCountry={[Function]} saveState={[Function]} streetAddress={[Function]} streetAddress2={[Function]} zip={[Function]} back={[Function]} billing={{...}} countries={{...}} header={{...}} next={[Function]} states={{...}}>
+<span>
+hey
+</span>
 </Layout>
 `;

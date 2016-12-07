@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
 import { Meteor } from "meteor/meteor";
 import { actions as audioActions } from "../../../../store/audio";
@@ -57,7 +56,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders nothing but span", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("creates player when current title is not next title", () => {

@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { actions as audioActions } from "../../../../store/audio";
 import { AudioScrubberWithoutData as AudioScrubber } from "../audio.Scrubber";
@@ -35,14 +34,14 @@ afterEach(() => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders light version", () => {
   const wrapper = shallow(generateComponent({
     isLight: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("clears timoemouts on mount", () => {
