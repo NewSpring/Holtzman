@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
 import {
   modal,
@@ -72,14 +71,14 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders default artist", () => {
   const props = cloneDeep(defaultProps);
   props.album.artist = null;
   const wrapper = shallow(generateComponent(props));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("closeModal just hides the modal if audio not expended", () => {

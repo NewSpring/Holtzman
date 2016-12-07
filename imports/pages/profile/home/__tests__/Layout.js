@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import Layout from "../Layout";
 
@@ -29,13 +28,13 @@ Meteor.isCordova = false;
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders cordova version", () => {
   Meteor.isCordova = true;
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("works without city", () => {
@@ -45,5 +44,5 @@ it("works without city", () => {
       lastName: "bob",
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

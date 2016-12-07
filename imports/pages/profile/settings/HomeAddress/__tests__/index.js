@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import {
   nav,
 } from "../../../../../store";
@@ -37,7 +36,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without person home", () => {
@@ -48,25 +47,25 @@ it("renders without person home", () => {
       },
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders error version", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ state: "error" });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading version", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ state: "loading" });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders success version", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ state: "success" });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("parses query", () => {

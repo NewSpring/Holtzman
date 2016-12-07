@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import {
   MenuWithoutData as Menu,
@@ -38,14 +37,14 @@ describe("RenderCell", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders default icon", () => {
     const wrapper = shallow(generateComponent({
       iconFunc: null,
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -68,7 +67,7 @@ describe("Menu", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("parses query", () => {

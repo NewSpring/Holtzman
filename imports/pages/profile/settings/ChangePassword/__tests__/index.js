@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { nav } from "../../../../../store";
 import { ChangePasswordWithoutData as ChangePassword } from "../";
 
@@ -27,7 +26,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders error version", () => {
@@ -36,7 +35,7 @@ it("renders error version", () => {
     state: "error",
     err: Error,
   });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading version", () => {
@@ -44,7 +43,7 @@ it("renders loading version", () => {
   wrapper.setState({
     state: "loading",
   });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders success version", () => {
@@ -52,7 +51,7 @@ it("renders success version", () => {
   wrapper.setState({
     state: "success",
   });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("updates nav on mount", () => {

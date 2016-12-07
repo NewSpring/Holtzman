@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Layout from "../Layout";
 
 const defaultProps = {
@@ -22,7 +21,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders disabled if missing prop", () => {
@@ -31,5 +30,5 @@ it("renders disabled if missing prop", () => {
       current: null,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

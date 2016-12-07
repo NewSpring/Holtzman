@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
 import Layout from "../Layout";
 
@@ -32,19 +31,19 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("says `Profile` if no nick name", () => {
   const props = cloneDeep(defaultProps);
   props.person.nickName = null;
   const wrapper = shallow(generateComponent(props));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("works without a photo", () => {
   const props = cloneDeep(defaultProps);
   props.person.photo = null;
   const wrapper = shallow(generateComponent(props));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

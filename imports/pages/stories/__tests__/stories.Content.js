@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
 import StoriesContent, { StoryImage } from "../stories.Content";
 
@@ -32,14 +31,14 @@ describe("StoryImage", () => {
   it("renders non tablet version", () => {
     window.isTablet = false;
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   // XXX mocking isTablet doesn't work here or some reason
   xit("renders tablet version", () => {
     window.isTablet = true
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -81,20 +80,20 @@ describe("StoriesContent", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders with video", () => {
     const props = cloneDeep(defaultProps);
     props.story.content.ooyalaId = "test";
     const wrapper = shallow(generateComponent(props));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders without imaes", () => {
     const props = cloneDeep(defaultProps);
     props.story.content.images = [];
     const wrapper = shallow(generateComponent(props));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

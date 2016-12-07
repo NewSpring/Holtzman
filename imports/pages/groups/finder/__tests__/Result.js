@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import { nav as navActions } from "../../../../store";
 import { TemplateWithoutData as Template } from "../Result";
@@ -69,7 +68,7 @@ window.matchMedia = jest.fn().mockReturnValue({
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without map on mobile", () => {
@@ -78,7 +77,7 @@ it("renders without map on mobile", () => {
   });
   window.matchMedia = mockMatchMedia;
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
   expect(mockMatchMedia).toHaveBeenCalledTimes(1);
   expect(mockMatchMedia).toHaveBeenCalledWith("(max-width: 768px)");
 });
@@ -86,7 +85,7 @@ it("renders without map on mobile", () => {
 it("renders without map on server", () => {
   Meteor.isServer = true;
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
   Meteor.isServer = false;
 });
 

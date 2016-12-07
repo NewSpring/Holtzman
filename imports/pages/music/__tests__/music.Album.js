@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import {
   nav as navActions,
   audio as audioActions,
@@ -63,14 +62,14 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without album artist", () => {
   const wrapper = shallow(generateComponent({
     albumArtist: null,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading if not content", () => {
@@ -79,14 +78,14 @@ it("renders loading if not content", () => {
       content: null,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("adjust style if modal visible", () => {
   const wrapper = shallow(generateComponent({
     modalVisible: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("parses query correctly", () => {

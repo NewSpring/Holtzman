@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import {
   nav as navActions,
   audio as audioActions,
@@ -74,7 +73,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading without series", () => {
@@ -83,7 +82,7 @@ it("renders loading without series", () => {
       content: null,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading without sermon", () => {
@@ -92,7 +91,7 @@ it("renders loading without sermon", () => {
       content: null,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("parses series query", () => {

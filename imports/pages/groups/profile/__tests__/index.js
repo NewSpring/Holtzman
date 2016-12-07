@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import { nav as navActions, modal } from "../../../../store";
 import OnBoard from "../../../../blocks/accounts";
@@ -59,7 +58,7 @@ Meteor.settings.public.rock.baseURL = "http://rock.rock";
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading", () => {
@@ -68,7 +67,7 @@ it("renders loading", () => {
       loading: true,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without map on mobile", () => {
@@ -77,7 +76,7 @@ it("renders without map on mobile", () => {
   });
   window.matchMedia = mockMatchMedia;
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
   expect(mockMatchMedia).toHaveBeenCalledTimes(1);
   expect(mockMatchMedia).toHaveBeenCalledWith("(max-width: 768px)");
 });
@@ -85,7 +84,7 @@ it("renders without map on mobile", () => {
 it("renders without map on server", () => {
   Meteor.isServer = true;
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
   Meteor.isServer = false;
 });
 

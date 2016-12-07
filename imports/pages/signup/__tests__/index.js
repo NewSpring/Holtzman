@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import { TemplateWithoutData as Template } from "../";
 
@@ -16,13 +15,13 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders server version", () => {
   Meteor.isServer = true;
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
   Meteor.isServer = false;
 });
 
@@ -30,5 +29,5 @@ it("renders lap-and-up version", () => {
   const wrapper = shallow(generateComponent({
     breakpoints: ["lap-and-up"],
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

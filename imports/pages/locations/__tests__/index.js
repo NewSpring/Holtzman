@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Routes, {
   LayoutWithoutData,
   CAMPUSES_QUERY,
@@ -11,7 +10,7 @@ const generateComponent = () => (
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("CAMPUS_QUERY is parsed correctly", () => {
