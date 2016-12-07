@@ -425,73 +425,52 @@ Object {
 `;
 
 exports[`test renders loading 1`] = `
-<Connect(ApollosPullToRefreshWithoutData)
-  handleRefresh={[Function]}>
-  <Meta
-    title="Series" />
-  <div
-    className="background--light-secondary">
-    <section
-      className="soft-half">
-      <div
-        className="grid">
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
-          <FeedItemSkeleton />
-        </div>
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
-          <FeedItemSkeleton />
-        </div>
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
-          <FeedItemSkeleton />
-        </div>
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
-          <FeedItemSkeleton />
-        </div>
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
-          <FeedItemSkeleton />
-        </div>
-        <div
-          className="grid__item one-whole">
-          <mockConstructor />
-        </div>
-      </div>
-    </section>
-  </div>
+<Connect(ApollosPullToRefreshWithoutData) handleRefresh={[Function]}>
+<Meta title="Series" />
+<div className="background--light-secondary">
+<section className="soft-half">
+<div className="grid">
+<div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+<FeedItemSkeleton />
+</div>
+<div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+<FeedItemSkeleton />
+</div>
+<div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+<FeedItemSkeleton />
+</div>
+<div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+<FeedItemSkeleton />
+</div>
+<div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+<FeedItemSkeleton />
+</div>
+<div className="grid__item one-whole">
+<mockConstructor />
+</div>
+</div>
+</section>
+</div>
 </Connect(ApollosPullToRefreshWithoutData)>
 `;
 
 exports[`test renders with props 1`] = `
-<Connect(ApollosPullToRefreshWithoutData)
-  handleRefresh={[Function]}>
-  <Meta
-    title="Series" />
-  <div
-    className="background--light-secondary">
-    <section
-      className="soft-half">
-      <div
-        className="grid">
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
-          <FeedItem
-            item={Object {}} />
-        </div>
-        <div
-          className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
-          <FeedItem
-            item={Object {}} />
-        </div>
-        <div
-          className="grid__item one-whole">
-          <mockConstructor />
-        </div>
-      </div>
-    </section>
-  </div>
+<Connect(ApollosPullToRefreshWithoutData) handleRefresh={[Function]}>
+<Meta title="Series" />
+<div className="background--light-secondary">
+<section className="soft-half">
+<div className="grid">
+<div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+<FeedItem item={{...}} />
+</div>
+<div className="grid__item one-half@palm-wide one-third@portable one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored">
+<FeedItem item={{...}} />
+</div>
+<div className="grid__item one-whole">
+<mockConstructor />
+</div>
+</div>
+</section>
+</div>
 </Connect(ApollosPullToRefreshWithoutData)>
 `;

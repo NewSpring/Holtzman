@@ -1,63 +1,7 @@
-exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `
-<Err
-  additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
-  goToStepOne={[Function]}
-  msg="must go faster!" />
-`;
+exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `<Err msg="must go faster!" additionalMessage="Please click 'Done' in the top left of your screen to get back to the app" goToStepOne={[Function]} />`;
 
-exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `
-<Layout
-  data={
-    Object {
-      "payment": Object {
-        "icon": "Visa",
-        "type": "cc",
-      },
-      "personal": Object {
-        "campus": "Web",
-        "campusId": 20,
-        "email": "web@newspring.cc",
-        "firstName": "Jeff",
-        "lastName": "Goldblumm",
-      },
-    }
-  }
-  onSubmit={[Function]}
-  savedAccount={
-    Object {
-      "date": null,
-      "id": 18376,
-      "name": "Jeff%27s%20NS%20Visa",
-      "payment": Object {
-        "accountNumber": "411111******1112",
-        "paymentType": "Visa",
-      },
-    }
-  }
-  state="done"
-  total={1}
-  transactions={
-    Object {
-      "125": Object {
-        "label": "General%20Fund",
-        "value": 1,
-      },
-    }
-  }
-  url={false}
-  userId="jY4RT2WK55yKYtj4y" />
-`;
+exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `<Layout state="done" data={{...}} savedAccount={{...}} total={1} transactions={{...}} url={false} userId="jY4RT2WK55yKYtj4y" onSubmit={[Function]} />`;
 
-exports[`GiveReviewTemplate returns <Loading /> component based on state 1`] = `
-<Loading
-  msg="We\'re Processing Your Contribution" />
-`;
+exports[`GiveReviewTemplate returns <Loading /> component based on state 1`] = `<Loading msg="We're Processing Your Contribution" />`;
 
-exports[`GiveReviewTemplate returns <Success /> component based on state 1`] = `
-<Success
-  additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
-  email="web@newspring.cc"
-  guest={false}
-  onClick={[Function]}
-  total="$1.00" />
-`;
+exports[`GiveReviewTemplate returns <Success /> component based on state 1`] = `<Success total="$1.00" email="web@newspring.cc" guest={false} additionalMessage="Please click 'Done' in the top left of your screen to get back to the app" onClick={[Function]} />`;

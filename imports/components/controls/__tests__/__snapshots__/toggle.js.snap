@@ -11,41 +11,12 @@ Object {
 `;
 
 exports[`test renders with props 1`] = `
-<div
-  className="toggle push-bottom soft-sides"
-  style={
-    Object {
-      "backgroundColor": "#fff",
-    }
-  }>
-  <div
-    className="transition text-center toggle__item toggle__item--active"
-    data-toggle={0}
-    onClick={[Function]}
-    style={
-      Object {
-        "width": "50%",
-      }
-    } />
-  <div
-    className="transition text-center toggle__item"
-    data-toggle={1}
-    onClick={[Function]}
-    style={
-      Object {
-        "width": "50%",
-      }
-    } />
-  <div
-    className="grid text-left toggle-arrow soft-sides">
-    <div
-      className="transition grid__item hard one-half toggle-arrow__item"
-      style={
-        Object {
-          "marginLeft": "0%",
-        }
-      } />
-  </div>
+<div className="toggle push-bottom soft-sides" style={{...}}>
+<div data-toggle={0} className="transition text-center toggle__item toggle__item--active" style={{...}} onClick={[Function]} />
+<div data-toggle={1} className="transition text-center toggle__item" style={{...}} onClick={[Function]} />
+<div className="grid text-left toggle-arrow soft-sides">
+<div className="transition grid__item hard one-half toggle-arrow__item" style={{...}} />
+</div>
 </div>
 `;
 

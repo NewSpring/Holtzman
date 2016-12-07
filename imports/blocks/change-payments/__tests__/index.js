@@ -1,7 +1,5 @@
 
-// import renderer from "react-test-renderer";
 import { shallow, mount } from "enzyme";
-import { mountToJson } from "enzyme-to-json";
 import { ChangePaymentsWithoutData as ChangePayments, map } from "../";
 
 it("maps savedAccount to state", () => {
@@ -144,6 +142,6 @@ describe("renders layout", () => {
       />
     );
 
-    expect(mountToJson(renderedLayout)).toMatchSnapshot();
+    expect(renderedLayout).toMatchSnapshot();
   });
 });

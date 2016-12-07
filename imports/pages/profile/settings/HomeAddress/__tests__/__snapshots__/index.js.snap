@@ -176,59 +176,21 @@ Object {
 `;
 
 exports[`test renders error version 1`] = `
-<div
-  style={
-    Object {
-      "bottom": 0,
-      "position": "fixed",
-      "top": 0,
-      "width": "100%",
-    }
-  }>
-  <Err
-    msg="Looks like there was a problem" />
-  ;
+<div style={{...}}>
+<Err error={[undefined]} msg="Looks like there was a problem" />
+;
 </div>
 `;
 
 exports[`test renders loading version 1`] = `
-<div
-  style={
-    Object {
-      "bottom": 0,
-      "position": "fixed",
-      "top": 0,
-      "width": "100%",
-    }
-  }>
-  <Loading
-    msg="Updating your information..." />
-  ;
+<div style={{...}}>
+<Loading msg="Updating your information..." />
+;
 </div>
 `;
 
-exports[`test renders success version 1`] = `
-<Success
-  msg="Your information has been updated!" />
-`;
+exports[`test renders success version 1`] = `<Success msg="Your information has been updated!" />`;
 
-exports[`test renders with props 1`] = `
-<Layout
-  home={Object {}}
-  update={[Function]} />
-`;
+exports[`test renders with props 1`] = `<Layout home={{...}} update={[Function]} />`;
 
-exports[`test renders without person home 1`] = `
-<Layout
-  home={
-    Object {
-      "city": null,
-      "country": null,
-      "state": null,
-      "street1": null,
-      "street2": null,
-      "zip": null,
-    }
-  }
-  update={[Function]} />
-`;
+exports[`test renders without person home 1`] = `<Layout home={{...}} update={[Function]} />`;

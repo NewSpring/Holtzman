@@ -1,19 +1,7 @@
 exports[`test renders with props 1`] = `
-<Layout
-  campus={[Function]}
-  campuses={Array []}
-  firstName={[Function]}
-  header={
-    <span>
-      header
-    </span>
-  }
-  isEmail={[Function]}
-  lastName={[Function]}
-  next={[Function]}
-  personal={Object {}}>
-  <span>
-    child
-  </span>
+<Layout campus={[Function]} firstName={[Function]} isEmail={[Function]} lastName={[Function]} campuses={{...}} header={{...}} next={[Function]} personal={{...}}>
+<span>
+child
+</span>
 </Layout>
 `;

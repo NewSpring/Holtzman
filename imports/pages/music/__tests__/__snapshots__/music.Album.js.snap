@@ -1,156 +1,22 @@
 exports[`test adjust style if modal visible 1`] = `
-<section
-  className="hard background--light-primary"
-  style={
-    Object {
-      "WebkitFilter": "blur(2px)",
-    }
-  }>
-  <Meta
-    description="Album by artist"
-    image="url(http://test.com/medium.blur.jpg)" />
-  <div
-    className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill"
-    style={
-      Object {
-        "backgroundImage": "url(http://test.com/xsmall.blur.jpg)",
-      }
-    }>
-    <div
-      className="one-third floating__item display-inline overlay__item ratio--square background--fill"
-      style={
-        Object {
-          "backgroundImage": "url(http://test.com/medium.blur.jpg)",
-        }
-      } />
-    <div
-      className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
-      <h5 />
-      <h7>
-        artist
-      </h7>
-    </div>
-  </div>
-  <div
-    className="background--light-primary one-whole">
-    <div
-      className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
-      <Connect(AudioTrackWithoutData)
-        album={
-          Object {
-            "content": Object {
-              "id": "1",
-              "images": Array [
-                Object {
-                  "fileName": "blur",
-                  "size": "xsmall",
-                  "url": "http://test.com/xsmall.blur.jpg",
-                },
-                Object {
-                  "fileName": "normal",
-                  "size": "medium",
-                  "url": "http://test.com/medium.blur.jpg",
-                },
-              ],
-              "title": "sweet jams",
-              "tracks": Array [
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-              ],
-            },
-          }
-        }
-        track={
-          Object {
-            "file": "http://test.com/test.mp3",
-          }
-        }
-        trackNumber={0} />
-      <Connect(AudioTrackWithoutData)
-        album={
-          Object {
-            "content": Object {
-              "id": "1",
-              "images": Array [
-                Object {
-                  "fileName": "blur",
-                  "size": "xsmall",
-                  "url": "http://test.com/xsmall.blur.jpg",
-                },
-                Object {
-                  "fileName": "normal",
-                  "size": "medium",
-                  "url": "http://test.com/medium.blur.jpg",
-                },
-              ],
-              "title": "sweet jams",
-              "tracks": Array [
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-              ],
-            },
-          }
-        }
-        track={
-          Object {
-            "file": "http://test.com/test.mp3",
-          }
-        }
-        trackNumber={1} />
-      <Connect(AudioTrackWithoutData)
-        album={
-          Object {
-            "content": Object {
-              "id": "1",
-              "images": Array [
-                Object {
-                  "fileName": "blur",
-                  "size": "xsmall",
-                  "url": "http://test.com/xsmall.blur.jpg",
-                },
-                Object {
-                  "fileName": "normal",
-                  "size": "medium",
-                  "url": "http://test.com/medium.blur.jpg",
-                },
-              ],
-              "title": "sweet jams",
-              "tracks": Array [
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-              ],
-            },
-          }
-        }
-        track={
-          Object {
-            "file": "http://test.com/test.mp3",
-          }
-        }
-        trackNumber={2} />
-    </div>
-  </div>
+<section className="hard background--light-primary" style={{...}}>
+<Meta title={[undefined]} description="Album by artist" image="url(http://test.com/medium.blur.jpg)" id={[undefined]} />
+<div className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill" style={{...}}>
+<div className="one-third floating__item display-inline overlay__item ratio--square background--fill" style={{...}} />
+<div className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
+<h5 />
+<h7>
+artist
+</h7>
+</div>
+</div>
+<div className="background--light-primary one-whole">
+<div className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
+<Connect(AudioTrackWithoutData) track={{...}} album={{...}} trackNumber={0} />
+<Connect(AudioTrackWithoutData) track={{...}} album={{...}} trackNumber={1} />
+<Connect(AudioTrackWithoutData) track={{...}} album={{...}} trackNumber={2} />
+</div>
+</div>
 </section>
 `;
 
@@ -624,315 +490,53 @@ Object {
 `;
 
 exports[`test renders loading if not content 1`] = `
-<div
-  className="locked-ends locked-sides floating">
-  <div
-    className="floating__item">
-    <Loading />
-  </div>
+<div className="locked-ends locked-sides floating">
+<div className="floating__item">
+<Loading />
+</div>
 </div>
 `;
 
 exports[`test renders with props 1`] = `
-<section
-  className="hard background--light-primary"
-  style={Object {}}>
-  <Meta
-    description="Album by artist"
-    image="url(http://test.com/medium.blur.jpg)" />
-  <div
-    className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill"
-    style={
-      Object {
-        "backgroundImage": "url(http://test.com/xsmall.blur.jpg)",
-      }
-    }>
-    <div
-      className="one-third floating__item display-inline overlay__item ratio--square background--fill"
-      style={
-        Object {
-          "backgroundImage": "url(http://test.com/medium.blur.jpg)",
-        }
-      } />
-    <div
-      className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
-      <h5 />
-      <h7>
-        artist
-      </h7>
-    </div>
-  </div>
-  <div
-    className="background--light-primary one-whole">
-    <div
-      className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
-      <Connect(AudioTrackWithoutData)
-        album={
-          Object {
-            "content": Object {
-              "id": "1",
-              "images": Array [
-                Object {
-                  "fileName": "blur",
-                  "size": "xsmall",
-                  "url": "http://test.com/xsmall.blur.jpg",
-                },
-                Object {
-                  "fileName": "normal",
-                  "size": "medium",
-                  "url": "http://test.com/medium.blur.jpg",
-                },
-              ],
-              "title": "sweet jams",
-              "tracks": Array [
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-              ],
-            },
-          }
-        }
-        track={
-          Object {
-            "file": "http://test.com/test.mp3",
-          }
-        }
-        trackNumber={0} />
-      <Connect(AudioTrackWithoutData)
-        album={
-          Object {
-            "content": Object {
-              "id": "1",
-              "images": Array [
-                Object {
-                  "fileName": "blur",
-                  "size": "xsmall",
-                  "url": "http://test.com/xsmall.blur.jpg",
-                },
-                Object {
-                  "fileName": "normal",
-                  "size": "medium",
-                  "url": "http://test.com/medium.blur.jpg",
-                },
-              ],
-              "title": "sweet jams",
-              "tracks": Array [
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-              ],
-            },
-          }
-        }
-        track={
-          Object {
-            "file": "http://test.com/test.mp3",
-          }
-        }
-        trackNumber={1} />
-      <Connect(AudioTrackWithoutData)
-        album={
-          Object {
-            "content": Object {
-              "id": "1",
-              "images": Array [
-                Object {
-                  "fileName": "blur",
-                  "size": "xsmall",
-                  "url": "http://test.com/xsmall.blur.jpg",
-                },
-                Object {
-                  "fileName": "normal",
-                  "size": "medium",
-                  "url": "http://test.com/medium.blur.jpg",
-                },
-              ],
-              "title": "sweet jams",
-              "tracks": Array [
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-              ],
-            },
-          }
-        }
-        track={
-          Object {
-            "file": "http://test.com/test.mp3",
-          }
-        }
-        trackNumber={2} />
-    </div>
-  </div>
+<section className="hard background--light-primary" style={{...}}>
+<Meta title={[undefined]} description="Album by artist" image="url(http://test.com/medium.blur.jpg)" id={[undefined]} />
+<div className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill" style={{...}}>
+<div className="one-third floating__item display-inline overlay__item ratio--square background--fill" style={{...}} />
+<div className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
+<h5 />
+<h7>
+artist
+</h7>
+</div>
+</div>
+<div className="background--light-primary one-whole">
+<div className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
+<Connect(AudioTrackWithoutData) track={{...}} album={{...}} trackNumber={0} />
+<Connect(AudioTrackWithoutData) track={{...}} album={{...}} trackNumber={1} />
+<Connect(AudioTrackWithoutData) track={{...}} album={{...}} trackNumber={2} />
+</div>
+</div>
 </section>
 `;
 
 exports[`test renders without album artist 1`] = `
-<section
-  className="hard background--light-primary"
-  style={Object {}}>
-  <Meta
-    description="Album by NewSpring"
-    image="url(http://test.com/medium.blur.jpg)" />
-  <div
-    className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill"
-    style={
-      Object {
-        "backgroundImage": "url(http://test.com/xsmall.blur.jpg)",
-      }
-    }>
-    <div
-      className="one-third floating__item display-inline overlay__item ratio--square background--fill"
-      style={
-        Object {
-          "backgroundImage": "url(http://test.com/medium.blur.jpg)",
-        }
-      } />
-    <div
-      className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
-      <h5 />
-      <h7>
-        NewSpring
-      </h7>
-    </div>
-  </div>
-  <div
-    className="background--light-primary one-whole">
-    <div
-      className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
-      <Connect(AudioTrackWithoutData)
-        album={
-          Object {
-            "content": Object {
-              "id": "1",
-              "images": Array [
-                Object {
-                  "fileName": "blur",
-                  "size": "xsmall",
-                  "url": "http://test.com/xsmall.blur.jpg",
-                },
-                Object {
-                  "fileName": "normal",
-                  "size": "medium",
-                  "url": "http://test.com/medium.blur.jpg",
-                },
-              ],
-              "title": "sweet jams",
-              "tracks": Array [
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-              ],
-            },
-          }
-        }
-        track={
-          Object {
-            "file": "http://test.com/test.mp3",
-          }
-        }
-        trackNumber={0} />
-      <Connect(AudioTrackWithoutData)
-        album={
-          Object {
-            "content": Object {
-              "id": "1",
-              "images": Array [
-                Object {
-                  "fileName": "blur",
-                  "size": "xsmall",
-                  "url": "http://test.com/xsmall.blur.jpg",
-                },
-                Object {
-                  "fileName": "normal",
-                  "size": "medium",
-                  "url": "http://test.com/medium.blur.jpg",
-                },
-              ],
-              "title": "sweet jams",
-              "tracks": Array [
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-              ],
-            },
-          }
-        }
-        track={
-          Object {
-            "file": "http://test.com/test.mp3",
-          }
-        }
-        trackNumber={1} />
-      <Connect(AudioTrackWithoutData)
-        album={
-          Object {
-            "content": Object {
-              "id": "1",
-              "images": Array [
-                Object {
-                  "fileName": "blur",
-                  "size": "xsmall",
-                  "url": "http://test.com/xsmall.blur.jpg",
-                },
-                Object {
-                  "fileName": "normal",
-                  "size": "medium",
-                  "url": "http://test.com/medium.blur.jpg",
-                },
-              ],
-              "title": "sweet jams",
-              "tracks": Array [
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-                Object {
-                  "file": "http://test.com/test.mp3",
-                },
-              ],
-            },
-          }
-        }
-        track={
-          Object {
-            "file": "http://test.com/test.mp3",
-          }
-        }
-        trackNumber={2} />
-    </div>
-  </div>
+<section className="hard background--light-primary" style={{...}}>
+<Meta title={[undefined]} description="Album by NewSpring" image="url(http://test.com/medium.blur.jpg)" id={[undefined]} />
+<div className="one-whole soft soft-double@palm-wide-and-up overlay floating background--dark-primary background--fill" style={{...}}>
+<div className="one-third floating__item display-inline overlay__item ratio--square background--fill" style={{...}} />
+<div className="overlay__item soft-left text-left floating__item two-thirds text-light-primary">
+<h5 />
+<h7>
+NewSpring
+</h7>
+</div>
+</div>
+<div className="background--light-primary one-whole">
+<div className="soft-sides soft-double-sides@palm-wide-and-up soft-ends@palm-wide-and-up soft-half-ends push-bottom">
+<Connect(AudioTrackWithoutData) track={{...}} album={{...}} trackNumber={0} />
+<Connect(AudioTrackWithoutData) track={{...}} album={{...}} trackNumber={1} />
+<Connect(AudioTrackWithoutData) track={{...}} album={{...}} trackNumber={2} />
+</div>
+</div>
 </section>
 `;

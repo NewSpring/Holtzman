@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import DayPicker from "react-day-picker";
 import mockDate from "mockdate";
 import DateComponent from "../Date";
@@ -26,13 +25,13 @@ mockDate.set("1/1/2000");
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders date picker", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ showDatePicker: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("onDayClick returns if disabled", () => {

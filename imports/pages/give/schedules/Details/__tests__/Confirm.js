@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { ConfirmWithoutData as Confirm } from "../Confirm";
 
 import { modal as modalActions } from "../../../../../store";
@@ -25,7 +24,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("render with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("back hides modal", () => {

@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
 import ListDetail from "../../../../pages/music/music.ListDetail";
 import { actions as audioActions } from "../../../../store/audio";
@@ -71,14 +70,14 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders dock version", () => {
   const props = cloneDeep(defaultProps);
   props.audio.visibility = "dock";
   const wrapper = shallow(generateComponent(props))
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("getTertiaryTextColor returns different versions for light and dark", () => {

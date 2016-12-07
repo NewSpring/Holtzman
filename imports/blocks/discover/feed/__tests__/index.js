@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { print } from "graphql-tag/printer";
 import {
   DiscoverWithoutData as Discover,
@@ -30,7 +29,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("doesn't render if loading", () => {
@@ -39,7 +38,7 @@ it("doesn't render if loading", () => {
       loading: true,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("parses query correctly", () => {

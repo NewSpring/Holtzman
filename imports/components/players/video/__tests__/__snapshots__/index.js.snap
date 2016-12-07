@@ -1,13 +1,4 @@
-exports[`test renders with props 1`] = `
-<div
-  className="ooyala-player"
-  id="ooyala-player-2"
-  style={
-    Object {
-      "color": "red",
-    }
-  } />
-`;
+exports[`test renders with props 1`] = `<div id="ooyala-player-2" className="ooyala-player" style={{...}} />`;
 
 exports[`test styles has hidden styles 1`] = `
 Object {

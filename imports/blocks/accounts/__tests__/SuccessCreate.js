@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Success from "../SuccessCreate";
 
 const defaultProps = {
@@ -17,5 +16,5 @@ const generateComponent = (additionalProps = {}) => {
 
 it("render with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

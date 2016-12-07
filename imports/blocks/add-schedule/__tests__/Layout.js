@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson }from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import Layout from "../Layout";
 
@@ -20,7 +19,7 @@ describe("Layout", () => {
         state={{}}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders null if no accounts exist", () => {
@@ -29,7 +28,7 @@ describe("Layout", () => {
         state={{}}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders with custom text", () => {
@@ -40,7 +39,7 @@ describe("Layout", () => {
         text="Make Schedules Now"
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("disables checkout when total is undefined", () => {
@@ -50,7 +49,7 @@ describe("Layout", () => {
         state={{}}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("disables checkout when total is negative", () => {
@@ -61,7 +60,7 @@ describe("Layout", () => {
         total={-50}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("disables checkout when not ready", () => {
@@ -72,7 +71,7 @@ describe("Layout", () => {
         ready={false}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
 
@@ -85,7 +84,7 @@ describe("Layout", () => {
         total={50}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("enables checkout when total is positive and ready", () => {
@@ -97,7 +96,7 @@ describe("Layout", () => {
         total={50}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders the prefilled fund for an existing schedule ", () => {
@@ -114,7 +113,7 @@ describe("Layout", () => {
         total={50}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders the prefilled date for an existing schedule ", () => {
@@ -129,7 +128,7 @@ describe("Layout", () => {
         total={50}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders the prefilled amount for an existing schedule", () => {
@@ -146,7 +145,7 @@ describe("Layout", () => {
         total={50}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders the prefilled frequency for an existing schedule ", () => {
@@ -161,6 +160,6 @@ describe("Layout", () => {
         total={50}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });

@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import Right, { DefaultWrapper } from "../Right";
 
@@ -25,7 +24,7 @@ describe("DefaultWrapper", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -62,14 +61,14 @@ describe("Right", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("overrides with theme", () => {
     const wrapper = shallow(generateComponent({
       theme: "override me",
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("overrides styles", () => {
@@ -78,14 +77,14 @@ describe("Right", () => {
         color: "red",
       },
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders linked version", () => {
     const wrapper = shallow(generateComponent({
       link: "http://test.com",
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders linked version with theme override", () => {
@@ -93,7 +92,7 @@ describe("Right", () => {
       link: "http://test.com",
       theme: "override link",
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders linked version with style override", () => {
@@ -103,14 +102,14 @@ describe("Right", () => {
         color: "blue",
       },
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders background image version", () => {
     const wrapper = shallow(generateComponent({
       background: "//test.com/background.jpg",
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("shouldComponentUpdate returns false when keep", () => {
@@ -217,7 +216,7 @@ describe("Right", () => {
     const wrapper = shallow(generateComponent());
     expect(wrapper.instance().renderInsideRatio()).toMatchSnapshot();
   });
-  
+
   it("renderInsideRatio can be overrided with theme", () => {
     const wrapper = shallow(generateComponent({
       ratioTheme: "override ratio",

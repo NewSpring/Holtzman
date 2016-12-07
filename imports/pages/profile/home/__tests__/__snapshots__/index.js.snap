@@ -141,37 +141,8 @@ Object {
 }
 `;
 
-exports[`test renders with props 1`] = `
-<Layout
-  content={<mockConstructor />}
-  onToggle={[Function]}
-  onUpload={[Function]}
-  person={
-    Object {
-      "photo": "http://test.com/photo.jpg",
-    }
-  }
-  photo="test" />
-`;
+exports[`test renders with props 1`] = `<Layout photo="test" person={{...}} onToggle={[Function]} content={{...}} onUpload={[Function]} />`;
 
-exports[`test renders without person 1`] = `
-<Layout
-  content={<mockConstructor />}
-  onToggle={[Function]}
-  onUpload={[Function]}
-  person={Object {}}
-  photo="test" />
-`;
+exports[`test renders without person 1`] = `<Layout photo="test" person={{...}} onToggle={[Function]} content={{...}} onUpload={[Function]} />`;
 
-exports[`test renders without photo 1`] = `
-<Layout
-  content={<mockConstructor />}
-  onToggle={[Function]}
-  onUpload={[Function]}
-  person={
-    Object {
-      "photo": "http://test.com/photo.jpg",
-    }
-  }
-  photo="http://test.com/photo.jpg" />
-`;
+exports[`test renders without photo 1`] = `<Layout photo="http://test.com/photo.jpg" person={{...}} onToggle={[Function]} content={{...}} onUpload={[Function]} />`;

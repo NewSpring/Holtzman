@@ -154,31 +154,17 @@ Object {
 `;
 
 exports[`test renders with props 1`] = `
-<Layout
-  mobile={false}
-  onUpload={[Function]}
-  person={
-    Object {
-      "photo": "http://test.com/test.jpg",
-    }
-  }>
-  <h1>
-    test
-  </h1>
+<Layout person={{...}} mobile={false} onUpload={[Function]}>
+<h1>
+test
+</h1>
 </Layout>
 `;
 
 exports[`test renders without photo 1`] = `
-<Layout
-  mobile={false}
-  onUpload={[Function]}
-  person={
-    Object {
-      "photo": "http://test.com/test.jpg",
-    }
-  }>
-  <h1>
-    test
-  </h1>
+<Layout person={{...}} mobile={false} onUpload={[Function]}>
+<h1>
+test
+</h1>
 </Layout>
 `;

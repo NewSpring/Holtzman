@@ -1,5 +1,4 @@
 import { mount, shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Layout from "../Layout";
 
 const defaultProps = {
@@ -23,7 +22,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("submit calls update with values from inputs", () => {

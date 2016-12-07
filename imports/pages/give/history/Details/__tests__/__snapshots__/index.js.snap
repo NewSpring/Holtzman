@@ -1,11 +1,1 @@
-exports[`test renders with props 1`] = `
-<Layout
-  entries={
-    Array [
-      Object {},
-      Object {},
-    ]
-  }
-  loadingEntries={false}
-  transaction={Object {}} />
-`;
+exports[`test renders with props 1`] = `<Layout transaction={{...}} entries={{...}} loadingEntries={false} />`;

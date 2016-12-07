@@ -7,26 +7,6 @@ Array [
 ]
 `;
 
-exports[`RecoverSchedules has and calls the onRemind method 1`] = `
-<Layout
-  back={[Function]}
-  closeFunction={[Function]}
-  hide={[Function]}
-  onSubmit={[Function]}
-  recoverOnClick={[Function]}
-  reminderDate="20200101"
-  schedules={Array []}
-  state="remind" />
-`;
+exports[`RecoverSchedules has and calls the onRemind method 1`] = `<Layout reminderDate="20200101" closeFunction={[Function]} onSubmit={[Function]} back={[Function]} schedules={{...}} hide={[Function]} recoverOnClick={[Function]} state="remind" />`;
 
-exports[`RecoverSchedules should be default if default props are passed 1`] = `
-<Layout
-  back={[Function]}
-  closeFunction={[Function]}
-  hide={[Function]}
-  onSubmit={[Function]}
-  recoverOnClick={[Function]}
-  reminderDate="20200101"
-  schedules={Array []}
-  state="default" />
-`;
+exports[`RecoverSchedules should be default if default props are passed 1`] = `<Layout reminderDate="20200101" closeFunction={[Function]} onSubmit={[Function]} back={[Function]} schedules={{...}} hide={[Function]} recoverOnClick={[Function]} state="default" />`;

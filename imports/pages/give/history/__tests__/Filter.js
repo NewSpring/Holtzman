@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Filter from "../Filter";
 
 const defaultProps = {
@@ -35,13 +34,13 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders family members when expanded is true", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ expanded: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("doesn't render family members if there are none", () => {
@@ -49,7 +48,7 @@ it("doesn't render family members if there are none", () => {
     family: null,
   }));
   wrapper.setState({ expanded: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("works with nickname", () => {
@@ -75,7 +74,7 @@ it("works with nickname", () => {
     ],
   }));
   wrapper.setState({ expanded: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("updates the state upon recieving new family members", () => {

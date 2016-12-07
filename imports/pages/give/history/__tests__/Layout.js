@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Layout, {
   formatDate,
   monentize,
@@ -91,14 +90,14 @@ describe("TransactionDetail", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders with failure", () => {
     const wrapper = shallow(generateComponent({
       failure: true,
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders with failure and status", () => {
@@ -106,14 +105,14 @@ describe("TransactionDetail", () => {
       failure: true,
       status: "error",
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders without icon", () => {
     const wrapper = shallow(generateComponent({
       icon: false,
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -137,7 +136,7 @@ describe("TransactionCard", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders pending version", () => {
@@ -147,7 +146,7 @@ describe("TransactionCard", () => {
         status: "PENDING",
       },
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders failed version", () => {
@@ -157,7 +156,7 @@ describe("TransactionCard", () => {
         status: "FAILED",
       },
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -198,7 +197,7 @@ describe("Layout", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders with negative transactions", () => {
@@ -218,14 +217,14 @@ describe("Layout", () => {
       },
     ];
     const wrapper = shallow(generateComponent({ transactions }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders reloading version", () => {
     const wrapper = shallow(generateComponent({
       reloading: true,
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders reloading if no transactions and not ready", () => {
@@ -233,7 +232,7 @@ describe("Layout", () => {
       transactions: [],
       ready: false,
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders no transactions if there are none and ready", () => {
@@ -241,6 +240,6 @@ describe("Layout", () => {
       transactions: [],
       ready: true,
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,5 +1,4 @@
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import Layout from "../Layout";
 
 const account1 = [
@@ -39,7 +38,7 @@ describe("Template", () => {
         account={""}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("accepts account object with complete data", () => {
@@ -48,7 +47,7 @@ describe("Template", () => {
         account={account1}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("accepts account object without image data", () => {
@@ -57,7 +56,7 @@ describe("Template", () => {
         account={account2}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });
 

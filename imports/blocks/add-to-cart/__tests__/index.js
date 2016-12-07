@@ -1,5 +1,4 @@
 import { mount, shallow } from "enzyme";
-import { mountToJson, shallowToJson } from "enzyme-to-json";
 import { CartContainerWithoutData as CartContainer } from "../";
 import { SubFundWithoutData as SubFund } from "../Subfund";
 
@@ -34,17 +33,17 @@ const additionalAccounts = [
 
 it("should render with minimal props", () => {
   const component = shallow(generateComponent());
-  expect(shallowToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });
 
 it("should not render if no accounts", () => {
   const component = mount(generateComponent({ accounts: [] }));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });
 
 it("should properly render with multiple accounts", () => {
   const component = mount(generateComponent({ accounts: additionalAccounts }));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });
 
 describe("CartContainer > Lifecycle functions", () => {
@@ -72,7 +71,7 @@ describe("CartContainer > Lifecycle functions", () => {
         value: 10,
       }
     });
-    expect(mountToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it("should clear transactions on success", () => {

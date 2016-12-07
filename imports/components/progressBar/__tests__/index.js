@@ -1,6 +1,5 @@
 
 import { mount } from "enzyme";
-import { mountToJson } from "enzyme-to-json";
 import { getSingleSpecWrapper } from "../../../util/tests/data-spec";
 
 import ProgressBar, { themeStyles } from "../";
@@ -17,7 +16,7 @@ describe ("ProgressBar", () => {
   it("should render with minimal props", () => {
     const component = mount(<ProgressBar />);
 
-    expect(mountToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it ("should render a title", () => {

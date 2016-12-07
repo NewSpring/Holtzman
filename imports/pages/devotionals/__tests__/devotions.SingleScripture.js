@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import DevotionsSingleScripture from "../devotions.SingleScripture";
 
 const defaultProps = {
@@ -24,7 +23,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders scriptures", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("getClasses returns default classes", () => {

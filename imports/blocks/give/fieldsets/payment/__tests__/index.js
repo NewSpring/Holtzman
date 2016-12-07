@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Payment from "../";
 
 const defaultProps = {
@@ -29,7 +28,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("should render with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("savePayment should change save state and call save", () => {

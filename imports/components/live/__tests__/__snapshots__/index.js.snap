@@ -20,30 +20,6 @@ exports[`test parses query 1`] = `
 "
 `;
 
-exports[`test renders float version 1`] = `
-<mockConstructor
-  defaultStyle={
-    Object {
-      "height": 0,
-    }
-  }
-  style={
-    Object {
-      "height": undefined,
-    }
-  } />
-`;
+exports[`test renders float version 1`] = `<mockConstructor defaultStyle={{...}} style={{...}} />`;
 
-exports[`test renders with props 1`] = `
-<mockConstructor
-  defaultStyle={
-    Object {
-      "height": 0,
-    }
-  }
-  style={
-    Object {
-      "height": undefined,
-    }
-  } />
-`;
+exports[`test renders with props 1`] = `<mockConstructor defaultStyle={{...}} style={{...}} />`;

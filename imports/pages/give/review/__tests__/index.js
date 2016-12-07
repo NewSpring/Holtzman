@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { Component } from "react";
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 
 import { Template } from "../";
@@ -63,7 +62,7 @@ describe("GiveReviewTemplate", () => {
     const tree = shallow(
       <Template {...giveData} />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
     delete window.location;
   });
 
@@ -81,7 +80,7 @@ describe("GiveReviewTemplate", () => {
     const tree = shallow(
       <Template {...giveData} />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
     delete window.location;
   });
 
@@ -102,7 +101,7 @@ describe("GiveReviewTemplate", () => {
     const tree = shallow(
       <Template {...giveData} />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
     delete window.location;
   });
 
@@ -119,7 +118,7 @@ describe("GiveReviewTemplate", () => {
     const tree = shallow(
       <Template {...giveData} />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
     delete window.location;
   });
 });

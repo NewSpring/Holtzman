@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { ArticlesSingleWithoutData as ArticlesSingle } from "../articles.Single";
 import {
   nav as navActions,
@@ -39,14 +38,14 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading if no content", () => {
   const wrapper = shallow(generateComponent({
     article: {},
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders video if ooyalaId", () => {
@@ -62,7 +61,7 @@ it("renders video if ooyalaId", () => {
       },
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("dispatches nav actions on mount", () => {

@@ -1,6 +1,5 @@
 
 import { mount } from "enzyme";
-import { mountToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { getSingleSpecWrapper } from "../../../../util/tests/data-spec.js";
 
@@ -30,12 +29,12 @@ afterEach(() => {
 
 it("should render with minimal props", () => {
   const component = mount(generateComponent());
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });
 
 it("should accept custom classes thru classes prop", () => {
   const component = mount(generateComponent({classes: "test1 test2"}));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });
 
 it("should accept multiple accounts through accounts prop", () => {
@@ -45,7 +44,7 @@ it("should accept multiple accounts through accounts prop", () => {
       {value: "world"},
     ],
   }));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 
   //one additional for "select fund" default
   //one additional for blank?
@@ -56,7 +55,7 @@ it("should accept multiple accounts through accounts prop", () => {
 it("should accept an active prop to show the input", () => {
 
   const component = mount(generateComponent({ active: true, inputVal: "5.00" }));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 
   const inputProps = component.find("Input").props();
 

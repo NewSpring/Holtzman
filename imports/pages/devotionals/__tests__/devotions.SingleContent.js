@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import DevotionsSingleContent from "../devotions.SingleContent";
 
 const defaultProps = {
@@ -23,7 +22,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders without images or scripture", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders with an image", () => {
@@ -37,7 +36,7 @@ it("renders with an image", () => {
       },
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders with scripture", () => {
@@ -54,7 +53,7 @@ it("renders with scripture", () => {
       },
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("getClasses returns default classes", () => {

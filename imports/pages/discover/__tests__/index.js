@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { DiscoverWithoutData as Discover } from "../";
 import liveActions from "../../../store/live";
@@ -36,7 +35,7 @@ afterEach(() => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders additional padding when audio player active", () => {
@@ -45,7 +44,7 @@ it("renders additional padding when audio player active", () => {
       state: "playing",
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("hides live bar on mount", () => {

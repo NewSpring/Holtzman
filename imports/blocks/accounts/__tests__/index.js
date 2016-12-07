@@ -1,6 +1,5 @@
 import { Meteor } from "meteor/meteor";
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 
 import AccountsContainerWithData, {
   AccountsContainer,
@@ -140,7 +139,7 @@ describe("Accounts", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("calls all the functions when not loading and person is present", () => {

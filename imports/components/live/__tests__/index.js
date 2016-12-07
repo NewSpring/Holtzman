@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { print } from "graphql-tag/printer";
 import liveActions from "../../../store/live";
@@ -54,7 +53,7 @@ afterEach(() => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("doesn't render if not live", () => {
@@ -65,7 +64,7 @@ it("doesn't render if not live", () => {
       show: true,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("doesn't render if no embed code", () => {
@@ -76,7 +75,7 @@ it("doesn't render if no embed code", () => {
       show: true,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("doesn't render if don't show", () => {
@@ -87,7 +86,7 @@ it("doesn't render if don't show", () => {
       show: false,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders float version", () => {
@@ -99,7 +98,7 @@ it("renders float version", () => {
       show: true,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("getClasses returns default classes", () => {

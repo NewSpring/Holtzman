@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import mockDate from "mockdate";
 import {
   nav,
@@ -52,25 +51,25 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders error version", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ state: "error", err: Error });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading version", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ state: "loading" });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders success version", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ state: "success" });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("parses campuses query", () => {

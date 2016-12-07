@@ -1,5 +1,4 @@
 import { mount, shallow } from "enzyme";
-import { mountToJson, shallowToJson } from "enzyme-to-json";
 import Dashboard from "../";
 import Activity from "../../cards/cards.Activity";
 
@@ -37,7 +36,7 @@ describe("Dashboard", () => {
 
   it("should render with the default set of props", () => {
     const component = shallow(generateComponent());
-    expect(shallowToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it("should render with the children", () => {
@@ -52,6 +51,6 @@ describe("Dashboard", () => {
         />
       </Dashboard>
     );
-    expect(shallowToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 });

@@ -1,5 +1,4 @@
 import { mount, shallow } from "enzyme";
-import { mountToJson, shallowToJson } from "enzyme-to-json";
 import moment from "moment";
 import Activity from "../cards.Activity";
 
@@ -21,16 +20,16 @@ describe("Activity", () => {
 
   it("should render with the default set of props", () => {
     const component = shallow(generateComponent());
-    expect(shallowToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it("should render the warning status component", () => {
     const component = shallow(generateComponent({ status: "warning" }));
-    expect(shallowToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it("should render the failed status component", () => {
     const component = shallow(generateComponent({ status: "failed" }));
-    expect(shallowToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 });

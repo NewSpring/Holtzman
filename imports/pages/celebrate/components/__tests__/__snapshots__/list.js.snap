@@ -1,89 +1,43 @@
 exports[`List renders with props 1`] = `
-<div
-  style={
-    Object {
-      "WebkitOverflowScrolling": "touch",
-      "overflowX": "scroll",
-      "overflowY": "hidden",
-    }
-  }>
-  <section
-    style={Object {}}>
-    <ListItem
-      item={
-        Object {
-          "count": 2,
-          "label": "test",
-        }
-      }
-      padding={true} />
-    <ListItem
-      item={
-        Object {
-          "count": 2,
-          "label": "test",
-        }
-      }
-      padding={false} />
-  </section>
+<div style={{...}}>
+<section style={{...}}>
+<ListItem item={{...}} padding={true} />
+<ListItem item={{...}} padding={false} />
+</section>
 </div>
 `;
 
 exports[`ListItem adds push-right if padding 1`] = `
-<div
-  className="card floating display-inline-block push-right"
-  style={Object {}}>
-  <div
-    className="floating__item one-whole soft">
-    <Connect(FitTextWithoutData)
-      compressor={0.7}>
-      <h1
-        className="uppercase flush-bottom soft-half-bottom"
-        style={
-          Object {
-            "fontWeight": "900",
-          }
-        }>
-        2
-      </h1>
-    </Connect(FitTextWithoutData)>
-    <Connect(FitTextWithoutData)
-      compressor={1.75}>
-      <h5
-        className="flush-bottom">
-        test
-      </h5>
-    </Connect(FitTextWithoutData)>
-  </div>
+<div className="card floating display-inline-block push-right" style={{...}}>
+<div className="floating__item one-whole soft">
+<Connect(FitTextWithoutData) compressor={0.7}>
+<h1 className="uppercase flush-bottom soft-half-bottom" style={{...}}>
+2
+</h1>
+</Connect(FitTextWithoutData)>
+<Connect(FitTextWithoutData) compressor={1.75}>
+<h5 className="flush-bottom">
+test
+</h5>
+</Connect(FitTextWithoutData)>
+</div>
 </div>
 `;
 
 exports[`ListItem renders with props 1`] = `
-<div
-  className="card floating display-inline-block "
-  style={Object {}}>
-  <div
-    className="floating__item one-whole soft">
-    <Connect(FitTextWithoutData)
-      compressor={0.7}>
-      <h1
-        className="uppercase flush-bottom soft-half-bottom"
-        style={
-          Object {
-            "fontWeight": "900",
-          }
-        }>
-        2
-      </h1>
-    </Connect(FitTextWithoutData)>
-    <Connect(FitTextWithoutData)
-      compressor={1.75}>
-      <h5
-        className="flush-bottom">
-        test
-      </h5>
-    </Connect(FitTextWithoutData)>
-  </div>
+<div className="card floating display-inline-block " style={{...}}>
+<div className="floating__item one-whole soft">
+<Connect(FitTextWithoutData) compressor={0.7}>
+<h1 className="uppercase flush-bottom soft-half-bottom" style={{...}}>
+2
+</h1>
+</Connect(FitTextWithoutData)>
+<Connect(FitTextWithoutData) compressor={1.75}>
+<h5 className="flush-bottom">
+test
+</h5>
+</Connect(FitTextWithoutData)>
+</div>
 </div>
 `;
 

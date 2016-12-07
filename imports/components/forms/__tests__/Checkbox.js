@@ -2,7 +2,6 @@
 import { mount, shallow } from 'enzyme';
 import Checkbox from '../Checkbox.js';
 import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
-import { mountToJson, shallowToJson } from "enzyme-to-json";
 
 const generateComponent = (additionalProps={}) => (
     <Checkbox {...additionalProps} />
@@ -10,14 +9,14 @@ const generateComponent = (additionalProps={}) => (
 
 it ("should render with minimal props", () => {
   let component = mount(generateComponent());
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });
 
 it ("should accept a default value", () => {
   let component = mount(generateComponent({
     defaultValue: true
   }));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 
   const inputProps = getSingleSpecWrapper(component, "input").props();
 
@@ -28,7 +27,7 @@ it ("should disable input with disabled prop", () => {
   let component = mount(generateComponent({
     disabled: true,
   }));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 
   const inputProps = getSingleSpecWrapper(component, "input").props();
 
@@ -42,8 +41,8 @@ it ("should add classes with classes prop", () => {
   let component2 = mount(generateComponent({
     classes: "test1 harambe",
   }));
-  expect(mountToJson(component)).toMatchSnapshot();
-  expect(mountToJson(component2)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
+  expect(component2).toMatchSnapshot();
 
   const wrapper = getSingleSpecWrapper(component, "input-wrapper");
   const wrapper2 = getSingleSpecWrapper(component2, "input-wrapper");
@@ -56,7 +55,7 @@ it ("should display children", () => {
   let component = mount(generateComponent({
     children: "this is a test",
   }));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 
   const labelProps = getSingleSpecWrapper(component, "input-label").props();
 
@@ -67,7 +66,7 @@ it ("should accept an id", () => {
   let component = mount(generateComponent({
     id: "harambe",
   }));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 
   const inputProps = getSingleSpecWrapper(component, "input").props();
 
@@ -79,14 +78,14 @@ it ("should accept label", () => {
   let component = mount(generateComponent({
     label: "harambe",
   }));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });
 
 it ("should accept name prop", () => {
   let component = mount(generateComponent({
     name: "harambe",
   }));
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });
 
 it ("should add inputClasses with inputClasses prop", () => {
@@ -94,7 +93,7 @@ it ("should add inputClasses with inputClasses prop", () => {
     inputClasses: "test1 harambe",
   }));
 
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 
   const input = getSingleSpecWrapper(component, "input");
 
@@ -107,7 +106,7 @@ it ("should respond to onclick prop", () => {
     clicked: spy,
   }));
 
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 
   const input = getSingleSpecWrapper(component, "input");
   input.simulate("click");
@@ -120,7 +119,7 @@ it ("should hide label with hideLabel prop", () => {
     hideLabel: true,
   }));
 
-  expect(mountToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 
   expect(component.find("label").length).toEqual(0);
 });
@@ -195,5 +194,5 @@ it("pushes type prop to inputclasses", () => {
   const wrapper = shallow(generateComponent({
     type: "mytype",
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

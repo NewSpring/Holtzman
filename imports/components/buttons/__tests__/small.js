@@ -1,5 +1,4 @@
 import { mount } from "enzyme";
-import { mountToJson } from "enzyme-to-json";
 
 import SmallButton from "../small";
 
@@ -18,7 +17,7 @@ const generateLinkedComponent = (additionalProps) =>
 describe("SmallButton", () => {
   it("should render with minimal props", () => {
     const component = mount(<SmallButton />);
-    expect(mountToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it ("should accept text prop", () => {
@@ -29,8 +28,8 @@ describe("SmallButton", () => {
     expect(component.text()).toEqual("See All");
     expect(linkedComponent.text()).toEqual("See All");
 
-    expect(mountToJson(component)).toMatchSnapshot();
-    expect(mountToJson(linkedComponent)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
+    expect(linkedComponent).toMatchSnapshot();
   });
 
   it ("should accept disabled prop", () => {
@@ -40,8 +39,8 @@ describe("SmallButton", () => {
     expect(component.find("button").hasClass("btn--disabled")).toEqual(true);
     expect(linkedComponent.find("a").hasClass("btn--disabled")).toEqual(true);
 
-    expect(mountToJson(component)).toMatchSnapshot();
-    expect(mountToJson(linkedComponent)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
+    expect(linkedComponent).toMatchSnapshot();
   });
 
   it ("should accept a linkUrl and render an anchor instead of button", () => {
@@ -49,7 +48,7 @@ describe("SmallButton", () => {
 
     expect(component.find("a").length).toEqual(1);
     expect(component.find("button").length).toEqual(0);
-    expect(mountToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it ("should accept an onClick handler", () => {
@@ -60,7 +59,7 @@ describe("SmallButton", () => {
     button.simulate("click");
 
     expect(spy).toBeCalled();
-    expect(mountToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it ("should accept a className prop", () => {
@@ -70,8 +69,8 @@ describe("SmallButton", () => {
     expect(component.find("button").hasClass("harambe")).toEqual(true);
     expect(linkedComponent.find("a").hasClass("harambe")).toEqual(true);
 
-    expect(mountToJson(component)).toMatchSnapshot();
-    expect(mountToJson(linkedComponent)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
+    expect(linkedComponent).toMatchSnapshot();
   });
 
   it ("should accept a style prop", () => {
@@ -82,7 +81,7 @@ describe("SmallButton", () => {
       {style: {textTransform: "capitalize"}}
     ));
 
-    expect(mountToJson(component)).toMatchSnapshot();
-    expect(mountToJson(linkedComponent)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
+    expect(linkedComponent).toMatchSnapshot();
   });
 });

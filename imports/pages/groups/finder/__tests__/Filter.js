@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { FilterWithoutData as Filter } from "../Filter";
 
 const defaultProps = {
@@ -37,7 +36,7 @@ document.getElementById = jest.fn().mockReturnValue({
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without tags", () => {
@@ -46,7 +45,7 @@ it("renders without tags", () => {
       tags: null,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without campuses", () => {
@@ -55,21 +54,21 @@ it("renders without campuses", () => {
       campuses: null,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("hides tags when false", () => {
   const wrapper = shallow(generateComponent({
     showTags: false,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("hides search when false", () => {
   const wrapper = shallow(generateComponent({
     showSearch: false,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("findByQuery calls preventDefault if event", () => {

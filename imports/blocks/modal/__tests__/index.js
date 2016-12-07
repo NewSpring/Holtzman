@@ -1,5 +1,4 @@
 import { shallow, mount } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { modal as modalActions, nav as navActions } from "../../../store";
 import {
   SideModalContainerWithoutData as SideModalContainer,
@@ -40,7 +39,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("render with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("updates nav if not keeping the nav and modal visible", () => {

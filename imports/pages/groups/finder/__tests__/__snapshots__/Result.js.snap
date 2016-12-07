@@ -1,238 +1,34 @@
 exports[`test renders with props 1`] = `
 <div>
-  <Connect(SplitContainerWithoutData)>
-    <Right
-      classes={
-        Array [
-          "background--left",
-        ]
-      }
-      mobile={false}>
-      <ControllableWrapper
-        autoCenter={true}
-        hover={null}
-        markers={
-          Array [
-            Object {
-              "id": "1",
-              "latitude": 2,
-              "longitude": 3,
-            },
-            Object {
-              "id": "2",
-              "latitude": 2,
-              "longitude": 3,
-            },
-          ]
-        }
-        onChildClick={[Function]}
-        onMarkerHover={[Function]} />
-    </Right>
-  </Connect(SplitContainerWithoutData)>
-  <Left
-    classes={
-      Array [
-        "background--light-secondary",
-      ]
-    }
-    scroll={true}>
-    <Layout
-      LoadingComponent={[Function]}
-      campusLocations={Array []}
-      campuses={
-        Array [
-          "one",
-          "two",
-        ]
-      }
-      count={2}
-      done={false}
-      groups={
-        Array [
-          Object {
-            "id": "1",
-            "locations": Array [
-              Object {
-                "location": Object {
-                  "latitude": 2,
-                  "longitude": 3,
-                },
-              },
-            ],
-          },
-          Object {
-            "id": "2",
-            "locations": Array [
-              Object {
-                "location": Object {
-                  "latitude": 2,
-                  "longitude": 3,
-                },
-              },
-            ],
-          },
-        ]
-      }
-      loading={false}
-      onCardHover={[Function]}
-      query="test"
-      removeQueryString={[Function]}
-      showSearch={true}
-      showTags={false}
-      tags={
-        Array [
-          "one",
-          "two",
-        ]
-      }
-      toggleSearch={[Function]}
-      toggleTags={[Function]} />
-  </Left>
+<Connect(SplitContainerWithoutData)>
+<Right mobile={false} classes={{...}}>
+<ControllableWrapper autoCenter={true} markers={{...}} onMarkerHover={[Function]} hover={{...}} onChildClick={[Function]} />
+</Right>
+</Connect(SplitContainerWithoutData)>
+<Left scroll={true} classes={{...}}>
+<Layout loading={false} LoadingComponent={[Function]} groups={{...}} count={2} tags={{...}} campuses={{...}} campusLocations={{...}} query="test" done={false} removeQueryString={[Function]} showTags={false} toggleTags={[Function]} showSearch={true} toggleSearch={[Function]} onCardHover={[Function]} />
+</Left>
 </div>
 `;
 
 exports[`test renders without map on mobile 1`] = `
 <div>
-  <Connect(SplitContainerWithoutData)>
-    <Right
-      classes={
-        Array [
-          "background--left",
-        ]
-      }
-      mobile={false} />
-  </Connect(SplitContainerWithoutData)>
-  <Left
-    classes={
-      Array [
-        "background--light-secondary",
-      ]
-    }
-    scroll={true}>
-    <Layout
-      LoadingComponent={[Function]}
-      campusLocations={Array []}
-      campuses={
-        Array [
-          "one",
-          "two",
-        ]
-      }
-      count={2}
-      done={false}
-      groups={
-        Array [
-          Object {
-            "id": "1",
-            "locations": Array [
-              Object {
-                "location": Object {
-                  "latitude": 2,
-                  "longitude": 3,
-                },
-              },
-            ],
-          },
-          Object {
-            "id": "2",
-            "locations": Array [
-              Object {
-                "location": Object {
-                  "latitude": 2,
-                  "longitude": 3,
-                },
-              },
-            ],
-          },
-        ]
-      }
-      loading={false}
-      onCardHover={[Function]}
-      query="test"
-      removeQueryString={[Function]}
-      showSearch={true}
-      showTags={false}
-      tags={
-        Array [
-          "one",
-          "two",
-        ]
-      }
-      toggleSearch={[Function]}
-      toggleTags={[Function]} />
-  </Left>
+<Connect(SplitContainerWithoutData)>
+<Right mobile={false} classes={{...}} />
+</Connect(SplitContainerWithoutData)>
+<Left scroll={true} classes={{...}}>
+<Layout loading={false} LoadingComponent={[Function]} groups={{...}} count={2} tags={{...}} campuses={{...}} campusLocations={{...}} query="test" done={false} removeQueryString={[Function]} showTags={false} toggleTags={[Function]} showSearch={true} toggleSearch={[Function]} onCardHover={[Function]} />
+</Left>
 </div>
 `;
 
 exports[`test renders without map on server 1`] = `
 <div>
-  <Connect(SplitContainerWithoutData)>
-    <Right
-      classes={
-        Array [
-          "background--left",
-        ]
-      }
-      mobile={false} />
-  </Connect(SplitContainerWithoutData)>
-  <Left
-    classes={
-      Array [
-        "background--light-secondary",
-      ]
-    }
-    scroll={true}>
-    <Layout
-      LoadingComponent={[Function]}
-      campusLocations={Array []}
-      campuses={
-        Array [
-          "one",
-          "two",
-        ]
-      }
-      count={2}
-      done={false}
-      groups={
-        Array [
-          Object {
-            "id": "1",
-            "locations": Array [
-              Object {
-                "location": Object {
-                  "latitude": 2,
-                  "longitude": 3,
-                },
-              },
-            ],
-          },
-          Object {
-            "id": "2",
-            "locations": Array [
-              Object {
-                "location": Object {
-                  "latitude": 2,
-                  "longitude": 3,
-                },
-              },
-            ],
-          },
-        ]
-      }
-      loading={false}
-      onCardHover={[Function]}
-      query="test"
-      removeQueryString={[Function]}
-      showSearch={true}
-      showTags={false}
-      tags={
-        Array [
-          "one",
-          "two",
-        ]
-      }
-      toggleSearch={[Function]}
-      toggleTags={[Function]} />
-  </Left>
+<Connect(SplitContainerWithoutData)>
+<Right mobile={false} classes={{...}} />
+</Connect(SplitContainerWithoutData)>
+<Left scroll={true} classes={{...}}>
+<Layout loading={false} LoadingComponent={[Function]} groups={{...}} count={2} tags={{...}} campuses={{...}} campusLocations={{...}} query="test" done={false} removeQueryString={[Function]} showTags={false} toggleTags={[Function]} showSearch={true} toggleSearch={[Function]} onCardHover={[Function]} />
+</Left>
 </div>
 `;

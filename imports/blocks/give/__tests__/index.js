@@ -1,5 +1,4 @@
 import { shallow, mount } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { modal, give as giveActions } from "../../../store";
 import OnBoard from "../../../blocks/accounts";
 import { GiveWithoutData as Give } from "../";
@@ -28,7 +27,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("calls dispatch on mount if saved account", () => {

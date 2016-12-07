@@ -1,5 +1,4 @@
 import { mount, shallow } from "enzyme";
-import { mountToJson, shallowToJson } from "enzyme-to-json";
 import YearToDate from "../cards.YearToDate";
 
 describe("Year To Date", () => {
@@ -96,6 +95,6 @@ describe("Year To Date", () => {
 
   it("should render with the default set of props", () => {
     const component = shallow(generateComponent());
-    expect(shallowToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 });

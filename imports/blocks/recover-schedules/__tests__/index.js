@@ -1,6 +1,5 @@
 import { Meteor } from "meteor/meteor";
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import moment from "moment";
 
@@ -31,7 +30,7 @@ describe("RecoverSchedules", () => {
     const tree = shallow(
       <RecoverSchedules {...sampleProps} />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("has and calls the back method", () => {
@@ -79,7 +78,7 @@ describe("RecoverSchedules", () => {
     );
     // make sure it passes the "remind" state to the Layout
     wrapper.setState({ state: "remind" });
-    expect(shallowToJson(wrapper)).toMatchSnapshot()
+    expect(wrapper).toMatchSnapshot()
 
     // make sure the onRemind function exists
     const component = wrapper.instance();

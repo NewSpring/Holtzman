@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import ScriptureItem from "../devotions.ScriptureItem";
 
@@ -14,7 +13,7 @@ const generateComponent = () => (
 it("renders loading without scriptureData", () => {
   Meteor.call = jest.fn();
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("calls getScripture meteor method", () => {
@@ -31,5 +30,5 @@ it("renders scripture when state updated", () => {
   wrapper.setState({
     scriptureData: "<h1>scipture</h1>",
   });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

@@ -64,23 +64,16 @@ Array [
 `;
 
 exports[`test renders with props 1`] = `
-<div
-  className="grid floating">
-  <p
-    className="grid__item text-left eight-ninths ellipsis push-half-ends"
-    onClick={[Function]}>
-    test
-    <span
-      className="text-dark-tertiary display-block small flush">
-      test title
-    </span>
-  </p>
-  <span
-    className="text-dark-tertiary grid__item one-tenth floating__item"
-    data-track={2}
-    onClick={[Function]}>
-    •••
-  </span>
+<div className="grid floating">
+<p onClick={[Function]} className="grid__item text-left eight-ninths ellipsis push-half-ends">
+test
+<span className="text-dark-tertiary display-block small flush">
+test title
+</span>
+</p>
+<span onClick={[Function]} data-track={2} className="text-dark-tertiary grid__item one-tenth floating__item">
+•••
+</span>
 </div>
 `;
 

@@ -1,5 +1,4 @@
 import { shallow, mount } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
 
@@ -19,7 +18,7 @@ describe("Remind", () => {
     const tree = shallow(
       <Remind />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("should click the back button one time", () => {

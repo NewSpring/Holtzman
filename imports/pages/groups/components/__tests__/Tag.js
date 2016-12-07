@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import { TagWithoutData as Tag } from "../Tag";
 
@@ -36,27 +35,27 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders unclickeable version", () => {
   const wrapper = shallow(generateComponent({
     clickAble: false,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders active version", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ isActive: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders cordova active version", () => {
   Meteor.isCordova = true;
   const wrapper = shallow(generateComponent());
   wrapper.setState({ isActive: true });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
   Meteor.isCordova = false;
 });
 
@@ -64,7 +63,7 @@ it("works with val", () => {
   const wrapper = shallow(generateComponent({
     label: null,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("updates active state on mount if active", () => {
