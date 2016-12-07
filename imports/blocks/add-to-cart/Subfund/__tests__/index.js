@@ -1,6 +1,5 @@
 
 import { mount, shallow } from "enzyme";
-import { mountToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { getSingleSpecWrapper } from "../../../../util/tests/data-spec.js";
 
@@ -67,7 +66,7 @@ describe ("SubFund", () => {
   it("should render with minimal props", () => {
     const component = mount(generateComponent());
 
-    expect(mountToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
     expect(component.find("Layout").length).toEqual(1);
     expect(component.find("Primary").length).toEqual(0);
   });
@@ -75,7 +74,7 @@ describe ("SubFund", () => {
   it("should render a primary fund", () => {
     const component = mount(generateComponent({ primary: true }));
 
-    expect(mountToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
     expect(component.find("Layout").length).toEqual(0);
     expect(component.find("Primary").length).toEqual(1);
   });
@@ -83,7 +82,7 @@ describe ("SubFund", () => {
   it("sets the state to active if it has an amount", () => {
     const component = mount(generateComponent({ amount: 10 }));
 
-    expect(mountToJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
     expect(component.state()).toEqual({ active: true });
   });
 

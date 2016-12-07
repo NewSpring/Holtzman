@@ -1,5 +1,4 @@
 import { shallow, mount } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import Validate from "../../../util/validate";
 import SignIn from "../Signin";
 
@@ -30,21 +29,21 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("can override header with prop", () => {
   const wrapper = shallow(generateComponent({
     header: <h1>override</h1>,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders alternate account version", () => {
   const wrapper = shallow(generateComponent({
     alternateAccounts: ["alternate@account.com"],
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders people without accounts version", () => {
@@ -64,7 +63,7 @@ it("renders people without accounts version", () => {
       },
     ],
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders account version", () => {
@@ -75,7 +74,7 @@ it("renders account version", () => {
       lastName: "bob",
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders enabled button if has email, password, and terms", () => {
@@ -86,7 +85,7 @@ it("renders enabled button if has email, password, and terms", () => {
       password: "password",
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("header renders default header", () => {

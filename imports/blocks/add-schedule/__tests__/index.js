@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson }from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { Meteor } from "meteor/meteor";
 import { CartContainer } from "../index";
@@ -38,7 +37,7 @@ describe("CartContainer", () => {
         clearTransactions={functionMock}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it( "renders null if no accounts exist", () => {
@@ -51,7 +50,7 @@ describe("CartContainer", () => {
         clearTransactions={functionMock}
       />
     );
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders the default component", () => {
@@ -73,7 +72,7 @@ describe("CartContainer", () => {
       />
     );
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders checkout ready when schedule is valid", () => {
@@ -96,7 +95,7 @@ describe("CartContainer", () => {
       />
     );
 
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("receives props and resets the form", () => {
@@ -126,7 +125,7 @@ describe("CartContainer", () => {
       },
     });
 
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
     // XXX expect form to NOT have an add-to-cart element
   });
 });

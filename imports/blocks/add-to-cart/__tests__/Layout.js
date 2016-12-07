@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { mount, shallow } from "enzyme";
-import { mountToJson, shallowToJson } from "enzyme-to-json";
 
 import { reset, startBuffering } from "aphrodite/lib/inject";
 
@@ -51,10 +50,10 @@ afterEach(() => {
 
 it("should render with minimal props", () => {
   const component = shallow(generateComponent());
-  expect(shallowToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });
 
 it("should render without subfunds ", () => {
   const component = shallow(generateComponent({ subfunds: [] }));
-  expect(shallowToJson(component)).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });

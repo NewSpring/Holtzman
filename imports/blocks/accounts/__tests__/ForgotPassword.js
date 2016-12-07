@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { Accounts } from "meteor/accounts-base";
 import Validate from "../../../util/validate";
 import ForgotPassword from "../ForgotPassword";
@@ -28,25 +27,25 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders error version", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ state: "error", err: "error message" });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading version", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ state: "loading" });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders success version", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ state: "success" });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders disabled if errors from props", () => {
@@ -55,7 +54,7 @@ it("renders disabled if errors from props", () => {
       message: "thing",
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("isEmail saves the email if valid", () => {

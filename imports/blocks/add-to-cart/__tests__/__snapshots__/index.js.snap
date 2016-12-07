@@ -152,92 +152,26 @@ Object {
 `;
 
 exports[`CartContainer > Lifecycle functions accepts query string prefills the fund 1`] = `
-<CartContainer
-  accounts={
-    Array [
-      Object {
-        "id": "1",
-        "name": "test",
-      },
-    ]
-  }
-  addTransactions={[Function]}
-  clearTransaction={[Function]}
-  clearTransactions={[Function]}
-  give="5"
-  query={Object {}}>
-  <Component
-    changeAmount={[Function]}
-    changeFund={[Function]}
-    preFill={[Function]}
-    subfunds={
-      Array [
-        Object {
-          "accounts": Array [
-            Object {
-              "label": "test",
-              "value": "1",
-            },
-          ],
-          "amount": 10,
-          "fundId": "1",
-          "id": 1,
-          "primary": true,
-        },
-      ]
-    }
-    total={10}>
-    <div
-      className="push-top@handheld soft-half-top@lap-and-up">
-      <Form
-        classes={
-          Array [
-            "text-left",
-            "hard",
-          ]
-        }
-        id="add-to-cart"
-        submit={[Function]}>
-        <form
-          className="hard-ends text-left hard"
-          id="add-to-cart"
-          onSubmit={[Function]}>
-          <FieldSet>
-            <fieldset
-              className="flush-bottom">
-              <div
-                className="display-inline-block">
-                <mockConstructor
-                  accounts={
-                    Array [
-                      Object {
-                        "label": "test",
-                        "value": "1",
-                      },
-                    ]
-                  }
-                  amount={10}
-                  changeAmount={[Function]}
-                  changeFund={[Function]}
-                  fundId="1"
-                  id={1}
-                  preFill={[Function]}
-                  primary={true}>
+<CartContainer clearTransactions={[Function]} accounts={{...}} clearTransaction={[Function]} addTransactions={[Function]} give="5" query={{...}}>
+  <Component subfunds={{...}} changeFund={[Function]} changeAmount={[Function]} preFill={[Function]} total={10}>
+    <div className="push-top@handheld soft-half-top@lap-and-up">
+      <Form classes={{...}} submit={[Function]} id="add-to-cart">
+        <form id="add-to-cart" onSubmit={[Function]} className="hard-ends text-left hard" action={[undefined]} method={[undefined]} style={[undefined]}>
+          <FieldSet theme={[undefined]}>
+            <fieldset className="flush-bottom">
+              <div className="display-inline-block">
+                <mockConstructor preFill={[Function]} changeAmount={[Function]} changeFund={[Function]} accounts={{...}} primary={true} id={1} fundId="1" amount={10}>
                   <div />
                 </mockConstructor>
-                <h3
-                  className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
+                <h3 className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
                   so my total is
                 </h3>
-                <h3
-                  className="display-inline-block text-brand push-half-bottom">
+                <h3 className="display-inline-block text-brand push-half-bottom">
                   $10.00
                 </h3>
               </div>
-              <div
-                className="push-top">
-                <mockConstructor
-                  disabled={false}>
+              <div className="push-top">
+                <mockConstructor disabled={false}>
                   <div />
                 </mockConstructor>
               </div>
@@ -288,184 +222,32 @@ Object {
 }
 `;
 
-exports[`test should not render if no accounts 1`] = `
-<CartContainer
-  accounts={Array []}
-  addTransactions={[Function]}
-  clearTransaction={[Function]}
-  clearTransactions={[Function]}
-  give="5"
-  query={Object {}} />
-`;
+exports[`test should not render if no accounts 1`] = `<CartContainer clearTransactions={[Function]} accounts={{...}} clearTransaction={[Function]} addTransactions={[Function]} give="5" query={{...}} />`;
 
 exports[`test should properly render with multiple accounts 1`] = `
-<CartContainer
-  accounts={
-    Array [
-      Object {
-        "id": 1,
-        "name": "TEST 1",
-      },
-      Object {
-        "id": 2,
-        "name": "TEST 2",
-      },
-      Object {
-        "id": 3,
-        "name": "TEST 3",
-      },
-      Object {
-        "id": 4,
-        "name": "TEST 4",
-      },
-    ]
-  }
-  addTransactions={[Function]}
-  clearTransaction={[Function]}
-  clearTransactions={[Function]}
-  give="5"
-  query={Object {}}>
-  <Component
-    changeAmount={[Function]}
-    changeFund={[Function]}
-    preFill={[Function]}
-    subfunds={
-      Array [
-        Object {
-          "accounts": Array [
-            Object {
-              "label": "TEST 1",
-              "value": 1,
-            },
-            Object {
-              "label": "TEST 2",
-              "value": 2,
-            },
-            Object {
-              "label": "TEST 3",
-              "value": 3,
-            },
-            Object {
-              "label": "TEST 4",
-              "value": 4,
-            },
-          ],
-          "amount": null,
-          "fundId": 1,
-          "id": 1,
-          "primary": true,
-        },
-        Object {
-          "accounts": Array [
-            Object {
-              "label": "TEST 2",
-              "value": 2,
-            },
-            Object {
-              "label": "TEST 3",
-              "value": 3,
-            },
-            Object {
-              "label": "TEST 4",
-              "value": 4,
-            },
-          ],
-          "amount": null,
-          "fundId": undefined,
-          "id": 2,
-          "primary": false,
-        },
-      ]
-    }
-    total={0}>
-    <div
-      className="push-top@handheld soft-half-top@lap-and-up">
-      <Form
-        classes={
-          Array [
-            "text-left",
-            "hard",
-          ]
-        }
-        id="add-to-cart"
-        submit={[Function]}>
-        <form
-          className="hard-ends text-left hard"
-          id="add-to-cart"
-          onSubmit={[Function]}>
-          <FieldSet>
-            <fieldset
-              className="flush-bottom">
-              <div
-                className="display-inline-block">
-                <mockConstructor
-                  accounts={
-                    Array [
-                      Object {
-                        "label": "TEST 1",
-                        "value": 1,
-                      },
-                      Object {
-                        "label": "TEST 2",
-                        "value": 2,
-                      },
-                      Object {
-                        "label": "TEST 3",
-                        "value": 3,
-                      },
-                      Object {
-                        "label": "TEST 4",
-                        "value": 4,
-                      },
-                    ]
-                  }
-                  amount={null}
-                  changeAmount={[Function]}
-                  changeFund={[Function]}
-                  fundId={1}
-                  id={1}
-                  preFill={[Function]}
-                  primary={true}>
+<CartContainer clearTransactions={[Function]} accounts={{...}} clearTransaction={[Function]} addTransactions={[Function]} give="5" query={{...}}>
+  <Component subfunds={{...}} changeFund={[Function]} changeAmount={[Function]} preFill={[Function]} total={0}>
+    <div className="push-top@handheld soft-half-top@lap-and-up">
+      <Form classes={{...}} submit={[Function]} id="add-to-cart">
+        <form id="add-to-cart" onSubmit={[Function]} className="hard-ends text-left hard" action={[undefined]} method={[undefined]} style={[undefined]}>
+          <FieldSet theme={[undefined]}>
+            <fieldset className="flush-bottom">
+              <div className="display-inline-block">
+                <mockConstructor preFill={[Function]} changeAmount={[Function]} changeFund={[Function]} accounts={{...}} primary={true} id={1} fundId={1} amount={{...}}>
                   <div />
                 </mockConstructor>
-                <mockConstructor
-                  accounts={
-                    Array [
-                      Object {
-                        "label": "TEST 2",
-                        "value": 2,
-                      },
-                      Object {
-                        "label": "TEST 3",
-                        "value": 3,
-                      },
-                      Object {
-                        "label": "TEST 4",
-                        "value": 4,
-                      },
-                    ]
-                  }
-                  amount={null}
-                  changeAmount={[Function]}
-                  changeFund={[Function]}
-                  id={2}
-                  preFill={[Function]}
-                  primary={false}>
+                <mockConstructor preFill={[Function]} changeAmount={[Function]} changeFund={[Function]} accounts={{...}} primary={false} id={2} fundId={[undefined]} amount={{...}}>
                   <div />
                 </mockConstructor>
-                <h3
-                  className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
+                <h3 className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
                   so my total is
                 </h3>
-                <h3
-                  className="display-inline-block text-brand push-half-bottom">
+                <h3 className="display-inline-block text-brand push-half-bottom">
                   $0.00
                 </h3>
               </div>
-              <div
-                className="push-top">
-                <mockConstructor
-                  disabled={true}>
+              <div className="push-top">
+                <mockConstructor disabled={true}>
                   <div />
                 </mockConstructor>
               </div>
@@ -478,26 +260,4 @@ exports[`test should properly render with multiple accounts 1`] = `
 </CartContainer>
 `;
 
-exports[`test should render with minimal props 1`] = `
-<Component
-  changeAmount={[Function]}
-  changeFund={[Function]}
-  preFill={[Function]}
-  subfunds={
-    Array [
-      Object {
-        "accounts": Array [
-          Object {
-            "label": "test",
-            "value": "1",
-          },
-        ],
-        "amount": null,
-        "fundId": "1",
-        "id": 1,
-        "primary": true,
-      },
-    ]
-  }
-  total={0} />
-`;
+exports[`test should render with minimal props 1`] = `<Component subfunds={{...}} changeFund={[Function]} changeAmount={[Function]} preFill={[Function]} total={0} />`;
