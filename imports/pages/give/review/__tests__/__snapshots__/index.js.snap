@@ -1,6 +1,6 @@
 exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `<Err msg="must go faster!" additionalMessage="Please click 'Done' in the top left of your screen to get back to the app" goToStepOne={[Function]} />`;
 
-exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `<Layout payment={{...}} personal={{...}} onSubmit={[Function]} />`;
+exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `<Layout state="done" data={{...}} savedAccount={{...}} total={1} transactions={{...}} url={false} userId="jY4RT2WK55yKYtj4y" onSubmit={[Function]} />`;
 
 exports[`GiveReviewTemplate returns <Loading /> component based on state 1`] = `<Loading msg="We're Processing Your Contribution" />`;
 
