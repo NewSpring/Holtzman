@@ -48,31 +48,6 @@ export default class Layout extends Component {
             "soft background--light-primary"
           }
         >
-          {(() => {
-            if (process.env.WEB) {
-              return (
-                <Link
-                  to="/give/history"
-                  className={
-                    "locked-left soft-double@lap-and-up " +
-                    "soft h7 text-dark-secondary plain"
-                  }
-                >
-                  <i
-                    className="icon-arrow-back soft-half-right display-inline-block"
-                    style={{ verticalAlign: "middle" }}
-                  />
-                  <span
-                    className="display-inline-block"
-                    style={{ verticalAlign: "middle", marginTop: "5px" }}
-                  >
-                    Back
-                  </span>
-                </Link>
-              );
-            }
-            return null;
-          })()}
           <div
             className={
               "text-left soft-double-top hard-left@lap-and-up " +
