@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { TemplateWithoutData as Template } from "../";
 
 import {
@@ -30,7 +29,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders Loading if loading", () => {
@@ -43,7 +42,7 @@ it("renders Loading if loading", () => {
       ],
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders Loading if account not found", () => {
@@ -55,7 +54,7 @@ it("renders Loading if account not found", () => {
       ],
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("sets nav level on mount", () => {

@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import {
   getRatio,
   dynamicWidthContainer,
@@ -97,14 +96,14 @@ describe("ListItem", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("adds push-right if padding", () => {
     const wrapper = shallow(generateComponent({
       padding: true,
     }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
@@ -129,6 +128,6 @@ describe("List", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

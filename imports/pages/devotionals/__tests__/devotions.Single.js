@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { DevotionsSingleWithoutData as DevotionsSingle } from "../devotions.Single";
 
 import {
@@ -48,14 +47,14 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders without scripture or image", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading with no devotion", () => {
   const wrapper = shallow(generateComponent({
     devotion: {},
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders with image", () => {
@@ -71,7 +70,7 @@ it("renders with image", () => {
       },
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders with scripture", () => {
@@ -90,7 +89,7 @@ it("renders with scripture", () => {
       },
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("dispatches to the store on mount", () => {

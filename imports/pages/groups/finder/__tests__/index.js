@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { nav as navActions } from "../../../../store";
 import { TemplateWithoutData } from "../";
 
@@ -37,7 +36,7 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders result if tags", () => {
@@ -48,7 +47,7 @@ it("renders result if tags", () => {
       },
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders result if q", () => {
@@ -59,7 +58,7 @@ it("renders result if q", () => {
       },
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders result if campuses", () => {
@@ -70,14 +69,14 @@ it("renders result if campuses", () => {
       },
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without attributes", () => {
   const wrapper = shallow(generateComponent({
     attributes: null,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders if content loading", () => {
@@ -86,7 +85,7 @@ it("renders if content loading", () => {
       loading: true,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("updates nav on mount", () => {

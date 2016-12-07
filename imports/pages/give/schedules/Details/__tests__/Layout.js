@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
 import Layout from "../Layout";
 
@@ -89,70 +88,70 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading if no schedule", () => {
   const wrapper = shallow(generateComponent({
     schedule: null,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading if not ready", () => {
   const wrapper = shallow(generateComponent({
     ready: false,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without schedule payment", () => {
   const props = cloneDeep(defaultProps);
   delete props.schedule.payment;
   const wrapper = shallow(generateComponent(props));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("works with credit card", () => {
   const props = cloneDeep(defaultProps);
   props.schedule.payment.paymentType = "Visa";
   const wrapper = shallow(generateComponent(props));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders complete message", () => {
   const wrapper = shallow(generateComponent({
     complete: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders stopped message", () => {
   const wrapper = shallow(generateComponent({
     active: false,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without schedule", () => {
   const wrapper = shallow(generateComponent({
     schedule: null,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders no contributions message", () => {
   const props = cloneDeep(defaultProps);
   props.schedule.transactions = [];
   const wrapper = shallow(generateComponent(props));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders loading if no entries", () => {
   const wrapper = shallow(generateComponent({
     loadingEntries: true,
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("formatDate returns formatted date", () => {

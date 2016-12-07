@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
 import { TemplateWithoutData as Template } from "../";
 import Confirm from "../../Details/Confirm";
@@ -45,14 +44,14 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without accounts", () => {
   const wrapper = shallow(generateComponent({
     accounts: {},
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without transactions", () => {
@@ -63,7 +62,7 @@ it("renders without transactions", () => {
       person: {},
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without person", () => {
@@ -74,7 +73,7 @@ it("renders without person", () => {
       person: null,
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("confirm sets the recoverable schedule and returns true", () => {

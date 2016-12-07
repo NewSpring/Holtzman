@@ -1,5 +1,4 @@
 import { mount } from "enzyme";
-import { mountToJson } from "enzyme-to-json";
 import { FitTextWithoutData as FitText } from "../fit-text";
 
 const generateComponent = (props) => (
@@ -10,7 +9,7 @@ const generateComponent = (props) => (
 
 it("renders", () => {
   const wrapper = mount(generateComponent());
-  expect(mountToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("calculates font size based on props", () => {
@@ -19,5 +18,5 @@ it("calculates font size based on props", () => {
     minFontSize: 10,
     maxFontSize: 20,
   }));
-  expect(mountToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });

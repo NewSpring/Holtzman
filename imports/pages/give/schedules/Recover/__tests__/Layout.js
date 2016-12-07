@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
 import Layout from "../Layout";
 
@@ -39,21 +38,21 @@ const generateComponent = (additionalProps = {}) => {
 
 it("renders with props", () => {
   const wrapper = shallow(generateComponent());
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("renders without recoverableSchedules", () => {
   const wrapper = shallow(generateComponent({
     recoverableSchedules: [],
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("does not render recoverableSchedule if it has a gateway", () => {
   const props = cloneDeep(defaultProps);
   props.recoverableSchedules[0].gateway = "test gateway";
   const wrapper = shallow(generateComponent(props));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("works with nickName", () => {
@@ -62,27 +61,27 @@ it("works with nickName", () => {
       nickName: "jimothy",
     },
   }));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("does not render recoverableSchedule if no details", () => {
   const props = cloneDeep(defaultProps);
   delete props.recoverableSchedules[0].details;
   const wrapper = shallow(generateComponent(props));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("does not render recoverableSchedule if no account", () => {
   const props = cloneDeep(defaultProps);
   delete props.recoverableSchedules[0].details[0].account;
   const wrapper = shallow(generateComponent(props));
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("expands the schedule if it matches state", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({ expandedSchedule: 1 });
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 it("updates the state on mount if recoverableSchedule", () => {

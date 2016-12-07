@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
 import { serverWatch } from "meteor/bjwiley2:server-watch";
 import {
   PageWithoutData as Page,
@@ -17,7 +16,7 @@ describe("Page", () => {
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
