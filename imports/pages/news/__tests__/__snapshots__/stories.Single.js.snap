@@ -371,19 +371,14 @@ Object {
 `;
 
 exports[`test renders loading if no content 1`] = `
-<div
-  className="locked-ends locked-sides floating">
-  <div
-    className="floating__item">
-    <Loading />
-  </div>
+<div className="locked-ends locked-sides floating">
+<div className="floating__item">
+<Loading />
+</div>
 </div>
 `;
 
-exports[`test renders with props 1`] = `
-<StoriesContent
-  story={Object {}} />
-`;
+exports[`test renders with props 1`] = `<StoriesContent story={{...}} />`;
 
 exports[`test updates nav on mount 1`] = `
 Object {

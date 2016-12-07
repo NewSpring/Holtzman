@@ -76,175 +76,78 @@ Object {
 `;
 
 exports[`Menu renders with props 1`] = `
-<div
-  className="background--light-secondary soft-double-bottom soft-double-sides@lap-and-up">
-  <section
-    className="">
-    <div
-      className="push-double-ends@lap-and-up push-half-ends">
-      <div
-        className=""
-        style={
-          Object {
-            "borderLeft": 0,
-            "borderRight": 0,
-          }
-        }>
-        <Link
-          className="plain text-dark-secondary"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/profile/settings/personal-details">
-          <RenderCell
-            name="Personal Details" />
-        </Link>
-        <Link
-          className="plain text-dark-secondary"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/profile/settings/home-address">
-          <RenderCell
-            name="My Address" />
-        </Link>
-        <button
-          className="plain text-dark-secondary display-inline-block one-whole"
-          style={
-            Object {
-              "position": "relative",
-            }
-          }>
-          <RenderCell
-            iconFunc={[Function]}
-            name="Upload Profile Photo">
-            <input
-              className="locked-ends locked-sides"
-              onChange={[Function]}
-              style={
-                Object {
-                  "opacity": 0,
-                  "zIndex": 1,
-                }
-              }
-              type="file" />
-          </RenderCell>
-        </button>
-        <Link
-          className="plain text-dark-secondary"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/profile/settings/change-password">
-          <RenderCell
-            last={true}
-            name="Change Password" />
-        </Link>
-      </div>
-    </div>
-    <div
-      className="push-double-ends@lap-and-up push-half-ends">
-      <div
-        className=""
-        style={
-          Object {
-            "borderLeft": 0,
-            "borderRight": 0,
-          }
-        }>
-        <Link
-          className="plain text-dark-secondary"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/profile/settings/saved-accounts">
-          <RenderCell
-            name="Saved Accounts" />
-        </Link>
-        <Link
-          className="plain text-dark-secondary"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/give/schedules">
-          <RenderCell
-            name="Scheduled Contributions" />
-        </Link>
-        <Link
-          className="plain text-dark-secondary"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/give/history">
-          <RenderCell
-            last={true}
-            name="Giving History" />
-        </Link>
-      </div>
-    </div>
-    <div
-      className="push-double-ends@lap-and-up push-half-ends">
-      <div
-        className=""
-        style={
-          Object {
-            "borderLeft": 0,
-            "borderRight": 0,
-          }
-        }>
-        <a
-          className="plain text-dark-secondary"
-          href="//newspring.cc/privacy"
-          onClick={[Function]}
-          rel="noopener noreferrer"
-          target="_blank">
-          <RenderCell
-            name="Privacy Policy" />
-        </a>
-        <a
-          className="plain text-dark-secondary"
-          href="//newspring.cc/terms"
-          onClick={[Function]}
-          rel="noopener noreferrer"
-          target="_blank">
-          <RenderCell
-            last={true}
-            name="Terms of Use" />
-        </a>
-      </div>
-    </div>
-    <div
-      className="one-whole text-center push-double-bottom">
-      <button
-        className="btn--dark-tertiary push-top soft-half-ends"
-        onClick={[Function]}>
-        Sign Out
-      </button>
-    </div>
-  </section>
+<div className="background--light-secondary soft-double-bottom soft-double-sides@lap-and-up">
+<section className="">
+<div className="push-double-ends@lap-and-up push-half-ends">
+<div className="" style={{...}}>
+<Link to="/profile/settings/personal-details" className="plain text-dark-secondary" onlyActiveOnIndex={false} style={{...}}>
+<RenderCell name="Personal Details" />
+</Link>
+<Link to="/profile/settings/home-address" className="plain text-dark-secondary" onlyActiveOnIndex={false} style={{...}}>
+<RenderCell name="My Address" />
+</Link>
+<button className="plain text-dark-secondary display-inline-block one-whole" style={{...}}>
+<RenderCell name="Upload Profile Photo" iconFunc={[Function]}>
+<input onChange={[Function]} type="file" className="locked-ends locked-sides" style={{...}} />
+</RenderCell>
+</button>
+<Link to="/profile/settings/change-password" className="plain text-dark-secondary" onlyActiveOnIndex={false} style={{...}}>
+<RenderCell name="Change Password" last={true} />
+</Link>
+</div>
+</div>
+<div className="push-double-ends@lap-and-up push-half-ends">
+<div className="" style={{...}}>
+<Link to="/profile/settings/saved-accounts" className="plain text-dark-secondary" onlyActiveOnIndex={false} style={{...}}>
+<RenderCell name="Saved Accounts" />
+</Link>
+<Link to="/give/schedules" className="plain text-dark-secondary" onlyActiveOnIndex={false} style={{...}}>
+<RenderCell name="Scheduled Contributions" />
+</Link>
+<Link to="/give/history" className="plain text-dark-secondary" onlyActiveOnIndex={false} style={{...}}>
+<RenderCell name="Giving History" last={true} />
+</Link>
+</div>
+</div>
+<div className="push-double-ends@lap-and-up push-half-ends">
+<div className="" style={{...}}>
+<a href="//newspring.cc/privacy" rel="noopener noreferrer" onClick={[Function]} target="_blank" className="plain text-dark-secondary">
+<RenderCell name="Privacy Policy" />
+</a>
+<a href="//newspring.cc/terms" rel="noopener noreferrer" onClick={[Function]} target="_blank" className="plain text-dark-secondary">
+<RenderCell name="Terms of Use" last={true} />
+</a>
+</div>
+</div>
+<div className="one-whole text-center push-double-bottom">
+<button onClick={[Function]} className="btn--dark-tertiary push-top soft-half-ends">
+Sign Out
+</button>
+</div>
+</section>
 </div>
 `;
 
 exports[`RenderCell renders default icon 1`] = `
-<div
-  className="card soft-ends soft-right text-left outlined--light">
-  <h6
-    className="soft-left flush display-inline-block">
-    test
-  </h6>
-  <i
-    className="float-right icon-arrow-next" />
-  <h1>
-    test
-  </h1>
+<div className="card soft-ends soft-right text-left outlined--light">
+<h6 className="soft-left flush display-inline-block">
+test
+</h6>
+<i className="float-right icon-arrow-next" />
+<h1>
+test
+</h1>
 </div>
 `;
 
 exports[`RenderCell renders with props 1`] = `
-<div
-  className="card soft-ends soft-right text-left outlined--light">
-  <h6
-    className="soft-left flush display-inline-block">
-    test
-  </h6>
-  <i
-    className="float-right my-cool-icon" />
-  <h1>
-    test
-  </h1>
+<div className="card soft-ends soft-right text-left outlined--light">
+<h6 className="soft-left flush display-inline-block">
+test
+</h6>
+<i className="float-right my-cool-icon" />
+<h1>
+test
+</h1>
 </div>
 `;

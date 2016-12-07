@@ -1,6 +1,6 @@
 exports[`test has a template for some reason 1`] = `
 <h1>
-  Lets find some groups!
+Lets find some groups!
 </h1>
 `;
 

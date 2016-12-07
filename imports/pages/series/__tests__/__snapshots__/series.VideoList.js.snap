@@ -8,35 +8,16 @@ Object {
 `;
 
 exports[`test renders loading 1`] = `
-<div
-  className="text-center soft-ends">
-  <Spinner />
+<div className="text-center soft-ends">
+<Spinner />
 </div>
 `;
 
 exports[`test renders with props 1`] = `
-<div
-  style={
-    Object {
-      "WebkitOverflowScrolling": "touch",
-      "overflowX": "scroll",
-      "overflowY": "hidden",
-      "paddingLeft": "20px",
-    }
-  }>
-  <section
-    className="soft-half-top"
-    style={
-      Object {
-        "width": "1654.4px",
-      }
-    }>
-    <SeriesVideoListItem
-      order={0}
-      sermon={Object {}} />
-    <SeriesVideoListItem
-      order={1}
-      sermon={Object {}} />
-  </section>
+<div style={{...}}>
+<section className="soft-half-top" style={{...}}>
+<SeriesVideoListItem sermon={{...}} order={0} />
+<SeriesVideoListItem sermon={{...}} order={1} />
+</section>
 </div>
 `;

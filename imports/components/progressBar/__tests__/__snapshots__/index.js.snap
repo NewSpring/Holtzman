@@ -34,44 +34,18 @@ Object {
 
 exports[`ProgressBar should render with minimal props 1`] = `
 <ProgressBar>
-  <div
-    style={
-      Object {
-        "color": "#fff",
-      }
-    }>
-    <div
-      className="floating floating--left one-half display-inline-block">
-      <h5
-        className="floating__item display-inline-block"
-        data-spec="title" />
+  <div style={{...}}>
+    <div className="floating floating--left one-half display-inline-block">
+      <h5 className="floating__item display-inline-block" data-spec="title" />
     </div>
-    <div
-      className="floating floating--middle text-right one-half display-inline-block">
-      <h6
-        className="display-inline-block floating__item">
+    <div className="floating floating--middle text-right one-half display-inline-block">
+      <h6 className="display-inline-block floating__item">
         $
       </h6>
-      <h4
-        className="display-inline-block floating__item"
-        data-spec="total" />
+      <h4 className="display-inline-block floating__item" data-spec="total" />
     </div>
-    <div
-      className="one-whole"
-      style={
-        Object {
-          "backgroundColor": "#2a4930",
-          "height": "6px",
-        }
-      }>
-      <div
-        style={
-          Object {
-            "backgroundColor": "white",
-            "height": "100%",
-            "width": "0%",
-          }
-        } />
+    <div className="one-whole" style={{...}}>
+      <div style={{...}} />
     </div>
   </div>
 </ProgressBar>

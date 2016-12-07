@@ -197,7 +197,4 @@ Object {
 }
 `;
 
-exports[`test renders with props 1`] = `
-<Layout
-  dispatch={[Function]} />
-`;
+exports[`test renders with props 1`] = `<Layout dispatch={[Function]} />`;

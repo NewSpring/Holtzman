@@ -778,76 +778,42 @@ Object {
 `;
 
 exports[`test renders loading without series 1`] = `
-<div
-  className="locked-ends locked-sides floating">
-  <div
-    className="floating__item">
-    <Loading />
-  </div>
+<div className="locked-ends locked-sides floating">
+<div className="floating__item">
+<Loading />
+</div>
 </div>
 `;
 
 exports[`test renders loading without sermon 1`] = `
-<div
-  className="locked-ends locked-sides floating">
-  <div
-    className="floating__item">
-    <Loading />
-  </div>
+<div className="locked-ends locked-sides floating">
+<div className="floating__item">
+<Loading />
+</div>
 </div>
 `;
 
 exports[`test renders with props 1`] = `
-<div
-  className="background--light-primary">
-  <SingleVideoPlayer
-    ooyalaId="testid" />
-  <div
-    className="soft-sides background--light-secondary text-dark-secondary"
-    onClick={[Function]}
-    style={
-      Object {
-        "paddingBottom": "15px",
-        "paddingTop": "15px",
-      }
-    }>
-    <h7
-      style={
-        Object {
-          "verticalAlign": "middle",
-        }
-      }>
-      Listen To Audio
-    </h7>
-    <i
-      className="icon-category-audio float-right"
-      style={
-        Object {
-          "marginTop": "-2px",
-        }
-      } />
-  </div>
-  <div
-    className="soft soft-double@palm-wide-and-up push-top">
-    <h2
-      className="push-half-bottom">
-      test sermon
-    </h2>
-    <h4>
-      Jim Bob
-    </h4>
-    <h6
-      className="text-dark-tertiary">
-      Nov 14, 2016
-    </h6>
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<h1>test</h1>",
-        }
-      } />
-  </div>
-  <Connect(Apollo(SeriesVideoListWithoutData))
-    id="1" />
+<div className="background--light-primary">
+<SingleVideoPlayer ooyalaId="testid" />
+<div className="soft-sides background--light-secondary text-dark-secondary" style={{...}} onClick={[Function]}>
+<h7 style={{...}}>
+Listen To Audio
+</h7>
+<i className="icon-category-audio float-right" style={{...}} />
+</div>
+<div className="soft soft-double@palm-wide-and-up push-top">
+<h2 className="push-half-bottom">
+test sermon
+</h2>
+<h4>
+Jim Bob
+</h4>
+<h6 className="text-dark-tertiary">
+Nov 14, 2016
+</h6>
+<div dangerouslySetInnerHTML={{...}} />
+</div>
+<Connect(Apollo(SeriesVideoListWithoutData)) id="1" />
 </div>
 `;

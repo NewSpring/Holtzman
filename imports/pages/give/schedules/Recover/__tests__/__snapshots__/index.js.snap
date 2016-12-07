@@ -1,66 +1,7 @@
-exports[`test renders with props 1`] = `
-<Layout
-  accounts={
-    Array [
-      Object {},
-    ]
-  }
-  cancelSchedule={[Function]}
-  confirm={[Function]}
-  person={Object {}}
-  ready={true}
-  recoverableSchedules={
-    Array [
-      Object {},
-      Object {},
-    ]
-  } />
-`;
+exports[`test renders with props 1`] = `<Layout ready={true} accounts={{...}} cancelSchedule={[Function]} recoverableSchedules={{...}} confirm={[Function]} person={{...}} />`;
 
-exports[`test renders without accounts 1`] = `
-<Layout
-  accounts={Array []}
-  cancelSchedule={[Function]}
-  confirm={[Function]}
-  person={Object {}}
-  ready={true}
-  recoverableSchedules={
-    Array [
-      Object {},
-      Object {},
-    ]
-  } />
-`;
+exports[`test renders without accounts 1`] = `<Layout ready={true} accounts={{...}} cancelSchedule={[Function]} recoverableSchedules={{...}} confirm={[Function]} person={{...}} />`;
 
-exports[`test renders without person 1`] = `
-<Layout
-  accounts={
-    Array [
-      Object {},
-    ]
-  }
-  cancelSchedule={[Function]}
-  confirm={[Function]}
-  person={Object {}}
-  ready={true}
-  recoverableSchedules={
-    Array [
-      Object {},
-      Object {},
-    ]
-  } />
-`;
+exports[`test renders without person 1`] = `<Layout ready={true} accounts={{...}} cancelSchedule={[Function]} recoverableSchedules={{...}} confirm={[Function]} person={{...}} />`;
 
-exports[`test renders without transactions 1`] = `
-<Layout
-  accounts={
-    Array [
-      Object {},
-    ]
-  }
-  cancelSchedule={[Function]}
-  confirm={[Function]}
-  person={Object {}}
-  ready={true}
-  recoverableSchedules={Array []} />
-`;
+exports[`test renders without transactions 1`] = `<Layout ready={true} accounts={{...}} cancelSchedule={[Function]} recoverableSchedules={{...}} confirm={[Function]} person={{...}} />`;
