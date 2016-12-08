@@ -55,7 +55,7 @@ const Activity = ({
       </div>
       <p>{message}</p>
       {linkText && linkUrl &&
-        <Link to={linkUrl} className="text-light-primary">
+        <Link to={linkUrl} className="text-light-primary plain">
           <h5 className="display-inline-block">{linkText}</h5><span className="icon-arrow-next soft-half-left" />
         </Link>
       }
