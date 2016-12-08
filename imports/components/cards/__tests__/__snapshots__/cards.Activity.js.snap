@@ -21,7 +21,7 @@ exports[`Activity should render the failed status component 1`] = `
       You did something awesome and I\'ve never been more proud.
     </p>
     <Link
-      className="text-light-primary"
+      className="text-light-primary plain"
       onlyActiveOnIndex={false}
       style={Object {}}
       to="https://my.newspring.cc/give/now">
@@ -59,7 +59,7 @@ exports[`Activity should render the warning status component 1`] = `
       You did something awesome and I\'ve never been more proud.
     </p>
     <Link
-      className="text-light-primary"
+      className="text-light-primary plain"
       onlyActiveOnIndex={false}
       style={Object {}}
       to="https://my.newspring.cc/give/now">
@@ -97,7 +97,7 @@ exports[`Activity should render with the default set of props 1`] = `
       You did something awesome and I\'ve never been more proud.
     </p>
     <Link
-      className="text-light-primary"
+      className="text-light-primary plain"
       onlyActiveOnIndex={false}
       style={Object {}}
       to="https://my.newspring.cc/give/now">

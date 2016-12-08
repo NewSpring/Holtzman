@@ -7,7 +7,7 @@ type ISmallButton = {
   linkUrl?: string,
   onClick?: Function,
   disabled?: Boolean,
-  text: String,
+  text: string,
   className?: string,
   style?: Object,
 };
