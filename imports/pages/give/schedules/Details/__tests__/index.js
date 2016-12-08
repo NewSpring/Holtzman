@@ -39,7 +39,8 @@ const defaultProps = {
       },
     },
   },
-  entries: {}
+  entries: {},
+  setRightProps: jest.fn(),
 };
 
 const generateComponent = (additionalProps = {}) => {
