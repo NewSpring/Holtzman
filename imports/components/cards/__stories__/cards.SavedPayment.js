@@ -4,7 +4,6 @@ import {
   withKnobs,
   text,
   select,
-  boolean,
 } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
@@ -20,6 +19,14 @@ const story = storiesOf("Cards", module)
   .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary", "dark-primary", "dark-secondary")))
   ;
 
+const accountTypes = {
+  "Visa": "Visa",
+  "MasterCard": "MasterCard",
+  "AmEx": "AmEx",
+  "Discover": "Discover",
+  "Bank": "Bank",
+}
+
 // We don't use description quite yet. As such, it's not really styled.
 // So let's not pass it on this story.
 // description={text("description", "MiniCard description")}
@@ -28,11 +35,11 @@ story
   .add("SavedPaymentCard", withReadme(Readme, () => {
     // set channel name options
     const paymentAccount = {
-      id: "1242",
-      name: "Yule Brenner",
+      id: text("Id", "1234"),
+      name: text("Name", "Yule Brenner"),
       payment: {
-        accountNumber: "4111224499001256",
-        paymentType: "Visa"
+        accountNumber: text("Account Number", "4111224499001256"),
+        paymentType: select("Payment Type", accountTypes, "Visa")
       }
     };
 
@@ -40,7 +47,7 @@ story
       <div className={"floating"}>
         <div className={"grid__item text-left"} style={{ maxWidth: "480px" }}>
           <SavedPaymentCard
-            {...paymentAccount}
+            payment={paymentAccount}
             onClick={() => alert('42')}
           />
         </div>
