@@ -92,7 +92,7 @@ export class GivingActivity extends Component {
     if (transaction.status === null || transaction.status === "Success") {
       status = "success";
       linkText = "View Gift";
-      linkUrl = "/";
+      linkUrl = `/give/history/${transaction.id}`;
       message =
         `Your ${scheduled ? "scheduled " : ""}gift of $${transaction.details[0].amount} to
         ${transaction.details[0].account.name} was successful`;
