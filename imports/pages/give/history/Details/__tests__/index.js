@@ -14,6 +14,7 @@ const defaultProps = {
     loading: false,
     entries: [{}, {}],
   },
+  setRightProps: jest.fn(),
 };
 
 const generateComponent = (additionalProps = {}) => {
