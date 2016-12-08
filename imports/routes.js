@@ -28,7 +28,7 @@ export default {
     if (process.env.NATIVE && _.location.pathname === "/") {
       return redirectToWelcome(replace, cb);
     } else if (process.env.WEB && _.location.pathname === "/") {
-      replace({ pathname: "/give/now" });
+      replace({ pathname: "/give/home" });
       return cb();
     }
     return cb();
