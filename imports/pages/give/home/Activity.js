@@ -1,4 +1,5 @@
 
+// @flow
 
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
@@ -39,13 +40,14 @@ const withActivityData = graphql(ACTIVITY_QUERY, {
   },
 });
 
+type IGivingActivity = {
+  feed: Object,
+};
+
 export class GivingActivity extends Component {
+  props: IGivingActivity;
 
-  componentWillUpdate(){
-    console.log(this.props.data);
-  }
-
-  filterActivity = (data) => {
+  filterActivity = (data: [Object]): [any] => {
     if (!Array.isArray(data)) return [];
 
     const transactions = [];
@@ -53,7 +55,7 @@ export class GivingActivity extends Component {
     const activityToShow = [];
 
     // separate feed by transactions and accoutns
-    data.forEach((feedItem) => {
+    data.forEach((feedItem: Object) => {
       if (typeof feedItem.status !== "undefined") {
         transactions.push(feedItem);
       } else {
@@ -81,8 +83,7 @@ export class GivingActivity extends Component {
   };
 
   // used by renderActivity to render a transasction card
-  renderTransaction = (transaction) => {
-
+  renderTransaction = (transaction: Object): any => {
     let message;
     let status;
     let linkText;
@@ -98,8 +99,6 @@ export class GivingActivity extends Component {
         ${transaction.details[0].account.name} was successful`;
     } else if (transaction.status === "Failed") {
       status = "failed";
-      linkText = "Fix it Now";
-      linkUrl = "/";
       message =
         `Your ${scheduled ? "scheduled " : ""}contribution to ${transaction.details[0].account.name} failed.
         ${transaction.statusMessage !== null && transaction.statusMessage !== ""
@@ -124,8 +123,9 @@ export class GivingActivity extends Component {
     );
   };
 
-  renderExpiringAccount = (account) =>
+  renderExpiringAccount = (account: Object): any =>
     <ActivityCard
+      status=""
       message={`Your saved payment ${account.name} is expiring soon.`}
       linkText={"Update it Now"}
       linkUrl={"/"}
@@ -133,24 +133,28 @@ export class GivingActivity extends Component {
     />
   ;
 
-  renderActivity = (feedItems) =>
-    feedItems.map((feedItem) => {
-      if (typeof feedItem.status !== "undefined") {
-        return this.renderTransaction(feedItem);
-      }
-      return this.renderExpiringAccount(feedItem);
-    })
-  ;
+  renderActivity = (feedItems: ?[Object]): ?[any] => {
+    if (Array.isArray(feedItems) && feedItems.length > 0) {
+      return feedItems.map((feedItem: Object) => {
+        if (feedItem.__typename === "Transaction") { //eslint-disable-line
+          return this.renderTransaction(feedItem);
+        }
+        return null;
+        // return this.renderExpiringAccount(feedItem);
+      });
+    }
+    return null;
+  };
 
-
-  render(){
+  render() {
     if (!this.props.feed || !this.props.feed.userFeed) return null;
 
     const data = this.filterActivity(this.props.feed.userFeed);
+    if (!Array.isArray(data) && data.length === 0) return null;
 
     return (
       <div className="soft-half hard-top">
-        {this.renderActivity(this.filterActivity(data))}
+        {this.renderActivity(data)}
       </div>
     );
   }
