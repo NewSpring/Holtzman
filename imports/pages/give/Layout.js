@@ -5,7 +5,7 @@ import Split, { Left, Right } from "../../blocks/split";
 import Dashboard from "../../components/dashboard/";
 
 type ILayout = {
-  children?: React$Element<any>,
+  children: React$Element<any>,
 }
 
 class Layout extends Component {
