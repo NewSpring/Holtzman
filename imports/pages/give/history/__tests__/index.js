@@ -13,6 +13,7 @@ const defaultProps = {
     family: [],
   },
   dispatch: jest.fn(),
+  setRightProps: jest.fn(),
 };
 
 const generateComponent = (additionalProps = {}) => {
