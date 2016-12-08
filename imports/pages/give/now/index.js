@@ -13,6 +13,13 @@ class PageWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
+    setRightProps: PropTypes.func,
+  }
+
+  componentWillMount() {
+    this.props.setRightProps({
+      background: "//s3.amazonaws.com/ns.images/newspring/christmasoffering/christmas_offering_1x1.png",
+    });
   }
 
   componentDidMount() {
