@@ -31,7 +31,7 @@ class TemplateWithoutData extends Component {
 
   componentWillMount() {
     this.props.setRightProps({
-      background: "//s3.amazonaws.com/ns.images/all/heroes/a2617.stepuphero.1x2.nologo.jpg",
+      background: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg",
     });
   }
 
