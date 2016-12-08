@@ -24,9 +24,16 @@ class TemplateWithoutData extends Component {
       family: PropTypes.array, // eslint-disable-line
     }),
     dispatch: PropTypes.func,
+    setRightProps: PropTypes.func,
   }
 
   state = { refetching: false }
+
+  componentWillMount() {
+    this.props.setRightProps({
+      background: "//s3.amazonaws.com/ns.images/all/heroes/a2617.stepuphero.1x2.nologo.jpg",
+    });
+  }
 
   componentDidMount() {
     if (process.env.NATIVE) this.props.dispatch(headerActions.set({ title: "Giving History" }));
