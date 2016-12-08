@@ -1,6 +1,6 @@
 // @flow
 import find from "lodash.find";
-import { Component } from "react";
+import React, { Component, cloneElement } from "react";
 import Split, { Left, Right } from "../../blocks/split";
 import Dashboard from "../../components/dashboard/";
 
@@ -11,6 +11,11 @@ type ILayout = {
 class Layout extends Component {
   props: ILayout;
   state = {
+    right: {
+      props: {
+        background: "//s3.amazonaws.com/ns.images/newspring/christmasoffering/christmas_offering_1x1.png",
+      },
+    },
     subNav: [
       {
         isActive: false,
@@ -66,13 +71,15 @@ class Layout extends Component {
     return rightComponent || null;
   }
 
+  setRightProps = (props: Object) => {
+    this.setState({ right: { props } });
+  }
+
   render() {
     return (
       <div>
         <Split>
-          <Right
-            background="//s3.amazonaws.com/ns.images/newspring/christmasoffering/christmas_offering_1x1.png"
-          >
+          <Right {...this.state.right.props}>
             {this.getRightComponent(this.props)}
           </Right>
         </Split>
@@ -81,7 +88,9 @@ class Layout extends Component {
             title="Your Giving"
             subNav={this.state.subNav}
           >
-            {this.props.children}
+            {cloneElement(this.props.children, {
+              setRightProps: this.setRightProps,
+            })}
           </Dashboard>
         </Left>
       </div>
