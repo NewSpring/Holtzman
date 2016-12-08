@@ -1,10 +1,53 @@
 
+
 import React, { Component } from "react";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
 import ActivityCard from "../../../components/cards/cards.Activity";
 
-export default class GivingActivity extends Component {
+const ACTIVITY_QUERY = gql`
+  query userFeed($filters: [String]!) {
+    userFeed(filters: $filters) {
+      ... on Transaction {
+        id
+        date
+        summary
+        status
+        statusMessage
+        schedule {
+          id
+        }
+        details {
+          amount
+          account {
+            name
+          }
+        }
+      }
+      ... on SavedPayment {
+        name
+        expirationYear
+        expirationMonth
+      }
+    }
+  }
+`;
+const withActivityData = graphql(ACTIVITY_QUERY, {
+  name: "feed",
+  options: {
+    variables: { filters: ["GIVING_DASHBOARD"] },
+  },
+});
+
+export class GivingActivity extends Component {
+
+  componentWillUpdate(){
+    console.log(this.props.data);
+  }
 
   filterActivity = (data) => {
+    if (!Array.isArray(data)) return [];
+
     const transactions = [];
     const accounts = [];
     const activityToShow = [];
@@ -93,14 +136,24 @@ export default class GivingActivity extends Component {
   renderActivity = (feedItems) =>
     feedItems.map((feedItem) => {
       if (typeof feedItem.status !== "undefined") {
-        return renderTransaction(feedItem);
+        return this.renderTransaction(feedItem);
       }
-      return renderExpiringAccount(feedItem);
+      return this.renderExpiringAccount(feedItem);
     })
   ;
 
 
   render(){
-    return renderActivity();
+    if (!this.props.feed || !this.props.feed.userFeed) return null;
+
+    const data = this.filterActivity(this.props.feed.userFeed);
+
+    return (
+      <div className="soft-half hard-top">
+        {this.renderActivity(this.filterActivity(data))}
+      </div>
+    );
   }
 }
+
+export default withActivityData(GivingActivity);
