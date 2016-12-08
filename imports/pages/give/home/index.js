@@ -1,11 +1,24 @@
 // @flow
+import { Component } from "react";
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import Layout from "./Layout";
 
-const Home = () => (
-  <Layout />
-);
+type IHome = {
+  setRightProps: Function,
+};
+
+class Home extends Component {
+  props: IHome;
+  componentWillMount() {
+    this.props.setRightProps({
+      background: "//s3.amazonaws.com/ns.images/all/heroes/a2617.stepuphero.1x2.nologo.jpg",
+    });
+  }
+  render() {
+    return <Layout />;
+  }
+}
 
 export const Hai = () => (
   <div className="locked-ends locked-sides background--primary">
