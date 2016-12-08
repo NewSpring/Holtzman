@@ -9,6 +9,7 @@ import {
 describe("Page", () => {
   const defaultProps = {
     dispatch: jest.fn(),
+    setRightProps: jest.fn(),
   };
 
   const generateComponent = () => (

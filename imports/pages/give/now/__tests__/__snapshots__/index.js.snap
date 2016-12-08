@@ -1,4 +1,5 @@
 exports[`Page renders with props 1`] = `
 <Layout
-  dispatch={[Function]} />
+  dispatch={[Function]}
+  setRightProps={[Function]} />
 `;
