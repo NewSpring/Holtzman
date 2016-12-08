@@ -18,7 +18,7 @@ class PageWithoutData extends Component {
 
   componentWillMount() {
     this.props.setRightProps({
-      background: "//s3.amazonaws.com/ns.images/newspring/christmasoffering/christmas_offering_1x1.png",
+      background: "/s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_1x2.jpg",
     });
   }
 
