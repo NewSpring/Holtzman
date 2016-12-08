@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes } from "react";
+import { Component, PropTypes, cloneElement } from "react";
 import { connect } from "react-redux";
 
 import { accounts as accountsActions, modal } from "../../store";
@@ -60,7 +60,9 @@ export default class Authorized extends Component {
 
 
   render() {
-    if (Meteor.userId()) return this.props.children;
+    if (Meteor.userId()) {
+      return cloneElement(this.props.children, { ...this.props });
+    }
 
     /*
 
