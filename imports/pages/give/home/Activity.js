@@ -51,7 +51,7 @@ export class GivingActivity extends Component {
     if (!Array.isArray(data)) return [];
 
     const transactions = [];
-    const accounts = [];
+    // const accounts = [];
     const activityToShow = [];
 
     // separate feed by transactions and accoutns
@@ -115,6 +115,7 @@ export class GivingActivity extends Component {
 
     return (
       <ActivityCard
+        key={transaction.id}
         status={status}
         date={transaction.date}
         message={message}
@@ -126,6 +127,7 @@ export class GivingActivity extends Component {
 
   renderExpiringAccount = (account: Object): any =>
     <ActivityCard
+      key={account.id}
       status=""
       message={`Your saved payment ${account.name} is expiring soon.`}
       linkText={"Update it Now"}
