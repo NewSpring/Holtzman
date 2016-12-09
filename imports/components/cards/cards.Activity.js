@@ -11,22 +11,25 @@ const getClasses = (status: string) => {
     "text-left",
     "soft-bottom",
     "rounded",
-    "text-light-primary",
   ];
 
   let backgroundColor = "background--dark-primary";
+  let textColor = "text-light-primary";
   if (status === "failed") {
     backgroundColor = "background--alert";
   } else if (status === "success") {
-    backgroundColor = "background--primary";
+    backgroundColor = "background--light-primary";
+    textColor = "text-dark";
   }
 
   classes.push(backgroundColor);
+  classes.push(textColor);
   return classes.join(" ");
 };
 
 const getIcon = (status: string) => {
-  const props = { width: "30px", height: "31px", fill: "#FFFFFF" };
+  const fill = status === "success" ? "#6bac43" : "#FFFFFF";
+  const props = { width: "30px", height: "31px", fill };
   if (status === "failed") return <Error {...props} />;
   if (status === "success") return <Success {...props} />;
   return <Error {...props} />;
@@ -51,11 +54,11 @@ const Activity = ({
     <div className={getClasses(status)}>
       <div className="floating text-left">
         <i className="soft-half-right">{getIcon(status)}</i>
-        {date && <h5 className="display-inline-block floating__item soft-half-bottom">{ moment(date).format("MMM D, YYYY") }</h5>}
+        {date && <h5 className={`${status === "success" ? "text-dark-tertiary " : ""}display-inline-block floating__item soft-half-bottom`}>{ moment(date).format("MMM D, YYYY") }</h5>}
       </div>
       <p>{message}</p>
       {linkText && linkUrl &&
-        <Link to={linkUrl} className="text-light-primary plain">
+        <Link to={linkUrl} className={status === "success" ? "text-primary plain" : "text-light-primary plain"}>
           <h5 className="display-inline-block">{linkText}</h5><span className="icon-arrow-next soft-half-left" />
         </Link>
       }
