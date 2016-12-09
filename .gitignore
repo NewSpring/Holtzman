@@ -50,6 +50,7 @@ apollos-runtime.json
 launch.json
 .fastlane
 .build
+.play-service.json
 
 # xcode builds
 *.ipa
