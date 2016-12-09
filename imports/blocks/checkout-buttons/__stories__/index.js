@@ -48,7 +48,7 @@ story
     return (
       <Provider>
         <CheckoutButtons
-          authoried={status}
+          authorized={status}
           disabledGuest={boolean("Disable Guest", false)}
         />
       </Provider>

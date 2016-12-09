@@ -158,7 +158,8 @@ blockquote p {
   }
 }
 
-.btn--small\@next {
+.btn--small\@next,
+.btn--small\@next:disabled {
   @extend %btn;
   @extend h7;
 

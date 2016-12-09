@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 
 import SideBySide from "../../../components/cards/SideBySide";
 
-import Tag from "../components/Tag";
+import Tag from "../../../components/tags";
 
 export const GroupCardWithoutData = ({ group, router, onHover }) => {
   const theGroup = group || {};

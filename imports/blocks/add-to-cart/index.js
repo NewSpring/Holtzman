@@ -8,10 +8,12 @@ import { monetize } from "../../util/format/currency";
 import Layout from "./Layout";
 
 // We only care about the give state
-const map = ({ routing, give }) => ({
+const map = ({ routing, give, accounts }) => ({
   status: give.state,
   query: routing.location.query,
+  authorized: accounts.authorized,
 });
+
 export const withGiveActions = connect(map, giveActions);
 
 type ICartContainer = {
@@ -21,6 +23,7 @@ type ICartContainer = {
   addTransactions: Function,
   query: Object,
   status: string,
+  authorized: boolean,
 };
 
 type ISelectOptions = {
@@ -86,7 +89,7 @@ class CartContainer extends Component {
     return this.props.accounts
       .map((account: Object, index) => {
         // only show the correct number of initial fund states
-        if (this.props.accounts.length > (accounts.length + 1)) return {};
+        if (this.props.accounts.length > (accounts.length)) return {};
 
         let fundId = index === 0 ? accounts[0].id : undefined;
         let amount = null;
@@ -138,21 +141,6 @@ class CartContainer extends Component {
     if (newAmount === ".") newAmount = "0.0";
 
     let decimals = newAmount.split(".")[1];
-    // if (decimals && decimals[0] === "0" && decimals.length > 2) {
-    //   const newDecimals = decimals.split(""); // turn into an array
-    //   newDecimals.splice(0, 1); // remove extra 0
-    //   newAmount = `${newAmount.split(".")[0]}.${newDecimals[0]}${newDecimals[1]}`;
-    // }
-
-    // XXX this is a hack becuase our components are not truely controlled right now
-    // I'm not even sure how onBlur works on controlled components tbh
-    // handles live typing of amounts with 0 in the decimal place or longer than 2 figures
-    // decimals = newAmount.split(".")[1];
-    // if (decimals && decimals[1] === "0") {
-    //   const newDecimals = decimals.split(""); // turn into an array
-    //   newDecimals.splice(1, 1); // remove extra 0
-    //   newAmount = `${newAmount.split(".")[0]}.${newDecimals[0]}${newDecimals[1]}`;
-    // }
 
     // make sure the amount isn't longer than 2 decimals after the inline replacement
     decimals = newAmount.split(".")[1];
@@ -205,13 +193,7 @@ class CartContainer extends Component {
         // change the id of the active subfund
         if (subfund.id === subfundId) {
           // deselect the subfund
-          if (!id) {
-            newFund.fundId = undefined;
-            newFund.amount = null;
-            selectedFunds.splice(selectedFunds.indexOf(subfund.fundId), 1);
-          } else {
-            newFund.fundId = id;
-          }
+          newFund.fundId = id;
         } else {
           // if the subfund has an amount, don't remove it from the list
           if (subfund.amount) {
@@ -258,6 +240,44 @@ class CartContainer extends Component {
     return fund[0] && fund[0].amount && monetize(`${fund[0].amount}`.replace(/[^0-9\.]+/g, ""));
   }
 
+  toggleSecondFund = () => {
+    const { state } = this;
+
+    this.setState(({ subfunds }) => {
+      if (subfunds.length === 1) {
+        const { fundId, amount } = subfunds[0];
+
+        const newSubfund = {
+          accounts: [...this.props.accounts].map((x) => ({ label: x.name, value: x.id })),
+          primary: false,
+          id: 2,
+          fundId: undefined,
+          amount: "",
+        };
+        // amount has been added to first fund
+        if (amount) {
+          newSubfund.accounts = [...this.props.accounts]
+            .filter(({ id }) => id !== fundId)
+            .map((x) => ({ label: x.name, value: x.id }));
+        }
+
+        subfunds.push(newSubfund);
+      } else {
+        // reset the accounts in the first subfund
+        subfunds[0].accounts = [...this.props.accounts]
+          .map((x) => ({ label: x.name, value: x.id }));
+        // remove second subfund
+        subfunds.pop();
+      }
+      return subfunds;
+    });
+
+    // remove second fund
+    if (state.subfunds.length === 2) {
+      this.props.clearTransaction(state.subfunds[1].fundId);
+    }
+  }
+
   render() {
     // we could pull from the redux store, but we would end up
     // overrendering from local state and store updates
@@ -265,8 +285,9 @@ class CartContainer extends Component {
       .map(({ amount }) => Number(amount) || 0)
       .reduce((x: number, y: number) => x + y, 0);
 
-    const { accounts } = this.props;
+    const { accounts, authorized } = this.props;
     if (!accounts || !accounts.length) return null;
+
     return (
       <Layout
         subfunds={this.state.subfunds}
@@ -274,6 +295,9 @@ class CartContainer extends Component {
         changeAmount={this.changeAmount}
         preFill={this.preFillValue}
         total={total}
+        accounts={accounts}
+        toggleSecondFund={this.toggleSecondFund}
+        authorized={authorized}
       />
 
     );
