@@ -58,19 +58,20 @@ export class GivingActivity extends Component {
     data.forEach((feedItem: Object) => {
       if (typeof feedItem.status !== "undefined") {
         transactions.push(feedItem);
-      } else {
-        accounts.push(feedItem);
       }
+      // else {
+      //   accounts.push(feedItem);
+      // }
     });
 
     // XXX TODO: filter accounts by soon expiring
 
-    accounts.map((account) => {
-      if (activityToShow.length < 3) {
-        activityToShow.push(account);
-      }
-      return null;
-    });
+    // accounts.map((account) => {
+    //   if (activityToShow.length < 3) {
+    //     activityToShow.push(account);
+    //   }
+    //   return null;
+    // });
 
     transactions.map((transaction) => {
       if (activityToShow.length < 3) {
@@ -139,8 +140,7 @@ export class GivingActivity extends Component {
         if (feedItem.__typename === "Transaction") { //eslint-disable-line
           return this.renderTransaction(feedItem);
         }
-        return null;
-        // return this.renderExpiringAccount(feedItem);
+        return this.renderExpiringAccount(feedItem);
       });
     }
     return null;
