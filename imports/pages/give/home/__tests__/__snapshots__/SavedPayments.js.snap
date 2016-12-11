@@ -68,9 +68,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
     <div
       className="grid flush soft-half-right">
       <SavedPaymentCard
-        classes="
-                grid__item soft-half-sides hard-right
-                 one-half@lap-wide-and-up "
+        classes="grid__item soft-half-sides hard-right one-half@lap-wide-and-up"
         onClick={[Function]}
         payment={
           Object {
@@ -82,9 +80,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
           }
         }>
         <div
-          className="
-                  grid__item soft-half-sides hard-right
-                   one-half@lap-wide-and-up "
+          className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up"
           onClick={[Function]}>
           <div
             className="card">
@@ -153,9 +149,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
         </div>
       </SavedPaymentCard>
       <SavedPaymentCard
-        classes="
-                grid__item soft-half-sides hard-right
-                 one-half@lap-wide-and-up "
+        classes="grid__item soft-half-sides hard-right one-half@lap-wide-and-up"
         onClick={[Function]}
         payment={
           Object {
@@ -167,9 +161,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
           }
         }>
         <div
-          className="
-                  grid__item soft-half-sides hard-right
-                   one-half@lap-wide-and-up "
+          className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up"
           onClick={[Function]}>
           <div
             className="card">

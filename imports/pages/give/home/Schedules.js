@@ -53,6 +53,7 @@ export class SchedulesList extends Component {
 
     return schedules.map((schedule) =>
       <ScheduleCard
+        classes="grid__item soft-half-sides hard-right one-half@lap-wide-and-up"
         key={schedule.id}
         amount={`${schedule.details[0].amount}`}
         fund={schedule.details[0].account.name}
@@ -69,10 +70,10 @@ export class SchedulesList extends Component {
     return (
       <div>
         <SectionHeader
-          title="Schedule"
+          title="Scheduled Contributions"
           link={<SchedulesButton />}
         />
-        <div className="soft-half">
+        <div className="grid flush soft-half-right">
           {this.renderSchedules(this.props.schedules.scheduledTransactions)}
         </div>
       </div>
