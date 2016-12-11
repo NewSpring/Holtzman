@@ -2,6 +2,7 @@
 
 type ICurrency = {
   amount: string,
+  baseHeadingSize?: string,
 };
 
 // eslint-disable-next-line max-len
@@ -9,17 +10,32 @@ const currencySymbolRegex = /[\$\xA2-\xA5\u058F\u060B\u09F2\u09F3\u09FB\u0AF1\u0
 
 export const getCurrencySymbol = (amount:string) => amount.match(currencySymbolRegex) || "$";
 export const getNegative = (amount:string) => amount.match(/-/);
-export const getDollars = (amount:string) => amount.replace(currencySymbolRegex, "").replace("-", "").split(".")[0] || "0";
+export const getDollars = (amount:string) => amount.replace(currencySymbolRegex, "").replace("-", "").split(".")[0] || "00";
 export const getCents = (amount:string) => amount.split(".")[1] || "00";
+
+// needed for testing
+// eslint-disable-next-line
+export let BaseCurrencySize;
+// eslint-disable-next-line
+export let ReducedHeadingSize;
+
+export const currencySizeCalc = (baseHeadingSize:string) => {
+  const reducedHeadingResult = parseFloat(baseHeadingSize) + 2;
+
+  BaseCurrencySize = `h${baseHeadingSize}`;
+  ReducedHeadingSize = `h${reducedHeadingResult}`;
+};
 
 const Currency = ({
   amount,
+  baseHeadingSize,
 }: ICurrency) => (
   <div className="floating text-left text-dark-primary">
-    <h4 className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(amount)}</h4>
-    {getNegative(amount) && <h4 className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(amount)}</h4>}
-    <h2 className="floating__item flush">{getDollars(amount)}</h2>
-    <h4 className="floating__item flush">.{getCents(amount)}</h4>
+    {currencySizeCalc(baseHeadingSize || "2")}
+    <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(amount)}</ReducedHeadingSize>
+    {getNegative(amount) && <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(amount)}</ReducedHeadingSize>}
+    <BaseCurrencySize className="floating__item flush">{getDollars(amount)}</BaseCurrencySize>
+    <ReducedHeadingSize className="floating__item flush">.{getCents(amount)}</ReducedHeadingSize>
   </div>
 );
 
