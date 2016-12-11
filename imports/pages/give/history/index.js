@@ -9,7 +9,6 @@ import Authorized from "../../../blocks/authorzied";
 import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
-import Details from "./Details";
 
 class TemplateWithoutData extends Component {
 
@@ -159,12 +158,6 @@ const Routes = [
     path: "history",
     component: Authorized,
     indexRoute: { component: Template },
-    childRoutes: [
-      {
-        path: ":id",
-        component: Details,
-      },
-    ],
   },
 ];
 
