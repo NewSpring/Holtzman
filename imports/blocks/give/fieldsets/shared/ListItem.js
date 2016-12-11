@@ -1,5 +1,6 @@
 // @flow
 import { monetize } from "../../../../util/format";
+import Currency from "../../../../components/currency";
 
 type IListItem = {
   transaction: Object,
@@ -19,9 +20,11 @@ const ListItem = ({
       </div>
 
       <div className="grid__item one-third text-right" style={{ verticalAlign: "middle" }}>
-        <h5 className="text-dark-primary flush">
-          {monetize(transaction.value)}
-        </h5>
+        <Currency
+          amount={monetize(transaction.value)}
+          baseHeadingSize="4"
+          className="display-inline-block"
+        />
       </div>
 
     </div>

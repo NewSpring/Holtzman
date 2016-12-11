@@ -85,7 +85,7 @@ class Layout extends Component {
         </Split>
         <Left>
           <Dashboard
-            title="Your Giving"
+            title="My Giving"
             subNav={this.state.subNav}
           >
             {cloneElement(this.props.children, {

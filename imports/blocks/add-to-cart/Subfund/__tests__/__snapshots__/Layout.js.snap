@@ -18,102 +18,102 @@ exports[`test should accept an active prop to show the input 1`] = `
   }>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-dark-tertiary">
-      and give to
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      and give
     </div>
-    <Select
+    <Input
       classes={
         Array [
           "soft-bottom",
+          "input--active",
           "display-inline-block",
-          "select_1rryh47",
         ]
       }
-      deselect={true}
       hideLabel={true}
-      includeBlank={true}
-      inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-      items={
-        Array [
-          Object {
-            "value": "main fund",
-          },
-        ]
-      }
-      placeholder="select fund">
-      <div
-        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
-        <select
-          className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="select fund">
-          <option
-            style={
-              Object {
-                "display": "none",
-              }
-            }>
-            select fund
-          </option>
-          <option />
-          <option
-            value="main fund">
-            main fund
-          </option>
-        </select>
-      </div>
-    </Select>
-    <div
-      className="display-block">
-      <h3
-        className="text-dark-tertiary push-half-bottom push-half-right display-inline-block">
-        with
-      </h3>
-      <Input
-        classes={
-          Array [
-            "soft-bottom",
-            "input--active",
-            "display-inline-block",
-          ]
+      inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+      placeholder="$0.00"
+      style={
+        Object {
+          "maxWidth": "150px",
         }
-        hideLabel={true}
-        inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-        placeholder="$0.00"
+      }
+      type="tel"
+      value="5.00">
+      <div
+        className="input input--active soft-bottom input--active display-inline-block"
+        data-spec="input-wrapper"
         style={
           Object {
             "maxWidth": "150px",
           }
-        }
-        type="tel"
-        value="5.00">
-        <div
-          className="input input--active soft-bottom input--active display-inline-block"
-          data-spec="input-wrapper"
+        }>
+        <RenderLabel
+          hideLabel={true} />
+        <input
+          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+          data-spec="input"
+          maxLength=""
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="$0.00"
           style={
             Object {
               "maxWidth": "150px",
             }
-          }>
-          <RenderLabel
-            hideLabel={true} />
-          <input
-            className="outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary show-placeholder_1bkmqm1"
-            data-spec="input"
-            maxLength=""
-            onBlur={[Function]}
+          }
+          type="tel" />
+      </div>
+    </Input>
+    <div
+      className="display-block">
+      <h3
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        to
+      </h3>
+      <Select
+        classes={
+          Array [
+            "soft-bottom",
+            "display-inline-block",
+            "select_1rryh47",
+          ]
+        }
+        defaultValue="main fund"
+        hideLabel={true}
+        includeBlank={true}
+        inputClasses="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
+        items={
+          Array [
+            Object {
+              "value": "main fund",
+            },
+          ]
+        }
+        placeholder="select fund">
+        <div
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          <select
+            className="text-brand outlined--dotted outlined--light h3 hard-top flush-bottom"
+            defaultValue="main fund"
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="$0.00"
-            style={
-              Object {
-                "maxWidth": "150px",
-              }
-            }
-            type="tel" />
+            placeholder="select fund">
+            <option
+              style={
+                Object {
+                  "display": "none",
+                }
+              }>
+              select fund
+            </option>
+            <option
+              value="main fund">
+              main fund
+            </option>
+          </select>
         </div>
-      </Input>
+      </Select>
     </div>
   </div>
 </Layout>
@@ -138,52 +138,102 @@ exports[`test should accept custom classes thru classes prop 1`] = `
   }>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-light-tertiary">
-      and give to
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      and give
     </div>
-    <Select
+    <Input
       classes={
         Array [
           "soft-bottom",
+          "input--active",
           "display-inline-block",
-          "select_1rryh47",
         ]
       }
-      deselect={true}
       hideLabel={true}
-      includeBlank={true}
-      inputClasses="text-light-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-      items={
-        Array [
-          Object {
-            "value": "main fund",
-          },
-        ]
+      inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+      placeholder="$0.00"
+      style={
+        Object {
+          "maxWidth": "150px",
+        }
       }
-      placeholder="select fund">
+      type="tel">
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
-        <select
-          className="text-light-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
+        className="input soft-bottom input--active display-inline-block"
+        data-spec="input-wrapper"
+        style={
+          Object {
+            "maxWidth": "150px",
+          }
+        }>
+        <RenderLabel
+          hideLabel={true} />
+        <input
+          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+          data-spec="input"
+          maxLength=""
+          onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
-          placeholder="select fund">
-          <option
-            style={
-              Object {
-                "display": "none",
-              }
-            }>
-            select fund
-          </option>
-          <option />
-          <option
-            value="main fund">
-            main fund
-          </option>
-        </select>
+          placeholder="$0.00"
+          style={
+            Object {
+              "maxWidth": "150px",
+            }
+          }
+          type="tel" />
       </div>
-    </Select>
+    </Input>
+    <div
+      className="display-block">
+      <h3
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        to
+      </h3>
+      <Select
+        classes={
+          Array [
+            "soft-bottom",
+            "display-inline-block",
+            "select_1rryh47",
+          ]
+        }
+        defaultValue="main fund"
+        hideLabel={true}
+        includeBlank={true}
+        inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
+        items={
+          Array [
+            Object {
+              "value": "main fund",
+            },
+          ]
+        }
+        placeholder="select fund">
+        <div
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          <select
+            className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
+            defaultValue="main fund"
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="select fund">
+            <option
+              style={
+                Object {
+                  "display": "none",
+                }
+              }>
+              select fund
+            </option>
+            <option
+              value="main fund">
+              main fund
+            </option>
+          </select>
+        </div>
+      </Select>
+    </div>
   </div>
 </Layout>
 `;
@@ -209,59 +259,109 @@ exports[`test should accept multiple accounts through accounts prop 1`] = `
   }>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-light-tertiary">
-      and give to
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      and give
     </div>
-    <Select
+    <Input
       classes={
         Array [
           "soft-bottom",
+          "input--active",
           "display-inline-block",
-          "select_1rryh47",
         ]
       }
-      deselect={true}
       hideLabel={true}
-      includeBlank={true}
-      inputClasses="text-light-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-      items={
-        Array [
-          Object {
-            "value": "hello",
-          },
-          Object {
-            "value": "world",
-          },
-        ]
+      inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+      placeholder="$0.00"
+      style={
+        Object {
+          "maxWidth": "150px",
+        }
       }
-      placeholder="select fund">
+      type="tel">
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
-        <select
-          className="text-light-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
+        className="input soft-bottom input--active display-inline-block"
+        data-spec="input-wrapper"
+        style={
+          Object {
+            "maxWidth": "150px",
+          }
+        }>
+        <RenderLabel
+          hideLabel={true} />
+        <input
+          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+          data-spec="input"
+          maxLength=""
+          onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
-          placeholder="select fund">
-          <option
-            style={
-              Object {
-                "display": "none",
-              }
-            }>
-            select fund
-          </option>
-          <option />
-          <option
-            value="hello">
-            hello
-          </option>
-          <option
-            value="world">
-            world
-          </option>
-        </select>
+          placeholder="$0.00"
+          style={
+            Object {
+              "maxWidth": "150px",
+            }
+          }
+          type="tel" />
       </div>
-    </Select>
+    </Input>
+    <div
+      className="display-block">
+      <h3
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        to
+      </h3>
+      <Select
+        classes={
+          Array [
+            "soft-bottom",
+            "display-inline-block",
+            "select_1rryh47",
+          ]
+        }
+        defaultValue="hello"
+        hideLabel={true}
+        includeBlank={true}
+        inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
+        items={
+          Array [
+            Object {
+              "value": "hello",
+            },
+            Object {
+              "value": "world",
+            },
+          ]
+        }
+        placeholder="select fund">
+        <div
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          <select
+            className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
+            defaultValue="hello"
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="select fund">
+            <option
+              style={
+                Object {
+                  "display": "none",
+                }
+              }>
+              select fund
+            </option>
+            <option
+              value="hello">
+              hello
+            </option>
+            <option
+              value="world">
+              world
+            </option>
+          </select>
+        </div>
+      </Select>
+    </div>
   </div>
 </Layout>
 `;
@@ -284,52 +384,102 @@ exports[`test should render with minimal props 1`] = `
   }>
   <div>
     <div
-      className="display-inline-block push-half-bottom h3 push-half-right text-light-tertiary">
-      and give to
+      className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      and give
     </div>
-    <Select
+    <Input
       classes={
         Array [
           "soft-bottom",
+          "input--active",
           "display-inline-block",
-          "select_1rryh47",
         ]
       }
-      deselect={true}
       hideLabel={true}
-      includeBlank={true}
-      inputClasses="text-light-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
-      items={
-        Array [
-          Object {
-            "value": "main fund",
-          },
-        ]
+      inputClasses="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+      placeholder="$0.00"
+      style={
+        Object {
+          "maxWidth": "150px",
+        }
       }
-      placeholder="select fund">
+      type="tel">
       <div
-        className="input soft-bottom display-inline-block select_1rryh47 select_15p0e27">
-        <select
-          className="text-light-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
+        className="input soft-bottom input--active display-inline-block"
+        data-spec="input-wrapper"
+        style={
+          Object {
+            "maxWidth": "150px",
+          }
+        }>
+        <RenderLabel
+          hideLabel={true} />
+        <input
+          className="outlined--dotted outlined--light h3 hard-top flush-bottom text-brand show-placeholder_11ef8g5"
+          data-spec="input"
+          maxLength=""
+          onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
-          placeholder="select fund">
-          <option
-            style={
-              Object {
-                "display": "none",
-              }
-            }>
-            select fund
-          </option>
-          <option />
-          <option
-            value="main fund">
-            main fund
-          </option>
-        </select>
+          placeholder="$0.00"
+          style={
+            Object {
+              "maxWidth": "150px",
+            }
+          }
+          type="tel" />
       </div>
-    </Select>
+    </Input>
+    <div
+      className="display-block">
+      <h3
+        className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        to
+      </h3>
+      <Select
+        classes={
+          Array [
+            "soft-bottom",
+            "display-inline-block",
+            "select_1rryh47",
+          ]
+        }
+        defaultValue="main fund"
+        hideLabel={true}
+        includeBlank={true}
+        inputClasses="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
+        items={
+          Array [
+            Object {
+              "value": "main fund",
+            },
+          ]
+        }
+        placeholder="select fund">
+        <div
+          className="input input--active soft-bottom display-inline-block select_1rryh47 select_15p0e27">
+          <select
+            className="text-dark-tertiary outlined--dotted outlined--light h3 hard-top flush-bottom"
+            defaultValue="main fund"
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="select fund">
+            <option
+              style={
+                Object {
+                  "display": "none",
+                }
+              }>
+              select fund
+            </option>
+            <option
+              value="main fund">
+              main fund
+            </option>
+          </select>
+        </div>
+      </Select>
+    </div>
   </div>
 </Layout>
 `;

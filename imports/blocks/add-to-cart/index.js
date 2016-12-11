@@ -10,6 +10,7 @@ import Layout from "./Layout";
 // We only care about the give state
 const map = ({ routing, give, accounts }) => ({
   status: give.state,
+  total: give.total,
   query: routing.location.query,
   authorized: accounts.authorized,
 });
@@ -24,6 +25,7 @@ type ICartContainer = {
   query: Object,
   status: string,
   authorized: boolean,
+  total: number,
 };
 
 type ISelectOptions = {
@@ -41,6 +43,7 @@ type ISubFund = {
 
 type ICartContainerState = {
   subfunds: ISubFund[],
+  canCheckout: boolean,
 };
 
 class CartContainer extends Component {
@@ -52,7 +55,7 @@ class CartContainer extends Component {
     accounts: [],
   }
 
-  state = { subfunds: [] }
+  state = { subfunds: [], canCheckout: true }
 
   componentWillMount() {
     const { query } = this.props;
@@ -74,9 +77,12 @@ class CartContainer extends Component {
     this.setState({ subfunds });
   }
 
-  componentWillReceiveProps({ status }: Object) {
-    // reset the component after success
-    if (status === "default" && this.props.status === "success") {
+  componentWillReceiveProps({ status, total }: Object) {
+    // reset the component after success or error
+    if (
+      (status === "default" && this.props.status === "success") ||
+      (this.props.total && total === 0)
+    ) {
       this.props.clearTransactions();
       const subfunds = this.calculateDefaultSubfunds();
       this.setState({ subfunds });
@@ -278,6 +284,13 @@ class CartContainer extends Component {
     }
   }
 
+  setCanCheckout = (canCheckout: boolean) => this.setState({ canCheckout })
+
+  canCheckout = (total: number) => {
+    if (total <= 0) return false;
+    return this.state.canCheckout;
+  }
+
   render() {
     // we could pull from the redux store, but we would end up
     // overrendering from local state and store updates
@@ -298,6 +311,8 @@ class CartContainer extends Component {
         accounts={accounts}
         toggleSecondFund={this.toggleSecondFund}
         authorized={authorized}
+        canCheckout={this.canCheckout(total)}
+        setCanCheckout={this.setCanCheckout}
       />
 
     );

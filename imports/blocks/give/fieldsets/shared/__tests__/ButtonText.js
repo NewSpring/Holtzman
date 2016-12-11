@@ -3,7 +3,7 @@ import { ButtonText } from "../";
 
 const defaultProps = {
   payment: {},
-  schedules: {},
+  schedule: {},
   savedAccount: {},
   scheduleToRecover: false,
 };
@@ -23,7 +23,7 @@ it("should say `Give Now` with minimal props", () => {
 
 it("should say `Schedule Now` if schedule present", () => {
   const result = renderer.create(generateComponent({
-    schedules: { "123": "123" },
+    schedule: { start: "now", frequency: null },
   }));
   expect(result).toMatchSnapshot();
 });
@@ -61,7 +61,7 @@ it("should say `Schedule Now using 6789` if schedule and accountNumber", () => {
       type: "ach",
       accountNumber: "123456789",
     },
-    schedules: { "123": "123" },
+    schedule: { start: "now", frequency: null },
   }));
   expect(result).toMatchSnapshot();
 });
@@ -72,7 +72,7 @@ it("should say `Schedule Now using 4321` if schedule and cardNumber", () => {
       type: "card",
       cardNumber: "987654321",
     },
-    schedules: { "123": "123" },
+    schedule: { start: "now", frequency: null },
   }));
   expect(result).toMatchSnapshot();
 });

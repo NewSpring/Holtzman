@@ -6,7 +6,7 @@ import { Meteor } from "meteor/meteor";
 import { css } from "aphrodite";
 
 import Forms from "../../../components/forms";
-import Styles from "../../add-schedule/styles-css";
+import Styles from "../styles-css";
 
 type IPrimary = {
   active: boolean,

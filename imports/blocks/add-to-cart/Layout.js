@@ -17,6 +17,8 @@ type ILayout = {
   accounts: Object[],
   toggleSecondFund: Function,
   authorized: boolean,
+  canCheckout: boolean,
+  setCanCheckout: Function,
 }
 
 export default ({
@@ -28,6 +30,8 @@ export default ({
   accounts,
   toggleSecondFund,
   authorized,
+  canCheckout,
+  setCanCheckout,
 }: ILayout) => (
   <div className="push-top@handheld soft-half-top@lap-and-up">
     <Forms.Form
@@ -70,20 +74,20 @@ export default ({
         </div>
 
         {/* Schedule */}
-        <Schedule authorized={(total > 0) && authorized} />
+        <Schedule setCanCheckout={setCanCheckout} authorized={(total > 0) && authorized} />
 
         {/* Total information */}
         <h3 className="display-inline-block text-dark-primary push-half-bottom push-half-right">
           my total is
         </h3>
         <span className="display-inline-block text-dark-primary push-half-bottom">
-          <Currency amount={monetize(total, true)} />
+          <Currency baseHeadingSize="1" amount={monetize(total, true)} />
         </span>
       </div>
 
       <div className="push-top">
         {/* Checkout Buttons */}
-        <CheckoutButtons disabled={total <= 0} />
+        <CheckoutButtons disabled={!canCheckout} />
       </div>
 
     </Forms.Form>

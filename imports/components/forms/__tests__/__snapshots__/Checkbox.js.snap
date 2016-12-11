@@ -3,7 +3,12 @@ exports[`test pushes type prop to inputclasses 1`] = `
   className="input mytype"
   data-spec="input-wrapper">
   <h6
-    className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+    className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    style={
+      Object {
+        "paddingTop": "3px",
+      }
+    }>
     <small
       data-spec="input-label" />
   </h6>
@@ -41,7 +46,12 @@ exports[`test should accept a default value 1`] = `
     className="input checkbox"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>
@@ -69,7 +79,12 @@ exports[`test should accept an id 1`] = `
     className="input checkbox"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>
@@ -100,7 +115,12 @@ exports[`test should accept label 1`] = `
     className="input checkbox"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>
@@ -132,7 +152,12 @@ exports[`test should accept name prop 1`] = `
     className="input checkbox"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>
@@ -169,7 +194,12 @@ exports[`test should add classes with classes prop 1`] = `
     className="input checkbox test1 harambe"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>
@@ -197,7 +227,12 @@ exports[`test should add classes with classes prop 2`] = `
     className="input checkbox test1 harambe"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>
@@ -225,7 +260,12 @@ exports[`test should add inputClasses with inputClasses prop 1`] = `
     className="input checkbox"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>
@@ -254,7 +294,12 @@ exports[`test should disable input with disabled prop 1`] = `
     className="input checkbox"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>
@@ -282,7 +327,12 @@ exports[`test should display children 1`] = `
     className="input checkbox"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label">
         this is a test
@@ -312,7 +362,12 @@ exports[`test should hide label with hideLabel prop 1`] = `
     className="input checkbox"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>
@@ -335,7 +390,12 @@ exports[`test should render with minimal props 1`] = `
     className="input checkbox"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>
@@ -363,7 +423,12 @@ exports[`test should respond to onclick prop 1`] = `
     className="input checkbox"
     data-spec="input-wrapper">
     <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+      style={
+        Object {
+          "paddingTop": "3px",
+        }
+      }>
       <small
         data-spec="input-label" />
     </h6>

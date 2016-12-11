@@ -50,7 +50,7 @@ const ActionButton = ({
         schedule={schedule}
         scheduleToRecover={scheduleToRecover}
       />
-      &nbsp;
+      &nbsp;&nbsp;&nbsp;
       <Icon
         cardType={
           cardType(payment, savedAccount)

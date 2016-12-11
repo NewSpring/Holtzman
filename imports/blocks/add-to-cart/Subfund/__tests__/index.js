@@ -20,8 +20,10 @@ const additionalAccounts = [
 
 const generateComponent = (additionalProps={}) => {
   const defaultProps = {
-    accounts: [{value: "main fund"}],
-    preFill: () => {}
+    accounts: [{ value: "main fund" }],
+    preFill: () => {},
+    changeAmount: jest.fn(),
+    changeFund: jest.fn()
   };
 
   return <SubFundWithoutData {...defaultProps} {...additionalProps} />

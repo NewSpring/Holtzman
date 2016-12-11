@@ -107,6 +107,7 @@ Object {
   "merchant-defined-field-1": "1",
   "merchant-defined-field-2": 1,
   "merchant-defined-field-3": "20200101",
+  "merchant-defined-field-4": "10",
   "plan": Object {
     "amount": 0,
     "day-frequency": 14,
@@ -131,6 +132,7 @@ Object {
   "merchant-defined-field-1": "1",
   "merchant-defined-field-2": 1,
   "merchant-defined-field-3": "20200101",
+  "merchant-defined-field-4": "10",
   "plan": Object {
     "amount": 0,
     "day-of-month": 1,
@@ -156,6 +158,33 @@ Object {
   "merchant-defined-field-1": "1",
   "merchant-defined-field-2": 1,
   "merchant-defined-field-3": "20200101",
+  "merchant-defined-field-4": "10",
+  "plan": Object {
+    "amount": 0,
+    "day-of-month": 1,
+    "month-frequency": 12,
+    "payments": 1,
+  },
+  "start-date": "20200101",
+}
+`;
+
+exports[`schedule shapes handles a one-time gift with two funds 1`] = `
+Object {
+  "billing": Object {
+    "address1": "1 Linwa Blvd",
+    "address2": "",
+    "city": "Anderson",
+    "email": "james.baxley@newspring.cc",
+    "first-name": "James",
+    "last-name": "Baxley",
+    "postal": 29621,
+    "state": "SC",
+  },
+  "merchant-defined-field-1": "1,10",
+  "merchant-defined-field-2": 1,
+  "merchant-defined-field-3": "20200101",
+  "merchant-defined-field-4": "10,11",
   "plan": Object {
     "amount": 0,
     "day-of-month": 1,
@@ -181,6 +210,7 @@ Object {
   "merchant-defined-field-1": "1",
   "merchant-defined-field-2": 1,
   "merchant-defined-field-3": "20200101",
+  "merchant-defined-field-4": "10",
   "plan": Object {
     "amount": 0,
     "day-frequency": 7,

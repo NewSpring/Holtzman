@@ -9,7 +9,8 @@ import Layout from "./Layout";
 
 type IScheduleProps = {
   authorized: boolean,
-  saveSchedule: Function
+  saveSchedule: Function,
+  setCanCheckout: Function,
 };
 
 type IScheduleState = {
@@ -52,6 +53,29 @@ class Schedule extends Component {
     }
   }
 
+  componentDidUpdate(_, { checked, start, frequency }) {
+    if (this.state.checked && !checked) {
+      this.props.setCanCheckout(false);
+      return;
+    }
+
+    if (
+      (this.state.start && this.state.frequency) &&
+      (!start || !frequency)
+    ) {
+      this.props.setCanCheckout(true);
+      return;
+    }
+
+    if (
+      (!this.state.start && start) ||
+      (!this.state.frequency && frequency)
+    ) {
+      this.props.setCanCheckout(false);
+      return;
+    }
+  }
+
   componentWillUnmount() {
     if (typeof window !== "undefined") {
       window.removeEventListener("resize", this.fixPickerPosition);
@@ -71,16 +95,17 @@ class Schedule extends Component {
   }
 
   toggleDatePicker = () => {
-    this.setState(({ showDatePicker, start }) => {
+    this.setState(({ showDatePicker }) => {
       const newState = { showDatePicker: !showDatePicker };
-      // if (!start) {
-      //   console.log("how do i make the toggle reset?");
-      // }
       return newState;
     });
     setTimeout(() => {
       this.fixPickerPosition();
     }, 200);
+
+    console.log(this.state);
+    if (!this.state.start) return false;
+    return true;
   }
 
   toggleSchedule = () => {
@@ -101,7 +126,10 @@ class Schedule extends Component {
   }
 
   frequencyClick = (value: string) => {
-    this.setState({ frequency: value });
+    let newValue = value;
+    if (this.state.frequency) newValue = null;
+
+    this.setState({ frequency: newValue });
     this.props.saveSchedule({
       frequency: value,
       start: this.state.start,
@@ -109,20 +137,19 @@ class Schedule extends Component {
   }
 
   startClick = (value: string) => {
+    let newValue = value;
+    if (this.state.start) newValue = null;
+
     if (value !== "custom") {
-      this.setState({ start: value });
+      this.setState({ start: newValue });
       this.props.saveSchedule({
         frequency: this.state.frequency,
-        start: value,
+        start: newValue,
       });
       return;
     }
 
-    if (this.state.start) {
-      this.setState({ start: null });
-    } else {
-      this.setState(({ showDatePicker }) => ({ showDatePicker: !showDatePicker }));
-    }
+    this.setState(({ showDatePicker }) => ({ showDatePicker: !showDatePicker }));
   }
 
   onDayClick = (e, day, { selected, disabled }) => {
@@ -133,7 +160,7 @@ class Schedule extends Component {
   render() {
     const { authorized } = this.props;
     if (!authorized) return null;
-    const { checked, start } = this.state;
+    const { checked, start, showDatePicker } = this.state;
 
     return (
       <Layout
@@ -142,7 +169,7 @@ class Schedule extends Component {
         checked={checked}
         frequencyClick={this.frequencyClick}
         onDayClick={this.onDayClick}
-        showDatePicker={this.showDatePicker}
+        showDatePicker={showDatePicker}
         start={start}
         startClick={this.startClick}
         toggleDatePicker={this.toggleDatePicker}

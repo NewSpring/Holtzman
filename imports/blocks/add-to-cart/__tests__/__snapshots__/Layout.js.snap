@@ -18,19 +18,25 @@ exports[`test should render with minimal props 1`] = `
         changeFund={[Function]}
         id={1}
         preFill={[Function]} />
+      <div
+        className="display-block one-whole soft-bottom" />
+      <Connect(Schedule)
+        authorized={false} />
       <h3
-        className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
-        so my total is
+        className="display-inline-block text-dark-primary push-half-bottom push-half-right">
+        my total is
       </h3>
-      <h3
-        className="display-inline-block text-brand push-half-bottom">
-        $0.00
-      </h3>
+      <span
+        className="display-inline-block text-dark-primary push-half-bottom">
+        <Currency
+          amount="$0.00"
+          baseHeadingSize="1" />
+      </span>
     </div>
     <div
       className="push-top">
       <mockConstructor
-        disabled={false} />
+        disabled={true} />
     </div>
   </Form>
 </div>
@@ -50,19 +56,25 @@ exports[`test should render without subfunds  1`] = `
     submit={[Function]}>
     <div
       className="display-inline-block">
+      <div
+        className="display-block one-whole soft-bottom" />
+      <Connect(Schedule)
+        authorized={false} />
       <h3
-        className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
-        so my total is
+        className="display-inline-block text-dark-primary push-half-bottom push-half-right">
+        my total is
       </h3>
-      <h3
-        className="display-inline-block text-brand push-half-bottom">
-        $0.00
-      </h3>
+      <span
+        className="display-inline-block text-dark-primary push-half-bottom">
+        <Currency
+          amount="$0.00"
+          baseHeadingSize="1" />
+      </span>
     </div>
     <div
       className="push-top">
       <mockConstructor
-        disabled={false} />
+        disabled={true} />
     </div>
   </Form>
 </div>

@@ -153,7 +153,7 @@ export default createReducer(initial, {
         step: initial.step,
         total: initial.total,
         transactions: initial.transactions,
-        schedules: initial.schedule,
+        schedule: initial.schedule,
         url: initial.url,
         data: initial.data,
         success: initial.success,

@@ -28,7 +28,7 @@ const Header = ({ override, goToStepOne }: IHeader) => {
   return (
     <div className="grid one-whole text-left flush">
       <div className="grid__item three-quarters text-left hard" style={{ verticalAlign: "middle" }}>
-        <h3 className="flush-bottom">Review Your Gift</h3>
+        <h3 className="flush-bottom">Review Contribution</h3>
       </div>
       <div className="grid__item one-quarter text-right" style={{ verticalAlign: "middle" }}>
         <SmallButton
@@ -71,7 +71,7 @@ const TransactionLayout = ({
   transactions,
 }: ITransactionLayout) => (
   <div>
-    <div className="push-double@lap-and-up push">
+    <div className="push-double-top@lap-and-up push">
       <Header
         override={header}
         personal={personal}
@@ -82,19 +82,33 @@ const TransactionLayout = ({
     <div className="soft-sides">
       <div className="one-whole push-bottom" />
 
+      {personal.campus && (
+        <div
+          className="text-left outlined--bottom outlined--light soft-half-bottom push-half-bottom"
+          style={{ borderWidth: "1px" }}
+        >
+          <h7 className="text-dark-tertiary flush">Campus:</h7>
+          <p className="display-inline-block soft-half-left flush">
+            <em><small>{personal.campus}</small></em>
+          </p>
+        </div>
+      )}
+
       {transactions.map((transaction, key: number) => (
         <div
           key={key}
-          className={
-            `${(key !== (transactions.length - 1)) && "outlined--light outlined--bottom"}`
-          }
+          className="outlined--light outlined--bottom soft-half-top"
+          style={{ borderWidth: "1px" }}
         >
           <ListItem transaction={transaction} />
         </div>
       ))}
 
       {schedule.start && (
-        <div className="text-left soft-top outlined--top outlined--light">
+        <div
+          className="text-left soft-top outlined--bottom outlined--light soft-bottom"
+          style={{ borderWidth: "1px" }}
+        >
           <h5 className="text-dark-primary">Schedule details</h5>
           <div className="soft-half-bottom">
             <h7 className="text-dark-tertiary">Frequency:</h7>
@@ -111,8 +125,10 @@ const TransactionLayout = ({
         </div>
       )}
 
-      <div className="one-whole push-top hard-sides outlined--light outlined--top" />
-      <div className="soft-half-ends push-bottom hard-sides outlined--light outlined--bottom">
+      <div
+        className="soft-half-ends push-bottom hard-sides outlined--light outlined--bottom"
+        style={{ borderWidth: "1px" }}
+      >
 
         <div className="grid" style={{ verticalAlign: "middle" }}>
 
