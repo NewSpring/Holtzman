@@ -4,6 +4,7 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
+import Authorized from "../../../../blocks/authorzied";
 import {
   nav as navActions,
   header as headerActions,
@@ -17,14 +18,10 @@ class DetailsWithoutData extends Component {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
     entries: PropTypes.object,
-    setRightProps: PropTypes.func,
   }
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
-    this.props.setRightProps({
-      background: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg",
-    });
   }
 
   componentDidMount() {
@@ -140,7 +137,18 @@ const Details = connect()(
   )
 );
 
-export default Details;
+const Routes = [
+  {
+    path: "history/:id",
+    component: Authorized,
+    indexRoute: { component: Details },
+  },
+];
+
+export default {
+  Details,
+  Routes,
+};
 
 export {
   DetailsWithoutData,
