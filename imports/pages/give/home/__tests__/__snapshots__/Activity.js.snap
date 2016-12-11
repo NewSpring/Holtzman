@@ -71,7 +71,7 @@ exports[`GivingActivity should render with data 1`] = `
       <div
         className="card">
         <div
-          className="card__item soft text-left soft-bottom rounded text-light-primary background--dark-primary">
+          className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary">
           <div
             className="floating text-left">
             <i
@@ -147,7 +147,7 @@ exports[`GivingActivity should render with data 1`] = `
       <div
         className="card">
         <div
-          className="card__item soft text-left soft-bottom rounded text-light-primary background--dark-primary">
+          className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary">
           <div
             className="floating text-left">
             <i
@@ -223,7 +223,7 @@ exports[`GivingActivity should render with data 1`] = `
       <div
         className="card">
         <div
-          className="card__item soft text-left soft-bottom rounded text-light-primary background--dark-primary">
+          className="card__item soft text-left soft-bottom rounded background--dark-primary text-light-primary">
           <div
             className="floating text-left">
             <i
