@@ -45,9 +45,7 @@ export class SavedPaymentsList extends Component {
     const numberOfAccounts = payments.length;
     return payments.map((payment) =>
       <SavedPaymentCard
-        classes={`
-          grid__item soft-half-sides hard-right
-          ${numberOfAccounts > 1 ? " one-half@lap-wide-and-up" : " one-whole"} `}
+        classes={"grid__item soft-half-sides hard-right one-half@lap-wide-and-up"}
         key={`${payment.id}_${payment.name}`}
         payment={payment}
         onClick={() => {
