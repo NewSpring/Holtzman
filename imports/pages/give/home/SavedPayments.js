@@ -40,12 +40,15 @@ type ISavedPaymentsList = {
 export class SavedPaymentsList extends Component {
   props: ISavedPaymentsList;
 
-  renderPayments(payments: Object){
+  renderPayments(payments: Object) {
     if (!Array.isArray(payments)) return null;
+    const numberOfAccounts = payments.length;
     return payments.map((payment) =>
       <SavedPaymentCard
-        classes="grid__item one-half@lap-wide-and-up soft-half-sides hard-right"
-        key={payment.id}
+        classes={`
+          grid__item soft-half-sides hard-right
+          ${numberOfAccounts > 1 ? " one-half@lap-wide-and-up" : " one-whole"} `}
+        key={`${payment.id}_${payment.name}`}
         payment={payment}
         onClick={() => {
           this.props.router.push(`/give/saved-payments/edit/${payment.id}`);
@@ -64,9 +67,6 @@ export class SavedPaymentsList extends Component {
         />
         <div className="grid flush soft-half-right">
           {this.renderPayments(this.props.payments.savedPayments)}
-          {this.renderPayments(this.props.payments.savedPayments)}
-          {this.renderPayments(this.props.payments.savedPayments)}
-
         </div>
       </div>
     );
