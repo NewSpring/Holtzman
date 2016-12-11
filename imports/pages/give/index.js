@@ -1,6 +1,7 @@
 // @flow
 import Campaign from "./campaign";
 import History from "./history";
+import HistoryDetail from "./history/Details";
 import Home from "./home";
 import Now from "./now";
 import Review from "./review";
@@ -21,6 +22,7 @@ const Routes = [
     ],
   },
   { path: "give/campaign/:name", component: Campaign.Template },
+  { path: "give/history/:id", component: HistoryDetail.Details },
 ];
 
 export default Routes;
