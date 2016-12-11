@@ -4,7 +4,16 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import SectionHeader from "../../../components/sectionHeader";
+import SmallButton from "../../../components/buttons/small";
 import ActivityCard from "../../../components/cards/cards.Activity";
+
+const ActivityButton = () =>
+  <SmallButton
+    text="See All"
+    linkUrl="/give/history"
+    className="btn--dark-tertiary flush"
+  />;
 
 const ACTIVITY_QUERY = gql`
   query userFeed($filters: [String]!) {
@@ -155,8 +164,11 @@ export class GivingActivity extends Component {
     if (!Array.isArray(data) && data.length === 0) return null;
 
     return (
-      <div className="soft-half hard-top">
-        {this.renderActivity(data)}
+      <div>
+        <SectionHeader title="Activity" link={<ActivityButton />} />
+        <div className="soft-half hard-top">
+          {this.renderActivity(data)}
+        </div>
       </div>
     );
   }
