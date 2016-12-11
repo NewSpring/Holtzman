@@ -6,6 +6,7 @@ import AccountType from "../../components/accountType";
 type ISavedPaymentCard = {
   payment: Object,
   onClick: Function,
+  classes: string,
 };
 
 // XXX right now this uses the content prop for everything
@@ -14,8 +15,9 @@ type ISavedPaymentCard = {
 const SavedPaymentCard = ({
   payment,
   onClick,
+  classes,
 }: ISavedPaymentCard) => (
-  <div className="card" onClick={onClick}>
+  <div className={`card ${classes || ""}`} onClick={onClick}>
     <div className="card__item soft push-half-ends one-whole" style={{ verticalAlign: "middle" }}>
       <div className="floating grid">
         <div className="floating__item grid__item two-thirds text-left">

@@ -1,6 +1,6 @@
 exports[`SavedPaymentCard should have an accountName, fourDigit accountNumber, paymentType, and an onClick function 1`] = `
 <div
-  className="card"
+  className="card "
   onClick={[Function]}>
   <div
     className="card__item soft push-half-ends one-whole"
