@@ -20,12 +20,14 @@ story
     Readme,
     () => {
       const amount = text("Amount", "$420.00");
+      const baseSize = text("Base Heading Size", "2");
 
       return (
         <div className={"floating"}>
           <div className={"grid__item text-left"} style={{ maxWidth: "960px" }}>
             <Currency
               amount={amount}
+              baseHeadingSize={baseSize}
             />
           </div>
         </div>
