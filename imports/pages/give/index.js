@@ -1,5 +1,6 @@
 // @flow
 import Campaign from "./campaign";
+import EditSavedPayment from "./saved-payments/";
 import EditSchedule from "./schedules/Edit";
 import History from "./history";
 import HistoryDetail from "./history/Details";
@@ -24,6 +25,7 @@ const Routes = [
   },
   { path: "give/campaign/:name", component: Campaign.Template },
   { path: "give/history/:id", component: HistoryDetail.Details },
+  { path: "give/saved-payments/edit/:id", component: EditSavedPayment.EditSavedPayment },
   { path: "give/schedules/edit/:id", component: EditSchedule.EditSchedule },
 ];
 
