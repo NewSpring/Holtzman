@@ -4,7 +4,10 @@ import Currency,
   { getCurrencySymbol,
     getNegative,
     getDollars,
-    getCents
+    getCents,
+    currencySizeCalc,
+    BaseCurrencySize,
+    ReducedHeadingSize
   } from "../";
 
 describe("Currency", () => {
@@ -36,8 +39,8 @@ describe("Currency", () => {
     expect(getDollars("$420.00")).toBe("420");
   });
 
-  it("returns '0' dollars when none is provided", () => {
-    expect(getDollars("")).toBe("0");
+  it("returns '00' dollars when none is provided", () => {
+    expect(getDollars("")).toBe("00");
   });
 
   it("returns '12' cents", () => {
@@ -94,5 +97,37 @@ describe("Currency", () => {
     )
 
     expect(tree).toMatchSnapshot();
+  });
+
+  it("correctly returns when no heading is provided.", () => {
+    const tree = renderer.create(
+      <Currency
+        amount=""
+        baseHeadingSize=""
+      />
+    )
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("correctly returns when a heading size is provided.", () => {
+    const tree = renderer.create(
+      <Currency
+        amount="$420.00"
+        baseHeadingSize="2"
+      />
+    )
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("should have a base currency size of 'h2'", () => {
+    currencySizeCalc("2");
+    expect(BaseCurrencySize).toBe("h2");
+  });
+
+  it("should have a reduced heading size of 'h4'", () => {
+    currencySizeCalc("2");
+    expect(ReducedHeadingSize).toBe("h4");
   });
 });

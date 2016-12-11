@@ -5,6 +5,7 @@ import SmallButton from "../../../components/buttons/small";
 
 import Activity from "./Activity";
 import Schedules from "./Schedules";
+import SavedPayments from "./SavedPayments";
 
 const Layout = () => (
   <div>
@@ -22,6 +23,7 @@ const Layout = () => (
 
     <Schedules />
 
+    <SavedPayments />
   </div>
 );
 
