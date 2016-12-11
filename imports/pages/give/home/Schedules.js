@@ -8,6 +8,13 @@ import ScheduleCard from "../../../components/cards/cards.ScheduleOverview";
 import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
 
+const SchedulesButton = () =>
+  <SmallButton
+    text="New Schedule"
+    linkUrl="/give/history"
+    className="btn--dark-tertiary flush"
+  />;
+
 const SCHEDULE_QUERY = gql`
   query scheduledTransactions {
     scheduledTransactions {
@@ -61,13 +68,7 @@ export class SchedulesList extends Component {
       <div>
         <SectionHeader
           title="Schedule"
-          link={
-            <SmallButton
-              text="New Schedule"
-              linkUrl="/give/history"
-              className="btn--dark-tertiary flush"
-            />
-          }
+          link={<SchedulesButton />}
         />
         <div className="soft-half">
           {this.renderSchedules(this.props.schedules.scheduledTransactions)}

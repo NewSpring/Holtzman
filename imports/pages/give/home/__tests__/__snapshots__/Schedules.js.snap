@@ -64,12 +64,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
   }>
   <div>
     <SectionHeader
-      link={
-        <SmallButton
-          className="btn--dark-tertiary flush"
-          linkUrl="/give/history"
-          text="New Schedule" />
-      }
+      link={<SchedulesButton />}
       title="Schedule">
       <div
         className="one-whole">
@@ -82,31 +77,33 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         </div>
         <div
           className="one-half floating display-inline-block floating--right soft soft-half-right">
-          <SmallButton
-            className="btn--dark-tertiary flush"
-            linkUrl="/give/history"
-            text="New Schedule">
-            <Link
-              className="
-                btn btn--small@next
-                
-                btn--dark-tertiary flush
-              "
-              onlyActiveOnIndex={false}
-              style={Object {}}
-              to="/give/history">
-              <a
+          <SchedulesButton>
+            <SmallButton
+              className="btn--dark-tertiary flush"
+              linkUrl="/give/history"
+              text="New Schedule">
+              <Link
                 className="
                   btn btn--small@next
                   
                   btn--dark-tertiary flush
                 "
-                onClick={[Function]}
-                style={Object {}}>
-                New Schedule
-              </a>
-            </Link>
-          </SmallButton>
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to="/give/history">
+                <a
+                  className="
+                    btn btn--small@next
+                    
+                    btn--dark-tertiary flush
+                  "
+                  onClick={[Function]}
+                  style={Object {}}>
+                  New Schedule
+                </a>
+              </Link>
+            </SmallButton>
+          </SchedulesButton>
         </div>
       </div>
     </SectionHeader>
@@ -181,7 +178,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </span>
               <em
                 className="text-dark-primary">
-                Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)
+                Mar 16, 2016
               </em>
             </p>
             <p
@@ -197,7 +194,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </span>
               <em
                 className="text-dark-primary">
-                Tue Mar 17 2016 20:00:00 GMT-0400 (EDT)
+                Mar 17, 2016
               </em>
             </p>
           </div>
@@ -272,7 +269,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </span>
               <em
                 className="text-dark-primary">
-                Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)
+                Mar 16, 2016
               </em>
             </p>
             <p
@@ -288,7 +285,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </span>
               <em
                 className="text-dark-primary">
-                Tue Mar 18 2016 20:00:00 GMT-0400 (EDT)
+                Mar 18, 2016
               </em>
             </p>
           </div>
@@ -359,7 +356,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </span>
               <em
                 className="text-dark-primary">
-                Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)
+                Mar 16, 2016
               </em>
             </p>
           </div>
