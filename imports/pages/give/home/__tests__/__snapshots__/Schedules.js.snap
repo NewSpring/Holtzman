@@ -80,7 +80,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
           <SchedulesButton>
             <SmallButton
               className="btn--dark-tertiary flush"
-              linkUrl="/give/history"
+              linkUrl="/give/now"
               text="New Schedule">
               <Link
                 className="
@@ -90,7 +90,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 "
                 onlyActiveOnIndex={false}
                 style={Object {}}
-                to="/give/history">
+                to="/give/now">
                 <a
                   className="
                     btn btn--small@next
@@ -367,8 +367,4 @@ exports[`Giving Schedules List should render properly with data 1`] = `
 </SchedulesList>
 `;
 
-exports[`Giving Schedules List should render with minimal props 1`] = `
-<SchedulesList>
-  <div />
-</SchedulesList>
-`;
+exports[`Giving Schedules List should render with minimal props 1`] = `<SchedulesList />`;

@@ -3,6 +3,7 @@
 
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
+import { withRouter } from "react-router";
 import gql from "graphql-tag";
 import ScheduleCard from "../../../components/cards/cards.ScheduleOverview";
 import SectionHeader from "../../../components/sectionHeader";
@@ -11,7 +12,7 @@ import SmallButton from "../../../components/buttons/small";
 const SchedulesButton = () =>
   <SmallButton
     text="New Schedule"
-    linkUrl="/give/history"
+    linkUrl="/give/now"
     className="btn--dark-tertiary flush"
   />;
 
@@ -41,6 +42,7 @@ const withSchedules = graphql(SCHEDULE_QUERY, {
 
 type ISchedulesList = {
   schedules: Object,
+  router: Object,
 };
 
 export class SchedulesList extends Component {
@@ -57,13 +59,13 @@ export class SchedulesList extends Component {
         frequency={schedule.schedule.description}
         started={schedule.start}
         latest={schedule.transactions[0] ? schedule.transactions[0].date : ""}
-        onEditClick={() => {}}
+        onEditClick={() => { this.props.router.push(`/give/schedule/edit/${schedule.id}`); }}
       />
     );
   }
 
   render() {
-    if (!this.props.schedules || !this.props.schedules.scheduledTransactions) return <div />;
+    if (!this.props.schedules || !this.props.schedules.scheduledTransactions) return null;
     return (
       <div>
         <SectionHeader
@@ -78,4 +80,4 @@ export class SchedulesList extends Component {
   }
 }
 
-export default withSchedules(SchedulesList);
+export default withRouter(withSchedules(SchedulesList));
