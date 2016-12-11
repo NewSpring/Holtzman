@@ -1,7 +1,14 @@
 import { mount, shallow } from "enzyme";
 import { mountToJson, shallowToJson } from "enzyme-to-json";
-import { CartContainerWithoutData as CartContainer } from "../";
+import { connect } from "react-redux";
+
+import { give as giveActions } from "../../../store";
+import { CartContainerWithoutData as CartContainer, map, withGiveActions } from "../";
 import { SubFundWithoutData as SubFund } from "../Subfund";
+
+jest.mock("react-redux", () => ({
+  connect: jest.fn(() => (component) => <component />),
+}));
 
 jest.mock("../Subfund", () => jest.fn(() => <div />));
 jest.mock("../Schedule", () => jest.fn(() => <div />));
@@ -33,6 +40,36 @@ const additionalAccounts = [
   { id: 3, name: "TEST 3" },
   { id: 4, name: "TEST 4" },
 ];
+
+it("is mapped to the store as expected", () => {
+  expect(connect).toBeCalledWith(map, giveActions);
+});
+
+describe("map", () => {
+  it("reduces the state as expected", () => {
+    const state = {
+      routing: {
+        location: {
+          query: "foo",
+        },
+      },
+      give: {
+        state: "default",
+        total: 0,
+      },
+      accounts: {
+        authorized: false,
+      },
+    };
+
+    expect(map(state)).toEqual({
+      status: "default",
+      total: 0,
+      query: "foo",
+      authorized: false
+    });
+  });
+});
 
 it("should render with minimal props", () => {
   const component = shallow(generateComponent());
