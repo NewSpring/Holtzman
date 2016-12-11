@@ -88,6 +88,18 @@ describe("CartContainer > Lifecycle functions", () => {
     expect(component.state()).toMatchSnapshot();
     expect(spy).toHaveBeenCalledTimes(2);
   });
+
+  it("should clear transactions on when amount is set to 0", () => {
+    const spy = jest.fn();
+    const component = mount(generateComponent({
+      clearTransactions: spy,
+      total: 1,
+    }));
+    expect(spy).toHaveBeenCalledTimes(1);
+    component.setProps({ total: 0 });
+    expect(component.state()).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledTimes(2);
+  });
 });
 
 describe ("CartContainer > Class Methods", () => {
@@ -213,4 +225,104 @@ describe ("CartContainer > Class Methods", () => {
     });
   });
 
+  describe("toggleSecondFund", () => {
+    it("creates the correct new subfund state", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { toggleSecondFund } = component.instance();
+      toggleSecondFund();
+      const newState = component.state();
+      expect(newState).toMatchSnapshot();
+    });
+
+    it("creates the correct new subfund state when the first fund is selected", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { toggleSecondFund, changeAmount, changeFund } = component.instance();
+      changeFund(1, 1);
+      changeAmount(10, 1)
+      toggleSecondFund();
+      const newState = component.state();
+      expect(newState).toMatchSnapshot();
+    });
+
+    it("correctly toggles", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { toggleSecondFund, changeAmount, changeFund } = component.instance();
+      changeFund(1, 1);
+      changeAmount(10, 1)
+      toggleSecondFund();
+      toggleSecondFund();
+      const newState = component.state();
+      expect(newState).toMatchSnapshot();
+    });
+
+    it("clears the transaction when toggling", () => {
+      const clearTransaction = jest.fn();
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+        clearTransaction,
+      }));
+      const { toggleSecondFund, changeAmount, changeFund } = component.instance();
+      changeFund(1, 1);
+      changeAmount(10, 1)
+      toggleSecondFund();
+      toggleSecondFund();
+      expect(clearTransaction).toBeCalledWith(1);
+    });
+  });
+
+  describe("setCanCheckout", () => {
+    it("updates the state", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { setCanCheckout } = component.instance();
+
+      setCanCheckout(true);
+      expect(component.state().canCheckout).toBe(true);
+    });
+    it("updates the state (falsey)", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { setCanCheckout } = component.instance();
+
+      setCanCheckout(false);
+      expect(component.state().canCheckout).toBe(false);
+    });
+  });
+
+  describe("canCheckout", () => {
+    it("early returns if the total isn't valid", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { canCheckout } = component.instance();
+
+      expect(canCheckout(0)).toBe(false);
+    });
+    it("returns the canCheckout state from the component", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { setCanCheckout, canCheckout } = component.instance();
+
+      setCanCheckout(true);
+      expect(canCheckout(10)).toBe(true);
+    });
+    it("returns the canCheckout state from the component (falsy)", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { setCanCheckout, canCheckout } = component.instance();
+
+      setCanCheckout(false);
+      expect(canCheckout(10)).toBe(false);
+    });
+  });
 });

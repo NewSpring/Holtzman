@@ -276,7 +276,8 @@ class CartContainer extends Component {
         // remove second subfund
         subfunds.pop();
       }
-      return subfunds;
+
+      return { subfunds };
     });
 
     // remove second fund
