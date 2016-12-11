@@ -1,5 +1,6 @@
 // @flow
 import Campaign from "./campaign";
+import EditSchedule from "./schedules/Edit";
 import History from "./history";
 import HistoryDetail from "./history/Details";
 import Home from "./home";
@@ -23,6 +24,7 @@ const Routes = [
   },
   { path: "give/campaign/:name", component: Campaign.Template },
   { path: "give/history/:id", component: HistoryDetail.Details },
+  { path: "give/schedules/edit/:id", component: EditSchedule.EditSchedule },
 ];
 
 export default Routes;
