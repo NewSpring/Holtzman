@@ -1,11 +1,6 @@
 import renderer from "react-test-renderer";
 import { reset } from "aphrodite/lib/inject";
-import ScheduleOverview,
-  { getCurrencySymbol,
-    getNegative,
-    getDollars,
-    getCents
-  } from "../cards.ScheduleOverview";
+import ScheduleOverview from "../cards.ScheduleOverview";
 
 describe("ScheduleOverview", () => {
   beforeEach(() => {
@@ -16,42 +11,11 @@ describe("ScheduleOverview", () => {
     reset();
   });
 
-  it("returns a '$' currency symbol", () => {
-    expect(getCurrencySymbol("$420.00")).toBeDefined();
-  });
-
-  it("returns a '$' currency symbol when none is provided", () => {
-    expect(getCurrencySymbol("420.00")).toBe("$");
-  });
-
-  it("returns a negative when one is provided", () => {
-    expect(getNegative("$-420.00")).toBeDefined();
-  });
-
-  it("doesn't return a negative when one isn't provided", () => {
-    expect(getNegative("$420.00")).toBeNull();
-  });
-
-  it("returns '420' dollars", () => {
-    expect(getDollars("$420.00")).toBe("420");
-  });
-
-  it("returns '0' dollars when none is provided", () => {
-    expect(getDollars("")).toBe("0");
-  });
-
-  it("returns '12' cents", () => {
-    expect(getCents("$420.12")).toBe("12");
-  });
-
-  it("returns '00' cents when none is provided", () => {
-    expect(getCents("420")).toBe("00");
-  });
-
   it("has an amount, fund, frequency, started, latest and onEditClick.", () => {
     const tree = renderer.create(
       <ScheduleOverview
         amount="$420.00"
+        baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
         started="Jun 15, 2015"
@@ -66,6 +30,7 @@ describe("ScheduleOverview", () => {
     const tree = renderer.create(
       <ScheduleOverview
         amount="$-420.00"
+        baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
         started="Jun 15, 2015"
@@ -80,6 +45,7 @@ describe("ScheduleOverview", () => {
     const tree = renderer.create(
       <ScheduleOverview
         amount="$420.00"
+        baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
         started="Jun 15, 2015"
@@ -94,6 +60,7 @@ describe("ScheduleOverview", () => {
     const tree = renderer.create(
       <ScheduleOverview
         amount="420.00"
+        baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
         started="Jun 15, 2015"
@@ -108,6 +75,7 @@ describe("ScheduleOverview", () => {
     const tree = renderer.create(
       <ScheduleOverview
         amount="$420"
+        baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
         started="Jun 15, 2015"
@@ -122,6 +90,21 @@ describe("ScheduleOverview", () => {
     const tree = renderer.create(
       <ScheduleOverview
         amount=""
+        baseHeadingSize="2"
+        fund="Step Up Fund"
+        frequency="Once A Month"
+        started="Jun 15, 2015"
+        onEditClick={jest.fn()}
+      />
+    )
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("falls back correctly if a base heading size isn't set", () => {
+    const tree = renderer.create(
+      <ScheduleOverview
+        amount="$420.00"
         fund="Step Up Fund"
         frequency="Once A Month"
         started="Jun 15, 2015"
