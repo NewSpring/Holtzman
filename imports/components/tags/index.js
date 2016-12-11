@@ -36,7 +36,13 @@ class TagWithoutData extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ((this.props.active || this.isInQueryString(nextProps)) && nextProps.canBeActive) {
+    if (
+        (this.props.active || this.isInQueryString(nextProps)) &&
+        nextProps.canBeActive &&
+        nextProps.active
+      ) {
+      this.setState({ isActive: true });
+    } else if (nextProps.active && nextProps.canBeActive && !this.props.active) {
       this.setState({ isActive: true });
     } else {
       this.setState({ isActive: false });

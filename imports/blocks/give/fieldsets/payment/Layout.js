@@ -79,7 +79,7 @@ type ILayout = {
   savedAccount: Object,
   savePayment: Function,
   shouldSaveState: boolean,
-  schedules: Object,
+  schedule: Object,
   toggle: Function,
   toggles?: string[],
   transactionType: string,
@@ -98,7 +98,7 @@ const Layout = ({
   savedAccount,
   savePayment,
   shouldSaveState,
-  schedules,
+  schedule,
   toggle,
   toggles,
   transactionType,
@@ -134,13 +134,13 @@ const Layout = ({
         savedAccount={savedAccount}
         savePayment={savePayment}
         shouldSaveState={shouldSaveState}
-        schedules={schedules}
+        schedule={schedule}
         transactionType={transactionType}
       />
       <SavePaymentInput
         saveName={saveName}
         savedAccount={savedAccount}
-        schedules={schedules}
+        schedule={schedule}
         shouldSaveState={shouldSaveState}
         payment={payment}
         transactionType={transactionType}

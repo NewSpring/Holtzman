@@ -12,8 +12,8 @@ const ScheduleThanks = ({ total, schedule }: IScheduleThanks) => {
   if (!schedule) return null;
   return (
     <p className="text-left">
-      Thank you for your contribution of {total}
-      starting on { moment(schedule.start).format("MMM D, YYYY") }
+      Thank you for your contribution of {total}{" "}
+      starting on { moment(schedule.start).format("MMM D, YYYY") }{" "}
       to NewSpring Church.
     </p>
   );
@@ -90,7 +90,7 @@ type ISuccess = {
   email: string,
   guest: boolean,
   onClick?: Function,
-  schedules?: Object[],
+  schedule?: Object[],
   additionalMessage?: string,
 };
 
@@ -99,10 +99,9 @@ const Success = ({
   email,
   guest,
   onClick,
-  schedules,
+  schedule,
   additionalMessage,
 }: ISuccess) => {
-  const schedule = (schedules && schedules.length > 0) ? schedules[0] : false;
   return (
     <div className="soft soft-double-ends push-double-top@anchored one-whole text-center">
       <div className="push-double-top">

@@ -8,7 +8,6 @@ import cloneDeep from "lodash.clonedeep";
 import { openUrl } from "../../../../util/inAppLink";
 
 import TransactionLayout from "./TransactionLayout";
-import ScheduleLayout from "./ScheduleLayout";
 import PaymentOptionsLayout from "./PaymentOptionsLayout";
 
 type IConfirm = {
@@ -24,7 +23,7 @@ type IConfirm = {
   savedAccounts: Object[],
   changeSavedAccount: Function,
   scheduleToRecover: boolean,
-  schedules: Object,
+  schedule: Object,
 }
 
 export default class Confirm extends Component {
@@ -114,23 +113,6 @@ export default class Confirm extends Component {
       );
     }
 
-    if (Object.keys(this.props.schedules).length) {
-      return (
-        <ScheduleLayout
-          changeAccounts={this.changeAccounts}
-
-          back={this.props.back}
-          goToStepOne={this.props.goToStepOne}
-          header={this.props.header}
-          payment={this.props.data.payment}
-          savedAccount={this.props.savedAccount}
-          schedules={this.props.schedules}
-          scheduleToRecover={this.props.scheduleToRecover}
-          total={this.props.total}
-        />
-      );
-    }
-
     const transactions = Object.keys(this.props.transactions).map((t) => (
       this.props.transactions[t]
     ));
@@ -145,7 +127,7 @@ export default class Confirm extends Component {
         payment={this.props.data.payment}
         personal={this.props.data.personal}
         savedAccount={this.props.savedAccount}
-        schedules={this.props.schedules}
+        schedule={this.props.schedule}
         scheduleToRecover={this.props.scheduleToRecover}
         total={this.props.total}
         transactions={transactions}

@@ -110,10 +110,10 @@ blockquote p {
 
 .tag--disabled {
   @extend .tag;
-  color: map-get($colors, dark-secondary);
+  color: map-get($colors, dark-tertiary);
   background-color: map-get($colors, light-secondary);
   &:hover {
-    color: map-get($colors, dark-secondary);
+    color: map-get($colors, dark-tertiary);
     background-color: map-get($colors, light-secondary);
   }
 }

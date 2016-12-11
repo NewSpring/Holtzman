@@ -6,7 +6,7 @@ type ISavePaymentCheckBox = {
   savedAccount: Object,
   savePayment: Function,
   shouldSaveState: boolean,
-  schedules: Object,
+  schedule: Object,
   transactionType: string,
 };
 
@@ -14,13 +14,13 @@ const SavePaymentCheckBox = ({
   savedAccount,
   savePayment,
   shouldSaveState,
-  schedules,
+  schedule,
   transactionType,
 }: ISavePaymentCheckBox) => {
   if (
     !savedAccount.id &&
     transactionType !== "guest" &&
-    Object.keys(schedules).length === 0 &&
+    !schedule.start &&
     !isIOS()
   ) {
     return (
