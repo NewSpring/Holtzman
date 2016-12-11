@@ -15,7 +15,7 @@ describe("with saved account and schedules", () => {
   const initalState = {
     ...initial,
     savedAccount: { id: 1 },
-    schedules: { 1: { } },
+    schedule: { start: new Date() },
   };
   const it = sagaHelper(submitPersonDetails(initalState));
 

@@ -8,7 +8,7 @@ import Schedules from "./Schedules";
 import SavedPayments from "./SavedPayments";
 
 const Layout = () => (
-  <div>
+  <div className="soft-sides@lap-and-up soft-half-top@lap-and-up soft-bottom">
     <SectionHeader
       title="Activity"
       link={

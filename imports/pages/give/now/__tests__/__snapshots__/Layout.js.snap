@@ -4,14 +4,14 @@ exports[`test renders loading version 1`] = `
     image="//s3.amazonaws.com/ns.assets/apollos/you_cant_outgive_god2x1.jpg"
     title="Give" />
   <div
-    className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    className="soft-double-sides@lap-and-up soft-ends@anchored soft background--light-primary"
     style={
       Object {
         "overflow": "visible",
       }
     }>
     <div
-      className="text-left soft-double-top@lap-and-up hard-left@lap-and-up soft-half-bottom soft@anchored ">
+      className="text-left soft-top@anchored hard-left@lap-and-up soft-half-bottom soft@anchored ">
       <div
         className="soft-double-ends@palm-wide-and-up soft-ends@palm">
         <div
@@ -27,22 +27,6 @@ exports[`test renders loading version 1`] = `
       </div>
     </div>
   </div>
-  <Link
-    className="visually--hidden@lap-and-up"
-    onlyActiveOnIndex={false}
-    style={Object {}}
-    to="/give/schedules">
-    <div
-      className="ratio--landscape@handheld background--fill"
-      style={
-        Object {
-          "backgroundImage": "url(//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_2x1.jpg)",
-        }
-      }>
-      <div
-        className="ratio__item" />
-    </div>
-  </Link>
   <div
     className="soft-half soft-sides@portable soft-double-sides@anchored">
     <h4
@@ -72,36 +56,20 @@ exports[`test renders not alive version 1`] = `
     image="//s3.amazonaws.com/ns.assets/apollos/you_cant_outgive_god2x1.jpg"
     title="Give" />
   <div
-    className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    className="soft-double-sides@lap-and-up soft-ends@anchored soft background--light-primary"
     style={
       Object {
         "overflow": "visible",
       }
     }>
     <div
-      className="text-left soft-double-top@lap-and-up hard-left@lap-and-up soft-half-bottom soft@anchored ">
+      className="text-left soft-top@anchored hard-left@lap-and-up soft-half-bottom soft@anchored ">
       <div
         className="soft-double-ends@palm-wide-and-up soft-ends@palm">
         <Offline />
       </div>
     </div>
   </div>
-  <Link
-    className="visually--hidden@lap-and-up"
-    onlyActiveOnIndex={false}
-    style={Object {}}
-    to="/give/schedules">
-    <div
-      className="ratio--landscape@handheld background--fill"
-      style={
-        Object {
-          "backgroundImage": "url(//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_2x1.jpg)",
-        }
-      }>
-      <div
-        className="ratio__item" />
-    </div>
-  </Link>
   <div
     className="soft-half soft-sides@portable soft-double-sides@anchored">
     <h4
@@ -135,14 +103,14 @@ exports[`test renders with props 1`] = `
     image="//s3.amazonaws.com/ns.assets/apollos/you_cant_outgive_god2x1.jpg"
     title="Give" />
   <div
-    className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary"
+    className="soft-double-sides@lap-and-up soft-ends@anchored soft background--light-primary"
     style={
       Object {
         "overflow": "visible",
       }
     }>
     <div
-      className="text-left soft-double-top@lap-and-up hard-left@lap-and-up soft-half-bottom soft@anchored ">
+      className="text-left soft-top@anchored hard-left@lap-and-up soft-half-bottom soft@anchored ">
       <div
         className="soft-double-ends@palm-wide-and-up soft-ends@palm">
         <Connect(CartContainer)
@@ -165,22 +133,6 @@ exports[`test renders with props 1`] = `
       </div>
     </div>
   </div>
-  <Link
-    className="visually--hidden@lap-and-up"
-    onlyActiveOnIndex={false}
-    style={Object {}}
-    to="/give/schedules">
-    <div
-      className="ratio--landscape@handheld background--fill"
-      style={
-        Object {
-          "backgroundImage": "url(//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_2x1.jpg)",
-        }
-      }>
-      <div
-        className="ratio__item" />
-    </div>
-  </Link>
   <div
     className="soft-half soft-sides@portable soft-double-sides@anchored">
     <h4

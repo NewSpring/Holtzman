@@ -21,9 +21,9 @@ exports[`test should render web action button 1`] = `
   className="btn soft-half-top one-whole"
   type="submit">
   <span>
-    Give using 6789
+    Give Using 6789
   </span>
-   
+     
   <div
     className="background--fill display-inline-block"
     style={

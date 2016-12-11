@@ -1,7 +1,7 @@
 import moment from "moment";
 
 const formatPersonDetails = (give) => {
-  const { data, transactions, total, schedules, savedAccount } = give;
+  const { data, transactions, total, schedule, savedAccount } = give;
 
   // here we format data for the NMI processing
   const joinedData = {
@@ -21,7 +21,7 @@ const formatPersonDetails = (give) => {
   const campusId = data.personal.campusId;
   joinedData["merchant-defined-field-2"] = campusId;
 
-  if (schedules && Object.keys(schedules).length) {
+  if (schedule && schedule.start) {
     // // @TODO allow custom start dates
     // joinedData["start-date"] = moment().format("YYYYMMDD")
     // @TODO allow number of payments
@@ -31,53 +31,50 @@ const formatPersonDetails = (give) => {
     };
 
     delete joinedData.amount;
-    // eslint-disable-next-line no-restricted-syntax, guard-for-in
-    for (const key in schedules) {
-      const schedule = schedules[key];
-      switch (schedule.frequency) {
-        case "One-Time":
-          joinedData.plan.payments = 1;
-          joinedData.plan["month-frequency"] = 12;
-          joinedData.plan["day-of-month"] = schedule.start ?
-            moment(schedule.start).date() :
-            moment().date()
-          ;
-          break;
-        case "Weekly":
-          joinedData.plan["day-frequency"] = 7;
-          break;
-        case "Bi-Weekly":
-          joinedData.plan["day-frequency"] = 14;
-          break;
-        // case "Twice a Month":
-        //   joinedData.plan["month-frequency"] =
-        //   break;
-        case "Monthly":
-          joinedData.plan["month-frequency"] = 1;
-          joinedData.plan["day-of-month"] = schedule.start ?
-            moment(schedule.start).date() :
-            moment().date()
-          ;
-          break;
-        default:
-          break;
-      }
-
-      joinedData["start-date"] = schedule.start ?
-        moment(schedule.start).format("YYYYMMDD") :
-        moment().add(1, "days").format("YYYYMMDD")
-      ;
-      joinedData["merchant-defined-field-3"] = joinedData["start-date"];
-
-      // eslint-disable-next-line no-restricted-syntax, guard-for-in
-      for (const transaction in transactions) {
-        joinedData["merchant-defined-field-1"] = transaction;
+    switch (schedule.frequency) {
+      case "One-Time":
+        joinedData.plan.payments = 1;
+        joinedData.plan["month-frequency"] = 12;
+        joinedData.plan["day-of-month"] = schedule.start ?
+          moment(schedule.start).date() :
+          moment().date()
+        ;
         break;
-      }
-
-      // @TODO support multiple accounts at once
-      break;
+      case "Weekly":
+        joinedData.plan["day-frequency"] = 7;
+        break;
+      case "Bi-Weekly":
+        joinedData.plan["day-frequency"] = 14;
+        break;
+      case "Monthly":
+        joinedData.plan["month-frequency"] = 1;
+        joinedData.plan["day-of-month"] = schedule.start ?
+          moment(schedule.start).date() :
+          moment().date()
+        ;
+        break;
+      default:
+        break;
     }
+
+    joinedData["start-date"] = schedule.start ?
+      moment(schedule.start).format("YYYYMMDD") :
+      moment().add(1, "days").format("YYYYMMDD")
+    ;
+    joinedData["merchant-defined-field-3"] = joinedData["start-date"];
+
+    // This isn't super well organized
+    // in the beginning we didn't support multiple accounts
+    // on a schedule
+    // now we do but we have to support existing builds so
+    // we create a comma sep string and split on heighliner
+    joinedData["merchant-defined-field-1"] = Object.keys(transactions).join(",");
+
+    // in order to line up the amounts with the funds, we store the amounts
+    // in a matching comma sep string
+    joinedData["merchant-defined-field-4"] = Object.keys(transactions).map((key) => (
+      transactions[key].value
+    )).join(",");
   } else if (transactions && Object.keys(transactions).length) {
     joinedData.product = [];
     // eslint-disable-next-line no-restricted-syntax, guard-for-in

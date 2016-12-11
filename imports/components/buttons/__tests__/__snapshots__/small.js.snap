@@ -160,6 +160,7 @@ exports[`SmallButton should accept disabled prop 1`] = `
       btn--disabled
       
     "
+    disabled={true}
     style={Object {}}>
     See All
   </button>
@@ -177,6 +178,7 @@ exports[`SmallButton should accept disabled prop 2`] = `
       btn--disabled
       
     "
+    disabled={true}
     onlyActiveOnIndex={false}
     style={Object {}}
     to="http://example.com">
@@ -186,6 +188,7 @@ exports[`SmallButton should accept disabled prop 2`] = `
         btn--disabled
         
       "
+      disabled={true}
       onClick={[Function]}
       style={Object {}}>
       See All

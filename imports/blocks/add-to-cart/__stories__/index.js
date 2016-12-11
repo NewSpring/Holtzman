@@ -38,6 +38,7 @@ story
       { name: text("Fund 1", "General Fund"), id: 1 },
       { name: text("Fund 2", "Building Fund"), id: 2 }
     ]
+    Meteor.userId = () => true;
     return (
       <Provider>
         <AddToCart accounts={accounts} />

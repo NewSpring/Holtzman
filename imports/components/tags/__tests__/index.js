@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
-import { TagWithoutData as Tag } from "../Tag";
+import { TagWithoutData as Tag } from "../";
 
 Meteor.isCordova = false;
 
@@ -192,7 +192,7 @@ it("isInQueryString returns query does not contain urlKey", () => {
   expect(result).toBe(false);
 });
 
-it.only("isInQueryString return true if query contains urlKey", () => {
+it("isInQueryString return true if query contains urlKey", () => {
   const wrapper = shallow(generateComponent());
   const props = {
     val: "testVal",

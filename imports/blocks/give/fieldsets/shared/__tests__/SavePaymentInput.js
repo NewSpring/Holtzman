@@ -4,7 +4,7 @@ import { SavePaymentInput } from "../";
 const defaultProps = {
   saveName: () => {},
   savedAccount: {},
-  schedules: {},
+  schedule: { start: null, },
   shouldSaveState: true,
   payment: {
     type: "ach",
@@ -59,7 +59,7 @@ it("does not render if guest checkout", () => {
 
 it("does not render if scheduling", () => {
   const result = renderer.create(generateComponent({
-    schedules: { "123": "123" },
+    schedule: { start: "now" },
   }));
   expect(result).toMatchSnapshot();
 });

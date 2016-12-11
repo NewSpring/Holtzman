@@ -11,7 +11,7 @@ type IActionButton = {
   completeGift: Function,
   payment: Object,
   savedAccount: Object,
-  schedules: Object,
+  schedule: Object,
   scheduleToRecover: boolean,
 };
 
@@ -19,7 +19,7 @@ const ActionButton = ({
   completeGift,
   payment,
   savedAccount,
-  schedules,
+  schedule,
   scheduleToRecover,
 }: IActionButton) => {
   if (isIOS()) {
@@ -47,10 +47,10 @@ const ActionButton = ({
       <ButtonText
         payment={payment}
         savedAccount={savedAccount}
-        schedules={schedules}
+        schedule={schedule}
         scheduleToRecover={scheduleToRecover}
       />
-      &nbsp;
+      &nbsp;&nbsp;&nbsp;
       <Icon
         cardType={
           cardType(payment, savedAccount)

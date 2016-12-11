@@ -1,0 +1,18 @@
+exports[`test renders with props 1`] = `
+<div>
+  <Component
+    active={false}
+    className={false}
+    clickAble={true}
+    label="foo"
+    onClick={[Function]}
+    val="bar" />
+  <Component
+    active={false}
+    className={false}
+    clickAble={true}
+    label="baz"
+    onClick={[Function]}
+    val="zoo" />
+</div>
+`;

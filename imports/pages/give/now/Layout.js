@@ -12,9 +12,9 @@ const Layout = ({ alive, accounts }) => (
   <div>
     <Meta title="Give" image="//s3.amazonaws.com/ns.assets/apollos/you_cant_outgive_god2x1.jpg" />
 
-    <div className="soft-double-sides@lap-and-up soft-double-ends@lap-and-up soft background--light-primary" style={{ overflow: "visible" }}>
+    <div className="soft-double-sides@lap-and-up soft-ends@anchored soft background--light-primary" style={{ overflow: "visible" }}>
 
-      <div className="text-left soft-double-top@lap-and-up hard-left@lap-and-up soft-half-bottom soft@anchored ">
+      <div className="text-left soft-top@anchored hard-left@lap-and-up soft-half-bottom soft@anchored ">
         <div className="soft-double-ends@palm-wide-and-up soft-ends@palm">
           {!alive && <Offline />}
           {alive && accounts.loading && (
@@ -26,17 +26,6 @@ const Layout = ({ alive, accounts }) => (
         </div>
       </div>
     </div>
-
-    <Link to="/give/schedules" className="visually--hidden@lap-and-up">
-      <div
-        className="ratio--landscape@handheld background--fill"
-        style={{
-          backgroundImage: "url(//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_2x1.jpg)",
-        }}
-      >
-        <div className="ratio__item" />
-      </div>
-    </Link>
 
     <div className="soft-half soft-sides@portable soft-double-sides@anchored">
 

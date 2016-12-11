@@ -94,7 +94,10 @@ export default class Checkbox extends React.Component {
         data-spec="input-wrapper"
       >
 
-        <h6 className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+        <h6
+          className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+          style={{ paddingTop: "3px" }}
+        >
           <small data-spec="input-label">
             {this.props.children}
           </small>

@@ -6,7 +6,7 @@ import gql from "graphql-tag";
 
 import Forms from "../../../components/forms";
 
-import Tag from "../components/Tag";
+import Tag from "../../../components/tags";
 
 const defaultTags = [];
 class FilterWithoutData extends Component {

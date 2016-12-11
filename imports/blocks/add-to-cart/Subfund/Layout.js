@@ -6,7 +6,7 @@ import { Meteor } from "meteor/meteor";
 import { css } from "aphrodite";
 
 import Forms from "../../../components/forms";
-import Styles from "../../add-schedule/styles-css";
+import Styles from "../styles-css";
 
 type ILayout = {
   accounts: Object,
@@ -28,40 +28,38 @@ const Layout = ({
   preFill,
 }: ILayout) => (
   <div>
-    <div className={`display-inline-block push-half-bottom h3 push-half-right ${active ? "text-dark-tertiary" : "text-light-tertiary"}`}>
-      and give to
+    <div className="display-inline-block push-half-bottom h3 push-half-right text-dark-primary">
+      and give
     </div>
 
-    <Forms.Select
-      classes={["soft-bottom", "display-inline-block", `${css(Styles.select)}`]}
-      inputClasses={`${active ? "text-dark-tertiary" : "text-light-tertiary"} outlined--dotted outlined--light h3 hard-top flush-bottom`}
-      items={accounts}
-      onChange={changeFund}
-      placeholder="select fund"
-      selected={fundId}
-      deselect
+    <Forms.Input
+      classes={["soft-bottom", "input--active", "display-inline-block"]}
+      defaultValue={preFill(fundId)}
+      format={changeAmount}
       hideLabel
-      includeBlank
+      inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-brand ${css(Styles["show-placeholder"])}`}
+      placeholder="$0.00"
+      style={{ maxWidth: "150px" }}
+      type={Meteor.isCordova ? "text" : "tel"}
+      value={inputVal}
     />
 
-    {active && (
-      <div className="display-block">
-        <h3 className={`${active ? "text-dark-tertiary" : "text-light-tertiary"} push-half-bottom push-half-right display-inline-block`}>
-          with
-        </h3>
-        <Forms.Input
-          classes={["soft-bottom", "input--active", "display-inline-block"]}
-          defaultValue={preFill(fundId)}
-          format={changeAmount}
-          hideLabel
-          inputClasses={`outlined--dotted outlined--light h3 hard-top flush-bottom text-dark-primary ${css(Styles["show-placeholder"])}`}
-          placeholder="$0.00"
-          style={{ maxWidth: "150px" }}
-          type={Meteor.isCordova ? "text" : "tel"}
-          value={inputVal}
-        />
-      </div>
-    )}
+    <div className="display-block">
+      <h3 className="text-dark-primary push-half-bottom push-half-right display-inline-block">
+        to
+      </h3>
+      <Forms.Select
+        classes={["soft-bottom", "display-inline-block", `${css(Styles.select)}`]}
+        inputClasses={`${active ? "text-brand" : "text-dark-tertiary"} outlined--dotted outlined--light h3 hard-top flush-bottom`}
+        items={accounts}
+        defaultValue={accounts[0].value}
+        onChange={changeFund}
+        placeholder="select fund"
+        selected={fundId}
+        hideLabel
+        includeBlank
+      />
+    </div>
   </div>
 );
 

@@ -35,8 +35,7 @@ Object {
 
 exports[`test clearSchedule 1`] = `
 Object {
-  "field": "field",
-  "id": 1,
+  "field": 1,
   "type": "GIVE.REMOVE_SCHEDULE_DATA",
 }
 `;
@@ -151,8 +150,7 @@ Object {
 
 exports[`test saveSchedule 1`] = `
 Object {
-  "id": 1,
-  "schedule": Object {},
+  "schedule": 1,
   "type": "GIVE.SAVE_SCHEDULE_DATA",
 }
 `;

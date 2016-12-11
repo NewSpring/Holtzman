@@ -21,7 +21,7 @@ export default function* submitPersonDetails(give, autoSubmit) {
     you only submit the order, not the charge, etc
 
   */
-  if (formattedData.savedAccount && Object.keys(give.schedules).length) {
+  if (formattedData.savedAccount && give.schedule.start) {
     return;
   }
 

@@ -1,6 +1,10 @@
 import renderer from "react-test-renderer";
 import TransactionLayout, { Header } from "../TransactionLayout";
 
+jest.mock("moment", () => (date) => ({
+  format: (format) => `${date} formatted as ${format}`,
+}));
+
 describe("Header", () => {
   const defaultProps = {
     override: null,
@@ -46,7 +50,7 @@ describe("TransactionLayout", () => {
       firstName: "Jim",
     },
     savedAccount: {},
-    schedules: {},
+    schedule: { start: null },
     scheduleToRecover: false,
     total: 12,
     transactions: [
@@ -66,6 +70,13 @@ describe("TransactionLayout", () => {
 
   it("should render with props", () => {
     const result = renderer.create(generateComponent());
+    expect(result).toMatchSnapshot();
+  });
+
+  it("should render with a schedule props", () => {
+    const result = renderer.create(generateComponent({
+      schedule: { start: "now", frequency: "who wants to know" }
+    }));
     expect(result).toMatchSnapshot();
   });
 });

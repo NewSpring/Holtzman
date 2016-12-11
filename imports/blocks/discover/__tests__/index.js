@@ -191,7 +191,7 @@ it("searchSubmit calls prevent default and all the search actions", () => {
   expect(searchActions.toggleLoading).toHaveBeenCalledTimes(1);
 
   mockPromise.then(() => {
-    expect(mockGetSearch).toHaveBeenCalledTimes(1);
+    expect(mockGetSearch).toHaveBeenCalledTimes(2);
   });
 });
 

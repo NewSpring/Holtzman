@@ -49,7 +49,7 @@ it("should accept multiple accounts through accounts prop", () => {
 
   //one additional for "select fund" default
   //one additional for blank?
-  expect(component.find("option").length).toEqual(4);
+  expect(component.find("option").length).toEqual(3);
 });
 
 

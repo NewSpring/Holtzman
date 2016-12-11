@@ -3,7 +3,10 @@ import { monetize } from "../../util/format/currency";
 import Forms from "../../components/forms";
 import CheckoutButtons from "../checkout-buttons";
 import SubFund from "./Subfund";
+import Schedule from "./Schedule";
 
+import Currency from "../../components/currency";
+import ButtonSmall from "../../components/buttons/small";
 
 type ILayout = {
   subfunds: Object[],
@@ -11,6 +14,11 @@ type ILayout = {
   total: number,
   changeAmount: Function,
   changeFund: Function,
+  accounts: Object[],
+  toggleSecondFund: Function,
+  authorized: boolean,
+  canCheckout: boolean,
+  setCanCheckout: Function,
 }
 
 export default ({
@@ -19,6 +27,11 @@ export default ({
   total,
   changeAmount,
   changeFund,
+  accounts,
+  toggleSecondFund,
+  authorized,
+  canCheckout,
+  setCanCheckout,
 }: ILayout) => (
   <div className="push-top@handheld soft-half-top@lap-and-up">
     <Forms.Form
@@ -39,18 +52,42 @@ export default ({
           />
         ))}
 
+        <div className="display-block one-whole soft-bottom">
+          {/* Add another fund */}
+          {accounts.length > 1 && subfunds.length < 2 && (
+            <ButtonSmall
+              className="btn--dark-secondary"
+              text="Add Another Fund"
+              onClick={toggleSecondFund}
+              disabled={!subfunds[0].amount}
+            />
+          )}
+
+          {/* Remove another fund */}
+          {accounts.length > 1 && subfunds.length === 2 && (
+            <ButtonSmall
+              className="btn--alert"
+              text="Remove Fund"
+              onClick={toggleSecondFund}
+            />
+          )}
+        </div>
+
+        {/* Schedule */}
+        <Schedule setCanCheckout={setCanCheckout} authorized={(total > 0) && authorized} />
+
         {/* Total information */}
-        <h3 className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
-          so my total is
+        <h3 className="display-inline-block text-dark-primary push-half-bottom push-half-right">
+          my total is
         </h3>
-        <h3 className="display-inline-block text-brand push-half-bottom">
-          {monetize(total, true)}
-        </h3>
+        <span className="display-inline-block text-dark-primary push-half-bottom">
+          <Currency baseHeadingSize="1" amount={monetize(total, true)} />
+        </span>
       </div>
 
       <div className="push-top">
         {/* Checkout Buttons */}
-        <CheckoutButtons disabled={total <= 0} />
+        <CheckoutButtons disabled={!canCheckout} />
       </div>
 
     </Forms.Form>

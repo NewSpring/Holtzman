@@ -255,27 +255,53 @@ exports[`test renders Confirm form 1`] = `
     className="flush soft-top@handheld scrollable soft-double-bottom">
     <div>
       <div
-        className="push-double@lap-and-up push">
-        <h4
-          className="text-center">
-          Hi 
-          ! Here are your contribution details.
-        </h4>
+        className="push-double-top@lap-and-up push">
+        <div
+          className="grid one-whole text-left flush">
+          <div
+            className="grid__item three-quarters text-left hard"
+            style={
+              Object {
+                "verticalAlign": "middle",
+              }
+            }>
+            <h3
+              className="flush-bottom">
+              Review Contribution
+            </h3>
+          </div>
+          <div
+            className="grid__item one-quarter text-right"
+            style={
+              Object {
+                "verticalAlign": "middle",
+              }
+            }>
+            <button
+              className="
+                btn btn--small@next
+                
+                btn--dark-secondary flush-bottom
+              "
+              disabled={undefined}
+              onClick={[Function]}
+              style={Object {}}>
+              Edit
+            </button>
+          </div>
+        </div>
       </div>
       <div
         className="soft-sides">
-        <h5
-          className="text-dark-secodary text-left">
-          <small>
-            <em>
-               Campus
-            </em>
-          </small>
-        </h5>
         <div
-          className="outlined--light outlined--bottom one-whole push-bottom" />
+          className="one-whole push-bottom" />
         <div
-          className="soft-ends hard-sides">
+          className="soft-half-ends push-bottom hard-sides outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderWidth": "1px",
+            }
+          }>
           <div
             className="grid"
             style={
@@ -302,20 +328,42 @@ exports[`test renders Confirm form 1`] = `
                   "verticalAlign": "middle",
                 }
               }>
-              <h3
-                className="text-primary flush">
-                $0.00
-              </h3>
+              <div
+                className="display-inline-block">
+                <div
+                  className="floating text-left text-dark-primary ">
+                  <h4
+                    className="floating__item flush"
+                    style={
+                      Object {
+                        "paddingRight": "5px",
+                      }
+                    }>
+                    $
+                  </h4>
+                  <h2
+                    className="floating__item flush">
+                    0
+                  </h2>
+                  <h4
+                    className="floating__item flush">
+                    .
+                    00
+                  </h4>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div
+          className="one-whole soft-half-top" />
         <button
           className="btn soft-half-top one-whole"
           type="submit">
           <span>
             Give
           </span>
-           
+             
           <div
             className="background--fill display-inline-block"
             style={
@@ -330,7 +378,7 @@ exports[`test renders Confirm form 1`] = `
             } />
         </button>
         <div
-          className="display-block soft-top text-left">
+          className="display-block soft-half-top text-center">
           <h6
             className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
             onClick={[Function]}
@@ -340,17 +388,6 @@ exports[`test renders Confirm form 1`] = `
               }
             }>
             Change Payment Accounts
-          </h6>
-          <br />
-          <h6
-            className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
-            onClick={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }>
-            Enter New Payment
           </h6>
         </div>
       </div>
@@ -661,7 +698,12 @@ exports[`test renders Payment form 1`] = `
           className="input checkbox"
           data-spec="input-wrapper">
           <h6
-            className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+            className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+            style={
+              Object {
+                "paddingTop": "3px",
+              }
+            }>
             <small
               data-spec="input-label">
               Save this payment for future contributions
@@ -953,8 +995,11 @@ exports[`test renders Success 1`] = `
       className="text-left">
       Thank you for your contribution of 
       $12.00
-       to NewSpring Church. We will email a receipt to 
-      test@test.com
+       
+      starting on 
+      Dec 11, 2016
+       
+      to NewSpring Church.
     </p>
     <p
       className="test-dark-tertiary text-left">

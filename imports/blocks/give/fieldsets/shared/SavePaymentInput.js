@@ -4,7 +4,7 @@ import Forms from "../../../../components/forms";
 type ISavePaymentInput = {
   saveName: Function,
   savedAccount: Object,
-  schedules: Object,
+  schedule: Object,
   shouldSaveState: boolean,
   payment: Object,
   transactionType: string,
@@ -13,7 +13,7 @@ type ISavePaymentInput = {
 const SavePaymentInput = ({
   saveName,
   savedAccount,
-  schedules,
+  schedule,
   shouldSaveState,
   payment,
   transactionType,
@@ -22,7 +22,7 @@ const SavePaymentInput = ({
     shouldSaveState &&
     !savedAccount.id &&
     transactionType !== "guest" &&
-    Object.keys(schedules).length === 0
+    !schedule.start
   ) {
     return (
       <Forms.Input

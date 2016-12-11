@@ -56,7 +56,7 @@ const Layout = ({
     errors,
     step,
     transactions,
-    schedules,
+    schedule,
     total,
     savedAccount,
     state,
@@ -67,8 +67,8 @@ const Layout = ({
   if (["loading", "error", "success"].indexOf(state) > -1) {
     switch (state) {
       case "loading":
-        copiedSchedules = { ...schedules };
-        return <Loading msg="We're Processing Your Contribution" />;
+        copiedSchedules = { ...schedule };
+        return <Loading isSchedule={copiedSchedules.start} />;
       case "error":
         return <Err msg={errors[Object.keys(errors)[0]]} goToStepOne={goToStepOne} />;
       case "success":
@@ -78,7 +78,7 @@ const Layout = ({
             email={data.personal.email}
             guest={transactionType === "guest"}
             onClick={goToAccounts}
-            schedules={copiedSchedules}
+            schedule={copiedSchedules}
           />
         );
       default:
@@ -112,7 +112,7 @@ const Layout = ({
         campuses={campuses}
         states={states}
         countries={countries}
-        schedules={schedules}
+        schedule={schedule}
         goToStepOne={goToStepOne}
         savedAccounts={savedPayments}
         changeSavedAccount={changeSavedAccount}

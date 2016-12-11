@@ -54,13 +54,10 @@ export const initial = {
     // <accountId>: Number // <accountId>: $ of gift
   },
 
-  // schedules to create
-  schedules: {
-    // <id> : { (in Rock if it exists), otherwise fund id
-    //   start: null,  Date (YYYYMMDD),
-    //   payments: null,  future feature for pledges
-    //   frequency: null  String of value from Rock
-    // }
+  schedule: {
+    start: null,  // Date (YYYYMMDD)
+    // payments: null,  future feature for pledges
+    frequency: null, // String of value from Rock
   },
 
   scheduleToRecover: null,
@@ -156,7 +153,7 @@ export default createReducer(initial, {
         step: initial.step,
         total: initial.total,
         transactions: initial.transactions,
-        schedules: initial.schedules,
+        schedule: initial.schedule,
         url: initial.url,
         data: initial.data,
         success: initial.success,
@@ -170,64 +167,33 @@ export default createReducer(initial, {
 
 
   [types.SAVE_SCHEDULE_DATA](state, action) {
-    if (!action.id) {
-      return state;
-    }
-
-    const newState = { ...state };
-
-    if (newState.schedules[action.id]) {
-      newState.schedules[action.id] = { ...newState.schedules[action.id], ...action.schedule };
-    } else {
-      newState.schedules[action.id] = action.schedule;
-    }
-
-    // @TODO validation on new data
-    return newState;
-  },
-
-
-  [types.REMOVE_SCHEDULE](state, action) {
-    if (!action.id) {
-      return state;
-    }
-
-    const newState = { ...state };
-
-    delete newState.schedules[action.id];
-
-    // @TODO validation on new data
-    return { ...state, ...newState };
-  },
-
-  [types.REMOVE_SCHEDULE_DATA](state, action) {
-    if (!action.field || !action.id) {
-      return state;
-    }
-
-    return {
-      ...state,
+    return { ...state,
       ...{
-        schedules: {
-          ...state.schedules,
-          ...{
-            [action.id]: {
-              ...state.schedules[action.id],
-              ...{
-                [state.schedule[action.field]]: null,
-              },
-            },
-          },
+        schedule: {
+          ...state.schedule,
+          ...action.schedule,
         },
       },
     };
+  },
+
+
+  [types.REMOVE_SCHEDULE](state) {
+    // @TODO validation on new data
+    return { ...state, ...{ schedule: {} } };
+  },
+
+  [types.REMOVE_SCHEDULE_DATA](state, action) {
+    const newState = { ...state };
+    delete newState.schedule[action.field];
+    return newState;
   },
 
   [types.CLEAR_SCHEDULES](state) {
     return {
       ...state,
       ...{
-        schedules: { },
+        schedule: { },
       },
     };
   },

@@ -9,7 +9,12 @@ exports[`test renders with props 1`] = `
   className="input checkbox"
   data-spec="input-wrapper">
   <h6
-    className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+    className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    style={
+      Object {
+        "paddingTop": "3px",
+      }
+    }>
     <small
       data-spec="input-label">
       Save this payment for future contributions

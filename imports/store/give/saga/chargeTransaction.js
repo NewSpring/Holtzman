@@ -31,7 +31,7 @@ export default function* chargeTransaction({ state }) {
 
   // if you have a saved account, NMI lets you "order" a schedule
   // instead of order + charge
-  if (formattedData.savedAccount && Object.keys(give.schedules).length) {
+  if (formattedData.savedAccount && give.schedule.start) {
     saved = true;
   } else {
     let store = yield select();
@@ -55,7 +55,7 @@ export default function* chargeTransaction({ state }) {
   // get the token and name of the saved account
   const token = give.url.split("/").pop();
 
-  if (Object.keys(give.schedules).length) {
+  if (give.schedule.start) {
     // if there is not a saved account, charge the order
     if (!formattedData.savedAccount) {
       if (give.data.payment.type === "cc") {
@@ -71,7 +71,7 @@ export default function* chargeTransaction({ state }) {
   }
 
 
-  if (give.scheduleToRecover && Object.keys(give.schedules).length) {
+  if (give.scheduleToRecover && give.schedule.start) {
     id = give.scheduleToRecover;
   }
 

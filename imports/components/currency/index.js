@@ -3,6 +3,7 @@
 type ICurrency = {
   amount: string,
   baseHeadingSize?: string,
+  className?: string,
 };
 
 // eslint-disable-next-line max-len
@@ -29,8 +30,9 @@ export const currencySizeCalc = (baseHeadingSize:string) => {
 const Currency = ({
   amount,
   baseHeadingSize,
+  className,
 }: ICurrency) => (
-  <div className="floating text-left text-dark-primary">
+  <div className={`floating text-left text-dark-primary ${className || ""}`}>
     {currencySizeCalc(baseHeadingSize || "2")}
     <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(amount)}</ReducedHeadingSize>
     {getNegative(amount) && <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(amount)}</ReducedHeadingSize>}

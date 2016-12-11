@@ -1,6 +1,6 @@
 exports[`Currency correctly returns a negative value. 1`] = `
 <div
-  className="floating text-left text-dark-primary">
+  className="floating text-left text-dark-primary ">
   <h4
     className="floating__item flush"
     style={
@@ -33,7 +33,7 @@ exports[`Currency correctly returns a negative value. 1`] = `
 
 exports[`Currency correctly returns when a heading size is provided. 1`] = `
 <div
-  className="floating text-left text-dark-primary">
+  className="floating text-left text-dark-primary ">
   <h4
     className="floating__item flush"
     style={
@@ -57,7 +57,7 @@ exports[`Currency correctly returns when a heading size is provided. 1`] = `
 
 exports[`Currency correctly returns when no amount is provided. 1`] = `
 <div
-  className="floating text-left text-dark-primary">
+  className="floating text-left text-dark-primary ">
   <h4
     className="floating__item flush"
     style={
@@ -81,7 +81,7 @@ exports[`Currency correctly returns when no amount is provided. 1`] = `
 
 exports[`Currency correctly returns when no cents are provided. 1`] = `
 <div
-  className="floating text-left text-dark-primary">
+  className="floating text-left text-dark-primary ">
   <h4
     className="floating__item flush"
     style={
@@ -105,7 +105,7 @@ exports[`Currency correctly returns when no cents are provided. 1`] = `
 
 exports[`Currency correctly returns when no currency symbol is provided. 1`] = `
 <div
-  className="floating text-left text-dark-primary">
+  className="floating text-left text-dark-primary ">
   <h4
     className="floating__item flush"
     style={
@@ -129,7 +129,7 @@ exports[`Currency correctly returns when no currency symbol is provided. 1`] = `
 
 exports[`Currency correctly returns when no heading is provided. 1`] = `
 <div
-  className="floating text-left text-dark-primary">
+  className="floating text-left text-dark-primary ">
   <h4
     className="floating__item flush"
     style={
@@ -153,7 +153,7 @@ exports[`Currency correctly returns when no heading is provided. 1`] = `
 
 exports[`Currency properly returns a positive number 1`] = `
 <div
-  className="floating text-left text-dark-primary">
+  className="floating text-left text-dark-primary ">
   <h4
     className="floating__item flush"
     style={

@@ -114,6 +114,7 @@ const GlobalData = createContainer(({ dispatch, client }) => {
   }
 
   if (userId) {
+    dispatch(accountsActions.authorize(true));
     hasBeenSignedIn = true;
 
     // Load in topics from user profile

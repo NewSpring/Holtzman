@@ -4,7 +4,9 @@ import { CartContainerWithoutData as CartContainer } from "../";
 import { SubFundWithoutData as SubFund } from "../Subfund";
 
 jest.mock("../Subfund", () => jest.fn(() => <div />));
+jest.mock("../Schedule", () => jest.fn(() => <div />));
 jest.mock("../../checkout-buttons", () => jest.fn(() => <div />));
+jest.mock("../../../components/tags", () => jest.fn(() => <span />));
 
 const generateComponent = (additionalProps = {}) => {
   const defaultProps = {
@@ -177,7 +179,7 @@ describe ("CartContainer > Class Methods", () => {
         clearTransaction,
       }));
       const changeFund = component.instance().changeFund;
-      changeFund(1, 2);
+      changeFund(1, 1);
       expect(clearTransaction).toBeCalledWith(1);
     });
 

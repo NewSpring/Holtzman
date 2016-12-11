@@ -110,10 +110,10 @@ blockquote p {
 
 .tag--disabled {
   @extend .tag;
-  color: map-get($colors, dark-secondary);
+  color: map-get($colors, dark-tertiary);
   background-color: map-get($colors, light-secondary);
   &:hover {
-    color: map-get($colors, dark-secondary);
+    color: map-get($colors, dark-tertiary);
     background-color: map-get($colors, light-secondary);
   }
 }
@@ -158,11 +158,21 @@ blockquote p {
   }
 }
 
-.btn--small\@next {
+.btn--small\@next,
+.btn--small\@next:disabled {
   @extend %btn;
   @extend h7;
 
   //5 10 3.5
   padding: ($button-height * .1) ($button-height * .3) ($button-height * .1) - 1.5;
   border: 2px solid;
+}
+
+
+input[type=checkbox] + label:before {
+  border: 2px solid #858585;
+}
+
+input[type=checkbox]:checked + label:before {
+  border: 2px solid #6bac43;
 }
