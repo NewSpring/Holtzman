@@ -38,7 +38,7 @@ const Primary = ({ active, fundId, accounts, preFill, changeFund, changeAmount }
       to
     </h3>
     {/* temporary hack */}
-    <style>{`.input--active select { color: #6bac43 }`}</style>
+    <style>{".input--active select { color: #6bac43 }"}</style>
     <Forms.Select
       items={accounts}
       name="select-account"

@@ -72,9 +72,9 @@ const formatPersonDetails = (give) => {
 
     // in order to line up the amounts with the funds, we store the amounts
     // in a matching comma sep string
-    joinedData["merchant-defined-field-4"] = Object.keys(transactions).map((key) => {
-      return transactions[key].value;
-    }).join(",");
+    joinedData["merchant-defined-field-4"] = Object.keys(transactions).map((key) => (
+      transactions[key].value
+    )).join(",");
   } else if (transactions && Object.keys(transactions).length) {
     joinedData.product = [];
     // eslint-disable-next-line no-restricted-syntax, guard-for-in

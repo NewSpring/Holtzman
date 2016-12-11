@@ -101,26 +101,24 @@ const Success = ({
   onClick,
   schedule,
   additionalMessage,
-}: ISuccess) => {
-  return (
-    <div className="soft soft-double-ends push-double-top@anchored one-whole text-center">
-      <div className="push-double-top">
-        <SuccessIcon />
-        <h3 className="text-primary push-ends">Success!</h3>
+}: ISuccess) => (
+  <div className="soft soft-double-ends push-double-top@anchored one-whole text-center">
+    <div className="push-double-top">
+      <SuccessIcon />
+      <h3 className="text-primary push-ends">Success!</h3>
 
-        <ScheduleThanks total={total} schedule={schedule} />
+      <ScheduleThanks total={total} schedule={schedule} />
 
-        <OneTimeThanks total={total} email={email} schedule={schedule} />
+      <OneTimeThanks total={total} email={email} schedule={schedule} />
 
-        <AdditionalMessage additionalMessage={additionalMessage} />
+      <AdditionalMessage additionalMessage={additionalMessage} />
 
-        <CreateAccountFromGuest guest={guest} onClick={onClick} />
+      <CreateAccountFromGuest guest={guest} onClick={onClick} />
 
-        <ContactUs />
-      </div>
+      <ContactUs />
     </div>
-  );
-};
+  </div>
+);
 
 export default Success;
 

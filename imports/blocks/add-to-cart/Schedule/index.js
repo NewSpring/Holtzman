@@ -103,7 +103,7 @@ class Schedule extends Component {
       this.fixPickerPosition();
     }, 200);
 
-    console.log(this.state);
+    // console.log(this.state);
     if (!this.state.start) return false;
     return true;
   }

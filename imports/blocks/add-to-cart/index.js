@@ -270,6 +270,7 @@ class CartContainer extends Component {
         subfunds.push(newSubfund);
       } else {
         // reset the accounts in the first subfund
+        // eslint-disable-next-line
         subfunds[0].accounts = [...this.props.accounts]
           .map((x) => ({ label: x.name, value: x.id }));
         // remove second subfund
