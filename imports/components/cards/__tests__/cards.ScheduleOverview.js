@@ -54,8 +54,8 @@ describe("ScheduleOverview", () => {
         amount="$420.00"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Jun 15, 2015"
-        latest="Nov 15, 2016"
+        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
+        latest="Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)"
         onEditClick={jest.fn()}
       />
     );
@@ -68,8 +68,8 @@ describe("ScheduleOverview", () => {
         amount="$-420.00"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Jun 15, 2015"
-        latest="Nov 15, 2016"
+        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
+        latest="Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)"
         onEditClick={jest.fn()}
       />
     );
@@ -82,7 +82,7 @@ describe("ScheduleOverview", () => {
         amount="$420.00"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Jun 15, 2015"
+        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
         onEditClick={jest.fn()}
       />
     )
@@ -96,7 +96,7 @@ describe("ScheduleOverview", () => {
         amount="420.00"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Jun 15, 2015"
+        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
         onEditClick={jest.fn()}
       />
     )
@@ -110,7 +110,7 @@ describe("ScheduleOverview", () => {
         amount="$420"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Jun 15, 2015"
+        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
         onEditClick={jest.fn()}
       />
     )
@@ -124,7 +124,7 @@ describe("ScheduleOverview", () => {
         amount=""
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Jun 15, 2015"
+        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
         onEditClick={jest.fn()}
       />
     )

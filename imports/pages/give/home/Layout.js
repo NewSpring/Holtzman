@@ -4,6 +4,7 @@ import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
 
 import Activity from "./Activity";
+import Schedules from "./Schedules";
 
 const Layout = () => (
   <div>
@@ -18,6 +19,9 @@ const Layout = () => (
       }
     />
     <Activity />
+
+    <Schedules />
+
   </div>
 );
 
