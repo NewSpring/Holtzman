@@ -6,25 +6,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import YearToDate from "../../../components/cards/cards.YearToDate";
 
-const mockTotals = {
-  data: [
-    { month: "January", amount: 0, tick: "J" },
-    { month: "February", amount: 0, tick: "F" },
-    { month: "March", amount: 0, tick: "M" },
-    { month: "April", amount: 0, tick: "A" },
-    { month: "May", amount: 0, tick: "M" },
-    { month: "June", amount: 0, tick: "J" },
-    { month: "July", amount: 0, tick: "J" },
-    { month: "August", amount: 0, tick: "A" },
-    { month: "September", amount: 0, tick: "S" },
-    { month: "October", amount: 0, tick: "O" },
-    { month: "November", amount: 0, tick: "N" },
-    { month: "December", amount: 0, tick: "D" },
-  ],
-};
-
 const graphSettings = {
-  ...mockTotals,
   lineColor: "#6bac43",
   lineWidth: "3",
   dotColor: "#6bac43",
@@ -49,6 +31,7 @@ const SUMMARY_QUERY = gql`
       name
       transactions(start: $start, end: $end) {
         id
+        date
         details {
           amount
         }
@@ -76,15 +59,11 @@ type IGivingSummary = {
 export class GivingSummary extends Component {
   props: IGivingSummary;
 
-  formatGivingSummaryData():Object {
-    if (!this.props.summaryData
-      || !this.props.summaryData.accounts
-      || !Array.isArray(this.props.summaryData.accounts)) return null;
+  constructor() {
+    super();
 
-    const accounts = this.props.summaryData.accounts;
-
-    // this is the graphData object
-    const totals = {
+    this.state = {
+      accounts: {},
       data: [
         { month: "January", amount: 0, tick: "J" },
         { month: "February", amount: 0, tick: "F" },
@@ -100,8 +79,38 @@ export class GivingSummary extends Component {
         { month: "December", amount: 0, tick: "D" },
       ],
     };
+  }
 
-    return totals;
+  componentWillReceiveProps(nextProps) {
+    let graphData;
+    if (nextProps.summaryData.loading === false) {
+      graphData = {
+        ...this.formatGivingSummaryData(nextProps.summaryData.accounts),
+        ...graphSettings,
+      };
+    }
+    console.log(nextProps);
+    console.log("state", this.state);
+  }
+
+  formatGivingSummaryData(data):Object {
+    data.map((account) => {
+      let accountTotal = account.total;
+      let monthTotals = [];
+      // add this account's total to state
+      // this.setState(
+      //   (prevState) => {
+      //     const newState = prevState;
+      //     newState.accounts[account.name] = account.total;
+      //     return newState;
+      //   }
+      // );
+      account.transactions.map((transaction) => {
+
+      });
+    });
+
+    return this.state.data;
   }
 
   renderGivingSummary = (data) => {
@@ -126,14 +135,10 @@ export class GivingSummary extends Component {
       || this.props.summaryData.accounts.length === 0
     ) return null;
 
-    let graphData;
-    if (this.props.summaryData.loading === false) {
-      graphData = { ...this.formatGivingSummaryData(), ...graphSettings };
-    }
-
     return (
       <div>
-        {graphData ? this.renderGivingSummary(graphData) : null}
+        { /*graphData ? this.renderGivingSummary(graphData) : null*/ }
+        hello
       </div>
     );
   }
