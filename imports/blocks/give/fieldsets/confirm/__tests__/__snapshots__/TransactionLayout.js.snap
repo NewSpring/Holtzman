@@ -89,7 +89,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
               }
             }>
             <div
-              className="floating text-left text-dark-primary display-inline-block">
+              className="floating text-dark-primary text-left display-inline-block">
               <h6
                 className="floating__item flush"
                 style={
@@ -149,7 +149,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
               }
             }>
             <div
-              className="floating text-left text-dark-primary display-inline-block">
+              className="floating text-dark-primary text-left display-inline-block">
               <h6
                 className="floating__item flush"
                 style={
@@ -248,7 +248,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
           <div
             className="display-inline-block">
             <div
-              className="floating text-left text-dark-primary ">
+              className="floating text-dark-primary text-left">
               <h4
                 className="floating__item flush"
                 style={
@@ -359,7 +359,7 @@ exports[`TransactionLayout should render with props 1`] = `
               }
             }>
             <div
-              className="floating text-left text-dark-primary display-inline-block">
+              className="floating text-dark-primary text-left display-inline-block">
               <h6
                 className="floating__item flush"
                 style={
@@ -419,7 +419,7 @@ exports[`TransactionLayout should render with props 1`] = `
               }
             }>
             <div
-              className="floating text-left text-dark-primary display-inline-block">
+              className="floating text-dark-primary text-left display-inline-block">
               <h6
                 className="floating__item flush"
                 style={
@@ -479,7 +479,7 @@ exports[`TransactionLayout should render with props 1`] = `
           <div
             className="display-inline-block">
             <div
-              className="floating text-left text-dark-primary ">
+              className="floating text-dark-primary text-left">
               <h4
                 className="floating__item flush"
                 style={

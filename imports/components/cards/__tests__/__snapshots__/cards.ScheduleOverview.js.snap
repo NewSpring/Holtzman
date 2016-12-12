@@ -15,7 +15,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary ">
+      className="floating text-dark-primary text-left">
       <h4
         className="floating__item flush"
         style={
@@ -113,7 +113,7 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary ">
+      className="floating text-dark-primary text-left">
       <h4
         className="floating__item flush"
         style={
@@ -182,7 +182,7 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary ">
+      className="floating text-dark-primary text-left">
       <h4
         className="floating__item flush"
         style={
@@ -251,7 +251,7 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary ">
+      className="floating text-dark-primary text-left">
       <h4
         className="floating__item flush"
         style={
@@ -320,7 +320,7 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary ">
+      className="floating text-dark-primary text-left">
       <h4
         className="floating__item flush"
         style={
@@ -389,7 +389,7 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary ">
+      className="floating text-dark-primary text-left">
       <h4
         className="floating__item flush"
         style={
@@ -458,7 +458,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest and on
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary ">
+      className="floating text-dark-primary text-left">
       <h4
         className="floating__item flush"
         style={
