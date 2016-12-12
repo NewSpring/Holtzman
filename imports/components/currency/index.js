@@ -5,8 +5,7 @@ type ICurrency = {
   baseHeadingSize?: string,
   className?: string,
   textColor?: string,
-  wrapperClasses?: string,
-  roundCurrency?: string,
+  roundCurrency?: bool,
 };
 
 // eslint-disable-next-line max-len
@@ -16,9 +15,9 @@ export const getCurrencySymbol = (amount:string) => amount.match(currencySymbolR
 export const getNegative = (amount:string) => amount.match(/-/);
 export const getDollars = (
   amount:string,
-  roundCurrency?: string
+  roundCurrency?: bool,
 ): string => {
-  if (roundCurrency === "true") {
+  if (roundCurrency === true) {
     const integerAmount = parseFloat(amount.replace(currencySymbolRegex, "").replace("-", "") || "00.00");
     const roundedAmount = Math.round(integerAmount);
     return roundedAmount.toString();
@@ -40,7 +39,7 @@ export const currencySizeCalc = (baseHeadingSize:string) => {
   ReducedHeadingSize = `h${reducedHeadingResult}`;
 };
 
-const textColorClass = (
+export const textColorClass = (
   textColor?: string,
 ): string => {
   if (textColor === "light") {
@@ -55,10 +54,9 @@ const Currency = ({
   baseHeadingSize,
   className,
   textColor,
-  wrapperClasses,
   roundCurrency,
 }: ICurrency) => (
-  <div className={`floating ${wrapperClasses || "text-left"} ${textColorClass(textColor)} ${className || ""}`}>
+  <div className={`floating ${textColorClass(textColor)} ${className || ""}`}>
     {currencySizeCalc(baseHeadingSize || "2")}
     <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(amount)}</ReducedHeadingSize>
     {getNegative(amount) && <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(amount)}</ReducedHeadingSize>}
