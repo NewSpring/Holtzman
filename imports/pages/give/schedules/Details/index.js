@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
+import Authorized from "../../../../blocks/authorzied";
+
 import {
   nav as navActions,
   modal as modalActions,
@@ -23,7 +25,6 @@ class DetailsWithoutData extends Component {
     }),
     entries: PropTypes.object,
     cancel: PropTypes.func.isRequired,
-    setRightProps: PropTypes.func,
   }
 
   state = {
@@ -33,9 +34,6 @@ class DetailsWithoutData extends Component {
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
-    this.props.setRightProps({
-      background: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg",
-    });
   }
 
   componentDidMount() {
@@ -51,7 +49,6 @@ class DetailsWithoutData extends Component {
       this.props.dispatch(giveActions.deleteSchedule(this.state.removed));
     }
   }
-
 
   stop = (e) => {
     e.preventDefault();
@@ -178,7 +175,7 @@ const withCancelSchedule = graphql(CANCEL_SCHEDULE_QUERY, {
   }),
 });
 
-export default connect()(
+const Details = connect()(
   withEntries(
     withScheduleTransaction(
       withCancelSchedule(
@@ -187,6 +184,19 @@ export default connect()(
     )
   )
 );
+
+const Routes = [
+  {
+    path: "schedules/:id",
+    component: Authorized,
+    indexRoute: { component: Details },
+  },
+];
+
+export default {
+  Details,
+  Routes,
+};
 
 export {
   DetailsWithoutData,

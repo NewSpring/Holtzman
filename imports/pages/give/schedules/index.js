@@ -4,18 +4,14 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Meteor } from "meteor/meteor";
 
-import Authorized from "../../../blocks/authorzied";
-
 import {
   modal as modalActions,
   header as headerActions,
   give as giveActions,
 } from "../../../store";
 
-import Details from "./Details";
 import Layout from "./Layout";
 import Confirm from "./Details/Confirm";
-import Recover from "./Recover";
 
 class TemplateWithoutData extends Component {
 
@@ -154,16 +150,6 @@ const Template = connect(mapStateToProps)(
 
 const Routes = [
   { path: "schedules", component: Template, onEnter: (nextState: Object, replace: Function) => replace("/give/home") },
-  {
-    path: "schedules/transfer",
-    component: Authorized,
-    indexRoute: { component: Recover },
-  },
-  {
-    path: "schedules/:id",
-    component: Authorized,
-    indexRoute: { component: Details },
-  },
 ];
 
 export default {
