@@ -131,24 +131,28 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               }>
               Edit
             </button>
-            <div
-              className="floating text-left text-dark-primary">
-              <h4
-                className="floating__item flush"
-                style={
-                  Object {
-                    "paddingRight": "5px",
-                  }
-                }>
-                $
-              </h4>
-              <h2
-                className="floating__item flush">
-                20
-              </h2>
-              <h4
-                className="floating__item flush" />
-            </div>
+            <Currency
+              amount="20"
+              baseHeadingSize="2">
+              <div
+                className="floating text-left text-dark-primary ">
+                <h4
+                  className="floating__item flush"
+                  style={
+                    Object {
+                      "paddingRight": "5px",
+                    }
+                  }>
+                  $
+                </h4>
+                <h2
+                  className="floating__item flush">
+                  20
+                </h2>
+                <h4
+                  className="floating__item flush" />
+              </div>
+            </Currency>
             <div
               className="floating text-left push-bottom">
               <h5
@@ -222,24 +226,28 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               }>
               Edit
             </button>
-            <div
-              className="floating text-left text-dark-primary">
-              <h4
-                className="floating__item flush"
-                style={
-                  Object {
-                    "paddingRight": "5px",
-                  }
-                }>
-                $
-              </h4>
-              <h2
-                className="floating__item flush">
-                100
-              </h2>
-              <h4
-                className="floating__item flush" />
-            </div>
+            <Currency
+              amount="100"
+              baseHeadingSize="2">
+              <div
+                className="floating text-left text-dark-primary ">
+                <h4
+                  className="floating__item flush"
+                  style={
+                    Object {
+                      "paddingRight": "5px",
+                    }
+                  }>
+                  $
+                </h4>
+                <h2
+                  className="floating__item flush">
+                  100
+                </h2>
+                <h4
+                  className="floating__item flush" />
+              </div>
+            </Currency>
             <div
               className="floating text-left push-bottom">
               <h5
@@ -313,24 +321,28 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               }>
               Edit
             </button>
-            <div
-              className="floating text-left text-dark-primary">
-              <h4
-                className="floating__item flush"
-                style={
-                  Object {
-                    "paddingRight": "5px",
-                  }
-                }>
-                $
-              </h4>
-              <h2
-                className="floating__item flush">
-                50
-              </h2>
-              <h4
-                className="floating__item flush" />
-            </div>
+            <Currency
+              amount="50"
+              baseHeadingSize="2">
+              <div
+                className="floating text-left text-dark-primary ">
+                <h4
+                  className="floating__item flush"
+                  style={
+                    Object {
+                      "paddingRight": "5px",
+                    }
+                  }>
+                  $
+                </h4>
+                <h2
+                  className="floating__item flush">
+                  50
+                </h2>
+                <h4
+                  className="floating__item flush" />
+              </div>
+            </Currency>
             <div
               className="floating text-left push-bottom">
               <h5
