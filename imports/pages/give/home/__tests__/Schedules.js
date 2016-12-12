@@ -7,21 +7,21 @@ const mockSchedules = {
   scheduledTransactions: [
     {
       "id": "12345678",
-      "start": "Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)",
+      "start": "2016-03-16",
       "details": [{ "account": { "name": "General Fund" }, "amount": 20 }],
-      "transactions": [{"date": "Tue Mar 17 2016 20:00:00 GMT-0400 (EDT)"}],
+      "transactions": [{"date": "2016-03-17"}],
       "schedule": { "description": "One Time" }
     },
     {
       "id": "7654",
-      "start": "Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)",
+      "start": "2016-03-16",
       "details": [{ "account": { "name": "Step Up Fund" }, "amount": 100 }],
-      "transactions": [{"date": "Tue Mar 18 2016 20:00:00 GMT-0400 (EDT)"}],
+      "transactions": [{"date": "2016-03-18"}],
       "schedule": { "description": "Once a Month" }
     },
     {
       "id": "8743456",
-      "start": "Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)",
+      "start": "2016-03-16",
       "details": [{ "account": { "name": "Christmas Offering" }, "amount": 50 }],
       "transactions": [],
       "schedule": { "description": "One Time" }

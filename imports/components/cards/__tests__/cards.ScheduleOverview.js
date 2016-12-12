@@ -1,11 +1,16 @@
 import renderer from "react-test-renderer";
 import { reset } from "aphrodite/lib/inject";
-import ScheduleOverview,
-  { getCurrencySymbol,
-    getNegative,
-    getDollars,
-    getCents
-  } from "../cards.ScheduleOverview";
+import ScheduleOverview, {
+  getCurrencySymbol,
+  getNegative,
+  getDollars,
+  getCents
+} from "../cards.ScheduleOverview";
+
+  jest.mock("moment", () => (date) => ({
+  format: (style) => `${date || "now"}.format(${style})`,
+}));
+
 
 describe("ScheduleOverview", () => {
   beforeEach(() => {

@@ -4,7 +4,7 @@ exports[`GivingActivity should render with data 1`] = `
     Object {
       "userFeed": Array [
         Object {
-          "date": "Thu Dec 01 2016 08:44:51 GMT-0500 (EST)",
+          "date": "2016-12-01",
           "details": Array [
             Object {
               "account": Object {
@@ -20,7 +20,7 @@ exports[`GivingActivity should render with data 1`] = `
           "summary": "Reference Number: 12345",
         },
         Object {
-          "date": "Tue Nov 01 2016 07:53:00 GMT-0400 (EDT)",
+          "date": "2016-11-01",
           "details": Array [
             Object {
               "account": Object {
@@ -36,7 +36,7 @@ exports[`GivingActivity should render with data 1`] = `
           "summary": "Reference Number: 2355654",
         },
         Object {
-          "date": "Mon Oct 03 2016 07:55:09 GMT-0400 (EDT)",
+          "date": "2016-10-03",
           "details": Array [
             Object {
               "account": Object {
@@ -63,7 +63,7 @@ exports[`GivingActivity should render with data 1`] = `
   <div
     className="soft-half hard-top">
     <Activity
-      date="Tue Nov 01 2016 07:53:00 GMT-0400 (EDT)"
+      date="2016-12-01"
       linkText="Update it Now"
       linkUrl="/"
       message="Your saved payment undefined is expiring soon."
@@ -112,7 +112,7 @@ exports[`GivingActivity should render with data 1`] = `
             </i>
             <h5
               className="display-inline-block floating__item soft-half-bottom">
-              Nov 1, 2016
+              Dec 1, 2016
             </h5>
           </div>
           <p>
@@ -139,7 +139,7 @@ exports[`GivingActivity should render with data 1`] = `
       </div>
     </Activity>
     <Activity
-      date="Tue Nov 01 2016 07:53:00 GMT-0400 (EDT)"
+      date="2016-12-01"
       linkText="Update it Now"
       linkUrl="/"
       message="Your saved payment undefined is expiring soon."
@@ -188,7 +188,7 @@ exports[`GivingActivity should render with data 1`] = `
             </i>
             <h5
               className="display-inline-block floating__item soft-half-bottom">
-              Nov 1, 2016
+              Dec 1, 2016
             </h5>
           </div>
           <p>
@@ -215,7 +215,7 @@ exports[`GivingActivity should render with data 1`] = `
       </div>
     </Activity>
     <Activity
-      date="Tue Nov 01 2016 07:53:00 GMT-0400 (EDT)"
+      date="2016-12-01"
       linkText="Update it Now"
       linkUrl="/"
       message="Your saved payment undefined is expiring soon."
@@ -264,7 +264,7 @@ exports[`GivingActivity should render with data 1`] = `
             </i>
             <h5
               className="display-inline-block floating__item soft-half-bottom">
-              Nov 1, 2016
+              Dec 1, 2016
             </h5>
           </div>
           <p>

@@ -18,16 +18,16 @@ type ILayoutProps = {
 }
 
 export default ({
-  start,
-  checked,
   GIVING_SCHEDULES,
   START_DATES,
-  showDatePicker,
-  toggleSchedule,
+  checked,
   frequencyClick,
-  startClick,
   onDayClick,
+  showDatePicker,
+  start,
+  startClick,
   toggleDatePicker,
+  toggleSchedule,
 }: ILayoutProps) => (
   <div>
     <Checkbox
@@ -54,7 +54,7 @@ export default ({
         </div>
       </div>
     )}
-    {showDatePicker && (
+    {checked && showDatePicker && (
       <Date start={start} onDayClick={onDayClick} toggleDatePicker={toggleDatePicker} />
     )}
   </div>
