@@ -38,7 +38,7 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
       total += transaction.details[0].amount;
       return transaction;
     });
-    return null;
+   return null;
   });
 
   return ({
@@ -66,6 +66,7 @@ const YTD_QUERY = gql`
 `;
 
 const currentYear = moment().format("YY");
+
 export default graphql(YTD_QUERY, {
   options: {
     variables: {
@@ -75,3 +76,4 @@ export default graphql(YTD_QUERY, {
   },
   props: ({ data }) => ({ data: formatGivingSummaryData(data) }),
 });
+

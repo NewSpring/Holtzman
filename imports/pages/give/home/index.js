@@ -5,6 +5,7 @@ import { Component } from "react";
 
 import Authorized from "../../../blocks/authorzied";
 import Layout from "./Layout";
+import YTDMetrics from "./YTDMetrics";
 
 type IHome = {
   setRightProps: Function,
@@ -25,6 +26,9 @@ class Home extends Component {
 export const Hai = () => (
   <div className="locked-ends locked-sides background--primary">
     <h1 className="text-light-primary">Your Giving So Far</h1>
+    <YTDMetrics
+      linkUrl={"/give/history"}
+    />
   </div>
 );
 
