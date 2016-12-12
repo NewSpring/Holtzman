@@ -3,7 +3,7 @@ import { monetize } from "../../util/format/currency";
 import Forms from "../../components/forms";
 import CheckoutButtons from "../checkout-buttons";
 import SubFund from "./Subfund";
-import Schedule from "./Schedule";
+import ScheduleLayout from "./Schedule";
 
 import Currency from "../../components/currency";
 import ButtonSmall from "../../components/buttons/small";
@@ -74,7 +74,7 @@ export default ({
         </div>
 
         {/* Schedule */}
-        <Schedule setCanCheckout={setCanCheckout} authorized={(total > 0) && authorized} />
+        <ScheduleLayout setCanCheckout={setCanCheckout} authorized={(total > 0) && authorized} />
 
         {/* Total information */}
         <h3 className="display-inline-block text-dark-primary push-half-bottom push-half-right">
