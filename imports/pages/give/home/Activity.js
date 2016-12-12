@@ -7,6 +7,7 @@ import gql from "graphql-tag";
 import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
 import ActivityCard from "../../../components/cards/cards.Activity";
+import Summary from "./GivingSummary";
 
 const ActivityButton = () =>
   <SmallButton
@@ -170,7 +171,7 @@ export class GivingActivity extends Component {
         <div className="soft-half hard-top">
           {this.renderActivity(data)}
         </div>
-        {/* XXX chart here */}
+        <Summary />
       </div>
     );
   }
