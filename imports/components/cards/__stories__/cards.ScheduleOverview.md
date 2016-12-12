@@ -6,6 +6,7 @@
 import ScheduleOverview from "../../components/cards/cards.ScheduleOverview";
 
 <ScheduleOverview
+  baseHeadingSize="2"
   amount="$420.00"
   fund="Super Magical Tesla Fund"
   frequency="Once a Month"
@@ -17,6 +18,7 @@ import ScheduleOverview from "../../components/cards/cards.ScheduleOverview";
 
 ### Properties
 
+* **baseHeadingSize** - a string to set the base heading size for the currency component.
 * **amount** - a string that contains the amount of the scheduled gift.
 * **fund** - a string that contains the name of the fund.
 * **frequency** - a string that contains the frequency of the given schedule.

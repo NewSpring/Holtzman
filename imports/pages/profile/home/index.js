@@ -43,10 +43,9 @@ class HomeWithoutData extends Component {
 
   render() {
     const { upload } = this.props;
-    let { person } = this.props.data;
-    if (!person) {
-      person = {};
-    }
+
+    let person = {};
+    if (this.props.data && this.props.data.person) person = this.props.data.person;
 
     // if (this.props.data.loading) return <Loading /> // XXX
     let { photo } = person;
@@ -80,7 +79,8 @@ const GET_PERSON_QUERY = gql`
 `;
 
 const withPerson = graphql(GET_PERSON_QUERY, {
-  skip: (ownProps) => !ownProps.authorized,
+  // XXX authorized is still not returning well enough
+  // skip: (ownProps) => !Meteor.userId()  !ownProps.authorized,
 });
 const mapStateToProps = (state) => ({ authorized: state.accounts.authorized });
 
