@@ -23,7 +23,7 @@ const ListItem = ({
         <Currency
           amount={monetize(transaction.value)}
           baseHeadingSize="4"
-          className="display-inline-block"
+          className="text-left display-inline-block"
         />
       </div>
 

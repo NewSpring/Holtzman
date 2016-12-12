@@ -140,7 +140,7 @@ const TransactionLayout = ({
 
           <div className="grid__item one-half text-right" style={{ verticalAlign: "middle" }}>
             <div className="display-inline-block">
-              <Currency amount={monetize(total)} />
+              <Currency className="text-left" amount={monetize(total)} />
             </div>
           </div>
 
