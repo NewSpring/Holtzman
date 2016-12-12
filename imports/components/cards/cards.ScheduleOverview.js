@@ -28,6 +28,7 @@ const ScheduleOverviewCard = ({
       <Currency
         amount={amount}
         baseHeadingSize={baseHeadingSize || "2"}
+        className="text-left"
       />
       <div className="floating text-left push-bottom">
         <h5 className="floating__item soft-half-right flush text-dark-primary">{fund}</h5>

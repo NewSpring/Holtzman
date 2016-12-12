@@ -81,7 +81,7 @@ export default ({
           my total is
         </h3>
         <span className="display-inline-block text-dark-primary push-half-bottom">
-          <Currency baseHeadingSize="1" amount={monetize(total, true)} />
+          <Currency baseHeadingSize="1" className="text-left" amount={monetize(total, true)} />
         </span>
       </div>
 
