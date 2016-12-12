@@ -4,10 +4,16 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
   <div
     className="card">
     <div
+<<<<<<< 177d35754ae8085dedcbaa9d7a3be77f694b7e62
       className="card__item soft push-half-ends one-whole">
       <button
         className="float-right h6 text-dark-tertiary outlined--bottom"
         onClick={[Function]}
+=======
+      className="floating text-dark-primary text-left">
+      <h4
+        className="floating__item flush"
+>>>>>>> Updating snapshots after breaking changes fixed
         style={
           Object {
             "borderColor": "inherit",
@@ -105,10 +111,16 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
   <div
     className="card">
     <div
+<<<<<<< 177d35754ae8085dedcbaa9d7a3be77f694b7e62
       className="card__item soft push-half-ends one-whole">
       <button
         className="float-right h6 text-dark-tertiary outlined--bottom"
         onClick={[Function]}
+=======
+      className="floating text-dark-primary text-left">
+      <h4
+        className="floating__item flush"
+>>>>>>> Updating snapshots after breaking changes fixed
         style={
           Object {
             "borderColor": "inherit",
@@ -177,10 +189,16 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
   <div
     className="card">
     <div
+<<<<<<< 177d35754ae8085dedcbaa9d7a3be77f694b7e62
       className="card__item soft push-half-ends one-whole">
       <button
         className="float-right h6 text-dark-tertiary outlined--bottom"
         onClick={[Function]}
+=======
+      className="floating text-dark-primary text-left">
+      <h4
+        className="floating__item flush"
+>>>>>>> Updating snapshots after breaking changes fixed
         style={
           Object {
             "borderColor": "inherit",
@@ -249,10 +267,16 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
   <div
     className="card">
     <div
+<<<<<<< 177d35754ae8085dedcbaa9d7a3be77f694b7e62
       className="card__item soft push-half-ends one-whole">
       <button
         className="float-right h6 text-dark-tertiary outlined--bottom"
         onClick={[Function]}
+=======
+      className="floating text-dark-primary text-left">
+      <h4
+        className="floating__item flush"
+>>>>>>> Updating snapshots after breaking changes fixed
         style={
           Object {
             "borderColor": "inherit",
@@ -321,10 +345,16 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
   <div
     className="card">
     <div
+<<<<<<< 177d35754ae8085dedcbaa9d7a3be77f694b7e62
       className="card__item soft push-half-ends one-whole">
       <button
         className="float-right h6 text-dark-tertiary outlined--bottom"
         onClick={[Function]}
+=======
+      className="floating text-dark-primary text-left">
+      <h4
+        className="floating__item flush"
+>>>>>>> Updating snapshots after breaking changes fixed
         style={
           Object {
             "borderColor": "inherit",
@@ -393,10 +423,16 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
   <div
     className="card">
     <div
+<<<<<<< 177d35754ae8085dedcbaa9d7a3be77f694b7e62
       className="card__item soft push-half-ends one-whole">
       <button
         className="float-right h6 text-dark-tertiary outlined--bottom"
         onClick={[Function]}
+=======
+      className="floating text-dark-primary text-left">
+      <h4
+        className="floating__item flush"
+>>>>>>> Updating snapshots after breaking changes fixed
         style={
           Object {
             "borderColor": "inherit",
@@ -463,7 +499,43 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest and on
 <div
   className="">
   <div
+<<<<<<< 177d35754ae8085dedcbaa9d7a3be77f694b7e62
     className="card">
+=======
+    className="card__item soft push-half-ends one-whole">
+    <button
+      className="float-right h6 text-dark-tertiary outlined--bottom"
+      onClick={[Function]}
+      style={
+        Object {
+          "borderColor": "inherit",
+          "borderWidth": "2px",
+        }
+      }>
+      Edit
+    </button>
+    <div
+      className="floating text-dark-primary text-left">
+      <h4
+        className="floating__item flush"
+        style={
+          Object {
+            "paddingRight": "5px",
+          }
+        }>
+        $
+      </h4>
+      <h2
+        className="floating__item flush">
+        420
+      </h2>
+      <h4
+        className="floating__item flush">
+        .
+        00
+      </h4>
+    </div>
+>>>>>>> Updating snapshots after breaking changes fixed
     <div
       className="card__item soft push-half-ends one-whole">
       <button

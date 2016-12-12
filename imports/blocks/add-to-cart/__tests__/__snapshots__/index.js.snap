@@ -333,9 +333,10 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
                   className="display-inline-block text-dark-primary push-half-bottom">
                   <Currency
                     amount="$10.00"
-                    baseHeadingSize="1">
+                    baseHeadingSize="1"
+                    className="text-left">
                     <div
-                      className="floating text-left text-dark-primary ">
+                      className="floating text-dark-primary text-left">
                       <h3
                         className="floating__item flush"
                         style={
@@ -605,9 +606,10 @@ exports[`test should properly render with multiple accounts 1`] = `
                   className="display-inline-block text-dark-primary push-half-bottom">
                   <Currency
                     amount="$0.00"
-                    baseHeadingSize="1">
+                    baseHeadingSize="1"
+                    className="text-left">
                     <div
-                      className="floating text-left text-dark-primary ">
+                      className="floating text-dark-primary text-left">
                       <h3
                         className="floating__item flush"
                         style={
