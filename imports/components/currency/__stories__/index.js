@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { storiesOf } from "@kadira/storybook";
-import { withKnobs, text, boolean } from "@kadira/storybook-addon-knobs";
+import { withKnobs, text, boolean, select } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
@@ -22,7 +22,7 @@ story
       const className = text("Class Name", "text-left");
       const amount = text("Amount", "$420.00");
       const baseSize = text("Base Heading Size", "2");
-      const textColor = text("Text Color", "text-dark-primary");
+      const theme = select("Theme", ["", "light"], "");
       const roundCurrency = boolean("Round Currency", false);
 
       return (
@@ -33,7 +33,7 @@ story
               baseHeadingSize={baseSize}
               className={className}
               roundCurrency={roundCurrency}
-              textColor={textColor}
+              theme={theme}
             />
           </div>
         </div>
