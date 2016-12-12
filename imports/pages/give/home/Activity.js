@@ -4,9 +4,12 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import { connect } from "react-redux";
 import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
 import ActivityCard from "../../../components/cards/cards.Activity";
+import YearToDate from "../../../components/cards/cards.YearToDate";
+import moment from "moment";
 
 const ActivityButton = () =>
   <SmallButton
@@ -51,6 +54,7 @@ const withActivityData = graphql(ACTIVITY_QUERY, {
 
 type IGivingActivity = {
   feed: Object,
+  summaryData: Object,
 };
 
 export class GivingActivity extends Component {
@@ -169,9 +173,12 @@ export class GivingActivity extends Component {
         <div className="soft-half hard-top">
           {this.renderActivity(data)}
         </div>
+        {/* XXX chart here */}
       </div>
     );
   }
 }
 
-export default withActivityData(GivingActivity);
+export default withActivityData(
+    connect((state) => ({ breakpoints: state.responsive.breakpoints }))(GivingActivity)
+  );
