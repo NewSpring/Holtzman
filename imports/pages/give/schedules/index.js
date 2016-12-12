@@ -15,7 +15,6 @@ import {
 import Details from "./Details";
 import Layout from "./Layout";
 import Confirm from "./Details/Confirm";
-import Recover from "./Recover";
 
 class TemplateWithoutData extends Component {
 
@@ -154,11 +153,6 @@ const Template = connect(mapStateToProps)(
 
 const Routes = [
   { path: "schedules", component: Template, onEnter: (nextState: Object, replace: Function) => replace("/give/home") },
-  {
-    path: "schedules/transfer",
-    component: Authorized,
-    indexRoute: { component: Recover },
-  },
   {
     path: "schedules/:id",
     component: Authorized,
