@@ -237,6 +237,18 @@ describe("Class", () => {
       startClick("custom");
       expect(wrapper.state().showDatePicker).toEqual(true);
     });
+    it("removes the state when it was custom", () => {
+      const saveSchedule = jest.fn();
+      const wrapper = mount(generateComponent({ saveSchedule }));
+      const { startClick } = wrapper.instance();
+      wrapper.setState({ start: "custom", frequency: "one-time" });
+      startClick("custom");
+      expect(saveSchedule).toBeCalledWith({
+        frequency: "one-time",
+        start: null,
+      });
+      expect(wrapper.state().start).toEqual(null);
+    });
     it("toggles the date picker (false)", () => {
       const wrapper = mount(generateComponent());
       const { startClick } = wrapper.instance();
