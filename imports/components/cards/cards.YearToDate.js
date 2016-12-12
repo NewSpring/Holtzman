@@ -15,8 +15,8 @@ const YearToDate = ({
   linkUrl,
 }: IYearToDate) => (
   <div className="card">
-    <div className="card__item soft">
-      <div className="soft-double-bottom soft-double-top">
+    <div className="card__item soft hard-top">
+      <div className="soft-double-bottom">
         <LineGraph
           data={graphData.data}
           lineColor={graphData.lineColor}
@@ -32,7 +32,7 @@ const YearToDate = ({
       />
       <p className="text-dark-primary italic text-left">Contributed so far this year</p>
       <div className="text-left">
-        <Link to={linkUrl} className="text-left">
+        <Link to={linkUrl} className="text-left plain">
           <h6 className="display-inline-block">View Your Giving History</h6><span className="icon-arrow-next soft-half-left" />
         </Link>
       </div>
