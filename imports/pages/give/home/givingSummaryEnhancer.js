@@ -22,9 +22,8 @@ const baseData = [
 
 export const formatGivingSummaryData = (data: Object): ?Object => {
   const accountsData = data.accounts;
-  // console.log(data);
   if (!Array.isArray(accountsData)) return null;
-  const summaryData = baseData;
+  const summaryData = JSON.parse(JSON.stringify(baseData));
   let total = 0;
   const accounts = {};
 
@@ -75,18 +74,6 @@ export default graphql(YTD_QUERY, {
 });
 
 
-// export graphql(YTD_QUERY, {
-//   options: () => {},
-//   props: ({ data }) => {
-//     // complex calc
-
-//     return {
-//       ...data
-//       chartProps: data.result.map(),
-//       total: 10
-//     };
-//   }
-// });
 
 
 // /// ACTIVITY YTD CARD
@@ -106,10 +93,3 @@ export default graphql(YTD_QUERY, {
 // )
 
 // export default withYTDData(RightPanel);
-
-
-// // HOME
-
-// <CardWithData/>
-
-// <RightWithData />
