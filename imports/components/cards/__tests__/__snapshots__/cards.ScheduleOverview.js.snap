@@ -15,7 +15,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary">
+      className="floating text-left text-dark-primary ">
       <h4
         className="floating__item flush"
         style={
@@ -73,7 +73,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
       </span>
       <em
         className="text-dark-primary">
-        Mar 15, 2016
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
       </em>
     </p>
     <p
@@ -89,7 +89,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
       </span>
       <em
         className="text-dark-primary">
-        Mar 16, 2016
+        Tue Mar 16 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
       </em>
     </p>
   </div>
@@ -113,7 +113,7 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary">
+      className="floating text-left text-dark-primary ">
       <h4
         className="floating__item flush"
         style={
@@ -158,7 +158,7 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
       </span>
       <em
         className="text-dark-primary">
-        Mar 15, 2016
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
       </em>
     </p>
   </div>
@@ -182,7 +182,7 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary">
+      className="floating text-left text-dark-primary ">
       <h4
         className="floating__item flush"
         style={
@@ -227,7 +227,7 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
       </span>
       <em
         className="text-dark-primary">
-        Jun 15, 2015
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
       </em>
     </p>
   </div>
@@ -251,7 +251,7 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary">
+      className="floating text-left text-dark-primary ">
       <h4
         className="floating__item flush"
         style={
@@ -296,7 +296,7 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
       </span>
       <em
         className="text-dark-primary">
-        Mar 15, 2016
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
       </em>
     </p>
   </div>
@@ -320,7 +320,7 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary">
+      className="floating text-left text-dark-primary ">
       <h4
         className="floating__item flush"
         style={
@@ -365,7 +365,7 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
       </span>
       <em
         className="text-dark-primary">
-        Mar 15, 2016
+        Jun 15, 2015.format(MMM D, YYYY)
       </em>
     </p>
   </div>
@@ -389,7 +389,7 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary">
+      className="floating text-left text-dark-primary ">
       <h4
         className="floating__item flush"
         style={
@@ -434,7 +434,7 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
       </span>
       <em
         className="text-dark-primary">
-        Mar 15, 2016
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
       </em>
     </p>
   </div>
@@ -458,7 +458,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest and on
       Edit
     </button>
     <div
-      className="floating text-left text-dark-primary">
+      className="floating text-left text-dark-primary ">
       <h4
         className="floating__item flush"
         style={
@@ -507,7 +507,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest and on
       </span>
       <em
         className="text-dark-primary">
-        Mar 15, 2016
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
       </em>
     </p>
     <p
@@ -523,7 +523,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest and on
       </span>
       <em
         className="text-dark-primary">
-        Mar 16, 2016
+        Tue Mar 16 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
       </em>
     </p>
   </div>

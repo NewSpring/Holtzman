@@ -16,10 +16,10 @@ exports[`Giving Schedules List should render properly with data 1`] = `
           "schedule": Object {
             "description": "One Time",
           },
-          "start": "Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)",
+          "start": "2016-03-16",
           "transactions": Array [
             Object {
-              "date": "Tue Mar 17 2016 20:00:00 GMT-0400 (EDT)",
+              "date": "2016-03-17",
             },
           ],
         },
@@ -36,10 +36,10 @@ exports[`Giving Schedules List should render properly with data 1`] = `
           "schedule": Object {
             "description": "Once a Month",
           },
-          "start": "Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)",
+          "start": "2016-03-16",
           "transactions": Array [
             Object {
-              "date": "Tue Mar 18 2016 20:00:00 GMT-0400 (EDT)",
+              "date": "2016-03-18",
             },
           ],
         },
@@ -56,7 +56,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
           "schedule": Object {
             "description": "One Time",
           },
-          "start": "Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)",
+          "start": "2016-03-16",
           "transactions": Array [],
         },
       ],
@@ -113,9 +113,9 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         amount="20"
         frequency="One Time"
         fund="General Fund"
-        latest="Tue Mar 17 2016 20:00:00 GMT-0400 (EDT)"
+        latest="2016-03-17"
         onEditClick={[Function]}
-        started="Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)">
+        started="2016-03-16">
         <div
           className="card">
           <div
@@ -131,24 +131,28 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               }>
               Edit
             </button>
-            <div
-              className="floating text-left text-dark-primary">
-              <h4
-                className="floating__item flush"
-                style={
-                  Object {
-                    "paddingRight": "5px",
-                  }
-                }>
-                $
-              </h4>
-              <h2
-                className="floating__item flush">
-                20
-              </h2>
-              <h4
-                className="floating__item flush" />
-            </div>
+            <Currency
+              amount="20"
+              baseHeadingSize="2">
+              <div
+                className="floating text-left text-dark-primary ">
+                <h4
+                  className="floating__item flush"
+                  style={
+                    Object {
+                      "paddingRight": "5px",
+                    }
+                  }>
+                  $
+                </h4>
+                <h2
+                  className="floating__item flush">
+                  20
+                </h2>
+                <h4
+                  className="floating__item flush" />
+              </div>
+            </Currency>
             <div
               className="floating text-left push-bottom">
               <h5
@@ -204,9 +208,9 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         amount="100"
         frequency="Once a Month"
         fund="Step Up Fund"
-        latest="Tue Mar 18 2016 20:00:00 GMT-0400 (EDT)"
+        latest="2016-03-18"
         onEditClick={[Function]}
-        started="Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)">
+        started="2016-03-16">
         <div
           className="card">
           <div
@@ -222,24 +226,28 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               }>
               Edit
             </button>
-            <div
-              className="floating text-left text-dark-primary">
-              <h4
-                className="floating__item flush"
-                style={
-                  Object {
-                    "paddingRight": "5px",
-                  }
-                }>
-                $
-              </h4>
-              <h2
-                className="floating__item flush">
-                100
-              </h2>
-              <h4
-                className="floating__item flush" />
-            </div>
+            <Currency
+              amount="100"
+              baseHeadingSize="2">
+              <div
+                className="floating text-left text-dark-primary ">
+                <h4
+                  className="floating__item flush"
+                  style={
+                    Object {
+                      "paddingRight": "5px",
+                    }
+                  }>
+                  $
+                </h4>
+                <h2
+                  className="floating__item flush">
+                  100
+                </h2>
+                <h4
+                  className="floating__item flush" />
+              </div>
+            </Currency>
             <div
               className="floating text-left push-bottom">
               <h5
@@ -297,7 +305,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         fund="Christmas Offering"
         latest=""
         onEditClick={[Function]}
-        started="Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)">
+        started="2016-03-16">
         <div
           className="card">
           <div
@@ -313,24 +321,28 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               }>
               Edit
             </button>
-            <div
-              className="floating text-left text-dark-primary">
-              <h4
-                className="floating__item flush"
-                style={
-                  Object {
-                    "paddingRight": "5px",
-                  }
-                }>
-                $
-              </h4>
-              <h2
-                className="floating__item flush">
-                50
-              </h2>
-              <h4
-                className="floating__item flush" />
-            </div>
+            <Currency
+              amount="50"
+              baseHeadingSize="2">
+              <div
+                className="floating text-left text-dark-primary ">
+                <h4
+                  className="floating__item flush"
+                  style={
+                    Object {
+                      "paddingRight": "5px",
+                    }
+                  }>
+                  $
+                </h4>
+                <h2
+                  className="floating__item flush">
+                  50
+                </h2>
+                <h4
+                  className="floating__item flush" />
+              </div>
+            </Currency>
             <div
               className="floating text-left push-bottom">
               <h5

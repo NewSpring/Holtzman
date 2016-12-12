@@ -94,6 +94,146 @@ Object {
 }
 `;
 
+exports[`CartContainer > Class Methods toggleSecondFund correctly toggles 1`] = `
+Object {
+  "canCheckout": true,
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": 10,
+      "fundId": 1,
+      "id": 1,
+      "primary": true,
+    },
+  ],
+}
+`;
+
+exports[`CartContainer > Class Methods toggleSecondFund creates the correct new subfund state 1`] = `
+Object {
+  "canCheckout": true,
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": null,
+      "fundId": 1,
+      "id": 1,
+      "primary": true,
+    },
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": "",
+      "fundId": undefined,
+      "id": 2,
+      "primary": false,
+    },
+  ],
+}
+`;
+
+exports[`CartContainer > Class Methods toggleSecondFund creates the correct new subfund state when the first fund is selected 1`] = `
+Object {
+  "canCheckout": true,
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": 10,
+      "fundId": 1,
+      "id": 1,
+      "primary": true,
+    },
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": "",
+      "fundId": undefined,
+      "id": 2,
+      "primary": false,
+    },
+  ],
+}
+`;
+
 exports[`CartContainer > Lifecycle functions accepts query string prefills the fund 1`] = `
 <CartContainer
   accounts={
@@ -250,6 +390,26 @@ Object {
 `;
 
 exports[`CartContainer > Lifecycle functions should clear transactions on success 1`] = `
+Object {
+  "canCheckout": true,
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "test",
+          "value": "1",
+        },
+      ],
+      "amount": null,
+      "fundId": "1",
+      "id": 1,
+      "primary": true,
+    },
+  ],
+}
+`;
+
+exports[`CartContainer > Lifecycle functions should clear transactions on when amount is set to 0 1`] = `
 Object {
   "canCheckout": true,
   "subfunds": Array [

@@ -6,7 +6,7 @@ import { mountToJson } from "enzyme-to-json";
 const mockFeedData = [
   {
     "id": "123",
-    "date": "Thu Dec 01 2016 08:44:51 GMT-0500 (EST)",
+    "date": "2016-12-01",
     "summary": "Reference Number: 12345",
     "status": "Pending",
     "statusMessage": "Manually set to pending for testing",
@@ -15,7 +15,7 @@ const mockFeedData = [
   },
   {
     "id": "456",
-    "date": "Tue Nov 01 2016 07:53:00 GMT-0400 (EDT)",
+    "date": "2016-11-01",
     "summary": "Reference Number: 2355654",
     "status": "Failed",
     "statusMessage": "Manually set to failed for testing",
@@ -24,7 +24,7 @@ const mockFeedData = [
   },
   {
     "id": "789",
-    "date": "Mon Oct 03 2016 07:55:09 GMT-0400 (EDT)",
+    "date": "2016-10-03",
     "summary": "Reference Number: 76543",
     "status": null,
     "statusMessage": null,
@@ -56,7 +56,7 @@ describe("GivingActivity", () => {
    */
   it("should render with data", () => {
     const component = mount(generateComponent({
-      feed: {userFeed: mockFeedData},
+      feed: { userFeed: mockFeedData },
     }));
     expect(mountToJson(component)).toMatchSnapshot();
   });

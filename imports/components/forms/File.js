@@ -171,7 +171,7 @@ export default class File extends Component {
           onChange={this.format}
           defaultValue={this.props.defaultValue}
           style={this.style()}
-          {...this.props}
+          autoFocus={this.props.autofocus}
         />
 
         {this.renderHelpText()}

@@ -162,7 +162,7 @@ export default class Layout extends Component {
                 }
                 return (
                   <Link
-                    key={campus.id}
+                    key={campus.id || i}
                     to={campus.url}
                     className={
                       "text-dark-secondary transition floating ratio--square " +

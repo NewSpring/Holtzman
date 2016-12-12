@@ -356,7 +356,7 @@ it("collapseSchedule sets state to null", () => {
 
 it("formatDate returns a formatted data", () => {
   const wrapper = shallow(generateComponent());
-  const result = wrapper.instance().formatDate("12-12-2012");
+  const result = wrapper.instance().formatDate("2012-12-12");
   expect(result).toBe("Dec 13, 2012");
 });
 

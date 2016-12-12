@@ -132,7 +132,7 @@ export class GivingActivity extends Component {
       message={`Your saved payment ${account.name} is expiring soon.`}
       linkText={"Update it Now"}
       linkUrl={"/"}
-      date={"Tue Nov 01 2016 07:53:00 GMT-0400 (EDT)"}
+      date={"2016-12-01"}
     />
   ;
 

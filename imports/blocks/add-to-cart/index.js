@@ -7,8 +7,14 @@ import { give as giveActions } from "../../store";
 import { monetize } from "../../util/format/currency";
 import Layout from "./Layout";
 
+type IStore = {
+  routing: Object,
+  give: Object,
+  accounts: Object,
+}
+
 // We only care about the give state
-const map = ({ routing, give, accounts }) => ({
+export const map = ({ routing, give, accounts }: IStore) => ({
   status: give.state,
   total: give.total,
   query: routing.location.query,
@@ -276,7 +282,8 @@ class CartContainer extends Component {
         // remove second subfund
         subfunds.pop();
       }
-      return subfunds;
+
+      return { subfunds };
     });
 
     // remove second fund

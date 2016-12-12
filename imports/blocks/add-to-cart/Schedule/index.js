@@ -35,7 +35,7 @@ const START_DATES = [
 ];
 
 
-class Schedule extends Component {
+export class Schedule extends Component {
 
   props: IScheduleProps;
   state: IScheduleState;
@@ -95,17 +95,10 @@ class Schedule extends Component {
   }
 
   toggleDatePicker = () => {
-    this.setState(({ showDatePicker }) => {
-      const newState = { showDatePicker: !showDatePicker };
-      return newState;
-    });
+    this.setState(({ showDatePicker }) => ({ showDatePicker: !showDatePicker }));
     setTimeout(() => {
       this.fixPickerPosition();
     }, 200);
-
-    // console.log(this.state);
-    if (!this.state.start) return false;
-    return true;
   }
 
   toggleSchedule = () => {
@@ -131,7 +124,7 @@ class Schedule extends Component {
 
     this.setState({ frequency: newValue });
     this.props.saveSchedule({
-      frequency: value,
+      frequency: newValue,
       start: this.state.start,
     });
   }
@@ -179,6 +172,6 @@ class Schedule extends Component {
   }
 }
 
-const withGiveActions = connect(null, giveActions);
+export const withGiveActions = connect(null, giveActions);
 
 export default withGiveActions(Schedule);

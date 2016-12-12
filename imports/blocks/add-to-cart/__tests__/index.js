@@ -1,7 +1,14 @@
 import { mount, shallow } from "enzyme";
 import { mountToJson, shallowToJson } from "enzyme-to-json";
-import { CartContainerWithoutData as CartContainer } from "../";
+import { connect } from "react-redux";
+
+import { give as giveActions } from "../../../store";
+import { CartContainerWithoutData as CartContainer, map, withGiveActions } from "../";
 import { SubFundWithoutData as SubFund } from "../Subfund";
+
+jest.mock("react-redux", () => ({
+  connect: jest.fn(() => (component) => <component />),
+}));
 
 jest.mock("../Subfund", () => jest.fn(() => <div />));
 jest.mock("../Schedule", () => jest.fn(() => <div />));
@@ -33,6 +40,36 @@ const additionalAccounts = [
   { id: 3, name: "TEST 3" },
   { id: 4, name: "TEST 4" },
 ];
+
+it("is mapped to the store as expected", () => {
+  expect(connect).toBeCalledWith(map, giveActions);
+});
+
+describe("map", () => {
+  it("reduces the state as expected", () => {
+    const state = {
+      routing: {
+        location: {
+          query: "foo",
+        },
+      },
+      give: {
+        state: "default",
+        total: 0,
+      },
+      accounts: {
+        authorized: false,
+      },
+    };
+
+    expect(map(state)).toEqual({
+      status: "default",
+      total: 0,
+      query: "foo",
+      authorized: false
+    });
+  });
+});
 
 it("should render with minimal props", () => {
   const component = shallow(generateComponent());
@@ -85,6 +122,18 @@ describe("CartContainer > Lifecycle functions", () => {
     }));
     expect(spy).toHaveBeenCalledTimes(1);
     component.setProps({ status: "default" });
+    expect(component.state()).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledTimes(2);
+  });
+
+  it("should clear transactions on when amount is set to 0", () => {
+    const spy = jest.fn();
+    const component = mount(generateComponent({
+      clearTransactions: spy,
+      total: 1,
+    }));
+    expect(spy).toHaveBeenCalledTimes(1);
+    component.setProps({ total: 0 });
     expect(component.state()).toMatchSnapshot();
     expect(spy).toHaveBeenCalledTimes(2);
   });
@@ -213,4 +262,104 @@ describe ("CartContainer > Class Methods", () => {
     });
   });
 
+  describe("toggleSecondFund", () => {
+    it("creates the correct new subfund state", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { toggleSecondFund } = component.instance();
+      toggleSecondFund();
+      const newState = component.state();
+      expect(newState).toMatchSnapshot();
+    });
+
+    it("creates the correct new subfund state when the first fund is selected", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { toggleSecondFund, changeAmount, changeFund } = component.instance();
+      changeFund(1, 1);
+      changeAmount(10, 1)
+      toggleSecondFund();
+      const newState = component.state();
+      expect(newState).toMatchSnapshot();
+    });
+
+    it("correctly toggles", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { toggleSecondFund, changeAmount, changeFund } = component.instance();
+      changeFund(1, 1);
+      changeAmount(10, 1)
+      toggleSecondFund();
+      toggleSecondFund();
+      const newState = component.state();
+      expect(newState).toMatchSnapshot();
+    });
+
+    it("clears the transaction when toggling", () => {
+      const clearTransaction = jest.fn();
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+        clearTransaction,
+      }));
+      const { toggleSecondFund, changeAmount, changeFund } = component.instance();
+      changeFund(1, 1);
+      changeAmount(10, 1)
+      toggleSecondFund();
+      toggleSecondFund();
+      expect(clearTransaction).toBeCalledWith(1);
+    });
+  });
+
+  describe("setCanCheckout", () => {
+    it("updates the state", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { setCanCheckout } = component.instance();
+
+      setCanCheckout(true);
+      expect(component.state().canCheckout).toBe(true);
+    });
+    it("updates the state (falsey)", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { setCanCheckout } = component.instance();
+
+      setCanCheckout(false);
+      expect(component.state().canCheckout).toBe(false);
+    });
+  });
+
+  describe("canCheckout", () => {
+    it("early returns if the total isn't valid", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { canCheckout } = component.instance();
+
+      expect(canCheckout(0)).toBe(false);
+    });
+    it("returns the canCheckout state from the component", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { setCanCheckout, canCheckout } = component.instance();
+
+      setCanCheckout(true);
+      expect(canCheckout(10)).toBe(true);
+    });
+    it("returns the canCheckout state from the component (falsy)", () => {
+      const component = mount(generateComponent({
+        accounts: additionalAccounts,
+      }));
+      const { setCanCheckout, canCheckout } = component.instance();
+
+      setCanCheckout(false);
+      expect(canCheckout(10)).toBe(false);
+    });
+  });
 });
