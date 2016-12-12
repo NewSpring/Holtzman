@@ -4,12 +4,9 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import { connect } from "react-redux";
 import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
 import ActivityCard from "../../../components/cards/cards.Activity";
-import YearToDate from "../../../components/cards/cards.YearToDate";
-import moment from "moment";
 
 const ActivityButton = () =>
   <SmallButton
@@ -179,6 +176,4 @@ export class GivingActivity extends Component {
   }
 }
 
-export default withActivityData(
-    connect((state) => ({ breakpoints: state.responsive.breakpoints }))(GivingActivity)
-  );
+export default withActivityData(GivingActivity);

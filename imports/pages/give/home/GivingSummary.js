@@ -3,11 +3,8 @@ import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { connect } from "react-redux";
-import SectionHeader from "../../../components/sectionHeader";
-import SmallButton from "../../../components/buttons/small";
-import ActivityCard from "../../../components/cards/cards.Activity";
-import YearToDate from "../../../components/cards/cards.YearToDate";
 import moment from "moment";
+import YearToDate from "../../../components/cards/cards.YearToDate";
 
 const mockTotals = {
   data: [
@@ -122,17 +119,16 @@ export class GivingSummary extends Component {
   }
 
 
-  render(){
+  render() {
     if (
-      !this.props.GivingSummary
-      || !this.props.GivingSummary.accounts
-      || this.props.GivingSummary.accounts.length === 0
+      !this.props.summaryData
+      || !this.props.summaryData.accounts
+      || this.props.summaryData.accounts.length === 0
     ) return null;
 
     let graphData;
     if (this.props.summaryData.loading === false) {
       graphData = { ...this.formatGivingSummaryData(), ...graphSettings };
-      // console.log("graphData", graphData);
     }
 
     return (
