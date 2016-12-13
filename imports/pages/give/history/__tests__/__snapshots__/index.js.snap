@@ -6,6 +6,7 @@ exports[`test renders with props 1`] = `
   changeFamily={[Function]}
   done={false}
   family={Array []}
+  findByLimit={[Function]}
   ready={true}
   reloading={false}
   transactions={Array []} />
