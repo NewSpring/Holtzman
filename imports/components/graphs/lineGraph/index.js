@@ -21,7 +21,16 @@ const getTickFormat = (data: Object[]) => {
   return ticks;
 };
 
-const GradientGroup = ({ style, events, transform, children, gradientColor }) => (
+
+type IGradientGroup = {
+  style: Object,
+  events: Object,
+  transform: Object,
+  children: any,
+  gradientColor: string,
+};
+
+const GradientGroup = ({ style, events, transform, children, gradientColor }: IGradientGroup) => (
   <g
     style={style}
     {...events}
@@ -89,7 +98,7 @@ const LineGraph = ({
         y="amount"
         size={dotSize}
         style={{
-          data: { fill: lineColor },
+          data: { fill: dotColor },
         }}
       />
     </VictoryChart>
