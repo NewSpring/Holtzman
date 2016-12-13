@@ -20,6 +20,13 @@ const getTickFormat = (data: Object[]) => {
   return ticks;
 };
 
+/**
+ * animate={{ duration: 2000 }}
+ * removed from <Victorychart> props because when the component remounts
+ * after leaving a page, it causes a double render which cancells the animation back
+ * into view, resulting in a blank chart.
+ */
+
 const LineGraph = ({
   axisStyles,
   data,
@@ -31,8 +38,7 @@ const LineGraph = ({
   <div className="">
     <VictoryChart
       padding={{ top: 5, left: 10, right: 10, bottom: 50 }}
-      animate={{ duration: 2000 }}
-      domainPadding={{ y: [100, 100] }}
+      height={160}
     >
       <VictoryAxis
         style={{
