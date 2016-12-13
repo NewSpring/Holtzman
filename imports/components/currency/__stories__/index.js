@@ -19,7 +19,7 @@ story
   .add("Currency", withReadme(
     Readme,
     () => {
-      const className = text("Class Name", "text-left");
+      const className = text("Class Name", "");
       const amount = text("Amount", "$420.00");
       const baseSize = text("Base Heading Size", "2");
       const theme = select("Theme", ["", "light"], "");

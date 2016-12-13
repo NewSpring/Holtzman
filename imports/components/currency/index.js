@@ -42,9 +42,7 @@ export const currencySizeCalc = (baseHeadingSize:string) => {
 export const textTheme = (
   theme?: string,
 ): string => {
-  if (theme === "light") {
-    return "text-light-primary";
-  }
+  if (theme === "light") return "text-light-primary";
 
   return "text-dark-primary";
 };
@@ -56,12 +54,12 @@ const Currency = ({
   theme,
   roundCurrency,
 }: ICurrency) => (
-  <div className={`floating ${textTheme(theme)} ${className || ""}`}>
+  <div className={`floating ${textTheme(theme)} ${className || "text-left"}`}>
     {currencySizeCalc(baseHeadingSize || "2")}
-    <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(amount)}</ReducedHeadingSize>
-    {getNegative(amount) && <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(amount)}</ReducedHeadingSize>}
-    <BaseCurrencySize className="floating__item flush">{getDollars(amount, roundCurrency)}</BaseCurrencySize>
-    {!roundCurrency && <ReducedHeadingSize className="floating__item flush">.{getCents(amount)}</ReducedHeadingSize>}
+    <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(`${amount}`)}</ReducedHeadingSize>
+    {getNegative(`${amount}`) && <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(`${amount}`)}</ReducedHeadingSize>}
+    <BaseCurrencySize className="floating__item flush">{getDollars(`${amount}`, roundCurrency)}</BaseCurrencySize>
+    {!roundCurrency && <ReducedHeadingSize className="floating__item flush">.{getCents(`${amount}`)}</ReducedHeadingSize>}
   </div>
 );
 
