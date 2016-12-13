@@ -133,9 +133,10 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             </button>
             <Currency
               amount="20"
-              baseHeadingSize="2">
+              baseHeadingSize="2"
+              className="text-left">
               <div
-                className="floating text-left text-dark-primary ">
+                className="floating text-dark-primary text-left">
                 <h4
                   className="floating__item flush"
                   style={
@@ -228,9 +229,10 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             </button>
             <Currency
               amount="100"
-              baseHeadingSize="2">
+              baseHeadingSize="2"
+              className="text-left">
               <div
-                className="floating text-left text-dark-primary ">
+                className="floating text-dark-primary text-left">
                 <h4
                   className="floating__item flush"
                   style={
@@ -323,9 +325,10 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             </button>
             <Currency
               amount="50"
-              baseHeadingSize="2">
+              baseHeadingSize="2"
+              className="text-left">
               <div
-                className="floating text-left text-dark-primary ">
+                className="floating text-dark-primary text-left">
                 <h4
                   className="floating__item flush"
                   style={
