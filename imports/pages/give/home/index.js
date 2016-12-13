@@ -5,6 +5,7 @@ import { Component } from "react";
 
 import Authorized from "../../../blocks/authorzied";
 import Layout from "./Layout";
+import FundBreakdown from "./FundBreakdown";
 
 type IHome = {
   setRightProps: Function,
@@ -25,6 +26,7 @@ class Home extends Component {
 export const Hai = () => (
   <div className="locked-ends locked-sides background--primary">
     <h1 className="text-light-primary">Your Giving So Far</h1>
+    <FundBreakdown />
   </div>
 );
 
