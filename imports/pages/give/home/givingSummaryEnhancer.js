@@ -54,7 +54,7 @@ const YTD_QUERY = gql`
     accounts{
       total(start: $start, end: $end)
       name
-      transactions(start: $start, end: $end) {
+      transactions(limit: 0, start: $start, end: $end) {
         id
         date
         details {
