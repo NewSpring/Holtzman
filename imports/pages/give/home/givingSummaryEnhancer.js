@@ -21,7 +21,7 @@ const baseData = [
 ];
 
 export const formatGivingSummaryData = (data: Object): ?Object => {
-  if(!data || !data.accounts) return null;
+  if (!data || !data.accounts) return null;
   const accountsData = data.accounts;
 
   if (!Array.isArray(accountsData)) return null;
@@ -36,6 +36,7 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
       const month = moment(transaction.date).format("M");
       summaryData[month].amount += transaction.details[0].amount;
       total += transaction.details[0].amount;
+      return transaction;
     });
     return null;
   });
@@ -74,24 +75,3 @@ export default graphql(YTD_QUERY, {
   },
   props: ({ data }) => ({ data: formatGivingSummaryData(data) }),
 });
-
-
-
-
-// /// ACTIVITY YTD CARD
-// import withYTDData from "./givingSummaryEnhancer";
-
-// const Card = ({ chartProps, total }) => (
-//   <Card />
-// );
-
-// export default withYTDData(Card);
-
-// /// RIGHT PANEL
-// import withYTDData from "./givingSummaryEnhancer";
-
-// const RightPanel ({ chartProps, total }) => (
-//   kdlfjsad;lfjsal;kfj
-// )
-
-// export default withYTDData(RightPanel);

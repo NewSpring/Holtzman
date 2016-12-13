@@ -14,7 +14,6 @@ type IScheduleOverviewCard = {
   frequency: string,
   started: string,
   latest: string,
-  baseHeadingSize?: string,
   onEditClick: Function,
   classes: string,
 };
@@ -25,7 +24,6 @@ const ScheduleOverviewCard = ({
   frequency,
   started,
   latest,
-  baseHeadingSize,
   onEditClick,
   classes,
 }: IScheduleOverviewCard) => (

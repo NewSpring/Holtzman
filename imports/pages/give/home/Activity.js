@@ -52,7 +52,6 @@ const withActivityData = graphql(ACTIVITY_QUERY, {
 
 type IGivingActivity = {
   feed: Object,
-  summaryData: Object,
 };
 
 export class GivingActivity extends Component {

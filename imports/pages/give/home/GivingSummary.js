@@ -1,5 +1,5 @@
 
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import YearToDate from "../../../components/cards/cards.YearToDate";
 import withYTDData from "./givingSummaryEnhancer";
@@ -26,7 +26,7 @@ type IGivingSummary = {
   data: Object,
 };
 
-export const GivingSummary = (props) => {
+export const GivingSummary = (props: IGivingSummary) => {
   if (!props.data || props.data.loading || !props.data.chartData) return null;
   const data = { data: props.data.chartData, ...graphSettings };
   return (
