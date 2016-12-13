@@ -64,7 +64,6 @@ export default class Authorized extends Component {
       const props = { ...this.props };
       delete props.children;
       return cloneElement(this.props.children, { ...props });
-
     }
 
     /*

@@ -1,7 +1,7 @@
 // @flow
 import { Component } from "react";
-// $FlowMeteor
-import { Meteor } from "meteor/meteor";
+
+// import { Meteor } from "meteor/meteor";
 
 import Authorized from "../../../blocks/authorzied";
 import Layout from "./Layout";
