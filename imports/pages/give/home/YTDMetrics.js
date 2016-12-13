@@ -27,7 +27,7 @@ type IYTDMetrics = {
   linkUrl: string,
 };
 
-const YTDMetrics = ({ data, linkUrl }: IYTDMetrics) => {
+export const YTDMetrics = ({ data, linkUrl }: IYTDMetrics) => {
   if (data.loading) return null;
 
   return (
