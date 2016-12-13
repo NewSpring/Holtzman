@@ -56,7 +56,6 @@ const LineGraph = ({
 }: ILineGraph) => (
   <div className="">
     <VictoryChart
-      padding={{ top: 5, left: 10, right: 10, bottom: 50 }}
       height={160}
       padding={{ top: 5, left: 10, right: 10, bottom: 20 }}
       animate={{ duration: 2000 }}
