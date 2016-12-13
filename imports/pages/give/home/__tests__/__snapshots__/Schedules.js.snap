@@ -85,7 +85,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               <Link
                 className="
                   btn btn--small@next
-
+                  
                   btn--dark-tertiary flush
                 "
                 onlyActiveOnIndex={false}
@@ -94,7 +94,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 <a
                   className="
                     btn btn--small@next
-
+                    
                     btn--dark-tertiary flush
                   "
                   onClick={[Function]}
@@ -120,7 +120,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         <div
           className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
           <div
-=======
             className="card">
             <div
               className="card__item soft push-half-ends one-whole">
@@ -153,7 +152,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 <h4
                   className="floating__item flush" />
               </div>
-=======
               <div
                 className="floating text-left push-bottom">
                 <h5
@@ -179,7 +177,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "verticalAlign": "middle",
                     }
                   }>
-                  Started:
+                  Started: 
                 </span>
                 <em
                   className="text-dark-primary">
@@ -195,7 +193,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "verticalAlign": "middle",
                     }
                   }>
-                  Latest:
+                  Latest: 
                 </span>
                 <em
                   className="text-dark-primary">
@@ -218,9 +216,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
           className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
           <div
             className="card">
-=======
-            className="card">
->>>>>>> 81db1e3d60bb1d88edf5878dd45138d2a93d1a70
             <div
               className="card__item soft push-half-ends one-whole">
               <button
@@ -277,7 +272,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "verticalAlign": "middle",
                     }
                   }>
-                  Started:
+                  Started: 
                 </span>
                 <em
                   className="text-dark-primary">
@@ -293,7 +288,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "verticalAlign": "middle",
                     }
                   }>
-                  Latest:
+                  Latest: 
                 </span>
                 <em
                   className="text-dark-primary">
@@ -315,7 +310,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         <div
           className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
           <div
-=======
             className="card">
             <div
               className="card__item soft push-half-ends one-whole">
@@ -348,7 +342,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 <h4
                   className="floating__item flush" />
               </div>
-=======
               <div
                 className="floating text-left push-bottom">
                 <h5
@@ -370,7 +363,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "verticalAlign": "middle",
                     }
                   }>
-                  Started:
+                  Started: 
                 </span>
                 <em
                   className="text-dark-primary">

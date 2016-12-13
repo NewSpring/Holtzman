@@ -1,7 +1,12 @@
 // @flow
 
 import moment from "moment";
-import Currency from "./../currency";
+import {
+  getCurrencySymbol,
+  getNegative,
+  getDollars,
+  getCents,
+} from "./../currency";
 
 type IScheduleOverviewCard = {
   amount: string,

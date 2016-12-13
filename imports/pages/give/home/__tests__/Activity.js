@@ -3,6 +3,8 @@ import { GivingActivity } from "../Activity";
 import { mount } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
 
+jest.mock("../GivingSummary", () => "GivingSummary");
+
 const mockFeedData = [
   {
     "id": "123",

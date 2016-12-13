@@ -98,7 +98,7 @@ exports[`Year To Date should render with the default set of props 1`] = `
     <div
       className="text-left">
       <Link
-        className="text-left"
+        className="text-left plain"
         onlyActiveOnIndex={false}
         style={Object {}}
         to="https://my.newspring.cc">

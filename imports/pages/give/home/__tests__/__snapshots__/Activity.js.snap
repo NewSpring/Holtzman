@@ -92,7 +92,7 @@ exports[`GivingActivity should render with data 1`] = `
                 <a
                   className="
                     btn btn--small@next
-
+                    
                     btn--dark-tertiary flush
                   "
                   onClick={[Function]}
@@ -106,9 +106,9 @@ exports[`GivingActivity should render with data 1`] = `
       </div>
     </SectionHeader>
     <div
-      className="soft-half hard-top">
+      className="soft-half-sides hard-ends">
       <Activity
-        date="Tue Nov 01 2016 07:53:00 GMT-0400 (EDT)"
+        date="2016-12-01"
         linkText="Update it Now"
         linkUrl="/"
         message="Your saved payment undefined is expiring soon."
@@ -157,7 +157,7 @@ exports[`GivingActivity should render with data 1`] = `
               </i>
               <h5
                 className="display-inline-block floating__item soft-half-bottom">
-                Nov 1, 2016
+                Dec 1, 2016
               </h5>
             </div>
             <p>
@@ -184,7 +184,7 @@ exports[`GivingActivity should render with data 1`] = `
         </div>
       </Activity>
       <Activity
-        date="Tue Nov 01 2016 07:53:00 GMT-0400 (EDT)"
+        date="2016-12-01"
         linkText="Update it Now"
         linkUrl="/"
         message="Your saved payment undefined is expiring soon."
@@ -233,7 +233,7 @@ exports[`GivingActivity should render with data 1`] = `
               </i>
               <h5
                 className="display-inline-block floating__item soft-half-bottom">
-                Nov 1, 2016
+                Dec 1, 2016
               </h5>
             </div>
             <p>
@@ -260,7 +260,7 @@ exports[`GivingActivity should render with data 1`] = `
         </div>
       </Activity>
       <Activity
-        date="Tue Nov 01 2016 07:53:00 GMT-0400 (EDT)"
+        date="2016-12-01"
         linkText="Update it Now"
         linkUrl="/"
         message="Your saved payment undefined is expiring soon."
@@ -309,7 +309,7 @@ exports[`GivingActivity should render with data 1`] = `
               </i>
               <h5
                 className="display-inline-block floating__item soft-half-bottom">
-                Nov 1, 2016
+                Dec 1, 2016
               </h5>
             </div>
             <p>
@@ -336,6 +336,7 @@ exports[`GivingActivity should render with data 1`] = `
         </div>
       </Activity>
     </div>
+    <GivingSummary />
   </div>
 </GivingActivity>
 `;
