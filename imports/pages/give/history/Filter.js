@@ -1,6 +1,15 @@
 
 import { Component, PropTypes } from "react";
-import Forms from "../../../components/forms";
+import moment from "moment";
+import TagSelect from "../../../components/forms/TagSelect";
+import Tag from "../../../components/tags";
+
+const DATE_RANGES = [
+  { label: "Last Month", value: "LastMonth" },
+  { label: "Last 6 Months", value: "LastSixMonths" },
+  { label: "Last Year", value: "LastYear" },
+  { label: "All Time", value: "AllTime" },
+];
 
 export default class Filter extends Component {
 
@@ -8,6 +17,7 @@ export default class Filter extends Component {
     family: PropTypes.array.isRequired,
     changeFamily: PropTypes.func.isRequired,
     changeDates: PropTypes.func.isRequired,
+    findByLimit: PropTypes.func.isRequired,
   }
 
   state = { people: [], start: "", end: "", expanded: false }
@@ -44,32 +54,39 @@ export default class Filter extends Component {
     this.setState({ [id]: value });
   }
 
-  /* eslint-disable */
-  // formatExp = (str, { id }, event) => {
-  //
-  //   let current = this.state[id];
-  //   current || (current = "")
-  //   str = `${str}`
-  //
-  //   if (str.length > 5) return str.slice(0, 5);
-  //
-  //   let copy = str
-  //   const lastNumber = copy.slice(-1)
-  //   const currentLastNumber = current.slice(-1)
-  //
-  //   if (lastNumber === "/" && str.length === 1) return `0${str}/`;
-  //   if (lastNumber === "/" && str.length === 2 && currentLastNumber != "/") {
-  //     return `${str}/`;
-  //   }
-  //
-  //   if (str.length === 2 && lastNumber != "/" && currentLastNumber != "/" && currentLastNumber != "") {
-  //     return `${str}/`;
-  //   }
-  //
-  //   if (str.length === 4 && lastNumber === "/") return str.slice(0, 3);
-  //   return str;
-  // }
-  /* eslint-enable */
+  dateRangeClick = (value: string) => {
+    this.setState(({ start, end }) => {
+      if (start !== "" || end !== "") {
+        if (value === "AllTime") {
+          this.props.findByLimit();
+        } else {
+          this.props.changeDates("", "");
+        }
+        return { start: "", end: "" };
+      }
+
+      let startDate;
+      let endDate;
+      if (value === "LastMonth") {
+        startDate = moment().subtract(30, "days").format("L");
+        endDate = moment().format("L");
+      } else if (value === "LastSixMonths") {
+        startDate = moment().subtract(6, "months").format("L");
+        endDate = moment().format("L");
+      } else if (value === "LastYear") {
+        startDate = moment().subtract(12, "months").format("L");
+        endDate = moment().format("L");
+      } else {
+        this.props.findByLimit(0);
+      }
+
+      this.props.changeDates(startDate, endDate);
+      return {
+        start: startDate,
+        end: endDate,
+      };
+    });
+  }
 
   render() {
     const { family } = this.props;
@@ -79,19 +96,17 @@ export default class Filter extends Component {
         <div
           onClick={this.toggle}
           className={
-            "one-whole outlined--light outlined--top background--light-primary " +
+            "one-whole background--light-primary " +
             "soft-half-ends soft-sides soft-double-sides@lap-and-up"
           }
         >
-          <h6 className="text-dark-secondary flush-bottom display-inline-block">
+          <h7 className="text-dark-secondary flush-bottom push-half-left display-inline-block">
             Filter Transactions
-          </h6>
+          </h7>
           <span
-            className={`float-right flush-bottom ${expanded ? "h7" : "icon-filter"}`}
-            style={{ marginTop: expanded ? "3px" : "0px", cursor: "pointer" }}
-          >
-            {!expanded ? "" : "Done"}
-          </span>
+            className={`float-right flush ${expanded ? "icon-close" : "icon-filter"}`}
+            style={{ marginTop: expanded ? "0px" : "0px", cursor: "pointer" }}
+          />
         </div>
         <div className="one-whole outlined--bottom outlined--light" />
         {(() => {
@@ -100,34 +115,20 @@ export default class Filter extends Component {
             <div
               className={
                 "one-whole outlined--light outlined--bottom background--light-primary " +
-                "soft-half-ends soft-sides soft-double-sides"
+                "soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left"
               }
             >
-              <h6 className="push-top soft-half-bottom text-dark-secondary display-inline-block">
-                Family Member
-              </h6>
+              <h7 className="push-top text-dark-secondary display-inline-block">
+                Family Members
+              </h7>
 
               {family && family.map(({ person }, key) => {
                 const active = this.state.people.indexOf(person.id) > -1;
-                // <div
-                //   className={
-                //     `${active ? "\u2713" : ""} ` +
-                //     "display-inline-block outlined checkbox"
-                //   }
-                // >
-                //   {(() => {
-                //     if (active) {
-                //       return (
-                //         <div>&#x2714;</div>
-                //       );
-                //     }
-                //   })()}
-                // </div>
                 return (
                   <div
                     key={key}
                     style={{ cursor: "pointer" }}
-                    className="soft-half-bottom soft-half-left"
+                    className=""
                     onClick={() => this.onClick(person)}
                   >
                     <div
@@ -136,54 +137,50 @@ export default class Filter extends Component {
                         "display-inline-block outlined checkbox"
                       }
                     />
-                    <div
-                      className="push-left round background--fill display-inline-block"
-                      style={{
-                        width: "35px",
-                        height: "35px",
-                        verticalAlign: "middle",
-                        backgroundImage: `url('${person.photo}')`,
-                      }}
-                    />
-                    <h7 className="soft-half-left">
+                    <h6 className="soft-half-left display-inline-block">
                       {person.nickName || person.firstName} {person.lastName}
-                    </h7>
+                    </h6>
                   </div>
                 );
               })}
 
-              <h6 className="soft-half-top push-top text-dark-secondary display-inline-block">
-                Choose Date Range
-              </h6>
-              <div className="grid one-whole push-top flush-left@palm">
+              <h7 className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+                Date Range
+              </h7>
+              <div className="grid one-whole flush-left@palm">
                 <div
                   className={
-                    "hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap"
+                    "hard-left@palm grid__item one-whole"
                   }
                 >
-                  <Forms.Input
-                    label="Start Date (MM/YY)"
-                    type="text"
-                    id="start"
-                    defaultValue={this.state.start}
-                    onBlur={this.saveData}
-                    errorText="Please enter a start date"
-                    validation={(value) => (value.length === 0 || value.length === 5)}
-                  />
+                  <TagSelect items={DATE_RANGES} onClick={this.dateRangeClick} />
                 </div>
+              </div>
+
+              <h7 className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+                Custom Dates
+              </h7>
+              <div className="grid one-whole flush-left@palm">
                 <div
                   className={
-                    "hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap"
+                    "hard-left@palm grid__item one-whole display-inline-block"
                   }
                 >
-                  <Forms.Input
-                    label="End Date (MM/YY)"
-                    type="text"
-                    id="end"
-                    defaultValue={this.state.end}
-                    onBlur={this.saveData}
-                    errorText="Please enter an end date"
-                    validation={(value) => (value.length === 0 || value.length === 5)}
+                  <Tag
+                    key={1}
+                    label={"Start Date"}
+                    val={"StartDate"}
+                    onClick={this.dateRangeClick}
+                    active={false}
+                    className={false && "tag--disabled"}
+                  />
+                  <Tag
+                    key={2}
+                    label={"End Date"}
+                    val={"EndDate"}
+                    onClick={this.dateRangeClick}
+                    active={false}
+                    className={false && "tag--disabled"}
                   />
                 </div>
               </div>
