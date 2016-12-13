@@ -2,6 +2,8 @@
 import { Component } from "react";
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
+
+import Authorized from "../../../blocks/authorzied";
 import Layout from "./Layout";
 
 type IHome = {
@@ -16,7 +18,7 @@ class Home extends Component {
     });
   }
   render() {
-    return <Layout />;
+    return <Authorized><Layout /></Authorized>;
   }
 }
 
@@ -30,11 +32,11 @@ const Routes = [
   { path: "home",
     component: Home,
     rightComponent: <Hai />,
-    onEnter: (nextState: Object, replace: Function) => {
-      if (!Meteor.userId()) {
-        replace("/give/now");
-      }
-    },
+    // onEnter: (nextState: Object, replace: Function) => {
+    //   if (!Meteor.userId()) {
+    //     replace("/give/now");
+    //   }
+    // },
   },
 ];
 
