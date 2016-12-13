@@ -376,7 +376,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                       },
                       "flyout": Object {
                         "fill": "#f0f0f0",
-                        "pointerEvents": "none",
                         "stroke": "#252525",
                         "strokeWidth": 1,
                       },
@@ -386,7 +385,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                         "fontSize": 14,
                         "letterSpacing": "normal",
                         "padding": 10,
-                        "pointerEvents": "none",
                         "stroke": "transparent",
                         "textAnchor": "middle",
                       },
@@ -791,7 +789,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                       },
                       "flyout": Object {
                         "fill": "#f0f0f0",
-                        "pointerEvents": "none",
                         "stroke": "#252525",
                         "strokeWidth": 1,
                       },
@@ -801,7 +798,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                         "fontSize": 14,
                         "letterSpacing": "normal",
                         "padding": 10,
-                        "pointerEvents": "none",
                         "stroke": "transparent",
                         "textAnchor": "middle",
                       },
@@ -852,8 +848,15 @@ exports[`Line Graph renders correctly with default props 1`] = `
           } />,
       }
     }
+    domainPadding={
+      Object {
+        "y": Array [
+          100,
+          100,
+        ],
+      }
+    }
     groupComponent={<g />}
-    height={160}
     padding={
       Object {
         "bottom": 50,
@@ -1191,7 +1194,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
             },
             "flyout": Object {
               "fill": "#f0f0f0",
-              "pointerEvents": "none",
               "stroke": "#252525",
               "strokeWidth": 1,
             },
@@ -1201,7 +1203,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
               "fontSize": 14,
               "letterSpacing": "normal",
               "padding": 10,
-              "pointerEvents": "none",
               "stroke": "transparent",
               "textAnchor": "middle",
             },
@@ -1610,7 +1611,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
               },
               "flyout": Object {
                 "fill": "#f0f0f0",
-                "pointerEvents": "none",
                 "stroke": "#252525",
                 "strokeWidth": 1,
               },
@@ -1620,7 +1620,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                 "fontSize": 14,
                 "letterSpacing": "normal",
                 "padding": 10,
-                "pointerEvents": "none",
                 "stroke": "transparent",
                 "textAnchor": "middle",
               },
@@ -2106,7 +2105,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
               },
               "flyout": Object {
                 "fill": "#f0f0f0",
-                "pointerEvents": "none",
                 "stroke": "#252525",
                 "strokeWidth": 1,
               },
@@ -2116,7 +2114,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                 "fontSize": 14,
                 "letterSpacing": "normal",
                 "padding": 10,
-                "pointerEvents": "none",
                 "stroke": "transparent",
                 "textAnchor": "middle",
               },
@@ -2593,7 +2590,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
               },
               "flyout": Object {
                 "fill": "#f0f0f0",
-                "pointerEvents": "none",
                 "stroke": "#252525",
                 "strokeWidth": 1,
               },
@@ -2603,7 +2599,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                 "fontSize": 14,
                 "letterSpacing": "normal",
                 "padding": 10,
-                "pointerEvents": "none",
                 "stroke": "transparent",
                 "textAnchor": "middle",
               },

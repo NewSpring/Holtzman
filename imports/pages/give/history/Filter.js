@@ -109,20 +109,6 @@ export default class Filter extends Component {
 
               {family && family.map(({ person }, key) => {
                 const active = this.state.people.indexOf(person.id) > -1;
-                // <div
-                //   className={
-                //     `${active ? "\u2713" : ""} ` +
-                //     "display-inline-block outlined checkbox"
-                //   }
-                // >
-                //   {(() => {
-                //     if (active) {
-                //       return (
-                //         <div>&#x2714;</div>
-                //       );
-                //     }
-                //   })()}
-                // </div>
                 return (
                   <div
                     key={key}
@@ -132,9 +118,17 @@ export default class Filter extends Component {
                   >
                     <div
                       className={
-                        `${active ? "checkbox-checked" : ""} ` +
-                        "display-inline-block outlined checkbox"
+                        `${active ? "background--primary" : ""} ` +
+                        "display-inline-block outlined"
                       }
+                      style={{
+                        width: "15px",
+                        height: "15px",
+                        verticalAlign: "middle",
+                        borderWidth: "2px",
+                        borderRadius: "3px",
+                        cursor: "pointer",
+                      }}
                     />
                     <div
                       className="push-left round background--fill display-inline-block"

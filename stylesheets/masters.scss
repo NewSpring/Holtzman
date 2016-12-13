@@ -16,7 +16,6 @@
 @import "./helpers/type";
 @import "./helpers/scripture";
 
-@import "./complex-objects/checkbox";
 @import "./complex-objects/toggle";
 @import "./complex-objects/toggle-switch";
 
@@ -166,7 +165,7 @@ blockquote p {
 
   //5 10 3.5
   padding: ($button-height * .1) ($button-height * .3) ($button-height * .1) - 1.5;
-  border: 1px solid;
+  border: 2px solid;
 }
 
 
