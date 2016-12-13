@@ -152,7 +152,7 @@ exports[`GivingSummary should pass correct props to graph with data 1`] = `
             },
           ],
           "dotColor": "#6bac43",
-          "dotSize": "5",
+          "dotSize": "3",
           "lineColor": "#6bac43",
           "lineWidth": "3",
         }

@@ -8,7 +8,7 @@ const graphSettings = {
   lineColor: "#6bac43",
   lineWidth: "3",
   dotColor: "#6bac43",
-  dotSize: "5",
+  dotSize: "3",
   axisStyles: {
     axis: {
       lineColor: "transparent",
