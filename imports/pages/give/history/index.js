@@ -17,6 +17,7 @@ class TemplateWithoutData extends Component {
     transactions: PropTypes.array,
     changeDates: PropTypes.func,
     changeFamily: PropTypes.func,
+    findByLimit: PropTypes.func,
     Loading: PropTypes.func.isRequired,
     done: PropTypes.bool,
     filter: PropTypes.shape({
@@ -52,6 +53,7 @@ class TemplateWithoutData extends Component {
       loading,
       changeDates,
       changeFamily,
+      findByLimit,
       filter,
       done,
       Loading,
@@ -68,6 +70,7 @@ class TemplateWithoutData extends Component {
         done={done}
         changeFamily={this.wrapRefetch(changeFamily)}
         changeDates={this.wrapRefetch(changeDates)}
+        findByLimit={this.wrapRefetch(findByLimit)}
       />
     );
   }
@@ -76,7 +79,7 @@ class TemplateWithoutData extends Component {
 const FILTER_QUERY = gql`
   query GetFilterContent {
     family: currentFamily {
-      person { photo, nickName, firstName, lastName, id: entityId }
+      person { nickName, firstName, lastName, id: entityId }
     }
   }
 `;
@@ -105,9 +108,12 @@ const TRANSACTIONS_QUERY = gql`
     }
   }
 `;
+
+const DEFAULT_LIMIT = 20;
+
 const withTransactions = graphql(TRANSACTIONS_QUERY, {
   options: {
-    variables: { limit: 20, skip: 0, people: [], start: "", end: "" },
+    variables: { limit: DEFAULT_LIMIT, skip: 0, people: [], start: "", end: "" },
     forceFetch: true,
   },
   props: ({ data }) => ({
@@ -140,6 +146,8 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
         !fetchMoreResult.data ? previousResult : fetchMoreResult.data
       ),
     }),
+    findByLimit: (limitProp = DEFAULT_LIMIT) =>
+      data.refetch({ ...data.variables, ...{ limit: limitProp } }),
   }),
 });
 
