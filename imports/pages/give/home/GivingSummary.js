@@ -29,7 +29,6 @@ type IGivingSummary = {
 export const GivingSummary = (props) => {
   if (!props.data || props.data.loading || !props.data.chartData) return null;
   const data = { data: props.data.chartData, ...graphSettings };
-  console.log("rendering", props);
   return (
     <div className="push-half-sides">
       <YearToDate
