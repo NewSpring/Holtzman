@@ -120,6 +120,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         <div
           className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
           <div
+<<<<<<< 453f80aa3c51d6485b81d73e521653411f687dc9
             className="card">
             <div
               className="card__item soft push-half-ends one-whole">
@@ -136,6 +137,26 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </button>
               <div
                 className="floating text-left text-dark-primary">
+=======
+            className="card__item soft push-half-ends one-whole">
+            <button
+              className="float-right h6 text-dark-tertiary outlined--bottom"
+              onClick={[Function]}
+              style={
+                Object {
+                  "borderColor": "inherit",
+                  "borderWidth": "2px",
+                }
+              }>
+              Edit
+            </button>
+            <Currency
+              amount="20"
+              baseHeadingSize="2"
+              className="text-left">
+              <div
+                className="floating text-dark-primary text-left">
+>>>>>>> Updated failing snapshot
                 <h4
                   className="floating__item flush"
                   style={
@@ -215,6 +236,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         <div
           className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
           <div
+<<<<<<< 453f80aa3c51d6485b81d73e521653411f687dc9
             className="card">
             <div
               className="card__item soft push-half-ends one-whole">
@@ -231,6 +253,26 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </button>
               <div
                 className="floating text-left text-dark-primary">
+=======
+            className="card__item soft push-half-ends one-whole">
+            <button
+              className="float-right h6 text-dark-tertiary outlined--bottom"
+              onClick={[Function]}
+              style={
+                Object {
+                  "borderColor": "inherit",
+                  "borderWidth": "2px",
+                }
+              }>
+              Edit
+            </button>
+            <Currency
+              amount="100"
+              baseHeadingSize="2"
+              className="text-left">
+              <div
+                className="floating text-dark-primary text-left">
+>>>>>>> Updated failing snapshot
                 <h4
                   className="floating__item flush"
                   style={
@@ -310,6 +352,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         <div
           className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
           <div
+<<<<<<< 453f80aa3c51d6485b81d73e521653411f687dc9
             className="card">
             <div
               className="card__item soft push-half-ends one-whole">
@@ -326,6 +369,26 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </button>
               <div
                 className="floating text-left text-dark-primary">
+=======
+            className="card__item soft push-half-ends one-whole">
+            <button
+              className="float-right h6 text-dark-tertiary outlined--bottom"
+              onClick={[Function]}
+              style={
+                Object {
+                  "borderColor": "inherit",
+                  "borderWidth": "2px",
+                }
+              }>
+              Edit
+            </button>
+            <Currency
+              amount="50"
+              baseHeadingSize="2"
+              className="text-left">
+              <div
+                className="floating text-dark-primary text-left">
+>>>>>>> Updated failing snapshot
                 <h4
                   className="floating__item flush"
                   style={
