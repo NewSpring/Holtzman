@@ -96,7 +96,17 @@ exports[`test renders family members when expanded is true 1`] = `
         }
       }>
       <div
-        className=" display-inline-block outlined checkbox" />
+        className=" display-inline-block outlined"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "borderWidth": "2px",
+            "cursor": "pointer",
+            "height": "15px",
+            "verticalAlign": "middle",
+            "width": "15px",
+          }
+        } />
       <div
         className="push-left round background--fill display-inline-block"
         style={
@@ -123,7 +133,17 @@ exports[`test renders family members when expanded is true 1`] = `
         }
       }>
       <div
-        className=" display-inline-block outlined checkbox" />
+        className=" display-inline-block outlined"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "borderWidth": "2px",
+            "cursor": "pointer",
+            "height": "15px",
+            "verticalAlign": "middle",
+            "width": "15px",
+          }
+        } />
       <div
         className="push-left round background--fill display-inline-block"
         style={
@@ -234,7 +254,17 @@ exports[`test works with nickname 1`] = `
         }
       }>
       <div
-        className=" display-inline-block outlined checkbox" />
+        className=" display-inline-block outlined"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "borderWidth": "2px",
+            "cursor": "pointer",
+            "height": "15px",
+            "verticalAlign": "middle",
+            "width": "15px",
+          }
+        } />
       <div
         className="push-left round background--fill display-inline-block"
         style={
@@ -261,7 +291,17 @@ exports[`test works with nickname 1`] = `
         }
       }>
       <div
-        className=" display-inline-block outlined checkbox" />
+        className=" display-inline-block outlined"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "borderWidth": "2px",
+            "cursor": "pointer",
+            "height": "15px",
+            "verticalAlign": "middle",
+            "width": "15px",
+          }
+        } />
       <div
         className="push-left round background--fill display-inline-block"
         style={

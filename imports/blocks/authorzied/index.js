@@ -61,9 +61,7 @@ export default class Authorized extends Component {
 
   render() {
     if (Meteor.userId()) {
-      const props = { ...this.props };
-      delete props.children;
-      return cloneElement(this.props.children, { ...props });
+      return cloneElement(this.props.children, { ...this.props });
     }
 
     /*
