@@ -26,29 +26,22 @@ type IGivingSummary = {
   data: Object,
 };
 
-export class GivingSummary extends Component {
-  props: IGivingSummary;
+export const GivingSummary = (props) => {
+  if (!props.data || props.data.loading || !props.data.chartData) return null;
+  const data = { data: props.data.chartData, ...graphSettings };
+  console.log("rendering", props);
+  return (
+    <div className="push-half-sides">
+      <YearToDate
+        graphData={data}
+        amount={`${props.data.total}`}
+        linkUrl="/give/history"
+      />
+    </div>
+  );
+};
 
-  render() {
-    if (!this.props.data || this.props.data.loading || !this.props.data.chartData) return null;
-    const data = { data: this.props.data.chartData, ...graphSettings };
-    console.log(data);
-
-    return (
-      <div className="push-half-sides">
-        <YearToDate
-          graphData={data}
-          amount={`${this.props.data.total}`}
-          linkUrl="/give/history"
-        />
-      </div>
-    );
-  }
-
-}
 
 export default withYTDData(
   connect((state) => ({ breakpoints: state.responsive.breakpoints }))(GivingSummary)
 );
-
-// export default withYTDData(GivingSummary);

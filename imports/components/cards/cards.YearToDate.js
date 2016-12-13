@@ -15,8 +15,8 @@ const YearToDate = ({
   linkUrl,
 }: IYearToDate) => (
   <div className="card">
-    <div className="card__item soft hard-top">
-      <div className="soft-double-bottom">
+    <div className="card__item soft">
+      <div className="soft-double-bottom soft-double-top">
         <LineGraph
           data={graphData.data}
           lineColor={graphData.lineColor}
