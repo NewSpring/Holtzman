@@ -71,7 +71,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
               "verticalAlign": "middle",
             }
           }>
-          Started:
+          Started: 
         </span>
         <em
           className="text-dark-primary">

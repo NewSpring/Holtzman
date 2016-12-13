@@ -85,7 +85,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               <Link
                 className="
                   btn btn--small@next
-                  
+
                   btn--dark-tertiary flush
                 "
                 onlyActiveOnIndex={false}
@@ -94,7 +94,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 <a
                   className="
                     btn btn--small@next
-                    
+
                     btn--dark-tertiary flush
                   "
                   onClick={[Function]}
@@ -120,24 +120,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         <div
           className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
           <div
-<<<<<<< 4864b2de382e5079064f2e40060a0603aca54185
-            className="card__item soft push-half-ends one-whole">
-            <button
-              className="float-right h6 text-dark-tertiary outlined--bottom"
-              onClick={[Function]}
-              style={
-                Object {
-                  "borderColor": "inherit",
-                  "borderWidth": "2px",
-                }
-              }>
-              Edit
-            </button>
-            <Currency
-              amount="20"
-              baseHeadingSize="2">
-              <div
-                className="floating text-left text-dark-primary ">
 =======
             className="card">
             <div
@@ -155,7 +137,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </button>
               <div
                 className="floating text-left text-dark-primary">
->>>>>>> made cards 1/2 size, fixed button border
                 <h4
                   className="floating__item flush"
                   style={
@@ -172,28 +153,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 <h4
                   className="floating__item flush" />
               </div>
-<<<<<<< 4864b2de382e5079064f2e40060a0603aca54185
-            </Currency>
-            <div
-              className="floating text-left push-bottom">
-              <h5
-                className="floating__item soft-half-right flush text-dark-primary">
-                General Fund
-              </h5>
-              <h6
-                className="floating__item flush text-dark-tertiary">
-                One Time
-              </h6>
-            </div>
-            <p
-              className="flush"
-              style={
-                Object {
-                  "marginBottom": "5px",
-                }
-              }>
-              <span
-                className="h7 text-dark-tertiary push-half-right"
 =======
               <div
                 className="floating text-left push-bottom">
@@ -208,7 +167,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </div>
               <p
                 className="flush"
->>>>>>> made cards 1/2 size, fixed button border
                 style={
                   Object {
                     "marginBottom": "5px",
@@ -221,7 +179,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "verticalAlign": "middle",
                     }
                   }>
-                  Started: 
+                  Started:
                 </span>
                 <em
                   className="text-dark-primary">
@@ -237,7 +195,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "verticalAlign": "middle",
                     }
                   }>
-                  Latest: 
+                  Latest:
                 </span>
                 <em
                   className="text-dark-primary">
@@ -259,44 +217,10 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         <div
           className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
           <div
-<<<<<<< 4864b2de382e5079064f2e40060a0603aca54185
-            className="card__item soft push-half-ends one-whole">
-            <button
-              className="float-right h6 text-dark-tertiary outlined--bottom"
-              onClick={[Function]}
-              style={
-                Object {
-                  "borderColor": "inherit",
-                  "borderWidth": "2px",
-                }
-              }>
-              Edit
-            </button>
-            <Currency
-              amount="100"
-              baseHeadingSize="2">
-              <div
-                className="floating text-left text-dark-primary ">
-                <h4
-                  className="floating__item flush"
-                  style={
-                    Object {
-                      "paddingRight": "5px",
-                    }
-                  }>
-                  $
-                </h4>
-                <h2
-                  className="floating__item flush">
-                  100
-                </h2>
-                <h4
-                  className="floating__item flush" />
-              </div>
-            </Currency>
+            className="card">
 =======
             className="card">
->>>>>>> made cards 1/2 size, fixed button border
+>>>>>>> 81db1e3d60bb1d88edf5878dd45138d2a93d1a70
             <div
               className="card__item soft push-half-ends one-whole">
               <button
@@ -353,7 +277,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "verticalAlign": "middle",
                     }
                   }>
-                  Started: 
+                  Started:
                 </span>
                 <em
                   className="text-dark-primary">
@@ -369,7 +293,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "verticalAlign": "middle",
                     }
                   }>
-                  Latest: 
+                  Latest:
                 </span>
                 <em
                   className="text-dark-primary">
@@ -391,24 +315,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         <div
           className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
           <div
-<<<<<<< 4864b2de382e5079064f2e40060a0603aca54185
-            className="card__item soft push-half-ends one-whole">
-            <button
-              className="float-right h6 text-dark-tertiary outlined--bottom"
-              onClick={[Function]}
-              style={
-                Object {
-                  "borderColor": "inherit",
-                  "borderWidth": "2px",
-                }
-              }>
-              Edit
-            </button>
-            <Currency
-              amount="50"
-              baseHeadingSize="2">
-              <div
-                className="floating text-left text-dark-primary ">
 =======
             className="card">
             <div
@@ -426,7 +332,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </button>
               <div
                 className="floating text-left text-dark-primary">
->>>>>>> made cards 1/2 size, fixed button border
                 <h4
                   className="floating__item flush"
                   style={
@@ -443,36 +348,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 <h4
                   className="floating__item flush" />
               </div>
-<<<<<<< 4864b2de382e5079064f2e40060a0603aca54185
-            </Currency>
-            <div
-              className="floating text-left push-bottom">
-              <h5
-                className="floating__item soft-half-right flush text-dark-primary">
-                Christmas Offering
-              </h5>
-              <h6
-                className="floating__item flush text-dark-tertiary">
-                One Time
-              </h6>
-            </div>
-            <p
-              className="flush"
-              style={Object {}}>
-              <span
-                className="h7 text-dark-tertiary push-half-right"
-                style={
-                  Object {
-                    "verticalAlign": "middle",
-                  }
-                }>
-                Started: 
-              </span>
-              <em
-                className="text-dark-primary">
-                Mar 16, 2016
-              </em>
-            </p>
 =======
               <div
                 className="floating text-left push-bottom">
@@ -495,7 +370,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                       "verticalAlign": "middle",
                     }
                   }>
-                  Started: 
+                  Started:
                 </span>
                 <em
                   className="text-dark-primary">
@@ -503,7 +378,6 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 </em>
               </p>
             </div>
->>>>>>> made cards 1/2 size, fixed button border
           </div>
         </div>
       </ScheduleOverviewCard>

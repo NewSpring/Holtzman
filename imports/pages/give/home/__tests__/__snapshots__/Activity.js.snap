@@ -83,7 +83,7 @@ exports[`GivingActivity should render with data 1`] = `
               <Link
                 className="
                   btn btn--small@next
-
+                  
                   btn--dark-tertiary flush
                 "
                 onlyActiveOnIndex={false}
