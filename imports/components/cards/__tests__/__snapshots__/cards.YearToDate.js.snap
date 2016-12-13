@@ -88,27 +88,9 @@ exports[`Year To Date should render with the default set of props 1`] = `
         lineColor="#6BAC43"
         lineWidth="3" />
     </div>
-    <div
-      className="floating text-left text-dark-primary">
-      <h4
-        className="floating__item flush"
-        style={
-          Object {
-            "paddingRight": "5px",
-          }
-        }>
-        $
-      </h4>
-      <h2
-        className="floating__item flush">
-        2017
-      </h2>
-      <h4
-        className="floating__item flush">
-        .
-        00
-      </h4>
-    </div>
+    <Currency
+      amount="2017"
+      baseHeadingSize="" />
     <p
       className="text-dark-primary italic text-left">
       Contributed so far this year
@@ -116,7 +98,7 @@ exports[`Year To Date should render with the default set of props 1`] = `
     <div
       className="text-left">
       <Link
-        className="text-left"
+        className="text-left plain"
         onlyActiveOnIndex={false}
         style={Object {}}
         to="https://my.newspring.cc">
