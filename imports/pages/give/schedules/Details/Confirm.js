@@ -49,7 +49,7 @@ class ConfirmWithoutData extends Component {
 
           <p className="test-dark-tertiary text-left">
             <em>
-              If you would like a member of our customer support team to follow up with you regarding this contributions, click <a rel="noopener noreferrer" target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">here</a>
+              If you would like a member of our customer support team to follow up with you regarding your contributions, click <a rel="noopener noreferrer" target="_blank" href="//rock.newspring.cc/workflows/152?Topic=Stewardship">here</a>
             </em>
           </p>
         </div>
