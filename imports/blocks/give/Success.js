@@ -90,7 +90,7 @@ type ISuccess = {
   email: string,
   guest: boolean,
   onClick?: Function,
-  schedule?: Object[],
+  schedule?: Object,
   additionalMessage?: string,
 };
 
@@ -107,9 +107,9 @@ const Success = ({
       <SuccessIcon />
       <h3 className="text-primary push-ends">Success!</h3>
 
-      <ScheduleThanks total={total} schedule={schedule} />
+      <ScheduleThanks total={total} schedule={schedule || false} />
 
-      <OneTimeThanks total={total} email={email} schedule={schedule} />
+      <OneTimeThanks total={total} email={email} schedule={schedule || false} />
 
       <AdditionalMessage additionalMessage={additionalMessage} />
 
