@@ -20,13 +20,6 @@ const getTickFormat = (data: Object[]) => {
   return ticks;
 };
 
-/**
- *
- * removed from <Victorychart> props because when the component remounts
- * after leaving a page, it causes a double render which cancells the animation back
- * into view, resulting in a blank chart.
- */
-
 const LineGraph = ({
   axisStyles,
   data,

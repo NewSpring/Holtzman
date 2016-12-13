@@ -21,7 +21,9 @@ const baseData = [
 ];
 
 export const formatGivingSummaryData = (data: Object): ?Object => {
+  if(!data || !data.accounts) return null;
   const accountsData = data.accounts;
+
   if (!Array.isArray(accountsData)) return null;
   const summaryData = JSON.parse(JSON.stringify(baseData));
   let total = 0;
