@@ -35,7 +35,9 @@ export default class Filter extends Component {
     customEndLabel: "End Date",
     customStartActive: false,
     customEndActive: false,
+    customDateDisabled: false,
     limit: 20,
+    overrideActive: false,
   }
 
   componentWillReceiveProps(nextProps) {
@@ -68,7 +70,7 @@ export default class Filter extends Component {
         if (value === "AllTime" && limit !== 20) {
           transactionLimit = 20;
         }
-        return { start: "", end: "", limit: transactionLimit };
+        return { start: "", end: "", limit: transactionLimit, customDateDisabled: false };
       }
 
       let startDate;
@@ -90,6 +92,7 @@ export default class Filter extends Component {
         start: startDate,
         end: endDate,
         limit: transactionLimit,
+        customDateDisabled: true,
       };
     });
   }
@@ -126,8 +129,12 @@ export default class Filter extends Component {
         this.setState({ start: "" });
         this.setState({ customStartLabel: "Start Date" });
         this.setState({ customStartActive: false });
+        if (this.state.end === "") {
+          this.setState({ overrideActive: false });
+        }
       } else {
         this.setState(({ showStartDatePicker }) => ({ showStartDatePicker: !showStartDatePicker }));
+        this.setState({ overrideActive: true });
       }
     }
 
@@ -136,8 +143,12 @@ export default class Filter extends Component {
         this.setState({ end: "" });
         this.setState({ customEndLabel: "End Date" });
         this.setState({ customEndActive: false });
+        if (this.state.start === "") {
+          this.setState({ overrideActive: false });
+        }
       } else {
         this.setState(({ showEndDatePicker }) => ({ showEndDatePicker: !showEndDatePicker }));
+        this.setState({ overrideActive: true });
       }
     }
   }
@@ -229,7 +240,11 @@ export default class Filter extends Component {
                   "hard-left@palm grid__item one-whole"
                 }
               >
-                <TagSelect items={DATE_RANGES} onClick={this.dateRangeClick} />
+                <TagSelect
+                  items={DATE_RANGES}
+                  onClick={this.dateRangeClick}
+                  overrideActive={this.state.overrideActive}
+                />
               </div>
             </div>
 
@@ -248,7 +263,7 @@ export default class Filter extends Component {
                   val={"StartDate"}
                   onClick={this.startClick}
                   active={this.state.customStartActive}
-                  className={false && "tag--disabled"}
+                  className={this.state.customDateDisabled && "tag--disabled"}
                 />
                 <Tag
                   key={2}
@@ -256,7 +271,7 @@ export default class Filter extends Component {
                   val={"EndDate"}
                   onClick={this.startClick}
                   active={this.state.customEndActive}
-                  className={false && "tag--disabled"}
+                  className={this.state.customDateDisabled && "tag--disabled"}
                 />
               </div>
             </div>
