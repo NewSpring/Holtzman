@@ -1,12 +1,7 @@
 // @flow
 
 import moment from "moment";
-import {
-  getCurrencySymbol,
-  getNegative,
-  getDollars,
-  getCents,
-} from "./../currency";
+import Currency from "./../currency";
 
 type IScheduleOverviewCard = {
   amount: string,
@@ -38,7 +33,6 @@ const ScheduleOverviewCard = ({
       </button>
       <Currency
         amount={amount}
-        baseHeadingSize={baseHeadingSize || "2"}
         className="text-left"
       />
       <div className="floating text-left push-bottom">

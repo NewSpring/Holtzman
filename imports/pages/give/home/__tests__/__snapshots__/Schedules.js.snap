@@ -118,26 +118,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         onEditClick={[Function]}
         started="2016-03-16">
         <div
-          className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
+          className="card">
           <div
-<<<<<<< 453f80aa3c51d6485b81d73e521653411f687dc9
-            className="card">
-            <div
-              className="card__item soft push-half-ends one-whole">
-              <button
-                className="float-right h6 text-dark-tertiary outlined--bottom"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "borderColor": "inherit",
-                    "borderWidth": "2px",
-                  }
-                }>
-                Edit
-              </button>
-              <div
-                className="floating text-left text-dark-primary">
-=======
             className="card__item soft push-half-ends one-whole">
             <button
               className="float-right h6 text-dark-tertiary outlined--bottom"
@@ -152,11 +134,9 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             </button>
             <Currency
               amount="20"
-              baseHeadingSize="2"
               className="text-left">
               <div
                 className="floating text-dark-primary text-left">
->>>>>>> Updated failing snapshot
                 <h4
                   className="floating__item flush"
                   style={
@@ -173,54 +153,17 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 <h4
                   className="floating__item flush" />
               </div>
-              <div
-                className="floating text-left push-bottom">
-                <h5
-                  className="floating__item soft-half-right flush text-dark-primary">
-                  General Fund
-                </h5>
-                <h6
-                  className="floating__item flush text-dark-tertiary">
-                  One Time
-                </h6>
-              </div>
-              <p
-                className="flush"
-                style={
-                  Object {
-                    "marginBottom": "5px",
-                  }
-                }>
-                <span
-                  className="h7 text-dark-tertiary push-half-right"
-                  style={
-                    Object {
-                      "verticalAlign": "middle",
-                    }
-                  }>
-                  Started: 
-                </span>
-                <em
-                  className="text-dark-primary">
-                  Mar 16, 2016
-                </em>
-              </p>
-              <p
-                className="flush">
-                <span
-                  className="h7 text-dark-tertiary push-half-right"
-                  style={
-                    Object {
-                      "verticalAlign": "middle",
-                    }
-                  }>
-                  Latest: 
-                </span>
-                <em
-                  className="text-dark-primary">
-                  Mar 17, 2016
-                </em>
-              </p>
+            </Currency>
+            <div
+              className="floating text-left push-bottom">
+              <h5
+                className="floating__item soft-half-right flush text-dark-primary">
+                General Fund
+              </h5>
+              <h6
+                className="floating__item flush text-dark-tertiary">
+                One Time
+              </h6>
             </div>
           </div>
         </div>
@@ -234,26 +177,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         onEditClick={[Function]}
         started="2016-03-16">
         <div
-          className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
+          className="card">
           <div
-<<<<<<< 453f80aa3c51d6485b81d73e521653411f687dc9
-            className="card">
-            <div
-              className="card__item soft push-half-ends one-whole">
-              <button
-                className="float-right h6 text-dark-tertiary outlined--bottom"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "borderColor": "inherit",
-                    "borderWidth": "2px",
-                  }
-                }>
-                Edit
-              </button>
-              <div
-                className="floating text-left text-dark-primary">
-=======
             className="card__item soft push-half-ends one-whole">
             <button
               className="float-right h6 text-dark-tertiary outlined--bottom"
@@ -268,11 +193,9 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             </button>
             <Currency
               amount="100"
-              baseHeadingSize="2"
               className="text-left">
               <div
                 className="floating text-dark-primary text-left">
->>>>>>> Updated failing snapshot
                 <h4
                   className="floating__item flush"
                   style={
@@ -289,54 +212,17 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 <h4
                   className="floating__item flush" />
               </div>
-              <div
-                className="floating text-left push-bottom">
-                <h5
-                  className="floating__item soft-half-right flush text-dark-primary">
-                  Step Up Fund
-                </h5>
-                <h6
-                  className="floating__item flush text-dark-tertiary">
-                  Once a Month
-                </h6>
-              </div>
-              <p
-                className="flush"
-                style={
-                  Object {
-                    "marginBottom": "5px",
-                  }
-                }>
-                <span
-                  className="h7 text-dark-tertiary push-half-right"
-                  style={
-                    Object {
-                      "verticalAlign": "middle",
-                    }
-                  }>
-                  Started: 
-                </span>
-                <em
-                  className="text-dark-primary">
-                  Mar 16, 2016
-                </em>
-              </p>
-              <p
-                className="flush">
-                <span
-                  className="h7 text-dark-tertiary push-half-right"
-                  style={
-                    Object {
-                      "verticalAlign": "middle",
-                    }
-                  }>
-                  Latest: 
-                </span>
-                <em
-                  className="text-dark-primary">
-                  Mar 18, 2016
-                </em>
-              </p>
+            </Currency>
+            <div
+              className="floating text-left push-bottom">
+              <h5
+                className="floating__item soft-half-right flush text-dark-primary">
+                Step Up Fund
+              </h5>
+              <h6
+                className="floating__item flush text-dark-tertiary">
+                Once a Month
+              </h6>
             </div>
           </div>
         </div>
@@ -350,26 +236,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         onEditClick={[Function]}
         started="2016-03-16">
         <div
-          className="grid__item soft-half-sides hard-right one-half@lap-wide-and-up">
+          className="card">
           <div
-<<<<<<< 453f80aa3c51d6485b81d73e521653411f687dc9
-            className="card">
-            <div
-              className="card__item soft push-half-ends one-whole">
-              <button
-                className="float-right h6 text-dark-tertiary outlined--bottom"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "borderColor": "inherit",
-                    "borderWidth": "2px",
-                  }
-                }>
-                Edit
-              </button>
-              <div
-                className="floating text-left text-dark-primary">
-=======
             className="card__item soft push-half-ends one-whole">
             <button
               className="float-right h6 text-dark-tertiary outlined--bottom"
@@ -384,11 +252,9 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             </button>
             <Currency
               amount="50"
-              baseHeadingSize="2"
               className="text-left">
               <div
                 className="floating text-dark-primary text-left">
->>>>>>> Updated failing snapshot
                 <h4
                   className="floating__item flush"
                   style={
@@ -405,34 +271,17 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 <h4
                   className="floating__item flush" />
               </div>
-              <div
-                className="floating text-left push-bottom">
-                <h5
-                  className="floating__item soft-half-right flush text-dark-primary">
-                  Christmas Offering
-                </h5>
-                <h6
-                  className="floating__item flush text-dark-tertiary">
-                  One Time
-                </h6>
-              </div>
-              <p
-                className="flush"
-                style={Object {}}>
-                <span
-                  className="h7 text-dark-tertiary push-half-right"
-                  style={
-                    Object {
-                      "verticalAlign": "middle",
-                    }
-                  }>
-                  Started: 
-                </span>
-                <em
-                  className="text-dark-primary">
-                  Mar 16, 2016
-                </em>
-              </p>
+            </Currency>
+            <div
+              className="floating text-left push-bottom">
+              <h5
+                className="floating__item soft-half-right flush text-dark-primary">
+                Christmas Offering
+              </h5>
+              <h6
+                className="floating__item flush text-dark-tertiary">
+                One Time
+              </h6>
             </div>
           </div>
         </div>
