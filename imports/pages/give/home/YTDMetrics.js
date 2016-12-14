@@ -23,18 +23,16 @@ const styles = {
 };
 
 type IYTDMetrics = {
-  data: Object,
+  data?: Object,
   linkUrl: string,
 };
 
 export const YTDMetrics = ({ data, linkUrl }: IYTDMetrics) => {
-  if (data.loading) return null;
+  if (!data || data.loading) return null;
 
   return (
-    <div className="">
-      <div className="soft">
-        <YTDTotal amount={`${data.total}`} className="text-light-primary" />
-        <p className="text-light-primary italic text-left">Contributed so far this year</p>
+    <div>
+      <div>
         <div className="soft-double-bottom soft-double-top">
           <LineGraph
             data={data.chartData}
@@ -45,6 +43,8 @@ export const YTDMetrics = ({ data, linkUrl }: IYTDMetrics) => {
             axisStyles={styles.axisStyles}
           />
         </div>
+        <YTDTotal amount={`${data.total}`} className="text-light-primary" baseHeadingSize="1"/>
+        <p className="push-top text-light-primary italic text-left"><small>Total amount given across all funds</small></p>
         <div className="text-left">
           <Link to={linkUrl} className="text-left">
             <h6 className="display-inline-block text-light-primary">View Your Giving History</h6><span className="icon-arrow-next soft-half-left text-light-primary" />

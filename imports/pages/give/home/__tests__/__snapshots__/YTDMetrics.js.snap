@@ -1,33 +1,6 @@
 exports[`YTDMetrics returns a linegraph of data 1`] = `
-<div
-  className="">
-  <div
-    className="soft">
-    <div
-      className="floating text-left text-dark-primary text-light-primary">
-      <h4
-        className="floating__item flush"
-        style={
-          Object {
-            "paddingRight": "5px",
-          }
-        }>
-        $
-      </h4>
-      <h2
-        className="floating__item flush">
-        3422
-      </h2>
-      <h4
-        className="floating__item flush">
-        .
-        00
-      </h4>
-    </div>
-    <p
-      className="text-light-primary italic text-left">
-      Contributed so far this year
-    </p>
+<div>
+  <div>
     <div
       className="soft-double-bottom soft-double-top">
       <pre>
@@ -114,6 +87,33 @@ exports[`YTDMetrics returns a linegraph of data 1`] = `
          
       </pre>
     </div>
+    <div
+      className="floating text-left text-dark-primary text-light-primary">
+      <h3
+        className="floating__item flush"
+        style={
+          Object {
+            "paddingRight": "5px",
+          }
+        }>
+        $
+      </h3>
+      <h1
+        className="floating__item flush">
+        3422
+      </h1>
+      <h3
+        className="floating__item flush">
+        .
+        00
+      </h3>
+    </div>
+    <p
+      className="push-top text-light-primary italic text-left">
+      <small>
+        Total amount given across all funds
+      </small>
+    </p>
     <div
       className="text-left">
       <a

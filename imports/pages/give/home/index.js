@@ -1,5 +1,6 @@
 // @flow
 import { Component } from "react";
+import moment from "moment";
 // $FlowMeteor
 // import { Meteor } from "meteor/meteor";
 
@@ -23,19 +24,27 @@ class Home extends Component {
   }
 }
 
-export const Hai = () => (
-  <div className="locked-ends locked-sides background--primary">
-    <h1 className="text-light-primary">Your Giving So Far</h1>
-    <YTDMetrics
-      linkUrl={"/give/history"}
-    />
+export const RightPanel = () => (
+  <div className="locked-ends locked-sides background--primary soft-double-sides soft-double-top">
+    {/* spacer */}
+    <div className="push-double-top display-inline-block soft-double-top soft-double-right one-whole">
+      <h3
+        className="text-light-primary soft-double-top outlined--bottom push-double-top outlined--light"
+        style={{ borderColor: "white" }}
+      >
+        {moment().format("YYYY")} so far
+      </h3>
+      <YTDMetrics
+        linkUrl={"/give/history"}
+      />
+    </div>
   </div>
 );
 
 const Routes = [
   { path: "home",
     component: Home,
-    rightComponent: <Hai />,
+    rightComponent: <RightPanel />,
     // onEnter: (nextState: Object, replace: Function) => {
     //   if (!Meteor.userId()) {
     //     replace("/give/now");
