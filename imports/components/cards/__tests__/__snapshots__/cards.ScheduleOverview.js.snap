@@ -55,6 +55,43 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
         Once A Month
       </h6>
     </div>
+    <p
+      className="flush"
+      style={
+        Object {
+          "marginBottom": "5px",
+        }
+      }>
+      <span
+        className="h7 text-dark-tertiary push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        Started:
+      </span>
+      <em
+        className="text-dark-primary">
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)
+      </em>
+    </p>
+    <p
+      className="flush">
+      <span
+        className="h7 text-dark-tertiary push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        Latest:
+      </span>
+      <em
+        className="text-dark-primary">
+        Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)
+      </em>
+    </p>
   </div>
 </div>
 `;
@@ -107,6 +144,23 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
         Once A Month
       </h6>
     </div>
+    <p
+      className="flush"
+      style={Object {}}>
+      <span
+        className="h7 text-dark-tertiary push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        Started:
+      </span>
+      <em
+        className="text-dark-primary">
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)
+      </em>
+    </p>
   </div>
 </div>
 `;
@@ -159,6 +213,23 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
         Once A Month
       </h6>
     </div>
+    <p
+      className="flush"
+      style={Object {}}>
+      <span
+        className="h7 text-dark-tertiary push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        Started:
+      </span>
+      <em
+        className="text-dark-primary">
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)
+      </em>
+    </p>
   </div>
 </div>
 `;
@@ -211,6 +282,23 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
         Once A Month
       </h6>
     </div>
+    <p
+      className="flush"
+      style={Object {}}>
+      <span
+        className="h7 text-dark-tertiary push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        Started:
+      </span>
+      <em
+        className="text-dark-primary">
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)
+      </em>
+    </p>
   </div>
 </div>
 `;
@@ -263,6 +351,23 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
         Once A Month
       </h6>
     </div>
+    <p
+      className="flush"
+      style={Object {}}>
+      <span
+        className="h7 text-dark-tertiary push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        Started:
+      </span>
+      <em
+        className="text-dark-primary">
+        Jun 15, 2015
+      </em>
+    </p>
   </div>
 </div>
 `;
@@ -315,6 +420,23 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
         Once A Month
       </h6>
     </div>
+    <p
+      className="flush"
+      style={Object {}}>
+      <span
+        className="h7 text-dark-tertiary push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        Started:
+      </span>
+      <em
+        className="text-dark-primary">
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)
+      </em>
+    </p>
   </div>
 </div>
 `;
@@ -367,6 +489,43 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest and on
         Once A Month
       </h6>
     </div>
+    <p
+      className="flush"
+      style={
+        Object {
+          "marginBottom": "5px",
+        }
+      }>
+      <span
+        className="h7 text-dark-tertiary push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        Started:
+      </span>
+      <em
+        className="text-dark-primary">
+        Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)
+      </em>
+    </p>
+    <p
+      className="flush">
+      <span
+        className="h7 text-dark-tertiary push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
+        Latest:
+      </span>
+      <em
+        className="text-dark-primary">
+        Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)
+      </em>
+    </p>
   </div>
 </div>
 `;

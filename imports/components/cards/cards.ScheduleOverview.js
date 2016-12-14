@@ -1,6 +1,4 @@
 // @flow
-
-import moment from "moment";
 import Currency from "./../currency";
 
 type IScheduleOverviewCard = {
@@ -10,7 +8,6 @@ type IScheduleOverviewCard = {
   started: string,
   latest: string,
   onEditClick: Function,
-  classes: string,
 };
 
 const ScheduleOverviewCard = ({
@@ -20,7 +17,6 @@ const ScheduleOverviewCard = ({
   started,
   latest,
   onEditClick,
-  classes,
 }: IScheduleOverviewCard) => (
   <div className="card">
     <div className="card__item soft push-half-ends one-whole">
@@ -39,6 +35,20 @@ const ScheduleOverviewCard = ({
         <h5 className="floating__item soft-half-right flush text-dark-primary">{fund}</h5>
         <h6 className="floating__item flush text-dark-tertiary">{frequency}</h6>
       </div>
+      <p className="flush" style={latest ? { marginBottom: "5px" } : {}}>
+        <span className="h7 text-dark-tertiary push-half-right" style={{ verticalAlign: "middle" }}>
+          Started:
+        </span>
+        <em className="text-dark-primary">{started}</em>
+      </p>
+      {latest && (
+        <p className="flush">
+          <span className="h7 text-dark-tertiary push-half-right" style={{ verticalAlign: "middle" }}>
+            Latest:
+          </span>
+          <em className="text-dark-primary">{latest}</em>
+        </p>
+      )}
     </div>
   </div>
 );

@@ -165,6 +165,43 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 One Time
               </h6>
             </div>
+            <p
+              className="flush"
+              style={
+                Object {
+                  "marginBottom": "5px",
+                }
+              }>
+              <span
+                className="h7 text-dark-tertiary push-half-right"
+                style={
+                  Object {
+                    "verticalAlign": "middle",
+                  }
+                }>
+                Started:
+              </span>
+              <em
+                className="text-dark-primary">
+                2016-03-16
+              </em>
+            </p>
+            <p
+              className="flush">
+              <span
+                className="h7 text-dark-tertiary push-half-right"
+                style={
+                  Object {
+                    "verticalAlign": "middle",
+                  }
+                }>
+                Latest:
+              </span>
+              <em
+                className="text-dark-primary">
+                2016-03-17
+              </em>
+            </p>
           </div>
         </div>
       </ScheduleOverviewCard>
@@ -224,6 +261,43 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 Once a Month
               </h6>
             </div>
+            <p
+              className="flush"
+              style={
+                Object {
+                  "marginBottom": "5px",
+                }
+              }>
+              <span
+                className="h7 text-dark-tertiary push-half-right"
+                style={
+                  Object {
+                    "verticalAlign": "middle",
+                  }
+                }>
+                Started:
+              </span>
+              <em
+                className="text-dark-primary">
+                2016-03-16
+              </em>
+            </p>
+            <p
+              className="flush">
+              <span
+                className="h7 text-dark-tertiary push-half-right"
+                style={
+                  Object {
+                    "verticalAlign": "middle",
+                  }
+                }>
+                Latest:
+              </span>
+              <em
+                className="text-dark-primary">
+                2016-03-18
+              </em>
+            </p>
           </div>
         </div>
       </ScheduleOverviewCard>
@@ -283,6 +357,23 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 One Time
               </h6>
             </div>
+            <p
+              className="flush"
+              style={Object {}}>
+              <span
+                className="h7 text-dark-tertiary push-half-right"
+                style={
+                  Object {
+                    "verticalAlign": "middle",
+                  }
+                }>
+                Started:
+              </span>
+              <em
+                className="text-dark-primary">
+                2016-03-16
+              </em>
+            </p>
           </div>
         </div>
       </ScheduleOverviewCard>
