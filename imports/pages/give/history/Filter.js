@@ -40,9 +40,21 @@ export default class Filter extends Component {
     overrideActive: false,
   }
 
+  componentDidMount() {
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", this.fixPickerPosition);
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.family.length !== nextProps.family.length) {
       this.setState({ people: nextProps.family.map((x) => x.person.id) });
+    }
+  }
+
+  componentWillUnmount() {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", this.fixPickerPosition);
     }
   }
 
@@ -135,6 +147,7 @@ export default class Filter extends Component {
       } else {
         this.setState(({ showStartDatePicker }) => ({ showStartDatePicker: !showStartDatePicker }));
         this.setState({ overrideActive: true });
+        // this.toggleStartDatePicker();
       }
     }
 
@@ -177,7 +190,7 @@ export default class Filter extends Component {
     const { family } = this.props;
     const { expanded } = this.state;
     return (
-      <div>
+      <div style={{ position: "relative" }}>
         <div
           onClick={this.toggle}
           className={
