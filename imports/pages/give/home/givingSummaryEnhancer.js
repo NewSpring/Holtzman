@@ -51,7 +51,7 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
 
 const YTD_QUERY = gql`
   query givingSummary($start: String!, $end: String!) {
-    accounts{
+    accounts(allFunds: true) {
       total(start: $start, end: $end)
       name
       transactions(limit: 0, start: $start, end: $end) {

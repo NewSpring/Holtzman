@@ -44,7 +44,7 @@ export class SavedPaymentsList extends Component {
     if (!Array.isArray(payments)) return null;
     return payments.map((payment) =>
       <SavedPaymentCard
-        classes={"grid__item soft-half-sides hard-right one-half@lap-wide-and-up"}
+        classes={"grid__item one-half@lap-wide-and-up"}
         key={`${payment.id}_${payment.name}`}
         payment={payment}
         onClick={() => {
@@ -62,7 +62,7 @@ export class SavedPaymentsList extends Component {
           title="Saved Accounts"
           link={<SavedPaymentsButton />}
         />
-        <div className="grid flush soft-half-right">
+        <div className="grid">
           {this.renderPayments(this.props.payments.savedPayments)}
         </div>
       </div>
