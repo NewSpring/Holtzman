@@ -88,7 +88,7 @@ exports[`YTDMetrics returns a linegraph of data 1`] = `
       </pre>
     </div>
     <div
-      className="floating text-left text-dark-primary text-light-primary">
+      className="floating text-dark-primary text-left text-light-primary">
       <h3
         className="floating__item flush"
         style={
@@ -100,7 +100,7 @@ exports[`YTDMetrics returns a linegraph of data 1`] = `
       </h3>
       <h1
         className="floating__item flush">
-        3422
+        3,422
       </h1>
       <h3
         className="floating__item flush">

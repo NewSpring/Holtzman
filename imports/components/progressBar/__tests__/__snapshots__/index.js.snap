@@ -1,5 +1,8 @@
 exports[`ProgressBar should generate a proper percentDone style 1`] = `
 Object {
+  "currencyText": Object {
+    "color": "light",
+  },
   "progress": Object {
     "backgroundColor": "white",
     "height": "100%",
@@ -17,6 +20,9 @@ Object {
 
 exports[`ProgressBar should generate a proper percentDone style 2`] = `
 Object {
+  "currencyText": Object {
+    "color": "dark",
+  },
   "progress": Object {
     "backgroundColor": "#6bac43",
     "height": "100%",
@@ -46,16 +52,28 @@ exports[`ProgressBar should render with minimal props 1`] = `
         className="floating__item display-inline-block"
         data-spec="title" />
     </div>
-    <div
-      className="floating floating--middle text-right one-half display-inline-block">
-      <h6
-        className="display-inline-block floating__item">
-        $
-      </h6>
-      <h4
-        className="display-inline-block floating__item"
-        data-spec="total" />
-    </div>
+    <Currency
+      baseHeadingSize="4"
+      className="floating floating--right one-half display-inline-block text-right"
+      roundCurrency={true}
+      theme="light">
+      <div
+        className="floating text-light-primary floating floating--right one-half display-inline-block text-right">
+        <h6
+          className="floating__item flush"
+          style={
+            Object {
+              "paddingRight": "5px",
+            }
+          }>
+          $
+        </h6>
+        <h4
+          className="floating__item flush">
+          NaN
+        </h4>
+      </div>
+    </Currency>
     <div
       className="one-whole"
       style={

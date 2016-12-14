@@ -76,7 +76,7 @@ exports[`GivingSummary should pass correct props to graph with data 1`] = `
   <div
     className="push-half-sides">
     <Component
-      amount="66"
+      amount="66.00"
       graphData={
         Object {
           "axisStyles": Object {

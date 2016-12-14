@@ -7,9 +7,8 @@ type IFundBreakdown = {
   data: Object,
 }
 
-const FundBreakdown = ({ data }: IFundBreakdown) => {
+export const FundBreakdown = ({ data }: IFundBreakdown) => {
   if (!data) return null;
-  console.log(data);
   return (
     <div>
       <h3 className="text-light-primary soft-half-bottom push-double-bottom" style={{ borderBottom: "1px solid" }}>

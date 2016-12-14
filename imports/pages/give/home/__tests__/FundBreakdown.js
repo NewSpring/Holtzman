@@ -1,9 +1,10 @@
 import renderer from "react-test-renderer";
 import { reset } from "aphrodite/lib/inject";
-import { FundBreakdown, percentCalc } from "../FundBreakdown";
+import { FundBreakdown } from "../FundBreakdown";
 
 const mockData = {
   givingSummary: {
+    total: 1000,
     accounts: {
       "Step Up": 100,
       "General Fund": 900,
@@ -27,14 +28,10 @@ const mockData = {
 
 describe("FundBreakdown", () => {
 
-  it("should return a percentage of the current total in relation to the total given across all accounts", () => {
-    expect(percentCalc(mockedData, mockedData.givingSummary.accounts["Step Up"])).toBe("10");
-  })
-
   it("should render properly with data.", () => {
-    const tree = remderer.create(
+    const tree = renderer.create(
       <FundBreakdown
-        data={mockData}
+        data={mockData.givingSummary}
       />
     );
 
