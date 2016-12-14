@@ -8,13 +8,6 @@ import Err from "./Err";
 import Success from "./Success";
 import { monetize } from "../../util/format";
 
-const FORM_STEPS = [
-  Personal,
-  Billing,
-  Payment,
-  Confirm,
-];
-
 type ILayout = {
   back: Function,
   campuses: Object[],
@@ -86,6 +79,10 @@ const Layout = ({
     }
   }
 
+  const FORM_STEPS = [Personal, Billing, Payment, Confirm];
+
+  if (transactionType === "savedPayment") FORM_STEPS.shift();
+
   const Step = FORM_STEPS[step - 1];
 
   return (
@@ -119,7 +116,7 @@ const Layout = ({
         scheduleToRecover={scheduleToRecover}
       >
         <Controls.Progress
-          steps={4}
+          steps={FORM_STEPS.length}
           active={step}
         />
       </Step>

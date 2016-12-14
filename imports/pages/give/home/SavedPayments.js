@@ -10,7 +10,8 @@ import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
 import { modal } from "../../../store/";
 
-import {StepOne, StepTwo, StepThree, StepFour} from "./components/AddSavedPayment";
+import giveActions from "../../../store/give";
+import Give from "../../../blocks/give";
 
 
 type ISavedPaymentsList = {
@@ -23,7 +24,9 @@ export class SavedPaymentsList extends Component {
   props: ISavedPaymentsList;
 
   openModal = () => {
-    this.props.dispatch(modal.render(StepOne, null));
+    // set transaction type
+    this.props.dispatch(giveActions.setTransactionType("savedPayment"));
+    this.props.dispatch(modal.render(Give, null));
   }
 
   SavedPaymentsButton = () =>

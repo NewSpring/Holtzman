@@ -130,13 +130,17 @@ const Layout = ({
         savedAccount={savedAccount}
         validate={validate}
       />
-      <SavePaymentCheckBox
-        savedAccount={savedAccount}
-        savePayment={savePayment}
-        shouldSaveState={shouldSaveState}
-        schedule={schedule}
-        transactionType={transactionType}
-      />
+      {
+        transactionType !== "savedPayment"
+          ? <SavePaymentCheckBox
+            savedAccount={savedAccount}
+            savePayment={savePayment}
+            shouldSaveState={shouldSaveState}
+            schedule={schedule}
+            transactionType={transactionType}
+          />
+          : null
+      }
       <SavePaymentInput
         saveName={saveName}
         savedAccount={savedAccount}

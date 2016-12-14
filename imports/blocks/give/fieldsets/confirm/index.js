@@ -9,6 +9,7 @@ import { openUrl } from "../../../../util/inAppLink";
 
 import TransactionLayout from "./TransactionLayout";
 import PaymentOptionsLayout from "./PaymentOptionsLayout";
+import SavedPaymentLayout from "./SavedPaymentLayout";
 
 type IConfirm = {
   data: Object,
@@ -24,6 +25,8 @@ type IConfirm = {
   changeSavedAccount: Function,
   scheduleToRecover: boolean,
   schedule: Object,
+  transactionType: string,
+  children: any,
 }
 
 export default class Confirm extends Component {
@@ -110,6 +113,15 @@ export default class Confirm extends Component {
           savedAccount={this.props.savedAccount}
           savedAccounts={this.props.savedAccounts}
         />
+      );
+    } else if (this.props.transactionType === "savedPayment") {
+      return (
+        <SavedPaymentLayout
+          data={this.props.data}
+          header={this.props.header}
+        >
+          {this.props.children}
+        </SavedPaymentLayout>
       );
     }
 
