@@ -8,7 +8,8 @@ type ITagSelectProps = {
     label: ?string,
     value: string | number
   }],
-  onClick: ?Function
+  onClick: ?Function,
+  overrideActive?: boolean,
 };
 
 type ITagSelectState = {
@@ -57,7 +58,7 @@ export default class TagSelect extends Component {
             onClick={this.handleTagClick}
             active={this.isActive(value)}
             clickAble={this.canBeActive(value)}
-            className={!this.canBeActive(value) && "tag--disabled"}
+            className={(this.props.overrideActive || !this.canBeActive(value)) && "tag--disabled"}
           />
         ))}
       </div>
