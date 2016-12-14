@@ -94,6 +94,7 @@ export class Template extends Component {
             "Please click 'Done' in the top left of your screen to get back to the app"
           }
           onClick={() => {}}
+          schedule={{ start: null, frequency: null }}
         />);
       default:
         return <Layout {...this.props.give} onSubmit={this.onSubmit} />;
