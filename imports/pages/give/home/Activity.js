@@ -102,7 +102,7 @@ export class GivingActivity extends Component {
     let linkUrl;
     const scheduled = transaction.schedule !== null;
 
-    if (transaction.status === null || transaction.status === "Success") {
+    if (transaction.status === null || transaction.status === "Success" || transaction.status === "Complete") {
       status = "success";
       linkText = "View Gift";
       linkUrl = `/give/history/${transaction.id}`;
@@ -164,7 +164,6 @@ export class GivingActivity extends Component {
 
     const data = this.filterActivity(this.props.feed.userFeed);
     if (!Array.isArray(data) && data.length === 0) return null;
-
     return (
       <div>
         <SectionHeader title="Activity" link={<ActivityButton />} />

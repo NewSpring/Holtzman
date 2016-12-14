@@ -19,6 +19,15 @@ const mockFeedData = [
     "id": "456",
     "date": "2016-11-01",
     "summary": "Reference Number: 2355654",
+    "status": "Complete",
+    "statusMessage": "Manually set to failed for testing",
+    "schedule": null,
+    "details": [{"amount": 2,"account": {"name": "General Fund"}}]
+  },
+  {
+    "id": "456",
+    "date": "2016-11-01",
+    "summary": "Reference Number: 2355654",
     "status": "Failed",
     "statusMessage": "Manually set to failed for testing",
     "schedule": null,
