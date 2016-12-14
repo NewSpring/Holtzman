@@ -18,7 +18,7 @@ import LineGraph from "../";
 const story = storiesOf("Graphs", module)
   .addDecorator(withKnobs)
   .addDecorator(centered)
-  .addDecorator(backgrounds(defaultColors("light-primary", "light-secondary")))
+  .addDecorator(backgrounds(defaultColors()))
   ;
 
 story
@@ -103,7 +103,7 @@ story
     const lineColor = text("Line Color", "#6BAC43");
     const lineWidth = text("Line Width", "3");
     const dotColor = text("Dot Color", "#6BAC43");
-    const dotSize = text("Dot Size", "5");
+    const dotSize = text("Dot Size", "3");
     const axisStyles = {
       axis: {
         lineColor: "transparent",
