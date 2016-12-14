@@ -6,6 +6,7 @@ import moment from "moment";
 
 import TagSelect from "../../../components/forms/TagSelect";
 import Tag from "../../../components/tags";
+import Date from "../../../blocks/add-to-cart/Schedule/Date";
 
 const DATE_RANGES = [
   { label: "Last Month", value: "LastMonth" },
@@ -23,7 +24,18 @@ export default class Filter extends Component {
     findByLimit: PropTypes.func.isRequired,
   }
 
-  state = { people: [], start: "", end: "", expanded: false }
+  state = {
+    people: [],
+    start: "",
+    end: "",
+    expanded: false,
+    showStartDatePicker: false,
+    showEndDatePicker: false,
+    customStartLabel: "Start Date",
+    customEndLabel: "End Date",
+    customStartActive: false,
+    customEndActive: false,
+  }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.family.length !== nextProps.family.length) {
@@ -37,24 +49,15 @@ export default class Filter extends Component {
     if (index > -1) {
       people.splice(index, 1);
       this.setState({ people });
-      this.props.changeFamily(people);
       return;
     }
 
     people.push(id);
     this.setState({ people });
-    this.props.changeFamily(people);
   }
 
   toggle = () => {
     this.setState({ expanded: !this.state.expanded });
-  }
-
-  saveData = (value, { id }) => {
-    const { start, end } = this.state;
-    if (id === "start") this.props.changeDates(value, end);
-    if (id === "end") this.props.changeDates(start, value);
-    this.setState({ [id]: value });
   }
 
   dateRangeClick = (value: string) => {
@@ -62,8 +65,6 @@ export default class Filter extends Component {
       if (start !== "" || end !== "") {
         if (value === "AllTime") {
           this.props.findByLimit();
-        } else {
-          this.props.changeDates("", "");
         }
         return { start: "", end: "" };
       }
@@ -83,12 +84,78 @@ export default class Filter extends Component {
         this.props.findByLimit(0);
       }
 
-      this.props.changeDates(startDate, endDate);
       return {
         start: startDate,
         end: endDate,
       };
     });
+  }
+
+  fixPickerPosition = () => {
+    const picker = document.getElementById("datepicker");
+    if (!picker) return;
+
+    const child = picker.children[0];
+    const globalTop = Number(child.getBoundingClientRect().top);
+    if (globalTop < 0) {
+      const marginTop = Number(child.style.marginTop.slice(0, -2));
+      child.style.marginTop = `${marginTop + Math.abs(globalTop)}px`;
+    }
+  }
+
+  toggleStartDatePicker = () => {
+    this.setState(({ showStartDatePicker }) => ({ showStartDatePicker: !showStartDatePicker }));
+    setTimeout(() => {
+      this.fixPickerPosition();
+    }, 200);
+  }
+
+  toggleEndDatePicker = () => {
+    this.setState(({ showEndDatePicker }) => ({ showEndDatePicker: !showEndDatePicker }));
+    setTimeout(() => {
+      this.fixPickerPosition();
+    }, 200);
+  }
+
+  startClick = (value: string) => {
+    if (value === "StartDate") {
+      if (this.state.start !== "") {
+        this.setState({ start: "" });
+        this.setState({ customStartLabel: "Start Date" });
+        this.setState({ customStartActive: false });
+      } else {
+        this.setState(({ showStartDatePicker }) => ({ showStartDatePicker: !showStartDatePicker }));
+      }
+    }
+
+    if (value === "EndDate") {
+      if (this.state.end !== "") {
+        this.setState({ end: "" });
+        this.setState({ customEndLabel: "End Date" });
+        this.setState({ customEndActive: false });
+      } else {
+        this.setState(({ showEndDatePicker }) => ({ showEndDatePicker: !showEndDatePicker }));
+      }
+    }
+  }
+
+  onStartDayClick = (e, day, { selected, disabled }) => {
+    if (disabled) return;
+    this.setState({ start: selected ? null : day });
+    this.setState({ customStartLabel: selected ? "Start Date" : moment(day).format("ll") });
+    this.setState({ customStartActive: !selected });
+  }
+
+  onEndDayClick = (e, day, { selected, disabled }) => {
+    if (disabled) return;
+    this.setState({ end: selected ? null : day });
+    this.setState({ customEndLabel: selected ? "End Date" : moment(day).format("ll") });
+    this.setState({ customEndActive: !selected });
+  }
+
+  filterResults = () => {
+    this.props.changeFamily(this.state.people);
+    this.props.changeDates(this.state.start === "" ? "" : moment(this.state.start).format("L"), this.state.end === "" ? "" : moment(this.state.end).format("L"));
   }
 
   render() {
@@ -173,23 +240,48 @@ export default class Filter extends Component {
               >
                 <Tag
                   key={1}
-                  label={"Start Date"}
+                  label={this.state.customStartLabel}
                   val={"StartDate"}
-                  onClick={this.dateRangeClick}
-                  active={false}
+                  onClick={this.startClick}
+                  active={this.state.customStartActive}
                   className={false && "tag--disabled"}
                 />
                 <Tag
                   key={2}
-                  label={"End Date"}
+                  label={this.state.customEndLabel}
                   val={"EndDate"}
-                  onClick={this.dateRangeClick}
-                  active={false}
+                  onClick={this.startClick}
+                  active={this.state.customEndActive}
                   className={false && "tag--disabled"}
                 />
               </div>
             </div>
-            {/* <Date /> */}
+            <div className="push-top display-block">
+              <button
+                className={"btn one-whole@handheld"}
+                onClick={this.filterResults}
+              >
+                {"Filter Results"}
+              </button>
+            </div>
+            {/* eslint-disable */}
+            {this.state.showStartDatePicker && (
+              <Date
+                start={this.state.start}
+                onDayClick={this.onStartDayClick}
+                toggleDatePicker={this.toggleStartDatePicker}
+                allTime={true}
+              />
+            )}
+            {this.state.showEndDatePicker && (
+              <Date
+                start={this.state.end}
+                onDayClick={this.onEndDayClick}
+                toggleDatePicker={this.toggleEndDatePicker}
+                allTime={true}
+              />
+            )}
+            {/* eslint-enable */}
           </div>
         )}
       </div>
