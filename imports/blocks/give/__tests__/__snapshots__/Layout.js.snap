@@ -331,7 +331,7 @@ exports[`test renders Confirm form 1`] = `
               <div
                 className="display-inline-block">
                 <div
-                  className="floating text-left text-dark-primary ">
+                  className="floating text-dark-primary text-left">
                   <h4
                     className="floating__item flush"
                     style={

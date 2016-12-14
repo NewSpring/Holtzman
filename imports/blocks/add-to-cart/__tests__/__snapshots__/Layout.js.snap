@@ -30,7 +30,8 @@ exports[`test should render with minimal props 1`] = `
         className="display-inline-block text-dark-primary push-half-bottom">
         <Currency
           amount="$0.00"
-          baseHeadingSize="1" />
+          baseHeadingSize="1"
+          className="text-left" />
       </span>
     </div>
     <div
@@ -68,7 +69,8 @@ exports[`test should render without subfunds  1`] = `
         className="display-inline-block text-dark-primary push-half-bottom">
         <Currency
           amount="$0.00"
-          baseHeadingSize="1" />
+          baseHeadingSize="1"
+          className="text-left" />
       </span>
     </div>
     <div
