@@ -38,7 +38,7 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
       total += transaction.details[0].amount;
       return transaction;
     });
-   return null;
+    return null;
   });
 
   return ({

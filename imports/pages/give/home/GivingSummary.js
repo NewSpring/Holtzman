@@ -24,6 +24,7 @@ const graphSettings = {
 
 type IGivingSummary = {
   data: Object,
+  breakpoints: String[],
 };
 
 export const GivingSummary = (props: IGivingSummary) => {

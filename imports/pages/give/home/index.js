@@ -1,12 +1,10 @@
 // @flow
 import { Component } from "react";
 import moment from "moment";
-// $FlowMeteor
-// import { Meteor } from "meteor/meteor";
 
 import Authorized from "../../../blocks/authorzied";
 import Layout from "./Layout";
-import YTDMetrics from "./YTDMetrics";
+import YTDGraph from "./YTDMetrics";
 
 type IHome = {
   setRightProps: Function,
@@ -34,7 +32,7 @@ export const RightPanel = () => (
       >
         {moment().format("YYYY")} so far
       </h3>
-      <YTDMetrics
+      <YTDGraph
         linkUrl={"/give/history"}
       />
     </div>

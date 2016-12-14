@@ -43,7 +43,7 @@ export const YTDMetrics = ({ data, linkUrl }: IYTDMetrics) => {
             axisStyles={styles.axisStyles}
           />
         </div>
-        <YTDTotal amount={`${data.total}`} className="text-light-primary" baseHeadingSize="1"/>
+        <YTDTotal amount={`${data.total}`} className="text-light-primary" baseHeadingSize="1" />
         <p className="push-top text-light-primary italic text-left"><small>Total amount given across all funds</small></p>
         <div className="text-left">
           <Link to={linkUrl} className="text-left">
