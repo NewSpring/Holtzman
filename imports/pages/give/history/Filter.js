@@ -35,6 +35,7 @@ export default class Filter extends Component {
     customEndLabel: "End Date",
     customStartActive: false,
     customEndActive: false,
+    limit: 20,
   }
 
   componentWillReceiveProps(nextProps) {
@@ -61,32 +62,34 @@ export default class Filter extends Component {
   }
 
   dateRangeClick = (value: string) => {
-    this.setState(({ start, end }) => {
+    this.setState(({ start, end, limit }) => {
+      let transactionLimit;
       if (start !== "" || end !== "") {
-        if (value === "AllTime") {
-          this.props.findByLimit();
+        if (value === "AllTime" && limit === 20) {
+          transactionLimit = 20;
         }
-        return { start: "", end: "" };
+        return { start: "", end: "", limit: transactionLimit };
       }
 
       let startDate;
       let endDate;
       if (value === "LastMonth") {
-        startDate = moment().subtract(30, "days").format("L");
-        endDate = moment().format("L");
+        startDate = moment().subtract(30, "days");
+        endDate = moment();
       } else if (value === "LastSixMonths") {
-        startDate = moment().subtract(6, "months").format("L");
-        endDate = moment().format("L");
+        startDate = moment().subtract(6, "months");
+        endDate = moment();
       } else if (value === "LastYear") {
-        startDate = moment().subtract(12, "months").format("L");
-        endDate = moment().format("L");
+        startDate = moment().subtract(12, "months");
+        endDate = moment();
       } else {
-        this.props.findByLimit(0);
+        transactionLimit = 0;
       }
 
       return {
         start: startDate,
         end: endDate,
+        limit: transactionLimit,
       };
     });
   }
@@ -156,6 +159,7 @@ export default class Filter extends Component {
   filterResults = () => {
     this.props.changeFamily(this.state.people);
     this.props.changeDates(this.state.start === "" ? "" : moment(this.state.start).format("L"), this.state.end === "" ? "" : moment(this.state.end).format("L"));
+    this.props.findByLimit(this.state.limit);
   }
 
   render() {
