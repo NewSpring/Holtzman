@@ -107,9 +107,9 @@ const Success = ({
       <SuccessIcon />
       <h3 className="text-primary push-ends">Success!</h3>
 
-      <ScheduleThanks total={total} schedule={schedule || false} />
+      <ScheduleThanks total={total} schedule={schedule} />
 
-      <OneTimeThanks total={total} email={email} schedule={schedule || false} />
+      <OneTimeThanks total={total} email={email} schedule={schedule} />
 
       <AdditionalMessage additionalMessage={additionalMessage} />
 

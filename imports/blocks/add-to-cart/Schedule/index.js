@@ -133,7 +133,7 @@ export class Schedule extends Component {
     let newValue = value;
     if (this.state.start) newValue = null;
 
-    if (this.state.start || value !== "custom") {
+    if (value !== "custom") {
       this.setState({ start: newValue });
       this.props.saveSchedule({
         frequency: this.state.frequency,

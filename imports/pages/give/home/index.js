@@ -19,7 +19,7 @@ class Home extends Component {
     });
   }
   render() {
-    return <Authorized><Layout /></Authorized>;
+    return <Layout />;
   }
 }
 
@@ -34,11 +34,11 @@ const Routes = [
   { path: "home",
     component: Home,
     rightComponent: <Hai />,
-    // onEnter: (nextState: Object, replace: Function) => {
-    //   if (!Meteor.userId()) {
-    //     replace("/give/now");
-    //   }
-    // },
+    onEnter: (nextState: Object, replace: Function) => {
+      if (!Meteor.userId()) {
+        replace("/give/now");
+      }
+    },
   },
 ];
 

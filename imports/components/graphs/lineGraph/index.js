@@ -59,6 +59,7 @@ const LineGraph = ({
       height={160}
       padding={{ top: 5, left: 10, right: 10, bottom: 20 }}
       animate={{ duration: 2000 }}
+      domainPadding={{ y: [100, 100] }}
     >
       <VictoryAxis
         style={{
