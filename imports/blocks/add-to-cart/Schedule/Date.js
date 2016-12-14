@@ -23,13 +23,15 @@ const localUtils = {
 type IDateProps = {
   start: string,
   onDayClick: Function,
-  toggleDatePicker: Function
+  toggleDatePicker: Function,
+  allTime: boolean,
 };
 
 export default ({
   start,
   onDayClick,
   toggleDatePicker,
+  allTime,
 }: IDateProps) => (
   <div>
     <DateStyles />
@@ -53,7 +55,7 @@ export default ({
           modifiers={{
             selected: (day) => DateUtils.isSameDay(start, day),
             disabled: (day) => (
-              DateUtils.isPastDay(day) || DateUtils.isSameDay(day, new Date())
+              !allTime && (DateUtils.isPastDay(day) || DateUtils.isSameDay(day, new Date()))
             ),
           }}
           onDayClick={onDayClick}

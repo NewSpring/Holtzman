@@ -1,6 +1,9 @@
 
 import { Component, PropTypes } from "react";
 import moment from "moment";
+
+import Date from "../../../blocks/add-to-cart/Schedule/Date";
+
 import TagSelect from "../../../components/forms/TagSelect";
 import Tag from "../../../components/tags";
 
@@ -109,84 +112,86 @@ export default class Filter extends Component {
           />
         </div>
         <div className="one-whole outlined--bottom outlined--light" />
-        {(() => {
-          if (!expanded) return null;
-          return (
-            <div
-              className={
-                "one-whole outlined--light outlined--bottom background--light-primary " +
-                "soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left"
-              }
-            >
-              <h7 className="push-top text-dark-secondary display-inline-block">
-                Family Members
-              </h7>
+        {expanded && (
+          <div
+            className={
+              "one-whole outlined--light outlined--bottom background--light-primary " +
+              "soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left"
+            }
+          >
+            {family && family.length && family.length > 1 && (
+              <div>
+                <h7 className="push-top text-dark-secondary display-inline-block">
+                  Family Members
+                </h7>
 
-              {family && family.map(({ person }, key) => {
-                const active = this.state.people.indexOf(person.id) > -1;
-                return (
-                  <div
-                    key={key}
-                    style={{ cursor: "pointer" }}
-                    className=""
-                    onClick={() => this.onClick(person)}
-                  >
+                {family.map(({ person }, key) => {
+                  const active = this.state.people.indexOf(person.id) > -1;
+                  return (
                     <div
-                      className={
-                        `${active ? "checkbox-checked" : ""} ` +
-                        "display-inline-block outlined checkbox"
-                      }
-                    />
-                    <h6 className="soft-half-left display-inline-block">
-                      {person.nickName || person.firstName} {person.lastName}
-                    </h6>
-                  </div>
-                );
-              })}
-
-              <h7 className="soft-half-top push-half-top text-dark-secondary display-inline-block">
-                Date Range
-              </h7>
-              <div className="grid one-whole flush-left@palm">
-                <div
-                  className={
-                    "hard-left@palm grid__item one-whole"
-                  }
-                >
-                  <TagSelect items={DATE_RANGES} onClick={this.dateRangeClick} />
-                </div>
+                      key={key}
+                      style={{ cursor: "pointer" }}
+                      className=""
+                      onClick={() => this.onClick(person)}
+                    >
+                      <div
+                        className={
+                          `${active ? "checkbox-checked" : ""} ` +
+                          "display-inline-block outlined checkbox"
+                        }
+                      />
+                      <h6 className="soft-half-left display-inline-block">
+                        {person.nickName || person.firstName} {person.lastName}
+                      </h6>
+                    </div>
+                  );
+                })}
               </div>
+            )}
 
-              <h7 className="soft-half-top push-half-top text-dark-secondary display-inline-block">
-                Custom Dates
-              </h7>
-              <div className="grid one-whole flush-left@palm">
-                <div
-                  className={
-                    "hard-left@palm grid__item one-whole display-inline-block"
-                  }
-                >
-                  <Tag
-                    key={1}
-                    label={"Start Date"}
-                    val={"StartDate"}
-                    onClick={this.dateRangeClick}
-                    active={false}
-                    className={false && "tag--disabled"}
-                  />
-                  <Tag
-                    key={2}
-                    label={"End Date"}
-                    val={"EndDate"}
-                    onClick={this.dateRangeClick}
-                    active={false}
-                    className={false && "tag--disabled"}
-                  />
-                </div>
+            <h7 className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+              Date Range
+            </h7>
+            <div className="grid one-whole flush-left@palm">
+              <div
+                className={
+                  "hard-left@palm grid__item one-whole"
+                }
+              >
+                <TagSelect items={DATE_RANGES} onClick={this.dateRangeClick} />
               </div>
             </div>
-          );
-        })()}
+
+            <h7 className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+              Custom Dates
+            </h7>
+            <div className="grid one-whole flush-left@palm">
+              <div
+                className={
+                  "hard-left@palm grid__item one-whole display-inline-block"
+                }
+              >
+                <Tag
+                  key={1}
+                  label={"Start Date"}
+                  val={"StartDate"}
+                  onClick={this.dateRangeClick}
+                  active={false}
+                  className={false && "tag--disabled"}
+                />
+                <Tag
+                  key={2}
+                  label={"End Date"}
+                  val={"EndDate"}
+                  onClick={this.dateRangeClick}
+                  active={false}
+                  className={false && "tag--disabled"}
+                />
+              </div>
+            </div>
+            {/* <Date /> */}
+          </div>
+        )}
       </div>
     );
   }

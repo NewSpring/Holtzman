@@ -120,9 +120,12 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
     transactions: data.transactions || [],
     loading: data.loading,
     done: (
-      data.transactions &&
-      !data.loading &&
-      data.transactions.length < data.variables.limit + data.variables.skip
+      data.variables.limit === 0 ||
+      (
+        data.transactions &&
+        !data.loading &&
+        data.transactions.length < data.variables.limit + data.variables.skip
+      )
     ),
     fetchMore: () => data.fetchMore({
       variables: { ...data.variables, skip: data.transactions.length },
