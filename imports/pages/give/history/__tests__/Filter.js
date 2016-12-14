@@ -219,8 +219,7 @@ it("dataRangeClick with LastYear value sets the start and end dates correctly", 
 it("dataRangeClick with AllTime sets limit correctly", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({
-    start: "",
-    end: "",
+    limit: 20,
   });
 
   // calling it the first time should set the limit to 0.
@@ -232,41 +231,181 @@ it("dataRangeClick with AllTime sets limit correctly", () => {
   expect(wrapper.state().limit).toEqual(20);
 })
 
-it("saveData calls changeDates and updates state if id is start", () => {
+it("dataRangeClick sets customDateDisabled correctly", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({
+    customDateDisabled: false,
+  });
+
+  // calling it the first time should set customDateDisabled to true
+  wrapper.instance().dateRangeClick("LastMonth");
+  expect(wrapper.state().customDateDisabled).toEqual(true);
+
+  // if you call it again, it should set customDateDisabled back to false
+  wrapper.instance().dateRangeClick("LastMonth");
+  expect(wrapper.state().customDateDisabled).toEqual(false);
+})
+
+it("toggleStartDatePicker correctly toggles the start date picker", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({
+    showStartDatePicker: false,
+  });
+
+  // calling it the first time should toggle the picker on.
+  wrapper.instance().toggleStartDatePicker();
+  expect(wrapper.state().showStartDatePicker).toEqual(true);
+
+  // if you call it again, it should set toggle the picker off.
+  wrapper.instance().toggleStartDatePicker();
+  expect(wrapper.state().showStartDatePicker).toEqual(false);
+})
+
+it("toggleEndDatePicker correctly toggles the end date picker", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({
+    showEndDatePicker: false,
+  });
+
+  // calling it the first time should toggle the picker on.
+  wrapper.instance().toggleEndDatePicker();
+  expect(wrapper.state().showEndDatePicker).toEqual(true);
+
+  // if you call it again, it should set toggle the picker off.
+  wrapper.instance().toggleEndDatePicker();
+  expect(wrapper.state().showEndDatePicker).toEqual(false);
+})
+
+it("startClick with StartDate value and blank start date shows the start date picker and overrides date range buttons", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({
+    showStartDatePicker: false,
+    overrideActive: false,
+    start: "",
+  });
+
+  // calling it should toggle the picker on and set the override to true.
+  wrapper.instance().startClick("StartDate");
+  expect(wrapper.state().showStartDatePicker).toEqual(true);
+  expect(wrapper.state().overrideActive).toEqual(true);
+})
+
+it("startClick with StartDate value and non-empty start date resets many things", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({
+    showStartDatePicker: false,
+    overrideActive: false,
+    start: "12/25/2016",
+    end: "",
+  });
+
+  wrapper.instance().startClick("StartDate");
+  expect(wrapper.state().start).toEqual("");
+  expect(wrapper.state().customStartLabel).toEqual("Start Date");
+  expect(wrapper.state().customStartActive).toEqual(false);
+  expect(wrapper.state().overrideActive).toEqual(false);
+})
+
+it("startClick with EndDate value and blank end date shows the end date picker and overrides date range buttons", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({
+    showEndDatePicker: false,
+    overrideActive: false,
+    end: ""
+  });
+
+  // calling it should toggle the picker on and set the override to true.
+  wrapper.instance().startClick("EndDate");
+  expect(wrapper.state().showEndDatePicker).toEqual(true);
+  expect(wrapper.state().overrideActive).toEqual(true);
+})
+
+it("startClick with EndDate value and non-empty start date resets many things", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({
+    showStartDatePicker: false,
+    overrideActive: false,
+    start: "",
+    end: "12/25/2016",
+  });
+
+  wrapper.instance().startClick("EndDate");
+  expect(wrapper.state().end).toEqual("");
+  expect(wrapper.state().customEndLabel).toEqual("End Date");
+  expect(wrapper.state().customEndActive).toEqual(false);
+  expect(wrapper.state().overrideActive).toEqual(false);
+})
+
+it("onStartDayClick correctly sets state", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({
+    start: "",
+    customStartLabel: "",
+    customStartActive: false,
+  });
+  const selectedObject = {
+    selected: true,
+    disabled: false,
+  }
+
+  wrapper.instance().onStartDayClick(null, "12/25/2016", selectedObject);
+  expect(wrapper.state().start).toEqual(null);
+  expect(wrapper.state().customStartLabel).toEqual("Start Date");
+  expect(wrapper.state().customStartActive).toEqual(false);
+
+  selectedObject.selected = false;
+  wrapper.instance().onStartDayClick(null, "12/25/2016", selectedObject);
+  expect(wrapper.state().start).toEqual("12/25/2016");
+  expect(wrapper.state().customStartLabel).toEqual("Dec 25, 2016");
+  expect(wrapper.state().customStartActive).toEqual(true);
+})
+
+it("onEndDayClick correctly sets state", () => {
+  const wrapper = shallow(generateComponent());
+  wrapper.setState({
+    end: "",
+    customEndLabel: "",
+    customEndActive: false,
+  });
+  const selectedObject = {
+    selected: true,
+    disabled: false,
+  }
+
+  wrapper.instance().onEndDayClick(null, "12/25/2016", selectedObject);
+  expect(wrapper.state().end).toEqual(null);
+  expect(wrapper.state().customEndLabel).toEqual("End Date");
+  expect(wrapper.state().customEndActive).toEqual(false);
+
+  selectedObject.selected = false;
+  wrapper.instance().onEndDayClick(null, "12/25/2016", selectedObject);
+  expect(wrapper.state().end).toEqual("12/25/2016");
+  expect(wrapper.state().customEndLabel).toEqual("Dec 25, 2016");
+  expect(wrapper.state().customEndActive).toEqual(true);
+})
+
+it("filterResults correctly calls all the functions", () => {
+  const person1 = defaultProps.family[0].person;
+  const person2 = defaultProps.family[1].person;
+  const mockChangeFamily = jest.fn();
   const mockChangeDates = jest.fn();
+  const mockFindByLimit = jest.fn();
   const wrapper = shallow(generateComponent({
+    changeFamily: mockChangeFamily,
     changeDates: mockChangeDates,
+    findByLimit: mockFindByLimit,
   }));
-  wrapper.setState({ end: "end" });
+  wrapper.setState({
+    start: "",
+    end: "",
+    customEndLabel: "",
+    customEndActive: false,
+    people: [person1.id, person2.id],
+  });
 
-  wrapper.instance().saveData("test", { id: "start" });
-
+  wrapper.instance().filterResults();
+  expect(mockChangeFamily).toHaveBeenCalledTimes(1);
+  expect(mockChangeFamily).toHaveBeenCalledWith([person1.id, person2.id]);
   expect(mockChangeDates).toHaveBeenCalledTimes(1);
-  expect(mockChangeDates).toHaveBeenCalledWith("test", "end");
-  expect(wrapper.state().start).toBe("test");
-});
-
-it("saveData calls changeDates and updates state if id is end", () => {
-  const mockChangeDates = jest.fn();
-  const wrapper = shallow(generateComponent({
-    changeDates: mockChangeDates,
-  }));
-  wrapper.setState({ start: "start" });
-
-  wrapper.instance().saveData("test", { id: "end" });
-
-  expect(mockChangeDates).toHaveBeenCalledTimes(1);
-  expect(mockChangeDates).toHaveBeenCalledWith("start", "test");
-  expect(wrapper.state().end).toBe("test");
-});
-
-it("saveData does not call changeDates if not start or end, but will update state", () => {
-  const mockChangeDates = jest.fn();
-  const wrapper = shallow(generateComponent({
-    changeDates: mockChangeDates,
-  }));
-  wrapper.instance().saveData("test", { id: "notStartOrEnd" });
-
-  expect(mockChangeDates).toHaveBeenCalledTimes(0);
-  expect(wrapper.state().notStartOrEnd).toBe("test");
-});
+  expect(mockFindByLimit).toHaveBeenCalledTimes(1);
+})

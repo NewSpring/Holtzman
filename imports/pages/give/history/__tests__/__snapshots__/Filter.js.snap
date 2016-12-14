@@ -49,7 +49,8 @@ exports[`test doesn't render family members if there are none 1`] = `
               },
             ]
           }
-          onClick={[Function]} />
+          onClick={[Function]}
+          overrideActive={false} />
       </div>
     </div>
     <h7
@@ -177,7 +178,8 @@ exports[`test renders family members when expanded is true 1`] = `
               },
             ]
           }
-          onClick={[Function]} />
+          onClick={[Function]}
+          overrideActive={false} />
       </div>
     </div>
     <h7
@@ -328,7 +330,8 @@ exports[`test works with nickname 1`] = `
               },
             ]
           }
-          onClick={[Function]} />
+          onClick={[Function]}
+          overrideActive={false} />
       </div>
     </div>
     <h7
