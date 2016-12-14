@@ -70,7 +70,7 @@ export class SchedulesList extends Component {
     return (
       <div>
         <SectionHeader
-          title="Scheduled Contributions"
+          title="Active Schedules"
           link={<SchedulesButton />}
         />
         <div className="grid">
