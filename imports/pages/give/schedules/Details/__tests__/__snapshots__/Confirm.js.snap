@@ -28,7 +28,7 @@ exports[`test render with props 1`] = `
     <p
       className="test-dark-tertiary text-left">
       <em>
-        If you would like a member of our customer support team to follow up with you regarding this contributions, click 
+        If you would like a member of our customer support team to follow up with you regarding your contributions, click 
         <a
           href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
           rel="noopener noreferrer"
