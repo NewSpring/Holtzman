@@ -1,4 +1,4 @@
-
+// @flow
 import { Component, PropTypes } from "react";
 import moment from "moment";
 
@@ -46,7 +46,7 @@ export default class Filter extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Object) {
     if (this.props.family.length !== nextProps.family.length) {
       this.setState({ people: nextProps.family.map((x) => x.person.id) });
     }
@@ -58,7 +58,7 @@ export default class Filter extends Component {
     }
   }
 
-  onClick = ({ id }) => {
+  onClick = ({ id }: Object) => {
     const people = [...this.state.people];
     const index = people.indexOf(id);
     if (index > -1) {
@@ -166,16 +166,16 @@ export default class Filter extends Component {
     }
   }
 
-  onStartDayClick = (e, day, { selected, disabled }) => {
+  onStartDayClick = (e: Event, day: string, { selected, disabled }: Object) => {
     if (disabled) return;
-    this.setState({ start: selected ? null : day });
+    this.setState({ start: selected ? "" : day });
     this.setState({ customStartLabel: selected ? "Start Date" : moment(day).format("ll") });
     this.setState({ customStartActive: !selected });
   }
 
-  onEndDayClick = (e, day, { selected, disabled }) => {
+  onEndDayClick = (e: Event, day: string, { selected, disabled }: Object) => {
     if (disabled) return;
-    this.setState({ end: selected ? null : day });
+    this.setState({ end: selected ? "" : day });
     this.setState({ customEndLabel: selected ? "End Date" : moment(day).format("ll") });
     this.setState({ customEndActive: !selected });
   }
