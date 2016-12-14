@@ -3,26 +3,35 @@
 
 import React, { Component } from "react";
 import { withRouter } from "react-router";
+import { connect } from "react-redux";
 import SavedPaymentCard from "../../../components/cards/cards.SavedPayment";
 import LoadingCard from "../../../components/loading/ActivityCard";
 import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
+import { modal } from "../../../store/";
 
-const SavedPaymentsButton = () =>
-  <SmallButton
-    text="Add Account"
-    linkUrl="/give/history"
-    className="btn--dark-tertiary flush"
-  />;
+import {StepOne, StepTwo, StepThree, StepFour} from "./components/AddSavedPayment";
 
 
 type ISavedPaymentsList = {
   payments: Object,
   router: Object,
+  dispatch: Function,
 };
 
 export class SavedPaymentsList extends Component {
   props: ISavedPaymentsList;
+
+  openModal = () => {
+    this.props.dispatch(modal.render(StepOne, null));
+  }
+
+  SavedPaymentsButton = () =>
+    <SmallButton
+      text="Add Account"
+      onClick={this.openModal}
+      className="btn--dark-tertiary flush"
+    />;
 
   renderPayments(payments: Object) {
     if (!Array.isArray(payments)) return null;
@@ -80,7 +89,7 @@ export class SavedPaymentsList extends Component {
       <div className={wrapper}>
         <SectionHeader
           title="Saved Accounts"
-          link={<SavedPaymentsButton />}
+          link={<this.SavedPaymentsButton />}
         />
         <div className="grid">
           {this.renderPayments(this.props.payments.savedPayments)}
