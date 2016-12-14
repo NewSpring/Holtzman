@@ -27,7 +27,7 @@ const FINANCIAL_ACCOUNTS_QUERY = gql`
     accounts {
       description
       name
-      id
+      id: entityId
       summary
       image
       order
