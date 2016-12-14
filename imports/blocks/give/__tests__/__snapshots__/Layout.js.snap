@@ -992,16 +992,6 @@ exports[`test renders Success 1`] = `
       Success!
     </h3>
     <p
-      className="text-left">
-      Thank you for your contribution of 
-      $12.00
-       
-      starting on 
-      Dec 13, 2016
-       
-      to NewSpring Church.
-    </p>
-    <p
       className="test-dark-tertiary text-left">
       <em>
         If you have any questions please call our Finance Team at 864-965-9990 or

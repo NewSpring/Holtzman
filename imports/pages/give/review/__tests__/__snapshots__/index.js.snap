@@ -59,5 +59,11 @@ exports[`GiveReviewTemplate returns <Success /> component based on state 1`] = `
   email="web@newspring.cc"
   guest={false}
   onClick={[Function]}
+  schedule={
+    Object {
+      "frequency": null,
+      "start": null,
+    }
+  }
   total="$1.00" />
 `;
