@@ -376,7 +376,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                       },
                       "flyout": Object {
                         "fill": "#f0f0f0",
-                        "pointerEvents": "none",
                         "stroke": "#252525",
                         "strokeWidth": 1,
                       },
@@ -386,7 +385,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                         "fontSize": 14,
                         "letterSpacing": "normal",
                         "padding": 10,
-                        "pointerEvents": "none",
                         "stroke": "transparent",
                         "textAnchor": "middle",
                       },
@@ -791,7 +789,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                       },
                       "flyout": Object {
                         "fill": "#f0f0f0",
-                        "pointerEvents": "none",
                         "stroke": "#252525",
                         "strokeWidth": 1,
                       },
@@ -801,7 +798,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                         "fontSize": 14,
                         "letterSpacing": "normal",
                         "padding": 10,
-                        "pointerEvents": "none",
                         "stroke": "transparent",
                         "textAnchor": "middle",
                       },
@@ -1191,7 +1187,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
             },
             "flyout": Object {
               "fill": "#f0f0f0",
-              "pointerEvents": "none",
               "stroke": "#252525",
               "strokeWidth": 1,
             },
@@ -1201,7 +1196,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
               "fontSize": 14,
               "letterSpacing": "normal",
               "padding": 10,
-              "pointerEvents": "none",
               "stroke": "transparent",
               "textAnchor": "middle",
             },
@@ -1609,7 +1603,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
               },
               "flyout": Object {
                 "fill": "#f0f0f0",
-                "pointerEvents": "none",
                 "stroke": "#252525",
                 "strokeWidth": 1,
               },
@@ -1619,7 +1612,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                 "fontSize": 14,
                 "letterSpacing": "normal",
                 "padding": 10,
-                "pointerEvents": "none",
                 "stroke": "transparent",
                 "textAnchor": "middle",
               },
@@ -2109,7 +2101,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
               },
               "flyout": Object {
                 "fill": "#f0f0f0",
-                "pointerEvents": "none",
                 "stroke": "#252525",
                 "strokeWidth": 1,
               },
@@ -2119,7 +2110,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                 "fontSize": 14,
                 "letterSpacing": "normal",
                 "padding": 10,
-                "pointerEvents": "none",
                 "stroke": "transparent",
                 "textAnchor": "middle",
               },
@@ -2596,9 +2586,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
               },
               "flyout": Object {
                 "fill": "#f0f0f0",
-                "pointerEvents": "none",
-<<<<<<< HEAD
-=======
                 "stroke": "#252525",
                 "strokeWidth": 1,
               },
@@ -2608,7 +2595,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                 "fontSize": 14,
                 "letterSpacing": "normal",
                 "padding": 10,
-                "pointerEvents": "none",
                 "stroke": "transparent",
                 "textAnchor": "middle",
               },
@@ -3070,8 +3056,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
               },
               "flyout": Object {
                 "fill": "#f0f0f0",
-                "pointerEvents": "none",
->>>>>>> d4a93d3f0ed2f90875766c15ec3de32e9b4307d5
                 "stroke": "#252525",
                 "strokeWidth": 1,
               },
@@ -3081,7 +3065,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
                 "fontSize": 14,
                 "letterSpacing": "normal",
                 "padding": 10,
-                "pointerEvents": "none",
                 "stroke": "transparent",
                 "textAnchor": "middle",
               },

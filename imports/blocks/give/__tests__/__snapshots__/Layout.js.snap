@@ -53,9 +53,9 @@ exports[`test renders Billing form 1`] = `
           className="flush-bottom">
           <small
             className="italic display-inline-block push-half-top">
-            Step
+            Step 
             2
-             of
+             of 
             4
           </small>
         </p>
@@ -133,7 +133,7 @@ exports[`test renders Billing form 1`] = `
                   "display": "none",
                 }
               }>
-
+              
             </option>
           </select>
         </div>
@@ -188,7 +188,7 @@ exports[`test renders Billing form 1`] = `
                       "display": "none",
                     }
                   }>
-
+                  
                 </option>
               </select>
             </div>
@@ -280,7 +280,7 @@ exports[`test renders Confirm form 1`] = `
             <button
               className="
                 btn btn--small@next
-
+                
                 btn--dark-secondary flush-bottom
               "
               disabled={undefined}
@@ -449,7 +449,7 @@ exports[`test renders Error 1`] = `
       className="test-dark-tertiary text-left">
       <em>
         If you would like a member of our customer support team to follow up with you regarding this error, click
-
+         
         <a
           href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
           rel="noopener noreferrer"
@@ -555,9 +555,9 @@ exports[`test renders Payment form 1`] = `
           className="flush-bottom">
           <small
             className="italic display-inline-block push-half-top">
-            Step
+            Step 
             3
-             of
+             of 
             4
           </small>
         </p>
@@ -828,9 +828,9 @@ exports[`test renders Personal form 1`] = `
           className="flush-bottom">
           <small
             className="italic display-inline-block push-half-top">
-            Step
+            Step 
             1
-             of
+             of 
             4
           </small>
         </p>
@@ -941,7 +941,7 @@ exports[`test renders Personal form 1`] = `
                   "display": "none",
                 }
               }>
-
+              
             </option>
           </select>
         </div>
@@ -995,14 +995,14 @@ exports[`test renders Success 1`] = `
       className="test-dark-tertiary text-left">
       <em>
         If you have any questions please call our Finance Team at 864-965-9990 or
-
+         
         <a
           href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
           rel="noopener noreferrer"
           target="_blank">
           contact us
         </a>
-
+         
         and someone will be happy to assist you.
       </em>
     </p>
