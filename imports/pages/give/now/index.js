@@ -30,6 +30,13 @@ class PageWithoutData extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.setRightProps({
+      background: "",
+      link: "",
+    });
+  }
+
   render() {
     return <Layout {...this.props} />;
   }
