@@ -30,14 +30,17 @@ const data = {
 };
 
 const generateComponent = (additionalProps) =>
-  <GivingSummary {...additionalProps} />
+  <GivingSummary breakpoints={[]} {...additionalProps} />
 
 describe("GivingSummary", () => {
   it("should render with minimal props", () => {
     const component = mount(generateComponent());
     expect(mountToJson(component)).toMatchSnapshot();
   });
-
+  it("should render nothing if the breakpoints don't match", () => {
+    const component = mount(generateComponent({ breakpoints: ["lap-and-up"] }));
+    expect(mountToJson(component)).toMatchSnapshot();
+  });
   it("should pass correct props to graph with data", () => {
     const component = mount(generateComponent({data: data}));
     expect(mountToJson(component)).toMatchSnapshot();

@@ -43,6 +43,7 @@ const ACTIVITY_QUERY = gql`
     }
   }
 `;
+
 const withActivityData = graphql(ACTIVITY_QUERY, {
   name: "feed",
   options: {

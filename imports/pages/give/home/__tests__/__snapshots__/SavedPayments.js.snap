@@ -27,7 +27,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
       <div
         className="one-whole">
         <div
-          className="one-half floating display-inline-block floating--left soft">
+          className="one-half floating display-inline-block floating--left soft soft-half-left">
           <h6
             className="floating__item text-dark-tertiary flush">
             Saved Accounts

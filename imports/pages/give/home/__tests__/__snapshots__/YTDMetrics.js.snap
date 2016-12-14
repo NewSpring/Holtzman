@@ -1,0 +1,133 @@
+exports[`YTDMetrics returns a linegraph of data 1`] = `
+<div>
+  <div>
+    <div
+      className="soft-double-bottom soft-double-top">
+      <pre>
+         
+        {
+          \"data\": [
+            {
+              \"month\": \"January\",
+              \"amount\": 1010,
+              \"tick\": \"J\"
+            },
+            {
+              \"month\": \"February\",
+              \"amount\": 332,
+              \"tick\": \"F\"
+            },
+            {
+              \"month\": \"March\",
+              \"amount\": 432,
+              \"tick\": \"M\"
+            },
+            {
+              \"month\": \"April\",
+              \"amount\": 832,
+              \"tick\": \"A\"
+            },
+            {
+              \"month\": \"May\",
+              \"amount\": 2120,
+              \"tick\": \"M\"
+            },
+            {
+              \"month\": \"June\",
+              \"amount\": 120,
+              \"tick\": \"J\"
+            },
+            {
+              \"month\": \"July\",
+              \"amount\": 1230,
+              \"tick\": \"J\"
+            },
+            {
+              \"month\": \"August\",
+              \"amount\": 110,
+              \"tick\": \"A\"
+            },
+            {
+              \"month\": \"September\",
+              \"amount\": 746,
+              \"tick\": \"S\"
+            },
+            {
+              \"month\": \"October\",
+              \"amount\": 574,
+              \"tick\": \"O\"
+            },
+            {
+              \"month\": \"November\",
+              \"amount\": 343,
+              \"tick\": \"N\"
+            },
+            {
+              \"month\": \"December\",
+              \"amount\": 233,
+              \"tick\": \"D\"
+            }
+          ],
+          \"lineColor\": \"#ffffff\",
+          \"lineWidth\": \"3\",
+          \"dotColor\": \"#ffffff\",
+          \"dotSize\": \"5\",
+          \"axisStyles\": {
+            \"axis\": {
+              \"lineColor\": \"transparent\",
+              \"lineWidth\": \"0\"
+            },
+            \"tickLabels\": {
+              \"fontSize\": \"10\",
+              \"padding\": \"5\",
+              \"fill\": \"#ffffff\"
+            }
+          }
+        }
+         
+      </pre>
+    </div>
+    <div
+      className="floating text-left text-dark-primary text-light-primary">
+      <h3
+        className="floating__item flush"
+        style={
+          Object {
+            "paddingRight": "5px",
+          }
+        }>
+        $
+      </h3>
+      <h1
+        className="floating__item flush">
+        3422
+      </h1>
+      <h3
+        className="floating__item flush">
+        .
+        00
+      </h3>
+    </div>
+    <p
+      className="push-top text-light-primary italic text-left">
+      <small>
+        Total amount given across all funds
+      </small>
+    </p>
+    <div
+      className="text-left">
+      <a
+        className="text-left"
+        onClick={[Function]}
+        style={Object {}}>
+        <h6
+          className="display-inline-block text-light-primary">
+          View Your Giving History
+        </h6>
+        <span
+          className="icon-arrow-next soft-half-left text-light-primary" />
+      </a>
+    </div>
+  </div>
+</div>
+`;

@@ -23,10 +23,10 @@ const getTickFormat = (data: Object[]) => {
 
 
 type IGradientGroup = {
-  style: Object,
-  events: Object,
-  transform: Object,
-  children: any,
+  style?: Object,
+  events?: Object,
+  transform?: Object,
+  children?: any,
   gradientColor: string,
 };
 

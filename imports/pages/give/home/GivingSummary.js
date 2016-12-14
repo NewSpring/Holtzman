@@ -24,9 +24,11 @@ const graphSettings = {
 
 type IGivingSummary = {
   data: Object,
+  breakpoints: String[],
 };
 
 export const GivingSummary = (props: IGivingSummary) => {
+  if (props.breakpoints.includes("lap-and-up")) return null;
   if (!props.data || props.data.loading || !props.data.chartData) return null;
   const data = { data: props.data.chartData, ...graphSettings };
   return (

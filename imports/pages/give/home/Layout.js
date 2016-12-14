@@ -5,7 +5,7 @@ import Schedules from "./Schedules";
 import SavedPayments from "./SavedPayments";
 
 const Layout = () => (
-  <div>
+  <div className="soft@palm-wide soft-double-bottom@lap-and-up soft-bottom soft-double-sides@lap-and-up">
     <Activity />
     <Schedules />
     <SavedPayments />

@@ -1,5 +1,6 @@
 exports[`GivingSummary should pass correct props to graph with data 1`] = `
 <GivingSummary
+  breakpoints={Array []}
   data={
     Object {
       "accounts": Object {
@@ -164,4 +165,16 @@ exports[`GivingSummary should pass correct props to graph with data 1`] = `
 </GivingSummary>
 `;
 
-exports[`GivingSummary should render with minimal props 1`] = `<GivingSummary />`;
+exports[`GivingSummary should render nothing if the breakpoints don't match 1`] = `
+<GivingSummary
+  breakpoints={
+    Array [
+      "lap-and-up",
+    ]
+  } />
+`;
+
+exports[`GivingSummary should render with minimal props 1`] = `
+<GivingSummary
+  breakpoints={Array []} />
+`;
