@@ -65,14 +65,14 @@ exports[`Giving Schedules List should render properly with data 1`] = `
   <div>
     <SectionHeader
       link={<SchedulesButton />}
-      title="Scheduled Contributions">
+      title="Active Schedules">
       <div
         className="one-whole">
         <div
           className="one-half floating display-inline-block floating--left soft soft-half-left">
           <h6
             className="floating__item text-dark-tertiary flush">
-            Scheduled Contributions
+            Active Schedules
           </h6>
         </div>
         <div
@@ -108,272 +108,281 @@ exports[`Giving Schedules List should render properly with data 1`] = `
       </div>
     </SectionHeader>
     <div
-      className="grid flush soft-half-right">
+      className="grid">
       <ScheduleOverviewCard
         amount="20"
-        classes="grid__item soft-half-sides hard-right one-half@lap-wide-and-up"
+        classes="grid__item one-half@lap-wide-and-up"
         frequency="One Time"
         fund="General Fund"
         latest="2016-03-17"
         onEditClick={[Function]}
         started="2016-03-16">
         <div
-          className="card">
+          className="grid__item one-half@lap-wide-and-up">
           <div
-            className="card__item soft push-half-ends one-whole">
-            <button
-              className="float-right h6 text-dark-tertiary outlined--bottom"
-              onClick={[Function]}
-              style={
-                Object {
-                  "borderColor": "inherit",
-                  "borderWidth": "2px",
-                }
-              }>
-              Edit
-            </button>
-            <Currency
-              amount="20"
-              className="text-left">
+            className="card">
+            <div
+              className="card__item soft push-half-ends one-whole">
+              <button
+                className="float-right h6 text-dark-tertiary outlined--bottom"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "borderColor": "inherit",
+                    "borderWidth": "2px",
+                  }
+                }>
+                Edit
+              </button>
+              <Currency
+                amount="20"
+                className="text-left">
+                <div
+                  className="floating text-dark-primary text-left">
+                  <h4
+                    className="floating__item flush"
+                    style={
+                      Object {
+                        "paddingRight": "5px",
+                      }
+                    }>
+                    $
+                  </h4>
+                  <h2
+                    className="floating__item flush">
+                    20
+                  </h2>
+                  <h4
+                    className="floating__item flush" />
+                </div>
+              </Currency>
               <div
-                className="floating text-dark-primary text-left">
-                <h4
-                  className="floating__item flush"
+                className="floating text-left push-bottom">
+                <h5
+                  className="floating__item soft-half-right flush text-dark-primary">
+                  General Fund
+                </h5>
+                <h6
+                  className="floating__item flush text-dark-tertiary">
+                  One Time
+                </h6>
+              </div>
+              <p
+                className="flush"
+                style={
+                  Object {
+                    "marginBottom": "5px",
+                  }
+                }>
+                <span
+                  className="h7 text-dark-tertiary push-half-right"
                   style={
                     Object {
-                      "paddingRight": "5px",
+                      "verticalAlign": "middle",
                     }
                   }>
-                  $
-                </h4>
-                <h2
-                  className="floating__item flush">
-                  20
-                </h2>
-                <h4
-                  className="floating__item flush" />
-              </div>
-            </Currency>
-            <div
-              className="floating text-left push-bottom">
-              <h5
-                className="floating__item soft-half-right flush text-dark-primary">
-                General Fund
-              </h5>
-              <h6
-                className="floating__item flush text-dark-tertiary">
-                One Time
-              </h6>
+                  Started:
+                </span>
+                <em
+                  className="text-dark-primary">
+                  Mar 16, 2016
+                </em>
+              </p>
+              <p
+                className="flush">
+                <span
+                  className="h7 text-dark-tertiary push-half-right"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
+                  Latest:
+                </span>
+                <em
+                  className="text-dark-primary">
+                  Mar 17, 2016
+                </em>
+              </p>
             </div>
-            <p
-              className="flush"
-              style={
-                Object {
-                  "marginBottom": "5px",
-                }
-              }>
-              <span
-                className="h7 text-dark-tertiary push-half-right"
-                style={
-                  Object {
-                    "verticalAlign": "middle",
-                  }
-                }>
-                Started:
-              </span>
-              <em
-                className="text-dark-primary">
-                2016-03-16
-              </em>
-            </p>
-            <p
-              className="flush">
-              <span
-                className="h7 text-dark-tertiary push-half-right"
-                style={
-                  Object {
-                    "verticalAlign": "middle",
-                  }
-                }>
-                Latest:
-              </span>
-              <em
-                className="text-dark-primary">
-                2016-03-17
-              </em>
-            </p>
           </div>
         </div>
       </ScheduleOverviewCard>
       <ScheduleOverviewCard
         amount="100"
-        classes="grid__item soft-half-sides hard-right one-half@lap-wide-and-up"
+        classes="grid__item one-half@lap-wide-and-up"
         frequency="Once a Month"
         fund="Step Up Fund"
         latest="2016-03-18"
         onEditClick={[Function]}
         started="2016-03-16">
         <div
-          className="card">
+          className="grid__item one-half@lap-wide-and-up">
           <div
-            className="card__item soft push-half-ends one-whole">
-            <button
-              className="float-right h6 text-dark-tertiary outlined--bottom"
-              onClick={[Function]}
-              style={
-                Object {
-                  "borderColor": "inherit",
-                  "borderWidth": "2px",
-                }
-              }>
-              Edit
-            </button>
-            <Currency
-              amount="100"
-              className="text-left">
+            className="card">
+            <div
+              className="card__item soft push-half-ends one-whole">
+              <button
+                className="float-right h6 text-dark-tertiary outlined--bottom"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "borderColor": "inherit",
+                    "borderWidth": "2px",
+                  }
+                }>
+                Edit
+              </button>
+              <Currency
+                amount="100"
+                className="text-left">
+                <div
+                  className="floating text-dark-primary text-left">
+                  <h4
+                    className="floating__item flush"
+                    style={
+                      Object {
+                        "paddingRight": "5px",
+                      }
+                    }>
+                    $
+                  </h4>
+                  <h2
+                    className="floating__item flush">
+                    100
+                  </h2>
+                  <h4
+                    className="floating__item flush" />
+                </div>
+              </Currency>
               <div
-                className="floating text-dark-primary text-left">
-                <h4
-                  className="floating__item flush"
+                className="floating text-left push-bottom">
+                <h5
+                  className="floating__item soft-half-right flush text-dark-primary">
+                  Step Up Fund
+                </h5>
+                <h6
+                  className="floating__item flush text-dark-tertiary">
+                  Once a Month
+                </h6>
+              </div>
+              <p
+                className="flush"
+                style={
+                  Object {
+                    "marginBottom": "5px",
+                  }
+                }>
+                <span
+                  className="h7 text-dark-tertiary push-half-right"
                   style={
                     Object {
-                      "paddingRight": "5px",
+                      "verticalAlign": "middle",
                     }
                   }>
-                  $
-                </h4>
-                <h2
-                  className="floating__item flush">
-                  100
-                </h2>
-                <h4
-                  className="floating__item flush" />
-              </div>
-            </Currency>
-            <div
-              className="floating text-left push-bottom">
-              <h5
-                className="floating__item soft-half-right flush text-dark-primary">
-                Step Up Fund
-              </h5>
-              <h6
-                className="floating__item flush text-dark-tertiary">
-                Once a Month
-              </h6>
+                  Started:
+                </span>
+                <em
+                  className="text-dark-primary">
+                  Mar 16, 2016
+                </em>
+              </p>
+              <p
+                className="flush">
+                <span
+                  className="h7 text-dark-tertiary push-half-right"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
+                  Latest:
+                </span>
+                <em
+                  className="text-dark-primary">
+                  Mar 18, 2016
+                </em>
+              </p>
             </div>
-            <p
-              className="flush"
-              style={
-                Object {
-                  "marginBottom": "5px",
-                }
-              }>
-              <span
-                className="h7 text-dark-tertiary push-half-right"
-                style={
-                  Object {
-                    "verticalAlign": "middle",
-                  }
-                }>
-                Started:
-              </span>
-              <em
-                className="text-dark-primary">
-                2016-03-16
-              </em>
-            </p>
-            <p
-              className="flush">
-              <span
-                className="h7 text-dark-tertiary push-half-right"
-                style={
-                  Object {
-                    "verticalAlign": "middle",
-                  }
-                }>
-                Latest:
-              </span>
-              <em
-                className="text-dark-primary">
-                2016-03-18
-              </em>
-            </p>
           </div>
         </div>
       </ScheduleOverviewCard>
       <ScheduleOverviewCard
         amount="50"
-        classes="grid__item soft-half-sides hard-right one-half@lap-wide-and-up"
+        classes="grid__item one-half@lap-wide-and-up"
         frequency="One Time"
         fund="Christmas Offering"
         latest=""
         onEditClick={[Function]}
         started="2016-03-16">
         <div
-          className="card">
+          className="grid__item one-half@lap-wide-and-up">
           <div
-            className="card__item soft push-half-ends one-whole">
-            <button
-              className="float-right h6 text-dark-tertiary outlined--bottom"
-              onClick={[Function]}
-              style={
-                Object {
-                  "borderColor": "inherit",
-                  "borderWidth": "2px",
-                }
-              }>
-              Edit
-            </button>
-            <Currency
-              amount="50"
-              className="text-left">
-              <div
-                className="floating text-dark-primary text-left">
-                <h4
-                  className="floating__item flush"
-                  style={
-                    Object {
-                      "paddingRight": "5px",
-                    }
-                  }>
-                  $
-                </h4>
-                <h2
-                  className="floating__item flush">
-                  50
-                </h2>
-                <h4
-                  className="floating__item flush" />
-              </div>
-            </Currency>
+            className="card">
             <div
-              className="floating text-left push-bottom">
-              <h5
-                className="floating__item soft-half-right flush text-dark-primary">
-                Christmas Offering
-              </h5>
-              <h6
-                className="floating__item flush text-dark-tertiary">
-                One Time
-              </h6>
-            </div>
-            <p
-              className="flush"
-              style={Object {}}>
-              <span
-                className="h7 text-dark-tertiary push-half-right"
+              className="card__item soft push-half-ends one-whole">
+              <button
+                className="float-right h6 text-dark-tertiary outlined--bottom"
+                onClick={[Function]}
                 style={
                   Object {
-                    "verticalAlign": "middle",
+                    "borderColor": "inherit",
+                    "borderWidth": "2px",
                   }
                 }>
-                Started:
-              </span>
-              <em
-                className="text-dark-primary">
-                2016-03-16
-              </em>
-            </p>
+                Edit
+              </button>
+              <Currency
+                amount="50"
+                className="text-left">
+                <div
+                  className="floating text-dark-primary text-left">
+                  <h4
+                    className="floating__item flush"
+                    style={
+                      Object {
+                        "paddingRight": "5px",
+                      }
+                    }>
+                    $
+                  </h4>
+                  <h2
+                    className="floating__item flush">
+                    50
+                  </h2>
+                  <h4
+                    className="floating__item flush" />
+                </div>
+              </Currency>
+              <div
+                className="floating text-left push-bottom">
+                <h5
+                  className="floating__item soft-half-right flush text-dark-primary">
+                  Christmas Offering
+                </h5>
+                <h6
+                  className="floating__item flush text-dark-tertiary">
+                  One Time
+                </h6>
+              </div>
+              <p
+                className="flush"
+                style={Object {}}>
+                <span
+                  className="h7 text-dark-tertiary push-half-right"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
+                  Started:
+                </span>
+                <em
+                  className="text-dark-primary">
+                  Mar 16, 2016
+                </em>
+              </p>
+            </div>
           </div>
         </div>
       </ScheduleOverviewCard>

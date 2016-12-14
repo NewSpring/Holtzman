@@ -35,7 +35,7 @@ export const GivingSummary = (props: IGivingSummary) => {
     <div className="push-half-sides">
       <YearToDate
         graphData={data}
-        amount={`${props.data.total}`}
+        amount={props.data.total.toFixed(2)}
         linkUrl="/give/history"
       />
     </div>

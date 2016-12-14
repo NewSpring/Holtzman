@@ -20,9 +20,10 @@ export const getDollars = (
   if (roundCurrency === true) {
     const integerAmount = parseFloat(amount.replace(currencySymbolRegex, "").replace("-", "") || "00.00");
     const roundedAmount = Math.round(integerAmount);
-    return roundedAmount.toString();
+    return roundedAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-  return amount.replace(currencySymbolRegex, "").replace("-", "").split(".")[0] || "00";
+  const ints = amount.replace(currencySymbolRegex, "").replace("-", "").split(".")[0];
+  return (ints && ints.replace(/\B(?=(\d{3})+(?!\d))/g, ",")) || "00";
 };
 export const getCents = (amount:string) => amount.split(".")[1] || "00";
 

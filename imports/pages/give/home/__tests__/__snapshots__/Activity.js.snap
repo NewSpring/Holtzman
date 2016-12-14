@@ -106,7 +106,7 @@ exports[`GivingActivity should render with data 1`] = `
       </div>
     </SectionHeader>
     <div
-      className="soft-half-sides hard-ends">
+      className="hard">
       <Activity
         date="2016-12-01"
         linkText="Update it Now"

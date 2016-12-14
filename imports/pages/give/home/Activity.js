@@ -168,7 +168,7 @@ export class GivingActivity extends Component {
     return (
       <div>
         <SectionHeader title="Activity" link={<ActivityButton />} />
-        <div className="soft-half-sides hard-ends">
+        <div className="hard">
           {this.renderActivity(data)}
         </div>
         <SummaryChart />
