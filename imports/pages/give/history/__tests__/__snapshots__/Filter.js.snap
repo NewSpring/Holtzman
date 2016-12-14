@@ -1,59 +1,87 @@
 exports[`test doesn't render family members if there are none 1`] = `
 <div>
   <div
-    className="one-whole outlined--light outlined--top background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
+    className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
     onClick={[Function]}>
-    <h6
-      className="text-dark-secondary flush-bottom display-inline-block">
+    <h7
+      className="text-dark-secondary flush-bottom push-half-left display-inline-block">
       Filter Transactions
-    </h6>
+    </h7>
     <span
-      className="float-right flush-bottom h7"
+      className="float-right flush icon-close"
       style={
         Object {
           "cursor": "pointer",
-          "marginTop": "3px",
+          "marginTop": "0px",
         }
-      }>
-      Done
-    </span>
+      } />
   </div>
   <div
     className="one-whole outlined--bottom outlined--light" />
   <div
-    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides">
-    <h6
-      className="push-top soft-half-bottom text-dark-secondary display-inline-block">
-      Family Member
-    </h6>
-    <h6
-      className="soft-half-top push-top text-dark-secondary display-inline-block">
-      Choose Date Range
-    </h6>
+    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left">
+    <h7
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      Date Range
+    </h7>
     <div
-      className="grid one-whole push-top flush-left@palm">
+      className="grid one-whole flush-left@palm">
       <div
-        className="hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap">
-        <Input
-          defaultValue=""
-          errorText="Please enter a start date"
-          id="start"
-          label="Start Date (MM/YY)"
-          onBlur={[Function]}
-          type="text"
-          validation={[Function]} />
+        className="hard-left@palm grid__item one-whole">
+        <TagSelect
+          items={
+            Array [
+              Object {
+                "label": "Last Month",
+                "value": "LastMonth",
+              },
+              Object {
+                "label": "Last 6 Months",
+                "value": "LastSixMonths",
+              },
+              Object {
+                "label": "Last Year",
+                "value": "LastYear",
+              },
+              Object {
+                "label": "All Time",
+                "value": "AllTime",
+              },
+            ]
+          }
+          onClick={[Function]}
+          overrideActive={false} />
       </div>
+    </div>
+    <h7
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      Custom Dates
+    </h7>
+    <div
+      className="grid one-whole flush-left@palm">
       <div
-        className="hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap">
-        <Input
-          defaultValue=""
-          errorText="Please enter an end date"
-          id="end"
-          label="End Date (MM/YY)"
-          onBlur={[Function]}
-          type="text"
-          validation={[Function]} />
+        className="hard-left@palm grid__item one-whole display-inline-block">
+        <withRouter(Connect(TagWithoutData))
+          active={false}
+          className={false}
+          label="Start Date"
+          onClick={[Function]}
+          val="StartDate" />
+        <withRouter(Connect(TagWithoutData))
+          active={false}
+          className={false}
+          label="End Date"
+          onClick={[Function]}
+          val="EndDate" />
       </div>
+    </div>
+    <div
+      className="push-top">
+      <button
+        className="btn one-whole@handheld"
+        onClick={[Function]}>
+        Filter Results
+      </button>
     </div>
   </div>
 </div>
@@ -62,113 +90,127 @@ exports[`test doesn't render family members if there are none 1`] = `
 exports[`test renders family members when expanded is true 1`] = `
 <div>
   <div
-    className="one-whole outlined--light outlined--top background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
+    className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
     onClick={[Function]}>
-    <h6
-      className="text-dark-secondary flush-bottom display-inline-block">
+    <h7
+      className="text-dark-secondary flush-bottom push-half-left display-inline-block">
       Filter Transactions
-    </h6>
+    </h7>
     <span
-      className="float-right flush-bottom h7"
+      className="float-right flush icon-close"
       style={
         Object {
           "cursor": "pointer",
-          "marginTop": "3px",
+          "marginTop": "0px",
         }
-      }>
-      Done
-    </span>
+      } />
   </div>
   <div
     className="one-whole outlined--bottom outlined--light" />
   <div
-    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides">
-    <h6
-      className="push-top soft-half-bottom text-dark-secondary display-inline-block">
-      Family Member
-    </h6>
-    <div
-      className="soft-half-bottom soft-half-left"
-      onClick={[Function]}
-      style={
-        Object {
-          "cursor": "pointer",
-        }
-      }>
+    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left">
+    <div>
+      <h7
+        className="push-top text-dark-secondary display-inline-block">
+        Family Members
+      </h7>
       <div
-        className=" display-inline-block outlined checkbox" />
-      <div
-        className="push-left round background--fill display-inline-block"
+        className=""
+        onClick={[Function]}
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/test.jpg\')",
-            "height": "35px",
-            "verticalAlign": "middle",
-            "width": "35px",
+            "cursor": "pointer",
           }
-        } />
-      <h7
-        className="soft-half-left">
-        jim
-         
-        bob
-      </h7>
-    </div>
-    <div
-      className="soft-half-bottom soft-half-left"
-      onClick={[Function]}
-      style={
-        Object {
-          "cursor": "pointer",
-        }
-      }>
+        }>
+        <div
+          className=" display-inline-block outlined checkbox" />
+        <h6
+          className="soft-half-left display-inline-block">
+          jim
+           
+          bob
+        </h6>
+      </div>
       <div
-        className=" display-inline-block outlined checkbox" />
-      <div
-        className="push-left round background--fill display-inline-block"
+        className=""
+        onClick={[Function]}
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/test.jpg\')",
-            "height": "35px",
-            "verticalAlign": "middle",
-            "width": "35px",
+            "cursor": "pointer",
           }
-        } />
-      <h7
-        className="soft-half-left">
-        sally
-         
-        bob
-      </h7>
+        }>
+        <div
+          className=" display-inline-block outlined checkbox" />
+        <h6
+          className="soft-half-left display-inline-block">
+          sally
+           
+          bob
+        </h6>
+      </div>
     </div>
-    <h6
-      className="soft-half-top push-top text-dark-secondary display-inline-block">
-      Choose Date Range
-    </h6>
+    <h7
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      Date Range
+    </h7>
     <div
-      className="grid one-whole push-top flush-left@palm">
+      className="grid one-whole flush-left@palm">
       <div
-        className="hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap">
-        <Input
-          defaultValue=""
-          errorText="Please enter a start date"
-          id="start"
-          label="Start Date (MM/YY)"
-          onBlur={[Function]}
-          type="text"
-          validation={[Function]} />
+        className="hard-left@palm grid__item one-whole">
+        <TagSelect
+          items={
+            Array [
+              Object {
+                "label": "Last Month",
+                "value": "LastMonth",
+              },
+              Object {
+                "label": "Last 6 Months",
+                "value": "LastSixMonths",
+              },
+              Object {
+                "label": "Last Year",
+                "value": "LastYear",
+              },
+              Object {
+                "label": "All Time",
+                "value": "AllTime",
+              },
+            ]
+          }
+          onClick={[Function]}
+          overrideActive={false} />
       </div>
+    </div>
+    <h7
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      Custom Dates
+    </h7>
+    <div
+      className="grid one-whole flush-left@palm">
       <div
-        className="hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap">
-        <Input
-          defaultValue=""
-          errorText="Please enter an end date"
-          id="end"
-          label="End Date (MM/YY)"
-          onBlur={[Function]}
-          type="text"
-          validation={[Function]} />
+        className="hard-left@palm grid__item one-whole display-inline-block">
+        <withRouter(Connect(TagWithoutData))
+          active={false}
+          className={false}
+          label="Start Date"
+          onClick={[Function]}
+          val="StartDate" />
+        <withRouter(Connect(TagWithoutData))
+          active={false}
+          className={false}
+          label="End Date"
+          onClick={[Function]}
+          val="EndDate" />
       </div>
+    </div>
+    <div
+      className="push-top">
+      <button
+        className="btn one-whole@handheld"
+        onClick={[Function]}>
+        Filter Results
+      </button>
     </div>
   </div>
 </div>
@@ -177,14 +219,14 @@ exports[`test renders family members when expanded is true 1`] = `
 exports[`test renders with props 1`] = `
 <div>
   <div
-    className="one-whole outlined--light outlined--top background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
+    className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
     onClick={[Function]}>
-    <h6
-      className="text-dark-secondary flush-bottom display-inline-block">
+    <h7
+      className="text-dark-secondary flush-bottom push-half-left display-inline-block">
       Filter Transactions
-    </h6>
+    </h7>
     <span
-      className="float-right flush-bottom icon-filter"
+      className="float-right flush icon-filter"
       style={
         Object {
           "cursor": "pointer",
@@ -200,113 +242,127 @@ exports[`test renders with props 1`] = `
 exports[`test works with nickname 1`] = `
 <div>
   <div
-    className="one-whole outlined--light outlined--top background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
+    className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
     onClick={[Function]}>
-    <h6
-      className="text-dark-secondary flush-bottom display-inline-block">
+    <h7
+      className="text-dark-secondary flush-bottom push-half-left display-inline-block">
       Filter Transactions
-    </h6>
+    </h7>
     <span
-      className="float-right flush-bottom h7"
+      className="float-right flush icon-close"
       style={
         Object {
           "cursor": "pointer",
-          "marginTop": "3px",
+          "marginTop": "0px",
         }
-      }>
-      Done
-    </span>
+      } />
   </div>
   <div
     className="one-whole outlined--bottom outlined--light" />
   <div
-    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides">
-    <h6
-      className="push-top soft-half-bottom text-dark-secondary display-inline-block">
-      Family Member
-    </h6>
-    <div
-      className="soft-half-bottom soft-half-left"
-      onClick={[Function]}
-      style={
-        Object {
-          "cursor": "pointer",
-        }
-      }>
+    className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left">
+    <div>
+      <h7
+        className="push-top text-dark-secondary display-inline-block">
+        Family Members
+      </h7>
       <div
-        className=" display-inline-block outlined checkbox" />
-      <div
-        className="push-left round background--fill display-inline-block"
+        className=""
+        onClick={[Function]}
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/test.jpg\')",
-            "height": "35px",
-            "verticalAlign": "middle",
-            "width": "35px",
+            "cursor": "pointer",
           }
-        } />
-      <h7
-        className="soft-half-left">
-        jimothy
-         
-        bob
-      </h7>
-    </div>
-    <div
-      className="soft-half-bottom soft-half-left"
-      onClick={[Function]}
-      style={
-        Object {
-          "cursor": "pointer",
-        }
-      }>
+        }>
+        <div
+          className=" display-inline-block outlined checkbox" />
+        <h6
+          className="soft-half-left display-inline-block">
+          jimothy
+           
+          bob
+        </h6>
+      </div>
       <div
-        className=" display-inline-block outlined checkbox" />
-      <div
-        className="push-left round background--fill display-inline-block"
+        className=""
+        onClick={[Function]}
         style={
           Object {
-            "backgroundImage": "url(\'http://test.com/test.jpg\')",
-            "height": "35px",
-            "verticalAlign": "middle",
-            "width": "35px",
+            "cursor": "pointer",
           }
-        } />
-      <h7
-        className="soft-half-left">
-        sally
-         
-        bob
-      </h7>
+        }>
+        <div
+          className=" display-inline-block outlined checkbox" />
+        <h6
+          className="soft-half-left display-inline-block">
+          sally
+           
+          bob
+        </h6>
+      </div>
     </div>
-    <h6
-      className="soft-half-top push-top text-dark-secondary display-inline-block">
-      Choose Date Range
-    </h6>
+    <h7
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      Date Range
+    </h7>
     <div
-      className="grid one-whole push-top flush-left@palm">
+      className="grid one-whole flush-left@palm">
       <div
-        className="hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap">
-        <Input
-          defaultValue=""
-          errorText="Please enter a start date"
-          id="start"
-          label="Start Date (MM/YY)"
-          onBlur={[Function]}
-          type="text"
-          validation={[Function]} />
+        className="hard-left@palm grid__item one-whole">
+        <TagSelect
+          items={
+            Array [
+              Object {
+                "label": "Last Month",
+                "value": "LastMonth",
+              },
+              Object {
+                "label": "Last 6 Months",
+                "value": "LastSixMonths",
+              },
+              Object {
+                "label": "Last Year",
+                "value": "LastYear",
+              },
+              Object {
+                "label": "All Time",
+                "value": "AllTime",
+              },
+            ]
+          }
+          onClick={[Function]}
+          overrideActive={false} />
       </div>
+    </div>
+    <h7
+      className="soft-half-top push-half-top text-dark-secondary display-inline-block">
+      Custom Dates
+    </h7>
+    <div
+      className="grid one-whole flush-left@palm">
       <div
-        className="hard-left@palm grid__item one-whole one-half@palm-wide-and-up one-third@lap-and-up one-half@lap">
-        <Input
-          defaultValue=""
-          errorText="Please enter an end date"
-          id="end"
-          label="End Date (MM/YY)"
-          onBlur={[Function]}
-          type="text"
-          validation={[Function]} />
+        className="hard-left@palm grid__item one-whole display-inline-block">
+        <withRouter(Connect(TagWithoutData))
+          active={false}
+          className={false}
+          label="Start Date"
+          onClick={[Function]}
+          val="StartDate" />
+        <withRouter(Connect(TagWithoutData))
+          active={false}
+          className={false}
+          label="End Date"
+          onClick={[Function]}
+          val="EndDate" />
       </div>
+    </div>
+    <div
+      className="push-top">
+      <button
+        className="btn one-whole@handheld"
+        onClick={[Function]}>
+        Filter Results
+      </button>
     </div>
   </div>
 </div>

@@ -85,7 +85,7 @@ blockquote p {
   @extend h6;
   position: relative;
   background-color: map-get($colors, light-tertiary);
-  text-transform: lowercase;
+  // text-transform: lowercase;
   display: inline-block;
   padding: $base-spacing-unit/4 $base-spacing-unit/2;
   border-radius: 6px;

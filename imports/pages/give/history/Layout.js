@@ -183,6 +183,7 @@ export default class Layout extends Component {
     done: PropTypes.bool,
     changeFamily: PropTypes.func.isRequired,
     changeDates: PropTypes.func.isRequired,
+    findByLimit: PropTypes.func.isRequired,
     reloading: PropTypes.bool,
     family: PropTypes.array.isRequired,
   }
@@ -199,6 +200,7 @@ export default class Layout extends Component {
       changeFamily,
       changeDates,
       reloading,
+      findByLimit,
     } = this.props;
 
 
@@ -211,6 +213,7 @@ export default class Layout extends Component {
           family={this.props.family}
           changeFamily={changeFamily}
           changeDates={changeDates}
+          findByLimit={findByLimit}
         />
         <div
           className={
