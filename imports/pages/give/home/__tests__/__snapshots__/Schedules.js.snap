@@ -156,17 +156,10 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                     className="floating__item flush" />
                 </div>
               </Currency>
-              <div
-                className="floating text-left push-bottom">
-                <h5
-                  className="floating__item soft-half-right flush text-dark-primary">
-                  General Fund
-                </h5>
-                <h6
-                  className="floating__item flush text-dark-tertiary">
-                  One Time
-                </h6>
-              </div>
+              <h5
+                className="floating__item soft-half-right push-bottom text-dark-primary">
+                One Time
+              </h5>
               <p
                 className="flush"
                 style={
@@ -188,8 +181,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   Mar 16, 2016
                 </em>
               </p>
-              <p
-                className="flush">
+              <p>
                 <span
                   className="h7 text-dark-tertiary push-half-right"
                   style={
@@ -204,6 +196,27 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   Mar 17, 2016
                 </em>
               </p>
+              <button
+                className="text-primary"
+                style={
+                  Object {
+                    "borderColor": "inherit",
+                    "borderWidth": "2px",
+                  }
+                }>
+                <h6
+                  className="display-inline-block soft-half-right">
+                  View Schedule Details
+                </h6>
+                <span
+                  className="text-primary display-inline-block icon-arrow-next"
+                  style={
+                    Object {
+                      "right": "-5px",
+                      "top": "1px",
+                    }
+                  } />
+              </button>
             </div>
           </div>
         </div>
@@ -255,17 +268,10 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                     className="floating__item flush" />
                 </div>
               </Currency>
-              <div
-                className="floating text-left push-bottom">
-                <h5
-                  className="floating__item soft-half-right flush text-dark-primary">
-                  Step Up Fund
-                </h5>
-                <h6
-                  className="floating__item flush text-dark-tertiary">
-                  Once a Month
-                </h6>
-              </div>
+              <h5
+                className="floating__item soft-half-right push-bottom text-dark-primary">
+                Once a Month
+              </h5>
               <p
                 className="flush"
                 style={
@@ -287,8 +293,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   Mar 16, 2016
                 </em>
               </p>
-              <p
-                className="flush">
+              <p>
                 <span
                   className="h7 text-dark-tertiary push-half-right"
                   style={
@@ -303,6 +308,27 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   Mar 18, 2016
                 </em>
               </p>
+              <button
+                className="text-primary"
+                style={
+                  Object {
+                    "borderColor": "inherit",
+                    "borderWidth": "2px",
+                  }
+                }>
+                <h6
+                  className="display-inline-block soft-half-right">
+                  View Schedule Details
+                </h6>
+                <span
+                  className="text-primary display-inline-block icon-arrow-next"
+                  style={
+                    Object {
+                      "right": "-5px",
+                      "top": "1px",
+                    }
+                  } />
+              </button>
             </div>
           </div>
         </div>
@@ -354,17 +380,10 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                     className="floating__item flush" />
                 </div>
               </Currency>
-              <div
-                className="floating text-left push-bottom">
-                <h5
-                  className="floating__item soft-half-right flush text-dark-primary">
-                  Christmas Offering
-                </h5>
-                <h6
-                  className="floating__item flush text-dark-tertiary">
-                  One Time
-                </h6>
-              </div>
+              <h5
+                className="floating__item soft-half-right push-bottom text-dark-primary">
+                One Time
+              </h5>
               <p
                 className="flush"
                 style={Object {}}>
@@ -382,6 +401,27 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   Mar 16, 2016
                 </em>
               </p>
+              <button
+                className="text-primary"
+                style={
+                  Object {
+                    "borderColor": "inherit",
+                    "borderWidth": "2px",
+                  }
+                }>
+                <h6
+                  className="display-inline-block soft-half-right">
+                  View Schedule Details
+                </h6>
+                <span
+                  className="text-primary display-inline-block icon-arrow-next"
+                  style={
+                    Object {
+                      "right": "-5px",
+                      "top": "1px",
+                    }
+                  } />
+              </button>
             </div>
           </div>
         </div>
