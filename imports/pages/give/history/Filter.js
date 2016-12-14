@@ -65,7 +65,7 @@ export default class Filter extends Component {
     this.setState(({ start, end, limit }) => {
       let transactionLimit;
       if (start !== "" || end !== "") {
-        if (value === "AllTime" && limit === 20) {
+        if (value === "AllTime" && limit !== 20) {
           transactionLimit = 20;
         }
         return { start: "", end: "", limit: transactionLimit };
@@ -260,7 +260,7 @@ export default class Filter extends Component {
                 />
               </div>
             </div>
-            <div className="push-top display-block">
+            <div className="push-top">
               <button
                 className={"btn one-whole@handheld"}
                 onClick={this.filterResults}

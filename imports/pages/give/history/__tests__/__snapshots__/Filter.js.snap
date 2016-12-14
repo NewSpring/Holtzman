@@ -74,6 +74,14 @@ exports[`test doesn't render family members if there are none 1`] = `
           val="EndDate" />
       </div>
     </div>
+    <div
+      className="push-top">
+      <button
+        className="btn one-whole@handheld"
+        onClick={[Function]}>
+        Filter Results
+      </button>
+    </div>
   </div>
 </div>
 `;
@@ -193,6 +201,14 @@ exports[`test renders family members when expanded is true 1`] = `
           onClick={[Function]}
           val="EndDate" />
       </div>
+    </div>
+    <div
+      className="push-top">
+      <button
+        className="btn one-whole@handheld"
+        onClick={[Function]}>
+        Filter Results
+      </button>
     </div>
   </div>
 </div>
@@ -336,6 +352,14 @@ exports[`test works with nickname 1`] = `
           onClick={[Function]}
           val="EndDate" />
       </div>
+    </div>
+    <div
+      className="push-top">
+      <button
+        className="btn one-whole@handheld"
+        onClick={[Function]}>
+        Filter Results
+      </button>
     </div>
   </div>
 </div>
