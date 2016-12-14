@@ -451,25 +451,18 @@ exports[`TransactionDetail renders with failure 1`] = `
     }>
     <div
       className="soft-half-right">
-      <h4
-        className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
+      <Currency
+        amount={2}
+        baseHeadingSize="3"
+        className="text-dark-tertiary text-right soft-right@handheld soft-double-right@lap-and-up" />
+      <span
+        className="text-primary icon-arrow-next locked"
         style={
           Object {
-            "overflow": "hidden",
-            "textOverflow": "ellipsis",
-            "whiteSpace": "nowrap",
+            "right": "-5px",
+            "top": "6px",
           }
-        }>
-        $2
-        <span
-          className="text-primary icon-arrow-next locked"
-          style={
-            Object {
-              "right": "-5px",
-              "top": "1px",
-            }
-          } />
-      </h4>
+        } />
     </div>
   </div>
 </div>
@@ -534,25 +527,18 @@ exports[`TransactionDetail renders with failure and status 1`] = `
     }>
     <div
       className="soft-half-right">
-      <h4
-        className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
+      <Currency
+        amount={2}
+        baseHeadingSize="3"
+        className="text-dark-tertiary text-right soft-right@handheld soft-double-right@lap-and-up" />
+      <span
+        className="text-primary icon-arrow-next locked"
         style={
           Object {
-            "overflow": "hidden",
-            "textOverflow": "ellipsis",
-            "whiteSpace": "nowrap",
+            "right": "-5px",
+            "top": "6px",
           }
-        }>
-        $2
-        <span
-          className="text-primary icon-arrow-next locked"
-          style={
-            Object {
-              "right": "-5px",
-              "top": "1px",
-            }
-          } />
-      </h4>
+        } />
     </div>
   </div>
 </div>
@@ -616,25 +602,18 @@ exports[`TransactionDetail renders with props 1`] = `
     }>
     <div
       className="soft-half-right">
-      <h4
-        className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
+      <Currency
+        amount={2}
+        baseHeadingSize="3"
+        className="text-dark-tertiary text-right soft-right@handheld soft-double-right@lap-and-up" />
+      <span
+        className="text-primary icon-arrow-next locked"
         style={
           Object {
-            "overflow": "hidden",
-            "textOverflow": "ellipsis",
-            "whiteSpace": "nowrap",
+            "right": "-5px",
+            "top": "6px",
           }
-        }>
-        $2
-        <span
-          className="text-primary icon-arrow-next locked"
-          style={
-            Object {
-              "right": "-5px",
-              "top": "1px",
-            }
-          } />
-      </h4>
+        } />
     </div>
   </div>
 </div>
@@ -698,17 +677,10 @@ exports[`TransactionDetail renders without icon 1`] = `
     }>
     <div
       className="soft-half-right">
-      <h4
-        className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
-        style={
-          Object {
-            "overflow": "hidden",
-            "textOverflow": "ellipsis",
-            "whiteSpace": "nowrap",
-          }
-        }>
-        $2
-      </h4>
+      <Currency
+        amount={2}
+        baseHeadingSize="3"
+        className="text-dark-tertiary text-right soft-right@handheld soft-double-right@lap-and-up" />
     </div>
   </div>
 </div>

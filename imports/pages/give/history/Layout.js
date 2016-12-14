@@ -3,6 +3,7 @@ import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import moment from "moment";
 import Filter from "./Filter";
+import Currency from "./../../../components/currency";
 
 import { Spinner } from "../../../components/loading";
 import Meta from "../../../components/meta";
@@ -66,36 +67,25 @@ export const TransactionDetail = ({
     <div className="grid__item two-fifths text-right" style={{ verticalAlign: "middle" }}>
       <div className="soft-half-right">
 
-        <h4
-          className={
-            "text-dark-tertiary one-whole flush " +
-            "soft-right@handheld soft-double-right@lap-and-up"
+        <Currency
+          amount={transactionDetail.amount}
+          baseHeadingSize="3"
+          className="text-dark-tertiary text-right soft-right@handheld soft-double-right@lap-and-up"
+        />
+        {(() => {
+          if (icon) {
+            return (
+              <span
+                className="text-primary icon-arrow-next locked"
+                style={{
+                  right: "-5px",
+                  top: "6px",
+                }}
+              />
+            );
           }
-          style={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {monentize(transactionDetail.amount)}
-          {(() => {
-            if (icon) {
-              return (
-                <span
-                  className="text-primary icon-arrow-next locked"
-                  style={{
-                    right: "-5px",
-                    top: "1px",
-                  }}
-                />
-              );
-            }
-            return null;
-          })()}
-
-        </h4>
-
-
+          return null;
+        })()}
       </div>
 
     </div>

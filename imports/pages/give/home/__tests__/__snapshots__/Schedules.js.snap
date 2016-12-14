@@ -65,14 +65,14 @@ exports[`Giving Schedules List should render properly with data 1`] = `
   <div>
     <SectionHeader
       link={<SchedulesButton />}
-      title="Scheduled Contributions">
+      title="Active Schedules">
       <div
         className="one-whole">
         <div
           className="one-half floating display-inline-block floating--left soft soft-half-left">
           <h6
             className="floating__item text-dark-tertiary flush">
-            Scheduled Contributions
+            Active Schedules
           </h6>
         </div>
         <div
