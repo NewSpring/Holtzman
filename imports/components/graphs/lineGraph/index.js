@@ -4,6 +4,7 @@ import {
   VictoryAxis,
   VictoryLine,
   VictoryScatter,
+  VictoryArea,
 } from "victory";
 
 type ILineGraph = {
@@ -20,6 +21,31 @@ const getTickFormat = (data: Object[]) => {
   return ticks;
 };
 
+
+type IGradientGroup = {
+  style: Object,
+  events: Object,
+  transform: Object,
+  children: any,
+  gradientColor: string,
+};
+
+const GradientGroup = ({ style, events, transform, children, gradientColor }: IGradientGroup) => (
+  <g
+    style={style}
+    {...events}
+    transform={transform}
+  >
+    <defs>
+      <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset=".5" stopOpacity="1" stopColor={gradientColor} />
+        <stop offset="1" stopOpacity="0" stopColor={gradientColor} />
+      </linearGradient>
+    </defs>
+    {children}
+  </g>
+);
+
 const LineGraph = ({
   axisStyles,
   data,
@@ -30,8 +56,8 @@ const LineGraph = ({
 }: ILineGraph) => (
   <div className="">
     <VictoryChart
-      padding={{ top: 5, left: 10, right: 10, bottom: 50 }}
       height={160}
+      padding={{ top: 5, left: 10, right: 10, bottom: 20 }}
       animate={{ duration: 2000 }}
     >
       <VictoryAxis
@@ -43,19 +69,18 @@ const LineGraph = ({
           tickLabels: {
             fontFamily: "colfax-web, sans-serif",
             fontSize: `${axisStyles.tickLabels.fontSize}`,
-            padding: `${axisStyles.tickLabels.padding}`,
             fill: `${axisStyles.tickLabels.fill}`,
           },
         }}
         tickFormat={getTickFormat(data)}
       />
-      <VictoryScatter
+      <VictoryArea
         data={data}
         x="month"
         y="amount"
-        size={dotSize}
+        groupComponent={<GradientGroup gradientColor={lineColor} />}
         style={{
-          data: { fill: `${dotColor}` },
+          data: { fill: "url(#gradient)", stroke: "none", opacity: 0.5 },
         }}
       />
       <VictoryLine
@@ -64,6 +89,15 @@ const LineGraph = ({
         y="amount"
         style={{
           data: { stroke: `${lineColor}`, strokeWidth: `${lineWidth}` },
+        }}
+      />
+      <VictoryScatter
+        data={data}
+        x="month"
+        y="amount"
+        size={dotSize}
+        style={{
+          data: { fill: dotColor },
         }}
       />
     </VictoryChart>

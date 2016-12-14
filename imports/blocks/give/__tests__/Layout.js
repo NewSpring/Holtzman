@@ -123,6 +123,7 @@ it("renders Success", () => {
           email: "test@test.com",
         },
       },
+      // schedule: { start: null, frequency: null },
       state: "success",
       total: 12,
     },

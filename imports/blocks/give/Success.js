@@ -9,7 +9,7 @@ type IScheduleThanks = {
 };
 
 const ScheduleThanks = ({ total, schedule }: IScheduleThanks) => {
-  if (!schedule) return null;
+  if (!schedule || !schedule.start) return null;
   return (
     <p className="text-left">
       Thank you for your contribution of {total}{" "}
@@ -90,7 +90,7 @@ type ISuccess = {
   email: string,
   guest: boolean,
   onClick?: Function,
-  schedule?: Object,
+  schedule: Object,
   additionalMessage?: string,
 };
 
