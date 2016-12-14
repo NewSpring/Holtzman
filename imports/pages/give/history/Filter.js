@@ -2,7 +2,7 @@
 import { Component, PropTypes } from "react";
 import moment from "moment";
 
-import Date from "../../../blocks/add-to-cart/Schedule/Date";
+// import Date from "../../../blocks/add-to-cart/Schedule/Date";
 
 import TagSelect from "../../../components/forms/TagSelect";
 import Tag from "../../../components/tags";

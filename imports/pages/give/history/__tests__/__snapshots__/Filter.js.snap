@@ -21,10 +21,6 @@ exports[`test doesn't render family members if there are none 1`] = `
   <div
     className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left">
     <h7
-      className="push-top text-dark-secondary display-inline-block">
-      Family Members
-    </h7>
-    <h7
       className="soft-half-top push-half-top text-dark-secondary display-inline-block">
       Date Range
     </h7>
@@ -104,43 +100,45 @@ exports[`test renders family members when expanded is true 1`] = `
     className="one-whole outlined--bottom outlined--light" />
   <div
     className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left">
-    <h7
-      className="push-top text-dark-secondary display-inline-block">
-      Family Members
-    </h7>
-    <div
-      className=""
-      onClick={[Function]}
-      style={
-        Object {
-          "cursor": "pointer",
-        }
-      }>
+    <div>
+      <h7
+        className="push-top text-dark-secondary display-inline-block">
+        Family Members
+      </h7>
       <div
-        className=" display-inline-block outlined checkbox" />
-      <h6
-        className="soft-half-left display-inline-block">
-        jim
-         
-        bob
-      </h6>
-    </div>
-    <div
-      className=""
-      onClick={[Function]}
-      style={
-        Object {
-          "cursor": "pointer",
-        }
-      }>
+        className=""
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }>
+        <div
+          className=" display-inline-block outlined checkbox" />
+        <h6
+          className="soft-half-left display-inline-block">
+          jim
+           
+          bob
+        </h6>
+      </div>
       <div
-        className=" display-inline-block outlined checkbox" />
-      <h6
-        className="soft-half-left display-inline-block">
-        sally
-         
-        bob
-      </h6>
+        className=""
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }>
+        <div
+          className=" display-inline-block outlined checkbox" />
+        <h6
+          className="soft-half-left display-inline-block">
+          sally
+           
+          bob
+        </h6>
+      </div>
     </div>
     <h7
       className="soft-half-top push-half-top text-dark-secondary display-inline-block">
@@ -245,43 +243,45 @@ exports[`test works with nickname 1`] = `
     className="one-whole outlined--bottom outlined--light" />
   <div
     className="one-whole outlined--light outlined--bottom background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left">
-    <h7
-      className="push-top text-dark-secondary display-inline-block">
-      Family Members
-    </h7>
-    <div
-      className=""
-      onClick={[Function]}
-      style={
-        Object {
-          "cursor": "pointer",
-        }
-      }>
+    <div>
+      <h7
+        className="push-top text-dark-secondary display-inline-block">
+        Family Members
+      </h7>
       <div
-        className=" display-inline-block outlined checkbox" />
-      <h6
-        className="soft-half-left display-inline-block">
-        jimothy
-         
-        bob
-      </h6>
-    </div>
-    <div
-      className=""
-      onClick={[Function]}
-      style={
-        Object {
-          "cursor": "pointer",
-        }
-      }>
+        className=""
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }>
+        <div
+          className=" display-inline-block outlined checkbox" />
+        <h6
+          className="soft-half-left display-inline-block">
+          jimothy
+           
+          bob
+        </h6>
+      </div>
       <div
-        className=" display-inline-block outlined checkbox" />
-      <h6
-        className="soft-half-left display-inline-block">
-        sally
-         
-        bob
-      </h6>
+        className=""
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }>
+        <div
+          className=" display-inline-block outlined checkbox" />
+        <h6
+          className="soft-half-left display-inline-block">
+          sally
+           
+          bob
+        </h6>
+      </div>
     </div>
     <h7
       className="soft-half-top push-half-top text-dark-secondary display-inline-block">
