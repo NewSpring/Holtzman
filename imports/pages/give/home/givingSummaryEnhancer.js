@@ -5,27 +5,28 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import moment from "moment";
 
-const baseData = [
-  { month: "January", amount: 0, tick: "J" },
-  { month: "February", amount: 0, tick: "F" },
-  { month: "March", amount: 0, tick: "M" },
-  { month: "April", amount: 0, tick: "A" },
-  { month: "May", amount: 0, tick: "M" },
-  { month: "June", amount: 0, tick: "J" },
-  { month: "July", amount: 0, tick: "J" },
-  { month: "August", amount: 0, tick: "A" },
-  { month: "September", amount: 0, tick: "S" },
-  { month: "October", amount: 0, tick: "O" },
-  { month: "November", amount: 0, tick: "N" },
-  { month: "December", amount: 0, tick: "D" },
-];
-
 export const formatGivingSummaryData = (data: Object): ?Object => {
+  const baseData = [
+    { month: "January", amount: 0, tick: "J" },
+    { month: "February", amount: 0, tick: "F" },
+    { month: "March", amount: 0, tick: "M" },
+    { month: "April", amount: 0, tick: "A" },
+    { month: "May", amount: 0, tick: "M" },
+    { month: "June", amount: 0, tick: "J" },
+    { month: "July", amount: 0, tick: "J" },
+    { month: "August", amount: 0, tick: "A" },
+    { month: "September", amount: 0, tick: "S" },
+    { month: "October", amount: 0, tick: "O" },
+    { month: "November", amount: 0, tick: "N" },
+    { month: "December", amount: 0, tick: "D" },
+  ];
+
   if (!data || !data.accounts) return null;
   const accountsData = data.accounts;
 
   if (!Array.isArray(accountsData)) return null;
   const summaryData = [...baseData];
+
   let total = 0;
   const accounts = {};
 
