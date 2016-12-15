@@ -131,12 +131,8 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
         };
       },
     }),
-    filterTransactions: ({ people, start, end, limit = DEFAULT_LIMIT }) => data.fetchMore({
-      variables: { ...data.variables, ...{ people, start, end, limit } },
-      updateQuery: (prev, { fetchMoreResult }) => (
-        !fetchMoreResult.data ? prev : fetchMoreResult.data
-      ),
-    }),
+    filterTransactions: ({ people, start, end, limit = 0 }) =>
+      data.refetch({ ...data.variables, people, start, end, limit }),
   }),
 });
 
