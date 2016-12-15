@@ -2,6 +2,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
 <SchedulesList
   schedules={
     Object {
+      "loading": false,
       "scheduledTransactions": Array [
         Object {
           "details": Array [
@@ -62,7 +63,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
       ],
     }
   }>
-  <div>
+  <div
+    className="soft-half-sides soft-double-sides@lap-and-up">
     <SectionHeader
       link={<SchedulesButton />}
       title="Active Schedules">
@@ -198,7 +200,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 </em>
               </p>
               <button
-                className="text-primary"
+                className="false text-primary"
                 onClick={[Function]}
                 style={
                   Object {
@@ -312,7 +314,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 </em>
               </p>
               <button
-                className="text-primary"
+                className="false text-primary"
                 onClick={[Function]}
                 style={
                   Object {
@@ -407,7 +409,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 </em>
               </p>
               <button
-                className="text-primary"
+                className="soft-top text-primary"
                 onClick={[Function]}
                 style={
                   Object {

@@ -4,6 +4,7 @@ import { mountToJson } from "enzyme-to-json";
 import { SchedulesList } from "../Schedules";
 
 const mockSchedules = {
+  loading: false,
   scheduledTransactions: [
     {
       "id": "12345678",

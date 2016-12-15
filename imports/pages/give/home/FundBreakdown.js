@@ -1,7 +1,6 @@
 // @flow
 
 import ProgressBar from "./../../../components/progressBar";
-import withYTDData from "./givingSummaryEnhancer";
 
 type IFundBreakdown = {
   data: Object,
@@ -29,4 +28,4 @@ export const FundBreakdown = ({ data }: IFundBreakdown) => {
   );
 };
 
-export default withYTDData(FundBreakdown);
+export default FundBreakdown;

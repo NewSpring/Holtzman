@@ -23,26 +23,28 @@ const graphSettings = {
 };
 
 type IGivingSummary = {
-  data: Object,
   breakpoints: String[],
 };
 
-export const GivingSummary = (props: IGivingSummary) => {
-  if (props.breakpoints.includes("lap-and-up")) return null;
-  if (!props.data || props.data.loading || !props.data.chartData) return null;
-  const data = { data: props.data.chartData, ...graphSettings };
+export const Display = ({ data }: { data: Object }) => {
+  if (!data || data.loading || !data.chartData) return null;
   return (
-    <div className="push-half-sides">
-      <YearToDate
-        graphData={data}
-        amount={props.data.total.toFixed(2)}
-        linkUrl="/give/history"
-      />
-    </div>
+    <YearToDate
+      graphData={{ ...{ data: data.chartData }, ...graphSettings }}
+      amount={data.total.toFixed(2)}
+      linkUrl="/give/history"
+    />
   );
 };
 
+const DisplayWithData = withYTDData(Display);
 
-export default withYTDData(
-  connect((state) => ({ breakpoints: state.responsive.breakpoints }))(GivingSummary)
+export const GivingSummary = (props: IGivingSummary) => {
+  if (props.breakpoints.includes("lap-and-up")) return null;
+  return <DisplayWithData />;
+};
+
+
+export default connect((state) => ({ breakpoints: state.responsive.breakpoints }))(
+  GivingSummary
 );

@@ -2,7 +2,7 @@
 import { Component } from "react";
 import renderer from "react-test-renderer";
 import { print } from "graphql-tag/printer";
-import { MockedProvider } from "react-apollo/test-utils";
+import { MockedProvider } from "react-apollo/lib/test-utils";
 import { addTypenameToDocument } from "apollo-client/queries/queryTransform";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 

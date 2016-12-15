@@ -2,11 +2,14 @@
 // @flow
 
 import React, { Component } from "react";
-import { graphql } from "react-apollo";
-import gql from "graphql-tag";
+import { Link } from "react-router";
+
 import SectionHeader from "../../../components/sectionHeader";
+import LoadingHeader from "../../../components/loading/SectionHeader";
 import SmallButton from "../../../components/buttons/small";
 import ActivityCard from "../../../components/cards/cards.Activity";
+import LoadingActivityCard from "../../../components/loading/ActivityCard";
+
 import SummaryChart from "./GivingSummary";
 
 const ActivityButton = () =>
@@ -15,41 +18,6 @@ const ActivityButton = () =>
     linkUrl="/give/history"
     className="btn--dark-tertiary flush"
   />;
-
-const ACTIVITY_QUERY = gql`
-  query userFeed($filters: [String]!) {
-    userFeed(filters: $filters) {
-      ... on Transaction {
-        id
-        date
-        summary
-        status
-        statusMessage
-        schedule {
-          id
-        }
-        details {
-          amount
-          account {
-            name
-          }
-        }
-      }
-      ... on SavedPayment {
-        name
-        expirationYear
-        expirationMonth
-      }
-    }
-  }
-`;
-
-const withActivityData = graphql(ACTIVITY_QUERY, {
-  name: "feed",
-  options: {
-    variables: { filters: ["GIVING_DASHBOARD"] },
-  },
-});
 
 type IGivingActivity = {
   feed: Object,
@@ -160,12 +128,42 @@ export class GivingActivity extends Component {
   };
 
   render() {
-    if (!this.props.feed || !this.props.feed.userFeed) return null;
+    const wrapper = "soft-half-sides soft-double-sides@lap-and-up";
+
+    if (!this.props.feed || !this.props.feed.userFeed) {
+      return (
+        <div className={wrapper}>
+          <LoadingHeader />
+          <LoadingActivityCard />
+        </div>
+      );
+    }
 
     const data = this.filterActivity(this.props.feed.userFeed);
-    if (!Array.isArray(data) && data.length === 0) return null;
+    if (!Array.isArray(data) && data.length === 0) {
+      return (
+        <div className={wrapper}>
+          <SectionHeader title="Activity" link={<div />} />
+          <div className="card">
+            <div className="card__item soft">
+              <h4 className="text-dark-primary">
+                Insert headline copy here
+              </h4>
+              <p>
+                Donec sed odio dui.
+                Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+              </p>
+              <Link to="/give/now" className="btn one-whole@handheld flush-bottom">
+                Give First Contribution
+              </Link>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div>
+      <div className={wrapper}>
         <SectionHeader title="Activity" link={<ActivityButton />} />
         <div className="hard">
           {this.renderActivity(data)}
@@ -176,4 +174,5 @@ export class GivingActivity extends Component {
   }
 }
 
-export default withActivityData(GivingActivity);
+export default GivingActivity;
+

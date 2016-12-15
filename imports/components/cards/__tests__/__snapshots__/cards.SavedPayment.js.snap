@@ -1,7 +1,12 @@
 exports[`SavedPaymentCard should have an accountName, fourDigit accountNumber, paymentType, and an onClick function 1`] = `
 <div
   className=""
-  onClick={[Function]}>
+  onClick={[Function]}
+  style={
+    Object {
+      "cursor": "pointer",
+    }
+  }>
   <div
     className="card">
     <div

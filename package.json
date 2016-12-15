@@ -89,7 +89,7 @@
   },
   "dependencies": {
     "aphrodite": "https://github.com/NewSpring/aphrodite.git#release",
-    "apollo-client": "^0.5.3",
+    "apollo-client": "^0.5.20",
     "audio5": "^0.1.10",
     "bcrypt": "^0.8.7",
     "bluebird": "^3.4.6",
@@ -108,7 +108,7 @@
     "moment": "^2.14.1",
     "react": "^15.0.0",
     "react-addons-pure-render-mixin": "^15.1.0",
-    "react-apollo": "^0.6.0",
+    "react-apollo": "^0.7.1",
     "react-async-script-loader": "^0.2.1",
     "react-controllables": "^0.6.0",
     "react-day-picker": "^2.3.3",

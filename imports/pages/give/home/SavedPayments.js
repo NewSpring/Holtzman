@@ -2,10 +2,9 @@
 // @flow
 
 import React, { Component } from "react";
-import { graphql } from "react-apollo";
-import gql from "graphql-tag";
 import { withRouter } from "react-router";
 import SavedPaymentCard from "../../../components/cards/cards.SavedPayment";
+import LoadingCard from "../../../components/loading/ActivityCard";
 import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
 
@@ -16,21 +15,6 @@ const SavedPaymentsButton = () =>
     className="btn--dark-tertiary flush"
   />;
 
-const PAYMENTS_QUERY = gql`
-  query savedPayments {
-    savedPayments{
-      id
-      name
-      payment {
-        accountNumber
-        paymentType
-      }
-    }
-  }
-`;
-const withSavedPaymentsData = graphql(PAYMENTS_QUERY, {
-  name: "payments",
-});
 
 type ISavedPaymentsList = {
   payments: Object,
@@ -55,9 +39,45 @@ export class SavedPaymentsList extends Component {
   }
 
   render() {
-    if (!this.props.payments || !this.props.payments.savedPayments) return null;
+    const wrapper = "soft-half-sides soft-double-sides@lap-and-up";
+
+    if (!this.props.payments) return null;
+
+    if (this.props.payments.loading) {
+      return (
+        <div className={wrapper}>
+          <LoadingCard />
+        </div>
+      );
+    }
+
+    if (!this.props.payments || !this.props.payments.savedPayments) {
+      return (
+        <div className={wrapper}>
+          <SectionHeader title="Saved Accounts" link={<SavedPaymentsButton />} />
+          <div className="card">
+            <div className="card__item soft">
+              <h4 className="text-dark-primary">
+                Adding a saved account makes giving even easier!
+              </h4>
+              <p>
+                We can’t wait for you to take your next step in giving.
+                After you have given your first contribution, you’ll see your activity here.
+              </p>
+              <button
+                onClick={() => alert("add function here")}
+                className="btn one-whole@handheld flush-bottom"
+              >
+                Get Started Now
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div>
+      <div className={wrapper}>
         <SectionHeader
           title="Saved Accounts"
           link={<SavedPaymentsButton />}
@@ -70,4 +90,4 @@ export class SavedPaymentsList extends Component {
   }
 }
 
-export default withRouter(withSavedPaymentsData(SavedPaymentsList));
+export default withRouter(SavedPaymentsList);

@@ -17,6 +17,7 @@ class TemplateWithoutData extends Component {
     transactions: PropTypes.array,
     changeDates: PropTypes.func,
     changeFamily: PropTypes.func,
+    filterTransactions: PropTypes.func,
     findByLimit: PropTypes.func,
     Loading: PropTypes.func.isRequired,
     done: PropTypes.bool,
@@ -57,6 +58,7 @@ class TemplateWithoutData extends Component {
       filter,
       done,
       Loading,
+      filterTransactions,
     } = this.props;
 
     return (
@@ -71,6 +73,7 @@ class TemplateWithoutData extends Component {
         changeFamily={this.wrapRefetch(changeFamily)}
         changeDates={this.wrapRefetch(changeDates)}
         findByLimit={this.wrapRefetch(findByLimit)}
+        filterTransactions={this.wrapRefetch(filterTransactions)}
       />
     );
   }
@@ -136,6 +139,12 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
           transactions: transactions.filter((x) => !!x.id),
         };
       },
+    }),
+    filterTransactions: ({ people, start, end, limit = DEFAULT_LIMIT }) => data.fetchMore({
+      variables: { ...data.variables, ...{ people, start, end, limit } },
+      updateQuery: (prev, { fetchMoreResult }) => (
+        !fetchMoreResult.data ? prev : fetchMoreResult.data
+      ),
     }),
     changeFamily: (people) => data.fetchMore({
       variables: { ...data.varibles, people },
