@@ -1,4 +1,5 @@
 // @flow
+import { Meteor } from "meteor/meteor";
 import Campaign from "./campaign";
 import EditSavedPayment from "./saved-payments/";
 import EditSchedule from "./schedules/Edit";
@@ -12,6 +13,16 @@ import ScheduleDetails from "./schedules/Details";
 import TransferSchedules from "./schedules/Recover";
 import Layout from "./Layout";
 
+const authorized = Meteor.userId();
+
+const defaultRoute = () => {
+  if (authorized) {
+    return "/give/home";
+  }
+
+  return "/give/now";
+};
+
 const Routes = [
   { path: "give/saved-payments/edit/:id", component: EditSavedPayment.EditSavedPayment },
   { path: "give/schedules/edit/:id", component: EditSchedule.EditSchedule },
@@ -22,7 +33,7 @@ const Routes = [
   {
     path: "give",
     component: Layout,
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/give/now") },
+    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace(defaultRoute()) },
     childRoutes: [
       ...History.Routes,
       ...Home.Routes,
