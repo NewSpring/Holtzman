@@ -1,4 +1,4 @@
-
+// @flow
 import { Component, PropTypes } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
