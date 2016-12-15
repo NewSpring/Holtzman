@@ -11,14 +11,17 @@ import formatPersonDetails from "./formatPersonDetails";
 import validate from "./validate";
 import CREATE_ORDER_MUTATION from "./createOrderMutation";
 import COMPLETE_ORDER_MUTATION from "./completeOrderMutation";
+import SAVE_PAYMENT_MUTATION from "./savePaymentMutation";
 import submitPersonDetails from "./submitPersonDetails";
 
 
 // handle the transactions
 export default function* chargeTransaction({ state }) {
+  console.log(state);
   if (state !== "submit") return;
 
   let { give } = yield select();
+  console.log(give);
   const name = give.data.payment.name;
   let error = false;
   let id;
@@ -82,17 +85,26 @@ export default function* chargeTransaction({ state }) {
     try {
       let data = {};
       if (!saved) {
-        // XXX update data if returned
-        data = yield call(GraphQL.mutate, {
-          mutation: COMPLETE_ORDER_MUTATION,
-          variables: { token, name, id },
-        });
+        if (give.transactionType === "savedPayment") {
+          // only save the payment info. Don't process it.
+          data = yield call(GraphQL.mutate, {
+            mutation: SAVE_PAYMENT_MUTATION,
+            variables: { token, name, id },
+          });
+        } else {
+          // XXX update data if returned
+          data = yield call(GraphQL.mutate, {
+            mutation: COMPLETE_ORDER_MUTATION,
+            variables: { token, name, id },
+          });
+        }
       } else {
         data = yield call(GraphQL.mutate, {
           mutation: CREATE_ORDER_MUTATION,
           variables: { data: JSON.stringify(formattedData), instant: true, id },
         });
       }
+      console.log(data);
       if (data && data.data && data.data.response) data = data.data.response;
       if (data && data.error) error = data.error;
     } catch (e) { error = e; }

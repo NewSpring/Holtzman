@@ -59,7 +59,7 @@ export default ({ billing, payment, personal, header, children, goToStepOne }: I
 
         <hr />
 
-        <button className="btn one-whole push-double-top soft-sides push-half-bottom" onClick={() => {}}>
+        <button className="btn one-whole push-double-top soft-sides push-half-bottom" type="submit">
           Create Account
         </button>
 
