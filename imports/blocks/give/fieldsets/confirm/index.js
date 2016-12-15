@@ -119,6 +119,7 @@ export default class Confirm extends Component {
         <SavedPaymentLayout
           data={this.props.data}
           header={this.props.header}
+          goToStepOne={this.props.goToStepOne}
         >
           {this.props.children}
         </SavedPaymentLayout>
