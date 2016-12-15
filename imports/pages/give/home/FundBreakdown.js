@@ -1,3 +1,8 @@
+// @flow
+
+import ProgressBar from "./../../../components/progressBar";
+
+type IFundBreakdown = {
   data: Object,
 }
 
