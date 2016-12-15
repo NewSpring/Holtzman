@@ -17,11 +17,9 @@ import submitPersonDetails from "./submitPersonDetails";
 
 // handle the transactions
 export default function* chargeTransaction({ state }) {
-  console.log(state);
   if (state !== "submit") return;
 
   let { give } = yield select();
-  console.log(give);
   const name = give.data.payment.name;
   let error = false;
   let id;
@@ -104,7 +102,6 @@ export default function* chargeTransaction({ state }) {
           variables: { data: JSON.stringify(formattedData), instant: true, id },
         });
       }
-      console.log(data);
       if (data && data.data && data.data.response) data = data.data.response;
       if (data && data.error) error = data.error;
     } catch (e) { error = e; }
