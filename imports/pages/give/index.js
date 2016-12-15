@@ -22,7 +22,7 @@ const Routes = [
   {
     path: "give",
     component: Layout,
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/give/home") },
+    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/give/now") },
     childRoutes: [
       ...History.Routes,
       ...Home.Routes,
