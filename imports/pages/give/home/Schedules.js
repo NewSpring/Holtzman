@@ -61,6 +61,7 @@ export class SchedulesList extends Component {
         started={schedule.start}
         latest={schedule.transactions[0] ? schedule.transactions[0].date : ""}
         onEditClick={() => { this.props.router.push(`/give/schedule/edit/${schedule.id}`); }}
+        onDetailClick={() => {}}
       />
     );
   }

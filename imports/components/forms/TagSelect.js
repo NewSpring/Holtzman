@@ -20,10 +20,6 @@ export default class TagSelect extends Component {
   props: ITagSelectProps;
   state: ITagSelectState;
 
-  static defaultProps = {
-    items: [],
-  }
-
   state = {
     active: null,
   }
