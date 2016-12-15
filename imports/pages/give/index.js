@@ -1,4 +1,6 @@
 // @flow
+
+// $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import Campaign from "./campaign";
 import EditSavedPayment from "./saved-payments/";
