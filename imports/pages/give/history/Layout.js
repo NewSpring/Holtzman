@@ -1,4 +1,4 @@
-
+// @flow
 import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import moment from "moment";
@@ -8,11 +8,11 @@ import Currency from "./../../../components/currency";
 import { Spinner } from "../../../components/loading";
 import Meta from "../../../components/meta";
 
-export function formatDate(date) {
+export function formatDate(date: string) {
   return moment(date).format("MMM D, YYYY");
 }
 
-export function monentize(value, fixed) {
+export function monentize(value: string | number, fixed: boolean) {
   let strVal = typeof value === "number" ? `${value}` : value;
 
   if (!strVal.length) {
@@ -31,6 +31,15 @@ export function monentize(value, fixed) {
   return `$${strVal}`;
 }
 
+type ITransactionDetail = {
+  transactionDetail: Object,
+  transaction: Object,
+  icon: boolean,
+  status?: string,
+  failure?: boolean,
+  person: Object,
+};
+
 export const TransactionDetail = ({
   transactionDetail,
   transaction,
@@ -38,7 +47,7 @@ export const TransactionDetail = ({
   status,
   failure,
   person,
-}) => (
+}: ITransactionDetail) => (
   <div className="grid" style={{ verticalAlign: "middle" }}>
     <div className="grid__item three-fifths" style={{ verticalAlign: "middle" }}>
       <div className="relative">
@@ -93,16 +102,17 @@ export const TransactionDetail = ({
   </div>
 );
 
-TransactionDetail.propTypes = {
-  transactionDetail: PropTypes.object.isRequired,
-  transaction: PropTypes.object.isRequired,
-  icon: PropTypes.bool.isRequired,
-  status: PropTypes.string,
-  failure: PropTypes.bool,
-  person: PropTypes.object.isRequired,
+type ITransactionCard = {
+  transactionDetail: Object,
+  transaction: Object,
+  person: Object,
 };
 
-export const TransactionCard = ({ transactionDetail, transaction, person }) => {
+export const TransactionCard = ({
+  transactionDetail,
+  transaction,
+  person,
+}: ITransactionCard) => {
   const { status } = transaction;
 
   /*
@@ -166,12 +176,6 @@ export const TransactionCard = ({ transactionDetail, transaction, person }) => {
       </Link>
     </div>
   );
-};
-
-TransactionCard.propTypes = {
-  transactionDetail: PropTypes.object.isRequired,
-  transaction: PropTypes.object.isRequired,
-  person: PropTypes.object.isRequired,
 };
 
 export default class Layout extends Component {
