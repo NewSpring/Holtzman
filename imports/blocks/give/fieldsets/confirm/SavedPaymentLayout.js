@@ -18,16 +18,18 @@ const Header = ({ override }: IHeader) => {
 };
 
 type ISavedPaymentLayout = {
-  data: Object,
+  billing: Object,
+  payment: Object,
+  personal: Object,
   header: any,
   children: any,
   goToStepOne: Function,
 };
 
-export default ({ data, header, children, goToStepOne }: ISavedPaymentLayout) => {
-  const payment = {
-    type: data.payment.cardNumber ? "cc" : "ach",
-    cardNumber: data.payment.cardNumber || data.payment.accountNumber,
+export default ({ billing, payment, personal, header, children, goToStepOne }: ISavedPaymentLayout) => {
+  const paymentInfo = {
+    type: payment.cardNumber ? "cc" : "ach",
+    cardNumber: payment.cardNumber || payment.accountNumber,
   }
   return (
     <div>
@@ -40,20 +42,20 @@ export default ({ data, header, children, goToStepOne }: ISavedPaymentLayout) =>
       <div className="soft-sides text-left">
 
         <h7 className="display-block text-dark-tertiary">Billing Address</h7>
-        <h6>{data.billing.streetAddress}</h6>
-        <h6>{`${data.billing.city}, ${data.billing.state} ${data.billing.zip}`}</h6>
+        <h6>{billing.streetAddress}</h6>
+        <h6>{`${billing.city}, ${billing.state} ${billing.zip}`}</h6>
 
         <hr />
 
         <h7 className="display-block text-dark-tertiary">Account Details</h7>
         <h6>
-          <AccountNumber accountNumber={data.payment.cardNumber || data.payment.accountNumber} />
+          <AccountNumber accountNumber={payment.cardNumber || payment.accountNumber} />
           &nbsp;&nbsp;
-          <Icon width="19px" height="12px" cardType={cardType(payment, null)}/>
+          <Icon width="19px" height="12px" cardType={cardType(paymentInfo, null)}/>
         </h6>
-        <h6>{data.payment.expiration || data.payment.routingNumber}</h6>
-        <h6>{data.payment.ccv}</h6>
-        <h6>{data.payment.name}</h6>
+        <h6>{payment.expiration || payment.routingNumber}</h6>
+        <h6>{payment.ccv}</h6>
+        <h6>{payment.name}</h6>
 
         <hr />
 
