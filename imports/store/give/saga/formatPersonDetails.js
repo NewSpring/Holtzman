@@ -18,6 +18,8 @@ const formatPersonDetails = (give) => {
     },
   };
 
+  if (give.transactionType === "savedPayment") delete joinedData.amount;
+
   const campusId = data.personal.campusId;
   joinedData["merchant-defined-field-2"] = campusId;
 
