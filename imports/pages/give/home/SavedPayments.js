@@ -40,6 +40,9 @@ export class SavedPaymentsList extends Component {
 
   render() {
     const wrapper = "soft-half-sides soft-double-sides@lap-and-up";
+
+    if (!this.props.payments) return null;
+
     if (this.props.payments.loading) {
       return (
         <div className={wrapper}>

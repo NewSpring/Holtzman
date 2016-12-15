@@ -76,7 +76,8 @@ exports[`GivingActivity should render with data 1`] = `
       ],
     }
   }>
-  <div>
+  <div
+    className="soft-half-sides soft-double-sides@lap-and-up">
     <SectionHeader
       link={<ActivityButton />}
       title="Activity">
@@ -281,4 +282,69 @@ exports[`GivingActivity should render with data 1`] = `
 </GivingActivity>
 `;
 
-exports[`GivingActivity should render with minimal props 1`] = `<GivingActivity />`;
+exports[`GivingActivity should render with minimal props 1`] = `
+<GivingActivity>
+  <div
+    className="soft-half-sides soft-double-sides@lap-and-up">
+    <Component>
+      <div
+        className="one-whole">
+        <div
+          className="one-half floating display-inline-block floating--left soft soft-half-left">
+          <div
+            className="floating__item background--light-tertiary push-half-bottom soft-half-top"
+            style={
+              Object {
+                "width": "100px",
+              }
+            } />
+        </div>
+        <div
+          className="one-half floating display-inline-block floating--right soft soft-half-right">
+          <SmallButton
+            disabled={true}
+            style={
+              Object {
+                "borderColor": "#ddd",
+                "color": "transparent",
+              }
+            }
+            text="See All">
+            <button
+              className="
+                btn btn--small@next
+                btn--disabled
+                
+              "
+              disabled={true}
+              style={
+                Object {
+                  "borderColor": "#ddd",
+                  "color": "transparent",
+                }
+              }>
+              See All
+            </button>
+          </SmallButton>
+        </div>
+      </div>
+    </Component>
+    <Component>
+      <div
+        className="card">
+        <div
+          className="card__item soft">
+          <div
+            className="soft-half-top one-fifth push-bottom background--light-tertiary" />
+          <div
+            className="soft-half-top four-fifths push-half-bottom background--light-tertiary" />
+          <div
+            className="soft-half-top one-half push-bottom background--light-tertiary" />
+          <div
+            className="soft-half-top one-quarter background--light-tertiary" />
+        </div>
+      </div>
+    </Component>
+  </div>
+</GivingActivity>
+`;

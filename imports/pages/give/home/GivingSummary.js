@@ -27,7 +27,7 @@ type IGivingSummary = {
   breakpoints: String[],
 };
 
-export const Display = withYTDData(({ data }) => {
+export const Display = ({ data }) => {
   if (!data || data.loading || !data.chartData) return null;
   return (
     <YearToDate
@@ -36,11 +36,13 @@ export const Display = withYTDData(({ data }) => {
       linkUrl="/give/history"
     />
   );
-});
+};
+
+const DisplayWithData = withYTDData(Display);
 
 export const GivingSummary = (props: IGivingSummary) => {
   if (props.breakpoints.includes("lap-and-up")) return null;
-  return <Display />;
+  return <DisplayWithData />;
 };
 
 

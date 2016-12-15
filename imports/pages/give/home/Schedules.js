@@ -43,7 +43,9 @@ export class SchedulesList extends Component {
 
   render() {
     const wrapper = "soft-half-sides soft-double-sides@lap-and-up";
-   
+
+    if (!this.props.schedules) return null;
+
     if (this.props.schedules.loading) {
       return (
         <div className={wrapper}>

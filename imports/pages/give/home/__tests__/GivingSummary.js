@@ -1,5 +1,5 @@
 
-import { GivingSummary } from "../GivingSummary";
+import { GivingSummary, Display } from "../GivingSummary";
 import { mount } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
 
@@ -30,7 +30,7 @@ const data = {
 };
 
 const generateComponent = (additionalProps) =>
-  <GivingSummary breakpoints={[]} {...additionalProps} />
+  <Display {...additionalProps} />
 
 describe("GivingSummary", () => {
   it("should render with minimal props", () => {
@@ -38,7 +38,7 @@ describe("GivingSummary", () => {
     expect(mountToJson(component)).toMatchSnapshot();
   });
   it("should render nothing if the breakpoints don't match", () => {
-    const component = mount(generateComponent({ breakpoints: ["lap-and-up"] }));
+    const component = mount(<GivingSummary breakpoints={["lap-and-up"]} />);
     expect(mountToJson(component)).toMatchSnapshot();
   });
   it("should pass correct props to graph with data", () => {
