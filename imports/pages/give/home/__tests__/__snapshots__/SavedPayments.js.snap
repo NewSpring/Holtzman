@@ -82,7 +82,12 @@ exports[`Saved Payments List should render properly with data 1`] = `
         }>
         <div
           className="grid__item one-half@lap-wide-and-up"
-          onClick={[Function]}>
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }>
           <div
             className="card">
             <div
@@ -163,7 +168,12 @@ exports[`Saved Payments List should render properly with data 1`] = `
         }>
         <div
           className="grid__item one-half@lap-wide-and-up"
-          onClick={[Function]}>
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }>
           <div
             className="card">
             <div

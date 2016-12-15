@@ -35,8 +35,8 @@ export class SchedulesList extends Component {
         frequency={schedule.schedule.description}
         started={schedule.start}
         latest={schedule.transactions[0] ? schedule.transactions[0].date : ""}
-        onEditClick={() => { this.props.router.push(`/give/schedule/edit/${schedule.id}`); }}
-        onDetailClick={() => {}}
+        onEditClick={() => { this.props.router.push(`/give/schedules/edit/${schedule.id}`); }}
+        onDetailClick={() => { this.props.router.push(`/give/schedules/${schedule.id}`); }}
       />
     );
   }

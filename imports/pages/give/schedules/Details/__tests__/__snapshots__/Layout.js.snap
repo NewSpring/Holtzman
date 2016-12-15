@@ -43,10 +43,10 @@ exports[`test renders complete message 1`] = `
               className="text-primary">
               test account
             </h3>
-            <h1
-              className="text-dark-primary flush-bottom soft-half-bottom">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
               className="text-dark-secondary soft-half-top">
               1111
@@ -247,10 +247,10 @@ exports[`test renders loading if no entries 1`] = `
               className="text-primary">
               test account
             </h3>
-            <h1
-              className="text-dark-primary flush-bottom soft-half-bottom">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
               className="text-dark-secondary soft-half-top">
               1111
@@ -690,10 +690,10 @@ exports[`test renders no contributions message 1`] = `
               className="text-primary">
               test account
             </h3>
-            <h1
-              className="text-dark-primary flush-bottom soft-half-bottom">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
               className="text-dark-secondary soft-half-top">
               1111
@@ -860,10 +860,10 @@ exports[`test renders stopped message 1`] = `
               className="text-primary">
               test account
             </h3>
-            <h1
-              className="text-dark-primary flush-bottom soft-half-bottom">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
               className="text-dark-secondary soft-half-top">
               1111
@@ -1064,10 +1064,10 @@ exports[`test renders with props 1`] = `
               className="text-primary">
               test account
             </h3>
-            <h1
-              className="text-dark-primary flush-bottom soft-half-bottom">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
               className="text-dark-secondary soft-half-top">
               1111
@@ -1391,10 +1391,10 @@ exports[`test renders without schedule payment 1`] = `
               className="text-primary">
               test account
             </h3>
-            <h1
-              className="text-dark-primary flush-bottom soft-half-bottom">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h6
               className="text-alert"
               onClick={[Function]}
@@ -1592,10 +1592,10 @@ exports[`test works with credit card 1`] = `
               className="text-primary">
               test account
             </h3>
-            <h1
-              className="text-dark-primary flush-bottom soft-half-bottom">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
               className="text-dark-secondary soft-half-top">
               1111

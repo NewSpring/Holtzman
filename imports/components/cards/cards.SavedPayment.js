@@ -9,15 +9,13 @@ type ISavedPaymentCard = {
   classes: string,
 };
 
-// XXX right now this uses the content prop for everything
-// it should less intelligent and use the other props directly
-// Unused props: icon, link, type, images
+// XXX this markup seems overly complex?
 const SavedPaymentCard = ({
   payment,
   onClick,
   classes,
 }: ISavedPaymentCard) => (
-  <div className={`${classes || ""}`} onClick={onClick}>
+  <div style={{ cursor: "pointer" }} className={`${classes || ""}`} onClick={onClick}>
     <div className="card">
       <div className="card__item soft push-half-ends one-whole" style={{ verticalAlign: "middle" }}>
         <div className="floating grid">

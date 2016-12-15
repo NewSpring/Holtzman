@@ -87,7 +87,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
         </em>
       </p>
       <button
-        className="text-primary"
+        className="false text-primary"
         onClick={[Function]}
         style={
           Object {
@@ -174,7 +174,7 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
         </em>
       </p>
       <button
-        className="text-primary"
+        className="soft-top text-primary"
         onClick={[Function]}
         style={
           Object {
@@ -261,7 +261,7 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
         </em>
       </p>
       <button
-        className="text-primary"
+        className="soft-top text-primary"
         onClick={[Function]}
         style={
           Object {
@@ -348,7 +348,7 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
         </em>
       </p>
       <button
-        className="text-primary"
+        className="soft-top text-primary"
         onClick={[Function]}
         style={
           Object {
@@ -435,7 +435,7 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
         </em>
       </p>
       <button
-        className="text-primary"
+        className="soft-top text-primary"
         onClick={[Function]}
         style={
           Object {
@@ -522,7 +522,7 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
         </em>
       </p>
       <button
-        className="text-primary"
+        className="soft-top text-primary"
         onClick={[Function]}
         style={
           Object {
@@ -628,7 +628,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
         </em>
       </p>
       <button
-        className="text-primary"
+        className="false text-primary"
         onClick={[Function]}
         style={
           Object {

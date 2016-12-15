@@ -54,7 +54,7 @@ const ScheduleOverviewCard = ({
           </p>
         )}
         <button
-          className="text-primary"
+          className={`${!latest && "soft-top"} text-primary`}
           style={{ borderColor: "inherit", borderWidth: "2px" }}
           onClick={onDetailClick}
         >

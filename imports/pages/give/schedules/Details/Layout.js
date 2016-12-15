@@ -5,6 +5,7 @@ import { Link } from "react-router";
 
 import Split, { Left, Right } from "../../../../blocks/split";
 import { Spinner } from "../../../../components/loading";
+import Currency from "../../../../components/currency";
 import SideBySide from "../../../../components/cards/SideBySide";
 import Meta from "../../../../components/meta";
 
@@ -27,25 +28,6 @@ export default class Layout extends Component {
   formatDate = (date) => (
     moment(new Date(date)).add(4, "hours").format("MMM D, YYYY")
   )
-
-  monentize = (value, fixed) => {
-    let strVal = typeof value === "number" ? `${value}` : value;
-
-    if (!strVal.length) {
-      return "$0.00";
-    }
-
-    strVal = strVal.replace(/[^\d.-]/g, "");
-
-    const decimals = strVal.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      strVal = Number(strVal).toFixed(2);
-      strVal = String(strVal);
-    }
-
-    strVal = strVal.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${strVal}`;
-  }
 
   capitalizeFirstLetter = (string) => (
     string.charAt(0).toUpperCase() + string.slice(1)
@@ -128,9 +110,11 @@ export default class Layout extends Component {
                       </h4>
                       <h3 className="text-primary">{schedule.details[0].account.name}</h3>
 
-                      <h1 className="text-dark-primary flush-bottom soft-half-bottom">
-                        {this.monentize(schedule.details[0].amount)}
-                      </h1>
+                      <Currency
+                        amount={schedule.details.reduce((i, { amount }) => i + amount, 0).toFixed(2)}
+                        baseHeadingSize="1"
+                        className="flush-bottom soft-half-bottom text-center display-inline-block"
+                      />
 
 
                       {schedule.payment && schedule.payment.accountNumber && (
