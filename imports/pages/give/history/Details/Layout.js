@@ -1,4 +1,5 @@
 /* eslint-disable react/no-danger */
+// @flow
 import { Component, PropTypes } from "react";
 import moment from "moment";
 import { Link } from "react-router";
@@ -18,11 +19,11 @@ export default class Layout extends Component {
     transaction: PropTypes.object,
   }
 
-  formatDate = (date) => (
+  formatDate = (date: string) => (
     moment(new Date(date)).format("MMM D, YYYY")
   )
 
-  monentize = (value, fixed) => {
+  monentize = (value: string | number, fixed?: boolean) => {
     let strVal = typeof value === "number" ? `${value}` : value;
     if (!strVal.length) return "$0.00";
 

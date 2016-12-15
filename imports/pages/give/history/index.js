@@ -1,3 +1,4 @@
+// @flow
 import { Component, PropTypes } from "react";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
@@ -39,7 +40,7 @@ class TemplateWithoutData extends Component {
     if (process.env.NATIVE) this.props.dispatch(headerActions.set({ title: "Giving History" }));
   }
 
-  wrapRefetch = (refetch) => (...args) => {
+  wrapRefetch = (refetch: Function) => (...args: Object[]) => {
     this.setState({ refetching: true });
     return refetch(...args).then((x) => {
       this.setState({ refetching: false });
