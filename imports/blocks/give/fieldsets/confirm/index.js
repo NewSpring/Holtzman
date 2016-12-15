@@ -119,7 +119,6 @@ export default class Confirm extends Component {
         <SavedPaymentLayout
           billing={this.props.data.billing}
           payment={this.props.data.payment}
-          personal={this.props.data.personal}
           header={this.props.header}
           goToStepOne={this.props.goToStepOne}
         >

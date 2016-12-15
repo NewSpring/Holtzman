@@ -1,7 +1,6 @@
 
 // @flow
 
-import SavedAccount from "../shared/SavedAccount";
 import { AccountNumber, Icon, cardType } from "../shared/";
 
 type IHeader = {
@@ -20,18 +19,23 @@ const Header = ({ override }: IHeader) => {
 type ISavedPaymentLayout = {
   billing: Object,
   payment: Object,
-  personal: Object,
   header: any,
   children: any,
   goToStepOne: Function,
 };
 
-export default ({ billing, payment, personal, header, children, goToStepOne }: ISavedPaymentLayout) => {
-  if(!billing || !payment) return null;
+export default ({
+  billing,
+  payment,
+  header,
+  children,
+  goToStepOne
+}: ISavedPaymentLayout) => {
+  if (!billing || !payment) return null;
   const paymentInfo = {
     type: payment.cardNumber ? "cc" : "ach",
     cardNumber: payment.cardNumber || payment.accountNumber,
-  }
+  };
   return (
     <div>
       <div className="push-double@lap-and-up push">
@@ -52,7 +56,7 @@ export default ({ billing, payment, personal, header, children, goToStepOne }: I
         <h6>
           <AccountNumber accountNumber={payment.cardNumber || payment.accountNumber} />
           &nbsp;&nbsp;
-          <Icon width="19px" height="12px" cardType={cardType(paymentInfo, null)}/>
+          <Icon width="19px" height="12px" cardType={ cardType(paymentInfo, null) }/>
         </h6>
         <h6>{payment.expiration || payment.routingNumber}</h6>
         <h6>{payment.ccv}</h6>

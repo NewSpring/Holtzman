@@ -23,7 +23,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
   <div
     className="soft-half-sides soft-double-sides@lap-and-up">
     <SectionHeader
-      link={<SavedPaymentsButton />}
+      link={<Unknown />}
       title="Saved Accounts">
       <div
         className="one-whole">
@@ -36,33 +36,23 @@ exports[`Saved Payments List should render properly with data 1`] = `
         </div>
         <div
           className="one-half floating display-inline-block floating--right soft soft-half-right">
-          <SavedPaymentsButton>
+          <Component>
             <SmallButton
               className="btn--dark-tertiary flush"
-              linkUrl="/give/history"
+              onClick={[Function]}
               text="Add Account">
-              <Link
+              <button
                 className="
                   btn btn--small@next
                   
                   btn--dark-tertiary flush
                 "
-                onlyActiveOnIndex={false}
-                style={Object {}}
-                to="/give/history">
-                <a
-                  className="
-                    btn btn--small@next
-                    
-                    btn--dark-tertiary flush
-                  "
-                  onClick={[Function]}
-                  style={Object {}}>
-                  Add Account
-                </a>
-              </Link>
+                onClick={[Function]}
+                style={Object {}}>
+                Add Account
+              </button>
             </SmallButton>
-          </SavedPaymentsButton>
+          </Component>
         </div>
       </div>
     </SectionHeader>
