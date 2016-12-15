@@ -2,7 +2,6 @@
 import { Link } from "react-router";
 import LineGraph from "../../../components/graphs/lineGraph";
 import YTDTotal from "../../../components/currency";
-import withYTDData from "./givingSummaryEnhancer";
 
 const styles = {
   lineColor: "#ffffff",
@@ -32,30 +31,27 @@ export const YTDMetrics = ({ data, linkUrl }: IYTDMetrics) => {
 
   return (
     <div>
-      <div>
-        <div className="soft-double-bottom soft-double-top">
-          <LineGraph
-            data={data.chartData}
-            lineColor={styles.lineColor}
-            lineWidth={styles.lineWidth}
-            dotColor={styles.dotColor}
-            dotSize={styles.dotSize}
-            axisStyles={styles.axisStyles}
-          />
-        </div>
-        <YTDTotal amount={data.total.toFixed(2)} className="text-left text-light-primary" baseHeadingSize="1" />
-        <p className="push-top text-light-primary italic text-left"><small>Total amount given across all funds</small></p>
-        <div className="text-left">
-          <Link to={linkUrl} className="text-left">
-            <h6 className="display-inline-block text-light-primary">
-              View Your Giving History
-            </h6>
-            <span className="icon-arrow-next soft-half-left text-light-primary" />
-          </Link>
-        </div>
+      <div className="soft-double-bottom soft-double-top">
+        <LineGraph
+          data={data.chartData}
+          lineColor={styles.lineColor}
+          lineWidth={styles.lineWidth}
+          dotColor={styles.dotColor}
+          dotSize={styles.dotSize}
+          axisStyles={styles.axisStyles}
+        />
+      </div>
+      <YTDTotal amount={data.total.toFixed(2)} className="text-left text-light-primary" baseHeadingSize="1" />
+      <div className="text-left">
+        <Link to={linkUrl} className="text-left">
+          <h6 className="soft-top display-inline-block text-light-primary">
+            View Your Giving History
+          </h6>
+          <span className="icon-arrow-next soft-half-left text-light-primary" />
+        </Link>
       </div>
     </div>
   );
 };
 
-export default withYTDData(YTDMetrics);
+export default YTDMetrics;

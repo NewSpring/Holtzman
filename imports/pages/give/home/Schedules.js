@@ -2,10 +2,9 @@
 // @flow
 
 import React, { Component } from "react";
-import { graphql } from "react-apollo";
-import { withRouter } from "react-router";
-import gql from "graphql-tag";
+import { Link, withRouter } from "react-router";
 import ScheduleCard from "../../../components/cards/cards.ScheduleOverview";
+import LoadingCard from "../../../components/loading/ActivityCard";
 import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
 
@@ -15,30 +14,6 @@ const SchedulesButton = () =>
     linkUrl="/give/now"
     className="btn--dark-tertiary flush"
   />;
-
-const SCHEDULE_QUERY = gql`
-  query scheduledTransactions {
-    scheduledTransactions {
-      id
-      start
-      details {
-        account {
-          name
-        }
-        amount
-      }
-      transactions {
-        date
-      }
-      schedule {
-        description
-      }
-    }
-  }
-`;
-const withSchedules = graphql(SCHEDULE_QUERY, {
-  name: "schedules",
-});
 
 type ISchedulesList = {
   schedules: Object,
@@ -67,9 +42,41 @@ export class SchedulesList extends Component {
   }
 
   render() {
-    if (!this.props.schedules || !this.props.schedules.scheduledTransactions) return null;
+    const wrapper = "soft-half-sides soft-double-sides@lap-and-up";
+   
+    if (this.props.schedules.loading) {
+      return (
+        <div className={wrapper}>
+          <LoadingCard />
+        </div>
+      );
+    }
+    
+    if (!this.props.schedules || !this.props.schedules.scheduledTransactions) {
+      return (
+        <div>
+          <div className={wrapper}>
+            <SectionHeader
+              title="Active Schedules"
+              link={<SchedulesButton />}
+            />
+          </div>
+          <Link
+            className="one-whole ratio--landscape background--fill"
+            style={{
+              backgroundImage: "url(//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_2x1.jpg)",
+            }}
+            to="/give/now?schedule"
+          >
+            <div className="ratio__item" />
+          </Link>
+
+        </div>
+      );
+    }
+
     return (
-      <div>
+      <div className={wrapper}>
         <SectionHeader
           title="Active Schedules"
           link={<SchedulesButton />}
@@ -82,4 +89,4 @@ export class SchedulesList extends Component {
   }
 }
 
-export default withRouter(withSchedules(SchedulesList));
+export default withRouter(SchedulesList);

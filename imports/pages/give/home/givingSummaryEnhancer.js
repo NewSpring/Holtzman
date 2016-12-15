@@ -25,7 +25,7 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
   const accountsData = data.accounts;
 
   if (!Array.isArray(accountsData)) return null;
-  const summaryData = JSON.parse(JSON.stringify(baseData));
+  const summaryData = [ ...baseData ];
   let total = 0;
   const accounts = {};
 
@@ -33,9 +33,11 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
     accounts[account.name] = account.total;
     // iterate over every transaction, and sum up the months
     account.transactions.map((transaction) => {
-      const month = moment(transaction.date).format("M");
-      summaryData[month].amount += transaction.details[0].amount;
-      total += transaction.details[0].amount;
+      const month = moment(new Date(transaction.date)).format("M");
+      if (!transaction.details || !transaction.details.length) return transaction;
+      summaryData[Number(month) - 1].amount += transaction.details
+        .reduce((prev, { amount }) => prev + amount, 0);
+      total += transaction.details.reduce((prev, { amount }) => prev + amount, 0);
       return transaction;
     });
     return null;
@@ -65,15 +67,21 @@ const YTD_QUERY = gql`
   }
 `;
 
-const currentYear = moment().format("YY");
-
 export default graphql(YTD_QUERY, {
   options: {
     variables: {
-      start: `01/${currentYear}`,
-      end: `12/${currentYear}`,
+      start: moment().startOf("year").format(),
+      end: moment().endOf("year").format(),
     },
   },
-  props: ({ data }) => ({ data: formatGivingSummaryData(data) }),
+  props: ({ data }) => ({
+    changeYear: (year) => {
+      const start = moment(`${year}`, "YYYY").startOf("year").format();
+      const end = moment(`${year}`, "YYYY").endOf("year").format();
+      return data.refetch({ start, end });
+    },
+    loading: data.loading,
+    data: formatGivingSummaryData(data)
+  }),
 });
 
