@@ -181,9 +181,6 @@ export default class Layout extends Component {
     ready: PropTypes.bool,
     Loading: PropTypes.func.isRequired,
     done: PropTypes.bool,
-    changeFamily: PropTypes.func.isRequired,
-    changeDates: PropTypes.func.isRequired,
-    findByLimit: PropTypes.func.isRequired,
     reloading: PropTypes.bool,
     family: PropTypes.array.isRequired,
     filterTransactions: PropTypes.func.isRequired,
@@ -198,10 +195,7 @@ export default class Layout extends Component {
       ready,
       Loading,
       done,
-      changeFamily,
-      changeDates,
       reloading,
-      findByLimit,
       filterTransactions,
     } = this.props;
 
@@ -213,9 +207,6 @@ export default class Layout extends Component {
         <Meta title="Giving History" />
         <Filter
           family={this.props.family}
-          changeFamily={changeFamily}
-          changeDates={changeDates}
-          findByLimit={findByLimit}
           filterTransactions={filterTransactions}
         />
         <div

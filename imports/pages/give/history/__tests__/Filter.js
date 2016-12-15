@@ -22,9 +22,6 @@ const defaultProps = {
       },
     },
   ],
-  changeFamily: jest.fn(),
-  changeDates: jest.fn(),
-  findByLimit: jest.fn(),
   filterTransactions: jest.fn()
 };
 
@@ -133,8 +130,6 @@ it("onClick removes found person", () => {
   wrapper.instance().onClick({ id: person1.id });
 
   expect(wrapper.state().people).toEqual([person2.id]);
-  // expect(mockChangeFamily).toHaveBeenCalledTimes(1);
-  // expect(mockChangeFamily).toHaveBeenCalledWith([person2.id]);
 });
 
 it("onClick adds unfound person", () => {
@@ -150,8 +145,6 @@ it("onClick adds unfound person", () => {
   wrapper.instance().onClick({ id: person2.id });
 
   expect(wrapper.state().people).toEqual([person1.id, person2.id]);
-  // expect(mockChangeFamily).toHaveBeenCalledTimes(1);
-  // expect(mockChangeFamily).toHaveBeenCalledWith([person1.id, person2.id]);
 });
 
 it("toggle changes the expanded state", () => {
