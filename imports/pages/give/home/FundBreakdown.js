@@ -17,9 +17,11 @@ export const FundBreakdown = ({ data }: IFundBreakdown) => {
       {Object.keys(data.accounts).map((title, i) =>
         <div className="push-bottom" key={i}>
           <ProgressBar
+            theme={""}
             title={title}
             total={data.accounts[`${title}`].toString()}
             percentDone={100 * (data.accounts[title] / data.total)}
+            style={{}}
           />
         </div>
       )}

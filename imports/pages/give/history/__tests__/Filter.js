@@ -349,7 +349,7 @@ it("onStartDayClick correctly sets state", () => {
   }
 
   wrapper.instance().onStartDayClick(null, "12/25/2016", selectedObject);
-  expect(wrapper.state().start).toEqual(null);
+  expect(wrapper.state().start).toEqual("");
   expect(wrapper.state().customStartLabel).toEqual("Start Date");
   expect(wrapper.state().customStartActive).toEqual(false);
 
@@ -373,7 +373,7 @@ it("onEndDayClick correctly sets state", () => {
   }
 
   wrapper.instance().onEndDayClick(null, "12/25/2016", selectedObject);
-  expect(wrapper.state().end).toEqual(null);
+  expect(wrapper.state().end).toEqual("");
   expect(wrapper.state().customEndLabel).toEqual("End Date");
   expect(wrapper.state().customEndActive).toEqual(false);
 

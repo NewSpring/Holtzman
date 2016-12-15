@@ -1,4 +1,4 @@
-
+// @flow
 import { Component, PropTypes } from "react";
 import moment from "moment";
 
@@ -40,13 +40,25 @@ export default class Filter extends Component {
     overrideActive: false,
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidMount() {
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", this.fixPickerPosition);
+    }
+  }
+
+  componentWillReceiveProps(nextProps: Object) {
     if (this.props.family.length !== nextProps.family.length) {
       this.setState({ people: nextProps.family.map((x) => x.person.id) });
     }
   }
 
-  onClick = ({ id }) => {
+  componentWillUnmount() {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", this.fixPickerPosition);
+    }
+  }
+
+  onClick = ({ id }: Object) => {
     const people = [...this.state.people];
     const index = people.indexOf(id);
     if (index > -1) {
@@ -135,6 +147,7 @@ export default class Filter extends Component {
       } else {
         this.setState(({ showStartDatePicker }) => ({ showStartDatePicker: !showStartDatePicker }));
         this.setState({ overrideActive: true });
+        // this.toggleStartDatePicker();
       }
     }
 
@@ -153,16 +166,16 @@ export default class Filter extends Component {
     }
   }
 
-  onStartDayClick = (e, day, { selected, disabled }) => {
+  onStartDayClick = (e: Event, day: string, { selected, disabled }: Object) => {
     if (disabled) return;
-    this.setState({ start: selected ? null : day });
+    this.setState({ start: selected ? "" : day });
     this.setState({ customStartLabel: selected ? "Start Date" : moment(day).format("ll") });
     this.setState({ customStartActive: !selected });
   }
 
-  onEndDayClick = (e, day, { selected, disabled }) => {
+  onEndDayClick = (e: Event, day: string, { selected, disabled }: Object) => {
     if (disabled) return;
-    this.setState({ end: selected ? null : day });
+    this.setState({ end: selected ? "" : day });
     this.setState({ customEndLabel: selected ? "End Date" : moment(day).format("ll") });
     this.setState({ customEndActive: !selected });
   }
@@ -177,7 +190,7 @@ export default class Filter extends Component {
     const { family } = this.props;
     const { expanded } = this.state;
     return (
-      <div>
+      <div style={{ position: "relative" }}>
         <div
           onClick={this.toggle}
           className={
