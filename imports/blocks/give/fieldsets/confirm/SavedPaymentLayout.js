@@ -27,6 +27,7 @@ type ISavedPaymentLayout = {
 };
 
 export default ({ billing, payment, personal, header, children, goToStepOne }: ISavedPaymentLayout) => {
+  if(!billing || !payment) return null;
   const paymentInfo = {
     type: payment.cardNumber ? "cc" : "ach",
     cardNumber: payment.cardNumber || payment.accountNumber,
