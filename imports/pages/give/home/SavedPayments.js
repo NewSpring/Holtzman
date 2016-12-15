@@ -102,4 +102,4 @@ export class SavedPaymentsList extends Component {
   }
 }
 
-export default withRouter(SavedPaymentsList);
+export default connect()(withRouter(SavedPaymentsList));
