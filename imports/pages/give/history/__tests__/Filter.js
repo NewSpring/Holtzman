@@ -25,6 +25,7 @@ const defaultProps = {
   changeFamily: jest.fn(),
   changeDates: jest.fn(),
   findByLimit: jest.fn(),
+  filterTransactions: jest.fn()
 };
 
 const generateComponent = (additionalProps = {}) => {
@@ -387,13 +388,9 @@ it("onEndDayClick correctly sets state", () => {
 it("filterResults correctly calls all the functions", () => {
   const person1 = defaultProps.family[0].person;
   const person2 = defaultProps.family[1].person;
-  const mockChangeFamily = jest.fn();
-  const mockChangeDates = jest.fn();
-  const mockFindByLimit = jest.fn();
+  const mockFilterTransactions = jest.fn();
   const wrapper = shallow(generateComponent({
-    changeFamily: mockChangeFamily,
-    changeDates: mockChangeDates,
-    findByLimit: mockFindByLimit,
+    filterTransactions: mockFilterTransactions,
   }));
   wrapper.setState({
     start: "",
@@ -404,8 +401,6 @@ it("filterResults correctly calls all the functions", () => {
   });
 
   wrapper.instance().filterResults();
-  expect(mockChangeFamily).toHaveBeenCalledTimes(1);
-  expect(mockChangeFamily).toHaveBeenCalledWith([person1.id, person2.id]);
-  expect(mockChangeDates).toHaveBeenCalledTimes(1);
-  expect(mockFindByLimit).toHaveBeenCalledTimes(1);
-})
+  expect(mockFilterTransactions).toHaveBeenCalledWith({ people: [ "1", "2" ], start: "", end: "", limit: 20 });
+});
+

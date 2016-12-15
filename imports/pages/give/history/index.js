@@ -143,7 +143,7 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
     filterTransactions: ({ people, start, end, limit = DEFAULT_LIMIT }) => data.fetchMore({
       variables: { ...data.variables, ...{ people, start, end, limit } },
       updateQuery: (prev, { fetchMoreResult }) => (
-        !fetchMoreResult.data ? previousResult : fetchMoreResult.data
+        !fetchMoreResult.data ? prev : fetchMoreResult.data
       ),
     }),
     changeFamily: (people) => data.fetchMore({

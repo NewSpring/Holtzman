@@ -186,6 +186,7 @@ export default class Layout extends Component {
     findByLimit: PropTypes.func.isRequired,
     reloading: PropTypes.bool,
     family: PropTypes.array.isRequired,
+    filterTransactions: PropTypes.func.isRequired,
   }
 
   monentize = monentize

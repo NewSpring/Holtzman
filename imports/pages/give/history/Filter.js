@@ -166,7 +166,7 @@ export default class Filter extends Component {
             customEndActive: false,
           };
 
-          if (start === "") newState.overrideActive = false; 
+          if (start === "") newState.overrideActive = false;
 
           return newState;
         }
@@ -174,7 +174,7 @@ export default class Filter extends Component {
         return {
           showEndDatePicker: !showEndDatePicker,
           overrideActive: true,
-        }
+        };
       });
     }
   }
@@ -203,10 +203,7 @@ export default class Filter extends Component {
       start: !this.state.start ? "" : moment(this.state.start).format("L"),
       end: !this.state.end ? "" : moment(this.state.end).format("L"),
       limit: this.state.limit,
-    })
-    // this.props.changeFamily(this.state.people);
-    // this.props.changeDates(this.state.start === "" ? "" : moment(this.state.start).format("L"), this.state.end === "" ? "" : moment(this.state.end).format("L"));
-    // this.props.findByLimit(this.state.limit);
+    });
   }
 
   render() {
