@@ -1,5 +1,10 @@
 exports[`test doesn't render family members if there are none 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
   <div
     className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
     onClick={[Function]}>
@@ -88,7 +93,12 @@ exports[`test doesn't render family members if there are none 1`] = `
 `;
 
 exports[`test renders family members when expanded is true 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
   <div
     className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
     onClick={[Function]}>
@@ -217,7 +227,12 @@ exports[`test renders family members when expanded is true 1`] = `
 `;
 
 exports[`test renders with props 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
   <div
     className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
     onClick={[Function]}>
@@ -240,7 +255,12 @@ exports[`test renders with props 1`] = `
 `;
 
 exports[`test works with nickname 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
   <div
     className="one-whole background--light-primary soft-half-ends soft-sides soft-double-sides@lap-and-up"
     onClick={[Function]}>

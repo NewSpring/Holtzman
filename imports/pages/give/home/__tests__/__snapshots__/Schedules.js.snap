@@ -115,6 +115,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         frequency="One Time"
         fund="General Fund"
         latest="2016-03-17"
+        onDetailClick={[Function]}
         onEditClick={[Function]}
         started="2016-03-16">
         <div
@@ -198,6 +199,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </p>
               <button
                 className="text-primary"
+                onClick={[Function]}
                 style={
                   Object {
                     "borderColor": "inherit",
@@ -227,6 +229,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         frequency="Once a Month"
         fund="Step Up Fund"
         latest="2016-03-18"
+        onDetailClick={[Function]}
         onEditClick={[Function]}
         started="2016-03-16">
         <div
@@ -310,6 +313,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </p>
               <button
                 className="text-primary"
+                onClick={[Function]}
                 style={
                   Object {
                     "borderColor": "inherit",
@@ -339,6 +343,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         frequency="One Time"
         fund="Christmas Offering"
         latest=""
+        onDetailClick={[Function]}
         onEditClick={[Function]}
         started="2016-03-16">
         <div
@@ -403,6 +408,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
               </p>
               <button
                 className="text-primary"
+                onClick={[Function]}
                 style={
                   Object {
                     "borderColor": "inherit",
