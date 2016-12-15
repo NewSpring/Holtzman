@@ -38,10 +38,10 @@ exports[`test doesn't render account type if none 1`] = `
               className="text-dark-secondary">
               test
             </h3>
-            <h1
-              className="text-dark-primary">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom" />
             <h6
               className="push-bottom text-dark-tertiary">
               jim
@@ -175,10 +175,10 @@ exports[`test doesn't render entries if there are none 1`] = `
               className="text-dark-secondary">
               test
             </h3>
-            <h1
-              className="text-dark-primary">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom" />
             <h6
               className="push-bottom text-dark-tertiary">
               jim
@@ -255,10 +255,10 @@ exports[`test renders loading if loadingEntries 1`] = `
               className="text-dark-secondary">
               test
             </h3>
-            <h1
-              className="text-dark-primary">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom" />
             <h6
               className="push-bottom text-dark-tertiary">
               jim
@@ -452,10 +452,10 @@ exports[`test renders with props 1`] = `
               className="text-dark-secondary">
               test
             </h3>
-            <h1
-              className="text-dark-primary">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom" />
             <h6
               className="push-bottom text-dark-tertiary">
               jim
@@ -593,10 +593,10 @@ exports[`test works with credit card 1`] = `
               className="text-dark-secondary">
               test
             </h3>
-            <h1
-              className="text-dark-primary">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom" />
             <h6
               className="push-bottom text-dark-tertiary">
               jim
@@ -734,10 +734,10 @@ exports[`test works with nickname 1`] = `
               className="text-dark-secondary">
               test
             </h3>
-            <h1
-              className="text-dark-primary">
-              $2
-            </h1>
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom" />
             <h6
               className="push-bottom text-dark-tertiary">
               jimothy
