@@ -61,7 +61,7 @@ const ACTIVITY_QUERY = gql`
 const withData = graphql(ACTIVITY_QUERY, {
   options: {
     variables: { filters: ["GIVING_DASHBOARD"] },
-    ssr: false
+    ssr: false,
   },
 });
 

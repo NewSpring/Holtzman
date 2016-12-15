@@ -137,53 +137,76 @@ export default class Filter extends Component {
 
   startClick = (value: string) => {
     if (value === "StartDate") {
-      if (this.state.start !== "") {
-        this.setState({ start: "" });
-        this.setState({ customStartLabel: "Start Date" });
-        this.setState({ customStartActive: false });
-        if (this.state.end === "") {
-          this.setState({ overrideActive: false });
+      this.setState(({ start, end, showStartDatePicker }) => {
+        if (start !== "") {
+          const newState = {
+            start: "",
+            customStartLabel: "Start Date",
+            customStartActive: false,
+          };
+
+          if (end === "") newState.overrideActive = false;
+
+          return newState;
         }
-      } else {
-        this.setState(({ showStartDatePicker }) => ({ showStartDatePicker: !showStartDatePicker }));
-        this.setState({ overrideActive: true });
-        // this.toggleStartDatePicker();
-      }
+
+        return {
+          showStartDatePicker: !showStartDatePicker,
+          overrideActive: true,
+        };
+      });
     }
 
     if (value === "EndDate") {
-      if (this.state.end !== "") {
-        this.setState({ end: "" });
-        this.setState({ customEndLabel: "End Date" });
-        this.setState({ customEndActive: false });
-        if (this.state.start === "") {
-          this.setState({ overrideActive: false });
+      this.setState(({ end, start, showEndDatePicker }) => {
+        if (end !== "") {
+          const newState = {
+            end: "",
+            customEndLabel: "End Date",
+            customEndActive: false,
+          };
+
+          if (start === "") newState.overrideActive = false; 
+
+          return newState;
         }
-      } else {
-        this.setState(({ showEndDatePicker }) => ({ showEndDatePicker: !showEndDatePicker }));
-        this.setState({ overrideActive: true });
-      }
+
+        return {
+          showEndDatePicker: !showEndDatePicker,
+          overrideActive: true,
+        }
+      });
     }
   }
 
   onStartDayClick = (e: Event, day: string, { selected, disabled }: Object) => {
     if (disabled) return;
-    this.setState({ start: selected ? "" : day });
-    this.setState({ customStartLabel: selected ? "Start Date" : moment(day).format("ll") });
-    this.setState({ customStartActive: !selected });
+    this.setState({
+      start: selected ? "" : day,
+      customStartLabel: selected ? "Start Date" : moment(day).format("ll"),
+      customStartActive: !selected,
+    });
   }
 
   onEndDayClick = (e: Event, day: string, { selected, disabled }: Object) => {
     if (disabled) return;
-    this.setState({ end: selected ? "" : day });
-    this.setState({ customEndLabel: selected ? "End Date" : moment(day).format("ll") });
-    this.setState({ customEndActive: !selected });
+    this.setState({
+      end: selected ? "" : day,
+      customEndLabel: selected ? "End Date" : moment(day).format("ll"),
+      customEndActive: !selected,
+    });
   }
 
   filterResults = () => {
-    this.props.changeFamily(this.state.people);
-    this.props.changeDates(this.state.start === "" ? "" : moment(this.state.start).format("L"), this.state.end === "" ? "" : moment(this.state.end).format("L"));
-    this.props.findByLimit(this.state.limit);
+    this.props.filterTransactions({
+      people: this.state.people,
+      start: !this.state.start ? "" : moment(this.state.start).format("L"),
+      end: !this.state.end ? "" : moment(this.state.end).format("L"),
+      limit: this.state.limit,
+    })
+    // this.props.changeFamily(this.state.people);
+    // this.props.changeDates(this.state.start === "" ? "" : moment(this.state.start).format("L"), this.state.end === "" ? "" : moment(this.state.end).format("L"));
+    // this.props.findByLimit(this.state.limit);
   }
 
   render() {

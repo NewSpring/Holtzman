@@ -6,6 +6,7 @@ import { Link } from "react-router";
 import Split, { Left, Right } from "../../../../blocks/split";
 
 import { Spinner } from "../../../../components/loading";
+import Currency from "../../../../components/currency";
 import SideBySide from "../../../../components/cards/SideBySide";
 import Meta from "../../../../components/meta";
 import AccountType from "../../../../components/accountType";
@@ -21,22 +22,6 @@ export default class Layout extends Component {
   formatDate = (date) => (
     moment(new Date(date)).format("MMM D, YYYY")
   )
-
-  monentize = (value, fixed) => {
-    let strVal = typeof value === "number" ? `${value}` : value;
-    if (!strVal.length) return "$0.00";
-
-    strVal = strVal.replace(/[^\d.-]/g, "");
-
-    const decimals = strVal.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      strVal = Number(strVal).toFixed(2);
-      strVal = String(strVal);
-    }
-
-    strVal = strVal.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${strVal}`;
-  }
 
   /* eslint-disable max-len */
   render() {
@@ -108,9 +93,11 @@ export default class Layout extends Component {
                       </p>
                       <h3 className="text-dark-secondary">{account.name}</h3>
 
-                      <h1 className="text-dark-primary">
-                        {this.monentize(transaction.details[0].amount)}
-                      </h1>
+                      <Currency
+                        amount={transaction.details[0].amount.toFixed(2)}
+                        baseHeadingSize="1"
+                        className="display-inline-block text-center soft-bottom"
+                      />
 
                       <h6 className="push-bottom text-dark-tertiary">
                         {person.nickName || person.firstName} {person.lastName}

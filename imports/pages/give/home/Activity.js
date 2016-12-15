@@ -143,18 +143,19 @@ export class GivingActivity extends Component {
     if (!Array.isArray(data) && data.length === 0) {
       return (
         <div className={wrapper}>
-          <SectionHeader title="Activity" link={null} />
+          <SectionHeader title="Activity" link={<div />} />
           <div className="card">
             <div className="card__item soft">
               <h4 className="text-dark-primary">
                 Insert headline copy here
               </h4>
               <p>
-                Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+                Donec sed odio dui.
+                Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
               </p>
               <Link to="/give/now" className="btn one-whole@handheld flush-bottom">
                 Give First Contribution
-              </Link> 
+              </Link>
             </div>
           </div>
         </div>

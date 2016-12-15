@@ -201,6 +201,7 @@ export default class Layout extends Component {
       changeDates,
       reloading,
       findByLimit,
+      filterTransactions,
     } = this.props;
 
 
@@ -214,6 +215,7 @@ export default class Layout extends Component {
           changeFamily={changeFamily}
           changeDates={changeDates}
           findByLimit={findByLimit}
+          filterTransactions={filterTransactions}
         />
         <div
           className={

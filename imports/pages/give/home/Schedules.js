@@ -53,7 +53,7 @@ export class SchedulesList extends Component {
         </div>
       );
     }
-    
+
     if (!this.props.schedules || !this.props.schedules.scheduledTransactions) {
       return (
         <div>

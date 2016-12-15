@@ -2,7 +2,7 @@
 // @flow
 
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router";
+import { withRouter } from "react-router";
 import SavedPaymentCard from "../../../components/cards/cards.SavedPayment";
 import LoadingCard from "../../../components/loading/ActivityCard";
 import SectionHeader from "../../../components/sectionHeader";
@@ -61,14 +61,15 @@ export class SavedPaymentsList extends Component {
                 Adding a saved account makes giving even easier!
               </h4>
               <p>
-                We can’t wait for you to take your next step in giving. After you have given your first contribution, you’ll see your activity here.
+                We can’t wait for you to take your next step in giving.
+                After you have given your first contribution, you’ll see your activity here.
               </p>
               <button
                 onClick={() => alert("add function here")}
                 className="btn one-whole@handheld flush-bottom"
               >
                 Get Started Now
-              </button> 
+              </button>
             </div>
           </div>
         </div>

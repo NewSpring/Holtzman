@@ -25,7 +25,7 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
   const accountsData = data.accounts;
 
   if (!Array.isArray(accountsData)) return null;
-  const summaryData = [ ...baseData ];
+  const summaryData = [...baseData];
   let total = 0;
   const accounts = {};
 
@@ -81,7 +81,7 @@ export default graphql(YTD_QUERY, {
       return data.refetch({ start, end });
     },
     loading: data.loading,
-    data: formatGivingSummaryData(data)
+    data: formatGivingSummaryData(data),
   }),
 });
 

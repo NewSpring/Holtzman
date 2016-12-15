@@ -23,11 +23,10 @@ const graphSettings = {
 };
 
 type IGivingSummary = {
-  data: Object,
   breakpoints: String[],
 };
 
-export const Display = ({ data }) => {
+export const Display = ({ data }: { data: Object }) => {
   if (!data || data.loading || !data.chartData) return null;
   return (
     <YearToDate

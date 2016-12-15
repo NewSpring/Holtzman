@@ -16,7 +16,7 @@ const start = moment().year();
 
 const YEARS = [{ value: start, label: start }];
 
-for (let i of Array(9).keys()) {
+for (const i of Array(9).keys()) {
   YEARS.push({ value: start - (i + 1), label: start - (i + 1) });
 }
 
@@ -60,7 +60,7 @@ export default withData(({ loading, data, changeYear }) => (
           <YTDGraph
             data={data}
             linkUrl={"/give/history"}
-            />
+          />
           {/* spacer */}
           <div className="push-ends soft-ends" />
           <Progress data={data} />
