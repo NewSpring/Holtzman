@@ -19,9 +19,7 @@ export default class Filter extends Component {
 
   static propTypes = {
     family: PropTypes.array.isRequired,
-    changeFamily: PropTypes.func.isRequired,
-    changeDates: PropTypes.func.isRequired,
-    findByLimit: PropTypes.func.isRequired,
+    filterTransactions: PropTypes.func.isRequired,
   }
 
   state = {
@@ -137,12 +135,13 @@ export default class Filter extends Component {
 
   startClick = (value: string) => {
     if (value === "StartDate") {
-      this.setState(({ start, end, showStartDatePicker }) => {
+      this.setState(({ start, end, showStartDatePicker, overrideActive }) => {
         if (start !== "") {
           const newState = {
             start: "",
             customStartLabel: "Start Date",
             customStartActive: false,
+            overrideActive,
           };
 
           if (end === "") newState.overrideActive = false;
@@ -158,12 +157,13 @@ export default class Filter extends Component {
     }
 
     if (value === "EndDate") {
-      this.setState(({ end, start, showEndDatePicker }) => {
+      this.setState(({ end, start, showEndDatePicker, overrideActive }) => {
         if (end !== "") {
           const newState = {
             end: "",
             customEndLabel: "End Date",
             customEndActive: false,
+            overrideActive,
           };
 
           if (start === "") newState.overrideActive = false;

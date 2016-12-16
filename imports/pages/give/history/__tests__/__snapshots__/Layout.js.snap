@@ -3,8 +3,6 @@ exports[`Layout renders no transactions if there are none and ready 1`] = `
   <Meta
     title="Giving History" />
   <Filter
-    changeDates={[Function]}
-    changeFamily={[Function]}
     family={Array []} />
   <div
     className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
@@ -43,8 +41,6 @@ exports[`Layout renders reloading if no transactions and not ready 1`] = `
   <Meta
     title="Giving History" />
   <Filter
-    changeDates={[Function]}
-    changeFamily={[Function]}
     family={Array []} />
   <div
     className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
@@ -69,8 +65,6 @@ exports[`Layout renders reloading version 1`] = `
   <Meta
     title="Giving History" />
   <Filter
-    changeDates={[Function]}
-    changeFamily={[Function]}
     family={Array []} />
   <div
     className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
@@ -95,8 +89,6 @@ exports[`Layout renders with negative transactions 1`] = `
   <Meta
     title="Giving History" />
   <Filter
-    changeDates={[Function]}
-    changeFamily={[Function]}
     family={Array []} />
   <div
     className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
@@ -189,8 +181,6 @@ exports[`Layout renders with props 1`] = `
   <Meta
     title="Giving History" />
   <Filter
-    changeDates={[Function]}
-    changeFamily={[Function]}
     family={Array []} />
   <div
     className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
