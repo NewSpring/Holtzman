@@ -28,7 +28,7 @@ export class SchedulesList extends Component {
 
     return schedules.map((schedule) =>
       <ScheduleCard
-        classes="grid__item one-half@lap-wide-and-up"
+        classes="grid__item one-whole"
         key={schedule.id}
         amount={`${schedule.details[0].amount}`}
         fund={schedule.details[0].account.name}

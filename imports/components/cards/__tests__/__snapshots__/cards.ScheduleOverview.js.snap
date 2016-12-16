@@ -5,20 +5,9 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
     className="card">
     <div
       className="card__item soft push-half-ends one-whole">
-      <button
-        className="float-right h6 text-dark-tertiary outlined--bottom"
-        onClick={[Function]}
-        style={
-          Object {
-            "borderColor": "inherit",
-            "borderWidth": "2px",
-          }
-        }>
-        Edit
-      </button>
       <div
         className="floating text-dark-primary text-left">
-        <h4
+        <h3
           className="floating__item flush"
           style={
             Object {
@@ -26,8 +15,8 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
             }
           }>
           $
-        </h4>
-        <h4
+        </h3>
+        <h3
           className="floating__item flush"
           style={
             Object {
@@ -35,19 +24,19 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
             }
           }>
           -
-        </h4>
-        <h2
+        </h3>
+        <h1
           className="floating__item flush">
           420
-        </h2>
-        <h4
+        </h1>
+        <h3
           className="floating__item flush">
           .
           00
-        </h4>
+        </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
         Once A Month
       </h5>
       <p
@@ -64,7 +53,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
               "verticalAlign": "middle",
             }
           }>
-          Started:
+          Start Date:
         </span>
         <em
           className="text-dark-primary">
@@ -79,7 +68,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
               "verticalAlign": "middle",
             }
           }>
-          Latest:
+          Latest Contribution:
         </span>
         <em
           className="text-dark-primary">
@@ -120,20 +109,9 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
     className="card">
     <div
       className="card__item soft push-half-ends one-whole">
-      <button
-        className="float-right h6 text-dark-tertiary outlined--bottom"
-        onClick={[Function]}
-        style={
-          Object {
-            "borderColor": "inherit",
-            "borderWidth": "2px",
-          }
-        }>
-        Edit
-      </button>
       <div
         className="floating text-dark-primary text-left">
-        <h4
+        <h3
           className="floating__item flush"
           style={
             Object {
@@ -141,19 +119,19 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
             }
           }>
           $
-        </h4>
-        <h2
+        </h3>
+        <h1
           className="floating__item flush">
           420
-        </h2>
-        <h4
+        </h1>
+        <h3
           className="floating__item flush">
           .
           00
-        </h4>
+        </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
         Once A Month
       </h5>
       <p
@@ -166,7 +144,7 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
               "verticalAlign": "middle",
             }
           }>
-          Started:
+          Start Date:
         </span>
         <em
           className="text-dark-primary">
@@ -207,20 +185,9 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
     className="card">
     <div
       className="card__item soft push-half-ends one-whole">
-      <button
-        className="float-right h6 text-dark-tertiary outlined--bottom"
-        onClick={[Function]}
-        style={
-          Object {
-            "borderColor": "inherit",
-            "borderWidth": "2px",
-          }
-        }>
-        Edit
-      </button>
       <div
         className="floating text-dark-primary text-left">
-        <h4
+        <h3
           className="floating__item flush"
           style={
             Object {
@@ -228,19 +195,19 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
             }
           }>
           $
-        </h4>
-        <h2
+        </h3>
+        <h1
           className="floating__item flush">
           420
-        </h2>
-        <h4
+        </h1>
+        <h3
           className="floating__item flush">
           .
           00
-        </h4>
+        </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
         Once A Month
       </h5>
       <p
@@ -253,7 +220,7 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
               "verticalAlign": "middle",
             }
           }>
-          Started:
+          Start Date:
         </span>
         <em
           className="text-dark-primary">
@@ -294,20 +261,9 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
     className="card">
     <div
       className="card__item soft push-half-ends one-whole">
-      <button
-        className="float-right h6 text-dark-tertiary outlined--bottom"
-        onClick={[Function]}
-        style={
-          Object {
-            "borderColor": "inherit",
-            "borderWidth": "2px",
-          }
-        }>
-        Edit
-      </button>
       <div
         className="floating text-dark-primary text-left">
-        <h4
+        <h3
           className="floating__item flush"
           style={
             Object {
@@ -315,19 +271,19 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
             }
           }>
           $
-        </h4>
-        <h2
+        </h3>
+        <h1
           className="floating__item flush">
           420
-        </h2>
-        <h4
+        </h1>
+        <h3
           className="floating__item flush">
           .
           00
-        </h4>
+        </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
         Once A Month
       </h5>
       <p
@@ -340,7 +296,7 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
               "verticalAlign": "middle",
             }
           }>
-          Started:
+          Start Date:
         </span>
         <em
           className="text-dark-primary">
@@ -381,20 +337,9 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
     className="card">
     <div
       className="card__item soft push-half-ends one-whole">
-      <button
-        className="float-right h6 text-dark-tertiary outlined--bottom"
-        onClick={[Function]}
-        style={
-          Object {
-            "borderColor": "inherit",
-            "borderWidth": "2px",
-          }
-        }>
-        Edit
-      </button>
       <div
         className="floating text-dark-primary text-left">
-        <h4
+        <h3
           className="floating__item flush"
           style={
             Object {
@@ -402,19 +347,19 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
             }
           }>
           $
-        </h4>
-        <h2
+        </h3>
+        <h1
           className="floating__item flush">
           00
-        </h2>
-        <h4
+        </h1>
+        <h3
           className="floating__item flush">
           .
           00
-        </h4>
+        </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
         Once A Month
       </h5>
       <p
@@ -427,7 +372,7 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
               "verticalAlign": "middle",
             }
           }>
-          Started:
+          Start Date:
         </span>
         <em
           className="text-dark-primary">
@@ -468,20 +413,9 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
     className="card">
     <div
       className="card__item soft push-half-ends one-whole">
-      <button
-        className="float-right h6 text-dark-tertiary outlined--bottom"
-        onClick={[Function]}
-        style={
-          Object {
-            "borderColor": "inherit",
-            "borderWidth": "2px",
-          }
-        }>
-        Edit
-      </button>
       <div
         className="floating text-dark-primary text-left">
-        <h4
+        <h3
           className="floating__item flush"
           style={
             Object {
@@ -489,19 +423,19 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
             }
           }>
           $
-        </h4>
-        <h2
+        </h3>
+        <h1
           className="floating__item flush">
           420
-        </h2>
-        <h4
+        </h1>
+        <h3
           className="floating__item flush">
           .
           00
-        </h4>
+        </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
         Once A Month
       </h5>
       <p
@@ -514,7 +448,7 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
               "verticalAlign": "middle",
             }
           }>
-          Started:
+          Start Date:
         </span>
         <em
           className="text-dark-primary">
@@ -555,20 +489,9 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
     className="card">
     <div
       className="card__item soft push-half-ends one-whole">
-      <button
-        className="float-right h6 text-dark-tertiary outlined--bottom"
-        onClick={[Function]}
-        style={
-          Object {
-            "borderColor": "inherit",
-            "borderWidth": "2px",
-          }
-        }>
-        Edit
-      </button>
       <div
         className="floating text-dark-primary text-left">
-        <h4
+        <h3
           className="floating__item flush"
           style={
             Object {
@@ -576,19 +499,19 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
             }
           }>
           $
-        </h4>
-        <h2
+        </h3>
+        <h1
           className="floating__item flush">
           420
-        </h2>
-        <h4
+        </h1>
+        <h3
           className="floating__item flush">
           .
           00
-        </h4>
+        </h3>
       </div>
       <h5
-        className="floating__item soft-half-right push-bottom text-dark-primary">
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
         Once A Month
       </h5>
       <p
@@ -605,7 +528,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
               "verticalAlign": "middle",
             }
           }>
-          Started:
+          Start Date:
         </span>
         <em
           className="text-dark-primary">
@@ -620,7 +543,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
               "verticalAlign": "middle",
             }
           }>
-          Latest:
+          Latest Contribution:
         </span>
         <em
           className="text-dark-primary">
