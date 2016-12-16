@@ -1,7 +1,7 @@
 exports[`Line Graph renders correctly with default props 1`] = `
 <div
   className="">
-  <mockConstructor
+  <VictoryChart
     animate={
       Object {
         "duration": 2000,
@@ -16,7 +16,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
         "top": 5,
       }
     }>
-    <mockConstructor
+    <VictoryAxis
       style={
         Object {
           "axis": Object {
@@ -46,7 +46,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
           "D",
         ]
       } />
-    <mockConstructor
+    <VictoryArea
       data={
         Array [
           Object {
@@ -126,7 +126,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
       }
       x="month"
       y="amount" />
-    <mockConstructor
+    <VictoryLine
       data={
         Array [
           Object {
@@ -201,7 +201,7 @@ exports[`Line Graph renders correctly with default props 1`] = `
       }
       x="month"
       y="amount" />
-    <mockConstructor
+    <VictoryScatter
       data={
         Array [
           Object {
@@ -276,6 +276,6 @@ exports[`Line Graph renders correctly with default props 1`] = `
       }
       x="month"
       y="amount" />
-  </mockConstructor>
+  </VictoryChart>
 </div>
 `;

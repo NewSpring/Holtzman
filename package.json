@@ -51,7 +51,6 @@
     "moduleNameMapper": {
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
-    "mocksPattern": "(?:[\\/]|^)imports/__mocks__[\\/]",
     "setupFiles": [
       "<rootDir>/.scripts/before_test.js"
     ]
