@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/NewSpring/my.newspring.cc",
   "jest": {
+    "resetModules": true,
     "transform": {
       ".*": "./.scripts/jestPreprocessor.js"
     },
@@ -54,7 +55,7 @@
     "setupFiles": [
       "<rootDir>/.scripts/before_test.js"
     ],
-     "snapshotSerializers": ["<rootDir>/node_modules/enzyme-to-json/serializer"]
+    "snapshotSerializers": ["<rootDir>/node_modules/enzyme-to-json/serializer"]
   },
   "apollos": {
     "settings": "./.meteor/settings.json",
