@@ -2,20 +2,7 @@ import { mount, shallow } from "enzyme";
 import { mountToJson, shallowToJson } from "enzyme-to-json";
 import LineGraph from "../";
 
-jest.mock("victory", () => {
-  const VictoryChart = jest.fn(() => "VictoryChart");
-  const VictoryAxis = jest.fn(() => "VictoryAxis");
-  const VictoryLine = jest.fn(() => "VictoryLine");
-  const VictoryScatter = jest.fn(() => "VictoryScatter");
-  const VictoryArea = jest.fn(() => "VictoryArea");
-  return {
-    VictoryChart: VictoryChart,
-    VictoryAxis: VictoryAxis,
-    VictoryLine: VictoryLine,
-    VictoryScatter: VictoryScatter,
-    VictoryArea: VictoryArea,
-  };
-});
+jest.mock("victory");
 
 const generateComponent = (additionalProps = {}) => {
   const defaultProps = {
