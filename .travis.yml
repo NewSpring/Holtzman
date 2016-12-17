@@ -37,6 +37,6 @@ script:
   - npm test
   - "./.scripts/prepare/app.sh"
   - "./.scripts/deploy/app.sh"
-after_sucess:
+after_success:
   - jest --coverage
   - coveralls < ./.coverage/lcov.info || true
