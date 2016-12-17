@@ -11,6 +11,7 @@ import formatPersonDetails from "./formatPersonDetails";
 import validate from "./validate";
 import CREATE_ORDER_MUTATION from "./createOrderMutation";
 import COMPLETE_ORDER_MUTATION from "./completeOrderMutation";
+import SAVE_PAYMENT_MUTATION from "./savePaymentMutation";
 import submitPersonDetails from "./submitPersonDetails";
 
 
@@ -82,11 +83,27 @@ export default function* chargeTransaction({ state }) {
     try {
       let data = {};
       if (!saved) {
-        // XXX update data if returned
-        data = yield call(GraphQL.mutate, {
-          mutation: COMPLETE_ORDER_MUTATION,
-          variables: { token, name, id },
-        });
+        if (give.transactionType === "savedPayment") {
+          // only save the payment info. Don't process it.
+          data = yield call(GraphQL.mutate, {
+            mutation: SAVE_PAYMENT_MUTATION,
+            variables: { token, name, id },
+            updateQueries: {
+              GivingDashboard: (prev, { mutationResult }) => {
+                const { savedPayment, success } = mutationResult.data.response;
+                if (!success || !savedPayment) return prev;
+                prev.savedPayments.push(savedPayment);
+                return prev;
+              },
+            },
+          });
+        } else {
+          // XXX update data if returned
+          data = yield call(GraphQL.mutate, {
+            mutation: COMPLETE_ORDER_MUTATION,
+            variables: { token, name, id },
+          });
+        }
       } else {
         data = yield call(GraphQL.mutate, {
           mutation: CREATE_ORDER_MUTATION,

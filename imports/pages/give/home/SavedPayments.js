@@ -2,39 +2,42 @@
 // @flow
 
 import React, { Component } from "react";
-import { withRouter } from "react-router";
-import SavedPaymentCard from "../../../components/cards/cards.SavedPayment";
+import { connect } from "react-redux";
 import LoadingCard from "../../../components/loading/ActivityCard";
 import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
+import { modal } from "../../../store/";
 
-const SavedPaymentsButton = () =>
-  <SmallButton
-    text="Add Account"
-    linkUrl="/give/history"
-    className="btn--dark-tertiary flush"
-  />;
+import giveActions from "../../../store/give";
+import Give from "../../../blocks/give";
 
+import SavedPaymentWithAction from "./withRemoveSavedPayment";
 
 type ISavedPaymentsList = {
   payments: Object,
-  router: Object,
+  dispatch: Function,
 };
 
 export class SavedPaymentsList extends Component {
   props: ISavedPaymentsList;
 
+  openModal = () => {
+    // set transaction type
+    this.props.dispatch(giveActions.setTransactionType("savedPayment"));
+    this.props.dispatch(modal.render(Give, null));
+  }
+
+  SavedPaymentsButton = () =>
+    <SmallButton
+      text="Add Account"
+      onClick={this.openModal}
+      className="btn--dark-tertiary flush"
+    />;
+
   renderPayments(payments: Object) {
     if (!Array.isArray(payments)) return null;
     return payments.map((payment) =>
-      <SavedPaymentCard
-        classes={"grid__item one-half@lap-wide-and-up"}
-        key={`${payment.id}_${payment.name}`}
-        payment={payment}
-        onClick={() => {
-          this.props.router.push(`/give/saved-payments/edit/${payment.id}`);
-        }}
-      />
+      <SavedPaymentWithAction payment={payment} key={payment.id} />
     );
   }
 
@@ -54,7 +57,7 @@ export class SavedPaymentsList extends Component {
     if (!this.props.payments || !this.props.payments.savedPayments) {
       return (
         <div className={wrapper}>
-          <SectionHeader title="Saved Accounts" link={<SavedPaymentsButton />} />
+          <SectionHeader title="Saved Accounts" link={<this.SavedPaymentsButton />} />
           <div className="card">
             <div className="card__item soft">
               <h4 className="text-dark-primary">
@@ -65,7 +68,7 @@ export class SavedPaymentsList extends Component {
                 After you have given your first contribution, you’ll see your activity here.
               </p>
               <button
-                onClick={() => alert("add function here")}
+                onClick={this.openModal}
                 className="btn one-whole@handheld flush-bottom"
               >
                 Get Started Now
@@ -80,7 +83,7 @@ export class SavedPaymentsList extends Component {
       <div className={wrapper}>
         <SectionHeader
           title="Saved Accounts"
-          link={<SavedPaymentsButton />}
+          link={<this.SavedPaymentsButton />}
         />
         <div className="grid">
           {this.renderPayments(this.props.payments.savedPayments)}
@@ -90,4 +93,4 @@ export class SavedPaymentsList extends Component {
   }
 }
 
-export default withRouter(SavedPaymentsList);
+export default connect()(SavedPaymentsList);

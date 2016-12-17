@@ -3,15 +3,19 @@ import { mount } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
 import { SavedPaymentsList } from "../SavedPayments";
 
+jest.mock("../withRemoveSavedPayment", () => () => <div />);
+
 const mockPayments = {
   savedPayments: [
     {
-      "name": "Harambe's Card",
-      "payment": { "accountNumber": "123456******1234", "paymentType": "Visa" },
+      name: "Harambe's Card",
+      id: 1,
+      payment: { accountNumber: "123456******1234", paymentType: "Visa" },
     },
     {
-      "name": "My Card",
-      "payment": { "accountNumber": "654321******0123", "paymentType": "MasterCard" },
+      name: "My Card",
+      id: 2,
+      payment: { accountNumber: "654321******0123", paymentType: "MasterCard" },
     }
   ],
 };
