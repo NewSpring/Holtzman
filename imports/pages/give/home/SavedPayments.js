@@ -2,11 +2,7 @@
 // @flow
 
 import React, { Component } from "react";
-import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import { graphql } from "react-apollo";
-import gql from "graphql-tag";
-import SavedPaymentCard from "../../../components/cards/cards.SavedPayment";
 import LoadingCard from "../../../components/loading/ActivityCard";
 import SectionHeader from "../../../components/sectionHeader";
 import SmallButton from "../../../components/buttons/small";
@@ -15,58 +11,10 @@ import { modal } from "../../../store/";
 import giveActions from "../../../store/give";
 import Give from "../../../blocks/give";
 
-export const REMOVE_PAYMENT_MUTATION = gql`
-  mutation RemoveSavedPayment($id: Int!) {
-    cancelSavedPayment(entityId: $id) {
-      error
-      code
-      success
-    }
-  }
-`;
-
-export const withPaymentRemove = graphql(REMOVE_PAYMENT_MUTATION, {
-  props: ({ mutate }) => ({
-    remove: (id) => mutate({
-      variables: { id },
-      optimisticResponse: {
-        __typename: "Mutation",
-        cancelSavedPayment: {
-          error: null,
-          code: null,
-          success: true,
-          __typename: "SavePaymentMutationResponse",
-        },
-      },
-      updateQueries: {
-        GivingDashboard: (prev, { mutationResult }) => {
-          const { error } = mutationResult.data.cancelSavedPayment;
-          if (error) return prev;
-          let index;
-          prev.savedPayments.forEach((payment, i) => {
-            if (payment.id === id) index = i;
-          });
-
-          prev.savedPayments.splice(index, 1);
-          return prev;
-        }
-      }
-    }),
-  }),
-});
-
-const SavedPaymentWithAction = withPaymentRemove(({ payment, remove }) => (
-  <SavedPaymentCard
-    classes={"grid__item one-whole one-half@anchored"}
-    key={`${payment.id}_${payment.name}`}
-    payment={payment}
-    onClick={() => remove(payment.id)}
-  />
-));
+import SavedPaymentWithAction from "./withRemoveSavedPayment";
 
 type ISavedPaymentsList = {
   payments: Object,
-  router: Object,
   dispatch: Function,
 };
 
@@ -88,7 +36,7 @@ export class SavedPaymentsList extends Component {
 
   renderPayments(payments: Object) {
     if (!Array.isArray(payments)) return null;
-    return payments.map((payment) => 
+    return payments.map((payment) =>
       <SavedPaymentWithAction payment={payment} key={payment.id} />
     );
   }
@@ -120,7 +68,7 @@ export class SavedPaymentsList extends Component {
                 After you have given your first contribution, you’ll see your activity here.
               </p>
               <button
-                onClick={() => alert("add function here")}
+                onClick={this.openModal}
                 className="btn one-whole@handheld flush-bottom"
               >
                 Get Started Now
@@ -145,4 +93,4 @@ export class SavedPaymentsList extends Component {
   }
 }
 
-export default connect()(withRouter(SavedPaymentsList));
+export default connect()(SavedPaymentsList);

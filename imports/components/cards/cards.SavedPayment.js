@@ -33,6 +33,7 @@ const SavedPaymentCard = ({
             </div>
           </div>
           <div
+            data-spec="saved-payment-close"
             className="floating__item grid__item one-third text-right"
             onClick={onClick}
             style={{ cursor: "pointer" }}

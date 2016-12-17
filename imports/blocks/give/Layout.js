@@ -55,7 +55,7 @@ const Layout = ({
     transactionType,
     scheduleToRecover,
   } = give;
-  
+
   let { step } = give;
 
   if (["loading", "error", "success"].indexOf(state) > -1) {
@@ -83,8 +83,8 @@ const Layout = ({
   const FORM_STEPS = [Personal, Billing, Payment, Confirm];
 
   if (transactionType === "savedPayment") {
-    step = step - 1;
-    if (step === 0 ) step = 1;
+    step -= 1;
+    if (step === 0) step = 1;
     FORM_STEPS.shift();
   }
 
