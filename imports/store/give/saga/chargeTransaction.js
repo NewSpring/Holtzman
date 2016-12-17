@@ -88,6 +88,14 @@ export default function* chargeTransaction({ state }) {
           data = yield call(GraphQL.mutate, {
             mutation: SAVE_PAYMENT_MUTATION,
             variables: { token, name, id },
+            updateQueries: {
+              GivingDashboard: (prev, { mutationResult }) => {
+                const { savedPayment, error } = mutationResult.data.response;
+                if (error || !savedPayment) return prev;
+                prev.savedPayments.push(savedPayment);
+                return prev;
+              }
+            }
           });
         } else {
           // XXX update data if returned

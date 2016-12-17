@@ -4,6 +4,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
 import SavedPaymentCard from "../../../components/cards/cards.SavedPayment";
 import LoadingCard from "../../../components/loading/ActivityCard";
 import SectionHeader from "../../../components/sectionHeader";
@@ -13,6 +15,54 @@ import { modal } from "../../../store/";
 import giveActions from "../../../store/give";
 import Give from "../../../blocks/give";
 
+export const REMOVE_PAYMENT_MUTATION = gql`
+  mutation RemoveSavedPayment($id: Int!) {
+    cancelSavedPayment(entityId: $id) {
+      error
+      code
+      success
+    }
+  }
+`;
+
+export const withPaymentRemove = graphql(REMOVE_PAYMENT_MUTATION, {
+  props: ({ mutate }) => ({
+    remove: (id) => mutate({
+      variables: { id },
+      optimisticResponse: {
+        __typename: "Mutation",
+        cancelSavedPayment: {
+          error: null,
+          code: null,
+          success: true,
+          __typename: "SavePaymentMutationResponse",
+        },
+      },
+      updateQueries: {
+        GivingDashboard: (prev, { mutationResult }) => {
+          const { error } = mutationResult.data.cancelSavedPayment;
+          if (error) return prev;
+          let index;
+          prev.savedPayments.forEach((payment, i) => {
+            if (payment.id === id) index = i;
+          });
+
+          prev.savedPayments.splice(index, 1);
+          return prev;
+        }
+      }
+    }),
+  }),
+});
+
+const SavedPaymentWithAction = withPaymentRemove(({ payment, remove }) => (
+  <SavedPaymentCard
+    classes={"grid__item one-whole one-half@anchored"}
+    key={`${payment.id}_${payment.name}`}
+    payment={payment}
+    onClick={() => remove(payment.id)}
+  />
+));
 
 type ISavedPaymentsList = {
   payments: Object,
@@ -38,15 +88,8 @@ export class SavedPaymentsList extends Component {
 
   renderPayments(payments: Object) {
     if (!Array.isArray(payments)) return null;
-    return payments.map((payment) =>
-      <SavedPaymentCard
-        classes={"grid__item one-half@lap-wide-and-up"}
-        key={`${payment.id}_${payment.name}`}
-        payment={payment}
-        onClick={() => {
-          this.props.router.push(`/give/saved-payments/edit/${payment.id}`);
-        }}
-      />
+    return payments.map((payment) => 
+      <SavedPaymentWithAction payment={payment} key={payment.id} />
     );
   }
 
@@ -66,7 +109,7 @@ export class SavedPaymentsList extends Component {
     if (!this.props.payments || !this.props.payments.savedPayments) {
       return (
         <div className={wrapper}>
-          <SectionHeader title="Saved Accounts" link={<SavedPaymentsButton />} />
+          <SectionHeader title="Saved Accounts" link={<this.SavedPaymentsButton />} />
           <div className="card">
             <div className="card__item soft">
               <h4 className="text-dark-primary">

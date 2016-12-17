@@ -6,6 +6,14 @@ export default gql`
       error
       success
       code
+      savedPayment {
+        id: entityId
+        name
+        payment {
+          accountNumber
+          paymentType
+        }
+      }
     }
   }
 `;

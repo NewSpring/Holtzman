@@ -7,8 +7,8 @@ import Schedules from "./Schedules";
 import SavedPayments from "./SavedPayments";
 
 const ACTIVITY_QUERY = gql`
-  query userFeed($filters: [String]!) {
-    scheduledTransactions {
+  query GivingDashboard($filters: [String]!) {
+    scheduledTransactions(cache: false) {
       id
       start
       details {
@@ -24,8 +24,8 @@ const ACTIVITY_QUERY = gql`
         description
       }
     }
-    savedPayments{
-      id
+    savedPayments(cache: false){
+      id: entityId
       name
       payment {
         accountNumber
