@@ -86,7 +86,7 @@ export const TransactionDetail = ({
   </div>
 );
 
-const PendingWrapper = ({ children }: { children: React$Element<any> }) => (
+const PendingWrapper = ({ children }: { children?: React$Element<any> }) => (
   <div
     className="soft card"
     style={{
@@ -101,7 +101,7 @@ const PendingWrapper = ({ children }: { children: React$Element<any> }) => (
   </div>
 );
 
-const FailedWrapper = ({ children }: { children: React$Element<any> }) => (
+const FailedWrapper = ({ children }: { children?: React$Element<any> }) => (
   <div className="soft card">
     {children}
     <p className="flush-bottom soft-top" style={{ lineHeight: ".9" }}><small><em>
@@ -120,7 +120,7 @@ const FailedWrapper = ({ children }: { children: React$Element<any> }) => (
 );
 
 type IWrapper = {
-  children: React$Element<any>,
+  children?: React$Element<any>,
   transaction: Object,
 }
 
