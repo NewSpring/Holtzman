@@ -190,7 +190,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 </em>
               </p>
               <button
-                className="false text-primary"
+                className="soft-top text-primary"
                 onClick={[Function]}
                 style={
                   Object {
@@ -294,7 +294,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 </em>
               </p>
               <button
-                className="false text-primary"
+                className="soft-top text-primary"
                 onClick={[Function]}
                 style={
                   Object {

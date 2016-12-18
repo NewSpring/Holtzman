@@ -18,8 +18,7 @@ exports[`test renders if country is \`CA\` 1`] = `
       name="state"
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory"
-      value={undefined}>
+      placeholder="State/Territory">
       <option
         style={
           Object {
@@ -63,8 +62,7 @@ exports[`test renders if no country 1`] = `
       name="state"
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory"
-      value={undefined}>
+      placeholder="State/Territory">
       <option
         style={
           Object {
@@ -108,8 +106,7 @@ exports[`test renders with default state as SC 1`] = `
       name="state"
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory"
-      value={undefined}>
+      placeholder="State/Territory">
       <option
         style={
           Object {
@@ -153,8 +150,7 @@ exports[`test renders with predefined state 1`] = `
       name="state"
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="State/Territory"
-      value={undefined}>
+      placeholder="State/Territory">
       <option
         style={
           Object {

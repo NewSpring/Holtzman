@@ -115,14 +115,14 @@ it("getSearch calls apollo client with search query", () => {
     },
     forceFetch: true,
   });
-  mockPromise.then(() => {
+  return mockPromise.then(() => {
     expect(searchActions.toggleLoading).toHaveBeenCalledTimes(1);
     expect(searchActions.incrementPage).toHaveBeenCalledTimes(1);
     expect(searchActions.add).toHaveBeenCalledTimes(1);
     expect(searchActions.add).toHaveBeenCalledWith(
       mockPromiseData.data.search.items
     );
-  });
+  })
 });
 
 it("getSearch calls none and done if no items", () => {
@@ -144,12 +144,12 @@ it("getSearch calls none and done if no items", () => {
   searchActions.none = jest.fn();
   searchActions.done = jest.fn();
   wrapper.instance().getSearch();
-  mockPromise.then(() => {
+  return mockPromise.then(() => {
     expect(searchActions.none).toHaveBeenCalledTimes(1);
     expect(searchActions.none).toHaveBeenCalledWith(true);
     expect(searchActions.done).toHaveBeenCalledTimes(1);
     expect(searchActions.done).toHaveBeenCalledWith(true);
-  });
+  })
 });
 
 it("hide hides the modal", () => {
@@ -166,7 +166,6 @@ it("searchSubmit calls prevent default and all the search actions", () => {
     blur: mockBlur,
     value: "hey",
   }));
-  const mockPromise = new Promise(p => p());
   const mockGetSearch = jest.fn();
   searchActions.searching = jest.fn();
   searchActions.clear = jest.fn();
@@ -189,10 +188,6 @@ it("searchSubmit calls prevent default and all the search actions", () => {
   expect(searchActions.clear).toHaveBeenCalledTimes(1);
   expect(searchActions.term).toHaveBeenCalledTimes(1);
   expect(searchActions.toggleLoading).toHaveBeenCalledTimes(1);
-
-  mockPromise.then(() => {
-    expect(mockGetSearch).toHaveBeenCalledTimes(2);
-  });
 });
 
 it("loadMore calls toggleLoading and getSearch", () => {

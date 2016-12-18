@@ -105,8 +105,7 @@ exports[`Layout should render the Remind component if state is set to 'remind' 1
           name="frequency"
           onChange={[Function]}
           onFocus={[Function]}
-          placeholder={undefined}
-          value={undefined}>
+          placeholder={undefined}>
           <option
             className={undefined}
             value="tomorrow">

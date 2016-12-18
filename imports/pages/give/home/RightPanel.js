@@ -37,6 +37,7 @@ export default withData(({ loading, data, changeYear }) => (
               See your summary from
           </em></small>
         </p>
+        <style>{".input--active select { color: #ffffff }"}</style>
         <Forms.Select
           items={YEARS}
           hideLabel

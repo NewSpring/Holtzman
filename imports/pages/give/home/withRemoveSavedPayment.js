@@ -15,7 +15,7 @@ export const REMOVE_PAYMENT_MUTATION = gql`
   }
 `;
 
-export const updateQuery = (id) => (prev, { mutationResult }) => {
+export const updateQuery = (id: string) => (prev: Object, { mutationResult }: Object) => {
   const { error } = mutationResult.data.cancelSavedPayment;
   if (error) return prev;
   let index;

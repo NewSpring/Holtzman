@@ -341,15 +341,16 @@ it("onStartDayClick correctly sets state", () => {
     selected: true,
     disabled: false,
   }
+  const customDate = moment("2016-12-25");
 
-  wrapper.instance().onStartDayClick(null, "12/25/2016", selectedObject);
+  wrapper.instance().onStartDayClick(null, customDate, selectedObject);
   expect(wrapper.state().start).toEqual("");
   expect(wrapper.state().customStartLabel).toEqual("Start Date");
   expect(wrapper.state().customStartActive).toEqual(false);
 
   selectedObject.selected = false;
-  wrapper.instance().onStartDayClick(null, "12/25/2016", selectedObject);
-  expect(wrapper.state().start).toEqual("12/25/2016");
+  wrapper.instance().onStartDayClick(null, customDate, selectedObject);
+  expect(wrapper.state().start).toEqual(customDate);
   expect(wrapper.state().customStartLabel).toEqual("Dec 25, 2016");
   expect(wrapper.state().customStartActive).toEqual(true);
 })
@@ -365,15 +366,16 @@ it("onEndDayClick correctly sets state", () => {
     selected: true,
     disabled: false,
   }
+  const customDate = moment("2016-12-25");
 
-  wrapper.instance().onEndDayClick(null, "12/25/2016", selectedObject);
+  wrapper.instance().onEndDayClick(null, customDate, selectedObject);
   expect(wrapper.state().end).toEqual("");
   expect(wrapper.state().customEndLabel).toEqual("End Date");
   expect(wrapper.state().customEndActive).toEqual(false);
 
   selectedObject.selected = false;
-  wrapper.instance().onEndDayClick(null, "12/25/2016", selectedObject);
-  expect(wrapper.state().end).toEqual("12/25/2016");
+  wrapper.instance().onEndDayClick(null, customDate, selectedObject);
+  expect(wrapper.state().end).toEqual(customDate);
   expect(wrapper.state().customEndLabel).toEqual("Dec 25, 2016");
   expect(wrapper.state().customEndActive).toEqual(true);
 })
@@ -396,4 +398,3 @@ it("filterResults correctly calls all the functions", () => {
   wrapper.instance().filterResults();
   expect(mockFilterTransactions).toHaveBeenCalledWith({ people: [ "1", "2" ], start: "", end: "", limit: 20 });
 });
-
