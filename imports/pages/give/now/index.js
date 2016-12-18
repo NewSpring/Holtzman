@@ -23,13 +23,6 @@ class PageWithoutData extends Component {
     });
   }
 
-  componentDidMount() {
-    if (process.env.NATIVE) {
-      const item = { title: "Give Now" };
-      this.props.dispatch(headerActions.set(item));
-    }
-  }
-
   componentWillUnmount() {
     this.props.setRightProps({
       background: "",

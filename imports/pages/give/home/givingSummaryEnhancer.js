@@ -76,6 +76,7 @@ export default graphql(YTD_QUERY, {
       start: moment().startOf("year").format(),
       end: moment().endOf("year").format(),
     },
+    ssr: false,
   },
   props: ({ data }) => ({
     changeYear: (year) => {

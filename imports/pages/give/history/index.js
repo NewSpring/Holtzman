@@ -34,10 +34,6 @@ class TemplateWithoutData extends Component {
     });
   }
 
-  componentDidMount() {
-    if (process.env.NATIVE) this.props.dispatch(headerActions.set({ title: "Giving History" }));
-  }
-
   wrapRefetch = (refetch: Function) => (...args: Object[]) => {
     this.setState({ refetching: true });
     return refetch(...args).then((x) => {
@@ -110,6 +106,7 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
   options: {
     variables: { limit: DEFAULT_LIMIT, skip: 0, people: [], start: "", end: "" },
     forceFetch: true,
+    ssr: false,
   },
   props: ({ data }) => ({
     transactions: data.transactions || [],
