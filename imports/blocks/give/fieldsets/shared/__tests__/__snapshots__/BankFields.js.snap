@@ -69,8 +69,7 @@ exports[`test should render with props 1`] = `
           name="billing-account-type"
           onChange={[Function]}
           onFocus={[Function]}
-          placeholder="Account Type"
-          value={undefined}>
+          placeholder="Account Type">
           <option
             style={
               Object {
