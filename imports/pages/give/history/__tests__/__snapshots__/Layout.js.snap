@@ -39,8 +39,8 @@ exports[`Layout renders no transactions if there are none and ready 1`] = `
     className="fixed visuallyhidden@handheld"
     style={
       Object {
+        "bottom": "175px",
         "left": "58.33%",
-        "top": "60%",
         "zIndex": 10,
       }
     }>
@@ -99,8 +99,8 @@ exports[`Layout renders reloading if no transactions and not ready 1`] = `
     className="fixed visuallyhidden@handheld"
     style={
       Object {
+        "bottom": "175px",
         "left": "58.33%",
-        "top": "60%",
         "zIndex": 10,
       }
     }>
@@ -150,6 +150,30 @@ exports[`Layout renders reloading version 1`] = `
           }
         } />
     </div>
+    <div
+      className="visuallyhidden@lap-and-up"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }>
+      <div
+        style={
+          Object {
+            "marginTop": "10px",
+            "position": "absolute",
+            "right": "20px",
+          }
+        }>
+        <span
+          className="icon-print"
+          style={
+            Object {
+              "fontSize": "28px",
+            }
+          } />
+      </div>
+    </div>
     <TransactionList
       transactions={
         Array [
@@ -188,8 +212,8 @@ exports[`Layout renders reloading version 1`] = `
     className="fixed visuallyhidden@handheld"
     style={
       Object {
+        "bottom": "175px",
         "left": "58.33%",
-        "top": "60%",
         "zIndex": 10,
       }
     }>
@@ -229,6 +253,30 @@ exports[`Layout renders with negative transactions 1`] = `
     family={Array []} />
   <div
     className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    <div
+      className="visuallyhidden@lap-and-up"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }>
+      <div
+        style={
+          Object {
+            "marginTop": "10px",
+            "position": "absolute",
+            "right": "20px",
+          }
+        }>
+        <span
+          className="icon-print"
+          style={
+            Object {
+              "fontSize": "28px",
+            }
+          } />
+      </div>
+    </div>
     <TransactionList
       transactions={
         Array [
@@ -265,8 +313,8 @@ exports[`Layout renders with negative transactions 1`] = `
     className="fixed visuallyhidden@handheld"
     style={
       Object {
+        "bottom": "175px",
         "left": "58.33%",
-        "top": "60%",
         "zIndex": 10,
       }
     }>
@@ -306,6 +354,30 @@ exports[`Layout renders with props 1`] = `
     family={Array []} />
   <div
     className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    <div
+      className="visuallyhidden@lap-and-up"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }>
+      <div
+        style={
+          Object {
+            "marginTop": "10px",
+            "position": "absolute",
+            "right": "20px",
+          }
+        }>
+        <span
+          className="icon-print"
+          style={
+            Object {
+              "fontSize": "28px",
+            }
+          } />
+      </div>
+    </div>
     <TransactionList
       transactions={
         Array [
@@ -346,8 +418,8 @@ exports[`Layout renders with props 1`] = `
     className="fixed visuallyhidden@handheld"
     style={
       Object {
+        "bottom": "175px",
         "left": "58.33%",
-        "top": "60%",
         "zIndex": 10,
       }
     }>

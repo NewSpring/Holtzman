@@ -94,6 +94,28 @@ export default ({
         </div>
       )}
 
+      {transactions.length > 0 && (
+        <div
+          className="visuallyhidden@lap-and-up"
+          style={{ cursor: "pointer" }}
+          onClick={onPrintClick}
+        >
+          {!printLoading && (
+            <div
+              style={{ position: "absolute", right: "20px", marginTop: "10px" }}
+            >
+              <span className="icon-print" style={{ fontSize: "28px" }} />
+            </div>
+          )}
+
+          {printLoading && (
+            <div style={{ position: "absolute", right: "20px", marginTop: "10px" }}>
+              <Spinner styles={{ width: "35px", height: "35px" }} />
+            </div>
+          )}
+        </div>
+      )}
+
       {!transactions.length && ready && !reloading && (
         <div className="text-left soft-ends soft-half-sides">
           <p>
@@ -126,7 +148,7 @@ export default ({
     <div
       className="fixed visuallyhidden@handheld"
       style={{
-        top: "60%",
+        bottom: "175px",
         left: "58.33%",
         zIndex: 10,
       }}
