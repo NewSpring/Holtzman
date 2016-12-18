@@ -1,6 +1,9 @@
 // @flow
 import Forms from "../../../../components/forms";
 
+import { isIOS } from "../../../../util";
+
+
 type ISavePaymentInput = {
   saveName: Function,
   savedAccount: Object,
@@ -22,7 +25,8 @@ const SavePaymentInput = ({
     shouldSaveState &&
     !savedAccount.id &&
     transactionType !== "guest" &&
-    !schedule.start
+    !schedule.start &&
+    !isIOS()
   ) {
     return (
       <Forms.Input
