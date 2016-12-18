@@ -1,399 +1,282 @@
 exports[`test renders Billing form 1`] = `
-<form
-  action={undefined}
-  className="hard"
+<Form
+  fieldsetTheme="flush soft-top@handheld scrollable soft-double-bottom"
   id="give"
   method="POST"
-  onSubmit={[Function]}
-  style={undefined}>
-  <fieldset
-    className="flush soft-top@handheld scrollable soft-double-bottom">
-    <div>
+  submit={[Function]}
+  theme="hard">
+  <div>
+    <div
+      className="push-double@lap-and-up push">
+      <h4
+        className="text-center">
+        Billing Address
+      </h4>
+    </div>
+    <div
+      className="progress-bar text-center">
       <div
-        className="push-double@lap-and-up push">
-        <h4
-          className="text-center">
-          Billing Address
-        </h4>
+        className="progress">
+        <div
+          className="progress__item--active"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
+        <div
+          className="progress__item--active"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
+        <div
+          className="progress__item"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
+        <div
+          className="progress__item"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
       </div>
+      <p
+        className="flush-bottom">
+        <small
+          className="italic display-inline-block push-half-top">
+          Step 
+          2
+           of 
+          4
+        </small>
+      </p>
+    </div>
+    <div
+      className="soft-sides">
+      <Input
+        autoFocus={true}
+        defaultValue={undefined}
+        errorText="Please enter your address"
+        label="Street Address"
+        name="streetAddress"
+        validation={[Function]} />
+      <Input
+        defaultValue={undefined}
+        label="Street Address (optional)"
+        name="streetAddress2"
+        validation={[Function]} />
+      <Select
+        defaultValue="US"
+        errorText="Please enter your country"
+        includeBlank={true}
+        items={Array []}
+        label="Country"
+        name="country"
+        validation={[Function]} />
+      <Input
+        defaultValue={undefined}
+        errorText="Please enter your city"
+        label="City"
+        name="city"
+        validation={[Function]} />
       <div
-        className="progress-bar text-center">
+        className="grid">
         <div
-          className="progress">
-          <div
-            className="progress__item--active"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
-          <div
-            className="progress__item--active"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
-          <div
-            className="progress__item"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
-          <div
-            className="progress__item"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
+          className="grid__item one-half">
+          <Select
+            defaultValue="SC"
+            errorText="Please enter your state"
+            includeBlank={true}
+            items={Array []}
+            label="State/Territory"
+            name="state"
+            validation={[Function]} />
         </div>
-        <p
-          className="flush-bottom">
-          <small
-            className="italic display-inline-block push-half-top">
-            Step 
-            2
-             of 
-            4
-          </small>
-        </p>
-      </div>
-      <div
-        className="soft-sides">
         <div
-          className="input"
-          data-spec="input-wrapper"
-          style={Object {}}>
-          <label
-            htmlFor="streetAddress"
-            style={Object {}}>
-            Street Address
-          </label>
-          <input
-            className={undefined}
-            data-spec="input"
+          className="grid__item one-half">
+          <Input
             defaultValue={undefined}
-            disabled={undefined}
-            id="streetAddress"
-            maxLength=""
-            name="streetAddress"
-            onBlur={[Function]}
+            errorText="Please enter your zip"
+            label="Zip/Postal"
+            name="zip"
             onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Street Address"
-            style={Object {}}
-            type={undefined} />
+            validation={[Function]} />
         </div>
-        <div
-          className="input"
-          data-spec="input-wrapper"
-          style={Object {}}>
-          <label
-            htmlFor="streetAddress2"
-            style={Object {}}>
-            Street Address (optional)
-          </label>
-          <input
-            className={undefined}
-            data-spec="input"
-            defaultValue={undefined}
-            disabled={undefined}
-            id="streetAddress2"
-            maxLength=""
-            name="streetAddress2"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Street Address (optional)"
-            style={Object {}}
-            type={undefined} />
-        </div>
-        <div
-          className="input input--active select_15p0e27">
-          <label
-            htmlFor="Country"
-            style={Object {}}>
-            Country
-          </label>
-          <select
-            className={undefined}
-            defaultValue="US"
-            disabled={undefined}
-            id="Country"
-            name="country"
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Country"
-            value={undefined}>
-            <option
-              style={
-                Object {
-                  "display": "none",
-                }
-              }>
-              
-            </option>
-          </select>
-        </div>
-        <div
-          className="input"
-          data-spec="input-wrapper"
-          style={Object {}}>
-          <label
-            htmlFor="city"
-            style={Object {}}>
-            City
-          </label>
-          <input
-            className={undefined}
-            data-spec="input"
-            defaultValue={undefined}
-            disabled={undefined}
-            id="city"
-            maxLength=""
-            name="city"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="City"
-            style={Object {}}
-            type={undefined} />
-        </div>
-        <div
-          className="grid">
-          <div
-            className="grid__item one-half">
-            <div
-              className="input input--active select_15p0e27">
-              <label
-                htmlFor="State/Territory"
-                style={Object {}}>
-                State/Territory
-              </label>
-              <select
-                className={undefined}
-                defaultValue="SC"
-                disabled={undefined}
-                id="State/Territory"
-                name="state"
-                onChange={[Function]}
-                onFocus={[Function]}
-                placeholder="State/Territory"
-                value={undefined}>
-                <option
-                  style={
-                    Object {
-                      "display": "none",
-                    }
-                  }>
-                  
-                </option>
-              </select>
-            </div>
-          </div>
-          <div
-            className="grid__item one-half">
-            <div
-              className="input"
-              data-spec="input-wrapper"
-              style={Object {}}>
-              <label
-                htmlFor="zip"
-                style={Object {}}>
-                Zip/Postal
-              </label>
-              <input
-                className={undefined}
-                data-spec="input"
-                defaultValue={undefined}
-                disabled={undefined}
-                id="zip"
-                maxLength=""
-                name="zip"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                placeholder="Zip/Postal"
-                style={Object {}}
-                type={undefined} />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a
-          className="btn--small btn--dark-tertiary display-inline-block"
-          href=""
-          onClick={[Function]}
-          tabIndex={-1}>
-          Back
-        </a>
-        <button
-          className="push-left btn--disabled"
-          disabled={true}
-          onClick={[Function]}
-          type="submit">
-          Next
-        </button>
       </div>
     </div>
-  </fieldset>
-</form>
+    <div>
+      <a
+        className="btn--small btn--dark-tertiary display-inline-block"
+        href=""
+        onClick={[Function]}
+        tabIndex={-1}>
+        Back
+      </a>
+      <button
+        className="push-left btn--disabled"
+        disabled={true}
+        onClick={[Function]}
+        type="submit">
+        Next
+      </button>
+    </div>
+  </div>
+</Form>
 `;
 
 exports[`test renders Confirm form 1`] = `
-<form
-  action={undefined}
-  className="hard"
+<Form
+  fieldsetTheme="flush soft-top@handheld scrollable soft-double-bottom"
   id="give"
   method="POST"
-  onSubmit={[Function]}
-  style={undefined}>
-  <fieldset
-    className="flush soft-top@handheld scrollable soft-double-bottom">
-    <div>
+  submit={[Function]}
+  theme="hard">
+  <div>
+    <div
+      className="push-double-top@lap-and-up push">
       <div
-        className="push-double-top@lap-and-up push">
+        className="grid one-whole text-left flush">
         <div
-          className="grid one-whole text-left flush">
-          <div
-            className="grid__item three-quarters text-left hard"
-            style={
-              Object {
-                "verticalAlign": "middle",
-              }
-            }>
-            <h3
-              className="flush-bottom">
-              Review Contribution
-            </h3>
-          </div>
-          <div
-            className="grid__item one-quarter text-right"
-            style={
-              Object {
-                "verticalAlign": "middle",
-              }
-            }>
-            <button
-              className="
-                btn btn--small@next
-                
-                btn--dark-secondary flush-bottom
-              "
-              disabled={undefined}
-              onClick={[Function]}
-              style={Object {}}>
-              Edit
-            </button>
-          </div>
-        </div>
-      </div>
-      <div
-        className="soft-sides">
-        <div
-          className="one-whole push-bottom" />
-        <div
-          className="soft-half-ends push-bottom hard-sides outlined--light outlined--bottom"
+          className="grid__item three-quarters text-left hard"
           style={
             Object {
-              "borderWidth": "1px",
+              "verticalAlign": "middle",
+            }
+          }>
+          <h3
+            className="flush-bottom">
+            Review Contribution
+          </h3>
+        </div>
+        <div
+          className="grid__item one-quarter text-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          <button
+            className="
+              btn btn--small@next
+              
+              btn--dark-secondary flush-bottom
+            "
+            disabled={undefined}
+            onClick={[Function]}
+            style={Object {}}>
+            Edit
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="soft-sides">
+      <div
+        className="one-whole push-bottom" />
+      <div
+        className="soft-half-ends push-bottom hard-sides outlined--light outlined--bottom"
+        style={
+          Object {
+            "borderWidth": "1px",
+          }
+        }>
+        <div
+          className="grid"
+          style={
+            Object {
+              "verticalAlign": "middle",
             }
           }>
           <div
-            className="grid"
+            className="grid__item one-half"
+            style={
+              Object {
+                "verticalAlign": "middle",
+              }
+            }>
+            <h5
+              className="text-dark-secondary flush text-left">
+              Total
+            </h5>
+          </div>
+          <div
+            className="grid__item one-half text-right"
             style={
               Object {
                 "verticalAlign": "middle",
               }
             }>
             <div
-              className="grid__item one-half"
-              style={
-                Object {
-                  "verticalAlign": "middle",
-                }
-              }>
-              <h5
-                className="text-dark-secondary flush text-left">
-                Total
-              </h5>
-            </div>
-            <div
-              className="grid__item one-half text-right"
-              style={
-                Object {
-                  "verticalAlign": "middle",
-                }
-              }>
+              className="display-inline-block">
               <div
-                className="display-inline-block">
-                <div
-                  className="floating text-dark-primary text-left">
-                  <h4
-                    className="floating__item flush"
-                    style={
-                      Object {
-                        "paddingRight": "5px",
-                      }
-                    }>
-                    $
-                  </h4>
-                  <h2
-                    className="floating__item flush">
-                    0
-                  </h2>
-                  <h4
-                    className="floating__item flush">
-                    .
-                    00
-                  </h4>
-                </div>
+                className="floating text-dark-primary text-left">
+                <h4
+                  className="floating__item flush"
+                  style={
+                    Object {
+                      "paddingRight": "5px",
+                    }
+                  }>
+                  $
+                </h4>
+                <h2
+                  className="floating__item flush">
+                  0
+                </h2>
+                <h4
+                  className="floating__item flush">
+                  .
+                  00
+                </h4>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="one-whole soft-half-top" />
+      <button
+        className="btn soft-half-top one-whole"
+        type="submit">
+        <span>
+          Give
+        </span>
+           
         <div
-          className="one-whole soft-half-top" />
-        <button
-          className="btn soft-half-top one-whole"
-          type="submit">
-          <span>
-            Give
-          </span>
-             
-          <div
-            className="background--fill display-inline-block"
-            style={
-              Object {
-                "backgroundImage": "url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=\')",
-                "borderRadius": "3px",
-                "height": "21px",
-                "position": "inherit",
-                "top": "3px",
-                "width": "30px",
-              }
-            } />
-        </button>
-        <div
-          className="display-block soft-half-top text-center">
-          <h6
-            className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
-            onClick={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }>
-            Change Payment Accounts
-          </h6>
-        </div>
+          className="background--fill display-inline-block"
+          style={
+            Object {
+              "backgroundImage": "url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAA8CAYAAADxJz2MAAAABGdBTUEAALGPC/xhBQAAAc9JREFUeAHt3DFOwzAUxnGcROoMEx04Q4/AoSraoXMWqp4DjgFH4AwgdWvnDlV4FoyOn+xPlVrlnwEJ+32h/eWlcqjkcGfHbrd7Op1Or8MwPNuv8zjGMSqwDyF8tG27Wq/XP+Ef78vw7kcjTKQEDl3XLRrrvC14KR937OF8Pm8bK4u3LUeFQPzIa+zHY0WWyJ/APHYghyDQjWU3m00Ym5vieN/3Q+p904EplYIxAAuwUqUAplQKxgAswEqVAphSKRgDsAArVQpgSqVgDMACrFQpgCmVgrHRJxHvHGMrcy93rfO1T150oHhFAQRQFBDjdCCAooAYpwMBFAXEePU6sHbdJL7eq4tzC4uXBEAARQExTgcCKAqIcToQQFFAjNOBAIoCYrz6SeTS/5G+lScdbmGxAwEEUBQQ43QggKKAGKcDARQFxHj1OvBW1mmijxvnFnaJ8gUA5n3cWQBdonwBgHkfdxZAlyhfAGDex50F0CXKFwCY93FnAXSJ8gUA5n3cWQBdonxBuPR3G/k/f/uzdKB4DSPgXjzHlOP7xjaR+ZyygPLeo11jO/C82EkOyommmDW842w2WzVx+6K4A48NvBkEt7PfDXHrp3fDWyyXy+9ftplH0FR79EYAAAAASUVORK5CYII=\')",
+              "borderRadius": "3px",
+              "height": "21px",
+              "position": "inherit",
+              "top": "3px",
+              "width": "30px",
+            }
+          } />
+      </button>
+      <div
+        className="display-block soft-half-top text-center">
+        <h6
+          className="outlined--light outlined--bottom display-inline-block text-dark-tertiary"
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }>
+          Change Payment Accounts
+        </h6>
       </div>
     </div>
-  </fieldset>
-</form>
+  </div>
+</Form>
 `;
 
 exports[`test renders Error 1`] = `
@@ -501,462 +384,304 @@ exports[`test renders Loading 1`] = `
 `;
 
 exports[`test renders Payment form 1`] = `
-<form
-  action={undefined}
-  className="hard"
+<Form
+  fieldsetTheme="flush soft-top@handheld scrollable soft-double-bottom"
   id="give"
   method="POST"
-  onSubmit={[Function]}
-  style={undefined}>
-  <fieldset
-    className="flush soft-top@handheld scrollable soft-double-bottom">
-    <div>
+  submit={[Function]}
+  theme="hard">
+  <div>
+    <div
+      className="push-double@lap-and-up push">
+      <h4
+        className="text-center">
+        Payment Details
+      </h4>
+    </div>
+    <div
+      className="progress-bar text-center">
       <div
-        className="push-double@lap-and-up push">
-        <h4
-          className="text-center">
-          Payment Details
-        </h4>
-      </div>
-      <div
-        className="progress-bar text-center">
+        className="progress">
         <div
-          className="progress">
-          <div
-            className="progress__item--active"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
-          <div
-            className="progress__item--active"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
-          <div
-            className="progress__item--active"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
-          <div
-            className="progress__item"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
-        </div>
-        <p
-          className="flush-bottom">
-          <small
-            className="italic display-inline-block push-half-top">
-            Step 
-            3
-             of 
-            4
-          </small>
-        </p>
+          className="progress__item--active"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
+        <div
+          className="progress__item--active"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
+        <div
+          className="progress__item--active"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
+        <div
+          className="progress__item"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
       </div>
+      <p
+        className="flush-bottom">
+        <small
+          className="italic display-inline-block push-half-top">
+          Step 
+          3
+           of 
+          4
+        </small>
+      </p>
+    </div>
+    <div
+      className="toggle push-bottom soft-sides"
+      style={
+        Object {
+          "backgroundColor": "#fff",
+        }
+      }>
       <div
-        className="toggle push-bottom soft-sides"
+        className="transition text-center toggle__item"
+        data-toggle={0}
+        onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#fff",
+            "width": "50%",
           }
         }>
-        <div
-          className="transition text-center toggle__item"
-          data-toggle={0}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": "50%",
-            }
-          }>
-          Credit Card
-        </div>
-        <div
-          className="transition text-center toggle__item"
-          data-toggle={1}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": "50%",
-            }
-          }>
-          Bank Account
-        </div>
-        <div
-          className="grid text-left toggle-arrow soft-sides">
-          <div
-            className="transition grid__item hard one-half toggle-arrow__item"
-            style={
-              Object {
-                "marginLeft": "0%",
-              }
-            } />
-        </div>
+        Credit Card
       </div>
       <div
-        className="soft">
-        <div>
-          <div
-            className="input"
-            data-spec="input-wrapper"
-            style={Object {}}>
-            <label
-              htmlFor="cardNumber"
-              style={Object {}}>
-              Card Number
-            </label>
-            <input
-              className={undefined}
-              data-spec="input"
-              defaultValue={undefined}
-              disabled={undefined}
-              id="cardNumber"
-              maxLength=""
-              name="billing-cc-number"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Card Number"
-              style={Object {}}
-              type="tel" />
-            <div
-              className="locked locked-right soft-double-right locked-top"
-              style={
-                Object {
-                  "top": "-3px",
-                }
-              } />
-          </div>
-          <div
-            className="grid">
-            <div
-              className="grid__item one-half">
-              <div
-                className="input"
-                data-spec="input-wrapper"
-                style={Object {}}>
-                <label
-                  htmlFor="expiration"
-                  style={Object {}}>
-                  Exp (MM/YY)
-                </label>
-                <input
-                  className={undefined}
-                  data-spec="input"
-                  defaultValue={undefined}
-                  disabled={undefined}
-                  id="expiration"
-                  maxLength=""
-                  name="billing-cc-exp"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  placeholder="Exp (MM/YY)"
-                  style={Object {}}
-                  type="tel" />
-              </div>
-            </div>
-            <div
-              className="grid__item one-half">
-              <div
-                className="input"
-                data-spec="input-wrapper"
-                style={Object {}}>
-                <label
-                  htmlFor="ccv"
-                  style={Object {}}>
-                  CCV
-                </label>
-                <input
-                  className={undefined}
-                  data-spec="input"
-                  defaultValue={undefined}
-                  disabled={undefined}
-                  id="ccv"
-                  maxLength=""
-                  name="billing-cvv"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  placeholder="CCV"
-                  style={Object {}}
-                  type="tel" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="input checkbox"
-          data-spec="input-wrapper">
-          <h6
-            className="soft-left push-half-left flush-bottom text-left float-left locked-top"
-            style={
-              Object {
-                "paddingTop": "3px",
-              }
-            }>
-            <small
-              data-spec="input-label">
-              Save this payment for future contributions
-            </small>
-          </h6>
-          <input
-            className={undefined}
-            data-spec="input"
-            defaultChecked="checked"
-            disabled={undefined}
-            id="savePayment"
-            name="savePayment"
-            onClick={[Function]}
-            style={
-              Object {
-                "width": 0,
-              }
-            }
-            type="checkbox" />
-          <label
-            htmlFor="savePayment"
-            style={Object {}} />
-        </div>
-        <div
-          className="input input--active soft-bottom flush-bttom"
-          data-spec="input-wrapper"
-          style={Object {}}>
-          <label
-            htmlFor="accountName"
-            style={Object {}}>
-            Saved Account Name
-          </label>
-          <input
-            className={undefined}
-            data-spec="input"
-            defaultValue="Credit Card"
-            disabled={undefined}
-            id="accountName"
-            maxLength=""
-            name="accountName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Saved Account Name"
-            style={Object {}}
-            type={undefined} />
-        </div>
+        className="transition text-center toggle__item"
+        data-toggle={1}
+        onClick={[Function]}
+        style={
+          Object {
+            "width": "50%",
+          }
+        }>
+        Bank Account
       </div>
-      <div>
-        <a
-          className="btn--small btn--dark-tertiary display-inline-block"
-          href=""
-          onClick={[Function]}
-          tabIndex={-1}>
-          Back
-        </a>
-        <button
-          className="push-left btn--disabled"
-          disabled={true}
-          onClick={[Function]}
-          type="submit">
-          Next
-        </button>
+      <div
+        className="grid text-left toggle-arrow soft-sides">
+        <div
+          className="transition grid__item hard one-half toggle-arrow__item"
+          style={
+            Object {
+              "marginLeft": "0%",
+            }
+          } />
       </div>
     </div>
-  </fieldset>
-</form>
-`;
-
-exports[`test renders Personal form 1`] = `
-<form
-  action={undefined}
-  className="hard"
-  id="give"
-  method="POST"
-  onSubmit={[Function]}
-  style={undefined}>
-  <fieldset
-    className="flush soft-top@handheld scrollable soft-double-bottom">
-    <div>
-      <div
-        className="push-double@lap-and-up push">
-        <h4
-          className="text-center">
-          Personal Details
-        </h4>
-      </div>
-      <div
-        className="progress-bar text-center">
-        <div
-          className="progress">
+    <div
+      className="soft">
+      <div>
+        <Input
+          defaultValue={undefined}
+          errorText="Please enter your card number"
+          format={[Function]}
+          id="cardNumber"
+          label="Card Number"
+          name="billing-cc-number"
+          onChange={[Function]}
+          type="tel"
+          validation={[Function]}>
           <div
-            className="progress__item--active"
+            className="locked locked-right soft-double-right locked-top"
             style={
               Object {
-                "zIndex": 1,
+                "top": "-3px",
               }
             } />
-          <div
-            className="progress__item"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
-          <div
-            className="progress__item"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
-          <div
-            className="progress__item"
-            style={
-              Object {
-                "zIndex": 1,
-              }
-            } />
-        </div>
-        <p
-          className="flush-bottom">
-          <small
-            className="italic display-inline-block push-half-top">
-            Step 
-            1
-             of 
-            4
-          </small>
-        </p>
-      </div>
-      <div
-        className="soft-sides">
+        </Input>
         <div
           className="grid">
           <div
             className="grid__item one-half">
-            <div
-              className="input"
-              data-spec="input-wrapper"
-              style={Object {}}>
-              <label
-                htmlFor="firstName"
-                style={Object {}}>
-                First Name
-              </label>
-              <input
-                className={undefined}
-                data-spec="input"
-                defaultValue={undefined}
-                disabled={undefined}
-                id="firstName"
-                maxLength=""
-                name="firstName"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                placeholder="First Name"
-                style={Object {}}
-                type={undefined} />
-            </div>
+            <Input
+              data-expiry-input={true}
+              defaultValue={undefined}
+              errorText="Please enter a valid expiration number"
+              format={[Function]}
+              id="expiration"
+              label="Exp (MM/YY)"
+              name="billing-cc-exp"
+              onChange={[Function]}
+              type="tel"
+              validation={[Function]} />
           </div>
           <div
             className="grid__item one-half">
-            <div
-              className="input"
-              data-spec="input-wrapper"
-              style={Object {}}>
-              <label
-                htmlFor="lastName"
-                style={Object {}}>
-                Last Name
-              </label>
-              <input
-                className={undefined}
-                data-spec="input"
-                defaultValue={undefined}
-                disabled={undefined}
-                id="lastName"
-                maxLength=""
-                name="lastName"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                placeholder="Last Name"
-                style={Object {}}
-                type={undefined} />
-            </div>
+            <Input
+              defaultValue={undefined}
+              errorText="Please enter a valid ccv number"
+              id="ccv"
+              label="CCV"
+              name="billing-cvv"
+              onChange={[Function]}
+              type="tel"
+              validation={[Function]} />
           </div>
         </div>
-        <div
-          className="input"
-          data-spec="input-wrapper"
-          style={Object {}}>
-          <label
-            htmlFor="email"
-            style={Object {}}>
-            Email
-          </label>
-          <input
-            className={undefined}
-            data-spec="input"
-            defaultValue={undefined}
-            disabled={undefined}
-            id="email"
-            maxLength=""
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="user@email.com"
-            style={Object {}}
-            type="email" />
-        </div>
-        <div
-          className="input select_15p0e27">
-          <label
-            htmlFor="Campus"
-            style={Object {}}>
-            Campus
-          </label>
-          <select
-            className={undefined}
-            defaultValue={undefined}
-            disabled={undefined}
-            id="Campus"
-            name="campus"
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Campus"
-            value={undefined}>
-            <option
-              style={
-                Object {
-                  "display": "none",
-                }
-              }>
-              
-            </option>
-          </select>
-        </div>
       </div>
-      <div>
-        <button
-          className="btn"
-          disabled={false}
-          onClick={[Function]}>
-          Next
-        </button>
-      </div>
+      <Checkbox
+        clicked={[Function]}
+        defaultValue={true}
+        name="savePayment">
+        Save this payment for future contributions
+      </Checkbox>
+      <Input
+        classes={
+          Array [
+            "soft-bottom",
+            "flush-bttom",
+          ]
+        }
+        defaultValue="Credit Card"
+        errorText="Please enter a name for the account"
+        label="Saved Account Name"
+        name="accountName"
+        validation={[Function]} />
     </div>
-  </fieldset>
-</form>
+    <div>
+      <a
+        className="btn--small btn--dark-tertiary display-inline-block"
+        href=""
+        onClick={[Function]}
+        tabIndex={-1}>
+        Back
+      </a>
+      <button
+        className="push-left btn--disabled"
+        disabled={true}
+        onClick={[Function]}
+        type="submit">
+        Next
+      </button>
+    </div>
+  </div>
+</Form>
+`;
+
+exports[`test renders Personal form 1`] = `
+<Form
+  fieldsetTheme="flush soft-top@handheld scrollable soft-double-bottom"
+  id="give"
+  method="POST"
+  submit={[Function]}
+  theme="hard">
+  <div>
+    <div
+      className="push-double@lap-and-up push">
+      <h4
+        className="text-center">
+        Personal Details
+      </h4>
+    </div>
+    <div
+      className="progress-bar text-center">
+      <div
+        className="progress">
+        <div
+          className="progress__item--active"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
+        <div
+          className="progress__item"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
+        <div
+          className="progress__item"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
+        <div
+          className="progress__item"
+          style={
+            Object {
+              "zIndex": 1,
+            }
+          } />
+      </div>
+      <p
+        className="flush-bottom">
+        <small
+          className="italic display-inline-block push-half-top">
+          Step 
+          1
+           of 
+          4
+        </small>
+      </p>
+    </div>
+    <div
+      className="soft-sides">
+      <div
+        className="grid">
+        <div
+          className="grid__item one-half">
+          <Input
+            defaultValue={undefined}
+            errorText="Please enter your first name"
+            label="First Name"
+            name="firstName"
+            validation={[Function]} />
+        </div>
+        <div
+          className="grid__item one-half">
+          <Input
+            defaultValue={undefined}
+            errorText="Please enter your last name"
+            label="Last Name"
+            name="lastName"
+            validation={[Function]} />
+        </div>
+      </div>
+      <Input
+        defaultValue={undefined}
+        errorText="Please enter a valid email"
+        label="Email"
+        name="email"
+        placeholder="user@email.com"
+        type="email"
+        validation={[Function]} />
+      <Select
+        defaultValue={undefined}
+        errorText="Please choose a campus"
+        includeBlank={true}
+        items={Array []}
+        label="Campus"
+        name="campus"
+        type="campus"
+        validation={[Function]} />
+    </div>
+    <div>
+      <button
+        className="btn"
+        disabled={false}
+        onClick={[Function]}>
+        Next
+      </button>
+    </div>
+  </div>
+</Form>
 `;
 
 exports[`test renders Success 1`] = `
