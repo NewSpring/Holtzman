@@ -122,7 +122,8 @@ it("getSearch calls apollo client with search query", () => {
     expect(searchActions.add).toHaveBeenCalledWith(
       mockPromiseData.data.search.items
     );
-  });
+  })
+  catch(() => { /* Do nothing */ });
 });
 
 it("getSearch calls none and done if no items", () => {
@@ -149,7 +150,8 @@ it("getSearch calls none and done if no items", () => {
     expect(searchActions.none).toHaveBeenCalledWith(true);
     expect(searchActions.done).toHaveBeenCalledTimes(1);
     expect(searchActions.done).toHaveBeenCalledWith(true);
-  });
+  })
+  catch(() => { /* Do nothing */ });
 });
 
 it("hide hides the modal", () => {
@@ -192,7 +194,8 @@ it("searchSubmit calls prevent default and all the search actions", () => {
 
   mockPromise.then(() => {
     expect(mockGetSearch).toHaveBeenCalledTimes(2);
-  });
+  }).
+  catch(() => { /* Do nothing */ });
 });
 
 it("loadMore calls toggleLoading and getSearch", () => {
