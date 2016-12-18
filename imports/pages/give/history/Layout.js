@@ -61,6 +61,8 @@ type ILayout = {
   reloading: boolean,
   family: [Object],
   filterTransactions: Function,
+  onPrintClick: Function,
+  printLoading: boolean,
 };
 
 export default ({
@@ -71,6 +73,8 @@ export default ({
   reloading,
   filterTransactions,
   family,
+  onPrintClick,
+  printLoading,
 }: ILayout) => (
   <div>
     <Meta title="Giving History" />
@@ -117,5 +121,38 @@ export default ({
       )}
       {ready && transactions.length && !reloading && !done && <Loading />}
     </div>
-  </div>
+
+    {/* Print Button */}
+    <div
+      className="fixed visuallyhidden@handheld"
+      style={{
+        top: "60%",
+        left: "58.33%",
+      }}>
+      <div
+        className="card"
+        style={{ borderRadius: "50%", marginLeft: "2px" }}
+        onClick={onPrintClick}
+      >
+        {!printLoading && ( 
+          <div
+            className="card__item background--light-secondary soft-half"
+            style={{ padding: "20px 21px" }}
+          >
+            <span className="icon-like-solid" />
+          </div>
+        )}
+
+        {printLoading && (
+          <div
+            style={{ padding: "12px 12px 9px 12px" }}
+            className="card__item background--light-secondary"
+          >
+            <Spinner styles={{ width: "35px", height: "35px" }} /> 
+          </div>
+        )}
+      </div>
+    </div>
+ 
+ </div>
 );
