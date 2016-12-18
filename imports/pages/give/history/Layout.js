@@ -128,6 +128,7 @@ export default ({
       style={{
         top: "60%",
         left: "58.33%",
+        zIndex: 10,
       }}>
       <div
         className="card"
