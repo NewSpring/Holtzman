@@ -1,11 +1,14 @@
 // @flow
 import { Component, PropTypes } from "react";
+import moment from "moment";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import fileSaver from "file-saver";
 
 import infiniteScroll from "../../../decorators/infiniteScroll";
 
 import Authorized from "../../../blocks/authorzied";
+import base64ToBlob from "../../../util/base64ToBlob";
 
 import Layout from "./Layout";
 
@@ -21,9 +24,11 @@ class TemplateWithoutData extends Component {
       family: PropTypes.array, // eslint-disable-line
     }),
     setRightProps: PropTypes.func,
+    currentVariables: PropTypes.obj,
+    getPDF: PropTypes.func,
   }
 
-  state = { refetching: false }
+  state = { refetching: false, printLoading: false }
 
   componentWillMount() {
     this.props.setRightProps({
@@ -39,6 +44,21 @@ class TemplateWithoutData extends Component {
     });
   }
 
+  onPrintClick = (e) => {
+    e.preventDefault();
+
+    this.setState({ printLoading: true });
+    this.props.getPDF(this.props.currentVariables)
+      .then(({ data: { transactionStatement } }) => {
+        const blob = base64ToBlob(transactionStatement.file);
+        this.setState({ printLoading: false });
+        fileSaver.saveAs(blob, `${moment().year()} NewSpring Church Giving Summary`);
+      })
+      .catch(() => {
+        this.setState({ printLoading: false });
+      });
+  }
+
   render() {
     const {
       transactions,
@@ -48,6 +68,8 @@ class TemplateWithoutData extends Component {
       Loading,
       filterTransactions,
     } = this.props;
+
+    const { printLoading } = this.state;
 
     return (
       <Layout
@@ -59,6 +81,8 @@ class TemplateWithoutData extends Component {
         Loading={Loading}
         done={done}
         filterTransactions={this.wrapRefetch(filterTransactions)}
+        onPrintClick={this.onPrintClick}
+        printLoading={printLoading}
       />
     );
   }
@@ -71,7 +95,26 @@ const FILTER_QUERY = gql`
     }
   }
 `;
+
 const withFilter = graphql(FILTER_QUERY, { name: "filter" });
+
+const GET_STATEMENT = gql`
+  mutation GetGivingStatement($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
+    transactionStatement(
+      limit: $limit,
+      skip: $skip,
+      people: $people,
+      start: $start,
+      end: $end
+    ){
+      file
+    }
+  }
+`;
+
+const withStatement = graphql(GET_STATEMENT, {
+  props: ({ mutate }) => ({ getPDF: (variables) => mutate({ variables }) }),
+});
 
 const TRANSACTIONS_QUERY = gql`
   query GetTransactions($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
@@ -106,6 +149,7 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
     ssr: false,
   },
   props: ({ data }) => ({
+    currentVariables: data.variables,
     transactions: data.transactions || [],
     loading: data.loading,
     done: (
@@ -132,9 +176,11 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
 });
 
 const Template = withFilter(
-  withTransactions(
-    infiniteScroll()(
-      TemplateWithoutData
+  withStatement(
+    withTransactions(
+      infiniteScroll()(
+        TemplateWithoutData
+      )
     )
   )
 );

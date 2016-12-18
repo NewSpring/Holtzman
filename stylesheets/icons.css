@@ -141,6 +141,9 @@
 .icon-groups:before {
   content: "\41";
 }
+.icon-print:before {
+  content: "\43";
+}
 .icon-lock:before {
   content: "\4b";
 }

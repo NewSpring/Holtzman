@@ -61,6 +61,8 @@ type ILayout = {
   reloading: boolean,
   family: [Object],
   filterTransactions: Function,
+  onPrintClick: Function,
+  printLoading: boolean,
 };
 
 export default ({
@@ -71,6 +73,8 @@ export default ({
   reloading,
   filterTransactions,
   family,
+  onPrintClick,
+  printLoading,
 }: ILayout) => (
   <div>
     <Meta title="Giving History" />
@@ -87,6 +91,28 @@ export default ({
       {(reloading || (!transactions.length && !ready)) && (
         <div className="text-center soft">
           <Spinner styles={{ width: "40px", height: "40px" }} />
+        </div>
+      )}
+
+      {transactions.length > 0 && (
+        <div
+          className="visuallyhidden@lap-and-up"
+          style={{ cursor: "pointer" }}
+          onClick={onPrintClick}
+        >
+          {!printLoading && (
+            <div
+              style={{ position: "absolute", right: "17px", marginTop: "13px" }}
+            >
+              <span className="icon-print" style={{ fontSize: "22px" }} />
+            </div>
+          )}
+
+          {printLoading && (
+            <div style={{ position: "absolute", right: "14px", marginTop: "13px" }}>
+              <Spinner styles={{ width: "30px", height: "30px", borderWidth: "3px" }} />
+            </div>
+          )}
         </div>
       )}
 
@@ -117,5 +143,40 @@ export default ({
       )}
       {ready && transactions.length && !reloading && !done && <Loading />}
     </div>
+
+    {/* Print Button */}
+    <div
+      className="fixed visuallyhidden@handheld"
+      style={{
+        bottom: "175px",
+        left: "58.33%",
+        zIndex: 10,
+      }}
+    >
+      <div
+        className="card"
+        style={{ borderRadius: "50%", marginLeft: "2px" }}
+        onClick={onPrintClick}
+      >
+        {!printLoading && (
+          <div
+            className="card__item background--light-secondary soft-half"
+            style={{ padding: "15px 17px" }}
+          >
+            <span className="icon-print" style={{ fontSize: "28px" }} />
+          </div>
+        )}
+
+        {printLoading && (
+          <div
+            style={{ padding: "12px 12px 9px 12px" }}
+            className="card__item background--light-secondary"
+          >
+            <Spinner styles={{ width: "35px", height: "35px" }} />
+          </div>
+        )}
+      </div>
+    </div>
+
   </div>
 );
