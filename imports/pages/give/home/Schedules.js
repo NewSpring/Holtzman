@@ -11,7 +11,7 @@ import SmallButton from "../../../components/buttons/small";
 const SchedulesButton = () =>
   <SmallButton
     text="New Schedule"
-    linkUrl="/give/now"
+    linkUrl="/give/now?schedule=true"
     className="btn--dark-tertiary flush"
   />;
 
@@ -28,7 +28,7 @@ export class SchedulesList extends Component {
 
     return schedules.map((schedule) =>
       <ScheduleCard
-        classes="grid__item one-half@lap-wide-and-up"
+        classes="grid__item one-whole"
         key={schedule.id}
         amount={`${schedule.details[0].amount}`}
         fund={schedule.details[0].account.name}
@@ -68,7 +68,7 @@ export class SchedulesList extends Component {
             style={{
               backgroundImage: "url(//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_2x1.jpg)",
             }}
-            to="/give/now?schedule"
+            to="/give/now?schedule=true"
           >
             <div className="ratio__item" />
           </Link>

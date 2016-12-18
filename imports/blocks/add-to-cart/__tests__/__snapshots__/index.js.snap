@@ -594,7 +594,6 @@ exports[`test should properly render with multiple accounts 1`] = `
                   </SmallButton>
                 </div>
                 <mockConstructor
-                  authorized={false}
                   setCanCheckout={[Function]}>
                   <div />
                 </mockConstructor>

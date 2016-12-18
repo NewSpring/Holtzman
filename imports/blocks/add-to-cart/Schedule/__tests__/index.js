@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { give as giveActions } from "../../../../store";
 
-import { Schedule, withGiveActions } from "../";
+import { map, Schedule, withGiveActions } from "../";
 
 jest.useFakeTimers();
 
@@ -38,7 +38,7 @@ const generateComponent = (additionalProps = {}) => {
 };
 
 it("is mapped to the store as expected", () => {
-  expect(connect).toBeCalledWith(null, giveActions);
+  expect(connect).toBeCalledWith(map, giveActions);
 });
 
 it("should render with minimal props", () => {

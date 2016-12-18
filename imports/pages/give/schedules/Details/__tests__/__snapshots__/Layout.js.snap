@@ -25,109 +25,123 @@ exports[`test renders complete message 1`] = `
       <div
         className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends">
           <div
             className="text-center">
-            <p
-              className="push-half-bottom">
-              <em>
-                Started on 
-                Dec 11, 2012
-              </em>
-            </p>
-            <h4
-              className="text-dark-secondary flush-bottom">
-              Test
-            </h4>
-            <h3
-              className="text-primary">
-              test account
-            </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
               className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
-              className="text-dark-secondary soft-half-top">
+              className="text-dark-primary flush-bottom">
+              Test
+            </h4>
+            <h4
+              className="text-dark-primary soft-half-top">
               1111
-               
+               
+                
               <AccountType
                 height="20px"
                 type="Bank"
                 width="30px" />
             </h4>
-            <h6
-              className="text-brand">
-              Schedule Completed
-            </h6>
-            <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
-            </p>
+          </div>
+        </div>
+        <hr
+          className="hard push-bottom outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderColor": "#ddd",
+            }
+          } />
+        <div
+          className="soft-top">
+          <div
+            className="floating one-whole">
+            <div
+              className="floating__item float-left">
+              <h4
+                className="hard text-dark-primary">
+                test account
+              </h4>
+            </div>
+            <div
+              className="floating__item float-right">
+              <Currency
+                amount={2}
+                baseHeadingSize="4"
+                className="text-right text-dark-secondary" />
+            </div>
+          </div>
+          <p
+            className="flush soft-top">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
+              style={
+                Object {
+                  "verticalAlign": "middle",
+                }
+              }>
+              Start Date:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2012
+            </em>
+          </p>
+          <p
+            className="flush">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
+              style={
+                Object {
+                  "verticalAlign": "middle",
+                }
+              }>
+              Latest Contribution:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2013
+            </em>
+          </p>
+          <div
+            className="one-whole soft-double-top text-center">
+            <SmallButton
+              disabled={true}
+              text="Schedule Completed" />
           </div>
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored">
-      <div>
-        <h4
-          className="soft soft-double-ends text-center flush-bottom">
-          Contributions from this Schedule
-        </h4>
-        <div>
-          <div>
-            <div
-              className="soft text-left">
-              <h5>
-                2013
-              </h5>
-            </div>
-            <TransactionCard
-              person={Object {}}
-              transaction={
-                Object {
-                  "date": "2013-12-12",
-                  "details": Array [
-                    Object {
-                      "account": "test detail account",
-                      "amount": 2,
-                    },
-                  ],
-                  "person": Object {},
-                }
-              }
-              transactionDetail={
+      <TransactionList
+        transactions={
+          Array [
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
                 Object {
                   "account": "test detail account",
                   "amount": 2,
-                }
-              } />
-          </div>
-        </div>
-        <div>
-          <TransactionCard
-            person={Object {}}
-            transaction={
-              Object {
-                "date": "2013-12-12",
-                "details": Array [
-                  Object {
-                    "account": "test detail account",
-                    "amount": 2,
-                  },
-                ],
-                "person": Object {},
-              }
-            }
-            transactionDetail={
-              Object {
-                "account": "test detail account",
-                "amount": 2,
-              }
-            } />
-        </div>
-      </div>
+                },
+              ],
+              "person": Object {},
+            },
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
+                Object {
+                  "account": "test detail account",
+                  "amount": 2,
+                },
+              ],
+              "person": Object {},
+            },
+          ]
+        } />
       <hr
         className="push-double-top flush-bottom" />
       <h4
@@ -197,6 +211,7 @@ exports[`test renders complete message 1`] = `
           </Card>
         </div>
       </div>
+      ;
     </div>
   </Left>
 </div>
@@ -229,115 +244,124 @@ exports[`test renders loading if no entries 1`] = `
       <div
         className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends">
           <div
             className="text-center">
-            <p
-              className="push-half-bottom">
-              <em>
-                Started on 
-                Dec 11, 2012
-              </em>
-            </p>
-            <h4
-              className="text-dark-secondary flush-bottom">
-              Test
-            </h4>
-            <h3
-              className="text-primary">
-              test account
-            </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
               className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
-              className="text-dark-secondary soft-half-top">
+              className="text-dark-primary flush-bottom">
+              Test
+            </h4>
+            <h4
+              className="text-dark-primary soft-half-top">
               1111
-               
+               
+                
               <AccountType
                 height="20px"
                 type="Bank"
                 width="30px" />
             </h4>
-            <h6
-              className="text-alert"
-              onClick={[Function]}
+          </div>
+        </div>
+        <hr
+          className="hard push-bottom outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderColor": "#ddd",
+            }
+          } />
+        <div
+          className="soft-top">
+          <div
+            className="floating one-whole">
+            <div
+              className="floating__item float-left">
+              <h4
+                className="hard text-dark-primary">
+                test account
+              </h4>
+            </div>
+            <div
+              className="floating__item float-right">
+              <Currency
+                amount={2}
+                baseHeadingSize="4"
+                className="text-right text-dark-secondary" />
+            </div>
+          </div>
+          <p
+            className="flush soft-top">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
-                  "cursor": "pointer",
+                  "verticalAlign": "middle",
                 }
               }>
-              Stop Contribution
-            </h6>
-            <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
-            </p>
+              Start Date:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2012
+            </em>
+          </p>
+          <p
+            className="flush">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
+              style={
+                Object {
+                  "verticalAlign": "middle",
+                }
+              }>
+              Latest Contribution:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2013
+            </em>
+          </p>
+          <div
+            className="one-whole soft-double-top text-center">
+            <SmallButton
+              className="text-alert"
+              onClick={[Function]}
+              text="Stop Contribution" />
           </div>
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored">
-      <div>
-        <h4
-          className="soft soft-double-ends text-center flush-bottom">
-          Contributions from this Schedule
-        </h4>
-        <div>
-          <div>
-            <div
-              className="soft text-left">
-              <h5>
-                2013
-              </h5>
-            </div>
-            <TransactionCard
-              person={Object {}}
-              transaction={
-                Object {
-                  "date": "2013-12-12",
-                  "details": Array [
-                    Object {
-                      "account": "test detail account",
-                      "amount": 2,
-                    },
-                  ],
-                  "person": Object {},
-                }
-              }
-              transactionDetail={
+      <TransactionList
+        transactions={
+          Array [
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
                 Object {
                   "account": "test detail account",
                   "amount": 2,
-                }
-              } />
-          </div>
-        </div>
-        <div>
-          <TransactionCard
-            person={Object {}}
-            transaction={
-              Object {
-                "date": "2013-12-12",
-                "details": Array [
-                  Object {
-                    "account": "test detail account",
-                    "amount": 2,
-                  },
-                ],
-                "person": Object {},
-              }
-            }
-            transactionDetail={
-              Object {
-                "account": "test detail account",
-                "amount": 2,
-              }
-            } />
-        </div>
-      </div>
+                },
+              ],
+              "person": Object {},
+            },
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
+                Object {
+                  "account": "test detail account",
+                  "amount": 2,
+                },
+              ],
+              "person": Object {},
+            },
+          ]
+        } />
       <hr
         className="push-double-top flush-bottom" />
       <h4
@@ -348,6 +372,7 @@ exports[`test renders loading if no entries 1`] = `
         className="one-whole soft text-center">
         <Spinner />
       </div>
+      ;
     </div>
   </Left>
 </div>
@@ -380,7 +405,7 @@ exports[`test renders loading if no schedule 1`] = `
       <div
         className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends">
           <div
             className="text-center soft">
             <Spinner
@@ -392,6 +417,13 @@ exports[`test renders loading if no schedule 1`] = `
               } />
           </div>
         </div>
+        <hr
+          className="hard push-bottom outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderColor": "#ddd",
+            }
+          } />
       </div>
     </div>
     <div
@@ -465,6 +497,7 @@ exports[`test renders loading if no schedule 1`] = `
           </Card>
         </div>
       </div>
+      ;
     </div>
   </Left>
 </div>
@@ -497,7 +530,7 @@ exports[`test renders loading if not ready 1`] = `
       <div
         className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends">
           <div
             className="text-center soft">
             <Spinner
@@ -508,69 +541,123 @@ exports[`test renders loading if not ready 1`] = `
                 }
               } />
           </div>
+          <div
+            className="text-center">
+            <Currency
+              amount="2.00"
+              baseHeadingSize="1"
+              className="flush-bottom soft-half-bottom text-center display-inline-block" />
+            <h4
+              className="text-dark-primary flush-bottom">
+              Test
+            </h4>
+            <h4
+              className="text-dark-primary soft-half-top">
+              1111
+               
+                
+              <AccountType
+                height="20px"
+                type="Bank"
+                width="30px" />
+            </h4>
+          </div>
+        </div>
+        <hr
+          className="hard push-bottom outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderColor": "#ddd",
+            }
+          } />
+        <div
+          className="soft-top">
+          <div
+            className="floating one-whole">
+            <div
+              className="floating__item float-left">
+              <h4
+                className="hard text-dark-primary">
+                test account
+              </h4>
+            </div>
+            <div
+              className="floating__item float-right">
+              <Currency
+                amount={2}
+                baseHeadingSize="4"
+                className="text-right text-dark-secondary" />
+            </div>
+          </div>
+          <p
+            className="flush soft-top">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
+              style={
+                Object {
+                  "verticalAlign": "middle",
+                }
+              }>
+              Start Date:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2012
+            </em>
+          </p>
+          <p
+            className="flush">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
+              style={
+                Object {
+                  "verticalAlign": "middle",
+                }
+              }>
+              Latest Contribution:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2013
+            </em>
+          </p>
+          <div
+            className="one-whole soft-double-top text-center">
+            <SmallButton
+              className="text-alert"
+              onClick={[Function]}
+              text="Stop Contribution" />
+          </div>
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored">
-      <div>
-        <h4
-          className="soft soft-double-ends text-center flush-bottom">
-          Contributions from this Schedule
-        </h4>
-        <div>
-          <div>
-            <div
-              className="soft text-left">
-              <h5>
-                2013
-              </h5>
-            </div>
-            <TransactionCard
-              person={Object {}}
-              transaction={
-                Object {
-                  "date": "2013-12-12",
-                  "details": Array [
-                    Object {
-                      "account": "test detail account",
-                      "amount": 2,
-                    },
-                  ],
-                  "person": Object {},
-                }
-              }
-              transactionDetail={
+      <TransactionList
+        transactions={
+          Array [
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
                 Object {
                   "account": "test detail account",
                   "amount": 2,
-                }
-              } />
-          </div>
-        </div>
-        <div>
-          <TransactionCard
-            person={Object {}}
-            transaction={
-              Object {
-                "date": "2013-12-12",
-                "details": Array [
-                  Object {
-                    "account": "test detail account",
-                    "amount": 2,
-                  },
-                ],
-                "person": Object {},
-              }
-            }
-            transactionDetail={
-              Object {
-                "account": "test detail account",
-                "amount": 2,
-              }
-            } />
-        </div>
-      </div>
+                },
+              ],
+              "person": Object {},
+            },
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
+                Object {
+                  "account": "test detail account",
+                  "amount": 2,
+                },
+              ],
+              "person": Object {},
+            },
+          ]
+        } />
       <hr
         className="push-double-top flush-bottom" />
       <h4
@@ -640,6 +727,7 @@ exports[`test renders loading if not ready 1`] = `
           </Card>
         </div>
       </div>
+      ;
     </div>
   </Left>
 </div>
@@ -672,51 +760,77 @@ exports[`test renders no contributions message 1`] = `
       <div
         className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends">
           <div
             className="text-center">
-            <p
-              className="push-half-bottom">
-              <em>
-                Started on 
-                Dec 11, 2012
-              </em>
-            </p>
-            <h4
-              className="text-dark-secondary flush-bottom">
-              Test
-            </h4>
-            <h3
-              className="text-primary">
-              test account
-            </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
               className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
-              className="text-dark-secondary soft-half-top">
+              className="text-dark-primary flush-bottom">
+              Test
+            </h4>
+            <h4
+              className="text-dark-primary soft-half-top">
               1111
-               
+               
+                
               <AccountType
                 height="20px"
                 type="Bank"
                 width="30px" />
             </h4>
-            <h6
-              className="text-alert"
-              onClick={[Function]}
+          </div>
+        </div>
+        <hr
+          className="hard push-bottom outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderColor": "#ddd",
+            }
+          } />
+        <div
+          className="soft-top">
+          <div
+            className="floating one-whole">
+            <div
+              className="floating__item float-left">
+              <h4
+                className="hard text-dark-primary">
+                test account
+              </h4>
+            </div>
+            <div
+              className="floating__item float-right">
+              <Currency
+                amount={2}
+                baseHeadingSize="4"
+                className="text-right text-dark-secondary" />
+            </div>
+          </div>
+          <p
+            className="flush soft-top">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
-                  "cursor": "pointer",
+                  "verticalAlign": "middle",
                 }
               }>
-              Stop Contribution
-            </h6>
-            <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
-            </p>
+              Start Date:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2012
+            </em>
+          </p>
+          <div
+            className="one-whole soft-double-top text-center">
+            <SmallButton
+              className="text-alert"
+              onClick={[Function]}
+              text="Stop Contribution" />
           </div>
         </div>
       </div>
@@ -730,17 +844,19 @@ exports[`test renders no contributions message 1`] = `
         </p>
         <p>
           <em>
-            If you have any questions, please call our Finance Team at 864-965-9990 or 
+            If you have any questions, please call our Finance Team at 864-965-9990 or
             <a
               href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
               rel="noopener noreferrer"
               target="_blank">
-              contact us 
+              contact us
             </a>
-             and someone will be happy to assist you.
+            and someone will be happy to assist you.
           </em>
         </p>
       </div>
+      <TransactionList
+        transactions={Array []} />
       <hr
         className="push-double-top flush-bottom" />
       <h4
@@ -810,6 +926,7 @@ exports[`test renders no contributions message 1`] = `
           </Card>
         </div>
       </div>
+      ;
     </div>
   </Left>
 </div>
@@ -842,109 +959,123 @@ exports[`test renders stopped message 1`] = `
       <div
         className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends">
           <div
             className="text-center">
-            <p
-              className="push-half-bottom">
-              <em>
-                Started on 
-                Dec 11, 2012
-              </em>
-            </p>
-            <h4
-              className="text-dark-secondary flush-bottom">
-              Test
-            </h4>
-            <h3
-              className="text-primary">
-              test account
-            </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
               className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
-              className="text-dark-secondary soft-half-top">
+              className="text-dark-primary flush-bottom">
+              Test
+            </h4>
+            <h4
+              className="text-dark-primary soft-half-top">
               1111
-               
+               
+                
               <AccountType
                 height="20px"
                 type="Bank"
                 width="30px" />
             </h4>
-            <h6
-              className="text-brand">
-              Contribution Stopped
-            </h6>
-            <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
-            </p>
+          </div>
+        </div>
+        <hr
+          className="hard push-bottom outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderColor": "#ddd",
+            }
+          } />
+        <div
+          className="soft-top">
+          <div
+            className="floating one-whole">
+            <div
+              className="floating__item float-left">
+              <h4
+                className="hard text-dark-primary">
+                test account
+              </h4>
+            </div>
+            <div
+              className="floating__item float-right">
+              <Currency
+                amount={2}
+                baseHeadingSize="4"
+                className="text-right text-dark-secondary" />
+            </div>
+          </div>
+          <p
+            className="flush soft-top">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
+              style={
+                Object {
+                  "verticalAlign": "middle",
+                }
+              }>
+              Start Date:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2012
+            </em>
+          </p>
+          <p
+            className="flush">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
+              style={
+                Object {
+                  "verticalAlign": "middle",
+                }
+              }>
+              Latest Contribution:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2013
+            </em>
+          </p>
+          <div
+            className="one-whole soft-double-top text-center">
+            <SmallButton
+              disabled={true}
+              text="Contribution Stopped" />
           </div>
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored">
-      <div>
-        <h4
-          className="soft soft-double-ends text-center flush-bottom">
-          Contributions from this Schedule
-        </h4>
-        <div>
-          <div>
-            <div
-              className="soft text-left">
-              <h5>
-                2013
-              </h5>
-            </div>
-            <TransactionCard
-              person={Object {}}
-              transaction={
-                Object {
-                  "date": "2013-12-12",
-                  "details": Array [
-                    Object {
-                      "account": "test detail account",
-                      "amount": 2,
-                    },
-                  ],
-                  "person": Object {},
-                }
-              }
-              transactionDetail={
+      <TransactionList
+        transactions={
+          Array [
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
                 Object {
                   "account": "test detail account",
                   "amount": 2,
-                }
-              } />
-          </div>
-        </div>
-        <div>
-          <TransactionCard
-            person={Object {}}
-            transaction={
-              Object {
-                "date": "2013-12-12",
-                "details": Array [
-                  Object {
-                    "account": "test detail account",
-                    "amount": 2,
-                  },
-                ],
-                "person": Object {},
-              }
-            }
-            transactionDetail={
-              Object {
-                "account": "test detail account",
-                "amount": 2,
-              }
-            } />
-        </div>
-      </div>
+                },
+              ],
+              "person": Object {},
+            },
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
+                Object {
+                  "account": "test detail account",
+                  "amount": 2,
+                },
+              ],
+              "person": Object {},
+            },
+          ]
+        } />
       <hr
         className="push-double-top flush-bottom" />
       <h4
@@ -1014,6 +1145,7 @@ exports[`test renders stopped message 1`] = `
           </Card>
         </div>
       </div>
+      ;
     </div>
   </Left>
 </div>
@@ -1046,115 +1178,124 @@ exports[`test renders with props 1`] = `
       <div
         className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends">
           <div
             className="text-center">
-            <p
-              className="push-half-bottom">
-              <em>
-                Started on 
-                Dec 11, 2012
-              </em>
-            </p>
-            <h4
-              className="text-dark-secondary flush-bottom">
-              Test
-            </h4>
-            <h3
-              className="text-primary">
-              test account
-            </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
               className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
-              className="text-dark-secondary soft-half-top">
+              className="text-dark-primary flush-bottom">
+              Test
+            </h4>
+            <h4
+              className="text-dark-primary soft-half-top">
               1111
-               
+               
+                
               <AccountType
                 height="20px"
                 type="Bank"
                 width="30px" />
             </h4>
-            <h6
-              className="text-alert"
-              onClick={[Function]}
+          </div>
+        </div>
+        <hr
+          className="hard push-bottom outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderColor": "#ddd",
+            }
+          } />
+        <div
+          className="soft-top">
+          <div
+            className="floating one-whole">
+            <div
+              className="floating__item float-left">
+              <h4
+                className="hard text-dark-primary">
+                test account
+              </h4>
+            </div>
+            <div
+              className="floating__item float-right">
+              <Currency
+                amount={2}
+                baseHeadingSize="4"
+                className="text-right text-dark-secondary" />
+            </div>
+          </div>
+          <p
+            className="flush soft-top">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
-                  "cursor": "pointer",
+                  "verticalAlign": "middle",
                 }
               }>
-              Stop Contribution
-            </h6>
-            <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
-            </p>
+              Start Date:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2012
+            </em>
+          </p>
+          <p
+            className="flush">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
+              style={
+                Object {
+                  "verticalAlign": "middle",
+                }
+              }>
+              Latest Contribution:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2013
+            </em>
+          </p>
+          <div
+            className="one-whole soft-double-top text-center">
+            <SmallButton
+              className="text-alert"
+              onClick={[Function]}
+              text="Stop Contribution" />
           </div>
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored">
-      <div>
-        <h4
-          className="soft soft-double-ends text-center flush-bottom">
-          Contributions from this Schedule
-        </h4>
-        <div>
-          <div>
-            <div
-              className="soft text-left">
-              <h5>
-                2013
-              </h5>
-            </div>
-            <TransactionCard
-              person={Object {}}
-              transaction={
-                Object {
-                  "date": "2013-12-12",
-                  "details": Array [
-                    Object {
-                      "account": "test detail account",
-                      "amount": 2,
-                    },
-                  ],
-                  "person": Object {},
-                }
-              }
-              transactionDetail={
+      <TransactionList
+        transactions={
+          Array [
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
                 Object {
                   "account": "test detail account",
                   "amount": 2,
-                }
-              } />
-          </div>
-        </div>
-        <div>
-          <TransactionCard
-            person={Object {}}
-            transaction={
-              Object {
-                "date": "2013-12-12",
-                "details": Array [
-                  Object {
-                    "account": "test detail account",
-                    "amount": 2,
-                  },
-                ],
-                "person": Object {},
-              }
-            }
-            transactionDetail={
-              Object {
-                "account": "test detail account",
-                "amount": 2,
-              }
-            } />
-        </div>
-      </div>
+                },
+              ],
+              "person": Object {},
+            },
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
+                Object {
+                  "account": "test detail account",
+                  "amount": 2,
+                },
+              ],
+              "person": Object {},
+            },
+          ]
+        } />
       <hr
         className="push-double-top flush-bottom" />
       <h4
@@ -1224,6 +1365,7 @@ exports[`test renders with props 1`] = `
           </Card>
         </div>
       </div>
+      ;
     </div>
   </Left>
 </div>
@@ -1256,7 +1398,7 @@ exports[`test renders without schedule 1`] = `
       <div
         className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends">
           <div
             className="text-center soft">
             <Spinner
@@ -1268,6 +1410,13 @@ exports[`test renders without schedule 1`] = `
               } />
           </div>
         </div>
+        <hr
+          className="hard push-bottom outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderColor": "#ddd",
+            }
+          } />
       </div>
     </div>
     <div
@@ -1341,6 +1490,7 @@ exports[`test renders without schedule 1`] = `
           </Card>
         </div>
       </div>
+      ;
     </div>
   </Left>
 </div>
@@ -1373,106 +1523,114 @@ exports[`test renders without schedule payment 1`] = `
       <div
         className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends">
           <div
             className="text-center">
-            <p
-              className="push-half-bottom">
-              <em>
-                Started on 
-                Dec 11, 2012
-              </em>
-            </p>
-            <h4
-              className="text-dark-secondary flush-bottom">
-              Test
-            </h4>
-            <h3
-              className="text-primary">
-              test account
-            </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
               className="flush-bottom soft-half-bottom text-center display-inline-block" />
-            <h6
-              className="text-alert"
-              onClick={[Function]}
+            <h4
+              className="text-dark-primary flush-bottom">
+              Test
+            </h4>
+          </div>
+        </div>
+        <hr
+          className="hard push-bottom outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderColor": "#ddd",
+            }
+          } />
+        <div
+          className="soft-top">
+          <div
+            className="floating one-whole">
+            <div
+              className="floating__item float-left">
+              <h4
+                className="hard text-dark-primary">
+                test account
+              </h4>
+            </div>
+            <div
+              className="floating__item float-right">
+              <Currency
+                amount={2}
+                baseHeadingSize="4"
+                className="text-right text-dark-secondary" />
+            </div>
+          </div>
+          <p
+            className="flush soft-top">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
-                  "cursor": "pointer",
+                  "verticalAlign": "middle",
                 }
               }>
-              Stop Contribution
-            </h6>
-            <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
-            </p>
+              Start Date:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2012
+            </em>
+          </p>
+          <p
+            className="flush">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
+              style={
+                Object {
+                  "verticalAlign": "middle",
+                }
+              }>
+              Latest Contribution:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2013
+            </em>
+          </p>
+          <div
+            className="one-whole soft-double-top text-center">
+            <SmallButton
+              className="text-alert"
+              onClick={[Function]}
+              text="Stop Contribution" />
           </div>
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored">
-      <div>
-        <h4
-          className="soft soft-double-ends text-center flush-bottom">
-          Contributions from this Schedule
-        </h4>
-        <div>
-          <div>
-            <div
-              className="soft text-left">
-              <h5>
-                2013
-              </h5>
-            </div>
-            <TransactionCard
-              person={Object {}}
-              transaction={
-                Object {
-                  "date": "2013-12-12",
-                  "details": Array [
-                    Object {
-                      "account": "test detail account",
-                      "amount": 2,
-                    },
-                  ],
-                  "person": Object {},
-                }
-              }
-              transactionDetail={
+      <TransactionList
+        transactions={
+          Array [
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
                 Object {
                   "account": "test detail account",
                   "amount": 2,
-                }
-              } />
-          </div>
-        </div>
-        <div>
-          <TransactionCard
-            person={Object {}}
-            transaction={
-              Object {
-                "date": "2013-12-12",
-                "details": Array [
-                  Object {
-                    "account": "test detail account",
-                    "amount": 2,
-                  },
-                ],
-                "person": Object {},
-              }
-            }
-            transactionDetail={
-              Object {
-                "account": "test detail account",
-                "amount": 2,
-              }
-            } />
-        </div>
-      </div>
+                },
+              ],
+              "person": Object {},
+            },
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
+                Object {
+                  "account": "test detail account",
+                  "amount": 2,
+                },
+              ],
+              "person": Object {},
+            },
+          ]
+        } />
       <hr
         className="push-double-top flush-bottom" />
       <h4
@@ -1542,6 +1700,7 @@ exports[`test renders without schedule payment 1`] = `
           </Card>
         </div>
       </div>
+      ;
     </div>
   </Left>
 </div>
@@ -1574,115 +1733,124 @@ exports[`test works with credit card 1`] = `
       <div
         className="text-left soft-double-top hard-left@lap-and-up soft-half-bottom soft@anchored">
         <div
-          className="soft-double-ends@anchored">
+          className="soft-double-ends">
           <div
             className="text-center">
-            <p
-              className="push-half-bottom">
-              <em>
-                Started on 
-                Dec 11, 2012
-              </em>
-            </p>
-            <h4
-              className="text-dark-secondary flush-bottom">
-              Test
-            </h4>
-            <h3
-              className="text-primary">
-              test account
-            </h3>
             <Currency
               amount="2.00"
               baseHeadingSize="1"
               className="flush-bottom soft-half-bottom text-center display-inline-block" />
             <h4
-              className="text-dark-secondary soft-half-top">
+              className="text-dark-primary flush-bottom">
+              Test
+            </h4>
+            <h4
+              className="text-dark-primary soft-half-top">
               1111
-               
+               
+                
               <AccountType
                 height="20px"
                 type="Visa"
                 width="30px" />
             </h4>
-            <h6
-              className="text-alert"
-              onClick={[Function]}
+          </div>
+        </div>
+        <hr
+          className="hard push-bottom outlined--light outlined--bottom"
+          style={
+            Object {
+              "borderColor": "#ddd",
+            }
+          } />
+        <div
+          className="soft-top">
+          <div
+            className="floating one-whole">
+            <div
+              className="floating__item float-left">
+              <h4
+                className="hard text-dark-primary">
+                test account
+              </h4>
+            </div>
+            <div
+              className="floating__item float-right">
+              <Currency
+                amount={2}
+                baseHeadingSize="4"
+                className="text-right text-dark-secondary" />
+            </div>
+          </div>
+          <p
+            className="flush soft-top">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
               style={
                 Object {
-                  "cursor": "pointer",
+                  "verticalAlign": "middle",
                 }
               }>
-              Stop Contribution
-            </h6>
-            <p
-              className="text-center soft-ends soft-double@anchored flush-bottom soft-ends soft-sides@portable">
-              Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
-            </p>
+              Start Date:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2012
+            </em>
+          </p>
+          <p
+            className="flush">
+            <span
+              className="h7 text-dark-tertiary push-half-right"
+              style={
+                Object {
+                  "verticalAlign": "middle",
+                }
+              }>
+              Latest Contribution:
+            </span>
+            <em
+              className="text-dark-primary">
+              Dec 12, 2013
+            </em>
+          </p>
+          <div
+            className="one-whole soft-double-top text-center">
+            <SmallButton
+              className="text-alert"
+              onClick={[Function]}
+              text="Stop Contribution" />
           </div>
         </div>
       </div>
     </div>
     <div
       className="soft-half soft-sides@portable soft-double-sides@anchored">
-      <div>
-        <h4
-          className="soft soft-double-ends text-center flush-bottom">
-          Contributions from this Schedule
-        </h4>
-        <div>
-          <div>
-            <div
-              className="soft text-left">
-              <h5>
-                2013
-              </h5>
-            </div>
-            <TransactionCard
-              person={Object {}}
-              transaction={
-                Object {
-                  "date": "2013-12-12",
-                  "details": Array [
-                    Object {
-                      "account": "test detail account",
-                      "amount": 2,
-                    },
-                  ],
-                  "person": Object {},
-                }
-              }
-              transactionDetail={
+      <TransactionList
+        transactions={
+          Array [
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
                 Object {
                   "account": "test detail account",
                   "amount": 2,
-                }
-              } />
-          </div>
-        </div>
-        <div>
-          <TransactionCard
-            person={Object {}}
-            transaction={
-              Object {
-                "date": "2013-12-12",
-                "details": Array [
-                  Object {
-                    "account": "test detail account",
-                    "amount": 2,
-                  },
-                ],
-                "person": Object {},
-              }
-            }
-            transactionDetail={
-              Object {
-                "account": "test detail account",
-                "amount": 2,
-              }
-            } />
-        </div>
-      </div>
+                },
+              ],
+              "person": Object {},
+            },
+            Object {
+              "date": "2013-12-12",
+              "details": Array [
+                Object {
+                  "account": "test detail account",
+                  "amount": 2,
+                },
+              ],
+              "person": Object {},
+            },
+          ]
+        } />
       <hr
         className="push-double-top flush-bottom" />
       <h4
@@ -1752,6 +1920,7 @@ exports[`test works with credit card 1`] = `
           </Card>
         </div>
       </div>
+      ;
     </div>
   </Left>
 </div>

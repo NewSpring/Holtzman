@@ -15,6 +15,18 @@ export const REMOVE_PAYMENT_MUTATION = gql`
   }
 `;
 
+export const updateQuery = (id) => (prev, { mutationResult }) => {
+  const { error } = mutationResult.data.cancelSavedPayment;
+  if (error) return prev;
+  let index;
+  prev.savedPayments.forEach((payment, i) => {
+    if (payment.id === id) index = i;
+  });
+
+  prev.savedPayments.splice(index, 1);
+  return prev;
+};
+
 export const withPaymentRemove = graphql(REMOVE_PAYMENT_MUTATION, {
   props: ({ mutate }) => ({
     remove: (id) => mutate({
@@ -29,17 +41,8 @@ export const withPaymentRemove = graphql(REMOVE_PAYMENT_MUTATION, {
         },
       },
       updateQueries: {
-        GivingDashboard: (prev, { mutationResult }) => {
-          const { error } = mutationResult.data.cancelSavedPayment;
-          if (error) return prev;
-          let index;
-          prev.savedPayments.forEach((payment, i) => {
-            if (payment.id === id) index = i;
-          });
-
-          prev.savedPayments.splice(index, 1);
-          return prev;
-        },
+        GivingDashboard: updateQuery(id),
+        GetSavedPaymentAccounts: updateQuery(id),
       },
     }),
   }),

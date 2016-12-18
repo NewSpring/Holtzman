@@ -1,18 +1,15 @@
 import { Component, PropTypes } from "react";
 import { graphql } from "react-apollo";
-import { connect } from "react-redux";
 import gql from "graphql-tag";
 import { serverWatch } from "meteor/bjwiley2:server-watch";
 
 import createContainer from "../../../blocks/meteor/react-meteor-data";
-import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
 
 class PageWithoutData extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.func,
     setRightProps: PropTypes.func,
   }
 
@@ -23,17 +20,10 @@ class PageWithoutData extends Component {
     });
   }
 
-  componentDidMount() {
-    if (process.env.NATIVE) {
-      const item = { title: "Give Now" };
-      this.props.dispatch(headerActions.set(item));
-    }
-  }
-
   componentWillUnmount() {
     this.props.setRightProps({
       background: "",
-      link: "",
+      link: null,
     });
   }
 
@@ -58,11 +48,7 @@ const ACCOUNTS_QUERY = gql`
 
 const withAccounts = graphql(ACCOUNTS_QUERY, { name: "accounts" });
 
-const Page = connect()(
-  withAccounts(
-    PageWithoutData
-  )
-);
+const Page = withAccounts(PageWithoutData);
 
 const IsAlive = () => {
   let alive = true;

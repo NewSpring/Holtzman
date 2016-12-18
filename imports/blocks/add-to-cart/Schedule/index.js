@@ -11,6 +11,7 @@ type IScheduleProps = {
   authorized: boolean,
   saveSchedule: Function,
   setCanCheckout: Function,
+  preCheck: boolean,
 };
 
 type IScheduleState = {
@@ -45,6 +46,10 @@ export class Schedule extends Component {
     start: null,
     frequency: null,
     showDatePicker: false,
+  }
+
+  componentWillMount() {
+    if (this.props.preCheck) this.setState({ checked: true });
   }
 
   componentDidMount() {
@@ -172,6 +177,10 @@ export class Schedule extends Component {
   }
 }
 
-export const withGiveActions = connect(null, giveActions);
+export const map = ({ routing: { location } }) => ({
+  preCheck: location && location.query && location.query.schedule,
+});
+
+export const withGiveActions = connect(map, giveActions);
 
 export default withGiveActions(Schedule);

@@ -1,5 +1,9 @@
 // @flow
+import { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router";
+
+import { header } from "../../store";
 
 type ISubNav = [{
   isActive: boolean,
@@ -56,26 +60,50 @@ type IDashboard = {
   title: string,
   subNav: ISubNav,
   children?: React$Element<any>,
+  dispatch: Function,
 };
 
-const Dashboard = ({
-  title,
-  subNav,
-  children,
-}: IDashboard) => (
-  <div>
-    <div className="push-top soft-left@handheld soft-top@handheld soft-double-left soft-double-top background--light-primary">
-      <h1 className="soft-half-bottom@handheld soft-bottom">{title}</h1>
-      <div className="floating text-left">
-        {getLinks(subNav)}
-      </div>
-    </div>
-    <div className="background--light-secondary outlined--top outlined--light" style={{ borderWidth: "1px" }}>
-      <div>
-        {children}
-      </div>
-    </div>
-  </div>
-);
+export class Dashboard extends Component {
 
-export default Dashboard;
+  props: IDashboard;
+
+  componentWillMount() {
+    if (process.env.NATIVE) this.props.dispatch(header.title(this.props.title));
+  }
+
+  render() {
+    const {
+      title,
+      subNav,
+      children,
+    } = this.props;
+
+    return (
+      <div>
+        <div
+          className={`
+            push-top
+            soft-left@handheld
+            ${!process.env.NATIVE ? "soft-top@handheld soft-double-top" : ""}
+            soft-double-left
+            background--light-primary
+          `}
+        >
+          {!process.env.NATIVE && (
+            <h1 className="soft-half-bottom@handheld soft-bottom">{title}</h1>
+          )}
+          <div className={`floating ${!process.env.NATIVE ? "text-left" : "text-center"}`}>
+            {getLinks(subNav)}
+          </div>
+        </div>
+        <div className="background--light-secondary outlined--top outlined--light" style={{ borderWidth: "1px" }}>
+          <div>
+            {children}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default connect()(Dashboard);

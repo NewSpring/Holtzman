@@ -57,11 +57,19 @@ const Activity = ({
         {date && <h5 className={`${status === "success" ? "text-dark-tertiary " : ""}display-inline-block floating__item soft-half-bottom`}>{ moment(date).format("MMM D, YYYY") }</h5>}
       </div>
       <p>{message}</p>
-      {linkText && linkUrl &&
-        <Link to={linkUrl} className={status === "success" ? "text-primary plain" : "text-light-primary plain"}>
-          <h5 className="display-inline-block">{linkText}</h5><span className="icon-arrow-next soft-half-left" />
+      {linkText && linkUrl && (
+        <Link
+          to={linkUrl}
+          className={
+            status === "success" ? "text-primary plain" : "text-light-primary plain"
+          }
+        >
+          <h5 className="display-inline-block flush-bottom">
+            {linkText}
+          </h5>
+          <span className="icon-arrow-next soft-half-left" />
         </Link>
-      }
+      )}
     </div>
   </div>
 );

@@ -95,6 +95,12 @@ export default function* chargeTransaction({ state }) {
                 prev.savedPayments.push(savedPayment);
                 return prev;
               },
+              GetSavedPaymentAccounts: (prev, { mutationResult }) => {
+                const { savedPayment, success } = mutationResult.data.response;
+                if (!success || !savedPayment) return prev;
+                prev.savedPayments.push(savedPayment);
+                return prev;
+              },
             },
           });
         } else {

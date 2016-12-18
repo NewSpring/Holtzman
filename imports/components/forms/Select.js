@@ -79,6 +79,16 @@ export default class Select extends Component {
         currentTarget: target,
       });
     }
+    // if (!this.props.items.length && nextProps.items.length && nextProps.defaultValue) {
+    //   this.setValue(nextProps.defaultValue);
+    //   this.setState({ focused: false });
+    //   console.log('here');
+    //   this.change({
+    //     value: nextProps.defaultValue,
+    //     id: target.id,
+    //     currentTarget: target,
+    //   })
+    // }
   }
 
   focus = () => { // eslint-disable-line

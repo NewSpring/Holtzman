@@ -1,7 +1,13 @@
 exports[`Dashboard should render with the children 1`] = `
 <div>
   <div
-    className="push-top soft-left@handheld soft-top@handheld soft-double-left soft-double-top background--light-primary">
+    className="
+              push-top
+              soft-left@handheld
+              soft-top@handheld soft-double-top
+              soft-double-left
+              background--light-primary
+            ">
     <h1
       className="soft-half-bottom@handheld soft-bottom">
       Your Giving
@@ -71,7 +77,13 @@ exports[`Dashboard should render with the children 1`] = `
 exports[`Dashboard should render with the default set of props 1`] = `
 <div>
   <div
-    className="push-top soft-left@handheld soft-top@handheld soft-double-left soft-double-top background--light-primary">
+    className="
+              push-top
+              soft-left@handheld
+              soft-top@handheld soft-double-top
+              soft-double-left
+              background--light-primary
+            ">
     <h1
       className="soft-half-bottom@handheld soft-bottom">
       Your Giving

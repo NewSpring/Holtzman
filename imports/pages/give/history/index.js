@@ -1,13 +1,11 @@
 // @flow
 import { Component, PropTypes } from "react";
 import { graphql } from "react-apollo";
-import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import infiniteScroll from "../../../decorators/infiniteScroll";
 
 import Authorized from "../../../blocks/authorzied";
-import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
 
@@ -22,7 +20,6 @@ class TemplateWithoutData extends Component {
     filter: PropTypes.shape({
       family: PropTypes.array, // eslint-disable-line
     }),
-    dispatch: PropTypes.func,
     setRightProps: PropTypes.func,
   }
 
@@ -32,10 +29,6 @@ class TemplateWithoutData extends Component {
     this.props.setRightProps({
       background: "////dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg",
     });
-  }
-
-  componentDidMount() {
-    if (process.env.NATIVE) this.props.dispatch(headerActions.set({ title: "Giving History" }));
   }
 
   wrapRefetch = (refetch: Function) => (...args: Object[]) => {
@@ -110,6 +103,7 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
   options: {
     variables: { limit: DEFAULT_LIMIT, skip: 0, people: [], start: "", end: "" },
     forceFetch: true,
+    ssr: false,
   },
   props: ({ data }) => ({
     transactions: data.transactions || [],
@@ -137,12 +131,10 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
   }),
 });
 
-const Template = connect()(
-  withFilter(
-    withTransactions(
-      infiniteScroll()(
-        TemplateWithoutData
-      )
+const Template = withFilter(
+  withTransactions(
+    infiniteScroll()(
+      TemplateWithoutData
     )
   )
 );
