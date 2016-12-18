@@ -186,9 +186,9 @@ export default class Select extends Component {
 
     // if a selected item is passed in, we don't need a defaultValue
     // conreolled/uncontrolled react error
-    const value = this.props.selected ? {value: this.props.selected || ""} : {};
+    const value = this.props.selected ? { value: this.props.selected || "" } : {};
     const defaultValue = this.props.defaultValue && !this.props.selected
-      ? {defaultValue: this.props.defaultValue || ""} : {};
+      ? { defaultValue: this.props.defaultValue || "" } : {};
 
     return (
       <div className={`${inputclasses.join(" ")} ${css(SelectClasses.select)}`}>
