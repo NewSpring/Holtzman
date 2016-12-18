@@ -3119,7 +3119,7 @@ fbjs@^0.8.1, fbjs@^0.8.3, fbjs@^0.8.4:
     promise "^7.1.1"
     ua-parser-js "^0.7.9"
 
-fibers@^1.0.4:
+fibers@^1.0.15, fibers@^1.0.4:
   version "1.0.15"
   resolved "https://registry.yarnpkg.com/fibers/-/fibers-1.0.15.tgz#22f039c8f18b856190fbbe4decf056154c1eae9c"
 

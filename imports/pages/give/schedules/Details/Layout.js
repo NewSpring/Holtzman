@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 // @flow
 import moment from "moment";
 import { Link } from "react-router";
@@ -283,3 +284,4 @@ export default ({
     </Left>
   </div>
 );
+/* eslint-enable react/no-danger */
