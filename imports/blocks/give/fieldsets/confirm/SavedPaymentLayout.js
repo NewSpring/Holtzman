@@ -20,7 +20,7 @@ type ISavedPaymentLayout = {
   billing: Object,
   payment: Object,
   header: any,
-  children: any,
+  children?: React$Element<any>,
   goToStepOne: Function,
 };
 
@@ -56,7 +56,7 @@ export default ({
         <h6>
           <AccountNumber accountNumber={payment.cardNumber || payment.accountNumber} />
           &nbsp;&nbsp;
-          <Icon width="19px" height="12px" cardType={cardType(paymentInfo, null)} />
+          <Icon width="19px" height="12px" cardType={cardType(paymentInfo)} />
         </h6>
         <h6>{payment.expiration || payment.routingNumber}</h6>
         <h6>{payment.ccv}</h6>

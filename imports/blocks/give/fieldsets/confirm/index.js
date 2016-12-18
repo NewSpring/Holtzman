@@ -12,21 +12,21 @@ import PaymentOptionsLayout from "./PaymentOptionsLayout";
 import SavedPaymentLayout from "./SavedPaymentLayout";
 
 type IConfirm = {
-  data: Object,
-  transactions: Object,
-  total: number,
   back: Function,
+  changeSavedAccount: Function,
+  children?: React$Element<any>,
+  clearData: Function,
+  data: Object,
   goToStepOne: Function,
   header?: React$Element<any>,
-  url: string,
-  clearData: Function,
   savedAccount: Object,
   savedAccounts: Object[],
-  changeSavedAccount: Function,
-  scheduleToRecover: boolean,
   schedule: Object,
+  scheduleToRecover: boolean,
+  total: number,
+  transactions: Object,
   transactionType: string,
-  children: any,
+  url: string,
 }
 
 export default class Confirm extends Component {

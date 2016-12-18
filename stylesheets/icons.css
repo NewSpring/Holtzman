@@ -144,3 +144,18 @@
 .icon-print:before {
   content: "\43";
 }
+.icon-lock:before {
+  content: "\4b";
+}
+.icon-calendar:before {
+  content: "\4c";
+}
+.icon-failed:before {
+  content: "\4d";
+}
+.icon-warning:before {
+  content: "\4e";
+}
+.icon-success:before {
+  content: "\4f";
+}

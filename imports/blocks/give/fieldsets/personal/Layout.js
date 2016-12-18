@@ -113,15 +113,16 @@ const Layout = ({
         defaultValue={personal.email}
       />
 
+      <style>{".input--active select { color: #303030 }; .input--focused label { color: #858585 }"}</style>
       <Forms.Select
-        name="campus"
-        label="Campus"
-        type="campus"
-        errorText="Please choose a campus"
-        validation={campus}
         defaultValue={personal.campusId}
+        errorText="Please choose a campus"
         includeBlank
         items={campuses}
+        label="Campus"
+        name="campus"
+        type="campus"
+        validation={campus}
       />
     </div>
 

@@ -76,7 +76,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
         </em>
       </p>
       <button
-        className="false text-primary"
+        className="soft-top text-primary"
         onClick={[Function]}
         style={
           Object {
@@ -551,7 +551,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
         </em>
       </p>
       <button
-        className="false text-primary"
+        className="soft-top text-primary"
         onClick={[Function]}
         style={
           Object {

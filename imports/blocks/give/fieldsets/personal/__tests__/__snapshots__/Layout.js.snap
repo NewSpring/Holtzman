@@ -105,6 +105,9 @@ exports[`Layout renders with props 1`] = `
         style={Object {}}
         type="email" />
     </div>
+    <style>
+      .input--active select { color: #303030 }; .input--focused label { color: #858585 }
+    </style>
     <div
       className="input input--active select_15p0e27">
       <label
@@ -120,8 +123,7 @@ exports[`Layout renders with props 1`] = `
         name="campus"
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Campus"
-        value={undefined}>
+        placeholder="Campus">
         <option
           style={
             Object {

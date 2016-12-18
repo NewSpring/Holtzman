@@ -2,7 +2,6 @@ import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
-import { createFragment } from "apollo-client";
 import gql from "graphql-tag";
 
 import Split, { Left, Right } from "../../blocks/split";
@@ -123,18 +122,7 @@ class HomeWithoutData extends Component {
 
 }
 
-const CONTENT_FEED_QUERY = gql`
-  query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
-    feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
-      ...ContentForFeed
-      parent {
-        ...ContentForFeed
-      }
-    }
-  }
-`;
-
-const contentFragment = createFragment(gql`
+const contentFragment = gql`
   fragment ContentForFeed on Content {
     entryId: id
     title
@@ -160,11 +148,22 @@ const contentFragment = createFragment(gql`
       }
     }
   }
-`);
+`;
+
+const CONTENT_FEED_QUERY = gql`
+  query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
+    feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
+      ...ContentForFeed
+      parent {
+        ...ContentForFeed
+      }
+    }
+  }
+  ${contentFragment}
+`;
 
 const withFeedContent = graphql(CONTENT_FEED_QUERY, {
   options: (ownProps) => ({
-    fragments: [contentFragment],
     variables: {
       excludeChannels: ownProps.topics,
       limit: 20,
