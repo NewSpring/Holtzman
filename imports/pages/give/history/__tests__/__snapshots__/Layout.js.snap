@@ -35,6 +35,40 @@ exports[`Layout renders no transactions if there are none and ready 1`] = `
   </div>
   <div
     className="one-whole text-center" />
+  <div
+    className="fixed visuallyhidden@handheld"
+    style={
+      Object {
+        "left": "58.33%",
+        "top": "60%",
+        "zIndex": 10,
+      }
+    }>
+    <div
+      className="card"
+      style={
+        Object {
+          "borderRadius": "50%",
+          "marginLeft": "2px",
+        }
+      }>
+      <div
+        className="card__item background--light-secondary soft-half"
+        style={
+          Object {
+            "padding": "15px 17px",
+          }
+        }>
+        <span
+          className="icon-print"
+          style={
+            Object {
+              "fontSize": "28px",
+            }
+          } />
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -61,6 +95,40 @@ exports[`Layout renders reloading if no transactions and not ready 1`] = `
   </div>
   <div
     className="one-whole text-center" />
+  <div
+    className="fixed visuallyhidden@handheld"
+    style={
+      Object {
+        "left": "58.33%",
+        "top": "60%",
+        "zIndex": 10,
+      }
+    }>
+    <div
+      className="card"
+      style={
+        Object {
+          "borderRadius": "50%",
+          "marginLeft": "2px",
+        }
+      }>
+      <div
+        className="card__item background--light-secondary soft-half"
+        style={
+          Object {
+            "padding": "15px 17px",
+          }
+        }>
+        <span
+          className="icon-print"
+          style={
+            Object {
+              "fontSize": "28px",
+            }
+          } />
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -116,6 +184,40 @@ exports[`Layout renders reloading version 1`] = `
   </div>
   <div
     className="one-whole text-center" />
+  <div
+    className="fixed visuallyhidden@handheld"
+    style={
+      Object {
+        "left": "58.33%",
+        "top": "60%",
+        "zIndex": 10,
+      }
+    }>
+    <div
+      className="card"
+      style={
+        Object {
+          "borderRadius": "50%",
+          "marginLeft": "2px",
+        }
+      }>
+      <div
+        className="card__item background--light-secondary soft-half"
+        style={
+          Object {
+            "padding": "15px 17px",
+          }
+        }>
+        <span
+          className="icon-print"
+          style={
+            Object {
+              "fontSize": "28px",
+            }
+          } />
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -158,6 +260,40 @@ exports[`Layout renders with negative transactions 1`] = `
   <div
     className="one-whole text-center">
     <mockConstructor />
+  </div>
+  <div
+    className="fixed visuallyhidden@handheld"
+    style={
+      Object {
+        "left": "58.33%",
+        "top": "60%",
+        "zIndex": 10,
+      }
+    }>
+    <div
+      className="card"
+      style={
+        Object {
+          "borderRadius": "50%",
+          "marginLeft": "2px",
+        }
+      }>
+      <div
+        className="card__item background--light-secondary soft-half"
+        style={
+          Object {
+            "padding": "15px 17px",
+          }
+        }>
+        <span
+          className="icon-print"
+          style={
+            Object {
+              "fontSize": "28px",
+            }
+          } />
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -205,6 +341,40 @@ exports[`Layout renders with props 1`] = `
   <div
     className="one-whole text-center">
     <mockConstructor />
+  </div>
+  <div
+    className="fixed visuallyhidden@handheld"
+    style={
+      Object {
+        "left": "58.33%",
+        "top": "60%",
+        "zIndex": 10,
+      }
+    }>
+    <div
+      className="card"
+      style={
+        Object {
+          "borderRadius": "50%",
+          "marginLeft": "2px",
+        }
+      }>
+      <div
+        className="card__item background--light-secondary soft-half"
+        style={
+          Object {
+            "padding": "15px 17px",
+          }
+        }>
+        <span
+          className="icon-print"
+          style={
+            Object {
+              "fontSize": "28px",
+            }
+          } />
+      </div>
+    </div>
   </div>
 </div>
 `;

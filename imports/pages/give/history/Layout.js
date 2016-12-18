@@ -129,18 +129,19 @@ export default ({
         top: "60%",
         left: "58.33%",
         zIndex: 10,
-      }}>
+      }}
+    >
       <div
         className="card"
         style={{ borderRadius: "50%", marginLeft: "2px" }}
         onClick={onPrintClick}
       >
-        {!printLoading && ( 
+        {!printLoading && (
           <div
             className="card__item background--light-secondary soft-half"
-            style={{ padding: "20px 21px" }}
+            style={{ padding: "15px 17px" }}
           >
-            <span className="icon-like-solid" />
+            <span className="icon-print" style={{ fontSize: "28px" }} />
           </div>
         )}
 
@@ -149,11 +150,11 @@ export default ({
             style={{ padding: "12px 12px 9px 12px" }}
             className="card__item background--light-secondary"
           >
-            <Spinner styles={{ width: "35px", height: "35px" }} /> 
+            <Spinner styles={{ width: "35px", height: "35px" }} />
           </div>
         )}
       </div>
     </div>
- 
- </div>
+
+  </div>
 );

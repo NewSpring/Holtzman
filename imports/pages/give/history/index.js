@@ -46,13 +46,13 @@ class TemplateWithoutData extends Component {
 
   onPrintClick = (e) => {
     e.preventDefault();
-    
+
     this.setState({ printLoading: true });
     this.props.getPDF(this.props.currentVariables)
       .then(({ data: { transactionStatement } }) => {
         const blob = base64ToBlob(transactionStatement.file);
         this.setState({ printLoading: false });
-        fileSaver.saveAs(blob, `${moment().year()} NewSpring Church Giving Summary`)
+        fileSaver.saveAs(blob, `${moment().year()} NewSpring Church Giving Summary`);
       })
       .catch(() => {
         this.setState({ printLoading: false });
@@ -113,7 +113,7 @@ const GET_STATEMENT = gql`
 `;
 
 const withStatement = graphql(GET_STATEMENT, {
-  props: ({ mutate }) => ({ getPDF: (variables) => mutate({ variables }) })
+  props: ({ mutate }) => ({ getPDF: (variables) => mutate({ variables }) }),
 });
 
 const TRANSACTIONS_QUERY = gql`
