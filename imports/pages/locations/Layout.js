@@ -93,7 +93,7 @@ export default class Layout extends Component {
         element.children[0].scrollIntoView({ block: "end", behavior: "smooth" });
         element.parentElement.scrollLeft += -20;
       })
-      .catch((err) => console.error(err));
+      .catch(() => { /* do nothing */ });
   }
 
   overflow = {
