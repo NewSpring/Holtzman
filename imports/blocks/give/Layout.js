@@ -62,7 +62,7 @@ const Layout = ({
     switch (state) {
       case "loading":
         copiedSchedules = { ...schedule };
-        return <Loading isSchedule={copiedSchedules.start} />;
+        return <Loading isSchedule={copiedSchedules.start} isSavedPayment={transactionType === "savedPayment"} />;
       case "error":
         return <Err msg={errors[Object.keys(errors)[0]]} goToStepOne={goToStepOne} />;
       case "success":
