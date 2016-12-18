@@ -166,7 +166,6 @@ it("searchSubmit calls prevent default and all the search actions", () => {
     blur: mockBlur,
     value: "hey",
   }));
-  const mockPromise = new Promise(p => p());
   const mockGetSearch = jest.fn();
   searchActions.searching = jest.fn();
   searchActions.clear = jest.fn();
@@ -189,10 +188,6 @@ it("searchSubmit calls prevent default and all the search actions", () => {
   expect(searchActions.clear).toHaveBeenCalledTimes(1);
   expect(searchActions.term).toHaveBeenCalledTimes(1);
   expect(searchActions.toggleLoading).toHaveBeenCalledTimes(1);
-
-  return mockPromise.then(() => {
-    expect(mockGetSearch).toHaveBeenCalledTimes(2);
-  })
 });
 
 it("loadMore calls toggleLoading and getSearch", () => {
