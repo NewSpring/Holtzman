@@ -39,6 +39,7 @@
     ],
     "coveragePathIgnorePatterns": [
       "__stories__/",
+      "__mocks__/",
       "<rootDir>/imports/methods/",
       "<rootDir>/server/deprecated/",
       "<rootDir>/imports/database/",
