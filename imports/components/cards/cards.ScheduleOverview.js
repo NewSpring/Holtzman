@@ -33,7 +33,7 @@ const ScheduleOverviewCard = ({
         <h5 className="floating__item soft-half-right push-half--bottom text-dark-primary">
           {frequency}
         </h5>
-        <p className="flush" style={latest ? { marginBottom: "5px" } : {}}>
+        <p className="flush-bottom soft-half-top" style={latest ? { marginBottom: "5px" } : {}}>
           <span
             className="h7 text-dark-tertiary push-half-right"
             style={{ verticalAlign: "middle" }}
@@ -58,7 +58,9 @@ const ScheduleOverviewCard = ({
           style={{ borderColor: "inherit", borderWidth: "2px" }}
           onClick={onDetailClick}
         >
-          <h6 className="display-inline-block soft-half-right">View Schedule Details</h6>
+          <h6 className="display-inline-block soft-half-right flush-bottom">
+            View Schedule Details
+          </h6>
           <span
             className="text-primary display-inline-block icon-arrow-next"
             style={{

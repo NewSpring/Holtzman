@@ -74,7 +74,7 @@ export default ({
         </div>
 
         {/* Schedule */}
-        <ScheduleLayout setCanCheckout={setCanCheckout} authorized={(total > 0) && authorized} />
+        <ScheduleLayout setCanCheckout={setCanCheckout} authorized={authorized} />
 
         {/* Total information */}
         <h3 className="display-inline-block text-dark-primary push-half-bottom push-half-right">

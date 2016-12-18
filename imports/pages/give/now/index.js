@@ -33,7 +33,7 @@ class PageWithoutData extends Component {
   componentWillUnmount() {
     this.props.setRightProps({
       background: "",
-      link: "",
+      link: null,
     });
   }
 

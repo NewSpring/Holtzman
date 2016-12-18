@@ -11,7 +11,7 @@ import SmallButton from "../../../components/buttons/small";
 const SchedulesButton = () =>
   <SmallButton
     text="New Schedule"
-    linkUrl="/give/now"
+    linkUrl="/give/now?schedule=true"
     className="btn--dark-tertiary flush"
   />;
 
@@ -68,7 +68,7 @@ export class SchedulesList extends Component {
             style={{
               backgroundImage: "url(//s3.amazonaws.com/ns.assets/apollos/42835.marketing.cen.webad.scheduleyourgiving_2x1.jpg)",
             }}
-            to="/give/now?schedule"
+            to="/give/now?schedule=true"
           >
             <div className="ratio__item" />
           </Link>
