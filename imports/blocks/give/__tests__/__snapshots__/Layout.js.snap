@@ -662,6 +662,9 @@ exports[`test renders Personal form 1`] = `
         placeholder="user@email.com"
         type="email"
         validation={[Function]} />
+      <style>
+        .input--active select { color: #303030 }; .input--focused label { color: #858585 }
+      </style>
       <Select
         defaultValue={undefined}
         errorText="Please choose a campus"

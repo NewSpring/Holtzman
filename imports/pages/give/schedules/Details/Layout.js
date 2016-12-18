@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 // @flow
 import moment from "moment";
 import { Link } from "react-router";
@@ -162,7 +163,7 @@ export default ({
                 </em>
               </p>
 
-              {schedule.transactions.length && (
+              {schedule.transactions.length > 0 && (
                 <p className="flush">
                   <span
                     className="h7 text-dark-tertiary push-half-right"
@@ -205,7 +206,7 @@ export default ({
               We didn&#39;t find any contributions associated with this schedule.
             </p>
             <p><em>
-              If you have any questions, please call our Finance Team at 864-965-9990 or
+              If you have any questions, please call our Finance Team at 864-965-9990 or {" "}
               <a
                 rel="noopener noreferrer"
                 target="_blank"
@@ -213,7 +214,7 @@ export default ({
               >
                 contact us
               </a>
-              and someone will be happy to assist you.
+              {" "} and someone will be happy to assist you.
             </em></p>
           </div>
         )}

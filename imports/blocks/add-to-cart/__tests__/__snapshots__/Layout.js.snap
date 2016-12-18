@@ -22,11 +22,21 @@ exports[`test should render with minimal props 1`] = `
         className="display-block one-whole soft-bottom" />
       <Connect(Schedule) />
       <h3
-        className="display-inline-block text-dark-primary push-half-bottom push-half-right">
+        className="display-inline-block text-dark-primary push-half-bottom push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
         my total is
       </h3>
       <span
-        className="display-inline-block text-dark-primary push-half-bottom">
+        className="display-inline-block text-dark-primary push-half-bottom"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
         <Currency
           amount="$0.00"
           baseHeadingSize="1"
@@ -60,11 +70,21 @@ exports[`test should render without subfunds  1`] = `
         className="display-block one-whole soft-bottom" />
       <Connect(Schedule) />
       <h3
-        className="display-inline-block text-dark-primary push-half-bottom push-half-right">
+        className="display-inline-block text-dark-primary push-half-bottom push-half-right"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
         my total is
       </h3>
       <span
-        className="display-inline-block text-dark-primary push-half-bottom">
+        className="display-inline-block text-dark-primary push-half-bottom"
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }>
         <Currency
           amount="$0.00"
           baseHeadingSize="1"

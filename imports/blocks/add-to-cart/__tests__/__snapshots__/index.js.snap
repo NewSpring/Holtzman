@@ -326,11 +326,21 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
                   <div />
                 </mockConstructor>
                 <h3
-                  className="display-inline-block text-dark-primary push-half-bottom push-half-right">
+                  className="display-inline-block text-dark-primary push-half-bottom push-half-right"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
                   my total is
                 </h3>
                 <span
-                  className="display-inline-block text-dark-primary push-half-bottom">
+                  className="display-inline-block text-dark-primary push-half-bottom"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
                   <Currency
                     amount="$10.00"
                     baseHeadingSize="1"
@@ -598,11 +608,21 @@ exports[`test should properly render with multiple accounts 1`] = `
                   <div />
                 </mockConstructor>
                 <h3
-                  className="display-inline-block text-dark-primary push-half-bottom push-half-right">
+                  className="display-inline-block text-dark-primary push-half-bottom push-half-right"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
                   my total is
                 </h3>
                 <span
-                  className="display-inline-block text-dark-primary push-half-bottom">
+                  className="display-inline-block text-dark-primary push-half-bottom"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
                   <Currency
                     amount="$0.00"
                     baseHeadingSize="1"
