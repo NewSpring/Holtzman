@@ -64,3 +64,6 @@ launch.json
 
 storybook-static
 docs
+
+# editor files
+.vscode
