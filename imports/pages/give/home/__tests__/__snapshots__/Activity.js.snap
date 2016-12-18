@@ -190,7 +190,7 @@ exports[`GivingActivity should render with data 1`] = `
                 onClick={[Function]}
                 style={Object {}}>
                 <h5
-                  className="display-inline-block">
+                  className="display-inline-block flush-bottom">
                   Update it Now
                 </h5>
                 <span
@@ -266,7 +266,7 @@ exports[`GivingActivity should render with data 1`] = `
                 onClick={[Function]}
                 style={Object {}}>
                 <h5
-                  className="display-inline-block">
+                  className="display-inline-block flush-bottom">
                   Update it Now
                 </h5>
                 <span
@@ -342,7 +342,7 @@ exports[`GivingActivity should render with data 1`] = `
                 onClick={[Function]}
                 style={Object {}}>
                 <h5
-                  className="display-inline-block">
+                  className="display-inline-block flush-bottom">
                   Update it Now
                 </h5>
                 <span

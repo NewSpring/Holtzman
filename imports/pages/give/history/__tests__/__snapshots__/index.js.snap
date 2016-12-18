@@ -1,5 +1,5 @@
 exports[`test renders with props 1`] = `
-<Layout
+<Component
   Loading={[Function]}
   alive={true}
   done={false}

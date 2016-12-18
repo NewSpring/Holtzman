@@ -40,7 +40,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
         Once A Month
       </h5>
       <p
-        className="flush"
+        className="flush-bottom soft-half-top"
         style={
           Object {
             "marginBottom": "5px",
@@ -85,7 +85,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
           }
         }>
         <h6
-          className="display-inline-block soft-half-right">
+          className="display-inline-block soft-half-right flush-bottom">
           View Schedule Details
         </h6>
         <span
@@ -135,7 +135,7 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
         Once A Month
       </h5>
       <p
-        className="flush"
+        className="flush-bottom soft-half-top"
         style={Object {}}>
         <span
           className="h7 text-dark-tertiary push-half-right"
@@ -161,7 +161,7 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
           }
         }>
         <h6
-          className="display-inline-block soft-half-right">
+          className="display-inline-block soft-half-right flush-bottom">
           View Schedule Details
         </h6>
         <span
@@ -211,7 +211,7 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
         Once A Month
       </h5>
       <p
-        className="flush"
+        className="flush-bottom soft-half-top"
         style={Object {}}>
         <span
           className="h7 text-dark-tertiary push-half-right"
@@ -237,7 +237,7 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
           }
         }>
         <h6
-          className="display-inline-block soft-half-right">
+          className="display-inline-block soft-half-right flush-bottom">
           View Schedule Details
         </h6>
         <span
@@ -287,7 +287,7 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
         Once A Month
       </h5>
       <p
-        className="flush"
+        className="flush-bottom soft-half-top"
         style={Object {}}>
         <span
           className="h7 text-dark-tertiary push-half-right"
@@ -313,7 +313,7 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
           }
         }>
         <h6
-          className="display-inline-block soft-half-right">
+          className="display-inline-block soft-half-right flush-bottom">
           View Schedule Details
         </h6>
         <span
@@ -363,7 +363,7 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
         Once A Month
       </h5>
       <p
-        className="flush"
+        className="flush-bottom soft-half-top"
         style={Object {}}>
         <span
           className="h7 text-dark-tertiary push-half-right"
@@ -389,7 +389,7 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
           }
         }>
         <h6
-          className="display-inline-block soft-half-right">
+          className="display-inline-block soft-half-right flush-bottom">
           View Schedule Details
         </h6>
         <span
@@ -439,7 +439,7 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
         Once A Month
       </h5>
       <p
-        className="flush"
+        className="flush-bottom soft-half-top"
         style={Object {}}>
         <span
           className="h7 text-dark-tertiary push-half-right"
@@ -465,7 +465,7 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
           }
         }>
         <h6
-          className="display-inline-block soft-half-right">
+          className="display-inline-block soft-half-right flush-bottom">
           View Schedule Details
         </h6>
         <span
@@ -515,7 +515,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
         Once A Month
       </h5>
       <p
-        className="flush"
+        className="flush-bottom soft-half-top"
         style={
           Object {
             "marginBottom": "5px",
@@ -560,7 +560,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
           }
         }>
         <h6
-          className="display-inline-block soft-half-right">
+          className="display-inline-block soft-half-right flush-bottom">
           View Schedule Details
         </h6>
         <span

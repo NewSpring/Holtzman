@@ -9,7 +9,6 @@ import COMPLETE_ORDER_MUTATION from "../imports/store/give/saga/completeOrderMut
 import CREATE_ORDER_MUTATION from "../imports/store/give/saga/createOrderMutation";
 
 import { CANCEL_SCHEDULE_QUERY } from "../imports/pages/give/schedules/Details";
-import { REMOVE_PAYMENT_MUTATION } from "../imports/pages/profile/settings/Payments";
 
 // eslint-disable-next-line
 export function order(formattedData, instant, id) {
@@ -72,25 +71,6 @@ Meteor.methods({
           return;
         }
         f.return(data.response);
-      })
-      .catch(f.throw);
-
-    return f.wait();
-  },
-  "PaymentAccounts.remove": function remove(id) {
-    const f = new Future();
-
-    GraphQL.mutate({
-      mutation: REMOVE_PAYMENT_MUTATION,
-      variables: { id },
-    })
-      .then(({ data }) => {
-        if (data.response.error) {
-          const error = new Meteor.Error(data.response.error);
-          f.throw(error);
-          return;
-        }
-        f.return(true);
       })
       .catch(f.throw);
 

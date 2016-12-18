@@ -82,7 +82,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
           <SchedulesButton>
             <SmallButton
               className="btn--dark-tertiary flush"
-              linkUrl="/give/now"
+              linkUrl="/give/now?schedule=true"
               text="New Schedule">
               <Link
                 className="
@@ -92,7 +92,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 "
                 onlyActiveOnIndex={false}
                 style={Object {}}
-                to="/give/now">
+                to="/give/now?schedule=true">
                 <a
                   className="
                     btn btn--small@next
@@ -154,7 +154,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 One Time
               </h5>
               <p
-                className="flush"
+                className="flush-bottom soft-half-top"
                 style={
                   Object {
                     "marginBottom": "5px",
@@ -199,7 +199,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   }
                 }>
                 <h6
-                  className="display-inline-block soft-half-right">
+                  className="display-inline-block soft-half-right flush-bottom">
                   View Schedule Details
                 </h6>
                 <span
@@ -258,7 +258,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 Once a Month
               </h5>
               <p
-                className="flush"
+                className="flush-bottom soft-half-top"
                 style={
                   Object {
                     "marginBottom": "5px",
@@ -303,7 +303,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   }
                 }>
                 <h6
-                  className="display-inline-block soft-half-right">
+                  className="display-inline-block soft-half-right flush-bottom">
                   View Schedule Details
                 </h6>
                 <span
@@ -362,7 +362,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                 One Time
               </h5>
               <p
-                className="flush"
+                className="flush-bottom soft-half-top"
                 style={Object {}}>
                 <span
                   className="h7 text-dark-tertiary push-half-right"
@@ -388,7 +388,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
                   }
                 }>
                 <h6
-                  className="display-inline-block soft-half-right">
+                  className="display-inline-block soft-half-right flush-bottom">
                   View Schedule Details
                 </h6>
                 <span

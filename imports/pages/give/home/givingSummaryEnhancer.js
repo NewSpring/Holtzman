@@ -32,6 +32,8 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
 
   accountsData.map((account) => {
     accounts[account.name] = account.total;
+    if (!account.transactions) return null;
+
     // iterate over every transaction, and sum up the months
     account.transactions.map((transaction) => {
       const month = moment(new Date(transaction.date)).format("M");
