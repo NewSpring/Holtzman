@@ -10,7 +10,7 @@ import {
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
 
-import { MockedProvider } from "react-apollo/test-utils";
+import { MockedProvider } from "react-apollo/lib/test-utils";
 import { addTypenameToDocument } from "apollo-client/queries/queryTransform";
 
 import Provider, { ReduxProvider } from "/.storybook/mocks/Provider";
