@@ -60,12 +60,15 @@ type IDashboard = {
   title: string,
   subNav: ISubNav,
   children?: React$Element<any>,
+  dispatch: Function,
 };
 
 export class Dashboard extends Component {
 
+  props: IDashboard;
+
   componentWillMount() {
-    if (process.env.NATIVE) this.props.dispatch(header.title(this.props.title))
+    if (process.env.NATIVE) this.props.dispatch(header.title(this.props.title));
   }
 
   render() {
@@ -74,7 +77,7 @@ export class Dashboard extends Component {
       subNav,
       children,
     } = this.props;
-    
+
     return (
       <div>
         <div
@@ -85,7 +88,7 @@ export class Dashboard extends Component {
             soft-double-left
             background--light-primary
           `}
-          >
+        >
           {!process.env.NATIVE && (
             <h1 className="soft-half-bottom@handheld soft-bottom">{title}</h1>
           )}

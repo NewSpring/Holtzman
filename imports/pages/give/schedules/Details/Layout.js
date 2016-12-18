@@ -23,10 +23,6 @@ type ILayout = {
   loadingEntries: boolean,
 }
 
-const formatDate = (date) => (
-  moment(new Date(date)).add(4, "hours").format("MMM D, YYYY")
-);
-
 const capitalizeFirstLetter = (string) => (
   string.charAt(0).toUpperCase() + string.slice(1)
 );
@@ -179,7 +175,7 @@ export default ({
                   </em>
                 </p>
               )}
-              <div className="one-whole soft-double-top text-center"> 
+              <div className="one-whole soft-double-top text-center">
                 {complete && (
                   <SmallButton text={"Schedule Completed"} disabled />
                 )}
@@ -196,7 +192,7 @@ export default ({
                   <SmallButton text={"Contribution Stopped"} disabled />
                 )}
               </div>
-          </div>
+            </div>
         )}
         </div>
       </div>

@@ -9,7 +9,6 @@ type IScheduleOverviewCard = {
   started: string,
   classes: string,
   latest: string,
-  onEditClick: Function,
   onDetailClick: Function,
 };
 
@@ -19,13 +18,12 @@ const ScheduleOverviewCard = ({
   started,
   latest,
   classes,
-  onEditClick,
   onDetailClick,
 }: IScheduleOverviewCard) => (
   <div className={classes}>
     <div className="card">
       <div className="card__item soft push-half-ends one-whole">
-       <Currency
+        <Currency
           amount={amount}
           className="text-left"
           baseHeadingSize="1"

@@ -25,7 +25,7 @@ export const updateQuery = (id) => (prev, { mutationResult }) => {
 
   prev.savedPayments.splice(index, 1);
   return prev;
-}
+};
 
 export const withPaymentRemove = graphql(REMOVE_PAYMENT_MUTATION, {
   props: ({ mutate }) => ({

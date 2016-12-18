@@ -155,14 +155,14 @@ it("renders loading if no entries", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
-it("formatDate returns formatted date", () => {
-  const wrapper = shallow(generateComponent());
-  const result = wrapper.instance().formatDate("12-12-2012");
-  expect(result).toBe("Dec 12, 2012");
-});
+// it("formatDate returns formatted date", () => {
+//   const wrapper = shallow(generateComponent());
+//   const result = wrapper.instance().formatDate("12-12-2012");
+//   expect(result).toBe("Dec 12, 2012");
+// });
 
-it("capitalizeFirstLetter returns only first letter capitalized", () => {
-  const wrapper = shallow(generateComponent());
-  const result = wrapper.instance().capitalizeFirstLetter("test");
-  expect(result).toBe("Test");
-});
+// it("capitalizeFirstLetter returns only first letter capitalized", () => {
+//   const wrapper = shallow(generateComponent());
+//   const result = wrapper.instance().capitalizeFirstLetter("test");
+//   expect(result).toBe("Test");
+// });

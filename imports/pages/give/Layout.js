@@ -2,7 +2,7 @@
 import find from "lodash.find";
 import React, { Component, cloneElement } from "react";
 import Split, { Left, Right } from "../../blocks/split";
-import Dashboard from "../../components/dashboard/";
+import DashboardLayout from "../../components/dashboard/";
 
 type ILayout = {
   children: React$Element<any>,
@@ -84,14 +84,14 @@ class Layout extends Component {
           </Right>
         </Split>
         <Left>
-          <Dashboard
+          <DashboardLayout
             title="My Giving"
             subNav={this.state.subNav}
           >
             {cloneElement(this.props.children, {
               setRightProps: this.setRightProps,
             })}
-          </Dashboard>
+          </DashboardLayout>
         </Left>
       </div>
     );

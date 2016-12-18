@@ -1,13 +1,11 @@
 // @flow
 import { Component, PropTypes } from "react";
 import { graphql } from "react-apollo";
-import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import infiniteScroll from "../../../decorators/infiniteScroll";
 
 import Authorized from "../../../blocks/authorzied";
-import { header as headerActions } from "../../../store";
 
 import Layout from "./Layout";
 
@@ -22,7 +20,6 @@ class TemplateWithoutData extends Component {
     filter: PropTypes.shape({
       family: PropTypes.array, // eslint-disable-line
     }),
-    dispatch: PropTypes.func,
     setRightProps: PropTypes.func,
   }
 
@@ -134,12 +131,10 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
   }),
 });
 
-const Template = connect()(
-  withFilter(
-    withTransactions(
-      infiniteScroll()(
-        TemplateWithoutData
-      )
+const Template = withFilter(
+  withTransactions(
+    infiniteScroll()(
+      TemplateWithoutData
     )
   )
 );

@@ -47,7 +47,7 @@ export class Schedule extends Component {
     frequency: null,
     showDatePicker: false,
   }
-  
+
   componentWillMount() {
     if (this.props.preCheck) this.setState({ checked: true });
   }

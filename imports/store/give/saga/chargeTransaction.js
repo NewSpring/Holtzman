@@ -96,7 +96,7 @@ export default function* chargeTransaction({ state }) {
                 return prev;
               },
               GetSavedPaymentAccounts: (prev, { mutationResult }) => {
-                const { savedPayment, success } = mutationResult.data.response
+                const { savedPayment, success } = mutationResult.data.response;
                 if (!success || !savedPayment) return prev;
                 prev.savedPayments.push(savedPayment);
                 return prev;
