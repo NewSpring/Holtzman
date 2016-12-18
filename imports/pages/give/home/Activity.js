@@ -70,7 +70,7 @@ export class GivingActivity extends Component {
     let linkUrl;
     const scheduled = transaction.schedule !== null;
 
-    if (transaction.status === null || transaction.status === "Success" || transaction.status === "Complete") {
+    if ((transaction.status === null || transaction.status === "Success" || transaction.status === "Complete") && transaction.details.length) {
       status = "success";
       linkText = "View Gift";
       linkUrl = `/give/history/${transaction.id}`;
