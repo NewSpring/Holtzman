@@ -16,7 +16,6 @@ type ILoadingProps = {
   isSavedPayment?: boolean,
 }
 const Loading = ({ isSchedule, isSavedPayment }: ILoadingProps) => {
-
   let header = LOADING_HEADER;
   let text = LOADING_TEXT;
 
