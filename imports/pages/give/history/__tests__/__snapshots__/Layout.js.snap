@@ -160,16 +160,16 @@ exports[`Layout renders reloading version 1`] = `
       <div
         style={
           Object {
-            "marginTop": "10px",
+            "marginTop": "13px",
             "position": "absolute",
-            "right": "20px",
+            "right": "17px",
           }
         }>
         <span
           className="icon-print"
           style={
             Object {
-              "fontSize": "28px",
+              "fontSize": "22px",
             }
           } />
       </div>
@@ -263,16 +263,16 @@ exports[`Layout renders with negative transactions 1`] = `
       <div
         style={
           Object {
-            "marginTop": "10px",
+            "marginTop": "13px",
             "position": "absolute",
-            "right": "20px",
+            "right": "17px",
           }
         }>
         <span
           className="icon-print"
           style={
             Object {
-              "fontSize": "28px",
+              "fontSize": "22px",
             }
           } />
       </div>
@@ -364,16 +364,16 @@ exports[`Layout renders with props 1`] = `
       <div
         style={
           Object {
-            "marginTop": "10px",
+            "marginTop": "13px",
             "position": "absolute",
-            "right": "20px",
+            "right": "17px",
           }
         }>
         <span
           className="icon-print"
           style={
             Object {
-              "fontSize": "28px",
+              "fontSize": "22px",
             }
           } />
       </div>

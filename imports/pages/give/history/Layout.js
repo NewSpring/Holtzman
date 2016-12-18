@@ -102,15 +102,15 @@ export default ({
         >
           {!printLoading && (
             <div
-              style={{ position: "absolute", right: "20px", marginTop: "10px" }}
+              style={{ position: "absolute", right: "17px", marginTop: "13px" }}
             >
-              <span className="icon-print" style={{ fontSize: "28px" }} />
+              <span className="icon-print" style={{ fontSize: "22px" }} />
             </div>
           )}
 
           {printLoading && (
-            <div style={{ position: "absolute", right: "20px", marginTop: "10px" }}>
-              <Spinner styles={{ width: "35px", height: "35px" }} />
+            <div style={{ position: "absolute", right: "14px", marginTop: "13px" }}>
+              <Spinner styles={{ width: "30px", height: "30px", borderWidth: "3px" }} />
             </div>
           )}
         </div>
