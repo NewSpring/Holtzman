@@ -99,26 +99,26 @@ const Layout = ({
       submit={onSubmit}
     >
       <Step
-        data={data}
-        url={url}
-        savedAccount={savedAccount}
-        transactions={transactions}
-        transactionType={transactionType}
-        save={save}
-        errors={errors}
+        back={back}
+        campuses={campuses}
+        changeSavedAccount={changeSavedAccount}
         clear={clear}
         clearData={clearData}
-        next={next}
-        back={back}
-        total={total}
-        campuses={campuses}
-        states={states}
         countries={countries}
-        schedule={schedule}
+        data={data}
+        errors={errors}
         goToStepOne={goToStepOne}
+        next={next}
+        save={save}
+        savedAccount={savedAccount}
         savedAccounts={savedPayments}
-        changeSavedAccount={changeSavedAccount}
+        schedule={schedule}
         scheduleToRecover={scheduleToRecover}
+        states={states}
+        total={total}
+        transactions={transactions}
+        transactionType={transactionType}
+        url={url}
       >
         <Controls.Progress
           steps={FORM_STEPS.length}
