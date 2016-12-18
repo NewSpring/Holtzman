@@ -84,13 +84,14 @@ class SearchContainerWithoutData extends Component {
     this.props.client.query({ query: SEARCH_QUERY, variables, forceFetch: true })
       .then(({ data }) => {
         const { search } = data;
+        const propsSearch = this.props.search;
         dispatch(searchActions.toggleLoading());
         dispatch(searchActions.incrementPage());
         dispatch(searchActions.add(search.items));
         if (search.total === 0) {
           dispatch(searchActions.none(true));
         }
-        if (this.props.search.items.length >= search.total) {
+        if (!propsSearch || !propsSearch.items || propsSearch.items.length >= search.total) {
           dispatch(searchActions.done(true));
         }
       });

@@ -87,8 +87,7 @@ exports[`Layout renders US by default 1`] = `
         name="country"
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Country"
-        value={undefined}>
+        placeholder="Country">
         <option
           style={
             Object {
@@ -148,8 +147,7 @@ exports[`Layout renders US by default 1`] = `
             name="state"
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="State/Territory"
-            value={undefined}>
+            placeholder="State/Territory">
             <option
               style={
                 Object {
@@ -291,8 +289,7 @@ exports[`Layout renders your country instead 1`] = `
         name="country"
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Country"
-        value={undefined}>
+        placeholder="Country">
         <option
           style={
             Object {
@@ -352,8 +349,7 @@ exports[`Layout renders your country instead 1`] = `
             name="state"
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="State/Territory"
-            value={undefined}>
+            placeholder="State/Territory">
             <option
               style={
                 Object {

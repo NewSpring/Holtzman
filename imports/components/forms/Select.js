@@ -183,6 +183,13 @@ export default class Select extends Component {
     if (this.props.classes) { inputclasses = inputclasses.concat(this.props.classes); }
 
     if (this.props.selected) { inputclasses.push("input--active"); }
+
+    // if a selected item is passed in, we don't need a defaultValue
+    // conreolled/uncontrolled react error
+    const value = this.props.selected ? { value: this.props.selected || "" } : {};
+    const defaultValue = this.props.defaultValue && !this.props.selected
+      ? { defaultValue: this.props.defaultValue || "" } : {};
+
     return (
       <div className={`${inputclasses.join(" ")} ${css(SelectClasses.select)}`}>
         {(() => {
@@ -210,9 +217,8 @@ export default class Select extends Component {
           disabled={this.disabled()}
           onFocus={this.focus}
           onChange={this.change}
-          defaultValue={this.props.defaultValue}
-          value={this.props.selected}
-
+          {...defaultValue}
+          {...value}
         >
           {(() => {
             if (this.props.placeholder || this.props.includeBlank) {

@@ -123,8 +123,7 @@ exports[`Layout renders with props 1`] = `
         name="campus"
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Campus"
-        value={undefined}>
+        placeholder="Campus">
         <option
           style={
             Object {

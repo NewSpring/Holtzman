@@ -284,3 +284,4 @@ export default ({
     </Left>
   </div>
 );
+/* eslint-enable react/no-danger */
