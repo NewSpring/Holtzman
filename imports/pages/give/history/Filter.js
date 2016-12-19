@@ -2,8 +2,6 @@
 import { Component, PropTypes } from "react";
 import moment from "moment";
 
-// import Date from "../../../blocks/add-to-cart/Schedule/Date";
-
 import TagSelect from "../../../components/forms/TagSelect";
 import Tag from "../../../components/tags";
 import Date from "../../../blocks/add-to-cart/Schedule/Date";
@@ -14,6 +12,8 @@ const DATE_RANGES = [
   { label: "Last Year", value: "LastYear" },
   { label: "All Time", value: "AllTime" },
 ];
+
+const scheduleIcon = <span className="icon-calendar push-half-left" style={{ position: "relative", top: "-2px" }} />;
 
 export default class Filter extends Component {
 
@@ -297,7 +297,7 @@ export default class Filter extends Component {
                   onClick={this.startClick}
                   active={this.state.customStartActive}
                   className={this.state.customDateDisabled && "tag--disabled"}
-                  icon={!this.state.customStartActive && <span className="icon-calendar push-half-left" style={{ position: "relative", top: "-2px" }} />}
+                  icon={!this.state.customStartActive && scheduleIcon}
                 />
                 <Tag
                   key={2}
@@ -306,7 +306,7 @@ export default class Filter extends Component {
                   onClick={this.startClick}
                   active={this.state.customEndActive}
                   className={this.state.customDateDisabled && "tag--disabled"}
-                  icon={!this.state.customEndActive && <span className="icon-calendar push-half-left" style={{ position: "relative", top: "-2px" }} />}
+                  icon={!this.state.customEndActive && scheduleIcon}
                 />
               </div>
             </div>
