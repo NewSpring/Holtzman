@@ -1,9 +1,12 @@
 
 // @flow
 
+// $FlowMeteor
+import { Meteor } from "meteor/meteor";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import moment from "moment";
+import createContainer from "../../../blocks/meteor/react-meteor-data";
 
 export const formatGivingSummaryData = (data: Object): ?Object => {
   const baseData = [
@@ -70,7 +73,13 @@ const YTD_QUERY = gql`
   }
 `;
 
-export default graphql(YTD_QUERY, {
+const authorized = () => {
+  let authorize = true;
+  authorize = Meteor.userId();
+  return { authorize };
+};
+
+export default createContainer(() => ({ authorized: authorized() }), graphql(YTD_QUERY, {
   options: {
     variables: {
       start: moment().startOf("year").format(),
@@ -87,5 +96,5 @@ export default graphql(YTD_QUERY, {
     loading: data.loading,
     data: formatGivingSummaryData(data),
   }),
-});
+}));
 
