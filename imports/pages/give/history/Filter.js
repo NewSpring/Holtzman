@@ -297,6 +297,7 @@ export default class Filter extends Component {
                   onClick={this.startClick}
                   active={this.state.customStartActive}
                   className={this.state.customDateDisabled && "tag--disabled"}
+                  icon={!this.state.customStartActive && <span className="icon-calendar push-half-left" style={{ position: "relative", top: "-2px" }} />}
                 />
                 <Tag
                   key={2}
@@ -305,6 +306,7 @@ export default class Filter extends Component {
                   onClick={this.startClick}
                   active={this.state.customEndActive}
                   className={this.state.customDateDisabled && "tag--disabled"}
+                  icon={!this.state.customEndActive && <span className="icon-calendar push-half-left" style={{ position: "relative", top: "-2px" }} />}
                 />
               </div>
             </div>

@@ -69,12 +69,32 @@ exports[`test doesn't render family members if there are none 1`] = `
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          icon={
+            <span
+              className="icon-calendar push-half-left"
+              style={
+                Object {
+                  "position": "relative",
+                  "top": "-2px",
+                }
+              } />
+          }
           label="Start Date"
           onClick={[Function]}
           val="StartDate" />
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          icon={
+            <span
+              className="icon-calendar push-half-left"
+              style={
+                Object {
+                  "position": "relative",
+                  "top": "-2px",
+                }
+              } />
+          }
           label="End Date"
           onClick={[Function]}
           val="EndDate" />
@@ -203,12 +223,32 @@ exports[`test renders family members when expanded is true 1`] = `
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          icon={
+            <span
+              className="icon-calendar push-half-left"
+              style={
+                Object {
+                  "position": "relative",
+                  "top": "-2px",
+                }
+              } />
+          }
           label="Start Date"
           onClick={[Function]}
           val="StartDate" />
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          icon={
+            <span
+              className="icon-calendar push-half-left"
+              style={
+                Object {
+                  "position": "relative",
+                  "top": "-2px",
+                }
+              } />
+          }
           label="End Date"
           onClick={[Function]}
           val="EndDate" />
@@ -365,12 +405,32 @@ exports[`test works with nickname 1`] = `
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          icon={
+            <span
+              className="icon-calendar push-half-left"
+              style={
+                Object {
+                  "position": "relative",
+                  "top": "-2px",
+                }
+              } />
+          }
           label="Start Date"
           onClick={[Function]}
           val="StartDate" />
         <withRouter(Connect(TagWithoutData))
           active={false}
           className={false}
+          icon={
+            <span
+              className="icon-calendar push-half-left"
+              style={
+                Object {
+                  "position": "relative",
+                  "top": "-2px",
+                }
+              } />
+          }
           label="End Date"
           onClick={[Function]}
           val="EndDate" />
