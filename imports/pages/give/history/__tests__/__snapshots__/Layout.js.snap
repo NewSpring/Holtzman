@@ -40,6 +40,7 @@ exports[`Layout renders no transactions if there are none and ready 1`] = `
     style={
       Object {
         "bottom": "175px",
+        "cursor": "pointer",
         "left": "58.33%",
         "zIndex": 10,
       }
@@ -100,6 +101,7 @@ exports[`Layout renders reloading if no transactions and not ready 1`] = `
     style={
       Object {
         "bottom": "175px",
+        "cursor": "pointer",
         "left": "58.33%",
         "zIndex": 10,
       }
@@ -213,6 +215,7 @@ exports[`Layout renders reloading version 1`] = `
     style={
       Object {
         "bottom": "175px",
+        "cursor": "pointer",
         "left": "58.33%",
         "zIndex": 10,
       }
@@ -314,6 +317,7 @@ exports[`Layout renders with negative transactions 1`] = `
     style={
       Object {
         "bottom": "175px",
+        "cursor": "pointer",
         "left": "58.33%",
         "zIndex": 10,
       }
@@ -419,6 +423,7 @@ exports[`Layout renders with props 1`] = `
     style={
       Object {
         "bottom": "175px",
+        "cursor": "pointer",
         "left": "58.33%",
         "zIndex": 10,
       }

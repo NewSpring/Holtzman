@@ -7,6 +7,9 @@ exports[`ButtonText overrides if signed in and override 1`] = `
   style={undefined}
   value={undefined}>
   Give Later
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -19,6 +22,9 @@ exports[`ButtonText says \`Give Now\` if signed in and no override 1`] = `
   style={undefined}
   value={undefined}>
   Review Contribution
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -31,6 +37,9 @@ exports[`ButtonText says \`Review Your Gift\` if signed in 1`] = `
   style={undefined}
   value={undefined}>
   Review Contribution
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -43,6 +52,9 @@ exports[`ButtonText says \`Sign In\` if not userId 1`] = `
   style={undefined}
   value={undefined}>
   Sign In
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -55,6 +67,9 @@ exports[`PrimaryButton has default styles when disabled but not logged in 1`] = 
   style={undefined}
   value={undefined}>
   Sign In
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -67,6 +82,9 @@ exports[`PrimaryButton has disabled style when disabled and logged in 1`] = `
   style={undefined}
   value={undefined}>
   Review Contribution
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -79,6 +97,9 @@ exports[`PrimaryButton has enabled styles when enabled 1`] = `
   style={undefined}
   value={undefined}>
   Sign In
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -91,6 +112,9 @@ exports[`PrimaryButton overrides classes with theme if theme 1`] = `
   style={undefined}
   value={undefined}>
   Sign In
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -107,6 +131,9 @@ exports[`PrimaryButton passes a style object 1`] = `
   }
   value={undefined}>
   Sign In
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -119,6 +146,9 @@ exports[`PrimaryButton passes a value 1`] = `
   style={undefined}
   value="test">
   Sign In
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -131,6 +161,9 @@ exports[`PrimaryButton passes the onClick function 1`] = `
   style={undefined}
   value={undefined}>
   Sign In
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 
@@ -143,6 +176,9 @@ exports[`PrimaryButton renders with minimum props 1`] = `
   style={undefined}
   value={undefined}>
   Sign In
+   
+  <span
+    className="icon-lock" />
 </button>
 `;
 

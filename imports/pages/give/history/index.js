@@ -24,7 +24,7 @@ class TemplateWithoutData extends Component {
       family: PropTypes.array, // eslint-disable-line
     }),
     setRightProps: PropTypes.func,
-    currentVariables: PropTypes.obj,
+    currentVariables: PropTypes.object,
     getPDF: PropTypes.func,
   }
 
@@ -44,7 +44,7 @@ class TemplateWithoutData extends Component {
     });
   }
 
-  onPrintClick = (e) => {
+  onPrintClick = (e: Event) => {
     e.preventDefault();
 
     this.setState({ printLoading: true });
