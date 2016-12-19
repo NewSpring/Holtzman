@@ -9,6 +9,10 @@ function contentLink(contentItem) {
       return `/series/${entryId}`;
     case "sermons":
       return `/series/${seriesId}/sermon/${entryId}`;
+    case "studies":
+      return `/studies/${entryId}`;
+    case "study_entries":
+      return `/studies/${seriesId}/entry/${entryId}`;
     case "devotionals":
       return `/devotions/${entryId}`;
     case "newspring_albums":

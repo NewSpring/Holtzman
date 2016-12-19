@@ -55,19 +55,23 @@ const Header = {
     if (nextProps.series) item = nextProps.series;
     if (nextProps.album) item = nextProps.album;
     if (nextProps.news) item = nextProps.news;
+    if (nextProps.study) item = nextProps.study;
+    if (nextProps.studyEntry) item = nextProps.studyEntry;
 
     if (item) return item.content;
     return null;
   },
 
   getHeaderTitle(props) {
-    if (props.devotion) return "Devotion";
+    if (props.devotion) return "Devotional";
     if (props.article) return "Article";
     if (props.story) return "Story";
     if (props.currentSermon) return "Series";
     if (props.series) return "Series";
     if (props.album) return "Music";
     if (props.news) return "News";
+    if (props.study) return "Study";
+    if (props.studyEntry) return "Devotional";
     return "";
   },
 

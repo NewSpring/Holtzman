@@ -6,7 +6,11 @@ import FollowingItem from "./Item";
 
 import topicActions from "../../store/topics/";
 
-const topics = [
+// Each version of the app ships with its own set of supported content
+// as the app grows, more and more options will be available from this home feed
+// so we move the decision of what to show to the app instead of heighliner
+
+export const topics = [
   "Articles",
   "Devotionals",
   "Music",
@@ -14,6 +18,7 @@ const topics = [
   "Series",
   "Sermons",
   "Stories",
+  "Studies",
 ];
 
 // XXX make this dynamic via heighliner

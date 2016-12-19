@@ -9,6 +9,10 @@ function siteLink(contentItem, parentItem) {
       return `${siteUrl}/sermons/${slug}`;
     case "sermons":
       return `${siteUrl}/sermons/${parentItem.meta.urlTitle}/${slug}`;
+    case "studies":
+      return `${siteUrl}/studies/${slug}`;
+    case "study_entries":
+      return `${siteUrl}/studies/${parentItem.meta.urlTitle}/${slug}`;
     case "devotionals":
       return `${siteUrl}/devotionals/${slug}`;
     case "newspring_albums":

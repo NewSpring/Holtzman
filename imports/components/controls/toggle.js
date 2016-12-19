@@ -6,7 +6,11 @@ export default class Toggle extends Component {
     items: PropTypes.array.isRequired, // eslint-disable-line
     toggle: PropTypes.func.isRequired,
     state: PropTypes.oneOfType([PropTypes.number, PropTypes.boolean]),
-
+    style: PropTypes.obj,
+    toggleClass: PropTypes.string,
+    activeClass: PropTypes.string,
+    arrowClass: PropTypes.string,
+    arrowStyle: PropTypes.obj,
   }
 
   state = {
@@ -42,10 +46,14 @@ export default class Toggle extends Component {
       "text-center",
       "toggle__item",
     ];
-
+    
     if (this.state.active === main) {
       classes.push("toggle__item--active");
+      if (this.props.activeClass) classes.push(this.props.activeClass);
+    } else if (this.props.toggleClass) {
+      classes.push(this.props.toggleClass);
     }
+
     return classes.join(" ");
   }
 
@@ -55,12 +63,19 @@ export default class Toggle extends Component {
 
   toggleStyle = { width: `${this.toggleWidth()}%` }
 
-  arrowStyle = () =>
-    ({ marginLeft: `${this.toggleWidth() * this.state.active}%` });
+  arrowStyle = () => {
+    return {
+      ...this.props.arrowStyle,
+      ...{ marginLeft: `${this.toggleWidth() * this.state.active}%` },
+    }
+  }
 
   render() {
     return (
-      <div className="toggle push-bottom soft-sides" style={{ backgroundColor: "#fff" }}>
+      <div
+        className="toggle push-bottom soft-sides"
+        style={{ ...{ backgroundColor: "#fff" }, ...this.props.style }}
+      >
         {this.props.items.map((item, i) =>
           /* eslint-disable */
           <div
@@ -75,7 +90,10 @@ export default class Toggle extends Component {
 
         <div className="grid text-left toggle-arrow soft-sides">
 
-          <div className="transition grid__item hard one-half toggle-arrow__item" style={this.arrowStyle()} />
+          <div
+            className={`transition grid__item hard one-half toggle-arrow__item ${this.props.arrowClass || ""}`}
+            style={this.arrowStyle()}
+          />
 
         </div>
 
