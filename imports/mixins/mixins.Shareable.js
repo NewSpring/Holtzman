@@ -60,6 +60,7 @@ const Shareable = {
   },
 
   setShareAction(item, options = { parentItem: null }) {
+    console.log(item);
     if (
       (item.channelName === "sermons" || item.channeName === "study_entries") &&
       typeof options.parentItem === "undefined"
