@@ -17,6 +17,7 @@ class TagWithoutData extends Component {
     urlKey: PropTypes.string,
     router: PropTypes.object,
     location: PropTypes.object,
+    icon: PropTypes.any,
   }
 
   static defaultProps = {
@@ -121,7 +122,7 @@ class TagWithoutData extends Component {
         style={style}
         onClick={this.onClick}
       >
-        {label || val}
+        {label || val}{this.props.icon ? this.props.icon : ""}
       </span>
     );
   }
