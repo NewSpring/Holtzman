@@ -9,7 +9,7 @@ exports[`test renders with props 1`] = `
   className="input checkbox"
   data-spec="input-wrapper">
   <label
-    className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
+    className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
     htmlFor="savePayment"
     style={
       Object {
@@ -18,7 +18,8 @@ exports[`test renders with props 1`] = `
       }
     }>
     <small
-      data-spec="input-label">
+      data-spec="input-label"
+      style={Object {}}>
       Save this payment for future contributions
     </small>
   </label>
