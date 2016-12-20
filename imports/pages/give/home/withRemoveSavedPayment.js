@@ -117,7 +117,7 @@ export class EditWithOutMutations extends Component {
   changeName = (name: string) => this.setState({ name })
 
   save = () => {
-    this.setState({ loading: true });
+    this.setState({ loading: true, action: "update" });
     this.props.save(this.props.payment.id, this.state.name)
       .then(() => {
         this.setState({ loading: false, success: true, action: "update" });
@@ -125,7 +125,7 @@ export class EditWithOutMutations extends Component {
   }
 
   remove = () => {
-    this.setState({ loading: true });
+    this.setState({ loading: true, action: "remove" });
     this.props.remove(this.props.payment.id)
       .then(() => {
         this.setState({ loading: false, success: true, action: "remove" });

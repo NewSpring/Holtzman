@@ -37,11 +37,11 @@ export default withData(({ loading, data, changeYear }) => (
               See your summary from
           </em></small>
         </p>
-        <style>{".input--active select { color: #ffffff }"}</style>
+        <style>{".right-select select { color: #ffffff }"}</style>
         <Forms.Select
           items={YEARS}
           hideLabel
-          classes={["hard", "flush", "display-inline-block"]}
+          classes={["right-select", "hard", "flush", "display-inline-block"]}
           inputClasses="outlined--dotted outlined--light text-light-primary h6 hard-top flush-bottom"
           onChange={changeYear}
         />
