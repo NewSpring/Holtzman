@@ -301,7 +301,6 @@ export default class Filter extends Component {
                     this.state.customStartActive
                   )}
                   className={(
-                    this.state.customStartLabel !== "Start Date" &&
                     this.state.customDateDisabled &&
                     "tag--disabled"
                   )}
@@ -322,7 +321,6 @@ export default class Filter extends Component {
                     this.state.customEndActive
                   )}
                   className={(
-                    this.state.customEndLabel !== "End Date" &&
                     this.state.customDateDisabled &&
                     "tag--disabled"
                   )}
