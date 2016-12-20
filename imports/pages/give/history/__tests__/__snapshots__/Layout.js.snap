@@ -20,6 +20,7 @@ exports[`Layout renders no transactions if there are none and ready 1`] = `
       <p>
         <em>
           If you have any questions, please call our Finance Team at 864-965-9990 or
+           
           <a
             href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
             rel="noopener noreferrer"
