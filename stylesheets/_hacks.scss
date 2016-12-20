@@ -131,3 +131,11 @@ blockquote p {
     padding-bottom: 40px;
   }
 }
+
+
+.btn.text-alert:hover {
+  background-color: map-get($colors, "alert");
+  border-color: map-get($colors, "alert");
+  color: white;
+}
+  
