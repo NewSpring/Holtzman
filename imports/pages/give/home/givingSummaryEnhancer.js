@@ -1,6 +1,5 @@
 
 // @flow
-
 // $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import { graphql } from "react-apollo";
@@ -73,20 +72,15 @@ const YTD_QUERY = gql`
   }
 `;
 
-const authorized = () => {
-  let authorize = true;
-  authorize = Meteor.userId();
-  return { authorize };
-};
-
-export default createContainer(() => ({ authorized: authorized() }), graphql(YTD_QUERY, {
-  options: {
+const withData = graphql(YTD_QUERY, {
+  options: ({ authorized }) => ({
     variables: {
       start: moment().startOf("year").format(),
       end: moment().endOf("year").format(),
     },
+    skip: !authorized,
     ssr: false,
-  },
+  }),
   props: ({ data }) => ({
     changeYear: (year) => {
       const start = moment(`${year}`, "YYYY").startOf("year").format();
@@ -96,5 +90,11 @@ export default createContainer(() => ({ authorized: authorized() }), graphql(YTD
     loading: data.loading,
     data: formatGivingSummaryData(data),
   }),
-}));
+});
 
+
+const authorized = () => ({ authorized: Meteor.userId() });
+// eslint-disable-next-line
+export default (component: React$Component<any, any, any>) => (
+  createContainer(authorized, withData(component))
+);
