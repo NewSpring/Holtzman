@@ -4,6 +4,7 @@ import {
   withKnobs,
   text,
   select,
+  color,
 } from "@kadira/storybook-addon-knobs";
 import withReadme from "storybook-readme/with-readme";
 import backgrounds from "react-storybook-addon-backgrounds";
@@ -65,7 +66,9 @@ story
 
     // Background Color For Series
     if (content.channelName === "series_newspring") {
-      content.content.colors[0].value = text("HEX Color", "303030");
+      const label = "Background Color";
+      const defaultValue = "#303030";
+      content.content.colors[0].value = color(label, defaultValue).replace('#','');
     }
 
     return (
