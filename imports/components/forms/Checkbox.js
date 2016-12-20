@@ -69,6 +69,15 @@ export default class Checkbox extends React.Component {
     return null;
   }
 
+  getStyles = (checked) => {
+    if (checked) {
+      return {
+        color: "#303030",
+      };
+    }
+    return {};
+  }
+
   render() {
     let inputclasses = [
       "input",
@@ -96,11 +105,11 @@ export default class Checkbox extends React.Component {
       >
 
         <label
-          className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
+          className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
           style={{ marginTop: "-1px", cursor: "pointer" }}
           htmlFor={this.props.id || this.props.label || this.props.name}
         >
-          <small data-spec="input-label">
+          <small data-spec="input-label" style={this.getStyles(this.props.defaultValue)}>
             {this.props.children}
           </small>
         </label>
