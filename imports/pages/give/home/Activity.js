@@ -76,12 +76,17 @@ export class GivingActivity extends Component {
     let linkUrl;
     const scheduled = transaction.schedule !== null;
 
+    // show .00 on whole-dollar amounts. Don't show on even dollars
+    const amount = transaction.details[0].amount === parseInt(transaction.details[0].amount)
+      ? transaction.details[0].amount
+      : transaction.details[0].amount.toFixed(2);
+
     if ((transaction.status === null || transaction.status === "Success" || transaction.status === "Complete") && transaction.details.length) {
       status = "success";
       linkText = "View Gift";
       linkUrl = `/give/history/${transaction.id}`;
       message =
-        `Your ${scheduled ? "scheduled " : ""}gift of $${transaction.details[0].amount} to
+        `Your ${scheduled ? "scheduled " : ""}gift of $${amount} to
         ${transaction.details[0].account.name} was successful`;
     } else if (transaction.status === "Failed") {
       status = "failed";
