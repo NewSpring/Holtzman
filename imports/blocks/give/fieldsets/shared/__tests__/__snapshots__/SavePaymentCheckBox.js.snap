@@ -8,18 +8,20 @@ exports[`test renders with props 1`] = `
 <div
   className="input checkbox"
   data-spec="input-wrapper">
-  <h6
-    className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+  <label
+    className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
+    htmlFor="savePayment"
     style={
       Object {
-        "paddingTop": "3px",
+        "cursor": "pointer",
+        "marginTop": "-1px",
       }
     }>
     <small
       data-spec="input-label">
       Save this payment for future contributions
     </small>
-  </h6>
+  </label>
   <input
     className={undefined}
     data-spec="input"

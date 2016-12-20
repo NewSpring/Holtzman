@@ -31,6 +31,7 @@ export default class Checkbox extends React.Component {
   state = {
     status: false,
     error: false,
+    checked: false,
   }
 
   disabled = () => {
@@ -65,7 +66,7 @@ export default class Checkbox extends React.Component {
         </span>
       );
     }
-    return undefined;
+    return null;
   }
 
   render() {
@@ -94,14 +95,15 @@ export default class Checkbox extends React.Component {
         data-spec="input-wrapper"
       >
 
-        <h6
-          className="soft-left push-half-left flush-bottom text-left float-left locked-top"
-          style={{ paddingTop: "3px" }}
+        <label
+          className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
+          style={{ marginTop: "-1px", cursor: "pointer" }}
+          htmlFor={this.props.id || this.props.label || this.props.name}
         >
           <small data-spec="input-label">
             {this.props.children}
           </small>
-        </h6>
+        </label>
 
         <input
           id={this.props.id || this.props.label || this.props.name}
@@ -109,7 +111,7 @@ export default class Checkbox extends React.Component {
           name={this.props.name || this.props.label}
           className={this.props.inputClasses}
           disabled={this.disabled()}
-          defaultChecked={this.props.defaultValue ? "checked" : ""}
+          defaultChecked={(this.state.checked !== false || this.props.defaultValue) ? "checked" : ""}
           onClick={this.props.clicked}
           style={{ width: 0 }}
           data-spec="input"

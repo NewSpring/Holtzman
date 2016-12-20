@@ -2,16 +2,17 @@ exports[`test pushes type prop to inputclasses 1`] = `
 <div
   className="input mytype"
   data-spec="input-wrapper">
-  <h6
-    className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+  <label
+    className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
     style={
       Object {
-        "paddingTop": "3px",
+        "cursor": "pointer",
+        "marginTop": "-1px",
       }
     }>
     <small
       data-spec="input-label" />
-  </h6>
+  </label>
   <input
     data-spec="input"
     defaultChecked=""
@@ -45,16 +46,17 @@ exports[`test should accept a default value 1`] = `
   <div
     className="input checkbox"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked="checked"
@@ -78,16 +80,18 @@ exports[`test should accept an id 1`] = `
   <div
     className="input checkbox"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor="harambe"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked=""
@@ -114,16 +118,18 @@ exports[`test should accept label 1`] = `
   <div
     className="input checkbox"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor="harambe"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked=""
@@ -151,16 +157,18 @@ exports[`test should accept name prop 1`] = `
   <div
     className="input checkbox"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
+      htmlFor="harambe"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked=""
@@ -193,16 +201,17 @@ exports[`test should add classes with classes prop 1`] = `
   <div
     className="input checkbox test1 harambe"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked=""
@@ -226,16 +235,17 @@ exports[`test should add classes with classes prop 2`] = `
   <div
     className="input checkbox test1 harambe"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked=""
@@ -259,16 +269,17 @@ exports[`test should add inputClasses with inputClasses prop 1`] = `
   <div
     className="input checkbox"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       className="test1 harambe"
       data-spec="input"
@@ -293,16 +304,17 @@ exports[`test should disable input with disabled prop 1`] = `
   <div
     className="input checkbox"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked=""
@@ -326,18 +338,19 @@ exports[`test should display children 1`] = `
   <div
     className="input checkbox"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label">
         this is a test
       </small>
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked=""
@@ -361,16 +374,17 @@ exports[`test should hide label with hideLabel prop 1`] = `
   <div
     className="input checkbox"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked=""
@@ -389,16 +403,17 @@ exports[`test should render with minimal props 1`] = `
   <div
     className="input checkbox"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked=""
@@ -422,16 +437,17 @@ exports[`test should respond to onclick prop 1`] = `
   <div
     className="input checkbox"
     data-spec="input-wrapper">
-    <h6
-      className="soft-left push-half-left flush-bottom text-left float-left locked-top"
+    <label
+      className="h6 soft-left push-half-left flush-bottom text-left float-left locked-top"
       style={
         Object {
-          "paddingTop": "3px",
+          "cursor": "pointer",
+          "marginTop": "-1px",
         }
       }>
       <small
         data-spec="input-label" />
-    </h6>
+    </label>
     <input
       data-spec="input"
       defaultChecked=""
