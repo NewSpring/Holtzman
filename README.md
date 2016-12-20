@@ -78,3 +78,9 @@ To deploy, create a release/tag using a combination of the site name, site versi
 newspring/web/production/1.0.8
 newspring/native/beta/0.0.3-45
 ```
+
+## Contributing
+
+For more information about contributing PRs and issues, see our [Contribution Guidelines](https://github.com/NewSpring/Holtzman/blob/master/CONTRIBUTING.md).
+
+[Good First PR](https://github.com/NewSpring/Holtzman/labels/good first pr) is a great starting point for people new to this project.
