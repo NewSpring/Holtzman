@@ -122,14 +122,15 @@ export default ({
             We didn&#39;t find any contributions associated with your account.
             If you would like to start giving, click <Link to="/give/now">here</Link>
           </p>
-          <p><em>If you have any questions, please call our Finance Team at 864-965-9990 or
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
-          >
-            contact us
-          </a> and someone will be happy to assist you.</em></p>
+          <p><em>If you have any questions, please call our Finance Team at 864-965-9990 or{" "}
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
+            >
+              contact us
+            </a> and someone will be happy to assist you.</em>
+          </p>
         </div>
       )}
 
@@ -138,10 +139,10 @@ export default ({
 
     {/* Load more */}
     <div className="one-whole text-center">
-      {ready && transactions.length && !reloading && done && (
+      {ready && transactions.length > 0 && !reloading && done && (
         <p><small><em>No More Contributions</em></small></p>
       )}
-      {ready && transactions.length && !reloading && !done && <Loading />}
+      {ready && transactions.length > 0 && !reloading && !done && <Loading />}
     </div>
 
     {/* Print Button */}
