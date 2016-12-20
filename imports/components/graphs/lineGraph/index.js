@@ -51,11 +51,11 @@ class LineGraph extends Component {
   props: ILineGraph;
 
   componentDidMount() {
-    const renderedChart = this.graphContainer.querySelectorAll('[aria-labelledby="title desc"]')[0];
-    renderedChart.removeAttribute("height");
+    const renderedChart = this.graphContainer.querySelectorAll("[aria-labelledby='title desc']");
+    if (renderedChart && renderedChart.length) renderedChart[0].removeAttribute("height");
   }
 
-  render(){
+  render() {
     const {
       axisStyles,
       data,
@@ -64,10 +64,10 @@ class LineGraph extends Component {
       lineColor,
       lineWidth,
     } = this.props;
-    return(
+    return (
       <div
         className=""
-        ref={(el) => this.graphContainer = el}
+        ref={(el) => (this.graphContainer = el)}
       >
         <VictoryChart
           height={160}
