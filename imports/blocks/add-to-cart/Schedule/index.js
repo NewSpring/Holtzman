@@ -64,6 +64,11 @@ export class Schedule extends Component {
       return;
     }
 
+    if (!this.state.checked && checked) {
+      this.props.setCanCheckout(true);
+      return;
+    }
+
     if (
       (this.state.start && this.state.frequency) &&
       (!start || !frequency)
