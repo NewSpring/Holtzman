@@ -36,7 +36,13 @@ export class GivingActivity extends Component {
     // separate feed by transactions and accoutns
     data.forEach((feedItem: Object) => {
       if (typeof feedItem.status !== "undefined") {
-        transactions.push(feedItem);
+        // there can be more than one account per transaction.
+        // separate these into separate activity cards
+        feedItem.details.map((detailItem) => {
+          const singleActivity = JSON.parse(JSON.stringify(feedItem));
+          singleActivity.details = [detailItem];
+          transactions.push(singleActivity);
+        });
       }
       // else {
       //   accounts.push(feedItem);
@@ -94,7 +100,7 @@ export class GivingActivity extends Component {
 
     return (
       <ActivityCard
-        key={transaction.id}
+        key={`${transaction.id.slice(0,-8)}_${transaction.details[0].account.name}`}
         status={status}
         date={transaction.date}
         message={message}
@@ -175,4 +181,3 @@ export class GivingActivity extends Component {
 }
 
 export default GivingActivity;
-
