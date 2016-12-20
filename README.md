@@ -38,11 +38,16 @@ This repo contains the code base used to build v5 of the NewSpring site and nati
 - `*/__mocks__`: module mocks for testing adjacent to the module they mock.
 - `main.html`: root HTML file
 - `mobile-config.js`: used to generate cordova apps
-- `package.json`: used to manage npm dependencies and etc.
+- `package.json`: used to manage yarn dependencies and etc.
+- `yarn.lock`: used to make sure all developers are using the same package versions
 
 ## Local Development
 
-To install, clone down this repo and run `npm link`. This will bind `apollos` to your system to be used to run this app.
+To install all dependencies, we use [Yarn](https://yarnpkg.com/). To get started:
+1. Clone down the repo
+2. Make sure you have the Yarn CLI [installed](https://yarnpkg.com/en/docs/install)
+3. Run `yarn`.
+4. run `npm link`. This will bind `apollos` to your system to be used to run this app.
 
 `apollos setup`: This command will bootstrap the application. This may take some time.
 
@@ -65,7 +70,7 @@ To install, clone down this repo and run `npm link`. This will bind `apollos` to
 
 This project uses [Jest](https://facebook.github.io/jest/) for unit tests. These tests are located in `__tests__` subfolders adjacent to the thing they're testing.
 
-To run tests, call `npm test` or `npm test -- --watch`. This will also run `eslint` and `flow` tests when complete.
+To run tests, call `yarn test` or `yarn test -- --watch`. This will also run `eslint` and `flow` tests when complete.
 
 ## Linting
 
@@ -77,14 +82,14 @@ To install the extension you'll need to press `⌘+P`, paste the following comma
 ext install vscode-eslint
 ```
 
-To manually run eslint, use `npm run lint`.
+To manually run eslint, use `yarn lint`.
 
 ## Typing
 
 This project contains static typing for most code. We use [Flow](https://flowtype.org/) for this. To enable flow to a file,
 add `// @flow` to the very top of the file.
 
-To run flow, use `npm run flow`.
+To run flow, use `yarn flow`.
 
 ## Deploys
 

@@ -1,6 +1,6 @@
 # Contributing to Holtzman
 
-Holtzman is NewSpring's open sourced project to build apps for  web, iOS, and Android.
+Holtzman is NewSpring's open sourced project to build apps for web, iOS, and Android.
 This project is under heavy active development, and it currently being used in production
 for [my.newspring.cc](https://my.newspring.cc) and [our current apps](https://newspring.cc/apps).
 We're currently in the process of making this project easy to contribute to.
@@ -40,10 +40,10 @@ the same reason.
 2. **Describe your test plan in your commit.** If you've added code that should be tested, add tests in `__tests__` subfolders
 3. If the changes you are making are visual or involve new components, please also
 add a react storybook test. These are found in `__stories__` subfolders.
-4. Ensure tests pass on Travis and Circle CI. These automatically run when opening a
+4. Ensure tests pass on Travis and Coveralls. These automatically run when opening a
 pull request.
-5. Make sure your code lints (`npm run lint`).
-6. Make sure your code is typed using flow (`npm run flow`).
+5. Make sure your code lints (`yarn lint`).
+6. Make sure your code is typed using flow (`yarn flow`).
 7. Rebase your code to master (`git rebase`). Stating one-line intentions along
 with each commit helps the reviewer to understand what you're changing.
 
