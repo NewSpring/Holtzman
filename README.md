@@ -47,7 +47,7 @@ To install all dependencies, we use [Yarn](https://yarnpkg.com/). To get started
 1. Clone down the repo
 2. Make sure you have the Yarn CLI [installed](https://yarnpkg.com/en/docs/install)
 3. Run `yarn`.
-4. run `npm link`. This will bind `apollos` to your system to be used to run this app.
+4. run `npm link`. This will bind `apollos` to your system to be used to run this app ([more info](https://docs.npmjs.com/cli/link)).
 
 `apollos setup`: This command will bootstrap the application. This may take some time.
 
