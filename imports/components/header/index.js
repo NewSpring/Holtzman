@@ -132,7 +132,7 @@ class HeaderWithoutData extends Component {
                   overflow: "hidden",
                   textOverflow: "ellipsis",
                   whiteSpace: "nowrap",
-                  fontWeight: this.props.fontWeight,
+                  fontWeight: this.props.fontWeight || 700,
                 }}
               >
                 {this.props.text}

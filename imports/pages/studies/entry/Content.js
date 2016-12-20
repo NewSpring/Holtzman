@@ -64,9 +64,12 @@ export default class Content extends Component {
           <div dangerouslySetInnerHTML={react.markup(studyEntry)} />
 
         </div>
-        
+
         {(studyEntry.content.tags > 0) && (
-          <RelatedContent excludedIds={[studyEntry.id]} tags={studyEntry.content.tags || defaultArray} />
+          <RelatedContent
+            excludedIds={[studyEntry.id]}
+            tags={studyEntry.content.tags || defaultArray}
+          />
         )}
 
       </section>

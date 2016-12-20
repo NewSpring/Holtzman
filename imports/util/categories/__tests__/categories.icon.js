@@ -40,7 +40,7 @@ it("returns `icon-category-text` for `news`", () => {
   expect(result).toBe("icon-category-text");
 });
 
-it("returns `null` for anything else", () => {
+it("returns `icon-category-text` for anything else", () => {
   const result = categoryIcon({ channelName: "anythingelse" });
-  expect(result).toBe(null);
+  expect(result).toBe("icon-category-text");
 });

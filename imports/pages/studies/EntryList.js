@@ -23,20 +23,20 @@ class StudyEntryWithoutData extends Component {
     this.props.studyEntries.content.studyEntries.forEach(({ id }, i) => {
       if (this.props.focus === id) index = i + 2;
     });
-    
+
     const element = this.slider;
+    const windowWidth = window.innerWidth;
+    const ratio = window.isTablet ? 0.375 : 0.8;
+    const elementWidth = (window.innerWidth - 40) * ratio; // four-fifths
+    const left = windowWidth - (elementWidth / 2);
     if (element.children[index] && index !== 0) {
       element.children[index].scrollIntoView({ block: "start", behavior: "smooth" });
-      const windowWidth = window.innerWidth;
-      const ratio = window.isTablet ? 0.375 : 0.8;
-      const elementWidth = (window.innerWidth - 40) * ratio; // four-fifths
-      const left = windowWidth - (elementWidth / 2);
-      // XXX the second to last slide doesn't jump to the last one
-      // if (index === element.children.length) {
-      //   element.parentElement.scrollLeft += (left - 10);
-      // } else {
-        element.parentElement.scrollLeft += -(left - 10);
-      // }
+      element.parentElement.scrollLeft += -(left - 10);
+    } else if (index === element.children.length) {
+      element.children[index - 1].scrollIntoView({ block: "start", behavior: "smooth" });
+      element.parentElement.scrollLeft += (left - 10);
+    } else if ((index - 1) === element.children.length) {
+      element.children[0].scrollIntoView({ block: "start", behavior: "smooth" });
     }
   }
 

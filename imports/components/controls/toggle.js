@@ -46,7 +46,7 @@ export default class Toggle extends Component {
       "text-center",
       "toggle__item",
     ];
-    
+
     if (this.state.active === main) {
       classes.push("toggle__item--active");
       if (this.props.activeClass) classes.push(this.props.activeClass);
@@ -63,12 +63,10 @@ export default class Toggle extends Component {
 
   toggleStyle = { width: `${this.toggleWidth()}%` }
 
-  arrowStyle = () => {
-    return {
-      ...this.props.arrowStyle,
-      ...{ marginLeft: `${this.toggleWidth() * this.state.active}%` },
-    }
-  }
+  arrowStyle = () => ({
+    ...this.props.arrowStyle,
+    ...{ marginLeft: `${this.toggleWidth() * this.state.active}%` },
+  })
 
   render() {
     return (

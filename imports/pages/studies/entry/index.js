@@ -52,7 +52,6 @@ class StudyEntrySingle extends Component {
       id: 2,
       action: this.likeableAction,
     }));
-
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -75,7 +74,7 @@ class StudyEntrySingle extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    // this.handleLiveBar(nextProps, nextState);
+    this.handleLiveBar(nextProps, nextState);
     this.handleHeader(nextProps);
   }
 
@@ -112,7 +111,7 @@ class StudyEntrySingle extends Component {
     this.setState({ liveSet: true });
 
     if (content.content.scripture) {
-      this.props.dispatch(liveActions.float());
+      this.props.dispatch(liveActions.floatDouble());
       setTimeout(() => {
         this.setState({ livePush: true });
         this.props.dispatch(liveActions.show());
@@ -167,8 +166,8 @@ class StudyEntrySingle extends Component {
   }
 
   render() {
-    const { content } = this.props.studyEntry;
-    if (!content || !this.props.study.content) {
+    const { loading, content } = this.props.studyEntry;
+    if (loading || !content || !this.props.study.content) {
       return (
         <div className="locked-ends locked-sides floating">
           <div className="floating__item">

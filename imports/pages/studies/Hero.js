@@ -38,8 +38,7 @@ export default class StudyHero extends Component {
           className={this.backgroundClasses()}
           style={backgrounds.styles(study, imageLabel)}
         >
-          <div className={`overlay__item ${study.content.isLight ? "text-light-primary" : "text-dark-primary"} text-center soft-sides push-top`}>
-          </div>
+          <div className={`overlay__item ${study.content.isLight ? "text-light-primary" : "text-dark-primary"} text-center soft-sides push-top`} />
         </div>
       </section>
     );

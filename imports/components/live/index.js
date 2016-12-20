@@ -36,6 +36,10 @@ class LiveWithoutData extends Component {
       classes.push(css(Styles["live-float"]));
     }
 
+    if (this.props.live.floatDouble) {
+      classes.push(css(Styles["live-float-double"]));
+    }
+
     return classes.join(" ");
   }
 

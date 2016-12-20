@@ -13,7 +13,6 @@ type ISliderProps = {
   studyEntry: Object,
   toggleColor: string,
   isLight: boolean,
-  onTransitionEnd: Function,
 }
 
 type ISliderState = {
@@ -32,7 +31,7 @@ export default class Slider extends Component {
   handleChangeTabs = (index: number) => this.setState({ index })
   handleChangeIndex = (index: number) => this.setState({ index })
 
-  onLinkClick = (e) => {
+  onLinkClick = (e: Event) => {
     e.preventDefault();
     this.handleChangeTabs(1);
   }
@@ -45,6 +44,7 @@ export default class Slider extends Component {
     const styles = StyleSheet.create({
       arrow: {
         ":after": { borderTopColor: `#${toggleColor}` },
+        ":before": { borderTop: "none" },
       },
     });
 
@@ -56,8 +56,9 @@ export default class Slider extends Component {
             state={index}
             toggle={this.handleChangeIndex}
             style={{
-              borderWidth: "1px",
+              borderWidth: "0px",
               backgroundColor: `#${toggleColor}`,
+              zIndex: 100,
             }}
             toggleClass={isLight ? "text-dark-secondary" : "text-light-secondary"}
             activeClass={isLight ? "text-dark-primary" : "text-light-primary"}
