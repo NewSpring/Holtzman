@@ -42,9 +42,9 @@ the same reason.
 add a react storybook test. These are found in `__stories__` subfolders.
 4. Ensure tests pass on Travis and Circle CI. These automatically run when opening a
 pull request.
-7. Make sure your code lints (`npm run lint`).
-8. Make sure your code is typed using flow (`npm run flow`).
-9. Rebase your code to master (`git rebase`). Stating one-line intentions along
+5. Make sure your code lints (`npm run lint`).
+6. Make sure your code is typed using flow (`npm run flow`).
+7. Rebase your code to master (`git rebase`). Stating one-line intentions along
 with each commit helps the reviewer to understand what you're changing.
 
 ## Bugs
