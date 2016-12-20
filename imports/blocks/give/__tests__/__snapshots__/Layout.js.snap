@@ -75,7 +75,12 @@ exports[`test renders Billing form 1`] = `
         defaultValue="US"
         errorText="Please enter your country"
         includeBlank={true}
-        items={Array []}
+        items={
+          Array [
+            "USA",
+            "Others",
+          ]
+        }
         label="Country"
         name="country"
         validation={[Function]} />
@@ -93,7 +98,12 @@ exports[`test renders Billing form 1`] = `
             defaultValue="SC"
             errorText="Please enter your state"
             includeBlank={true}
-            items={Array []}
+            items={
+              Array [
+                "SC",
+                "NC",
+              ]
+            }
             label="State/Territory"
             name="state"
             validation={[Function]} />

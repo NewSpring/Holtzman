@@ -56,9 +56,11 @@ it("renders Billing form", () => {
         personal: {},
         billing: {},
       },
-      state: "default",
+      state: "SC",
       step: 2,
     },
+    states: ["SC","NC"],
+    countries: ["USA","Others"],
   }));
   expect(result).toMatchSnapshot();
 });
