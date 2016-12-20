@@ -33,6 +33,9 @@ This repo contains the code base used to build v5 of the NewSpring site and nati
 - `/scripts`: command line scripts used for deployment, testing, etc
 - `/server`: entry point for server
 - `/stylesheets`: sass for generating our css using sass and junction
+- `*/__tests__`: tests adjacent to the module they are testing
+- `*/__stories__`: react storybook stories adjacent to the module they are displaying
+- `*/__mocks__`: module mocks for testing adjacent to the module they mock.
 - `main.html`: root HTML file
 - `mobile-config.js`: used to generate cordova apps
 - `package.json`: used to manage npm dependencies and etc.
@@ -58,6 +61,12 @@ To install, clone down this repo and run `npm link`. This will bind `apollos` to
   - `--production`: Run the application in production mode
   - `--debug`: Run the application in debug mode
 
+## Testing
+
+This project uses [Jest](https://facebook.github.io/jest/) for unit tests. These tests are located in `__tests__` subfolders adjacent to the thing they're testing.
+
+To run tests, call `npm test` or `npm test -- --watch`. This will also run `eslint` and `flow` tests when complete.
+
 ## Linting
 
 This project includes linting using [ESLint](http://eslint.org/).  To enable linting in Visual Studio Code, you will need to install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
@@ -67,6 +76,15 @@ To install the extension you'll need to press `⌘+P`, paste the following comma
 ```
 ext install vscode-eslint
 ```
+
+To manually run eslint, use `npm run lint`.
+
+## Typing
+
+This project contains static typing for most code. We use [Flow](https://flowtype.org/) for this. To enable flow to a file,
+add `// @flow` to the very top of the file.
+
+To run flow, use `npm run flow`.
 
 ## Deploys
 
