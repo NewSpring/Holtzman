@@ -209,6 +209,7 @@ export default class Filter extends Component {
   render() {
     const { family } = this.props;
     const { expanded } = this.state;
+
     return (
       <div style={{ position: "relative" }}>
         <div
@@ -295,18 +296,42 @@ export default class Filter extends Component {
                   label={this.state.customStartLabel}
                   val={"StartDate"}
                   onClick={this.startClick}
-                  active={this.state.customStartActive}
-                  className={this.state.customDateDisabled && "tag--disabled"}
-                  icon={!this.state.customStartActive && scheduleIcon}
+                  active={(
+                    this.state.customStartLabel !== "Start Date" &&
+                    this.state.customStartActive
+                  )}
+                  className={(
+                    this.state.customStartLabel !== "Start Date" &&
+                    this.state.customDateDisabled &&
+                    "tag--disabled"
+                  )}
+                  icon={(
+                    this.state.customStartLabel === "Start Date" &&
+                    !this.state.showStartDatePicker &&
+                    !this.state.customStartActive &&
+                    scheduleIcon
+                  )}
                 />
                 <Tag
                   key={2}
                   label={this.state.customEndLabel}
                   val={"EndDate"}
                   onClick={this.startClick}
-                  active={this.state.customEndActive}
-                  className={this.state.customDateDisabled && "tag--disabled"}
-                  icon={!this.state.customEndActive && scheduleIcon}
+                  active={(
+                    this.state.customEndLabel !== "End Date" &&
+                    this.state.customEndActive
+                  )}
+                  className={(
+                    this.state.customEndLabel !== "End Date" &&
+                    this.state.customDateDisabled &&
+                    "tag--disabled"
+                  )}
+                  icon={(
+                    this.state.customEndLabel === "End Date" &&
+                    !this.state.showEndDatePicker &&
+                    !this.state.customEndActive &&
+                    scheduleIcon
+                  )}
                 />
               </div>
             </div>

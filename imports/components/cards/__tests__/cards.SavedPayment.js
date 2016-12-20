@@ -29,7 +29,7 @@ describe("SavedPaymentCard", () => {
     const mockOnClick = jest.fn();
     const tree = shallow(generateComponent({ payment: defaultAccount, onClick: mockOnClick}));
 
-    tree.find("[data-spec=\"saved-payment-close\"]").simulate("click");
+    tree.find("[data-spec=\"saved-payment\"]").simulate("click");
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
 

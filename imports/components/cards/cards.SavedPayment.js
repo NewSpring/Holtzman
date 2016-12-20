@@ -15,7 +15,12 @@ const SavedPaymentCard = ({
   onClick,
   classes,
 }: ISavedPaymentCard) => (
-  <div className={`${classes || ""}`} >
+  <div
+    className={`${classes || ""}`}
+    onClick={onClick}
+    style={{ cursor: "pointer" }}
+    data-spec="saved-payment"
+  >
     <div className="card">
       <div className="card__item soft push-half-ends one-whole" style={{ verticalAlign: "middle" }}>
         <div className="floating grid">
@@ -32,13 +37,8 @@ const SavedPaymentCard = ({
               </div>
             </div>
           </div>
-          <div
-            data-spec="saved-payment-close"
-            className="floating__item grid__item one-third text-right"
-            onClick={onClick}
-            style={{ cursor: "pointer" }}
-          >
-            <i className="icon-close text-alert" />
+          <div className="floating__item grid__item one-third text-right">
+            <i className="icon-arrow-next text-primary" />
           </div>
         </div>
       </div>

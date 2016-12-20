@@ -1,6 +1,13 @@
 exports[`SavedPaymentCard should have an accountName, fourDigit accountNumber, paymentType, and an onClick function 1`] = `
 <div
-  className="">
+  className=""
+  data-spec="saved-payment"
+  onClick={[Function]}
+  style={
+    Object {
+      "cursor": "pointer",
+    }
+  }>
   <div
     className="card">
     <div
@@ -34,16 +41,9 @@ exports[`SavedPaymentCard should have an accountName, fourDigit accountNumber, p
           </div>
         </div>
         <div
-          className="floating__item grid__item one-third text-right"
-          data-spec="saved-payment-close"
-          onClick={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }>
+          className="floating__item grid__item one-third text-right">
           <i
-            className="icon-close text-alert" />
+            className="icon-arrow-next text-primary" />
         </div>
       </div>
     </div>
