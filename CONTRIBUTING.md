@@ -6,7 +6,27 @@ for [my.newspring.cc](https://my.newspring.cc) and [our current apps](https://ne
 We're currently in the process of making this project easy to contribute to.
 Hopefully, this document sheds some light into our processes, and how you can contribute.
 
-## Our Development Process
+**Table of Contents**
+
+[How we work](#how-we-work)
+- [master is unsafe](#master-is-unsafe)
+- [Pull Requests](#pull-requests)
+
+[How can I contribute?](#how-can-i-contribute)
+- [Where to find known issues](#where-to-find-known-issues)
+- [Reporting new issues](#reporting-new-issues)
+- [How can I recommend new features](#how-can-i-recommend-new-features)
+- [Pull requests](#pull-requests)
+
+[Style Guide](#style-guide)
+- [Git](#git)
+- [Code](#code)
+
+[How to get in touch](#how-to-get-in-touch)
+
+[License](#license)
+
+## How we work
 
 Our team works 100% off of Github, and it should always remain updated with what is currently
 in active development.
@@ -26,6 +46,32 @@ a stable release of the app, you can always explore our past and current [releas
 We work off of pull requests pretty heavily, and therefore we monitor for new PR's.
 When considering pull requests, we may require more than one person to sign off,
 so these can sometimes take a day or two.
+
+## How can I contribute?
+
+One way you can contribute is by tackling some known issues.
+
+### Where to Find Known Issues
+
+We are using [GitHub Issues](https://github.com/NewSpring/holtman/issues)
+for our public bugs. We keep a close eye on this and try to make it clear when
+we have an internal fix in progress. Before filing a new task, try to make sure
+your problem doesn't already exist.
+
+### Reporting New Issues
+
+The best way to get a bug fixed is to provide an example case of where the problem
+is occurring. Images or videos of the failure occurring is beneficial where
+applicable. If you think you have a solution to a bug and would like to fix it,
+let us know. We can hopefully provide recommendations, as well as let you know
+if the bug is in fact intended behavior.
+
+### How can I recommend new features?
+
+We track feature requests using Github Issues. If you would like to begin
+a discussion about a new or improved feature, open a new issue.
+
+### Pull requests
 
 When working to fix bugs or add features, we recommend opening a pull request early
 so we can comment on it or request any changes early on. It is also recommended that
@@ -47,33 +93,22 @@ pull request.
 7. Rebase your code to master (`git rebase`). Stating one-line intentions along
 with each commit helps the reviewer to understand what you're changing.
 
-## Bugs
-
-### Where to Find Known Issues
-
-We are using [GitHub Issues](https://github.com/NewSpring/holtman/issues)
-for our public bugs. We keep a close eye on this and try to make it clear when
-we have an internal fix in progress. Before filing a new task, try to make sure
-your problem doesn't already exist.
-
-### Reporting New Issues
-
-The best way to get a bug fixed is to provide an example case of where the problem
-is occurring. Images or videos of the failure occurring is beneficial where
-applicable. If you think you have a solution to a bug and would like to fix it,
-let us know. We can hopefully provide recommendations, as well as let you know
-if the bug is in fact intended behavior.
-
-### Recommending New Features
-
-We also track feature requests using Github Issues. If you would like to begin
-a discussion about a new or improved feature, open a new issue.
-
-## How to Get in Touch
-
-* [Twitter](https://twitter.com/newspringweb)
-
 ## Style Guide
+
+### Git
+
+#### Issues
+- Above all, pay attention to the template shown when creating issues.
+- Before opening an issue, search existing issues and closed issues for any current or past discussion about your topic.
+
+#### Commits and commit messages
+- Try to limit each commit to one change.
+- Commits messages should be short and clear.
+- Feel free to reference issues and pull requests in commit messages.
+
+#### Pull Requests
+- Refer to the [above instructions](#pull-requests) on what to do before opening a pull request.
+- Follow instructions on the pull request template shown when opening a new pull request.
 
 ### Code
 
@@ -97,6 +132,11 @@ a discussion about a new or improved feature, open a new issue.
 * `{}` of props should hug their values (no spaces)
 * Place the closing `>` of opening tags on the same line as the last prop
 * Place the closing `/>` of self-closing tags on their own line and left-align them with the opening `<`
+
+
+## How to Get in Touch
+
+* [Twitter](https://twitter.com/newspringweb)
 
 ## License
 
