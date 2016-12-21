@@ -1,0 +1,10 @@
+exports[`Index has routes 1`] = `
+Array [
+  Object {
+    "component": [Function],
+    "path": "saved-payments/edit/:id",
+  },
+]
+`;
+
+exports[`Index renders 1`] = `<Layout />`;
