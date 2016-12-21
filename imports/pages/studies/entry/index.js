@@ -161,6 +161,7 @@ class StudyEntrySingle extends Component {
         classes={this.getLiveClasses()}
         toggleColor={study.content && collections.color(study.content)}
         isLight={study.content && study.content.content.isLight}
+        flush
       />
     );
   }

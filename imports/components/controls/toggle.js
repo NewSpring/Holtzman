@@ -11,6 +11,7 @@ export default class Toggle extends Component {
     activeClass: PropTypes.string,
     arrowClass: PropTypes.string,
     arrowStyle: PropTypes.obj,
+    flush: PropTypes.boolean,
   }
 
   state = {
@@ -69,9 +70,10 @@ export default class Toggle extends Component {
   })
 
   render() {
+    const { flush } = this.props;
     return (
       <div
-        className="toggle push-bottom soft-sides"
+        className={`toggle ${flush ? "" : "push-bottom"} soft-sides`}
         style={{ ...{ backgroundColor: "#fff" }, ...this.props.style }}
       >
         {this.props.items.map((item, i) =>

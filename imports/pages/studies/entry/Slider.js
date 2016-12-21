@@ -13,6 +13,7 @@ type ISliderProps = {
   studyEntry: Object,
   toggleColor: string,
   isLight: boolean,
+  flush: boolean,
 }
 
 type ISliderState = {
@@ -38,13 +39,21 @@ export default class Slider extends Component {
 
   render() {
     const { index } = this.state;
-    const { isLight, toggleColor } = this.props;
+    const { isLight, toggleColor, flush } = this.props;
 
     // XXX is this a perf killer?
     const styles = StyleSheet.create({
       arrow: {
         ":after": { borderTopColor: `#${toggleColor}` },
         ":before": { borderTop: "none" },
+      },
+      toggle: {
+        color: isLight ? "#505050" : "#f7f7f7",
+        ":hover": { color: isLight ? "#505050 !important" : "#f7f7f7 !important" },
+      },
+      active: {
+        color: isLight ? "#303030" : "#ffffff",
+        ":hover": { color: isLight ? "#303030 !important" : "#ffffff !important" },
       },
     });
 
@@ -60,9 +69,10 @@ export default class Slider extends Component {
               backgroundColor: `#${toggleColor}`,
               zIndex: 100,
             }}
-            toggleClass={isLight ? "text-dark-secondary" : "text-light-secondary"}
-            activeClass={isLight ? "text-dark-primary" : "text-light-primary"}
+            toggleClass={css(styles.toggle)}
+            activeClass={css(styles.active)}
             arrowClass={css(styles.arrow)}
+            flush={flush}
           />
         </div>
         <SwipeableViews

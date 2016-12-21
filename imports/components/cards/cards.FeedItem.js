@@ -38,7 +38,7 @@ const isLight = (item: Object): boolean => {
 
 const overlayStyles = (item: Object): string => {
   const { channelName } = item;
-  if (isCollectionChild(channelName)) return styles.overlay(item.parent);
+  if (isCollectionChild(channelName) && item.parent) return styles.overlay(item.parent);
   return styles.overlay(item);
 };
 
@@ -127,6 +127,8 @@ const itemStyles = (item: Object): Object => {
   } else {
     collection = item;
   }
+
+  if (!collection) return {};
   const color = collection.content.colors[0] && collection.content.colors[0].value;
   if (!color) return {};
 

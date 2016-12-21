@@ -14,9 +14,7 @@ class StudyEntryWithoutData extends Component {
     focus: PropTypes.string,
   }
 
-  componentDidUpdate(prevProps) {
-    // already loaded data and updated slider
-    if (prevProps.studyEntries.content && (this.props.focus === prevProps.focus)) return;
+  componentDidUpdate() {
     // no need to prefocus
     if (!this.props.focus) return;
     let index = 0;
@@ -29,6 +27,7 @@ class StudyEntryWithoutData extends Component {
     const ratio = window.isTablet ? 0.375 : 0.8;
     const elementWidth = (window.innerWidth - 40) * ratio; // four-fifths
     const left = windowWidth - (elementWidth / 2);
+
     if (element.children[index] && index !== 0) {
       element.children[index].scrollIntoView({ block: "start", behavior: "smooth" });
       element.parentElement.scrollLeft += -(left - 10);

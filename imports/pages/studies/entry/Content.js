@@ -47,7 +47,7 @@ export default class Content extends Component {
         )}
 
         {studyEntry.content.ooyalaId && (
-          <Video ooyalaId={studyEntry.content.ooyalaId} />
+          <Video id={studyEntry.content.ooyalaId} />
         )}
 
         <div className="soft soft-double@palm-wide-and-up push-top">
