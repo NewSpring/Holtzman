@@ -60,6 +60,12 @@ exports[`GivingActivity should render with data 1`] = `
               },
               "amount": 3,
             },
+            Object {
+              "account": Object {
+                "name": "Harambe Fund",
+              },
+              "amount": 2,
+            },
           ],
           "id": "789",
           "schedule": null,
