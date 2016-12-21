@@ -29,6 +29,22 @@ describe ("Saved Payments List", () => {
     expect(mountToJson(component)).toMatchSnapshot();
   });
 
+  it ("should render a loading state", () => {
+    const mockLoadingData = {
+      loading: true,
+    };
+
+    const component = mount(<SavedPaymentsList payments={mockLoadingData} />);
+    expect(mountToJson(component)).toMatchSnapshot();
+  });
+
+  it("should render without saved payments", () => {
+    const mockEmptyData = { };
+
+    const component = mount(<SavedPaymentsList payments={mockEmptyData} />);
+    expect(mountToJson(component)).toMatchSnapshot();
+  });
+
   it ("should render properly with data", () => {
     const component = mount(generateComponent());
     expect(mountToJson(component)).toMatchSnapshot();

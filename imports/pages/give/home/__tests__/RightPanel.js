@@ -48,7 +48,11 @@ describe("RightPanel Layout", () => {
     />;
 
   it("should be the current year", () => {
-    expect(start).toBe(2016);
+    expect(start).toBe(new Date().getFullYear())
+  });
+
+  it("should provide an array of 10 years", () => {
+    expect(YEARS.length).toBe(10);
   });
 
   it("should render a loading state", () => {
