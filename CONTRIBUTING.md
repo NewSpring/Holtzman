@@ -9,18 +9,18 @@ Hopefully, this document sheds some light into our processes, and how you can co
 **Table of Contents**
 
 [How we work](#how-we-work)
-- [master is unsafe](#master-is-unsafe)
-- [Pull Requests](#pull-requests)
+  * [master is unsafe](#master-is-unsafe)
+  * [Pull Requests](#pull-requests)
 
 [How can I contribute?](#how-can-i-contribute)
-- [Where to find known issues](#where-to-find-known-issues)
-- [Reporting new issues](#reporting-new-issues)
-- [How can I recommend new features](#how-can-i-recommend-new-features)
-- [Pull requests](#pull-requests)
+  * [Where to find known issues](#where-to-find-known-issues)
+  * [Reporting new issues](#reporting-new-issues)
+  * [How can I recommend new features](#how-can-i-recommend-new-features)
+  * [Pull requests](#pull-requests)
 
 [Style Guide](#style-guide)
-- [Git](#git)
-- [Code](#code)
+  * [Git](#git)
+  * [Code](#code)
 
 [How to get in touch](#how-to-get-in-touch)
 
