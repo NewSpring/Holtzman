@@ -1,0 +1,38 @@
+exports[`StudiesEntryListItem takes a single study as a prop 1`] = `
+<a
+  className="
+          text-dark-secondary floating ratio--square display-inline-block
+          rounded background--light-primary push-right
+        "
+  onClick={[Function]}
+  style={
+    Object {
+      "border": "1px solid #ddd",
+      "height": 787.2,
+      "width": 787.2,
+    }
+  }>
+  <div
+    className="one-whole soft-sides text-left floating__item">
+    <div
+      className="background--light-primary floating locked-left locked-top"
+      style={
+        Object {
+          "borderBottom": "1px solid #ddd",
+          "borderRadius": "6px 0 6px 0",
+          "borderRight": "1px solid #ddd",
+          "height": "40px",
+          "width": "40px",
+        }
+      }>
+      <h5
+        className="floating__item flush">
+        2
+      </h5>
+    </div>
+    <h4>
+      Who are you trying to please?
+    </h4>
+  </div>
+</a>
+`;

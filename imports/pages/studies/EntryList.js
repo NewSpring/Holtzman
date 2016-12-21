@@ -98,7 +98,7 @@ class StudyEntryWithoutData extends Component {
 }
 
 const STUDY_ENTRY_QUERY = gql`
-  query GetEntriesFromSeries($id: ID!) {
+  query GetEntriesFromStudy($id: ID!) {
     content: node(id: $id) {
       ... on Content {
         studyEntries: children(channels: ["study_entries"]) {
