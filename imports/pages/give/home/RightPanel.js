@@ -37,7 +37,7 @@ export default withData(({ loading, data, changeYear }) => (
               See your summary from
           </em></small>
         </p>
-        <style>{".right-select select { color: #ffffff }"}</style>
+        <style>{".right-select select { color: #ffffff } .right-select:after {border-color: #ffffff transparent transparent}"}</style>
         <Forms.Select
           items={YEARS}
           hideLabel
