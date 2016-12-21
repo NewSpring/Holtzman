@@ -104,7 +104,7 @@ const Layout = ({
         defaultValue={billing.streetAddress2}
       />
 
-      {countries && countries.length && <Forms.Select
+      {countries && countries.length > 0 && <Forms.Select
         name="country"
         label="Country"
         errorText="Please enter your country"
@@ -123,7 +123,7 @@ const Layout = ({
       />
 
       <div className="grid">
-        {states && states.length && <StateOrTerritory
+        {states && states.length > 0 && <StateOrTerritory
           billing={billing}
           states={states}
           saveState={saveState}
