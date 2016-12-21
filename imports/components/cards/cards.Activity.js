@@ -38,7 +38,7 @@ const getIcon = (status: string) => {
 type IActivity = {
   status: string,
   date: ?string,
-  message: string,
+  message: any,
   linkText: ?string,
   linkUrl: ?string,
 };

@@ -62,8 +62,8 @@ export class GivingActivity extends Component {
     return activityToShow;
   };
 
-  additionalAmount = (details) => {
-    const amount = details.amount === parseInt(details.amount)
+  additionalAmount = (details: Object) => {
+    const amount = details.amount === parseInt(details.amount, 10)
       ? details.amount
       : details.amount.toFixed(2);
 
@@ -81,7 +81,7 @@ export class GivingActivity extends Component {
     const scheduled = transaction.schedule !== null;
 
     // show .00 on whole-dollar amounts. Don't show on even dollars
-    const amount = transaction.details[0].amount === parseInt(transaction.details[0].amount)
+    const amount = transaction.details[0].amount === parseInt(transaction.details[0].amount, 10)
       ? transaction.details[0].amount
       : transaction.details[0].amount.toFixed(2);
 
@@ -89,33 +89,45 @@ export class GivingActivity extends Component {
       status = "success";
       linkText = "View Gift";
       linkUrl = `/give/history/${transaction.id}`;
-      message = <p>
-        Your {scheduled ? "scheduled " : ""}gift of <strong>${amount} </strong>
-        to <strong>{transaction.details[0].account.name} </strong>
-        {transaction.details.length > 1 ? this.additionalAmount(transaction.details[1]) : null} was successful.
-      </p>;
+      message = (
+        <p>
+          Your {scheduled ? "scheduled " : ""}gift of <strong>${amount} </strong>
+          to <strong>{transaction.details[0].account.name} </strong>
+          {transaction.details.length > 1 ? this.additionalAmount(transaction.details[1]) : null}
+          was successful.
+        </p>
+      );
     } else if (transaction.status === "Failed") {
       status = "failed";
-      message = <p>
-        Your {scheduled ? "scheduled " : ""}contribution to
-        <strong> {transaction.details[0].account.name} </strong>
-        {transaction.details.length > 1 ? <span>and<strong> {account.details[1].name} </strong></span> : null}
-        was unsuccessful.
-        {transaction.statusMessage !== null && transaction.statusMessage !== "" ? ` Unfortunately, ${transaction.statusMessage}.` : ""}
-      </p>;
+      message = (
+        <p>
+          Your {scheduled ? "scheduled " : ""}contribution to
+          <strong> {transaction.details[0].account.name} </strong>
+          {transaction.details.length > 1
+            ? <span>and<strong> {transaction.details[1].name} </strong></span> : null}
+          was unsuccessful.
+          {transaction.statusMessage !== null && transaction.statusMessage !== ""
+            ? ` Unfortunately, ${transaction.statusMessage}.` : ""}
+        </p>
+      );
     } else if (transaction.status === "Pending") {
       status = "success";
-      message = <p>
-        Your {scheduled ? "scheduled " : ""}contribution to<strong> {transaction.details[0].account.name} </strong>
-        {transaction.details.length > 1 ? <span>and<strong> {account.details[1].name} </strong></span> : null}is <strong>pending</strong>.
-      </p>;
+      message = (
+        <p>
+          Your {scheduled ? "scheduled " : ""}contribution to
+          <strong> {transaction.details[0].account.name} </strong>
+          {transaction.details.length > 1
+            ? <span>and<strong> {transaction.details[1].name} </strong></span> : null}
+          is <strong>pending</strong>.
+        </p>
+      );
     } else {
       return null;
     }
 
     return (
       <ActivityCard
-        key={`${transaction.id.slice(0,-8)}_${transaction.details[0].account.name}`}
+        key={`${transaction.id.slice(0, -8)}_${transaction.details[0].account.name}`}
         status={status}
         date={transaction.date}
         message={message}
