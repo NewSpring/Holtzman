@@ -99,11 +99,12 @@ exports[`RightPanel Layout should render a loading state 1`] = `
           </small>
         </p>
         <style>
-          .input--active select { color: #ffffff }
+          .right-select select { color: #ffffff } .right-select:after {border-color: #ffffff transparent transparent}
         </style>
         <Select
           classes={
             Array [
+              "right-select",
               "hard",
               "flush",
               "display-inline-block",
@@ -157,7 +158,7 @@ exports[`RightPanel Layout should render a loading state 1`] = `
           }
           onChange={[Function]}>
           <div
-            className="input hard flush display-inline-block select_15p0e27">
+            className="input right-select hard flush display-inline-block select_15p0e27">
             <select
               className="outlined--dotted outlined--light text-light-primary h6 hard-top flush-bottom"
               onChange={[Function]}
@@ -331,11 +332,12 @@ exports[`RightPanel Layout should render with data 1`] = `
           </small>
         </p>
         <style>
-          .input--active select { color: #ffffff }
+          .right-select select { color: #ffffff } .right-select:after {border-color: #ffffff transparent transparent}
         </style>
         <Select
           classes={
             Array [
+              "right-select",
               "hard",
               "flush",
               "display-inline-block",
@@ -389,7 +391,7 @@ exports[`RightPanel Layout should render with data 1`] = `
           }
           onChange={[Function]}>
           <div
-            className="input hard flush display-inline-block select_15p0e27">
+            className="input right-select hard flush display-inline-block select_15p0e27">
             <select
               className="outlined--dotted outlined--light text-light-primary h6 hard-top flush-bottom"
               onChange={[Function]}

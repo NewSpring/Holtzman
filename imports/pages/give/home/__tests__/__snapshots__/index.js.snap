@@ -9,7 +9,7 @@ Array [
   Object {
     "component": [Function],
     "path": "home",
-    "rightComponent": <Apollo(RightPanel) />,
+    "rightComponent": <MeteorDataContainer />,
   },
 ]
 `;
