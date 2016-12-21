@@ -7,6 +7,23 @@ Church](https://img.shields.io/badge/NEWSPRING_CHURCH-Holtzmann-6BAC43.svg?style
 
 Holtzmann is a reactive application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
 
+**Table of Contents**
+
+[Prerequisites](#prerequisites)
+
+[Quick Start](#quick-start)
+
+[Structure](#structure)
+
+[Local Development](#local-development)
+  * [Testing](#testing)
+  * [Linting](#linting)
+  * [Typing](#typing)
+
+[Deploys](#deploys)
+
+[Contributing](#contributing)
+
 ## Prerequisites
 
 - [Meteor](curl https://install.meteor.com/ | sh): `curl https://install.meteor.com/ | sh`;
@@ -43,6 +60,8 @@ This repo contains the code base used to build v5 of the NewSpring site and nati
 
 ## Local Development
 
+### Basics
+
 To install all dependencies, we use [Yarn](https://yarnpkg.com/). To get started:
 1. Clone down the repo
 2. Make sure you have the Yarn CLI [installed](https://yarnpkg.com/en/docs/install)
@@ -66,13 +85,13 @@ To install all dependencies, we use [Yarn](https://yarnpkg.com/). To get started
   - `--production`: Run the application in production mode
   - `--debug`: Run the application in debug mode
 
-## Testing
+### Testing
 
 This project uses [Jest](https://facebook.github.io/jest/) for unit tests. These tests are located in `__tests__` subfolders adjacent to the thing they're testing.
 
 To run tests, call `yarn test` or `yarn test -- --watch`. This will also run `eslint` and `flow` tests when complete.
 
-## Linting
+### Linting
 
 This project includes linting using [ESLint](http://eslint.org/).  To enable linting in Visual Studio Code, you will need to install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
@@ -84,7 +103,7 @@ ext install vscode-eslint
 
 To manually run eslint, use `yarn lint`.
 
-## Typing
+### Typing
 
 This project contains static typing for most code. We use [Flow](https://flowtype.org/) for this. To enable flow to a file,
 add `// @flow` to the very top of the file.
