@@ -28,6 +28,9 @@ describe("Layout", () => {
     changeDates: jest.fn(),
     reloading: false,
     family: [],
+    filterTransactions: jest.fn(),
+    onPrintClick: jest.fn(),
+    printLoading: false,
   };
 
   const generateComponent = (additionalProps = {}) => {
@@ -83,6 +86,27 @@ describe("Layout", () => {
       transactions: [],
       ready: true,
     }));
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("renders transactions across years", () => {
+    const transactions = [
+      {
+        date: "2012-12-12",
+        details: [
+          { account: "test", amount: 2 },
+          { account: "test", amount: 2 },
+        ],
+      },
+      {
+        date: "2013-12-12",
+        details: [
+          { account: "Other Test", amount: 2 },
+          { account: "Third Test", amount: 2 },
+        ],
+      },
+    ];
+    const wrapper = shallow(generateComponent({ transactions }));
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 });
