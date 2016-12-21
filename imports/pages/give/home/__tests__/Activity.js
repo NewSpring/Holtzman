@@ -40,7 +40,7 @@ const mockFeedData = [
     "status": null,
     "statusMessage": null,
     "schedule": null,
-    "details": [{"amount": 3,"account": {"name": "General Fund"}}]
+    "details": [{"amount": 3,"account": {"name": "General Fund"}}, {"amount": 2,"account": {"name": "Harambe Fund"}}]
   },
   {
     "id": "111",
@@ -54,7 +54,7 @@ const generateComponent = (additionalProps) =>
   <GivingActivity {...additionalProps} />;
 
 describe("GivingActivity", () => {
-  it("should render with minimal props", () => {
+  it("should render with minimal props and display no activity placeholder", () => {
     const component = mount(generateComponent());
     expect(mountToJson(component)).toMatchSnapshot();
   });

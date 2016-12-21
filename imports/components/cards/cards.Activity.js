@@ -38,7 +38,7 @@ const getIcon = (status: string) => {
 type IActivity = {
   status: string,
   date: ?string,
-  message: string,
+  message: any,
   linkText: ?string,
   linkUrl: ?string,
 };
@@ -56,7 +56,7 @@ const Activity = ({
         <i className="soft-half-right">{getIcon(status)}</i>
         {date && <h5 className={`${status === "success" ? "text-dark-tertiary " : ""}display-inline-block floating__item soft-half-bottom`}>{ moment(date).format("MMM D, YYYY") }</h5>}
       </div>
-      <p>{message}</p>
+      {typeof message === "string" ? <p>{message}</p> : message}
       {linkText && linkUrl && (
         <Link
           to={linkUrl}

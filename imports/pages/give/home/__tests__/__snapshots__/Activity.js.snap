@@ -60,6 +60,12 @@ exports[`GivingActivity should render with data 1`] = `
               },
               "amount": 3,
             },
+            Object {
+              "account": Object {
+                "name": "Harambe Fund",
+              },
+              "amount": 2,
+            },
           ],
           "id": "789",
           "schedule": null,
@@ -358,7 +364,7 @@ exports[`GivingActivity should render with data 1`] = `
 </GivingActivity>
 `;
 
-exports[`GivingActivity should render with minimal props 1`] = `
+exports[`GivingActivity should render with minimal props and display no activity placeholder 1`] = `
 <GivingActivity>
   <div
     className="soft-half-sides soft-double-sides@lap-and-up">

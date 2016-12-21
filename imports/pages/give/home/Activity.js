@@ -62,6 +62,16 @@ export class GivingActivity extends Component {
     return activityToShow;
   };
 
+  additionalAmount = (details: Object) => {
+    const amount = details.amount === parseInt(details.amount, 10)
+      ? details.amount
+      : details.amount.toFixed(2);
+
+    return (
+      <span>and <strong>${amount}</strong> to <strong>{details.account.name}</strong></span>
+    );
+  };
+
   // used by renderActivity to render a transasction card
   renderTransaction = (transaction: Object): any => {
     let message;
@@ -70,31 +80,54 @@ export class GivingActivity extends Component {
     let linkUrl;
     const scheduled = transaction.schedule !== null;
 
+    // show .00 on whole-dollar amounts. Don't show on even dollars
+    const amount = transaction.details[0].amount === parseInt(transaction.details[0].amount, 10)
+      ? transaction.details[0].amount
+      : transaction.details[0].amount.toFixed(2);
+
     if ((transaction.status === null || transaction.status === "Success" || transaction.status === "Complete") && transaction.details.length) {
       status = "success";
       linkText = "View Gift";
       linkUrl = `/give/history/${transaction.id}`;
-      message =
-        `Your ${scheduled ? "scheduled " : ""}gift of $${transaction.details[0].amount} to
-        ${transaction.details[0].account.name} was successful`;
+      message = (
+        <p>
+          Your {scheduled ? "scheduled " : ""}gift of <strong>${amount} </strong>
+          to <strong>{transaction.details[0].account.name} </strong>
+          {transaction.details.length > 1 ? this.additionalAmount(transaction.details[1]) : null}
+          was successful.
+        </p>
+      );
     } else if (transaction.status === "Failed") {
       status = "failed";
-      message =
-        `Your ${scheduled ? "scheduled " : ""}contribution to ${transaction.details[0].account.name} failed.
-        ${transaction.statusMessage !== null && transaction.statusMessage !== ""
-          ? `Unfortunately, ${transaction.statusMessage}.` : ""}`;
+      message = (
+        <p>
+          Your {scheduled ? "scheduled " : ""}contribution to
+          <strong> {transaction.details[0].account.name} </strong>
+          {transaction.details.length > 1
+            ? <span>and<strong> {transaction.details[1].name} </strong></span> : null}
+          was unsuccessful.
+          {transaction.statusMessage !== null && transaction.statusMessage !== ""
+            ? ` Unfortunately, ${transaction.statusMessage}.` : ""}
+        </p>
+      );
     } else if (transaction.status === "Pending") {
       status = "success";
-      message =
-        `Your ${scheduled ? "scheduled " : ""}contribution to ${transaction.details[0].account.name}
-        is pending.`;
+      message = (
+        <p>
+          Your {scheduled ? "scheduled " : ""}contribution to
+          <strong> {transaction.details[0].account.name} </strong>
+          {transaction.details.length > 1
+            ? <span>and<strong> {transaction.details[1].name} </strong></span> : null}
+          is <strong>pending</strong>.
+        </p>
+      );
     } else {
       return null;
     }
 
     return (
       <ActivityCard
-        key={transaction.id}
+        key={`${transaction.id.slice(0, -8)}_${transaction.details[0].account.name}`}
         status={status}
         date={transaction.date}
         message={message}
@@ -147,14 +180,25 @@ export class GivingActivity extends Component {
           <div className="card">
             <div className="card__item soft">
               <h4 className="text-dark-primary">
-                Insert headline copy here
+                {"You don't have any activity to show"}
               </h4>
               <p>
-                Donec sed odio dui.
-                Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+                {`This section is to keep you up to date on your recent online giving
+                activity. It appears as if you haven't given online before.`}
+              </p>
+              <p>
+                {`If you believe this is an error and you would like a member of our
+                customer support team to contact you, click `}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
+                >
+                  here
+                </a>.
               </p>
               <Link to="/give/now" className="btn one-whole@handheld flush-bottom">
-                Give First Contribution
+                Give Now
               </Link>
             </div>
           </div>
@@ -175,4 +219,3 @@ export class GivingActivity extends Component {
 }
 
 export default GivingActivity;
-
