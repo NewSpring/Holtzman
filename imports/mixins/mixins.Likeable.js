@@ -42,8 +42,8 @@ const Likeable = {
     if (props.series) return props.series.content;
     if (props.album) return props.album.content;
     if (props.news) return props.news.content;
-    if (props.study) return props.study.content;
     if (props.studyEntry) return props.studyEntry.content;
+    if (props.study) return props.study.content;
     return null;
   },
 
@@ -74,9 +74,9 @@ const Likeable = {
       }
 
       if (curEntry.channelName === "study_entries") {
-        const studies = this.props.studies.content;
+        const study = this.props.study.content;
         curEntry.parent = {
-          entryId: studies.id || studies.entryId,
+          entryId: study.id || study.entryId,
         };
       }
 
@@ -86,7 +86,7 @@ const Likeable = {
       }
 
       if (curEntry.channelName === "study_entries") {
-        image = backgrounds.image(this.props.studies.content);
+        image = backgrounds.image(this.props.study.content);
       }
 
       Likes.insert({
