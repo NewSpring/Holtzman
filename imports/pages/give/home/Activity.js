@@ -183,8 +183,8 @@ export class GivingActivity extends Component {
                 {"You don't have any activity to show"}
               </h4>
               <p>
-                {`This section is to keep you up to date on your recent giving
-                activity. It appears as if you haven't given before.`}
+                {`This section is to keep you up to date on your recent online giving
+                activity. It appears as if you haven't given online before.`}
               </p>
               <p>
                 {`If you believe this is an error and you would like a member of our
@@ -198,7 +198,7 @@ export class GivingActivity extends Component {
                 </a>.
               </p>
               <Link to="/give/now" className="btn one-whole@handheld flush-bottom">
-                Give Your First Gift
+                Give Now
               </Link>
             </div>
           </div>
