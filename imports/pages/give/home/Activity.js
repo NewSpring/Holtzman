@@ -180,14 +180,25 @@ export class GivingActivity extends Component {
           <div className="card">
             <div className="card__item soft">
               <h4 className="text-dark-primary">
-                Insert headline copy here
+                {"You don't have any activity to show"}
               </h4>
               <p>
-                Donec sed odio dui.
-                Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+                {`This section is to keep you up to date on your recent giving
+                activity. It appears as if you haven't given before.`}
+              </p>
+              <p>
+                {`If you believe this is an error and you would like a member of our
+                customer support team to contact you, click `}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
+                >
+                  here
+                </a>.
               </p>
               <Link to="/give/now" className="btn one-whole@handheld flush-bottom">
-                Give First Contribution
+                Give Your First Gift
               </Link>
             </div>
           </div>

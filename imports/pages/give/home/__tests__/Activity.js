@@ -54,7 +54,7 @@ const generateComponent = (additionalProps) =>
   <GivingActivity {...additionalProps} />;
 
 describe("GivingActivity", () => {
-  it("should render with minimal props", () => {
+  it("should render with minimal props and display no activity placeholder", () => {
     const component = mount(generateComponent());
     expect(mountToJson(component)).toMatchSnapshot();
   });
