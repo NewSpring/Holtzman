@@ -1,4 +1,8 @@
 // @flow
+
+// $FlowMeteor
+import { Meteor } from "meteor/meteor";
+
 import Campaign from "./campaign";
 import EditSavedPayment from "./saved-payments/";
 import EditSchedule from "./schedules/Edit";
@@ -22,7 +26,15 @@ const Routes = [
   {
     path: "give",
     component: Layout,
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/give/home") },
+    indexRoute: {
+      onEnter: (nextState: Object, replace: Function) => {
+        if (!Meteor.userId()) {
+          replace("/give/now");
+        } else {
+          replace("/give/home");
+        }
+      },
+    },
     childRoutes: [
       ...History.Routes,
       ...Home.Routes,
