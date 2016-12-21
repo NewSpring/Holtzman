@@ -1,0 +1,23 @@
+exports[`test should have a step four 1`] = `
+<div>
+  Step 4
+</div>
+`;
+
+exports[`test should have a step one 1`] = `
+<div>
+  Step 1
+</div>
+`;
+
+exports[`test should have a step three 1`] = `
+<div>
+  Step 3
+</div>
+`;
+
+exports[`test should have a step two 1`] = `
+<div>
+  Step 2
+</div>
+`;
