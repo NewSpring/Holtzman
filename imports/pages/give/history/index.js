@@ -1,11 +1,14 @@
 // @flow
 import { Component, PropTypes } from "react";
+// $FlowMeteor
+import { Meteor } from "meteor/meteor";
 import moment from "moment";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import fileSaver from "file-saver";
 
 import infiniteScroll from "../../../decorators/infiniteScroll";
+import createContainer from "../../../blocks/meteor/react-meteor-data";
 
 import Authorized from "../../../blocks/authorzied";
 import base64ToBlob from "../../../util/base64ToBlob";
@@ -72,18 +75,20 @@ class TemplateWithoutData extends Component {
     const { printLoading } = this.state;
 
     return (
-      <Layout
-        transactions={transactions}
-        family={filter.family || []}
-        alive
-        ready={!loading}
-        reloading={this.state.refetching}
-        Loading={Loading}
-        done={done}
-        filterTransactions={this.wrapRefetch(filterTransactions)}
-        onPrintClick={this.onPrintClick}
-        printLoading={printLoading}
-      />
+      <Authorized>
+        <Layout
+          transactions={transactions || []}
+          family={filter.family || []}
+          alive
+          ready={!loading}
+          reloading={this.state.refetching}
+          Loading={Loading}
+          done={done}
+          filterTransactions={this.wrapRefetch(filterTransactions)}
+          onPrintClick={this.onPrintClick}
+          printLoading={printLoading}
+        />
+      </Authorized>
     );
   }
 }
@@ -143,11 +148,12 @@ const TRANSACTIONS_QUERY = gql`
 const DEFAULT_LIMIT = 20;
 
 const withTransactions = graphql(TRANSACTIONS_QUERY, {
-  options: {
+  options: ({ authorized }) => ({
     variables: { limit: DEFAULT_LIMIT, skip: 0, people: [], start: "", end: "" },
     forceFetch: true,
+    skip: !authorized,
     ssr: false,
-  },
+  }),
   props: ({ data }) => ({
     currentVariables: data.variables,
     transactions: data.transactions || [],
@@ -175,7 +181,9 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
   }),
 });
 
-const Template = withFilter(
+const authorized = () => ({ authorized: Meteor.userId() });
+
+const Template = createContainer(authorized, withFilter(
   withStatement(
     withTransactions(
       infiniteScroll()(
@@ -183,12 +191,12 @@ const Template = withFilter(
       )
     )
   )
-);
+));
 
 const Routes = [
   {
     path: "history",
-    component: Authorized,
+    component: Template,
     indexRoute: { component: Template },
   },
 ];
