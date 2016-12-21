@@ -1,5 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { PropTypes } from "react";
+import uniqBy from "lodash.uniqby";
+
 import createContainer from "../../blocks/meteor/react-meteor-data";
 import Likes from "../../database/collections/likes";
 import Loading from "../../components/loading";
@@ -106,7 +108,7 @@ export default createContainer(() => {
 
   return {
     likes,
-    recentLikes,
+    recentLikes: uniqBy(recentLikes, "entryId"),
   };
 }, LikesContainer);
 

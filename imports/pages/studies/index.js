@@ -5,29 +5,30 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import Meta from "../../components/meta";
 
+import Headerable from "../../mixins/mixins.Header";
+import infiniteScroll from "../../decorators/infiniteScroll";
+
 import { FeedItemSkeleton } from "../../components/loading";
 import ApollosPullToRefresh from "../../components/pullToRefresh";
 import FeedItem from "../../components/cards/cards.FeedItem";
 
-import Headerable from "../../mixins/mixins.Header";
-import infiniteScroll from "../../decorators/infiniteScroll";
-
 import { nav as navActions } from "../../store";
 
-import Single from "./devotions.Single";
+import Single from "./Single";
+import SingleStudyEntry from "./entry";
 
-class DevotionsWithoutData extends Component {
+class TemplateWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
     Loading: PropTypes.func,
-  }
+  };
 
   componentWillMount() {
     this.props.dispatch(navActions.setLevel("TOP"));
     if (this.headerAction) {
-      this.headerAction({ title: "All Devotionals" });
+      this.headerAction({ title: "All Studies" });
     }
   }
 
@@ -45,8 +46,8 @@ class DevotionsWithoutData extends Component {
       items.map((item, i) => (
         <div
           className={
-            "grid__item one-half@palm-wide one-third@portable one-quarter@anchored " +
-            "flush-bottom@handheld push-bottom@portable push-bottom@anchored"
+            "grid__item one-half@palm-wide one-third@portable " +
+              "one-quarter@anchored flush-bottom@handheld push-bottom@portable push-bottom@anchored"
           }
           key={i}
         >
@@ -59,12 +60,11 @@ class DevotionsWithoutData extends Component {
     );
   }
 
-
   render() {
     const { Loading } = this.props;
     return (
       <ApollosPullToRefresh handleRefresh={this.handleRefresh}>
-        <Meta title="Devotionals" />
+        <Meta title="Studies" />
         <div className="background--light-secondary">
           <section className="soft-half">
             <div className="grid">
@@ -80,9 +80,9 @@ class DevotionsWithoutData extends Component {
   }
 }
 
-const DEVOTIONALS_QUERY = gql`
-  query getDevotionals($limit: Int!, $skip: Int!) {
-    content(channel: "devotionals", limit: $limit, skip: $skip) {
+const SERIES_QUERY = gql`
+  query getSeries($limit: Int!, $skip: Int!){
+    content(channel: "studies", limit: $limit, skip: $skip) {
       id
       entryId: id
       title
@@ -95,19 +95,24 @@ const DEVOTIONALS_QUERY = gql`
         channelId
       }
       content {
-        body
         images(sizes: ["large"]) {
           fileName
           fileType
           fileLabel
           url
         }
+        isLight
+        colors {
+          id
+          value
+          description
+        }
       }
     }
   }
 `;
 
-const withDevotionals = graphql(DEVOTIONALS_QUERY, {
+const withSeries = graphql(SERIES_QUERY, {
   options: {
     variables: { limit: 20, skip: 0 },
   },
@@ -131,26 +136,30 @@ const withDevotionals = graphql(DEVOTIONALS_QUERY, {
 
 const mapStateToProps = (state) => ({ paging: state.paging });
 
-const Devotions = connect(mapStateToProps)(
-  withDevotionals(
-    infiniteScroll((x) => x, { doneText: "End of Devotionals" })(
+const Template = connect(mapStateToProps)(
+  withSeries(
+    infiniteScroll((x) => x, { doneText: "End of Studies" })(
       ReactMixin.decorate(Headerable)(
-        DevotionsWithoutData
+        TemplateWithoutData
       )
     )
   )
 );
 
 const Routes = [
-  // { path: "devotions", component: Devotions },
-  { path: "devotions/:id", component: Single },
+  { path: "/studies", component: Template },
+  { path: "/devotions", component: Template },
+  { path: "/devotionals", component: Template },
+  { path: "/studies/:id", component: Single },
+  { path: "/studies/:id/entry/:studyEntryId", component: SingleStudyEntry },
 ];
 
 export default {
-  Devotions,
+  Template,
   Routes,
 };
 
 export {
-  DevotionsWithoutData,
+  TemplateWithoutData,
+  SERIES_QUERY,
 };

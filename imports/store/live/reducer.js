@@ -62,11 +62,21 @@ export default createReducer(initial, {
     }
   ),
 
+  "LIVE.FLOAT_DOUBLE": (state) => (
+    {
+      ...state,
+      ...{
+        floatDouble: true,
+      },
+    }
+  ),
+
   "LIVE.UNFLOAT": (state) => (
     {
       ...state,
       ...{
         float: false,
+        floatDouble: false,
       },
     }
   ),

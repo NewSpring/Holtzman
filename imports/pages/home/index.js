@@ -2,9 +2,11 @@ import { Component, PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
+import difference from "lodash.difference";
 import gql from "graphql-tag";
 
 import Split, { Left, Right } from "../../blocks/split";
+import { topics } from "../../blocks/following";
 
 import ApollosPullToRefresh from "../../components/pullToRefresh";
 import { FeedItemSkeleton } from "../../components/loading";
@@ -56,10 +58,8 @@ class HomeWithoutData extends Component {
           }
           key={i}
         >
-          {(() => {
-            if (typeof item === "number") return <FeedItemSkeleton />;
-            return <FeedItem item={item} />;
-          })()}
+          {(typeof item === "number") && <FeedItemSkeleton />}
+          {(typeof item !== "number") && <FeedItem item={item} />}
         </div>
       ))
 
@@ -151,21 +151,37 @@ const contentFragment = gql`
 `;
 
 const CONTENT_FEED_QUERY = gql`
-  query getFeed($excludeChannels: [String]!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
-    feed(excludeChannels: $excludeChannels, limit: $limit, skip: $skip, cache: $cache) {
-      ...ContentForFeed
-      parent {
+  query HomeFeed($filters: [String]!, $options: String!, $limit: Int!, $skip: Int!, $cache: Boolean!) {
+    feed: userFeed(filters: $filters, options: $options, limit: $limit, skip: $skip, cache: $cache) {
+      ... on Content {
         ...ContentForFeed
+        parent {
+          ...ContentForFeed
+        }
       }
     }
   }
   ${contentFragment}
 `;
 
+const getTopics = (opts) => {
+  let channels = opts;
+
+  // only include what user hasn't excluded
+  channels = difference(topics, channels);
+
+  // ensure channels aren't empty
+  if (channels.length === 0) channels = [...topics];
+
+  // return for the graphql call
+  return channels.map((x) => x.toLowerCase());
+};
+
 const withFeedContent = graphql(CONTENT_FEED_QUERY, {
   options: (ownProps) => ({
     variables: {
-      excludeChannels: ownProps.topics,
+      filters: ["CONTENT"],
+      options: JSON.stringify({ content: { channels: getTopics(ownProps.topics) } }),
       limit: 20,
       skip: 0,
       cache: true,

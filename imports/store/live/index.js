@@ -32,5 +32,6 @@ export default {
   show: () => ({ type: "LIVE.SHOW" }),
   hide: () => ({ type: "LIVE.HIDE" }),
   float: () => ({ type: "LIVE.FLOAT" }),
+  floatDouble: () => ({ type: "LIVE.FLOAT_DOUBLE" }),
   unfloat: () => ({ type: "LIVE.UNFLOAT" }),
 };

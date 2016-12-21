@@ -8,43 +8,45 @@ import collections from "../../util/collections";
 import categories from "../../util/categories";
 import time from "../../util/time";
 
+const isCollectionChild = (channelName) => (
+  channelName === "sermons" || channelName === "study_entries"
+);
+
+const isCollectionParent = (channelName) => (
+  channelName === "series_newspring" || channelName === "studies"
+);
+
 const getImage = (item: Object) => {
-  if (item.channelName === "sermons" && item.parent) {
+  if (isCollectionChild(item.channelName) && item.parent) {
     if (item.content.images.length > 0) return backgrounds.image(item);
     return backgrounds.image(item.parent);
   }
   return backgrounds.image(item);
 };
 
-const isSeriesItem = (item: Object): boolean => {
+const isCollectionItem = (item: Object): boolean => {
   const { channelName } = item;
-  return (channelName === "series_newspring" || channelName === "sermons");
+  return (isCollectionChild(channelName) || isCollectionParent(channelName));
 };
 
 const isLight = (item: Object): boolean => {
-  if (!isSeriesItem(item)) return true;
+  if (!isCollectionItem(item)) return true;
   const { channelName } = item;
-  if (channelName === "sermons") {
-    return item.parent.content.isLight;
-  }
+  if (isCollectionChild(channelName) && item.parent) return item.parent.content.isLight;
   return item.content.isLight;
 };
 
 const overlayStyles = (item: Object): string => {
   const { channelName } = item;
-  if (channelName === "sermons") {
-    return styles.overlay(item.parent);
-  }
+  if (isCollectionChild(channelName) && item.parent) return styles.overlay(item.parent);
   return styles.overlay(item);
 };
 
 const cardClasses = (item: Object): string[] => {
   let classes = [];
 
-  if (isSeriesItem(item)) {
-    classes = classes.concat([
-      "rounded",
-    ]);
+  if (isCollectionItem(item)) {
+    classes = classes.concat(["rounded"]);
   } else {
     classes.push("rounded-top");
   }
@@ -61,7 +63,7 @@ const itemTheme = (item: Object): string => {
     "rounded-bottom",
   ];
 
-  if (isSeriesItem(item)) {
+  if (isCollectionItem(item)) {
     classes.push("overlay__item", "outlined--none", "soft-half-top");
   } else {
     classes.push("soft-top");
@@ -96,10 +98,10 @@ const iconClasses = (item: Object): string => {
 
 const wrapperClasses = (item: Object): string => {
   const classes = ["background--fill"];
-  if (isSeriesItem(item)) {
+  if (isCollectionItem(item)) {
     const { channelName } = item;
     let collection;
-    if (channelName === "sermons") {
+    if (isCollectionChild(channelName)) {
       collection = item.parent;
     } else {
       collection = item;
@@ -116,23 +118,23 @@ const wrapperClasses = (item: Object): string => {
 };
 
 const itemStyles = (item: Object): Object => {
-  if (isSeriesItem(item)) {
-    const { channelName } = item;
-    let collection;
-    if (channelName === "sermons") {
-      collection = item.parent;
-    } else {
-      collection = item;
-    }
-    const color = collection.content.colors[0] && collection.content.colors[0].value;
-    if (!color) return {};
+  if (!isCollectionItem(item)) return {};
 
-    return {
-      backgroundColor: `#${color}`,
-    };
+  const { channelName } = item;
+  let collection;
+  if (isCollectionChild(channelName)) {
+    collection = item.parent;
+  } else {
+    collection = item;
   }
 
-  return {};
+  if (!collection) return {};
+  const color = collection.content.colors[0] && collection.content.colors[0].value;
+  if (!color) return {};
+
+  return {
+    backgroundColor: `#${color}`,
+  };
 };
 
 type IFeedItem = {
@@ -146,7 +148,7 @@ const FeedItem = ({
     link={content.links(item)}
     classes={cardClasses(item)}
     imageclasses={["rounded-top"]}
-    image={{ url: getImage(item), ratio: "square", full: isSeriesItem(item) }}
+    image={{ url: getImage(item), ratio: "square", full: isCollectionItem(item) }}
     itemTheme={itemTheme(item)}
     wrapperClasses={wrapperClasses(item)}
     itemStyles={itemStyles(item)}
