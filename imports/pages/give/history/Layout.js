@@ -21,8 +21,6 @@ export const TransactionList = ({ transactions }: ITransactionList) => {
           <div key={key}>
             {details.filter((x) => (x.account && Number(x.account) !== 0)).map((detail, i) => {
               const year = moment(transaction.date).year();
-              console.log("year = ", year);
-              console.log("lastYear = ", lastYear);
               if (year !== lastYear) {
                 lastYear = year;
                 return (
