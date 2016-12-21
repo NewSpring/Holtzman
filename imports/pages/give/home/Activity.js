@@ -36,13 +36,7 @@ export class GivingActivity extends Component {
     // separate feed by transactions and accoutns
     data.forEach((feedItem: Object) => {
       if (typeof feedItem.status !== "undefined") {
-        // there can be more than one account per transaction.
-        // separate these into separate activity cards
-        feedItem.details.map((detailItem) => {
-          const singleActivity = JSON.parse(JSON.stringify(feedItem));
-          singleActivity.details = [detailItem];
-          transactions.push(singleActivity);
-        });
+        transactions.push(feedItem);
       }
       // else {
       //   accounts.push(feedItem);
@@ -68,6 +62,16 @@ export class GivingActivity extends Component {
     return activityToShow;
   };
 
+  additionalAmount = (details) => {
+    const amount = details.amount === parseInt(details.amount)
+      ? details.amount
+      : details.amount.toFixed(2);
+
+    return (
+      <span>and <strong>${amount}</strong> to <strong>{details.account.name}</strong></span>
+    );
+  };
+
   // used by renderActivity to render a transasction card
   renderTransaction = (transaction: Object): any => {
     let message;
@@ -85,20 +89,26 @@ export class GivingActivity extends Component {
       status = "success";
       linkText = "View Gift";
       linkUrl = `/give/history/${transaction.id}`;
-      message =
-        `Your ${scheduled ? "scheduled " : ""}gift of $${amount} to
-        ${transaction.details[0].account.name} was successful`;
+      message = <p>
+        Your {scheduled ? "scheduled " : ""}gift of <strong>${amount} </strong>
+        to <strong>{transaction.details[0].account.name} </strong>
+        {transaction.details.length > 1 ? this.additionalAmount(transaction.details[1]) : null} was successful.
+      </p>;
     } else if (transaction.status === "Failed") {
       status = "failed";
-      message =
-        `Your ${scheduled ? "scheduled " : ""}contribution to ${transaction.details[0].account.name} failed.
-        ${transaction.statusMessage !== null && transaction.statusMessage !== ""
-          ? `Unfortunately, ${transaction.statusMessage}.` : ""}`;
+      message = <p>
+        Your {scheduled ? "scheduled " : ""}contribution to
+        <strong> {transaction.details[0].account.name} </strong>
+        {transaction.details.length > 1 ? <span>and<strong> {account.details[1].name} </strong></span> : null}
+        was unsuccessful.
+        {transaction.statusMessage !== null && transaction.statusMessage !== "" ? ` Unfortunately, ${transaction.statusMessage}.` : ""}
+      </p>;
     } else if (transaction.status === "Pending") {
       status = "success";
-      message =
-        `Your ${scheduled ? "scheduled " : ""}contribution to ${transaction.details[0].account.name}
-        is pending.`;
+      message = <p>
+        Your {scheduled ? "scheduled " : ""}contribution to<strong> {transaction.details[0].account.name} </strong>
+        {transaction.details.length > 1 ? <span>and<strong> {account.details[1].name} </strong></span> : null}is <strong>pending</strong>.
+      </p>;
     } else {
       return null;
     }
