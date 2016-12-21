@@ -151,7 +151,6 @@ export default class Filter extends Component {
 
         return {
           showStartDatePicker: !showStartDatePicker,
-          overrideActive: true,
         };
       });
     }
@@ -173,7 +172,6 @@ export default class Filter extends Component {
 
         return {
           showEndDatePicker: !showEndDatePicker,
-          overrideActive: true,
         };
       });
     }
@@ -185,6 +183,7 @@ export default class Filter extends Component {
       start: selected ? "" : day,
       customStartLabel: selected ? "Start Date" : moment(day).format("ll"),
       customStartActive: !selected,
+      overrideActive: !selected,
     });
   }
 
@@ -194,6 +193,7 @@ export default class Filter extends Component {
       end: selected ? "" : day,
       customEndLabel: selected ? "End Date" : moment(day).format("ll"),
       customEndActive: !selected,
+      overrideActive: !selected,
     });
   }
 
@@ -301,7 +301,6 @@ export default class Filter extends Component {
                     this.state.customStartActive
                   )}
                   className={(
-                    this.state.customStartLabel !== "Start Date" &&
                     this.state.customDateDisabled &&
                     "tag--disabled"
                   )}
@@ -322,7 +321,6 @@ export default class Filter extends Component {
                     this.state.customEndActive
                   )}
                   className={(
-                    this.state.customEndLabel !== "End Date" &&
                     this.state.customDateDisabled &&
                     "tag--disabled"
                   )}

@@ -270,18 +270,16 @@ it("toggleEndDatePicker correctly toggles the end date picker", () => {
   expect(wrapper.state().showEndDatePicker).toEqual(false);
 })
 
-it("startClick with StartDate value and blank start date shows the start date picker and overrides date range buttons", () => {
+it("startClick with StartDate value and blank start date shows the start date picker", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({
     showStartDatePicker: false,
-    overrideActive: false,
     start: "",
   });
 
   // calling it should toggle the picker on and set the override to true.
   wrapper.instance().startClick("StartDate");
   expect(wrapper.state().showStartDatePicker).toEqual(true);
-  expect(wrapper.state().overrideActive).toEqual(true);
 })
 
 it("startClick with StartDate value and non-empty start date resets many things", () => {
@@ -300,18 +298,16 @@ it("startClick with StartDate value and non-empty start date resets many things"
   expect(wrapper.state().overrideActive).toEqual(false);
 })
 
-it("startClick with EndDate value and blank end date shows the end date picker and overrides date range buttons", () => {
+it("startClick with EndDate value and blank end date shows the end date picker", () => {
   const wrapper = shallow(generateComponent());
   wrapper.setState({
     showEndDatePicker: false,
-    overrideActive: false,
     end: ""
   });
 
   // calling it should toggle the picker on and set the override to true.
   wrapper.instance().startClick("EndDate");
   expect(wrapper.state().showEndDatePicker).toEqual(true);
-  expect(wrapper.state().overrideActive).toEqual(true);
 })
 
 it("startClick with EndDate value and non-empty start date resets many things", () => {
