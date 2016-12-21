@@ -90,12 +90,14 @@ export default function* chargeTransaction({ state }) {
             variables: { token, name, id },
             updateQueries: {
               GivingDashboard: (prev, { mutationResult }) => {
+                if (!mutationResult.data) return prev;
                 const { savedPayment, success } = mutationResult.data.response;
                 if (!success || !savedPayment) return prev;
                 prev.savedPayments.push(savedPayment);
                 return prev;
               },
               GetSavedPaymentAccounts: (prev, { mutationResult }) => {
+                if (!mutationResult.data) return prev;
                 const { savedPayment, success } = mutationResult.data.response;
                 if (!success || !savedPayment) return prev;
                 prev.savedPayments.push(savedPayment);

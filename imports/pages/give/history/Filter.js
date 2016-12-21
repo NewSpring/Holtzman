@@ -108,29 +108,32 @@ export default class Filter extends Component {
   }
 
   fixPickerPosition = () => {
-    const picker = document.getElementById("datepicker");
-    if (!picker) return;
+    const interval = setInterval(() => {
+      const picker = document.getElementById("datepicker");
+      if (!picker) return;
 
-    const child = picker.children[0];
-    const globalTop = Number(child.getBoundingClientRect().top);
-    if (globalTop < 0) {
-      const marginTop = Number(child.style.marginTop.slice(0, -2));
-      child.style.marginTop = `${marginTop + Math.abs(globalTop)}px`;
-    }
+      clearInterval(interval);
+      const child = picker.children[0];
+      const globalTop = Number(child.getBoundingClientRect().top);
+      if (globalTop < 0) {
+        const marginTop = Number(child.style.marginTop.slice(0, -2)) + 40;
+        child.style.marginTop = `${marginTop + Math.abs(globalTop)}px`;
+      }
+    }, 50);
   }
 
   toggleStartDatePicker = () => {
-    this.setState(({ showStartDatePicker }) => ({ showStartDatePicker: !showStartDatePicker }));
-    setTimeout(() => {
-      this.fixPickerPosition();
-    }, 200);
+    this.setState(({ showStartDatePicker }) => {
+      if (!showStartDatePicker) this.fixPickerPosition();
+      return { showStartDatePicker: !showStartDatePicker };
+    });
   }
 
   toggleEndDatePicker = () => {
-    this.setState(({ showEndDatePicker }) => ({ showEndDatePicker: !showEndDatePicker }));
-    setTimeout(() => {
-      this.fixPickerPosition();
-    }, 200);
+    this.setState(({ showEndDatePicker }) => {
+      if (!showEndDatePicker) this.fixPickerPosition();
+      return { showEndDatePicker: !showEndDatePicker };
+    });
   }
 
   startClick = (value: string) => {
@@ -149,6 +152,7 @@ export default class Filter extends Component {
           return newState;
         }
 
+        if (!showStartDatePicker) this.fixPickerPosition();
         return {
           showStartDatePicker: !showStartDatePicker,
         };
@@ -170,6 +174,7 @@ export default class Filter extends Component {
           return newState;
         }
 
+        if (!showEndDatePicker) this.fixPickerPosition();
         return {
           showEndDatePicker: !showEndDatePicker,
         };
@@ -204,6 +209,7 @@ export default class Filter extends Component {
       end: !this.state.end ? "" : moment(this.state.end).format("L"),
       limit: this.state.limit,
     });
+    this.toggle();
   }
 
   render() {

@@ -62,7 +62,10 @@ export default class Layout extends Component {
     const { personal } = this.props.data;
 
     return (
-      <div>
+      <div
+        className="one-whole one-half@palm-wide-and-up soft-double-ends@palm-wide-and-up"
+        style={{ margin: "0 auto" }}
+      >
         <Meta title="Review Your Contribution" />
         <div className="push-double@lap-and-up push">
           {this.header()}
@@ -95,11 +98,11 @@ export default class Layout extends Component {
 
             </div>
           </div>
-
-          <button className="btn soft-half-top one-whole" onClick={this.props.onSubmit}>
-            {"Give Now"}
-          </button>
-
+          <div className="one-whole text-center">
+            <button className="btn soft-half-top" onClick={this.props.onSubmit}>
+              {"Give Now"}
+            </button>
+          </div>
         </div>
       </div>
     );
