@@ -106,8 +106,8 @@ const FailedWrapper = ({ children }: { children?: React$Element<any> }) => (
     {children}
     <p className="flush-bottom soft-top" style={{ lineHeight: ".9" }}><small><em>
       For more information about why this contribution failed to process,
-      please contact our Finance Team at
-      <a href="tel:864-965-9990">864-965-9990</a> or
+      please contact our Finance Team at{" "}
+      <a href="tel:864-965-9990">864-965-9990</a> or{" "}
       <a
         rel="noopener noreferrer"
         target="_blank"
