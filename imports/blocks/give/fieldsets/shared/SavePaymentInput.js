@@ -26,7 +26,7 @@ const SavePaymentInput = ({
     !savedAccount.id &&
     transactionType !== "guest" &&
     !schedule.start &&
-    !isIOS()
+    (transactionType === "savedPayment" || !isIOS())
   ) {
     return (
       <Forms.Input

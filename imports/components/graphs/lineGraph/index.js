@@ -49,6 +49,7 @@ const GradientGroup = ({ style, events, transform, children, gradientColor }: IG
 
 class LineGraph extends Component {
   props: ILineGraph;
+  graphContainer: Element;
 
   componentDidMount() {
     const renderedChart = this.graphContainer.querySelectorAll("[aria-labelledby='title desc']");

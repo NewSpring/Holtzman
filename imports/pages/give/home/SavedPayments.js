@@ -15,11 +15,26 @@ import SavedPaymentWithAction from "./withRemoveSavedPayment";
 
 type ISavedPaymentsList = {
   payments: Object,
+  location: Object,
   dispatch: Function,
 };
 
 export class SavedPaymentsList extends Component {
+
   props: ISavedPaymentsList;
+  hasScrolled: boolean;
+  element: Object;
+
+  componentDidUpdate() {
+    if (
+      this.props.location.hash === "#saved-payments" &&
+      !this.props.payments.loading &&
+      !this.hasScrolled
+    ) {
+      this.hasScrolled = true;
+      this.element.scrollIntoView();
+    }
+  }
 
   openModal = () => {
     // set transaction type
@@ -80,7 +95,7 @@ export class SavedPaymentsList extends Component {
     }
 
     return (
-      <div className={wrapper}>
+      <div className={wrapper} ref={(e) => { this.element = e; }}>
         <SectionHeader
           title="Saved Accounts"
           link={<this.SavedPaymentsButton />}
@@ -93,4 +108,7 @@ export class SavedPaymentsList extends Component {
   }
 }
 
-export default connect()(SavedPaymentsList);
+export const map = ({ routing }: { routing: Object }) => ({
+  location: routing.location,
+});
+export default connect(map)(SavedPaymentsList);

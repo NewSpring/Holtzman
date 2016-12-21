@@ -65,6 +65,10 @@ type ILayout = {
   printLoading: boolean,
 };
 
+let canPrint;
+// eslint-disable-next-line
+try { canPrint = !!new Blob; } catch (e) {}
+
 export default ({
   transactions,
   ready,
@@ -94,7 +98,7 @@ export default ({
         </div>
       )}
 
-      {transactions.length > 0 && (
+      {process.env.WEB && canPrint && transactions.length > 0 && (
         <div
           className="visuallyhidden@lap-and-up"
           style={{ cursor: "pointer" }}
@@ -146,39 +150,41 @@ export default ({
     </div>
 
     {/* Print Button */}
-    <div
-      className="fixed visuallyhidden@handheld"
-      style={{
-        bottom: "175px",
-        left: "58.33%",
-        zIndex: 10,
-        cursor: "pointer",
-      }}
-    >
+    {process.env.WEB && canPrint && (
       <div
-        className="card"
-        style={{ borderRadius: "50%", marginLeft: "2px" }}
-        onClick={onPrintClick}
+        className="fixed visuallyhidden@handheld"
+        style={{
+          bottom: "175px",
+          left: "58.33%",
+          zIndex: 10,
+          cursor: "pointer",
+        }}
       >
-        {!printLoading && (
-          <div
-            className="card__item background--light-secondary soft-half"
-            style={{ padding: "15px 17px" }}
-          >
-            <span className="icon-print" style={{ fontSize: "28px" }} />
-          </div>
-        )}
+        <div
+          className="card"
+          style={{ borderRadius: "50%", marginLeft: "2px" }}
+          onClick={onPrintClick}
+        >
+          {!printLoading && (
+            <div
+              className="card__item background--light-secondary soft-half"
+              style={{ padding: "15px 17px" }}
+            >
+              <span className="icon-print" style={{ fontSize: "28px" }} />
+            </div>
+          )}
 
-        {printLoading && (
-          <div
-            style={{ padding: "12px 12px 9px 12px" }}
-            className="card__item background--light-secondary"
-          >
-            <Spinner styles={{ width: "35px", height: "35px" }} />
-          </div>
-        )}
+          {printLoading && (
+            <div
+              style={{ padding: "12px 12px 9px 12px" }}
+              className="card__item background--light-secondary"
+            >
+              <Spinner styles={{ width: "35px", height: "35px" }} />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    )}
 
   </div>
 );
