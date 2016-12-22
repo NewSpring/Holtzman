@@ -1,0 +1,26 @@
+exports[`Layout renders 1`] = `
+<div>
+  <Connect(SplitContainerWithoutData)
+    classes={
+      Array [
+        "background--light-primary",
+      ]
+    }
+    nav={true}>
+    <Meta
+      title="Edit Saved Payment" />
+    <Right
+      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
+      mobile={false} />
+  </Connect(SplitContainerWithoutData)>
+  <Left
+    classes={
+      Array [
+        "background--light-secondary",
+      ]
+    }
+    scroll={true}>
+    Edit A Saved Payment
+  </Left>
+</div>
+`;
