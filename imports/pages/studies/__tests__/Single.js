@@ -1,6 +1,8 @@
 /* eslint-disable */
 import renderer from "react-test-renderer";
 import { shallow, mount } from "enzyme";
+import { reset, startBuffering } from "aphrodite/lib/inject";
+
 import { StudiesSingleWithoutData } from "../Single";
 import {
   nav as navActions,
@@ -42,6 +44,15 @@ const defaultProps = {
     },
   },
 };
+
+beforeEach(() => {
+  reset();
+  startBuffering();
+});
+
+afterEach(() => {
+  reset();
+});
 
 const generateComponent = (additionalProps = {}) => {
   const newProps = {

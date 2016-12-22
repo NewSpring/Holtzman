@@ -1,6 +1,8 @@
 /* eslint-disable */
 import { shallow, mount } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
+import { reset, startBuffering } from "aphrodite/lib/inject";
+
 import {
   TemplateWithoutData as Studies,
   SERIES_QUERY,
@@ -9,6 +11,15 @@ import {
 import {
   nav as navActions,
 } from "../../../store";
+
+beforeEach(() => {
+  reset();
+  startBuffering();
+});
+
+afterEach(() => {
+  reset();
+});
 
 jest.mock("../../../mixins/mixins.Likeable", () => {});
 jest.mock("../../../mixins/mixins.Header", () => {});

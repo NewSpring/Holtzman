@@ -2,6 +2,16 @@
 import renderer from "react-test-renderer";
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
+import { reset, startBuffering } from "aphrodite/lib/inject";
+
+beforeEach(() => {
+  reset();
+  startBuffering();
+});
+
+afterEach(() => {
+  reset();
+});
 
 import {
   StudyEntryWithoutData as StudyEntry,

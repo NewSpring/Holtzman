@@ -1,6 +1,17 @@
 /* eslint-disable */
 import renderer from "react-test-renderer";
+import { reset, startBuffering } from "aphrodite/lib/inject";
+
 import StudiesEntryListItem from "../EntryListItem";
+
+beforeEach(() => {
+  reset();
+  startBuffering();
+});
+
+afterEach(() => {
+  reset();
+});
 
 describe("StudiesEntryListItem", () => {
   it("takes a single study as a prop", () => {
