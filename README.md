@@ -7,6 +7,23 @@ Church](https://img.shields.io/badge/NEWSPRING_CHURCH-Holtzmann-6BAC43.svg?style
 
 Holtzmann is a reactive application framework for building high speed, web + native, reactive applications. It is built using Reactjs, Redux, and Meteor. This repository contains the application framework and instructions for usage.
 
+**Table of Contents**
+
+[Prerequisites](#prerequisites)
+
+[Quick Start](#quick-start)
+
+[Structure](#structure)
+
+[Local Development](#local-development)
+  * [Testing](#testing)
+  * [Linting](#linting)
+  * [Typing](#typing)
+
+[Deploys](#deploys)
+
+[Contributing](#contributing)
+
 ## Prerequisites
 
 - [Meteor](curl https://install.meteor.com/ | sh): `curl https://install.meteor.com/ | sh`;
@@ -33,13 +50,23 @@ This repo contains the code base used to build v5 of the NewSpring site and nati
 - `/scripts`: command line scripts used for deployment, testing, etc
 - `/server`: entry point for server
 - `/stylesheets`: sass for generating our css using sass and junction
+- `*/__tests__`: tests adjacent to the module they are testing
+- `*/__stories__`: react storybook stories adjacent to the module they are displaying
+- `*/__mocks__`: module mocks for testing adjacent to the module they mock.
 - `main.html`: root HTML file
 - `mobile-config.js`: used to generate cordova apps
-- `package.json`: used to manage npm dependencies and etc.
+- `package.json`: used to manage yarn dependencies and etc.
+- `yarn.lock`: used to make sure all developers are using the same package versions
 
 ## Local Development
 
-To install, clone down this repo and run `npm link`. This will bind `apollos` to your system to be used to run this app.
+### Basics
+
+To install all dependencies, we use [Yarn](https://yarnpkg.com/). To get started:
+1. Clone down the repo
+2. Make sure you have the Yarn CLI [installed](https://yarnpkg.com/en/docs/install)
+3. Run `yarn`.
+4. run `npm link`. This will bind `apollos` to your system to be used to run this app ([more info](https://docs.npmjs.com/cli/link)).
 
 `apollos setup`: This command will bootstrap the application. This may take some time.
 
@@ -58,7 +85,13 @@ To install, clone down this repo and run `npm link`. This will bind `apollos` to
   - `--production`: Run the application in production mode
   - `--debug`: Run the application in debug mode
 
-## Linting
+### Testing
+
+This project uses [Jest](https://facebook.github.io/jest/) for unit tests. These tests are located in `__tests__` subfolders adjacent to the thing they're testing.
+
+To run tests, call `yarn test` or `yarn test -- --watch`. This will also run `eslint` and `flow` tests when complete.
+
+### Linting
 
 This project includes linting using [ESLint](http://eslint.org/).  To enable linting in Visual Studio Code, you will need to install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
@@ -67,6 +100,15 @@ To install the extension you'll need to press `⌘+P`, paste the following comma
 ```
 ext install vscode-eslint
 ```
+
+To manually run eslint, use `yarn lint`.
+
+### Typing
+
+This project contains static typing for most code. We use [Flow](https://flowtype.org/) for this. To enable flow to a file,
+add `// @flow` to the very top of the file.
+
+To run flow, use `yarn flow`.
 
 ## Deploys
 
@@ -78,3 +120,9 @@ To deploy, create a release/tag using a combination of the site name, site versi
 newspring/web/production/1.0.8
 newspring/native/beta/0.0.3-45
 ```
+
+## Contributing
+
+For more information about contributing PRs and issues, see our [Contribution Guidelines](https://github.com/NewSpring/Holtzman/blob/master/CONTRIBUTING.md).
+
+[Good First PR](https://github.com/NewSpring/Holtzman/labels/good first pr) is a great starting point for people new to this project.
