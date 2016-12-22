@@ -61,7 +61,6 @@ afterEach(() => {
   reset();
 });
 
-
 const mockHeaderAction = jest.fn();
 const MockHeaderAction = (Component) => (
   class MockHeaderAction extends React.Component {

@@ -1,11 +1,23 @@
 /* eslint-disable */
 import renderer from "react-test-renderer";
 import { shallow, mount } from "enzyme";
+import { shallowToJson, mountToJson } from "enzyme-to-json";
+
 import Slider from "../Slider";
 
 jest.mock("../../../../components/controls/toggle");
 jest.mock("../Content");
 jest.mock("../ScriptureWrapper");
+
+beforeEach(() => {
+  reset();
+  startBuffering();
+});
+
+afterEach(() => {
+  reset();
+});
+
 
 const defaultProps = {
   studyEntry: {
