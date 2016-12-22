@@ -67,3 +67,4 @@ docs
 
 # editor files
 .vscode
+.tsconfig

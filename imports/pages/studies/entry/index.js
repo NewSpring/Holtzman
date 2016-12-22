@@ -33,6 +33,8 @@ class StudyEntrySingle extends Component {
     params: PropTypes.object.isRequried,
   }
 
+  state = {};
+
   componentWillMount() {
     if (process.env.WEB) return;
 
