@@ -82,6 +82,7 @@ class StudyEntrySingle extends Component {
 
   componentWillUnmount() {
     if (process.env.WEB) return;
+    this.props.dispatch(headerActions.set({ fontWeight: null }));
     this.props.dispatch(liveActions.unfloat());
   }
 

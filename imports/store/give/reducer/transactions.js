@@ -6,7 +6,10 @@ const addTransaction = (state, action) => {
 
   // eslint-disable-next-line no-restricted-syntax
   for (const fund in mergedTransactions) {
-    if (typeof mergedTransactions[fund].value !== "number") {
+    if (
+      typeof mergedTransactions[fund].value !== "number" ||
+      mergedTransactions[fund].value <= 0
+    ) {
       delete mergedTransactions[fund];
       // eslint-disable-next-line
       continue;
@@ -35,7 +38,10 @@ const clearTransaction = (state, action) => {
 
   // eslint-disable-next-line no-restricted-syntax
   for (const fund in state.transactions) {
-    if (typeof state.transactions[fund].value !== "number") {
+    if (
+      typeof state.transactions[fund].value !== "number" ||
+      state.transactions[fund].value <= 0
+    ) {
       // eslint-disable-next-line no-param-reassign
       delete state.transactions[fund];
       // eslint-disable-next-line

@@ -87,14 +87,14 @@ export class GivingActivity extends Component {
 
     if ((transaction.status === null || transaction.status === "Success" || transaction.status === "Complete") && transaction.details.length) {
       status = "success";
-      linkText = "View Gift";
+      linkText = "View Contribution";
       linkUrl = `/give/history/${transaction.id}`;
       message = (
         <p>
-          Your {scheduled ? "scheduled " : ""}gift of <strong>${amount} </strong>
+          Your {scheduled ? "scheduled " : ""}contribution of <strong>${amount} </strong>
           to <strong>{transaction.details[0].account.name} </strong>
           {transaction.details.length > 1 ? this.additionalAmount(transaction.details[1]) : null}
-          was successful.
+          {" "}was successful.
         </p>
       );
     } else if (transaction.status === "Failed") {
@@ -105,7 +105,7 @@ export class GivingActivity extends Component {
           <strong> {transaction.details[0].account.name} </strong>
           {transaction.details.length > 1
             ? <span>and<strong> {transaction.details[1].name} </strong></span> : null}
-          was unsuccessful.
+          {" "}was unsuccessful.
           {transaction.statusMessage !== null && transaction.statusMessage !== ""
             ? ` Unfortunately, ${transaction.statusMessage}.` : ""}
         </p>
@@ -118,7 +118,7 @@ export class GivingActivity extends Component {
           <strong> {transaction.details[0].account.name} </strong>
           {transaction.details.length > 1
             ? <span>and<strong> {transaction.details[1].name} </strong></span> : null}
-          is <strong>pending</strong>.
+          {" "}is <strong>pending</strong>.
         </p>
       );
     } else {

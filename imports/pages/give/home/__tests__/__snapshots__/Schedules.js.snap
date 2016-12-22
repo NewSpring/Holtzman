@@ -112,7 +112,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
     <div
       className="grid">
       <ScheduleOverviewCard
-        amount="20"
+        amount="20.00"
         classes="grid__item one-whole"
         frequency="One Time"
         fund="General Fund"
@@ -127,7 +127,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             <div
               className="card__item soft push-half-ends one-whole">
               <Currency
-                amount="20"
+                amount="20.00"
                 baseHeadingSize="1"
                 className="text-left">
                 <div
@@ -216,7 +216,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         </div>
       </ScheduleOverviewCard>
       <ScheduleOverviewCard
-        amount="100"
+        amount="100.00"
         classes="grid__item one-whole"
         frequency="Once a Month"
         fund="Step Up Fund"
@@ -231,7 +231,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             <div
               className="card__item soft push-half-ends one-whole">
               <Currency
-                amount="100"
+                amount="100.00"
                 baseHeadingSize="1"
                 className="text-left">
                 <div
@@ -320,7 +320,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
         </div>
       </ScheduleOverviewCard>
       <ScheduleOverviewCard
-        amount="50"
+        amount="50.00"
         classes="grid__item one-whole"
         frequency="One Time"
         fund="Christmas Offering"
@@ -335,7 +335,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             <div
               className="card__item soft push-half-ends one-whole">
               <Currency
-                amount="50"
+                amount="50.00"
                 baseHeadingSize="1"
                 className="text-left">
                 <div

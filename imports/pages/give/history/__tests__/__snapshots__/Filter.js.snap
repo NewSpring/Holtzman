@@ -45,8 +45,8 @@ exports[`test doesn't render family members if there are none 1`] = `
                 "value": "LastSixMonths",
               },
               Object {
-                "label": "Last Year",
-                "value": "LastYear",
+                "label": "Year To Date",
+                "value": "YearToDate",
               },
               Object {
                 "label": "All Time",
@@ -199,8 +199,8 @@ exports[`test renders family members when expanded is true 1`] = `
                 "value": "LastSixMonths",
               },
               Object {
-                "label": "Last Year",
-                "value": "LastYear",
+                "label": "Year To Date",
+                "value": "YearToDate",
               },
               Object {
                 "label": "All Time",
@@ -381,8 +381,8 @@ exports[`test works with nickname 1`] = `
                 "value": "LastSixMonths",
               },
               Object {
-                "label": "Last Year",
-                "value": "LastYear",
+                "label": "Year To Date",
+                "value": "YearToDate",
               },
               Object {
                 "label": "All Time",

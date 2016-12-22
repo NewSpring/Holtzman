@@ -9,7 +9,7 @@ import Date from "../../../blocks/add-to-cart/Schedule/Date";
 const DATE_RANGES = [
   { label: "Last Month", value: "LastMonth" },
   { label: "Last 6 Months", value: "LastSixMonths" },
-  { label: "Last Year", value: "LastYear" },
+  { label: "Year To Date", value: "YearToDate" },
   { label: "All Time", value: "AllTime" },
 ];
 
@@ -91,8 +91,8 @@ export default class Filter extends Component {
       } else if (value === "LastSixMonths") {
         startDate = moment().subtract(6, "months");
         endDate = moment();
-      } else if (value === "LastYear") {
-        startDate = moment().subtract(12, "months");
+      } else if (value === "YearToDate") {
+        startDate = moment().startOf("year");
         endDate = moment();
       } else {
         transactionLimit = 0;

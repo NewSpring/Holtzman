@@ -16,26 +16,26 @@ const generateComponent = (additionalProps = {}) => {
   return <ButtonText { ...newProps } />
 };
 
-it("should say `Give Now` with minimal props", () => {
+it("should say `Give` with minimal props", () => {
   const result = renderer.create(generateComponent());
   expect(result).toMatchSnapshot();
 });
 
-it("should say `Schedule Now` if schedule present", () => {
+it("should say `Schedule` if schedule present", () => {
   const result = renderer.create(generateComponent({
     schedule: { start: "now", frequency: null },
   }));
   expect(result).toMatchSnapshot();
 });
 
-it("should say `Transfer Now` if recoverable schedule", () => {
+it("should say `Transfer` if recoverable schedule", () => {
   const result = renderer.create(generateComponent({
     scheduleToRecover: true,
   }));
   expect(result).toMatchSnapshot();
 });
 
-it("should say `Give Now using 6789` if accountNumber", () => {
+it("should say `Give With 6789` if accountNumber", () => {
   const result = renderer.create(generateComponent({
     payment: {
       type: "ach",
@@ -45,7 +45,7 @@ it("should say `Give Now using 6789` if accountNumber", () => {
   expect(result).toMatchSnapshot();
 });
 
-it("should say `Give Now using 4321` if cardNumber", () => {
+it("should say `Give With 4321` if cardNumber", () => {
   const result = renderer.create(generateComponent({
     payment: {
       type: "card",
@@ -55,7 +55,7 @@ it("should say `Give Now using 4321` if cardNumber", () => {
   expect(result).toMatchSnapshot();
 });
 
-it("should say `Schedule Now using 6789` if schedule and accountNumber", () => {
+it("should say `Schedule With 6789` if schedule and accountNumber", () => {
   const result = renderer.create(generateComponent({
     payment: {
       type: "ach",
@@ -66,7 +66,7 @@ it("should say `Schedule Now using 6789` if schedule and accountNumber", () => {
   expect(result).toMatchSnapshot();
 });
 
-it("should say `Schedule Now using 4321` if schedule and cardNumber", () => {
+it("should say `Schedule With 4321` if schedule and cardNumber", () => {
   const result = renderer.create(generateComponent({
     payment: {
       type: "card",
@@ -77,7 +77,7 @@ it("should say `Schedule Now using 4321` if schedule and cardNumber", () => {
   expect(result).toMatchSnapshot();
 });
 
-it("should say `Transfer Now using 6789` if recoverable schedule and accountNumber", () => {
+it("should say `Transfer With 6789` if recoverable schedule and accountNumber", () => {
   const result = renderer.create(generateComponent({
     payment: {
       type: "ach",
@@ -88,7 +88,7 @@ it("should say `Transfer Now using 6789` if recoverable schedule and accountNumb
   expect(result).toMatchSnapshot();
 });
 
-it("should say `Transfer Now using 4321` if schedule and cardNumber", () => {
+it("should say `Transfer With 4321` if schedule and cardNumber", () => {
   const result = renderer.create(generateComponent({
     payment: {
       type: "card",
