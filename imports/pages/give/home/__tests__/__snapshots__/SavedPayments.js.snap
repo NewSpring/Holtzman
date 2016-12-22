@@ -1,3 +1,32 @@
+exports[`Saved Payments List should render a loading state 1`] = `
+<SavedPaymentsList
+  payments={
+    Object {
+      "loading": true,
+    }
+  }>
+  <div
+    className="soft-half-sides soft-double-sides@lap-and-up">
+    <Component>
+      <div
+        className="card">
+        <div
+          className="card__item soft">
+          <div
+            className="soft-half-top one-fifth push-bottom background--light-tertiary" />
+          <div
+            className="soft-half-top four-fifths push-half-bottom background--light-tertiary" />
+          <div
+            className="soft-half-top one-half push-bottom background--light-tertiary" />
+          <div
+            className="soft-half-top one-quarter background--light-tertiary" />
+        </div>
+      </div>
+    </Component>
+  </div>
+</SavedPaymentsList>
+`;
+
 exports[`Saved Payments List should render properly with data 1`] = `
 <SavedPaymentsList
   payments={
@@ -92,3 +121,64 @@ exports[`Saved Payments List should render properly with data 1`] = `
 `;
 
 exports[`Saved Payments List should render with minimal props 1`] = `<SavedPaymentsList />`;
+
+exports[`Saved Payments List should render without saved payments 1`] = `
+<SavedPaymentsList
+  payments={Object {}}>
+  <div
+    className="soft-half-sides soft-double-sides@lap-and-up">
+    <SectionHeader
+      link={<Unknown />}
+      title="Saved Accounts">
+      <div
+        className="one-whole">
+        <div
+          className="one-half floating display-inline-block floating--left soft soft-half-left">
+          <h6
+            className="floating__item text-dark-tertiary flush">
+            Saved Accounts
+          </h6>
+        </div>
+        <div
+          className="one-half floating display-inline-block floating--right soft soft-half-right">
+          <Component>
+            <SmallButton
+              className="btn--dark-tertiary flush"
+              onClick={[Function]}
+              text="Add Account">
+              <button
+                className="
+                  btn btn--small@next
+                  
+                  btn--dark-tertiary flush
+                "
+                onClick={[Function]}
+                style={Object {}}>
+                Add Account
+              </button>
+            </SmallButton>
+          </Component>
+        </div>
+      </div>
+    </SectionHeader>
+    <div
+      className="card">
+      <div
+        className="card__item soft">
+        <h4
+          className="text-dark-primary">
+          Adding a saved account makes giving even easier!
+        </h4>
+        <p>
+          We can’t wait for you to take your next step in giving. After you have given your first contribution, you’ll see your activity here.
+        </p>
+        <button
+          className="btn one-whole@handheld flush-bottom"
+          onClick={[Function]}>
+          Get Started Now
+        </button>
+      </div>
+    </div>
+  </div>
+</SavedPaymentsList>
+`;

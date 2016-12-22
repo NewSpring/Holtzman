@@ -1,0 +1,15 @@
+exports[`home index file has a template 1`] = `
+<Connect(Authorized)>
+  <Apollo(Component) />
+</Connect(Authorized)>
+`;
+
+exports[`home index file has routes 1`] = `
+Array [
+  Object {
+    "component": [Function],
+    "path": "home",
+    "rightComponent": <MeteorDataContainer />,
+  },
+]
+`;

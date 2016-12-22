@@ -6,7 +6,7 @@ import Activity from "./Activity";
 import Schedules from "./Schedules";
 import SavedPayments from "./SavedPayments";
 
-const ACTIVITY_QUERY = gql`
+export const ACTIVITY_QUERY = gql`
   query GivingDashboard($filters: [String]!) {
     scheduledTransactions(cache: false) {
       id

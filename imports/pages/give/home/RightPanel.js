@@ -1,5 +1,5 @@
 
-// flow
+// @flow
 
 import moment from "moment";
 
@@ -12,16 +12,21 @@ import withData from "./givingSummaryEnhancer";
 import YTDGraph from "./YTDMetrics";
 import Progress from "./FundBreakdown";
 
-const start = moment().year();
+export const start = moment().year();
 
-const YEARS = [{ value: start, label: start }];
+export const YEARS = [{ value: start, label: start }];
 
 for (const i of Array(9).keys()) {
   YEARS.push({ value: start - (i + 1), label: start - (i + 1) });
 }
 
+type IRightPanel = {
+  loading: boolean,
+  data: Object,
+  changeYear: Function,
+};
 
-export default withData(({ loading, data, changeYear }) => (
+export const RightPanel = ({ loading, data, changeYear }: IRightPanel) => (
   <div className="scrollable locked-ends locked-sides background--primary soft-double-sides soft-double-top">
     {/* spacer */}
     <div className="push-double-top display-inline-block soft-double-ends soft-double-right one-whole">
@@ -69,5 +74,6 @@ export default withData(({ loading, data, changeYear }) => (
       )}
     </div>
   </div>
-));
+);
 
+export default withData(RightPanel);

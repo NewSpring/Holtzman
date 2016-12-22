@@ -1,7 +1,7 @@
 
 import { GivingSummary, Display } from "../GivingSummary";
-import { mount } from "enzyme";
-import { mountToJson } from "enzyme-to-json";
+import { shallow, mount } from "enzyme";
+import { shallowToJson, mountToJson } from "enzyme-to-json";
 
 //mocked because already tested
 jest.mock("./../../../../components/cards/cards.YearToDate.js", () => () => <div /> );
@@ -38,8 +38,12 @@ describe("GivingSummary", () => {
     expect(mountToJson(component)).toMatchSnapshot();
   });
   it("should render nothing if the breakpoints don't match", () => {
-    const component = mount(<GivingSummary breakpoints={["lap-and-up"]} />);
-    expect(mountToJson(component)).toMatchSnapshot();
+    const component = shallow(<GivingSummary breakpoints={["lap-and-up"]} />);
+    expect(shallowToJson(component)).toMatchSnapshot();
+  });
+  it("should render if the breakpoints don't match", () => {
+    const component = shallow(<GivingSummary breakpoints={["lap"]} />);
+    expect(shallowToJson(component)).toMatchSnapshot();
   });
   it("should pass correct props to graph with data", () => {
     const component = mount(generateComponent({data: data}));
