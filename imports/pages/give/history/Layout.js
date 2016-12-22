@@ -150,7 +150,7 @@ export default ({
     </div>
 
     {/* Print Button */}
-    {process.env.WEB && canPrint && (
+    {process.env.WEB && canPrint && transactions.length > 0 && (
       <div
         className="fixed visuallyhidden@handheld"
         style={{
