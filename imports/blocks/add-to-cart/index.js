@@ -4,7 +4,6 @@ import { Component } from "react";
 import { connect } from "react-redux";
 
 import { give as giveActions } from "../../store";
-import { monetize } from "../../util/format/currency";
 import Layout from "./Layout";
 
 type IStore = {
