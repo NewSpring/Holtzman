@@ -55,7 +55,7 @@ class TemplateWithoutData extends Component {
       .then(({ data: { transactionStatement } }) => {
         const blob = base64ToBlob(transactionStatement.file);
         this.setState({ printLoading: false });
-        fileSaver.saveAs(blob, `${moment().year()} NewSpring Church Giving Summary`);
+        fileSaver.saveAs(blob, `${moment().year()} NewSpring Church Giving Summary.pdf`);
       })
       .catch(() => {
         this.setState({ printLoading: false });

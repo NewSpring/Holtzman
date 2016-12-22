@@ -58,7 +58,7 @@ exports[`test renders complete message 1`] = `
         <div
           className="soft-top">
           <div
-            className="floating one-whole">
+            className="floating one-whole display-inline-block">
             <div
               className="floating__item float-left">
               <h4
@@ -277,7 +277,7 @@ exports[`test renders loading if no entries 1`] = `
         <div
           className="soft-top">
           <div
-            className="floating one-whole">
+            className="floating one-whole display-inline-block">
             <div
               className="floating__item float-left">
               <h4
@@ -573,7 +573,7 @@ exports[`test renders loading if not ready 1`] = `
         <div
           className="soft-top">
           <div
-            className="floating one-whole">
+            className="floating one-whole display-inline-block">
             <div
               className="floating__item float-left">
               <h4
@@ -793,7 +793,7 @@ exports[`test renders no contributions message 1`] = `
         <div
           className="soft-top">
           <div
-            className="floating one-whole">
+            className="floating one-whole display-inline-block">
             <div
               className="floating__item float-left">
               <h4
@@ -994,7 +994,7 @@ exports[`test renders stopped message 1`] = `
         <div
           className="soft-top">
           <div
-            className="floating one-whole">
+            className="floating one-whole display-inline-block">
             <div
               className="floating__item float-left">
               <h4
@@ -1213,7 +1213,7 @@ exports[`test renders with props 1`] = `
         <div
           className="soft-top">
           <div
-            className="floating one-whole">
+            className="floating one-whole display-inline-block">
             <div
               className="floating__item float-left">
               <h4
@@ -1548,7 +1548,7 @@ exports[`test renders without schedule payment 1`] = `
         <div
           className="soft-top">
           <div
-            className="floating one-whole">
+            className="floating one-whole display-inline-block">
             <div
               className="floating__item float-left">
               <h4
@@ -1768,7 +1768,7 @@ exports[`test works with credit card 1`] = `
         <div
           className="soft-top">
           <div
-            className="floating one-whole">
+            className="floating one-whole display-inline-block">
             <div
               className="floating__item float-left">
               <h4

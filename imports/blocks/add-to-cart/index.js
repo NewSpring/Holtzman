@@ -249,7 +249,7 @@ class CartContainer extends Component {
   preFillValue = (id: string) => {
     if (!this.state.subfunds.length) return null;
     const fund = this.state.subfunds.filter(({ fundId }) => fundId === id);
-    return fund[0] && fund[0].amount && monetize(`${fund[0].amount}`.replace(/[^0-9\.]+/g, ""));
+    return fund[0] && fund[0].amount && `$${String(fund[0].amount).replace(/[^0-9\.]+/g, "")}`;
   }
 
   toggleSecondFund = () => {

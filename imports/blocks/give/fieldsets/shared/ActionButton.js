@@ -37,7 +37,19 @@ const ActionButton = ({
           className="btn soft-half-top one-whole"
           onClick={completeGift}
         >
-          Complete Gift in Browser
+          <ButtonText
+            payment={payment}
+            savedAccount={savedAccount}
+            schedule={schedule}
+            scheduleToRecover={scheduleToRecover}
+            overrideText="Complete Using"
+          />
+          &nbsp;&nbsp;
+          <Icon
+            cardType={
+              cardType(payment, savedAccount)
+            }
+          />
         </button>
       </div>
     );

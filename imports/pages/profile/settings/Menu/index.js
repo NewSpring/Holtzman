@@ -204,7 +204,7 @@ class MenuWithoutData extends Component {
 
           <div className={this.dividerClasses()}>
             <div className={this.outlineClasses()} style={{ borderLeft: 0, borderRight: 0 }}>
-              <Link to="/profile/settings/saved-accounts" className="plain text-dark-secondary">
+              <Link to="/give/home#saved-payments" className="plain text-dark-secondary">
                 <RenderCell name="Saved Accounts" />
               </Link>
               <Link to="/give/schedules" className="plain text-dark-secondary">

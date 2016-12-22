@@ -138,7 +138,7 @@ export default ({
           {schedule && (
             <div className="soft-top">
               {schedule.details.map(({ amount, account: { name } }, i) => (
-                <div className="floating one-whole" key={i}>
+                <div className="floating one-whole display-inline-block" key={i}>
                   <div className="floating__item float-left">
                     <h4 className="hard text-dark-primary">{name}</h4>
                   </div>

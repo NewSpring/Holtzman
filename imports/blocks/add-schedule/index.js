@@ -14,7 +14,7 @@ type ICartContainer = {
   accounts: Object,
   addTransactions: Function,
   alive: boolean,
-  clearAllSchedulesExcept: Function,
+  // clearAllSchedulesExcept: Function,
   clearSchedules: Function,
   clearTransactions: Function,
   existing: Object,
@@ -72,9 +72,9 @@ class CartContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps: Object) {
-    const { transactions, schedules } = nextProps.give;
+    const { transactions, schedule } = nextProps.give;
 
-    if (Object.keys(transactions).length === 0 && Object.keys(schedules).length === 0) {
+    if (transactions && Object.keys(transactions).length === 0 && schedule && !schedule.start) {
       const form: FormElement = (document.getElementById("add-to-cart"): any);
       if (form) form.reset();
     }
@@ -93,10 +93,9 @@ class CartContainer extends Component {
 
     let keepGoing = true;
     if (cartFundId && cartTotal && cartFundLabel) {
-      this.props.clearAllSchedulesExcept(Number(this.state.fundId));
+      // this.props.clearAllSchedulesExcept(Number(this.state.fundId));
 
-      this.props.saveSchedule(this.state.fundId, {
-        label: this.state.fundLabel,
+      this.props.saveSchedule({
         frequency: this.state.frequency,
         start: this.state.startDate,
       });
@@ -122,8 +121,7 @@ class CartContainer extends Component {
     if (this.state.fundId !== id) this.props.removeSchedule(this.state.fundId);
 
     this.setState({ fundId: id, fundLabel: name });
-    this.props.saveSchedule(id, {
-      label: name,
+    this.props.saveSchedule({
       frequency: this.state.frequency,
       start: this.state.startDate,
     });
@@ -134,7 +132,7 @@ class CartContainer extends Component {
   setFrequency = (value: string) => {
     this.setState({ frequency: value });
     if (this.state.fundId) {
-      this.props.saveSchedule(this.state.fundId, { frequency: value });
+      this.props.saveSchedule({ frequency: value });
     }
   }
 
@@ -172,7 +170,7 @@ class CartContainer extends Component {
 
     this.setState({ startDate: date });
 
-    if (fundId) this.props.saveSchedule(fundId, { start: new Date(value) });
+    if (fundId) this.props.saveSchedule({ start: new Date(value) });
     return true;
   }
 

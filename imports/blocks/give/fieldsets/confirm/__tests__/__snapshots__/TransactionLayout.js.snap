@@ -278,7 +278,7 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
       className="btn soft-half-top one-whole"
       type="submit">
       <span>
-        Schedule Using 6789
+        Schedule With 6789
       </span>
          
       <div
@@ -509,7 +509,7 @@ exports[`TransactionLayout should render with props 1`] = `
       className="btn soft-half-top one-whole"
       type="submit">
       <span>
-        Give Using 6789
+        Give With 6789
       </span>
          
       <div

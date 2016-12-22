@@ -30,7 +30,7 @@ export class SchedulesList extends Component {
       <ScheduleCard
         classes="grid__item one-whole"
         key={schedule.id}
-        amount={`${schedule.details[0].amount}`}
+        amount={schedule.details.reduce((i, { amount }) => i + amount, 0).toFixed(2)}
         fund={schedule.details[0].account.name}
         frequency={schedule.schedule.description}
         started={schedule.start}

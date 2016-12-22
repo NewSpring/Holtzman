@@ -95,6 +95,6 @@ const withData = graphql(YTD_QUERY, {
 
 const authorized = () => ({ authorized: Meteor.userId() });
 // eslint-disable-next-line
-export default (component: React$Component<any, any, any>) => (
+export default (component: React$Component<any, any, any> | Function) => (
   createContainer(authorized, withData(component))
 );
