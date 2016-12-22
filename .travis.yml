@@ -35,6 +35,6 @@ before_install:
 script:
   - npm link
   - npm test -- --coverage
-  coveralls < ./.coverage/lcov.info || true
+  - coveralls < ./.coverage/lcov.info || true
   - "./.scripts/prepare/app.sh"
   - "./.scripts/deploy/app.sh"
