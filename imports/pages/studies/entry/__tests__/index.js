@@ -1,5 +1,6 @@
 /* eslint-disable */
 import renderer from "react-test-renderer";
+import { reset, startBuffering } from "aphrodite/lib/inject";
 import { shallow, mount } from "enzyme";
 import { shallowToJson, mountToJson } from "enzyme-to-json";
 
@@ -50,6 +51,16 @@ const defaultProps = {
   study: {},
   params: {}
 };
+
+beforeEach(() => {
+  reset();
+  startBuffering();
+});
+
+afterEach(() => {
+  reset();
+});
+
 
 const mockHeaderAction = jest.fn();
 const MockHeaderAction = (Component) => (
