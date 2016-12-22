@@ -2,6 +2,7 @@
 import renderer from "react-test-renderer";
 import { shallow, mount } from "enzyme";
 import { shallowToJson, mountToJson } from "enzyme-to-json";
+import { reset, startBuffering } from "aphrodite/lib/inject";
 
 import Slider from "../Slider";
 

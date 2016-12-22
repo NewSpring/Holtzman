@@ -2,7 +2,19 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
+
+import { reset, startBuffering } from "aphrodite/lib/inject";
+
 import ScriptureItem from "../ScriptureItem";
+
+beforeEach(() => {
+  reset();
+  startBuffering();
+});
+
+afterEach(() => {
+  reset();
+});
 
 const defaultProps = {
   scripture: "Job 2",

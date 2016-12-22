@@ -1,7 +1,18 @@
 /* eslint-disable */
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
+import { reset, startBuffering } from "aphrodite/lib/inject";
+
 import ScriptureWrapper from "../ScriptureWrapper";
+
+beforeEach(() => {
+  reset();
+  startBuffering();
+});
+
+afterEach(() => {
+  reset();
+});
 
 const defaultProps = {
   studyEntry: {

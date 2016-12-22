@@ -1,6 +1,20 @@
 /* eslint-disable */
 import renderer from "react-test-renderer";
+import { shallowToJson, mountToJson } from "enzyme-to-json";
+import { reset, startBuffering } from "aphrodite/lib/inject";
+
 import Content from "../Content";
+
+beforeEach(() => {
+  reset();
+  startBuffering();
+});
+
+afterEach(() => {
+  reset();
+});
+
+
 
 jest.mock("../../../../blocks/related-content");
 jest.mock("../../../../components/players/video");
