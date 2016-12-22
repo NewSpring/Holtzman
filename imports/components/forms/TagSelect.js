@@ -10,6 +10,7 @@ type ITagSelectProps = {
   }],
   onClick: ?Function,
   overrideActive?: boolean,
+  currentActive?: string,
 };
 
 type ITagSelectState = {
@@ -21,12 +22,18 @@ export default class TagSelect extends Component {
   state: ITagSelectState;
 
   state = {
-    active: null,
+    active: "",
+  }
+
+  componentWillMount = () => {
+    if (this.props.currentActive !== "") {
+      this.setState({ active: this.props.currentActive });
+    }
   }
 
   handleTagClick = (value: any) => {
     if (value === this.state.active) {
-      this.setState({ active: null });
+      this.setState({ active: "" });
     } else {
       this.setState({ active: value });
     }
