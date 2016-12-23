@@ -149,6 +149,26 @@ it("doesn't render account type if none", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
+it("doesn't render payment account at all if none", () => {
+  const wrapper = shallow(generateComponent({
+    transaction: {
+      details: [
+        {
+          amount: 2,
+          account: {
+            name: "test",
+          },
+        },
+      ],
+      person: {
+        firstName: "jim",
+        lastName: "bob",
+      },
+    },
+  }));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
 it("doesn't render entries if there are none", () => {
   const wrapper = shallow(generateComponent({
     entries: null,

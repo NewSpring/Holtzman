@@ -7,7 +7,7 @@ import { isIOS } from "../../../../util";
 type ISavePaymentInput = {
   saveName: Function,
   savedAccount: Object,
-  schedules: Object,
+  schedule: Object,
   shouldSaveState: boolean,
   payment: Object,
   transactionType: string,
@@ -16,7 +16,7 @@ type ISavePaymentInput = {
 const SavePaymentInput = ({
   saveName,
   savedAccount,
-  schedules,
+  schedule,
   shouldSaveState,
   payment,
   transactionType,
@@ -25,8 +25,8 @@ const SavePaymentInput = ({
     shouldSaveState &&
     !savedAccount.id &&
     transactionType !== "guest" &&
-    Object.keys(schedules).length === 0 &&
-    !isIOS()
+    !schedule.start &&
+    (transactionType === "savedPayment" || !isIOS())
   ) {
     return (
       <Forms.Input

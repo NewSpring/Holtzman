@@ -14,7 +14,6 @@ import Menu from "./Menu";
 import ChangePassword from "./ChangePassword";
 import PersonalDetails from "./PersonalDetails";
 import HomeAddress from "./HomeAddress";
-import PaymentDetails from "./Payments";
 
 class TemplateWithoutData extends Component {
 
@@ -103,7 +102,10 @@ const Routes = [
       { path: "change-password", component: ChangePassword },
       { path: "personal-details", component: PersonalDetails },
       { path: "home-address", component: HomeAddress },
-      { path: "saved-accounts", component: PaymentDetails },
+      {
+        path: "saved-accounts",
+        onEnter: (nextState: Object, replace: Function) => replace("/give/home"),
+      },
     ],
   },
 ];

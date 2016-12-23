@@ -4,6 +4,7 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
+import Authorized from "../../../../blocks/authorzied";
 import {
   nav as navActions,
   header as headerActions,
@@ -136,7 +137,18 @@ const Details = connect()(
   )
 );
 
-export default Details;
+const Routes = [
+  {
+    path: "history/:id",
+    component: Authorized,
+    indexRoute: { component: Details },
+  },
+];
+
+export default {
+  Details,
+  Routes,
+};
 
 export {
   DetailsWithoutData,

@@ -60,9 +60,8 @@ const PrimaryButton = ({
       data-id={dataId}
       style={style}
     >
-      {message}
+      {message} {Meteor.userId() && <span className="icon-lock" />}
     </button>
-
   );
 };
 

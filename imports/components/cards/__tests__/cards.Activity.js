@@ -24,6 +24,12 @@ describe("Activity", () => {
     expect(shallowToJson(component)).toMatchSnapshot();
   });
 
+  it("should accept a react component as message prop", () => {
+    const message = <p>hello world</p>
+    const component = shallow(generateComponent({message: message}));
+    expect(shallowToJson(component)).toMatchSnapshot();
+  });
+
   it("should render the warning status component", () => {
     const component = shallow(generateComponent({ status: "warning" }));
     expect(shallowToJson(component)).toMatchSnapshot();

@@ -26,6 +26,7 @@ const SmallButton = (props: ISmallButton) => {
         style={props.style || {}}
         onClick={props.onClick}
         to={props.linkUrl}
+        disabled={props.disabled}
       >
         {props.text}
       </Link>
@@ -36,6 +37,7 @@ const SmallButton = (props: ISmallButton) => {
       className={classes}
       style={props.style || {}}
       onClick={props.onClick}
+      disabled={props.disabled}
     >
       {props.text}
     </button>

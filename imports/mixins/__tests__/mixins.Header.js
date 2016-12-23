@@ -192,7 +192,7 @@ it("getHeaderTitle returns blank string if no entry found", () => {
 it("getHeaderTitle returns string for possible entry types", () => {
   const wrapper = shallow(generateComponent());
   const entryTypes = [
-    ["devotion", "Devotion"],
+    ["devotion", "Devotional"],
     ["article", "Article"],
     ["story", "Story"],
     ["currentSermon", "Series"],

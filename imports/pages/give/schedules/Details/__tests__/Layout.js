@@ -155,63 +155,14 @@ it("renders loading if no entries", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
-it("formatDate returns formatted date", () => {
-  const wrapper = shallow(generateComponent());
-  const result = wrapper.instance().formatDate("12-12-2012");
-  expect(result).toBe("Dec 12, 2012");
-});
+// it("formatDate returns formatted date", () => {
+//   const wrapper = shallow(generateComponent());
+//   const result = wrapper.instance().formatDate("12-12-2012");
+//   expect(result).toBe("Dec 12, 2012");
+// });
 
-it("returns `$12.34` if number 12.34", () => {
-  const wrapper = shallow(generateComponent());
-  const value = 12.34;
-  const result = wrapper.instance().monentize(value);
-  expect(result).toBe(`$${value}`);
-});
-
-it("returns `$12.34` if string `12.34`", () => {
-  const wrapper = shallow(generateComponent());
-  const value = "12.34";
-  const result = wrapper.instance().monentize(value);
-  expect(result).toBe(`$${value}`);
-});
-
-it("removes everything except numbers, dots, and dashes", () => {
-  const wrapper = shallow(generateComponent());
-  const value = "!@#$%^&*()12abcdefg.`~`~{}[]34";
-  const result = wrapper.instance().monentize(value);
-  expect(result).toBe("$12.34");
-});
-
-it("has no decimals by default", () => {
-  const wrapper = shallow(generateComponent());
-  const value = 24;
-  const result = wrapper.instance().monentize(value);
-  expect(result).toBe("$24");
-});
-
-it("fixes to two decimals if greater than two", () => {
-  const wrapper = shallow(generateComponent());
-  const value = 24.2456788;
-  const result = wrapper.instance().monentize(value);
-  expect(result).toBe("$24.25");
-});
-
-it("fixes to two decimals if fixed is true", () => {
-  const wrapper = shallow(generateComponent());
-  const value = 12;
-  const result = wrapper.instance().monentize(value, true);
-  expect(result).toBe(`$${value}.00`);
-});
-
-it("adds commas for large values", () => {
-  const wrapper = shallow(generateComponent());
-  const value = 123456789;
-  const result = wrapper.instance().monentize(value);
-  expect(result).toBe("$123,456,789");
-});
-
-it("capitalizeFirstLetter returns only first letter capitalized", () => {
-  const wrapper = shallow(generateComponent());
-  const result = wrapper.instance().capitalizeFirstLetter("test");
-  expect(result).toBe("Test");
-});
+// it("capitalizeFirstLetter returns only first letter capitalized", () => {
+//   const wrapper = shallow(generateComponent());
+//   const result = wrapper.instance().capitalizeFirstLetter("test");
+//   expect(result).toBe("Test");
+// });

@@ -3,6 +3,9 @@
 type ICurrency = {
   amount: string,
   baseHeadingSize?: string,
+  className?: string,
+  theme?: string,
+  roundCurrency?: bool,
 };
 
 // eslint-disable-next-line max-len
@@ -10,7 +13,18 @@ const currencySymbolRegex = /[\$\xA2-\xA5\u058F\u060B\u09F2\u09F3\u09FB\u0AF1\u0
 
 export const getCurrencySymbol = (amount:string) => amount.match(currencySymbolRegex) || "$";
 export const getNegative = (amount:string) => amount.match(/-/);
-export const getDollars = (amount:string) => amount.replace(currencySymbolRegex, "").replace("-", "").split(".")[0] || "00";
+export const getDollars = (
+  amount:string,
+  roundCurrency?: bool,
+): string => {
+  if (roundCurrency === true) {
+    const integerAmount = parseFloat(amount.replace(currencySymbolRegex, "").replace("-", "") || "00.00");
+    const roundedAmount = Math.round(integerAmount);
+    return roundedAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  const ints = amount.replace(currencySymbolRegex, "").replace("-", "").split(".")[0];
+  return (ints && ints.replace(/\B(?=(\d{3})+(?!\d))/g, ",")) || "00";
+};
 export const getCents = (amount:string) => amount.split(".")[1] || "00";
 
 // needed for testing
@@ -26,16 +40,27 @@ export const currencySizeCalc = (baseHeadingSize:string) => {
   ReducedHeadingSize = `h${reducedHeadingResult}`;
 };
 
+export const textTheme = (
+  theme?: string,
+): string => {
+  if (theme === "light") return "text-light-primary";
+
+  return "text-dark-primary";
+};
+
 const Currency = ({
   amount,
   baseHeadingSize,
+  className,
+  theme,
+  roundCurrency,
 }: ICurrency) => (
-  <div className="floating text-left text-dark-primary">
+  <div className={`floating ${textTheme(theme)} ${className || "text-left"}`}>
     {currencySizeCalc(baseHeadingSize || "2")}
-    <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(amount)}</ReducedHeadingSize>
-    {getNegative(amount) && <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(amount)}</ReducedHeadingSize>}
-    <BaseCurrencySize className="floating__item flush">{getDollars(amount)}</BaseCurrencySize>
-    <ReducedHeadingSize className="floating__item flush">.{getCents(amount)}</ReducedHeadingSize>
+    <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(`${amount}`)}</ReducedHeadingSize>
+    {getNegative(`${amount}`) && <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(`${amount}`)}</ReducedHeadingSize>}
+    <BaseCurrencySize className="floating__item flush">{getDollars(`${amount}`, roundCurrency)}</BaseCurrencySize>
+    {!roundCurrency && <ReducedHeadingSize className="floating__item flush">.{getCents(`${amount}`)}</ReducedHeadingSize>}
   </div>
 );
 

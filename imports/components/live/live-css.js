@@ -43,6 +43,16 @@ export default StyleSheet.create({
       left: 0,
     },
   },
+  "live-float-double": {
+    position: "absolute",
+    top: "86px",
+    width: "100%",
+    zIndex: 1,
+    "@media screen and (min-width: 481px)": {
+      paddingLeft: "80px",
+      left: 0,
+    },
+  },
   "live-banner": animation,
   "live-text": textAnimation,
 });

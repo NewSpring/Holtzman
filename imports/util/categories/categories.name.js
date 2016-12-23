@@ -4,6 +4,8 @@ function categoryName(contentItem) {
   let contentCategory = category.charAt(0).toUpperCase();
 
   switch (category) {
+    case "study_entries":
+      return "Devotionals";
     case "series_newspring":
       return "Series";
     case "newspring_albums":

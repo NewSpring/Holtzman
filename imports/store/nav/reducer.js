@@ -46,7 +46,7 @@ const discoverActive = ({ path, modal }) => {
 };
 
 let homeLink = "/";
-if (process.env.WEB) homeLink = "/give/now";
+if (process.env.WEB) homeLink = "/give/home";
 let links = {
   TOP: [
     {

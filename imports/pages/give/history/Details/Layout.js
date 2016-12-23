@@ -6,6 +6,7 @@ import { Link } from "react-router";
 import Split, { Left, Right } from "../../../../blocks/split";
 
 import { Spinner } from "../../../../components/loading";
+import Currency from "../../../../components/currency";
 import SideBySide from "../../../../components/cards/SideBySide";
 import Meta from "../../../../components/meta";
 import AccountType from "../../../../components/accountType";
@@ -22,39 +23,19 @@ export default class Layout extends Component {
     moment(new Date(date)).format("MMM D, YYYY")
   )
 
-  monentize = (value, fixed) => {
-    let strVal = typeof value === "number" ? `${value}` : value;
-    if (!strVal.length) return "$0.00";
-
-    strVal = strVal.replace(/[^\d.-]/g, "");
-
-    const decimals = strVal.split(".")[1];
-    if ((decimals && decimals.length >= 2) || fixed) {
-      strVal = Number(strVal).toFixed(2);
-      strVal = String(strVal);
-    }
-
-    strVal = strVal.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return `$${strVal}`;
-  }
-
   /* eslint-disable max-len */
   render() {
     const { loadingEntries, entries } = this.props;
     return (
       <div>
         <Split nav classes={["background--light-primary"]}>
-
           <Meta title="Giving History" />
-
           <Right
             background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/heroes/newspring/campuses/Florence.1.2x1_1700_850_90_c1.jpg"
             mobile={false}
           />
-
         </Split>
         <Left scroll ref="container" classes={["background--light-secondary"]}>
-
           <div
             className={
               "soft-double-sides@lap-and-up soft-double-ends@lap-and-up " +
@@ -67,7 +48,7 @@ export default class Layout extends Component {
                   <Link
                     to="/give/history"
                     className={
-                      "locked-top locked-left soft-double@lap-and-up " +
+                      "locked-left soft-double@lap-and-up " +
                       "soft h7 text-dark-secondary plain"
                     }
                   >
@@ -77,7 +58,7 @@ export default class Layout extends Component {
                     />
                     <span
                       className="display-inline-block"
-                      style={{ verticalAlign: "middle", marginTop: "3px" }}
+                      style={{ verticalAlign: "middle", marginTop: "5px" }}
                     >
                       Back
                     </span>
@@ -112,9 +93,11 @@ export default class Layout extends Component {
                       </p>
                       <h3 className="text-dark-secondary">{account.name}</h3>
 
-                      <h1 className="text-dark-primary">
-                        {this.monentize(transaction.details[0].amount)}
-                      </h1>
+                      <Currency
+                        amount={transaction.details[0].amount.toFixed(2)}
+                        baseHeadingSize="1"
+                        className="display-inline-block text-center soft-bottom"
+                      />
 
                       <h6 className="push-bottom text-dark-tertiary">
                         {person.nickName || person.firstName} {person.lastName}
@@ -234,8 +217,6 @@ export default class Layout extends Component {
             })()}
 
           </div>
-
-
         </Left>
       </div>
 

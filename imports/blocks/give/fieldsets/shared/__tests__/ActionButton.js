@@ -7,7 +7,7 @@ const defaultProps = {
     type: "ach",
     accountNumber: "123456789",
   },
-  schedules: {},
+  schedule: { start: null },
 };
 
 it("should render web action button", () => {

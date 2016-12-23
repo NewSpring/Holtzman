@@ -68,8 +68,10 @@ exports[`ScheduleThanks renders with props 1`] = `
   className="text-left">
   Thank you for your contribution of 
   12
+   
   starting on 
   Dec 12, 1912
+   
   to NewSpring Church.
 </p>
 `;

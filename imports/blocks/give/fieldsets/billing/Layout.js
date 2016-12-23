@@ -104,7 +104,7 @@ const Layout = ({
         defaultValue={billing.streetAddress2}
       />
 
-      <Forms.Select
+      {countries && countries.length > 0 && <Forms.Select
         name="country"
         label="Country"
         errorText="Please enter your country"
@@ -112,7 +112,7 @@ const Layout = ({
         items={countries}
         validation={saveCountry}
         includeBlank
-      />
+      />}
 
       <Forms.Input
         name="city"
@@ -123,11 +123,11 @@ const Layout = ({
       />
 
       <div className="grid">
-        <StateOrTerritory
+        {states && states.length > 0 && <StateOrTerritory
           billing={billing}
           states={states}
           saveState={saveState}
-        />
+        />}
         <Zip
           billing={billing}
           zip={zip}

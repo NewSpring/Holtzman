@@ -142,7 +142,7 @@ const Devotions = connect(mapStateToProps)(
 );
 
 const Routes = [
-  { path: "devotions", component: Devotions },
+  // { path: "devotions", component: Devotions },
   { path: "devotions/:id", component: Single },
 ];
 

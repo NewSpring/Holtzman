@@ -3,15 +3,17 @@
 type IButtonText = {
   payment: Object,
   savedAccount: Object,
-  schedules: Object,
+  schedule: Object,
   scheduleToRecover: boolean,
+  overrideText?: string,
 };
 
 const ButtonText = ({
   payment,
   savedAccount,
-  schedules,
+  schedule,
   scheduleToRecover,
+  overrideText,
 }: IButtonText) => {
   let paymentInfo = payment;
 
@@ -22,12 +24,13 @@ const ButtonText = ({
 
   let text = "Give";
 
-  if (Object.keys(schedules).length) text = "Schedule";
+  if (schedule.start) text = "Schedule";
   if (scheduleToRecover) text = "Transfer";
+  if (overrideText) text = overrideText;
 
   if (paymentInfo.accountNumber || paymentInfo.cardNumber) {
     const masked = paymentInfo.type === "ach" ? paymentInfo.accountNumber : paymentInfo.cardNumber;
-    text += ` using ${masked.replace(/-/g, "").slice(-4)}`;
+    text += ` With ${masked.replace(/-/g, "").slice(-4)}`;
   }
 
   return <span>{text}</span>;

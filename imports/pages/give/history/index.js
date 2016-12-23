@@ -1,38 +1,45 @@
+// @flow
 import { Component, PropTypes } from "react";
+// $FlowMeteor
+import { Meteor } from "meteor/meteor";
+import moment from "moment";
 import { graphql } from "react-apollo";
-import { connect } from "react-redux";
 import gql from "graphql-tag";
+import fileSaver from "file-saver";
 
 import infiniteScroll from "../../../decorators/infiniteScroll";
+import createContainer from "../../../blocks/meteor/react-meteor-data";
 
 import Authorized from "../../../blocks/authorzied";
-import { header as headerActions } from "../../../store";
+import base64ToBlob from "../../../util/base64ToBlob";
 
 import Layout from "./Layout";
-import Details from "./Details";
 
 class TemplateWithoutData extends Component {
 
   static propTypes = {
     loading: PropTypes.bool,
     transactions: PropTypes.array,
-    changeDates: PropTypes.func,
-    changeFamily: PropTypes.func,
+    filterTransactions: PropTypes.func,
     Loading: PropTypes.func.isRequired,
     done: PropTypes.bool,
     filter: PropTypes.shape({
       family: PropTypes.array, // eslint-disable-line
     }),
-    dispatch: PropTypes.func,
+    setRightProps: PropTypes.func,
+    currentVariables: PropTypes.object,
+    getPDF: PropTypes.func,
   }
 
-  state = { refetching: false }
+  state = { refetching: false, printLoading: false }
 
-  componentDidMount() {
-    if (process.env.NATIVE) this.props.dispatch(headerActions.set({ title: "Giving History" }));
+  componentWillMount() {
+    this.props.setRightProps({
+      background: "////dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg",
+    });
   }
 
-  wrapRefetch = (refetch) => (...args) => {
+  wrapRefetch = (refetch: Function) => (...args: Object[]) => {
     this.setState({ refetching: true });
     return refetch(...args).then((x) => {
       this.setState({ refetching: false });
@@ -40,29 +47,48 @@ class TemplateWithoutData extends Component {
     });
   }
 
+  onPrintClick = (e: Event) => {
+    e.preventDefault();
+
+    this.setState({ printLoading: true });
+    this.props.getPDF(this.props.currentVariables)
+      .then(({ data: { transactionStatement } }) => {
+        const blob = base64ToBlob(transactionStatement.file);
+        this.setState({ printLoading: false });
+        fileSaver.saveAs(blob, `${moment().year()} NewSpring Church Giving Summary.pdf`);
+      })
+      .catch(() => {
+        this.setState({ printLoading: false });
+      });
+  }
+
   render() {
     const {
       transactions,
       loading,
-      changeDates,
-      changeFamily,
       filter,
       done,
       Loading,
+      filterTransactions,
     } = this.props;
 
+    const { printLoading } = this.state;
+
     return (
-      <Layout
-        transactions={transactions}
-        family={filter.family || []}
-        alive
-        ready={!loading}
-        reloading={this.state.refetching}
-        Loading={Loading}
-        done={done}
-        changeFamily={this.wrapRefetch(changeFamily)}
-        changeDates={this.wrapRefetch(changeDates)}
-      />
+      <Authorized>
+        <Layout
+          transactions={transactions || []}
+          family={filter.family || []}
+          alive
+          ready={!loading}
+          reloading={this.state.refetching}
+          Loading={Loading}
+          done={done}
+          filterTransactions={this.wrapRefetch(filterTransactions)}
+          onPrintClick={this.onPrintClick}
+          printLoading={printLoading}
+        />
+      </Authorized>
     );
   }
 }
@@ -70,11 +96,30 @@ class TemplateWithoutData extends Component {
 const FILTER_QUERY = gql`
   query GetFilterContent {
     family: currentFamily {
-      person { photo, nickName, firstName, lastName, id: entityId }
+      person { nickName, firstName, lastName, id: entityId }
     }
   }
 `;
+
 const withFilter = graphql(FILTER_QUERY, { name: "filter" });
+
+const GET_STATEMENT = gql`
+  mutation GetGivingStatement($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
+    transactionStatement(
+      limit: $limit,
+      skip: $skip,
+      people: $people,
+      start: $start,
+      end: $end
+    ){
+      file
+    }
+  }
+`;
+
+const withStatement = graphql(GET_STATEMENT, {
+  props: ({ mutate }) => ({ getPDF: (variables) => mutate({ variables }) }),
+});
 
 const TRANSACTIONS_QUERY = gql`
   query GetTransactions($limit: Int, $skip: Int, $people: [Int], $start: String, $end: String) {
@@ -99,18 +144,27 @@ const TRANSACTIONS_QUERY = gql`
     }
   }
 `;
+
+const DEFAULT_LIMIT = 20;
+
 const withTransactions = graphql(TRANSACTIONS_QUERY, {
-  options: {
-    variables: { limit: 20, skip: 0, people: [], start: "", end: "" },
+  options: ({ authorized }) => ({
+    variables: { limit: DEFAULT_LIMIT, skip: 0, people: [], start: "", end: "" },
     forceFetch: true,
-  },
+    skip: !authorized,
+    ssr: false,
+  }),
   props: ({ data }) => ({
+    currentVariables: data.variables,
     transactions: data.transactions || [],
     loading: data.loading,
     done: (
-      data.transactions &&
-      !data.loading &&
-      data.transactions.length < data.variables.limit + data.variables.skip
+      data.variables.limit === 0 ||
+      (
+        data.transactions &&
+        !data.loading &&
+        data.transactions.length < data.variables.limit + data.variables.skip
+      )
     ),
     fetchMore: () => data.fetchMore({
       variables: { ...data.variables, skip: data.transactions.length },
@@ -122,42 +176,28 @@ const withTransactions = graphql(TRANSACTIONS_QUERY, {
         };
       },
     }),
-    changeFamily: (people) => data.fetchMore({
-      variables: { ...data.varibles, people },
-      updateQuery: (previousResult, { fetchMoreResult }) => (
-        !fetchMoreResult.data ? previousResult : fetchMoreResult.data
-      ),
-    }),
-    changeDates: (start, end) => data.fetchMore({
-      variables: { ...data.varibles, start, end },
-      updateQuery: (previousResult, { fetchMoreResult }) => (
-        !fetchMoreResult.data ? previousResult : fetchMoreResult.data
-      ),
-    }),
+    filterTransactions: ({ people, start, end, limit = 0 }) =>
+      data.refetch({ ...data.variables, people, start, end, limit }),
   }),
 });
 
-const Template = connect()(
-  withFilter(
+const authorized = () => ({ authorized: Meteor.userId() });
+
+const Template = createContainer(authorized, withFilter(
+  withStatement(
     withTransactions(
       infiniteScroll()(
         TemplateWithoutData
       )
     )
   )
-);
+));
 
 const Routes = [
   {
     path: "history",
-    component: Authorized,
+    component: Template,
     indexRoute: { component: Template },
-    childRoutes: [
-      {
-        path: ":id",
-        component: Details,
-      },
-    ],
   },
 ];
 

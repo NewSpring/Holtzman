@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { PropTypes } from "react";
 import Meta from "../../../components/meta";
 
-import Tag from "../components/Tag";
+import Tag from "../../../components/tags";
 import Group from "../components/GroupCard";
 
 import Filter from "./Filter";

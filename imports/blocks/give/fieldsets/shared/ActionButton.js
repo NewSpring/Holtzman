@@ -11,7 +11,7 @@ type IActionButton = {
   completeGift: Function,
   payment: Object,
   savedAccount: Object,
-  schedules: Object,
+  schedule: Object,
   scheduleToRecover: boolean,
 };
 
@@ -19,7 +19,7 @@ const ActionButton = ({
   completeGift,
   payment,
   savedAccount,
-  schedules,
+  schedule,
   scheduleToRecover,
 }: IActionButton) => {
   if (isIOS()) {
@@ -37,7 +37,19 @@ const ActionButton = ({
           className="btn soft-half-top one-whole"
           onClick={completeGift}
         >
-          Complete Gift in Browser
+          <ButtonText
+            payment={payment}
+            savedAccount={savedAccount}
+            schedule={schedule}
+            scheduleToRecover={scheduleToRecover}
+            overrideText="Complete Using"
+          />
+          &nbsp;&nbsp;
+          <Icon
+            cardType={
+              cardType(payment, savedAccount)
+            }
+          />
         </button>
       </div>
     );
@@ -47,10 +59,10 @@ const ActionButton = ({
       <ButtonText
         payment={payment}
         savedAccount={savedAccount}
-        schedules={schedules}
+        schedule={schedule}
         scheduleToRecover={scheduleToRecover}
       />
-      &nbsp;
+      &nbsp;&nbsp;&nbsp;
       <Icon
         cardType={
           cardType(payment, savedAccount)

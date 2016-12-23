@@ -1,8 +1,15 @@
 exports[`GiveReviewTemplate returns <Error /> component based on state 1`] = `
-<Err
-  additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
-  goToStepOne={[Function]}
-  msg="must go faster!" />
+<div
+  className="one-whole one-half@palm-wide-and-up"
+  style={
+    Object {
+      "margin": "0 auto",
+    }
+  }>
+  <Err
+    additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
+    msg="must go faster!" />
+</div>
 `;
 
 exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `
@@ -49,15 +56,33 @@ exports[`GiveReviewTemplate returns <Layout /> component based on state 1`] = `
 `;
 
 exports[`GiveReviewTemplate returns <Loading /> component based on state 1`] = `
-<Loading
-  msg="We\'re Processing Your Contribution" />
+<div
+  className="fixed-ends fixed-sides">
+  <Loading
+    msg="We\'re Processing Your Contribution" />
+  ;
+</div>
 `;
 
 exports[`GiveReviewTemplate returns <Success /> component based on state 1`] = `
-<Success
-  additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
-  email="web@newspring.cc"
-  guest={false}
-  onClick={[Function]}
-  total="$1.00" />
+<div
+  className="one-whole one-half@palm-wide-and-up"
+  style={
+    Object {
+      "margin": "0 auto",
+    }
+  }>
+  <Success
+    additionalMessage="Please click \'Done\' in the top left of your screen to get back to the app"
+    email="web@newspring.cc"
+    guest={false}
+    onClick={[Function]}
+    schedule={
+      Object {
+        "frequency": null,
+        "start": null,
+      }
+    }
+    total="$1.00" />
+</div>
 `;

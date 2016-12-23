@@ -6,7 +6,7 @@ import Loading from "../../../components/loading";
 
 import FeedItem from "../../../components/cards/cards.FeedItem";
 import SideBySide from "../../../components/cards/SideBySide";
-import Tag from "../components/Tag";
+import Tag from "../../../components/tags";
 
 /* eslint-disable max-len */
 const Layout = ({

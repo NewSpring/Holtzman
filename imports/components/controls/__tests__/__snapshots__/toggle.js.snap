@@ -39,7 +39,7 @@ exports[`test renders with props 1`] = `
   <div
     className="grid text-left toggle-arrow soft-sides">
     <div
-      className="transition grid__item hard one-half toggle-arrow__item"
+      className="transition grid__item hard one-half toggle-arrow__item "
       style={
         Object {
           "marginLeft": "0%",

@@ -14,9 +14,10 @@ function categoryIcon(contentItem) {
     case "devotionals":
     case "stories":
     case "news":
-      return "icon-category-text";
+    case "study":
+    case "study_entries":
     default:
-      return null;
+      return "icon-category-text";
   }
 }
 

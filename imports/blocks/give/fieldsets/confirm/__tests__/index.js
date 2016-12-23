@@ -17,7 +17,7 @@ const defaultProps = {
   savedAccounts: [],
   changeSavedAccount: () => {},
   scheduleToRecover: false,
-  schedules: {},
+  schedule: { start: null, frequency: null },
 };
 
 const generateComponent = (additionalProps = {}) => {
@@ -41,7 +41,7 @@ it("renders PaymentOptionsLayout when state is true", () => {
 
 it("renders ScheduleLayout if schedules", () => {
   const wrapper = shallow(generateComponent({
-    schedules: { "123": "123" },
+    schedule: { start: null, frequency: null },
   }));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });

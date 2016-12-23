@@ -1,5 +1,11 @@
 exports[`GiveReview renders a transaction review 1`] = `
-<div>
+<div
+  className="one-whole one-half@palm-wide-and-up soft-double-ends@palm-wide-and-up"
+  style={
+    Object {
+      "margin": "0 auto",
+    }
+  }>
   <div
     className="push-double@lap-and-up push">
     <h4
@@ -92,11 +98,14 @@ exports[`GiveReview renders a transaction review 1`] = `
         </div>
       </div>
     </div>
-    <button
-      className="btn soft-half-top one-whole"
-      onClick={[Function]}>
-      Give Now
-    </button>
+    <div
+      className="one-whole text-center">
+      <button
+        className="btn soft-half-top"
+        onClick={[Function]}>
+        Give Now
+      </button>
+    </div>
   </div>
 </div>
 `;

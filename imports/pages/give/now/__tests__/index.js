@@ -1,4 +1,4 @@
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { serverWatch } from "meteor/bjwiley2:server-watch";
 import {
@@ -9,15 +9,33 @@ import {
 describe("Page", () => {
   const defaultProps = {
     dispatch: jest.fn(),
+    setRightProps: jest.fn(),
   };
 
-  const generateComponent = () => (
-    <Page { ...defaultProps } />
-  );
+  const generateComponent = (additionalProps = {}) => {
+    const newProps = {
+      ...defaultProps,
+      ...additionalProps,
+    };
+    return <Page { ...newProps } />
+  };
 
   it("renders with props", () => {
     const wrapper = shallow(generateComponent());
     expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("mounts and unmounts correctly", () => {
+    const mockSetRightProps = jest.fn();
+    const wrapper = mount(generateComponent({
+      setRightProps: mockSetRightProps,
+      accounts: {
+        loading: false,
+      },
+    }));
+    expect(mockSetRightProps).toHaveBeenCalledTimes(1);
+    wrapper.unmount();
+    expect(mockSetRightProps).toHaveBeenCalledTimes(2);
   });
 });
 

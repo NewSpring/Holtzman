@@ -23,7 +23,11 @@ class Give extends Component {
   componentWillMount() {
     this.updateData(this.props);
 
-    const { savedAccount } = this.props.give;
+    const { savedAccount, transactionType } = this.props.give;
+    if (transactionType === "savedPayment") {
+      this.props.dispatch(giveActions.setProgress(2));
+      return;
+    }
     if (!savedAccount.id) return;
 
     this.props.dispatch(giveActions.setProgress(4));

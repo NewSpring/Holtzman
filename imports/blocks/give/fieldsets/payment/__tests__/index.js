@@ -14,7 +14,7 @@ const defaultProps = {
   children: <span>child</span>,
   toggles: ["one", "two"],
   transactionType: "default",
-  schedules: {},
+  schedule: { start: null },
   back: jest.fn(),
   next: jest.fn(),
 };

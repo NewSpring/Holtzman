@@ -20,6 +20,7 @@ class HeaderWithoutData extends Component {
     searchSubmit: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     text: PropTypes.string,
     subText: PropTypes.string,
+    fontWeight: PropTypes.string,
   }
 
   showSettings = () => {
@@ -131,7 +132,7 @@ class HeaderWithoutData extends Component {
                   overflow: "hidden",
                   textOverflow: "ellipsis",
                   whiteSpace: "nowrap",
-                  fontWeight: 700,
+                  fontWeight: this.props.fontWeight || 700,
                 }}
               >
                 {this.props.text}
@@ -179,6 +180,7 @@ class HeaderWithoutData extends Component {
 
 const map = ({ header, search }) => ({
   color: header.content.color || "#6BAC43",
+  fontWeight: header.content.fontWeight || 700,
   light: header.content.light,
   text: header.content.title,
   subText: header.content.subTitle,

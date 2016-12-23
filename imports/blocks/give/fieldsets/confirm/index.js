@@ -8,23 +8,25 @@ import cloneDeep from "lodash.clonedeep";
 import { openUrl } from "../../../../util/inAppLink";
 
 import TransactionLayout from "./TransactionLayout";
-import ScheduleLayout from "./ScheduleLayout";
 import PaymentOptionsLayout from "./PaymentOptionsLayout";
+import SavedPaymentLayout from "./SavedPaymentLayout";
 
 type IConfirm = {
-  data: Object,
-  transactions: Object,
-  total: number,
   back: Function,
+  changeSavedAccount: Function,
+  children?: React$Element<any>,
+  clearData: Function,
+  data: Object,
   goToStepOne: Function,
   header?: React$Element<any>,
-  url: string,
-  clearData: Function,
   savedAccount: Object,
   savedAccounts: Object[],
-  changeSavedAccount: Function,
+  schedule: Object,
   scheduleToRecover: boolean,
-  schedules: Object,
+  total: number,
+  transactions: Object,
+  transactionType: string,
+  url: string,
 }
 
 export default class Confirm extends Component {
@@ -112,22 +114,16 @@ export default class Confirm extends Component {
           savedAccounts={this.props.savedAccounts}
         />
       );
-    }
-
-    if (Object.keys(this.props.schedules).length) {
+    } else if (this.props.transactionType === "savedPayment") {
       return (
-        <ScheduleLayout
-          changeAccounts={this.changeAccounts}
-
-          back={this.props.back}
-          goToStepOne={this.props.goToStepOne}
-          header={this.props.header}
+        <SavedPaymentLayout
+          billing={this.props.data.billing}
           payment={this.props.data.payment}
-          savedAccount={this.props.savedAccount}
-          schedules={this.props.schedules}
-          scheduleToRecover={this.props.scheduleToRecover}
-          total={this.props.total}
-        />
+          header={this.props.header}
+          goToStepOne={this.props.goToStepOne}
+        >
+          {this.props.children}
+        </SavedPaymentLayout>
       );
     }
 
@@ -145,7 +141,7 @@ export default class Confirm extends Component {
         payment={this.props.data.payment}
         personal={this.props.data.personal}
         savedAccount={this.props.savedAccount}
-        schedules={this.props.schedules}
+        schedule={this.props.schedule}
         scheduleToRecover={this.props.scheduleToRecover}
         total={this.props.total}
         transactions={transactions}

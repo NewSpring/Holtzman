@@ -16,6 +16,7 @@ if (process.env.NATIVE) {
   import Sections from "./sections";
   import Series from "./series";
   import Stories from "./stories";
+  import Studies from "./studies";
   import Video from "./video";
   import Welcome from "./welcome";
 }
@@ -40,6 +41,7 @@ if (process.env.NATIVE) {
     Sections.Routes,
     Series.Routes,
     Stories.Routes,
+    Studies.Routes,
     Video.Routes,
     Welcome.Routes,
   );
