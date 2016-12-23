@@ -37,6 +37,8 @@ export class SavedPaymentsList extends Component {
   }
 
   openModal = () => {
+    // clear out existing data
+    this.props.dispatch(giveActions.clearData());
     // set transaction type
     this.props.dispatch(giveActions.setTransactionType("savedPayment"));
     this.props.dispatch(modal.render(Give, null));
