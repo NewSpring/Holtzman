@@ -33,7 +33,7 @@ describe("Class", () => {
       handleTagClick("foo");
       expect(wrapper.state().active).toEqual("foo");
       handleTagClick("foo");
-      expect(wrapper.state().active).toEqual(null);
+      expect(wrapper.state().active).toEqual("");
     });
 
     it("calls an onClick if present", () => {
