@@ -23,19 +23,20 @@ export default class Filter extends Component {
   }
 
   state = {
-    people: [],
-    start: "",
-    end: "",
-    expanded: false,
-    showStartDatePicker: false,
-    showEndDatePicker: false,
-    customStartLabel: "Start Date",
+    customDateDisabled: false,
+    customEndActive: false,
     customEndLabel: "End Date",
     customStartActive: false,
-    customEndActive: false,
-    customDateDisabled: false,
+    customStartLabel: "Start Date",
+    dateRangeActive: "",
+    end: "",
+    expanded: false,
     limit: 20,
     overrideActive: false,
+    people: [],
+    showEndDatePicker: false,
+    showStartDatePicker: false,
+    start: "",
   }
 
   componentDidMount() {
@@ -80,7 +81,7 @@ export default class Filter extends Component {
         if (value === "AllTime" && limit !== 20) {
           transactionLimit = 20;
         }
-        return { start: "", end: "", limit: transactionLimit, customDateDisabled: false };
+        return { start: "", end: "", limit: transactionLimit, customDateDisabled: false, dateRangeActive: "" };
       }
 
       let startDate;
@@ -99,10 +100,11 @@ export default class Filter extends Component {
       }
 
       return {
-        start: startDate,
+        customDateDisabled: true,
+        dateRangeActive: value,
         end: endDate,
         limit: transactionLimit,
-        customDateDisabled: true,
+        start: startDate,
       };
     });
   }
@@ -241,7 +243,7 @@ export default class Filter extends Component {
               "soft-half-ends soft-sides soft-double-sides@lap-and-up push-half-left"
             }
           >
-            {family && family.length && family.length > 1 && (
+            {family && family.length > 1 && (
               <div>
                 <h7 className="push-top text-dark-secondary display-inline-block">
                   Family Members
@@ -284,6 +286,7 @@ export default class Filter extends Component {
                   items={DATE_RANGES}
                   onClick={this.dateRangeClick}
                   overrideActive={this.state.overrideActive}
+                  currentActive={this.state.dateRangeActive}
                 />
               </div>
             </div>

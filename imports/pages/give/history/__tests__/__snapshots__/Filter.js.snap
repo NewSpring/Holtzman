@@ -34,6 +34,7 @@ exports[`test doesn't render family members if there are none 1`] = `
       <div
         className="hard-left@palm grid__item one-whole">
         <TagSelect
+          currentActive=""
           items={
             Array [
               Object {
@@ -188,6 +189,7 @@ exports[`test renders family members when expanded is true 1`] = `
       <div
         className="hard-left@palm grid__item one-whole">
         <TagSelect
+          currentActive=""
           items={
             Array [
               Object {
@@ -370,6 +372,7 @@ exports[`test works with nickname 1`] = `
       <div
         className="hard-left@palm grid__item one-whole">
         <TagSelect
+          currentActive=""
           items={
             Array [
               Object {
