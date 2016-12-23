@@ -63,7 +63,7 @@ const Err = ({ msg, goToStepOne, additionalMessage }: IErr) => (
         {msg}
       </p>
 
-      <StepOneAction goToStepOne={goToStepOne} />
+      {goToStepOne && <StepOneAction goToStepOne={goToStepOne} />}
 
       <AdditionalMessage additionalMessage={additionalMessage} />
 

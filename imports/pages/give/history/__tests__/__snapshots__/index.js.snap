@@ -1,12 +1,15 @@
 exports[`test renders with props 1`] = `
-<Layout
-  Loading={[Function]}
-  alive={true}
-  changeDates={[Function]}
-  changeFamily={[Function]}
-  done={false}
-  family={Array []}
-  ready={true}
-  reloading={false}
-  transactions={Array []} />
+<Connect(Authorized)>
+  <Component
+    Loading={[Function]}
+    alive={true}
+    done={false}
+    family={Array []}
+    filterTransactions={[Function]}
+    onPrintClick={[Function]}
+    printLoading={false}
+    ready={true}
+    reloading={false}
+    transactions={Array []} />
+</Connect(Authorized)>
 `;

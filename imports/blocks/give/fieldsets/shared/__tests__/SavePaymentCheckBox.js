@@ -5,7 +5,7 @@ const defaultProps = {
   savedAccount: {},
   savePayment: () => {},
   shouldSaveState: false,
-  schedules: {},
+  schedule: { start: null, frequency: null },
   transactionType: "default",
 };
 
@@ -40,7 +40,7 @@ it("does not render if guest checkout", () => {
 
 it("does not render if scheduling", () => {
   const result = renderer.create(generateComponent({
-    schedules: { "123": "123" },
+    schedule: { start: "now" },
   }));
   expect(result).toMatchSnapshot();
 });

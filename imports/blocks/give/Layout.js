@@ -8,13 +8,6 @@ import Err from "./Err";
 import Success from "./Success";
 import { monetize } from "../../util/format";
 
-const FORM_STEPS = [
-  Personal,
-  Billing,
-  Payment,
-  Confirm,
-];
-
 type ILayout = {
   back: Function,
   campuses: Object[],
@@ -54,9 +47,8 @@ const Layout = ({
     data,
     url,
     errors,
-    step,
     transactions,
-    schedules,
+    schedule,
     total,
     savedAccount,
     state,
@@ -64,11 +56,13 @@ const Layout = ({
     scheduleToRecover,
   } = give;
 
+  let { step } = give;
+
   if (["loading", "error", "success"].indexOf(state) > -1) {
     switch (state) {
       case "loading":
-        copiedSchedules = { ...schedules };
-        return <Loading msg="We're Processing Your Contribution" />;
+        copiedSchedules = { ...schedule };
+        return <Loading isSchedule={copiedSchedules.start} isSavedPayment={transactionType === "savedPayment"} />;
       case "error":
         return <Err msg={errors[Object.keys(errors)[0]]} goToStepOne={goToStepOne} />;
       case "success":
@@ -78,12 +72,20 @@ const Layout = ({
             email={data.personal.email}
             guest={transactionType === "guest"}
             onClick={goToAccounts}
-            schedules={copiedSchedules}
+            schedule={copiedSchedules}
           />
         );
       default:
         return null;
     }
+  }
+
+  const FORM_STEPS = [Personal, Billing, Payment, Confirm];
+
+  if (transactionType === "savedPayment") {
+    step -= 1;
+    if (step === 0) step = 1;
+    FORM_STEPS.shift();
   }
 
   const Step = FORM_STEPS[step - 1];
@@ -97,29 +99,29 @@ const Layout = ({
       submit={onSubmit}
     >
       <Step
-        data={data}
-        url={url}
-        savedAccount={savedAccount}
-        transactions={transactions}
-        transactionType={transactionType}
-        save={save}
-        errors={errors}
+        back={back}
+        campuses={campuses}
+        changeSavedAccount={changeSavedAccount}
         clear={clear}
         clearData={clearData}
-        next={next}
-        back={back}
-        total={total}
-        campuses={campuses}
-        states={states}
         countries={countries}
-        schedules={schedules}
+        data={data}
+        errors={errors}
         goToStepOne={goToStepOne}
+        next={next}
+        save={save}
+        savedAccount={savedAccount}
         savedAccounts={savedPayments}
-        changeSavedAccount={changeSavedAccount}
+        schedule={schedule}
         scheduleToRecover={scheduleToRecover}
+        states={states}
+        total={total}
+        transactions={transactions}
+        transactionType={transactionType}
+        url={url}
       >
         <Controls.Progress
-          steps={4}
+          steps={FORM_STEPS.length}
           active={step}
         />
       </Step>

@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 
 import SideBySide from "../../../components/cards/SideBySide";
 
-import Tag from "../components/Tag";
+import Tag from "../../../components/tags";
 
 export const GroupCardWithoutData = ({ group, router, onHover }) => {
   const theGroup = group || {};
@@ -31,24 +31,18 @@ export const GroupCardWithoutData = ({ group, router, onHover }) => {
         </h4>
 
         {/* Schedule */}
-        {(() => {
-          if (!theGroup.schedule || !theGroup.schedule.description) return null;
-          return (
-            <h6 className="plain text-dark-tertiary">
-              {theGroup.schedule.description}
-            </h6>
-          );
-        })()}
+        {theGroup.schedule && theGroup.schedule.description && (
+          <h6 className="plain text-dark-tertiary">
+            {theGroup.schedule.description}
+          </h6>
+        )}
 
         {/* Distance */}
-        {(() => {
-          if (!theGroup.distance) return null;
-          return (
-            <h6 className="em text-dark-tertiary push-half-bottom">
-              {theGroup.distance.toFixed(2)} miles away
-            </h6>
-          );
-        })()}
+        {theGroup.distance && (
+          <h6 className="em text-dark-tertiary push-half-bottom">
+            {theGroup.distance.toFixed(2)} miles away
+          </h6>
+        )}
 
 
         {/* Description */}
@@ -59,22 +53,15 @@ export const GroupCardWithoutData = ({ group, router, onHover }) => {
           {theGroup.tags && theGroup.tags.filter((x) => x).map((tag, i) => (
             <Tag val={tag.value} key={i} />
           ))}
-          {(() => {
-            if (!theGroup.type || theGroup.type === "Interests") return null;
-            return <Tag val={theGroup.type} />;
-          })()}
-          {(() => {
-            if (!theGroup.kidFriendly) return null;
-            return <Tag val="kid friendly" />;
-          })()}
-          {(() => {
-            if (!theGroup.demographic) return null;
-            return <Tag val={group.demographic} />;
-          })()}
-          {(() => {
-            if (!group.campus || !group.campus.name) return null;
-            return <Tag val={group.campus.name} urlKey="campuses" />;
-          })()}
+
+          {theGroup.type && theGroup.type !== "Interests" && <Tag val={theGroup.type} />}
+
+          {theGroup.kidFriendly && <Tag val="kid friendly" />}
+
+          {theGroup.demographic && <Tag val={group.demographic} />}
+
+          {group.campus && group.campus.name && <Tag val={group.campus.name} urlKey="campuses" />}
+
         </div>
 
       </SideBySide>

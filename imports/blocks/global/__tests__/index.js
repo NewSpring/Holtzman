@@ -206,7 +206,7 @@ describe("GlobalData", () => {
         resetStore: mockResetStore,
       },
     }));
-    expect(accountsActions.authorize).toHaveBeenCalledTimes(1);
+    expect(accountsActions.authorize).toHaveBeenCalledTimes(2);
     expect(accountsActions.authorize).toHaveBeenCalledWith(false);
     expect(accountsActions.signout).toHaveBeenCalledTimes(1);
     expect(mockResetStore).toHaveBeenCalledTimes(1);

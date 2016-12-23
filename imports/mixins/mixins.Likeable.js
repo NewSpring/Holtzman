@@ -42,6 +42,8 @@ const Likeable = {
     if (props.series) return props.series.content;
     if (props.album) return props.album.content;
     if (props.news) return props.news.content;
+    if (props.studyEntry) return props.studyEntry.content;
+    if (props.study) return props.study.content;
     return null;
   },
 
@@ -71,13 +73,27 @@ const Likeable = {
         };
       }
 
+      if (curEntry.channelName === "study_entries") {
+        const study = this.props.study.content;
+        curEntry.parent = {
+          entryId: study.id || study.entryId,
+        };
+      }
+
+      let image = backgrounds.image(curEntry);
+      if (curEntry.channelName === "sermons") {
+        image = backgrounds.image(this.props.series.content);
+      }
+
+      if (curEntry.channelName === "study_entries") {
+        image = backgrounds.image(this.props.study.content);
+      }
+
       Likes.insert({
         userId: Meteor.userId(),
         entryId: curEntry.id || curEntry.entryId,
         title: curEntry.title,
-        image: curEntry.channelName === "sermons" ?
-          backgrounds.image(this.props.series.content) :
-          backgrounds.image(curEntry),
+        image,
         link: content.links(curEntry),
         icon: categories.icon(curEntry),
         category: categories.name(curEntry),

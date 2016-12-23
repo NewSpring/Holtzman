@@ -2,6 +2,8 @@ import renderer from "react-test-renderer";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import Layout from "../Layout";
 
+jest.mock("../../../components/forms");
+
 const defaultProps = {
   back: jest.fn(),
   campuses: [],
@@ -54,9 +56,11 @@ it("renders Billing form", () => {
         personal: {},
         billing: {},
       },
-      state: "default",
+      state: "SC",
       step: 2,
     },
+    states: ["SC","NC"],
+    countries: ["USA","Others"],
   }));
   expect(result).toMatchSnapshot();
 });
@@ -69,7 +73,7 @@ it("renders Payment form", () => {
         payment: {},
       },
       savedAccount: {},
-      schedules: [],
+      schedule: { start: null, frequency: null },
       state: "default",
       step: 3,
     },
@@ -87,7 +91,7 @@ it("renders Confirm form", () => {
         },
       },
       savedAccount: {},
-      schedules: [],
+      schedule: { start: null, frequency: null },
       state: "default",
       step: 4,
       transactions: {},
@@ -123,6 +127,7 @@ it("renders Success", () => {
           email: "test@test.com",
         },
       },
+      // schedule: { start: null, frequency: null },
       state: "success",
       total: 12,
     },

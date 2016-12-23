@@ -31,20 +31,20 @@ describe("schedule shapes", () => {
   it("handles a one-time gift", () => {
     const data = {
       ...initial,
-      transactions: { 1: 10 },
-      schedules: {
-        1: { start: "20200101", payments: null, frequency: "One-Time" }
+      transactions: { 1: { value: 10 } },
+      schedule: {
+        start: "20200101", payments: null, frequency: "One-Time"
       }
     };
     expect(formatPersonDetails(data)).toMatchSnapshot();
   });
 
-  xit("handles a schedule without a start", () => {
+  it("handles a one-time gift with two funds", () => {
     const data = {
       ...initial,
-      transactions: { 1: 10 },
-      schedules: {
-        1: { start: null, payments: null, frequency: "One-Time" }
+      transactions: { 1: { value: 10 }, 10: { value: 11 } },
+      schedule: {
+        start: "20200101", payments: null, frequency: "One-Time"
       }
     };
     expect(formatPersonDetails(data)).toMatchSnapshot();
@@ -53,9 +53,9 @@ describe("schedule shapes", () => {
   it("handles a weekly gift", () => {
     const data = {
       ...initial,
-      transactions: { 1: 10 },
-      schedules: {
-        1: { start: "20200101", payments: null, frequency: "Weekly" }
+      transactions: { 1: { value: 10 } },
+      schedule: {
+        start: "20200101", payments: null, frequency: "Weekly"
       }
     };
     expect(formatPersonDetails(data)).toMatchSnapshot();
@@ -64,9 +64,9 @@ describe("schedule shapes", () => {
   it("handles a bi-weekly gift", () => {
     const data = {
       ...initial,
-      transactions: { 1: 10 },
-      schedules: {
-        1: { start: "20200101", payments: null, frequency: "Bi-Weekly" }
+      transactions: { 1: { value: 10 } },
+      schedule: {
+        start: "20200101", payments: null, frequency: "Bi-Weekly"
       }
     };
     expect(formatPersonDetails(data)).toMatchSnapshot();
@@ -75,20 +75,9 @@ describe("schedule shapes", () => {
   it("handles a monthly gift", () => {
     const data = {
       ...initial,
-      transactions: { 1: 10 },
-      schedules: {
-        1: { start: "20200101", payments: null, frequency: "Monthly" }
-      }
-    };
-    expect(formatPersonDetails(data)).toMatchSnapshot();
-  });
-
-  xit("handles a monthly gift without a start", () => {
-    const data = {
-      ...initial,
-      transactions: { 1: 10 },
-      schedules: {
-        1: { start: null, payments: null, frequency: "Monthly" }
+      transactions: { 1: { value: 10 } },
+      schedule: {
+        start: "20200101", payments: null, frequency: "Monthly"
       }
     };
     expect(formatPersonDetails(data)).toMatchSnapshot();

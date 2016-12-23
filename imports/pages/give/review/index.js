@@ -8,7 +8,7 @@ import Loading from "../../../blocks/give/Loading";
 import Err from "../../../blocks/give/Err";
 import Success from "../../../blocks/give/Success";
 import { monetize } from "../../../util/format";
-import { give as giveActions, nav as navActions } from "../../../store";
+import { give as giveActions } from "../../../store";
 
 type ITemplate = {
   dispatch: Function,
@@ -27,8 +27,7 @@ export class Template extends Component {
     if (!giveData) return;
 
     const { dispatch } = this.props;
-    // hide nav
-    dispatch(navActions.hide());
+
     // store payment personal and billing
     dispatch(giveActions.save(giveData.data));
     // store url
@@ -74,27 +73,46 @@ export class Template extends Component {
 
   render() {
     const { state, errors, total, data } = this.props.give;
+
     switch (state) {
       case "loading":
-        return <Loading msg="We're Processing Your Contribution" />;
+        return (
+          <div className="fixed-ends fixed-sides">
+            <Loading msg="We're Processing Your Contribution" />;
+          </div>
+        );
       case "error":
-        return (<Err
-          msg={errors[Object.keys(errors)[0]].error}
-          additionalMessage={
-            "Please click 'Done' in the top left of your screen to get back to the app"
-          }
-          goToStepOne={() => {}}
-        />);
+        return (
+          <div
+            className="one-whole one-half@palm-wide-and-up"
+            style={{ margin: "0 auto" }}
+          >
+            <Err
+              msg={errors[Object.keys(errors)[0]].error}
+              additionalMessage={
+                "Please click 'Done' in the top left of your screen to get back to the app"
+              }
+            />
+          </div>
+        );
       case "success":
-        return (<Success
-          total={monetize(total.toFixed(2))}
-          email={data.personal.email}
-          guest={false} // prevent showing giving history
-          additionalMessage={
-            "Please click 'Done' in the top left of your screen to get back to the app"
-          }
-          onClick={() => {}}
-        />);
+        return (
+          <div
+            className="one-whole one-half@palm-wide-and-up"
+            style={{ margin: "0 auto" }}
+          >
+            <Success
+              total={monetize(total.toFixed(2))}
+              email={data.personal.email}
+              guest={false} // prevent showing giving history
+              additionalMessage={
+                "Please click 'Done' in the top left of your screen to get back to the app"
+              }
+              onClick={() => {}}
+              schedule={{ start: null, frequency: null }}
+            />
+          </div>
+        );
       default:
         return <Layout {...this.props.give} onSubmit={this.onSubmit} />;
     }

@@ -11,6 +11,8 @@ const Err = ({ msg, error, style }) => {
     } else {
       errorMessage = "An unexpected error occured";
     }
+  } else {
+    errorMessage = error;
   }
 
   return (

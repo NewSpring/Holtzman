@@ -92,7 +92,8 @@ export default class Layout extends Component {
         const element = this.slider;
         element.children[0].scrollIntoView({ block: "end", behavior: "smooth" });
         element.parentElement.scrollLeft += -20;
-      });
+      })
+      .catch(() => { /* do nothing */ });
   }
 
   overflow = {
@@ -162,7 +163,7 @@ export default class Layout extends Component {
                 }
                 return (
                   <Link
-                    key={campus.id}
+                    key={campus.id || i}
                     to={campus.url}
                     className={
                       "text-dark-secondary transition floating ratio--square " +

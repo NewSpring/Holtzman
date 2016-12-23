@@ -1,860 +1,638 @@
 exports[`Layout renders no transactions if there are none and ready 1`] = `
 <div>
-  <Connect(SplitContainerWithoutData)
-    classes={
-      Array [
-        "background--light-primary",
-      ]
-    }
-    nav={true}>
-    <Meta
-      title="Giving History" />
-    <Right
-      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg"
-      mobile={false} />
-  </Connect(SplitContainerWithoutData)>
-  <Left
-    classes={
-      Array [
-        "background--light-secondary",
-      ]
-    }
-    scroll={true}>
+  <Meta
+    title="Giving History" />
+  <Filter
+    family={Array []}
+    filterTransactions={[Function]} />
+  <div
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
     <div
-      className="soft-double-sides@lap-and-up soft-ends@lap-and-up background--light-primary">
-      <div
-        className="soft soft-double-ends hard-left@lap-and-up">
-        <h2
-          className="flush hard">
-          Giving History
-        </h2>
-      </div>
+      className="text-left soft-ends soft-half-sides">
+      <p>
+        We didn\'t find any contributions associated with your account. If you would like to start giving, click 
+        <Link
+          onlyActiveOnIndex={false}
+          style={Object {}}
+          to="/give/now">
+          here
+        </Link>
+      </p>
+      <p>
+        <em>
+          If you have any questions, please call our Finance Team at 864-965-9990 or
+           
+          <a
+            href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
+            rel="noopener noreferrer"
+            target="_blank">
+            contact us
+          </a>
+           and someone will be happy to assist you.
+        </em>
+      </p>
     </div>
-    <Filter
-      changeDates={[Function]}
-      changeFamily={[Function]}
-      family={Array []} />
-    <div
-      className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
-      <div
-        className="text-left soft-ends soft-half-sides">
-        <p>
-          We didn\'t find any contributions associated with your account. If you would like to start giving, click 
-          <Link
-            onlyActiveOnIndex={false}
-            style={Object {}}
-            to="/give/now">
-            here
-          </Link>
-        </p>
-        <p>
-          <em>
-            If you have any questions, please call our Finance Team at 864-965-9990 or 
-            <a
-              href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
-              rel="noopener noreferrer"
-              target="_blank">
-              contact us 
-            </a>
-             and someone will be happy to assist you.
-          </em>
-        </p>
-      </div>
-    </div>
-    <div
-      className="one-whole text-center" />
-  </Left>
+    <TransactionList
+      transactions={Array []} />
+  </div>
+  <div
+    className="one-whole text-center" />
 </div>
 `;
 
 exports[`Layout renders reloading if no transactions and not ready 1`] = `
 <div>
-  <Connect(SplitContainerWithoutData)
-    classes={
-      Array [
-        "background--light-primary",
-      ]
-    }
-    nav={true}>
-    <Meta
-      title="Giving History" />
-    <Right
-      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg"
-      mobile={false} />
-  </Connect(SplitContainerWithoutData)>
-  <Left
-    classes={
-      Array [
-        "background--light-secondary",
-      ]
-    }
-    scroll={true}>
+  <Meta
+    title="Giving History" />
+  <Filter
+    family={Array []}
+    filterTransactions={[Function]} />
+  <div
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
     <div
-      className="soft-double-sides@lap-and-up soft-ends@lap-and-up background--light-primary">
-      <div
-        className="soft soft-double-ends hard-left@lap-and-up">
-        <h2
-          className="flush hard">
-          Giving History
-        </h2>
-      </div>
+      className="text-center soft">
+      <Spinner
+        styles={
+          Object {
+            "height": "40px",
+            "width": "40px",
+          }
+        } />
     </div>
-    <Filter
-      changeDates={[Function]}
-      changeFamily={[Function]}
-      family={Array []} />
-    <div
-      className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
-      <div
-        className="text-center soft">
-        <Spinner
-          styles={
-            Object {
-              "height": "40px",
-              "width": "40px",
-            }
-          } />
-      </div>
-    </div>
-    <div
-      className="one-whole text-center" />
-  </Left>
+    <TransactionList
+      transactions={Array []} />
+  </div>
+  <div
+    className="one-whole text-center" />
 </div>
 `;
 
 exports[`Layout renders reloading version 1`] = `
 <div>
-  <Connect(SplitContainerWithoutData)
-    classes={
-      Array [
-        "background--light-primary",
-      ]
-    }
-    nav={true}>
-    <Meta
-      title="Giving History" />
-    <Right
-      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg"
-      mobile={false} />
-  </Connect(SplitContainerWithoutData)>
-  <Left
-    classes={
-      Array [
-        "background--light-secondary",
-      ]
-    }
-    scroll={true}>
+  <Meta
+    title="Giving History" />
+  <Filter
+    family={Array []}
+    filterTransactions={[Function]} />
+  <div
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
     <div
-      className="soft-double-sides@lap-and-up soft-ends@lap-and-up background--light-primary">
-      <div
-        className="soft soft-double-ends hard-left@lap-and-up">
-        <h2
-          className="flush hard">
-          Giving History
-        </h2>
-      </div>
+      className="text-center soft">
+      <Spinner
+        styles={
+          Object {
+            "height": "40px",
+            "width": "40px",
+          }
+        } />
     </div>
-    <Filter
-      changeDates={[Function]}
-      changeFamily={[Function]}
-      family={Array []} />
-    <div
-      className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
-      <div
-        className="text-center soft">
-        <Spinner
-          styles={
-            Object {
-              "height": "40px",
-              "width": "40px",
-            }
-          } />
-      </div>
-    </div>
-    <div
-      className="one-whole text-center" />
-  </Left>
+    <TransactionList
+      transactions={
+        Array [
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+            ],
+          },
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+            ],
+          },
+        ]
+      } />
+  </div>
+  <div
+    className="one-whole text-center" />
+</div>
+`;
+
+exports[`Layout renders transactions across years 1`] = `
+<div>
+  <Meta
+    title="Giving History" />
+  <Filter
+    family={Array []}
+    filterTransactions={[Function]} />
+  <div
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    <TransactionList
+      transactions={
+        Array [
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+            ],
+            "person": Object {
+              "firstName": "1",
+              "lastName": "1",
+              "nickname": "1",
+              "photo": "1",
+            },
+          },
+          Object {
+            "date": "2013-12-12",
+            "details": Array [
+              Object {
+                "account": "Other Test",
+                "amount": 2,
+              },
+              Object {
+                "account": "Third Test",
+                "amount": 2,
+              },
+            ],
+            "person": Object {
+              "firstName": "1",
+              "lastName": "1",
+              "nickname": "1",
+              "photo": "1",
+            },
+          },
+        ]
+      } />
+  </div>
+  <div
+    className="one-whole text-center">
+    <mockConstructor />
+  </div>
 </div>
 `;
 
 exports[`Layout renders with negative transactions 1`] = `
 <div>
-  <Connect(SplitContainerWithoutData)
-    classes={
-      Array [
-        "background--light-primary",
-      ]
-    }
-    nav={true}>
-    <Meta
-      title="Giving History" />
-    <Right
-      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg"
-      mobile={false} />
-  </Connect(SplitContainerWithoutData)>
-  <Left
-    classes={
-      Array [
-        "background--light-secondary",
-      ]
-    }
-    scroll={true}>
-    <div
-      className="soft-double-sides@lap-and-up soft-ends@lap-and-up background--light-primary">
-      <div
-        className="soft soft-double-ends hard-left@lap-and-up">
-        <h2
-          className="flush hard">
-          Giving History
-        </h2>
-      </div>
-    </div>
-    <Filter
-      changeDates={[Function]}
-      changeFamily={[Function]}
-      family={Array []} />
-    <div
-      className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
-      <div>
-        <div>
-          <div>
-            <div
-              className="soft soft-half-left text-left">
-              <h5>
-                2012
-              </h5>
-            </div>
-            <TransactionCard
-              transaction={
-                Object {
-                  "date": "2012-12-12",
-                  "details": Array [
-                    Object {
-                      "account": "test",
-                      "amount": -1,
-                    },
-                  ],
-                }
-              }
-              transactionDetail={
-                Object {
-                  "account": "test",
-                  "amount": -1,
-                }
-              } />
-          </div>
-        </div>
-        <div>
-          <TransactionCard
-            transaction={
+  <Meta
+    title="Giving History" />
+  <Filter
+    family={Array []}
+    filterTransactions={[Function]} />
+  <div
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    <TransactionList
+      transactions={
+        Array [
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
               Object {
-                "date": "2012-12-12",
-                "details": Array [
-                  Object {
-                    "account": "Other Test",
-                    "amount": 2,
-                  },
-                  Object {
-                    "account": "Third Test",
-                    "amount": 2,
-                  },
-                ],
-              }
-            }
-            transactionDetail={
+                "account": "test",
+                "amount": -1,
+              },
+            ],
+          },
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
               Object {
                 "account": "Other Test",
                 "amount": 2,
-              }
-            } />
-          <TransactionCard
-            transaction={
-              Object {
-                "date": "2012-12-12",
-                "details": Array [
-                  Object {
-                    "account": "Other Test",
-                    "amount": 2,
-                  },
-                  Object {
-                    "account": "Third Test",
-                    "amount": 2,
-                  },
-                ],
-              }
-            }
-            transactionDetail={
+              },
               Object {
                 "account": "Third Test",
                 "amount": 2,
-              }
-            } />
-        </div>
-      </div>
-    </div>
-    <div
-      className="one-whole text-center">
-      <mockConstructor />
-    </div>
-  </Left>
+              },
+            ],
+          },
+        ]
+      } />
+  </div>
+  <div
+    className="one-whole text-center">
+    <mockConstructor />
+  </div>
+</div>
+`;
+
+exports[`Layout renders with print loading false and there are transactions 1`] = `
+<div>
+  <Meta
+    title="Giving History" />
+  <Filter
+    family={Array []}
+    filterTransactions={[Function]} />
+  <div
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    <TransactionList
+      transactions={
+        Array [
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": -1,
+              },
+            ],
+          },
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "Other Test",
+                "amount": 2,
+              },
+              Object {
+                "account": "Third Test",
+                "amount": 2,
+              },
+            ],
+          },
+        ]
+      } />
+  </div>
+  <div
+    className="one-whole text-center">
+    <mockConstructor />
+  </div>
+</div>
+`;
+
+exports[`Layout renders with print loading true and there are transactions 1`] = `
+<div>
+  <Meta
+    title="Giving History" />
+  <Filter
+    family={Array []}
+    filterTransactions={[Function]} />
+  <div
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    <TransactionList
+      transactions={
+        Array [
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": -1,
+              },
+            ],
+          },
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "Other Test",
+                "amount": 2,
+              },
+              Object {
+                "account": "Third Test",
+                "amount": 2,
+              },
+            ],
+          },
+        ]
+      } />
+  </div>
+  <div
+    className="one-whole text-center">
+    <mockConstructor />
+  </div>
 </div>
 `;
 
 exports[`Layout renders with props 1`] = `
 <div>
-  <Connect(SplitContainerWithoutData)
-    classes={
-      Array [
-        "background--light-primary",
-      ]
-    }
-    nav={true}>
-    <Meta
-      title="Giving History" />
-    <Right
-      background="//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/newspring/_fpo/NScollege-cip-0033_1700_1133_90_c1.jpg"
-      mobile={false} />
-  </Connect(SplitContainerWithoutData)>
-  <Left
-    classes={
-      Array [
-        "background--light-secondary",
-      ]
-    }
-    scroll={true}>
-    <div
-      className="soft-double-sides@lap-and-up soft-ends@lap-and-up background--light-primary">
+  <Meta
+    title="Giving History" />
+  <Filter
+    family={Array []}
+    filterTransactions={[Function]} />
+  <div
+    className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
+    <TransactionList
+      transactions={
+        Array [
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+            ],
+          },
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+            ],
+          },
+        ]
+      } />
+  </div>
+  <div
+    className="one-whole text-center">
+    <mockConstructor />
+  </div>
+</div>
+`;
+
+exports[`TransactionList renders transactions across years 1`] = `
+<div>
+  <div>
+    <div>
       <div
-        className="soft soft-double-ends hard-left@lap-and-up">
-        <h2
-          className="flush hard">
-          Giving History
-        </h2>
+        className="soft soft-half-left text-left">
+        <h5>
+          2012
+        </h5>
       </div>
-    </div>
-    <Filter
-      changeDates={[Function]}
-      changeFamily={[Function]}
-      family={Array []} />
-    <div
-      className="soft-half soft@portable soft-double@anchored soft-double-bottom@anchored soft-bottom@portable">
-      <div>
-        <div>
-          <div>
-            <div
-              className="soft soft-half-left text-left">
-              <h5>
-                2012
-              </h5>
-            </div>
-            <TransactionCard
-              transaction={
-                Object {
-                  "date": "2012-12-12",
-                  "details": Array [
-                    Object {
-                      "account": "test",
-                      "amount": 2,
-                    },
-                    Object {
-                      "account": "test",
-                      "amount": 2,
-                    },
-                  ],
-                }
-              }
-              transactionDetail={
-                Object {
-                  "account": "test",
-                  "amount": 2,
-                }
-              } />
-          </div>
-          <TransactionCard
-            transaction={
+      <Component
+        person={
+          Object {
+            "firstName": "1",
+            "lastName": "1",
+            "nickname": "1",
+            "photo": "1",
+          }
+        }
+        transaction={
+          Object {
+            "date": "2012-12-12",
+            "details": Array [
               Object {
-                "date": "2012-12-12",
-                "details": Array [
-                  Object {
-                    "account": "test",
-                    "amount": 2,
-                  },
-                  Object {
-                    "account": "test",
-                    "amount": 2,
-                  },
-                ],
-              }
-            }
-            transactionDetail={
+                "account": "test",
+                "amount": 1,
+              },
               Object {
                 "account": "test",
                 "amount": 2,
-              }
-            } />
-        </div>
-        <div>
-          <TransactionCard
-            transaction={
-              Object {
-                "date": "2012-12-12",
-                "details": Array [
-                  Object {
-                    "account": "test",
-                    "amount": 2,
-                  },
-                  Object {
-                    "account": "test",
-                    "amount": 2,
-                  },
-                ],
-              }
-            }
-            transactionDetail={
-              Object {
-                "account": "test",
-                "amount": 2,
-              }
-            } />
-          <TransactionCard
-            transaction={
-              Object {
-                "date": "2012-12-12",
-                "details": Array [
-                  Object {
-                    "account": "test",
-                    "amount": 2,
-                  },
-                  Object {
-                    "account": "test",
-                    "amount": 2,
-                  },
-                ],
-              }
-            }
-            transactionDetail={
-              Object {
-                "account": "test",
-                "amount": 2,
-              }
-            } />
-        </div>
-      </div>
+              },
+            ],
+            "person": Object {
+              "firstName": "1",
+              "lastName": "1",
+              "nickname": "1",
+              "photo": "1",
+            },
+          }
+        }
+        transactionDetail={
+          Object {
+            "account": "test",
+            "amount": 1,
+          }
+        } />
     </div>
-    <div
-      className="one-whole text-center">
-      <mockConstructor />
-    </div>
-  </Left>
-</div>
-`;
-
-exports[`TransactionCard renders failed version 1`] = `
-<div
-  className="soft card">
-  <TransactionDetail
-    failure={true}
-    icon={false}
-    person={Object {}}
-    status="Failed to Process"
-    transaction={
-      Object {
-        "id": "1",
-        "status": "FAILED",
-      }
-    }
-    transactionDetail={Object {}} />
-  <p
-    className="flush-bottom soft-top"
-    style={
-      Object {
-        "lineHeight": ".9",
-      }
-    }>
-    <small>
-      <em>
-        For more information about why this contribution failed to process, please contact our Finance Team at 
-        <a
-          href="tel:864-965-9990">
-          864-965-9990
-        </a>
-         or 
-        <a
-          href="//rock.newspring.cc/workflows/152?Topic=Stewardship"
-          rel="noopener noreferrer"
-          target="_blank">
-          contact us
-        </a>
-      </em>
-    </small>
-  </p>
-</div>
-`;
-
-exports[`TransactionCard renders pending version 1`] = `
-<div
-  className="soft card"
-  style={
-    Object {
-      "backgroundColor": "transparent",
-      "borderColor": "f1f1f1",
-      "borderStyle": "solid",
-      "borderWidth": "2px",
-      "boxShadow": "none",
-    }
-  }>
-  <TransactionDetail
-    icon={false}
-    person={Object {}}
-    status="Pending"
-    transaction={
-      Object {
-        "id": "1",
-        "status": "PENDING",
-      }
-    }
-    transactionDetail={Object {}} />
-</div>
-`;
-
-exports[`TransactionCard renders with props 1`] = `
-<div
-  className="soft card">
-  <Link
-    onlyActiveOnIndex={false}
-    style={Object {}}
-    to="/give/history/1">
-    <TransactionDetail
-      icon={true}
-      person={Object {}}
-      transaction={
+    <Component
+      person={
         Object {
-          "id": "1",
-          "status": "default",
+          "firstName": "1",
+          "lastName": "1",
+          "nickname": "1",
+          "photo": "1",
         }
       }
-      transactionDetail={Object {}} />
-  </Link>
-</div>
-`;
-
-exports[`TransactionDetail renders with failure 1`] = `
-<div
-  className="grid"
-  style={
-    Object {
-      "verticalAlign": "middle",
-    }
-  }>
-  <div
-    className="grid__item three-fifths"
-    style={
-      Object {
-        "verticalAlign": "middle",
+      transaction={
+        Object {
+          "date": "2012-12-12",
+          "details": Array [
+            Object {
+              "account": "test",
+              "amount": 1,
+            },
+            Object {
+              "account": "test",
+              "amount": 2,
+            },
+          ],
+          "person": Object {
+            "firstName": "1",
+            "lastName": "1",
+            "nickname": "1",
+            "photo": "1",
+          },
+        }
       }
-    }>
-    <div
-      className="relative">
+      transactionDetail={
+        Object {
+          "account": "test",
+          "amount": 2,
+        }
+      } />
+  </div>
+  <div>
+    <div>
       <div
-        className="background--fill soft visuallyhidden@palm float-left round push-half-top"
-        style={
+        className="soft soft-half-left text-left">
+        <h5>
+          2013
+        </h5>
+      </div>
+      <Component
+        person={
           Object {
-            "backgroundImage": "url(\"http://test.com/test.jpg\")",
+            "firstName": "1",
+            "lastName": "1",
+            "nickname": "1",
+            "photo": "1",
+          }
+        }
+        transaction={
+          Object {
+            "date": "2013-12-12",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": 3,
+              },
+              Object {
+                "account": "test",
+                "amount": 4,
+              },
+            ],
+            "person": Object {
+              "firstName": "1",
+              "lastName": "1",
+              "nickname": "1",
+              "photo": "1",
+            },
+          }
+        }
+        transactionDetail={
+          Object {
+            "account": "test",
+            "amount": 3,
           }
         } />
-      <div
-        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
-        <h5
-          className="text-dark-secondary flush"
-          style={
-            Object {
-              "textOverflow": "ellipsis",
-              "whiteSpace": "nowrap",
-            }
-          }>
-          account name
-        </h5>
-        <h6
-          className="text-dark-tertiary soft-half-bottom flush">
-          jim
-           
-          bob
-        </h6>
-        <p
-          className="flush italic small text-alert">
-          Dec 12, 2012
-        </p>
-      </div>
     </div>
-  </div>
-  <div
-    className="grid__item two-fifths text-right"
-    style={
-      Object {
-        "verticalAlign": "middle",
+    <Component
+      person={
+        Object {
+          "firstName": "1",
+          "lastName": "1",
+          "nickname": "1",
+          "photo": "1",
+        }
       }
-    }>
-    <div
-      className="soft-half-right">
-      <h4
-        className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
-        style={
-          Object {
-            "overflow": "hidden",
-            "textOverflow": "ellipsis",
-            "whiteSpace": "nowrap",
-          }
-        }>
-        $2
-        <span
-          className="text-primary icon-arrow-next locked"
-          style={
+      transaction={
+        Object {
+          "date": "2013-12-12",
+          "details": Array [
             Object {
-              "right": "-5px",
-              "top": "1px",
-            }
-          } />
-      </h4>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`TransactionDetail renders with failure and status 1`] = `
-<div
-  className="grid"
-  style={
-    Object {
-      "verticalAlign": "middle",
-    }
-  }>
-  <div
-    className="grid__item three-fifths"
-    style={
-      Object {
-        "verticalAlign": "middle",
+              "account": "test",
+              "amount": 3,
+            },
+            Object {
+              "account": "test",
+              "amount": 4,
+            },
+          ],
+          "person": Object {
+            "firstName": "1",
+            "lastName": "1",
+            "nickname": "1",
+            "photo": "1",
+          },
+        }
       }
-    }>
-    <div
-      className="relative">
-      <div
-        className="background--fill soft visuallyhidden@palm float-left round push-half-top"
-        style={
-          Object {
-            "backgroundImage": "url(\"http://test.com/test.jpg\")",
-          }
-        } />
-      <div
-        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
-        <h5
-          className="text-dark-secondary flush"
-          style={
-            Object {
-              "textOverflow": "ellipsis",
-              "whiteSpace": "nowrap",
-            }
-          }>
-          account name
-        </h5>
-        <h6
-          className="text-dark-tertiary soft-half-bottom flush">
-          jim
-           
-          bob
-        </h6>
-        <p
-          className="flush italic small text-alert">
-          error - 
-          Dec 12, 2012
-        </p>
-      </div>
-    </div>
-  </div>
-  <div
-    className="grid__item two-fifths text-right"
-    style={
-      Object {
-        "verticalAlign": "middle",
-      }
-    }>
-    <div
-      className="soft-half-right">
-      <h4
-        className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
-        style={
-          Object {
-            "overflow": "hidden",
-            "textOverflow": "ellipsis",
-            "whiteSpace": "nowrap",
-          }
-        }>
-        $2
-        <span
-          className="text-primary icon-arrow-next locked"
-          style={
-            Object {
-              "right": "-5px",
-              "top": "1px",
-            }
-          } />
-      </h4>
-    </div>
+      transactionDetail={
+        Object {
+          "account": "test",
+          "amount": 4,
+        }
+      } />
   </div>
 </div>
 `;
 
-exports[`TransactionDetail renders with props 1`] = `
-<div
-  className="grid"
-  style={
-    Object {
-      "verticalAlign": "middle",
-    }
-  }>
-  <div
-    className="grid__item three-fifths"
-    style={
-      Object {
-        "verticalAlign": "middle",
-      }
-    }>
-    <div
-      className="relative">
+exports[`TransactionList renders with props 1`] = `
+<div>
+  <div>
+    <div>
       <div
-        className="background--fill soft visuallyhidden@palm float-left round push-half-top"
-        style={
+        className="soft soft-half-left text-left">
+        <h5>
+          2012
+        </h5>
+      </div>
+      <Component
+        transaction={
           Object {
-            "backgroundImage": "url(\"http://test.com/test.jpg\")",
+            "date": "2012-12-11",
+            "details": Array [
+              Object {
+                "account": "test",
+                "amount": 1,
+              },
+              Object {
+                "account": "test",
+                "amount": 2,
+              },
+            ],
+          }
+        }
+        transactionDetail={
+          Object {
+            "account": "test",
+            "amount": 1,
           }
         } />
-      <div
-        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
-        <h5
-          className="text-dark-secondary flush"
-          style={
+    </div>
+    <Component
+      transaction={
+        Object {
+          "date": "2012-12-11",
+          "details": Array [
             Object {
-              "textOverflow": "ellipsis",
-              "whiteSpace": "nowrap",
-            }
-          }>
-          account name
-        </h5>
-        <h6
-          className="text-dark-tertiary soft-half-bottom flush">
-          jim
-           
-          bob
-        </h6>
-        <p
-          className="flush italic small text-dark-tertiary">
-          Dec 12, 2012
-        </p>
-      </div>
-    </div>
-  </div>
-  <div
-    className="grid__item two-fifths text-right"
-    style={
-      Object {
-        "verticalAlign": "middle",
-      }
-    }>
-    <div
-      className="soft-half-right">
-      <h4
-        className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
-        style={
-          Object {
-            "overflow": "hidden",
-            "textOverflow": "ellipsis",
-            "whiteSpace": "nowrap",
-          }
-        }>
-        $2
-        <span
-          className="text-primary icon-arrow-next locked"
-          style={
+              "account": "test",
+              "amount": 1,
+            },
             Object {
-              "right": "-5px",
-              "top": "1px",
-            }
-          } />
-      </h4>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`TransactionDetail renders without icon 1`] = `
-<div
-  className="grid"
-  style={
-    Object {
-      "verticalAlign": "middle",
-    }
-  }>
-  <div
-    className="grid__item three-fifths"
-    style={
-      Object {
-        "verticalAlign": "middle",
+              "account": "test",
+              "amount": 2,
+            },
+          ],
+        }
       }
-    }>
-    <div
-      className="relative">
-      <div
-        className="background--fill soft visuallyhidden@palm float-left round push-half-top"
-        style={
-          Object {
-            "backgroundImage": "url(\"http://test.com/test.jpg\")",
-          }
-        } />
-      <div
-        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
-        <h5
-          className="text-dark-secondary flush"
-          style={
+      transactionDetail={
+        Object {
+          "account": "test",
+          "amount": 2,
+        }
+      } />
+  </div>
+  <div>
+    <Component
+      transaction={
+        Object {
+          "date": "2012-12-12",
+          "details": Array [
             Object {
-              "textOverflow": "ellipsis",
-              "whiteSpace": "nowrap",
-            }
-          }>
-          account name
-        </h5>
-        <h6
-          className="text-dark-tertiary soft-half-bottom flush">
-          jim
-           
-          bob
-        </h6>
-        <p
-          className="flush italic small text-dark-tertiary">
-          Dec 12, 2012
-        </p>
-      </div>
-    </div>
-  </div>
-  <div
-    className="grid__item two-fifths text-right"
-    style={
-      Object {
-        "verticalAlign": "middle",
+              "account": "test",
+              "amount": 3,
+            },
+            Object {
+              "account": "test",
+              "amount": 4,
+            },
+          ],
+        }
       }
-    }>
-    <div
-      className="soft-half-right">
-      <h4
-        className="text-dark-tertiary one-whole flush soft-right@handheld soft-double-right@lap-and-up"
-        style={
-          Object {
-            "overflow": "hidden",
-            "textOverflow": "ellipsis",
-            "whiteSpace": "nowrap",
-          }
-        }>
-        $2
-      </h4>
-    </div>
+      transactionDetail={
+        Object {
+          "account": "test",
+          "amount": 3,
+        }
+      } />
+    <Component
+      transaction={
+        Object {
+          "date": "2012-12-12",
+          "details": Array [
+            Object {
+              "account": "test",
+              "amount": 3,
+            },
+            Object {
+              "account": "test",
+              "amount": 4,
+            },
+          ],
+        }
+      }
+      transactionDetail={
+        Object {
+          "account": "test",
+          "amount": 4,
+        }
+      } />
   </div>
 </div>
 `;

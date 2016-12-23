@@ -13,7 +13,7 @@ type IPayment = {
   children?: React$Element<any>,
   toggles?: string[],
   transactionType: string,
-  schedules: Object,
+  schedule: Object,
   back: Function,
   next: Function,
 }
@@ -149,7 +149,7 @@ export default class Payment extends Component {
         next={this.props.next}
         payment={this.props.data.payment}
         savedAccount={this.props.savedAccount}
-        schedules={this.props.schedules}
+        schedule={this.props.schedule}
         toggles={this.props.toggles}
         transactionType={this.props.transactionType}
       >

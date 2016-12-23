@@ -54,7 +54,7 @@ exports[`Layout renders custom toggles if passed 1`] = `
     <div
       className="grid text-left toggle-arrow soft-sides">
       <div
-        className="transition grid__item hard one-half toggle-arrow__item"
+        className="transition grid__item hard one-half toggle-arrow__item "
         style={
           Object {
             "marginLeft": "0%",
@@ -157,13 +157,21 @@ exports[`Layout renders custom toggles if passed 1`] = `
     <div
       className="input checkbox"
       data-spec="input-wrapper">
-      <h6
-        className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      <label
+        className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+        htmlFor="savePayment"
+        style={
+          Object {
+            "cursor": "pointer",
+            "marginTop": "-1px",
+          }
+        }>
         <small
-          data-spec="input-label">
+          data-spec="input-label"
+          style={Object {}}>
           Save this payment for future contributions
         </small>
-      </h6>
+      </label>
       <input
         className={undefined}
         data-spec="input"
@@ -245,7 +253,7 @@ exports[`Layout renders default toggles by default 1`] = `
     <div
       className="grid text-left toggle-arrow soft-sides">
       <div
-        className="transition grid__item hard one-half toggle-arrow__item"
+        className="transition grid__item hard one-half toggle-arrow__item "
         style={
           Object {
             "marginLeft": "0%",
@@ -348,13 +356,21 @@ exports[`Layout renders default toggles by default 1`] = `
     <div
       className="input checkbox"
       data-spec="input-wrapper">
-      <h6
-        className="soft-left push-half-left flush-bottom text-left float-left locked-top">
+      <label
+        className="h6 soft-half-left push-half-left flush-bottom text-left float-left locked-top"
+        htmlFor="savePayment"
+        style={
+          Object {
+            "cursor": "pointer",
+            "marginTop": "-1px",
+          }
+        }>
         <small
-          data-spec="input-label">
+          data-spec="input-label"
+          style={Object {}}>
           Save this payment for future contributions
         </small>
-      </h6>
+      </label>
       <input
         className={undefined}
         data-spec="input"

@@ -1,0 +1,72 @@
+exports[`data format should return an object with correct keys 1`] = `
+Object {
+  "accounts": Object {
+    "Christmas Offering": 0,
+    "General Fund": 66,
+    "Step Up Fund": 0,
+  },
+  "chartData": Array [
+    Object {
+      "amount": 11,
+      "month": "January",
+      "tick": "J",
+    },
+    Object {
+      "amount": 0,
+      "month": "February",
+      "tick": "F",
+    },
+    Object {
+      "amount": 9,
+      "month": "March",
+      "tick": "M",
+    },
+    Object {
+      "amount": 18,
+      "month": "April",
+      "tick": "A",
+    },
+    Object {
+      "amount": 7,
+      "month": "May",
+      "tick": "M",
+    },
+    Object {
+      "amount": 6,
+      "month": "June",
+      "tick": "J",
+    },
+    Object {
+      "amount": 5,
+      "month": "July",
+      "tick": "J",
+    },
+    Object {
+      "amount": 4,
+      "month": "August",
+      "tick": "A",
+    },
+    Object {
+      "amount": 3,
+      "month": "September",
+      "tick": "S",
+    },
+    Object {
+      "amount": 2,
+      "month": "October",
+      "tick": "O",
+    },
+    Object {
+      "amount": 1,
+      "month": "November",
+      "tick": "N",
+    },
+    Object {
+      "amount": 0,
+      "month": "December",
+      "tick": "D",
+    },
+  ],
+  "total": 66,
+}
+`;

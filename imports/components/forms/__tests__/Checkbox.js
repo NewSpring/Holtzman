@@ -122,7 +122,8 @@ it ("should hide label with hideLabel prop", () => {
 
   expect(mountToJson(component)).toMatchSnapshot();
 
-  expect(component.find("label").length).toEqual(0);
+  // description is a label
+  expect(component.find("label").length).toEqual(1);
 });
 
 it("validate does not set error if validated", () => {
@@ -172,7 +173,7 @@ it("validate removes active and error if no value", () => {
 it("renderHelpText does nothing if no error", () => {
   const wrapper = shallow(generateComponent());
   const result = wrapper.instance().renderHelpText();
-  expect(result).toBe(undefined);
+  expect(result).toBe(null);
 });
 
 it("renderHelpText renders when error and errorText", () => {

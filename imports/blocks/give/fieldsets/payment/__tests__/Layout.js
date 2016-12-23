@@ -79,7 +79,7 @@ describe("Layout", () => {
     savedAccount: {},
     savePayment: jest.fn(),
     shouldSaveState: false,
-    schedules: {},
+    schedule: { start: null },
     toggle: jest.fn(),
     toggles: null,
     transactionType: "default",

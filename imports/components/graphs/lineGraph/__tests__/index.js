@@ -2,6 +2,8 @@ import { mount, shallow } from "enzyme";
 import { mountToJson, shallowToJson } from "enzyme-to-json";
 import LineGraph from "../";
 
+jest.mock("victory");
+
 const generateComponent = (additionalProps = {}) => {
   const defaultProps = {
     data: [

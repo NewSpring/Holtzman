@@ -8,9 +8,10 @@ exports[`test renders PaymentOptionsLayout when state is true 1`] = `
 `;
 
 exports[`test renders ScheduleLayout if schedules 1`] = `
-<ScheduleLayout
+<TransactionLayout
   back={[Function]}
   changeAccounts={[Function]}
+  completeGift={[Function]}
   goToStepOne={[Function]}
   header={
     <span>
@@ -18,13 +19,19 @@ exports[`test renders ScheduleLayout if schedules 1`] = `
     </span>
   }
   savedAccount={Object {}}
-  scheduleToRecover={false}
-  schedules={
+  schedule={
     Object {
-      "123": "123",
+      "frequency": null,
+      "start": null,
     }
   }
-  total={12} />
+  scheduleToRecover={false}
+  total={12}
+  transactions={
+    Array [
+      "1",
+    ]
+  } />
 `;
 
 exports[`test renders TransactionLayout by default 1`] = `
@@ -39,8 +46,13 @@ exports[`test renders TransactionLayout by default 1`] = `
     </span>
   }
   savedAccount={Object {}}
+  schedule={
+    Object {
+      "frequency": null,
+      "start": null,
+    }
+  }
   scheduleToRecover={false}
-  schedules={Object {}}
   total={12}
   transactions={
     Array [

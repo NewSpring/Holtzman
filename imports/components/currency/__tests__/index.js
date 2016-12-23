@@ -7,7 +7,9 @@ import Currency,
     getCents,
     currencySizeCalc,
     BaseCurrencySize,
-    ReducedHeadingSize
+    ReducedHeadingSize,
+    roundCurrency,
+    textTheme,
   } from "../";
 
 describe("Currency", () => {
@@ -43,12 +45,32 @@ describe("Currency", () => {
     expect(getDollars("")).toBe("00");
   });
 
+  it("rounds currency to '$421' when amount is '$420.89' and roundCurrency is true", () => {
+    expect(getDollars("$420.89", true)).toBe("421");
+  });
+
+  it("currency is not rounded when amount is '$420.89' and roundCurrency is flase", () => {
+    expect(getDollars("$420.89", false)).toBe("420");
+  });
+
+  it("currency is not rounded when amount is '$420.89' and roundCurrency is not set", () => {
+    expect(getDollars("$420.89")).toBe("420");
+  });
+
   it("returns '12' cents", () => {
     expect(getCents("$420.12")).toBe("12");
   });
 
   it("returns '00' cents when none is provided", () => {
     expect(getCents("420")).toBe("00");
+  });
+
+  it("returns 'text-light-primary' when theme is set to 'light'.", () => {
+    expect(textTheme("light")).toBe("text-light-primary");
+  });
+
+  it("returns 'text-dark-primary' when no theme is set.", () => {
+    expect(textTheme()).toBe("text-dark-primary");
   });
 
   it("properly returns a positive number", () => {

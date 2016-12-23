@@ -4,6 +4,7 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Meteor } from "meteor/meteor";
 
+import Authorized from "../../../../blocks/authorzied";
 import {
   modal as modalActions,
   give as giveActions,
@@ -112,13 +113,26 @@ const withFinancialAccounts = graphql(FINANCIAL_ACCOUNTS_QUERY, { name: "account
 
 const mapStateToProps = (store) => ({ give: store.give });
 
-export default connect(mapStateToProps)(
+const Template = connect(mapStateToProps)(
   withScheduledTransactions(
     withFinancialAccounts(
       TemplateWithoutData
     )
   )
 );
+
+const Routes = [
+  {
+    path: "schedules/transfer",
+    component: Authorized,
+    indexRoute: { component: Template },
+  },
+];
+
+export default {
+  Template,
+  Routes,
+};
 
 export {
   TemplateWithoutData,

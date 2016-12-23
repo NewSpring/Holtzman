@@ -9,11 +9,11 @@ type IScheduleThanks = {
 };
 
 const ScheduleThanks = ({ total, schedule }: IScheduleThanks) => {
-  if (!schedule) return null;
+  if (!schedule || !schedule.start) return null;
   return (
     <p className="text-left">
-      Thank you for your contribution of {total}
-      starting on { moment(schedule.start).format("MMM D, YYYY") }
+      Thank you for your contribution of {total}{" "}
+      starting on { moment(schedule.start).format("MMM D, YYYY") }{" "}
       to NewSpring Church.
     </p>
   );
@@ -90,7 +90,7 @@ type ISuccess = {
   email: string,
   guest: boolean,
   onClick?: Function,
-  schedules?: Object[],
+  schedule: Object,
   additionalMessage?: string,
 };
 
@@ -99,29 +99,26 @@ const Success = ({
   email,
   guest,
   onClick,
-  schedules,
+  schedule,
   additionalMessage,
-}: ISuccess) => {
-  const schedule = (schedules && schedules.length > 0) ? schedules[0] : false;
-  return (
-    <div className="soft soft-double-ends push-double-top@anchored one-whole text-center">
-      <div className="push-double-top">
-        <SuccessIcon />
-        <h3 className="text-primary push-ends">Success!</h3>
+}: ISuccess) => (
+  <div className="soft soft-double-ends push-double-top@anchored one-whole text-center">
+    <div className="push-double-top">
+      <SuccessIcon />
+      <h3 className="text-primary push-ends">Success!</h3>
 
-        <ScheduleThanks total={total} schedule={schedule} />
+      <ScheduleThanks total={total} schedule={schedule || false} />
 
-        <OneTimeThanks total={total} email={email} schedule={schedule} />
+      <OneTimeThanks total={total} email={email} schedule={schedule || false} />
 
-        <AdditionalMessage additionalMessage={additionalMessage} />
+      <AdditionalMessage additionalMessage={additionalMessage} />
 
-        <CreateAccountFromGuest guest={guest} onClick={onClick} />
+      <CreateAccountFromGuest guest={guest} onClick={onClick} />
 
-        <ContactUs />
-      </div>
+      <ContactUs />
     </div>
-  );
-};
+  </div>
+);
 
 export default Success;
 

@@ -17,7 +17,11 @@ exports[`test should render with props 1`] = `
   saveName={[Function]}
   savePayment={[Function]}
   savedAccount={Object {}}
-  schedules={Object {}}
+  schedule={
+    Object {
+      "start": null,
+    }
+  }
   shouldSaveState={true}
   toggle={[Function]}
   toggles={

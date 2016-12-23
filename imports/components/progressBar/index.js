@@ -1,5 +1,7 @@
 // @flow
 
+import Currency from "./../currency";
+
 export const themeStyles = (
   theme: string,
   percentDone?: number,
@@ -18,6 +20,9 @@ export const themeStyles = (
         width: `${percentDone || 0}%`,
         backgroundColor: "#6bac43",
       },
+      currencyText: {
+        color: "dark",
+      },
     };
   }
   return {
@@ -32,6 +37,9 @@ export const themeStyles = (
       height: "100%",
       width: `${percentDone || 0}%`,
       backgroundColor: "white",
+    },
+    currencyText: {
+      color: "light",
     },
   };
 };
@@ -52,16 +60,19 @@ const ProgressBar = ({
   style,
 }: IProgressBar) =>
   <div style={{ ...themeStyles(theme).wrapper, ...style }}>
-    <div className="floating floating--left one-half display-inline-block">
-      <h5 className="floating__item display-inline-block" data-spec="title">
+    <div className="floating floating--left one-half display-inline-block push-half-top" style={{ verticalAlign: "middle" }}>
+      <h5 className="floating__item" data-spec="title">
         {title}
       </h5>
     </div>
-    <div className="floating floating--middle text-right one-half display-inline-block">
-      <h6 className="display-inline-block floating__item">$</h6>
-      <h4 className="display-inline-block floating__item" data-spec="total">
-        {total}
-      </h4>
+    <div className="floating floating--right one-half display-inline-block" style={{ verticalAlign: "middle" }}>
+      <Currency
+        amount={total}
+        theme={themeStyles(theme).currencyText.color}
+        className="floating__item text-right"
+        baseHeadingSize="4"
+        roundCurrency
+      />
     </div>
     <div className="one-whole" style={themeStyles(theme).progressBackground}>
       <div

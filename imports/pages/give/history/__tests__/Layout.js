@@ -1,165 +1,7 @@
-import { shallow } from "enzyme";
-import { shallowToJson } from "enzyme-to-json";
-import Layout, {
-  formatDate,
-  monentize,
-  TransactionDetail,
-  TransactionCard,
-} from "../Layout";
+import { mount, shallow } from "enzyme";
+import { mountToJson, shallowToJson } from "enzyme-to-json";
 
-describe("formatDate", () => {
-  it("returns formatted data", () => {
-    const result = formatDate("2012-12-12");
-    expect(result).toBe("Dec 12, 2012");
-  });
-});
-
-describe("monentize", () => {
-  const DEFAULT_VALUE = "$0.00";
-
-  it("returns `$12.34` if number 12.34", () => {
-    const value = 12.34;
-    const result = monentize(value);
-    expect(result).toBe(`$${value}`);
-  });
-
-  it("returns `$12.34` if string `12.34`", () => {
-    const value = "12.34";
-    const result = monentize(value);
-    expect(result).toBe(`$${value}`);
-  });
-
-  it("removes everything except numbers, dots, and dashes", () => {
-    const value = "!@#$%^&*()12abcdefg.`~`~{}[]34";
-    const result = monentize(value);
-    expect(result).toBe("$12.34");
-  });
-
-  it("has no decimals by default", () => {
-    const value = 24;
-    const result = monentize(value);
-    expect(result).toBe("$24");
-  });
-
-  it("fixes to two decimals if greater than two", () => {
-    const value = 24.2456788;
-    const result = monentize(value);
-    expect(result).toBe("$24.25");
-  });
-
-  it("fixes to two decimals if fixed is true", () => {
-    const value = 12;
-    const result = monentize(value, true);
-    expect(result).toBe(`$${value}.00`);
-  });
-
-  it("adds commas for large values", () => {
-    const value = 123456789;
-    const result = monentize(value);
-    expect(result).toBe("$123,456,789");
-  });
-});
-
-describe("TransactionDetail", () => {
-  const defaultProps = {
-    transactionDetail: {
-      amount: 2,
-      account: {
-        name: "account name",
-      },
-    },
-    transaction: {
-      date: "2012-12-12",
-    },
-    icon: true,
-    status: null,
-    failure: false,
-    person: {
-      firstName: "jim",
-      lastName: "bob",
-      photo: "http://test.com/test.jpg",
-    },
-  };
-
-  const generateComponent = (additionalProps = {}) => {
-    const newProps = {
-      ...defaultProps,
-      ...additionalProps,
-    };
-    return <TransactionDetail { ...newProps } />;
-  };
-
-  it("renders with props", () => {
-    const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
-  it("renders with failure", () => {
-    const wrapper = shallow(generateComponent({
-      failure: true,
-    }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
-  it("renders with failure and status", () => {
-    const wrapper = shallow(generateComponent({
-      failure: true,
-      status: "error",
-    }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
-  it("renders without icon", () => {
-    const wrapper = shallow(generateComponent({
-      icon: false,
-    }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-});
-
-describe("TransactionCard", () => {
-  const defaultProps = {
-    transactionDetail: {},
-    transaction: {
-      id: "1",
-      status: "default",
-    },
-    person: {},
-  };
-
-  const generateComponent = (additionalProps = {}) => {
-    const newProps = {
-      ...defaultProps,
-      ...additionalProps
-    };
-    return <TransactionCard { ...newProps } />;
-  };
-
-  it("renders with props", () => {
-    const wrapper = shallow(generateComponent());
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
-  it("renders pending version", () => {
-    const wrapper = shallow(generateComponent({
-      transaction: {
-        id: "1",
-        status: "PENDING",
-      },
-    }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-
-  it("renders failed version", () => {
-    const wrapper = shallow(generateComponent({
-      transaction: {
-        id: "1",
-        status: "FAILED",
-      },
-    }));
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
-  });
-});
+import Layout, { TransactionList } from "../Layout";
 
 describe("Layout", () => {
   const defaultProps = {
@@ -186,6 +28,9 @@ describe("Layout", () => {
     changeDates: jest.fn(),
     reloading: false,
     family: [],
+    filterTransactions: jest.fn(),
+    onPrintClick: jest.fn(),
+    printLoading: false,
   };
 
   const generateComponent = (additionalProps = {}) => {
@@ -236,11 +81,134 @@ describe("Layout", () => {
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 
+  it("renders with print loading false and there are transactions", () => {
+    const transactions = [
+      {
+        date: "2012-12-12",
+        details: [
+          { account: "test", amount: -1 },
+        ],
+      },
+      {
+        date: "2012-12-12",
+        details: [
+          { account: "Other Test", amount: 2 },
+          { account: "Third Test", amount: 2 },
+        ],
+      },
+    ];
+    const wrapper = shallow(generateComponent({ transactions }));
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("renders with print loading true and there are transactions", () => {
+    const transactions = [
+      {
+        date: "2012-12-12",
+        details: [
+          { account: "test", amount: -1 },
+        ],
+      },
+      {
+        date: "2012-12-12",
+        details: [
+          { account: "Other Test", amount: 2 },
+          { account: "Third Test", amount: 2 },
+        ],
+      },
+    ];
+    const wrapper = shallow(generateComponent({
+      transactions,
+      printLoading: true
+    }));
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+
   it("renders no transactions if there are none and ready", () => {
     const wrapper = shallow(generateComponent({
       transactions: [],
       ready: true,
     }));
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("renders transactions across years", () => {
+    const transactions = [
+      {
+        date: "2012-12-12",
+        person: {nickname: "1", photo:"1",firstName:"1",lastName:"1"},
+        details: [
+          { account: "test", amount: 2 },
+          { account: "test", amount: 2 },
+        ],
+      },
+      {
+        date: "2013-12-12",
+        person: {nickname: "1", photo:"1",firstName:"1",lastName:"1"},
+        details: [
+          { account: "Other Test", amount: 2 },
+          { account: "Third Test", amount: 2 },
+        ],
+      },
+    ];
+    const wrapper = shallow(generateComponent({ transactions }));
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+});
+
+describe("TransactionList", () => {
+  const defaultProps = {
+    transactions: [
+      {
+        date: "2012-12-11",
+        details: [
+          { account: "test", amount: 1 },
+          { account: "test", amount: 2 },
+        ],
+      },
+      {
+        date: "2012-12-12",
+        details: [
+          { account: "test", amount: 3 },
+          { account: "test", amount: 4 },
+        ],
+      },
+    ],
+  };
+
+  const generateComponent = (additionalProps = {}) => {
+    const newProps = {
+      ...defaultProps,
+      ...additionalProps,
+    };
+    return <TransactionList { ...newProps } />;
+  };
+
+  it("renders with props", () => {
+    const wrapper = shallow(generateComponent());
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("renders transactions across years", () => {
+    const transactions = [
+      {
+        date: "2012-12-12",
+        person: {nickname: "1", photo:"1",firstName:"1",lastName:"1"},
+        details: [
+          { account: "test", amount: 1 },
+          { account: "test", amount: 2 },
+        ],
+      },
+      {
+        date: "2013-12-12",
+        person: {nickname: "1", photo:"1",firstName:"1",lastName:"1"},
+        details: [
+          { account: "test", amount: 3 },
+          { account: "test", amount: 4 },
+        ],
+      },
+    ];
+    const wrapper = shallow(generateComponent({ transactions }));
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 });

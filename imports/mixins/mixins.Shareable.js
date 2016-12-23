@@ -26,6 +26,8 @@ const Shareable = {
     if (nextProps.currentSermon) item = nextProps.currentSermon;
     if (nextProps.album) item = nextProps.album;
     if (nextProps.news) item = nextProps.news;
+    if (nextProps.study) item = nextProps.study;
+    if (nextProps.studyEntry) item = nextProps.studyEntry;
 
     if (!item) return null;
 
@@ -42,21 +44,24 @@ const Shareable = {
     const item = this.getShareableEntry(nextProps);
     if (!item) return;
 
-    if (!nextProps.currentSermon) {
+    if (
+      !nextProps.currentSermon &&
+      !nextProps.studyEntry
+    ) {
       this.setShareAction(item);
     } else if (
-      nextProps.currentSermon &&
-      nextProps.series
+      (nextProps.currentSermon && nextProps.series) ||
+      (nextProps.studyEntry ** nextProps.study)
     ) {
       this.setShareAction(item, {
-        parentItem: nextProps.series.content,
+        parentItem: nextProps.series ? nextProps.series.content : nextProps.study.content,
       });
     }
   },
 
   setShareAction(item, options = { parentItem: null }) {
     if (
-      item.channelName === "sermons" &&
+      (item.channelName === "sermons" || item.channeName === "study_entries") &&
       typeof options.parentItem === "undefined"
     ) {
       // wait for all props

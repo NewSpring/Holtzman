@@ -1,5 +1,6 @@
 exports[`CartContainer > Class Methods changeFund handles deselecting a fund 1`] = `
 Object {
+  "canCheckout": true,
   "subfunds": Array [
     Object {
       "accounts": Array [
@@ -21,33 +22,9 @@ Object {
         },
       ],
       "amount": null,
-      "fundId": undefined,
+      "fundId": 0,
       "id": 1,
       "primary": true,
-    },
-    Object {
-      "accounts": Array [
-        Object {
-          "label": "TEST 1",
-          "value": 1,
-        },
-        Object {
-          "label": "TEST 2",
-          "value": 2,
-        },
-        Object {
-          "label": "TEST 3",
-          "value": 3,
-        },
-        Object {
-          "label": "TEST 4",
-          "value": 4,
-        },
-      ],
-      "amount": null,
-      "fundId": undefined,
-      "id": 2,
-      "primary": false,
     },
   ],
 }
@@ -55,6 +32,7 @@ Object {
 
 exports[`CartContainer > Class Methods changeFund handles deselecting a fund with an amount 1`] = `
 Object {
+  "canCheckout": true,
   "subfunds": Array [
     Object {
       "accounts": Array [
@@ -80,28 +58,13 @@ Object {
       "id": 1,
       "primary": true,
     },
-    Object {
-      "accounts": Array [
-        Object {
-          "label": "TEST 3",
-          "value": 3,
-        },
-        Object {
-          "label": "TEST 4",
-          "value": 4,
-        },
-      ],
-      "amount": null,
-      "fundId": undefined,
-      "id": 2,
-      "primary": false,
-    },
   ],
 }
 `;
 
 exports[`CartContainer > Class Methods changeFund update the state correctly 1`] = `
 Object {
+  "canCheckout": true,
   "subfunds": Array [
     Object {
       "accounts": Array [
@@ -127,11 +90,55 @@ Object {
       "id": 1,
       "primary": true,
     },
+  ],
+}
+`;
+
+exports[`CartContainer > Class Methods toggleSecondFund correctly toggles 1`] = `
+Object {
+  "canCheckout": true,
+  "subfunds": Array [
     Object {
       "accounts": Array [
         Object {
           "label": "TEST 1",
           "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": 10,
+      "fundId": 1,
+      "id": 1,
+      "primary": true,
+    },
+  ],
+}
+`;
+
+exports[`CartContainer > Class Methods toggleSecondFund creates the correct new subfund state 1`] = `
+Object {
+  "canCheckout": true,
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
         },
         Object {
           "label": "TEST 3",
@@ -143,6 +150,82 @@ Object {
         },
       ],
       "amount": null,
+      "fundId": 1,
+      "id": 1,
+      "primary": true,
+    },
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": "",
+      "fundId": undefined,
+      "id": 2,
+      "primary": false,
+    },
+  ],
+}
+`;
+
+exports[`CartContainer > Class Methods toggleSecondFund creates the correct new subfund state when the first fund is selected 1`] = `
+Object {
+  "canCheckout": true,
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 1",
+          "value": 1,
+        },
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": 10,
+      "fundId": 1,
+      "id": 1,
+      "primary": true,
+    },
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "TEST 2",
+          "value": 2,
+        },
+        Object {
+          "label": "TEST 3",
+          "value": 3,
+        },
+        Object {
+          "label": "TEST 4",
+          "value": 4,
+        },
+      ],
+      "amount": "",
       "fundId": undefined,
       "id": 2,
       "primary": false,
@@ -167,9 +250,19 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
   give="5"
   query={Object {}}>
   <Component
+    accounts={
+      Array [
+        Object {
+          "id": "1",
+          "name": "test",
+        },
+      ]
+    }
+    canCheckout={true}
     changeAmount={[Function]}
     changeFund={[Function]}
     preFill={[Function]}
+    setCanCheckout={[Function]}
     subfunds={
       Array [
         Object {
@@ -186,6 +279,7 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
         },
       ]
     }
+    toggleSecondFund={[Function]}
     total={10}>
     <div
       className="push-top@handheld soft-half-top@lap-and-up">
@@ -225,14 +319,50 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
                   primary={true}>
                   <div />
                 </mockConstructor>
+                <div
+                  className="display-block one-whole soft-bottom" />
+                <mockConstructor
+                  setCanCheckout={[Function]}>
+                  <div />
+                </mockConstructor>
                 <h3
-                  className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
-                  so my total is
+                  className="display-inline-block text-dark-primary push-half-bottom push-half-right"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
+                  my total is
                 </h3>
-                <h3
-                  className="display-inline-block text-brand push-half-bottom">
-                  $10.00
-                </h3>
+                <span
+                  className="display-inline-block text-dark-primary push-half-bottom"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
+                  <Currency
+                    amount="$10.00"
+                    baseHeadingSize="1"
+                    className="text-left">
+                    <div
+                      className="floating text-dark-primary text-left">
+                      <h3
+                        className="floating__item flush"
+                        style={
+                          Object {
+                            "paddingRight": "5px",
+                          }
+                        } />
+                      <h1
+                        className="floating__item flush">
+                        10
+                      </h1>
+                      <h3
+                        className="floating__item flush" />
+                    </div>
+                  </Currency>
+                </span>
               </div>
               <div
                 className="push-top">
@@ -252,6 +382,7 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
 
 exports[`CartContainer > Lifecycle functions calls clearTransactions 1`] = `
 Object {
+  "canCheckout": true,
   "subfunds": Array [
     Object {
       "accounts": Array [
@@ -271,6 +402,27 @@ Object {
 
 exports[`CartContainer > Lifecycle functions should clear transactions on success 1`] = `
 Object {
+  "canCheckout": true,
+  "subfunds": Array [
+    Object {
+      "accounts": Array [
+        Object {
+          "label": "test",
+          "value": "1",
+        },
+      ],
+      "amount": null,
+      "fundId": "1",
+      "id": 1,
+      "primary": true,
+    },
+  ],
+}
+`;
+
+exports[`CartContainer > Lifecycle functions should clear transactions on when amount is set to 0 1`] = `
+Object {
+  "canCheckout": true,
   "subfunds": Array [
     Object {
       "accounts": Array [
@@ -326,9 +478,31 @@ exports[`test should properly render with multiple accounts 1`] = `
   give="5"
   query={Object {}}>
   <Component
+    accounts={
+      Array [
+        Object {
+          "id": 1,
+          "name": "TEST 1",
+        },
+        Object {
+          "id": 2,
+          "name": "TEST 2",
+        },
+        Object {
+          "id": 3,
+          "name": "TEST 3",
+        },
+        Object {
+          "id": 4,
+          "name": "TEST 4",
+        },
+      ]
+    }
+    canCheckout={false}
     changeAmount={[Function]}
     changeFund={[Function]}
     preFill={[Function]}
+    setCanCheckout={[Function]}
     subfunds={
       Array [
         Object {
@@ -355,28 +529,9 @@ exports[`test should properly render with multiple accounts 1`] = `
           "id": 1,
           "primary": true,
         },
-        Object {
-          "accounts": Array [
-            Object {
-              "label": "TEST 2",
-              "value": 2,
-            },
-            Object {
-              "label": "TEST 3",
-              "value": 3,
-            },
-            Object {
-              "label": "TEST 4",
-              "value": 4,
-            },
-          ],
-          "amount": null,
-          "fundId": undefined,
-          "id": 2,
-          "primary": false,
-        },
       ]
     }
+    toggleSecondFund={[Function]}
     total={0}>
     <div
       className="push-top@handheld soft-half-top@lap-and-up">
@@ -428,39 +583,68 @@ exports[`test should properly render with multiple accounts 1`] = `
                   primary={true}>
                   <div />
                 </mockConstructor>
+                <div
+                  className="display-block one-whole soft-bottom">
+                  <SmallButton
+                    className="btn--dark-secondary"
+                    disabled={true}
+                    onClick={[Function]}
+                    text="Add Another Fund">
+                    <button
+                      className="
+                        btn btn--small@next
+                        btn--disabled
+                        btn--dark-secondary
+                      "
+                      disabled={true}
+                      onClick={[Function]}
+                      style={Object {}}>
+                      Add Another Fund
+                    </button>
+                  </SmallButton>
+                </div>
                 <mockConstructor
-                  accounts={
-                    Array [
-                      Object {
-                        "label": "TEST 2",
-                        "value": 2,
-                      },
-                      Object {
-                        "label": "TEST 3",
-                        "value": 3,
-                      },
-                      Object {
-                        "label": "TEST 4",
-                        "value": 4,
-                      },
-                    ]
-                  }
-                  amount={null}
-                  changeAmount={[Function]}
-                  changeFund={[Function]}
-                  id={2}
-                  preFill={[Function]}
-                  primary={false}>
+                  setCanCheckout={[Function]}>
                   <div />
                 </mockConstructor>
                 <h3
-                  className="display-inline-block text-dark-tertiary push-half-bottom push-half-right">
-                  so my total is
+                  className="display-inline-block text-dark-primary push-half-bottom push-half-right"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
+                  my total is
                 </h3>
-                <h3
-                  className="display-inline-block text-brand push-half-bottom">
-                  $0.00
-                </h3>
+                <span
+                  className="display-inline-block text-dark-primary push-half-bottom"
+                  style={
+                    Object {
+                      "verticalAlign": "middle",
+                    }
+                  }>
+                  <Currency
+                    amount="$0.00"
+                    baseHeadingSize="1"
+                    className="text-left">
+                    <div
+                      className="floating text-dark-primary text-left">
+                      <h3
+                        className="floating__item flush"
+                        style={
+                          Object {
+                            "paddingRight": "5px",
+                          }
+                        } />
+                      <h1
+                        className="floating__item flush">
+                        0
+                      </h1>
+                      <h3
+                        className="floating__item flush" />
+                    </div>
+                  </Currency>
+                </span>
               </div>
               <div
                 className="push-top">
@@ -480,9 +664,19 @@ exports[`test should properly render with multiple accounts 1`] = `
 
 exports[`test should render with minimal props 1`] = `
 <Component
+  accounts={
+    Array [
+      Object {
+        "id": "1",
+        "name": "test",
+      },
+    ]
+  }
+  canCheckout={false}
   changeAmount={[Function]}
   changeFund={[Function]}
   preFill={[Function]}
+  setCanCheckout={[Function]}
   subfunds={
     Array [
       Object {
@@ -499,5 +693,6 @@ exports[`test should render with minimal props 1`] = `
       },
     ]
   }
+  toggleSecondFund={[Function]}
   total={0} />
 `;

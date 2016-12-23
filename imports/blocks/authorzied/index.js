@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import { Component, PropTypes } from "react";
+import { Component, PropTypes, cloneElement } from "react";
 import { connect } from "react-redux";
 
 import { accounts as accountsActions, modal } from "../../store";
@@ -25,7 +25,7 @@ export default class Authorized extends Component {
     this.props.dispatch(modal.update({ modalBackground: "light" }));
     const authorized = Meteor.userId();
     if (!authorized) {
-      this.props.dispatch(modal.render(OnBoard, { coverHeader: true }));
+      this.props.dispatch(modal.render(OnBoard, { coverHeader: true, forceOpen: true }));
     }
 
     // fail safe if for some reason we are logged in but not authorized in
@@ -40,9 +40,9 @@ export default class Authorized extends Component {
     if (this.props.modal.visible && !nextProps.modal.visible && !nextProps.auth) {
       // use last route instead of goBack() to force update of active nav item
       // handle case where a protected route is the first page visited
-      const protectedRegEx = /^\/profile|\/give\/history|\/give\/schedules/gi;
+      const protectedRegEx = /^\/profile|\/give\/history|\/give\/home/gi;
       let lastRoute = nextProps.previous[nextProps.previous.length - 1] || "/";
-      if (protectedRegEx.test(lastRoute)) lastRoute = "/";
+      if (protectedRegEx.test(lastRoute)) lastRoute = "/give/now";
 
       this.props.dispatch(routeActions.push(lastRoute));
     }
@@ -50,6 +50,7 @@ export default class Authorized extends Component {
     if (this.props.auth && !nextProps.auth) {
       this.props.dispatch(modal.render(OnBoard, {
         coverHeader: true,
+        forceOpen: true,
       }));
     }
 
@@ -60,7 +61,11 @@ export default class Authorized extends Component {
 
 
   render() {
-    if (Meteor.userId()) return this.props.children;
+    if (Meteor.userId()) {
+      const props = { ...this.props };
+      delete props.children;
+      return cloneElement(this.props.children, { ...props });
+    }
 
     /*
 

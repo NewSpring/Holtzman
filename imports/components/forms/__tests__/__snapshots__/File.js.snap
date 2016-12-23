@@ -7,32 +7,18 @@ exports[`test appends classes 1`] = `
     labelFor="2"
     labelName="Test Name" />
   <input
-    autofocus={false}
+    autoFocus={false}
     className={null}
-    classes={
-      Array [
-        "append",
-        "me",
-      ]
-    }
     defaultValue={null}
     disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={false}
     id="2"
-    inputClasses={null}
-    label="Test Name"
     name="testname"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
     placeholder="testholder"
-    status={null}
-    style={null}
-    theme={null}
-    type="file"
-    validation={[Function]} />
+    style={Object {}}
+    type="file" />
 </div>
 `;
 
@@ -45,27 +31,18 @@ exports[`test has error state 1`] = `
     labelFor="2"
     labelName="Test Name" />
   <input
-    autofocus={false}
+    autoFocus={false}
     className={null}
-    classes={null}
     defaultValue={null}
     disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={false}
     id="2"
-    inputClasses={null}
-    label="Test Name"
     name="testname"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
     placeholder="testholder"
-    status={null}
-    style={null}
-    theme={null}
-    type="file"
-    validation={[Function]} />
+    style={Object {}}
+    type="file" />
 </div>
 `;
 
@@ -78,27 +55,18 @@ exports[`test has focused state 1`] = `
     labelFor="2"
     labelName="Test Name" />
   <input
-    autofocus={false}
+    autoFocus={false}
     className={null}
-    classes={null}
     defaultValue={null}
     disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={false}
     id="2"
-    inputClasses={null}
-    label="Test Name"
     name="testname"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
     placeholder="testholder"
-    status={null}
-    style={null}
-    theme={null}
-    type="file"
-    validation={[Function]} />
+    style={Object {}}
+    type="file" />
 </div>
 `;
 
@@ -107,27 +75,18 @@ exports[`test hides the label 1`] = `
   className="input"
   style={Object {}}>
   <input
-    autofocus={false}
+    autoFocus={false}
     className={null}
-    classes={null}
     defaultValue={null}
     disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={true}
     id="2"
-    inputClasses={null}
-    label="Test Name"
     name="testname"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
     placeholder="testholder"
-    status={null}
-    style={null}
-    theme={null}
-    type="file"
-    validation={[Function]} />
+    style={Object {}}
+    type="file" />
 </div>
 `;
 
@@ -140,31 +99,18 @@ exports[`test overrides with theme 1`] = `
     labelFor="2"
     labelName="Test Name" />
   <input
-    autofocus={false}
+    autoFocus={false}
     className={null}
-    classes={null}
     defaultValue={null}
     disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={false}
     id="2"
-    inputClasses={null}
-    label="Test Name"
     name="testname"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
     placeholder="testholder"
-    status={null}
-    style={null}
-    theme={
-      Array [
-        "mytheme",
-      ]
-    }
-    type="file"
-    validation={[Function]} />
+    style={Object {}}
+    type="file" />
 </div>
 `;
 
@@ -191,26 +137,17 @@ exports[`test renders with props 1`] = `
     labelFor="2"
     labelName="Test Name" />
   <input
-    autofocus={false}
+    autoFocus={false}
     className={null}
-    classes={null}
     defaultValue={null}
     disabled={false}
-    errorTest={null}
-    format={[Function]}
-    hideLabel={false}
     id="2"
-    inputClasses={null}
-    label="Test Name"
     name="testname"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
     placeholder="testholder"
-    status={null}
-    style={null}
-    theme={null}
-    type="file"
-    validation={[Function]} />
+    style={Object {}}
+    type="file" />
 </div>
 `;

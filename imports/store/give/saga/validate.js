@@ -25,7 +25,7 @@ export default function* validate() {
   // just of the personal details + billing address
   const modifiedGive = { ...give };
   delete modifiedGive.transactions;
-  delete modifiedGive.schedules;
+  delete modifiedGive.schedule;
 
 
   // step 1 (sumbit personal details)

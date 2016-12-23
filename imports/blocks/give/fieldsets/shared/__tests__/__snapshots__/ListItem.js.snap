@@ -16,7 +16,7 @@ exports[`test should render with props 1`] = `
         }
       }>
       <h5
-        className="text-dark-secondary flush text-left">
+        className="text-dark-primary flush text-left">
         label
       </h5>
     </div>
@@ -27,10 +27,27 @@ exports[`test should render with props 1`] = `
           "verticalAlign": "middle",
         }
       }>
-      <h5
-        className="text-dark-secondary flush">
-        $24
-      </h5>
+      <div
+        className="floating text-dark-primary text-left display-inline-block">
+        <h6
+          className="floating__item flush"
+          style={
+            Object {
+              "paddingRight": "5px",
+            }
+          }>
+          $
+        </h6>
+        <h4
+          className="floating__item flush">
+          24
+        </h4>
+        <h6
+          className="floating__item flush">
+          .
+          00
+        </h6>
+      </div>
     </div>
   </div>
 </div>

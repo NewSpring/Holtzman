@@ -1,5 +1,5 @@
 exports[`test renders when complete 1`] = `
-<Layout
+<Component
   active={true}
   complete={true}
   ready={true}
@@ -21,7 +21,7 @@ exports[`test renders when complete 1`] = `
 `;
 
 exports[`test renders with props 1`] = `
-<Layout
+<Component
   active={true}
   complete={false}
   ready={true}
@@ -45,7 +45,7 @@ exports[`test renders with props 1`] = `
 `;
 
 exports[`test renders without transaction 1`] = `
-<Layout
+<Component
   active={true}
   complete={false}
   ready={true}

@@ -6,7 +6,7 @@ import { StyleSheetServer } from "aphrodite";
 import ReactHelmet from "react-helmet";
 import Cheerio from "cheerio/lib/cheerio";
 import ReactDOMServer from "react-dom/server";
-import { getDataFromTree } from "react-apollo/server";
+import { getDataFromTree } from "react-apollo";
 import { GraphQL } from "../../graphql";
 import InjectData from "./inject-data";
 import SSRContext from "./context";

@@ -21,7 +21,6 @@ story
     () => {
       const baseHeadingSize = text("Base Heading Size", "2");
       const amount = text("Amount", "$420.00");
-      const fund = text("Fund", "Step Up Fund");
       const frequency = text("Frequency", "Once A Month");
       const started = text("Started", "Nov 1, 2015");
       const latest = text("Latest", "Sep 15, 2016");
@@ -31,12 +30,12 @@ story
           <div className={"grid__item text-left"} style={{ maxWidth: "960px" }}>
             <ScheduleOverview
               amount={amount}
-              fund={fund}
               frequency={frequency}
               started={started}
               latest={latest}
               baseHeadingSize={baseHeadingSize}
-              onEditClick={() => alert('42')}
+              onEditClick={() => alert("42")}
+              onDetailClick={() => alert("Schedule Detail Clicked")}
             />
           </div>
         </div>
