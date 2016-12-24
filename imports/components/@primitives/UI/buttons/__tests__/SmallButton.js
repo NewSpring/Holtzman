@@ -1,7 +1,7 @@
 import { mount } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
 
-import SmallButton from "../small";
+import SmallButton from "../SmallButton";
 
 const defaultProps = {
   text: "See All"

@@ -1,0 +1,24 @@
+exports[`test should render 1`] = `
+<Card>
+  <div
+    className="card"
+    data-spec="card"
+    style={
+      Object {
+        "display": "block",
+        "overflow": "hidden",
+      }
+    }>
+    <Wrapper
+      className="undefined plain"
+      data-spec="card-image-wrapper">
+      <div
+        className="undefined plain"
+        data-spec="card-image-wrapper" />
+    </Wrapper>
+    <div
+      className="card__item soft text-center soft-double-ends"
+      data-spec="card-item" />
+  </div>
+</Card>
+`;

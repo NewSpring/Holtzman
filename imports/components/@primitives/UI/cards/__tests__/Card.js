@@ -1,8 +1,9 @@
 
 import { shallow, mount } from "enzyme";
-import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
+import { mountToJson } from "enzyme-to-json";
+import { getSingleSpecWrapper } from "../../../../../util/tests/data-spec";
 
-import Card from "../";
+import Card from "../Card";
 
 const generateComponent = (additionalProps={}) => (
     <Card {...additionalProps} />
@@ -11,7 +12,7 @@ const generateComponent = (additionalProps={}) => (
 it ('should render', () => {
   let wrapper = mount(generateComponent());
 
-  expect(wrapper.html()).toMatchSnapshot();
+  expect(mountToJson(wrapper)).toMatchSnapshot();
 });
 
 it ('should accept linkAll prop', () => {

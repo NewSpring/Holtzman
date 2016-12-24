@@ -2,9 +2,9 @@ import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import { css } from "aphrodite";
 
-import { ImageLoader } from "../loading";
+import { ImageLoader } from "../../../loading";
 
-import Styles from "../loading/FeedItemSkeleton-css";
+import Styles from "../../../loading/FeedItemSkeleton-css";
 
 export default class Card extends Component {
 
