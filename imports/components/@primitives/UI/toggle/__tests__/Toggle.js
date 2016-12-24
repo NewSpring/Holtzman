@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import Switch from "../switch";
+import Toggle from "../Toggle";
 
 const defaultProps = {
   id: 1,
@@ -21,7 +21,7 @@ const generateComponent = (additionalProps = {}) => {
     ...defaultProps,
     ...additionalProps,
   };
-  return <Switch { ...newProps } />;
+  return <Toggle { ...newProps } />;
 };
 
 it("renders with props", () => {

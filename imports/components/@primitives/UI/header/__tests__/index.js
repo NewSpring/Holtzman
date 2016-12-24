@@ -1,9 +1,9 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { search as searchActions } from "../../../store";
+import { search as searchActions } from "../../../../../data/store";
 import { HeaderWithoutData as Header } from "../"
 
-jest.mock("../../../store", () => ({
+jest.mock("../../../../../data/store", () => ({
   search: {
     searching: jest.fn(),
     term: jest.fn(),

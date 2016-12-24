@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 
-export default class Switch extends Component {
+export default class Toggle extends Component {
 
   static propTypes = {
     id: PropTypes.number.isRequired,

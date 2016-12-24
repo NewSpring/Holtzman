@@ -3,7 +3,7 @@ import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
 
-import { search as searchActions } from "../../store";
+import { search as searchActions } from "../../../../data/store";
 
 import Live from "../live";
 

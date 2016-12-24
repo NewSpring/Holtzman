@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import Progress from "../progress";
+import Progress from "../ProgressStep";
 
 const defaultProps = {
   steps: 3,
