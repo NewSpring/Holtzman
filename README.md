@@ -58,6 +58,15 @@ This repo contains the code base used to build v5 of the NewSpring site and nati
 - `package.json`: used to manage yarn dependencies and etc.
 - `yarn.lock`: used to make sure all developers are using the same package versions
 
+### Imports directory
+
+`/imports/` contains all of the working files for Holtzman. Inside are the following directories:
+- `/components`: React components and higher-ordered components.
+- `/data`: all data manipulation methods and utilities.
+- `/deprecated`: old files that are to be removed. **Nothing new should be added here**.
+- `/pages`: app pages
+- `/util`: additional helper functions
+
 ## Local Development
 
 ### Basics
