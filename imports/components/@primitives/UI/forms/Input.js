@@ -3,7 +3,7 @@
 import { Component } from "react";
 import StripTags from "striptags";
 
-import Label from "./components/Label";
+import Label from "./Label";
 
 type IRenderLabel = {
   hideLabel?: boolean,

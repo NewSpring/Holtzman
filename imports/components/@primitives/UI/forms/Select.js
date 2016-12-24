@@ -2,9 +2,9 @@ import { Component, PropTypes } from "react";
 import { css } from "aphrodite";
 // import ReactSelect from "react-select";
 
-import Label from "./components/Label";
+import Label from "./Label";
 
-import SelectClasses from "./select-css";
+import SelectClasses from "./styles/select";
 
 // XXX if the options come if after the default value
 // the default value is never correctly set.

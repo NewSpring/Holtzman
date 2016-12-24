@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 
-import Label from "./components/Label";
+import Label from "./Label";
 
 export default class TextArea extends Component {
 
