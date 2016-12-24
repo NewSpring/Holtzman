@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import { reset, startBuffering } from "aphrodite/lib/inject";
-import MiniCard from "../cards.MiniCard";
+import MiniCard from "../MiniCard";
 
 describe("MiniCard", () => {
   beforeEach(() => {

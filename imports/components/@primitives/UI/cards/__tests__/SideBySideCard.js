@@ -2,7 +2,7 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 
-import SideBySide from "../SideBySide";
+import SideBySideCard from "../SideBySideCard";
 
 const defaultProps = {
   classes: [],
@@ -29,9 +29,9 @@ const generateComponent = (additionalProps = {}) => {
     ...additionalProps,
   };
   return (
-    <SideBySide { ...newProps }>
+    <SideBySideCard { ...newProps }>
       <h1>test</h1>
-    </SideBySide>
+    </SideBySideCard>
   );
 };
 

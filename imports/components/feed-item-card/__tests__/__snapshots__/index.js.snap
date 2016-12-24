@@ -1,1 +1,0 @@
-exports[`test should render 1`] = `"<div data-spec=\"card\" class=\"card\" style=\"overflow: hidden; display: block;\"><div class=\"undefined plain\" data-spec=\"card-image-wrapper\"></div><div class=\"card__item soft text-center soft-double-ends\" data-spec=\"card-item\"></div></div>"`;

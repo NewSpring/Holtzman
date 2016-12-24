@@ -10,7 +10,7 @@ import {
   select,
 } from "@kadira/storybook-addon-knobs";
 
-import SmallButton from "../small";
+import SmallButton from "../SmallButton";
 import Readme from "./small-button.md";
 
 const classes=[
