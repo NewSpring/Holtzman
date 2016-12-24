@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 
-export default class Toggle extends Component {
+export default class Tabs extends Component {
 
   static propTypes = {
     items: PropTypes.array.isRequired, // eslint-disable-line

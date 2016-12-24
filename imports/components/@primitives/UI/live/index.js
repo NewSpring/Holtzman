@@ -8,7 +8,7 @@ import { Motion, spring } from "react-motion";
 
 import Styles from "./live-css";
 
-import liveActions from "../../store/live";
+import liveActions from "../../../../data/store/live";
 
 class LiveWithoutData extends Component {
 

@@ -2,13 +2,13 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { print } from "graphql-tag/printer";
-import liveActions from "../../../store/live";
+import liveActions from "../../../../../data/store/live";
 import {
   LiveWithoutData as Live,
   LIVE_QUERY,
 } from "../";
 
-jest.mock("../../../store/live", () => ({
+jest.mock("../../../../../data/store/live", () => ({
   set: jest.fn(),
   reset: jest.fn(),
 }));

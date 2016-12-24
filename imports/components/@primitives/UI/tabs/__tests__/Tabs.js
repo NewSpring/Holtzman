@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import Toggle from "../toggle";
+import Tabs from "../tabs";
 
 const defaultProps = {
   items: [jest.fn(), jest.fn()],
@@ -13,7 +13,7 @@ const generateComponent = (additionalProps = {}) => {
     ...defaultProps,
     ...additionalProps,
   };
-  return <Toggle { ...newProps } />;
+  return <Tabs { ...newProps } />;
 };
 
 it("renders with props", () => {
@@ -37,7 +37,7 @@ it("updates active when recieving props", () => {
 });
 
 it("toggle uses event to update state", () => {
-  const mockToggle = jest.fn();
+  const mockTabs = jest.fn();
   const mockEvent = {
     target: {
       dataset: {
@@ -46,11 +46,11 @@ it("toggle uses event to update state", () => {
     },
   };
   const wrapper = shallow(generateComponent({
-    toggle: mockToggle,
+    toggle: mockTabs,
   }));
   wrapper.instance().toggle(mockEvent);
-  expect(mockToggle).toHaveBeenCalledTimes(1);
-  expect(mockToggle).toHaveBeenCalledWith(2);
+  expect(mockTabs).toHaveBeenCalledTimes(1);
+  expect(mockTabs).toHaveBeenCalledWith(2);
   expect(wrapper.state().active).toBe(2);
 });
 
