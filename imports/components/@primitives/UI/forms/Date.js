@@ -6,7 +6,7 @@ import DayPicker, { DateUtils } from "react-day-picker";
 
 import Input from "./Input";
 // global styles
-import Styles from "./date-css";
+import Styles from "./styles/date";
 
 
 export default class DateComponent extends Component {

@@ -1,7 +1,7 @@
 
 import { mount, shallow } from 'enzyme';
 import Checkbox from '../Checkbox.js';
-import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
+import { getSingleSpecWrapper } from "../../../../../util/tests/data-spec.js";
 import { mountToJson, shallowToJson } from "enzyme-to-json";
 
 const generateComponent = (additionalProps={}) => (

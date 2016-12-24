@@ -3,7 +3,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Input from '../Input.js';
-import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
+import { getSingleSpecWrapper } from "../../../../../util/tests/data-spec.js";
 import { mountToJson } from "enzyme-to-json";
 
 const generateComponent = (additionalProps={}) => (
