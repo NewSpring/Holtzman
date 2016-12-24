@@ -50,6 +50,7 @@
       "/.meteor/"
     ],
     "moduleNameMapper": {
+      "meteor/bjwiley2:server-watch": "<rootDir>/.meteor/mocks/server-watch.js",
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
     "setupFiles": [
@@ -92,7 +93,6 @@
     "aphrodite": "https://github.com/NewSpring/aphrodite.git#release",
     "apollo-client": "^0.5.20",
     "audio5": "^0.1.10",
-    "bcrypt": "^0.8.7",
     "bluebird": "^3.4.6",
     "cheerio": "^0.20.0",
     "compression": "^1.6.2",
@@ -191,6 +191,7 @@
     "mkdirp": "^0.5.1",
     "mockdate": "^2.0.0",
     "node-sass": "3.4.2",
+    "npmconf": "https://git@github.com/NewSpring/npmconf.git",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.3.2",
     "react-storybook-addon-backgrounds": "0.0.7",
