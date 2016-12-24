@@ -33,6 +33,8 @@
   "rules": {
     "arrow-parens": [2, "always"],
     "quotes": [2, "double"],
+    "import/extensions": 0,
+    "import/no-absolute-path": 0,
     "import/no-unresolved": [2, { "ignore": [
       "^meteor/*", "^/imports/*"
     ] }],
