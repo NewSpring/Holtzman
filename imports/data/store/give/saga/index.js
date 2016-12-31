@@ -12,7 +12,7 @@ import modalActions from "../../modal";
 import types from "./../types";
 import actions from "../actions";
 
-import RecoverSchedule from "../../../blocks/recover-schedules";
+import RecoverSchedule from "../../../../components/giving/recover-schedules";
 
 import validate from "./validate";
 import chargeTransaction from "./chargeTransaction";

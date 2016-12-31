@@ -1,6 +1,6 @@
 // @flow
 import { Link } from "react-router";
-import Forms from "../../components/forms";
+import Forms from "../../@primitives/UI/forms";
 
 type IRecoverableSchedule = {
   account: string,

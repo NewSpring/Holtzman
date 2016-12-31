@@ -1,7 +1,8 @@
 import { shallow, mount } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
-import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
+// import { getSingleSpecWrapper } from "../../../util/tests/data-spec.js";
+import { getSingleSpecWrapper } from "../../../../util/tests/data-spec";
 
 import Remind from "../Remind";
 

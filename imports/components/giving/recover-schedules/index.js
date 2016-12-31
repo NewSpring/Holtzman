@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
 import moment from "moment";
 
-import modalActions from "../../store/modal";
-import giveActions from "../../store/give";
+import modalActions from "../../../data/store/modal";
+import giveActions from "../../../data/store/give";
 
 import Layout from "./Layout";
 

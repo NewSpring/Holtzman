@@ -1,5 +1,5 @@
 // @flow
-import Forms from "../../components/forms";
+import Forms from "../../@primitives/UI/forms";
 
 type IRemind = {
   onSubmit: Function,
