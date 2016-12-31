@@ -6,8 +6,8 @@
 
 import modalActions from "../modal";
 import shareActions from "../share";
-import Sections from "../../blocks/sections";
-import Discover from "../../blocks/discover";
+import Sections from "../../../components/shared/sections";
+import Discover from "../../../components/discover";
 
 import { routeActions } from "../routing";
 

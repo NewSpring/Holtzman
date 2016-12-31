@@ -1,6 +1,6 @@
 
 import { addMiddleware } from "../utilities";
-import Debouncer from "../../util/debounce";
+import Debouncer from "../../../util/debounce";
 import actions from "./actions";
 
 let bound = false;

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import Debouncer from "./../../util/debounce";
+import Debouncer from "../../../../util/debounce";
 
 const { span } = React.DOM;
 

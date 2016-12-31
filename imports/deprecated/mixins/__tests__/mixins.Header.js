@@ -1,10 +1,10 @@
 import { shallow } from "enzyme";
 import React, { Component } from "react";
 import ReactMixin from "react-mixin";
-import headerActions from "../../store/header/";
+import headerActions from "../../../data/store/header";
 import Header from "../mixins.Header";
 
-jest.mock("../../store/header/", () => ({
+jest.mock("../../../data/store/header", () => ({
   lock: jest.fn(),
   unlock: jest.fn(),
   set: jest.fn(),

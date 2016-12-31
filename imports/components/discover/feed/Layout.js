@@ -2,7 +2,7 @@ import { PropTypes } from "react";
 import { Link } from "react-router";
 
 import DiscoverHero from "./Hero";
-import PopularItem from "../../likes/Item";
+import PopularItem from "../../people/profile/likes/Item";
 
 function getImage(images, label = "2:1") {
   let selectedImage = false;

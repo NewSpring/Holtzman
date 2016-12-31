@@ -2,17 +2,17 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { print } from "graphql-tag/printer";
 import { Meteor } from "meteor/meteor";
-import modal from "../../../store/modal";
+import modal from "../../../data/store/modal";
 import {
   search as searchActions,
   nav as navActions,
-} from "../../../store";
+} from "../../../data/store";
 import {
   SearchContainerWithoutData as SearchContainer,
   SEARCH_QUERY,
 } from "../";
 
-jest.mock("../../../mixins/mixins.Header", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Header.js", () => {});
 
 const defaultProps = {
   dispatch: jest.fn(),

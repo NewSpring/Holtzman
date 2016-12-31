@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 import { VelocityTransitionGroup } from "velocity-react";
 
-import { ImageLoader } from "../../components/loading";
+import { ImageLoader } from "../../@primitives/UI/loading";
 
 export const ExternalLinkWrapper = (props) => {
   let url = props.to;

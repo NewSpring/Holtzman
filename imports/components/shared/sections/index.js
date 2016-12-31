@@ -2,13 +2,13 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import ReactMixin from "react-mixin";
 
-import Headerable from "../../mixins/mixins.Header";
+import Headerable from "../../../deprecated/mixins/mixins.Header";
 
-import modal from "../../store/modal";
+import modal from "../../../data/store/modal";
 
 import {
   nav as navActions,
-} from "../../store";
+} from "../../../data/store";
 
 import Groups from "./Groups";
 

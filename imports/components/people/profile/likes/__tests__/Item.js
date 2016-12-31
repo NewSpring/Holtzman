@@ -2,8 +2,8 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import mockDate from "mockdate";
-jest.mock("../../../util/inAppLink", () => jest.fn());
-import inAppLink from "../../../util/inAppLink";
+jest.mock("../../../../../util/inAppLink", () => jest.fn());
+import inAppLink from "../../../../../util/inAppLink";
 import LikesItem from "../Item";
 
 // XXX god bless you

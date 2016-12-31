@@ -1,4 +1,5 @@
-import headerActions from "../store/header/";
+
+import headerActions from "../../data/store/header";
 
 const Header = {
 

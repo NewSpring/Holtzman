@@ -1,7 +1,7 @@
 import { PropTypes } from "react";
 
 import Item from "./Item";
-import Loading from "../../components/loading";
+import Loading from "../@primitives/UI/loading";
 
 const LoadingText = ({ search }) => {
   if (search.loading) {

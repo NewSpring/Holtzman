@@ -5,14 +5,14 @@ import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 import { withApollo } from "react-apollo";
 
-import Headerable from "../../mixins/mixins.Header";
+import Headerable from "../../deprecated/mixins/mixins.Header";
 
-import modal from "../../store/modal";
+import modal from "../../data/store/modal";
 
 import {
   search as searchActions,
   nav as navActions,
-} from "../../store";
+} from "../../data/store";
 
 import Layout from "./Layout";
 

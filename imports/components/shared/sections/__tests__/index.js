@@ -1,15 +1,15 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import modal from "../../../store/modal";
+import modal from "../../../../data/store/modal";
 import {
   nav as navActions,
-} from "../../../store";
+} from "../../../../data/store";
 import {
   SectionsContainerWithoutData as SectionsContainer,
 } from "../";
 
-jest.mock("../../../mixins/mixins.Header", () => jest.fn());
-jest.mock("../../../store/modal", () => ({
+jest.mock("../../../../deprecated/mixins/mixins.Header.js", () => jest.fn());
+jest.mock("../../../../data/store/modal", () => ({
   update: jest.fn(),
   hide: jest.fn(),
 }));
