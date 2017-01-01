@@ -23,29 +23,30 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
     { month: "December", amount: 0, tick: "D" },
   ];
 
-  if (!data || !data.accounts) return null;
-  const accountsData = data.accounts;
+  if (!data || !data.transactions) return null;
+  const transactions = data.transactions;
 
-  if (!Array.isArray(accountsData)) return null;
+  if (!Array.isArray(transactions)) return null;
   const summaryData = [...baseData];
 
   let total = 0;
   const accounts = {};
 
-  accountsData.map((account) => {
-    accounts[account.name] = account.total;
-    if (!account.transactions) return null;
-
+  transactions.map((transaction) => {
     // iterate over every transaction, and sum up the months
-    account.transactions.map((transaction) => {
-      const month = moment(new Date(transaction.date)).format("M");
-      if (!transaction.details || !transaction.details.length) return transaction;
-      summaryData[Number(month) - 1].amount += transaction.details
-        .reduce((prev, { amount }) => prev + amount, 0);
-      total += transaction.details.reduce((prev, { amount }) => prev + amount, 0);
-      return transaction;
+    const month = moment(new Date(transaction.date)).format("M");
+    if (!transaction.details || !transaction.details.length) return transaction;
+
+    summaryData[Number(month) - 1].amount += transaction.details
+      .reduce((prev, { amount }) => prev + amount, 0);
+
+    total += transaction.details.reduce((prev, { amount }) => prev + amount, 0);
+    transaction.details.forEach(({ amount, account }) => {
+      if (!account) return;
+      if (!accounts[account.name]) accounts[account.name] = 0;
+      accounts[account.name] += amount;
     });
-    return null;
+    return transaction;
   });
 
   return ({
@@ -58,14 +59,13 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
 
 const YTD_QUERY = gql`
   query givingSummary($start: String!, $end: String!) {
-    accounts(allFunds: true) {
-      total(start: $start, end: $end)
-      name
-      transactions(limit: 0, start: $start, end: $end) {
-        id
-        date
-        details {
-          amount
+    transactions(start: $start, end: $end, limit: 0) {
+      id
+      date
+      details {
+        amount
+        account {
+          name
         }
       }
     }

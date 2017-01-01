@@ -37,6 +37,11 @@ const defaultProps = {
   study: {
     content: {
       id: "1",
+      meta: {
+        urlTitle: "study",
+      },
+      channelName: "studies",
+      children: [],
       content: {
         description: "<h1>study</h1>",
         images: [],
@@ -80,6 +85,11 @@ it("renders studies content", () => {
     study: {
       content: {
         id: "1",
+        children: [{ id: "1"}],
+        meta: {
+          urlTitle: "study",
+        },
+        channelName: "studies",
         content: {
           description: "<h1>study</h1>",
           images: [
