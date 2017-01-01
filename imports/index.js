@@ -8,16 +8,16 @@ import {
   createReduxStore,
 } from "./store";
 
-import { GraphQL } from "./graphql";
+import { GraphQL } from "./data/graphql";
 
 import Routes from "./routes";
-import Global from "./blocks/global";
+import Global from "./components/@primitives/layout/global";
 
 let App = null;
 
 if (process.env.NATIVE) {
   import scriptLoader from "react-async-script-loader";
-  import AudioPlayer from "./components/players/audio";
+  import AudioPlayer from "./components/@primitives/players/audio";
 
   // sync load ooyala scripts
   // XXX can we move this to just the video component?
