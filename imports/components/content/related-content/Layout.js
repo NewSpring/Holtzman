@@ -1,6 +1,6 @@
 // @flow
-import Loading from "../../components/loading";
-import MiniCard from "../../components/cards/cards.MiniCard";
+import Loading from "../../@primitives/UI/loading";
+import MiniCard from "../../@primitives/UI/cards/MiniCard";
 
 // Loading Content
 type ILoadingContent = {

@@ -1,12 +1,12 @@
 // @flow
 
-import Card from "./index";
-import styles from "../../util/styles";
-import backgrounds from "../../util/backgrounds";
-import content from "../../util/content";
-import collections from "../../util/collections";
-import categories from "../../util/categories";
-import time from "../../util/time";
+import Card from "../../@primitives/UI/cards/Card";
+import styles from "../../../util/styles";
+import backgrounds from "../../../util/backgrounds";
+import content from "../../../util/content";
+import collections from "../../../util/collections";
+import categories from "../../../util/categories";
+import time from "../../../util/time";
 
 const isCollectionChild = (channelName) => (
   channelName === "sermons" || channelName === "study_entries"

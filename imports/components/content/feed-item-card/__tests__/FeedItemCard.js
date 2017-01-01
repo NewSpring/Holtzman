@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import { reset, startBuffering } from "aphrodite/lib/inject";
-import FeedItem from "../cards.FeedItem";
+import FeedItem from "../FeedItemCard";
 
 // MOMENT IS AWESOME
 const oneDayAgo = Moment().subtract(1, "days").format("LLL");

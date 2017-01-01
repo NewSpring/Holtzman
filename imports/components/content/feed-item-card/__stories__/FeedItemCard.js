@@ -11,8 +11,8 @@ import backgrounds from "react-storybook-addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
-import Readme from "./cards.FeedItem.md";
-import FeedItem from "../cards.FeedItem";
+import Readme from "./feed-item-card.md";
+import FeedItem from "../FeedItemCard";
 
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)
