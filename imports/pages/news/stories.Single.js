@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 // loading state
-import Loading from "../../components/loading";
-import { nav as navActions } from "../../store";
+import Loading from "../../components/@primitives/UI/loading";
+import { nav as navActions } from "../../data/store";
 
-import Headerable from "../../mixins/mixins.Header";
-import Likeable from "../../mixins/mixins.Likeable";
-import Shareable from "../../mixins/mixins.Shareable";
+import Headerable from "../../deprecated/mixins/mixins.Header";
+import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 // import content component
 import StoriesContent from "./stories.Content";

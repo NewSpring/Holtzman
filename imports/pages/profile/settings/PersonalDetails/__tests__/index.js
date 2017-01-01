@@ -3,7 +3,7 @@ import { shallowToJson } from "enzyme-to-json";
 import mockDate from "mockdate";
 import {
   nav,
-} from "../../../../../store";
+} from "../../../../../data/store";
 import {
   PersonalDetailsWithoutData as PersonalDetails,
   CAMPUSES_QUERY,
@@ -13,10 +13,10 @@ import {
 // XXX god bless you
 mockDate.set('1/1/2000');
 
-jest.mock("../../../../../methods/accounts/browser", () => ({
+jest.mock("../../../../../deprecated/methods/accounts/browser", () => ({
   update: jest.fn(),
 }));
-jest.mock("../../../../../store", () => ({
+jest.mock("../../../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
   },

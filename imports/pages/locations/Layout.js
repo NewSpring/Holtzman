@@ -4,8 +4,8 @@ import gql from "graphql-tag";
 
 import { Link } from "react-router";
 
-import Meta from "../../components/meta";
-import Forms from "../../components/forms";
+import Meta from "../../components/shared/meta";
+import Forms from "../../components/@primitives/UI/forms";
 
 export const campusLookup = gql`
   query GeoLocate($origin: String, $destinations: String) {

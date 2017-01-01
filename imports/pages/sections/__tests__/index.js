@@ -2,7 +2,7 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Template } from "../";
 
-jest.mock("../../../mixins/mixins.Header", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 
 const generateComponent = () => (
   <Template />

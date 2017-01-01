@@ -4,7 +4,7 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import SeriesVideoListItem from "./series.VideoListItem";
-import { Spinner } from "../../components/loading";
+import { Spinner } from "../../components/@primitives/UI/loading";
 
 class SeriesVideoListWithoutData extends Component {
 

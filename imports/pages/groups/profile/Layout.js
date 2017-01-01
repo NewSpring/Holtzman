@@ -2,7 +2,7 @@ import { PropTypes } from "react";
 import { Link } from "react-router";
 import { Meteor } from "meteor/meteor";
 
-import Meta from "../../../components/meta";
+import Meta from "../../../components/shared/meta";
 
 const rockUrl = Meteor.settings.public.rock.baseURL;
 

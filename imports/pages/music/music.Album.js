@@ -3,19 +3,19 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import Meta from "../../components/meta";
+import Meta from "../../components/shared/meta";
 
 // loading state
-import Loading from "../../components/loading";
-import Headerable from "../../mixins/mixins.Header";
-import Likeable from "../../mixins/mixins.Likeable";
-import Shareable from "../../mixins/mixins.Shareable";
+import Loading from "../../components/@primitives/UI/loading";
+import Headerable from "../../deprecated/mixins/mixins.Header";
+import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 // action helpers
 import {
   nav as navActions,
   audio as audioActions,
-} from "../../store";
+} from "../../data/store";
 
 import Track from "./music.Track";
 

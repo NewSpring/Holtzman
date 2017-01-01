@@ -1,10 +1,10 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import { nav } from "../../../../store";
-import { reset } from "../../../../methods/accounts/browser";
+import { nav } from "../../../../data/store";
+import { reset } from "../../../../deprecated/methods/accounts/browser";
 
-import { Error as Err, Loading } from "../../../../components/states";
+import { Error as Err, Loading } from "../../../../components/@primitives/UI/states";
 import Success from "../Success";
 import Layout from "./Layout";
 

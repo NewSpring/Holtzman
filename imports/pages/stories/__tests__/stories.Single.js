@@ -1,15 +1,15 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { nav as navActions } from "../../../store";
+import { nav as navActions } from "../../../data/store";
 import {
   StoriesSingleWithoutData as StoriesSingle,
   GET_STORY_QUERY,
 } from "../stories.Single";
 
-jest.mock("../../../mixins/mixins.Header", () => {});
-jest.mock("../../../mixins/mixins.Likeable", () => {});
-jest.mock("../../../mixins/mixins.Shareable", () => {});
-jest.mock("../../../store", () => ({
+jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
+jest.mock("../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
     setAction: jest.fn(),

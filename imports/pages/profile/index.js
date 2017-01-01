@@ -2,7 +2,7 @@ import { PropTypes } from "react";
 import Home from "./home";
 import Settings from "./settings";
 
-import Authorized from "../../blocks/authorzied";
+import Authorized from "../../components/people/authorized";
 
 const Root = ({ children }) => (
   <Authorized>

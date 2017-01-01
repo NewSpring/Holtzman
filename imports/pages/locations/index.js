@@ -5,7 +5,7 @@ import gql from "graphql-tag";
 
 import Layout from "./Layout";
 
-import { header as headerActions } from "../../store";
+import { header as headerActions } from "../../data/store";
 
 class LayoutWithoutData extends Component {
 

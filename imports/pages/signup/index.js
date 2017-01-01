@@ -2,9 +2,9 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
-import AccountsWithData from "../../blocks/accounts";
-import Loading from "../../components/loading";
-import Meta from "../../components/meta";
+import AccountsWithData from "../../components/people/accounts";
+import Loading from "../../components/@primitives/UI/loading";
+import Meta from "../../components/shared/meta";
 
 class TemplateWithoutData extends Component {
 

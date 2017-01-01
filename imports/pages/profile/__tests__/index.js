@@ -2,7 +2,7 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Root } from "../";
 
-jest.mock("../../../database/collections/likes", () => jest.fn());
+jest.mock("../../../deprecated/database/collections/likes", () => jest.fn());
 
 const generateComponent = () => (
   <Root>

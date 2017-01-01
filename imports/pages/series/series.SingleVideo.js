@@ -5,23 +5,23 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
-import Loading from "../../components/loading";
+import Loading from "../../components/@primitives/UI/loading";
 import {
   nav as navActions,
   audio as audioActions,
   header as headerActions,
 } from "../../store";
 
-import Headerable from "../../mixins/mixins.Header";
-import Likeable from "../../mixins/mixins.Likeable";
-import Shareable from "../../mixins/mixins.Shareable";
+import Headerable from "../../deprecated/mixins/mixins.Header";
+import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 import time from "../../util/time";
 import react from "../../util/react";
 import contentHelpers from "../../util/content";
 import collections from "../../util/collections";
 
-import SingleVideoPlayer from "../../components/players/video/Player";
+import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
 import SeriesVideoList from "./series.VideoList";
 
 class SeriesSingleVideoWithoutData extends Component {

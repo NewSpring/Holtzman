@@ -1,6 +1,6 @@
 import { PropTypes } from "react";
-import Forms from "../../../../components/forms";
-import Meta from "../../../../components/meta";
+import Forms from "../../../../components/@primitives/UI/forms";
+import Meta from "../../../../components/shared/meta";
 
 import Back from "../Back";
 

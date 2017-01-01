@@ -10,7 +10,7 @@ import {
 
 import {
   nav as navActions,
-} from "../../../store";
+} from "../../../data/store";
 
 beforeEach(() => {
   reset();
@@ -21,10 +21,10 @@ afterEach(() => {
   reset();
 });
 
-jest.mock("../../../mixins/mixins.Likeable", () => {});
-jest.mock("../../../mixins/mixins.Header", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 
-jest.mock("../../../store", () => ({
+jest.mock("../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
   },

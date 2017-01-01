@@ -5,7 +5,7 @@ import gql from "graphql-tag";
 
 import {
   nav as navActions,
-} from "../../../store";
+} from "../../../data/store";
 
 import withProfileUpload from "../profile-photo";
 

@@ -7,11 +7,11 @@ import {
   share as shareActions,
   header as headerActions,
   audio as audioActions,
-} from "../../../store";
+} from "../../../data/store";
 import { ListDetailWithoutData as ListDetail } from "../music.ListDetail";
 
-jest.mock("../../../mixins/mixins.Shareable", () => {});
-jest.mock("../../../store", () => ({
+jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
+jest.mock("../../../data/store", () => ({
   modal: {
     hide: jest.fn(),
   },

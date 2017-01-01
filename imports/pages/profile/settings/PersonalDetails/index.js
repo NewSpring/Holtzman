@@ -6,11 +6,11 @@ import moment from "moment";
 
 import {
   nav,
-} from "../../../../store";
+} from "../../../../data/store";
 
-import { update } from "../../../../methods/accounts/browser";
+import { update } from "../../../../deprecated/methods/accounts/browser";
 
-import { Loading, Error as Err } from "../../../../components/states";
+import { Loading, Error as Err } from "../../../../components/@primitives/UI/states";
 
 import Success from "../Success";
 import Layout from "./Layout";

@@ -4,13 +4,13 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 import Layout from "./Layout";
-import Likes from "../../../blocks/likes";
-import Following from "../../../blocks/following";
+import Likes from "../../../components/people/profile/likes";
+import Following from "../../../components/people/profile/following";
 
 import {
   nav as navActions,
   header as headerActions,
-} from "../../../store";
+} from "../../../data/store";
 
 import withProfileUpload from "../profile-photo";
 

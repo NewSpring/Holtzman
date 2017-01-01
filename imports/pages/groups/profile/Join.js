@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 
-import Forms from "../../../components/forms";
-import { Error as Err, Loading } from "../../../components/states";
+import Forms from "../../../components/@primitives/UI/forms";
+import { Error as Err, Loading } from "../../../components/@primitives/UI/states";
 
 export default class Join extends Component {
 

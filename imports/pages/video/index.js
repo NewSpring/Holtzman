@@ -2,11 +2,11 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 
-import navActions from "../../store/nav";
-import headerActions from "../../store/header";
-import Video from "../../components/players/video";
+import navActions from "../../data/store/nav";
+import headerActions from "../../data/store/header";
+import Video from "../../components/@primitives/players/video";
 
-import styles from "../../blocks/nav/offset-css";
+import styles from "../../components/@primitives/nav/offset-css";
 
 class TemplateWithoutData extends Component {
 

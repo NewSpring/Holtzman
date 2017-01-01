@@ -3,16 +3,16 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import Meta from "../../components/meta";
+import Meta from "../../components/shared/meta";
 
-import { FeedItemSkeleton } from "../../components/loading";
-import ApollosPullToRefresh from "../../components/pullToRefresh";
-import FeedItem from "../../components/cards/cards.FeedItem";
+import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
+import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
+import FeedItem from "../../components/content/feed-item-card/FeedItemCard";
 
-import Headerable from "../../mixins/mixins.Header";
-import Pageable from "../../mixins/mixins.Pageable";
+import Headerable from "../../deprecated/mixins/mixins.Header";
+import Pageable from "../../deprecated/mixins/mixins.Pageable";
 
-import { nav as navActions } from "../../store";
+import { nav as navActions } from "../../data/store";
 
 import Single from "./stories.Single";
 

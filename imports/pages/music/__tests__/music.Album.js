@@ -3,16 +3,16 @@ import { shallowToJson } from "enzyme-to-json";
 import {
   nav as navActions,
   audio as audioActions,
-} from "../../../store";
+} from "../../../data/store";
 import {
   MusicAlbumWithoutData as MusicAlbum,
   ALBUM_QUERY,
 } from "../music.Album";
 
-jest.mock("../../../mixins/mixins.Header", () => {});
-jest.mock("../../../mixins/mixins.Likeable", () => {});
-jest.mock("../../../mixins/mixins.Shareable", () => {});
-jest.mock("../../../store", () => ({
+jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
+jest.mock("../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
     setAction: jest.fn(),

@@ -4,17 +4,17 @@ import {
   nav as navActions,
   audio as audioActions,
   header as headerActions,
-} from "../../../store";
+} from "../../../data/store";
 import {
   SeriesSingleVideoWithoutData as SeriesSingleVideo,
   CURRENT_SERMON_QUERY,
   SERIES_QUERY,
 } from "../series.SingleVideo";
 
-jest.mock("../../../mixins/mixins.Header", () => {});
-jest.mock("../../../mixins/mixins.Likeable", () => {});
-jest.mock("../../../mixins/mixins.Shareable", () => {});
-jest.mock("../../../store", () => ({
+jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
+jest.mock("../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
     setAction: jest.fn(),

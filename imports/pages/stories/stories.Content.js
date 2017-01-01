@@ -1,13 +1,13 @@
 /* eslint-disable react/no-danger */
 import { PropTypes } from "react";
 
-import RelatedContent from "../../blocks/related-content";
-import SingleVideoPlayer from "../../components/players/video/Player";
+import RelatedContent from "../../components/content/related-content";
+import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
 import backgrounds from "../../util/backgrounds";
 import react from "../../util/react";
 
 // XXX since stories.single only returns a single component, put meta in this one
-import Meta from "../../components/meta";
+import Meta from "../../components/shared/meta";
 
 const ratio = window.isTablet ? "2:1" : "1:1";
 const StoryImage = ({ story }) => (

@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 
-import Video from "../../components/players/video";
+import Video from "../../components/@primitives/players/video";
 import collections from "../../util/collections";
 import backgrounds from "../../util/backgrounds";
 

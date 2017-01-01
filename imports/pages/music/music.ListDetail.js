@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router";
 import ReactMixin from "react-mixin";
 
-import Shareable from "../../mixins/mixins.Shareable";
+import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 // action helpers
 import {
@@ -13,7 +13,7 @@ import {
   share as shareActions,
   header as headerActions,
   audio as audioActions,
-} from "../../store";
+} from "../../data/store";
 
 class ListDetailWithoutData extends Component {
 

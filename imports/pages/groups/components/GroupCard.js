@@ -2,9 +2,9 @@ import { PropTypes } from "react";
 import truncate from "truncate";
 import { withRouter } from "react-router";
 
-import SideBySide from "../../../components/cards/SideBySide";
+import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard";
 
-import Tag from "../../../components/tags";
+import Tag from "../../../components/@primitives/UI/tags";
 
 export const GroupCardWithoutData = ({ group, router, onHover }) => {
   const theGroup = group || {};

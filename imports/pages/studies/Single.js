@@ -4,19 +4,19 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import Meta from "../../components/meta";
+import Meta from "../../components/shared/meta";
 
 // loading state
-import Loading from "../../components/loading";
-import { nav as navActions } from "../../store";
-import headerActions from "../../store/header";
+import Loading from "../../components/@primitives/UI/loading";
+import { nav as navActions } from "../../data/store";
+import headerActions from "../../data/store/header";
 
-import Headerable from "../../mixins/mixins.Header";
-import Likeable from "../../mixins/mixins.Likeable";
-import Shareable from "../../mixins/mixins.Shareable";
+import Headerable from "../../deprecated/mixins/mixins.Header";
+import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 
-import RelatedContent from "../../blocks/related-content";
+import RelatedContent from "../../components/content/related-content";
 
 import collections from "../../util/collections";
 import contentHelpers from "../../util/content";

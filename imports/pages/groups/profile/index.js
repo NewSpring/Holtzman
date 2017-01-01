@@ -5,15 +5,15 @@ import gql from "graphql-tag";
 import ReactMixin from "react-mixin";
 import { Meteor } from "meteor/meteor";
 
-import OnBoard from "../../../blocks/accounts";
-import Split, { Left, Right } from "../../../blocks/split";
+import OnBoard from "../../../components/people/accounts";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
 
-import GoogleMap from "../../../components/map";
-import Loading from "../../../components/loading/index";
+import GoogleMap from "../../../components/@primitives/map";
+import Loading from "../../../components/@primitives/UI/loading";
 
-import Headerable from "../../../mixins/mixins.Header";
+import Headerable from "../../../deprecated/mixins/mixins.Header";
 
-import { nav as navActions, modal } from "../../../store";
+import { nav as navActions, modal } from "../../../data/store";
 
 import Layout from "./Layout";
 import Join from "./Join";

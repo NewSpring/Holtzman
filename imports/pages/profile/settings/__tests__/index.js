@@ -7,10 +7,10 @@ import {
 
 import {
   nav as navActions,
-} from "../../../../store";
+} from "../../../../data/store";
 
-jest.mock("../../../../mixins/mixins.Header", () => {});
-jest.mock("../../../../store", () => ({
+jest.mock("../../../../deprecated/mixins/mixins.Header", () => {});
+jest.mock("../../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
   },
