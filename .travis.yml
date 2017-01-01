@@ -36,5 +36,5 @@ script:
   - npm link
   - npm test -- --coverage
   - coveralls < ./.coverage/lcov.info || true
-  - "./.scripts/prepare/app.sh"
-  - "./.scripts/deploy/app.sh"
+  - "./.dev/prepare/app.sh"
+  - "./.dev/deploy/app.sh"
