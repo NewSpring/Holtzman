@@ -1,5 +1,5 @@
 /* global Meteor, check */
-import { api } from "../../../util/rock";
+import { api } from "../../../../util/rock";
 
 let RESET_EMAIL_ID = false;
 if (typeof Accounts !== "undefined") {

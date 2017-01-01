@@ -6,8 +6,8 @@ import moment from "moment";
 import Liquid from "liquid-node";
 
 
-import { api } from "../../../util/rock";
-import { makeNewGuid } from "../../../util";
+import { api } from "../../../../util/rock";
+import { makeNewGuid } from "../../../../util";
 
 // @TODO abstract
 const Parser = new Liquid.Engine();

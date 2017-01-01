@@ -1,6 +1,6 @@
 /* global Meteor, check */
-import { api, parseEndpoint } from "../../../util/rock";
-import makeNewGuid from "../../../util/guid";
+import { api, parseEndpoint } from "../../../../util/rock";
+import makeNewGuid from "../../../../util/guid";
 
 
 let GROUP_MEMBER_REQUEST_EMAIL = false;

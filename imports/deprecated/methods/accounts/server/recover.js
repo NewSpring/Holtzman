@@ -1,6 +1,6 @@
 /* global Meteor, check */
 import moment from "moment";
-import { api } from "../../../util/rock";
+import { api } from "../../../../util/rock";
 
 let RECOVER_ACCOUNT = false;
 if (typeof Accounts !== "undefined") {

@@ -1,11 +1,11 @@
 import { Meteor } from "meteor/meteor";
 import Likes from "../database/collections/likes";
 import { liked as likedActions, modal } from "../store";
-import OnBoard from "../blocks/accounts";
+import OnBoard from "../../components/people/accounts";
 
-import backgrounds from "../util/backgrounds";
-import content from "../util/content";
-import categories from "../util/categories";
+import backgrounds from "../../util/backgrounds";
+import content from "../../util/content";
+import categories from "../../util/categories";
 
 const Likeable = {
 

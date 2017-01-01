@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import React, { Component } from "react";
 import ReactMixin from "react-mixin";
-import { paging as pagingActions } from "../../store";
+import { paging as pagingActions } from "../../../data/store";
 import Pageable from "../mixins.Pageable";
 
 class CWithoutPageable extends Component {

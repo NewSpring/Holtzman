@@ -2,8 +2,8 @@
 import stripTags from "striptags";
 import moment from "moment";
 
-import { api } from "../../../util/rock";
-import { makeNewGuid } from "../../../util";
+import { api } from "../../../../util/rock";
+import { makeNewGuid } from "../../../../util";
 
 let NEW_USER_EMAL_ID = false;
 Meteor.methods({

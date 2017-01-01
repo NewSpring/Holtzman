@@ -1,7 +1,7 @@
-import backgrounds from "../util/backgrounds";
-import content from "../util/content";
+import backgrounds from "../../util/backgrounds";
+import content from "../../util/content";
 
-import { share as shareActions } from "../store";
+import { share as shareActions } from "../../data/store";
 
 const Shareable = {
 

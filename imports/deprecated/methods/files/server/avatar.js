@@ -1,7 +1,7 @@
 
 /* global Meteor, check */
 
-import { api } from "../../../util/rock";
+import { api } from "../../../../util/rock";
 
 Meteor.methods({
   "file/upload/avatar": function avatar(id) {

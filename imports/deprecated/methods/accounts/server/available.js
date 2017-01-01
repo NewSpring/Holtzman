@@ -1,6 +1,6 @@
 /* global Meteor, check */
-import { api, parseEndpoint } from "../../../util/rock";
-import Validate from "../../../util/validate";
+import { api, parseEndpoint } from "../../../../util/rock";
+import Validate from "../../../../util/validate";
 
 function getPhoto(per = {}) {
   const person = per;

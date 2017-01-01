@@ -1,4 +1,4 @@
-import { paging as pagingActions } from "../store";
+import { paging as pagingActions } from "../../data/store";
 
 const Pageable = {
 

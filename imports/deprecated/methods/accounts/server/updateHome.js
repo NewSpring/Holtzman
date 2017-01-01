@@ -1,6 +1,6 @@
 /* global Meteor, check */
-import { api } from "../../../util/rock";
-import { makeNewGuid } from "../../../util";
+import { api } from "../../../../util/rock";
+import { makeNewGuid } from "../../../../util";
 
 Meteor.methods({
   "rock/accounts/updateHome": function updateHome(data) {

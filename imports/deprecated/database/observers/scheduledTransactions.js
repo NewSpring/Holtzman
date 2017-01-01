@@ -1,6 +1,6 @@
 
-import { api } from "../../util/rock";
-import makeNewGuid from "../../util/guid";
+import { api } from "../../../util/rock";
+import makeNewGuid from "../../../util/guid";
 import { ScheduledTransactionReciepts } from "../collections/scheduledTransactions";
 import { upsertLocations } from "./upsertLocations";
 

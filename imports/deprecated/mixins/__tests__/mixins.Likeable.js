@@ -3,13 +3,13 @@ import React, { Component } from "react";
 import ReactMixin from "react-mixin";
 import { Meteor } from "meteor/meteor";
 import mockDate from "mockdate";
-import { liked as likedActions, modal } from "../../store";
+import { liked as likedActions, modal } from "../../../data/store";
 import Likes from "../../database/collections/likes";
-import OnBoard from "../../blocks/accounts";
+import OnBoard from "../../../components/people/accounts";
 import Likeable from "../mixins.Likeable";
 
 jest.mock("../../database/collections/likes", () => jest.fn());
-jest.mock("../../store", () => ({
+jest.mock("../../../data/store", () => ({
   liked: {
     toggle: jest.fn(),
   },

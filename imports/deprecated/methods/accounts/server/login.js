@@ -1,6 +1,6 @@
 /* global Meteor, check */
 import moment from "moment";
-import { api } from "../../../util/rock";
+import { api } from "../../../../util/rock";
 
 Meteor.methods({
   "rock/accounts/login": (u, p) => {

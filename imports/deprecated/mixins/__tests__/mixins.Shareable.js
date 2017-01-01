@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import React, { Component } from "react";
 import ReactMixin from "react-mixin";
-import { share as shareActions } from "../../store";
+import { share as shareActions } from "../../../data/store";
 import Shareable from "../mixins.Shareable";
 
 class CWithoutShareable extends Component {
