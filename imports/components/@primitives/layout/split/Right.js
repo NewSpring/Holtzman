@@ -2,8 +2,8 @@ import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import { css } from "aphrodite";
 
-import { ImageLoader } from "../../components/loading";
-import Styles from "../../components/loading/FeedItemSkeleton-css";
+import { ImageLoader } from "../../UI/loading";
+import Styles from "../../UI/loading/FeedItemSkeleton-css";
 
 import Hover from "./right-css";
 import PanelStyles from "./panel-css";

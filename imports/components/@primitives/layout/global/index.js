@@ -3,22 +3,22 @@ import { Meteor } from "meteor/meteor";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 import { withApollo } from "react-apollo";
-import createContainer from "../meteor/react-meteor-data";
+import createContainer from "../../../../deprecated/meteor/react-meteor-data";
 
-import Modal from "../modal";
-import Meta from "../../components/meta";
-import Nav from "../nav";
-import Header from "../../components/header";
+import Modal from "../../modals";
+import Meta from "../../../shared/meta";
+import Nav from "../../nav";
+import Header from "../../UI/header";
 
-import Likes from "../../database/collections/likes";
+import Likes from "../../../../deprecated/database/collections/likes";
 
-import { linkListener } from "../../util/inAppLink";
+import { linkListener } from "../../../../util/inAppLink";
 
 import {
   accounts as accountsActions,
   liked as likedActions,
   topics as topicActions,
-} from "../../store";
+} from "../../../../data/store";
 
 import Styles from "./watermark-css";
 

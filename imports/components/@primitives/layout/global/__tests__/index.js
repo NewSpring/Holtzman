@@ -2,12 +2,12 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { Meteor } from "meteor/meteor";
-import { linkListener } from "../../../util/inAppLink";
+import { linkListener } from "../../../../../util/inAppLink";
 import {
   accounts as accountsActions,
   liked as likedActions,
   topics as topicActions,
-} from "../../../store";
+} from "../../../../../data/store";
 import {
   GlobalWithoutData,
   Watermark,
@@ -16,14 +16,14 @@ import {
   GlobalData,
 } from "../";
 
-jest.mock("../../../database/collections/likes", () => ({
+jest.mock("../../../../../deprecated/database/collections/likes", () => ({
   find: jest.fn(() => ({
     fetch: jest.fn(() => []),
   })),
 }));
-import Likes from "../../../database/collections/likes";
+import Likes from "../../../../../database/collections/likes";
 
-jest.mock("../../nav", () => jest.fn());
+jest.mock("../../../nav", () => jest.fn());
 
 global.Raven = {
   setUserContext: jest.fn(),

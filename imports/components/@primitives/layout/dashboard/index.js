@@ -3,7 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
 
-import { header } from "../../store";
+import { header } from "../../../../data/store";
 
 type ISubNav = [{
   isActive: boolean,
