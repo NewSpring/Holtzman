@@ -6,11 +6,11 @@ import {
   nav as navActions,
   header as headerActions,
   live as liveActions,
-} from "../../../store";
+} from "../../../data/store";
 
-jest.mock("../../../mixins/mixins.Likeable", () => {});
-jest.mock("../../../mixins/mixins.Shareable", () => {});
-jest.mock("../../../store", () => ({
+jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
+jest.mock("../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
     setAction: jest.fn(),

@@ -1,8 +1,8 @@
 import { PropTypes } from "react";
 import gql from "graphql-tag";
 
-import { GraphQL } from "../../graphql";
-import Split, { Left, Right } from "../../blocks/split";
+import { GraphQL } from "../../data/graphql";
+import Split, { Left, Right } from "../../components/@primitives/layout/split";
 
 import ResetPassword from "./reset-password";
 

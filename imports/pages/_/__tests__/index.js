@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { print } from "graphql-tag/printer";
-import { GraphQL } from "../../../graphql";
+import { GraphQL } from "../../../data/graphql";
 import {
   Template,
   CASH_TAG_QUERY,

@@ -1,7 +1,7 @@
 
 import React from "react";
 import { connect } from "react-redux";
-import YearToDate from "../../../components/cards/cards.YearToDate";
+import YearToDate from "../../../components/giving/cards/YearToDateCard";
 import withYTDData from "./givingSummaryEnhancer";
 
 const graphSettings = {

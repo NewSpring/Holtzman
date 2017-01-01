@@ -1,6 +1,6 @@
 // @flow
 
-import { WindowLoading, Spinner } from "../../../../components/loading";
+import { WindowLoading, Spinner } from "../../../../components/@primitives/UI/loading";
 
 const UPDATE_HEADER = "We're Updating Your Saved Account";
 const UPDATE_TEXT = "Please don't close this window while we update your account details";

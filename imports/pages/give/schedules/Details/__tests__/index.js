@@ -8,9 +8,9 @@ import {
   modal as modalActions,
   give as giveActions,
   header as headerActions,
-} from "../../../../../store";
+} from "../../../../../data/store";
 
-jest.mock("../../../../../store", () => ({
+jest.mock("../../../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
   },

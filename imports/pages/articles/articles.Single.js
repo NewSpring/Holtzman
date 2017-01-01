@@ -3,25 +3,25 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import Meta from "../../components/meta";
+import Meta from "../../components/shared/meta";
 
 // loading state
-import Split, { Left, Right } from "../../blocks/split";
-import Headerable from "../../mixins/mixins.Header";
-import Likeable from "../../mixins/mixins.Likeable";
-import Shareable from "../../mixins/mixins.Shareable";
+import Split, { Left, Right } from "../../components/@primitives/layout/split";
+import Headerable from "../../deprecated/mixins/mixins.Header";
+import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
-import Loading from "../../components/loading";
+import Loading from "../../components/@primitives/UI/loading";
 
 // import editorial collection for lookup
 import backgrounds from "../../util/backgrounds";
-import RelatedContent from "../../blocks/related-content";
+import RelatedContent from "../../components/content/related-content";
 
-import SingleVideoPlayer from "../../components/players/video/Player";
+import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
 
 import {
   nav as navActions,
-} from "../../store";
+} from "../../data/store";
 
 // import content component
 import Content from "./articles.Content";

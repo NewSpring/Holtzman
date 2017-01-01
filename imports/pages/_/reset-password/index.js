@@ -1,9 +1,9 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import { reset } from "../../../methods/accounts/browser";
-import { routeActions } from "../../../store/routing";
-import { Error, Loading } from "../../../components/states";
+import { reset } from "../../../deprecated/methods/accounts/browser";
+import { routeActions } from "../../../data/store/routing";
+import { Error, Loading } from "../../../components/@primitives/UI/states";
 import Success from "./Success";
 import Layout from "./Layout";
 

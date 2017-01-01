@@ -1,9 +1,9 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import { Error } from "../../../../components/icons";
+import { Error } from "../../../../components/@primitives/UI/icons";
 
-import { modal as modalActions } from "../../../../store";
+import { modal as modalActions } from "../../../../data/store";
 
 class ConfirmWithoutData extends Component {
 

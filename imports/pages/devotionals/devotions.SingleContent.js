@@ -5,7 +5,7 @@ import scriptures from "../../util/scriptures";
 import react from "../../util/react";
 import backgrounds from "../../util/backgrounds";
 
-import RelatedContent from "../../blocks/related-content";
+import RelatedContent from "../../components/content/related-content";
 
 const defaultArray = [];
 export default class DevotionsSingleContent extends Component {

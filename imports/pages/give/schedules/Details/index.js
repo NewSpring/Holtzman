@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-import Authorized from "../../../../blocks/authorzied";
+import Authorized from "../../../../components/people/authorized";
 
 import {
   nav as navActions,

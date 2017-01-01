@@ -1,12 +1,12 @@
 import { PropTypes } from "react";
 import { Link } from "react-router";
 
-import AddToCart from "../../../blocks/add-to-cart";
+import AddToCart from "../../../components/giving/add-to-cart";
 
-import SideBySide from "../../../components/cards/SideBySide";
-import { Spinner } from "../../../components/loading";
-import Meta from "../../../components/meta";
-import Offline from "../../../components/status/Offline";
+import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard";
+import { Spinner } from "../../../components/@primitives/UI/loading";
+import Meta from "../../../components/shared/meta";
+import Offline from "../../../components/giving/offline";
 
 const Layout = ({ alive, accounts }) => (
   <div>

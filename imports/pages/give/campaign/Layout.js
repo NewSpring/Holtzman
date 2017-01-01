@@ -3,9 +3,9 @@
 import find from "lodash.find";
 import { Link } from "react-router";
 
-import Split, { Left, Right } from "../../../blocks/split";
-import Meta from "../../../components/meta";
-import AddToCart from "../../../blocks/add-to-cart";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
+import Meta from "../../../components/shared/meta";
+import AddToCart from "../../../components/giving/add-to-cart";
 
 type ILayout = {
   account: Object,

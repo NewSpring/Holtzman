@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-import Spinner from "../../../components/loading";
+import Spinner from "../../../components/@primitives/UI/loading";
 
 import {
   nav as navActions,
   header as headerActions,
-} from "../../../store";
+} from "../../../data/store";
 
 import Layout from "./Layout";
 

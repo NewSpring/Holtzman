@@ -3,8 +3,8 @@
 
 import moment from "moment";
 
-import Forms from "../../../components/forms";
-import Loading from "../../../components/loading/Spinner";
+import Forms from "../../../components/@primitives/UI/forms";
+import Loading from "../../../components/@primitives/UI/loading/Spinner";
 
 import withData from "./givingSummaryEnhancer";
 

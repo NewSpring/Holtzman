@@ -1,9 +1,9 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import { header as headerActions } from "../../store";
+import { header as headerActions } from "../../data/store";
 
-import Meta from "../../components/meta";
+import Meta from "../../components/shared/meta";
 import Intro from "./intro/index";
 
 import Salvation from "./salvation/index";

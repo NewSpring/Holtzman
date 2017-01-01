@@ -2,10 +2,10 @@
 import { Link } from "react-router";
 import moment from "moment";
 import Filter from "./Filter";
-import TransactionCard from "../../../components/cards/TransactionDetail";
+import TransactionCard from "../../../components/giving/cards/TransactionCard";
 
-import { Spinner } from "../../../components/loading";
-import Meta from "../../../components/meta";
+import { Spinner } from "../../../components/@primitives/UI/loading";
+import Meta from "../../../components/shared/meta";
 
 type ITransactionList = {
   transactions?: [Object]

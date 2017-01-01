@@ -8,7 +8,7 @@ import {
   modal as modalActions,
   header as headerActions,
   give as giveActions,
-} from "../../../store";
+} from "../../../data/store";
 
 import Layout from "./Layout";
 import Confirm from "./Details/Confirm";

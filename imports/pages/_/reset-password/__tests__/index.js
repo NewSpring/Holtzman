@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { reset } from "../../../../methods/accounts/browser";
+import { reset } from "../../../../deprecated/methods/accounts/browser";
 import { ChangePasswordWithoutData as ChangePassword } from "../";
 
 const defaultProps = {

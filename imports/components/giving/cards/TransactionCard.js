@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 import Currency from "../../@primitives/typography/currency";
 
-type ITransactionCard = {
+type IUnwrappedCard = {
   transactionDetail: Object,
   transaction: Object,
   icon: boolean,
@@ -14,14 +14,14 @@ type ITransactionCard = {
   person?: Object,
 };
 
-export const TransactionCard = ({
+export const UnwrappedCard = ({
   transactionDetail,
   transaction,
   icon,
   status,
   failure,
   person,
-}: ITransactionCard) => (
+}: IUnwrappedCard) => (
   <div className="grid" style={{ verticalAlign: "middle" }}>
     <div className="grid__item one-half" style={{ verticalAlign: "middle" }}>
       <div className="relative">

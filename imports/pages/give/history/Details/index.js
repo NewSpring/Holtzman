@@ -4,11 +4,11 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
-import Authorized from "../../../../blocks/authorzied";
+import Authorized from "../../../../components/people/authorized";
 import {
   nav as navActions,
   header as headerActions,
-} from "../../../../store";
+} from "../../../../data/store";
 
 import Layout from "./Layout";
 
