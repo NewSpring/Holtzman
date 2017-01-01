@@ -1,5 +1,5 @@
 
-import SmallButton from "../buttons/small";
+import SmallButton from "../buttons/SmallButton";
 
 const halvesClasses = "one-half floating display-inline-block";
 

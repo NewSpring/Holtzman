@@ -11,8 +11,8 @@ import backgrounds from "react-storybook-addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
-import Readme from "./cards.MiniCard.md";
-import MiniCard from "../cards.MiniCard";
+import Readme from "./mini-card.md";
+import MiniCard from "../MiniCard";
 
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)

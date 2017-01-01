@@ -3,8 +3,6 @@
 ### Usage
 
 ```js
-import LineGraph from "../../components/graphs/lineGraph";
-
 <LineGraph
   data={data}
   tickFormat={tickFormat}

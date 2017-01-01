@@ -6,7 +6,7 @@ import backgrounds from "react-storybook-addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
-import Readme from "./cards.SideBySide.md";
+import Readme from "./side-by-side-card.md";
 import SideBySide from "../SideBySide";
 
 const story = storiesOf("Cards", module)

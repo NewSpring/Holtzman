@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
-import { ImageLoader } from "../../../loading";
+import { ImageLoader } from "../../UI/loading";
 // import { ImageLoader } from "/imports/components/loading";
 // import Styles from "../loading/FeedItemSkeleton-css";
 

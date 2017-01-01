@@ -1,6 +1,6 @@
 // @flow
 
-import Currency from "./../currency";
+import Currency from "../../typography/currency";
 
 export const themeStyles = (
   theme: string,

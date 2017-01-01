@@ -9,7 +9,7 @@ import defaultColors from "/.storybook/defaults";
 import SectionHeader from "../";
 import Readme from "./section-header.md";
 
-import SmallButton from "../../buttons/small";
+import SmallButton from "../../buttons/SmallButton";
 
 const story = storiesOf("Section Header", module)
   .addDecorator(centered)
