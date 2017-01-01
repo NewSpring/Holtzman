@@ -1,9 +1,7 @@
 exports[`data format should return an object with correct keys 1`] = `
 Object {
   "accounts": Object {
-    "Christmas Offering": 0,
     "General Fund": 66,
-    "Step Up Fund": 0,
   },
   "chartData": Array [
     Object {
@@ -68,5 +66,199 @@ Object {
     },
   ],
   "total": 66,
+  "transactions": Array [
+    Object {
+      "date": "Tue Nov 01 2016 07:53:00 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 1,
+        },
+      ],
+      "id": "123456781",
+    },
+    Object {
+      "date": "Mon Oct 03 2016 07:55:09 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 2,
+        },
+      ],
+      "id": "123456782",
+    },
+    Object {
+      "date": "Thu Sep 01 2016 09:41:39 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 3,
+        },
+      ],
+      "id": "123456783",
+    },
+    Object {
+      "date": "Mon Aug 01 2016 13:13:31 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 4,
+        },
+      ],
+      "id": "123456784",
+    },
+    Object {
+      "date": "Fri Jul 01 2016 10:26:52 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 5,
+        },
+      ],
+      "id": "123456785",
+    },
+    Object {
+      "date": "Wed Jun 01 2016 07:51:23 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 6,
+        },
+      ],
+      "id": "123456786",
+    },
+    Object {
+      "date": "Fri May 13 2016 15:08:35 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 7,
+        },
+      ],
+      "id": "123456787",
+    },
+    Object {
+      "date": "Sat Apr 30 2016 09:50:11 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 8,
+        },
+      ],
+      "id": "12345678",
+    },
+    Object {
+      "date": "Sat Apr 30 2016 09:49:35 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 9,
+        },
+      ],
+      "id": "12345678",
+    },
+    Object {
+      "date": "Mon Apr 18 2016 15:42:15 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 0,
+        },
+      ],
+      "id": "12345678",
+    },
+    Object {
+      "date": "Fri Apr 01 2016 11:12:21 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 1,
+        },
+      ],
+      "id": "12345678",
+    },
+    Object {
+      "date": "Thu Mar 31 2016 09:30:01 GMT-0400 (EDT)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 2,
+        },
+      ],
+      "id": "12345678",
+    },
+    Object {
+      "date": "Thu Mar 03 2016 02:42:37 GMT-0500 (EST)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 3,
+        },
+      ],
+      "id": "12345678",
+    },
+    Object {
+      "date": "Tue Mar 01 2016 06:20:39 GMT-0500 (EST)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 4,
+        },
+      ],
+      "id": "12345678",
+    },
+    Object {
+      "date": "Sat Jan 30 2016 07:37:32 GMT-0500 (EST)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 5,
+        },
+      ],
+      "id": "12345678",
+    },
+    Object {
+      "date": "Fri Jan 01 2016 15:47:43 GMT-0500 (EST)",
+      "details": Array [
+        Object {
+          "account": Object {
+            "name": "General Fund",
+          },
+          "amount": 6,
+        },
+      ],
+      "id": "12345678",
+    },
+  ],
 }
 `;

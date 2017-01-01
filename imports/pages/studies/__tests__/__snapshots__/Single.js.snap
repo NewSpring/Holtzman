@@ -96,6 +96,15 @@ exports[`test renders with no image 1`] = `
           }
         } />
     </section>
+    <div
+      className="one-whole text-center soft-bottom">
+      <a
+        className="btn--light plain"
+        href="https://newspring.cc/studies/study"
+        onClick={[Function]}>
+        View Study
+      </a>
+    </div>
   </div>
 </div>
 `;

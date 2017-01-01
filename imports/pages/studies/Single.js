@@ -19,8 +19,11 @@ import Shareable from "../../mixins/mixins.Shareable";
 import RelatedContent from "../../blocks/related-content";
 
 import collections from "../../util/collections";
+import contentHelpers from "../../util/content";
 import styles from "../../util/styles";
 import react from "../../util/react";
+import inAppLink from "../../util/inAppLink";
+
 
 import StudyHero from "./Hero";
 import StudyEntryList from "./EntryList";
@@ -88,6 +91,7 @@ class StudiesSingleWithoutData extends Component {
     }
 
     const study = content;
+    const { isLight } = study.content;
     return (
       <div>
         <Meta
@@ -108,6 +112,17 @@ class StudiesSingleWithoutData extends Component {
           <section className={`${study.content.isLight ? "text-dark-primary" : "text-light-primary"} hard-ends soft-double-sides@palm-wide`}>
             <div dangerouslySetInnerHTML={react.markup(study, "description")} />
           </section>
+          {!study.children.length && (
+            <div className="one-whole text-center soft-bottom">
+              <a
+                href={contentHelpers.siteLink(study)}
+                onClick={inAppLink}
+                className={`${isLight ? "btn--dark-secondary" : "btn--light"} plain`}
+              >
+                View Study
+              </a>
+            </div>
+          )}
           <StudyEntryList id={this.props.params.id} />
         </div>
         <RelatedContent excludedIds={[study.id]} tags={study.content.tags} />
@@ -126,6 +141,9 @@ const STUDY_SINGLE_QUERY = gql`
         title
         status
         channelName
+        children {
+          id
+        }
         meta {
           urlTitle
           siteId
