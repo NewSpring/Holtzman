@@ -6,7 +6,7 @@ import { css } from "aphrodite";
 
 import Styles from "./audio.styles.scrubber";
 
-import { actions as audioActions } from "../../../store/audio";
+import { actions as audioActions } from "../../../../data/store/audio";
 
 class AudioScrubberWithoutData extends Component {
 

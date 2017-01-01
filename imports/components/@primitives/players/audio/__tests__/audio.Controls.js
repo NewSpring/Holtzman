@@ -1,14 +1,14 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
-import ListDetail from "../../../../pages/music/music.ListDetail";
-import { actions as audioActions } from "../../../../store/audio";
-import { modal, nav as navActions } from "../../../../store";
+import ListDetail from "../../../../../pages/music/music.ListDetail";
+import { actions as audioActions } from "../../../../../data/store/audio";
+import { modal, nav as navActions } from "../../../../../data/store";
 import {
   AudioControlsWithoutData as AudioControls,
 } from "../audio.Controls";
 
-jest.mock("../../../../store/audio", () => ({
+jest.mock("../../../../../data/store/audio", () => ({
   actions: {
     play: jest.fn(),
     pause: jest.fn(),
@@ -22,7 +22,7 @@ jest.mock("../../../../store/audio", () => ({
     shuffle: jest.fn(),
   },
 }));
-jest.mock("../../../../store", () => ({
+jest.mock("../../../../../data/store", () => ({
   modal: {
     render: jest.fn(),
     setRetrigger: jest.fn(),

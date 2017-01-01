@@ -2,8 +2,8 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
 import { Meteor } from "meteor/meteor";
-import { actions as audioActions } from "../../../../store/audio";
-import Audio from "../../../../libraries/players/audio";
+import { actions as audioActions } from "../../../../../data/store/audio";
+import Audio from "../../../../../util/vendor/players/audio";
 import {
   AudioPlayerUtilityWithoutData as AudioPlayerUtility,
 } from "../audio.PlayerUtility";

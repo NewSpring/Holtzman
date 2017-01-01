@@ -2,10 +2,10 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
-import collections from "../../../util/collections";
-import styles from "../../../util/styles";
-import backgrounds from "../../../util/backgrounds";
-import headerActions from "../../../store/header";
+import collections from "../../../../util/collections";
+import styles from "../../../../util/styles";
+import backgrounds from "../../../../util/backgrounds";
+import headerActions from "../../../../data/store/header";
 import AudioControls from "./audio.Controls";
 import AudioTitle from "./audio.Title";
 import Styles from "./audio.styles.fullPlayer";

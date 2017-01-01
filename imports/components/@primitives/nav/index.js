@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import {
   modal as modalActions,
-} from "../../store";
+} from "../../../data/store";
 
 import NavLayout from "./Layout";
 

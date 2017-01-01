@@ -8,7 +8,7 @@ if (Meteor.isClient) {
   import velocity from "velocity-animate";
 }
 
-import { routeActions } from "../../store/routing";
+import { routeActions } from "../../../data/store/routing";
 import styles from "./nav-css";
 
 export default class NavLink extends Component {

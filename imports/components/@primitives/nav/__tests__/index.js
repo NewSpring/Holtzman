@@ -2,7 +2,7 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import {
   modal as modalActions,
-} from "../../../store";
+} from "../../../../data/store";
 import {
   NavContainerWithoutData as NavContainer,
 } from "../";

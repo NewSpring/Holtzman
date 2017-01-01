@@ -2,12 +2,12 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import cloneDeep from "lodash.clonedeep";
-import headerActions from "../../../../store/header";
+import headerActions from "../../../../../data/store/header";
 import {
   FullPlayerWithoutData as FullPlayer,
 } from "../audio.FullPlayer.js";
 
-jest.mock("../../../../store/header", () => ({
+jest.mock("../../../../../data/store/header", () => ({
   hide: jest.fn(),
   show: jest.fn(),
 }));

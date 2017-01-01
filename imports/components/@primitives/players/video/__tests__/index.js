@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { audio as audioActions } from "../../../../store";
+import { audio as audioActions } from "../../../../../data/store";
 import { VideoPlayerWithoutData as VideoPlayer } from "../";
 
 window.OO = {

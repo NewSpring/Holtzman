@@ -2,7 +2,7 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import { audio as audioActions } from "../../../store";
+import { audio as audioActions } from "../../../../data/store";
 
 class VideoPlayerWithoutData extends Component {
 

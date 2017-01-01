@@ -5,11 +5,11 @@ import FullPlayer from "./audio.FullPlayer";
 import MiniPlayer from "./audio.MiniPlayer";
 import AudioPlayerUtility from "./audio.PlayerUtility";
 
-import { actions as audioActions } from "../../../store/audio";
+import { actions as audioActions } from "../../../../data/store/audio";
 import {
   modal as modalActions,
   nav as navActions,
-} from "../../../store";
+} from "../../../../data/store";
 
 class AudioPlayerWithoutData extends Component {
 

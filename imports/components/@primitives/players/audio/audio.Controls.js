@@ -1,11 +1,11 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import ListDetail from "../../../pages/music/music.ListDetail";
+import ListDetail from "../../../../pages/music/music.ListDetail";
 import AudioScrubber from "./audio.Scrubber";
 
-import { actions as audioActions } from "../../../store/audio";
-import { modal, nav as navActions } from "../../../store";
+import { actions as audioActions } from "../../../../data/store/audio";
+import { modal, nav as navActions } from "../../../../data/store";
 
 class AudioControlsWithoutData extends Component {
 

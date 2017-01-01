@@ -2,7 +2,7 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import cloneDeep from "lodash.clonedeep";
-import { actions as audioActions } from "../../../../store/audio";
+import { actions as audioActions } from "../../../../../data/store/audio";
 import { MiniPlayerWithoutData as MiniPlayer } from "../audio.MiniPlayer";
 
 const defaultProps = {

@@ -1,11 +1,11 @@
 import { shallow, mount } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { modal as modalActions, nav as navActions } from "../../../store";
+import { modal as modalActions, nav as navActions } from "../../../../data/store";
 import {
   SideModalContainerWithoutData as SideModalContainer,
 } from "../";
 
-jest.mock("../../../store", () => ({
+jest.mock("../../../../data/store", () => ({
   modal: {
     hide: jest.fn(),
   },

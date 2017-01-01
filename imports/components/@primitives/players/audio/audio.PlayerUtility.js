@@ -3,9 +3,9 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
 
-import { actions as audioActions } from "../../../store/audio";
+import { actions as audioActions } from "../../../../data/store/audio";
 
-import Audio from "../../../libraries/players/audio";
+import Audio from "../../../../util/vendor/players/audio";
 
 class AudioPlayerUtilityWithoutData extends Component {
 

@@ -3,9 +3,9 @@ import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import { modal as modalActions, nav as navActions } from "../../store";
+import { modal as modalActions, nav as navActions } from "../../../data/store";
 
-import Modal from "./Modal";
+import Modal from "./SideModal";
 
 class SideModalContainerWithoutData extends Component {
 
