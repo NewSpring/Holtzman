@@ -1,9 +1,9 @@
 import renderer from "react-test-renderer";
 import Layout from "../Layout";
-import PaymentCard from "../paymentCard";
+import PaymentCard from "../payment-card";
 
 // // Mock the payment card
-jest.mock("../paymentCard")
+jest.mock("../payment-card");
 
 let accountResponse;
 

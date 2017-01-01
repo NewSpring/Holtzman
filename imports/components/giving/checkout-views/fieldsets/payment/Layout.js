@@ -1,6 +1,6 @@
 // @flow
 
-import Controls from "../../../../components/controls";
+import Tabs from "../../../../@primitives/UI/tabs/Tabs";
 
 import {
   BankFields,
@@ -111,7 +111,7 @@ const Layout = ({
 
     {children}
 
-    <Controls.Toggle
+    <Tabs
       items={toggles || DEFAULT_TOGGLES}
       state={payment.type === "ach"}
       toggle={toggle}

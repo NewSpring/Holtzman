@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import FollowingItem from "./Item";
 
-import topicActions from "../../store/topics/";
+import topicActions from "../../../../data/store/topics/";
 
 // Each version of the app ships with its own set of supported content
 // as the app grows, more and more options will be available from this home feed

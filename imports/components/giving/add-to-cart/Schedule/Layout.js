@@ -1,6 +1,6 @@
 
-import Checkbox from "../../../components/forms/Checkbox";
-import TagSelect from "../../../components/forms/TagSelect";
+import Checkbox from "../../../@primitives/UI/forms/Checkbox";
+import TagSelect from "../../../@primitives/UI/forms/TagSelect";
 
 import Date from "./Date";
 

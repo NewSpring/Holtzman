@@ -1,5 +1,5 @@
 // @flow
-import Forms from "../../../../components/forms";
+import Forms from "../../../../@primitives/UI/forms";
 
 type IZip = {
   billing: Object,

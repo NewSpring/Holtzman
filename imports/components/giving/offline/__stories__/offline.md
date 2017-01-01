@@ -3,8 +3,6 @@
 ### Usage
 
 ```js
-import Offline from '/imports/components/status/Offline';
-
 <Offline
   link="hello@newspring.cc"
 />

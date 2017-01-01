@@ -3,8 +3,6 @@
 ### Usage
 
 ```js
-import Recover from "../../blocks/recover-schedules/Recover";
-
 <Recover
   schedules={schedules}
   hide={hide}

@@ -1,9 +1,9 @@
 // @flow
 import moment from "moment";
 
-import { monetize } from "../../../../util/format";
-import Currency from "../../../../components/currency";
-import SmallButton from "../../../../components/buttons/small";
+import { monetize } from "../../../../../util/format";
+import Currency from "../../../../@primitives/typography/currency";
+import SmallButton from "../../../../@primitives/UI/buttons/SmallButton";
 
 import {
   ActionButton,

@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import {
   modal,
   give as giveActions,
-} from "../../store";
+} from "../../../data/store";
 
 import Layout from "./Layout";
 

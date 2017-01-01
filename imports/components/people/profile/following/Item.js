@@ -1,11 +1,11 @@
 import { PropTypes } from "react";
 
-import { Switch } from "../../components/controls";
+import { Toggle } from "../../../@primitives/UI/toggle/Toggle";
 
 const FollowingItem = ({ item, changed, switchId, active }) => (
   <div className="push-left soft-ends soft-right text-left floating outlined--light outlined--bottom">
     <h6 className="soft-half-left three-quarters flush floating__item">{item}</h6>
-    <Switch
+    <Toggle
       id={switchId}
       containerClasses="one-quarter floating__item"
       containerStyle={{ marginTop: "-12px" }}

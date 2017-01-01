@@ -2,8 +2,8 @@ import { Meteor } from "meteor/meteor";
 import { Component, PropTypes, cloneElement } from "react";
 import { connect } from "react-redux";
 
-import { accounts as accountsActions, modal } from "../../store";
-import { routeActions } from "../../store/routing";
+import { accounts as accountsActions, modal } from "../../../data/store";
+import { routeActions } from "../../../data/store/routing";
 import OnBoard from "../accounts";
 
 const map = (state) => ({

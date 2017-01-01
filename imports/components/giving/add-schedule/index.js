@@ -4,10 +4,10 @@ import serverWatch from "meteor/bjwiley2:server-watch";
 import { Component } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
-import { monetize } from "../../util/format";
-import createContainer from "../meteor/react-meteor-data";
-import { give as giveActions } from "../../store";
-import Offline from "../../components/status/Offline";
+import { monetize } from "../../../util/format";
+import createContainer from "../../../deprecated/meteor/react-meteor-data";
+import { give as giveActions } from "../../../data/store";
+import Offline from "../offline";
 import Layout from "./Layout";
 
 type ICartContainer = {

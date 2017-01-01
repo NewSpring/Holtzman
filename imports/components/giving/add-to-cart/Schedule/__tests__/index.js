@@ -2,7 +2,7 @@ import { mount, shallow } from "enzyme";
 import { mountToJson, shallowToJson } from "enzyme-to-json";
 import { connect } from "react-redux";
 
-import { give as giveActions } from "../../../../store";
+import { give as giveActions } from "../../../../../data/store";
 
 import { map, Schedule, withGiveActions } from "../";
 

@@ -4,7 +4,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 
-import { give as giveActions } from "../../../store";
+import { give as giveActions } from "../../../../data/store";
 
 import Primary from "./Primary";
 import Layout from "./Layout";

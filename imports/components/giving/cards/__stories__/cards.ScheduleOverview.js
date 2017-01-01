@@ -7,7 +7,7 @@ import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
 import Readme from "./cards.ScheduleOverview.md";
-import ScheduleOverview from "../cards.ScheduleOverview.js";
+import ScheduleOverview from "../ScheduleCard";
 
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)

@@ -3,8 +3,6 @@
 ### Usage
 
 ```js
-import Remind from "../../blocks/recover-schedules/Remind";
-
 <Remind
   onSubmit={onSubmit}
   back={back}

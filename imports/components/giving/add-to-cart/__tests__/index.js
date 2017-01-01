@@ -2,7 +2,7 @@ import { mount, shallow } from "enzyme";
 import { mountToJson, shallowToJson } from "enzyme-to-json";
 import { connect } from "react-redux";
 
-import { give as giveActions } from "../../../store";
+import { give as giveActions } from "../../../../data/store";
 import { CartContainerWithoutData as CartContainer, map, withGiveActions } from "../";
 import { SubFundWithoutData as SubFund } from "../Subfund";
 
@@ -13,7 +13,7 @@ jest.mock("react-redux", () => ({
 jest.mock("../Subfund", () => jest.fn(() => <div />));
 jest.mock("../Schedule", () => jest.fn(() => <div />));
 jest.mock("../../checkout-buttons", () => jest.fn(() => <div />));
-jest.mock("../../../components/tags", () => jest.fn(() => <span />));
+jest.mock("../../../@primitives/UI/tags", () => jest.fn(() => <span />));
 
 const generateComponent = (additionalProps = {}) => {
   const defaultProps = {

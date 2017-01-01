@@ -13,10 +13,10 @@ import {
   accounts as accountsActions,
   nav as navActions,
   give as giveActions,
-} from "../../store";
+} from "../../../data/store";
 
-import OnBoard from "../accounts";
-import Give from "../give";
+import OnBoard from "../../people/accounts";
+import Give from "../checkout-views";
 import ChangePayments from "../change-payments";
 
 import Layout from "./Layout";

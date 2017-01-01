@@ -1,7 +1,7 @@
 // @flow
 
 // NPM based imports
-import AccountType from "../../components/accountType";
+import AccountType from "../account-type";
 
 type ISavedPaymentCard = {
   payment: Object,

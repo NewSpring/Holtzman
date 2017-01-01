@@ -1,6 +1,6 @@
 import { shallow, mount } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import Validate from "../../../util/validate";
+import Validate from "../../../../util/validate";
 import SignIn from "../Signin";
 
 const defaultProps = {

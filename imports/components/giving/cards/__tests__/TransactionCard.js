@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 
-import TransactionCard, { TransactionDetail } from "../TransactionDetail";
+import TransactionCard, { TransactionDetail } from "../TransactionCard";
 
 describe("TransactionDetail", () => {
   const defaultProps = {

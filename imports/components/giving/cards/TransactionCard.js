@@ -3,7 +3,7 @@
 import moment from "moment";
 import { Link } from "react-router";
 
-import Currency from "../currency";
+import Currency from "../../@primitives/typography/currency";
 
 type ITransactionCard = {
   transactionDetail: Object,

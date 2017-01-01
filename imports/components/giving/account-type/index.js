@@ -1,7 +1,7 @@
 
 import { PropTypes } from "react";
 
-import { Accounts } from "../icons";
+import { Accounts } from "../../@primitives/UI/icons";
 
 const AccountType = ({ width, height, type }) => {
   const bottom = Number(height) / 10;

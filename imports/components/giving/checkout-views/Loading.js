@@ -1,6 +1,6 @@
 // @flow
 
-import { WindowLoading, Spinner } from "../../components/loading";
+import { WindowLoading, Spinner } from "../../@primitives/UI/loading";
 
 const LOADING_HEADER = "We're Processing Your Contribution";
 const LOADING_TEXT = "Please don't close this window while your contribution is being processed.";

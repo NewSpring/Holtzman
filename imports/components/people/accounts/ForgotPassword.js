@@ -3,11 +3,11 @@ import React from "react";
 // $FlowMeteor
 import { Accounts } from "meteor/accounts-base";
 
-import Forms from "../../components/forms";
-import { Error, Loading, Success } from "../../components/states";
+import Forms from "../../@primitives/UI/forms";
+import { Error, Loading, Success } from "../../@primitives/UI/states";
 
-import Validate from "../../util/validate";
-import { forceReset } from "../../methods/accounts/browser";
+import Validate from "../../../util/validate";
+import { forceReset } from "../../../deprecated/methods/accounts/browser";
 
 type Props = {
   save: Function,

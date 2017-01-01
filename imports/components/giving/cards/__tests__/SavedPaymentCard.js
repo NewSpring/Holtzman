@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset } from "aphrodite/lib/inject";
-import SavedPaymentCard from "../cards.SavedPayment";
+import SavedPaymentCard from "../SavedPaymentCard";
 
 const defaultAccount = {
   id: "1242",

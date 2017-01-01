@@ -1,6 +1,6 @@
 // @flow
 
-import PaymentCard from "./paymentCard";
+import PaymentCard from "./payment-card";
 
 type ILayout = {
   savedAccounts: Object[],

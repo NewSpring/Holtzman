@@ -3,8 +3,6 @@
 ### Usage
 
 ```js
-import ScheduleOverview from "../../components/cards/cards.ScheduleOverview";
-
 <ScheduleOverview
   baseHeadingSize="2"
   amount="$420.00"

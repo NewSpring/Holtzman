@@ -1,0 +1,578 @@
+exports[`ScheduleOverview correctly displays a negative value. 1`] = `
+<div
+  className={undefined}>
+  <div
+    className="card">
+    <div
+      className="card__item soft push-half-ends one-whole">
+      <div
+        className="floating text-dark-primary text-left">
+        <h3
+          className="floating__item flush"
+          style={
+            Object {
+              "paddingRight": "5px",
+            }
+          }>
+          $
+        </h3>
+        <h3
+          className="floating__item flush"
+          style={
+            Object {
+              "paddingRight": "3px",
+            }
+          }>
+          -
+        </h3>
+        <h1
+          className="floating__item flush">
+          420
+        </h1>
+        <h3
+          className="floating__item flush">
+          .
+          00
+        </h3>
+      </div>
+      <h5
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        Once A Month
+      </h5>
+      <p
+        className="flush-bottom soft-half-top"
+        style={
+          Object {
+            "marginBottom": "5px",
+          }
+        }>
+        <span
+          className="h7 text-dark-tertiary push-half-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          Start Date:
+        </span>
+        <em
+          className="text-dark-primary">
+          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+        </em>
+      </p>
+      <p>
+        <span
+          className="h7 text-dark-tertiary push-half-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          Latest Contribution:
+        </span>
+        <em
+          className="text-dark-primary">
+          Tue Mar 16 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+        </em>
+      </p>
+      <button
+        className="soft-top text-primary"
+        onClick={[Function]}
+        style={
+          Object {
+            "borderColor": "inherit",
+            "borderWidth": "2px",
+          }
+        }>
+        <h6
+          className="display-inline-block soft-half-right flush-bottom">
+          View Schedule Details
+        </h6>
+        <span
+          className="text-primary display-inline-block icon-arrow-next"
+          style={
+            Object {
+              "right": "-5px",
+              "top": "1px",
+            }
+          } />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed 1`] = `
+<div
+  className={undefined}>
+  <div
+    className="card">
+    <div
+      className="card__item soft push-half-ends one-whole">
+      <div
+        className="floating text-dark-primary text-left">
+        <h3
+          className="floating__item flush"
+          style={
+            Object {
+              "paddingRight": "5px",
+            }
+          }>
+          $
+        </h3>
+        <h1
+          className="floating__item flush">
+          420
+        </h1>
+        <h3
+          className="floating__item flush">
+          .
+          00
+        </h3>
+      </div>
+      <h5
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        Once A Month
+      </h5>
+      <p
+        className="flush-bottom soft-half-top"
+        style={Object {}}>
+        <span
+          className="h7 text-dark-tertiary push-half-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          Start Date:
+        </span>
+        <em
+          className="text-dark-primary">
+          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+        </em>
+      </p>
+      <button
+        className="soft-top text-primary"
+        onClick={[Function]}
+        style={
+          Object {
+            "borderColor": "inherit",
+            "borderWidth": "2px",
+          }
+        }>
+        <h6
+          className="display-inline-block soft-half-right flush-bottom">
+          View Schedule Details
+        </h6>
+        <span
+          className="text-primary display-inline-block icon-arrow-next"
+          style={
+            Object {
+              "right": "-5px",
+              "top": "1px",
+            }
+          } />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ScheduleOverview falls back correctly if a base heading size isn't set 1`] = `
+<div
+  className={undefined}>
+  <div
+    className="card">
+    <div
+      className="card__item soft push-half-ends one-whole">
+      <div
+        className="floating text-dark-primary text-left">
+        <h3
+          className="floating__item flush"
+          style={
+            Object {
+              "paddingRight": "5px",
+            }
+          }>
+          $
+        </h3>
+        <h1
+          className="floating__item flush">
+          420
+        </h1>
+        <h3
+          className="floating__item flush">
+          .
+          00
+        </h3>
+      </div>
+      <h5
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        Once A Month
+      </h5>
+      <p
+        className="flush-bottom soft-half-top"
+        style={Object {}}>
+        <span
+          className="h7 text-dark-tertiary push-half-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          Start Date:
+        </span>
+        <em
+          className="text-dark-primary">
+          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+        </em>
+      </p>
+      <button
+        className="soft-top text-primary"
+        onClick={[Function]}
+        style={
+          Object {
+            "borderColor": "inherit",
+            "borderWidth": "2px",
+          }
+        }>
+        <h6
+          className="display-inline-block soft-half-right flush-bottom">
+          View Schedule Details
+        </h6>
+        <span
+          className="text-primary display-inline-block icon-arrow-next"
+          style={
+            Object {
+              "right": "-5px",
+              "top": "1px",
+            }
+          } />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ScheduleOverview falls back correctly if currency symbol isn't present. 1`] = `
+<div
+  className={undefined}>
+  <div
+    className="card">
+    <div
+      className="card__item soft push-half-ends one-whole">
+      <div
+        className="floating text-dark-primary text-left">
+        <h3
+          className="floating__item flush"
+          style={
+            Object {
+              "paddingRight": "5px",
+            }
+          }>
+          $
+        </h3>
+        <h1
+          className="floating__item flush">
+          420
+        </h1>
+        <h3
+          className="floating__item flush">
+          .
+          00
+        </h3>
+      </div>
+      <h5
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        Once A Month
+      </h5>
+      <p
+        className="flush-bottom soft-half-top"
+        style={Object {}}>
+        <span
+          className="h7 text-dark-tertiary push-half-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          Start Date:
+        </span>
+        <em
+          className="text-dark-primary">
+          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+        </em>
+      </p>
+      <button
+        className="soft-top text-primary"
+        onClick={[Function]}
+        style={
+          Object {
+            "borderColor": "inherit",
+            "borderWidth": "2px",
+          }
+        }>
+        <h6
+          className="display-inline-block soft-half-right flush-bottom">
+          View Schedule Details
+        </h6>
+        <span
+          className="text-primary display-inline-block icon-arrow-next"
+          style={
+            Object {
+              "right": "-5px",
+              "top": "1px",
+            }
+          } />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
+<div
+  className={undefined}>
+  <div
+    className="card">
+    <div
+      className="card__item soft push-half-ends one-whole">
+      <div
+        className="floating text-dark-primary text-left">
+        <h3
+          className="floating__item flush"
+          style={
+            Object {
+              "paddingRight": "5px",
+            }
+          }>
+          $
+        </h3>
+        <h1
+          className="floating__item flush">
+          00
+        </h1>
+        <h3
+          className="floating__item flush">
+          .
+          00
+        </h3>
+      </div>
+      <h5
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        Once A Month
+      </h5>
+      <p
+        className="flush-bottom soft-half-top"
+        style={Object {}}>
+        <span
+          className="h7 text-dark-tertiary push-half-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          Start Date:
+        </span>
+        <em
+          className="text-dark-primary">
+          Jun 15, 2015.format(MMM D, YYYY)
+        </em>
+      </p>
+      <button
+        className="soft-top text-primary"
+        onClick={[Function]}
+        style={
+          Object {
+            "borderColor": "inherit",
+            "borderWidth": "2px",
+          }
+        }>
+        <h6
+          className="display-inline-block soft-half-right flush-bottom">
+          View Schedule Details
+        </h6>
+        <span
+          className="text-primary display-inline-block icon-arrow-next"
+          style={
+            Object {
+              "right": "-5px",
+              "top": "1px",
+            }
+          } />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
+<div
+  className={undefined}>
+  <div
+    className="card">
+    <div
+      className="card__item soft push-half-ends one-whole">
+      <div
+        className="floating text-dark-primary text-left">
+        <h3
+          className="floating__item flush"
+          style={
+            Object {
+              "paddingRight": "5px",
+            }
+          }>
+          $
+        </h3>
+        <h1
+          className="floating__item flush">
+          420
+        </h1>
+        <h3
+          className="floating__item flush">
+          .
+          00
+        </h3>
+      </div>
+      <h5
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        Once A Month
+      </h5>
+      <p
+        className="flush-bottom soft-half-top"
+        style={Object {}}>
+        <span
+          className="h7 text-dark-tertiary push-half-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          Start Date:
+        </span>
+        <em
+          className="text-dark-primary">
+          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+        </em>
+      </p>
+      <button
+        className="soft-top text-primary"
+        onClick={[Function]}
+        style={
+          Object {
+            "borderColor": "inherit",
+            "borderWidth": "2px",
+          }
+        }>
+        <h6
+          className="display-inline-block soft-half-right flush-bottom">
+          View Schedule Details
+        </h6>
+        <span
+          className="text-primary display-inline-block icon-arrow-next"
+          style={
+            Object {
+              "right": "-5px",
+              "top": "1px",
+            }
+          } />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEditClick and onDetailClick. 1`] = `
+<div
+  className={undefined}>
+  <div
+    className="card">
+    <div
+      className="card__item soft push-half-ends one-whole">
+      <div
+        className="floating text-dark-primary text-left">
+        <h3
+          className="floating__item flush"
+          style={
+            Object {
+              "paddingRight": "5px",
+            }
+          }>
+          $
+        </h3>
+        <h1
+          className="floating__item flush">
+          420
+        </h1>
+        <h3
+          className="floating__item flush">
+          .
+          00
+        </h3>
+      </div>
+      <h5
+        className="floating__item soft-half-right push-half--bottom text-dark-primary">
+        Once A Month
+      </h5>
+      <p
+        className="flush-bottom soft-half-top"
+        style={
+          Object {
+            "marginBottom": "5px",
+          }
+        }>
+        <span
+          className="h7 text-dark-tertiary push-half-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          Start Date:
+        </span>
+        <em
+          className="text-dark-primary">
+          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+        </em>
+      </p>
+      <p>
+        <span
+          className="h7 text-dark-tertiary push-half-right"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }>
+          Latest Contribution:
+        </span>
+        <em
+          className="text-dark-primary">
+          Tue Mar 16 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+        </em>
+      </p>
+      <button
+        className="soft-top text-primary"
+        onClick={[Function]}
+        style={
+          Object {
+            "borderColor": "inherit",
+            "borderWidth": "2px",
+          }
+        }>
+        <h6
+          className="display-inline-block soft-half-right flush-bottom">
+          View Schedule Details
+        </h6>
+        <span
+          className="text-primary display-inline-block icon-arrow-next"
+          style={
+            Object {
+              "right": "-5px",
+              "top": "1px",
+            }
+          } />
+      </button>
+    </div>
+  </div>
+</div>
+`;

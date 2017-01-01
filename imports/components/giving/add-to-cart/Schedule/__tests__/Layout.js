@@ -5,7 +5,7 @@ import { reset, startBuffering } from "aphrodite/lib/inject";
 import Layout from "../Layout";
 
 jest.mock("../Date", () => () => <div />);
-jest.mock("../../../../components/forms/TagSelect", () => () => <span />);
+jest.mock("../../../../@primitives/UI/forms/TagSelect", () => () => <span />);
 
 const generateComponent = (additionalProps = {}) => {
   const defaultProps = {

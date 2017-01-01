@@ -5,7 +5,7 @@
 import { Meteor } from "meteor/meteor";
 import { css } from "aphrodite";
 
-import Forms from "../../../components/forms";
+import Forms from "../../../@primitives/UI/forms";
 import Styles from "../styles-css";
 
 type IPrimary = {

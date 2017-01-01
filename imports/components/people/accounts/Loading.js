@@ -1,5 +1,5 @@
 // @flow
-import { WindowLoading, Spinner } from "../../components/loading";
+import { WindowLoading, Spinner } from "../../@primitives/UI/loading";
 
 const Loading = ({ account }: { account: bool }) => (
   <WindowLoading classes={["background--primary"]}>

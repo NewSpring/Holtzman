@@ -3,8 +3,6 @@
 ### Usage
 
 ```js
-import SavedPaymentCard from "../../components/cards/cards.SavedPayment";
-
 <SavedPaymentCard
   payment={paymentAccount}
   onClick={() => alert("42")}

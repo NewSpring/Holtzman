@@ -3,8 +3,6 @@
 ### Usage
 
 ```js
-import YearToDate from "../../components/cards/cards.YearToDate";
-
 <YearToDate
   amount={amount}
   graphData={graphData}

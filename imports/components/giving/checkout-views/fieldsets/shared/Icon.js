@@ -1,5 +1,5 @@
 // @flow
-import AccountType from "../../../../components/accountType";
+import AccountType from "../../../account-type";
 
 type IIcon = {
   cardType: ?string,

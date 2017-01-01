@@ -1,7 +1,7 @@
 // @flow
 import { Component } from "react";
 
-import Validate from "../../../../util/validate";
+import Validate from "../../../../../util/validate";
 
 import Layout from "./Layout";
 

@@ -5,7 +5,7 @@ import {
   Icon,
 } from "./";
 
-import { isIOS } from "../../../../util";
+import { isIOS } from "../../../../../util";
 
 type IActionButton = {
   completeGift: Function,

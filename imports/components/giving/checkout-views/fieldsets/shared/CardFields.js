@@ -1,6 +1,6 @@
 // @flow
-import Forms from "../../../../components/forms";
-import { creditCard } from "../../../../util/format";
+import Forms from "../../../../@primitives/UI/forms";
+import { creditCard } from "../../../../../util/format";
 import {
   cardType,
   Icon,

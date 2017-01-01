@@ -1,7 +1,7 @@
 // @flow
 
 import moment from "moment";
-import { Success as SuccessIcon } from "../../components/icons";
+import { Success as SuccessIcon } from "../../@primitives/UI/icons";
 
 type IScheduleThanks = {
   total: string,

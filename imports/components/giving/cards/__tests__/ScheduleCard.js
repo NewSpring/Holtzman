@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import { reset } from "aphrodite/lib/inject";
-import ScheduleOverview from "../cards.ScheduleOverview";
+import ScheduleOverview from "../ScheduleCard";
 
   jest.mock("moment", () => (date) => ({
   format: (style) => `${date || "now"}.format(${style})`,

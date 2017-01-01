@@ -2,7 +2,7 @@
 
 import moment from "moment";
 import { Link } from "react-router";
-import { Error, Success } from "../icons";
+import { Error, Success } from "../../@primitives/UI/icons";
 
 const getClasses = (status: string) => {
   const classes = [

@@ -5,8 +5,8 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
-import OnBoard from "../../blocks/accounts";
-import { modal, give as giveActions } from "../../store";
+import OnBoard from "../../people/accounts";
+import { modal, give as giveActions } from "../../../data/store";
 
 import Layout from "./Layout";
 

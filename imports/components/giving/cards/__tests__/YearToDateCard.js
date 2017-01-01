@@ -1,6 +1,6 @@
 import { mount, shallow } from "enzyme";
 import { mountToJson, shallowToJson } from "enzyme-to-json";
-import YearToDate from "../cards.YearToDate";
+import YearToDate from "../YearToDateCard";
 
 describe("Year To Date", () => {
 

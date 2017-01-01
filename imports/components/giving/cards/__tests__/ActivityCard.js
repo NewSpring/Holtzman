@@ -1,7 +1,7 @@
 import { mount, shallow } from "enzyme";
 import { mountToJson, shallowToJson } from "enzyme-to-json";
 import moment from "moment";
-import Activity from "../cards.Activity";
+import Activity from "../ActivityCard";
 
 describe("Activity", () => {
 

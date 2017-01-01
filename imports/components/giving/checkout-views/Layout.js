@@ -1,12 +1,12 @@
 // @flow
-import Controls from "../../components/controls";
-import Forms from "../../components/forms";
+import Progress from "../../@primitives/UI/progress/ProgressStep";
+import Forms from "../../@primitives/UI/forms";
 
 import { Personal, Payment, Billing, Confirm } from "./fieldsets";
 import Loading from "./Loading";
 import Err from "./Err";
 import Success from "./Success";
-import { monetize } from "../../util/format";
+import { monetize } from "../../../util/format";
 
 type ILayout = {
   back: Function,
@@ -120,7 +120,7 @@ const Layout = ({
         transactionType={transactionType}
         url={url}
       >
-        <Controls.Progress
+        <Progress
           steps={FORM_STEPS.length}
           active={step}
         />

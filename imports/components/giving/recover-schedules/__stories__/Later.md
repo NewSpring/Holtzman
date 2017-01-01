@@ -3,8 +3,6 @@
 ### Usage
 
 ```js
-import Later from "../../blocks/recover-schedules/Later";
-
 <Later
   date={reminderDate}
   onClick={closeFunction}

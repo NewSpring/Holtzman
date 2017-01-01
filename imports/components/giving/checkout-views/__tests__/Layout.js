@@ -2,7 +2,7 @@ import renderer from "react-test-renderer";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import Layout from "../Layout";
 
-jest.mock("../../../components/forms");
+jest.mock("../../../@primitives/UI/forms");
 
 const defaultProps = {
   back: jest.fn(),

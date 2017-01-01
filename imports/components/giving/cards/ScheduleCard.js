@@ -1,7 +1,7 @@
 // @flow
 import moment from "moment";
 
-import Currency from "./../currency";
+import Currency from "../../@primitives/typography/currency";
 
 type IScheduleOverviewCard = {
   amount: string,

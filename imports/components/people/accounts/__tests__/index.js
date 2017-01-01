@@ -7,8 +7,8 @@ import AccountsContainerWithData, {
   Accounts,
 } from "../";
 
-jest.mock("../../../store/accounts", () => jest.fn());
-jest.mock("../../../store/modal", () => jest.fn());
+jest.mock("../../../../data/store/accounts", () => jest.fn());
+jest.mock("../../../../data/store/modal", () => jest.fn());
 
 describe("redirect after sign in", () => {
   beforeEach(() => {

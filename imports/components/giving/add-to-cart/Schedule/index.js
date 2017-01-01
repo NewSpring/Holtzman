@@ -3,7 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 
-import { give as giveActions } from "../../../store";
+import { give as giveActions } from "../../../../data/store";
 
 import Layout from "./Layout";
 

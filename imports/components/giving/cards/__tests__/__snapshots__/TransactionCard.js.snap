@@ -1,0 +1,53 @@
+exports[`TransactionCard renders failed version 1`] = `
+<FailedWrapper>
+  <TransactionCard
+    failure={true}
+    icon={false}
+    person={Object {}}
+    status="Failed to Process"
+    transaction={
+      Object {
+        "id": "1",
+        "status": "FAILED",
+      }
+    }
+    transactionDetail={Object {}} />
+</FailedWrapper>
+`;
+
+exports[`TransactionCard renders pending version 1`] = `
+<PendingWrapper>
+  <TransactionCard
+    icon={false}
+    person={Object {}}
+    status="Pending"
+    transaction={
+      Object {
+        "id": "1",
+        "status": "PENDING",
+      }
+    }
+    transactionDetail={Object {}} />
+</PendingWrapper>
+`;
+
+exports[`TransactionCard renders with props 1`] = `
+<Wrapper
+  transaction={
+    Object {
+      "id": "1",
+      "status": "default",
+    }
+  }>
+  <TransactionCard
+    icon={true}
+    person={Object {}}
+    transaction={
+      Object {
+        "id": "1",
+        "status": "default",
+      }
+    }
+    transactionDetail={Object {}} />
+</Wrapper>
+`;

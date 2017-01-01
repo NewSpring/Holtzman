@@ -1,12 +1,12 @@
 // @flow
-import { monetize } from "../../util/format/currency";
-import Forms from "../../components/forms";
+import { monetize } from "../../../util/format/currency";
+import Forms from "../../@primitives/UI/forms";
 import CheckoutButtons from "../checkout-buttons";
 import SubFund from "./Subfund";
 import ScheduleLayout from "./Schedule";
 
-import Currency from "../../components/currency";
-import ButtonSmall from "../../components/buttons/small";
+import Currency from "../../@primitives/typography/currency";
+import ButtonSmall from "../../@primitives/UI/buttons/SmallButton";
 
 type ILayout = {
   subfunds: Object[],

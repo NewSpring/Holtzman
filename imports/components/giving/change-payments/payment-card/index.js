@@ -1,6 +1,6 @@
 // @flow
 
-import AccountType from "../../../components/accountType";
+import AccountType from "../../account-type";
 
 export const obfuscateAccount = (account: string) => {
   const accountFistEight = account.slice(0, account.length - 4).replace(/./gmi, "*");

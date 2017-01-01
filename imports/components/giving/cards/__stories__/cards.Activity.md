@@ -3,8 +3,6 @@
 ### Usage
 
 ```js
-import Activity from "../../components/cards/cards.Activity";
-
 <Activity
   status={status}
   date={date}

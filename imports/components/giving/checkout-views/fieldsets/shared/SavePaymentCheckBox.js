@@ -1,6 +1,6 @@
 // @flow
-import Forms from "../../../../components/forms";
-import { isIOS } from "../../../../util";
+import Forms from "../../../../@primitives/UI/forms";
+import { isIOS } from "../../../../../util";
 
 type ISavePaymentCheckBox = {
   savedAccount: Object,

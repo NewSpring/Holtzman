@@ -1,6 +1,6 @@
 
 import DayPicker, { DateUtils } from "react-day-picker";
-import DateStyles from "../../../components/forms/date-css";
+import DateStyles from "../../../@primitives/UI/forms/styles/date";
 
 const WEEKDAYS_LONG = {
   en: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],

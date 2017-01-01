@@ -12,7 +12,7 @@ import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
 import Readme from "./cards.YearToDate.md";
-import YearToDate from "../cards.YearToDate";
+import YearToDate from "../YearToDateCard";
 
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)

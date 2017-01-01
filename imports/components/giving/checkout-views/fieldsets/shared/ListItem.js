@@ -1,6 +1,6 @@
 // @flow
-import { monetize } from "../../../../util/format";
-import Currency from "../../../../components/currency";
+import { monetize } from "../../../../../util/format";
+import Currency from "../../../../@primitives/typography/currency";
 
 type IListItem = {
   transaction: Object,

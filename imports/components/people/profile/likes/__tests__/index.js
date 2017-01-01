@@ -7,7 +7,7 @@ import {
   LikesContainer,
 } from "../";
 
-jest.mock("../../../database/collections/likes", () => jest.fn());
+jest.mock("../../../../../deprecated/database/collections/likes", () => jest.fn());
 
 describe("RenderLikes", () => {
   const defaultProps = {

@@ -5,7 +5,7 @@ import { Meteor } from "meteor/meteor";
 import { Component } from "react";
 import cloneDeep from "lodash.clonedeep";
 
-import { openUrl } from "../../../../util/inAppLink";
+import { openUrl } from "../../../../../util/inAppLink";
 
 import TransactionLayout from "./TransactionLayout";
 import PaymentOptionsLayout from "./PaymentOptionsLayout";

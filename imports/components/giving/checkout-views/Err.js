@@ -1,6 +1,6 @@
 // @flow
 
-import { Error } from "../../components/icons";
+import { Error } from "../../@primitives/UI/icons";
 
 const ERROR_HEADING = "Uh Oh! Looks like there was a problem processing your contribution!";
 const STEP_ONE_MESSAGE = "Try Again";

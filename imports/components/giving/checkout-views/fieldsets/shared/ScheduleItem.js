@@ -1,6 +1,6 @@
 // @flow
 import moment from "moment";
-import { monetize } from "../../../../util/format";
+import { monetize } from "../../../../../util/format";
 
 type IScheduleItem = {
   schedule: Object,

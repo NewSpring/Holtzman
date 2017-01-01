@@ -1,9 +1,9 @@
 // @flow
 import { Component } from "react";
 
-import Controls from "../../components/controls";
-import Forms from "../../components/forms";
-import Validate from "../../util/validate";
+import Tabs from "../../@primitives/UI/tabs/Tabs";
+import Forms from "../../@primitives/UI/forms";
+import Validate from "../../../util/validate";
 
 type Props = {
   setAccount: Function,
@@ -154,7 +154,7 @@ class SignIn extends Component {
           {this.props.header || this.header()}
         </div>
 
-        <Controls.Toggle
+        <Tabs
           items={this.props.toggles}
           toggle={this.toggle}
           state={this.props.account ? 0 : 1}

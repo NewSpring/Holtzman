@@ -4,9 +4,9 @@ import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
-import { Loading, Error as Err } from "../../components/states";
-import accountsActions from "../../store/accounts";
-import modalActions from "../../store/modal";
+import { Loading, Error as Err } from "../../@primitives/UI/states";
+import accountsActions from "../../../data/store/accounts";
+import modalActions from "../../../data/store/modal";
 // import headerActions from "../../store/header";
 
 // import Loading from "./Loading"

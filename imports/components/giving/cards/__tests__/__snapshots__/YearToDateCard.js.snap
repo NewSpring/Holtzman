@@ -1,0 +1,115 @@
+exports[`Year To Date should render with the default set of props 1`] = `
+<div
+  className="card">
+  <div
+    className="card__item soft">
+    <div
+      className="soft-double-bottom soft-double-top">
+      <LineGraph
+        axisStyles={
+          Object {
+            "axis": Object {
+              "lineColor": "transparent",
+              "lineWidth": "0",
+            },
+            "tickLabels": Object {
+              "fill": "#858585",
+              "fontSize": "20",
+              "padding": "8",
+            },
+          }
+        }
+        data={
+          Array [
+            Object {
+              "amount": 300,
+              "month": "January",
+              "tick": "J",
+            },
+            Object {
+              "amount": 275,
+              "month": "February",
+              "tick": "F",
+            },
+            Object {
+              "amount": 300,
+              "month": "March",
+              "tick": "M",
+            },
+            Object {
+              "amount": 325,
+              "month": "April",
+              "tick": "A",
+            },
+            Object {
+              "amount": 300,
+              "month": "May",
+              "tick": "M",
+            },
+            Object {
+              "amount": 275,
+              "month": "June",
+              "tick": "J",
+            },
+            Object {
+              "amount": 300,
+              "month": "July",
+              "tick": "J",
+            },
+            Object {
+              "amount": 325,
+              "month": "August",
+              "tick": "A",
+            },
+            Object {
+              "amount": 300,
+              "month": "September",
+              "tick": "S",
+            },
+            Object {
+              "amount": 275,
+              "month": "October",
+              "tick": "O",
+            },
+            Object {
+              "amount": 300,
+              "month": "November",
+              "tick": "N",
+            },
+            Object {
+              "amount": 350,
+              "month": "December",
+              "tick": "D",
+            },
+          ]
+        }
+        dotColor="#6BAC43"
+        dotSize="5"
+        lineColor="#6BAC43"
+        lineWidth="3" />
+    </div>
+    <Currency
+      amount="2017"
+      baseHeadingSize="" />
+    <p
+      className="text-dark-primary italic text-left">
+      Contributed so far this year
+    </p>
+    <div
+      className="text-left">
+      <Link
+        className="text-left plain"
+        onlyActiveOnIndex={false}
+        style={Object {}}
+        to="https://my.newspring.cc">
+        <h6
+          className="display-inline-block">
+          View Your Giving History
+        </h6>
+        <span
+          className="icon-arrow-next soft-half-left" />
+      </Link>
+    </div>
+  </div>
+</div>
+`;

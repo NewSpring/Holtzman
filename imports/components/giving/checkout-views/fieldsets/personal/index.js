@@ -2,7 +2,7 @@
 
 import { Component } from "react";
 import Layout from "./Layout";
-import Validate from "../../../../util/validate";
+import Validate from "../../../../../util/validate";
 
 type IPersonal = {
   data: Object,

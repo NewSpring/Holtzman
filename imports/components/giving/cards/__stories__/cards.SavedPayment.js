@@ -11,7 +11,7 @@ import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
 import Readme from "./cards.SavedPayment.md";
-import SavedPaymentCard from "../cards.SavedPayment";
+import SavedPaymentCard from "../SavedPaymentCard";
 
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)

@@ -5,7 +5,7 @@ import { css } from "aphrodite";
 import { Component } from "react";
 
 import TertiaryPhrase from "./phrases";
-import Forms from "../../components/forms";
+import Forms from "../../@primitives/UI/forms";
 import CheckoutButtons from "../checkout-buttons";
 import Styles from "./styles-css";
 

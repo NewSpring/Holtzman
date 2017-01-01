@@ -1,14 +1,14 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Accounts } from "meteor/accounts-base";
-import Validate from "../../../util/validate";
+import Validate from "../../../../util/validate";
 import ForgotPassword from "../ForgotPassword";
 
-jest.mock("../../../methods/accounts/browser", () => ({
+jest.mock("../../../../deprecated/methods/accounts/browser", () => ({
   forceReset: jest.fn(),
 }));
 
-import { forceReset } from "../../../methods/accounts/browser";
+import { forceReset } from "../../../../deprecated/methods/accounts/browser";
 
 const defaultProps = {
   save: jest.fn(),
