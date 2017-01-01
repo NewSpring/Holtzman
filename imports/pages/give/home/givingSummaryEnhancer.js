@@ -42,7 +42,7 @@ export const formatGivingSummaryData = (data: Object): ?Object => {
 
     total += transaction.details.reduce((prev, { amount }) => prev + amount, 0);
     transaction.details.forEach(({ amount, account }) => {
-      if (!account) return null;
+      if (!account) return;
       if (!accounts[account.name]) accounts[account.name] = 0;
       accounts[account.name] += amount;
     });
