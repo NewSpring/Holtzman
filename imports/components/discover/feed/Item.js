@@ -1,8 +1,8 @@
 import { Component, PropTypes } from "react";
 import { css } from "aphrodite";
 
-import { ImageLoader } from "../../../components/loading";
-import LoadingStyles from "../../../components/loading/FeedItemSkeleton-css";
+import { ImageLoader } from "../../@primitives/UI/loading";
+import LoadingStyles from "../../@primitives/UI/loading/FeedItemSkeleton-css";
 
 import inAppLink from "../../../util/inAppLink";
 
