@@ -1,6 +1,6 @@
 
 import { Component, createElement, PropTypes } from "react";
-import Loading from "../components/loading";
+import Loading from "../../@primitives/UI/loading";
 
 const defaultOptions = { percent: 70 };
 const defaultReducer = (x) => x;
