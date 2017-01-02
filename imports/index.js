@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import {
   wrapper,
   createReduxStore,
-} from "./store";
+} from "./data/store";
 
 import { GraphQL } from "./data/graphql";
 

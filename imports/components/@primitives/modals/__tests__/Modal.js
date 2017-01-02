@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
-import SideModal from "../Modal";
+import SideModal from "../SideModal";
 
 const defaultProps = {
   childClasses: [],

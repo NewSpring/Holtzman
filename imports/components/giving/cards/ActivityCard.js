@@ -35,7 +35,7 @@ const getIcon = (status: string) => {
   return <Error {...props} />;
 };
 
-type IActivity = {
+type IActivityCard = {
   status: string,
   date: ?string,
   message: any,

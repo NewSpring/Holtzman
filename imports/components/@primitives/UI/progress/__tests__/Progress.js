@@ -1,9 +1,9 @@
 
 import { mount } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
-import { getSingleSpecWrapper } from "../../../util/tests/data-spec";
+import { getSingleSpecWrapper } from "../../../../../util/tests/data-spec";
 
-import ProgressBar, { themeStyles } from "../";
+import ProgressBar, { themeStyles } from "../Progress";
 
 const defaultProps = {
   title: "My Fund",

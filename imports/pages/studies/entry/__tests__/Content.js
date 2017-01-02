@@ -16,8 +16,8 @@ afterEach(() => {
 
 
 
-jest.mock("../../../../blocks/related-content");
-jest.mock("../../../../components/players/video");
+jest.mock("../../../../components/content/related-content");
+jest.mock("../../../../components/@primitives/players/video");
 
 const defaultProps = {
   studyEntry: {

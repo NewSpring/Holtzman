@@ -4,7 +4,7 @@ import { shallow, mount } from "enzyme";
 import { shallowToJson, mountToJson } from "enzyme-to-json";
 
 //mocked because already tested
-jest.mock("./../../../../components/cards/cards.YearToDate.js", () => () => <div /> );
+jest.mock("../../../../components/giving/cards/YearToDateCard", () => () => <div /> );
 
 const data = {
   accounts: {

@@ -3,7 +3,7 @@ import moment from "moment";
 
 import Currency from "../../@primitives/typography/currency";
 
-type IScheduleOverviewCard = {
+type IScheduleCard = {
   amount: string,
   frequency: string,
   started: string,

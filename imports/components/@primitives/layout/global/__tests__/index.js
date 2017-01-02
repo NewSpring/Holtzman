@@ -21,7 +21,7 @@ jest.mock("../../../../../deprecated/database/collections/likes", () => ({
     fetch: jest.fn(() => []),
   })),
 }));
-import Likes from "../../../../../database/collections/likes";
+import Likes from "../../../../../deprecated/database/collections/likes";
 
 jest.mock("../../../nav", () => jest.fn());
 

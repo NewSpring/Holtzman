@@ -6,7 +6,7 @@ exports[`test can override header with prop 1`] = `
       override
     </h1>
   </div>
-  <Toggle
+  <Tabs
     items={
       Array [
         "Sign In",
@@ -123,7 +123,7 @@ exports[`test renders account version 1`] = `
       </p>
     </div>
   </div>
-  <Toggle
+  <Tabs
     items={
       Array [
         "Sign In",
@@ -207,7 +207,7 @@ exports[`test renders alternate account version 1`] = `
       </p>
     </div>
   </div>
-  <Toggle
+  <Tabs
     items={
       Array [
         "Sign In",
@@ -297,7 +297,7 @@ exports[`test renders enabled button if has email, password, and terms 1`] = `
       </p>
     </div>
   </div>
-  <Toggle
+  <Tabs
     items={
       Array [
         "Sign In",
@@ -382,7 +382,7 @@ exports[`test renders people without accounts version 1`] = `
       </p>
     </div>
   </div>
-  <Toggle
+  <Tabs
     items={
       Array [
         "Sign In",
@@ -545,7 +545,7 @@ exports[`test renders with props 1`] = `
       </p>
     </div>
   </div>
-  <Toggle
+  <Tabs
     items={
       Array [
         "Sign In",

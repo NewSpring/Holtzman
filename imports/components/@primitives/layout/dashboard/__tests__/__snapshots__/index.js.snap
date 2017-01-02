@@ -63,7 +63,7 @@ exports[`Dashboard should render with the children 1`] = `
       }
     }>
     <div>
-      <Activity
+      <ActivityCard
         date="2016-12-25"
         linkText="You KNOW You Want To Click This"
         linkUrl="https://my.newspring.cc"

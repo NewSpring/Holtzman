@@ -10,7 +10,7 @@ import {
   modal as modalActions,
   give as giveActions,
   header as headerActions,
-} from "../../../../store";
+} from "../../../../data/store";
 
 import Confirm from "./Confirm";
 import Layout from "./Layout";

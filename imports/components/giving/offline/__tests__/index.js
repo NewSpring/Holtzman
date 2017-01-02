@@ -1,6 +1,6 @@
 /* eslint-disable */
 import renderer from "react-test-renderer";
-import Offline from "../Offline";
+import Offline from "../";
 
 it("displays a message to the user", () => {
   const tree = renderer.create(<Offline />);

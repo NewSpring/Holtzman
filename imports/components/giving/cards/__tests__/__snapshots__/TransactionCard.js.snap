@@ -1,6 +1,6 @@
 exports[`TransactionCard renders failed version 1`] = `
 <FailedWrapper>
-  <TransactionCard
+  <DetailCard
     failure={true}
     icon={false}
     person={Object {}}
@@ -17,7 +17,7 @@ exports[`TransactionCard renders failed version 1`] = `
 
 exports[`TransactionCard renders pending version 1`] = `
 <PendingWrapper>
-  <TransactionCard
+  <DetailCard
     icon={false}
     person={Object {}}
     status="Pending"
@@ -39,7 +39,7 @@ exports[`TransactionCard renders with props 1`] = `
       "status": "default",
     }
   }>
-  <TransactionCard
+  <DetailCard
     icon={true}
     person={Object {}}
     transaction={
@@ -50,4 +50,305 @@ exports[`TransactionCard renders with props 1`] = `
     }
     transactionDetail={Object {}} />
 </Wrapper>
+`;
+
+exports[`TransactionDetail renders with failure 1`] = `
+<div
+  className="grid"
+  style={
+    Object {
+      "verticalAlign": "middle",
+    }
+  }>
+  <div
+    className="grid__item one-half"
+    style={
+      Object {
+        "verticalAlign": "middle",
+      }
+    }>
+    <div
+      className="relative">
+      <div
+        className="background--fill soft visuallyhidden@palm float-left round push-half-top"
+        style={
+          Object {
+            "backgroundImage": "url(\"http://test.com/test.jpg\")",
+          }
+        } />
+      <div
+        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
+        <h5
+          className="text-dark-secondary flush"
+          style={
+            Object {
+              "textOverflow": "ellipsis",
+              "whiteSpace": "nowrap",
+            }
+          }>
+          account name
+        </h5>
+        <h6
+          className="text-dark-tertiary soft-half-bottom flush">
+          jim
+           
+          bob
+        </h6>
+        <p
+          className="flush italic small text-alert">
+          Dec 12, 2012
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="grid__item one-half text-right"
+    style={
+      Object {
+        "verticalAlign": "middle",
+      }
+    }>
+    <div>
+      <Currency
+        amount={2}
+        baseHeadingSize="4"
+        className="
+                  text-dark-tertiary text-right
+                  soft-half-right@handheld soft-double-right@lap-and-up
+                " />
+      <span
+        className="text-primary icon-arrow-next locked"
+        style={
+          Object {
+            "right": "-13px",
+            "top": "2px",
+          }
+        } />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TransactionDetail renders with failure and status 1`] = `
+<div
+  className="grid"
+  style={
+    Object {
+      "verticalAlign": "middle",
+    }
+  }>
+  <div
+    className="grid__item one-half"
+    style={
+      Object {
+        "verticalAlign": "middle",
+      }
+    }>
+    <div
+      className="relative">
+      <div
+        className="background--fill soft visuallyhidden@palm float-left round push-half-top"
+        style={
+          Object {
+            "backgroundImage": "url(\"http://test.com/test.jpg\")",
+          }
+        } />
+      <div
+        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
+        <h5
+          className="text-dark-secondary flush"
+          style={
+            Object {
+              "textOverflow": "ellipsis",
+              "whiteSpace": "nowrap",
+            }
+          }>
+          account name
+        </h5>
+        <h6
+          className="text-dark-tertiary soft-half-bottom flush">
+          jim
+           
+          bob
+        </h6>
+        <p
+          className="flush italic small text-alert">
+          error - 
+          Dec 12, 2012
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="grid__item one-half text-right"
+    style={
+      Object {
+        "verticalAlign": "middle",
+      }
+    }>
+    <div>
+      <Currency
+        amount={2}
+        baseHeadingSize="4"
+        className="
+                  text-dark-tertiary text-right
+                  soft-half-right@handheld soft-double-right@lap-and-up
+                " />
+      <span
+        className="text-primary icon-arrow-next locked"
+        style={
+          Object {
+            "right": "-13px",
+            "top": "2px",
+          }
+        } />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TransactionDetail renders with props 1`] = `
+<div
+  className="grid"
+  style={
+    Object {
+      "verticalAlign": "middle",
+    }
+  }>
+  <div
+    className="grid__item one-half"
+    style={
+      Object {
+        "verticalAlign": "middle",
+      }
+    }>
+    <div
+      className="relative">
+      <div
+        className="background--fill soft visuallyhidden@palm float-left round push-half-top"
+        style={
+          Object {
+            "backgroundImage": "url(\"http://test.com/test.jpg\")",
+          }
+        } />
+      <div
+        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
+        <h5
+          className="text-dark-secondary flush"
+          style={
+            Object {
+              "textOverflow": "ellipsis",
+              "whiteSpace": "nowrap",
+            }
+          }>
+          account name
+        </h5>
+        <h6
+          className="text-dark-tertiary soft-half-bottom flush">
+          jim
+           
+          bob
+        </h6>
+        <p
+          className="flush italic small text-dark-tertiary">
+          Dec 12, 2012
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="grid__item one-half text-right"
+    style={
+      Object {
+        "verticalAlign": "middle",
+      }
+    }>
+    <div>
+      <Currency
+        amount={2}
+        baseHeadingSize="4"
+        className="
+                  text-dark-tertiary text-right
+                  soft-half-right@handheld soft-double-right@lap-and-up
+                " />
+      <span
+        className="text-primary icon-arrow-next locked"
+        style={
+          Object {
+            "right": "-13px",
+            "top": "2px",
+          }
+        } />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TransactionDetail renders without icon 1`] = `
+<div
+  className="grid"
+  style={
+    Object {
+      "verticalAlign": "middle",
+    }
+  }>
+  <div
+    className="grid__item one-half"
+    style={
+      Object {
+        "verticalAlign": "middle",
+      }
+    }>
+    <div
+      className="relative">
+      <div
+        className="background--fill soft visuallyhidden@palm float-left round push-half-top"
+        style={
+          Object {
+            "backgroundImage": "url(\"http://test.com/test.jpg\")",
+          }
+        } />
+      <div
+        className="soft-double-left@palm-wide-and-up push-left@palm-wide-and-up">
+        <h5
+          className="text-dark-secondary flush"
+          style={
+            Object {
+              "textOverflow": "ellipsis",
+              "whiteSpace": "nowrap",
+            }
+          }>
+          account name
+        </h5>
+        <h6
+          className="text-dark-tertiary soft-half-bottom flush">
+          jim
+           
+          bob
+        </h6>
+        <p
+          className="flush italic small text-dark-tertiary">
+          Dec 12, 2012
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="grid__item one-half text-right"
+    style={
+      Object {
+        "verticalAlign": "middle",
+      }
+    }>
+    <div>
+      <Currency
+        amount={2}
+        baseHeadingSize="4"
+        className="
+                  text-dark-tertiary text-right
+                  soft-half-right@handheld soft-double-right@lap-and-up
+                " />
+    </div>
+  </div>
+</div>
 `;

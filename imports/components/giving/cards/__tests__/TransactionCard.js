@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 
-import TransactionCard, { TransactionDetail } from "../TransactionCard";
+import TransactionCard, { DetailCard } from "../TransactionCard";
 
 describe("TransactionDetail", () => {
   const defaultProps = {
@@ -29,7 +29,7 @@ describe("TransactionDetail", () => {
       ...defaultProps,
       ...additionalProps,
     };
-    return <TransactionDetail { ...newProps } />;
+    return <DetailCard { ...newProps } />;
   };
 
   it("renders with props", () => {

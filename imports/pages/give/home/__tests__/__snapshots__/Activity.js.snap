@@ -130,7 +130,7 @@ exports[`GivingActivity should render with data 1`] = `
     </SectionHeader>
     <div
       className="hard">
-      <Activity
+      <ActivityCard
         date="2016-12-01"
         linkText="Update it Now"
         linkUrl="/"
@@ -205,8 +205,8 @@ exports[`GivingActivity should render with data 1`] = `
             </Link>
           </div>
         </div>
-      </Activity>
-      <Activity
+      </ActivityCard>
+      <ActivityCard
         date="2016-12-01"
         linkText="Update it Now"
         linkUrl="/"
@@ -281,8 +281,8 @@ exports[`GivingActivity should render with data 1`] = `
             </Link>
           </div>
         </div>
-      </Activity>
-      <Activity
+      </ActivityCard>
+      <ActivityCard
         date="2016-12-01"
         linkText="Update it Now"
         linkUrl="/"
@@ -357,7 +357,7 @@ exports[`GivingActivity should render with data 1`] = `
             </Link>
           </div>
         </div>
-      </Activity>
+      </ActivityCard>
     </div>
     <GivingSummary />
   </div>

@@ -3,15 +3,15 @@ import { shallowToJson } from "enzyme-to-json";
 import {
   nav as navActions,
   header as headerActions,
-} from "../../../../store";
-import Following from "../../../../blocks/following";
+} from "../../../../data/store";
+import Following from "../../../../components/people/profile/following";
 import {
   HomeWithoutData as Home,
   GET_PERSON_QUERY,
 } from "../";
 
-jest.mock("../../../../blocks/likes", () => jest.fn());
-jest.mock("../../../../store", () => ({
+jest.mock("../../../../components/people/profile/likes", () => jest.fn());
+jest.mock("../../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
   },

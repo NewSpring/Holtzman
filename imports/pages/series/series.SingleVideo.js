@@ -10,7 +10,7 @@ import {
   nav as navActions,
   audio as audioActions,
   header as headerActions,
-} from "../../store";
+} from "../../data/store";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
 import Likeable from "../../deprecated/mixins/mixins.Likeable";

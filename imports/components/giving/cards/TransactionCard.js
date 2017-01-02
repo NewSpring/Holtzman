@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 import Currency from "../../@primitives/typography/currency";
 
-type IUnwrappedCard = {
+type IDetailCard = {
   transactionDetail: Object,
   transaction: Object,
   icon: boolean,
@@ -14,14 +14,14 @@ type IUnwrappedCard = {
   person?: Object,
 };
 
-export const UnwrappedCard = ({
+export const DetailCard = ({
   transactionDetail,
   transaction,
   icon,
   status,
   failure,
   person,
-}: IUnwrappedCard) => (
+}: IDetailCard) => (
   <div className="grid" style={{ verticalAlign: "middle" }}>
     <div className="grid__item one-half" style={{ verticalAlign: "middle" }}>
       <div className="relative">
@@ -148,7 +148,7 @@ export default ({
   if (status && status.toLowerCase().indexOf("pending") > -1) {
     return (
       <PendingWrapper>
-        <TransactionCard
+        <DetailCard
           transactionDetail={transactionDetail}
           transaction={transaction}
           icon={false}
@@ -162,7 +162,7 @@ export default ({
   if (status && status.toLowerCase().indexOf("failed") > -1) {
     return (
       <FailedWrapper>
-        <TransactionCard
+        <DetailCard
           transactionDetail={transactionDetail}
           transaction={transaction}
           icon={false}
@@ -176,7 +176,7 @@ export default ({
 
   return (
     <Wrapper transaction={transaction}>
-      <TransactionCard
+      <DetailCard
         transactionDetail={transactionDetail}
         transaction={transaction}
         icon

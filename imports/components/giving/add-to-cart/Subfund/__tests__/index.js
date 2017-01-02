@@ -2,7 +2,7 @@
 import { mount, shallow } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
-import { getSingleSpecWrapper } from "../../../../util/tests/data-spec.js";
+import { getSingleSpecWrapper } from "../../../../../util/tests/data-spec.js";
 
 import { SubFundWithoutData, withRedux } from "../";
 

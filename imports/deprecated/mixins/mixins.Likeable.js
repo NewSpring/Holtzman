@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import Likes from "../database/collections/likes";
-import { liked as likedActions, modal } from "../store";
+import { liked as likedActions, modal } from "../../data/store";
 import OnBoard from "../../components/people/accounts";
 
 import backgrounds from "../../util/backgrounds";

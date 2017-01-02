@@ -605,7 +605,7 @@ exports[`RightPanel Layout should render with data 1`] = `
             </h3>
             <div
               className="push-bottom">
-              <ProgressBar
+              <Progress
                 percentDone={100}
                 style={Object {}}
                 theme=""
@@ -679,7 +679,7 @@ exports[`RightPanel Layout should render with data 1`] = `
                       } />
                   </div>
                 </div>
-              </ProgressBar>
+              </Progress>
             </div>
           </div>
         </FundBreakdown>

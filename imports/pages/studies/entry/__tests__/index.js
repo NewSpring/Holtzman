@@ -12,15 +12,15 @@ import {
   nav as navActions,
   header as headerActions,
   live as liveActions,
-} from "../../../../store";
+} from "../../../../data/store";
 
 import StudyEntryList from "../../EntryList";
 import Content from "../Content";
 import Slider from "../Slider";
 
-jest.mock("../../../../mixins/mixins.Likeable", () => {});
-jest.mock("../../../../mixins/mixins.Shareable", () => {});
-jest.mock("../../../../store", () => ({
+jest.mock("../../../../deprecated/mixins/mixins.Likeable", () => {});
+jest.mock("../../../../deprecated/mixins/mixins.Shareable", () => {});
+jest.mock("../../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
     setAction: jest.fn(),

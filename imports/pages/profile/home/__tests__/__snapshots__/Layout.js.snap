@@ -64,7 +64,7 @@ exports[`test renders cordova version 1`] = `
   </Connect(SplitContainerWithoutData)>
   <Left
     scroll={true}>
-    <Toggle
+    <Tabs
       items={
         Array [
           "Likes",
@@ -148,7 +148,7 @@ exports[`test renders with props 1`] = `
   </Connect(SplitContainerWithoutData)>
   <Left
     scroll={true}>
-    <Toggle
+    <Tabs
       items={
         Array [
           "Likes",
@@ -225,7 +225,7 @@ exports[`test works without city 1`] = `
   </Connect(SplitContainerWithoutData)>
   <Left
     scroll={true}>
-    <Toggle
+    <Tabs
       items={
         Array [
           "Likes",

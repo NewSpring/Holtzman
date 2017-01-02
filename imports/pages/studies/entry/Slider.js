@@ -4,7 +4,7 @@ import { Component } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { css, StyleSheet } from "aphrodite";
 
-import Toggle from "../../../components/controls/toggle";
+import Tabs from "../../../components/@primitives/UI/tabs/Tabs";
 
 import Content from "./Content";
 import Scripture from "./ScriptureWrapper";
@@ -60,7 +60,7 @@ export default class Slider extends Component {
     return (
       <div>
         <div className="one-whole">
-          <Toggle
+          <Tabs
             items={TOGGLES}
             state={index}
             toggle={this.handleChangeIndex}

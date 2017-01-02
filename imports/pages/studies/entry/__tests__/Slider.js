@@ -6,7 +6,7 @@ import { reset, startBuffering } from "aphrodite/lib/inject";
 
 import Slider from "../Slider";
 
-jest.mock("../../../../components/controls/toggle");
+jest.mock("../../../../components/@primitives/UI/tabs/Tabs");
 jest.mock("../Content");
 jest.mock("../ScriptureWrapper");
 

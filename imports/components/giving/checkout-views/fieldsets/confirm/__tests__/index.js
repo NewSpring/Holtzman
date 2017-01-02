@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
-import { openUrl } from "../../../../../util/inAppLink";
+import { openUrl } from "../../../../../../util/inAppLink";
 import Confirm from "../";
 
 const defaultProps = {
@@ -58,7 +58,7 @@ it("completeGift calls openUrl", () => {
     ROOT_URL: "https://test.com/",
   };
   const mockOpenUrl = jest.fn();
-  jest.mock("../../../../../util/inAppLink", () => ({
+  jest.mock("../../../../../../util/inAppLink", () => ({
     openUrl: mockOpenUrl,
   }));
   const mockPreventDefault = jest.fn();
