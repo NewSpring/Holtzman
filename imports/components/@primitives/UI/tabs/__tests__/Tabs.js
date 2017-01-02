@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import Tabs from "../tabs";
+import Tabs from "../Tabs";
 
 const defaultProps = {
   items: [jest.fn(), jest.fn()],
