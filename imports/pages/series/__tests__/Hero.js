@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
-import SeriesHero from "../series.Hero";
+import SeriesHero from "../Hero";
 
 const defaultProps = {
   series: {
@@ -103,4 +103,3 @@ it("stop hides the player", () => {
   expect(mockHide).toHaveBeenCalledTimes(1);
   expect(wrapper.state().playing).toBe(false);
 });
-

@@ -22,8 +22,8 @@ import collections from "../../util/collections";
 import styles from "../../util/styles";
 import react from "../../util/react";
 
-import SeriesHero from "./series.Hero";
-import SeriesVideoList from "./series.VideoList";
+import SeriesHero from "./Hero";
+import SeriesVideoList from "./VideoList";
 
 class SeriesSingleWithoutData extends Component {
 

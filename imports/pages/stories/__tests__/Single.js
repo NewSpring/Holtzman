@@ -3,8 +3,8 @@ import { shallowToJson } from "enzyme-to-json";
 import { nav as navActions } from "../../../data/store";
 import {
   StoriesSingleWithoutData as StoriesSingle,
-  GET_NEWS_QUERY,
-} from "../stories.Single";
+  GET_STORY_QUERY,
+} from "../Single";
 
 jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
@@ -18,7 +18,7 @@ jest.mock("../../../data/store", () => ({
 
 const defaultProps = {
   dispatch: jest.fn(),
-  news: {
+  story: {
     content: {},
   },
 };
@@ -38,7 +38,7 @@ it("renders with props", () => {
 
 it("renders loading if no content", () => {
   const wrapper = shallow(generateComponent({
-    news: {
+    story: {
       content: null,
     },
   }));
@@ -46,7 +46,7 @@ it("renders loading if no content", () => {
 });
 
 it("parses query correctly", () => {
-  expect(GET_NEWS_QUERY).toMatchSnapshot();
+  expect(GET_STORY_QUERY).toMatchSnapshot();
 });
 
 it("updates nav on mount", () => {

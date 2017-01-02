@@ -2,8 +2,8 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
 import { modal, audio as audioActions } from "../../../data/store";
-import ListDetail from "../music.ListDetail";
-import { AudioTrackWithoutData as AudioTrack } from "../music.Track";
+import ListDetail from "../ListDetail";
+import { AudioTrackWithoutData as AudioTrack } from "../Track";
 
 jest.mock("../../../data/store", () => ({
   modal: {

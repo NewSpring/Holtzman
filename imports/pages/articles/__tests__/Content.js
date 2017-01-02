@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import ArticlesContent from "../articles.Content";
+import ArticlesContent from "../Content";
 
 const defaultProps = {
   article: {

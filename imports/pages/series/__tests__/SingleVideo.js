@@ -9,7 +9,7 @@ import {
   SeriesSingleVideoWithoutData as SeriesSingleVideo,
   CURRENT_SERMON_QUERY,
   SERIES_QUERY,
-} from "../series.SingleVideo";
+} from "../SingleVideo";
 
 jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});

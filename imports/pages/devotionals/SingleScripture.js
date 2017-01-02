@@ -1,6 +1,6 @@
 import { Component, PropTypes } from "react";
 
-import ScriptureItem from "./devotions.ScriptureItem";
+import ScriptureItem from "./ScriptureItem";
 
 import scriptures from "../../util/scriptures";
 

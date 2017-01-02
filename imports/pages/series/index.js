@@ -14,8 +14,8 @@ import FeedItem from "../../components/content/feed-item-card";
 
 import { nav as navActions } from "../../data/store";
 
-import Single from "./series.Single";
-import SingleVideo from "./series.SingleVideo";
+import Single from "./Single";
+import SingleVideo from "./SingleVideo";
 
 class TemplateWithoutData extends Component {
 

@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
-import ListDetail from "../../../../../pages/music/music.ListDetail";
+import ListDetail from "../../../../../pages/music/ListDetail";
 import { actions as audioActions } from "../../../../../data/store/audio";
 import { modal, nav as navActions } from "../../../../../data/store";
 import {

@@ -24,7 +24,7 @@ import {
 } from "../../data/store";
 
 // import content component
-import Content from "./articles.Content";
+import Content from "./Content";
 
 const defaultArray = [];
 

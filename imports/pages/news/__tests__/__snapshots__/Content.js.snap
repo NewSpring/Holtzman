@@ -206,13 +206,3 @@ exports[`StoryImage renders non tablet version 1`] = `
     }
   } />
 `;
-
-exports[`StoryImage renders tablet version 1`] = `
-<div
-  className="one-whole ratio--square ratio--landscape@palm-wide-and-up background--fill"
-  style={
-    Object {
-      "backgroundImage": "url('http://test.com/1x1.jpg')",
-    }
-  } />
-`;

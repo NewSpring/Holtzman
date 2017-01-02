@@ -22,7 +22,7 @@ import contentHelpers from "../../util/content";
 import collections from "../../util/collections";
 
 import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
-import SeriesVideoList from "./series.VideoList";
+import SeriesVideoList from "./VideoList";
 
 class SeriesSingleVideoWithoutData extends Component {
 

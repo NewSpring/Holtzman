@@ -1,13 +1,12 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { nav as navActions } from "../../../data/store";
+import { ArticlesSingleWithoutData as ArticlesSingle } from "../Single";
 import {
-  StoriesSingleWithoutData as StoriesSingle,
-  GET_STORY_QUERY,
-} from "../stories.Single";
+  nav as navActions,
+} from "../../../data/store";
 
-jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
+jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
 jest.mock("../../../data/store", () => ({
   nav: {
@@ -18,8 +17,15 @@ jest.mock("../../../data/store", () => ({
 
 const defaultProps = {
   dispatch: jest.fn(),
-  story: {
-    content: {},
+  article: {
+    content: {
+      id: "1",
+      content: {
+        body: "<h1>article</h1>",
+        images: [],
+        ooyalaId: "",
+      },
+    },
   },
 };
 
@@ -28,7 +34,7 @@ const generateComponent = (additionalProps = {}) => {
     ...defaultProps,
     ...additionalProps,
   };
-  return <StoriesSingle { ...newProps } />;
+  return <ArticlesSingle { ...newProps } />;
 };
 
 it("renders with props", () => {
@@ -38,18 +44,28 @@ it("renders with props", () => {
 
 it("renders loading if no content", () => {
   const wrapper = shallow(generateComponent({
-    story: {
-      content: null,
+    article: {},
+  }));
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("renders video if ooyalaId", () => {
+  const wrapper = shallow(generateComponent({
+    article: {
+      content: {
+        id: "1",
+        content: {
+          body: "<h1>article</h1>",
+          images: [],
+          ooyalaId: "id",
+        },
+      },
     },
   }));
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
-it("parses query correctly", () => {
-  expect(GET_STORY_QUERY).toMatchSnapshot();
-});
-
-it("updates nav on mount", () => {
+it("dispatches nav actions on mount", () => {
   const mockDispatch = jest.fn();
   navActions.setLevel = jest.fn();
   navActions.setAction = jest.fn();
@@ -61,5 +77,4 @@ it("updates nav on mount", () => {
   expect(navActions.setLevel).toHaveBeenCalledWith("CONTENT");
   expect(navActions.setAction).toHaveBeenCalledTimes(1);
   expect(navActions.setAction.mock.calls[0][0]).toBe("CONTENT");
-  expect(navActions.setAction.mock.calls[0][1]).toMatchSnapshot();
 });

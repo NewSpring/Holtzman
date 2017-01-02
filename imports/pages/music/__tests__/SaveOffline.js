@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import Offline from "../music.SaveOffline";
+import Offline from "../SaveOffline";
 
 const generateComponent = () => (
   <Offline />

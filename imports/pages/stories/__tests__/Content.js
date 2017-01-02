@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
-import StoriesContent, { StoryImage } from "../stories.Content";
+import StoriesContent, { StoryImage } from "../Content";
 
 describe("StoryImage", () => {
   const defaultProps = {

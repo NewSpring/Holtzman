@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { DevotionsSingleWithoutData as DevotionsSingle } from "../devotions.Single";
+import { DevotionsSingleWithoutData as DevotionsSingle } from "../Single";
 
 import {
   nav as navActions,

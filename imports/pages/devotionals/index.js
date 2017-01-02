@@ -14,7 +14,7 @@ import infiniteScroll from "../../components/@enhancers/infinite-scroll";
 
 import { nav as navActions } from "../../data/store";
 
-import Single from "./devotions.Single";
+import Single from "./Single";
 
 class DevotionsWithoutData extends Component {
 

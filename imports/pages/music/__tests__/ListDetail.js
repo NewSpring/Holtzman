@@ -8,7 +8,7 @@ import {
   header as headerActions,
   audio as audioActions,
 } from "../../../data/store";
-import { ListDetailWithoutData as ListDetail } from "../music.ListDetail";
+import { ListDetailWithoutData as ListDetail } from "../ListDetail";
 
 jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
 jest.mock("../../../data/store", () => ({

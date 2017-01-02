@@ -14,7 +14,7 @@ import infiniteScroll from "../../components/@enhancers/infinite-scroll";
 
 import { nav as navActions } from "../../data/store";
 
-import Album from "./music.Album";
+import Album from "./Album";
 
 class TemplateWithoutData extends Component {
   static propTypes = {

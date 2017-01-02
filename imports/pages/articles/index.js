@@ -14,7 +14,7 @@ import infiniteScroll from "../../components/@enhancers/infinite-scroll";
 import { nav as navActions } from "../../data/store";
 import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
 
-import Single from "./articles.Single";
+import Single from "./Single";
 
 import FeedItem from "../../components/content/feed-item-card";
 

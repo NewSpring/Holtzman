@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
-import ScriptureItem from "../devotions.ScriptureItem";
+import ScriptureItem from "../ScriptureItem";
 
 const defaultProps = {
   scripture: "Job 2",

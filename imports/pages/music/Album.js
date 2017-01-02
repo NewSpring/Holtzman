@@ -17,7 +17,7 @@ import {
   audio as audioActions,
 } from "../../data/store";
 
-import Track from "./music.Track";
+import Track from "./Track";
 
 class MusicAlbumWithoutData extends Component {
 

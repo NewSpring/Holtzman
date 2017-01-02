@@ -5,7 +5,7 @@ import headerActions from "../../../data/store/header";
 import {
   SeriesSingleWithoutData as SeriesSingle,
   SERIES_SINGLE_QUERY,
-} from "../series.Single";
+} from "../Single";
 
 jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});

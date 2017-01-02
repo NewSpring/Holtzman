@@ -3,7 +3,7 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import { modal, audio as audioActions } from "../../data/store";
-import ListDetail from "./music.ListDetail";
+import ListDetail from "./ListDetail";
 
 class AudioTrackWithoutData extends Component {
 

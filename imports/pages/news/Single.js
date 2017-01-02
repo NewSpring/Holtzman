@@ -13,7 +13,7 @@ import Likeable from "../../deprecated/mixins/mixins.Likeable";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 // import content component
-import StoriesContent from "./stories.Content";
+import StoriesContent from "./Content";
 
 class StoriesSingleWithoutData extends Component {
 

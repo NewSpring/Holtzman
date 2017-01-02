@@ -1,7 +1,7 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import ListDetail from "../../../../pages/music/music.ListDetail";
+import ListDetail from "../../../../pages/music/ListDetail";
 import AudioScrubber from "./Scrubber";
 
 import { actions as audioActions } from "../../../../data/store/audio";

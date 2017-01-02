@@ -18,8 +18,8 @@ import {
 } from "../../data/store";
 
 // can we use the core toggle here? Is it ready @jbaxleyiii?
-import DevotionsSingleContent from "./devotions.SingleContent";
-import DevotionsSingleScripture from "./devotions.SingleScripture";
+import DevotionsSingleContent from "./SingleContent";
+import DevotionsSingleScripture from "./SingleScripture";
 
 class DevotionsSingle extends Component {
 

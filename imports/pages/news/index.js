@@ -14,7 +14,7 @@ import Pageable from "../../deprecated/mixins/mixins.Pageable";
 
 import { nav as navActions } from "../../data/store";
 
-import Single from "./stories.Single";
+import Single from "./Single";
 
 class TemplateWithoutData extends Component {
 

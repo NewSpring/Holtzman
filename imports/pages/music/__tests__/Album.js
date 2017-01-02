@@ -7,7 +7,7 @@ import {
 import {
   MusicAlbumWithoutData as MusicAlbum,
   ALBUM_QUERY,
-} from "../music.Album";
+} from "../Album";
 
 jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});

@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import DevotionsSingleContent from "../devotions.SingleContent";
+import DevotionsSingleContent from "../SingleContent";
 
 const defaultProps = {
   devotion: {
