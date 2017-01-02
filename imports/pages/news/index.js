@@ -7,7 +7,7 @@ import Meta from "../../components/shared/meta";
 
 import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
 import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
-import FeedItem from "../../components/content/feed-item-card/FeedItemCard";
+import FeedItem from "../../components/content/feed-item-card";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
 import Pageable from "../../deprecated/mixins/mixins.Pageable";

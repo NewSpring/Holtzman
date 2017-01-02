@@ -10,7 +10,7 @@ import { topics } from "../../components/people/profile/following";
 
 import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
 import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
-import FeedItem from "../../components/content/feed-item-card/FeedItemCard";
+import FeedItem from "../../components/content/feed-item-card";
 
 import { nav as navActions } from "../../data/store";
 import Headerable from "../../deprecated/mixins/mixins.Header";

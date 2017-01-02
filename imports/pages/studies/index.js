@@ -10,7 +10,7 @@ import infiniteScroll from "../../components/@enhancers/infinite-scroll";
 
 import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
 import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
-import FeedItem from "../../components/content/feed-item-card/FeedItemCard";
+import FeedItem from "../../components/content/feed-item-card";
 
 import { nav as navActions } from "../../data/store";
 

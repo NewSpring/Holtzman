@@ -4,7 +4,7 @@ import Meta from "../../../components/shared/meta";
 import Forms from "../../../components/@primitives/UI/forms";
 import Loading from "../../../components/@primitives/UI/loading";
 
-import FeedItem from "../../../components/content/feed-item-card/FeedItemCard";
+import FeedItem from "../../../components/content/feed-item-card";
 import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard";
 import Tag from "../../../components/@primitives/UI/tags";
 

@@ -12,7 +12,7 @@ import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
 import Readme from "./feed-item-card.md";
-import FeedItem from "../FeedItemCard";
+import FeedItem from "../";
 
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)

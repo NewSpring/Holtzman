@@ -16,7 +16,7 @@ import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
 
 import Single from "./articles.Single";
 
-import FeedItem from "../../components/content/feed-item-card/FeedItemCard";
+import FeedItem from "../../components/content/feed-item-card";
 
 class ArticlesWithoutData extends Component {
 
