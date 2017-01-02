@@ -115,6 +115,10 @@ exports[`RightPanel Layout should render a loading state 1`] = `
           items={
             Array [
               Object {
+                "label": 2017,
+                "value": 2017,
+              },
+              Object {
                 "label": 2016,
                 "value": 2016,
               },
@@ -150,10 +154,6 @@ exports[`RightPanel Layout should render a loading state 1`] = `
                 "label": 2008,
                 "value": 2008,
               },
-              Object {
-                "label": 2007,
-                "value": 2007,
-              },
             ]
           }
           onChange={[Function]}>
@@ -163,6 +163,10 @@ exports[`RightPanel Layout should render a loading state 1`] = `
               className="outlined--dotted outlined--light text-light-primary h6 hard-top flush-bottom"
               onChange={[Function]}
               onFocus={[Function]}>
+              <option
+                value={2017}>
+                2017
+              </option>
               <option
                 value={2016}>
                 2016
@@ -198,10 +202,6 @@ exports[`RightPanel Layout should render a loading state 1`] = `
               <option
                 value={2008}>
                 2008
-              </option>
-              <option
-                value={2007}>
-                2007
               </option>
             </select>
           </div>
@@ -348,6 +348,10 @@ exports[`RightPanel Layout should render with data 1`] = `
           items={
             Array [
               Object {
+                "label": 2017,
+                "value": 2017,
+              },
+              Object {
                 "label": 2016,
                 "value": 2016,
               },
@@ -383,10 +387,6 @@ exports[`RightPanel Layout should render with data 1`] = `
                 "label": 2008,
                 "value": 2008,
               },
-              Object {
-                "label": 2007,
-                "value": 2007,
-              },
             ]
           }
           onChange={[Function]}>
@@ -396,6 +396,10 @@ exports[`RightPanel Layout should render with data 1`] = `
               className="outlined--dotted outlined--light text-light-primary h6 hard-top flush-bottom"
               onChange={[Function]}
               onFocus={[Function]}>
+              <option
+                value={2017}>
+                2017
+              </option>
               <option
                 value={2016}>
                 2016
@@ -431,10 +435,6 @@ exports[`RightPanel Layout should render with data 1`] = `
               <option
                 value={2008}>
                 2008
-              </option>
-              <option
-                value={2007}>
-                2007
               </option>
             </select>
           </div>
