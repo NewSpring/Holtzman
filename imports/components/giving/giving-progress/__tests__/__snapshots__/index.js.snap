@@ -87,23 +87,25 @@ exports[`ProgressBar should render with minimal props 1`] = `
         </div>
       </Currency>
     </div>
-    <div
-      className="one-whole"
-      style={
-        Object {
-          "backgroundColor": "#2a4930",
-          "height": "6px",
-        }
-      }>
+    <Progress>
       <div
+        className="one-whole"
         style={
           Object {
-            "backgroundColor": "white",
-            "height": "100%",
-            "width": "0%",
+            "backgroundColor": "#2a4930",
+            "height": "6px",
           }
-        } />
-    </div>
+        }>
+        <div
+          style={
+            Object {
+              "backgroundColor": "white",
+              "height": "100%",
+              "width": "0%",
+            }
+          } />
+      </div>
+    </Progress>
   </div>
 </Progress>
 `;

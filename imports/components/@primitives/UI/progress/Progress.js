@@ -42,7 +42,7 @@ const Progress = ({
   percentDone,
   height,
 }: IProgress) =>
-  <div className="one-whole" style={themeStyles(theme, null, height).progressBackground}>
+  <div className="one-whole" style={themeStyles(theme, percentDone, height).progressBackground}>
     <div
       style={themeStyles(theme, percentDone).progress}
     />
