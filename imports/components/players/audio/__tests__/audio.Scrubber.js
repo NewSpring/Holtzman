@@ -6,12 +6,14 @@ import { AudioScrubberWithoutData as AudioScrubber } from "../audio.Scrubber";
 
 const defaultProps = {
   isLight: false,
-  seek: jest.fn(),
-  time: "20",
-  progress: "20",
-  playing: {
-    track: {
-      duration: "12:23",
+  audio: {
+    seek: jest.fn(),
+    time: "20",
+    progress: "20",
+    playing: {
+      track: {
+        duration: "12:23",
+      },
     },
   },
 };
@@ -224,10 +226,11 @@ it("touchEnd calls seek with last percent and evntually resets state", () => {
 });
 
 it("scrubStyle uses progress if no override", () => {
-  const wrapper = shallow(generateComponent({
-    progress: 30,
-  }));
-  wrapper.setState({ lastPercent: 20, override: false });
+  const localProps = { ...defaultProps }
+  localProps.audio.progress = "30";
+
+  const wrapper = shallow(generateComponent(localProps));
+  wrapper.setState({ lastPercent: "50", override: false });
   const result = wrapper.instance().scrubStyle();
   expect(result).toEqual({
     width: "30%",
@@ -235,12 +238,13 @@ it("scrubStyle uses progress if no override", () => {
 });
 
 it("scrubStyle uses lastPercent if override", () => {
-  const wrapper = shallow(generateComponent({
-    progress: 30,
-  }));
-  wrapper.setState({ lastPercent: 20, override: true });
+  const localProps = { ...defaultProps }
+  localProps.audio.progress = "30";
+
+  const wrapper = shallow(generateComponent(localProps));
+  wrapper.setState({ lastPercent: "70", override: true });
   const result = wrapper.instance().scrubStyle();
   expect(result).toEqual({
-    width: "20%",
+    width: "70%",
   });
 });
