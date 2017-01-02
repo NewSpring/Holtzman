@@ -3,7 +3,7 @@ import { Meteor } from "meteor/meteor";
 import Meta from "../../../components/shared/meta";
 
 import Split, { Left, Right } from "../../../components/@primitives/layout/split";
-import Tabs from "../../../components/@primitives/UI/tabs/Tabs";
+import Tabs from "../../../components/@primitives/UI/tabs";
 
 
 const Layout = ({ photo, person, onToggle, content, onUpload }) => (

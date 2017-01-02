@@ -4,7 +4,7 @@ import { Component } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { css, StyleSheet } from "aphrodite";
 
-import Tabs from "../../../components/@primitives/UI/tabs/Tabs";
+import Tabs from "../../../components/@primitives/UI/tabs";
 
 import Content from "./Content";
 import Scripture from "./ScriptureWrapper";

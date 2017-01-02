@@ -1,7 +1,7 @@
 // @flow
 import { Component } from "react";
 
-import Tabs from "../../@primitives/UI/tabs/Tabs";
+import Tabs from "../../@primitives/UI/tabs";
 import Forms from "../../@primitives/UI/forms";
 import Validate from "../../../util/validate";
 

@@ -6,7 +6,7 @@ import { reset, startBuffering } from "aphrodite/lib/inject";
 
 import Slider from "../Slider";
 
-jest.mock("../../../../components/@primitives/UI/tabs/Tabs");
+jest.mock("../../../../components/@primitives/UI/tabs");
 jest.mock("../Content");
 jest.mock("../ScriptureWrapper");
 
@@ -45,7 +45,3 @@ it("renders with props", () => {
   const tree = renderer.create(generateComponent());
   expect(tree).toMatchSnapshot();
 });
-
-
-
-

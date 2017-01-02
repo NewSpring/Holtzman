@@ -1,6 +1,6 @@
 // @flow
 
-import Tabs from "../../../../@primitives/UI/tabs/Tabs";
+import Tabs from "../../../../@primitives/UI/tabs";
 
 import {
   BankFields,
