@@ -1,17 +1,11 @@
 
 import { mount } from "enzyme";
 import { mountToJson } from "enzyme-to-json";
-import { getSingleSpecWrapper } from "../../../../../util/tests/data-spec";
 
 import ProgressBar, { themeStyles } from "../Progress";
 
-const defaultProps = {
-  title: "My Fund",
-  total: 12345,
-};
-
 const generateComponent = (additionalProps) =>
-  <ProgressBar {...defaultProps} {...additionalProps} />
+  <ProgressBar {...additionalProps} />
 
 describe ("ProgressBar", () => {
   it("should render with minimal props", () => {
@@ -19,23 +13,6 @@ describe ("ProgressBar", () => {
 
     expect(mountToJson(component)).toMatchSnapshot();
   });
-
-  it ("should render a title", () => {
-    // title is a default prop above
-    const component = mount(generateComponent());
-    const title = getSingleSpecWrapper(component, "title");
-
-    expect(title.text()).toEqual("My Fund");
-  });
-
-  // XXX this now uses the currency component
-  // it ("should render a total value", () => {
-  //   // total is a default prop above
-  //   const component = mount(generateComponent());
-  //   const total = getSingleSpecWrapper(component, "total");
-
-  //   expect(total.text()).toEqual("12345");
-  // });
 
   it ("should generate a proper percentDone style", () => {
     const percentStylesDark = themeStyles("dark", 25);
@@ -49,16 +26,14 @@ describe ("ProgressBar", () => {
 
   it ("should default to dark theme", () => {
     const percentStylesDark = themeStyles();
-    expect(percentStylesDark.wrapper.color).toEqual("#fff");
+    expect(percentStylesDark.progressBackground.backgroundColor).toEqual("#2a4930");
   });
 
-  it ("should accept custom styles as prop", () => {
+  it ("should accept custom height as prop", () => {
     const component = mount(generateComponent({
-      style: {
-        color: "blue",
-      }
+      height: "10px",
     }));
 
-    expect(component.prop("style")).toEqual({color: "blue"});
+    expect(component.find(".one-whole").html()).toMatchSnapshot();
   });
 });
