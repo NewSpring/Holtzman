@@ -2,9 +2,9 @@ import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 import { actions as audioActions } from "../../../../data/store/audio";
-import AudioControls from "./audio.Controls";
+import AudioControls from "./Controls";
 
-import Styles from "./audio.styles.miniPlayer";
+import Styles from "./styles/miniPlayer";
 
 class MiniPlayerWithoutData extends Component {
 

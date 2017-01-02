@@ -6,7 +6,7 @@ import { actions as audioActions } from "../../../../../data/store/audio";
 import { modal, nav as navActions } from "../../../../../data/store";
 import {
   AudioControlsWithoutData as AudioControls,
-} from "../audio.Controls";
+} from "../Controls";
 
 jest.mock("../../../../../data/store/audio", () => ({
   actions: {

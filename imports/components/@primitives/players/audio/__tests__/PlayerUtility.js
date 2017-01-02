@@ -6,7 +6,7 @@ import { actions as audioActions } from "../../../../../data/store/audio";
 import Audio from "../../../../../util/vendor/players/audio";
 import {
   AudioPlayerUtilityWithoutData as AudioPlayerUtility,
-} from "../audio.PlayerUtility";
+} from "../PlayerUtility";
 
 global.Audio5 = jest.fn(() => ({
   on: jest.fn(),

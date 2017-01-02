@@ -4,7 +4,7 @@ import { PropTypes, Component } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 
-import Styles from "./audio.styles.scrubber";
+import Styles from "./styles/scrubber";
 
 import { actions as audioActions } from "../../../../data/store/audio";
 

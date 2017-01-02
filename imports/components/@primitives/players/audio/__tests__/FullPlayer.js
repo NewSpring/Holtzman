@@ -5,7 +5,7 @@ import cloneDeep from "lodash.clonedeep";
 import headerActions from "../../../../../data/store/header";
 import {
   FullPlayerWithoutData as FullPlayer,
-} from "../audio.FullPlayer.js";
+} from "../FullPlayer.js";
 
 jest.mock("../../../../../data/store/header", () => ({
   hide: jest.fn(),

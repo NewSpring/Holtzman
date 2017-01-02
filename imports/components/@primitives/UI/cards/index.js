@@ -9,7 +9,7 @@ export {
   SideBySideCard,
 };
 
-export Default {
+export default {
   Card,
   MiniCard,
   SideBySideCard,

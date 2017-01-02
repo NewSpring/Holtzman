@@ -2,7 +2,7 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { actions as audioActions } from "../../../../../data/store/audio";
-import { AudioScrubberWithoutData as AudioScrubber } from "../audio.Scrubber";
+import { AudioScrubberWithoutData as AudioScrubber } from "../Scrubber";
 
 const defaultProps = {
   isLight: false,

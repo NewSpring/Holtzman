@@ -1,9 +1,9 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import FullPlayer from "./audio.FullPlayer";
-import MiniPlayer from "./audio.MiniPlayer";
-import AudioPlayerUtility from "./audio.PlayerUtility";
+import FullPlayer from "./FullPlayer";
+import MiniPlayer from "./MiniPlayer";
+import AudioPlayerUtility from "./PlayerUtility";
 
 import { actions as audioActions } from "../../../../data/store/audio";
 import {

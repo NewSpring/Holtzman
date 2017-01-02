@@ -6,9 +6,9 @@ import collections from "../../../../util/collections";
 import styles from "../../../../util/styles";
 import backgrounds from "../../../../util/backgrounds";
 import headerActions from "../../../../data/store/header";
-import AudioControls from "./audio.Controls";
-import AudioTitle from "./audio.Title";
-import Styles from "./audio.styles.fullPlayer";
+import AudioControls from "./Controls";
+import AudioTitle from "./Title";
+import Styles from "./styles/fullPlayer";
 
 class FullPlayerWithoutData extends Component {
 

@@ -3,7 +3,7 @@ import { shallowToJson } from "enzyme-to-json";
 import cloneDeep from "lodash.clonedeep";
 import { actions as audioActions } from "../../../../../data/store/audio";
 import { modal, nav as navActions } from "../../../../../data/store";
-import FullPlayer from "../audio.FullPlayer";
+import FullPlayer from "../FullPlayer";
 import { AudioPlayerWithoutData as AudioPlayer } from "../";
 
 jest.mock("../../../../../data/store/header", () => jest.fn());

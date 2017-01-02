@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json"
-import AudioTrack from "../audio.Track";
+import AudioTrack from "../Track";
 
 const defaultProps = {
   track: {
