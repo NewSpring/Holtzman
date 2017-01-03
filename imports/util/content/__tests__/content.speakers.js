@@ -18,10 +18,22 @@ it("returns single speaker with no comma captilized", () => {
   expect(result).toBe("Jim Bob");
 });
 
-it("returns mutliple speakers comman separated and captilized", () => {
+it("returns mutliple speakers comma separated and captilized", () => {
   const result = speakers({
     content: {
-      speaker: "jim bob,jimmy jam,jolly jake",
+      speaker: "jim bob, jimmy jam, jolly jake",
+    },
+  });
+  expect(result).toBe("Jim Bob, Jimmy Jam, Jolly Jake");
+});
+it("returns mutliple speakers not csv comma separated and captilized", () => {
+  const result = speakers({
+    content: {
+      speaker: `
+        jim bob
+        jimmy jam
+        jolly jake
+      `,
     },
   });
   expect(result).toBe("Jim Bob, Jimmy Jam, Jolly Jake");
