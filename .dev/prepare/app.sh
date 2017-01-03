@@ -35,6 +35,7 @@ if [ ! -d "$DIRECTORY" ]; then curl https://install.meteor.com | /bin/sh; fi
 export PATH=$PATH:$HOME/.meteor
 
 yecho "### Apollos Setup ###"
+npm link
 apollos setup
 
 yecho "### Settings Grab ###"
