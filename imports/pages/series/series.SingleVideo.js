@@ -105,17 +105,19 @@ class SeriesSingleVideoWithoutData extends Component {
     return (
       <div className="background--light-primary">
         <SingleVideoPlayer ooyalaId={currentSermon.content.ooyalaId} />
-        <div
-          className="soft-sides background--light-secondary text-dark-secondary"
-          style={{ paddingTop: "15px", paddingBottom: "15px" }}
-          onClick={this.playAudio}
-        >
-          <h7 style={{ verticalAlign: "middle" }}>Listen To Audio</h7>
-          <i
-            className="icon-category-audio float-right"
-            style={{ marginTop: "-2px" }}
-          />
-        </div>
+        {currentSermon.content.audio.length > 0 && (
+          <div
+            className="soft-sides background--light-secondary text-dark-secondary"
+            style={{ paddingTop: "15px", paddingBottom: "15px" }}
+            onClick={this.playAudio}
+          >
+            <h7 style={{ verticalAlign: "middle" }}>Listen To Audio</h7>
+            <i
+              className="icon-category-audio float-right"
+              style={{ marginTop: "-2px" }}
+            />
+          </div>
+        )}
         <div className="soft soft-double@palm-wide-and-up push-top">
           <h2 className="push-half-bottom">{currentSermon.title}</h2>
           <h4>{contentHelpers.speakers(currentSermon)}</h4>
