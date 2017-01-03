@@ -12,6 +12,7 @@ class AudioScrubberWithoutData extends Component {
 
   static propTypes = {
     isLight: PropTypes.bool.isRequired,
+    audio: PropTypes.Object,
   }
 
   state = {
@@ -79,7 +80,6 @@ class AudioScrubberWithoutData extends Component {
     else if (percentClicked < 0) {
       percentClicked = 0;
     }
-
     this.props.seek(percentClicked);
   }
 
@@ -103,10 +103,10 @@ class AudioScrubberWithoutData extends Component {
     dark ? "text-dark-tertiary" : "text-light-tertiary"
   )
 
-  getTrackDuration = () => (this.props.playing.track.duration);
+  getTrackDuration = () => (this.props.audio.playing.track.duration);
 
   getCurrentTime = () => {
-    const { time } = this.props;
+    const { time } = this.props.audio;
     return time;
   };
 
@@ -142,9 +142,8 @@ class AudioScrubberWithoutData extends Component {
 
 
   scrubStyle = () => {
-    let { progress } = this.props;
+    let { progress } = this.props.audio;
     const { lastPercent, override } = this.state;
-
     if (override) {
       progress = lastPercent;
     }
