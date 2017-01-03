@@ -8,7 +8,7 @@ function speakers(contentItem) {
     contentSpeakers = contentItem.content.speaker.split("\n");
   }
 
-  return contentSpeakers.filter(x => x.trim()).map((speaker) => {
+  return contentSpeakers.filter((x) => x.trim()).map((speaker) => {
     const words = speaker.trim().split(" ");
     return words.map((word) => (
       word.charAt(0).toUpperCase() +
