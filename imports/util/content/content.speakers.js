@@ -1,6 +1,12 @@
 
 function speakers(contentItem) {
-  const contentSpeakers = contentItem.content.speaker.split(",");
+  let contentSpeakers = [];
+
+  if (contentItem.content.speaker.indexOf(",") > -1) {
+    contentSpeakers = contentItem.content.speaker.split(",");
+  } else {
+    contentSpeakers = contentItem.content.speaker.split("\n");
+  }
 
   return contentSpeakers.map((speaker) => {
     const words = speaker.split(" ");
