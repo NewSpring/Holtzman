@@ -6,6 +6,11 @@ node {
     stage 'check environment'
     sh "node -v"
     sh "npm -v"
+    sh "rvm -v"
+
+    stage 'setup env'
+    sh "rvm install 2.2.5"
+    sh "rvm use 2.2.5"
 
     stage 'checkout'
     checkout scm
