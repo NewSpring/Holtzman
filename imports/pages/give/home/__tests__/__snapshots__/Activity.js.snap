@@ -74,6 +74,28 @@ exports[`GivingActivity should render with data 1`] = `
           "summary": "Reference Number: 76543",
         },
         Object {
+          "date": "2016-09-03",
+          "details": Array [
+            Object {
+              "account": Object {
+                "name": "General Fund",
+              },
+              "amount": 0,
+            },
+            Object {
+              "account": Object {
+                "name": "Harambe Fund",
+              },
+              "amount": 0,
+            },
+          ],
+          "id": "890",
+          "schedule": null,
+          "status": null,
+          "statusMessage": null,
+          "summary": "Reference Number: 89098",
+        },
+        Object {
           "expirationMonth": null,
           "expirationYear": null,
           "id": "111",
