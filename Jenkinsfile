@@ -6,6 +6,7 @@ node {
     stage 'check environment'
     sh "node -v"
     sh "npm -v"
+    sh "gcc -v"
 
     stage 'setup env'
     sh "npm i -g yarn"
