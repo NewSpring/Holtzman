@@ -31,7 +31,8 @@
     "jest": true,
   },
   "plugins": [
-    "jsx-a11y"
+    "jsx-a11y",
+    "compat"
   ],
   "rules": {
     "arrow-parens": [2, "always"],
@@ -84,6 +85,7 @@
     "import/no-extraneous-dependencies": [1],
     "no-useless-escape": 0,
     "no-cond-assign": 0,
+    "compat/compat": 1,
   },
   "settings": {
     "import/core-modules": [
@@ -91,6 +93,7 @@
       "meteor/accounts-base",
       "meteor/mongo",
       "meteor/bjwiley2:server-watch",
-    ]
+    ],
+    "targets": ["chrome", "firefox", "edge", "safari", "ie"],
   }
 }
