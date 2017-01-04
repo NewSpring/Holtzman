@@ -211,4 +211,19 @@ describe("TransactionList", () => {
     const wrapper = shallow(generateComponent({ transactions }));
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
+
+  it("doesn't render transaction with $0.00 amounts", () => {
+    const transactions = [
+      {
+        date: "2012-12-12",
+        person: {nickname: "1", photo:"1",firstName:"1",lastName:"1"},
+        details: [
+          { account: "test", amount: 0 },
+          { account: "test", amount: 1 },
+        ],
+      },
+    ];
+    const wrapper = shallow(generateComponent({ transactions }));
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
 });
