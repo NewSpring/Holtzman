@@ -6,11 +6,6 @@ node {
     stage 'check environment'
     sh "node -v"
     sh "npm -v"
-    sh "ls /usr/bin"
-    sh "ls /usr/local/bin"
-
-    stage 'setup env'
-    sh "npm i -g yarn"
 
     stage 'checkout'
     checkout scm
