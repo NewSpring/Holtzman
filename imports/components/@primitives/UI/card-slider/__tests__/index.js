@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 
-import { CardSliderWithoutData as CardSlider } from "../card-slider";
+import { CardSliderWithoutData as CardSlider } from "../";
 
 describe("CardSlider", () => {
   const defaultProps = {
