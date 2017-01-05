@@ -1,17 +1,17 @@
 import "../imports/util/regex";
 
 // publications
-import "../imports/database/publications/likes";
-import "../imports/database/publications/user";
+import "../imports/deprecated/database/publications/likes";
+import "../imports/deprecated/database/publications/user";
 
 // methods
-import "../imports/methods/accounts/server";
-import "../imports/methods/communication/server";
-import "../imports/methods/files/server";
-import "../imports/methods/groups/server";
+import "../imports/deprecated/methods/accounts/server";
+import "../imports/deprecated/methods/communication/server";
+import "../imports/deprecated/methods/files/server";
+import "../imports/deprecated/methods/groups/server";
 
-import "../imports/methods/topics/server";
-import "../imports/methods/scripture/server";
+import "../imports/deprecated/methods/topics/server";
+import "../imports/deprecated/methods/scripture/server";
 
 import { api } from "../imports/util/rock";
 

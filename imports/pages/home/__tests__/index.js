@@ -1,10 +1,10 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { nav as navActions } from "../../../store";
+import { nav as navActions } from "../../../data/store";
 import { HomeWithoutData as Home } from "../";
 
-jest.mock("../../../mixins/mixins.Header", () => {});
-jest.mock("../../../store", () => ({
+jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
+jest.mock("../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
   },

@@ -1,7 +1,7 @@
 // @flow
 import { Link } from "react-router";
-import LineGraph from "../../../components/graphs/lineGraph";
-import YTDTotal from "../../../components/currency";
+import LineGraph from "../../../components/@primitives/UI/graphs/LineGraph";
+import YTDTotal from "../../../components/@primitives/typography/currency";
 
 const styles = {
   lineColor: "#ffffff",

@@ -1,13 +1,13 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { nav } from "../../../../../store";
+import { nav } from "../../../../../data/store";
 import { ChangePasswordWithoutData as ChangePassword } from "../";
 
-jest.mock("../../../../../methods/accounts/browser", () => ({
+jest.mock("../../../../../deprecated/methods/accounts/browser", () => ({
   reset: jest.fn(),
 }));
 
-jest.mock("../../../../../store", () => ({
+jest.mock("../../../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
   },

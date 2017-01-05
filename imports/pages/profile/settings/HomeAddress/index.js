@@ -5,10 +5,10 @@ import gql from "graphql-tag";
 
 import {
   nav,
-} from "../../../../store";
+} from "../../../../data/store";
 
-import { updateHome } from "../../../../methods/accounts/browser";
-import { Error as Err, Loading } from "../../../../components/states";
+import { updateHome } from "../../../../deprecated/methods/accounts/browser";
+import { Error as Err, Loading } from "../../../../components/@primitives/UI/states";
 
 import Success from "../Success";
 import Layout from "./Layout";

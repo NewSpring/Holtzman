@@ -4,9 +4,9 @@ import { Meteor } from "meteor/meteor";
 // in order to support older app builds, we proxy the old meteor methods
 // to the corresponding calls on Heighliner
 
-import { GraphQL } from "../imports/graphql";
-import COMPLETE_ORDER_MUTATION from "../imports/store/give/saga/completeOrderMutation";
-import CREATE_ORDER_MUTATION from "../imports/store/give/saga/createOrderMutation";
+import { GraphQL } from "../imports/data/graphql";
+import COMPLETE_ORDER_MUTATION from "../imports/data/store/give/saga/completeOrderMutation";
+import CREATE_ORDER_MUTATION from "../imports/data/store/give/saga/createOrderMutation";
 
 import { CANCEL_SCHEDULE_QUERY } from "../imports/pages/give/schedules/Details";
 

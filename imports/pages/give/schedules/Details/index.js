@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-import Authorized from "../../../../blocks/authorzied";
+import Authorized from "../../../../components/people/authorized";
 
 import {
   nav as navActions,
   modal as modalActions,
   give as giveActions,
   header as headerActions,
-} from "../../../../store";
+} from "../../../../data/store";
 
 import Confirm from "./Confirm";
 import Layout from "./Layout";

@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-import modal from "../../../store/modal";
+import modal from "../../../data/store/modal";
 
-import AccountType from "../../../components/accountType";
-import Forms from "../../../components/forms";
-import SavedPaymentCard from "../../../components/cards/cards.SavedPayment";
+import AccountType from "../../../components/giving/account-type";
+import Forms from "../../../components/@primitives/UI/forms";
+import SavedPaymentCard from "../../../components/giving/cards/SavedPaymentCard";
 
 import Loading from "./components/Loading";
 import Success from "./components/Success";

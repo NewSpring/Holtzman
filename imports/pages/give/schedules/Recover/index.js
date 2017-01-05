@@ -4,15 +4,15 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Meteor } from "meteor/meteor";
 
-import Authorized from "../../../../blocks/authorzied";
+import Authorized from "../../../../components/people/authorized";
 import {
   modal as modalActions,
   give as giveActions,
   header as headerActions,
-} from "../../../../store";
+} from "../../../../data/store";
 
 import Layout from "./Layout";
-import Confirm from "./../Details/Confirm";
+import Confirm from "../Details/Confirm";
 
 const defaultArray = [];
 

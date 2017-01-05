@@ -1,13 +1,13 @@
 /* eslint-disable react/no-danger */
 import { Component, PropTypes } from "react";
 
-import Video from "../../../components/players/video";
+import Video from "../../../components/@primitives/players/video";
 
 import scriptures from "../../../util/scriptures";
 import react from "../../../util/react";
 import backgrounds from "../../../util/backgrounds";
 
-import RelatedContent from "../../../blocks/related-content";
+import RelatedContent from "../../../components/content/related-content";
 
 const defaultArray = [];
 export default class Content extends Component {

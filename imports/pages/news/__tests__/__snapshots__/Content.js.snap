@@ -1,0 +1,208 @@
+exports[`StoriesContent renders with props 1`] = `
+<div>
+  <Meta
+    description="test subtitle"
+    id="1"
+    image="http://test.com/2x1.jpg"
+    meta={
+      Array [
+        Object {
+          "content": "article",
+          "property": "og:type",
+        },
+      ]
+    }
+    title="test story" />
+  <section
+    className="background--light-primary hard-sides hard-top">
+    <StoryImage
+      story={
+        Object {
+          "content": Object {
+            "body": "test body",
+            "images": Array [
+              Object {
+                "fileLabel": "2:1",
+                "url": "http://test.com/2x1.jpg",
+              },
+              Object {
+                "fileLabel": "1:1",
+                "url": "http://test.com/1x1.jpg",
+              },
+              Object {
+                "fileLabel": "1:2",
+                "url": "http://test.com/1x2.jpg",
+              },
+            ],
+            "ooyalaId": "",
+            "tags": Array [
+              "one",
+              "two",
+            ],
+          },
+          "id": "1",
+          "subtitle": "test subtitle",
+          "title": "test story",
+        }
+      } />
+    <div
+      className="soft soft-double-sides@palm-wide-and-up push-top">
+      <h2
+        className="capitalize">
+        test story
+      </h2>
+      <h4
+        className="text-dark-tertiary">
+        test subtitle
+      </h4>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "test body",
+          }
+        } />
+    </div>
+  </section>
+  <Apollo(Connect(Template))
+    excludedIds={
+      Array [
+        "1",
+      ]
+    }
+    tags={
+      Array [
+        "one",
+        "two",
+      ]
+    } />
+</div>
+`;
+
+exports[`StoriesContent renders with video 1`] = `
+<div>
+  <Meta
+    description="test subtitle"
+    id="1"
+    image="http://test.com/2x1.jpg"
+    meta={
+      Array [
+        Object {
+          "content": "article",
+          "property": "og:type",
+        },
+      ]
+    }
+    title="test story" />
+  <section
+    className="background--light-primary hard-sides hard-top">
+    <SingleVideoPlayer
+      ooyalaId="test" />
+    <div
+      className="soft soft-double-sides@palm-wide-and-up push-top">
+      <h2
+        className="capitalize">
+        test story
+      </h2>
+      <h4
+        className="text-dark-tertiary">
+        test subtitle
+      </h4>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "test body",
+          }
+        } />
+    </div>
+  </section>
+  <Apollo(Connect(Template))
+    excludedIds={
+      Array [
+        "1",
+      ]
+    }
+    tags={
+      Array [
+        "one",
+        "two",
+      ]
+    } />
+</div>
+`;
+
+exports[`StoriesContent renders without imaes 1`] = `
+<div>
+  <Meta
+    description="test subtitle"
+    id="1"
+    image={null}
+    meta={
+      Array [
+        Object {
+          "content": "article",
+          "property": "og:type",
+        },
+      ]
+    }
+    title="test story" />
+  <section
+    className="background--light-primary hard-sides hard-top">
+    <StoryImage
+      story={
+        Object {
+          "content": Object {
+            "body": "test body",
+            "images": Array [],
+            "ooyalaId": "",
+            "tags": Array [
+              "one",
+              "two",
+            ],
+          },
+          "id": "1",
+          "subtitle": "test subtitle",
+          "title": "test story",
+        }
+      } />
+    <div
+      className="soft soft-double-sides@palm-wide-and-up push-top">
+      <h2
+        className="capitalize">
+        test story
+      </h2>
+      <h4
+        className="text-dark-tertiary">
+        test subtitle
+      </h4>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "test body",
+          }
+        } />
+    </div>
+  </section>
+  <Apollo(Connect(Template))
+    excludedIds={
+      Array [
+        "1",
+      ]
+    }
+    tags={
+      Array [
+        "one",
+        "two",
+      ]
+    } />
+</div>
+`;
+
+exports[`StoryImage renders non tablet version 1`] = `
+<div
+  className="one-whole ratio--square ratio--landscape@palm-wide-and-up background--fill"
+  style={
+    Object {
+      "backgroundImage": "url(\'http://test.com/1x1.jpg\')",
+    }
+  } />
+`;

@@ -605,7 +605,7 @@ exports[`RightPanel Layout should render with data 1`] = `
             </h3>
             <div
               className="push-bottom">
-              <ProgressBar
+              <Progress
                 percentDone={100}
                 style={Object {}}
                 theme=""
@@ -661,25 +661,28 @@ exports[`RightPanel Layout should render with data 1`] = `
                       </div>
                     </Currency>
                   </div>
-                  <div
-                    className="one-whole"
-                    style={
-                      Object {
-                        "backgroundColor": "#2a4930",
-                        "height": "6px",
-                      }
-                    }>
+                  <Progress
+                    percentDone={100}>
                     <div
+                      className="one-whole"
                       style={
                         Object {
-                          "backgroundColor": "white",
-                          "height": "100%",
-                          "width": "100%",
+                          "backgroundColor": "#2a4930",
+                          "height": "6px",
                         }
-                      } />
-                  </div>
+                      }>
+                      <div
+                        style={
+                          Object {
+                            "backgroundColor": "white",
+                            "height": "100%",
+                            "width": "100%",
+                          }
+                        } />
+                    </div>
+                  </Progress>
                 </div>
-              </ProgressBar>
+              </Progress>
             </div>
           </div>
         </FundBreakdown>

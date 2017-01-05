@@ -4,7 +4,7 @@ import { TemplateWithoutData as Template } from "../";
 
 import {
   nav as navActions,
-} from "../../../../store";
+} from "../../../../data/store";
 
 const defaultProps = {
   dispatch: jest.fn(),

@@ -2,9 +2,9 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { ConfirmWithoutData as Confirm } from "../Confirm";
 
-import { modal as modalActions } from "../../../../../store";
+import { modal as modalActions } from "../../../../../data/store";
 
-jest.mock("../../../../../store", () => ({
+jest.mock("../../../../../data/store", () => ({
   modal: {
     hide: jest.fn(),
   },

@@ -1,8 +1,8 @@
 // @flow
 
 import { Component } from "react";
-import AccountType from "../../../components/accountType";
-import Meta from "../../../components/meta";
+import AccountType from "../../../components/giving/account-type";
+import Meta from "../../../components/shared/meta";
 import { monetize } from "../../../util/format/";
 
 type ILayout = {

@@ -5,7 +5,7 @@ import { Meteor } from "meteor/meteor";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import moment from "moment";
-import createContainer from "../../../blocks/meteor/react-meteor-data";
+import createContainer from "../../../deprecated/meteor/react-meteor-data";
 
 export const formatGivingSummaryData = (data: Object): ?Object => {
   const baseData = [

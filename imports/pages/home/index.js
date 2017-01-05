@@ -5,17 +5,17 @@ import { graphql } from "react-apollo";
 import difference from "lodash.difference";
 import gql from "graphql-tag";
 
-import Split, { Left, Right } from "../../blocks/split";
-import { topics } from "../../blocks/following";
+import Split, { Left, Right } from "../../components/@primitives/layout/split";
+import { topics } from "../../components/people/profile/following";
 
-import ApollosPullToRefresh from "../../components/pullToRefresh";
-import { FeedItemSkeleton } from "../../components/loading";
-import FeedItem from "../../components/cards/cards.FeedItem";
+import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
+import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
+import FeedItem from "../../components/content/feed-item-card";
 
-import { nav as navActions } from "../../store";
-import Headerable from "../../mixins/mixins.Header";
+import { nav as navActions } from "../../data/store";
+import Headerable from "../../deprecated/mixins/mixins.Header";
 
-import infiniteScroll from "../../decorators/infiniteScroll";
+import infiniteScroll from "../../components/@enhancers/infinite-scroll";
 
 import backgrounds from "../../util/backgrounds";
 import content from "../../util/content";

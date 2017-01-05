@@ -1,9 +1,9 @@
 import { Link } from "react-router";
 
 import { PropTypes } from "react";
-import Meta from "../../../components/meta";
+import Meta from "../../../components/shared/meta";
 
-import Tag from "../../../components/tags";
+import Tag from "../../../components/@primitives/UI/tags";
 import Group from "../components/GroupCard";
 
 import Filter from "./Filter";

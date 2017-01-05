@@ -3,8 +3,8 @@ import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { TemplateWithoutData as Template } from "../";
 
-import navActions from "../../../store/nav";
-import headerActions from "../../../store/header";
+import navActions from "../../../data/store/nav";
+import headerActions from "../../../data/store/header";
 
 navActions.setLevel = jest.fn();
 headerActions.set = jest.fn();

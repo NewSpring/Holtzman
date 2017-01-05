@@ -1,8 +1,8 @@
 // @flow
 import find from "lodash.find";
 import React, { Component, cloneElement } from "react";
-import Split, { Left, Right } from "../../blocks/split";
-import DashboardLayout from "../../components/dashboard/";
+import Split, { Left, Right } from "../../components/@primitives/layout/split";
+import DashboardLayout from "../../components/@primitives/layout/dashboard";
 
 type ILayout = {
   children: React$Element<any>,

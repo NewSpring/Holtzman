@@ -1,11 +1,11 @@
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
-import Meta from "../../components/meta";
+import Meta from "../../components/shared/meta";
 
-import liveActions from "../../store/live";
-import Discover from "../../blocks/discover";
-import styles from "../../blocks/nav/offset-css";
+import liveActions from "../../data/store/live";
+import Discover from "../../components/discover";
+import styles from "../../components/@primitives/nav/offset-css";
 
 class DiscoverWithoutData extends Component {
 

@@ -3,10 +3,10 @@ import { Component, PropTypes } from "react";
 import moment from "moment";
 import { Link } from "react-router";
 
-import AddSchedule from "../../../../blocks/add-schedule";
-import Split, { Left, Right } from "../../../../blocks/split";
+import AddSchedule from "../../../../components/giving/add-schedule";
+import Split, { Left, Right } from "../../../../components/@primitives/layout/split";
 
-import Meta from "../../../../components/meta";
+import Meta from "../../../../components/shared/meta";
 
 export default class Layout extends Component {
 

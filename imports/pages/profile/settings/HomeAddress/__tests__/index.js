@@ -2,16 +2,16 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import {
   nav,
-} from "../../../../../store";
+} from "../../../../../data/store";
 import {
   HomeAddressWithoutData as HomeAddress,
   PERSON_HOME_QUERY,
 } from "../";
 
-jest.mock("../../../../../methods/accounts/browser", () => ({
+jest.mock("../../../../../deprecated/methods/accounts/browser", () => ({
   updateHome: jest.fn(),
 }));
-jest.mock("../../../../../store", () => ({
+jest.mock("../../../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
   },

@@ -1,13 +1,13 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
-import { nav as navActions, modal } from "../../../../store";
-import OnBoard from "../../../../blocks/accounts";
+import { nav as navActions, modal } from "../../../../data/store";
+import OnBoard from "../../../../components/people/accounts";
 import Join from "../Join";
 import { TemplateWithoutData as Template } from "../";
 
-jest.mock("../../../../mixins/mixins.Header", () => {});
-jest.mock("../../../../store", () => ({
+jest.mock("../../../../deprecated/mixins/mixins.Header", () => {});
+jest.mock("../../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
   },

@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-import Meta from "../../../components/meta";
-import Loading from "../../../components/loading";
+import Meta from "../../../components/shared/meta";
+import Loading from "../../../components/@primitives/UI/loading";
 
-import Likeable from "../../../mixins/mixins.Likeable";
-import Shareable from "../../../mixins/mixins.Shareable";
+import Likeable from "../../../deprecated/mixins/mixins.Likeable";
+import Shareable from "../../../deprecated/mixins/mixins.Shareable";
 
 // import contentHelpers from "../../../util/content";
 import collections from "../../../util/collections";
@@ -17,7 +17,7 @@ import {
   nav as navActions,
   header as headerActions,
   live as liveActions,
-} from "../../../store";
+} from "../../../data/store";
 
 import StudyEntryList from "../EntryList";
 import Content from "./Content";

@@ -6,23 +6,23 @@ import { reset, startBuffering } from "aphrodite/lib/inject";
 import { StudiesSingleWithoutData } from "../Single";
 import {
   nav as navActions,
-} from "../../../store";
-import headerActions from "../../../store/header";
+} from "../../../data/store";
+import headerActions from "../../../data/store/header";
 
-jest.mock("../../../database/collections/likes", () => {});
-jest.mock("../../../blocks/related-content");
+jest.mock("../../../deprecated/database/collections/likes", () => {});
+jest.mock("../../../components/content/related-content");
 
-jest.mock("../../../mixins/mixins.Shareable");
-jest.mock("../../../mixins/mixins.Header");
+jest.mock("../../../deprecated/mixins/mixins.Shareable");
+jest.mock("../../../deprecated/mixins/mixins.Header");
 
 jest.mock("../EntryList");
 jest.mock("../Hero");
 
-jest.mock("../../../store/header", () => ({
+jest.mock("../../../data/store/header", () => ({
   set: jest.fn(),
 }));
 
-jest.mock("../../../store", () => ({
+jest.mock("../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
     setAction: jest.fn(),

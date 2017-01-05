@@ -5,9 +5,9 @@ import ReactMixin from "react-mixin";
 import gql from "graphql-tag";
 import { withRouter } from "react-router";
 
-import Split, { Left, Right } from "../../../blocks/split";
-import Headerable from "../../../mixins/mixins.Header";
-import { nav as navActions } from "../../../store";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
+import Headerable from "../../../deprecated/mixins/mixins.Header";
+import { nav as navActions } from "../../../data/store";
 
 import Layout from "./Layout";
 import Result from "./Result";

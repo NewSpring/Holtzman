@@ -7,11 +7,11 @@ import gql from "graphql-tag";
 import { Link } from "react-router";
 import { Meteor } from "meteor/meteor";
 
-import Headerable from "../../../../mixins/mixins.Header";
+import Headerable from "../../../../deprecated/mixins/mixins.Header";
 
 import {
   nav as navActions,
-} from "../../../../store";
+} from "../../../../data/store";
 
 import inAppLink from "../../../../util/inAppLink";
 import withProfileUpload from "../../profile-photo";

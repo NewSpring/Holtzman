@@ -1,0 +1,51 @@
+exports[`ProgressBar should accept custom height as prop 1`] = `"<div class=\"one-whole\" style=\"height: 10px; background-color: rgb(42, 73, 48);\"><div style=\"height: 100%; width: 0%; background-color: white;\"></div></div>"`;
+
+exports[`ProgressBar should generate a proper percentDone style 1`] = `
+Object {
+  "progress": Object {
+    "backgroundColor": "white",
+    "height": "100%",
+    "width": "25%",
+  },
+  "progressBackground": Object {
+    "backgroundColor": "#2a4930",
+    "height": "6px",
+  },
+}
+`;
+
+exports[`ProgressBar should generate a proper percentDone style 2`] = `
+Object {
+  "progress": Object {
+    "backgroundColor": "#6bac43",
+    "height": "100%",
+    "width": "20%",
+  },
+  "progressBackground": Object {
+    "backgroundColor": "#dddddd",
+    "height": "6px",
+  },
+}
+`;
+
+exports[`ProgressBar should render with minimal props 1`] = `
+<Progress>
+  <div
+    className="one-whole"
+    style={
+      Object {
+        "backgroundColor": "#2a4930",
+        "height": "6px",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "backgroundColor": "white",
+          "height": "100%",
+          "width": "0%",
+        }
+      } />
+  </div>
+</Progress>
+`;

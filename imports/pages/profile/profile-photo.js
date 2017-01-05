@@ -1,7 +1,7 @@
 /* eslint-disable */
 // XXX lint file correctly
 import { Component, createElement } from "react";
-import { avatar } from "../../methods/files/browser";
+import { avatar } from "../../deprecated/methods/files/browser";
 
 export default (WrappedComponent) => {
   class ProfileUpload extends Component {

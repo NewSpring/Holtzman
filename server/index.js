@@ -7,7 +7,7 @@ if (process.env.WEB && process.env.NODE_ENV === "production") {
   }
 
   // load the application
-  import run from "../imports/router/server";
+  import run from "../imports/util/router/server";
   import { routes, client, server } from "../imports";
 
   run(routes, client, server);

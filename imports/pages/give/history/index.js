@@ -7,10 +7,10 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import fileSaver from "file-saver";
 
-import infiniteScroll from "../../../decorators/infiniteScroll";
-import createContainer from "../../../blocks/meteor/react-meteor-data";
+import infiniteScroll from "../../../components/@enhancers/infinite-scroll";
+import createContainer from "../../../deprecated/meteor/react-meteor-data";
 
-import Authorized from "../../../blocks/authorzied";
+import Authorized from "../../../components/people/authorized";
 import base64ToBlob from "../../../util/base64ToBlob";
 
 import Layout from "./Layout";

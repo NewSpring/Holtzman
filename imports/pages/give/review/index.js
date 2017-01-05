@@ -4,11 +4,11 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import Layout from "./Layout";
 
-import Loading from "../../../blocks/give/Loading";
-import Err from "../../../blocks/give/Err";
-import Success from "../../../blocks/give/Success";
+import Loading from "../../../components/giving/checkout-views/Loading";
+import Err from "../../../components/giving/checkout-views/Err";
+import Success from "../../../components/giving/checkout-views/Success";
 import { monetize } from "../../../util/format";
-import { give as giveActions } from "../../../store";
+import { give as giveActions } from "../../../data/store";
 
 type ITemplate = {
   dispatch: Function,

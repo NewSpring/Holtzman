@@ -3,20 +3,20 @@ import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import Meta from "../../components/meta";
+import Meta from "../../components/shared/meta";
 
-import { FeedItemSkeleton } from "../../components/loading";
+import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
 
-import Headerable from "../../mixins/mixins.Header";
+import Headerable from "../../deprecated/mixins/mixins.Header";
 
-import infiniteScroll from "../../decorators/infiniteScroll";
+import infiniteScroll from "../../components/@enhancers/infinite-scroll";
 
-import { nav as navActions } from "../../store";
-import ApollosPullToRefresh from "../../components/pullToRefresh";
+import { nav as navActions } from "../../data/store";
+import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
 
-import Single from "./articles.Single";
+import Single from "./Single";
 
-import FeedItem from "../../components/cards/cards.FeedItem";
+import FeedItem from "../../components/content/feed-item-card";
 
 class ArticlesWithoutData extends Component {
 

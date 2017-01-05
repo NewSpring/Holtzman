@@ -1,5 +1,5 @@
-import Sections from "../../blocks/sections";
-import Meta from "../../components/meta";
+import Sections from "../../components/shared/sections";
+import Meta from "../../components/shared/meta";
 
 const Template = () => (
   <div className="background--light-secondary">

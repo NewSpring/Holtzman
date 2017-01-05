@@ -68,3 +68,4 @@ docs
 # editor files
 .vscode
 tsconfig.json
+jsconfig.json

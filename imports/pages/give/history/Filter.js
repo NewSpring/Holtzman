@@ -2,9 +2,9 @@
 import { Component, PropTypes } from "react";
 import moment from "moment";
 
-import TagSelect from "../../../components/forms/TagSelect";
-import Tag from "../../../components/tags";
-import Date from "../../../blocks/add-to-cart/Schedule/Date";
+import TagSelect from "../../../components/@primitives/UI/forms/TagSelect";
+import Tag from "../../../components/@primitives/UI/tags";
+import Date from "../../../components/giving/add-to-cart/Schedule/Date";
 
 const DATE_RANGES = [
   { label: "Last Month", value: "LastMonth" },

@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import gql from "graphql-tag";
 
-import Forms from "../../../components/forms";
+import Forms from "../../../components/@primitives/UI/forms";
 
-import Tag from "../../../components/tags";
+import Tag from "../../../components/@primitives/UI/tags";
 
 const defaultTags = [];
 class FilterWithoutData extends Component {

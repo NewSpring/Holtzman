@@ -3,10 +3,10 @@
 
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router";
-import ScheduleCard from "../../../components/cards/cards.ScheduleOverview";
-import LoadingCard from "../../../components/loading/ActivityCard";
-import SectionHeader from "../../../components/sectionHeader";
-import SmallButton from "../../../components/buttons/small";
+import ScheduleCard from "../../../components/giving/cards/ScheduleCard";
+import LoadingCard from "../../../components/@primitives/UI/loading/ActivityCard";
+import SectionHeader from "../../../components/@primitives/UI/section-header";
+import SmallButton from "../../../components/@primitives/UI/buttons/SmallButton";
 
 const SchedulesButton = () =>
   <SmallButton

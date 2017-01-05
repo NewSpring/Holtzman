@@ -2,10 +2,10 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { DiscoverWithoutData as Discover } from "../";
-import liveActions from "../../../store/live";
+import liveActions from "../../../data/store/live";
 
-jest.mock("../../../mixins/mixins.Header", () => {});
-jest.mock("../../../store/live", () => ({
+jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
+jest.mock("../../../data/store/live", () => ({
   hide: jest.fn(),
   show: jest.fn(),
 }));

@@ -4,11 +4,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
 
-import SectionHeader from "../../../components/sectionHeader";
-import LoadingHeader from "../../../components/loading/SectionHeader";
-import SmallButton from "../../../components/buttons/small";
-import ActivityCard from "../../../components/cards/cards.Activity";
-import LoadingActivityCard from "../../../components/loading/ActivityCard";
+import SectionHeader from "../../../components/@primitives/UI/section-header";
+import LoadingHeader from "../../../components/@primitives/UI/loading/SectionHeader";
+import SmallButton from "../../../components/@primitives/UI/buttons/SmallButton";
+import ActivityCard from "../../../components/giving/cards/ActivityCard";
+import LoadingActivityCard from "../../../components/@primitives/UI/loading/ActivityCard";
 
 import SummaryChart from "./GivingSummary";
 

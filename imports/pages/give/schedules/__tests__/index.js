@@ -5,11 +5,11 @@ import {
   modal as modalActions,
   header as headerActions,
   give as giveActions,
-} from "../../../../store";
+} from "../../../../data/store";
 import Confirm from "../Details/Confirm";
 import { TemplateWithoutData as Template } from "../";
 
-jest.mock("../../../../store", () => ({
+jest.mock("../../../../data/store", () => ({
   modal: {
     render: jest.fn(),
   },

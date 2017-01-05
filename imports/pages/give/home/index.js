@@ -1,6 +1,6 @@
 // @flow
 
-import Authorized from "../../../blocks/authorzied";
+import Authorized from "../../../components/people/authorized";
 import Layout from "./Layout";
 import Right from "./RightPanel";
 

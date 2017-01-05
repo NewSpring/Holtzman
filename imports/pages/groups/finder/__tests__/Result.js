@@ -1,10 +1,10 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
-import { nav as navActions } from "../../../../store";
+import { nav as navActions } from "../../../../data/store";
 import { TemplateWithoutData as Template } from "../Result";
 
-jest.mock("../../../../store", () => ({
+jest.mock("../../../../data/store", () => ({
   nav: {
     setLevel: jest.fn(),
   },

@@ -33,8 +33,6 @@ before_install:
   - rvm use 2.2.5
   - npm install -g coveralls
 script:
-  - npm link
-  - npm test -- --coverage
-  - coveralls < ./.coverage/lcov.info || true
-  - "./.scripts/prepare/app.sh"
-  - "./.scripts/deploy/app.sh"
+  - "./.dev/ci_test.sh"
+  - "./.dev/prepare/app.sh"
+  - "./.dev/deploy/app.sh"

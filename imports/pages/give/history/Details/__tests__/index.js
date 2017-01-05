@@ -3,7 +3,7 @@ import { shallowToJson } from "enzyme-to-json";
 import { DetailsWithoutData as Details } from "../";
 import {
   nav as navActions,
-} from "../../../../../store";
+} from "../../../../../data/store";
 
 const defaultProps = {
   dispatch: jest.fn(),

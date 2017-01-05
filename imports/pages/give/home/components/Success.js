@@ -1,6 +1,6 @@
 // @flow
 
-import { Success as SuccessIcon } from "../../../../components/icons";
+import { Success as SuccessIcon } from "../../../../components/@primitives/UI/icons";
 
 const CONTACT_MESSAGE_1 = "If you have any questions please call our Finance Team at 864-965-9990 or";
 const CONTACT_MESSAGE_2 = "and someone will be happy to assist you.";

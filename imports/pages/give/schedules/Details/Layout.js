@@ -3,14 +3,14 @@
 import moment from "moment";
 import { Link } from "react-router";
 
-import Split, { Left, Right } from "../../../../blocks/split";
-import { Spinner } from "../../../../components/loading";
-import Currency from "../../../../components/currency";
-import SideBySide from "../../../../components/cards/SideBySide";
-import Meta from "../../../../components/meta";
-import SmallButton from "../../../../components/buttons/small";
+import Split, { Left, Right } from "../../../../components/@primitives/layout/split";
+import { Spinner } from "../../../../components/@primitives/UI/loading";
+import Currency from "../../../../components/@primitives/typography/currency";
+import SideBySide from "../../../../components/@primitives/UI/cards/SideBySideCard";
+import Meta from "../../../../components/shared/meta";
+import SmallButton from "../../../../components/@primitives/UI/buttons/SmallButton";
 
-import AccountType from "../../../../components/accountType";
+import AccountType from "../../../../components/giving/account-type";
 import { TransactionList } from "../../history/Layout";
 
 

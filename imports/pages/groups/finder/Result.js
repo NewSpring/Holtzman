@@ -6,14 +6,14 @@ import { withRouter } from "react-router";
 import gql from "graphql-tag";
 import { Meteor } from "meteor/meteor";
 
-import infiniteScroll from "../../../decorators/infiniteScroll";
+import infiniteScroll from "../../../components/@enhancers/infinite-scroll";
 
-import { nav as navActions } from "../../../store";
+import { nav as navActions } from "../../../data/store";
 // import ReactTooltip from "react-tooltip";
 // import Truncate from "truncate";
 
-import Split, { Left, Right } from "../../../blocks/split";
-import GoogleMap from "../../../components/map";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
+import GoogleMap from "../../../components/@primitives/map";
 import Layout from "./ResultLayout";
 
 // HACK

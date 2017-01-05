@@ -1,12 +1,12 @@
 /* eslint-disable react/no-danger */
 import { PropTypes } from "react";
-import Meta from "../../../components/meta";
-import Forms from "../../../components/forms";
-import Loading from "../../../components/loading";
+import Meta from "../../../components/shared/meta";
+import Forms from "../../../components/@primitives/UI/forms";
+import Loading from "../../../components/@primitives/UI/loading";
 
-import FeedItem from "../../../components/cards/cards.FeedItem";
-import SideBySide from "../../../components/cards/SideBySide";
-import Tag from "../../../components/tags";
+import FeedItem from "../../../components/content/feed-item-card";
+import SideBySide from "../../../components/@primitives/UI/cards/SideBySideCard";
+import Tag from "../../../components/@primitives/UI/tags";
 
 /* eslint-disable max-len */
 const Layout = ({

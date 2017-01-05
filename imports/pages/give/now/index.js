@@ -3,7 +3,7 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { serverWatch } from "meteor/bjwiley2:server-watch";
 
-import createContainer from "../../../blocks/meteor/react-meteor-data";
+import createContainer from "../../../deprecated/meteor/react-meteor-data";
 
 import Layout from "./Layout";
 

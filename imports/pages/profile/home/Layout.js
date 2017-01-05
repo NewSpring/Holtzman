@@ -1,9 +1,9 @@
 import { PropTypes } from "react";
 import { Meteor } from "meteor/meteor";
-import Meta from "../../../components/meta";
+import Meta from "../../../components/shared/meta";
 
-import Split, { Left, Right } from "../../../blocks/split";
-import Toggle from "../../../components/controls/toggle";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
+import Tabs from "../../../components/@primitives/UI/tabs";
 
 
 const Layout = ({ photo, person, onToggle, content, onUpload }) => (
@@ -57,7 +57,7 @@ const Layout = ({ photo, person, onToggle, content, onUpload }) => (
 
     </Split>
     <Left scroll>
-      <Toggle items={["Likes", "Following"]} toggle={onToggle} />
+      <Tabs items={["Likes", "Following"]} toggle={onToggle} />
       <div>
         {content}
       </div>

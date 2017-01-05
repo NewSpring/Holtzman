@@ -1,7 +1,7 @@
 import { PropTypes } from "react";
 
-import Split, { Left, Right } from "../../../blocks/split";
-import Meta from "../../../components/meta";
+import Split, { Left, Right } from "../../../components/@primitives/layout/split";
+import Meta from "../../../components/shared/meta";
 
 const Layout = ({ person, children, mobile, onUpload }) => (
   <div>

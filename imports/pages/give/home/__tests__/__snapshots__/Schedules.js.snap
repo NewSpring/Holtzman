@@ -111,7 +111,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
     </SectionHeader>
     <div
       className="grid">
-      <ScheduleOverviewCard
+      <ScheduleCard
         amount="20.00"
         classes="grid__item one-whole"
         frequency="One Time"
@@ -214,8 +214,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             </div>
           </div>
         </div>
-      </ScheduleOverviewCard>
-      <ScheduleOverviewCard
+      </ScheduleCard>
+      <ScheduleCard
         amount="100.00"
         classes="grid__item one-whole"
         frequency="Once a Month"
@@ -318,8 +318,8 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             </div>
           </div>
         </div>
-      </ScheduleOverviewCard>
-      <ScheduleOverviewCard
+      </ScheduleCard>
+      <ScheduleCard
         amount="50.00"
         classes="grid__item one-whole"
         frequency="One Time"
@@ -403,7 +403,7 @@ exports[`Giving Schedules List should render properly with data 1`] = `
             </div>
           </div>
         </div>
-      </ScheduleOverviewCard>
+      </ScheduleCard>
     </div>
   </div>
 </SchedulesList>

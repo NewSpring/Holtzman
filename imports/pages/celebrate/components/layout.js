@@ -2,8 +2,8 @@
 import React, { Component, PropTypes } from "react";
 import { css } from "aphrodite";
 
-import ImageLoader from "../../../components/loading/ImageLoader";
-import Styles from "../../../components/loading/FeedItemSkeleton-css";
+import ImageLoader from "../../../components/@primitives/UI/loading/ImageLoader";
+import Styles from "../../../components/@primitives/UI/loading/FeedItemSkeleton-css";
 
 export const Stats = ({ children, className }) => (
   <div className={`soft-top soft-sides soft-double-top@lap-and-up ${className}`}>

@@ -1,6 +1,6 @@
 import { PropTypes } from "react";
 import { Link } from "react-router";
-import Forms from "../../../components/forms";
+import Forms from "../../../components/@primitives/UI/forms";
 
 const Layout = ({ submit, save, state }) => (
   <div
