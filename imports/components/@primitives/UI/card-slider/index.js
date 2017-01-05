@@ -1,4 +1,5 @@
 // @flow
+import React from "react";
 import { connect } from "react-redux";
 
 const getRatio = (width: number) => {
@@ -43,31 +44,19 @@ const dynamicWidth = () => {
 };
 
 type ICardSliderItem = {
-  item: Object,
   padding: boolean,
+  children?: React.Component<any, any, any>,
 };
 
 const CardSliderItem = ({
-  item,
   padding,
+  children,
 }: ICardSliderItem) => (
   <div
     className={`card floating display-inline-block ${padding ? "push-right" : ""}`}
     style={dynamicWidth()}
   >
-    <div className="floating__item one-whole soft" >
-      <h1
-        className="uppercase flush-bottom soft-half-bottom"
-        style={{
-          fontWeight: "900",
-        }}
-      >
-        {item.count}
-      </h1>
-      <h5 className="flush-bottom">
-        {item.label}
-      </h5>
-    </div>
+    {children}
   </div>
 );
 
@@ -78,10 +67,20 @@ const map = (store) => ({
 export const withRedux = connect(map);
 
 type ICardSlider = {
-  items: Object[],
+  cardComponent: React.Component<any, any, any>,
+  cardData: Object[],
 };
 
-const CardSlider = ({ items }: ICardSlider) => {
+// <CardSlider>
+//   {items.map((data) => {
+//     <Card item={data} />
+//   })}
+// </CardSlider>
+
+const CardSlider = ({
+  cardComponent,
+  cardData,
+}: ICardSlider) => {
   let count = 0;
   return (
     <div
@@ -91,11 +90,17 @@ const CardSlider = ({ items }: ICardSlider) => {
         WebkitOverflowScrolling: "touch",
       }}
     >
-      <section style={dynamicWidthContainer(items.length)}>
-        {items.map((x, key) => {
+      <section style={dynamicWidthContainer(cardData.length)}>
+        {cardData.map((x, key) => {
           count += 1;
           return (
-            <CardSliderItem item={x} key={key} padding={items.length !== count} />
+            <CardSliderItem
+              key={key}
+              padding={cardData.length !== count}
+            >
+              {{ ...cardComponent, ...{ props: { item: x } } }}
+
+            </CardSliderItem>
           );
         })}
 
