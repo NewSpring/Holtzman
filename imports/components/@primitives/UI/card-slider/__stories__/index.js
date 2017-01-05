@@ -10,8 +10,8 @@ import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 import Provider, { ReduxProvider } from "/.storybook/mocks/Provider";
 
-import Readme from "./card-slider.md";
-import CardSlider from "../card-slider";
+import Readme from "./index.md";
+import CardSlider from "../";
 
 const story = storiesOf("Card Slider", module)
   .addDecorator(withKnobs)
