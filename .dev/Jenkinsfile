@@ -3,8 +3,6 @@ node {
     def nodeHome = tool name: 'node-6', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
     env.PATH = "${nodeHome}/bin:${env.PATH}"
 
-    stage 'is using .dev file'
-
     stage 'check environment'
     sh "node -v"
     sh "npm -v"
