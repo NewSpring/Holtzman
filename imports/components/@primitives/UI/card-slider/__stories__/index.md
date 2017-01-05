@@ -3,7 +3,7 @@
 ### Usage
 
 ```js
-import List from "/imports/pages/celebrate/components/list";
+import List from "/imports/components/@primitives/UI/card-slider";
 
 <CardSlider items={someList} />
 ```
