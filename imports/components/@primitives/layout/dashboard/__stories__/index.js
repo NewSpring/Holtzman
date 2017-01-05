@@ -13,7 +13,7 @@ import defaultColors from "/.storybook/defaults";
 import moment from "moment";
 import Readme from "./index.md";
 import Dashboard from "../";
-import Activity from "../../cards/cards.Activity";
+import Activity from "../../../../giving/cards/ActivityCard";
 
 const story = storiesOf("Dashboard", module)
   .addDecorator(withKnobs)

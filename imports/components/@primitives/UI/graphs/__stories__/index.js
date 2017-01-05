@@ -13,7 +13,7 @@ import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
 import Readme from "./index.md";
-import LineGraph from "../";
+import LineGraph from "../LineGraph";
 
 const story = storiesOf("Graphs", module)
   .addDecorator(withKnobs)
