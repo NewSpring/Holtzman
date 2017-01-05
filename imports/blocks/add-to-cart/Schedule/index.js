@@ -158,6 +158,10 @@ export class Schedule extends Component {
   onDayClick = (e, day, { selected, disabled }) => {
     if (disabled) return;
     this.setState({ start: selected ? null : day });
+    this.props.saveSchedule({
+      frequency: this.state.frequency,
+      start: day,
+    });
   }
 
   render() {
