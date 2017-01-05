@@ -353,13 +353,18 @@ exports[`CartContainer > Lifecycle functions accepts query string prefills the f
                           Object {
                             "paddingRight": "5px",
                           }
-                        } />
+                        }>
+                        $
+                      </h3>
                       <h1
                         className="floating__item flush">
                         10
                       </h1>
                       <h3
-                        className="floating__item flush" />
+                        className="floating__item flush">
+                        .
+                        00
+                      </h3>
                     </div>
                   </Currency>
                 </span>
@@ -635,13 +640,18 @@ exports[`test should properly render with multiple accounts 1`] = `
                           Object {
                             "paddingRight": "5px",
                           }
-                        } />
+                        }>
+                        $
+                      </h3>
                       <h1
                         className="floating__item flush">
                         0
                       </h1>
                       <h3
-                        className="floating__item flush" />
+                        className="floating__item flush">
+                        .
+                        00
+                      </h3>
                     </div>
                   </Currency>
                 </span>

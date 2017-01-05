@@ -46,8 +46,12 @@ exports[`test should accept billing and payment props 1`] = `
       <h6>
         <AccountNumber
           accountNumber="5575-1234-1234-1234">
-          <span />
+          <span>
+            **************
+            1234
+          </span>
         </AccountNumber>
+          
         <mockConstructor
           cardType="MasterCard"
           height="12px"
