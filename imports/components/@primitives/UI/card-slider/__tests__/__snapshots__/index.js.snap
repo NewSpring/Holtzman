@@ -14,21 +14,25 @@ exports[`CardSlider should render with default props 1`] = `
       }
     }>
     <CardSliderItem
-      item={
-        Object {
-          "count": "11,130",
-          "label": "Total Salvations",
-        }
-      }
-      padding={true} />
+      padding={true}>
+      <SliderCard
+        item={
+          Object {
+            "count": "11,130",
+            "label": "Total Salvations",
+          }
+        } />
+    </CardSliderItem>
     <CardSliderItem
-      item={
-        Object {
-          "count": "3,982",
-          "label": "Student Salvations at Fuse and Gauntlet",
-        }
-      }
-      padding={false} />
+      padding={false}>
+      <SliderCard
+        item={
+          Object {
+            "count": "3,982",
+            "label": "Student Salvations at Fuse and Gauntlet",
+          }
+        } />
+    </CardSliderItem>
   </section>
 </div>
 `;

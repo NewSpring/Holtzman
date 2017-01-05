@@ -12,6 +12,7 @@ import Provider, { ReduxProvider } from "/.storybook/mocks/Provider";
 
 import Readme from "./index.md";
 import CardSlider from "../";
+import SliderCard from "../SliderCard";
 
 const story = storiesOf("Card Slider", module)
   .addDecorator(withKnobs)
@@ -38,7 +39,7 @@ story
       <div className={"floating"}>
         <div className={"grid__item"} style={{ maxWidth: "480px" }}>
           <Provider>
-            <CardSlider items={salvationList} />
+            <CardSlider cardComponent={<SliderCard />} cardData={salvationList} />
           </Provider>
         </div>
       </div>);

@@ -2,10 +2,12 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 
 import { CardSliderWithoutData as CardSlider } from "../";
+import SliderCard from "../SliderCard";
 
 describe("CardSlider", () => {
   const defaultProps = {
-    items: [
+    cardComponent: <SliderCard />,
+    cardData: [
       { count: "11,130", label: "Total Salvations" },
       { count: "3,982", label: "Student Salvations at Fuse and Gauntlet" },
     ],
