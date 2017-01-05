@@ -6,7 +6,7 @@ import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
 import ProgressBar from "../";
-import Readme from "./progress-bar.md";
+import Readme from "./progress.md";
 
 const story = storiesOf("ProgressBar", module)
   .addDecorator(centered)

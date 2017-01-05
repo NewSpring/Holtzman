@@ -6,8 +6,8 @@ import backgrounds from "react-storybook-addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
-import Readme from "./Offline.md";
-import Offline from "../Offline";
+import Readme from "./offline.md";
+import Offline from "../";
 
 const story = storiesOf("Status", module)
   .addDecorator(withKnobs)

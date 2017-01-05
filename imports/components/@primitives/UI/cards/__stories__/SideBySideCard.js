@@ -7,7 +7,7 @@ import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
 import Readme from "./side-by-side-card.md";
-import SideBySide from "../SideBySide";
+import SideBySide from "../SideBySideCard";
 
 const story = storiesOf("Cards", module)
   .addDecorator(withKnobs)
