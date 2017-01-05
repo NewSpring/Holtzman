@@ -21,6 +21,7 @@ class DiscoverWithoutData extends Component {
     const featuredItem = featured[0];
     const recommendedItems = [...featured.slice(1, featured.length)];
 
+    console.log(recommendedItems);
     return (
       <Layout
         featuredItem={featuredItem}
