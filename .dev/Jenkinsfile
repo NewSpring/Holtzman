@@ -24,7 +24,9 @@ node {
 
 }
 
-input message: "Build for Production?"
+timeout(time: 5, unit: "DAYS") {
+  input message: "Build for Production?"
+}
 
 node {
   stage ("deploy") {
