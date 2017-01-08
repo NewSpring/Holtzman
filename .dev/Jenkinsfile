@@ -21,5 +21,3 @@ node {
     stage 'deploy'
     echo "deploying"
 }
-
-# sh "yarn test"
