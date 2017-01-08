@@ -35,7 +35,6 @@ story
     salvationList[1].count = text("Card 2 Count", salvationList[1].count);
     salvationList[1].label = text("Card 2 Label", salvationList[1].label);
 
-    // <h1>{label}</h1>
     return (
       <div className={"floating"}>
         <div className={"grid__item"} style={{ maxWidth: "480px" }}>
