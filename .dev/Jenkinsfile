@@ -20,8 +20,8 @@ node {
   }
 
   stage ("test") {
-    ansiColor("xterm"){
-      sh "yarn test"  
+    wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
+      sh "yarn test"
     }
   }
 
