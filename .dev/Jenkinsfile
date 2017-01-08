@@ -1,40 +1,43 @@
 #!groovy​
 
 node {
-    // uncomment these 2 lines and edit the name 'node-4.4.5' according to what you choose in configuration
-    def nodeHome = tool name: 'node-6', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-    env.PATH = "${nodeHome}/bin:${env.PATH}"
+  // uncomment these 2 lines and edit the name 'node-4.4.5' according to what you choose in configuration
+  def nodeHome = tool name: 'node-6', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+  env.PATH = "${nodeHome}/bin:${env.PATH}"
 
-    stage 'environment'
+  stage ("environment") {
     sh "node -v"
     sh "npm -v"
+  }
 
-    stage 'checkout'
+  stage ("checkout") {
     checkout scm
 
-    stage 'install'
+    // Print out commit hash
+    // These should all be performed at the point where you've
+    // checked out your sources on the slave. A 'git' executable
+    // must be available.
+    // Most typical, if you're not cloning into a sub directory
+    gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+    // short SHA, possibly better for chat notifications, etc.
+    shortCommit = gitCommit.take(6)
+    echo $shortCommit
+  }
+
+  stage ("install") {
     sh "yarn"
+  }
 
-    stage 'test'
+  stage ("test") {
     // sh "yarn test"
-}
+  }
 
-node {
-  // These should all be performed at the point where you've
-  // checked out your sources on the slave. A 'git' executable
-  // must be available.
-  // Most typical, if you're not cloning into a sub directory
-  gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-  // short SHA, possibly better for chat notifications, etc.
-  shortCommit = gitCommit.take(6)
-
-  echo $shortCommit
-  stage 'build'
 }
 
 input message: "Build for Production?"
 
 node {
-  stage 'deploy'
+  stage ("deploy") {
     echo "deploying"
+  }
 }
