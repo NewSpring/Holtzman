@@ -3,20 +3,19 @@ node {
     def nodeHome = tool name: 'node-6', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
     env.PATH = "${nodeHome}/bin:${env.PATH}"
 
-    stage ("pretest") {
-      stage 'check environment'
-      sh "node -v"
-      sh "npm -v"
+    stage 'environment'
+    export TZ="/usr/share/zoneinfo/America/New_York"
+    sh "node -v"
+    sh "npm -v"
 
-      stage 'checkout'
-      checkout scm
+    stage 'checkout'
+    checkout scm
 
-      stage 'install'
-      sh "yarn"
-    }
+    stage 'install'
+    sh "yarn"
 
     stage 'test'
-    //sh "yarn test"
+    sh "yarn test"
 
     stage 'build'
     input message: "Build for Production?"
