@@ -28,7 +28,7 @@ node {
   // short SHA, possibly better for chat notifications, etc.
   shortCommit = gitCommit.take(6)
 
-  sh "echo $gitCommit";
+  echo $shortCommit
   stage 'build'
 }
 
@@ -36,5 +36,5 @@ input message: "Build for Production?"
 
 node {
   stage 'deploy'
-    sh "echo 'deploying'"
+    echo "deploying"
 }
