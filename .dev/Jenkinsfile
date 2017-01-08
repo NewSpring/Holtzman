@@ -14,5 +14,12 @@ node {
     sh "yarn"
 
     stage 'test'
-    sh "yarn test"
+
+    stage 'build'
+    input message: "Build for Production?"
+
+    stage 'deploy'
+    echo "deploying"
 }
+
+# sh "yarn test"
