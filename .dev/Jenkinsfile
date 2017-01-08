@@ -6,8 +6,6 @@ node {
   env.PATH = "${nodeHome}/bin:${env.PATH}"
 
   stage ("environment") {
-    // set timezone?
-    sh "echo 'America/New_York' | tee /etc/timezone"
     sh "node -v"
     sh "npm -v"
   }
