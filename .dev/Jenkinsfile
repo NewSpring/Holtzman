@@ -1,10 +1,11 @@
+#!groovy​
+
 node {
     // uncomment these 2 lines and edit the name 'node-4.4.5' according to what you choose in configuration
     def nodeHome = tool name: 'node-6', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
     env.PATH = "${nodeHome}/bin:${env.PATH}"
 
     stage 'environment'
-    sh "export TZ='/usr/share/zoneinfo/America/New_York'"
     sh "node -v"
     sh "npm -v"
 
@@ -15,11 +16,12 @@ node {
     sh "yarn"
 
     stage 'test'
-    sh "yarn test"
+    // sh "yarn test"
+}
 
-    stage 'build'
-    input message: "Build for Production?"
-
-    stage 'deploy'
+stage 'build'
+input message: "Build for Production?"
+node {
+  stage 'deploy'
     echo "deploying"
 }
