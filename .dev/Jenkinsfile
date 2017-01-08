@@ -19,17 +19,7 @@ node {
   }
 
   stage ("test") {
-    // sh "yarn test"
+    sh "yarn test"
   }
 
-}
-
-timeout(time: 5, unit: "DAYS") {
-  input message: "Build for Production?"
-}
-
-node {
-  stage ("deploy") {
-    echo "deploying"
-  }
 }
