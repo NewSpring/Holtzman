@@ -43,23 +43,6 @@ const dynamicWidth = () => {
   return {};
 };
 
-type ICardSliderItem = {
-  padding: boolean,
-  children?: React.Component<any, any, any>,
-};
-
-const CardSliderItem = ({
-  padding,
-  children,
-}: ICardSliderItem) => (
-  <div
-    className={`card floating display-inline-block ${padding ? "push-right" : ""}`}
-    style={dynamicWidth()}
-  >
-    {children}
-  </div>
-);
-
 const map = (store) => ({
   width: store.responsive.width,
 });
@@ -67,20 +50,13 @@ const map = (store) => ({
 export const withRedux = connect(map);
 
 type ICardSlider = {
-  cardComponent: React.Component<any, any, any>,
-  cardData: Object[],
+  children: React.Component<any, any, any>[],
 };
 
-// <CardSlider>
-//   {items.map((data) => {
-//     <Card item={data} />
-//   })}
-// </CardSlider>
-
 const CardSlider = ({
-  cardComponent,
-  cardData,
+  children,
 }: ICardSlider) => {
+  const childCount = React.Children.count(children);
   let count = 0;
   return (
     <div
@@ -90,17 +66,17 @@ const CardSlider = ({
         WebkitOverflowScrolling: "touch",
       }}
     >
-      <section style={dynamicWidthContainer(cardData.length)}>
-        {cardData.map((x, key) => {
+      <section style={dynamicWidthContainer(childCount)}>
+        {children.map((component, key) => {
           count += 1;
           return (
-            <CardSliderItem
+            <div
+              className={`card floating display-inline-block ${childCount !== count ? "push-right" : ""}`}
+              style={dynamicWidth()}
               key={key}
-              padding={cardData.length !== count}
             >
-              {{ ...cardComponent, ...{ props: { item: x } } }}
-
-            </CardSliderItem>
+              {component}
+            </div>
           );
         })}
 
@@ -115,6 +91,5 @@ export {
   getRatio,
   dynamicWidthContainer,
   dynamicWidth,
-  CardSliderItem,
   CardSlider as CardSliderWithoutData,
 };

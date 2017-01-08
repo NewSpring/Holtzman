@@ -6,7 +6,6 @@ import SliderCard from "../SliderCard";
 
 describe("CardSlider", () => {
   const defaultProps = {
-    cardComponent: <SliderCard />,
     cardData: [
       { count: "11,130", label: "Total Salvations" },
       { count: "3,982", label: "Student Salvations at Fuse and Gauntlet" },
@@ -18,7 +17,13 @@ describe("CardSlider", () => {
       ...defaultProps,
       ...additionalProps,
     };
-    return <CardSlider { ...newProps } />;
+    return (
+      <CardSlider>
+        {defaultProps.cardData.map(({ count, label }, key) => {
+          return <SliderCard count={count} label={label} key={key} />
+        })}
+      </CardSlider>
+    )
   };
 
   it("should render with default props", () => {
