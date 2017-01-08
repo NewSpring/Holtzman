@@ -1,11 +1,13 @@
 // @flow
 
 type ISliderCard = {
-  item: Object,
+  count: number,
+  label: string,
 };
 
 const SliderCard = ({
-  item,
+  count,
+  label,
 }: ISliderCard) => (
   <div className="floating__item one-whole soft" >
     <h1
@@ -14,10 +16,10 @@ const SliderCard = ({
         fontWeight: "900",
       }}
     >
-      {item.count}
+      {count}
     </h1>
     <h5 className="flush-bottom">
-      {item.label}
+      {label}
     </h5>
   </div>
 );

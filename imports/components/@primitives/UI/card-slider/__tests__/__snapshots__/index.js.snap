@@ -13,26 +13,30 @@ exports[`CardSlider should render with default props 1`] = `
         "width": "867.2px",
       }
     }>
-    <CardSliderItem
-      padding={true}>
+    <div
+      className="card floating display-inline-block push-right"
+      style={
+        Object {
+          "height": 393.6,
+          "width": 393.6,
+        }
+      }>
       <SliderCard
-        item={
-          Object {
-            "count": "11,130",
-            "label": "Total Salvations",
-          }
-        } />
-    </CardSliderItem>
-    <CardSliderItem
-      padding={false}>
+        count="11,130"
+        label="Total Salvations" />
+    </div>
+    <div
+      className="card floating display-inline-block "
+      style={
+        Object {
+          "height": 393.6,
+          "width": 393.6,
+        }
+      }>
       <SliderCard
-        item={
-          Object {
-            "count": "3,982",
-            "label": "Student Salvations at Fuse and Gauntlet",
-          }
-        } />
-    </CardSliderItem>
+        count="3,982"
+        label="Student Salvations at Fuse and Gauntlet" />
+    </div>
   </section>
 </div>
 `;
