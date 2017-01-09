@@ -24,5 +24,4 @@ node {
       sh "yarn test"
     }
   }
-
 }
