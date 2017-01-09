@@ -12,7 +12,7 @@ import Provider, { ReduxProvider } from "/.storybook/mocks/Provider";
 
 import Readme from "./index.md";
 import CardSlider from "../";
-import SliderCard from "../SliderCard";
+import MetricCard from "../../cards/MetricCard";
 
 const story = storiesOf("Card Slider", module)
   .addDecorator(withKnobs)
@@ -41,7 +41,7 @@ story
           <Provider>
             <CardSlider>
               {salvationList.map( ({ count, label }, key) => {
-                return <SliderCard count={count} label={label} key={key} />
+                return <MetricCard count={count} label={label} key={key} />
               })}
             </CardSlider>
           </Provider>

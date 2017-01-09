@@ -1,14 +1,14 @@
 // @flow
 
-type ISliderCard = {
+type IMetricCard = {
   count: number,
   label: string,
 };
 
-const SliderCard = ({
+const MetricCard = ({
   count,
   label,
-}: ISliderCard) => (
+}: IMetricCard) => (
   <div className="floating__item one-whole soft" >
     <h1
       className="uppercase flush-bottom soft-half-bottom"
@@ -24,4 +24,4 @@ const SliderCard = ({
   </div>
 );
 
-export default SliderCard;
+export default MetricCard;
