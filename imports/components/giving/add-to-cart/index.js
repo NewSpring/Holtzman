@@ -96,7 +96,7 @@ class CartContainer extends Component {
     }
   }
 
-  bindSubComponentReset = (reset) => {
+  bindSubComponentReset = (reset: Function) => {
     this.resetCbs.push(reset);
   }
 
