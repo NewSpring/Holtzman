@@ -5,12 +5,17 @@
 ```js
 import List from "/imports/components/@primitives/UI/card-slider";
 
-<CardSlider items={someList} />
+<CardSlider>
+  {salvationList.map( ({ count, label }) => {
+    return <SliderCard count={count} label={label} />
+  })}
+</CardSlider>
 ```
 
 ### Properties
 
-* **items** - an array that contains the information that should display on the cards. For example:
+* **data.map** - iterate over your data and pass a component for each entry.
+Some example data:
 
 ```js
 const someList = [

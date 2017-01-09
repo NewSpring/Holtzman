@@ -13,26 +13,30 @@ exports[`CardSlider should render with default props 1`] = `
         "width": "867.2px",
       }
     }>
-    <CardSliderItem
-      padding={true}>
-      <SliderCard
-        item={
-          Object {
-            "count": "11,130",
-            "label": "Total Salvations",
-          }
-        } />
-    </CardSliderItem>
-    <CardSliderItem
-      padding={false}>
-      <SliderCard
-        item={
-          Object {
-            "count": "3,982",
-            "label": "Student Salvations at Fuse and Gauntlet",
-          }
-        } />
-    </CardSliderItem>
+    <div
+      className="card floating display-inline-block push-right"
+      style={
+        Object {
+          "height": 393.6,
+          "width": 393.6,
+        }
+      }>
+      <MetricCard
+        count="11,130"
+        label="Total Salvations" />
+    </div>
+    <div
+      className="card floating display-inline-block "
+      style={
+        Object {
+          "height": 393.6,
+          "width": 393.6,
+        }
+      }>
+      <MetricCard
+        count="3,982"
+        label="Student Salvations at Fuse and Gauntlet" />
+    </div>
   </section>
 </div>
 `;
