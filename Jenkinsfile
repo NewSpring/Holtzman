@@ -20,7 +20,7 @@ node {
   }
   
   ansiColor('xterm') {
-    echo "\e[31mTesting...\e[0m\n"
+    echo "\\u001B[31mTesting...\\u001B[0m"
   }
   
   wrap([$class: 'AnsiColorBuildWrapper']) {
