@@ -18,11 +18,10 @@ node {
   stage ("install") {
     sh "yarn"
   }
-
-  stage ("test") {
-    wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
+  
+  wrap([$class: 'AnsiColorBuildWrapper']) {
+    stage ("test") {
       sh "yarn test"
     }
   }
-  
 }
