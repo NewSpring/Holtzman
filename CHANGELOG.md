@@ -15,3 +15,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - changed giving dashboards to use progress primitive
 - removed READMEs that had nothing useful in them
 - changed some strange naming (`switch > toggle` and `toggle > tabs`) to be clearer
+
+### Fixed
+- fixed discover page not showing additional featured items
