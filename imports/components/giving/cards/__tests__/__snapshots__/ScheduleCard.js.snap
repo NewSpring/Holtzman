@@ -58,7 +58,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
         </span>
         <em
           className="text-dark-primary">
-          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+          Feb 1, 2017
         </em>
       </p>
       <p>
@@ -73,7 +73,7 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
         </span>
         <em
           className="text-dark-primary">
-          Tue Mar 16 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+          Feb 2, 2017
         </em>
       </p>
       <button
@@ -150,7 +150,7 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
         </span>
         <em
           className="text-dark-primary">
-          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+          Feb 1, 2017
         </em>
       </p>
       <button
@@ -227,7 +227,7 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
         </span>
         <em
           className="text-dark-primary">
-          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+          Feb 1, 2017
         </em>
       </p>
       <button
@@ -304,7 +304,7 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
         </span>
         <em
           className="text-dark-primary">
-          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+          Feb 1, 2017
         </em>
       </p>
       <button
@@ -381,7 +381,7 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
         </span>
         <em
           className="text-dark-primary">
-          Jun 15, 2015.format(MMM D, YYYY)
+          Feb 1, 2017
         </em>
       </p>
       <button
@@ -458,7 +458,7 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
         </span>
         <em
           className="text-dark-primary">
-          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+          Feb 1, 2017
         </em>
       </p>
       <button
@@ -539,7 +539,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
         </span>
         <em
           className="text-dark-primary">
-          Tue Mar 15 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+          Feb 1, 2017
         </em>
       </p>
       <p>
@@ -554,7 +554,7 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
         </span>
         <em
           className="text-dark-primary">
-          Tue Mar 16 2016 20:00:00 GMT-0400 (EDT).format(MMM D, YYYY)
+          Feb 2, 2017
         </em>
       </p>
       <button

@@ -38,7 +38,7 @@ const ScheduleCard = ({
           >
             Start Date:
           </span>
-          <em className="text-dark-primary">{moment(started).format("MMM D, YYYY")}</em>
+          <em className="text-dark-primary">{moment.utc(started).format("MMM D, YYYY")}</em>
         </p>
         {latest && (
           <p>
