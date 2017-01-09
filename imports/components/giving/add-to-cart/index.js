@@ -149,7 +149,8 @@ class CartContainer extends Component {
     let newAmount = `${amount}`;
 
     // starting with a decimal
-    if (newAmount === ".") newAmount = "0.0";
+    if (newAmount === "." || newAmount === "$0.") return "$0.";
+    else if (newAmount === "0") return "$0";
 
     let decimals = newAmount.split(".")[1];
 
