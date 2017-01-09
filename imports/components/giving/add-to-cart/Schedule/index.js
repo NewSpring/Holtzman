@@ -12,6 +12,7 @@ type IScheduleProps = {
   saveSchedule: Function,
   setCanCheckout: Function,
   preCheck: boolean,
+  bindSubComponentReset: Function,
 };
 
 type IScheduleState = {
@@ -50,6 +51,7 @@ export class Schedule extends Component {
 
   componentWillMount() {
     if (this.props.preCheck) this.setState({ checked: true });
+    this.props.bindSubComponentReset(this.toggleSchedule);
   }
 
   componentDidMount() {

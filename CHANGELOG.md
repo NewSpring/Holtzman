@@ -22,3 +22,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - fixed live formatting of add to cart inputs when adding less than a dollar
 - fixed schedule date to be correct based on utc time
 - fixed issue when scheduling using custom frequency
+- fixed reseting of schedule on giving add to cart form
