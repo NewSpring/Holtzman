@@ -99,7 +99,7 @@ exports[`RightPanel Layout should render a loading state 1`] = `
           </small>
         </p>
         <style>
-          .right-select select { color: #ffffff } .right-select:after {border-color: #ffffff transparent transparent}
+          .right-select select { color: #ffffff } .right-select:after {border-color: #ffffff transparent transparent} .right-select select option { color: #505050 }
         </style>
         <Select
           classes={
@@ -332,7 +332,7 @@ exports[`RightPanel Layout should render with data 1`] = `
           </small>
         </p>
         <style>
-          .right-select select { color: #ffffff } .right-select:after {border-color: #ffffff transparent transparent}
+          .right-select select { color: #ffffff } .right-select:after {border-color: #ffffff transparent transparent} .right-select select option { color: #505050 }
         </style>
         <Select
           classes={
