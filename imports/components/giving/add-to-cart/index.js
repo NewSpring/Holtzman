@@ -60,7 +60,7 @@ class CartContainer extends Component {
     accounts: [],
   }
 
-  state = { subfunds: [], canCheckout: true }
+  state = { subfunds: [], canCheckout: true, resetSchedule: false }
 
   componentWillMount() {
     const { query } = this.props;
@@ -90,7 +90,7 @@ class CartContainer extends Component {
     ) {
       this.props.clearTransactions();
       const subfunds = this.calculateDefaultSubfunds();
-      this.setState({ subfunds });
+      this.setState({ subfunds, resetSchedule: true });
     }
   }
 
@@ -317,6 +317,7 @@ class CartContainer extends Component {
         total={total}
         accounts={accounts}
         toggleSecondFund={this.toggleSecondFund}
+        resetSchedule={this.state.resetSchedule}
         authorized={authorized}
         canCheckout={this.canCheckout(total)}
         setCanCheckout={this.setCanCheckout}

@@ -12,6 +12,7 @@ type IScheduleProps = {
   saveSchedule: Function,
   setCanCheckout: Function,
   preCheck: boolean,
+  resetSchedule: boolean,
 };
 
 type IScheduleState = {
@@ -55,6 +56,13 @@ export class Schedule extends Component {
   componentDidMount() {
     if (typeof window !== "undefined") {
       window.addEventListener("resize", this.fixPickerPosition);
+    }
+  }
+
+  componentWillReceiveProps() {
+    if (this.props.resetSchedule) {
+      this.setState({ checked: true });
+      this.toggleSchedule();
     }
   }
 
