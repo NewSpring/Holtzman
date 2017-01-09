@@ -2,7 +2,7 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 
 import { CardSliderWithoutData as CardSlider } from "../";
-import SliderCard from "../SliderCard";
+import MetricCard from "../../cards/MetricCard";
 
 describe("CardSlider", () => {
   const defaultProps = {
@@ -20,7 +20,7 @@ describe("CardSlider", () => {
     return (
       <CardSlider>
         {defaultProps.cardData.map(({ count, label }, key) => {
-          return <SliderCard count={count} label={label} key={key} />
+          return <MetricCard count={count} label={label} key={key} />
         })}
       </CardSlider>
     )

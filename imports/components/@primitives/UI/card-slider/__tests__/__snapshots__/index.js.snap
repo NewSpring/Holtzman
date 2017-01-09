@@ -21,7 +21,7 @@ exports[`CardSlider should render with default props 1`] = `
           "width": 393.6,
         }
       }>
-      <SliderCard
+      <MetricCard
         count="11,130"
         label="Total Salvations" />
     </div>
@@ -33,7 +33,7 @@ exports[`CardSlider should render with default props 1`] = `
           "width": 393.6,
         }
       }>
-      <SliderCard
+      <MetricCard
         count="3,982"
         label="Student Salvations at Fuse and Gauntlet" />
     </div>
