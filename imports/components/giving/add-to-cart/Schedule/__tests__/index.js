@@ -31,6 +31,7 @@ const generateComponent = (additionalProps = {}) => {
     authorized: true,
     saveSchedule: jest.fn(),
     setCanCheckout: jest.fn(),
+    bindSubComponentReset: jest.fn(),
   };
   return (
     <Schedule {...defaultProps} {...additionalProps} />
@@ -284,4 +285,19 @@ describe("Class", () => {
       });
     });
   });
+
+  describe("reset-binding", () => {
+    it("resets when called", () => {
+      let reset = null;
+      const bindSubComponentReset = (fn) => reset = jest.fn(fn);
+
+      const wrapper = mount(generateComponent({ bindSubComponentReset }));
+      const originalState = wrapper.state();
+      wrapper.setState({ checked: true });
+
+      reset();
+      expect(wrapper.state()).toEqual(originalState);
+    });
+  });
+
 });
