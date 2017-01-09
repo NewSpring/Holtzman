@@ -18,3 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - fixed discover page not showing additional featured items
+- fixed giving dashboard year giving review select color on windows
+- fixed live formatting of add to cart inputs when adding less than a dollar
+- fixed schedule date to be correct based on utc time
+- fixed issue when scheduling using custom frequency
