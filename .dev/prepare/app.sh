@@ -14,7 +14,7 @@ if [ -z "$TRAVIS_TAG" ]; then
   exit 0
 fi
 
-CURRENT_TAG=$(git describe --exact-match --abbrev=0 --tags) | tr '[:upper:]' '[:lower:]'
+CURRENT_TAG=$(git describe --exact-match --abbrev=0 --tags)
 APP=$(echo "$CURRENT_TAG" | cut -d'/' -f1)
 DEST=$(echo "$CURRENT_TAG" | cut -d'/' -f2)
 CHANNEL=$(echo "$CURRENT_TAG" | cut -d'/' -f3)
