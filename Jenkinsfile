@@ -21,8 +21,7 @@ node {
   
   wrap([$class: 'AnsiColorBuildWrapper']) {
     stage ("test") {
-      echo "\\u001B[31mTesting...\\u001B[0m"
-      sh "yarn test"
+      sh "yarn test -- --colors"
     }
   }
 }
