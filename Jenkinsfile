@@ -18,10 +18,10 @@ node {
   stage ("install") {
     sh "yarn"
   }
-  
+
   wrap([$class: 'AnsiColorBuildWrapper']) {
     stage ("test") {
-      sh "yarn test -- --colors"
+      sh "yarn test -- --coverage --colors"
     }
   }
 }
