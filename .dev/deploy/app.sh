@@ -19,7 +19,7 @@ yecho () {
 # force script to error out at first error
 set -e
 
-CURRENT_TAG=$(git describe --exact-match --abbrev=0 --tags) | tr '[:upper:]' '[:lower:]'
+CURRENT_TAG=$(git describe --exact-match --abbrev=0 --tags)
 
 PREVIOUS_TAG=$(git describe HEAD^1 --abbrev=0 --tags)
 GIT_HISTORY=$(git log --no-merges --format="- %s" "$PREVIOUS_TAG"..HEAD)
