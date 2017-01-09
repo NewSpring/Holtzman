@@ -134,4 +134,4 @@ newspring/native/beta/0.0.3-45
 
 For more information about contributing PRs and issues, see our [Contribution Guidelines](CONTRIBUTING.md).
 
-[Good First PR](https://github.com/NewSpring/Holtzman/labels/good first pr) is a great starting point for people new to this project.
+[Good First PR](labels/good first pr) is a great starting point for people new to this project.
