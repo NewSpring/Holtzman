@@ -18,9 +18,9 @@ node {
   println "--------${branch}--------"
 
   // Get all Causes for the current build
-  def causes = currentBuild.rawBuild.getCauses()
+  // def causes = currentBuild.rawBuild.getCauses()
   // def classes = causes.getClass();
-  println("----${causes.toString()}----")
+  // println("----${causes.toString()}----")
   // for (c in classes) {
   //   println(c);
   // }
@@ -32,8 +32,8 @@ node {
 
   // Get a specific Cause type (in this case the user who kicked off the build),
   // if present.
-  def specificCause = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
-  println("--------${specificCause}--------")
+  // def specificCause = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
+  // println("--------${specificCause}--------")
 
   // If you see errors regarding 'Scripts not permitted to use method...' approve
   // these scripts at JENKINS_URL/scriptApproval/ - the UI shows the blocked methods
