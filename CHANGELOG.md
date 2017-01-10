@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - `index.js` files for folders with collections of components
 - A `Progress` primitive
+- Support future entries for studies
 
 ### Changed
 - File structure changed to a more easily navigable version.
@@ -15,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - changed giving dashboards to use progress primitive
 - removed READMEs that had nothing useful in them
 - changed some strange naming (`switch > toggle` and `toggle > tabs`) to be clearer
+- support of studies/devotionals in menu
 
 ### Fixed
 - fixed discover page not showing additional featured items
