@@ -15,9 +15,10 @@ node {
   org = tokens[tokens.size()-3]
   repo = tokens[tokens.size()-2]
   branch = tokens[tokens.size()-1]
-  println "-------- BRANCH: ${branch} --------"
+
+  println "#### CURRENTLY CHECKED OUT: ${branch} ####"
   def prCount = branch.findAll(/PR-.*-merge/);
-  println("PR COUNT: ${prCount.size()}");
+  def shouldBuild = prCount > 0;
 
   stage ("environment") {
     sh "node -v"
@@ -34,7 +35,13 @@ node {
 
   wrap([$class: 'AnsiColorBuildWrapper']) {
     stage ("test") {
-      // sh "yarn test -- --colors"
+      sh "yarn test -- --colors"
+    }
+  }
+
+  if (shouldBuild) {
+    stage("build") {
+      println ("building ${branch}");
     }
   }
 }
