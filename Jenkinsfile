@@ -17,7 +17,7 @@ node {
   branch = tokens[tokens.size()-1]
 
   println "#### CURRENTLY CHECKED OUT: ${branch} ####"
-  def prCount = branch.findAll(/PR-.*-merge/);
+  def prCount = branch.findAll(/PR-.*-merge/).size();
   def shouldBuild = prCount > 0;
 
   stage ("environment") {
