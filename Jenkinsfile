@@ -46,7 +46,7 @@ node {
       wrap([$class: 'AnsiColorBuildWrapper']) {
         stage ("test") {
           sh "echo tagging ${branch} with ${green}${tag}"
-          // sh "git tag ${tag}"
+          sh "git tag ${tag}"
         }
       }
     }
