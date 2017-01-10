@@ -43,7 +43,7 @@ node {
     stage("tagging") {
       println ("tagging ${branch}");
       //GH1234-B1234567
-      println ("with GH${branch.substring(3)}-B${env.BUILD_NUMBER}");
+      println ("with GH${branch.substring(3, -6)}-B${env.BUILD_NUMBER}");
     }
   }
 }
