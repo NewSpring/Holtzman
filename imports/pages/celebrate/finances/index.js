@@ -4,30 +4,30 @@ import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import ProgressBar from "../../../components/giving/giving-progress";
 
-const dynamicSize = (text) => {
-  if (text.length < 4) {
-    return 0.2;
-  }
-
-  if (text.length < 6) {
-    return 0.35;
-  }
-
-  if (text.length < 8) {
-    return 0.4;
-  }
-
-  if (text.length < 10) {
-    return 0.5;
-  }
-
-
-  if (text.length < 12) {
-    return 0.6;
-  }
-
-  return 0.7;
-};
+// const dynamicSize = (text) => {
+//   if (text.length < 4) {
+//     return 0.2;
+//   }
+//
+//   if (text.length < 6) {
+//     return 0.35;
+//   }
+//
+//   if (text.length < 8) {
+//     return 0.4;
+//   }
+//
+//   if (text.length < 10) {
+//     return 0.5;
+//   }
+//
+//
+//   if (text.length < 12) {
+//     return 0.6;
+//   }
+//
+//   return 0.7;
+// };
 
 const generalFundAmountTotal = 1600000.00;
 const fundData = [
@@ -62,7 +62,7 @@ const Finances = () => {
         <div className="push-half-bottom">
           {/* <h3 className="display-inline-block">$</h3> */}
           <div className="display-inline-block">
-            <FitText compressor={1.75}>
+            <FitText compressor={1} maxFontSize={18}>
               <Currency
                 amount={generalFundAmountTotal.toFixed(2)}
                 baseHeadingSize="1"
