@@ -19,7 +19,7 @@ node {
 
   // Get all Causes for the current build
   def causes = currentBuild.rawBuild.getCauses()
-  def classes = causes.getClasses();
+  def classes = causes.getClass();
   println("----${classes}----")
   // for (c in classes) {
   //   println(c);
