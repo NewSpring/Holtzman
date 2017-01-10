@@ -20,7 +20,10 @@ node {
   // Get all Causes for the current build
   def causes = currentBuild.rawBuild.getCauses()
   // println("--------${causes}--------")
-  causes.each{ k, v -> println "----${k}:${v}----" }
+  // causes.each{ k, v -> println "----${k}:${v}----" }
+  for ( e in causes ) {
+    print "key = ${e.key}, value = ${e.value}"
+  }
 
   // Get a specific Cause type (in this case the user who kicked off the build),
   // if present.
