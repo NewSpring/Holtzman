@@ -16,7 +16,7 @@ node {
   repo = tokens[tokens.size()-2]
   branch = tokens[tokens.size()-1]
   println "-------- BRANCH: ${branch} --------"
-  def prCount = branch.findAll(/PR-.*-MERGE/);
+  def prCount = branch.findAll(/PR-.*-merge/);
   println("PR COUNT: ${prCount.size()}");
 
   stage ("environment") {
