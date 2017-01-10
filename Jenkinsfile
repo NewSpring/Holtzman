@@ -42,8 +42,9 @@ node {
   if (isPR) {
     stage("tagging") {
       //GH1234-B1234567
+      def green = "\u001B[32m";
       def tag = "GH${branch.substring(3, branch.length()-6)}-B${env.BUILD_NUMBER}";
-      println ("tagging ${branch} with ${tag}");
+      println ("tagging ${branch} with ${green}${tag}");
     }
   }
 }
