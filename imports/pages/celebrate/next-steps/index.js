@@ -256,13 +256,15 @@ const NextSteps = () => (
             across the state.
           </p>
         </div>
-        <div className="grid__item one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
+        <div className="grid__item floating one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
           {/*
           <div className="ratio--square background--fill" style={{ backgroundImage: "url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png')" }}>
             <div className="ratio__item" />
           </div>
           */}
-          <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png" alt="map of south carolina" />
+          <div className="floating__item two-thirds@lap-and-up">
+            <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png" alt="map of south carolina" />
+          </div>
         </div>
       </div>
     </div>
@@ -339,8 +341,19 @@ const NextSteps = () => (
           <h3 className="push-top floating__item two-thirds@lap-and-up">different nations</h3>
         </div>
       </div>
+      <div className="floating">
+        <div className="floating__item two-thirds@lap-and-up">
+          <hr />
+          <h1>STORY GOES HERE</h1>
+        </div>
+      </div>
     </div>
     {/* Keep Reading */}
+    <div className="background--primary text-center text-light-primary soft-double">
+      <h3>Keep Reading</h3>
+      <p>Up next in the NewSpring 2016 Annual Report is information on our ministries.</p>
+      <a className="btn--light">Go To Ministries Report</a>
+    </div>
   </div>
 );
 
