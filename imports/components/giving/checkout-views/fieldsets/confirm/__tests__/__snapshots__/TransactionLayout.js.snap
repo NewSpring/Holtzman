@@ -100,7 +100,8 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
                 $
               </h6>
               <h4
-                className="floating__item flush">
+                className="floating__item flush"
+                style={undefined}>
                 5
               </h4>
               <h6
@@ -160,7 +161,8 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
                 $
               </h6>
               <h4
-                className="floating__item flush">
+                className="floating__item flush"
+                style={undefined}>
                 7
               </h4>
               <h6
@@ -259,7 +261,8 @@ exports[`TransactionLayout should render with a schedule props 1`] = `
                 $
               </h4>
               <h2
-                className="floating__item flush">
+                className="floating__item flush"
+                style={undefined}>
                 12
               </h2>
               <h4
@@ -370,7 +373,8 @@ exports[`TransactionLayout should render with props 1`] = `
                 $
               </h6>
               <h4
-                className="floating__item flush">
+                className="floating__item flush"
+                style={undefined}>
                 5
               </h4>
               <h6
@@ -430,7 +434,8 @@ exports[`TransactionLayout should render with props 1`] = `
                 $
               </h6>
               <h4
-                className="floating__item flush">
+                className="floating__item flush"
+                style={undefined}>
                 7
               </h4>
               <h6
@@ -490,7 +495,8 @@ exports[`TransactionLayout should render with props 1`] = `
                 $
               </h4>
               <h2
-                className="floating__item flush">
+                className="floating__item flush"
+                style={undefined}>
                 12
               </h2>
               <h4
