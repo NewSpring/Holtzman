@@ -42,12 +42,10 @@ node {
   if (isPR) {
     stage("tagging") {
       def green = "\u001B[32m";
-      def magenta = "\033[105m";
-      def bold = "\033[1m";
       def tag = "GH${branch.substring(3, branch.length()-6)}-B${env.BUILD_NUMBER}";
       wrap([$class: 'AnsiColorBuildWrapper']) {
         stage ("test") {
-          sh "echo -e tagging ${branch} with ${bold}${magenta}${tag}"
+          sh "echo -e tagging ${branch} with ${green}${tag}"
           // sh "git tag ${tag}"
         }
       }
