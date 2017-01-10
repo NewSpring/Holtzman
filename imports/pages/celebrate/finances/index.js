@@ -4,30 +4,30 @@ import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import ProgressBar from "../../../components/giving/giving-progress";
 
-// const dynamicSize = (text) => {
-//   if (text.length < 4) {
-//     return 0.2;
-//   }
-//
-//   if (text.length < 6) {
-//     return 0.35;
-//   }
-//
-//   if (text.length < 8) {
-//     return 0.4;
-//   }
-//
-//   if (text.length < 10) {
-//     return 0.5;
-//   }
-//
-//
-//   if (text.length < 12) {
-//     return 0.6;
-//   }
-//
-//   return 0.7;
-// };
+const dynamicSize = (text) => {
+  if (text.length < 4) {
+    return 0.2;
+  }
+
+  if (text.length < 6) {
+    return 0.35;
+  }
+
+  if (text.length < 8) {
+    return 0.4;
+  }
+
+  if (text.length < 10) {
+    return 0.5;
+  }
+
+
+  if (text.length < 12) {
+    return 0.6;
+  }
+
+  return 0.7;
+};
 
 const generalFundAmountTotal = 1600000.00;
 const fundData = [
@@ -48,6 +48,7 @@ const fundData = [
   { campus: "Spartanburg", amountString: "100000", amountValue: 100000 },
   { campus: "Sumter", amountString: "100000", amountValue: 100000 },
 ];
+const stepUpFundTotal = "4,567,422.90";
 
 /* eslint-disable max-len */
 const Finances = () => {
@@ -121,11 +122,22 @@ const Finances = () => {
           </div>
         </div>
       </div>
-      <div>
-        Giving to Step Up
+      <div className="background--light-primary text-center soft-double">
+        <h3>Giving to Step Up</h3>
+        <em>for land and buildings</em>
+        <div className="push-top">
+          <FitText compressor={1} maxFontSize={18}>
+            <Currency
+              amount={stepUpFundTotal}
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom text-dark-primary"
+              style={{ fontWeight: "900" }}
+            />
+          </FitText>
+        </div>
       </div>
-      <div className="one-whole text-center background--light-secondary soft-double-top soft-double-bottom">
-        <div className="grid">
+      <div className="one-whole floating text-center background--light-secondary soft-double-top soft-double-bottom">
+        <div className="grid two-thirds@lap-and-up floating__item">
           <div className="grid__item one-half@lap-and-up one-whole">
             <h3
               className="italic"
@@ -135,7 +147,7 @@ const Finances = () => {
             >
               We had
             </h3>
-            <FitText>
+            <FitText compressor={0.5}>
               <h1
                 className="uppercase flush-bottom soft-half-bottom"
                 style={{
@@ -156,7 +168,7 @@ const Finances = () => {
             >
               and
             </h3>
-            <FitText>
+            <FitText compressor={0.5}>
               <h1
                 className="uppercase flush-bottom soft-half-bottom"
                 style={{
@@ -167,7 +179,7 @@ const Finances = () => {
               </h1>
             </FitText>
             <div className="floating text-center">
-              <h3 className="one-half@lap-and-up floating__item">Households who gave $250 or more.</h3>
+              <h3 className="two-thirds@lap-and-up floating__item">Households who gave $250 or more.</h3>
             </div>
           </div>
         </div>
