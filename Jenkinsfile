@@ -41,9 +41,9 @@ node {
 
   if (isPR) {
     stage("tagging") {
-      println ("tagging ${branch}");
       //GH1234-B1234567
-      println ("with GH${branch.substring(3, branch.length()-6)}-B${env.BUILD_NUMBER}");
+      def tag = "GH${branch.substring(3, branch.length()-6)}-B${env.BUILD_NUMBER}";
+      println ("tagging ${branch} with ${tag}");
     }
   }
 }
