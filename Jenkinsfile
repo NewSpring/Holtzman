@@ -36,16 +36,16 @@ node {
   wrap([$class: 'AnsiColorBuildWrapper']) {
     stage ("test") {
       // sh "yarn test -- --colors"
+    }
+  }
 
-      if (isPR) {
-        stage("tagging") {
-          def green = "\u001B[32m";
-          def tag = "GH${branch.substring(3, branch.length()-6)}-B${env.BUILD_NUMBER}";
-          wrap([$class: 'AnsiColorBuildWrapper']) {
-            stage ("test") {
-              sh "echo tagging ${branch} with ${green}${tag}"
-            }
-          }
+  if (isPR) {
+    stage("tagging") {
+      def green = "\u001B[32m";
+      def tag = "GH${branch.substring(3, branch.length()-6)}-B${env.BUILD_NUMBER}";
+      wrap([$class: 'AnsiColorBuildWrapper']) {
+        stage ("test") {
+          sh "echo tagging ${branch} with ${green}${tag}"
         }
       }
     }
