@@ -45,7 +45,7 @@ node {
       def tag = "GH${branch.substring(3, branch.length()-6)}-B${env.BUILD_NUMBER}";
       wrap([$class: 'AnsiColorBuildWrapper']) {
         stage ("test") {
-          sh "echo -e tagging ${branch} with ${green}${tag}"
+          sh "echo tagging ${branch} with ${green}${tag}"
           // sh "git tag ${tag}"
         }
       }
