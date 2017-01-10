@@ -45,9 +45,6 @@ function* getSectionsData() {
       articles: content(limit: 1, channel: "articles") {
         ...NavigationImages
       }
-      devotionals: content(limit: 1, channel: "devotionals") {
-        ...NavigationImages
-      }
       stories: content(limit: 1, channel: "stories") {
         ...NavigationImages
       }
@@ -112,7 +109,9 @@ function* getSectionsData() {
     // remap the images of the section panel
     // eslint-disable-next-line
     for (const section in sections) {
-      const name = sections[section].text.toLowerCase();
+      let name = sections[section].text.toLowerCase();
+      if (name.includes("studies")) name = "studies";
+      if (name.includes("devotionals")) name = "studies";
       if (filteredItems[name]) {
         // eslint-disable-next-line
         sections[section].image = filteredItems[name];

@@ -173,9 +173,9 @@ exports[`Layout renders custom toggles if passed 1`] = `
         </small>
       </label>
       <input
+        checked=""
         className={undefined}
         data-spec="input"
-        defaultChecked=""
         disabled={undefined}
         id="savePayment"
         name="savePayment"
@@ -372,9 +372,9 @@ exports[`Layout renders default toggles by default 1`] = `
         </small>
       </label>
       <input
+        checked=""
         className={undefined}
         data-spec="input"
-        defaultChecked=""
         disabled={undefined}
         id="savePayment"
         name="savePayment"

@@ -34,6 +34,12 @@ export default class Checkbox extends React.Component {
     checked: false,
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.defaultValue && !nextProps.defaultValue) {
+      this.setState({ checked: false });
+    }
+  }
+
   disabled = () => {
     if (this.props.disabled) {
       return this.props.disabled; // eslint-disable-line
@@ -109,7 +115,7 @@ export default class Checkbox extends React.Component {
           style={{ marginTop: "-1px", cursor: "pointer" }}
           htmlFor={this.props.id || this.props.label || this.props.name}
         >
-          <small data-spec="input-label" style={this.getStyles(this.props.defaultValue)}>
+          <small data-spec="input-label" style={this.getStyles(this.state.checked !== false)}>
             {this.props.children}
           </small>
         </label>
@@ -120,9 +126,10 @@ export default class Checkbox extends React.Component {
           name={this.props.name || this.props.label}
           className={this.props.inputClasses}
           disabled={this.disabled()}
-          defaultChecked={(this.state.checked !== false || this.props.defaultValue) ? "checked" : ""}
+          checked={(this.state.checked !== false || this.props.defaultValue) ? "checked" : ""}
           onClick={this.props.clicked}
           style={{ width: 0 }}
+
           data-spec="input"
         />
 

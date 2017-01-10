@@ -12,6 +12,7 @@ type IScheduleProps = {
   saveSchedule: Function,
   setCanCheckout: Function,
   preCheck: boolean,
+  bindSubComponentReset: Function,
 };
 
 type IScheduleState = {
@@ -50,6 +51,7 @@ export class Schedule extends Component {
 
   componentWillMount() {
     if (this.props.preCheck) this.setState({ checked: true });
+    this.props.bindSubComponentReset(this.toggleSchedule);
   }
 
   componentDidMount() {
@@ -158,6 +160,10 @@ export class Schedule extends Component {
   onDayClick = (e, day, { selected, disabled }) => {
     if (disabled) return;
     this.setState({ start: selected ? null : day });
+    this.props.saveSchedule({
+      frequency: this.state.frequency,
+      start: day,
+    });
   }
 
   render() {
