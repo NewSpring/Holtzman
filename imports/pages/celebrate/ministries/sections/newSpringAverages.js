@@ -1,81 +1,78 @@
 
-// import {
-//   Body,
-// } from "../../../../components/layout";
-
 import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import { MetricCard } from "../../../../components/@primitives/UI/cards";
-// import List from "../../../../components/list";
 
-const newSpringNumbers = {
-  average: "23,422",
-  campuses: [
-    {
-      name: "Aiken",
-      average: "6,200",
-    },
-    {
-      name: "Anderson",
-      average: "6,200",
-    },
-    {
-      name: "Boiling Springs",
-      average: "6,200",
-    },
-    {
-      name: "Charleston",
-      average: "6,200",
-    },
-    {
-      name: "Clemson",
-      average: "6,200",
-    },
-    {
-      name: "Columbia",
-      average: "6,200",
-    },
-    {
-      name: "Florence",
-      average: "6,200",
-    },
-    {
-      name: "Greenville",
-      average: "6,200",
-    },
-    {
-      name: "Greenwood",
-      average: "6,200",
-    },
-    {
-      name: "Hilton Head",
-      average: "6,200",
-    },
-    {
-      name: "Myrtle Beach",
-      average: "6,200",
-    },
-    {
-      name: "Northeast Columbia",
-      average: "6,200",
-    },
-    {
-      name: "Powdersville",
-      average: "6,200",
-    },
-    {
-      name: "Rock Hill",
-      average: "6,200",
-    },
-    {
-      name: "Spartanbury",
-      average: "6,200",
-    },
-    {
-      name: "Sumter",
-      average: "6,200",
-    },
-  ],
+const data = {
+  attendance: {
+    average: "23,422",
+    campuses: [
+      {
+        name: "Aiken",
+        average: "6,200",
+      },
+      {
+        name: "Anderson",
+        average: "6,200",
+      },
+      {
+        name: "Boiling Springs",
+        average: "6,200",
+      },
+      {
+        name: "Charleston",
+        average: "6,200",
+      },
+      {
+        name: "Clemson",
+        average: "6,200",
+      },
+      {
+        name: "Columbia",
+        average: "6,200",
+      },
+      {
+        name: "Florence",
+        average: "6,200",
+      },
+      {
+        name: "Greenville",
+        average: "6,200",
+      },
+      {
+        name: "Greenwood",
+        average: "6,200",
+      },
+      {
+        name: "Hilton Head",
+        average: "6,200",
+      },
+      {
+        name: "Myrtle Beach",
+        average: "6,200",
+      },
+      {
+        name: "Northeast Columbia",
+        average: "6,200",
+      },
+      {
+        name: "Powdersville",
+        average: "6,200",
+      },
+      {
+        name: "Rock Hill",
+        average: "6,200",
+      },
+      {
+        name: "Spartanbury",
+        average: "6,200",
+      },
+      {
+        name: "Sumter",
+        average: "6,200",
+      },
+    ],
+  },
 };
 
 /* eslint-disable max-len */
@@ -97,14 +94,14 @@ const NewSpringAverages = () => (
               fontWeight: 900,
             }}
           >
-            {newSpringNumbers.average}
+            {data.attendance.average}
           </h1>
         </FitText>
       </div>
 
       <div className="one-whole text-dark-primary">
         <CardSlider>
-          {newSpringNumbers.campuses.map((campus, i) => (
+          {data.attendance.campuses.map((campus, i) => (
             <MetricCard
               key={i}
               count={campus.average}
