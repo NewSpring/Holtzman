@@ -18,7 +18,7 @@ node {
 
   println "#### CURRENTLY CHECKED OUT: ${branch} ####"
   def prCount = branch.findAll(/PR-.*-merge/).size();
-  def shouldBuild = prCount > 0;
+  def isPR = prCount > 0;
 
   stage ("environment") {
     sh "node -v"
@@ -35,13 +35,15 @@ node {
 
   wrap([$class: 'AnsiColorBuildWrapper']) {
     stage ("test") {
-      sh "yarn test -- --colors"
+      // sh "yarn test -- --colors"
     }
   }
 
-  if (shouldBuild) {
-    stage("build") {
-      println ("building ${branch}");
+  if (isPR) {
+    stage("tagging") {
+      println ("tagging ${branch}");
+      //GH1234-B1234567
+      println ("with GH${branch.substring(3)}-B${env.BUILD_NUMBER}");
     }
   }
 }
