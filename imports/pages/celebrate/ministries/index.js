@@ -5,6 +5,8 @@ import NewSpringAverages from "./sections/newSpringAverages";
 import KidSpring from "./sections/kidSpring";
 import Fuse from "./sections/fuse";
 import NewSpringLeadershipCollege from "./sections/newSpringLeadershipCollege";
+import NewSpringNetwork from "./sections/newSpringNetwork";
+import Web from "./sections/web";
 import Thanks from "./sections/thanks";
 
 /* eslint-disable max-len */
@@ -16,6 +18,8 @@ const Ministries = () => (
     <KidSpring />
     <Fuse />
     <NewSpringLeadershipCollege />
+    <NewSpringNetwork />
+    <Web />
 
     <Thanks />
   </div>

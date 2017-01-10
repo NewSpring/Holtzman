@@ -7,6 +7,8 @@ import { StyleSheet, css } from "aphrodite";
 import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import { MetricCard } from "../../../../components/@primitives/UI/cards";
+
+import Story from "../../components/story";
 // import List from "../../../../components/list";
 
 const styles = StyleSheet.create({
@@ -153,23 +155,15 @@ const KidSpring = () => (
       <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
 
       {data.stories.map((story, i) => (
-        <div className="grid" key={i}>
-          <div className="constrain-copy">
-            <div className="grid__item one-quarter@lap-and-up">
-              <div className="ratio--square background--fill round" style={{ backgroundImage: `url('${story.imageUrl}')` }}>
-                <div className="ratio__item" />
-              </div>
-            </div>
-            <div className="grid__item three-quarters@lap-and-up text-left">
-              <div dangerouslySetInnerHTML={{ __html: story.content }} className={css(styles.secondaryColor)} />
-              <button
-                className={`h6 btn--small soft-sides@portable one-whole@handheld ${css(styles.secondaryColor, styles.secondaryHover)}`}
-              >
-                {story.linkText}
-              </button>
-            </div>
-          </div>
-        </div>
+        <Story
+          key={i}
+          image={story.imageUrl}
+          content={story.content}
+          contentClass={css(styles.secondaryColor)}
+          linkUrl=""
+          linkClass={`h6 btn--small soft-sides@portable one-whole@handheld ${css(styles.secondaryColor, styles.secondaryHover)}`}
+          linkText={story.linkText}
+        />
       ))}
     </div>
   </div>
