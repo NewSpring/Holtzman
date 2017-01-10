@@ -47,6 +47,7 @@ node {
         stage ("test") {
           sh "echo tagging ${branch} with ${green}${tag}"
           sh "git tag ${tag}"
+          sh "git push --tags"
         }
       }
     }
