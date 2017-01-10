@@ -1,4 +1,5 @@
 
+import { StyleSheet, css } from "aphrodite";
 // import {
 //   Body,
 // } from "../../../../components/layout";
@@ -7,6 +8,25 @@ import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import { MetricCard } from "../../../../components/@primitives/UI/cards";
 // import List from "../../../../components/list";
+
+const styles = StyleSheet.create({
+  primaryBackground: {
+    backgroundColor: "#00A7DD",
+  },
+  primaryColor: {
+    color: "#00A7DD",
+    borderColor: "#00A7DD",
+  },
+  secondaryColor: {
+    color: "#0080C1",
+    borderColor: "#0080C1",
+  },
+  secondaryHover: {
+    ":hover": {
+      backgroundColor: "#0080C1",
+    },
+  },
+});
 
 const data = {
   average: "23,422",
@@ -90,7 +110,7 @@ const data = {
 /* eslint-disable max-len */
 const KidSpring = () => (
   <div className="text-center one-whole ">
-    <div className="soft-double-top@lap-and-up" style={{ backgroundColor: "#00A7DD" }}>
+    <div className={`soft-double-top@lap-and-up ${css(styles.primaryBackground)}`}>
 
       <div className="one-whole text-center text-light-primary push-bottom">
         <h1 className="uppercase">KidSpring</h1>
@@ -116,7 +136,7 @@ const KidSpring = () => (
         </FitText>
       </div>
 
-      <div className="one-whole" style={{ color: "#00A7DD" }}>
+      <div className={`one-whole ${css(styles.primaryColor)}`}>
         <CardSlider>
           {data.campuses.map((campus, i) => (
             <MetricCard
@@ -130,7 +150,7 @@ const KidSpring = () => (
     </div>
 
     <div className="soft-double-top@lap-and-up">
-      <h3 className="italic" style={{ color: "#0080C1" }}><strong>Every number is a student life changed</strong></h3>
+      <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
 
       {data.stories.map((story, i) => (
         <div className="grid" key={i}>
@@ -141,10 +161,9 @@ const KidSpring = () => (
               </div>
             </div>
             <div className="grid__item three-quarters@lap-and-up text-left">
-              <div dangerouslySetInnerHTML={{ __html: story.content }} style={{ color: "#0080C1" }} />
+              <div dangerouslySetInnerHTML={{ __html: story.content }} className={css(styles.secondaryColor)} />
               <button
-                className="h6 btn--small soft-sides@portable one-whole@handheld"
-                style={{ color: "#0080C1", borderColor: "#0080C1" }}
+                className={`h6 btn--small soft-sides@portable one-whole@handheld ${css(styles.secondaryColor, styles.secondaryHover)}`}
               >
                 {story.linkText}
               </button>
