@@ -16,6 +16,7 @@ node {
   repo = tokens[tokens.size()-2]
   branch = tokens[tokens.size()-1]
   println "--------${branch}--------"
+  println "--------${env}--------"
 
   stage ("environment") {
     sh "node -v"
