@@ -18,9 +18,9 @@ node {
   println "--------${branch}--------"
 
   // Get all Causes for the current build
-  // def causes = currentBuild.rawBuild.getCauses()
+  def causes = currentBuild.rawBuild.getCauses()
   // def classes = causes.getClass();
-  // println("----${causes.toString()}----")
+  println("----${causes.toString()}----")
   // for (c in classes) {
   //   println(c);
   // }
