@@ -1,5 +1,6 @@
 // @flow
 import CardSlider from "../../../components/@primitives/UI/card-slider";
+import Currency from "../../../components/@primitives/typography/currency";
 import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import MetricCard from "../../../components/@primitives/UI/cards/MetricCard";
@@ -23,6 +24,7 @@ const volunteerData = [
   { label: "Spartanburg", count: 5000 },
   { label: "Sumter", count: 5000 },
 ];
+const localMissionAmount = "567,422.90";
 
 /* eslint-disable max-len */
 const NextSteps = () => (
@@ -185,8 +187,159 @@ const NextSteps = () => (
       </div>
     </div>
     {/* Connect/Groups */}
+    <div className="soft-double">
+      <h3 className="text-center">Connect</h3>
+      <p className="constrain-copy">
+        We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer. Connect launched
+        in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get
+        to know people in the church.
+      </p>
+      <div className="floating">
+        <div className="floating__item two-thirds@lap-and-up">
+          <hr />
+          <h1>STORY GOES HERE</h1>
+        </div>
+      </div>
+      <div className="text-center">
+        <h3
+          className="italic"
+          style={{
+            fontFamily: "ff-meta-serif-web-pro, serif",
+          }}
+        >
+          This year
+        </h3>
+        <FitText compressor={0.4} maxFontSize={72}>
+          <h1
+            className="uppercase flush-bottom soft-half-bottom"
+            style={{
+              fontWeight: "900",
+            }}
+          >
+            2,422
+          </h1>
+        </FitText>
+        <div className="floating">
+          <h3 className="push-top floating__item two-thirds@lap-and-up">people attended a group</h3>
+        </div>
+        <div className="text-dark-tertiary push-double-top">
+          <h1 style={{ fontWeight: "900" }}>1,583</h1>
+          <h3>for the first time!</h3>
+        </div>
+      </div>
+    </div>
     {/* Local Missions */}
+    <div className="background--primary soft-double">
+      <div className="grid one-whole push-double-top push-double-bottom">
+        <div className="grid__item one-half@lap-and-up text-light-primary display-inline-block" style={{ verticalAlign: "middle" }}>
+          <h3
+            className="italic"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
+            }}
+          >
+            We spent
+          </h3>
+          <FitText compressor={1} maxFontSize={20}>
+            <Currency
+              amount={localMissionAmount}
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom"
+              style={{ fontWeight: "900" }}
+              theme="light"
+            />
+          </FitText>
+          <h3>on local missions</h3>
+          <p className="constrain-copy">
+            God has called our church to make a difference in South Carolina. From rebuilding homes and hosting community service days to giving
+            supplies to low-income schools, the money we budget for local missions creates opportunities to share Jesus&#39; love with our neighbors
+            across the state.
+          </p>
+        </div>
+        <div className="grid__item one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
+          {/*
+          <div className="ratio--square background--fill" style={{ backgroundImage: "url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png')" }}>
+            <div className="ratio__item" />
+          </div>
+          */}
+          <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png" alt="map of south carolina" />
+        </div>
+      </div>
+    </div>
     {/* Foreign Missions */}
+    <div className="background--tertiary soft-double">
+      <div className="grid one-whole push-double-top push-double-bottom">
+        <div className="grid__item one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
+          {/*
+          <div className="ratio--square background--fill" style={{ backgroundImage: "url('//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png')" }}>
+            <div className="ratio__item" />
+          </div>
+          */}
+          <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-world.png" alt="map of the world" />
+        </div>
+        <div className="grid__item one-half@lap-and-up soft-double-left soft-right text-light-primary display-inline-block" style={{ verticalAlign: "middle" }}>
+          <h3
+            className="italic"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
+            }}
+          >
+            We spent
+          </h3>
+          <FitText compressor={1} maxFontSize={20}>
+            <Currency
+              amount={localMissionAmount}
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-bottom"
+              style={{ fontWeight: "900" }}
+              theme="light"
+            />
+          </FitText>
+          <h3>on foreign missions</h3>
+          <p className="constrain-copy">
+            We partner with Freedom Church to share Jesus&#39; love with people around the world. By partnering with local churches, we&#39;re able to
+            participate in ministry that continues long after our team comes home. The local church is the hope of the world. When we work together, we
+            begin to see the Great Commission happening before our eyes.
+          </p>
+        </div>
+      </div>
+      <div className="text-center text-light-primary soft-double-top">
+        <FitText compressor={0.4} maxFontSize={72}>
+          <h1
+            className="uppercase flush-bottom soft-half-bottom"
+            style={{
+              fontWeight: "900",
+            }}
+          >
+            2,422
+          </h1>
+        </FitText>
+        <div className="floating">
+          <h3 className="push-top floating__item two-thirds@lap-and-up">people went on a mission trip</h3>
+        </div>
+        <h3
+          className="italic"
+          style={{
+            fontFamily: "ff-meta-serif-web-pro, serif",
+          }}
+        >
+          to
+        </h3>
+        <FitText compressor={0.4} maxFontSize={72}>
+          <h1
+            className="uppercase flush-bottom soft-half-bottom"
+            style={{
+              fontWeight: "900",
+            }}
+          >
+            17
+          </h1>
+        </FitText>
+        <div className="floating">
+          <h3 className="push-top floating__item two-thirds@lap-and-up">different nations</h3>
+        </div>
+      </div>
+    </div>
     {/* Keep Reading */}
   </div>
 );
