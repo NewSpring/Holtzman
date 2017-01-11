@@ -42,7 +42,7 @@ export const RightPanel = ({ loading, data, changeYear }: IRightPanel) => (
               See your summary from
           </em></small>
         </p>
-        <style>{".right-select select { color: #ffffff } .right-select:after {border-color: #ffffff transparent transparent}"}</style>
+        <style>{".right-select select { color: #ffffff } .right-select:after {border-color: #ffffff transparent transparent} .right-select select option { color: #505050 }"}</style>
         <Forms.Select
           items={YEARS}
           hideLabel
