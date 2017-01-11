@@ -44,7 +44,7 @@ node {
   if (isPR) {
     stage("tagging") {
       def green = "\u001B[32m";
-      def tag = "GH${branch.substring(3, branch.length()-6)}-B${env.BUILD_NUMBER}";
+      def tag = "GH${branch.substring(3)}-B${env.BUILD_NUMBER}";
       wrap([$class: 'AnsiColorBuildWrapper']) {
         sh "echo tagging ${branch} with ${green}${tag}"
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'GithubJD', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
