@@ -35,7 +35,6 @@ const Finances = () => {
       <div className="background--primary text-center text-light-primary soft-double-top soft-double-bottom">
         <h3 className="">Giving to General Fund</h3>
         <div className="push-half-bottom">
-          {/* <h3 className="display-inline-block">$</h3> */}
           <div className="display-inline-block">
             <FitText compressor={1} maxFontSize={18}>
               <Currency
@@ -45,19 +44,8 @@ const Finances = () => {
                 style={{ fontWeight: "900" }}
                 theme="light"
               />
-              {/*
-              <h1
-                className="uppercase flush-bottom soft-half-bottom"
-                style={{
-                  fontWeight: "900",
-                }}
-              >
-                {generalFundAmount}
-              </h1>
-              */}
             </FitText>
           </div>
-          {/* <h3 className="display-inline-block">.00</h3> */}
         </div>
         <div className="floating push-right">
           <div className="grid floating__item two-thirds@lap-and-up text-center">
