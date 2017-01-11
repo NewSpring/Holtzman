@@ -27,12 +27,15 @@ const Story = ({
   <div className="grid soft-double">
     <div className="constrain-page push-double@lap-and-up">
       {image && <div className="grid__item one-quarter@lap-and-up display-inline-block soft-double-right@lap-and-up push-double-bottom@handheld" style={{ verticalAlign: "middle" }}>
-        <div className="ratio--square background--fill round" style={{ backgroundImage: `url('${image}')` }}>
+        <div className="ratio--square background--fill round visuallyhidden@handheld" style={{ backgroundImage: `url('${image}')` }}>
           <div className="ratio__item" />
         </div>
       </div>}
       <div className={`grid__item ${image && "three-quarters@lap-and-up"} text-left display-inline-block`} style={{ verticalAlign: "middle" }}>
-        {heading && name && location && <h4 style={{ fontWeight: "400" }}>{heading} <strong style={{ fontFamily: "colfax, sans-serif" }}>{name}</strong> from <strong style={{ fontFamily: "colfax, sans-serif" }}>{location}</strong>.</h4>}
+        {heading && name && location && <h5 className={contentClass} style={{ fontWeight: "400" }}>{heading} <strong style={{ fontFamily: "colfax, sans-serif" }}>{name}</strong> from <strong style={{ fontFamily: "colfax, sans-serif" }}>{location}</strong>.</h5>}
+        <div className="ratio--square background--fill round visuallyhidden@lap-and-up" style={{ backgroundImage: `url('${image}')` }}>
+          <div className="ratio__item" />
+        </div>
         <div dangerouslySetInnerHTML={{ __html: content }} className={contentClass} />
         {linkUrl && <p>
           <a
