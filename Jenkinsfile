@@ -50,8 +50,9 @@ node {
           sh "echo tagging ${branch} with ${green}${tag}"
           withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'GithubJD', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
             println("inside withCredentials")
-            // sh("git tag ${tag}")
+            sh("git tag ${tag}")
             // sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@https://github.com/newspring/holtzman --tags")
+            sh("git push https://${env.GIT_USERNAME}:12345@https://github.com/newspring/holtzman --tags")
           }
           // sh "git push --tags"
         }
