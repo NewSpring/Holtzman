@@ -19,7 +19,7 @@ class DiscoverWithoutData extends Component {
     const open = discover.items.filter((x) => (x.status.toLowerCase() === "open"));
 
     const featuredItem = featured[0];
-    const recommendedItems = [...featured.slice(1, featured.length - 1)];
+    const recommendedItems = [...featured.slice(1, featured.length)];
 
     return (
       <Layout
