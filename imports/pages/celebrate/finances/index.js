@@ -32,7 +32,7 @@ const Finances = () => {
     <div>
       <Meta title="Finances" />
       {/* Header */}
-      <div className="background--primary outlined--top outlined--light text-center text-light-primary soft-double-top soft-double-bottom">
+      <div className="background--primary text-center text-light-primary soft-double-top soft-double-bottom">
         <h3 className="">Giving to General Fund</h3>
         <div className="push-half-bottom">
           {/* <h3 className="display-inline-block">$</h3> */}
