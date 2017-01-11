@@ -52,7 +52,7 @@ node {
             println("inside withCredentials")
             sh("git tag ${tag}")
             def repositoryUrl = "github.com/NewSpring/holtzman"
-            sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@${repositoryUrl} --tags")
+            sh("git push ssh://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@${repositoryUrl} --tags")
           }
           // sh "git push --tags"
         }
