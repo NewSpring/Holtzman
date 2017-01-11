@@ -39,9 +39,11 @@ const NextSteps = () => (
   <div>
     <Meta title="Next Steps" />
     {/* Header */}
-    <div className="background--light-secondary soft-double">
-      <h3 className="text-center">What Is A Next Step</h3>
-      <p className="constrain-copy">Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here&#39;s a look at how we&#39;ve seen people take their next steps in 2016.</p>
+    <div className="background--light-secondary soft-double@lap-and-up soft@handheld">
+      <div className="push-double-top push-double-bottom">
+        <h3 className="text-center">What Is A Next Step</h3>
+        <p className="constrain-copy">Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here&#39;s a look at how we&#39;ve seen people take their next steps in 2016.</p>
+      </div>
     </div>
     {/* Salvations */}
     <div className="floating">
@@ -105,46 +107,46 @@ const NextSteps = () => (
       </div>
     </div>
     {/* First Time Visitors */}
-    <div className="grid one-whole soft-double">
-      <div className="grid__item floating one-half@lap-and-up text-center display-inline-block" style={{ verticalAlign: "middle" }}>
-        <div className="floating__item two-thirds@lap-and-up">
-          <h3
-            className="italic"
-            style={{
-              fontFamily: "ff-meta-serif-web-pro, serif",
-            }}
-          >
-            We had
-          </h3>
-          <FitText compressor={0.4} maxFontSize={72}>
-            <h1
-              className="uppercase flush-bottom soft-half-bottom"
+    <div className="soft-double@lap-and-up soft-double-top@handheld soft-double-bottom@handheld">
+      <div className="grid one-whole soft-double-left@handheld push-double-top">
+        <div className="grid__item floating one-half@lap-and-up text-center display-inline-block" style={{ verticalAlign: "middle" }}>
+          <div className="floating__item two-thirds@lap-and-up">
+            <h3
+              className="italic"
               style={{
-                fontWeight: "900",
+                fontFamily: "ff-meta-serif-web-pro, serif",
               }}
             >
-              13,000
-            </h1>
-          </FitText>
-          <h3 className="push-top">first time visitors come to NewSpring</h3>
-        </div>
-      </div>
-      <div className="grid__item one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
-        <div className="grid">
-          <div className="grid__item two-thirds@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
-            <VictoryPie
-              data={firstTimeVisitorData}
-              x="ministry"
-              y="count"
-              style={{
-                labels: { display: "none" },
-              }}
-              colorScale={["#6BAC43", "#1C683E", "#2A4930"]}
-              labelRadius={100}
-            />
+              We had
+            </h3>
+            <FitText compressor={0.4} maxFontSize={72}>
+              <h1
+                className="uppercase flush-bottom soft-half-bottom"
+                style={{
+                  fontWeight: "900",
+                }}
+              >
+                13,000
+              </h1>
+            </FitText>
+            <h3 className="push-top">first time visitors come to NewSpring</h3>
           </div>
-          <div className="floating@handheld">
-            <div className="grid__item floating__item@handheld one-third@lap-and-up text-left display-inline-block" style={{ verticalAlign: "middle" }}>
+        </div>
+        <div className="grid__item one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
+          <div className="grid">
+            <div className="grid__item two-thirds@lap-and-up one-whole@handheld display-inline-block" style={{ verticalAlign: "middle" }}>
+              <VictoryPie
+                data={firstTimeVisitorData}
+                x="ministry"
+                y="count"
+                style={{
+                  labels: { display: "none" },
+                }}
+                colorScale={["#6BAC43", "#1C683E", "#2A4930"]}
+                labelRadius={100}
+              />
+            </div>
+            <div className="grid__item one-third@lap-and-up text-left display-inline-block visuallyhidden@handheld" style={{ verticalAlign: "middle" }}>
               {firstTimeVisitorData.map(({ ministry, count, color }, key) => (
                 <div className="push-bottom">
                   <div className="display-inline-block" style={{ verticalAlign: "middle", borderRadius: "100%", border: `1px solid ${color}`, background: `${color}`, width: "1%", padding: "8px 8px" }} />
@@ -154,26 +156,38 @@ const NextSteps = () => (
             </div>
           </div>
         </div>
-      </div>
-      <div className="floating">
-        <div className="floating__item two-thirds@lap-and-up">
-          <hr />
-          <div className="text-center">
-            <h1>STORY GOES HERE</h1>
+        <div className="floating visuallyhidden@lap-and-up">
+          <div className="floating__item text-left">
+            {firstTimeVisitorData.map(({ ministry, count, color }, key) => (
+              <div className="push-bottom">
+                <div className="display-inline-block" style={{ verticalAlign: "middle", borderRadius: "100%", border: `1px solid ${color}`, background: `${color}`, width: "1%", padding: "8px 8px" }} />
+                <h5 className="display-inline-block push-half-left" key={key} style={{ verticalAlign: "middle", marginBottom: "0" }}>{ministry}: {count}</h5>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="floating">
+          <div className="floating__item two-thirds@lap-and-up">
+            <hr />
+            <div className="text-center">
+              <h1>STORY GOES HERE</h1>
+            </div>
           </div>
         </div>
       </div>
     </div>
     {/* Volunteers */}
     <div className="background--light-secondary soft-double-top soft-double-bottom text-center">
-      <h3
-        className="italic push-double-top"
-        style={{
-          fontFamily: "ff-meta-serif-web-pro, serif",
-        }}
-      >
-        This year
-      </h3>
+      <div className="push-double-top">
+        <h3
+          className="italic push-double-top"
+          style={{
+            fontFamily: "ff-meta-serif-web-pro, serif",
+          }}
+        >
+          This year
+        </h3>
+      </div>
       <FitText compressor={0.4} maxFontSize={72}>
         <h1
           className="uppercase flush-bottom soft-half-bottom"
@@ -185,9 +199,9 @@ const NextSteps = () => (
         </h1>
       </FitText>
       <div className="floating">
-        <h3 className="push-top push-left push-right floating__item two-thirds@lap-and-up">people served at NewSpring Church</h3>
+        <h3 className="push-top push-left push-right floating__item one-third@lap-and-up">people served at NewSpring Church</h3>
       </div>
-      <div className="text-dark-tertiary push-double-top">
+      <div className="text-dark-tertiary push-top">
         <h1 style={{ fontWeight: "900" }}>7,583</h1>
         <h3>for the first time!</h3>
       </div>
@@ -220,44 +234,46 @@ const NextSteps = () => (
       </div>
     </div>
     {/* Connect/Groups */}
-    <div className="soft-double">
-      <h3 className="text-center">Connect</h3>
-      <p className="constrain-copy">
-        We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer. Connect launched
-        in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get
-        to know people in the church.
-      </p>
-      <div className="floating">
-        <div className="floating__item two-thirds@lap-and-up">
-          <hr />
-          <h1>STORY GOES HERE</h1>
+    <div className="soft-double@lap-and-up soft@handheld">
+      <div className="one-whole push-double-top push-double-bottom@handheld push-bottom@lap-and-up">
+        <h3 className="text-center">Connect</h3>
+        <p className="constrain-copy">
+          We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer. Connect launched
+          in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get
+          to know people in the church.
+        </p>
+        <div className="floating">
+          <div className="floating__item two-thirds@lap-and-up">
+            <hr />
+            <h1>STORY GOES HERE</h1>
+          </div>
         </div>
-      </div>
-      <div className="text-center">
-        <h3
-          className="italic"
-          style={{
-            fontFamily: "ff-meta-serif-web-pro, serif",
-          }}
-        >
-          This year
-        </h3>
-        <FitText compressor={0.4} maxFontSize={72}>
-          <h1
-            className="uppercase flush-bottom soft-half-bottom"
+        <div className="text-center">
+          <h3
+            className="italic"
             style={{
-              fontWeight: "900",
+              fontFamily: "ff-meta-serif-web-pro, serif",
             }}
           >
-            2,422
-          </h1>
-        </FitText>
-        <div className="floating">
-          <h3 className="push-top floating__item two-thirds@lap-and-up">people attended a group</h3>
-        </div>
-        <div className="text-dark-tertiary push-double-top">
-          <h1 style={{ fontWeight: "900" }}>1,583</h1>
-          <h3>for the first time!</h3>
+            This year
+          </h3>
+          <FitText compressor={0.4} maxFontSize={72}>
+            <h1
+              className="uppercase flush-bottom soft-half-bottom"
+              style={{
+                fontWeight: "900",
+              }}
+            >
+              2,422
+            </h1>
+          </FitText>
+          <div className="floating">
+            <h3 className="push-top floating__item two-thirds@lap-and-up">people attended a group</h3>
+          </div>
+          <div className="text-dark-tertiary push-double-top@lap-and-up push-top@handheld">
+            <h1 style={{ fontWeight: "900" }}>1,583</h1>
+            <h3>for the first time!</h3>
+          </div>
         </div>
       </div>
     </div>
