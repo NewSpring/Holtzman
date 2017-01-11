@@ -77,39 +77,39 @@ const data = {
 
 /* eslint-disable max-len */
 const NewSpringAverages = () => (
-  <div className="text-center one-whole ">
-    <div className="background--light-secondary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
-
-      <div className="one-whole text-center">
-        <h3
-          className="text-dark-primary"
-        >
-          Average Weekly Attendance
-        </h3>
-
-        <FitText compressor={1.1}>
-          <h1
-            className="flush-bottom soft-half-bottom soft-double-top text-dark-primary"
-            style={{
-              fontWeight: 900,
-            }}
+  <div className="background--light-secondary text-dark-primary soft-double-ends push-ends text-center">
+    <div className="constrain-page push-top">
+      <div className="grid">
+        <div className="grid__item one-whole">
+          <h3
+            className="push-half-bottom"
           >
-            {data.attendance.average}
-          </h1>
-        </FitText>
-      </div>
+            Average Weekly Attendance
+          </h3>
 
-      <div className="one-whole text-dark-primary">
-        <CardSlider>
-          {data.attendance.campuses.map((campus, i) => (
-            <MetricCard
-              key={i}
-              count={campus.average}
-              label={campus.name}
-            />
-          ))}
-        </CardSlider>
+          <FitText compressor={1.1}>
+            <h1
+              style={{
+                fontWeight: 900,
+              }}
+            >
+              {data.attendance.average}
+            </h1>
+          </FitText>
+        </div>
       </div>
+    </div>
+
+    <div className="push-bottom">
+      <CardSlider>
+        {data.attendance.campuses.map((campus, i) => (
+          <MetricCard
+            key={i}
+            count={campus.average}
+            label={campus.name}
+          />
+        ))}
+      </CardSlider>
     </div>
   </div>
 );
