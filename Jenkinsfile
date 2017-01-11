@@ -1,5 +1,7 @@
 #!groovy​
 
+set +x //hide run commands
+
 node {
   // uncomment these 2 lines and edit the name 'node-4.4.5' according to what you choose in configuration
   def nodeHome = tool name: 'node-6', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
@@ -46,8 +48,11 @@ node {
       wrap([$class: 'AnsiColorBuildWrapper']) {
         stage ("test") {
           sh "echo tagging ${branch} with ${green}${tag}"
-          sh "git tag ${tag}"
-          sh "git push --tags"
+          withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'github-jd', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+            sh("git tag ${tag}")
+            sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@https://github.com/newspring/holtzman --tags")
+          }
+          // sh "git push --tags"
         }
       }
     }
