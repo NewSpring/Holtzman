@@ -1,0 +1,72 @@
+
+const data = {
+  statistics: {
+    icons: [
+      {
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-fish.png",
+        label: "pounts of Goldfish given out by KidSpring",
+        value: "25,000",
+      },
+      {
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-car.png",
+        label: "cars parked by volunteers",
+        value: "700,000",
+      },
+      {
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-mail.png",
+        label: "emails received to hello@newspring.cc",
+        value: "4,000",
+      },
+      {
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-mug.png",
+        label: "pounts of coffee brewed by volunteers",
+        value: "4,900",
+      },
+      {
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-pencil.png",
+        label: "pens given away",
+        value: "220,000",
+      },
+      {
+        image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-baby.png",
+        label: "diapers changed by KidSpring volunteers",
+        value: "57,000",
+      },
+    ],
+  },
+};
+
+/* eslint-disable max-len */
+const FunFacts = () => (
+  <div className="grid flush">
+    <div className="background--light-secondary">
+      <div className="constrain-page">
+        <div className="grid__item one-whole text-dark-primary text-center">
+          <div className="constrain-page soft-double push-double@lap-and-up">
+
+            <div className="one-whole text-center push-double-ends soft-top">
+              <h1 className="uppercase">Fun Facts</h1>
+              <h3 className="italic"><strong>From this year</strong></h3>
+            </div>
+
+            {data.statistics.icons.map((statistic, i) => (
+              <div
+                key={i}
+                className="grid__item push-bottom one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up soft"
+              >
+                <img src={statistic.image} className="push-double-bottom" style={{ maxHeight: "100px" }} />
+                <h1 style={{ fontWeight: 900 }}>
+                  {statistic.value}
+                </h1>
+                <h3>{statistic.label}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+/* eslint-enable max-len */
+
+export default FunFacts;
