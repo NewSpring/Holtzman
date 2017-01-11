@@ -27,3 +27,22 @@ it("should render iOS action button", () => {
   );
   expect(result).toMatchSnapshot();
 });
+
+it("should only show the iOS messages if there isn't a schedule start", () => {
+  // mock ios environment
+  global.cordova = {
+    platformId: "ios",
+  };
+  const theData = {
+    completeGift: () => {},
+    payment: {
+      type: "ach",
+      accountNumber: "123456789",
+    },
+    schedule: { start: "2017-01-10" },
+  };
+  const result = renderer.create(
+    <ActionButton { ...theData } />
+  );
+  expect(result).toMatchSnapshot();
+})

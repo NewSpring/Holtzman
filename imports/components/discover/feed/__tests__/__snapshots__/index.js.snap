@@ -34,6 +34,9 @@ exports[`test renders with props 1`] = `
       Object {
         "status": "featured",
       },
+      Object {
+        "status": "featured",
+      },
     ]
   }
   textItems={

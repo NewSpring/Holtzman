@@ -88,6 +88,17 @@ Object {
                               ],
                             },
                           },
+                          Object {
+                            "kind": "Argument",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "showFutureEntries",
+                            },
+                            "value": Object {
+                              "kind": "BooleanValue",
+                              "value": true,
+                            },
+                          },
                         ],
                         "directives": Array [],
                         "kind": "Field",
@@ -315,13 +326,13 @@ Object {
   ],
   "kind": "Document",
   "loc": Object {
-    "end": 488,
+    "end": 513,
     "source": Source {
       "body": "
   query GetEntriesFromStudy($id: ID!) {
     content: node(id: $id) {
       ... on Content {
-        studyEntries: children(channels: [\"study_entries\"]) {
+        studyEntries: children(channels: [\"study_entries\"], showFutureEntries: true) {
           id
           entryId: id
           title

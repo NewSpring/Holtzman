@@ -4,6 +4,7 @@ import Meta from "../../components/shared/meta";
 import Finances from "./finances";
 import NextSteps from "./next-steps";
 import DashboardLayout from "../../components/@primitives/layout/dashboard";
+import Ministries from "./ministries";
 
 type ITemplate = {
   children: React$Element<any>,
@@ -79,6 +80,7 @@ const Routes = [
     childRoutes: [
       ...Finances.Routes,
       ...NextSteps.Routes,
+      ...Ministries.Routes,
     ],
   },
 ];
