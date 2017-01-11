@@ -21,7 +21,7 @@ it ("should accept a default value", () => {
 
   const inputProps = getSingleSpecWrapper(component, "input").props();
 
-  expect(inputProps.defaultChecked).toEqual("checked");
+  expect(inputProps.checked).toEqual("checked");
 });
 
 it ("should disable input with disabled prop", () => {
