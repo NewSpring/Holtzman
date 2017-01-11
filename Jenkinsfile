@@ -37,7 +37,7 @@ node {
 
   wrap([$class: 'AnsiColorBuildWrapper']) {
     stage ("test") {
-      // sh "yarn test -- --colors"
+      sh "yarn test -- --colors"
     }
   }
 
@@ -53,7 +53,6 @@ node {
             def repositoryUrl = "github.com/NewSpring/holtzman.git"
             sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@${repositoryUrl} --tags")
           }
-          // sh "git push --tags"
         }
       }
     }
