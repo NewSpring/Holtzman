@@ -19,7 +19,7 @@ node {
   branch = tokens[tokens.size()-1]
 
   println "#### CURRENTLY CHECKED OUT: ${branch} ####"
-  def prCount = branch.findAll(/PR-.*-merge/).size();
+  def prCount = branch.findAll(/PR-.*/).size();
   def isPR = prCount > 0;
 
   stage ("environment") {
