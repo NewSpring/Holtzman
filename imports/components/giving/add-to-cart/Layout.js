@@ -19,6 +19,7 @@ type ILayout = {
   authorized: boolean,
   canCheckout: boolean,
   setCanCheckout: Function,
+  bindSubComponentReset: Function,
 }
 
 export default ({
@@ -32,6 +33,7 @@ export default ({
   authorized,
   canCheckout,
   setCanCheckout,
+  bindSubComponentReset,
 }: ILayout) => (
   <div className="push-top@handheld soft-half-top@lap-and-up">
     <Forms.Form
@@ -74,7 +76,11 @@ export default ({
         </div>
 
         {/* Schedule */}
-        <ScheduleLayout setCanCheckout={setCanCheckout} authorized={authorized} />
+        <ScheduleLayout
+          setCanCheckout={setCanCheckout}
+          authorized={authorized}
+          bindSubComponentReset={bindSubComponentReset}
+        />
 
         {/* Total information */}
         <h3 className="display-inline-block text-dark-primary push-half-bottom push-half-right" style={{ verticalAlign: "middle" }}>

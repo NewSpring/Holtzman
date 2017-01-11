@@ -159,7 +159,7 @@ export default ({
                   Start Date:
                 </span>
                 <em className="text-dark-primary">
-                  {moment(schedule.start).format("MMM D, YYYY")}
+                  {moment.utc(schedule.start).format("MMM D, YYYY")}
                 </em>
               </p>
 

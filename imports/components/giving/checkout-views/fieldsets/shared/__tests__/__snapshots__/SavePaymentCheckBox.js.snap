@@ -24,9 +24,9 @@ exports[`test renders with props 1`] = `
     </small>
   </label>
   <input
+    checked=""
     className={undefined}
     data-spec="input"
-    defaultChecked=""
     disabled={undefined}
     id="savePayment"
     name="savePayment"

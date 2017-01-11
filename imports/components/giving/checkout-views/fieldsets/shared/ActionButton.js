@@ -22,7 +22,7 @@ const ActionButton = ({
   schedule,
   scheduleToRecover,
 }: IActionButton) => {
-  if (isIOS()) {
+  if (!schedule.start && isIOS()) {
     return (
       <div>
         <p className="text-dark-secondary">
