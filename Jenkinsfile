@@ -49,10 +49,9 @@ node {
         stage ("test") {
           sh "echo tagging ${branch} with ${green}${tag}"
           withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'GithubJD', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
-            println("inside withCredentials")
             sh("git tag ${tag}")
             def repositoryUrl = "github.com/NewSpring/holtzman.git"
-            sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@${repositoryUrl} --tags")
+            sh("git push --tags https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@${repositoryUrl}")
           }
           // sh "git push --tags"
         }
