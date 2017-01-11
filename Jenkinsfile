@@ -46,13 +46,11 @@ node {
       def green = "\u001B[32m";
       def tag = "GH${branch.substring(3, branch.length()-6)}-B${env.BUILD_NUMBER}";
       wrap([$class: 'AnsiColorBuildWrapper']) {
-        stage ("test") {
-          sh "echo tagging ${branch} with ${green}${tag}"
-          withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'GithubJD', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
-            sh("git tag ${tag}")
-            def repositoryUrl = "github.com/NewSpring/holtzman.git"
-            sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@${repositoryUrl} --tags")
-          }
+        sh "echo tagging ${branch} with ${green}${tag}"
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'GithubJD', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+          sh("git tag ${tag}")
+          def repositoryUrl = "github.com/NewSpring/holtzman.git"
+          sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@${repositoryUrl} --tags")
         }
       }
     }
