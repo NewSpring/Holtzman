@@ -111,34 +111,31 @@ const data = {
 
 /* eslint-disable max-len */
 const KidSpring = () => (
-  <div className="text-center one-whole ">
-    <div className={`soft-double-top@lap-and-up ${css(styles.primaryBackground)}`}>
+  <div>
+    <div className={`${css(styles.primaryBackground)} soft-double-ends text-center text-light-primary`}>
+      <div className="constrain-page soft-double-top push-double-top">
+        <div className="grid">
+          <div className="grid__item one-whole push-bottom">
+            <h1 className="uppercase">KidSpring</h1>
+            <p className="constrain-copy">KidSpring is the children&#39;s ministry at NewSpring Church.  Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.</p>
+          </div>
 
-      <div className="one-whole text-center text-light-primary push-bottom">
-        <h1 className="uppercase">KidSpring</h1>
-        <p className="constrain-copy">KidSpring is the children&#39;s ministry at NewSpring Church.  Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.</p>
+          <div className="grid__item one-whole soft-double-top soft-bottom">
+            <h3 className="push-half-bottom">Average Number Of Kids Each Sunday</h3>
+            <FitText compressor={1.1}>
+              <h1
+                style={{
+                  fontWeight: 900,
+                }}
+              >
+                {data.average}
+              </h1>
+            </FitText>
+          </div>
+        </div>
       </div>
 
-      <div className="one-whole text-center text-light-primary">
-        <h3
-          className=""
-        >
-          Average Number Of Kids Each Sunday
-        </h3>
-
-        <FitText compressor={1.1}>
-          <h1
-            className="flush-bottom soft-half-bottom soft-double-top"
-            style={{
-              fontWeight: 900,
-            }}
-          >
-            {data.average}
-          </h1>
-        </FitText>
-      </div>
-
-      <div className={`one-whole ${css(styles.primaryColor)}`}>
+      <div className={`${css(styles.primaryColor)} push-double-bottom`}>
         <CardSlider>
           {data.campuses.map((campus, i) => (
             <MetricCard
@@ -151,21 +148,34 @@ const KidSpring = () => (
       </div>
     </div>
 
-    <div className="soft-double-top@lap-and-up">
-      <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
+    <div className="background--light-primary text-center soft-double">
+      <div className="constrain-page soft-double-top push-double-top">
+        <div className="grid">
+          <div className="grid__item one-whole">
+            <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
+          </div>
+        </div>
+      </div>
 
-      {data.stories.map((story, i) => (
-        <Story
-          key={i}
-          image={story.imageUrl}
-          content={story.content}
-          contentClass={css(styles.secondaryColor)}
-          linkUrl=""
-          linkClass={`h6 btn--small soft-sides@portable one-whole@handheld ${css(styles.secondaryColor, styles.secondaryHover)}`}
-          linkText={story.linkText}
-        />
-      ))}
+      <div className="constrain-page">
+        <div className="grid">
+          <div className="grid__item one-whole">
+            {data.stories.map((story, i) => (
+              <Story
+                key={i}
+                image={story.imageUrl}
+                content={story.content}
+                contentClass={css(styles.secondaryColor)}
+                linkUrl=""
+                linkClass={`h6 btn--small soft-sides@portable one-whole@handheld ${css(styles.secondaryColor, styles.secondaryHover)}`}
+                linkText={story.linkText}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 );
 /* eslint-enable max-len */
