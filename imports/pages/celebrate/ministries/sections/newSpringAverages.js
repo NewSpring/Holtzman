@@ -86,7 +86,7 @@ const NewSpringAverages = () => (
           Average Weekly Attendance
         </h3>
 
-        <FitText compressor={0.6}>
+        <FitText compressor={0.6} maxFontSize="100">
           <h1
             style={{
               fontWeight: 900,

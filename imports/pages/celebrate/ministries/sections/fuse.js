@@ -114,7 +114,7 @@ const Fuse = () => (
             >
               Average Weekly Attendance
             </h3>
-            <FitText compressor={0.6}>
+            <FitText compressor={0.6} maxFontSize="100">
               <h1
                 style={{
                   fontWeight: 900,
@@ -149,7 +149,7 @@ const Fuse = () => (
       <div className="constrain-copy soft-double-ends push-double-ends soft-sides@handheld">
         <div className="one-whole">
           <h3 className="italic push-half-bottom" style={{ color: "#4F92A9" }}><strong>This year we saw</strong></h3>
-          <FitText compressor={0.6}>
+          <FitText compressor={0.6} maxFontSize="100">
             <h1
               style={{
                 fontWeight: 900,

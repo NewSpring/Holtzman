@@ -124,7 +124,7 @@ const KidSpring = () => (
 
           <div className="grid__item one-whole soft-double-top@lap-and-up soft-top soft-bottom">
             <h3 className="push-half-bottom">Average Number Of Kids Each Sunday</h3>
-            <FitText compressor={0.6}>
+            <FitText compressor={0.6} maxFontSize="100">
               <h1
                 style={{
                   fontWeight: 900,
