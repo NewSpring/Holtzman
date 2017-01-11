@@ -31,6 +31,7 @@ const generateComponent = (additionalProps = {}) => {
     authorized: true,
     saveSchedule: jest.fn(),
     setCanCheckout: jest.fn(),
+    bindSubComponentReset: jest.fn(),
   };
   return (
     <Schedule {...defaultProps} {...additionalProps} />
@@ -272,5 +273,31 @@ describe("Class", () => {
       onDayClick(null, "tuesday", { selected: false });
       expect(wrapper.state().start).toEqual("tuesday");
     });
+    it("calls saveSchedule when a data is selected", () => {
+      const saveSchedule = jest.fn();
+      const wrapper = mount(generateComponent({ saveSchedule }));
+      wrapper.setState({ start: "custom", frequency: "monthly" });
+      const { onDayClick } = wrapper.instance();
+      onDayClick(null, "tuesday", { selected: true });
+      expect(saveSchedule).toBeCalledWith({
+        frequency: "monthly",
+        start: "tuesday",
+      });
+    });
   });
+
+  describe("reset-binding", () => {
+    it("resets when called", () => {
+      let reset = null;
+      const bindSubComponentReset = (fn) => reset = jest.fn(fn);
+
+      const wrapper = mount(generateComponent({ bindSubComponentReset }));
+      const originalState = wrapper.state();
+      wrapper.setState({ checked: true });
+
+      reset();
+      expect(wrapper.state()).toEqual(originalState);
+    });
+  });
+
 });

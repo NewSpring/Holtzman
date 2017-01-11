@@ -15,8 +15,8 @@ exports[`test pushes type prop to inputclasses 1`] = `
       style={Object {}} />
   </label>
   <input
+    checked=""
     data-spec="input"
-    defaultChecked=""
     style={
       Object {
         "width": 0,
@@ -57,15 +57,11 @@ exports[`test should accept a default value 1`] = `
       }>
       <small
         data-spec="input-label"
-        style={
-          Object {
-            "color": "#303030",
-          }
-        } />
+        style={Object {}} />
     </label>
     <input
+      checked="checked"
       data-spec="input"
-      defaultChecked="checked"
       style={
         Object {
           "width": 0,
@@ -100,8 +96,8 @@ exports[`test should accept an id 1`] = `
         style={Object {}} />
     </label>
     <input
+      checked=""
       data-spec="input"
-      defaultChecked=""
       id="harambe"
       style={
         Object {
@@ -139,8 +135,8 @@ exports[`test should accept label 1`] = `
         style={Object {}} />
     </label>
     <input
+      checked=""
       data-spec="input"
-      defaultChecked=""
       id="harambe"
       name="harambe"
       style={
@@ -179,8 +175,8 @@ exports[`test should accept name prop 1`] = `
         style={Object {}} />
     </label>
     <input
+      checked=""
       data-spec="input"
-      defaultChecked=""
       id="harambe"
       name="harambe"
       style={
@@ -223,8 +219,8 @@ exports[`test should add classes with classes prop 1`] = `
         style={Object {}} />
     </label>
     <input
+      checked=""
       data-spec="input"
-      defaultChecked=""
       style={
         Object {
           "width": 0,
@@ -258,8 +254,8 @@ exports[`test should add classes with classes prop 2`] = `
         style={Object {}} />
     </label>
     <input
+      checked=""
       data-spec="input"
-      defaultChecked=""
       style={
         Object {
           "width": 0,
@@ -293,9 +289,9 @@ exports[`test should add inputClasses with inputClasses prop 1`] = `
         style={Object {}} />
     </label>
     <input
+      checked=""
       className="test1 harambe"
       data-spec="input"
-      defaultChecked=""
       style={
         Object {
           "width": 0,
@@ -329,8 +325,8 @@ exports[`test should disable input with disabled prop 1`] = `
         style={Object {}} />
     </label>
     <input
+      checked=""
       data-spec="input"
-      defaultChecked=""
       disabled={true}
       style={
         Object {
@@ -366,8 +362,8 @@ exports[`test should display children 1`] = `
       </small>
     </label>
     <input
+      checked=""
       data-spec="input"
-      defaultChecked=""
       style={
         Object {
           "width": 0,
@@ -401,8 +397,8 @@ exports[`test should hide label with hideLabel prop 1`] = `
         style={Object {}} />
     </label>
     <input
+      checked=""
       data-spec="input"
-      defaultChecked=""
       style={
         Object {
           "width": 0,
@@ -431,8 +427,8 @@ exports[`test should render with minimal props 1`] = `
         style={Object {}} />
     </label>
     <input
+      checked=""
       data-spec="input"
-      defaultChecked=""
       style={
         Object {
           "width": 0,
@@ -466,8 +462,8 @@ exports[`test should respond to onclick prop 1`] = `
         style={Object {}} />
     </label>
     <input
+      checked=""
       data-spec="input"
-      defaultChecked=""
       onClick={[Function]}
       style={
         Object {
