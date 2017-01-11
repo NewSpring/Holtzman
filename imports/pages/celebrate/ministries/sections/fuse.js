@@ -107,7 +107,7 @@ const Fuse = () => (
 
         <div className="one-whole text-center text--light-primary push-bottom">
           <h1 className="uppercase" style={{ color: "#4F92A9" }}>Fuse</h1>
-          <p className="constrain-copy">Fuse is NewSpring's student ministry. Fuse is a place where middle and high school students can have fun while connecting to Jesus and to each other.</p>
+          <p className="constrain-copy">Fuse is NewSpring&#39;s student ministry. Fuse is a place where middle and high school students can have fun while connecting to Jesus and to each other.</p>
         </div>
 
         <div className="one-whole text-center text-light-primary">

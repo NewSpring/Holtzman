@@ -116,7 +116,7 @@ const KidSpring = () => (
 
       <div className="one-whole text-center text-light-primary push-bottom">
         <h1 className="uppercase">KidSpring</h1>
-        <p className="constrain-copy">KidSpring is the children's ministry at NewSpring Church.  Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.</p>
+        <p className="constrain-copy">KidSpring is the children&#39;s ministry at NewSpring Church.  Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.</p>
       </div>
 
       <div className="one-whole text-center text-light-primary">

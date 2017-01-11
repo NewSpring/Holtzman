@@ -5,7 +5,7 @@
 
 // import List from "../../../../components/list";
 
-const data = { };
+// const data = { };
 
 /* eslint-disable max-len */
 const NewSpringLeadershipCollege = () => (
