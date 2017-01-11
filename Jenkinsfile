@@ -51,7 +51,8 @@ node {
           withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'GithubJD', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
             println("inside withCredentials")
             sh("git tag ${tag}")
-            sh("git push ${env.GIT_USERNAME}:${env.GIT_PASSWORD}@git@github.com:NewSpring/Holtzman.git --tags")
+            def repositoryUrl = "github.com/NewSpring/holtzman"
+            sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@${repositoryUrl} --tags")
           }
           // sh "git push --tags"
         }
