@@ -1,6 +1,6 @@
 #!groovy​
 
-set +x //hide run commands
+// set +x //hide run commands
 
 node {
   // uncomment these 2 lines and edit the name 'node-4.4.5' according to what you choose in configuration
