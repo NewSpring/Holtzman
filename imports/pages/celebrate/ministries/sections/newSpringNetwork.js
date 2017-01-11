@@ -1,5 +1,5 @@
 
-import FitText from "../../components/fit-text";
+// import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import { MetricCard } from "../../../../components/@primitives/UI/cards";
 
@@ -38,7 +38,7 @@ const NewSpringNetwork = () => (
 
       <div className="one-whole text-center push-bottom">
         <h1 className="uppercase">NewSpring Network</h1>
-        <p className="constrain-copy">NewSpring Network equips church leaders with resources, coahcing opportunities and leadership training. Through NewSpring Network, our church provides free children's ministry curriculum, series graphics, and videos, chord charts, and volunteer training.</p>
+        <p className="constrain-copy">NewSpring Network equips church leaders with resources, coahcing opportunities and leadership training. Through NewSpring Network, our church provides free children&#39;s ministry curriculum, series graphics, and videos, chord charts, and volunteer training.</p>
       </div>
 
       <div className="one-whole">

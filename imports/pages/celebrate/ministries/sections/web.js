@@ -1,9 +1,9 @@
 
-import FitText from "../../components/fit-text";
-import CardSlider from "../../../../components/@primitives/UI/card-slider";
+// import FitText from "../../components/fit-text";
+// import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import { MetricCard } from "../../../../components/@primitives/UI/cards";
 
-import Story from "../../components/story";
+// import Story from "../../components/story";
 
 const data = {
   statistics: [
