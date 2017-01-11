@@ -3,6 +3,7 @@ import Currency from "../../../components/@primitives/typography/currency";
 import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import ProgressBar from "../../../components/giving/giving-progress";
+import Story from "../components/story";
 
 const generalFundAmountTotal = 1600000.00;
 const fundData = [
@@ -98,6 +99,13 @@ const Finances = () => {
             />
           </FitText>
         </div>
+        <Story
+          image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img1.png"}
+          content={"<p>&#34;We gave to the Clemson building campaign because we saw NewSpring's impact on our own daughter when she was at college. We're excited to see the lives that will be changed in and around Clemson and from all over the world because of the new campus.&#34;</p>"}
+          name={"Carol and Laurie Brown"}
+          location={"Sumter"}
+          heading={"Meet givers"}
+        />
       </div>
       <div className="one-whole floating text-center background--light-secondary soft-double-top soft-double-bottom">
         <div className="grid two-thirds@lap-and-up floating__item">
