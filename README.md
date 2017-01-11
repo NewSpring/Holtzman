@@ -47,7 +47,7 @@ This repo contains the code base used to build v5 of the NewSpring site and nati
 - `/client`: entry point for client
 - `/imports`: basically all code, client and server
 - `/public`: static assets to be loaded from web server
-- `/scripts`: command line scripts used for deployment, testing, etc
+- `/.dev`: command line scripts used for deployment, testing, etc
 - `/server`: entry point for server
 - `/stylesheets`: sass for generating our css using sass and junction
 - `*/__tests__`: tests adjacent to the module they are testing
@@ -114,7 +114,7 @@ To manually run eslint, use `yarn lint`.
 
 ### Typing
 
-This project contains static typing for most code. We use [Flow](https://flowtype.org/) for this. To enable flow to a file,
+This project contains static typing for some of our code. We use [Flow](https://flowtype.org/) for this. To enable flow to a file,
 add `// @flow` to the very top of the file.
 
 To run flow, use `yarn flow`.
@@ -132,6 +132,6 @@ newspring/native/beta/0.0.3-45
 
 ## Contributing
 
-For more information about contributing PRs and issues, see our [Contribution Guidelines](https://github.com/NewSpring/Holtzman/blob/master/CONTRIBUTING.md).
+For more information about contributing PRs and issues, see our [Contribution Guidelines](CONTRIBUTING.md).
 
 [Good First PR](https://github.com/NewSpring/Holtzman/labels/good first pr) is a great starting point for people new to this project.
