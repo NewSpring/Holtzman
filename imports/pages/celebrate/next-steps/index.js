@@ -1,4 +1,5 @@
 // @flow
+import { StyleSheet, css } from "aphrodite";
 import { VictoryPie } from "victory";
 
 import CardSlider from "../../../components/@primitives/UI/card-slider";
@@ -7,6 +8,19 @@ import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import MetricCard from "../../../components/@primitives/UI/cards/MetricCard";
 import SmallButton from "../../../components/@primitives/UI/buttons/SmallButton";
+import Story from "../components/story";
+
+const styles = StyleSheet.create({
+  darkTertiaryColor: {
+    color: "#858585",
+    borderColor: "#858585",
+  },
+  darkTertiaryHover: {
+    ":hover": {
+      backgroundColor: "#858585",
+    },
+  },
+});
 
 const firstTimeVisitorData = [
   { ministry: "VIP Room", count: 8000, color: "#6BAC43" },
@@ -59,8 +73,17 @@ const NextSteps = () => (
             11,130
           </h1>
         </FitText>
-        <hr />
-        <h1>STORY GOES HERE</h1>
+        <hr className="visuallyhidden@handheld" />
+        <Story
+          image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.png"}
+          content={"<p>The community Brett Chamberlain found through a fishing interest group at NewSpring Rock Hill helped him recognize that he needed to ask Jesus into his life and take the step of baptism with his teenage son in June 2016.</p>"}
+          linkUrl={"https://newspring.cc"}
+          linkClass={`h6 btn--small soft-sides@portable one-whole@handheld ${css(styles.darkTertiaryColor, styles.darkTertiaryHover)}`}
+          linkText={"Read the Full Story"}
+          name={"Brett"}
+          location={"Rock Hill"}
+          heading={"Every number has a name, like"}
+        />
       </div>
     </div>
     {/* Percent Stats */}
@@ -168,9 +191,15 @@ const NextSteps = () => (
         </div>
         <div className="floating">
           <div className="floating__item two-thirds@lap-and-up">
-            <hr />
+            <hr className="visuallyhidden@handheld" />
             <div className="text-center">
-              <h1>STORY GOES HERE</h1>
+              <Story
+                image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img3.png"}
+                content={"<p>&#34;On my first visit to NewSpring, the VIP Room made a huge impression on me. My host, Cathy, was so warm and friendly. She helped get my daughter checked in to KidSpring, answered my questions, and connected me to some next steps.&#34;</p>"}
+                name={"Angel Hill"}
+                location={"Charleston"}
+                heading={"The VIP Room made a difference for"}
+              />
             </div>
           </div>
         </div>
@@ -244,8 +273,14 @@ const NextSteps = () => (
         </p>
         <div className="floating">
           <div className="floating__item two-thirds@lap-and-up">
-            <hr />
-            <h1>STORY GOES HERE</h1>
+            <hr className="visuallyhidden@handheld" />
+            <Story
+              image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img4.png"}
+              content={"<p>&#34;To grow in our relationship with Jesus, we knew our next step was to start serving. We walked into Connect very nervous about what it would take to get plugged in. Our host put us at ease and guided us on the start of a new journey.&#34;</p>"}
+              name={"Brian and Ashley Davison"}
+              location={"Florence"}
+              heading={"Get connected like"}
+            />
           </div>
         </div>
         <div className="text-center">
@@ -392,8 +427,15 @@ const NextSteps = () => (
       </div>
       <div className="floating">
         <div className="floating__item two-thirds@lap-and-up">
-          <hr />
-          <h1>STORY GOES HERE</h1>
+          <hr className="visuallyhidden@handheld" />
+          <Story
+            image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"}
+            content={"<p>&#34;I traveled to Uganda with NewSpring Missions in July. The trip was inspirational, heartbreaking, and heartwarming. The highlights were worshipping with, and serving, the young boys living on the streets of Kampala. We also helped make improvements to the Freedom Church Heroes boys home.&#34;</p>"}
+            contentClass={"text-light-primary"}
+            name={"Chat Davis"}
+            location={"Greenwood"}
+            heading={"Including visiting Kampala with"}
+          />
         </div>
       </div>
     </div>

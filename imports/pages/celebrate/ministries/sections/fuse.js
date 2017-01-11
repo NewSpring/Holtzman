@@ -2,6 +2,7 @@
 import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import { MetricCard } from "../../../../components/@primitives/UI/cards";
+import TagGallery from "../../../../components/@primitives/UI/tag-gallery";
 
 const data = {
   statistics: {
@@ -94,6 +95,9 @@ const data = {
       },
     ],
   },
+  tags: {
+    overlay: "rgba(107, 164, 184, 0.9)",
+    buttonColor: "#6BA4B8",
 };
 
 /* eslint-disable max-len */
@@ -160,6 +164,19 @@ const Fuse = () => (
             </h1>
           </FitText>
           <h3 className="flush" style={{ color: "#4F92A9" }}>Students cross from death to life at Fuse</h3>
+        </div>
+      </div>
+
+      <div className="soft-double-top@lap-and-up">
+        <h3 className="italic" style={{ color: "#4F92A9" }}><strong>Every number is a student life changed</strong></h3>
+        <div id={"fuse"}>
+          <TagGallery
+            id={"fuse"}
+            buttonColor={data.tags.buttonColor}
+            disabledColor={data.tags.disabledColor}
+            overlay={data.tags.overlay}
+            tags={data.tags.tags}
+          />
         </div>
       </div>
     </div>
