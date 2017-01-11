@@ -9,8 +9,8 @@
 
 /* eslint-disable max-len */
 const NewSpringLeadershipCollege = () => (
-  <div className="text-center background--light-primary soft-double">
-    <div className="constrain-page soft-double-top push-double-top">
+  <div className="text-center background--light-primary soft-double-ends">
+    <div className="constrain-page soft-double-top push-double-top@lap-and-up soft-sides@handheld">
       <div className="grid">
         <div className="grid__item one-whole push-double-bottom">
           <div className="constrain-copy">

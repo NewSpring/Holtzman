@@ -3,7 +3,7 @@
 const Thanks = () => (
   <div className="background--primary text-light-primary">
     <div className="grid flush">
-      <div className="grid__item soft soft-double@lap-and-up push-ends">
+      <div className="grid__item soft soft-double push-ends">
         <div className="constrain-copy text-center soft-ends">
           <h2>Thanks For Reading!</h2>
           <p>Thanks so much for taking the time to read our Annual Report.

@@ -112,8 +112,8 @@ const data = {
 /* eslint-disable max-len */
 const KidSpring = () => (
   <div>
-    <div className={`${css(styles.primaryBackground)} soft-double-ends text-center text-light-primary`}>
-      <div className="constrain-page soft-double-top push-double-top">
+    <div className={`${css(styles.primaryBackground)} soft-double-ends@lap-and-up soft-ends text-center text-light-primary`}>
+      <div className="constrain-page soft-double-top push-double-top@lap-and-up soft-sides@handheld">
         <div className="grid">
           <div className="grid__item one-whole push-bottom">
             <div className="constrain-copy">
@@ -122,9 +122,9 @@ const KidSpring = () => (
             </div>
           </div>
 
-          <div className="grid__item one-whole soft-double-top soft-bottom">
+          <div className="grid__item one-whole soft-double-top@lap-and-up soft-top soft-bottom">
             <h3 className="push-half-bottom">Average Number Of Kids Each Sunday</h3>
-            <FitText compressor={1.1}>
+            <FitText compressor={0.6}>
               <h1
                 style={{
                   fontWeight: 900,
@@ -137,7 +137,7 @@ const KidSpring = () => (
         </div>
       </div>
 
-      <div className={`${css(styles.primaryColor)} push-double-bottom`}>
+      <div className={`${css(styles.primaryColor)} push-double-bottom@lap-and-up push-bottom`}>
         <CardSlider>
           {data.campuses.map((campus, i) => (
             <MetricCard
@@ -150,8 +150,8 @@ const KidSpring = () => (
       </div>
     </div>
 
-    <div className="background--light-primary text-center soft-double">
-      <div className="constrain-page soft-double-top push-double-top">
+    <div className="background--light-primary text-center soft-double@lap-and-up soft">
+      <div className="constrain-page soft-double-top@lap-and-up push-double-top@lap-and-up soft">
         <div className="grid">
           <div className="grid__item one-whole">
             <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
@@ -159,9 +159,9 @@ const KidSpring = () => (
         </div>
       </div>
 
-      <div className="constrain-page">
+      <div className="constrain-page soft-double@lap-and-up soft push-double-ends@lap-and-up">
         <div className="grid">
-          <div className="grid__item one-whole">
+          <div className="grid__item three-quarters@lap-wide-and-up">
             {data.stories.map((story, i) => (
               <Story
                 key={i}

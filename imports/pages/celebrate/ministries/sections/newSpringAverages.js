@@ -77,30 +77,28 @@ const data = {
 
 /* eslint-disable max-len */
 const NewSpringAverages = () => (
-  <div className="background--light-secondary text-dark-primary soft-double-ends push-ends text-center">
-    <div className="constrain-page push-top">
-      <div className="grid">
-        <div className="grid__item one-whole">
-          <h3
-            className="push-half-bottom"
-          >
-            Average Weekly Attendance
-          </h3>
+  <div className="background--light-secondary text-dark-primary soft-double-ends push-ends@lap-and-up soft-ends text-center">
+    <div className="constrain-page push-top soft-sides@handheld">
+      <div className="one-whole">
+        <h3
+          className="push-half-bottom"
+        >
+          Average Weekly Attendance
+        </h3>
 
-          <FitText compressor={1.1}>
-            <h1
-              style={{
-                fontWeight: 900,
-              }}
-            >
-              {data.attendance.average}
-            </h1>
-          </FitText>
-        </div>
+        <FitText compressor={0.6}>
+          <h1
+            style={{
+              fontWeight: 900,
+            }}
+          >
+            {data.attendance.average}
+          </h1>
+        </FitText>
       </div>
     </div>
 
-    <div className="push-bottom">
+    <div className="push-bottom@lap-and-up">
       <CardSlider>
         {data.attendance.campuses.map((campus, i) => (
           <MetricCard

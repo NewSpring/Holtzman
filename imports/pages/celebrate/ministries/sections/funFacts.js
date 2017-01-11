@@ -1,4 +1,6 @@
 
+import FitText from "../../components/fit-text";
+
 const data = {
   statistics: {
     icons: [
@@ -38,11 +40,11 @@ const data = {
 
 /* eslint-disable max-len */
 const FunFacts = () => (
-  <div className="grid flush">
-    <div className="background--light-secondary">
+  <div className="background--light-secondary">
+    <div className="grid flush">
       <div className="constrain-page">
-        <div className="grid__item one-whole text-dark-primary text-center">
-          <div className="constrain-page soft-double push-double@lap-and-up">
+        <div className="grid__item one-whole text-dark-primary text-center hard">
+          <div className="soft-double@lap-and-up soft push-double@lap-and-up soft-double-bottom push-bottom">
 
             <div className="one-whole text-center push-double-ends soft-top">
               <h1 className="uppercase">Fun Facts</h1>
@@ -52,12 +54,14 @@ const FunFacts = () => (
             {data.statistics.icons.map((statistic, i) => (
               <div
                 key={i}
-                className="grid__item push-bottom one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up soft"
+                className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
               >
-                <img src={statistic.image} className="push-double-bottom" style={{ maxHeight: "100px" }} />
-                <h1 style={{ fontWeight: 900 }}>
-                  {statistic.value}
-                </h1>
+                <img src={statistic.image} className="push-double-bottom@lap-and-up push-bottom" style={{ maxHeight: "100px" }} />
+                <FitText compressor={0.6}>
+                  <h1 style={{ fontWeight: 900 }}>
+                    {statistic.value}
+                  </h1>
+                </FitText>
                 <h3>{statistic.label}</h3>
               </div>
             ))}
