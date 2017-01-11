@@ -1,15 +1,12 @@
 
 import { StyleSheet, css } from "aphrodite";
-// import {
-//   Body,
-// } from "../../../../components/layout";
 
 import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import { MetricCard } from "../../../../components/@primitives/UI/cards";
+import TagGallery from "../../../../components/@primitives/UI/tag-gallery";
 
 import Story from "../../components/story";
-// import List from "../../../../components/list";
 
 const styles = StyleSheet.create({
   primaryBackground: {
@@ -107,6 +104,45 @@ const data = {
       linkText: "Read Her Story",
     },
   ],
+  tags: {
+    overlay: "rgba(0, 128, 193, 0.9)",
+    buttonColor: "#0080C1",
+    disabledColor: "#DDDDDD",
+    tags: [
+      {
+        image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag1_1x1.jpg",
+        image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag1_2x1.jpg",
+        imageAlt: "First Timers at NewSpring",
+        label: "6,200",
+        value: "FirstTime",
+        copy: "first-time kids returned to KidSpring",
+      },
+      {
+        image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag2_1x1.jpg",
+        image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag2_2x1.jpg",
+        imageAlt: "First Timers at NewSpring",
+        label: "2,315",
+        value: "SomethingCool",
+        copy: "kids did something cool",
+      },
+      {
+        image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag3_1x1.jpg",
+        image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag3_2x1.jpg",
+        imageAlt: "First Timers at NewSpring",
+        label: "423",
+        value: "SomethingElse",
+        copy: "kids did something else",
+      },
+      {
+        image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag4_1x1.jpg",
+        image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag4_2x1.jpg",
+        imageAlt: "First Timers at NewSpring",
+        label: "4,021",
+        value: "Stats",
+        copy: "kids don't care about statistics",
+      },
+    ],
+  },
 };
 
 /* eslint-disable max-len */
@@ -153,7 +189,15 @@ const KidSpring = () => (
 
     <div className="soft-double-top@lap-and-up">
       <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
-
+      <div id="kidspring">
+        <TagGallery
+          id={"kidspring"}
+          buttonColor={data.tags.buttonColor}
+          disabledColor={data.tags.disabledColor}
+          overlay={data.tags.overlay}
+          tags={data.tags.tags}
+        />
+      </div>
       {data.stories.map((story, i) => (
         <Story
           key={i}

@@ -1,12 +1,7 @@
-
-// import {
-//   Body,
-// } from "../../../../components/layout";
-
 import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import { MetricCard } from "../../../../components/@primitives/UI/cards";
-// import List from "../../../../components/list";
+import TagGallery from "../../../../components/@primitives/UI/tag-gallery";
 
 const data = {
   salvations: "3,130",
@@ -97,6 +92,45 @@ const data = {
       number: "6,200",
     },
   ],
+  tags: {
+    overlay: "rgba(107, 164, 184, 0.9)",
+    buttonColor: "#6BA4B8",
+    disabledColor: "#DDDDDD",
+    tags: [
+      {
+        image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag1_1x1.jpg",
+        image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag1_2x1.jpg",
+        imageAlt: "First Timers at NewSpring",
+        label: "6,200",
+        value: "FirstTime",
+        copy: "students who came to Fuse for the first time",
+      },
+      {
+        image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag2_1x1.jpg",
+        image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag2_2x1.jpg",
+        imageAlt: "First Timers at NewSpring",
+        label: "2,315",
+        value: "SomethingCool",
+        copy: "students did something cool",
+      },
+      {
+        image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag3_1x1.jpg",
+        image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag3_2x1.jpg",
+        imageAlt: "First Timers at NewSpring",
+        label: "423",
+        value: "SomethingElse",
+        copy: "students did something else",
+      },
+      {
+        image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag4_1x1.jpg",
+        image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag4_2x1.jpg",
+        imageAlt: "First Timers at NewSpring",
+        label: "4,021",
+        value: "Stats",
+        copy: "students don't care about statistics",
+      },
+    ],
+  },
 };
 
 /* eslint-disable max-len */
@@ -146,8 +180,15 @@ const Fuse = () => (
 
       <div className="soft-double-top@lap-and-up">
         <h3 className="italic" style={{ color: "#4F92A9" }}><strong>Every number is a student life changed</strong></h3>
-
-
+        <div id={"fuse"}>
+          <TagGallery
+            id={"fuse"}
+            buttonColor={data.tags.buttonColor}
+            disabledColor={data.tags.disabledColor}
+            overlay={data.tags.overlay}
+            tags={data.tags.tags}
+          />
+        </div>
       </div>
     </div>
     <div className="grid text-center">
