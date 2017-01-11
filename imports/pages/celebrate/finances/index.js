@@ -32,10 +32,9 @@ const Finances = () => {
     <div>
       <Meta title="Finances" />
       {/* Header */}
-      <div className="background--primary outlined--top outlined--light text-center text-light-primary soft-double-top soft-double-bottom">
+      <div className="background--primary text-center text-light-primary soft-double-top soft-double-bottom">
         <h3 className="">Giving to General Fund</h3>
         <div className="push-half-bottom">
-          {/* <h3 className="display-inline-block">$</h3> */}
           <div className="display-inline-block">
             <FitText compressor={1} maxFontSize={18}>
               <Currency
@@ -45,19 +44,8 @@ const Finances = () => {
                 style={{ fontWeight: "900" }}
                 theme="light"
               />
-              {/*
-              <h1
-                className="uppercase flush-bottom soft-half-bottom"
-                style={{
-                  fontWeight: "900",
-                }}
-              >
-                {generalFundAmount}
-              </h1>
-              */}
             </FitText>
           </div>
-          {/* <h3 className="display-inline-block">.00</h3> */}
         </div>
         <div className="floating push-right">
           <div className="grid floating__item two-thirds@lap-and-up text-center">
@@ -159,7 +147,7 @@ const Finances = () => {
           </div>
         </div>
       </div>
-      <div className="soft-double">
+      <div className="background--light-primary soft-double">
         <h3 className="text-center">Annual Audit</h3>
         <p className="constrain-copy push-bottom">NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (Philippians 2:15)</p>
         <p className="constrain-copy">We&#39;ll update this section in May after the audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.</p>
