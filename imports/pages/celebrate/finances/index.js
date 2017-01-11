@@ -159,7 +159,7 @@ const Finances = () => {
           </div>
         </div>
       </div>
-      <div className="soft-double">
+      <div className="background--light-primary soft-double">
         <h3 className="text-center">Annual Audit</h3>
         <p className="constrain-copy push-bottom">NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (Philippians 2:15)</p>
         <p className="constrain-copy">We&#39;ll update this section in May after the audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.</p>

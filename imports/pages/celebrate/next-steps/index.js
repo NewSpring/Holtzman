@@ -46,7 +46,7 @@ const NextSteps = () => (
       </div>
     </div>
     {/* Salvations */}
-    <div className="floating">
+    <div className="background--light-primary floating">
       <div className="soft-double text-center two-thirds@lap-and-up floating__item">
         <h3>Salvations</h3>
         <FitText compressor={0.4} maxFontSize={72}>
@@ -89,7 +89,7 @@ const NextSteps = () => (
       </div>
     </div>
     {/* Baptism */}
-    <div className="soft-double-top text-center one-whole">
+    <div className="background--light-primary soft-double-top text-center one-whole">
       <h3 style={{ color: "#0073AF" }}>We Witnessed</h3>
       <div className="soft-double push-double-top text-light-primary" style={{ backgroundColor: "#0073AF" }}>
         <FitText compressor={0.4} maxFontSize={72}>
@@ -107,7 +107,7 @@ const NextSteps = () => (
       </div>
     </div>
     {/* First Time Visitors */}
-    <div className="soft-double@lap-and-up soft-double-top@handheld soft-double-bottom@handheld">
+    <div className="background--light-primary soft-double@lap-and-up soft-double-top@handheld soft-double-bottom@handheld">
       <div className="grid one-whole soft-double-left@handheld push-double-top">
         <div className="grid__item floating one-half@lap-and-up text-center display-inline-block" style={{ verticalAlign: "middle" }}>
           <div className="floating__item two-thirds@lap-and-up">
@@ -234,7 +234,7 @@ const NextSteps = () => (
       </div>
     </div>
     {/* Connect/Groups */}
-    <div className="soft-double@lap-and-up soft@handheld">
+    <div className="background--light-primary soft-double@lap-and-up soft@handheld">
       <div className="one-whole push-double-top push-double-bottom@handheld push-bottom@lap-and-up">
         <h3 className="text-center">Connect</h3>
         <p className="constrain-copy">
