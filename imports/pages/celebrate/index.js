@@ -34,6 +34,28 @@ class Template extends Component {
     ],
   }
 
+  componentWillMount() {
+    this.updateActive(this.props);
+  }
+
+  componentWillReceiveProps(props: Object) {
+    this.updateActive(props);
+  }
+
+  updateActive = (props: Object) => {
+    const { pathname } = props.location;
+
+    this.setState((state) => state.subNav.map((x) => {
+      const nav = x;
+      nav.isActive = false;
+      if (nav.linkUrl === pathname) {
+        nav.isActive = true;
+      }
+
+      return nav;
+    }));
+  }
+
   render() {
     return (
       <div>
