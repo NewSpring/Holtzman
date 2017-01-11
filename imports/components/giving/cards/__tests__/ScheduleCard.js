@@ -2,9 +2,9 @@ import renderer from "react-test-renderer";
 import { reset } from "aphrodite/lib/inject";
 import ScheduleOverview from "../ScheduleCard";
 
-  jest.mock("moment", () => (date) => ({
-  format: (style) => `${date || "now"}.format(${style})`,
-}));
+// jest.mock("moment", () => (date) => ({
+//   format: (style) => `${date || "now"}.format(${style})`,
+// }));
 
 describe("ScheduleOverview", () => {
   beforeEach(() => {
@@ -22,8 +22,8 @@ describe("ScheduleOverview", () => {
         baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
-        latest="Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)"
+        started="2017-02-01"
+        latest="2017-02-02"
         onEditClick={jest.fn()}
         onDetailClick={jest.fn()}
       />
@@ -38,8 +38,8 @@ describe("ScheduleOverview", () => {
         baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
-        latest="Tue Mar 16 2016 20:00:00 GMT-0400 (EDT)"
+        started="2017-02-01"
+        latest="2017-02-02"
         onEditClick={jest.fn()}
         onDetailClick={jest.fn()}
       />
@@ -54,7 +54,7 @@ describe("ScheduleOverview", () => {
         baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
+        started="2017-02-01"
         onEditClick={jest.fn()}
         onDetailClick={jest.fn()}
       />
@@ -70,7 +70,7 @@ describe("ScheduleOverview", () => {
         baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
+        started="2017-02-01"
         onEditClick={jest.fn()}
         onDetailClick={jest.fn()}
       />
@@ -86,7 +86,7 @@ describe("ScheduleOverview", () => {
         baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
+        started="2017-02-01"
         onEditClick={jest.fn()}
         onDetailClick={jest.fn()}
       />
@@ -102,7 +102,7 @@ describe("ScheduleOverview", () => {
         baseHeadingSize="2"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Jun 15, 2015"
+        started="2017-02-01"
         onEditClick={jest.fn()}
         onDetailClick={jest.fn()}
       />
@@ -117,7 +117,7 @@ describe("ScheduleOverview", () => {
         amount="$420.00"
         fund="Step Up Fund"
         frequency="Once A Month"
-        started="Tue Mar 15 2016 20:00:00 GMT-0400 (EDT)"
+        started="2017-02-01"
         onEditClick={jest.fn()}
         onDetailClick={jest.fn()}
       />
