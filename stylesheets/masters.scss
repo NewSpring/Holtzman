@@ -177,3 +177,7 @@ input[type=checkbox] + label:before {
 input[type=checkbox]:checked + label:before {
   border: 2px solid #6bac43;
 }
+
+@include namespace(display-inline-block) {
+    display: inline-block
+}
