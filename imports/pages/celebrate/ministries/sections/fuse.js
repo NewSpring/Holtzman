@@ -1,7 +1,7 @@
 
 import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
-import { MetricCard } from "../../../../components/@primitives/UI/cards";
+import MetricCard from "../../components/metricCard";
 import TagGallery from "../../../../components/@primitives/UI/tag-gallery";
 
 const data = {
