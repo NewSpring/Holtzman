@@ -54,16 +54,16 @@ const NextSteps = () => (
     <Meta title="Next Steps" />
     {/* Header */}
     <div className="background--light-secondary soft-double@lap-and-up soft@handheld">
-      <div className="push-double-top push-double-bottom">
+      <div className="push-double-ends">
         <h3 className="text-center">What Is A Next Step</h3>
         <p className="constrain-copy">Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here&#39;s a look at how we&#39;ve seen people take their next steps in 2016.</p>
       </div>
     </div>
     {/* Salvations */}
     <div className="background--light-primary floating">
-      <div className="soft-double text-center two-thirds@lap-and-up floating__item">
+      <div className="soft-double push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
         <h3>Salvations</h3>
-        <FitText compressor={0.4} maxFontSize={72}>
+        <FitText compressor={0.4} maxFontSize={80}>
           <h1
             className="uppercase flush-bottom soft-half-bottom"
             style={{
@@ -73,12 +73,12 @@ const NextSteps = () => (
             11,130
           </h1>
         </FitText>
-        <hr className="visuallyhidden@handheld" />
+        <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
         <Story
           image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.png"}
           content={"<p>The community Brett Chamberlain found through a fishing interest group at NewSpring Rock Hill helped him recognize that he needed to ask Jesus into his life and take the step of baptism with his teenage son in June 2016.</p>"}
           linkUrl={"https://newspring.cc"}
-          linkClass={`h6 btn--small soft-sides@portable one-whole@handheld ${css(styles.darkTertiaryColor, styles.darkTertiaryHover)}`}
+          linkClass={`h6 btn--small soft-sides@portable flush one-whole@handheld ${css(styles.darkTertiaryColor, styles.darkTertiaryHover)}`}
           linkText={"Read the Full Story"}
           name={"Brett"}
           location={"Rock Hill"}
@@ -88,17 +88,22 @@ const NextSteps = () => (
     </div>
     {/* Percent Stats */}
     <div className="floating background--dark-primary">
-      <div className="soft-double push-double text-center text-light-primary two-thirds@lap-and-up floating__item">
-        <FitText compressor={0.4} maxFontSize={72}>
-          <h1
-            className="uppercase flush-bottom soft-half-bottom"
-            style={{
-              fontWeight: "900",
-            }}
-          >
-            72%
-          </h1>
-        </FitText>
+      <div className="soft-double-ends push-double-ends text-center text-light-primary two-thirds@lap-and-up floating__item">
+        <div className="floating push-double-ends">
+          <div className="floating__item">
+            <FitText compressor={1} maxFontSize={120} minFontSize={80}>
+              <h1
+                className="uppercase flush-bottom soft-half-bottom"
+                style={{
+                  fontWeight: "900",
+                }}
+              >
+                72
+              </h1>
+            </FitText>
+          </div>
+          <span className="h4 floating__item soft-half-left">%</span>
+        </div>
         <div className="one-whole floating">
           <h3 className="two-thirds@lap-and-up floating__item">of people who received salvation took a next step.</h3>
         </div>
@@ -113,9 +118,9 @@ const NextSteps = () => (
     </div>
     {/* Baptism */}
     <div className="background--light-primary soft-double-top text-center one-whole">
-      <h3 style={{ color: "#0073AF" }}>We Witnessed</h3>
+      <h3 className="soft-double-top" style={{ color: "#0073AF" }}>We Witnessed</h3>
       <div className="soft-double push-double-top text-light-primary" style={{ backgroundColor: "#0073AF" }}>
-        <FitText compressor={0.4} maxFontSize={72}>
+        <FitText compressor={0.4} maxFontSize={80}>
           <h1
             className="uppercase flush-bottom soft-half-bottom push-double-top"
             style={{
@@ -125,8 +130,8 @@ const NextSteps = () => (
             5,253
           </h1>
         </FitText>
-        <h3 className="text-light-primary push-top">go public for Jesus through</h3>
-        <h1 className="text-light-primary push-double-top">Baptism</h1>
+        <h5 className="text-light-primary push-top">Go Public For Jesus Through</h5>
+        <h1 className="text-light-primary push-top push-double-bottom">Baptism</h1>
       </div>
     </div>
     {/* First Time Visitors */}
@@ -142,7 +147,7 @@ const NextSteps = () => (
             >
               We had
             </h3>
-            <FitText compressor={0.4} maxFontSize={72}>
+            <FitText compressor={0.4} maxFontSize={80}>
               <h1
                 className="uppercase flush-bottom soft-half-bottom"
                 style={{
@@ -191,7 +196,7 @@ const NextSteps = () => (
         </div>
         <div className="floating">
           <div className="floating__item two-thirds@lap-and-up">
-            <hr className="visuallyhidden@handheld" />
+            <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
             <div className="text-center">
               <Story
                 image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img3.png"}
@@ -217,7 +222,7 @@ const NextSteps = () => (
           This year
         </h3>
       </div>
-      <FitText compressor={0.4} maxFontSize={72}>
+      <FitText compressor={0.4} maxFontSize={80}>
         <h1
           className="uppercase flush-bottom soft-half-bottom"
           style={{
@@ -243,7 +248,7 @@ const NextSteps = () => (
     {/* Care Room */}
     <div className="background--dark-primary">
       <div className="soft-double push-double text-center text-light-primary">
-        <FitText compressor={0.4} maxFontSize={72}>
+        <FitText compressor={0.4} maxFontSize={80} minFontSize={52}>
           <h1
             className="uppercase flush-bottom soft-half-bottom"
             style={{
@@ -273,7 +278,7 @@ const NextSteps = () => (
         </p>
         <div className="floating">
           <div className="floating__item two-thirds@lap-and-up">
-            <hr className="visuallyhidden@handheld" />
+            <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
             <Story
               image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img4.png"}
               content={"<p>&#34;To grow in our relationship with Jesus, we knew our next step was to start serving. We walked into Connect very nervous about what it would take to get plugged in. Our host put us at ease and guided us on the start of a new journey.&#34;</p>"}
@@ -292,7 +297,7 @@ const NextSteps = () => (
           >
             This year
           </h3>
-          <FitText compressor={0.4} maxFontSize={72}>
+          <FitText compressor={0.4} maxFontSize={80}>
             <h1
               className="uppercase flush-bottom soft-half-bottom"
               style={{
@@ -390,7 +395,7 @@ const NextSteps = () => (
         </div>
       </div>
       <div className="text-center text-light-primary soft-double-top soft">
-        <FitText compressor={0.4} maxFontSize={72}>
+        <FitText compressor={0.4} maxFontSize={80}>
           <h1
             className="uppercase flush-bottom soft-half-bottom"
             style={{
@@ -411,7 +416,7 @@ const NextSteps = () => (
         >
           to
         </h3>
-        <FitText compressor={0.4} maxFontSize={72}>
+        <FitText compressor={0.4} maxFontSize={80}>
           <h1
             className="uppercase flush-bottom soft-half-bottom"
             style={{
@@ -427,7 +432,7 @@ const NextSteps = () => (
       </div>
       <div className="floating">
         <div className="floating__item two-thirds@lap-and-up">
-          <hr className="visuallyhidden@handheld" />
+          <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
           <Story
             image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"}
             content={"<p>&#34;I traveled to Uganda with NewSpring Missions in July. The trip was inspirational, heartbreaking, and heartwarming. The highlights were worshipping with, and serving, the young boys living on the streets of Kampala. We also helped make improvements to the Freedom Church Heroes boys home.&#34;</p>"}
