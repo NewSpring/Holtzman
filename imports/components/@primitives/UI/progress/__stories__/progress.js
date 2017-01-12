@@ -5,7 +5,7 @@ import backgrounds from "react-storybook-addon-backgrounds";
 import centered from "/.storybook/decorators/centered";
 import defaultColors from "/.storybook/defaults";
 
-import ProgressBar from "../";
+import { Progress as ProgressBar } from "../";
 import Readme from "./progress.md";
 
 const story = storiesOf("ProgressBar", module)
