@@ -28,9 +28,6 @@
   },
   "homepage": "https://github.com/NewSpring/holzman",
   "jest": {
-    "transform": {
-      ".*": "./.dev/jestPreprocessor.js"
-    },
     "coverageDirectory": "./.coverage",
     "collectCoverageFrom": [
       "client/**/*.{js,jsx}",
@@ -53,7 +50,7 @@
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
     "setupFiles": [
-      "<rootDir>/.dev/before_test.js"
+      "<rootDir>/imports/util/tests/before_test.js"
     ]
   },
   "apollos": {
