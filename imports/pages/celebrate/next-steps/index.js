@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   wave_3: {
     animationName: {
       from: {
-        transform: "rotate(0deg)   translatey(-0.96em) rotate(0deg)",
+        transform: "rotate(0deg) translatey(-0.96em) rotate(0deg)",
       },
       to: {
         transform: "rotate(360deg) translatey(-0.96em) rotate(-360deg)",
@@ -187,20 +187,17 @@ const NextSteps = () => (
     </div>
     {/* Baptism */}
     <div className="background--light-primary soft-double-top text-center one-whole soft-top">
-      <h3 className="push-top" style={{ color: "#0073AF" }}>We Witnessed</h3> className="one-whole">
-        <div className={css(styles.waves)}>
-          <div className={css(styles.wave, styles.wave_1)} />
-          <div className={css(styles.wave, styles.wave_2)} />
-          <div className={css(styles.wave, styles.wave_3)} />
-        </div>
+      <h3 className="one-whole push-top" style={{ color: "#0073AF" }}>We Witnessed</h3>
+      <div className={css(styles.waves)}>
+        <div className={css(styles.wave, styles.wave_1)} />
+        <div className={css(styles.wave, styles.wave_2)} />
+        <div className={css(styles.wave, styles.wave_3)} />
       </div>
       <div className="soft-double text-light-primary" style={{ backgroundColor: "#0073AF" }}>
         <FitText compressor={0.4} maxFontSize={72}>
           <h1
             className="uppercase flush-bottom soft-half-bottom"
-            style={{
-              fontWeight: "900",
-            }}
+            style={{ fontWeight: "900" }}
           >
             5,253
           </h1>
