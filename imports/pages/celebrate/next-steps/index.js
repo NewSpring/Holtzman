@@ -10,17 +10,17 @@ import MetricCard from "../../../components/@primitives/UI/cards/MetricCard";
 import SmallButton from "../../../components/@primitives/UI/buttons/SmallButton";
 import Story from "../components/story";
 
-const styles = StyleSheet.create({
-  darkTertiaryColor: {
-    color: "#858585",
-    borderColor: "#858585",
-  },
-  darkTertiaryHover: {
-    ":hover": {
-      backgroundColor: "#858585",
-    },
-  },
-});
+// const styles = StyleSheet.create({
+//   darkTertiaryColor: {
+//     color: "#858585",
+//     borderColor: "#858585",
+//   },
+//   darkTertiaryHover: {
+//     ":hover": {
+//       backgroundColor: "#858585",
+//     },
+//   },
+// });
 
 const firstTimeVisitorData = [
   { ministry: "VIP Room", count: 8000, color: "#6BAC43" },
@@ -78,7 +78,7 @@ const NextSteps = () => (
           image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.png"}
           content={"<p>The community Brett Chamberlain found through a fishing interest group at NewSpring Rock Hill helped him recognize that he needed to ask Jesus into his life and take the step of baptism with his teenage son in June 2016.</p>"}
           linkUrl={"https://newspring.cc"}
-          linkClass={`h6 btn--small soft-sides@portable flush one-whole@handheld ${css(styles.darkTertiaryColor, styles.darkTertiaryHover)}`}
+          linkClass={"h6 btn--small@next btn--dark-secondary soft-sides@portable one-whole@handheld"}
           linkText={"Read the Full Story"}
           name={"Brett"}
           location={"Rock Hill"}
