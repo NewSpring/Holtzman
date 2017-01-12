@@ -5,7 +5,7 @@ import CardSlider from "../../../components/@primitives/UI/card-slider";
 import Currency from "../../../components/@primitives/typography/currency";
 import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
-import MetricCard from "../../../components/@primitives/UI/cards/MetricCard";
+import MetricCard from "../components/metricCard";
 import SmallButton from "../../../components/@primitives/UI/buttons/SmallButton";
 import Story from "../components/story";
 

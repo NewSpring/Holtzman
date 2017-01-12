@@ -3,7 +3,7 @@ import { StyleSheet, css } from "aphrodite";
 
 import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
-import { MetricCard } from "../../../../components/@primitives/UI/cards";
+import MetricCard from "../../components/metricCard";
 import TagGallery from "../../../../components/@primitives/UI/tag-gallery";
 
 import Story from "../../components/story";
