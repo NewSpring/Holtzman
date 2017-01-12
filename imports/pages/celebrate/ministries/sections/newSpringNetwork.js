@@ -55,7 +55,7 @@ const NewSpringNetwork = () => (
       ))}
     </CardSlider>
 
-    <div className="constrain-page push-double-ends@lap-and-up push-double-top soft-sides@handheld">
+    <div className="constrain-page three-quarters@lap-wide-and-up nine-tenths@lap push-double-top soft-double-sides soft-sides@handheld">
       <div className="one-whole">
         {data.stories.map((story, i) => (
           <Story
