@@ -66,7 +66,7 @@ const Web = () => (
         <div className="grid__item one-whole text-dark-primary text-center hard">
           <div className="soft-double@lap-and-up soft push-double@lap-and-up soft-double-bottom push-bottom">
 
-            <div className="one-whole text-center push-double-ends soft-top">
+            <div className="one-whole text-center push-double-bottom soft-top">
               <h1 className="uppercase">Web Stats</h1>
               <h3 className="italic"><strong>We have</strong></h3>
             </div>
@@ -90,8 +90,8 @@ const Web = () => (
       </div>
     </div>
     <div className="soft-double-ends text-center one-whole background--light-tertiary text-dark-primary">
-      <div className="soft-double-ends soft-bottom@handheld">
-        <div className="grid__item one-whole one-half@lap-and-up hard@handheld">
+      <div className="floating soft-double-ends soft-bottom@handheld">
+        <div className="floating__item one-whole three-quarters@lap-and-up hard@handheld">
           <div className="constrain-copy soft-double-sides@lap-and-up push-sides@lap-and-up soft-sides@handheld">
             <h3 className="italic"><strong>Using the Internet to help people follow Jesus step by step, we saw</strong></h3>
           </div>
