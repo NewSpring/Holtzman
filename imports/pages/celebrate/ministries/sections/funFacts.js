@@ -46,7 +46,7 @@ const FunFacts = () => (
         <div className="grid__item one-whole text-dark-primary text-center hard">
           <div className="soft-double@lap-and-up soft push-double@lap-and-up soft-double-bottom push-bottom">
 
-            <div className="one-whole text-center push-double-ends soft-top">
+            <div className="one-whole text-center push-double-bottom push-double-top@handheld soft-top">
               <h1 className="uppercase">Fun Facts</h1>
               <h3 className="italic"><strong>From this year</strong></h3>
             </div>
