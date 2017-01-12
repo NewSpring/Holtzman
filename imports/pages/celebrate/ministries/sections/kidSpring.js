@@ -107,7 +107,6 @@ const data = {
   tags: {
     overlay: "rgba(0, 128, 193, 0.9)",
     buttonColor: "#0080C1",
-    disabledColor: "#DDDDDD",
     tags: [
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag1_1x1.jpg",
