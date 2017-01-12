@@ -1,5 +1,5 @@
 // @flow
-
+/* eslint-disable react/no-danger */
 type IStory = {
   image: string,
   heading?: string,
@@ -24,20 +24,20 @@ const Story = ({
   linkClass,
   linkText,
 }: IStory) => (
-  <div className="grid">
-    <div className="constrain-page push-double@lap-and-up">
-      {image && <div className="grid__item one-quarter@lap-and-up display-inline-block soft-double-right@lap-and-up push-double-bottom@handheld" style={{ verticalAlign: "middle" }}>
+  <div className="grid soft-double-bottom soft-double-top@lap-and-up">
+    <div className="constrain-page">
+      {image && <div className="grid__item@lap-and-up one-third@lap-and-up display-inline-block soft-right@lap-and-up push-bottom@lap-and-up" style={{ verticalAlign: "middle" }}>
         <div className="ratio--square background--fill round visuallyhidden@handheld" style={{ backgroundImage: `url('${image}')` }}>
           <div className="ratio__item" />
         </div>
       </div>}
-      <div className={`grid__item ${image && "two-thirds@lap-and-up"} text-left display-inline-block`} style={{ verticalAlign: "middle" }}>
-        {heading && name && location && <h5 className={contentClass} style={{ fontWeight: "400" }}>{heading} <strong style={{ fontFamily: "colfax, sans-serif" }}>{name}</strong> from <strong style={{ fontFamily: "colfax, sans-serif" }}>{location}</strong>.</h5>}
-        {image && <div className="ratio--square background--fill round visuallyhidden@lap-and-up" style={{ backgroundImage: `url('${image}')` }}>
+      <div className={`grid__item ${image && "two-thirds@lap-and-up"} floating text-center text-left@lap-and-up display-inline-block`} style={{ verticalAlign: "middle" }}>
+        {heading && name && location && <h5 className={`${String(contentClass)} soft-half-bottom soft-sides@handheld`} style={{ fontWeight: "400" }}>{heading} <strong style={{ fontFamily: "colfax, sans-serif" }}>{name}</strong> from <strong style={{ fontFamily: "colfax, sans-serif" }}>{location}</strong>.</h5>}
+        {image && <div className="ratio--square floating__item one-half background--fill round visuallyhidden@lap-and-up push-bottom" style={{ backgroundImage: `url('${image}')` }}>
           <div className="ratio__item" />
         </div>}
-        <div dangerouslySetInnerHTML={{ __html: content }} className={contentClass} />
-        {linkUrl && <p>
+        <div dangerouslySetInnerHTML={{ __html: content }} className={`${String(contentClass)} soft-sides@palm-wide`} />
+        {linkUrl && <p className="flush">
           <a
             href={linkUrl}
             className={linkClass || "btn"}
