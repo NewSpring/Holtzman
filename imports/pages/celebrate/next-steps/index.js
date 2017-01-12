@@ -61,11 +61,11 @@ const NextSteps = () => (
     </div>
     {/* Salvations */}
     <div className="background--light-primary floating">
-      <div className="soft-double push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+      <div className="soft-double soft-sides@handheld push-double-top text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
         <h3>Salvations</h3>
         <FitText compressor={0.4} maxFontSize={80}>
           <h1
-            className="uppercase flush-bottom soft-half-bottom"
+            className="uppercase soft-double-bottom@lap-and-up"
             style={{
               fontWeight: "900",
             }}
@@ -135,9 +135,9 @@ const NextSteps = () => (
       </div>
     </div>
     {/* First Time Visitors */}
-    <div className="background--light-primary soft-double@lap-and-up soft-double-top@handheld soft-double-bottom@handheld">
-      <div className="grid flush-sides one-whole soft-double-left@handheld push-double-top">
-        <div className="grid__item floating one-half@lap-and-up text-center display-inline-block" style={{ verticalAlign: "middle" }}>
+    <div className="background--light-primary soft-double@lap-and-up soft-double-top@handheld soft-half-bottom@handheld">
+      <div className="grid one-whole push-double-top">
+        <div className="grid__item push-half-left@handheld floating one-half@lap-and-up text-center display-inline-block" style={{ verticalAlign: "middle" }}>
           <div className="floating__item three-quarters@lap-wide-and-up">
             <h3
               className="italic"
@@ -160,7 +160,7 @@ const NextSteps = () => (
             <h3 className="push-top">first time visitors come to NewSpring</h3>
           </div>
         </div>
-        <div className="grid__item floating one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
+        <div className="grid__item push-half-left@handheld floating one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
           <div className="floating__item three-quarters@lap-wide-and-up one-whole display-inline-block" style={{ verticalAlign: "middle" }}>
             <VictoryPie
               data={firstTimeVisitorData}
@@ -174,7 +174,7 @@ const NextSteps = () => (
             />
           </div>
         </div>
-        <div className="floating soft-top push-double-bottom">
+        <div className="floating push-double-left@handheld soft-top@lap-and-up">
           <div className="floating__item text-left">
             {firstTimeVisitorData.map(({ ministry, count, color }, key) => (
               <div className="push-half display-inline-block@lap-and-up" key={key}>
@@ -184,19 +184,19 @@ const NextSteps = () => (
             ))}
           </div>
         </div>
-        <div className="floating">
-          <div className="floating__item two-thirds@lap-and-up">
-            <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
-            <div className="text-center">
-              <Story
-                image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img3.png"}
-                content={"<p>&#34;On my first visit to NewSpring, the VIP Room made a huge impression on me. My host, Cathy, was so warm and friendly. She helped get my daughter checked in to KidSpring, answered my questions, and connected me to some next steps.&#34;</p>"}
-                name={"Angel Hill"}
-                location={"Charleston"}
-                heading={"The VIP Room made a difference for"}
-              />
-            </div>
-          </div>
+      </div>
+    </div>
+    <div className="floating background--light-primary">
+      <div className="soft-double soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+        <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
+        <div className="text-center">
+          <Story
+            image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img3.png"}
+            content={"<p>&#34;On my first visit to NewSpring, the VIP Room made a huge impression on me. My host, Cathy, was so warm and friendly. She helped get my daughter checked in to KidSpring, answered my questions, and connected me to some next steps.&#34;</p>"}
+            name={"Angel Hill"}
+            location={"Charleston"}
+            heading={"The VIP Room made a difference for"}
+          />
         </div>
       </div>
     </div>
@@ -223,7 +223,7 @@ const NextSteps = () => (
         </h1>
       </FitText>
       <div className="floating">
-        <h3 className="push-top push-left push-right floating__item one-third@lap-and-up">people served at NewSpring Church</h3>
+        <h3 className="push-top push-left push-right floating__item one-half@lap-and-up">people served at NewSpring Church</h3>
       </div>
       <div className="text-dark-tertiary push-top">
         <h1 style={{ fontWeight: "900" }}>7,583</h1>
@@ -236,11 +236,11 @@ const NextSteps = () => (
       </CardSlider>
     </div>
     {/* Care Room */}
-    <div className="background--dark-primary">
-      <div className="soft-double push-double text-center text-light-primary">
+    <div className="background--dark-primary floating">
+      <div className="soft-double-ends push-double-ends text-center text-light-primary soft-sides@palm soft-double-sides@handheld two-thirds@lap-wide-and-up floating__item">
         <FitText compressor={0.4} maxFontSize={80} minFontSize={52}>
           <h1
-            className="uppercase flush-bottom soft-half-bottom"
+            className="uppercase flush-bottom soft-half-bottom soft-double-top"
             style={{
               fontWeight: "900",
             }}
@@ -253,7 +253,7 @@ const NextSteps = () => (
         </div>
         <em>Do you need help?</em>
         <div className="push-double-top">
-          <SmallButton text="Speak to Someone Now" className="btn--light push-half-right" />
+          <SmallButton text="Speak to Someone Now" className="btn--light push-double-bottom" />
         </div>
       </div>
     </div>
@@ -267,7 +267,7 @@ const NextSteps = () => (
           to know people in the church.
         </p>
         <div className="floating">
-          <div className="floating__item two-thirds@lap-and-up">
+          <div className="soft-double hard-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
             <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
             <Story
               image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img4.png"}
@@ -278,7 +278,7 @@ const NextSteps = () => (
             />
           </div>
         </div>
-        <div className="text-center">
+        <div className="text-center soft-bottom">
           <h3
             className="italic"
             style={{
@@ -309,8 +309,8 @@ const NextSteps = () => (
     </div>
     {/* Local Missions */}
     <div className="background--primary soft-double@lap-and-up soft@handheld">
-      <div className="grid one-whole push-double-top push-double-bottom@lap-and-up">
-        <div className="grid__item one-half@lap-and-up text-light-primary display-inline-block" style={{ verticalAlign: "middle" }}>
+      <div className="grid one-whole soft-top push-double-top push-double-bottom@lap-and-up">
+        <div className="grid__item push-half-left@handheld one-half@lap-and-up text-light-primary display-inline-block" style={{ verticalAlign: "middle" }}>
           <h3
             className="italic text-center@handheld"
             style={{
@@ -334,7 +334,7 @@ const NextSteps = () => (
           <div className="floating__item two-thirds@lap-and-up visuallyhidden@lap-and-up push-double-bottom push-double-top">
             <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png" alt="map of south carolina" />
           </div>
-          <p className="constrain-copy@lap-and-up">
+          <p className="constrain-copy@lap-and-up push-double-bottom@handheld">
             God has called our church to make a difference in South Carolina. From rebuilding homes and hosting community service days to giving
             supplies to low-income schools, the money we budget for local missions creates opportunities to share Jesus&#39; love with our neighbors
             across the state.
@@ -349,11 +349,11 @@ const NextSteps = () => (
     </div>
     {/* Foreign Missions */}
     <div className="background--tertiary soft-double@lap-and-up soft@handheld">
-      <div className="grid one-whole push-double-top push-double-bottom@lap-and-up">
+      <div className="grid one-whole push-double-top soft-top push-double-bottom@lap-and-up">
         <div className="grid__item one-half@lap-and-up display-inline-block visuallyhidden@handheld" style={{ verticalAlign: "middle" }}>
           <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-world.png" alt="map of the world" />
         </div>
-        <div className="grid__item one-half@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up text-light-primary display-inline-block" style={{ verticalAlign: "middle" }}>
+        <div className="grid__item push-half-left@handheld one-half@lap-and-up soft-double-left@lap-and-up soft-right@lap-and-up text-light-primary display-inline-block" style={{ verticalAlign: "middle" }}>
           <h3
             className="italic text-center@handheld"
             style={{
@@ -373,7 +373,7 @@ const NextSteps = () => (
               />
             </FitText>
           </div>
-          <h3 className="text-center@handheld">on foreign missions</h3>
+          <h3 className="text-center@handheld soft-bottom@handheld">on foreign missions</h3>
           <div className="one-whole visuallyhidden@lap-and-up push-top push-bottom" style={{ verticalAlign: "middle" }}>
             <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-world.png" alt="map of the world" />
           </div>
@@ -421,7 +421,7 @@ const NextSteps = () => (
         </div>
       </div>
       <div className="floating">
-        <div className="floating__item two-thirds@lap-and-up">
+        <div className="soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
           <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
           <Story
             image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"}
@@ -436,9 +436,9 @@ const NextSteps = () => (
     </div>
     {/* Keep Reading */}
     <div className="background--primary text-center text-light-primary soft-double">
-      <h3>Keep Reading</h3>
+      <h3 className="soft-double-top">Keep Reading</h3>
       <p>Up next in the NewSpring 2016 Annual Report is information on our ministries.</p>
-      <a className="btn--light">Go To Ministries Report</a>
+      <a className="btn--light push-double-bottom">Go To Ministries Report</a>
     </div>
   </div>
 );
