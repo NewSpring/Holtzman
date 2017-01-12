@@ -7,6 +7,7 @@ import Fuse from "./sections/fuse";
 import NewSpringLeadershipCollege from "./sections/newSpringLeadershipCollege";
 import NewSpringNetwork from "./sections/newSpringNetwork";
 import Web from "./sections/web";
+import FunFacts from "./sections/funFacts";
 import Thanks from "./sections/thanks";
 
 /* eslint-disable max-len */
@@ -20,7 +21,7 @@ const Ministries = () => (
     <NewSpringLeadershipCollege />
     <NewSpringNetwork />
     <Web />
-
+    <FunFacts />
     <Thanks />
   </div>
 );

@@ -97,7 +97,7 @@ const data = {
   ],
   stories: [
     {
-      imageUrl: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/member_images/dlt/leaders.clayton_1000_1000_90_c1.jpg",
+      imageUrl: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img6.png",
       heading: "",
       content: "<p>Every week, kids like <strong>Sydney Chandler</strong> from <strong>Anderson</strong> are amoung the volunteers who make KidSpring a unique, fun, and valuable experience for kids.</p>",
       linkUrl: "",
@@ -147,34 +147,33 @@ const data = {
 
 /* eslint-disable max-len */
 const KidSpring = () => (
-  <div className="text-center one-whole ">
-    <div className={`soft-double-top@lap-and-up ${css(styles.primaryBackground)}`}>
+  <div>
+    <div className={`${css(styles.primaryBackground)} soft-double-ends@lap-and-up soft-ends text-center text-light-primary`}>
+      <div className="constrain-page soft-double-top soft-sides@handheld">
+        <div className="grid">
+          <div className="grid__item one-whole push-bottom">
+            <div className="constrain-copy">
+              <h1 className="uppercase push-bottom">KidSpring</h1>
+              <p className="text-left">KidSpring is the children&#39;s ministry at NewSpring Church.  Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.</p>
+            </div>
+          </div>
 
-      <div className="one-whole text-center text-light-primary push-bottom">
-        <h1 className="uppercase">KidSpring</h1>
-        <p className="constrain-copy">KidSpring is the children&#39;s ministry at NewSpring Church.  Every Sunday, children from birth through fifth grade experience Jesus on their level in environments that are safe, fun, and age-appropriate.</p>
+          <div className="grid__item one-whole soft-double-top@lap-and-up soft-top soft-bottom">
+            <h3 className="push-half-bottom">Average Number Of Kids Each Sunday</h3>
+            <FitText compressor={0.6} maxFontSize="100">
+              <h1
+                style={{
+                  fontWeight: 900,
+                }}
+              >
+                {data.average}
+              </h1>
+            </FitText>
+          </div>
+        </div>
       </div>
 
-      <div className="one-whole text-center text-light-primary">
-        <h3
-          className=""
-        >
-          Average Number Of Kids Each Sunday
-        </h3>
-
-        <FitText compressor={1.1}>
-          <h1
-            className="flush-bottom soft-half-bottom soft-double-top"
-            style={{
-              fontWeight: 900,
-            }}
-          >
-            {data.average}
-          </h1>
-        </FitText>
-      </div>
-
-      <div className={`one-whole ${css(styles.primaryColor)}`}>
+      <div className={`${css(styles.primaryColor)} push-bottom`}>
         <CardSlider>
           {data.campuses.map((campus, i) => (
             <MetricCard
@@ -187,29 +186,38 @@ const KidSpring = () => (
       </div>
     </div>
 
-    <div className="soft-double-top@lap-and-up">
-      <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
-      <div id="kidspring">
-        <TagGallery
-          id={"kidspring"}
-          buttonColor={data.tags.buttonColor}
-          disabledColor={data.tags.disabledColor}
-          overlay={data.tags.overlay}
-          tags={data.tags.tags}
-        />
+    <div className="background--light-primary text-center soft-double@lap-and-up soft">
+      <div className="constrain-page soft@handheld push-double-ends@lap-and-up">
+        <div className="grid">
+          <div className="grid__item one-whole">
+            <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
+          </div>
+          <div className="grid__item three-quarters@lap-wide-and-up">
+            <div id="kidspring">
+              <TagGallery
+                id={"kidspring"}
+                buttonColor={data.tags.buttonColor}
+                disabledColor={data.tags.disabledColor}
+                overlay={data.tags.overlay}
+                tags={data.tags.tags}
+              />
+            </div>
+            {data.stories.map((story, i) => (
+              <Story
+                key={i}
+                image={story.imageUrl}
+                content={story.content}
+                contentClass={css(styles.secondaryColor)}
+                linkUrl=""
+                linkClass={`h6 btn--small soft-sides@portable one-whole@handheld ${css(styles.secondaryColor, styles.secondaryHover)}`}
+                linkText={story.linkText}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-      {data.stories.map((story, i) => (
-        <Story
-          key={i}
-          image={story.imageUrl}
-          content={story.content}
-          contentClass={css(styles.secondaryColor)}
-          linkUrl=""
-          linkClass={`h6 btn--small soft-sides@portable one-whole@handheld ${css(styles.secondaryColor, styles.secondaryHover)}`}
-          linkText={story.linkText}
-        />
-      ))}
     </div>
+
   </div>
 );
 /* eslint-enable max-len */

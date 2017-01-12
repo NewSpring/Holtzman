@@ -77,19 +77,17 @@ const data = {
 
 /* eslint-disable max-len */
 const NewSpringAverages = () => (
-  <div className="text-center one-whole ">
-    <div className="background--light-secondary soft-double-top@lap-and-up" style={{ overflow: "visible" }}>
-
-      <div className="one-whole text-center">
+  <div className="background--light-secondary text-dark-primary soft-double-ends push-ends@lap-and-up soft-ends text-center">
+    <div className="constrain-page push-top soft-sides@handheld">
+      <div className="one-whole">
         <h3
-          className="text-dark-primary"
+          className="push-half-bottom"
         >
           Average Weekly Attendance
         </h3>
 
-        <FitText compressor={1.1}>
+        <FitText compressor={0.6} maxFontSize="100">
           <h1
-            className="flush-bottom soft-half-bottom soft-double-top text-dark-primary"
             style={{
               fontWeight: 900,
             }}
@@ -98,18 +96,18 @@ const NewSpringAverages = () => (
           </h1>
         </FitText>
       </div>
+    </div>
 
-      <div className="one-whole text-dark-primary">
-        <CardSlider>
-          {data.attendance.campuses.map((campus, i) => (
-            <MetricCard
-              key={i}
-              count={campus.average}
-              label={campus.name}
-            />
-          ))}
-        </CardSlider>
-      </div>
+    <div className="push-bottom@lap-and-up">
+      <CardSlider>
+        {data.attendance.campuses.map((campus, i) => (
+          <MetricCard
+            key={i}
+            count={campus.average}
+            label={campus.name}
+          />
+        ))}
+      </CardSlider>
     </div>
   </div>
 );
