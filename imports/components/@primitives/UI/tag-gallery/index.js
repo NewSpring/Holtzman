@@ -16,7 +16,7 @@ type ITagGallery = {
 class TagGalleryWithoutData extends Component {
   props: ITagGallery;
   state = {
-    tagActive: "",
+    tagActive: this.props.tags[0].value,
     displayImage: this.props.tags[0].image2x1,
     activeImage1x1: this.props.tags[0].image1x1,
     activeImage2x1: this.props.tags[0].image2x1,
@@ -24,6 +24,22 @@ class TagGalleryWithoutData extends Component {
     activeLabel: this.props.tags[0].label,
     activeValue: this.props.tags[0].value,
     activeCopy: this.props.tags[0].copy,
+  }
+
+  componentWillMount() {
+    this.activeImage(this.props);
+  }
+
+  componentWillReceiveProps(nextProps: Object) {
+    this.activeImage(nextProps);
+  }
+
+  activeImage = (props: Object) => {
+    if (props.breakpoints.includes("lap-wide-and-up")) {
+      return this.setState({ displayImage: this.state.activeImage2x1 });
+    }
+
+    return this.setState({ displayImage: this.state.activeImage1x1 });
   }
 
   tagClick = (value: string) => {
@@ -42,23 +58,6 @@ class TagGalleryWithoutData extends Component {
         activeCopy: activeButton.copy,
       };
     });
-  }
-
-
-  activeImage = (props: Object) => {
-    if (props.breakpoints.includes("lap-wide-and-up")) {
-      return this.setState({ displayImage: this.state.activeImage2x1 });
-    }
-
-    return this.setState({ displayImage: this.state.activeImage1x1 });
-  }
-
-  componentWillMount() {
-    this.activeImage(this.props);
-  }
-
-  componentWillReceiveProps(nextProps: Object) {
-    this.activeImage(nextProps);
   }
 
   render() {
