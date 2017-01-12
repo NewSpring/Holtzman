@@ -1,5 +1,4 @@
 // @flow
-import { StyleSheet, css } from "aphrodite";
 import { VictoryPie } from "victory";
 
 import CardSlider from "../../../components/@primitives/UI/card-slider";
@@ -10,17 +9,6 @@ import MetricCard from "../../../components/@primitives/UI/cards/MetricCard";
 import SmallButton from "../../../components/@primitives/UI/buttons/SmallButton";
 import Story from "../components/story";
 
-// const styles = StyleSheet.create({
-//   darkTertiaryColor: {
-//     color: "#858585",
-//     borderColor: "#858585",
-//   },
-//   darkTertiaryHover: {
-//     ":hover": {
-//       backgroundColor: "#858585",
-//     },
-//   },
-// });
 
 const firstTimeVisitorData = [
   { ministry: "VIP Room", count: 8000, color: "#6BAC43" },
