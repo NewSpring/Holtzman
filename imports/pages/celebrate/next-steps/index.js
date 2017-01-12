@@ -171,7 +171,7 @@ const NextSteps = () => (
             </div>
             <div className="grid__item one-third@lap-and-up text-left display-inline-block visuallyhidden@handheld" style={{ verticalAlign: "middle" }}>
               {firstTimeVisitorData.map(({ ministry, count, color }, key) => (
-                <div className="push-bottom">
+                <div className="push-bottom" key={key}>
                   <div className="display-inline-block" style={{ verticalAlign: "middle", borderRadius: "100%", border: `1px solid ${color}`, background: `${color}`, width: "1%", padding: "8px 8px" }} />
                   <h5 className="display-inline-block push-half-left" key={key} style={{ verticalAlign: "middle", marginBottom: "0" }}>{ministry}: {count}</h5>
                 </div>
@@ -182,7 +182,7 @@ const NextSteps = () => (
         <div className="floating visuallyhidden@lap-and-up">
           <div className="floating__item text-left">
             {firstTimeVisitorData.map(({ ministry, count, color }, key) => (
-              <div className="push-bottom">
+              <div className="push-bottom" key={key}>
                 <div className="display-inline-block" style={{ verticalAlign: "middle", borderRadius: "100%", border: `1px solid ${color}`, background: `${color}`, width: "1%", padding: "8px 8px" }} />
                 <h5 className="display-inline-block push-half-left" key={key} style={{ verticalAlign: "middle", marginBottom: "0" }}>{ministry}: {count}</h5>
               </div>
