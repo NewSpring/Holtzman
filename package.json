@@ -28,9 +28,6 @@
   },
   "homepage": "https://github.com/NewSpring/holzman",
   "jest": {
-    "transform": {
-      ".*": "./imports/util/tests/jestPreprocessor.js"
-    },
     "coverageDirectory": "./.coverage",
     "collectCoverageFrom": [
       "client/**/*.{js,jsx}",
