@@ -89,7 +89,7 @@ export class Dashboard extends Component {
             background--light-primary
           `}
         >
-          {!process.env.NATIVE && (
+          {!process.env.NATIVE && title && (
             <h1 className="soft-half-bottom@handheld soft-bottom">{title}</h1>
           )}
           <div className={`floating ${!process.env.NATIVE ? "text-left" : "text-center"}`}>
