@@ -185,14 +185,14 @@ const KidSpring = () => (
       </div>
     </div>
 
-    <div className="background--light-primary text-center soft-double@lap-and-up soft">
+    <div className="background--light-primary soft-double@lap-and-up soft">
       <div className="constrain-page soft@handheld push-double-ends@lap-and-up">
-        <div className="grid">
-          <div className="grid__item one-whole">
+        <div className="floating">
+          <div className="one-whole">
             <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
           </div>
-          <div className="grid__item three-quarters@lap-wide-and-up">
-            <div id="kidspring">
+          <div className="floating__item three-quarters@lap-wide-and-up">
+            <div id="kidspring" className="floating__item soft-bottom@handheld">
               <TagGallery
                 id={"kidspring"}
                 buttonColor={data.tags.buttonColor}
@@ -201,17 +201,19 @@ const KidSpring = () => (
                 tags={data.tags.tags}
               />
             </div>
-            {data.stories.map((story, i) => (
-              <Story
-                key={i}
-                image={story.imageUrl}
-                content={story.content}
-                contentClass={css(styles.secondaryColor)}
-                linkUrl=""
-                linkClass={`h6 btn--small soft-sides@portable one-whole@handheld ${css(styles.secondaryColor, styles.secondaryHover)}`}
-                linkText={story.linkText}
-              />
-            ))}
+            <div className="soft-double-sides@lap-and-up">
+              {data.stories.map((story, i) => (
+                <Story
+                  key={i}
+                  image={story.imageUrl}
+                  content={story.content}
+                  contentClass={css(styles.secondaryColor)}
+                  linkUrl="#"
+                  linkClass={`h6 btn--small@next soft-sides@portable ${css(styles.secondaryColor, styles.secondaryHover)}`}
+                  linkText={story.linkText}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
