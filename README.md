@@ -119,16 +119,28 @@ add `// @flow` to the very top of the file.
 
 To run flow, use `yarn flow`.
 
-## Deploys
+## CI and Deploys
 
-This project can be automatically deployed by Travis CI using release tags. We have 2 different versions of the application, web and native. We also have 3 different environments to deploy to: alpha, beta, production.
+This project is automatically tested on Jenkins CI. It is tested on every branch push as well as every PR. If a PR is open, then pushes to the branch being requested also get tested.
 
-To deploy, create a release/tag using a combination of the site name, site version, environment target, and version number.
+- For authenticated users, detailed test results can be see in the [Jenkins Control Panel](https://ci.newspring.io)
+- Test results can also be seen under the [branches tab](https://github.com/newspring/holtzman) in GitHub
 
-```
-newspring/web/production/1.0.8
-newspring/native/beta/0.0.3-45
-```
+This project can be deployed by Jenkins through its [web UI](https://ci.newspring.io). We have 2 different versions of the application: web and native. We also have 2 different environments to deploy to: beta and production. Currently, only the web platform can be deployed through Jenkins. Native builds currently are manually run and submitted.
+
+## Deploy Process
+
+This details how administrators to the repository with admin access inside Jenkins can deploy the project to all of our platforms.
+
+- Tests are run for all pull requests.
+  - Passing tests for pull requests generate a GitHub tag in the format:<br />
+  `GH<GitHub PR Number>-B<Jenkins Build number>`
+- Building For Web
+  - Open the `Holtzman-Web` project in Jenkins.
+  - Click `Build with Parameters` on the sidebar.
+  - Choose the environment (beta or production)
+  - Choose the tag you wish to deploy
+  - Click Build  
 
 ## Contributing
 
