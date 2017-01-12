@@ -88,8 +88,8 @@ const NextSteps = () => (
     </div>
     {/* Percent Stats */}
     <div className="floating background--dark-primary">
-      <div className="soft-double-ends push-double-ends text-center text-light-primary two-thirds@lap-and-up floating__item">
-        <div className="floating push-double-ends">
+      <div className="soft-double-ends push-double-ends text-center text-light-primary soft-sides@palm soft-double-sides@handheld two-thirds@lap-wide-and-up floating__item">
+        <div className="floating push-double-top soft-half-bottom">
           <div className="floating__item">
             <FitText compressor={1} maxFontSize={120} minFontSize={80}>
               <h1
@@ -108,7 +108,7 @@ const NextSteps = () => (
           <h3 className="two-thirds@lap-and-up floating__item">of people who received salvation took a next step.</h3>
         </div>
         <em>like these</em>
-        <div className="push-double-top">
+        <div className="push-double-bottom push-top soft-half-top">
           <SmallButton text="Baptism" className="btn--light push-half-right" />
           <SmallButton text="Attending Connect" className="btn--light push-half-right" />
           <SmallButton text="Joining a Group" className="btn--light push-half-right" />
@@ -136,9 +136,9 @@ const NextSteps = () => (
     </div>
     {/* First Time Visitors */}
     <div className="background--light-primary soft-double@lap-and-up soft-double-top@handheld soft-double-bottom@handheld">
-      <div className="grid one-whole soft-double-left@handheld push-double-top">
+      <div className="grid flush-sides one-whole soft-double-left@handheld push-double-top">
         <div className="grid__item floating one-half@lap-and-up text-center display-inline-block" style={{ verticalAlign: "middle" }}>
-          <div className="floating__item two-thirds@lap-and-up">
+          <div className="floating__item three-quarters@lap-wide-and-up">
             <h3
               className="italic"
               style={{
@@ -160,36 +160,26 @@ const NextSteps = () => (
             <h3 className="push-top">first time visitors come to NewSpring</h3>
           </div>
         </div>
-        <div className="grid__item one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
-          <div className="grid">
-            <div className="grid__item two-thirds@lap-and-up one-whole@handheld display-inline-block" style={{ verticalAlign: "middle" }}>
-              <VictoryPie
-                data={firstTimeVisitorData}
-                x="ministry"
-                y="count"
-                style={{
-                  labels: { display: "none" },
-                }}
-                colorScale={["#6BAC43", "#1C683E", "#2A4930"]}
-                labelRadius={100}
-              />
-            </div>
-            <div className="grid__item one-third@lap-and-up text-left display-inline-block visuallyhidden@handheld" style={{ verticalAlign: "middle" }}>
-              {firstTimeVisitorData.map(({ ministry, count, color }, key) => (
-                <div className="push-bottom" key={key}>
-                  <div className="display-inline-block" style={{ verticalAlign: "middle", borderRadius: "100%", border: `1px solid ${color}`, background: `${color}`, width: "1%", padding: "8px 8px" }} />
-                  <h5 className="display-inline-block push-half-left" key={key} style={{ verticalAlign: "middle", marginBottom: "0" }}>{ministry}: {count}</h5>
-                </div>
-              ))}
-            </div>
+        <div className="grid__item floating one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
+          <div className="floating__item three-quarters@lap-wide-and-up one-whole display-inline-block" style={{ verticalAlign: "middle" }}>
+            <VictoryPie
+              data={firstTimeVisitorData}
+              x="ministry"
+              y="count"
+              style={{
+                labels: { display: "none" },
+              }}
+              colorScale={["#6BAC43", "#1C683E", "#2A4930"]}
+              labelRadius={100}
+            />
           </div>
         </div>
-        <div className="floating visuallyhidden@lap-and-up">
+        <div className="floating soft-top push-double-bottom">
           <div className="floating__item text-left">
             {firstTimeVisitorData.map(({ ministry, count, color }, key) => (
-              <div className="push-bottom" key={key}>
+              <div className="push-half display-inline-block@lap-and-up" key={key}>
                 <div className="display-inline-block" style={{ verticalAlign: "middle", borderRadius: "100%", border: `1px solid ${color}`, background: `${color}`, width: "1%", padding: "8px 8px" }} />
-                <h5 className="display-inline-block push-half-left" key={key} style={{ verticalAlign: "middle", marginBottom: "0" }}>{ministry}: {count}</h5>
+                <h6 className="display-inline-block push-half-left" key={key} style={{ verticalAlign: "middle", marginBottom: "0" }}>{ministry}: {count}</h6>
               </div>
             ))}
           </div>
