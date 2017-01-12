@@ -61,7 +61,7 @@ const Web = () => (
       </div>
 
       {data.statistics.map((statistic, i) => (
-        <div className="grid__item push-bottom one-third@lap-and-up text-dark-primary text-center">
+        <div className="grid__item push-bottom one-third@lap-and-up text-dark-primary text-center" key={i}>
           <img src={statistic.image} alt="" style={{ maxWidth: "30%", maxHeight: "100px" }} />
           <MetricCard
             key={i}

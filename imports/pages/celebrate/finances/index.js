@@ -54,7 +54,7 @@ const Finances = () => {
               count += 1;
               if (count <= fundData.length / 2) {
                 return (
-                  <div className="grid__item one-half@lap-and-up push-half-bottom">
+                  <div className="grid__item one-half@lap-and-up push-half-bottom" key={key}>
                     <div className="grid__item one-whole">
                       <ProgressBar
                         theme={"dark"}
@@ -69,7 +69,7 @@ const Finances = () => {
                 );
               }
               return (
-                <div className="grid__item one-half@lap-and-up push-half-bottom">
+                <div className="grid__item one-half@lap-and-up push-half-bottom" key={key}>
                   <div className="grid__item one-whole">
                     <ProgressBar
                       theme={"dark"}
