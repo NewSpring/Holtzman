@@ -78,7 +78,7 @@ const NextSteps = () => (
           image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.png"}
           content={"<p>The community Brett Chamberlain found through a fishing interest group at NewSpring Rock Hill helped him recognize that he needed to ask Jesus into his life and take the step of baptism with his teenage son in June 2016.</p>"}
           linkUrl={"https://newspring.cc"}
-          linkClass={"h6 btn--small@next btn--dark-secondary soft-sides@portable one-whole@handheld"}
+          linkClass={"h6 btn--small@next btn--dark-secondary"}
           linkText={"Read the Full Story"}
           name={"Brett"}
           location={"Rock Hill"}
