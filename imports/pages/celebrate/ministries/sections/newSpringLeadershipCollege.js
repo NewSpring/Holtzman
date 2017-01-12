@@ -37,7 +37,7 @@ const data = {
 /* eslint-disable max-len */
 const NewSpringLeadershipCollege = () => (
   <div className="text-center background--light-primary soft-double-ends">
-    <div className="constrain-page soft-double-top push-double-top@lap-and-up soft-sides@handheld">
+    <div className="constrain-page soft-double-top soft-sides@handheld">
       <div className="grid">
         <div className="grid__item one-whole push-double-bottom">
           <div className="constrain-copy">
@@ -45,22 +45,20 @@ const NewSpringLeadershipCollege = () => (
             <p className="text-left">NewSpring Leadership College is a two-year program to raise up passionate leaders for the local church. At NewSpring Leadership College, students receive practical Bible teaching and leadership training as well as real ministry responsibility and experience.</p>
           </div>
         </div>
-        <div className="grid__item one-whole text-center">
-          <h3 className="italic text-primary"><strong>Helping raise up leaders to change their communities</strong></h3>
+        <div className="grid__item one-whole text-center soft-bottom@lap-and-up">
+          <div className="constrain-copy">
+            <h3 className="italic text-primary"><strong>Helping raise up leaders to change their communities</strong></h3>
+          </div>
+          <div id="college">
+            <TagGallery
+              id={"college"}
+              buttonColor={data.tags.buttonColor}
+              disabledColor={data.tags.disabledColor}
+              overlay={data.tags.overlay}
+              tags={data.tags.tags}
+            />
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div className="soft-double-top@lap-and-up">
-      <h3 className="italic text-primary"><strong>Helping raise up leaders to change their communities</strong></h3>
-      <div id="college">
-        <TagGallery
-          id={"college"}
-          buttonColor={data.tags.buttonColor}
-          disabledColor={data.tags.disabledColor}
-          overlay={data.tags.overlay}
-          tags={data.tags.tags}
-        />
       </div>
     </div>
   </div>

@@ -97,7 +97,7 @@ const data = {
   ],
   stories: [
     {
-      imageUrl: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/member_images/dlt/leaders.clayton_1000_1000_90_c1.jpg",
+      imageUrl: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img6.png",
       heading: "",
       content: "<p>Every week, kids like <strong>Sydney Chandler</strong> from <strong>Anderson</strong> are amoung the volunteers who make KidSpring a unique, fun, and valuable experience for kids.</p>",
       linkUrl: "",
@@ -149,7 +149,7 @@ const data = {
 const KidSpring = () => (
   <div>
     <div className={`${css(styles.primaryBackground)} soft-double-ends@lap-and-up soft-ends text-center text-light-primary`}>
-      <div className="constrain-page soft-double-top push-double-top@lap-and-up soft-sides@handheld">
+      <div className="constrain-page soft-double-top soft-sides@handheld">
         <div className="grid">
           <div className="grid__item one-whole push-bottom">
             <div className="constrain-copy">
@@ -173,7 +173,7 @@ const KidSpring = () => (
         </div>
       </div>
 
-      <div className={`${css(styles.primaryColor)} push-double-bottom@lap-and-up push-bottom`}>
+      <div className={`${css(styles.primaryColor)} push-bottom`}>
         <CardSlider>
           {data.campuses.map((campus, i) => (
             <MetricCard
@@ -187,16 +187,11 @@ const KidSpring = () => (
     </div>
 
     <div className="background--light-primary text-center soft-double@lap-and-up soft">
-      <div className="constrain-page soft-double-top@lap-and-up push-double-top@lap-and-up soft">
+      <div className="constrain-page soft@handheld push-double-ends@lap-and-up">
         <div className="grid">
           <div className="grid__item one-whole">
             <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
           </div>
-        </div>
-      </div>
-
-      <div className="constrain-page soft-double@lap-and-up soft push-double-ends@lap-and-up">
-        <div className="grid">
           <div className="grid__item three-quarters@lap-wide-and-up">
             <div id="kidspring">
               <TagGallery

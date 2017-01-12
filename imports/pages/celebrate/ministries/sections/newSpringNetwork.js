@@ -22,7 +22,7 @@ const data = {
   ],
   stories: [
     {
-      imageUrl: "//dg0ddngxdz549.cloudfront.net/images/cached/images/remote/http_s3.amazonaws.com/ns.images/all/member_images/dlt/leaders.clayton_1000_1000_90_c1.jpg",
+      imageUrl: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img7.png",
       name: "Liz Wynn",
       location: "Arkansas",
       heading: "Hear from childrens ministry director",
@@ -34,7 +34,7 @@ const data = {
 /* eslint-disable max-len */
 const NewSpringNetwork = () => (
   <div className="background--light-secondary soft-double-ends text-center">
-    <div className="constrain-page soft-double-top push-double-top@lap-and-up push-top@handheld soft-sides@handheld">
+    <div className="constrain-page soft-double-top push-top@handheld soft-sides@handheld">
       <div className="grid">
         <div className="grid__item one-whole push-bottom">
           <div className="constrain-copy">
@@ -55,20 +55,18 @@ const NewSpringNetwork = () => (
       ))}
     </CardSlider>
 
-    <div className="constrain-page soft-double@lap-and-up push-double-ends@lap-and-up push-double-top soft-sides@handheld">
-      <div className="grid">
-        <div className="grid__item three-quarters@lap-wide-and-up">
-          {data.stories.map((story, i) => (
-            <Story
-              key={i}
-              image={story.imageUrl}
-              name={story.name}
-              location={story.location}
-              heading={story.heading}
-              content={story.content}
-            />
-          ))}
-        </div>
+    <div className="constrain-page push-double-ends@lap-and-up push-double-top soft-sides@handheld">
+      <div className="one-whole">
+        {data.stories.map((story, i) => (
+          <Story
+            key={i}
+            image={story.imageUrl}
+            name={story.name}
+            location={story.location}
+            heading={story.heading}
+            content={story.content}
+          />
+        ))}
       </div>
     </div>
   </div>
