@@ -1,5 +1,6 @@
 // @flow
 import { VictoryPie } from "victory";
+import { css, StyleSheet } from "aphrodite";
 
 import CardSlider from "../../../components/@primitives/UI/card-slider";
 import Currency from "../../../components/@primitives/typography/currency";
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
     top: "-1.0em",
     zIndex: "1",
     opacity: "0.75",
+    // eslint-disable-next-line quotes
     backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='246' height='2000' viewBox='0 0 246 2000'><path fill-rule='evenodd' clip-rule='evenodd' fill='#0273AF' d='M0 2000c50.43 0 72.57-20.522 123-20.522 50.43 0 71.34 20.522 123 20.522V0H0v2000z'/></svg>")`,
     backgroundPosition: "bottom left",
   },
@@ -66,6 +68,7 @@ const styles = StyleSheet.create({
     top: "-2.0em",
     opacity: "0.5",
     zIndex: "2",
+    // eslint-disable-next-line quotes
     backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='307' height='2000' viewBox='0 0 307 2000'><path fill-rule='evenodd' clip-rule='evenodd' fill='#0273AF' d='M0 0h307v2000c-64.47 0-90.563-25.623-153.5-25.623C90.565 1974.377 62.935 2000 0 2000V0z'/></svg>")`,
     backgroundPosition: "bottom right",
   },
@@ -82,6 +85,7 @@ const styles = StyleSheet.create({
     animationDelay: "-2400ms",
     top: "-3.0em",
     zIndex: "3",
+    // eslint-disable-next-line quotes
     backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='384' height='2000' viewBox='0 0 384 2000'><path fill-rule='evenodd' clip-rule='evenodd' fill='#0273AF' d='M0 0h384v2000c-80.64 0-113.28-32.047-192-32.047S78.72 2000 0 2000V0z'/></svg>")`,
     backgroundPosition: "bottom center",
   },
@@ -183,8 +187,7 @@ const NextSteps = () => (
     </div>
     {/* Baptism */}
     <div className="background--light-primary soft-double-top text-center one-whole soft-top">
-      <h3 className="push-top" style={{ color: "#0073AF" }}>We Witnessed</h3>
-      <div className="one-whole">
+      <h3 className="push-top" style={{ color: "#0073AF" }}>We Witnessed</h3> className="one-whole">
         <div className={css(styles.waves)}>
           <div className={css(styles.wave, styles.wave_1)} />
           <div className={css(styles.wave, styles.wave_2)} />
