@@ -66,7 +66,7 @@ const Web = () => (
         <div className="grid__item one-whole text-dark-primary text-center hard">
           <div className="soft-double@lap-and-up soft push-double@lap-and-up soft-double-bottom push-bottom">
 
-            <div className="one-whole text-center push-double-bottom soft-top">
+            <div className="one-whole text-center push-double-bottom soft-top push-double-top@handheld">
               <h1 className="uppercase">Web Stats</h1>
               <h3 className="italic"><strong>We have</strong></h3>
             </div>
