@@ -98,7 +98,6 @@ const data = {
   tags: {
     overlay: "rgba(107, 164, 184, 0.9)",
     buttonColor: "#6BA4B8",
-    disabledColor: "#DDDDDD",
     tags: [
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag1_1x1.jpg",

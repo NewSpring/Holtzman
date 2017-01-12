@@ -4,7 +4,6 @@ const data = {
   tags: {
     overlay: "rgba(107, 172, 67, 0.9)",
     buttonColor: "#6BAC43",
-    disabledColor: "#F7F7F7",
     tags: [
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag1_1x1.jpg",
