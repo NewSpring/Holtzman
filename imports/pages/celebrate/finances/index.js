@@ -89,7 +89,7 @@ const Finances = () => {
       <div className="background--light-primary text-center soft-double">
         <h3 className="push-double-top push-half-bottom">Giving to Step Up</h3>
         <em>for land and buildings</em>
-        <div className="push-top">
+        <div className="push-ends soft-bottom">
           <FitText compressor={1} maxFontSize={18}>
             <Currency
               amount={stepUpFundTotal}
@@ -99,13 +99,18 @@ const Finances = () => {
             />
           </FitText>
         </div>
-        <Story
-          image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img1.png"}
-          content={"<p>&#34;We gave to the Clemson building campaign because we saw NewSpring's impact on our own daughter when she was at college. We're excited to see the lives that will be changed in and around Clemson and from all over the world because of the new campus.&#34;</p>"}
-          name={"Carol and Laurie Brown"}
-          location={"Sumter"}
-          heading={"Meet givers"}
-        />
+        <div className="floating">
+          <div className="soft-double-sides soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+            <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
+            <Story
+              image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img1.png"}
+              content={"<p>&#34;We gave to the Clemson building campaign because we saw NewSpring's impact on our own daughter when she was at college. We're excited to see the lives that will be changed in and around Clemson and from all over the world because of the new campus.&#34;</p>"}
+              name={"Carol and Laurie Brown"}
+              location={"Sumter"}
+              heading={"Meet givers"}
+            />
+          </div>
+        </div>
       </div>
       <div className="one-whole floating text-center background--light-secondary soft-sides soft-double-ends">
         <div className="grid three-quarters@lap-wide-and-up floating__item push-double-ends">
@@ -158,7 +163,7 @@ const Finances = () => {
       <div className="background--light-primary soft-double">
         <h3 className="text-center push-double-top">Annual Audit</h3>
         <p className="constrain-copy push-bottom">NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (Philippians 2:15)</p>
-        <p className="constrain-copy push-double-bottom">We&#39;ll update this section in May after the audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.</p>
+        <p className="constrain-copy push-double-bottom soft-half-bottom">We&#39;ll update this section in May after the audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.</p>
       </div>
       <div className="background--primary text-center text-light-primary soft-double">
         <h3 className="push-double-top">Keep Reading</h3>

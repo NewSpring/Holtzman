@@ -60,8 +60,7 @@ export default class TagSelect extends Component {
             val={value}
             onClick={this.handleTagClick}
             active={this.isActive(value)}
-            clickAble={this.canBeActive(value)}
-            className={(this.props.overrideActive || !this.canBeActive(value)) && "tag--disabled"}
+            className={this.props.overrideActive}
           />
         ))}
       </div>
