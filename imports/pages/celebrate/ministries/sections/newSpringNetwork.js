@@ -9,15 +9,15 @@ const data = {
   statistics: [
     {
       label: "Leaders Served",
-      value: "6,200",
+      value: "46,344",
     },
     {
       label: "Downloads of free content",
-      value: "11,200",
+      value: "56,282",
     },
     {
       label: "Leaders attended a conference",
-      value: "9,104",
+      value: "2,287",
     },
   ],
   stories: [
@@ -33,10 +33,10 @@ const data = {
 
 /* eslint-disable max-len */
 const NewSpringNetwork = () => (
-  <div className="background--light-secondary soft-double-ends text-center">
-    <div className="constrain-page soft-double-top push-top@handheld soft-sides@handheld">
+  <div className="background--light-secondary soft-double-ends@lap-and-up soft-top text-center">
+    <div className="constrain-page soft-double-top soft-sides@handheld">
       <div className="grid">
-        <div className="grid__item one-whole push-bottom">
+        <div className="grid__item one-whole">
           <div className="constrain-copy">
             <h1 className="uppercase push-bottom">NewSpring Network</h1>
             <p className="text-left">NewSpring Network equips church leaders with resources, coahcing opportunities and leadership training. Through NewSpring Network, our church provides free children&#39;s ministry curriculum, series graphics, and videos, chord charts, and volunteer training.</p>
@@ -55,7 +55,7 @@ const NewSpringNetwork = () => (
       ))}
     </CardSlider>
 
-    <div className="constrain-page three-quarters@lap-wide-and-up nine-tenths@lap push-double-top soft-double-sides soft-sides@handheld">
+    <div className="constrain-page three-quarters@lap-wide-and-up nine-tenths@lap push-double-top@lap-and-up soft-double-sides soft-sides@handheld">
       <div className="one-whole">
         {data.stories.map((story, i) => (
           <Story

@@ -14,45 +14,49 @@ const data = {
       {
         image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-mac.png",
         label: "unique devices to view our sites and apps",
-        value: "2,000,000",
+        value: "2,398,759",
       },
       {
         image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-cake.png",
-        label: "church online services",
-        value: "394",
+        label: "church online salvations",
+        value: "398",
       },
       {
         image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-viewers.png",
         label: "average weekly church online viewers",
-        value: "1,200",
+        value: "8,353",
       },
       {
         image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-phone.png",
         label: "NewSpring app downloads",
-        value: "8,104",
+        value: "25,322",
       },
       {
         image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-globe.png",
         label: "countries that visted our site",
-        value: "37",
+        value: "210",
       },
     ],
     cards: [
       {
         label: "Articles Read",
-        value: "6,200",
+        value: "942,436",
       },
       {
         label: "Devotionals Read",
-        value: "11,200",
+        value: "443,252",
       },
       {
         label: "Studies Used",
-        value: "6,200",
+        value: "252,566",
       },
       {
         label: "Stories Viewed",
-        value: "11,200",
+        value: "143,972",
+      },
+      {
+        label: "Sermons Watched",
+        value: "429,514",
       },
     ],
   },
@@ -64,9 +68,9 @@ const Web = () => (
     <div className="grid flush">
       <div className="constrain-page">
         <div className="grid__item one-whole text-dark-primary text-center hard">
-          <div className="soft-double@lap-and-up soft push-double@lap-and-up soft-double-bottom push-bottom">
+          <div className="soft-double-sides@lap-and-up soft-double-top@lap-and-up push-double-top@lap-and-up soft">
 
-            <div className="one-whole text-center push-double-bottom soft-top push-double-top@handheld">
+            <div className="one-whole text-center push-bottom push-double-top@handheld">
               <h1 className="uppercase">Web Stats</h1>
               <h3 className="italic"><strong>We have</strong></h3>
             </div>
@@ -76,7 +80,7 @@ const Web = () => (
                 key={i}
                 className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld"
               >
-                <img src={statistic.image} className="push-double-bottom@lap-and-up push-bottom" style={{ maxHeight: "100px" }} />
+                <img src={statistic.image} className="push-double-bottom@lap-and-up push-bottom" style={{ maxHeight: "100px" }} alt="icon" />
                 <FitText compressor={0.6}>
                   <h1 style={{ fontWeight: 900 }}>
                     {statistic.value}
@@ -90,10 +94,10 @@ const Web = () => (
       </div>
     </div>
     <div className="soft-double-ends text-center one-whole background--light-tertiary text-dark-primary">
-      <div className="floating soft-double-ends soft-bottom@handheld">
-        <div className="floating__item one-whole three-quarters@lap-and-up hard@handheld">
-          <div className="constrain-copy soft-double-sides@lap-and-up push-sides@lap-and-up soft-sides@handheld">
-            <h3 className="italic"><strong>Using the Internet to help people follow Jesus step by step, we saw</strong></h3>
+      <div className="soft-double-ends soft-bottom@handheld">
+        <div className="floating one-whole hard@handheld">
+          <div className="floating__item constrain-copy soft-double-sides@lap-and-up push-sides@lap-and-up soft-sides@handheld">
+            <h3 className="text-center italic"><strong>Using the Internet to help people follow Jesus step by step, we saw</strong></h3>
           </div>
         </div>
         <CardSlider>

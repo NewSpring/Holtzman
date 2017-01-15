@@ -8,26 +8,26 @@ const data = {
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag1_1x1.jpg",
         image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag1_2x1.jpg",
-        imageAlt: "First Timers at NewSpring",
-        label: "6,200",
-        value: "FirstTime",
+        imageAlt: "Current NewSpring Leadership College Student",
+        label: "45",
+        value: "Current Students",
         copy: "current students",
       },
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag2_1x1.jpg",
         image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag2_2x1.jpg",
-        imageAlt: "First Timers at NewSpring",
-        label: "2,315",
-        value: "SomethingCool",
-        copy: "students did something cool",
+        imageAlt: "NewSpring Leadership College Graduates",
+        label: "33",
+        value: "CollegeGraduates",
+        copy: "students have graduated from NSLC",
       },
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag3_1x1.jpg",
         image2x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/college/tag3_2x1.jpg",
-        imageAlt: "First Timers at NewSpring",
-        label: "4,021",
-        value: "Stats",
-        copy: "students don't care about statistics",
+        imageAlt: "NSLC Grads placed in ministry",
+        label: "16",
+        value: "GradsInMinistry",
+        copy: "graduates working in ministry",
       },
     ],
   },
@@ -35,7 +35,7 @@ const data = {
 
 /* eslint-disable max-len */
 const NewSpringLeadershipCollege = () => (
-  <div className="text-center background--light-primary soft-double-ends">
+  <div className="text-center background--light-primary soft-double-ends@lap-and-up soft-ends">
     <div className="constrain-page soft-double-top soft-sides@handheld">
       <div className="grid">
         <div className="grid__item one-whole push-double-bottom">

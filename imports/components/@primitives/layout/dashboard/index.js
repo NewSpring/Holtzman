@@ -12,11 +12,9 @@ type ISubNav = [{
   title: string,
 }];
 
-const getLinkClasses = (isActive: boolean) => {
+const getLinkClasses = (additionalClasses?: string, isActive: boolean) => {
   const classes = [
     "floating__item",
-    "soft-half-sides",
-    "push-right",
     "text-center",
     "plain",
   ];
@@ -25,6 +23,10 @@ const getLinkClasses = (isActive: boolean) => {
     classes.push("outlined--bottom");
   } else {
     classes.push("text-dark-primary");
+  }
+
+  if (additionalClasses) {
+    classes.push(additionalClasses);
   }
 
   return classes.join(" ");
@@ -42,12 +44,12 @@ const getLinkStyles = (isActive: boolean) => {
   return styles;
 };
 
-const getLinks = (subNav: ISubNav) => {
+const getLinks = (additionalClasses?: string, subNav: ISubNav) => {
   const links = subNav.map((x, index) => (
     <Link
       key={index}
       to={x.linkUrl}
-      className={getLinkClasses(x.isActive)}
+      className={getLinkClasses(additionalClasses, x.isActive)}
       style={getLinkStyles(x.isActive)}
     >
       <h6>{x.title}</h6>
@@ -57,10 +59,11 @@ const getLinks = (subNav: ISubNav) => {
 };
 
 type IDashboard = {
-  title: string,
-  subNav: ISubNav,
+  additionalClasses?: string,
   children?: React$Element<any>,
   dispatch: Function,
+  subNav: ISubNav,
+  title: string,
 };
 
 export class Dashboard extends Component {
@@ -73,9 +76,10 @@ export class Dashboard extends Component {
 
   render() {
     const {
-      title,
-      subNav,
+      additionalClasses,
       children,
+      subNav,
+      title,
     } = this.props;
 
     return (
@@ -93,7 +97,7 @@ export class Dashboard extends Component {
             <h1 className="soft-half-bottom@handheld soft-bottom">{title}</h1>
           )}
           <div className={`floating ${!process.env.NATIVE ? "text-left" : "text-center"}`}>
-            {getLinks(subNav)}
+            {getLinks(additionalClasses, subNav)}
           </div>
         </div>
         <div className="background--light-secondary outlined--top outlined--light" style={{ borderWidth: "1px" }}>

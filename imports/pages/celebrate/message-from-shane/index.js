@@ -20,6 +20,7 @@ const Shane = () => (
         classes={["background--right", "background--bottom"]}
       />
     </Split>
+    <style>{".oo-player-container { min-width: 0 !important }"}</style>
     <Left scroll classes={["background--light-primary"]}>
       <Link
         to="/celebrate"

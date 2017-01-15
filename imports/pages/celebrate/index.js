@@ -148,6 +148,7 @@ class Template extends Component {
         </div>
         <DashboardLayout
           subNav={this.state.subNav}
+          additionalClasses={"soft-half-sides push-right@lap-and-up push-half-right"}
         >
           {this.props.children}
         </DashboardLayout>

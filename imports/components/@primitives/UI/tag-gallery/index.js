@@ -76,7 +76,7 @@ class TagGalleryWithoutData extends Component {
           overrideActive={false}
           currentActive={this.state.tagActive}
         />
-        <div className="one-whole three-fourths@lap-and-up text-center display-inline-block soft">
+        <div className="one-whole three-fourths@lap-and-up text-center display-inline-block soft-ends">
           <div className="ratio--landscape@lap-and-up ratio--square soft@handheld one-whole constrain-copy">
             <div className="ratio__item floating one-whole rounded" style={{ background: `linear-gradient(${this.props.overlay}, ${this.props.overlay}), url('${this.state.displayImage}') center 20%` }}>
               <div className="floating__item one-half@lap-and-up text-light-primary one-whole soft">
