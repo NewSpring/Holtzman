@@ -7,7 +7,6 @@ import Currency from "../../../components/@primitives/typography/currency";
 import FitText from "../components/fit-text";
 import Meta from "../../../components/shared/meta";
 import MetricCard from "../components/metricCard";
-import SmallButton from "../../../components/@primitives/UI/buttons/SmallButton";
 import Story from "../components/story";
 
 const styles = StyleSheet.create({
@@ -92,38 +91,39 @@ const styles = StyleSheet.create({
 });
 
 const firstTimeVisitorData = [
-  { ministry: "VIP Room", count: 8000, color: "#6BAC43" },
-  { ministry: "KidSpring", count: 3600, color: "#1C683E" },
-  { ministry: "Fuse", count: 1400, color: "#2A4930" },
+  { ministry: "VIP Room", count: 21635, color: "#6BAC43" },
+  { ministry: "KidSpring", count: 11559, color: "#1C683E" },
+  { ministry: "Fuse", count: 13943, color: "#2A4930" },
 ];
 
 const volunteerData = [
-  { label: "Aiken", count: 5000 },
-  { label: "Anderson", count: 5000 },
-  { label: "Boiling Springs", count: 5000 },
-  { label: "Charleston", count: 5000 },
-  { label: "Clemson", count: 5000 },
-  { label: "Columbia", count: 5000 },
-  { label: "Florence", count: 5000 },
-  { label: "Greenville", count: 5000 },
-  { label: "Greenwood", count: 5000 },
-  { label: "Hilton Head", count: 5000 },
-  { label: "Myrtle Beach", count: 5000 },
-  { label: "Northeast Columbia", count: 5000 },
-  { label: "Powdersville", count: 5000 },
-  { label: "Rock Hill", count: 5000 },
-  { label: "Spartanburg", count: 5000 },
-  { label: "Sumter", count: 5000 },
+  { label: "Aiken", count: 178 },
+  { label: "Anderson", count: 2165 },
+  { label: "Boiling Springs", count: 359 },
+  { label: "Charleston", count: 689 },
+  { label: "Clemson", count: 375 },
+  { label: "Columbia", count: 1187 },
+  { label: "Florence", count: 576 },
+  { label: "Greenville", count: 1208 },
+  { label: "Greenwood", count: 440 },
+  { label: "Hilton Head", count: 75 },
+  { label: "Myrtle Beach", count: 478 },
+  { label: "Northeast Columbia", count: 161 },
+  { label: "Powdersville", count: 585 },
+  { label: "Rock Hill", count: 136 },
+  { label: "Spartanburg", count: 726 },
+  { label: "Sumter", count: 109 },
 ];
-const localMissionAmount = "567,422.90";
+const localMissionAmount = "1,246,884.72";
+const foreignMissionAmount = "493,845.39";
 
 /* eslint-disable max-len */
 const NextSteps = () => (
   <div>
     <Meta title="Next Steps" />
     {/* Header */}
-    <div className="background--light-secondary soft-double@lap-and-up soft@handheld">
-      <div className="push-double-ends">
+    <div className="background--light-secondary soft-double-ends soft-sides">
+      <div className="push-ends">
         <h3 className="text-center">What Is A Next Step</h3>
         <p className="constrain-copy">Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here&#39;s a look at how we&#39;ve seen people take their next steps in 2016.</p>
       </div>
@@ -139,14 +139,14 @@ const NextSteps = () => (
               fontWeight: "900",
             }}
           >
-            11,130
+            9,560
           </h1>
         </FitText>
-        <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
+        <hr className="visuallyhidden@handheld push-ends" style={{ borderTop: "1px solid #dddddd" }} />
         <Story
           image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.png"}
           content={"<p>The community Brett Chamberlain found through a fishing interest group at NewSpring Rock Hill helped him recognize that he needed to ask Jesus into his life and take the step of baptism with his teenage son in June 2016.</p>"}
-          linkUrl={"https://newspring.cc"}
+          linkUrl={"https://newspring.cc/stories/brett-chamberlain"}
           linkClass={"h6 btn--small@next btn--dark-secondary"}
           linkText={"Read the Full Story"}
           name={"Brett"}
@@ -167,7 +167,7 @@ const NextSteps = () => (
                   fontWeight: "900",
                 }}
               >
-                72
+                68
               </h1>
             </FitText>
           </div>
@@ -178,10 +178,18 @@ const NextSteps = () => (
         </div>
         <em>like these</em>
         <div className="push-double-bottom push-top soft-half-top">
-          <SmallButton text="Baptism" className="btn--light push-half-right" />
-          <SmallButton text="Attending Connect" className="btn--light push-half-right" />
-          <SmallButton text="Joining a Group" className="btn--light push-half-right" />
-          <SmallButton text="Giving" className="btn--light push-half-right" />
+          <a href={"https://newspring.cc/baptism"} className={"btn btn--light btn--small@next"}>
+            {"Baptism"}
+          </a>
+          <a href={"https://newspring.cc/connect"} className={"btn btn--light btn--small@next"}>
+            {"Attending Connect"}
+          </a>
+          <a href={"https://newspring.cc/groups"} className={"btn btn--light btn--small@next"}>
+            {"Joining a Group"}
+          </a>
+          <a href={"https://newspring.cc/give"} className={"btn btn--light btn--small@next"}>
+            {"Giving"}
+          </a>
         </div>
       </div>
     </div>
@@ -199,16 +207,16 @@ const NextSteps = () => (
             className="uppercase flush-bottom soft-half-bottom"
             style={{ fontWeight: "900" }}
           >
-            5,253
+            5,557
           </h1>
         </FitText>
         <h5 className="text-light-primary push-top">Go Public For Jesus Through</h5>
-        <h1 className="text-light-primary push-top push-double-bottom">Baptism</h1>
+        <h1 className="text-light-primary push-top push-bottom">Baptism</h1>
       </div>
     </div>
     {/* First Time Visitors */}
     <div className="background--light-primary soft-double@lap-and-up soft-double-top@handheld soft-half-bottom@handheld">
-      <div className="grid one-whole push-double-top">
+      <div className="grid one-whole push-top@handheld">
         <div className="grid__item push-half-left@handheld floating one-half@lap-and-up text-center display-inline-block" style={{ verticalAlign: "middle" }}>
           <div className="floating__item three-quarters@lap-wide-and-up">
             <h3
@@ -226,7 +234,7 @@ const NextSteps = () => (
                   fontWeight: "900",
                 }}
               >
-                13,000
+                47,137
               </h1>
             </FitText>
             <h3 className="push-top">first time visitors come to NewSpring</h3>
@@ -259,8 +267,8 @@ const NextSteps = () => (
       </div>
     </div>
     <div className="floating background--light-primary">
-      <div className="soft-double soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
-        <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
+      <div className="soft-double-ends@lap-and-up soft-top soft-sides text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+        <hr className="visuallyhidden@handheld push-ends" style={{ borderTop: "1px solid #dddddd" }} />
         <div className="text-center">
           <Story
             image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img3.png"}
@@ -276,7 +284,7 @@ const NextSteps = () => (
     <div className="background--light-secondary soft-double-top soft-double-bottom text-center">
       <div className="push-double-top">
         <h3
-          className="italic push-double-top"
+          className="italic push-top"
           style={{
             fontFamily: "ff-meta-serif-web-pro, serif",
           }}
@@ -291,7 +299,7 @@ const NextSteps = () => (
             fontWeight: "900",
           }}
         >
-          17,422
+          9,447
         </h1>
       </FitText>
       <div className="floating">
@@ -317,7 +325,7 @@ const NextSteps = () => (
               fontWeight: "900",
             }}
           >
-            7,200
+            8,897
           </h1>
         </FitText>
         <div className="one-whole floating">
@@ -325,7 +333,9 @@ const NextSteps = () => (
         </div>
         <em>Do you need help?</em>
         <div className="push-double-top">
-          <SmallButton text="Speak to Someone Now" className="btn--light push-double-bottom" />
+          <a href={"https://rock.newspring.cc/Workflows/83"} className={"btn btn--light btn--small@next"}>
+            {"Speak to Someone Now"}
+          </a>
         </div>
       </div>
     </div>
@@ -339,8 +349,8 @@ const NextSteps = () => (
           to know people in the church.
         </p>
         <div className="floating">
-          <div className="soft-double hard-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
-            <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
+          <div className="soft-double@lap-and-up hard-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+            <hr className="visuallyhidden@handheld push-ends" style={{ borderTop: "1px solid #dddddd" }} />
             <Story
               image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img4.png"}
               content={"<p>&#34;To grow in our relationship with Jesus, we knew our next step was to start serving. We walked into Connect very nervous about what it would take to get plugged in. Our host put us at ease and guided us on the start of a new journey.&#34;</p>"}
@@ -350,7 +360,7 @@ const NextSteps = () => (
             />
           </div>
         </div>
-        <div className="text-center soft-bottom">
+        <div className="text-center">
           <h3
             className="italic"
             style={{
@@ -366,14 +376,14 @@ const NextSteps = () => (
                 fontWeight: "900",
               }}
             >
-              2,422
+              10,946
             </h1>
           </FitText>
           <div className="floating">
             <h3 className="push-top floating__item two-thirds@lap-and-up">people attended a group</h3>
           </div>
           <div className="text-dark-tertiary push-double-top@lap-and-up push-top@handheld">
-            <h1 style={{ fontWeight: "900" }}>1,583</h1>
+            <h1 style={{ fontWeight: "900" }}>7,352</h1>
             <h3>for the first time!</h3>
           </div>
         </div>
@@ -381,7 +391,7 @@ const NextSteps = () => (
     </div>
     {/* Local Missions */}
     <div className="background--primary soft-double@lap-and-up soft@handheld">
-      <div className="grid one-whole soft-top push-double-top push-double-bottom@lap-and-up">
+      <div className="grid one-whole push-double-top push-double-bottom@lap-and-up">
         <div className="grid__item push-half-left@handheld one-half@lap-and-up text-light-primary display-inline-block" style={{ verticalAlign: "middle" }}>
           <h3
             className="italic text-center@handheld"
@@ -392,7 +402,7 @@ const NextSteps = () => (
             We spent
           </h3>
           <div className="text-center@handheld">
-            <FitText compressor={1} maxFontSize={20}>
+            <FitText compressor={1.4} maxFontSize={18}>
               <Currency
                 amount={localMissionAmount}
                 baseHeadingSize="1"
@@ -413,15 +423,15 @@ const NextSteps = () => (
           </p>
         </div>
         <div className="grid__item floating one-half@lap-and-up display-inline-block visuallyhidden@handheld" style={{ verticalAlign: "middle" }}>
-          <div className="floating__item two-thirds@lap-and-up">
+          <div className="floating__item one-whole@lap-and-up two-thirds@handheld">
             <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png" alt="map of south carolina" />
           </div>
         </div>
       </div>
     </div>
     {/* Foreign Missions */}
-    <div className="background--tertiary soft-double@lap-and-up soft@handheld">
-      <div className="grid one-whole push-double-top soft-top push-double-bottom@lap-and-up">
+    <div className="background--tertiary soft-double@lap-and-up soft-sides@handheld soft-top@handheld">
+      <div className="grid one-whole push-double-top push-double-bottom@lap-and-up">
         <div className="grid__item one-half@lap-and-up display-inline-block visuallyhidden@handheld" style={{ verticalAlign: "middle" }}>
           <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-world.png" alt="map of the world" />
         </div>
@@ -435,9 +445,9 @@ const NextSteps = () => (
             We spent
           </h3>
           <div className="text-center@handheld">
-            <FitText compressor={1} maxFontSize={20}>
+            <FitText compressor={1.2} maxFontSize={18}>
               <Currency
-                amount={localMissionAmount}
+                amount={foreignMissionAmount}
                 baseHeadingSize="1"
                 className="display-inline-block text-center soft-bottom"
                 style={{ fontWeight: "900" }}
@@ -449,7 +459,7 @@ const NextSteps = () => (
           <div className="one-whole visuallyhidden@lap-and-up push-top push-bottom" style={{ verticalAlign: "middle" }}>
             <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-world.png" alt="map of the world" />
           </div>
-          <p className="constrain-copy">
+          <p className="constrain-copy@lap-and-up">
             We partner with Freedom Church to share Jesus&#39; love with people around the world. By partnering with local churches, we&#39;re able to
             participate in ministry that continues long after our team comes home. The local church is the hope of the world. When we work together, we
             begin to see the Great Commission happening before our eyes.
@@ -464,7 +474,7 @@ const NextSteps = () => (
               fontWeight: "900",
             }}
           >
-            2,422
+            63
           </h1>
         </FitText>
         <div className="floating">
@@ -485,7 +495,7 @@ const NextSteps = () => (
               fontWeight: "900",
             }}
           >
-            17
+            7
           </h1>
         </FitText>
         <div className="floating">
@@ -493,8 +503,8 @@ const NextSteps = () => (
         </div>
       </div>
       <div className="floating">
-        <div className="soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
-          <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
+        <div className="text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
+          <hr className="visuallyhidden@handheld push-ends" style={{ borderTop: "1px solid #dddddd" }} />
           <Story
             image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"}
             content={"<p>&#34;I traveled to Uganda with NewSpring Missions in July. The trip was inspirational, heartbreaking, and heartwarming. The highlights were worshipping with, and serving, the young boys living on the streets of Kampala. We also helped make improvements to the Freedom Church Heroes boys home.&#34;</p>"}
@@ -507,10 +517,10 @@ const NextSteps = () => (
       </div>
     </div>
     {/* Keep Reading */}
-    <div className="background--primary text-center text-light-primary soft-double">
+    <div className="background--primary text-center text-light-primary soft">
       <h3 className="soft-double-top">Keep Reading</h3>
       <p>Up next in the NewSpring 2016 Annual Report is information on our ministries.</p>
-      <a className="btn--light push-double-bottom">Go To Ministries Report</a>
+      <a className="btn--light push-double-bottom"href="/celebrate/ministries">Go To Ministries Report</a>
     </div>
   </div>
 );

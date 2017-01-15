@@ -5,26 +5,29 @@ import Meta from "../../../components/shared/meta";
 import ProgressBar from "../../../components/giving/giving-progress";
 import Story from "../components/story";
 
-const generalFundAmountTotal = 1600000.00;
+const generalFundAmountTotal = 49221808.98;
 const fundData = [
-  { campus: "Aiken", amountString: "100000", amountValue: 100000 },
-  { campus: "Anderson", amountString: "100000", amountValue: 100000 },
-  { campus: "Boiling Springs", amountString: "100000", amountValue: 100000 },
-  { campus: "Charleston", amountString: "100000", amountValue: 100000 },
-  { campus: "Clemson", amountString: "100000", amountValue: 100000 },
-  { campus: "Columbia", amountString: "100000", amountValue: 100000 },
-  { campus: "Florence", amountString: "100000", amountValue: 100000 },
-  { campus: "Greenville", amountString: "100000", amountValue: 100000 },
-  { campus: "Greenwood", amountString: "100000", amountValue: 100000 },
-  { campus: "Hilton Head", amountString: "100000", amountValue: 100000 },
-  { campus: "Myrtle Beach", amountString: "100000", amountValue: 100000 },
-  { campus: "Northeast Columbia", amountString: "100000", amountValue: 100000 },
-  { campus: "Powdersville", amountString: "100000", amountValue: 100000 },
-  { campus: "Rock Hill", amountString: "100000", amountValue: 100000 },
-  { campus: "Spartanburg", amountString: "100000", amountValue: 100000 },
-  { campus: "Sumter", amountString: "100000", amountValue: 100000 },
+  { campus: "Aiken", amount: 492701.46 },
+  { campus: "Anderson", amount: 14015345.70 },
+  { campus: "Boiling Springs", amount: 1242511.92 },
+  { campus: "Central", amount: 155652.91 },
+  { campus: "Charleston", amount: 3267866.49 },
+  { campus: "Clemson", amount: 1232783.48 },
+  { campus: "Columbia", amount: 4657572.66 },
+  { campus: "Florence", amount: 2887278.55 },
+  { campus: "Greenville", amount: 8117428.25 },
+  { campus: "Greenwood", amount: 1818359.97 },
+  { campus: "Hilton Head", amount: 353690.47 },
+  { campus: "Lexington", amount: 1267439.66 },
+  { campus: "Myrtle Beach", amount: 2314687.53 },
+  { campus: "Northeast Columbia", amount: 556184.78 },
+  { campus: "Powdersville", amount: 2584053.46 },
+  { campus: "Rock Hill", amount: 476468.63 },
+  { campus: "Spartanburg", amount: 3125883.42 },
+  { campus: "Sumter", amount: 264265.33 },
+  { campus: "Web", amount: 391634.31 },
 ];
-const stepUpFundTotal = "4,567,422.90";
+const stepUpFundTotal = "1,781,928.15";
 
 /* eslint-disable max-len */
 const Finances = () => {
@@ -34,24 +37,41 @@ const Finances = () => {
       <Meta title="Finances" />
       {/* Header */}
       <div className="background--primary text-center text-light-primary soft-double-ends">
-        <h3 className="push-double-top">Giving to General Fund</h3>
+        <h3 className="push-top soft-half-sides">Giving to General Fund</h3>
         <div className="push-half-bottom">
           <div className="display-inline-block">
-            <FitText compressor={1} maxFontSize={18}>
+            <FitText compressor={1.5} maxFontSize={18}>
               <Currency
-                amount={generalFundAmountTotal.toFixed(2)}
+                amount={generalFundAmountTotal.toString()}
                 baseHeadingSize="1"
                 className="display-inline-block text-center soft-bottom"
                 style={{ fontWeight: "900" }}
                 theme="light"
+                roundCurrency
               />
             </FitText>
           </div>
         </div>
         <div className="floating push-right push-bottom">
           <div className="grid floating__item three-quarters@lap-wide-and-up nine-tenths@lap-and-up text-center">
-            {fundData.map(({ campus, amountString, amountValue }, key) => {
+            {fundData.map(({ campus, amount }, key) => {
               count += 1;
+              if (count === fundData.length && (count % 2 === 1)) {
+                return (
+                  <div className="soft-left one-half@lap-and-up push-half-bottom" key={key}>
+                    <div className="grid__item one-whole">
+                      <ProgressBar
+                        theme={"dark"}
+                        title={campus}
+                        total={amount.toString()}
+                        percentDone={100 * (amount / generalFundAmountTotal)}
+                        style={{}}
+                        key={key}
+                      />
+                    </div>
+                  </div>
+                );
+              }
               if (count <= fundData.length / 2) {
                 return (
                   <div className="grid__item one-half@lap-and-up push-half-bottom" key={key}>
@@ -59,8 +79,8 @@ const Finances = () => {
                       <ProgressBar
                         theme={"dark"}
                         title={campus}
-                        total={amountString}
-                        percentDone={100 * (amountValue / generalFundAmountTotal)}
+                        total={amount.toString()}
+                        percentDone={100 * (amount / generalFundAmountTotal)}
                         style={{}}
                         key={key}
                       />
@@ -74,8 +94,8 @@ const Finances = () => {
                     <ProgressBar
                       theme={"dark"}
                       title={campus}
-                      total={amountString}
-                      percentDone={100 * (amountValue / generalFundAmountTotal)}
+                      total={amount.toString()}
+                      percentDone={100 * (amount / generalFundAmountTotal)}
                       style={{}}
                       key={key}
                     />
@@ -86,10 +106,10 @@ const Finances = () => {
           </div>
         </div>
       </div>
-      <div className="background--light-primary text-center soft-double">
-        <h3 className="push-double-top push-half-bottom">Giving to Step Up</h3>
+      <div className="background--light-primary text-center soft-double-top">
+        <h3 className="push-top push-half-bottom">Giving to Step Up</h3>
         <em>for land and buildings</em>
-        <div className="push-ends soft-bottom">
+        <div className="push-top">
           <FitText compressor={1} maxFontSize={18}>
             <Currency
               amount={stepUpFundTotal}
@@ -101,7 +121,7 @@ const Finances = () => {
         </div>
         <div className="floating">
           <div className="soft-double-sides soft-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
-            <hr className="visuallyhidden@handheld push-double-ends" style={{ borderTop: "1px solid #dddddd" }} />
+            <hr className="visuallyhidden@handheld push-ends" style={{ borderTop: "1px solid #dddddd" }} />
             <Story
               image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img1.png"}
               content={"<p>&#34;We gave to the Clemson building campaign because we saw NewSpring's impact on our own daughter when she was at college. We're excited to see the lives that will be changed in and around Clemson and from all over the world because of the new campus.&#34;</p>"}
@@ -113,7 +133,7 @@ const Finances = () => {
         </div>
       </div>
       <div className="one-whole floating text-center background--light-secondary soft-sides soft-double-ends">
-        <div className="grid three-quarters@lap-wide-and-up floating__item push-double-ends">
+        <div className="grid three-quarters@lap-wide-and-up floating__item push-ends">
           <div className="grid__item one-half@lap-and-up one-whole">
             <h3
               className="italic"
@@ -130,7 +150,7 @@ const Finances = () => {
                   fontWeight: "900",
                 }}
               >
-                3,000
+                5,400
               </h1>
             </FitText>
             <h3>First time givers</h3>
@@ -151,7 +171,7 @@ const Finances = () => {
                   fontWeight: "900",
                 }}
               >
-                4,000
+                11,709
               </h1>
             </FitText>
             <div className="floating text-center">
@@ -160,15 +180,15 @@ const Finances = () => {
           </div>
         </div>
       </div>
-      <div className="background--light-primary soft-double">
-        <h3 className="text-center push-double-top">Annual Audit</h3>
+      <div className="background--light-primary soft">
+        <h3 className="text-center push-top">Annual Audit</h3>
         <p className="constrain-copy push-bottom">NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (Philippians 2:15)</p>
-        <p className="constrain-copy push-double-bottom soft-half-bottom">We&#39;ll update this section in May after the audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.</p>
+        <p className="constrain-copy push-bottom soft-half-bottom">We&#39;ll update this section in May after the audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.</p>
       </div>
-      <div className="background--primary text-center text-light-primary soft-double">
+      <div className="background--primary text-center text-light-primary soft">
         <h3 className="push-double-top">Keep Reading</h3>
         <p>Up next in the NewSpring 2016 Annual Report is information on Next Steps.</p>
-        <a className="btn--light push-double-bottom">Go To Next Steps Report</a>
+        <a className="btn--light push-double-bottom" href="/celebrate/next-steps">Go To Next Steps Report</a>
       </div>
     </div>
   );
