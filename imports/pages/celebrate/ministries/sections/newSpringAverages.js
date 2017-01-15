@@ -5,72 +5,25 @@ import MetricCard from "../../components/metricCard";
 
 const data = {
   attendance: {
-    average: "23,422",
+    average: "29,156",
     campuses: [
-      {
-        name: "Aiken",
-        average: "6,200",
-      },
-      {
-        name: "Anderson",
-        average: "6,200",
-      },
-      {
-        name: "Boiling Springs",
-        average: "6,200",
-      },
-      {
-        name: "Charleston",
-        average: "6,200",
-      },
-      {
-        name: "Clemson",
-        average: "6,200",
-      },
-      {
-        name: "Columbia",
-        average: "6,200",
-      },
-      {
-        name: "Florence",
-        average: "6,200",
-      },
-      {
-        name: "Greenville",
-        average: "6,200",
-      },
-      {
-        name: "Greenwood",
-        average: "6,200",
-      },
-      {
-        name: "Hilton Head",
-        average: "6,200",
-      },
-      {
-        name: "Myrtle Beach",
-        average: "6,200",
-      },
-      {
-        name: "Northeast Columbia",
-        average: "6,200",
-      },
-      {
-        name: "Powdersville",
-        average: "6,200",
-      },
-      {
-        name: "Rock Hill",
-        average: "6,200",
-      },
-      {
-        name: "Spartanbury",
-        average: "6,200",
-      },
-      {
-        name: "Sumter",
-        average: "6,200",
-      },
+      { name: "Aiken", average: "345" },
+      { name: "Anderson", average: "6,401" },
+      { name: "Boiling Springs", average: "875" },
+      { name: "Charleston", average: "2,449" },
+      { name: "Clemson", average: "646" },
+      { name: "Columbia", average: "3,166" },
+      { name: "Florence", average: "2,096" },
+      { name: "Greenville", average: "3,800" },
+      { name: "Greenwood", average: "1,560" },
+      { name: "Hilton Head", average: "158" },
+      { name: "Lexington", average: "825" },
+      { name: "Myrtle Beach", average: "2,046" },
+      { name: "Northeast Columbia", average: "308" },
+      { name: "Powdersville", average: "1,446" },
+      { name: "Rock Hill", average: "291" },
+      { name: "Spartanburg", average: "2,612" },
+      { name: "Sumter", average: "269" },
     ],
   },
 };

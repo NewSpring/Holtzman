@@ -306,7 +306,7 @@ const NextSteps = () => (
         <h3 className="push-top push-left push-right floating__item one-half@lap-and-up">people served at NewSpring Church</h3>
       </div>
       <div className="text-dark-tertiary push-top">
-        <h1 style={{ fontWeight: "900" }}>7,583</h1>
+        <h1 style={{ fontWeight: "900" }}>2,313</h1>
         <h3>for the first time!</h3>
       </div>
       <CardSlider>
