@@ -1,4 +1,5 @@
 import ChildrenRoutes from "./pages";
+import { Meteor } from "meteor/meteor";
 
 if (process.env.NATIVE) {
   // eslint-disable-next-line no-unused-vars
@@ -28,7 +29,11 @@ export default {
     if (process.env.NATIVE && _.location.pathname === "/") {
       return redirectToWelcome(replace, cb);
     } else if (process.env.WEB && _.location.pathname === "/") {
-      replace({ pathname: "/give/home" });
+      if(Meteor.userId()) {
+        replace({ pathname: "/give/home" });
+      } else {
+        replace({ pathname: "/give/now" });
+      }
       return cb();
     }
     return cb();
