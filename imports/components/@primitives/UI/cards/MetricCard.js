@@ -1,7 +1,7 @@
 // @flow
 
 type IMetricCard = {
-  count: number,
+  count: string,
   label: string,
 };
 
