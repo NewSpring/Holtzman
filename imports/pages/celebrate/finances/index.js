@@ -15,12 +15,12 @@ const fundData = [
   { campus: "Central", amount: 155652.91 },
   { campus: "Charleston", amount: 3267866.49 },
   { campus: "Clemson", amount: 1232783.48 },
-  { campus: "Columbia", amount: 4657572.66 },
+  { campus: "Columbia*", amount: 4657572.66 },
   { campus: "Florence", amount: 2887278.55 },
   { campus: "Greenville", amount: 8117428.25 },
   { campus: "Greenwood", amount: 1818359.97 },
   { campus: "Hilton Head", amount: 353690.47 },
-  { campus: "Lexington", amount: 1267439.66 },
+  { campus: "Lexington*", amount: 1267439.66 },
   { campus: "Myrtle Beach", amount: 2314687.53 },
   { campus: "Northeast Columbia", amount: 556184.78 },
   { campus: "Powdersville", amount: 2584053.46 },
@@ -106,6 +106,9 @@ export const Finances = () => {
               );
             })}
           </div>
+        </div>
+        <div className="soft-sides">
+          <small className="text-center"><em>* This is where the copy for the Columbia & Lexington merger should go.</em></small>
         </div>
       </div>
       <div className="background--light-primary text-center soft-double-top">
