@@ -72,21 +72,32 @@ App.configurePlugin("cordova-fabric-plugin", {
 
 App.appendToConfig(`
     <universal-links>
-      <host name="newspring.cc">
-        <path url="/articles/*" />
-        <path url="/devotionals/*" />
-        <path url="/studies/*" />
-        <path url="/stories/*" />
-        <path url="/sermons/*" />
-        <path url="/music/*" />
-        <path url="/locations/*" />
-        <path url="/watchandread/*" />
+      <host name="newspring.dev">
+        <path url="/articles" event="openArticlesListPage" />
+        <path url="/articles/*" event="openArticlesEntryPage" />
+        <path url="/devotionals" event="openStudiesListPage" />
+        <path url="/devotionals/*" event="openStudiesEntryPage" />
+        <path url="/studies" event="openStudiesListPage" />
+        <path url="/studies/*" event="openStudiesDetailPage" />
+        <path url="/studies/*/*" event="openStudiesEntryPage" />
+        <path url="/stories" event="openStoriesListPage" />
+        <path url="/stories/*" event="openStoriesEntryPage" />
+        <path url="/sermons" event="openSeriesListPage" />
+        <path url="/sermons/*" event="openSeriesDetailPage" />
+        <path url="/sermons/*/*" event="openSermonEntryPage" />
+        <path url="/music/*" event="openAlbumEntryPage" />
+        <path url="/locations" event="openLocationsListPage" />
+        <path url="/locations/*" event="openLocationEntryPage" />
+        <path url="/watchandread" event="openHomeFeed" />
       </host>
       <host name="my.newspring.cc">
-        <path url="/giving/*" />
-        <path url="/groups/*" />
-        <path url="/profile/*" />
-        <path url="/celebrate/*" />
+        <path url="/give" event="openGivePage" />
+        <path url="/give/*" event="openGiveDetailPage" />
+        <path url="/groups/*" event="openGroupsDetailPage" />
+        <path url="/profile" event="openProfileOverviewPage" />
+        <path url="/profile/*" event="openProfileDetailPage" />
+        <path url="/celebrate" event="openCelebratePage" />
+        <path url="/celebrate/*" event="openCelebrateEntryPage" />
       </host>
     </universal-links>
 `);
