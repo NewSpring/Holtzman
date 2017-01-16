@@ -2,7 +2,7 @@
 import FitText from "./fit-text";
 
 type IMetricCard = {
-  count: number,
+  count: string,
   label: string,
 };
 
