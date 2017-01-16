@@ -70,7 +70,7 @@ App.configurePlugin("cordova-fabric-plugin", {
   FABRIC_API_SECRET: process.env.FABRIC_API_SECRET,
 });
 
-App.appendToConfig('
+App.appendToConfig(`
     <universal-links>
       <host name="newspring.cc">
         <path url="/articles/*" />
@@ -89,4 +89,4 @@ App.appendToConfig('
         <path url="/celebrate/*" />
       </host>
     </universal-links>
-');
+`);
