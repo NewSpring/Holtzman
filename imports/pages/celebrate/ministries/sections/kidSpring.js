@@ -162,7 +162,7 @@ const KidSpring = () => (
                   image={story.imageUrl}
                   content={story.content}
                   contentClass={css(styles.secondaryColor)}
-                  linkUrl="#"
+                  linkUrl="https://newspring.cc/stories/sydney-chandler"
                   linkClass={`h6 btn--small@next soft-sides@portable ${css(styles.secondaryColor, styles.secondaryHover)}`}
                   linkText={story.linkText}
                 />

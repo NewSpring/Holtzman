@@ -22,7 +22,7 @@ const data = {
   ],
   stories: [
     {
-      imageUrl: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img7.png",
+      imageUrl: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img7.1.png",
       name: "Liz Wynn",
       location: "Arkansas",
       heading: "Hear from childrens ministry director",

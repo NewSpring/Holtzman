@@ -39,7 +39,7 @@ exports[`NewSpring Network renders a layout 1`] = `
       <Story
         content="<p>&#34;We\'ve been using NewSpring\'s free children\'s curriculum exclusively since the beginning of 2016, and the kids love it, especially the acting and the games! Our kids leave excited to tell their friends about church and want to come back every week.&#34;</p>"
         heading="Hear from childrens ministry director"
-        image="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img7.png"
+        image="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img7.1.png"
         location="Arkansas"
         name="Liz Wynn" />
     </div>

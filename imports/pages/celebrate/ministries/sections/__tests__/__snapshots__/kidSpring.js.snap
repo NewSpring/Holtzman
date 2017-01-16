@@ -168,7 +168,7 @@ exports[`KidSpring renders a layout 1`] = `
               image="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/stories/story-img6.png"
               linkClass="h6 btn--small@next soft-sides@portable secondaryColor_1fivjbh-o_O-secondaryHover_106cwja"
               linkText="Read Her Story"
-              linkUrl="#" />
+              linkUrl="https://newspring.cc/stories/sydney-chandler" />
           </div>
         </div>
       </div>

@@ -44,7 +44,7 @@ exports[`Fuse renders a layout 1`] = `
                   "marginBottom": 0,
                 }
               }>
-              4060
+              4,060
             </h1>
           </Connect(FitTextWithoutData)>
         </div>
@@ -165,7 +165,7 @@ exports[`Fuse renders a layout 1`] = `
   <div
     className="background--light-primary text-center soft-double-ends">
     <div
-      className="constrain-copy soft-double-ends soft-sides@handheld">
+      className="constrain-copy soft-double-ends soft-sides@handheld push-double-ends">
       <div
         className="one-whole">
         <h3
@@ -180,7 +180,7 @@ exports[`Fuse renders a layout 1`] = `
           </strong>
         </h3>
         <Connect(FitTextWithoutData)
-          compressor={0.6}
+          compressor={0.4}
           maxFontSize="100">
           <h1
             style={
@@ -193,7 +193,7 @@ exports[`Fuse renders a layout 1`] = `
           </h1>
         </Connect(FitTextWithoutData)>
         <h3
-          className="flush"
+          className="soft-bottom"
           style={
             Object {
               "color": "#4F92A9",
