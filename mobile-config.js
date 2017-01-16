@@ -94,3 +94,4 @@ App.appendToConfig(`
       <host name="beta-my.newspring.cc" scheme="https" event="universalLinkRoute" />
     </universal-links>
 `);
+
