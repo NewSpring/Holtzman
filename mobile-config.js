@@ -69,3 +69,24 @@ App.configurePlugin("cordova-fabric-plugin", {
   FABRIC_API_KEY: process.env.FABRIC_API_KEY,
   FABRIC_API_SECRET: process.env.FABRIC_API_SECRET,
 });
+
+App.appendToConfig('
+    <universal-links>
+      <host name="newspring.cc">
+        <path url="/articles/*" />
+        <path url="/devotionals/*" />
+        <path url="/studies/*" />
+        <path url="/stories/*" />
+        <path url="/sermons/*" />
+        <path url="/music/*" />
+        <path url="/locations/*" />
+        <path url="/watchandread/*" />
+      </host>
+      <host name="my.newspring.cc">
+        <path url="/giving/*" />
+        <path url="/groups/*" />
+        <path url="/profile/*" />
+        <path url="/celebrate/*" />
+      </host>
+    </universal-links>
+');
