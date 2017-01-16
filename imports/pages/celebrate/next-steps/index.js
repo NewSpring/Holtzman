@@ -119,7 +119,7 @@ const localMissionAmount = "1,246,884.72";
 const foreignMissionAmount = "493,845.39";
 
 /* eslint-disable max-len */
-const NextSteps = () => (
+export const NextSteps = () => (
   <div>
     <Meta title="Next Steps" />
     {/* Header */}
