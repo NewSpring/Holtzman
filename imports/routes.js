@@ -1,3 +1,5 @@
+
+import { Meteor } from "meteor/meteor";
 import ChildrenRoutes from "./pages";
 
 if (process.env.NATIVE) {
@@ -28,7 +30,11 @@ export default {
     if (process.env.NATIVE && _.location.pathname === "/") {
       return redirectToWelcome(replace, cb);
     } else if (process.env.WEB && _.location.pathname === "/") {
-      replace({ pathname: "/give/home" });
+      if (Meteor.userId()) {
+        replace({ pathname: "/give/home" });
+      } else {
+        replace({ pathname: "/give/now" });
+      }
       return cb();
     }
     return cb();
