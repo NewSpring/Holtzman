@@ -92,28 +92,28 @@ const styles = StyleSheet.create({
 });
 
 const firstTimeVisitorData = [
-  { ministry: "VIP Room", count: 21635, color: "#6BAC43" },
-  { ministry: "KidSpring", count: 11559, color: "#1C683E" },
-  { ministry: "Fuse", count: 13943, color: "#2A4930" },
+  { ministry: "VIP Room", count: "21,635", color: "#6BAC43" },
+  { ministry: "KidSpring", count: "11,559", color: "#1C683E" },
+  { ministry: "Fuse", count: "13,943", color: "#2A4930" },
 ];
 
 const volunteerData = [
-  { label: "Aiken", count: 178 },
-  { label: "Anderson", count: 2165 },
-  { label: "Boiling Springs", count: 359 },
-  { label: "Charleston", count: 689 },
-  { label: "Clemson", count: 375 },
-  { label: "Columbia", count: 1187 },
-  { label: "Florence", count: 576 },
-  { label: "Greenville", count: 1208 },
-  { label: "Greenwood", count: 440 },
-  { label: "Hilton Head", count: 75 },
-  { label: "Myrtle Beach", count: 478 },
-  { label: "Northeast Columbia", count: 161 },
-  { label: "Powdersville", count: 585 },
-  { label: "Rock Hill", count: 136 },
-  { label: "Spartanburg", count: 726 },
-  { label: "Sumter", count: 109 },
+  { label: "Aiken", count: "178" },
+  { label: "Anderson", count: "2,165" },
+  { label: "Boiling Springs", count: "359" },
+  { label: "Charleston", count: "689" },
+  { label: "Clemson", count: "375" },
+  { label: "Columbia", count: "1,187" },
+  { label: "Florence", count: "576" },
+  { label: "Greenville", count: "1,208" },
+  { label: "Greenwood", count: "440" },
+  { label: "Hilton Head", count: "75" },
+  { label: "Myrtle Beach", count: "478" },
+  { label: "Northeast Columbia", count: "161" },
+  { label: "Powdersville", count: "585" },
+  { label: "Rock Hill", count: "136" },
+  { label: "Spartanburg", count: "726" },
+  { label: "Sumter", count: "109" },
 ];
 const localMissionAmount = "1,246,884.72";
 const foreignMissionAmount = "493,845.39";
@@ -145,7 +145,7 @@ export const NextSteps = () => (
         </FitText>
         <hr className="visuallyhidden@handheld push-ends" style={{ borderTop: "1px solid #dddddd" }} />
         <Story
-          image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.png"}
+          image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img2.1.png"}
           content={"<p>The community Brett Chamberlain found through a fishing interest group at NewSpring Rock Hill helped him recognize that he needed to ask Jesus into his life and take the step of baptism with his teenage son in June 2016.</p>"}
           linkUrl={"https://newspring.cc/stories/brett-chamberlain"}
           linkClass={"h6 btn--small@next btn--dark-secondary"}
@@ -157,6 +157,7 @@ export const NextSteps = () => (
       </div>
     </div>
     {/* Percent Stats */}
+    {/*
     <div className="floating background--dark-primary">
       <div className="soft-double-ends push-double-ends text-center text-light-primary soft-sides@palm soft-double-sides@handheld two-thirds@lap-wide-and-up floating__item">
         <div className="floating push-double-top soft-half-bottom">
@@ -194,8 +195,9 @@ export const NextSteps = () => (
         </div>
       </div>
     </div>
+    */}
     {/* Baptism */}
-    <div className="background--light-primary soft-double-top text-center one-whole soft-top">
+    <div className="background--light-seconday soft-double-top text-center one-whole soft-top">
       <h3 className="one-whole push-top" style={{ color: "#0073AF" }}>We Witnessed</h3>
       <div className={css(styles.waves)}>
         <div className={css(styles.wave, styles.wave_1)} />
@@ -212,7 +214,7 @@ export const NextSteps = () => (
           </h1>
         </FitText>
         <h5 className="text-light-primary push-top">Go Public For Jesus Through</h5>
-        <h1 className="text-light-primary push-top push-bottom">Baptism</h1>
+        <h1 className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up">Baptism</h1>
       </div>
     </div>
     {/* First Time Visitors */}
