@@ -1,0 +1,221 @@
+exports[`Web renders a layout 1`] = `
+<div
+  className="background--light-primary">
+  <div
+    className="grid flush">
+    <div
+      className="constrain-page">
+      <div
+        className="grid__item one-whole text-dark-primary text-center hard">
+        <div
+          className="soft-double-sides@lap-and-up soft-double-top@lap-and-up push-double-top@lap-and-up soft">
+          <div
+            className="one-whole text-center push-bottom push-double-top@handheld">
+            <h1
+              className="uppercase">
+              Web Stats
+            </h1>
+            <h3
+              className="italic">
+              <strong>
+                We have
+              </strong>
+            </h3>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icon"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-branch.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                12
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h3>
+              different websites and apps
+            </h3>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icon"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-mac.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                2,398,759
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h3>
+              unique devices to view our sites and apps
+            </h3>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icon"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-cake.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                398
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h3>
+              church online salvations
+            </h3>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icon"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-viewers.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                8,353
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h3>
+              average weekly church online viewers
+            </h3>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icon"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-phone.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                25,322
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h3>
+              NewSpring app downloads
+            </h3>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icon"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-globe.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                210
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h3>
+              countries that visted our site
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="soft-double-ends text-center one-whole background--light-tertiary text-dark-primary">
+    <div
+      className="soft-double-ends soft-bottom@handheld">
+      <div
+        className="floating one-whole hard@handheld">
+        <div
+          className="floating__item constrain-copy soft-double-sides@lap-and-up push-sides@lap-and-up soft-sides@handheld">
+          <h3
+            className="text-center italic">
+            <strong>
+              Using the Internet to help people follow Jesus step by step, we saw
+            </strong>
+          </h3>
+        </div>
+      </div>
+      <Connect(CardSlider)>
+        <MetricCard
+          count="942,436"
+          label="Articles Read" />
+        <MetricCard
+          count="443,252"
+          label="Devotionals Read" />
+        <MetricCard
+          count="252,566"
+          label="Studies Used" />
+        <MetricCard
+          count="143,972"
+          label="Stories Viewed" />
+        <MetricCard
+          count="429,514"
+          label="Sermons Watched" />
+      </Connect(CardSlider)>
+    </div>
+  </div>
+</div>
+`;

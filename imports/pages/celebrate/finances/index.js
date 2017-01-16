@@ -32,7 +32,7 @@ const fundData = [
 const stepUpFundTotal = "1,781,928.15";
 
 /* eslint-disable max-len */
-const Finances = () => {
+export const Finances = () => {
   let count = 0;
   return (
     <div>

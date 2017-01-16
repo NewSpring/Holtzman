@@ -9,7 +9,7 @@ import Video from "../../../components/@primitives/players/video";
 const photo = "https://s3.amazonaws.com/ns.assets/apollos/leaves.png";
 
 /* eslint-disable max-len */
-const Shane = () => (
+export const Shane = () => (
   <div>
     <Meta title="Message From Shane" />
     <Split>

@@ -11,7 +11,7 @@ import FunFacts from "./sections/funFacts";
 import Thanks from "./sections/thanks";
 
 /* eslint-disable max-len */
-const Ministries = () => (
+export const Ministries = () => (
   <div>
     <Meta title="Ministries" />
 

@@ -3,12 +3,12 @@ import React, { Component } from "react";
 import scriptLoader from "react-async-script-loader";
 
 import DashboardLayout from "../../components/@primitives/layout/dashboard";
-import Finances from "./finances";
+import FinancesPage from "./finances";
 import { Leaves } from "./components/layout";
 import Meta from "../../components/shared/meta";
-import Ministries from "./ministries";
-import NextSteps from "./next-steps";
-import Shane from "./message-from-shane";
+import MinistriesPage from "./ministries";
+import NextStepsPage from "./next-steps";
+import ShaneTemplate from "./message-from-shane";
 import SmallButton from "../../components/@primitives/UI/buttons/SmallButton";
 import {
   SolidLeaf,
@@ -166,15 +166,15 @@ const scripts = [
 ];
 
 const Routes = [
-  { path: "celebrate/message-from-shane", component: Shane.Template },
+  { path: "celebrate/message-from-shane", component: ShaneTemplate.Template },
   {
     path: "celebrate",
     component: scriptLoader(...scripts)(Template),
     indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/celebrate/finances") },
     childRoutes: [
-      ...Finances.Routes,
-      ...NextSteps.Routes,
-      ...Ministries.Routes,
+      ...FinancesPage.Routes,
+      ...NextStepsPage.Routes,
+      ...MinistriesPage.Routes,
     ],
   },
 ];
