@@ -8,7 +8,7 @@ const data = {
   statistics: {
     salvations: "3,880",
     attendance: {
-      average: "4060",
+      average: "4,060",
       campuses: [
         { name: "Aiken", average: "59" },
         { name: "Anderson", average: "883" },
@@ -135,10 +135,10 @@ const Fuse = () => (
     </div>
 
     <div className="background--light-primary text-center soft-double-ends">
-      <div className="constrain-copy soft-double-ends soft-sides@handheld">
+      <div className="constrain-copy soft-double-ends soft-sides@handheld push-double-ends">
         <div className="one-whole">
           <h3 className="italic push-half-bottom" style={{ color: "#4F92A9" }}><strong>This year we saw</strong></h3>
-          <FitText compressor={0.6} maxFontSize="100">
+          <FitText compressor={0.4} maxFontSize="100">
             <h1
               style={{
                 fontWeight: 900,
@@ -148,7 +148,7 @@ const Fuse = () => (
               {data.statistics.salvations}
             </h1>
           </FitText>
-          <h3 className="flush" style={{ color: "#4F92A9" }}>Students cross from death to life at Fuse</h3>
+          <h3 className="soft-bottom" style={{ color: "#4F92A9" }}>Students cross from death to life at Fuse</h3>
         </div>
       </div>
     </div>

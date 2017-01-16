@@ -113,7 +113,7 @@ exports[`Finances renders a layout 1`] = `
               percentDone={9.46241667365879}
               style={Object {}}
               theme="dark"
-              title="Columbia"
+              title="Columbia*"
               total="4657572.66" />
           </div>
         </div>
@@ -173,7 +173,7 @@ exports[`Finances renders a layout 1`] = `
               percentDone={2.5749554643856976}
               style={Object {}}
               theme="dark"
-              title="Lexington"
+              title="Lexington*"
               total="1267439.66" />
           </div>
         </div>
@@ -262,6 +262,15 @@ exports[`Finances renders a layout 1`] = `
           </div>
         </div>
       </div>
+    </div>
+    <div
+      className="soft-sides">
+      <small
+        className="text-center">
+        <em>
+          * This is where the copy for the Columbia & Lexington merger should go.
+        </em>
+      </small>
     </div>
   </div>
   <div
