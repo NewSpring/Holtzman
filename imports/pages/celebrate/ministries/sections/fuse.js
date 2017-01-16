@@ -79,7 +79,7 @@ const data = {
 const Fuse = () => (
   <div>
     <div className="background--light-secondary soft-double-ends@lap-and-up soft-ends text-center">
-      <div className="constrain-page soft-double-top soft-sides@handheld">
+      <div className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
         <div className="one-whole">
           <div className="constrain-copy">
             <h1 className="uppercase push-bottom" style={{ color: "#4F92A9" }}>Fuse</h1>
@@ -121,7 +121,7 @@ const Fuse = () => (
       <div className="constrain-page soft-sides@handheld">
         <div className="soft-double-top@lap-and-up soft-bottom@lap-and-up">
           <h3 className="italic" style={{ color: "#4F92A9" }}><strong>Every number is a student life changed</strong></h3>
-          <div id={"fuse"}>
+          <div id={"fuse"} className="soft-sides@lap">
             <TagGallery
               id={"fuse"}
               buttonColor={data.tags.buttonColor}

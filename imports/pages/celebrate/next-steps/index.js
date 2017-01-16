@@ -1,4 +1,5 @@
 // @flow
+import { Link } from "react-router";
 import { VictoryPie } from "victory";
 import { css, StyleSheet } from "aphrodite";
 
@@ -178,13 +179,13 @@ const NextSteps = () => (
         </div>
         <em>like these</em>
         <div className="push-double-bottom push-top soft-half-top">
-          <a href={"https://newspring.cc/baptism"} className={"btn btn--light btn--small@next"}>
+          <a href={"https://newspring.cc/baptism"} className={"btn btn--light btn--small@next push-half-right"}>
             {"Baptism"}
           </a>
-          <a href={"https://newspring.cc/connect"} className={"btn btn--light btn--small@next"}>
+          <a href={"https://newspring.cc/connect"} className={"btn btn--light btn--small@next push-half-right"}>
             {"Attending Connect"}
           </a>
-          <a href={"https://newspring.cc/groups"} className={"btn btn--light btn--small@next"}>
+          <a href={"https://newspring.cc/groups"} className={"btn btn--light btn--small@next push-half-right"}>
             {"Joining a Group"}
           </a>
           <a href={"https://newspring.cc/give"} className={"btn btn--light btn--small@next"}>
@@ -520,7 +521,9 @@ const NextSteps = () => (
     <div className="background--primary text-center text-light-primary soft">
       <h3 className="soft-double-top">Keep Reading</h3>
       <p>Up next in the NewSpring 2016 Annual Report is information on our ministries.</p>
-      <a className="btn--light push-double-bottom"href="/celebrate/ministries">Go To Ministries Report</a>
+      <Link className="btn--light push-double-bottom" to="/celebrate/ministries">
+        Go To Ministries Report
+      </Link>
     </div>
   </div>
 );

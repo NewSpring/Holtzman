@@ -36,7 +36,7 @@ const data = {
 /* eslint-disable max-len */
 const NewSpringLeadershipCollege = () => (
   <div className="text-center background--light-primary soft-double-ends@lap-and-up soft-ends">
-    <div className="constrain-page soft-double-top soft-sides@handheld">
+    <div className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
       <div className="grid">
         <div className="grid__item one-whole push-double-bottom">
           <div className="constrain-copy">
@@ -48,7 +48,7 @@ const NewSpringLeadershipCollege = () => (
           <div className="constrain-copy">
             <h3 className="italic text-primary"><strong>Helping raise up leaders to change their communities</strong></h3>
           </div>
-          <div id="college">
+          <div id="college" className="soft-half-sides@lap">
             <TagGallery
               id={"college"}
               buttonColor={data.tags.buttonColor}

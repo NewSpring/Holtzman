@@ -101,7 +101,7 @@ const data = {
 const KidSpring = () => (
   <div>
     <div className={`${css(styles.primaryBackground)} soft-double-ends@lap-and-up soft-ends text-center text-light-primary`}>
-      <div className="constrain-page soft-double-top soft-sides@handheld">
+      <div className="constrain-page soft-double-top soft-sides@handheld soft-sides@lap">
         <div className="grid">
           <div className="grid__item one-whole push-bottom">
             <div className="constrain-copy">

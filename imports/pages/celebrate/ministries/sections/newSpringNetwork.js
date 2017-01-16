@@ -34,7 +34,7 @@ const data = {
 /* eslint-disable max-len */
 const NewSpringNetwork = () => (
   <div className="background--light-secondary soft-double-ends@lap-and-up soft-top text-center">
-    <div className="constrain-page soft-double-top soft-sides@handheld">
+    <div className="constrain-page soft-double-top soft-sides@lap soft-sides@handheld">
       <div className="grid">
         <div className="grid__item one-whole">
           <div className="constrain-copy">
