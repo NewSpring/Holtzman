@@ -87,7 +87,6 @@ App.appendToConfig(`
         <path url="/sermons/*/*" event="openSermonEntryPage" />
         <path url="/music/*" event="openAlbumEntryPage" />
         <path url="/locations" event="openLocationsListPage" />
-        <path url="/locations/*" event="openLocationEntryPage" />
         <path url="/watchandread" event="openHomeFeed" />
       </host>
       <host name="my.newspring.cc">
