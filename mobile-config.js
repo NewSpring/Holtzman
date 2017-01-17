@@ -72,6 +72,8 @@ App.configurePlugin("cordova-fabric-plugin", {
 
 App.appendToConfig(`
     <universal-links>
+      <ios-team-id value="7TM8C6252Z" />
+      <preference name="AndroidLaunchMode" value="singleInstance" />
       <host name="newspring.dev">
         <path url="/articles" event="openArticlesListPage" />
         <path url="/articles/*" event="openArticlesEntryPage" />
