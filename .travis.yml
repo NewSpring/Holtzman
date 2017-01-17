@@ -27,7 +27,7 @@ before_install:
   - openssl aes-256-cbc -K $encrypted_e447456204f1_key -iv $encrypted_e447456204f1_iv
     -in .travis/id_rsa_travis.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
-  - chmod +x ~/.travis/run_on_pull_requests
+  - chmod +x $TRAVIS_BUILD_DIR/.travis/run_on_pull_requests
   - mv -fv .travis/ssh-config ~/.ssh/config
   - npm install -g coveralls
 script:
