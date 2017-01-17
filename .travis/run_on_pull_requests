@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+
+BUILD_TAG="GH$TRAVIS_PULL_REQUEST-B$TRAVIS_BUILD_NUMBER"
+echo $BUILD_TAG
