@@ -74,31 +74,31 @@ App.appendToConfig(`
     <universal-links>
       <ios-team-id value="7TM8C6252Z" />
       <preference name="AndroidLaunchMode" value="singleInstance" />
-      <host name="newspring.dev">
-        <path url="/articles" event="openArticlesListPage" />
-        <path url="/articles/*" event="openArticlesEntryPage" />
-        <path url="/devotionals" event="openStudiesListPage" />
-        <path url="/devotionals/*" event="openStudiesEntryPage" />
-        <path url="/studies" event="openStudiesListPage" />
-        <path url="/studies/*" event="openStudiesDetailPage" />
-        <path url="/studies/*/*" event="openStudiesEntryPage" />
-        <path url="/stories" event="openStoriesListPage" />
-        <path url="/stories/*" event="openStoriesEntryPage" />
-        <path url="/sermons" event="openSeriesListPage" />
-        <path url="/sermons/*" event="openSeriesDetailPage" />
-        <path url="/sermons/*/*" event="openSermonEntryPage" />
-        <path url="/music/*" event="openAlbumEntryPage" />
-        <path url="/locations" event="openLocationsListPage" />
-        <path url="/watchandread" event="openHomeFeed" />
+      <host name="beta.newspring.cc" scheme="https">
+        <path url="/articles" event="openListPage" />
+        <path url="/articles/*" event="openView" />
+        <path url="/devotionals" event="openView" />
+        <path url="/devotionals/*" event="openView" />
+        <path url="/studies" event="openView" />
+        <path url="/studies/*" event="openView" />
+        <path url="/studies/*/*" event="openView" />
+        <path url="/stories" event="openView" />
+        <path url="/stories/*" event="openView" />
+        <path url="/sermons" event="openView" />
+        <path url="/sermons/*" event="openView" />
+        <path url="/sermons/*/*" event="openView" />
+        <path url="/music/*" event="openView" />
+        <path url="/locations" event="openView" />
+        <path url="/watchandread" event="openView" />
       </host>
-      <host name="my.newspring.cc">
-        <path url="/give" event="openGivePage" />
-        <path url="/give/*" event="openGiveDetailPage" />
-        <path url="/groups/*" event="openGroupsDetailPage" />
-        <path url="/profile" event="openProfileOverviewPage" />
-        <path url="/profile/*" event="openProfileDetailPage" />
-        <path url="/celebrate" event="openCelebratePage" />
-        <path url="/celebrate/*" event="openCelebrateEntryPage" />
+      <host name="my.newspring.cc" scheme="https">
+        <path url="/give" event="openView" />
+        <path url="/give/*" event="openView" />
+        <path url="/groups/*" event="openView" />
+        <path url="/profile" event="openView" />
+        <path url="/profile/*" event="openView" />
+        <path url="/celebrate" event="openView" />
+        <path url="/celebrate/*" event="openView" />
       </host>
     </universal-links>
 `);
