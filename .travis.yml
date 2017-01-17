@@ -33,5 +33,5 @@ before_install:
 script:
   - yarn
   - yarn test
-  - 'if [ $TRAVIS_EVENT_TYPE" == "cron" ]; then yarn coverage; fi'
+  - 'if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then yarn coverage; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./.travis/run_on_pull_requests; fi'
