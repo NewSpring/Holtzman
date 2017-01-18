@@ -75,31 +75,31 @@ App.appendToConfig(`
       <ios-team-id value="7TM8C6252Z" />
       <preference name="AndroidLaunchMode" value="singleInstance" />
       <host name="beta.newspring.cc" scheme="https">
-        <path url="/articles" event="navigateToDeepLink" />
-        <path url="/articles/*" event="navigateToDeepLink" />
-        <path url="/devotionals" event="navigateToDeepLink" />
-        <path url="/devotionals/*" event="navigateToDeepLink" />
-        <path url="/studies" event="navigateToDeepLink" />
-        <path url="/studies/*" event="navigateToDeepLink" />
-        <path url="/studies/*/*" event="navigateToDeepLink" />
-        <path url="/stories" event="navigateToDeepLink" />
-        <path url="/stories/*" event="navigateToDeepLink" />
-        <path url="/sermons" event="navigateToDeepLink" />
-        <path url="/sermons/*" event="navigateToDeepLink" />
-        <path url="/sermons/*/*" event="navigateToDeepLink" />
-        <path url="/music/*" event="navigateToDeepLink" />
-        <path url="/locations" event="navigateToDeepLink" />
-        <path url="/watchandread" event="navigateToDeepLink" />
+        <path url="/articles" />
+        <path url="/articles/*" />
+        <path url="/devotionals" />
+        <path url="/devotionals/*" />
+        <path url="/studies" />
+        <path url="/studies/*" />
+        <path url="/studies/*/*" />
+        <path url="/stories" />
+        <path url="/stories/*" />
+        <path url="/sermons" />
+        <path url="/sermons/*" />
+        <path url="/sermons/*/*" />
+        <path url="/music/*" />
+        <path url="/locations" />
+        <path url="/watchandread" />
       </host>
       <host name="my.newspring.cc" scheme="https">
-        <path url="/_/*" event="navigateToDeepLink" />
-        <path url="/give" event="navigateToDeepLink" />
-        <path url="/give/*" event="navigateToDeepLink" />
-        <path url="/groups/*" event="navigateToDeepLink" />
-        <path url="/profile" event="navigateToDeepLink" />
-        <path url="/profile/*" event="navigateToDeepLink" />
-        <path url="/celebrate" event="navigateToDeepLink" />
-        <path url="/celebrate/*" event="navigateToDeepLink" />
+        <path url="/_/*" />
+        <path url="/give" />
+        <path url="/give/*" />
+        <path url="/groups/*" />
+        <path url="/profile" />
+        <path url="/profile/*" />
+        <path url="/celebrate" />
+        <path url="/celebrate/*" />
       </host>
     </universal-links>
 `);

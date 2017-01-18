@@ -61,7 +61,7 @@ if (process.env.NATIVE) {
         hockeyapp.start(null, null, Meteor.settings.public.hockey);
       }
 
-      universalLinks.subscribe("navigateToDeepLink", function (eventData) {
+      universalLinks.subscribe(null, function (eventData) {
         window.location.assign(eventData.path);
       });
 
