@@ -148,8 +148,45 @@ class GlobalWithoutData extends Component {
     client: PropTypes.object.isRequired,
   }
 
+  state = { deepLinkLoading: false }
+
   componentWillMount() {
+    const queryRoutes = [
+      "/articles/",
+      "/sermons/",
+      "/devotionals/",
+      "/studies/",
+      "/stories/",
+    ];
+
     if (Meteor.isCordova) document.addEventListener("click", linkListener);
+    universalLinks.subsribe(null, ({ path }) => {
+      alert("Hello James");
+      this.setState({ deepLinkLoading: true });
+      let isQueryRoute = false;
+      queryRoutes.forEach((url) => {
+        if (path.includes(url)) isQueryRoute = true;
+      });
+      if (isQueryRoute) {
+        // this.props.client.query({ query, variables: { urlTitle })
+        //   .then(({ data: { somehwere: id } }) => {
+        //     this.go(url);
+        //   })
+        console.log("async load some stuff");
+        return;
+      }
+
+      this.go(path);
+    });
+  }
+
+  componentWillUnMount() {
+    universalLinks.unsubscribe(null);
+  }
+
+  go = (url) => {
+    this.props.dispatch(url);
+    this.setState({ deepLinkLoading: false });
   }
 
   render() {
