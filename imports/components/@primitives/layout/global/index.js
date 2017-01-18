@@ -193,9 +193,9 @@ class GlobalWithoutData extends Component {
     const { dispatch, client } = this.props;
     return (
       <div id="global">
-        {!this.props.universalLinkLoading && <App {...this.props} />}
+        {!this.state.universalLinkLoading && <App {...this.props} />}
         <GlobalData dispatch={dispatch} client={client} />
-        {this.props.universalLinkLoading && <Loading />}
+        {this.state.universalLinkLoading && <Loading />}
       </div>
     );
   }
