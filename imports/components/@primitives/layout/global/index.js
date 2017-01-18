@@ -148,7 +148,7 @@ class GlobalWithoutData extends Component {
     client: PropTypes.object.isRequired,
   }
 
-  state = { deepLinkLoading: false }
+  state = { universalLinkLoading: false }
 
   componentWillMount() {
     const queryRoutes = [
@@ -159,34 +159,43 @@ class GlobalWithoutData extends Component {
       "/stories/",
     ];
 
-    if (Meteor.isCordova) document.addEventListener("click", linkListener);
-    universalLinks.subsribe(null, ({ path }) => {
-      alert("Hello James");
-      this.setState({ deepLinkLoading: true });
-      let isQueryRoute = false;
-      queryRoutes.forEach((url) => {
-        if (path.includes(url)) isQueryRoute = true;
-      });
-      if (isQueryRoute) {
-        // this.props.client.query({ query, variables: { urlTitle })
-        //   .then(({ data: { somehwere: id } }) => {
-        //     this.go(url);
-        //   })
-        console.log("async load some stuff");
-        return;
-      }
+    if (Meteor.isCordova) {
+      document.addEventListener("click", linkListener);
 
-      this.go(path);
-    });
+      document.addEventListener("deviceready", () => {
+        universalLinks.subscribe(null, ({ path }) => {
+          this.setState({ universalLinkLoading: true });
+          let isQueryRoute = false;
+          queryRoutes.forEach((url) => {
+            if (path.includes(url)) isQueryRoute = true;
+          });
+          if (isQueryRoute) {
+            const pathArray = path.split("/").filter(Boolean);
+            const section = pathArray[0];
+            const urlTitle = pathArray[1];
+
+            // this.props.client.query({ query, variables: { urlTitle })
+            //   .then(({ data: { somehwere: id } }) => {
+            //     this.go(`/#{this.section}/);
+            //   })
+
+            this.go(`/${section}`);
+            return;
+          }
+
+          this.go(path);
+        });
+      });
+    }
   }
 
   componentWillUnMount() {
-    universalLinks.unsubscribe(null);
+    if (Meteor.isCordova) universalLinks.unsubscribe(null);
   }
 
   go = (url) => {
     this.props.dispatch(url);
-    this.setState({ deepLinkLoading: false });
+    this.setState({ universalLinkLoading: false });
   }
 
   render() {
