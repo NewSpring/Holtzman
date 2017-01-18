@@ -200,7 +200,7 @@ class GlobalWithoutData extends Component {
         <style>{scrollbarStyles}</style>
         <App {...this.props} />
         <GlobalData dispatch={dispatch} client={client} />
-        {this.props.universalLinkLoading && <Loading />}
+        {this.state.universalLinkLoading && <Loading />}
       </div>
     );
   }
