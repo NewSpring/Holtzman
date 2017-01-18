@@ -5,7 +5,7 @@ set -e
 GREEN='\033[0;32m'
 NO_COLOR='\033[0m'
 
-BUILD_TAG="GH$TRAVIS_PULL_REQUEST-B$TRAVIS_BUILD_NUMBER"
+BUILD_TAG="GH$TRAVIS_PULL_REQUEST-B$TRAVIS_BUILD_ID"
 
 git tag $BUILD_TAG
 git push -q https://github.com/NewSpring/Holtzman --tags
