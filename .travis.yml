@@ -22,6 +22,8 @@ cache:
 before_install:
   - echo 'America/New_York' | sudo tee /etc/timezone
   - echo -e "machine github.com\n login $CI_USER_TOKEN" >> ~/.netrc
+  - echo "Event Type: $TRAVIS_EVENT_TYPE"
+  - echo "PUll Request: $TRAVIS_PULL_REQUEST"
   - sudo dpkg-reconfigure --frontend noninteractive tzdata
   - chmod +x $TRAVIS_BUILD_DIR/.travis/run_on_pull_requests
   - npm install -g coveralls
