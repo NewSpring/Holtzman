@@ -283,6 +283,7 @@ class GlobalWithoutData extends Component {
         {this.state.universalLinkLoading && <Loading />}
         <App {...this.props} />
         <GlobalData dispatch={dispatch} client={client} />
+        {this.props.universalLinkLoading && <Loading />}
       </div>
     );
   }
