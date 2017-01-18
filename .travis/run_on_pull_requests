@@ -8,7 +8,7 @@ NO_COLOR='\033[0m'
 BUILD_TAG="GH$TRAVIS_PULL_REQUEST-B$TRAVIS_BUILD_ID"
 
 git tag $BUILD_TAG
-git push -q https://${CI_USER_TOKEN}@github.com/NewSpring/Holtzman.git --tags
+git push -q git@github.com/NewSpring/Holtzman.git --tags
 
 echo "Pushed Tag: ${GREEN}$BUILD_TAG${NO_COLOR} to Github!"
 
