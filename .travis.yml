@@ -26,8 +26,7 @@ before_install:
   - chmod +x $TRAVIS_BUILD_DIR/.travis/run_on_pull_requests
   - npm install -g coveralls
 script:
-  - echo -e "Event Type: $TRAVIS_EVENT_TYPE"
-  - echo -e "PUll Request: $TRAVIS_PULL_REQUEST"
+  - env
   - yarn
   - yarn test -- -w="2"
   - 'if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then yarn coverage; fi'
