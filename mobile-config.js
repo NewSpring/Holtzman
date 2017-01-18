@@ -92,6 +92,7 @@ App.appendToConfig(`
         <path url="/watchandread" event="openView" />
       </host>
       <host name="my.newspring.cc" scheme="https">
+        <path url="/_/*" event="openView" />
         <path url="/give" event="openView" />
         <path url="/give/*" event="openView" />
         <path url="/groups/*" event="openView" />
