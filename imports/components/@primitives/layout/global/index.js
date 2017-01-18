@@ -9,6 +9,7 @@ import Modal from "../../modals";
 import Meta from "../../../shared/meta";
 import Nav from "../../nav";
 import Header from "../../UI/header";
+import { Loading } from "../../UI/states";
 
 import Likes from "../../../../deprecated/database/collections/likes";
 
@@ -162,6 +163,7 @@ class GlobalWithoutData extends Component {
         <style>{scrollbarStyles}</style>
         <App {...this.props} />
         <GlobalData dispatch={dispatch} client={client} />
+        {this.props.universalLinkLoading && <Loading />}
       </div>
     );
   }

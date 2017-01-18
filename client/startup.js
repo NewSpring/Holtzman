@@ -61,10 +61,6 @@ if (process.env.NATIVE) {
         hockeyapp.start(null, null, Meteor.settings.public.hockey);
       }
 
-      universalLinks.subscribe(null, function (eventData) {
-        window.location.assign(eventData.path);
-      });
-
       window.open = cordova.InAppBrowser.open;
 
       document.addEventListener("click", (event) => {
