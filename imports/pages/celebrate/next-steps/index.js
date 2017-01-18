@@ -337,7 +337,7 @@ export const NextSteps = () => (
         <em>Do you need help?</em>
         <div className="push-double-top">
           <a href={"https://rock.newspring.cc/Workflows/83"} className={"btn btn--light btn--small@next"}>
-            {"Speak to Someone Now"}
+            {"Talk With Someone"}
           </a>
         </div>
       </div>

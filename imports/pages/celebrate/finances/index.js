@@ -176,7 +176,7 @@ export const Finances = () => {
                   fontWeight: "900",
                 }}
               >
-                11,709
+                18,173
               </h1>
             </FitText>
             <div className="floating text-center">
