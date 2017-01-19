@@ -369,7 +369,7 @@ exports[`Finances renders a layout 1`] = `
                 "fontWeight": "900",
               }
             }>
-            11,709
+            18,173
           </h1>
         </Connect(FitTextWithoutData)>
         <div

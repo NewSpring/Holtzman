@@ -441,7 +441,7 @@ exports[`Next Steps renders a layout 1`] = `
         <a
           className="btn btn--light btn--small@next"
           href="https://rock.newspring.cc/Workflows/83">
-          Speak to Someone Now
+          Talk With Someone
         </a>
       </div>
     </div>

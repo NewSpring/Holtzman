@@ -153,8 +153,13 @@ class GlobalWithoutData extends Component {
 
   render() {
     const { dispatch, client } = this.props;
+    let scrollbarStyles = "";
+    if (Meteor.isCordova) {
+      scrollbarStyles = "::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-track-piece, ::-webkit-scrollbar-thumb { display: none; }";
+    }
     return (
       <div id="global">
+        <style>{scrollbarStyles}</style>
         <App {...this.props} />
         <GlobalData dispatch={dispatch} client={client} />
       </div>

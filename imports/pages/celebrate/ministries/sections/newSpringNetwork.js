@@ -39,7 +39,7 @@ const NewSpringNetwork = () => (
         <div className="grid__item one-whole">
           <div className="constrain-copy">
             <h1 className="uppercase push-bottom">NewSpring Network</h1>
-            <p className="text-left">NewSpring Network equips church leaders with resources, coahcing opportunities and leadership training. Through NewSpring Network, our church provides free children&#39;s ministry curriculum, series graphics, and videos, chord charts, and volunteer training.</p>
+            <p className="text-left">NewSpring Network equips church leaders with resources, coaching opportunities and leadership training. Through NewSpring Network, our church provides free children&#39;s ministry curriculum, series graphics, and videos, chord charts, and volunteer training.</p>
           </div>
         </div>
       </div>

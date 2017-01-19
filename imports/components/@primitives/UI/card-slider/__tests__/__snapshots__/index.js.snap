@@ -3,7 +3,7 @@ exports[`CardSlider should render with default props 1`] = `
   style={
     Object {
       "WebkitOverflowScrolling": "touch",
-      "overflowX": "scroll",
+      "overflowX": "auto",
       "overflowY": "hidden",
     }
   }>

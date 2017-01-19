@@ -61,7 +61,7 @@ const CardSlider = ({
   return (
     <div
       style={{
-        overflowX: "scroll",
+        overflowX: "auto",
         overflowY: "hidden",
         WebkitOverflowScrolling: "touch",
       }}
