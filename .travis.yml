@@ -1,0 +1,38 @@
+sudo: required # force to run in container
+env: # required for node_bcrypt
+  - CXX=g++-4.8
+os:
+- linux
+# - osx
+# osx_image: xcode7.3
+language: node_js
+node_js:
+- '6'
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+cache:
+  yarn: true
+  directories:
+    - $HOME/.npm
+    - $HOME/.yarn-cache
+    - node_modules
+before_install:
+  - echo 'America/New_York' | sudo tee /etc/timezone
+  - sudo dpkg-reconfigure --frontend noninteractive tzdata
+  - chmod +x $TRAVIS_BUILD_DIR/.travis/run_on_pull_requests
+  - chmod +x $TRAVIS_BUILD_DIR/.travis/run_for_coverage
+  - npm install -g coveralls
+script:
+  - yarn
+  - yarn test -- -w="2"
+after_success:
+  - 'if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then bash ./.travis/run_for_coverage; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./.travis/run_on_pull_requests; fi'
+notifications:
+  slack:
+    secure: enlvPiXHu5nK5VQORUioMTj5eCHBUpriMDevnWSYPYQ9nGJgaPROOEeki9I4LkF+Y6BDI+8ijWwwg8f3bdZKclSzbf0ZOw8bE8THc9sJfBPmbYX86TvvnuLBXB/OHY0lP58lLd+MZI7BycNlg8SKaUICrYApbOEq8PlVaokCnTTDgn2Y4kwpWQBkMKBckIxP6HxI9sREzoG7DFPcD/wCoMS0M8h7bw/cfUukQEczwsOS0AcmEcLRUHQW+5n7qCRtVAO6MQ5WHgE29q37nk2iXf36c6sBJWePvB9Kp/0r7gRHGqC8Kr352LF99O3Lu55ZcjoTiqngQVDPkcghkMnKSIIh5P5KSkk55n15qFBqc3L/KCMnyJApcNyMaGiRmW/PMQ9YT9lg0nmUdG+WTvXrsTv4hIqJ4w5UqXuJS6XQEKcykIr2ozqZEaYngSIUrmHGUiFQSFPpZ5wky3lY0XeEgq0fE+pm0epevJ4xwm3YAPllBbCr+QOzHg4lD0g4kw3ufQLOIEIZRefs0LSFO6O7MsKEC1qGc0Do7EpTX6D7WueP9sdidmNjyyt/NGE8rAK8I+At+O/HyKTfrq6buYuYVW2fn3fTRxuHXOkM7aehoQQrDAxN/I7/CCh+rwdYqq/q3Iji979iqXC9goASANYYg/PIHdVwiN0/OXXvP+h+aR0=
