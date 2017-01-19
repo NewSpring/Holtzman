@@ -4,12 +4,13 @@ import { connect } from "react-redux";
 import { css } from "aphrodite";
 import { withApollo } from "react-apollo";
 import createContainer from "../../../../deprecated/meteor/react-meteor-data";
+import { routeActions } from "../../../../data/store/routing";
 
 import Modal from "../../modals";
 import Meta from "../../../shared/meta";
 import Nav from "../../nav";
 import Header from "../../UI/header";
-import { Loading } from "../../UI/states";
+// import { Loading } from "../../UI/states";
 
 import Likes from "../../../../deprecated/database/collections/likes";
 
@@ -161,7 +162,6 @@ class GlobalWithoutData extends Component {
 
     if (Meteor.isCordova) {
       document.addEventListener("click", linkListener);
-
       document.addEventListener("deviceready", () => {
         universalLinks.subscribe(null, ({ path }) => {
           this.setState({ universalLinkLoading: true });
@@ -170,22 +170,20 @@ class GlobalWithoutData extends Component {
             if (path.includes(url)) isQueryRoute = true;
           });
           if (isQueryRoute) {
-            const pathArray = path.split("/").filter(Boolean);
-            const section = pathArray[0];
-            const urlTitle = pathArray[1];
-
+            // const pathArray = path.split("/").filter(Boolean);
+            // const section = pathArray[0];
+            // const urlTitle = pathArray[1];
             // this.props.client.query({ query, variables: { urlTitle })
             //   .then(({ data: { somehwere: id } }) => {
             //     this.go(`/#{this.section}/);
             //   })
-
-            this.go(`/${section}`);
+            // this.go(`/${section}`);
+            alert("this is a query route");
             return;
           }
-
           this.go(path);
         });
-      });
+      }, false);
     }
   }
 
@@ -194,7 +192,7 @@ class GlobalWithoutData extends Component {
   }
 
   go = (url) => {
-    this.props.dispatch(url);
+    this.props.dispatch(routeActions.push(url));
     this.setState({ universalLinkLoading: false });
   }
 
@@ -202,9 +200,10 @@ class GlobalWithoutData extends Component {
     const { dispatch, client } = this.props;
     return (
       <div id="global">
-        {!this.state.universalLinkLoading && <App {...this.props} />}
+        {/* {!this.state.universalLinkLoading && <App {...this.props} />} */}
+        <App {...this.props} />
         <GlobalData dispatch={dispatch} client={client} />
-        {this.state.universalLinkLoading && <Loading />}
+        {/* {this.state.universalLinkLoading && <Loading />} */}
       </div>
     );
   }
