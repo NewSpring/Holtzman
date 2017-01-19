@@ -6,6 +6,7 @@ chmod 600 ~/.ssh/id_rsa
 eval `ssh-agent -s`
 ssh-add ~/.ssh/id_rsa
 
+BUILD_TAG="GH$TRAVIS_PULL_REQUEST-B$TRAVIS_BUILD_NUMBER"
 REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 
@@ -16,11 +17,11 @@ git config user.email "$COMMIT_AUTHOR_EMAIL"
 git tag -l | xargs git tag -d
 
 # create a new new tag from TRAVIS_TAG (GH###-B#)
-git tag $TRAVIS_TAG
+git tag $BUILD_TAG
 
 # push tag to github
 git push -q $SSH_REPO --tags
 
-echo "Pushed Tag: $TRAVIS_TAG to Github!"
+echo "Pushed Tag: $BUILD_TAG to Github!"
 
 
