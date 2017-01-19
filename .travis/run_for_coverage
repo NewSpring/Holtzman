@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+yarn coverage
+coveralls < ./coverage/lcov.info || true # ignore coveralls error
+
