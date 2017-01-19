@@ -13,7 +13,7 @@ class Meta extends Component {
     ]),
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (
       typeof ga !== "undefined" &&
       window.location.pathname !== "/give/review"

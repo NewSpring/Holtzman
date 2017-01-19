@@ -28,6 +28,9 @@
   },
   "homepage": "https://github.com/NewSpring/holzman",
   "jest": {
+    "transform": {
+        ".*": "./imports/util/tests/jestPreprocessor.js"
+    },
     "coverageDirectory": "./.coverage",
     "collectCoverageFrom": [
       "client/**/*.{js,jsx}",
@@ -40,7 +43,9 @@
       "<rootDir>/imports/deprecated/methods/",
       "<rootDir>/server/deprecated/",
       "<rootDir>/imports/deprecated/database/",
-      "<rootDir>/imports/util/xml.js"
+      "<rootDir>/imports/util/xml.js",
+      "<rootDir>/imports/util/tests/beforeTest.js",
+      "<rootDir>/imports/util/tests/jestPreprocessor.js"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
@@ -50,7 +55,7 @@
       "^meteor/(.*)": "<rootDir>/.meteor/mocks/$1.js"
     },
     "setupFiles": [
-      "<rootDir>/imports/util/tests/before_test.js"
+      "<rootDir>/imports/util/tests/beforeTest.js"
     ]
   },
   "apollos": {
