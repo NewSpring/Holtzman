@@ -21,6 +21,6 @@ git tag $TRAVIS_TAG
 # push tag to github
 git push -q $SSH_REPO --tags
 
-printf "Pushed Tag: \e[32m$TRAVIS_TAG\e[0m to Github!"
+echo "Pushed Tag: $TRAVIS_TAG to Github!"
 
 
