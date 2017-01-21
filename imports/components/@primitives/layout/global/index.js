@@ -10,7 +10,7 @@ import Modal from "../../modals";
 import Meta from "../../../shared/meta";
 import Nav from "../../nav";
 import Header from "../../UI/header";
-// import { Loading } from "../../UI/states";
+import { Loading } from "../../UI/states";
 
 import Likes from "../../../../deprecated/database/collections/likes";
 
@@ -149,9 +149,22 @@ class GlobalWithoutData extends Component {
     client: PropTypes.object.isRequired,
   }
 
-  state = { universalLinkLoading: false }
+  state = ({ universalLinkLoading: false })
 
   componentWillMount() {
+    if (Meteor.isCordova) {
+      document.addEventListener("click", linkListener);
+      document.addEventListener("deviceready", () => {
+        universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
+      }, false);
+    }
+  }
+
+  componentWillUnMount() {
+    if (Meteor.isCordova) universalLinks.unsubscribe("universalLinkRoute");
+  }
+
+  universalLinkRouting = ({ path }) => {
     const queryRoutes = [
       "/articles/",
       "/sermons/",
@@ -160,40 +173,42 @@ class GlobalWithoutData extends Component {
       "/stories/",
     ];
 
-    if (Meteor.isCordova) {
-      document.addEventListener("click", linkListener);
-      document.addEventListener("deviceready", () => {
-        universalLinks.subscribe(null, ({ path }) => {
-          this.setState({ universalLinkLoading: true });
-          let isQueryRoute = false;
-          queryRoutes.forEach((url) => {
-            if (path.includes(url)) isQueryRoute = true;
-          });
-          if (isQueryRoute) {
-            // const pathArray = path.split("/").filter(Boolean);
-            // const section = pathArray[0];
-            // const urlTitle = pathArray[1];
-            // this.props.client.query({ query, variables: { urlTitle })
-            //   .then(({ data: { somehwere: id } }) => {
-            //     this.go(`/#{this.section}/);
-            //   })
-            // this.go(`/${section}`);
-            alert("this is a query route");
-            return;
-          }
-          this.go(path);
-        });
-      }, false);
-    }
-  }
+    this.state = ({ universalLinkLoading: true });
+    let isQueryRoute = false;
 
-  componentWillUnMount() {
-    if (Meteor.isCordova) universalLinks.unsubscribe(null);
+    queryRoutes.forEach((url) => {
+      if (path.includes(url)) isQueryRoute = true;
+    });
+
+    if (isQueryRoute) {
+      // const pathArray = path.split("/").filter(Boolean);
+
+      // const section = pathArray[0];
+      // let urlTitle = pathArray[1];
+
+      // if (pathArray.length === 2) {
+        // const parent = pathArray[1];
+        // urlTitle = pathArray[2];
+      // }
+
+      // this.props.client.query({ query, variables: { urlTitle })
+      //   .then(({ data: { somehwere: id } }) => {
+      //     this.go(`/#{this.section}/);
+      //   })
+      // this.go(`/${section}`);
+      alert("this is a query route");
+      return;
+    }
+
+    // XXX accounts for watch and read
+    if (path === "/watchandread") this.go("/");
+
+    this.go(path);
   }
 
   go = (url) => {
+    this.state = ({ universalLinkLoading: false });
     this.props.dispatch(routeActions.push(url));
-    this.setState({ universalLinkLoading: false });
   }
 
   render() {
@@ -205,9 +220,10 @@ class GlobalWithoutData extends Component {
     return (
       <div id="global">
         <style>{scrollbarStyles}</style>
+        {!this.state.universalLinkLoading && <App {...this.props} />}
         <App {...this.props} />
         <GlobalData dispatch={dispatch} client={client} />
-        {/* {this.state.universalLinkLoading && <Loading />} */}
+        {this.state.universalLinkLoading && <Loading />}
       </div>
     );
   }
