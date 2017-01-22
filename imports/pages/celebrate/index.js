@@ -151,6 +151,7 @@ class Template extends Component {
           additionalClasses={"soft-half-sides push-right@lap-and-up push-half-right"}
           title={"Annual Report"}
           align={"text-left"}
+          hideTitle
         >
           {this.props.children}
         </DashboardLayout>

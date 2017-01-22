@@ -65,6 +65,7 @@ type IDashboard = {
   subNav: ISubNav,
   title: string,
   align?: string,
+  hideTitle?: boolean,
 };
 
 export class Dashboard extends Component {
@@ -82,6 +83,7 @@ export class Dashboard extends Component {
       subNav,
       title,
       align,
+      hideTitle,
     } = this.props;
 
     return (
@@ -95,7 +97,7 @@ export class Dashboard extends Component {
             background--light-primary
           `}
         >
-          {!process.env.NATIVE && title && (
+          {!process.env.NATIVE && title && !hideTitle && (
             <h1 className="soft-half-bottom@handheld soft-bottom">{title}</h1>
           )}
           <div className={`floating ${!process.env.NATIVE ? "text-left" : align || "text-center"}`}>
