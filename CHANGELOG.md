@@ -4,8 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 2017-01-10
+## [Unreleased]
+### Fixed
 - Fixed an issue in iOS that was causing schedules to not be created.
+- Fixed the toggle import in the `/following` section on profile causing component not to render.
 
 ## [1.2.3] - 2017-01-09
 ### Added
