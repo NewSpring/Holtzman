@@ -149,13 +149,14 @@ class GlobalWithoutData extends Component {
     client: PropTypes.object.isRequired,
   }
 
-  state = ({ universalLinkLoading: false })
+  state = { universalLinkLoading: false }
 
   componentWillMount() {
     if (Meteor.isCordova) {
       document.addEventListener("click", linkListener);
       document.addEventListener("deviceready", () => {
-        universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
+        alert("device ready");
+        universalLinks.subscribe("universalLinkRoute", alert);
       }, false);
     }
   }
@@ -173,7 +174,7 @@ class GlobalWithoutData extends Component {
       "/stories/",
     ];
 
-    this.state = ({ universalLinkLoading: true });
+    this.setState({ universalLinkLoading: true });
     let isQueryRoute = false;
 
     queryRoutes.forEach((url) => {
@@ -201,24 +202,33 @@ class GlobalWithoutData extends Component {
     }
 
     // XXX accounts for watch and read
-    if (path === "/watchandread") this.go("/");
-
-    this.go(path);
+    switch (path) {
+      case "/watchandread":
+        this.go("/");
+        break;
+      default:
+        this.go(path);
+    }
   }
 
   go = (url) => {
-    this.state = ({ universalLinkLoading: false });
+    this.setState({ universalLinkLoading: false });
     this.props.dispatch(routeActions.push(url));
   }
 
   render() {
     const { dispatch, client } = this.props;
+    alert("render");
+    alert(this.state.universalLinkLoading);
     return (
       <div id="global">
-        {!this.state.universalLinkLoading && <App {...this.props} />}
-        <App {...this.props} />
-        <GlobalData dispatch={dispatch} client={client} />
         {this.state.universalLinkLoading && <Loading />}
+        {!this.state.universalLinkLoading && (
+          <div>
+            <App {...this.props} />
+            <GlobalData dispatch={dispatch} client={client} />
+          </div>
+        )}
       </div>
     );
   }
