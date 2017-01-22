@@ -1,4 +1,3 @@
-
 import React, { Component, PropTypes } from "react";
 import { css } from "aphrodite";
 
@@ -23,7 +22,7 @@ Stats.propTypes = {
 };
 
 export const Leaves = ({ children }) => (
-  <div className="relative one-whole soft-double-top soft-bottom push-double-top">
+  <div className="relative">
     {children}
   </div>
 );

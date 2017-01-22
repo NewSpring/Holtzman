@@ -13,7 +13,12 @@ class VideoPlayerWithoutData extends Component {
     style: PropTypes.object,
     audioState: PropTypes.string,
     dispatch: PropTypes.func,
+    autoplay: PropTypes.bool,
     // color: PropTypes.string
+  }
+
+  static defaultProps = {
+    autoplay: true,
   }
 
   state = {
@@ -62,7 +67,7 @@ class VideoPlayerWithoutData extends Component {
     const videoParams = {
       pcode: "E1dWM6UGncxhent7MRATc3hmkzUD",
       playerBrandingId: "ZmJmNTVlNDk1NjcwYTVkMzAzODkyMjg0",
-      autoplay: true,
+      autoplay: this.props.autoplay,
       skin: {
         config: "/ooyala/skin.new.json",
         // "config": "//player.ooyala.com/static/v4/stable/4.6.9/skin-plugin/skin.json",

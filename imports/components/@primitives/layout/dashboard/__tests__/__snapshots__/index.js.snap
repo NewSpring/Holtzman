@@ -15,7 +15,7 @@ exports[`Dashboard should render with the children 1`] = `
     <div
       className="floating text-left">
       <Link
-        className="floating__item soft-half-sides push-right text-center plain outlined--bottom"
+        className="floating__item text-center plain outlined--bottom"
         onlyActiveOnIndex={false}
         style={
           Object {
@@ -28,7 +28,7 @@ exports[`Dashboard should render with the children 1`] = `
         </h6>
       </Link>
       <Link
-        className="floating__item soft-half-sides push-right text-center plain text-dark-primary"
+        className="floating__item text-center plain text-dark-primary"
         onlyActiveOnIndex={false}
         style={
           Object {
@@ -41,7 +41,7 @@ exports[`Dashboard should render with the children 1`] = `
         </h6>
       </Link>
       <Link
-        className="floating__item soft-half-sides push-right text-center plain text-dark-primary"
+        className="floating__item text-center plain text-dark-primary"
         onlyActiveOnIndex={false}
         style={
           Object {
@@ -91,7 +91,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
     <div
       className="floating text-left">
       <Link
-        className="floating__item soft-half-sides push-right text-center plain outlined--bottom"
+        className="floating__item text-center plain outlined--bottom"
         onlyActiveOnIndex={false}
         style={
           Object {
@@ -104,7 +104,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
         </h6>
       </Link>
       <Link
-        className="floating__item soft-half-sides push-right text-center plain text-dark-primary"
+        className="floating__item text-center plain text-dark-primary"
         onlyActiveOnIndex={false}
         style={
           Object {
@@ -117,7 +117,7 @@ exports[`Dashboard should render with the default set of props 1`] = `
         </h6>
       </Link>
       <Link
-        className="floating__item soft-half-sides push-right text-center plain text-dark-primary"
+        className="floating__item text-center plain text-dark-primary"
         onlyActiveOnIndex={false}
         style={
           Object {
