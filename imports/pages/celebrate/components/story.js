@@ -10,6 +10,7 @@ type IStory = {
   linkUrl?: string,
   linkClass?: string,
   linkText?: string,
+  overriddenHeader?: string,
 };
 
 /* eslint-disable max-len */
@@ -23,6 +24,7 @@ const Story = ({
   linkUrl,
   linkClass,
   linkText,
+  overriddenHeader,
 }: IStory) => (
   <div className="grid soft-double-bottom soft-double-top@lap-and-up">
     <div className="constrain-page">
@@ -32,7 +34,8 @@ const Story = ({
         </div>
       </div>}
       <div className={`grid__item ${image && "two-thirds@lap-and-up"} floating text-center text-left@lap-and-up display-inline-block`} style={{ verticalAlign: "middle" }}>
-        {heading && name && location && <h5 className={`${String(contentClass)} soft-half-bottom soft-sides@handheld`} style={{ fontWeight: "400" }}>{heading} <strong style={{ fontFamily: "colfax, sans-serif" }}>{name}</strong> from <strong style={{ fontFamily: "colfax, sans-serif" }}>{location}</strong>.</h5>}
+        {overriddenHeader && <h5 dangerouslySetInnerHTML={{ __html: overriddenHeader }} className={`${String(contentClass)} soft-half-bottom soft-sides@handheld`} style={{ fontWeight: "400" }} />}
+        {!overriddenHeader && heading && name && location && <h5 className={`${String(contentClass)} soft-half-bottom soft-sides@handheld`} style={{ fontWeight: "400" }}>{heading} <strong style={{ fontFamily: "colfax, sans-serif" }}>{name}</strong> from <strong style={{ fontFamily: "colfax, sans-serif" }}>{location}</strong>.</h5>}
         {image && <div className="ratio--square floating__item one-half background--fill round visuallyhidden@lap-and-up push-bottom" style={{ backgroundImage: `url('${image}')` }}>
           <div className="ratio__item" />
         </div>}
@@ -41,6 +44,7 @@ const Story = ({
           <a
             href={linkUrl}
             className={linkClass || "btn"}
+            target={"_blank"}
           >
             {linkText || "Learn More"}
           </a>
