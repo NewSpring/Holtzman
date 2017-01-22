@@ -1,6 +1,6 @@
 import { PropTypes } from "react";
 
-import { Toggle } from "../../../@primitives/UI/toggle/Toggle";
+import Toggle from "../../../@primitives/UI/toggle/Toggle";
 
 const FollowingItem = ({ item, changed, switchId, active }) => (
   <div className="push-left soft-ends soft-right text-left floating outlined--light outlined--bottom">
@@ -23,4 +23,3 @@ FollowingItem.propTypes = {
 };
 
 export default FollowingItem;
-
