@@ -67,7 +67,7 @@ const data = {
         imageAlt: "First timers who returned to KidSpring",
         label: "5,970",
         value: "FirstTime",
-        copy: "first-time kids returned to KidSpring",
+        copy: "first time kids returned to KidSpring.",
       },
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag2_1x1.jpg",
@@ -75,7 +75,7 @@ const data = {
         imageAlt: "Kids were baptized",
         label: "861",
         value: "KidsBaptized",
-        copy: "kids were baptized",
+        copy: "kids were baptized.",
       },
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag3_1x1.jpg",
@@ -83,7 +83,7 @@ const data = {
         imageAlt: "Kids who gave for the first time",
         label: "191",
         value: "KidsWhoGave",
-        copy: "kids gave for the first time",
+        copy: "kids gave for the first time.",
       },
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag4_1x1.jpg",
@@ -91,7 +91,7 @@ const data = {
         imageAlt: "Kids who transitioned to Fuse",
         label: "928",
         value: "KidsFuse",
-        copy: "kids transitioned to Fuse",
+        copy: "kids transitioned to Fuse.",
       },
     ],
   },
@@ -111,7 +111,7 @@ const KidSpring = () => (
           </div>
 
           <div className="grid__item one-whole soft-double-top@lap-and-up soft-top soft-bottom@lap-and-up">
-            <h3 className="push-double-bottom@lap-and-up push-bottom">Average Number Of Kids Each Sunday</h3>
+            <h3 className="push-double-bottom@lap-and-up push-bottom">Average Weekly Attendance</h3>
             <FitText compressor={0.4} maxFontSize="100">
               <h1
                 style={{
@@ -142,7 +142,10 @@ const KidSpring = () => (
     <div className="background--light-primary soft-double-sides@lap-and-up soft-double-top@lap-and-up soft soft-double-top">
       <div className="constrain-page push-double-ends@lap-and-up">
         <div className="one-whole text-center">
-          <h3 className={`italic ${css(styles.secondaryColor)}`}><strong>Every number is a student life changed</strong></h3>
+          <h3 className={`italic push-half-bottom ${css(styles.secondaryColor)}`}><strong>Every number has a name.</strong></h3>
+        </div>
+        <div className="push-double-bottom one-whole text-center">
+          <small><em>Click or tap on a number below to see a few interesting facts about this ministry!</em></small>
         </div>
         <div className="floating">
           <div className="floating__item three-quarters@lap-wide-and-up">

@@ -13,7 +13,7 @@ const data = {
       },
       {
         image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-mac.png",
-        label: "unique devices to view our sites and apps",
+        label: "unique devices viewed our sites and apps",
         value: "2,398,759",
       },
       {
@@ -33,29 +33,29 @@ const data = {
       },
       {
         image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-globe.png",
-        label: "countries that visted our site",
+        label: "countries visted our sites",
         value: "210",
       },
     ],
     cards: [
       {
-        label: "Articles Read",
+        label: "Articles Pageviews",
         value: "942,436",
       },
       {
-        label: "Devotionals Read",
+        label: "Devotionals Pageviews",
         value: "443,252",
       },
       {
-        label: "Studies Used",
+        label: "Studies Pageviews",
         value: "252,566",
       },
       {
-        label: "Stories Viewed",
+        label: "Stories Pageviews",
         value: "143,972",
       },
       {
-        label: "Sermons Watched",
+        label: "Sermons Pageviews",
         value: "429,514",
       },
     ],
@@ -72,7 +72,6 @@ const Web = () => (
 
             <div className="one-whole text-center push-bottom push-double-top@handheld">
               <h1 className="uppercase">Web Stats</h1>
-              <h3 className="italic"><strong>We have</strong></h3>
             </div>
 
             {data.statistics.icons.map((statistic, i) => (
@@ -97,7 +96,7 @@ const Web = () => (
       <div className="soft-double-ends soft-bottom@handheld">
         <div className="floating one-whole hard@handheld">
           <div className="floating__item constrain-copy soft-double-sides@lap-and-up push-sides@lap-and-up soft-sides@handheld">
-            <h3 className="text-center italic"><strong>Using the Internet to help people follow Jesus step by step, we saw</strong></h3>
+            <h3 className="text-center italic"><strong>Using technology to connect people to Jesus and each other, we saw</strong></h3>
           </div>
         </div>
         <CardSlider>

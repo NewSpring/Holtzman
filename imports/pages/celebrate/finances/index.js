@@ -7,29 +7,29 @@ import Meta from "../../../components/shared/meta";
 import ProgressBar from "../../../components/giving/giving-progress";
 import Story from "../components/story";
 
-const generalFundAmountTotal = 49221808.98;
+const generalFundAmountTotal = 49358550.46;
 const fundData = [
-  { campus: "Aiken", amount: 492701.46 },
-  { campus: "Anderson", amount: 14015345.70 },
-  { campus: "Boiling Springs", amount: 1242511.92 },
-  { campus: "Central", amount: 155652.91 },
-  { campus: "Charleston", amount: 3267866.49 },
-  { campus: "Clemson", amount: 1232783.48 },
-  { campus: "Columbia*", amount: 4657572.66 },
-  { campus: "Florence", amount: 2887278.55 },
-  { campus: "Greenville", amount: 8117428.25 },
-  { campus: "Greenwood", amount: 1818359.97 },
-  { campus: "Hilton Head", amount: 353690.47 },
-  { campus: "Lexington*", amount: 1267439.66 },
-  { campus: "Myrtle Beach", amount: 2314687.53 },
-  { campus: "Northeast Columbia", amount: 556184.78 },
-  { campus: "Powdersville", amount: 2584053.46 },
-  { campus: "Rock Hill", amount: 476468.63 },
-  { campus: "Spartanburg", amount: 3125883.42 },
-  { campus: "Sumter", amount: 264265.33 },
-  { campus: "Web", amount: 391634.31 },
+  { campus: "Aiken", amount: 492416.38 },
+  { campus: "Anderson", amount: 14048984.79 },
+  { campus: "Boiling Springs", amount: 1244201.92 },
+  { campus: "Central", amount: 225890.32 },
+  { campus: "Charleston", amount: 3268933.86 },
+  { campus: "Clemson", amount: 1233130.32 },
+  { campus: "Columbia*", amount: 4658009.77 },
+  { campus: "Florence", amount: 2887143.55 },
+  { campus: "Greenville", amount: 8119037.58 },
+  { campus: "Greenwood", amount: 1820534.17 },
+  { campus: "Hilton Head", amount: 353190.47 },
+  { campus: "Lexington*", amount: 1267422.66 },
+  { campus: "Myrtle Beach", amount: 2314762.53 },
+  { campus: "Northeast Columbia", amount: 556082.77 },
+  { campus: "Powdersville", amount: 2584315.26 },
+  { campus: "Rock Hill", amount: 476888.68 },
+  { campus: "Spartanburg", amount: 3126923.59 },
+  { campus: "Sumter", amount: 288308.52 },
+  { campus: "Web", amount: 392373.32 },
 ];
-const stepUpFundTotal = "1,781,928.15";
+const stepUpFundTotal = "1792258.15";
 
 /* eslint-disable max-len */
 export const Finances = () => {
@@ -39,7 +39,7 @@ export const Finances = () => {
       <Meta title="Finances" />
       {/* Header */}
       <div className="background--primary text-center text-light-primary soft-double-ends">
-        <h3 className="push-top soft-half-sides">Giving to General Fund</h3>
+        <h3 className="push-top soft-half-sides">General Tithes and Offerings</h3>
         <div className="push-half-bottom">
           <div className="display-inline-block">
             <FitText compressor={1.5} maxFontSize={18}>
@@ -108,19 +108,19 @@ export const Finances = () => {
           </div>
         </div>
         <div className="soft-sides">
-          <small className="text-center"><em>* This is where the copy for the Columbia & Lexington merger should go.</em></small>
+          <small className="text-center"><em>Lexington campus merged with Columbia campus on Oct. 30.</em></small>
         </div>
       </div>
       <div className="background--light-primary text-center soft-double-top">
-        <h3 className="push-top push-half-bottom">Giving to Step Up</h3>
-        <em>for land and buildings</em>
+        <h3 className="push-top push-half-bottom">Land and Building Giving</h3>
         <div className="push-top">
-          <FitText compressor={1} maxFontSize={18}>
+          <FitText compressor={1.5} maxFontSize={18}>
             <Currency
               amount={stepUpFundTotal}
               baseHeadingSize="1"
               className="display-inline-block text-center soft-bottom text-dark-primary"
               style={{ fontWeight: "900" }}
+              roundCurrency
             />
           </FitText>
         </div>
@@ -158,7 +158,7 @@ export const Finances = () => {
                 5,400
               </h1>
             </FitText>
-            <h3>First time givers</h3>
+            <h3>first time givers</h3>
           </div>
           <div className="grid__item one-half@lap-and-up">
             <h3
@@ -180,15 +180,15 @@ export const Finances = () => {
               </h1>
             </FitText>
             <div className="floating text-center">
-              <h3 className="floating__item push-half-bottom">Households who gave $250 or more.</h3>
+              <h3 className="floating__item push-half-bottom">households gave.</h3>
             </div>
           </div>
         </div>
       </div>
       <div className="background--light-primary soft">
         <h3 className="text-center push-top">Annual Audit</h3>
-        <p className="constrain-copy push-bottom">NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (Philippians 2:15)</p>
-        <p className="constrain-copy push-bottom soft-half-bottom">We&#39;ll update this section in May after the audit is complete. If you have any questions not answered here, please email us at finance@newspring.cc.</p>
+        <p className="constrain-copy push-bottom">NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (<a href={"https://www.bible.com/search/bible?q=philippians%202:15&version_id=111"} alt={"Philippians 2:15"} target={"_blank"}>Philippians 2:15</a>).</p>
+        <p className="constrain-copy push-bottom soft-half-bottom">We&#39;ll update this section in May after the audit is complete. If you have any questions not answered here, please email us at <a href={"mailto:finance@newspring.cc"}>finance@newspring.cc</a>.</p>
       </div>
       <div className="background--primary text-center text-light-primary soft">
         <h3 className="push-double-top">Keep Reading</h3>

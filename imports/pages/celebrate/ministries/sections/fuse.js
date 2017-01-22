@@ -3,6 +3,7 @@ import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import MetricCard from "../../components/metricCard";
 import TagGallery from "../../../../components/@primitives/UI/tag-gallery";
+import Story from "../../components/story";
 
 const data = {
   statistics: {
@@ -45,7 +46,7 @@ const data = {
         imageAlt: "First Timers at Fuse",
         label: "13,943",
         value: "FirstTime",
-        copy: "students came to Fuse for the first time",
+        copy: "students came to Fuse for the first time.",
       },
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag2_1x1.jpg",
@@ -53,7 +54,7 @@ const data = {
         imageAlt: "students gave for the first time",
         label: "217",
         value: "FirstTimeGivers",
-        copy: "students gave for the first time",
+        copy: "students gave for the first time.",
       },
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag3_1x1.jpg",
@@ -61,7 +62,7 @@ const data = {
         imageAlt: "students in a Fuse group",
         label: "3,439",
         value: "StudentsInGroups",
-        copy: "students in a Fuse group",
+        copy: "students are in a Fuse group.",
       },
       {
         image1x1: "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag4_1x1.jpg",
@@ -69,7 +70,7 @@ const data = {
         imageAlt: "students volunteered",
         label: "1,455",
         value: "StudentVolunteers",
-        copy: "students volunteered",
+        copy: "students volunteered.",
       },
     ],
   },
@@ -120,7 +121,7 @@ const Fuse = () => (
 
       <div className="constrain-page soft-sides@handheld">
         <div className="soft-double-top@lap-and-up soft-bottom@lap-and-up">
-          <h3 className="italic" style={{ color: "#4F92A9" }}><strong>Every number is a student life changed</strong></h3>
+          <h3 className="italic" style={{ color: "#4F92A9" }}><strong>Every number has a name.</strong></h3>
           <div id={"fuse"} className="soft-sides@lap">
             <TagGallery
               id={"fuse"}
@@ -148,7 +149,7 @@ const Fuse = () => (
               {data.statistics.salvations}
             </h1>
           </FitText>
-          <h3 className="soft-bottom" style={{ color: "#4F92A9" }}>Students cross from death to life at Fuse</h3>
+          <h3 className="soft-bottom" style={{ color: "#4F92A9" }}>students meet Jesus at Fuse.</h3>
         </div>
       </div>
     </div>
@@ -157,7 +158,8 @@ const Fuse = () => (
       <div className="constrain-copy push-top push-top@lap-and-up soft-sides@handheld">
         <div className="one-whole">
           <h3 className="italic flush"><strong>This year at</strong></h3>
-          <h2>Gauntlet</h2>
+          <h2 className="flush">Gauntlet</h2>
+          <h3 className="italic"><strong>we saw</strong></h3>
         </div>
       </div>
 
@@ -171,6 +173,13 @@ const Fuse = () => (
             />
           ))}
         </CardSlider>
+      </div>
+      <div className="soft-double-sides@lap-and-up">
+        <Story
+          image={""}
+          content={"<p>Mani Mills was one of thousands of students who had a life-changing experience at Gauntlet 2016.</p>"}
+          contentClass={"text-light-primary"}
+        />
       </div>
     </div>
   </div>

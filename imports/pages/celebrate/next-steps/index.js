@@ -115,8 +115,8 @@ const volunteerData = [
   { label: "Spartanburg", count: "726" },
   { label: "Sumter", count: "109" },
 ];
-const localMissionAmount = "1,246,884.72";
-const foreignMissionAmount = "493,845.39";
+const localMissionAmount = "1246884.72";
+const foreignMissionAmount = "493845.39";
 
 /* eslint-disable max-len */
 export const NextSteps = () => (
@@ -125,8 +125,8 @@ export const NextSteps = () => (
     {/* Header */}
     <div className="background--light-secondary soft-double-ends soft-sides">
       <div className="push-ends">
-        <h3 className="text-center">What Is A Next Step</h3>
-        <p className="constrain-copy">Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here&#39;s a look at how we&#39;ve seen people take their next steps in 2016.</p>
+        <h3 className="text-center">Celebrating Next Steps</h3>
+        <p className="constrain-copy">Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here&#39;s a look at how we&#39;ve seen people take their <a href={"https://newspring.cc/nextsteps"} alt={"link to next steps"}>next steps</a> in 2016.</p>
       </div>
     </div>
     {/* Salvations */}
@@ -156,49 +156,9 @@ export const NextSteps = () => (
         />
       </div>
     </div>
-    {/* Percent Stats */}
-    {/*
-    <div className="floating background--dark-primary">
-      <div className="soft-double-ends push-double-ends text-center text-light-primary soft-sides@palm soft-double-sides@handheld two-thirds@lap-wide-and-up floating__item">
-        <div className="floating push-double-top soft-half-bottom">
-          <div className="floating__item">
-            <FitText compressor={1} maxFontSize={120} minFontSize={80}>
-              <h1
-                className="uppercase flush-bottom soft-half-bottom"
-                style={{
-                  fontWeight: "900",
-                }}
-              >
-                68
-              </h1>
-            </FitText>
-          </div>
-          <span className="h4 floating__item soft-half-left">%</span>
-        </div>
-        <div className="one-whole floating">
-          <h3 className="two-thirds@lap-and-up floating__item">of people who received salvation took a next step.</h3>
-        </div>
-        <em>like these</em>
-        <div className="push-double-bottom push-top soft-half-top">
-          <a href={"https://newspring.cc/baptism"} className={"btn btn--light btn--small@next push-half-right"}>
-            {"Baptism"}
-          </a>
-          <a href={"https://newspring.cc/connect"} className={"btn btn--light btn--small@next push-half-right"}>
-            {"Attending Connect"}
-          </a>
-          <a href={"https://newspring.cc/groups"} className={"btn btn--light btn--small@next push-half-right"}>
-            {"Joining a Group"}
-          </a>
-          <a href={"https://newspring.cc/give"} className={"btn btn--light btn--small@next"}>
-            {"Giving"}
-          </a>
-        </div>
-      </div>
-    </div>
-    */}
     {/* Baptism */}
     <div className="background--light-seconday soft-double-top text-center one-whole soft-top">
-      <h3 className="one-whole push-top" style={{ color: "#0073AF" }}>We Witnessed</h3>
+      <h3 className="one-whole push-top" style={{ color: "#0073AF" }}>We Saw</h3>
       <div className={css(styles.waves)}>
         <div className={css(styles.wave, styles.wave_1)} />
         <div className={css(styles.wave, styles.wave_2)} />
@@ -213,8 +173,8 @@ export const NextSteps = () => (
             5,557
           </h1>
         </FitText>
-        <h5 className="text-light-primary push-top">Go Public For Jesus Through</h5>
-        <h1 className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up">Baptism</h1>
+        <h5 className="text-light-primary push-top">people go public for Jesus through</h5>
+        <h1 className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up">Baptism.</h1>
       </div>
     </div>
     {/* First Time Visitors */}
@@ -240,7 +200,7 @@ export const NextSteps = () => (
                 47,137
               </h1>
             </FitText>
-            <h3 className="push-top">first time visitors come to NewSpring</h3>
+            <h3 className="push-top">first time visitors come to NewSpring.</h3>
           </div>
         </div>
         <div className="grid__item push-half-left@handheld floating one-half@lap-and-up display-inline-block" style={{ verticalAlign: "middle" }}>
@@ -308,9 +268,17 @@ export const NextSteps = () => (
       <div className="floating">
         <h3 className="push-top push-left push-right floating__item one-half@lap-and-up">people served at NewSpring Church</h3>
       </div>
-      <div className="text-dark-tertiary push-top">
+      <h3
+        className="italic"
+        style={{
+          fontFamily: "ff-meta-serif-web-pro, serif",
+        }}
+      >
+        and
+      </h3>
+      <div className="push-top">
         <h1 style={{ fontWeight: "900" }}>2,313</h1>
-        <h3>for the first time!</h3>
+        <h3>people served for the first time!</h3>
       </div>
       <CardSlider>
         {volunteerData.map(({ count, label }, key) => (
@@ -336,8 +304,8 @@ export const NextSteps = () => (
         </div>
         <em>Do you need help?</em>
         <div className="push-double-top">
-          <a href={"https://rock.newspring.cc/Workflows/83"} className={"btn btn--light btn--small@next"}>
-            {"Talk With Someone"}
+          <a href={"https://rock.newspring.cc/Workflows/83"} className={"btn btn--light btn--small@next"} target={"_blank"}>
+            {"Talk To Someone"}
           </a>
         </div>
       </div>
@@ -347,9 +315,9 @@ export const NextSteps = () => (
       <div className="one-whole push-double-top push-double-bottom@handheld push-bottom@lap-and-up">
         <h3 className="text-center">Connect</h3>
         <p className="constrain-copy">
-          We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer. Connect launched
-          in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get
-          to know people in the church.
+          We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer. <a href={"https://newspring.cc/connect"} alt={"link to connect"}>Connect</a> launched
+          in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to
+          get to know people in the church.
         </p>
         <div className="floating">
           <div className="soft-double@lap-and-up hard-sides@handheld text-center three-quarters@lap-wide-and-up nine-tenths@lap floating__item">
@@ -385,9 +353,17 @@ export const NextSteps = () => (
           <div className="floating">
             <h3 className="push-top floating__item two-thirds@lap-and-up">people attended a group</h3>
           </div>
-          <div className="text-dark-tertiary push-double-top@lap-and-up push-top@handheld">
+          <h3
+            className="italic"
+            style={{
+              fontFamily: "ff-meta-serif-web-pro, serif",
+            }}
+          >
+            and
+          </h3>
+          <div className="push-top">
             <h1 style={{ fontWeight: "900" }}>7,352</h1>
-            <h3>for the first time!</h3>
+            <h3>attended for the first time!</h3>
           </div>
         </div>
       </div>
@@ -412,10 +388,11 @@ export const NextSteps = () => (
                 className="display-inline-block text-center soft-bottom"
                 style={{ fontWeight: "900" }}
                 theme="light"
+                roundCurrency
               />
             </FitText>
           </div>
-          <h3 className="text-center@handheld">on local missions</h3>
+          <h3 className="text-center@handheld">on local missions.</h3>
           <div className="floating__item two-thirds@lap-and-up visuallyhidden@lap-and-up push-double-bottom push-double-top">
             <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-sc.png" alt="map of south carolina" />
           </div>
@@ -455,10 +432,11 @@ export const NextSteps = () => (
                 className="display-inline-block text-center soft-bottom"
                 style={{ fontWeight: "900" }}
                 theme="light"
+                roundCurrency
               />
             </FitText>
           </div>
-          <h3 className="text-center@handheld soft-bottom@handheld">on foreign missions</h3>
+          <h3 className="text-center@handheld soft-bottom@handheld">on foreign missions.</h3>
           <div className="one-whole visuallyhidden@lap-and-up push-top push-bottom" style={{ verticalAlign: "middle" }}>
             <img src="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/maps/map-world.png" alt="map of the world" />
           </div>
@@ -502,7 +480,7 @@ export const NextSteps = () => (
           </h1>
         </FitText>
         <div className="floating">
-          <h3 className="push-top floating__item two-thirds@lap-and-up">different nations</h3>
+          <h3 className="push-top floating__item two-thirds@lap-and-up">different nations.</h3>
         </div>
       </div>
       <div className="floating">
@@ -512,9 +490,7 @@ export const NextSteps = () => (
             image={"//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"}
             content={"<p>&#34;I traveled to Uganda with NewSpring Missions in July. The trip was inspirational, heartbreaking, and heartwarming. The highlights were worshipping with, and serving, the young boys living on the streets of Kampala. We also helped make improvements to the Freedom Church Heroes boys home.&#34;</p>"}
             contentClass={"text-light-primary"}
-            name={"Chat Davis"}
-            location={"Greenwood"}
-            heading={"Including visiting Kampala with"}
+            overriddenHeader={"<strong style='font-family: colfax, sans-serif;'>Chat Davis</strong> from <strong style='font-family: colfax, sans-serif;'>Greenwood</strong> went to Kampala."}
           />
         </div>
       </div>

@@ -15,12 +15,6 @@ exports[`Fun Facts renders a layout 1`] = `
               className="uppercase">
               Fun Facts
             </h1>
-            <h3
-              className="italic">
-              <strong>
-                From this year
-              </strong>
-            </h3>
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
@@ -123,7 +117,7 @@ exports[`Fun Facts renders a layout 1`] = `
               </h1>
             </Connect(FitTextWithoutData)>
             <h4>
-              pounts of coffee brewed by volunteers
+              pounds of coffee brewed by volunteers
             </h4>
           </div>
           <div

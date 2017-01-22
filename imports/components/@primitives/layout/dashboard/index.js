@@ -64,6 +64,8 @@ type IDashboard = {
   dispatch: Function,
   subNav: ISubNav,
   title: string,
+  align?: string,
+  hideTitle?: boolean,
 };
 
 export class Dashboard extends Component {
@@ -80,6 +82,8 @@ export class Dashboard extends Component {
       children,
       subNav,
       title,
+      align,
+      hideTitle,
     } = this.props;
 
     return (
@@ -88,15 +92,15 @@ export class Dashboard extends Component {
           className={`
             push-top
             soft-left@handheld
-            ${!process.env.NATIVE ? "soft-top@handheld soft-double-top" : ""}
+            ${!process.env.NATIVE ? "soft-top@handheld soft-double-top" : "soft-half-left@handheld"}
             soft-double-left
             background--light-primary
           `}
         >
-          {!process.env.NATIVE && title && (
+          {!process.env.NATIVE && title && !hideTitle && (
             <h1 className="soft-half-bottom@handheld soft-bottom">{title}</h1>
           )}
-          <div className={`floating ${!process.env.NATIVE ? "text-left" : "text-center"}`}>
+          <div className={`floating ${!process.env.NATIVE ? "text-left" : align || "text-center"}`}>
             {getLinks(additionalClasses, subNav)}
           </div>
         </div>

@@ -8,11 +8,17 @@ exports[`Next Steps renders a layout 1`] = `
       className="push-ends">
       <h3
         className="text-center">
-        What Is A Next Step
+        Celebrating Next Steps
       </h3>
       <p
         className="constrain-copy">
-        Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here\'s a look at how we\'ve seen people take their next steps in 2016.
+        Salvation is a starting point, not a destination. NewSpring exists to connect people to Jesus and each other. We will always be a church that celebrates next steps as well as salvations. Here\'s a look at how we\'ve seen people take their 
+        <a
+          alt="link to next steps"
+          href="https://newspring.cc/nextsteps">
+          next steps
+        </a>
+         in 2016.
       </p>
     </div>
   </div>
@@ -63,7 +69,7 @@ exports[`Next Steps renders a layout 1`] = `
           "color": "#0073AF",
         }
       }>
-      We Witnessed
+      We Saw
     </h3>
     <div
       className="waves_hfu71k">
@@ -96,11 +102,11 @@ exports[`Next Steps renders a layout 1`] = `
       </Connect(FitTextWithoutData)>
       <h5
         className="text-light-primary push-top">
-        Go Public For Jesus Through
+        people go public for Jesus through
       </h5>
       <h1
         className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up">
-        Baptism
+        Baptism.
       </h1>
     </div>
   </div>
@@ -141,7 +147,7 @@ exports[`Next Steps renders a layout 1`] = `
           </Connect(FitTextWithoutData)>
           <h3
             className="push-top">
-            first time visitors come to NewSpring
+            first time visitors come to NewSpring.
           </h3>
         </div>
       </div>
@@ -343,8 +349,17 @@ exports[`Next Steps renders a layout 1`] = `
         people served at NewSpring Church
       </h3>
     </div>
+    <h3
+      className="italic"
+      style={
+        Object {
+          "fontFamily": "ff-meta-serif-web-pro, serif",
+        }
+      }>
+      and
+    </h3>
     <div
-      className="text-dark-tertiary push-top">
+      className="push-top">
       <h1
         style={
           Object {
@@ -354,7 +369,7 @@ exports[`Next Steps renders a layout 1`] = `
         2,313
       </h1>
       <h3>
-        for the first time!
+        people served for the first time!
       </h3>
     </div>
     <Connect(CardSlider)>
@@ -440,8 +455,9 @@ exports[`Next Steps renders a layout 1`] = `
         className="push-double-top">
         <a
           className="btn btn--light btn--small@next"
-          href="https://rock.newspring.cc/Workflows/83">
-          Talk With Someone
+          href="https://rock.newspring.cc/Workflows/83"
+          target="_blank">
+          Talk To Someone
         </a>
       </div>
     </div>
@@ -456,7 +472,13 @@ exports[`Next Steps renders a layout 1`] = `
       </h3>
       <p
         className="constrain-copy">
-        We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer. Connect launched in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get to know people in the church.
+        We all need friends we can be ourselves with, people who make us laugh till it hurts and who will be there when we need prayer. 
+        <a
+          alt="link to connect"
+          href="https://newspring.cc/connect">
+          Connect
+        </a>
+         launched in 2016 as a way to help people connect to Jesus and to each other. This event is for anyone who wants to learn more about NewSpring and to get to know people in the church.
       </p>
       <div
         className="floating">
@@ -508,8 +530,17 @@ exports[`Next Steps renders a layout 1`] = `
             people attended a group
           </h3>
         </div>
+        <h3
+          className="italic"
+          style={
+            Object {
+              "fontFamily": "ff-meta-serif-web-pro, serif",
+            }
+          }>
+          and
+        </h3>
         <div
-          className="text-dark-tertiary push-double-top@lap-and-up push-top@handheld">
+          className="push-top">
           <h1
             style={
               Object {
@@ -519,7 +550,7 @@ exports[`Next Steps renders a layout 1`] = `
             7,352
           </h1>
           <h3>
-            for the first time!
+            attended for the first time!
           </h3>
         </div>
       </div>
@@ -551,9 +582,10 @@ exports[`Next Steps renders a layout 1`] = `
             compressor={1.4}
             maxFontSize={18}>
             <Currency
-              amount="1,246,884.72"
+              amount="1246884.72"
               baseHeadingSize="1"
               className="display-inline-block text-center soft-bottom"
+              roundCurrency={true}
               style={
                 Object {
                   "fontWeight": "900",
@@ -564,7 +596,7 @@ exports[`Next Steps renders a layout 1`] = `
         </div>
         <h3
           className="text-center@handheld">
-          on local missions
+          on local missions.
         </h3>
         <div
           className="floating__item two-thirds@lap-and-up visuallyhidden@lap-and-up push-double-bottom push-double-top">
@@ -630,9 +662,10 @@ exports[`Next Steps renders a layout 1`] = `
             compressor={1.2}
             maxFontSize={18}>
             <Currency
-              amount="493,845.39"
+              amount="493845.39"
               baseHeadingSize="1"
               className="display-inline-block text-center soft-bottom"
+              roundCurrency={true}
               style={
                 Object {
                   "fontWeight": "900",
@@ -643,7 +676,7 @@ exports[`Next Steps renders a layout 1`] = `
         </div>
         <h3
           className="text-center@handheld soft-bottom@handheld">
-          on foreign missions
+          on foreign missions.
         </h3>
         <div
           className="one-whole visuallyhidden@lap-and-up push-top push-bottom"
@@ -710,7 +743,7 @@ exports[`Next Steps renders a layout 1`] = `
         className="floating">
         <h3
           className="push-top floating__item two-thirds@lap-and-up">
-          different nations
+          different nations.
         </h3>
       </div>
     </div>
@@ -728,10 +761,8 @@ exports[`Next Steps renders a layout 1`] = `
         <Story
           content="<p>&#34;I traveled to Uganda with NewSpring Missions in July. The trip was inspirational, heartbreaking, and heartwarming. The highlights were worshipping with, and serving, the young boys living on the streets of Kampala. We also helped make improvements to the Freedom Church Heroes boys home.&#34;</p>"
           contentClass="text-light-primary"
-          heading="Including visiting Kampala with"
           image="//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/stories/story-img5.png"
-          location="Greenwood"
-          name="Chat Davis" />
+          overriddenHeader="<strong style=\'font-family: colfax, sans-serif;\'>Chat Davis</strong> from <strong style=\'font-family: colfax, sans-serif;\'>Greenwood</strong> went to Kampala." />
       </div>
     </div>
   </div>
