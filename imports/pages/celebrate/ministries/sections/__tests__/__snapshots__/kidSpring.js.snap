@@ -24,7 +24,7 @@ exports[`KidSpring renders a layout 1`] = `
           className="grid__item one-whole soft-double-top@lap-and-up soft-top soft-bottom@lap-and-up">
           <h3
             className="push-double-bottom@lap-and-up push-bottom">
-            Average Number Of Kids Each Sunday
+            Average Weekly Attendance
           </h3>
           <Connect(FitTextWithoutData)
             compressor={0.4}
@@ -106,11 +106,19 @@ exports[`KidSpring renders a layout 1`] = `
       <div
         className="one-whole text-center">
         <h3
-          className="italic secondaryColor_1fivjbh">
+          className="italic push-half-bottom secondaryColor_1fivjbh">
           <strong>
-            Every number is a student life changed
+            Every number has a name.
           </strong>
         </h3>
+      </div>
+      <div
+        className="push-double-bottom one-whole text-center">
+        <small>
+          <em>
+            Click or tap on a number below to see a few interesting facts about this ministry!
+          </em>
+        </small>
       </div>
       <div
         className="floating">
@@ -126,7 +134,7 @@ exports[`KidSpring renders a layout 1`] = `
               tags={
                 Array [
                   Object {
-                    "copy": "first-time kids returned to KidSpring",
+                    "copy": "first time kids returned to KidSpring.",
                     "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag1_1x1.jpg",
                     "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag1_2x1.jpg",
                     "imageAlt": "First timers who returned to KidSpring",
@@ -134,7 +142,7 @@ exports[`KidSpring renders a layout 1`] = `
                     "value": "FirstTime",
                   },
                   Object {
-                    "copy": "kids were baptized",
+                    "copy": "kids were baptized.",
                     "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag2_1x1.jpg",
                     "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag2_2x1.jpg",
                     "imageAlt": "Kids were baptized",
@@ -142,7 +150,7 @@ exports[`KidSpring renders a layout 1`] = `
                     "value": "KidsBaptized",
                   },
                   Object {
-                    "copy": "kids gave for the first time",
+                    "copy": "kids gave for the first time.",
                     "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag3_1x1.jpg",
                     "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag3_2x1.jpg",
                     "imageAlt": "Kids who gave for the first time",
@@ -150,7 +158,7 @@ exports[`KidSpring renders a layout 1`] = `
                     "value": "KidsWhoGave",
                   },
                   Object {
-                    "copy": "kids transitioned to Fuse",
+                    "copy": "kids transitioned to Fuse.",
                     "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag4_1x1.jpg",
                     "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/kidspring/tag4_2x1.jpg",
                     "imageAlt": "Kids who transitioned to Fuse",

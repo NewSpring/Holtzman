@@ -15,7 +15,12 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
           </h1>
           <p
             className="text-left">
-            NewSpring Leadership College is a two-year program to raise up passionate leaders for the local church. At NewSpring Leadership College, students receive practical Bible teaching and leadership training as well as real ministry responsibility and experience.
+            <a
+              alt="NewSpring Leadership College link"
+              href="https://newspringcollege.com">
+              NewSpring Leadership College
+            </a>
+             is a two-year program to raise up passionate leaders for the local church. At NewSpring Leadership College, students receive practical Bible teaching and leadership training as well as real ministry responsibility and experience.
           </p>
         </div>
       </div>
@@ -26,7 +31,7 @@ exports[`NewSpring Leadership College renders a layout 1`] = `
           <h3
             className="italic text-primary">
             <strong>
-              Helping raise up leaders to change their communities
+              NewSpring Leadership College is raising leaders for the local church.
             </strong>
           </h3>
         </div>

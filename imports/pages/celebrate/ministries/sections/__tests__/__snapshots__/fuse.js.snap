@@ -112,7 +112,7 @@ exports[`Fuse renders a layout 1`] = `
             }
           }>
           <strong>
-            Every number is a student life changed
+            Every number has a name.
           </strong>
         </h3>
         <div
@@ -125,7 +125,7 @@ exports[`Fuse renders a layout 1`] = `
             tags={
               Array [
                 Object {
-                  "copy": "students came to Fuse for the first time",
+                  "copy": "students came to Fuse for the first time.",
                   "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag1_1x1.jpg",
                   "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag1_2x1.jpg",
                   "imageAlt": "First Timers at Fuse",
@@ -133,7 +133,7 @@ exports[`Fuse renders a layout 1`] = `
                   "value": "FirstTime",
                 },
                 Object {
-                  "copy": "students gave for the first time",
+                  "copy": "students gave for the first time.",
                   "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag2_1x1.jpg",
                   "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag2_2x1.jpg",
                   "imageAlt": "students gave for the first time",
@@ -141,7 +141,7 @@ exports[`Fuse renders a layout 1`] = `
                   "value": "FirstTimeGivers",
                 },
                 Object {
-                  "copy": "students in a Fuse group",
+                  "copy": "students are in a Fuse group.",
                   "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag3_1x1.jpg",
                   "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag3_2x1.jpg",
                   "imageAlt": "students in a Fuse group",
@@ -149,7 +149,7 @@ exports[`Fuse renders a layout 1`] = `
                   "value": "StudentsInGroups",
                 },
                 Object {
-                  "copy": "students volunteered",
+                  "copy": "students volunteered.",
                   "image1x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag4_1x1.jpg",
                   "image2x1": "//s3.amazonaws.com/ns.assets/apollos/annual+report/2016/tags/fuse/tag4_2x1.jpg",
                   "imageAlt": "students volunteered",
@@ -199,7 +199,7 @@ exports[`Fuse renders a layout 1`] = `
               "color": "#4F92A9",
             }
           }>
-          Students cross from death to life at Fuse
+          students meet Jesus at Fuse.
         </h3>
       </div>
     </div>
@@ -221,9 +221,16 @@ exports[`Fuse renders a layout 1`] = `
             This year at
           </strong>
         </h3>
-        <h2>
+        <h2
+          className="flush">
           Gauntlet
         </h2>
+        <h3
+          className="italic">
+          <strong>
+            we saw
+          </strong>
+        </h3>
       </div>
     </div>
     <div
@@ -247,6 +254,13 @@ exports[`Fuse renders a layout 1`] = `
           count="1,368"
           label="Volunteers" />
       </Connect(CardSlider)>
+    </div>
+    <div
+      className="soft-double-sides@lap-and-up">
+      <Story
+        content="<p>Mani Mills was one of thousands of students who had a life-changing experience at Gauntlet 2016.</p>"
+        contentClass="text-light-primary"
+        image="" />
     </div>
   </div>
 </div>

@@ -21,7 +21,7 @@ const data = {
       },
       {
         image: "//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-mug.png",
-        label: "pounts of coffee brewed by volunteers",
+        label: "pounds of coffee brewed by volunteers",
         value: "4,900+",
       },
       {
@@ -48,7 +48,6 @@ const FunFacts = () => (
 
             <div className="one-whole text-center push-bottom push-double-top@handheld soft-top">
               <h1 className="uppercase">Fun Facts</h1>
-              <h3 className="italic"><strong>From this year</strong></h3>
             </div>
 
             {data.statistics.icons.map((statistic, i) => (

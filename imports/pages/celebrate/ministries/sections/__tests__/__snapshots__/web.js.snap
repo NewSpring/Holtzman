@@ -15,12 +15,6 @@ exports[`Web renders a layout 1`] = `
               className="uppercase">
               Web Stats
             </h1>
-            <h3
-              className="italic">
-              <strong>
-                We have
-              </strong>
-            </h3>
           </div>
           <div
             className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
@@ -71,7 +65,7 @@ exports[`Web renders a layout 1`] = `
               </h1>
             </Connect(FitTextWithoutData)>
             <h3>
-              unique devices to view our sites and apps
+              unique devices viewed our sites and apps
             </h3>
           </div>
           <div
@@ -175,7 +169,7 @@ exports[`Web renders a layout 1`] = `
               </h1>
             </Connect(FitTextWithoutData)>
             <h3>
-              countries that visted our site
+              countries visted our sites
             </h3>
           </div>
         </div>
@@ -193,7 +187,7 @@ exports[`Web renders a layout 1`] = `
           <h3
             className="text-center italic">
             <strong>
-              Using the Internet to help people follow Jesus step by step, we saw
+              Using technology to connect people to Jesus and each other, we saw
             </strong>
           </h3>
         </div>
@@ -201,19 +195,19 @@ exports[`Web renders a layout 1`] = `
       <Connect(CardSlider)>
         <MetricCard
           count="942,436"
-          label="Articles Read" />
+          label="Articles Pageviews" />
         <MetricCard
           count="443,252"
-          label="Devotionals Read" />
+          label="Devotionals Pageviews" />
         <MetricCard
           count="252,566"
-          label="Studies Used" />
+          label="Studies Pageviews" />
         <MetricCard
           count="143,972"
-          label="Stories Viewed" />
+          label="Stories Pageviews" />
         <MetricCard
           count="429,514"
-          label="Sermons Watched" />
+          label="Sermons Pageviews" />
       </Connect(CardSlider)>
     </div>
   </div>

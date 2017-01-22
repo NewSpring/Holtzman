@@ -144,7 +144,7 @@ class Template extends Component {
           </Leaves>
         </div>
         <div className="soft-double-left@lap-and-up soft-left">
-          <SmallButton text="Learn More" className="btn--dark-secondary" linkUrl="/celebrate/message-from-shane" />
+          <SmallButton text="Watch Video" className="btn--dark-secondary" linkUrl="/celebrate/message-from-shane" />
         </div>
         <DashboardLayout
           subNav={this.state.subNav}
