@@ -204,9 +204,9 @@ export const Finances = () => {
               <div className="floating__item three-quarters@lap-and-up text-left">
                 <p>This year&#39;s Christmas Offering will support these three projects:</p>
                 <ul>
-                  <li>Campus expansion to help our current campuses take their next step.</li>
-                  <li>Global missions to support Freedom Church as they launch three new campuses in 2017.</li>
-                  <li>Local missions in the communities where we have campuses.</li>
+                  <li>Campus expansion to help our <a href={"https://newspring.cc/locations"} target={"_blank"} alt={"link to locations page"} className={"text-light-primary"}>current campuses</a> take their next step.</li>
+                  <li>Global missions to support <a href={"http://www.freedomchurch.cc/"} target={"_blank"} alt={"link to Freedom Church"} className={"text-light-primary"}>Freedom Church</a> as they launch three new campuses in 2017.</li>
+                  <li>Local missions in the communities where we have <a href={"https://newspring.cc/locations"} target={"_blank"} alt={"link to locations page"} className={"text-light-primary"}>campuses</a>.</li>
                 </ul>
               </div>
             </div>

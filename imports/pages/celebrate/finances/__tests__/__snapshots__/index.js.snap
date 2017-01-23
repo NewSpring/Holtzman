@@ -421,13 +421,37 @@ exports[`Finances renders a layout 1`] = `
             </p>
             <ul>
               <li>
-                Campus expansion to help our current campuses take their next step.
+                Campus expansion to help our 
+                <a
+                  alt="link to locations page"
+                  className="text-light-primary"
+                  href="https://newspring.cc/locations"
+                  target="_blank">
+                  current campuses
+                </a>
+                 take their next step.
               </li>
               <li>
-                Global missions to support Freedom Church as they launch three new campuses in 2017.
+                Global missions to support 
+                <a
+                  alt="link to Freedom Church"
+                  className="text-light-primary"
+                  href="http://www.freedomchurch.cc/"
+                  target="_blank">
+                  Freedom Church
+                </a>
+                 as they launch three new campuses in 2017.
               </li>
               <li>
-                Local missions in the communities where we have campuses.
+                Local missions in the communities where we have 
+                <a
+                  alt="link to locations page"
+                  className="text-light-primary"
+                  href="https://newspring.cc/locations"
+                  target="_blank">
+                  campuses
+                </a>
+                .
               </li>
             </ul>
           </div>
