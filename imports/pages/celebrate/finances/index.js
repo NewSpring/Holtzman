@@ -185,7 +185,7 @@ export const Finances = () => {
           </div>
         </div>
       </div>
-      <div className="background--dark-secondary soft floating">
+      <div className="background--dark-primary soft floating">
         <div className="floating__item two-thirds@lap-and-up">
           <h3 className="push-double-top text-light-primary">Christmas Offering</h3>
           <FitText compressor={1.5} maxFontSize={18}>
