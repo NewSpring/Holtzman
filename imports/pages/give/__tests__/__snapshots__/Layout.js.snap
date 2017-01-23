@@ -6,6 +6,7 @@ exports[`test renders a layout 1`] = `
   </Connect(SplitContainerWithoutData)>
   <Left>
     <Connect(Dashboard)
+      additionalClasses="soft-half-sides push-right"
       subNav={
         Array [
           Object {

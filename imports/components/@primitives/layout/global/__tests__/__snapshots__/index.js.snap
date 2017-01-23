@@ -42,6 +42,7 @@ exports[`Blank is blank 1`] = `<div />`;
 exports[`GlobalWithoutData renders with props 1`] = `
 <div
   id="global">
+  <style />
   <App
     client={Object {}}
     dispatch={[Function]} />
