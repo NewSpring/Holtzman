@@ -7,7 +7,7 @@ import Meta from "../../../components/shared/meta";
 import ProgressBar from "../../../components/giving/giving-progress";
 import Story from "../components/story";
 
-const generalFundAmountTotal = 49358550.46;
+const generalFundAmountTotal = 49358552.46;
 const fundData = [
   { campus: "Aiken", amount: 492416.38 },
   { campus: "Anderson", amount: 14048984.79 },

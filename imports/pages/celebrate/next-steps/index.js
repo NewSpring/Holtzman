@@ -158,7 +158,7 @@ export const NextSteps = () => (
     </div>
     {/* Baptism */}
     <div className="background--light-seconday soft-double-top text-center one-whole soft-top">
-      <h3 className="one-whole push-top" style={{ color: "#0073AF" }}>We Saw</h3>
+      <h3 className="one-whole push-top" style={{ color: "#0073AF" }}>We saw</h3>
       <div className={css(styles.waves)}>
         <div className={css(styles.wave, styles.wave_1)} />
         <div className={css(styles.wave, styles.wave_2)} />
@@ -174,7 +174,7 @@ export const NextSteps = () => (
           </h1>
         </FitText>
         <h5 className="text-light-primary push-top">people go public for Jesus through</h5>
-        <h1 className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up">Baptism.</h1>
+        <h1 className="text-light-primary push-top push-bottom soft-bottom soft-double-bottom@lap-and-up">baptism.</h1>
       </div>
     </div>
     {/* First Time Visitors */}
