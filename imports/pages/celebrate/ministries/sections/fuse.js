@@ -3,7 +3,6 @@ import FitText from "../../components/fit-text";
 import CardSlider from "../../../../components/@primitives/UI/card-slider";
 import MetricCard from "../../components/metricCard";
 import TagGallery from "../../../../components/@primitives/UI/tag-gallery";
-import Story from "../../components/story";
 
 const data = {
   statistics: {
@@ -173,13 +172,6 @@ const Fuse = () => (
             />
           ))}
         </CardSlider>
-      </div>
-      <div className="soft-double-sides@lap-and-up">
-        <Story
-          image={""}
-          content={"<p>Mani Mills was one of thousands of students who had a life-changing experience at Gauntlet 2016.</p>"}
-          contentClass={"text-light-primary"}
-        />
       </div>
     </div>
   </div>
