@@ -39,7 +39,8 @@ exports[`test should render with props 1`] = `
           $
         </h6>
         <h4
-          className="floating__item flush">
+          className="floating__item flush"
+          style={undefined}>
           24
         </h4>
         <h6

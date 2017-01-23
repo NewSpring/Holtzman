@@ -236,7 +236,8 @@ exports[`test renders Confirm form 1`] = `
                   $
                 </h4>
                 <h2
-                  className="floating__item flush">
+                  className="floating__item flush"
+                  style={undefined}>
                   0
                 </h2>
                 <h4

@@ -1,0 +1,14 @@
+exports[`Ministries renders a layout 1`] = `
+<div>
+  <Meta
+    title="Ministries" />
+  <NewSpringAverages />
+  <KidSpring />
+  <Fuse />
+  <NewSpringLeadershipCollege />
+  <NewSpringNetwork />
+  <Web />
+  <FunFacts />
+  <Thanks />
+</div>
+`;
