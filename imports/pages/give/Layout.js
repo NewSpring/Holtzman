@@ -87,6 +87,7 @@ class Layout extends Component {
           <DashboardLayout
             title="My Giving"
             subNav={this.state.subNav}
+            additionalClasses={"soft-half-sides push-right"}
           >
             {cloneElement(this.props.children, {
               setRightProps: this.setRightProps,

@@ -1,0 +1,180 @@
+exports[`Fun Facts renders a layout 1`] = `
+<div
+  className="background--light-secondary">
+  <div
+    className="grid flush">
+    <div
+      className="constrain-page">
+      <div
+        className="grid__item one-whole text-dark-primary text-center hard">
+        <div
+          className="soft-double@lap-and-up soft push-double@lap-and-up soft-double-bottom push-bottom">
+          <div
+            className="one-whole text-center push-bottom push-double-top@handheld soft-top">
+            <h1
+              className="uppercase">
+              Fun Facts
+            </h1>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icons"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-fish.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                25,000+
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h4>
+              pounds of Goldfish given out by KidSpring
+            </h4>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icons"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-car.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                700,000+
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h4>
+              cars parked by volunteers
+            </h4>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icons"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-mail.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                4,000+
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h4>
+              emails received to hello@newspring.cc
+            </h4>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icons"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-mug.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                4,900+
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h4>
+              pounds of coffee brewed by volunteers
+            </h4>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icons"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-pencil.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                220,000+
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h4>
+              pens given away
+            </h4>
+          </div>
+          <div
+            className="grid__item push-bottom@lap-and-up one-half@lap one-third@lap-wide-and-up text-dark-primary text-center soft-double@lap-wide-and-up hard-sides@handheld soft-ends@handheld">
+            <img
+              alt="icons"
+              className="push-double-bottom@lap-and-up push-bottom"
+              src="//s3.amazonaws.com/ns.assets/apollos/annual%20report/2016/icons/icon-baby.png"
+              style={
+                Object {
+                  "maxHeight": "100px",
+                }
+              } />
+            <Connect(FitTextWithoutData)
+              compressor={0.6}>
+              <h1
+                style={
+                  Object {
+                    "fontWeight": 900,
+                  }
+                }>
+                57,000+
+              </h1>
+            </Connect(FitTextWithoutData)>
+            <h4>
+              diapers changed by KidSpring volunteers
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

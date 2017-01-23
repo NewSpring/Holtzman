@@ -98,7 +98,8 @@ exports[`YTDMetrics returns a linegraph of data 1`] = `
       $
     </h3>
     <h1
-      className="floating__item flush">
+      className="floating__item flush"
+      style={undefined}>
       3,422
     </h1>
     <h3
