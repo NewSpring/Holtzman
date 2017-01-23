@@ -2,14 +2,6 @@ html, body, #react-app {
   background: #ffffff;
 }
 
-/* hide web view scroll bars */
-::-webkit-scrollbar,
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-track-piece,
-::-webkit-scrollbar-thumb {
-  display: none;
-}
-
 /* prevent long text selection */
 * {
   -webkit-user-select: none;
@@ -138,4 +130,4 @@ blockquote p {
   border-color: map-get($colors, "alert");
   color: white;
 }
-  
+
