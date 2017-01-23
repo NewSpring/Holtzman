@@ -185,6 +185,34 @@ export const Finances = () => {
           </div>
         </div>
       </div>
+      <div className="background--dark-secondary soft floating">
+        <div className="floating__item two-thirds@lap-and-up">
+          <h3 className="push-double-top text-light-primary">Christmas Offering</h3>
+          <FitText compressor={1.5} maxFontSize={18}>
+            <Currency
+              amount={"1125052.43"}
+              baseHeadingSize="1"
+              className="display-inline-block text-center soft-double-bottom"
+              style={{ fontWeight: "900" }}
+              theme="light"
+              roundCurrency
+            />
+          </FitText>
+          <hr className="visuallyhidden@handheld push-ends" style={{ borderTop: "1px solid #ffffff" }} />
+          <div className="text-light-primary text-left push-top@lap-and-up soft-double-top@lap-and-up push-double-bottom">
+            <div className="floating">
+              <div className="floating__item three-quarters@lap-and-up text-left">
+                <p>This year&#39;s Christmas Offering will support these three projects:</p>
+                <ul>
+                  <li>Campus expansion to help our current campuses take their next step.</li>
+                  <li>Global missions to support Freedom Church as they launch three new campuses in 2017.</li>
+                  <li>Local missions in the communities where we have campuses.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="background--light-primary soft">
         <h3 className="text-center push-top">Annual Audit</h3>
         <p className="constrain-copy push-bottom">NewSpring is audited annually by an external accounting firm according to Generally Accepted Accounting Principles. God calls His people to live above reproach, so for us, the annual audit is a financial and spiritual responsibility (<a href={"https://www.bible.com/search/bible?q=philippians%202:15&version_id=111"} alt={"Philippians 2:15"} target={"_blank"}>Philippians 2:15</a>).</p>

@@ -381,6 +381,61 @@ exports[`Finances renders a layout 1`] = `
     </div>
   </div>
   <div
+    className="background--dark-secondary soft floating">
+    <div
+      className="floating__item two-thirds@lap-and-up">
+      <h3
+        className="push-double-top text-light-primary">
+        Christmas Offering
+      </h3>
+      <Connect(FitTextWithoutData)
+        compressor={1.5}
+        maxFontSize={18}>
+        <Currency
+          amount="1125052.43"
+          baseHeadingSize="1"
+          className="display-inline-block text-center soft-double-bottom"
+          roundCurrency={true}
+          style={
+            Object {
+              "fontWeight": "900",
+            }
+          }
+          theme="light" />
+      </Connect(FitTextWithoutData)>
+      <hr
+        className="visuallyhidden@handheld push-ends"
+        style={
+          Object {
+            "borderTop": "1px solid #ffffff",
+          }
+        } />
+      <div
+        className="text-light-primary text-left push-top@lap-and-up soft-double-top@lap-and-up push-double-bottom">
+        <div
+          className="floating">
+          <div
+            className="floating__item three-quarters@lap-and-up text-left">
+            <p>
+              This year\'s Christmas Offering will support these three projects:
+            </p>
+            <ul>
+              <li>
+                Campus expansion to help our current campuses take their next step.
+              </li>
+              <li>
+                Global missions to support Freedom Church as they launch three new campuses in 2017.
+              </li>
+              <li>
+                Local missions in the communities where we have campuses.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
     className="background--light-primary soft">
     <h3
       className="text-center push-top">

@@ -255,13 +255,6 @@ exports[`Fuse renders a layout 1`] = `
           label="Volunteers" />
       </Connect(CardSlider)>
     </div>
-    <div
-      className="soft-double-sides@lap-and-up">
-      <Story
-        content="<p>Mani Mills was one of thousands of students who had a life-changing experience at Gauntlet 2016.</p>"
-        contentClass="text-light-primary"
-        image="" />
-    </div>
   </div>
 </div>
 `;
