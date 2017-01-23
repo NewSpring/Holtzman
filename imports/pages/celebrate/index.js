@@ -26,21 +26,21 @@ class Template extends Component {
       {
         key: 1,
         isActive: false,
-        linkUrl: "/celebrate/finances",
+        linkUrl: "/annualreport/finances",
         onClick: () => {},
         title: "Finances",
       },
       {
         key: 2,
         isActive: false,
-        linkUrl: "/celebrate/next-steps",
+        linkUrl: "/annualreport/next-steps",
         onClick: () => {},
         title: "Next Steps",
       },
       {
         key: 3,
         isActive: false,
-        linkUrl: "/celebrate/ministries",
+        linkUrl: "/annualreport/ministries",
         onClick: () => {},
         title: "Ministries",
       },
@@ -144,7 +144,7 @@ class Template extends Component {
           </Leaves>
         </div>
         <div className="soft-double-left@lap-and-up soft-left">
-          <SmallButton text="Watch Video" className="btn--dark-secondary" linkUrl="/celebrate/message-from-shane" />
+          <SmallButton text="Watch Video" className="btn--dark-secondary" linkUrl="/annualreport/message-from-shane" />
         </div>
         <DashboardLayout
           subNav={this.state.subNav}
@@ -169,16 +169,24 @@ const scripts = [
 ];
 
 const Routes = [
-  { path: "celebrate/message-from-shane", component: ShaneTemplate.Template },
+  { path: "annualreport/message-from-shane", component: ShaneTemplate.Template },
   {
-    path: "celebrate",
+    path: "annualreport",
     component: scriptLoader(...scripts)(Template),
-    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/celebrate/finances") },
+    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/annualreport/finances") },
     childRoutes: [
       ...FinancesPage.Routes,
       ...NextStepsPage.Routes,
       ...MinistriesPage.Routes,
     ],
+  },
+  {
+    path: "celebrate",
+    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/annualreport") },
+  },
+  {
+    path: "annual-report",
+    indexRoute: { onEnter: (nextState: Object, replace: Function) => replace("/annualreport") },
   },
 ];
 

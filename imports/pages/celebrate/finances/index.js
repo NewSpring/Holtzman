@@ -221,7 +221,7 @@ export const Finances = () => {
       <div className="background--primary text-center text-light-primary soft">
         <h3 className="push-double-top">Keep Reading</h3>
         <p>Up next in the NewSpring 2016 Annual Report is information on Next Steps.</p>
-        <Link className="btn--light push-double-bottom" to="/celebrate/next-steps">
+        <Link className="btn--light push-double-bottom" to="/annualreport/next-steps">
           Go To Next Steps Report
         </Link>
       </div>
