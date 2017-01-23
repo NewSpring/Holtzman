@@ -26,7 +26,8 @@ exports[`ScheduleOverview correctly displays a negative value. 1`] = `
           -
         </h3>
         <h1
-          className="floating__item flush">
+          className="floating__item flush"
+          style={undefined}>
           420
         </h1>
         <h3
@@ -121,7 +122,8 @@ exports[`ScheduleOverview doesn't have a latest transaction, if one isn't passed
           $
         </h3>
         <h1
-          className="floating__item flush">
+          className="floating__item flush"
+          style={undefined}>
           420
         </h1>
         <h3
@@ -197,7 +199,8 @@ exports[`ScheduleOverview falls back correctly if a base heading size isn't set 
           $
         </h3>
         <h1
-          className="floating__item flush">
+          className="floating__item flush"
+          style={undefined}>
           420
         </h1>
         <h3
@@ -273,7 +276,8 @@ exports[`ScheduleOverview falls back correctly if currency symbol isn't present.
           $
         </h3>
         <h1
-          className="floating__item flush">
+          className="floating__item flush"
+          style={undefined}>
           420
         </h1>
         <h3
@@ -349,7 +353,8 @@ exports[`ScheduleOverview falls back correctly if there isn't an amount. 1`] = `
           $
         </h3>
         <h1
-          className="floating__item flush">
+          className="floating__item flush"
+          style={undefined}>
           00
         </h1>
         <h3
@@ -425,7 +430,8 @@ exports[`ScheduleOverview falls back correctly if there isn't any cents. 1`] = `
           $
         </h3>
         <h1
-          className="floating__item flush">
+          className="floating__item flush"
+          style={undefined}>
           420
         </h1>
         <h3
@@ -501,7 +507,8 @@ exports[`ScheduleOverview has an amount, fund, frequency, started, latest, onEdi
           $
         </h3>
         <h1
-          className="floating__item flush">
+          className="floating__item flush"
+          style={undefined}>
           420
         </h1>
         <h3
