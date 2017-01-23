@@ -499,7 +499,7 @@ exports[`Finances renders a layout 1`] = `
       className="btn--light push-double-bottom"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="/celebrate/next-steps">
+      to="/annualreport/next-steps">
       Go To Next Steps Report
     </Link>
   </div>

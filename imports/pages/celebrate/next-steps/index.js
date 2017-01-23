@@ -499,7 +499,7 @@ export const NextSteps = () => (
     <div className="background--primary text-center text-light-primary soft">
       <h3 className="soft-double-top">Keep Reading</h3>
       <p>Up next in the NewSpring 2016 Annual Report is information on our ministries.</p>
-      <Link className="btn--light push-double-bottom" to="/celebrate/ministries">
+      <Link className="btn--light push-double-bottom" to="/annualreport/ministries">
         Go To Ministries Report
       </Link>
     </div>

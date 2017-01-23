@@ -23,7 +23,7 @@ export const Shane = () => (
     <style>{".oo-player-container { min-width: 0 !important }"}</style>
     <Left scroll classes={["background--light-primary"]}>
       <Link
-        to="/celebrate"
+        to="/annualreport"
         className={
           "locked-top locked-left soft-double@lap-and-up soft " +
           "h7 text-dark-secondary plain visuallyhidden@handheld"
@@ -87,7 +87,7 @@ const Template = scriptLoader(...scripts)(Shane);
 
 const Routes = [
   {
-    path: "celebrate/message-from-shane",
+    path: "message-from-shane",
     component: Template,
   },
 ];

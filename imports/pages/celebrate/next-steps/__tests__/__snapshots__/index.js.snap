@@ -779,7 +779,7 @@ exports[`Next Steps renders a layout 1`] = `
       className="btn--light push-double-bottom"
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="/celebrate/ministries">
+      to="/annualreport/ministries">
       Go To Ministries Report
     </Link>
   </div>
