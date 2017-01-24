@@ -3,6 +3,7 @@ import { Meteor } from "meteor/meteor";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 import { withApollo } from "react-apollo";
+import gql from "graphql-tag";
 import createContainer from "../../../../deprecated/meteor/react-meteor-data";
 import { routeActions } from "../../../../data/store/routing";
 
@@ -155,8 +156,7 @@ class GlobalWithoutData extends Component {
     if (Meteor.isCordova) {
       document.addEventListener("click", linkListener);
       document.addEventListener("deviceready", () => {
-        alert("device ready");
-        universalLinks.subscribe("universalLinkRoute", alert);
+        universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
       }, false);
     }
   }
@@ -182,26 +182,66 @@ class GlobalWithoutData extends Component {
     });
 
     if (isQueryRoute) {
-      // const pathArray = path.split("/").filter(Boolean);
+      const pathArray = path.split("/").filter(Boolean);
 
-      // const section = pathArray[0];
-      // let urlTitle = pathArray[1];
+      const channel = pathArray[0];
+      let urlTitle = pathArray[1];
+      let parent = "";
 
-      // if (pathArray.length === 2) {
-        // const parent = pathArray[1];
-        // urlTitle = pathArray[2];
-      // }
+      if (pathArray.length === 3) {
+        parent = pathArray[1];
+        urlTitle = pathArray[2];
+      }
 
-      // this.props.client.query({ query, variables: { urlTitle })
-      //   .then(({ data: { somehwere: id } }) => {
-      //     this.go(`/#{this.section}/);
-      //   })
-      // this.go(`/${section}`);
-      alert("this is a query route");
+      const GiveMeTheNodeId = gql`
+        query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String!, $childUrl: String!, $hasChild: Boolean!) {
+          parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
+          child: contentWithUrlTitle(channel: $childChannel, urlTitle: $childUrl) @include(if: $hasChild)
+        }
+      `;
+
+// http://localhost:3000/series/95ad2d9dc96138db5750a08a14b76a79/sermon/702cb4b69881d99a15f638f64791e312
+      if (parent !== "") {
+        if (channel === "sermons") {
+          this.props.client.query({ query: GiveMeTheNodeId,
+            variables: {
+              parentChannel: "series_newspring",
+              parentUrl: parent,
+              childChannel: channel,
+              childUrl: urlTitle,
+              hasChild: true,
+            } })
+            .then(({ data }) => {
+              this.go(`/series/${data.parent}/sermon/${data.child}`);
+            });
+        } else {
+          this.props.client.query({ query: GiveMeTheNodeId,
+            variables: {
+              parentChannel: channel,
+              parentUrl: parent,
+              childChannel: "study_entries",
+              childUrl: urlTitle,
+              hasChild: true,
+            } })
+            .then(({ data }) => {
+              this.go(`/${channel}/${data.parent}/entry/${data.child}`);
+            });
+        }
+      } else {
+        this.props.client.query({ query: GiveMeTheNodeId,
+          variables: {
+            parentChannel: channel,
+            parentUrl: urlTitle,
+            hasChild: false,
+          } })
+          .then(({ data }) => {
+            this.go(`/${channel}/${data.contentWithUrlTitle}`);
+          });
+      }
       return;
     }
 
-    // XXX accounts for watch and read
+    // accounts for watch and read
     switch (path) {
       case "/watchandread":
         this.go("/");
@@ -218,17 +258,11 @@ class GlobalWithoutData extends Component {
 
   render() {
     const { dispatch, client } = this.props;
-    alert("render");
-    alert(this.state.universalLinkLoading);
     return (
       <div id="global">
         {this.state.universalLinkLoading && <Loading />}
-        {!this.state.universalLinkLoading && (
-          <div>
-            <App {...this.props} />
-            <GlobalData dispatch={dispatch} client={client} />
-          </div>
-        )}
+        <App {...this.props} />
+        <GlobalData dispatch={dispatch} client={client} />
       </div>
     );
   }
