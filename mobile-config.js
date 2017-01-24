@@ -91,8 +91,6 @@ App.appendToConfig(`
         <path url="/locations" />
         <path url="/watchandread" />
       </host>
-      <host name="my.newspring.cc" scheme="https" event="universalLinkRoute">
-        <path url="*" />
-      </host>
+      <host name="beta-my.newspring.cc" scheme="https" event="universalLinkRoute" />
     </universal-links>
 `);
