@@ -92,14 +92,7 @@ App.appendToConfig(`
         <path url="/watchandread" />
       </host>
       <host name="my.newspring.cc" scheme="https" event="universalLinkRoute">
-        <path url="/_/*" />
-        <path url="/give" />
-        <path url="/give/*" />
-        <path url="/groups/*" />
-        <path url="/profile" />
-        <path url="/profile/*" />
-        <path url="/celebrate" />
-        <path url="/celebrate/*" />
+        <path url="*" />
       </host>
     </universal-links>
 `);
