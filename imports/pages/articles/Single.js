@@ -10,6 +10,7 @@ import Split, { Left, Right } from "../../components/@primitives/layout/split";
 import Headerable from "../../deprecated/mixins/mixins.Header";
 import Likeable from "../../deprecated/mixins/mixins.Likeable";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
+import CanLike from "../../components/@enhancers/can-like";
 
 import Loading from "../../components/@primitives/UI/loading";
 
@@ -40,7 +41,7 @@ class ArticlesSingle extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction,
+      action: this.props.onLike, // pass from props?
     }));
   }
 
@@ -145,15 +146,18 @@ const withArticle = graphql(ARTICLE_QUERY, {
   }),
 });
 
+const Single = CanLike(ArticlesSingle);
+
 export default connect()(
   withArticle(
-    ReactMixin.decorate(Likeable)(
-      ReactMixin.decorate(Shareable)(
-        ReactMixin.decorate(Headerable)(
-          ArticlesSingle
-        )
-      )
-    )
+    Single
+  //   ReactMixin.decorate(Likeable)(
+  //     ReactMixin.decorate(Shareable)(
+  //       ReactMixin.decorate(Headerable)(
+  //         ArticlesSingle
+  //       )
+  //     )
+  //   )
   )
 );
 
