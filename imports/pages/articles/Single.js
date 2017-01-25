@@ -11,6 +11,7 @@ import Headerable from "../../deprecated/mixins/mixins.Header";
 import Likeable from "../../deprecated/mixins/mixins.Likeable";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 import CanLike from "../../components/@enhancers/can-like";
+console.log("CANLIKe", CanLike);
 
 import Loading from "../../components/@primitives/UI/loading";
 
