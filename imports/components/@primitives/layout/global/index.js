@@ -143,6 +143,13 @@ const map = (state) => ({
 });
 const withRedux = connect(map);
 
+export const URL_TITLE_QUERY = gql`
+  query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String! = "", $childUrl: String! = "", $hasChild: Boolean! = false) {
+    parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
+    child: contentWithUrlTitle(channel: $childChannel, urlTitle: $childUrl) @include(if: $hasChild)
+  }
+`;
+
 class GlobalWithoutData extends Component {
 
   static propTypes = {
@@ -193,13 +200,6 @@ class GlobalWithoutData extends Component {
         urlTitle = pathArray[2];
       }
 
-      const GiveMeTheNodeId = gql`
-        query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String!, $childUrl: String!, $hasChild: Boolean!) {
-          parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
-          child: contentWithUrlTitle(channel: $childChannel, urlTitle: $childUrl) @include(if: $hasChild)
-        }
-      `;
-
       let parentChannelToUse = channel;
       if (channel === "sermons") {
         parentChannelToUse = "series_newspring";
@@ -209,35 +209,39 @@ class GlobalWithoutData extends Component {
         childChannelToUse = "study_entries";
       }
       if (parent !== "") {
-        this.props.client.query({ query: GiveMeTheNodeId,
+        this.props.client.query({ query: URL_TITLE_QUERY,
           variables: {
             parentChannel: parentChannelToUse,
             parentUrl: parent,
             childChannel: childChannelToUse,
             childUrl: urlTitle,
-            hasChild: true,
+            hasChild: parent,
           } })
           .then(({ data }) => {
-            if (channel === "studies") {
-              this.go(`/${channel}/${data.parent}/entry/${data.child}`);
-            } else {
-              this.go(`/series/${data.parent}/sermon/${data.child}`);
+            switch (channel) {
+              case "studies":
+                this.go(`/${channel}/${data.parent}/entry/${data.child}`);
+                break;
+              default:
+                this.go(`/series/${data.parent}/sermon/${data.child}`);
             }
           });
       } else {
-        this.props.client.query({ query: GiveMeTheNodeId,
+        this.props.client.query({ query: URL_TITLE_QUERY,
           variables: {
             parentChannel: parentChannelToUse,
             parentUrl: urlTitle,
             childChannel: "",
             childUrl: "",
-            hasChild: false,
+            hasChild: parent,
           } })
           .then(({ data }) => {
-            if (channel === "sermons") {
-              this.go(`/series/${data.parent}`);
-            } else {
-              this.go(`/${channel}/${data.parent}`);
+            switch (channel) {
+              case "sermons":
+                this.go(`/series/${data.parent}`);
+                break;
+              default:
+                this.go(`/${channel}/${data.parent}`);
             }
           });
       }
