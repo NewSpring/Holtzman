@@ -173,71 +173,10 @@ class GlobalWithoutData extends Component {
   }
 
   universalLinkRouting = ({ path }) => {
-    const queryRoutes = [
-      "/articles/",
-      "/sermons/",
-      "/devotionals/",
-      "/studies/",
-      "/stories/",
-    ];
-
     this.setState({ universalLinkLoading: true });
-    let isQueryRoute = false;
 
-    queryRoutes.forEach((url) => {
-      if (path.includes(url)) isQueryRoute = true;
-    });
-
-    if (isQueryRoute) {
-      const pathArray = path.split("/").filter(Boolean);
-
-      const channel = pathArray[0];
-      let urlTitle = pathArray[1];
-      let parent = "";
-
-      if (pathArray.length === 3) {
-        parent = pathArray[1];
-        urlTitle = pathArray[2];
-      }
-
-      let parentChannelToUse = channel;
-      if (channel === "sermons") {
-        parentChannelToUse = "series_newspring";
-      }
-      let childChannelToUse = channel;
-      if (channel === "studies") {
-        childChannelToUse = "study_entries";
-      }
-      this.props.client.query({ query: URL_TITLE_QUERY,
-        variables: {
-          parentChannel: parentChannelToUse,
-          parentUrl: parent || urlTitle,
-          childChannel: parent ? childChannelToUse : "",
-          childUrl: parent ? urlTitle : "",
-          hasChild: parent,
-        } })
-        .then(({ data }) => {
-          switch (channel) {
-            case "sermons":
-              if (data.child) {
-                this.go(`/series/${data.parent}/sermon/${data.child}`);
-              } else {
-                this.go(`/series/${data.parent}`);
-              }
-              break;
-            case "studies":
-              if (data.child) {
-                this.go(`/${channel}/${data.parent}/entry/${data.child}`);
-              } else {
-                this.go(`/${channel}/${data.parent}`);
-              }
-              break;
-            default:
-              this.go(`/${channel}/${data.parent}`);
-          }
-        });
-      return;
-    }
+    // Determine if this path requires a query
+    if (this.isQueryRoute(path)) this.withQuery(path);
 
     // accounts for watch and read
     switch (path) {
@@ -250,6 +189,75 @@ class GlobalWithoutData extends Component {
       default:
         this.go(path);
     }
+  }
+
+  isQueryRoute = (path) => {
+    const queryRoutes = [
+      "/articles/",
+      "/sermons/",
+      "/devotionals/",
+      "/studies/",
+      "/stories/",
+    ];
+
+    return queryRoutes.find((url) => path.includes(url));
+  }
+
+  withQuery = (path) => {
+    const pathArray = path.split("/").filter(Boolean);
+
+    const channel = pathArray[0];
+    let urlTitle = pathArray[1];
+    let parent = "";
+
+    if (pathArray.length === 3) {
+      parent = pathArray[1];
+      urlTitle = pathArray[2];
+    }
+
+    let parentChannelToUse = channel;
+    let childChannelToUse = channel;
+
+    switch (channel) {
+      case "sermons":
+        parentChannelToUse = "series_newspring";
+        break;
+      case "studies":
+        childChannelToUse = "study_entries";
+        break;
+      default:
+        break;
+    }
+
+    this.props.client.query({ query: URL_TITLE_QUERY,
+      variables: {
+        parentChannel: parentChannelToUse,
+        parentUrl: parent || urlTitle,
+        childChannel: parent ? childChannelToUse : "",
+        childUrl: parent ? urlTitle : "",
+        hasChild: parent,
+      } })
+      .then(({ data }) => {
+        switch (channel) {
+          case "sermons":
+            if (data.child) {
+              this.go(`/series/${data.parent}/sermon/${data.child}`);
+            } else {
+              this.go(`/series/${data.parent}`);
+            }
+            break;
+          case "studies":
+            if (data.child) {
+              this.go(`/${channel}/${data.parent}/entry/${data.child}`);
+            } else {
+              this.go(`/${channel}/${data.parent}`);
+            }
+            break;
+          default:
+            this.go(`/${channel}/${data.parent}`);
+        }
+      });
+    return;
   }
 
   go = (url) => {
