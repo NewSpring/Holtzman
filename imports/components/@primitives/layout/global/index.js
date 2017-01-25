@@ -175,11 +175,10 @@ class GlobalWithoutData extends Component {
   universalLinkRouting = ({ path }) => {
     this.setState({ universalLinkLoading: true });
 
-    // Determine if this path requires a query
-    if (this.isQueryRoute(path)) this.withQuery(path);
-
-    // accounts for watch and read
     switch (path) {
+      case this.isQueryRoute(path):
+        this.withQuery(path);
+        break;
       case "/watchandread":
         this.go("/");
         break;
@@ -200,7 +199,8 @@ class GlobalWithoutData extends Component {
       "/stories/",
     ];
 
-    return queryRoutes.find((url) => path.includes(url));
+    if (queryRoutes.find((url) => path.includes(url))) return path;
+    return false;
   }
 
   withQuery = (path) => {
