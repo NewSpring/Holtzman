@@ -3,12 +3,15 @@ import { Meteor } from "meteor/meteor";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 import { withApollo } from "react-apollo";
+import gql from "graphql-tag";
 import createContainer from "../../../../deprecated/meteor/react-meteor-data";
+import { routeActions } from "../../../../data/store/routing";
 
 import Modal from "../../modals";
 import Meta from "../../../shared/meta";
 import Nav from "../../nav";
 import Header from "../../UI/header";
+import { Loading } from "../../UI/states";
 
 import Likes from "../../../../deprecated/database/collections/likes";
 
@@ -147,14 +150,123 @@ class GlobalWithoutData extends Component {
     client: PropTypes.object.isRequired,
   }
 
+  state = { universalLinkLoading: false }
+
   componentWillMount() {
-    if (Meteor.isCordova) document.addEventListener("click", linkListener);
+    if (Meteor.isCordova) {
+      document.addEventListener("click", linkListener);
+      document.addEventListener("deviceready", () => {
+        universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
+      }, false);
+    }
+  }
+
+  componentWillUnMount() {
+    if (Meteor.isCordova) universalLinks.unsubscribe("universalLinkRoute");
+  }
+
+  universalLinkRouting = ({ path }) => {
+    const queryRoutes = [
+      "/articles/",
+      "/sermons/",
+      "/devotionals/",
+      "/studies/",
+      "/stories/",
+    ];
+
+    this.setState({ universalLinkLoading: true });
+    let isQueryRoute = false;
+
+    queryRoutes.forEach((url) => {
+      if (path.includes(url)) isQueryRoute = true;
+    });
+
+    if (isQueryRoute) {
+      const pathArray = path.split("/").filter(Boolean);
+
+      const channel = pathArray[0];
+      let urlTitle = pathArray[1];
+      let parent = "";
+
+      if (pathArray.length === 3) {
+        parent = pathArray[1];
+        urlTitle = pathArray[2];
+      }
+
+      const GiveMeTheNodeId = gql`
+        query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String!, $childUrl: String!, $hasChild: Boolean!) {
+          parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
+          child: contentWithUrlTitle(channel: $childChannel, urlTitle: $childUrl) @include(if: $hasChild)
+        }
+      `;
+
+      let parentChannelToUse = channel;
+      if (channel === "sermons") {
+        parentChannelToUse = "series_newspring";
+      }
+      let childChannelToUse = channel;
+      if (channel === "studies") {
+        childChannelToUse = "study_entries";
+      }
+      if (parent !== "") {
+        this.props.client.query({ query: GiveMeTheNodeId,
+          variables: {
+            parentChannel: parentChannelToUse,
+            parentUrl: parent,
+            childChannel: childChannelToUse,
+            childUrl: urlTitle,
+            hasChild: true,
+          } })
+          .then(({ data }) => {
+            if (channel === "studies") {
+              this.go(`/${channel}/${data.parent}/entry/${data.child}`);
+            } else {
+              this.go(`/series/${data.parent}/sermon/${data.child}`);
+            }
+          });
+      } else {
+        this.props.client.query({ query: GiveMeTheNodeId,
+          variables: {
+            parentChannel: parentChannelToUse,
+            parentUrl: urlTitle,
+            childChannel: "",
+            childUrl: "",
+            hasChild: false,
+          } })
+          .then(({ data }) => {
+            if (channel === "sermons") {
+              this.go(`/series/${data.parent}`);
+            } else {
+              this.go(`/${channel}/${data.parent}`);
+            }
+          });
+      }
+      return;
+    }
+
+    // accounts for watch and read
+    switch (path) {
+      case "/watchandread":
+        this.go("/");
+        break;
+      case "/sermons":
+        this.go("/series");
+        break;
+      default:
+        this.go(path);
+    }
+  }
+
+  go = (url) => {
+    this.setState({ universalLinkLoading: false });
+    this.props.dispatch(routeActions.push(url));
   }
 
   render() {
     const { dispatch, client } = this.props;
     return (
       <div id="global">
+        {this.state.universalLinkLoading && <Loading />}
         <App {...this.props} />
         <GlobalData dispatch={dispatch} client={client} />
       </div>
