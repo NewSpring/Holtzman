@@ -144,7 +144,7 @@ const map = (state) => ({
 const withRedux = connect(map);
 
 export const URL_TITLE_QUERY = gql`
-  query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String! = "", $childUrl: String! = "", $hasChild: Boolean! = false) {
+  query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String = "", $childUrl: String = "", $hasChild: Boolean = false) {
     parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
     child: contentWithUrlTitle(channel: $childChannel, urlTitle: $childUrl) @include(if: $hasChild)
   }
@@ -208,43 +208,34 @@ class GlobalWithoutData extends Component {
       if (channel === "studies") {
         childChannelToUse = "study_entries";
       }
-      if (parent !== "") {
-        this.props.client.query({ query: URL_TITLE_QUERY,
-          variables: {
-            parentChannel: parentChannelToUse,
-            parentUrl: parent,
-            childChannel: childChannelToUse,
-            childUrl: urlTitle,
-            hasChild: parent,
-          } })
-          .then(({ data }) => {
-            switch (channel) {
-              case "studies":
-                this.go(`/${channel}/${data.parent}/entry/${data.child}`);
-                break;
-              default:
+      this.props.client.query({ query: URL_TITLE_QUERY,
+        variables: {
+          parentChannel: parentChannelToUse,
+          parentUrl: parent || urlTitle,
+          childChannel: parent ? childChannelToUse : "",
+          childUrl: parent ? urlTitle : "",
+          hasChild: parent,
+        } })
+        .then(({ data }) => {
+          switch (channel) {
+            case "sermons":
+              if (data.child) {
                 this.go(`/series/${data.parent}/sermon/${data.child}`);
-            }
-          });
-      } else {
-        this.props.client.query({ query: URL_TITLE_QUERY,
-          variables: {
-            parentChannel: parentChannelToUse,
-            parentUrl: urlTitle,
-            childChannel: "",
-            childUrl: "",
-            hasChild: parent,
-          } })
-          .then(({ data }) => {
-            switch (channel) {
-              case "sermons":
+              } else {
                 this.go(`/series/${data.parent}`);
-                break;
-              default:
+              }
+              break;
+            case "studies":
+              if (data.child) {
+                this.go(`/${channel}/${data.parent}/entry/${data.child}`);
+              } else {
                 this.go(`/${channel}/${data.parent}`);
-            }
-          });
-      }
+              }
+              break;
+            default:
+              this.go(`/${channel}/${data.parent}`);
+          }
+        });
       return;
     }
 
