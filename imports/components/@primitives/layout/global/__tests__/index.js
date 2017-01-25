@@ -265,7 +265,8 @@ describe("GlobalWithoutData", () => {
     Meteor.isCordova = true;
     document.addEventListener = jest.fn();
     const wrapper = shallow(generateComponent());
-    expect(document.addEventListener).toHaveBeenCalledTimes(1);
+    expect(document.addEventListener).toHaveBeenCalledTimes(2);
     expect(document.addEventListener).toHaveBeenCalledWith("click", linkListener);
+    // XXX write a test for the "deviceready" listener.
   });
 });
