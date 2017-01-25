@@ -200,42 +200,45 @@ class GlobalWithoutData extends Component {
         }
       `;
 
-// http://localhost:3000/series/95ad2d9dc96138db5750a08a14b76a79/sermon/702cb4b69881d99a15f638f64791e312
+      let parentChannelToUse = channel;
+      if (channel === "sermons") {
+        parentChannelToUse = "series_newspring";
+      }
+      let childChannelToUse = channel;
+      if (channel === "studies") {
+        childChannelToUse = "study_entries";
+      }
       if (parent !== "") {
-        if (channel === "sermons") {
-          this.props.client.query({ query: GiveMeTheNodeId,
-            variables: {
-              parentChannel: "series_newspring",
-              parentUrl: parent,
-              childChannel: channel,
-              childUrl: urlTitle,
-              hasChild: true,
-            } })
-            .then(({ data }) => {
-              this.go(`/series/${data.parent}/sermon/${data.child}`);
-            });
-        } else {
-          this.props.client.query({ query: GiveMeTheNodeId,
-            variables: {
-              parentChannel: channel,
-              parentUrl: parent,
-              childChannel: "study_entries",
-              childUrl: urlTitle,
-              hasChild: true,
-            } })
-            .then(({ data }) => {
+        this.props.client.query({ query: GiveMeTheNodeId,
+          variables: {
+            parentChannel: parentChannelToUse,
+            parentUrl: parent,
+            childChannel: childChannelToUse,
+            childUrl: urlTitle,
+            hasChild: true,
+          } })
+          .then(({ data }) => {
+            if (channel === "studies") {
               this.go(`/${channel}/${data.parent}/entry/${data.child}`);
-            });
-        }
+            } else {
+              this.go(`/series/${data.parent}/sermon/${data.child}`);
+            }
+          });
       } else {
         this.props.client.query({ query: GiveMeTheNodeId,
           variables: {
-            parentChannel: channel,
+            parentChannel: parentChannelToUse,
             parentUrl: urlTitle,
+            childChannel: "",
+            childUrl: "",
             hasChild: false,
           } })
           .then(({ data }) => {
-            this.go(`/${channel}/${data.contentWithUrlTitle}`);
+            if (channel === "sermons") {
+              this.go(`/series/${data.parent}`);
+            } else {
+              this.go(`/${channel}/${data.parent}`);
+            }
           });
       }
       return;
@@ -245,6 +248,9 @@ class GlobalWithoutData extends Component {
     switch (path) {
       case "/watchandread":
         this.go("/");
+        break;
+      case "/sermons":
+        this.go("/series");
         break;
       default:
         this.go(path);
