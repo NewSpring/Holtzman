@@ -144,7 +144,13 @@ const map = (state) => ({
 const withRedux = connect(map);
 
 export const URL_TITLE_QUERY = gql`
-  query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String = "", $childUrl: String = "", $hasChild: Boolean = false) {
+  query contentWithUrlTitle(
+    $parentChannel: String!,
+    $parentUrl: String!,
+    $childChannel: String = "",
+    $childUrl: String = "",
+    $hasChild: Boolean = false
+  ) {
     parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
     child: contentWithUrlTitle(channel: $childChannel, urlTitle: $childUrl) @include(if: $hasChild)
   }
