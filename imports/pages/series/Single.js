@@ -12,7 +12,7 @@ import { nav as navActions } from "../../data/store";
 import headerActions from "../../data/store/header";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import CanLike from "../../components/@enhancers/can-like";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 
@@ -42,7 +42,7 @@ class SeriesSingleWithoutData extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction,
+      action: this.props.onLike,
     }));
   }
 
@@ -163,11 +163,9 @@ const withSingleSeries = graphql(SERIES_SINGLE_QUERY, {
 
 export default connect()(
   withSingleSeries(
-    ReactMixin.decorate(Likeable)(
-      ReactMixin.decorate(Shareable)(
-        ReactMixin.decorate(Headerable)(
-          SeriesSingleWithoutData
-        )
+    ReactMixin.decorate(Shareable)(
+      ReactMixin.decorate(Headerable)(
+        CanLike(SeriesSingleWithoutData)
       )
     )
   )

@@ -9,7 +9,7 @@ import Loading from "../../components/@primitives/UI/loading";
 import { nav as navActions } from "../../data/store";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import CanLike from "../../components/@enhancers/can-like";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 // import content component
@@ -27,7 +27,7 @@ class StoriesSingleWithoutData extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction,
+      action: this.props.onLike,
     }));
   }
 
@@ -90,11 +90,9 @@ const withStory = graphql(GET_STORY_QUERY, {
 
 export default connect()(
   withStory(
-    ReactMixin.decorate(Likeable)(
-      ReactMixin.decorate(Shareable)(
-        ReactMixin.decorate(Headerable)(
-          StoriesSingleWithoutData
-        )
+    ReactMixin.decorate(Shareable)(
+      ReactMixin.decorate(Headerable)(
+        CanLike(StoriesSingleWithoutData)
       )
     )
   )

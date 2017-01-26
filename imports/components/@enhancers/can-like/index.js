@@ -21,6 +21,18 @@ const withToggleLike = graphql(TOGGLE_LIKE_MUTATION);
 
 /*
   THIS NEEDS TO BE WRAPPED IN A CONNECT CALL TO WORK
+  THE CONNECT CALL MUST REVEAL
+
+  How this works:
+    it's a function.
+    inside the function, I'm declaring a class
+      * it has to be inside the function so I have access to the `WrappedComponent`
+      the class (LikesWrapper) returns the WrappedComponent with prop for toggling like (onLike)
+    at the bottom of the function I return:
+      the LikesWrapper class wrapped in a gql mutation.
+    So the export is...
+      a function that takes a React Component, and returns that component wrapped in
+      a LikesWrapper HOC which is wrapped in a GraphQl HOC that allows the toggleLike mutation
 */
 export default (WrappedComponent) => {
   class LikesWrapper extends Component {
@@ -33,7 +45,6 @@ export default (WrappedComponent) => {
     componentWillReceiveProps(nextProps){
       // gets the node id from gql data passed in. sets the local state `id`
       this.getNodeId(nextProps);
-      console.log("PROPS", nextProps);
     }
 
     getNodeId(props) {
@@ -63,7 +74,6 @@ export default (WrappedComponent) => {
           entryId: this.state.id,
         }));
         this.props.mutate({ variables: { nodeId: this.state.id } })
-          // .then((x) => console.log("toggled:", x));
       }
 
       return {
