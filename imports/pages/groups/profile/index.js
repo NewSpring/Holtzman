@@ -182,17 +182,12 @@ const withGroup = graphql(GROUP_QUERY, {
   options: (ownProps) => ({
     variables: { id: ownProps.params.id },
   }),
-  props: ({ ownProps, data }) => ({
-    ...ownProps,
-    data: data,
-    group: { content: data.group } // CanLike needs this structure
-  })
 });
 
 export default connect()(
   withGroup(
     ReactMixin.decorate(Headerable)(
-      CanLike(TemplateWithoutData)
+      CanLike((props) => props.data.loading ? null : props.data.group.id)(TemplateWithoutData)
     )
   )
 );

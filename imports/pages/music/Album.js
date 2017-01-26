@@ -226,7 +226,7 @@ export default connect()(
   withAlbum(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        CanLike(MusicAlbumWithoutData)
+        CanLike((props) => props.album.loading ? null : props.album.content.id)(MusicAlbumWithoutData)
       )
     )
   )

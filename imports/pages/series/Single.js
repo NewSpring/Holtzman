@@ -165,7 +165,7 @@ export default connect()(
   withSingleSeries(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        CanLike(SeriesSingleWithoutData)
+        CanLike((props) => props.series.loading ? null : props.series.content.id)(SeriesSingleWithoutData)
       )
     )
   )

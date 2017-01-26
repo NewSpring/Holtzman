@@ -149,7 +149,7 @@ export default connect()(
   withArticle(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        CanLike(ArticlesSingle)
+        CanLike((props) => props.article.loading ? null : props.article.content.id)(ArticlesSingle)
       )
     )
   )

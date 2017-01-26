@@ -92,7 +92,7 @@ export default connect()(
   withStory(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        CanLike(StoriesSingleWithoutData)
+        CanLike((props) => props.story.loading ? null : props.story.content.id)(StoriesSingleWithoutData)
       )
     )
   )
