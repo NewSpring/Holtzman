@@ -1,8 +1,8 @@
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-const RECENT_LIKES_QUERY = gql`
-  {
+const PUBLIC_LIKES_QUERY = gql`
+  query getPublicLikes {
     recentlyLiked(limit: 10, skip: 0) {
       id
       ... on Content {
@@ -22,6 +22,10 @@ const RECENT_LIKES_QUERY = gql`
   }
 `;
 
-const withRecentLikes = graphql(RECENT_LIKES_QUERY);
+const withPublicLikes = graphql(PUBLIC_LIKES_QUERY, {
+  props: ({ data }) => ({
+    publicLikes: data,
+  }),
+});
 
-export default withRecentLikes;
+export default withPublicLikes;
