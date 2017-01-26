@@ -22,10 +22,6 @@ const PUBLIC_LIKES_QUERY = gql`
   }
 `;
 
-const withPublicLikes = graphql(PUBLIC_LIKES_QUERY, {
-  props: ({ data }) => ({
-    publicLikes: data,
-  }),
-});
+const withPublicLikes = graphql(PUBLIC_LIKES_QUERY, { name: "publicLikes" });
 
 export default withPublicLikes;
