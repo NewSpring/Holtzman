@@ -29,6 +29,7 @@
     "SyntheticInputEvent": true,
     "React$Element": true,
     "jest": true,
+    "universalLinks": true,
   },
   "plugins": [
     "jsx-a11y",
