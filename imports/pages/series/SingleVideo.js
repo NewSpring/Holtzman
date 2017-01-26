@@ -215,7 +215,7 @@ export default connect(mapStateToProps)(
     withSeries(
       ReactMixin.decorate(Shareable)(
         ReactMixin.decorate(Headerable)(
-          CanLike(SeriesSingleVideoWithoutData)
+          CanLike((props) => props.series.loading ? null : props.series.content.id)(SeriesSingleVideoWithoutData)
         )
       )
     )

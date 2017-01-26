@@ -183,7 +183,7 @@ export default connect()(
   withStudySingle(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        CanLike(StudiesSingleWithoutData)
+        CanLike((props) => props.study.loading ? null : props.study.content.id)(StudiesSingleWithoutData)
       )
     )
   )

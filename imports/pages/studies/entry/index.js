@@ -313,7 +313,7 @@ export default connect(mapStateToProps)(
   withCurrentStudyEntry(
     withStudy(
       ReactMixin.decorate(Shareable)(
-        CanLike(StudyEntrySingle)
+        CanLike((props) => props.study.loading ? null : props.study.content.id)(StudyEntrySingle)
       )
     )
   )

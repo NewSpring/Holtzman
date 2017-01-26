@@ -239,7 +239,7 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps)(
   withDevotional(
     ReactMixin.decorate(Shareable)(
-      CanLike(DevotionsSingle)
+      CanLike((props) => props.devotion.loading ? null : props.devotion.content.id)(DevotionsSingle)
     )
   )
 );
