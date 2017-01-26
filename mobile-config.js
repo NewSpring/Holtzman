@@ -74,7 +74,7 @@ App.appendToConfig(`
     <universal-links>
       <ios-team-id value="7TM8C6252Z" />
       <preference name="AndroidLaunchMode" value="singleInstance" />
-      <host name="beta.newspring.cc" scheme="https" event="universalLinkRoute">
+      <host name="newspring.cc" scheme="https" event="universalLinkRoute">
         <path url="/articles" />
         <path url="/articles/*" />
         <path url="/devotionals" />
@@ -91,6 +91,6 @@ App.appendToConfig(`
         <path url="/locations" />
         <path url="/watchandread" />
       </host>
-      <host name="beta-my.newspring.cc" scheme="https" event="universalLinkRoute" />
+      <host name="my.newspring.cc" scheme="https" event="universalLinkRoute" />
     </universal-links>
 `);
