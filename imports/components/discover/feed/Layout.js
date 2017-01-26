@@ -55,10 +55,6 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
       </div>
     </section>
 
-    <section className="hard background--light-secondary">
-      <h6 className="push-left soft-half-bottom soft-top">Recently Liked By Others</h6>
-    </section>
-
     <div className="soft-half background--light-secondary">
       <div className="card soft one-whole">
         <div className="card__item">
@@ -89,6 +85,20 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
         </div>
       </div>
     </div>
+
+    <section className="soft-half-sides@palm soft-double@palm-wide soft-top soft-half-bottom background--light-secondary">
+      <div className="one-whole text-center">
+        <h5 className="flush soft-bottom">Recently Liked By Others</h5>
+      </div>
+      {publicLikes.map((item, i) => (
+        <MiniCard
+          key={i}
+          title={item.title}
+          content={item}
+        />
+      ))}
+    </section>
+
     {/*
     <section className="hard background--light-secondary">
       <h6 className="push-left soft-half-bottom soft-top">Popular Content</h6>
