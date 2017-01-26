@@ -19,7 +19,7 @@ import Headerable from "../../deprecated/mixins/mixins.Header";
 import backgrounds from "../../util/backgrounds";
 import content from "../../util/content";
 
-import HomeHero from "./home.Hero";
+import Hero from "../../components/@primitives/UI/hero";
 
 class HomeWithoutData extends Component {
 
@@ -99,7 +99,7 @@ class HomeWithoutData extends Component {
             link={heroLink}
           >
 
-            <HomeHero item={heroItem || {}} />
+            <Hero item={heroItem || {}} />
 
           </Right>
         </Split>
