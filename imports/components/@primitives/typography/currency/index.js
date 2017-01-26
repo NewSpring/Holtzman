@@ -6,6 +6,7 @@ type ICurrency = {
   className?: string,
   theme?: string,
   roundCurrency?: bool,
+  style?: Object,
 };
 
 // eslint-disable-next-line max-len
@@ -54,12 +55,13 @@ const Currency = ({
   className,
   theme,
   roundCurrency,
+  style,
 }: ICurrency) => (
   <div className={`floating ${textTheme(theme)} ${className || "text-left"}`}>
     {currencySizeCalc(baseHeadingSize || "2")}
     <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "5px" }}>{getCurrencySymbol(`${amount}`)}</ReducedHeadingSize>
     {getNegative(`${amount}`) && <ReducedHeadingSize className="floating__item flush" style={{ paddingRight: "3px" }}>{getNegative(`${amount}`)}</ReducedHeadingSize>}
-    <BaseCurrencySize className="floating__item flush">{getDollars(`${amount}`, roundCurrency)}</BaseCurrencySize>
+    <BaseCurrencySize className="floating__item flush" style={style}>{getDollars(`${amount}`, roundCurrency)}</BaseCurrencySize>
     {!roundCurrency && <ReducedHeadingSize className="floating__item flush">.{getCents(`${amount}`)}</ReducedHeadingSize>}
   </div>
 );
