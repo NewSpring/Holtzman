@@ -1,7 +1,9 @@
 import { PropTypes } from "react";
 import { Link } from "react-router";
 
-import DiscoverHero from "./Hero";
+// import DiscoverHero from "./Hero";
+import Hero from "../../@primitives/UI/hero";
+import { MiniCard } from "../../@primitives/UI/cards";
 import PopularItem from "../../people/profile/likes/Item";
 
 function getImage(images, label = "2:1") {
@@ -18,7 +20,7 @@ function getImage(images, label = "2:1") {
 }
 
 
-const Layout = ({ featuredItem, recommendedItems, textItems }) => (
+const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
   <div style={{ overflowY: "hidden", height: "100%" }} className="background--light-primary">
 
     <section className="hard background--light-secondary">
@@ -26,12 +28,12 @@ const Layout = ({ featuredItem, recommendedItems, textItems }) => (
     </section>
 
     {(() => {
+      console.log(publicLikes);
       if (!featuredItem) return null;
       return (
-        <DiscoverHero
-          link={featuredItem.meta.urlTitle}
+        <Hero
           image={getImage(featuredItem.content.images, "1:1")}
-          topicName={featuredItem.title}
+          item={featuredItem || {}}
         />
       );
     })()}
@@ -53,6 +55,11 @@ const Layout = ({ featuredItem, recommendedItems, textItems }) => (
           );
         })}
       </div>
+    </section>
+
+    <section className="hard background--light-secondary">
+      <h6 className="push-left soft-half-bottom soft-top">Recently Liked By Others</h6>
+      
     </section>
 
     <div className="soft-half background--light-secondary">
@@ -109,6 +116,7 @@ Layout.propTypes = {
   featuredItem: PropTypes.object,
   recommendedItems: PropTypes.array,
   textItems: PropTypes.array,
+  publicLikes: PropTypes.array,
 };
 
 export default Layout;
