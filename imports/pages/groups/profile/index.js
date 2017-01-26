@@ -12,6 +12,7 @@ import GoogleMap from "../../../components/@primitives/map";
 import Loading from "../../../components/@primitives/UI/loading";
 
 import Headerable from "../../../deprecated/mixins/mixins.Header";
+import CanLike from "../../../components/@enhancers/can-like";
 
 import { nav as navActions, modal } from "../../../data/store";
 
@@ -30,6 +31,12 @@ class TemplateWithoutData extends Component {
     if (this.headerAction) {
       this.headerAction({ title: "Group Profile" });
     }
+    if (process.env.WEB) return;
+    this.props.dispatch(navActions.setLevel("CONTENT"));
+    this.props.dispatch(navActions.setAction("CONTENT", {
+      id: 2,
+      action: this.props.onLike,
+    }));
   }
 
   componentWillUnmount() {
@@ -175,12 +182,17 @@ const withGroup = graphql(GROUP_QUERY, {
   options: (ownProps) => ({
     variables: { id: ownProps.params.id },
   }),
+  props: ({ ownProps, data }) => ({
+    ...ownProps,
+    data: data,
+    group: { content: data.group } // CanLike needs this structure
+  })
 });
 
 export default connect()(
   withGroup(
     ReactMixin.decorate(Headerable)(
-      TemplateWithoutData
+      CanLike(TemplateWithoutData)
     )
   )
 );

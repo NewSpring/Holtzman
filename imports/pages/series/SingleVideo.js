@@ -13,7 +13,7 @@ import {
 } from "../../data/store";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import CanLike from "../../components/@enhancers/can-like";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 import time from "../../util/time";
@@ -43,7 +43,7 @@ class SeriesSingleVideoWithoutData extends Component {
     this.props.dispatch(navActions.setLevel("CONTENT"));
     this.props.dispatch(navActions.setAction("CONTENT", {
       id: 2,
-      action: this.likeableAction,
+      action: this.props.onLike,
     }));
   }
 
@@ -213,11 +213,9 @@ const mapStateToProps = (state) => ({ live: state.live });
 export default connect(mapStateToProps)(
   withCurrentSermon(
     withSeries(
-      ReactMixin.decorate(Likeable)(
-        ReactMixin.decorate(Shareable)(
-          ReactMixin.decorate(Headerable)(
-            SeriesSingleVideoWithoutData
-          )
+      ReactMixin.decorate(Shareable)(
+        ReactMixin.decorate(Headerable)(
+          CanLike(SeriesSingleVideoWithoutData)
         )
       )
     )
