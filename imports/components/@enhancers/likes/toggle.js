@@ -22,7 +22,14 @@ const withToggleLike = graphql(TOGGLE_LIKE_MUTATION);
 
 export const classWrapper = (propsReducer) => (WrappedComponent) => {
   export class LikesWrapper extends Component {
-    getNodeId = () => propsReducer(this.props);
+    getNodeId = () => {
+      if(propsReducer && typeof propsReducer === "function" ) {
+          return propsReducer(this.props);
+      } else {
+        console.warn("propsReducer was either not passed, or is not a function")
+        return null;
+      };
+    };
 
     toggleLike = () => {
       const { dispatch, mutate } = this.props;
@@ -31,8 +38,11 @@ export const classWrapper = (propsReducer) => (WrappedComponent) => {
           coverHeader: true, modalBackground: "light",
         }));
       } else { // if logged in, toggle like state in redux, remote with gql query
-        dispatch(likedActions.toggle({ entryId: this.getNodeId() }));
-        mutate({ variables: { nodeId: this.getNodeId() } });
+        const nodeId = this.getNodeId();
+        if(nodeId) {
+          dispatch(likedActions.toggle({ entryId: nodeId }));
+          mutate({ variables: { nodeId: nodeId } });
+        }
       }
 
       return { type: "FALSY", payload: {} };

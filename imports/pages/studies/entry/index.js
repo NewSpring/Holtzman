@@ -7,7 +7,7 @@ import gql from "graphql-tag";
 import Meta from "../../../components/shared/meta";
 import Loading from "../../../components/@primitives/UI/loading";
 
-import canLike from "../../components/@enhancers/likes/toggle";
+import canLike from "../../../components/@enhancers/likes/toggle";
 import Shareable from "../../../deprecated/mixins/mixins.Shareable";
 
 // import contentHelpers from "../../../util/content";
