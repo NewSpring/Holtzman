@@ -20,7 +20,7 @@ const TOGGLE_LIKE_MUTATION = gql`
 
 const withToggleLike = graphql(TOGGLE_LIKE_MUTATION);
 
-export const ClassWrapper = (propsReducer) => (WrappedComponent) => {
+export const classWrapper = (propsReducer) => (WrappedComponent) => {
   export class LikesWrapper extends Component {
     getNodeId = () => propsReducer(this.props);
 
@@ -40,7 +40,7 @@ export const ClassWrapper = (propsReducer) => (WrappedComponent) => {
 
     render = () => <WrappedComponent {...this.props} onLike={this.toggleLike} />;
   }
-  return withToggleLike(LikesWrapper); // the actual component to be wrapped in a function
+  return connect()(withToggleLike(LikesWrapper)); // the actual component to be wrapped in a function
 }
 
-export default ClassWrapper;
+export default classWrapper;

@@ -13,7 +13,7 @@ import {
 } from "../../data/store";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import CanLike from "../../components/@enhancers/can-like";
+import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 import time from "../../util/time";
@@ -215,7 +215,7 @@ export default connect(mapStateToProps)(
     withSeries(
       ReactMixin.decorate(Shareable)(
         ReactMixin.decorate(Headerable)(
-          CanLike((props) => props.series.loading ? null : props.series.content.id)(SeriesSingleVideoWithoutData)
+          canLike((props) => props.series.loading ? null : props.series.content.id)(SeriesSingleVideoWithoutData)
         )
       )
     )

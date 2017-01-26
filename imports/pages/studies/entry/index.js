@@ -7,7 +7,7 @@ import gql from "graphql-tag";
 import Meta from "../../../components/shared/meta";
 import Loading from "../../../components/@primitives/UI/loading";
 
-import CanLike from "../../../components/@enhancers/can-like";
+import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../../deprecated/mixins/mixins.Shareable";
 
 // import contentHelpers from "../../../util/content";
@@ -313,7 +313,7 @@ export default connect(mapStateToProps)(
   withCurrentStudyEntry(
     withStudy(
       ReactMixin.decorate(Shareable)(
-        CanLike((props) => props.study.loading ? null : props.study.content.id)(StudyEntrySingle)
+        canLike((props) => props.study.loading ? null : props.study.content.id)(StudyEntrySingle)
       )
     )
   )

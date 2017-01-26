@@ -12,7 +12,7 @@ import { nav as navActions } from "../../data/store";
 import headerActions from "../../data/store/header";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import CanLike from "../../components/@enhancers/can-like";
+import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 
@@ -183,7 +183,7 @@ export default connect()(
   withStudySingle(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        CanLike((props) => props.study.loading ? null : props.study.content.id)(StudiesSingleWithoutData)
+        canLike((props) => props.study.loading ? null : props.study.content.id)(StudiesSingleWithoutData)
       )
     )
   )
