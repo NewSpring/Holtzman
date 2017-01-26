@@ -25,6 +25,7 @@ class TemplateWithoutData extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
+    onLike: PropTypes.function,
   }
 
   componentWillMount() {
@@ -187,7 +188,9 @@ const withGroup = graphql(GROUP_QUERY, {
 export default connect()(
   withGroup(
     ReactMixin.decorate(Headerable)(
-      canLike((props) => props.data.loading ? null : props.data.group.id)(TemplateWithoutData)
+      canLike(
+        (props) => (props.data.loading ? null : props.data.group.id)
+      )(TemplateWithoutData)
     )
   )
 );

@@ -32,6 +32,7 @@ class SeriesSingleVideoWithoutData extends Component {
     currentSermon: PropTypes.object.isRequired,
     series: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
+    onLike: PropTypes.function,
   }
 
   componentWillMount() {
@@ -215,7 +216,9 @@ export default connect(mapStateToProps)(
     withSeries(
       ReactMixin.decorate(Shareable)(
         ReactMixin.decorate(Headerable)(
-          canLike((props) => props.series.loading ? null : props.series.content.id)(SeriesSingleVideoWithoutData)
+          canLike(
+            (props) => (props.series.loading ? null : props.series.content.id)
+          )(SeriesSingleVideoWithoutData)
         )
       )
     )

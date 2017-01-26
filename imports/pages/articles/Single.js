@@ -33,6 +33,7 @@ class ArticlesSingle extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     article: PropTypes.object.isRequired,
+    onLike: PropTypes.function,
   }
 
   componentWillMount() {
@@ -149,7 +150,9 @@ export default connect()(
   withArticle(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        canLike((props) => props.article.loading ? null : props.article.content.id)(ArticlesSingle)
+        canLike(
+          (props) => (props.article.loading ? null : props.article.content.id)
+        )(ArticlesSingle)
       )
     )
   )
