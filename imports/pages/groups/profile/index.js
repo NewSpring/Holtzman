@@ -12,7 +12,7 @@ import GoogleMap from "../../../components/@primitives/map";
 import Loading from "../../../components/@primitives/UI/loading";
 
 import Headerable from "../../../deprecated/mixins/mixins.Header";
-import canLike from "../../components/@enhancers/likes/toggle";
+import canLike from "../../../components/@enhancers/likes/toggle";
 
 import { nav as navActions, modal } from "../../../data/store";
 
