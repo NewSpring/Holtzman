@@ -31,6 +31,7 @@ class SeriesSingleWithoutData extends Component {
     dispatch: PropTypes.func.isRequired,
     series: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
+    onLike: PropTypes.function,
   }
 
   componentWillMount() {
@@ -165,7 +166,9 @@ export default connect()(
   withSingleSeries(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        canLike((props) => props.series.loading ? null : props.series.content.id)(SeriesSingleWithoutData)
+        canLike(
+          (props) => (props.series.loading ? null : props.series.content.id)
+        )(SeriesSingleWithoutData)
       )
     )
   )

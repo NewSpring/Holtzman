@@ -34,6 +34,7 @@ class StudiesSingleWithoutData extends Component {
     dispatch: PropTypes.func.isRequired,
     study: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
+    onLike: PropTypes.function,
   }
 
   componentWillMount() {
@@ -183,7 +184,9 @@ export default connect()(
   withStudySingle(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        canLike((props) => props.study.loading ? null : props.study.content.id)(StudiesSingleWithoutData)
+        canLike(
+          (props) => (props.study.loading ? null : props.study.content.id)
+        )(StudiesSingleWithoutData)
       )
     )
   )

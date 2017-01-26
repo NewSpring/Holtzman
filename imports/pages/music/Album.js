@@ -29,6 +29,7 @@ class MusicAlbumWithoutData extends Component {
     ]).isRequired,
     modalVisible: PropTypes.bool,
     albumArtist: PropTypes.string,
+    onLike: PropTypes.function,
   }
 
   state = {
@@ -226,7 +227,9 @@ export default connect()(
   withAlbum(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        canLike((props) => props.album.loading ? null : props.album.content.id)(MusicAlbumWithoutData)
+        canLike(
+          (props) => (props.album.loading ? null : props.album.content.id)
+        )(MusicAlbumWithoutData)
       )
     )
   )

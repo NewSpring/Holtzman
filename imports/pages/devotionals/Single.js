@@ -27,6 +27,7 @@ class DevotionsSingle extends Component {
     dispatch: PropTypes.func.isRequired,
     live: PropTypes.object.isRequired,
     devotion: PropTypes.object.isRequired,
+    onLike: PropTypes.function,
   }
 
   state = { selectedIndex: 0 }
@@ -239,7 +240,9 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps)(
   withDevotional(
     ReactMixin.decorate(Shareable)(
-      canLike((props) => props.devotion.loading ? null : props.devotion.content.id)(DevotionsSingle)
+      canLike(
+        (props) => (props.devotion.loading ? null : props.devotion.content.id)
+      )(DevotionsSingle)
     )
   )
 );

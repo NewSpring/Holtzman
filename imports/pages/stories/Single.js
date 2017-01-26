@@ -20,6 +20,7 @@ class StoriesSingleWithoutData extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     story: PropTypes.object,
+    onLike: PropTypes.function,
   }
 
   componentWillMount() {
@@ -92,7 +93,9 @@ export default connect()(
   withStory(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        canLike((props) => props.story.loading ? null : props.story.content.id)(StoriesSingleWithoutData)
+        canLike(
+          (props) => (props.story.loading ? null : props.story.content.id)
+        )(StoriesSingleWithoutData)
       )
     )
   )

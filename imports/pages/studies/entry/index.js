@@ -31,6 +31,7 @@ class StudyEntrySingle extends Component {
     studyEntry: PropTypes.object.isRequired,
     study: PropTypes.object.isRequired,
     params: PropTypes.object.isRequried,
+    onLike: PropTypes.function,
   }
 
   state = {};
@@ -313,7 +314,9 @@ export default connect(mapStateToProps)(
   withCurrentStudyEntry(
     withStudy(
       ReactMixin.decorate(Shareable)(
-        canLike((props) => props.study.loading ? null : props.study.content.id)(StudyEntrySingle)
+        canLike(
+          (props) => (props.study.loading ? null : props.study.content.id)
+        )(StudyEntrySingle)
       )
     )
   )

@@ -1,4 +1,7 @@
 
+// @flow
+
+// $FlowMeteor
 import { Meteor } from "meteor/meteor";
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
@@ -18,30 +21,36 @@ const TOGGLE_LIKE_MUTATION = gql`
   }
 `;
 
-const withToggleLike = graphql(TOGGLE_LIKE_MUTATION);
+const withToggleLike = graphql(TOGGLE_LIKE_MUTATION, {});
 
-export const classWrapper = (propsReducer) => (WrappedComponent) => {
-  export class LikesWrapper extends Component {
+export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) => {
+  type ILikesWrapper = {
+    dispatch: Function,
+    mutate: Function,
+  };
+
+  class LikesWrapper extends Component {
+    props: ILikesWrapper;
+
     getNodeId = () => {
-      if(propsReducer && typeof propsReducer === "function" ) {
-          return propsReducer(this.props);
-      } else {
-        console.warn("propsReducer was either not passed, or is not a function")
-        return null;
-      };
+      if (propsReducer && typeof propsReducer === "function") {
+        return propsReducer(this.props);
+      }
+      console.warn("propsReducer was either not passed, or is not a function");
+      return null;
     };
 
     toggleLike = () => {
       const { dispatch, mutate } = this.props;
-      if (!Meteor.userId()) { //if not logged in, show login modal
+      if (!Meteor.userId()) { // if not logged in, show login modal
         dispatch(modal.render(OnBoard, {
           coverHeader: true, modalBackground: "light",
         }));
       } else { // if logged in, toggle like state in redux, remote with gql query
         const nodeId = this.getNodeId();
-        if(nodeId) {
+        if (nodeId) {
           dispatch(likedActions.toggle({ entryId: nodeId }));
-          mutate({ variables: { nodeId: nodeId } });
+          mutate({ variables: { nodeId } });
         }
       }
 
@@ -50,7 +59,7 @@ export const classWrapper = (propsReducer) => (WrappedComponent) => {
 
     render = () => <WrappedComponent {...this.props} onLike={this.toggleLike} />;
   }
-  return connect()(withToggleLike(LikesWrapper)); // the actual component to be wrapped in a function
-}
+  return connect()(withToggleLike(LikesWrapper));
+};
 
 export default classWrapper;
