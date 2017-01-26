@@ -9,7 +9,7 @@ import Meta from "../../components/shared/meta";
 import Split, { Left, Right } from "../../components/@primitives/layout/split";
 import Headerable from "../../deprecated/mixins/mixins.Header";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
-import CanLike from "../../components/@enhancers/can-like";
+import canLike from "../../components/@enhancers/likes/toggle";
 
 import Loading from "../../components/@primitives/UI/loading";
 
@@ -149,7 +149,7 @@ export default connect()(
   withArticle(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        CanLike((props) => props.article.loading ? null : props.article.content.id)(ArticlesSingle)
+        canLike((props) => props.article.loading ? null : props.article.content.id)(ArticlesSingle)
       )
     )
   )

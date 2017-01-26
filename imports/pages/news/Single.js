@@ -9,7 +9,7 @@ import Loading from "../../components/@primitives/UI/loading";
 import { nav as navActions } from "../../data/store";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import CanLike from "../../components/@enhancers/can-like";
+import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 // import content component
@@ -92,7 +92,7 @@ export default connect()(
   withNews(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        CanLike((props) => props.news.loading ? null : props.news.content.id)(StoriesSingleWithoutData)
+        canLike((props) => props.news.loading ? null : props.news.content.id)(StoriesSingleWithoutData)
       )
     )
   )

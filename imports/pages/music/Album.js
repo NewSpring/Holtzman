@@ -8,7 +8,7 @@ import Meta from "../../components/shared/meta";
 // loading state
 import Loading from "../../components/@primitives/UI/loading";
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import CanLike from "../../components/@enhancers/can-like";
+import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 // action helpers
@@ -226,7 +226,7 @@ export default connect()(
   withAlbum(
     ReactMixin.decorate(Shareable)(
       ReactMixin.decorate(Headerable)(
-        CanLike((props) => props.album.loading ? null : props.album.content.id)(MusicAlbumWithoutData)
+        canLike((props) => props.album.loading ? null : props.album.content.id)(MusicAlbumWithoutData)
       )
     )
   )

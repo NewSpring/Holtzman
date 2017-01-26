@@ -12,7 +12,7 @@ import GoogleMap from "../../../components/@primitives/map";
 import Loading from "../../../components/@primitives/UI/loading";
 
 import Headerable from "../../../deprecated/mixins/mixins.Header";
-import CanLike from "../../../components/@enhancers/can-like";
+import canLike from "../../components/@enhancers/likes/toggle";
 
 import { nav as navActions, modal } from "../../../data/store";
 
@@ -187,7 +187,7 @@ const withGroup = graphql(GROUP_QUERY, {
 export default connect()(
   withGroup(
     ReactMixin.decorate(Headerable)(
-      CanLike((props) => props.data.loading ? null : props.data.group.id)(TemplateWithoutData)
+      canLike((props) => props.data.loading ? null : props.data.group.id)(TemplateWithoutData)
     )
   )
 );

@@ -8,7 +8,7 @@ import Meta from "../../components/shared/meta";
 
 import Loading from "../../components/@primitives/UI/loading";
 
-import CanLike from "../../components/@enhancers/can-like";
+import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 import {
@@ -239,7 +239,7 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps)(
   withDevotional(
     ReactMixin.decorate(Shareable)(
-      CanLike((props) => props.devotion.loading ? null : props.devotion.content.id)(DevotionsSingle)
+      canLike((props) => props.devotion.loading ? null : props.devotion.content.id)(DevotionsSingle)
     )
   )
 );
