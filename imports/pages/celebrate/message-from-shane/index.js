@@ -45,7 +45,7 @@ class Shane extends Component {
         </Split>
         <style>{".oo-player-container { min-width: 0 !important }"}</style>
         <Left scroll classes={["background--light-primary"]}>
-          <Link
+          {!process.env.NATIVE && <Link
             to="/annualreport"
             className={
               "locked-top locked-left soft-double@lap-and-up soft " +
@@ -62,10 +62,10 @@ class Shane extends Component {
             >
               Back
             </span>
-          </Link>
+          </Link>}
           <div className="soft@lap-and-up soft-double-top@lap-and-up">
             <div className="soft soft-double-bottom soft-double-top@lap-and-up">
-              <h1 className="soft-double-top@lap-and-up soft-top push-double-top@handheld">Welcome to NewSpring&#39;s 2016 Annual Report!</h1>
+              <h1 className={`soft-double-top@lap-and-up soft-top ${process.env.NATIVE ? "" : "push-double-top@handheld"}`}>Welcome to NewSpring&#39;s 2016 Annual Report!</h1>
               <div className="soft-top soft-double-bottom">
                 <Video
                   id={"VoNTB1ODE66MXxAFqcCqRb04c2WT9biy"}
