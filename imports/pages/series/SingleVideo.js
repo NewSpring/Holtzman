@@ -7,7 +7,6 @@ import gql from "graphql-tag";
 
 import Loading from "../../components/@primitives/UI/loading";
 import {
-  nav as navActions,
   audio as audioActions,
   header as headerActions,
 } from "../../data/store";
@@ -40,12 +39,6 @@ class SeriesSingleVideoWithoutData extends Component {
 
     // needed for client cache
     this.handleHeader(this.props);
-
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.props.onLike,
-    }));
   }
 
   componentWillUpdate(nextProps) {
@@ -217,7 +210,7 @@ export default connect(mapStateToProps)(
       ReactMixin.decorate(Shareable)(
         ReactMixin.decorate(Headerable)(
           canLike(
-            (props) => (props.series.loading ? null : props.series.content.id)
+            (props) => (props.currentSermon.loading ? null : props.currentSermon.content.entryId)
           )(SeriesSingleVideoWithoutData)
         )
       )

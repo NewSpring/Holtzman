@@ -12,7 +12,6 @@ import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 import {
-  nav as navActions,
   header as headerActions,
   live as liveActions,
 } from "../../data/store";
@@ -42,12 +41,6 @@ class DevotionsSingle extends Component {
     this.props.dispatch(liveActions.hide());
     // for cached data
     this.handleLiveBar(this.props, this.state);
-
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.props.onLike,
-    }));
 
     this.props.dispatch(headerActions.set({}));
     this.props.dispatch(headerActions.hide());

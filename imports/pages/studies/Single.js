@@ -8,7 +8,6 @@ import Meta from "../../components/shared/meta";
 
 // loading state
 import Loading from "../../components/@primitives/UI/loading";
-import { nav as navActions } from "../../data/store";
 import headerActions from "../../data/store/header";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
@@ -42,12 +41,6 @@ class StudiesSingleWithoutData extends Component {
 
     // needed for cached data
     this.handleHeaderStyle(this.props);
-
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.props.onLike,
-    }));
   }
 
   componentWillUpdate(nextProps) {

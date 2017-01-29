@@ -38,17 +38,7 @@ class MusicAlbumWithoutData extends Component {
     force: false,
   }
 
-  componentWillMount() {
-    if (process.env.WEB) return;
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.props.onLike,
-    }));
-  }
-
   componentWillUnmount() {
-    this.props.dispatch(navActions.setLevel("TOP"));
     this.props.dispatch(audioActions.dock());
   }
 
