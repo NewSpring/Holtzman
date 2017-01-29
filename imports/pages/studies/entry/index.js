@@ -30,7 +30,6 @@ class StudyEntrySingle extends Component {
     studyEntry: PropTypes.object.isRequired,
     study: PropTypes.object.isRequired,
     params: PropTypes.object.isRequried,
-    onLike: PropTypes.function,
   }
 
   state = {};

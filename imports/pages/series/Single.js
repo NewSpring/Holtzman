@@ -30,7 +30,6 @@ class SeriesSingleWithoutData extends Component {
     dispatch: PropTypes.func.isRequired,
     series: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
-    onLike: PropTypes.function,
   }
 
   componentWillMount() {
