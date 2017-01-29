@@ -8,7 +8,12 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { connect } from "react-redux";
 
-import { liked as likedActions, modal } from "../../../data/store";
+import {
+  nav as navActions,
+  liked as likedActions,
+  modal
+} from "../../../data/store";
+
 import OnBoard from "../../people/accounts";
 
 const TOGGLE_LIKE_MUTATION = gql`
@@ -31,6 +36,14 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
 
   class LikesWrapper extends Component {
     props: ILikesWrapper;
+
+    componentWillMount() {
+      this.props.dispatch(navActions.setLevel("CONTENT"));
+      this.props.dispatch(navActions.setAction("CONTENT", {
+        id: 2,
+        action: this.toggleLike,
+      }));
+    }
 
     getNodeId = () => {
       if (propsReducer && typeof propsReducer === "function") {
