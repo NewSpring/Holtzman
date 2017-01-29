@@ -131,5 +131,3 @@ export default {
 export {
   Shane,
 };
-
-
