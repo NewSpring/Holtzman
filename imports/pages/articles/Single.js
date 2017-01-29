@@ -27,9 +27,7 @@ const defaultArray = [];
 class ArticlesSingle extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     article: PropTypes.object.isRequired,
-    onLike: PropTypes.function,
   }
 
   render() {

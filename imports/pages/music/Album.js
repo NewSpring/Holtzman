@@ -13,7 +13,6 @@ import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 // action helpers
 import {
-  nav as navActions,
   audio as audioActions,
 } from "../../data/store";
 
@@ -29,7 +28,6 @@ class MusicAlbumWithoutData extends Component {
     ]).isRequired,
     modalVisible: PropTypes.bool,
     albumArtist: PropTypes.string,
-    onLike: PropTypes.function,
   }
 
   state = {

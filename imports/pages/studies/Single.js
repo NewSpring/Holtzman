@@ -33,7 +33,6 @@ class StudiesSingleWithoutData extends Component {
     dispatch: PropTypes.func.isRequired,
     study: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
-    onLike: PropTypes.function,
   }
 
   componentWillMount() {

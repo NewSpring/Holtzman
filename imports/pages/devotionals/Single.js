@@ -26,7 +26,6 @@ class DevotionsSingle extends Component {
     dispatch: PropTypes.func.isRequired,
     live: PropTypes.object.isRequired,
     devotion: PropTypes.object.isRequired,
-    onLike: PropTypes.function,
   }
 
   state = { selectedIndex: 0 }

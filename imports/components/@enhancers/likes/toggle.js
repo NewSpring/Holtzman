@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import {
   nav as navActions,
   liked as likedActions,
-  modal
+  modal,
 } from "../../../data/store";
 
 import OnBoard from "../../people/accounts";
@@ -58,8 +58,6 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
     };
 
     toggleLike = () => {
-      console.log("PROPS", this.props);
-      console.log("NODE", this.getNodeId());
       const { dispatch, mutate } = this.props;
       if (!Meteor.userId()) { // if not logged in, show login modal
         dispatch(modal.render(OnBoard, {

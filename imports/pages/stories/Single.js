@@ -17,9 +17,7 @@ import StoriesContent from "./Content";
 class StoriesSingleWithoutData extends Component {
 
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     story: PropTypes.object,
-    onLike: PropTypes.function,
   }
 
   render() {

@@ -14,6 +14,8 @@ import Loading from "../../../components/@primitives/UI/loading";
 import Headerable from "../../../deprecated/mixins/mixins.Header";
 import canLike from "../../../components/@enhancers/likes/toggle";
 
+import { modal } from "../../../data/store";
+
 import Layout from "./Layout";
 import Join from "./Join";
 
@@ -23,7 +25,6 @@ class TemplateWithoutData extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
-    onLike: PropTypes.function,
   }
 
   componentWillMount() {
@@ -39,7 +40,6 @@ class TemplateWithoutData extends Component {
   closeModal = (e) => {
     if (e && e.preventDefault) e.preventDefault();
     this.props.dispatch(modal.hide());
-    this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
   }
 
   sendRequest = (e, callback) => {
