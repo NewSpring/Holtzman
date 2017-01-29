@@ -14,8 +14,6 @@ import Loading from "../../../components/@primitives/UI/loading";
 import Headerable from "../../../deprecated/mixins/mixins.Header";
 import canLike from "../../../components/@enhancers/likes/toggle";
 
-import { nav as navActions, modal } from "../../../data/store";
-
 import Layout from "./Layout";
 import Join from "./Join";
 
@@ -32,12 +30,6 @@ class TemplateWithoutData extends Component {
     if (this.headerAction) {
       this.headerAction({ title: "Group Profile" });
     }
-    if (process.env.WEB) return;
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.props.onLike,
-    }));
   }
 
   componentWillUnmount() {

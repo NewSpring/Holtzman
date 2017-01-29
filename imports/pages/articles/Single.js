@@ -19,10 +19,6 @@ import RelatedContent from "../../components/content/related-content";
 
 import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
 
-// import {
-//   nav as navActions,
-// } from "../../data/store";
-
 // import content component
 import Content from "./Content";
 
@@ -34,15 +30,6 @@ class ArticlesSingle extends Component {
     dispatch: PropTypes.func.isRequired,
     article: PropTypes.object.isRequired,
     onLike: PropTypes.function,
-  }
-
-  componentWillMount() {
-    if (process.env.WEB) return;
-    // this.props.dispatch(navActions.setLevel("CONTENT"));
-    // this.props.dispatch(navActions.setAction("CONTENT", {
-    //   id: 2,
-    //   action: this.props.onLike,
-    // }));
   }
 
   render() {

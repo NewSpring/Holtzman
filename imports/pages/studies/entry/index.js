@@ -14,7 +14,6 @@ import Shareable from "../../../deprecated/mixins/mixins.Shareable";
 import collections from "../../../util/collections";
 
 import {
-  nav as navActions,
   header as headerActions,
   live as liveActions,
 } from "../../../data/store";
@@ -49,12 +48,6 @@ class StudyEntrySingle extends Component {
     this.props.dispatch(liveActions.hide());
     // for cached data
     this.handleLiveBar(this.props, this.state);
-
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.props.onLike,
-    }));
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -315,7 +308,7 @@ export default connect(mapStateToProps)(
     withStudy(
       ReactMixin.decorate(Shareable)(
         canLike(
-          (props) => (props.study.loading ? null : props.study.content.id)
+          (props) => (props.studyEntry.loading ? null : props.studyEntry.content.entryId)
         )(StudyEntrySingle)
       )
     )

@@ -6,7 +6,6 @@ import gql from "graphql-tag";
 
 // loading state
 import Loading from "../../components/@primitives/UI/loading";
-import { nav as navActions } from "../../data/store";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
 import canLike from "../../components/@enhancers/likes/toggle";
@@ -21,15 +20,6 @@ class StoriesSingleWithoutData extends Component {
     dispatch: PropTypes.func.isRequired,
     story: PropTypes.object,
     onLike: PropTypes.function,
-  }
-
-  componentWillMount() {
-    if (process.env.WEB) return;
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.props.onLike,
-    }));
   }
 
   render() {

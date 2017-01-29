@@ -45,6 +45,10 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
       }));
     }
 
+    componentWillUnmount() {
+      this.props.dispatch(navActions.setLevel("TOP"));
+    }
+
     getNodeId = () => {
       if (propsReducer && typeof propsReducer === "function") {
         return propsReducer(this.props);
@@ -54,6 +58,8 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
     };
 
     toggleLike = () => {
+      console.log("PROPS", this.props);
+      console.log("NODE", this.getNodeId());
       const { dispatch, mutate } = this.props;
       if (!Meteor.userId()) { // if not logged in, show login modal
         dispatch(modal.render(OnBoard, {
