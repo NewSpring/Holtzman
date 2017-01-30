@@ -1,7 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import {
-  nav as navActions,
   audio as audioActions,
 } from "../../../data/store";
 import {
@@ -13,10 +12,6 @@ jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
 jest.mock("../../../data/store", () => ({
-  nav: {
-    setLevel: jest.fn(),
-    setAction: jest.fn(),
-  },
   audio: {
     dock: jest.fn(),
   },
@@ -91,34 +86,6 @@ it("adjust style if modal visible", () => {
 
 it("parses query correctly", () => {
   expect(ALBUM_QUERY).toMatchSnapshot();
-});
-
-it("updates nav on mount", () => {
-  const mockDispatch = jest.fn();
-  navActions.setLevel = jest.fn();
-  navActions.setAction = jest.fn();
-  const wrapper = shallow(generateComponent({
-    dispatch: mockDispatch,
-  }));
-  expect(mockDispatch).toHaveBeenCalledTimes(2);
-  expect(navActions.setLevel).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledWith("CONTENT");
-  expect(navActions.setAction).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel.mock.calls[0][0]).toBe("CONTENT");
-});
-
-it("updates nav on unmount", () => {
-  const mockDispatch = jest.fn();
-  navActions.setLevel = jest.fn();
-  audioActions.dock = jest.fn();
-  const wrapper = shallow(generateComponent({
-    dispatch: mockDispatch,
-  }));
-  wrapper.unmount();
-  expect(mockDispatch).toHaveBeenCalledTimes(4);
-  expect(navActions.setLevel).toHaveBeenCalledTimes(2);
-  expect(navActions.setLevel).toHaveBeenCalledWith("TOP");
-  expect(audioActions.dock).toHaveBeenCalledTimes(1);
 });
 
 it("shuffle toggles repeatPattern between shuffle and next", () => {
