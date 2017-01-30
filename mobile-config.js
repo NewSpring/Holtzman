@@ -1,12 +1,12 @@
 App.info({
-  id: "cc.newspring.newspringapp",
+  id: process.env.APP_IDENTIFIER,
   name: "NewSpring",
   description: "App for NewSpring Church",
   author: "NewSpring Church",
   email: "web@newspring.cc",
   website: "https://newspring.cc",
-  version: "5.0.16",
-  buildNumber: "200",
+  version: process.env.APP_VERSION,
+  buildNumber: process.env.APP_ID,
 });
 
 App.icons({
