@@ -6,7 +6,7 @@ App.info({
   email: "web@newspring.cc",
   website: "https://newspring.cc",
   version: "5.0.15",
-  buildNumber: "194",
+  buildNumber: "198",
 });
 
 App.icons({
@@ -91,7 +91,25 @@ App.appendToConfig(`
         <path url="/locations" />
         <path url="/watchandread" />
       </host>
+      <host name="newspring.cc" scheme="https" event="universalLinkRoute">
+        <path url="/articles" />
+        <path url="/articles/*" />
+        <path url="/devotionals" />
+        <path url="/devotionals/*" />
+        <path url="/studies" />
+        <path url="/studies/*" />
+        <path url="/studies/*/*" />
+        <path url="/stories" />
+        <path url="/stories/*" />
+        <path url="/sermons" />
+        <path url="/sermons/*" />
+        <path url="/sermons/*/*" />
+        <path url="/music/*" />
+        <path url="/locations" />
+        <path url="/watchandread" />
+      </host>
       <host name="beta-my.newspring.cc" scheme="https" event="universalLinkRoute" />
+      <host name="my.newspring.cc" scheme="https" event="universalLinkRoute" />
     </universal-links>
 `);
 
