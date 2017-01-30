@@ -1,4 +1,7 @@
-import { Component, PropTypes } from "react";
+
+// @flow
+// ignore mixin until we can remove it entirely
+// $FlowMeteor
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -8,8 +11,8 @@ import Meta from "../../components/shared/meta";
 // loading state
 import Split, { Left, Right } from "../../components/@primitives/layout/split";
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import Likeable from "../../deprecated/mixins/mixins.Likeable";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
+import canLike from "../../components/@enhancers/likes/toggle";
 
 import Loading from "../../components/@primitives/UI/loading";
 
@@ -19,93 +22,76 @@ import RelatedContent from "../../components/content/related-content";
 
 import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
 
-import {
-  nav as navActions,
-} from "../../data/store";
-
 // import content component
 import Content from "./Content";
 
 const defaultArray = [];
 
-class ArticlesSingle extends Component {
+type IArticlesSingle = {
+  article: Object,
+};
 
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    article: PropTypes.object.isRequired,
-  }
+const ArticlesSingle = (props: IArticlesSingle) => {
+  const { content } = props.article;
 
-  componentWillMount() {
-    if (process.env.WEB) return;
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction,
-    }));
-  }
-
-  render() {
-    const { content } = this.props.article;
-
-    if (!content) {
-      // loading
-      return (
-        <div className="locked-ends locked-sides floating">
-          <div className="floating__item">
-            <Loading />
-          </div>
-        </div>
-      );
-    }
-
-    const article = content;
-    const photo = backgrounds.image(article);
+  if (!content) {
+    // loading
     return (
-      <div>
-        <Meta
-          title={article.title}
-          image={photo}
-          id={article.id}
-          meta={[
-            { property: "og:type", content: "article" },
-          ]}
-        />
-        <Split nav classes={["background--light-primary"]}>
-          {(() => {
-            if (article.content.ooyalaId.length === 0) {
-              return (
-                <Right
-                  mobile
-                  background={photo}
-                  classes={["floating--bottom", "overlay--gradient@lap-and-up"]}
-                  ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up"]}
-                  aspect="square"
-                />
-              );
-            }
-            return <SingleVideoPlayer ooyalaId={article.content.ooyalaId} />;
-          })()}
-        </Split>
-        <Left scroll >
-          <div className="one-whole">
-            <section
-              className={
-                "soft@palm soft-double-sides@palm-wide-and-up soft@lap " +
-                "soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
-              }
-            >
-              <Content article={article} />
-            </section>
-            <RelatedContent
-              excludedIds={[article.id]}
-              tags={article.content.tags || defaultArray}
-            />
-          </div>
-        </Left>
+      <div className="locked-ends locked-sides floating">
+        <div className="floating__item">
+          <Loading />
+        </div>
       </div>
     );
   }
-}
+
+  const article = content;
+  const photo = backgrounds.image(article);
+  return (
+    <div>
+      <Meta
+        title={article.title}
+        image={photo}
+        id={article.id}
+        meta={[
+          { property: "og:type", content: "article" },
+        ]}
+      />
+      <Split nav classes={["background--light-primary"]}>
+        {(() => {
+          if (article.content.ooyalaId.length === 0) {
+            return (
+              <Right
+                mobile
+                background={photo}
+                classes={["floating--bottom", "overlay--gradient@lap-and-up"]}
+                ratioClasses={["floating__item", "overlay__item", "one-whole", "soft@lap-and-up"]}
+                aspect="square"
+              />
+            );
+          }
+          return <SingleVideoPlayer ooyalaId={article.content.ooyalaId} />;
+        })()}
+      </Split>
+      <Left scroll >
+        <div className="one-whole">
+          <section
+            className={
+              "soft@palm soft-double-sides@palm-wide-and-up soft@lap " +
+              "soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
+            }
+          >
+            <Content article={article} />
+          </section>
+          <RelatedContent
+            excludedIds={[article.id]}
+            tags={article.content.tags || defaultArray}
+          />
+        </div>
+      </Left>
+    </div>
+  );
+};
 
 const ARTICLE_QUERY = gql`
   query getArticle($id: ID!) {
@@ -147,11 +133,11 @@ const withArticle = graphql(ARTICLE_QUERY, {
 
 export default connect()(
   withArticle(
-    ReactMixin.decorate(Likeable)(
-      ReactMixin.decorate(Shareable)(
-        ReactMixin.decorate(Headerable)(
-          ArticlesSingle
-        )
+    ReactMixin.decorate(Shareable)(
+      ReactMixin.decorate(Headerable)(
+        canLike(
+          (props) => (props.article.loading ? null : props.article.content.id)
+        )(ArticlesSingle)
       )
     )
   )

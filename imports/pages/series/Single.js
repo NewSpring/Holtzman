@@ -8,11 +8,10 @@ import Meta from "../../components/shared/meta";
 
 // loading state
 import Loading from "../../components/@primitives/UI/loading";
-import { nav as navActions } from "../../data/store";
 import headerActions from "../../data/store/header";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 
@@ -38,12 +37,6 @@ class SeriesSingleWithoutData extends Component {
 
     // needed for cached data
     this.handleHeaderStyle(this.props);
-
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction,
-    }));
   }
 
   componentWillUpdate(nextProps) {
@@ -163,11 +156,11 @@ const withSingleSeries = graphql(SERIES_SINGLE_QUERY, {
 
 export default connect()(
   withSingleSeries(
-    ReactMixin.decorate(Likeable)(
-      ReactMixin.decorate(Shareable)(
-        ReactMixin.decorate(Headerable)(
-          SeriesSingleWithoutData
-        )
+    ReactMixin.decorate(Shareable)(
+      ReactMixin.decorate(Headerable)(
+        canLike(
+          (props) => (props.series.loading ? null : props.series.content.id)
+        )(SeriesSingleWithoutData)
       )
     )
   )

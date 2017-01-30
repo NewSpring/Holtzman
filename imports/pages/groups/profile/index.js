@@ -12,8 +12,9 @@ import GoogleMap from "../../../components/@primitives/map";
 import Loading from "../../../components/@primitives/UI/loading";
 
 import Headerable from "../../../deprecated/mixins/mixins.Header";
+import canLike from "../../../components/@enhancers/likes/toggle";
 
-import { nav as navActions, modal } from "../../../data/store";
+import { modal } from "../../../data/store";
 
 import Layout from "./Layout";
 import Join from "./Join";
@@ -39,7 +40,6 @@ class TemplateWithoutData extends Component {
   closeModal = (e) => {
     if (e && e.preventDefault) e.preventDefault();
     this.props.dispatch(modal.hide());
-    this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
   }
 
   sendRequest = (e, callback) => {
@@ -180,7 +180,9 @@ const withGroup = graphql(GROUP_QUERY, {
 export default connect()(
   withGroup(
     ReactMixin.decorate(Headerable)(
-      TemplateWithoutData
+      canLike(
+        (props) => (props.data.loading ? null : props.data.group.id)
+      )(TemplateWithoutData)
     )
   )
 );
