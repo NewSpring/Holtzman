@@ -28,30 +28,34 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
     </section>
 
     {(() => {
-      console.log(publicLikes);
       if (!featuredItem) return null;
+
+      const formattedObj = {
+        ...featuredItem,
+        image: getImage(featuredItem.content.images, "1:1"),
+        channelName: "Need To Know",
+        hideDate: true,
+        icon: "icon-leaf-outline",
+      };
+
       return (
-        <Hero
-          image={getImage(featuredItem.content.images, "1:1")}
-          item={featuredItem || {}}
-        />
+        <Hero item={formattedObj} />
       );
     })()}
 
     <section className="soft-half background--light-secondary">
-      <div className="grid">
+      <div className="grid flush">
         {recommendedItems.map((item, i) => {
-          const formatedObj = {
-            link: item.meta.urlTitle,
-            image: getImage(item.content.images),
+          const formattedObj = {
             title: item.title,
-            date: item.meta.date,
-            category: "Need to know",
-            icon: "icon-leaf-outline",
+            content: item,
+            link: item.meta.urlTitle,
           };
 
           return (
-            <PopularItem like={formatedObj} key={i} />
+            <div>
+              <MiniCard {...formattedObj} key={i} />
+            </div>
           );
         })}
       </div>
