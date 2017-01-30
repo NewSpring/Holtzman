@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "7TM8C6252Z.cc.newspring.newspringapp",
+        "paths": [
+          "*",
+          "/"
+        ]
+      }
+    ]
+  }
+}

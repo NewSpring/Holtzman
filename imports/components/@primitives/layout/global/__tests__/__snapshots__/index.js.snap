@@ -39,15 +39,46 @@ exports[`App renders with props 1`] = `
 
 exports[`Blank is blank 1`] = `<div />`;
 
+exports[`GlobalWithoutData adds link listener if cordova 1`] = `
+Array [
+  "click",
+  [Function],
+]
+`;
+
+exports[`GlobalWithoutData adds link listener if cordova 2`] = `
+Array [
+  "deviceready",
+  [Function],
+  false,
+]
+`;
+
+exports[`GlobalWithoutData parses URL_TITLE_QUERY correctly 1`] = `
+"query contentWithUrlTitle($parentChannel: String!, $parentUrl: String!, $childChannel: String = \"\", $childUrl: String = \"\", $hasChild: Boolean = false) {
+  parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
+  child: contentWithUrlTitle(channel: $childChannel, urlTitle: $childUrl) @include(if: $hasChild)
+}
+"
+`;
+
 exports[`GlobalWithoutData renders with props 1`] = `
 <div
   id="global">
   <style />
   <App
-    client={Object {}}
+    client={
+      Object {
+        "query": [Function],
+      }
+    }
     dispatch={[Function]} />
   <MeteorDataContainer
-    client={Object {}}
+    client={
+      Object {
+        "query": [Function],
+      }
+    }
     dispatch={[Function]} />
 </div>
 `;
