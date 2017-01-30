@@ -1,0 +1,54 @@
+exports[`Likes Wrapper should contain mutation 1`] = `
+"mutation ToggleLike($nodeId: String!) {
+  toggleLike(nodeId: $nodeId) {
+    like {
+      id
+    }
+  }
+}
+"
+`;
+
+exports[`Likes Wrapper should render the child component 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "subscribe": [Function],
+    }
+  }>
+  <ApolloProvider
+    client={
+      Object {
+        "initStore": [Function],
+        "mutate": [Function],
+      }
+    }
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "subscribe": [Function],
+      }
+    }>
+    <Connect(Apollo(LikesWrapper))>
+      <Apollo(LikesWrapper)
+        dispatch={[Function]}>
+        <LikesWrapper
+          dispatch={[Function]}
+          mutate={[Function]}>
+          <TestComponent
+            dispatch={[Function]}
+            mutate={[Function]}>
+            <div
+              id="tester">
+              Test
+            </div>
+          </TestComponent>
+        </LikesWrapper>
+      </Apollo(LikesWrapper)>
+    </Connect(Apollo(LikesWrapper))>
+  </ApolloProvider>
+</Provider>
+`;
