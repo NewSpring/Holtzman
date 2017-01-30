@@ -3,8 +3,6 @@
 function categoryIcon(contentItem) {
   const category = contentItem.channelName;
 
-  if (contentItem.icon) return contentItem.icon;
-
   switch (category) {
     case "series_newspring":
     case "series":
@@ -12,6 +10,8 @@ function categoryIcon(contentItem) {
       return "icon-category-video";
     case "newspring_albums":
       return "icon-category-audio";
+    case "promotions_newspring":
+      return "icon-leaf-outline";
     case "articles":
     case "devotionals":
     case "stories":
