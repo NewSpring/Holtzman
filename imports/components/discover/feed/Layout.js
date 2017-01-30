@@ -4,7 +4,6 @@ import { Link } from "react-router";
 // import DiscoverHero from "./Hero";
 import Hero from "../../@primitives/UI/hero";
 import { MiniCard } from "../../@primitives/UI/cards";
-import PopularItem from "../../people/profile/likes/Item";
 
 function getImage(images, label = "2:1") {
   let selectedImage = false;
