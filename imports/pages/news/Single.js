@@ -1,4 +1,4 @@
-import { Component, PropTypes } from "react";
+import { PropTypes } from "react";
 import ReactMixin from "react-mixin";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
@@ -14,30 +14,27 @@ import Shareable from "../../deprecated/mixins/mixins.Shareable";
 // import content component
 import StoriesContent from "./Content";
 
-class StoriesSingleWithoutData extends Component {
+const StoriesSingleWithoutData = (props) => {
+  const { content } = props.news;
 
-  static propTypes = {
-    news: PropTypes.object,
-  }
-
-  render() {
-    const { content } = this.props.news;
-
-    if (!content) {
-      // loading
-      return (
-        <div className="locked-ends locked-sides floating">
-          <div className="floating__item">
-            <Loading />
-          </div>
+  if (!content) {
+    // loading
+    return (
+      <div className="locked-ends locked-sides floating">
+        <div className="floating__item">
+          <Loading />
         </div>
-      );
-    }
-
-    const story = content;
-    return <StoriesContent story={story} />;
+      </div>
+    );
   }
-}
+
+  const story = content;
+  return <StoriesContent story={story} />;
+};
+
+StoriesSingleWithoutData.propTypes = {
+  news: PropTypes.object,
+};
 
 const GET_NEWS_QUERY = gql`
   query getNews($id: ID!) {

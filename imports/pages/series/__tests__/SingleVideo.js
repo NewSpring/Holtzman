@@ -1,7 +1,6 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import {
-  nav as navActions,
   audio as audioActions,
   header as headerActions,
 } from "../../../data/store";
@@ -15,10 +14,6 @@ jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
 jest.mock("../../../data/store", () => ({
-  nav: {
-    setLevel: jest.fn(),
-    setAction: jest.fn(),
-  },
   audio: {
     setPlaying: jest.fn(),
   },
@@ -101,21 +96,6 @@ it("parses series query", () => {
 
 it("parses sermon query", () => {
   expect(CURRENT_SERMON_QUERY).toMatchSnapshot();
-});
-
-it("updates nav on mount", () => {
-  const mockDispatch = jest.fn();
-  navActions.setLevel = jest.fn();
-  navActions.setAction = jest.fn();
-  const wrapper = shallow(generateComponent({
-    dispatch: mockDispatch,
-  }));
-  // from handleHeader as well
-  expect(mockDispatch).toHaveBeenCalledTimes(3);
-  expect(navActions.setLevel).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledWith("CONTENT");
-  expect(navActions.setAction).toHaveBeenCalledTimes(1);
-  expect(navActions.setAction.mock.calls[0][0]).toBe("CONTENT");
 });
 
 it("handleHeader updates the header", () => {
