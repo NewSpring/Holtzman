@@ -7,13 +7,12 @@ import gql from "graphql-tag";
 
 import Loading from "../../components/@primitives/UI/loading";
 import {
-  nav as navActions,
   audio as audioActions,
   header as headerActions,
 } from "../../data/store";
 
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 import time from "../../util/time";
@@ -39,12 +38,6 @@ class SeriesSingleVideoWithoutData extends Component {
 
     // needed for client cache
     this.handleHeader(this.props);
-
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction,
-    }));
   }
 
   componentWillUpdate(nextProps) {
@@ -213,11 +206,11 @@ const mapStateToProps = (state) => ({ live: state.live });
 export default connect(mapStateToProps)(
   withCurrentSermon(
     withSeries(
-      ReactMixin.decorate(Likeable)(
-        ReactMixin.decorate(Shareable)(
-          ReactMixin.decorate(Headerable)(
-            SeriesSingleVideoWithoutData
-          )
+      ReactMixin.decorate(Shareable)(
+        ReactMixin.decorate(Headerable)(
+          canLike(
+            (props) => (props.currentSermon.loading ? null : props.currentSermon.content.entryId)
+          )(SeriesSingleVideoWithoutData)
         )
       )
     )
