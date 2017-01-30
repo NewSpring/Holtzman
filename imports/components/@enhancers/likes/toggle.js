@@ -16,7 +16,7 @@ import {
 
 import OnBoard from "../../people/accounts";
 
-const TOGGLE_LIKE_MUTATION = gql`
+export const TOGGLE_LIKE_MUTATION = gql`
   mutation ToggleLike($nodeId: String!) {
     toggleLike(nodeId: $nodeId) {
       like {
@@ -74,7 +74,7 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
       return { type: "FALSY", payload: {} };
     }
 
-    render = () => <WrappedComponent {...this.props} onLike={this.toggleLike} />;
+    render = () => <WrappedComponent {...this.props} />;
   }
   return connect()(withToggleLike(LikesWrapper));
 };
