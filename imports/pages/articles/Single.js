@@ -1,4 +1,7 @@
-import { PropTypes } from "react";
+
+// @flow
+// ignore mixin until we can remove it entirely
+// $FlowMeteor
 import ReactMixin from "react-mixin";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -24,7 +27,11 @@ import Content from "./Content";
 
 const defaultArray = [];
 
-const ArticlesSingle = (props) => {
+type IArticlesSingle = {
+  article: Object,
+};
+
+const ArticlesSingle = (props: IArticlesSingle) => {
   const { content } = props.article;
 
   if (!content) {
@@ -84,10 +91,6 @@ const ArticlesSingle = (props) => {
       </Left>
     </div>
   );
-};
-
-ArticlesSingle.propTypes = {
-  article: PropTypes.object.isRequired,
 };
 
 const ARTICLE_QUERY = gql`

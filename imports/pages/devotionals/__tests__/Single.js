@@ -96,8 +96,6 @@ it("renders with scripture", () => {
 it("dispatches to the store on mount", () => {
   const mockDispatch = jest.fn();
   liveActions.hide = jest.fn();
-  // navActions.setLevel = jest.fn();
-  // navActions.setAction = jest.fn();
   headerActions.set = jest.fn();
   headerActions.hide = jest.fn();
   const wrapper = shallow(generateComponent({
@@ -105,10 +103,6 @@ it("dispatches to the store on mount", () => {
   }));
   expect(mockDispatch).toHaveBeenCalledTimes(3);
   expect(liveActions.hide).toHaveBeenCalledTimes(1);
-  // expect(navActions.setLevel).toHaveBeenCalledTimes(1);
-  // expect(navActions.setLevel).toHaveBeenCalledWith("CONTENT");
-  // expect(navActions.setAction).toHaveBeenCalledTimes(1);
-  // expect(navActions.setAction.mock.calls[0][0]).toBe("CONTENT");
   expect(headerActions.set).toHaveBeenCalledTimes(1);
   expect(headerActions.hide).toHaveBeenCalledTimes(1);
 });
