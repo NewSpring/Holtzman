@@ -41,6 +41,7 @@ const DISCOVER_QUERY = gql`
       title
       id
       status
+      channelName
       meta {
         urlTitle
         date
