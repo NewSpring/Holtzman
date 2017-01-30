@@ -3,6 +3,8 @@
 function categoryIcon(contentItem) {
   const category = contentItem.channelName;
 
+  if (contentItem.icon) return contentItem.icon;
+
   switch (category) {
     case "series_newspring":
     case "series":
