@@ -32,9 +32,7 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
       const formattedObj = {
         ...featuredItem,
         image: getImage(featuredItem.content.images, "1:1"),
-        channelName: "Need To Know",
         hideDate: true,
-        icon: "icon-leaf-outline",
       };
 
       return (
