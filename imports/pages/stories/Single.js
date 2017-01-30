@@ -1,4 +1,7 @@
-import { PropTypes } from "react";
+
+// @flow
+// ignore until we can remove this entirely
+// $FlowMeteor
 import ReactMixin from "react-mixin";
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
@@ -14,7 +17,11 @@ import Shareable from "../../deprecated/mixins/mixins.Shareable";
 // import content component
 import StoriesContent from "./Content";
 
-const StoriesSingleWithoutData = (props) => {
+type IStoriesSingleWithouData = {
+  story: Object,
+};
+
+const StoriesSingleWithoutData = (props: IStoriesSingleWithouData) => {
   const { content } = props.story;
 
   if (!content) {
@@ -30,10 +37,6 @@ const StoriesSingleWithoutData = (props) => {
 
   const story = content;
   return <StoriesContent story={story} />;
-};
-
-StoriesSingleWithoutData.propTypes = {
-  story: PropTypes.object,
 };
 
 const GET_STORY_QUERY = gql`

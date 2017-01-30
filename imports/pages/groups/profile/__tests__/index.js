@@ -105,7 +105,6 @@ it("closeModal calls preventDefault, hides modal, and adjust nav", () => {
   const mockPreventDefault = jest.fn();
   const mockDispatch = jest.fn();
   modal.hide = jest.fn();
-  // navActions.setLevel = jest.fn();
   const wrapper = shallow(generateComponent({
     dispatch: mockDispatch,
   }));
@@ -115,8 +114,6 @@ it("closeModal calls preventDefault, hides modal, and adjust nav", () => {
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
   expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(modal.hide).toHaveBeenCalledTimes(1);
-  // expect(navActions.setLevel).toHaveBeenCalledTimes(1);
-  // expect(navActions.setLevel).toHaveBeenCalledWith("BASIC_CONTENT");
 });
 
 it("sendRequest calls preventDefault and the join meteor method", () => {
