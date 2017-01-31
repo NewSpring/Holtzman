@@ -4,7 +4,6 @@ import { Link } from "react-router";
 // import DiscoverHero from "./Hero";
 import Hero from "../../@primitives/UI/hero";
 import { MiniCard } from "../../@primitives/UI/cards";
-import PopularItem from "../../people/profile/likes/Item";
 
 function getImage(images, label = "2:1") {
   let selectedImage = false;
@@ -28,30 +27,29 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
     </section>
 
     {(() => {
-      console.log(publicLikes);
       if (!featuredItem) return null;
-      return (
-        <Hero
-          image={getImage(featuredItem.content.images, "1:1")}
-          item={featuredItem || {}}
-        />
-      );
+
+      const formattedObj = {
+        content: featuredItem,
+        hideDate: true,
+      };
+
+      return <Hero {...formattedObj} />;
     })()}
 
     <section className="soft-half background--light-secondary">
-      <div className="grid">
+      <div className="grid flush">
         {recommendedItems.map((item, i) => {
-          const formatedObj = {
-            link: item.meta.urlTitle,
-            image: getImage(item.content.images),
+          const formattedObj = {
             title: item.title,
-            date: item.meta.date,
-            category: "Need to know",
-            icon: "icon-leaf-outline",
+            content: item,
+            link: item.meta.urlTitle,
           };
 
           return (
-            <PopularItem like={formatedObj} key={i} />
+            <div>
+              <MiniCard {...formattedObj} key={i} />
+            </div>
           );
         })}
       </div>
@@ -59,7 +57,6 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
 
     <section className="hard background--light-secondary">
       <h6 className="push-left soft-half-bottom soft-top">Recently Liked By Others</h6>
-      
     </section>
 
     <div className="soft-half background--light-secondary">
