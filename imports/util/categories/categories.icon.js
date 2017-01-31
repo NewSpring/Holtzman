@@ -16,6 +16,7 @@ function categoryIcon(contentItem) {
     case "news":
     case "study":
     case "study_entries":
+    case "events":
     default:
       return "icon-category-text";
   }
