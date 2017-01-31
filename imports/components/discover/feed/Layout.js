@@ -57,37 +57,6 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
       </div>
     </section>
 
-    <div className="soft-half background--light-secondary">
-      <div className="card soft one-whole">
-        <div className="card__item">
-          <p className="flush">
-            <small>
-              <em>
-                Are you looking for&nbsp;
-                {textItems.map((x, i) => {
-                  let delimeter = ", ";
-                  if (textItems[i].id === textItems[textItems.length - 1].id) {
-                    delimeter = "";
-                  } else if (textItems[i].id === textItems[textItems.length - 2].id) {
-                    delimeter = " or ";
-                  }
-
-                  return (
-                    <span key={i}>
-                      <Link to={x.meta.urlTitle} >{x.title}</Link>
-                      {delimeter}
-                    </span>
-                  );
-                })}?
-              </em>
-            </small>
-
-          </p>
-
-        </div>
-      </div>
-    </div>
-
     <section className="soft-half background--light-secondary">
       <div className="one-whole text-center">
         <h5 className="flush soft-bottom">Recently Liked By Others</h5>
@@ -118,6 +87,37 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
         );
       })}
     </section>
+
+    <div className="soft-half background--light-secondary">
+      <div className="card soft one-whole">
+        <div className="card__item">
+          <p className="flush">
+            <small>
+              <em>
+                Are you looking for&nbsp;
+                {textItems.map((x, i) => {
+                  let delimeter = ", ";
+                  if (textItems[i].id === textItems[textItems.length - 1].id) {
+                    delimeter = "";
+                  } else if (textItems[i].id === textItems[textItems.length - 2].id) {
+                    delimeter = " or ";
+                  }
+
+                  return (
+                    <span key={i}>
+                      <Link to={x.meta.urlTitle} >{x.title}</Link>
+                      {delimeter}
+                    </span>
+                  );
+                })}?
+              </em>
+            </small>
+
+          </p>
+
+        </div>
+      </div>
+    </div>
 
     {/*
     <section className="hard background--light-secondary">
