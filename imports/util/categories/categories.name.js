@@ -10,6 +10,8 @@ function categoryName(contentItem) {
       return "Series";
     case "newspring_albums":
       return "Albums";
+    case "newspring_now":
+      return "Events";
     default:
       // XXX this handles the case of `articless` but not `articles`
       // i think this is wrong
