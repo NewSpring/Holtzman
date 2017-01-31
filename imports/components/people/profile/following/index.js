@@ -13,6 +13,7 @@ import topicActions from "../../../../data/store/topics/";
 export const topics = [
   "Articles",
   "Devotionals",
+  "Events",
   "Music",
   "News",
   "Series",
@@ -23,8 +24,8 @@ export const topics = [
 
 // XXX make this dynamic via heighliner
 const map = (state) => ({ topics: state.topics.topics });
-@connect(map)
-export default class FollowingContainer extends Component {
+// @connect(map)
+export class FollowingContainer extends Component {
 
   propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -72,3 +73,5 @@ export default class FollowingContainer extends Component {
   }
 
 }
+
+export default connect(map)(FollowingContainer);
