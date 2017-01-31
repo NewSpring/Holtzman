@@ -99,7 +99,9 @@ class HomeWithoutData extends Component {
             aspect="square"
             link={heroLink}
           >
+
             <HomeHero item={heroItem || {}} />
+
           </Right>
         </Split>
         <Left scroll>
