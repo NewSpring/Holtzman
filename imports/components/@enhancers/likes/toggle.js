@@ -62,9 +62,14 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
 
     toggleLike = () => {
       const { dispatch, mutate } = this.props;
+      // may still be open form user logging in.
+      if (this.props.modal.visible) dispatch(modal.hide());
+
       if (!Meteor.userId()) { // if not logged in, show login modal
         dispatch(modal.render(OnBoard, {
-          coverHeader: true, modalBackground: "light",
+          coverHeader: true,
+          modalBackground: "light",
+          onFinished: this.toggleLike,
         }));
       } else { // if logged in, toggle like state in redux, remote with gql query
         const nodeId = this.getNodeId();
