@@ -30,14 +30,11 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
       if (!featuredItem) return null;
 
       const formattedObj = {
-        ...featuredItem,
-        image: getImage(featuredItem.content.images, "1:1"),
+        content: featuredItem,
         hideDate: true,
       };
 
-      return (
-        <Hero item={formattedObj} />
-      );
+      return <Hero {...formattedObj} />;
     })()}
 
     <section className="soft-half background--light-secondary">
@@ -60,7 +57,6 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
 
     <section className="hard background--light-secondary">
       <h6 className="push-left soft-half-bottom soft-top">Recently Liked By Others</h6>
-      
     </section>
 
     <div className="soft-half background--light-secondary">
