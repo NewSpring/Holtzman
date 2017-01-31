@@ -5,6 +5,8 @@ import { mount } from "enzyme";
 import { Provider } from 'react-redux';
 import { mountToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
+import { connect } from "react-redux";
+import { createStore } from "redux";
 
 import { classWrapper, TOGGLE_LIKE_MUTATION } from "../toggle";
 
@@ -14,6 +16,7 @@ const mockStore = {
   getState: jest.fn(),
   subscribe: jest.fn(),
   dispatch: jest.fn(),
+  modal: { visible: false },
 };
 
 const mockClient = {
@@ -29,9 +32,9 @@ const renderComponent = (additionalProps) => {
   }
   const Wrapped = classWrapper(jest.fn(() => "12345"))(TestComponent);
   return (
-    <Provider store={mockStore}>
-      <ApolloProvider client={mockClient} store={mockStore}>
-        <Wrapped { ...defaultProps } { ...additionalProps } />
+    <Provider store={createStore(() => mockStore, mockStore)}>
+      <ApolloProvider client={mockClient} store={createStore(() => mockStore, mockStore)}>
+        <Wrapped modal={{ visible: false }} { ...additionalProps } />
       </ApolloProvider>
     </Provider>
   );
@@ -43,7 +46,7 @@ describe("Likes Wrapper", () => {
     expect(print(TOGGLE_LIKE_MUTATION)).toMatchSnapshot();
   });
 
-  it("should render the child component", () => {
+  fit("should render the child component", () => {
     const component = mount(renderComponent());
     expect(mountToJson(component)).toMatchSnapshot();
   });
