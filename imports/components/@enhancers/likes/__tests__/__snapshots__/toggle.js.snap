@@ -1,0 +1,99 @@
+exports[`Likes Wrapper should contain mutation 1`] = `
+"mutation ToggleLike($nodeId: String!) {
+  toggleLike(nodeId: $nodeId) {
+    like {
+      ...ContentCard
+      ...GroupCard
+    }
+  }
+}
+
+fragment ContentCard on Content {
+  __typename
+  id
+  title
+  channelName
+  content {
+    images(sizes: ["SMALL", "MEDIUM"]) {
+      url
+      label
+    }
+  }
+}
+
+fragment GroupCard on Group {
+  __typename
+  id
+  name
+  photo
+}
+"
+`;
+
+exports[`Likes Wrapper should render the child component 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }>
+  <ApolloProvider
+    client={
+      Object {
+        "initStore": [Function],
+        "mutate": [Function],
+      }
+    }
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
+    }>
+    <Connect(Apollo(LikesWrapper))
+      modal={
+        Object {
+          "visible": false,
+        }
+      }>
+      <Apollo(LikesWrapper)
+        dispatch={[Function]}
+        modal={
+          Object {
+            "visible": false,
+          }
+        }>
+        <LikesWrapper
+          dispatch={[Function]}
+          modal={
+            Object {
+              "visible": false,
+            }
+          }
+          mutate={[Function]}>
+          <TestComponent
+            dispatch={[Function]}
+            modal={
+              Object {
+                "visible": false,
+              }
+            }
+            mutate={[Function]}>
+            <div
+              id="tester">
+              Test
+            </div>
+          </TestComponent>
+        </LikesWrapper>
+      </Apollo(LikesWrapper)>
+    </Connect(Apollo(LikesWrapper))>
+  </ApolloProvider>
+</Provider>
+`;

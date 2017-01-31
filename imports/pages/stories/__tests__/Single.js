@@ -1,6 +1,5 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { nav as navActions } from "../../../data/store";
 import {
   StoriesSingleWithoutData as StoriesSingle,
   GET_STORY_QUERY,
@@ -9,12 +8,6 @@ import {
 jest.mock("../../../deprecated/mixins/mixins.Header", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
-jest.mock("../../../data/store", () => ({
-  nav: {
-    setLevel: jest.fn(),
-    setAction: jest.fn(),
-  },
-}));
 
 const defaultProps = {
   dispatch: jest.fn(),
@@ -47,19 +40,4 @@ it("renders loading if no content", () => {
 
 it("parses query correctly", () => {
   expect(GET_STORY_QUERY).toMatchSnapshot();
-});
-
-it("updates nav on mount", () => {
-  const mockDispatch = jest.fn();
-  navActions.setLevel = jest.fn();
-  navActions.setAction = jest.fn();
-  const wrapper = shallow(generateComponent({
-    dispatch: mockDispatch,
-  }));
-  expect(mockDispatch).toHaveBeenCalledTimes(2);
-  expect(navActions.setLevel).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledWith("CONTENT");
-  expect(navActions.setAction).toHaveBeenCalledTimes(1);
-  expect(navActions.setAction.mock.calls[0][0]).toBe("CONTENT");
-  expect(navActions.setAction.mock.calls[0][1]).toMatchSnapshot();
 });
