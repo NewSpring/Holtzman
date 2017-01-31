@@ -8,22 +8,25 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { connect } from "react-redux";
 
+import { contentCard, groupCard } from "./fragments";
 import {
   nav as navActions,
   liked as likedActions,
   modal,
 } from "../../../data/store";
-
 import OnBoard from "../../people/accounts";
 
 export const TOGGLE_LIKE_MUTATION = gql`
   mutation ToggleLike($nodeId: String!) {
     toggleLike(nodeId: $nodeId) {
       like {
-        id
+        ... ContentCard
+        ... GroupCard
       }
     }
   }
+  ${contentCard}
+  ${groupCard}
 `;
 
 const withToggleLike = graphql(TOGGLE_LIKE_MUTATION, {});

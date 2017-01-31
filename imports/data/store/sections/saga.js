@@ -1,3 +1,6 @@
+
+// XXX we need to abstract this to the component level
+
 import "regenerator-runtime/runtime";
 
 import { fork, put } from "redux-saga/effects";
@@ -94,15 +97,17 @@ function* getSectionsData() {
 
   // go ahead and make the query on load (this will be cached on heighliner)
   const { data } = yield GraphQL.query({ query, variables });
-  const navigation = data.navigation;
-  delete data.navigation;
+  // XXX cloned this because we need navigation to not be frozen
+  const navigation = JSON.parse(JSON.stringify(data.navigation));
   const filteredItems = {};
 
   // parse the results and only get a single usable image
   // eslint-disable-next-line
   for (const item in data) {
-    const image = extractImage(data[item][0]);
-    filteredItems[item] = image;
+    if(item !== "navigation"){
+      const image = extractImage(data[item][0]);
+      filteredItems[item] = image;
+    }
   }
 
   function bindForeignImages(sections) {
