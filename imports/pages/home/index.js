@@ -20,7 +20,7 @@ import infiniteScroll from "../../components/@enhancers/infinite-scroll";
 import backgrounds from "../../util/backgrounds";
 import content from "../../util/content";
 
-import Hero from "../../components/@primitives/UI/hero";
+import HomeHero from "./home.Hero";
 
 class HomeWithoutData extends Component {
 
@@ -99,9 +99,7 @@ class HomeWithoutData extends Component {
             aspect="square"
             link={heroLink}
           >
-
-            <Hero item={heroItem || {}} />
-
+            <HomeHero item={heroItem || {}} />
           </Right>
         </Split>
         <Left scroll>
