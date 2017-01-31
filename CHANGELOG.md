@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Added the ability for the home feed to pull items from the NS: Now channel in EE. These items link to internal entry pages.
 ### Fixed
 - Fixed an issue in iOS that was causing schedules to not be created.
 - Fixed the toggle import in the `/following` section on profile causing component not to render.
