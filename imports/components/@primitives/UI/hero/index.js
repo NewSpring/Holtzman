@@ -1,51 +1,72 @@
-import { Component, PropTypes } from "react";
+// @flow
 import { Link } from "react-router";
 
 import categories from "../../../../util/categories";
 import time from "../../../../util/time";
 
-export default class Hero extends Component {
-
-  static propTypes = {
-    item: PropTypes.object.isRequired,
-  }
-
-  timeStampStyles = {
-    marginTop: "5px",
-  }
-
-
-  render() {
-    const heroItem = this.props.item;
-    let backgroundClass;
-
-    let iconClasses = "text-light-primary soft-half-right";
-    const ready = Object.keys(heroItem).length;
-
-    if (heroItem.image) {
-      backgroundClass = "background--fill overlay--gradient";
-    }
-
-    if (ready) {
-      iconClasses += ` ${categories.icon(heroItem)} `;
-    }
-
-    return (
-      <Link
-        to={heroItem.meta.urlTitle}
-      >
-        <section className={`hard floating--bottom text-left background--dark-primary ratio--square ${backgroundClass}`} style={{ backgroundImage: `url('${heroItem.image}')` }}>
-          <div className="one-whole overlay__item floating__item soft">
-            <h3 className="text-light-primary flush soft-half-bottom capitalize">{heroItem.title}</h3>
-            <i className={iconClasses} />
-            <h7 className="text-light-primary">{ready ? categories.name(heroItem) : ""}</h7>
-            {(heroItem && !heroItem.hideDate) && <h7 className="text-light-primary text-right float-right" style={this.timeStampStyles}>
-              {ready ? time.relative(heroItem) : ""}
-            </h7>}
-          </div>
-        </section>
-      </Link>
-    );
-  }
-
+function isReady(content: Object) {
+  return Object.keys(content).length;
 }
+
+function getTimeStampStyles() {
+  const styles = {
+    marginTop: "5px",
+  };
+
+  return styles;
+}
+
+function getIconClasses(content: Object) {
+  if (isReady(content)) {
+    let iconClasses = "text-light-primary soft-half-right";
+    iconClasses = iconClasses += ` ${categories.icon(content)}`;
+    return iconClasses;
+  }
+  return null;
+}
+
+function getImage(images: Object, label: string = "2:1") {
+  let selectedImage = "";
+
+  for (const image of images) {
+    if (image.fileLabel === label) {
+      selectedImage = image.url;
+      break;
+    }
+    selectedImage = image.url;
+  }
+  return selectedImage;
+}
+
+type IHero = {
+  content: Object,
+  title?: string,
+  hideDate?: boolean,
+  link?: string,
+  image?: string,
+}
+
+const Hero = ({
+  content,
+  title,
+  hideDate,
+  link,
+  image,
+}: IHero) => (
+  <Link
+    to={link || content.meta.urlTitle}
+  >
+    <section className={`hard floating--bottom text-left background--dark-primary ratio--square ${(content.content.images) ? "background--fill overlay--gradient" : ""}`} style={{ backgroundImage: `url('${image || getImage(content.content.images, "1:1")}')` }}>
+      <div className="one-whole overlay__item floating__item soft">
+        <h3 className="text-light-primary flush soft-half-bottom capitalize">{title || content.title}</h3>
+        <i className={getIconClasses(content)} />
+        <h7 className="text-light-primary">{isReady(content) ? categories.name(content) : ""}</h7>
+        {(content && !hideDate) && <h7 className="text-light-primary text-right float-right" style={getTimeStampStyles()}>
+          {isReady(content) ? time.relative(content) : ""}
+        </h7>}
+      </div>
+    </section>
+  </Link>
+);
+
+export default Hero;
