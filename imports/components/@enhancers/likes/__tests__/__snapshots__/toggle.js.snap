@@ -2,9 +2,30 @@ exports[`Likes Wrapper should contain mutation 1`] = `
 "mutation ToggleLike($nodeId: String!) {
   toggleLike(nodeId: $nodeId) {
     like {
-      id
+      ...ContentCard
+      ...GroupCard
     }
   }
+}
+
+fragment ContentCard on Content {
+  __typename
+  id
+  title
+  channelName
+  content {
+    images(sizes: [\"SMALL\", \"MEDIUM\"]) {
+      url
+      label
+    }
+  }
+}
+
+fragment GroupCard on Group {
+  __typename
+  id
+  name
+  photo
 }
 "
 `;
@@ -32,14 +53,34 @@ exports[`Likes Wrapper should render the child component 1`] = `
         "subscribe": [Function],
       }
     }>
-    <Connect(Apollo(LikesWrapper))>
+    <Connect(Apollo(LikesWrapper))
+      modal={
+        Object {
+          "visible": false,
+        }
+      }>
       <Apollo(LikesWrapper)
-        dispatch={[Function]}>
+        dispatch={[Function]}
+        modal={
+          Object {
+            "visible": false,
+          }
+        }>
         <LikesWrapper
           dispatch={[Function]}
+          modal={
+            Object {
+              "visible": false,
+            }
+          }
           mutate={[Function]}>
           <TestComponent
             dispatch={[Function]}
+            modal={
+              Object {
+                "visible": false,
+              }
+            }
             mutate={[Function]}>
             <div
               id="tester">

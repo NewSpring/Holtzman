@@ -24,11 +24,14 @@ const mockClient = {
 Meteor.userId = jest.fn();
 
 const renderComponent = (additionalProps) => {
+  const defaultProps = {
+    modal: { visible: false },
+  }
   const Wrapped = classWrapper(jest.fn(() => "12345"))(TestComponent);
   return (
     <Provider store={mockStore}>
       <ApolloProvider client={mockClient} store={mockStore}>
-        <Wrapped {...additionalProps} />
+        <Wrapped { ...defaultProps } { ...additionalProps } />
       </ApolloProvider>
     </Provider>
   );
@@ -95,7 +98,7 @@ describe("Likes Wrapper", () => {
     const Component = (
       <Provider store={mockStore}>
         <ApolloProvider client={mockClient} store={mockStore}>
-          <Wrapped />
+          <Wrapped modal={{visible: false}} />
         </ApolloProvider>
       </Provider>
     );
@@ -118,7 +121,7 @@ describe("Likes Wrapper", () => {
     const Component = (
       <Provider store={mockStore}>
         <ApolloProvider client={mockClient} store={mockStore}>
-          <Wrapped />
+          <Wrapped modal={{visible: false}} />
         </ApolloProvider>
       </Provider>
     );

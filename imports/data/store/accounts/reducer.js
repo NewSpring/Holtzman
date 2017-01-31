@@ -243,22 +243,20 @@ export default createReducer(initial, {
       return state;
     }
 
-    const personAction = JSON.parse(JSON.stringify(action.person));
-
-    if (!personAction.Home) {
+    if (!action.person.Home) {
       // eslint-disable-next-line
-      personAction.Home = initial.person.Home;
+      action.person.Home = initial.person.Home;
     }
 
-    if (!personAction.Campus) {
+    if (!action.person.Campus) {
       // eslint-disable-next-line
-      personAction.Campus = initial.person.Campus;
+      action.person.Campus = initial.person.Campus;
     }
 
     return {
       ...state,
       ...{
-        person: personAction,
+        person: action.person,
         authorized: true,
       },
     };

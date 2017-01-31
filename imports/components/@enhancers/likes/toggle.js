@@ -61,9 +61,10 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
     };
 
     toggleLike = () => {
+      console.log("PROPS", this.props);
       const { dispatch, mutate } = this.props;
       // may still be open form user logging in.
-      if (this.props.modal.visible) dispatch(modal.hide());
+      if (this.props.modal && this.props.modal.visible) dispatch(modal.hide());
 
       if (!Meteor.userId()) { // if not logged in, show login modal
         dispatch(modal.render(OnBoard, {
@@ -84,7 +85,12 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
 
     render = () => <WrappedComponent {...this.props} />;
   }
-  return connect()(withToggleLike(LikesWrapper));
+
+  const mapStateToProps = ({ modal }) => ({
+    modal: modal,
+  });
+
+  return connect(mapStateToProps)(withToggleLike(LikesWrapper));
 };
 
 export default classWrapper;
