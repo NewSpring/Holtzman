@@ -1,12 +1,14 @@
 import { PropTypes } from "react";
 import { Link } from "react-router";
 
-// import DiscoverHero from "./Hero";
+import contentHelper from "../../../util/content";
+import categories from "../../../util/categories";
+
 import Hero from "../../@primitives/UI/hero";
 import { MiniCard } from "../../@primitives/UI/cards";
 
 function getImage(images, label = "2:1") {
-  let selectedImage = false;
+  let selectedImage = "";
 
   for (const image of images) {
     if (image.fileLabel === label) {
@@ -86,17 +88,35 @@ const Layout = ({ featuredItem, recommendedItems, textItems, publicLikes }) => (
       </div>
     </div>
 
-    <section className="soft-half-sides@palm soft-double@palm-wide soft-top soft-half-bottom background--light-secondary">
+    <section className="soft-half background--light-secondary">
       <div className="one-whole text-center">
         <h5 className="flush soft-bottom">Recently Liked By Others</h5>
       </div>
-      {publicLikes.map((item, i) => (
-        <MiniCard
-          key={i}
-          title={item.title}
-          content={item}
-        />
-      ))}
+      {publicLikes.map((item, i) => {
+        let itemImage = getImage(item.content.images, "1:1");
+        // XXX Need to revisit this when public group likes is available
+        const itemIcon = categories.icon(item);
+        const itemCategory = categories.name(item);
+
+        if (item.parent) {
+          itemImage = getImage(item.parent.content.images, "1:1");
+        }
+
+        const formattedObj = {
+          title: item.title,
+          image: itemImage,
+          icon: itemIcon,
+          category: itemCategory,
+          link: contentHelper.links(item),
+        };
+
+        return (
+          <MiniCard
+            {...formattedObj}
+            key={i}
+          />
+        );
+      })}
     </section>
 
     {/*
