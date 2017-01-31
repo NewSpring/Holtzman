@@ -35,6 +35,7 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
   type ILikesWrapper = {
     dispatch: Function,
     mutate: Function,
+    modal: Object,
   };
 
   class LikesWrapper extends Component {
@@ -86,7 +87,7 @@ export const classWrapper = (propsReducer: Function) => (WrappedComponent: any) 
   }
 
   const mapStateToProps = (state) => ({
-    modal: state.modal
+    modal: state.modal,
   });
 
   return connect(mapStateToProps)(withToggleLike(LikesWrapper));
