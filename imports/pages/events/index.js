@@ -1,7 +1,7 @@
 // @flow
 import Entry from "./Entry";
 
-const Event = () => <div><p>This is an event</p></div>;
+const Event = () => <Entry />;
 
 const Routes = [
   { path: "events/:id", component: Entry },
