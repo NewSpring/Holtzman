@@ -17,13 +17,12 @@ import Split, { Left, Right } from "../../components/@primitives/layout/split";
 import backgrounds from "../../util/backgrounds";
 import react from "../../util/react";
 
-import SingleVideoPlayer from "../../components/@primitives/players/video/Player";
+import RelatedContent from "../../components/content/related-content";
+import SingleVideoPlayer from "../../components/@primitives/players/video";
 
-// const IEntryWithoutData = {
-//   event: Object,
-// };
+const defaultArray = [];
 
-class EntryWithoutData extends Component {
+class EventSingleWithoutData extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -31,7 +30,7 @@ class EntryWithoutData extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(navActions.setLevel("CONTENT"));
+    this.props.dispatch(navActions.setLevel("BASIC_CONTENT"));
     if (this.headerAction) {
       this.headerAction({ title: "NewSpring Now" });
     }
@@ -40,23 +39,33 @@ class EntryWithoutData extends Component {
   render() {
     const { content, live } = this.props.event;
 
-    if (this.props.event.loading) return <Loading />;
+    if (!content) {
+      // loading
+      return (
+        <div className="locked-ends locked-sides floating">
+          <div className="floating__item">
+            <Loading />
+          </div>
+        </div>
+      );
+    }
 
-    const photo = backgrounds.image(content);
+    const event = content;
+    const photo = backgrounds.image(event);
 
     return (
       <div>
         <Meta
-          title={content.title}
+          title={event.title}
           image={photo}
-          id={content.id}
+          id={event.id}
           meta={[
             { property: "og:type", content: "article" },
           ]}
         />
         <Split nav classes={["background--light-primary"]}>
           {(() => {
-            if (content.content.ooyalaId.length === 0 && !live.live) {
+            if (event.content.ooyalaId.length === 0 && !live.live) {
               return (
                 <Right
                   mobile
@@ -68,13 +77,9 @@ class EntryWithoutData extends Component {
               );
             }
             // set the correct ooyala id based on live
-            // set autoplay to false if we are live
-            // #no videos in service
-            let ooyalaId = content.content.ooyalaId;
-            if (live.live) {
-              ooyalaId = live.ooyalaId;
-            }
-            return <SingleVideoPlayer ooyalaId={ooyalaId} autoPlay="false" />;
+            let ooyalaId = event.content.ooyalaId;
+            if (live.live) ooyalaId = live.ooyalaId;
+            return <SingleVideoPlayer id={ooyalaId} autoplay="false" />;
           })()}
         </Split>
         <Left scroll>
@@ -85,9 +90,13 @@ class EntryWithoutData extends Component {
                 "soft-double@lap-wide-and-up push-top push-double-top@lap-and-up"
               }
             >
-              <h2 className="capitalize">{content.title}</h2>
-              <div dangerouslySetInnerHTML={react.markup(content)} />
+              <h2 className="capitalize">{event.title}</h2>
+              <div dangerouslySetInnerHTML={react.markup(event)} />
             </section>
+            <RelatedContent
+              excludedIds={[event.id]}
+              tags={event.content.tags || defaultArray}
+            />
           </div>
         </Left>
       </div>
@@ -95,16 +104,20 @@ class EntryWithoutData extends Component {
   }
 }
 
-const EVENT_QUERY = gql`
+const GET_EVENT_QUERY = gql`
   query getContent($id: ID!) {
     content: node(id: $id) {
       id
       ... on Content {
+        entryId: id
         title
         status
         channelName
         meta {
+          urlTitle
+          siteId
           date
+          channelId
         }
         content {
           body
@@ -126,7 +139,7 @@ const EVENT_QUERY = gql`
   }
 `;
 
-const withEvent = graphql(EVENT_QUERY, {
+const withEvent = graphql(GET_EVENT_QUERY, {
   name: "event",
   options: (ownProps) => ({
     variables: { id: ownProps.params.id },
@@ -136,11 +149,12 @@ const withEvent = graphql(EVENT_QUERY, {
 export default connect()(
   withEvent(
     ReactMixin.decorate(Headerable)(
-      EntryWithoutData
+      EventSingleWithoutData
     )
   )
 );
 
 export {
-  EntryWithoutData as Entry,
+  EventSingleWithoutData,
+  GET_EVENT_QUERY,
 };
