@@ -8,12 +8,11 @@ import Meta from "../../components/shared/meta";
 // loading state
 import Loading from "../../components/@primitives/UI/loading";
 import Headerable from "../../deprecated/mixins/mixins.Header";
-import Likeable from "../../deprecated/mixins/mixins.Likeable";
+import canLike from "../../components/@enhancers/likes/toggle";
 import Shareable from "../../deprecated/mixins/mixins.Shareable";
 
 // action helpers
 import {
-  nav as navActions,
   audio as audioActions,
 } from "../../data/store";
 
@@ -37,17 +36,7 @@ class MusicAlbumWithoutData extends Component {
     force: false,
   }
 
-  componentWillMount() {
-    if (process.env.WEB) return;
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction,
-    }));
-  }
-
   componentWillUnmount() {
-    this.props.dispatch(navActions.setLevel("TOP"));
     this.props.dispatch(audioActions.dock());
   }
 
@@ -224,11 +213,11 @@ const withAlbum = graphql(ALBUM_QUERY, {
 
 export default connect()(
   withAlbum(
-    ReactMixin.decorate(Likeable)(
-      ReactMixin.decorate(Shareable)(
-        ReactMixin.decorate(Headerable)(
-          MusicAlbumWithoutData
-        )
+    ReactMixin.decorate(Shareable)(
+      ReactMixin.decorate(Headerable)(
+        canLike(
+          (props) => (props.album.loading ? null : props.album.content.id)
+        )(MusicAlbumWithoutData)
       )
     )
   )
