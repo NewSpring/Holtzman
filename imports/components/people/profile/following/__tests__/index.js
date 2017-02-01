@@ -31,12 +31,29 @@ describe("Following", () => {
     },
   };
 
-  const generateComponent = () => (
-    <FollowingContainer { ...defaultProps } />
-  );
+  const generateComponent = (additionalProps = {}) => {
+    const newProps = {
+      ...defaultProps,
+      ...additionalProps,
+    };
+    return (
+    <FollowingContainer { ...newProps } />
+    );
+  };
 
-  it("renders the 'following' items", () => {
+  it("renders the 'following' items with authorization", () => {
     const wrapper = shallow(generateComponent());
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  })
+
+  it("renders the 'following' items without authorization", () => {
+    const someProps = {
+      person: {
+        authorized: false,
+      },
+    };
+
+    const wrapper = shallow(generateComponent(someProps));
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   })
 })
