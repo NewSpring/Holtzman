@@ -1,9 +1,6 @@
 import { PropTypes } from "react";
 import { Link } from "react-router";
 
-import contentHelper from "../../../util/content";
-import categories from "../../../util/categories";
-
 import Hero from "../../@primitives/UI/hero";
 import { MiniCard } from "../../@primitives/UI/cards";
 
@@ -62,7 +59,7 @@ const Layout = ({ featuredItem, recommendedItems, textItems, recentLikes }) => (
       <div className="one-whole text-center">
         <h5 className="flush soft-bottom">Recently Liked By Others</h5>
       </div>
-      <RecentLikes likes={recentLikes}/>
+      <RecentLikes likes={recentLikes} />
     </section>
 
     <div className="soft-half background--light-secondary">
