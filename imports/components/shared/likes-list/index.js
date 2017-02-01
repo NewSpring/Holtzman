@@ -1,10 +1,11 @@
-import { PropTypes } from "react";
-import { Link } from "react-router";
+
+// @flow
+
 import contentHelper from "../../../util/content";
 import categories from "../../../util/categories";
 import { MiniCard } from "../../@primitives/UI/cards";
 
-function getImage(images, label = "2:1") {
+function getImage(images: [Object], label: string = "2:1") {
   let selectedImage = "";
 
   for (const image of images) {
@@ -18,19 +19,19 @@ function getImage(images, label = "2:1") {
 }
 
 
-const renderLikes = (likes) => {
-  if(!Array.isArray(likes)) return;
+const renderLikes = (likes: [Object]) => {
+  if (!Array.isArray(likes)) return undefined;
   return likes.map((item, i) => {
     let formatted;
-    if (item.__typename === "Content") {
+    if (item.__typename === "Content") { // eslint-disable-line no-underscore-dangle
       formatted = {
         title: item.title,
-        image: getImage(item.parent ? item.parent.content.images: item.content.images, "1:1"),
+        image: getImage(item.parent ? item.parent.content.images : item.content.images, "1:1"),
         icon: categories.icon(item),
         category: categories.name(item),
         link: contentHelper.links(item),
       };
-    } else if (item.__typename === "Group") {
+    } else if (item.__typename === "Group") { // eslint-disable-line no-underscore-dangle
       formatted = {
         title: item.name,
         image: item.photo,
@@ -46,7 +47,7 @@ const renderLikes = (likes) => {
         key={i}
       />
     );
-  })
+  });
 };
 
 /*
@@ -62,10 +63,12 @@ const renderLikes = (likes) => {
     }
   ]
 */
-export default (props) => {
-  return (
-    <div>
-      { renderLikes(props.likes) }
-    </div>
-  );
+type ILikesList = {
+  likes: [Object],
 };
+
+export default (props: ILikesList) => (
+  <div>
+    { renderLikes(props.likes) }
+  </div>
+);
