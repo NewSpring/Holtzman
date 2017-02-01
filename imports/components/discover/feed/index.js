@@ -5,19 +5,19 @@ import { connect } from "react-redux";
 import gql from "graphql-tag";
 
 import { Loading } from "../../@primitives/UI/states";
-import withPublicLikes from "../../@enhancers/likes";
+import withRecentLikes from "../../@enhancers/likes/recents";
 import Layout from "./Layout";
 
 const IDiscoverWithoutData = {
   discover: Object,
-  publicLikes: Object,
+  recentLikes: Object,
 };
 
 const DiscoverWithoutData = ({
   discover,
-  publicLikes,
+  recentLikes,
 }: IDiscoverWithoutData) => {
-  if (discover.loading || publicLikes.loading) return <Loading />;
+  if (discover.loading || recentLikes.loading) return <Loading />;
 
   const featured = discover.items.filter((x) => (x.status.toLowerCase() === "featured"));
   const open = discover.items.filter((x) => (x.status.toLowerCase() === "open"));
@@ -30,7 +30,7 @@ const DiscoverWithoutData = ({
       featuredItem={featuredItem}
       recommendedItems={recommendedItems}
       textItems={open}
-      publicLikes={publicLikes.recentlyLiked}
+      recentLikes={recentLikes.recentlyLiked}
     />
   );
 };
@@ -70,7 +70,7 @@ const withDiscover = graphql(DISCOVER_QUERY, {
 
 const withRedux = connect();
 
-export default withRedux(withDiscover(withPublicLikes(DiscoverWithoutData)));
+export default withRedux(withDiscover(withRecentLikes(DiscoverWithoutData)));
 
 export {
   DiscoverWithoutData,
