@@ -78,7 +78,7 @@ class EventSingleWithoutData extends Component {
             }
             // set the correct ooyala id based on live
             let ooyalaId = event.content.ooyalaId;
-            if (live.live) ooyalaId = live.ooyalaId;
+            if (live.live) { ooyalaId = live.embedCode; }
             return <SingleVideoPlayer id={ooyalaId} autoplay="false" />;
           })()}
         </Split>
