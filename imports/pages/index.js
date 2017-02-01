@@ -13,6 +13,7 @@ if (process.env.NATIVE) {
   import Locations from "./locations";
   import Music from "./music";
   import News from "./news";
+  import Event from "./events";
   import Sections from "./sections";
   import Series from "./series";
   import Stories from "./stories";
@@ -38,6 +39,7 @@ if (process.env.NATIVE) {
     Locations.Routes,
     Music.Routes,
     News.Routes,
+    Event.Routes,
     Sections.Routes,
     Series.Routes,
     Stories.Routes,
