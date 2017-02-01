@@ -164,6 +164,11 @@ const CONTENT_FEED_QUERY = gql`
   ${contentFragment}
 `;
 
+const securityRole = "Staff";
+const filterChannels = (value) => (
+  (value !== "Events" || (value === "Events" && securityRole === "Staff"))
+);
+
 const getTopics = (opts) => {
   let channels = opts;
 
@@ -174,7 +179,7 @@ const getTopics = (opts) => {
   if (channels.length === 0) channels = [...topics];
 
   // return for the graphql call
-  return channels.map((x) => x.toLowerCase());
+  return channels.filter(filterChannels).map((x) => x.toLowerCase());
 };
 
 const withFeedContent = graphql(CONTENT_FEED_QUERY, {
