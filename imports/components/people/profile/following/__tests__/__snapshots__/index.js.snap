@@ -25,11 +25,6 @@ exports[`Following renders the 'following' items 1`] = `
     <FollowingItem
       active={true}
       changed={[Function]}
-      item="Events"
-      switchId={2} />
-    <FollowingItem
-      active={true}
-      changed={[Function]}
       item="Music"
       switchId={3} />
     <FollowingItem
