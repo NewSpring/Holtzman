@@ -1,10 +1,10 @@
 // @flow
-import Entry from "./Entry";
+import Single from "./Single";
 
-const Event = () => <Entry />;
+const Event = () => <Single />;
 
 const Routes = [
-  { path: "events/:id", component: Entry },
+  { path: "events/:id", component: Single },
 ];
 
 export default {
