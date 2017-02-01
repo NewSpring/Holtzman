@@ -5,18 +5,17 @@ import { graphql } from "react-apollo";
 import difference from "lodash.difference";
 import gql from "graphql-tag";
 
+import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
 import Split, { Left, Right } from "../../components/@primitives/layout/split";
-import { topics } from "../../components/people/profile/following";
 
 import ApollosPullToRefresh from "../../components/@enhancers/pull-to-refresh";
-import { FeedItemSkeleton } from "../../components/@primitives/UI/loading";
-import FeedItem from "../../components/content/feed-item-card";
+import infiniteScroll from "../../components/@enhancers/infinite-scroll";
+// import canSee from "../../components/@enhancers/security-roles";
 
+import FeedItem from "../../components/content/feed-item-card";
+import { topics } from "../../components/people/profile/following";
 import { nav as navActions } from "../../data/store";
 import Headerable from "../../deprecated/mixins/mixins.Header";
-
-import infiniteScroll from "../../components/@enhancers/infinite-scroll";
-
 import backgrounds from "../../util/backgrounds";
 import content from "../../util/content";
 
@@ -164,9 +163,8 @@ const CONTENT_FEED_QUERY = gql`
   ${contentFragment}
 `;
 
-const securityRole = "Staff";
 const filterChannels = (value) => (
-  (value !== "Events" || (value === "Events" && securityRole === "Staff"))
+  (value !== "Events" || (value === "Events" && !this.props.authorized))
 );
 
 const getTopics = (opts) => {
@@ -206,10 +204,12 @@ const withFeedContent = graphql(CONTENT_FEED_QUERY, {
 });
 
 export default connect((state) => ({ topics: state.topics.topics }))(
-  withFeedContent(
-    infiniteScroll()(
-      ReactMixin.decorate(Headerable)(
-        HomeWithoutData
+  canSee(["role"])(
+    withFeedContent(
+      infiniteScroll()(
+        ReactMixin.decorate(Headerable)(
+          HomeWithoutData
+        )
       )
     )
   )
