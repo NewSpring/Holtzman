@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
+import { canSee } from "../../../../components/@enhancers/security-roles";
 import FollowingItem from "./Item";
 
 import topicActions from "../../../../data/store/topics/";
@@ -22,8 +23,6 @@ export const topics = [
   "Studies",
 ];
 
-const securityRole = "Staffs";
-
 // XXX make this dynamic via heighliner
 const map = (state) => ({ topics: state.topics.topics });
 // @connect(map)
@@ -32,6 +31,7 @@ export class FollowingContainer extends Component {
   propTypes = {
     dispatch: PropTypes.func.isRequired,
     topics: PropTypes.object.isRequired,
+    person: PropTypes.object.isRequired,
   }
 
   h7Classes = "flush outlined--light outlined--bottom display-block soft-sides soft-half-top soft-bottom text-center soft-double-sides@lap-and-up soft-double-bottom@lap-and-up"
@@ -59,7 +59,7 @@ export class FollowingContainer extends Component {
         <div className={this.containerClasses}>
 
           {topics.map((contentItem, i) => {
-            if (contentItem !== "Events" || (securityRole === "Staff" && contentItem === "Events")) {
+            if (contentItem !== "Events" || (this.props.person.authorized && contentItem === "Events")) {
               return (
                 <FollowingItem
                   item={contentItem}
@@ -81,4 +81,4 @@ export class FollowingContainer extends Component {
 
 }
 
-export default connect(map)(FollowingContainer);
+export default connect(map)(canSee(["RSR - Beta Testers"])(FollowingContainer));

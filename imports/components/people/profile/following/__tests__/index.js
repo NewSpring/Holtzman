@@ -4,6 +4,7 @@ import { FollowingContainer } from "../";
 import {
   topics as topicActions,
 } from "../../../../../data/store";
+import { canSee } from "../../../../../components/@enhancers/security-roles";
 
 jest.mock("../../../../../data/store", () => ({
   topics: {
@@ -24,8 +25,14 @@ describe("Following", () => {
     "Studies",
   ];
 
+  const defaultProps = {
+    person: {
+      authorized: true,
+    },
+  };
+
   const generateComponent = () => (
-    <FollowingContainer />
+    <FollowingContainer { ...defaultProps } />
   );
 
   it("renders the 'following' items", () => {
