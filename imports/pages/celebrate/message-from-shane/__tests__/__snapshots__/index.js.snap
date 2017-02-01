@@ -25,7 +25,7 @@ exports[`Shane renders a layout 1`] = `
     }
     scroll={true}>
     <Link
-      className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain visuallyhidden@handheld"
+      className="locked-top locked-left soft-double@lap-and-up soft h7 text-dark-secondary plain push-half-top@handheld"
       onlyActiveOnIndex={false}
       style={Object {}}
       to="/annualreport">
@@ -52,7 +52,7 @@ exports[`Shane renders a layout 1`] = `
       <div
         className="soft soft-double-bottom soft-double-top@lap-and-up">
         <h1
-          className="soft-double-top@lap-and-up soft-top">
+          className="soft-double-top@lap-and-up soft-top push-double-top@handheld">
           Welcome to NewSpring\'s 2016 Annual Report!
         </h1>
         <div
@@ -79,6 +79,20 @@ exports[`Shane renders a layout 1`] = `
           Executive Pastor
         </p>
       </div>
+    </div>
+    <div
+      className="background--primary text-center text-light-primary soft">
+      <h3
+        className="push-double-top">
+        Keep Reading
+      </h3>
+      <Link
+        className="btn--light push-double-bottom"
+        onlyActiveOnIndex={false}
+        style={Object {}}
+        to="/annualreport">
+        Back To Annual Report
+      </Link>
     </div>
   </Left>
 </div>

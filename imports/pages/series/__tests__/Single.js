@@ -1,6 +1,5 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { nav as navActions } from "../../../data/store";
 import headerActions from "../../../data/store/header";
 import {
   SeriesSingleWithoutData as SeriesSingle,
@@ -12,12 +11,6 @@ jest.mock("../../../deprecated/mixins/mixins.Likeable", () => {});
 jest.mock("../../../deprecated/mixins/mixins.Shareable", () => {});
 jest.mock("../../../data/store/header", () => ({
   set: jest.fn(),
-}));
-jest.mock("../../../data/store", () => ({
-  nav: {
-    setLevel: jest.fn(),
-    setAction: jest.fn(),
-  },
 }));
 
 const defaultProps = {
@@ -72,18 +65,6 @@ it("renders loading", () => {
 
 it("parses query", () => {
   expect(SERIES_SINGLE_QUERY).toMatchSnapshot();
-});
-
-it("updates nav on mount", () => {
-  const mockDispatch = jest.fn();
-  navActions.setLevel = jest.fn();
-  navActions.setActions = jest.fn();
-  const wrapper = shallow(generateComponent({
-    dispatch: mockDispatch,
-  }));
-  expect(mockDispatch).toHaveBeenCalledTimes(3);
-  expect(navActions.setLevel).toHaveBeenCalledWith("CONTENT");
-  expect(navActions.setAction.mock.calls[0][0]).toBe("CONTENT");
 });
 
 it("handleHeaderStyle updates the header", () => {

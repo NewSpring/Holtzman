@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { Meteor } from "meteor/meteor";
-import { nav as navActions, modal } from "../../../../data/store";
+import { modal } from "../../../../data/store";
 import OnBoard from "../../../../components/people/accounts";
 import Join from "../Join";
 import { TemplateWithoutData as Template } from "../";
@@ -105,7 +105,6 @@ it("closeModal calls preventDefault, hides modal, and adjust nav", () => {
   const mockPreventDefault = jest.fn();
   const mockDispatch = jest.fn();
   modal.hide = jest.fn();
-  navActions.setLevel = jest.fn();
   const wrapper = shallow(generateComponent({
     dispatch: mockDispatch,
   }));
@@ -113,10 +112,8 @@ it("closeModal calls preventDefault, hides modal, and adjust nav", () => {
     preventDefault: mockPreventDefault,
   });
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
-  expect(mockDispatch).toHaveBeenCalledTimes(2);
+  expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(modal.hide).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledWith("BASIC_CONTENT");
 });
 
 it("sendRequest calls preventDefault and the join meteor method", () => {

@@ -37,6 +37,7 @@ class StudyEntryWithoutData extends Component {
     } else if ((index - 1) === element.children.length) {
       element.children[0].scrollIntoView({ block: "start", behavior: "smooth" });
     }
+    window.scroll(0, 0);
   }
 
   dynamicWidth = () => {

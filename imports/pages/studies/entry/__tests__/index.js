@@ -9,7 +9,6 @@ import {
 } from "../index";
 
 import {
-  nav as navActions,
   header as headerActions,
   live as liveActions,
 } from "../../../../data/store";
@@ -107,18 +106,12 @@ it("renders loading with no studyEntry", () => {
 it("dispatches to the store on mount", () => {
   const mockDispatch = jest.fn();
   liveActions.hide = jest.fn();
-  navActions.setLevel = jest.fn();
-  navActions.setAction = jest.fn();
   headerActions.set = jest.fn();
   const wrapper = shallow(generateComponent({
     dispatch: mockDispatch,
   }));
-  expect(mockDispatch).toHaveBeenCalledTimes(3);
+  expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(liveActions.hide).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledWith("CONTENT");
-  expect(navActions.setAction).toHaveBeenCalledTimes(1);
-  expect(navActions.setAction.mock.calls[0][0]).toBe("CONTENT");
 });
 
 xit("updates when nextState is different", () => {
@@ -240,6 +233,3 @@ xit("updates live bar with push if scripture", () => {
   expect(liveActions.float).toHaveBeenCalledTimes(1);
   expect(liveActions.show).toHaveBeenCalledTimes(1);
 });
-
-
-
