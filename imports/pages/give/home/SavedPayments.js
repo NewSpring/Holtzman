@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import LoadingCard from "../../../components/@primitives/UI/loading/ActivityCard";
 import SectionHeader from "../../../components/@primitives/UI/section-header";
-import SmallButton from "../../../components/@primitives/UI/buttons/SmallButton";
+// import SmallButton from "../../../components/@primitives/UI/buttons/SmallButton";
 import { modal } from "../../../data/store";
 
 import giveActions from "../../../data/store/give";
