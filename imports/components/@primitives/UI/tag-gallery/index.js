@@ -67,7 +67,8 @@ class TagGalleryWithoutData extends Component {
           {
             `#${this.props.id} .tag--clickable:hover { background-color: ${this.props.buttonColor}; }
             #${this.props.id} .tag--active { background-color: ${this.props.buttonColor}; }
-            #${this.props.id} .tag--disabled { background-color: ${this.props.disabledColor} }`
+            #${this.props.id} .tag--disabled { background-color: ${this.props.disabledColor}; }
+            #${this.props.id} .tag--nohover--active { background-color: ${this.props.buttonColor}; }`
           }
         </style>
         <TagSelect
