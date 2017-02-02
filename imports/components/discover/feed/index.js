@@ -1,36 +1,39 @@
-import { Component, PropTypes } from "react";
+// @flow
+
 import { graphql } from "react-apollo";
 import { connect } from "react-redux";
 import gql from "graphql-tag";
 
+import { Loading } from "../../@primitives/UI/states";
+import withRecentLikes from "../../@enhancers/likes/recents";
 import Layout from "./Layout";
 
-class DiscoverWithoutData extends Component {
+const IDiscoverWithoutData = {
+  discover: Object,
+  recentLikes: Object,
+};
 
-  static propTypes = {
-    discover: PropTypes.object.isRequired,
-  }
+const DiscoverWithoutData = ({
+  discover,
+  recentLikes,
+}: IDiscoverWithoutData) => {
+  if (!discover || !recentLikes || discover.loading || recentLikes.loading) return <Loading />;
 
-  render() {
-    const { discover } = this.props;
-    if (discover.loading) return null; // XXX <Loading />
+  const featured = discover.items.filter((x) => (x.status.toLowerCase() === "featured"));
+  const open = discover.items.filter((x) => (x.status.toLowerCase() === "open"));
 
-    const featured = discover.items.filter((x) => (x.status.toLowerCase() === "featured"));
-    const open = discover.items.filter((x) => (x.status.toLowerCase() === "open"));
+  const featuredItem = featured[0];
+  const recommendedItems = [...featured.slice(1, featured.length)];
 
-    const featuredItem = featured[0];
-    const recommendedItems = [...featured.slice(1, featured.length)];
-
-    return (
-      <Layout
-        featuredItem={featuredItem}
-        recommendedItems={recommendedItems}
-        textItems={open}
-      />
-    );
-  }
-
-}
+  return (
+    <Layout
+      featuredItem={featuredItem}
+      recommendedItems={recommendedItems}
+      textItems={open}
+      recentLikes={recentLikes.recentlyLiked}
+    />
+  );
+};
 
 const DISCOVER_QUERY = gql`
   query GetPromotions($setName: String!) {
@@ -38,6 +41,7 @@ const DISCOVER_QUERY = gql`
       title
       id
       status
+      channelName
       meta {
         urlTitle
         date
@@ -66,7 +70,7 @@ const withDiscover = graphql(DISCOVER_QUERY, {
 
 const withRedux = connect();
 
-export default withRedux(withDiscover(DiscoverWithoutData));
+export default withRedux(withDiscover(withRecentLikes(DiscoverWithoutData)));
 
 export {
   DiscoverWithoutData,

@@ -1,161 +1,143 @@
-exports[`LikesContainer renders loading if no likes 1`] = `<Loading />`;
-
-exports[`LikesContainer renders with props 1`] = `
-<div
-  className="soft-half-sides@palm soft-double@palm-wide soft-sides soft-top soft-half-bottom background--light-secondary"
-  style={
+exports[`LikesContainer should pass props to children 1`] = `
+<LikesContainer
+  likes={
     Object {
-      "marginTop": "-20px",
+      "loading": true,
+    }
+  }
+  recentLikes={
+    Object {
+      "loading": false,
     }
   }>
-  <RenderLikes
-    likes={
-      Array [
+  <div
+    className="soft-half-sides@palm soft-double@palm-wide soft-sides soft-top soft-half-bottom background--light-secondary"
+    style={
+      Object {
+        "marginTop": "-20px",
+      }
+    }>
+    <RenderLikes
+      likes={
         Object {
-          "category": "test category",
-          "entryId": "1",
-          "icon": "test-icon",
-          "image": "http://test.com/1.jpg",
-          "link": "http://test.com/1",
-        },
+          "loading": true,
+        }
+      }
+      recentLikes={
         Object {
-          "category": "test category",
-          "entryId": "2",
-          "icon": "test-icon",
-          "image": "http://test.com/2.jpg",
-          "link": "http://test.com/2",
-        },
-      ]
-    } />
-  <RenderRecents
-    likes={
-      Array [
-        Object {
-          "category": "test category",
-          "entryId": "1",
-          "icon": "test-icon",
-          "image": "http://test.com/1.jpg",
-          "link": "http://test.com/1",
-        },
-        Object {
-          "category": "test category",
-          "entryId": "2",
-          "icon": "test-icon",
-          "image": "http://test.com/2.jpg",
-          "link": "http://test.com/2",
-        },
-      ]
+          "loading": false,
+        }
+      }>
+      <div
+        className="text-center">
+        <Loading />
+      </div>
+    </RenderLikes>
+  </div>
+</LikesContainer>
+`;
+
+exports[`LikesContainer should render children 1`] = `
+<LikesContainer>
+  <div
+    className="soft-half-sides@palm soft-double@palm-wide soft-sides soft-top soft-half-bottom background--light-secondary"
+    style={
+      Object {
+        "marginTop": "-20px",
+      }
+    }>
+    <RenderLikes>
+      <div
+        className="text-center">
+        <Loading />
+      </div>
+    </RenderLikes>
+  </div>
+</LikesContainer>
+`;
+
+exports[`RenderLikes should render likes only when provided 1`] = `
+<RenderLikes
+  likes={
+    Object {
+      "loading": false,
+      "userFeed": Array [
+        "hello",
+        "world",
+      ],
     }
-    recentLikes={
-      Array [
-        Object {
-          "category": "test category",
-          "entryId": "1",
-          "icon": "test-icon",
-          "image": "http://test.com/1.jpg",
-          "link": "http://test.com/1",
-        },
-        Object {
-          "category": "test category",
-          "entryId": "2",
-          "icon": "test-icon",
-          "image": "http://test.com/2.jpg",
-          "link": "http://test.com/2",
-        },
-      ]
-    } />
-</div>
-`;
-
-exports[`RenderLikes does not render if blank array 1`] = `null`;
-
-exports[`RenderLikes does not render without likes 1`] = `null`;
-
-exports[`RenderLikes renders with props 1`] = `
-<div>
-  <div
-    className="soft-half-bottom@palm-wide"
-    style={
-      Object {
-        "margin": "0 auto",
-        "maxWidth": "480px",
-      }
-    }>
-    <MiniCard
-      content={
-        Object {
-          "channelName": "test category",
-          "content": Object {
-            "images": Array [
-              Object {
-                "url": "http://test.com/1.jpg",
-              },
-            ],
-          },
-          "entryId": "1",
-          "icon": "test-icon",
-        }
-      }
-      link="http://test.com/1" />
-  </div>
-  <div
-    className="soft-half-bottom@palm-wide"
-    style={
-      Object {
-        "margin": "0 auto",
-        "maxWidth": "480px",
-      }
-    }>
-    <MiniCard
-      content={
-        Object {
-          "channelName": "test category",
-          "content": Object {
-            "images": Array [
-              Object {
-                "url": "http://test.com/2.jpg",
-              },
-            ],
-          },
-          "entryId": "2",
-          "icon": "test-icon",
-        }
-      }
-      link="http://test.com/2" />
-  </div>
-</div>
-`;
-
-exports[`RenderRecents does not render if likes defined 1`] = `null`;
-
-exports[`RenderRecents renders with props 1`] = `
-<div>
-  <p
-    className="soft text-center">
-    <em>
-      <small>
-        Check out some of the latest things from NewSpring
-      </small>
-    </em>
-  </p>
-  <RenderLikes
+  }
+  recentLikes={
+    Object {
+      "loading": false,
+      "recentlyLiked": Array [
+        "much recent",
+        "so like",
+        "very wow",
+      ],
+    }
+  }>
+  <Component
     likes={
       Array [
-        Object {
-          "category": "test category",
-          "entryId": "1",
-          "icon": "test-icon",
-          "image": "http://test.com/1.jpg",
-          "link": "http://test.com/1",
-        },
-        Object {
-          "category": "test category",
-          "entryId": "2",
-          "icon": "test-icon",
-          "image": "http://test.com/2.jpg",
-          "link": "http://test.com/2",
-        },
+        "hello",
+        "world",
       ]
-    } />
-</div>
+    }>
+    <div>
+      {\"likes\":[\"hello\",\"world\"]}
+    </div>
+  </Component>
+</RenderLikes>
+`;
+
+exports[`RenderLikes should render loading with no props 1`] = `
+<RenderLikes>
+  <div
+    className="text-center">
+    <Loading />
+  </div>
+</RenderLikes>
+`;
+
+exports[`RenderLikes should render recentLikes only when likes not provided 1`] = `
+<RenderLikes
+  likes={
+    Object {
+      "loading": false,
+    }
+  }
+  recentLikes={
+    Object {
+      "loading": false,
+      "recentlyLiked": Array [
+        "much recent",
+        "so like",
+        "very wow",
+      ],
+    }
+  }>
+  <div>
+    <p
+      className="soft text-center">
+      <em>
+        <small>
+          Check out some of the latest things from NewSpring
+        </small>
+      </em>
+    </p>
+    <Component
+      likes={
+        Array [
+          "much recent",
+          "so like",
+          "very wow",
+        ]
+      }>
+      <div>
+        {\"likes\":[\"much recent\",\"so like\",\"very wow\"]}
+      </div>
+    </Component>
+  </div>
+</RenderLikes>
 `;
