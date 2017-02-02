@@ -26,3 +26,8 @@ it("returns `Events` for `newspring_now`", () => {
   const result = categoryName({ channelName: "newspring_now" });
   expect(result).toBe("Events");
 });
+
+it("returns `Need to Know` for `promotions_newspring`", () => {
+  const result = categoryName({ channelName: "promotions_newspring" });
+  expect(result).toBe("Need to Know");
+});
