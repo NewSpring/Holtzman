@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- NewSpring Now!
+- A new channel in EE (NS: Now) will allow staff members to create entries to show on Sunday's.
+- The channel entries will appear in the home feed alongside the rest of the home feed items.
+- Tapping on an Event entry will take you to a page that has the live feed (or on-demand video if not Sunday) along with other relevant information.
+- This feature is wrapped by an awesome new ability to test features based on security role. You'll have to have the beta tester role in order to see and use this new feature.Added the ability for the home feed to pull items from the NS: Now channel in EE. These items link to internal entry pages.
 ### Fixed
 - Fixed an issue in iOS that was causing schedules to not be created.
 - Fixed the toggle import in the `/following` section on profile causing component not to render.
