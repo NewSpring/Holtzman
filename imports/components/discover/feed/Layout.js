@@ -47,9 +47,7 @@ const Layout = ({ featuredItem, recommendedItems, textItems, recentLikes }) => (
           };
 
           return (
-            <div>
-              <MiniCard {...formattedObj} key={i} />
-            </div>
+            <MiniCard {...formattedObj} key={i} />
           );
         })}
       </div>
