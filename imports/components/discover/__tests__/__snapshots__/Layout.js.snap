@@ -8,7 +8,7 @@ exports[`Content renders search 1`] = `
   } />
 `;
 
-exports[`Content renders with props 1`] = `<Connect(Apollo(DiscoverWithoutData)) />`;
+exports[`Content renders with props 1`] = `<Connect(Apollo(Apollo(DiscoverWithoutData))) />`;
 
 exports[`SearchLayout renders 1`] = `
 <section
