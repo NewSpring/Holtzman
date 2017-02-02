@@ -4,9 +4,6 @@ import { shallow, mount } from "enzyme";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 
 import { StudiesSingleWithoutData } from "../Single";
-import {
-  nav as navActions,
-} from "../../../data/store";
 import headerActions from "../../../data/store/header";
 
 jest.mock("../../../deprecated/database/collections/likes", () => {});
@@ -20,13 +17,6 @@ jest.mock("../Hero");
 
 jest.mock("../../../data/store/header", () => ({
   set: jest.fn(),
-}));
-
-jest.mock("../../../data/store", () => ({
-  nav: {
-    setLevel: jest.fn(),
-    setAction: jest.fn(),
-  },
 }));
 
 const defaultProps = {
@@ -105,19 +95,12 @@ it("renders studies content", () => {
 
 it("dispatches store on mount", () => {
   const mockDispatch = jest.fn();
-
-  navActions.setLevel = jest.fn();
-  navActions.setAction = jest.fn();
   headerActions.set = jest.fn();
 
   const wrapper = shallow(generateComponent({
     dispatch: mockDispatch,
   }));
 
-  expect(mockDispatch).toHaveBeenCalledTimes(3);
-  expect(navActions.setLevel).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledWith("CONTENT");
-  expect(navActions.setAction).toHaveBeenCalledTimes(1);
-  expect(navActions.setAction.mock.calls[0][0]).toBe("CONTENT");
+  expect(mockDispatch).toHaveBeenCalledTimes(1);
   expect(headerActions.set).toHaveBeenCalledTimes(1);
 });
