@@ -17,6 +17,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed an issue with the devotionals auto scrolling about half way down the page in the app on first render.
 - Fixed: The tag gallery would revert back to system color when the selected button wasn't "actively pressed". Added a "nohover" class to fix this.
 
+### Changed
+
+### Added
+- LikesList shared component
+- Hero UI Primitive
+- recent likes section in discover page.
+
 ## [1.2.3] - 2017-01-09
 ### Added
 - `index.js` files for folders with collections of components
