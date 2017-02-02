@@ -1,3 +1,6 @@
+
+// XXX we need to abstract this to the component level
+
 import "regenerator-runtime/runtime";
 
 import { fork, put } from "redux-saga/effects";

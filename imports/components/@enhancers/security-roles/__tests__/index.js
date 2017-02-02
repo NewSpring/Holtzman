@@ -15,14 +15,16 @@ it("is renders a wrapper function", () => {
 
 it("filters data from graphql", () => {
   const data = {
-    roles: [
-      {
-        name: "WoW"
-      },
-      {
-        name: "Jenkins"
-      }
-    ]
+    currentPerson: {
+      roles: [
+        {
+          name: "WoW"
+        },
+        {
+          name: "Jenkins"
+        }
+      ]
+    }
   };
 
   const isAuthorized = authorized(data, ["Staff"]);
@@ -31,14 +33,16 @@ it("filters data from graphql", () => {
 
 it("sets authorized to true if group is matched", () => {
   const data = {
-    roles: [
-      {
-        name: "WoW"
-      },
-      {
-        name: "Jenkins"
-      }
-    ]
+    currentPerson: {
+      roles: [
+        {
+          name: "WoW"
+        },
+        {
+          name: "Jenkins"
+        }
+      ]
+    }
   };
 
   const isAuthorized = authorized(data, ["WoW"]);
@@ -47,14 +51,16 @@ it("sets authorized to true if group is matched", () => {
 
 it("expects an exact match", () => {
   const data = {
-    roles: [
-      {
-        name: "WoW"
-      },
-      {
-        name: "Super Secret Group"
-      }
-    ]
+    currentPerson: {
+      roles: [
+        {
+          name: "WoW"
+        },
+        {
+          name: "Super Secret Group"
+        }
+      ]
+    }
   };
 
   const isAuthorized = authorized(data, ["Super"]);
