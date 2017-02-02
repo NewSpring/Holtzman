@@ -23,6 +23,8 @@ function contentLink(contentItem) {
       return `/stories/${entryId}`;
     case "news":
       return `/news/${entryId}`;
+    case "newspring_now":
+      return `/events/${entryId}`;
     default:
       return null;
 
