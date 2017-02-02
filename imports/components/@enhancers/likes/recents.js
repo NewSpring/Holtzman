@@ -2,8 +2,8 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { contentCard, groupCard } from "./fragments";
 
-const RECENT_LIKES_QUERY = gql`
-  {
+export const RECENT_LIKES_QUERY = gql`
+  query RecentlyLiked {
     recentlyLiked(limit: 10, skip: 0) {
       ... ContentCard
       ... GroupCard
@@ -13,6 +13,4 @@ const RECENT_LIKES_QUERY = gql`
   ${groupCard}
 `;
 
-const withRecentLikes = graphql(RECENT_LIKES_QUERY, { name: "recentLikes" });
-
-export default withRecentLikes;
+export default graphql(RECENT_LIKES_QUERY, { name: "recentLikes" });

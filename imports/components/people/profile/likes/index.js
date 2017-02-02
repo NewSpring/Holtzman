@@ -7,11 +7,11 @@ import LikesList from "../../../shared/likes-list";
 import withRecentLikes from "../../../@enhancers/likes/recents";
 import withUserLikes from "../../../@enhancers/likes/userLikes";
 
-const RenderRecents = ({ likes, recentLikes }) => {
+const RenderLikes = ({ likes, recentLikes }) => {
   if (!likes || !recentLikes || likes.loading || recentLikes.loading) {
     return <div className="text-center"><Loading /></div>;
   }
-  if (likes && !likes.loading && likes.userFeed.length > 0) {
+  if (likes && !likes.loading && likes.userFeed && likes.userFeed.length > 0) {
     return <LikesList likes={likes.userFeed} />;
   }
   return (
@@ -28,7 +28,7 @@ const RenderRecents = ({ likes, recentLikes }) => {
   );
 };
 
-RenderRecents.propTypes = {
+RenderLikes.propTypes = {
   likes: PropTypes.array,
   recentLikes: PropTypes.array,
 };
@@ -44,7 +44,7 @@ const LikesContainer = (props) => {
       }
       style={{ marginTop: "-20px" }}
     >
-      <RenderRecents likes={likes} recentLikes={recentLikes} />
+      <RenderLikes likes={likes} recentLikes={recentLikes} />
     </div>
   );
 };
@@ -56,7 +56,7 @@ LikesContainer.propTypes = {
 
 export {
   LikesContainer,
-  RenderRecents,
+  RenderLikes,
 };
 
 export default withUserLikes(withRecentLikes(LikesContainer));
