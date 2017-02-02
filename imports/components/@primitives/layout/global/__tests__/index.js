@@ -2,6 +2,7 @@ import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
 import { reset, startBuffering } from "aphrodite/lib/inject";
 import { Meteor } from "meteor/meteor";
+import { print } from "graphql-tag/printer";
 import { linkListener } from "../../../../../util/inAppLink";
 import {
   accounts as accountsActions,
@@ -14,6 +15,7 @@ import {
   App,
   Blank,
   GlobalData,
+  URL_TITLE_QUERY,
 } from "../";
 
 jest.mock("../../../../../deprecated/database/collections/likes", () => ({
@@ -245,8 +247,16 @@ describe("GlobalData", () => {
 describe("GlobalWithoutData", () => {
   const defaultProps = {
     dispatch: jest.fn(),
-    client: {},
+    client: {
+      query: jest.fn().mockReturnValue(
+        new Promise(p => p({ data: {} }))
+      ),
+    },
   };
+
+  afterEach(() => {
+      defaultProps.client.query.mockClear();
+  })
 
   const generateComponent = (additionalProps = {}) => {
     const newProps = {
@@ -265,7 +275,107 @@ describe("GlobalWithoutData", () => {
     Meteor.isCordova = true;
     document.addEventListener = jest.fn();
     const wrapper = shallow(generateComponent());
-    expect(document.addEventListener).toHaveBeenCalledTimes(1);
+    expect(document.addEventListener).toHaveBeenCalledTimes(2);
     expect(document.addEventListener).toHaveBeenCalledWith("click", linkListener);
+    expect(document.addEventListener.mock.calls.length).toBe(2);
+    expect(document.addEventListener.mock.calls[0]).toMatchSnapshot();
+    expect(document.addEventListener.mock.calls[0][0]).toBe("click");
+    expect(document.addEventListener.mock.calls[0][1]).toBe(linkListener);
+    expect(document.addEventListener.mock.calls[1]).toMatchSnapshot();
+    expect(document.addEventListener.mock.calls[1][0]).toBe("deviceready");
+    // The noop here isn't recognized as the anonymous function that is
+    // coming from the function call, even though they are both technically
+    // anonymous functions. Per James it's probably because when we write
+    // the noop, it thinks it's a new thing. Need to come up with a way
+    // to have it recognize the anonymous function as not something that
+    // is new. The snapshots here will help with making sure this is
+    // covered until we figure this out.
+    // expect(document.addEventListener.mock.calls[1][1]).toEqual(() => {});
+    expect(document.addEventListener.mock.calls[1][2]).toBe(false);
+  });
+
+  it("tests universalLinkRouting", () => {
+    Meteor.isCordova = true;
+    let eventData = {
+      path: "/groups/finder",
+    }
+    const isQueryRoute = jest.fn();
+    const wrapper = shallow(generateComponent());
+    expect(wrapper.state().universalLinkLoading).toBe(false);
+    wrapper.instance().universalLinkRouting(eventData);
+    // this should run through the link and actually turn the state
+    // to true and then back to false again. that's why this should
+    // be false.
+    expect(wrapper.state().universalLinkLoading).toBe(false);
+  });
+
+  it("tests isQueryRoute", () => {
+    let path = "/groups/finder";
+    const wrapper = shallow(generateComponent());
+    let result = wrapper.instance().isQueryRoute(path);
+    expect(result).toBe(false);
+    path = "/sermons";
+    result = wrapper.instance().isQueryRoute(path);
+    expect(result).toBe(false);
+    path = "/sermons/";
+    result = wrapper.instance().isQueryRoute(path);
+    expect(result).toBe("/sermons/");
+  });
+
+  it("tests the /sermons/ route", () => {
+    let path = "/sermons/";
+    const wrapper = shallow(generateComponent());
+    wrapper.instance().withQuery(path);
+    expect(defaultProps.client.query).toHaveBeenCalledTimes(1);
+    expect(defaultProps.client.query).toHaveBeenCalledWith({
+      query: URL_TITLE_QUERY,
+      variables: {
+        parentChannel: "series_newspring",
+        parentUrl: undefined,
+        childChannel: "",
+        childUrl: "",
+        hasChild: "",
+      }
+    });
+
+  });
+
+  it("tests the /sermons/forsc route", () => {
+    let path = "/sermons/forsc";
+    const wrapper = shallow(generateComponent());
+    wrapper.instance().withQuery(path);
+    expect(defaultProps.client.query).toHaveBeenCalledTimes(1);
+    expect(defaultProps.client.query).toHaveBeenCalledWith({
+      query: URL_TITLE_QUERY,
+      variables: {
+        parentChannel: "series_newspring",
+        parentUrl: "forsc",
+        childChannel: "",
+        childUrl: "",
+        hasChild: "",
+      }
+    });
+  });
+
+  it("tests the /sermons/forsc/growing-people-change1 route", () => {
+    let path = "/sermons/forsc/growing-people-change1";
+    const wrapper = shallow(generateComponent());
+    wrapper.instance().withQuery(path);
+    expect(defaultProps.client.query).toHaveBeenCalledTimes(1);
+    expect(defaultProps.client.query).toHaveBeenCalledWith({
+      query: URL_TITLE_QUERY,
+      variables: {
+        parentChannel: "series_newspring",
+        parentUrl: "forsc",
+        childChannel: "sermons",
+        childUrl: "growing-people-change1",
+        hasChild: "forsc",
+      }
+    });
+  });
+
+  // test URL_TITLE_QUERY
+  it("parses URL_TITLE_QUERY correctly", () => {
+    expect(print(URL_TITLE_QUERY)).toMatchSnapshot();
   });
 });

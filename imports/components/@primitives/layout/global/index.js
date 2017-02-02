@@ -3,12 +3,15 @@ import { Meteor } from "meteor/meteor";
 import { connect } from "react-redux";
 import { css } from "aphrodite";
 import { withApollo } from "react-apollo";
+import gql from "graphql-tag";
 import createContainer from "../../../../deprecated/meteor/react-meteor-data";
+import { routeActions } from "../../../../data/store/routing";
 
 import Modal from "../../modals";
 import Meta from "../../../shared/meta";
 import Nav from "../../nav";
 import Header from "../../UI/header";
+import { Loading } from "../../UI/states";
 
 import Likes from "../../../../deprecated/database/collections/likes";
 
@@ -140,6 +143,19 @@ const map = (state) => ({
 });
 const withRedux = connect(map);
 
+export const URL_TITLE_QUERY = gql`
+  query contentWithUrlTitle(
+    $parentChannel: String!,
+    $parentUrl: String!,
+    $childChannel: String = "",
+    $childUrl: String = "",
+    $hasChild: Boolean = false
+  ) {
+    parent: contentWithUrlTitle(channel: $parentChannel, urlTitle: $parentUrl)
+    child: contentWithUrlTitle(channel: $childChannel, urlTitle: $childUrl) @include(if: $hasChild)
+  }
+`;
+
 class GlobalWithoutData extends Component {
 
   static propTypes = {
@@ -147,8 +163,112 @@ class GlobalWithoutData extends Component {
     client: PropTypes.object.isRequired,
   }
 
+  state = { universalLinkLoading: false }
+
   componentWillMount() {
-    if (Meteor.isCordova) document.addEventListener("click", linkListener);
+    if (Meteor.isCordova) {
+      document.addEventListener("click", linkListener);
+      document.addEventListener("deviceready", () => {
+        universalLinks.subscribe("universalLinkRoute", this.universalLinkRouting);
+      }, false);
+    }
+  }
+
+  componentWillUnMount() {
+    if (Meteor.isCordova) universalLinks.unsubscribe("universalLinkRoute");
+  }
+
+  universalLinkRouting = ({ path }) => {
+    this.setState({ universalLinkLoading: true });
+
+    switch (path) {
+      case this.isQueryRoute(path):
+        this.withQuery(path);
+        break;
+      case "/watchandread":
+        this.go("/");
+        break;
+      case "/sermons":
+        this.go("/series");
+        break;
+      default:
+        this.go(path);
+    }
+  }
+
+  isQueryRoute = (path) => {
+    const queryRoutes = [
+      "/articles/",
+      "/sermons/",
+      "/devotionals/",
+      "/studies/",
+      "/stories/",
+    ];
+
+    if (queryRoutes.find((url) => path.includes(url))) return path;
+    return false;
+  }
+
+  withQuery = (path) => {
+    const pathArray = path.split("/").filter(Boolean);
+
+    const channel = pathArray[0];
+    let urlTitle = pathArray[1];
+    let parent = "";
+
+    if (pathArray.length === 3) {
+      parent = pathArray[1];
+      urlTitle = pathArray[2];
+    }
+
+    let parentChannelToUse = channel;
+    let childChannelToUse = channel;
+
+    switch (channel) {
+      case "sermons":
+        parentChannelToUse = "series_newspring";
+        break;
+      case "studies":
+        childChannelToUse = "study_entries";
+        break;
+      default:
+        break;
+    }
+
+    this.props.client.query({ query: URL_TITLE_QUERY,
+      variables: {
+        parentChannel: parentChannelToUse,
+        parentUrl: parent || urlTitle,
+        childChannel: parent ? childChannelToUse : "",
+        childUrl: parent ? urlTitle : "",
+        hasChild: parent,
+      } })
+      .then(({ data }) => {
+        switch (channel) {
+          case "sermons":
+            if (data.child) {
+              this.go(`/series/${data.parent}/sermon/${data.child}`);
+            } else {
+              this.go(`/series/${data.parent}`);
+            }
+            break;
+          case "studies":
+            if (data.child) {
+              this.go(`/${channel}/${data.parent}/entry/${data.child}`);
+            } else {
+              this.go(`/${channel}/${data.parent}`);
+            }
+            break;
+          default:
+            this.go(`/${channel}/${data.parent}`);
+        }
+      });
+    return;
+  }
+
+  go = (url) => {
+    this.setState({ universalLinkLoading: false });
+    this.props.dispatch(routeActions.push(url));
   }
 
   render() {
@@ -160,6 +280,7 @@ class GlobalWithoutData extends Component {
     return (
       <div id="global">
         <style>{scrollbarStyles}</style>
+        {this.state.universalLinkLoading && <Loading />}
         <App {...this.props} />
         <GlobalData dispatch={dispatch} client={client} />
       </div>

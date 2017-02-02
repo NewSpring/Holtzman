@@ -5,9 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Added the ability for the home feed to pull items from the NS: Now channel in EE. These items link to internal entry pages.
 ### Fixed
 - Fixed an issue in iOS that was causing schedules to not be created.
 - Fixed the toggle import in the `/following` section on profile causing component not to render.
+- Fixed an issue with the devotionals auto scrolling about half way down the page in the app on first render.
 
 ## [1.2.3] - 2017-01-09
 ### Added

@@ -384,10 +384,3 @@ exports[`test renders with props 1`] = `
 <StoriesContent
   story={Object {}} />
 `;
-
-exports[`test updates nav on mount 1`] = `
-Object {
-  "action": undefined,
-  "id": 2,
-}
-`;
