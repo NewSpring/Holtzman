@@ -17,7 +17,7 @@ const DiscoverWithoutData = ({
   discover,
   recentLikes,
 }: IDiscoverWithoutData) => {
-  if (discover.loading || recentLikes.loading) return <Loading />;
+  if (!discover || !recentLikes || discover.loading || recentLikes.loading) return <Loading />;
 
   const featured = discover.items.filter((x) => (x.status.toLowerCase() === "featured"));
   const open = discover.items.filter((x) => (x.status.toLowerCase() === "open"));

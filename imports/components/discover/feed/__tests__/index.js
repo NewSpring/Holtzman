@@ -18,6 +18,9 @@ const defaultProps = {
       { status: "open" },
     ],
   },
+  recentLikes: {
+    loading: false,
+  }
 };
 
 const generateComponent = (additionalProps = {}) => {

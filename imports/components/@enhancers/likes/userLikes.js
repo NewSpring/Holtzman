@@ -2,8 +2,8 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { contentCard, groupCard } from "./fragments";
 
-const LIKES_QUERY = gql`
-  {
+export const LIKES_QUERY = gql`
+  query UserLikes {
     userFeed(filters:["LIKES"]) {
       ... ContentCard
       ... GroupCard
@@ -13,6 +13,6 @@ const LIKES_QUERY = gql`
   ${groupCard}
 `;
 
-const withLikes = graphql(LIKES_QUERY, { name: "likes" });
+export const withLikes = graphql(LIKES_QUERY, { name: "likes", options: { forceFetch: true } });
 
 export default withLikes;
