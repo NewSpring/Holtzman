@@ -6,14 +6,14 @@ exports[`test renders a layout 1`] = `
   </Connect(SplitContainerWithoutData)>
   <Left>
     <Connect(Dashboard)
-      additionalClasses="soft-half-sides push-right"
+      additionalClasses="soft-half-sides push-half-right"
       subNav={
         Array [
           Object {
             "isActive": true,
             "linkUrl": "/give/home",
             "onClick": [Function],
-            "title": "Home",
+            "title": "Dashboard",
           },
           Object {
             "isActive": false,
