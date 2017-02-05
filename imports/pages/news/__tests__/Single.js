@@ -48,18 +48,3 @@ it("renders loading if no content", () => {
 it("parses query correctly", () => {
   expect(GET_NEWS_QUERY).toMatchSnapshot();
 });
-
-it("updates nav on mount", () => {
-  const mockDispatch = jest.fn();
-  navActions.setLevel = jest.fn();
-  navActions.setAction = jest.fn();
-  const wrapper = shallow(generateComponent({
-    dispatch: mockDispatch,
-  }));
-  expect(mockDispatch).toHaveBeenCalledTimes(2);
-  expect(navActions.setLevel).toHaveBeenCalledTimes(1);
-  expect(navActions.setLevel).toHaveBeenCalledWith("CONTENT");
-  expect(navActions.setAction).toHaveBeenCalledTimes(1);
-  expect(navActions.setAction.mock.calls[0][0]).toBe("CONTENT");
-  expect(navActions.setAction.mock.calls[0][1]).toMatchSnapshot();
-});

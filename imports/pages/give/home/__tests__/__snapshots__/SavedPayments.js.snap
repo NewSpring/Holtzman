@@ -67,23 +67,7 @@ exports[`Saved Payments List should render properly with data 1`] = `
         </div>
         <div
           className="one-half floating display-inline-block floating--right soft soft-half-right">
-          <Component>
-            <SmallButton
-              className="btn--dark-tertiary flush"
-              onClick={[Function]}
-              text="Add Account">
-              <button
-                className="
-                  btn btn--small@next
-                  
-                  btn--dark-tertiary flush
-                "
-                onClick={[Function]}
-                style={Object {}}>
-                Add Account
-              </button>
-            </SmallButton>
-          </Component>
+          <Component />
         </div>
       </div>
     </SectionHeader>
@@ -141,23 +125,7 @@ exports[`Saved Payments List should render without saved payments 1`] = `
         </div>
         <div
           className="one-half floating display-inline-block floating--right soft soft-half-right">
-          <Component>
-            <SmallButton
-              className="btn--dark-tertiary flush"
-              onClick={[Function]}
-              text="Add Account">
-              <button
-                className="
-                  btn btn--small@next
-                  
-                  btn--dark-tertiary flush
-                "
-                onClick={[Function]}
-                style={Object {}}>
-                Add Account
-              </button>
-            </SmallButton>
-          </Component>
+          <Component />
         </div>
       </div>
     </SectionHeader>

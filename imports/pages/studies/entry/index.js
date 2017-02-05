@@ -7,14 +7,13 @@ import gql from "graphql-tag";
 import Meta from "../../../components/shared/meta";
 import Loading from "../../../components/@primitives/UI/loading";
 
-import Likeable from "../../../deprecated/mixins/mixins.Likeable";
+import canLike from "../../../components/@enhancers/likes/toggle";
 import Shareable from "../../../deprecated/mixins/mixins.Shareable";
 
 // import contentHelpers from "../../../util/content";
 import collections from "../../../util/collections";
 
 import {
-  nav as navActions,
   header as headerActions,
   live as liveActions,
 } from "../../../data/store";
@@ -48,12 +47,6 @@ class StudyEntrySingle extends Component {
     this.props.dispatch(liveActions.hide());
     // for cached data
     this.handleLiveBar(this.props, this.state);
-
-    this.props.dispatch(navActions.setLevel("CONTENT"));
-    this.props.dispatch(navActions.setAction("CONTENT", {
-      id: 2,
-      action: this.likeableAction,
-    }));
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -312,10 +305,10 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps)(
   withCurrentStudyEntry(
     withStudy(
-      ReactMixin.decorate(Likeable)(
-        ReactMixin.decorate(Shareable)(
-          StudyEntrySingle
-        )
+      ReactMixin.decorate(Shareable)(
+        canLike(
+          (props) => (props.studyEntry.loading ? null : props.studyEntry.content.entryId)
+        )(StudyEntrySingle)
       )
     )
   )
