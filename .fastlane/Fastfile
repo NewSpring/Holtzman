@@ -30,16 +30,12 @@ end
 
 platform :ios do
   private_lane :build_app_production do
-    # By default this only runs on CI environment
-    setup_jenkins
-
-    # sigh(
-    #   app_identifier: ENV['APP_IDENTIFIER'],
-    #   username: ENV['APPLE_ID'],
-    #   provisioning_name: ENV['APP_PROFILE'],
-    #   ignore_profiles_with_different_name: true,
-    #   team_id: ENV['TEAM_ID'],
-    # )
+    match(
+      git_url: ENV['CERTIFICATES_REPO'],
+      app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
+      readonly: true,
+      username: ENV["APPLE_ID"],
+    )
 
     increment_build_number(
       xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
@@ -67,13 +63,6 @@ platform :ios do
   end
 
   private_lane :build_app_ad_hoc do
-    # sigh(
-    #   app_identifier: ENV['APP_IDENTIFIER'],
-    #   username: ENV['APPLE_ID'],
-    #   adhoc: true,
-    #   skip_certificate_verification: true
-    # )
-
     increment_build_number(
       xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       build_number: "#{ENV['APP_BUILD']}"
@@ -105,6 +94,16 @@ platform :ios do
     build_app_production
   end
 
+  desc "Install App Store Certificates"
+  lane :certificates do
+    match(
+      git_url: ENV['CERTIFICATES_REPO'],
+      app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
+      readonly: true,
+      username: ENV["APPLE_ID"],
+    )
+  end
+
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
@@ -112,7 +111,8 @@ platform :ios do
 
     pilot(
       username: ENV['APPLE_ID'],
-      skip_waiting_for_build_processing: true
+      skip_waiting_for_build_processing: true,
+      app_identifier: [ "cc.newspring.newspringapp" ]
     )
   end
 
@@ -122,7 +122,8 @@ platform :ios do
 
     deliver(
       username: ENV['APPLE_ID'],
-      force: true
+      force: true,
+      app_identifier: [ "com.subsplashstudio31.NewSpring-Church" ]
     )
   end
 
