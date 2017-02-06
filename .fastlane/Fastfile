@@ -31,6 +31,7 @@ end
 platform :ios do
   private_lane :build_app_production do
     match(
+      type: "appstore"
       git_url: ENV['CERTIFICATES_REPO'],
       app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
       readonly: true,
@@ -97,6 +98,7 @@ platform :ios do
   desc "Install App Store Certificates"
   lane :certificates do
     match(
+      type: "appstore"
       git_url: ENV['CERTIFICATES_REPO'],
       app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
       readonly: true,
