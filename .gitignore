@@ -45,10 +45,7 @@ apollos-runtime.json
 .remote/*
 .meteor/settings.json
 
-
-# ignore launch
-launch.json
-.fastlane
+.fastlane/report.xml
 .build
 .play-service.json
 
