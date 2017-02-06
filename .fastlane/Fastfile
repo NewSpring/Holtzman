@@ -37,6 +37,8 @@ platform :ios do
       app_identifier: ENV['APP_IDENTIFIER'],
       username: ENV['APPLE_ID'],
       provisioning_name: ENV['APP_PROFILE'],
+      ignore_profiles_with_different_name: true,
+      team_id: ENV['TEAM_ID'],
     )
 
     increment_build_number(
