@@ -35,7 +35,8 @@ platform :ios do
 
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],
-      username: ENV['APPLE_ID']
+      username: ENV['APPLE_ID'],
+      provisioning_name: ENV['APP_PROFILE'],
     )
 
     increment_build_number(
