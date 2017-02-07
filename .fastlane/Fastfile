@@ -48,12 +48,12 @@ platform :ios do
       version_number: ENV['APP_VERSION'],
     )
 
-    # update_project_provisioning(
-    #   xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-    #   profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
-    #   target_filter: ENV['XCODE_SCHEME_NAME'],
-    #   build_configuration: "Release",
-    # )
+    update_project_provisioning(
+      xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      # profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
+      target_filter: ENV['XCODE_SCHEME_NAME'],
+      build_configuration: "Release",
+    )
 
     gym(
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
