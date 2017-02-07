@@ -29,6 +29,38 @@ if ENV['SLACK_URL'].nil? or ENV['SLACK_URL'].empty?
 end
 
 platform :ios do
+  lane :update_provisioning_profile_specifier do |params|
+    proj = params[:project]
+    target_filter = params[:target_filter] || params[:build_configuration_filter]
+    configuration = params[:build_configuration]
+    prov_name = params[:prov_name]
+
+    require 'xcodeproj'
+
+    project = Xcodeproj::Project.open(proj)
+    project.targets.each do |target|
+      if !target_filter || target.product_name.match(target_filter) || (target.respond_to?(:product_type) && target.product_type.match(target_filter))
+        UI.success("Updating target #{target.product_name}...")
+      else
+        UI.important("Skipping target #{target.product_name} as it doesn't match the filter '#{target_filter}'")
+        next
+      end
+
+      target.build_configuration_list.build_configurations.each do |build_configuration|
+        config_name = build_configuration.name
+        if !configuration || config_name.match(configuration)
+          UI.success("Updating configuration #{config_name}...")
+        else
+          UI.important("Skipping configuration #{config_name} as it doesn't match the filter '#{configuration}'")
+          next
+        end
+
+        build_configuration.build_settings["PROVISIONING_PROFILE_SPECIFIER"] = prov_name
+      end
+    end
+    project.save
+  end
+
   private_lane :build_app_production do
     match(
       type: "appstore",
@@ -48,15 +80,20 @@ platform :ios do
       version_number: ENV['APP_VERSION'],
     )
 
+    update_provisioning_profile_specifier(
+      project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      prov_name: ENV["PROVISIONING_PROFILE_SPECIFIER"],
+      build_configuration: "Release",
+      target_filter: ENV['XCODE_SCHEME_NAME'],
+    )
+
     gym(
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       scheme: ENV['XCODE_SCHEME_NAME'],
       clean: true,
       include_bitcode: false,
       codesigning_identity: ENV['CODESIGNING_IDENTITY'],
-      xcargs: 'PROVISIONING_PROFILE_SPECIFIER=\"#{ENV["PROVISIONING_PROFILE_SPECIFIER"]}\"',
     )
-
   end
 
   desc "Just build the app"
