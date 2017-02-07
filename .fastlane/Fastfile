@@ -29,6 +29,8 @@ if ENV['SLACK_URL'].nil? or ENV['SLACK_URL'].empty?
 end
 
 platform :ios do
+
+
   private_lane :build_app_production do
     match(
       type: "appstore",
@@ -48,19 +50,18 @@ platform :ios do
       version_number: ENV['APP_VERSION'],
     )
 
-    # update_provisioning_profile_specifier(
-    #   project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-    #   prov_name: ENV["PROVISIONING_PROFILE_SPECIFIER"],
-    #   build_configuration: "Release",
-    #   target_filter: ENV['XCODE_SCHEME_NAME'],
-    # )
+    update_project_provisioning(
+      project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      build_configuration: "Release",
+      target_filter: ENV['TARGET_FILTER'],
+    )
 
     gym(
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       scheme: ENV['XCODE_SCHEME_NAME'],
       clean: true,
       include_bitcode: false,
-      # codesigning_identity: ENV['CODESIGNING_IDENTITY'],
+      codesigning_identity: ENV['CODESIGNING_IDENTITY'],
     )
   end
 
