@@ -53,7 +53,7 @@ platform :ios do
       scheme: ENV['XCODE_SCHEME_NAME'],
       clean: true,
       include_bitcode: false,
-      codesigning_identity: "iPhone Distribution: NewSpring Church, Inc"
+      codesigning_identity: ENV['CODESIGNING_IDENTITY'],
     )
 
   end
@@ -61,12 +61,12 @@ platform :ios do
   private_lane :build_app_ad_hoc do
     increment_build_number(
       xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      build_number: "#{ENV['APP_BUILD']}"
+      build_number: "#{ENV['APP_BUILD']}",
     )
 
     increment_version_number(
       xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      version_number: "#{ENV['APP_VERSION']}"
+      version_number: "#{ENV['APP_VERSION']}",
     )
 
     gym(
@@ -74,7 +74,8 @@ platform :ios do
       scheme: ENV['XCODE_SCHEME_NAME'],
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       include_bitcode: false,
-      export_method: "ad-hoc"
+      export_method: "ad-hoc",
+      codesigning_identity: ENV['CODESIGNING_IDENTITY'],
     )
   end
 
