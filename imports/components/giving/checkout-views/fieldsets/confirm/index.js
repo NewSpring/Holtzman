@@ -43,11 +43,12 @@ export default class Confirm extends Component {
     let { url } = props;
     const { transactions, total, data, savedAccount } = props;
 
+    const name = data.payment.name;
     // remove sensitive information
     delete data.billing; delete data.payment;
 
-    // add last 4 in
-    data.payment = {};
+    // add name in for saving the account
+    data.payment = { name };
 
     if (url.length === 0) url = false;
 
