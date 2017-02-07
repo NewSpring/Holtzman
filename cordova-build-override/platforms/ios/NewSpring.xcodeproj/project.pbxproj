@@ -741,8 +741,8 @@
 				INFOPLIST_FILE = "NewSpring/NewSpring-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = NewSpring;
-				PROVISIONING_PROFILE = "0e98c07b-de6e-4725-9bfe-bb4439803108";
-				PROVISIONING_PROFILE_SPECIFIER = "DIST: cc.newspring.newspringapp";
+				PROVISIONING_PROFILE = "264f1a47-f625-4c0c-9d5a-f2a89688b621"
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cc.newspring.newspringapp";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -770,7 +770,8 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "NewSpring/NewSpring-Info.plist";
 				PRODUCT_NAME = NewSpring;
-				PROVISIONING_PROFILE = "0e98c07b-de6e-4725-9bfe-bb4439803108";
+				PROVISIONING_PROFILE = "264f1a47-f625-4c0c-9d5a-f2a89688b621"
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cc.newspring.newspringapp";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
