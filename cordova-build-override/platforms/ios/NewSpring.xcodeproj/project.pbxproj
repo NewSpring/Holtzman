@@ -71,6 +71,92 @@
 		CB916C8F85BF408B9D4769AD /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A64AA192CD46DDA8B8B791 /* Asset.swift */; };
 		CEC0B2BA44A842B5AA4A1306 /* NativeStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95529102DDEF42BD8A53BEBB /* NativeStorage.m */; };
 		CF48DB2C4D1044799E09F865 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88FB1A418C49BA90D19767 /* Utility.swift */; };
+		D07454C31E4A70D70099AB34 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
+		D07454C41E4A70D70099AB34 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
+		D07454C51E4A70D70099AB34 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E96016CE05F04B288BC4DCB1 /* HockeySDKResources.bundle */; };
+		D07454C71E4A70D70099AB34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		D07454C81E4A70D70099AB34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
+		D07454C91E4A70D70099AB34 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
+		D07454CA1E4A70D70099AB34 /* CDVWKWebViewEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 15736D57DCFD465CBEB9BA50 /* CDVWKWebViewEngine.m */; };
+		D07454CB1E4A70D70099AB34 /* CDVWKWebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F92E1BD04BB4AF59D3F6DCC /* CDVWKWebViewUIDelegate.m */; };
+		D07454CC1E4A70D70099AB34 /* WebAppLocalServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC10EE59544FBDA81CB1B4 /* WebAppLocalServer.swift */; };
+		D07454CD1E4A70D70099AB34 /* WebAppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6782D0434684B89A349E48B /* WebAppConfiguration.swift */; };
+		D07454CE1E4A70D70099AB34 /* AssetBundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B20CD3102F543658232601B /* AssetBundleManager.swift */; };
+		D07454CF1E4A70D70099AB34 /* AssetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97F016B284126A1678FA1 /* AssetBundle.swift */; };
+		D07454D01E4A70D70099AB34 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A64AA192CD46DDA8B8B791 /* Asset.swift */; };
+		D07454D11E4A70D70099AB34 /* AssetBundleDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC202C7491BB46A6B8665149 /* AssetBundleDownloader.swift */; };
+		D07454D21E4A70D70099AB34 /* AssetManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682935F7876445159262A5F8 /* AssetManifest.swift */; };
+		D07454D31E4A70D70099AB34 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C596D7235C3F4A6C8F6B8F72 /* Errors.swift */; };
+		D07454D41E4A70D70099AB34 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88FB1A418C49BA90D19767 /* Utility.swift */; };
+		D07454D51E4A70D70099AB34 /* METPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F33C9D1D834A39BE4FBD7D /* METPlugin.m */; };
+		D07454D61E4A70D70099AB34 /* METTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E8064FD8469D477288B61FB2 /* METTimer.m */; };
+		D07454D71E4A70D70099AB34 /* METRetryStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = B74CD1E6A300446BAD56F873 /* METRetryStrategy.m */; };
+		D07454D81E4A70D70099AB34 /* METNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 612790AF0BAA483B8250DA36 /* METNetworkReachabilityManager.m */; };
+		D07454D91E4A70D70099AB34 /* METRandomValueGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 638687872B4041A2A078A09E /* METRandomValueGenerator.m */; };
+		D07454DA1E4A70D70099AB34 /* GCDWebServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7635B0E3C4214B4394CC33B2 /* GCDWebServer.m */; };
+		D07454DB1E4A70D70099AB34 /* GCDWebServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4DFCE43C9240D1A7CDE603 /* GCDWebServerConnection.m */; };
+		D07454DC1E4A70D70099AB34 /* GCDWebServerFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D28A93E801B4F38969A4EE7 /* GCDWebServerFunctions.m */; };
+		D07454DD1E4A70D70099AB34 /* GCDWebServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 431176205BCF4AB0B0BEA8A0 /* GCDWebServerRequest.m */; };
+		D07454DE1E4A70D70099AB34 /* GCDWebServerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD9A01BB1314CEA915A877C /* GCDWebServerResponse.m */; };
+		D07454DF1E4A70D70099AB34 /* GCDWebServerDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1A2C4F66B441C94208C52 /* GCDWebServerDataRequest.m */; };
+		D07454E01E4A70D70099AB34 /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C0ACD66DCC49DD8F420F5A /* GCDWebServerFileRequest.m */; };
+		D07454E11E4A70D70099AB34 /* GCDWebServerMultiPartFormRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8474AEE60E478397BE3095 /* GCDWebServerMultiPartFormRequest.m */; };
+		D07454E21E4A70D70099AB34 /* GCDWebServerURLEncodedFormRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1060DF7EC1FB4BFEAFC58C0A /* GCDWebServerURLEncodedFormRequest.m */; };
+		D07454E31E4A70D70099AB34 /* GCDWebServerDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E17CF152AE43CEBA9AF81A /* GCDWebServerDataResponse.m */; };
+		D07454E41E4A70D70099AB34 /* GCDWebServerErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 155192F631464C56A059DCC3 /* GCDWebServerErrorResponse.m */; };
+		D07454E51E4A70D70099AB34 /* GCDWebServerFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C05CB616EB8A4027A33B7401 /* GCDWebServerFileResponse.m */; };
+		D07454E61E4A70D70099AB34 /* GCDWebServerStreamedResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFF85AE345D4F7BA175CCB1 /* GCDWebServerStreamedResponse.m */; };
+		D07454E71E4A70D70099AB34 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C89692087CBA437797E2DD8E /* CDVStatusBar.m */; };
+		D07454E81E4A70D70099AB34 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE2D9C6B4844A0AADAE22F4 /* CDVSplashScreen.m */; };
+		D07454E91E4A70D70099AB34 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2B685E85C04A91BC5A6E18 /* CDVViewController+SplashScreen.m */; };
+		D07454EA1E4A70D70099AB34 /* FabricPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 95905068F7124808A9BEAA1F /* FabricPlugin.m */; };
+		D07454EB1E4A70D70099AB34 /* UIImage+CropScaleOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9137704DD3E94083814D13C9 /* UIImage+CropScaleOrientation.m */; };
+		D07454EC1E4A70D70099AB34 /* CDVCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 869BDC2A8C1A4B0F925EB798 /* CDVCamera.m */; };
+		D07454ED1E4A70D70099AB34 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C11658811ED34E8E82E7325F /* CDVJpegHeaderWriter.m */; };
+		D07454EE1E4A70D70099AB34 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD4A7A15BB94C1A9F603578 /* CDVFile.m */; };
+		D07454EF1E4A70D70099AB34 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD31C139748C416C9F65091D /* CDVLocalFilesystem.m */; };
+		D07454F01E4A70D70099AB34 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = FD577D125A3C4379A7F2DD5C /* CDVAssetLibraryFilesystem.m */; };
+		D07454F11E4A70D70099AB34 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 509A23356124429784356F34 /* CDVFileTransfer.m */; };
+		D07454F21E4A70D70099AB34 /* HockeyApp.m in Sources */ = {isa = PBXBuildFile; fileRef = E2AAC3D6662C4E0DB44B3CE8 /* HockeyApp.m */; };
+		D07454F31E4A70D70099AB34 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4353449BFF794495BB79E55D /* CDVInAppBrowser.m */; };
+		D07454F41E4A70D70099AB34 /* CDVSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 914278ACC046479D81BB436D /* CDVSound.m */; };
+		D07454F51E4A70D70099AB34 /* NativeStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95529102DDEF42BD8A53BEBB /* NativeStorage.m */; };
+		D07454F61E4A70D70099AB34 /* SafariViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C702E6EAA45F29BD98573 /* SafariViewController.m */; };
+		D07454F71E4A70D70099AB34 /* SocialMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D4AD63E5EA45A58211970C /* SocialMessage.m */; };
+		D07454F81E4A70D70099AB34 /* CULPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1731D2A8C435C8341945B /* CULPlugin.m */; };
+		D07454F91E4A70D70099AB34 /* AppDelegate+CULPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E5238AF25145F6963C82B4 /* AppDelegate+CULPlugin.m */; };
+		D07454FA1E4A70D70099AB34 /* CDVPluginResult+CULPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7927759CAC8345979B605CC6 /* CDVPluginResult+CULPlugin.m */; };
+		D07454FB1E4A70D70099AB34 /* CDVInvokedUrlCommand+CULPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECFC44EA2544663BEE9CA6E /* CDVInvokedUrlCommand+CULPlugin.m */; };
+		D07454FC1E4A70D70099AB34 /* CULHost.m in Sources */ = {isa = PBXBuildFile; fileRef = EAC90B20933B4A53A26A19BF /* CULHost.m */; };
+		D07454FD1E4A70D70099AB34 /* CULPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E681E3D6F73449C804D4A0C /* CULPath.m */; };
+		D07454FE1E4A70D70099AB34 /* CULXmlTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1DA55621894CFC940370DF /* CULXmlTags.m */; };
+		D07454FF1E4A70D70099AB34 /* CULConfigXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 91257881B1AA45C492DA4196 /* CULConfigXmlParser.m */; };
+		D07455001E4A70D70099AB34 /* NSBundle+CULPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B78E32BF2046E48A15E481 /* NSBundle+CULPlugin.m */; };
+		D07455011E4A70D70099AB34 /* BackgroundAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 0502B7D8E08F4A19A2F83AC8 /* BackgroundAudio.m */; };
+		D07455031E4A70D70099AB34 /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
+		D07455041E4A70D70099AB34 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F68EDCA7984FB9AD9212DB /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D07455051E4A70D70099AB34 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E25EA619FD49618C59781A /* CFNetwork.framework */; };
+		D07455061E4A70D70099AB34 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CFFB6D751C4115A3B503B6 /* libz.dylib */; };
+		D07455071E4A70D70099AB34 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B90C24DFA8514E7E8F3497AA /* libc++.dylib */; };
+		D07455081E4A70D70099AB34 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDBDA84860D492AAE13DEBF /* SystemConfiguration.framework */; };
+		D07455091E4A70D70099AB34 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7DCF888CAF4E7787D4C828 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D074550A1E4A70D70099AB34 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249F6B659E7D4DEC954D9C98 /* Fabric.framework */; };
+		D074550B1E4A70D70099AB34 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8DDB039D3CF439EA8AEE131 /* Crashlytics.framework */; };
+		D074550C1E4A70D70099AB34 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72788B91560B4AD78A2751B0 /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D074550D1E4A70D70099AB34 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF3A2F38DF747AF8313F564 /* CoreLocation.framework */; };
+		D074550E1E4A70D70099AB34 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF0AC3B7358450998419C72 /* AVFoundation.framework */; };
+		D074550F1E4A70D70099AB34 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1132983805A4F2C8B1C8B2C /* HockeySDK.framework */; };
+		D07455101E4A70D70099AB34 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B985A599FD4C9C8075440E /* libstdc++.dylib */; };
+		D07455111E4A70D70099AB34 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9DD95A039C4FD0972BC708 /* libz.tbd */; };
+		D07455121E4A70D70099AB34 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD084F672CC4951B58ED2A6 /* CoreText.framework */; };
+		D07455131E4A70D70099AB34 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB09AF2AD4F44FFD866A36A4 /* CoreTelephony.framework */; };
+		D07455141E4A70D70099AB34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5021958FBC684E1C99EE5E04 /* Foundation.framework */; };
+		D07455151E4A70D70099AB34 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD73A83FC79646B5BA83CE69 /* Photos.framework */; };
+		D07455161E4A70D70099AB34 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970FE14B81D643738B2C45AB /* QuartzCore.framework */; };
+		D07455171E4A70D70099AB34 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C1703179B54FDC84F4405A /* QuickLook.framework */; };
+		D07455181E4A70D70099AB34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38168212E58D4876ADD50672 /* UIKit.framework */; };
+		D07455191E4A70D70099AB34 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DECC22F0B1A484891B6EF44 /* SafariServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D074551A1E4A70D70099AB34 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E4ABBDE9BB48F5908FF242 /* Social.framework */; };
 		D097F9F983AE46A2BFA1E347 /* SafariViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C702E6EAA45F29BD98573 /* SafariViewController.m */; };
 		D18F79AFEA8243E092AEC31D /* GCDWebServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 431176205BCF4AB0B0BEA8A0 /* GCDWebServerRequest.m */; };
 		D299B5FBE09D41A0842190A5 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B985A599FD4C9C8075440E /* libstdc++.dylib */; };
@@ -104,6 +190,13 @@
 			remoteInfo = CordovaLib;
 		};
 		301BF550109A68C00062928A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = CordovaLib;
+		};
+		D07454C01E4A70D70099AB34 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */;
 			proxyType = 1;
@@ -237,6 +330,8 @@
 		CC202C7491BB46A6B8665149 /* AssetBundleDownloader.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = AssetBundleDownloader.swift; path = "cordova-plugin-meteor-webapp/AssetBundleDownloader.swift"; sourceTree = "<group>"; };
 		CE405E0D710149A0B1EC78AE /* NSBundle+CULPlugin.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "NSBundle+CULPlugin.h"; path = "cordova-universal-links-plugin/Utils/NSBundle+CULPlugin.h"; sourceTree = "<group>"; };
 		D014C8081E46670F00329EC7 /* NewSpring.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = NewSpring.entitlements; path = NewSpring/NewSpring.entitlements; sourceTree = "<group>"; };
+		D074551E1E4A70D70099AB34 /* NewSpringBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewSpringBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D074551F1E4A70D80099AB34 /* NewSpring copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NewSpring copy-Info.plist"; path = "/Users/webadmin/workspace/Holtzman/iOS/.build/ios/project/NewSpring copy-Info.plist"; sourceTree = "<absolute>"; };
 		D0A64AA192CD46DDA8B8B791 /* Asset.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Asset.swift; path = "cordova-plugin-meteor-webapp/Asset.swift"; sourceTree = "<group>"; };
 		D1132983805A4F2C8B1C8B2C /* HockeySDK.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "NewSpring/Plugins/cordova-plugin-hockeyapp/HockeySDK.framework"; sourceTree = "<group>"; };
 		D451C1792C1F4841B3CC5274 /* METPlugin.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = METPlugin.h; path = "cordova-plugin-meteor-webapp/METPlugin.h"; sourceTree = "<group>"; };
@@ -296,6 +391,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D07455021E4A70D70099AB34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07455031E4A70D70099AB34 /* libCordova.a in Frameworks */,
+				D07455041E4A70D70099AB34 /* WebKit.framework in Frameworks */,
+				D07455051E4A70D70099AB34 /* CFNetwork.framework in Frameworks */,
+				D07455061E4A70D70099AB34 /* libz.dylib in Frameworks */,
+				D07455071E4A70D70099AB34 /* libc++.dylib in Frameworks */,
+				D07455081E4A70D70099AB34 /* SystemConfiguration.framework in Frameworks */,
+				D07455091E4A70D70099AB34 /* Security.framework in Frameworks */,
+				D074550A1E4A70D70099AB34 /* Fabric.framework in Frameworks */,
+				D074550B1E4A70D70099AB34 /* Crashlytics.framework in Frameworks */,
+				D074550C1E4A70D70099AB34 /* ImageIO.framework in Frameworks */,
+				D074550D1E4A70D70099AB34 /* CoreLocation.framework in Frameworks */,
+				D074550E1E4A70D70099AB34 /* AVFoundation.framework in Frameworks */,
+				D074550F1E4A70D70099AB34 /* HockeySDK.framework in Frameworks */,
+				D07455101E4A70D70099AB34 /* libstdc++.dylib in Frameworks */,
+				D07455111E4A70D70099AB34 /* libz.tbd in Frameworks */,
+				D07455121E4A70D70099AB34 /* CoreText.framework in Frameworks */,
+				D07455131E4A70D70099AB34 /* CoreTelephony.framework in Frameworks */,
+				D07455141E4A70D70099AB34 /* Foundation.framework in Frameworks */,
+				D07455151E4A70D70099AB34 /* Photos.framework in Frameworks */,
+				D07455161E4A70D70099AB34 /* QuartzCore.framework in Frameworks */,
+				D07455171E4A70D70099AB34 /* QuickLook.framework in Frameworks */,
+				D07455181E4A70D70099AB34 /* UIKit.framework in Frameworks */,
+				D07455191E4A70D70099AB34 /* SafariServices.framework in Frameworks */,
+				D074551A1E4A70D70099AB34 /* Social.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -316,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* NewSpring.app */,
+				D074551E1E4A70D70099AB34 /* NewSpringBeta.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -334,6 +461,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				D074551F1E4A70D80099AB34 /* NewSpring copy-Info.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -553,6 +681,25 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* NewSpring.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D07454BE1E4A70D70099AB34 /* NewSpringBeta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D074551B1E4A70D70099AB34 /* Build configuration list for PBXNativeTarget "NewSpringBeta" */;
+			buildPhases = (
+				D07454C11E4A70D70099AB34 /* Copy www directory */,
+				D07454C21E4A70D70099AB34 /* Resources */,
+				D07454C61E4A70D70099AB34 /* Sources */,
+				D07455021E4A70D70099AB34 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D07454BF1E4A70D70099AB34 /* PBXTargetDependency */,
+			);
+			name = NewSpringBeta;
+			productName = NewSpring;
+			productReference = D074551E1E4A70D70099AB34 /* NewSpringBeta.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -568,6 +715,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					D07454BE1E4A70D70099AB34 = {
+						DevelopmentTeam = 7TM8C6252Z;
 					};
 				};
 			};
@@ -590,6 +740,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* NewSpring */,
+				D07454BE1E4A70D70099AB34 /* NewSpringBeta */,
 			);
 		};
 /* End PBXProject section */
@@ -615,10 +766,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D07454C21E4A70D70099AB34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07454C31E4A70D70099AB34 /* MainViewController.xib in Resources */,
+				D07454C41E4A70D70099AB34 /* Images.xcassets in Resources */,
+				D07454C51E4A70D70099AB34 /* HockeySDKResources.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		304B58A110DAC018002A0835 /* Copy www directory */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy www directory";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "NODEJS_PATH=/usr/local/bin; NVM_NODE_PATH=~/.nvm/versions/node/`nvm version 2>/dev/null`/bin; N_NODE_PATH=`find /usr/local/n/versions/node/* -maxdepth 0 -type d 2>/dev/null | tail -1`/bin; XCODE_NODE_PATH=`xcode-select --print-path`/usr/share/xcs/Node/bin; PATH=$NODEJS_PATH:$NVM_NODE_PATH:$N_NODE_PATH:$XCODE_NODE_PATH:$PATH && node cordova/lib/copy-www-build-step.js";
+			showEnvVarsInLog = 0;
+		};
+		D07454C11E4A70D70099AB34 /* Copy www directory */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -702,6 +878,72 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D07454C61E4A70D70099AB34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07454C71E4A70D70099AB34 /* main.m in Sources */,
+				D07454C81E4A70D70099AB34 /* AppDelegate.m in Sources */,
+				D07454C91E4A70D70099AB34 /* MainViewController.m in Sources */,
+				D07454CA1E4A70D70099AB34 /* CDVWKWebViewEngine.m in Sources */,
+				D07454CB1E4A70D70099AB34 /* CDVWKWebViewUIDelegate.m in Sources */,
+				D07454CC1E4A70D70099AB34 /* WebAppLocalServer.swift in Sources */,
+				D07454CD1E4A70D70099AB34 /* WebAppConfiguration.swift in Sources */,
+				D07454CE1E4A70D70099AB34 /* AssetBundleManager.swift in Sources */,
+				D07454CF1E4A70D70099AB34 /* AssetBundle.swift in Sources */,
+				D07454D01E4A70D70099AB34 /* Asset.swift in Sources */,
+				D07454D11E4A70D70099AB34 /* AssetBundleDownloader.swift in Sources */,
+				D07454D21E4A70D70099AB34 /* AssetManifest.swift in Sources */,
+				D07454D31E4A70D70099AB34 /* Errors.swift in Sources */,
+				D07454D41E4A70D70099AB34 /* Utility.swift in Sources */,
+				D07454D51E4A70D70099AB34 /* METPlugin.m in Sources */,
+				D07454D61E4A70D70099AB34 /* METTimer.m in Sources */,
+				D07454D71E4A70D70099AB34 /* METRetryStrategy.m in Sources */,
+				D07454D81E4A70D70099AB34 /* METNetworkReachabilityManager.m in Sources */,
+				D07454D91E4A70D70099AB34 /* METRandomValueGenerator.m in Sources */,
+				D07454DA1E4A70D70099AB34 /* GCDWebServer.m in Sources */,
+				D07454DB1E4A70D70099AB34 /* GCDWebServerConnection.m in Sources */,
+				D07454DC1E4A70D70099AB34 /* GCDWebServerFunctions.m in Sources */,
+				D07454DD1E4A70D70099AB34 /* GCDWebServerRequest.m in Sources */,
+				D07454DE1E4A70D70099AB34 /* GCDWebServerResponse.m in Sources */,
+				D07454DF1E4A70D70099AB34 /* GCDWebServerDataRequest.m in Sources */,
+				D07454E01E4A70D70099AB34 /* GCDWebServerFileRequest.m in Sources */,
+				D07454E11E4A70D70099AB34 /* GCDWebServerMultiPartFormRequest.m in Sources */,
+				D07454E21E4A70D70099AB34 /* GCDWebServerURLEncodedFormRequest.m in Sources */,
+				D07454E31E4A70D70099AB34 /* GCDWebServerDataResponse.m in Sources */,
+				D07454E41E4A70D70099AB34 /* GCDWebServerErrorResponse.m in Sources */,
+				D07454E51E4A70D70099AB34 /* GCDWebServerFileResponse.m in Sources */,
+				D07454E61E4A70D70099AB34 /* GCDWebServerStreamedResponse.m in Sources */,
+				D07454E71E4A70D70099AB34 /* CDVStatusBar.m in Sources */,
+				D07454E81E4A70D70099AB34 /* CDVSplashScreen.m in Sources */,
+				D07454E91E4A70D70099AB34 /* CDVViewController+SplashScreen.m in Sources */,
+				D07454EA1E4A70D70099AB34 /* FabricPlugin.m in Sources */,
+				D07454EB1E4A70D70099AB34 /* UIImage+CropScaleOrientation.m in Sources */,
+				D07454EC1E4A70D70099AB34 /* CDVCamera.m in Sources */,
+				D07454ED1E4A70D70099AB34 /* CDVJpegHeaderWriter.m in Sources */,
+				D07454EE1E4A70D70099AB34 /* CDVFile.m in Sources */,
+				D07454EF1E4A70D70099AB34 /* CDVLocalFilesystem.m in Sources */,
+				D07454F01E4A70D70099AB34 /* CDVAssetLibraryFilesystem.m in Sources */,
+				D07454F11E4A70D70099AB34 /* CDVFileTransfer.m in Sources */,
+				D07454F21E4A70D70099AB34 /* HockeyApp.m in Sources */,
+				D07454F31E4A70D70099AB34 /* CDVInAppBrowser.m in Sources */,
+				D07454F41E4A70D70099AB34 /* CDVSound.m in Sources */,
+				D07454F51E4A70D70099AB34 /* NativeStorage.m in Sources */,
+				D07454F61E4A70D70099AB34 /* SafariViewController.m in Sources */,
+				D07454F71E4A70D70099AB34 /* SocialMessage.m in Sources */,
+				D07454F81E4A70D70099AB34 /* CULPlugin.m in Sources */,
+				D07454F91E4A70D70099AB34 /* AppDelegate+CULPlugin.m in Sources */,
+				D07454FA1E4A70D70099AB34 /* CDVPluginResult+CULPlugin.m in Sources */,
+				D07454FB1E4A70D70099AB34 /* CDVInvokedUrlCommand+CULPlugin.m in Sources */,
+				D07454FC1E4A70D70099AB34 /* CULHost.m in Sources */,
+				D07454FD1E4A70D70099AB34 /* CULPath.m in Sources */,
+				D07454FE1E4A70D70099AB34 /* CULXmlTags.m in Sources */,
+				D07454FF1E4A70D70099AB34 /* CULConfigXmlParser.m in Sources */,
+				D07455001E4A70D70099AB34 /* NSBundle+CULPlugin.m in Sources */,
+				D07455011E4A70D70099AB34 /* BackgroundAudio.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -709,6 +951,11 @@
 			isa = PBXTargetDependency;
 			name = CordovaLib;
 			targetProxy = 301BF550109A68C00062928A /* PBXContainerItemProxy */;
+		};
+		D07454BF1E4A70D70099AB34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CordovaLib;
+			targetProxy = D07454C01E4A70D70099AB34 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -740,9 +987,10 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "NewSpring/NewSpring-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.subsplashstudio31.NewSpring-Church";
 				PRODUCT_NAME = NewSpring;
-				PROVISIONING_PROFILE = "264f1a47-f625-4c0c-9d5a-f2a89688b621";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cc.newspring.newspringapp";
+				PROVISIONING_PROFILE = "f4c35518-3dbf-4d62-a659-1b34a937166e";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.subsplashstudio31.NewSpring-Church";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -758,6 +1006,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = NewSpring/NewSpring.entitlements;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 7TM8C6252Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"NewSpring/Plugins/cordova-fabric-plugin\"",
@@ -769,9 +1018,10 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "NewSpring/NewSpring-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.subsplashstudio31.NewSpring-Church";
 				PRODUCT_NAME = NewSpring;
-				PROVISIONING_PROFILE = "264f1a47-f625-4c0c-9d5a-f2a89688b621";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cc.newspring.newspringapp";
+				PROVISIONING_PROFILE = "f4c35518-3dbf-4d62-a659-1b34a937166e";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.subsplashstudio31.NewSpring-Church";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -827,6 +1077,70 @@
 			};
 			name = Release;
 		};
+		D074551C1E4A70D70099AB34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3047A50F1AB8059700498E2A /* build-debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = NewSpring/NewSpring.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 7TM8C6252Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"NewSpring/Plugins/cordova-fabric-plugin\"",
+					"\"NewSpring/Plugins/cordova-fabric-plugin\"",
+					"\"NewSpring/Plugins/cordova-plugin-hockeyapp\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NewSpring/NewSpring-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = "";
+				INFOPLIST_FILE = "NewSpring copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "264f1a47-f625-4c0c-9d5a-f2a89688b621";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cc.newspring.newspringapp";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D074551D1E4A70D70099AB34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3047A5101AB8059700498E2A /* build-release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = NewSpring/NewSpring.entitlements;
+				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 7TM8C6252Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"NewSpring/Plugins/cordova-fabric-plugin\"",
+					"\"NewSpring/Plugins/cordova-fabric-plugin\"",
+					"\"NewSpring/Plugins/cordova-plugin-hockeyapp\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NewSpring/NewSpring-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = "";
+				INFOPLIST_FILE = "NewSpring copy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "264f1a47-f625-4c0c-9d5a-f2a89688b621";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cc.newspring.newspringapp";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -844,6 +1158,15 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D074551B1E4A70D70099AB34 /* Build configuration list for PBXNativeTarget "NewSpringBeta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D074551C1E4A70D70099AB34 /* Debug */,
+				D074551D1E4A70D70099AB34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
