@@ -53,7 +53,9 @@ platform :ios do
       scheme: ENV['XCODE_SCHEME_NAME'],
       clean: true,
       include_bitcode: false,
+      codesigning_identity: "iPhone Distribution: NewSpring Church, Inc"
     )
+
   end
 
   private_lane :build_app_ad_hoc do
