@@ -1102,8 +1102,9 @@
 				GCC_PREFIX_HEADER = "NewSpring/NewSpring-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
-				INFOPLIST_FILE = "NewSpring copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/NewSpring/NewSpring-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.newspring.newspringapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "264f1a47-f625-4c0c-9d5a-f2a89688b621";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cc.newspring.newspringapp";
@@ -1133,7 +1134,8 @@
 				GCC_PREFIX_HEADER = "NewSpring/NewSpring-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
-				INFOPLIST_FILE = "NewSpring copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/NewSpring/NewSpring-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.newspring.newspringapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "264f1a47-f625-4c0c-9d5a-f2a89688b621";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cc.newspring.newspringapp";
