@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D07454BE1E4A70D70099AB34"
-               BuildableName = "NewSpringBeta.app"
-               BlueprintName = "NewSpringBeta"
+               BuildableName = "NewSpring.app"
+               BlueprintName = "NewSpring"
                ReferencedContainer = "container:NewSpring.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D07454BE1E4A70D70099AB34"
-            BuildableName = "NewSpringBeta.app"
-            BlueprintName = "NewSpringBeta"
+            BuildableName = "NewSpring.app"
+            BlueprintName = "NewSpring"
             ReferencedContainer = "container:NewSpring.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D07454BE1E4A70D70099AB34"
-            BuildableName = "NewSpringBeta.app"
-            BlueprintName = "NewSpringBeta"
+            BuildableName = "NewSpring.app"
+            BlueprintName = "NewSpring"
             ReferencedContainer = "container:NewSpring.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D07454BE1E4A70D70099AB34"
-            BuildableName = "NewSpringBeta.app"
-            BlueprintName = "NewSpringBeta"
+            BuildableName = "NewSpring.app"
+            BlueprintName = "NewSpring"
             ReferencedContainer = "container:NewSpring.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
