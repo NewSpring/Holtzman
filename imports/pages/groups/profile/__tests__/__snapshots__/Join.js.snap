@@ -3,7 +3,7 @@ exports[`test renders with props 1`] = `
   className="soft soft-double-ends one-whole text-center">
   <h4
     className="text-center push-ends">
-    Request to Join 
+    Contact 
     happy group
   </h4>
   <Form
@@ -24,7 +24,7 @@ exports[`test renders with props 1`] = `
       defaultValue="
     Hey jim, bob,
     
-    I\'m interested in joining your group and looking forward to hearing from you soon!
+    I\'m interested in learning more about your group and looking forward to hearing from you soon!
     
     Thanks!"
       inputClasses="text-dark-secondary"

@@ -33,21 +33,22 @@ export default class Join extends Component {
     const leaders = group.members.filter((x) => (x.role.toLowerCase() === "leader"));
     const firstNames = leaders.map((x) => (x.person.nickName || x.person.firstName)).join(", ");
 
-    const message = `\nHey ${firstNames},\n\nI'm interested in joining your group and ` +
+    const message = `\nHey ${firstNames},\n\nI'm interested in learning more about your group and ` +
       "looking forward to hearing from you soon!\n\nThanks!";
     switch (this.state.state) {
       case "loading":
-        return <Loading msg="We're sending your request!" />;
+        return <Loading msg="We're sending your message!" />;
       case "error":
-        return <Err msg="There was a problem sending your request" error={this.state.err} />;
+        return <Err msg="There was a problem sending your message" error={this.state.err} />;
       case "success":
         return (
           <div className="soft soft-double-ends one-whole text-center">
             <h4 className="text-center push-ends">
-              Request Sent!
+              Message Sent!
             </h4>
             <p>
-              We have sent your request to join {group.name} to the group leaders!
+              We have sent your request for more information
+              about {group.name} to the group leaders!
             </p>
             <button className="btn--thin btn--small btn--dark-tertiary one-whole" onClick={onExit}>
               Close
@@ -58,7 +59,7 @@ export default class Join extends Component {
         return (
           <div className="soft soft-double-ends one-whole text-center">
             <h4 className="text-center push-ends">
-              Request to Join {group.name}
+              Contact {group.name}
             </h4>
             <Forms.Form
               id="message-form"
