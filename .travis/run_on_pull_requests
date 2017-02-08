@@ -13,14 +13,11 @@ SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
-# remove all local tags
-git tag -l | xargs git tag -d
-
 # create a new new tag from TRAVIS_TAG (GH###-B#)
 git tag $BUILD_TAG
 
 # push tag to github
-git push -q $SSH_REPO --tags
+git push -q $SSH_REPO refs/tags/$BUILD_TAG
 
 echo "Pushed Tag: $BUILD_TAG to Github!"
 
