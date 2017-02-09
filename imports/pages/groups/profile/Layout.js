@@ -108,7 +108,7 @@ const Layout = ({ group, leaders, isLeader, join }) => (
 
               return (
                 <button onClick={() => join()} className={className}>
-                  Get Info
+                  Contact
                 </button>
               );
             })()}

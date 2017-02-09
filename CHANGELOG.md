@@ -13,8 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - UI for joining a group
-  - changed join group button to say `get info`
-  - Groups: changed join group modal title to say `contact`
+  - changed join group button to say `Contact`
+  - Groups: changed join group modal title to say `Contact`
   - changed default message for joining a group
 
 ## [1.2.3] - 2017-01-09

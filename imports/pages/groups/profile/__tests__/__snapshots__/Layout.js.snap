@@ -87,7 +87,7 @@ exports[`test doesn't render Interest type tag 1`] = `
           <button
             className="flush-bottom push-half-bottom@handheld btn"
             onClick={[Function]}>
-            Get Info
+            Contact
           </button>
         </div>
       </div>
@@ -350,7 +350,7 @@ exports[`test doesn't render demographic tag if none 1`] = `
           <button
             className="flush-bottom push-half-bottom@handheld btn"
             onClick={[Function]}>
-            Get Info
+            Contact
           </button>
         </div>
       </div>
@@ -613,7 +613,7 @@ exports[`test renders adult only version 1`] = `
           <button
             className="flush-bottom push-half-bottom@handheld btn"
             onClick={[Function]}>
-            Get Info
+            Contact
           </button>
         </div>
       </div>
@@ -1141,7 +1141,7 @@ exports[`test renders with props 1`] = `
           <button
             className="flush-bottom push-half-bottom@handheld btn"
             onClick={[Function]}>
-            Get Info
+            Contact
           </button>
         </div>
       </div>
@@ -1404,7 +1404,7 @@ exports[`test renders without campus 1`] = `
           <button
             className="flush-bottom push-half-bottom@handheld btn"
             onClick={[Function]}>
-            Get Info
+            Contact
           </button>
         </div>
       </div>
@@ -1667,7 +1667,7 @@ exports[`test renders without group locations 1`] = `
           <button
             className="flush-bottom push-half-bottom@handheld btn"
             onClick={[Function]}>
-            Get Info
+            Contact
           </button>
         </div>
       </div>
@@ -1930,7 +1930,7 @@ exports[`test renders without schedule 1`] = `
           <button
             className="flush-bottom push-half-bottom@handheld btn"
             onClick={[Function]}>
-            Get Info
+            Contact
           </button>
         </div>
       </div>
@@ -2193,7 +2193,7 @@ exports[`test renders without schedule description 1`] = `
           <button
             className="flush-bottom push-half-bottom@handheld btn"
             onClick={[Function]}>
-            Get Info
+            Contact
           </button>
         </div>
       </div>
