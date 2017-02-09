@@ -2,6 +2,7 @@ import { Component, PropTypes } from "react";
 
 import Forms from "../../../components/@primitives/UI/forms";
 import { Error as Err, Loading } from "../../../components/@primitives/UI/states";
+import Checkbox from "../../../components/@primitives/UI/forms/Checkbox";
 
 export default class Join extends Component {
 
@@ -11,7 +12,13 @@ export default class Join extends Component {
     onExit: PropTypes.func.isRequired,
   }
 
-  state = { state: "default", err: null }
+  state = {
+    state: "default",
+    err: null,
+    emailCommunicationPreferenceChecked: false,
+    phoneCommunicationPreferenceChecked: false,
+    textCommunicationPreferenceChecked: false,
+  };
 
   onClick = (e) => {
     this.setState({ state: "loading" });
@@ -26,6 +33,34 @@ export default class Join extends Component {
       this.setState({ state: "success" });
       return null;
     });
+  }
+
+  toggleCheckbox = (checkboxName: String) => {
+    console.log("checkboxName = ", checkboxName);
+    switch (checkboxName) {
+      case "emailCommunicationPreference":
+        console.log("checking email communication preference");
+        this.setState({ emailCommunicationPreferenceChecked: true });
+        this.setState({ phoneCommunicationPreferenceChecked: false });
+        this.setState({ textCommunicationPreferenceChecked: false });
+        break;
+      case "phoneCommunicationPreference":
+        console.log("checking phone communication preference");
+        this.setState({ emailCommunicationPreferenceChecked: false });
+        this.setState({ phoneCommunicationPreferenceChecked: true });
+        this.setState({ textCommunicationPreferenceChecked: false });
+        break;
+      case "textCommunicationPreference":
+        console.log("checking text communication preference");
+        this.setState({ emailCommunicationPreferenceChecked: false });
+        this.setState({ phoneCommunicationPreferenceChecked: false });
+        this.setState({ textCommunicationPreferenceChecked: true });
+        break;
+      default:
+        this.setState({ emailCommunicationPreferenceChecked: false });
+        this.setState({ phoneCommunicationPreferenceChecked: false });
+        this.setState({ textCommunicationPreferenceChecked: false });
+    }
   }
 
   render() {
@@ -74,6 +109,33 @@ export default class Join extends Component {
                 rows={10}
                 defaultValue={message}
               />
+              <div className="text-left soft-bottom">
+                <h5 className="soft-half-bottom">Communication Preference</h5>
+                <Checkbox
+                  name="emailCommunicationPreference"
+                  classes={["soft-bottom display-inline-block soft-right push-double-right"]}
+                  defaultValue={false}
+                  clicked={() => this.toggleCheckbox("emailCommunicationPreference")}
+                >
+                  <span className="soft-half-top">Email</span>
+                </Checkbox>
+                <Checkbox
+                  name="phoneCommunicationPreference"
+                  classes={["soft-bottom display-inline-block soft-right push-double-right"]}
+                  defaultValue={false}
+                  clicked={() => this.toggleCheckbox("phoneCommunicationPreference")}
+                >
+                  <span className="soft-half-top">Phone</span>
+                </Checkbox>
+                <Checkbox
+                  name="textCommunicationPreference"
+                  classes={["soft-bottom display-inline-block soft-right push-double-right"]}
+                  defaultValue={false}
+                  clicked={() => this.toggleCheckbox("textCommunicationPreference")}
+                >
+                  <span className="soft-half-top">Text</span>
+                </Checkbox>
+              </div>
               <div className="grid">
                 <div className="grid__item one-half">
                   <button className="btn--thin btn--small btn--dark-tertiary one-whole" onClick={onExit}>
