@@ -9,6 +9,7 @@ type ISavePaymentCheckBox = {
   transactionType: string,
 };
 
+/* eslint-disable max-len */
 const SavePaymentCheckBox = ({
   savedAccount,
   savePayment,
@@ -29,6 +30,12 @@ const SavePaymentCheckBox = ({
       >
         Save this payment for future contributions
       </Forms.Checkbox>
+    );
+  } else if (schedule.start) {
+    return (
+      <div>
+        <p><small><em>Our payment provider does not allow creating a saved payment when setting up a contribution schedule. To save a payment, please give a one time contribution. We are sorry for any inconvenience this may cause</em></small></p>
+      </div>
     );
   }
   return null;
