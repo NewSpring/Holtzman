@@ -34,7 +34,7 @@ const SavePaymentCheckBox = ({
   } else if (schedule.start) {
     return (
       <div>
-        <p><small><em>Our payment provider does not allow creating a saved payment when setting up a contribution schedule. To save a payment, please give a one time contribution. We are sorry for any inconvenience this may cause</em></small></p>
+        <p><small><em>To save a payment, please give a one time contribution. We are sorry for any inconvenience this may cause.</em></small></p>
       </div>
     );
   }
