@@ -77,6 +77,7 @@ export class SchedulesList extends Component {
       );
     }
 
+    /* eslint-disable max-len */
     return (
       <div className={wrapper}>
         <SectionHeader
@@ -86,6 +87,9 @@ export class SchedulesList extends Component {
         <div className="grid">
           {this.renderSchedules(this.props.schedules.scheduledTransactions)}
         </div>
+        <p className="soft-double-top soft-half-sides text-left@handheld text-center">
+          <small><em>To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.</em></small>
+        </p>
       </div>
     );
   }
