@@ -28,6 +28,7 @@ const capitalizeFirstLetter = (string) => (
   string.charAt(0).toUpperCase() + string.slice(1)
 );
 
+/* eslint-disable max-len */
 export default ({
   schedule,
   stop,
@@ -192,6 +193,11 @@ export default ({
                 {!complete && !active && (
                   <SmallButton text={"Contribution Stopped"} disabled />
                 )}
+              </div>
+              <div>
+                <p className="soft-double-top soft-half-sides text-left@handheld text-center">
+                  <small><em>To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.</em></small>
+                </p>
               </div>
             </div>
         )}

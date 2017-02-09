@@ -112,6 +112,16 @@ exports[`test renders complete message 1`] = `
               disabled={true}
               text="Schedule Completed" />
           </div>
+          <div>
+            <p
+              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              <small>
+                <em>
+                  To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
+                </em>
+              </small>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -331,6 +341,16 @@ exports[`test renders loading if no entries 1`] = `
               className="text-alert"
               onClick={[Function]}
               text="Stop Contribution" />
+          </div>
+          <div>
+            <p
+              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              <small>
+                <em>
+                  To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
+                </em>
+              </small>
+            </p>
           </div>
         </div>
       </div>
@@ -628,6 +648,16 @@ exports[`test renders loading if not ready 1`] = `
               onClick={[Function]}
               text="Stop Contribution" />
           </div>
+          <div>
+            <p
+              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              <small>
+                <em>
+                  To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
+                </em>
+              </small>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -831,6 +861,16 @@ exports[`test renders no contributions message 1`] = `
               className="text-alert"
               onClick={[Function]}
               text="Stop Contribution" />
+          </div>
+          <div>
+            <p
+              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              <small>
+                <em>
+                  To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
+                </em>
+              </small>
+            </p>
           </div>
         </div>
       </div>
@@ -1047,6 +1087,16 @@ exports[`test renders stopped message 1`] = `
             <SmallButton
               disabled={true}
               text="Contribution Stopped" />
+          </div>
+          <div>
+            <p
+              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              <small>
+                <em>
+                  To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
+                </em>
+              </small>
+            </p>
           </div>
         </div>
       </div>
@@ -1267,6 +1317,16 @@ exports[`test renders with props 1`] = `
               className="text-alert"
               onClick={[Function]}
               text="Stop Contribution" />
+          </div>
+          <div>
+            <p
+              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              <small>
+                <em>
+                  To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
+                </em>
+              </small>
+            </p>
           </div>
         </div>
       </div>
@@ -1603,6 +1663,16 @@ exports[`test renders without schedule payment 1`] = `
               onClick={[Function]}
               text="Stop Contribution" />
           </div>
+          <div>
+            <p
+              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              <small>
+                <em>
+                  To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
+                </em>
+              </small>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -1822,6 +1892,16 @@ exports[`test works with credit card 1`] = `
               className="text-alert"
               onClick={[Function]}
               text="Stop Contribution" />
+          </div>
+          <div>
+            <p
+              className="soft-double-top soft-half-sides text-left@handheld text-center">
+              <small>
+                <em>
+                  To change details about a schedule, please cancel the current one and create a new schedule with the desired information. We are sorry for any inconvenience this may cause and are working to provide the ability to edit contribution schedules in the future.
+                </em>
+              </small>
+            </p>
           </div>
         </div>
       </div>
