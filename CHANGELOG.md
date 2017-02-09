@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed an issue with the devotionals auto scrolling about half way down the page in the app on first render.
 - Fixed: The tag gallery would revert back to system color when the selected button wasn't "actively pressed". Added a "nohover" class to fix this.
 - Feature: Added ability to save a payment during a transaction on iOS
+- Fixed the "Home" tab on Giving to now say "Dashboard". Because clarity.
+
+### Changed
+- Changed the text on the individual transaction entry pages to more closely align with our church's vision.
 
 ## [1.2.3] - 2017-01-09
 ### Added

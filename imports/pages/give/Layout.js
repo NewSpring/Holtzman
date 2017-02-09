@@ -21,7 +21,7 @@ class Layout extends Component {
         isActive: false,
         linkUrl: "/give/home",
         onClick: () => {},
-        title: "Home",
+        title: "Dashboard",
       },
       {
         isActive: false,
@@ -87,7 +87,7 @@ class Layout extends Component {
           <DashboardLayout
             title="My Giving"
             subNav={this.state.subNav}
-            additionalClasses={"soft-half-sides push-right"}
+            additionalClasses={"soft-half-sides push-half-right"}
           >
             {cloneElement(this.props.children, {
               setRightProps: this.setRightProps,

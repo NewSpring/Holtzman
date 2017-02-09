@@ -138,7 +138,7 @@ export default class Layout extends Component {
                           "flush-bottom soft-ends soft-sides@portable"
                         }
                       >
-                        Thank you so much for your contributions! It is because of your generosity that we are able to continue telling stories of the greatness of Jesus and seeing lives changed.
+                        Thank you for your contribution to NewSpring Church. Because you are obedient in giving, we&#39;ll be able to connect more people to Jesus and each other.
                       </p>
                     </div>
                   );
