@@ -1,9 +1,6 @@
 // @flow
 import Forms from "../../../../@primitives/UI/forms";
 
-import { isIOS } from "../../../../../util";
-
-
 type ISavePaymentInput = {
   saveName: Function,
   savedAccount: Object,
@@ -25,8 +22,7 @@ const SavePaymentInput = ({
     shouldSaveState &&
     !savedAccount.id &&
     transactionType !== "guest" &&
-    !schedule.start &&
-    (transactionType === "savedPayment" || !isIOS())
+    !schedule.start
   ) {
     return (
       <Forms.Input
