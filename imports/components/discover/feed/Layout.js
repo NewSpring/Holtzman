@@ -1,11 +1,13 @@
 import { PropTypes } from "react";
 import { Link } from "react-router";
 
-import DiscoverHero from "./Hero";
-import PopularItem from "../../people/profile/likes/Item";
+import Hero from "../../@primitives/UI/hero";
+import { MiniCard } from "../../@primitives/UI/cards";
+
+import RecentLikes from "../../shared/likes-list";
 
 function getImage(images, label = "2:1") {
-  let selectedImage = false;
+  let selectedImage = "";
 
   for (const image of images) {
     if (image.fileLabel === label) {
@@ -17,8 +19,7 @@ function getImage(images, label = "2:1") {
   return selectedImage;
 }
 
-
-const Layout = ({ featuredItem, recommendedItems, textItems }) => (
+const Layout = ({ featuredItem, recommendedItems, textItems, recentLikes }) => (
   <div style={{ overflowY: "hidden", height: "100%" }} className="background--light-primary">
 
     <section className="hard background--light-secondary">
@@ -27,32 +28,36 @@ const Layout = ({ featuredItem, recommendedItems, textItems }) => (
 
     {(() => {
       if (!featuredItem) return null;
-      return (
-        <DiscoverHero
-          link={featuredItem.meta.urlTitle}
-          image={getImage(featuredItem.content.images, "1:1")}
-          topicName={featuredItem.title}
-        />
-      );
+
+      const formattedObj = {
+        content: featuredItem,
+        hideDate: true,
+      };
+
+      return <Hero {...formattedObj} />;
     })()}
 
     <section className="soft-half background--light-secondary">
-      <div className="grid">
+      <div className="grid flush">
         {recommendedItems.map((item, i) => {
-          const formatedObj = {
-            link: item.meta.urlTitle,
-            image: getImage(item.content.images),
+          const formattedObj = {
             title: item.title,
-            date: item.meta.date,
-            category: "Need to know",
-            icon: "icon-leaf-outline",
+            content: item,
+            link: item.meta.urlTitle,
           };
 
           return (
-            <PopularItem like={formatedObj} key={i} />
+            <MiniCard {...formattedObj} key={i} />
           );
         })}
       </div>
+    </section>
+
+    <section className="soft-half background--light-secondary">
+      <div className="one-whole text-center">
+        <h5 className="flush soft-bottom">Recently Liked By Others</h5>
+      </div>
+      <RecentLikes likes={recentLikes} />
     </section>
 
     <div className="soft-half background--light-secondary">
@@ -85,6 +90,7 @@ const Layout = ({ featuredItem, recommendedItems, textItems }) => (
         </div>
       </div>
     </div>
+
     {/*
     <section className="hard background--light-secondary">
       <h6 className="push-left soft-half-bottom soft-top">Popular Content</h6>
@@ -109,6 +115,7 @@ Layout.propTypes = {
   featuredItem: PropTypes.object,
   recommendedItems: PropTypes.array,
   textItems: PropTypes.array,
+  recentLikes: PropTypes.array,
 };
 
 export default Layout;

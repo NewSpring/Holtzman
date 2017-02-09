@@ -14,37 +14,80 @@ exports[`Layout renders with props 1`] = `
       Recommended by NewSpring
     </h6>
   </section>
-  <DiscoverHero
-    image="http://test.com/2x1.jpg"
-    link="test-title"
-    topicName="test title" />
+  <Hero
+    content={
+      Object {
+        "content": Object {
+          "images": Array [
+            Object {
+              "fileLabel": "2:1",
+              "url": "http://test.com/2x1.jpg",
+            },
+          ],
+        },
+        "meta": Object {
+          "urlTitle": "test-title",
+        },
+        "title": "test title",
+      }
+    }
+    hideDate={true} />
   <section
     className="soft-half background--light-secondary">
     <div
-      className="grid">
-      <LikesItem
-        like={
+      className="grid flush">
+      <MiniCard
+        content={
           Object {
-            "category": "Need to know",
-            "date": "12-12-2012",
-            "icon": "icon-leaf-outline",
-            "image": "http://test.com/2x1.jpg",
-            "link": "recommend-one",
+            "content": Object {
+              "images": Array [
+                Object {
+                  "fileLabel": "2:1",
+                  "url": "http://test.com/2x1.jpg",
+                },
+              ],
+            },
+            "meta": Object {
+              "date": "12-12-2012",
+              "urlTitle": "recommend-one",
+            },
             "title": "recommend one",
           }
-        } />
-      <LikesItem
-        like={
+        }
+        link="recommend-one"
+        title="recommend one" />
+      <MiniCard
+        content={
           Object {
-            "category": "Need to know",
-            "date": "12-12-2012",
-            "icon": "icon-leaf-outline",
-            "image": "http://test.com/2x1.jpg",
-            "link": "recommend-two",
+            "content": Object {
+              "images": Array [
+                Object {
+                  "fileLabel": "2:1",
+                  "url": "http://test.com/2x1.jpg",
+                },
+              ],
+            },
+            "meta": Object {
+              "date": "12-12-2012",
+              "urlTitle": "recommend-two",
+            },
             "title": "recommend two",
           }
-        } />
+        }
+        link="recommend-two"
+        title="recommend two" />
     </div>
+  </section>
+  <section
+    className="soft-half background--light-secondary">
+    <div
+      className="one-whole text-center">
+      <h5
+        className="flush soft-bottom">
+        Recently Liked By Others
+      </h5>
+    </div>
+    <Component />
   </section>
   <div
     className="soft-half background--light-secondary">
@@ -102,30 +145,59 @@ exports[`Layout works without featured item 1`] = `
   <section
     className="soft-half background--light-secondary">
     <div
-      className="grid">
-      <LikesItem
-        like={
+      className="grid flush">
+      <MiniCard
+        content={
           Object {
-            "category": "Need to know",
-            "date": "12-12-2012",
-            "icon": "icon-leaf-outline",
-            "image": "http://test.com/2x1.jpg",
-            "link": "recommend-one",
+            "content": Object {
+              "images": Array [
+                Object {
+                  "fileLabel": "2:1",
+                  "url": "http://test.com/2x1.jpg",
+                },
+              ],
+            },
+            "meta": Object {
+              "date": "12-12-2012",
+              "urlTitle": "recommend-one",
+            },
             "title": "recommend one",
           }
-        } />
-      <LikesItem
-        like={
+        }
+        link="recommend-one"
+        title="recommend one" />
+      <MiniCard
+        content={
           Object {
-            "category": "Need to know",
-            "date": "12-12-2012",
-            "icon": "icon-leaf-outline",
-            "image": "http://test.com/2x1.jpg",
-            "link": "recommend-two",
+            "content": Object {
+              "images": Array [
+                Object {
+                  "fileLabel": "2:1",
+                  "url": "http://test.com/2x1.jpg",
+                },
+              ],
+            },
+            "meta": Object {
+              "date": "12-12-2012",
+              "urlTitle": "recommend-two",
+            },
             "title": "recommend two",
           }
-        } />
+        }
+        link="recommend-two"
+        title="recommend two" />
     </div>
+  </section>
+  <section
+    className="soft-half background--light-secondary">
+    <div
+      className="one-whole text-center">
+      <h5
+        className="flush soft-bottom">
+        Recently Liked By Others
+      </h5>
+    </div>
+    <Component />
   </section>
   <div
     className="soft-half background--light-secondary">

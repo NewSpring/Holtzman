@@ -7,10 +7,24 @@ export const contentCard = gql`
     id
     title
     channelName
+    parent {
+      channelName
+      id
+      content {
+        images(sizes: ["medium"]) {
+          url
+          label
+          fileLabel
+          id
+        }
+      }
+    }
     content {
-      images(sizes: ["SMALL", "MEDIUM"]) {
+      images(sizes: ["medium"]) {
         url
         label
+        fileLabel
+        id
       }
     }
   }

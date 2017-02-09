@@ -74,3 +74,10 @@ it("works with id as well", () => {
   }));
   expect(result).toBe("/news/3");
 });
+
+it("returns the link for events", () => {
+  const result = contentLink(getContentItem({
+    channelName: "newspring_now",
+  }));
+  expect(result).toBe("/events/1");
+});

@@ -37,7 +37,7 @@ export default (reducer = defaultReducer, options) => (WrappedComponent) => {
       if ((scrollPosition + deviceHeight) / contentHeight > threshold) {
         const { loading, fetchMore, done } = reducer(this.props);
         // if the query is in flight, hold off
-        if (loading || done) return null;
+        if (typeof loading === "undefined" || loading || done) return null;
         if (this.state.loading) return null;
 
         this.setState({ loading: true });

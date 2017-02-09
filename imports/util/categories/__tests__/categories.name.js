@@ -21,3 +21,8 @@ it("captilizes `articles`", () => {
   const result = categoryName({ channelName: "articles" });
   expect(result).toBe("Articles");
 });
+
+it("returns `Events` for `newspring_now`", () => {
+  const result = categoryName({ channelName: "newspring_now" });
+  expect(result).toBe("Events");
+});
