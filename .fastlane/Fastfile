@@ -1,0 +1,162 @@
+# Customise this file, documentation can be found here:
+# https://github.com/KrauseFx/fastlane/tree/master/docs
+# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# By default, fastlane will send which actions are used
+# No personal data is shared, more information on https://github.com/fastlane/enhancer
+# Uncomment the following line to opt out
+# opt_out_usage
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.13.0"
+
+default_platform :ios
+
+SLACK_POST = true
+if ENV['SLACK_ROOM'].nil? or ENV['SLACK_ROOM'].empty?
+  SLACK_POST = false
+end
+if ENV['SLACK_URL'].nil? or ENV['SLACK_URL'].empty?
+  SLACK_POST = false
+end
+
+platform :ios do
+  lane :update_provisioning_profile_specifier do |params|
+    proj = params[:project]
+    target_filter = params[:target_filter] || params[:build_configuration_filter]
+    configuration = params[:build_configuration]
+    prov_name = params[:prov_name]
+
+    require 'xcodeproj'
+
+    project = Xcodeproj::Project.open(proj)
+    project.targets.each do |target|
+      if !target_filter || target.product_name.match(target_filter) || (target.respond_to?(:product_type) && target.product_type.match(target_filter))
+        UI.success("Updating target #{target.product_name}...")
+      else
+        UI.important("Skipping target #{target.product_name} as it doesn't match the filter '#{target_filter}'")
+        next
+      end
+
+      target.build_configuration_list.build_configurations.each do |build_configuration|
+        config_name = build_configuration.name
+        if !configuration || config_name.match(configuration)
+          UI.success("Updating configuration #{config_name}...")
+        else
+          UI.important("Skipping configuration #{config_name} as it doesn't match the filter '#{configuration}'")
+          next
+        end
+
+        build_configuration.build_settings["PROVISIONING_PROFILE_SPECIFIER"] = prov_name
+      end
+    end
+    project.save
+  end
+
+  private_lane :build_app_production do
+    match(
+      type: "appstore",
+      git_url: ENV['CERTIFICATES_REPO'],
+      app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
+      readonly: true,
+      username: ENV["APPLE_ID"],
+    )
+
+    increment_build_number(
+      xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      build_number: ENV['APP_BUILD'],
+    )
+
+    increment_version_number(
+      xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      version_number: ENV['APP_VERSION'],
+    )
+
+    update_provisioning_profile_specifier(
+      project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      prov_name: ENV["PROVISIONING_PROFILE_SPECIFIER"],
+      build_configuration: "Release",
+      target_filter: ENV['XCODE_SCHEME_NAME'],
+    )
+
+    gym(
+      project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      scheme: ENV['XCODE_SCHEME_NAME'],
+      clean: true,
+      include_bitcode: false,
+      export_team_id: ENV['TEAM_ID'],
+      codesigning_identity: ENV["CODESIGNING_IDENTITY"],
+    )
+
+  end
+
+  desc "Just build the app"
+  lane :build do
+    build_app_production
+  end
+
+  desc "Install App Store Certificates"
+  lane :certificates do
+    match(
+      type: "appstore",
+      git_url: ENV['CERTIFICATES_REPO'],
+      app_identifier: [ "cc.newspring.newspringapp", "com.subsplashstudio31.NewSpring-Church" ],
+      username: ENV["APPLE_ID"],
+    )
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+    build_app_production
+
+    pilot(
+      username: ENV['APPLE_ID'],
+      skip_waiting_for_build_processing: true,
+      app_identifier: "cc.newspring.newspringapp",
+    )
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :production do
+    build_app_production
+
+    deliver(
+      username: ENV['APPLE_ID'],
+      force: true,
+      app_identifier: "com.subsplashstudio31.NewSpring-Church",
+    )
+  end
+
+  after_all do |lane|
+    if SLACK_POST
+      slack(
+        message: "App successfully released through: #{lane}",
+        channel: ENV['SLACK_ROOM'],
+        slack_url: ENV['SLACK_URL']
+      )
+    end
+  end
+
+  error do |lane, exception|
+    if SLACK_POST
+      slack(
+        message: "Lane #{lane} failed! #{exception}",
+        channel: ENV['SLACK_ROOM'],
+        slack_url: ENV['SLACK_URL'],
+        success: false
+      )
+    end
+  end
+end
+
+# More information about multiple platforms in fastlane:
+# https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md
