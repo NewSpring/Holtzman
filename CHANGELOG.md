@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed the toggle import in the `/following` section on profile causing component not to render.
 - Fixed an issue with the devotionals auto scrolling about half way down the page in the app on first render.
 - Fixed: The tag gallery would revert back to system color when the selected button wasn't "actively pressed". Added a "nohover" class to fix this.
+- Feature: Added ability to save a payment during a transaction on iOS
 - Fixed the "Home" tab on Giving to now say "Dashboard". Because clarity.
 
 ### Changed

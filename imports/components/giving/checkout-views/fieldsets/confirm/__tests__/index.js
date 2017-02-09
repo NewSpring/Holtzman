@@ -4,8 +4,12 @@ import { Meteor } from "meteor/meteor";
 import { openUrl } from "../../../../../../util/inAppLink";
 import Confirm from "../";
 
+jest.mock("../../../../../../util/inAppLink", () => ({
+  openUrl: jest.fn(() => {}),
+}));
+
 const defaultProps = {
-  data: {},
+  data: { payment: {} },
   transactions: { "1": "1" },
   total: 12,
   back: () => {},
@@ -46,7 +50,6 @@ it("renders ScheduleLayout if schedules", () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
-// XXX i can't get the openUrl mock to work
 it("completeGift calls openUrl", () => {
   Meteor.userId = jest.fn(() => "23");
   Meteor.settings = {
@@ -57,10 +60,6 @@ it("completeGift calls openUrl", () => {
   global.__meteor_runtime_config__ = {
     ROOT_URL: "https://test.com/",
   };
-  const mockOpenUrl = jest.fn();
-  jest.mock("../../../../../../util/inAppLink", () => ({
-    openUrl: mockOpenUrl,
-  }));
   const mockPreventDefault = jest.fn();
 
   const mockGiveData = encodeURIComponent(
@@ -81,14 +80,51 @@ it("completeGift calls openUrl", () => {
   });
 
   expect(mockPreventDefault).toHaveBeenCalledTimes(1);
-  // expect(mockOpenUrl).toHaveBeenCalledTimes(1);
-  // expect(mockOpenUrl).toHaveBeenCalledWith(
-  //   mockGiveUrl,
-  //   null,
-  //   defaultProps.clearData,
-  //   null
-  // );
+  expect(openUrl).toHaveBeenCalledTimes(1);
+  expect(openUrl.mock.calls[0][0]).toEqual(mockGiveUrl);
+  expect(typeof openUrl.mock.calls[0][2]).toEqual("function");
+  openUrl.mockClear();
 });
+
+it("completeGift calls openUrl with a saved payment", () => {
+  Meteor.userId = jest.fn(() => "23");
+  Meteor.settings = {
+    public: {
+      giveUrl: "https://test.com/",
+    },
+  };
+  global.__meteor_runtime_config__ = {
+    ROOT_URL: "https://test.com/",
+  };
+  const mockPreventDefault = jest.fn();
+
+  const mockGiveData = encodeURIComponent(
+    JSON.stringify({
+      url: defaultProps.url,
+      transactions: defaultProps.transactions,
+      savedAccount: defaultProps.savedAccount,
+      total: defaultProps.total,
+      data: { payment: { name: "iOS card" } },
+      userId: "23",
+    })
+  );
+  const mockGiveUrl = `https://test.com/give/review?giveData=${mockGiveData}`;
+
+  const props = {...defaultProps};
+  props.data.payment.name = "iOS card"
+  const wrapper = shallow(generateComponent(props));
+  wrapper.instance().completeGift({
+    preventDefault: mockPreventDefault,
+  });
+
+  expect(mockPreventDefault).toHaveBeenCalledTimes(1);
+  expect(openUrl).toHaveBeenCalledTimes(1);
+  expect(openUrl).toHaveBeenCalledTimes(1);
+  expect(openUrl.mock.calls[0][0]).toEqual(mockGiveUrl);
+  expect(typeof openUrl.mock.calls[0][2]).toEqual("function");
+  openUrl.mockClear();
+});
+
 
 it("choose calls changeSavedAccount with account selected", () => {
   const mockChangeSavedAccount = jest.fn();
