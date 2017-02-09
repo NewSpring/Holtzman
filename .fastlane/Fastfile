@@ -93,6 +93,7 @@ platform :ios do
       clean: true,
       include_bitcode: false,
       export_team_id: ENV['TEAM_ID'],
+      codesigning_identity: ENV["CODESIGNING_IDENTITY"],
     )
 
   end
