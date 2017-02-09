@@ -7,7 +7,7 @@ import Tag from "../../../components/@primitives/UI/tags";
 import Date from "../../../components/giving/add-to-cart/Schedule/Date";
 
 const DATE_RANGES = [
-  { label: "Last Year", value: "LastYear" },
+  { label: moment().subtract(1, "year").format("Y"), value: "LastYear" },
   { label: "Last Month", value: "LastMonth" },
   { label: "Year To Date", value: "YearToDate" },
   { label: "All Time", value: "AllTime" },
@@ -86,12 +86,12 @@ export default class Filter extends Component {
 
       let startDate;
       let endDate;
-      if (value === "LastMonth") {
-        startDate = moment().subtract(30, "days");
-        endDate = moment();
-      } else if (value === "LastYear") {
+      if (value === "LastYear") {
         startDate = moment().subtract(1, "year").startOf("year");
         endDate = moment().subtract(1, "year").endOf("year");
+      } else if (value === "LastMonth") {
+        startDate = moment().subtract(30, "days");
+        endDate = moment();
       } else if (value === "YearToDate") {
         startDate = moment().startOf("year");
         endDate = moment();
