@@ -92,7 +92,9 @@ platform :ios do
       scheme: ENV['XCODE_SCHEME_NAME'],
       clean: true,
       include_bitcode: false,
+      export_team_id: ENV['TEAM_ID'],
     )
+
   end
 
   desc "Just build the app"
